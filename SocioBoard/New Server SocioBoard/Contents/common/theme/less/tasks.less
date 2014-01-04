@@ -1,0 +1,37 @@
+//
+// Tasks
+// --------------------------------------------------
+
+// Task
+// ------------------------- //
+
+.tasks {
+	&.table {
+		border: none;
+		tr {
+			td,th { border-color: #fff; }
+		}
+	}
+	tr.color-1 {
+		td {
+			background: fade(#359ee1, 5%) !important;
+			&:first-child { border-left: 3px solid #359ee1; }
+			.color { color: #359ee1; }
+		}	
+	}
+	tr.color-2 {
+		td {
+			background: fade(#e15c35, 5%) !important;
+			&:first-child { border-left: 3px solid #e15c35; }
+			.color { color: #e15c35; }
+		}	
+	}
+	tr.color-3 {
+		td {
+			background: fade(#96e135, 5%) !important;
+			&:first-child { border-left: 3px solid #96e135; }
+			.color { color: darken(#96e135, 15%); }
+		}	
+	}
+	.faded { color: #cccccc; }
+}

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+
+  <class name="vwTwitterStats" table="vwTwitterStats"  lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    
+    <property name="EntryDate">
+      <column name="EntryDate"  />
+    </property>
+    <property name="UserId">
+      <column name="UserId"  />
+    </property>
+    <property name="TwitterUserId">
+      <column name="TwitterUserId" />
+    </property>
+    <property name="Type">
+      <column name="Type" />
+    </property>
+    <property name="Feeds">
+      <column name="Feeds"  />
+    </property>
+    <property name="Tweets">
+      <column name="Tweets"  />
+    </property>
+    <property name="Followers">
+      <column name="Followers"  />
+    </property>
+    <property name="Following">
+      <column name="Following"  />
+    </property>
+
+  
+  </class>
+</hibernate-mapping>

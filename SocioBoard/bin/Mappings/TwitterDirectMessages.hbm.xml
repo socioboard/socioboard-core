@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+
+  <class name="TwitterDirectMessages" table="TwitterDirectMessages" lazy="false">
+    <id name="Id" column="Id" >
+      <generator class="guid"/>
+    </id>
+    <property name="UserId">
+      <column name="UserId" />
+    </property>
+    <property name="Message">
+      <column name="Message"  />
+    </property>
+    <property name="RecipientId">
+      <column name="RecipientId"  />
+    </property>
+    <property name="RecipientScreenName">
+      <column name="RecipientScreenName"  />
+    </property>
+
+
+    <property name="RecipientProfileUrl">
+      <column name="RecipientProfileUrl"  />
+    </property>
+
+    <property name="CreatedDate">
+      <column name="CreatedDate"  />
+    </property>
+
+    <property name="EntryDate">
+      <column name="EntryDate"  />
+    </property>
+
+    <property name="SenderId">
+      <column name="SenderId"  />
+    </property>
+
+
+    <property name="SenderScreenName">
+      <column name="SenderScreenName"  />
+    </property>
+
+    <property name="SenderProfileUrl">
+      <column name="SenderProfileUrl"  />
+    </property>
+    <property name="Type">
+      <column name="Type"  />
+    </property>
+
+    <property name="MessageId">
+      <column name="MessageId"  />
+    </property>
+
+  </class>
+</hibernate-mapping>

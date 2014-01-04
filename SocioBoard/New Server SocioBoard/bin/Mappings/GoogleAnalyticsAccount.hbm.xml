@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+
+  <class name="GoogleAnalyticsAccount" table="GoogleAnalyticsAccount" lazy="false">
+    <id name="Id" column="Id" >
+      <generator class="guid"/>
+    </id>
+    <property name="GaAccountId">
+      <column name="GaAccountId" />
+    </property>
+    <property name="GaProfileId">
+      <column name="GaProfileId" />
+    </property>
+    <property name="GaProfileName">
+      <column name="GaProfileName" />
+    </property>
+    <property name="EmailId">
+      <column name="EmailId"  />
+    </property>
+    <property name="AccessToken">
+      <column name="AccessToken"  />
+    </property>
+    <property name="RefreshToken">
+      <column name="RefreshToken"/>
+    </property>
+    <property name="NewVisits">
+      <column name="NewVisits"  />
+    </property>
+    <property name="AvgVisits">
+      <column name="AvgVisits"  />
+    </property>
+
+    <property name="UserId">
+      <column name="UserId"  />
+    </property>
+
+    <property name="IsActive">
+      <column name="IsActive"  />
+    </property>
+
+    <property name="Visits">
+      <column name="Visits"  />
+    </property>
+
+    <property name="GaAccountName">
+      <column name="GaAccountName"  />
+    </property>
+    <property name="EntryDate">
+      <column name="EntryDate" />
+    </property>
+
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,530 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="adminSite.master.cs" Inherits="SocialSuitePro.MasterPage.adminSite" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>SocioBoard Admin</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+  
+    </asp:ContentPlaceHolder>
+      
+	<!-- Meta -->
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+	
+	<!-- Bootstrap -->
+	<link href="../Contents/common/bootstrap/css/bootstrap.css" rel="stylesheet" />
+	<link href="../Contents/common/bootstrap/css/responsive.css" rel="stylesheet" />
+	
+	<!-- Glyphicons Font Icons -->
+	<link href="../Contents/common/theme/css/glyphicons.css" rel="stylesheet" />
+	
+	<!-- Uniform Pretty Checkboxes -->
+	<link href="../Contents/common/theme/scripts/plugins/forms/pixelmatrix-uniform/css/uniform.default.css" rel="stylesheet" />
+	
+	<!-- Bootstrap Extended -->
+	<link href="../Contents/common/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet">
+	<link href="../Contents/common/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap-responsive.min.css" rel="stylesheet">
+	<link href="../Contents/common/bootstrap/extend/bootstrap-wysihtml5/css/bootstrap-wysihtml5-0.0.2.css" rel="stylesheet">
+	<link href="../Contents/common/bootstrap/extend/bootstrap-select/bootstrap-select.css" rel="stylesheet" />
+	<link href="../Contents/common/bootstrap/extend/bootstrap-toggle-buttons/static/stylesheets/bootstrap-toggle-buttons.css" rel="stylesheet" />
+	
+	<!-- Select2 Plugin -->
+	<link href="../Contents/common/theme/scripts/plugins/forms/select2/select2.css" rel="stylesheet" />
+	
+	<!-- DateTimePicker Plugin -->
+	<link href="../Contents/common/theme/scripts/plugins/forms/bootstrap-datetimepicker/css/datetimepicker.css" rel="stylesheet" />
+	
+	<!-- JQueryUI -->
+	<link href="../Contents/common/theme/scripts/plugins/system/jquery-ui/css/smoothness/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" />
+	
+	<!-- MiniColors ColorPicker Plugin -->
+	<link href="../Contents/common/theme/scripts/plugins/color/jquery-miniColors/jquery.miniColors.css" rel="stylesheet" />
+	
+	<!-- Notyfy Notifications Plugin -->
+	<link href="../Contents/common/theme/scripts/plugins/notifications/notyfy/jquery.notyfy.css" rel="stylesheet" />
+	<link href="../Contents/common/theme/scripts/plugins/notifications/notyfy/themes/default.css" rel="stylesheet" />
+	
+	<!-- Gritter Notifications Plugin -->
+	<link href="../Contents/common/theme/scripts/plugins/notifications/Gritter/css/jquery.gritter.css" rel="stylesheet" />
+	
+	<!-- Easy-pie Plugin -->
+	<link href="../Contents/common/theme/scripts/plugins/charts/easy-pie/jquery.easy-pie-chart.css" rel="stylesheet" />
+
+	<!-- Google Code Prettify Plugin -->
+	<link href="../Contents/common/theme/scripts/plugins/other/google-code-prettify/prettify.css" rel="stylesheet" />
+
+	<!-- Main Theme Stylesheet :: CSS -->
+	<link href="../Contents/common/theme/css/style-light.css?1369753444" rel="stylesheet" />
+	
+	
+	<!-- LESS.js Library -->
+	<script src="../Contents/common/theme/scripts/plugins/system/less.min.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+    		<!-- Main Container Fluid -->
+	<div class="container-fluid fluid menu-right">
+		
+		<!-- Top navbar (note: add class "navbar-hidden" to close the navbar by default) -->
+		<div class="navbar main hidden-print">
+		
+			<!-- Wrapper -->
+			<div class="wrapper">
+			
+							
+								<!-- Menu Toggle Button -->
+				<button type="button" class="btn btn-navbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+				<!-- // Menu Toggle Button END -->
+								
+								<!-- Top Menu -->
+				<ul class="topnav pull-left tn1 hidden-phone">
+				
+										<!-- Themer -->
+					<%--<li><a href="#themer" data-toggle="collapse" class="glyphicons eyedropper single-icon"><i></i></a></li>--%>
+					<!-- // Themer END -->
+										
+										
+				
+					
+				</ul>
+				<!-- // Top Menu END -->
+								
+				<!-- Top Menu Right -->
+				<ul class="topnav pull-right">
+				
+					<!-- Language menu -->
+				<%--	<li class="hidden-phone dropdown dd-1 dd-flags" id="lang_nav">
+						<a href="#" data-toggle="dropdown"><img src="../Contents/common/theme/images/lang/en.png" alt="en" /></a>
+				    	<ul class="dropdown-menu pull-left">
+				      		<li class="active"><a href="?page=my_account&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light&amp;lang=en" title="English"><img src="../Contents/common/theme/images/lang/en.png" alt="English"> English</a></li>
+				      		<li><a href="?page=my_account&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light&amp;lang=ro" title="Romanian"><img src="../Contents/common/theme/images/lang/ro.png" alt="Romanian"> Romanian</a></li>
+				      		<li><a href="?page=my_account&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light&amp;lang=it" title="Italian"><img src="../Contents/common/theme/images/lang/it.png" alt="Italian"> Italian</a></li>
+				      		<li><a href="?page=my_account&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light&amp;lang=fr" title="French"><img src="../Contents/common/theme/images/lang/fr.png" alt="French"> French</a></li>
+				      		<li><a href="?page=my_account&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light&amp;lang=pl" title="Polish"><img src="../Contents/common/theme/images/lang/pl.png" alt="Polish"> Polish</a></li>
+				    	</ul>
+					</li>--%>
+					<!-- // Language menu END -->
+				
+					<!-- Dropdown -->
+				<%--	<li class="dropdown dd-1 visible-desktop">
+						<a href="" data-toggle="dropdown" class="glyphicons shield"><i></i>Get Help <span class="caret"></span></a>
+						<ul class="dropdown-menu pull-right">
+							
+							<li class="dropdown submenu">
+	                    		<a href="#" class="dropdown-toggle glyphicons bell" data-toggle="dropdown"><i></i>Level 2</a>
+								<ul class="dropdown-menu submenu-show submenu-hide pull-left">
+			                        <li class="dropdown submenu">
+			                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Level 2.1</a>
+										<ul class="dropdown-menu submenu-show submenu-hide pull-left">
+											<li><a href="#">Level 2.1.1</a></li>
+	                                    	<li><a href="#">Level 2.1.2</a></li>
+	                                    	<li><a href="#">Level 2.1.3</a></li>
+	                                    	<li><a href="#">Level 2.1.4</a></li>
+			                            </ul>
+			                        </li>
+			                        <li class="dropdown submenu">
+			                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Level 2.2</a>
+			                            <ul class="dropdown-menu submenu-show submenu-hide pull-left">
+											<li><a href="#">Level 2.2.1</a></li>
+			                                <li><a href="#">Level 2.2.2</a></li>
+			                            </ul>
+			                        </li>
+			                    </ul>
+			                </li>
+			                
+			                <li><a href="" class="glyphicons settings"><i></i>Some option</a></li>
+							<li><a href="" class="glyphicons bell"><i></i>Some other option</a></li>
+							<li><a href="" class="glyphicons bell"><i></i>Other option</a></li>
+			                
+						</ul>
+					</li>--%>
+					<!-- // Dropdown END -->
+					
+					<!-- Profile / Logout menu -->
+					<li class="account dropdown dd-1">
+												<a data-toggle="dropdown" href="#" class="glyphicons logout lock"><span class="hidden-phone">SocioBoard</span><i></i></a>
+						<ul class="dropdown-menu pull-right">
+							<li><a href="<%=Page.ResolveUrl("~/Admin/AdminSettings.aspx")%>" class="glyphicons cogwheel">Settings<i></i></a></li>
+							<%--<li><a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light" class="glyphicons camera">My Photos<i></i></a></li>--%>
+							<li class="profile">
+								<span>
+									<span class="heading">Profile <%--<a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light" class="pull-right">edit</a>--%></span>
+									<span class="img"></span>
+									<span class="details">
+										<%--<a href="my_account.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light">Mosaic Pro</a>--%>
+										<%--contact@mosaicpro.biz--%>
+									</span>
+									<span class="clearfix"></span>
+								</span>
+							</li>
+							<li>
+								<span>
+									<a class="btn btn-default btn-mini pull-right" href="<%=Page.ResolveUrl("~/Admin/Default.aspx")%>">Sign Out</a>
+								</span>
+							</li>
+						</ul>
+											</li>
+					<!-- // Profile / Logout menu END -->
+					
+				</ul>
+				<!-- // Top Menu Right END -->
+				
+								
+				<div class="clearfix"></div>
+			</div>
+			<!-- // Wrapper END -->
+			
+			<span class="toggle-navbar"></span>
+		</div>
+		<!-- Top navbar END -->
+		
+				<!-- Sidebar menu & content wrapper -->
+		<div id="wrapper">
+		
+		<!-- Sidebar Menu -->
+		<div id="menu" class="hidden-phone hidden-print">
+		
+			<!-- Brand -->
+			<a href="#" class="appbrand">SocioBoard <span>Admin Panel</span></a>
+		
+			<!-- Scrollable menu wrapper with Maximum height -->
+			<div class="slim-scroll" data-scroll-height="800px">
+			
+			<!-- Sidebar Profile -->
+			<span class="profile">
+				<p>Welcome <a href="#">Admin</a></p>
+				<a class="img" href="#"><img src="../Contents/common/theme/images/avatar-style-light.jpg" alt="Avatar" /></a>
+				<span>
+					<ul>
+						<%--<li><a href="" class="glyphicons lock"><i></i>Account</a></li>
+						<li><a href="" class="glyphicons keys"><i></i>Password</a></li>--%>
+						<li><a href="../Admin/Default.aspx" class="glyphicons eject"><i></i>Logout</a></li>
+					</ul>
+				</span>
+			</span>
+			<!-- // Sidebar Profile END -->
+			
+			<!-- Regular Size Menu -->
+			<ul class="menu-0">
+			
+								
+								<!-- Menu Regular Item -->
+			<%--	<li class="glyphicons display"><a href="index.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light"><i></i><span>Dashboard</span></a></li>
+				
+				<!-- Components Submenu Level 1 -->
+				<li class="hasSubmenu glyphicons cogwheels">
+					<a data-toggle="collapse" href="#menu_components"><i></i><span>Components</span></a>
+					<ul class="collapse" id="menu_components">
+						
+						<!-- Components Submenu Level 2 -->
+						<li class="hasSubmenu">
+							<a data-toggle="collapse" href="#menu_forms"><span>Forms</span></a>
+							<ul class="collapse" id="menu_forms">
+								<li class=""><a href="form_wizards.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light"><span>Form Wizards</span></a></li>
+								<li class=""><a href="form_elements.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light"><span>Form Elements</span></a></li>
+								<li class=""><a href="form_validator.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light"><span>Form Validator</span></a></li>
+								<li class=""><a href="file_managers.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light"><span>File Managers</span></a></li>
+							</ul>
+							<span class="count">4</span>
+						</li>
+						<!-- // Components Submenu Level 2 END -->
+						
+						<!-- Components Submenu Regular Items -->
+						<li class=""><a href="ui.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light"><span>UI Elements</span></a></li>
+						<li class=""><a href="icons.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light"><span>Icons</span></a></li>
+						<li class=""><a href="widgets.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light"><span>Widgets</span></a></li>
+						<li class=""><a href="tabs.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light"><span>Tabs</span></a></li>
+						<li class=""><a href="sliders.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light"><span>Sliders</span></a></li>
+						<li class=""><a href="charts.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light"><span>Charts</span></a></li>
+						<!-- // Components Submenu Regular Items END -->
+						
+						<!-- Components Submenu Level 2 -->
+						<li class="hasSubmenu">
+							<a data-toggle="collapse" href="#menu_tables"><span>Tables</span></a>
+							<ul class="collapse" id="menu_tables">
+								<li class=""><a href="tables.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light"><span>Tables</span></a></li>
+								<li class=""><a href="pricing_tables.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light"><span>Pricing tables</span></a></li>
+							</ul>
+							<span class="count">2</span>
+						</li>
+						<!-- // Components Submenu Level 2 -->
+						
+						<!-- Components Submenu Regular Items -->
+						<li class=""><a href="grid.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light"><span>Grid system</span></a></li>
+						<li class=""><a href="notifications.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light"><span>Notifications</span></a></li>
+						<li class=""><a href="modals.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light"><span>Modals</span></a></li>
+						<li class=""><a href="thumbnails.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light"><span>Thumbnails</span></a></li>
+						<li class=""><a href="carousels.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light"><span>Carousels</span></a></li>
+						<li class=""><a href="tour.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light"><span>Page Tour</span></a></li>
+						<!-- // Components Submenu Regular Items END -->
+						
+					</ul>
+					<span class="count">18</span>
+				</li>
+				<!-- Components Submenu Level 1 END -->--%>
+				
+				<!-- Exmaples Submenu Level 1 -->
+				<li class="hasSubmenu active">
+				
+					<a data-toggle="collapse" class="glyphicons luggage" href="#menu_examples"><i></i><span>Menu</span></a>
+					<ul class="collapse in" id="menu_examples">
+					
+						<!-- Account Submenu Level 2 -->
+						<li class="hasSubmenu active">
+							<a data-toggle="collapse" href="#menu_account"><i></i><span>User</span></a>
+							<ul class="collapse in" id="menu_account">
+								<li class=""><a href="../Admin/UserDetails.aspx"><span>Manage User</span></a></li>
+								<li class="active"><a href="../Admin/ProfileDetails.aspx"><span>Manage Profiles</span></a></li>
+                                <li class=" "><a href="../Admin/OnlineUsers.aspx"><span>Online Users</span></a></li>
+							</ul>
+							
+						</li>
+                      
+                        <li class="hasSubmenu active">
+							<a data-toggle="collapse" href="#menu_package"><i></i><span>Package</span></a>
+							<ul class="collapse in" id="menu_package">
+								<li class=""><a href="../Admin/ManagePackage.aspx"><span>Manage Package</span></a></li>
+								<%--<li class=" active"><a href="../Admin/AddPackage.aspx"><span>Add Package</span></a></li>--%>
+							</ul>
+						
+						</li>
+
+                         <li class="hasSubmenu active">
+							<a data-toggle="collapse" href="#menu_package"><i></i><span>News</span></a>
+							<ul class="collapse in" id="Ul1">
+								<li class=""><a href="../Admin/ManageNews.aspx"><span>Manage News</span></a></li>
+								<li class=" active"><a href="../Admin/AddNews.aspx"><span>Add News</span></a></li>
+							</ul>
+						
+						</li>
+                        <li class="hasSubmenu active">
+							<a data-toggle="collapse" href="#menu_account"><i></i><span>News Letter</span></a>
+							<ul class="collapse in" id="Ul2">
+								<li class=""><a href="../Admin/ManageNewsLetter.aspx"><span>Manage News Letter</span></a></li>
+								<li class=" active"><a href="../Admin/AddNewsLetter.aspx"><span>Add News Letter</span></a></li>
+							</ul>
+							
+						</li>
+                         <li class="hasSubmenu active">
+							<a data-toggle="collapse" href="#menu_account"><i></i><span>Advertisment</span></a>
+							<ul class="collapse in" id="Ul3">
+								<li class=""><a href="../Admin/ManageAdvertisment.aspx"><span>Manage Advertisment</span></a></li>
+								<li class=" active"><a href="../Admin/AddAdvertisement.aspx"><span>Add Advertisment</span></a></li>
+							</ul>
+							
+						</li>
+						<!-- // Account Submenu Level 2 END -->
+						
+						<!-- Landings Submenu Level 2 -->
+					<%--	<li class="hasSubmenu">
+							<a data-toggle="collapse" href="#menu_landings"><i></i><span>Landing pages</span></a>
+							<ul class="collapse" id="menu_landings">
+								<li><a href="landing_page_1.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light"><i></i><span>Landing #1</span></a></li>
+								<li><a href="landing_page_2.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light"><i></i><span>Landing #2</span></a></li>
+							</ul>
+							<span class="count">2</span>
+						</li>--%>
+						<!-- // Landings Submenu Level 2 END -->
+					
+						<!-- Examples Submenu Level 2 -->
+					<%--	<li class="hasSubmenu">
+							<a data-toggle="collapse" href="#menu_gallery"><i></i><span>Photo Gallery</span></a>
+							<ul class="collapse" id="menu_gallery">
+								<li class=""><a href="gallery_1.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light"><span>Regular</span></a></li>
+								<li class=""><a href="gallery_2.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-right&amp;style=style-light"><span>Masonry</span></a></li>
+							</ul>
+							<span class="count">2</span>
+						</li>--%>
+						<!-- // Examples Submenu Level 2 END -->
+						
+						
+					</ul>
+					
+				</li>
+				<!-- // Examples Submenu Level 1 END -->
+								
+			</ul>
+			<div class="clearfix"></div>
+			<!-- // Regular Size Menu END -->
+			
+		<%--	<ul class="menu-1">
+				<li class="hasSubmenu active">
+					<a class="glyphicons wifi_alt" href="#menu-recent-stats" data-toggle="collapse"><i></i><span>Recent stats</span></a>
+					<ul class="collapse in" id="menu-recent-stats">
+						<li><a class="glyphicons envelope" href="#"><i></i><span>5 New Emails</span></a></li>
+						<li><a class="glyphicons chat" href="#"><i></i><span>New Message on 19 Jan</span></a></li>
+						<li><a class="glyphicons user_add" href="#"><i></i><span>10 Users Subscribed</span></a></li>
+						<li><a class="glyphicons cart_in" href="#"><i></i><span>2 Orders worth of &dollar;239</span></a></li>
+						<li><a class="glyphicons single circle_plus" href="#"><i></i><span>View all</span></a></li>
+					</ul>
+				</li>
+			</ul>--%>
+			<div class="clearfix"></div>
+			<div class="separator bottom"></div>
+			
+						<!-- Sidebar Stats Widgets -->
+		<%--	<div class="widget-sidebar-stats">
+				<strong>3,540</strong>
+				<span>Messages</span>
+				<span class="pull-right sparkline"></span>
+				<div class="clearfix"></div>
+			</div>
+			<div class="widget-sidebar-stats">
+				<strong>2,510,402</strong>
+				<span>Photos</span>
+				<span class="pull-right sparkline"></span>
+				<div class="clearfix"></div>
+			</div>--%>
+			<div class="separator bottom"></div>
+			<!-- // Sidebar Stats Widgets END -->
+			
+			<!-- Stats Widget -->
+		<%--	<a href="" class="widget-stats widget-stats-2 widget-stats-easy-pie widget-sidebar-stats txt-single">
+				<div data-percent="90" class="easy-pie primary"><span class="value">90</span>%</div>
+				<span class="txt">Completed tasks</span>
+				<div class="clearfix"></div>
+			</a>--%>
+			<!-- // Stats Widget END -->
+			
+		<%--	<div class="widget-sidebar-stats">
+				<h5>Generic widget</h5>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+			</div>--%>
+						
+						
+						
+			</div>
+			<!-- // Scrollable Menu wrapper with Maximum Height END -->
+			
+		</div>
+		<!-- // Sidebar Menu END -->
+				
+		<!-- Content -->
+	 
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    
+		<!-- // Content END -->
+		
+				</div>
+		<div class="clearfix"></div>
+		<!-- // Sidebar menu & content wrapper END -->
+				
+		<div id="footer" class="hidden-print">
+			
+			<!--  Copyright Line -->
+			<div class="copy">&copy; 2012 - 2013 - <a href="http://ssp.socioboard.com">SocioBoard</a> - All Rights Reserved.</div>
+			<!--  End Copyright Line -->
+	
+		</div>
+		<!-- // Footer END -->
+		
+	</div>
+	<!-- // Main Container Fluid END -->
+	
+
+<!-- Themer -->
+
+<!-- // Themer END -->
+
+	<!-- JQuery -->
+	<script src="../Contents/common/theme/scripts/plugins/system/jquery.min.js"></script>
+	
+	<!-- JQueryUI -->
+	<script src="../Contents/common/theme/scripts/plugins/system/jquery-ui/js/jquery-ui-1.9.2.custom.min.js"></script>
+	
+	<!-- JQueryUI Touch Punch -->
+	<!-- small hack that enables the use of touch events on sites using the jQuery UI user interface library -->
+	<script src="../Contents/common/theme/scripts/plugins/system/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+	
+	
+	<!-- Modernizr -->
+	<script src="../Contents/common/theme/scripts/plugins/system/modernizr.js"></script>
+	
+	<!-- Bootstrap -->
+	<script src="../Contents/common/bootstrap/js/bootstrap.min.js"></script>
+	
+	<!-- SlimScroll Plugin -->
+	<script src="../Contents/common/theme/scripts/plugins/other/jquery-slimScroll/jquery.slimscroll.min.js"></script>
+	
+	<!-- Common Demo Script -->
+	<script src="../Contents/common/theme/scripts/demo/common.js?1369753444"></script>
+	
+	<!-- Holder Plugin -->
+	<script src="../Contents/common/theme/scripts/plugins/other/holder/holder.js"></script>
+	
+	<!-- Uniform Forms Plugin -->
+	<script src="../Contents/common/theme/scripts/plugins/forms/pixelmatrix-uniform/jquery.uniform.min.js"></script>
+
+	<!-- Global -->
+	<script>
+	    var basePath = '../Contents/common/';
+	</script>
+	
+	<!-- Bootstrap Extended -->
+	<script src="../Contents/common/bootstrap/extend/bootstrap-select/bootstrap-select.js"></script>
+	<script src="../Contents/common/bootstrap/extend/bootstrap-toggle-buttons/static/js/jquery.toggle.buttons.js"></script>
+	<script src="../Contents/common/bootstrap/extend/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js"></script>
+	<script src="../Contents/common/bootstrap/extend/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
+	<script src="../Contents/common/bootstrap/extend/jasny-bootstrap/js/bootstrap-fileupload.js"></script>
+	<script src="../Contents/common/bootstrap/extend/bootbox.js"></script>
+	<script src="../Contents/common/bootstrap/extend/bootstrap-wysihtml5/js/wysihtml5-0.3.0_rc2.min.js"></script>
+	<script src="../Contents/common/bootstrap/extend/bootstrap-wysihtml5/js/bootstrap-wysihtml5-0.0.2.js"></script>
+	
+	<!-- Google Code Prettify -->
+	<script src="../Contents/common/theme/scripts/plugins/other/google-code-prettify/prettify.js"></script>
+	
+	<!-- Gritter Notifications Plugin -->
+	<script src="../Contents/common/theme/scripts/plugins/notifications/Gritter/js/jquery.gritter.min.js"></script>
+	
+	<!-- Notyfy Notifications Plugin -->
+	<script src="../Contents/common/theme/scripts/plugins/notifications/notyfy/jquery.notyfy.js"></script>
+	
+	<!-- MiniColors Plugin -->
+	<script src="../Contents/common/theme/scripts/plugins/color/jquery-miniColors/jquery.miniColors.js"></script>
+	
+	<!-- DateTimePicker Plugin -->
+	<script src="../Contents/common/theme/scripts/plugins/forms/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+
+	<!-- Cookie Plugin -->
+	<script src="../Contents/common/theme/scripts/plugins/system/jquery.cookie.js"></script>
+	
+	<!-- Colors -->
+	<script>
+	    var primaryColor = '#8ec657',
+		dangerColor = '#b55151',
+		successColor = '#609450',
+		warningColor = '#ab7a4b',
+		inverseColor = '#45484d';
+	</script>
+	
+	<!-- Themer -->
+	<script>
+	    var themerPrimaryColor = primaryColor;
+	</script>
+	<script src="../Contents/common/theme/scripts/demo/themer.js"></script>
+	
+	<!-- Twitter Feed -->
+	<script src="../Contents/common/theme/scripts/demo/twitter.js"></script>
+	
+	<!-- Easy-pie Plugin -->
+	<script src="../Contents/common/theme/scripts/plugins/charts/easy-pie/jquery.easy-pie-chart.js"></script>
+	
+	<!-- Sparkline Charts Plugin -->
+	<script src="../Contents/common/theme/scripts/plugins/charts/sparkline/jquery.sparkline.min.js"></script>
+	
+	<!-- Ba-Resize Plugin -->
+	<script src="../Contents/common/theme/scripts/plugins/other/jquery.ba-resize.js"></script>
+   
+    </form>
+</body>
+</html>

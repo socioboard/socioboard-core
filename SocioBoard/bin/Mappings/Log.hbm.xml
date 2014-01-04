@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+
+  <class name="Log" table="Log" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="CreatedDate">
+      <column name="CreatedDate" />
+    </property>
+    <property name="Exception">
+      <column name="Exception" />
+    </property>
+    <property name="ModuleName">
+      <column name="ModuleName"  />
+    </property>
+    <property name="ProfileId">
+      <column name="ProfileId"  />
+    </property>
+    <property name="Status">
+      <column name="Status"  />
+    </property>
+   
+
+  </class>
+</hibernate-mapping>

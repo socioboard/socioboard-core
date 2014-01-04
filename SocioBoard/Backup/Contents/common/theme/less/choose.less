@@ -1,0 +1,42 @@
+// Choose Preview
+// -------------------------
+
+#choose-preview {
+    padding: 50px 0;
+    h2 {
+    	span.text-primary { font-size: 26pt; font-weight: bold; top: auto; }
+    	margin-left: 0;
+    }
+    .heading-buttons { margin-bottom: 10px; }
+   	.box {
+   		padding: 10px;
+   		.options { display: none; }
+   		.actions a { 
+   			display: none;
+   			&.btn-active { display: inline-block; }
+   		}
+   		h3 { text-transform: uppercase; margin: 0 0 12px; }
+   		&.active {
+   			background: #f2f2f2;
+   			border: 1px solid #e5e5e5;
+   			.options { display: block; }
+   			h3 { color: #c3c3c3; text-shadow: 0 1px 0 #fff; }
+   		} 
+   	}
+   	&.style-dark {
+   		.well {
+   			background: @widgetBg;
+   		}
+   		.box {
+   			&.active {
+   				background: @contentBg1;
+   				border-color: @contentBorder2;
+   				h3 {
+   					text-shadow: none;
+   					color: #fff;
+   				}
+   				hr { border-top-color: @contentBorder2; }
+   			}
+   		}
+   	}
+}
