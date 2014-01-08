@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using SocioBoard.Model;
 using System.Collections;
 using SocioBoard.Domain;
-using SocialSuitePro.Helper;
+using SocioBoard.Helper;
 using Facebook;
 using System.Globalization;
 

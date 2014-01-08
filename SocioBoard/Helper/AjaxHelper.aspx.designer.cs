@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WooSuite.Helper {
+namespace SocioBoard.Helper {
     
     
     public partial class AjaxHelper {

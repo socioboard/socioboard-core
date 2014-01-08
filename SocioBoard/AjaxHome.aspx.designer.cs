@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SocioBoard {
+namespace SocialSuitePro {
     
     
     public partial class AjaxHome {

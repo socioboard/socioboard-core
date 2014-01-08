@@ -1474,3 +1474,686 @@ ERROR2013-12-30 04:37:31 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 
 ERROR2013-12-30 04:43:21 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – Could not load file or assembly 'OAuth, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
 ERROR2013-12-30 04:55:25 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – Could not load file or assembly 'OAuth, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
 ERROR2013-12-30 05:07:18 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – Could not load file or assembly 'OAuth, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
+ERROR2014-01-07 04:00:54 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 63  –    at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at MySql.Data.MySqlClient.MySqlTransaction.Rollback()
+   at MySql.Data.MySqlClient.MySqlTransaction.Dispose(Boolean disposing)
+   at System.Data.Common.DbTransaction.Dispose()
+   at NHibernate.Transaction.AdoTransaction.Dispose(Boolean isDisposing)
+   at NHibernate.Transaction.AdoTransaction.Dispose()
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Model\UserRepository.cs:line 141
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-07 04:49:08 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 63  –    at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at MySql.Data.MySqlClient.MySqlTransaction.Rollback()
+   at MySql.Data.MySqlClient.MySqlTransaction.Dispose(Boolean disposing)
+   at System.Data.Common.DbTransaction.Dispose()
+   at NHibernate.Transaction.AdoTransaction.Dispose(Boolean isDisposing)
+   at NHibernate.Transaction.AdoTransaction.Dispose()
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Model\UserRepository.cs:line 141
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-07 05:08:35 Class:? Method:lambda_method Line #: 0  – Could not add assembly SocioBoard
+NHibernate.MappingException: Could not add assembly SocioBoard ---> System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Cfg.Configuration.AddAssembly(String assemblyName)
+   --- End of inner exception stack trace ---
+ERROR2014-01-07 05:08:35 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 63  –    at SocioBoard.Helper.SessionFactory.GetNewSession() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Helper\SessionFactory.cs:line 73
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Model\UserRepository.cs:line 125
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-07 05:08:42 Class:? Method:lambda_method Line #: 0  – Could not add assembly SocioBoard
+NHibernate.MappingException: Could not add assembly SocioBoard ---> System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Cfg.Configuration.AddAssembly(String assemblyName)
+   --- End of inner exception stack trace ---
+ERROR2014-01-07 05:09:02 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 63  –    at SocioBoard.Helper.SessionFactory.GetNewSession() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Helper\SessionFactory.cs:line 73
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Model\UserRepository.cs:line 125
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-07 05:09:12 Class:? Method:lambda_method Line #: 0  – Could not add assembly SocioBoard
+NHibernate.MappingException: Could not add assembly SocioBoard ---> System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Cfg.Configuration.AddAssembly(String assemblyName)
+   --- End of inner exception stack trace ---
+ERROR2014-01-07 05:09:30 Class:? Method:lambda_method Line #: 0  – Could not add assembly SocioBoard
+NHibernate.MappingException: Could not add assembly SocioBoard ---> System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Cfg.Configuration.AddAssembly(String assemblyName)
+   --- End of inner exception stack trace ---
+ERROR2014-01-07 05:09:36 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 63  –    at SocioBoard.Helper.SessionFactory.GetNewSession() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Helper\SessionFactory.cs:line 73
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Model\UserRepository.cs:line 125
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-07 05:11:48 Class:? Method:lambda_method Line #: 0  – Could not add assembly SocioBoard
+NHibernate.MappingException: Could not add assembly SocioBoard ---> System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Cfg.Configuration.AddAssembly(String assemblyName)
+   --- End of inner exception stack trace ---
+ERROR2014-01-07 05:11:53 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 63  –    at SocioBoard.Helper.SessionFactory.GetNewSession() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Helper\SessionFactory.cs:line 73
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Model\UserRepository.cs:line 125
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-07 05:20:41 Class:? Method:lambda_method Line #: 0  – Could not add assembly SocioBoard
+NHibernate.MappingException: Could not add assembly SocioBoard ---> System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Cfg.Configuration.AddAssembly(String assemblyName)
+   --- End of inner exception stack trace ---
+ERROR2014-01-07 05:20:55 Class:? Method:lambda_method Line #: 0  – Could not add assembly SocioBoard
+NHibernate.MappingException: Could not add assembly SocioBoard ---> System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Cfg.Configuration.AddAssembly(String assemblyName)
+   --- End of inner exception stack trace ---
+ERROR2014-01-07 05:21:44 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 63  –    at SocioBoard.Helper.SessionFactory.GetNewSession() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Helper\SessionFactory.cs:line 73
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Model\UserRepository.cs:line 125
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-07 05:26:36 Class:? Method:lambda_method Line #: 0  – Could not load type SocioBoard.Domain.User, SocioBoard.
+System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+File name: 'SocioBoard'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Util.ReflectHelper.TypeFromAssembly(AssemblyQualifiedTypeName name, Boolean throwOnError)
+
+=== Pre-bind state information ===
+LOG: User = GLB-016\user
+LOG: DisplayName = SocioBoard
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: SocioBoard | Domain ID: 9
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///C:/Users/user/Desktop/SocioBoard/trunk/SocioBoard Product/
+LOG: Initial PrivatePath = C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\bin
+Calling assembly : NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\web.config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+ERROR2014-01-07 05:26:36 Class:? Method:lambda_method Line #: 0  – Could not compile the mapping document: SocioBoard.Mappings.User.hbm.xml
+NHibernate.MappingException: Could not compile the mapping document: SocioBoard.Mappings.User.hbm.xml ---> NHibernate.MappingException: persistent class SocioBoard.Domain.User, SocioBoard not found ---> System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Util.ReflectHelper.TypeFromAssembly(AssemblyQualifiedTypeName name, Boolean throwOnError)
+   at NHibernate.Util.ReflectHelper.ClassForName(String name)
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForFullNameChecked(String fullName, String errorMessage)
+   --- End of inner exception stack trace ---
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForFullNameChecked(String fullName, String errorMessage)
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForNameChecked(String name, Mappings mappings, String errorMessage)
+   at NHibernate.Cfg.XmlHbmBinding.ClassBinder.BindClass(IEntityMapping classMapping, PersistentClass model, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.RootClassBinder.Bind(HbmClass classSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddRootClasses(HbmClass rootClass, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddEntitiesMappings(HbmMapping mappingSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.Bind(HbmMapping mappingSchema)
+   at NHibernate.Cfg.Configuration.AddDeserializedMapping(HbmMapping mappingDocument, String documentFileName)
+   --- End of inner exception stack trace ---
+ERROR2014-01-07 05:26:47 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 63  –    at SocioBoard.Helper.SessionFactory.GetNewSession() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Helper\SessionFactory.cs:line 73
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Model\UserRepository.cs:line 125
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-07 05:30:04 Class:SocialSuitePro.Home Method:Page_Load Line #: 79  –    at NHibernate.Hql.Ast.ANTLR.SessionFactoryHelperExtensions.RequireClassPersister(String name)
+   at NHibernate.Hql.Ast.ANTLR.Tree.FromElementFactory.AddFromElement()
+   at NHibernate.Hql.Ast.ANTLR.Tree.FromClause.AddFromElement(String path, IASTNode alias)
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.CreateFromElement(String path, IASTNode pathNode, IASTNode alias, IASTNode propertyFetch)
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.fromElement()
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.fromElementList()
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.fromClause()
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.unionedQuery()
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.query()
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.selectStatement()
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.statement()
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlTranslator.Translate()
+   at NHibernate.Hql.Ast.ANTLR.QueryTranslatorImpl.Analyze(String collectionRole)
+   at NHibernate.Hql.Ast.ANTLR.QueryTranslatorImpl.DoCompile(IDictionary`2 replacements, Boolean shallow, String collectionRole)
+   at NHibernate.Hql.Ast.ANTLR.QueryTranslatorImpl.Compile(IDictionary`2 replacements, Boolean shallow)
+   at NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory.CreateQueryTranslators(IASTNode ast, String queryIdentifier, String collectionRole, Boolean shallow, IDictionary`2 filters, ISessionFactoryImplementor factory)
+   at NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory.CreateQueryTranslators(String queryString, String collectionRole, Boolean shallow, IDictionary`2 filters, ISessionFactoryImplementor factory)
+   at NHibernate.Engine.Query.HQLStringQueryPlan.CreateTranslators(String hql, String collectionRole, Boolean shallow, IDictionary`2 enabledFilters, ISessionFactoryImplementor factory)
+   at NHibernate.Engine.Query.HQLStringQueryPlan..ctor(String hql, String collectionRole, Boolean shallow, IDictionary`2 enabledFilters, ISessionFactoryImplementor factory)
+   at NHibernate.Engine.Query.HQLStringQueryPlan..ctor(String hql, Boolean shallow, IDictionary`2 enabledFilters, ISessionFactoryImplementor factory)
+   at NHibernate.Engine.Query.QueryPlanCache.GetHQLQueryPlan(String queryString, Boolean shallow, IDictionary`2 enabledFilters)
+   at NHibernate.Impl.AbstractSessionImpl.GetHQLQueryPlan(String query, Boolean shallow)
+   at NHibernate.Impl.AbstractSessionImpl.CreateQuery(String queryString)
+   at SocioBoard.Model.SocialProfilesRepository.getAllSocialProfilesOfUser(Guid userid) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Model\SocialProfilesRepository.cs:line 19
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Home.aspx.cs:line 72
+ERROR2014-01-07 05:30:10 Class:SocialSuitePro.Home Method:Page_Load Line #: 149  –    at NHibernate.Hql.Ast.ANTLR.SessionFactoryHelperExtensions.RequireClassPersister(String name)
+   at NHibernate.Hql.Ast.ANTLR.Tree.FromElementFactory.AddFromElement()
+   at NHibernate.Hql.Ast.ANTLR.Tree.FromClause.AddFromElement(String path, IASTNode alias)
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.CreateFromElement(String path, IASTNode pathNode, IASTNode alias, IASTNode propertyFetch)
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.fromElement()
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.fromElementList()
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.fromClause()
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.unionedQuery()
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.query()
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.selectStatement()
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.statement()
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlTranslator.Translate()
+   at NHibernate.Hql.Ast.ANTLR.QueryTranslatorImpl.Analyze(String collectionRole)
+   at NHibernate.Hql.Ast.ANTLR.QueryTranslatorImpl.DoCompile(IDictionary`2 replacements, Boolean shallow, String collectionRole)
+   at NHibernate.Hql.Ast.ANTLR.QueryTranslatorImpl.Compile(IDictionary`2 replacements, Boolean shallow)
+   at NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory.CreateQueryTranslators(IASTNode ast, String queryIdentifier, String collectionRole, Boolean shallow, IDictionary`2 filters, ISessionFactoryImplementor factory)
+   at NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory.CreateQueryTranslators(String queryString, String collectionRole, Boolean shallow, IDictionary`2 filters, ISessionFactoryImplementor factory)
+   at NHibernate.Engine.Query.HQLStringQueryPlan.CreateTranslators(String hql, String collectionRole, Boolean shallow, IDictionary`2 enabledFilters, ISessionFactoryImplementor factory)
+   at NHibernate.Engine.Query.HQLStringQueryPlan..ctor(String hql, String collectionRole, Boolean shallow, IDictionary`2 enabledFilters, ISessionFactoryImplementor factory)
+   at NHibernate.Engine.Query.HQLStringQueryPlan..ctor(String hql, Boolean shallow, IDictionary`2 enabledFilters, ISessionFactoryImplementor factory)
+   at NHibernate.Engine.Query.QueryPlanCache.GetHQLQueryPlan(String queryString, Boolean shallow, IDictionary`2 enabledFilters)
+   at NHibernate.Impl.AbstractSessionImpl.GetHQLQueryPlan(String query, Boolean shallow)
+   at NHibernate.Impl.AbstractSessionImpl.CreateQuery(String queryString)
+   at SocioBoard.Model.GroupRepository.getAllGroups(Guid Userid) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Model\GroupRepository.cs:line 105
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Home.aspx.cs:line 137
+ERROR2014-01-07 05:30:15 Class:SocialSuitePro.Home Method:Page_Load Line #: 275  –    at NHibernate.Hql.Ast.ANTLR.SessionFactoryHelperExtensions.RequireClassPersister(String name)
+   at NHibernate.Hql.Ast.ANTLR.Tree.FromElementFactory.AddFromElement()
+   at NHibernate.Hql.Ast.ANTLR.Tree.FromClause.AddFromElement(String path, IASTNode alias)
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.CreateFromElement(String path, IASTNode pathNode, IASTNode alias, IASTNode propertyFetch)
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.fromElement()
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.fromElementList()
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.fromClause()
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.unionedQuery()
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.query()
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.selectStatement()
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlWalker.statement()
+   at NHibernate.Hql.Ast.ANTLR.HqlSqlTranslator.Translate()
+   at NHibernate.Hql.Ast.ANTLR.QueryTranslatorImpl.Analyze(String collectionRole)
+   at NHibernate.Hql.Ast.ANTLR.QueryTranslatorImpl.DoCompile(IDictionary`2 replacements, Boolean shallow, String collectionRole)
+   at NHibernate.Hql.Ast.ANTLR.QueryTranslatorImpl.Compile(IDictionary`2 replacements, Boolean shallow)
+   at NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory.CreateQueryTranslators(IASTNode ast, String queryIdentifier, String collectionRole, Boolean shallow, IDictionary`2 filters, ISessionFactoryImplementor factory)
+   at NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory.CreateQueryTranslators(String queryString, String collectionRole, Boolean shallow, IDictionary`2 filters, ISessionFactoryImplementor factory)
+   at NHibernate.Engine.Query.HQLStringQueryPlan.CreateTranslators(String hql, String collectionRole, Boolean shallow, IDictionary`2 enabledFilters, ISessionFactoryImplementor factory)
+   at NHibernate.Engine.Query.HQLStringQueryPlan..ctor(String hql, String collectionRole, Boolean shallow, IDictionary`2 enabledFilters, ISessionFactoryImplementor factory)
+   at NHibernate.Engine.Query.HQLStringQueryPlan..ctor(String hql, Boolean shallow, IDictionary`2 enabledFilters, ISessionFactoryImplementor factory)
+   at NHibernate.Engine.Query.QueryPlanCache.GetHQLQueryPlan(String queryString, Boolean shallow, IDictionary`2 enabledFilters)
+   at NHibernate.Impl.AbstractSessionImpl.GetHQLQueryPlan(String query, Boolean shallow)
+   at NHibernate.Impl.AbstractSessionImpl.CreateQuery(String queryString)
+   at SocioBoard.Model.SocialProfilesRepository.getAllSocialProfilesTypeOfUser(Guid userid, String profiletype) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Model\SocialProfilesRepository.cs:line 42
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Home.aspx.cs:line 259
+ERROR2014-01-07 05:30:31 Class:SocialSuitePro.MasterPage.Site Method:Page_Load Line #: 55  – Tasks is not mapped [from Tasks where UserId = :userid and TaskStatus = 0]
+ERROR2014-01-07 05:30:33 Class:SocialSuitePro.MasterPage.Site Method:Page_Load Line #: 139  – Groups is not mapped [from Groups where UserId = :userid]
+ERROR2014-01-07 05:30:38 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 723  – SocialProfile is not mapped [from SocialProfile where UserId = :userid]
+ERROR2014-01-07 05:30:40 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – TwitterAccount is not mapped [from TwitterAccount where UserId = :userid]
+ERROR2014-01-07 05:30:42 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – SocialProfile is not mapped [from SocialProfile where UserId = :userid]
+ERROR2014-01-07 05:30:45 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 723  – SocialProfile is not mapped [from SocialProfile where UserId = :userid]
+ERROR2014-01-07 05:58:02 Class:? Method:lambda_method Line #: 0  – Could not load type SocioBoard.Domain.InstagramFeed, SocioBoard.
+System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+File name: 'SocioBoard'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Util.ReflectHelper.TypeFromAssembly(AssemblyQualifiedTypeName name, Boolean throwOnError)
+
+=== Pre-bind state information ===
+LOG: User = GLB-016\user
+LOG: DisplayName = SocioBoard
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: SocioBoard | Domain ID: 11
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///C:/Users/user/Desktop/SocioBoard/trunk/SocioBoard Product/
+LOG: Initial PrivatePath = C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\bin
+Calling assembly : NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\web.config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+ERROR2014-01-07 05:58:02 Class:? Method:lambda_method Line #: 0  – Could not compile the mapping document: SocioBoard.Mappings.InstagramFeed.hbm.xml
+NHibernate.MappingException: Could not compile the mapping document: SocioBoard.Mappings.InstagramFeed.hbm.xml ---> NHibernate.MappingException: persistent class SocioBoard.Domain.InstagramFeed, SocioBoard not found ---> System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Util.ReflectHelper.TypeFromAssembly(AssemblyQualifiedTypeName name, Boolean throwOnError)
+   at NHibernate.Util.ReflectHelper.ClassForName(String name)
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForFullNameChecked(String fullName, String errorMessage)
+   --- End of inner exception stack trace ---
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForFullNameChecked(String fullName, String errorMessage)
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForNameChecked(String name, Mappings mappings, String errorMessage)
+   at NHibernate.Cfg.XmlHbmBinding.ClassBinder.BindClass(IEntityMapping classMapping, PersistentClass model, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.RootClassBinder.Bind(HbmClass classSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddRootClasses(HbmClass rootClass, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddEntitiesMappings(HbmMapping mappingSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.Bind(HbmMapping mappingSchema)
+   at NHibernate.Cfg.Configuration.AddDeserializedMapping(HbmMapping mappingDocument, String documentFileName)
+   --- End of inner exception stack trace ---
+ERROR2014-01-07 05:58:02 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 63  –    at SocioBoard.Helper.SessionFactory.GetNewSession() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Helper\SessionFactory.cs:line 73
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Model\UserRepository.cs:line 125
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-07 05:58:08 Class:? Method:lambda_method Line #: 0  – Could not load type SocioBoard.Domain.InstagramFeed, SocioBoard.
+System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+File name: 'SocioBoard'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Util.ReflectHelper.TypeFromAssembly(AssemblyQualifiedTypeName name, Boolean throwOnError)
+
+=== Pre-bind state information ===
+LOG: User = GLB-016\user
+LOG: DisplayName = SocioBoard
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: SocioBoard | Domain ID: 11
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///C:/Users/user/Desktop/SocioBoard/trunk/SocioBoard Product/
+LOG: Initial PrivatePath = C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\bin
+Calling assembly : NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\web.config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+ERROR2014-01-07 05:58:08 Class:? Method:lambda_method Line #: 0  – Could not compile the mapping document: SocioBoard.Mappings.InstagramFeed.hbm.xml
+NHibernate.MappingException: Could not compile the mapping document: SocioBoard.Mappings.InstagramFeed.hbm.xml ---> NHibernate.MappingException: persistent class SocioBoard.Domain.InstagramFeed, SocioBoard not found ---> System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Util.ReflectHelper.TypeFromAssembly(AssemblyQualifiedTypeName name, Boolean throwOnError)
+   at NHibernate.Util.ReflectHelper.ClassForName(String name)
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForFullNameChecked(String fullName, String errorMessage)
+   --- End of inner exception stack trace ---
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForFullNameChecked(String fullName, String errorMessage)
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForNameChecked(String name, Mappings mappings, String errorMessage)
+   at NHibernate.Cfg.XmlHbmBinding.ClassBinder.BindClass(IEntityMapping classMapping, PersistentClass model, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.RootClassBinder.Bind(HbmClass classSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddRootClasses(HbmClass rootClass, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddEntitiesMappings(HbmMapping mappingSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.Bind(HbmMapping mappingSchema)
+   at NHibernate.Cfg.Configuration.AddDeserializedMapping(HbmMapping mappingDocument, String documentFileName)
+   --- End of inner exception stack trace ---
+ERROR2014-01-07 05:58:13 Class:? Method:lambda_method Line #: 0  – Could not load type SocioBoard.Domain.InstagramFeed, SocioBoard.
+System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+File name: 'SocioBoard'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Util.ReflectHelper.TypeFromAssembly(AssemblyQualifiedTypeName name, Boolean throwOnError)
+
+=== Pre-bind state information ===
+LOG: User = GLB-016\user
+LOG: DisplayName = SocioBoard
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: SocioBoard | Domain ID: 11
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///C:/Users/user/Desktop/SocioBoard/trunk/SocioBoard Product/
+LOG: Initial PrivatePath = C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\bin
+Calling assembly : NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\web.config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+ERROR2014-01-07 05:58:13 Class:? Method:lambda_method Line #: 0  – Could not compile the mapping document: SocioBoard.Mappings.InstagramFeed.hbm.xml
+NHibernate.MappingException: Could not compile the mapping document: SocioBoard.Mappings.InstagramFeed.hbm.xml ---> NHibernate.MappingException: persistent class SocioBoard.Domain.InstagramFeed, SocioBoard not found ---> System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Util.ReflectHelper.TypeFromAssembly(AssemblyQualifiedTypeName name, Boolean throwOnError)
+   at NHibernate.Util.ReflectHelper.ClassForName(String name)
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForFullNameChecked(String fullName, String errorMessage)
+   --- End of inner exception stack trace ---
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForFullNameChecked(String fullName, String errorMessage)
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForNameChecked(String name, Mappings mappings, String errorMessage)
+   at NHibernate.Cfg.XmlHbmBinding.ClassBinder.BindClass(IEntityMapping classMapping, PersistentClass model, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.RootClassBinder.Bind(HbmClass classSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddRootClasses(HbmClass rootClass, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddEntitiesMappings(HbmMapping mappingSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.Bind(HbmMapping mappingSchema)
+   at NHibernate.Cfg.Configuration.AddDeserializedMapping(HbmMapping mappingDocument, String documentFileName)
+   --- End of inner exception stack trace ---
+ERROR2014-01-07 05:58:24 Class:? Method:lambda_method Line #: 0  – Could not load type SocioBoard.Domain.InstagramFeed, SocioBoard.
+System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+File name: 'SocioBoard'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Util.ReflectHelper.TypeFromAssembly(AssemblyQualifiedTypeName name, Boolean throwOnError)
+
+=== Pre-bind state information ===
+LOG: User = GLB-016\user
+LOG: DisplayName = SocioBoard
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: SocioBoard | Domain ID: 11
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///C:/Users/user/Desktop/SocioBoard/trunk/SocioBoard Product/
+LOG: Initial PrivatePath = C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\bin
+Calling assembly : NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\web.config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+ERROR2014-01-07 05:58:25 Class:? Method:lambda_method Line #: 0  – Could not compile the mapping document: SocioBoard.Mappings.InstagramFeed.hbm.xml
+NHibernate.MappingException: Could not compile the mapping document: SocioBoard.Mappings.InstagramFeed.hbm.xml ---> NHibernate.MappingException: persistent class SocioBoard.Domain.InstagramFeed, SocioBoard not found ---> System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Util.ReflectHelper.TypeFromAssembly(AssemblyQualifiedTypeName name, Boolean throwOnError)
+   at NHibernate.Util.ReflectHelper.ClassForName(String name)
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForFullNameChecked(String fullName, String errorMessage)
+   --- End of inner exception stack trace ---
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForFullNameChecked(String fullName, String errorMessage)
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForNameChecked(String name, Mappings mappings, String errorMessage)
+   at NHibernate.Cfg.XmlHbmBinding.ClassBinder.BindClass(IEntityMapping classMapping, PersistentClass model, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.RootClassBinder.Bind(HbmClass classSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddRootClasses(HbmClass rootClass, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddEntitiesMappings(HbmMapping mappingSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.Bind(HbmMapping mappingSchema)
+   at NHibernate.Cfg.Configuration.AddDeserializedMapping(HbmMapping mappingDocument, String documentFileName)
+   --- End of inner exception stack trace ---
+ERROR2014-01-07 05:58:57 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 63  –    at SocioBoard.Helper.SessionFactory.GetNewSession() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Helper\SessionFactory.cs:line 73
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Model\UserRepository.cs:line 125
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-07 06:03:12 Class:? Method:lambda_method Line #: 0  – Could not load type SocioBoard.Domain.InstagramFeed, SocioBoard.
+System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+File name: 'SocioBoard'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Util.ReflectHelper.TypeFromAssembly(AssemblyQualifiedTypeName name, Boolean throwOnError)
+
+=== Pre-bind state information ===
+LOG: User = GLB-016\user
+LOG: DisplayName = SocioBoard
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: SocioBoard | Domain ID: 12
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///C:/Users/user/Desktop/SocioBoard/trunk/SocioBoard Product/
+LOG: Initial PrivatePath = C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\bin
+Calling assembly : NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\web.config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+ERROR2014-01-07 06:03:12 Class:? Method:lambda_method Line #: 0  – Could not compile the mapping document: SocioBoard.Mappings.InstagramFeed.hbm.xml
+NHibernate.MappingException: Could not compile the mapping document: SocioBoard.Mappings.InstagramFeed.hbm.xml ---> NHibernate.MappingException: persistent class SocioBoard.Domain.InstagramFeed, SocioBoard not found ---> System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Util.ReflectHelper.TypeFromAssembly(AssemblyQualifiedTypeName name, Boolean throwOnError)
+   at NHibernate.Util.ReflectHelper.ClassForName(String name)
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForFullNameChecked(String fullName, String errorMessage)
+   --- End of inner exception stack trace ---
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForFullNameChecked(String fullName, String errorMessage)
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForNameChecked(String name, Mappings mappings, String errorMessage)
+   at NHibernate.Cfg.XmlHbmBinding.ClassBinder.BindClass(IEntityMapping classMapping, PersistentClass model, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.RootClassBinder.Bind(HbmClass classSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddRootClasses(HbmClass rootClass, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddEntitiesMappings(HbmMapping mappingSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.Bind(HbmMapping mappingSchema)
+   at NHibernate.Cfg.Configuration.AddDeserializedMapping(HbmMapping mappingDocument, String documentFileName)
+   --- End of inner exception stack trace ---
+ERROR2014-01-07 06:03:22 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 63  –    at SocioBoard.Helper.SessionFactory.GetNewSession() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Helper\SessionFactory.cs:line 73
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Model\UserRepository.cs:line 125
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-07 06:29:45 Class:? Method:lambda_method Line #: 0  – Could not load type SocioBoard.Domain.Blog_Comments, SocioBoard.
+System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+File name: 'SocioBoard'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Util.ReflectHelper.TypeFromAssembly(AssemblyQualifiedTypeName name, Boolean throwOnError)
+
+=== Pre-bind state information ===
+LOG: User = GLB-016\user
+LOG: DisplayName = SocioBoard
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: SocioBoard | Domain ID: 13
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///C:/Users/user/Desktop/SocioBoard/trunk/SocioBoard Product/
+LOG: Initial PrivatePath = C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\bin
+Calling assembly : NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\web.config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+ERROR2014-01-07 06:29:45 Class:? Method:lambda_method Line #: 0  – Could not compile the mapping document: SocioBoard.Mappings.Blog_Comments.hbm.xml
+NHibernate.MappingException: Could not compile the mapping document: SocioBoard.Mappings.Blog_Comments.hbm.xml ---> NHibernate.MappingException: persistent class SocioBoard.Domain.Blog_Comments, SocioBoard not found ---> System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Util.ReflectHelper.TypeFromAssembly(AssemblyQualifiedTypeName name, Boolean throwOnError)
+   at NHibernate.Util.ReflectHelper.ClassForName(String name)
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForFullNameChecked(String fullName, String errorMessage)
+   --- End of inner exception stack trace ---
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForFullNameChecked(String fullName, String errorMessage)
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForNameChecked(String name, Mappings mappings, String errorMessage)
+   at NHibernate.Cfg.XmlHbmBinding.ClassBinder.BindClass(IEntityMapping classMapping, PersistentClass model, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.RootClassBinder.Bind(HbmClass classSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddRootClasses(HbmClass rootClass, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddEntitiesMappings(HbmMapping mappingSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.Bind(HbmMapping mappingSchema)
+   at NHibernate.Cfg.Configuration.AddDeserializedMapping(HbmMapping mappingDocument, String documentFileName)
+   --- End of inner exception stack trace ---
+ERROR2014-01-07 06:30:19 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 63  –    at SocioBoard.Helper.SessionFactory.GetNewSession() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Helper\SessionFactory.cs:line 73
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Model\UserRepository.cs:line 125
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-07 06:31:27 Class:? Method:lambda_method Line #: 0  – Could not load type SocioBoard.Domain.TeamMemberProfile, SocioBoard.
+System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+File name: 'SocioBoard'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Util.ReflectHelper.TypeFromAssembly(AssemblyQualifiedTypeName name, Boolean throwOnError)
+
+WRN: Assembly binding logging is turned OFF.
+To enable assembly bind failure logging, set the registry value [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD) to 1.
+Note: There is some performance penalty associated with assembly bind failure logging.
+To turn this feature off, remove the registry value [HKLM\Software\Microsoft\Fusion!EnableLog].
+
+ERROR2014-01-07 06:31:27 Class:? Method:lambda_method Line #: 0  – Could not compile the mapping document: SocioBoard.Mappings.TeamMemberProfile.hbm.xml
+NHibernate.MappingException: Could not compile the mapping document: SocioBoard.Mappings.TeamMemberProfile.hbm.xml ---> NHibernate.MappingException: persistent class SocioBoard.Domain.TeamMemberProfile, SocioBoard not found ---> System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Util.ReflectHelper.TypeFromAssembly(AssemblyQualifiedTypeName name, Boolean throwOnError)
+   at NHibernate.Util.ReflectHelper.ClassForName(String name)
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForFullNameChecked(String fullName, String errorMessage)
+   --- End of inner exception stack trace ---
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForFullNameChecked(String fullName, String errorMessage)
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForNameChecked(String name, Mappings mappings, String errorMessage)
+   at NHibernate.Cfg.XmlHbmBinding.ClassBinder.BindClass(IEntityMapping classMapping, PersistentClass model, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.RootClassBinder.Bind(HbmClass classSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddRootClasses(HbmClass rootClass, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddEntitiesMappings(HbmMapping mappingSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.Bind(HbmMapping mappingSchema)
+   at NHibernate.Cfg.Configuration.AddDeserializedMapping(HbmMapping mappingDocument, String documentFileName)
+   --- End of inner exception stack trace ---
+ERROR2014-01-07 06:31:27 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 63  –    at SocioBoard.Helper.SessionFactory.GetNewSession() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Helper\SessionFactory.cs:line 73
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Model\UserRepository.cs:line 125
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-07 06:32:13 Class:? Method:lambda_method Line #: 0  – Could not load type SocioBoard.Domain.TeamMemberProfile, SocioBoard.
+System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+File name: 'SocioBoard'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Util.ReflectHelper.TypeFromAssembly(AssemblyQualifiedTypeName name, Boolean throwOnError)
+
+=== Pre-bind state information ===
+LOG: User = GLB-016\user
+LOG: DisplayName = SocioBoard
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: SocioBoard | Domain ID: 14
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///C:/Users/user/Desktop/SocioBoard/trunk/SocioBoard Product/
+LOG: Initial PrivatePath = C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\bin
+Calling assembly : NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\web.config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+ERROR2014-01-07 06:32:13 Class:? Method:lambda_method Line #: 0  – Could not compile the mapping document: SocioBoard.Mappings.TeamMemberProfile.hbm.xml
+NHibernate.MappingException: Could not compile the mapping document: SocioBoard.Mappings.TeamMemberProfile.hbm.xml ---> NHibernate.MappingException: persistent class SocioBoard.Domain.TeamMemberProfile, SocioBoard not found ---> System.IO.FileNotFoundException: Could not load file or assembly 'SocioBoard' or one of its dependencies. The system cannot find the file specified.
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NHibernate.Util.ReflectHelper.TypeFromAssembly(AssemblyQualifiedTypeName name, Boolean throwOnError)
+   at NHibernate.Util.ReflectHelper.ClassForName(String name)
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForFullNameChecked(String fullName, String errorMessage)
+   --- End of inner exception stack trace ---
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForFullNameChecked(String fullName, String errorMessage)
+   at NHibernate.Cfg.XmlHbmBinding.Binder.ClassForNameChecked(String name, Mappings mappings, String errorMessage)
+   at NHibernate.Cfg.XmlHbmBinding.ClassBinder.BindClass(IEntityMapping classMapping, PersistentClass model, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.RootClassBinder.Bind(HbmClass classSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddRootClasses(HbmClass rootClass, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.AddEntitiesMappings(HbmMapping mappingSchema, IDictionary`2 inheritedMetas)
+   at NHibernate.Cfg.XmlHbmBinding.MappingRootBinder.Bind(HbmMapping mappingSchema)
+   at NHibernate.Cfg.Configuration.AddDeserializedMapping(HbmMapping mappingDocument, String documentFileName)
+   --- End of inner exception stack trace ---
+ERROR2014-01-07 06:32:26 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 63  –    at SocioBoard.Helper.SessionFactory.GetNewSession() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Helper\SessionFactory.cs:line 73
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Model\UserRepository.cs:line 125
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-07 06:34:28 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 63  –    at SocioBoard.Helper.SessionFactory.GetNewSession() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Helper\SessionFactory.cs:line 73
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Model\UserRepository.cs:line 125
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-07 06:43:31 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 63  –    at SocioBoard.Helper.SessionFactory.GetNewSession() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Helper\SessionFactory.cs:line 73
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Model\UserRepository.cs:line 125
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-07 06:45:36 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Could not load file or assembly 'OAuth, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.

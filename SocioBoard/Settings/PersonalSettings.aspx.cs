@@ -13,6 +13,7 @@ using System.Configuration;
 using SocioBoard.Domain;
 using SocioBoard.Model;
 using System.Collections.ObjectModel;
+using SocioBoard;
 namespace SocialSuitePro.Settings
 {
     public partial class PersonalSettings : System.Web.UI.Page

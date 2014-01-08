@@ -5,10 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using SocioBoard.Domain;
-
+using SocioBoard.Helper;
 using SocioBoard.Model;
 using log4net;
-using SocialSuitePro.Helper;
+using SocioBoard;
+//using soc.Helper;
 
 namespace SocialSuitePro
 {

@@ -7,7 +7,7 @@ using System.IO;
 using log4net;
 using System.Security.Cryptography;
 
-namespace SocialSuitePro.Helper
+namespace SocioBoard.Helper
 {
     public class MailSender
     {

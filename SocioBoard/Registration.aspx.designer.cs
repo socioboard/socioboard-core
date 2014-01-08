@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SocialSuitePro {
+namespace SocioBoard {
     
     
     public partial class Registration {

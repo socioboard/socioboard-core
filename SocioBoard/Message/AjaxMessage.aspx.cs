@@ -17,7 +17,7 @@ using GlobusTwitterLib.App.Core;
 using GlobusTwitterLib.Twitter.Core.TweetMethods;
 using log4net;
 using GlobusGooglePlusLib.Authentication;
-namespace SocialSuitePro.Message
+namespace SocioBoard.Message
 {
     public partial class AjaxMessage : System.Web.UI.Page
     {

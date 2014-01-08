@@ -2,19 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Reflection;
-using log4net;
 
-namespace SocialSuitePro.Helper
+
+namespace SocioBoard.Helper
 {
     public class SessionFactory
     {
         public static NHibernate.ISessionFactory sFactory;
         /// <summary>
         /// initializes the session for database
-        /// </summary>
         /// 
-        private static ILog logger = LogManager.GetLogger(typeof(SessionFactory));
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
+        /// </summary>
+
+
 
         public static string configfilepath { get; set; }
         
@@ -33,12 +38,12 @@ namespace SocialSuitePro.Helper
                     path = configfilepath;
                 }
                 config.Configure(path);
-                config.AddAssembly(Assembly.GetExecutingAssembly());//adds all the embedded resources .hbm.xml
+                config.AddAssembly("SocioBoard 1.0");//adds all the embedded resources .hbm.xml
                 sFactory = config.BuildSessionFactory();
             }
             catch (Exception ex)
             {
-                logger.Error(ex.Message);
+                Console.WriteLine("Error : " + ex.StackTrace);
             }
         }
 

@@ -11,7 +11,7 @@ using SocioBoard.Domain;
 using System.Collections;
 using log4net;
 
-namespace SocialSuitePro.Message
+namespace SocioBoard.Message
 {
     public partial class Task : System.Web.UI.Page
     {

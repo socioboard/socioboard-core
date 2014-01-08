@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using log4net;
 
-namespace SocialSuitePro.Message
+namespace SocioBoard.Message
 {
     public partial class Messages : System.Web.UI.Page
     {

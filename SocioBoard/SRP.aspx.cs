@@ -98,7 +98,7 @@ namespace SocialSuitePro
                     if (!userrepo.IsUserExist(user.EmailId))
                     {
                         UserRepository.Add(user);
-                        SocialSuitePro.Helper.MailSender.SendEMail(txtFirstName.Text + " " + txtLastName.Text, txtPassword.Text, txtEmail.Text);
+                        SocioBoard.Helper.MailSender.SendEMail(txtFirstName.Text + " " + txtLastName.Text, txtPassword.Text, txtEmail.Text);
 
                         TeamRepository teamRepo = new TeamRepository();
                         Team team = teamRepo.getTeamByEmailId(txtEmail.Text);

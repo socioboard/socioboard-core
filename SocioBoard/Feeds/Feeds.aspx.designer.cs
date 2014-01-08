@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SocialSuitePro.Feeds {
+namespace SocioBoard.Feeds {
     
     
     public partial class Feeds {

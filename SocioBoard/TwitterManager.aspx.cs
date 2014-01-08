@@ -21,6 +21,7 @@ using log4net;
 using System.Configuration;
 
 using SocioBoard.Helper;
+using SocioBoard;
 
 namespace SocialSuitePro
 {

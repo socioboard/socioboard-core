@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using Newtonsoft.Json.Linq;
-using SocialSuitePro.Helper;
+using SocioBoard.Helper;
 using Facebook;
 using Newtonsoft.Json;
 using SocioBoard.Domain;

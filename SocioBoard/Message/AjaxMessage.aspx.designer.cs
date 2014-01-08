@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SocialSuitePro.Message {
+namespace SocioBoard.Message {
     
     
     public partial class AjaxMessage {

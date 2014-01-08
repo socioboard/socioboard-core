@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialBoard", "SocialBoard.csproj", "{489126F9-9C92-4F3B-8643-F698F4A0C737}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocioBoard 1.0", "SocioBoard 1.0.csproj", "{489126F9-9C92-4F3B-8643-F698F4A0C737}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

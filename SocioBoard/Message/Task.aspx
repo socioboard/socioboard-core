@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Site.Master" AutoEventWireup="true"
-    CodeBehind="~/Message/Task.aspx.cs" Inherits="SocialSuitePro.Message.Task" %>
+    CodeBehind="~/Message/Task.aspx.cs" Inherits="SocioBoard.Message.Task" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="../Contents/css/Style.css" rel="stylesheet" type="text/css" />

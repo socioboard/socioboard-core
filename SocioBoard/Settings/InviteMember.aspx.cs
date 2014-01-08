@@ -4,13 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 using System.Collections;
-
 using System.Configuration;
 using SocioBoard.Domain;
 using SocioBoard.Model;
-using SocialSuitePro.Helper;
+using SocioBoard.Helper;
 
 
 namespace SocialSuitePro.Settings

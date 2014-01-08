@@ -11,7 +11,7 @@ using System.Web;
 
 using log4net;
 
-namespace SocialSuitePro.Helper
+namespace SocioBoard.Helper
 {
     public class MailHelper
     {

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SocialSuitePro.Feeds
+namespace SocioBoard.Feeds
 {
     public partial class Feeds : System.Web.UI.Page
     {

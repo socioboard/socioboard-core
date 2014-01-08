@@ -8,7 +8,8 @@ using SocioBoard.Domain;
 
 using SocioBoard.Model;
 using log4net;
-using SocialSuitePro.Helper;
+using SocioBoard.Helper;
+using SocioBoard;
 
 namespace SocialSuitePro
 {

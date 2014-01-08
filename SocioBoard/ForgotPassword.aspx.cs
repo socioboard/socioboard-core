@@ -4,11 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using SocialSuitePro.Helper;
+using SocioBoard.Helper;
 using System.Configuration;
 using SocioBoard.Model;
 using SocioBoard.Domain;
 using log4net;
+using SocioBoard;
 
 namespace SocialSuitePro
 {
@@ -84,7 +85,9 @@ namespace SocialSuitePro
                         string Subject = "Forget Password Socio Board account";
                         //MailHelper.SendMailMessage(host, int.Parse(port.ToString()), username, pass, txtEmail.Text.ToString(), string.Empty, string.Empty, Subject, MailBody);
                         MailHelper.SendSendGridMail(host, Convert.ToInt32(port), from, "", txtEmail.Text.ToString(), string.Empty, string.Empty, Subject, MailBody, username, pass);
-
+                        
+                        
+                        
                         lblerror.Text = "Your Password Changes info to send in your Email";
                     }
                     else
