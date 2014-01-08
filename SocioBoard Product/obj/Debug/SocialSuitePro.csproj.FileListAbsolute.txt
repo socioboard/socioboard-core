@@ -1,0 +1,375 @@
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\SocialSuitePro.dll
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\SocialSuitePro.pdb
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Facebook.dll
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\GlobusGooglePlusLib.dll
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\GlobusInstagramLib.dll
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\GlobusLinkedinLib.dll
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\GlobusTwitterLib.dll
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Iesi.Collections.dll
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\log4net.dll
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\MySql.Data.dll
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\MySql.Data.Entity.dll
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Newtonsoft.Json.dll
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\NHibernate.dll
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\NHibernate.Linq.dll
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\NHibernateHelper.dll
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\PayPalCoreSDK.dll
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\SocioBoard.dll
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\NHibernate.Linq.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\obj\Debug\SocialSuitePro.dll
+D:\WooSuite\woosuite\trunk\SocialSuitePro\obj\Debug\SocialSuitePro.pdb
+D:\WooSuite\woosuite\trunk\SocialSuitePro\obj\Debug\SocialSuitePro.csprojResolveAssemblyReference.cache
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\FacebookAccount.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\FacebookMessage.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\InstagramAccount.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\LinkedInAccount.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\LinkedinMessage.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\TwitterAccount.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\TwitterMessage.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\User.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\SocialProfile.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\FacebookFeed.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\TwitterFeed.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\LinkedInFeed.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\Groups.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\InstagramComment.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\InstagramFeed.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\GroupProfile.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\TaskComment.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\Tasks.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\Team.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\ScheduledMessage.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\DiscoverySearch.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\GooglePlusAccount.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\GooglePlusActivities.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\FacebookStats.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\PaymentTransaction.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\FacebookInsightStats.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\FacebookInsightPostStats.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\Package.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\News.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\Ads.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\GoogleAnalyticsAccount.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\Drafts.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\RssFeeds.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\ArchiveMessage.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\NewsLetter.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\TeamMemberProfile.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\TwitterStats.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\vwTwitterStats.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\TwitterDirectMessages.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\Log.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Mappings\RssReader.hbm.xml
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\Hammock.dll
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\OAuth.dll
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\SocioBoard.pdb
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\SendGridMail.dll
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\SendGridPlus.dll
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\System.Net.Http.dll
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\GlobusGooglePlusLib.pdb
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\GlobusInstagramLib.pdb
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\GlobusLinkedinLib.pdb
+D:\WooSuite\woosuite\trunk\SocialSuitePro\bin\GlobusTwitterLib.pdb
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\FacebookAccount.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\FacebookMessage.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\InstagramAccount.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\LinkedInAccount.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\LinkedinMessage.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\TwitterAccount.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\TwitterMessage.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\User.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\SocialProfile.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\FacebookFeed.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\TwitterFeed.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\LinkedInFeed.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\Groups.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\InstagramComment.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\InstagramFeed.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\GroupProfile.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\TaskComment.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\Tasks.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\Team.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\ScheduledMessage.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\DiscoverySearch.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\GooglePlusAccount.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\GooglePlusActivities.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\FacebookStats.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\PaymentTransaction.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\FacebookInsightStats.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\FacebookInsightPostStats.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\Package.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\News.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\Ads.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\GoogleAnalyticsAccount.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\Drafts.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\RssFeeds.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\ArchiveMessage.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\NewsLetter.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\TeamMemberProfile.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\TwitterStats.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\vwTwitterStats.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\TwitterDirectMessages.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\Log.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\RssReader.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\SocialSuitePro.dll
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\SocialSuitePro.pdb
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\GlobusGooglePlusLib.dll
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\GlobusInstagramLib.dll
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\GlobusLinkedinLib.dll
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\GlobusTwitterLib.dll
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\PayPalCoreSDK.dll
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\SendGridMail.dll
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\SendGridPlus.dll
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\SocioBoard.dll
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\System.Net.Http.dll
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\OAuth.dll
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Hammock.dll
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\GlobusGooglePlusLib.pdb
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\GlobusInstagramLib.pdb
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\GlobusLinkedinLib.pdb
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\GlobusTwitterLib.pdb
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\SocioBoard.pdb
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\obj\Debug\SocialSuitePro.dll
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\obj\Debug\SocialSuitePro.pdb
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\bin\MySql.Data.dll
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\obj\Debug\SocialSuitePro.csprojResolveAssemblyReference.cache
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\Admin.hbm.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\CodeScales.Http.dll
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\System.Net.Http.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Iesi.Collections.pdb
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Iesi.Collections.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\NHibernate.pdb
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\NHibernate.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\NHibernate.Linq.xml
+E:\Anagha\Work in Progress\SocioBoard_nhibernate\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\NHibernateHelper.pdb
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\obj\Debug\SocialSuitePro.csprojResolveAssemblyReference.cache
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\obj\Debug\SocialSuitePro.pdb
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\bin\MySql.Data.dll
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\FacebookAccount.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\FacebookMessage.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\InstagramAccount.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\LinkedInAccount.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\LinkedinMessage.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\TwitterAccount.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\TwitterMessage.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\User.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\SocialProfile.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\FacebookFeed.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\TwitterFeed.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\LinkedInFeed.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\Groups.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\InstagramComment.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\InstagramFeed.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\GroupProfile.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\TaskComment.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\Tasks.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\Team.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\ScheduledMessage.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\DiscoverySearch.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\GooglePlusAccount.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\GooglePlusActivities.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\FacebookStats.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\PaymentTransaction.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\FacebookInsightStats.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\FacebookInsightPostStats.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\Package.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\News.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\Ads.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\GoogleAnalyticsAccount.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\Drafts.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\RssFeeds.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\ArchiveMessage.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\NewsLetter.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\TeamMemberProfile.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\TwitterStats.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\vwTwitterStats.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\TwitterDirectMessages.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\Log.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\RssReader.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Mappings\Admin.hbm.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\SocialSuitePro.dll
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\SocialSuitePro.pdb
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\PayPalCoreSDK.dll
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\SendGridMail.dll
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\SendGridPlus.dll
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\SocioBoard.dll
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\System.Net.Http.dll
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Hammock.dll
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\CodeScales.Http.dll
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\SocioBoard.pdb
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\System.Net.Http.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\obj\Debug\SocialSuitePro.dll
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\OAuth.dll
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\GlobusGooglePlusLib.pdb
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\GlobusInstagramLib.pdb
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\GlobusLinkedinLib.pdb
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\GlobusTwitterLib.pdb
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Iesi.Collections.pdb
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\Iesi.Collections.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\NHibernate.pdb
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\NHibernate.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\NHibernate.Linq.xml
+C:\Users\Sumit\Desktop\WooSuite_Latest_svn_2208\trunk\SocialSuitePro\bin\NHibernateHelper.pdb
+D:\socioboard\trunk\SocialSuitePro\bin\bin\MySql.Data.dll
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\FacebookAccount.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\FacebookMessage.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\InstagramAccount.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\LinkedInAccount.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\LinkedinMessage.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\TwitterAccount.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\TwitterMessage.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\User.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\SocialProfile.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\FacebookFeed.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\TwitterFeed.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\LinkedInFeed.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\Groups.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\InstagramComment.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\InstagramFeed.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\GroupProfile.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\TaskComment.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\Tasks.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\Team.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\ScheduledMessage.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\DiscoverySearch.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\GooglePlusAccount.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\GooglePlusActivities.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\FacebookStats.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\PaymentTransaction.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\FacebookInsightStats.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\FacebookInsightPostStats.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\Package.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\News.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\Ads.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\GoogleAnalyticsAccount.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\Drafts.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\RssFeeds.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\ArchiveMessage.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\NewsLetter.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\TeamMemberProfile.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\TwitterStats.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\vwTwitterStats.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\TwitterDirectMessages.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\Log.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\RssReader.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\Mappings\Admin.hbm.xml
+D:\socioboard\trunk\SocialSuitePro\bin\SocialSuitePro.dll
+D:\socioboard\trunk\SocialSuitePro\bin\SocialSuitePro.pdb
+D:\socioboard\trunk\SocialSuitePro\bin\PayPalCoreSDK.dll
+D:\socioboard\trunk\SocialSuitePro\bin\SendGridMail.dll
+D:\socioboard\trunk\SocialSuitePro\bin\SendGridPlus.dll
+D:\socioboard\trunk\SocialSuitePro\bin\SocioBoard.dll
+D:\socioboard\trunk\SocialSuitePro\bin\System.Net.Http.dll
+D:\socioboard\trunk\SocialSuitePro\bin\Hammock.dll
+D:\socioboard\trunk\SocialSuitePro\bin\OAuth.dll
+D:\socioboard\trunk\SocialSuitePro\bin\CodeScales.Http.dll
+D:\socioboard\trunk\SocialSuitePro\bin\SocioBoard.pdb
+D:\socioboard\trunk\SocialSuitePro\bin\GlobusGooglePlusLib.pdb
+D:\socioboard\trunk\SocialSuitePro\bin\GlobusInstagramLib.pdb
+D:\socioboard\trunk\SocialSuitePro\bin\GlobusLinkedinLib.pdb
+D:\socioboard\trunk\SocialSuitePro\bin\GlobusTwitterLib.pdb
+D:\socioboard\trunk\SocialSuitePro\bin\Iesi.Collections.pdb
+D:\socioboard\trunk\SocialSuitePro\bin\Iesi.Collections.xml
+D:\socioboard\trunk\SocialSuitePro\bin\NHibernate.pdb
+D:\socioboard\trunk\SocialSuitePro\bin\NHibernate.xml
+D:\socioboard\trunk\SocialSuitePro\bin\NHibernate.Linq.xml
+D:\socioboard\trunk\SocialSuitePro\bin\NHibernateHelper.pdb
+D:\socioboard\trunk\SocialSuitePro\bin\System.Net.Http.xml
+D:\socioboard\trunk\SocialSuitePro\obj\Debug\SocialSuitePro.csprojResolveAssemblyReference.cache
+D:\socioboard\trunk\SocialSuitePro\obj\Debug\SocialSuitePro.dll
+D:\socioboard\trunk\SocialSuitePro\obj\Debug\SocialSuitePro.pdb
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\bin\MySql.Data.dll
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\FacebookAccount.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\FacebookMessage.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\InstagramAccount.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\LinkedInAccount.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\LinkedinMessage.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\TwitterAccount.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\TwitterMessage.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\User.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\SocialProfile.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\FacebookFeed.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\TwitterFeed.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\LinkedInFeed.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\Groups.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\InstagramComment.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\InstagramFeed.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\GroupProfile.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\TaskComment.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\Tasks.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\Team.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\ScheduledMessage.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\DiscoverySearch.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\GooglePlusAccount.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\GooglePlusActivities.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\FacebookStats.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\PaymentTransaction.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\FacebookInsightStats.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\FacebookInsightPostStats.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\Package.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\News.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\Ads.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\GoogleAnalyticsAccount.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\Drafts.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\RssFeeds.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\ArchiveMessage.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\NewsLetter.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\TeamMemberProfile.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\TwitterStats.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\vwTwitterStats.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\TwitterDirectMessages.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\Log.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\RssReader.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\Admin.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\Blog_Comments.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\Blog_Posts.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Mappings\FacebookGroup.hbm.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\SocialSuitePro.dll
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\SocialSuitePro.pdb
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\PayPalCoreSDK.dll
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\SendGridMail.dll
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\SendGridPlus.dll
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\SocioBoard.dll
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\System.Net.Http.dll
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Hammock.dll
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\OAuth.dll
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\CodeScales.Http.dll
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\SocioBoard.pdb
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\GlobusGooglePlusLib.pdb
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\GlobusInstagramLib.pdb
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\GlobusLinkedinLib.pdb
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\GlobusTwitterLib.pdb
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Iesi.Collections.pdb
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\Iesi.Collections.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\NHibernate.pdb
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\NHibernate.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\NHibernate.Linq.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\NHibernateHelper.pdb
+D:\Abhay\socioboard\trunk\SocialSuitePro\bin\System.Net.Http.xml
+D:\Abhay\socioboard\trunk\SocialSuitePro\obj\Debug\SocialSuitePro.csprojResolveAssemblyReference.cache
+D:\Abhay\socioboard\trunk\SocialSuitePro\obj\Debug\SocialSuitePro.dll
+D:\Abhay\socioboard\trunk\SocialSuitePro\obj\Debug\SocialSuitePro.pdb
+C:\Users\user\Desktop\SocialSuitePro\obj\Debug\SocialSuitePro.csprojResolveAssemblyReference.cache
+C:\Users\user\Desktop\SocialSuitePro\obj\Debug\SocialSuitePro.pdb
+C:\Users\user\Desktop\SocialSuitePro\bin\SocialSuitePro.dll
+C:\Users\user\Desktop\SocialSuitePro\bin\SocialSuitePro.pdb
+C:\Users\user\Desktop\SocialSuitePro\bin\PayPalCoreSDK.dll
+C:\Users\user\Desktop\SocialSuitePro\bin\SendGridMail.dll
+C:\Users\user\Desktop\SocialSuitePro\bin\SendGridPlus.dll
+C:\Users\user\Desktop\SocialSuitePro\bin\System.Net.Http.dll
+C:\Users\user\Desktop\SocialSuitePro\bin\OAuth.dll
+C:\Users\user\Desktop\SocialSuitePro\bin\CodeScales.Http.dll
+C:\Users\user\Desktop\SocialSuitePro\bin\Hammock.dll
+C:\Users\user\Desktop\SocialSuitePro\bin\GlobusGooglePlusLib.pdb
+C:\Users\user\Desktop\SocialSuitePro\bin\GlobusInstagramLib.pdb
+C:\Users\user\Desktop\SocialSuitePro\bin\GlobusLinkedinLib.pdb
+C:\Users\user\Desktop\SocialSuitePro\bin\GlobusTwitterLib.pdb
+C:\Users\user\Desktop\SocialSuitePro\bin\Iesi.Collections.pdb
+C:\Users\user\Desktop\SocialSuitePro\bin\Iesi.Collections.xml
+C:\Users\user\Desktop\SocialSuitePro\bin\NHibernate.pdb
+C:\Users\user\Desktop\SocialSuitePro\bin\NHibernate.xml
+C:\Users\user\Desktop\SocialSuitePro\bin\NHibernate.Linq.xml
+C:\Users\user\Desktop\SocialSuitePro\bin\NHibernateHelper.pdb
+C:\Users\user\Desktop\SocialSuitePro\bin\SocioBoard.pdb
+C:\Users\user\Desktop\SocialSuitePro\bin\System.Net.Http.xml
+C:\Users\user\Desktop\SocialSuitePro\obj\Debug\SocialSuitePro.dll

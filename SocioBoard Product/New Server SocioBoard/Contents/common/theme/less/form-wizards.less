@@ -1,0 +1,122 @@
+//
+// Form Wizards
+// --------------------------------------------------
+
+// Wizards
+// ------------------------- //
+
+.wizard {
+	.wizard-head {
+		background: #fff;
+		border: 1px solid #e5e5e5;
+		border-bottom: none;
+	}
+}
+
+.bwizard-steps .label {
+	position: relative;
+	top: -1px;
+	margin: 0 5px 0 0;
+	padding: 1px 5px 2px;
+}
+
+.bwizard-steps .active .label {
+	background-color: #333;
+}
+
+.bwizard-steps {
+	display: block;
+	margin: 0;
+	padding: 0;
+	height: 40px;
+	list-style: none;
+	li {
+		display: block;
+		float: left;
+		position: relative;
+		margin-right: 5px;
+		line-height: 40px;
+		height: 40px;
+		background: #fafafa;
+		a {
+			display: block;
+			height: 40px;
+			line-height: 40px;
+			padding: 0 20px 0 40px;
+		}
+		&.active {
+			color: #fff;
+			background: @primaryColor;
+			&:after { border-left-color: @primaryColor; }
+			a { color: #fff; cursor: default; }
+		}
+		&:after {
+			position: absolute;
+			right: -20px;
+			top: 0;
+			height: 0;
+			width: 0;
+			border-bottom: 20px inset transparent;
+			border-left: 20px solid #fafafa;
+			border-top: 20px inset transparent;
+			content: "";
+			z-index: 2;
+		}
+		&:before {
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 0;
+			width: 0;
+			border-bottom: 20px inset transparent;
+			border-left: 20px solid #fff;
+			border-top: 20px inset transparent;
+			content: "";
+		}
+		&:last-child:after {
+			
+		}
+		&:last-child {
+			margin-right: 0;
+		}
+		&:first-child:before {
+			border: none;
+		}
+		&:first-child a { padding-left: 20px; }
+	}
+}
+
+.bwizard-steps a:hover {
+	text-decoration: none;
+}
+
+.bwizard-steps.clickable li:not (.active ) {
+	cursor: pointer;
+}
+
+.bwizard-steps.clickable li:hover:not (.active ) {
+	background: #ccc;
+}
+
+.bwizard-steps.clickable li:hover:not (.active ):after {
+	border-left-color: #ccc;
+}
+
+.bwizard-steps.clickable li:hover:not (.active ) a {
+	color: #08c;
+}
+
+// Responsive
+// ------------------------- //
+
+@media ( max-width : 480px) { /* badges only on small screens */
+	.bwizard-steps li:after,.bwizard-steps li:before {
+		border: none
+	}
+	.bwizard-steps li,.bwizard-steps li.active,.bwizard-steps li:first-child,.bwizard-steps li:last-child
+		{
+		margin-right: 0;
+		padding: 0;
+		background-color: transparent
+	}
+}

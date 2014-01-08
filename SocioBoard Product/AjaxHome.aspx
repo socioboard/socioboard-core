@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AjaxHome.aspx.cs" Inherits="SocialSuitePro.AjaxHome" %>

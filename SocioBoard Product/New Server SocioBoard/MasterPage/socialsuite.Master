@@ -1,0 +1,320 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="socialsuite.master.cs" Inherits="SocialSuitePro.MasterPage.socialsuite" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>SocioBoard</title>
+    
+    <link rel="shortcut icon" href="../Contents/img/ivon.ico" type="image/x-icon" >
+    <link href="../Contents/css/socialsuite.css" rel="stylesheet" type="text/css" />
+    <link href="http://localhost:5334/Contents/css/fonts.css" rel="stylesheet" type="text/css" />
+    <script src="../Contents/js/jquery-2.0.1.min.js" type="text/javascript"></script>
+     <script src="../Contents/js/jquery.bpopup.min.js" type="text/javascript" charset=""></script>
+    <script src="../Contents/js/jquery.easing.1.3.js" type="text/javascript"></script>
+     <script src="../Contents/js/md5.js" type="text/javascript"></script>
+    <script src="../Contents/js/JSlogin.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            var pull = $('#pull');
+            menu = $('nav ul');
+            menuHeight = menu.height();
+
+            $(pull).on('click', function (e) {
+                e.preventDefault();
+                menu.slideToggle();
+            });
+
+            $(window).resize(function () {
+                var w = $(window).width();
+                if (w > 320 && menu.is(':hidden')) {
+                    menu.removeAttr('style');
+                }
+            });
+        });
+	 </script>
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="container">
+            <!--outer-container-->
+            <div class="outer-container">
+    	        <div class="header-inner-container">
+        	        <div class="logo-container"><a href="../Default.aspx"><img src="../Contents/img/ssp/logo-txt.png" alt="" /></a></div>
+                    <div class="main-nav">
+            	        <nav class="clearfix">
+                            <ul class="clearfix">
+                                <li><a href="../Feature.aspx">Feature</a></li>
+                                <li><a href="../Pricing.aspx">Pricing</a></li>
+                               <%-- <li><a href="#">About</a></li>--%>
+                                <li><a href="../contact.aspx">Contact Us</a></li>
+                                <li class="login" id="loginbtn"><a href="#">login</a></li>
+                            </ul>
+                            <a href="#" id="pull">Menu</a>
+                        </nav>
+                    </div>
+                    <div class="clear"></div>
+                </div> 
+            </div>
+            <!--end outer-container-->
+            
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">        
+            </asp:ContentPlaceHolder>
+            
+            <!--content-sec-container-->
+            <div class="content-sec-container" id="p5">
+    	        <div class="footer-inner">
+        	        <div class="foot-left">
+            	        <div class="foot-nav-out">
+                	        <div class="foot-nav-head">Navigate </div>
+                            <ul>
+                    	        <li><a href="http://socioboard.com/Feature.aspx">Feature</a></li>
+                                <%--<li><a href="#">Customers</a></li>--%>
+                                <li><a href="http://socioboard.com/Pricing.aspx">Pricing</a></li>
+                                <%--<li><a href="#">About</a></li>
+                                <li><a href="#">Partners</a></li>
+                                <li><a href="#">Affiliates</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Privacy</a></li>--%>
+                            </ul>
+                        </div>
+                      <div class="foot-nav-out">
+               	        <div class="foot-nav-head">Connect  </div>
+                          <ul>
+                   	          <li><a target="_blank" href="https://twitter.com/Socioboard">Twitter</a></li>
+                              <li><a target="_blank" href="https://www.facebook.com/sociob">Facebook</a></li>
+                              <li><a target="_blank" href="http://www.linkedin.com/company/socioboard">Linkedin</a></li>
+                              <li><a target="_blank" href="https://plus.google.com/s/socioboard">Google+</a></li>
+                   	          <li><a href="../contact.aspx">Email Us</a></li>
+                             <%-- <li><a href="#">Insights Blog</a></li>--%>
+                        </ul>
+                        </div>
+                        <%--<div class="foot-nav-out">
+               	        <div class="foot-nav-head">Download  </div>
+                          <ul>
+                   	         <li><a href="#">iPhone</a></li>
+                             <li><a href="#">iPad</a></li>
+                             <li><a href="#">Android</a></li>
+                        </ul>
+                        </div>--%>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="foot-right">
+            	        <div class="social-txt">
+                	        <div class="foot-nav-head"> Secure, Reliable and Trusted </div>
+                            <div class="social-twitter">
+                    	        <strong>Twitter Certified Product </strong>
+                                Socioboard is a Twitter certified 
+                                partner for Engagement 
+                                and Analytics
+                            </div>
+                            <div class="social-fb">
+                    	        <strong>Preferred Marketing Developer </strong>
+                                We're recognized as a PMD for 
+                                Facebook Page Management 
+                                <br />
+                                & Insights. 
+                            </div>
+                        </div>
+                        <div class="secure-txt">
+                	        Socioboard uses SSL 128-bit <br />
+                            encryption, 100% of the <br />
+                            time on every device.<br /><br />
+                            <a href="#"><img src="../Contents/img/ssp/verify-icon.jpg" alt="" /></a>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="footer-botm">
+            	        <div class="footer-logo"><a href="../Default.aspx"><img src="../Contents/img/ssp/foot-logo.png" alt="" /></a></div>
+                        <div class="copy-info">Copyright &copy; 2013 Globussoft Technologies Pvt. Ltd. All rights reserved.</div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <!--end content-sec-container-->
+        </div>
+    </form>
+
+
+    <script type="text/javascript" language="javascript">!window.jQuery && document.write(unescape('%3Cscript src="../lib/jquery/jquery.js"%3E%3C/script%3E'));</script>
+
+  <script src="../Contents/js/jquery.smooth-scroll.js" type="text/javascript"></script>
+  <script>
+      $(document).ready(function () {
+         $("#txtPassword").bind("keydown", function (event) {
+            var keycode = (event.keyCode ? event.keyCode : (event.which ? event.which : event.charCode));
+            if (keycode == 13) {
+                signinFunction();
+                return false;
+            } else {
+                return true;
+            }
+        });
+          $('ul.mainnav a').smoothScroll();
+
+          $('p.subnav a').click(function (event) {
+              event.preventDefault();
+              var link = this;
+              $.smoothScroll({
+                  scrollTarget: link.hash
+              });
+          });
+
+          $('button.scrollsomething').click(function () {
+              $.smoothScroll({
+                  scrollElement: $('div.scrollme'),
+                  scrollTarget: '#findme'
+              });
+              return false;
+          });
+          $('button.scrollhorz').click(function () {
+              $.smoothScroll({
+                  direction: 'left',
+                  scrollElement: $('div.scrollme'),
+                  scrollTarget: '.horiz'
+              });
+              return false;
+          });
+
+          $("#loginbtn").click(function () {
+
+              document.getElementById('signinemailMessages').innerHTML = "";
+              document.getElementById('signinpasswordMessages').innerHTML = "";
+              $('#logindiv').bPopup({
+                  easing: 'easeOutBack',
+                  positionStyle: 'fixed',
+                  speed: 650,
+                  transition: 'slideDown'
+              });
+          });
+
+
+      });
+
+  </script>
+</body>
+
+  <!--login popup-->
+    <div id="logindiv">
+        <span class="button b-close"><span>X</span></span>
+        <div class="signin">
+            Sign in</div>
+        <!--signin_temp-->
+        <div class="signin_temp">
+           <form onsubmit="signinFunction();" action="">
+            <div class="left_area">
+                <div class="inputbg">
+                    <input type="text" id="txtEmail" placeholder="Email" onblur="checkEmail(this.value);" /></div>
+                <div class="error">
+                    <div id="signinemailMessages">
+                    </div>
+                </div>
+                <div class="input_pswd_bg">
+                    <input type="password" id="txtPassword" placeholder="Password"  onblur="if(this.value == ''){document.getElementById('signinpasswordMessages').innerHTML='Please Enter Password';}else{document.getElementById('signinpasswordMessages').innerHTML='';}"/>
+                </div>
+                <div class="error">
+                    <div id="signinpasswordMessages">
+                    </div>
+                </div>
+                <%--<div class="forgot_pswd"><input type="checkbox"  />Remember me</div>--%>
+                <div class="forgot_pswd">
+                    Forgot password? <a href="../ForgotPassword.aspx">Click here to restore</a></div>
+                <div class="loginbtn">
+                    <a onclick="signinFunction();">
+                        <img id="btnLogin" src="../Contents/img/login_btn.png" alt="" /></a>
+                </div>
+
+            </div>
+            </form >
+            <div class="right_area">
+                <div class="social_bg">
+                    <div class="you_cantext">
+                        You can also login with your social account</div>
+                    <div class="social_icon_bg">
+                        <div class="fb_icon">
+                            <a id="fb_account" href="#" onclick="facebookLogin();">
+                                <img src="../Contents/img/fb_icon_lgn.png" alt="" />
+                            </a>
+                        </div>
+                        <div class="google_icon">
+                            <a id="gp_account" href="#" onclick="googleplusLogin();">
+                             <img src="../Contents/img/google_icon.png" alt="" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="register_text">
+                        Not Yet Registered? <a href="../SocialPricing.aspx">Register now!</a></div>
+                </div>
+            </div>
+        </div>
+        <!--signin_temp-->
+    </div>
+    <!--end login popup-->
+
+
+
+     <%--
+    <script src="../Contents/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../Contents/js/modernizr.custom.28468.js" type="text/javascript"></script>--%>
+   
+   
+    
+   
+    <script type="text/javascript">
+        $(function () {
+            $('#da-slider').cslider({
+                autoplay: true
+            });
+        });
+
+        $(document).ready(function () {
+            //--login script here
+            $('#login').click(function () {
+                document.getElementById('signinemailMessages').innerHTML = "";
+                document.getElementById('signinpasswordMessages').innerHTML = "";
+                $('#logindiv').bPopup({
+                    easing: 'easeOutBack',
+                    positionStyle: 'fixed',
+                    speed: 650,
+                    transition: 'slideDown'
+                });
+            });
+            //                // login script end here
+
+            //                // signup script here
+            $('#signup').click(function () {
+                document.getElementById('txtFirstName').value = '';
+                document.getElementById('txtLastName').value = '';
+                document.getElementById('EmailTxt').value = '';
+                document.getElementById('PasswordTxt').value = '';
+                document.getElementById('txtConfirmPassword').value = '';
+                document.getElementById('RegularExpressionValidator1').style.visibility = 'hidden';
+                document.getElementById('RequiredFieldValidator5').style.visibility = 'hidden';
+                document.getElementById('RequiredFieldValidator6').style.visibility = 'hidden';
+                document.getElementById('RequiredFieldValidator3').style.visibility = 'hidden';
+                document.getElementById('RegularExpressionValidator2').style.visibility = 'hidden';
+                document.getElementById('RequiredFieldValidator4').style.visibility = 'hidden';
+                document.getElementById('RequiredFieldValidator7').style.visibility = 'hidden';
+                document.getElementById('CompareValidator1').style.visibility = 'hidden';
+
+                $('#signupdiv').bPopup({
+                    easing: 'easeOutBack',
+                    positionStyle: 'fixed',
+                    speed: 650,
+                    transition: 'slideIn'
+                });
+            });
+
+            // signup script end here
+
+
+
+
+        });
+    </script>
+
+
+</html>
