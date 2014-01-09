@@ -57,3 +57,63 @@ C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\bin\CodeScales.Http.dl
 C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\bin\System.Net.Http.xml
 C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\obj\Debug\SocioBoard 1.0.dll
 C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\obj\Debug\SocioBoard 1.0.pdb
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\Admin.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\Ads.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\ArchiveMessage.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\Blog_Comments.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\Blog_Posts.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\BusinessSetting.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\DiscoverySearch.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\Drafts.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\FacebookAccount.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\FacebookFeed.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\FacebookGroup.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\FacebookInsightPostStats.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\FacebookInsightStats.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\FacebookMessage.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\FacebookStats.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\GoogleAnalyticsAccount.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\GoogleAnalyticsStats.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\GooglePlusAccount.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\GooglePlusActivities.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\GroupProfile.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\Groups.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\InstagramAccount.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\InstagramComment.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\InstagramFeed.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\LinkedinAccount.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\LinkedInFeed.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\LinkedinMessage.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\Log.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\News.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\NewsLetter.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\Package.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\PaymentTransaction.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\RssFeeds.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\RssReader.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\ScheduledMessage.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\SocialProfile.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\TaskComment.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\Tasks.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\Team.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\TeamMemberProfile.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\TwitterAccount.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\TwitterDirectMessages.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\TwitterFeed.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\TwitterMessage.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\TwitterStats.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\User.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\UserPackageRelation.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Mappings\vwTwitterStats.hbm.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\Domain\FacebookInsightPostStats.cs
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\SocioBoard 1.0.dll
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\SocioBoard 1.0.pdb
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\PayPalCoreSDK.dll
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\SendGridMail.dll
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\SendGridPlus.dll
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\System.Net.Http.dll
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\CodeScales.Http.dll
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\System.Net.Http.xml
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\obj\Debug\SocioBoard 1.0.csprojResolveAssemblyReference.cache
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\obj\Debug\SocioBoard 1.0.dll
+C:\Users\user\Documents\GitHub\socioboard\SocioBoard\obj\Debug\SocioBoard 1.0.pdb

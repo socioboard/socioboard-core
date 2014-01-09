@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FC2E4794-2CB4-4AAA-A0AD-5483C931B3F0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GlobusInstagramLib</RootNamespace>
+    <AssemblyName>GlobusInstagramLib</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\Lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.Core\Caption.cs" />
+    <Compile Include="App.Core\Comment.cs" />
+    <Compile Include="App.Core\CommentController.cs" />
+    <Compile Include="App.Core\CommentList.cs" />
+    <Compile Include="App.Core\GeographiesController.cs" />
+    <Compile Include="App.Core\ImageLink.cs" />
+    <Compile Include="App.Core\ImagesList.cs" />
+    <Compile Include="App.Core\InstagramMedia.cs" />
+    <Compile Include="App.Core\InstagramResponse.cs" />
+    <Compile Include="App.Core\LikesController.cs" />
+    <Compile Include="App.Core\LikesList.cs" />
+    <Compile Include="App.Core\Location.cs" />
+    <Compile Include="App.Core\LocationController.cs" />
+    <Compile Include="App.Core\MediaController.cs" />
+    <Compile Include="App.Core\Metadata.cs" />
+    <Compile Include="App.Core\Pagination.cs" />
+    <Compile Include="App.Core\Relation.cs" />
+    <Compile Include="App.Core\RelationShipsController.cs" />
+    <Compile Include="App.Core\Tag.cs" />
+    <Compile Include="App.Core\TagController.cs" />
+    <Compile Include="App.Core\User.cs" />
+    <Compile Include="App.Core\UserController.cs" />
+    <Compile Include="Authentication\AccessToken.cs" />
+    <Compile Include="Authentication\Base.cs" />
+    <Compile Include="Authentication\BaseObject.cs" />
+    <Compile Include="Authentication\ConfigurationIns.cs" />
+    <Compile Include="Authentication\ICache.cs" />
+    <Compile Include="Authentication\oAuthBase.cs" />
+    <Compile Include="Authentication\oAuthInstagram.cs" />
+    <Compile Include="Instagram.Core\CommentsMethods\Comments.cs" />
+    <Compile Include="Instagram.Core\GeographiesMethods\Geographies.cs" />
+    <Compile Include="Instagram.Core\LikesMethods\Likes.cs" />
+    <Compile Include="Instagram.Core\LocationsMethods\Locations.cs" />
+    <Compile Include="Instagram.Core\MediaMethods\Media.cs" />
+    <Compile Include="Instagram.Core\RelationshipMethods\Relationship.cs" />
+    <Compile Include="Instagram.Core\TagsMethods\Tags.cs" />
+    <Compile Include="Instagram.Core\UsersMethods\Users.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="bin\Debug\ApiBase.dll" />
+    <Content Include="bin\Debug\ApiBase.pdb" />
+    <Content Include="bin\Debug\GlobusInstagramLib.dll" />
+    <Content Include="bin\Debug\GlobusInstagramLib.pdb" />
+    <Content Include="bin\Debug\Newtonsoft.Json.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

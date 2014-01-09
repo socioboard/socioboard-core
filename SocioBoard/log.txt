@@ -2157,3 +2157,4 @@ ERROR2014-01-07 06:43:31 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Li
    at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Model\UserRepository.cs:line 125
    at SocialSuitePro.AjaxLogin.ProcessRequest() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 42
 ERROR2014-01-07 06:45:36 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Could not load file or assembly 'OAuth, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
+ERROR2014-01-08 07:05:42 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Could not load file or assembly 'OAuth, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
