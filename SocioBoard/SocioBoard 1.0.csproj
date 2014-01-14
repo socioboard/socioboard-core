@@ -118,8 +118,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Abhay.html" />
-    <Content Include="abhay1.html" />
     <Content Include="Admin\AddAdvertisement.aspx" />
     <Content Include="Admin\AddNews.aspx" />
     <Content Include="Admin\AddNewsLetter.aspx" />
@@ -2559,6 +2557,9 @@
     <Content Include="lib\log4net.dll" />
     <Content Include="LinkedInManager.aspx" />
     <Content Include="log.txt" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <EmbeddedResource Include="Mappings\Admin.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -2729,15 +2730,6 @@
     <Content Include="SP.aspx" />
     <Content Include="SRP.aspx" />
     <Content Include="TwitterManager.aspx" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\AddAdvertisement.aspx.cs">

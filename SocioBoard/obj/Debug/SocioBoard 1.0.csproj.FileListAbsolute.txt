@@ -114,6 +114,5 @@ C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\SendGridPlus.dll
 C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\System.Net.Http.dll
 C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\CodeScales.Http.dll
 C:\Users\user\Documents\GitHub\socioboard\SocioBoard\bin\System.Net.Http.xml
-C:\Users\user\Documents\GitHub\socioboard\SocioBoard\obj\Debug\SocioBoard 1.0.csprojResolveAssemblyReference.cache
 C:\Users\user\Documents\GitHub\socioboard\SocioBoard\obj\Debug\SocioBoard 1.0.dll
 C:\Users\user\Documents\GitHub\socioboard\SocioBoard\obj\Debug\SocioBoard 1.0.pdb
