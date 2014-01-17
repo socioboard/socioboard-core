@@ -1,4 +1,4 @@
-SocioBoard - Your Open-source Social Media Dashboard
+Socioboard - Your Open-source Social Media Dashboard
 ==========
 Socioboard is an advanced, easy, open-source social media marketing tool to engage your audience with great features such as live chat, news feed, timeline, profiles, events, notifications, likes, analytics, insights and much more. Unlike other social media management tools, socioboard serves your customization needs like specific editorial, workflow, governance etc. and allows you to listen to and engage your audience across numerous social media profiles from one simple platform. It offers  you an open-source Community version and paid Enterprise and SaaS versions with unmatched world-class technical support round the clock.
 
