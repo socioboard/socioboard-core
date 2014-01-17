@@ -9,7 +9,9 @@ Socioboard Enterprise and Saas Versions: http://www.socioboard.com
 Socioboard Community Version: http://www.socioboard.org 
 
 
+
 Features:
+
 
 • Open Source tool in different versions (light and advanced) for individuals, agencies and corporates
 
@@ -29,7 +31,10 @@ Features:
 
 
 
+
+
 Versions:
+
 
 • Community Edition
 
