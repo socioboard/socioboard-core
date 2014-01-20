@@ -24,6 +24,8 @@ namespace SocialSuitePro
             User user = (User)Session["LoggedUser"];
             if (!IsPostBack)
             {
+
+
                 if (Session["login"] == null)
                 {
                     if (user == null)
