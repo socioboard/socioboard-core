@@ -24,17 +24,19 @@
     <div class="banner-container">
         <div class="banner-inner">
             <div class="ban-main-txt">
-                More Than Social<br />
-                Media Management
+                Beyond <br />
+                Social Media Management
             </div>
             <div class="ban-sub-text">
-                <span>SOCIOBOARD brings proactive open source social media marketing</span><br />
-                <span>to boost your brand preference</span>
+                <span>Socioboard offers you</span> <br />
+                <span>an advanced, easy, versatile, customizable and scalable open-source </span> <br />
+                <span>social media marketing tool to drive your brand to newer heights</span>
             </div>
             <div class="trial-butn">
                 <a href="../Pricing.aspx">
                     <img src="../Contents/img/ssp/trail-butn.png" alt="" /></a><br />
-                No credit card required, no software to install
+                No Credit Card Required 
+                
             </div>
             <div class="clear">
             </div>
@@ -49,17 +51,17 @@
         id="p1">
         <div class="anim-banner-inner">
             <h1>
-                See What Our Social Media Marketing Suite Can
+                Get On Board to See What Our Social Media Marketing Suite Can Do for You
+
                 <br />
-                Do for Your Business</h1>
+               </h1>
             <p>
-                People are talking about your brand. Why not join them? Socioboard allows
-                <br />
-                you to listen to, analyze and engage your followers across social media accounts
-                from one simple platform.</p>
+                People are talking about your brand. Why not leverage it? <br />
+
+            Socioboard allows you to listen to, analyze and engage your followers in unusual ways across <br /> numerous social media accounts</p>
             <div class="ban-static">
-                <img src="../Contents/img/ssp/nammer-2.png" alt="" /></div>
-            <div class="ban-img">
+                <img src="../Contents/img/ssp/slidegraph.png" alt="" /></div>
+            <%--<div class="ban-img">
                 <div class="mid-circle">
                     <div class="lang-txt">
                         <a href="#">Multi
@@ -93,7 +95,7 @@
                         News sites
                         <br />
                         &amp; bLOGS</a></span></div>
-            </div>
+            </div>--%>
         </div>
     </div>
     <div class="content-sec-container" id="p2">
@@ -105,22 +107,29 @@
         <div class="content-sec-inner">
             <div class="content-left">
                 <h1>
-                    Engage your followers effectively
+                    ENGAGE YOUR FOLLOWERS EFFECTIVELY 
+
+
                     <br />
-                    across all social channels</h1>
+                   ACROSS ALL SOCIAL CHANNELS</h1>
                 <p>
-                    Socioboard makes it easy to keep tabs on
+                    Socioboard makes it easy to keep tabs on 
+
+
+
                     <br />
-                    social conversations and provides everything you need
+                   social conversations and provides everything you need 
                     <br />
                     to efficiently engage your audience.</p>
                 <ul>
-                    <li>Scheduling</li>
-                    <li>Canned reponses</li>
-                    <li>Drafts</li>
-                    <li>Approval flows</li>
-                    <li>Built-in Social CRM</li>
-                    <li>Workflow Automation</li>
+                    <li>Smart Inbox and Prompt Feeds</li>
+                    <li>Advanced Scheduling and Publishing</li>
+                    <li>Unique Social Discovery</li>
+                    <li>In-depth Analytics and Reports</li>
+                    <li>Constant Real-time Monitoring</li>
+                    <li>Team Collaboration Tools</li>
+                    <li>Social CRM and Helpdesk Integration</li>
+                    <li>Mobile Apps</li>
                 </ul>
                 <a href="Pricing.aspx">
                     <img src="../Contents/img/ssp/trail-butn.png" alt="" /></a>
@@ -143,30 +152,31 @@
                 some reasons
             </h2>
             <h1>
-                why people like SocioBoard</h1>
+                why people love Socioboard</h1>
             <div class="reason-left">
-                <img src="../Contents/img/ssp/img-1.jpg" alt="" />
+                <img src="../Contents/img/ssp/img-1.png" alt="" />
             </div>
             <div class="reason-right">
                 <ul>
-                    <li>Open Source</li>
-                    <li>Unified Smart Inbox to streamline engagement</li>
+                    <li>Highly customizable and scalable open-source tool in different editions</li>
+                    <li>Advanced scheduling & publishing tools</li>
+                    <li>Prompt feeds and interactive social discovery tools</li>
+                    <li>Sophisticated analytics on various parameters</li>
                     <li>Social CRM tools including shared customer records</li>
-                    <li>Advanced scheduling & publishing tools including ViralPost™</li>
-                    <li>Sophisticated analytics & unlimited custom reports</li>
                     <li>Customer support features like tasks and Helpdesk integration</li>
-                    <li>Team collaboration tools including live activity updates</li>
+                    <li>Highly efficient team collaboration tools </li>
+                    <li>24/7 Technical Support</li>
+                    <li>Executable across various devices and platforms</li>
                 </ul>
             </div>
             <div class="clear">
             </div>
-            <div class="ban-large-txt">
-                With Socioboard, engaging your followers is so eazy, fun and insightful now. Get started today!</div>
+            <div class="ban-large-txt">With Socioboard, engaging your followers is so easy, fun, and insightful now. <br /> <b style=" font-size:30px;">Get started today!</b></div>
         </div>
     </div>
     <div class="anim-banner-container" id="p4">
         <div class="signup-inner">
-            Try Socioboard Premium risk-free for 30 days! <span><a href="Pricing.aspx">
+            Enjoy Socioboard risk-free for 30 days! <span><a href="Pricing.aspx">
                 <img src="../Contents/img/ssp/signup-butn.png" alt="" align="absmiddle" /></a></span>
         </div>
         <div class="arrow">

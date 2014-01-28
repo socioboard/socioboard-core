@@ -17,7 +17,7 @@
     <property name="dialect">NHibernate.Dialect.MySQLDialect</property>
     <property name="connection.driver_class">NHibernate.Driver.MySqlDataDriver</property>
     <property name="connection.connection_string">
-      Data Source=98.130.0.102;User ID=C230527_sprout;Password=SS1234;persist security info=False;initial catalog=C230527_sproutsocial;
+      Data Source=127.0.0.1;User ID=database_id;Password=database_pass;persist security info=False;initial catalog=database_name;
     </property>
     <property name="show_sql">true</property>
   </session-factory>-->

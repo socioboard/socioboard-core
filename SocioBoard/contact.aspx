@@ -74,8 +74,7 @@
 <hr />
  
  <div>
-   <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.in/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Globussoft,+Smriti+Nagar,+Bhilai+Nagar,+Chhattisgarh&amp;aq=0&amp;oq=globussoft&amp;sll=21.205521,81.487619&amp;sspn=0.360404,0.676346&amp;ie=UTF8&amp;hq=Globussoft,&amp;hnear=Smriti+Nagar,+Bhilai,+Durg,+Chhattisgarh&amp;t=m&amp;ll=21.219529,81.318624&amp;spn=0.006295,0.019671&amp;output=embed"></iframe><br /><small><a href="https://maps.google.co.in/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Globussoft,+Smriti+Nagar,+Bhilai+Nagar,+Chhattisgarh&amp;aq=0&amp;oq=globussoft&amp;sll=21.205521,81.487619&amp;sspn=0.360404,0.676346&amp;ie=UTF8&amp;hq=Globussoft,&amp;hnear=Smriti+Nagar,+Bhilai,+Durg,+Chhattisgarh&amp;t=m&amp;ll=21.219529,81.318624&amp;spn=0.006295,0.019671" style="color:#0000FF;text-align:left">View Larger Map</a></small>
- 
+  <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.in/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Bhilai,+Chhattisgarh&amp;aq=0&amp;oq=bhilai&amp;sll=21.125498,81.914063&amp;sspn=21.895104,43.022461&amp;ie=UTF8&amp;hq=&amp;hnear=Bhilai,+Durg,+Chhattisgarh&amp;t=m&amp;z=11&amp;ll=21.208877,81.378063&amp;output=embed"></iframe><br /><small><a href="https://maps.google.co.in/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Bhilai,+Chhattisgarh&amp;aq=0&amp;oq=bhilai&amp;sll=21.125498,81.914063&amp;sspn=21.895104,43.022461&amp;ie=UTF8&amp;hq=&amp;hnear=Bhilai,+Durg,+Chhattisgarh&amp;t=m&amp;z=11&amp;ll=21.208877,81.378063" style="color:#0000FF;text-align:left">View Larger Map</a></small>
  </div>
  
 	<div class="contact_form">
@@ -110,7 +109,7 @@
                 <textarea name="profile" id="profile" cols="30" rows="10"></textarea>
 
                 </p>
-                
+                <br />
                 <p>
 
                 <button id="submit" type="button">Submit</button>
