@@ -24,8 +24,6 @@ namespace SocialSuitePro
             User user = (User)Session["LoggedUser"];
             if (!IsPostBack)
             {
-
-
                 if (Session["login"] == null)
                 {
                     if (user == null)
@@ -71,7 +69,7 @@ namespace SocialSuitePro
                             }
                             else
                             {
-                                Response.Redirect("SocialPricing.aspx");
+                                Response.Redirect("Pricing.aspx");
                             }
                         }
                     
@@ -147,7 +145,31 @@ namespace SocialSuitePro
                 string accessToken = result["access_token"].ToString();
                 fb.AccessToken = accessToken;
 
+
+                // For long Term Fb access_token
+
+                // GET /oauth/access_token?  
+                //grant_type=fb_exchange_token&           
+                //client_id={app-id}&
+                //client_secret={app-secret}&
+                //fb_exchange_token={short-lived-token}
+
+
+                parameters.Clear();
+
+                parameters.Add("grant_type", "fb_exchange_token");
+                parameters.Add("client_id", ConfigurationManager.AppSettings["ClientId"]);
+                parameters.Add("client_secret", ConfigurationManager.AppSettings["ClientSecretKey"]);
+                parameters.Add("fb_exchange_token", accessToken);
+
+                result = (JsonObject)fb.Get("/oauth/access_token", parameters);
+                accessToken = result["access_token"].ToString();
+                fb.AccessToken = accessToken;
+
                dynamic profile = fb.Get("me");
+
+               int res = UpdateFbToken(profile["id"], accessToken);
+
             if (Session["login"] != null)
             {
                     if (Session["login"].ToString() == "facebook")
@@ -173,7 +195,7 @@ namespace SocialSuitePro
                         }
                         try
                         {
-                            user.ProfileUrl = "https://www.facebook.com/" + profile["id"] + "/picture?type=small";
+                            user.ProfileUrl = "https://graph.facebook.com/" + profile["id"] + "/picture?type=small";
                             profileId = profile["id"];
                         }
                         catch (Exception ex)
@@ -302,7 +324,24 @@ namespace SocialSuitePro
                 {
                     logger.Error(ex.StackTrace);
                 }
-        }      
+        }
+
+        public int UpdateFbToken(string fbUserId, string fbAccessToken)
+        {
+            int res = 0;
+            try
+            {
+                FacebookAccountRepository objfbAR = new FacebookAccountRepository();
+
+                res = objfbAR.UpdateFBAccessTokenByFBUserId(fbUserId, fbAccessToken);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error : " + ex.StackTrace);
+
+            }
+            return res;
+        }
 
     }
 }

@@ -13,6 +13,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:HiddenField ID="HiddenFieldGroupName" runat="server" />
     <asp:HiddenField ID="HiddenFieldGroupNameInDDl" runat="server" />
+   <asp:HiddenField ID="HiddenField1" runat="server" />
+    <asp:HiddenField ID="HiddenField2" runat="server" />
     <div id="mainwrapper" class="container">
 
         <div class="ws_tm_left">
@@ -25,7 +27,7 @@
                     <li><a href="PersonalSettings.aspx">Personal Setting</a> </li>
                     <li><a href="BusinessSetting.aspx">Business Setting</a> </li>
                     <li><a class="active">Users & Groups</a> </li>
-                       <li><a href="Billing.aspx">Billing</a> </li>
+                    <li><a href="Billing.aspx">Billing</a> </li>
                   <%--  <li><a>Helpdesk Integration</a> </li>
                     <li><a>Sprout Queue</a> </li>
                     <li><a>Billing</a> </li>
@@ -52,7 +54,6 @@
                                 cursor: pointer;">
                                 close</div>
                         </div>
-                        
                         <div class="instagram_title">
                             Groups help you organize your social profiles and team members. Name your group
                             and you can begin connecting social profiles and adding team members to it. Twitter
@@ -62,16 +63,10 @@
                             <div class="instagram_txt">
                                 Group Name :
                             </div>
-                            <input id="txtGroupName" name="txtGroupName" type="text" runat="server"/>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please enter group name" ControlToValidate="txtGroupName"></asp:RequiredFieldValidator>
-                           <%-- <input id="txtGroupName" type="text" runat="server" />--%>
-                            <asp:TextBox ID="txtGroupName" runat="server"></asp:TextBox>
-                             <%-- <input id="Text1" name="txtGroupName" type="text" />--%>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please enter group name" ControlToValidate="txtGroupName" ForeColor="Red"></asp:RequiredFieldValidator>
-
+                            <input id="txtGroupName" name="txtGroupName" type="text" />
                         </div>
                         <ul>
-                            <li id="twitter"><a id="TwitterOAuth" runat="server" onserverclick="TwitterOAuthRedirect" >
+                            <li><a id="TwitterOAuth" runat="server" onserverclick="TwitterOAuthRedirect" >
                                 <img src="../Contents/img/twt_icon.png" width="16" height="16" alt="" />
                                 <span>Twitter</span> </a></li>
                             <li><a id="facebook_connect" runat="server" onserverclick="FacebookRedirect" >
@@ -110,9 +105,9 @@
                             <li><a id="LinkedInLink" runat="server" onclick="GetGroupName('linkedin')" onserverclick="LinkedInRedirect">
                                 <img src="../Contents/img/linked_25X24.png" width="16" height="16" alt="" />
                                 <span>LinkedIn</span> </a></li>
-                            <li><a id="gp_cont" runat="server" onclick="GetGroupName('googleplus')" onserverclick="GooglePlusRedirect">
+                           <%-- <li><a id="gp_cont" runat="server" onclick="GetGroupName('googleplus')" onserverclick="GooglePlusRedirect">
                                 <img src="../Contents/img/google_plus.png" width="16" height="16" alt="" />
-                                <span>Google Plus</span> </a></li>
+                                <span>Google Plus</span> </a></li>--%>
                            <%-- <li><a id="ga_cont" runat="server" href="#">
                                 <img src="../Contents/img/google_analytics.png" width="16" height="16" alt="" />
                                 <span>Google Analytics</span> </a></li>--%>
@@ -140,7 +135,7 @@
                 </div>
                 <div class="userandgroups">
                     <div class="invite_friends">
-                        Team Members <a runat="server" id="inviteteamfromUserAndGroups" href="#" onclick="popup()">
+                        Team Members <a runat="server" id="inviteteamfromUserAndGroups" href="#">
                             <input id="Button3" onclick="gettingSessionForGroup();" type="button" value="Invite a New Team Member" />
                         </a>
                     </div>
@@ -212,14 +207,14 @@
 
 
 
-    function GetGroupName(profilename) { 
-    
+    function GetGroupName(profilename) {
+
     }
 
 
 
 
-    
+
 
 
     function showMessageErr(str, suc) {
@@ -228,16 +223,26 @@
         if (suc == "green") {
             $("#errsuccess").addClass('greenerrormsg');
             $("#errsuccess").removeClass('rederrormsg');
-        } else if(suc == "red") {
+        } else if (suc == "red") {
             $("#errsuccess").removeClass('greenerrormsg');
             $("#errsuccess").addClass('rederrormsg');
         }
-    
-    
+
+
     }
 
 
+    $("#<%=inviteteamfromUserAndGroups.ClientID %>").click(function (e) {
+        debugger;
+        var href = $("#<%=inviteteamfromUserAndGroups.ClientID %>").attr('href');
+        if (href == "#") {
+            alertify.alert("Create a Group to Invite team Members");
 
+        } else {
+            window.location = "../InviteTeamMember.aspx";
+        }
+
+    });
 
 
 

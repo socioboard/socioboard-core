@@ -40,15 +40,6 @@ namespace SocialSuitePro.Admin {
         protected global::System.Web.UI.WebControls.FileUpload fuAdv;
         
         /// <summary>
-        /// txtScript control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtScript;
-        
-        /// <summary>
         /// datepicker control.
         /// </summary>
         /// <remarks>

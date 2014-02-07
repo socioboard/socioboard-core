@@ -2157,4 +2157,104 @@ ERROR2014-01-07 06:43:31 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Li
    at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\Model\UserRepository.cs:line 125
    at SocialSuitePro.AjaxLogin.ProcessRequest() in C:\Users\user\Desktop\SocioBoard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 42
 ERROR2014-01-07 06:45:36 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Could not load file or assembly 'OAuth, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
-ERROR2014-01-08 07:05:42 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Could not load file or assembly 'OAuth, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
+ERROR2014-01-14 03:26:47 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Could not load file or assembly 'OAuth, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
+ERROR2014-01-15 05:04:39 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Could not load file or assembly 'OAuth, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
+ERROR2014-01-15 05:15:55 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Could not load file or assembly 'OAuth, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
+ERROR2014-01-15 05:32:29 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Could not load file or assembly 'OAuth, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
+ERROR2014-01-15 05:34:46 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 328  – Object reference not set to an instance of an object.
+ERROR2014-01-15 05:34:46 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 328  – Object reference not set to an instance of an object.
+ERROR2014-01-15 05:34:50 Class:SocialSuitePro.Feeds.AjaxFeeds Method:Page_Load Line #: 53  – Could not load file or assembly 'OAuth, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
+ERROR2014-01-15 05:34:52 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 328  – Object reference not set to an instance of an object.
+ERROR2014-01-15 05:34:52 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 328  – Object reference not set to an instance of an object.
+ERROR2014-01-15 05:36:05 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-01-15 05:36:06 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-15 05:36:06 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-17 11:37:11 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 97  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 68
+ERROR2014-01-17 11:40:42 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 97  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 68
+ERROR2014-01-17 11:42:48 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 97  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 68
+ERROR2014-01-17 11:53:28 Class:SocialSuitePro.Home Method:AuthenticateFacebook Line #: 470  – Thread was being aborted.
+ERROR2014-01-17 11:57:49 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 97  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 68
+ERROR2014-01-21 04:43:36 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 63  –    at SocioBoard.Helper.SessionFactory.GetNewSession() in D:\Abhay\socioboard\trunk\SocioBoard Product\Helper\SessionFactory.cs:line 73
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in D:\Abhay\socioboard\trunk\SocioBoard Product\Model\UserRepository.cs:line 125
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in D:\Abhay\socioboard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-21 04:43:44 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 63  –    at SocioBoard.Helper.SessionFactory.GetNewSession() in D:\Abhay\socioboard\trunk\SocioBoard Product\Helper\SessionFactory.cs:line 73
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in D:\Abhay\socioboard\trunk\SocioBoard Product\Model\UserRepository.cs:line 125
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in D:\Abhay\socioboard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-21 04:45:43 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 63  –    at SocioBoard.Helper.SessionFactory.GetNewSession() in D:\Abhay\socioboard\trunk\SocioBoard Product\Helper\SessionFactory.cs:line 73
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in D:\Abhay\socioboard\trunk\SocioBoard Product\Model\UserRepository.cs:line 125
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in D:\Abhay\socioboard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-23 04:26:44 Class:SocialSuitePro.RegisterPage Method:btnRegister_Click Line #: 258  –    at System.Guid.Parse(String input)
+   at SocialSuitePro.RegisterPage.btnRegister_Click(Object sender, ImageClickEventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\RegisterPage.aspx.cs:line 108
+ERROR2014-01-27 06:59:05 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-01-27 06:59:07 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-27 06:59:07 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-29 05:30:48 Class:SocialSuitePro.Home Method:AuthenticateFacebook Line #: 471  – Thread was being aborted.
+ERROR2014-01-29 05:33:06 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-01-29 05:33:10 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-01-29 05:33:14 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-01-29 05:33:17 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-01-29 05:33:22 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-01-29 05:33:26 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-01-29 05:33:30 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-01-29 05:34:52 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 86  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 82
+ERROR2014-01-29 05:34:52 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 97  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 88
+ERROR2014-01-29 09:16:46 Class:SocialSuitePro.Home Method:AuthenticateFacebook Line #: 471  – Thread was being aborted.
+ERROR2014-01-29 09:19:03 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-01-29 09:19:07 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-01-29 09:19:11 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-01-29 09:19:14 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-01-29 09:19:18 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-01-29 09:19:22 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-01-29 09:20:18 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 86  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 82
+ERROR2014-01-29 09:20:18 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 97  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 88
+ERROR2014-02-07 06:39:53 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 63  –    at SocioBoard.Helper.SessionFactory.GetNewSession() in D:\Abhay\socioboard\trunk\SocioBoard Product\Helper\SessionFactory.cs:line 73
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in D:\Abhay\socioboard\trunk\SocioBoard Product\Model\UserRepository.cs:line 125
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in D:\Abhay\socioboard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 42

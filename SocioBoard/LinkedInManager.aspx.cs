@@ -9,6 +9,7 @@ using GlobusLinkedinLib.Authentication;
 using GlobusLinkedinLib.App.Core;
 using SocioBoard.Helper;
 using log4net;
+using SocioBoard.Model;
 
 namespace SocialSuitePro
 {
@@ -83,6 +84,8 @@ namespace SocialSuitePro
 
                     }
 
+                   
+
                     try
                     {
                         _oauth.AccessTokenGet(oauth_token);
@@ -92,6 +95,15 @@ namespace SocialSuitePro
                         logger.Error(ex.StackTrace);
 
                     }
+
+
+                    // Update Access Token in DB 
+                    try
+                    {
+                        int res = UpdateLDToken(user.Id.ToString(), _oauth.Token);
+                    }
+                    catch { };
+                    //***********************
 
                     Session.Remove("oauth_token");
                     Session.Remove("oauth_TokenSecret");
@@ -133,6 +145,23 @@ namespace SocialSuitePro
                 logger.Error(ex.StackTrace);
 
             }
+        }
+
+        public int UpdateLDToken(string LDUserId, string LDAccessToken)
+        {
+            int res = 0;
+            try
+            {
+                LinkedInAccountRepository objldAR = new LinkedInAccountRepository();
+
+                res = objldAR.UpdateLDAccessTokenByLDUserId(LDUserId, LDAccessToken);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error : " + ex.StackTrace);
+
+            }
+            return res;
         }
     }
 }

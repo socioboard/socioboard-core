@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div "="" id="content">
+     <div "="" id="content">
 	
     <div class="innerLR" style="margin-top: 10px; margin-left:-15px;">
 	    <!-- Widget -->
@@ -11,7 +11,7 @@
 		    <div class="widget-head">
 			    <ul>
 				    <li class="active"><a data-toggle="tab" href="#account-details" class="glyphicons edit">
-                        Profile</a></li>
+                        Add Package</a></li>
 				    <%--<li class=""><a data-toggle="tab" href="#account-settings" class="glyphicons settings"><i></i>Account settings</a></li>--%>
 			    </ul>
 		    </div>
@@ -47,7 +47,7 @@
 								    </div>
 								    <!-- // Group END -->
                                     <!-- Group -->
-								    <div class="control-group">
+								   <%-- <div class="control-group">
 									    <label class="control-label">Status</label>
 									    <div class="controls">
 										    <asp:DropDownList ID="ddltatus" runat="server" class="span12">
@@ -56,7 +56,7 @@
                                                 <asp:ListItem Value="False">Disable</asp:ListItem>
                                             </asp:DropDownList>
 									    </div>
-								    </div>
+								    </div>--%>
 								    <!-- // Group END -->
 							    </div>
 							    <!-- // Column END -->

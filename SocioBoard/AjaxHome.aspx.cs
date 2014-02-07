@@ -1121,7 +1121,12 @@ namespace SocialSuitePro
                                 if (Request.Files.Count > 0)
                                 {
                                     PhotoUpload ph = new PhotoUpload();
-                                    ph.Tweet(file, message, OAuthTwt);
+                                    //ph.Tweet(file, message, OAuthTwt);
+
+                                    string res = string.Empty;
+                                    ph.NewTweet(file, message, OAuthTwt,ref res);
+
+                                    Console.WriteLine(res);
                                 }
                                 else
                                 {

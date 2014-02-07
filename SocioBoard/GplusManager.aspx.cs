@@ -112,7 +112,7 @@ namespace SocialSuitePro
                             {
                                 if (Session["login"].ToString() == "googleplus")
                                 {
-                                    Response.Redirect("Plans.aspx");
+                                    Response.Redirect("Pricing.aspx");
                                 }
                             }
                             else

@@ -42,6 +42,7 @@ namespace SocialSuitePro.Settings
                     inviteteamfromUserAndGroups.HRef = "InviteMember.aspx";
                 }
 
+
                 memberName.Text = user.UserName;
                 ddlGroup.DataSource = lstgroup;
                 ddlGroup.DataTextField = "GroupName";
@@ -59,7 +60,7 @@ namespace SocialSuitePro.Settings
         public void TwitterOAuthRedirect(object sender, EventArgs e)
         {
             User user = (User)Session["LoggedUser"];
-         
+
             oAuthTwitter OAuth = new oAuthTwitter();
 
             if (ddlGroup.SelectedIndex > 0)
@@ -83,7 +84,7 @@ namespace SocialSuitePro.Settings
                 {
                     string txtgroup = Page.Request.Form["txtGroupName"].ToString();
 
-                   
+
 
                     if (!string.IsNullOrEmpty(txtgroup))
                     {
@@ -107,18 +108,17 @@ namespace SocialSuitePro.Settings
                         if (Request["oauth_token"] == null)
                         {
                             Session["UserAndGroupsForTwitter"] = "twitter";
-                            OAuth.AccessToken = string.Empty;
-                            OAuth.AccessTokenSecret = string.Empty;
-                            OAuth.CallBackUrl = ConfigurationManager.AppSettings["callbackurl"].ToString();
-                            this.TwitterOAuth.HRef = OAuth.AuthorizationLinkGet();
-                            Response.Redirect(OAuth.AuthorizationLinkGet());
+                            TwitterHelper twthelper = new TwitterHelper();
+                            string twtredirecturl = twthelper.TwitterRedirect(ConfigurationManager.AppSettings["consumerKey"], ConfigurationManager.AppSettings["consumerSecret"], ConfigurationManager.AppSettings["callbackurl"]);
+                            Response.Redirect(twtredirecturl);
+
                         }
                     }
                     else
                     {
-                        Response.Write("<script>alert(\"Please Add new Group or Select Existing Group\");</script>");
+                        Response.Write("<script>alert(\"Please fill Group Name\");</script>");
                     }
-                  
+
                 }
                 catch (Exception ex)
                 {
@@ -126,7 +126,7 @@ namespace SocialSuitePro.Settings
                 }
             }
 
-            
+
         }
         public void FacebookRedirect(object sender, EventArgs e)
         {
@@ -178,16 +178,16 @@ namespace SocialSuitePro.Settings
 
                     }
                     else
-                    { 
-                     Response.Write("<script>alert(\"Please Add new Group or Select Existing Group\");</script>");
+                    {
+                        Response.Write("<script>alert(\"Please fill Group Name\");</script>");
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.StackTrace); 
+                    Console.WriteLine(ex.StackTrace);
                 }
             }
-           
+
         }
         public void GetAllGroups(List<Groups> lstgroup)
         {
@@ -205,7 +205,7 @@ namespace SocialSuitePro.Settings
                "<a href=\"javascript:void(0);\" class=\"grp_name\">" +
                 "<span class=\"text\">" + item.GroupName + "</span>" +
                      "<input id=\"groupname_" + i + "\" type=\"text\" value=\"" + item.GroupName + "\" class=\"grpNameInput\">" +
-               "</a><a onclick=\"DeleteGroup('"+item.Id+"',"+i+")\" title=\"Remove this group\" class=\"delete_group delete_btn trash\" href=\"javascript:void(0);\">Delete Group</a>" +
+               "</a><a onclick=\"DeleteGroup('" + item.Id + "'," + i + ")\" title=\"Remove this group\" class=\"delete_group delete_btn trash\" href=\"javascript:void(0);\">Delete Group</a>" +
           "</li>";
 
                 }
@@ -216,7 +216,7 @@ namespace SocialSuitePro.Settings
               "<a href=\"javascript:void(0);\" class=\"grp_name\">" +
                "<span class=\"text\">" + item.GroupName + "</span>" +
                     "<input id=\"groupname_" + i + "\" type=\"text\" value=\"" + item.GroupName + "\" class=\"grpNameInput\">" +
-              "</a><a onclick=\"DeleteGroup('" + item.Id + "',"+i+")\" title=\"Remove this group\" class=\"delete_group delete_btn trash\" href=\"javascript:void(0);\">Delete Group</a>" +
+              "</a><a onclick=\"DeleteGroup('" + item.Id + "'," + i + ")\" title=\"Remove this group\" class=\"delete_group delete_btn trash\" href=\"javascript:void(0);\">Delete Group</a>" +
          "</li>";
 
                 }
@@ -229,9 +229,9 @@ namespace SocialSuitePro.Settings
         public void ProfilesAvailabeforuser(Guid UserId)
         {
             string bindprofiles = string.Empty;
-         
+
             SocialProfilesRepository socioprofilerepo = new SocialProfilesRepository();
-            List<SocialProfile>  lstsocialprofile =     socioprofilerepo.getAllSocialProfilesOfUser(UserId);
+            List<SocialProfile> lstsocialprofile = socioprofilerepo.getAllSocialProfilesOfUser(UserId);
             foreach (SocialProfile item in lstsocialprofile)
             {
 
@@ -243,7 +243,7 @@ namespace SocialSuitePro.Settings
                         FacebookAccount facebookaccount = fbaccreop.getFacebookAccountDetailsById(item.ProfileId, UserId);
 
                         bindprofiles +=
-                                       "<div onclick=\"transfertoGroup('facebook','"+item.ProfileId+"')\" id=\"usergroups_"+item.ProfileId+"\" class=\"ws_conct active\"> <span class=\"img\"><img width=\"48\" height=\"48\" src=\"http://graph.facebook.com/" + item.ProfileId + "/picture?type=small\" alt=\"\"><i><img width=\"16\" height=\"16\" src=\"../Contents/img/fb_icon.png\" alt=\"\"></i></span><div class=\"fourfifth\">" +
+                                       "<div onclick=\"transfertoGroup('facebook','" + item.ProfileId + "')\" id=\"usergroups_" + item.ProfileId + "\" class=\"ws_conct active\"> <span class=\"img\"><img width=\"48\" height=\"48\" src=\"http://graph.facebook.com/" + item.ProfileId + "/picture?type=small\" alt=\"\"><i><img width=\"16\" height=\"16\" src=\"../Contents/img/fb_icon.png\" alt=\"\"></i></span><div class=\"fourfifth\">" +
                                        "<div class=\"location-container\">" + facebookaccount.FbUserName + "</div><span class=\"add remove\">✖</span></div></div>";
                     }
                 }
@@ -274,13 +274,13 @@ namespace SocialSuitePro.Settings
                         LinkedInAccountRepository linkedaccrepo = new LinkedInAccountRepository();
                         LinkedInAccount linkedaccount = linkedaccrepo.getUserInformation(UserId, item.ProfileId);
                         string profileimgurl = string.Empty;
-                        if (string.IsNullOrEmpty(linkedaccount.ProfileImageUrl))
+                        if (linkedaccount.ProfileUrl == string.Empty)
                         {
                             profileimgurl = "../../Contents/img/blank_img.png";
                         }
                         else
                         {
-                            profileimgurl = linkedaccount.ProfileImageUrl;
+                            profileimgurl = linkedaccount.ProfileUrl;
                         }
                         bindprofiles += "<div onclick=\"transfertoGroup('linkedin','" + item.ProfileId + "')\" id=\"usergroups_" + item.ProfileId + "\" class=\"ws_conct active\"><span class=\"img\"><img width=\"48\" height=\"48\" alt=\"\" src=\"" + profileimgurl + "\" ><i>" +
                                          "<img width=\"16\" height=\"16\" alt=\"\" src=\"../Contents/img/link_icon.png\"></i></span>" +
@@ -313,7 +313,7 @@ namespace SocialSuitePro.Settings
             }
             AllGroupProfiles.InnerHtml = bindprofiles;
 
-            
+
         }
         public void FacebookOAuthRedirect(object sender, EventArgs e)
         {
@@ -336,7 +336,7 @@ namespace SocialSuitePro.Settings
             {
                 Session["UserAndGroupsForTwitter"] = "twitter";
 
-                oAuthTwitter OAuth = new oAuthTwitter(ConfigurationManager.AppSettings["consumerKey"], ConfigurationManager.AppSettings["consumerSecret"], ConfigurationManager.AppSettings["callbackurl"]);
+                oAuthTwitter OAuth = new oAuthTwitter();
 
                 if (Request["oauth_token"] == null)
                 {
@@ -397,7 +397,7 @@ namespace SocialSuitePro.Settings
             }
             else
             {
-                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "test", "<script type=\"text/javascript\">alert(\"Select the group to add profiles\")</script>",false);
+                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "test", "<script type=\"text/javascript\">alert(\"Select the group to add profiles\")</script>", false);
 
             }
         }

@@ -418,14 +418,14 @@ function facebookdetails(id) {
             success: function (msg) {
                 try {
                     $("#loader_tabpanel1").bind("click", function () {
-                       // alert("refreshWallpostFacebook(id)");
+                        // alert("refreshWallpostFacebook(id)");
                         refreshWallpostFacebook(id);
-                       
+
                     });
                     $("#img_paneltab1").attr('src', "../Contents/img/admin/1.png");
                 } catch (e) {
                 }
-             
+
                 try {
                     $("#title_paneltab1").html("WallPosts");
                 } catch (e) {
@@ -533,7 +533,7 @@ function facebookdetails(id) {
             success: function (msg) {
                 try {
                     $("#loader_tabpanel2").bind("click", function () {
-                       // alert("  refreshFeedsFacebook");
+                        // alert("  refreshFeedsFacebook");
                         refreshFeedsFacebook(id);
 
                     });
@@ -1046,7 +1046,7 @@ function linkedindetails(id) {
             success: function (msg) {
                 try {
                     $("#loader_tabpanel1").bind("click", function () {
-                       // alert("refreshWallpostLinkedin");
+                        // alert("refreshWallpostLinkedin");
                         refreshWallpostLinkedin(id);
 
                     });
@@ -1141,7 +1141,7 @@ function linkedindetails(id) {
 
                 try {
                     $("#loader_tabpanel3").bind("click", function () {
-                       // alert("refreshSchedularMessageLinkedin");
+                        // alert("refreshSchedularMessageLinkedin");
                         refreshSchedularMessageLinkedin(id);
 
                     });
@@ -1359,7 +1359,7 @@ function fbimage(src) {
 }
 
 function fbimageclose() {
-    
+
     $("#popupimage").attr('src', "../Contents/img/43px_on_transparent.gif");
 
 }
@@ -1379,7 +1379,7 @@ function refreshWallpostFacebook(id) {
         contentType: "application/json; charset=utf-8",
         dataType: "html",
         success: function (msg) {
-        
+
             debugger;
             try {
                 //facebookfeeds.load();
@@ -1776,4 +1776,95 @@ function refreshSchedularMessageLinkedin(id) {
 
         }
     });
+}
+
+
+
+
+
+
+
+function facebookLike(id, profileid, fbid) {
+    debugger;
+
+    try {
+
+        var lik = $("#likefb_" + fbid).html();
+
+        if (lik == "Like") {
+            $("#likefb_" + fbid).html("UnLike");
+
+            $.ajax({
+                type: "POST",
+                url: "../Feeds/AjaxFeeds.aspx?op=fblike&fbid=" + fbid + "&profileid=" + profileid,
+                data: '',
+                contentType: "application/json; charset=utf-8",
+                success: function (e) {
+                    debugger;
+                    alertify.success("Updated Successfully");
+                }
+            });
+
+
+        }
+        else if (lik == "UnLike") {
+            $("#likefb_" + fbid).html("Like");
+        }
+
+
+    } catch (e) {
+
+    }
+}
+
+
+function commentText(Mid) {
+    debugger;
+    try {
+        $("#textfb_" + Mid).removeClass('put_comments').addClass('put_comments_display');
+        $("#okfb_" + Mid).removeClass('ok').addClass('ok_display');
+        $("#cancelfb_" + Mid).removeClass('cancel').addClass('cancel_display');
+
+    } catch (e) {
+
+    }
+
+}
+
+
+function cancelFB(Mid) {
+    debugger;
+    try {
+        $("#textfb_" + Mid).val('');
+        $("#textfb_" + Mid).addClass('put_comments').removeClass('put_comments_display');
+        $("#okfb_" + Mid).addClass('ok').removeClass('ok_display');
+        $("#cancelfb_" + Mid).addClass('cancel').removeClass('cancel_display');
+    } catch (e) {
+
+    }
+
+}
+
+function commentFB(fbid, profileid) {
+    debugger;
+    var message = $("#textfb_" + fbid).val();
+    if (message == "") {
+        //alert("Please write something!")
+        alertify.alert("Please write something to Post!");
+        return false;
+    }
+    $.ajax({
+        type: "POST",
+        url: "../Feeds/AjaxFeeds.aspx?op=fbcomment&fbid=" + fbid + "&profileid=" + profileid + "&message=" + message,
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        success: function (e) {
+            debugger;
+            alertify.success("Commented Successfully");
+            cancelFB(fbid);
+        }
+    });
+
+
+
 }

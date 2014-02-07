@@ -3,10 +3,8 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>SocioBoard</title>
-    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">    stLight.options({ publisher: "a29b0812-544b-4524-8c48-56df6534d83f", doNotHash: false, doNotCopy: false, hashAddressBar: false });</script>
+<head id="Head1" runat="server">
+    <title>Socioboard</title>
     <link rel="shortcut icon" href="../Contents/img/ivon.ico" type="image/x-icon">
     <link href="../Contents/css/socialsuite.css" rel="stylesheet" type="text/css" />
     <link href="http://localhost:5334/Contents/css/fonts.css" rel="stylesheet" type="text/css" />
@@ -42,17 +40,17 @@
     <form id="form1" runat="server">
     <div class="container">
         <!--outer-container-->
-        <div class="outer-container">
+        <div class="outer-container" id="p5">
             <div class="header-inner-container">
                 <div class="logo-container">
                     <a href="../Default.aspx">
                         <img src="../Contents/img/ssp/logo-txt.png" alt="" /></a></div>
                 <div class="main-nav">
                 <div class="social_plugin">
-                 <span class='st_facebook_large' displayText='Facebook'></span>
-                <span class='st_twitter_large' displayText='Tweet'></span>
-                <span class='st_linkedin_large' displayText='LinkedIn'></span>
-                <span class='st_plusone_large' displayText='Google +1'></span>
+                 <span class='st_facebook_large'><a target="_blank" href="https://www.facebook.com/SocioBoard"><img src="../Contents/img/ssp/facebook_32.png" alt="Facebook" /></a></span>
+                <span class='st_twitter_large'><a target="_blank" href="https://twitter.com/Socioboard"><img src="../Contents/img/ssp/twitter_32.png" alt="Twitter" /></a></span>
+                <span class='st_linkedin_large'><a target="_blank" href="http://www.linkedin.com/company/socioboard"><img src="../Contents/img/ssp/linkedin_32.png" alt="Linkedin" /></a></span>
+                <span class='st_plusone_large'><a target="_blank" href="https://plus.google.com/s/socioboard"><img src="../Contents/img/ssp/gplus.png" alt="Google+" /></a></span>
                 </div>
                     <nav class="clearfix">
                             <%--<ul class="clearfix">
@@ -91,18 +89,19 @@
     </li>
     <li><a href="../Pricing.aspx">Pricing</a></li>
     <li><a target="_blank"  href="http://wiki.socioboard.com/">Wiki</a></li>
-    <li><a href="#">Download</a>
-        <ul class="sub-menu">
+    <li><a href="../Download.aspx">Download</a>
+        <%--<ul class="sub-menu">
             <li><a href="../iPhone.aspx">iPhone</a></li>
             <li><a href="../iPad.aspx">iPad</a></li>
             <li><a href="../Android.aspx">Android</a></li>
-         </ul>
+         </ul>--%>
     </li>
     <li><a href="#">Insights</a>
         <ul class="sub-menu">
-            <li><a href="../Cases.aspx">Cases</a></li>
-            <li><a href="../Blogs.aspx">Blogs</a></li>
-            <li><a href="../WhitePapers.aspx">WhitePapers</a></li>
+            <li><a target="_blank" href="http://blog.socioboard.com/category/cases">Cases</a></li>
+            <li><a target="_blank" href="http://blog.socioboard.com/">Blogs</a></li>
+
+           <%-- <li><a href="../WhitePapers.aspx">WhitePapers</a></li>--%>
          </ul>
     </li>
     <li><a href="../contact.aspx">Contact Us</a></li>
@@ -120,7 +119,7 @@
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         </asp:ContentPlaceHolder>
         <!--content-sec-container-->
-        <div class="content-sec-container" id="p5">
+        <div class="content-sec-container">
             <div class="footer-inner">
                 <div class="foot-left">
                     <div class="foot-nav-out">
@@ -200,7 +199,7 @@
                         <a href="../Default.aspx">
                             <img src="../Contents/img/ssp/foot-logo.png" alt="" /></a></div>
                     <div class="copy-info">
-                        Copyright &copy; 2014 SOCIOBOARD PVT. LTD. All rights reserved.</div>
+                        Copyright &copy; 2013 - 2014 Socioboard Technologies Pvt. Ltd. All rights reserved.</div>
                     <div class="clear">
                     </div>
                 </div>

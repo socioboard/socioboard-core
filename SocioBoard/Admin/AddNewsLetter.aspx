@@ -7,9 +7,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <script src="../Contents/js/jquery.min.js" type="text/javascript"></script>
  <script type="text/javascript" language="javascript">
-     $(function () {
-         $("#<%= txtSendDate.ClientID %>").datepicker();
+     $(document).ready(function () {
+         txtSendDate.hide();
      });
+
 </script>
 <div id="content">
 	       <asp:ScriptManager ID="ScriptManager1" runat="server">
@@ -20,7 +21,7 @@
 		    <!-- Widget heading -->
 		    <div class="widget-head">
 			    <ul>
-				    <li class="active"><a href="#account-details">User Detail</a></li>
+				    <li class="active"><a href="#account-details">Add News Letter</a></li>
 				    <%--<li class=""><a data-toggle="tab" href="#account-settings" class="glyphicons settings"><i></i>Account settings</a></li>--%>
 			    </ul>
          
@@ -57,14 +58,29 @@
 								<!-- // Group END -->
                                 	<!-- Group -->
 								<div class="control-group">
-									<label class="control-label">Send Date</label>
+									<%--<label class="control-label">Date</label>--%>
 									<div class="controls">
-										<div class="input-append">
-                                      <%--  <input type="text" value="13/06/1988" id="datepicker" >--%>
+										<%--<div class="input-append">
                                             <asp:TextBox ID="txtSendDate" runat="server" Visible="true"></asp:TextBox>
 											   
 											<span class="add-on glyphicons calendar"><i></i></span>
-										</div>
+										</div>--%>
+                                        <div class="form-actions" style="margin: 0;">
+                            <asp:Button ID="unselect" runat="server" Text="UnSelect" 
+                                class="btn btn-icon btn-primary circle_ok" onclick="unselect_Click" />
+						</div>
+                                         <div class="form-actions" style="margin: 0;">
+                            <asp:Button ID="all" runat="server" Text="Select All" 
+                                class="btn btn-icon btn-primary circle_ok" onclick="all_Click" />
+						</div>
+                         <div class="form-actions" style="margin: 0;">
+                            <asp:Button ID="unpaid" runat="server" Text="Select All Unpaid" 
+                                class="btn btn-icon btn-primary circle_ok" onclick="unpaid_Click" />
+						</div>
+                         <div class="form-actions" style="margin: 0;">
+                            <asp:Button ID="paid" runat="server" Text="Select All Paid" 
+                                class="btn btn-icon btn-primary circle_ok" onclick="paid_Click" />
+						</div>
 									</div>
 								</div>
 								<!-- // Group END -->
@@ -94,11 +110,13 @@
 						<!-- // Group END -->
 						
 						<!-- Form actions -->
-						<div class="form-actions" style="margin: 0;">
-                            <asp:Button ID="btnSave" runat="server" Text="Save Changes" 
+						<%--<div class="form-actions" style="margin: 0;">
+                            <asp:Button ID="btnSave" runat="server" Text="Save" 
                                 class="btn btn-icon btn-primary circle_ok" onclick="btnSave_Click"/>
-                            <%--	<button type="submit" class="btn btn-icon btn-primary glyphicons circle_ok"><i></i>Save changes</button>
-							<button type="button" class="btn btn-icon btn-default glyphicons circle_remove"><i></i>Cancel</button>--%>
+						</div>--%>
+                        <div class="form-actions" style="margin: 0;">
+                            <asp:Button ID="sendmail" runat="server" Text="Send Mail" 
+                                class="btn btn-icon btn-primary circle_ok" onclick="sendmail_Click" />
 						</div>
 						<!-- // Form actions END -->
 						

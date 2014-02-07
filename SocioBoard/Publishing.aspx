@@ -518,6 +518,8 @@ background-position:0 0;
                                 <img src="../Contents/img/admin/discovery.png" alt="" />Discovery</a> </li>
                             <li><a href="Reports/GroupStats.aspx">
                                 <img src="../Contents/img/admin/reports.png" alt="" />Reports</a> </li>
+                                <li id="Li1"><a href="../Group/Group.aspx">
+                                <img src="../Contents/img/admin/reports.png" alt="" />Groups</a> </li>
                         </ul>
                     </div>
                 </div>
@@ -633,7 +635,7 @@ background-position:0 0;
             <div class="sidebar-inner">
                 <a class="btn active" id="schedulemessage" onclick="publishcontent(this.id);" href="#">
                     Schedule Message</a><a class="btn" id="wooqueue" onclick="publishcontent(this.id);"
-                        href="#">WooQueue</a> <a id="drafts" onclick="publishcontent(this.id);" class="btn"
+                        href="#">SocioQueue</a> <a id="drafts" onclick="publishcontent(this.id);" class="btn"
                             href="#">Drafts</a> 
                             <%--<a id="rsspost" onclick="publishcontent(this.id);" class="btn"
                                 href="#">Post Via RSS</a>--%>

@@ -150,7 +150,37 @@ namespace SocioBoard.Model
             }
 
         }
+        public void UpdateProfileScheduleMessageStat(Guid Id, bool Status)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        NHibernate.IQuery query = null;
+                        if (Status == true)
+                        {
+                            query = session.CreateQuery("update ScheduledMessage set Status =0 where Id = :id");
+                        }
+                        else
+                        {
+                            query = session.CreateQuery("update ScheduledMessage set Status =1 where Id = :id");
+                        }
+                        //NHibernate.IQuery query = session.CreateQuery("update ScheduledMessage set Status =:Status where Id = :id");
+                        query.SetParameter("id", Id);
+                        //query.SetParameter("Status", Status);
+                        query.ExecuteUpdate();
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                }
+            }
 
+        }
         //public List<ScheduledMessage> getAllMessage()
         //{
         //    using (NHibernate.ISession session = SessionFactory.GetNewSession())

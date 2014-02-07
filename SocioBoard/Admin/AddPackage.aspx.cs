@@ -19,6 +19,11 @@ namespace SocialSuitePro.Admin
         {
             if (!IsPostBack)
             {
+                if (Session["AdminProfile"] == null)
+                {
+                    Response.Redirect("Default.aspx");
+                }
+
                 if (Request.QueryString["Id"] != null)
                 {
                     try
@@ -29,7 +34,7 @@ namespace SocialSuitePro.Admin
                         {
                             txtPackage.Text = pkg.PackageName;
                             txtPricing.Text = pkg.Pricing.ToString();
-                            ddltatus.SelectedValue = pkg.Status.ToString();
+                            //ddltatus.SelectedValue = pkg.Status.ToString();
                         }
                     }
                     catch (Exception ex)
@@ -38,7 +43,7 @@ namespace SocialSuitePro.Admin
                     }
                 }
             }
-            
+
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -53,16 +58,16 @@ namespace SocialSuitePro.Admin
                     objPkg.Id = Guid.NewGuid();
 
                 objPkg.PackageName = txtPackage.Text;
-                objPkg.Pricing =double.Parse(txtPricing.Text);
+                objPkg.Pricing = double.Parse(txtPricing.Text);
                 objPkg.EntryDate = DateTime.Now;
-                objPkg.Status = bool.Parse(ddltatus.SelectedValue);
+                objPkg.Status = true;//bool.Parse(ddltatus.SelectedValue);
                 if (objPkgRepo.checkPackageExists(objPkg.Id))
                     objPkgRepo.UpdatePackage(objPkg);
                 else
                     objPkgRepo.AddPackage(objPkg);
                 Response.Redirect("ManagePackage.aspx");
             }
-            catch(Exception Err)
+            catch (Exception Err)
             {
                 logger.Error(Err.Message);
                 Response.Write(Err.StackTrace);

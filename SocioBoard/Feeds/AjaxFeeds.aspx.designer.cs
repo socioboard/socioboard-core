@@ -7,9 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SocioBoard.Feeds {
+namespace SocialSuitePro.Feeds
+{
     
     
-    public partial class AjaxFeed {
+    public partial class AjaxFeeds {
     }
 }

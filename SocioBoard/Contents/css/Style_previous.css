@@ -4097,13 +4097,17 @@ ul.user-stats li > .photo_stat
 
 #popupchk
  {
-	background-color: #FFFFFF;
-	border-radius: 10px 10px 10px 10px;
-	box-shadow: 0 0 25px 5px #999999;
-	color: #111111;
-	min-width: 1030px;
-	padding: 25px;
-	display:none;
+	  background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 0 25px 5px #999999;
+    color: #111111;
+    display: none;
+    left: 9%;
+    margin: auto;
+    min-width: 1030px;
+    padding: 25px;
+    right: 9%;
+    top: 10%;
 }
 .close_button 
 {
@@ -9939,3 +9943,37 @@ span.button:hover {
 #change_password > span.lblerror {float: left;font-family: arial;font-size: 11px;width: 100%;}
 .cngpwd {background: none repeat scroll 0 0 #333333; border-radius: 5px 5px 5px 5px; color: #FFFFFF; padding: 10px;}
 #btncancel { background: none repeat scroll 0 0 #333333; border-radius: 5px 5px 5px 5px; color: #FFFFFF; padding: 10px 25px;}
+
+
+
+
+p > span.ok, p > span.cancel {
+    background: none repeat scroll 0 0 #F98781;
+    border: 1px solid ##F4594F;
+    border-radius: 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: none;
+    float: right;
+    margin-left: 10px;
+    padding: 5px 14px;
+}
+
+p > span.ok_display, p > span.cancel_display {
+    background: none repeat scroll 0 0 #F98781;
+    border: 1px solid #F4594F;
+    border-radius: 5px;
+    color: #FFFFFF;
+    float: right;
+    margin-left: 10px;
+    padding: 5px 14px;
+}
+
+p > span.like, p > span.comment {
+    color: #1A62AC;
+    cursor: pointer;
+    float: right;
+    font-family: arial;
+    font-size: 12px;
+    margin-left: 10px;
+}

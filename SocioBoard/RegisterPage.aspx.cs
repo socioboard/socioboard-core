@@ -10,17 +10,6 @@ using SocioBoard.Domain;
 using System.Security.Cryptography;
 using System.Text;
 using SocioBoard.Helper;
-using SocioBoard.Domain;
-using SocioBoard.Model;
-using SocioBoard.Helper;
-using System.Security.Cryptography;
-using System.Text;
-using log4net;
-using SocioBoard.Domain;
-using log4net;
-using System.Security.Cryptography;
-using System.Text;
-using SocioBoard.Helper;
 
 namespace SocialSuitePro
 {
@@ -29,7 +18,7 @@ namespace SocialSuitePro
 
         //  ILog logger = LogManager.GetLogger(typeof(Registration));
         // ILog logger = LogManager.GetLogger(typeof(Registration));
-        ILog logger = LogManager.GetLogger(typeof(SocialRegisterPage));
+        ILog logger = LogManager.GetLogger(typeof(RegisterPage));
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

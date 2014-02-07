@@ -20,7 +20,7 @@
 		    <!-- Widget heading -->
 		    <div class="widget-head">
 			    <ul>
-				    <li class="active"><a href="#account-details">User Detail</a></li>
+				    <li class="active"><a href="#account-details">Add News</a></li>
 				    <%--<li class=""><a data-toggle="tab" href="#account-settings" class="glyphicons settings"><i></i>Account settings</a></li>--%>
 			    </ul>
 		    </div>
@@ -63,7 +63,7 @@
 								<div class="control-group">
 									<label class="control-label">Status</label>
 									<div class="controls">
-										<span style="margin: 0;" class="btn-action single glyphicons circle_question_mark" data-toggle="tooltip" data-placement="top" data-original-title="First name is mandatory"><i></i>
+										<span style="margin: 0;" class="btn-action single glyphicons circle_question_mark" ><%--<i></i>--%>
                                         <asp:DropDownList ID="ddlStatus" runat="server">
                                             <asp:ListItem>--Select--</asp:ListItem>
                                             <asp:ListItem Value="True">Enable</asp:ListItem>

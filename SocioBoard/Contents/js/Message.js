@@ -216,7 +216,11 @@ function BindMessages() {
 
     function twittercomments() {
         debugger;
-       var replytext = document.getElementById('Textarea1').value;
+        var replytext = document.getElementById('Textarea1').value;
+        if (replytext == "") {
+            alert("Please write comment then click save!")
+            return false;
+        }
       var commentvl= $.session('mess_id').split(',');
         var mess_id = commentvl[0];
         var replyid =  commentvl[2];

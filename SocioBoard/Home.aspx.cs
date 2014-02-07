@@ -389,13 +389,19 @@ namespace SocialSuitePro
                 SocioBoard.Domain.User user = (User)Session["LoggedUser"];
                 FacebookStatsRepository objfbStatsRepo = new FacebookStatsRepository();
                 ArrayList arrFbStats = objfbStatsRepo.getAllFacebookStatsOfUser(user.Id, days);
+
+                // Get facebook page like ...
+                FacebookAccountRepository ObjAcFbAccount = new FacebookAccountRepository();
+                int TotalLikes = ObjAcFbAccount.getPagelikebyUserId(user.Id);
+
                 strFBArray = "[";
                 int intdays = 1;
                 foreach (var item in arrFbStats)
                 {
                     Array temp = (Array)item;
                     strFBArray += (int.Parse(temp.GetValue(3).ToString()) + int.Parse(temp.GetValue(4).ToString())) + ",";
-                    spanFbFans.InnerHtml = (int.Parse(temp.GetValue(3).ToString()) + int.Parse(temp.GetValue(4).ToString())).ToString();
+                    //spanFbFans.InnerHtml = (int.Parse(temp.GetValue(3).ToString()) + int.Parse(temp.GetValue(4).ToString())).ToString();
+                    spanFbFans.InnerHtml = (TotalLikes).ToString();
                     intdays++;
                 }
                 if (intdays < 7)
@@ -456,7 +462,8 @@ namespace SocialSuitePro
                 if (profilecount < totalaccount)
                 {
                     Session["fbSocial"] = "a";
-                    fb_account.HRef = "http://www.facebook.com/dialog/oauth/?scope=publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,offline_access&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
+                    fb_account.HRef = "http://www.facebook.com/dialog/oauth/?scope=publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,user_groups,offline_access&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
+                    //fb_account.HRef = "http://www.facebook.com/dialog/oauth/?scope=publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,offline_access&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
                     // fb_cont.HRef = fb_account.HRef;
                     Response.Redirect(fb_account.HRef);
                 }

@@ -38,7 +38,7 @@ namespace SocioBoard.Helper
                 string Body = mailhelper.VerificationMail(html, emailid, "");
 
 
-                string Subject = "You have Added to SocialSuitePro Account";
+                string Subject = "You have been added to Socioboard account‏";
                 //            MailHelper.SendMailMessage(host, int.Parse(port.ToString()),fromemail,pass,emailid,string.Empty,string.Empty,Subject,Body);
 
 
@@ -65,8 +65,8 @@ namespace SocioBoard.Helper
                 string host = ConfigurationManager.AppSettings["host"];
                 string port = ConfigurationManager.AppSettings["port"];
                 string pass = ConfigurationManager.AppSettings["password"];
-                string urllogin = "http://ssp.socioboard.com/Default.aspx";
-                string registrationurl = "http://ssp.socioboard.com/Registration.aspx?tid="+teamid;
+                string urllogin = "http://socioboard.com/Default.aspx";
+                string registrationurl = "http://socioboard.com/Registration.aspx?tid="+teamid;
                 string Body = mailhelper.InvitationMail(html, username, sendername, "", urllogin, registrationurl);
                 string Subject = "You've been Invited to " + username + " SocialSuitePro Account";
                 //   MailHelper.SendMailMessage(host, int.Parse(port.ToString()), fromemail, pass, email, string.Empty, string.Empty, Subject, Body);

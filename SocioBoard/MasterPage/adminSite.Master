@@ -64,6 +64,7 @@
 	
 	<!-- LESS.js Library -->
 	<script src="../Contents/common/theme/scripts/plugins/system/less.min.js"></script>
+    <script src="../Contents/js/googleanalytics.js" type="text/javascript"></script>
 </head>
 <body>
     <form id="form1" runat="server">

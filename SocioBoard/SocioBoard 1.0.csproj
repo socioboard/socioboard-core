@@ -36,22 +36,6 @@
     <Reference Include="Facebook">
       <HintPath>lib\Facebook.dll</HintPath>
     </Reference>
-    <Reference Include="GlobusGooglePlusLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\GlobusGooglePlusLib.dll</HintPath>
-    </Reference>
-    <Reference Include="GlobusInstagramLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\GlobusInstagramLib.dll</HintPath>
-    </Reference>
-    <Reference Include="GlobusLinkedinLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\GlobusLinkedinLib.dll</HintPath>
-    </Reference>
-    <Reference Include="GlobusTwitterLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\GlobusTwitterLib.dll</HintPath>
-    </Reference>
     <Reference Include="Hammock, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Hammock.dll</HintPath>
@@ -118,6 +102,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="About.aspx" />
     <Content Include="Admin\AddAdvertisement.aspx" />
     <Content Include="Admin\AddNews.aspx" />
     <Content Include="Admin\AddNewsLetter.aspx" />
@@ -140,6 +125,7 @@
     <Content Include="Admin\UserDetails.aspx" />
     <Content Include="AjaxHome.aspx" />
     <Content Include="AjaxLogin.aspx" />
+    <Content Include="Android.aspx" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Facebook.dll" />
     <Content Include="bin\Facebook.Silverlight.dll" />
@@ -172,6 +158,10 @@
     <Content Include="bin\NHibernateHelper.pdb" />
     <Content Include="bin\SocioBoard.dll" />
     <Content Include="bin\Winthusiasm.HtmlEditor.dll" />
+    <Content Include="Blogs.aspx" />
+    <Content Include="Cases.aspx" />
+    <Content Include="Collaboration.aspx" />
+    <Content Include="Company.aspx" />
     <Content Include="contact.aspx" />
     <Content Include="Contents\common\bootstrap\css\bootstrap.css" />
     <Content Include="Contents\common\bootstrap\css\bootstrap_10.css" />
@@ -1935,6 +1925,7 @@
     <Content Include="Contents\css\style-light.css" />
     <Content Include="Contents\css\style.css" />
     <Content Include="Contents\css\styles.css" />
+    <Content Include="Contents\css\Style_previous.css" />
     <Content Include="Contents\fonts\ariblk.svg" />
     <Content Include="Contents\fonts\code-bold-webfont.svg" />
     <Content Include="Contents\fonts\code-light-webfont.svg" />
@@ -2257,6 +2248,75 @@
     <Content Include="Contents\img\norecord.png" />
     <Content Include="Contents\img\normal.jpg" />
     <Content Include="Contents\img\no_image_found.png" />
+    <Content Include="Contents\img\ssp\advanced_scheduling_publishing.png" />
+    <Content Include="Contents\img\ssp\Alexey-V-Abramov1.jpg" />
+    <Content Include="Contents\img\ssp\amazonaws.png" />
+    <Content Include="Contents\img\ssp\anim-left-pin.png" />
+    <Content Include="Contents\img\ssp\anim-outline-1.png" />
+    <Content Include="Contents\img\ssp\anim-outline-2.png" />
+    <Content Include="Contents\img\ssp\anim-outline-3.png" />
+    <Content Include="Contents\img\ssp\anim-right-pin.png" />
+    <Content Include="Contents\img\ssp\arrow.png" />
+    <Content Include="Contents\img\ssp\arrow_top.png" />
+    <Content Include="Contents\img\ssp\azure.jpg" />
+    <Content Include="Contents\img\ssp\banner-1.jpg" />
+    <Content Include="Contents\img\ssp\banner-2.jpg" />
+    <Content Include="Contents\img\ssp\bullet-1.png" />
+    <Content Include="Contents\img\ssp\constant_real.png" />
+    <Content Include="Contents\img\ssp\disocvery_page.png" />
+    <Content Include="Contents\img\ssp\disocvery_page1.png" />
+    <Content Include="Contents\img\ssp\Download-icon-150x150.png" />
+    <Content Include="Contents\img\ssp\effective_and_effi.png" />
+    <Content Include="Contents\img\ssp\facebook_32.png" />
+    <Content Include="Contents\img\ssp\fb-icon.png" />
+    <Content Include="Contents\img\ssp\feeds_page.png" />
+    <Content Include="Contents\img\ssp\feeds_page1.png" />
+    <Content Include="Contents\img\ssp\foot-logo.png" />
+    <Content Include="Contents\img\ssp\foot-logo1.png" />
+    <Content Include="Contents\img\ssp\gplus.png" />
+    <Content Include="Contents\img\ssp\home_page.png" />
+    <Content Include="Contents\img\ssp\home_page1.png" />
+    <Content Include="Contents\img\ssp\home_page123.png" />
+    <Content Include="Contents\img\ssp\img-1.jpg" />
+    <Content Include="Contents\img\ssp\img-1.png" />
+    <Content Include="Contents\img\ssp\linkedin_32.png" />
+    <Content Include="Contents\img\ssp\login-bg.png" />
+    <Content Include="Contents\img\ssp\logo-bg.png" />
+    <Content Include="Contents\img\ssp\logo-txt.png" />
+    <Content Include="Contents\img\ssp\logo-txt1.png" />
+    <Content Include="Contents\img\ssp\message_page.png" />
+    <Content Include="Contents\img\ssp\message_page1.png" />
+    <Content Include="Contents\img\ssp\nammer-2.png" />
+    <Content Include="Contents\img\ssp\naresh.jpg" />
+    <Content Include="Contents\img\ssp\nav-icon.png" />
+    <Content Include="Contents\img\ssp\people.png" />
+    <Content Include="Contents\img\ssp\phone-banner.png" />
+    <Content Include="Contents\img\ssp\prompt_feeds.png" />
+    <Content Include="Contents\img\ssp\publishing_page.png" />
+    <Content Include="Contents\img\ssp\publishing_page1.png" />
+    <Content Include="Contents\img\ssp\reason-head.png" />
+    <Content Include="Contents\img\ssp\reports.png" />
+    <Content Include="Contents\img\ssp\reports1.png" />
+    <Content Include="Contents\img\ssp\secure-icon.png" />
+    <Content Include="Contents\img\ssp\Sheebani-Chavan.jpg" />
+    <Content Include="Contents\img\ssp\shibu1.png" />
+    <Content Include="Contents\img\ssp\signup-butn.png" />
+    <Content Include="Contents\img\ssp\slidegraph.png" />
+    <Content Include="Contents\img\ssp\smart_inbox.png" />
+    <Content Include="Contents\img\ssp\social_crm.png" />
+    <Content Include="Contents\img\ssp\sumit-sir-460x460-ver-5.jpg" />
+    <Content Include="Contents\img\ssp\s_facebook.png" />
+    <Content Include="Contents\img\ssp\s_googleplus.png" />
+    <Content Include="Contents\img\ssp\s_linkedin.png" />
+    <Content Include="Contents\img\ssp\s_twitter.png" />
+    <Content Include="Contents\img\ssp\team_coll.png" />
+    <Content Include="Contents\img\ssp\trail-butn.png" />
+    <Content Include="Contents\img\ssp\trans.png" />
+    <Content Include="Contents\img\ssp\trial-butn.png" />
+    <Content Include="Contents\img\ssp\twitter.png" />
+    <Content Include="Contents\img\ssp\twitter_32.png" />
+    <Content Include="Contents\img\ssp\unique_social_discovery.png" />
+    <Content Include="Contents\img\ssp\verify-icon.jpg" />
     <Content Include="Contents\img\trial-butn-1.png" />
     <Content Include="Contents\img\trial-butn-2.png" />
     <Content Include="Contents\img\p-m-logo.png" />
@@ -2371,13 +2431,16 @@
     <Content Include="Contents\js\bootstrap-datetimepicker.min.js" />
     <Content Include="Contents\js\bootstrap.min.js" />
     <Content Include="Contents\js\canvasjs.min.js" />
+    <Content Include="Contents\js\career.js" />
     <Content Include="Contents\js\Chart.js" />
     <Content Include="Contents\js\dialog_box.js" />
     <Content Include="Contents\js\DT_bootstrap.js" />
     <Content Include="Contents\js\excanvas.js" />
     <Content Include="Contents\js\Feeds.js" />
+    <Content Include="Contents\js\googleanalytics.js" />
     <Content Include="Contents\js\graph-admin-panel.js" />
     <Content Include="Contents\js\graph-scripts.js" />
+    <Content Include="Contents\js\group.js" />
     <Content Include="Contents\js\Helper.js" />
     <Content Include="Contents\js\Home.js" />
     <Content Include="Contents\js\html5shiv.js" />
@@ -2533,21 +2596,33 @@
     <Content Include="Contents\js\uploadify.swf" />
     <Content Include="Contents\js\UsersAndGroups.js" />
     <Content Include="Contents\js\zoom.js" />
+    <Content Include="Customers.aspx" />
+    <Content Include="Disclaimer.aspx" />
     <Content Include="Discovery.aspx" />
+    <Content Include="Download.aspx" />
+    <Content Include="Engagement.aspx" />
+    <Content Include="Error.aspx" />
     <Content Include="FacebookManager.aspx" />
-    <Content Include="Feature.aspx" />
+    <Content Include="Features.aspx" />
     <Content Include="Feeds\AjaxFeeds.aspx" />
     <Content Include="Feeds\Feeds.aspx" />
     <Content Include="ForgotPassword.aspx" />
     <Content Include="Global.asax" />
     <Content Include="GoogleAnalyticsManager.aspx" />
     <Content Include="GplusManager.aspx" />
+    <Content Include="Group\AjaxGroup.aspx" />
+    <Content Include="Group\Group.aspx" />
+    <Content Include="Group\Group1.aspx" />
+    <Content Include="HelpDesk.aspx" />
     <Content Include="Helper\AjaxHelper.aspx" />
     <Content Include="hibernate.cfg.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Home.aspx" />
+    <Content Include="Insights.aspx" />
     <Content Include="InstagramManager.aspx" />
+    <Content Include="iPad.aspx" />
+    <Content Include="iPhone.aspx" />
     <Content Include="IPNHandler.aspx" />
     <Content Include="Layouts\discovery.htm" />
     <Content Include="Layouts\feedstab.htm" />
@@ -2557,9 +2632,11 @@
     <Content Include="lib\log4net.dll" />
     <Content Include="LinkedInManager.aspx" />
     <Content Include="log.txt" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Mobile.aspx" />
+    <Content Include="Monitoring.aspx" />
+    <Content Include="Partners.aspx" />
+    <Content Include="WhitePapers.aspx" />
+    <Content Include="Wiki.aspx" />
     <EmbeddedResource Include="Mappings\Admin.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -2709,6 +2786,7 @@
     <Content Include="Message\Task.aspx" />
     <Content Include="NetworkLogin.aspx" />
     <Content Include="Pricing.aspx" />
+    <Content Include="Privacy.aspx" />
     <Content Include="Publishing.aspx" />
     <Content Include="RegisterPage.aspx" />
     <Content Include="Registration.aspx" />
@@ -2725,13 +2803,25 @@
     <Content Include="Settings\PersonalSettings.aspx" />
     <Content Include="Settings\UsersAndGroups.aspx" />
     <Content Include="Default.aspx" />
-    <Content Include="SF.aspx" />
-    <Content Include="SNL.aspx" />
-    <Content Include="SP.aspx" />
-    <Content Include="SRP.aspx" />
     <Content Include="TwitterManager.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\AddAdvertisement.aspx.cs">
       <DependentUpon>AddAdvertisement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2858,12 +2948,61 @@
     <Compile Include="AjaxLogin.aspx.designer.cs">
       <DependentUpon>AjaxLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Android.aspx.cs">
+      <DependentUpon>Android.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Android.aspx.designer.cs">
+      <DependentUpon>Android.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Blogs.aspx.cs">
+      <DependentUpon>Blogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Blogs.aspx.designer.cs">
+      <DependentUpon>Blogs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cases.aspx.cs">
+      <DependentUpon>Cases.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cases.aspx.designer.cs">
+      <DependentUpon>Cases.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Collaboration.aspx.cs">
+      <DependentUpon>Collaboration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Collaboration.aspx.designer.cs">
+      <DependentUpon>Collaboration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Company.aspx.cs">
+      <DependentUpon>Company.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Company.aspx.designer.cs">
+      <DependentUpon>Company.aspx</DependentUpon>
+    </Compile>
     <Compile Include="contact.aspx.cs">
       <DependentUpon>contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="contact.aspx.designer.cs">
       <DependentUpon>contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customers.aspx.cs">
+      <DependentUpon>Customers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customers.aspx.designer.cs">
+      <DependentUpon>Customers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Disclaimer.aspx.cs">
+      <DependentUpon>Disclaimer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Disclaimer.aspx.designer.cs">
+      <DependentUpon>Disclaimer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Discovery.aspx.cs">
       <DependentUpon>Discovery.aspx</DependentUpon>
@@ -2967,6 +3106,27 @@
     <Compile Include="Domain\User.cs" />
     <Compile Include="Domain\UserPackageRelation.cs" />
     <Compile Include="Domain\vwTwitterStats.cs" />
+    <Compile Include="Download.aspx.cs">
+      <DependentUpon>Download.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Download.aspx.designer.cs">
+      <DependentUpon>Download.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Engagement.aspx.cs">
+      <DependentUpon>Engagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Engagement.aspx.designer.cs">
+      <DependentUpon>Engagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FacebookManager.aspx.cs">
       <DependentUpon>FacebookManager.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2974,12 +3134,12 @@
     <Compile Include="FacebookManager.aspx.designer.cs">
       <DependentUpon>FacebookManager.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Feature.aspx.cs">
-      <DependentUpon>Feature.aspx</DependentUpon>
+    <Compile Include="Features.aspx.cs">
+      <DependentUpon>Features.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Feature.aspx.designer.cs">
-      <DependentUpon>Feature.aspx</DependentUpon>
+    <Compile Include="Features.aspx.designer.cs">
+      <DependentUpon>Features.aspx</DependentUpon>
     </Compile>
     <Compile Include="Feeds\AjaxFeeds.aspx.cs">
       <DependentUpon>AjaxFeeds.aspx</DependentUpon>
@@ -3019,6 +3179,34 @@
     <Compile Include="GplusManager.aspx.designer.cs">
       <DependentUpon>GplusManager.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Group\AjaxGroup.aspx.cs">
+      <DependentUpon>AjaxGroup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Group\AjaxGroup.aspx.designer.cs">
+      <DependentUpon>AjaxGroup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Group\Group.aspx.cs">
+      <DependentUpon>Group.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Group\Group.aspx.designer.cs">
+      <DependentUpon>Group.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Group\Group1.aspx.cs">
+      <DependentUpon>Group1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Group\Group1.aspx.designer.cs">
+      <DependentUpon>Group1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HelpDesk.aspx.cs">
+      <DependentUpon>HelpDesk.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HelpDesk.aspx.designer.cs">
+      <DependentUpon>HelpDesk.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Helper\AjaxHelper.aspx.cs">
       <DependentUpon>AjaxHelper.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3042,6 +3230,9 @@
     <Compile Include="Helper\SessionFactory.cs" />
     <Compile Include="Helper\TwitterHelper.cs" />
     <Compile Include="Helper\TwitterStatsHelper.cs" />
+    <Compile Include="Helper\upload.ashx.cs">
+      <DependentUpon>upload.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Helper\UrlExtractor.cs" />
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
@@ -3050,12 +3241,33 @@
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Insights.aspx.cs">
+      <DependentUpon>Insights.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Insights.aspx.designer.cs">
+      <DependentUpon>Insights.aspx</DependentUpon>
+    </Compile>
     <Compile Include="InstagramManager.aspx.cs">
       <DependentUpon>InstagramManager.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="InstagramManager.aspx.designer.cs">
       <DependentUpon>InstagramManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="iPad.aspx.cs">
+      <DependentUpon>iPad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="iPad.aspx.designer.cs">
+      <DependentUpon>iPad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="iPhone.aspx.cs">
+      <DependentUpon>iPhone.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="iPhone.aspx.designer.cs">
+      <DependentUpon>iPhone.aspx</DependentUpon>
     </Compile>
     <Compile Include="IPNHandler.aspx.cs">
       <DependentUpon>IPNHandler.aspx</DependentUpon>
@@ -3113,6 +3325,13 @@
     <Compile Include="Message\Task.aspx.designer.cs">
       <DependentUpon>Task.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Mobile.aspx.cs">
+      <DependentUpon>Mobile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mobile.aspx.designer.cs">
+      <DependentUpon>Mobile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Model\AdminRepository.cs" />
     <Compile Include="Model\AdsRepository.cs" />
     <Compile Include="Model\ArchiveMessageRepository.cs" />
@@ -3161,6 +3380,13 @@
     <Compile Include="Model\TwitterStatsRepository.cs" />
     <Compile Include="Model\UserPackageRelationRepository.cs" />
     <Compile Include="Model\UserRepository.cs" />
+    <Compile Include="Monitoring.aspx.cs">
+      <DependentUpon>Monitoring.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Monitoring.aspx.designer.cs">
+      <DependentUpon>Monitoring.aspx</DependentUpon>
+    </Compile>
     <Compile Include="NetworkLogin.aspx.cs">
       <DependentUpon>NetworkLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3168,12 +3394,26 @@
     <Compile Include="NetworkLogin.aspx.designer.cs">
       <DependentUpon>NetworkLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Partners.aspx.cs">
+      <DependentUpon>Partners.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Partners.aspx.designer.cs">
+      <DependentUpon>Partners.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pricing.aspx.cs">
       <DependentUpon>Pricing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pricing.aspx.designer.cs">
       <DependentUpon>Pricing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Privacy.aspx.cs">
+      <DependentUpon>Privacy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privacy.aspx.designer.cs">
+      <DependentUpon>Privacy.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publishing.aspx.cs">
@@ -3288,33 +3528,26 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SNL.aspx.cs">
-      <DependentUpon>SNL.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SNL.aspx.designer.cs">
-      <DependentUpon>SNL.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SP.aspx.cs">
-      <DependentUpon>SP.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SP.aspx.designer.cs">
-      <DependentUpon>SP.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SRP.aspx.cs">
-      <DependentUpon>SRP.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SRP.aspx.designer.cs">
-      <DependentUpon>SRP.aspx</DependentUpon>
-    </Compile>
     <Compile Include="TwitterManager.aspx.cs">
       <DependentUpon>TwitterManager.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="TwitterManager.aspx.designer.cs">
       <DependentUpon>TwitterManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WhitePapers.aspx.cs">
+      <DependentUpon>WhitePapers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WhitePapers.aspx.designer.cs">
+      <DependentUpon>WhitePapers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Wiki.aspx.cs">
+      <DependentUpon>Wiki.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Wiki.aspx.designer.cs">
+      <DependentUpon>Wiki.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -3335,6 +3568,7 @@
     <Folder Include="Contents\common\theme\scripts\plugins\other\excanvas\testcases\.svn\tmp\text-base\" />
     <Folder Include="Contents\common\theme\skins\css\" />
     <Folder Include="Contents\common\theme\skins\less\" />
+    <Folder Include="Contents\cv\" />
     <Folder Include="Log\" />
   </ItemGroup>
   <ItemGroup>
@@ -3607,6 +3841,29 @@
     <None Include="Contents\fonts\tt0102m_-webfont.woff" />
     <None Include="Contents\js\multidatepicker\README.md" />
     <Content Include="MasterPage\adminSite.Master" />
+    <Content Include="Helper\upload.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GlobusMailLib\GlobusMailLib.csproj">
+      <Project>{F0A38425-5313-4E83-9568-B6D9C1D6EFA6}</Project>
+      <Name>GlobusMailLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SocioBoard\Library\GlobusGooglePlusLib\GlobusGooglePlusLib.csproj">
+      <Project>{910F101C-C7E0-47F9-BCB6-CD793362E818}</Project>
+      <Name>GlobusGooglePlusLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SocioBoard\Library\GlobusInstagramLib\GlobusInstagramLib\GlobusInstagramLib.csproj">
+      <Project>{FC2E4794-2CB4-4AAA-A0AD-5483C931B3F0}</Project>
+      <Name>GlobusInstagramLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SocioBoard\Library\GlobusLinkedinLib\GlobusLinkedinLib.csproj">
+      <Project>{DB6AB2D5-8BDD-46C5-AB04-E8313FA19007}</Project>
+      <Name>GlobusLinkedinLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SocioBoard\Library\GlobusTwitterLib\GlobusTwitterLib.csproj">
+      <Project>{7051E5B4-23D1-4C8F-A459-D66AD79BCDF9}</Project>
+      <Name>GlobusTwitterLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

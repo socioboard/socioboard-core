@@ -16,8 +16,14 @@ namespace WooSuite.Admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+
             if (!IsPostBack)
             {
+                if (Session["AdminProfile"] == null)
+                {
+                    Response.Redirect("Default.aspx");
+                }
 
                 if (Request.QueryString["Id"] != null)
                 {
@@ -44,10 +50,10 @@ namespace WooSuite.Admin
                 News objNews = new News();
                 NewsRepository objNewsRepo = new NewsRepository();
                 objNews.NewsDetail = txtNews.Text;
-                objNews.Status=bool.Parse(ddlStatus.SelectedValue);
+                objNews.Status = bool.Parse(ddlStatus.SelectedValue);
                 objNews.EntryDate = DateTime.Now;
                 objNews.ExpiryDate = Convert.ToDateTime(datepicker.Text);
-                objNews.Id = Guid.NewGuid();
+                objNews.Id = Guid.Parse(AddUpdateNews());
                 if (objNewsRepo.checkNewsExists(txtNews.Text))
                     objNewsRepo.UpdateNews(objNews);
                 else
@@ -58,6 +64,20 @@ namespace WooSuite.Admin
                 logger.Error(Err.Message);
                 Response.Write(Err.Message);
             }
+        }
+
+        public string AddUpdateNews()
+        {
+            string ret = string.Empty;
+            if (Request.QueryString["Id"] != null)
+            {
+                ret = Request.QueryString["Id"].ToString();
+            }
+            else
+            {
+                ret = Guid.NewGuid().ToString();
+            }
+            return ret;
         }
     }
 }

@@ -40,13 +40,40 @@ namespace SocialSuitePro.Admin {
         protected global::Winthusiasm.HtmlEditor.HtmlEditor Editor;
         
         /// <summary>
-        /// txtSendDate control.
+        /// unselect control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSendDate;
+        protected global::System.Web.UI.WebControls.Button unselect;
+        
+        /// <summary>
+        /// all control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button all;
+        
+        /// <summary>
+        /// unpaid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button unpaid;
+        
+        /// <summary>
+        /// paid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button paid;
         
         /// <summary>
         /// chkUser control.
@@ -58,12 +85,12 @@ namespace SocialSuitePro.Admin {
         protected global::System.Web.UI.WebControls.CheckBoxList chkUser;
         
         /// <summary>
-        /// btnSave control.
+        /// sendmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSave;
+        protected global::System.Web.UI.WebControls.Button sendmail;
     }
 }

@@ -378,6 +378,15 @@ function addAnotherProfileforMessage(id, network) {
     var divbind = '';
     var innerhtmlofMulti = $("#divformultiusers").html();
     var userid = id.split('_');
+
+     var str=''
+    for(i=1;i<userid.length;i++)
+   {
+   str+=userid[i]+'_';
+   }
+   str=str.substring(0,str.length - 1);
+    userid[1]=str;
+
     var username = document.getElementById('composename_' + userid[1]).innerHTML;
     var innerhtmlofmultischeduler = $("#divformultiusers_scheduler").html();
 

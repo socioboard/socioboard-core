@@ -10,6 +10,7 @@ using System.IO;
 using System.Web;
 
 using log4net;
+using System.Configuration;
 
 namespace SocioBoard.Helper
 {
@@ -159,15 +160,57 @@ namespace SocioBoard.Helper
                     var transportWeb = SMTP.GetInstance(credentials);
 
                     // Send the email.
-                    transportWeb.Deliver(myMessage);
+                    //transportWeb.Deliver(myMessage);
+
+                    MailHelper objMailHelper = new MailHelper();
+                    string res = objMailHelper.SendMailByMandrill(Host, port, from, passsword, to, bcc, cc, subject, body, sendgridUserName, sendgridPassword);
+
                 
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+                    GlobusMailLib.MailHelper objMailHelper = new GlobusMailLib.MailHelper();
+
+                    string res=objMailHelper.SendMailByMandrill(Host, port, from, passsword, to, bcc, cc, subject, body, sendgridUserName, sendgridPassword);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine(ex.Message);
+                    logger.Error(ex.Message);
+                }
+
+                
+            }
+        }
+
+
+        public string SendMailByMandrill(string Host, int port, string from, string passsword, string to, string bcc, string cc, string subject, string body, string sendgridUserName, string sendgridPassword)
+        {
+            string res = string.Empty;
+            try
+            {
+                //username = ConfigurationManager.AppSettings["Mandrillusername"];
+                Host = ConfigurationManager.AppSettings["Mandrillhost"];
+
+                port = Convert.ToInt32(ConfigurationManager.AppSettings["Mandrillport"]);
+
+                sendgridPassword = ConfigurationManager.AppSettings["Mandrillpassword"];
+
+                from = ConfigurationManager.AppSettings["fromemail"];
+
+                GlobusMailLib.MailHelper objMailHelper = new GlobusMailLib.MailHelper();
+
+                res = objMailHelper.SendMailByMandrill(Host, port, from, passsword, to, bcc, cc, subject, body, sendgridUserName, sendgridPassword);
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 logger.Error(ex.Message);
             }
+            return res;
         }
-
     } 
 }

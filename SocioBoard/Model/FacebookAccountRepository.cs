@@ -188,6 +188,43 @@ namespace SocioBoard.Model
             }
         }
 
+        public int UpdateFBAccessTokenByFBUserId(string fbUserId, string accessToken)
+        {
+            int update = 0;
+
+            try
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        try
+                        {
+                            update = session.CreateQuery("Update FacebookAccount set AccessToken = :accessToken where  FbUserId = :fbUserId")
+                                .SetParameter("accessToken", accessToken)
+                                .SetParameter("fbUserId", fbUserId)
+                                .ExecuteUpdate();
+
+                            transaction.Commit();
+
+
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                            // return 0;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error : " + ex.StackTrace);
+            }
+
+            return update;
+        }
+
         public ArrayList getAllFacebookAccountsOfUser(Guid UserId)
         {
 
@@ -465,6 +502,40 @@ namespace SocioBoard.Model
                     }
                 }
             }
+        }
+
+        public int getPagelikebyUserId(Guid UserId)
+        {
+            int TotalLikes = 0;
+
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        NHibernate.IQuery query = session.CreateQuery("SELECT SUM(Friends) FROM FacebookAccount WHERE TYPE=:PageType AND UserId =:userid")
+                                        .SetParameter("userid", UserId)
+                                        .SetParameter("PageType", "page");
+
+                        ArrayList alstFBAccounts = new ArrayList();
+
+                        foreach (var item in query.Enumerable())
+                        {
+                            TotalLikes = Convert.ToInt32(item);
+                            break;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                }
+            }
+
+            return TotalLikes;
+
         }
         
     }

@@ -15,7 +15,7 @@ namespace SocialSuitePro
 {
     public partial class NetworkLogin : System.Web.UI.Page
     {
-        ILog logger = LogManager.GetLogger(typeof(SocialNetworkLogin));
+        ILog logger = LogManager.GetLogger(typeof(NetworkLogin));
 
         protected void Page_Load(object sender, EventArgs e)
         {

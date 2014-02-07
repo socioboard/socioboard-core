@@ -76,6 +76,43 @@ namespace SocioBoard.Model
             }
         }
 
+        public int UpdateLDAccessTokenByLDUserId(string LDUserId, string accessToken)
+        {
+            int update = 0;
+
+            try
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        try
+                        {
+                            update = session.CreateQuery("Update LinkedInAccount set OAuthToken = :accessToken where UserId = :LDUserId")
+                                .SetParameter("accessToken", accessToken)
+                                .SetParameter("LDUserId", LDUserId)
+                                .ExecuteUpdate();
+
+                            transaction.Commit();
+                            update = 1;
+
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                            // return 0;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error : " + ex.StackTrace);
+            }
+
+            return update;
+        }
+
         public ArrayList getAllLinkedinAccountsOfUser(Guid UserId)
         {
 

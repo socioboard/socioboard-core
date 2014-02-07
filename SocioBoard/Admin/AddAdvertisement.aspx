@@ -3,6 +3,15 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <div id="content">
+<script type="text/jscript" src="../Contents/js/jquery-1.9.1.min.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            // alert("ok");
+            $("#<%= datepicker.ClientID %>").datepicker();
+
+        });
+    </script>
 	
     <div class="innerLR" style="margin-top: 10px; margin-left:-15px;">
 	    <!-- Widget -->
@@ -10,7 +19,7 @@
 		    <!-- Widget heading -->
 		    <div class="widget-head">
 			    <ul>
-				    <li class="active"><a href="#account-details">User Detail</a></li>
+				    <li class="active"><a href="#account-details">Add Advertisement</a></li>
 				    <%--<li class=""><a data-toggle="tab" href="#account-settings" class="glyphicons settings"><i></i>Account settings</a></li>--%>
 			    </ul>
 		    </div>
@@ -28,9 +37,9 @@
 									<label class="control-label">Advertisement</label>
 									<div class="controls">
                                                                               
-										<span style="margin: 0;" class="btn-action single glyphicons circle_question_mark" data-toggle="tooltip" data-placement="top" data-original-title="First name is mandatory"><i></i>
+										
                                        <asp:TextBox ID="txtAdv" runat="server"></asp:TextBox>
-                                        </span>
+                                       
 									</div>
 								</div>
 								<!-- // Group END -->
@@ -39,29 +48,24 @@
 							
 								<!-- Group -->
 								<div class="control-group">
-									<label class="control-label">Url</label>
+									<label class="control-label"> Image url</label>
 									<div class="controls">
                                                                               
-										<span style="margin: 0;" class="btn-action single glyphicons circle_question_mark" data-toggle="tooltip" data-placement="top" data-original-title="First name is mandatory"><i></i>
+										
                                           <asp:TextBox ID="txtUrl" runat="server"></asp:TextBox>
-                                        </span>
+                                      
 									</div>
                                     <div class="or">OR</div>
                                     <label class="control-label" style="width:auto; margin-right:10px; margin-left: 6px;">Image</label>
 									<div class="controls" style="width:200px;">
-                                                                              
-										<span class="btn-action single glyphicons circle_question_mark" style="margin: 0; width:200px;"  data-toggle="tooltip" data-placement="top" data-original-title="First name is mandatory">
                                             <asp:FileUpload ID="fuAdv" runat="server" />
-                                        </span>
 									</div>
-                                    <div class="or">OR</div>
+                                   <%-- <div class="or">OR</div>
                                     <label class="control-label" style="width:auto; margin-right:10px; margin-left: 6px;">Script</label>
 									<div class="controls">
-                                                                              
-										<span style="margin: 0;" class="btn-action single glyphicons circle_question_mark" data-toggle="tooltip" data-placement="top" data-original-title="First name is mandatory"><i></i>
                                             <asp:TextBox ID="txtScript" runat="server"></asp:TextBox>
-                                        </span>
-									</div>
+                                   
+									</div>--%>
 
 								</div>
 								<!-- // Group END -->
@@ -86,8 +90,6 @@
 										<div class="input-append">
                                       <%--  <input type="text" value="13/06/1988" id="datepicker" >--%>
                                             <asp:TextBox ID="datepicker" runat="server" Visible="true"></asp:TextBox>
-											   
-											<span class="add-on glyphicons calendar"><i></i></span>
 										</div>
 									</div>
 								</div>
@@ -96,13 +98,11 @@
 								<div class="control-group">
 									<label class="control-label">Status</label>
 									<div class="controls">
-										<span style="margin: 0;" class="btn-action single glyphicons circle_question_mark" data-toggle="tooltip" data-placement="top" data-original-title="First name is mandatory"><i></i>
                                         <asp:DropDownList ID="ddlStatus" runat="server">
                                             <asp:ListItem>--Select--</asp:ListItem>
                                             <asp:ListItem Value="True">Enable</asp:ListItem>
                                             <asp:ListItem Value="False">Disable</asp:ListItem>
                                         </asp:DropDownList>
-                                        </span>
 									</div>
 								</div>
 								<!-- // Group END -->

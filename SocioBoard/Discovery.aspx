@@ -264,20 +264,20 @@
         $("#discovery").addClass('active');
         $("#publishing").removeClass('active');
         debugger;
-      
-    debugger;
 
-    $(document).ready(function () {
-        BindTwitterInDiscovery();
-        GetSearchedKeyword();
-        $("#smartsearch").click(function () {
-            debugger;
-            $("#content").load("../Layouts/discovery.htm");
+        debugger;
+
+        $(document).ready(function () {
+            BindTwitterInDiscovery();
+            GetSearchedKeyword();
+            $("#smartsearch").click(function () {
+                debugger;
+                $("#content").load("../Layouts/discovery.htm");
+
+            });
+
 
         });
-
-
-    });
     
     
 
