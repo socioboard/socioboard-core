@@ -111,8 +111,8 @@
         <div id="top-nav">
             <div class="container">
                 <div id="logo">
-                    <a href="">
-                        <img src="../Contents/img/under_sspro_logo.png" alt="SocialSuitePro" /></a>
+                    <a href="../Home.aspx">
+                        <img src="../Contents/img/under_sspro_logo.png" alt="Socio Board" /></a>
                 </div>
                 <div id="infocontainer" style="width: 730px;">
 						<div id="msgcontainer">
@@ -121,11 +121,11 @@
 						</div>
 						Information! Now You have <a href="~/Message/Messages.aspx" id="incomMessages" runat="server">25</a> Incoming Message and <a runat="server" id="incomTasks" href="../Message/Task.aspx">0</a> Task
 
-                         <a href="../Default.aspx" class="woo_logout" style="text-decoration:none; color: #CECECE;"><img src="../Contents/img/logout_woo.png" style="margin-right:4px;" alt="" />Logout</a>
+                         <a href="../Default.aspx?type=logout" class="woo_logout" style="text-decoration:none; color: #CECECE;"><img src="../Contents/img/logout_woo.png" style="margin-right:4px;" alt="" />Logout</a>
                     <div  id="errsuccess" class="greenerrormsg"><span id="errsuccessmsg" class="msg">Successfull your work</span>          <span class="cross">X</span></div>                   
 			  </div>
                 
-                <div id="cmposecontainer">
+                <div id="cmposecontainer" runat="server">
                     <div id="composecontent">
                         <a href="#">
                             <img src="../Contents/img/admin/111.png" />

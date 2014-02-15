@@ -111,5 +111,39 @@ namespace SocioBoard.Model
                 }
             }
         }
+
+
+        public int ChangePwd(string newpassword, string UserName)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //NHibernate.IQuery query = session.CreateQuery("Update User set Password=:password where EmailId = :email and Password = :oldpass");
+                        //query.SetParameter("email", Emailid);
+                        //query.SetParameter("oldpass",oldpassword);
+                        //query.SetParameter("password",newpassword);
+                        //query.ExecuteUpdate();
+
+                        int i = session.CreateQuery("Update Admin set Password=:password where UserName = :email")
+                                  .SetParameter("email", UserName)
+                                  .SetParameter("password", newpassword)
+                                  .ExecuteUpdate();
+                        transaction.Commit();
+                        return i;
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+                }
+            }
+        }
+
     }
 }

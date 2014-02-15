@@ -287,29 +287,29 @@ namespace SocioBoard.Message
                             {
                                 message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img id=\"formprofileurl_" + sorteddatacount + "\" onclick=\"detailsprofile(this.alt);\" src=\"" + item.ImgUrl + "\" height=\"48\" width=\"48\" alt=\"\" title=\"\" />" +
                                              "<a href=\"#\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/twticon.png\" width=\"16\" height=\"16\" alt=\"\"></a></div>" +
-                                             "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:60px;float:left\"><p>" + item.Message + "</p>" +
+                                             "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>" + item.Message + "</p>" +
                                                  "<div class=\"message-list-info\"><span><a href=\"#\" id=\"rowname_" + sorteddatacount + "\" onclick=\"detailsprofile(" + item.ProfileId + ");\">" + item.ProfileId + "</a> " + item.CreatedDateTime + "</span>" +
                                                  "<div class=\"scl\">" +
-                                                 "<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
+                                                 "<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
                             }
                             else if (item.SocialGroup == "facebook")
                             {
                                 message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img id=\"formprofileurl_" + sorteddatacount + "\" onclick=\"detailsprofile(this.alt);\" src=\"" + item.ImgUrl + "\" height=\"48\" width=\"48\" alt=\"\" title=\"\" />" +
                                             "<a href=\"#\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/fb_icon.png\" width=\"16\" height=\"16\" alt=\"\"></a></div>" +
-                                            "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:60px;float:left\"><p>" + item.Message + "</p>" +
+                                            "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>" + item.Message + "</p>" +
                                                 "<div class=\"message-list-info\"><span><a href=\"#\" id=\"rowname_" + sorteddatacount + "\" onclick=\"getFacebookProfiles(" + item.ProfileId + ");\">" + item.ProfileId + "</a> " + item.CreatedDateTime + "</span>" +
                                                 "<div class=\"scl\">" +
-                                                "<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
+                                                "<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
 
                             }
                             else if (item.SocialGroup == "googleplus")
                             {
                                 message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img id=\"formprofileurl_" + sorteddatacount + "\" onclick=\"detailsprofile(this.alt);\" src=\"" + item.ImgUrl + "\" height=\"48\" width=\"48\" alt=\"\" title=\"\" />" +
                                             "<a href=\"#\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/google_plus.png\" width=\"16\" height=\"16\" alt=\"\"></a></div>" +
-                                            "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:60px;float:left\"><p>" + item.Message + "</p>" +
+                                            "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>" + item.Message + "</p>" +
                                                 "<div class=\"message-list-info\"><span><a href=\"#\" id=\"rowname_" + sorteddatacount + "\" onclick=\"detailsprofile(" + item.ProfileId + ");\">" + item.ProfileId + "</a> " + item.CreatedDateTime + "</span>" +
                                                 "<div class=\"scl\">" +
-                                                "<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a></div></div></div></div></li>";
+                                                "<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a></div></div></div></div></li>";
 
                             }
                             message += "</li>";
@@ -580,7 +580,7 @@ namespace SocioBoard.Message
                             }
                             message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img id=\"formprofileurl_" + sorteddatacount + "\" onclick=\"detailsprofile(this.alt);\" src=\"" + row["FromProfileUrl"] + "\" height=\"48\" width=\"48\" alt=\"" + row["FromId"] + "\" title=\"" + row["FromName"] + "\" />" +
                                                    "<a href=\"#\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/twticon.png\" width=\"16\" height=\"16\" alt=\"\"></a></div><span id=\"network_" + sorteddatacount + "\" style=\"display:none;\">twitter</span>" +
-                                                   "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:60px;float:left\"><p>";
+                                                   "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>";
 
                             string[] str = urlextarct.splitUrlFromString(row["Message"].ToString());
 
@@ -603,7 +603,7 @@ namespace SocioBoard.Message
                             message += "</p>" +
                                          "<div class=\"message-list-info\"><span><a href=\"#\" id=\"rowname_" + sorteddatacount + "\" onclick=\"detailsprofile('" + row["FromId"] + "');\">" + row["FromName"] + "</a><div id=\"createdtime_" + sorteddatacount + "\">" + row["MessageDate"].ToString() + "</div></span>" +
                                          "<div class=\"scl\">" +
-                                         "<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\"  onclick=replyfunction(" + sorteddatacount + ",'twitter','" + row["MessageId"].ToString() + "','" + row["FromId"] + "') alt=\"\"/></a><a id=\"savearchive_" + sorteddatacount + "\" href=\"#\" onclick=\"savearchivemsg(" + sorteddatacount + ",'twitter','" + row["MessageId"].ToString() + "','" + row["ProfileId"].ToString() + "');\"><img src=\"../Contents/img/archive.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a></div></div></div></div></li>";
+                                         "<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\"  onclick=replyfunction(" + sorteddatacount + ",'twitter','" + row["MessageId"].ToString() + "','" + row["FromId"] + "') alt=\"\"/></a><a id=\"savearchive_" + sorteddatacount + "\" href=\"#\" onclick=\"savearchivemsg(" + sorteddatacount + ",'twitter','" + row["MessageId"].ToString() + "','" + row["ProfileId"].ToString() + "');\"><img title=\"Archive\" src=\"../Contents/img/archive.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a></div></div></div></div></li>";
                         }
                         catch (Exception ex)
                         {
@@ -628,7 +628,7 @@ namespace SocioBoard.Message
 
                             message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img id=\"formprofileurl_" + sorteddatacount + "\" onclick=\"getFacebookProfiles(this.alt);\" src=\"" + row["FromProfileUrl"] + "\" height=\"48\" width=\"48\" alt=\"" + row["FromId"] + "\" title=\"" + row["FromName"] + "\" />" +
                                                        "<a href=\"#\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/fb_icon.png\" width=\"16\" height=\"16\" alt=\"\"></a></div>" +
-                                                       "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:60px;float:left\"><p>";
+                                                       "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>";
 
 
                             string[] str = urlextarct.splitUrlFromString(row["Message"].ToString());
@@ -649,7 +649,7 @@ namespace SocioBoard.Message
                             message += "</p>" +
                                              "<div class=\"message-list-info\"><span><a href=\"#\" id=\"rowname_" + sorteddatacount + "\" onclick=\"getFacebookProfiles(" + row["FromId"] + ");\">" + row["FromName"] + "</a><div id=\"createdtime_" + sorteddatacount + "\">" + row["MessageDate"].ToString() + "</div></span>" +
                                              "<div class=\"scl\">" +
-                                             "<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img src=\"../Contents/img/admin/goto.png\"  width=\"12\" height=\"12\" onclick=replyfunction(" + sorteddatacount + ",'facebook','" + row["MessageId"].ToString() + "','" + row["FromId"] + "')  alt=\"\"/></a><a id=\"savearchive_" + sorteddatacount + "\" href=\"#\" onclick=\"savearchivemsg(" + sorteddatacount + ",'facebook','" + row["MessageId"].ToString() + "','" + row["ProfileId"].ToString() + "');\"><img src=\"../Contents/img/archive.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a></div></div></div></div></li>";
+                                             "<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img title=\"Comment\" src=\"../Contents/img/admin/goto.png\"  width=\"12\" height=\"12\" onclick=replyfunction(" + sorteddatacount + ",'facebook','" + row["MessageId"].ToString() + "','" + row["FromId"] + "')  alt=\"\"/></a><a id=\"savearchive_" + sorteddatacount + "\" href=\"#\" onclick=\"savearchivemsg(" + sorteddatacount + ",'facebook','" + row["MessageId"].ToString() + "','" + row["ProfileId"].ToString() + "');\"><img title=\"Archive\" src=\"../Contents/img/archive.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a></div></div></div></div></li>";
                         }
                         catch (Exception ex)
                         {
@@ -672,7 +672,7 @@ namespace SocioBoard.Message
                             }
                             message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img id=\"formprofileurl_" + sorteddatacount + "\" onclick=\"detailsprofile(this.alt);\" src=\"" + row["FromProfileUrl"] + "\" height=\"48\" width=\"48\" alt=\"" + row["FromName"] + "\" title=\"" + row["FromName"] + "\" />" +
                                             "<a href=\"#\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/google_plus.png\" width=\"16\" height=\"16\" alt=\"\"></a></div>" +
-                                            "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:60px;float:left\"><p>";
+                                            "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>";
 
                             string[] str = urlextarct.splitUrlFromString(row["Message"].ToString());
                             foreach (string substritem in str)
@@ -693,7 +693,7 @@ namespace SocioBoard.Message
                             message += "</p>" +
                                              "<div class=\"message-list-info\"><span><a href=\"#\" id=\"rowname_" + sorteddatacount + "\" onclick=\"getGooglePlusProfiles('" + row["FromId"] + "');\">" + row["FromName"] + "</a><div id=\"createdtime_" + sorteddatacount + "\">" + row["MessageDate"].ToString() + "</div></span>" +
                                              "<div class=\"scl\">" +
-                                             "<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a><a id=\"savearchive_" + sorteddatacount + "\" href=\"#\" onclick=\"savearchivemsg(" + sorteddatacount + ",'googleplus','" + row["MessageId"].ToString() + "','" + row["ProfileId"].ToString() + "');\"><img src=\"../Contents/img/archive.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a></div></div></div></div></li>";
+                                             "<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a><a id=\"savearchive_" + sorteddatacount + "\" href=\"#\" onclick=\"savearchivemsg(" + sorteddatacount + ",'googleplus','" + row["MessageId"].ToString() + "','" + row["ProfileId"].ToString() + "');\"><img title=\"Archive\" src=\"../Contents/img/archive.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a></div></div></div></div></li>";
                         }
                         catch (Exception ex)
                         {

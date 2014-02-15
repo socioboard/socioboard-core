@@ -21,7 +21,69 @@ namespace SocialSuitePro
                 //UserRepository userrepo = new UserRepository();
                 //List<User> lst = userrepo.testing();
 
-                Session.Clear();
+                
+
+                
+
+                //if (Session["objUserActivationException"] != null)
+                //{
+                //    //UserActivation userActivation = (UserActivation)Session["objUserActivation"];
+                //    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('objUserActivationException');", true);
+                //    //return;
+                //}
+                //else
+                //{
+                //    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('objUserActivationException Is null');", true);
+                //}
+
+                //if (Session["objUserActivation"] != null)
+                //{
+                //    UserActivation userActivation = (UserActivation)Session["objUserActivation"];
+                //    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('ActivationStatus: " + userActivation.ActivationStatus + " UserId : " + userActivation.UserId + "');", true);
+                //    //return;
+                //}
+                //else
+                //{
+                //    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('objUserActivation Is null');", true);
+                //}
+
+               
+
+                if (Session["isemailexist"] != null)
+                {
+                    if (Session["isemailexist"].ToString() == "emailnotexist")
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Your email id was not returned by Facebook graph API!');", true);
+                        Session["isemailexist"] = null;
+                        return;
+                    }
+                }
+                if (Session["fblogout"] != null)
+                {
+                    if (Session["fblogout"].ToString() == "NOTACTIVATED")
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('You are Blocked by Admin Please contact Admin!');", true);
+                        Session["fblogout"] = null;
+                        return;
+                    }
+                }
+                if (Request.QueryString != null)
+                {
+                    if (Request.QueryString["type"] == "logout")
+                    {
+                        Session.Abandon();
+                        Session.Clear();
+                    }
+
+                }
+                if (Session["LoggedUser"] != null)
+                    Response.Redirect("Home.aspx");
+
+
+
+
+
+               // Session.Clear();
 
             }
             catch (Exception ex)

@@ -46,14 +46,24 @@ namespace SocialSuitePro
                     }
                     else
                     {
-                        Session["LoggedUser"] = user;
-                        // List<User> lstUser = new List<User>();
-                        if (Session["LoggedUser"] != null)
+                        if (user.UserStatus == 1)
                         {
-                            SocioBoard.Domain.User.lstUser.Add((User)Session["LoggedUser"]);
-                            Application["OnlineUsers"] = SocioBoard.Domain.User.lstUser;
+                            Session["LoggedUser"] = user;
+                            // List<User> lstUser = new List<User>();
+                            if (Session["LoggedUser"] != null)
+                            {
+                                SocioBoard.Domain.User.lstUser.Add((User)Session["LoggedUser"]);
+                                Application["OnlineUsers"] = SocioBoard.Domain.User.lstUser;
+                            }
+                            Response.Write("user");
                         }
-                        Response.Write("user");
+
+                        else
+                        {
+                            Response.Write("You are Blocked by Admin Please contact Admin!");
+                        }
+
+
                     }
                 }
                 catch (Exception ex)
@@ -66,6 +76,7 @@ namespace SocialSuitePro
             else if (Request.QueryString["op"] == "register")
             {
                 User user = new User();
+                UserActivation objUserActivation = new UserActivation();
                 UserRepository userrepo = new UserRepository();
                 SocioBoard.Helper.SessionFactory.configfilepath = Server.MapPath("~/hibernate.cfg.xml");
                 Session["AjaxLogin"] = "register";
@@ -96,7 +107,32 @@ namespace SocialSuitePro
                         UserRepository.Add(user);
                         Session["LoggedUser"] = user;
                         Response.Write("user");
-                        MailSender.SendEMail(user.UserName, user.Password, user.EmailId);
+
+                        objUserActivation.Id = Guid.NewGuid();
+                        objUserActivation.UserId = user.Id;
+                        objUserActivation.ActivationStatus = "0";
+                        UserActivationRepository.Add(objUserActivation);
+
+                        //add value in userpackage
+                        UserPackageRelation objUserPackageRelation = new UserPackageRelation();
+                        UserPackageRelationRepository objUserPackageRelationRepository = new UserPackageRelationRepository();
+                        PackageRepository objPackageRepository = new PackageRepository();
+
+                        Package objPackage = objPackageRepository.getPackageDetails(user.AccountType);
+                        objUserPackageRelation.Id = new Guid();
+                        objUserPackageRelation.PackageId = objPackage.Id;
+                        objUserPackageRelation.UserId = user.Id;
+                        objUserPackageRelation.PackageStatus = true;
+
+                        objUserPackageRelationRepository.AddUserPackageRelation(objUserPackageRelation);
+
+
+                        SocioBoard.Helper.MailSender.SendEMail(user.UserName , user.Password, user.EmailId, objUserActivation.Id.ToString());
+
+
+
+
+                        //MailSender.SendEMail(user.UserName, user.Password, user.EmailId);
                         // lblerror.Text = "Registered Successfully !" + "<a href=\"login.aspx\">Login</a>";
                     }
                     else

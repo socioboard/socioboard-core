@@ -51,7 +51,7 @@ namespace SocialSuitePro
                 UserRepository objUserRepo = new UserRepository();
                 Registration regObject = new Registration();
 
-                if (!string.IsNullOrEmpty(txtEmail.Text))
+                if (!string.IsNullOrEmpty(txtEmail.Text.Trim()))
                 {
                     string strUrl = string.Empty;
                     // c.customer_email = txtEmail.Text.Trim();
@@ -63,7 +63,7 @@ namespace SocialSuitePro
                         string URL = Request.Url.AbsoluteUri;
                         //strUrl = Server.MapPath("~/ChangePassword.aspx") + "?str=" + txtEmail.Text + "&type=forget";
                         strUrl = URL.Replace("ForgetPassword.aspx", "ChangePassword.aspx" + "?str=" + regObject.MD5Hash(txtEmail.Text) + "&type=forget");
-                        strUrl = (strUrl+"?userid=" + usr.Id).ToString();
+                        strUrl = (strUrl + "?userid=" + usr.Id).ToString();
 
                         string MailBody = "<body bgcolor=\"#FFFFFF\"><!-- Email Notification from SocioBoard.com-->" +
                     "<table id=\"Table_01\" style=\"margin-top: 50px; margin-left: auto; margin-right: auto;\"" +
@@ -71,7 +71,7 @@ namespace SocialSuitePro
                    "<td height=\"20px\" style=\"background-color: rgb(222, 222, 222); text-align: center; font-size: 15px; font-weight: bold; font-family: Arial; color: rgb(51, 51, 51); float: left; width: 100%; margin-top: 7px; padding-top: 10px; border-bottom: 1px solid rgb(204, 204, 204); padding-bottom: 10px;\">" +
                        "SocioBoard</td></tr><!--Email content--><tr>" +
                    "<td style=\"background-color: #dedede; padding-top: 10px; padding-left: 25px; padding-right: 25px; padding-bottom: 30px; font-family: Tahoma; font-size: 14px; color: #181818; min-height: auto;\"><p>Hi , " + usr.UserName + "</p><p>" +
-                       "As your request, Reset Password information to Click This Link : <a href=" + strUrl + " style=\"text-decoration:none;\">Reset Password</a></td></tr><tr>" +
+                       "Please click this link to change your password : <a href=" + strUrl + " style=\"text-decoration:none;\">Reset Password</a></td></tr><tr>" +
                    "<td style=\"background-color: rgb(222, 222, 222); margin-top: 10px; padding-left: 20px; height: 20px; color: rgb(51, 51, 51); font-size: 15px; font-family: Arial; border-top: 1px solid rgb(204, 204, 204); padding-bottom: 10px; padding-top: 10px;\">Thanks" +
                    "</td></tr></table><!-- End Email Notification From SocioBoard.com --></body>";
 
@@ -85,17 +85,19 @@ namespace SocialSuitePro
                         string Subject = "Forget Password Socio Board account";
                         //MailHelper.SendMailMessage(host, int.Parse(port.ToString()), username, pass, txtEmail.Text.ToString(), string.Empty, string.Empty, Subject, MailBody);
                         MailHelper.SendSendGridMail(host, Convert.ToInt32(port), from, "", txtEmail.Text.ToString(), string.Empty, string.Empty, Subject, MailBody, username, pass);
-                        
-                        
-                        
-                        lblerror.Text = "Your Password Changes info to send in your Email";
+
+
+
+                        lblerror.Text = "Your Password resetting information has been sent to your email-id";
                     }
                     else
                     {
                         lblerror.Text = "Your Email is wrong Please try another one";
                     }
-
-
+                }
+                else
+                {
+                    lblerror.Text = "Please enter your Email-Id";
                 }
             }
             catch (Exception Err)

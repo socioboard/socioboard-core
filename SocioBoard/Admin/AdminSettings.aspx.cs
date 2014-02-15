@@ -15,22 +15,37 @@ namespace SocialSuitePro.Admin
         {
             if (!IsPostBack)
             {
-                ddlTimeZone.DataSource = TimeZoneInfo.GetSystemTimeZones();
-                ddlTimeZone.DataBind(); 
+
+                if (Session["AdminProfile"] == null)
+                {
+                    Response.Redirect("Default.aspx");
+                }
+                load();
             }
         }
         public void changePassoword(object sender, EventArgs e)
         {
+            SocioBoard.Domain.Admin admin = (SocioBoard.Domain.Admin)Session["AdminProfile"];
+            AdminRepository adminrepo = new AdminRepository();
+
             if (txtPassword.Text != "" && txtConfirmPassword.Text != "")
             {
-                if (txtPassword.Text == txtConfirmPassword.Text)
+                if (txtPassword.Text == admin.Password)
                 {
-                    SocioBoard.Domain.Admin admin = (SocioBoard.Domain.Admin)Session["AdminProfile"];
-                    AdminRepository adminrepo = new AdminRepository();
-                    adminrepo.ChangePassword(txtPassword.Text, admin.Password,admin.UserName);
+
+                    adminrepo.ChangePwd(txtConfirmPassword.Text, admin.UserName);
                     txtConfirmPassword.Text = string.Empty;
                     txtPassword.Text = string.Empty;
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Password change successfully');", true);
                 }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Wrong Password');", true);
+                }
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Password must be blank');", true);
             }
         }
 
@@ -38,28 +53,55 @@ namespace SocialSuitePro.Admin
         {
 
             SocioBoard.Domain.Admin admin = (SocioBoard.Domain.Admin)Session["AdminProfile"];
+           
+            
             if (imgfileupload.HasFile)
             {
                 string path = Server.MapPath("~/Contents/img/user_img/" + imgfileupload.FileName);
                 imgfileupload.SaveAs(path);
                 admin.Image = "../Contents/img/user_img/" + imgfileupload.FileName;
             }
+
+            
+
             admin.FirstName = txtFirstName.Text;
             admin.LastName = txtLastName.Text;
-
             admin.UserName = txtUserName.Text;
+            if (txtFirstName.Text == "" || txtLastName.Text == "" || txtUserName.Text=="")
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please fill all the fields');", true);
+            }
             admin.TimeZone = ddlTimeZone.SelectedItem.Text;
             AdminRepository.Update(admin);
             Session["AdminProfile"] = admin;
-            txtFirstName.Text = string.Empty;
-            txtLastName.Text = string.Empty;
-            txtPassword.Text = string.Empty;
-            txtConfirmPassword.Text = string.Empty;
-            txtUserName.Text = string.Empty;
-
-
+            ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Updated successfully');", true);
+            load();
         }
 
+
+        public void load()
+        {
+
+            SocioBoard.Domain.Admin admin = (SocioBoard.Domain.Admin)Session["AdminProfile"];
+            txtFirstName.Text = admin.FirstName.ToString();
+            txtLastName.Text = admin.LastName.ToString();
+            txtUserName.Text = admin.UserName.ToString();
+            txtPassword.Text = "";
+            txtConfirmPassword.Text = ""; 
+            custImg.ImageUrl = admin.Image.ToString();
+            if (admin.TimeZone != null)
+            {
+                ddlTimeZone.DataSource = TimeZoneInfo.GetSystemTimeZones();
+                ddlTimeZone.DataBind();
+                ddlTimeZone.SelectedValue = admin.TimeZone.ToString(); //user.PaymentStatus;
+            }
+            else
+            {
+                ddlTimeZone.DataSource = TimeZoneInfo.GetSystemTimeZones();
+                ddlTimeZone.DataBind();
+            }
+        
+        }
 
     }
 }

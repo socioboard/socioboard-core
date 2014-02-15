@@ -167,6 +167,136 @@ namespace SocioBoard.Helper
                     }
 
                 }
+
+
+
+
+                else if (Request.QueryString["op"] == "detailsdiscoveryfacebook")
+                {
+                    User user = (User)Session["LoggedUser"];
+                    string userid = Request.QueryString["profileid"];
+                    FacebookAccountRepository fbRepo = new FacebookAccountRepository();
+                    ArrayList alst = fbRepo.getAllFacebookAccountsOfUser(user.Id);
+                    string accesstoken = string.Empty;
+
+
+                    foreach (FacebookAccount childnoe in alst)
+                    {
+                        accesstoken = childnoe.AccessToken;
+
+                        break;
+                    }
+
+                    FacebookClient fbclient = new FacebookClient(accesstoken);
+                    string jstring = string.Empty;
+                    dynamic item = fbclient.Get(userid);
+
+
+                    jstring += "<div class=\"modal-small draggable\">";
+                    jstring += "<div class=\"modal-content\">";
+                    jstring += "<button class=\"modal-btn button b-close\" type=\"button\">";
+                    jstring += "<span class=\"icon close-medium\"><span class=\"visuallyhidden\">X</span></span></button>";
+                    jstring += "<div class=\"modal-header\"><h3 class=\"modal-title\">Profile summary</h3></div>";
+                    jstring += "<div class=\"modal-body profile-modal\">";
+                    jstring += "<div class=\"module profile-card component profile-header\">";
+
+                    try
+                    {
+                        jstring += "<div class=\"profile-header-inner flex-module clearfix\" style=\"background-image: url('" + item["cover"]["source"] + "');\">";
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        jstring += "<div class=\"profile-header-inner flex-module clearfix\" style=\"background-image: url('https://pbs.twimg.com/profile_banners/215936249/1371721359');\">";
+                    }
+                    jstring += "<div class=\"profile-header-inner-overlay\"></div>";
+                    try
+                    {
+                        jstring += "<a class=\"profile-picture media-thumbnail js-nav\" href=\"#\"><img class=\"avatar size73\" alt=\"\" src=\"http://graph.facebook.com/" + item["id"] + "/picture?type=small\" /></a>";
+                    }
+                    catch (Exception)
+                    {
+
+                        jstring += "<a class=\"profile-picture media-thumbnail js-nav\" href=\"#\"><img class=\"avatar size73\" alt=\"\" src=\"http://graph.facebook.com/picture?type=small\" /></a>";
+                    }
+                    jstring += "<div class=\"profile-card-inner\">";
+                    jstring += "<h1 class=\"fullname editable-group\">";
+                    try
+                    {
+                        jstring += "<a href=\"#\" class=\"js-nav\">" + item["name"] + "</a>";
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    jstring += "<a class=\"verified-link js-tooltip\" href=\"#\"><span class=\"icon verified verified-large-border\"><span class=\"visuallyhidden\"></span> </span></a>";
+                    jstring += "</h1>";
+                    try
+                    {
+                        jstring += "<h2 class=\"username\"><a href=\"#\" class=\"pretty-link js-nav\"><span class=\"screen-name\"><s>@</s>" + item["username"] + "</span> </a></h2>";
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    jstring += "<div class=\"bio-container editable-group\"><p class=\"bio profile-field\">";
+                    try
+                    {
+                        jstring += item["about"];
+                    }
+                    catch (Exception ex) { logger.Error(ex.Message); }
+
+                    jstring += "</p></div>";
+                    jstring += "<p class=\"location-and-url\">";
+                    jstring += "<span class=\"location-container editable-group\"><span class=\"location profile-field\"></span></span>";
+                    jstring += "<span class=\"divider hidden\"></span> ";
+                    jstring += "<span class=\"url editable-group\">  <span class=\"profile-field\"><a title=\"#\" href=\"http://www.facebook.com/" + item["id"] + "\" rel=\"me nofollow\"  </a>";
+                    jstring += "<div style=\"cursor: pointer; width: 16px; height: 16px; display: inline-block;\">&nbsp;</div>";
+                    jstring += "</span></span></p></div></div>";
+                    jstring += "<div class=\"clearfix\">";
+                    jstring += "<div class=\"default-footer\">";
+
+                    jstring += "<div class=\"btn-group\">" +
+                                  "<div class=\"follow_button\">" +
+
+                                      //"<span class=\"button-text following-text\">Following</span>" +
+                        //"<span class=\"button-text unfollow-text\">Unfollow</span>" +
+                                  "</div>" +
+                               "</div>";
+                    jstring += "</div></div>";
+                    jstring += "<div class=\"profile-social-proof\"><div class=\"follow-bar\"></div></div></div>";
+                    jstring += "<ol class=\"recent-tweets\">" +
+                                  "<li class=\"\">" +
+                                      "<div>" +
+                                        "<i class=\"dogear\"></i>" +
+
+                                      "</div>" +
+                                  "</li>" +
+                              "</ol>" +
+                              "<div class=\"go_to_profile\">" +
+                                  "<small><a href=\"http://www.facebook.com/" + item["id"] + "\" target=\"_blank\" class=\"view_profile\">Go to full profile →</a></small>" +
+                              "</div>" +
+                          "</div>" +
+                          "<div class=\"loading\">" +
+                              "<span class=\"spinner-bigger\"></span>" +
+                          "</div>" +
+                      "</div>";
+                    jstring += "</div>";
+
+
+
+                    Response.Write(jstring);
+
+                }
+
+
+
+
+
+
+
+
+
                 else if (Request.QueryString["op"] == "rssusers")
                 {
                     try
@@ -540,11 +670,19 @@ namespace SocioBoard.Helper
                                     }
                                     else if (nametype[1] == "lin")
                                     {
+                                        LinkedInAccountRepository liRepo = new LinkedInAccountRepository();
+                                        LinkedInAccount liaccount = liRepo.getLinkedinAccountDetailsById(nametype[2]);
                                         message += "<div class=\"btn srcbtn\">" +
-                                                      "<img width=\"15\" src=\"../Contents/img/link_icon.png\" alt=\"\">" +
-                                                 nametype[0] +
-                                                 "<span data-dismiss=\"alert\" class=\"close pull-right\">×</span>" +
+                                                    "<a target=\"_blank\" rel=\"" + nametype[0] + "\" href=" + liaccount.ProfileUrl + ">" +
+                                                    "<img width=\"15\" src=\"../Contents/img/link_icon.png\" alt=\"\">" + nametype[0] +
+                                                    "<span data-dismiss=\"alert\" class=\"close pull-right\">×</span>" +
+                                                    "</a>" +
                                                  "</div>";
+                                        //message += "<div class=\"btn srcbtn\">" +
+                                        //              "<img width=\"15\" src=\"../Contents/img/link_icon.png\" alt=\"\">" +
+                                        //         nametype[0] +
+                                        //         "<span data-dismiss=\"alert\" class=\"close pull-right\">×</span>" +
+                                        //         "</div>";
                                     }
                                     else if (nametype[1] == "gp")
                                     {

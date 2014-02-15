@@ -13,7 +13,7 @@
   
     <form id="form1" runat="server">
   
-    <div class="logo_login"><img src="../Contents/img/login.png" alt="" /></div>
+    <div class="logo_login"><img src="../Contents/img/under_sspro_logo.png" alt="" /></div>
     
     <div class="login_reg_bg">
        <div class="signin">Create Your Account</div>

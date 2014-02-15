@@ -24,7 +24,7 @@
 						<th>Package</th>
 						<th>Price</th>
 						<th>Entry Date</th>
-						<th>Status</th>
+						<%--<th>Status</th>--%>
 					</tr>
 				</thead>
 				<!-- // Table heading END -->

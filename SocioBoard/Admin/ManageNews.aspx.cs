@@ -19,13 +19,40 @@ namespace SocialSuitePro.Admin
         {
             if (!IsPostBack)
             {
+
+                if (Session["AdminProfile"] == null)
+                {
+                    Response.Redirect("Default.aspx");
+                }
+
                 try
                 {
-                    NewsRepository objNewsRepo=new NewsRepository();
-                    List<News> lstNews=objNewsRepo.getAllNews();
-                    string strNews=string.Empty;
+                    NewsRepository objNewsRepo = new NewsRepository();
+                    List<News> lstNews = objNewsRepo.getAllNews();
+                    string strNews = string.Empty;
 
-                    foreach(News item in lstNews)
+                    foreach (News item in lstNews)
+                    {
+                        try
+                        {
+                            if (DateTime.Now > item.ExpiryDate)
+                            {
+                                item.Status = false;
+                                objNewsRepo.UpdateNews(item);
+                            }
+                        }
+                        catch (Exception Err)
+                        {
+
+                            logger.Error(Err.Message);
+                            Response.Write(Err.StackTrace);
+                        }
+
+
+                    }
+
+
+                    foreach (News item in lstNews)
                     {
                         strNews = strNews + "<tr class=\"gradeX\"><td><a href=\"AddNews.aspx?id=" + item.Id + "\">Edit</a></td><td>" + item.NewsDetail + "</td><td>" + item.EntryDate + "</td><td>" + item.ExpiryDate + "</td><td class=\"center\">" + item.Status + "</td></tr>";
                     }

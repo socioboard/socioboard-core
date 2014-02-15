@@ -68,13 +68,15 @@ function saveDrafts() {
             $.ajax
         ({
             type: "POST",
-            url: "../AjaxHome.aspx?op=savedrafts&message="+message,
+            url: "../AjaxHome.aspx?op=savedrafts&message=" + message,
             data: '',
             contentType: "application/json; charset=utf-8",
             dataType: "html",
             success: function (msg) {
                 debugger;
                 $("#textareavaluetosendmessage_scheduler").val('');
+                $('#messageCount_scheduler').html('140 Characters Remaining');
+                $('#timepickerforScheduler').val('');
             }
         });
 
@@ -91,8 +93,7 @@ function saveDrafts() {
     }
 }
 
-function writemessage(message)
- {
+function writemessage(message) {
     debugger;
     $("#content").css('display', 'block');
     $("#content_wooqueue").css('display', 'none');
@@ -133,7 +134,7 @@ function val_url(url) {
 
             });
 
-         
+
 
 
             return true;
@@ -195,14 +196,14 @@ function pauseFunction(id) {
                 data: '',
                 success: function (msg) { }
             });
-          }
-         else {
+        }
+        else {
 
-             playRssFunction(id);
-        
+            playRssFunction(id);
+
         }
 
-       
+
     } catch (e) {
 
     }
@@ -270,8 +271,8 @@ function editWooQueue(id) {
                 var addmsg = msg.replace(/composemessage/g, "addprofilesforwoomsg");
 
                 $("#loginBox_Woo").html(addmsg);
-            
-            } 
+
+            }
         });
         var ne = proifielid.split('_');
         if (ne[0] == 'fb') {
@@ -288,15 +289,15 @@ function editWooQueue(id) {
     } catch (e) {
 
     }
-//    $.ajax({
-//        url: '../Helper/AjaxHelper.aspx?op=editWooQueue&id='+id,
-//        dataType: "html",
-//        type: "GET",
-//        success: function (msg) { 
-//        
-//        }
+    //    $.ajax({
+    //        url: '../Helper/AjaxHelper.aspx?op=editWooQueue&id='+id,
+    //        dataType: "html",
+    //        type: "GET",
+    //        success: function (msg) { 
+    //        
+    //        }
 
-//    });
+    //    });
 
 
 
@@ -311,9 +312,9 @@ function saveWooQueue() {
         var id = $("#forid").html();
         var network = $("#profiletypeforwoo").html();
         var messagewoo = $("#textareavaluetosendmessage_Woo").val()
-       // var datawith = prof.split('_');
+        // var datawith = prof.split('_');
         $.ajax({
-            url: '../Helper/AjaxHelper.aspx?op=saveWooQueue&id=' + id + '&profid=' +prof + '&message=' + messagewoo + '&network='+network,
+            url: '../Helper/AjaxHelper.aspx?op=saveWooQueue&id=' + id + '&profid=' + prof + '&message=' + messagewoo + '&network=' + network,
             dataType: "html",
             type: "GET",
             success: function (msg) {
@@ -339,7 +340,7 @@ function addprofilesforwoomsg(id, network) {
         var ids = id.split('_');
         $("#profiletypeforwoo").html(network);
         $("#profileidwithtype").html(ids[1]);
-        
+
         var u = $("#imgurl_" + ids[1]).html();
 
         if (u != '') {
@@ -350,7 +351,7 @@ function addprofilesforwoomsg(id, network) {
 
         if (network == 'fb') {
             $("#socialIcon_Woo").attr('src', '../Contents/img/facebook.png');
-        
+
         } else if (network == 'twt') {
             $("#socialIcon_Woo").attr('src', '../Contents/img/twitter.png');
         } else if (network == 'lin') {
@@ -358,7 +359,7 @@ function addprofilesforwoomsg(id, network) {
         }
 
     } catch (e) {
-    debugger;
+        debugger;
     }
 
 
@@ -416,6 +417,6 @@ function editDraftsMessage(id) {
         }, defautl);
     } catch (e) {
 
-    } 
+    }
 
 }

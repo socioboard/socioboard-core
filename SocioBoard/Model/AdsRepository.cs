@@ -55,10 +55,10 @@ namespace SocioBoard.Model
                     try
                     {
                         session.CreateQuery("Update Ads set ImageUrl =:imageurl,Script=:script,ExpiryDate=:expirydate,Status=:status where Id = :adsid")
-                            .SetParameter("script",ads.Script)
+                            .SetParameter("script", ads.Script)
                             .SetParameter("imageurl", ads.ImageUrl)
                             .SetParameter("status", ads.Status)
-                            .SetParameter("id", ads.Id)
+                            .SetParameter("adsid", ads.Id)
                             .SetParameter("expirydate", ads.ExpiryDate)
                             .ExecuteUpdate();
                         transaction.Commit();
@@ -209,7 +209,7 @@ namespace SocioBoard.Model
                     ArrayList lstAd = new ArrayList();
                     try
                     {
-                        var query = session.CreateSQLQuery("Select Id,Advertisment,ImageUrl,Script,Status from Ads Where ExpiryDate>CURDATE() order by EntryDate Desc limit 2");
+                        var query = session.CreateSQLQuery("Select Id,Advertisment,ImageUrl,Script,Status from Ads Where ExpiryDate>CURDATE() and Status=1 order by EntryDate Desc limit 2");
                        
                         foreach (var item in query.List())
                         {

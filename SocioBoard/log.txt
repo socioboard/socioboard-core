@@ -2258,3 +2258,536 @@ ERROR2014-01-29 09:20:18 Class:SocialSuitePro.FacebookManager Method:Page_Load L
 ERROR2014-02-07 06:39:53 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 63  –    at SocioBoard.Helper.SessionFactory.GetNewSession() in D:\Abhay\socioboard\trunk\SocioBoard Product\Helper\SessionFactory.cs:line 73
    at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in D:\Abhay\socioboard\trunk\SocioBoard Product\Model\UserRepository.cs:line 125
    at SocialSuitePro.AjaxLogin.ProcessRequest() in D:\Abhay\socioboard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 42
+ERROR2014-02-08 01:27:37 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 137  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-08 01:27:50 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 144  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-08 01:27:57 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 195  – Index was outside the bounds of the array.
+ERROR2014-02-08 01:32:24 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 137  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-08 01:33:57 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 144  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-08 01:34:02 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 195  – Index was outside the bounds of the array.
+ERROR2014-02-10 11:19:14 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 149  –    at System.Net.HttpWebRequest.GetResponse()
+   at GlobusGooglePlusLib.Authentication.oAuthToken.WebResponseGet(HttpWebRequest webRequest) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusGooglePlusLib\Authentication\oAuthToken.cs:line 164
+   at GlobusGooglePlusLib.Authentication.oAuthToken.WebRequest(Method method, String url, String postData) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusGooglePlusLib\Authentication\oAuthToken.cs:line 137
+   at GlobusGooglePlusLib.Authentication.oAuthToken.GetRefreshToken(String code) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusGooglePlusLib\Authentication\oAuthToken.cs:line 65
+   at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\GplusManager.aspx.cs:line 34
+ERROR2014-02-10 11:24:12 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-02-10 11:24:16 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-02-10 11:24:16 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 138  –    at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\GplusManager.aspx.cs:line 92
+ERROR2014-02-10 11:25:21 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 149  –    at System.Net.HttpWebRequest.GetResponse()
+   at GlobusGooglePlusLib.Authentication.oAuthToken.WebResponseGet(HttpWebRequest webRequest) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusGooglePlusLib\Authentication\oAuthToken.cs:line 164
+   at GlobusGooglePlusLib.Authentication.oAuthToken.WebRequest(Method method, String url, String postData) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusGooglePlusLib\Authentication\oAuthToken.cs:line 137
+   at GlobusGooglePlusLib.Authentication.oAuthToken.GetRefreshToken(String code) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusGooglePlusLib\Authentication\oAuthToken.cs:line 65
+   at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\GplusManager.aspx.cs:line 34
+ERROR2014-02-10 11:27:19 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-02-10 11:27:43 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-02-10 11:27:58 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-02-10 11:27:58 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 138  –    at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\GplusManager.aspx.cs:line 92
+ERROR2014-02-10 11:28:27 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 149  –    at System.Net.HttpWebRequest.GetResponse()
+   at GlobusGooglePlusLib.Authentication.oAuthToken.WebResponseGet(HttpWebRequest webRequest) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusGooglePlusLib\Authentication\oAuthToken.cs:line 164
+   at GlobusGooglePlusLib.Authentication.oAuthToken.WebRequest(Method method, String url, String postData) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusGooglePlusLib\Authentication\oAuthToken.cs:line 137
+   at GlobusGooglePlusLib.Authentication.oAuthToken.GetRefreshToken(String code) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusGooglePlusLib\Authentication\oAuthToken.cs:line 65
+   at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\GplusManager.aspx.cs:line 34
+ERROR2014-02-10 11:29:00 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-02-10 11:29:26 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-02-10 11:31:07 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 138  –    at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\GplusManager.aspx.cs:line 92
+ERROR2014-02-10 11:40:11 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 138  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\GplusManager.aspx.cs:line 95
+ERROR2014-02-10 11:40:14 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 149  –    at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\GplusManager.aspx.cs:line 142
+ERROR2014-02-10 11:40:36 Class:SocialSuitePro.Home Method:Page_Load Line #: 247  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 241
+ERROR2014-02-10 11:40:36 Class:SocialSuitePro.Home Method:Page_Load Line #: 257  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 251
+ERROR2014-02-10 11:41:28 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 723  – Object reference not set to an instance of an object.
+ERROR2014-02-10 11:41:28 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Object reference not set to an instance of an object.
+ERROR2014-02-10 11:41:28 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Object reference not set to an instance of an object.
+ERROR2014-02-10 12:29:00 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 138  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\GplusManager.aspx.cs:line 95
+ERROR2014-02-10 12:29:00 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 149  –    at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\GplusManager.aspx.cs:line 142
+ERROR2014-02-10 12:29:22 Class:SocialSuitePro.Home Method:Page_Load Line #: 247  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 241
+ERROR2014-02-10 12:29:22 Class:SocialSuitePro.Home Method:Page_Load Line #: 257  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 251
+ERROR2014-02-10 12:30:46 Class:SocialSuitePro.Home Method:AuthenticateFacebook Line #: 477  – Thread was being aborted.
+ERROR2014-02-10 12:31:35 Class:SocialSuitePro.FacebookManager Method:GetAccessToken Line #: 249  –    at SocialSuitePro.FacebookManager.GetAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 245
+ERROR2014-02-10 12:31:59 Class:SocialSuitePro.FacebookManager Method:GetAccessToken Line #: 278  –    at SocialSuitePro.FacebookManager.GetAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 273
+ERROR2014-02-10 12:32:41 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:32:48 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:32:51 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:32:55 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:32:59 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:33:02 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:33:06 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:33:10 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:33:13 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:33:17 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:33:22 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:33:26 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:33:30 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:33:33 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:33:37 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:33:41 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:33:59 Class:SocialSuitePro.FacebookManager Method:GetAccessToken Line #: 318  –    at Facebook.FacebookClient.ProcessResponse(HttpHelper httpHelper, String responseString, Type resultType, Boolean containsEtag, IList`1 batchEtags)
+   at Facebook.FacebookClient.Api(HttpMethod httpMethod, String path, Object parameters, Type resultType)
+   at Facebook.FacebookClient.Get(String path, Object parameters, Type resultType)
+   at Facebook.FacebookClient.Get(String path, Object parameters)
+   at Facebook.FacebookClient.Get(String path)
+   at SocialSuitePro.FacebookManager.GetAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 312
+ERROR2014-02-10 12:33:59 Class:SocialSuitePro.FacebookManager Method:GetAccessToken Line #: 331  –    at SocialSuitePro.FacebookManager.GetAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 324
+ERROR2014-02-10 12:36:09 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 138  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\GplusManager.aspx.cs:line 95
+ERROR2014-02-10 12:36:09 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 149  –    at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\GplusManager.aspx.cs:line 142
+ERROR2014-02-10 12:36:31 Class:SocialSuitePro.Home Method:Page_Load Line #: 247  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 241
+ERROR2014-02-10 12:36:31 Class:SocialSuitePro.Home Method:Page_Load Line #: 257  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 251
+ERROR2014-02-10 12:37:34 Class:SocialSuitePro.Home Method:AuthenticateFacebook Line #: 477  – Thread was being aborted.
+ERROR2014-02-10 12:38:53 Class:SocialSuitePro.FacebookManager Method:GetAccessToken Line #: 249  –    at SocialSuitePro.FacebookManager.GetAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 245
+ERROR2014-02-10 12:39:03 Class:SocialSuitePro.FacebookManager Method:GetAccessToken Line #: 278  –    at SocialSuitePro.FacebookManager.GetAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 273
+ERROR2014-02-10 12:39:43 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:39:47 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:39:50 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:39:54 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:39:58 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:40:01 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:40:05 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:40:09 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:40:12 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:40:17 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:40:21 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:40:25 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:40:28 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:40:32 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:40:36 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:40:39 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 3
+ERROR2014-02-10 12:48:01 Class:SocialSuitePro.FacebookManager Method:GetAccessToken Line #: 318  –    at SocialSuitePro.FacebookManager.GetAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 313
+ERROR2014-02-10 12:48:08 Class:SocialSuitePro.FacebookManager Method:GetAccessToken Line #: 331  –    at SocialSuitePro.FacebookManager.GetAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 324
+ERROR2014-02-10 12:50:52 Class:SocialSuitePro.Home Method:Page_Load Line #: 247  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 241
+ERROR2014-02-10 12:50:52 Class:SocialSuitePro.Home Method:Page_Load Line #: 257  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 251
+ERROR2014-02-10 08:01:28 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 723  – Object reference not set to an instance of an object.
+ERROR2014-02-10 08:01:30 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Object reference not set to an instance of an object.
+ERROR2014-02-11 11:55:22 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 137  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-11 11:55:34 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 144  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-11 11:55:38 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 195  – Index was outside the bounds of the array.
+ERROR2014-02-11 11:58:12 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 137  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-11 11:58:22 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 144  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-11 11:58:26 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 195  – Index was outside the bounds of the array.
+ERROR2014-02-11 12:03:34 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 137  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-11 12:04:38 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 144  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-11 12:04:42 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 195  – Index was outside the bounds of the array.
+ERROR2014-02-11 12:12:10 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 137  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-11 12:12:32 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 144  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-11 12:12:36 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 195  – Index was outside the bounds of the array.
+ERROR2014-02-11 12:33:59 Class:SocialSuitePro.Admin.AddPackage Method:btnSave_Click Line #: 72  – Thread was being aborted.
+ERROR2014-02-11 12:35:14 Class:SocialSuitePro.Admin.AddPackage Method:btnSave_Click Line #: 72  – Thread was being aborted.
+ERROR2014-02-11 01:16:34 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 137  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-11 01:16:46 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 144  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-11 03:58:43 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 137  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-11 03:58:52 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 144  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-11 04:02:29 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 137  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-11 04:02:41 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 144  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-11 04:28:57 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 137  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-11 04:29:06 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 144  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-11 04:33:47 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 137  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-11 04:33:57 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 144  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-11 04:35:50 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 137  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-11 04:35:59 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 144  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-11 06:48:43 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 137  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-11 06:48:53 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 144  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-12 02:14:33 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Object reference not set to an instance of an object.
+ERROR2014-02-12 02:14:34 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Object reference not set to an instance of an object.
+ERROR2014-02-12 02:14:34 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 723  – Object reference not set to an instance of an object.
+ERROR2014-02-12 06:43:51 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Object reference not set to an instance of an object.
+ERROR2014-02-12 06:43:51 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 723  – Object reference not set to an instance of an object.
+ERROR2014-02-12 06:43:51 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Object reference not set to an instance of an object.
+ERROR2014-02-12 06:55:34 Class:? Method:lambda_method Line #: 0  – Begin transaction failed
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts. ---> System.Net.Sockets.SocketException (0x80004005): The I/O operation has been aborted because of either a thread exit or an application request 50.57.219.21:3306
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at MySql.Data.Common.StreamCreator.CreateSocketStream(IPAddress ip, Boolean unix)
+   at MySql.Data.Common.StreamCreator.GetStream(UInt32 timeout)
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in p:\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in p:\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.Transaction.AdoTransaction.Begin(IsolationLevel isolationLevel) in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 133
+ERROR2014-02-12 06:55:35 Class:SocialSuitePro.Home Method:Page_Load Line #: 161  –    at NHibernate.Transaction.AdoTransaction.Begin(IsolationLevel isolationLevel) in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 148
+   at NHibernate.Transaction.AdoTransaction.Begin() in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 97
+   at NHibernate.AdoNet.ConnectionManager.BeginTransaction() in p:\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 324
+   at NHibernate.Impl.SessionImpl.BeginTransaction() in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1467
+   at SocioBoard.Model.NewsRepository.getNewsForHome() in D:\Abhay\socioboard\trunk\SocioBoard Product\Model\NewsRepository.cs:line 208
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 155
+ERROR2014-02-12 06:55:50 Class:SocialSuitePro.Home Method:Page_Load Line #: 295  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 289
+ERROR2014-02-12 06:55:50 Class:SocialSuitePro.Home Method:Page_Load Line #: 305  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 299
+ERROR2014-02-13 10:59:36 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 137  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-13 10:59:47 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 144  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-13 11:10:13 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 137  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-13 11:10:24 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 144  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-13 11:27:19 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 137  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-13 11:27:29 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 144  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-13 12:01:55 Class:? Method:lambda_method Line #: 0  – Commit failed
+MySql.Data.MySqlClient.MySqlException (0x80004005): Fatal error encountered during command execution. ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Fatal error encountered attempting to read the resultset. ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Connection unexpectedly terminated.
+   at MySql.Data.MySqlClient.MySqlStream.LoadPacket()
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at MySql.Data.MySqlClient.MySqlTransaction.Commit()
+   at NHibernate.Transaction.AdoTransaction.Commit() in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 198
+ERROR2014-02-13 12:03:25 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 137  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-13 12:03:33 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 144  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-13 12:12:36 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 137  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-13 12:12:44 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 144  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-13 07:26:50 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 137  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-13 07:27:00 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 144  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-02-14 10:40:48 Class:SocialSuitePro.Home Method:Page_Load Line #: 312  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 306
+ERROR2014-02-14 10:40:48 Class:SocialSuitePro.Home Method:Page_Load Line #: 322  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 316
+<<<<<<< .mine
+ERROR2014-02-14 07:57:34 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:34 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:34 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:34 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:34 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:34 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:34 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:34 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:34 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:34 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:42 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:42 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:42 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:42 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:42 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:42 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:42 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:42 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:42 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:42 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:42 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:42 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:42 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:42 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:42 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:42 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:42 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:44 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:44 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:44 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:44 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:44 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:44 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:44 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:44 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:44 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:44 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:44 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:44 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:44 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:44 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:44 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:44 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:44 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:44 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:53 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:53 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:53 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:53 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:53 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:53 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:53 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:53 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:56 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:56 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:56 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:56 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:57:56 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:08 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:08 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:08 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:08 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:08 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:08 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:08 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:08 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:08 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:08 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:09 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:09 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:09 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:09 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:09 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:10 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:10 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:10 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:11 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:11 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:11 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:11 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:11 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:11 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:11 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:11 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:11 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:11 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:11 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:11 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:11 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:11 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:11 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:11 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:58:11 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+=======
+ERROR2014-02-14 04:13:11 Class:SocialSuitePro.Home Method:Page_Load Line #: 317  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 311
+ERROR2014-02-14 04:13:11 Class:SocialSuitePro.Home Method:Page_Load Line #: 327  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 321
+ERROR2014-02-14 04:14:18 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Object reference not set to an instance of an object.
+ERROR2014-02-14 04:14:18 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Object reference not set to an instance of an object.
+ERROR2014-02-14 05:57:14 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-02-14 05:57:19 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-02-14 05:57:24 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-02-14 05:57:28 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-02-14 05:57:33 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-02-14 05:57:37 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-02-14 05:57:43 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-02-14 05:57:48 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-02-14 05:58:11 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 5
+ERROR2014-02-14 05:58:17 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 5
+ERROR2014-02-14 05:58:22 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 5
+ERROR2014-02-14 05:58:27 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 6
+ERROR2014-02-14 05:58:32 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 6
+ERROR2014-02-14 05:58:36 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 6
+ERROR2014-02-14 05:58:41 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 5
+ERROR2014-02-14 05:58:45 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 6
+ERROR2014-02-14 05:58:51 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 6
+ERROR2014-02-14 05:58:55 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 6
+ERROR2014-02-14 05:58:59 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 5
+ERROR2014-02-14 05:59:06 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 5
+ERROR2014-02-14 05:59:11 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 5
+ERROR2014-02-14 05:59:48 Class:? Method:lambda_method Line #: 0  – Begin transaction failed
+MySql.Data.MySqlClient.MySqlException (0x80004005): Connection unexpectedly terminated.
+   at MySql.Data.MySqlClient.MySqlStream.LoadPacket()
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.Authenticate411()
+   at MySql.Data.MySqlClient.NativeDriver.Authenticate()
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in p:\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in p:\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.Transaction.AdoTransaction.Begin(IsolationLevel isolationLevel) in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 133
+ERROR2014-02-14 05:59:54 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 107  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 82
+ERROR2014-02-14 06:00:35 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-02-14 06:00:40 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-02-14 06:00:45 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-02-14 06:00:50 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-02-14 06:00:55 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-02-14 06:01:00 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-02-14 06:01:05 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-02-14 06:01:10 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-02-14 06:01:35 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 5
+ERROR2014-02-14 06:01:39 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 5
+ERROR2014-02-14 06:01:44 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 5
+ERROR2014-02-14 06:01:49 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 6
+ERROR2014-02-14 06:01:53 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 6
+ERROR2014-02-14 06:01:58 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 6
+ERROR2014-02-14 06:02:05 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 5
+ERROR2014-02-14 06:02:10 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 6
+ERROR2014-02-14 06:02:15 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 6
+ERROR2014-02-14 06:02:20 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 6
+ERROR2014-02-14 06:02:25 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 5
+ERROR2014-02-14 06:02:30 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 5
+ERROR2014-02-14 06:02:36 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 5
+ERROR2014-02-14 06:03:05 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 107  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 82
+ERROR2014-02-14 07:01:36 Class:SocialSuitePro.Home Method:Page_Load Line #: 341  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 335
+ERROR2014-02-14 07:01:36 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-02-14 07:02:24 Class:? Method:lambda_method Line #: 0  – Begin transaction failed
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in p:\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in p:\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.Transaction.AdoTransaction.Begin(IsolationLevel isolationLevel) in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 133
+ERROR2014-02-14 07:02:24 Class:SocialSuitePro.Home Method:getNewFollowers Line #: 565  –    at NHibernate.Transaction.AdoTransaction.Begin(IsolationLevel isolationLevel) in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 148
+   at NHibernate.Transaction.AdoTransaction.Begin() in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 97
+   at NHibernate.AdoNet.ConnectionManager.BeginTransaction() in p:\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 324
+   at NHibernate.Impl.SessionImpl.BeginTransaction() in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1467
+   at SocioBoard.Model.TwitterStatsRepository.getAllTwitterStatsOfUser(Guid UserId, Int32 days) in D:\Abhay\socioboard\trunk\SocioBoard Product\Model\TwitterStatsRepository.cs:line 88
+   at SocialSuitePro.Home.getNewFollowers(Int32 days) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 539
+ERROR2014-02-14 07:02:57 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:02:57 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:02:57 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Object reference not set to an instance of an object.
+ERROR2014-02-14 07:59:01 Class:? Method:lambda_method Line #: 0  – Begin transaction failed
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts. ---> System.Net.Sockets.SocketException (0x80004005): The I/O operation has been aborted because of either a thread exit or an application request 50.57.219.21:3306
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at MySql.Data.Common.StreamCreator.CreateSocketStream(IPAddress ip, Boolean unix)
+   at MySql.Data.Common.StreamCreator.GetStream(UInt32 timeout)
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in p:\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in p:\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.Transaction.AdoTransaction.Begin(IsolationLevel isolationLevel) in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 133
+ERROR2014-02-14 07:59:31 Class:SocialSuitePro.Home Method:Page_Load Line #: 346  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 340
+ERROR2014-02-14 07:59:31 Class:SocialSuitePro.Home Method:Page_Load Line #: 356  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 350
+ERROR2014-02-14 08:00:52 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 724  – Object reference not set to an instance of an object.
+ERROR2014-02-14 08:00:52 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Object reference not set to an instance of an object.
+ERROR2014-02-14 08:00:52 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Object reference not set to an instance of an object.
+>>>>>>> .r425
+ERROR2014-02-15 05:40:21 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 107  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 70
+ERROR2014-02-15 05:45:35 Class:SocialSuitePro.Home Method:Page_Load Line #: 323  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 317
+ERROR2014-02-15 05:45:35 Class:SocialSuitePro.Home Method:Page_Load Line #: 333  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 327

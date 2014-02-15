@@ -70,7 +70,7 @@ namespace SocialSuitePro.Admin
                     string filename = Guid.NewGuid() + fuAdv.FileName;
                     string FileFullPath = Server.MapPath("~/Admin/AdvImage/") + filename;
                     fuAdv.PostedFile.SaveAs(FileFullPath);
-                    objAds.ImageUrl = "http://socialscoup.socioboard.com/Admin/AdvImage/" + filename;
+                    objAds.ImageUrl = "http://socioboard.com/Admin/AdvImage/" + filename;
                 }
                 //if (txtScript.Text != "")
                 //    objAds.Script = txtScript.Text;

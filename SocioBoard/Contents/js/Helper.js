@@ -348,6 +348,110 @@ function checkprofile(id,page,network) {
 
 
 
+
+    /*display the Discovery detail information for twitter*/
+    function detailsdiscoverytwitter(id) {
+        try {
+            debugger;
+            $("#another-load").html('<img src="../Contents/img/360.gif" />');
+            debugger;
+            var sd = '';
+            var msgname = '';
+            //            if (id.indexOf('rowname_') != -1) {
+            //                sd = document.getElementById(id).innerHTML;
+            //            } else {
+            //                sd = id;
+            //            }
+
+            $.ajax
+        ({
+            type: "GET",
+            url: "../Helper/AjaxHelper.aspx?op=detailsdiscoverytwitter&profileid=" + id,
+            crossDomain: true,
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (msg) {
+                debugger;
+                //alert('alert');
+                //alert(msg);
+                $("#facebookuserDetails").html(msg);
+                $("#facebookuserDetails").bPopup();
+                //                                $("#details").html(msg);
+                //                                $("#another-load").html("");
+                //                                $("#profile_popup").bPopup();
+            },
+            error: function (e) {
+
+            }
+        });
+        } catch (e) {
+            //  alert(e);
+        }
+    }
+
+
+
+
+
+    /*display the Discovery detail information for facebook*/
+    function detailsdiscoveryfacebook(id) {
+        try {
+            debugger;
+            $("#another-load").html('<img src="../Contents/img/360.gif" />');
+            debugger;
+            var sd = '';
+            var msgname = '';
+            //            if (id.indexOf('rowname_') != -1) {
+            //                sd = document.getElementById(id).innerHTML;
+            //            } else {
+            //                sd = id;
+            //            }
+
+            $.ajax
+        ({
+            type: "GET",
+            url: "../Helper/AjaxHelper.aspx?op=detailsdiscoveryfacebook&profileid=" + id,
+            crossDomain: true,
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (msg) {
+                debugger;
+                //alert('alert');
+                //alert(msg);
+                $("#facebookuserDetails").html(msg);
+                $("#facebookuserDetails").bPopup();
+                //                                $("#details").html(msg);
+                //                                $("#another-load").html("");
+                //                                $("#profile_popup").bPopup();
+            },
+            error: function (e) {
+
+            }
+        });
+        } catch (e) {
+            //  alert(e);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /*************************************************************************************************************/
     function GetSearchedKeyword() {
         $.ajax

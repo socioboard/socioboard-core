@@ -24,6 +24,12 @@ namespace SocialSuitePro.Admin
         {
             if (!IsPostBack)
             {
+
+                if (Session["AdminProfile"] == null)
+                {
+                    Response.Redirect("Default.aspx");
+                }
+
                 #region User Count By Month
                 try
                 {
@@ -59,14 +65,20 @@ namespace SocialSuitePro.Admin
                         else if (temp.GetValue(0).ToString() == "12")
                             strMonth = strMonth + "'Dec'";
                     }
-                    strMonth = strMonth.Substring(0, strMonth.Length - 1);
+
+                    if (strMonth[strMonth.Length - 1] == ',')
+                    {
+                        strMonth = strMonth.Substring(0, strMonth.Length - 1);
+                    }
+
+
                     strUser = strUser.Substring(0, strUser.Length - 1);
                 }
                 catch (Exception Err)
                 {
                     logger.Error(Err.Message);
                     Console.Write(Err.StackTrace);
-                } 
+                }
                 #endregion
 
                 #region User Count By Month & Account Type
@@ -104,15 +116,18 @@ namespace SocialSuitePro.Admin
                             strAccMonth = strAccMonth + "'Dec'";
                         if (temp.GetValue(3) != null)
                         {
-                            if (temp.GetValue(3).ToString() == "Standard")
+                            if (temp.GetValue(3).ToString() == "INDIVIDUAL")
                                 strStandard = strStandard + temp.GetValue(1).ToString() + ",";
-                            else if (temp.GetValue(3).ToString() == "deluxe")
+                            else if (temp.GetValue(3).ToString() == "SMALL BUSINESS")
                                 strDelux = strDelux + temp.GetValue(1).ToString() + ",";
-                            else if (temp.GetValue(3).ToString() == "premium")
+                            else if (temp.GetValue(3).ToString() == "CORPORATION")
                                 strPremium = strPremium + temp.GetValue(1).ToString() + ",";
                         }
                     }
-                    strAccMonth = strAccMonth.Substring(0, strAccMonth.Length - 1);
+                    if (strAccMonth[strAccMonth.Length - 1] == ',')
+                    {
+                        strAccMonth = strAccMonth.Substring(0, strAccMonth.Length - 1);
+                    }
                     strStandard = strStandard.Substring(0, strStandard.Length - 1);
                     strDelux = strDelux.Substring(0, strDelux.Length - 1);
                     strPremium = strPremium.Substring(0, strPremium.Length - 1);
@@ -124,6 +139,13 @@ namespace SocialSuitePro.Admin
                 }
                 #endregion
             }
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            SocioBoard.Helper.delete obj = new SocioBoard.Helper.delete();
+           Label1.Text= obj.DeleteAllUsersByCreateDate("2014-02-10");
+            
         }
     }
 }

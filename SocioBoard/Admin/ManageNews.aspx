@@ -8,7 +8,7 @@
 		
 		<!-- Widget heading -->
 		<div class="widget-head">
-			<h4 class="heading">Manage Package</h4>
+			<h4 class="heading">Manage News</h4>
 		</div>
 		<!-- // Widget heading END -->
 		

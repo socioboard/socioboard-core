@@ -17,6 +17,12 @@ namespace SocialSuitePro.Admin
         {
             if (!IsPostBack)
             {
+
+                if (Session["AdminProfile"] == null)
+                {
+                    Response.Redirect("Default.aspx");
+                }
+
                 try
                 {
                     NewsLetterRepository objNewsRepo = new NewsLetterRepository();

@@ -65,7 +65,17 @@ namespace SocialSuitePro
                             if (!string.IsNullOrEmpty(user.Password))
                             {
 
-                                Response.Redirect("Home.aspx");
+                                if (user.UserStatus == 1)
+                                {
+                                    Response.Redirect("Home.aspx");
+                                }
+                                else
+                                {
+                                    //check user is block or not
+                                    Session["fblogout"] = "NOTACTIVATED";
+
+                                    Response.Redirect("Default.aspx");
+                                }
                             }
                             else
                             {
@@ -169,7 +179,7 @@ namespace SocialSuitePro
                dynamic profile = fb.Get("me");
 
                int res = UpdateFbToken(profile["id"], accessToken);
-
+               bool isfbemailexist = false;
             if (Session["login"] != null)
             {
                     if (Session["login"].ToString() == "facebook")
@@ -180,8 +190,14 @@ namespace SocialSuitePro
                         }
                         catch (Exception ex)
                         {
+                            isfbemailexist = true;
                             logger.Error(ex.StackTrace);
                             Console.WriteLine(ex.StackTrace);
+                        }
+                        if (isfbemailexist)
+                        {
+                            Session["isemailexist"] = "emailnotexist";
+                            Response.Redirect("Default.aspx");
                         }
                         try
                         {

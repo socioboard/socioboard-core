@@ -200,14 +200,14 @@
 			<div class="slim-scroll" data-scroll-height="800px">
 			
 			<!-- Sidebar Profile -->
-			<span class="profile">
+			<span class="profile">account dropdown dd-1
 				<p>Welcome <a href="#">Admin</a></p>
-				<a class="img" href="#"><img src="../Contents/common/theme/images/avatar-style-light.jpg" alt="Avatar" /></a>
+				<a id="avtarimg" runat="server" class="img"  href="~/Admin/AdminSettings.aspx"></a>
 				<span>
 					<ul>
 						<%--<li><a href="" class="glyphicons lock"><i></i>Account</a></li>
 						<li><a href="" class="glyphicons keys"><i></i>Password</a></li>--%>
-						<li><a href="../Admin/Default.aspx" class="glyphicons eject"><i></i>Logout</a></li>
+						<li><a href="../Admin/Default.aspx?type=logout" class="glyphicons eject"><i></i>Logout</a></li>
 					</ul>
 				</span>
 			</span>
@@ -279,6 +279,13 @@
 					<ul class="collapse in" id="menu_examples">
 					
 						<!-- Account Submenu Level 2 -->
+                        <li class="hasSubmenu active">
+							<a data-toggle="collapse" href="#Ul4"><i></i><span>Dashboard</span></a>
+							<ul class="collapse in" id="Ul4">
+								<li class=""><a href="../Admin/Dashboard.aspx"><span>Home</span></a></li>
+							</ul>
+							
+						</li>
 						<li class="hasSubmenu active">
 							<a data-toggle="collapse" href="#menu_account"><i></i><span>User</span></a>
 							<ul class="collapse in" id="menu_account">
@@ -299,7 +306,7 @@
 						</li>
 
                          <li class="hasSubmenu active">
-							<a data-toggle="collapse" href="#menu_package"><i></i><span>News</span></a>
+							<a data-toggle="collapse" href="#Ul1"><i></i><span>News</span></a>
 							<ul class="collapse in" id="Ul1">
 								<li class=""><a href="../Admin/ManageNews.aspx"><span>Manage News</span></a></li>
 								<li class=" active"><a href="../Admin/AddNews.aspx"><span>Add News</span></a></li>
@@ -307,15 +314,15 @@
 						
 						</li>
                         <li class="hasSubmenu active">
-							<a data-toggle="collapse" href="#menu_account"><i></i><span>News Letter</span></a>
+							<a data-toggle="collapse" href="#Ul2"><i></i><span>News Letter</span></a>
 							<ul class="collapse in" id="Ul2">
-								<li class=""><a href="../Admin/ManageNewsLetter.aspx"><span>Manage News Letter</span></a></li>
+								<%--<li class=""><a href="../Admin/ManageNewsLetter.aspx"><span>Manage News Letter</span></a></li>--%>
 								<li class=" active"><a href="../Admin/AddNewsLetter.aspx"><span>Add News Letter</span></a></li>
 							</ul>
 							
 						</li>
                          <li class="hasSubmenu active">
-							<a data-toggle="collapse" href="#menu_account"><i></i><span>Advertisment</span></a>
+							<a data-toggle="collapse" href="#Ul3"><i></i><span>Advertisment</span></a>
 							<ul class="collapse in" id="Ul3">
 								<li class=""><a href="../Admin/ManageAdvertisment.aspx"><span>Manage Advertisment</span></a></li>
 								<li class=" active"><a href="../Admin/AddAdvertisement.aspx"><span>Add Advertisment</span></a></li>
@@ -423,7 +430,7 @@
 		<div id="footer" class="hidden-print">
 			
 			<!--  Copyright Line -->
-			<div class="copy">&copy; 2012 - 2013 - <a href="http://ssp.socioboard.com">SocioBoard</a> - All Rights Reserved.</div>
+			<div class="copy">&copy; 2012 - 2013 - <a href="http://socioboard.com">SocioBoard</a> - All Rights Reserved.</div>
 			<!--  End Copyright Line -->
 	
 		</div>

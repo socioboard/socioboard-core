@@ -19,6 +19,13 @@ namespace SocialSuitePro.Admin
         {
             if (!IsPostBack)
             {
+
+                if (Session["AdminProfile"] == null)
+                {
+                    Response.Redirect("Default.aspx");
+                }
+
+
                 try
                 {
                     User user = new User();
@@ -34,7 +41,7 @@ namespace SocialSuitePro.Admin
                         txtName.Text = user.UserName;
                         txtEmail.Text = user.EmailId;
                         // txtdatepicker.Text = user.ExpiryDate.ToString();
-                        datepicker.Text = user.ExpiryDate.ToString();
+                        datepicker1.Text = user.ExpiryDate.ToString();
                         ddlPackage.SelectedValue = user.AccountType.ToString(); //user.PaymentStatus;
                         ddlStatus.SelectedValue = user.UserStatus.ToString();
                     }
@@ -51,12 +58,13 @@ namespace SocialSuitePro.Admin
             try
             {
                 User user = new User();
-                user.Id =Guid.Parse(Request.QueryString["id"].ToString());
+                user.Id = Guid.Parse(Request.QueryString["id"].ToString());
                 user.EmailId = txtEmail.Text;
-                user.ExpiryDate = Convert.ToDateTime(datepicker.Text);
+                user.ExpiryDate = Convert.ToDateTime(datepicker1.Text);
                 user.UserName = txtName.Text;
-                user.UserStatus=1;
-                UserRepository.Update(user);
+                user.AccountType = ddlPackage.SelectedValue.ToString();
+                user.UserStatus = Convert.ToInt16(ddlStatus.SelectedValue.ToString());
+                UserRepository.UpdateAccountType(user);
             }
             catch (Exception Err)
             {

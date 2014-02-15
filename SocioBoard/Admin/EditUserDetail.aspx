@@ -2,13 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 <script src="../Contents/js/jquery.min.js" type="text/javascript"></script>
  <script type="text/javascript" language="javascript">
-     $(function () {
-         $("#<%= datepicker.ClientID %>").datepicker();
-     });
-     function getDateValue() {
-         debugger;
-         $("#<%= datepicker.ClientID %>").val($("#datepicker").val());
-     }
+  
 </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -66,14 +60,14 @@
 								<!-- // Group END -->
 								
 								<!-- Group -->
-								<div class="control-group">
+								<div class="control-group" style="display:none">
 									<label class="control-label">Expiry Date</label>
 									<div class="controls">
 										<div class="input-append">
                                       <%--  <input type="text" value="13/06/1988" id="datepicker" >--%>
-                                            <asp:TextBox ID="datepicker" runat="server" Visible="true"></asp:TextBox>
+                                            <asp:TextBox ID="datepicker1" runat="server" Visible="true" ReadOnly="True"></asp:TextBox>
 											   
-											<span class="add-on glyphicons calendar"><i></i></span>
+											<%--<span class="add-on glyphicons calendar"><i></i></span>--%>
 										</div>
 									</div>
 								</div>

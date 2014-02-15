@@ -17,7 +17,24 @@ namespace SocialSuitePro.Admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.QueryString["type"] != null)
+            {
+                if (Request.QueryString["type"] == "logout")
+                {
+                    Session.Abandon();
+                    Session.Clear();
+                    Response.Redirect("Default.aspx");
+                }
+            }
+
+            if (Session["AdminProfile"] != null)
+            {
+                Response.Redirect("Dashboard.aspx");
+            }
            
+
+
+
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)

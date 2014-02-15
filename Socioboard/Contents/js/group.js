@@ -28,11 +28,11 @@ function facebookgroupdetails(gid, fbUserId) {
 
 
 
-                    $(".gcontent").append('<div id="abhay" class="storyContent"><a class="actorPhoto">'
+                    $(".gcontent").append('<div class="storyContent"><a class="actorPhoto">'
                                 + '<img src="http://graph.facebook.com/' + val.from.id + '/picture?type=small"></a>'
                             + '<div class="storyInnerContent">'
                                 + '<div class="actordescription">'
-                                    + '<a class="passiveName">' + val.from.name + '</a>updated the description.'
+                                    + '<a class="passiveName">' + val.from.name + '</a> updated the description.'
                                + '</div>'
                                 + '<div class="messagebody">' + val.message + '</div>'
                             + '</div>'

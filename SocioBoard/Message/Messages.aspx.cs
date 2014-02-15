@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using log4net;
+using SocioBoard.Helper;
+using SocioBoard.Domain;
 
 namespace SocioBoard.Message
 {
@@ -14,17 +16,43 @@ namespace SocioBoard.Message
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                try
+                
+                #region for You can use only 30 days as Unpaid User
+
+                SocioBoard.Domain.User user = (User)Session["LoggedUser"];
+
+                if (user.PaymentStatus.ToLower() == "unpaid")
                 {
-                    blackcount.InnerHtml = Convert.ToString((int)Session["CountMessages"]);
+                    if (!SBUtils.IsUserWorkingDaysValid(user.CreateDate))
+                    {
+                        // ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('You can use only 30 days as Unpaid User !');", true);
+
+                        Session["GreaterThan30Days"] = "GreaterThan30Days";
+
+                        Response.Redirect("../Settings/Billing.aspx");
+                    }
                 }
-                catch (Exception ex)
+                #endregion
+
+                if (!IsPostBack)
                 {
-                    logger.Error(ex.Message);
-                    Console.WriteLine(ex.Message);
-                }       
+                    try
+                    {
+                        blackcount.InnerHtml = Convert.ToString((int)Session["CountMessages"]);
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex.Message);
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine("Error : " + ex.StackTrace);
             }
         }
 

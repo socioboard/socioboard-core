@@ -584,7 +584,7 @@ body > .container-fluid.fixed #content {
   border-bottom: 4px solid #d8d8d8;
   display: block;
   width: 62px;
-  height: 62px;
+  height: auto;
   float: left;
   -webkit-border-radius: 5px 5px 5px 5px;
   -moz-border-radius: 5px 5px 5px 5px;

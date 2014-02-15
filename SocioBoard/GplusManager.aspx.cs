@@ -62,7 +62,7 @@ namespace SocialSuitePro
                         foreach (var itemEmail in objEmail)
                         {
                             objgpAcc.EmailId = itemEmail["email"].ToString();
-                           
+
                         }
                         foreach (var itemProfile in objProfile)
                         {
@@ -71,12 +71,12 @@ namespace SocialSuitePro
                             objgpAcc.EntryDate = DateTime.Now;
                             objgpAcc.GpProfileImage = itemProfile["image"]["url"].ToString();
                             objgpAcc.GpUserName = itemProfile["displayName"].ToString();
-                            objgpAcc.Id =Guid.NewGuid();
+                            objgpAcc.Id = Guid.NewGuid();
                             objgpAcc.IsActive = 1;
                             objgpAcc.RefreshToken = item["refresh_token"].ToString();
                             objgpAcc.UserId = user.Id;
 
-                        
+
                         }
 
                         if (Session["login"] != null)
@@ -85,10 +85,32 @@ namespace SocialSuitePro
                             {
                                 if (Session["login"].ToString() == "googleplus")
                                 {
-                                    if (objUserRepo.IsUserExist(user.EmailId))
+                                    if (objUserRepo.IsUserExist(objgpAcc.EmailId))//user.EmailId
                                     {
                                         // user = null;
-                                        user = objUserRepo.getUserInfoByEmail(user.EmailId);
+                                        user = objUserRepo.getUserInfoByEmail(objgpAcc.EmailId);//user.EmailId
+                                        if (!string.IsNullOrEmpty(user.Password))
+                                        {
+                                            //Session["LoggedUser"] = user;
+                                            //Response.Redirect("Home.aspx");
+
+                                            if (user.UserStatus == 1)
+                                            {
+                                                Session["LoggedUser"] = user;
+                                                Response.Redirect("Home.aspx");
+                                            }
+                                            else
+                                            {
+                                                //check user is block or not
+                                                Session["fblogout"] = "NOTACTIVATED";
+
+                                                Response.Redirect("Default.aspx");
+                                            }
+
+
+
+
+                                        }
                                     }
                                     else
                                     {
@@ -99,12 +121,13 @@ namespace SocialSuitePro
                                     }
                                     Session["LoggedUser"] = user;
                                     objgpAcc.UserId = user.Id;
+
                                 }
                             }
                         }
                         objGpHelper.GetUerProfile(objgpAcc, item["access_token"].ToString(), item["refresh_token"].ToString(), user.Id);
 
-                       
+
 
                         if (Session["login"] != null)
                         {
@@ -131,10 +154,11 @@ namespace SocialSuitePro
                     {
                         logger.Error(ex.StackTrace);
                         Console.WriteLine(ex.StackTrace);
-                       
+
+
                     }
                 }
-               
+
             }
             catch (Exception Err)
             {

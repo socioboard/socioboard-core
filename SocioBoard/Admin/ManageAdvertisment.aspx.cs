@@ -18,10 +18,16 @@ namespace SocialSuitePro.Admin
         {
             if (!IsPostBack)
             {
+
+                if (Session["AdminProfile"] == null)
+                {
+                    Response.Redirect("Default.aspx");
+                }
+
                 try
                 {
                     AdsRepository objAdsRepo = new AdsRepository();
-                    List<Ads> lstAds= objAdsRepo.getAllAds();
+                    List<Ads> lstAds = objAdsRepo.getAllAds();
                     string strAds = string.Empty;
                     string strSrc = string.Empty;
                     foreach (var item in lstAds)

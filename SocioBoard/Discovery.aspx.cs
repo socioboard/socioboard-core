@@ -15,6 +15,7 @@ using GlobusTwitterLib.Authentication;
 using System.Collections;
 using GlobusTwitterLib.Twitter.Core.SearchMethods;
 using log4net;
+using SocioBoard.Helper;
 
 namespace SocialSuitePro
 {
@@ -24,7 +25,28 @@ namespace SocialSuitePro
         ILog logger = LogManager.GetLogger(typeof(Discovery));
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            try
+            {
+                #region for You can use only 30 days as Unpaid User
+
+                SocioBoard.Domain.User user = (User)Session["LoggedUser"];
+                if (user.PaymentStatus.ToLower() == "unpaid")
+                {
+                    if (!SBUtils.IsUserWorkingDaysValid(user.CreateDate))
+                    {
+                        // ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('You can use only 30 days as Unpaid User !');", true);
+
+                        Session["GreaterThan30Days"] = "GreaterThan30Days";
+
+                        Response.Redirect("/Settings/Billing.aspx");
+                    }
+                }
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error : " + ex.StackTrace);
+            }
         }
 
         public void btnSearch_Click(object sender, EventArgs e)

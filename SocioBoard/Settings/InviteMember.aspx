@@ -35,11 +35,11 @@
                             <input type="text" value="Last Name"  />--%>
                             <div class="first_error">
                                 <asp:TextBox ID="txtFirstName" runat="server" placeholder="FirstName"></asp:TextBox>
-                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="star-ribbon" runat="server" ErrorMessage="Please field the First Name" ControlToValidate="txtFirstName" ForeColor="Red"></asp:RequiredFieldValidator>
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="star-ribbon" runat="server" ErrorMessage="Please Fill the First Name" ControlToValidate="txtFirstName" ForeColor="Red"></asp:RequiredFieldValidator>
                            </div>
                             <div class="first_error">                                
                                 <asp:TextBox ID="txtLastName" runat="server"  placeholder="LastName"></asp:TextBox>                             
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please field the Last Name" ControlToValidate="txtLastName" ForeColor="Red"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please Fill the Last Name" ControlToValidate="txtLastName" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </div>
                             <div class="first_error">     
                             </div>
@@ -51,7 +51,7 @@
                         <div class="email_div">
                         	 <%--<input type="text" value="Email"  />--%>
                              <asp:TextBox ID="txtEmail" runat="server" placeholder="Enter Email Address"></asp:TextBox>
-                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Please Field the Email Address" ControlToValidate="txtEmail" ForeColor="Red"></asp:RequiredFieldValidator>
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Please Fill the Email Address" ControlToValidate="txtEmail" ForeColor="Red"></asp:RequiredFieldValidator>
                               <span class="error-keyup-3"></span>
                         </div>
                         <h5 class="add2networks_header">
@@ -129,7 +129,7 @@
                           <div class="facebook">
                             	<div class="facebook_list">
                                 	<div class="facebook_icon"></div>
-                                    <div class="desc">Facebook Pages</div>
+                                    <div class="desc">Facebook Profile</div>
                                     <div class="filter">
                                     <input type="checkbox" id="selectallFb"/>
                                     
@@ -142,7 +142,7 @@
                                <div class="linkedin">
                             	<div class="linkedin_list">
                                 	<div class="linkedin_icon"></div>
-                                    <div class="desc">LinkedIn Pages</div>
+                                    <div class="desc">LinkedIn Profile</div>
                                     <div class="filter">
                                      <input type="checkbox" id="selectallLd"/>
                                     </div>
@@ -155,7 +155,7 @@
                             <%--   <div class="ganalytics">
                             	<div class="ganalytics_list">
                                 	<div class="ganalytics_icon"></div>
-                                    <div class="desc">Google Analytics Pages</div>
+                                    <div class="desc">Google Analytics Profile</div>
                                     <div class="filter">
                                    <input type="checkbox" id="selectallGa"/>
                                     </div>
@@ -179,7 +179,7 @@
                                <div class="ganalytics">
                             	<div class="ganalytics_list">
                                 	<div class="ganalytics_icon"></div>
-                                    <div class="desc">Instagram Pages</div>
+                                    <div class="desc">Instagram Profile</div>
                                     <div class="filter">
                                     <input type="checkbox" id="selectallIns"/>
                                     </div>

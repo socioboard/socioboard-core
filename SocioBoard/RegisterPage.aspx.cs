@@ -63,6 +63,7 @@ namespace SocialSuitePro
         {
             User user = new User();
             UserRepository userrepo = new UserRepository();
+            UserActivation objUserActivation = new UserActivation();
             SocioBoard.Helper.SessionFactory.configfilepath = Server.MapPath("~/hibernate.cfg.xml");
             try
             {
@@ -87,17 +88,38 @@ namespace SocialSuitePro
                     if (!userrepo.IsUserExist(user.EmailId))
                     {
                         UserRepository.Add(user);
-                        SocioBoard.Helper.MailSender.SendEMail(txtFirstName.Text + " " + txtLastName.Text, txtPassword.Text, txtEmail.Text);
 
+
+
+                        objUserActivation.Id = Guid.NewGuid();
+                        objUserActivation.UserId = user.Id;
+                        objUserActivation.ActivationStatus = "0";
+                        UserActivationRepository.Add(objUserActivation);
+
+                        //add package start
+
+                        UserPackageRelation objUserPackageRelation = new UserPackageRelation();
+                        UserPackageRelationRepository objUserPackageRelationRepository = new UserPackageRelationRepository();
+                        PackageRepository objPackageRepository = new PackageRepository();
+
+                        Package objPackage = objPackageRepository.getPackageDetails(user.AccountType);
+                        objUserPackageRelation.Id = new Guid();
+                        objUserPackageRelation.PackageId = objPackage.Id;
+                        objUserPackageRelation.UserId = user.Id;
+                        objUserPackageRelation.ModifiedDate = DateTime.Now;
+                        objUserPackageRelation.PackageStatus = true;
+
+                        objUserPackageRelationRepository.AddUserPackageRelation(objUserPackageRelation);
+
+                        //end package
+
+                        SocioBoard.Helper.MailSender.SendEMail(txtFirstName.Text, txtPassword.Text, txtEmail.Text, objUserActivation.UserId.ToString());
                         TeamRepository teamRepo = new TeamRepository();
                         Team team = teamRepo.getTeamByEmailId(txtEmail.Text);
                         if (team != null)
                         {
-
                             Guid teamid = Guid.Parse(Request.QueryString["tid"]);
                             teamRepo.updateTeamStatus(teamid);
-
-
                             TeamMemberProfileRepository teamMemRepo = new TeamMemberProfileRepository();
                             List<TeamMemberProfile> lstteammember = teamMemRepo.getAllTeamMemberProfilesOfTeam(team.Id);
                             foreach (TeamMemberProfile item in lstteammember)
@@ -215,10 +237,6 @@ namespace SocialSuitePro
                                             Console.WriteLine(ex.StackTrace);
                                             logger.Error(ex.Message);
                                         }
-
-
-
-
                                     }
 
                                 }
@@ -226,13 +244,8 @@ namespace SocialSuitePro
                                 {
                                     logger.Error(ex.Message);
                                 }
-
-
-
                             }
                         }
-
-
                         lblerror.Text = "Registered Successfully !" + "<a href=\"Default.aspx\">Login</a>";
                     }
                     else
@@ -240,7 +253,6 @@ namespace SocialSuitePro
                         lblerror.Text = "Email Already Exists " + "<a href=\"Default.aspx\">login</a>";
                     }
                 }
-
             }
             catch (Exception ex)
             {

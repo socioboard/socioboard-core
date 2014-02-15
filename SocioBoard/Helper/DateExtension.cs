@@ -27,6 +27,7 @@ namespace SocioBoard.Helper
     {
         Deluxe,
         Standard,
-        Premium
+        Premium,
+        Free
     }
 }

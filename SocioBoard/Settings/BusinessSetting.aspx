@@ -18,6 +18,7 @@
                     <li><a class="active">Business Setting</a> </li>
                     <li><a href="UsersAndGroups.aspx">Users & Groups</a> </li>
                        <li><a href="Billing.aspx">Billing</a> </li>
+
                   <%--  <li><a>Helpdesk Integration</a> </li>
                     <li><a>Sprout Queue</a> </li>
                     <li><a>Billing</a> </li>
@@ -57,7 +58,7 @@
                                 <div class="invite_friends">Task Notification Emails</div>
                                 <div class="ws_ps_user_content">                                	
                                     <div class="personal_details">
-                                    	SocialSuitePro alerts you & your team members via email on various activities.
+                                    	Socioboard alerts you & your team members via email on various activities.
                                     </div>
                                     <div class="radio_content">
                                         <asp:RadioButton ID="rbDisableTaskNoti" runat="server" Text="Disabled" 
@@ -88,12 +89,12 @@
                                 <div class="ws_ps_user_content">                                	
                                     <div class="personal_details">
                                     	Select an album to store photos uploaded to Facebook. We can use the default Facebook Timeline Photos album or a 
-                                        dedicated album titled SocialSuitePro Photos. You are able to rename the SocialSuitePro album within Facebook.
+                                        dedicated album titled Socioboard Photos. You are able to rename the Socioboard album within Facebook.
                                     </div>
                                     <div class="radio_content">
                                             <asp:RadioButton ID="rbFbTimeLine" runat="server" Text="Facebook Timeline" 
                                                 GroupName="D" />                                             
-                                            <asp:RadioButton ID="rbFbWooSuitePhotos" runat="server" Text="Woo Suite Photos" 
+                                            <asp:RadioButton ID="rbFbWooSuitePhotos" runat="server" Text="Socioboard Photos" 
                                                 GroupName="D" />  
                                 </div>
                                               

@@ -24,9 +24,33 @@ namespace SocialScoup.Group
         {
             try
             {
+                User user = (User)Session["LoggedUser"];
+                try
+                {
+                    #region for You can use only 30 days as Unpaid User
+
+                    //SocioBoard.Domain.User user = (User)Session["LoggedUser"];
+                    if (user.PaymentStatus.ToLower() == "unpaid")
+                    {
+                        if (!SBUtils.IsUserWorkingDaysValid(user.CreateDate))
+                        {
+                            // ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('You can use only 30 days as Unpaid User !');", true);
+
+                            Session["GreaterThan30Days"] = "GreaterThan30Days";
+
+                            Response.Redirect("../Settings/Billing.aspx");
+                        }
+                    }
+                    #endregion
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error : " + ex.StackTrace);
+                }
+
                 if (!IsPostBack)
                 {
-                    User user = (User)Session["LoggedUser"];
+                   
 
                     if (user == null)
                         Response.Redirect("/Default.aspx");

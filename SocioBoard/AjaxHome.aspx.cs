@@ -222,15 +222,15 @@ namespace SocialSuitePro
                                            "<div class=\"js-task-cont read\"><section class=\"task-owner\">" +
                                 "<img width=\"32\" height=\"32\" border=\"0\" class=\"avatar\" src=\"../Contents/img/task_pin.png\">" +
                                 "</section><section class=\"task-activity third\" style=\"width: 19.6%;\"><p>" + user.UserName + "</p><div>" + item.CreatedDate + " </div><p>" +
-                                 //"</p></section><section style=\"margin-right: 6px; height: auto; width: 35%;\" class=\"task-message font-13 third\"><a onclick=\"writemessage(this.innerHTML);\" class=\"tip_left\">" + item.Message + "</a></section>" +
-                                 "</p></section><section style=\"margin-right: 6px; height: auto; width: 35%;\" class=\"task-message font-13 third\"><span class=\"tip_left\">" + item.Message + "</span></section>" +
+                                    //"</p></section><section style=\"margin-right: 6px; height: auto; width: 35%;\" class=\"task-message font-13 third\"><a onclick=\"writemessage(this.innerHTML);\" class=\"tip_left\">" + item.Message + "</a></section>" +
+                                 "</p></section><section style=\"margin-right: 6px; height: auto; width: 31%;\" class=\"task-message font-13 third\"><span class=\"tip_left\">" + item.Message + "</span></section>" +
                                     "<div class=\"userpictiny\" style=\"height:70px; margin-top: 0;\"><img alt=\"\" src=\"" + profurl + "\" />" +
                                  "</div>" +
                                  "<a class=\"small_remove icon publish_delete\" href=\"#\" style=\"top: 7px; float: right; margin-top: 13px; margin-right: 10px;\" title=\"Delete\" onclick=\"deleteDraftMessage('" + item.Id + "')\"></a>" +
                                 "<section style=\"margin-top: 18px; width: 45px; margin-right: 17px;\" class=\"task-status\"><div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
                                     "<span onclick=\"editDraftsMessage('" + item.Id + "');\" class=\"ui-sproutmenu-status\">" +
                                 "<img class=\"edit_button\" src=\"../Contents/img/icon_edit.png\" alt=\"\" />" +
-                                "</span>"+
+                                "</span>" +
                                 "</a></div></section></div></section>";
 
                             }
@@ -239,7 +239,7 @@ namespace SocialSuitePro
                         {
                             message += "<section class=\"section\"><div class=\"js-task-cont read\"><section class=\"task-owner\">" +
                                   "<img width=\"32\" height=\"32\" border=\"0\" class=\"avatar\" src=\"" + profurl + "\">" +
-                                  "</section><section class=\"task-activity third\"><p>" + user.UserName + "</p><div></div><p></p></section><section style=\"margin-right: 6px; width: 40%; height: auto;\" class=\"task-message font-13 third\">" +
+                                  "</section><section class=\"task-activity third\"><p>" + user.UserName + "</p><div></div><p></p></section><section style=\"margin-right: 6px; width: 31%; height: auto;\" class=\"task-message font-13 third\">" +
                                   "<a class=\"tip_left\">No Messages in Drafts</a></section><section style=\"width:113px;\" class=\"task-status\"><span class=\"ficon task_active\"></span>" +
                                   "<div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
                                   "<span class=\"ui-sproutmenu-status\"></span></a></div></section></div></section>";
@@ -299,7 +299,7 @@ namespace SocialSuitePro
                             {
                                 AdsRepository objAdsRepo = new AdsRepository();
                                 ArrayList lstads = objAdsRepo.getAdsForHome();
-                                
+
                                 int i = 0;
                                 if (lstads.Count <= 1)
                                 {
@@ -398,7 +398,7 @@ namespace SocialSuitePro
                                 }
                                 if (item.ProfileType == "googleplus")
                                 {
-                                   // try
+                                    // try
                                     //{
                                     //    GooglePlusAccountRepository objgpAccRepo = new GooglePlusAccountRepository();
                                     //    GooglePlusActivitiesRepository objgpActRepo = new GooglePlusActivitiesRepository();
@@ -602,13 +602,14 @@ namespace SocialSuitePro
                                                             break;
                                                         }
                                                     }
-                                                    catch(Exception ex)
+                                                    catch (Exception ex)
                                                     {
                                                         logger.Error(ex.Message);
                                                     }
                                                 }
                                             }
-                                            catch(Exception ex) {
+                                            catch (Exception ex)
+                                            {
                                                 logger.Error(ex.Message);
                                             }
 
@@ -842,7 +843,7 @@ namespace SocialSuitePro
                         catch (Exception ex)
                         {
                             logger.Error(ex.Message);
-                            
+
                         }
                     }
                     else if (Profiletype == "googleplus")
@@ -866,8 +867,8 @@ namespace SocialSuitePro
                         }
                         catch (Exception ex)
                         {
-                            logger.Error(ex.Message);                            
-                           
+                            logger.Error(ex.Message);
+
                         }
                     }
 
@@ -930,9 +931,9 @@ namespace SocialSuitePro
                         {
                             string profileurl = string.Empty;
 
-                            if (!string.IsNullOrEmpty(item.ProfileUrl))
+                            if (!string.IsNullOrEmpty(item.ProfileImageUrl))
                             {
-                                profileurl = item.ProfileUrl;
+                                profileurl = item.ProfileImageUrl;
                             }
                             else
                             {
@@ -968,7 +969,7 @@ namespace SocialSuitePro
                         {
                             foreach (FacebookAccount fbacc in lstfbaccounts)
                             {
-                                profiles += "<li id=\"liid_" + fbacc.FbUserId + "\"   onclick=\"composemessage(this.id,'fb')\"><a><img id=\"img_" + fbacc.FbUserId + "\" src=\"../Contents/img/facebook.png\" alt=\"" + fbacc.AccessToken + "\" border=\"none\" width=\"18\" style=\"float:left;\" /><span id=\"composename_" + fbacc.FbUserId + "\" style=\"float:left;margin: 3px 0 0 5px;\">" + fbacc.FbUserName + "</span><span id=\"imgurl_" + fbacc.FbUserId + "\" style=\"display:none;\">http://graph.facebook.com/" + fbacc.FbUserId + "/picture?type=small</span></a></li>";
+                                profiles += "<li nwtk='fb' class=\"getAllNetworkProfile\" id=\"liid_" + fbacc.FbUserId + "\"   onclick=\"composemessage(this.id,'fb')\"><a><img id=\"img_" + fbacc.FbUserId + "\" src=\"../Contents/img/facebook.png\" alt=\"" + fbacc.AccessToken + "\" border=\"none\" width=\"18\" style=\"float:left;\" /><span id=\"composename_" + fbacc.FbUserId + "\" style=\"float:left;margin: 3px 0 0 5px;\">" + fbacc.FbUserName + "</span><span id=\"imgurl_" + fbacc.FbUserId + "\" style=\"display:none;\">http://graph.facebook.com/" + fbacc.FbUserId + "/picture?type=small</span></a></li>";
                             }
                         }
                         profiles += "</ul> </div>";
@@ -987,7 +988,7 @@ namespace SocialSuitePro
                         {
                             foreach (SocioBoard.Domain.TwitterAccount item in alsttwtaccounts)
                             {
-                                profiles += "<li id=\"liid_" + item.TwitterUserId + "\"   onclick=\"composemessage(this.id,'twt')\"><a><img id=\"img_" + item.TwitterUserId + "\" src=\"../Contents/img/twitter.png\" alt=\"" + item.OAuthToken + "\" border=\"none\" width=\"18\" style=\"float:left;\" /><span id=\"imgurl_" + item.TwitterUserId + "\" style=\"display:none;\">" + item.ProfileImageUrl + "</span><span id=\"composename_" + item.TwitterUserId + "\" style=\"float:left;margin: 3px 0 0 5px;\">" + item.TwitterScreenName + "</span></a></li>";
+                                profiles += "<li nwtk='twt' class=\"getAllNetworkProfile\" id=\"liid_" + item.TwitterUserId + "\"   onclick=\"composemessage(this.id,'twt')\"><a><img id=\"img_" + item.TwitterUserId + "\" src=\"../Contents/img/twitter.png\" alt=\"" + item.OAuthToken + "\" border=\"none\" width=\"18\" style=\"float:left;\" /><span id=\"imgurl_" + item.TwitterUserId + "\" style=\"display:none;\">" + item.ProfileImageUrl + "</span><span id=\"composename_" + item.TwitterUserId + "\" style=\"float:left;margin: 3px 0 0 5px;\">" + item.TwitterScreenName + "</span></a></li>";
                             }
                         }
                         profiles += "</ul> </div>";
@@ -1009,15 +1010,15 @@ namespace SocialSuitePro
                             {
                                 string profileurl = string.Empty;
 
-                                if (!string.IsNullOrEmpty(item.ProfileUrl))
+                                if (!string.IsNullOrEmpty(item.ProfileImageUrl))
                                 {
-                                    profileurl = item.ProfileUrl;
+                                    profileurl = item.ProfileImageUrl;
                                 }
                                 else
                                 {
                                     profileurl = "../../Contents/img/blank_img.png";
                                 }
-                                profiles += "<li id=\"liid_" + item.LinkedinUserId + "\"   onclick=\"composemessage(this.id,'lin')\"><a><img id=\"img_" + item.LinkedinUserId + "\" src=\"../Contents/img/link.png\" alt=\"" + item.OAuthToken + "\" border=\"none\" width=\"18\" style=\"float:left;\" /><span id=\"imgurl_" + item.LinkedinUserId + "\" style=\"display:none;\">" + profileurl + "</span><span id=\"composename_" + item.LinkedinUserId + "\" style=\"float:left;margin: 3px 0 0 5px;\">" + item.LinkedinUserName + "</span></a></li>";
+                                profiles += "<li nwtk='lin' class=\"getAllNetworkProfile\" id=\"liid_" + item.LinkedinUserId + "\"   onclick=\"composemessage(this.id,'lin')\"><a><img id=\"img_" + item.LinkedinUserId + "\" src=\"../Contents/img/link.png\" alt=\"" + item.OAuthToken + "\" border=\"none\" width=\"18\" style=\"float:left;\" /><span id=\"imgurl_" + item.LinkedinUserId + "\" style=\"display:none;\">" + profileurl + "</span><span id=\"composename_" + item.LinkedinUserId + "\" style=\"float:left;margin: 3px 0 0 5px;\">" + item.LinkedinUserName + "</span></a></li>";
                             }
                         }
                         profiles += "</ul> </div>";
@@ -1053,7 +1054,7 @@ namespace SocialSuitePro
                                 fi.SaveAs(file);
                             }
                         }
-                       
+
                     }
                     catch (Exception ex)
                     {
@@ -1081,7 +1082,7 @@ namespace SocialSuitePro
                                     string strPathAndQuery = HttpContext.Current.Request.Url.PathAndQuery;
                                     string strUrl = HttpContext.Current.Request.Url.AbsoluteUri.Replace(strPathAndQuery, "/");
                                     string filepath = strUrl + "/Contents/img/upload/" + fi.FileName;
-                                    args["picture"] = filepath; 
+                                    args["picture"] = filepath;
                                 }
                                 FacebookClient fc = new FacebookClient(fbaccount.AccessToken);
                                 var facebookpost = fc.Post("/me/feed", args);
@@ -1116,16 +1117,36 @@ namespace SocialSuitePro
                                 OAuthTwt.AccessTokenSecret = twtaccount.OAuthSecret;
                                 OAuthTwt.TwitterScreenName = twtaccount.TwitterScreenName;
                                 OAuthTwt.TwitterUserId = twtaccount.TwitterUserId;
+
+
+
                                 twthelper.SetCofigDetailsForTwitter(OAuthTwt);
+
+                                #region For Testing
+                                // For Testing 
+
+                                //OAuthTwt.ConsumerKey = "udiFfPxtCcwXWl05wTgx6w";
+                                //OAuthTwt.ConsumerKeySecret = "jutnq6N32Rb7cgbDSgfsrUVgRQKMbUB34yuvAfCqTI";
+                                //OAuthTwt.AccessToken = "1453351098-Lz4H7cHKp26pXarF6l9zEwdiHDnwH7D0H4zteH3";
+                                //OAuthTwt.AccessTokenSecret = "dGBPxR9wxhQMioIcj5P4Wemxo5EZIZ8wlvDz7i39lSNFg";
+                                //OAuthTwt.TwitterScreenName = "";
+                                //OAuthTwt.TwitterUserId = "";
+                                #endregion
+
                                 Tweet twt = new Tweet();
                                 if (Request.Files.Count > 0)
                                 {
+
                                     PhotoUpload ph = new PhotoUpload();
                                     //ph.Tweet(file, message, OAuthTwt);
-
                                     string res = string.Empty;
-                                    ph.NewTweet(file, message, OAuthTwt,ref res);
+                                    ph.NewTweet(file, message, OAuthTwt, ref res);
 
+
+
+                                    // for testing
+
+                                    Response.Write(res);
                                     Console.WriteLine(res);
                                 }
                                 else
@@ -1372,7 +1393,7 @@ namespace SocialSuitePro
                                             resposecount++;
                                             try
                                             {
-                                                recentfollowers += "<li><a href=\"#\"><img style=\"border:3px solid #FCFCFC;\" title=\"" + items["name"] + "\" width=\"48\" height=\"48\" alt=\"\" src=\"" + items["profile_image_url"] + "\"></a></li>";
+                                                recentfollowers += "<li><a href=\"https://twitter.com/" + items["screen_name"] + "\" target=\"_blank\"><img style=\"border:3px solid #FCFCFC;\" title=\"" + items["name"] + "\" width=\"48\" height=\"48\" alt=\"\" src=\"" + items["profile_image_url"] + "\"></a></li>";
                                             }
                                             catch (Exception ex)
                                             {
@@ -1438,7 +1459,7 @@ namespace SocialSuitePro
                                                          "<input type=\"hidden\" value=\"#\" id=\"hdntaskid_1\">" +
                                                          "<p></p>" +
                                                    "</section>" +
-                                                   "<section class=\"task-message font-13 third\" style=\"height: auto; width: 37%; margin-right: 9px;\"><a class=\"tip_left\">" + item.ShareMessage + "</a></section>";
+                                                   "<section class=\"task-message font-13 third\" style=\"height: auto; width: 31%; margin-right: 9px;\"><a class=\"tip_left\">" + item.ShareMessage + "</a></section>";
 
                             if (item.ProfileType == "facebook")
                             {
@@ -1472,15 +1493,15 @@ namespace SocialSuitePro
                                 }
 
                             }
-                            schmessages += "<section class=\"task-status\" style=\"width:34px;\"><div class=\"ui_light floating task_status_change\">"+
-                                           "<a href=\"#nogo\" class=\"ui-sproutmenu\"><span class=\"ui-sproutmenu-status\"><img title=\"Edit Status\" onclick=\"PerformClick(this.id)\" src=\"../Contents/img/icon_edit.png\" class=\"edit_button\" id=\"img_7fd5773f-c5b0-4624-bba1-b8a6c0fbd56d_True\"></span></a></div></section>"+
+                            schmessages += "<section class=\"task-status\" style=\"width:34px;\"><div class=\"ui_light floating task_status_change\">" +
+                                           "<a href=\"#nogo\" class=\"ui-sproutmenu\"><span class=\"ui-sproutmenu-status\"><img title=\"Edit Status\" onclick=\"PerformClick(this.id)\" src=\"../Contents/img/icon_edit.png\" class=\"edit_button\" id=\"img_" + item.Id + "_" + item.Status + "\"></span></a></div></section>" +
                                            "<section class=\"task-status\" style=\"width: 65px; margin-right: 39px;\">" +
-                                           //"<span class=\"ficon task_active\" id=\"taskcomment\">" +
+                                //"<span class=\"ficon task_active\" id=\"taskcomment\">" +
                                 // "<img width=\"14\" height=\"17\" alt=\"\" src=\"../Contents/img/task/task_pin.png\" onclick=\"getmemberdata('7fd5773f-c5b0-4624-bba1-b8a6c0fbd56d');\">" +
-                                          //"</span>" +
+                                //"</span>" +
                                           "<div class=\"ui_light floating task_status_change\">" +
                                                "<a href=\"#nogo\" class=\"ui-sproutmenu\">" +
-                                                   "<span class=\"ui-sproutmenu-status\">" + item.Status +"</span>"+
+                                                   "<span class=\"ui-sproutmenu-status\">" + item.Status + "</span>" +
                                               "</a>" +
                                           "</div>" +
                                       "</section>" +
@@ -1491,7 +1512,7 @@ namespace SocialSuitePro
                     {
                         schmessages = "<section class=\"section\"><div class=\"js-task-cont read\"><section class=\"task-owner\">" +
                           "<img width=\"32\" height=\"32\" border=\"0\" class=\"avatar\" src=\"" + profurl + "\">" +
-                          "</section><section class=\"task-activity third\"><p>" + user.UserName + "</p><div></div><p></p></section><section style=\"margin-right: 6px; width: 40%; height: auto;\" class=\"task-message font-13 third\">" +
+                          "</section><section class=\"task-activity third\"><p>" + user.UserName + "</p><div></div><p></p></section><section style=\"margin-right: 6px; width: 31%; height: auto;\" class=\"task-message font-13 third\">" +
                           "<a class=\"tip_left\">No Schduled Messages</a></section><section style=\"width:113px;\" class=\"task-status\"><span class=\"ficon task_active\"></span>" +
                           "<div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
                           "<span class=\"ui-sproutmenu-status\"></span></a></div></section></div></section>";
@@ -1503,6 +1524,14 @@ namespace SocialSuitePro
                 {
 
                 }
+                else if (Request.QueryString["op"] == "updatequeue")
+                {
+
+                    updatequeue(Request.QueryString["id"], Request.QueryString["status"]);
+
+                }
+
+
                 else if (Request.QueryString["op"] == "messagechk")
                 {
                     SocioBoard.Domain.Messages mstable = new SocioBoard.Domain.Messages();
@@ -1558,6 +1587,21 @@ namespace SocialSuitePro
                 schedule = schedule.AddMinutes(minutes);
             }
             return schedule.ToString();
+        }
+
+        public void updatequeue(string id, string stat)
+        {
+            bool check = false;
+            ScheduledMessageRepository obj = new ScheduledMessageRepository();
+            if (stat.ToUpper() == "TRUE")
+            {
+                check = true;
+            }
+            else
+            {
+                check = false;
+            }
+            obj.UpdateProfileScheduleMessageStat(Guid.Parse(id), check);
         }
 
 

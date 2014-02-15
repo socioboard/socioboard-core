@@ -36,264 +36,372 @@ namespace SocialSuitePro
         ILog logger = LogManager.GetLogger(typeof(Home));
         protected void Page_Load(object sender, EventArgs e)
         {
-            UserRepository userrepo = new UserRepository();
-            Registration regObject = new Registration();
-            TeamRepository objTeamRepo = new TeamRepository();
-            NewsRepository objNewsRepo = new NewsRepository();
-            AdsRepository objAdsRepo = new AdsRepository();
-            SocialProfilesRepository objSocioRepo = new SocialProfilesRepository();
-            SocioBoard.Domain.User user = (User)Session["LoggedUser"];
-            Session["facebooktotalprofiles"] = null;
-
-            if (!IsPostBack)
+            try
             {
+                UserRepository userrepo = new UserRepository();
+                Registration regObject = new Registration();
+                TeamRepository objTeamRepo = new TeamRepository();
+                NewsRepository objNewsRepo = new NewsRepository();
+                AdsRepository objAdsRepo = new AdsRepository();
+                UserActivation objUserActivation = new UserActivation();
+                UserActivationRepository objUserActivationRepository = new UserActivationRepository();
+                SocialProfilesRepository objSocioRepo = new SocialProfilesRepository();
+                SocioBoard.Domain.User user = (User)Session["LoggedUser"];
+                Session["facebooktotalprofiles"] = null;
 
-                try
-                {
-                    if (user == null)
-                        Response.Redirect("Default.aspx");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    logger.Error(ex.StackTrace);
-                }
 
 
-                #region Count Used Accounts
-                try
+                if (user.Password == null)
                 {
-                    if (user.AccountType.ToString().ToLower() == AccountType.Deluxe.ToString().ToLower())
-                        tot_acc = 20;
-                    else if (user.AccountType.ToString().ToLower() == AccountType.Standard.ToString().ToLower())
-                        tot_acc = 10;
-                    else if (user.AccountType.ToString().ToLower() == AccountType.Premium.ToString().ToLower())
-                        tot_acc = 50;
-                    profileCount = objSocioRepo.getAllSocialProfilesOfUser(user.Id).Count;
-                    Session["ProfileCount"] = profileCount;
-                    Session["TotalAccount"] = tot_acc;
-                    usedAccount.InnerHtml = " using " + profileCount + " of " + tot_acc;
+                    
+                    Response.Redirect("Default.aspx");
                 }
-                catch (Exception ex)
+
+                #region for You can use only 30 days as Unpaid User
+
+                if (user.PaymentStatus.ToLower() == "unpaid")
                 {
-                    logger.Error(ex.StackTrace);
+                    if (!SBUtils.IsUserWorkingDaysValid(user.CreateDate))
+                    {
+                        // ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('You can use only 30 days as Unpaid User !');", true);
+
+                        Session["GreaterThan30Days"] = "GreaterThan30Days";
+
+                        Response.Redirect("/Settings/Billing.aspx");
+                    }
                 }
+
+                Session["GreaterThan30Days"]=null;
                 #endregion
 
-
-
-
-
-
-
-
-                if (!string.IsNullOrEmpty(Request.QueryString["type"]))
+                if (!IsPostBack)
                 {
+
                     try
                     {
-                        userrepo.UpdateAccountType(user.Id, Request.QueryString["type"]);
+                        if (user == null)
+                        {
+                            
+                            Response.Redirect("Default.aspx");
+                        }
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.StackTrace);
+                        Console.WriteLine(ex.Message);
                         logger.Error(ex.StackTrace);
                     }
-                }
 
-                acrossProfile.InnerHtml = "Across " + user.UserName + "'s Twitter and Facebook accounts";
-                teamMem.InnerHtml = "managing " + user.UserName;
-                try
-                {
-                    News nws = objNewsRepo.getNewsForHome();
-                    divNews.InnerHtml = nws.NewsDetail;
-                }
-                catch (Exception Err)
-                {
-                    Console.Write(Err.StackTrace);
-                    logger.Error(Err.StackTrace);
-                }
-                try
-                {
-                    ArrayList lstads = objAdsRepo.getAdsForHome();
-                    foreach (var item in lstads)
+
+                    try
                     {
-                        Array temp = (Array)item;
-                        imgAds.ImageUrl = temp.GetValue(2).ToString();
-                        break;
-                        // ads.ImageUrl;
+                        objUserActivation = objUserActivationRepository.GetUserActivationStatus(user.Id.ToString());
                     }
-                }
-                catch (Exception Err)
-                {
-                    Console.Write(Err.StackTrace);
-                    logger.Error(Err.StackTrace);
-                }
-                #region Team Member Count
-                try
-                {
-
-                    GroupRepository grouprepo = new GroupRepository();
-                    string groupsofhome = string.Empty;
-                    List<Groups> lstgroups = grouprepo.getAllGroups(user.Id);
-                    if (lstgroups.Count != 0)
+                    catch (Exception ex)
                     {
-                        foreach (Groups item in lstgroups)
+                        Session["objUserActivationException"] = "objUserActivationException";
+
+                        Console.WriteLine(ex.Message);
+                        logger.Error(ex.StackTrace);
+
+
+                    }
+
+                    
+
+                    #region check user Activation
+
+                    try
+                    {
+                        if (objUserActivation != null)
                         {
-                            groupsofhome += "<li><a href=\"../Settings/InviteMember.aspx?q=" + item.Id + "\"><img src=\"../Contents/img/groups_.png\" alt=\"\" style=\" margin-right:5px;\"> " + item.GroupName + "</a></li>";
-                        }
-                        getAllGroupsOnHome.InnerHtml = groupsofhome;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    logger.Error(ex.StackTrace);
-                }
-                #endregion
-
-                try
-                {
-                    string strTeam = string.Empty;
-                    List<Team> team = objTeamRepo.getAllTeamsOfUser(user.Id);
-                    foreach (Team item in team)
-                    {
-                        strTeam += "<div class=\"userpictiny\"><a target=\"_blank\" href=\"#\">" +
-                                    "<img width=\"48\" height=\"48\" title=\"" + item.FirstName + "\" alt=\"\" src=\"../Contents/img/blank_img.png\">" +
-                                    "</a></div>";
-                    }
-                    team_member.InnerHtml = strTeam;
-
-                }
-                catch (Exception Err)
-                {
-                    Console.Write(Err.StackTrace);
-                }
-
-                #region Add Fan Page
-                try
-                {
-                    if (Session["fbSocial"] != null)
-                    {
-                        if (Session["fbSocial"] == "p")
-                        {
-                            FacebookAccount objFacebookAccount = (FacebookAccount)Session["fbpagedetail"];
-
-                            //    string strpageUrl = "https://graph.facebook.com/" + objFacebookAccount.FacebookId + "/accounts";
-                            // objFacebookUrlBuilder = (FacebookUrlBuilder)Session["FacebookInsightUser"];
-                            //    string strData = objAuthentication.RequestUrl(strpageUrl, objFacebookAccount.Token);
-                            //    JObject output = objWebRequest.FacebookRequest(strData, "Get");
-                            FacebookClient fb = new FacebookClient();
-                            fb.AccessToken = objFacebookAccount.AccessToken;
-                            dynamic output = fb.Get("/me/accounts");
-                            //  JArray data = (JArray)output["data"];
-                            DataTable dtFbPage = new DataTable();
-                            dtFbPage.Columns.Add("Email");
-                            dtFbPage.Columns.Add("PageId");
-                            dtFbPage.Columns.Add("PageName");
-                            dtFbPage.Columns.Add("status");
-                            dtFbPage.Columns.Add("customer_id");
-                            string strPageDiv = string.Empty;
-                            if (output != null)
+                            if (objUserActivation.ActivationStatus == "0")
                             {
-                                foreach (var item in output["data"])
+                                if (Request.QueryString["stat"] == "activate")
                                 {
-                                    if (item.category.ToString() != "Application")
+                                    if (Request.QueryString["id"] != null)
                                     {
-                                        strPageDiv += "<div><a id=\"A1\"  onclick=\"getInsights('" + item["id"].ToString() + "','" + item["name"].ToString() + "')\"><span>" + item["name"].ToString() + "</span> </a></div>";
-                                        fbpage.InnerHtml = strPageDiv;
+                                        //objUserActivation = objUserActivationRepository.GetUserActivationStatusbyid(Request.QueryString["id"].ToString());
+                                        if (objUserActivation.UserId.ToString() == Request.QueryString["id"].ToString())
+                                        {
+                                            objUserActivation.Id = objUserActivation.Id; //Guid.Parse(Request.QueryString["id"]);
+                                            objUserActivation.UserId = Guid.Parse(Request.QueryString["id"]);// objUserActivation.UserId;
+                                            objUserActivation.ActivationStatus = "1";
+                                            UserActivationRepository.Update(objUserActivation);
+                                        }
+                                        else
+                                        {
+                                            Session["ActivationError"] = "Wrong Activation Link please contact Admin!";
+                                            //ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Wrong Activation Link please contact Admin!');", true);
+                                            Response.Redirect("ActivationLink.aspx");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Session["ActivationError"] = "Wrong Activation Link please contact Admin!";
+                                        //ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Wrong Activation Link please contact Admin!');", true);
+                                        Response.Redirect("ActivationLink.aspx");
+                                    }
+
+                                }
+                                else
+                                {
+                                    Response.Redirect("ActivationLink.aspx");
+                                }
+
+
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                       Console.WriteLine(ex.Message);
+                        logger.Error(ex.StackTrace);
+                    }
+                    #endregion
+
+                    
+
+                    #region Count Used Accounts
+                    try
+                    {
+                        if (user.AccountType.ToString().ToLower() == AccountType.Deluxe.ToString().ToLower())
+                            tot_acc = 20;
+                        else if (user.AccountType.ToString().ToLower() == AccountType.Standard.ToString().ToLower())
+                            tot_acc = 10;
+                        else if (user.AccountType.ToString().ToLower() == AccountType.Premium.ToString().ToLower())
+                            tot_acc = 50;
+                        else if (user.AccountType.ToString().ToLower() == AccountType.Free.ToString().ToLower())
+                            tot_acc = 5;
+                        profileCount = objSocioRepo.getAllSocialProfilesOfUser(user.Id).Count;
+                        Session["ProfileCount"] = profileCount;
+                        Session["TotalAccount"] = tot_acc;
+                        usedAccount.InnerHtml = " using " + profileCount + " of " + tot_acc;
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex.StackTrace);
+                    }
+                    #endregion
+
+
+
+
+                    if (!string.IsNullOrEmpty(Request.QueryString["type"]))
+                    {
+                        try
+                        {
+                            userrepo.UpdateAccountType(user.Id, Request.QueryString["type"]);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                            logger.Error(ex.StackTrace);
+                        }
+                    }
+
+                    acrossProfile.InnerHtml = "Across " + user.UserName + "'s Twitter and Facebook accounts";
+                    teamMem.InnerHtml = "managing " + user.UserName;
+                    try
+                    {
+                        News nws = objNewsRepo.getNewsForHome();
+                        divNews.InnerHtml = nws.NewsDetail;
+                    }
+                    catch (Exception Err)
+                    {
+                        Console.Write(Err.StackTrace);
+                        logger.Error(Err.StackTrace);
+                    }
+                    try
+                    {
+                        ArrayList lstads = objAdsRepo.getAdsForHome();
+                        foreach (var item in lstads)
+                        {
+                            Array temp = (Array)item;
+                            imgAds.ImageUrl = temp.GetValue(2).ToString();
+                            break;
+                            // ads.ImageUrl;
+                        }
+                    }
+                    catch (Exception Err)
+                    {
+                        Console.Write(Err.StackTrace);
+                        logger.Error(Err.StackTrace);
+                    }
+                    #region Team Member Count
+                    try
+                    {
+
+                        GroupRepository grouprepo = new GroupRepository();
+                        string groupsofhome = string.Empty;
+                        List<Groups> lstgroups = grouprepo.getAllGroups(user.Id);
+                        if (lstgroups.Count != 0)
+                        {
+                            foreach (Groups item in lstgroups)
+                            {
+                                groupsofhome += "<li><a href=\"../Settings/InviteMember.aspx?q=" + item.Id + "\"><img src=\"../Contents/img/groups_.png\" alt=\"\" style=\" margin-right:5px;\"> " + item.GroupName + "</a></li>";
+                            }
+                            getAllGroupsOnHome.InnerHtml = groupsofhome;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex.StackTrace);
+                    }
+                    #endregion
+
+                    try
+                    {
+                        string strTeam = string.Empty;
+                        List<Team> team = objTeamRepo.getAllTeamsOfUser(user.Id);
+                        foreach (Team item in team)
+                        {
+                            strTeam += "<div class=\"userpictiny\"><a target=\"_blank\" href=\"#\">" +
+                                        "<img width=\"48\" height=\"48\" title=\"" + item.FirstName + "\" alt=\"\" src=\"../Contents/img/blank_img.png\">" +
+                                        "</a></div>";
+                        }
+                        team_member.InnerHtml = strTeam;
+
+                    }
+                    catch (Exception Err)
+                    {
+                        Console.Write(Err.StackTrace);
+                    }
+
+                    #region Add Fan Page
+                    try
+                    {
+                        if (Session["fbSocial"] != null)
+                        {
+                            if (Session["fbSocial"] == "p")
+                            {
+                                FacebookAccount objFacebookAccount = (FacebookAccount)Session["fbpagedetail"];
+
+                                //    string strpageUrl = "https://graph.facebook.com/" + objFacebookAccount.FacebookId + "/accounts";
+                                // objFacebookUrlBuilder = (FacebookUrlBuilder)Session["FacebookInsightUser"];
+                                //    string strData = objAuthentication.RequestUrl(strpageUrl, objFacebookAccount.Token);
+                                //    JObject output = objWebRequest.FacebookRequest(strData, "Get");
+                                FacebookClient fb = new FacebookClient();
+                                fb.AccessToken = objFacebookAccount.AccessToken;
+                                dynamic output = fb.Get("/me/accounts");
+                                //  JArray data = (JArray)output["data"];
+                                DataTable dtFbPage = new DataTable();
+                                dtFbPage.Columns.Add("Email");
+                                dtFbPage.Columns.Add("PageId");
+                                dtFbPage.Columns.Add("PageName");
+                                dtFbPage.Columns.Add("status");
+                                dtFbPage.Columns.Add("customer_id");
+                                string strPageDiv = string.Empty;
+                                if (output != null)
+                                {
+                                    foreach (var item in output["data"])
+                                    {
+                                        if (item.category.ToString() != "Application")
+                                        {
+                                            strPageDiv += "<div><a id=\"A1\"  onclick=\"getInsights('" + item["id"].ToString() + "','" + item["name"].ToString() + "')\"><span>" + item["name"].ToString() + "</span> </a></div>";
+                                            fbpage.InnerHtml = strPageDiv;
+                                        }
                                     }
                                 }
+                                else
+                                {
+                                    strPageDiv += "<div>No Pages Found</div>";
+                                }
+                                Page.ClientScript.RegisterStartupScript(Page.GetType(), "my", " ShowDialogHome(false);", true);
+                                Session["fbSocial"] = null;
                             }
-                            else
-                            {
-                                strPageDiv += "<div>No Pages Found</div>";
-                            }
-                            Page.ClientScript.RegisterStartupScript(Page.GetType(), "my", " ShowDialogHome(false);", true);
-                            Session["fbSocial"] = null;
                         }
                     }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    logger.Error(ex.StackTrace);
-                }
-                #endregion
-
-                #region InsightsData
-                try
-                {
-                    decimal malecount = 0, femalecount = 0, cnt = 0;
-
-                    FacebookStatsRepository objfbStatsRepo = new FacebookStatsRepository();
-                    double daysSub = (DateTime.Now - user.CreateDate).TotalDays;
-                    int userdays = (int)daysSub;
-                    ArrayList arrFbStats = objfbStatsRepo.getAllFacebookStatsOfUser(user.Id, userdays);
-                    Random rNum = new Random();
-                    foreach (var item in arrFbStats)
+                    catch (Exception ex)
                     {
-                        Array temp = (Array)item;
-                        cnt += int.Parse(temp.GetValue(3).ToString()) + int.Parse(temp.GetValue(4).ToString());
-                        malecount += int.Parse(temp.GetValue(3).ToString());
-                        femalecount += int.Parse(temp.GetValue(4).ToString());
+                        Console.WriteLine(ex.Message);
+                        logger.Error(ex.StackTrace);
                     }
+                    #endregion
+
+                    #region InsightsData
                     try
                     {
-                        decimal mc = (malecount / cnt) * 100;
-                        male = Convert.ToInt16(mc);
+                        decimal malecount = 0, femalecount = 0, cnt = 0;
+
+                        FacebookStatsRepository objfbStatsRepo = new FacebookStatsRepository();
+                        double daysSub = (DateTime.Now - user.CreateDate).TotalDays;
+                        int userdays = (int)daysSub;
+                        ArrayList arrFbStats = objfbStatsRepo.getAllFacebookStatsOfUser(user.Id, userdays);
+                        Random rNum = new Random();
+                        foreach (var item in arrFbStats)
+                        {
+                            Array temp = (Array)item;
+                            cnt += int.Parse(temp.GetValue(3).ToString()) + int.Parse(temp.GetValue(4).ToString());
+                            malecount += int.Parse(temp.GetValue(3).ToString());
+                            femalecount += int.Parse(temp.GetValue(4).ToString());
+                        }
+                        try
+                        {
+                            decimal mc = (malecount / cnt) * 100;
+                            male = Convert.ToInt16(mc);
+                        }
+                        catch (Exception Err)
+                        {
+                            Console.Write(Err.StackTrace);
+                            logger.Error(Err.StackTrace);
+                        }
+                        try
+                        {
+                            decimal fc = (femalecount / cnt) * 100;
+                            female = Convert.ToInt16(fc);
+                        }
+                        catch (Exception Err)
+                        {
+                            Console.Write(Err.StackTrace);
+                            logger.Error(Err.StackTrace);
+                        }
+                        int twtAccCount = objSocioRepo.getAllSocialProfilesTypeOfUser(user.Id, "twitter").Count;
+                        if (twtAccCount > 1)
+                        {
+                            twtmale = rNum.Next(100);
+                            twtfemale = 100 - twtmale;
+                        }
+                        else if (twtAccCount == 1)
+                        {
+                            twtmale = 100;
+                            twtfemale = 0;
+                        }
+                        Session["twtGender"] = twtmale + "," + twtfemale;
                     }
                     catch (Exception Err)
                     {
-                        Console.Write(Err.StackTrace);
+                        Console.Write(Err.Message.ToString());
                         logger.Error(Err.StackTrace);
                     }
+                    getgrphData();
+                    getNewFriends(7);
+                    getNewFollowers(7);
+                    #endregion
+
+
+
+                    #region IncomingMessages
                     try
                     {
-                        decimal fc = (femalecount / cnt) * 100;
-                        female = Convert.ToInt16(fc);
-                    }
-                    catch (Exception Err)
-                    {
-                        Console.Write(Err.StackTrace);
-                        logger.Error(Err.StackTrace);
-                    }
-                    int twtAccCount = objSocioRepo.getAllSocialProfilesTypeOfUser(user.Id, "twitter").Count;
-                    if (twtAccCount > 1)
-                    {
-                        twtmale = rNum.Next(100);
-                        twtfemale = 100 - twtmale;
-                    }
-                    else if (twtAccCount == 1)
-                    {
-                        twtmale = 100;
-                        twtfemale = 0;
-                    }
-                    Session["twtGender"] = twtmale + "," + twtfemale;
-                }
-                catch (Exception Err)
-                {
-                    Console.Write(Err.Message.ToString());
-                    logger.Error(Err.StackTrace);
-                }
-                getgrphData();
-                getNewFriends(7);
-                getNewFollowers(7);
-                #endregion
+                        FacebookFeedRepository fbFeedRepo = new FacebookFeedRepository();
+                        int fbmessagescout = fbFeedRepo.countUnreadMessages(user.Id);
+                        TwitterMessageRepository twtMsgRepo = new TwitterMessageRepository();
+                        int twtcount = twtMsgRepo.getCountUnreadMessages(user.Id);
+                        Session["CountMessages"] = fbmessagescout + twtcount;
 
-                #region IncomingMessages
-                try
-                {
-                    FacebookFeedRepository fbFeedRepo = new FacebookFeedRepository();
-                    int fbmessagescout = fbFeedRepo.countUnreadMessages(user.Id);
-                    TwitterMessageRepository twtMsgRepo = new TwitterMessageRepository();
-                    int twtcount = twtMsgRepo.getCountUnreadMessages(user.Id);
-                    Session["CountMessages"] = fbmessagescout + twtcount;
-                }
-                catch (Exception ex)
-                {
-                    logger.Error(ex.StackTrace);
-                }
-                #endregion
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex.StackTrace);
+                    }
+                    #endregion
 
+
+                }
+            }
+            catch (Exception Err)
+            {
+                Console.Write(Err.StackTrace);
             }
         }
         public void getgrphData()
@@ -308,6 +416,7 @@ namespace SocialSuitePro
                 strArray = "[";
                 if (alstfb.Count > 0 && alstTwt.Count > 0)
                 {
+                    int imcomMsg_Clounter = 0;
                     //int alstCount=0;
                     //if (alstfb.Count < alstTwt.Count)
                     //    alstCount = alstfb.Count;
@@ -326,8 +435,10 @@ namespace SocialSuitePro
                         else
                             strFbCnt = alstfb[i].ToString();
                         strArray = strArray + "[" + strFbCnt + "," + strTwtCnt + "],";
-                        spanIncoming.InnerHtml = (int.Parse(strTwtCnt) + int.Parse(strFbCnt)).ToString();
+                        //spanIncoming.InnerHtml = (int.Parse(strTwtCnt) + int.Parse(strFbCnt)).ToString();
+                        imcomMsg_Clounter += (int.Parse(strTwtCnt) + int.Parse(strFbCnt));
                     }
+                    spanIncoming.InnerHtml = (imcomMsg_Clounter).ToString();
                 }
                 else
                 {
@@ -344,6 +455,7 @@ namespace SocialSuitePro
 
                 if (alstFBFeed.Count > 0 && alstTwtFeed.Count > 0)
                 {
+                    int SentMsg_Counter = 0;
                     int alstSentCount = 0;
                     if (alstTwtFeed.Count < alstFBFeed.Count)
                         alstSentCount = alstTwtFeed.Count;
@@ -362,8 +474,10 @@ namespace SocialSuitePro
                         else
                             strFbFeedCnt = alstFBFeed[i].ToString();
                         strSentArray = strSentArray + "[" + strFbFeedCnt + "," + strTwtFeedCnt + "],";
-                        spanSent.InnerHtml = (int.Parse(strFbFeedCnt) + int.Parse(strTwtFeedCnt)).ToString();
+                       // spanSent.InnerHtml = (int.Parse(strFbFeedCnt) + int.Parse(strTwtFeedCnt)).ToString();
+                        SentMsg_Counter += (int.Parse(strFbFeedCnt) + int.Parse(strTwtFeedCnt));
                     }
+                    spanSent.InnerHtml = (SentMsg_Counter).ToString();
                 }
                 else
                 {
@@ -429,12 +543,16 @@ namespace SocialSuitePro
                 TwitterStatsRepository objtwtStatsRepo = new TwitterStatsRepository();
                 ArrayList arrTwtStats = objtwtStatsRepo.getAllTwitterStatsOfUser(user.Id, days);
                 strTwtArray = "[";
+                int NewTweet_Count = 0;
                 foreach (var item in arrTwtStats)
                 {
                     Array temp = (Array)item;
                     strTwtArray += (temp.GetValue(4)) + ",";
-                    spanNewTweets.InnerHtml = temp.GetValue(4).ToString();
+                    //spanNewTweets.InnerHtml = temp.GetValue(4).ToString();
+                    NewTweet_Count += Convert.ToInt16(temp.GetValue(4));
                 }
+                spanNewTweets.InnerHtml = NewTweet_Count.ToString();
+
                 if (arrTwtStats.Count > 0)
                     strTwtArray = strTwtArray.Substring(0, strTwtArray.Length - 1);
                 if (arrTwtStats.Count < 7)
@@ -469,7 +587,9 @@ namespace SocialSuitePro
                 }
                 else
                 {
-                    Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+                   // Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Change the Plan to Add More Accounts');", true);
+
                 }
             }
             catch (Exception ex)
@@ -492,7 +612,8 @@ namespace SocialSuitePro
                 }
                 else
                 {
-                    Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+                    //Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Change the Plan to Add More Accounts');", true);
                 }
             }
             catch (Exception ex)
@@ -520,7 +641,8 @@ namespace SocialSuitePro
                 }
                 else
                 {
-                    Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+                    //Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Change the Plan to Add More Accounts');", true);
                 }
             }
             catch (Exception ex)
@@ -544,7 +666,8 @@ namespace SocialSuitePro
                 }
                 else
                 {
-                    Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+                   // Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Change the Plan to Add More Accounts');", true);
                 }
             }
             catch (Exception ex)
@@ -566,7 +689,8 @@ namespace SocialSuitePro
                 }
                 else
                 {
-                    Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+                    //Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Change the Plan to Add More Accounts');", true);
                 }
             }
             catch (Exception ex)
@@ -588,7 +712,8 @@ namespace SocialSuitePro
                 }
                 else
                 {
-                    Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+                   // Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Change the Plan to Add More Accounts');", true);
                 }
             }
             catch (Exception ex)
@@ -619,13 +744,41 @@ namespace SocialSuitePro
                 }
                 else
                 {
-                    Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+                   // Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Change the Plan to Add More Accounts');", true);
                 }
             }
             catch (Exception ex)
             {
                 logger.Error(ex.Message);
             }
+        }
+
+        public bool IsUserWorkingDaysValid(DateTime registrationDate)
+        {
+            bool isUserWorkingDaysValid = false;
+            try
+            {
+                TimeSpan span = DateTime.Now.Subtract(registrationDate);
+                int totalDays= (int)span.TotalDays;
+
+                if (totalDays < 30)
+                {
+                    isUserWorkingDaysValid = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message);
+            }
+            return isUserWorkingDaysValid;
+        }
+
+        int DaysBetween(DateTime d1, DateTime d2)
+        {
+            TimeSpan span = d2.Subtract(d1);
+            return (int)span.TotalDays;
         }
     }
 }

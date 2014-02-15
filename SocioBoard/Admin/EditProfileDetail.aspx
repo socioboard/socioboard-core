@@ -47,7 +47,7 @@
 								    <!-- // Group END -->
 
                                     <!-- Group -->
-								    <div class="control-group">
+								   <%-- <div class="control-group">
 									    <label class="control-label">Status</label>
 									    <div class="controls">
 										    <asp:DropDownList ID="ddltatus" runat="server" class="span12">
@@ -56,7 +56,7 @@
                                                 <asp:ListItem Value="0">Disable</asp:ListItem>
                                             </asp:DropDownList>
 									    </div>
-								    </div>
+								    </div>--%>
 								    <!-- // Group END -->
 							    </div>
 							    <!-- // Column END -->

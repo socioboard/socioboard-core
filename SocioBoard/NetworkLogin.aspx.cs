@@ -26,9 +26,12 @@ namespace SocialSuitePro
                     Response.Redirect("Default.aspx");
 
                 txtEmail.Text = user.EmailId;
-                string[] name = user.UserName.Split(' ');
-                txtFirstName.Text = name[0];
-                txtLastName.Text = name[1];
+                if (user.UserName != null)
+                {
+                    string[] name = user.UserName.Split(' ');
+                    txtFirstName.Text = name[0];
+                    txtLastName.Text = name[1];
+                }
             }
         }
 
@@ -44,13 +47,30 @@ namespace SocialSuitePro
             {
                 user.EmailId = txtEmail.Text;
                 user.UserName = txtFirstName.Text + " " + txtLastName.Text;
-
+                UserActivation objUserActivation = new UserActivation();
                 UserRepository userrepo = new UserRepository();
                 if (userrepo.IsUserExist(user.EmailId))
                 {
 
                     try
                     {
+                        string acctype = string.Empty;
+                        if (Request.QueryString["type"] != null)
+                        {
+                            if (Request.QueryString["type"] == "INDIVIDUAL" || Request.QueryString["type"] == "CORPORATION" || Request.QueryString["type"] == "SMALL BUSINESS")
+                            {
+                                acctype = Request.QueryString["type"];
+                            }
+                            else
+                            {
+                                acctype = "INDIVIDUAL";
+                            }
+                        }
+                        else
+                        {
+                            acctype = "INDIVIDUAL";
+                        }
+
                         user.AccountType = Request.QueryString["type"];
                     }
                     catch (Exception ex)
@@ -62,7 +82,36 @@ namespace SocialSuitePro
                     {
                         user.Password = regpage.MD5Hash(txtPassword.Text);
                         userrepo.UpdatePassword(user.EmailId, user.Password, user.Id, user.UserName, user.AccountType);
-                        MailSender.SendEMail(txtFirstName.Text + " " + txtLastName.Text, txtPassword.Text, txtEmail.Text);
+
+
+                        //add userActivation
+
+                        objUserActivation.Id = Guid.NewGuid();
+                        objUserActivation.UserId = user.Id;
+                        objUserActivation.ActivationStatus = "0";
+                        UserActivationRepository.Add(objUserActivation);
+
+
+                        //add package start
+
+                        UserPackageRelation objUserPackageRelation = new UserPackageRelation();
+                        UserPackageRelationRepository objUserPackageRelationRepository = new UserPackageRelationRepository();
+                        PackageRepository objPackageRepository = new PackageRepository();
+
+                        Package objPackage = objPackageRepository.getPackageDetails(user.AccountType);
+                        objUserPackageRelation.Id = new Guid();
+                        objUserPackageRelation.PackageId = objPackage.Id;
+                        objUserPackageRelation.UserId = user.Id;
+                        objUserPackageRelation.ModifiedDate = DateTime.Now;
+                        objUserPackageRelation.PackageStatus = true;
+
+                        objUserPackageRelationRepository.AddUserPackageRelation(objUserPackageRelation);
+
+                        //end package
+
+
+
+                        MailSender.SendEMail(txtFirstName.Text + " " + txtLastName.Text, txtPassword.Text, txtEmail.Text, objUserActivation.UserId.ToString());
                     }
                 }
                 Session["LoggedUser"] = user;

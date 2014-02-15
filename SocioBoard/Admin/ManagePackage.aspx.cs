@@ -17,6 +17,12 @@ namespace SocialSuitePro.Admin
         {
             if (!IsPostBack)
             {
+
+                if (Session["AdminProfile"] == null)
+                {
+                    Response.Redirect("Default.aspx");
+                }
+
                 try
                 {
                     PackageRepository objPkgRepo = new PackageRepository();
@@ -24,7 +30,8 @@ namespace SocialSuitePro.Admin
                     string strPackage = string.Empty;
                     foreach (var item in lstPkg)
                     {
-                        strPackage += "<tr class=\"gradeX\"><td><a href=\"AddPackage.aspx?id=" + item.Id + "\">Edit</a></td><td>" + item.PackageName + "</td><td>" + item.Pricing + "</td><td>" + item.EntryDate + "</td><td class=\"center\">" + item.Status + "</td></tr>";
+                        //strPackage += "<tr class=\"gradeX\"><td><a href=\"AddPackage.aspx?id=" + item.Id + "\">Edit</a></td><td>" + item.PackageName + "</td><td>" + item.Pricing + "</td><td>" + item.EntryDate + "</td><td class=\"center\">" + item.Status + "</td></tr>";
+                        strPackage += "<tr class=\"gradeX\"><td><a href=\"AddPackage.aspx?id=" + item.Id + "\">Edit</a></td><td>" + item.PackageName + "</td><td>" + item.Pricing + "</td><td>" + item.EntryDate + "</td></tr>";
                     }
                     divPackage.InnerHtml = strPackage;
                 }

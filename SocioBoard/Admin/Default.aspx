@@ -8,8 +8,8 @@
 <!--[if gt IE 8]> <html class="ie gt-ie8"> <![endif]-->
 <!--[if !IE]><!--><html><!-- <![endif]-->
 <head>
-	<title>SocioBoard - Admin</title>
-	
+	<title>Socioboard - Admin</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../Contents/img/ssp/logo-bg.png"/>
 	<!-- Meta -->
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
@@ -43,7 +43,7 @@
 	
 		<div class="wrapper">
 		
-			<h1 class="glyphicons lock">SocioBoard Admin <i></i></h1>
+			<h1 class="glyphicons lock">Socioboard Admin <i></i></h1>
 		
 			<!-- Box -->
 			<div class="widget">
@@ -58,7 +58,7 @@
 				<div class="widget-body">
 				
 					<!-- Form -->
-					<form method="post" runat="server">
+					<form id="Form1" method="post" runat="server">
 						<label>Username</label>
                     <asp:TextBox ID="txtUserName" runat="server" class="input-block-level" placeholder="Your Username"></asp:TextBox>
 					

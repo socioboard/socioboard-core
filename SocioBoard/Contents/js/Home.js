@@ -573,17 +573,34 @@ function ajaxFileUpload() {
 
 /*This function  sends the composed 
 message of  SocialNetwork*/
+function hasExtension(inputID, exts) {
+    var fileName = document.getElementById(inputID).value;
+    return (new RegExp('(' + exts.join('|').replace(/\./g, '\\.') + ')$')).test(fileName);
+}
+
 function SendMessage() {
     debugger;
     var fd = new FormData();
     try {
-
+    
+   
         var filesimage = document.getElementById('fileuploadImage').files[0];
-        fd.append('file', filesimage);
+     
+        debugger;
+      
+        var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+        if (hasExtension('fileuploadImage', fileExtension)) {
+                fd.append('file', filesimage);
+         }
+         else
+         {
+            alert("File Extention is not current");
+            return;  
+         }
+        } 
+        catch (e) {
 
-    } catch (e) {
-
-    }
+        }
 
     try {
         var message = $("#textareavaluetosendmessage").val();
@@ -617,7 +634,9 @@ function SendMessage() {
                 success: function (data) {
                     debugger;
 
-                    $("#composeBox").bPopup().close();
+                   $("#composeBox").bPopup().close();
+                    filesimage="";
+                    document.getElementById('fileuploadImage').value = "";
                     closeonCompose();
                 }
             });

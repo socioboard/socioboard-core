@@ -13,7 +13,7 @@ namespace SocioBoard.Helper
     {
         private static readonly ILog logger = LogManager.GetLogger(typeof(MailSender));
 
-        public static void SendEMail(string username, string password, string emailid)
+        public static void SendEMail(string username, string password, string emailid, string id)
         {
 
             try
@@ -23,6 +23,7 @@ namespace SocioBoard.Helper
 
                 string html = File.ReadAllText(mailpath);
 
+                html = html.Replace("%replink%", "http://www.socioboard.com/Home.aspx?stat=activate&id=" + id + "");
                 html = html.Replace("%USERNAME%", username);
                 html = html.Replace("%PASSWORD%", password);
                 html = html.Replace("%EMAILID%", emailid);
@@ -38,7 +39,7 @@ namespace SocioBoard.Helper
                 string Body = mailhelper.VerificationMail(html, emailid, "");
 
 
-                string Subject = "You have been added to Socioboard account‏";
+                string Subject = "You have Added to Socioboard Account";
                 //            MailHelper.SendMailMessage(host, int.Parse(port.ToString()),fromemail,pass,emailid,string.Empty,string.Empty,Subject,Body);
 
 
@@ -68,7 +69,7 @@ namespace SocioBoard.Helper
                 string urllogin = "http://socioboard.com/Default.aspx";
                 string registrationurl = "http://socioboard.com/Registration.aspx?tid="+teamid;
                 string Body = mailhelper.InvitationMail(html, username, sendername, "", urllogin, registrationurl);
-                string Subject = "You've been Invited to " + username + " SocialSuitePro Account";
+                string Subject = "You've been Invited to " + username + " Socioboard Account";
                 //   MailHelper.SendMailMessage(host, int.Parse(port.ToString()), fromemail, pass, email, string.Empty, string.Empty, Subject, Body);
 
 

@@ -13,77 +13,124 @@ namespace SocialSuitePro.Settings
 {
     public partial class Billing : System.Web.UI.Page
     {
+        //List<Package> lstPackage = new List<Package>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (!IsPostBack)
+            try
             {
-                User user = (User)Session["LoggedUser"];
+                if (Session["GreaterThan30Days"] == "GreaterThan30Days")
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('You can use only 30 days as Unpaid User !');", true);
 
-                if (user == null)
-                    Response.Redirect("/Default.aspx");
+                }
 
-                PackageRepository packageRepo = new PackageRepository();
-                divcreatedate.InnerHtml = "Subscription begins - " + user.CreateDate.ToString();
-                plantype.InnerHtml = user.AccountType;
-                if (user.AccountType.ToLower() == AccountType.Standard.ToString().ToLower())
+                if (!IsPostBack)
                 {
-                    Package pack = packageRepo.getPackageDetails(AccountType.Standard.ToString());
-                    if (pack != null)
+                    User user = (User)Session["LoggedUser"];
+
+                    if (user == null)
+                        Response.Redirect("/Default.aspx");
+
+                    PackageRepository packageRepo = new PackageRepository();
+
+                    divcreatedate.InnerHtml = "Subscription begins - " + user.CreateDate.ToString();
+                    plantype.InnerHtml = user.AccountType;
+                    if (user.AccountType.ToLower() == AccountType.Standard.ToString().ToLower())
                     {
-                        priceofplan.InnerHtml = "$" + pack.Pricing;
-                        // rateExtra.InnerHtml = "$" + pack.Pricing;
-                        monthly.InnerHtml = "$" + pack.Pricing;
+                        Package pack = packageRepo.getPackageDetails(AccountType.Standard.ToString());
+                        if (pack != null)
+                        {
+                            priceofplan.InnerHtml = "$" + pack.Pricing;
+                            // rateExtra.InnerHtml = "$" + pack.Pricing;
+                            monthly.InnerHtml = "$" + pack.Pricing;
+                        }
+                    }
+                    else if (user.AccountType.ToLower() == AccountType.Deluxe.ToString().ToLower())
+                    {
+                        Package pack = packageRepo.getPackageDetails(AccountType.Deluxe.ToString());
+                        if (pack != null)
+                        {
+                            priceofplan.InnerHtml = "$" + pack.Pricing;
+                            //  rateExtra.InnerHtml = "$" + pack.Pricing;
+                            monthly.InnerHtml = "$" + pack.Pricing;
+                        }
+                    }
+                    else if (user.AccountType.ToLower() == AccountType.Premium.ToString().ToLower())
+                    {
+                        Package pack = packageRepo.getPackageDetails(AccountType.Premium.ToString());
+                        if (pack != null)
+                        {
+                            priceofplan.InnerHtml = "$" + pack.Pricing;
+                            //  rateExtra.InnerHtml = "$" + pack.Pricing;
+                            monthly.InnerHtml = "$" + pack.Pricing;
+                        }
                     }
                 }
-                else if (user.AccountType.ToLower() == AccountType.Deluxe.ToString().ToLower())
-                {
-                    Package pack = packageRepo.getPackageDetails(AccountType.Deluxe.ToString());
-                    if (pack != null)
-                    {
-                        priceofplan.InnerHtml = "$" + pack.Pricing;
-                        //  rateExtra.InnerHtml = "$" + pack.Pricing;
-                        monthly.InnerHtml = "$" + pack.Pricing;
-                    }
-                }
-                else if (user.AccountType.ToLower() == AccountType.Premium.ToString().ToLower())
-                {
-                    Package pack = packageRepo.getPackageDetails(AccountType.Premium.ToString());
-                    if (pack != null)
-                    {
-                        priceofplan.InnerHtml = "$" + pack.Pricing;
-                        //  rateExtra.InnerHtml = "$" + pack.Pricing;
-                        monthly.InnerHtml = "$" + pack.Pricing;
-                    }
-                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error : " + ex.StackTrace);
             }
         }
 
         public void Payment(object sender, EventArgs e)
         {
-            User user = (User)Session["LoggedUser"];
-            SocioBoard.Helper.Payment payme = new SocioBoard.Helper.Payment();
-            string amount = string.Empty;
-            string plantype = string.Empty;
-            if (user.AccountType == "standard")
+            try
             {
-                plantype = "StandardPlan of SocialSuitePro";
-                amount = "39";
-            }
-            else if (user.AccountType == "deluxe")
-            {
-                plantype = "DeluxePlan of SocialSuitePro";
-                amount = "59";
-            }
-            else if (user.AccountType == "premium")
-            {
-                plantype = "PremiumPlan of SocialSuitePro";
-                amount = "99";
-            }
+                PackageRepository packageRepo = new PackageRepository();
 
-            string pay = payme.PayWithPayPal(amount,plantype, user.UserName, "", user.EmailId, "USD", ConfigurationManager.AppSettings["paypalemail"], ConfigurationManager.AppSettings["SuccessURL"],
-                                  ConfigurationManager.AppSettings["FailedURL"], ConfigurationManager.AppSettings["SuccessURL"], ConfigurationManager.AppSettings["cancelurl"],ConfigurationManager.AppSettings["notifyurl"],user.Id.ToString());
-            Response.Redirect(pay);
+                List<Package> lstPackage = packageRepo.getAllPackage();
+                User user = (User)Session["LoggedUser"];
+                SocioBoard.Helper.Payment payme = new SocioBoard.Helper.Payment();
+                string amount = string.Empty;
+                string plantype = string.Empty;
+                if (lstPackage.Count > 0)
+                {
+                    if (user.AccountType.ToLower() == "standard")
+                    {
+                        plantype = lstPackage[0].PackageName;
+                        amount = Convert.ToString(lstPackage[0].Pricing);
+                    }
+                    else if (user.AccountType.ToLower() == "deluxe")
+                    {
+                        plantype = lstPackage[1].PackageName;
+                        amount = Convert.ToString(lstPackage[1].Pricing);
+                    }
+                    else if (user.AccountType.ToLower() == "premium")
+                    {
+                        plantype = lstPackage[2].PackageName;
+                        amount = Convert.ToString(lstPackage[2].Pricing);
+                    }
+                }
+                else
+                {
+                    if (user.AccountType.ToLower() == "standard")
+                    {
+                        plantype = "StandardPlan of Socioboard";
+                        amount = "39";
+                    }
+                    else if (user.AccountType.ToLower() == "deluxe")
+                    {
+                        plantype = "DeluxePlan of Socioboard";
+                        amount = "59";
+                    }
+                    else if (user.AccountType.ToLower() == "premium")
+                    {
+                        plantype = "PremiumPlan of Socioboard";
+                        amount = "99";
+                    }
+                }
+
+                string pay = payme.PayWithPayPal(amount, plantype, user.UserName, "", user.EmailId, "USD", ConfigurationManager.AppSettings["paypalemail"], ConfigurationManager.AppSettings["SuccessURL"],
+                                      ConfigurationManager.AppSettings["FailedURL"], ConfigurationManager.AppSettings["SuccessURL"], ConfigurationManager.AppSettings["cancelurl"], ConfigurationManager.AppSettings["notifyurl"], user.Id.ToString());
+                Response.Redirect(pay);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error : " + ex.StackTrace);
+            }
         }
     }
 }

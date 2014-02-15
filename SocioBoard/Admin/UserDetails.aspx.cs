@@ -17,13 +17,20 @@ namespace SocialSuitePro.Admin
         {
             if (!IsPostBack)
             {
+
+                if (Session["AdminProfile"] == null)
+                {
+                    Response.Redirect("Default.aspx");
+                }
+
                 try
                 {
                     List<User> lstUser = objUserRepo.getAllUsers();
                     string strUser = string.Empty;
                     foreach (User item in lstUser)
                     {
-                        strUser += "<tr class=\"gradeX\"><td><a href=\"EditUserDetail.aspx?id=" + item.Id + "\">Edit</a></td><td>" + item.UserName + "</td><td>" + item.AccountType + "</td><td>" + item.CreateDate + "</td><td class=\"center\">" + item.EmailId + "</td><td class=\"center\">" + item.ExpiryDate + "</td><td class=\"center\">" + item.UserStatus + "</td></tr>";
+                      //  strUser += "<tr class=\"gradeX\"><td><a href=\"EditUserDetail.aspx?id=" + item.Id + "\">Edit</a></td><td><a href=\"#\" onclick=\"del('" + item.Id + "')\">Delete</a></td><td>" + item.UserName + "</td><td>" + item.AccountType + "</td><td>" + item.CreateDate + "</td><td class=\"center\">" + item.EmailId + "</td><td class=\"center\">" + item.ExpiryDate + "</td><td class=\"center\">" + item.UserStatus + "</td></tr>";
+                        strUser += "<tr class=\"gradeX\"><td><a href=\"EditUserDetail.aspx?id=" + item.Id + "\">Edit</a></td><td><a href=\"#\" onclick=\"del('" + item.Id + "')\">Delete</a></td><td>" + item.UserName + "</td><td>" + item.AccountType + "</td><td>" + item.CreateDate + "</td><td class=\"center\">" + item.EmailId + "</td><td class=\"center\">" + item.UserStatus + "</td></tr>";
                     }
                     Users.InnerHtml = strUser;
                 }

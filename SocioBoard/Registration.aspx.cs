@@ -62,6 +62,7 @@ namespace SocioBoard
         protected void btnRegister_Click(object sender, ImageClickEventArgs e)
         {
             User user = new User();
+            UserActivation objUserActivation = new UserActivation();
             UserRepository userrepo = new UserRepository();
             SocioBoard.Helper.SessionFactory.configfilepath = Server.MapPath("~/hibernate.cfg.xml");
             try
@@ -87,7 +88,27 @@ namespace SocioBoard
                     if (!userrepo.IsUserExist(user.EmailId))
                     {
                         UserRepository.Add(user);
-                        SocioBoard.Helper.MailSender.SendEMail(txtFirstName.Text + " " + txtLastName.Text, txtPassword.Text, txtEmail.Text);
+
+                        objUserActivation.Id = Guid.NewGuid();
+                        objUserActivation.UserId = user.Id;
+                        objUserActivation.ActivationStatus = "0";
+                        UserActivationRepository.Add(objUserActivation);
+
+                        //add value in userpackage
+                        UserPackageRelation objUserPackageRelation = new UserPackageRelation();
+                        UserPackageRelationRepository objUserPackageRelationRepository = new UserPackageRelationRepository();
+                        PackageRepository objPackageRepository = new PackageRepository();
+
+                        Package objPackage = objPackageRepository.getPackageDetails(user.AccountType);
+                        objUserPackageRelation.Id = new Guid();
+                        objUserPackageRelation.PackageId = objPackage.Id;
+                        objUserPackageRelation.UserId = user.Id;
+                        objUserPackageRelation.PackageStatus = true;
+
+                        objUserPackageRelationRepository.AddUserPackageRelation(objUserPackageRelation);
+
+
+                        SocioBoard.Helper.MailSender.SendEMail(txtFirstName.Text + " " + txtLastName.Text, txtPassword.Text, txtEmail.Text, objUserActivation.UserId.ToString());
 
                         TeamRepository teamRepo = new TeamRepository();
                         Team team = teamRepo.getTeamByEmailId(txtEmail.Text);

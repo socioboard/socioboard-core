@@ -12,27 +12,37 @@ namespace SocialSuitePro.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                if (Session["login"] != null)
+                if (!IsPostBack)
                 {
-                    standardplan.HRef = "NetworkLogin.aspx?type=" + AccountType.Standard.ToString();
-                    deluxeplan.HRef = "NetworkLogin.aspx?type=" + AccountType.Deluxe.ToString();
-                    premiumplan.HRef = "NetworkLogin.aspx?type=" + AccountType.Premium.ToString();
+                    if (Session["login"] != null)
+                    {
+                        standardplan.HRef = "NetworkLogin.aspx?type=" + AccountType.Standard.ToString();
+                        deluxeplan.HRef = "NetworkLogin.aspx?type=" + AccountType.Deluxe.ToString();
+                        premiumplan.HRef = "NetworkLogin.aspx?type=" + AccountType.Premium.ToString();
+                        freePlan.HRef = "NetworkLogin.aspx?type=" + AccountType.Free.ToString();
+                    }
+                    else if (Session["AjaxLogin"] != null)
+                    {
+                        standardplan.HRef = "Home.aspx?type=" + AccountType.Standard.ToString(); ;
+                        deluxeplan.HRef = "Home.aspx?type=" + AccountType.Deluxe.ToString();
+                        premiumplan.HRef = "Home.aspx?type=" + AccountType.Premium.ToString();
+                        freePlan.HRef = "Home.aspx?type=" + AccountType.Free.ToString();
+                        Session["AjaxLogin"] = null;
+                    }
+                    else
+                    {
+                        standardplan.HRef = "RegisterPage.aspx?type=" + AccountType.Standard.ToString();
+                        deluxeplan.HRef = "RegisterPage.aspx?type=" + AccountType.Deluxe.ToString();
+                        premiumplan.HRef = "RegisterPage.aspx?type=" + AccountType.Premium.ToString();
+                        freePlan.HRef = "RegisterPage.aspx?type=" + AccountType.Free.ToString();
+                    }
                 }
-                else if (Session["AjaxLogin"] != null)
-                {
-                    standardplan.HRef = "Home.aspx?type=" + AccountType.Standard.ToString(); ;
-                    deluxeplan.HRef = "Home.aspx?type=" + AccountType.Deluxe.ToString();
-                    premiumplan.HRef = "Home.aspx?type=" + AccountType.Premium.ToString();
-                    Session["AjaxLogin"] = null;
-                }
-                else
-                {
-                    standardplan.HRef = "RegisterPage.aspx?type=" + AccountType.Standard.ToString();
-                    deluxeplan.HRef = "RegisterPage.aspx?type=" + AccountType.Deluxe.ToString();
-                    premiumplan.HRef = "RegisterPage.aspx?type=" + AccountType.Premium.ToString();
-                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error : " + ex.StackTrace);
             }
         }
     }

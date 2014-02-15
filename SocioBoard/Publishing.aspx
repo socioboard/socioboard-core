@@ -464,7 +464,7 @@ background-position:0 0;
         <div id="top-nav">
             <div class="container">
                 <div id="logo">
-                    <a href="">
+                    <a href="/Home.aspx">
                        <img src="../Contents/img/under_sspro_logo.png" alt="SocialSuitePro" /></a>
                 </div>
                 <div id="infocontainer" style="width: 730px;">
@@ -476,7 +476,7 @@ background-position:0 0;
                     </div>
                     Information! Now You have <a href="~/Message/Messages.aspx" id="incomMessages" runat="server">
                         0</a> Incoming Message and <a runat="server" id="incomTasks" href="../Message/Task.aspx">0</a> Task 
-                        <a href="../Default.aspx" class="woo_logout" style="text-decoration:none; color: #CECECE;">
+                        <a href="../Default.aspx?type=logout" class="woo_logout" style="text-decoration:none; color: #CECECE;">
                             <img src="../Contents/img/logout_woo.png" style="margin-right:4px;" alt=""/><b>Logout</b>
                         </a>
                     <div id="errsuccess" class="greenerrormsg">
@@ -936,6 +936,11 @@ background-position:0 0;
                 <div class="send_btn">
                     <a id="sendMessageBtn" onclick="SendMessage()" href="#">
                         <img src="../Contents/img/sendbtn.png" alt="" /></a></div>
+                <div class="filebutton">
+                    <input id="fileuploadImage" type="file" name="" />
+                </div>
+                <div class="fileupload_data"></div>
+                
                 <%-- <div style="width:20px; height:20px;"><img src=</div>--%>
             </div>
         </div>
@@ -1013,12 +1018,12 @@ background-position:0 0;
             </div>
         </div>
 
-           <%--popup for edit wooqueue--%>
-
-            <div id="woopopup" class="compose_box" style="">
-                <span class="close_button b-close"><span id="Span3" onclick="closeonCompose()">X</span></span>
-                <div class="newmsd">Edit WooQueue Message</div>
-                <div class="pht_text_counter">
+          <%--popup for edit wooqueue--%>
+        <div id="woopopup" class="compose_box" style="">
+            <span class="close_button b-close"><span id="Span3" onclick="closeonCompose()">X</span></span>
+            <div class="newmsd">
+                Edit WooQueue Message</div>
+            <div class="pht_text_counter">
                 <div class="pht_bg">
                     <div class="bgpht">
                         <img id="imageofuser_Woo" src="" alt="" style="height: 50px;" /></div>
@@ -1040,20 +1045,33 @@ background-position:0 0;
                 </div>
                 <div class="drop_textare">
                     <textarea id="textareavaluetosendmessage_Woo"></textarea></div>
-             <%--   <div id="messageCount_Woo" class="counter_bg">
+                <%--   <div id="messageCount_Woo" class="counter_bg">
                     140</div>--%>
             </div>
-                <div id="forid" style="display:none;"></div>
-                <div id="profileidwithtype" style="display:none;"></div>
-                <div id="profiletypeforwoo" style="display:none;"></div>
+            <div id="forid" style="display: none;">
+            </div>
+            <div id="profileidwithtype" style="display: none;">
+            </div>
+            <div id="profiletypeforwoo" style="display: none;">
+            </div>
             <div class="pht_addbtn">
                 <div class="send_btn">
-                    <a id="sendMessageBtn_Woo" onclick="saveWooQueue();"  href="#">
-                        <img src="../Contents/img/save.png" alt="" /></a></div>
+                    <a id="sendMessageBtn_Woo" onclick="saveWooQueue();" href="#">
+                        <img src="../Contents/img/save.png" alt="" /></a>
+                </div>
+                <div class="filebutton">
+                    <input type="file" name="" id="file1" />
+                </div>
+                <div class="fileupload_data"></div>
                 <%-- <div style="width:20px; height:20px;"><img src=</div>--%>
             </div>
         </div>
     </div>
+    <%-- <asp:Button ID="btnchangestatus" runat="server" Style="display: none;" OnClick="btn_Click" />--%>
+    <asp:HiddenField ID="hdnTask_id" runat="server" />
+    <asp:HiddenField ID="hdnstatus" runat="server" />
+    <asp:HiddenField ID="hdntaskcommentid" runat="server" />
+    <asp:HiddenField ID="hdnComment_Date" runat="server" />
     </form>
 </body>
 <script type="text/javascript" language="javascript">
@@ -1373,8 +1391,45 @@ background-position:0 0;
         });
 
     });
-   
 
+    function PerformClick(id) {
+        debugger;
+        //            alert("id :" + id);
+        debugger;
+        // alert("aya hai jhumo nacho");
+        taskid = id.split('_')[1];
+        var status = id.split('_')[2];
+        $("#<%=hdnstatus.ClientID %>").val(status);
+        $("#<%=hdnTask_id.ClientID %>").val(taskid);
+        checkStatusInfo(status, taskid);
+    }
+
+    function checkStatusInfo(status, taskid) {
+        debugger;
+        //alert(taskid);
+        alertify.confirm('Are you sure want to change status?', function (e) {
+            if (e) {
+                debugger;
+                $.ajax
+        ({
+            type: "POST",
+            url: "../AjaxHome.aspx?op=updatequeue&id=" + taskid + "&status=" + status,
+            data: '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (msg) {
+                //                debugger;
+                //                location.reload();
+                publishcontent("wooqueue");
+            }
+        });
+
+                return true;
+            } else {
+                return false;
+            }
+        });
+    }
 
 
 </script>

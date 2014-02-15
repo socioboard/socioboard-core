@@ -9977,3 +9977,6 @@ p > span.like, p > span.comment {
     font-size: 12px;
     margin-left: 10px;
 }
+
+.scl a img .tooltip{ width:200px; height:100px; display:none;}
+.scl a img:hover .tooltip{ width:200px; height:100px; display: block; position:absolute; background:#333; color:#fff;}

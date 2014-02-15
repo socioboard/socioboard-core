@@ -24,8 +24,8 @@
                       
                     </div>--%>
                     <div class="first_name_last_name_div" id="change_password" style="display: none;">
-                        <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>
-                        <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password" placeholder="Confirm Password"></asp:TextBox>
+                        <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" placeholder="Old Password"></asp:TextBox>
+                        <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password" placeholder="New Password"></asp:TextBox>
                         <asp:CompareValidator ID="cvPassword" runat="server" ControlToCompare="txtPassword"
                             ControlToValidate="txtConfirmPassword" ErrorMessage="*" ValidationGroup="setting"></asp:CompareValidator>
                       
@@ -84,15 +84,15 @@
         </div>
          <script type="text/javascript" language="javascript">
 
-        $("#chngpwd").click(function () {
-            $("#change_password").css('display', 'block');
-            $("#chngpwd").hide();
-        });
+             $("#chngpwd").click(function () {
+                 $("#change_password").css('display', 'block');
+                 $("#chngpwd").hide();
+             });
 
 
-        $("#btncancel").click(function () {
-            $("#change_password").css('display', 'none');
-            $("#chngpwd").show();
-        });
+             $("#btncancel").click(function () {
+                 $("#change_password").css('display', 'none');
+                 $("#chngpwd").show();
+             });
         </script>
 </asp:Content>

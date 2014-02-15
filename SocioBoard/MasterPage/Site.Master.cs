@@ -36,6 +36,21 @@ namespace SocialSuitePro.MasterPage
                 else
                 {
 
+
+                    #region for You can use only 30 days as Unpaid User
+
+                    if (user.PaymentStatus.ToLower() == "unpaid")
+                    {
+                        if (!SBUtils.IsUserWorkingDaysValid(user.CreateDate))
+                        {
+                            cmposecontainer.Attributes.Add("display", "none");
+                        }
+                    }
+                    #endregion
+
+
+
+
                     try
                     {
                         if (Session["IncomingTasks"] != null)
@@ -48,6 +63,8 @@ namespace SocialSuitePro.MasterPage
                             TaskRepository taskRepo = new TaskRepository();
                             ArrayList alst = taskRepo.getAllIncompleteTasksOfUser(user.Id);
                             Session["IncomingTasks"] = alst.Count;
+                            incom_tasks.InnerHtml = Convert.ToString(alst.Count);
+                            incomTasks.InnerHtml = Convert.ToString(alst.Count);
                         }
                     }
                     catch (Exception es)
@@ -77,11 +94,11 @@ namespace SocialSuitePro.MasterPage
                     usernm.InnerHtml = "Hello, <a href=\"../Settings/PersonalSettings.aspx\"> " + user.UserName + "</a> ";
                     if (!string.IsNullOrEmpty(user.ProfileUrl))
                     {
-                       // Datetime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToLongDateString() + " " + TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToShortTimeString() + " (" + user.TimeZone + ")";
+                        // Datetime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToLongDateString() + " " + TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToShortTimeString() + " (" + user.TimeZone + ")";
                         userimg.InnerHtml = "<a href=\"../Settings/PersonalSettings.aspx\"><img id=\"loggeduserimg\" src=\"" + user.ProfileUrl + "\" alt=\"" + user.UserName + "\" /></a></a>";
                         //userinf.InnerHtml = Datetime;
-                    //{ 
-                    //    userimg.InnerHtml = "<a href=\"../Settings/PersonalSettings.aspx\"><img id=\"loggeduserimg\" src=\"" + user.ProfileUrl + "\" alt=\"" + user.UserName + "\" height=\"100\" width=\"100\"/></a></a>";
+                        //{ 
+                        //    userimg.InnerHtml = "<a href=\"../Settings/PersonalSettings.aspx\"><img id=\"loggeduserimg\" src=\"" + user.ProfileUrl + "\" alt=\"" + user.UserName + "\" height=\"100\" width=\"100\"/></a></a>";
                         if (user.TimeZone != null)
                         {
                             Datetime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToLongDateString() + " " + TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToShortTimeString() + " (" + user.TimeZone + ")";

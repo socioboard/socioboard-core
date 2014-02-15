@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Ajaxadmin.aspx.cs" Inherits="SocioBoard.Admin.Ajaxadmin" %>
