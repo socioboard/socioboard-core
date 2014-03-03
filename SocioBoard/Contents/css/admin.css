@@ -3,9 +3,9 @@
 body{background:#4d575a;}
 .container{width:1263px}
 #top-nav{height:73px;background:#fff}
-#logo{height:65px;margin:4px 16px 0px;width:273px;float:left;}
+#logo{height:65px;margin:0 16px 0px;width:273px;float:left;}
 #logo a{}
-#logo a img{ width:273px; height:40px; border:none; outline:aqua;}
+#logo a img{ width:273px; border:none; outline:aqua;}
 #infocontainer {font-family: Arial, Helvetica, sans-serif;font-size:0.85em;color:#666;line-height:73px;height:73px;float:left;}
 #infocontainer a{color:#666;text-decoration:underline;}
 #msgcontainer{height: 34px;width: auto;float:left;margin:20px 20px 20px 4px;background: #71797b;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;line-height:33px;padding:0px 10px}
@@ -83,7 +83,7 @@ body{background:#4d575a;}
 #mainwrapper-message #message-list .message-list-content .leftarrow{background:url(../../Contents/img/admin/leftarrow.png) no-repeat 0 0 transparent;position:absolute;left:-9px;width:10px;height:15px}
 #mainwrapper-message #message-list .message-list-content p{font-family:"Segoe UI";font-size:14px;color:#747474;padding-bottom:20px;word-wrap:break-word;background:url(../img/admin/slashdot.png) no-repeat right bottom transparent;margin-bottom:0px}
 #mainwrapper-message #message-list .message-list-content .message-list-info {font-family:"Segoe UI";font-size:12px;}
-#mainwrapper-message #message-list .message-list-content .message-list-info a{color:#7A92B8;display:inline}
+#mainwrapper-message #message-list .message-list-content .message-list-info a{color:#7A92B8;display:inline;padding-right:10px;}
 .scl{float:right;width:80px;height:auto}
 .scl a{margin:0px 3px;display:inline !important}
 #mainwrapper-message .userpictiny > img{border:3px solid #FCFCFC}
@@ -902,3 +902,16 @@ margin-left: 15px;
     background-attachment: scroll;
 }
  a.post{float:right; cursor:pointer; color:#fff;}
+ 
+ 
+ 
+ 
+ /* --------- For Email Activation Div --------------- */
+ 
+ #actdiv{background-color:#F99686;}
+ #actdiv > span{margin-left:37%;padding-right:92px;} 
+ .message-date-info a{padding-left:8px;}
+ 
+ .pull-left.feedcontent a {
+    text-decoration: none;
+}

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using SocioBoard.Domain;
 using SocioBoard.Helper;
+using SocioBoard.Admin.Scheduler;
 
 namespace SocioBoard.Model
 {
@@ -491,7 +492,55 @@ namespace SocioBoard.Model
             }
         }
 
+        public List<ScheduledTracker> GetAllScheduledDetails()
+        {
+            List<ScheduledTracker> lstScheduledTracker = new List<ScheduledTracker>();
 
+            try
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        try
+                        {
+                            var res = session.CreateQuery("select count(Id), UserId from ScheduledMessage group by UserId order by ScheduleTime desc").SetMaxResults(100);
+
+                            foreach (Object[] item in res.Enumerable())
+                            {
+                                try
+                                {
+                                   // Type type = item.GetType();
+                                    ScheduledTracker objscheduledTracker = new ScheduledTracker();
+                                    objscheduledTracker._count = Convert.ToInt32(item[item.Length - 2]);
+                                    objscheduledTracker._Id = Convert.ToString(item[item.Length - 1]);
+
+                                    lstScheduledTracker.Add(objscheduledTracker);
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine("Error : " + ex.StackTrace);
+                                }
+                            }
+                            
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                            //return null;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                //return null;
+            }
+
+            return lstScheduledTracker;
+        }
 
 
 

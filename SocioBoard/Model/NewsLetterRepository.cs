@@ -58,6 +58,7 @@ namespace SocioBoard.Model
                             .SetParameter("UserId", nl.UserId)
                             .SetParameter("SendDate", nl.SendDate)
                             .SetParameter("SendStatus", nl.SendStatus)
+                              .SetParameter("adsid", nl.Id)
                             .ExecuteUpdate();
                         transaction.Commit();
 
@@ -148,7 +149,26 @@ namespace SocioBoard.Model
             }
         }
 
+        public List<NewsLetter> GetAllNewsLetterByDate(DateTime dt)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    List<NewsLetter> alstFBAccounts = session.CreateQuery("from NewsLetter where SendDate<= :dtime and SendStatus=0").SetParameter("dtime", dt)
+                        .List<NewsLetter>().ToList<NewsLetter>();
 
+                    //List<NewsLetter> alstFBAccounts = new List<NewsLetter>();
+
+                    //foreach (NewsLetter item in query.Enumerable())
+                    //{
+                    //    alstFBAccounts.Add(item);
+                    //}
+                    return alstFBAccounts;
+
+                }
+            }
+        }
 
         public NewsLetter getNewsLetterDetailsbyId(Guid nlid)
         {

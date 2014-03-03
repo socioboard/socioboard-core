@@ -120,6 +120,41 @@ namespace SocioBoard.Model
             return i;
         }
 
+        public int UpdateActivationStatusByUserId(User user)
+        {
+            int i = 0;
+            try
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        try
+                        {
+                            i = session.CreateQuery("Update User set ActivationStatus =:activationStatus where Id = :id")
+                                      .SetParameter("activationStatus", user.ActivationStatus)
+                                      .SetParameter("id", user.Id)
+                                      .ExecuteUpdate();
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+
+                        }
+
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+            return i;
+        }
+
         public User GetUserInfo(string EmailId, string Password)
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -255,6 +290,33 @@ namespace SocioBoard.Model
 
         }
 
+        public void SetUserByUserId(string emailid, string password, Guid id, string username, string accounttype,string couponcode)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        int i = session.CreateQuery("Update User set EmailId=:email, UserName =: username, Password =:pass, AccountType= :acctype,CouponCode=:couponCode where Id = :twtuserid")
+                                  .SetParameter("twtuserid", id)
+                                  .SetParameter("email", emailid)
+                                  .SetParameter("pass", password)
+                                  .SetParameter("acctype", accounttype)
+                                  .SetParameter("username", username)
+                                  .SetParameter("couponCode", couponcode)
+                                  .ExecuteUpdate();
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                }
+            }
+
+        }
+
         public int DeleteUser(Guid id)
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -318,7 +380,7 @@ namespace SocioBoard.Model
                 {
                     try
                     {
-                        NHibernate.IQuery query = session.CreateQuery("from User");
+                        NHibernate.IQuery query = session.CreateQuery("from User where Id !=null");
                         List<User> alstUser = new List<User>();
                         foreach (User item in query.Enumerable())
                         {
@@ -652,6 +714,39 @@ namespace SocioBoard.Model
                         {
                             Console.WriteLine(ex.StackTrace);
                             return null;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine("Error : " + ex.StackTrace);
+            }
+
+            return alstUser;
+        }
+
+        public List<User> GetUserByCouponCode(User user)
+        {
+            List<User> alstUser = new List<User>();
+            try
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        try
+                        {
+                            alstUser = session.CreateQuery("from User where CouponCode=:couponCode")
+                            .SetParameter("couponCode", user.CouponCode)
+                            .List<User>().ToList<User>();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                            
                         }
                     }
                 }

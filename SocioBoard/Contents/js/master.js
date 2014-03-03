@@ -91,6 +91,33 @@ $("#contactvalue").keyup(function () {
 });
 
 
+
+
+$("#resendmail").click(function () {
+    //alert('hua');
+    var uid = $(this).attr('uid');
+    $.ajax
+        ({
+            type: "POST",
+            url: "../Helper/AjaxMailSender.aspx?op=resendmail",
+            data: 'uid=' + uid,
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (msg) {
+                var arr = msg.split('~');
+                if (arr[0] == "Success") {
+                    alert('Mail Sent to :' + arr[1] +'');
+                }
+                else {
+                    alert('Message not send');
+                }
+            }
+        });
+});
+
+
+
+
 $(document).ready(function () {
 
     $('#usersetting').click(function () {

@@ -74,9 +74,9 @@ function saveDrafts() {
             dataType: "html",
             success: function (msg) {
                 debugger;
-                $("#textareavaluetosendmessage_scheduler").val('');
-                $('#messageCount_scheduler').html('140 Characters Remaining');
-                $('#timepickerforScheduler').val('');
+                $("#timepickerforScheduler").val('');
+                $("#adddates_scheduler").html('');
+                closeonCompose();
             }
         });
 

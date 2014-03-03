@@ -76,6 +76,15 @@ namespace SocialSuitePro.MasterPage {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl cmposecontainer;
         
         /// <summary>
+        /// actdiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl actdiv;
+        
+        /// <summary>
         /// userimg control.
         /// </summary>
         /// <remarks>
@@ -101,6 +110,15 @@ namespace SocialSuitePro.MasterPage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl userinf;
+        
+        /// <summary>
+        /// topbtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl topbtn;
         
         /// <summary>
         /// master_facebook_connect control.

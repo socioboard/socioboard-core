@@ -296,7 +296,8 @@ namespace SocioBoard.Model
             {
                 using (NHibernate.ITransaction transaction = session.BeginTransaction())
                 {
-                    NHibernate.IQuery query = session.CreateQuery("from FacebookAccount where UserId = :userid and Type='account'");
+                   // NHibernate.IQuery query = session.CreateQuery("from FacebookAccount where UserId = :userid and Type='account'");
+                    NHibernate.IQuery query = session.CreateQuery("from FacebookAccount where UserId = :userid");
                     query.SetParameter("userid", UserId);
                     ArrayList alstFBAccounts = new ArrayList();
 

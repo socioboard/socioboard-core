@@ -1,0 +1,15 @@
+D:\Abhay\socioboard\trunk\GlobusMailLib\bin\Debug\GlobusMailLib.dll
+D:\Abhay\socioboard\trunk\GlobusMailLib\bin\Debug\GlobusMailLib.pdb
+D:\Abhay\socioboard\trunk\GlobusMailLib\bin\Debug\FSharp.Core.dll
+D:\Abhay\socioboard\trunk\GlobusMailLib\bin\Debug\log4net.dll
+D:\Abhay\socioboard\trunk\GlobusMailLib\bin\Debug\Mandrill.dll
+D:\Abhay\socioboard\trunk\GlobusMailLib\bin\Debug\Newtonsoft.Json.dll
+D:\Abhay\socioboard\trunk\GlobusMailLib\bin\Debug\RestSharp.dll
+D:\Abhay\socioboard\trunk\GlobusMailLib\bin\Debug\SendGridMail.dll
+D:\Abhay\socioboard\trunk\GlobusMailLib\bin\Debug\System.Net.Http.dll
+D:\Abhay\socioboard\trunk\GlobusMailLib\bin\Debug\FSharp.Core.xml
+D:\Abhay\socioboard\trunk\GlobusMailLib\bin\Debug\Newtonsoft.Json.xml
+D:\Abhay\socioboard\trunk\GlobusMailLib\bin\Debug\RestSharp.xml
+D:\Abhay\socioboard\trunk\GlobusMailLib\bin\Debug\System.Net.Http.xml
+D:\Abhay\socioboard\trunk\GlobusMailLib\obj\Debug\GlobusMailLib.dll
+D:\Abhay\socioboard\trunk\GlobusMailLib\obj\Debug\GlobusMailLib.pdb

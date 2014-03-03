@@ -131,7 +131,7 @@ namespace SocioBoard.Model
                 {
                     try
                     {
-                        List<LinkedInFeed> alst = session.CreateQuery("from LinkedInFeed where ProfileId = :profileId")
+                        List<LinkedInFeed> alst = session.CreateQuery("from LinkedInFeed where ProfileId = :profileId ORDER BY EntryDate DESC")
                         .SetParameter("profileId", profileid)
                         .List<LinkedInFeed>()
                         .ToList<LinkedInFeed>();

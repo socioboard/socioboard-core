@@ -236,7 +236,7 @@ namespace SocioBoard.Model
                 {
                     try
                     {
-                        List<TwitterMessage> lstmsg = session.CreateQuery("from TwitterMessage where  ProfileId = :profid")
+                        List<TwitterMessage> lstmsg = session.CreateQuery("from TwitterMessage where  ProfileId = :profid ORDER BY EntryDate DESC")
                         .SetParameter("profid", profileid)
                         .List<TwitterMessage>()
                         .ToList<TwitterMessage>();

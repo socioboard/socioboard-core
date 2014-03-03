@@ -249,7 +249,7 @@ namespace SocioBoard.Model
                 {
                     try
                     {
-                        List<FacebookFeed> alst = session.CreateQuery("from FacebookFeed where  ProfileId = :profileId")
+                        List<FacebookFeed> alst = session.CreateQuery("from FacebookFeed where  ProfileId = :profileId ORDER BY EntryDate DESC")
                         .SetParameter("profileId", profileid)
                         .List<FacebookFeed>()
                         .ToList<FacebookFeed>();

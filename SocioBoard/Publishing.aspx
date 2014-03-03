@@ -26,6 +26,7 @@
 <script src="../Contents/js/timepicer/include/ui-1.10.0/jquery.ui.position.min.js"
     type="text/javascript"></script>
 <script src="../Contents/js/timepicer/jquery.ui.timepicker.js" type="text/javascript"></script>
+<script src="../Contents/js/clickDesk.js" type="text/javascript"></script>
 
 
  <%--urlvalidate--%>
@@ -234,7 +235,7 @@
     #contentcontainer1-publishing #content, #contentcontainer1-publishing #content_drafts, #contentcontainer1-publishing #content_wooqueue, #contentcontainer1-publishing #content_rsspost
     {
         left: 256px;
-        width: 648px;
+        width: 767px;
     }
     #content > section#inbox_msgs > .tasks-header, section.messages.msg_view.inbox_msgs > .tasks-header, #content_drafts > section.messages.msg_view.inbox_msgs > .tasks-header, #content_rsspost > section.messages.msg_view.inbox_msgs > .tasks-header
     {
@@ -484,7 +485,7 @@ background-position:0 0;
                             X</span></div>
                 </div>
                 <div id="cmposecontainer">
-                    <div id="composecontent">
+                    <div id="composecontent" class="composecontent">
                         <a href="#">
                             <img src="../Contents/img/admin/111.png" alt="" />
                             Compose</a>
@@ -744,6 +745,9 @@ background-position:0 0;
                                 <div onclick="saveDrafts();" class="savetodraft">Save To Draft</div>
                                     <div id="scheduleimg" style="float: right;">
                                         <img onclick="ScheduleMessage()" src="../Contents/img/schedule.png" alt="" />
+                                    </div>
+                                     <div class="composecontent" style="float: right;">
+                                       <a style="color: #D5928C;font-weight:bolder;height:30px;margin-top: 7px;width: 60px;" class="btn span6 composecontent">Send</a>
                                     </div>
                                 </div>
                                 <div class="datebg">
@@ -1313,7 +1317,7 @@ background-position:0 0;
     //              });
     //          });
 
-    $("#composecontent").click(function () {
+    $(".composecontent").click(function () {
         debugger;
         closeonCompose();
         //  ("#composeBox").bPopup();

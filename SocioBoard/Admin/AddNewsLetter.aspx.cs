@@ -133,25 +133,29 @@ namespace SocialSuitePro.Admin
 
                         objUser = objUserRepository.getUsersById(Guid.Parse(listItem.Value));
                         if (objUser != null)
-                            MailHelper.SendSendGridMail(host, Convert.ToInt32(port), from, "", objUser.EmailId.ToString(), string.Empty, string.Empty, txtSubject.Text, Editor.Text, username, pass);
+                        {
+                           // MailHelper.SendSendGridMail(host, Convert.ToInt32(port), from, "", objUser.EmailId.ToString(), string.Empty, string.Empty, txtSubject.Text, Editor.Text, username, pass);
 
 
-                        //objNl.Id = Guid.NewGuid();
-                        //objNl.Subject = txtSubject.Text;
-                        //objNl.NewsLetterDetail = Editor.Text;
-                        //objNl.SendDate = DateTime.Parse(txtSendDate.Text);
-                        //objNl.SendStatus = false;
-                        //objNl.UserId = Guid.Parse(listItem.Value);
-                        //if (!objnlRepo.checkNewsLetterExists(Editor.Text))
-                        //    objnlRepo.AddNewsLetter(objNl);
-                        //else
-                        //    objnlRepo.UpdateNewsLetter(objNl);
+                            objNl.Id = Guid.NewGuid();
+                            objNl.Subject = txtSubject.Text;
+                            objNl.NewsLetterDetail = Editor.Text;
+                            objNl.SendDate = DateTime.Parse(txtSendDate.Text);
+                            objNl.SendStatus = false;
+                            objNl.UserId = Guid.Parse(listItem.Value);
+                            objNl.EntryDate = DateTime.Now;
+                            //if (!objnlRepo.checkNewsLetterExists(Editor.Text))
+                            //    objnlRepo.AddNewsLetter(objNl);
+                            //else
+                                //objnlRepo.UpdateNewsLetter(objNl);
+                            objnlRepo.AddNewsLetter(objNl);
+                        }
                     }
                 }
                 txtSubject.Text = "";
                 Editor.Text = "";
                 clearAll();
-                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Email has sent!');", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('News Letter has been Added!');", true);
 
             }
             catch (Exception Err)

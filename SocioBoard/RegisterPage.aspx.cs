@@ -64,19 +64,39 @@ namespace SocialSuitePro
             User user = new User();
             UserRepository userrepo = new UserRepository();
             UserActivation objUserActivation = new UserActivation();
+            Coupon objCoupon = new Coupon();
+            CouponRepository objCouponRepository = new CouponRepository();
             SocioBoard.Helper.SessionFactory.configfilepath = Server.MapPath("~/hibernate.cfg.xml");
             try
             {
-                if (txtPassword.Text == txtConfirmPassword.Text)
+
+                if (DropDownList1.SelectedValue == "Basic" || DropDownList1.SelectedValue == "Standard" || DropDownList1.SelectedValue == "Deluxe" || DropDownList1.SelectedValue == "Premium")
                 {
 
+                
 
-
-                    user.PaymentStatus = "unpaid";
-                    user.AccountType = Request.QueryString["type"];
-                    if (user.AccountType == string.Empty)
+                if (TextBox1.Text.Trim() != "")
+                {
+                    string resp = SBUtils.GetCouponStatus(TextBox1.Text).ToString();
+                    if (resp != "valid")
                     {
-                        user.AccountType = AccountType.Deluxe.ToString();
+                       // ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert(Not valid);", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('" + resp + "');", true);
+                        return;
+                    }
+                }
+
+
+
+
+                if (txtPassword.Text == txtConfirmPassword.Text)
+                {
+                    user.PaymentStatus = "unpaid";
+                    //user.AccountType = Request.QueryString["type"];
+                    user.AccountType = DropDownList1.SelectedValue.ToString();
+                    if (string.IsNullOrEmpty(user.AccountType))
+                    {
+                        user.AccountType = AccountType.Free.ToString();
                     }
                     user.CreateDate = DateTime.Now;
                     user.ExpiryDate = DateTime.Now.AddMonths(1);
@@ -85,12 +105,30 @@ namespace SocialSuitePro
                     user.Password = this.MD5Hash(txtPassword.Text);
                     user.EmailId = txtEmail.Text;
                     user.UserStatus = 1;
+                    user.ActivationStatus = "0";
+                    if (TextBox1.Text.Trim() != "")
+                    {
+                        user.CouponCode = TextBox1.Text.Trim().ToString();
+                    }
+
+
                     if (!userrepo.IsUserExist(user.EmailId))
                     {
                         UserRepository.Add(user);
 
+                        if (TextBox1.Text.Trim() != "")
+                        {
+                            objCoupon.CouponCode = TextBox1.Text.Trim();
+                            List<Coupon> lstCoupon = objCouponRepository.GetCouponByCouponCode(objCoupon);
+                            objCoupon.Id = lstCoupon[0].Id;
+                            objCoupon.EntryCouponDate = lstCoupon[0].EntryCouponDate;
+                            objCoupon.ExpCouponDate = lstCoupon[0].ExpCouponDate;
+                            objCoupon.Status = "1";
+                            objCouponRepository.SetCouponById(objCoupon);
+                        }
 
 
+                        Session["LoggedUser"] = user;
                         objUserActivation.Id = Guid.NewGuid();
                         objUserActivation.UserId = user.Id;
                         objUserActivation.ActivationStatus = "0";
@@ -113,7 +151,7 @@ namespace SocialSuitePro
 
                         //end package
 
-                        SocioBoard.Helper.MailSender.SendEMail(txtFirstName.Text, txtPassword.Text, txtEmail.Text, objUserActivation.UserId.ToString());
+                        SocioBoard.Helper.MailSender.SendEMail(txtFirstName.Text, txtPassword.Text, txtEmail.Text, user.AccountType.ToString(),user.Id.ToString());
                         TeamRepository teamRepo = new TeamRepository();
                         Team team = teamRepo.getTeamByEmailId(txtEmail.Text);
                         if (team != null)
@@ -247,6 +285,7 @@ namespace SocialSuitePro
                             }
                         }
                         lblerror.Text = "Registered Successfully !" + "<a href=\"Default.aspx\">Login</a>";
+                        Response.Redirect("~/Home.aspx");
                     }
                     else
                     {
@@ -254,11 +293,18 @@ namespace SocialSuitePro
                     }
                 }
             }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please select Account Type!');", true);
+            }
+        }
+       
             catch (Exception ex)
             {
                 logger.Error(ex.StackTrace);
                 lblerror.Text = "Please Insert Correct Information";
                 Console.WriteLine(ex.StackTrace);
+                //Response.Redirect("Home.aspx");
             }
         }
 

@@ -79,7 +79,8 @@ namespace SocialSuitePro
                             }
                             else
                             {
-                                Response.Redirect("Pricing.aspx");
+                                //Response.Redirect("Pricing.aspx");
+                                Response.Redirect("NetworkLogin.aspx?type=Free");
                             }
                         }
                     

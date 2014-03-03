@@ -19,6 +19,7 @@ function facebookgroupdetails(gid, fbUserId) {
         // data: 'blog_id=' + blog_id + '&type=C_GetAllComment',
         success: function (message) {
 
+            $('div .alert_suite_title > a').attr("gid", gid);
             debugger;
             if (message != "") {
                 //  console.log(datain["data"]);

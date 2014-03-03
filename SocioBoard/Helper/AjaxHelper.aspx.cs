@@ -182,9 +182,22 @@ namespace SocioBoard.Helper
 
                     foreach (FacebookAccount childnoe in alst)
                     {
-                        accesstoken = childnoe.AccessToken;
+                        try
+                        {
 
-                        break;
+                            //accesstoken = childnoe.AccessToken;
+                            if (CheckFacebookTokenByUserId(childnoe.AccessToken.ToString(), userid))
+                            {
+                                accesstoken = childnoe.AccessToken;
+                                break;
+                            }
+                            //break;
+                        }
+                        catch (Exception ex)
+                        {
+
+                            Console.WriteLine(ex.Message);
+                        }
                     }
 
                     FacebookClient fbclient = new FacebookClient(accesstoken);
@@ -662,11 +675,18 @@ namespace SocioBoard.Helper
                                     }
                                     else if (nametype[1] == "ins")
                                     {
+                                       
                                         message += "<div class=\"btn srcbtn\">" +
-                                                      "<img width=\"15\" src=\"../Contents/img/instagram_24X24.png\" alt=\"\">" +
-                                                 nametype[0] +
-                                                 "<span data-dismiss=\"alert\" class=\"close pull-right\">×</span>" +
-                                                 "</div>";
+                                                   "<a target=\"_blank\" rel=\"" + nametype[0] + "\" href=\"http://instagram.com/" + nametype[0] + "\">" +
+                                                   "<img width=\"15\" src=\"../Contents/img/instagram_24X24.png\" alt=\"\">" + nametype[0] +
+                                                   "<span data-dismiss=\"alert\" class=\"close pull-right\">×</span>" +
+                                                   "</a>" +
+                                                "</div>";
+                                        //message += "<div class=\"btn srcbtn\">" +
+                                        //              "<img width=\"15\" src=\"../Contents/img/instagram_24X24.png\" alt=\"\">" +
+                                        //         nametype[0] +
+                                        //         "<span data-dismiss=\"alert\" class=\"close pull-right\">×</span>" +
+                                        //         "</div>";
                                     }
                                     else if (nametype[1] == "lin")
                                     {
@@ -1454,6 +1474,23 @@ namespace SocioBoard.Helper
                 Console.WriteLine(ex.Message);
             }
             return CheckTwitterTokenByUserId;
+        }
+
+        public bool CheckFacebookTokenIsValid(string fbtoken)
+        {
+            bool CheckFacebookTokenByUserId = false;
+            try
+            {
+                FacebookClient fb = new FacebookClient(fbtoken);
+                string jstring = string.Empty;
+                dynamic profile = fb.Get("me");
+                CheckFacebookTokenByUserId = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return CheckFacebookTokenByUserId;
         }
     }
 }

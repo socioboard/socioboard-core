@@ -8607,7 +8607,7 @@ body.login {
 }
 
 #logo > a > img {
-    margin-top: 16px;
+    /*margin-top: 16px;*/
 }
 
 #searchcontent > a > img {
@@ -9198,7 +9198,7 @@ ol.recent-tweets >li
 }
 .schedular_textarea
 {
-    width:320px;
+    width:362px;
     height:auto;
     float:left;
 }

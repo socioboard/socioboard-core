@@ -458,6 +458,7 @@ function addAnotherProfileforMessage(id, network) {
 function closeonCompose() {
     debugger;
     $("#adddates_scheduler").html('');
+    document.getElementById('fileuploadImage').value = "";
     chkidforusertest.length = 0;
 
     try {
@@ -589,6 +590,8 @@ function SendMessage() {
         debugger;
       
         var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+        if(filesimage !=null)
+        {
         if (hasExtension('fileuploadImage', fileExtension)) {
                 fd.append('file', filesimage);
          }
@@ -597,6 +600,8 @@ function SendMessage() {
             alert("File Extention is not current");
             return;  
          }
+         }
+
         } 
         catch (e) {
 

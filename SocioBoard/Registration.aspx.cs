@@ -108,7 +108,7 @@ namespace SocioBoard
                         objUserPackageRelationRepository.AddUserPackageRelation(objUserPackageRelation);
 
 
-                        SocioBoard.Helper.MailSender.SendEMail(txtFirstName.Text + " " + txtLastName.Text, txtPassword.Text, txtEmail.Text, objUserActivation.UserId.ToString());
+                        SocioBoard.Helper.MailSender.SendEMail(txtFirstName.Text + " " + txtLastName.Text, txtPassword.Text, txtEmail.Text, user.AccountType.ToString(), user.Id.ToString());
 
                         TeamRepository teamRepo = new TeamRepository();
                         Team team = teamRepo.getTeamByEmailId(txtEmail.Text);

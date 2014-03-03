@@ -7,10 +7,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <script src="../Contents/js/jquery.min.js" type="text/javascript"></script>
  <script type="text/javascript" language="javascript">
-     $(document).ready(function () {
-         txtSendDate.hide();
+     $(function () {
+         $("#<%= txtSendDate.ClientID %>").datepicker();
      });
-
 </script>
 <div id="content">
 	       <asp:ScriptManager ID="ScriptManager1" runat="server">
@@ -58,13 +57,16 @@
 								<!-- // Group END -->
                                 	<!-- Group -->
 								<div class="control-group">
-									<%--<label class="control-label">Date</label>--%>
+									<label class="control-label">Send Date</label>
 									<div class="controls">
-										<%--<div class="input-append">
+										<div class="input-append">
                                             <asp:TextBox ID="txtSendDate" runat="server" Visible="true"></asp:TextBox>
 											   
 											<span class="add-on glyphicons calendar"><i></i></span>
-										</div>--%>
+										</div>
+
+                                        <div>
+
                                         <div class="form-actions" style="margin: 0;">
                             <asp:Button ID="unselect" runat="server" Text="UnSelect" 
                                 class="btn btn-icon btn-primary circle_ok" onclick="unselect_Click" />
@@ -81,6 +83,8 @@
                             <asp:Button ID="paid" runat="server" Text="Select All Paid" 
                                 class="btn btn-icon btn-primary circle_ok" onclick="paid_Click" />
 						</div>
+
+                        </div>
 									</div>
 								</div>
 								<!-- // Group END -->
@@ -89,7 +93,7 @@
 						<!-- // Row END -->
 						<!-- Group -->
 								<div class="control-group">
-									<label class="control-label">Status</label>
+									<label class="control-label"></label>
 									<div class="controls scroll" style="width: 100%; overflow-x: hidden; overflow-y: auto; height: 355px; ">
 										
                                             <asp:CheckBoxList ID="chkUser" runat="server">
@@ -115,7 +119,7 @@
                                 class="btn btn-icon btn-primary circle_ok" onclick="btnSave_Click"/>
 						</div>--%>
                         <div class="form-actions" style="margin: 0;">
-                            <asp:Button ID="sendmail" runat="server" Text="Send Mail" 
+                            <asp:Button ID="sendmail" runat="server" Text="Add News Letter" 
                                 class="btn btn-icon btn-primary circle_ok" onclick="sendmail_Click" />
 						</div>
 						<!-- // Form actions END -->

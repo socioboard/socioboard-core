@@ -17,6 +17,10 @@
                     $("#lblerror").text("Please enter Password and Confirmpassword");
                     return false;
                 }
+                if ($.trim(pass) == "" || $.trim(cpass) == "") {
+                    $("#lblerror").text("Please enter Password and Confirmpassword");
+                    return false;
+                }
                 if (pass != cpass) {
                     $("#lblerror").text("Password mismatch");
                     return false;
@@ -38,12 +42,12 @@
        <div class="reg_temp_reg">
        
          <div class="left_reg_area">          
-            <div class="inputbg" id="divtxtmail" runat="server"><asp:TextBox ID="txtEmail" runat="server" placeholder="Email"></asp:TextBox></div>
+            <div class="inputbg" id="divtxtmail" runat="server"><asp:TextBox ID="txtEmail" runat="server" placeholder="Enter your email id."></asp:TextBox></div>
              <div class="inputbg" id="divtxtpass" runat="server"><asp:TextBox ID="txtpass" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox></div>
               <div class="inputbg" id="divtxtconfirmpass" runat="server"><asp:TextBox ID="txtconfirmpass" runat="server" placeholder="Confirm Password" TextMode="Password"></asp:TextBox></div>
             <div class="error">
                 <asp:Label ID="lblerror" runat="server"></asp:Label>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"  
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"  ErrorMessage="Please Enter Valid Email!" 
                     ControlToValidate="txtEmail" CssClass="ws_err_star"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="revEmail" runat="server" ErrorMessage="Please Enter Valid Email!" ControlToValidate="txtEmail" CssClass="ws_err_star_enter" ValidationExpression="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$"></asp:RegularExpressionValidator>
             </div>          

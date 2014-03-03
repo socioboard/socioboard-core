@@ -219,16 +219,44 @@ namespace SocialSuitePro.Feeds
 
                             foreach (string substritem in str)
                             {
-                                if (!string.IsNullOrEmpty(substritem))
+                                try
                                 {
-                                    if (substritem.Contains("http"))
+                                    if (!string.IsNullOrEmpty(substritem))
                                     {
-                                        messages += "<a target=\"_blank\" href=\"" + substritem + "\">" + substritem + "</a>";
+                                        if (substritem.Contains("http"))
+                                        {
+                                            messages += "<a target=\"_blank\" href=\"" + substritem + "\">" + substritem + "</a>";
+                                        }
+                                        else
+                                        {
+                                            string hrefPost = string.Empty;
+
+                                            try
+                                            {
+                                                hrefPost = "https://www.facebook.com/" + item.FromId + "/posts/" + item.MessageId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
+
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                Console.WriteLine("Error : " + ex.StackTrace);
+
+                                            }
+                                            if (!string.IsNullOrEmpty(hrefPost))
+                                            {
+                                                messages += "<a target=\"_blank\" href=\"" + hrefPost + "\">" + substritem + "</a>";//substritem;
+                                            }
+                                            else
+                                            {
+                                                messages += substritem;
+
+                                            }
+                                        }
                                     }
-                                    else
-                                    {
-                                        messages += substritem;
-                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine("Error : " + ex.StackTrace);
+
                                 }
                             }
 
@@ -304,16 +332,44 @@ namespace SocialSuitePro.Feeds
 
                             foreach (string substritem in str)
                             {
-                                if (!string.IsNullOrEmpty(substritem))
+                                try
                                 {
-                                    if (substritem.Contains("http"))
+                                    if (!string.IsNullOrEmpty(substritem))
                                     {
-                                        messages += "<a target=\"_blank\" href=\"" + substritem + "\">" + substritem + "</a>";
+                                        if (substritem.Contains("http"))
+                                        {
+                                            messages += "<a target=\"_blank\" href=\"" + substritem + "\">" + substritem + "</a>";
+                                        }
+                                        else
+                                        {
+                                            string hrefPost = string.Empty;
+
+                                            try
+                                            {
+                                                //https://twitter.com/265982289/status/431552741341941760
+                                                hrefPost = "https://twitter.com/" + item.FromId + "/status/" + item.MessageId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
+
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                Console.WriteLine("Error : " + ex.StackTrace);
+
+                                            }
+                                            if (!string.IsNullOrEmpty(hrefPost))
+                                            {
+                                                messages += "<a target=\"_blank\" href=\"" + hrefPost + "\">" + substritem + "</a>";//substritem;
+                                            }
+                                            else
+                                            {
+                                                messages += substritem;
+
+                                            }
+                                        }
                                     }
-                                    else
-                                    {
-                                        messages += substritem;
-                                    }
+                                }
+                                catch (Exception)
+                                {
+                             
                                 }
                             }
 
@@ -348,19 +404,26 @@ namespace SocialSuitePro.Feeds
                         {
                             foreach (ScheduledMessage item in lstschmsg)
                             {
-                                FacebookAccountRepository faceaccrepo = new FacebookAccountRepository();
-                                FacebookAccount faceacc = faceaccrepo.getFacebookAccountDetailsById(profileid, user.Id);
                                 try
                                 {
-                                    message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"../Contents/img/blank_img.png\">" +
-                                                                 "</div><div class=\"pull-left feedcontent\">" +
-                                                                    "<a href=\"#\" class=\"feednm\">" + faceacc.FbUserName + "</a> <span>" + item.ScheduleTime +
-                                                                        " </span>" +
-                                                                     "<p>" + item.ShareMessage + "</p>" +
-                                                                     "<a class=\"retweets\" href=\"#\">" +
-                                                                      "</a><span></span>" +
-                                                                 "</div>" +
-                                                             "</li>";
+                                    FacebookAccountRepository faceaccrepo = new FacebookAccountRepository();
+                                    FacebookAccount faceacc = faceaccrepo.getFacebookAccountDetailsById(profileid, user.Id);
+                                    try
+                                    {
+                                        message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"../Contents/img/blank_img.png\">" +
+                                                                     "</div><div class=\"pull-left feedcontent\">" +
+                                                                        "<a href=\"#\" class=\"feednm\">" + faceacc.FbUserName + "</a> <span>" + item.ScheduleTime +
+                                                                            " </span>" +
+                                                                         "<p>" + item.ShareMessage + "</p>" +
+                                                                         "<a class=\"retweets\" href=\"#\">" +
+                                                                          "</a><span></span>" +
+                                                                     "</div>" +
+                                                                 "</li>";
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Console.WriteLine(ex.Message);
+                                    }
                                 }
                                 catch (Exception ex)
                                 {
@@ -394,17 +457,24 @@ namespace SocialSuitePro.Feeds
                         {
                             foreach (ScheduledMessage item in lstschmsg)
                             {
-                                TwitterAccountRepository twtaccrepo = new TwitterAccountRepository();
-                                TwitterAccount twtacc = twtaccrepo.getUserInformation(user.Id, profileid);
-                                message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"../Contents/img/blank_img.png\">" +
-                                                                "</div><div class=\"pull-left feedcontent\">" +
-                                                                   "<a href=\"#\" class=\"feednm\">" + twtacc.TwitterScreenName + "</a> <span>" + item.ScheduleTime +
-                                                                       " </span>" +
-                                                                    "<p>" + item.ShareMessage + "</p>" +
-                                                                    "<a class=\"retweets\" href=\"#\">" +
-                                                                     "</a><span></span>" +
-                                                                "</div>" +
-                                                            "</li>";
+                                try
+                                {
+                                    TwitterAccountRepository twtaccrepo = new TwitterAccountRepository();
+                                    TwitterAccount twtacc = twtaccrepo.getUserInformation(user.Id, profileid);
+                                    message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"../Contents/img/blank_img.png\">" +
+                                                                    "</div><div class=\"pull-left feedcontent\">" +
+                                                                       "<a href=\"#\" class=\"feednm\">" + twtacc.TwitterScreenName + "</a> <span>" + item.ScheduleTime +
+                                                                           " </span>" +
+                                                                        "<p>" + item.ShareMessage + "</p>" +
+                                                                        "<a class=\"retweets\" href=\"#\">" +
+                                                                         "</a><span></span>" +
+                                                                    "</div>" +
+                                                                "</li>";
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine(ex.Message);
+                                }
                             }
                         }
                         else
@@ -429,17 +499,25 @@ namespace SocialSuitePro.Feeds
                         {
                             foreach (ScheduledMessage item in lstschmsg)
                             {
-                                LinkedInAccountRepository linkedinrepo = new LinkedInAccountRepository();
-                                LinkedInAccount linkedacc = linkedinrepo.getUserInformation(user.Id, profileid);
-                                message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"../Contents/img/blank_img.png\">" +
-                                                                    "</div><div class=\"pull-left feedcontent\">" +
-                                                                       "<a href=\"#\" class=\"feednm\">" + linkedacc.LinkedinUserName + "</a> <span>" + item.ScheduleTime +
-                                                                           " </span>" +
-                                                                        "<p>" + item.ShareMessage + "</p>" +
-                                                                        "<a class=\"retweets\" href=\"#\">" +
-                                                                         "</a><span></span>" +
-                                                                    "</div>" +
-                                                                "</li>";
+                                try
+                                {
+                                    LinkedInAccountRepository linkedinrepo = new LinkedInAccountRepository();
+                                    LinkedInAccount linkedacc = linkedinrepo.getUserInformation(user.Id, profileid);
+                                    message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"../Contents/img/blank_img.png\">" +
+                                                                        "</div><div class=\"pull-left feedcontent\">" +
+                                                                           "<a href=\"#\" class=\"feednm\">" + linkedacc.LinkedinUserName + "</a> <span>" + item.ScheduleTime +
+                                                                               " </span>" +
+                                                                            "<p>" + item.ShareMessage + "</p>" +
+                                                                            "<a class=\"retweets\" href=\"#\">" +
+                                                                             "</a><span></span>" +
+                                                                        "</div>" +
+                                                                    "</li>";
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine("Error : " + ex.StackTrace);
+
+                                }
                             }
                         }
                         else
@@ -475,35 +553,71 @@ namespace SocialSuitePro.Feeds
                     UrlExtractor urlext = new UrlExtractor();
                     foreach (FacebookFeed item in lstfbfeed)
                     {
-                        message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"https://graph.facebook.com/" + item.ProfileId + "/picture?type=small\" onclick=\"getFacebookProfiles('" + item.FromId + "');\">" +
-                                                                 "</div><div class=\"pull-left feedcontent\">" +
-                                                                    "<a href=\"#\" class=\"feednm\" onclick=\"getFacebookProfiles('" + item.FromId + "');\">" + faceaac.FbUserName + "</a> <span>" + item.FeedDate +
-                                                                        " </span>" +
-                                                                     "<p>";
-
-                        string[] str = urlext.splitUrlFromString(item.FeedDescription);
-
-                        foreach (string substritem in str)
+                        try
                         {
-                            if (!string.IsNullOrEmpty(substritem))
+                            message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"https://graph.facebook.com/" + item.ProfileId + "/picture?type=small\" onclick=\"getFacebookProfiles('" + item.FromId + "');\">" +
+                                                                                     "</div><div class=\"pull-left feedcontent\">" +
+                                                                                        "<a href=\"#\" class=\"feednm\" onclick=\"getFacebookProfiles('" + item.FromId + "');\">" + faceaac.FbUserName + "</a> <span>" + item.FeedDate +
+                                                                                            " </span>" +
+                                                                                         "<p>";
+
+                            string[] str = urlext.splitUrlFromString(item.FeedDescription);
+
+                            foreach (string substritem in str)
                             {
-                                if (substritem.Contains("http"))
+                                try
                                 {
-                                    message += "<a target=\"_blank\" href=\"" + substritem + "\">" + substritem + "</a>";
+                                    if (!string.IsNullOrEmpty(substritem))
+                                    {
+                                        if (substritem.Contains("http"))
+                                        {
+                                            message += "<a target=\"_blank\" href=\"" + substritem + "\">" + substritem + "</a>";
+                                        }
+                                        else
+                                        {
+                                            string hrefPost = string.Empty;
+
+                                            try
+                                            {
+                                                hrefPost = "https://www.facebook.com/" + item.FromId + "/posts/" + item.FeedId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
+
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                Console.WriteLine("Error : " + ex.StackTrace);
+
+                                            }
+                                            if (!string.IsNullOrEmpty(hrefPost))
+                                            {
+                                                message += "<a target=\"_blank\" href=\"" + hrefPost + "\">" + substritem + "</a>";//substritem;
+                                            }
+                                            else
+                                            {
+                                                message += substritem;
+
+                                            }
+                                        }
+                                    }
                                 }
-                                else
+                                catch (Exception ex)
                                 {
-                                    message += substritem;
+                                    Console.WriteLine("Error : " + ex.StackTrace);
+
                                 }
                             }
+
+
+                            message += "</p>" +
+                                         "<a class=\"retweets\" href=\"#\">" +
+                                          "</a><span></span>" +
+                                     "</div>" +
+                                 "</li>";
                         }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Error : " + ex.StackTrace);
 
-
-                        message += "</p>" +
-                                     "<a class=\"retweets\" href=\"#\">" +
-                                      "</a><span></span>" +
-                                 "</div>" +
-                             "</li>";
+                        }
                     }
                     Response.Write(message);
                 }
@@ -530,16 +644,45 @@ namespace SocialSuitePro.Feeds
 
                             foreach (string substritem in str)
                             {
-                                if (!string.IsNullOrEmpty(substritem))
+                                try
                                 {
-                                    if (substritem.Contains("http"))
+                                    if (!string.IsNullOrEmpty(substritem))
                                     {
-                                        message += "<a target=\"_blank\" href=\"" + substritem + "\">" + substritem + "</a>";
+                                        if (substritem.Contains("http"))
+                                        {
+                                            message += "<a target=\"_blank\" href=\"" + substritem + "\">" + substritem + "</a>";
+                                        }
+                                        else
+                                        {
+                                            string hrefPost = string.Empty;
+
+                                            try
+                                            {
+                                                //https://twitter.com/265982289/status/431552741341941760
+
+                                                hrefPost = "https://twitter.com/" + item.FromId + "/status/" + item.MessageId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
+
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                Console.WriteLine("Error : " + ex.StackTrace);
+
+                                            }
+                                            if (!string.IsNullOrEmpty(hrefPost))
+                                            {
+                                                message += "<a target=\"_blank\" href=\"" + hrefPost + "\">" + substritem + "</a>";//substritem;
+                                            }
+                                            else
+                                            {
+                                                message += substritem;
+
+                                            }
+                                        }
                                     }
-                                    else
-                                    {
-                                        message += substritem;
-                                    }
+                                }
+                                catch (Exception)
+                                {
+                                
                                 }
                             }
                             message += "</p>" +
@@ -571,15 +714,23 @@ namespace SocialSuitePro.Feeds
                         {
                             foreach (LinkedInFeed item in lstfeed)
                             {
-                                message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"" + item.FromPicUrl + "\">" +
-                                                               "</div><div class=\"pull-left feedcontent\">" +
-                                                                  "<a href=\"#\" class=\"feednm\">" + item.FromName + "</a> <span>" + item.FeedsDate +
-                                                                      " </span>" +
-                                                                   "<p>" + item.Feeds + "</p>" +
-                                                                   "<a class=\"retweets\" href=\"#\">" +
-                                                                   "</a><span></span>" +
-                                                               "</div>" +
-                                                           "</li>";
+                                try
+                                {
+                                    message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"" + item.FromPicUrl + "\">" +
+                                                                                          "</div><div class=\"pull-left feedcontent\">" +
+                                                                                             "<a href=\"#\" class=\"feednm\">" + item.FromName + "</a> <span>" + item.FeedsDate +
+                                                                                                 " </span>" +
+                                                                                              "<p>" + item.Feeds + "</p>" +
+                                                                                              "<a class=\"retweets\" href=\"#\">" +
+                                                                                              "</a><span></span>" +
+                                                                                          "</div>" +
+                                                                                      "</li>";
+                                }
+                                catch (Exception ex)
+                                {
+                                    logger.Error(ex.Message);
+                                    Console.WriteLine(ex.Message);
+                                }
                             }
                         }
                         else

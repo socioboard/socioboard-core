@@ -20,15 +20,33 @@ namespace SocialSuitePro.Settings
 
             try
             {
-                if (Session["GreaterThan30Days"] == "GreaterThan30Days")
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('You can use only 30 days as Unpaid User !');", true);
-
-                }
-
                 if (!IsPostBack)
                 {
                     User user = (User)Session["LoggedUser"];
+                    #region for You can use only 30 days as Unpaid User
+
+                    try
+                    {
+                        if (user.PaymentStatus.ToLower() == "unpaid")
+                        {
+                            if (!SBUtils.IsUserWorkingDaysValid(user.CreateDate))
+                            {
+                                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('You can use only 30 days as Unpaid User !');", true);
+
+                                Session["GreaterThan30Days"] = "GreaterThan30Days";
+                                // Response.Redirect("/Settings/Billing.aspx");
+                            }
+                        }
+
+                        Session["GreaterThan30Days"] = null;
+                    }
+                    catch (Exception ex)
+                    {
+
+                        Console.WriteLine(ex.Message);
+                    }
+                    #endregion
+   
 
                     if (user == null)
                         Response.Redirect("/Default.aspx");
@@ -123,8 +141,20 @@ namespace SocialSuitePro.Settings
                     }
                 }
 
-                string pay = payme.PayWithPayPal(amount, plantype, user.UserName, "", user.EmailId, "USD", ConfigurationManager.AppSettings["paypalemail"], ConfigurationManager.AppSettings["SuccessURL"],
-                                      ConfigurationManager.AppSettings["FailedURL"], ConfigurationManager.AppSettings["SuccessURL"], ConfigurationManager.AppSettings["cancelurl"], ConfigurationManager.AppSettings["notifyurl"], user.Id.ToString());
+                string pay = string.Empty;
+
+                #region DirectPaymentWithPayPal
+                pay = payme.PayWithPayPal(amount, plantype, user.UserName, "", user.EmailId, "USD", ConfigurationManager.AppSettings["paypalemail"], ConfigurationManager.AppSettings["SuccessURL"],
+                              ConfigurationManager.AppSettings["FailedURL"], ConfigurationManager.AppSettings["SuccessURL"], ConfigurationManager.AppSettings["cancelurl"], ConfigurationManager.AppSettings["notifyurl"], user.Id.ToString());
+                
+                #endregion
+
+                //#region RecurringPaymentWithPayPal
+
+                //pay = payme.RecurringPaymentWithPayPal(amount, plantype, user.UserName, "", user.EmailId, "USD", ConfigurationManager.AppSettings["paypalemail"], ConfigurationManager.AppSettings["SuccessURL"],
+                //                     ConfigurationManager.AppSettings["FailedURL"], ConfigurationManager.AppSettings["SuccessURL"], ConfigurationManager.AppSettings["cancelurl"], ConfigurationManager.AppSettings["notifyurl"], user.Id.ToString());
+                //#endregion
+
                 Response.Redirect(pay);
             }
             catch (Exception ex)

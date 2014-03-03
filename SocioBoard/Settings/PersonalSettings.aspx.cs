@@ -14,6 +14,7 @@ using SocioBoard.Domain;
 using SocioBoard.Model;
 using System.Collections.ObjectModel;
 using SocioBoard;
+using SocioBoard.Helper;
 namespace SocialSuitePro.Settings
 {
     public partial class PersonalSettings : System.Web.UI.Page
@@ -25,6 +26,24 @@ namespace SocialSuitePro.Settings
                 try
                 {
                     User user = (User)Session["LoggedUser"];
+
+                    #region for You can use only 30 days as Unpaid User
+
+                    if (user.PaymentStatus.ToLower() == "unpaid")
+                    {
+                        if (!SBUtils.IsUserWorkingDaysValid(user.CreateDate))
+                        {
+                            // ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('You can use only 30 days as Unpaid User !');", true);
+
+                            Session["GreaterThan30Days"] = "GreaterThan30Days";
+
+                            Response.Redirect("/Settings/Billing.aspx");
+                        }
+                    }
+
+                    Session["GreaterThan30Days"] = null;
+                    #endregion
+
                     if (user == null)
                         Response.Redirect("/Default.aspx");
 
@@ -70,6 +89,7 @@ namespace SocialSuitePro.Settings
                     userrepo.ChangePassword(changedpassword, user.Password, user.EmailId);
                     txtConfirmPassword.Text = string.Empty;
                     txtPassword.Text = string.Empty;
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Message", "alert('Your password has been changed successfully.')", true);
                 }
                 else
                 {

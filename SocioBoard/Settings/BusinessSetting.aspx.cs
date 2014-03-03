@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using SocioBoard.Domain;
+using SocioBoard.Helper;
 
 
 namespace SocialSuitePro.Settings
@@ -16,6 +17,25 @@ namespace SocialSuitePro.Settings
             if (!IsPostBack)
             {
                 User user = (User)Session["LoggedUser"];
+
+                #region for You can use only 30 days as Unpaid User
+
+                if (user.PaymentStatus.ToLower() == "unpaid")
+                {
+                    if (!SBUtils.IsUserWorkingDaysValid(user.CreateDate))
+                    {
+                        // ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('You can use only 30 days as Unpaid User !');", true);
+
+                        Session["GreaterThan30Days"] = "GreaterThan30Days";
+
+                        Response.Redirect("/Settings/Billing.aspx");
+                    }
+                }
+
+                Session["GreaterThan30Days"] = null;
+                #endregion
+
+
                 memberName.Text = user.UserName;
             }
         }

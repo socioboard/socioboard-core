@@ -28,6 +28,26 @@ namespace SocialSuitePro.Settings
         {
             User user = (User)Session["LoggedUser"];
 
+            #region for You can use only 30 days as Unpaid User
+
+            if (user.PaymentStatus.ToLower() == "unpaid")
+            {
+                if (!SBUtils.IsUserWorkingDaysValid(user.CreateDate))
+                {
+                    // ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('You can use only 30 days as Unpaid User !');", true);
+
+                    Session["GreaterThan30Days"] = "GreaterThan30Days";
+
+                    Response.Redirect("/Settings/Billing.aspx");
+                }
+            }
+
+            Session["GreaterThan30Days"] = null;
+            #endregion
+
+
+
+
             if (user == null)
                 Response.Redirect("/Default.aspx");
 
@@ -82,7 +102,7 @@ namespace SocialSuitePro.Settings
             {
                 try
                 {
-                    string txtgroup = Page.Request.Form["txtGroupName"].ToString();
+                    string txtgroup = Page.Request.Form["txtGroupName"].ToString().Trim();
 
 
 

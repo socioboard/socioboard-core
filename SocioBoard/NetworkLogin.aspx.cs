@@ -19,19 +19,27 @@ namespace SocialSuitePro
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            User user = (User)Session["LoggedUser"];
-            if (!IsPostBack)
+            try
             {
-                if (user == null)
-                    Response.Redirect("Default.aspx");
-
-                txtEmail.Text = user.EmailId;
-                if (user.UserName != null)
+                User user = (User)Session["LoggedUser"];
+                if (!IsPostBack)
                 {
-                    string[] name = user.UserName.Split(' ');
-                    txtFirstName.Text = name[0];
-                    txtLastName.Text = name[1];
+                    if (user == null)
+                        Response.Redirect("Default.aspx");
+
+                    txtEmail.Text = user.EmailId;
+                    if (user.UserName != null)
+                    {
+                        string[] name = user.UserName.Split(' ');
+                        txtFirstName.Text = name[0];
+                        txtLastName.Text = name[1];
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -39,84 +47,135 @@ namespace SocialSuitePro
 
         protected void btnRegister_Click(object sender, ImageClickEventArgs e)
         {
-            Session["login"] = null;
-            Registration regpage = new Registration();
-            User user = (User)Session["LoggedUser"];
-
-            if (user != null)
+            try
             {
-                user.EmailId = txtEmail.Text;
-                user.UserName = txtFirstName.Text + " " + txtLastName.Text;
-                UserActivation objUserActivation = new UserActivation();
-                UserRepository userrepo = new UserRepository();
-                if (userrepo.IsUserExist(user.EmailId))
+                Session["login"] = null;
+                Registration regpage = new Registration();
+                User user = (User)Session["LoggedUser"];
+
+                if (DropDownList1.SelectedValue == "Basic" || DropDownList1.SelectedValue == "Standard" || DropDownList1.SelectedValue == "Deluxe" || DropDownList1.SelectedValue == "Premium")
                 {
 
-                    try
+                    if (TextBox1.Text.Trim() != "")
                     {
-                        string acctype = string.Empty;
-                        if (Request.QueryString["type"] != null)
+                        string resp = SBUtils.GetCouponStatus(TextBox1.Text).ToString();
+                        if (resp != "valid")
                         {
-                            if (Request.QueryString["type"] == "INDIVIDUAL" || Request.QueryString["type"] == "CORPORATION" || Request.QueryString["type"] == "SMALL BUSINESS")
+                            // ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert(Not valid);", true);
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('" + resp + "');", true);
+                            return;
+                        }
+                    }
+
+
+                    if (user != null)
+                    {
+                        user.EmailId = txtEmail.Text;
+                        user.UserName = txtFirstName.Text + " " + txtLastName.Text;
+                        UserActivation objUserActivation = new UserActivation();
+                        UserRepository userrepo = new UserRepository();
+                        Coupon objCoupon = new Coupon();
+                        CouponRepository objCouponRepository = new CouponRepository();
+                        if (userrepo.IsUserExist(user.EmailId))
+                        {
+
+                            try
                             {
-                                acctype = Request.QueryString["type"];
+                                string acctype = string.Empty;
+                                if (Request.QueryString["type"] != null)
+                                {
+                                    if (Request.QueryString["type"] == "INDIVIDUAL" || Request.QueryString["type"] == "CORPORATION" || Request.QueryString["type"] == "SMALL BUSINESS")
+                                    {
+                                        acctype = Request.QueryString["type"];
+                                    }
+                                    else
+                                    {
+                                        acctype = "INDIVIDUAL";
+                                    }
+                                }
+                                else
+                                {
+                                    acctype = "INDIVIDUAL";
+                                }
+
+                                user.AccountType = Request.QueryString["type"];
                             }
-                            else
+                            catch (Exception ex)
                             {
-                                acctype = "INDIVIDUAL";
+                                logger.Error(ex.StackTrace);
+                                Console.WriteLine(ex.StackTrace);
+                            }
+
+                            user.AccountType = DropDownList1.SelectedValue.ToString();
+                            if (string.IsNullOrEmpty(user.AccountType))
+                            {
+                                user.AccountType = AccountType.Free.ToString();
+                            }
+
+                            if (string.IsNullOrEmpty(user.Password))
+                            {
+                                user.Password = regpage.MD5Hash(txtPassword.Text);
+                                // userrepo.UpdatePassword(user.EmailId, user.Password, user.Id, user.UserName, user.AccountType);
+                                string couponcode = TextBox1.Text.Trim();
+                                userrepo.SetUserByUserId(user.EmailId, user.Password, user.Id, user.UserName, user.AccountType, couponcode);
+
+                                if (TextBox1.Text.Trim() != "")
+                                {
+                                    objCoupon.CouponCode = TextBox1.Text.Trim();
+                                    List<Coupon> lstCoupon = objCouponRepository.GetCouponByCouponCode(objCoupon);
+                                    objCoupon.Id = lstCoupon[0].Id;
+                                    objCoupon.EntryCouponDate = lstCoupon[0].EntryCouponDate;
+                                    objCoupon.ExpCouponDate = lstCoupon[0].ExpCouponDate;
+                                    objCoupon.Status = "1";
+                                    objCouponRepository.SetCouponById(objCoupon);
+                                }
+
+
+                                //add userActivation
+
+                                objUserActivation.Id = Guid.NewGuid();
+                                objUserActivation.UserId = user.Id;
+                                objUserActivation.ActivationStatus = "0";
+                                UserActivationRepository.Add(objUserActivation);
+
+
+                                //add package start
+
+                                UserPackageRelation objUserPackageRelation = new UserPackageRelation();
+                                UserPackageRelationRepository objUserPackageRelationRepository = new UserPackageRelationRepository();
+                                PackageRepository objPackageRepository = new PackageRepository();
+
+                                Package objPackage = objPackageRepository.getPackageDetails(user.AccountType);
+                                objUserPackageRelation.Id = new Guid();
+                                objUserPackageRelation.PackageId = objPackage.Id;
+                                objUserPackageRelation.UserId = user.Id;
+                                objUserPackageRelation.ModifiedDate = DateTime.Now;
+                                objUserPackageRelation.PackageStatus = true;
+
+                                objUserPackageRelationRepository.AddUserPackageRelation(objUserPackageRelation);
+
+                                //end package
+
+
+
+                                MailSender.SendEMail(txtFirstName.Text + " " + txtLastName.Text, txtPassword.Text, txtEmail.Text, user.AccountType.ToString(), user.Id.ToString());
                             }
                         }
-                        else
-                        {
-                            acctype = "INDIVIDUAL";
-                        }
+                        Session["LoggedUser"] = user;
 
-                        user.AccountType = Request.QueryString["type"];
-                    }
-                    catch (Exception ex)
-                    {
-                        logger.Error(ex.StackTrace);
-                        Console.WriteLine(ex.StackTrace);
-                    }
-                    if (string.IsNullOrEmpty(user.Password))
-                    {
-                        user.Password = regpage.MD5Hash(txtPassword.Text);
-                        userrepo.UpdatePassword(user.EmailId, user.Password, user.Id, user.UserName, user.AccountType);
-
-
-                        //add userActivation
-
-                        objUserActivation.Id = Guid.NewGuid();
-                        objUserActivation.UserId = user.Id;
-                        objUserActivation.ActivationStatus = "0";
-                        UserActivationRepository.Add(objUserActivation);
-
-
-                        //add package start
-
-                        UserPackageRelation objUserPackageRelation = new UserPackageRelation();
-                        UserPackageRelationRepository objUserPackageRelationRepository = new UserPackageRelationRepository();
-                        PackageRepository objPackageRepository = new PackageRepository();
-
-                        Package objPackage = objPackageRepository.getPackageDetails(user.AccountType);
-                        objUserPackageRelation.Id = new Guid();
-                        objUserPackageRelation.PackageId = objPackage.Id;
-                        objUserPackageRelation.UserId = user.Id;
-                        objUserPackageRelation.ModifiedDate = DateTime.Now;
-                        objUserPackageRelation.PackageStatus = true;
-
-                        objUserPackageRelationRepository.AddUserPackageRelation(objUserPackageRelation);
-
-                        //end package
-
-
-
-                        MailSender.SendEMail(txtFirstName.Text + " " + txtLastName.Text, txtPassword.Text, txtEmail.Text, objUserActivation.UserId.ToString());
+                        Response.Redirect("Home.aspx");
                     }
                 }
-                Session["LoggedUser"] = user;
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please select Account Type!');", true);
+                }
+            }
+            catch (Exception ex)
+            {
 
-                Response.Redirect("Home.aspx");
+                logger.Error(ex.StackTrace);
+                Console.WriteLine(ex.StackTrace);
             }
         }
     }

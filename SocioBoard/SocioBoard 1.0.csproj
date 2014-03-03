@@ -105,6 +105,7 @@
     <Content Include="About.aspx" />
     <Content Include="ActivationLink.aspx" />
     <Content Include="Admin\AddAdvertisement.aspx" />
+    <Content Include="Admin\Addcoupons.aspx" />
     <Content Include="Admin\AddNews.aspx" />
     <Content Include="Admin\AddNewsLetter.aspx" />
     <Content Include="Admin\AddPackage.aspx" />
@@ -114,18 +115,28 @@
     <Content Include="Admin\AdvImage\Penguins.jpg" />
     <Content Include="Admin\AdvImage\Tulips.jpg" />
     <Content Include="Admin\Ajaxadmin.aspx" />
+    <Content Include="Admin\AjaxLoginDetails.aspx" />
+    <Content Include="Admin\Ajaxscheduled.aspx" />
     <Content Include="Admin\Dashboard.aspx" />
     <Content Include="Admin\DashboardStats.aspx" />
     <Content Include="Admin\Default.aspx" />
+    <Content Include="Admin\EditCoupons.aspx" />
     <Content Include="Admin\EditProfileDetail.aspx" />
     <Content Include="Admin\EditUserDetail.aspx" />
+    <Content Include="Admin\LoginDetails.aspx" />
     <Content Include="Admin\ManageAdvertisment.aspx" />
+    <Content Include="Admin\Managecoupons.aspx" />
     <Content Include="Admin\ManageNews.aspx" />
     <Content Include="Admin\ManageNewsLetter.aspx" />
     <Content Include="Admin\ManagePackage.aspx" />
     <Content Include="Admin\OnlineUsers.aspx" />
     <Content Include="Admin\ProfileDetails.aspx" />
+    <Content Include="Admin\ScheduledMessageDetail.aspx" />
+    <Content Include="Admin\scheduling.aspx" />
     <Content Include="Admin\UserDetails.aspx" />
+    <Content Include="Admin\UserLoginDetails.aspx" />
+    <Content Include="Agency.aspx" />
+    <Content Include="Ajaxcoupon.aspx" />
     <Content Include="AjaxHome.aspx" />
     <Content Include="AjaxLogin.aspx" />
     <Content Include="Android.aspx" />
@@ -1955,6 +1966,7 @@
     <Content Include="Contents\img\6.png" />
     <Content Include="Contents\img\891.png" />
     <Content Include="Contents\img\AddBtn.png" />
+    <Content Include="Contents\img\address.png" />
     <Content Include="Contents\img\add_btn.png" />
     <Content Include="Contents\img\add_btn_hover.png" />
     <Content Include="Contents\img\admin\061.png" />
@@ -2269,7 +2281,9 @@
     <Content Include="Contents\img\ssp\disocvery_page.png" />
     <Content Include="Contents\img\ssp\disocvery_page1.png" />
     <Content Include="Contents\img\ssp\Download-icon-150x150.png" />
+    <Content Include="Contents\img\ssp\Download-icon-green-150x150.png" />
     <Content Include="Contents\img\ssp\effective_and_effi.png" />
+    <Content Include="Contents\img\ssp\enterprise.png" />
     <Content Include="Contents\img\ssp\facebook_32.png" />
     <Content Include="Contents\img\ssp\fb-icon.png" />
     <Content Include="Contents\img\ssp\feeds_page.png" />
@@ -2436,6 +2450,7 @@
     <Content Include="Contents\js\bootstrap.min.js" />
     <Content Include="Contents\js\canvasjs.min.js" />
     <Content Include="Contents\js\Chart.js" />
+    <Content Include="Contents\js\clickDesk.js" />
     <Content Include="Contents\js\dialog_box.js" />
     <Content Include="Contents\js\DT_bootstrap.js" />
     <Content Include="Contents\js\excanvas.js" />
@@ -2622,6 +2637,7 @@
     <Content Include="Group\Group1.aspx" />
     <Content Include="HelpDesk.aspx" />
     <Content Include="Helper\AjaxHelper.aspx" />
+    <Content Include="Helper\AjaxMailSender.aspx" />
     <Content Include="hibernate.cfg.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -2640,6 +2656,12 @@
     <Content Include="LinkedInManager.aspx" />
     <Content Include="log.txt" />
     <EmbeddedResource Include="Mappings\UserActivation.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\LoginLogs.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Coupon.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <Content Include="Mobile.aspx" />
@@ -2815,15 +2837,6 @@
     <Content Include="Settings\UsersAndGroups.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="TwitterManager.aspx" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -2846,6 +2859,13 @@
     </Compile>
     <Compile Include="Admin\AddAdvertisement.aspx.designer.cs">
       <DependentUpon>AddAdvertisement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Addcoupons.aspx.cs">
+      <DependentUpon>Addcoupons.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Addcoupons.aspx.designer.cs">
+      <DependentUpon>Addcoupons.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\AddNews.aspx.cs">
       <DependentUpon>AddNews.aspx</DependentUpon>
@@ -2882,6 +2902,20 @@
     <Compile Include="Admin\Ajaxadmin.aspx.designer.cs">
       <DependentUpon>Ajaxadmin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\AjaxLoginDetails.aspx.cs">
+      <DependentUpon>AjaxLoginDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AjaxLoginDetails.aspx.designer.cs">
+      <DependentUpon>AjaxLoginDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Ajaxscheduled.aspx.cs">
+      <DependentUpon>Ajaxscheduled.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Ajaxscheduled.aspx.designer.cs">
+      <DependentUpon>Ajaxscheduled.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2903,6 +2937,13 @@
     <Compile Include="Admin\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\EditCoupons.aspx.cs">
+      <DependentUpon>EditCoupons.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\EditCoupons.aspx.designer.cs">
+      <DependentUpon>EditCoupons.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\EditProfileDetail.aspx.cs">
       <DependentUpon>EditProfileDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2917,12 +2958,26 @@
     <Compile Include="Admin\EditUserDetail.aspx.designer.cs">
       <DependentUpon>EditUserDetail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\LoginDetails.aspx.cs">
+      <DependentUpon>LoginDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\LoginDetails.aspx.designer.cs">
+      <DependentUpon>LoginDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\ManageAdvertisment.aspx.cs">
       <DependentUpon>ManageAdvertisment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\ManageAdvertisment.aspx.designer.cs">
       <DependentUpon>ManageAdvertisment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Managecoupons.aspx.cs">
+      <DependentUpon>Managecoupons.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Managecoupons.aspx.designer.cs">
+      <DependentUpon>Managecoupons.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\ManageNews.aspx.cs">
       <DependentUpon>ManageNews.aspx</DependentUpon>
@@ -2959,12 +3014,49 @@
     <Compile Include="Admin\ProfileDetails.aspx.designer.cs">
       <DependentUpon>ProfileDetails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\ScheduledMessageDetail.aspx.cs">
+      <DependentUpon>ScheduledMessageDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ScheduledMessageDetail.aspx.designer.cs">
+      <DependentUpon>ScheduledMessageDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Scheduler\LoginLogsTracker.cs" />
+    <Compile Include="Admin\Scheduler\ScheduledTracker.cs" />
+    <Compile Include="Admin\scheduling.aspx.cs">
+      <DependentUpon>scheduling.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\scheduling.aspx.designer.cs">
+      <DependentUpon>scheduling.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\UserDetails.aspx.cs">
       <DependentUpon>UserDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\UserDetails.aspx.designer.cs">
       <DependentUpon>UserDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserLoginDetails.aspx.cs">
+      <DependentUpon>UserLoginDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserLoginDetails.aspx.designer.cs">
+      <DependentUpon>UserLoginDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agency.aspx.cs">
+      <DependentUpon>Agency.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agency.aspx.designer.cs">
+      <DependentUpon>Agency.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ajaxcoupon.aspx.cs">
+      <DependentUpon>Ajaxcoupon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ajaxcoupon.aspx.designer.cs">
+      <DependentUpon>Ajaxcoupon.aspx</DependentUpon>
     </Compile>
     <Compile Include="AjaxHome.aspx.cs">
       <DependentUpon>AjaxHome.aspx</DependentUpon>
@@ -3049,6 +3141,7 @@
     <Compile Include="Domain\Blog_Comments.cs" />
     <Compile Include="Domain\Blog_Posts.cs" />
     <Compile Include="Domain\BusinessSetting.cs" />
+    <Compile Include="Domain\Coupon.cs" />
     <Compile Include="Domain\DiscoverySearch.cs" />
     <Compile Include="Domain\Drafts.cs" />
     <Compile Include="Domain\FacebookAccount.cs" />
@@ -3116,6 +3209,7 @@
     <Compile Include="Domain\LinkedInFeed.cs" />
     <Compile Include="Domain\LinkedInMessage.cs" />
     <Compile Include="Domain\Log.cs" />
+    <Compile Include="Domain\LoginLogs.cs" />
     <Compile Include="Domain\Messages.cs" />
     <Compile Include="Domain\News.cs" />
     <Compile Include="Domain\NewsLetter.cs" />
@@ -3261,6 +3355,13 @@
     <Compile Include="Helper\AjaxHelper.aspx.designer.cs">
       <DependentUpon>AjaxHelper.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Helper\AjaxMailSender.aspx.cs">
+      <DependentUpon>AjaxMailSender.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Helper\AjaxMailSender.aspx.designer.cs">
+      <DependentUpon>AjaxMailSender.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Helper\clsDemographic.cs" />
     <Compile Include="Helper\clsFeedsAndMessages.cs" />
     <Compile Include="Helper\CustomMultithreads.cs" />
@@ -3384,6 +3485,7 @@
     <Compile Include="Model\Blog_CommentsRepository.cs" />
     <Compile Include="Model\Blog_PostsRepository.cs" />
     <Compile Include="Model\BusinessSettingRepository.cs" />
+    <Compile Include="Model\CouponRepository.cs" />
     <Compile Include="Model\DataTableGenerator.cs" />
     <Compile Include="Model\DiscoverySearchRepository.cs" />
     <Compile Include="Model\DraftsRepository.cs" />
@@ -3405,6 +3507,7 @@
     <Compile Include="Model\InstagramFeedRepository.cs" />
     <Compile Include="Model\LinkedInAccountRepository.cs" />
     <Compile Include="Model\LinkedInFeedRepository.cs" />
+    <Compile Include="Model\LoginLogsRepository.cs" />
     <Compile Include="Model\LogRepository.cs" />
     <Compile Include="Model\NewsLetterRepository.cs" />
     <Compile Include="Model\NewsRepository.cs" />
@@ -3895,6 +3998,7 @@
     <None Include="Contents\fonts\tt0102m_-webfont.woff" />
     <None Include="Contents\js\multidatepicker\README.md" />
     <Content Include="MasterPage\adminSite.Master" />
+    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GlobusMailLib\GlobusMailLib.csproj">

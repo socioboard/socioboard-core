@@ -73,10 +73,5 @@ D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\RestS
 D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\obj\Debug\SocioBoard 1.0.csprojResolveAssemblyReference.cache
 D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\obj\Debug\SocioBoard 1.0.dll
 D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\obj\Debug\SocioBoard 1.0.pdb
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Iesi.Collections.pdb
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Iesi.Collections.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Newtonsoft.Json.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\NHibernate.pdb
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\NHibernate.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\NHibernate.Linq.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\NHibernateHelper.pdb
+D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\LoginLogs.hbm.xml
+D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\Coupon.hbm.xml

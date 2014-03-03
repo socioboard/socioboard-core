@@ -38,6 +38,8 @@ namespace SocialSuitePro
         {
             try
             {
+                
+
                 UserRepository userrepo = new UserRepository();
                 Registration regObject = new Registration();
                 TeamRepository objTeamRepo = new TeamRepository();
@@ -53,8 +55,8 @@ namespace SocialSuitePro
 
                 if (user.Password == null)
                 {
-                    
-                    Response.Redirect("Default.aspx");
+
+                    Response.Redirect("/Pricing.aspx");
                 }
 
                 #region for You can use only 30 days as Unpaid User
@@ -106,58 +108,61 @@ namespace SocialSuitePro
 
                     }
 
-                    
-
-                    #region check user Activation
-
-                    try
-                    {
-                        if (objUserActivation != null)
-                        {
-                            if (objUserActivation.ActivationStatus == "0")
-                            {
-                                if (Request.QueryString["stat"] == "activate")
-                                {
-                                    if (Request.QueryString["id"] != null)
-                                    {
-                                        //objUserActivation = objUserActivationRepository.GetUserActivationStatusbyid(Request.QueryString["id"].ToString());
-                                        if (objUserActivation.UserId.ToString() == Request.QueryString["id"].ToString())
-                                        {
-                                            objUserActivation.Id = objUserActivation.Id; //Guid.Parse(Request.QueryString["id"]);
-                                            objUserActivation.UserId = Guid.Parse(Request.QueryString["id"]);// objUserActivation.UserId;
-                                            objUserActivation.ActivationStatus = "1";
-                                            UserActivationRepository.Update(objUserActivation);
-                                        }
-                                        else
-                                        {
-                                            Session["ActivationError"] = "Wrong Activation Link please contact Admin!";
-                                            //ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Wrong Activation Link please contact Admin!');", true);
-                                            Response.Redirect("ActivationLink.aspx");
-                                        }
-                                    }
-                                    else
-                                    {
-                                        Session["ActivationError"] = "Wrong Activation Link please contact Admin!";
-                                        //ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Wrong Activation Link please contact Admin!');", true);
-                                        Response.Redirect("ActivationLink.aspx");
-                                    }
-
-                                }
-                                else
-                                {
-                                    Response.Redirect("ActivationLink.aspx");
-                                }
 
 
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                       Console.WriteLine(ex.Message);
-                        logger.Error(ex.StackTrace);
-                    }
-                    #endregion
+                    //#region check user Activation
+
+                    //try
+                    //{
+                    //    if (objUserActivation != null)
+                    //    {
+                    //        if (objUserActivation.ActivationStatus == "0")
+                    //        {
+                    //            if (Request.QueryString["stat"] == "activate")
+                    //            {
+                    //                if (Request.QueryString["id"] != null)
+                    //                {
+                    //                    //objUserActivation = objUserActivationRepository.GetUserActivationStatusbyid(Request.QueryString["id"].ToString());
+                    //                    if (objUserActivation.UserId.ToString() == Request.QueryString["id"].ToString())
+                    //                    {
+                    //                        objUserActivation.Id = objUserActivation.Id; //Guid.Parse(Request.QueryString["id"]);
+                    //                        objUserActivation.UserId = Guid.Parse(Request.QueryString["id"]);// objUserActivation.UserId;
+                    //                        objUserActivation.ActivationStatus = "1";
+                    //                        UserActivationRepository.Update(objUserActivation);
+
+
+                                           
+                    //                    }
+                    //                    else
+                    //                    {
+                    //                        Session["ActivationError"] = "Wrong Activation Link please contact Admin!";
+                    //                        //ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Wrong Activation Link please contact Admin!');", true);
+                    //                        //Response.Redirect("ActivationLink.aspx");
+                    //                    }
+                    //                }
+                    //                else
+                    //                {
+                    //                    Session["ActivationError"] = "Wrong Activation Link please contact Admin!";
+                    //                    //ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Wrong Activation Link please contact Admin!');", true);
+                    //                    //Response.Redirect("ActivationLink.aspx");
+                    //                }
+
+                    //            }
+                    //            else
+                    //            {
+                    //               // Response.Redirect("ActivationLink.aspx");
+                    //            }
+
+
+                    //        }
+                    //    }
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    Console.WriteLine(ex.Message);
+                    //    logger.Error(ex.StackTrace);
+                    //}
+                    //#endregion
 
                     
 
@@ -580,7 +585,7 @@ namespace SocialSuitePro
                 if (profilecount < totalaccount)
                 {
                     Session["fbSocial"] = "a";
-                    fb_account.HRef = "http://www.facebook.com/dialog/oauth/?scope=publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,user_groups,offline_access&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
+                    fb_account.HRef = "http://www.facebook.com/dialog/oauth/?scope=publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,user_groups,offline_access,publish_actions,manage_pages&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
                     //fb_account.HRef = "http://www.facebook.com/dialog/oauth/?scope=publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,offline_access&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
                     // fb_cont.HRef = fb_account.HRef;
                     Response.Redirect(fb_account.HRef);

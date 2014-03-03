@@ -439,3 +439,18 @@ input#alertify-text
     padding: 4px 6px;
     vertical-align: middle;
 }
+ .dropdwn
+{
+	width:320px;
+	 height: 40px;
+    padding: 0 0px;
+	background:#fff;
+	border:1px solid #FC9E99;
+	border-radius:3px;
+	color: #6F7275;
+	font-size:17px;
+	margin-top:10px;
+	-webkit-border-radius:3px;
+	-khtml-border-radius:3px;
+	-o-border-radius:3px;
+}

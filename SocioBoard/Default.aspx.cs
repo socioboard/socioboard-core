@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using log4net;
 using SocioBoard.Domain;
 using SocioBoard.Model;
+using SocioBoard.Admin.Scheduler;
 
 namespace SocialSuitePro
 {
@@ -17,6 +18,14 @@ namespace SocialSuitePro
         {
             try
             {
+
+                //UserRepository objUserRepository = new UserRepository();
+                //User objUser = objUserRepository.getUsersById(Guid.Parse("62ebeaa8-0148-4e30-84fc-bf1af515dbf8"));
+               // UserRepository objUserRepository = new UserRepository();
+               //// List<User> lstuser = objUserRepository.getAllUsers();
+               // User objUser = objUserRepository.getUsersById(Guid.Parse("62ebeaa8-0148-4e30-84fc-bf1af515dbf8"));
+
+
                 //SocioBoard.Helper.SessionFactory.configfilepath = Server.MapPath("~/hibernate.cfg.xml");
                 //UserRepository userrepo = new UserRepository();
                 //List<User> lst = userrepo.testing();
