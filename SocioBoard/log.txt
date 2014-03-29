@@ -3635,3 +3635,1425 @@ ERROR2014-02-28 07:11:48 Class:SocialSuitePro.Home Method:Page_Load Line #: 351 
 ERROR2014-02-28 07:11:48 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
    at System.Decimal.op_Division(Decimal d1, Decimal d2)
    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-02 01:22:15 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 2
+ERROR2014-03-02 01:29:42 Class:SocialSuitePro.RegisterPage Method:btnRegister_Click Line #: 306  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.RegisterPage.btnRegister_Click(Object sender, ImageClickEventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\RegisterPage.aspx.cs:line 290
+ERROR2014-03-02 01:29:42 Class:SocialSuitePro.RegisterPage Method:btnRegister_Click Line #: 314  –    at SocialSuitePro.RegisterPage.btnRegister_Click(Object sender, ImageClickEventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\RegisterPage.aspx.cs:line 310
+ERROR2014-03-02 01:30:08 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-02 01:30:08 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-02 01:43:07 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-02 01:43:07 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-02 01:53:47 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-02 01:53:47 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-03 12:27:13 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in C:\Users\glb-118\Desktop\SocioBoard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-03 12:27:14 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in C:\Users\glb-118\Desktop\SocioBoard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-03 02:04:09 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 137  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-03-03 02:04:18 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 144  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-03-04 03:36:20 Class:? Method:lambda_method Line #: 0  – Could not execute query: select user0_.Id as Id29_, user0_.UserName as UserName29_, user0_.EmailId as EmailId29_, user0_.ProfileUrl as ProfileUrl29_, user0_.AccountType as AccountT5_29_, user0_.CreateDate as CreateDate29_, user0_.ExpiryDate as ExpiryDate29_, user0_.UserStatus as UserStatus29_, user0_.Password as Password29_, user0_.TimeZone as TimeZone29_, user0_.PaymentStatus as Payment11_29_, user0_.ActivationStatus as Activat12_29_, user0_.CouponCode as CouponCode29_, user0_.ReferenceStatus as Referen14_29_, user0_.RefereeStatus as Referee15_29_, user0_.UserType as UserType29_ from User user0_ where user0_.EmailId=?p0 and user0_.Password=?p1
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'user0_.ReferenceStatus' in 'field list'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 223
+ERROR2014-03-04 03:36:20 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-04 03:36:20 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-04 03:36:20 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-04 03:36:44 Class:? Method:lambda_method Line #: 0  – Could not execute query: select user0_.Id as Id29_, user0_.UserName as UserName29_, user0_.EmailId as EmailId29_, user0_.ProfileUrl as ProfileUrl29_, user0_.AccountType as AccountT5_29_, user0_.CreateDate as CreateDate29_, user0_.ExpiryDate as ExpiryDate29_, user0_.UserStatus as UserStatus29_, user0_.Password as Password29_, user0_.TimeZone as TimeZone29_, user0_.PaymentStatus as Payment11_29_, user0_.ActivationStatus as Activat12_29_, user0_.CouponCode as CouponCode29_, user0_.ReferenceStatus as Referen14_29_, user0_.RefereeStatus as Referee15_29_, user0_.UserType as UserType29_ from User user0_ where user0_.EmailId=?p0 and user0_.Password=?p1
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'user0_.ReferenceStatus' in 'field list'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 223
+ERROR2014-03-04 03:36:44 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-04 03:36:44 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-04 03:36:44 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-04 03:37:54 Class:? Method:lambda_method Line #: 0  – Could not execute query: select user0_.Id as Id29_, user0_.UserName as UserName29_, user0_.EmailId as EmailId29_, user0_.ProfileUrl as ProfileUrl29_, user0_.AccountType as AccountT5_29_, user0_.CreateDate as CreateDate29_, user0_.ExpiryDate as ExpiryDate29_, user0_.UserStatus as UserStatus29_, user0_.Password as Password29_, user0_.TimeZone as TimeZone29_, user0_.PaymentStatus as Payment11_29_, user0_.ActivationStatus as Activat12_29_, user0_.CouponCode as CouponCode29_, user0_.ReferenceStatus as Referen14_29_, user0_.RefereeStatus as Referee15_29_, user0_.UserType as UserType29_ from User user0_ where user0_.EmailId=?p0 and user0_.Password=?p1
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'user0_.ReferenceStatus' in 'field list'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 223
+ERROR2014-03-04 03:37:54 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-04 03:37:54 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-04 03:37:54 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-04 03:38:19 Class:? Method:lambda_method Line #: 0  – Could not execute query: select user0_.Id as Id29_, user0_.UserName as UserName29_, user0_.EmailId as EmailId29_, user0_.ProfileUrl as ProfileUrl29_, user0_.AccountType as AccountT5_29_, user0_.CreateDate as CreateDate29_, user0_.ExpiryDate as ExpiryDate29_, user0_.UserStatus as UserStatus29_, user0_.Password as Password29_, user0_.TimeZone as TimeZone29_, user0_.PaymentStatus as Payment11_29_, user0_.ActivationStatus as Activat12_29_, user0_.CouponCode as CouponCode29_, user0_.ReferenceStatus as Referen14_29_, user0_.RefereeStatus as Referee15_29_, user0_.UserType as UserType29_ from User user0_ where user0_.EmailId=?p0 and user0_.Password=?p1
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'user0_.ReferenceStatus' in 'field list'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 223
+ERROR2014-03-04 03:38:19 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-04 03:38:19 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-04 03:38:19 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-04 03:48:47 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-04 03:48:47 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-04 03:56:18 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-04 03:56:18 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-04 03:59:23 Class:SocialSuitePro.Default Method:Page_Load Line #: 101  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Default.aspx.cs:line 89
+ERROR2014-03-04 03:59:52 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-04 03:59:52 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-04 04:05:06 Class:SocialSuitePro.Default Method:Page_Load Line #: 101  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Default.aspx.cs:line 89
+ERROR2014-03-04 04:05:38 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-04 04:05:38 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-04 04:07:42 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-04 04:07:42 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-04 04:18:49 Class:SocialSuitePro.Default Method:Page_Load Line #: 101  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Default.aspx.cs:line 89
+ERROR2014-03-04 04:19:37 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-04 04:19:37 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-04 04:20:44 Class:SocialSuitePro.Default Method:Page_Load Line #: 101  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Default.aspx.cs:line 89
+ERROR2014-03-04 04:21:41 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-04 04:21:41 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-04 04:32:35 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 108  –    at SocialSuitePro.FacebookManager.ManageReferrals(FacebookClient fb) in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 376
+   at SocialSuitePro.FacebookManager.GetAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 161
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 35
+ERROR2014-03-04 04:45:11 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 108  –    at SocialSuitePro.FacebookManager.ManageReferrals(FacebookClient fb) in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 376
+   at SocialSuitePro.FacebookManager.GetAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 161
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 35
+ERROR2014-03-04 06:51:39 Class:SocialSuitePro.Default Method:Page_Load Line #: 113  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Default.aspx.cs:line 29
+ERROR2014-03-04 06:52:38 Class:SocialSuitePro.Default Method:Page_Load Line #: 113  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Default.aspx.cs:line 29
+ERROR2014-03-04 07:07:50 Class:SocialSuitePro.Default Method:Page_Load Line #: 113  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Default.aspx.cs:line 29
+ERROR2014-03-04 07:20:38 Class:SocialSuitePro.Default Method:Page_Load Line #: 113  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Default.aspx.cs:line 29
+ERROR2014-03-04 07:24:58 Class:SocialSuitePro.Default Method:Page_Load Line #: 113  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Default.aspx.cs:line 29
+ERROR2014-03-04 07:33:29 Class:SocialSuitePro.TwitterManager Method:getAccessToken Line #: 138  –    at SocialSuitePro.TwitterManager.ManageReferrals(String requestToken, String requestVerifier, JArray profile) in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 455
+   at SocialSuitePro.TwitterManager.getTwitterUserProfile() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 216
+   at SocialSuitePro.TwitterManager.getAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 134
+ERROR2014-03-04 07:33:29 Class:SocialSuitePro.TwitterManager Method:Page_Load Line #: 112  –    at SocialSuitePro.TwitterManager.getAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 140
+   at SocialSuitePro.TwitterManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 70
+ERROR2014-03-04 07:33:42 Class:SocialSuitePro.Default Method:Page_Load Line #: 113  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Default.aspx.cs:line 29
+ERROR2014-03-04 07:46:47 Class:SocialSuitePro.TwitterManager Method:getAccessToken Line #: 138  –    at SocialSuitePro.TwitterManager.ManageReferrals(String requestToken, String requestVerifier, JArray profile) in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 455
+   at SocialSuitePro.TwitterManager.getTwitterUserProfile() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 216
+   at SocialSuitePro.TwitterManager.getAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 134
+ERROR2014-03-04 07:46:47 Class:SocialSuitePro.TwitterManager Method:Page_Load Line #: 112  –    at SocialSuitePro.TwitterManager.getAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 140
+   at SocialSuitePro.TwitterManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 70
+ERROR2014-03-04 07:48:44 Class:SocialSuitePro.Default Method:Page_Load Line #: 113  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Default.aspx.cs:line 29
+ERROR2014-03-04 07:50:20 Class:SocialSuitePro.TwitterManager Method:getAccessToken Line #: 138  –    at SocialSuitePro.TwitterManager.ManageReferrals(String requestToken, String requestVerifier, JArray profile) in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 470
+   at SocialSuitePro.TwitterManager.getTwitterUserProfile() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 216
+   at SocialSuitePro.TwitterManager.getAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 134
+ERROR2014-03-04 07:50:20 Class:SocialSuitePro.TwitterManager Method:Page_Load Line #: 112  –    at SocialSuitePro.TwitterManager.getAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 140
+   at SocialSuitePro.TwitterManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 70
+ERROR2014-03-04 07:56:12 Class:SocialSuitePro.Default Method:Page_Load Line #: 113  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Default.aspx.cs:line 29
+ERROR2014-03-04 08:04:36 Class:SocialSuitePro.TwitterManager Method:getAccessToken Line #: 138  –    at SocialSuitePro.TwitterManager.ManageReferrals(String requestToken, String requestVerifier, JArray profile) in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 470
+   at SocialSuitePro.TwitterManager.getTwitterUserProfile() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 216
+   at SocialSuitePro.TwitterManager.getAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 134
+ERROR2014-03-04 08:04:36 Class:SocialSuitePro.TwitterManager Method:Page_Load Line #: 112  –    at SocialSuitePro.TwitterManager.getAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 140
+   at SocialSuitePro.TwitterManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 70
+ERROR2014-03-04 08:16:30 Class:SocialSuitePro.Default Method:Page_Load Line #: 113  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Default.aspx.cs:line 29
+ERROR2014-03-04 08:24:19 Class:SocialSuitePro.TwitterManager Method:getAccessToken Line #: 138  –    at SocialSuitePro.TwitterManager.ManageReferrals(String requestToken, String requestVerifier, JArray profile) in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 470
+   at SocialSuitePro.TwitterManager.getTwitterUserProfile() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 216
+   at SocialSuitePro.TwitterManager.getAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 134
+ERROR2014-03-04 08:24:19 Class:SocialSuitePro.TwitterManager Method:Page_Load Line #: 112  –    at SocialSuitePro.TwitterManager.getAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 140
+   at SocialSuitePro.TwitterManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 70
+ERROR2014-03-04 08:26:09 Class:SocialSuitePro.Default Method:Page_Load Line #: 113  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Default.aspx.cs:line 29
+ERROR2014-03-04 08:28:26 Class:SocialSuitePro.TwitterManager Method:getAccessToken Line #: 138  –    at SocialSuitePro.TwitterManager.ManageReferrals(String requestToken, String requestVerifier, JArray profile) in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 463
+   at SocialSuitePro.TwitterManager.getTwitterUserProfile() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 216
+   at SocialSuitePro.TwitterManager.getAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 134
+ERROR2014-03-04 08:28:26 Class:SocialSuitePro.TwitterManager Method:Page_Load Line #: 112  –    at SocialSuitePro.TwitterManager.getAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 140
+   at SocialSuitePro.TwitterManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 70
+ERROR2014-03-04 08:30:01 Class:SocialSuitePro.Default Method:Page_Load Line #: 113  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Default.aspx.cs:line 29
+ERROR2014-03-04 08:31:48 Class:SocialSuitePro.TwitterManager Method:getAccessToken Line #: 138  –    at SocialSuitePro.TwitterManager.ManageReferrals(String requestToken, String requestVerifier, JArray profile) in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 463
+   at SocialSuitePro.TwitterManager.getTwitterUserProfile() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 216
+   at SocialSuitePro.TwitterManager.getAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 134
+ERROR2014-03-04 08:31:48 Class:SocialSuitePro.TwitterManager Method:Page_Load Line #: 112  –    at SocialSuitePro.TwitterManager.getAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 140
+   at SocialSuitePro.TwitterManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 70
+ERROR2014-03-04 08:32:15 Class:SocialSuitePro.Default Method:Page_Load Line #: 113  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Default.aspx.cs:line 29
+ERROR2014-03-04 08:33:09 Class:SocialSuitePro.TwitterManager Method:getAccessToken Line #: 138  –    at SocialSuitePro.TwitterManager.ManageReferrals(String requestToken, String requestVerifier, JArray profile) in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 463
+   at SocialSuitePro.TwitterManager.getTwitterUserProfile() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 216
+   at SocialSuitePro.TwitterManager.getAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 134
+ERROR2014-03-04 08:33:09 Class:SocialSuitePro.TwitterManager Method:Page_Load Line #: 112  –    at SocialSuitePro.TwitterManager.getAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 140
+   at SocialSuitePro.TwitterManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 70
+ERROR2014-03-04 08:36:12 Class:SocialSuitePro.Default Method:Page_Load Line #: 113  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Default.aspx.cs:line 29
+ERROR2014-03-04 08:37:12 Class:SocialSuitePro.TwitterManager Method:getAccessToken Line #: 138  –    at SocialSuitePro.TwitterManager.ManageReferrals(oAuthTwitter OAuth, String requestToken, String requestVerifier, JArray profile) in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 463
+   at SocialSuitePro.TwitterManager.getTwitterUserProfile() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 216
+   at SocialSuitePro.TwitterManager.getAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 134
+ERROR2014-03-04 08:37:12 Class:SocialSuitePro.TwitterManager Method:Page_Load Line #: 112  –    at SocialSuitePro.TwitterManager.getAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 140
+   at SocialSuitePro.TwitterManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 70
+ERROR2014-03-04 08:37:53 Class:SocialSuitePro.Default Method:Page_Load Line #: 113  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Default.aspx.cs:line 29
+ERROR2014-03-04 08:38:35 Class:SocialSuitePro.TwitterManager Method:getAccessToken Line #: 138  –    at SocialSuitePro.TwitterManager.ManageReferrals(oAuthTwitter OAuth, String requestToken, String requestVerifier, JArray profile) in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 463
+   at SocialSuitePro.TwitterManager.getTwitterUserProfile() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 216
+   at SocialSuitePro.TwitterManager.getAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 134
+ERROR2014-03-04 08:38:35 Class:SocialSuitePro.TwitterManager Method:Page_Load Line #: 112  –    at SocialSuitePro.TwitterManager.getAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 140
+   at SocialSuitePro.TwitterManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\TwitterManager.aspx.cs:line 70
+<<<<<<< .mine
+ERROR2014-03-05 04:54:45 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-05 04:54:46 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+=======
+ERROR2014-03-05 03:48:24 Class:GlobusMailLib.MailHelper Method:SendMailByMandrill Line #: 120  – Could not load file or assembly 'RestSharp, Version=104.4.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
+ERROR2014-03-05 03:48:28 Class:SocialSuitePro.RegisterPage Method:btnRegister_Click Line #: 336  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.RegisterPage.btnRegister_Click(Object sender, ImageClickEventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\RegisterPage.aspx.cs:line 320
+ERROR2014-03-05 03:48:28 Class:SocialSuitePro.RegisterPage Method:btnRegister_Click Line #: 344  –    at SocialSuitePro.RegisterPage.btnRegister_Click(Object sender, ImageClickEventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\RegisterPage.aspx.cs:line 340
+ERROR2014-03-05 03:48:55 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-05 03:48:55 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-05 03:56:34 Class:GlobusMailLib.MailHelper Method:SendMailByMandrill Line #: 120  – Could not load file or assembly 'RestSharp, Version=104.4.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
+ERROR2014-03-05 03:56:58 Class:GlobusMailLib.MailHelper Method:SendMailByMandrill Line #: 120  – Could not load file or assembly 'RestSharp, Version=104.4.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
+ERROR2014-03-05 03:56:58 Class:? Method:lambda_method Line #: 0  – Begin transaction failed
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts. ---> System.Net.Sockets.SocketException (0x80004005): The I/O operation has been aborted because of either a thread exit or an application request 50.57.219.58:3306
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at MySql.Data.Common.StreamCreator.CreateSocketStream(IPAddress ip, Boolean unix)
+   at MySql.Data.Common.StreamCreator.GetStream(UInt32 timeout)
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in p:\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in p:\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.Transaction.AdoTransaction.Begin(IsolationLevel isolationLevel) in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 133
+ERROR2014-03-05 03:56:58 Class:SocialSuitePro.RegisterPage Method:btnRegister_Click Line #: 336  –    at NHibernate.Transaction.AdoTransaction.Begin(IsolationLevel isolationLevel) in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 148
+   at NHibernate.Transaction.AdoTransaction.Begin() in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 97
+   at NHibernate.AdoNet.ConnectionManager.BeginTransaction() in p:\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 324
+   at NHibernate.Impl.SessionImpl.BeginTransaction() in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1467
+   at SocioBoard.Model.TeamRepository.getTeamByEmailId(String EmailId) in D:\Abhay\socioboard\trunk\SocioBoard Product\Model\TeamRepository.cs:line 221
+   at SocialSuitePro.RegisterPage.btnRegister_Click(Object sender, ImageClickEventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\RegisterPage.aspx.cs:line 188
+ERROR2014-03-05 04:30:55 Class:SocialSuitePro.RegisterPage Method:btnRegister_Click Line #: 336  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.RegisterPage.btnRegister_Click(Object sender, ImageClickEventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\RegisterPage.aspx.cs:line 320
+ERROR2014-03-05 04:30:55 Class:SocialSuitePro.RegisterPage Method:btnRegister_Click Line #: 344  –    at SocialSuitePro.RegisterPage.btnRegister_Click(Object sender, ImageClickEventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\RegisterPage.aspx.cs:line 340
+ERROR2014-03-05 04:31:24 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-05 04:31:24 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-05 06:53:40 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-05 06:53:40 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-05 06:59:07 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-05 06:59:07 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-05 07:00:44 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 730  – Object reference not set to an instance of an object.
+ERROR2014-03-05 07:00:44 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Object reference not set to an instance of an object.
+ERROR2014-03-05 07:00:45 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Object reference not set to an instance of an object.
+ERROR2014-03-05 07:01:34 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-05 07:01:34 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-05 07:06:29 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-05 07:06:29 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-05 07:08:17 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-05 07:08:17 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-05 07:10:23 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-05 07:10:23 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-05 07:14:59 Class:? Method:lambda_method Line #: 0  – Begin transaction failed
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts. ---> System.Net.Sockets.SocketException (0x80004005): The I/O operation has been aborted because of either a thread exit or an application request 50.57.219.58:3306
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at MySql.Data.Common.StreamCreator.CreateSocketStream(IPAddress ip, Boolean unix)
+   at MySql.Data.Common.StreamCreator.GetStream(UInt32 timeout)
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in p:\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in p:\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.Transaction.AdoTransaction.Begin(IsolationLevel isolationLevel) in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 133
+ERROR2014-03-05 07:14:59 Class:SocialSuitePro.MasterPage.Site Method:Page_Load Line #: 235  – Begin failed with SQL exception
+ERROR2014-03-05 07:20:27 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-05 07:20:28 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-05 07:23:11 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-05 07:23:11 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-05 07:27:08 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-05 07:27:08 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-05 07:28:03 Class:? Method:lambda_method Line #: 0  – Begin transaction failed
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts. ---> System.Net.Sockets.SocketException (0x80004005): The I/O operation has been aborted because of either a thread exit or an application request 50.57.219.58:3306
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at MySql.Data.Common.StreamCreator.CreateSocketStream(IPAddress ip, Boolean unix)
+   at MySql.Data.Common.StreamCreator.GetStream(UInt32 timeout)
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in p:\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in p:\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.Transaction.AdoTransaction.Begin(IsolationLevel isolationLevel) in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 133
+ERROR2014-03-05 07:28:03 Class:SocialSuitePro.MasterPage.Site Method:Page_Load Line #: 235  – Begin failed with SQL exception
+ERROR2014-03-05 07:30:19 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-05 07:30:19 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-05 07:32:02 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-05 07:32:02 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-05 07:33:34 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-05 07:33:34 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+>>>>>>> .r536
+ERROR2014-03-06 05:38:30 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 108  –    at SocialSuitePro.FacebookManager.ManageReferrals(FacebookClient fb) in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 376
+   at SocialSuitePro.FacebookManager.GetAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 161
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 35
+<<<<<<< .mine
+ERROR2014-03-07 03:55:19 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in F:\Socioboard\trunk_07-03-14\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-07 03:55:19 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in F:\Socioboard\trunk_07-03-14\trunk\SocioBoard Product\Home.aspx.cs:line 355
+=======
+ERROR2014-03-07 12:42:26 Class:? Method:lambda_method Line #: 0  – Could not execute command: INSERT INTO Invitation (InvitationBody, Subject, SenderName, FriendName, SenderEmail, FriendEmail, Status, Id) VALUES (?p0, ?p1, ?p2, ?p3, ?p4, ?p5, ?p6, ?p7)
+MySql.Data.MySqlClient.MySqlException (0x80004005): Duplicate entry 'Abhaykumar@globussoft.com-abhaymondal@globussoft.com' for key 'SenderEmail_FriendEmail'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteNonQuery(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 197
+ERROR2014-03-07 12:42:26 Class:? Method:lambda_method Line #: 0  – Duplicate entry 'Abhaykumar@globussoft.com-abhaymondal@globussoft.com' for key 'SenderEmail_FriendEmail'
+ERROR2014-03-07 12:42:26 Class:? Method:lambda_method Line #: 0  – Could not synchronize database state with session
+NHibernate.Exceptions.GenericADOException: could not insert: [SocioBoard.Domain.Invitation#0272fb95-74e6-4397-b68f-b93dd503aeed][SQL: INSERT INTO Invitation (InvitationBody, Subject, SenderName, FriendName, SenderEmail, FriendEmail, Status, Id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)] ---> MySql.Data.MySqlClient.MySqlException: Duplicate entry 'Abhaykumar@globussoft.com-abhaymondal@globussoft.com' for key 'SenderEmail_FriendEmail'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteNonQuery(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 203
+   at NHibernate.AdoNet.NonBatchingBatcher.AddToBatch(IExpectation expectation) in p:\nhibernate-core\src\NHibernate\AdoNet\NonBatchingBatcher.cs:line 40
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Boolean[] notNull, Int32 j, SqlCommandInfo sql, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 2656
+   --- End of inner exception stack trace ---
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Boolean[] notNull, Int32 j, SqlCommandInfo sql, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 2676
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 3062
+   at NHibernate.Action.EntityInsertAction.Execute() in p:\nhibernate-core\src\NHibernate\Action\EntityInsertAction.cs:line 59
+   at NHibernate.Engine.ActionQueue.Execute(IExecutable executable) in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 136
+   at NHibernate.Engine.ActionQueue.ExecuteActions(IList list) in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 126
+   at NHibernate.Engine.ActionQueue.ExecuteActions() in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 169
+   at NHibernate.Event.Default.AbstractFlushingEventListener.PerformExecutions(IEventSource session) in p:\nhibernate-core\src\NHibernate\Event\Default\AbstractFlushingEventListener.cs:line 241
+ERROR2014-03-07 12:42:44 Class:? Method:lambda_method Line #: 0  – Could not execute command: INSERT INTO Invitation (InvitationBody, Subject, SenderName, FriendName, SenderEmail, FriendEmail, Status, Id) VALUES (?p0, ?p1, ?p2, ?p3, ?p4, ?p5, ?p6, ?p7)
+MySql.Data.MySqlClient.MySqlException (0x80004005): Duplicate entry 'Abhaykumar@globussoft.com-abhaymondal@globussoft.com' for key 'SenderEmail_FriendEmail'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteNonQuery(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 197
+ERROR2014-03-07 12:42:44 Class:? Method:lambda_method Line #: 0  – Duplicate entry 'Abhaykumar@globussoft.com-abhaymondal@globussoft.com' for key 'SenderEmail_FriendEmail'
+ERROR2014-03-07 12:42:44 Class:? Method:lambda_method Line #: 0  – Could not synchronize database state with session
+NHibernate.Exceptions.GenericADOException: could not insert: [SocioBoard.Domain.Invitation#c8ef9157-05a1-45c1-8460-12d67570097d][SQL: INSERT INTO Invitation (InvitationBody, Subject, SenderName, FriendName, SenderEmail, FriendEmail, Status, Id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)] ---> MySql.Data.MySqlClient.MySqlException: Duplicate entry 'Abhaykumar@globussoft.com-abhaymondal@globussoft.com' for key 'SenderEmail_FriendEmail'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteNonQuery(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 203
+   at NHibernate.AdoNet.NonBatchingBatcher.AddToBatch(IExpectation expectation) in p:\nhibernate-core\src\NHibernate\AdoNet\NonBatchingBatcher.cs:line 40
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Boolean[] notNull, Int32 j, SqlCommandInfo sql, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 2656
+   --- End of inner exception stack trace ---
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Boolean[] notNull, Int32 j, SqlCommandInfo sql, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 2676
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 3062
+   at NHibernate.Action.EntityInsertAction.Execute() in p:\nhibernate-core\src\NHibernate\Action\EntityInsertAction.cs:line 59
+   at NHibernate.Engine.ActionQueue.Execute(IExecutable executable) in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 136
+   at NHibernate.Engine.ActionQueue.ExecuteActions(IList list) in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 126
+   at NHibernate.Engine.ActionQueue.ExecuteActions() in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 169
+   at NHibernate.Event.Default.AbstractFlushingEventListener.PerformExecutions(IEventSource session) in p:\nhibernate-core\src\NHibernate\Event\Default\AbstractFlushingEventListener.cs:line 241
+>>>>>>> .r558
+ERROR2014-03-07 05:33:03 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-07 05:33:03 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-07 05:41:00 Class:? Method:lambda_method Line #: 0  – Could not execute command: INSERT INTO Invitation (InvitationBody, Subject, SenderName, FriendName, SenderEmail, FriendEmail, Status, Id) VALUES (?p0, ?p1, ?p2, ?p3, ?p4, ?p5, ?p6, ?p7)
+MySql.Data.MySqlClient.MySqlException (0x80004005): Duplicate entry 'Abhaykumar@globussoft.com-abhaymondal@globussoft.com' for key 'SenderEmail_FriendEmail'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteNonQuery(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 197
+ERROR2014-03-07 05:41:00 Class:? Method:lambda_method Line #: 0  – Duplicate entry 'Abhaykumar@globussoft.com-abhaymondal@globussoft.com' for key 'SenderEmail_FriendEmail'
+ERROR2014-03-07 05:41:00 Class:? Method:lambda_method Line #: 0  – Could not synchronize database state with session
+NHibernate.Exceptions.GenericADOException: could not insert: [SocioBoard.Domain.Invitation#c0303a42-97b6-44e6-af2d-3cbdb63e2fa6][SQL: INSERT INTO Invitation (InvitationBody, Subject, SenderName, FriendName, SenderEmail, FriendEmail, Status, Id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)] ---> MySql.Data.MySqlClient.MySqlException: Duplicate entry 'Abhaykumar@globussoft.com-abhaymondal@globussoft.com' for key 'SenderEmail_FriendEmail'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteNonQuery(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 203
+   at NHibernate.AdoNet.NonBatchingBatcher.AddToBatch(IExpectation expectation) in p:\nhibernate-core\src\NHibernate\AdoNet\NonBatchingBatcher.cs:line 40
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Boolean[] notNull, Int32 j, SqlCommandInfo sql, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 2656
+   --- End of inner exception stack trace ---
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Boolean[] notNull, Int32 j, SqlCommandInfo sql, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 2676
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 3062
+   at NHibernate.Action.EntityInsertAction.Execute() in p:\nhibernate-core\src\NHibernate\Action\EntityInsertAction.cs:line 59
+   at NHibernate.Engine.ActionQueue.Execute(IExecutable executable) in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 136
+   at NHibernate.Engine.ActionQueue.ExecuteActions(IList list) in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 126
+   at NHibernate.Engine.ActionQueue.ExecuteActions() in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 169
+   at NHibernate.Event.Default.AbstractFlushingEventListener.PerformExecutions(IEventSource session) in p:\nhibernate-core\src\NHibernate\Event\Default\AbstractFlushingEventListener.cs:line 241
+ERROR2014-03-07 05:53:29 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-07 05:53:29 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-07 06:50:12 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-07 06:50:12 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-07 06:54:41 Class:? Method:lambda_method Line #: 0  – Could not execute command: INSERT INTO Invitation (InvitationBody, Subject, SenderName, FriendName, SenderEmail, FriendEmail, Status, Id) VALUES (?p0, ?p1, ?p2, ?p3, ?p4, ?p5, ?p6, ?p7)
+MySql.Data.MySqlClient.MySqlException (0x80004005): Duplicate entry 'Abhaykumar@globussoft.com-pravin.huske@globussoft.com' for key 'SenderEmail_FriendEmail'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteNonQuery(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 197
+ERROR2014-03-07 06:54:41 Class:? Method:lambda_method Line #: 0  – Duplicate entry 'Abhaykumar@globussoft.com-pravin.huske@globussoft.com' for key 'SenderEmail_FriendEmail'
+ERROR2014-03-07 06:54:41 Class:? Method:lambda_method Line #: 0  – Could not synchronize database state with session
+NHibernate.Exceptions.GenericADOException: could not insert: [SocioBoard.Domain.Invitation#7bcac87f-71bb-45e8-ab20-1a32987c33eb][SQL: INSERT INTO Invitation (InvitationBody, Subject, SenderName, FriendName, SenderEmail, FriendEmail, Status, Id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)] ---> MySql.Data.MySqlClient.MySqlException: Duplicate entry 'Abhaykumar@globussoft.com-pravin.huske@globussoft.com' for key 'SenderEmail_FriendEmail'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteNonQuery(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 203
+   at NHibernate.AdoNet.NonBatchingBatcher.AddToBatch(IExpectation expectation) in p:\nhibernate-core\src\NHibernate\AdoNet\NonBatchingBatcher.cs:line 40
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Boolean[] notNull, Int32 j, SqlCommandInfo sql, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 2656
+   --- End of inner exception stack trace ---
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Boolean[] notNull, Int32 j, SqlCommandInfo sql, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 2676
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 3062
+   at NHibernate.Action.EntityInsertAction.Execute() in p:\nhibernate-core\src\NHibernate\Action\EntityInsertAction.cs:line 59
+   at NHibernate.Engine.ActionQueue.Execute(IExecutable executable) in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 136
+   at NHibernate.Engine.ActionQueue.ExecuteActions(IList list) in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 126
+   at NHibernate.Engine.ActionQueue.ExecuteActions() in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 169
+   at NHibernate.Event.Default.AbstractFlushingEventListener.PerformExecutions(IEventSource session) in p:\nhibernate-core\src\NHibernate\Event\Default\AbstractFlushingEventListener.cs:line 241
+ERROR2014-03-07 06:55:01 Class:? Method:lambda_method Line #: 0  – Could not execute command: INSERT INTO Invitation (InvitationBody, Subject, SenderName, FriendName, SenderEmail, FriendEmail, Status, Id) VALUES (?p0, ?p1, ?p2, ?p3, ?p4, ?p5, ?p6, ?p7)
+MySql.Data.MySqlClient.MySqlException (0x80004005): Duplicate entry 'Abhaykumar@globussoft.com-pravin.huske@globussoft.com' for key 'SenderEmail_FriendEmail'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteNonQuery(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 197
+ERROR2014-03-07 06:55:01 Class:? Method:lambda_method Line #: 0  – Duplicate entry 'Abhaykumar@globussoft.com-pravin.huske@globussoft.com' for key 'SenderEmail_FriendEmail'
+ERROR2014-03-07 06:55:01 Class:? Method:lambda_method Line #: 0  – Could not synchronize database state with session
+NHibernate.Exceptions.GenericADOException: could not insert: [SocioBoard.Domain.Invitation#50e96525-b6cf-447c-8f46-932c1d752983][SQL: INSERT INTO Invitation (InvitationBody, Subject, SenderName, FriendName, SenderEmail, FriendEmail, Status, Id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)] ---> MySql.Data.MySqlClient.MySqlException: Duplicate entry 'Abhaykumar@globussoft.com-pravin.huske@globussoft.com' for key 'SenderEmail_FriendEmail'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteNonQuery(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 203
+   at NHibernate.AdoNet.NonBatchingBatcher.AddToBatch(IExpectation expectation) in p:\nhibernate-core\src\NHibernate\AdoNet\NonBatchingBatcher.cs:line 40
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Boolean[] notNull, Int32 j, SqlCommandInfo sql, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 2656
+   --- End of inner exception stack trace ---
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Boolean[] notNull, Int32 j, SqlCommandInfo sql, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 2676
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 3062
+   at NHibernate.Action.EntityInsertAction.Execute() in p:\nhibernate-core\src\NHibernate\Action\EntityInsertAction.cs:line 59
+   at NHibernate.Engine.ActionQueue.Execute(IExecutable executable) in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 136
+   at NHibernate.Engine.ActionQueue.ExecuteActions(IList list) in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 126
+   at NHibernate.Engine.ActionQueue.ExecuteActions() in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 169
+   at NHibernate.Event.Default.AbstractFlushingEventListener.PerformExecutions(IEventSource session) in p:\nhibernate-core\src\NHibernate\Event\Default\AbstractFlushingEventListener.cs:line 241
+ERROR2014-03-07 06:55:43 Class:? Method:lambda_method Line #: 0  – Could not execute command: INSERT INTO Invitation (InvitationBody, Subject, SenderName, FriendName, SenderEmail, FriendEmail, Status, Id) VALUES (?p0, ?p1, ?p2, ?p3, ?p4, ?p5, ?p6, ?p7)
+MySql.Data.MySqlClient.MySqlException (0x80004005): Duplicate entry 'Abhaykumar@globussoft.com-abhaymondal@globussoft.com' for key 'SenderEmail_FriendEmail'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteNonQuery(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 197
+ERROR2014-03-07 06:55:43 Class:? Method:lambda_method Line #: 0  – Duplicate entry 'Abhaykumar@globussoft.com-abhaymondal@globussoft.com' for key 'SenderEmail_FriendEmail'
+ERROR2014-03-07 06:55:43 Class:? Method:lambda_method Line #: 0  – Could not synchronize database state with session
+NHibernate.Exceptions.GenericADOException: could not insert: [SocioBoard.Domain.Invitation#c8a5ba99-7f26-4183-b4ad-9ccaf9a4f4e4][SQL: INSERT INTO Invitation (InvitationBody, Subject, SenderName, FriendName, SenderEmail, FriendEmail, Status, Id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)] ---> MySql.Data.MySqlClient.MySqlException: Duplicate entry 'Abhaykumar@globussoft.com-abhaymondal@globussoft.com' for key 'SenderEmail_FriendEmail'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteNonQuery(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 203
+   at NHibernate.AdoNet.NonBatchingBatcher.AddToBatch(IExpectation expectation) in p:\nhibernate-core\src\NHibernate\AdoNet\NonBatchingBatcher.cs:line 40
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Boolean[] notNull, Int32 j, SqlCommandInfo sql, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 2656
+   --- End of inner exception stack trace ---
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Boolean[] notNull, Int32 j, SqlCommandInfo sql, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 2676
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 3062
+   at NHibernate.Action.EntityInsertAction.Execute() in p:\nhibernate-core\src\NHibernate\Action\EntityInsertAction.cs:line 59
+   at NHibernate.Engine.ActionQueue.Execute(IExecutable executable) in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 136
+   at NHibernate.Engine.ActionQueue.ExecuteActions(IList list) in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 126
+   at NHibernate.Engine.ActionQueue.ExecuteActions() in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 169
+   at NHibernate.Event.Default.AbstractFlushingEventListener.PerformExecutions(IEventSource session) in p:\nhibernate-core\src\NHibernate\Event\Default\AbstractFlushingEventListener.cs:line 241
+ERROR2014-03-07 06:56:51 Class:? Method:lambda_method Line #: 0  – Could not execute command: INSERT INTO Invitation (InvitationBody, Subject, SenderName, FriendName, SenderEmail, FriendEmail, Status, Id) VALUES (?p0, ?p1, ?p2, ?p3, ?p4, ?p5, ?p6, ?p7)
+MySql.Data.MySqlClient.MySqlException (0x80004005): Duplicate entry 'Abhaykumar@globussoft.com-ashutosh@globussoft.com' for key 'SenderEmail_FriendEmail'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteNonQuery(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 197
+ERROR2014-03-07 06:56:51 Class:? Method:lambda_method Line #: 0  – Duplicate entry 'Abhaykumar@globussoft.com-ashutosh@globussoft.com' for key 'SenderEmail_FriendEmail'
+ERROR2014-03-07 06:56:51 Class:? Method:lambda_method Line #: 0  – Could not synchronize database state with session
+NHibernate.Exceptions.GenericADOException: could not insert: [SocioBoard.Domain.Invitation#240f87ab-aef4-4a88-9a4b-4643af577bea][SQL: INSERT INTO Invitation (InvitationBody, Subject, SenderName, FriendName, SenderEmail, FriendEmail, Status, Id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)] ---> MySql.Data.MySqlClient.MySqlException: Duplicate entry 'Abhaykumar@globussoft.com-ashutosh@globussoft.com' for key 'SenderEmail_FriendEmail'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteNonQuery(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 203
+   at NHibernate.AdoNet.NonBatchingBatcher.AddToBatch(IExpectation expectation) in p:\nhibernate-core\src\NHibernate\AdoNet\NonBatchingBatcher.cs:line 40
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Boolean[] notNull, Int32 j, SqlCommandInfo sql, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 2656
+   --- End of inner exception stack trace ---
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Boolean[] notNull, Int32 j, SqlCommandInfo sql, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 2676
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 3062
+   at NHibernate.Action.EntityInsertAction.Execute() in p:\nhibernate-core\src\NHibernate\Action\EntityInsertAction.cs:line 59
+   at NHibernate.Engine.ActionQueue.Execute(IExecutable executable) in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 136
+   at NHibernate.Engine.ActionQueue.ExecuteActions(IList list) in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 126
+   at NHibernate.Engine.ActionQueue.ExecuteActions() in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 169
+   at NHibernate.Event.Default.AbstractFlushingEventListener.PerformExecutions(IEventSource session) in p:\nhibernate-core\src\NHibernate\Event\Default\AbstractFlushingEventListener.cs:line 241
+ERROR2014-03-07 06:57:05 Class:? Method:lambda_method Line #: 0  – Could not execute command: INSERT INTO Invitation (InvitationBody, Subject, SenderName, FriendName, SenderEmail, FriendEmail, Status, Id) VALUES (?p0, ?p1, ?p2, ?p3, ?p4, ?p5, ?p6, ?p7)
+MySql.Data.MySqlClient.MySqlException (0x80004005): Duplicate entry 'Abhaykumar@globussoft.com-raj@globussoft.com' for key 'SenderEmail_FriendEmail'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteNonQuery(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 197
+ERROR2014-03-07 06:57:05 Class:? Method:lambda_method Line #: 0  – Duplicate entry 'Abhaykumar@globussoft.com-raj@globussoft.com' for key 'SenderEmail_FriendEmail'
+ERROR2014-03-07 06:57:05 Class:? Method:lambda_method Line #: 0  – Could not synchronize database state with session
+NHibernate.Exceptions.GenericADOException: could not insert: [SocioBoard.Domain.Invitation#2511a705-562f-4086-9ed3-3e73ab0709fb][SQL: INSERT INTO Invitation (InvitationBody, Subject, SenderName, FriendName, SenderEmail, FriendEmail, Status, Id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)] ---> MySql.Data.MySqlClient.MySqlException: Duplicate entry 'Abhaykumar@globussoft.com-raj@globussoft.com' for key 'SenderEmail_FriendEmail'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteNonQuery(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 203
+   at NHibernate.AdoNet.NonBatchingBatcher.AddToBatch(IExpectation expectation) in p:\nhibernate-core\src\NHibernate\AdoNet\NonBatchingBatcher.cs:line 40
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Boolean[] notNull, Int32 j, SqlCommandInfo sql, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 2656
+   --- End of inner exception stack trace ---
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Boolean[] notNull, Int32 j, SqlCommandInfo sql, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 2676
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 3062
+   at NHibernate.Action.EntityInsertAction.Execute() in p:\nhibernate-core\src\NHibernate\Action\EntityInsertAction.cs:line 59
+   at NHibernate.Engine.ActionQueue.Execute(IExecutable executable) in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 136
+   at NHibernate.Engine.ActionQueue.ExecuteActions(IList list) in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 126
+   at NHibernate.Engine.ActionQueue.ExecuteActions() in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 169
+   at NHibernate.Event.Default.AbstractFlushingEventListener.PerformExecutions(IEventSource session) in p:\nhibernate-core\src\NHibernate\Event\Default\AbstractFlushingEventListener.cs:line 241
+ERROR2014-03-07 07:23:59 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-07 07:23:59 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-07 07:33:38 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-07 07:33:38 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-08 10:14:46 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-08 10:14:46 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-08 02:44:16 Class:? Method:lambda_method Line #: 0  – Begin transaction failed
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts. ---> System.Net.Sockets.SocketException (0x80004005): The I/O operation has been aborted because of either a thread exit or an application request 50.57.219.58:3306
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at MySql.Data.Common.StreamCreator.CreateSocketStream(IPAddress ip, Boolean unix)
+   at MySql.Data.Common.StreamCreator.GetStream(UInt32 timeout)
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in p:\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in p:\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.Transaction.AdoTransaction.Begin(IsolationLevel isolationLevel) in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 133
+ERROR2014-03-08 03:03:48 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-08 03:03:48 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-10 11:09:48 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in F:\Socioboard\trunk_07-03-14\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-10 11:09:48 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in F:\Socioboard\trunk_07-03-14\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-10 11:16:37 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in F:\Socioboard\trunk_07-03-14\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-10 11:16:37 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in F:\Socioboard\trunk_07-03-14\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-10 11:38:25 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in F:\Socioboard\trunk_07-03-14\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-10 11:38:25 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in F:\Socioboard\trunk_07-03-14\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-10 11:43:01 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-10 11:43:02 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-03-10 11:46:38 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in F:\Socioboard\trunk_07-03-14\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-10 11:46:38 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in F:\Socioboard\trunk_07-03-14\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-10 11:52:03 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-10 11:52:03 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-03-11 08:17:34 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-11 08:17:35 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-11 08:18:39 Class:SocialSuitePro.Default Method:Page_Load Line #: 122  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Default.aspx.cs:line 110
+ERROR2014-03-11 08:19:39 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-11 08:19:39 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-11 08:32:38 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-11 08:32:38 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-12 10:50:48 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-12 10:50:48 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-12 10:52:32 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-12 10:52:32 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-12 10:53:48 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-12 10:53:49 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-12 10:54:59 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-12 10:54:59 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-12 11:00:21 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-12 11:00:22 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-12 11:01:27 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Method not found: 'System.Collections.Generic.IEnumerator`1<Newtonsoft.Json.Linq.JToken> Newtonsoft.Json.Linq.JArray.GetEnumerator()'.
+ERROR2014-03-12 11:01:27 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Method not found: 'System.Collections.Generic.IEnumerator`1<Newtonsoft.Json.Linq.JToken> Newtonsoft.Json.Linq.JArray.GetEnumerator()'.
+ERROR2014-03-12 11:01:28 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Method not found: 'System.Collections.Generic.IEnumerator`1<Newtonsoft.Json.Linq.JToken> Newtonsoft.Json.Linq.JArray.GetEnumerator()'.
+ERROR2014-03-12 11:02:23 Class:SocialSuitePro.MasterPage.Site Method:Page_Load Line #: 243  – Thread was being aborted.
+ERROR2014-03-12 11:03:23 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-12 11:03:23 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-12 11:04:30 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Method not found: 'System.Collections.Generic.IEnumerator`1<Newtonsoft.Json.Linq.JToken> Newtonsoft.Json.Linq.JArray.GetEnumerator()'.
+ERROR2014-03-12 11:04:30 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Method not found: 'System.Collections.Generic.IEnumerator`1<Newtonsoft.Json.Linq.JToken> Newtonsoft.Json.Linq.JArray.GetEnumerator()'.
+ERROR2014-03-12 11:04:30 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Method not found: 'System.Collections.Generic.IEnumerator`1<Newtonsoft.Json.Linq.JToken> Newtonsoft.Json.Linq.JArray.GetEnumerator()'.
+ERROR2014-03-12 11:06:32 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-12 11:06:32 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-12 11:07:46 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-12 11:07:46 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-12 11:10:38 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-12 11:10:38 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+<<<<<<< .mine
+ERROR2014-03-24 04:40:26 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 80  –    at SocioBoard.Helper.SessionFactory.GetNewSession() in D:\Abhay\socioboard\trunk\SocioBoard Product\Helper\SessionFactory.cs:line 74
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in D:\Abhay\socioboard\trunk\SocioBoard Product\Model\UserRepository.cs:line 197
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in D:\Abhay\socioboard\trunk\SocioBoard Product\AjaxLogin.aspx.cs:line 44
+ERROR2014-03-24 04:43:34 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-24 04:43:34 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-24 05:13:00 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:13:13 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:21:52 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:21:52 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:21:52 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:21:52 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:21:52 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:21:52 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:21:52 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:21:52 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:21:52 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:21:53 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:21:53 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:21:53 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:21:53 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:21:53 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:21:54 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:21:55 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:21:55 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:21:56 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:21:58 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:22:00 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:22:01 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:22:04 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:22:07 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:22:10 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:22:10 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:22:10 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:22:21 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:22:30 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:22:34 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:22:34 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:22:35 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 05:22:36 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-03-24 08:31:11 Class:? Method:lambda_method Line #: 0  – Could not execute query: select user0_.Id as Id30_, user0_.UserName as UserName30_, user0_.EmailId as EmailId30_, user0_.ProfileUrl as ProfileUrl30_, user0_.AccountType as AccountT5_30_, user0_.CreateDate as CreateDate30_, user0_.ExpiryDate as ExpiryDate30_, user0_.UserStatus as UserStatus30_, user0_.Password as Password30_, user0_.TimeZone as TimeZone30_, user0_.PaymentStatus as Payment11_30_, user0_.ActivationStatus as Activat12_30_, user0_.CouponCode as CouponCode30_, user0_.ReferenceStatus as Referen14_30_, user0_.RefereeStatus as Referee15_30_, user0_.UserType as UserType30_ from User user0_ where user0_.EmailId=?p0
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'user0_.ReferenceStatus' in 'field list'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 223
+ERROR2014-03-24 08:31:11 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-24 08:31:11 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-24 08:31:11 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-24 08:33:55 Class:? Method:lambda_method Line #: 0  – Could not execute query: select user0_.Id as Id30_, user0_.UserName as UserName30_, user0_.EmailId as EmailId30_, user0_.ProfileUrl as ProfileUrl30_, user0_.AccountType as AccountT5_30_, user0_.CreateDate as CreateDate30_, user0_.ExpiryDate as ExpiryDate30_, user0_.UserStatus as UserStatus30_, user0_.Password as Password30_, user0_.TimeZone as TimeZone30_, user0_.PaymentStatus as Payment11_30_, user0_.ActivationStatus as Activat12_30_, user0_.CouponCode as CouponCode30_, user0_.ReferenceStatus as Referen14_30_, user0_.RefereeStatus as Referee15_30_, user0_.UserType as UserType30_ from User user0_ where user0_.EmailId=?p0
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'user0_.ReferenceStatus' in 'field list'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 223
+ERROR2014-03-24 08:33:55 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-24 08:33:55 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-24 08:33:55 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-24 08:35:32 Class:? Method:lambda_method Line #: 0  – Could not execute query: select user0_.Id as Id30_, user0_.UserName as UserName30_, user0_.EmailId as EmailId30_, user0_.ProfileUrl as ProfileUrl30_, user0_.AccountType as AccountT5_30_, user0_.CreateDate as CreateDate30_, user0_.ExpiryDate as ExpiryDate30_, user0_.UserStatus as UserStatus30_, user0_.Password as Password30_, user0_.TimeZone as TimeZone30_, user0_.PaymentStatus as Payment11_30_, user0_.ActivationStatus as Activat12_30_, user0_.CouponCode as CouponCode30_, user0_.ReferenceStatus as Referen14_30_, user0_.RefereeStatus as Referee15_30_, user0_.UserType as UserType30_ from User user0_ where user0_.EmailId=?p0
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'user0_.ReferenceStatus' in 'field list'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 223
+ERROR2014-03-24 08:35:32 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-24 08:35:32 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-24 08:35:32 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-24 08:37:26 Class:? Method:lambda_method Line #: 0  – Could not execute query: select user0_.Id as Id30_, user0_.UserName as UserName30_, user0_.EmailId as EmailId30_, user0_.ProfileUrl as ProfileUrl30_, user0_.AccountType as AccountT5_30_, user0_.CreateDate as CreateDate30_, user0_.ExpiryDate as ExpiryDate30_, user0_.UserStatus as UserStatus30_, user0_.Password as Password30_, user0_.TimeZone as TimeZone30_, user0_.PaymentStatus as Payment11_30_, user0_.ActivationStatus as Activat12_30_, user0_.CouponCode as CouponCode30_, user0_.ReferenceStatus as Referen14_30_, user0_.RefereeStatus as Referee15_30_, user0_.UserType as UserType30_ from User user0_ where user0_.EmailId=?p0
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'user0_.ReferenceStatus' in 'field list'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 223
+ERROR2014-03-24 08:37:26 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-24 08:37:26 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-24 08:37:26 Class:? Method:lambda_method Line #: 0  – Unknown column 'user0_.ReferenceStatus' in 'field list'
+ERROR2014-03-24 08:50:59 Class:? Method:lambda_method Line #: 0  – Could not execute query: select user0_.Id as Id30_, user0_.UserName as UserName30_, user0_.EmailId as EmailId30_, user0_.ProfileUrl as ProfileUrl30_, user0_.AccountType as AccountT5_30_, user0_.CreateDate as CreateDate30_, user0_.ExpiryDate as ExpiryDate30_, user0_.UserStatus as UserStatus30_, user0_.Password as Password30_, user0_.TimeZone as TimeZone30_, user0_.PaymentStatus as Payment11_30_, user0_.ActivationStatus as Activat12_30_, user0_.CouponCode as CouponCode30_, user0_.ReferenceStatus as Referen14_30_, user0_.RefereeStatus as Referee15_30_, user0_.UserType as UserType30_ from User user0_ where user0_.EmailId=?p0
+MySql.Data.MySqlClient.MySqlException (0x80004005): Fatal error encountered during command execution. ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Fatal error encountered attempting to read the resultset. ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Connection unexpectedly terminated.
+   at MySql.Data.MySqlClient.MySqlStream.LoadPacket()
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 223
+ERROR2014-03-24 08:50:59 Class:? Method:lambda_method Line #: 0  – Fatal error encountered during command execution.
+ERROR2014-03-24 08:50:59 Class:? Method:lambda_method Line #: 0  – Fatal error encountered attempting to read the resultset.
+ERROR2014-03-24 08:50:59 Class:? Method:lambda_method Line #: 0  – Connection unexpectedly terminated.
+ERROR2014-03-24 08:50:59 Class:? Method:lambda_method Line #: 0  – Fatal error encountered during command execution.
+ERROR2014-03-24 08:50:59 Class:? Method:lambda_method Line #: 0  – Fatal error encountered attempting to read the resultset.
+ERROR2014-03-24 08:50:59 Class:? Method:lambda_method Line #: 0  – Connection unexpectedly terminated.
+ERROR2014-03-24 08:50:59 Class:? Method:lambda_method Line #: 0  – Fatal error encountered during command execution.
+ERROR2014-03-24 08:50:59 Class:? Method:lambda_method Line #: 0  – Fatal error encountered attempting to read the resultset.
+ERROR2014-03-24 08:50:59 Class:? Method:lambda_method Line #: 0  – Connection unexpectedly terminated.
+ERROR2014-03-24 08:53:47 Class:SocialSuitePro.Default Method:Page_Load Line #: 128  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Default.aspx.cs:line 116
+ERROR2014-03-24 08:54:15 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-24 08:54:15 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-25 06:07:50 Class:? Method:lambda_method Line #: 0  – Could not execute query: select socialprof0_.Id as col_0_0_ from SocialProfile socialprof0_ where socialprof0_.UserId=?p0 limit ?p1
+MySql.Data.MySqlClient.MySqlException (0x80004005): Fatal error encountered during command execution. ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Fatal error encountered attempting to read the resultset. ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Connection unexpectedly terminated.
+   at MySql.Data.MySqlClient.MySqlStream.LoadPacket()
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 223
+ERROR2014-03-25 06:08:07 Class:? Method:lambda_method Line #: 0  – Fatal error encountered during command execution.
+ERROR2014-03-25 06:08:07 Class:? Method:lambda_method Line #: 0  – Fatal error encountered attempting to read the resultset.
+ERROR2014-03-25 06:08:07 Class:? Method:lambda_method Line #: 0  – Connection unexpectedly terminated.
+ERROR2014-03-25 06:08:07 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 730  – Fatal error encountered during command execution.
+ERROR2014-03-26 11:39:29 Class:SocialSuitePro.Home Method:Page_Load Line #: 366  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 360
+ERROR2014-03-26 11:39:29 Class:SocialSuitePro.Home Method:Page_Load Line #: 376  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 370
+ERROR2014-03-26 07:38:29 Class:SocialSuitePro.Home Method:Page_Load Line #: 366  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 360
+ERROR2014-03-26 07:38:29 Class:SocialSuitePro.Home Method:Page_Load Line #: 376  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 370
+ERROR2014-03-26 07:50:25 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 611  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:50:26 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:54:52 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:54:52 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:54:52 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:54:52 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:54:53 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:54:54 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:54:55 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:54:55 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:54:55 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:54:56 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:54:57 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:54:57 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:54:57 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:54:57 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:54:58 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:54:58 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:54:58 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:54:59 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:55:09 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:55:09 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:55:09 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:55:11 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:55:13 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:55:16 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:55:19 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:55:21 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:55:25 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:55:29 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:55:33 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:55:33 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:55:34 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:55:56 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:56:14 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:56:14 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:56:19 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:56:37 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:56:37 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:56:45 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:56:53 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:56:56 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:57:07 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:57:07 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:57:08 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:57:08 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:57:17 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:57:30 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:57:32 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:57:33 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:57:35 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:57:40 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:57:40 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:57:41 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:57:44 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:57:48 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:01 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:02 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:11 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:12 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:13 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:14 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:21 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:25 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:28 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:52 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:52 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:52 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:52 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:53 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:54 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:55 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:55 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:55 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:57 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:57 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:57 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:57 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:57 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:58 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:58 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:58 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:58:59 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:59:09 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:59:09 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:59:09 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:59:10 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:59:12 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:59:16 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:59:19 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:59:21 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:59:25 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:59:29 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:59:34 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:59:34 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 07:59:35 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:00:00 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:00:19 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:00:20 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:00:23 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:00:39 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:00:39 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:00:46 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:00:53 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:00:56 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:01:05 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:01:05 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:01:05 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:01:05 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:01:15 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:01:29 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:01:32 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:01:33 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:01:35 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:01:41 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:01:41 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:01:42 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:01:45 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:01:51 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:02:06 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:02:06 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:02:17 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:02:18 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:02:18 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:02:19 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:02:27 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:02:31 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 08:02:35 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-26 09:59:01 Class:SocialSuitePro.Home Method:Page_Load Line #: 366  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 360
+ERROR2014-03-26 09:59:02 Class:SocialSuitePro.Home Method:Page_Load Line #: 376  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 370
+ERROR2014-03-26 10:00:13 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 611  – Object reference not set to an instance of an object.
+ERROR2014-03-26 10:00:14 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-27 10:21:25 Class:SocialSuitePro.Home Method:Page_Load Line #: 366  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 360
+ERROR2014-03-27 10:21:25 Class:SocialSuitePro.Home Method:Page_Load Line #: 376  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 370
+ERROR2014-03-27 10:22:25 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 611  – Object reference not set to an instance of an object.
+ERROR2014-03-27 10:22:26 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-27 10:46:55 Class:SocialSuitePro.Home Method:Page_Load Line #: 366  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 360
+ERROR2014-03-27 10:46:55 Class:SocialSuitePro.Home Method:Page_Load Line #: 376  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 370
+ERROR2014-03-27 10:47:07 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 611  – Object reference not set to an instance of an object.
+ERROR2014-03-27 10:47:08 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-27 10:47:42 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 611  – Object reference not set to an instance of an object.
+ERROR2014-03-27 10:47:42 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-27 10:56:34 Class:SocialSuitePro.Home Method:Page_Load Line #: 366  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 360
+ERROR2014-03-27 10:56:34 Class:SocialSuitePro.Home Method:Page_Load Line #: 376  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 370
+ERROR2014-03-27 10:56:46 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 611  – Object reference not set to an instance of an object.
+ERROR2014-03-27 10:56:47 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-27 10:57:04 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 611  – Object reference not set to an instance of an object.
+ERROR2014-03-27 10:57:04 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-27 10:57:27 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 611  – Object reference not set to an instance of an object.
+ERROR2014-03-27 10:57:28 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-27 10:58:04 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 611  – Object reference not set to an instance of an object.
+ERROR2014-03-27 10:58:05 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-27 10:58:52 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 611  – Object reference not set to an instance of an object.
+ERROR2014-03-27 10:58:53 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-27 11:03:46 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 611  – Object reference not set to an instance of an object.
+ERROR2014-03-27 11:03:47 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-27 11:03:53 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 611  – Object reference not set to an instance of an object.
+ERROR2014-03-27 11:03:54 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-27 11:07:51 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 611  – Object reference not set to an instance of an object.
+ERROR2014-03-27 11:07:52 Class:SocioBoard.Message.AjaxMessage Method:BindData Line #: 657  – Object reference not set to an instance of an object.
+ERROR2014-03-27 11:35:07 Class:SocialSuitePro.MasterPage.Site Method:Page_Load Line #: 243  – Thread was being aborted.
+ERROR2014-03-27 11:35:40 Class:SocialSuitePro.Home Method:Page_Load Line #: 366  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 360
+ERROR2014-03-27 11:35:40 Class:SocialSuitePro.Home Method:Page_Load Line #: 376  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 370
+ERROR2014-03-27 11:36:22 Class:SocialSuitePro.Home Method:AuthenticateFacebook Line #: 617  – Thread was being aborted.
+ERROR2014-03-27 11:37:08 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 108  –    at Facebook.FacebookClient.ProcessResponse(HttpHelper httpHelper, String responseString, Type resultType, Boolean containsEtag, IList`1 batchEtags)
+   at Facebook.FacebookClient.Api(HttpMethod httpMethod, String path, Object parameters, Type resultType)
+   at Facebook.FacebookClient.Get(String path, Object parameters, Type resultType)
+   at Facebook.FacebookClient.Get(String path, Object parameters)
+   at SocialSuitePro.FacebookManager.GetAccessToken() in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 155
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\FacebookManager.aspx.cs:line 35
+ERROR2014-03-27 12:30:14 Class:SocialSuitePro.Home Method:Page_Load Line #: 366  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 360
+ERROR2014-03-27 12:30:14 Class:SocialSuitePro.Home Method:Page_Load Line #: 376  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 370
+ERROR2014-03-27 01:11:38 Class:SocialSuitePro.Home Method:Page_Load Line #: 366  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 360
+ERROR2014-03-27 01:11:38 Class:SocialSuitePro.Home Method:Page_Load Line #: 376  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 370
+ERROR2014-03-27 01:24:59 Class:SocialSuitePro.Home Method:Page_Load Line #: 366  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 360
+ERROR2014-03-27 01:24:59 Class:SocialSuitePro.Home Method:Page_Load Line #: 376  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 370
+ERROR2014-03-27 01:30:50 Class:SocialSuitePro.Home Method:Page_Load Line #: 366  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 360
+ERROR2014-03-27 01:30:50 Class:SocialSuitePro.Home Method:Page_Load Line #: 376  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 370
+ERROR2014-03-27 01:32:09 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:10 Class:? Method:lambda_method Line #: 0  – Could not execute command: INSERT INTO DiscoverySearch (FromName, FromId, Message, CreatedTime, EntryDate, Network, ProfileImageUrl, MessageId, SearchKeyword, UserId, Id) VALUES (?p0, ?p1, ?p2, ?p3, ?p4, ?p5, ?p6, ?p7, ?p8, ?p9, ?p10)
+MySql.Data.MySqlClient.MySqlException (0x80004005): Data too long for column 'Message' at row 1
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteNonQuery(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 197
+ERROR2014-03-27 01:32:10 Class:? Method:lambda_method Line #: 0  – Data too long for column 'Message' at row 1
+ERROR2014-03-27 01:32:10 Class:? Method:lambda_method Line #: 0  – Could not synchronize database state with session
+NHibernate.Exceptions.GenericADOException: could not insert: [SocioBoard.Domain.DiscoverySearch#22026701-9316-4e41-b41b-4abae2457c04][SQL: INSERT INTO DiscoverySearch (FromName, FromId, Message, CreatedTime, EntryDate, Network, ProfileImageUrl, MessageId, SearchKeyword, UserId, Id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)] ---> MySql.Data.MySqlClient.MySqlException: Data too long for column 'Message' at row 1
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteNonQuery(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 203
+   at NHibernate.AdoNet.NonBatchingBatcher.AddToBatch(IExpectation expectation) in p:\nhibernate-core\src\NHibernate\AdoNet\NonBatchingBatcher.cs:line 40
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Boolean[] notNull, Int32 j, SqlCommandInfo sql, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 2656
+   --- End of inner exception stack trace ---
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Boolean[] notNull, Int32 j, SqlCommandInfo sql, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 2676
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 3062
+   at NHibernate.Action.EntityInsertAction.Execute() in p:\nhibernate-core\src\NHibernate\Action\EntityInsertAction.cs:line 59
+   at NHibernate.Engine.ActionQueue.Execute(IExecutable executable) in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 136
+   at NHibernate.Engine.ActionQueue.ExecuteActions(IList list) in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 126
+   at NHibernate.Engine.ActionQueue.ExecuteActions() in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 169
+   at NHibernate.Event.Default.AbstractFlushingEventListener.PerformExecutions(IEventSource session) in p:\nhibernate-core\src\NHibernate\Event\Default\AbstractFlushingEventListener.cs:line 241
+ERROR2014-03-27 01:32:10 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Boolean[] notNull, Int32 j, SqlCommandInfo sql, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 2676
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 3062
+   at NHibernate.Action.EntityInsertAction.Execute() in p:\nhibernate-core\src\NHibernate\Action\EntityInsertAction.cs:line 59
+   at NHibernate.Engine.ActionQueue.Execute(IExecutable executable) in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 136
+   at NHibernate.Engine.ActionQueue.ExecuteActions(IList list) in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 126
+   at NHibernate.Engine.ActionQueue.ExecuteActions() in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 169
+   at NHibernate.Event.Default.AbstractFlushingEventListener.PerformExecutions(IEventSource session) in p:\nhibernate-core\src\NHibernate\Event\Default\AbstractFlushingEventListener.cs:line 249
+   at NHibernate.Event.Default.DefaultFlushEventListener.OnFlush(FlushEvent event) in p:\nhibernate-core\src\NHibernate\Event\Default\DefaultFlushEventListener.cs:line 19
+   at NHibernate.Impl.SessionImpl.Flush() in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1509
+   at NHibernate.Transaction.AdoTransaction.Commit() in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 190
+   at SocioBoard.Model.DiscoverySearchRepository.addNewSearchResult(DiscoverySearch dis) in D:\Abhay\socioboard\trunk\SocioBoard Product\Model\DiscoverySearchRepository.cs:line 30
+   at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 205
+ERROR2014-03-27 01:32:10 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:10 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:10 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:10 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:10 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:10 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:10 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:10 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:10 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:10 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:10 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:10 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:10 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:42 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:42 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:42 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:42 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:42 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:42 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:42 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:42 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:42 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:42 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:42 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:42 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:42 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:42 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:42 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:42 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:42 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:42 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:43 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:32:43 Class:SocialSuitePro.Discovery Method:getresults Line #: 211  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocioBoard Product\Discovery.aspx.cs:line 199
+ERROR2014-03-27 01:37:05 Class:SocialSuitePro.MasterPage.Site Method:Page_Load Line #: 243  – Thread was being aborted.
+ERROR2014-03-27 01:37:26 Class:SocialSuitePro.Home Method:Page_Load Line #: 366  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 360
+ERROR2014-03-27 01:37:26 Class:SocialSuitePro.Home Method:Page_Load Line #: 376  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 370
+ERROR2014-03-27 01:37:45 Class:SocialSuitePro.Home Method:AuthenticateTwitter Line #: 641  – Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+ERROR2014-03-27 01:37:58 Class:SocialSuitePro.Home Method:AuthenticateTwitter Line #: 641  – Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+ERROR2014-03-27 01:38:10 Class:SocialSuitePro.Home Method:AuthenticateTwitter Line #: 641  – Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+ERROR2014-03-27 01:38:39 Class:SocialSuitePro.Home Method:AuthenticateTwitter Line #: 641  – Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+ERROR2014-03-27 01:40:32 Class:SocialSuitePro.Home Method:Page_Load Line #: 366  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 360
+ERROR2014-03-27 01:40:32 Class:SocialSuitePro.Home Method:Page_Load Line #: 376  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 370
+ERROR2014-03-27 01:47:06 Class:SocialSuitePro.Home Method:AuthenticateTwitter Line #: 641  – Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+ERROR2014-03-27 01:49:03 Class:SocialSuitePro.Home Method:Page_Load Line #: 366  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 360
+ERROR2014-03-27 01:49:03 Class:SocialSuitePro.Home Method:Page_Load Line #: 376  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 370
+ERROR2014-03-27 01:54:07 Class:SocialSuitePro.Home Method:AuthenticateTwitter Line #: 641  – Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+=======
+<<<<<<< .mine
+ERROR2014-03-12 11:43:03 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in F:\Socioboard\trunk_07-03-14\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-12 11:43:03 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in F:\Socioboard\trunk_07-03-14\trunk\SocioBoard Product\Home.aspx.cs:line 355
+=======
+ERROR2014-03-12 12:28:46 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-12 12:28:46 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 355
+>>>>>>> .r589
+ERROR2014-03-15 12:42:33 Class:SocialSuitePro.Home Method:Page_Load Line #: 351  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in F:\Socioboard\trunk_07-03-14\trunk\SocioBoard Product\Home.aspx.cs:line 345
+ERROR2014-03-15 12:42:33 Class:SocialSuitePro.Home Method:Page_Load Line #: 361  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in F:\Socioboard\trunk_07-03-14\trunk\SocioBoard Product\Home.aspx.cs:line 355
+ERROR2014-03-15 01:16:29 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Object reference not set to an instance of an object.
+ERROR2014-03-15 01:16:44 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Object reference not set to an instance of an object.
+>>>>>>> .r597
+ERROR2014-03-28 01:50:45 Class:SocialSuitePro.Home Method:Page_Load Line #: 366  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 360
+ERROR2014-03-28 01:50:46 Class:SocialSuitePro.Home Method:Page_Load Line #: 376  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 370
+ERROR2014-03-28 01:54:23 Class:SocialSuitePro.Home Method:Page_Load Line #: 366  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 360
+ERROR2014-03-28 01:54:23 Class:SocialSuitePro.Home Method:Page_Load Line #: 376  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 370
+ERROR2014-03-28 02:09:58 Class:SocialSuitePro.Home Method:Page_Load Line #: 366  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 360
+ERROR2014-03-28 02:09:59 Class:SocialSuitePro.Home Method:Page_Load Line #: 376  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 370
+ERROR2014-03-28 02:11:20 Class:SocialSuitePro.Home Method:Page_Load Line #: 366  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 360
+ERROR2014-03-28 02:11:20 Class:SocialSuitePro.Home Method:Page_Load Line #: 376  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 370
+ERROR2014-03-28 08:24:38 Class:GlobusMailLib.MailHelper Method:SendMailByMandrill Line #: 110  –  
+ERROR2014-03-28 08:24:57 Class:GlobusMailLib.MailHelper Method:SendMailByMandrill Line #: 120  – One or more errors occurred.
+ERROR2014-03-29 04:03:07 Class:SocialSuitePro.MasterPage.Site Method:Page_Load Line #: 243  – Thread was being aborted.
+ERROR2014-03-29 04:34:50 Class:GlobusMailLib.MailHelper Method:SendMailByMandrill Line #: 120  – One or more errors occurred.
+ERROR2014-03-29 04:49:01 Class:GlobusMailLib.MailHelper Method:SendMailByMandrillForEnterPrise Line #: 162  – One or more errors occurred.
+ERROR2014-03-29 04:51:37 Class:GlobusMailLib.MailHelper Method:SendMailByMandrillForEnterPrise Line #: 162  – One or more errors occurred.
+ERROR2014-03-29 04:56:01 Class:GlobusMailLib.MailHelper Method:SendMailByMandrillForEnterPrise Line #: 162  – One or more errors occurred.
+ERROR2014-03-29 04:58:52 Class:GlobusMailLib.MailHelper Method:SendMailByMandrillForEnterPrise Line #: 162  – One or more errors occurred.
+ERROR2014-03-29 05:07:20 Class:GlobusMailLib.MailHelper Method:SendMailByMandrillForEnterPrise Line #: 0  – One or more errors occurred.

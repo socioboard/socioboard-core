@@ -59,6 +59,24 @@ namespace SocialSuitePro
                     Response.Redirect("/Pricing.aspx");
                 }
 
+
+
+                #region Days remaining
+                if (Session["days_remaining"] == null)
+                {
+                    if (user.PaymentStatus == "unpaid")
+                    {
+                        int daysremaining = (user.ExpiryDate - DateTime.Now).Days;
+                        Session["days_remaining"] = daysremaining;
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('You are using '" + user.AccountType + "' account only '" + daysremaining + "' days is remaining !');", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('You are using " + user.AccountType + " account " + daysremaining + " days is remaining !');", true);
+                    }
+                }
+                
+                #endregion
+
+
+
                 #region for You can use only 30 days as Unpaid User
 
                 if (user.PaymentStatus.ToLower() == "unpaid")

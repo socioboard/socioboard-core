@@ -609,7 +609,7 @@ function SendMessage() {
 
     try {
         var message = $("#textareavaluetosendmessage").val();
-        if (message != '') {
+        if (message != ''|| filesimage !=null) {
 
 
             $("#sendMessageBtn").html('<img src="../Contents/img/325.gif" alt="" />');

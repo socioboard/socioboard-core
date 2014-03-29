@@ -53,7 +53,7 @@ namespace SocialSuitePro
                 Registration regpage = new Registration();
                 User user = (User)Session["LoggedUser"];
 
-                if (DropDownList1.SelectedValue == "Basic" || DropDownList1.SelectedValue == "Standard" || DropDownList1.SelectedValue == "Deluxe" || DropDownList1.SelectedValue == "Premium")
+                if (DropDownList1.SelectedValue == "Free" || DropDownList1.SelectedValue == "Standard" || DropDownList1.SelectedValue == "Deluxe" || DropDownList1.SelectedValue == "Premium")
                 {
 
                     if (TextBox1.Text.Trim() != "")

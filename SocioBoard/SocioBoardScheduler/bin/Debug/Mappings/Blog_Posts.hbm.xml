@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+
+  <class name="Blog_Posts" table="Blog_Posts" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="PostAuthor">
+      <column name="PostAuthor" />
+    </property>
+    <property name="PostDate">
+      <column name="PostDate" />
+    </property>
+    <property name="PostContent">
+      <column name="PostContent"  />
+    </property>
+    <property name="PostTitle">
+      <column name="PostTitle"  />
+    </property>
+    <property name="PostStatus">
+      <column name="PostStatus"  />
+    </property>
+    <property name="CommentStatus">
+      <column name="CommentStatus"  />
+    </property>
+    <property name="PostName">
+      <column name="PostName"  />
+    </property>
+    <property name="PostModifiedDate">
+      <column name="PostModifiedDate"  />
+    </property>
+    <property name="CommentCount">
+      <column name="CommentCount"  />
+    </property>
+
+  </class>
+</hibernate-mapping>

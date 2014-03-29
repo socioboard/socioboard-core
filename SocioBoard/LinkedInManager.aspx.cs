@@ -46,8 +46,8 @@ namespace SocialSuitePro
         public void GetAccessToken()
         {
             LinkedInProfile objProfile = new LinkedInProfile();
-            LinkedInProfile.UserProfile objUserProfile=new LinkedInProfile.UserProfile();
-            LinkedInHelper liHelper=new LinkedInHelper();
+            LinkedInProfile.UserProfile objUserProfile = new LinkedInProfile.UserProfile();
+            LinkedInHelper liHelper = new LinkedInHelper();
             User user = (User)Session["LoggedUser"];
             string oauth_token = Request.QueryString["oauth_token"];
             string oauth_verifier = Request.QueryString["oauth_verifier"];
@@ -61,7 +61,7 @@ namespace SocialSuitePro
                     {
                         _oauth.Token = oauth_token;
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         logger.Error(ex.StackTrace);
                     }
@@ -69,7 +69,7 @@ namespace SocialSuitePro
                     {
                         _oauth.TokenSecret = Session["reuqestTokenSecret"].ToString();
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         logger.Error(ex.StackTrace);
 
@@ -84,7 +84,7 @@ namespace SocialSuitePro
 
                     }
 
-                   
+
 
                     try
                     {
@@ -119,7 +119,7 @@ namespace SocialSuitePro
                     }
                     try
                     {
-                       
+
                         liHelper.GetLinkedInUserProfile(objUserProfile, _oauth, user);
                     }
                     catch (Exception ex)
@@ -129,7 +129,7 @@ namespace SocialSuitePro
                     }
                     try
                     {
-                      // liHelper.getLinkedInNetworkUpdate(_oauth,user);
+                        // liHelper.getLinkedInNetworkUpdate(_oauth,user);
                     }
                     catch (Exception ex)
                     {

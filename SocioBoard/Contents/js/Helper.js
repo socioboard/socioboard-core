@@ -380,8 +380,9 @@ function checkprofile(id,page,network) {
                 //                                $("#another-load").html("");
                 //                                $("#profile_popup").bPopup();
             },
-            error: function (e) {
-
+            error: function (err) {
+                alert(err);
+                debugger;
             }
         });
         } catch (e) {

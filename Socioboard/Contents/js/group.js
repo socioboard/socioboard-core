@@ -33,7 +33,7 @@ function facebookgroupdetails(gid, fbUserId) {
                                 + '<img src="http://graph.facebook.com/' + val.from.id + '/picture?type=small"></a>'
                             + '<div class="storyInnerContent">'
                                 + '<div class="actordescription">'
-                                    + '<a class="passiveName">' + val.from.name + '</a> updated the description.'
+                                    + '<a href="http://facebook.com/' + val.from.id + '" target="_blank" class="passiveName">' + val.from.name + '</a> updated the description.'
                                + '</div>'
                                 + '<div class="messagebody">' + val.message + '</div>'
                             + '</div>'

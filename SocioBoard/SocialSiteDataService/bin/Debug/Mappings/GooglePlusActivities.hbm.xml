@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="SocioBoard.Domain" assembly="SocioBoard">
+
+  <class name="GooglePlusActivities" table="GooglePlusActivities" lazy="false">
+    <id name="Id" column="Id" >
+      <generator class="guid"/>
+    </id>
+    <property name="UserId">
+      <column name="UserId"  />
+    </property>
+    <property name="GpUserId">
+      <column name="GpUserId" />
+    </property>    
+    <property name="ActivityId">
+      <column name="ActivityId"  />
+    </property>
+    <property name="ActivityUrl">
+      <column name="ActivityUrl"  />
+    </property>
+    <property name="Content">
+      <column name="Content"  />
+    </property>
+    <property name="Title">
+      <column name="Title"  />
+    </property>
+    <property name="FromId">
+      <column name="FromId" />
+    </property>  
+    <property name="FromUserName">
+      <column name="FromUserName"  />
+    </property>
+    <property name="FromProfileImage">
+      <column name="FromProfileImage"  />
+    </property>
+    <property name="RepliesCount">
+      <column name="RepliesCount"  />
+    </property>
+    <property name="PlusonersCount">
+      <column name="PlusonersCount"  />
+    </property>
+    <property name="PublishedDate">
+      <column name="PublishedDate" />
+    </property>
+    <property name="ResharersCount">
+      <column name="ResharersCount" />
+    </property>
+    <property name="EntryDate">
+      <column name="EntryDate"/>
+    </property>
+  </class>
+</hibernate-mapping>

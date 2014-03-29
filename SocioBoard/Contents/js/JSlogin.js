@@ -97,6 +97,7 @@ function signinFunction() {
                     debugger;
                     if (msg == "user") {
                         window.location = "../Home.aspx";
+                        //window.location = "../Referrals.aspx"; 
                     }
                     else {
                         document.getElementById('signinpasswordMessages').innerHTML = msg;

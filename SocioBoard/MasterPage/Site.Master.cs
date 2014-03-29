@@ -57,6 +57,14 @@ namespace SocialSuitePro.MasterPage
 
                                         actdiv.Attributes.CssStyle.Add("display", "none");
 
+                                        #region to check/update user Reference Relation
+                                        IsUserReferenceActivated(Request.QueryString["id"].ToString()); 
+                                        #endregion
+                                       
+                                       
+                                       
+
+
                                     }
                                     else
                                     {
@@ -401,6 +409,50 @@ namespace SocialSuitePro.MasterPage
                 Response.Write(Err.Message.ToString());
             }
         }
+
+
+        /// <summary>
+        /// to check user reference and update user expiry , userrefrencerelation status
+        /// created by Abhay Kr 5-3-2014
+        /// </summary>
+        /// <param name="RefereeId"></param>
+        /// <returns></returns>
+        public bool IsUserReferenceActivated(string RefereeId)
+        {
+            bool ret = false;
+            try
+            {
+                User objUser = new User();
+                UserRepository objUserRepository = new UserRepository();
+                UserRefRelation objUserRefRelation = new UserRefRelation();
+                UserRefRelationRepository objUserRefRelationRepository = new UserRefRelationRepository();
+                objUserRefRelation.ReferenceUserId = (Guid.Parse(RefereeId));
+                List<UserRefRelation> lstUserRefRelation = objUserRefRelationRepository.GetUserRefRelationInfoById(objUserRefRelation);
+                if (lstUserRefRelation.Count > 0)
+                {
+                    if (lstUserRefRelation[0].Status == "0")
+                    {
+                        objUserRefRelation = lstUserRefRelation[0];
+                        objUserRefRelation.Status = "1";
+                        objUser = objUserRepository.getUsersById(lstUserRefRelation[0].ReferenceUserId);
+                        objUser.ExpiryDate = objUser.ExpiryDate.AddDays(30);
+
+                        int objUserRepositoryresponse = objUserRepository.UpdateUserExpiryDateById(objUser);
+
+                        int objUserRefRelationRepositoryresponse = objUserRefRelationRepository.UpdateStatusById(objUserRefRelation);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message);
+            }
+            return ret;
+        }
+
+
+
 
     }
 }

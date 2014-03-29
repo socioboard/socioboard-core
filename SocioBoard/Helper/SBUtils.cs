@@ -6,10 +6,12 @@ using SocioBoard.Model;
 using SocioBoard.Domain;
 using System.Net;
 using System.IO;
+using System.Text;
+
 
 namespace SocioBoard.Helper
 {
-    public class SBUtils
+    public class SBUtils : System.Web.UI.Page
     {
         HttpWebRequest gRequest;
         HttpWebResponse gResponse;
@@ -190,6 +192,7 @@ namespace SocioBoard.Helper
         //PostRequest
 
         //-------------------------
+
         public string postFormData(Uri formActionUrl, string postData, string proxyAddress, int port, string proxyUsername, string proxyPassword)
         {
             string responseString = string.Empty;
@@ -346,6 +349,50 @@ namespace SocioBoard.Helper
 
             }
 
+        }
+
+        public string GetPayPalResponse(Dictionary<string, string> formVals, bool useSandbox)
+        {
+            string response = "";
+
+            try
+            {
+                string paypalUrl = "https://www.sandbox.paypal.com/cgi-bin/webscr";
+
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create(paypalUrl);
+                req.Method = "POST";
+                req.ContentType = "application/x-www-form-urlencoded";
+
+                byte[] param = Request.BinaryRead(Request.ContentLength);
+                string strRequest = Encoding.ASCII.GetString(param);
+
+                StringBuilder sb = new StringBuilder();
+                sb.Append(strRequest);
+
+                foreach (string key in formVals.Keys)
+                {
+                    sb.AppendFormat("&{0}={1}", key, formVals[key]);
+                }
+                strRequest += sb.ToString();
+                req.ContentLength = strRequest.Length;
+
+
+                using (StreamWriter streamOut = new StreamWriter(req.GetRequestStream(), System.Text.Encoding.ASCII))
+                {
+
+                    streamOut.Write(strRequest);
+                    streamOut.Close();
+                    using (StreamReader streamIn = new StreamReader(req.GetResponse().GetResponseStream()))
+                    {
+                        response = streamIn.ReadToEnd();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error : " + ex.StackTrace);
+            }
+            return response;
         }
 
     }

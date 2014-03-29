@@ -352,6 +352,11 @@ namespace SocioBoard.Message
                         if (!objArchiveRepo.checkArchiveMessageExists(user.Id, am.MessageId))
                         {
                             objArchiveRepo.AddArchiveMessage(am);
+                            Response.Write("Message Archive Successfully");
+                        }
+                        else
+                        {
+                            Response.Write("Message Already in Archive");
                         }
                     }
                 }
@@ -533,6 +538,7 @@ namespace SocioBoard.Message
 
         public string BindData(DataTable dt)
         {
+            string message = string.Empty;
             try
             {
                 if (Session["CountMessages"] != null)
@@ -540,7 +546,7 @@ namespace SocioBoard.Message
                     string count = Convert.ToString((int)Session["CountMessages"]);
                     if (count == "0")
                     {
-
+                        //message = "No Message found";
 
                     }
 
@@ -552,7 +558,7 @@ namespace SocioBoard.Message
                 Console.WriteLine(ex.Message);
             }
 
-            string message = string.Empty;
+            //string message = string.Empty;
             DataView dv = dt.DefaultView;
             dv.Sort = "ReadStatus ,MessageDate desc";
             DataTable sortedDT = dv.ToTable();
@@ -705,6 +711,7 @@ namespace SocioBoard.Message
 
                 }
             }
+            
             return message;
 
 

@@ -1,10 +1,21 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/socialsuite.Master" AutoEventWireup="true" CodeBehind="Features.aspx.cs" Inherits="SocioBoard.Features" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<link rel="Stylesheet" type="text/css" href="Contents/css/feature.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<script src="Contents/js/jquery-1.6.3.min.js" type="text/javascript"></script>
+
+<%--<script src="Contents/js/jquery-1.6.3.min.js" type="text/javascript"></script>
 <script src="Contents/js/easyResponsiveTabs.js" type="text/javascript"></script>
 <script type="text/javascript" src="../Contents/js/jquery.lightbox-0.5.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#verticalTab').easyResponsiveTabs({
+            type: 'vertical',
+            width: 'auto',
+            fit: true
+        });
+    });
+</script>--%>
  <!-- Ativando o jQuery lightBox plugin -->
 <%--    <script type="text/javascript">
         $(function () {
@@ -228,13 +239,107 @@ Users can engage each other using the platform, get notifications on missed mess
            
 		</div>
         <!--end feature_body-->
-         <script type="text/javascript">
-             $(document).ready(function () {
-                 $('#verticalTab').easyResponsiveTabs({
-                     type: 'vertical',
-                     width: 'auto',
-                     fit: true
-                 });
-             });
-</script>
+       
+       <!-- Feature page-->
+  <div id="monitor" class="page color-4">
+    <div class="inner-page">
+      <h2 class="page-headline page-title">Socioboard lends a hand to <span class="highlight">Monitor </span> Social media </h2>
+    </div>
+    <div class="row inner-page reason">
+      <div class="col-md-12 reason-content reason-image-left">
+        <div class="reason-image">
+         <div class="sm-icons-container">
+         <img class="tag lazy" src="../Contents/img/ssp/mon2.png" />
+           </div>
+        </div>
+        <h3> Realtime Tracking of  <span class="reason-usp">Social Media </span>Platforms</h3>
+        <p class="lead">Socioboard empowered by its powerful API absorbs feeds from all major social media platforms such as Facebook, Twitter, LinkedIn, Google+, YouTube, Instagram etc. All this happens at realtime and hence provides the latest information to the end users. Power .NET based framework is smart at offering language, keyword, Boolean, platform specific search. People can customize their search by setting preferences of one or many platforms.  </p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row inner-page reason">
+      <div class="col-md-12 reason-content reason-image-right">
+        <h3><span class="reason-usp">Industry </span> and <span class="reason-usp">Geography </span> specific search indexes</h3>
+        <p class="lead">Socioboard has given highest priority to relevant searches, hence to give audience of various segments a customized experience, there is powerful indexing mechanism on the plate. This system enables highly segregated and amplified searches so that the results stay in a required band. Geo-tagging is always high on our cards so that we can maintain quality levels of searches. This indexing mechanism enables users to device their marketing plans as per demographical factors. </p>
+        <div class="reason-image">
+          <div class="tags-container">
+            <img class="tag lazy" src="../Contents/img/ssp/mon1.png">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row inner-page reason">
+      <div class="col-md-12 reason-content reason-image-left">
+        <div class="reason-image">
+<img class="lazy reason-measure" alt="" src="Contents/img/ssp/mon3.png">
+</div>
+        <h3><span class="reason-usp">KeyQuery</span> based <span class="underline">Social KPI</span> Tracking related to Keywords</h3>
+        <p class="lead">Socioboard keeps an index of key performance indicators related to brand communications pertaining to different sectors and industries. This enables decision makers to look at highly relevant factors which can act as baselines for making future plans. All this is relatable to keywords floating around which produce highly relevant conversations.  
+        </p>
+       
+      </div>
+    </div>
+  </div> <!-- /#features -->
+  
+  <!-- Assets page -->
+  <div id="analyze" class="page color-1">
+    <div class="inner-page">
+      <h2 class="page-headline page-title"><span class="highlight">Intelligent </span>Data Mining, Warehousing and Analysis</h2>
+      <h2 class="page-headline lead page-title-caption">
+      Socioboard addresses the ages old broad gap between data collection and extracting the juice of it. <span class="page-usp">Our dashboard is smart enough to absorb meaningful</span>  insights and present a comprehensive picture backed by analytics.  
+      <br><br> 
+
+      <img class="lazy reason-measure" alt="" src="../Contents/img/ssp/analyze1.png" style="width:20%; float:left;">
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     
+     
+      <img class="lazy reason-measure" alt="" src="../Contents/img/ssp/analyze3.png" style="width:16%; float:right; margin-right:24px;">
+      <p>This helps people with good rational abilities to deduce things conducive to good policies which could increase sales and hence revenue.</p>
+      </h2>
+    </div>
+     </div>
+    
+    
+    
+   
+ 
+  <!-- Report page -->
+  <div id="report" class="page color-4">
+    <div class="inner-page">
+      <h2 class="page-headline page-title">Socioboard <span>offers</span> detailed insights:</h2>
+      <h2 class="page-headline lead page-title-caption">Socioboard offers performance reports which help customers to get a panoramic view of their brands and also quantified results on various business functions. 
+Experts in various fields would give their opinion on the analytics with appropriate CTA, subjective to field of interest.  <span class="underline">These insights offer great value to people at the </span>tip of value chain.</h2>
+  </div>
+
+    <div class="row inner-page ../Contents/img/ssp-container">
+    <div class="row inner-page images-container">
+      <div class="col-md-12 image-laptop-printer lazy-container loaded">
+        <img src="../Contents/img/ssp/report.png" class="lazy" style="display: block; width:63%; margin:0 auto;">
+      </div>
+      
+    </div>
+      </div>
+     <!--
+        <img class="lazy" src="pixel.png" data-original="img/reporting_imgs/laptop-and-printer-xs.jpg">-->
+      </div>
+   
+
+    <%--<script src="../Contents/js/jquery-1.6.3.min.js" type="text/javascript"></script>--%>
+    <script src="../Contents/js/easyResponsiveTabs.js" type="text/javascript"></script>
+    <%--<script type="text/javascript" src="../Contents/js/jquery.lightbox-0.5.js"></script>--%>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#verticalTab').easyResponsiveTabs({
+                type: 'vertical',
+                width: 'auto',
+                fit: true
+            });
+        });
+    </script>
+      
 </asp:Content>

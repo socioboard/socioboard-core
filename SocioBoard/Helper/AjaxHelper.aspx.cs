@@ -617,11 +617,11 @@ namespace SocioBoard.Helper
                     {
                         ArrayList alstall = (ArrayList)Session["AllUserList"];
 
-                        if (alstall.Count != 0)
+                        if (alstall.Count != 0 && alstall != null)
                         {
                             foreach (string item in alstall)
                             {
-                                if (item.ToLower().StartsWith(txtvalue))
+                                if (item.ToLower().StartsWith(txtvalue.ToLower()))
                                 {
                                     string[] nametype = item.Split('_');
 
@@ -675,7 +675,7 @@ namespace SocioBoard.Helper
                                     }
                                     else if (nametype[1] == "ins")
                                     {
-                                       
+
                                         message += "<div class=\"btn srcbtn\">" +
                                                    "<a target=\"_blank\" rel=\"" + nametype[0] + "\" href=\"http://instagram.com/" + nametype[0] + "\">" +
                                                    "<img width=\"15\" src=\"../Contents/img/instagram_24X24.png\" alt=\"\">" + nametype[0] +
@@ -865,6 +865,7 @@ namespace SocioBoard.Helper
                 {
                     User user = (User)Session["LoggedUser"];
                     string userid = Request.QueryString["profileid"];
+                    //string userid = "813739051";
                     TwitterAccountRepository twtAccountRepo = new TwitterAccountRepository();
                     ArrayList alst = twtAccountRepo.getAllTwitterAccountsOfUser(user.Id);
                     oAuthTwitter oauth = new oAuthTwitter();

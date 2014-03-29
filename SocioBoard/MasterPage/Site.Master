@@ -37,9 +37,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta charset="utf-8">
-    <title>SocioBoard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <title> SocioBoard - Generate More leads on Social Media|  Social CRM | Social Media CMS</title>
+    <meta name="description" content="A new fast growing, advanced, easy, open-source social media marketing tool to engage your audience with great features such as live chat, news feed, timeline, profiles, events, notifications, likes, analytics, insights and much more hit the digital media marketing lately.Most applications in this domain have a very narrow and limited approach towards end users, people feel caught up in a whirlpool of using the same features without customization and scaling up. Socioboard plans to help users out of this narrow limiting vision of the current social media dashboards today."/>
+    <meta name="keywords" content="Social Media Management Software, Social Media Management tool, Open Source Social Media Management, Social Media Management"/>
     <meta name="author" content="">
     <!--[if IE 7]>
 			<link href="../Contents/css/font-awesome-ie7.min.css" rel="stylesheet">
@@ -126,6 +126,7 @@
 							<div id="tskcontent"><a href="../Message/Task.aspx"><img alt="" src="../Contents/img/admin/remotetiny.png"><span runat="server" id="incom_tasks">0</span></a></div>
 						</div>
 						Information! Now You have <a href="~/Message/Messages.aspx" id="incomMessages" runat="server">25</a> Incoming Message and <a runat="server" id="incomTasks" href="../Message/Task.aspx">0</a> Task
+                         <a class="premium" href="../Referrals.aspx">Get free Premium Account</a>
 
                          <a href="../Default.aspx?type=logout" class="woo_logout" style="text-decoration:none; color: #CECECE;"><img src="../Contents/img/logout_woo.png" style="margin-right:4px;" alt="" />Logout</a>
                     <div  id="errsuccess" class="greenerrormsg"><span id="errsuccessmsg" class="msg">Successfull your work</span>          <span class="cross">X</span></div>                   

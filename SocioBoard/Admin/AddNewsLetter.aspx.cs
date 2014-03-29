@@ -40,7 +40,7 @@ namespace SocialSuitePro.Admin
                         NewsLetterRepository objNewsRepo = new NewsLetterRepository();
                         NewsLetter news = objNewsRepo.getNewsLetterDetailsbyId(Guid.Parse(Request.QueryString["Id"].ToString()));
                         txtSubject.Text = news.Subject;
-                        Editor.Text = news.NewsLetterDetail;
+                        Editor.Text = news.NewsLetterBody;
                         //txtSendDate.Text = news.SendDate.ToString();
 
                         //  datepicker.Text = news.ExpiryDate.ToString();
@@ -134,12 +134,12 @@ namespace SocialSuitePro.Admin
                         objUser = objUserRepository.getUsersById(Guid.Parse(listItem.Value));
                         if (objUser != null)
                         {
-                           // MailHelper.SendSendGridMail(host, Convert.ToInt32(port), from, "", objUser.EmailId.ToString(), string.Empty, string.Empty, txtSubject.Text, Editor.Text, username, pass);
+                            MailHelper.SendSendGridMail(host, Convert.ToInt32(port), from, "", objUser.EmailId.ToString(), string.Empty, string.Empty, txtSubject.Text, Editor.Text, username, pass);
 
 
                             objNl.Id = Guid.NewGuid();
                             objNl.Subject = txtSubject.Text;
-                            objNl.NewsLetterDetail = Editor.Text;
+                            objNl.NewsLetterBody = Editor.Text;
                             objNl.SendDate = DateTime.Parse(txtSendDate.Text);
                             objNl.SendStatus = false;
                             objNl.UserId = Guid.Parse(listItem.Value);
@@ -164,7 +164,7 @@ namespace SocialSuitePro.Admin
                 Editor.Text = "";
                 clearAll();
                 logger.Error(Err.Message);
-                Response.Write(Err.StackTrace);
+                Console.Write(Err.StackTrace);
                 ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert(" + Err.Message + "'!');", true);
 
             }

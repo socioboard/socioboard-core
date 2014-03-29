@@ -23,7 +23,10 @@ namespace SocioBoard.Helper
 
                 string html = File.ReadAllText(mailpath);
 
-                html = html.Replace("%replink%", "http://www.socioboard.com/Home.aspx?stat=activate&id=" + id + "");
+                string mailSenderDomain = ConfigurationManager.AppSettings["MailSenderDomain"];
+                string replink=mailSenderDomain + "Home.aspx?stat=activate&id=" + id;
+
+                html = html.Replace("%replink%", replink);
                 //html = html.Replace("%replink%", "http://www.socioboard.com/Home.aspx");
                 html = html.Replace("%USERNAME%", username);
                 html = html.Replace("%pln%", accounttype);
@@ -66,7 +69,12 @@ namespace SocioBoard.Helper
 
                 string html = File.ReadAllText(mailpath);
 
-                html = html.Replace("%replink%", "http://dev.socioboard.com/Home.aspx?stat=activate&id=" + id + "");
+                string mailSenderDomain = ConfigurationManager.AppSettings["MailSenderDomain"];
+                string replink = mailSenderDomain + "Home.aspx?stat=activate&id=" + id;
+
+                html = html.Replace("%replink%", replink);
+
+               // html = html.Replace("%replink%", "http://www.socioboard.com/Home.aspx?stat=activate&id=" + id + "");
                 //html = html.Replace("%replink%", "http://www.socioboard.com/Home.aspx");
                 html = html.Replace("%USERNAME%", username);
                 html = html.Replace("%pln%", accounttype);

@@ -45,7 +45,7 @@
          <div class="left_reg_area">
              <div class="inputbg"><asp:DropDownList class="dropdwn" ID="DropDownList1" runat="server">
                   <asp:ListItem Value="Select">Select Account Type</asp:ListItem>
-                      <asp:ListItem Value="Basic">Basic(Free)</asp:ListItem>
+                      <asp:ListItem Value="Free">Basic(Free)</asp:ListItem>
                       <asp:ListItem>Standard</asp:ListItem>
                       <asp:ListItem>Deluxe</asp:ListItem>
                       <asp:ListItem>Premium</asp:ListItem>

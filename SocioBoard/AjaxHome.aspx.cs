@@ -245,10 +245,12 @@ namespace SocialSuitePro
                             //      "<div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
                             //      "<span class=\"ui-sproutmenu-status\"></span></a></div></section></div></section>";
 
-                            message += "<section class=\"section\"><div class=\"js-task-cont read\"><section style=\"margin-right: 6px; width: 31%; height: auto;\" class=\"task-message font-13 third\">" +
-                                "<a class=\"tip_left\">No Messages in Drafts</a></section><section style=\"width:113px;\" class=\"task-status\"><span class=\"ficon task_active\"></span>" +
-                                "<div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
-                                "<span class=\"ui-sproutmenu-status\"></span></a></div></section></div></section>";
+                            //message += "<section class=\"section\"><div class=\"js-task-cont read\"><section style=\"margin-right: 6px; width: 31%; height: auto;\" class=\"task-message font-13 third\">" +
+                            //    "<a class=\"tip_left\">No Messages in Drafts</a></section><section style=\"width:113px;\" class=\"task-status\"><span class=\"ficon task_active\"></span>" +
+                            //    "<div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
+                            //    "<span class=\"ui-sproutmenu-status\"></span></a></div></section></div></section>";
+
+                            message += "<div style=\"margin-left: 2%; margin-top: 3%;\">No Messages in Drafts</div>";
                         }
                     }
                     catch (Exception ex)
@@ -350,11 +352,11 @@ namespace SocialSuitePro
 
                                         if (fbaccount.Type == "page")
                                         {
-                                            midsnaps += "<a>Fans</a>";
+                                            midsnaps += "<span><b style=\"font-size: 13px;\">Fans</b></span>";
                                         }
                                         else
                                         {
-                                            midsnaps += "<a>Friends</a>";
+                                            midsnaps += "<span><b style=\"font-size: 13px;\">Friends</b></span>";
 
                                         }
                                         midsnaps += "</div>" +
@@ -480,10 +482,10 @@ namespace SocialSuitePro
                                     int tweetcount = 0;
 
                                     midsnaps += "<div id=\"mid_" + item.ProfileId + "\" style=\"height:333px;\" class=\"span4 rounder recpro\"><div class=\"concotop\">" +
-                                     "<div onclick=\"detailsdiscoverytwitter('" + twtaccount.TwitterUserId + "');\" class=\"userpictiny\"><img width=\"56\" height=\"56\" title=\"" + twtaccount.TwitterName + "\" alt=\"\" src=\"" + twtaccount.ProfileImageUrl + "\">" +
+                                     "<div onclick=\"detailsdiscoverytwitter('" + item.ProfileId + "');\" class=\"userpictiny\"><img width=\"56\" height=\"56\" title=\"" + twtaccount.TwitterName + "\" alt=\"\" src=\"" + twtaccount.ProfileImageUrl + "\">" +
                                      "<a title=\"\" class=\"userurlpic\" href=\"#\"><img alt=\"\" src=\"../Contents/img/twticon.png\" width=\"16\" height=\"16\"></a></div>" +
-                                     "<div onclick=\"detailsdiscoverytwitter('" + twtaccount.TwitterUserId + "');\" class=\"useraccname\">" + twtaccount.TwitterScreenName + "</div><div class=\"usercounter\">" +
-                                     "<div class=\"userfoll\">" + twtaccount.FollowersCount + "<a>Followers</a></div>" +
+                                     "<div onclick=\"detailsdiscoverytwitter('" + twtaccount.TwitterScreenName + "');\" class=\"useraccname\">" + twtaccount.TwitterScreenName + "</div><div class=\"usercounter\">" +
+                                     "<div class=\"userfoll\">" + twtaccount.FollowersCount + "<span><b style=\"font-size: 13px;\">Followers</b></span></div>" +
                                      "<div class=\"userppd\">" + Math.Round(rNum.NextDouble(), 2) + "<span>Avg. Post <br> Per Day</span></div></div></div>" +
                                      "<div class=\"concoteng\"><h5>recent message</h5> <ul class=\"mess\">";
                                     try
@@ -569,7 +571,7 @@ namespace SocialSuitePro
                                            "<div class=\"userpictiny\"><img width=\"56\" height=\"56\" title=\"" + LdprofileName + "\" alt=\"\" src=\"" + LdPreofilePic + "\">" +
                                            "<a title=\"\" class=\"userurlpic\" href=\"#\"><img alt=\"\" src=\"../Contents/img/link_icon.png\" width=\"16\" height=\"16\"></a></div>" +
                                            "<div class=\"useraccname\">" + LdprofileName + "</div><div class=\"usercounter\">" +
-                                           "<div class=\"userfoll\">" + linkedinConcount + "<span>Connections</span></div>" +
+                                           "<div class=\"userfoll\">" + linkedinConcount + "<span><b style=\"font-size: 13px;\">Connections</b></span></div>" +
                                            "<div class=\"userppd\">" + Math.Round(rNum.NextDouble(), 2) + "<span>Avg. Post <br> Per Day</span></div></div></div>" +
                                            "<div class=\"concoteng\"><h5>recent message</h5> <ul class=\"mess\">";
                                         int link = 0;

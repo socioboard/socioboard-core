@@ -2746,6 +2746,7 @@ ul.options_list li a > .checkbx_green
 	height:auto;
 	margin-left:20px;
 	margin-bottom:20px;
+	margin-top:20px;
 	float:left;
 }
 .ws_tm_button_div input[type="button"],
@@ -2753,7 +2754,6 @@ ul.options_list li a > .checkbx_green
 {
 	width:120px;
 	height:35px;
-	float:right;
 	margin-left:5px;
 	font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
@@ -2767,7 +2767,6 @@ ul.options_list li a > .checkbx_green
 {
 	width:120px;
 	height:35px;
-	float:right;
 	margin-left:5px;
 	font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
@@ -5888,7 +5887,7 @@ section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-messa
 #content_drafts > section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-message,
 #content_rsspost > section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-message  {
     float: left;
-    height: 35px;
+    height: auto;
     margin-left: 10px;
     margin-right: 0;
     padding: 0;
@@ -9177,7 +9176,7 @@ ol.recent-tweets >li
     border-radius: 4px 4px 4px 4px;
     color: #FFFFFF;
     margin-bottom: 20px;
-    padding: 8px 34px 10px 14px;
+    padding: 5px 34px 25px 14px;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
@@ -9714,14 +9713,25 @@ ol.recent-tweets >li
 
 /*************** File upload code here ---------------- */
 .filebutton {
-    background: url("../../Contents/img/attechphoto.png") no-repeat scroll 0 0 transparent;
+    background: url("../../Contents/img/ssp/attechphoto.png") no-repeat scroll 0 0 transparent;
     float: right;
-    height: 14px;
+    height: 28px;
     margin-left: 10px;
     margin-right: 8px;
     margin-top: 6px;
-    width: 100px;
+    width: 140px;
 }
+
+.filebutton:hover {
+    background: url("../../Contents/img/ssp/attechphoto_hover.png") no-repeat scroll 0 0 transparent;
+    float: right;
+    height: 28px;
+    margin-left: 10px;
+    margin-right: 8px;
+    margin-top: 6px;
+    width: 140px;
+}
+
 
 .filebutton > input[type="file"] {
     opacity: 0;
@@ -9729,8 +9739,8 @@ ol.recent-tweets >li
     -ms-filter: "alpha(opacity=0)";
     cursor: pointer;
     _cursor: hand;
-    width:100px;
-    height:14px;
+    width:140px;
+    height:28px;
 }
 .fileupload_data
 {
@@ -9980,3 +9990,7 @@ p > span.like, p > span.comment {
 
 .scl a img .tooltip{ width:200px; height:100px; display:none;}
 .scl a img:hover .tooltip{ width:200px; height:100px; display: block; position:absolute; background:#333; color:#fff;}
+
+.visuallyhidden{
+color:#FF0000;
+}

@@ -130,6 +130,11 @@ namespace SocioBoard.Helper
             return Body.Replace("[Name]", Name).Replace("[SenderName]", SenderName).Replace("[SenderEmail]", Email).Replace("[URLLOGIN]", urllogin).Replace("[URLREG]", urlreg);
         }
 
+        public string InvitationMailByCloudSponge(string Body, string Name, string SenderName, string Email, string urllogin, string urlreg)
+        {
+            return Body.Replace("[Name]", Name).Replace("[SenderName]", SenderName).Replace("[SenderEmail]", Email).Replace("[URLLOGIN]", urllogin).Replace("[URLREG]", urlreg);
+        }
+
         public string NewsLetterMail(string Body, string Name, string SenderName, string Email)
         {
             return Body.Replace("[Name]", Name).Replace("[SenderName]", SenderName).Replace("[SenderEmail]", Email);
@@ -203,6 +208,34 @@ namespace SocioBoard.Helper
                 GlobusMailLib.MailHelper objMailHelper = new GlobusMailLib.MailHelper();
 
                 res = objMailHelper.SendMailByMandrill(Host, port, from, passsword, to, bcc, cc, subject, body, sendgridUserName, sendgridPassword);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                logger.Error(ex.Message);
+            }
+            return res;
+        }
+
+
+        public string SendMailByMandrillForEnterprise(string name,string Host, int port, string from, string passsword, string to, string bcc, string cc, string subject, string body, string sendgridUserName, string sendgridPassword)
+        {
+            string res = string.Empty;
+            try
+            {
+                //username = ConfigurationManager.AppSettings["Mandrillusername"];
+                Host = ConfigurationManager.AppSettings["Mandrillhost"];
+
+                port = Convert.ToInt32(ConfigurationManager.AppSettings["Mandrillport"]);
+
+                sendgridPassword = ConfigurationManager.AppSettings["Mandrillpassword"];
+
+                //from = ConfigurationManager.AppSettings["fromemail"];
+
+                GlobusMailLib.MailHelper objMailHelper = new GlobusMailLib.MailHelper();
+
+                res = objMailHelper.SendMailByMandrillForEnterPrise(name, Host, port, from, passsword, to, bcc, cc, subject, body, sendgridUserName, sendgridPassword);
 
             }
             catch (Exception ex)

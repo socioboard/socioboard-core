@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+
+  <class name="LinkedInFeed" table="LinkedInFeed" lazy="false">
+    <id name="Id" column="Id" >
+      <generator class="guid"/>
+    </id>
+    <property name="Feeds">
+      <column name="Feeds" />
+    </property>
+    <property name="FeedsDate">
+      <column name="FeedsDate"  />
+    </property>
+    <property name="EntryDate">
+      <column name="EntryDate"  />
+    </property>
+    <property name="UserId">
+      <column name="UserId"  />
+    </property>
+    <property name="Type">
+      <column name="Type" />
+    </property>
+    <property name="FeedId">
+      <column name="FeedId"  />
+    </property>
+    <property name="ProfileId">
+      <column name="ProfileId"  />
+    </property>
+    <property name="FromId">
+      <column name="FromId"  />
+    </property>
+    <property name="FromName">
+      <column name="FromName"  />
+    </property>
+    <property name="FromPicUrl">
+      <column name="FromPicUrl"></column>
+    </property>
+  </class>
+</hibernate-mapping>

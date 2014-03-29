@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+
+  <class name="TwitterAccount" table="TwitterAccount" lazy="false">
+    <id name="Id" column="Id" >
+      <generator class="guid"/>
+    </id>
+    <property name="TwitterUserId">
+      <column name="TwitterUserId" />
+    </property>
+    <property name="TwitterScreenName">
+      <column name="TwitterScreenName"  />
+    </property>
+    <property name="OAuthToken">
+      <column name="OAuthToken"  />
+    </property>
+    <property name="OAuthSecret">
+      <column name="OAuthSecret"  />
+    </property>
+
+
+    <property name="UserId">
+      <column name="UserId"  />
+    </property>
+
+    <property name="IsActive">
+      <column name="IsActive"  />
+    </property>
+
+    <property name="FollowersCount">
+      <column name="FollowersCount"  />
+    </property>
+
+    <property name="FollowingCount">
+      <column name="FollowingCount"  />
+    </property>
+
+    <property name="ProfileUrl">
+      <column name="ProfileUrl"  />
+    </property>
+    <property name="ProfileImageUrl">
+      <column name="ProfileImageUrl"  />
+    </property>
+
+    <property name="TwitterName">
+      <column name="TwitterName"  />
+    </property>
+    
+
+
+  </class>
+</hibernate-mapping>

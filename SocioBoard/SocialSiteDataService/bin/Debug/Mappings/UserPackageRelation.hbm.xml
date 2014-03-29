@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+
+  <class name="UserPackageRelation" table="UserPackageRelation" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="UserId">
+      <column name="UserId" />
+    </property>
+    <property name="PackageId">
+      <column name="PackageId" />
+    </property>
+    <property name="ModifiedDate">
+      <column name="ModifiedDate"  />
+    </property>
+    <property name="PackageStatus">
+      <column name="PackageStatus"  />
+    </property>
+    
+
+  </class>
+</hibernate-mapping>

@@ -35,8 +35,7 @@
             <div class="trial-butn">
                 <a href="../Pricing.aspx">
                     <img src="../Contents/img/ssp/trail-butn.png" alt="" /></a><br />
-                No Credit Card Required 
-                
+                    No Credit Card Required                
             </div>
             <div class="clear">
             </div>
@@ -61,7 +60,7 @@
             <div class="ban-static" style="margin-top: 35px;">
                <div style=" float: left; width: 479px; margin-top: 44px;"><img width="400" src="../Contents/img/ssp/slidegraph.png" alt="" /></div>
                <div style="width:600px; height:400px; float:right;">
-                 <iframe src="https://docs.google.com/file/d/0B9xugMIiRUj5STEwYnMweEV2YzQ/preview" width="600" height="365" frameborder="0"></iframe>
+                 <iframe src="https://docs.google.com/file/d/0B9xugMIiRUj5cEZseDFqRUphdGs/preview" width="600" height="365" frameborder="0"></iframe>
                </div>
             <%--<div class="ban-img">
                 <div class="mid-circle">

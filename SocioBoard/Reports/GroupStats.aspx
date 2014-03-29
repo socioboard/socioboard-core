@@ -317,7 +317,7 @@
     <script src="<%= Page.ResolveUrl("~/Contents/js/RGraph.common.key.js")%>" type="text/javascript"></script>
     <script src="<%= Page.ResolveUrl("~/Contents/js/RGraph.bar.js")%>" type="text/javascript"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript" src="<%= Page.ResolveUrl("~/Contents/js/bootstrap.min.js")%>"></script>
+    <%--<script type="text/javascript" src="<%= Page.ResolveUrl("~/Contents/js/bootstrap.min.js")%>"></script>--%>
     <script type="text/javascript" src="../Contents/js/scripts.js"></script>
     <script type="text/javascript" src="<%= Page.ResolveUrl("~/Contents/js/canvasjs.min.js")%>"></script>
     <script type="text/javascript">

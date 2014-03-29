@@ -6,7 +6,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script src="Contents/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+   
     <script type="text/javascript">
         $(document).ready(function () {
             //alert("asdad");
@@ -55,7 +55,7 @@
 
                   <div class="inputbg"><asp:DropDownList class="drop" ID="DropDownList1" runat="server">
                   <asp:ListItem Value="Select">Select Account Type</asp:ListItem>
-                      <asp:ListItem Value="Basic">Basic(Free)</asp:ListItem>
+                      <asp:ListItem Value="Free">Basic(Free)</asp:ListItem>
                       <asp:ListItem>Standard</asp:ListItem>
                       <asp:ListItem>Deluxe</asp:ListItem>
                       <asp:ListItem>Premium</asp:ListItem>
@@ -85,7 +85,7 @@
                                 ControlToValidate="txtEmail" CssClass="ws_err_star"></asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="revEmail" runat="server" ErrorMessage="Please Enter Valid Email!"
                                 ControlToValidate="txtEmail" CssClass="ws_err_star_enter" 
-                    ValidationExpression="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$"></asp:RegularExpressionValidator>
+                    ValidationExpression="^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*(\.[a-z]{2,3})$"></asp:RegularExpressionValidator>
 </div>
             <div class="input_pswd_bg"><asp:TextBox ID="txtPassword" runat="server" TextMode="Password" AUTOCOMPLETE="off" placeholder="Password"></asp:TextBox></div>
             <div class="error"> <asp:RequiredFieldValidator ID="RequiredFieldValidator2" 
@@ -108,7 +108,7 @@
                                 <div class="input_pswd_bg" style="width:120%"> <asp:TextBox style="width:218px;" ID="TextBox1" runat="server" placeholder="Coupon Code(Optional)"></asp:TextBox><a id="check" style="margin-left: 29px;" href="#">Click to verify</a></div>
 
 
- <asp:Label ID="lblerror" runat="server" CssClass="ws_err_star" style="text-decoration:none; float:left; margin-top:-27px;"></asp:Label>
+ <asp:Label ID="lblerror" runat="server" CssClass="ws_err_star" style="text-decoration:none; float:left; margin-top:13px;"></asp:Label>
                <div class="create_your_account">
                    <asp:ImageButton ID="btnRegister" runat="server" 
                        ImageUrl="../Contents/img/create_account.png" OnClick="btnRegister_Click" 

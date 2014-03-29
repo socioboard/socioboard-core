@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-configuration xmlns="urn:nhibernate-configuration-2.2">
+  <session-factory>
+    <property name="connection.provider">NHibernate.Connection.DriverConnectionProvider</property>
+    <property name="dialect">NHibernate.Dialect.MySQLDialect</property>
+    <property name="connection.driver_class">NHibernate.Driver.MySqlDataDriver</property>
+    <property name="connection.connection_string">
+      <!--Data Source=50.57.219.27;User ID=692531_socio;Password=Soc_0987;persist security info=False;initial catalog=692531_socioboard_final;-->
+      <!--Data Source=50.57.219.27;User ID=692531_woofinal;Password=Woo_0987;persist security info=False;initial catalog=692531_woosuite_final;-->
+      Data Source=50.57.219.27;User ID=692531_woofinal;Password=Woo_0987;persist security info=False;initial catalog=692531_woosuite_final;
+    </property>
+    <property name="show_sql">true</property>
+  </session-factory>
+
+
+
+</hibernate-configuration>
+

@@ -105,36 +105,44 @@ namespace SocialSuitePro.Settings
         protected void btnSave_Click(object sender, EventArgs e)
         {
 
-            User user = (User)Session["LoggedUser"];
-            if (imgfileupload.HasFile)
+            try
             {
-                if (imgfileupload.FileName != null)
+                User user = (User)Session["LoggedUser"];
+                if (imgfileupload.HasFile)
                 {
-                    //string[] strarr = imgfileupload.FileName.Split('.');
-                    ////imgfileupload.FileName
-                    string strarr = Path.GetExtension(imgfileupload.FileName);
-
-                    if (strarr.ToLower() == ".png" || strarr.ToLower() == ".jpeg" || strarr.ToLower() == ".jpg")
+                    if (imgfileupload.FileName != null)
                     {
+                        //string[] strarr = imgfileupload.FileName.Split('.');
+                        ////imgfileupload.FileName
+                        string strarr = Path.GetExtension(imgfileupload.FileName);
+
+                        if (strarr.ToLower() == ".png" || strarr.ToLower() == ".jpeg" || strarr.ToLower() == ".jpg")
+                        {
+
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please use jpeg ,jpg or png format image');", true);
+                            return;
+                        }
 
                     }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please use jpeg ,jpg or png format image');", true);
-                        return;
-                    }
 
+                    string path = Server.MapPath("~/Contents/img/user_img/" + imgfileupload.FileName);
+                    imgfileupload.SaveAs(path);
+                    user.ProfileUrl = "../Contents/img/user_img/" + imgfileupload.FileName;
                 }
-
-                string path = Server.MapPath("~/Contents/img/user_img/" + imgfileupload.FileName);
-                imgfileupload.SaveAs(path);
-                user.ProfileUrl = "../Contents/img/user_img/" + imgfileupload.FileName;
+                user.UserName = txtFirstName.Text + " " + txtLastName.Text;
+                user.TimeZone = ddlTimeZone.SelectedItem.Value;
+                UserRepository.Update(user);
+                Session["LoggedUser"] = user;
+                //Response.Redirect(Request.RawUrl);
             }
-            user.UserName = txtFirstName.Text + " " + txtLastName.Text;
-            user.TimeZone = ddlTimeZone.SelectedItem.Value;
-            UserRepository.Update(user);
-            Session["LoggedUser"] = user;
-            //Response.Redirect(Request.RawUrl);
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
             Response.Redirect("PersonalSettings.aspx");
         }
 

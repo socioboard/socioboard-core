@@ -31,7 +31,7 @@ namespace SocialSuitePro.Admin
 
                     foreach (NewsLetter item in lstNews)
                     {
-                        strNews = strNews + "<tr class=\"gradeX\"><td><a href=\"AddNewsLetter.aspx?id=" + item.Id + "\">Resend</a></td><td>" + item.Subject + "</td><td>" + item.NewsLetterDetail + "</td><td>" + item.SendDate + "</td><td class=\"center\">" + item.SendStatus + "</td></tr>";
+                        strNews = strNews + "<tr class=\"gradeX\"><td><a href=\"AddNewsLetter.aspx?id=" + item.Id + "\">Resend</a></td><td>" + item.Subject + "</td><td>" + item.NewsLetterBody + "</td><td>" + item.SendDate + "</td><td class=\"center\">" + item.SendStatus + "</td></tr>";
                     }
                     divNews.InnerHtml = strNews;
                 }

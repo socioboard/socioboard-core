@@ -14,18 +14,18 @@ namespace SocioBoard
         {
             if (Request.QueryString["i"] == "1")
             {
-                PayPalEnterprice_click(sender, e);
+                PayPalEnterprice_click();
             }
         }
 
-        protected void PayPalEnterprice_click(object sender, EventArgs e)
+        protected void PayPalEnterprice_click()
         {
             SocioBoard.Helper.Payment payme = new SocioBoard.Helper.Payment();
 
             string amount = "9999";
             string plantype = "Enterprise";
-            string UserName = "Socioboard";
-            String EmailId = "support@socioboard.com";
+            string UserName = "Abhay";
+            String EmailId = "abhaymondal@globussoft.com";
 
             String EnterPriseSuccessURL = ConfigurationManager.AppSettings["EnterPriseSuccessURL"];
             String EnterPriseFailedURL = ConfigurationManager.AppSettings["EnterPriseFailedURL"];

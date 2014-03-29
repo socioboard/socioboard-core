@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+
+  <class name="FacebookInsightStats" table="FacebookInsightStats" lazy="false">
+    <id name="Id" column="Id" >
+      <generator class="guid"/>
+    </id>
+    <property name="FbUserId">
+      <column name="FbUserId" />
+    </property>
+    <property name="UserId">
+      <column name="UserId"  />
+    </property>
+    <property name="Gender">
+      <column name="Gender"  />
+    </property>
+    <property name="AgeDiff">
+      <column name="AgeDiff"  />
+    </property>
+    <property name="Location">
+      <column name="Location"  />
+    </property>
+    <property name="PeopleCount">
+      <column name="PeopleCount"  />
+    </property>
+    <property name="PageImpressionCount">
+      <column name="PageImpressionCount"  />
+    </property>
+    <property name="StoriesCount">
+      <column name="StoriesCount"  />
+    </property>
+    <property name="EntryDate">
+      <column name="EntryDate"  />
+    </property>
+    <property name="CountDate">
+      <column name="CountDate"  />
+    </property>
+
+  </class>
+</hibernate-mapping>

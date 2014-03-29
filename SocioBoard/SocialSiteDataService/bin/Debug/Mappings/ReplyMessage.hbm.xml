@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+  
+  <class name="ReplyMessage" table="ReplyMessage" lazy="false" >
+    <id name="Id" column="Id" >
+      <generator class="guid"/>
+    </id>
+    <property name="FromUserId">
+      <column name="FromUserId" sql-type="varchar(50)" not-null="true" />
+    </property>
+    <property name="Name">
+      <column name="Name" sql-type="varchar(50)" not-null="false" />
+    </property>
+    <property name="UserId">
+      <column name="UserId" sql-type="binary(16)" not-null="true" />
+    </property>
+    <property name="MessageId">
+      <column name="MessageId" sql-type="binary(16)" not-null="true" />
+    </property>
+    <property name="Message">
+      <column name="Message" sql-type="varchar(200)" not-null="true" />
+    </property>
+    <property name="Type">
+      <column name="Type" sql-type="varchar(50)" not-null="true" />
+    </property>
+   
+    <!--<property name="FromUserId">
+      <column name="FromUserId" sql-type="varchar(50)" not-null="true" />
+    </property>
+    <property name="Name">
+      <column name="Name" sql-type="varchar(50)" not-null="true" />
+    </property>
+    <property name="UserId">
+      <column name="UserId" not-null="true" />
+    </property>
+    <property name="MessageId">
+      <column name="MessageId" not-null="true" />
+    </property>
+    <property name="Message">
+      <column name="Message" sql-type="varchar(200)" not-null="true" />
+    </property>
+    <property name="Type">
+      <column name="Type" sql-type="varchar(50)" not-null="true" />
+    </property>-->
+  </class>
+</hibernate-mapping>

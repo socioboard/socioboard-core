@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+
+  <class name="RssFeeds" table="RssFeeds" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="Message">
+      <column name="Message" />
+    </property>
+    <property name="Duration">
+      <column name="Duration" />
+    </property>
+    <property name="ProfileScreenName">
+      <column name="ProfileScreenName"  />
+    </property>
+    <property name="FeedUrl">
+      <column name="FeedUrl"  />
+    </property>
+    <property name="CreatedDate">
+      <column name="CreatedDate"  />
+    </property>
+    <property name="Status">
+      <column name="Status"  />
+    </property>
+
+    <property name="UserId">
+      <column name="UserId" />
+    </property>
+  </class>
+</hibernate-mapping>

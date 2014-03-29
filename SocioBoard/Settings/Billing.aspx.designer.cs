@@ -7,45 +7,135 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SocialSuitePro.Settings {
+namespace SocioBoard.Settings {
     
     
     public partial class Billing {
         
         /// <summary>
-        /// plantype control.
+        /// package control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl plantype;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl package;
         
         /// <summary>
-        /// priceofplan control.
+        /// freediv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl priceofplan;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl freediv;
         
         /// <summary>
-        /// monthly control.
+        /// heading1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl monthly;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl heading1;
         
         /// <summary>
-        /// divcreatedate control.
+        /// price1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divcreatedate;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl price1;
+        
+        /// <summary>
+        /// ContentPlaceHolder1_freeplan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor ContentPlaceHolder1_freeplan;
+        
+        /// <summary>
+        /// heading2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl heading2;
+        
+        /// <summary>
+        /// price2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl price2;
+        
+        /// <summary>
+        /// ContentPlaceHolder1_standardplan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor ContentPlaceHolder1_standardplan;
+        
+        /// <summary>
+        /// heading3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl heading3;
+        
+        /// <summary>
+        /// price3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl price3;
+        
+        /// <summary>
+        /// ContentPlaceHolder1_premiumplan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor ContentPlaceHolder1_premiumplan;
+        
+        /// <summary>
+        /// heading4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl heading4;
+        
+        /// <summary>
+        /// price4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl price4;
+        
+        /// <summary>
+        /// ContentPlaceHolder1_deluxeplan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor ContentPlaceHolder1_deluxeplan;
     }
 }

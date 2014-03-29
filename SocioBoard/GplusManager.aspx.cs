@@ -23,6 +23,7 @@ namespace SocialSuitePro
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
             oAuthToken objToken = new oAuthToken();
             GplusHelper objGpHelper = new GplusHelper();
             UserRepository objUserRepo = new UserRepository();

@@ -83,6 +83,43 @@ namespace SocioBoard.Model
             }
         }
 
+        public  int UpdateReferenceUserByUserId(User user)
+        {
+            int i = 0;
+            try
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        try
+                        {
+                            i = session.CreateQuery("Update User set ReferenceStatus =:referenceStatus where Id = :id")
+                                      .SetParameter("referenceStatus", user.ReferenceStatus)
+                                      .SetParameter("id", user.Id)
+
+                                      .ExecuteUpdate();
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+
+                        }
+
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+
+            }
+
+            return i;
+        }
+
         public int  UpdateCreatDateByUserId(User user)
         {
             int i=0;
@@ -289,6 +326,43 @@ namespace SocioBoard.Model
             }
 
         }
+
+        public int UpdateUserExpiryDateById(User user)
+        {
+            int i=0;
+            try
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        try
+                        {
+                            i = session.CreateQuery("Update User set ExpiryDate=:expirydate where Id = :id")
+                                      .SetParameter("id", user.Id)
+                                      .SetParameter("expirydate", user.ExpiryDate)
+                                      .ExecuteUpdate();
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+
+                        }
+
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+
+            }
+
+            return i;
+        }
+
 
         public void SetUserByUserId(string emailid, string password, Guid id, string username, string accounttype,string couponcode)
         {

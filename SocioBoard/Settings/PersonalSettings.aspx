@@ -88,7 +88,7 @@
                         </div>
                         <div class="personal_details">
                             Team members will see the avatar you have set for <strong><em id="email_personal_for_setting"
-                                runat="server"></em></strong>on Browse.
+                                runat="server"></em>&nbsp;</strong>on Browse.
                             <br />
                             <asp:FileUpload ID="imgfileupload" runat="server" />
                             <asp:HiddenField ID="imghdn" runat="server" />

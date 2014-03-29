@@ -1,5 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/socialsuite.Master" AutoEventWireup="true" CodeBehind="contact.aspx.cs" Inherits="SocialSuitePro.contact" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<style type="text/css">
+  .left_contact{width:700px; width:400px\9; height:auto; float:left;}
+  p:last-child{margin-top:18px;}
+</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <script type="text/javascript">
@@ -79,57 +83,39 @@
  </div>
  
 	<div class="contact_form">
-    <h2 style="text-align:left;">Contact</h2>
-    <div id="signup-inner" style="width:700px; height:auto; float:left;">
-          
-            <form id="send" action="">
-            	
-                <p>
-                <label for="name">First Name *</label>
-                <input id="name" type="text" name="name" value="" />
-                </p>
-                
-                <p>
-                <label for="company">Last Name</label>
-                <input id="lname" type="text" name="company" value="" />
-                </p>
-                
-                <p>
-
-                <label for="email">Email *</label>
-                <input id="email" type="text" name="email" value="" />
-                </p>
-                
-                <p>
-                <label for="website">Your Subject</label>
-                <input id="Subject" type="text" name="Subject" value="" />
-                </p>
-                             
-                <p>
-                <label for="profile">Message *</label>
-                <textarea name="profile" id="profile" cols="30" rows="10"></textarea>
-
-                </p>
-                <br />
-                <p>
-
-                <button id="submit" type="button">Submit</button>
-                </p>
-                
-            </form>
-            
-          </div>
-    <div style="width:300px; float:right; height:auto;">
-      <h2 style=" text-align:left;">Let's Talk</h2>
-      <div style="width:300px; height:100px; border-top:1px solid #999; color:#787878; font-size:12px; font-family:nexa-light; padding-top:9px; font-size:16px;">
-         <!--Office: CHPL DreamHomes Apartments, Apollo Hospital Road Junwani, Bhilai-490020, Chhattisgarh, India. <br /><br />
-          Call us: 0788-4083007, 4083008, 4083009<br /><br />
-         Write to us: <img src="contents/img/support.png" alt="" />-->
-         <img src="Contents/img/address.png" alt="" />
-      </div> 
-        
-    </div>      
+        <h2 style="text-align:left;">Contact</h2>
+        <div id="signup-inner" class="left_contact">
+                <form id="send" action="">
+            	     <p>
+                        <label for="name">First Name *</label>
+                        <input id="name" type="text" name="name" value="" />
+                    </p>
+                    <p>
+                        <label for="company">Last Name</label>
+                        <input id="lname" type="text" name="company" value="" />
+                    </p>
+                    <p>
+                        <label for="email">Email *</label>
+                        <input id="email" type="text" name="email" value="" />
+                    </p>
+                    <p>
+                        <label for="website">Your Subject</label>
+                        <input id="Subject" type="text" name="Subject" value="" />
+                    </p>
+                    <p>
+                        <label for="profile">Message *</label>
+                        <textarea name="profile" id="profile" cols="30" rows="10"></textarea>
+                     </p>
+                     <p>
+                        <button id="submit" type="button">Submit</button>
+                    </p>
+                </form>
+            </div>
+                <div style="width:300px; float:right; height:auto;">
+                  <h2 style=" text-align:left;">Let's Talk</h2>
+                  <div style="width:300px; height:100px; border-top:1px solid #999; color:#787878; font-size:12px; font-family:nexa-light; padding-top:9px; font-size:16px;">
+                    <img src="Contents/img/address.png" alt="" />
+                  </div> 
+           </div>      
     </div>
-
-
 </asp:Content>

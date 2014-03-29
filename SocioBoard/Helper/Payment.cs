@@ -18,6 +18,9 @@ namespace SocioBoard.Helper
                 redirecturl += "https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=" +
                                        paypalemail;
 
+                //redirecturl += "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_xclick&business=" +
+                //                       paypalemail;
+
                 //First name i assign static based on login details assign this value
                 redirecturl += "&first_name=" + name;
 
@@ -135,7 +138,7 @@ namespace SocioBoard.Helper
                 //                       paypalemail;
 
                 redirecturl += "https://www.paypal.com/cgi-bin/webscr?cmd=_xclick-subscriptions&business=" +
-                                       paypalemail;
+                                      paypalemail;
 
                 //First name i assign static based on login details assign this value
                 redirecturl += "&first_name=" + name;

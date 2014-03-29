@@ -87,7 +87,7 @@ function savearchivemsg(id, sociotype, messageId, profileId) {
             contentType: "application/json; charset=utf-8",
             dataType: "html",
             success: function (msg) {
-
+                alertify.success(msg);
                 //                $("#accountsins").html(msg);
 
             }

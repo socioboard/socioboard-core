@@ -54,5 +54,19 @@
     <property name="CouponCode">
       <column name="CouponCode"  />
     </property>
+
+    <property name="ReferenceStatus">
+      <column name="ReferenceStatus"  />
+    </property>
+
+    <property name="RefereeStatus">
+      <column name="RefereeStatus"  />
+    </property>
+
+    <property name="UserType">
+      <column name="UserType"  />
+    </property>
+    
+
   </class>
 </hibernate-mapping>

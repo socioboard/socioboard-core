@@ -1,77 +1,81 @@
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\UserActivation.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\Admin.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\Ads.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\ArchiveMessage.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\Blog_Comments.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\Blog_Posts.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\BusinessSetting.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\DiscoverySearch.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\Drafts.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\FacebookAccount.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\FacebookFeed.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\FacebookGroup.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\FacebookInsightPostStats.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\FacebookInsightStats.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\FacebookMessage.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\FacebookStats.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\GoogleAnalyticsAccount.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\GoogleAnalyticsStats.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\GooglePlusAccount.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\GooglePlusActivities.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\GroupProfile.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\Groups.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\InstagramAccount.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\InstagramComment.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\InstagramFeed.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\LinkedinAccount.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\LinkedInFeed.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\LinkedinMessage.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\Log.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\News.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\NewsLetter.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\Package.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\PaymentTransaction.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\RssFeeds.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\RssReader.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\ScheduledMessage.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\SocialProfile.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\TaskComment.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\Tasks.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\Team.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\TeamMemberProfile.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\TwitterAccount.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\TwitterDirectMessages.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\TwitterFeed.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\TwitterMessage.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\TwitterStats.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\User.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\UserPackageRelation.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\vwTwitterStats.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Domain\FacebookInsightPostStats.cs
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\SocioBoard 1.0.dll
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\SocioBoard 1.0.pdb
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\GlobusGooglePlusLib.dll
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\GlobusInstagramLib.dll
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\GlobusLinkedinLib.dll
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\GlobusMailLib.dll
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\GlobusTwitterLib.dll
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\PayPalCoreSDK.dll
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\SendGridMail.dll
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\SendGridPlus.dll
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\System.Net.Http.dll
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mandrill.dll
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\OAuth.dll
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\CodeScales.Http.dll
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\RestSharp.dll
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\GlobusMailLib.pdb
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\GlobusGooglePlusLib.pdb
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\GlobusInstagramLib.pdb
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\GlobusLinkedinLib.pdb
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\GlobusTwitterLib.pdb
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\System.Net.Http.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\RestSharp.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\obj\Debug\SocioBoard 1.0.csprojResolveAssemblyReference.cache
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\obj\Debug\SocioBoard 1.0.dll
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\obj\Debug\SocioBoard 1.0.pdb
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\LoginLogs.hbm.xml
-D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard Product\bin\Mappings\Coupon.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\UserActivation.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\LoginLogs.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\Coupon.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\UserRefRelation.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\Invitation.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\Admin.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\Ads.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\ArchiveMessage.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\Blog_Comments.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\Blog_Posts.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\BusinessSetting.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\DiscoverySearch.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\Drafts.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\FacebookAccount.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\FacebookFeed.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\FacebookGroup.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\FacebookInsightPostStats.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\FacebookInsightStats.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\FacebookMessage.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\FacebookStats.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\GoogleAnalyticsAccount.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\GoogleAnalyticsStats.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\GooglePlusAccount.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\GooglePlusActivities.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\GroupProfile.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\Groups.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\InstagramAccount.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\InstagramComment.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\InstagramFeed.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\LinkedinAccount.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\LinkedInFeed.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\LinkedinMessage.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\Log.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\News.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\NewsLetter.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\Package.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\PaymentTransaction.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\RssFeeds.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\RssReader.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\ScheduledMessage.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\SocialProfile.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\TaskComment.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\Tasks.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\Team.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\TeamMemberProfile.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\TwitterAccount.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\TwitterDirectMessages.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\TwitterFeed.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\TwitterMessage.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\TwitterStats.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\User.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\UserPackageRelation.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mappings\vwTwitterStats.hbm.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Domain\FacebookInsightPostStats.cs
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\SocioBoard 1.0.dll
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\SocioBoard 1.0.pdb
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\GlobusGooglePlusLib.dll
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\GlobusInstagramLib.dll
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\GlobusLinkedinLib.dll
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\GlobusMailLib.dll
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\GlobusTwitterLib.dll
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\PayPalCoreSDK.dll
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\SendGridMail.dll
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\SendGridPlus.dll
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\System.Net.Http.dll
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mandrill.dll
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\OAuth.dll
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\CodeScales.Http.dll
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\RestSharp.dll
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\GlobusMailLib.pdb
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\GlobusGooglePlusLib.pdb
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\GlobusInstagramLib.pdb
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\GlobusLinkedinLib.pdb
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\GlobusTwitterLib.pdb
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\System.Net.Http.xml
+D:\Abhay\socioboard\trunk\SocioBoard Product\obj\Debug\ResolveAssemblyReference.cache
+D:\Abhay\socioboard\trunk\SocioBoard Product\obj\Debug\SocioBoard 1.0.dll
+D:\Abhay\socioboard\trunk\SocioBoard Product\obj\Debug\SocioBoard 1.0.pdb
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\CloudSponge.dll
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\CloudSpongeLib.dll
+D:\Abhay\socioboard\trunk\SocioBoard Product\bin\CloudSpongeLib.pdb

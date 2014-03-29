@@ -17,13 +17,13 @@
                             live chat, news feed, timeline, profiles, events, notifications, likes, and so much more...</span> 
                             <a href="#list">See full list »</a>
                         </div>--%>
-                        <div id="verticalTab">
+                        <div id="company">
                         <ul class="resp-tabs-list">
                             <li>About</li>
                             <li>Customers</li>
                             <li>Partners</li>
                             <li>Careers</li>
-                            <li>Our Team</li>
+                            <%--<li>Our Team</li>--%>
                         </ul>
                         <div class="resp-tabs-container" style="border-left: 1px solid #999999; float:left;">
                         <div>
@@ -50,11 +50,13 @@
                         <div class="six columns" style=" width:100%;">
                             <div class="features-page-desc">
                                 <h3>Customers</h3>
-                                <br />
-                                Socioboard is primarily a service oriented organization, it’s our vision to impart any level of assistance needed. Socioboard has been striving hard to give world class support to its customers. We are committed to give any support required to our end users. <br />
-                                <br />
-                                Some of Socioboard’s esteemed customers include: 
-                                MarketMongoose, MarketMongoose Social, YouRank, TweetRank, LinkRank, FaceRank, PinRank, Socioboard, Brandzter, AuraRank, Botguruz, Social Signifier, RebrandOne, Socialscoup, Socialpour, Mooplesocial and #db3f1asheep.
+                                 Some of Socioboard's agency customers are:
+                                <br /> 
+                              <span><a href="http://www.socialpour.com/" target="_blank"><img src="/Contents/img/ssp/socialscoup_logo.png"  alt="Socialscoup" /></a></span>
+                              <br /> <br /> <br /> <br /> 
+                              <span><a href="http://socialscoup.com/" target="_blank"><img src="/Contents/img/ssp/socialpour_logo.png"  alt="Socialpour" /></a></span>
+                              <br /> <br /> <br /> <br /> 
+                             <span><a href="http://mooplesocial.net/" target="_blank"><img src="/Contents/img/ssp/msocial_logo.png"  alt="Mooplesocial" /></a></span>
 
                             </div>
                         </div>
@@ -130,7 +132,7 @@
                        
                         </div>
 
-                        <div>
+                        <%--<div>
                         <div class="six columns" style=" width:100%;">
                             <div class="features-page-desc">
                                 <h3>Our Team</h3>
@@ -144,14 +146,14 @@
 <strong style=" color:#a02002;">Founder CEO &ndash; Socioboard </strong>
 </span>
 </div>
-<p style="margin-bottom: 8pt;" class="MsoNormal">Sumit started Socioboard in 2009 in a garage with a couple of his friends. He has taken the company from an idea to a full-fledged software development company with a customer base of more than 4500, an employee count of 200 and a net worth of USD 10 million in just 6 years. Sumit was 23 when he started his dream company Socioboard while pursuing his 5th semester of his BE Degree at Bhilai Institute of Technology.</p>
-<p style="margin-bottom: 8pt;" class="MsoNormal">He is an Entrepreneur, a Geek, an Ace Programmer, a Strategist, a Visionary, a Thinker and a Hard Core Planner and jokingly likes to call himself a Nasty Boss!</p>
-<p style="margin-bottom: 8pt;" class="MsoNormal">Sumit dons more than a decade of experience in Product Development, Architecture Planning and Project Management. His primary focus areas include Microsoft Technologies, Java and PHP (Open Source) and he’s an expert programmer on various platforms like .NET 2,3.5,4.0, WordPress, Joomla, Magento. He’s adept in programming languages like VC++ 9, C# 3.0, PHP 5, Java, Coldfusion 8, Assembly, VB.NET, VB 6.0 etc.</p>
-<p style="margin-bottom: 8pt;" class="MsoNormal">While working with TCS for more than a year, he was involved in researching on latest MS Technologies, making prototypes for enterprise grade applications, performance modelling and benchmarking of applications on latest .NET technologies like WCF/WPF/WF and Windows Cardspace.</p>
-<p style="margin-bottom: 8pt;" class="MsoNormal">At TCS Sumit got an opportunity to work with a bunch of Fortune 100 companies like Citi Group, Ferrari, Meryll Lynch and NSE India. While at TCS, Sumit got an offer from Microsoft IDC (India Development Center) based out of Bangalore. It was a very lucrative offer with a handsome package and greater learning opportunities. However, at the peak of his career and with a dream Job in hand, he left TCS and turned down the offer from Microsoft to recreate and shape his dream company Socioboard.</p>
-<p style="margin-bottom: 8pt;" class="MsoNormal">Besides being a leader in his software development, Sumit is a member of Corporate Technology Excellence Group of Microsoft Practices. He loves writing for his blog <a href="http://sumitghosh.co.in">http://sumitghosh.co.in.</a></p>
-<p style="margin-bottom: 8pt;" class="MsoNormal">Sumit enjoys an admirable position in Digital Marketing space. He is quite friendly with his employees and enjoys hanging out with his family and friends. Besides, he’s also a celebrated speaker at various tech seminars, meets and conferences.</p>
-<p style="margin-bottom: 8pt;" class="MsoNormal">Linkedin: <a target="_blank" href="http://in.linkedin.com/in/sumitghosh007" title="in.linkedin.com/in/sumitghosh007">in.linkedin.com/in/sumitghosh007</a></p>
+<p style="margin-bottom: 8pt;" class="MsoNormal">Sumit started Socioboard in December 2013 with a vision to provide a versatile, customizable, and scalable open-source social media dashboard for agencies and organization needing solutions beyond what existing social dashboards are providing . 
+Sumit is deeply involved with the conception, development and branding of  Socioboard since its inception. This shows up in numerous  ways Socioboard features are being improved every day. Socioboard is ever expanding with increasing global customer base and continuous software development beating current market standards. 
+Sumit is an Entrepreneur, a Geek, an Ace Programmer, a Strategist, a Visionary, a Thinker and a Hard Core Planner and jokingly likes to call himself a Nasty Boss!
+Sumit dons more than a decade of experience in Product Development, Architecture Planning and Project Management. His primary focus areas include Microsoft Technologies, Java and PHP (Open Source) and he’s an expert programmer on various platforms like .NET 2, 3.5, 4.0, WordPress, Joomla, and Magento. He’s adept in programming languages like VC++ 9, C# 3.0, PHP 5, Java, Coldfusion 8, Assembly, VB.NET, VB 6.0 etc.
+Besides being a leader in his software development, Sumit is a member of Corporate Technology Excellence Group of Microsoft Practices. Sumit enjoys an admirable position in Digital Marketing space. He is quite friendly with his employees and enjoys hanging out with his family and friends. Besides, he’s also a celebrated speaker at various tech seminars, meets and conferences.
+Connect with Sumit: <a href="http://in.linkedin.com/in/sumitghosh007"></a>in.linkedin.com/in/sumitghosh007</a>
+</p>
+
 </div>
 <br /><br />
 
@@ -209,11 +211,57 @@
 <p style="margin-bottom: 8pt;" class="MsoNormal">Along with his Executive PGP in Marketing and Strategy from Indian Institute of Management (IIM), Raipur, Naresh continues to play a significant role in helping Socioboard create, communicate and deliver values for its stakeholders.</p>
 <p style="margin-bottom: 8pt;" class="MsoNormal">Linkedin: <a target="_blank" href="http://in.linkedin.com/pub/naresh-verma/3b/36a/b36/" title="in.linkedin.com/pub/naresh-verma/3b/36a/b36/">in.linkedin.com/pub/naresh-verma/3b/36a/b36/</a></p>
 </div>
+
+<div>
+<div style="width: 100%; height: 138px;">
+<span style=" float:left;"><img height="107" width="94" src="Contents/img/ssp/ajay-pandey.gif" alt="Ajay Kumar Pandey" style="border: 1px solid #db3f1a; margin: 5px;" class="alignleft size-full wp-image-3912"></span>
+<span style=" float:left; margin: 62px 0 0 9px;"><h2 class="MsoNormal" style=" margin:0; text-align:left; padding:0;"><strong style="font-size: 24px;font-weight: normal; color:#a02002;">Ajay Kumar Pandey</strong></h2>
+<strong style=" color:#a02002;"> .Net Lead Developer</strong>
+</span>
+</div>
+<p style="margin-bottom: 8pt;" class="MsoNormal">Ajay Kumar Pandey has almost two years of experience on Desktop Applications & ASP.Net platform including e-Commerce domain, he has knowledge on Social Network Applications, Facebook , Twitter , LinkedIn , Instagram SDKs and other social APIs.
+Ajay has expertise in ASP-C#.Net, WPF, WCF, MVC4.0, Multithreading, Delegate, Event, Java, C, C++, Ruby, JQuery, HTML5,XML, and XAML
+Microsoft Dos 6.0 to Windows,SQL Server, MS Access,MySQL,PostGreSQL,MySQL tuning.</p>
+<p style="margin-bottom: 8pt;" class="MsoNormal">Ajay has worked on various projects namely:</p>
+<p style="margin-bottom: 8pt;" class="MsoNormal">
+Search Engine Ranker<br />
+WooSuite<br />
+Mashup Deals<br />
+Dashboard Brandzter<br />
+FaceDominator <br />
+LinkedDominator<br />
+TweetDominator <br />
+YouTube Manager<br />
+</p>
+<p style="margin-bottom: 8pt;" class="MsoNormal">Ajay brings in youthful energy and punch in the Socioboard team.
+At socioboard Ajay works as the lead developer and is responsible for development of various APIs. He is the person you want on your side to keep things up and running and to assist you if in need of support. </p>
+<p style="margin-bottom: 8pt;" class="MsoNormal">Linkedin: <a target="_blank" href="http://in.linkedin.com/in/ajaypandeymca" title="http://in.linkedin.com/in/ajaypandeymca">in.linkedin.com/in/ajaypandeymca</a></p>
+</div>
+
+<div>
+<div style="width: 100%; height: 138px;">
+<span style=" float:left;"><img height="107" width="94" src="Contents/img/ssp/abhay-mondal.jpg" alt="Abhay Kr Mondal" style="border: 1px solid #db3f1a; margin: 5px;" class="alignleft size-full wp-image-3912"></span>
+<span style=" float:left; margin: 62px 0 0 9px;"><h2 class="MsoNormal" style=" margin:0; text-align:left; padding:0;"><strong style="font-size: 24px;font-weight: normal; color:#a02002;">Abhay Kr Mondal</strong></h2>
+<strong style=" color:#a02002;">Associate .Net Developer</strong>
+</span>
+</div>
+<p style="margin-bottom: 8pt;" class="MsoNormal">Abhay has almost three years of experience in the analysis, design, development and implementation on Client/Web Server development with HTML, CSS, C, C#, VB, ASP.NET, Silverlight, WPF, ADO.NET,XAML, Windows 8 Metro app, Java Script, AJAX, Jquery, SQL Server 2006/08, ORACLE ,MYSQL. Abhay has domain knowledge in e-Commerce and Social Network Applications and Social Mashups of Facebook , Twitter , LinkedIn, Instagram SDKs and other social APIs.</p>
+<p style="margin-bottom: 8pt;" class="MsoNormal">Abhay has worked on various projects namely:</p>
+<p style="margin-bottom: 8pt;" class="MsoNormal">
+PowerGrid<br />
+ONGC<br />
+Heritage for Mount Carmel<br />
+Woosuite<br />
+
+</p>
+<p style="margin-bottom: 8pt;" class="MsoNormal">At socioboard Abhay works as the associate developer and develops various APIs. Abhay continues to offer immense benefits to socioboard by virtue of his experience and competencies.</p>
+<p style="margin-bottom: 8pt;" class="MsoNormal">Linkedin: <a target="_blank" href="http://in.linkedin.com/in/abhaymondal/" title="http://in.linkedin.com/in/abhaymondal/">in.linkedin.com/in/abhaymondal/</a></p>
+</div>
                                 
                             </div>
                         </div>
                        
-                        </div>
+                        </div>--%>
                        
                     </div>
                        </div> 
@@ -228,7 +276,7 @@
         <!--end feature_body-->
          <script type="text/javascript">
              $(document).ready(function () {
-                 $('#verticalTab').easyResponsiveTabs({
+                 $('#company').easyResponsiveTabs({
                      type: 'vertical',
                      width: 'auto',
                      fit: true
