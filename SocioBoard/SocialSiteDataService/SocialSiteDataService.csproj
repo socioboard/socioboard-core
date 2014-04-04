@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A5AE6F7A-20EC-47FC-B8DF-98C93D807C4B}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SocialSiteDataService</RootNamespace>
+    <AssemblyName>SocialSiteDataService</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Facebook">
+      <HintPath>..\Lib\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="GlobusGooglePlusLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\GlobusGooglePlusLib.dll</HintPath>
+    </Reference>
+    <Reference Include="GlobusInstagramLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\GlobusInstagramLib.dll</HintPath>
+    </Reference>
+    <Reference Include="GlobusLinkedinLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\GlobusLinkedinLib.dll</HintPath>
+    </Reference>
+    <Reference Include="GlobusTwitterLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\GlobusTwitterLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\SocioBoard\bin\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\Lib\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity">
+      <HintPath>..\Lib\MySql.Data.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\Lib\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Linq">
+      <HintPath>..\Lib\NHibernate.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernateHelper">
+      <HintPath>..\Lib\NHibernateHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FacebookData.cs" />
+    <Compile Include="GlobusLogAppender.cs" />
+    <Compile Include="GlobusLogHelper.cs" />
+    <Compile Include="GoogleAnalyticsData.cs" />
+    <Compile Include="GplusData.cs" />
+    <Compile Include="Helper\SessionFactory.cs" />
+    <Compile Include="InstagramData.cs" />
+    <Compile Include="LinkedInData.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TwitterData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SocioBoard 1.0.csproj">
+      <Project>{489126F9-9C92-4F3B-8643-F698F4A0C737}</Project>
+      <Name>SocioBoard 1.0</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\GlobusLinkedinLib.dll" />
+    <Content Include="bin\Debug\Mappings\Ads.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\ArchiveMessage.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\DiscoverySearch.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\Drafts.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\FacebookAccount.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\FacebookFeed.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\FacebookInsightPostStats.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\FacebookInsightStats.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\FacebookMessage.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\FacebookStats.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\GoogleAnalyticsAccount.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\GooglePlusAccount.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\GooglePlusActivities.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\GroupProfile.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\Groups.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\InstagramAccount.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\InstagramComment.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\InstagramFeed.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\LinkedInAccount.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\LinkedInFeed.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\LinkedinMessage.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\Log.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\News.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\NewsLetter.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\Package.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\PaymentTransaction.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\RssFeeds.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\RssReader.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\ScheduledMessage.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\SocialProfile.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\TaskComment.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\Tasks.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\Team.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\TeamMemberProfile.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\TwitterAccount.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\TwitterDirectMessages.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\TwitterFeed.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\TwitterMessage.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\TwitterStats.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\User.hbm.xml" />
+    <Content Include="bin\Debug\Mappings\vwTwitterStats.hbm.xml" />
+    <Content Include="bin\Debug\SocialSiteDataService.vshost.exe" />
+    <Content Include="bin\Debug\SocioBoard.dll" />
+    <Content Include="bin\SocioBoard.dll" />
+    <Content Include="hibernate.cfg.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="bin\Debug\SocialSiteDataService.exe.config" />
+    <None Include="bin\Debug\SocialSiteDataService.vshost.exe.config" />
+    <None Include="bin\Debug\SocialSiteDataService.vshost.exe.manifest" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

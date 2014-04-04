@@ -74,9 +74,9 @@ function saveDrafts() {
             dataType: "html",
             success: function (msg) {
                 debugger;
-                $("#textareavaluetosendmessage_scheduler").val('');
-                $('#messageCount_scheduler').html('140 Characters Remaining');
-                $('#timepickerforScheduler').val('');
+                $("#timepickerforScheduler").val('');
+                $("#adddates_scheduler").html('');
+                closeonCompose();
             }
         });
 
@@ -387,34 +387,48 @@ function deleteDraftMessage(id) {
 }
 
 
-function editDraftsMessage(id) {
+function editDraftsMessage(id,msg) {
     try {
         debugger;
 
-        var defautl = $("#message_" + id).html();
+        //var defautl = $("#message_" + id).html();
+        var defautl = $("#message_" + id).html(msg);
 
+        var msgg = msg;
 
         alertify.prompt("Please Enter New Message", function (e, str) {
 
             if (e) {
+                //alert(parseInt(str.length));
+                if (str == "") {
+                    alert('Please enter The Message, you cant leave Empty Message box..!!');
+                    editDraftsMessage(id, msg);
+                    // return;
+                }
+                else if (parseInt(str.length) > 140) {
+                    alert('Message length must not graeater than 140 character!');
+                    editDraftsMessage(id, str);
+                }
+                else {
 
-                $.ajax({
-                    url: '../Helper/AjaxHelper.aspx?op=savedrafts&id=' + id + '&newstr=' + str,
-                    type: 'GET',
-                    dataType: 'html',
-                    success: function (mg) {
 
-                        alertify.success("Updated Successfully");
-                        publishcontent("drafts");
-                    }
+                    $.ajax({
+                        url: '../Helper/AjaxHelper.aspx?op=savedrafts&id=' + id + '&newstr=' + str,
+                        type: 'GET',
+                        dataType: 'html',
+                        success: function (mg) {
 
-                });
+                            alertify.success("Updated Successfully");
+                            publishcontent("drafts");
+                        }
 
+                    });
+                }
 
             } else {
 
             }
-        }, defautl);
+        }, msgg);
     } catch (e) {
 
     }

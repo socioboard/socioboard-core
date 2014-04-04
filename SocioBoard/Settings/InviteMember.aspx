@@ -1,12 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Site.Master" AutoEventWireup="true" CodeBehind="InviteMember.aspx.cs" Inherits="SocialSuitePro.Settings.InviteMember" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     
-   
+   <script src="../Contents/js/Home.js" type="text/javascript"></script>
+    <script src="../Contents/js/SimplePopup.js" type="text/javascript"></script>
+    <script src="../Contents/js/jquery.bpopup-0.9.3.min.js" type="text/javascript"></script> 
   </asp:Content>
  
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<script src="../Contents/js/jquery-1.4.1.min.js" type="text/javascript"></script>
-    <script src="../Contents/js/jquery-1.4.1.js" type="text/javascript"></script>
+<%--<script src="../Contents/js/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="../Contents/js/jquery-1.4.1.js" type="text/javascript"></script>--%>
+    
  <link rel="stylesheet" type="text/css" href="../Contents/css/Style_previous.css" />
   
     <div class="ws_container_page">

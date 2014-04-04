@@ -5,7 +5,8 @@
     overflow: auto;
     overflow-x:hidden;
     height:100%;
-    width: 313px;
+    /*width: 313px;*/
+     width: 292px;
 }
 .mCSB_container.mCS_no_scrollbar{
 	margin-right:0;

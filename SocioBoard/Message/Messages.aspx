@@ -595,10 +595,10 @@
                         	<a href="#"><img src="../Contents/img/admin/twittericon.png" width="15" height="15" alt=""/>User Tweets</a>
                       <img onclick="chkMessage(this.id);" id="check_Retweets" src="../Contents/img/check_click.png" alt="" />
                         </li>
-                      	<li class="messagetype">
+                      	<%--<li class="messagetype">
                         	<a href="#"><img src="../Contents/img/google_plus.png" width="15" height="15" alt="" />Activities</a>
                        <img onclick="chkMessage(this.id);" id="check_Activities" src="../Contents/img/check_click.png" alt="" />
-                        </li>
+                        </li>--%>
                       	<li class="messagetype">
                         	<a href="#"><img src="../Contents/img/admin/fbicon.png" width="15" height="15" alt=""/>User Feeds</a>
                          <img onclick="chkMessage(this.id);" id="check_WallPosts" src="../Contents/img/check_click.png" alt="" />

@@ -38,6 +38,8 @@ namespace SocialSuitePro
         {
             try
             {
+
+
                 UserRepository userrepo = new UserRepository();
                 Registration regObject = new Registration();
                 TeamRepository objTeamRepo = new TeamRepository();
@@ -53,9 +55,31 @@ namespace SocialSuitePro
 
                 if (user.Password == null)
                 {
-                    
-                    Response.Redirect("Default.aspx");
+
+                    Response.Redirect("/Pricing.aspx");
                 }
+
+
+
+                #region Days remaining
+                if (Session["days_remaining"] == null)
+                {
+                    if (user.PaymentStatus == "unpaid")
+                    {
+                        int daysremaining = (user.ExpiryDate - DateTime.Now).Days;
+                        if (daysremaining < 0)
+                        {
+                            daysremaining = 0;
+                        }
+                        Session["days_remaining"] = daysremaining;
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('You are using '" + user.AccountType + "' account only '" + daysremaining + "' days is remaining !');", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('You are using " + user.AccountType + " account " + daysremaining + " days is remaining !');", true);
+                    }
+                }
+
+                #endregion
+
+
 
                 #region for You can use only 30 days as Unpaid User
 
@@ -71,7 +95,7 @@ namespace SocialSuitePro
                     }
                 }
 
-                Session["GreaterThan30Days"]=null;
+                Session["GreaterThan30Days"] = null;
                 #endregion
 
                 if (!IsPostBack)
@@ -81,7 +105,7 @@ namespace SocialSuitePro
                     {
                         if (user == null)
                         {
-                            
+
                             Response.Redirect("Default.aspx");
                         }
                     }
@@ -106,60 +130,63 @@ namespace SocialSuitePro
 
                     }
 
-                    
-
-                    #region check user Activation
-
-                    try
-                    {
-                        if (objUserActivation != null)
-                        {
-                            if (objUserActivation.ActivationStatus == "0")
-                            {
-                                if (Request.QueryString["stat"] == "activate")
-                                {
-                                    if (Request.QueryString["id"] != null)
-                                    {
-                                        //objUserActivation = objUserActivationRepository.GetUserActivationStatusbyid(Request.QueryString["id"].ToString());
-                                        if (objUserActivation.UserId.ToString() == Request.QueryString["id"].ToString())
-                                        {
-                                            objUserActivation.Id = objUserActivation.Id; //Guid.Parse(Request.QueryString["id"]);
-                                            objUserActivation.UserId = Guid.Parse(Request.QueryString["id"]);// objUserActivation.UserId;
-                                            objUserActivation.ActivationStatus = "1";
-                                            UserActivationRepository.Update(objUserActivation);
-                                        }
-                                        else
-                                        {
-                                            Session["ActivationError"] = "Wrong Activation Link please contact Admin!";
-                                            //ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Wrong Activation Link please contact Admin!');", true);
-                                            Response.Redirect("ActivationLink.aspx");
-                                        }
-                                    }
-                                    else
-                                    {
-                                        Session["ActivationError"] = "Wrong Activation Link please contact Admin!";
-                                        //ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Wrong Activation Link please contact Admin!');", true);
-                                        Response.Redirect("ActivationLink.aspx");
-                                    }
-
-                                }
-                                else
-                                {
-                                    Response.Redirect("ActivationLink.aspx");
-                                }
 
 
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                       Console.WriteLine(ex.Message);
-                        logger.Error(ex.StackTrace);
-                    }
-                    #endregion
+                    //#region check user Activation
 
-                    
+                    //try
+                    //{
+                    //    if (objUserActivation != null)
+                    //    {
+                    //        if (objUserActivation.ActivationStatus == "0")
+                    //        {
+                    //            if (Request.QueryString["stat"] == "activate")
+                    //            {
+                    //                if (Request.QueryString["id"] != null)
+                    //                {
+                    //                    //objUserActivation = objUserActivationRepository.GetUserActivationStatusbyid(Request.QueryString["id"].ToString());
+                    //                    if (objUserActivation.UserId.ToString() == Request.QueryString["id"].ToString())
+                    //                    {
+                    //                        objUserActivation.Id = objUserActivation.Id; //Guid.Parse(Request.QueryString["id"]);
+                    //                        objUserActivation.UserId = Guid.Parse(Request.QueryString["id"]);// objUserActivation.UserId;
+                    //                        objUserActivation.ActivationStatus = "1";
+                    //                        UserActivationRepository.Update(objUserActivation);
+
+
+
+                    //                    }
+                    //                    else
+                    //                    {
+                    //                        Session["ActivationError"] = "Wrong Activation Link please contact Admin!";
+                    //                        //ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Wrong Activation Link please contact Admin!');", true);
+                    //                        //Response.Redirect("ActivationLink.aspx");
+                    //                    }
+                    //                }
+                    //                else
+                    //                {
+                    //                    Session["ActivationError"] = "Wrong Activation Link please contact Admin!";
+                    //                    //ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Wrong Activation Link please contact Admin!');", true);
+                    //                    //Response.Redirect("ActivationLink.aspx");
+                    //                }
+
+                    //            }
+                    //            else
+                    //            {
+                    //               // Response.Redirect("ActivationLink.aspx");
+                    //            }
+
+
+                    //        }
+                    //    }
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    Console.WriteLine(ex.Message);
+                    //    logger.Error(ex.StackTrace);
+                    //}
+                    //#endregion
+
+
 
                     #region Count Used Accounts
                     try
@@ -214,13 +241,59 @@ namespace SocialSuitePro
                     try
                     {
                         ArrayList lstads = objAdsRepo.getAdsForHome();
+                        if (lstads.Count < 1)
+                        {
+                            if (user.PaymentStatus.ToUpper() == "PAID")
+                            {
+
+                                bindads.InnerHtml = "<img src=\"../Contents/img/admin/ads.png\"  alt=\"\" >";
+                            }
+                            else
+                            {
+                                #region ADS Script
+                                bindads.InnerHtml = "<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>" +
+                                                    "<!-- socioboard -->" +
+                                                     "<ins class=\"adsbygoogle\"" +
+                                                      "style=\"display:inline-block;width:250px;height:250px\"" +
+                                                        "data-ad-client=\"ca-pub-7073257741073458\"" +
+                                                    "data-ad-slot=\"9533254693\"></ins>" +
+                                                    "<script>" +
+                                                "(adsbygoogle = window.adsbygoogle || []).push({});" +
+                                                "</script>";
+                                #endregion
+                            }
+                        }
+
+
                         foreach (var item in lstads)
                         {
                             Array temp = (Array)item;
-                            imgAds.ImageUrl = temp.GetValue(2).ToString();
+                            //imgAds.ImageUrl = temp.GetValue(2).ToString();
+                            if (user.PaymentStatus.ToUpper() == "PAID")
+                            {
+
+                                bindads.InnerHtml = "<img src=\"" + temp.GetValue(2).ToString() + "\"  alt=\"\" style=\"width:246px;height:331px\">";
+                            }
+                            else
+                            {
+                                #region ADS Script
+                                bindads.InnerHtml = "<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>" +
+                                                    "<!-- socioboard -->" +
+                                                     "<ins class=\"adsbygoogle\"" +
+                                                      "style=\"display:inline-block;width:250px;height:250px\"" +
+                                                        "data-ad-client=\"ca-pub-7073257741073458\"" +
+                                                    "data-ad-slot=\"9533254693\"></ins>" +
+                                                    "<script>" +
+                                                "(adsbygoogle = window.adsbygoogle || []).push({});" +
+                                                "</script>";
+                                #endregion
+                            }
                             break;
                             // ads.ImageUrl;
                         }
+
+
+
                     }
                     catch (Exception Err)
                     {
@@ -448,7 +521,7 @@ namespace SocialSuitePro
                     }
                 }
                 strArray = strArray.Substring(0, strArray.Length - 1) + "]";
-               
+
                 ArrayList alstTwtFeed = objtwttatsRepo.gettwtFeedsStatsHome(user.Id, 7);
                 ArrayList alstFBFeed = objfb.getFbFeedsStatsHome(user.Id);
                 strSentArray = "[";
@@ -474,7 +547,7 @@ namespace SocialSuitePro
                         else
                             strFbFeedCnt = alstFBFeed[i].ToString();
                         strSentArray = strSentArray + "[" + strFbFeedCnt + "," + strTwtFeedCnt + "],";
-                       // spanSent.InnerHtml = (int.Parse(strFbFeedCnt) + int.Parse(strTwtFeedCnt)).ToString();
+                        // spanSent.InnerHtml = (int.Parse(strFbFeedCnt) + int.Parse(strTwtFeedCnt)).ToString();
                         SentMsg_Counter += (int.Parse(strFbFeedCnt) + int.Parse(strTwtFeedCnt));
                     }
                     spanSent.InnerHtml = (SentMsg_Counter).ToString();
@@ -487,7 +560,7 @@ namespace SocialSuitePro
                     }
                 }
                 strSentArray = strSentArray.Substring(0, strSentArray.Length - 1) + "]";
-              
+
             }
             catch (Exception Err)
             {
@@ -580,14 +653,14 @@ namespace SocialSuitePro
                 if (profilecount < totalaccount)
                 {
                     Session["fbSocial"] = "a";
-                    fb_account.HRef = "http://www.facebook.com/dialog/oauth/?scope=publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,user_groups,offline_access&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
+                    fb_account.HRef = "http://www.facebook.com/dialog/oauth/?scope=publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,user_groups,offline_access,publish_actions,manage_pages&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
                     //fb_account.HRef = "http://www.facebook.com/dialog/oauth/?scope=publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,offline_access&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
                     // fb_cont.HRef = fb_account.HRef;
                     Response.Redirect(fb_account.HRef);
                 }
                 else
                 {
-                   // Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+                    // Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
                     ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Change the Plan to Add More Accounts');", true);
 
                 }
@@ -666,7 +739,7 @@ namespace SocialSuitePro
                 }
                 else
                 {
-                   // Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+                    // Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
                     ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Change the Plan to Add More Accounts');", true);
                 }
             }
@@ -712,7 +785,7 @@ namespace SocialSuitePro
                 }
                 else
                 {
-                   // Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+                    // Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
                     ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Change the Plan to Add More Accounts');", true);
                 }
             }
@@ -744,7 +817,7 @@ namespace SocialSuitePro
                 }
                 else
                 {
-                   // Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+                    // Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
 
                     ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Change the Plan to Add More Accounts');", true);
                 }
@@ -761,7 +834,7 @@ namespace SocialSuitePro
             try
             {
                 TimeSpan span = DateTime.Now.Subtract(registrationDate);
-                int totalDays= (int)span.TotalDays;
+                int totalDays = (int)span.TotalDays;
 
                 if (totalDays < 30)
                 {

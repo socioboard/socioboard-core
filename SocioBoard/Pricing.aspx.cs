@@ -33,10 +33,10 @@ namespace SocialSuitePro.MasterPage
                     }
                     else
                     {
-                        standardplan.HRef = "RegisterPage.aspx?type=" + AccountType.Standard.ToString();
-                        deluxeplan.HRef = "RegisterPage.aspx?type=" + AccountType.Deluxe.ToString();
-                        premiumplan.HRef = "RegisterPage.aspx?type=" + AccountType.Premium.ToString();
-                        freePlan.HRef = "RegisterPage.aspx?type=" + AccountType.Free.ToString();
+                        standardplan.HRef = "Registration.aspx?type=" + AccountType.Standard.ToString();
+                        deluxeplan.HRef = "Registration.aspx?type=" + AccountType.Deluxe.ToString();
+                        premiumplan.HRef = "Registration.aspx?type=" + AccountType.Premium.ToString();
+                        freePlan.HRef = "Registration.aspx?type=" + AccountType.Free.ToString();
                     }
                 }
             }

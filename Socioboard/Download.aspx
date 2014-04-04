@@ -1,5 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/socialsuite.Master" AutoEventWireup="true" CodeBehind="Download.aspx.cs" Inherits="SocioBoard.Download" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<style type="text/css">
+   
+    .features-page
+    {
+        font-family:Arial;
+        color:#fff;
+     }
+</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -42,6 +50,16 @@
         </a>
        </p>
       </li><!-- -->
+       <li class="g1-column g1-one-third g1-valign-top">
+       <p style="text-align: center;">
+        <a target="_blank" href="Enterprise.aspx" style=" color:#00ff0c;">
+         <img height="150" width="150" src="Contents/img/ssp/Download-icon-green-150x150.png" alt="Download-icon" class="aligncenter size-thumbnail wp-image-2312">
+        <br /><br />
+        <strong>Enterprise</strong>
+        </a>
+       </p>
+      </li><!-- -->
+
    </ul>
      <div class="g1-divider g1-divider--none g1-divider--noicon " id="g1-divider-1"></div>
           <span style="height:1.5em;" class="g1-space " id="g1-space-2"></span>

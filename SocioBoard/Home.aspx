@@ -4,8 +4,7 @@
     <script src="../Contents/js/Home.js" type="text/javascript"></script>
     <script src="Contents/js/SimplePopup.js" type="text/javascript"></script> 
  <style type="text/css">
-        .web_dialog_overlay
-        {
+.web_dialog_overlay {
             position: fixed;
             top: 0;
             right: 0;
@@ -185,7 +184,7 @@
 				</div>
 				<div class="sidebar-inner">
                 	<h1>Select Profile</h1>
-                    <span>to connected </span>SocioBoard<ul id="profile-connect" style="width:270px;">
+                    <span>to connect </span>SocioBoard<ul id="profile-connect" style="width:270px;">
 						<a id="A4" href="#" runat="server" onserverclick="AuthenticateFacebook"><li><img src="../Contents/img/admin/fbicon.png" alt="" /></li></a>
 						<a id="A5" href="#" runat="server" onserverclick="AuthenticateTwitter"><li><img src="../Contents/img/admin/twittericon.png" alt="" /></li></a>
 						<%--<li><a href="#" runat="server" onserverclick="AuthenticateTwitter"><img src="../Contents/img/admin/g+icon.png" alt=""/></a></li>--%>
@@ -197,8 +196,8 @@
                     </li>--%>
 					</ul>
 				</div>
-				<div class="sidebar-inner">
-                    <asp:Image ID="imgAds" runat="server" ImageUrl="../Contents/img/admin/ads.png"/>
+				<div class="sidebar-inner" id="bindads" runat="server">
+                    <%--<asp:Image ID="imgAds" runat="server" ImageUrl="../Contents/img/admin/ads.png"/>--%>
 					<%--<a href="#"><button data-dismiss="alert" class="close pull-right" type="button">×</button><img src="../Contents/img/admin/ads.png" alt="" height="221" width="221"></a>--%>
 				</div>
 			</div>

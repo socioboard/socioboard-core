@@ -399,7 +399,8 @@ function addAnotherProfileforMessage(id, network) {
 
 
             if (network == 'fb') {
-                divbind = '<div style="height:21px;width:auto;min-width:22%" class="btn span12" id="fb_' + userid[1] + '"  onclick="delProfilesFromMultiusers(this.id)" ><img src="../Contents/img/facebook.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" class="close pull-right">×</span></div>';
+                //divbind = '<div style="height:21px;width:auto;min-width:22%" class="btn span12" id="fb_' + userid[1] + '"  onclick="delProfilesFromMultiusers(this.id)" ><img src="../Contents/img/facebook.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" class="close pull-right">×</span></div>';
+                 divbind = '<div style="height:21px;width:auto;min-width:22%" class="btn span12"  ><img src="../Contents/img/facebook.png" alt="" width="15"/>' + username + '<span id="fb_' + userid[1] + '"  onclick="delProfilesFromMultiusers(this.id)" data-dismiss="alert" class="close pull-right">×</span></div>';
 
             } else if (network == 'twt') {
                 divbind = '<div style="height:21px;width:auto;min-width:22%" class="btn span12" id="twt_' + userid[1] + '" onclick="delProfilesFromMultiusers(this.id)"><img src="../Contents/img/twitter.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" class="close pull-right">×</span></div></div>';
@@ -418,13 +419,14 @@ function addAnotherProfileforMessage(id, network) {
     try {
         if (innerhtmlofmultischeduler.indexOf(username) == -1) {
             if (network == 'fb') {
-                divbindforscheduler = '<div style="height:31px;" class="btn span12" id="fbscheduler_' + userid[1] + '"  onclick="delProfilesFromMultiusers(this.id)" ><img src="../Contents/img/facebook.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" class="close pull-right">×</span></div></div>';
+//                divbindforscheduler = '<div style="height:31px;" class="btn span12" id="fbscheduler_' + userid[1] + '"  onclick="delProfilesFromMultiusers(this.id)" ><img src="../Contents/img/facebook.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" class="close pull-right">×</span></div></div>';
+               divbindforscheduler = '<div style="height:31px;" class="btn span12" id="fbscheduler_' + userid[1] + '" ><img src="../Contents/img/facebook.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" id="fbscheduler_' + userid[1] + '"  onclick="delProfilesFromMultiusers(this.id)" class="close pull-right">×</span></div></div>';
 
             } else if (network == 'twt') {
-                divbindforscheduler = '<div style="height:31px;" class="btn span12" id="twtscheduler_' + userid[1] + '" onclick="delProfilesFromMultiusers(this.id)"><img src="../Contents/img/twitter.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" class="close pull-right">×</span></div></div>';
+                divbindforscheduler = '<div style="height:31px;" class="btn span12" id="twtscheduler_' + userid[1] + '" ><img src="../Contents/img/twitter.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" id="twtscheduler_' + userid[1] + '" onclick="delProfilesFromMultiusers(this.id)" class="close pull-right">×</span></div></div>';
 
             } else if (network == 'lin') {
-                divbindforscheduler = '<div style="height:31px;" class="btn span12" id="linscheduler_' + userid[1] + '" onclick="delProfilesFromMultiusers(this.id)"><img src="../Contents/img/link.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" class="close pull-right">×</span></div>';
+                divbindforscheduler = '<div style="height:31px;" class="btn span12" id="linscheduler_' + userid[1] + '" ><img src="../Contents/img/link.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" id="linscheduler_' + userid[1] + '" onclick="delProfilesFromMultiusers(this.id)" class="close pull-right">×</span></div>';
             }
         }
     } catch (e) {
@@ -458,6 +460,7 @@ function addAnotherProfileforMessage(id, network) {
 function closeonCompose() {
     debugger;
     $("#adddates_scheduler").html('');
+    document.getElementById('fileuploadImage').value = "";
     chkidforusertest.length = 0;
 
     try {
@@ -589,6 +592,8 @@ function SendMessage() {
         debugger;
       
         var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+        if(filesimage !=null)
+        {
         if (hasExtension('fileuploadImage', fileExtension)) {
                 fd.append('file', filesimage);
          }
@@ -597,6 +602,8 @@ function SendMessage() {
             alert("File Extention is not current");
             return;  
          }
+         }
+
         } 
         catch (e) {
 
@@ -604,7 +611,7 @@ function SendMessage() {
 
     try {
         var message = $("#textareavaluetosendmessage").val();
-        if (message != '') {
+        if (message != ''|| filesimage !=null) {
 
 
             $("#sendMessageBtn").html('<img src="../Contents/img/325.gif" alt="" />');

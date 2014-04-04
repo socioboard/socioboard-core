@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7051E5B4-23D1-4C8F-A459-D66AD79BCDF9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GlobusTwitterLib</RootNamespace>
+    <AssemblyName>GlobusTwitterLib</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.Core\TwitterErrorConroller.cs" />
+    <Compile Include="App.Core\TwitterFriendsController.cs" />
+    <Compile Include="App.Core\TwitterSearchController.cs" />
+    <Compile Include="App.Core\TwitterUserController.cs" />
+    <Compile Include="Authentication\BasicAuth.cs" />
+    <Compile Include="Authentication\IAuthentication.cs" />
+    <Compile Include="Authentication\OAuthBase.cs" />
+    <Compile Include="Authentication\oAuthTwitter.cs" />
+    <Compile Include="GlobalEnums.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Twitter.Core\AccountMethods\Account.cs" />
+    <Compile Include="App.Core\Globals.cs" />
+    <Compile Include="App.Core\TwitterUser.cs" />
+    <Compile Include="App.Core\TwitterWebRequest.cs" />
+    <Compile Include="Twitter.Core\DirectMessageMethods\DirectMessage.cs" />
+    <Compile Include="Twitter.Core\FriendshipMethods\Friendship.cs" />
+    <Compile Include="Twitter.Core\SearchMethods\Search.cs" />
+    <Compile Include="Twitter.Core\SocialGraphMethods\SocialGraph.cs" />
+    <Compile Include="Twitter.Core\StatusMethods\Status.cs" />
+    <Compile Include="Twitter.Core\TimeLineMethods\TimeLine.cs" />
+    <Compile Include="Twitter.Core\UserMethods\Users.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Twitter.Core\BlockMethods\" />
+    <Folder Include="Twitter.Core\FavoriteMethods\" />
+    <Folder Include="Twitter.Core\HelpMethods\" />
+    <Folder Include="Twitter.Core\ListMembersMethods\" />
+    <Folder Include="Twitter.Core\ListMethods\" />
+    <Folder Include="Twitter.Core\ListSubscribersMethods\" />
+    <Folder Include="Twitter.Core\LocalTrendsMethods\" />
+    <Folder Include="Twitter.Core\NotificationMethods\" />
+    <Folder Include="Twitter.Core\OAuthMethods\" />
+    <Folder Include="Twitter.Core\SavedSearchesMethods\" />
+    <Folder Include="Twitter.Core\SpamReportingMethods\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

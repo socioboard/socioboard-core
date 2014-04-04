@@ -39,6 +39,8 @@ namespace SocialSuitePro
                     string password = Request.QueryString["password"];
                     SocioBoard.Helper.SessionFactory.configfilepath = Server.MapPath("~/hibernate.cfg.xml");
                     UserRepository userrepo = new UserRepository();
+                    LoginLogs objLoginLogs = new LoginLogs();
+                    LoginLogsRepository objLoginLogsRepository = new LoginLogsRepository();
                     User user = userrepo.GetUserInfo(email, password);
                     if (user == null)
                     {
@@ -54,6 +56,11 @@ namespace SocialSuitePro
                             {
                                 SocioBoard.Domain.User.lstUser.Add((User)Session["LoggedUser"]);
                                 Application["OnlineUsers"] = SocioBoard.Domain.User.lstUser;
+                                objLoginLogs.Id = new Guid();
+                                objLoginLogs.UserId = user.Id;
+                                objLoginLogs.UserName = user.UserName;
+                                objLoginLogs.LoginTime = DateTime.Now.AddHours(11.50);
+                                objLoginLogsRepository.Add(objLoginLogs);
                             }
                             Response.Write("user");
                         }
@@ -127,7 +134,7 @@ namespace SocialSuitePro
                         objUserPackageRelationRepository.AddUserPackageRelation(objUserPackageRelation);
 
 
-                        SocioBoard.Helper.MailSender.SendEMail(user.UserName , user.Password, user.EmailId, objUserActivation.Id.ToString());
+                        SocioBoard.Helper.MailSender.SendEMail(user.UserName, user.Password, user.EmailId, user.AccountType.ToString(), user.Id.ToString());
 
 
 

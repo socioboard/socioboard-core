@@ -95,7 +95,7 @@ namespace SocioBoard.Message
                     {
                         try
                         {
-                            profiles += "<ul><li><a id=\"checkimg_" + i + "\" href=\"#\" onclick=\"checkprofile('" + item.FbUserId + "','message','facebook');\"><img src=\"../Contents/img/admin/fbicon.png\"  width=\"15\" height=\"15\" alt=\"\" >" + item.FbUserName + "</a></li>";
+                            profiles += "<ul><li><a id=\"checkimg_" + i + "\" href=\"#\" onclick=\"checkprofile('checkimg_" + i + "','" + item.FbUserId + "','message','facebook');\"><img src=\"../Contents/img/admin/fbicon.png\"  width=\"15\" height=\"15\" alt=\"\" >" + item.FbUserName + "</a></li>";
                             i++;
                         }
                         catch (Exception ex)
@@ -114,7 +114,7 @@ namespace SocioBoard.Message
                     {
                         try
                         {
-                            profiles += "<ul><li><a href=\"#\" id=\"checkimg_" + i + "\" onclick=\"checkprofile('" + item.TwitterUserId + "','message','twitter');\"><img src=\"../Contents/img/admin/twittericon.png\"  width=\"15\" height=\"15\" alt=\"\" >" + item.TwitterScreenName + "</a></li>";
+                            profiles += "<ul><li><a href=\"#\" id=\"checkimg_" + i + "\" onclick=\"checkprofile('checkimg_" + i + "','" + item.TwitterUserId + "','message','twitter');\"><img src=\"../Contents/img/admin/twittericon.png\"  width=\"15\" height=\"15\" alt=\"\" >" + item.TwitterScreenName + "</a></li>";
                             i++;
                         }
                         catch (Exception ex)
@@ -130,7 +130,7 @@ namespace SocioBoard.Message
                     {
                         try
                         {
-                            profiles += "<ul><li><a href=\"#\" id=\"checkimg_" + i + "\" onclick=\"checkprofile('" + item.GpUserId + "','message','googleplus');\"><img src=\"../Contents/img/google_plus.png\"  width=\"15\" height=\"15\" alt=\"\" >" + item.GpUserName + "</a></li>";
+                            profiles += "<ul><li><a href=\"#\" id=\"checkimg_" + i + "\" onclick=\"checkprofile('checkimg_" + i + "','" + item.GpUserId + "','message','googleplus');\"><img src=\"../Contents/img/google_plus.png\"  width=\"15\" height=\"15\" alt=\"\" >" + item.GpUserName + "</a></li>";
                             i++;
                         }
                         catch (Exception esx)
@@ -286,7 +286,7 @@ namespace SocioBoard.Message
                             if (item.SocialGroup == "twitter")
                             {
                                 message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img id=\"formprofileurl_" + sorteddatacount + "\" onclick=\"detailsprofile(this.alt);\" src=\"" + item.ImgUrl + "\" height=\"48\" width=\"48\" alt=\"\" title=\"\" />" +
-                                             "<a href=\"#\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/twticon.png\" width=\"16\" height=\"16\" alt=\"\"></a></div>" +
+                                             "<a href=\"#\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/twticon.png\" width=\"16\" height=\"16\" alt=\"\" onclick=\"detailsprofile(this.alt);\"></a></div>" +
                                              "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>" + item.Message + "</p>" +
                                                  "<div class=\"message-list-info\"><span><a href=\"#\" id=\"rowname_" + sorteddatacount + "\" onclick=\"detailsprofile(" + item.ProfileId + ");\">" + item.ProfileId + "</a> " + item.CreatedDateTime + "</span>" +
                                                  "<div class=\"scl\">" +
@@ -295,7 +295,7 @@ namespace SocioBoard.Message
                             else if (item.SocialGroup == "facebook")
                             {
                                 message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img id=\"formprofileurl_" + sorteddatacount + "\" onclick=\"detailsprofile(this.alt);\" src=\"" + item.ImgUrl + "\" height=\"48\" width=\"48\" alt=\"\" title=\"\" />" +
-                                            "<a href=\"#\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/fb_icon.png\" width=\"16\" height=\"16\" alt=\"\"></a></div>" +
+                                            "<a href=\"#\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/fb_icon.png\" width=\"16\" height=\"16\" alt=\"\" onclick=\"detailsprofile(this.alt);\"></a></div>" +
                                             "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>" + item.Message + "</p>" +
                                                 "<div class=\"message-list-info\"><span><a href=\"#\" id=\"rowname_" + sorteddatacount + "\" onclick=\"getFacebookProfiles(" + item.ProfileId + ");\">" + item.ProfileId + "</a> " + item.CreatedDateTime + "</span>" +
                                                 "<div class=\"scl\">" +
@@ -305,7 +305,7 @@ namespace SocioBoard.Message
                             else if (item.SocialGroup == "googleplus")
                             {
                                 message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img id=\"formprofileurl_" + sorteddatacount + "\" onclick=\"detailsprofile(this.alt);\" src=\"" + item.ImgUrl + "\" height=\"48\" width=\"48\" alt=\"\" title=\"\" />" +
-                                            "<a href=\"#\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/google_plus.png\" width=\"16\" height=\"16\" alt=\"\"></a></div>" +
+                                            "<a href=\"#\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/google_plus.png\" width=\"16\" height=\"16\" alt=\"\" onclick=\"detailsprofile(this.alt);></a></div>" +
                                             "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>" + item.Message + "</p>" +
                                                 "<div class=\"message-list-info\"><span><a href=\"#\" id=\"rowname_" + sorteddatacount + "\" onclick=\"detailsprofile(" + item.ProfileId + ");\">" + item.ProfileId + "</a> " + item.CreatedDateTime + "</span>" +
                                                 "<div class=\"scl\">" +
@@ -352,6 +352,11 @@ namespace SocioBoard.Message
                         if (!objArchiveRepo.checkArchiveMessageExists(user.Id, am.MessageId))
                         {
                             objArchiveRepo.AddArchiveMessage(am);
+                            Response.Write("Message Archive Successfully");
+                        }
+                        else
+                        {
+                            Response.Write("Message Already in Archive");
                         }
                     }
                 }
@@ -533,6 +538,7 @@ namespace SocioBoard.Message
 
         public string BindData(DataTable dt)
         {
+            string message = string.Empty;
             try
             {
                 if (Session["CountMessages"] != null)
@@ -540,7 +546,7 @@ namespace SocioBoard.Message
                     string count = Convert.ToString((int)Session["CountMessages"]);
                     if (count == "0")
                     {
-
+                        //message = "No Message found";
 
                     }
 
@@ -552,7 +558,7 @@ namespace SocioBoard.Message
                 Console.WriteLine(ex.Message);
             }
 
-            string message = string.Empty;
+            //string message = string.Empty;
             DataView dv = dt.DefaultView;
             dv.Sort = "ReadStatus ,MessageDate desc";
             DataTable sortedDT = dv.ToTable();
@@ -705,6 +711,7 @@ namespace SocioBoard.Message
 
                 }
             }
+            
             return message;
 
 

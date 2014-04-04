@@ -19,6 +19,7 @@ function facebookgroupdetails(gid, fbUserId) {
         // data: 'blog_id=' + blog_id + '&type=C_GetAllComment',
         success: function (message) {
 
+            $('div .alert_suite_title > a').attr("gid", gid);
             debugger;
             if (message != "") {
                 //  console.log(datain["data"]);
@@ -32,7 +33,7 @@ function facebookgroupdetails(gid, fbUserId) {
                                 + '<img src="http://graph.facebook.com/' + val.from.id + '/picture?type=small"></a>'
                             + '<div class="storyInnerContent">'
                                 + '<div class="actordescription">'
-                                    + '<a class="passiveName">' + val.from.name + '</a> updated the description.'
+                                    + '<a href="http://facebook.com/' + val.from.id + '" target="_blank" class="passiveName">' + val.from.name + '</a> updated the description.'
                                + '</div>'
                                 + '<div class="messagebody">' + val.message + '</div>'
                             + '</div>'

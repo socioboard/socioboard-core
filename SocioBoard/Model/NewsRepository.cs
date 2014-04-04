@@ -10,18 +10,25 @@ namespace SocioBoard.Model
 {
     public class NewsRepository : INewsRepository
     {
+
+        /// <AddNews>
+        /// Add New News
+        /// </summary>
+        /// <param name="news">Set Values in a News Class Property and Pass the Object of News Class.(Domein.News)</param>
         public void AddNews(News news)
         {
             try
             {
+                //Creates a database connection and opens up a session
                 using (NHibernate.ISession session = SessionFactory.GetNewSession())
                 {
+                    //After Session creation, start Transaction. 
                     using (NHibernate.ITransaction transaction = session.BeginTransaction())
                     {
                         session.Save(news);
                         transaction.Commit();
-                    }
-                }
+                    }//End Transaction
+                }//End Session
             }
             catch (Exception ex)
             {
@@ -30,14 +37,22 @@ namespace SocioBoard.Model
         }
 
 
+        /// <DeleteNews>
+        /// Delete news
+        /// </summary>
+        /// <param name="newsid">News id.(Guid)</param>
+        /// <returns>Return integer 1 for true and 0 for false.(int)</returns>
         public int DeleteNews(Guid newsid)
         {
+            //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
+                //After Session creation, start Transaction. 
                 using (NHibernate.ITransaction transaction = session.BeginTransaction())
                 {
                     try
                     {
+                        //Proceed action, to delete news.
                         NHibernate.IQuery query = session.CreateQuery("delete from News where Id = :newsid")
                                         .SetParameter("newsid", newsid);
                         int isUpdated = query.ExecuteUpdate();
@@ -49,20 +64,28 @@ namespace SocioBoard.Model
                         Console.WriteLine(ex.StackTrace);
                         return 0;
                     }
-                }
-            }
+                }//End Transaction
+            }//End Session
         }
 
+
+        /// <UpdateNews>
+        /// Update News
+        /// </summary>
+        /// <param name="news">Set the values in a News Class Property and Pass the Object of News Class.(Domein.News)</param>
         public void UpdateNews(News news)
         {
             try
             {
+                //Creates a database connection and opens up a session
                 using (NHibernate.ISession session = SessionFactory.GetNewSession())
                 {
+                    //After Session creation, start Transaction. 
                     using (NHibernate.ITransaction transaction = session.BeginTransaction())
                     {
                         try
                         {
+                            //Proceed action, to update details of news.
                             session.CreateQuery("Update News set NewsDetail =:newsdetail,ExpiryDate=:expirydate,Status=:status where Id = :newsid")
                                 .SetParameter("newsdetail", news.NewsDetail)
                                 .SetParameter("status", news.Status)
@@ -70,16 +93,14 @@ namespace SocioBoard.Model
                                 .SetParameter("expirydate", news.ExpiryDate)
                                 .ExecuteUpdate();
                             transaction.Commit();
-
-
                         }
                         catch (Exception ex)
                         {
                             Console.WriteLine(ex.StackTrace);
                             // return 0;
                         }
-                    }
-                }
+                    }//End Transaction
+                }//End Session
             }
             catch (Exception ex)
             {
@@ -123,13 +144,19 @@ namespace SocioBoard.Model
         //  }
 
 
+        /// <getAllNews>
+        /// Get all news
+        /// </summary>
+        /// <returns>Return object of News Class with  value of each member in the form of list.(List<News>)</returns>
         public List<News> getAllNews()
         {
             List<News> alstFBAccounts = new List<News>();
             try
             {
+                //Creates a database connection and opens up a session
                 using (NHibernate.ISession session = SessionFactory.GetNewSession())
                 {
+                    //After Session creation, start Transaction. 
                     using (NHibernate.ITransaction transaction = session.BeginTransaction())
                     {
                         alstFBAccounts = session.CreateQuery("from News").List<News>().ToList<News>();
@@ -141,9 +168,8 @@ namespace SocioBoard.Model
                         //    alstFBAccounts.Add(item);
                         //}
 
-
-                    }
-                }
+                    }//End Transaction
+                }//End Session
             }
             catch (Exception ex)
             {
@@ -152,14 +178,23 @@ namespace SocioBoard.Model
             return alstFBAccounts;
         }
 
+
+        /// <checkNewsExists>
+        /// Check the existing news
+        /// </summary>
+        /// <param name="newsdetail">News detail. (string)</param>
+        /// <returns>True or False.(bool)</returns>
         public bool checkNewsExists(string newsdetail)
         {
+            //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
+                //After Session creation, start Transaction. 
                 using (NHibernate.ITransaction transaction = session.BeginTransaction())
                 {
                     try
                     {
+                        //Proceed action, to get details of news.
                         NHibernate.IQuery query = session.CreateQuery("from News where NewsDetail =:newsdetail");
                         query.SetParameter("newsdetail", newsdetail);
                         var result = query.UniqueResult();
@@ -176,18 +211,27 @@ namespace SocioBoard.Model
                     }
 
 
-                }
-            }
+                }//End Transaction
+            }//End Session
         }
 
+
+        /// <checkNewsExists>
+        /// Check the news details is exist or not.
+        /// </summary>
+        /// <param name="newsid">News id. (Guid)</param>
+        /// <returns>True or False. (bool)</returns>
         public bool checkNewsExists(Guid newsid)
         {
+            //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
+                //After Session creation, start Transaction. 
                 using (NHibernate.ITransaction transaction = session.BeginTransaction())
                 {
                     try
                     {
+                        //Proceed action, to find news by id.
                         NHibernate.IQuery query = session.CreateQuery("from News where Id =:newsid");
                         query.SetParameter("newsid", newsid);
                         var result = query.UniqueResult();
@@ -204,18 +248,27 @@ namespace SocioBoard.Model
                     }
 
 
-                }
-            }
+                }//End Transaction
+            }//End Session
         }
 
+
+        /// <getNewsDetails>
+        /// Get the all info of news by news details.
+        /// </summary>
+        /// <param name="newsdetail">New details.</param>
+        /// <returns>Return object of News Class with  all news info.(List<News>)</returns>
         public News getNewsDetails(string newsdetail)
         {
+            //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
+                //After Session creation, start Transaction. 
                 using (NHibernate.ITransaction transaction = session.BeginTransaction())
                 {
                     try
                     {
+                        //Proceed action, to get the all info of news by news details.
                         NHibernate.IQuery query = session.CreateQuery("from Package where NewsDetail=:newsdetail");
                         query.SetParameter("newsdetail", newsdetail);
                         News grou = query.UniqueResult<News>();
@@ -228,21 +281,27 @@ namespace SocioBoard.Model
                     }
 
 
-                }
-            }
+                }//End Transaction
+            }//End Session
         }
 
 
-
-
+        /// <getNewsDetailsbyId>
+        /// Get News Details by Id
+        /// </summary>
+        /// <param name="newsid">News id. (Guid)</param>
+        /// <returns>Return object of News Class with  all news info.(List<News>)</returns>
         public News getNewsDetailsbyId(Guid newsid)
         {
+            //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
+                //After Session creation, start Transaction. 
                 using (NHibernate.ITransaction transaction = session.BeginTransaction())
                 {
                     try
                     {
+                        //Proceed action, to get news info by news id.
                         NHibernate.IQuery query = session.CreateQuery("from News where Id=:newsid");
 
                         query.SetParameter("newsid", newsid);
@@ -256,19 +315,27 @@ namespace SocioBoard.Model
                     }
 
 
-                }
-            }
+                }//End Transaction
+            }//End Session
         }
 
+
+        /// <getNewsForHome>
+        /// Get News For Home
+        /// </summary>
+        /// <returns>Return object of News Class with  all news info.(List<News>)</returns>
         public News getNewsForHome()
         {
+            //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
+                //After Session creation, start Transaction. 
                 using (NHibernate.ITransaction transaction = session.BeginTransaction())
                 {
                     News nws = new News();
                     try
                     {
+                        //Proceed action to get all home news.
                         var query = session.CreateSQLQuery("Select Id,NewsDetail,Status from News Where ExpiryDate>CURDATE() and Status=1 order by Entrydate Desc");
                         foreach (var item in query.List())
                         {
@@ -285,8 +352,8 @@ namespace SocioBoard.Model
                         Console.Write(Err.StackTrace);
                     }
                     return nws;
-                }
-            }
+                }//End Transaction
+            }//End Session
         }
     }
 }

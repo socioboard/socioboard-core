@@ -23,6 +23,7 @@ namespace SocialSuitePro
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
             oAuthToken objToken = new oAuthToken();
             GplusHelper objGpHelper = new GplusHelper();
             UserRepository objUserRepo = new UserRepository();
@@ -106,10 +107,6 @@ namespace SocialSuitePro
 
                                                 Response.Redirect("Default.aspx");
                                             }
-
-
-
-
                                         }
                                     }
                                     else
@@ -117,6 +114,7 @@ namespace SocialSuitePro
                                         user.EmailId = objgpAcc.EmailId;
                                         user.UserName = objgpAcc.GpUserName;
                                         user.ProfileUrl = objgpAcc.GpProfileImage;
+                                        user.UserStatus = 1;
                                         UserRepository.Add(user);
                                     }
                                     Session["LoggedUser"] = user;
@@ -135,7 +133,8 @@ namespace SocialSuitePro
                             {
                                 if (Session["login"].ToString() == "googleplus")
                                 {
-                                    Response.Redirect("Pricing.aspx");
+                                   // Response.Redirect("Pricing.aspx");
+                                    Response.Redirect("NetworkLogin.aspx?type=Free");
                                 }
                             }
                             else

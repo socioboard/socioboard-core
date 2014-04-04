@@ -152,6 +152,12 @@ $(function () {
             box.hide();
         }
     });
+    $('body').click(function (login) {
+        if (!($(login.target).parent('#addico').length > 0)) {
+            button.removeClass('active');
+            box.hide();
+        }
+    });
 });
 
 

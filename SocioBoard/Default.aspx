@@ -35,8 +35,7 @@
             <div class="trial-butn">
                 <a href="../Pricing.aspx">
                     <img src="../Contents/img/ssp/trail-butn.png" alt="" /></a><br />
-                No Credit Card Required 
-                
+                    No Credit Card Required                
             </div>
             <div class="clear">
             </div>
@@ -47,9 +46,8 @@
             </ul>
         </div>
     </div>
-    <div class="anim-banner-container" style="position: relative; overflow: hidden;"
-        id="p1">
-        <div class="anim-banner-inner">
+    <div class="anim-banner-container" style="position: relative; overflow: hidden;" id="p1">
+        <div class="anim-banner-inner" style="height: 567px;">
             <h1>
                 Get On Board to See What Our Social Media Marketing Suite Can Do for You
 
@@ -59,8 +57,11 @@
                 People are talking about your brand. Why not leverage it? <br />
 
             Socioboard allows you to listen to, analyze and engage your followers in unusual ways across <br /> numerous social media accounts</p>
-            <div class="ban-static">
-                <img src="../Contents/img/ssp/slidegraph.png" alt="" /></div>
+            <div class="ban-static" style="margin-top: 35px;">
+               <div style=" float: left; width: 479px; margin-top: 44px;"><img width="400" src="../Contents/img/ssp/slidegraph.png" alt="" /></div>
+               <div style="width:600px; height:400px; float:right;">
+                 <iframe src="https://docs.google.com/file/d/0B9xugMIiRUj5cEZseDFqRUphdGs/preview" width="600" height="365" frameborder="0"></iframe>
+               </div>
             <%--<div class="ban-img">
                 <div class="mid-circle">
                     <div class="lang-txt">
@@ -97,6 +98,7 @@
                         &amp; bLOGS</a></span></div>
             </div>--%>
         </div>
+    </div>
     </div>
     <div class="content-sec-container" id="p2">
         <div class="arrow-2">
@@ -179,7 +181,7 @@
             Enjoy Socioboard risk-free for 30 days! <span><a href="Pricing.aspx">
                 <img src="../Contents/img/ssp/signup-butn.png" alt="" align="absmiddle" /></a></span>
         </div>
-        <div class="arrow">
+        <div class="arrowtop">
             <ul class="mainnav">
                 <li><a href="#p5"></a></li>
             </ul>

@@ -14,6 +14,7 @@ using SocioBoard.Domain;
 using SocioBoard.Model;
 using System.Collections.ObjectModel;
 using SocioBoard;
+using SocioBoard.Helper;
 namespace SocialSuitePro.Settings
 {
     public partial class PersonalSettings : System.Web.UI.Page
@@ -25,6 +26,24 @@ namespace SocialSuitePro.Settings
                 try
                 {
                     User user = (User)Session["LoggedUser"];
+
+                    #region for You can use only 30 days as Unpaid User
+
+                    if (user.PaymentStatus.ToLower() == "unpaid")
+                    {
+                        if (!SBUtils.IsUserWorkingDaysValid(user.CreateDate))
+                        {
+                            // ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('You can use only 30 days as Unpaid User !');", true);
+
+                            Session["GreaterThan30Days"] = "GreaterThan30Days";
+
+                            Response.Redirect("/Settings/Billing.aspx");
+                        }
+                    }
+
+                    Session["GreaterThan30Days"] = null;
+                    #endregion
+
                     if (user == null)
                         Response.Redirect("/Default.aspx");
 
@@ -70,6 +89,7 @@ namespace SocialSuitePro.Settings
                     userrepo.ChangePassword(changedpassword, user.Password, user.EmailId);
                     txtConfirmPassword.Text = string.Empty;
                     txtPassword.Text = string.Empty;
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Message", "alert('Your password has been changed successfully.')", true);
                 }
                 else
                 {
@@ -85,36 +105,44 @@ namespace SocialSuitePro.Settings
         protected void btnSave_Click(object sender, EventArgs e)
         {
 
-            User user = (User)Session["LoggedUser"];
-            if (imgfileupload.HasFile)
+            try
             {
-                if (imgfileupload.FileName != null)
+                User user = (User)Session["LoggedUser"];
+                if (imgfileupload.HasFile)
                 {
-                    //string[] strarr = imgfileupload.FileName.Split('.');
-                    ////imgfileupload.FileName
-                    string strarr = Path.GetExtension(imgfileupload.FileName);
-
-                    if (strarr.ToLower() == ".png" || strarr.ToLower() == ".jpeg" || strarr.ToLower() == ".jpg")
+                    if (imgfileupload.FileName != null)
                     {
+                        //string[] strarr = imgfileupload.FileName.Split('.');
+                        ////imgfileupload.FileName
+                        string strarr = Path.GetExtension(imgfileupload.FileName);
+
+                        if (strarr.ToLower() == ".png" || strarr.ToLower() == ".jpeg" || strarr.ToLower() == ".jpg")
+                        {
+
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please use jpeg ,jpg or png format image');", true);
+                            return;
+                        }
 
                     }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please use jpeg ,jpg or png format image');", true);
-                        return;
-                    }
 
+                    string path = Server.MapPath("~/Contents/img/user_img/" + imgfileupload.FileName);
+                    imgfileupload.SaveAs(path);
+                    user.ProfileUrl = "../Contents/img/user_img/" + imgfileupload.FileName;
                 }
-
-                string path = Server.MapPath("~/Contents/img/user_img/" + imgfileupload.FileName);
-                imgfileupload.SaveAs(path);
-                user.ProfileUrl = "../Contents/img/user_img/" + imgfileupload.FileName;
+                user.UserName = txtFirstName.Text + " " + txtLastName.Text;
+                user.TimeZone = ddlTimeZone.SelectedItem.Value;
+                UserRepository.Update(user);
+                Session["LoggedUser"] = user;
+                //Response.Redirect(Request.RawUrl);
             }
-            user.UserName = txtFirstName.Text + " " + txtLastName.Text;
-            user.TimeZone = ddlTimeZone.SelectedItem.Value;
-            UserRepository.Update(user);
-            Session["LoggedUser"] = user;
-            //Response.Redirect(Request.RawUrl);
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
             Response.Redirect("PersonalSettings.aspx");
         }
 

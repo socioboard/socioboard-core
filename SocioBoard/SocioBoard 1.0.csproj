@@ -33,12 +33,35 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CloudSponge">
+      <HintPath>lib\CloudSponge.dll</HintPath>
+    </Reference>
+    <Reference Include="CloudSpongeLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\CloudSpongeLib\bin\Debug\CloudSpongeLib.dll</HintPath>
+    </Reference>
     <Reference Include="Facebook">
       <HintPath>lib\Facebook.dll</HintPath>
     </Reference>
+    <Reference Include="GlobusGooglePlusLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\GlobusGooglePlusLib\bin\Debug\GlobusGooglePlusLib.dll</HintPath>
+    </Reference>
+    <Reference Include="GlobusInstagramLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\GlobusInstagramLib\GlobusInstagramLib\bin\Debug\GlobusInstagramLib.dll</HintPath>
+    </Reference>
+    <Reference Include="GlobusLinkedinLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\GlobusLinkedinLib\bin\Debug\GlobusLinkedinLib.dll</HintPath>
+    </Reference>
+    <Reference Include="GlobusTwitterLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\GlobusTwitterLib\bin\Debug\GlobusTwitterLib.dll</HintPath>
+    </Reference>
     <Reference Include="Hammock, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Hammock.dll</HintPath>
+      <HintPath>lib\Hammock.dll</HintPath>
     </Reference>
     <Reference Include="Iesi.Collections">
       <HintPath>lib\Iesi.Collections.dll</HintPath>
@@ -71,6 +94,10 @@
     <Reference Include="PayPalCoreSDK">
       <HintPath>lib\PayPalCoreSDK.dll</HintPath>
     </Reference>
+    <Reference Include="Recaptcha.Web, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Recaptcha.Web.dll</HintPath>
+    </Reference>
     <Reference Include="SendGridMail">
       <HintPath>lib\SendGridMail.dll</HintPath>
     </Reference>
@@ -96,15 +123,15 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="Winthusiasm.HtmlEditor, Version=1.9.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Winthusiasm.HtmlEditor.dll</HintPath>
+    <Reference Include="Winthusiasm.HtmlEditor">
+      <HintPath>..\SocialScoup\bin\Winthusiasm.HtmlEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="ActivationLink.aspx" />
     <Content Include="Admin\AddAdvertisement.aspx" />
+    <Content Include="Admin\Addcoupons.aspx" />
     <Content Include="Admin\AddNews.aspx" />
     <Content Include="Admin\AddNewsLetter.aspx" />
     <Content Include="Admin\AddPackage.aspx" />
@@ -114,18 +141,28 @@
     <Content Include="Admin\AdvImage\Penguins.jpg" />
     <Content Include="Admin\AdvImage\Tulips.jpg" />
     <Content Include="Admin\Ajaxadmin.aspx" />
+    <Content Include="Admin\AjaxLoginDetails.aspx" />
+    <Content Include="Admin\Ajaxscheduled.aspx" />
     <Content Include="Admin\Dashboard.aspx" />
     <Content Include="Admin\DashboardStats.aspx" />
     <Content Include="Admin\Default.aspx" />
+    <Content Include="Admin\EditCoupons.aspx" />
     <Content Include="Admin\EditProfileDetail.aspx" />
     <Content Include="Admin\EditUserDetail.aspx" />
+    <Content Include="Admin\LoginDetails.aspx" />
     <Content Include="Admin\ManageAdvertisment.aspx" />
+    <Content Include="Admin\Managecoupons.aspx" />
     <Content Include="Admin\ManageNews.aspx" />
     <Content Include="Admin\ManageNewsLetter.aspx" />
     <Content Include="Admin\ManagePackage.aspx" />
     <Content Include="Admin\OnlineUsers.aspx" />
     <Content Include="Admin\ProfileDetails.aspx" />
+    <Content Include="Admin\ScheduledMessageDetail.aspx" />
+    <Content Include="Admin\scheduling.aspx" />
     <Content Include="Admin\UserDetails.aspx" />
+    <Content Include="Admin\UserLoginDetails.aspx" />
+    <Content Include="Agency.aspx" />
+    <Content Include="Ajaxcoupon.aspx" />
     <Content Include="AjaxHome.aspx" />
     <Content Include="AjaxLogin.aspx" />
     <Content Include="Android.aspx" />
@@ -1915,6 +1952,7 @@
     <Content Include="Contents\css\bootstrap-datetimepicker.min.css" />
     <Content Include="Contents\css\bootstrap-responsive.min.css" />
     <Content Include="Contents\css\bootstrap.min.css" />
+    <Content Include="Contents\css\feature.css" />
     <Content Include="Contents\css\font-awesome-ie7.min.css" />
     <Content Include="Contents\css\font-awesome.min.css" />
     <Content Include="Contents\css\fonts.css" />
@@ -1955,6 +1993,7 @@
     <Content Include="Contents\img\6.png" />
     <Content Include="Contents\img\891.png" />
     <Content Include="Contents\img\AddBtn.png" />
+    <Content Include="Contents\img\address.png" />
     <Content Include="Contents\img\add_btn.png" />
     <Content Include="Contents\img\add_btn_hover.png" />
     <Content Include="Contents\img\admin\061.png" />
@@ -2107,6 +2146,7 @@
     <Content Include="Contents\img\archive.png" />
     <Content Include="Contents\img\arrows.png" />
     <Content Include="Contents\img\attechphoto.png" />
+    <Content Include="Contents\img\avathar-1.jpg" />
     <Content Include="Contents\img\avenue.png" />
     <Content Include="Contents\img\benefits-bg.png" />
     <Content Include="Contents\img\benefits.png" />
@@ -2197,6 +2237,7 @@
     <Content Include="Contents\img\heart-broken-small.png" />
     <Content Include="Contents\img\heart-dark-fill.png" />
     <Content Include="Contents\img\heart-dark-mask-outline02.png" />
+    <Content Include="Contents\img\help-icon.png" />
     <Content Include="Contents\img\hide.png" />
     <Content Include="Contents\img\hline-white.png" />
     <Content Include="Contents\img\home.png" />
@@ -2212,6 +2253,7 @@
     <Content Include="Contents\img\instagram\moment.png" />
     <Content Include="Contents\img\instagram_24X24.png" />
     <Content Include="Contents\img\instagram_24X24_grey.png" />
+    <Content Include="Contents\img\invite.png" />
     <Content Include="Contents\img\lightbox-btn-close.gif" />
     <Content Include="Contents\img\link.png" />
     <Content Include="Contents\img\linked_25X24.png" />
@@ -2251,9 +2293,14 @@
     <Content Include="Contents\img\norecord.png" />
     <Content Include="Contents\img\normal.jpg" />
     <Content Include="Contents\img\no_image_found.png" />
+    <Content Include="Contents\img\save.png" />
+    <Content Include="Contents\img\save_btn.png" />
     <Content Include="Contents\img\ssp\advanced_scheduling_publishing.png" />
     <Content Include="Contents\img\ssp\Alexey-V-Abramov1.jpg" />
     <Content Include="Contents\img\ssp\amazonaws.png" />
+    <Content Include="Contents\img\ssp\analyze1.png" />
+    <Content Include="Contents\img\ssp\analyze2.png" />
+    <Content Include="Contents\img\ssp\analyze3.png" />
     <Content Include="Contents\img\ssp\anim-left-pin.png" />
     <Content Include="Contents\img\ssp\anim-outline-1.png" />
     <Content Include="Contents\img\ssp\anim-outline-2.png" />
@@ -2261,6 +2308,8 @@
     <Content Include="Contents\img\ssp\anim-right-pin.png" />
     <Content Include="Contents\img\ssp\arrow.png" />
     <Content Include="Contents\img\ssp\arrow_top.png" />
+    <Content Include="Contents\img\ssp\attechphoto.png" />
+    <Content Include="Contents\img\ssp\attechphoto_hover.png" />
     <Content Include="Contents\img\ssp\azure.jpg" />
     <Content Include="Contents\img\ssp\banner-1.jpg" />
     <Content Include="Contents\img\ssp\banner-2.jpg" />
@@ -2269,7 +2318,9 @@
     <Content Include="Contents\img\ssp\disocvery_page.png" />
     <Content Include="Contents\img\ssp\disocvery_page1.png" />
     <Content Include="Contents\img\ssp\Download-icon-150x150.png" />
+    <Content Include="Contents\img\ssp\Download-icon-green-150x150.png" />
     <Content Include="Contents\img\ssp\effective_and_effi.png" />
+    <Content Include="Contents\img\ssp\enterprise.png" />
     <Content Include="Contents\img\ssp\facebook_32.png" />
     <Content Include="Contents\img\ssp\fb-icon.png" />
     <Content Include="Contents\img\ssp\feeds_page.png" />
@@ -2292,7 +2343,9 @@
     <Content Include="Contents\img\ssp\nammer-2.png" />
     <Content Include="Contents\img\ssp\naresh.jpg" />
     <Content Include="Contents\img\ssp\nav-icon.png" />
+    <Content Include="Contents\img\ssp\Newloader.gif" />
     <Content Include="Contents\img\ssp\people.png" />
+    <Content Include="Contents\img\ssp\phone-banner-new1.png" />
     <Content Include="Contents\img\ssp\phone-banner.png" />
     <Content Include="Contents\img\ssp\prompt_feeds.png" />
     <Content Include="Contents\img\ssp\publishing_page.png" />
@@ -2436,8 +2489,10 @@
     <Content Include="Contents\js\bootstrap.min.js" />
     <Content Include="Contents\js\canvasjs.min.js" />
     <Content Include="Contents\js\Chart.js" />
+    <Content Include="Contents\js\clickDesk.js" />
     <Content Include="Contents\js\dialog_box.js" />
     <Content Include="Contents\js\DT_bootstrap.js" />
+    <Content Include="Contents\js\easyResponsiveTabs.js" />
     <Content Include="Contents\js\excanvas.js" />
     <Content Include="Contents\js\exporting.js" />
     <Content Include="Contents\js\Feeds.js" />
@@ -2470,6 +2525,7 @@
     <Content Include="Contents\js\jquery-1.4.1-vsdoc.js" />
     <Content Include="Contents\js\jquery-1.4.1.js" />
     <Content Include="Contents\js\jquery-1.4.1.min.js" />
+    <Content Include="Contents\js\jquery-1.6.3.min.js" />
     <Content Include="Contents\js\jquery-1.7.2.js" />
     <Content Include="Contents\js\jquery-1.9.1.min.js" />
     <Content Include="Contents\js\jquery-2.0.1.min.js" />
@@ -2600,6 +2656,7 @@
     <Content Include="Contents\js\uploadify.css" />
     <Content Include="Contents\js\uploadify.swf" />
     <Content Include="Contents\js\UsersAndGroups.js" />
+    <Content Include="Contents\js\ZeroClipboard.js" />
     <Content Include="Contents\js\zoom.js" />
     <Content Include="Customers.aspx" />
     <Content Include="Disclaimer.aspx" />
@@ -2607,6 +2664,8 @@
     <Content Include="Download.aspx" />
     <Content Include="Engagement.aspx" />
     <Content Include="Enterprise.aspx" />
+    <Content Include="EnterPriseFailedPaypal.aspx" />
+    <Content Include="EnterPriseSuccessPaypal.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="FacebookManager.aspx" />
     <Content Include="FailedPaypal.aspx" />
@@ -2614,6 +2673,7 @@
     <Content Include="Feeds\AjaxFeeds.aspx" />
     <Content Include="Feeds\Feeds.aspx" />
     <Content Include="ForgotPassword.aspx" />
+    <Content Include="GetPremiumAccount.aspx" />
     <Content Include="Global.asax" />
     <Content Include="GoogleAnalyticsManager.aspx" />
     <Content Include="GplusManager.aspx" />
@@ -2621,7 +2681,12 @@
     <Content Include="Group\Group.aspx" />
     <Content Include="Group\Group1.aspx" />
     <Content Include="HelpDesk.aspx" />
+    <Content Include="Helper\Ajaxcontact.aspx" />
+    <Content Include="Helper\ajaxenterprise.aspx" />
+    <Content Include="Helper\Ajaxfacetwt.aspx" />
     <Content Include="Helper\AjaxHelper.aspx" />
+    <Content Include="Helper\AjaxInviteFrndsByCloudSponge.aspx" />
+    <Content Include="Helper\AjaxMailSender.aspx" />
     <Content Include="hibernate.cfg.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -2633,19 +2698,39 @@
     <Content Include="IPNHandler.aspx" />
     <Content Include="Layouts\discovery.htm" />
     <Content Include="Layouts\feedstab.htm" />
+    <Content Include="Layouts\Mails\FriendInvitation.htm" />
     <Content Include="Layouts\Mails\RegistrationMail.html" />
     <Content Include="Layouts\Mails\SendInvitation.htm" />
     <Content Include="Layouts\publish.htm" />
     <Content Include="lib\log4net.dll" />
+    <Content Include="lib\Recaptcha.Web.dll" />
     <Content Include="LinkedInManager.aspx" />
     <Content Include="log.txt" />
     <EmbeddedResource Include="Mappings\UserActivation.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\LoginLogs.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Coupon.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\UserRefRelation.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Invitation.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Content Include="Mobile.aspx" />
     <Content Include="Monitoring.aspx" />
     <Content Include="Partners.aspx" />
     <Content Include="Pricing.aspx" />
+    <Content Include="Referrals.aspx" />
+    <Content Include="Registration.aspx" />
+    <Content Include="Settings\Billing.aspx" />
+    <Content Include="SpreadTheLove.aspx" />
     <Content Include="SuccessPaypal.aspx" />
     <Content Include="WhitePapers.aspx" />
     <Content Include="Wiki.aspx" />
@@ -2799,8 +2884,6 @@
     <Content Include="NetworkLogin.aspx" />
     <Content Include="Privacy.aspx" />
     <Content Include="Publishing.aspx" />
-    <Content Include="RegisterPage.aspx" />
-    <Content Include="Registration.aspx" />
     <Content Include="Reports\AjaxReport.aspx" />
     <Content Include="Reports\FacebookReport.aspx" />
     <Content Include="Reports\GoogleAnalytics.aspx" />
@@ -2808,22 +2891,12 @@
     <Content Include="Reports\TeamReport.aspx" />
     <Content Include="Reports\TwitterReport.aspx" />
     <Content Include="Settings\AjaxInsertGroup.aspx" />
-    <Content Include="Settings\Billing.aspx" />
     <Content Include="Settings\BusinessSetting.aspx" />
     <Content Include="Settings\InviteMember.aspx" />
     <Content Include="Settings\PersonalSettings.aspx" />
     <Content Include="Settings\UsersAndGroups.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="TwitterManager.aspx" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -2846,6 +2919,13 @@
     </Compile>
     <Compile Include="Admin\AddAdvertisement.aspx.designer.cs">
       <DependentUpon>AddAdvertisement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Addcoupons.aspx.cs">
+      <DependentUpon>Addcoupons.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Addcoupons.aspx.designer.cs">
+      <DependentUpon>Addcoupons.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\AddNews.aspx.cs">
       <DependentUpon>AddNews.aspx</DependentUpon>
@@ -2882,6 +2962,20 @@
     <Compile Include="Admin\Ajaxadmin.aspx.designer.cs">
       <DependentUpon>Ajaxadmin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\AjaxLoginDetails.aspx.cs">
+      <DependentUpon>AjaxLoginDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AjaxLoginDetails.aspx.designer.cs">
+      <DependentUpon>AjaxLoginDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Ajaxscheduled.aspx.cs">
+      <DependentUpon>Ajaxscheduled.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Ajaxscheduled.aspx.designer.cs">
+      <DependentUpon>Ajaxscheduled.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2903,6 +2997,13 @@
     <Compile Include="Admin\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\EditCoupons.aspx.cs">
+      <DependentUpon>EditCoupons.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\EditCoupons.aspx.designer.cs">
+      <DependentUpon>EditCoupons.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\EditProfileDetail.aspx.cs">
       <DependentUpon>EditProfileDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2917,12 +3018,26 @@
     <Compile Include="Admin\EditUserDetail.aspx.designer.cs">
       <DependentUpon>EditUserDetail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\LoginDetails.aspx.cs">
+      <DependentUpon>LoginDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\LoginDetails.aspx.designer.cs">
+      <DependentUpon>LoginDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\ManageAdvertisment.aspx.cs">
       <DependentUpon>ManageAdvertisment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\ManageAdvertisment.aspx.designer.cs">
       <DependentUpon>ManageAdvertisment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Managecoupons.aspx.cs">
+      <DependentUpon>Managecoupons.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Managecoupons.aspx.designer.cs">
+      <DependentUpon>Managecoupons.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\ManageNews.aspx.cs">
       <DependentUpon>ManageNews.aspx</DependentUpon>
@@ -2959,12 +3074,49 @@
     <Compile Include="Admin\ProfileDetails.aspx.designer.cs">
       <DependentUpon>ProfileDetails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\ScheduledMessageDetail.aspx.cs">
+      <DependentUpon>ScheduledMessageDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ScheduledMessageDetail.aspx.designer.cs">
+      <DependentUpon>ScheduledMessageDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Scheduler\LoginLogsTracker.cs" />
+    <Compile Include="Admin\Scheduler\ScheduledTracker.cs" />
+    <Compile Include="Admin\scheduling.aspx.cs">
+      <DependentUpon>scheduling.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\scheduling.aspx.designer.cs">
+      <DependentUpon>scheduling.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\UserDetails.aspx.cs">
       <DependentUpon>UserDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\UserDetails.aspx.designer.cs">
       <DependentUpon>UserDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserLoginDetails.aspx.cs">
+      <DependentUpon>UserLoginDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserLoginDetails.aspx.designer.cs">
+      <DependentUpon>UserLoginDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agency.aspx.cs">
+      <DependentUpon>Agency.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agency.aspx.designer.cs">
+      <DependentUpon>Agency.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ajaxcoupon.aspx.cs">
+      <DependentUpon>Ajaxcoupon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ajaxcoupon.aspx.designer.cs">
+      <DependentUpon>Ajaxcoupon.aspx</DependentUpon>
     </Compile>
     <Compile Include="AjaxHome.aspx.cs">
       <DependentUpon>AjaxHome.aspx</DependentUpon>
@@ -3049,6 +3201,7 @@
     <Compile Include="Domain\Blog_Comments.cs" />
     <Compile Include="Domain\Blog_Posts.cs" />
     <Compile Include="Domain\BusinessSetting.cs" />
+    <Compile Include="Domain\Coupon.cs" />
     <Compile Include="Domain\DiscoverySearch.cs" />
     <Compile Include="Domain\Drafts.cs" />
     <Compile Include="Domain\FacebookAccount.cs" />
@@ -3096,6 +3249,7 @@
     <Compile Include="Domain\InstagramAccount.cs" />
     <Compile Include="Domain\InstagramComment.cs" />
     <Compile Include="Domain\InstagramFeed.cs" />
+    <Compile Include="Domain\Invitation.cs" />
     <Compile Include="Domain\IPackageRepository.cs" />
     <Compile Include="Domain\IRssFeedsRepository.cs" />
     <Compile Include="Domain\IRssReader.cs" />
@@ -3116,6 +3270,7 @@
     <Compile Include="Domain\LinkedInFeed.cs" />
     <Compile Include="Domain\LinkedInMessage.cs" />
     <Compile Include="Domain\Log.cs" />
+    <Compile Include="Domain\LoginLogs.cs" />
     <Compile Include="Domain\Messages.cs" />
     <Compile Include="Domain\News.cs" />
     <Compile Include="Domain\NewsLetter.cs" />
@@ -3138,6 +3293,7 @@
     <Compile Include="Domain\User.cs" />
     <Compile Include="Domain\UserActivation.cs" />
     <Compile Include="Domain\UserPackageRelation.cs" />
+    <Compile Include="Domain\UserRefRelation.cs" />
     <Compile Include="Domain\vwTwitterStats.cs" />
     <Compile Include="Download.aspx.cs">
       <DependentUpon>Download.aspx</DependentUpon>
@@ -3159,6 +3315,20 @@
     </Compile>
     <Compile Include="Enterprise.aspx.designer.cs">
       <DependentUpon>Enterprise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EnterPriseFailedPaypal.aspx.cs">
+      <DependentUpon>EnterPriseFailedPaypal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EnterPriseFailedPaypal.aspx.designer.cs">
+      <DependentUpon>EnterPriseFailedPaypal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EnterPriseSuccessPaypal.aspx.cs">
+      <DependentUpon>EnterPriseSuccessPaypal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EnterPriseSuccessPaypal.aspx.designer.cs">
+      <DependentUpon>EnterPriseSuccessPaypal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
@@ -3209,6 +3379,13 @@
     <Compile Include="ForgotPassword.aspx.designer.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GetPremiumAccount.aspx.cs">
+      <DependentUpon>GetPremiumAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GetPremiumAccount.aspx.designer.cs">
+      <DependentUpon>GetPremiumAccount.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -3254,12 +3431,50 @@
     <Compile Include="HelpDesk.aspx.designer.cs">
       <DependentUpon>HelpDesk.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Ajaxcontact.aspx.cs">
+      <DependentUpon>Ajaxcontact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Helper\Ajaxcontact.aspx.designer.cs">
+      <DependentUpon>Ajaxcontact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\ajaxenterprise.aspx.cs">
+      <DependentUpon>ajaxenterprise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Helper\ajaxenterprise.aspx.designer.cs">
+      <DependentUpon>ajaxenterprise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\Ajaxfacetwt.aspx.cs">
+      <DependentUpon>Ajaxfacetwt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Helper\Ajaxfacetwt.aspx.designer.cs">
+      <DependentUpon>Ajaxfacetwt.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Helper\AjaxHelper.aspx.cs">
       <DependentUpon>AjaxHelper.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Helper\AjaxHelper.aspx.designer.cs">
       <DependentUpon>AjaxHelper.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\AjaxInviteFrndsByCloudSponge.aspx.cs">
+      <DependentUpon>AjaxInviteFrndsByCloudSponge.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Helper\AjaxInviteFrndsByCloudSponge.aspx.designer.cs">
+      <DependentUpon>AjaxInviteFrndsByCloudSponge.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\AjaxMailSender.aspx.cs">
+      <DependentUpon>AjaxMailSender.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Helper\AjaxMailSender.aspx.designer.cs">
+      <DependentUpon>AjaxMailSender.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\captcha.ashx.cs">
+      <DependentUpon>captcha.ashx</DependentUpon>
     </Compile>
     <Compile Include="Helper\clsDemographic.cs" />
     <Compile Include="Helper\clsFeedsAndMessages.cs" />
@@ -3275,7 +3490,9 @@
     <Compile Include="Helper\MailHelper.cs" />
     <Compile Include="Helper\MailSender.cs" />
     <Compile Include="Helper\Payment.cs" />
-    <Compile Include="Helper\SBUtils.cs" />
+    <Compile Include="Helper\SBUtils.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Helper\SessionFactory.cs" />
     <Compile Include="Helper\TwitterHelper.cs" />
     <Compile Include="Helper\TwitterStatsHelper.cs" />
@@ -3384,6 +3601,7 @@
     <Compile Include="Model\Blog_CommentsRepository.cs" />
     <Compile Include="Model\Blog_PostsRepository.cs" />
     <Compile Include="Model\BusinessSettingRepository.cs" />
+    <Compile Include="Model\CouponRepository.cs" />
     <Compile Include="Model\DataTableGenerator.cs" />
     <Compile Include="Model\DiscoverySearchRepository.cs" />
     <Compile Include="Model\DraftsRepository.cs" />
@@ -3403,8 +3621,10 @@
     <Compile Include="Model\InstagramAccountRepository.cs" />
     <Compile Include="Model\InstagramCommentRepository.cs" />
     <Compile Include="Model\InstagramFeedRepository.cs" />
+    <Compile Include="Model\InvitationRepository.cs" />
     <Compile Include="Model\LinkedInAccountRepository.cs" />
     <Compile Include="Model\LinkedInFeedRepository.cs" />
+    <Compile Include="Model\LoginLogsRepository.cs" />
     <Compile Include="Model\LogRepository.cs" />
     <Compile Include="Model\NewsLetterRepository.cs" />
     <Compile Include="Model\NewsRepository.cs" />
@@ -3426,6 +3646,7 @@
     <Compile Include="Model\TwitterStatsRepository.cs" />
     <Compile Include="Model\UserActivationRepository.cs" />
     <Compile Include="Model\UserPackageRelationRepository.cs" />
+    <Compile Include="Model\UserRefRelationRepository.cs" />
     <Compile Include="Model\UserRepository.cs" />
     <Compile Include="Monitoring.aspx.cs">
       <DependentUpon>Monitoring.aspx</DependentUpon>
@@ -3470,12 +3691,12 @@
     <Compile Include="Publishing.aspx.designer.cs">
       <DependentUpon>Publishing.aspx</DependentUpon>
     </Compile>
-    <Compile Include="RegisterPage.aspx.cs">
-      <DependentUpon>RegisterPage.aspx</DependentUpon>
+    <Compile Include="Referrals.aspx.cs">
+      <DependentUpon>Referrals.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="RegisterPage.aspx.designer.cs">
-      <DependentUpon>RegisterPage.aspx</DependentUpon>
+    <Compile Include="Referrals.aspx.designer.cs">
+      <DependentUpon>Referrals.aspx</DependentUpon>
     </Compile>
     <Compile Include="Registration.aspx.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
@@ -3574,6 +3795,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SpreadTheLove.aspx.cs">
+      <DependentUpon>SpreadTheLove.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SpreadTheLove.aspx.designer.cs">
+      <DependentUpon>SpreadTheLove.aspx</DependentUpon>
     </Compile>
     <Compile Include="SuccessPaypal.aspx.cs">
       <DependentUpon>SuccessPaypal.aspx</DependentUpon>
@@ -3895,27 +4123,15 @@
     <None Include="Contents\fonts\tt0102m_-webfont.woff" />
     <None Include="Contents\js\multidatepicker\README.md" />
     <Content Include="MasterPage\adminSite.Master" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Helper\captcha.ashx" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GlobusMailLib\GlobusMailLib.csproj">
+    <ProjectReference Include="Library\GlobusMailLib\GlobusMailLib.csproj">
       <Project>{F0A38425-5313-4E83-9568-B6D9C1D6EFA6}</Project>
       <Name>GlobusMailLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SocioBoard\Library\GlobusGooglePlusLib\GlobusGooglePlusLib.csproj">
-      <Project>{910F101C-C7E0-47F9-BCB6-CD793362E818}</Project>
-      <Name>GlobusGooglePlusLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SocioBoard\Library\GlobusInstagramLib\GlobusInstagramLib\GlobusInstagramLib.csproj">
-      <Project>{FC2E4794-2CB4-4AAA-A0AD-5483C931B3F0}</Project>
-      <Name>GlobusInstagramLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SocioBoard\Library\GlobusLinkedinLib\GlobusLinkedinLib.csproj">
-      <Project>{DB6AB2D5-8BDD-46C5-AB04-E8313FA19007}</Project>
-      <Name>GlobusLinkedinLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SocioBoard\Library\GlobusTwitterLib\GlobusTwitterLib.csproj">
-      <Project>{7051E5B4-23D1-4C8F-A459-D66AD79BCDF9}</Project>
-      <Name>GlobusTwitterLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

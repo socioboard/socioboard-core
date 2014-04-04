@@ -4,7 +4,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>SocioBoard Admin</title>
+    <title> SocioBoard - Generate More leads on Social Media|  Social CRM | Social Media CMS</title>
+    <meta name="description" content="A new fast growing, advanced, easy, open-source social media marketing tool to engage your audience with great features such as live chat, news feed, timeline, profiles, events, notifications, likes, analytics, insights and much more hit the digital media marketing lately.Most applications in this domain have a very narrow and limited approach towards end users, people feel caught up in a whirlpool of using the same features without customization and scaling up. Socioboard plans to help users out of this narrow limiting vision of the current social media dashboards today."/>
+    <meta name="keywords" content="Social Media Management Software, Social Media Management tool, Open Source Social Media Management, Social Media Management"/>
     <asp:ContentPlaceHolder ID="head" runat="server">
   
     </asp:ContentPlaceHolder>
@@ -16,6 +18,9 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
 	
+
+
+
 	<!-- Bootstrap -->
 	<link href="../Contents/common/bootstrap/css/bootstrap.css" rel="stylesheet" />
 	<link href="../Contents/common/bootstrap/css/responsive.css" rel="stylesheet" />
@@ -65,6 +70,8 @@
 	<!-- LESS.js Library -->
 	<script src="../Contents/common/theme/scripts/plugins/system/less.min.js"></script>
     <script src="../Contents/js/googleanalytics.js" type="text/javascript"></script>
+    <script src="../Contents/js/clickDesk.js" type="text/javascript"></script>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -292,6 +299,7 @@
 								<li class=""><a href="../Admin/UserDetails.aspx"><span>Manage User</span></a></li>
 								<li class="active"><a href="../Admin/ProfileDetails.aspx"><span>Manage Profiles</span></a></li>
                                 <li class=" "><a href="../Admin/OnlineUsers.aspx"><span>Online Users</span></a></li>
+                                 <li class=" "><a href="../Admin/LoginDetails.aspx"><span>Login Details</span></a></li>
 							</ul>
 							
 						</li>
@@ -326,6 +334,22 @@
 							<ul class="collapse in" id="Ul3">
 								<li class=""><a href="../Admin/ManageAdvertisment.aspx"><span>Manage Advertisment</span></a></li>
 								<li class=" active"><a href="../Admin/AddAdvertisement.aspx"><span>Add Advertisment</span></a></li>
+							</ul>
+							
+						</li>
+                         <li class="hasSubmenu active">
+							<a data-toggle="collapse" href="#Ul4"><i></i><span>Services</span></a>
+							<ul class="collapse in" id="Ul4">
+								<li class=""><a href="../Admin/scheduling.aspx"><span>Scheduling Details</span></a></li>
+								<%--<li class=" active"><a href="#"><span>Manage scheduling</span></a></li>--%>
+							</ul>
+							
+						</li>
+                         <li class="hasSubmenu active">
+							<a data-toggle="collapse" href="#Ul4"><i></i><span>Coupon</span></a>
+							<ul class="collapse in" id="Ul5">
+								<li class=""><a href="../Admin/Addcoupons.aspx"><span>Entry Coupon</span></a></li>
+								<li class=" active"><a href="../Admin/Managecoupons.aspx"><span>Manage Coupons</span></a></li>
 							</ul>
 							
 						</li>

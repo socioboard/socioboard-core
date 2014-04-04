@@ -63,7 +63,7 @@ namespace SocialSuitePro.Reports
 
 
 
-               
+
 
                 if (user == null)
                     Response.Redirect("/Default.aspx");
@@ -82,7 +82,7 @@ namespace SocialSuitePro.Reports
                 }
                 catch (Exception Err)
                 {
-                     Console.Write(Err.StackTrace);
+                    Console.Write(Err.StackTrace);
                 }
                 try
                 {
@@ -111,7 +111,7 @@ namespace SocialSuitePro.Reports
                 try
                 {
                     FacebookAccountRepository fbAccRepo = new FacebookAccountRepository();
-                    FacebookFeedRepository fbFeedRepo=new FacebookFeedRepository();
+                    FacebookFeedRepository fbFeedRepo = new FacebookFeedRepository();
                     ArrayList arrfbProfile = fbAccRepo.getAllFacebookPagesOfUser(user.Id);
                     long talking = 0;
                     foreach (FacebookAccount item in arrfbProfile)
@@ -120,8 +120,8 @@ namespace SocialSuitePro.Reports
                         fb.AccessToken = item.AccessToken;
                         pagelikes = pagelikes + fbFeedRepo.countInteractions(item.UserId, item.FbUserId, 7);
                         dynamic talkingabout = fb.Get(item.FbUserId);
-                        talking = talking + talkingabout.talking_about_count;  
-                       // strinteractions = pagelikes.Count(); //(long.Parse(strinteractions) + pagelikes.talking_about_count).ToString();  
+                        talking = talking + talkingabout.talking_about_count;
+                        // strinteractions = pagelikes.Count(); //(long.Parse(strinteractions) + pagelikes.talking_about_count).ToString();  
                     }
                     talkingabtcount = (talking / 100) * arrfbProfile.Count;
                 }
@@ -131,17 +131,17 @@ namespace SocialSuitePro.Reports
                 }
                 try
                 {
-                    SocialProfilesRepository objsocioRepo=new SocialProfilesRepository();
+                    SocialProfilesRepository objsocioRepo = new SocialProfilesRepository();
                     profileCount = objsocioRepo.getAllSocialProfilesOfUser(user.Id).Count();
                 }
                 catch (Exception Err)
                 {
                     Console.Write(Err.StackTrace);
                 }
-                
+
                 var strgenderTwt = Session["twtGender"].ToString().Split(',');
-                divtwtMale.InnerHtml = strgenderTwt[0] +"%";
-                divtwtfeMale.InnerHtml = strgenderTwt[1]+"%";
+                divtwtMale.InnerHtml = strgenderTwt[0] + "%";
+                divtwtfeMale.InnerHtml = strgenderTwt[1] + "%";
             }
 
         }
@@ -153,32 +153,33 @@ namespace SocialSuitePro.Reports
                 SocioBoard.Domain.User user = (User)Session["LoggedUser"];
                 FacebookAccountRepository objfb = new FacebookAccountRepository();
                 TwitterMessageRepository objtwttatsRepo = new TwitterMessageRepository();
-                ArrayList alstfb = objfb.getFbMessageStats(user.Id,days);
+                ArrayList alstfb = objfb.getFbMessageStats(user.Id, days);
                 ArrayList alstTwt = objtwttatsRepo.gettwtMessageStats(user.Id, days);
                 strArray = "[";
-              
-                    for (int i = 0; i < 7; i++)
-                    {
-                        string strTwtCnt = string.Empty;
-                        string strFbCnt = string.Empty;
-                        if (alstTwt.Count <= i)
-                            strTwtCnt = "0";
-                        else
-                            strTwtCnt = alstTwt[i].ToString();
-                        if (alstfb.Count <= i)
-                            strFbCnt = "0";
-                        else
-                            strFbCnt = alstfb[i].ToString();
-                        strArray = strArray + "[" + strFbCnt + "," + strTwtCnt + "],";
-                        spanIncoming.InnerHtml = (int.Parse(strTwtCnt) + int.Parse(strFbCnt)).ToString();
-                    }
+                int _spanIncoming = 0;
+                for (int i = 0; i < 7; i++)
+                {
+                    string strTwtCnt = string.Empty;
+                    string strFbCnt = string.Empty;
+                    if (alstTwt.Count <= i)
+                        strTwtCnt = "0";
+                    else
+                        strTwtCnt = alstTwt[i].ToString();
+                    if (alstfb.Count <= i)
+                        strFbCnt = "0";
+                    else
+                        strFbCnt = alstfb[i].ToString();
+                    strArray = strArray + "[" + strFbCnt + "," + strTwtCnt + "],";
+                    //spanIncoming.InnerHtml = (int.Parse(strTwtCnt) + int.Parse(strFbCnt)).ToString();
+                    _spanIncoming = (int.Parse(strTwtCnt) + int.Parse(strFbCnt));
+                }
+                spanIncoming.InnerHtml = _spanIncoming.ToString();
+                strArray = strArray.Substring(0, strArray.Length - 1) + "]";
 
-                strArray = strArray.Substring(0,strArray.Length-1)+ "]";
-
-                 ArrayList alstTwtFeed = objtwttatsRepo.gettwtFeedsStats(user.Id,days);
-                ArrayList alstFBFeed = objfb.getFbFeedsStats(user.Id,days);
+                ArrayList alstTwtFeed = objtwttatsRepo.gettwtFeedsStats(user.Id, days);
+                ArrayList alstFBFeed = objfb.getFbFeedsStats(user.Id, days);
                 strSentArray = "[";
-
+                int _spanSent = 0;
                 if (alstFBFeed.Count > 0 && alstTwtFeed.Count > 0)
                 {
                     int alstSentCount = 0;
@@ -195,9 +196,10 @@ namespace SocialSuitePro.Reports
                         else
                             strFbFeedCnt = alstFBFeed[i].ToString();
                         strSentArray = strSentArray + "[" + strFbFeedCnt + "," + strTwtFeedCnt + "],";
-                        spanSent.InnerHtml = (int.Parse(strFbFeedCnt) + int.Parse(strTwtFeedCnt)).ToString();
+                        //spanSent.InnerHtml = (int.Parse(strFbFeedCnt) + int.Parse(strTwtFeedCnt)).ToString();
+                        _spanSent = (int.Parse(strFbFeedCnt) + int.Parse(strTwtFeedCnt));
                     }
-                
+                    spanSent.InnerHtml = (_spanSent).ToString();
                 }
                 if (alstFBFeed.Count == 0 || alstTwtFeed.Count == 0)
                 {
@@ -210,13 +212,13 @@ namespace SocialSuitePro.Reports
                 strSentArray = strSentArray.Substring(0, strSentArray.Length - 1) + "]";
 
                 TwitterStatsRepository objtwtStatsRepo = new TwitterStatsRepository();
-                ArrayList alstEng = objtwtStatsRepo.getAllTwitterStatsOfUser(user.Id,days);
+                ArrayList alstEng = objtwtStatsRepo.getAllTwitterStatsOfUser(user.Id, days);
                 int ii = 1;
                 strEng = "[";
                 foreach (var item in alstEng)
                 {
                     Array temp = (Array)item;
-                    strEng = strEng + "{ x: new Date(2012, "+ ii +", "+ ii +"), y:" + temp.GetValue(7) + "},";
+                    strEng = strEng + "{ x: new Date(2012, " + ii + ", " + ii + "), y:" + temp.GetValue(7) + "},";
                     ii++;
                 }
                 if (alstEng.Count == 0)
@@ -227,10 +229,10 @@ namespace SocialSuitePro.Reports
                     }
                 }
                 strEng = strEng.Substring(0, strEng.Length - 1) + "]";
-                
+
                 hmsgsent.InnerHtml = alstTwtFeed.Count.ToString();
                 hretweet.InnerHtml = objtwttatsRepo.getUserRetweetCount(user.Id).ToString();
-              
+
             }
             catch (Exception Err)
             {
@@ -247,11 +249,17 @@ namespace SocialSuitePro.Reports
                 ArrayList arrFbStats = objfbStatsRepo.getAllFacebookStatsOfUser(user.Id, days);
                 strFBArray = "[";
                 int intdays = 1;
+
+                // Get facebook page like ...
+                FacebookAccountRepository ObjAcFbAccount = new FacebookAccountRepository();
+                int TotalLikes = ObjAcFbAccount.getPagelikebyUserId(user.Id);
+
                 foreach (var item in arrFbStats)
                 {
                     Array temp = (Array)item;
                     strFBArray += int.Parse(temp.GetValue(3).ToString()) + int.Parse(temp.GetValue(4).ToString()) + ",";
-                    spanFbFriends.InnerHtml = (int.Parse(temp.GetValue(3).ToString()) + int.Parse(temp.GetValue(4).ToString())).ToString();
+                    //spanFbFriends.InnerHtml = (int.Parse(temp.GetValue(3).ToString()) + int.Parse(temp.GetValue(4).ToString())).ToString();
+                    spanFbFriends.InnerHtml = (TotalLikes).ToString();
                     intdays++;
                 }
                 if (intdays < 7)
@@ -261,8 +269,8 @@ namespace SocialSuitePro.Reports
                         strFBArray = strFBArray + "0,";
                     }
                 }
-                strFBArray = strFBArray.Substring(0, strFBArray.Length - 1)+"]";
-               // strFBArray += "]";
+                strFBArray = strFBArray.Substring(0, strFBArray.Length - 1) + "]";
+                // strFBArray += "]";
             }
             catch (Exception Err)
             {
@@ -276,16 +284,21 @@ namespace SocialSuitePro.Reports
             {
                 SocioBoard.Domain.User user = (User)Session["LoggedUser"];
                 TwitterStatsRepository objtwtStatsRepo = new TwitterStatsRepository();
-                ArrayList arrTwtStats = objtwtStatsRepo.getAllTwitterStatsOfUser(user.Id,days);
-                strTwtArray ="[";
+                ArrayList arrTwtStats = objtwtStatsRepo.getAllTwitterStatsOfUser(user.Id, days);
+                strTwtArray = "[";
                 int intdays = 1;
+                int NewTweet_Count = 0;
                 foreach (var item in arrTwtStats)
                 {
                     Array temp = (Array)item;
                     strTwtArray += (temp.GetValue(4)) + ",";
-                    spanTwtFollowers.InnerHtml = temp.GetValue(4).ToString();
-                    hTwtFollowers.InnerHtml = temp.GetValue(4).ToString();
+                    //spanTwtFollowers.InnerHtml = temp.GetValue(4).ToString();
+                    //hTwtFollowers.InnerHtml = temp.GetValue(4).ToString();
+                    NewTweet_Count += Convert.ToInt16(temp.GetValue(4));
                 }
+                spanTwtFollowers.InnerHtml = NewTweet_Count.ToString();
+                hTwtFollowers.InnerHtml = NewTweet_Count.ToString();
+
                 if (intdays < 7)
                 {
                     for (int j = 0; j < 7 - intdays; j++)
@@ -293,8 +306,8 @@ namespace SocialSuitePro.Reports
                         strTwtArray = strTwtArray + "0,";
                     }
                 }
-                strTwtArray = strTwtArray.Substring(0, strTwtArray.Length - 1) +"]";
-              //  strTwtArray += "]";
+                strTwtArray = strTwtArray.Substring(0, strTwtArray.Length - 1) + "]";
+                //  strTwtArray += "]";
             }
             catch (Exception Err)
             {
@@ -308,7 +321,7 @@ namespace SocialSuitePro.Reports
             {
                 SocioBoard.Domain.User user = (User)Session["LoggedUser"];
                 TwitterStatsRepository objtwtStatsRepo = new TwitterStatsRepository();
-                object arrTwtStats = objtwtStatsRepo.getFollowersAgeCount(user.Id,days);
+                object arrTwtStats = objtwtStatsRepo.getFollowersAgeCount(user.Id, days);
                 if (arrTwtStats != null)
                 {
                     string[] arr = ((IEnumerable)arrTwtStats).Cast<object>().Select(x => x.ToString()).ToArray();
@@ -333,61 +346,61 @@ namespace SocialSuitePro.Reports
         }
 
         public void getProfileCount()
-        { 
+        {
             SocioBoard.Domain.User user = (User)Session["LoggedUser"];
-            SocialProfilesRepository objProfile=new SocialProfilesRepository();
-            List<SocialProfile> lstProfile= objProfile.getAllSocialProfilesOfUser(user.Id);
+            SocialProfilesRepository objProfile = new SocialProfilesRepository();
+            List<SocialProfile> lstProfile = objProfile.getAllSocialProfilesOfUser(user.Id);
             strProfileCOunt = lstProfile.Count().ToString();
         }
 
         public void getFollowFollowersMonth()
-        { 
+        {
             SocioBoard.Domain.User user = (User)Session["LoggedUser"];
             TwitterStatsRepository objtwtStatsRepo = new TwitterStatsRepository();
-            ArrayList objtwtffMonth= objtwtStatsRepo.getFollowerFollowingCountMonth(user.Id);
-            string[,] arrMon = new string[12,3];
+            ArrayList objtwtffMonth = objtwtStatsRepo.getFollowerFollowingCountMonth(user.Id);
+            string[,] arrMon = new string[12, 3];
 
             for (int i = 0; i < objtwtffMonth.Count; i++)
             {
                 string month = string.Empty;
                 string monfollower = string.Empty;
                 string monfollowing = string.Empty;
-                string[] arr=new string[1];
+                string[] arr = new string[1];
                 try
                 {
                     arr = ((IEnumerable)objtwtffMonth[i]).Cast<object>().Select(x => x.ToString()).ToArray();
-                    int m = int.Parse(arr[2].ToString())-1;
+                    int m = int.Parse(arr[2].ToString()) - 1;
                     arrMon[m, 2] = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(int.Parse(arr[2].ToString()));
                     arrMon[m, 0] = arr[0];
                     arrMon[m, 1] = arr[1];
                 }
                 catch (Exception Err)
                 {
-                    
+
                 }
-                
+
             }
             for (int r = 0; r < 12; r++)
             {
                 if (arrMon[r, 2] == null)
                 {
-                    arrMon[r, 2] = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(r+1);
+                    arrMon[r, 2] = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(r + 1);
                     arrMon[r, 0] = "0";
                     arrMon[r, 1] = "0";
                 }
             }
-                for (int j = 0; j < 12; j++)
-                {
-                    strMonth = strMonth + "'" + arrMon[j, 2] + "',";
-                    strFollowerMonth += arrMon[j, 0] + ",";
-                    strFollowingMonth += arrMon[j, 1] + ",";
-                }
-                strFollowerMonth = "[" + strFollowerMonth.Substring(0, strFollowerMonth.Length - 1) + "]";
-            strFollowingMonth="["+strFollowingMonth.Substring(0,strFollowingMonth.Length-1) + "]";
+            for (int j = 0; j < 12; j++)
+            {
+                strMonth = strMonth + "'" + arrMon[j, 2] + "',";
+                strFollowerMonth += arrMon[j, 0] + ",";
+                strFollowingMonth += arrMon[j, 1] + ",";
+            }
+            strFollowerMonth = "[" + strFollowerMonth.Substring(0, strFollowerMonth.Length - 1) + "]";
+            strFollowingMonth = "[" + strFollowingMonth.Substring(0, strFollowingMonth.Length - 1) + "]";
             strMonth = "[" + strMonth.Substring(0, strMonth.Length - 1) + "]";
         }
 
-      
+
 
         protected void btnfifteen_Click(object sender, EventArgs e)
         {

@@ -20,5 +20,7 @@ namespace SocioBoard.Domain
         public string PayerEmail { get; set; }
         public string PaypalPaymentDate { get; set; }
         public string IPNTrackId { get; set; }
+        public string VersionType { get; set; }
+        public string DetailsInfo { get; set; }
     }
 }

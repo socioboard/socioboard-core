@@ -22,6 +22,7 @@ using System.Configuration;
 
 using SocioBoard.Helper;
 using SocioBoard;
+using GlobusTwitterLib.Twitter.Core.TweetMethods;
 
 namespace SocialSuitePro
 {
@@ -34,9 +35,11 @@ namespace SocialSuitePro
         //Manages oAuth Related Functionality of Twitter, part of GlobusTwitterLib
         oAuthTwitter OAuth = new oAuthTwitter(ConfigurationManager.AppSettings["consumerKey"], ConfigurationManager.AppSettings["consumerSecret"], ConfigurationManager.AppSettings["callbackurl"]);
 
+        oAuthTwitter OAuthNew = new oAuthTwitter(ConfigurationManager.AppSettings["consumerKey"], ConfigurationManager.AppSettings["consumerSecret"], ConfigurationManager.AppSettings["callbackurl"]);
+
         //SocioBoard Domain Class to store Twitter Data
         TwitterAccount twitterAccount = new TwitterAccount();
-
+        TwitterAccount newtwitterAccount = new TwitterAccount();
         //GlobusLib Class for managing Twitter Users
         TwitterUserController twtUserController = new TwitterUserController();
 
@@ -51,15 +54,16 @@ namespace SocialSuitePro
 
         protected void Page_Load(object sender, EventArgs e)
         {
-          
+
             User user = (User)Session["LoggedUser"];
             if (!IsPostBack)
             {
-                if (Session["login"] == null)
-                {
-                    if (user == null) 
-                    { Response.Redirect("Default.aspx"); }
-                }
+           
+                //if (Session["login"] == null)
+                //{
+                //    if (user == null)
+                //    { Response.Redirect("Default.aspx"); }
+                //}
 
                 try
                 {
@@ -124,7 +128,7 @@ namespace SocialSuitePro
             if (Request["oauth_token"] != null)
             {
 
-               
+
                 try
                 {
                     getTwitterUserProfile();
@@ -146,7 +150,7 @@ namespace SocialSuitePro
 
                 try
                 {
-                    twthelper.getReTweetsOfUser(OAuth,twitterAccount,user.Id);
+                    twthelper.getReTweetsOfUser(OAuth, twitterAccount, user.Id);
                 }
                 catch (Exception ex)
                 {
@@ -157,7 +161,7 @@ namespace SocialSuitePro
 
                 try
                 {
-                    twthelper.getUserTweets(OAuth, twitterAccount,user.Id);
+                    twthelper.getUserTweets(OAuth, twitterAccount, user.Id);
                 }
                 catch (Exception ex)
                 {
@@ -166,7 +170,7 @@ namespace SocialSuitePro
                 }
                 try
                 {
-                    twthelper.getUserFeed(OAuth,twitterAccount,user.Id);
+                    twthelper.getUserFeed(OAuth, twitterAccount, user.Id);
                 }
                 catch (Exception ex)
                 {
@@ -175,7 +179,7 @@ namespace SocialSuitePro
                 }
                 try
                 {
-                    twthelper.getSentDirectMessages(OAuth,twitterAccount,user.Id);
+                    twthelper.getSentDirectMessages(OAuth, twitterAccount, user.Id);
                 }
                 catch (Exception ex)
                 {
@@ -207,6 +211,11 @@ namespace SocialSuitePro
             User user = (User)Session["LoggedUser"];
             SocialProfilesRepository socioprofilerepo = new SocialProfilesRepository();
             SocialProfile socioprofile = new SocialProfile();
+
+            #region for managing referrals
+            ManageReferrals(OAuth); 
+            #endregion
+         
             foreach (var item in profile)
             {
                 try
@@ -303,13 +312,13 @@ namespace SocialSuitePro
                 }
 
                 TwitterStatsRepository objTwtstats = new TwitterStatsRepository();
-                TwitterStats objStats=new TwitterStats();
+                TwitterStats objStats = new TwitterStats();
                 Random rNum = new Random();
                 objStats.Id = Guid.NewGuid();
-                objStats.TwitterId=twitterAccount.TwitterUserId;
-                objStats.UserId=user.Id;
-                objStats.FollowingCount=twitterAccount.FollowingCount;
-                objStats.FollowerCount=twitterAccount.FollowersCount;
+                objStats.TwitterId = twitterAccount.TwitterUserId;
+                objStats.UserId = user.Id;
+                objStats.FollowingCount = twitterAccount.FollowingCount;
+                objStats.FollowerCount = twitterAccount.FollowersCount;
                 objStats.Age1820 = rNum.Next(twitterAccount.FollowersCount);
                 objStats.Age2124 = rNum.Next(twitterAccount.FollowersCount);
                 objStats.Age2534 = rNum.Next(twitterAccount.FollowersCount);
@@ -317,8 +326,8 @@ namespace SocialSuitePro
                 objStats.Age4554 = rNum.Next(twitterAccount.FollowersCount);
                 objStats.Age5564 = rNum.Next(twitterAccount.FollowersCount);
                 objStats.Age65 = rNum.Next(twitterAccount.FollowersCount);
-                objStats.EntryDate=DateTime.Now;
-                if(!objTwtstats.checkTwitterStatsExists(twitterAccount.TwitterUserId,user.Id))
+                objStats.EntryDate = DateTime.Now;
+                if (!objTwtstats.checkTwitterStatsExists(twitterAccount.TwitterUserId, user.Id))
                     objTwtstats.addTwitterStats(objStats);
                 if (!twtrepo.checkTwitterUserExists(twitterAccount.TwitterUserId, user.Id))
                 {
@@ -380,7 +389,25 @@ namespace SocialSuitePro
             }
         }
 
-       
-       
+        private void ManageReferrals(oAuthTwitter OAuth)
+        {
+            try
+            {
+                if (Session["twittermsg"] != null)
+                {
+                    TwitterHelper twthelper = new TwitterHelper();
+                    Tweet twt = new Tweet();
+                    JArray post = twt.Post_Statuses_Update(OAuth, Session["twittermsg"].ToString());
+                    Response.Redirect("Referrals.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+        }
+
+
+
     }
 }

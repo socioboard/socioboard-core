@@ -87,7 +87,7 @@ function savearchivemsg(id, sociotype, messageId, profileId) {
             contentType: "application/json; charset=utf-8",
             dataType: "html",
             success: function (msg) {
-
+                alertify.success(msg);
                 //                $("#accountsins").html(msg);
 
             }
@@ -340,6 +340,12 @@ function BindInboxMessageonMessageTab() {
     }
     try {
         $("#smart_inbox").removeClass('active');
+    } catch (e) {
+
+    }
+
+    try {
+        $("#archive_message").removeClass('active');
     } catch (e) {
 
     }

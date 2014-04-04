@@ -66,6 +66,7 @@ namespace SocialSuitePro
                                 {
                                     FacebookAccountRepository facerepo = new FacebookAccountRepository();
                                     FacebookAccount faceaccount = facerepo.getFacebookAccountDetailsById(item.ProfileId, user.Id);
+
                                     if (faceaccount != null)
                                     {
                                         profiles += "<li id=\"so_" + item.ProfileId + "\"><div id=\"" + item.ProfileId + "\" class=\"userpictiny\"><div class=\"delet_icon\" onclick=\"confirmDel('" + item.ProfileId + "','fb');\"></div><a href=\"http://www.facebook.com/" + faceaccount.FbUserId + "\" target=\"_blank\"><img src=\"http://graph.facebook.com/" + item.ProfileId + "/picture?type=small\" height=\"48\" width=\"48\" alt=\"\" title=\"" + faceaccount.FbUserName + "\" /></a>" +
@@ -228,7 +229,7 @@ namespace SocialSuitePro
                                  "</div>" +
                                  "<a class=\"small_remove icon publish_delete\" href=\"#\" style=\"top: 7px; float: right; margin-top: 13px; margin-right: 10px;\" title=\"Delete\" onclick=\"deleteDraftMessage('" + item.Id + "')\"></a>" +
                                 "<section style=\"margin-top: 18px; width: 45px; margin-right: 17px;\" class=\"task-status\"><div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
-                                    "<span onclick=\"editDraftsMessage('" + item.Id + "');\" class=\"ui-sproutmenu-status\">" +
+                                    "<span onclick=\"editDraftsMessage('" + item.Id + "','" + item.Message + "');\" class=\"ui-sproutmenu-status\">" +
                                 "<img class=\"edit_button\" src=\"../Contents/img/icon_edit.png\" alt=\"\" />" +
                                 "</span>" +
                                 "</a></div></section></div></section>";
@@ -237,12 +238,19 @@ namespace SocialSuitePro
                         }
                         else
                         {
-                            message += "<section class=\"section\"><div class=\"js-task-cont read\"><section class=\"task-owner\">" +
-                                  "<img width=\"32\" height=\"32\" border=\"0\" class=\"avatar\" src=\"" + profurl + "\">" +
-                                  "</section><section class=\"task-activity third\"><p>" + user.UserName + "</p><div></div><p></p></section><section style=\"margin-right: 6px; width: 31%; height: auto;\" class=\"task-message font-13 third\">" +
-                                  "<a class=\"tip_left\">No Messages in Drafts</a></section><section style=\"width:113px;\" class=\"task-status\"><span class=\"ficon task_active\"></span>" +
-                                  "<div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
-                                  "<span class=\"ui-sproutmenu-status\"></span></a></div></section></div></section>";
+                            //message += "<section class=\"section\"><div class=\"js-task-cont read\"><section class=\"task-owner\">" +
+                            //      "<img width=\"32\" height=\"32\" border=\"0\" class=\"avatar\" src=\"" + profurl + "\">" +
+                            //      "</section><section class=\"task-activity third\"><p>" + user.UserName + "</p><div></div><p></p></section><section style=\"margin-right: 6px; width: 31%; height: auto;\" class=\"task-message font-13 third\">" +
+                            //      "<a class=\"tip_left\">No Messages in Drafts</a></section><section style=\"width:113px;\" class=\"task-status\"><span class=\"ficon task_active\"></span>" +
+                            //      "<div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
+                            //      "<span class=\"ui-sproutmenu-status\"></span></a></div></section></div></section>";
+
+                            //message += "<section class=\"section\"><div class=\"js-task-cont read\"><section style=\"margin-right: 6px; width: 31%; height: auto;\" class=\"task-message font-13 third\">" +
+                            //    "<a class=\"tip_left\">No Messages in Drafts</a></section><section style=\"width:113px;\" class=\"task-status\"><span class=\"ficon task_active\"></span>" +
+                            //    "<div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
+                            //    "<span class=\"ui-sproutmenu-status\"></span></a></div></section></div></section>";
+
+                            message += "<div style=\"margin-left: 2%; margin-top: 3%;\">No Messages in Drafts</div>";
                         }
                     }
                     catch (Exception ex)
@@ -303,8 +311,27 @@ namespace SocialSuitePro
                                 int i = 0;
                                 if (lstads.Count <= 1)
                                 {
-                                    midsnaps += "<div class=\"span4 rounder recpro\"><button data-dismiss=\"alert\" class=\"close pull-right\" type=\"button\">×</button>" +
-                                         "<a href=\"#\"><img src=\"../Contents/img/admin/ads.png\"  alt=\"\" style=\"width:246px;height:331px\"></a></div>";
+                                    if (user.PaymentStatus.ToUpper() == "PAID")
+                                    {
+                                        midsnaps += "<div class=\"span4 rounder recpro\"><button data-dismiss=\"alert\" class=\"close pull-right\" type=\"button\">×</button>" +
+                                             "<a href=\"#\"><img src=\"../Contents/img/admin/ads.png\"  alt=\"\" style=\"width:246px;height:331px\"></a></div>";
+
+                                    }
+                                    else
+                                    {
+                                        midsnaps += "<div class=\"span4 rounder recpro\">" +
+                                     "<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>" +
+                                   "<!-- socioboard -->" +
+                                               "<ins class=\"adsbygoogle\"style=\"display:inline-block;" +
+                                   "width:250px;height:250px\"" +
+                            " data-ad-client=\"ca-pub-7073257741073458\"" +
+                             " data-ad-slot=\"9533254693\"></ins>" +
+                           "<script>" +
+                        " (adsbygoogle = window.adsbygoogle || []).push({});" +
+                                               "</script>" +
+                                           "</div>";
+                                    }
+
                                 }
                                 else
                                 {
@@ -316,8 +343,26 @@ namespace SocialSuitePro
                                         {
                                             if (i == 2)
                                             {
-                                                midsnaps += "<div class=\"span4 rounder recpro\"><button data-dismiss=\"alert\" class=\"close pull-right\" type=\"button\">×</button>" +
-                                               "<a href=\"#\"><img src=\"" + temp.GetValue(2).ToString() + "\"  alt=\"\" style=\"width:246px;height:331px\"></a></div>";
+                                                if (user.AccountType == "Paid")
+                                                {
+                                                    midsnaps += "<div class=\"span4 rounder recpro\"><button data-dismiss=\"alert\" class=\"close pull-right\" type=\"button\">×</button>" +
+                                              "<a href=\"#\"><img src=\"" + temp.GetValue(2).ToString() + "\"  alt=\"\" style=\"width:246px;height:331px\"></a></div>";
+
+                                                }
+                                                else
+                                                {
+                                                    midsnaps += "<div class=\"span4 rounder recpro\">" +
+                                        "<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>" +
+                                      "<!-- socioboard -->" +
+                                                  "<ins class=\"adsbygoogle\"style=\"display:inline-block;" +
+                                      "width:250px;height:250px\"" +
+                               " data-ad-client=\"ca-pub-7073257741073458\"" +
+                                " data-ad-slot=\"9533254693\"></ins>" +
+                              "<script>" +
+                           " (adsbygoogle = window.adsbygoogle || []).push({});" +
+                                                  "</script>" +
+                                              "</div>";
+                                                }
                                             }
                                         }
                                     }
@@ -337,18 +382,18 @@ namespace SocialSuitePro
 
 
                                         midsnaps += "<div id=\"mid_" + item.ProfileId + "\" style=\"height:333px;\" class=\"span4 rounder recpro\"><div class=\"concotop\">" +
-                                                   "<div class=\"userpictiny\"><img width=\"56\" height=\"56\" title=\"" + fbaccount.FbUserName + "\" alt=\"\" src=\"http://graph.facebook.com/" + item.ProfileId + "/picture?type=small\"\">" +
+                                                   "<div onclick=\"detailsdiscoveryfacebook('" + fbaccount.FbUserId + "');\"  class=\"userpictiny\"><img width=\"56\" height=\"56\" title=\"" + fbaccount.FbUserName + "\" alt=\"\" src=\"http://graph.facebook.com/" + item.ProfileId + "/picture?type=small\"\">" +
                                                    "<a title=\"\" class=\"userurlpic\" href=\"#\"><img alt=\"\" src=\"../Contents/img/fb_icon.png\" width=\"16\" height=\"16\"></a></div>" +
-                                                   "<div class=\"useraccname\">" + fbaccount.FbUserName + "</div><div class=\"usercounter\">" +
+                                                   "<div onclick=\"detailsdiscoveryfacebook('" + fbaccount.FbUserId + "');\" class=\"useraccname\">" + fbaccount.FbUserName + "</div><div class=\"usercounter\">" +
                                                    "<div class=\"userfoll\">" + fbaccount.Friends;
 
                                         if (fbaccount.Type == "page")
                                         {
-                                            midsnaps += "<a>Fans</a>";
+                                            midsnaps += "<span><b style=\"font-size: 13px;\">Fans</b></span>";
                                         }
                                         else
                                         {
-                                            midsnaps += "<a>Friends</a>";
+                                            midsnaps += "<span><b style=\"font-size: 13px;\">Friends</b></span>";
 
                                         }
                                         midsnaps += "</div>" +
@@ -474,10 +519,10 @@ namespace SocialSuitePro
                                     int tweetcount = 0;
 
                                     midsnaps += "<div id=\"mid_" + item.ProfileId + "\" style=\"height:333px;\" class=\"span4 rounder recpro\"><div class=\"concotop\">" +
-                                     "<div class=\"userpictiny\"><img width=\"56\" height=\"56\" title=\"" + twtaccount.TwitterName + "\" alt=\"\" src=\"" + twtaccount.ProfileImageUrl + "\">" +
+                                     "<div onclick=\"detailsdiscoverytwitter('" + item.ProfileId + "');\" class=\"userpictiny\"><img width=\"56\" height=\"56\" title=\"" + twtaccount.TwitterName + "\" alt=\"\" src=\"" + twtaccount.ProfileImageUrl + "\">" +
                                      "<a title=\"\" class=\"userurlpic\" href=\"#\"><img alt=\"\" src=\"../Contents/img/twticon.png\" width=\"16\" height=\"16\"></a></div>" +
-                                     "<div class=\"useraccname\">" + twtaccount.TwitterScreenName + "</div><div class=\"usercounter\">" +
-                                     "<div class=\"userfoll\">" + twtaccount.FollowersCount + "<a>Followers</a></div>" +
+                                     "<div onclick=\"detailsdiscoverytwitter('" + twtaccount.TwitterScreenName + "');\" class=\"useraccname\">" + twtaccount.TwitterScreenName + "</div><div class=\"usercounter\">" +
+                                     "<div class=\"userfoll\">" + twtaccount.FollowersCount + "<span><b style=\"font-size: 13px;\">Followers</b></span></div>" +
                                      "<div class=\"userppd\">" + Math.Round(rNum.NextDouble(), 2) + "<span>Avg. Post <br> Per Day</span></div></div></div>" +
                                      "<div class=\"concoteng\"><h5>recent message</h5> <ul class=\"mess\">";
                                     try
@@ -563,7 +608,7 @@ namespace SocialSuitePro
                                            "<div class=\"userpictiny\"><img width=\"56\" height=\"56\" title=\"" + LdprofileName + "\" alt=\"\" src=\"" + LdPreofilePic + "\">" +
                                            "<a title=\"\" class=\"userurlpic\" href=\"#\"><img alt=\"\" src=\"../Contents/img/link_icon.png\" width=\"16\" height=\"16\"></a></div>" +
                                            "<div class=\"useraccname\">" + LdprofileName + "</div><div class=\"usercounter\">" +
-                                           "<div class=\"userfoll\">" + linkedinConcount + "<span>Connections</span></div>" +
+                                           "<div class=\"userfoll\">" + linkedinConcount + "<span><b style=\"font-size: 13px;\">Connections</b></span></div>" +
                                            "<div class=\"userppd\">" + Math.Round(rNum.NextDouble(), 2) + "<span>Avg. Post <br> Per Day</span></div></div></div>" +
                                            "<div class=\"concoteng\"><h5>recent message</h5> <ul class=\"mess\">";
                                         int link = 0;
@@ -1085,7 +1130,17 @@ namespace SocialSuitePro
                                     args["picture"] = filepath;
                                 }
                                 FacebookClient fc = new FacebookClient(fbaccount.AccessToken);
-                                var facebookpost = fc.Post("/me/feed", args);
+
+                                string facebookpost = string.Empty;
+                                if (fbaccount.Type == "page")
+                                {
+                                    facebookpost = fc.Post("/" + fbaccount.FbUserId + "/feed", args).ToString();
+                                }
+                                else
+                                {
+                                    facebookpost = fc.Post("/me/feed", args).ToString();
+                                }
+
                                 if (facebookpost.ToString() != string.Empty)
                                 {
                                     Response.Write("Succesfully posted");
@@ -1094,6 +1149,8 @@ namespace SocialSuitePro
                                 {
                                     Response.Write("Not posted");
                                 }
+
+
                             }
                             catch (Exception ex)
                             {
@@ -1494,15 +1551,17 @@ namespace SocialSuitePro
 
                             }
                             schmessages += "<section class=\"task-status\" style=\"width:34px;\"><div class=\"ui_light floating task_status_change\">" +
-                                           "<a href=\"#nogo\" class=\"ui-sproutmenu\"><span class=\"ui-sproutmenu-status\"><img title=\"Edit Status\" onclick=\"PerformClick(this.id)\" src=\"../Contents/img/icon_edit.png\" class=\"edit_button\" id=\"img_" + item.Id + "_" + item.Status + "\"></span></a></div></section>" +
+                                //"<a href=\"#nogo\" class=\"ui-sproutmenu\"><span class=\"ui-sproutmenu-status\"><img title=\"Edit Status\" onclick=\"PerformClick(this.id)\" src=\"../Contents/img/icon_edit.png\" class=\"edit_button\" id=\"img_" + item.Id + "_" + item.Status + "\"></span></a></div></section>" +
+                                            "<a class=\"ui-sproutmenu\"><span class=\"ui-sproutmenu-status\"><img title=\"Edit Status\" onclick=\"PerformClick(this.id)\" src=\"../Contents/img/icon_edit.png\" class=\"edit_button\" id=\"img_" + item.Id + "_" + item.Status + "\"></span></a></div></section>" +
                                            "<section class=\"task-status\" style=\"width: 65px; margin-right: 39px;\">" +
                                 //"<span class=\"ficon task_active\" id=\"taskcomment\">" +
                                 // "<img width=\"14\" height=\"17\" alt=\"\" src=\"../Contents/img/task/task_pin.png\" onclick=\"getmemberdata('7fd5773f-c5b0-4624-bba1-b8a6c0fbd56d');\">" +
                                 //"</span>" +
                                           "<div class=\"ui_light floating task_status_change\">" +
-                                               "<a href=\"#nogo\" class=\"ui-sproutmenu\">" +
+                                //"<a href=\"#nogo\" class=\"ui-sproutmenu\">" +
+                                //"<a class=\"ui-sproutmenu\">" +
                                                    "<span class=\"ui-sproutmenu-status\">" + item.Status + "</span>" +
-                                              "</a>" +
+                                //"</a>" +
                                           "</div>" +
                                       "</section>" +
                                    "</div></section>";
@@ -1514,7 +1573,8 @@ namespace SocialSuitePro
                           "<img width=\"32\" height=\"32\" border=\"0\" class=\"avatar\" src=\"" + profurl + "\">" +
                           "</section><section class=\"task-activity third\"><p>" + user.UserName + "</p><div></div><p></p></section><section style=\"margin-right: 6px; width: 31%; height: auto;\" class=\"task-message font-13 third\">" +
                           "<a class=\"tip_left\">No Schduled Messages</a></section><section style=\"width:113px;\" class=\"task-status\"><span class=\"ficon task_active\"></span>" +
-                          "<div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
+                            //"<div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
+                          "<div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\">" +
                           "<span class=\"ui-sproutmenu-status\"></span></a></div></section></div></section>";
                     }
                     Response.Write(schmessages);
