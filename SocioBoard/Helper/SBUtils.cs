@@ -17,15 +17,33 @@ namespace SocioBoard.Helper
         HttpWebResponse gResponse;
         CookieCollection gCookies;
 
-        public static bool IsUserWorkingDaysValid(DateTime registrationDate)
+        public static bool IsUserWorkingDaysValid(DateTime ExpiryDate)
         {
             bool isUserWorkingDaysValid = false;
+            //try
+            //{
+            //    TimeSpan span = DateTime.Now.Subtract(registrationDate);
+            //    int totalDays = (int)span.TotalDays;
+
+            //    if (totalDays < 30)
+            //    {
+            //        isUserWorkingDaysValid = true;
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    //logger.Error(ex.Message);
+
+            //    Console.WriteLine("Error : " + ex.StackTrace);
+            //}
             try
             {
-                TimeSpan span = DateTime.Now.Subtract(registrationDate);
-                int totalDays = (int)span.TotalDays;
-
-                if (totalDays < 30)
+                int daysremaining = (ExpiryDate - DateTime.Now).Days;
+                if (daysremaining < 0)
+                {
+                    isUserWorkingDaysValid = false;
+                }
+                else
                 {
                     isUserWorkingDaysValid = true;
                 }
@@ -36,6 +54,7 @@ namespace SocioBoard.Helper
 
                 Console.WriteLine("Error : " + ex.StackTrace);
             }
+
             return isUserWorkingDaysValid;
         }
 

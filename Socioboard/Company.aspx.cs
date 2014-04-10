@@ -19,6 +19,7 @@ namespace SocioBoard
             if (Session["response"] != null)
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert(" + Session["response"].ToString() + ");", true);
+                Label1.Attributes.CssStyle.Add("margin-left", "7%");
                 Label1.Text = "Mail  send successfully";
                 Session["response"] = null;
                 Session["career"] = null;
@@ -95,14 +96,14 @@ namespace SocioBoard
                     Session["careerinfo"] = fname.Text.Trim() + "<:>" + lname.Text.Trim() + "<:>" + email.Text.Trim() + "<:>" + message.InnerText.Trim();
                     //ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please fill all the fields !');", true);
                     Session["career"] = "field";
-                    Response.Redirect("Company.aspx#verticalTab4");
+                    Response.Redirect("Company.aspx#verticalTab4|company4");
 
                 }
                 if (!emailvalidation(email.Text.Trim()))
                 {
                     //ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please fill all the fields !');", true);
                     Session["career"] = "email";
-                    Response.Redirect("Company.aspx#verticalTab4");
+                    Response.Redirect("Company.aspx#verticalTab4|company4");
                 }
 
                 Session["careerinfo"] = fname.Text.Trim() + "<:>" + lname.Text.Trim() + "<:>" + email.Text.Trim() + "<:>" + message.InnerText.Trim();
@@ -116,16 +117,16 @@ namespace SocioBoard
                     if (extension != "doc" && extension != "docx")
                     {
                         Session["career"] = "invaliedfile";
-                        Response.Redirect("Company.aspx#verticalTab4");
+                        Response.Redirect("Company.aspx#verticalTab4|company4");
                     }
                     cvfile.SaveAs(path);
-                    fullpath = "http://socioboard.com/Contents/cv/" + filename;
+                    fullpath = ConfigurationManager.AppSettings["MailSenderDomain"]+"Contents/cv/" + filename;
                 }
                 else
                 {
                     //ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please fill all the fields !');", true);
                     Session["career"] = "nofile";
-                    Response.Redirect("Company.aspx#verticalTab4");
+                    Response.Redirect("Company.aspx#verticalTab4|company4");
                 }
                 //send mail
                 string MailBody = "<body bgcolor=\"#FFFFFF\"><!-- Email Notification from socialscoup.socioboard.com-->" +
@@ -143,7 +144,7 @@ namespace SocioBoard
                 string host = ConfigurationManager.AppSettings["host"];
                 string port = ConfigurationManager.AppSettings["port"];
                 string pass = ConfigurationManager.AppSettings["password"];
-                string from = ConfigurationManager.AppSettings["fromemail"];
+                string tomail = ConfigurationManager.AppSettings["tomail"];
 
                 //   string Body = mailformat.VerificationMail(MailBody, txtEmail.Text.ToString(), "");
                 string Subject = "Socioboard career";
@@ -151,11 +152,11 @@ namespace SocioBoard
                 //MailHelper.SendSendGridMail(host, Convert.ToInt32(port), from, "", from, string.Empty, string.Empty, Subject, MailBody, username, pass);
                 
                 MailHelper objMailHelper = new MailHelper();
-               Session["response"] = objMailHelper.SendMailByMandrill(host, Convert.ToInt32(port), from, "", from, string.Empty, string.Empty, Subject, MailBody, username, pass);
+                Session["response"] = objMailHelper.SendMailByMandrill(host, Convert.ToInt32(port), email.Text, "", tomail, string.Empty, string.Empty, Subject, MailBody, username, pass);
                 //send mail
                 Session["careerinfo"] = null;
                 Session["career"] = null;
-                Response.Redirect("Company.aspx#verticalTab4");
+                Response.Redirect("Company.aspx#verticalTab4|company4");
                // ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Thanks for your interest ');", true);
                 //ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert(" + res + ");", true);
             }
@@ -163,6 +164,7 @@ namespace SocioBoard
             {
                // Label1.Text = ex.Message;
                 Console.WriteLine(ex.Message);
+                
             }
         }
 

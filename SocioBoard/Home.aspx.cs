@@ -66,7 +66,7 @@ namespace SocialSuitePro
                 {
                     if (user.PaymentStatus == "unpaid")
                     {
-                        int daysremaining = (user.ExpiryDate - DateTime.Now).Days;
+                        int daysremaining = (user.ExpiryDate.Date - DateTime.Now.Date).Days;
                         if (daysremaining < 0)
                         {
                             daysremaining = 0;
@@ -85,7 +85,7 @@ namespace SocialSuitePro
 
                 if (user.PaymentStatus.ToLower() == "unpaid")
                 {
-                    if (!SBUtils.IsUserWorkingDaysValid(user.CreateDate))
+                    if (!SBUtils.IsUserWorkingDaysValid(user.ExpiryDate))
                     {
                         // ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('You can use only 30 days as Unpaid User !');", true);
 

@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/socialsuite.Master" AutoEventWireup="true" CodeBehind="contact.aspx.cs" Inherits="SocialSuitePro.contact" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 <style type="text/css">
-  .left_contact{width:700px; width:400px\9; height:auto; float:left;}
+  .left_contact{width:700px; width:530px\9; height:auto; float:left;}
   p:last-child{margin-top:18px;}
 </style>
 </asp:Content>

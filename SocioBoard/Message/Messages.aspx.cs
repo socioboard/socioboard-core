@@ -25,7 +25,7 @@ namespace SocioBoard.Message
 
                 if (user.PaymentStatus.ToLower() == "unpaid")
                 {
-                    if (!SBUtils.IsUserWorkingDaysValid(user.CreateDate))
+                    if (!SBUtils.IsUserWorkingDaysValid(user.ExpiryDate))
                     {
                         // ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('You can use only 30 days as Unpaid User !');", true);
 

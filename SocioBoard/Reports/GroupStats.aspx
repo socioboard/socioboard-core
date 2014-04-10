@@ -42,7 +42,7 @@
     <div id="mainwrapper" class="container reports">
         <div id="sidebar">
             <div class="sidebar-inner">
-                <a href="#" class="btn">GROUP REPORT
+                <a href="#" class="btn actives">GROUP REPORT
                     <img src="../Contents/img/admin/boxes.png" alt="" class="pull-right" /></a>
                 <a href="FacebookReport.aspx" class="btn">Facebook Pages
                     <img src="../Contents/img/admin/fbicon2.png" alt="" class="pull-right" /></a>

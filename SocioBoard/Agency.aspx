@@ -14,7 +14,7 @@
             var company = $('#company').val();
             var profile = $('#profile').val();
             var phone = $('#phone').val();
-            if (fname == "" || lname == "" || email == "" || company == "" || profile == "" || phone == "") {
+            if (fname == "" || email == "" || company == "" || profile == "" || phone == "") {
                 alert('Please fill all the fields')
                 return false;
             }
@@ -34,17 +34,18 @@
                     //ajax start
 
                     $.ajax({
-                        url: "../Helper/Ajaxcontact.aspx",
+                        url: "../Helper/Ajaxagency.aspx",
                         type: "post",
-                        data: 'name=' + name + '&lname=' + lname + '&email=' + email + '&Subject=' + Subject + '&profile=' + profile,
+                        data: 'fname=' + fname + '&lname=' + lname + '&email=' + email + '&company=' + company + '&profile=' + profile + '&phone=' + phone,
                         success: function (data) {
                             if (data == "success") {
                                 alert('Mail Send');
-                                $('#name').val('');
+                                $('#fname').val('');
                                 $('#lname').val('');
                                 $('#email').val('');
-                                $('#Subject').val('');
+                                $('#company').val('');
                                 $('#profile').val('');
+                                $('#phone').val('');
                             }
                             else {
                                 alert("failure");

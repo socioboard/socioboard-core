@@ -5134,3 +5134,145 @@ ERROR2014-04-03 05:25:37 Class:? Method:lambda_method Line #: 0  – Data too long
 ERROR2014-04-03 05:25:37 Class:SocioBoard.Helper.AjaxHelper Method:Page_Load Line #: 43  – could not execute update query[SQL: update Drafts set Message=?, ModifiedDate=? where Id=?]
 ERROR2014-04-03 07:14:09 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 258  – Object reference not set to an instance of an object.
 ERROR2014-04-03 07:14:11 Class:SocialSuitePro.MasterPage.Site Method:Page_Load Line #: 243  – Thread was being aborted.
+ERROR2014-04-05 11:29:18 Class:SocialSuitePro.Home Method:Page_Load Line #: 419  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 413
+ERROR2014-04-05 11:29:19 Class:SocialSuitePro.Home Method:Page_Load Line #: 429  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 423
+ERROR2014-04-05 11:30:12 Class:SocialSuitePro.Home Method:Page_Load Line #: 419  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 413
+ERROR2014-04-05 11:30:12 Class:SocialSuitePro.Home Method:Page_Load Line #: 429  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 423
+ERROR2014-04-05 11:31:36 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 769  – Object reference not set to an instance of an object.
+ERROR2014-04-05 11:32:22 Class:SocialSuitePro.Home Method:Page_Load Line #: 419  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 413
+ERROR2014-04-05 11:32:22 Class:SocialSuitePro.Home Method:Page_Load Line #: 429  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 423
+ERROR2014-04-05 11:52:12 Class:SocialSuitePro.Home Method:Page_Load Line #: 419  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 413
+ERROR2014-04-05 11:52:12 Class:SocialSuitePro.Home Method:Page_Load Line #: 429  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 423
+ERROR2014-04-05 11:57:00 Class:SocialSuitePro.Home Method:Page_Load Line #: 419  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 413
+ERROR2014-04-05 11:57:00 Class:SocialSuitePro.Home Method:Page_Load Line #: 429  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 423
+ERROR2014-04-05 12:06:38 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 769  – Object reference not set to an instance of an object.
+ERROR2014-04-05 12:11:03 Class:SocialSuitePro.Home Method:Page_Load Line #: 419  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 413
+ERROR2014-04-05 12:11:03 Class:SocialSuitePro.Home Method:Page_Load Line #: 429  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 423
+ERROR2014-04-05 12:13:37 Class:SocialSuitePro.Home Method:Page_Load Line #: 419  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 413
+ERROR2014-04-05 12:13:37 Class:SocialSuitePro.Home Method:Page_Load Line #: 429  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 423
+ERROR2014-04-05 12:16:34 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Object reference not set to an instance of an object.
+ERROR2014-04-05 12:16:34 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 769  – Object reference not set to an instance of an object.
+ERROR2014-04-05 12:16:34 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Object reference not set to an instance of an object.
+ERROR2014-04-05 12:19:20 Class:SocialSuitePro.Home Method:Page_Load Line #: 419  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 413
+ERROR2014-04-05 12:19:20 Class:SocialSuitePro.Home Method:Page_Load Line #: 429  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 423
+ERROR2014-04-05 12:19:56 Class:SocialSuitePro.Home Method:Page_Load Line #: 419  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 413
+ERROR2014-04-05 12:19:56 Class:SocialSuitePro.Home Method:Page_Load Line #: 429  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 423
+ERROR2014-04-05 12:57:02 Class:SocialSuitePro.Home Method:Page_Load Line #: 419  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 413
+ERROR2014-04-05 12:57:03 Class:SocialSuitePro.Home Method:Page_Load Line #: 429  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 423
+ERROR2014-04-05 01:06:53 Class:SocialSuitePro.Home Method:Page_Load Line #: 419  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 413
+ERROR2014-04-05 01:06:53 Class:SocialSuitePro.Home Method:Page_Load Line #: 429  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 423
+ERROR2014-04-05 01:09:34 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 769  – Object reference not set to an instance of an object.
+ERROR2014-04-05 01:09:34 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Object reference not set to an instance of an object.
+ERROR2014-04-05 01:09:34 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 41  – Object reference not set to an instance of an object.
+ERROR2014-04-05 01:14:23 Class:SocialSuitePro.Home Method:Page_Load Line #: 421  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 415
+ERROR2014-04-05 01:14:23 Class:SocialSuitePro.Home Method:Page_Load Line #: 431  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 425
+ERROR2014-04-05 01:22:41 Class:? Method:lambda_method Line #: 0  – Begin transaction failed
+MySql.Data.MySqlClient.MySqlException (0x80004005): Reading from the stream has failed. ---> System.IO.IOException: Unable to read data from the transport connection: An operation was attempted on something that is not a socket. ---> System.Net.Sockets.SocketException: An operation was attempted on something that is not a socket
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.IO.BufferedStream.ReadByte()
+   at MySql.Data.MySqlClient.MySqlStream.LoadPacket()
+   at MySql.Data.MySqlClient.MySqlStream.LoadPacket()
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.FetchDataRow(Int32 statementId, Int32 pageSize, Int32 columns)
+   at MySql.Data.MySqlClient.NativeDriver.SkipDataRow()
+   at MySql.Data.MySqlClient.MySqlDataReader.ClearCurrentResultset()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.Close()
+   at System.Data.Common.DbDataReader.Dispose(Boolean disposing)
+   at System.Data.Common.DbDataReader.Dispose()
+   at MySql.Data.MySqlClient.Driver.LoadCharacterSets()
+   at MySql.Data.MySqlClient.Driver.Configure(MySqlConnection connection)
+   at MySql.Data.MySqlClient.NativeDriver.Configure(MySqlConnection conn)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in p:\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in p:\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.Transaction.AdoTransaction.Begin(IsolationLevel isolationLevel) in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 133
+ERROR2014-04-05 01:22:41 Class:SocialSuitePro.Home Method:Page_Load Line #: 128  –    at NHibernate.Transaction.AdoTransaction.Begin(IsolationLevel isolationLevel) in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 148
+   at NHibernate.Transaction.AdoTransaction.Begin() in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 97
+   at NHibernate.AdoNet.ConnectionManager.BeginTransaction() in p:\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 324
+   at NHibernate.Impl.SessionImpl.BeginTransaction() in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1467
+   at SocioBoard.Model.UserActivationRepository.GetUserActivationStatus(String UserId) in D:\Abhay\socioboard\trunk\SocioBoard Product\Model\UserActivationRepository.cs:line 62
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 121
+ERROR2014-04-05 01:22:41 Class:SocialSuitePro.Home Method:Page_Load Line #: 419  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 413
+ERROR2014-04-05 01:22:41 Class:SocialSuitePro.Home Method:Page_Load Line #: 429  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 423
+ERROR2014-04-05 01:24:42 Class:SocialSuitePro.Home Method:Page_Load Line #: 419  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 413
+ERROR2014-04-05 01:24:42 Class:SocialSuitePro.Home Method:Page_Load Line #: 429  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 423
+ERROR2014-04-10 10:35:19 Class:SocioBoard.Registration Method:btnRegister_Click Line #: 336  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocioBoard.Registration.btnRegister_Click(Object sender, ImageClickEventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Registration.aspx.cs:line 320
+ERROR2014-04-10 10:35:19 Class:SocioBoard.Registration Method:btnRegister_Click Line #: 344  –    at SocioBoard.Registration.btnRegister_Click(Object sender, ImageClickEventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Registration.aspx.cs:line 340
+ERROR2014-04-10 10:35:20 Class:SocialSuitePro.Home Method:Page_Load Line #: 419  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 413
+ERROR2014-04-10 10:35:20 Class:SocialSuitePro.Home Method:Page_Load Line #: 429  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocioBoard Product\Home.aspx.cs:line 423
+ERROR2014-04-10 10:35:25 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 769  – Object reference not set to an instance of an object.
+ERROR2014-04-10 10:35:40 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 137  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-04-10 10:35:41 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 144  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-04-10 10:35:41 Class:SocioBoard.Admin.DashboardStats Method:Page_Load Line #: 195  – Index was outside the bounds of the array.

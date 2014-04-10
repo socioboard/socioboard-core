@@ -118,7 +118,7 @@ namespace SocialSuitePro.MasterPage
 
                         if (user.PaymentStatus.ToLower() == "unpaid")
                         {
-                            if (!SBUtils.IsUserWorkingDaysValid(user.CreateDate))
+                            if (!SBUtils.IsUserWorkingDaysValid(user.ExpiryDate))
                             {
                                 //cmposecontainer.Attributes.Add("display", "none");
                                 cmposecontainer.Attributes.CssStyle.Add("display", "none");

@@ -32,7 +32,7 @@ namespace SocioBoard.Settings
 
                     if (user.PaymentStatus.ToLower() == "unpaid")
                     {
-                        if (!SBUtils.IsUserWorkingDaysValid(user.CreateDate))
+                        if (!SBUtils.IsUserWorkingDaysValid(user.ExpiryDate))
                         {
                             Session["GreaterThan30Days"] = "GreaterThan30Days";
                             ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Your 30 Days trial period Over Please Upgrade your Package!');", true);

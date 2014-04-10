@@ -18,7 +18,7 @@
                 	<a href="GroupStats.aspx" class="btn">GROUP REPORT <img src="<%= Page.ResolveUrl("~/Contents/img/admin/boxes.png")%>" alt="" class="pull-right" /></a>
                 	<a href="FacebookReport.aspx" class="btn">Facebook Pages <img src="<%= Page.ResolveUrl("~/Contents/img/admin/fbicon2.png")%>" alt="" class="pull-right" /></a>
 					<a href="TwitterReport.aspx" class="btn">Twitter Reports <img src="<%= Page.ResolveUrl("~/Contents/img/admin/twittericon2.png")%>" alt="" class="pull-right" /></a>
-					<a href="#" class="btn">Team Report <img src="<%= Page.ResolveUrl("~/Contents/img/admin/peoples.png")%>" alt="" class="pull-right" /></a>
+					<a href="#" class="btn actives">Team Report <img src="<%= Page.ResolveUrl("~/Contents/img/admin/peoples.png")%>" alt="" class="pull-right" /></a>
                      <%-- <a class="btn" href="GoogleAnalytics.aspx">Google Analytics Report <img class="pull-right" alt="" src="<%= Page.ResolveUrl("~/Contents/img/admin/peoples.png")%>"></a>	--%>
 				<%--	<a href="#" class="btn">Twitter Comparison <img src="../Contents/img/admin/loopback.png" alt="" class="pull-right" /></a>
 					<a href="#" class="btn">Sent Message <img src="../Contents/img/admin/bar-chart.png" alt="" class="pull-right" /></a>	--%>			

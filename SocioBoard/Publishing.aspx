@@ -742,7 +742,7 @@ background-position:0 0;
                                     <span class="charremain" id="wordcount"><i id="messageCount_scheduler">140 CharactersRemaining</i></span>
                                     <%--<div onclick="saveDrafts();" class="savetodraft">Save To Draft</div>--%>
                                     <textarea id="textareavaluetosendmessage_scheduler" cols="5" rows="10" class="span12"
-                                        placeholder="type your message here" style="height: 360px;"></textarea>
+                                        placeholder="type your message here" style="height: 360px; resize:none"></textarea>
                                 </div>
                             </div>
                             <div class="span6" id="rightspan">

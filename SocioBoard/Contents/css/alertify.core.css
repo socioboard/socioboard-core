@@ -31,8 +31,10 @@
 		display: none;
 	}
 .alertify {
-	position: fixed; z-index: 99999;
-	top: 50px; left: 50%;
+	position: fixed; 
+	z-index: 99999;
+	top: 50px; 
+	left: 50%;
 	width: 550px;
 	margin-left: -275px;
 	opacity: 1;
@@ -108,8 +110,7 @@
 			.alertify-button,
 			.alertify-button:hover,
 			.alertify-button:active,
-			.alertify-button:visited {
-				background: none;
+{				background: none;
 				text-decoration: none;
 				border: none;
 				/* line-height and font-size for input button */

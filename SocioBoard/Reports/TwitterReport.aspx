@@ -7,7 +7,7 @@
 				<div class="sidebar-inner">
                 	<a href="GroupStats.aspx" class="btn">GROUP REPORT <img src="<%= Page.ResolveUrl("~/Contents/img/admin/boxes.png")%>" alt="" class="pull-right" /></a>
                 	<a href="FacebookReport.aspx" class="btn">Facebook Pages <img src="<%= Page.ResolveUrl("~/Contents/img/admin/fbicon2.png")%>" alt="" class="pull-right" /></a>
-					<a href="TwitterReport.aspx" class="btn" id="twtrpt">Twitter Reports <img src="<%= Page.ResolveUrl("~/Contents/img/admin/twittericon2.png")%>" alt="" class="pull-right" /></a>
+					<a href="TwitterReport.aspx" class="btn actives" id="twtrpt">Twitter Reports <img src="<%= Page.ResolveUrl("~/Contents/img/admin/twittericon2.png")%>" alt="" class="pull-right" /></a>
                     <div id="twtrptbox" style="display: none;">                                            
                                        <div class="drop_top"></div>
                                        <div id="divtwtUser" runat="server" class="drop_mid loginbox">

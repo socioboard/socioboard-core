@@ -6,7 +6,7 @@
 			<div id="sidebar">            	
 				<div class="sidebar-inner">
                 	<a href="GroupStats.aspx" class="btn">GROUP REPORT <img src="../Contents/img/admin/boxes.png" alt="" class="pull-right" /></a>
-                	<a href="#" class="btn" id="facebook_page">Facebook Pages <img src="../Contents/img/admin/fbicon2.png" alt="" class="pull-right" /></a>
+                	<a href="#" class="btn actives" id="facebook_page">Facebook Pages <img src="../Contents/img/admin/fbicon2.png" alt="" class="pull-right" /></a>
 					<a href="TwitterReport.aspx" class="btn">Twitter Reports <img src="../Contents/img/admin/twittericon2.png" alt="" class="pull-right" /></a>
 					<a href="TeamReport.aspx" class="btn">Team Report <img src="../Contents/img/admin/peoples.png" alt="" class="pull-right" /></a>
                       <%--<a class="btn" href="GoogleAnalytics.aspx">Google Analytics Report <img class="pull-right" alt="" src="../Contents/img/admin/peoples.png"></a>	--%>
