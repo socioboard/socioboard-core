@@ -33,8 +33,17 @@
 	
 	<!-- LESS.js Library -->
 	<script src="../Contents/common/theme/scripts/plugins/system/less.min.js"></script>
+    <script type="text/javascript">
+        window.history.forward(-1);
+    </script>
+    <script type = "text/javascript" >
+        function disableBackButton() {
+            window.history.forward();
+        }
+        setTimeout("disableBackButton()", 0);
+</script>
 </head>
-<body class="login">
+<body class="login" onunload="disableBackButton()">
 	
 	<!-- Wrapper -->
 <div id="login">
@@ -60,12 +69,12 @@
 					<!-- Form -->
 					<form id="Form1" method="post" runat="server">
 						<label>Username</label>
-                    <asp:TextBox ID="txtUserName" runat="server" class="input-block-level" placeholder="Your Username"></asp:TextBox>
+                    <asp:TextBox ID="txtUserName" runat="server" class="input-block-level" placeholder="Your Username" autocomplete="off"></asp:TextBox>
 					
 						<label>Password <%--<a class="password" href="">forgot your password?</a>--%></label>
 						
                          <asp:TextBox ID="txtPassword" runat="server" class="input-block-level" 
-                            placeholder="Your Password" TextMode="Password"></asp:TextBox>
+                            placeholder="Your Password" TextMode="Password" autocomplete="off"></asp:TextBox>
 					
 						<div class="separator bottom"></div> 
 						<div class="row-fluid">

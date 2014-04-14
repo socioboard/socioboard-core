@@ -3,6 +3,40 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+<script type="text/javascript">
+    function ValidateControls() {
+        if (document.getElementById("<%=name.ClientID%>").value == "") {
+            alert("cannot be leave Name Field empty");
+            return false;
+        }
+        if (document.getElementById("<%=company.ClientID%>").value == "") {
+            alert("cannot be leave Company Field empty");
+            return false;
+        }
+        if (document.getElementById("<%=location.ClientID%>").value == "") {
+            alert("cannot be leave Location Field empty");
+            return false;
+        }
+        if (document.getElementById("<%=website.ClientID%>").value == "") {
+            alert("cannot be leave Website Field empty");
+            return false;
+        }
+        if (document.getElementById("<%=email.ClientID%>").value == "") {
+            alert("cannot be leave Email Field empty");
+            return false;
+        }
+        if (document.getElementById("<%=phone.ClientID%>").value == "") {
+            alert("cannot be leave Phone Field empty");
+            return false;
+        }
+        if (document.getElementById("<%=designation.ClientID%>").value == "") {
+            alert("cannot be leave Designation Field empty");
+            return false;
+        }
+        return true;
+    }
+    </script>
     <script type="text/javascript">
         //        function _doPostback() {
         //            alert("Hello");
@@ -174,7 +208,8 @@
                                     </p>
                                     <br />
                                     <p>
-                                       <asp:Button ID="submit" runat="server" Text="Submit" onclick="btncaptcha_Click" /> 
+                                     <%--  <asp:Button ID="submit" runat="server" Text="Submit" onclick="btncaptcha_Click" /> --%>
+                                      <asp:Button ID="submit" runat="server" Text="Submit" OnClick="btncaptcha_Click" OnClientClick="return ValidateControls();" />
                                     </p>
                                    
                                 </div>

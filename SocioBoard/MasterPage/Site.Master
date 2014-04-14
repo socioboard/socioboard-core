@@ -132,7 +132,7 @@
                     </div>
                     Information! Now You have <a href="~/Message/Messages.aspx" id="incomMessages" runat="server">
                         25</a> Incoming Message and <a runat="server" id="incomTasks" href="../Message/Task.aspx">
-                            0</a> Task <a class="premium" href="../Referrals.aspx">Get free Premium Account</a>
+                            0</a> Task <a class="premium" href="../Referral.aspx">Get free Premium Account</a>
                     <a href="../Default.aspx?type=logout" class="woo_logout" style="text-decoration: none;
                         color: #CECECE;">
                         <img src="../Contents/img/logout_woo.png" style="margin-right: 4px;" alt="" />Logout</a>
@@ -170,19 +170,19 @@
                     <div class="navbar-inner">
                         <ul class="nav">
                             <li id="home" class="active"><a href="../Home.aspx">
-                                <img src="../Contents/img/admin/home.png" alt="" />Home</a> </li>
+                                <img src="../Contents/img/admin/home.png" alt="" /><span>Home</span></a> </li>
                             <li id="message"><a href="../Message/Messages.aspx">
-                                <img src="../Contents/img/admin/mail.png" alt="" />Message</a> </li>
+                                <img src="../Contents/img/admin/mail.png" alt="" /><span>Message</span></a> </li>
                             <li id="feeds"><a href="../Feeds/Feeds.aspx">
-                                <img src="../Contents/img/admin/feeds.png" alt="" />Feeds</a> </li>
+                                <img src="../Contents/img/admin/feeds.png" alt="" /><span>Feeds</span></a> </li>
                             <li id="publishing"><a href="../Publishing.aspx">
-                                <img src="../Contents/img/admin/publishing.png" alt="" />Publishing</a> </li>
+                                <img src="../Contents/img/admin/publishing.png" alt="" /><span>Publishing</span></a> </li>
                             <li id="discovery"><a href="../Discovery.aspx">
-                                <img src="../Contents/img/admin/discovery.png" alt="" />Discovery</a> </li>
+                                <img src="../Contents/img/admin/discovery.png" alt="" /><span>Discovery</span></a> </li>
                             <li id="reports"><a href="../Reports/GroupStats.aspx">
-                                <img src="../Contents/img/admin/reports.png" alt="" />Reports</a> </li>
+                                <img src="../Contents/img/admin/reports.png" alt="" /><span>Reports</span></a> </li>
                             <li id="Li1"><a href="../Group/Group.aspx">
-                                <img src="../Contents/img/admin/reports.png" alt="" />Groups</a> </li>
+                                <img src="../Contents/img/admin/reports.png" alt="" /><span>Groups</span></a> </li>
                         </ul>
                     </div>
                 </div>

@@ -5,6 +5,9 @@
 .alertify-log {
 	font-family: sans-serif;
 }
+
+@media (-webkit-min-device-pixel-ratio: 0), (-moz-min-device-pixel-ratio: 0){}
+
 .alertify {
 	background: #FFF;
 	border: 10px solid #333; /* browsers that don't support rgba */

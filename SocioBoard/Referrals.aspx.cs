@@ -12,19 +12,19 @@ namespace SocioBoard
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
-            {
-                SocioBoard.Domain.User user = (User)Session["LoggedUser"];
-                if (user == null)
-                {
+            //try
+            //{
+            //    SocioBoard.Domain.User user = (User)Session["LoggedUser"];
+            //    if (user == null)
+            //    {
 
-                    Response.Redirect("Default.aspx");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error : " + ex.StackTrace);
-            }
+            //        Response.Redirect("Default.aspx");
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("Error : " + ex.StackTrace);
+            //}
         }
     }
 }

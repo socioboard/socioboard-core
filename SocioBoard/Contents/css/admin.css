@@ -85,7 +85,7 @@ body{background:#4d575a;}
 #mainwrapper-message #message-list .message-list-content p{font-family:"Segoe UI";font-size:14px;color:#747474;padding-bottom:20px;word-wrap:break-word;background:url(../img/admin/slashdot.png) no-repeat right bottom transparent;margin-bottom:0px}
 #mainwrapper-message #message-list .message-list-content .message-list-info {font-family:"Segoe UI";font-size:12px;}
 #mainwrapper-message #message-list .message-list-content .message-list-info a{color:#7A92B8;display:inline;padding-right:10px;}
-.scl{float:right;width:80px;height:auto}
+.scl{float:right;width:88px;height:auto}
 .scl a{margin:0px 3px;display:inline !important}
 #mainwrapper-message .userpictiny > img{border:3px solid #FCFCFC}
 .btn:hover{
@@ -397,6 +397,7 @@ color:#FFFFFF; background:#e13024 !important;
 
 .feeds .accordion-group{background:#F4594F;color:#FFFFFF}
 .feeds .accordion-group a{color:#FFFFFF;text-decoration:none;outline:none;padding:8px}
+.feeds .accordion-group a.active, .feeds .accordion-group a:active {color:#333;}
 .feeds .accordion-group a .fesim{margin-right:10px}
 .feeds .accordion-inner{padding:0px;margin:0px 15px 9px;border-top:none}
 .feeds .accordion-inner ul{list-style:none;margin:0 0 10px 35px;border-top:1px solid #E5E5E5;padding-top:10px}

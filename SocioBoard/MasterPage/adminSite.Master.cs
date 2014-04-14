@@ -13,6 +13,12 @@ namespace SocialSuitePro.MasterPage
         {
             if (Session["AdminProfile"] != null)
             {
+                #region For Preventing Back button in login stage
+                Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                Response.Cache.SetExpires(DateTime.UtcNow.AddHours(-1));
+                Response.Cache.SetNoStore(); 
+                #endregion
+
                 SocioBoard.Domain.Admin admin = (SocioBoard.Domain.Admin)Session["AdminProfile"];
                 if (admin.Image != null)
                 {

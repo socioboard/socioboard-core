@@ -9474,7 +9474,7 @@ ol.recent-tweets >li
     padding: 8px;
     text-align: center;
     text-shadow: 1px 1px 0 #FFFFFF;
-    width: 100px;
+    /*width: 100px;*/
     cursor:pointer;
 }
 

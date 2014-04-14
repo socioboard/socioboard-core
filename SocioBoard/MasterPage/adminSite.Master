@@ -87,9 +87,9 @@
 			
 							
 								<!-- Menu Toggle Button -->
-				<button type="button" class="btn btn-navbar">
+				<%--<button type="button" class="btn btn-navbar">
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-				</button>
+				</button>--%>
 				<!-- // Menu Toggle Button END -->
 								
 								<!-- Top Menu -->
@@ -173,11 +173,11 @@
 									<span class="clearfix"></span>
 								</span>
 							</li>
-							<li>
+						<%--	<li>
 								<span>
 									<a class="btn btn-default btn-mini pull-right" href="<%=Page.ResolveUrl("~/Admin/Default.aspx")%>">Sign Out</a>
 								</span>
-							</li>
+							</li>--%>
 						</ul>
 											</li>
 					<!-- // Profile / Logout menu END -->

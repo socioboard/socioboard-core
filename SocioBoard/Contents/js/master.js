@@ -48,6 +48,7 @@ $('#commonmenuforAll').click(function () {
 
 $("#searchcontent").click(function () {
     $('#contactvalue').val('');
+    $("#contactsection").html('');
     $("#contactsearch").bPopup({
         positionStyle: 'fixed'
     });

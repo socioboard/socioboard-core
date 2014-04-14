@@ -36,8 +36,26 @@
     <Reference Include="CloudSponge">
       <HintPath>lib\CloudSponge.dll</HintPath>
     </Reference>
+    <Reference Include="CloudSpongeLib">
+      <HintPath>lib\CloudSpongeLib.dll</HintPath>
+    </Reference>
     <Reference Include="Facebook">
       <HintPath>lib\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="FacebookGraphAPI">
+      <HintPath>lib\FacebookGraphAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="GlobusGooglePlusLib">
+      <HintPath>lib\GlobusGooglePlusLib.dll</HintPath>
+    </Reference>
+    <Reference Include="GlobusInstagramLib">
+      <HintPath>lib\GlobusInstagramLib.dll</HintPath>
+    </Reference>
+    <Reference Include="GlobusLinkedinLib">
+      <HintPath>lib\GlobusLinkedinLib.dll</HintPath>
+    </Reference>
+    <Reference Include="GlobusTwitterLib">
+      <HintPath>lib\GlobusTwitterLib.dll</HintPath>
     </Reference>
     <Reference Include="Hammock, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -74,9 +92,8 @@
     <Reference Include="PayPalCoreSDK">
       <HintPath>lib\PayPalCoreSDK.dll</HintPath>
     </Reference>
-    <Reference Include="Recaptcha.Web, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Recaptcha.Web.dll</HintPath>
+    <Reference Include="Recaptcha.Web">
+      <HintPath>C:\Users\GLB-027\Desktop\Recaptcha.Web.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp, Version=104.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -2712,6 +2729,7 @@
     <Content Include="Monitoring.aspx" />
     <Content Include="Partners.aspx" />
     <Content Include="Pricing.aspx" />
+    <Content Include="Referral.aspx" />
     <Content Include="Referrals.aspx" />
     <Content Include="Registration.aspx" />
     <Content Include="Settings\Billing.aspx" />
@@ -3683,6 +3701,13 @@
     <Compile Include="Publishing.aspx.designer.cs">
       <DependentUpon>Publishing.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Referral.aspx.cs">
+      <DependentUpon>Referral.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Referral.aspx.designer.cs">
+      <DependentUpon>Referral.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Referrals.aspx.cs">
       <DependentUpon>Referrals.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4121,29 +4146,12 @@
     <Content Include="Helper\captcha.ashx" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CloudSpongeLib\CloudSpongeLib.csproj">
-      <Project>{E743EEE5-2A52-4ADF-ADC6-F4B6BF6CFAEA}</Project>
-      <Name>CloudSpongeLib</Name>
-    </ProjectReference>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\GlobusMailLib\GlobusMailLib.csproj">
       <Project>{F0A38425-5313-4E83-9568-B6D9C1D6EFA6}</Project>
       <Name>GlobusMailLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SocioBoard\Library\GlobusGooglePlusLib\GlobusGooglePlusLib.csproj">
-      <Project>{910F101C-C7E0-47F9-BCB6-CD793362E818}</Project>
-      <Name>GlobusGooglePlusLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SocioBoard\Library\GlobusInstagramLib\GlobusInstagramLib\GlobusInstagramLib.csproj">
-      <Project>{FC2E4794-2CB4-4AAA-A0AD-5483C931B3F0}</Project>
-      <Name>GlobusInstagramLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SocioBoard\Library\GlobusLinkedinLib\GlobusLinkedinLib.csproj">
-      <Project>{DB6AB2D5-8BDD-46C5-AB04-E8313FA19007}</Project>
-      <Name>GlobusLinkedinLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SocioBoard\Library\GlobusTwitterLib\GlobusTwitterLib.csproj">
-      <Project>{7051E5B4-23D1-4C8F-A459-D66AD79BCDF9}</Project>
-      <Name>GlobusTwitterLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

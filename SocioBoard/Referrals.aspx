@@ -1,8 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/socialsuite.Master"
-    AutoEventWireup="true" CodeBehind="Referrals.aspx.cs" Inherits="SocioBoard.Referrals" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/socialsuite.Master" AutoEventWireup="true" CodeBehind="Referrals.aspx.cs" Inherits="SocioBoard.Referrals" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script type="text/javascript">
+    <%--<script type="text/javascript">
         $(document).ready(function () {
 
             $('.b-close').click(function () {
@@ -61,6 +60,8 @@
                         //alert(msg);
 
                         window.open(msg, '_blank');
+                        //alert(msg);
+                        //window.location = msg;
 
                         getcontacts();
 
@@ -208,6 +209,97 @@
         };
 
 
+    </script>--%>
+     
+       <script type="text/javascript">
+           $(document).ready(function () {
+
+               getuserid();
+
+
+
+               var csPageOptions = {
+                   domain_key: "PPLVMKEAKUS87BJDU7J3",
+                   afterSubmitContacts: function (array_of_contacts) {
+                       var allcheckedmail = '';
+                       for (i in array_of_contacts) {
+                           var email = array_of_contacts[i].email[0].address;
+                           var firstname = array_of_contacts[i].first_name;
+                           if (firstname == undefined) {
+                               firstname = '';
+                           }
+
+                           var lastname = array_of_contacts[i].last_name;
+                           if (lastname == undefined) {
+                               lastname = '';
+                           }
+
+                           allcheckedmail += firstname + '<~>' + lastname + '<~>' + email + '<:>';
+                       };
+                       if (allcheckedmail != "") {
+                           //$('.loaderr').css('display', 'block');
+                           sendAllSectedMail(allcheckedmail);
+                       }
+                       else {
+                           alert('Please select mail!');
+                       }
+
+                   }
+               };
+
+
+
+           });
+
+
+
+            
+            
+
+
+
+          
+
+           function getuserid() {
+               // alert('asdasd');
+               $.ajax({
+                   type: "POST",
+                   url: "../Helper/Ajaxfacetwt.aspx?type=getuserid",
+                   data: '',
+                   success: function (msg) {
+                       debugger;
+                       //alert(msg);
+                       var arr = msg.split('<:>');
+                       if (arr[0] == "success") {
+                           //alert('success');
+                           $('#txturl').val('');
+                           $('#txturl').val(arr[1]);
+                       }
+                       else {
+                           alert('Problem');
+                           //  window.location = "Default.aspx";
+                       }
+
+                       // alert('Posted successfully');
+                   }
+               });
+           };
+
+         
+           function sendAllSectedMail(strmail) {
+               $.ajax({
+                   type: "POST",
+                   url: "../Helper/AjaxInviteFrndsByCloudSponge.aspx?type=sendselectedmail",
+                   data: "selectedmail=" + strmail,
+                   success: function (msg) {
+                       //alert('Mail Saved Successfully!');
+                       $('.loaderr').css('display', 'none');
+                       alert('All Message Send Successfully!')
+                   }
+               });
+           };
+
+
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -272,7 +364,7 @@
                             <div class="loaderr"><img alt="" src="Contents/img/ssp/Newloader.gif"></div>
                             <div class="invit_form">
                                 <div class="invit_emailform">
-                                    <h6>Invite your friends by email</h6>
+                                   <a href="#" onclick="return parent.cloudsponge.launch();">Invite your friends by email</a>
 
                                       <div class="ygmailbg">
                                          <a class="btnclick" name="gmail" href="#"><img src="../Contents/img/ssp/gmail.png" alt="" /></a>
@@ -315,5 +407,5 @@
             </div>
         </div>
     </div>
-
+      <script type="text/javascript" src="https://api.cloudsponge.com/address_books.js"></script>
 </asp:Content>

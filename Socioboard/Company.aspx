@@ -109,7 +109,7 @@
                                             <label for="website">Your Resume</label>
                                             <%--<input id="cvfile" type="file" name="Subject" value="" />--%>
                                                 <asp:FileUpload ID="cvfile" runat="server" />
-
+                                                <label for="website" style="float: right; width: 24%; margin-top: 0px;">Supported Formats: doc, docx Max file size: 300 Kb</label>
                                             </p>
                              
                                             <p>

@@ -1947,11 +1947,11 @@ background: -ms-linear-gradient(top,  #1489de 0%,#027fe4 100%); /* IE10+ */
  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1489de', endColorstr='#027fe4',GradientType=0 ); /* IE6-8 */
  border:2px solid #0c6ebe;	color: #FFFFFF;cursor: pointer;float: left;font: 18px arial; margin:8px 0; padding: 6px 0;
 	width:100%; border-bottom:1px solid #CCC;};
-.invit_share{width:100%; height:auto; float:left; margin:10px 0;}
+.invit_share {width:100%; height:auto; float:left; margin:10px 0;}
 .invit_share h3{width:100%; height:auto; float:left; font:12px Arial, Helvetica, sans-serif; color:#000; text-align:center; font-weight:bold;}
 .invit_share button{cursor: pointer;float: left;font: 18px arial;margin-top: 5px; padding: 6px 0;
 	width:100%; border-bottom:1px solid #CCC;}
-	
+.invit_share {width:100%; height:auto; float:left; margin:10px 0;}	
 .invit_share > ul{width:100%; height:auto; float:left; text-align:center; list-style:none; margin:0; padding:0;}
 .invit_share > ul > li{display: inline-block;margin: 0;padding: 0;width: auto;}
 .invit_share > ul > li > .copylinks{width:389px; height:auto; float:left;}

@@ -73,7 +73,7 @@ namespace SocialSuitePro
                         }
                         Session["days_remaining"] = daysremaining;
                         //ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('You are using '" + user.AccountType + "' account only '" + daysremaining + "' days is remaining !');", true);
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('You are using " + user.AccountType + " account " + daysremaining + " days is remaining !');", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Your trial " + user.AccountType + " account will expire in " + daysremaining + " days, please upgrade to paid plan.');", true);
                     }
                 }
 

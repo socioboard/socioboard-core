@@ -123,47 +123,5 @@ namespace GlobusMailLib
 
             return sendMailByMandrill;
         }
-       
-        public string SendMailByMandrillForEnterPrise(string name,string Host, int port, string from, string passsword, string to, string bcc, string cc, string subject, string body, string sendgridUserName, string sendgridPassword)
-        {
-            string sendMailByMandrill = string.Empty;
-            try
-            {
-
-                Mandrill.EmailMessage message = new Mandrill.EmailMessage();
-                //message.from_email = from;
-                //message.from_name = from;//"AlexPieter";
-                message.from_email = from;
-                message.from_name = name;
-                message.html = body;
-                message.subject = subject;
-                message.to = new List<Mandrill.EmailAddress>()
-                {
-                  new Mandrill.EmailAddress(to)
-                };
-
-                Mandrill.MandrillApi mandrillApi = new Mandrill.MandrillApi(sendgridPassword, false);
-                var results = mandrillApi.SendMessage(message);
-
-                foreach (var result in results)
-                {
-                    if (result.Status != Mandrill.EmailResultStatus.Sent)
-                    {
-                        logger.Error(result.Email + " " + result.RejectReason);
-                    }
-                    //  LogManager.Current.LogError(result.Email, "", "", "", null, string.Format("Email failed to send: {0}", result.RejectReason));
-                }
-
-                sendMailByMandrill = "success";
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                logger.Error(ex.Message);
-                sendMailByMandrill = ex.Message;
-            }
-
-            return sendMailByMandrill;
-        }
     }
 }

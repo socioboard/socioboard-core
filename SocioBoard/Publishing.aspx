@@ -19,8 +19,7 @@
     rel="stylesheet" type="text/css" />
 <link href="../Contents/js/timepicer/jquery.ui.timepicker.css" rel="stylesheet" type="text/css" />
 <%--timepicerscripts--%>
-<script src="../Contents/js/timepicer/include/ui-1.10.0/jquery.ui.widget.min.js"
-    type="text/javascript"></script>
+<script src="../Contents/js/timepicer/include/ui-1.10.0/jquery.ui.widget.min.js" type="text/javascript"></script>
 <script src="../Contents/js/timepicer/include/ui-1.10.0/jquery.ui.core.min.js" type="text/javascript"></script>
 <script src="../Contents/js/timepicer/include/ui-1.10.0/jquery.ui.tabs.min.js" type="text/javascript"></script>
 <script src="../Contents/js/timepicer/include/ui-1.10.0/jquery.ui.position.min.js"
@@ -29,7 +28,7 @@
 <script src="../Contents/js/clickDesk.js" type="text/javascript"></script>
 
 
- <%--urlvalidate--%>
+<%--urlvalidate--%>
 <%--<link rel="stylesheet" href="http://jquery.bassistance.de/validate/demo/site-demos.css">
 <script type="text/javascript" src="http://jquery.bassistance.de/validate/jquery.validate.js"></script>
 <script type="text/javascript" src="http://jquery.bassistance.de/validate/additional-methods.js"></script>--%>
@@ -752,9 +751,7 @@ background-position:0 0;
                                     <div id="scheduleimg" style="float: right;">
                                         <img onclick="ScheduleMessage()" src="../Contents/img/schedule.png" alt="" />
                                     </div>
-                                     <div class="composecontent" style="float: right;">
-                                       <a style="color: #D5928C;font-weight:bolder;height:30px;margin-top: 7px;width: 60px;" class="btn span6 composecontent">Send</a>
-                                    </div>
+                                    
                                 </div>
                                 <div class="datebg">
                                     <div id="multicaleder">
@@ -768,6 +765,11 @@ background-position:0 0;
                                     <div id="adddates_scheduler">
                                     </div>
                                 </div>
+
+                                 <div class="composecontent" style="float: right; margin:70px 39px 0 0;">
+                                       <a style="color: #D5928C;font-weight:bolder;height:30px;margin-top: 7px;width: 60px;" class="btn span6 composecontent">Send</a>
+                                    </div>
+
                             </div>
                         </div>
                     </div>
@@ -1361,8 +1363,11 @@ background-position:0 0;
     });
 
     $("#searchcontent").click(function () {
-
-        $("#contactsearch").bPopup();
+        $('#contactvalue').val('');
+        $("#contactsection").html('');
+        $("#contactsearch").bPopup({
+            positionStyle: 'fixed'
+        });
 
         $.ajax
         ({

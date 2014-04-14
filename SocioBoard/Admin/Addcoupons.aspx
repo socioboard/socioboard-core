@@ -65,6 +65,8 @@
 						<div class="form-actions" style="margin: 0;">
                             <asp:Button ID="btnSave" runat="server" Text="Add" 
                                 class="btn btn-icon btn-primary circle_ok" onclick="btnSave_Click"/>
+                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtcoupons" ErrorMessage="Please must Enter 25 digits code."></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ControlToValidate="txtcoupons" ValidationExpression="^[a-zA-Z0-9]{25}$" runat="server" ErrorMessage="Please must Enter 25 digits code."></asp:RegularExpressionValidator>
                             <%--	<button type="submit" class="btn btn-icon btn-primary glyphicons circle_ok"><i></i>Save changes</button>
 							<button type="button" class="btn btn-icon btn-default glyphicons circle_remove"><i></i>Cancel</button>--%>
 						</div>

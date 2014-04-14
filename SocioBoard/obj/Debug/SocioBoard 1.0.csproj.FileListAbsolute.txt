@@ -57,32 +57,16 @@ D:\Abhay\socioboard\trunk\SocioBoard Product\bin\SocioBoard 1.0.dll
 D:\Abhay\socioboard\trunk\SocioBoard Product\bin\SocioBoard 1.0.pdb
 D:\Abhay\socioboard\trunk\SocioBoard Product\bin\CloudSponge.dll
 D:\Abhay\socioboard\trunk\SocioBoard Product\bin\CloudSpongeLib.dll
-D:\Abhay\socioboard\trunk\SocioBoard Product\bin\GlobusGooglePlusLib.dll
-D:\Abhay\socioboard\trunk\SocioBoard Product\bin\GlobusInstagramLib.dll
-D:\Abhay\socioboard\trunk\SocioBoard Product\bin\GlobusLinkedinLib.dll
 D:\Abhay\socioboard\trunk\SocioBoard Product\bin\GlobusMailLib.dll
-D:\Abhay\socioboard\trunk\SocioBoard Product\bin\GlobusTwitterLib.dll
 D:\Abhay\socioboard\trunk\SocioBoard Product\bin\PayPalCoreSDK.dll
 D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Recaptcha.Web.dll
 D:\Abhay\socioboard\trunk\SocioBoard Product\bin\SendGridMail.dll
 D:\Abhay\socioboard\trunk\SocioBoard Product\bin\SendGridPlus.dll
 D:\Abhay\socioboard\trunk\SocioBoard Product\bin\System.Net.Http.dll
 D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Mandrill.dll
-D:\Abhay\socioboard\trunk\SocioBoard Product\bin\OAuth.dll
 D:\Abhay\socioboard\trunk\SocioBoard Product\bin\CodeScales.Http.dll
 D:\Abhay\socioboard\trunk\SocioBoard Product\bin\RestSharp.dll
-D:\Abhay\socioboard\trunk\SocioBoard Product\bin\CloudSpongeLib.pdb
 D:\Abhay\socioboard\trunk\SocioBoard Product\bin\GlobusMailLib.pdb
-D:\Abhay\socioboard\trunk\SocioBoard Product\bin\GlobusGooglePlusLib.pdb
-D:\Abhay\socioboard\trunk\SocioBoard Product\bin\GlobusInstagramLib.pdb
-D:\Abhay\socioboard\trunk\SocioBoard Product\bin\GlobusLinkedinLib.pdb
-D:\Abhay\socioboard\trunk\SocioBoard Product\bin\GlobusTwitterLib.pdb
 D:\Abhay\socioboard\trunk\SocioBoard Product\bin\System.Net.Http.xml
 D:\Abhay\socioboard\trunk\SocioBoard Product\obj\Debug\SocioBoard 1.0.dll
 D:\Abhay\socioboard\trunk\SocioBoard Product\obj\Debug\SocioBoard 1.0.pdb
-D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Iesi.Collections.pdb
-D:\Abhay\socioboard\trunk\SocioBoard Product\bin\Iesi.Collections.xml
-D:\Abhay\socioboard\trunk\SocioBoard Product\bin\NHibernate.pdb
-D:\Abhay\socioboard\trunk\SocioBoard Product\bin\NHibernate.xml
-D:\Abhay\socioboard\trunk\SocioBoard Product\bin\NHibernate.Linq.xml
-D:\Abhay\socioboard\trunk\SocioBoard Product\bin\NHibernateHelper.pdb

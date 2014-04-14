@@ -252,6 +252,8 @@
 
             $("#loginbtn").click(function () {
                 debugger;
+                document.getElementById('txtEmail').value = "";
+                document.getElementById('txtPassword').value = "";
                 document.getElementById('signinemailMessages').innerHTML = "";
                 document.getElementById('signinpasswordMessages').innerHTML = "";
                 $('#logindiv').bPopup({
