@@ -24,7 +24,7 @@ namespace SocialSuitePro
         ILog logger = LogManager.GetLogger(typeof(Default));
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            logger.Error("Testing");
             //linkedincompanypagetest();
             //Dictionary<string, string> allinfo = ReadLargeFile("D:/registration.txt");
             //UserRepository objUserRepository=new UserRepository ();

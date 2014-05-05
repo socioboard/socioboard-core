@@ -26,6 +26,9 @@
     <property name="FriendEmail">
       <column name="FriendEmail"  />
     </property>
+    <property name="LastEmailSendDate">
+      <column name="LastEmailSendDate"  />
+    </property>
     <property name="Status">
       <column name="Status"  />
     </property>

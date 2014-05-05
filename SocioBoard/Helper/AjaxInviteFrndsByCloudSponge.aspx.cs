@@ -18,10 +18,20 @@ namespace SocioBoard.Helper
     public partial class AjaxInviteFrndsByCloudSponge : System.Web.UI.Page
     {
         string returnresponse =string.Empty;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
+                if (Session["LoggedUser"] != null)
+                {
+                    SocioBoard.Domain.User user = (User)Session["LoggedUser"];
+                }
+                else
+                {
+                    Response.Write("logout");
+                }
+
 
                 if (Request.QueryString != null)
                 {
@@ -97,16 +107,21 @@ namespace SocioBoard.Helper
                     string host = ConfigurationManager.AppSettings["host"];
                     string port = ConfigurationManager.AppSettings["port"];
                     string pass = ConfigurationManager.AppSettings["password"];
-                    string urllogin = "http://socioboard.com/Default.aspx";
+                    string website = ConfigurationManager.AppSettings["MailSenderDomain"];
+
+                   
+
+
+                    string urllogin = website+"Default.aspx";
                     //string registrationurl = "http://dev.socioboard.com/Registration.aspx?refid=256f9c69-6b6a-4409-a309-b1f6d1f8e43b";
 
-                    string registrationurl = "http://dev.socioboard.com/Registration.aspx?refid=" + user.Id;
-
+                    string registrationurl = website+"Registration.aspx?refid=" + user.Id;
+                    html = html.Replace("%replink%", registrationurl);
                     string Body = mailhelper.InvitationMailByCloudSponge(html, fname + " " + lname, user.EmailId, "", urllogin, registrationurl);
 
-                    string Subject = "You've been Invited to Socioboard " + email + " Socioboard Account";
+                    string Subject = "You have been invited to Socioboard by " + user.EmailId;
 
-
+                    InviteMember(fname, lname, email);
                     #region Add Records in Invitation Table
                     Invitation objInvitation = new Invitation();
                     InvitationRepository objInvitationRepository = new InvitationRepository();
@@ -119,6 +134,7 @@ namespace SocioBoard.Helper
                     objInvitation.FriendName = fname + " " + lname;
                     objInvitation.SenderName = user.UserName;//"Abhaykumar";
                     objInvitation.Status = "0";
+                    objInvitation.LastEmailSendDate = DateTime.Now;
 
                     res = objInvitationRepository.Add(objInvitation);
                     #endregion
@@ -215,6 +231,8 @@ namespace SocioBoard.Helper
         }
         private string InviteMember(string fname,string lname, string email)
         {
+            SocioBoard.Domain.User user = (User)Session["LoggedUser"];
+            UserRepository objUserRepository = new UserRepository();
             string res = "";
             try
             {
@@ -225,20 +243,41 @@ namespace SocioBoard.Helper
                 MailHelper mailhelper = new MailHelper();
                 string mailpath = HttpContext.Current.Server.MapPath("~/Layouts/Mails/FriendInvitation.htm");
                 string html = File.ReadAllText(mailpath);
+
+
                 string fromemail = ConfigurationManager.AppSettings["fromemail"];
                 string usernameSend = ConfigurationManager.AppSettings["username"];
                 string host = ConfigurationManager.AppSettings["host"];
                 string port = ConfigurationManager.AppSettings["port"];
                 string pass = ConfigurationManager.AppSettings["password"];
-                string urllogin = "http://socioboard.com/Default.aspx";
-                string registrationurl = "http://dev.socioboard.com/Registration.aspx?refid=256f9c69-6b6a-4409-a309-b1f6d1f8e43b";
-                string Body = mailhelper.InvitationMailByCloudSponge(html, fname+" "+lname, "Abhaykumar@globussoft.com", "", urllogin, registrationurl);
+                string website = ConfigurationManager.AppSettings["MailSenderDomain"];
+                string urllogin = website + "Default.aspx";
+               // string registrationurl = "http://dev.socioboard.com/Registration.aspx?refid=256f9c69-6b6a-4409-a309-b1f6d1f8e43b";
+                string registrationurl = website+"Registration.aspx?refid=" + user.Id;
 
-                string Subject = "You've been Invited to " + email + " Socioboard Account";
+                html = html.Replace("%replink%", registrationurl);
+             
+
+               // string Body = mailhelper.InvitationMailByCloudSponge(html, fname+" "+lname, "Abhaykumar@globussoft.com", "", urllogin, registrationurl);
+
+                string Body = mailhelper.InvitationMailByCloudSponge(html, fname + " " + lname, user.EmailId, "", urllogin, registrationurl);
+
+                string Subject = "You have been invited to Socioboard by " + user.EmailId;
                 //   MailHelper.SendMailMessage(host, int.Parse(port.ToString()), fromemail, pass, email, string.Empty, string.Empty, Subject, Body);
                 MailHelper objMailHelper = new MailHelper();
-                res = objMailHelper.SendMailByMandrill(host, Convert.ToInt32(port), fromemail, "", email, "", "", Subject, Body, usernameSend, pass);
-              //MailHelper.SendSendGridMail(host, Convert.ToInt32(port), fromemail, "", email, "", "", Subject, Body, usernameSend, pass);
+                if (!objUserRepository.IsUserExist(email))
+                {
+                    res = objMailHelper.SendMailByMandrill(host, Convert.ToInt32(port), fromemail, "", email, "", "", Subject, Body, usernameSend, pass);
+                    if (res == "Success")
+                    {
+                        res = "Mail sent successfully!";
+                    }
+                }
+                else
+                {
+                    res = "EmailId Already Exist!";
+                }
+                    //MailHelper.SendSendGridMail(host, Convert.ToInt32(port), fromemail, "", email, "", "", Subject, Body, usernameSend, pass);
 
             }
             catch (Exception ex)

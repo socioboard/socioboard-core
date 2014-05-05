@@ -4108,6 +4108,22 @@ ul.user-stats li > .photo_stat
     right: 9%;
     top: 10%;
 }
+
+#popupchk12
+ {
+	  background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 0 25px 5px #999999;
+    color: #111111;
+    display: none;
+    left: 9%;
+    margin: auto;
+    min-width: 1030px;
+    padding: 25px;
+    right: 9%;
+    top: 10%;
+}
+
 .close_button 
 {
 	background-color: #FF7E77;
@@ -9945,7 +9961,7 @@ span.button:hover {
 .arrow a {background:url(../../Contents/img/arrow_up.png) no-repeat left top; margin-top: -35px;}
 .email_div > div > .ws_conct > span.img > img {border: 1px solid #FFFFFF; float: left;height: 48px; width: 48px;}
 
-.drop_mid > .teitter > ul > li > a > [id*="composename_"] {width: 113px;}
+.drop_mid > .teitter > ul > li > a > [id*="composename_"] {width: auto;}
 #loginBox_scheduler > .drop_mid > .teitter > ul > li {height:auto; text-align:left;}
 
 #change_password > label {color: #333333;float: left; font-family: arial;font-size: 13px;height: auto;margin-bottom: 5px; width: 100%;}

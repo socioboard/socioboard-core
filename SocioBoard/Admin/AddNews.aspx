@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/adminSite.Master" AutoEventWireup="true" CodeBehind="AddNews.aspx.cs" Inherits="WooSuite.Admin.AddNews" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/adminSite.Master" AutoEventWireup="true" CodeBehind="AddNews.aspx.cs" Inherits="SocialSuitePro.Admin.AddNews" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 <script src="../Contents/js/jquery.min.js" type="text/javascript"></script>
  <script type="text/javascript" language="javascript">

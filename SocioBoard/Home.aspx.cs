@@ -39,7 +39,7 @@ namespace SocialSuitePro
             try
             {
 
-
+                UserRefRelationRepository objUserRefRelationRepository=new UserRefRelationRepository ();
                 UserRepository userrepo = new UserRepository();
                 Registration regObject = new Registration();
                 TeamRepository objTeamRepo = new TeamRepository();
@@ -69,11 +69,21 @@ namespace SocialSuitePro
                         int daysremaining = (user.ExpiryDate.Date - DateTime.Now.Date).Days;
                         if (daysremaining < 0)
                         {
-                            daysremaining = 0;
+                            daysremaining = -1;
                         }
                         Session["days_remaining"] = daysremaining;
                         //ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('You are using '" + user.AccountType + "' account only '" + daysremaining + "' days is remaining !');", true);
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Your trial " + user.AccountType + " account will expire in " + daysremaining + " days, please upgrade to paid plan.');", true);
+                        if (daysremaining <= -1)
+                        {
+                        }
+                        else if (daysremaining == 0)
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Your trial " + user.AccountType + " account will expire end of the day, please upgrade to paid plan.');", true);
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Your trial " + user.AccountType + " account will expire in " + daysremaining + " days, please upgrade to paid plan.');", true);
+                        }
                     }
                 }
 
@@ -129,6 +139,41 @@ namespace SocialSuitePro
 
 
                     }
+
+
+
+                    //if (Request.QueryString != null)
+                    //{
+                    //    try
+                    //    {
+                    //        if (Request.QueryString["activate"] != null)
+                    //        {
+                    //            if (Request.QueryString["id"] != null)
+                    //            {
+
+                    //                string refid = Request.QueryString["id"].ToString();
+                    //                objUserRefRelationRepository.UpdateStatusByReferenceAndRefreeId(user.Id, Guid.Parse(refid));
+
+
+
+
+                    //            }
+                    //        }
+                    //    }
+                    //    catch (Exception ex)
+                    //    {
+
+                    //        Console.Write(ex.Message);
+                    //    }
+
+                    //}
+
+
+
+
+
+
+
 
 
 

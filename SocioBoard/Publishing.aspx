@@ -8,6 +8,7 @@
 <link href="Contents/css/Style_previous.css" rel="stylesheet" type="text/css" />
 <link href="Contents/css/admin.css" rel="stylesheet" type="text/css" />
 <link href="Contents/css/style.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="/Contents/img/ivon.ico" type="image/x-icon">
 <%--scripts--%>
 <script src="../Contents/js/jquery-1.7.2.js" type="text/javascript"></script>
 <script src="../Contents/js/jquery.session.js" type="text/javascript"></script>
@@ -525,7 +526,7 @@ background-position:0 0;
                             <li><a href="Reports/GroupStats.aspx">
                                 <img src="../Contents/img/admin/reports.png" alt="" />Reports</a> </li>
                                 <li id="Li1"><a href="../Group/Group.aspx">
-                                <img src="../Contents/img/admin/reports.png" alt="" />Groups</a> </li>
+                                <img src="../Contents/img/admin/group.png" alt="" />Groups</a> </li>
                         </ul>
                     </div>
                 </div>
@@ -1240,7 +1241,16 @@ background-position:0 0;
             var curdate = new Date();
             var now = (curdate.getMonth() + 1) + "/" + curdate.getDate() + "/" + curdate.getFullYear() + " " + curdate.getHours() + ":" + curdate.getMinutes() + ":" + curdate.getSeconds();
 
+            var Selected_time = $("#timepickerforScheduler").val();
+
+            if (Selected_time == "") {
+                alert("Please Must Select the Date and Time");
+                return false;
+            }
+
             var message_scheduler = $("#textareavaluetosendmessage_scheduler").val();
+
+
             $("#sendMessageBtn_scheduler").html('<img src="../Contents/img/325.gif" alt="" />');
             var timeforsch = $("#timepickerforScheduler").val();
 
@@ -1284,7 +1294,13 @@ background-position:0 0;
         } catch (e) {
 
         }
-    }
+   }
+
+
+
+
+
+   
 
 
     /*************************MasterScript*****************************/

@@ -50,11 +50,18 @@
     <div class="container">
         <!--outer-container-->
         <div class="outer-container" id="p5">
+        <div class="skypenumbg">
+           <div class="skypenum">
+                skype - socioboard.support &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  IN: +<span>91 9713317771</span>, US: +<span>1 408 5209502</span>, UK: +<span> 442032395414</span> 
+            </div>
+        </div>
             <div class="header-inner-container">
+            
                 <div class="logo-container">
                     <a href="../Default.aspx">
                         <img src="../Contents/img/ssp/logo-txt.png" alt="" /></a></div>
                 <div class="main-nav">
+                
                     <div class="social_plugin">
                         <span class='st_facebook_large'><a target="_blank" href="https://www.facebook.com/SocioBoard">
                             <img src="../Contents/img/ssp/facebook_32.png" alt="Facebook" /></a></span>
@@ -303,7 +310,7 @@
         <div class="right_area">
             <div class="social_bg">
                 <div class="you_cantext">
-                    You can also login with your social account</div>
+                    You can also Register with your social account</div>
                 <div class="social_icon_bg">
                     <div class="fb_icon">
                         <a id="fb_account" href="#" onclick="facebookLogin();">
@@ -379,4 +386,6 @@
 
     });
 </script>
+
+
 </html>

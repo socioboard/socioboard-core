@@ -28,7 +28,7 @@
                     <div class="accordion-group">
                         <div class="accordion-heading">
                             <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"
-                                onclick="BindProfilesforNetwork('facebook');">
+                                onclick="BindProfilesforNetworkOnly('facebook');">
                                 <img alt="" src="../Contents/img/admin/1.png" class="fesim">FACEBOOK <i class="icon-sort-down pull-right hidden">
                                 </i></a>
                         </div>

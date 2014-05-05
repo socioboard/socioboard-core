@@ -58,7 +58,7 @@
             position: fixed;
             top: 50%;
             width: 380px;
-            z-index: 102;
+            z-index: 10000;
         }
         .web_dialog >li
         {
@@ -491,7 +491,7 @@
                                 debugger;
                                 HideDialogHome();
                                 BindSocialProfiles();
-
+                                var s = $("#ContentPlaceHolder1_usedAccount").html(msg);
                             }
 
                         });

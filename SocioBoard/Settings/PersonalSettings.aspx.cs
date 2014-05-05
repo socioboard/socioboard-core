@@ -78,27 +78,46 @@ namespace SocialSuitePro.Settings
 
         public void changePassoword(object sender, EventArgs e)
         {
-            if (txtPassword.Text != "" && txtConfirmPassword.Text != "")
+            
+            try
             {
-                if (txtPassword.Text == txtConfirmPassword.Text)
+                Registration regpage = new Registration();
+                string OldPassword = regpage.MD5Hash(txtOldPassword.Text);
+
+                if (txtPassword.Text != "" && txtConfirmPassword.Text != "" && txtOldPassword.Text != "")
                 {
-                    User user = (User)Session["LoggedUser"];
-                    Registration regpage = new Registration();
-                    string changedpassword = regpage.MD5Hash(txtConfirmPassword.Text);
-                    UserRepository userrepo = new UserRepository();
-                    userrepo.ChangePassword(changedpassword, user.Password, user.EmailId);
-                    txtConfirmPassword.Text = string.Empty;
-                    txtPassword.Text = string.Empty;
-                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Message", "alert('Your password has been changed successfully.')", true);
+                    if (txtPassword.Text == txtConfirmPassword.Text)
+                    {
+                        User user = (User)Session["LoggedUser"];
+                        if (OldPassword == user.Password)
+                        {
+
+                            string changedpassword = regpage.MD5Hash(txtConfirmPassword.Text);
+                            UserRepository userrepo = new UserRepository();
+                            userrepo.ChangePassword(changedpassword, user.Password, user.EmailId);
+                            txtConfirmPassword.Text = string.Empty;
+                            txtPassword.Text = string.Empty;
+                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Message", "alert('Your password has been changed successfully.')", true);
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Message", "alert('Your password is InCorrect.')", true);
+                        }
+                    }
+                    else
+                    {
+
+                    }
                 }
                 else
                 {
-                
+
                 }
             }
-            else
-            { 
-            
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
             }
         }
 

@@ -137,6 +137,16 @@ function replyfunction(id, profiletype, messageid, userid) {
 
         }
 
+        if (messagedescription.indexOf("Contents/img/pin") != -1) {
+            messagedescription = messagedescription.replace("../Contents/img/pin.png", "");
+        }
+        if (messagedescription.indexOf("Contents/img/admin/goto.png") != -1) {
+            messagedescription = messagedescription.replace("../Contents/img/admin/goto.png", "");
+        }
+        if (messagedescription.indexOf("Contents/img/archive") != -1) {
+            messagedescription = messagedescription.replace("../Contents/img/archive.png", "");
+        }
+
         $("#replyMessages").html = "";
         $("#replyMessages").html(messagedescription);
 
@@ -147,7 +157,7 @@ function replyfunction(id, profiletype, messageid, userid) {
         catch (e) {
         }
 
-
+       
         try {
             var userid = document.getElementById('rowid_' + id).innerHTML;
 

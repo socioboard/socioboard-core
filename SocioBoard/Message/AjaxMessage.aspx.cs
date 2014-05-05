@@ -290,7 +290,8 @@ namespace SocioBoard.Message
                                              "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>" + item.Message + "</p>" +
                                                  "<div class=\"message-list-info\"><span><a href=\"#\" id=\"rowname_" + sorteddatacount + "\" onclick=\"detailsprofile(" + item.ProfileId + ");\">" + item.ProfileId + "</a> " + item.CreatedDateTime + "</span>" +
                                                  "<div class=\"scl\">" +
-                                                 "<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
+                                    //"<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
+                                                  "</div></div></div></div></li>";
                             }
                             else if (item.SocialGroup == "facebook")
                             {
@@ -299,7 +300,8 @@ namespace SocioBoard.Message
                                             "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>" + item.Message + "</p>" +
                                                 "<div class=\"message-list-info\"><span><a href=\"#\" id=\"rowname_" + sorteddatacount + "\" onclick=\"getFacebookProfiles(" + item.ProfileId + ");\">" + item.ProfileId + "</a> " + item.CreatedDateTime + "</span>" +
                                                 "<div class=\"scl\">" +
-                                                "<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
+                                    //"<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
+                                                "</div></div></div></div></li>";
 
                             }
                             else if (item.SocialGroup == "googleplus")
@@ -309,7 +311,8 @@ namespace SocioBoard.Message
                                             "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>" + item.Message + "</p>" +
                                                 "<div class=\"message-list-info\"><span><a href=\"#\" id=\"rowname_" + sorteddatacount + "\" onclick=\"detailsprofile(" + item.ProfileId + ");\">" + item.ProfileId + "</a> " + item.CreatedDateTime + "</span>" +
                                                 "<div class=\"scl\">" +
-                                                "<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a></div></div></div></div></li>";
+                                    //"<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a></div></div></div></div></li>";
+                                                "</div></div></div></div></li>";
 
                             }
                             message += "</li>";
@@ -371,7 +374,7 @@ namespace SocioBoard.Message
                     FacebookClient fc = new FacebookClient(result.AccessToken);
                     Dictionary<string, object> parameters = new Dictionary<string, object>();
                     parameters.Add("message", message);
-                    JsonObject dyn = (JsonObject)fc.Post("/" + postid+ "/comments", parameters);
+                    JsonObject dyn = (JsonObject)fc.Post("/" + postid + "/comments", parameters);
 
                 }
                 else if (Request.QueryString["op"] == "getFacebookComments")
@@ -452,46 +455,46 @@ namespace SocioBoard.Message
                         Console.Write(Err.Message.ToString());
                     }
                     string jas = string.Empty;
-                      foreach (var item in objProfile)
+                    foreach (var item in objProfile)
                     {
                         jas += "<div class=\"modal-small draggable\">";
-	                    jas += "<div class=\"modal-content\">";
-		                jas += "<button type=\"button\" class=\"modal-btn button b-close\">";
-			            jas += "<span class=\"icon close-medium\"><span class=\"visuallyhidden\">X</span></span></button>";
-		                jas += "<div class=\"modal-header\"><h3 class=\"modal-title\">Profile summary</h3></div>";
-		                jas += "<div class=\"modal-body profile-modal\">";
-			            jas += "<div class=\"module profile-card component profile-header\">";
-				        jas += "<div style=\"background-image: url('https://pbs.twimg.com/profile_banners/215936249/1371721359');\" class=\"profile-header-inner flex-module clearfix\">";
-					    jas += "<div class=\"profile-header-inner-overlay\"></div>";
-						jas += "<a href=\"#\" class=\"profile-picture media-thumbnail js-nav\">";
+                        jas += "<div class=\"modal-content\">";
+                        jas += "<button type=\"button\" class=\"modal-btn button b-close\">";
+                        jas += "<span class=\"icon close-medium\"><span class=\"visuallyhidden\">X</span></span></button>";
+                        jas += "<div class=\"modal-header\"><h3 class=\"modal-title\">Profile summary</h3></div>";
+                        jas += "<div class=\"modal-body profile-modal\">";
+                        jas += "<div class=\"module profile-card component profile-header\">";
+                        jas += "<div style=\"background-image: url('https://pbs.twimg.com/profile_banners/215936249/1371721359');\" class=\"profile-header-inner flex-module clearfix\">";
+                        jas += "<div class=\"profile-header-inner-overlay\"></div>";
+                        jas += "<a href=\"#\" class=\"profile-picture media-thumbnail js-nav\">";
                         string[] imgurl = item["image"]["url"].ToString().Split('?');
                         jas += "<img src=\"" + imgurl[0] + " alt=\"" + item["name"]["givenName"] + "\" class=\"avatar size73\"></a>";
-						jas += "<div class=\"profile-card-inner\">";
-						jas += "<h1 class=\"fullname editable-group\">";
+                        jas += "<div class=\"profile-card-inner\">";
+                        jas += "<h1 class=\"fullname editable-group\">";
                         jas += "<a class=\"js-nav\" href=\"#\">" + item["name"]["givenName"] + "</a>";
-						jas += "<a href=\"#\" class=\"verified-link js-tooltip\">";
-						jas += "<span class=\"icon verified verified-large-border\">";
-						jas += "<span class=\"visuallyhidden\"></span></span></a></h1>";
+                        jas += "<a href=\"#\" class=\"verified-link js-tooltip\">";
+                        jas += "<span class=\"icon verified verified-large-border\">";
+                        jas += "<span class=\"visuallyhidden\"></span></span></a></h1>";
                         jas += "<h2 class=\"username\">";
-						jas += "<a class=\"pretty-link js-nav\" href=\"#\">";
+                        jas += "<a class=\"pretty-link js-nav\" href=\"#\">";
                         jas += "<span class=\"screen-name\"><s></s>" + item["displayName"] + "</span></a></h2>";
-						jas += "<div class=\"bio-container editable-group\"><p class=\"bio profile-field\"></p></div>";
-						jas += "<p class=\"location-and-url\">";
-						jas += "<span class=\"location-container editable-group\">";
-						jas += "<span class=\"location profile-field\"></span></span>";
-						jas += "<span class=\"divider hidden\"></span> ";
-						jas += "<span class=\"url editable-group\">  ";
-						jas += "<span class=\"profile-field\">";
+                        jas += "<div class=\"bio-container editable-group\"><p class=\"bio profile-field\"></p></div>";
+                        jas += "<p class=\"location-and-url\">";
+                        jas += "<span class=\"location-container editable-group\">";
+                        jas += "<span class=\"location profile-field\"></span></span>";
+                        jas += "<span class=\"divider hidden\"></span> ";
+                        jas += "<span class=\"url editable-group\">  ";
+                        jas += "<span class=\"profile-field\">";
                         jas += "<a target=\"_blank\" rel=\"me nofollow\" href=\"" + item["url"] + "\" title=\"#\">" + item["url"] + " </a></span></span></p>";
-						jas += "<div style=\"cursor: pointer; width: 16px; height: 16px; display: inline-block;\">&nbsp;</div><p></p></div></div>";
-					    jas += "<div class=\"clearfix\"><div class=\"default-footer\">";
-						jas += "<div class=\"btn-group\"><div class=\"follow_button\"></div></div></div></div>";
-				        jas += "<div class=\"profile-social-proof\">";
-					    jas += "<div class=\"follow-bar\"></div></div></div>";
-			            jas += "<ol class=\"recent-tweets\"><li class=\"\"><div><i class=\"dogear\"></i></div></li></ol>";
-			            jas += "<div class=\"go_to_profile\">";
-				        jas += "<small><a class=\"view_profile\" target=\"_blank\" href=\""+ item["url"] +"\">Go to full profile →</a></small></div></div>";
-		                jas += "<div class=\"loading\"><span class=\"spinner-bigger\"></span></div></div></div>";
+                        jas += "<div style=\"cursor: pointer; width: 16px; height: 16px; display: inline-block;\">&nbsp;</div><p></p></div></div>";
+                        jas += "<div class=\"clearfix\"><div class=\"default-footer\">";
+                        jas += "<div class=\"btn-group\"><div class=\"follow_button\"></div></div></div></div>";
+                        jas += "<div class=\"profile-social-proof\">";
+                        jas += "<div class=\"follow-bar\"></div></div></div>";
+                        jas += "<ol class=\"recent-tweets\"><li class=\"\"><div><i class=\"dogear\"></i></div></li></ol>";
+                        jas += "<div class=\"go_to_profile\">";
+                        jas += "<small><a class=\"view_profile\" target=\"_blank\" href=\"" + item["url"] + "\">Go to full profile →</a></small></div></div>";
+                        jas += "<div class=\"loading\"><span class=\"spinner-bigger\"></span></div></div></div>";
                     }
                     Response.Write(jas);
                 }
@@ -711,7 +714,7 @@ namespace SocioBoard.Message
 
                 }
             }
-            
+
             return message;
 
 

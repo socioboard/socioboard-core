@@ -2,9 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script src="Contents/js/jquery-1.6.3.min.js" type="text/javascript"></script>
-<script src="Contents/js/easyResponsiveTabs.js" type="text/javascript"></script>
-<script type="text/javascript" src="../Contents/js/jquery.lightbox-0.5.js"></script>
   <div class="feature_body" id="p6">
             
             <div class="row-content">
@@ -89,32 +86,32 @@
                                             <p>
                                             <label for="name">First Name *</label>
                                            <%-- <input runat="server" id="fname" type="text" name="name" value="" />--%>
-                                             <asp:TextBox ID="fname" runat="server"></asp:TextBox>
+                                             <asp:TextBox ID="fname" runat="server" required="required"></asp:TextBox>
                                             </p>
                 
                                             <p>
-                                            <label for="company">Last Name</label>
+                                            <label for="company">Last Name *</label>
                                            <%-- <input runat="server" id="lname" type="text" name="company" value="" />--%>
-                                            <asp:TextBox ID="lname" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="lname" runat="server" required="required"></asp:TextBox>
                                             </p>
                 
                                             <p>
 
                                             <label for="email">Email *</label>
                                             <%--<input runat="server" id="email" type="text" name="email" value="" />--%>
-                                            <asp:TextBox ID="email" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="email" runat="server" required="required"></asp:TextBox>
                                             </p>
                 
                                             <p>
-                                            <label for="website">Your Resume</label>
+                                            <label for="website">Your Resume *</label>
                                             <%--<input id="cvfile" type="file" name="Subject" value="" />--%>
-                                                <asp:FileUpload ID="cvfile" runat="server" />
+                                                <asp:FileUpload ID="cvfile" runat="server" required="required" />
                                                 <label for="website" style="float: right; width: 24%; margin-top: 0px;">Supported Formats: doc, docx Max file size: 300 Kb</label>
                                             </p>
                              
                                             <p>
                                             <label for="profile">Message *</label>
-                                            <textarea runat="server" name="profile" id="message" cols="30" rows="10"></textarea>
+                                            <textarea runat="server" name="profile" id="message" cols="30" rows="10" required="required"></textarea>
 
                                             </p>
                                              <br />
@@ -274,6 +271,9 @@ Woosuite<br />
            
 		</div>
         <!--end feature_body-->
+         
+        <script src="../Contents/js/easyResponsiveTabs.js" type="text/javascript"></script>
+        <script type="text/javascript" src="../Contents/js/jquery.lightbox-0.5.js"></script>
          <script type="text/javascript">
              $(document).ready(function () {
                  $('#company').easyResponsiveTabs({

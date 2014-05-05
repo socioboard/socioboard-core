@@ -1,7 +1,7 @@
 @import url('bootstrap.min.css');
 @import url('slider.css');
 @import url('fonts.css');
-body{background-color:#232323}
+/**body{background-color:#232323}**/
 #suite-wrap{min-height:3794px;background-color:#FFFFFF;}
 #content-1{height:441px;width:100%;background:url("../img/top_bg.jpg") no-repeat 0 0;color:#FFFFFF}
 #content-1 a{font-family:'nexa_lightregular';}

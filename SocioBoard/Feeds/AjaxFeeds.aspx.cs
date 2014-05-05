@@ -81,7 +81,7 @@ namespace SocialSuitePro.Feeds
 
                         if (alstfacebook.Count == 0)
                         {
-                            profiles += "<li><a  href=\"#\" class=\"active\">No Records Found</a> </li>";
+                            profiles += "<li>No Records Found</li>";
                         }
                         else
                         {
@@ -206,7 +206,8 @@ namespace SocialSuitePro.Feeds
                             string[] str = urlext.splitUrlFromString(item.Message);
                             messages += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"" + item.FromProfileUrl + "\" onclick=\"getFacebookProfiles('" + item.FromId + "');\">" +
                                                          "</div><div class=\"pull-left feedcontent\">" +
-                                                            "<a href=\"#\" class=\"feednm\" onclick=\"getFacebookProfiles('" + item.FromId + "');\">" + item.FromName + "</a> <span>" + item.MessageDate +
+                                                            //"<a href=\"#\" class=\"feednm\" onclick=\"getFacebookProfiles('" + item.FromId + "');\">" + item.FromName + "</a> <span>" + item.MessageDate +
+                                                            "<a target=\"_blank\" href=\"http://www.facebook.com/" + item.FromId + "\" class=\"feednm\">" + item.FromName + "</a> <span>" + item.MessageDate +
                                                                 " </span>" +
                                                              "<p>";
 

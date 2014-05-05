@@ -69,7 +69,7 @@ namespace SocialSuitePro
 
                                     if (faceaccount != null)
                                     {
-                                        profiles += "<li id=\"so_" + item.ProfileId + "\"><div id=\"" + item.ProfileId + "\" class=\"userpictiny\"><div class=\"delet_icon\" onclick=\"confirmDel('" + item.ProfileId + "','fb');\"></div><a href=\"http://www.facebook.com/" + faceaccount.FbUserId + "\" target=\"_blank\"><img src=\"http://graph.facebook.com/" + item.ProfileId + "/picture?type=small\" height=\"48\" width=\"48\" alt=\"\" title=\"" + faceaccount.FbUserName + "\" /></a>" +
+                                        profiles += "<li id=\"so_" + item.ProfileId + "\"><div id=\"" + item.ProfileId + "\" class=\"userpictiny\"><div class=\"delet_icon\" onclick=\"confirmDel('" + item.ProfileId + "','" + faceaccount.Type + "','fb');\"></div><a href=\"http://www.facebook.com/" + faceaccount.FbUserId + "\" target=\"_blank\"><img src=\"http://graph.facebook.com/" + item.ProfileId + "/picture?type=small\" height=\"48\" width=\"48\" alt=\"\" title=\"" + faceaccount.FbUserName + "\" /></a>" +
                                                     "<a href=\"#\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/fb_icon.png\" width=\"16\" height=\"16\" alt=\"\"></a></div></li>";
                                     }
                                 }
@@ -88,7 +88,7 @@ namespace SocialSuitePro
                                     SocioBoard.Domain.TwitterAccount twtaccount = twtrepo.getUserInformation(user.Id, item.ProfileId);
                                     if (twtaccount != null)
                                     {
-                                        profiles += "<li id=\"so_" + item.ProfileId + "\"><div id=\"" + item.ProfileId + "\" class=\"userpictiny\"><div class=\"delet_icon\" onClick=\"confirmDel('" + item.ProfileId + "','twt')\"></div><a href=\"http://twitter.com/" + twtaccount.TwitterScreenName + "\" target=\"_blank\"><img src=\"" + twtaccount.ProfileImageUrl + "\" height=\"48\" width=\"48\" alt=\"\" title=\"" + twtaccount.TwitterScreenName + "\" /></a>" +
+                                        profiles += "<li id=\"so_" + item.ProfileId + "\"><div id=\"" + item.ProfileId + "\" class=\"userpictiny\"><div class=\"delet_icon\" onClick=\"confirmDel('" + item.ProfileId + "','twt','twt')\"></div><a href=\"http://twitter.com/" + twtaccount.TwitterScreenName + "\" target=\"_blank\"><img src=\"" + twtaccount.ProfileImageUrl + "\" height=\"48\" width=\"48\" alt=\"\" title=\"" + twtaccount.TwitterScreenName + "\" /></a>" +
                                                     "<a href=\"#\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/twticon.png\" width=\"16\" height=\"16\" alt=\"\"></a></div></li>";
                                     }
 
@@ -605,9 +605,9 @@ namespace SocialSuitePro
                                         }
 
                                         midsnaps += "<div id=\"mid_" + item.ProfileId + "\" style=\"height:333px;\" class=\"span4 rounder recpro\"><div class=\"concotop\">" +
-                                           "<div class=\"userpictiny\"><img width=\"56\" height=\"56\" title=\"" + LdprofileName + "\" alt=\"\" src=\"" + LdPreofilePic + "\">" +
+                                           "<a href=\"" + liAccount.ProfileUrl + "\" target=\"_blank\"><img width=\"56\" height=\"56\" title=\"" + LdprofileName + "\" alt=\"\" src=\"" + LdPreofilePic + "\"></a>" +
                                            "<a title=\"\" class=\"userurlpic\" href=\"#\"><img alt=\"\" src=\"../Contents/img/link_icon.png\" width=\"16\" height=\"16\"></a></div>" +
-                                           "<div class=\"useraccname\">" + LdprofileName + "</div><div class=\"usercounter\">" +
+                                           "<a href=\"" + liAccount.ProfileUrl + "\" target=\"_blank\"><div class=\"useraccname\">" + LdprofileName + "</div></a><div class=\"usercounter\">" +
                                            "<div class=\"userfoll\">" + linkedinConcount + "<span><b style=\"font-size: 13px;\">Connections</b></span></div>" +
                                            "<div class=\"userppd\">" + Math.Round(rNum.NextDouble(), 2) + "<span>Avg. Post <br> Per Day</span></div></div></div>" +
                                            "<div class=\"concoteng\"><h5>recent message</h5> <ul class=\"mess\">";
@@ -675,9 +675,9 @@ namespace SocialSuitePro
                                         InstagramAccount objInsAcc = objInsAccRepo.getInstagramAccountDetailsById(item.ProfileId, user.Id);
 
                                         midsnaps += "<div id=\"mid_" + item.ProfileId + "\" style=\"height:333px;\" class=\"span4 rounder recpro\"><div class=\"concotop\">" +
-                                               "<div class=\"userpictiny\"><img width=\"56\" height=\"56\" title=\"" + objInsAcc.InsUserName + "\" alt=\"\" src=\"" + objInsAcc.ProfileUrl + "\">" +
+                                               "<a href=\"http://instagram.com/" + objInsAcc.InsUserName + "\" target=\"_blank\"><div class=\"userpictiny\"><img width=\"56\" height=\"56\" title=\"" + objInsAcc.InsUserName + "\" alt=\"\" src=\"" + objInsAcc.ProfileUrl + "\"></a>" +
                                                "<a title=\"\" class=\"userurlpic\" href=\"#\"><img alt=\"\" src=\"../Contents/img/instagram_24X24.png\" width=\"16\" height=\"16\"></a></div>" +
-                                               "<div class=\"useraccname\">" + objInsAcc.InsUserName + "</div></div>" +
+                                               "<a href=\"http://instagram.com/" + objInsAcc.InsUserName + "\" target=\"_blank\"><div class=\"useraccname\">" + objInsAcc.InsUserName + "</div></a></div>" +
                                                "<div class=\"concoteng\"><div class=\"pillow_fade\">" +
                                                " <div class=\"fb_notifications\">" +
                                                "<ul class=\"user-stats\"> " +
@@ -799,6 +799,8 @@ namespace SocialSuitePro
                                     fbstatsrepo.deleteFacebookStats(profileid, user.Id);
                                 }
                             }
+
+
 
                         }
                         catch (Exception exx)
@@ -988,9 +990,8 @@ namespace SocialSuitePro
                         }
                     }
                     profiles += "</ul> </div>";
-                    Session["profilesforcomposemessage"] = profiles;
-
-                }
+                    Response.Write(RemainingAccount(user));
+                                    }
                 else if (Request.QueryString["op"] == "MasterCompose")
                 {
                     string profiles = string.Empty;
@@ -1376,6 +1377,7 @@ namespace SocialSuitePro
                         }
                     }
                     Session["fbSocial"] = null;
+                    Response.Write(RemainingAccount(user));
                 }
                 else if (Request.QueryString["op"] == "countmessages")
                 {
@@ -1622,6 +1624,26 @@ namespace SocialSuitePro
                     Response.Write(message);
                 }
             }
+        }
+
+        private string RemainingAccount(SocioBoard.Domain.User user)
+        {
+
+            string res = "using " + Session["ProfileCount"].ToString() + " of " + Session["TotalAccount"].ToString();
+            try
+            {
+                SocialProfilesRepository objSocioRepo = new SocialProfilesRepository();
+                Session["ProfileCount"] = objSocioRepo.getAllSocialProfilesOfUser(user.Id).Count;
+
+                res = "using " + Session["ProfileCount"].ToString() + " of " + Session["TotalAccount"].ToString();
+            }
+            catch (Exception ex)
+            {
+
+                logger.Error(ex.Message);
+                Console.WriteLine(ex.Message);
+            }
+            return res;
         }
         public string CompareDateWithServer(string clientdate, string scheduletime)
         {

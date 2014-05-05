@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WooSuite.Admin {
+namespace SocialSuitePro.Admin {
     
     
     public partial class AddNews {

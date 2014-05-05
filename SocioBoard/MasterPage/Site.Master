@@ -121,7 +121,7 @@
                     <a href="../Home.aspx">
                         <img src="../Contents/img/under_sspro_logo.png" alt="Socio Board" /></a>
                 </div>
-                <div id="infocontainer" style="width: 730px;">
+                <div id="infocontainer" style="width: 742px;">
                     <div id="msgcontainer">
                         <div id="msgcontent">
                             <a href="../Message/Messages.aspx">
@@ -182,7 +182,7 @@
                             <li id="reports"><a href="../Reports/GroupStats.aspx">
                                 <img src="../Contents/img/admin/reports.png" alt="" /><span>Reports</span></a> </li>
                             <li id="Li1"><a href="../Group/Group.aspx">
-                                <img src="../Contents/img/admin/reports.png" alt="" /><span>Groups</span></a> </li>
+                                <img src="../Contents/img/admin/group.png" alt="" /><span>Groups</span></a> </li>
                         </ul>
                     </div>
                 </div>
@@ -200,7 +200,7 @@
                                     </ul>--%>
                                 </li>
                                 <li id="addico"><a>
-                                    <img src="../Contents/img/admin/addico.png" alt="" /></a>
+                                    <img  id="imgaddico" src="../Contents/img/admin/addico.png" alt="" /></a>
                                     <div id="addicbox" style="display: none;">
                                         <div class="drop_top_left_poin">
                                         </div>
@@ -325,7 +325,7 @@
                             	<img src="../Contents/img/blank_img.png" alt="" />
                                 <textarea id="txttaskcomment" rows="" cols="" name="" placeholder="Your comment (viewable only to team members)"></textarea>
                             </div>
-                            <div class="task_ws_tm_button_div">
+                            <d iv class="task_ws_tm_button_div">
                             	<input id="save_task" type="button" name="" value="SAVE"  onclick="savetask();"/>
                               <%--  <input id="cancel11" type="button" name="" value="CANCEL" />--%>
                             </div>

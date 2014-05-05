@@ -4,14 +4,17 @@ using System.Linq;
 using System.Web;
 using SocioBoard.Helper;
 using SocioBoard.Domain;
+using log4net;
 
 namespace SocioBoard.Model
 {
     public class UserRefRelationRepository
     {
+        ILog logger = LogManager.GetLogger(typeof(Registration));
+
         public int AddUserRefRelation(UserRefRelation userRefRelation)
         {
-            int res=0;
+            int res = 0;
             try
             {
                 using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -24,16 +27,18 @@ namespace SocioBoard.Model
                         res = 1;
                     }
                 }
+                logger.Error("Coming out of AddUserRefRelation");
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error : " + ex.StackTrace);
+                logger.Error("UserRefRelationRepository>>AddUserRefRelation" + ex.Message);
             }
 
             return res;
         }
 
-        public  int UpdateUserRefRelation(UserRefRelation userRefRelation)
+        public int UpdateUserRefRelation(UserRefRelation userRefRelation)
         {
             int i = 0;
             try
@@ -111,6 +116,51 @@ namespace SocioBoard.Model
             return i;
         }
 
+
+        public bool UpdateStatusByReferenceAndRefreeId(Guid reference, Guid refree)
+        {
+            List<UserRefRelation> lstUserRefRelation;
+            bool res = false;
+            try
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        try
+                        {
+                            lstUserRefRelation = session.CreateQuery("select Status from UserRefRelation where ReferenceUserId=:reference and RefereeUserId:refree")
+                          .SetParameter("reference", refree)
+                          .SetParameter("refree", refree)
+                          .List<UserRefRelation>().ToList<UserRefRelation>();
+
+                            if (lstUserRefRelation.Count > 0)
+                            {
+                                if (lstUserRefRelation[0].Status == null)
+                                {
+                                    res = true;
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error : " + ex.StackTrace);
+            }
+
+            return res;
+        }
+
+
+
         public List<UserRefRelation> GetAllUserRefRelationInfo(UserRefRelation userRefRelation)
         {
             List<UserRefRelation> lstUserRefRelation = new List<UserRefRelation>();
@@ -174,7 +224,8 @@ namespace SocioBoard.Model
             return lstUserRefRelation;
         }
 
-        public List<UserRefRelation> GetUserRefRelationInfoById(UserRefRelation userRefRelation)
+
+        public List<UserRefRelation> GetUserRefRelationInfoByReferenceId(UserRefRelation userRefRelation)
         {
             List<UserRefRelation> lstUserRefRelation = new List<UserRefRelation>();
             try
@@ -186,6 +237,37 @@ namespace SocioBoard.Model
                         try
                         {
                             lstUserRefRelation = session.CreateQuery("from UserRefRelation u where u.ReferenceUserId =:referenceUserId")
+                                .SetParameter("referenceUserId", userRefRelation.ReferenceUserId)
+                            .List<UserRefRelation>().ToList<UserRefRelation>();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+
+            }
+
+            return lstUserRefRelation;
+        }
+
+        public List<UserRefRelation> GetUserRefRelationInfoByRefreeId(UserRefRelation userRefRelation)
+        {
+            List<UserRefRelation> lstUserRefRelation = new List<UserRefRelation>();
+            try
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        try
+                        {
+                            lstUserRefRelation = session.CreateQuery("from UserRefRelation u where u.RefereeUserId =:referenceUserId")
                                 .SetParameter("referenceUserId", userRefRelation.ReferenceUserId)
                             .List<UserRefRelation>().ToList<UserRefRelation>();
                         }

@@ -30,7 +30,7 @@
 	
 	<!-- Uniform Pretty Checkboxes -->
 	<link href="../Contents/common/theme/scripts/plugins/forms/pixelmatrix-uniform/css/uniform.default.css" rel="stylesheet" />
-	
+	<link rel="shortcut icon" href="../Contents/img/ivon.ico" type="image/x-icon">
 	<!-- Bootstrap Extended -->
 	<link href="../Contents/common/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet">
 	<link href="../Contents/common/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap-responsive.min.css" rel="stylesheet">
@@ -338,16 +338,16 @@
 							
 						</li>
                          <li class="hasSubmenu active">
-							<a data-toggle="collapse" href="#Ul4"><i></i><span>Services</span></a>
-							<ul class="collapse in" id="Ul4">
+							<a data-toggle="collapse" href="#Ul5"><i></i><span>Services</span></a>
+							<ul class="collapse in" id="Ul5">
 								<li class=""><a href="../Admin/scheduling.aspx"><span>Scheduling Details</span></a></li>
 								<%--<li class=" active"><a href="#"><span>Manage scheduling</span></a></li>--%>
 							</ul>
 							
 						</li>
                          <li class="hasSubmenu active">
-							<a data-toggle="collapse" href="#Ul4"><i></i><span>Coupon</span></a>
-							<ul class="collapse in" id="Ul5">
+							<a data-toggle="collapse" href="#Ul6"><i></i><span>Coupon</span></a>
+							<ul class="collapse in" id="Ul6">
 								<li class=""><a href="../Admin/Addcoupons.aspx"><span>Entry Coupon</span></a></li>
 								<li class=" active"><a href="../Admin/Managecoupons.aspx"><span>Manage Coupons</span></a></li>
 							</ul>

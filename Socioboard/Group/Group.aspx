@@ -96,7 +96,7 @@
                 <div class="row-fluid">
                     <div class="span11">
                         <div class="alert_suite_title">
-                            Groups <a class="post" gid="" onclick="userdetails();">Post</a></div>
+                            Groups <a class="post" gid="" onclick="userdetails12();">Post</a></div>
                         <!--repeated div-->
                         <div id="gcontent" class="gcontent" runat="server">
                        <%-- <div class="storyContent">
@@ -141,7 +141,7 @@
         </div>
 
     </div>
-    <div id="popupchk">
+    <div id="popupchk12">
         <span class="close_button b-close"><span id="close">X</span></span>
         <div id="content_msg" role="main" style="padding: 0;">
             <section id="inbox" class="threefourth messages msg_view" style="margin: 0;">
@@ -202,7 +202,7 @@
 
         });
 
-        function userdetails() {
+        function userdetails12() {
 
             var gid = $('.post').attr("gid");
             debugger;
@@ -210,7 +210,7 @@
                 alert('Please Select one group for reply.');
             }
             else {
-                $('#popupchk').bPopup();
+                $('#popupchk12').bPopup();
             }
         }
     </script>

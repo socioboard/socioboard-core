@@ -203,7 +203,7 @@ namespace SocioBoard.Helper
 
                 sendgridPassword = ConfigurationManager.AppSettings["Mandrillpassword"];
 
-                from = ConfigurationManager.AppSettings["fromemail"];
+                //from = ConfigurationManager.AppSettings["fromemail"];
 
                 GlobusMailLib.MailHelper objMailHelper = new GlobusMailLib.MailHelper();
 

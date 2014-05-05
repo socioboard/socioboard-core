@@ -12,7 +12,7 @@ function checkprofile(tagid, id, page, network) {
     debugger;
     try {
 
-        alert(tagid);
+        //alert(tagid);
         $("#another-load").html('<img src="../Contents/img/360.gif" />');
 
         $('#accordianprofiles a').removeAttr('class');
@@ -118,8 +118,14 @@ function createtask(id) {
 
         $("#inbox_messages").html = "";
 
-        if (messagedescription.indexOf("Contents/img/pin") != -1) {
+        if (messagedescription.indexOf("Contents/img/pin.png") != -1) {
             messagedescription = messagedescription.replace("../Contents/img/pin.png", "");
+        }
+        if (messagedescription.indexOf("Contents/img/admin/goto.png") != -1) {
+            messagedescription = messagedescription.replace("../Contents/img/admin/goto.png", "");
+        }
+        if (messagedescription.indexOf("Contents/img/archive.png") != -1) {
+            messagedescription = messagedescription.replace("../Contents/img/archive.png", "");
         }
         $.ajax
                 ({
@@ -132,6 +138,7 @@ function createtask(id) {
                         debugger;
                         $("#tasksteam").html(msg);
                         $("#another-load").html("");
+                        //$('.scl').remove();
 
                     }
                 });
@@ -560,7 +567,7 @@ function chkMessage(id) {
                     $("#message-list").html(msg);
                 },
                 error: function (err) {
-                    alert(err);
+                    //alert(err);
                 }
             });
         } catch (e) {

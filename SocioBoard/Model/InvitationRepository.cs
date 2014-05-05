@@ -87,7 +87,6 @@ namespace SocioBoard.Model
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-
             }
 
             return res;
@@ -115,8 +114,9 @@ namespace SocioBoard.Model
                             // Proceed Sction to update Data.
                             // And Set the reuired paremeters to find the specific values. 
 
-                            res = session.CreateQuery("Update Invitation set Status =:status where Id = :id")
+                            res = session.CreateQuery("Update Invitation set Status =:status, LastEmailSendDate=:lastEmailSendDate where Id = :id")
                                       .SetParameter("status", invitation.Status)
+                                      .SetParameter("lastEmailSendDate", DateTime.Now)
                                       .SetParameter("id", invitation.Id)
                                       
                                       .ExecuteUpdate();
@@ -138,6 +138,53 @@ namespace SocioBoard.Model
 
             return res;
         }
+
+
+        /// <SetInvitationStatusById>
+        /// Update Invitation Status By Id
+        /// </summary>
+        /// <param name="invitation">Set Values in a Invitation Class Property and Pass the Object of Invitation Class.(Domein.Invitation)</param>
+        /// <returns>Return integer 1 for true and 0 for false.</returns>
+        public int SetInvitationStatusOnlyById(Invitation invitation)
+        {
+            int res = 0;
+            //Creates a database connection and opens up a session
+            try
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    //After Session creation, start Transaction. 
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        try
+                        {
+                            // Proceed Sction to update Data.
+                            // And Set the reuired paremeters to find the specific values. 
+
+                            res = session.CreateQuery("Update Invitation set Status =:status where Id = :id")
+                                      .SetParameter("status", invitation.Status)
+                                      .SetParameter("id", invitation.Id)
+
+                                      .ExecuteUpdate();
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+
+                        }
+                    }//End Using trasaction
+                }//End Using session
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+
+            }
+
+            return res;
+        }
+
 
 
         /// <SetInvitationStatusById>
@@ -209,6 +256,43 @@ namespace SocioBoard.Model
                             //Set the parameters to find the specific Data.
                             lstInvitation = session.CreateQuery("from Invitation u where u.Status= :status")
                             .SetParameter("status", invitation.Status)
+                            .List<Invitation>().ToList<Invitation>();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+
+                        }
+                    }// End using transaction
+                }//End Using Session
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+
+            }
+            return lstInvitation;
+        }
+
+
+        public List<Invitation> GetInvitationInfoByFriendEmail(Invitation invitation)
+        {
+            List<Invitation> lstInvitation = new List<Invitation>();
+            try
+            {
+                //Creates a database connection and opens up a session
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    //After Session creation, start Transaction. 
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        try
+                        {
+                            // Proceed action to Get Data from Query
+                            //Set the parameters to find the specific Data.
+                            lstInvitation = session.CreateQuery("from Invitation u where u.FriendEmail= :friendEmail")
+                            .SetParameter("friendEmail", invitation.FriendEmail)
                             .List<Invitation>().ToList<Invitation>();
 
                         }

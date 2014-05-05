@@ -221,7 +221,7 @@ function registerFunction() {
 function facebookLogin() {
     try {
         debugger;
-
+        $('#gp_account').attr('onclick', '');
       $("#fb_account img").attr('src', '../../Contents/img/bx_loader.gif');
 
         $.ajax({
@@ -244,6 +244,7 @@ function facebookLogin() {
 function googleplusLogin() {
     try {
         debugger;
+        $('#fb_account').attr('onclick', '');
         $("#gp_account img").attr('src', '../Contents/img/bx_loader.gif');
 
         $.ajax({

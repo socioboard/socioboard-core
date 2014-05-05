@@ -106,8 +106,8 @@ namespace SocioBoard
             string Subject = "Enterprise Edition Enquiry";
             string Body = "Name: " + name + "</br>" + "Company: " + company + "</br>" + "Location: " + location + "</br>" + "Website: " + website + "</br>" + "Email: " + email + "</br>" + "Phone: " + phone + "</br>" + "Message: " + message + "</br>";
             MailHelper objMailHelper = new MailHelper();
-            //  objMailHelper.SendMailByMandrillForEnterprise(name, host, Convert.ToInt32(port), email, "", "abhaymondal@globussoft.com", "", "", Subject, Body, usernameSend, pass);
-            objMailHelper.SendMailByMandrill(host, Convert.ToInt32(port), email, "", tomail, "", "", Subject, Body, usernameSend, pass);
+            objMailHelper.SendMailByMandrillForEnterprise(name, host, Convert.ToInt32(port), email, "", tomail, "", "", Subject, Body, usernameSend, pass);
+           // objMailHelper.SendMailByMandrill(host, Convert.ToInt32(port), email, "", tomail, "", "", Subject, Body, usernameSend, pass);
 
 
 

@@ -3,10 +3,10 @@
 body{background:#4d575a;}
 .container{width:1263px}
 #top-nav{height:73px;background:#fff}
-#logo{height:65px;margin:0 16px 0px;width:273px;float:left;}
+#logo{height:65px;margin:0 4px 0px;width:273px;float:left;}
 #logo a{}
 #logo a img{ width:273px; border:none; outline:aqua;}
-#infocontainer {font-family: Arial, Helvetica, sans-serif;font-size:0.85em;color:#666;line-height:73px;height:73px;float:left;}
+#infocontainer {font-family: Arial, Helvetica, sans-serif;font-size:12px;color:#666;line-height:73px;height:73px;float:left;}
 #infocontainer a{color:#666;text-decoration:underline;}
 #msgcontainer{height: 34px;width: auto;float:left;margin:20px 8px 20px 4px;background: #71797b;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;line-height:33px;padding:0px 10px}
 #msgcontent{float:left}
@@ -397,7 +397,7 @@ color:#FFFFFF; background:#e13024 !important;
 
 .feeds .accordion-group{background:#F4594F;color:#FFFFFF}
 .feeds .accordion-group a{color:#FFFFFF;text-decoration:none;outline:none;padding:8px}
-.feeds .accordion-group a.active, .feeds .accordion-group a:active {color:#333;}
+/*--.feeds .accordion-group a.active, .feeds .accordion-group a:active {color:#333;}---*/
 .feeds .accordion-group a .fesim{margin-right:10px}
 .feeds .accordion-inner{padding:0px;margin:0px 15px 9px;border-top:none}
 .feeds .accordion-inner ul{list-style:none;margin:0 0 10px 35px;border-top:1px solid #E5E5E5;padding-top:10px}

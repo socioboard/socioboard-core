@@ -62,7 +62,10 @@
                         <%-- <input type="text" id="txtEmail" placeholder="Email" runat="server" />--%>
                     </div>
                     <div class="first_name_last_name_div" id="change_password" style="display: none;">
-                       <label>Password</label> 
+                    <label>Current Password</label> 
+                          <asp:TextBox  ID="txtOldPassword" runat="server" TextMode="Password" 
+                            AutoCompleteType="Disabled" required=""></asp:TextBox>
+                       <label>New Password</label> 
                         <asp:TextBox class="pwd" ID="txtPassword" runat="server" TextMode="Password" 
                             AutoCompleteType="Disabled"></asp:TextBox>
                         <label>Confirm Password</label> 
@@ -90,7 +93,7 @@
                             Team members will see the avatar you have set for <strong><em id="email_personal_for_setting"
                                 runat="server"></em>&nbsp;</strong>on Browse.
                             <br />
-                            <asp:FileUpload ID="imgfileupload" runat="server" />
+                            <asp:FileUpload ID="imgfileupload" runat="server" accept="image/*"/>
                             <asp:HiddenField ID="imghdn" runat="server" />
                             <%-- <input type="file" value="browse" />--%>
                         </div>

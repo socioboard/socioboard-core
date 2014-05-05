@@ -14,6 +14,7 @@ namespace SocioBoard.Domain
         public string FriendName { get; set; }
         public string SenderEmail { get; set; }
         public string FriendEmail { get; set; }
+        public DateTime LastEmailSendDate { get; set; }
         public string Status { get; set; }
     }
 }

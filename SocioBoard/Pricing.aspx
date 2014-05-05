@@ -56,8 +56,8 @@
                 </div>
                 <div class="price-shadow-1">
                     <div class="pricing-listk">
-                        <div class="price-head">
-                            Deluxe</div>
+                        <div class="price-head">Premium
+                            </div>
                         <h3>
                             $49 Per User/Month</h3>
                         <p>
@@ -79,7 +79,7 @@
                 <div class="price-shadow-2">
                     <div class="pricing-list">
                         <div class="price-head">
-                            Premium</div>
+                            Deluxe</div>
                         <h3>
                             $89 Per User/Month</h3>
                         <p>

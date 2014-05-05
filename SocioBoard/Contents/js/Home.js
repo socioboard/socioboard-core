@@ -171,12 +171,72 @@ function SimpleMessageAlert(msg) {
 
 /*This function will delete the profile from our database 
 and remove profile from Network Profiles**/
-function confirmDel(profileid, profile, userid) {
+function confirmDel(profileid, profiletype,profile) {
     try {
         debugger;
         reset();
+
+
         alertify.set({ buttonReverse: true });
-        alertify.confirm("Are you Sure want to delete the account.And account data will be erased completely", function (e) {
+		
+		if(profiletype=="page")
+		{
+		alertify.confirm("Are you Sure want to delete this Page ?", function (e) {
+            if (e) {
+                debugger;
+                try {
+                    $('#' + profileid).hide();
+                } catch (e) {
+
+                }
+                try {
+                    $('#mid_' + profileid).hide();
+                } catch (e) {
+
+                }
+                try {
+                    $('#so_' + profileid).remove();
+                } catch (e) {
+
+                }
+                $.ajax
+        ({
+            type: "POST",
+            url: "../AjaxHome.aspx?op=accountdelete&profile=" + profile + "&profileid=" + profileid,
+            data: '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (msg) {
+                debugger;
+                alertify.success("Page Deleted Successfully");
+                try {
+                var s = $("#ContentPlaceHolder1_usedAccount").html(msg);
+                
+                
+
+                } catch (e) {
+
+                }
+                //                reset();
+                //                $("#alertify-cover").addClass();
+                //                $("#alertify").addClass();
+                //                $("#alertify-logs").addClass();
+            }
+        });
+
+
+
+
+            } else {
+                debugger;
+                //alertify.alert("clicked ok");
+                // user clicked "cancel"
+            }
+        });
+		}
+		else
+		{
+        alertify.confirm("Are you Sure want to delete this account ?", function (e) {
             if (e) {
                 debugger;
                 try {
@@ -205,7 +265,7 @@ function confirmDel(profileid, profile, userid) {
                 debugger;
                 alertify.success("Account Deleted Successfully");
                 try {
-                var s = $("#ContentPlaceHolder1_usedAccount").html();
+                var s = $("#ContentPlaceHolder1_usedAccount").html(msg);
                 
                 
 
@@ -228,7 +288,9 @@ function confirmDel(profileid, profile, userid) {
                 // user clicked "cancel"
             }
         });
-
+}
+		
+		
         // var confir = confirm("Are you Sure want to delete the account.And your data will be erased completely");
 
 
@@ -237,6 +299,7 @@ function confirmDel(profileid, profile, userid) {
 
     }
 }
+
 
 
 
@@ -399,8 +462,8 @@ function addAnotherProfileforMessage(id, network) {
 
 
             if (network == 'fb') {
-                //divbind = '<div style="height:21px;width:auto;min-width:22%" class="btn span12" id="fb_' + userid[1] + '"  onclick="delProfilesFromMultiusers(this.id)" ><img src="../Contents/img/facebook.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" class="close pull-right">×</span></div>';
-                 divbind = '<div style="height:21px;width:auto;min-width:22%" class="btn span12"  ><img src="../Contents/img/facebook.png" alt="" width="15"/>' + username + '<span id="fb_' + userid[1] + '"  onclick="delProfilesFromMultiusers(this.id)" data-dismiss="alert" class="close pull-right">×</span></div>';
+                divbind = '<div style="height:21px;width:auto;min-width:22%" class="btn span12" id="fb_' + userid[1] + '"  onclick="delProfilesFromMultiusers(this.id)" ><img src="../Contents/img/facebook.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" class="close pull-right">×</span></div>';
+                 //divbind = '<div style="height:21px;width:auto;min-width:22%" class="btn span12"  ><img src="../Contents/img/facebook.png" alt="" width="15"/>' + username + '<span id="fb_' + userid[1] + '"  onclick="delProfilesFromMultiusers(this.id)" data-dismiss="alert" class="close pull-right">×</span></div>';
 
             } else if (network == 'twt') {
                 divbind = '<div style="height:21px;width:auto;min-width:22%" class="btn span12" id="twt_' + userid[1] + '" onclick="delProfilesFromMultiusers(this.id)"><img src="../Contents/img/twitter.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" class="close pull-right">×</span></div></div>';
@@ -645,6 +708,7 @@ function SendMessage() {
                     filesimage="";
                     document.getElementById('fileuploadImage').value = "";
                     closeonCompose();
+                     alertify.success("Message Sent Successfully");
                 }
             });
         } else {

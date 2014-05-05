@@ -76,31 +76,31 @@
             <div class="inputbg"><asp:TextBox ID="txtFirstName" runat="server" placeholder="First Name"></asp:TextBox></div>
             <div class="error"><asp:RequiredFieldValidator ID="RequiredFieldValidator5" 
                     runat="server" ErrorMessage="Please Enter First Name!"
-                                ControlToValidate="txtFirstName" CssClass="ws_err_star"></asp:RequiredFieldValidator>
+                                ControlToValidate="txtFirstName"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
                     ErrorMessage="Please Enter Only Alphabets" ControlToValidate="txtFirstName" 
-                    ValidationExpression="[a-zA-Z][a-zA-Z ]+"></asp:RegularExpressionValidator>
+                    ValidationExpression="[a-zA-Z]+[ a-zA-Z-_]*"></asp:RegularExpressionValidator>
                                 </div>
             <div class="inputbg"><asp:TextBox ID="txtLastName" runat="server" placeholder="Last Name"></asp:TextBox></div>
             <div class="error"><asp:RequiredFieldValidator ID="RequiredFieldValidator6" 
                     runat="server" ErrorMessage="Please Enter Last Name!"
-                                ControlToValidate="txtLastName" CssClass="ws_err_star"></asp:RequiredFieldValidator>
+                                ControlToValidate="txtLastName"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" 
                     ErrorMessage="Please Enter Only Alphabets" ControlToValidate="txtLastName" 
-                    ValidationExpression="[a-zA-Z][a-zA-Z ]+"></asp:RegularExpressionValidator>
+                    ValidationExpression="[a-zA-Z]+[ a-zA-Z-_]*"></asp:RegularExpressionValidator>
                                 </div>
             <div class="inputbg"><asp:TextBox ID="txtEmail" runat="server" placeholder="Email"></asp:TextBox></div>
             <div class="error"><asp:RequiredFieldValidator ID="RequiredFieldValidator1" 
                     runat="server" ErrorMessage="Please Enter Email!"
-                                ControlToValidate="txtEmail" CssClass="ws_err_star"></asp:RequiredFieldValidator>
+                                ControlToValidate="txtEmail"></asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="revEmail" runat="server" ErrorMessage="Please Enter Valid Email!"
                                 ControlToValidate="txtEmail" CssClass="ws_err_star_enter" 
-                    ValidationExpression="^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*(\.[a-z]{2,3})$"></asp:RegularExpressionValidator>
+                    ValidationExpression="^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*(\.[A-Za-z]{2,3})$"></asp:RegularExpressionValidator>
 </div>
             <div class="input_pswd_bg"><asp:TextBox ID="txtPassword" runat="server" TextMode="Password" AUTOCOMPLETE="off" placeholder="Password"></asp:TextBox></div>
             <div class="error"> <asp:RequiredFieldValidator ID="RequiredFieldValidator2" 
                     runat="server" ErrorMessage="Please Enter Password!"
-                                ControlToValidate="txtPassword" CssClass="ws_err_star"></asp:RequiredFieldValidator>
+                                ControlToValidate="txtPassword" ></asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" 
                     runat="server" ErrorMessage="Please Enter Valid Password!"
                                 ControlToValidate="txtPassword" ValidationExpression="^\S+$"
@@ -109,7 +109,7 @@
             <div class="input_pswd_bg"> <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password" placeholder="Confirm Password"></asp:TextBox></div>
             <div class="error">    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" 
                     runat="server" ErrorMessage="Please Enter Confirm Password!"
-                                ControlToValidate="txtConfirmPassword" CssClass="ws_err_star"></asp:RequiredFieldValidator>
+                                ControlToValidate="txtConfirmPassword" ></asp:RequiredFieldValidator>
                             <asp:CompareValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Password & Confirm Password should be same"
                                 ControlToCompare="txtPassword" ControlToValidate="txtConfirmPassword"
                                 CssClass="ws_err_star_enter"></asp:CompareValidator></div>

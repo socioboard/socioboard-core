@@ -155,7 +155,7 @@ function postLikeRequest(mediaid, IntagramId, accessToken) {
 }
 
 
-/******************************************ForWoosuite*******************************************************************/
+/******************************************ForWoosuite******************************************/
 
 
 function BindProfilesforNetwork(network) {
@@ -247,6 +247,101 @@ function BindProfilesforNetwork(network) {
 
     }
 }
+
+
+
+function BindProfilesforNetworkOnly(network) {
+
+
+    try {
+        $.ajax({
+            type: "POST",
+            url: "../Feeds/AjaxFeeds.aspx?op=networkprofiles&network=" + network,
+            data: '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (msg) {
+
+                if (network == "facebook") {
+                    debugger;
+                    var fblook = '';
+
+
+                    fblook = '<li><div class="feedim pull-left"><img width="31" height="31" src="../Contents/img/blank_img.png" alt=""></div><div class="pull-left feedcontent"><a class="feednm" href="#">No Records Found</a> <span></span><p></p><a href="#" class="retweets"></a><span></span></div></li>'
+
+
+                    if (msg.indexOf('No Records Found') != -1) {
+                        debugger;
+                        $("#facebookusersforfeeds").html(msg);
+                        try {
+                            $("#img_paneltab1").attr('src', "../Contents/img/admin/1.png");
+                            $("#data_paneltab1").html(fblook);
+                        } catch (e) {
+                        }
+                        try {
+                            $("#img_paneltab2").attr('src', "../Contents/img/admin/1.png");
+                            $("#data_paneltab2").html(fblook);
+                        } catch (e) {
+                        }
+                        try {
+                            $("#img_paneltab3").attr('src', "../Contents/img/admin/1.png");
+                            $("#data_paneltab3").html(fblook);
+                        } catch (e) {
+                        }
+                        try {
+                            $("#title_paneltab1").html("WallPosts");
+                        } catch (e) {
+                        }
+
+                        try {
+                            $("#title_paneltab2").html("NewsFeeds");
+                        } catch (e) {
+
+                        }
+
+                        try {
+                            $("#title_paneltab3").html("Scheduled Messages");
+                        } catch (e) {
+
+                        }
+
+
+
+
+                    } else {
+                        $("#facebookusersforfeeds").html(msg);
+                        if (msg.indexOf('facebookdetails(\'') != -1) {
+                            try {
+                                var start = msg.indexOf('facebookdetails(\'');
+                                var last = msg.indexOf('\')');
+                                var sub = msg.substring(start, last + 2);
+                                var startid = sub.indexOf('(\'');
+                                var lastid = sub.indexOf('\')');
+                                //eval(sub + "()");
+                            } catch (e) {
+
+                            }
+
+                        }
+                    }
+
+                    /// facebook details ko call karna hai;
+                } else if (network == "twitter") {
+                    $("#twitterprofilesoffeed").html(msg);
+                } else if (network == "linkedin") {
+                    $("#linkedinprofilesforfeed").html(msg);
+                } else if (network == "instagram") {
+                    $("#instagramprofilesforfeed").html(msg);
+                }
+            }
+        });
+    } catch (e) {
+
+    }
+}
+
+
+
 
 
 

@@ -77,6 +77,7 @@ function saveDrafts() {
                 $("#timepickerforScheduler").val('');
                 $("#adddates_scheduler").html('');
                 closeonCompose();
+                alertify.success("Message Saved Successfully in Draft");
             }
         });
 

@@ -16,6 +16,7 @@ namespace SocioBoard
 {
     public partial class Registration : System.Web.UI.Page
     {
+      
         //  ILog logger = LogManager.GetLogger(typeof(Registration));
         // ILog logger = LogManager.GetLogger(typeof(Registration));
         ILog logger = LogManager.GetLogger(typeof(Registration));
@@ -111,6 +112,8 @@ namespace SocioBoard
                             user.EmailId = txtEmail.Text;
                             user.UserStatus = 1;
                             user.ActivationStatus = "0";
+
+
                             if (TextBox1.Text.Trim() != "")
                             {
                                 user.CouponCode = TextBox1.Text.Trim().ToString();
@@ -119,33 +122,41 @@ namespace SocioBoard
 
                             if (!userrepo.IsUserExist(user.EmailId))
                             {
-
+                                logger.Error("Before User reg");
+                                UserRepository.Add(user);
 
 
                                 try
                                 {
-
+                                    logger.Error("1 Request.QueryString[refid]");
                                     if (Request.QueryString["refid"] != null)
                                     {
+                                        logger.Error("3 Request.QueryString[refid]");
                                         User UserValid = null;
                                         if (IsUserValid(Request.QueryString["refid"].ToString(), ref UserValid))
                                         {
+                                            //Console.WriteLine("");
+                                            logger.Error("Inside IsUserValid");
                                             user.RefereeStatus = "1";
                                             UpdateUserReference(UserValid);
                                             AddUserRefreeRelation(user, UserValid);
+                                            //Console.WriteLine("Coming out of IsUserValid");
+                                            logger.Error("IsUserValid");
                                         }
                                         else
                                         {
                                             user.RefereeStatus = "0";
                                         }
                                     }
+                                    logger.Error("2 Request.QueryString[refid]");
                                 }
-                                catch (Exception)
+                                catch (Exception ex)
                                 {
-
-                                    throw;
+                                    Console.WriteLine(ex.Message);
+                                    logger.Error("btnRegister_Click" + ex.Message);
+                                    logger.Error("btnRegister_Click" + ex.StackTrace);
                                 }
-                                UserRepository.Add(user);
+                              //  UserRepository.Add(user);
 
 
 
@@ -316,6 +327,25 @@ namespace SocioBoard
                                         }
                                     }
                                 }
+
+
+                                #region SetInvitationStatusAfterSuccessfulRegistration
+                                try
+                                {
+                                    if (Request.QueryString["refid"] != null)
+                                    {
+                                        string refid = Request.QueryString["refid"];
+
+                                        int res = SetInvitationStatusAfterSuccessfulRegistration(refid, txtEmail.Text);
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    logger.Error(ex.Message);
+                                } 
+                                #endregion
+
+
                                 lblerror.Text = "Registered Successfully !" + "<a href=\"Default.aspx\">Login</a>";
                                 Response.Redirect("~/Home.aspx");
                             }
@@ -347,6 +377,36 @@ namespace SocioBoard
                 //Response.Redirect("Home.aspx");
             }
         }
+
+        public int SetInvitationStatusAfterSuccessfulRegistration(string refid,string userEmail)
+        {
+            int res = 0;
+            try
+            {
+                
+
+                UserRepository objUserRepository = new UserRepository();
+
+                User user = objUserRepository.getUsersById(Guid.Parse(refid));
+
+                Invitation objInvitation=new Invitation();
+                objInvitation.SenderEmail=user.EmailId;
+                objInvitation.FriendEmail=userEmail;
+                objInvitation.Status = "12";
+
+                InvitationRepository objInvitationRepository = new InvitationRepository();
+                res = objInvitationRepository.SetInvitationStatusBySenderEmailFreiendEmail(objInvitation);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.StackTrace);
+
+                Console.WriteLine(ex.StackTrace);
+                //Response.Redirect("Home.aspx");
+            }
+            return res;
+        }
+
 
         /// <summary>
         /// This function check Is User Exist or Not created by Abhay Kr 5-2-2014
@@ -380,7 +440,7 @@ namespace SocioBoard
                 objUser.ReferenceStatus = "1";
                 objUserRepository.UpdateReferenceUserByUserId(objUser);
 
-
+                logger.Error("UpdateUserReference");
             }
             catch (Exception ex)
             {
@@ -393,17 +453,22 @@ namespace SocioBoard
         {
             try
             {
+                logger.Error("Entered AddUserRefreeRelation");
+
                 UserRefRelation objUserRefRelation = new UserRefRelation();
                 UserRefRelationRepository objUserRefRelationRepository = new UserRefRelationRepository();
 
-                objUserRefRelation.Id = new Guid();
+                objUserRefRelation.Id = Guid.NewGuid();
                 objUserRefRelation.RefereeUserId = objReferee.Id;
                 objUserRefRelation.ReferenceUserId = objReference.Id;
                 objUserRefRelation.ReferenceUserEmail = objReference.EmailId;
                 objUserRefRelation.RefereeUserEmail = objReferee.EmailId;
                 objUserRefRelation.EntryDate = DateTime.Now;
+                objUserRefRelation.Status = "0";
 
                 objUserRefRelationRepository.AddUserRefRelation(objUserRefRelation);
+
+                logger.Error("Coming out of AddUserRefreeRelation");
             }
             catch (Exception ex)
             {

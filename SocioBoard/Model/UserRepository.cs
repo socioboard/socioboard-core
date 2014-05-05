@@ -338,8 +338,9 @@ namespace SocioBoard.Model
                     {
                         try
                         {
-                            i = session.CreateQuery("Update User set ExpiryDate=:expirydate where Id = :id")
+                            i = session.CreateQuery("Update User set ExpiryDate=:expirydate, AccountType=:accounttype where Id = :id")
                                       .SetParameter("id", user.Id)
+                                      .SetParameter("accounttype", user.AccountType)
                                       .SetParameter("expirydate", user.ExpiryDate)
                                       .ExecuteUpdate();
                             transaction.Commit();

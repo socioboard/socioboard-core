@@ -8,7 +8,7 @@ using SocioBoard.Domain;
 using SocioBoard.Model;
 using log4net;
 
-namespace WooSuite.Admin
+namespace SocialSuitePro.Admin
 {
     public partial class AddNews : System.Web.UI.Page
     {

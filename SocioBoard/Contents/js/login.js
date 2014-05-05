@@ -138,8 +138,12 @@ $(function () {
 
 $(function () {
 
+    
+
     var button = $('#addico');
     var box = $('#addicbox');
+
+
     button.removeAttr('href');
     button.mouseup(function (login) {
         box.toggle();
@@ -152,12 +156,12 @@ $(function () {
             box.hide();
         }
     });
-    $('body').click(function (login) {
-        if (!($(login.target).parent('#addico').length > 0)) {
-            button.removeClass('active');
-            box.hide();
-        }
-    });
+//    $('body').click(function (login) {
+//        if (!($(login.target).parent('#addico').length > 0)) {
+//            button.removeClass('active');
+//            box.hide();
+//        }
+//    });
 });
 
 
@@ -205,8 +209,10 @@ $(function () {
 
 $(function () {
 
+
     var button = $('#invitefromHome');
     var box = $('#inviteAthome');
+
     button.removeAttr('href');
     button.mouseup(function (login) {
         box.toggle();

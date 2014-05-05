@@ -158,42 +158,42 @@
                                    
                                     <p>
                                         <label>
-                                            Name</label>
+                                            Name*</label>
                                         <input runat="server" id="name" type="text" name="name" value="" />
                                     </p>
                                     <p>
                                         <label>
-                                            Designation</label>
+                                            Designation*</label>
                                         <input runat="server" id="designation" type="text" name="Designation" value="" />
                                     </p>
                                     <p>
                                         <label>
-                                            Company</label>
+                                            Company*</label>
                                         <input runat="server" id="company" type="text" name="Company" value="" />
                                     </p>
                                     <p>
                                         <label>
-                                            Location</label>
+                                            Location*</label>
                                         <input runat="server" id="location" type="text" name="Location" value="" />
                                     </p>
                                     <p>
                                         <label>
-                                            Company Website</label>
+                                            Company Website*</label>
                                         <input runat="server" id="website" type="text" name="Company Website" value="" />
                                     </p>
                                     <p>
                                         <label>
-                                            Contact email id</label>
+                                            Contact email id*</label>
                                         <input runat="server" id="email" type="text" name="Contact email id" value="" />
                                     </p>
                                     <p>
                                         <label>
-                                            Phone</label>
+                                            Phone*</label>
                                         <input runat="server" id="phone" type="text" name="Phone" value="" />
                                     </p>
                                     <p>
                                         <label>
-                                            Message</label>
+                                            Message*</label>
                                         <textarea runat="server" name="Message" id="message" cols="30" rows="10" style="width: 50%;"></textarea>
                                     </p>
                                     <p>

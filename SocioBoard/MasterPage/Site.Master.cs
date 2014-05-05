@@ -40,7 +40,7 @@ namespace SocialSuitePro.MasterPage
                     {
                         if (user.ActivationStatus == "0" || user.ActivationStatus ==null)
                         {
-                            actdiv.InnerHtml = "<span >Your accout is not yet activated.Check your E-mail to activate your account.</span><a id=\"resendmail\" uid=\""+user.Id+"\" href=\"#\">Resend Mail</a>";
+                            actdiv.InnerHtml = "<span >Your account is not yet activated.Check your E-mail to activate your account.</span><a id=\"resendmail\" uid=\""+user.Id+"\" href=\"#\">Resend Mail</a>";
                             if (Request.QueryString["stat"] == "activate")
                             {
                                 if (Request.QueryString["id"] != null)
@@ -56,9 +56,10 @@ namespace SocialSuitePro.MasterPage
                                         int res = objUserRepository.UpdateActivationStatusByUserId(user);
 
                                         actdiv.Attributes.CssStyle.Add("display", "none");
-
+                                        Console.WriteLine("before");
                                         #region to check/update user Reference Relation
-                                        IsUserReferenceActivated(Request.QueryString["id"].ToString()); 
+                                        IsUserReferenceActivated(Request.QueryString["id"].ToString());
+                                        Console.WriteLine("after");
                                         #endregion
                                        
                                        
@@ -419,15 +420,27 @@ namespace SocialSuitePro.MasterPage
         /// <returns></returns>
         public bool IsUserReferenceActivated(string RefereeId)
         {
+            //testing
+            Console.WriteLine("Inside " + RefereeId);
+
             bool ret = false;
             try
             {
                 User objUser = new User();
+                Package objPackage=new Package ();
+                UserPackageRelation objUserPackageRelation=new UserPackageRelation ();
                 UserRepository objUserRepository = new UserRepository();
+                UserPackageRelationRepository objUserPackageRelationRepository = new UserPackageRelationRepository();
                 UserRefRelation objUserRefRelation = new UserRefRelation();
                 UserRefRelationRepository objUserRefRelationRepository = new UserRefRelationRepository();
+                PackageRepository objPackageRepository = new PackageRepository();
                 objUserRefRelation.ReferenceUserId = (Guid.Parse(RefereeId));
-                List<UserRefRelation> lstUserRefRelation = objUserRefRelationRepository.GetUserRefRelationInfoById(objUserRefRelation);
+
+                //testing
+                List<UserRefRelation> check =objUserRefRelationRepository.GetUserRefRelationInfo();
+                //testing
+
+                List<UserRefRelation> lstUserRefRelation = objUserRefRelationRepository.GetUserRefRelationInfoByRefreeId(objUserRefRelation);
                 if (lstUserRefRelation.Count > 0)
                 {
                     if (lstUserRefRelation[0].Status == "0")
@@ -436,9 +449,16 @@ namespace SocialSuitePro.MasterPage
                         objUserRefRelation.Status = "1";
                         objUser = objUserRepository.getUsersById(lstUserRefRelation[0].ReferenceUserId);
                         objUser.ExpiryDate = objUser.ExpiryDate.AddDays(30);
+                        objUser.AccountType = "Premium";
+                        objPackage = objPackageRepository.getPackageDetails("Premium");
 
+                        objUserPackageRelation.Id=Guid.NewGuid();
+                        objUserPackageRelation.UserId=objUser.Id;
+                        objUserPackageRelation.PackageId=objPackage.Id;
+                        objUserPackageRelation.ModifiedDate=DateTime.Now;
+                        objUserPackageRelation.PackageStatus=true;
+                        objUserPackageRelationRepository.AddUserPackageRelation(objUserPackageRelation);
                         int objUserRepositoryresponse = objUserRepository.UpdateUserExpiryDateById(objUser);
-
                         int objUserRefRelationRepositoryresponse = objUserRefRelationRepository.UpdateStatusById(objUserRefRelation);
                     }
                 }

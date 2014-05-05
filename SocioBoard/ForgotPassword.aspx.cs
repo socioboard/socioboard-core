@@ -11,7 +11,7 @@ using SocioBoard.Domain;
 using log4net;
 using SocioBoard;
 
-namespace SocialSuitePro
+namespace SocioBoard
 {
     public partial class ForgotPassword : System.Web.UI.Page
     {
@@ -23,6 +23,7 @@ namespace SocialSuitePro
             {
                 divtxtmail.Visible = false;
                 btnforgetpass.Visible = false;
+                RequiredFieldValidator1.Visible = false;
                 heading.InnerHtml = "Reset Password";
 
             }
@@ -71,7 +72,7 @@ namespace SocialSuitePro
                    "<td height=\"20px\" style=\"background-color: rgb(222, 222, 222); text-align: center; font-size: 15px; font-weight: bold; font-family: Arial; color: rgb(51, 51, 51); float: left; width: 100%; margin-top: 7px; padding-top: 10px; border-bottom: 1px solid rgb(204, 204, 204); padding-bottom: 10px;\">" +
                        "SocioBoard</td></tr><!--Email content--><tr>" +
                    "<td style=\"background-color: #dedede; padding-top: 10px; padding-left: 25px; padding-right: 25px; padding-bottom: 30px; font-family: Tahoma; font-size: 14px; color: #181818; min-height: auto;\"><p>Hi , " + usr.UserName + "</p><p>" +
-                       "Please click here to proceed for password <a href=" + strUrl + " style=\"text-decoration:none;\">Reset</a></td></tr><tr>" +
+                       "Please click <a href=" + strUrl + " style=\"text-decoration:none;\">here</a> to proceed for password Reset</td></tr><tr>" +
                    "<td style=\"background-color: rgb(222, 222, 222); margin-top: 10px; padding-left: 20px; height: 20px; color: rgb(51, 51, 51); font-size: 15px; font-family: Arial; border-top: 1px solid rgb(204, 204, 204); padding-bottom: 10px; padding-top: 10px;\">Thanks" +
                    "</td></tr></table><!-- End Email Notification From SocioBoard.com --></body>";
 

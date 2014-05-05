@@ -2077,6 +2077,7 @@
     <Content Include="Contents\img\admin\goto.png" />
     <Content Include="Contents\img\admin\goto1.png" />
     <Content Include="Contents\img\admin\graph.png" />
+    <Content Include="Contents\img\admin\group.png" />
     <Content Include="Contents\img\admin\groupstats.png" />
     <Content Include="Contents\img\admin\hammertiny.png" />
     <Content Include="Contents\img\admin\heart-empty.png" />
@@ -2298,6 +2299,7 @@
     <Content Include="Contents\img\save_btn.png" />
     <Content Include="Contents\img\ssp\advanced_scheduling_publishing.png" />
     <Content Include="Contents\img\ssp\Alexey-V-Abramov1.jpg" />
+    <Content Include="Contents\img\ssp\all_social.png" />
     <Content Include="Contents\img\ssp\amazonaws.png" />
     <Content Include="Contents\img\ssp\analyze1.png" />
     <Content Include="Contents\img\ssp\analyze2.png" />
