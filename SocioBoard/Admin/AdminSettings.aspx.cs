@@ -36,7 +36,7 @@ namespace SocialSuitePro.Admin
                     adminrepo.ChangePwd(txtConfirmPassword.Text, admin.UserName);
                     txtConfirmPassword.Text = string.Empty;
                     txtPassword.Text = string.Empty;
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Password change successfully');", true);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Password changed successfully');", true);
                 }
                 else
                 {
@@ -45,7 +45,7 @@ namespace SocialSuitePro.Admin
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Password must be blank');", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Password should not be blank');", true);
             }
         }
 

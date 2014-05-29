@@ -82,6 +82,7 @@ namespace SocialSuitePro
 
             if (objInsRepo.checkInstagramUserExists(access.user.id, user.Id))
             {
+                HttpContext.Current.Session["alreadyexist"] = objInsAccount;
                 objInsRepo.updateInstagramUser(objInsAccount);
                 if (!socioprofilerepo.checkUserProfileExist(socioprofile))
                 {

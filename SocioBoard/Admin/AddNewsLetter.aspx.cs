@@ -109,12 +109,12 @@ namespace SocialSuitePro.Admin
             {
                 if (noofuserselected == 0)
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please filled subject/Email or select users!');", true);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please fill subject/Email or select users!');", true);
                     return;
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please filled subject/Email content!');", true);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please fill subject/Email content!');", true);
                     return;
                 }
             }
@@ -258,9 +258,7 @@ namespace SocialSuitePro.Admin
                 foreach (ListItem listItem in chkUser.Items)
                 {
                     listItem.Selected = false;
-
                 }
-
             }
             catch (Exception Err)
             {

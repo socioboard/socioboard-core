@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
-    <title>SocioBoard - Generate More leads on Social Media| Social CRM | Social Media CMS
+    <title>Socioboard - Generate More leads on Social Media| Social CRM | Social Media CMS
     </title>
     <meta name="description" content="A new fast growing, advanced, easy, open-source social media marketing tool to engage your audience with great features such as live chat, news feed, timeline, profiles, events, notifications, likes, analytics, insights and much more hit the digital media marketing lately.Most applications in this domain have a very narrow and limited approach towards end users, people feel caught up in a whirlpool of using the same features without customization and scaling up. Socioboard plans to help users out of this narrow limiting vision of the current social media dashboards today." />
     <meta name="keywords" content="Social Media Management Software, Social Media Management tool, Open Source Social Media Management, Social Media Management" />
@@ -23,25 +23,7 @@
     <script src="../Contents/js/JSlogin.js" type="text/javascript"></script>
     <script src="../Contents/js/googleanalytics.js" type="text/javascript"></script>
     <script src="../Contents/js/clickDesk.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        $(function () {
-            var pull = $('#pull');
-            menu = $('nav ul');
-            menuHeight = menu.height();
-
-            $(pull).on('click', function (e) {
-                e.preventDefault();
-                menu.slideToggle();
-            });
-
-            $(window).resize(function () {
-                var w = $(window).width();
-                if (w > 320 && menu.is(':hidden')) {
-                    menu.removeAttr('style');
-                }
-            });
-        });
-    </script>
+    
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -73,43 +55,33 @@
                             <img src="../Contents/img/ssp/gplus.png" alt="Google+" /></a></span>
                     </div>
                     <nav class="clearfix">
-                            <%--<ul class="clearfix">
-                            <li><a href="../Feature.aspx">Home</a></li>
-                            <li><a href="../Feature.aspx">Company</a></li>
-                                <li><a href="../Feature.aspx">Feature</a></li>
-                                <li><a href="../Pricing.aspx">Pricing</a></li>
-                                <li><a href="../Feature.aspx">Wiki</a></li>
-                                <li><a href="../Feature.aspx">Download</a></li>
-                                <li><a href="../Feature.aspx">Insights</a></li>
-                                <li><a href="../contact.aspx">Contact Us</a></li>
-                                <li class="login" id="loginbtn"><a href="#">login</a></li>
-                            </ul>--%>
+                            
                           <ul id="menu">
-    <li><a href="../Default.aspx">Home</a></li>
-    <li><a href="../Company.aspx">Company</a></li>
-    <li><a href="../Features.aspx">Features</a></li>
-    <li><a href="#">Versions</a>
-        <ul class="sub-menu">
-            <li><a target="_blank" href="http://socioboard.org/">Community</a></li>
-            <li><a target="_blank" href="../Agency.aspx">Agency</a></li>
-            <li><a target="_blank" href="../Enterprise.aspx">Enterprise</a></li>
-          </ul>
-    </li>
-    <li><a href="../Pricing.aspx">Pricing</a></li>
-    <li><a href="#">Insights</a>
-     <ul class="sub-menu">
-        <li><a target="_blank" href="http://wiki.socioboard.com/">Wiki</a></li>
-        <li><a target="_blank" href="http://blog.socioboard.com/category/cases">Cases</a></li>
-        <li><a target="_blank" href="http://blog.socioboard.com/">Blogs</a></li>
-     </ul>
-    </li>
-    <li><a href="../Download.aspx">Download</a></li>
+                                <li><a href="../Default.aspx">Home</a></li>
+                                <li><a href="../Company.aspx">Company</a></li>
+                                <li><a href="../Features.aspx">Features</a></li>
+                                <li><a href="#">Versions</a>
+                                    <ul class="sub-menu">
+                                        <li><a target="_blank" href="http://socioboard.org/">Community</a></li>
+                                        <li><a target="_blank" href="../Agency.aspx">Agency</a></li>
+                                        <li><a target="_blank" href="../Enterprise.aspx">Enterprise</a></li>
+                                      </ul>
+                                </li>
+                                <li><a href="../Pricing.aspx">Pricing</a></li>
+                                <li><a href="#">Insights</a>
+                                 <ul class="sub-menu">
+                                    <li><a target="_blank" href="http://wiki.socioboard.com/">Wiki</a></li>
+                                    <li><a target="_blank" href="http://blog.socioboard.com/category/cases">Cases</a></li>
+                                    <li><a target="_blank" href="http://blog.socioboard.com/">Blogs</a></li>
+                                 </ul>
+                                </li>
+                                <li><a href="../Download.aspx">Download</a></li>
     
-    <li><a href="../contact.aspx">Contact Us</a></li>
-    <li class="login" id="loginbtn"><a href="#">login</a></li>
-</ul>
+                                <li><a href="../contact.aspx">Contact Us</a></li>
+                                <li class="login" ><a id="loginbtn" href="#">login</a></li>
+                             </ul>
 
-                            <a href="#" id="pull">Menu</a>
+                            
                         </nav>
                 </div>
                 <div class="clear">
@@ -286,7 +258,9 @@
         <form onsubmit="signinFunction();" action="">
         <div class="left_area">
             <div class="inputbg">
-                <input type="text" id="txtEmail" placeholder="Email" onblur="checkEmail(this.value);" /></div>
+                <%--<input type="text" id="txtEmail" placeholder="Email" onblur="checkEmail(this.value);" />--%>
+                <input type="text" id="txtEmail" placeholder="Email"/>
+                </div>
             <div class="error">
                 <div id="signinemailMessages">
                 </div>

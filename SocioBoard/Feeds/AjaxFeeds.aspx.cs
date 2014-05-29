@@ -81,7 +81,7 @@ namespace SocialSuitePro.Feeds
 
                         if (alstfacebook.Count == 0)
                         {
-                            profiles += "<li>No Records Found</li>";
+                            profiles += "<li>No Records Found !</li>";
                         }
                         else
                         {
@@ -109,7 +109,9 @@ namespace SocialSuitePro.Feeds
 
                         if (alsttwitter.Count == 0)
                         {
-                            profiles += "<li><a  href=\"#\" class=\"active\">No Records Found</a> </li>";
+                            // profiles += "<li><a  href=\"#\" class=\"active\">No Records Found</a> </li>";
+                            profiles += "<li>No Records Found !</li>";
+
                         }
                         else
                         {
@@ -134,7 +136,8 @@ namespace SocialSuitePro.Feeds
                         }
                         if (alstlinklist.Count == 0)
                         {
-                            profiles += "<li><a  href=\"#\" class=\"active\">No Records Found</a> </li>";
+                            // profiles += "<li><a  href=\"#\" class=\"active\">No Records Found</a> </li>";
+                            profiles += "<li>No Records Found !</li>";
                         }
                         else
                         {
@@ -194,7 +197,7 @@ namespace SocialSuitePro.Feeds
 
                     FacebookMessageRepository fbmsgrepo = new FacebookMessageRepository();
                     FacebookAccountRepository fbAccRepo = new FacebookAccountRepository();
-                 
+
                     List<FacebookMessage> lsgfbmsgs = fbmsgrepo.getAllWallpostsOfProfile(profileid, facebookwallcount);
 
                     UrlExtractor urlext = new UrlExtractor();
@@ -206,7 +209,7 @@ namespace SocialSuitePro.Feeds
                             string[] str = urlext.splitUrlFromString(item.Message);
                             messages += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"" + item.FromProfileUrl + "\" onclick=\"getFacebookProfiles('" + item.FromId + "');\">" +
                                                          "</div><div class=\"pull-left feedcontent\">" +
-                                                            //"<a href=\"#\" class=\"feednm\" onclick=\"getFacebookProfiles('" + item.FromId + "');\">" + item.FromName + "</a> <span>" + item.MessageDate +
+                                //"<a href=\"#\" class=\"feednm\" onclick=\"getFacebookProfiles('" + item.FromId + "');\">" + item.FromName + "</a> <span>" + item.MessageDate +
                                                             "<a target=\"_blank\" href=\"http://www.facebook.com/" + item.FromId + "\" class=\"feednm\">" + item.FromName + "</a> <span>" + item.MessageDate +
                                                                 " </span>" +
                                                              "<p>";
@@ -263,9 +266,9 @@ namespace SocialSuitePro.Feeds
 
                             messages += "</p>" +
                                         "<a class=\"retweets\" href=\"#\">" +
-                                        "</a><p><span onclick=\"facebookLike('" + item.FbLike + "','" + profileid + "','" + item.MessageId + "')\" id=\"likefb_" + item.MessageId + "\" class=\"like\">Like</span><span id=\"commentfb_" + item.MessageId + "\" onclick=\"commentText('"+item.MessageId+"');\" class=\"comment\">Comment</span></p>" +
-                                        "<p class=\"commeent_box\"><input id=\"textfb_"+item.MessageId+"\" type=\"text\" class=\"put_comments\"></p>"+
-                                      "<p><span onclick=\"commentFB('"+item.MessageId+"','"+profileid+"')\" id=\"okfb_"+item.MessageId+"\" class=\"ok\">ok</span><span id=\"cancelfb_"+item.MessageId+"\" onclick=\"cancelFB('"+item.MessageId+"');\" class=\"cancel\"> cancel</span></p>"+
+                                        "</a><p><span onclick=\"facebookLike('" + item.FbLike + "','" + profileid + "','" + item.MessageId + "')\" id=\"likefb_" + item.MessageId + "\" class=\"like\">Like</span><span id=\"commentfb_" + item.MessageId + "\" onclick=\"commentText('" + item.MessageId + "');\" class=\"comment\">Comment</span></p>" +
+                                        "<p class=\"commeent_box\"><input id=\"textfb_" + item.MessageId + "\" type=\"text\" class=\"put_comments\"></p>" +
+                                      "<p><span onclick=\"commentFB('" + item.MessageId + "','" + profileid + "')\" id=\"okfb_" + item.MessageId + "\" class=\"ok\">ok</span><span id=\"cancelfb_" + item.MessageId + "\" onclick=\"cancelFB('" + item.MessageId + "');\" class=\"cancel\"> cancel</span></p>" +
                                         "</div>" +
                                         "</li>";
                         }
@@ -292,7 +295,7 @@ namespace SocialSuitePro.Feeds
                         FacebookAccount fbAccount = fbAccRepo.getFacebookAccountDetailsById(profileid, user.Id);
                         string id = Request.QueryString["fbid"];
                         FacebookClient fbClient = new FacebookClient(fbAccount.AccessToken);
-                        var s = fbClient.Post(id + "/likes",null);
+                        var s = fbClient.Post(id + "/likes", null);
                     }
                     catch (Exception ex)
                     {
@@ -309,8 +312,8 @@ namespace SocialSuitePro.Feeds
                     FacebookClient fbClient = new FacebookClient(fbAccount.AccessToken);
                     var args = new Dictionary<string, object>();
                     args["message"] = message;
-                    var s = fbClient.Post(id+"/comments",args);
-                
+                    var s = fbClient.Post(id + "/comments", args);
+
                 }
                 else if (Request.QueryString["op"] == "twitternetworkdetails")
                 {
@@ -323,9 +326,9 @@ namespace SocialSuitePro.Feeds
                     {
                         try
                         {
-                            messages += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"" + item.FromProfileUrl + "\" onclick=\"detailsprofile('" + item.FromId + "');\">" +
+                            messages += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"" + item.FromProfileUrl + "\" onclick=\"detailsdiscoverytwitter('" + item.FromId + "');\">" +
                                                          "</div><div class=\"pull-left feedcontent\">" +
-                                                            "<a href=\"#\" class=\"feednm\" onclick=\"detailsprofile('" + item.FromId + "');\">" + item.FromName + "</a> <span>" + item.FeedDate +
+                                                            "<a href=\"#\" class=\"feednm\" onclick=\"detailsdiscoverytwitter('" + item.FromId + "');\">" + item.FromName + "</a> <span>" + item.FeedDate +
                                                                 " </span>" +
                                                              "<p>";
 
@@ -370,7 +373,7 @@ namespace SocialSuitePro.Feeds
                                 }
                                 catch (Exception)
                                 {
-                             
+
                                 }
                             }
 
@@ -635,9 +638,9 @@ namespace SocialSuitePro.Feeds
                     {
                         try
                         {
-                            message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"" + item.FromProfileUrl + "\" onclick=\"detailsprofile('" + item.FromId + "');\">" +
+                            message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"" + item.FromProfileUrl + "\" onclick=\"detailsdiscoverytwitter('" + item.FromId + "');\">" +
                                                          "</div><div class=\"pull-left feedcontent\">" +
-                                                            "<a href=\"#\" class=\"feednm\" onclick=\"detailsprofile('" + item.FromId + "');\">" + item.FromName + "</a> <span>" + item.MessageDate +
+                                                            "<a href=\"#\" class=\"feednm\" onclick=\"detailsdiscoverytwitter('" + item.FromId + "');\">" + item.FromName + "</a> <span>" + item.MessageDate +
                                                                 " </span>" +
                                                              "<p>";
 
@@ -683,7 +686,7 @@ namespace SocialSuitePro.Feeds
                                 }
                                 catch (Exception)
                                 {
-                                
+
                                 }
                             }
                             message += "</p>" +
@@ -713,24 +716,59 @@ namespace SocialSuitePro.Feeds
                     {
                         if (lstfeed.Count != 0)
                         {
-                            foreach (LinkedInFeed item in lstfeed)
+
+
+                            if (lstfeed.Count > 500)
                             {
-                                try
+                                int check= 0;
+                                foreach (LinkedInFeed item in lstfeed)
                                 {
-                                    message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"" + item.FromPicUrl + "\">" +
-                                                                                          "</div><div class=\"pull-left feedcontent\">" +
-                                                                                             "<a href=\"#\" class=\"feednm\">" + item.FromName + "</a> <span>" + item.FeedsDate +
-                                                                                                 " </span>" +
-                                                                                              "<p>" + item.Feeds + "</p>" +
-                                                                                              "<a class=\"retweets\" href=\"#\">" +
-                                                                                              "</a><span></span>" +
-                                                                                          "</div>" +
-                                                                                      "</li>";
+                                    check++;
+                                    try
+                                    {
+                                        message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"" + item.FromPicUrl + "\">" +
+                                                                                              "</div><div class=\"pull-left feedcontent\">" +
+                                                                                                 "<a style=\"cursor:default\" class=\"feednm\">" + item.FromName + "</a> <span>" + item.FeedsDate +
+                                                                                                     " </span>" +
+                                                                                                  "<p>" + item.Feeds + "</p>" +
+                                                                                                  "<a class=\"retweets\" href=\"#\">" +
+                                                                                                  "</a><span></span>" +
+                                                                                              "</div>" +
+                                                                                          "</li>";
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        logger.Error(ex.Message);
+                                        Console.WriteLine(ex.Message);
+                                    }
+                                    if (check == 500)
+                                    {
+                                        break;
+                                    }
                                 }
-                                catch (Exception ex)
+                            }
+                            else
+                            {
+
+                                foreach (LinkedInFeed item in lstfeed)
                                 {
-                                    logger.Error(ex.Message);
-                                    Console.WriteLine(ex.Message);
+                                    try
+                                    {
+                                        message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"" + item.FromPicUrl + "\">" +
+                                                                                              "</div><div class=\"pull-left feedcontent\">" +
+                                                                                                 "<a style=\"cursor:default\" class=\"feednm\">" + item.FromName + "</a> <span>" + item.FeedsDate +
+                                                                                                     " </span>" +
+                                                                                                  "<p>" + item.Feeds + "</p>" +
+                                                                                                  "<a class=\"retweets\" href=\"#\">" +
+                                                                                                  "</a><span></span>" +
+                                                                                              "</div>" +
+                                                                                          "</li>";
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        logger.Error(ex.Message);
+                                        Console.WriteLine(ex.Message);
+                                    }
                                 }
                             }
                         }
@@ -785,7 +823,7 @@ namespace SocialSuitePro.Feeds
                                 }
                                 message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"" + picurl + "\">" +
                                                                        "</div><div class=\"pull-left feedcontent\">" +
-                                                                          "<a href=\"#\" class=\"feednm\">" + item.PersonFirstName + " " + item.PersonLastName + "</a> <span>" + item.DateTime +
+                                                                          "<a href=\"" + linkacc.ProfileUrl+ "\" target=\"_blank\" class=\"feednm\">" + item.PersonFirstName + " " + item.PersonLastName + "</a> <span>" + item.DateTime +
                                                                               " </span>" +
                                                                            "<p>" + item.Message + "</p>" +
                                                                            "<a class=\"retweets\" href=\"#\">" +
@@ -911,7 +949,7 @@ namespace SocialSuitePro.Feeds
 
                                                                     "</div><div class=\"pull-right\" id=\"like\"><a title=\"\" href=\"#\" onClick=\"insUser('" + feed.FeedId + "','" + insaccount.AccessToken + "')\" ><img id=\"heartEmpty_" + feed.FeedId + "\" width=\"14\" alt=\"\" src=\"../Contents/img/admin/heart-empty.png\"  style=\"margin-top: 9px;\"></a><a title=\"\" href=\"#\"><img width=\"14\" alt=\"\" src=\"../Contents/img/admin/speech-bubble-left.png\"  style=\"margin-top: 9px;\"></a>" +
                                                                     "</div></div><div class=\"pic\"><img alt=\"\" src=\"" + feed.FeedImageUrl + "\"></div><div class=\"desc\"><p></p><span class=\"pull-left span3\">" +
-                                                                    "<img width=\"12\" alt=\"\" src=\"../Contents/img/admin/heart-empty.png\"> " + feed.LikeCount + "</span><span class=\"pull-left span3\"><img width=\"12\" alt=\"\" src=\"../Contents/img/admin/speech-bubble-left.png\"> "+ lstInsCmt.Count +"</span><div class=\"clearfix\"></div>";
+                                                                    "<img width=\"12\" alt=\"\" src=\"../Contents/img/admin/heart-empty.png\"> " + feed.LikeCount + "</span><span class=\"pull-left span3\"><img width=\"12\" alt=\"\" src=\"../Contents/img/admin/speech-bubble-left.png\"> " + lstInsCmt.Count + "</span><div class=\"clearfix\"></div>";
 
                                     foreach (InstagramComment insCmt in lstInsCmt)
                                     {
@@ -1015,7 +1053,7 @@ namespace SocialSuitePro.Feeds
                 if (row["Network"].ToString() == "twitter")
                 {
                     message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"messages taskable\"><section><aside><section class=\"js-avatar_tip\" data-sstip_class=\"twt_avatar_tip\">" +
-                                "<a class=\"avatar_link view_profile\" href=\"javascript:void(0)\"><img id=\"formprofileurl_" + sorteddatacount + "\" onclick=\"detailsprofile(this.alt);\" width=\"54\" height=\"54\" border=\"0\" class=\"avatar\" src=\"" + row["FromProfileUrl"] + "\" alt=\"" + row["FromName"] + "\">" +
+                                "<a class=\"avatar_link view_profile\" href=\"javascript:void(0)\"><img id=\"formprofileurl_" + sorteddatacount + "\" onclick=\"detailsdiscoverytwitter(this.alt);\" width=\"54\" height=\"54\" border=\"0\" class=\"avatar\" src=\"" + row["FromProfileUrl"] + "\" alt=\"" + row["FromName"] + "\">" +
                                  "<article class=\"message-type-icon\"><span class=\"twitter_bm\"><img src=\"../Contents/Images/twticon.png\" width=\"16\" height=\"16\" /></span></article></a></section><ul></ul></aside><article><div class=\"\">" +
                                  "<a class=\"language\" href=\"\"></a></div><div class=\"message_actions\"><a class=\"gear_small\" href=\"#\"><span title=\"Options\" class=\"ficon\">?</span>" +
                                  "</a></div>";
@@ -1024,7 +1062,7 @@ namespace SocialSuitePro.Feeds
                                     "<section class=\"bubble-meta\">" +
                                        "<article class=\"threefourth text-overflow\">" +
                                            "<section class=\"floatleft\">" +
-                                               "<a data-tip=\"View Yaroslav Lukashev's Profile\"  class=\"js-avatar_tip view_profile profile_link\" data-sstip_class=\"twt_avatar_tip\"><span id=\"network_" + sorteddatacount + "\" style=\"display:none;\">twitter</span><span style=\"display:none;\" id=\"messageid_" + sorteddatacount + "\">" + row["MessageId"] + "</span><span style=\"display:none;\" id=\"fromid_" + sorteddatacount + "\">" + row["FromId"] + "</span><span style=\"display:none;\" id=\"rowid_" + sorteddatacount + "\">" + row["ProfileId"] + "</span><span id=\"rowname_" + sorteddatacount + "\" onclick=\"detailsprofile(this.id);\">" + row["FromName"] + "</span>" +
+                                               "<a data-tip=\"View Yaroslav Lukashev's Profile\"  class=\"js-avatar_tip view_profile profile_link\" data-sstip_class=\"twt_avatar_tip\"><span id=\"network_" + sorteddatacount + "\" style=\"display:none;\">twitter</span><span style=\"display:none;\" id=\"messageid_" + sorteddatacount + "\">" + row["MessageId"] + "</span><span style=\"display:none;\" id=\"fromid_" + sorteddatacount + "\">" + row["FromId"] + "</span><span style=\"display:none;\" id=\"rowid_" + sorteddatacount + "\">" + row["ProfileId"] + "</span><span id=\"rowname_" + sorteddatacount + "\" onclick=\"detailsdiscoverytwitter(this.id);\">" + row["FromName"] + "</span>" +
                                                "</a>&nbsp;<a data-msg-time=\"1363926699000\" class=\"time\" target=\"_blank\" title=\"View message on Twitter\" href=\"#\">" + row["MessageDate"].ToString() + "</a>, <span class=\"location\" >&nbsp;</span>" +
                                     "</section></article><ul class=\"message-buttons quarter clearfix\"><li><a href=\"#\"><img src=\"../Contents/Images/replay.png\" alt=\"\" width=\"17\" height=\"24\" border=\"none\"  onclick=replyfunction(" + sorteddatacount + ") ></a></li>" +
                                     "<li><a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img src=\"../Contents/Images/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a></li>" +

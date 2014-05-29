@@ -45,15 +45,16 @@
        <div class="reg_temp_reg">
        
          <div class="left_reg_area">          
-            <div class="inputbg" id="divtxtmail" runat="server"><asp:TextBox ID="txtEmail" runat="server" placeholder="Enter your email id."></asp:TextBox></div>
-             <div class="inputbg" id="divtxtpass" runat="server"><asp:TextBox ID="txtpass" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox></div>
-              <div class="inputbg" id="divtxtconfirmpass" runat="server"><asp:TextBox ID="txtconfirmpass" runat="server" placeholder="Confirm Password" TextMode="Password"></asp:TextBox></div>
+          <%--  <div class="inputbg" id="divtxtmail" runat="server"><asp:TextBox ID="txtEmail" runat="server" placeholder="Enter your email id."></asp:TextBox></div>--%>
+              <div class="inputbg" id="divtxtmail"  runat="server"><asp:TextBox ID="txtEmail" AutoCompleteType="Email" title="Please enter valid email"  pattern="^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*(\.[A-Za-z]{2,3})$" runat="server" placeholder="Enter your email id." required=""></asp:TextBox></div>
+             <div class="inputbg" id="divtxtpass" runat="server"><asp:TextBox ID="txtpass" runat="server" placeholder="Password" TextMode="Password" required=""></asp:TextBox></div>
+              <div class="inputbg" id="divtxtconfirmpass" runat="server"><asp:TextBox ID="txtconfirmpass" runat="server" placeholder="Confirm Password" TextMode="Password" required=""></asp:TextBox></div>
             <div class="error">
-                <asp:Label ID="lblerror" runat="server"></asp:Label>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"  ErrorMessage="Please Enter Valid Email!" 
+              <asp:Label ID="lblerror" runat="server"></asp:Label>
+              <%--    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"  ErrorMessage="Please Enter Valid Email!" 
                     ControlToValidate="txtEmail" CssClass="ws_err_star"></asp:RequiredFieldValidator>
                     <br />
-                <asp:RegularExpressionValidator ID="revEmail" runat="server" ErrorMessage="Please Enter Valid Email!" ControlToValidate="txtEmail" CssClass="ws_err_star_enter" ValidationExpression="^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*(\.[A-Za-z]{2,3})$"></asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator ID="revEmail" runat="server" ErrorMessage="Please Enter Valid Email!" ControlToValidate="txtEmail" CssClass="ws_err_star_enter" ValidationExpression="^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*(\.[A-Za-z]{2,3})$"></asp:RegularExpressionValidator>--%>
             </div>          
           
             <div class="create_your_account" id="btnforgetpass" runat="server">

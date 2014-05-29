@@ -4,17 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Drawing.Imaging;
 using System.Configuration;
 using SocioBoard.Domain;
-using SocioBoard.Model;
 using System.Collections.ObjectModel;
 using SocioBoard;
 using SocioBoard.Helper;
+using System.Text.RegularExpressions;
+using SocioBoard.Model;
 namespace SocialSuitePro.Settings
 {
     public partial class PersonalSettings : System.Web.UI.Page
@@ -46,10 +46,15 @@ namespace SocialSuitePro.Settings
 
                     if (user == null)
                         Response.Redirect("/Default.aspx");
-
+                    string lastname = string.Empty;
                     string[] username = user.UserName.Split(' ');
                     txtFirstName.Text = username[0];
-                    txtLastName.Text = username[1];
+                    for (int i = 1; i < username.Length;i++ )
+                    {
+                        lastname += username[i];
+                    }
+
+                    txtLastName.Text = lastname;
                     memberName.InnerHtml = user.UserName;
                     txtEmail.Text = user.EmailId;
                     //ddlTimeZone.DataSource = TimeZoneInfo.GetSystemTimeZones();
@@ -62,7 +67,7 @@ namespace SocialSuitePro.Settings
                     //lst.Text=user.TimeZone;
                     //lst.Value=user.TimeZone;
                     ddlTimeZone.SelectedValue = user.TimeZone.ToString();
-                    email_personal_for_setting.InnerHtml = user.EmailId;
+                   // email_personal_for_setting.InnerHtml = user.EmailId;
                     if (user.ProfileUrl != null)
                     {
                         custImg.Attributes.Add("src", user.ProfileUrl.ToString());
@@ -83,35 +88,41 @@ namespace SocialSuitePro.Settings
             {
                 Registration regpage = new Registration();
                 string OldPassword = regpage.MD5Hash(txtOldPassword.Text);
-
-                if (txtPassword.Text != "" && txtConfirmPassword.Text != "" && txtOldPassword.Text != "")
+                if (txtOldPassword.Text != "")
                 {
-                    if (txtPassword.Text == txtConfirmPassword.Text)
+                    if (txtPassword.Text.Trim() != "" && txtConfirmPassword.Text.Trim() != "" && txtOldPassword.Text != "")
                     {
-                        User user = (User)Session["LoggedUser"];
-                        if (OldPassword == user.Password)
+                        if (txtPassword.Text == txtConfirmPassword.Text)
                         {
+                            User user = (User)Session["LoggedUser"];
+                            if (OldPassword == user.Password)
+                            {
 
-                            string changedpassword = regpage.MD5Hash(txtConfirmPassword.Text);
-                            UserRepository userrepo = new UserRepository();
-                            userrepo.ChangePassword(changedpassword, user.Password, user.EmailId);
-                            txtConfirmPassword.Text = string.Empty;
-                            txtPassword.Text = string.Empty;
-                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Message", "alert('Your password has been changed successfully.')", true);
+                                string changedpassword = regpage.MD5Hash(txtConfirmPassword.Text);
+                                UserRepository userrepo = new UserRepository();
+                                userrepo.ChangePassword(changedpassword, user.Password, user.EmailId);
+                                txtConfirmPassword.Text = string.Empty;
+                                txtPassword.Text = string.Empty;
+                                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Message", "alert('Your password has been changed successfully.')", true);
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Message", "alert('Your password is Incorrect.')", true);
+                            }
                         }
                         else
                         {
-                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Message", "alert('Your password is InCorrect.')", true);
+                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Message", "alert('Password Mismatch.')", true);
                         }
                     }
                     else
                     {
-
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Message", "alert('Invalid Password.')", true);
                     }
                 }
                 else
                 {
-
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Message", "alert('Please enter your old password.')", true);
                 }
             }
             catch (Exception ex)
@@ -120,6 +131,8 @@ namespace SocialSuitePro.Settings
                 Console.WriteLine(ex.Message);
             }
         }
+
+
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
@@ -151,10 +164,28 @@ namespace SocialSuitePro.Settings
                     imgfileupload.SaveAs(path);
                     user.ProfileUrl = "../Contents/img/user_img/" + imgfileupload.FileName;
                 }
-                user.UserName = txtFirstName.Text + " " + txtLastName.Text;
-                user.TimeZone = ddlTimeZone.SelectedItem.Value;
-                UserRepository.Update(user);
-                Session["LoggedUser"] = user;
+                if (txtEmail.Text != null || txtEmail.Text != "")
+                {
+                    bool isEmail = Regex.IsMatch(txtEmail.Text.Trim(), @"\A(?:[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?)\Z");
+                    if (isEmail)
+                    {
+                         user.UserName = txtFirstName.Text + " " + txtLastName.Text;
+                            user.TimeZone = ddlTimeZone.SelectedItem.Value;
+                            user.EmailId = txtEmail.Text;
+                            UserRepository.Update(user);
+                            Session["LoggedUser"] = user;
+                      
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please enter a valid emailId);", true);
+                    }
+                   
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please enter a emailId);", true);
+                }
                 //Response.Redirect(Request.RawUrl);
             }
             catch (Exception ex)

@@ -207,7 +207,7 @@
 			<div class="slim-scroll" data-scroll-height="800px">
 			
 			<!-- Sidebar Profile -->
-			<span class="profile">account dropdown dd-1
+			<span class="profile">
 				<p>Welcome <a href="#">Admin</a></p>
 				<a id="avtarimg" runat="server" class="img"  href="~/Admin/AdminSettings.aspx"></a>
 				<span>

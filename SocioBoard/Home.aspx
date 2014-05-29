@@ -144,6 +144,17 @@
                     $('#inviteAthome').hide();
                 });
             });
+
+            //this is to avoid go to login page
+            function DisableBackButton() {
+                window.history.forward()
+            }
+            DisableBackButton();
+            window.onload = DisableBackButton;
+            window.onpageshow = function (evt) { if (evt.persisted) DisableBackButton() }
+            window.onunload = function () { void (o) }
+            //this is to avoid go to login page
+
         </script>
 </asp:Content>
 
@@ -154,25 +165,25 @@
                 	<div class="cols2">
                     	<h4>Incoming Messages</h4>
                         <span class="counter" id="spanIncoming" runat="server">0</span>
-						<canvas id="cvs" width="90" height="50">[No canvas support]</canvas>
+						<%--<canvas id="cvs" width="90" height="50">[No canvas support]</canvas>--%>
 					</div>
                 	<div class="cols2">
                     	<h4>Sent Messages</h4>
                         <span class="counter" id="spanSent" runat="server">0</span>
-						<canvas id="cvsSent" width="90" height="50">[No canvas support]</canvas>
+						<%--<canvas id="cvsSent" width="90" height="50">[No canvas support]</canvas>--%>
 					</div>
                     <div class="clear"></div>
-                	<div class="cols2" style="width:116px;">
+                	<div class="cols2">
                     	<h4>New Twitter Followers</h4>
                         <span class="counter" id="spanNewTweets" runat="server">0</span>
                       <%--    <div id="chart_div" style="width: 230px; height: 80px;"></div>--%>
-						<canvas id="div_twt" height="50" width="90">
+						<%--<canvas id="div_twt" height="50" width="90">--%>
 					</div>
-                	<div class="cols2" style="width:131px">
+                	<div class="cols2">
                     	<h4>New Facebook Fans</h4>
                         <span class="counter" id="spanFbFans" runat="server">0</span>
                        <%-- <div id="div_twt" style="width: 230px; height: 80px; float:right;"></div>--%>
-						<canvas id="chart_div" height="50" width="90">
+						<%--<canvas id="chart_div" height="50" width="90">--%>
 					</div>
                     <div class="clear"></div>
 				</div>
@@ -182,20 +193,20 @@
                 	<a href="Message/Task.aspx" class="btn">VIEW TASK <img src="../Contents/img/admin/hammertiny.png" alt="" class="pull-right" /></a>
 				<a href="Reports/GroupStats.aspx" class="btn">VIEW REPORT <img src="../Contents/img/admin/reportstiny.png" alt="" class="pull-right" /></a>
 				</div>
-				<div class="sidebar-inner">
+				<%--<div class="sidebar-inner">
                 	<h1>Select Profile</h1>
-                    <span>to connect </span>SocioBoard<ul id="profile-connect" style="width:270px;">
+                    <span>To connect </span>SocioBoard<ul id="profile-connect" style="width:270px;">
 						<a id="A4" href="#" runat="server" onserverclick="AuthenticateFacebook"><li><img src="../Contents/img/admin/fbicon.png" alt="" /></li></a>
 						<a id="A5" href="#" runat="server" onserverclick="AuthenticateTwitter"><li><img src="../Contents/img/admin/twittericon.png" alt="" /></li></a>
-						<%--<li><a href="#" runat="server" onserverclick="AuthenticateTwitter"><img src="../Contents/img/admin/g+icon.png" alt=""/></a></li>--%>
+						<li><a href="#" runat="server" onserverclick="AuthenticateTwitter"><img src="../Contents/img/admin/g+icon.png" alt=""/></a></li>
 						<a id="A6" href="#" runat="server" onserverclick="AuthenticateLinkedin"><li><img src="../Contents/img/admin/linkedinicon.png" alt=""/></li></a>
 						<a id="A1" href="#" runat="server" onserverclick="AuthenticateInstagram"><li><img src="Contents/img/instagram_24X24_grey.png" alt=""/></li></a>
-						<%--<li>
+						<li>
                         <a id="A2" href="#" onserverclick="AuthenticateGooglePlus" runat="server"><img src="../Contents/img/google_plus_grey.png" width="24" height="24" alt="" /></a>
                         <li><a id="A3" href="#" runat="server" onserverclick="AuthenticateGoogleAnalytics"><img src="Contents/img/google_analytics_grey.png" alt=""/></a></li>
-                    </li>--%>
+                    </li>
 					</ul>
-				</div>
+				</div>--%>
 				<div class="sidebar-inner" id="bindads" runat="server">
                     <%--<asp:Image ID="imgAds" runat="server" ImageUrl="../Contents/img/admin/ads.png"/>--%>
 					<%--<a href="#"><button data-dismiss="alert" class="close pull-right" type="button">×</button><img src="../Contents/img/admin/ads.png" alt="" height="221" width="221"></a>--%>
@@ -209,7 +220,7 @@
 							<p id="divNews" runat="server">Welcome to SocioBoard Your Social Business Partners</p>
                             <div class="red-caret"></div>
 						</div>
-						<div class="title">
+						<%--<div class="title">
 							<h1>Audience Demographics</h1>
 							<span runat="server" id="acrossProfile" class=""></span>
 						</div>
@@ -264,7 +275,7 @@
                             </div>
                             <div class="clear"></div>
                             
-                        </div>
+                        </div>--%>
 
 						<%--<img src="../Contents/img/admin/graph.png" alt="" />--%>
 						<div class="title">
@@ -286,7 +297,7 @@
                     <img id="hm_loader" src="Contents/img/loading.gif" width="100" height="100"  alt=""/>
                  </div>
 				</div>
-
+                </div>
                    <div id="right-sidebar_home">
                     	<div class="rsidebar-inner">
                         	<h3>Profile</h3>
@@ -329,7 +340,7 @@
 								</li>--%>
 							</ul>
                             </div>
-                            	<div id="expanderHead" class="userpictiny add">
+                            	<div id="expanderHead" class="userpictiny add userpic">
 										<a><img src="../Contents/img/admin/addprofile.png" height="48" width="48" alt="" /></a>
                                         <div id="linkbox" style="display: none;">
                                             <ul>
@@ -424,21 +435,21 @@
                         	<h3>Team Members</h3>
                             <p class="stitlemini" id="teamMem" runat="server"></p>
                                  <div class="team_member" id="team_member" runat="server">
-                                <div class="userpictiny">
+                                <div class="userpictiny userpic">
                                     <a href="#" target="_blank">
                                         <img width="48" height="48" src="http://graph.facebook.com/100004496770422/picture?type=small" alt="" title="Prab Kumar" />
                                      </a>
 
                                 </div>
 
-                                <div class="userpictiny">
+                                <div class="userpictiny userpic">
                                     <a href="#" target="_blank">
                                         <img width="48" height="48" src="http://graph.facebook.com/100004496770422/picture?type=small" alt="" title="Prab Kumar" />
                                      </a>
 
                                 </div>
 
-                                <div class="userpictiny">
+                                <div class="userpictiny userpic">
                                     <a href="#" target="_blank">
                                         <img width="48" height="48" src="http://graph.facebook.com/100004496770422/picture?type=small" alt="" title="Prab Kumar" />
                                      </a>
@@ -449,7 +460,7 @@
                             <div id="teammember" runat="server">
                             <ul>
                             	<%--<li><a href="#"><img src="../Contents/img/admin/img.png" height="48" width="48" alt="" /></a></li>--%>
-                                 <li  id="invitefromHome"><a id="invitehome"><img src="../Contents/img/admin/invite.png" height="48" width="48" alt="" /></a>
+                                 <li  id="invitefromHome" class="invite_s"><a id="invitehome"><img src="../Contents/img/admin/invite.png" height="48" width="48" alt="" /></a>
                                 <div  id="inviteAthome" style="display: none;">
                                     <div class="drop_top">
                                     </div>
@@ -470,13 +481,27 @@
 						</div>                        
                     	<div class="rsidebar-inner">
                         	<h3>Recent Followers</h3>
-                            <ul id="recentfollowers">
+                            <ul id="recentfollowers userpic">
                             	
                             </ul>
-						</div>                        
+						</div> 
+                        <div class="rsidebar-inner">
+
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- socioboard -->
+                            <ins class="adsbygoogle"
+                                 style="display:inline-block;width:250px;height:250px"
+                                 data-ad-client="ca-pub-7073257741073458"
+                                 data-ad-slot="9533254693"></ins>
+                            <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        
+                        </div>
+                                               
 					</div>
 
-			</div>
+			
 		</div>
         <script type="text/javascript" language="javascript">
             function getInsights(id, name) {
@@ -501,6 +526,14 @@
                 //                    debugger;
                 //                    $("#expanderContent").slideToggle();
                 //                });
+
+
+//                $('#asd').click(function () { 
+//                })
+
+
+
+
 
                 BindSocialProfiles();
                 BindMidSnaps("load");

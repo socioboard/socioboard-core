@@ -11,7 +11,8 @@ $("#facebook_connect_master").click(function (e) {
 $("#composecontent").click(function () {
     debugger;
     //  ("#composeBox").bPopup();
-    closeonCompose();
+    //closeonCompose();
+    $("#showBlock").css('display', 'none');
     $('#composeBox').bPopup({
         fadeSpeed: 'slow', //can be a string ('slow'/'fast') or int
         followSpeed: 1500, //can be a string ('slow'/'fast') or int
@@ -22,9 +23,15 @@ $("#composecontent").click(function () {
     });
 
     var totalmessagewords = 140;
+    // totalmessagewords = Countmessagewords();
+
     bindProfilesComposeMessage();
 
     $('#textareavaluetosendmessage').bind('keyup', function () {
+
+
+        totalmessagewords = Countmessagewords();
+
 
         var charactersUsed = $(this).val().length;
 
@@ -40,6 +47,61 @@ $("#composecontent").click(function () {
 
     });
 });
+
+
+
+function Countmessagewords() {
+    var Fbidcount = 0;
+    var twtIdcount = 0;
+    var LinkedInIdcount = 0;
+    var totalmessagewords1 = 0;
+    var chkidforusertest = new Array();
+
+    var bindingofdata = document.getElementById('divformultiusers');
+    var countdiv = bindingofdata.getElementsByTagName('div');
+
+    for (var i = 0; i < countdiv.length; i++) {
+        chkidforusertest.push(countdiv[i].id);
+    }
+
+    if (chkidforusertest.indexOf(singleprofileid) == -1) {
+        chkidforusertest.push(singleprofileid);
+    }
+
+
+    for (var i = 0; i < chkidforusertest.length; i++) {
+
+        try {
+            var arr = chkidforusertest[i].split('_');
+
+
+            if (arr[0].indexOf("fb") != -1) {
+                Fbidcount++;
+            }
+            if (arr[0].indexOf("twt") != -1) {
+                twtIdcount++;
+            }
+            if (arr[0].indexOf("lin") != -1) {
+                LinkedInIdcount++;
+            }
+        } catch (e) {
+
+        }
+    }
+
+    if (Fbidcount > 0 && twtIdcount == 0 && LinkedInIdcount == 0) {
+        totalmessagewords1 = 5000;
+    }
+    else if (Fbidcount >= 0 && twtIdcount == 0 && LinkedInIdcount > 0) {
+        totalmessagewords1 = 700;
+    }
+
+    else {
+        totalmessagewords1 = 140;
+    }
+
+    return totalmessagewords1;
+}
 
 $('#commonmenuforAll').click(function () {
     $('#commonmenuforAllClick').toggle();

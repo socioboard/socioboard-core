@@ -75,7 +75,27 @@ namespace SocioBoard.Model
             }
 
         }
+        public ArrayList getTotalFacebookStatsOfUser(Guid UserId)
+        {
 
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    NHibernate.IQuery query = session.CreateSQLQuery("Select * from FacebookStats where UserId = :userid ")
+                   .SetParameter("userid", UserId);
+                    ArrayList alstFBStats = new ArrayList();
+
+                    foreach (var item in query.List())
+                    {
+                        alstFBStats.Add(item);
+                    }
+                    return alstFBStats;
+
+                }
+            }
+
+        }
         public FacebookStats getFacebookStatsById(string Fbuserid, Guid userId)
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())

@@ -16,7 +16,7 @@ ruby, section, summary, time, mark,
 audio, video
 {
     border: 0 none;
-    font: inherit;
+    font: sans-serif;
     margin: 0;
     padding: 0;
     vertical-align: baseline;
@@ -26,8 +26,8 @@ body
 {
 	margin:0;
 	padding:0;
-	
-	font-family:Arial, Helvetica, sans-serif;
+	background:url("../img/admin/navi.png") repeat-x scroll 0 0 #393939;
+	font-family:sans-serif, Helvetica,;
 	/*background:url(../img/ws_bg.png);
     background:#fff;
 	background:none repeat scroll 0 0 #CB786F;*/
@@ -110,7 +110,7 @@ input, select, textare, img
     border-bottom: 1px solid #245196;
     color: #FFFFFF;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 13px;
     font-weight: bold;
     height: auto;
@@ -202,7 +202,7 @@ input, select, textare, img
 {
     color: #FFFFFF;
     float: right;
-    font-family: Arial;
+    font-family: sans-serif;
     font-size: 12px;
     font-weight: bold;
     height: auto;
@@ -274,7 +274,7 @@ input, select, textare, img
 	height:auto;
 	float:left;
 	text-align:center;	
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	font-size:13px;
 	color:#ffffff;
 	text-align: center;
@@ -325,7 +325,7 @@ input, select, textare, img
 	width:230px;
 	height:auto;
 	float:left;
-	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	font-size:22px;
 	font-weight:bold;
 	margin-top: 10px;
@@ -336,7 +336,7 @@ input, select, textare, img
 	width:230px;
 	height:auto;
 	float:left;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	color:#666;
 	margin-top: 5px;
 	font-size:13px;
@@ -403,7 +403,7 @@ input, select, textare, img
 	text-align: center;
     color: #fff;
     text-shadow: 0 0 3px #000;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: sans-serif;
     font-weight: bold;
     text-decoration: none;
     font-size: 38px;
@@ -421,7 +421,7 @@ input, select, textare, img
 	text-align: center;
     color: #fff;
     text-shadow: 0 0 3px #000;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: sans-serif;
     font-weight: bold;
     text-decoration: none;
     font-size: 38px;
@@ -455,7 +455,7 @@ input, select, textare, img
     border-bottom: 1px solid #1A4C97;
     color: #1A4C97;
     float: left;
-    font-family: Arial;
+    font-family: sans-serif;
     font-size: 18px;
     font-weight: bold;
     height: 40px;
@@ -472,7 +472,7 @@ input, select, textare, img
 	width:auto;
 	height:auto;
 	float:left;
-	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	font-size:22px;
 	font-weight:bold;
 	margin-top: 10px;
@@ -482,7 +482,7 @@ input, select, textare, img
 {
     color: #666666;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 12px;
     height: auto;
     margin-left: 5px;
@@ -523,7 +523,7 @@ input, select, textare, img
     color: #FFFFFF;
     font-weight: normal;
     letter-spacing: 0.1em;
-	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
     padding-top: 1.3em;
     text-align: center;
     text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8);
@@ -553,7 +553,7 @@ input, select, textare, img
 	width:261px;
 	height:auto;
 	float:left;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	font-size:14px;
 	text-align:center;
 	color:#333;
@@ -567,7 +567,7 @@ input, select, textare, img
     float: left;
     cursor: pointer;
     color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: sans-serif;
     font-size: 13px;
     border-radius: 5px;
     background-image: linear-gradient(top, #4f4f4f, #060606);
@@ -581,7 +581,7 @@ input, select, textare, img
     float: left;
     cursor: pointer;
     color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: sans-serif;
     font-size: 13px;
     border-radius: 5px;
     background-image: linear-gradient(top, #060606, #4f4f4f);
@@ -635,7 +635,7 @@ input, select, textare, img
 .col_two_fb_my_accounts > .dd > h5, .col_two_fb_my_accounts > .dd > h5 a
  {
     color: #545453;
-    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-family: "Trebuchet MS",sans-serif, sans-serif, Helvetica;
     font-size: 15px;
     font-weight: bold;
     line-height: 1.3em;
@@ -674,13 +674,13 @@ input, select, textare, img
 	height:auto;
 	float:left;
 	font-size: 17px;
-	font-family: arial;
+	font-family: sans-serif;
 }
 .font-10
 {
     color: #666666;
     float: left;
-    font-family: arial;
+    font-family: sans-serif;
     font-size: 11px;
     height: auto;
     width: 60px;
@@ -702,7 +702,7 @@ input, select, textare, img
 	width:230px;
 	float:left;
 	height:auto;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	font-size:13px;
 }
 .empty-state 
@@ -712,7 +712,7 @@ input, select, textare, img
     color: #CCCCCC;
     display: block;
     float: left;
-    font-family: arial;
+    font-family: sans-serif;
     font-size: 14px;
     margin: 12px 0 0;
     padding: 4px 10px;
@@ -779,7 +779,7 @@ input, select, textare, img
 .col_three_link_my_accounts > .dd > h5, .col_three_link_my_accounts > .dd > h5 a
  {
     color: #545453;
-    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-family: "Trebuchet MS",sans-serif, sans-serif, Helvetica;
     font-size: 15px;
     font-weight: bold;
     line-height: 1.3em;
@@ -866,7 +866,7 @@ input, select, textare, img
 .col_six_gplus_my_accounts > .dd > h5, .col_six_gplus_my_accounts > .dd > h5 a
  {
     color: #545453;
-    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-family: "Trebuchet MS",sans-serif, sans-serif, Helvetica;
     font-size: 15px;
     font-weight: bold;
     line-height: 1.3em;
@@ -893,7 +893,7 @@ input, select, textare, img
 .col_six_gplus_my_accounts > .dd .friends_avg .article_friends .facebook_blue{
     color: #00ADE8;
     float: left;
-    font-family: arial;
+    font-family: sans-serif;
     font-size: 17px;
     height: auto;
     width: 60px;
@@ -949,7 +949,7 @@ input, select, textare, img
 .col_five_ga_my_accounts > .dd > h5, .col_five_ga_my_accounts > .dd > h5 a
  {
     color: #545453;
-    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-family: "Trebuchet MS",sans-serif, sans-serif, Helvetica;
     font-size: 15px;
     font-weight: bold;
     line-height: 1.3em;
@@ -972,7 +972,7 @@ input, select, textare, img
 {
 	width:100%;
 	height:auto;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	font-size:13px;
 	color:#454545;
 	float:left;
@@ -993,7 +993,7 @@ input, select, textare, img
 	height:auto;
 	float:left;
 	font-size:13px;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	color:#333;
 	font-weight:bold;
 }
@@ -1004,7 +1004,7 @@ input, select, textare, img
 	height:auto;
 	float:left;
 	font-size:13px;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	color:#333;
 	font-weight:bold;
 }
@@ -1016,7 +1016,7 @@ input, select, textare, img
 	height:auto;
 	float:left;
 	font-size:13px;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	color:#333;
 	font-weight:bold;
 }
@@ -1060,7 +1060,7 @@ input, select, textare, img
 	float:left;
 	margin-left:5px;
 	text-align:center;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	font-size:13px;
 	color:#1D4F9C;
 	margin-top:10px;
@@ -1092,7 +1092,7 @@ input, select, textare, img
 {
     color: #1D4F9C;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 13px;
     height: auto;
     margin-bottom: 12px;
@@ -1155,7 +1155,7 @@ input, select, textare, img
 {
     color: #FFFFFF;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 13px;
     margin-right: 5px;
     margin-top: 0;
@@ -1225,7 +1225,7 @@ input, select, textare, img
 {
     color: #FFFFFF;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 13px;
     margin-right: 5px;
     margin-top: 0;
@@ -1288,7 +1288,7 @@ input, select, textare, img
     width:540px;
     height:auto;
     float:left;
-    font-family:Arial;
+    font-family:sans-serif;
     font-size:14px;
     color:#666;
     word-wrap:break-word;
@@ -1298,7 +1298,7 @@ input, select, textare, img
     width:540px;
     height:auto;
     float:left;
-    font-family:Arial;
+    font-family:sans-serif;
     font-size:12px;
     margin-top:10px;
     color:#259DDB;
@@ -1330,7 +1330,7 @@ input, select, textare, img
 {
     color: #FFFFFF;
     float: left;
-    font-family: arial;
+    font-family: sans-serif;
     font-size: 25px;
     font-weight: bold;
     height: auto;
@@ -1357,7 +1357,7 @@ input, select, textare, img
 	 width:315px;
 	 height:auto;
 	 float:left;
-	 font-family:Arial, Helvetica, sans-serif;
+	 font-family:sans-serif;
 	 font-size:15px;
 	 color:#fff;
 	 float:left;
@@ -1374,7 +1374,7 @@ input, select, textare, img
 {
     width:330px;
     height:auto;
-    font-family:Arial;
+    font-family:sans-serif;
     float:left;
     font-size:13px;
     color:#333;
@@ -1393,7 +1393,7 @@ input, select, textare, img
     background: none repeat scroll 0 0 transparent;
     color: #888888;
     float: left;
-    font-family: arial;
+    font-family: sans-serif;
     font-size: 13px;
     font-weight: bold;
     height: auto;
@@ -1412,9 +1412,9 @@ input, select, textare, img
 .ws_input_text_star > .ws_err_star
 {
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     color: red;
-    font-family: arial;
+    font-family: sans-serif;
     font-size: 13px;
     font-weight: bold;
     height: 5px;
@@ -1495,7 +1495,7 @@ input, select, textare, img
 {
     color: #454545;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 13px;
     font-weight: bold;
     margin-left: 5px;
@@ -1507,7 +1507,7 @@ input, select, textare, img
 {
     color: #1284C0;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 13px;
     font-weight: bold;
     margin-left: 5px;
@@ -1517,7 +1517,7 @@ input, select, textare, img
 .ws_lg_chck_rem_for > .forgot a
 {
     color: #1284C0;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 13px;
     font-weight: bold;
     width: auto;
@@ -1527,7 +1527,7 @@ input, select, textare, img
 .ws_lg_chck_rem_for > .forgot a:hover
 {
     color: #1284C0;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 13px;
     font-weight: bold;
     width: auto;
@@ -1537,7 +1537,7 @@ input, select, textare, img
 .ws_lg_chck_rem_for > .register a {
     color: #1284C0;
     float: right;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 13px;
     font-weight: bold;
     margin-right: 0;
@@ -1548,7 +1548,7 @@ input, select, textare, img
 .ws_lg_chck_rem_for > .register a:hover {
     color: #1284C0;
     float: right;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 13px;
     font-weight: bold;
     margin-right: 0;
@@ -1737,11 +1737,13 @@ span.heart span span.fill {
  .msg_view.threefourth {
     float: left;
     height: 300px;
-    max-width: 789px;
+    max-width: 799px;
     overflow-x: hidden;
     overflow-y: auto;
     padding-right: 1.5%;
 }
+
+.messages ul{ margin:0 !important; }
 
 .messages > section:first-child {
     padding: 15px 0 0 18px;
@@ -2077,7 +2079,7 @@ span.google_plus img
     margin-bottom: 0;
     padding-bottom: 0.5em;
     text-transform: uppercase;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	font-size:13px;
 	padding-left:10px;
 }
@@ -2150,7 +2152,7 @@ ul.options_list li a > span.user_name
     color: #333333;
     display: block;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 12px;
     margin-top: 1px;
     width: 72%;
@@ -2197,7 +2199,7 @@ ul.options_list li a > .checkbx_green
     margin-bottom: 0;
     padding-bottom: 0.5em;
     text-transform: uppercase;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	font-size:13px;
 	padding-left:10px;
 	font-weight:bold;
@@ -2273,7 +2275,7 @@ ul.options_list li a > span.user_name
     color: #333333;
     display: block;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 12px;
     margin-top: 1px;
     width: 72%;
@@ -2312,7 +2314,7 @@ ul.options_list li a > .checkbx_green
 {
     color: #333333;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 18px;
     font-weight: 500;
     margin-left: 12px;
@@ -2329,7 +2331,7 @@ ul.options_list li a > .checkbx_green
     padding-bottom: 8px;
     padding-left: 10px;
     padding-top: 8px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: sans-serif;
     font-size: 16px;
     color: #ffffff;
     background-image: linear-gradient(top, #2BA4E3, #168AC6);
@@ -2381,7 +2383,7 @@ ul.options_list li a > .checkbx_green
 {
     color: #1D93D0;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 20px;
     font-weight: 500;
     margin-top: 15px;
@@ -2391,7 +2393,7 @@ ul.options_list li a > .checkbx_green
 .ws_tm_mid > .invite_friends a
 {
     float: right;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 13px;
     margin-right: 10px;
     text-decoration: none;
@@ -2407,7 +2409,7 @@ ul.options_list li a > .checkbx_green
     font-size: 12px;
     font-weight: normal;
     margin: 3px 0 0 22px;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	color:#333;
 }
 .ws_tm_mid > .first_name_last_name_div,
@@ -2436,14 +2438,14 @@ ul.options_list li a > .checkbx_green
 	margin-right:10px;
 	margin-top:5px;
 	color:#ff0000;
-	font-family:Arial;
+	font-family:sans-serif;
 	font-size:13px;
 }
 .ws_tm_mid > .first_name_last_name_div > .first_error input[type="text"] {
     border: 1px solid #BCBEC0;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 1px 0 rgba(255, 255, 255, 0.2);
     color: #232323;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-family: 'Helvetica Neue',Helvetica,sans-serif,sans-serif;
     font-size: 0.8em;
     outline: medium none aqua;
     padding: 5px 8px;
@@ -2458,7 +2460,7 @@ ul.options_list li a > .checkbx_green
     border: 1px solid #BCBEC0;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 1px 0 rgba(255, 255, 255, 0.2);
     color: #232323;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-family: 'Helvetica Neue',Helvetica,sans-serif,sans-serif;
     font-size: 0.8em;
     outline: medium none aqua;
     padding: 5px 8px;
@@ -2475,7 +2477,7 @@ ul.options_list li a > .checkbx_green
      width: 528px;
      height:auto;
      float:left;
-     font-family:Arial;
+     font-family:sans-serif;
      font-size:13px;
      color:#ff0000;
      margin-top:5px;
@@ -2489,7 +2491,7 @@ ul.options_list li a > .checkbx_green
     font-size: 14px;
     font-weight: normal;
     margin: 15px 0 0 20px;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	color:#333;
 }
 .ws_tm_mid > h5.add2networks_header em {
@@ -2539,7 +2541,7 @@ ul.options_list li a > .checkbx_green
     color: #1D93D0;
     display: inline-block;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 15px;
     font-weight: bold;
     margin-top: 0;
@@ -2559,7 +2561,7 @@ ul.options_list li a > .checkbx_green
 #pick_networks ul > li {
     color: #333333;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 11px;
     height: auto;
     list-style-type: disc;
@@ -2610,7 +2612,7 @@ ul.options_list li a > .checkbx_green
     font-weight: 500;
     text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
 	font-size:18px;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	color:#fff;
 	width:auto;
 	float:left;
@@ -2622,7 +2624,7 @@ ul.options_list li a > .checkbx_green
     color: #FFFFFF;
     display: inline-block;
     float: right;
-    font-family: arial;
+    font-family: sans-serif;
     font-size: 13px;
     font-style: italic;
     margin: 2px 10px 0 5px;
@@ -2662,7 +2664,7 @@ ul.options_list li a > .checkbx_green
 	width:auto;
 	height:auto;
 	float:left;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	font-size:15px;
 	color:#999;
 	margin-top: 3px;
@@ -2755,7 +2757,7 @@ ul.options_list li a > .checkbx_green
 	width:120px;
 	height:35px;
 	margin-left:5px;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: sans-serif;
     font-size: 13px;
     text-align: center;
     color: #fff;
@@ -2768,7 +2770,7 @@ ul.options_list li a > .checkbx_green
 	width:120px;
 	height:35px;
 	margin-left:5px;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: sans-serif;
     font-size: 13px;
     text-align: center;
     color: #fff;
@@ -2796,7 +2798,7 @@ ul.options_list li a > .checkbx_green
 .ws_tm_personal_setting > .personal_setting_left > .invite_friends {
     color: #4776BC;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 20px;
     font-weight: 500;
     margin-top: 15px;
@@ -2816,7 +2818,7 @@ ul.options_list li a > .checkbx_green
     border: 1px solid #BCBEC0;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 1px 0 rgba(255, 255, 255, 0.2);
     color: #333333;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-family: 'Helvetica Neue',Helvetica,sans-serif,sans-serif;
     font-size: 0.8em;
     outline: medium none aqua;
     padding: 5px 8px;
@@ -2831,7 +2833,7 @@ ul.options_list li a > .checkbx_green
 	border: 1px solid #BCBEC0;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 1px 0 rgba(255, 255, 255, 0.2);
     color: #333333;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-family: 'Helvetica Neue',Helvetica,sans-serif,sans-serif;
     font-size: 0.8em;
     outline: medium none aqua;
     padding: 5px 8px;
@@ -2846,7 +2848,7 @@ ul.options_list li a > .checkbx_green
     border: 1px solid #BCBEC0;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 1px 0 rgba(255, 255, 255, 0.2);
     color: #232323;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-family: 'Helvetica Neue',Helvetica,sans-serif,sans-serif;
     font-size: 0.8em;
     outline: medium none aqua;
     padding: 5px 8px;
@@ -2870,7 +2872,7 @@ ul.options_list li a > .checkbx_green
 	height:35px;
 	float:left;
 	margin-left:0;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: sans-serif;
     font-size: 13px;
     text-align: center;
     color: #fff;
@@ -2904,7 +2906,7 @@ ul.options_list li a > .checkbx_green
 	width:400px;
 	height:auto;
 	float:left;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	font-size:13px;
 	color:#333;
 }
@@ -2921,7 +2923,7 @@ ul.options_list li a > .checkbx_green
 {
 	width:500px;
 	height:auto;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	font-size:13px;
 	color:#333;
 	font-weight:bold;
@@ -2938,7 +2940,7 @@ ul.options_list li a > .checkbx_green
 .ws_tm_personal_setting > .personal_setting_right > .invite_friends {
     color: #1D93D0;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 20px;
     font-weight: 500;
     margin-top: 15px;
@@ -2951,7 +2953,7 @@ ul.options_list li a > .checkbx_green
     font-weight: normal;
     margin-top: 0;
     text-decoration: none;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	color:#333;
 	width:360px;
 	float:left;
@@ -3007,7 +3009,7 @@ ul.options_list li a > .checkbx_green
 	width:290px;
 	height:auto;
 	float:left;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	font-size:13px;
 	color:#333;
 }
@@ -3016,7 +3018,7 @@ ul.options_list li a > .checkbx_green
 	width:290px;
 	height:auto;
 	float:left;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	font-size:13px;
 	color:#333;
 	text-align:justify;
@@ -3026,7 +3028,7 @@ ul.options_list li a > .checkbx_green
 {
     color: #333333;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 13px;
     font-weight: 300;
     height: auto;
@@ -3051,7 +3053,7 @@ ul.options_list li a > .checkbx_green
     width:auto;
     margin-right:15px;
     font-size:13px;
-    font-family:Arial;
+    font-family:sans-serif;
     float:left;
     margin-top: 2px;
 }
@@ -3139,7 +3141,7 @@ span.select
 .col_five_ga_my_accounts > .dd > h5, .col_five_ga_my_accounts > .dd > h5 a
  {
     color: #545453;
-    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-family: "Trebuchet MS",sans-serif, sans-serif, Helvetica;
     font-size: 15px;
     font-weight: bold;
     line-height: 1.3em;
@@ -3162,7 +3164,7 @@ span.select
 {
  width:100%;
  height:auto;
- font-family:Arial, Helvetica, sans-serif;
+ font-family:sans-serif;
  font-size:13px;
  color:#454545;
  float:left;
@@ -3183,7 +3185,7 @@ span.select
  height:auto;
  float:left;
  font-size:13px;
- font-family:Arial, Helvetica, sans-serif;
+ font-family:sans-serif;
  color:#333;
  font-weight:bold;
 }
@@ -3194,7 +3196,7 @@ span.select
  height:auto;
  float:left;
  font-size:13px;
- font-family:Arial, Helvetica, sans-serif;
+ font-family:sans-serif;
  color:#333;
  font-weight:bold;
 }
@@ -3206,7 +3208,7 @@ span.select
  height:auto;
  float:left;
  font-size:13px;
- font-family:Arial, Helvetica, sans-serif;
+ font-family:sans-serif;
  color:#333;
  font-weight:bold;
 }
@@ -3262,7 +3264,7 @@ span.select
 .col_seven_instagram_link_my_accounts > .dd > h5, .col_seven_instagram_link_my_accounts > .dd > h5 a
  {
     color: #545453;
-    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-family: "Trebuchet MS",sans-serif, sans-serif, Helvetica;
     font-size: 15px;
     font-weight: bold;
     line-height: 1.3em;
@@ -3308,7 +3310,7 @@ ul.user-stats li > .number-stat
      
     color: #999999;
     float: left;
-    font-family: Arial;
+    font-family: sans-serif;
     font-size: 12px;
     font-weight: bold;
     line-height: 15px;
@@ -3321,7 +3323,7 @@ ul.user-stats li > .photo_stat
 {
    color: #29A2E1;
     float: left;
-    font-family: Arial;
+    font-family: sans-serif;
     font-size: 12px;
     font-weight: bold;
     line-height: 30px;
@@ -3467,7 +3469,7 @@ ul.user-stats li > .photo_stat
     padding-right: 5px;
     padding-top: 5px;
     resize: none;
- font-family:Arial, Helvetica, sans-serif;
+ font-family:sans-serif;
  color:#999;
  font-size:13px;
     width: 430px;
@@ -3477,7 +3479,7 @@ ul.user-stats li > .photo_stat
     font-size: 2.7em;
     font-weight: 500;
     letter-spacing: 0.02em;
- font-family:Arial, Helvetica, sans-serif;
+ font-family:sans-serif;
     line-height: 0.7em;
     margin-bottom: 0;
     text-align: center;
@@ -3495,7 +3497,7 @@ ul.user-stats li > .photo_stat
  text-align: center;
     color: #fff;
     text-shadow: 0 0 3px #000;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: sans-serif;
     font-weight: bold;
     text-decoration: none;
     font-size: 14px;
@@ -3514,7 +3516,7 @@ ul.user-stats li > .photo_stat
  text-align: center;
     color: #fff;
     text-shadow: 0 0 3px #000;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: sans-serif;
     font-weight: bold;
     text-decoration: none;
     font-size: 14px;
@@ -3547,7 +3549,7 @@ ul.user-stats li > .photo_stat
 {
     color: #FFFFFF;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 13px;
     margin-left: 5px;
     margin-top: -2px;
@@ -3565,7 +3567,7 @@ ul.user-stats li > .photo_stat
     text-align: center;
  float:left;
     width: 30px;
- font-family:Arial, Helvetica, sans-serif;
+ font-family:sans-serif;
  color:#fff;
  border-radius: 3px;
     margin-right: 8px;
@@ -3580,7 +3582,7 @@ ul.user-stats li > .photo_stat
     text-align: center;
  float:left;
     width: 30px;
- font-family:Arial, Helvetica, sans-serif;
+ font-family:sans-serif;
  color:#fff;
  border-radius: 3px;
     background-image: linear-gradient(top, #1488C3, #2AA3E2);
@@ -3599,7 +3601,7 @@ ul.user-stats li > .photo_stat
     text-align: center;
  float:left;
     text-transform: uppercase;
- font-family:Arial, Helvetica, sans-serif;
+ font-family:sans-serif;
  margin-top: -2px;
     border-radius: 3px;
     color: #fff;
@@ -3617,7 +3619,7 @@ ul.user-stats li > .photo_stat
     padding: 5px;
     text-align: center;
     text-transform: uppercase;
- font-family:Arial, Helvetica, sans-serif;
+ font-family:sans-serif;
  border-radius: 3px;
     background-image: linear-gradient(top, #1488C3, #2AA3E2);
 }
@@ -3672,7 +3674,7 @@ ul.user-stats li > .photo_stat
 {
     color: #FFFFFF;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 17px;
     height: auto;
     margin-top: 5px;
@@ -3708,7 +3710,7 @@ ul.user-stats li > .photo_stat
     box-shadow: none;
     color: #333333;
     cursor: pointer;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 1em;
     padding: 0;
     text-align: center;
@@ -3752,12 +3754,12 @@ ul.user-stats li > .photo_stat
     color: #fff;
     font-size: 12px;
     font-weight: normal;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 }
 .schedule_time_msg > .hour {
     font-size: 12px;
     font-weight: 800;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	 color: #fff;
 }
 .shedule_no_data
@@ -3779,14 +3781,14 @@ ul.user-stats li > .photo_stat
     text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
 	width:601px;
 	float:left;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 }
 .no_data h3 
 {
     color: #7C7C7A;
     font-size: 1.3em;
     margin: 0 0 10px;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	width:500px;
 	margin-left:10px;
 	float:left;
@@ -3797,9 +3799,9 @@ ul.user-stats li > .photo_stat
 {
     color: #1D67A7;
     text-decoration: none;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	width:500px;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	clear:left;
 	float:left;
 	margin-left:10px;
@@ -3815,7 +3817,7 @@ ul.user-stats li > .photo_stat
     width: 69px;
     height: auto;
     float: left;
-    font-family: Arial;
+    font-family: sans-serif;
     font-size: 11px;
     color: #1285C1;
     margin-right: 10px;
@@ -3840,7 +3842,7 @@ ul.user-stats li > .photo_stat
     border-radius: 5px 5px 5px 5px;
     color: #FFFFFF;
     float: left;
-    font-family: Arial;
+    font-family: sans-serif;
     font-size: 11px;
     height: auto;
     margin-left: 20px;
@@ -3864,7 +3866,7 @@ ul.user-stats li > .photo_stat
 {
     color: #FF7E77;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 15px;
     font-weight: bold;
     margin: 10px 0 0;
@@ -3894,7 +3896,7 @@ ul.user-stats li > .photo_stat
     margin: 0;
     min-height: 30px;border: 1px solid #BCBEC0;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 1px 0 rgba(255, 255, 255, 0.2);
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:sans-serif;
     font-size: 0.8em;
     outline: medium none aqua;
     padding: 5px 4px;
@@ -3916,7 +3918,7 @@ ul.user-stats li > .photo_stat
 	height:35px;
 	float:right;
 	margin-left:5px;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: sans-serif;
     font-size: 13px;
     text-align: center;
     color: #fff;
@@ -3931,7 +3933,7 @@ ul.user-stats li > .photo_stat
 	height:35px;
 	float:right;
 	margin-left:5px;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: sans-serif;
     font-size: 13px;
     text-align: center;
     color: #fff;
@@ -3943,7 +3945,7 @@ ul.user-stats li > .photo_stat
 #content_msg {
     color: #A0A0A2;
     float: left;
-    margin: 20px;
+    /*margin: 20px;*/
     position: relative;
     width: 700px;
 }
@@ -3956,7 +3958,7 @@ ul.user-stats li > .photo_stat
 {
     color:#FF7E77;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 15px;
     font-weight: bold;
     margin: -5px 0 0;
@@ -4054,7 +4056,7 @@ ul.user-stats li > .photo_stat
     color: #78C158;
     display: inline-block;
     float: left;
-    font-family: arial;
+    font-family: sans-serif;
     font-size: 36px;
     font-weight: bold;
     margin-top: -9px;
@@ -4065,7 +4067,7 @@ ul.user-stats li > .photo_stat
     color: #ED132B;
     display: inline-block;
     float: left;
-    font-family: arial;
+    font-family: sans-serif;
     font-size: 36px;
     font-weight: bold;
     margin-top: -9px;
@@ -4241,7 +4243,7 @@ ul.user-stats li > .photo_stat
     font-weight: 500;
     margin-bottom: 0.1em;
 	width: 155px;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	font-size:16px;
 	margin-top: 0;
 	float:left;
@@ -4251,7 +4253,7 @@ ul.user-stats li > .photo_stat
 
     color: #8B8B8B;
     font-size: 0.75em;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	float:left;
 	width: 155px;
 }
@@ -4341,7 +4343,7 @@ ul.user-stats li > .photo_stat
     background: url("../../Contents/img/reg/reg_header.png") repeat scroll 0 0 transparent;
     color: #FFFFFF;
     float: left;
-    font-family: arial;
+    font-family: sans-serif;
     font-size: 25px;
     font-weight: bold;
     height: 50px;
@@ -4432,7 +4434,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#085b85', end
     background: url("../../Contents/img/reg/reg_header.png") repeat scroll 0 0 transparent;
     color: #FFFFFF;
     float: left;
-    font-family: arial;
+    font-family: sans-serif;
     font-size: 25px;
     font-weight: bold;
     height: 50px;
@@ -4447,7 +4449,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#085b85', end
     float:left;
     height:auto;
     font-size:13px;
-    font-family:Arial;
+    font-family:sans-serif;
     font-weight:bold;
     color:#333;
 }
@@ -4586,14 +4588,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#085b85', end
     width:405px;
     height:auto;
     float:left;
-    font-family:Arial;
+    font-family:sans-serif;
     font-size:15px;
     color:#333;
     margin-top:21px;
 }
 .big-puff > article > dl > .descrption > h3 > span
 {
-    font-family: Arial;
+    font-family: sans-serif;
     font-size: 13px;
     margin-left: 5px;
     width: auto;
@@ -4603,7 +4605,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#085b85', end
 {
     color: #333333;
     float: left;
-    font-family: Arial;
+    font-family: sans-serif;
     font-size: 13px;
     height: auto;
     margin-top: 0;
@@ -4621,7 +4623,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#085b85', end
 {
     color: #333333;
     float: left;
-    font-family: Arial;
+    font-family: sans-serif;
     font-size: 13px;
     height: auto;
 /*    margin-left: -27px;*/
@@ -4633,7 +4635,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#085b85', end
     width:405px;
     height:auto;
     float:left;
-    font-family:Arial;
+    font-family:sans-serif;
     font-size:13px;
     color:#1487C3;
     margin-left:0;
@@ -4666,7 +4668,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#085b85', end
     width:auto;
     float:left;
     height:auto;
-    font-family:Arial;
+    font-family:sans-serif;
     color:#333;
     margin-left:10px;
 }
@@ -4692,7 +4694,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#085b85', end
 {
     width:auto; 
     float:left;
-    font-family:Arial;
+    font-family:sans-serif;
     font-size:13px;
     color:#29A2E0;
     font-weight:bold;
@@ -4700,7 +4702,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#085b85', end
 .big-puff > article > section.profile_sub_wrap > ul.follow > li > span.filter > a
 {
     width:auto;
-    font-family:Arial;
+    font-family:sans-serif;
     font-size:13px;
     color:#333;
     float:left;
@@ -4722,7 +4724,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#085b85', end
     width: 525px;
     height:auto;
     float:left;
-    font-family:Arial;
+    font-family:sans-serif;
     font-size:18px;
     color:#28A1DF;
     text-align:center;
@@ -4847,7 +4849,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#085b85', end
 .instagram_comment_div > .comment_details > .user_name {
     color: #444444;
     float: left;
-    font-family: arial;
+    font-family: sans-serif;
     font-size: 13px;
     font-weight: bold;
     height: auto;
@@ -4857,7 +4859,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#085b85', end
 .instagram_comment_div > .comment_details > .user_name_description {
     color: #999999;
     float: left;
-    font-family: Arial;
+    font-family: sans-serif;
     font-size: 11px;
     height: auto;
     width: 180px;
@@ -4866,7 +4868,7 @@ invite_friends a {
     color: #28A1DF;
     cursor: pointer;
     float: right;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 13px;
     font-weight: bold;
     margin-right: 25px;
@@ -4948,7 +4950,7 @@ invite_friends a {
     border-radius:5px;
     padding:5px;
     font-size:13px;
-    font-family:Arial;
+    font-family:sans-serif;
     color:#fff;
 }
 .ws_tm_personal_setting > .userandgroups > .invite_friends > input[type="button"]:hover
@@ -4961,7 +4963,7 @@ invite_friends a {
     padding:5px;
     font-size:13px;
     cursor:pointer;
-    font-family:Arial;
+    font-family:sans-serif;
     color:#fff;
 }
 .ws_tm_personal_setting > .userandgroups > .invite_friends > a input[type="button"]
@@ -4973,7 +4975,7 @@ invite_friends a {
     border-radius:5px;
     padding:5px;
     font-size:13px;
-    font-family:Arial;
+    font-family:sans-serif;
     color:#fff;
 }
 .ws_tm_personal_setting > .userandgroups > .invite_friends > a input[type="button"]:hover
@@ -4986,7 +4988,7 @@ invite_friends a {
     padding:5px;
     font-size:13px;
     cursor:pointer;
-    font-family:Arial;
+    font-family:sans-serif;
     color:#fff;
 }
 .ws_tm_personal_setting > .userandgroups > .first_name_last_name_div {
@@ -5030,7 +5032,7 @@ invite_friends a {
 {
     color: #198ECA;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 15px;
     height: auto;
     margin-left: 10px;
@@ -5092,7 +5094,7 @@ invite_friends a {
     width: 92%;
     margin-top: 2px;
     font-size:13px;
-    font-family:Arial;
+    font-family:sans-serif;
      color: #4776BC;
 }
  .email_div #MainContent_SelectedGroupProfiles .ws_conct .add,
@@ -5155,7 +5157,7 @@ invite_friends a {
 {
     color: #4776BC;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 15px;
     height: auto;
     margin-left: 10px;
@@ -5167,7 +5169,7 @@ invite_friends a {
 {
     color: #333333;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 12px;
     height: auto;
     margin-left: 10px;
@@ -5178,6 +5180,10 @@ invite_friends a {
 li
 {
     list-style:none;
+}
+
+.navbar .nav > li {
+    line-height:35px !important;
 }
 .modal
  {
@@ -5271,7 +5277,7 @@ li
 {
     color: #FFFFFF;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 13px;
     margin-right: 5px;
     margin-top: 0;
@@ -5319,7 +5325,7 @@ li
 {
     color: #FFFFFF;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 13px;
     margin-right: 5px;
     margin-top: 0;
@@ -5354,7 +5360,7 @@ li
     width:550px;
     height:auto;
     float:left;
-    font-family:Arial;
+    font-family:sans-serif;
     font-size:13px;
     color:#1C4E9A;
 }
@@ -5364,7 +5370,7 @@ li
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     color: #FFFFFF;
-    font-family: Arial;
+    font-family: sans-serif;
     font-size: 17px;
     font-weight: bold;
     height: 28px;
@@ -5384,7 +5390,7 @@ li
 {
     color: #1C4E9A;
     float: left;
-    font-family: Arial;
+    font-family: sans-serif;
     font-size: 15px;
     font-weight: bold;
     height: auto;
@@ -5428,7 +5434,7 @@ li
     border-radius: 5px 5px 5px 5px;
     color: #FFFFFF;
     float: left;
-    font-family: Arial;
+    font-family: sans-serif;
     height: 17px;
     padding: 7px 12px 8px;
     text-decoration: none;
@@ -5503,7 +5509,7 @@ li
     border-top-right-radius: 5px;
     color: #FFFFFF;
     float: left;
-    font-family: Arial;
+    font-family: sans-serif;
     font-size: 17px;
     font-weight: bold;
     height: 28px;
@@ -5516,7 +5522,7 @@ li
 .conct_group > .cont_title
 {
     color: #FFFFFF;
-    font-family: Arial;
+    font-family: sans-serif;
     font-size: 17px;
     font-weight: bold;
     float:left;
@@ -5529,7 +5535,7 @@ li
     border-radius: 5px 5px 5px 5px;
     color: #333333;
     float: right;
-    font-family: Arial;
+    font-family: sans-serif;
     height: auto;
     margin-top: -1px;
     padding: 2px;
@@ -5548,7 +5554,7 @@ li
     background: none repeat scroll 0 0 #333333;
     border-radius: 5px 5px 5px 5px;
     color: #FFFFFF;
-    font-family: Arial;
+    font-family: sans-serif;
     height: auto;
     padding: 7px 12px 8px;
     text-decoration: none;
@@ -5573,7 +5579,7 @@ li
     opacity: 1;
     padding: 25px;
     position: absolute;
-    top: 20px;
+    top: 72px;
     z-index: 9999;
     display:none;
 }
@@ -5597,7 +5603,7 @@ li
 {
     color: #28A1DF;
     float: left;
-    font-family: Arial;
+    font-family: sans-serif;
     font-size: 18px;
     height: auto;
     text-align: center;
@@ -5655,7 +5661,7 @@ li
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 1px 0 rgba(255, 255, 255, 0.2);
     color: #545453;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 0.8em;
     margin: 0 0 0 12px;
     min-height: 30px;
@@ -5671,7 +5677,7 @@ li
 }
 .message-text {
     color: #333333;
-    font-family: arial;
+    font-family: sans-serif;
     font-size: 12px !important;
     max-height: 606px;
     min-height: 45px;
@@ -5694,7 +5700,7 @@ li
     color: #FFFFFF;
     cursor: pointer;
     float: right;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 13px;
     height: 35px;
     margin-left: 5px;
@@ -5787,7 +5793,7 @@ section.messages.msg_view.inbox_msgs > .tasks-header > div,
     padding: 5px 0 0;
 	color:#fff;
 	float:left;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	font-weight:bold;
 	font-size:13px;
 }
@@ -5906,6 +5912,7 @@ section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-messa
     margin-right: 0;
     padding: 0;
     width: 40%;
+    word-wrap: break-word;
 }
 #content> section#inbox_msgs > .messages > section > .read > .task-message a,
 section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-message a,
@@ -5996,7 +6003,7 @@ section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-statu
 {
     color: #F4594F;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 19px;
     height: auto;
     text-align: justify;
@@ -6019,7 +6026,7 @@ section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-statu
 	padding:5px;
 	color:#333;
 	font-size:13px;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 }
 .smart_search  > .input_text_select input[type="button"],
 .smart_search  > .input_text_select input[type="submit"]
@@ -6079,7 +6086,7 @@ section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-statu
 {
     color: #8B8B8B;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 14px;
     font-weight: 500;
     margin-bottom: 0.1em;
@@ -6091,7 +6098,7 @@ section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-statu
 .discovery_twitterAccounts_rightbar_radio_list > div.center > span.subheader {
     color: #8B8B8B;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 0.75em;
     width: 155px;
 }
@@ -6111,7 +6118,7 @@ section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-statu
 .discovery_recent_rightbar_radio_list > div.center a {
     color: #8B8B8B;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 14px;
     font-weight: 500;
     margin-bottom: 0.1em;
@@ -6141,7 +6148,7 @@ section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-statu
 {
     color: #CE807B;
     float: left;
-    font-family: arial;
+    font-family: sans-serif;
     font-size: 13px;
     font-weight: bold;
 }
@@ -6283,7 +6290,7 @@ section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-statu
     width:590px;
     height:auto;
     float:left;
-    font-family:Arial;
+    font-family:sans-serif;
     font-size:14px;
     margin-top: 0;
     color:#666666;
@@ -6293,7 +6300,7 @@ section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-statu
     width:590px;
     height:auto;
     float:left;
-    font-family:Arial;
+    font-family:sans-serif;
     font-size:13px;
     color:#F7A09B;
 }
@@ -6333,7 +6340,7 @@ section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-statu
     border-radius: 8px 8px 8px 8px;
     color: #D23E2B;
     float: left;
-    font-family: Arial;
+    font-family: sans-serif;
     font-size: 15px;
     font-weight: bold;
     height: auto;
@@ -6384,7 +6391,7 @@ section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-statu
 }
 #content > section#inbox_comments > .messages > section > .read > .sentmessages span > p
 {
-    font-family:Arial;
+    font-family:sans-serif;
     font-size:11px;
     float:left;
     width:auto;
@@ -6406,7 +6413,7 @@ section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-statu
 .ajax__calendar
 {
     float: right !important;
-    left: inherit !important;
+    left: sans-serif !important;
     margin-left: 530px !important;
     margin-top: 150px !important;
     position: absolute !important;
@@ -6439,7 +6446,7 @@ section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-statu
     border-bottom: 1px solid #1A4C97;
     color: #1A4C97;
     float: left;
-    font-family: Arial;
+    font-family: sans-serif;
     font-size: 18px;
     font-weight: bold;
     height: 40px;
@@ -6493,7 +6500,7 @@ section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-statu
     color: #333333;
     display: block;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 12px;
     margin-top: 1px;
     width: 60%;
@@ -6659,7 +6666,7 @@ section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-statu
             clear: right;
             color: #FFFFFF;
             float: right;
-            font-family: Arial;
+            font-family: sans-serif;
             font-size: 13px;
             height: auto;
             margin-right: 32px;
@@ -6671,7 +6678,7 @@ section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-statu
             border: 1px solid #95B5E2;
             color: #194385;
             float: left;
-            font-family: Arial;
+            font-family: sans-serif;
             font-size: 13px;
             height: auto;
             margin-bottom: 10px;
@@ -6833,21 +6840,21 @@ margin:14px 0 0 10px;
 	border:1px solid #999;
 	-webkit-border-radius:5px;
 	margin-left:15px;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	color:#333;
 	padding:5px;
 }
 
 .counter_bg
 {
-	width:70px;
+	width:40px;
 	height:50px;
 	float:left;
-	font-size:35px;
+	font-size:15px;
 	color:#333;
 	text-align:center;
 	margin: 16px 0 0;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 }
 
 .add_p
@@ -7011,7 +7018,7 @@ margin:14px 0 0 10px;
 {
 	border-bottom: 1px solid #999999;
     color: #333333;
-    font-family: arial;
+    font-family: sans-serif;
     font-size: 12px;
     height: 15px;
     float: left;
@@ -7030,7 +7037,7 @@ margin:14px 0 0 10px;
 	padding:0;
 	margin:0;
 	list-style:none;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 }
 /*#addicbox > .drop_mid > .teitter > ul > li{background:none; padding:0; width:100%; float:left; margin:0;}
 #addicbox > .drop_mid > .teitter > ul > li > a
@@ -7148,6 +7155,7 @@ margin:14px 0 0 10px;
     top: 23px;
     z-index: 29;
 	display:none;
+	width:30%;
 }
 
 /* If the Login Button has been clicked */    
@@ -7546,7 +7554,7 @@ body.login {
 {
 	width:503px;
 	height:36px;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	color:#2e8fc7;
 	font-size:25px;
 	font-weight:bold;
@@ -7558,7 +7566,7 @@ body.login {
 {
 	width:700px;
 	height:36px;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	color:#2e8fc7;
 	font-size:25px;
 	font-weight:bold;
@@ -7659,7 +7667,7 @@ body.login {
 	color:#F00;
 	font-size:12px;
 	margin: 5px 0 0;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 }
 
 .left_reg_area .inputbg input[type="email"]:focus
@@ -7716,7 +7724,7 @@ body.login {
 	margin:10px 0 0 0;
 	color:#727272;
 	font-size:13px;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 }
 
 .left_reg_area .forgot_pswd a
@@ -7760,7 +7768,7 @@ body.login {
 	color:#F00;
 	font-size:12px;
 	margin: 5px 0 0;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 }
 
 .left_area .inputbg input[type="email"]:focus
@@ -7820,7 +7828,7 @@ body.login {
 	margin:10px 0 0 0;
 	color:#727272;
 	font-size:13px;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 }
 
 .left_area .forgot_pswd a
@@ -7885,7 +7893,7 @@ body.login {
 	margin-bottom:5px;
 	color:#898989;
 	font-size:14px;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 }
 
 .social_icon_bg
@@ -7980,7 +7988,7 @@ body.login {
 	font-size:15px;
 	text-align:center;
 	margin-top:20px;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 }
 
 .register_text a
@@ -8005,7 +8013,7 @@ body.login {
 .register_regtext
 {
 	color: #333333;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 12px;
     height: 23px;
     margin-top: 6px;
@@ -8092,7 +8100,7 @@ body.login {
     width: 183px;
 }
 #right-sidebar_home .rsidebar-inner .drop_mid > .teitter ul {
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     list-style: none outside none;
     margin: 0;
     padding: 0;
@@ -8185,7 +8193,7 @@ body.login {
 }
 .search_title
 {
-    width:260px; font-size:14px; height:25px; margin-bottom:10px; font-family:arial; color:#999; font-weight:bold; border-bottom:1px solid #eee;
+    width:260px; font-size:14px; height:25px; margin-bottom:10px; font-family:sans-serif; color:#999; font-weight:bold; border-bottom:1px solid #eee;
 }
 
 
@@ -8257,17 +8265,17 @@ body.login {
 }
 .wentbg .wentbgtext span.heading {
     color: #545453;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 18px;
 }
 .wentbg .wentbgtext span {
     color: #A0A0A0;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 12px;
 }
 .wentbg .viegil {
     color: #545453;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 14px;
     font-style: italic;
     margin-top: 3px;
@@ -8291,7 +8299,7 @@ body.login {
 .avenuetext {
     color: #A0A0A0;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 12px;
     height: 12px;
     margin-left: 5px;
@@ -8301,7 +8309,7 @@ body.login {
 .avenuetext {
     color: #A0A0A0;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 12px;
     height: 12px;
     margin-left: 5px;
@@ -8311,7 +8319,7 @@ body.login {
 .nourl {
     color: #CFCFCF;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 12px;
     height: 12px;
     margin-left: 5px;
@@ -8319,7 +8327,7 @@ body.login {
     width: auto;
 }
 .followerbg {
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     height: 20px;
     margin-top: 24px;
     width: 400px;
@@ -8453,7 +8461,7 @@ body.login {
 }
 
 #twtrptbox .drop_mid > .teitter ul {
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     list-style: none outside none;
     margin: 0;
     padding: 0;
@@ -8529,7 +8537,7 @@ body.login {
 	padding:0;
 	margin:0;
 	list-style:none;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 }
 
 #facebookbox > .drop_mid > .teitter ul li {
@@ -8609,7 +8617,7 @@ body.login {
     border-radius: 5px 5px 5px 5px;
     color: #FFFFFF;
     float: left;
-    font-family: arial;
+    font-family: sans-serif;
     font-weight: bold;
     height: 20px;
     margin-top: 5px;
@@ -8625,7 +8633,7 @@ body.login {
 }
 
 #searchcontent > a > img {
-    margin-top: 15px;
+    margin-top: 5px;
 }
 
 
@@ -8780,7 +8788,7 @@ button {
 .profile-header .profile-card-inner a:hover b {
     color: #FFFFFF;
 	text-decoration: none;
-	font-family: "Helvetica Neue",Arial,sans-serif;
+	font-family: "Helvetica Neue",sans-serif,sans-serif;
 }
 .profile-card .fullname {
     font-size: 30px;
@@ -8909,7 +8917,7 @@ button {
 {
     color: #999999;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 11px;
     font-weight: normal;
     text-align: center;
@@ -8953,7 +8961,7 @@ button {
     margin-top: 10px;
 	color: #FFFFFF;
     cursor: pointer;
-    font-family: arial;
+    font-family: sans-serif;
     font-weight: bold;
 	height:30px;
 }
@@ -9071,7 +9079,7 @@ ol.recent-tweets >li
 {
 	width:auto;
 	float:left;
-	font-family:arial;
+	font-family:sans-serif;
 	font-size:13px;
 	font-weight:bold;
 	margin-right: 5px;
@@ -9082,14 +9090,14 @@ ol.recent-tweets >li
 {
 	font-size:13px;
 	color:#ccc;
-	font-family:arial;
+	font-family:sans-serif;
 }
 .content > .stream-item-header > .content_stream > .content_time > small.time,
 .content > .stream-item-header > .content_stream > .content_time > small.time > a
 {
 	float:right;
 	color: #999999;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	text-decoration:none;
     font-size: 12px;
 }
@@ -9103,7 +9111,7 @@ ol.recent-tweets >li
 {
     color: #333333;
     float: left;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:sans-serif;
     font-size: 13px;
     height: auto;
     margin: 5px 0 0;
@@ -9120,7 +9128,7 @@ ol.recent-tweets >li
 {
 	width:auto;
 	font-size:13px;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	color:#019AD2;
 }
 
@@ -9139,7 +9147,7 @@ ol.recent-tweets >li
 .stream_item_footer > a.details > b > span.simple-details-link
 {
     color: #999999;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:sans-serif;
 	font-size:11px;	
 	text-decoration:none;
 }
@@ -9155,7 +9163,7 @@ ol.recent-tweets >li
 .go_to_profile > small > a.view_profile
 {
     color: #019AD2;
-    font-family: arial;
+    font-family: sans-serif;
     font-size: 15px;
     text-decoration: none;
 }
@@ -9190,9 +9198,9 @@ ol.recent-tweets >li
     border: 1px solid #FBEED5;
     border-radius: 4px 4px 4px 4px;
     color: #FFFFFF;
-    margin-bottom: 20px;
-    padding: 5px 34px 25px 14px;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    margin-bottom: 0px;
+    padding: 5px 34px 5px 14px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
 }
 
 
@@ -9325,10 +9333,11 @@ ol.recent-tweets >li
 .pull-right > ul.graphdiv >li.maingraph >.contents
 {
     float: left;
-    font-size: 19px;
+    font-size: 21px;
     height: auto;
     margin-top: 18px;
     width: 200px;
+    font-family:'lane_-_narrowregular';
 }
 .pull-right > ul.graphdiv >li.maingraph >.graph
 {
@@ -9420,7 +9429,7 @@ ol.recent-tweets >li
 {
  width:100%;
  height:auto;
- font-family:Arial, Helvetica, sans-serif;
+ font-family:sans-serif;
  font-size:13px;
  color:#454545;
  float:left;
@@ -9441,7 +9450,7 @@ ol.recent-tweets >li
  height:auto;
  float:left;
  font-size:13px;
- font-family:Arial, Helvetica, sans-serif;
+ font-family:sans-serif;
  color:#333;
  font-weight:bold;
 }
@@ -9452,7 +9461,7 @@ ol.recent-tweets >li
  height:auto;
  float:left;
  font-size:13px;
- font-family:Arial, Helvetica, sans-serif;
+ font-family:sans-serif;
  color:#333;
  font-weight:bold;
 }
@@ -9464,7 +9473,7 @@ ol.recent-tweets >li
  height:auto;
  float:left;
  font-size:13px;
- font-family:Arial, Helvetica, sans-serif;
+ font-family:sans-serif;
  color:#333;
  font-weight:bold;
 }
@@ -9576,7 +9585,7 @@ ol.recent-tweets >li
     width:490px;
     height:auto;
     float:left;
-    font-family:Arial;
+    font-family:sans-serif;
     font-size:15px;
     color:#777;
 }
@@ -9619,7 +9628,7 @@ ol.recent-tweets >li
 {
     color: #999999;
     float: left;
-    font-family: Arial;
+    font-family: sans-serif;
     font-size: 15px;
     height: auto;
     margin-right: 10px;
@@ -9639,7 +9648,7 @@ ol.recent-tweets >li
 .rssfeed > .rssfeed_field > .rss_row > .text_field > select
 {
     text-align:left;
-    font-family:Arial;
+    font-family:sans-serif;
     font-size:13px;
     color:#999;
     margin-right:5px;
@@ -9659,7 +9668,7 @@ ol.recent-tweets >li
     height:auto;
     float:left;
     text-align:left;
-    font-family:Arial;
+    font-family:sans-serif;
     font-size:13px;
     color:#ff0000;
     display:none;
@@ -9671,7 +9680,7 @@ ol.recent-tweets >li
     height:12px;
     float:left;
     color:#ff0000;
-    font-family:Arial;
+    font-family:sans-serif;
     font-size:13px;
     margin-top:4px;
     margin-left:3px;
@@ -9720,7 +9729,7 @@ ol.recent-tweets >li
     border-radius: 4px 4px 4px 4px;
     border-right: 1px solid #AAAAAA;
     color: #FFFFFF;
-    font-family: arial;
+    font-family: sans-serif;
     font-weight: bold;
     padding: 2px;
 }
@@ -9761,11 +9770,11 @@ ol.recent-tweets >li
 {
     color: #333333;
     float: right;
-    font-family: Arial;
+    font-family: sans-serif;
     font-size: 14px;
-    height: 20px;
-    margin-top: 3px;
-    width: 240px;
+    height: 18px;
+    margin-top: 9px;
+    width: auto;
 }
 
 
@@ -9780,20 +9789,20 @@ ol.recent-tweets >li
 
 .woo_logout
 {
-    background: none repeat scroll 0 0 #5F6668;
-    border-radius: 5px 5px 5px 5px;
+    background: none repeat scroll 0 0 #CDCDCD;
+    border-radius: 3px;
     color: #CECECE;
     cursor: pointer;
     display: inline;
-    float: right;
-    font-family: arial;
-    font-size: 17px;
+    float: left;
+    font-family: sans-serif;
+    font-size: 13px;
     font-weight: bold;
     height: 20px;
     line-height: normal;
-    margin-top: 11px;
+    margin:5px 0 0 10px;
     opacity: 0.8;
-    padding: 10px;
+    padding: 7px;
     text-align: center;
     text-decoration: none !important;
     vertical-align: baseline;
@@ -9818,7 +9827,7 @@ ol.recent-tweets >li
     border: 0 none;
     border-radius: 0 0 0 0;
     color: #FFFFFF;
-    font-family: Arial;
+    font-family: sans-serif;
     font-size: 14px;
     height: 34px;
     padding: 8px;
@@ -9851,7 +9860,7 @@ ol.recent-tweets >li
     background: none repeat scroll 0 0 transparent;
     border: 0 none;
     color: #FFFFFF;
-    font-family: Arial;
+    font-family: sans-serif;
     font-size: 14px;
     height: 34px;
     padding: 8px;
@@ -9964,8 +9973,8 @@ span.button:hover {
 .drop_mid > .teitter > ul > li > a > [id*="composename_"] {width: auto;}
 #loginBox_scheduler > .drop_mid > .teitter > ul > li {height:auto; text-align:left;}
 
-#change_password > label {color: #333333;float: left; font-family: arial;font-size: 13px;height: auto;margin-bottom: 5px; width: 100%;}
-#change_password > span.lblerror {float: left;font-family: arial;font-size: 11px;width: 100%;}
+#change_password > label {color: #333333;float: left; font-family: sans-serif;font-size: 13px;height: auto;margin-bottom: 5px; width: 100%;}
+#change_password > span.lblerror {float: left;font-family: sans-serif;font-size: 11px;width: 100%;}
 .cngpwd {background: none repeat scroll 0 0 #333333; border-radius: 5px 5px 5px 5px; color: #FFFFFF; padding: 10px;}
 #btncancel { background: none repeat scroll 0 0 #333333; border-radius: 5px 5px 5px 5px; color: #FFFFFF; padding: 10px 25px;}
 
@@ -9998,7 +10007,7 @@ p > span.like, p > span.comment {
     color: #1A62AC;
     cursor: pointer;
     float: right;
-    font-family: arial;
+    font-family: sans-serif;
     font-size: 12px;
     margin-left: 10px;
 }
@@ -10013,4 +10022,12 @@ color:#FF0000;
 .selected_Li
 {
     background-color:Blue;
+}
+
+#publishing span {
+    margin-left: -11px;
+}
+
+#discovery  span {
+    margin-left: -10px;
 }

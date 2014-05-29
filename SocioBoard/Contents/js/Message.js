@@ -81,7 +81,7 @@ function savearchivemsg(id, sociotype, messageId, profileId) {
         $.ajax({
             type: "POST",
             //url: "../Message/AjaxMessage.aspx?op=savearchivemsg&imgurl=" + imgurl + "&Network=" + network + "&CreatedTime=" + datetime + "&ProfileId=" + profileId + "&MessageId=" + messageId + "&Msg=" + msg,
-            url: "../Message/AjaxMessage.aspx?op=savearchivemsg&imgurl=" + imgurl + "&Network=" + network + "&CreatedTime=" + datetime + "&ProfileId=" + profileId + "&MessageId=" + messageId,
+            url: "../Message/AjaxMessage.aspx?op=savearchivemsg&imgurl=" + imgurl + "&Network=" + network + "&CreatedTime=" + datetime + "&ProfileId=" + profileId + "&MessageId=" + messageId + "&Username=" + username,
             //data: jstring,
             data: totaldata,
             contentType: "application/json; charset=utf-8",
@@ -226,7 +226,7 @@ function replyfunction(id, profiletype, messageid, userid) {
 
 function twittercomments() {
     debugger;
-    var replytext = document.getElementById('Textarea1').value;
+    var replytext = document.getElementById('Textarea1').value.trim();
     if (replytext == "") {
         alert("Please write comment then click save!")
         return false;
@@ -266,13 +266,17 @@ function twittercomments() {
                 contentType: "application/json; charset=utf-8",
                 dataType: "html",
                 success: function (msg) {
-                    document.getElementById('Textarea1').value = 'Commented successfully';
-                    closeonCompose();
+                    document.getElementById('Textarea1').value = '';
+                    //document.getElementById('Textarea1').value = 'Commented successfully';
+                    alertify.success('Commented successfully');
+                    //closeonCompose();
+                    $('#Span3').click();
+
                 }
             });
     } else if (network == 'facebook') {
 
-        $.ajax
+    $.ajax
             ({
                 type: "POST",
                 url: "../Message/AjaxMessage.aspx?op=createfacebookcomments&messid=" + mess_id + "&replytext=" + replytext + "&replyid=" + replyid + "&userid=" + userid + "&username=" + username,
@@ -280,10 +284,14 @@ function twittercomments() {
                 contentType: "application/json; charset=utf-8",
                 dataType: "html",
                 success: function (msg) {
-                    document.getElementById('Textarea1').value = 'Commented successfully';
-                    $("#replysection").hide();
-                    $(".__b-popup1__").hide();
-                    // closeonCompose();
+                    //document.getElementById('Textarea1').value = 'Commented successfully';
+                    document.getElementById('Textarea1').value = '';
+                   // alert('Commented successfully');
+                    alertify.success('Commented successfully');
+                    $('#Span3').click();
+                    //$("#replysection").hide();
+                    //$(".__b-popup1__").hide();
+                    //closeonCompose();
                     $.ajax
                          ({
                              type: "POST",
@@ -366,7 +374,8 @@ function BindInboxMessageonMessageTab() {
         $.ajax
         ({
             type: "POST",
-            url: "../Message/AjaxMessage.aspx?op=inbox_messages",
+            //url: "../Message/AjaxMessage.aspx?op=inbox_messages",
+            url: "../Message/AjaxMessage.aspx?op=sentmsg",
             data: '',
             contentType: "application/json; charset=utf-8",
             dataType: "html",

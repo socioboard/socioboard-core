@@ -6,6 +6,15 @@
     <script type="text/javascript">
         $(document).ready(function () {
             //alert("asdad");
+            $("#ContentPlaceHolder1_btnRegister").click(function () {
+                var txtemail = $('#ContentPlaceHolder1_txtEmail').val();
+                if (txtemail.indexOf(".web") != -1) {
+                    alert("Please Enter valid email!");
+                    return false;
+                }
+            });
+
+
             $("#check").click(function () {
                 //var couponcode = $("#TextBox1").val();
                 var couponcode = $('#<%=TextBox1.ClientID%>').val();
@@ -66,9 +75,9 @@
                   <div class="inputbg"><asp:DropDownList class="drop" ID="DropDownList1" runat="server">
                   <asp:ListItem Value="Select">Select Account Type</asp:ListItem>
                       <asp:ListItem Value="Free">Basic(Free)</asp:ListItem>
-                      <asp:ListItem>Standard</asp:ListItem>
-                      <asp:ListItem>Deluxe</asp:ListItem>
-                      <asp:ListItem>Premium</asp:ListItem>
+                      <asp:ListItem Value="Standard">Standard</asp:ListItem>
+                      <asp:ListItem Value="Deluxe">Deluxe</asp:ListItem>
+                      <asp:ListItem Value="Premium">Premium</asp:ListItem>
                       </asp:DropDownList></div>
 
 
@@ -95,7 +104,10 @@
                                 ControlToValidate="txtEmail"></asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="revEmail" runat="server" ErrorMessage="Please Enter Valid Email!"
                                 ControlToValidate="txtEmail" CssClass="ws_err_star_enter" 
-                    ValidationExpression="^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*(\.[A-Za-z]{2,3})$"></asp:RegularExpressionValidator>
+                    ValidationExpression="^([\w-\.+ ]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"></asp:RegularExpressionValidator>
+                 
+
+
 </div>
             <div class="input_pswd_bg"><asp:TextBox ID="txtPassword" runat="server" TextMode="Password" AUTOCOMPLETE="off" placeholder="Password"></asp:TextBox></div>
             <div class="error"> <asp:RequiredFieldValidator ID="RequiredFieldValidator2" 

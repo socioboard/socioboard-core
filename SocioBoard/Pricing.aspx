@@ -72,7 +72,7 @@
                             <li>RSS Feeds</li>
                             <li>Manage up to 20 profiles</li>
                         </ul>
-                        <a id="deluxeplan" runat="server" class="trial-butn">
+                        <a id="premiumplan" runat="server" class="trial-butn">
                             <img src="../Contents/img/trial-butn-2.png" alt="" /></a>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                             <li>World Class 24*7 Training & Support</li>
                             <li>Manage up to 50 profiles</li>
                         </ul>
-                        <a id="premiumplan" runat="server" class="trial-butn">
+                        <a id="deluxeplan" runat="server" class="trial-butn">
                             <img src="../Contents/img/trial-butn-1.png" alt="" /></a>
                     </div>
                 </div>

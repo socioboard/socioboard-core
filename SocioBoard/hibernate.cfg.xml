@@ -5,7 +5,7 @@
     <property name="dialect">NHibernate.Dialect.MySQLDialect</property>
     <property name="connection.driver_class">NHibernate.Driver.MySqlDataDriver</property>
     <property name="connection.connection_string">
-     Data Source=localhost;User ID=root;Password=abhay;persist security info=False;initial catalog=692531_devsoc;
+     Data Source=localhost;User ID=root;Password=sumit;persist security info=False;initial catalog=692531_devsoc;
      
 
     </property>

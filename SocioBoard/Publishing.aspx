@@ -1,13 +1,15 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeBehind="Publishing.aspx.cs" Inherits="SocialSuitePro.Publishing" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Publishing.aspx.cs" Inherits="SocialSuitePro.Publishing" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <link href="../Contents/js/multidatepicker/css/mdp.css" rel="stylesheet" type="text/css" />
 <link href="../Contents/js/multidatepicker/css/prettify.css" rel="stylesheet" type="text/css" />
-<link href="../Contents/js/multidatepicker/css/pepper-ginder-custom.css" rel="stylesheet" type="text/css" />
+<link href="../Contents/js/multidatepicker/css/pepper-ginder-custom.css" rel="stylesheet"
+    type="text/css" />
 <link href="Contents/css/Style_previous.css" rel="stylesheet" type="text/css" />
 <link href="Contents/css/admin.css" rel="stylesheet" type="text/css" />
 <link href="Contents/css/style.css" rel="stylesheet" type="text/css" />
+<link href="Contents/css/Style_previous.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="/Contents/img/ivon.ico" type="image/x-icon">
 <%--scripts--%>
 <script src="../Contents/js/jquery-1.7.2.js" type="text/javascript"></script>
@@ -20,20 +22,18 @@
     rel="stylesheet" type="text/css" />
 <link href="../Contents/js/timepicer/jquery.ui.timepicker.css" rel="stylesheet" type="text/css" />
 <%--timepicerscripts--%>
-<script src="../Contents/js/timepicer/include/ui-1.10.0/jquery.ui.widget.min.js" type="text/javascript"></script>
+<script src="../Contents/js/timepicer/include/ui-1.10.0/jquery.ui.widget.min.js"
+    type="text/javascript"></script>
 <script src="../Contents/js/timepicer/include/ui-1.10.0/jquery.ui.core.min.js" type="text/javascript"></script>
 <script src="../Contents/js/timepicer/include/ui-1.10.0/jquery.ui.tabs.min.js" type="text/javascript"></script>
 <script src="../Contents/js/timepicer/include/ui-1.10.0/jquery.ui.position.min.js"
     type="text/javascript"></script>
 <script src="../Contents/js/timepicer/jquery.ui.timepicker.js" type="text/javascript"></script>
 <script src="../Contents/js/clickDesk.js" type="text/javascript"></script>
-
-
 <%--urlvalidate--%>
 <%--<link rel="stylesheet" href="http://jquery.bassistance.de/validate/demo/site-demos.css">
 <script type="text/javascript" src="http://jquery.bassistance.de/validate/jquery.validate.js"></script>
 <script type="text/javascript" src="http://jquery.bassistance.de/validate/additional-methods.js"></script>--%>
-
 <%--SocioboardScripts--%>
 <script src="../Contents/js/login.js" type="text/javascript"></script>
 <script src="../Contents/js/Feeds.js" type="text/javascript"></script>
@@ -41,7 +41,6 @@
 <script src="../Contents/js/Message.js" type="text/javascript"></script>
 <script src="../Contents/js/Helper.js" type="text/javascript"></script>
 <script src="Contents/js/publishing.js" type="text/javascript"></script>
-
 <head id="Head1" runat="server">
     <meta charset="utf-8" />
     <title>SocioBoard</title>
@@ -84,158 +83,234 @@
         });
 
     });
+
+    //    function Validate(event) {
+    //        var regex = new RegExp("^[0-9?=.*!@#$%^&*]+$");
+    //        var key = String.fromCharCode(event.charCode ? event.which : event.charCode);
+    //        if (!regex.test(key)) {
+    //            event.preventDefault();
+    //            return false;
+    //        }
+    //    } 
+
+    //    function ValidateKey() {
+    //        var key = window.event.keyCode;
+    //        var allowed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    //        return allowed.indexOf(String.fromCharCode(key)) != -1;
+    //    }
+
+    function showimage() {
+
+        try {
+            var filesinput = $('#fileuploadImage');
+
+            debugger;
+
+            if (filesinput !== 'undefined' && filesinput[0].files[0] !== null) {
+                $('#showBlock').css('display', 'block');
+
+            }
+        } catch (e) {
+
+        }
+    }
+    function deleteimage() {
+
+        try {
+            var filesinput = $('#fileuploadImage');
+
+            debugger;
+
+            if (filesinput !== 'undefined') {
+                $('#showBlock').css('display', 'none');
+                // $('#fileuploadImage').val() = "";
+                document.getElementById('fileuploadImage').value = "";
+
+            }
+        } catch (e) {
+
+        }
+    }
+
+
+
+
 </script>
 <style type="text/css">
-    
-    
     /*Rss feeds Css updated on 03/08/2013**/
     
     
-.msg_view.threefourth 
-{
-    max-width: 607px;
-    padding-right: 1.5%;
-    width: 100%;
-    border-radius: 5px;
-    padding: 10px;
-    border: 1px solid #ccc;
-}
-.msg_view.threefourth > h2.league {
-    clear: both;
-    color: #B0B0B0;
-    float: left;
-    font-family: "league-gothic",sans-serif;
-    font-size: 1.8em;
-    font-weight: 400;
-    margin: 0;
-    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
-    text-transform: uppercase;
-    width: 100%;
-}
-.msg_view.threefourth > h2.rss_header span {
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
-    font-size: 12px !important;
-    font-weight: 400;
-    left: 3px;
-    position: relative;
-    text-shadow: none;
-    text-transform: lowercase;
-}
-#rss > section:nth-child(2) {
-    border-top: 1px solid #BBBEBF !important;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
-}
-#rss > section:last-child {
-    border-bottom: 0 none;
-}
-#rss > section.publishing {
-    border-bottom: 1px solid #BBBEBF;
-    border-top: 1px solid #F0F0F0;
-    clear: both;
-    overflow: hidden;
-    padding: 10px;
-}
-.messages > section.publishing {
-    display: block;
-    min-height: 62px;
-    padding: 10px 0;
-}
-#rss > section.publishing > section.twothird {
-    float: left;
-    width: 66%;
-}
-#rss section > section.third {
-    float: right;
-    text-align: right;
-    margin-top: 24px;
-}
-#rss > section.publishing > section.twothird > .quarter {
-    float: left;
-    width: 20%;
-}
-#rss > section.publishing > section.twothird > .quarter > .avatar_link img.sm {
-    float: left;
-    height: 36px;
-    width: 36px;
-}
-.rss_ava_icon {
-    float: left;
-    left: -9px;
-    position: relative;
-    top: 18px;
-}
-.icon {
-    background-image: url("../Contents/img/sprite-main-162.png");
-    display: inline-block;
-    overflow: hidden;
-    text-indent: 100%;
-    vertical-align: text-bottom;
-    white-space: nowrap;
-}
-.twitter_16 {
-    background-position: 0 -250px;
-    height: 16px;
-    margin-top: 5px;
-    width: 16px;
-}
-#rss > section.publishing > section.twothird > .threefourth {
-    float: left;
-    margin: 0;
-    padding: 0;
-    width: 74.5%;
-}
-#rss > section.publishing > section.twothird > .threefourth > ul {
-    float: left;
-    list-style: none outside none;
-    margin-top: 0;
-    padding: 0;
-}
-#rss > section.publishing > section.twothird > .threefourth > ul > li {
-    clear: left;
-    color: #545453;
-    float: left;
-    font-family: arial;
-    font-size: 0.8em;
-    margin-right: 10px;
-}
-#rss > section.publishing > section.twothird > .threefourth > ul > li.freq {
-    color: #8F8F8D;
-}
-#rss > section.publishing > section.twothird > .threefourth > ul > li:last-child {
-    margin: 0;
-}
-.small_pause {
-    background-position: -153px -1001px;
-    height: 12px;
-    width: 11px;
-}
-.small_remove {
-    background-position: -100px -1000px;
-    height: 15px;
-    position: relative;
-    top: 2px;
-    width: 15px;
-}
-#rss section.publishing > section.third > ul {
-    float: left;
-    list-style: none outside none;
-    width: auto;
-}
-#rss section.publishing > section.third > ul > li {
-    float: left;
-    margin-right: 10px;
-}
-#rss > section.publishing > section.third > ul > li.show-on-hover {
-    display: none;
-    margin-top: 2px;
-}
-#rss > section.publishing:hover {
-    background: none repeat scroll 0 0 #F1F1F1;
-}
-#rss > section.publishing:hover > section.third > ul > li.show-on-hover {
-    display: block;
-}
-
+    .msg_view.threefourth
+    {
+        max-width: 607px;
+        padding-right: 1.5%;
+        width: 100%;
+        border-radius: 5px;
+        padding: 10px;
+        border: 1px solid #ccc;
+    }
+    .msg_view.threefourth > h2.league
+    {
+        clear: both;
+        color: #B0B0B0;
+        float: left;
+        font-family: "league-gothic" ,'nexa-light';
+        font-size: 1.8em;
+        font-weight: 400;
+        margin: 0;
+        text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+        text-transform: uppercase;
+        width: 100%;
+    }
+    .msg_view.threefourth > h2.rss_header span
+    {
+        font-family: 'Helvetica Neue' ,Helvetica,'nexa-light','nexa-light';
+        font-size: 12px !important;
+        font-weight: 400;
+        left: 3px;
+        position: relative;
+        text-shadow: none;
+        text-transform: lowercase;
+    }
+    #rss > section:nth-child(2)
+    {
+        border-top: 1px solid #BBBEBF !important;
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    }
+    #rss > section:last-child
+    {
+        border-bottom: 0 none;
+    }
+    #rss > section.publishing
+    {
+        border-bottom: 1px solid #BBBEBF;
+        border-top: 1px solid #F0F0F0;
+        clear: both;
+        overflow: hidden;
+        padding: 10px;
+    }
+    .messages > section.publishing
+    {
+        display: block;
+        min-height: 62px;
+        padding: 10px 0;
+    }
+    #rss > section.publishing > section.twothird
+    {
+        float: left;
+        width: 66%;
+    }
+    #rss section > section.third
+    {
+        float: right;
+        text-align: right;
+        margin-top: 24px;
+    }
+    #rss > section.publishing > section.twothird > .quarter
+    {
+        float: left;
+        width: 20%;
+    }
+    #rss > section.publishing > section.twothird > .quarter > .avatar_link img.sm
+    {
+        float: left;
+        height: 36px;
+        width: 36px;
+    }
+    .rss_ava_icon
+    {
+        float: left;
+        left: -9px;
+        position: relative;
+        top: 18px;
+    }
+    .icon
+    {
+        background-image: url("../Contents/img/sprite-main-162.png");
+        display: inline-block;
+        overflow: hidden;
+        text-indent: 100%;
+        vertical-align: text-bottom;
+        white-space: nowrap;
+    }
+    .twitter_16
+    {
+        background-position: 0 -250px;
+        height: 16px;
+        margin-top: 5px;
+        width: 16px;
+    }
+    #rss > section.publishing > section.twothird > .threefourth
+    {
+        float: left;
+        margin: 0;
+        padding: 0;
+        width: 74.5%;
+    }
+    #rss > section.publishing > section.twothird > .threefourth > ul
+    {
+        float: left;
+        list-style: none outside none;
+        margin-top: 0;
+        padding: 0;
+    }
+    #rss > section.publishing > section.twothird > .threefourth > ul > li
+    {
+        clear: left;
+        color: #545453;
+        float: left;
+        font-family: 'nexa-light';
+        font-size: 0.8em;
+        margin-right: 10px;
+    }
+    #rss > section.publishing > section.twothird > .threefourth > ul > li.freq
+    {
+        color: #8F8F8D;
+    }
+    #rss > section.publishing > section.twothird > .threefourth > ul > li:last-child
+    {
+        margin: 0;
+    }
+    .small_pause
+    {
+        background-position: -153px -1001px;
+        height: 12px;
+        width: 11px;
+    }
+    .small_remove
+    {
+        background-position: -100px -1000px;
+        height: 15px;
+        position: relative;
+        top: 2px;
+        width: 15px;
+    }
+    #rss section.publishing > section.third > ul
+    {
+        float: left;
+        list-style: none outside none;
+        width: auto;
+    }
+    #rss section.publishing > section.third > ul > li
+    {
+        float: left;
+        margin-right: 10px;
+    }
+    #rss > section.publishing > section.third > ul > li.show-on-hover
+    {
+        display: none;
+        margin-top: 2px;
+    }
+    #rss > section.publishing:hover
+    {
+        background: none repeat scroll 0 0 #F1F1F1;
+    }
+    #rss > section.publishing:hover > section.third > ul > li.show-on-hover
+    {
+        display: block;
+    }
+    
     
     /****************************************/
     #contentcontainer1-publishing #content, #contentcontainer1-publishing #content_drafts, #contentcontainer1-publishing #content_wooqueue, #contentcontainer1-publishing #content_rsspost
@@ -250,11 +325,11 @@
     
     #content > section#inbox_msgs > .messages, section.messages.msg_view.inbox_msgs > .messages, #content_drafts > section.messages.msg_view.inbox_msgs > .messages, #content_rsspost > section.messages.msg_view.inbox_msgs > .messages
     {
-        width:648px;
+        width: 648px;
     }
-    #content > section#inbox_msgs > .messages > section.section, section.messages.msg_view.inbox_msgs > .messages > section.section, #content_drafts > section.messages.msg_view.inbox_msgs > .messages > section.section, #content_rsspost > section.messages.msg_view.inbox_msgs > .messages > section.section 
+    #content > section#inbox_msgs > .messages > section.section, section.messages.msg_view.inbox_msgs > .messages > section.section, #content_drafts > section.messages.msg_view.inbox_msgs > .messages > section.section, #content_rsspost > section.messages.msg_view.inbox_msgs > .messages > section.section
     {
-         width:648px;
+        width: 648px;
     }
     #contentcontainer1-publishing > .publishing_div
     {
@@ -272,198 +347,271 @@
         width: 777px;
     }
     /************** Skin 1 *********************/
-.dd {
-/*display:inline-block !important;*/
-text-align:left;
-background-color:#fff;
-font-family:Arial, Helvetica, sans-serif;
-font-size:12px;
-float:left;
-}
-.dd .ddTitle {
-background:#f2f2f2;
-border:1px solid #c3c3c3;
-padding:3px;
-text-indent:0;
-cursor:default;
-overflow:hidden;
-height:16px;
-}
-.dd .ddTitle span.arrow {
-background:url(dd_arrow.gif) no-repeat 0 0; float:right; display:inline-block;width:16px; height:16px; cursor:pointer;
-}
-.dd .ddTitle span.ddTitleText {text-indent:1px; overflow:hidden; line-height:16px;}
-.dd .ddTitle span.ddTitleText img{text-align:left; padding:0 2px 0 0}
-.dd .ddTitle img.selected {
-padding:0 3px 0 0;
-vertical-align:top;
-}
-.dd .ddChild {
-position:absolute;
-border:1px solid #c3c3c3;
-border-top:none;
-display:none;
-margin:0;
-width:auto;
-overflow:auto;
-overflow-x:hidden !important;
-background-color:#ffffff;
-}
-.dd .ddChild .opta a, .dd .ddChild .opta a:visited {padding-left:10px}
-.dd .ddChild a {
-display:block;
-padding:2px 0 2px 3px;
-text-decoration:none;
-color:#000;
-overflow:hidden;
-white-space:nowrap;
-cursor:pointer;
-}
-.dd .ddChild a:hover {
-background-color:#66CCFF;
-}
-.dd .ddChild a img {
-border:0;
-padding:0 2px 0 0;
-vertical-align:middle;
-}
-.dd .ddChild a.selected {
-background-color:#66CCFF;
-}
-.hidden {display:none;}
-/************** Skin 2 *********************/
-.dd2 {
-/*display:inline-block !important;*/
-text-align:left;
-background-color:#fff;
-font-family:Arial, Helvetica, sans-serif;
-font-size:12px;
-float:left;
-}
-.dd2 .ddTitle {
-background:transparent url(../images/msDropDown.gif) no-repeat;
-padding:0 3px;
-text-indent:0;
-cursor:default;
-overflow:hidden;
-height:36px;
-}
-.dd2 .ddTitle span.arrow {
-background:transparent url(../images/icon-arrow.gif) no-repeat 0 0; float:right; display:inline-block;width:27px; height:27px; cursor:pointer; top:5px; position:relative; right:2px;
-}
-.dd2 .ddTitle span.ddTitleText {text-indent:1px; overflow:hidden; line-height:33px; font-family:Georgia, "Times New Roman", Times, serif; font-size:16px; font-weight:bold; color:#fff;}
-.dd2 .ddTitle span.ddTitleText img{text-align:left; padding:0 2px 0 0;}
-.dd2 .ddTitle img.selected {
-padding:0 2px 0 0;
-vertical-align:top;
-}
-.dd2 .ddChild {
-position:absolute;
-border:1px solid #c3c3c3;
-border-top:none;
-display:none;
-margin:0;
-width:auto;
-overflow:auto;
-overflow-x:hidden !important;
-background-color:#ffffff;
-font-size:14px;
-}
-.dd2 .ddChild .opta a, .dd2 .ddChild .opta a:visited {padding-left:10px}
-.dd2 .ddChild a {
-display:block;
-padding:3px 0 3px 3px;
-text-decoration:none;
-color:#000;
-overflow:hidden;
-white-space:nowrap;
-cursor:pointer;
-}
-.dd2 .ddChild a:hover {
-background-color:#66CCFF;
-}
-.dd2 .ddChild a img {
-border:0;
-padding:0 2px 0 0;
-vertical-align:middle;
-}
-.dd2 .ddChild a.selected {
-background-color:#66CCFF;
-}
-/************* use sprite *****************/
-.dd .ddChild a.sprite, .dd .ddChild a.sprite:visited {
-background-image:url(../icons/sprite.gif);
-background-repeat:no-repeat;
-padding-left:24px;
-}
-.dd .ddChild a.calendar, .dd .ddChild a.calendar:visited {
-background-position:0 -404px;
-}
-.dd .ddChild a.shoppingcart, .dd .ddChild a.shoppingcart:visited {
-background-position:0 -330px;
-}
-.dd .ddChild a.cd, .dd .ddChild a.cd:visited {
-background-position:0 -439px;
-}
-.dd .ddChild a.email, .dd .ddChild a.email:visited {
-background-position:0 -256px;
-}
-.dd .ddChild a.faq, .dd .ddChild a.faq:visited {
-background-position:0 -183px;
-}
-.dd .ddChild a.games,
-.dd .ddChild a.games:visited {
-background-position:0 -365px;
-}
-.dd .ddChild a.music, .dd .ddChild a.music:visited {
-background-position:0 -146px;
-}
-.dd .ddChild a.phone, .dd .ddChild a.phone:visited {
-background-position:0 -109px;
-}
-.dd .ddChild a.graph, .dd .ddChild a.graph:visited {
-background-position:0 -73px;
-}
-.dd .ddChild a.secured, .dd .ddChild a.secured:visited {
-background-position:0 -37px;
-}
-.dd .ddChild a.video, .dd .ddChild a.video:visited {
-background-position:0 0;
-}
-/*******************************/
-#content > section#inbox_msgs > .tasks-header > .task-activity, section.messages.msg_view.inbox_msgs > .tasks-header > .task-activity, #content_drafts > section.messages.msg_view.inbox_msgs > .tasks-header > .task-activity, #content_rsspost > section.messages.msg_view.inbox_msgs > .tasks-header > .task-activity
-{
-    width:18%;
-}
-#content > section#inbox_msgs > .messages > section > .read > .task-activity, section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-activity, #content_drafts > section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-activity, #content_rsspost > section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-activity
-{
-    width:19.6%;
-}
-.edit-icon
-{
-    width:16px;
-    height:auto;
-    float:left;
-}
-.edit-icon > a >img
-{
-    float: left;
-    height: auto;
-    margin-left: 5px;
-    margin-top: 12px;
-    width: 16px;
-}
-.section > .small_close_icon
-{    
-    float: right;
-    margin-right: 16px;
-    margin-top: -51px;
-    display:none;
-}
-.section:hover > .small_close_icon
-{
-    display:block;
-}
+    .dd
+    {
+        /*display:inline-block !important;*/
+        text-align: left;
+        background-color: #fff;
+        font-family: 'nexa-light';
+        font-size: 12px;
+        float: left;
+    }
+    .dd .ddTitle
+    {
+        background: #f2f2f2;
+        border: 1px solid #c3c3c3;
+        padding: 3px;
+        text-indent: 0;
+        cursor: default;
+        overflow: hidden;
+        height: 16px;
+    }
+    .dd .ddTitle span.arrow
+    {
+        background: url(dd_arrow.gif) no-repeat 0 0;
+        float: right;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+    }
+    .dd .ddTitle span.ddTitleText
+    {
+        text-indent: 1px;
+        overflow: hidden;
+        line-height: 16px;
+    }
+    .dd .ddTitle span.ddTitleText img
+    {
+        text-align: left;
+        padding: 0 2px 0 0;
+    }
+    .dd .ddTitle img.selected
+    {
+        padding: 0 3px 0 0;
+        vertical-align: top;
+    }
+    .dd .ddChild
+    {
+        position: absolute;
+        border: 1px solid #c3c3c3;
+        border-top: none;
+        display: none;
+        margin: 0;
+        width: auto;
+        overflow: auto;
+        overflow-x: hidden !important;
+        background-color: #ffffff;
+    }
+    .dd .ddChild .opta a, .dd .ddChild .opta a:visited
+    {
+        padding-left: 10px;
+    }
+    .dd .ddChild a
+    {
+        display: block;
+        padding: 2px 0 2px 3px;
+        text-decoration: none;
+        color: #000;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+    .dd .ddChild a:hover
+    {
+        background-color: #66CCFF;
+    }
+    .dd .ddChild a img
+    {
+        border: 0;
+        padding: 0 2px 0 0;
+        vertical-align: middle;
+    }
+    .dd .ddChild a.selected
+    {
+        background-color: #66CCFF;
+    }
+    .hidden
+    {
+        display: none;
+    }
+    /************** Skin 2 *********************/
+    .dd2
+    {
+        /*display:inline-block !important;*/
+        text-align: left;
+        background-color: #fff;
+        font-family: 'nexa-light';
+        font-size: 12px;
+        float: left;
+    }
+    .dd2 .ddTitle
+    {
+        background: transparent url(../images/msDropDown.gif) no-repeat;
+        padding: 0 3px;
+        text-indent: 0;
+        cursor: default;
+        overflow: hidden;
+        height: 36px;
+    }
+    .dd2 .ddTitle span.arrow
+    {
+        background: transparent url(../images/icon-arrow.gif) no-repeat 0 0;
+        float: right;
+        display: inline-block;
+        width: 27px;
+        height: 27px;
+        cursor: pointer;
+        top: 5px;
+        position: relative;
+        right: 2px;
+    }
+    .dd2 .ddTitle span.ddTitleText
+    {
+        text-indent: 1px;
+        overflow: hidden;
+        line-height: 33px;
+        font-family: Georgia, "Times New Roman" , Times, serif;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+    }
+    .dd2 .ddTitle span.ddTitleText img
+    {
+        text-align: left;
+        padding: 0 2px 0 0;
+    }
+    .dd2 .ddTitle img.selected
+    {
+        padding: 0 2px 0 0;
+        vertical-align: top;
+    }
+    .dd2 .ddChild
+    {
+        position: absolute;
+        border: 1px solid #c3c3c3;
+        border-top: none;
+        display: none;
+        margin: 0;
+        width: auto;
+        overflow: auto;
+        overflow-x: hidden !important;
+        background-color: #ffffff;
+        font-size: 14px;
+    }
+    .dd2 .ddChild .opta a, .dd2 .ddChild .opta a:visited
+    {
+        padding-left: 10px;
+    }
+    .dd2 .ddChild a
+    {
+        display: block;
+        padding: 3px 0 3px 3px;
+        text-decoration: none;
+        color: #000;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+    .dd2 .ddChild a:hover
+    {
+        background-color: #66CCFF;
+    }
+    .dd2 .ddChild a img
+    {
+        border: 0;
+        padding: 0 2px 0 0;
+        vertical-align: middle;
+    }
+    .dd2 .ddChild a.selected
+    {
+        background-color: #66CCFF;
+    }
+    /************* use sprite *****************/
+    .dd .ddChild a.sprite, .dd .ddChild a.sprite:visited
+    {
+        background-image: url(../icons/sprite.gif);
+        background-repeat: no-repeat;
+        padding-left: 24px;
+    }
+    .dd .ddChild a.calendar, .dd .ddChild a.calendar:visited
+    {
+        background-position: 0 -404px;
+    }
+    .dd .ddChild a.shoppingcart, .dd .ddChild a.shoppingcart:visited
+    {
+        background-position: 0 -330px;
+    }
+    .dd .ddChild a.cd, .dd .ddChild a.cd:visited
+    {
+        background-position: 0 -439px;
+    }
+    .dd .ddChild a.email, .dd .ddChild a.email:visited
+    {
+        background-position: 0 -256px;
+    }
+    .dd .ddChild a.faq, .dd .ddChild a.faq:visited
+    {
+        background-position: 0 -183px;
+    }
+    .dd .ddChild a.games, .dd .ddChild a.games:visited
+    {
+        background-position: 0 -365px;
+    }
+    .dd .ddChild a.music, .dd .ddChild a.music:visited
+    {
+        background-position: 0 -146px;
+    }
+    .dd .ddChild a.phone, .dd .ddChild a.phone:visited
+    {
+        background-position: 0 -109px;
+    }
+    .dd .ddChild a.graph, .dd .ddChild a.graph:visited
+    {
+        background-position: 0 -73px;
+    }
+    .dd .ddChild a.secured, .dd .ddChild a.secured:visited
+    {
+        background-position: 0 -37px;
+    }
+    .dd .ddChild a.video, .dd .ddChild a.video:visited
+    {
+        background-position: 0 0;
+    }
+    /*******************************/
+    #content > section#inbox_msgs > .tasks-header > .task-activity, section.messages.msg_view.inbox_msgs > .tasks-header > .task-activity, #content_drafts > section.messages.msg_view.inbox_msgs > .tasks-header > .task-activity, #content_rsspost > section.messages.msg_view.inbox_msgs > .tasks-header > .task-activity
+    {
+        width: 18%;
+    }
+    #content > section#inbox_msgs > .messages > section > .read > .task-activity, section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-activity, #content_drafts > section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-activity, #content_rsspost > section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-activity
+    {
+        width: 19.6%;
+    }
+    .edit-icon
+    {
+        width: 16px;
+        height: auto;
+        float: left;
+    }
+    .edit-icon > a > img
+    {
+        float: left;
+        height: auto;
+        margin-left: 5px;
+        margin-top: 12px;
+        width: 16px;
+    }
+    .section > .small_close_icon
+    {
+        float: right;
+        margin-right: 16px;
+        margin-top: -51px;
+        display: none;
+    }
+    .section:hover > .small_close_icon
+    {
+        display: block;
+    }
 </style>
 <body>
     <form id="form1" runat="server">
@@ -472,20 +620,24 @@ background-position:0 0;
             <div class="container">
                 <div id="logo">
                     <a href="/Home.aspx">
-                       <img src="../Contents/img/under_sspro_logo.png" alt="SocialSuitePro" /></a>
+                        <img src="../Contents/img/under_sspro_logo.png" alt="SocialSuitePro" /></a>
                 </div>
                 <div id="infocontainer" style="width: 730px;">
                     <div id="msgcontainer">
                         <div id="msgcontent">
                             <a href="../Message/Messages.aspx">
                                 <img alt="" src="../Contents/img/admin/msgtiny.png" /><span runat="server" id="incom_messages">0</span></a></div>
-                        	<div id="tskcontent"><a href="../Message/Task.aspx"><img alt="" src="../Contents/img/admin/remotetiny.png"><span runat="server" id="incom_tasks">0</span></a></div>
+                        <div id="tskcontent">
+                            <a href="../Message/Task.aspx">
+                                <img alt="" src="../Contents/img/admin/remotetiny.png"><span runat="server" id="incom_tasks">0</span></a></div>
                     </div>
                     Information! Now You have <a href="~/Message/Messages.aspx" id="incomMessages" runat="server">
-                        0</a> Incoming Message and <a runat="server" id="incomTasks" href="../Message/Task.aspx">0</a> Task 
-                        <a href="../Default.aspx?type=logout" class="woo_logout" style="text-decoration:none; color: #CECECE;">
-                            <img src="../Contents/img/logout_woo.png" style="margin-right:4px;" alt=""/><b>Logout</b>
-                        </a>
+                        0</a> Incoming Message and <a runat="server" id="incomTasks" href="../Message/Task.aspx">
+                            0</a> Task <a class="premium" href="../Referral.aspx">Get free Premium Account</a>
+                    <a href="../Default.aspx?type=logout" class="woo_logout" style="text-decoration: none;
+                        color: #CECECE;">
+                        <img src="../Contents/img/logout_woo.png" style="margin-right: 4px;" alt="" /><b>Logout</b>
+                    </a>
                     <div id="errsuccess" class="greenerrormsg">
                         <span id="errsuccessmsg" class="msg">Successfull your work</span> <span class="cross">
                             X</span></div>
@@ -506,27 +658,31 @@ background-position:0 0;
         <div id="navi">
             <div class="container">
                 <div id="usercontainer">
-                    <div id="userimg" runat="server"></div>
-                    <div id="usernm" runat="server"></div>
-                    <div id="userinf" runat="server"></div>
+                    <%--<div id="userimg" runat="server"></div>--%>
+                    <div id="usernm" runat="server">
+                    </div>
+                    <%--<div id="userinf" runat="server"></div>--%>
                 </div>
                 <div class="navbar pull-right">
                     <div class="navbar-inner">
                         <ul class="nav">
                             <li id="home"><a href="../Home.aspx">
-                                <img src="../Contents/img/admin/home.png" alt="" />Home</a> </li>
+                                <img src="../Contents/img/admin/home.png" alt="" width="40" />Home</a> </li>
                             <li id="message"><a href="../Message/Messages.aspx">
-                                <img src="../Contents/img/admin/mail.png" alt="" />Message</a> </li>
+                                <img src="../Contents/img/admin/mail.png" alt="" width="40" />Message</a> </li>
                             <li id="feeds"><a href="../Feeds/Feeds.aspx">
-                                <img src="../Contents/img/admin/feeds.png" alt="" />Feeds</a> </li>
+                                <img src="../Contents/img/admin/feeds.png" alt="" width="40" />Feeds</a> </li>
                             <li id="publishing" class="active"><a href="../Publishing.aspx">
-                                <img src="../Contents/img/admin/publishing.png" alt="" />Publishing</a> </li>
+                                <img src="../Contents/img/admin/publishing.png" alt="" width="40" /><span>Publishing</span></a>
+                            </li>
                             <li id="discovery"><a href="../Discovery.aspx">
-                                <img src="../Contents/img/admin/discovery.png" alt="" />Discovery</a> </li>
+                                <img src="../Contents/img/admin/discovery.png" alt="" width="40" /><span>Discovery</span></a>
+                            </li>
                             <li><a href="Reports/GroupStats.aspx">
-                                <img src="../Contents/img/admin/reports.png" alt="" />Reports</a> </li>
-                                <li id="Li1"><a href="../Group/Group.aspx">
-                                <img src="../Contents/img/admin/group.png" alt="" />Groups</a> </li>
+                                <img src="../Contents/img/admin/reports.png" alt="" height="40" />Reports</a>
+                            </li>
+                            <li id="Li1"><a href="../Group/Group.aspx">
+                                <img src="../Contents/img/admin/group.png" alt="" width="40" />Groups</a> </li>
                         </ul>
                     </div>
                 </div>
@@ -543,7 +699,7 @@ background-position:0 0;
                                             <img src="../Contents/img/891.png" alt="" /></a></li>
                                     </ul>--%>
                                 </li>
-                                <li id="addico"><a>
+                                <li><a id="addico">
                                     <img src="../Contents/img/admin/addico.png" alt="" /></a>
                                     <div id="addicbox" style="display: none;">
                                         <div class="drop_top">
@@ -577,13 +733,13 @@ background-position:0 0;
                                                         <span style="float: left; margin: 3px 0 0 5px;">Instagram</span> </a></li>
                                                 </ul>
                                             </div>
-                                            <div class="teitter">
+                                            <%-- <div class="teitter">
                                                 <ul>
                                                     <li><a id="master_GooglePlusConnect" runat="server" onserverclick="AuthenticateGooglePlus">
                                                         <img width="18" border="none" style="float: left;" alt="" src="../Contents/img/google_plus.png" />
                                                         <span style="float: left; margin: 3px 0 0 5px;">Google Plus</span> </a></li>
                                                 </ul>
-                                            </div>
+                                            </div>--%>
                                         </div>
                                     </div>
                                 </li>
@@ -601,7 +757,7 @@ background-position:0 0;
                                         </div>
                                     </div>
                                 </li>
-                                <li id="usersetting"><a>
+                                <li><a id="usersetting">
                                     <img src="../Contents/img/admin/usersetting.png" alt="" /></a>
                                     <div id="userset" style="display: none;">
                                         <div class="drop_top">
@@ -643,14 +799,11 @@ background-position:0 0;
                 <a class="btn active" id="schedulemessage" onclick="publishcontent(this.id);" href="#">
                     Schedule Message</a><a class="btn" id="wooqueue" onclick="publishcontent(this.id);"
                         href="#">SocioQueue</a> <a id="drafts" onclick="publishcontent(this.id);" class="btn"
-                            href="#">Drafts</a> 
-                            <%--<a id="rsspost" onclick="publishcontent(this.id);" class="btn"
+                            href="#">Drafts</a>
+                <%--<a id="rsspost" onclick="publishcontent(this.id);" class="btn"
                                 href="#">Post Via RSS</a>--%>
             </div>
         </div>
-
-
-
         <div id="contentcontainer2-publishing">
             <div id="contentcontainer1-publishing">
                 <div id="content">
@@ -661,7 +814,8 @@ background-position:0 0;
                             <div class="red-caret">
                             </div>
                         </div>--%>
-                    <div class="clearfix">&nbsp;</div>
+                    <div class="clearfix">
+                        &nbsp;</div>
                     <div class="rounder" id="publishing-dropdown-details">
                         <%--  <button type="button" class="close pull-right" data-dismiss="alert">×</button>--%>
                         <h2 class="title">
@@ -682,12 +836,12 @@ background-position:0 0;
                                             <div style="clear: both">
                                             </div>
                                             <div id="loginBox_scheduler" style="position: absolute; z-index: 999; margin-left: -71px;">
-                                                <div class="drop_top">
+                                                <%-- <div class="drop_top">
                                                 </div>
                                                 <div class="drop_mid">
                                                     <a href="#">
                                                         <img src="../Contents/img/891.png" alt="" /></a>
-                                                </div>
+                                                </div>--%>
                                             </div>
                                         </div>
                                     </div>
@@ -700,7 +854,7 @@ background-position:0 0;
                                             <div id="ab_scheduler" style="position: absolute; z-index: 999; margin-left: -20px;">
                                                 <div class="drop_top">
                                                 </div>
-                                                <div class="drop_mid">
+                                                <%--<div class="drop_mid">
                                                     <div class="twitte_text">TWITTER</div>
                                                     <div class="teitter">
                                                         <ul>
@@ -731,7 +885,7 @@ background-position:0 0;
                                                                 <span style="float: left; margin: 3px 0 0 5px;">GLobussoft</span> </a></li>
                                                         </ul>
                                                     </div>
-                                                </div>
+                                                </div>--%>
                                             </div>
                                         </div>
                                         <div id="divformultiusers_scheduler">
@@ -742,23 +896,23 @@ background-position:0 0;
                                     <span class="charremain" id="wordcount"><i id="messageCount_scheduler">140 CharactersRemaining</i></span>
                                     <%--<div onclick="saveDrafts();" class="savetodraft">Save To Draft</div>--%>
                                     <textarea id="textareavaluetosendmessage_scheduler" cols="5" rows="10" class="span12"
-                                        placeholder="type your message here" style="height: 360px; resize:none"></textarea>
+                                        placeholder="type your message here" style="height: 360px; resize: none"></textarea>
                                 </div>
                             </div>
                             <div class="span6" id="rightspan">
                                 <%-- <img alt="" src="Contents/img/admin/righ-details.png">--%>
                                 <div class="sub_tabs">
-                                <div onclick="saveDrafts();" class="savetodraft">Save To Draft</div>
+                                    <div onclick="saveDrafts();" class="savetodraft">
+                                        Save To Draft</div>
                                     <div id="scheduleimg" style="float: right;">
                                         <img onclick="ScheduleMessage()" src="../Contents/img/schedule.png" alt="" />
                                     </div>
-                                    
                                 </div>
                                 <div class="datebg">
                                     <div id="multicaleder">
                                     </div>
                                     <div class="watchtimeshow">
-                                        <input type="text" style="width: 65px;" value="" disabled="disabled" id="timepickerforScheduler" />
+                                        <input type="text" style="width: 65px;" value="" id="timepickerforScheduler" disabled="disabled" />
                                         <img id="imgtimepicker" src="Contents/img/clock.png" alt="" />
                                         <div id="chktimepicker">
                                         </div>
@@ -766,15 +920,15 @@ background-position:0 0;
                                     <div id="adddates_scheduler">
                                     </div>
                                 </div>
-
-                                 <div class="composecontent" style="float: right; margin:70px 39px 0 0;">
-                                       <a style="color: #D5928C;font-weight:bolder;height:30px;margin-top: 7px;width: 60px;" class="btn span6 composecontent">Send</a>
-                                    </div>
-
+                                <div class="composecontent" style="float: right; margin: 70px 39px 0 0;">
+                                    <a style="color: #D5928C; font-weight: bolder; height: 30px; margin-top: 7px; width: 60px;"
+                                        class="btn span6 composecontent">Send</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="clearfix">&nbsp;</div>
+                    <div class="clearfix">
+                        &nbsp;</div>
                     <%--  <div class="shadower" id="calendar">
                         	    <img alt="" src="Contents/img/admin/calendar.png">
                             </div>--%>
@@ -817,7 +971,7 @@ background-position:0 0;
                                 </section>
                 </div>
                 <div id="content_drafts" style="display: none;">
-                      <section class=" messages msg_view inbox_msgs">
+                    <section class=" messages msg_view inbox_msgs">
                                     <div class="tasks-header" style="width:650px;">
                             	        <div class="task-owner"></div>
                                         <div class="task-activity">User</div>
@@ -827,24 +981,23 @@ background-position:0 0;
                                     <div class="messages taskable" id="drafts_messages"></div>
                                 </section>
                 </div>
-                
-                    <div id="content_rsspost" style="display: none;">                    
+                <div id="content_rsspost" style="display: none;">
                     <div id="rdata" runat="server">
                         <div class="no_data">
-                            <h3>You don't have any RSS Feeds setup to automatically send messages for you</h3>
-                            <p><a class="setupRssFeed" id="rsssetup">Setup an RSS Feed</a></p>                            
+                            <h3>
+                                You don't have any RSS Feeds setup to automatically send messages for you</h3>
+                            <p>
+                                <a class="setupRssFeed" id="rsssetup">Setup an RSS Feed</a></p>
                         </div>
-                     
                     </div>
-                       <section id="rss" runat="server" class="threefourth messages msg_view js-page-content" style="display:none;">
+                    <section id="rss" runat="server" class="threefourth messages msg_view js-page-content"
+                        style="display: none;">
                                
                         </section>
                 </div>
-                
                 <div style="display: none;" id="pub-btncontainer">
                     <a class="btn btn-black">View "Recently Send"</a>
                 </div>
-
             </div>
         </div>
         <%--div for compose message--%>
@@ -950,11 +1103,16 @@ background-position:0 0;
                     <a id="sendMessageBtn" onclick="SendMessage()" href="#">
                         <img src="../Contents/img/sendbtn.png" alt="" /></a></div>
                 <div class="filebutton">
-                    <input id="fileuploadImage" type="file" name="" />
+                    <input id="fileuploadImage" type="file" name="" onchange="showimage()" accept="image/*" />
                 </div>
-                <div class="fileupload_data"></div>
-                
-                <%-- <div style="width:20px; height:20px;"><img src=</div>--%>
+                <div id="showBlock" class="fileupload_data" style="background-color: #222222; border: 1px solid #000000;
+                    border-radius: 5px; color: #FFFFFF; display: block; margin-top: -1px; padding: 5px;"
+                    onclick="deleteimage()">
+                    <span style="float: right; margin-left: 5px"></span>
+                    <label style="float: right; font-size: small">
+                        Remove Image x
+                    </label>
+                </div>
             </div>
         </div>
         <%--    div for contact search--%>
@@ -966,9 +1124,6 @@ background-position:0 0;
                 <input type="text" value="" id="contactvalue" />
                 <a>
                     <img src="../Contents/img/search_box.png" width="16" height="16" alt="" /></a>
-
-
-                    
             </div>
             <div id="contactsearchresults" role="main">
                 <section id="contactsection" class="threefourth messages msg_view" style="margin: 0;">
@@ -976,62 +1131,61 @@ background-position:0 0;
              </section>
             </div>
         </div>
-
         <!--Rss page -->
-        <div class="rssfeed" style="display:none;">
+        <div class="rssfeed" style="display: none;">
             <span class="close_button b-close"><span id="Span1">X</span></span>
             <div class="add_rss">
                 <span>Add an RSS Feed</span>
             </div>
-            <div class="rssfeed_field">            
+            <div class="rssfeed_field">
                 <div class="rss_row">
-                    <div class="text_content">Feed URL</div>
+                    <div class="text_content">
+                        Feed URL</div>
                     <div class="text_field">
                         <input id="rssfeedurl" type="text" class="left" onblur="val_url(this.value);" />
-                        <div class="error_section">Please enter a valid URL.</div>
-                     </div>
-                     <div id="rssfeedsurlerror" class="error_indication">*</div>
+                        <div class="error_section">
+                            Please enter a valid URL.</div>
+                    </div>
+                    <div id="rssfeedsurlerror" class="error_indication">
+                        *</div>
                 </div>
-
                 <div class="rss_row">
-                    <div class="text_content">Prefix Text</div>
+                    <div class="text_content">
+                        Prefix Text</div>
                     <div class="text_field">
                         <input id="rssmessage" type="text" placeholder="New Blog Post!" />
                         <%--<div class="error_section">Please enter a valid URL.</div>--%>
-                     </div>
+                    </div>
                     <%-- <div class="error_indication">*</div>--%>
                 </div>
-
                 <div class="rss_row">
-                    <div class="text_content">Check for New Posts</div>
+                    <div class="text_content">
+                        Check for New Posts</div>
                     <div class="text_field">
-                         <select id="rssduration">
+                        <select id="rssduration">
                             <option value="1">1 Hour</option>
                             <option value="2">2 Hours</option>
                             <option value="3">3 Hour</option>
                             <option value="4">4 Hour</option>
                         </select>
-                     </div>
+                    </div>
                 </div>
-
                 <div class="rss_row">
-                    <div class="text_content">Send From</div>
+                    <div class="text_content">
+                        Send From</div>
                     <div class="text_field">
-                      <%--  <asp:DropDownList ID="ddlSendFrom" runat="server">
+                        <%--  <asp:DropDownList ID="ddlSendFrom" runat="server">
                         </asp:DropDownList>--%>
                         <select id="rss_users">
-                            
                         </select>
-                     </div>
+                    </div>
                 </div>
-
                 <div class="rss_row">
-                    <input id="saveRssFeeds"  type="button" class="inactive" value="Save"/>
+                    <input id="saveRssFeeds" type="button" class="inactive" value="Save" />
                 </div>
             </div>
         </div>
-
-          <%--popup for edit wooqueue--%>
+        <%--popup for edit wooqueue--%>
         <div id="woopopup" class="compose_box" style="">
             <span class="close_button b-close"><span id="Span3" onclick="closeonCompose()">X</span></span>
             <div class="newmsd">
@@ -1075,7 +1229,8 @@ background-position:0 0;
                 <div class="filebutton">
                     <input type="file" name="" id="file1" />
                 </div>
-                <div class="fileupload_data"></div>
+                <div class="fileupload_data">
+                </div>
                 <%-- <div style="width:20px; height:20px;"><img src=</div>--%>
             </div>
         </div>
@@ -1092,10 +1247,11 @@ background-position:0 0;
 
     $(document).ready(function () {
         //        $('#userinf').html(new Date().toString());
-      
-//        $('#userinf').html(new Date().toString());
+
+        //        $('#userinf').html(new Date().toString());
         SchedulerCompose();
         $("#ab_scheduler").hide();
+        $("#loginBox_scheduler").hide();
         $("#chktimepicker").hide();
     });
 
@@ -1103,6 +1259,7 @@ background-position:0 0;
     var totalmessagewords_scheduler = 140;
     $('#textareavaluetosendmessage_scheduler').bind('keyup', function () {
         debugger;
+        totalmessagewords_scheduler = Countmessagewordsc();
         $("#messageCount_scheduler").css('color', '#CDD3D3');
         var charactersUsed_scheduler = $(this).val().length;
 
@@ -1119,21 +1276,47 @@ background-position:0 0;
     });
 
 
+    //    $("#imgtimepicker").click(function () {
+    //        $("#chktimepicker").show();
+    //    });
+
+    //    $('#chktimepicker').timepicker({
+    //        showPeriod: true,
+    //        showLeadingZero: true,
+    //        onSelect: function (time) {
+    //            $("#timepickerforScheduler").val(time);
+    //            $("#chktimepicker").hide();
+    //            $("#timepickerforScheduler").attr('disabled', 'disabled');
+    //        }
+    //    });
+
+    //    $("#timepickerforScheduler").timepicker();
+
+    //    $("#imgtimepicker").click(function () {
+    //        $("#chktimepicker").show(); 
+    //    });
+    //    $("#chktimepicker").timepicker();
+
+
+
+    //    $("#timepickerforScheduler").timepicker();
+    //    $("#imgtimepicker").click(function () {
+    //        $("#timepickerforScheduler").timepicker("show");
+    //    });
+
+
+    $("#timepickerforScheduler").timepicker();
     $("#imgtimepicker").click(function () {
-        $("#chktimepicker").toggle();
+
+
+        $("#timepickerforScheduler").timepicker("show");
+
+        //        $('#timepickerforScheduler').timepicker({
+        //            showPeriod: true,
+        //            showLeadingZero: true
+        //        });
     });
 
-    $('#chktimepicker').timepicker({
-        showPeriod: true,
-        showLeadingZero: true,
-        onSelect: function (time) {
-            $("#timepickerforScheduler").val(time);
-            $("#chktimepicker").hide();
-            $("#timepickerforScheduler").attr('disabled', 'disabled');
-        }
-    });
-
-    //    $("#timepickerforscheduler").timepicker();
 
     var today = new Date();
 
@@ -1143,7 +1326,7 @@ background-position:0 0;
             debugger;
             var index = $.inArray(dates, datearr);
             if (index < 0) {
-                $('#adddates_scheduler').append('<div id="' + dates + '"  class="btn span12" style="width:47%;height:31px;"  ><b>' + dates + '</b> </ div><span id="' + dates + '" data-dismiss="alert" onclick="dateDivDelete(this.id);" class="close pull-right">×</span> </div>');
+                $('#adddates_scheduler').append('<div id="' + dates + '"  class="btn span12" style="width:47%;height:31px;cursor: default;"  ><b>' + dates + '</b> </ div></div>');
                 datearr.push(dates);
             }
             else {
@@ -1151,7 +1334,8 @@ background-position:0 0;
                 datearr.splice(index, 1);
             }
         },
-        minDate: today
+        minDate: today,
+        maxDate: "+6M"
 
     });
     closeonCompose();
@@ -1179,9 +1363,11 @@ background-position:0 0;
                    success: function (msg) {
                        debugger;
 
-                       var addmsg = msg.replace(/composemessage/g, "addAnotherProfileforMessage");
+                       var addmsg = msg.replace(/composemessage/g, "addAnotherProfileforMessage_scheduler");
                        $("#ab_scheduler").html(addmsg);
-                       $("#loginBox_scheduler").html(msg);
+
+                       var changeMethodName = msg.replace(/composemessage/g, "composemessage_scheduler");
+                       $("#loginBox_scheduler").html(changeMethodName);
 
                        var countinguserids_scheduler = document.getElementById('loginBox_scheduler');
                        var countdivofloginbox_scheduler = countinguserids_scheduler.getElementsByTagName('li');
@@ -1191,7 +1377,7 @@ background-position:0 0;
                            break;
                        }
 
-                       composemessage(firstid_scheduler, 'fb');
+                       composemessage_scheduler(firstid_scheduler, 'fb');
 
                    }
                });
@@ -1199,6 +1385,112 @@ background-position:0 0;
 
         }
     }
+
+
+
+
+    function Countmessagewords() {
+        var Fbidcount = 0;
+        var twtIdcount = 0;
+        var LinkedInIdcount = 0;
+        var totalmessagewords1 = 0;
+        var chkidforusertest = new Array();
+
+        var bindingofdata = document.getElementById('divformultiusers');
+        var countdiv = bindingofdata.getElementsByTagName('div');
+
+        for (var i = 0; i < countdiv.length; i++) {
+            chkidforusertest.push(countdiv[i].id);
+        }
+
+        if (chkidforusertest.indexOf(singleprofileid) == -1) {
+            chkidforusertest.push(singleprofileid);
+        }
+
+
+        for (var i = 0; i < chkidforusertest.length; i++) {
+
+            var arr = chkidforusertest[i].split('_');
+
+
+            if (arr[0].indexOf("fb") != -1) {
+                Fbidcount++;
+            }
+            if (arr[0].indexOf("twt") != -1) {
+                twtIdcount++;
+            }
+            if (arr[0].indexOf("lin") != -1) {
+                LinkedInIdcount++;
+            }
+        }
+
+        if (Fbidcount > 0 && twtIdcount == 0 && LinkedInIdcount == 0) {
+            totalmessagewords1 = 5000;
+        }
+        else if (Fbidcount >= 0 && twtIdcount == 0 && LinkedInIdcount > 0) {
+            totalmessagewords1 = 700;
+        }
+
+        else {
+            totalmessagewords1 = 140;
+        }
+
+        return totalmessagewords1;
+    }
+
+    function Countmessagewordsc() {
+        var Fbidcount = 0;
+        var twtIdcount = 0;
+        var LinkedInIdcount = 0;
+        var totalmessagewords1 = 0;
+        var chkidforusertest = new Array();
+
+        var bindingofdata = document.getElementById('divformultiusers_scheduler');
+        var countdiv = bindingofdata.getElementsByTagName('div');
+
+        for (var i = 0; i < countdiv.length; i++) {
+            chkidforusertest.push(countdiv[i].id);
+        }
+
+        if (chkidforusertest.indexOf(singleprofileid) == -1) {
+            chkidforusertest.push(singleprofileid);
+        }
+
+
+        for (var i = 0; i < chkidforusertest.length; i++) {
+
+            var arr = chkidforusertest[i].split('_');
+
+
+            if (arr[0].indexOf("fb") != -1) {
+                Fbidcount++;
+            }
+            if (arr[0].indexOf("twt") != -1) {
+                twtIdcount++;
+            }
+            if (arr[0].indexOf("lin") != -1) {
+                LinkedInIdcount++;
+            }
+        }
+
+        if (Fbidcount > 0 && twtIdcount == 0 && LinkedInIdcount == 0) {
+            totalmessagewords1 = 5000;
+        }
+        else if (Fbidcount >= 0 && twtIdcount == 0 && LinkedInIdcount > 0) {
+            totalmessagewords1 = 700;
+        }
+
+        else {
+            totalmessagewords1 = 140;
+        }
+
+        return totalmessagewords1;
+    }
+
+
+
+
+
 
 
 
@@ -1244,11 +1536,16 @@ background-position:0 0;
             var Selected_time = $("#timepickerforScheduler").val();
 
             if (Selected_time == "") {
-                alert("Please Must Select the Date and Time");
+                alert("Please Select the Date and Time !");
                 return false;
             }
 
             var message_scheduler = $("#textareavaluetosendmessage_scheduler").val();
+
+            if (message_scheduler == "") {
+                alert("Please enter any comments to schedule !");
+                return false;
+            }
 
 
             $("#sendMessageBtn_scheduler").html('<img src="../Contents/img/325.gif" alt="" />');
@@ -1267,12 +1564,14 @@ background-position:0 0;
                 }
             }
             if (datearr.length == 0) {
-                var today = new Date();
-                var dd = today.getDate();
-                var mm = today.getMonth() + 1; //January is 0!
-                var yyyy = today.getFullYear();
-                var date = mm + '/' + dd + '/' + yyyy;
-                datearr.push(date);
+                //                var today = new Date();
+                //                var dd = today.getDate();
+                //                var mm = today.getMonth() + 1; //January is 0!
+                //                var yyyy = today.getFullYear();
+                //                var date = mm + '/' + dd + '/' + yyyy;
+                //                datearr.push(date);
+                alert('Please Select the Date!');
+                return false;
             }
 
             if (message_scheduler != '') {
@@ -1280,8 +1579,8 @@ background-position:0 0;
                ({
                    type: "POST",
                    url: "../AjaxHome.aspx?op=schedulemessage&datearr[]=" + datearr + "&users[]=" + chkidforusertest + "&message=" + message_scheduler + "&time=" + timeforsch + "&clittime=" + now,
-                   data: '',
-                   contentType: "application/json; charset=utf-8",
+                   data: 'messagee=' + message_scheduler,
+                   // contentType: "application/json; charset=utf-8",
                    dataType: "html",
                    success: function (msg) {
                        debugger;
@@ -1294,13 +1593,13 @@ background-position:0 0;
         } catch (e) {
 
         }
-   }
+    }
 
 
 
 
 
-   
+
 
 
     /*************************MasterScript*****************************/
@@ -1358,7 +1657,7 @@ background-position:0 0;
         bindProfilesComposeMessage();
 
         $('#textareavaluetosendmessage').bind('keyup', function () {
-
+            totalmessagewords = Countmessagewords();
             var charactersUsed = $(this).val().length;
 
             if (charactersUsed > totalmessagewords) {
@@ -1468,4 +1767,3 @@ background-position:0 0;
 <link href="Contents/css/alertify.default.css" rel="stylesheet" type="text/css" />
 <script src="Contents/js/alertify.min.js" type="text/javascript"></script>
 </html>
-

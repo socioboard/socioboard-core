@@ -62,15 +62,14 @@ function publishcontent(id) {
 function saveDrafts() {
     debugger;
     try {
-        var message = $("#textareavaluetosendmessage_scheduler").val();
+        var message = $("#textareavaluetosendmessage_scheduler").val().trim();
         if (message != '') {
             debugger;
             $.ajax
         ({
             type: "POST",
             url: "../AjaxHome.aspx?op=savedrafts&message=" + message,
-            data: '',
-            contentType: "application/json; charset=utf-8",
+            data: 'messagee=' + encodeURIComponent(message),
             dataType: "html",
             success: function (msg) {
                 debugger;
@@ -407,7 +406,7 @@ function editDraftsMessage(id,msg) {
                     // return;
                 }
                 else if (parseInt(str.length) > 140) {
-                    alert('Message length must not graeater than 140 character!');
+                    alert('Message length must not greater than 140 character!');
                     editDraftsMessage(id, str);
                 }
                 else {

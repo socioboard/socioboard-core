@@ -51,8 +51,33 @@ namespace SocialSuitePro
 
         public void btnSearch_Click(object sender, EventArgs e)
         {
-            string searchRes = getresults(txtSearchText.Text);
-            searchresults.InnerHtml = "<ul id=\"message-list\">" + searchRes + "</ul>";
+            //string searchRes = getresults(txtSearchText.Text);
+            //searchresults.InnerHtml = "<ul id=\"message-list\">" + searchRes + "</ul>";
+
+            try
+            {
+                //if (!string.IsNullOrEmpty(txtSearchText.Text))
+                //{
+                    string searchRes = getresults(txtSearchText.Text);
+                    if (!string.IsNullOrEmpty(searchRes))
+                    {
+                        searchresults.InnerHtml = "<ul id=\"message-list\">" + searchRes + "</ul>";
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Keyword not found !');", true);
+                    }
+                //}
+
+                //else
+                //{
+                //    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Enter any desired name for search !');", true);
+                //}
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error : " + ex.StackTrace);
+            }
         }
 
         public string getresults(string keyword)
@@ -227,11 +252,11 @@ namespace SocialSuitePro
                 }
                 else
                 {
-                    //foreach (DiscoverySearch item in discoveryList)
-                    //{
-                    //    searchRes += this.BindData(item, i);
-                    //    i++;
-                    //}
+                    foreach (DiscoverySearch item in discoveryList)
+                    {
+                        searchRes += this.BindData(item, i);
+                        i++;
+                    }
                 }
 
             }

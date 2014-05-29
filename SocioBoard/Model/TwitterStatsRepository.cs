@@ -101,6 +101,28 @@ namespace SocioBoard.Model
             }
         }
 
+
+        public System.Collections.ArrayList getTotalTwitterStatsOfUser(Guid UserId)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    NHibernate.IQuery query = session.CreateSQLQuery("Select * from TwitterStats where UserId =:userid");
+                    query.SetParameter("userid", UserId);
+                    ArrayList alstTwtStats = new ArrayList();
+
+                    foreach (var item in query.List())
+                    {
+                        alstTwtStats.Add(item);
+                    }
+                    return alstTwtStats;
+
+                }
+            }
+        }
+
+
         public bool checkTwitterStatsExists(string TwtUserId, Guid Userid)
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())

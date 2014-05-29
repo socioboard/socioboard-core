@@ -115,6 +115,8 @@ namespace SocialSuitePro
                                         user.UserName = objgpAcc.GpUserName;
                                         user.ProfileUrl = objgpAcc.GpProfileImage;
                                         user.UserStatus = 1;
+                                        user.CreateDate = DateTime.Now;
+                                        user.ExpiryDate = DateTime.Now.AddDays(30);
                                         UserRepository.Add(user);
                                     }
                                     Session["LoggedUser"] = user;

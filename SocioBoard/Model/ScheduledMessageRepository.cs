@@ -512,7 +512,7 @@ namespace SocioBoard.Model
                     try
                     {
                         //Proceed action, to get all records of scheduled message.
-                        List<ScheduledMessage> lstschtime = session.CreateQuery("from ScheduledMessage where UserId =:userid")
+                        List<ScheduledMessage> lstschtime = session.CreateQuery("from ScheduledMessage where UserId =:userid order by ScheduleTime desc")
                         .SetParameter("userid", UserId)
                         .List<ScheduledMessage>()
                         .ToList<ScheduledMessage>();
@@ -565,6 +565,42 @@ namespace SocioBoard.Model
                 }//End Transaction
             }//End Session
         }
+
+
+
+
+
+
+        public List<ScheduledMessage> getAllSentMessagesOfUser(Guid UserId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action,to get all unread messages.
+                        List<ScheduledMessage> lstschtime = session.CreateQuery("from ScheduledMessage where Status = 1 and UserId =:userid order by ScheduleTime desc")
+                          .SetParameter("userid", UserId)
+                          .List<ScheduledMessage>()
+                          .ToList<ScheduledMessage>();
+
+                        //  List<ScheduledMessage> lstschtime = query.Enumerable<ScheduledMessage>().ToList<ScheduledMessage>();
+
+                        return lstschtime;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+
 
 
         /// <getWooQueueMessage>

@@ -162,30 +162,30 @@ namespace SocialSuitePro
                     if (!string.IsNullOrEmpty(user.ProfileUrl))
                     {  
                         
-                        userimg.InnerHtml = "<a href=\"../Settings/PersonalSettings.aspx\"><img id=\"loggeduserimg\" src=\"" + user.ProfileUrl + "\" alt=\"" + user.UserName + "\"/></a>";
+                        //userimg.InnerHtml = "<a href=\"../Settings/PersonalSettings.aspx\"><img id=\"loggeduserimg\" src=\"" + user.ProfileUrl + "\" alt=\"" + user.UserName + "\"/></a>";
                         if (user.TimeZone != null)
                         {
                             Datetime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToLongDateString() + " " + TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToShortTimeString() + " (" + user.TimeZone + ")";
-                            userinf.InnerHtml = Datetime;
+                            //userinf.InnerHtml = Datetime;
                         }
                         if (user.TimeZone == null)
                         {
                             Datetime = DateTime.Now.ToString();
-                            userinf.InnerHtml = Datetime;
+                            //userinf.InnerHtml = Datetime;
                         }
                     }
                     else
                     {
-                        userimg.InnerHtml = "<a href=\"../Settings/PersonalSettings.aspx\"><img id=\"loggeduserimg\" src=\"../Contents/img/blank_img.png\" alt=\"" + user.UserName + "\"/></a>";
+                        //userimg.InnerHtml = "<a href=\"../Settings/PersonalSettings.aspx\"><img id=\"loggeduserimg\" src=\"../Contents/img/blank_img.png\" alt=\"" + user.UserName + "\"/></a>";
                         if (user.TimeZone != null)
                         {
                             Datetime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToLongDateString() + " " + TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToShortTimeString() + " (" + user.TimeZone + ")";
-                            userinf.InnerHtml = Datetime;
+                            //userinf.InnerHtml = Datetime;
                         }
                         if (user.TimeZone == null)
                         {
                             Datetime = DateTime.Now.ToString();
-                            userinf.InnerHtml = Datetime;
+                            //userinf.InnerHtml = Datetime;
                         }
                     }
 

@@ -46,7 +46,7 @@
 							
 								<!-- Group -->
 								<div class="control-group">
-									<label class="control-label">Copons</label>
+									<label class="control-label">Coupons</label>
 									<div class="controls">
                                         <asp:TextBox ID="txtNews" runat="server" class="span10"></asp:TextBox>                                       
 										<span style="margin: 0;" class="btn-action single glyphicons circle_question_mark" data-toggle="tooltip" data-placement="top" data-original-title="First name is mandatory"><i></i></span>

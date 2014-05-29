@@ -67,15 +67,6 @@ namespace SocialSuitePro {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor incomTasks;
         
         /// <summary>
-        /// userimg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl userimg;
-        
-        /// <summary>
         /// usernm control.
         /// </summary>
         /// <remarks>
@@ -83,15 +74,6 @@ namespace SocialSuitePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl usernm;
-        
-        /// <summary>
-        /// userinf control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl userinf;
         
         /// <summary>
         /// master_facebook_connect control.
@@ -128,15 +110,6 @@ namespace SocialSuitePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor master_InstagramConnect;
-        
-        /// <summary>
-        /// master_GooglePlusConnect control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor master_GooglePlusConnect;
         
         /// <summary>
         /// inviteRedirect control.

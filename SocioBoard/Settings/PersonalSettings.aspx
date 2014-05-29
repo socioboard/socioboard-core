@@ -8,7 +8,26 @@
     <script src="../Contents/js/jquery.uploadify-3.1.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+
+            $("#ContentPlaceHolder1_btnSave").click(function () {
+                var fname = $('#ContentPlaceHolder1_txtFirstName').val();
+                if (fname == "") {
+                    alert('Please enter your first name');
+                    return false;
+                }
+                if (fname.indexOf(' ')!= -1) {
+                    alert('Please remove space from your first name');
+                    return false;
+                }
+                if (!validateEmail($('#ContentPlaceHolder1_txtEmail').val())) {
+                    alert('not valid email');
+                    return false;
+                }
+               
+            });
+
             $(".cngpwd").click(function () {
+                document.getElementById('txtOldPassword').value = "";
                 var pwd = $(".pwd").val();
                 var cpwd = $(".cpwd").val();
                 if (pwd != cpwd) {
@@ -22,6 +41,16 @@
                 }
             });
         });
+
+        function validateEmail($email) {
+            var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+            if (!emailReg.test($email)) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -54,17 +83,17 @@
                     <div class="first_name_last_name_div">
                         <%--<input type="text" id="txtFirstName" placeholder="First Name" runat="server" />--%>
                         <%--<input type="text" id="Text1" placeholder="Last Name" runat="server" />--%>
-                        <asp:TextBox ID="txtFirstName" runat="server"></asp:TextBox>
-                        <asp:TextBox ID="txtLastName" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtFirstName" placeholder="First Name" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtLastName" placeholder="Last Name" runat="server"></asp:TextBox>
                     </div>
                     <div class="email_div">
-                        <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtEmail" placeholder="Email" runat="server"></asp:TextBox>
                         <%-- <input type="text" id="txtEmail" placeholder="Email" runat="server" />--%>
                     </div>
                     <div class="first_name_last_name_div" id="change_password" style="display: none;">
                     <label>Current Password</label> 
                           <asp:TextBox  ID="txtOldPassword" runat="server" TextMode="Password" 
-                            AutoCompleteType="Disabled" required=""></asp:TextBox>
+                            AutoCompleteType="Disabled" autocomplete="off"></asp:TextBox>
                        <label>New Password</label> 
                         <asp:TextBox class="pwd" ID="txtPassword" runat="server" TextMode="Password" 
                             AutoCompleteType="Disabled"></asp:TextBox>
@@ -72,7 +101,7 @@
                         <asp:TextBox class="cpwd" ID="txtConfirmPassword" runat="server" TextMode="Password"></asp:TextBox>
                          <asp:Label class="lblerror" ID="Label1" runat="server" ForeColor="Red"></asp:Label>
                         <asp:CompareValidator ID="cvPassword" runat="server" ControlToCompare="txtPassword"
-                            ControlToValidate="txtConfirmPassword" ErrorMessage="Password Missmatch" 
+                            ControlToValidate="txtConfirmPassword" ErrorMessage="Password Mismatch" 
                             ValidationGroup="setting" ForeColor="Red" SetFocusOnError="True"></asp:CompareValidator>
                        
                         <%-- <div class="ws_tm_ps_button_div">--%>
@@ -90,8 +119,8 @@
                             <asp:Image ID="custImg" runat="server" />
                         </div>
                         <div class="personal_details">
-                            Team members will see the avatar you have set for <strong><em id="email_personal_for_setting"
-                                runat="server"></em>&nbsp;</strong>on Browse.
+                            Team members will see the avatar you have set. <%--for <strong><em id="email_personal_for_setting"
+                                runat="server"></em>&nbsp;</strong>on Browse.--%>
                             <br />
                             <asp:FileUpload ID="imgfileupload" runat="server" accept="image/*"/>
                             <asp:HiddenField ID="imghdn" runat="server" />
@@ -196,6 +225,7 @@
             <div class="ws_tm_button_div">
                 <asp:Button ID="btnSave" runat="server" Text="Save" ValidationGroup="setting" OnClick="btnSave_Click" />
                 <%--<input type="button" value="SAVE" id="btnSave" runat="server" onclick="btnSave_onclick" />--%>
+
             </div>
         </div>
     </div>

@@ -17,7 +17,7 @@
                         <div class="accordion-body collapse" id="collapseOne">
                             <div class="accordion-inner">
                                 <ul>
-                                    <li><a onclick="BindProfilesforNetwork('twitter')"><i  class="show icon-caret-right" style="visibility: visible; margin-right: 5px"></i>Your Followers</a>
+                                    <li><a onclick="BindProfilesforNetwork('twitter')"><i  class="show icon-caret-right" style="visibility: visible; margin-right: 5px"></i>Twitter Profile</a>
                                          <ul id="twitterprofilesoffeed"></ul>
                                     </li>
                                 <%--    <li><a onclick="GetTwitterSuggestions();" ><i  class="show icon-caret-right" style="visibility: visible; margin-right: 5px"></i>WooSuite Suggestions</a>--%>
@@ -268,6 +268,17 @@
         debugger;
 
         $(document).ready(function () {
+
+
+            $('#ContentPlaceHolder1_btnSearch').click(function () {
+                var txt = $('#ContentPlaceHolder1_txtSearchText').val();
+                if (txt.trim() == "") {
+                    alert('Enter any desired name for search !');
+                    return false;
+                }
+            });
+
+
             BindTwitterInDiscovery();
             GetSearchedKeyword();
             $("#smartsearch").click(function () {

@@ -256,16 +256,16 @@
 
 
 
-            try {
+//            try {
 
-                $('.accordion-toggle').click(function () {
-                    $('.accordion-toggle i').addClass("hidden");
-                    $(this).children("i").toggleClass("hidden");
-                    //$(".accordion-toggle .collapsed").removeClass("hidden");
-                });
-            } catch (e) {
+//                $('.accordion-toggle').click(function () {
+//                    $('.accordion-toggle i').addClass("hidden");
+//                    $(this).children("i").toggleClass("hidden");
+//                    //$(".accordion-toggle .collapsed").removeClass("hidden");
+//                });
+//            } catch (e) {
 
-            }
+//            }
             $(window).load(function () {
                 try {
                     $(".feedwrap > ul").mCustomScrollbar({

@@ -11,6 +11,7 @@ using Newtonsoft.Json.Linq;
 using SocioBoard.Helper;
 using GlobusGooglePlusLib.Authentication;
 using System.Configuration;
+using SocioBoard;
 namespace SocialSuitePro
 {
     public partial class AjaxLogin : System.Web.UI.Page
@@ -37,6 +38,8 @@ namespace SocialSuitePro
                 {
                     string email = Request.QueryString["username"];
                     string password = Request.QueryString["password"];
+                    Registration regpage = new Registration();
+                    password = regpage.MD5Hash(password);
                     SocioBoard.Helper.SessionFactory.configfilepath = Server.MapPath("~/hibernate.cfg.xml");
                     UserRepository userrepo = new UserRepository();
                     LoginLogs objLoginLogs = new LoginLogs();

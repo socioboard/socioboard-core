@@ -224,7 +224,7 @@ namespace SocialSuitePro
                                 "<img width=\"32\" height=\"32\" border=\"0\" class=\"avatar\" src=\"../Contents/img/task_pin.png\">" +
                                 "</section><section class=\"task-activity third\" style=\"width: 19.6%;\"><p>" + user.UserName + "</p><div>" + item.CreatedDate + " </div><p>" +
                                     //"</p></section><section style=\"margin-right: 6px; height: auto; width: 35%;\" class=\"task-message font-13 third\"><a onclick=\"writemessage(this.innerHTML);\" class=\"tip_left\">" + item.Message + "</a></section>" +
-                                 "</p></section><section style=\"margin-right: 6px; height: auto; width: 31%;\" class=\"task-message font-13 third\"><span class=\"tip_left\">" + item.Message + "</span></section>" +
+                                 "</p></section><section style=\"margin-right: 6px; height: auto; width: 31%;\" class=\"task-message font-13 third\"><span class=\"tip_left\">" +gethtmlfromstring(item.Message)+"</span></section>" +
                                     "<div class=\"userpictiny\" style=\"height:70px; margin-top: 0;\"><img alt=\"\" src=\"" + profurl + "\" />" +
                                  "</div>" +
                                  "<a class=\"small_remove icon publish_delete\" href=\"#\" style=\"top: 7px; float: right; margin-top: 13px; margin-right: 10px;\" title=\"Delete\" onclick=\"deleteDraftMessage('" + item.Id + "')\"></a>" +
@@ -264,6 +264,7 @@ namespace SocialSuitePro
                     try
                     {
                         string message = Request.QueryString["message"];
+                        message = Request.Form["messagee"];
                         Drafts d = new Drafts();
                         d.CreatedDate = DateTime.Now;
                         d.Message = message;
@@ -313,24 +314,23 @@ namespace SocialSuitePro
                                 {
                                     if (user.PaymentStatus.ToUpper() == "PAID")
                                     {
-                                        midsnaps += "<div class=\"span4 rounder recpro\"><button data-dismiss=\"alert\" class=\"close pull-right\" type=\"button\">×</button>" +
-                                             "<a href=\"#\"><img src=\"../Contents/img/admin/ads.png\"  alt=\"\" style=\"width:246px;height:331px\"></a></div>";
+                                        midsnaps += "";
 
                                     }
-                                    else
-                                    {
-                                        midsnaps += "<div class=\"span4 rounder recpro\">" +
-                                     "<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>" +
-                                   "<!-- socioboard -->" +
-                                               "<ins class=\"adsbygoogle\"style=\"display:inline-block;" +
-                                   "width:250px;height:250px\"" +
-                            " data-ad-client=\"ca-pub-7073257741073458\"" +
-                             " data-ad-slot=\"9533254693\"></ins>" +
-                           "<script>" +
-                        " (adsbygoogle = window.adsbygoogle || []).push({});" +
-                                               "</script>" +
-                                           "</div>";
-                                    }
+                        //            else
+                        //            {
+                        //                midsnaps += "<div class=\"span4 rounder recpro\">" +
+                        //             "<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>" +
+                        //           "<!-- socioboard -->" +
+                        //                       "<ins class=\"adsbygoogle\"style=\"display:inline-block;" +
+                        //           "width:250px;height:250px\"" +
+                        //    " data-ad-client=\"ca-pub-7073257741073458\"" +
+                        //     " data-ad-slot=\"9533254693\"></ins>" +
+                        //   "<script>" +
+                        //" (adsbygoogle = window.adsbygoogle || []).push({});" +
+                        //                       "</script>" +
+                        //                   "</div>";
+                        //            }
 
                                 }
                                 else
@@ -349,20 +349,20 @@ namespace SocialSuitePro
                                               "<a href=\"#\"><img src=\"" + temp.GetValue(2).ToString() + "\"  alt=\"\" style=\"width:246px;height:331px\"></a></div>";
 
                                                 }
-                                                else
-                                                {
-                                                    midsnaps += "<div class=\"span4 rounder recpro\">" +
-                                        "<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>" +
-                                      "<!-- socioboard -->" +
-                                                  "<ins class=\"adsbygoogle\"style=\"display:inline-block;" +
-                                      "width:250px;height:250px\"" +
-                               " data-ad-client=\"ca-pub-7073257741073458\"" +
-                                " data-ad-slot=\"9533254693\"></ins>" +
-                              "<script>" +
-                           " (adsbygoogle = window.adsbygoogle || []).push({});" +
-                                                  "</script>" +
-                                              "</div>";
-                                                }
+                           //                     else
+                           //                     {
+                           //                         midsnaps += "<div class=\"span4 rounder recpro\">" +
+                           //             "<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>" +
+                           //           "<!-- socioboard -->" +
+                           //                       "<ins class=\"adsbygoogle\"style=\"display:inline-block;" +
+                           //           "width:250px;height:250px\"" +
+                           //    " data-ad-client=\"ca-pub-7073257741073458\"" +
+                           //     " data-ad-slot=\"9533254693\"></ins>" +
+                           //   "<script>" +
+                           //" (adsbygoogle = window.adsbygoogle || []).push({});" +
+                           //                       "</script>" +
+                           //                   "</div>";
+                           //                     }
                                             }
                                         }
                                     }
@@ -606,7 +606,7 @@ namespace SocialSuitePro
 
                                         midsnaps += "<div id=\"mid_" + item.ProfileId + "\" style=\"height:333px;\" class=\"span4 rounder recpro\"><div class=\"concotop\">" +
                                            "<a href=\"" + liAccount.ProfileUrl + "\" target=\"_blank\"><img width=\"56\" height=\"56\" title=\"" + LdprofileName + "\" alt=\"\" src=\"" + LdPreofilePic + "\"></a>" +
-                                           "<a title=\"\" class=\"userurlpic\" href=\"#\"><img alt=\"\" src=\"../Contents/img/link_icon.png\" width=\"16\" height=\"16\"></a></div>" +
+                                           "<a title=\"\" class=\"userurlpic\" href=\"" + liAccount.ProfileUrl + "\"><img alt=\"\" src=\"../Contents/img/link_icon.png\" width=\"16\" height=\"16\"></a></div>" +
                                            "<a href=\"" + liAccount.ProfileUrl + "\" target=\"_blank\"><div class=\"useraccname\">" + LdprofileName + "</div></a><div class=\"usercounter\">" +
                                            "<div class=\"userfoll\">" + linkedinConcount + "<span><b style=\"font-size: 13px;\">Connections</b></span></div>" +
                                            "<div class=\"userppd\">" + Math.Round(rNum.NextDouble(), 2) + "<span>Avg. Post <br> Per Day</span></div></div></div>" +
@@ -784,12 +784,12 @@ namespace SocialSuitePro
                         {
                             FacebookAccountRepository fbrepo = new FacebookAccountRepository();
                             int delacc = fbrepo.deleteFacebookUser(profileid, user.Id);
-                            if (delacc != 0)
+                            if (delacc > 0)
                             {
 
                                 socioprofilerepo.deleteProfile(user.Id, profileid);
                                 List<SocialProfile> lstsocioprofile = socioprofilerepo.checkProfileExistsMoreThanOne(profileid);
-                                if (lstsocioprofile.Count == 0)
+                                if (lstsocioprofile.Count >= 0)
                                 {
                                     FacebookMessageRepository fbmsgrepo = new FacebookMessageRepository();
                                     fbmsgrepo.deleteAllMessagesOfUser(profileid, user.Id);
@@ -815,11 +815,11 @@ namespace SocialSuitePro
                         {
                             TwitterAccountRepository twtaccountrepo = new TwitterAccountRepository();
                             int deltwtacc = twtaccountrepo.deleteTwitterUser(user.Id, profileid);
-                            if (deltwtacc != 0)
+                            if (deltwtacc > 0)
                             {
                                 socioprofilerepo.deleteProfile(user.Id, profileid);
                                 List<SocialProfile> lstsocioprofile = socioprofilerepo.checkProfileExistsMoreThanOne(profileid);
-                                if (lstsocioprofile.Count == 0)
+                                if (lstsocioprofile.Count >= 0)
                                 {
                                     TwitterMessageRepository twtmsgrepo = new TwitterMessageRepository();
                                     int d = twtmsgrepo.deleteTwitterMessage(profileid, user.Id);
@@ -844,7 +844,7 @@ namespace SocialSuitePro
                         {
                             LinkedInAccountRepository linkedaccrepo = new LinkedInAccountRepository();
                             int dellinacc = linkedaccrepo.deleteLinkedinUser(profileid, user.Id);
-                            if (dellinacc != 0)
+                            if (dellinacc > 0)
                             {
 
 
@@ -852,7 +852,7 @@ namespace SocialSuitePro
 
                                 List<SocialProfile> lstsocioprofile = socioprofilerepo.checkProfileExistsMoreThanOne(profileid);
 
-                                if (lstsocioprofile.Count == 0)
+                                if (lstsocioprofile.Count >= 0)
                                 {
                                     LinkedInFeedRepository linkedfeedrepo = new LinkedInFeedRepository();
                                     int s = linkedfeedrepo.deleteAllFeedsOfUser(profileid, user.Id);
@@ -874,7 +874,7 @@ namespace SocialSuitePro
                         {
                             InstagramAccountRepository insaccrepo = new InstagramAccountRepository();
                             int insacc = insaccrepo.deleteInstagramUser(profileid, user.Id);
-                            if (insacc != 0)
+                            if (insacc > 0)
                             {
 
 
@@ -882,7 +882,7 @@ namespace SocialSuitePro
 
                                 List<SocialProfile> lstsocioprofile = socioprofilerepo.checkProfileExistsMoreThanOne(profileid);
 
-                                if (lstsocioprofile.Count == 0)
+                                if (lstsocioprofile.Count >= 0)
                                 { }
 
                             }
@@ -899,14 +899,14 @@ namespace SocialSuitePro
                         {
                             GooglePlusAccountRepository googleplusaccrepo = new GooglePlusAccountRepository();
                             int gplusacc = googleplusaccrepo.deleteGooglePlusUser(profileid, user.Id);
-                            if (gplusacc != 0)
+                            if (gplusacc > 0)
                             {
 
                                 socioprofilerepo.deleteProfile(user.Id, profileid);
 
                                 List<SocialProfile> lstsocioprofile = socioprofilerepo.checkProfileExistsMoreThanOne(profileid);
 
-                                if (lstsocioprofile.Count == 0)
+                                if (lstsocioprofile.Count >= 0)
                                 {
                                 }
 
@@ -1076,11 +1076,105 @@ namespace SocialSuitePro
                     }
                     Response.Write(profiles);
                 }
+
+
+
+
+                else if (Request.QueryString["op"] == "MasterComposesc")
+                {
+                    string profiles = string.Empty;
+
+                    if (Session["profilesforcomposemessage"] == null)
+                    {
+                        profiles += "<div class=\"drop_top\"></div><div class=\"drop_mid\">";
+
+                        /*facebook users binding*/
+                        FacebookAccountRepository fbrepo = new FacebookAccountRepository();
+                        ArrayList lstfbaccounts = fbrepo.getFacebookAccountsOfUser(user.Id);
+
+
+                        profiles += "<div class=\"twitte_text\">FACEBOOK</div><div class=\"teitter\"><ul>";
+
+                        if (lstfbaccounts.Count == 0)
+                        {
+                            profiles += "<li>No Records Found</li>";
+                        }
+                        else
+                        {
+                            foreach (FacebookAccount fbacc in lstfbaccounts)
+                            {
+                                profiles += "<li nwtk='fb' class=\"getAllNetworkProfile\" id=\"liid_" + fbacc.FbUserId + "\"   onclick=\"composemessage(this.id,'fb')\"><a><img id=\"img_" + fbacc.FbUserId + "\" src=\"../Contents/img/facebook.png\" alt=\"" + fbacc.AccessToken + "\" border=\"none\" width=\"18\" style=\"float:left;\" /><span id=\"composename_" + fbacc.FbUserId + "\" style=\"float:left;margin: 3px 0 0 5px;\">" + fbacc.FbUserName + "</span><span id=\"imgurl_" + fbacc.FbUserId + "\" style=\"display:none;\">http://graph.facebook.com/" + fbacc.FbUserId + "/picture?type=small</span></a></li>";
+                            }
+                        }
+                        profiles += "</ul> </div>";
+
+
+                        /*twitter users binding*/
+                        TwitterAccountRepository twtaccountrepo = new TwitterAccountRepository();
+                        ArrayList alsttwtaccounts = twtaccountrepo.getAllTwitterAccountsOfUser(user.Id);
+                        profiles += "<div class=\"twitte_text\">TWITTER</div><div class=\"teitter\"><ul>";
+
+                        if (alsttwtaccounts.Count == 0)
+                        {
+                            profiles += "<li>No Records Found</li>";
+                        }
+                        else
+                        {
+                            foreach (SocioBoard.Domain.TwitterAccount item in alsttwtaccounts)
+                            {
+                                profiles += "<li nwtk='twt' class=\"getAllNetworkProfile\" id=\"liid_" + item.TwitterUserId + "\"   onclick=\"composemessage(this.id,'twt')\"><a><img id=\"img_" + item.TwitterUserId + "\" src=\"../Contents/img/twitter.png\" alt=\"" + item.OAuthToken + "\" border=\"none\" width=\"18\" style=\"float:left;\" /><span id=\"imgurl_" + item.TwitterUserId + "\" style=\"display:none;\">" + item.ProfileImageUrl + "</span><span id=\"composename_" + item.TwitterUserId + "\" style=\"float:left;margin: 3px 0 0 5px;\">" + item.TwitterScreenName + "</span></a></li>";
+                            }
+                        }
+                        profiles += "</ul> </div>";
+
+
+                        /*linkedinuserbinding*/
+                        LinkedInAccountRepository linkaccountrepo = new LinkedInAccountRepository();
+                        ArrayList alstlinkacc = linkaccountrepo.getAllLinkedinAccountsOfUser(user.Id);
+                        profiles += "<div class=\"twitte_text\">LINKEDIN</div><div class=\"teitter\"><ul>";
+
+                        if (alstlinkacc.Count == 0)
+                        {
+                            profiles += "<li>No Records Found</li>";
+                        }
+                        else
+                        {
+
+                            foreach (LinkedInAccount item in alstlinkacc)
+                            {
+                                string profileurl = string.Empty;
+
+                                if (!string.IsNullOrEmpty(item.ProfileImageUrl))
+                                {
+                                    profileurl = item.ProfileImageUrl;
+                                }
+                                else
+                                {
+                                    profileurl = "../../Contents/img/blank_img.png";
+                                }
+                                profiles += "<li nwtk='lin' class=\"getAllNetworkProfile\" id=\"liid_" + item.LinkedinUserId + "\"   onclick=\"composemessage(this.id,'lin')\"><a><img id=\"img_" + item.LinkedinUserId + "\" src=\"../Contents/img/link.png\" alt=\"" + item.OAuthToken + "\" border=\"none\" width=\"18\" style=\"float:left;\" /><span id=\"imgurl_" + item.LinkedinUserId + "\" style=\"display:none;\">" + profileurl + "</span><span id=\"composename_" + item.LinkedinUserId + "\" style=\"float:left;margin: 3px 0 0 5px;\">" + item.LinkedinUserName + "</span></a></li>";
+                            }
+                        }
+                        profiles += "</ul> </div>";
+                        Session["profilesforcomposemessage"] = profiles;
+                    }
+                    else
+                    {
+                        profiles = (string)Session["profilesforcomposemessage"];
+                    }
+                    Response.Write(profiles);
+                }
+
+                  
+
+
                 else if (Request.QueryString["op"] == "sendmessage")
                 {
-
+                    string messagecount = string.Empty;
                     string message = Request.QueryString["message"];
+                    //message = Request.Form["massagee"];
                     var userid = Request.QueryString["userid[]"].Split(',');
+                    //var userid = Request.Form["userid[]"].Split(',');
                     var files = Request.Files.Count;
                     var fi = Request.Files["file"];
                     string file = string.Empty;
@@ -1242,7 +1336,37 @@ namespace SocialSuitePro
 
                             }
                         }
+
+                        string profiletype="";
+                        if(networkingwithid[0] == "fb")
+                        {
+                        profiletype="facebook";
+                        }
+                        else if(networkingwithid[0] == "twt")
+                        {
+                         profiletype="twitter";
+                        }
+                         else if(networkingwithid[0] == "lin")
+                        {
+                         profiletype="linkedin";
+                        }
+
+                        ScheduledMessageRepository objScheduledMessageRepository = new ScheduledMessageRepository();
+                        ScheduledMessage objScheduledMessage = new ScheduledMessage();
+                        objScheduledMessage.ShareMessage = message;
+                        objScheduledMessage.ClientTime = DateTime.Now;
+                        objScheduledMessage.ScheduleTime = DateTime.Now;
+                        objScheduledMessage.CreateTime = DateTime.Now;
+                        objScheduledMessage.Status = true;
+                        objScheduledMessage.UserId = user.Id;
+                        objScheduledMessage.ProfileType = profiletype;
+                        objScheduledMessage.ProfileId = networkingwithid[1];
+                        objScheduledMessageRepository.addNewMessage(objScheduledMessage);
+                        messagecount = objScheduledMessageRepository.getAllSentMessagesOfUser(user.Id).Count().ToString();
                     }
+                    // = objScheduledMessageRepository.getAllSentMessagesOfUser(user.Id).Count().ToString();
+                    Response.Write("~"+messagecount);
+
                 }
                 else if (Request.QueryString["op"] == "wooqueue_messages")
                 {
@@ -1254,6 +1378,7 @@ namespace SocialSuitePro
                     var userid = Request.QueryString["users[]"].Split(',');
                     var datearr = Request.QueryString["datearr[]"].Split(',');
                     string message = Request.QueryString["message"];
+                    message = Request.Form["messagee"];
                     ScheduledMessageRepository schmsgrepo = new ScheduledMessageRepository();
                     string time = Request.QueryString["time"];
                     string clienttime = Request.QueryString["clittime"];
@@ -1278,7 +1403,7 @@ namespace SocialSuitePro
                                     schmessage.Id = Guid.NewGuid();
                                     schmessage.PicUrl = string.Empty;
                                     schmessage.ClientTime = Convert.ToDateTime(clienttime);
-                                    string servertime = this.CompareDateWithServer(clienttime, child + " " + time);
+                                    string servertime = this.CompareDateWithclient(clienttime, child + " " + time);
                                     schmessage.ScheduleTime = Convert.ToDateTime(servertime);
                                     schmessage.ShareMessage = message;
                                     schmessage.UserId = user.Id;
@@ -1329,6 +1454,7 @@ namespace SocialSuitePro
                 }
                 else if (Request.QueryString["op"] == "insight")
                 {
+                    string check = "";
                     FacebookAccount objFacebookAccount = (FacebookAccount)Session["fbpagedetail"];
                     FacebookHelper objFbHelper = new FacebookHelper();
                     SocialProfile socioprofile = new SocialProfile();
@@ -1337,6 +1463,7 @@ namespace SocialSuitePro
                     FacebookClient fbClient = new FacebookClient(objFacebookAccount.AccessToken);
                     int fancountPage = 0;
                     dynamic fancount = fbClient.Get("fql", new { q = " SELECT fan_count FROM page WHERE page_id =" + Request["id"].ToString() });
+                   
                     foreach (var friend in fancount.data)
                     {
                         fancountPage = Convert.ToInt32(friend.fan_count);
@@ -1366,6 +1493,8 @@ namespace SocialSuitePro
                     }
                     else
                     {
+                        check = "exist";
+                        Session["alreadypageexist"] = objFacebookAccount;
                         fbrepo.updateFacebookUser(objFacebookAccount);
                         if (!socioprofilerepo.checkUserProfileExist(socioprofile))
                         {
@@ -1376,6 +1505,15 @@ namespace SocialSuitePro
                             socioprofilerepo.updateSocialProfile(socioprofile);
                         }
                     }
+
+                    //get facebookpagefeeds
+                    fbClient = new FacebookClient(objFacebookAccount.AccessToken);
+                    FacebookHelper fbhelper = new FacebookHelper();
+                    var feeds = fbClient.Get("/" + Request["id"].ToString() + "/feed");
+                    dynamic profile = fbClient.Get(Request["id"].ToString());
+                    fbhelper.getFacebookUserFeeds(feeds, profile);
+                    //end facebookpagefeeds
+
                     Session["fbSocial"] = null;
                     Response.Write(RemainingAccount(user));
                 }
@@ -1508,17 +1646,22 @@ namespace SocialSuitePro
                         foreach (ScheduledMessage item in lstschMsg)
                         {
 
+                            if(item.ShareMessage=="qweqweqweqweAbhay")
+                            {
+                                string checll = "";
+                            }
+
                             schmessages += "<section class=\"section\"><div  class=\"js-task-cont read\">" +
                                                      "<section class=\"task-owner\">" +
                                                          "<img width=\"32\" height=\"32\" border=\"0\" src=\"" + profurl + "\" class=\"avatar\">" +
                                                      "</section>" +
                                                      "<section class=\"task-activity third\">" +
                                                          "<p>" + user.UserName + "</p>" +
-                                                         "<div>" + item.CreateTime + "</div>" +
+                                                         "<div>" + CompareDateWithServerNew(item.ClientTime,item.CreateTime,item.ScheduleTime)+ "</div>" +
                                                          "<input type=\"hidden\" value=\"#\" id=\"hdntaskid_1\">" +
                                                          "<p></p>" +
                                                    "</section>" +
-                                                   "<section class=\"task-message font-13 third\" style=\"height: auto; width: 31%; margin-right: 9px;\"><a class=\"tip_left\">" + item.ShareMessage + "</a></section>";
+                                                   "<section class=\"task-message font-13 third\" style=\"height: auto; width: 31%; margin-right: 9px;\"><a class=\"tip_left\">" +gethtmlfromstring(item.ShareMessage) + "</a></section>";
 
                             if (item.ProfileType == "facebook")
                             {
@@ -1671,6 +1814,61 @@ namespace SocialSuitePro
             return schedule.ToString();
         }
 
+
+        public string CompareDateWithclient(string clientdate, string scheduletime)
+        {
+            DateTime client = Convert.ToDateTime(clientdate);
+            string strTimeNow = String.Format("{0:s}", client).Replace('T', ' ');
+
+            DateTime server = DateTime.Now;
+            DateTime schedule = Convert.ToDateTime(scheduletime);
+            if (DateTime.Compare(client, server) > 0)
+            {
+
+                double minutes = (server - client).TotalMinutes;
+                schedule = schedule.AddMinutes(-minutes);
+
+            }
+            else if (DateTime.Compare(client, server) == 0)
+            {
+
+            }
+            else if (DateTime.Compare(client, server) < 0)
+            {
+                double minutes = (server - client).TotalMinutes;
+                schedule = schedule.AddMinutes(-minutes);
+            }
+            return schedule.ToString();
+        }
+
+
+        public string CompareDateWithServerNew(DateTime clientdate, DateTime server, DateTime scheduletime)
+        {
+            DateTime client = Convert.ToDateTime(clientdate);
+            string strTimeNow = String.Format("{0:s}", client).Replace('T', ' ');
+            DateTime schedule = Convert.ToDateTime(scheduletime);
+            if (DateTime.Compare(client, server) > 0)
+            {
+
+                double minutes = (server - client).TotalMinutes;
+                schedule = schedule.AddMinutes(minutes);
+
+            }
+            else if (DateTime.Compare(client, server) == 0)
+            {
+
+            }
+            else if (DateTime.Compare(client, server) < 0)
+            {
+                double minutes = (server - client).TotalMinutes;
+                schedule = schedule.AddMinutes(minutes);
+            }
+            return schedule.ToString();
+        }
+
+
+
+
         public void updatequeue(string id, string stat)
         {
             bool check = false;
@@ -1684,6 +1882,14 @@ namespace SocialSuitePro
                 check = false;
             }
             obj.UpdateProfileScheduleMessageStat(Guid.Parse(id), check);
+        }
+
+        public string gethtmlfromstring(string str)
+        {
+            string ret = string.Empty;
+
+            ret = str.Replace("\n", "</br>");
+            return ret;
         }
 
 

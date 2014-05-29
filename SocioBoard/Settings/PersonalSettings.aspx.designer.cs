@@ -112,15 +112,6 @@ namespace SocialSuitePro.Settings {
         protected global::System.Web.UI.WebControls.Image custImg;
         
         /// <summary>
-        /// email_personal_for_setting control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl email_personal_for_setting;
-        
-        /// <summary>
         /// imgfileupload control.
         /// </summary>
         /// <remarks>

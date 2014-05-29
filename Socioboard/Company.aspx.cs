@@ -18,9 +18,11 @@ namespace SocioBoard
         {
             if (Session["response"] != null)
             {
+                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Mail send successfully! ');", true);
+
                 ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert(" + Session["response"].ToString() + ");", true);
-                Label1.Attributes.CssStyle.Add("margin-left", "7%");
-                Label1.Text = "Mail  send successfully";
+                //Label1.Attributes.CssStyle.Add("margin-left", "7%");
+                //Label1.Text = "Mail  send successfully";
                 Session["response"] = null;
                 Session["career"] = null;
                 Session["careerinfo"] = null;
@@ -125,7 +127,7 @@ namespace SocioBoard
                         Response.Redirect("Company.aspx#verticalTab4|company4");
                     }
                     int size = ((cvfile.PostedFile.ContentLength) / 1024);
-                    if (size > 3)
+                    if (size > 300)
                     {
                         Session["career"] = "bigsize";
                         Response.Redirect("Company.aspx#verticalTab4|company4");

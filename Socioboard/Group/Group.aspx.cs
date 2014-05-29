@@ -64,18 +64,19 @@ namespace SocialScoup.Group
                         objFacebookAccount = (SocioBoard.Domain.FacebookAccount)item;
                         leftsidedata += "<div class=\"accordion-group\"><div class=\"accordion-heading\">"
                             + "<a href=\"#" + objFacebookAccount.Id + "\" data-parent=\"#accordion2\" data-toggle=\"collapse\" class=\"accordion-toggle\">"
-                               + "<img class=\"fesim\" src=\"http://graph.facebook.com/"+objFacebookAccount.FbUserId+"/picture?type=small\" alt=\"\" />" + objFacebookAccount.FbUserName + " <i class=\"icon-sort-down pull-right hidden\">"
+                               + "<img width=\"19\" class=\"fesim\" src=\"http://graph.facebook.com/"+objFacebookAccount.FbUserId+"/picture?type=small\" alt=\"\" />" + objFacebookAccount.FbUserName + " <i class=\"icon-sort-down pull-right hidden\">"
                                 + "</i></a></div><div id=\"" + objFacebookAccount.Id + "\" class=\"accordion-body collapse\" ><div class=\"accordion-inner\"><ul>";
                         List<FacebookGroup> lstFacebookGroup = GetGroupName(objFacebookAccount.AccessToken);
                         if (lstFacebookGroup.Count == 0)
                         {
-                            leftsidedata += "<li><a  fbUserId=\"" + objFacebookAccount.FbUserId + "\" href=\"#\">No Group Found</a> </li>";
+                          //  leftsidedata += "<li><a  fbUserId=\"" + objFacebookAccount.FbUserId + "\" href=\"#\">No Group Found</a> </li>";
+                            leftsidedata += "<li><a  fbUserId=\"" + objFacebookAccount.FbUserId + "\">No Group Found</a> </li>";
                         }
                         else
                         {
                             foreach (var item1 in lstFacebookGroup)
                             {
-                                leftsidedata += "<li><a gid=\"" + item1.GroupId + "\" onclick=\"facebookgroupdetails('" + item1.GroupId + "','" + objFacebookAccount.AccessToken + "');\" fbUserId=\"" + objFacebookAccount.FbUserId + "\" href=\"#\">" + item1.Name + "</a> </li>";
+                                leftsidedata += "<li class=\"grpli\"><a gid=\"" + item1.GroupId + "\" onclick=\"facebookgroupdetails('" + item1.GroupId + "','" + objFacebookAccount.AccessToken + "');\" fbUserId=\"" + objFacebookAccount.FbUserId + "\" href=\"#\">" + item1.Name + "</a> </li>";
                             }
                         }
                         leftsidedata += "</ul></div></div></div>";

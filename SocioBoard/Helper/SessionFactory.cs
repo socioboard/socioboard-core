@@ -23,7 +23,7 @@ namespace SocioBoard.Helper
 
 
         public static string configfilepath { get; set; }
-        
+
         public static void Init()
         {
             try

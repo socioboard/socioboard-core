@@ -57,7 +57,7 @@ namespace SocialSuitePro
                     }
                     else if (Session["login"] != null)
                     {
-                        if (Session["login"].ToString() == "facebook")
+                        if (Session["login"].ToString() == "facebook" || Session["login"].ToString() == "googleplus")
                         {
                             UserRepository userrepo = new UserRepository();
                             user = (User)Session["LoggedUser"];
@@ -117,20 +117,31 @@ namespace SocialSuitePro
 
         private void GetAccessToken()
         {
+            User user = new SocioBoard.Domain.User();
             string code = Request.QueryString["code"];
             if (code == null)
             {
                 Response.Redirect("Home.aspx");
             }
-            User user = null;
+            if (Session["login"]!= null)
+            {
+                if (Session["login"].ToString() == "googleplus")
+                {
+                    user = (User)Session["LoggedUser"];
+                }
+                else
+                {
+                    user = null;
+                }
+            }
             if (Session["login"] != null)
             {
-                if (Session["login"].ToString() == "facebook")
+                if (Session["login"].ToString() == "facebook" )
                 {
                     user = new User();
 
                     user.CreateDate = DateTime.Now;
-                    user.ExpiryDate = DateTime.Now.AddMonths(1);
+                    user.ExpiryDate = DateTime.Now.AddDays(30);
                     user.Id = Guid.NewGuid();
                     user.PaymentStatus = "unpaid";
                 }
@@ -190,7 +201,7 @@ namespace SocialSuitePro
             bool isfbemailexist = false;
             if (Session["login"] != null)
             {
-                if (Session["login"].ToString() == "facebook")
+                if (Session["login"].ToString() == "facebook" )
                 {
                     try
                     {

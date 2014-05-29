@@ -107,6 +107,42 @@
             //                    });
             //                });
         });
+
+
+
+        function showimage() {
+
+            try {
+                var filesinput = $('#fileuploadImage');
+
+                debugger;
+
+                if (filesinput !== 'undefined' && filesinput[0].files[0] !== null) {
+                    $('#showBlock').css('display', 'block');
+
+                }
+            } catch (e) {
+
+            }
+        }
+        function deleteimage() {
+
+            try {
+                var filesinput = $('#fileuploadImage');
+
+                debugger;
+
+                if (filesinput !== 'undefined') {
+                    $('#showBlock').css('display', 'none');
+                    // $('#fileuploadImage').val() = "";
+                    document.getElementById('fileuploadImage').value = "";
+
+                }
+            } catch (e) {
+
+            }
+        }
+
     </script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -121,7 +157,7 @@
                     <a href="../Home.aspx">
                         <img src="../Contents/img/under_sspro_logo.png" alt="Socio Board" /></a>
                 </div>
-                <div id="infocontainer" style="width: 742px;">
+                <div id="infocontainer" style="width: 641px;">
                     <div id="msgcontainer">
                         <div id="msgcontent">
                             <a href="../Message/Messages.aspx">
@@ -133,9 +169,8 @@
                     Information! Now You have <a href="~/Message/Messages.aspx" id="incomMessages" runat="server">
                         25</a> Incoming Message and <a runat="server" id="incomTasks" href="../Message/Task.aspx">
                             0</a> Task <a class="premium" href="../Referral.aspx">Get free Premium Account</a>
-                    <a href="../Default.aspx?type=logout" class="woo_logout" style="text-decoration: none;
-                        color: #CECECE;">
-                        <img src="../Contents/img/logout_woo.png" style="margin-right: 4px;" alt="" />Logout</a>
+                    
+
                     <div id="errsuccess" class="greenerrormsg">
                         <span id="errsuccessmsg" class="msg">Successfull your work</span> <span class="cross">
                             X</span></div>
@@ -143,7 +178,7 @@
                 <div id="cmposecontainer" runat="server">
                     <div id="composecontent">
                         <a href="#">
-                            <img src="../Contents/img/admin/111.png" />
+                            <img src="../Contents/img/admin/111.png" width="20" />
                             Compose</a>
                     </div>
                     <div id="searchcontent">
@@ -151,6 +186,11 @@
                             <img src="../Contents/img/admin/061.png" /></a>
                     </div>
                 </div>
+
+                <a href="../Default.aspx?type=logout" class="woo_logout" style="text-decoration: none;
+                        color: #767676;">
+                        <img src="../Contents/img/logout_woo.png" style="margin-right: 4px;" alt="" />Logout</a>
+
             </div>
         </div>
         <%--<div id="actdiv" runat=server> <span >Your accout is not yet activated.Check your E-mail to activate your account.</span><a href="#">Resend Mail</a></div>--%>
@@ -159,30 +199,30 @@
         <div id="navi">
             <div class="container">
                 <div id="usercontainer">
-                    <div id="userimg" runat="server">
-                    </div>
+                    <%--<div id="userimg" runat="server">
+                    </div>--%>
                     <div id="usernm" runat="server">
                     </div>
-                    <div id="userinf" runat="server">
-                    </div>
+                    <%--<div id="userinf" runat="server">
+                    </div>--%>
                 </div>
                 <div class="navbar pull-right">
                     <div class="navbar-inner">
                         <ul class="nav">
                             <li id="home" class="active"><a href="../Home.aspx">
-                                <img src="../Contents/img/admin/home.png" alt="" /><span>Home</span></a> </li>
+                                <img src="../Contents/img/admin/home.png" alt="" width="40" /><span>Home</span></a> </li>
                             <li id="message"><a href="../Message/Messages.aspx">
-                                <img src="../Contents/img/admin/mail.png" alt="" /><span>Message</span></a> </li>
+                                <img src="../Contents/img/admin/mail.png" alt="" width="40" /><span>Message</span></a> </li>
                             <li id="feeds"><a href="../Feeds/Feeds.aspx">
-                                <img src="../Contents/img/admin/feeds.png" alt="" /><span>Feeds</span></a> </li>
+                                <img src="../Contents/img/admin/feeds.png" alt="" width="40" /><span>Feeds</span></a> </li>
                             <li id="publishing"><a href="../Publishing.aspx">
-                                <img src="../Contents/img/admin/publishing.png" alt="" /><span>Publishing</span></a> </li>
+                                <img src="../Contents/img/admin/publishing.png" alt="" width="40" /><span>Publishing</span></a> </li>
                             <li id="discovery"><a href="../Discovery.aspx">
-                                <img src="../Contents/img/admin/discovery.png" alt="" /><span>Discovery</span></a> </li>
+                                <img src="../Contents/img/admin/discovery.png" alt="" width="40" /><span>Discovery</span></a> </li>
                             <li id="reports"><a href="../Reports/GroupStats.aspx">
-                                <img src="../Contents/img/admin/reports.png" alt="" /><span>Reports</span></a> </li>
+                                <img src="../Contents/img/admin/reports.png" alt="" height="40" /><span>Reports</span></a> </li>
                             <li id="Li1"><a href="../Group/Group.aspx">
-                                <img src="../Contents/img/admin/group.png" alt="" /><span>Groups</span></a> </li>
+                                <img src="../Contents/img/admin/group.png" alt="" width="40" /><span>Groups</span></a> </li>
                         </ul>
                     </div>
                 </div>
@@ -199,8 +239,8 @@
                                             <img src="../Contents/img/891.png" alt="" /></a></li>
                                     </ul>--%>
                                 </li>
-                                <li id="addico"><a>
-                                    <img  id="imgaddico" src="../Contents/img/admin/addico.png" alt="" /></a>
+                                <li><a id="addico">
+                                    <img  id="imgaddico" src="../Contents/img/admin/addico.png" alt="" title="Social Media" /></a>
                                     <div id="addicbox" style="display: none;">
                                         <div class="drop_top_left_poin">
                                         </div>
@@ -258,21 +298,22 @@
                                     </div>
                                 </li>
                                 <li id="masterInvite"><a id="master_invite">
-                                    <img src="../Contents/img/admin/user2.png" alt="" /></a>
+                                    <img src="../Contents/img/admin/user2.png" alt="" title="Title" /></a>
                                     <div id="inviteTeam" style="display: none;">
                                         <div class="drop_top">
                                         </div>
                                         <div class="drop_mid loginbox">
                                             <div class="teitter">
                                                 <ul id="inviteRedirect" runat="server">
-                                                    <li><a id="GroupNone">No Groups Found </a></li>
+                                                    <%--<li><a id="GroupNone">No Groups Found </a></li>--%>
+                                                     <li id="GroupNone">No Groups Found</li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                <li id="usersetting"><a>
-                                    <img src="../Contents/img/admin/usersetting.png" alt="" /></a>
+                                <li ><a id="usersetting">
+                                    <img src="../Contents/img/admin/usersetting.png" alt="" title="Setting" /></a>
                                     <div id="userset" style="display: none;">
                                         <div class="drop_top">
                                         </div>
@@ -311,7 +352,7 @@
     </asp:ContentPlaceHolder>
     </form>
     <%--div for task--%>
-    <div id="popupchk">
+    <div id="popupchk" abhay="check">
         <span class="close_button b-close"><span id="close">X</span></span>
         <div id="content_msg" role="main" style="padding: 0;">
             <section id="inbox" class="threefourth messages msg_view" style="margin: 0;">
@@ -325,7 +366,7 @@
                             	<img src="../Contents/img/blank_img.png" alt="" />
                                 <textarea id="txttaskcomment" rows="" cols="" name="" placeholder="Your comment (viewable only to team members)"></textarea>
                             </div>
-                            <d iv class="task_ws_tm_button_div">
+                            <div class="task_ws_tm_button_div">
                             	<input id="save_task" type="button" name="" value="SAVE"  onclick="savetask();"/>
                               <%--  <input id="cancel11" type="button" name="" value="CANCEL" />--%>
                             </div>
@@ -340,6 +381,7 @@
             </div>
         </div>
     </div>
+    
     <%--div for compose button--%>
     <div id="composeBox" class="compose_box">
         <span class="close_button b-close"><span id="Span1" onclick="closeonCompose()">X</span></span>
@@ -389,17 +431,22 @@
             </div>
         </div>
         <div class="pht_addbtn">
-            <div class="send_btn">
-                <a id="sendMessageBtn" onclick="SendMessage()" href="#">
-                    <img src="../Contents/img/sendbtn.png" alt="" /></a>
-            </div>
-            <div class="filebutton">
-                <input type="file" name="" id="fileuploadImage" />
-            </div>
-            <div class="fileupload_data">
+                <%--         <div class="btn btn-success fileinput-button" style="background:url('../Contents/img/attechphoto.png') transparent; height: 6px;width: 73px !important;margin: 12px 0 0 0; float:left; border:none;">
+                   <input id="fileupload" type="file" name="files[]" multiple>
+                </div>--%>
+                <div class="send_btn">
+                    <a id="sendMessageBtn" onclick="SendMessage()" href="#">
+                        <img src="../Contents/img/sendbtn.png" alt="" /></a></div>
+                <div class="filebutton">
+                    <input id="fileuploadImage" type="file" name="" onchange="showimage()" accept="image/*" />
+                </div>
+               <div id="showBlock" class="fileupload_data" style="background-color: #222222; border: 1px solid #000000;
+                border-radius: 5px; color: #FFFFFF; display: block; margin-top: -1px; padding: 5px;" onclick="deleteimage()">
+                <span style="float:right; margin-left:5px" ></span>
+                <label style="float:right;font-size:small">Remove Image x </label></div>
             </div>
         </div>
-    </div>
+    
     <%--div for facebook user details--%>
     <div id="facebookuserDetails" class="modal-content" style="padding: 0;">
         <button class="modal-btn button b-close" type="button">
@@ -568,10 +615,10 @@
                             </div>
                             <div class="assign_task_to">
                             	<img src="../Contents/img/blank_img.png" alt="" />
-                                <textarea id="Textarea1" rows="" cols="" name="" placeholder="Your comment (viewable only to team members)"></textarea>
+                                <textarea id="Textarea1" rows="" cols="" name="" placeholder="Write your message here"></textarea>
                             </div>
                             <div class="task_ws_tm_button_div">
-                            	<input id="Button1" type="button" name="" value="SAVE"  onclick="twittercomments();"/>
+                            	<input id="Button1" type="button" name="" value="Comment"  onclick="twittercomments();"/>
                               <%--  <input id="cancel11" type="button" name="" value="CANCEL" />--%>
                             </div>
                         </section>

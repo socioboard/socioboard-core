@@ -1,4 +1,3 @@
-// Login Form
 
 $(function () {
 
@@ -34,6 +33,10 @@ $(function () {
             box.hide();
         }
     });
+
+
+
+
 });
 
 
@@ -138,7 +141,7 @@ $(function () {
 
 $(function () {
 
-    
+
 
     var button = $('#addico');
     var box = $('#addicbox');
@@ -156,12 +159,16 @@ $(function () {
             box.hide();
         }
     });
-//    $('body').click(function (login) {
-//        if (!($(login.target).parent('#addico').length > 0)) {
-//            button.removeClass('active');
-//            box.hide();
-//        }
-//    });
+
+    $('body').click(function (login) {
+        if (!($(login.target).parent('#addico').length > 0)) {
+            button.removeClass('active');
+            box.hide();
+        }
+    });
+
+
+
 });
 
 
@@ -176,7 +183,12 @@ $(function () {
         box.toggle();
         button.toggleClass('active');
     });
-
+    $('body').click(function (login) {
+        if (!($(login.target).parent('#usersetting').length > 0)) {
+            button.removeClass('active');
+            box.hide();
+        }
+    });
     $(this).mouseup(function (login) {
         if (!($(login.target).parent('#usersetting').length > 0)) {
             button.removeClass('active');
@@ -197,12 +209,22 @@ $(function () {
         button.toggleClass('active');
     });
 
+
     $(this).mouseup(function (login) {
         if (!($(login.target).parent('#inviteTeam').length > 0)) {
             button.removeClass('active');
             box.hide();
         }
     });
+
+    $('body').click(function (login) {
+        if (!($(login.target).parent('#master_invite').length > 0)) {
+            button.removeClass('active');
+            box.hide();
+        }
+    });
+
+
 });
 
 /**************************invite from home **********************************/

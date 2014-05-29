@@ -7,6 +7,12 @@ function facebookgroupdetails(gid, fbUserId) {
     //alert(gid);
     //alert(fbUserId);
 
+
+
+
+
+
+
     grpId = gid;
     accToken = fbUserId;
 
@@ -26,18 +32,73 @@ function facebookgroupdetails(gid, fbUserId) {
                 $.each(message["data"], function (i, val) {
                     console.log(val.from.name);
                     console.log(val.message);
+                    var fbmsg = "";
+                    if (val.picture === undefined) {
+                        if (val.message === undefined) {
 
+                        }
+                        else {
+                            fbmsg = val.message;
+                        }
 
-
-                    $(".gcontent").append('<div class="storyContent"><a class="actorPhoto">'
+                        $(".gcontent").append('<div class="storyContent"><a class="actorPhoto">'
                                 + '<img src="http://graph.facebook.com/' + val.from.id + '/picture?type=small"></a>'
                             + '<div class="storyInnerContent">'
                                 + '<div class="actordescription">'
-                                    + '<a href="http://facebook.com/' + val.from.id + '" target="_blank" class="passiveName">' + val.from.name + '</a> updated the description.'
+                                    + '<a href="http://facebook.com/' + val.from.id + '" target="_blank" class="passiveName">' + val.from.name + '</a> ' + myDate(val.created_time) + ''
                                + '</div>'
-                                + '<div class="messagebody">' + val.message + '</div>'
+                                + '<div class="messagebody">' + fbmsg + '</div>'
                             + '</div>'
                        + '</div>');
+                    }
+                    else {
+                        var pic = val.picture;
+
+                        if (pic.indexOf("?") != -1) {
+                            pic = pic;
+                        }
+                        else {
+                            if (pic.indexOf("_s.jpg") != -1) {
+                                pic = pic.replace(/_s.jpg/g, '_n.jpg');
+                            }
+                        }
+
+//                        if (pic.indexOf("_s.jpg") != -1) {
+//                            pic = pic.replace(/_s.jpg/g, '_n.jpg');
+//                        }
+                        if (val.message === undefined) {
+
+                        }
+                        else {
+                            fbmsg = val.message;
+                        }
+
+
+
+                        $(".gcontent").append('<div class="storyContent"><a class="actorPhoto">'
+                                + '<img src="http://graph.facebook.com/' + val.from.id + '/picture?type=small"></a>'
+                            + '<div class="storyInnerContent">'
+                                + '<div class="actordescription">'
+                                    + '<a href="http://facebook.com/' + val.from.id + '" target="_blank" class="passiveName">' + val.from.name + '</a> ' + myDate(val.created_time) + ''
+                               + '</div>'
+                                + '<div class="messagebody">' + fbmsg + '</div>'
+                                  + '<img src="' + pic + '">'
+                            + '</div>'
+                       + '</div>');
+
+
+                    }
+
+
+                    //                    $(".gcontent").append('<div class="storyContent"><a class="actorPhoto">'
+                    //                                + '<img src="http://graph.facebook.com/' + val.from.id + '/picture?type=small"></a>'
+                    //                            + '<div class="storyInnerContent">'
+                    //                                + '<div class="actordescription">'
+                    //                                    + '<a href="http://facebook.com/' + val.from.id + '" target="_blank" class="passiveName">' + val.from.name + '</a> updated the description.'
+                    //                               + '</div>'
+                    //                                + '<div class="messagebody">' + val.message + '</div>'
+                    //                            + '</div>'
+                    //                       + '</div>');
 
 
 
@@ -62,11 +123,37 @@ function facebookgroupdetails(gid, fbUserId) {
     });
 }
 
+
+function myDate(dt) {
+    var msgarr = dt.split('T');
+    var arrmsg1 = msgarr[0].split('-');
+
+    var month = new Array();
+    month[1] = "January";
+    month[2] = "February";
+    month[3] = "March";
+    month[4] = "April";
+    month[5] = "May";
+    month[6] = "June";
+    month[7] = "July";
+    month[8] = "August";
+    month[9] = "September";
+    month[10] = "October";
+    month[11] = "November";
+    month[12] = "December";
+    var n = month[parseInt(arrmsg1[1])];
+    return arrmsg1[2] + " " + n;
+}
+
+
 function postFBGroupFeeds() {
     var gid = grpId;
     var fbUserId = accToken;
     var msg = $('#txtcmt').val();
-
+    if (msg == "" || msg == null) {
+        alert("Please enter in Comment Box");
+        return false;
+    }
     //alert(msg);
 
 
@@ -82,20 +169,24 @@ function postFBGroupFeeds() {
                 alert("Success !!");
                 facebookgroupdetails(gid, fbUserId);
                 //to close a popupbox begin
-                $('#close').live('click', function (e) {
-                    $('#popupchk').bPopup().close();
+                document.getElementById('txtcmt').value = "";
+               // $('#close').live('click', function (e) {
+                $('#close').click('click', function (e) {
+                    $('#popupchk12').bPopup().close();
                 });
                 //to close a popupbox end
 
                 $('#close').click();
             }
             else {
-                alert("failure");
+                // alert("failure");
+                //alert("Please enter in Comment Box");
             }
 
         },
         error: function () {
-            alert("failure");
+             alert("failure");
+
         }
 
     });

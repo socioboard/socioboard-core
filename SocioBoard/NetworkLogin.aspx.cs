@@ -28,6 +28,7 @@ namespace SocialSuitePro
                         Response.Redirect("Default.aspx");
 
                     txtEmail.Text = user.EmailId;
+                    txtEmail.Attributes.Add("readonly", "readonly");
                     if (user.UserName != null)
                     {
                         string[] name = user.UserName.Split(' ');

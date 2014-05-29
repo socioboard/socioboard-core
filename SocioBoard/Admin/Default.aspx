@@ -69,11 +69,11 @@
 					<!-- Form -->
 					<form id="Form1" method="post" runat="server">
 						<label>Username</label>
-                    <asp:TextBox ID="txtUserName" runat="server" class="input-block-level" placeholder="Your Username" autocomplete="off"></asp:TextBox>
+                    <asp:TextBox ID="txtUserName" runat="server" class="input-block-level" required="" placeholder="Your Username" autocomplete="off"></asp:TextBox>
 					
 						<label>Password <%--<a class="password" href="">forgot your password?</a>--%></label>
 						
-                         <asp:TextBox ID="txtPassword" runat="server" class="input-block-level" 
+                         <asp:TextBox ID="txtPassword" required="" runat="server" class="input-block-level" 
                             placeholder="Your Password" TextMode="Password" autocomplete="off"></asp:TextBox>
 					
 						<div class="separator bottom"></div> 
@@ -91,9 +91,9 @@
 					<!-- // Form END -->
 							
 				</div>
-				<div class="widget-footer">
+				<%--<div class="widget-footer">
 					<p class="glyphicons restart"><i></i>Please enter your username and password ...</p>
-				</div>
+				</div>--%>
 			</div>
 			<!-- // Box END -->
 			

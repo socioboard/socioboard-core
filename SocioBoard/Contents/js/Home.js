@@ -175,7 +175,10 @@ function confirmDel(profileid, profiletype,profile) {
     try {
         debugger;
         reset();
-
+        if(profile=="fb")
+        {
+        profiletype=profile;
+        }
 
         alertify.set({ buttonReverse: true });
 		
@@ -236,7 +239,7 @@ function confirmDel(profileid, profiletype,profile) {
 		}
 		else
 		{
-        alertify.confirm("Are you Sure want to delete this account ?", function (e) {
+        alertify.confirm("Are you sure,you want to delete this account ?", function (e) {
             if (e) {
                 debugger;
                 try {
@@ -257,7 +260,7 @@ function confirmDel(profileid, profiletype,profile) {
                 $.ajax
         ({
             type: "POST",
-            url: "../AjaxHome.aspx?op=accountdelete&profile=" + profile + "&profileid=" + profileid,
+            url: "../AjaxHome.aspx?op=accountdelete&profile=" + profiletype + "&profileid=" + profileid,
             data: '',
             contentType: "application/json; charset=utf-8",
             dataType: "html",
@@ -340,6 +343,7 @@ function bindProfilesComposeMessage() {
                 }
 
                 composemessage(firstid, 'fb');
+                //composemessage_scheduler(firstid, 'fb');
             }
         });
         } else {
@@ -358,6 +362,7 @@ function bindProfilesComposeMessage() {
             }
 
             composemessage(firstid, 'fb');
+            //composemessage_scheduler(firstid, 'fb');
         }
 
     } catch (e) {
@@ -373,16 +378,180 @@ var chkidforusertest = new Array();
 
 /*Function to Compose Message for single 
 user to send the message on SocialNetwork*/
+
+
+//function checkuesrexist(imgsrc) {
+//    //alert()
+//    var ret="";
+//    $('#divformultiusers_scheduler  img').each(function() {
+//        //alert($(this).attr('src'))
+//        var imgid=$(this).attr('imgid');
+//        if(imgsrc==imgid)
+//        {
+//       ret=true;
+//        }
+//    });
+//    return ret;
+//}
+
+//function checkuesrexist1(imgsrc) {
+//    //alert()
+//    var ret="";
+//    $('#divformultiusers  img').each(function() {
+//        //alert($(this).attr('src'))
+//        var imgid=$(this).attr('imgid');
+//        if(imgsrc==imgid)
+//        {
+//       ret=true;
+//        }
+//    });
+//    return ret;
+//}
+
+
+
+//function composemessage(id, network) {
+//alert('asd');
+
+//    debugger;
+//    try {
+//        var userid = id.split('_');
+//        var imageurl = document.getElementById('imgurl_' + userid[1]).innerHTML;
+//    
+//        if(checkuesrexist(userid[1])==true)
+//        {
+//        alert('This account is already added. Please add another account.');
+//        return false;
+//        }
+
+//         if(checkuesrexist1(userid[1])==true)
+//        {
+//        alert('This account is already added. Please add another account.');
+//        return false;
+//        }
+
+//        try {
+//            document.getElementById('imageofuser').src = imageurl;
+//        } catch (e) {
+
+//        }
+
+//        try {
+//            document.getElementById('imageofuser_scheduler').src = imageurl;
+//        } catch (e) {
+
+//        }
+//        if (network == 'fb') {
+//            document.getElementById('socialIcon').src = "../Contents/img/facebook.png";
+//            try {
+//                document.getElementById('socialIcon_scheduler').src = "../Contents/img/facebook.png";
+//            } catch (e) {
+
+//            }
+//            singleprofileid = 'fb_' + userid[1];
+//            singleprofileIdforscheduler = 'fbscheduler_' + userid[1];
+//        } else if (network == 'twt') {
+//            document.getElementById('socialIcon').src = "../Contents/img/twitter.png";
+//            try {
+//                document.getElementById('socialIcon_scheduler').src = "../Contents/img/twitter.png";
+//            } catch (e) {
+
+//            }
+//            singleprofileid = 'twt_' + userid[1];
+//            singleprofileIdforscheduler = 'twtscheduler_' + userid[1];
+
+//        } else if (network == 'lin') {
+//            document.getElementById('socialIcon').src = "../Contents/img/link.png";
+//            try {
+//                document.getElementById('socialIcon_scheduler').src = "../Contents/img/link.png";
+//            } catch (e) {
+
+//            }
+//            singleprofileid = 'lin_' + userid[1];
+//            singleprofileIdforscheduler = 'linscheduler_' + userid[1];
+//        }
+
+//        try {
+//            $("#loginBox_scheduler").hide();
+//        } catch (e) {
+
+//        }
+
+
+
+//          var totalmessagewords=Countmessagewords();
+//          $("#messageCount").html(totalmessagewords.toString());
+//          var totalmessagewords=Countmessagewordsc();
+//          $("#messageCount_scheduler").html(totalmessagewords.toString());
+
+
+
+//    } catch (e) {
+//        debugger;
+//    }
+//}
+
 function composemessage(id, network) {
+//alert('asd');
+
     debugger;
     try {
         var userid = id.split('_');
         var imageurl = document.getElementById('imgurl_' + userid[1]).innerHTML;
+
         try {
             document.getElementById('imageofuser').src = imageurl;
         } catch (e) {
 
         }
+
+        if (network == 'fb') {
+            document.getElementById('socialIcon').src = "../Contents/img/facebook.png";
+
+            singleprofileid = 'fb_' + userid[1];
+            singleprofileIdforscheduler = 'fbscheduler_' + userid[1];
+        } else if (network == 'twt') {
+            document.getElementById('socialIcon').src = "../Contents/img/twitter.png";
+            singleprofileid = 'twt_' + userid[1];
+            singleprofileIdforscheduler = 'twtscheduler_' + userid[1];
+
+        } else if (network == 'lin') {
+            document.getElementById('socialIcon').src = "../Contents/img/link.png";
+            singleprofileid = 'lin_' + userid[1];
+            singleprofileIdforscheduler = 'linscheduler_' + userid[1];
+        }
+
+//        try {
+//            $("#loginBox_scheduler").hide();
+//        } catch (e) {
+
+//        }
+
+
+
+          var totalmessagewords=Countmessagewords();
+          $("#messageCount").html(totalmessagewords.toString());
+
+
+    } catch (e) {
+        debugger;
+    }
+}
+
+
+
+
+
+
+
+
+function composemessage_scheduler(id, network) {
+//alert('asd');
+
+    debugger;
+    try {
+        var userid = id.split('_');
+        var imageurl = document.getElementById('imgurl_' + userid[1]).innerHTML;
 
         try {
             document.getElementById('imageofuser_scheduler').src = imageurl;
@@ -390,7 +559,6 @@ function composemessage(id, network) {
 
         }
         if (network == 'fb') {
-            document.getElementById('socialIcon').src = "../Contents/img/facebook.png";
             try {
                 document.getElementById('socialIcon_scheduler').src = "../Contents/img/facebook.png";
             } catch (e) {
@@ -399,7 +567,6 @@ function composemessage(id, network) {
             singleprofileid = 'fb_' + userid[1];
             singleprofileIdforscheduler = 'fbscheduler_' + userid[1];
         } else if (network == 'twt') {
-            document.getElementById('socialIcon').src = "../Contents/img/twitter.png";
             try {
                 document.getElementById('socialIcon_scheduler').src = "../Contents/img/twitter.png";
             } catch (e) {
@@ -409,7 +576,6 @@ function composemessage(id, network) {
             singleprofileIdforscheduler = 'twtscheduler_' + userid[1];
 
         } else if (network == 'lin') {
-            document.getElementById('socialIcon').src = "../Contents/img/link.png";
             try {
                 document.getElementById('socialIcon_scheduler').src = "../Contents/img/link.png";
             } catch (e) {
@@ -425,6 +591,13 @@ function composemessage(id, network) {
 
         }
 
+
+
+          var totalmessagewords=Countmessagewordsc();
+          $("#messageCount_scheduler").html(totalmessagewords.toString());
+
+
+
     } catch (e) {
         debugger;
     }
@@ -433,27 +606,166 @@ function composemessage(id, network) {
 
 
 
+//function composemessagesc(id, network) {
+//    debugger;
+//    try {
+//        var userid = id.split('_');
+//        var imageurl = document.getElementById('imgurl_' + userid[1]).innerHTML;
+//        try {
+//            document.getElementById('imageofuser').src = imageurl;
+//        } catch (e) {
+
+//        }
+
+//        try {
+//            document.getElementById('imageofuser_scheduler').src = imageurl;
+//        } catch (e) {
+
+//        }
+//        if (network == 'fb') {
+//            document.getElementById('socialIcon').src = "../Contents/img/facebook.png";
+//            try {
+//                document.getElementById('socialIcon_scheduler').src = "../Contents/img/facebook.png";
+//            } catch (e) {
+
+//            }
+//            singleprofileid = 'fb_' + userid[1];
+//            singleprofileIdforscheduler = 'fbscheduler_' + userid[1];
+//        } else if (network == 'twt') {
+//            document.getElementById('socialIcon').src = "../Contents/img/twitter.png";
+//            try {
+//                document.getElementById('socialIcon_scheduler').src = "../Contents/img/twitter.png";
+//            } catch (e) {
+
+//            }
+//            singleprofileid = 'twt_' + userid[1];
+//            singleprofileIdforscheduler = 'twtscheduler_' + userid[1];
+
+//        } else if (network == 'lin') {
+//            document.getElementById('socialIcon').src = "../Contents/img/link.png";
+//            try {
+//                document.getElementById('socialIcon_scheduler').src = "../Contents/img/link.png";
+//            } catch (e) {
+
+//            }
+//            singleprofileid = 'lin_' + userid[1];
+//            singleprofileIdforscheduler = 'linscheduler_' + userid[1];
+//        }
+
+//        try {
+//            $("#loginBox_scheduler").hide();
+//        } catch (e) {
+
+//        }
+
+//    } catch (e) {
+//        debugger;
+//    }
+//}
+
+
+
 
 /*Post a single message for Multiple user of different social networks*/
+//function addAnotherProfileforMessage(id, network) {
+//    debugger;
+//    var divbindforscheduler = '';
+//    var divbind = '';
+//    var innerhtmlofMulti = $("#divformultiusers").html();
+//    var userid = id.split('_');
+//    var str=''
+//    for(i=1;i<userid.length;i++)
+//   {
+//   str+=userid[i]+'_';
+//   }
+//   str=str.substring(0,str.length - 1);
+//    userid[1]=str;
+//    var username = document.getElementById('composename_' + userid[1]).innerHTML;
+//    var innerhtmlofmultischeduler = $("#divformultiusers_scheduler").html();
+
+
+
+//    try {
+//        if (innerhtmlofMulti.indexOf(username) == -1) {
+//            debugger;
+
+
+
+//            if (network == 'fb') {
+//                divbind = '<div style="height:21px;width:auto;min-width:22%" class="btn span12" id="fb_' + userid[1] + '"  onclick="delProfilesFromMultiusers(this.id)" ><img src="../Contents/img/facebook.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" class="close pull-right">×</span></div>';
+
+//            } else if (network == 'twt') {
+//                divbind = '<div style="height:21px;width:auto;min-width:22%" class="btn span12" id="twt_' + userid[1] + '" onclick="delProfilesFromMultiusers(this.id)"><img src="../Contents/img/twitter.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" class="close pull-right">×</span></div></div>';
+
+//            } else if (network == 'lin') {
+//                divbind = '<div style="height:21px;width:auto;min-width:22%" class="btn span12" id="lin_' + userid[1] + '" onclick="delProfilesFromMultiusers(this.id)"><img src="../Contents/img/link.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" class="close pull-right">×</span></div></div>';
+
+//            }
+//        }
+//    } catch (e) {
+
+//    }
+
+
+
+//    try {
+//        if (innerhtmlofmultischeduler.indexOf(username) == -1) {
+//            if (network == 'fb') {
+//                divbindforscheduler = '<div style="height:31px;" class="btn span12" id="fbscheduler_' + userid[1] + '"  onclick="delProfilesFromMultiusers(this.id)" ><img src="../Contents/img/facebook.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" class="close pull-right">×</span></div></div>';
+
+//            } else if (network == 'twt') {
+//                divbindforscheduler = '<div style="height:31px;" class="btn span12" id="twtscheduler_' + userid[1] + '" onclick="delProfilesFromMultiusers(this.id)"><img src="../Contents/img/twitter.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" class="close pull-right">×</span></div></div>';
+
+//            } else if (network == 'lin') {
+//                divbindforscheduler = '<div style="height:31px;" class="btn span12" id="linscheduler_' + userid[1] + '" onclick="delProfilesFromMultiusers(this.id)"><img src="../Contents/img/link.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" class="close pull-right">×</span></div>';
+//            }
+
+//            //$("#ab_scheduler").attr("display", "none");
+//        }
+//    } catch (e) {
+
+//    }
+//    try {
+//        $("#divformultiusers").append(divbind);
+//    } catch (e) {
+
+//    }
+//    try {
+//        $("#divformultiusers_scheduler").append(divbindforscheduler);
+//    } catch (e) {
+
+//    }
+//    try {
+//        $("#addBox").hide();
+//    } catch (e) {
+
+//    }
+//    try {
+//        $("#ab_scheduler").hide();
+//    } catch (e) {
+
+//    }
+
+//      var totalmessagewords=Countmessagewords();
+//        $("#messageCount").html(totalmessagewords.toString());
+//       var totalmessagewords=Countmessagewordsc();
+//      $("#messageCount_scheduler").html(totalmessagewords.toString());
+
+//}
 function addAnotherProfileforMessage(id, network) {
     debugger;
     var divbindforscheduler = '';
     var divbind = '';
     var innerhtmlofMulti = $("#divformultiusers").html();
     var userid = id.split('_');
-
-     var str=''
+    var str=''
     for(i=1;i<userid.length;i++)
    {
    str+=userid[i]+'_';
    }
    str=str.substring(0,str.length - 1);
     userid[1]=str;
-
     var username = document.getElementById('composename_' + userid[1]).innerHTML;
-    var innerhtmlofmultischeduler = $("#divformultiusers_scheduler").html();
-
-
 
     try {
         if (innerhtmlofMulti.indexOf(username) == -1) {
@@ -463,7 +775,6 @@ function addAnotherProfileforMessage(id, network) {
 
             if (network == 'fb') {
                 divbind = '<div style="height:21px;width:auto;min-width:22%" class="btn span12" id="fb_' + userid[1] + '"  onclick="delProfilesFromMultiusers(this.id)" ><img src="../Contents/img/facebook.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" class="close pull-right">×</span></div>';
-                 //divbind = '<div style="height:21px;width:auto;min-width:22%" class="btn span12"  ><img src="../Contents/img/facebook.png" alt="" width="15"/>' + username + '<span id="fb_' + userid[1] + '"  onclick="delProfilesFromMultiusers(this.id)" data-dismiss="alert" class="close pull-right">×</span></div>';
 
             } else if (network == 'twt') {
                 divbind = '<div style="height:21px;width:auto;min-width:22%" class="btn span12" id="twt_' + userid[1] + '" onclick="delProfilesFromMultiusers(this.id)"><img src="../Contents/img/twitter.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" class="close pull-right">×</span></div></div>';
@@ -478,45 +789,81 @@ function addAnotherProfileforMessage(id, network) {
     }
 
 
-
-    try {
-        if (innerhtmlofmultischeduler.indexOf(username) == -1) {
-            if (network == 'fb') {
-//                divbindforscheduler = '<div style="height:31px;" class="btn span12" id="fbscheduler_' + userid[1] + '"  onclick="delProfilesFromMultiusers(this.id)" ><img src="../Contents/img/facebook.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" class="close pull-right">×</span></div></div>';
-               divbindforscheduler = '<div style="height:31px;" class="btn span12" id="fbscheduler_' + userid[1] + '" ><img src="../Contents/img/facebook.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" id="fbscheduler_' + userid[1] + '"  onclick="delProfilesFromMultiusers(this.id)" class="close pull-right">×</span></div></div>';
-
-            } else if (network == 'twt') {
-                divbindforscheduler = '<div style="height:31px;" class="btn span12" id="twtscheduler_' + userid[1] + '" ><img src="../Contents/img/twitter.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" id="twtscheduler_' + userid[1] + '" onclick="delProfilesFromMultiusers(this.id)" class="close pull-right">×</span></div></div>';
-
-            } else if (network == 'lin') {
-                divbindforscheduler = '<div style="height:31px;" class="btn span12" id="linscheduler_' + userid[1] + '" ><img src="../Contents/img/link.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" id="linscheduler_' + userid[1] + '" onclick="delProfilesFromMultiusers(this.id)" class="close pull-right">×</span></div>';
-            }
-        }
-    } catch (e) {
-
-    }
     try {
         $("#divformultiusers").append(divbind);
     } catch (e) {
 
     }
-    try {
-        $("#divformultiusers_scheduler").append(divbindforscheduler);
-    } catch (e) {
 
-    }
     try {
         $("#addBox").hide();
     } catch (e) {
 
     }
+
+      var totalmessagewords=Countmessagewords();
+        $("#messageCount").html(totalmessagewords.toString());
+
+}
+
+
+function addAnotherProfileforMessage_scheduler(id, network) {
+    debugger;
+    var divbindforscheduler = '';
+    var divbind = '';
+
+    var userid = id.split('_');
+    var str=''
+    for(i=1;i<userid.length;i++)
+   {
+   str+=userid[i]+'_';
+   }
+   str=str.substring(0,str.length - 1);
+  userid[1]=str;
+    var username = document.getElementById('composename_' + userid[1]).innerHTML;
+    var innerhtmlofmultischeduler = $("#divformultiusers_scheduler").html();
+
+    try {
+        if (innerhtmlofmultischeduler.indexOf(username) == -1) {
+            if (network == 'fb') {
+                divbindforscheduler = '<div style="height:31px;" class="btn span12" id="fbscheduler_' + userid[1] + '"  onclick="delProfilesFromMultiusers(this.id)" ><img src="../Contents/img/facebook.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" class="close pull-right">×</span></div></div>';
+
+            } else if (network == 'twt') {
+                divbindforscheduler = '<div style="height:31px;" class="btn span12" id="twtscheduler_' + userid[1] + '" onclick="delProfilesFromMultiusers(this.id)"><img src="../Contents/img/twitter.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" class="close pull-right">×</span></div></div>';
+
+            } else if (network == 'lin') {
+                divbindforscheduler = '<div style="height:31px;" class="btn span12" id="linscheduler_' + userid[1] + '" onclick="delProfilesFromMultiusers(this.id)"><img src="../Contents/img/link.png" alt="" width="15"/>' + username + '<span data-dismiss="alert" class="close pull-right">×</span></div>';
+            }
+
+            //$("#ab_scheduler").attr("display", "none");
+        }
+    } catch (e) {
+
+    }
+
+    try {
+        $("#divformultiusers_scheduler").append(divbindforscheduler);
+    } catch (e) {
+
+    }
+
     try {
         $("#ab_scheduler").hide();
     } catch (e) {
 
     }
 
+
+       var totalmessagewords=Countmessagewordsc();
+      $("#messageCount_scheduler").html(totalmessagewords.toString());
+
 }
+
+
+
+
+
+
 
 
 /*To clear the popup on close of Compose popup*/
@@ -525,9 +872,13 @@ function closeonCompose() {
     $("#adddates_scheduler").html('');
     document.getElementById('fileuploadImage').value = "";
     chkidforusertest.length = 0;
-
+      $("#showBlock").css('display', 'none');
     try {
+
         datearr.length = 0;
+
+        deleteimage();
+
     } catch (e) {
 
     }
@@ -553,13 +904,19 @@ function closeonCompose() {
     } catch (e) {
 
     }
+
+     var messagecnt = Countmessagewords();
+    var messagecountsc = Countmessagewordsc();
+
+
+
     try {
-        $('#messageCount').html(140);
+        $('#messageCount').html(messagecnt.toString());
     } catch (e) {
 
     }
     try {
-        $('#messageCount_scheduler').html(140 + ' Characters Remaining');
+        $('#messageCount_scheduler').html(messagecountsc.toString() + ' Characters Remaining');
     } catch (e) {
 
     }
@@ -644,6 +1001,66 @@ function hasExtension(inputID, exts) {
     return (new RegExp('(' + exts.join('|').replace(/\./g, '\\.') + ')$')).test(fileName);
 }
 
+function Countmessagewordsc() {
+        var Fbidcount = 0;
+        var twtIdcount = 0;
+        var LinkedInIdcount = 0;
+        var totalmessagewords1 = 0;
+        var chkidforusertest = new Array();
+
+        var bindingofdata = document.getElementById('divformultiusers_scheduler');
+        var countdiv = bindingofdata.getElementsByTagName('div');
+
+        for (var i = 0; i < countdiv.length; i++) {
+            chkidforusertest.push(countdiv[i].id);
+        }
+
+        if (chkidforusertest.indexOf(singleprofileid) == -1) {
+            chkidforusertest.push(singleprofileid);
+        }
+
+
+        for (var i = 0; i < chkidforusertest.length; i++) {
+
+            var arr = chkidforusertest[i].split('_');
+
+
+            if (arr[0].indexOf("fb") != -1) {
+                Fbidcount++;
+            }
+            if (arr[0].indexOf("twt") != -1) {
+                twtIdcount++;
+            }
+            if (arr[0].indexOf("lin") != -1) {
+                LinkedInIdcount++;
+            }
+        }
+
+        if (Fbidcount > 0 && twtIdcount == 0 && LinkedInIdcount == 0) {
+            totalmessagewords1 = 5000;
+        }
+        else if (Fbidcount >= 0 && twtIdcount == 0 && LinkedInIdcount > 0) {
+            totalmessagewords1 = 700;
+        }
+
+        else {
+            totalmessagewords1 = 140;
+        }
+
+        return totalmessagewords1;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 function SendMessage() {
     debugger;
     var fd = new FormData();
@@ -662,7 +1079,7 @@ function SendMessage() {
          }
          else
          {
-            alert("File Extention is not current");
+            alert("File Extention is not current. Please upload any image file");
             return;  
          }
          }
@@ -673,7 +1090,7 @@ function SendMessage() {
         }
 
     try {
-        var message = $("#textareavaluetosendmessage").val();
+        var message = $("#textareavaluetosendmessage").val().trim();
         if (message != ''|| filesimage !=null) {
 
 
@@ -689,26 +1106,28 @@ function SendMessage() {
                 chkidforusertest.push(singleprofileid);
             }
 
-
+            $("#composeBox").bPopup().close();
 
             debugger;
 
             $.ajax
             ({
                 type: 'POST',
-                url: '../AjaxHome.aspx?op=sendmessage&message=' + message + '&userid[]=' + chkidforusertest,
+                url: '../AjaxHome.aspx?op=sendmessage&message=' + encodeURIComponent(message) + '&userid[]=' + chkidforusertest,
                 data: fd,
+               // data:fd+'&massagee='+encodeURIComponent(message)+'&userid[]='+chkidforusertest,
                 processData: false,
                 contentType: false,
                 // contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                    debugger;
-
+                 $("#sendMessageBtn").html('<img src="../Contents/img/sendbtn.png" alt="" />');
                    $("#composeBox").bPopup().close();
                     filesimage="";
                     document.getElementById('fileuploadImage').value = "";
-                    closeonCompose();
                      alertify.success("Message Sent Successfully");
+                     closeonCompose();
+                     var arrmsg=data.split('~');
+                     $('#ContentPlaceHolder1_spanSent').html(arrmsg[1]);
                 }
             });
         } else {
@@ -732,10 +1151,21 @@ function delProfilesFromMultiusers(id) {
         debugger;
         $("#divformultiusers_scheduler").find("#" + id).remove();
         $("#" + id).remove();
+
+       
+
     } catch (e) {
         debugger;
         alert(e);
     }
+     var totalmessagewords=Countmessagewords();
+        $("#messageCount").html(totalmessagewords.toString());
+
+        
+          var totalmessagewords=Countmessagewordsc();
+        $("#messageCount_scheduler").html(totalmessagewords.toString());
+
+
 }
 
 

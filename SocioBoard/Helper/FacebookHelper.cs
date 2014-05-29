@@ -201,6 +201,7 @@ namespace SocioBoard.Helper
                         }
                         else
                         {
+                            HttpContext.Current.Session["alreadyexist"] = fbAccount;
                             fbrepo.updateFacebookUser(fbAccount);
                             if (!socioprofilerepo.checkUserProfileExist(socioprofile))
                             {

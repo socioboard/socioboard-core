@@ -173,6 +173,17 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
+            $('.grpli').click(function () {
+
+                $(".grpli").each(function () {
+                    $(this).removeClass('grpliselected');
+                });
+                 $(this).addClass('grpliselected');
+            });
+
+
+
+
             $("#home").removeClass('active');
             $("#message").removeClass('active');
             $("#feeds").removeClass('active');
@@ -181,20 +192,23 @@
             $("#Li1").addClass('active');
 
 
-//            $('.accordion-toggle').click(function () {
-//                $('.accordion-toggle i').addClass("hidden");
-//                $(this).children("i").toggleClass("hidden");
-//            });
-//            $(".feedwrap > ul").mCustomScrollbar({
-//                scrollInertia: 150
-//            });
+            try {
+
+                $('.accordion-toggle').click(function () {
+                    $('.accordion-toggle i').addClass("hidden");
+                    $(this).children("i").toggleClass("hidden");
+                    //$(".accordion-toggle .collapsed").removeClass("hidden");
+                });
+            } catch (e) {
+
+            }
 
 
 
 
 
-//            $(".fbgroup").click(function () {
-//                alert("abhay");
+            //            $(".fbgroup").click(function () {
+            //                alert("abhay");
             //            });
 
 
@@ -207,7 +221,7 @@
             var gid = $('.post').attr("gid");
             debugger;
             if (gid === "" || gid === null) {
-                alert('Please Select one group for reply.');
+                alert('Please select one group for posting');
             }
             else {
                 $('#popupchk12').bPopup();

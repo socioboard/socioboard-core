@@ -73,9 +73,13 @@ namespace SocialSuitePro
                     {
                         Session.Abandon();
                         Session.Clear();
+                        Session.RemoveAll();
+                       
                     }
 
                 }
+
+
                 if (Session["LoggedUser"] != null)
                     Response.Redirect("Home.aspx");
 

@@ -22,21 +22,44 @@ namespace SocioBoard
         ILog logger = LogManager.GetLogger(typeof(Registration));
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                if (!string.IsNullOrEmpty(Request.QueryString["tid"]))
+                if (!IsPostBack)
                 {
-                    Guid teamid = Guid.Parse(Request.QueryString["tid"]);
-                    TeamRepository teamRepo = new TeamRepository();
-                    Team team = teamRepo.getTeamById(teamid);
-                    txtFirstName.Text = team.FirstName;
-                    txtLastName.Text = team.LastName;
-                    txtEmail.Text = team.EmailId;
-                    txtEmail.Enabled = false;
+                    if (!string.IsNullOrEmpty(Request.QueryString["tid"]))
+                    {
+                        Guid teamid = Guid.Parse(Request.QueryString["tid"]);
+                        TeamRepository teamRepo = new TeamRepository();
+                        Team team = teamRepo.getTeamById(teamid);
+                        txtFirstName.Text = team.FirstName;
+                        txtLastName.Text = team.LastName;
+                        txtEmail.Text = team.EmailId;
+                        txtEmail.Enabled = false;
 
+                    }
+                    if (!string.IsNullOrEmpty(Request.QueryString["type"]))
+                    {
+                        //DropDownList1.SelectedItem.Text = Request.QueryString["type"].ToString();
+
+                        DropDownList1.SelectedValue = Request.QueryString["type"].ToString();
+                    }
                 }
+
+                //if (!string.IsNullOrEmpty(Request.QueryString["type"]))
+                //{
+                //    //DropDownList1.SelectedItem.Text = Request.QueryString["type"].ToString();
+
+                //    DropDownList1.SelectedValue = Request.QueryString["type"].ToString();
+                //}
+
+                SocioBoard.Helper.SessionFactory.configfilepath = Server.MapPath("~/hibernate.cfg.xml");
             }
-            SocioBoard.Helper.SessionFactory.configfilepath = Server.MapPath("~/hibernate.cfg.xml");
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                logger.Error("Error : " + ex.Message);
+                logger.Error("Error : " + ex.StackTrace);
+            }
         }
 
         public string MD5Hash(string text)
@@ -73,7 +96,11 @@ namespace SocioBoard
                 try
                 {
 
-                    if (DropDownList1.SelectedValue == "Free" || DropDownList1.SelectedValue == "Standard" || DropDownList1.SelectedValue == "Deluxe" || DropDownList1.SelectedValue == "Premium")
+                 
+                     if (DropDownList1.SelectedValue == "Free" || DropDownList1.SelectedValue == "Standard" || DropDownList1.SelectedValue == "Deluxe" || DropDownList1.SelectedValue == "Premium")
+
+                    //if (DropDownList1.SelectedItem.Text == "Basic(Free)" || DropDownList1.SelectedItem.Text == "Standard" || DropDownList1.SelectedItem.Text == "Deluxe" || DropDownList1.SelectedItem.Text == "Premium")
+                    
                     {
 
 
@@ -105,7 +132,7 @@ namespace SocioBoard
                                 user.AccountType = AccountType.Free.ToString();
                             }
                             user.CreateDate = DateTime.Now;
-                            user.ExpiryDate = DateTime.Now.AddMonths(1);
+                            user.ExpiryDate = DateTime.Now.AddDays(30);
                             user.Id = Guid.NewGuid();
                             user.UserName = txtFirstName.Text + " " + txtLastName.Text;
                             user.Password = this.MD5Hash(txtPassword.Text);

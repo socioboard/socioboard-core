@@ -343,6 +343,7 @@ namespace SocialSuitePro
                 }
                 else
                 {
+                    HttpContext.Current.Session["alreadyexist"] = twitterAccount;
                     twtrepo.updateTwitterUser(twitterAccount);
                     TwitterMessageRepository twtmsgreponew = new TwitterMessageRepository();
                     twtmsgreponew.updateScreenName(twitterAccount.TwitterUserId, twitterAccount.TwitterScreenName);

@@ -26,6 +26,12 @@ namespace SocialSuitePro.MasterPage
         string Datetime = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
+            HttpContext.Current.Response.Cache.SetExpires(DateTime.UtcNow.AddDays(-1));
+            HttpContext.Current.Response.Cache.SetValidUntilExpires(false);
+            HttpContext.Current.Response.Cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
+            HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            HttpContext.Current.Response.Cache.SetNoStore();
+
             try
             {
                 User user = (User)Session["LoggedUser"];
@@ -175,36 +181,36 @@ namespace SocialSuitePro.MasterPage
                         if (!string.IsNullOrEmpty(user.ProfileUrl))
                         {
                             // Datetime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToLongDateString() + " " + TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToShortTimeString() + " (" + user.TimeZone + ")";
-                            userimg.InnerHtml = "<a href=\"../Settings/PersonalSettings.aspx\"><img id=\"loggeduserimg\" src=\"" + user.ProfileUrl + "\" alt=\"" + user.UserName + "\" /></a></a>";
+                            //userimg.InnerHtml = "<a href=\"../Settings/PersonalSettings.aspx\"><img id=\"loggeduserimg\" src=\"" + user.ProfileUrl + "\" alt=\"" + user.UserName + "\" /></a></a>";
                             //userinf.InnerHtml = Datetime;
                             //{ 
                             //    userimg.InnerHtml = "<a href=\"../Settings/PersonalSettings.aspx\"><img id=\"loggeduserimg\" src=\"" + user.ProfileUrl + "\" alt=\"" + user.UserName + "\" height=\"100\" width=\"100\"/></a></a>";
                             if (user.TimeZone != null)
                             {
                                 Datetime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToLongDateString() + " " + TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToShortTimeString() + " (" + user.TimeZone + ")";
-                                userinf.InnerHtml = Datetime;
+                                //userinf.InnerHtml = Datetime;
                             }
                             if (user.TimeZone == null)
                             {
                                 Datetime = DateTime.Now.ToString();
-                                userinf.InnerHtml = Datetime;
+                                //userinf.InnerHtml = Datetime;
                             }
                         }
                         else
                         {
                             //Datetime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToLongDateString() + " " + TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToShortTimeString() + " (" + user.TimeZone + ")";
-                            userimg.InnerHtml = "<a href=\"../Settings/PersonalSettings.aspx\"><img id=\"loggeduserimg\" src=\"../Contents/img/blank_img.png\" alt=\"" + user.UserName + "\"/></a>";
+                            //userimg.InnerHtml = "<a href=\"../Settings/PersonalSettings.aspx\"><img id=\"loggeduserimg\" src=\"../Contents/img/blank_img.png\" alt=\"" + user.UserName + "\"/></a>";
 
-                            userinf.InnerHtml = Datetime;
+                            //userinf.InnerHtml = Datetime;
                             if (user.TimeZone != null)
                             {
                                 Datetime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToLongDateString() + " " + TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToShortTimeString() + " (" + user.TimeZone + ")";
-                                userinf.InnerHtml = Datetime;
+                                //userinf.InnerHtml = Datetime;
                             }
                             if (user.TimeZone == null)
                             {
                                 Datetime = DateTime.Now.ToString();
-                                userinf.InnerHtml = Datetime;
+                                //userinf.InnerHtml = Datetime;
                             }
                         }
 

@@ -84,7 +84,7 @@ function signinFunction() {
 
         var username = document.getElementById('txtEmail').value;
         if (password != '' && password != undefined) {
-            password = CryptoJS.MD5(document.getElementById('txtPassword').value);
+           // password = CryptoJS.MD5(document.getElementById('txtPassword').value);
         }
         if (username != '' && password != '' && username != undefined && password != undefined) {
 
@@ -92,7 +92,7 @@ function signinFunction() {
 
             $.ajax({
                 type: 'POST',
-                url: '../AjaxLogin.aspx?op=login&username=' + username + '&password=' + password,
+                url: '../AjaxLogin.aspx?op=login&username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password),
                 success: function (msg) {
                     debugger;
                     if (msg == "user") {
@@ -221,8 +221,9 @@ function registerFunction() {
 function facebookLogin() {
     try {
         debugger;
-        $('#gp_account').attr('onclick', '');
-      $("#fb_account img").attr('src', '../../Contents/img/bx_loader.gif');
+        $('#gp_account').css('display', 'none');
+       // $('#gp_account').attr('onclick', '');
+      //$("#fb_account img").attr('src', '../../Contents/img/bx_loader.gif');
 
         $.ajax({
             type: "POST",
@@ -244,8 +245,9 @@ function facebookLogin() {
 function googleplusLogin() {
     try {
         debugger;
-        $('#fb_account').attr('onclick', '');
-        $("#gp_account img").attr('src', '../Contents/img/bx_loader.gif');
+        $('#fb_account').css('display', 'none');
+       // $('#fb_account').attr('onclick', '');
+        //$("#gp_account img").attr('src', '../Contents/img/bx_loader.gif');
 
         $.ajax({
             type: "POST",

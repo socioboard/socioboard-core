@@ -20,6 +20,7 @@
                 var j = "";
                 // j = tmid.split('_')[1];
                 var tmhtml = document.getElementById("Section" + tmemberid).innerHTML;
+                tmhtml = tmhtml.replace("onclick=\"getmemberdata('" + tmemberid + "');", "");
                 $("#divtaskcomment").html("<section id=\"Section_1\">" + tmhtml + "</section>");
                 $("#taskcomment").html("");
                 var Taskcmt = document.getElementById("commentId");
@@ -114,8 +115,8 @@
 					    <a class="btn" href="#"><img alt="" src="../Contents/img/admin/archivebtn.png">Archive</a>		--%>
                 </div>
             </div>
-            <div id="contentcontainer2">
-                <div id="contentcontainer1-message">
+            <div id="contentcontainer2" style=" width:78%;">
+                <div id="contentcontainer1-message" style=" width:72%;">
                     <div id="content">
                         <%--class was included before  and class name is : threefourth, removed on 13/07/2013 by praveen --%>
                         <section id="inbox_msgs" class=" messages msg_view">
@@ -215,7 +216,9 @@
                             </div>
                         </section>
                     </div>
-                    <div class="ws_msg_right">
+                    
+                </div>
+                <div class="ws_msg_right">
                         <div class="quarter">
                             <div class="sub_small">
                                 Manage Task
@@ -239,7 +242,6 @@
                             </ul>
                         </div>
                     </div>
-                </div>
                 <asp:Button ID="btnchangestatus" runat="server" Style="display: none;" OnClick="btn_Click" />
                 <asp:HiddenField ID="hdnTask_id" runat="server" />
                 <asp:HiddenField ID="hdnstatus" runat="server" />

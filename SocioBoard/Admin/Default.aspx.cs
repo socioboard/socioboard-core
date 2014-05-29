@@ -50,6 +50,12 @@ namespace SocialSuitePro.Admin
                     Session["AdminProfile"] = admin;
                     Response.Redirect("Dashboard.aspx");
                 }
+
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please enter correct Username and password!');", true);
+                }
+
             }
             catch (Exception ex)
             {

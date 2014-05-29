@@ -16,11 +16,12 @@
             var email = $('#email').val();
             var Subject = $('#Subject').val();
             var profile = $('#profile').val();
-            if (name == "" || lname == "" || email == "" || Subject == "" || profile == "") {
+          //  if (name == "" || lname == "" || email == "" || Subject == "" || profile == "") {
+             if (name == "" || email == ""|| profile == "") {
                 alert('Please fill all the fields')
                 return false;
             }
-            else {
+             {
                 if (!validateEmail(email)) {
                     alert('not valid email');
                     return false;
@@ -36,7 +37,7 @@
                         data: 'name=' + name + '&lname=' + lname + '&email=' + email + '&Subject=' + Subject + '&profile=' + profile,
                         success: function (data) {
                             if (data == "success") {
-                                alert('Mail Send');
+                                alert('Mail has been sent successfully!');
                                 $('#name').val('');
                                 $('#lname').val('');
                                 $('#email').val('');
@@ -88,7 +89,7 @@
                 <form id="send" action="">
             	     <p>
                         <label for="name">First Name *</label>
-                        <input id="name" type="text" name="name" value="" />
+                        <input id="name" type="text" name="name" value=""  />
                     </p>
                     <p>
                         <label for="company">Last Name</label>
@@ -104,7 +105,7 @@
                     </p>
                     <p>
                         <label for="profile">Message *</label>
-                        <textarea name="profile" id="profile" cols="30" rows="10"></textarea>
+                        <textarea name="profile" id="profile" cols="30" rows="10" ></textarea>
                      </p>
                      <p>
                         <button id="submit" type="button">Submit</button>

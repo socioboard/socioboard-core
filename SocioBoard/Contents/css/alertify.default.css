@@ -64,6 +64,7 @@
 		.alertify-button-ok:focus {
 			background-color: #5CB811;
 			border: 1px solid #3B7808;
+			margin:10px
 		}
 
 .alertify-log {

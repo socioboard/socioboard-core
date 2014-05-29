@@ -237,11 +237,11 @@ namespace SocialSuitePro
                     try
                     {
                         if (user.AccountType.ToString().ToLower() == AccountType.Deluxe.ToString().ToLower())
-                            tot_acc = 20;
+                            tot_acc = 50;
                         else if (user.AccountType.ToString().ToLower() == AccountType.Standard.ToString().ToLower())
                             tot_acc = 10;
                         else if (user.AccountType.ToString().ToLower() == AccountType.Premium.ToString().ToLower())
-                            tot_acc = 50;
+                            tot_acc = 20;
                         else if (user.AccountType.ToString().ToLower() == AccountType.Free.ToString().ToLower())
                             tot_acc = 5;
                         profileCount = objSocioRepo.getAllSocialProfilesOfUser(user.Id).Count;
@@ -255,6 +255,20 @@ namespace SocialSuitePro
                     }
                     #endregion
 
+
+
+                    //this is used to check whether facebok account Already Exist
+                    if (Session["alreadyexist"] != null)
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('This Profile is Already Added please add aother Account!');", true);
+                        Session["alreadyexist"] = null;
+                    }
+                      if ( Session["alreadypageexist"] != null)
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('This Page is Already Added please add aother Page!');", true);
+                        Session["alreadypageexist"] = null;
+                    }
+                    
 
 
 
@@ -271,7 +285,7 @@ namespace SocialSuitePro
                         }
                     }
 
-                    acrossProfile.InnerHtml = "Across " + user.UserName + "'s Twitter and Facebook accounts";
+                    //acrossProfile.InnerHtml = "Across " + user.UserName + "'s Twitter and Facebook accounts";
                     teamMem.InnerHtml = "managing " + user.UserName;
                     try
                     {
@@ -443,8 +457,19 @@ namespace SocialSuitePro
 
                         FacebookStatsRepository objfbStatsRepo = new FacebookStatsRepository();
                         double daysSub = (DateTime.Now - user.CreateDate).TotalDays;
-                        int userdays = (int)daysSub;
+
+                        int userdays;
+                        if (daysSub > 0 && daysSub <= 1)
+                        {
+                            userdays = 1;
+                        }
+                        else
+                        {
+                            userdays = (int)daysSub;
+                        }
                         ArrayList arrFbStats = objfbStatsRepo.getAllFacebookStatsOfUser(user.Id, userdays);
+                        //ArrayList arrFbStats = objfbStatsRepo.getTotalFacebookStatsOfUser(user.Id);
+                        
                         Random rNum = new Random();
                         foreach (var item in arrFbStats)
                         {
@@ -492,8 +517,9 @@ namespace SocialSuitePro
                         logger.Error(Err.StackTrace);
                     }
                     getgrphData();
-                    getNewFriends(7);
-                    getNewFollowers(7);
+                    // getNewFriends(7);
+                    getNewFriends();
+                    getNewFollowers();
                     #endregion
 
 
@@ -595,7 +621,9 @@ namespace SocialSuitePro
                         // spanSent.InnerHtml = (int.Parse(strFbFeedCnt) + int.Parse(strTwtFeedCnt)).ToString();
                         SentMsg_Counter += (int.Parse(strFbFeedCnt) + int.Parse(strTwtFeedCnt));
                     }
-                    spanSent.InnerHtml = (SentMsg_Counter).ToString();
+                    //spanSent.InnerHtml = (SentMsg_Counter).ToString();
+                    //ScheduledMessageRepository objScheduledMessageRepository=new ScheduledMessageRepository ();
+                   // spanSent.InnerHtml = objScheduledMessageRepository.getAllSentMessagesOfUser(user.Id).Count().ToString();
                 }
                 else
                 {
@@ -605,6 +633,8 @@ namespace SocialSuitePro
                     }
                 }
                 strSentArray = strSentArray.Substring(0, strSentArray.Length - 1) + "]";
+                ScheduledMessageRepository objScheduledMessageRepository = new ScheduledMessageRepository();
+                spanSent.InnerHtml = objScheduledMessageRepository.getAllSentMessagesOfUser(user.Id).Count().ToString();
 
             }
             catch (Exception Err)
@@ -614,28 +644,128 @@ namespace SocialSuitePro
             }
         }
 
-        public void getNewFriends(int days)
+        //public void getNewFriends(int days)
+        //{
+        //    try
+        //    {
+        //        SocioBoard.Domain.User user = (User)Session["LoggedUser"];
+        //        FacebookStatsRepository objfbStatsRepo = new FacebookStatsRepository();
+        //        ArrayList arrFbStats = objfbStatsRepo.getAllFacebookStatsOfUser(user.Id, days);
+
+        //        // Get facebook page like ...
+        //        FacebookAccountRepository ObjAcFbAccount = new FacebookAccountRepository();
+        //        int TotalLikes = ObjAcFbAccount.getPagelikebyUserId(user.Id);
+
+        //        strFBArray = "[";
+        //        int intdays = 1;
+        //        foreach (var item in arrFbStats)
+        //        {
+        //            Array temp = (Array)item;
+        //            strFBArray += (int.Parse(temp.GetValue(3).ToString()) + int.Parse(temp.GetValue(4).ToString())) + ",";
+        //            //spanFbFans.InnerHtml = (int.Parse(temp.GetValue(3).ToString()) + int.Parse(temp.GetValue(4).ToString())).ToString();
+        //            spanFbFans.InnerHtml = (TotalLikes).ToString();
+        //            intdays++;
+        //        }
+        //        if (intdays < 7)
+        //        {
+        //            for (int i = 0; i < 7 - arrFbStats.Count; i++)
+        //            {
+        //                strFBArray = strFBArray + "0,";
+        //            }
+        //        }
+        //        strFBArray = strFBArray.Substring(0, strFBArray.Length - 1);
+        //        strFBArray += "]";
+        //    }
+        //    catch (Exception Err)
+        //    {
+        //        Console.Write(Err.Message.ToString());
+        //        logger.Error(Err.StackTrace);
+        //    }
+        //}
+
+
+        //public void getNewFriends(int days)
+        //{
+        //    try
+        //    {
+        //        SocioBoard.Domain.User user = (User)Session["LoggedUser"];
+        //        FacebookStatsRepository objfbStatsRepo = new FacebookStatsRepository();
+        //        ArrayList arrFbStats = objfbStatsRepo.getAllFacebookStatsOfUser(user.Id, days);
+
+        //        // Get facebook page like ...
+        //        FacebookAccountRepository ObjAcFbAccount = new FacebookAccountRepository();
+        //        int TotalLikes = ObjAcFbAccount.getPagelikebyUserId(user.Id);
+        //        string TotalLikes1 = string.Empty;
+        //        if (TotalLikes >= 100000)
+        //        {
+        //            TotalLikes1 = (System.Math.Round(((float)TotalLikes / 1000000), 2)) + "M";
+        //        }
+        //        else if (TotalLikes > 1000 && TotalLikes < 100000)
+        //        { TotalLikes1 = (System.Math.Round(((float)TotalLikes / 1000), 2)) + "K"; }
+        //        else
+        //        {
+        //            TotalLikes1 = TotalLikes.ToString();
+        //        }
+
+        //        strFBArray = "[";
+        //        int intdays = 1;
+        //        foreach (var item in arrFbStats)
+        //        {
+        //            Array temp = (Array)item;
+        //            strFBArray += (int.Parse(temp.GetValue(3).ToString()) + int.Parse(temp.GetValue(4).ToString())) + ",";
+        //            //spanFbFans.InnerHtml = (int.Parse(temp.GetValue(3).ToString()) + int.Parse(temp.GetValue(4).ToString())).ToString();
+        //            spanFbFans.InnerHtml = (TotalLikes1);
+        //            intdays++;
+        //        }
+        //        if (intdays < 7)
+        //        {
+        //            for (int i = 0; i < 7 - arrFbStats.Count; i++)
+        //            {
+        //                strFBArray = strFBArray + "0,";
+        //            }
+        //        }
+        //        strFBArray = strFBArray.Substring(0, strFBArray.Length - 1);
+        //        strFBArray += "]";
+        //    }
+        //    catch (Exception Err)
+        //    {
+        //        Console.Write(Err.Message.ToString());
+        //        logger.Error(Err.StackTrace);
+        //    }
+        //}
+        public void getNewFriends()
         {
             try
             {
                 SocioBoard.Domain.User user = (User)Session["LoggedUser"];
                 FacebookStatsRepository objfbStatsRepo = new FacebookStatsRepository();
-                ArrayList arrFbStats = objfbStatsRepo.getAllFacebookStatsOfUser(user.Id, days);
+                ArrayList arrFbStats = objfbStatsRepo.getTotalFacebookStatsOfUser(user.Id);
 
                 // Get facebook page like ...
                 FacebookAccountRepository ObjAcFbAccount = new FacebookAccountRepository();
-                int TotalLikes = ObjAcFbAccount.getPagelikebyUserId(user.Id);
-
+            //   int TotalLikes = ObjAcFbAccount.getPagelikebyUserId(user.Id);
+                 int spanfb=0;
                 strFBArray = "[";
                 int intdays = 1;
                 foreach (var item in arrFbStats)
                 {
                     Array temp = (Array)item;
                     strFBArray += (int.Parse(temp.GetValue(3).ToString()) + int.Parse(temp.GetValue(4).ToString())) + ",";
-                    //spanFbFans.InnerHtml = (int.Parse(temp.GetValue(3).ToString()) + int.Parse(temp.GetValue(4).ToString())).ToString();
-                    spanFbFans.InnerHtml = (TotalLikes).ToString();
+                    spanfb += (int.Parse(temp.GetValue(3).ToString()) + int.Parse(temp.GetValue(4).ToString()));                
                     intdays++;
                 }
+                string TotalFriends = string.Empty;
+                if (spanfb >= 100000)
+                {
+                    TotalFriends = (System.Math.Round(((float)spanfb / 1000000), 2)) + "M";
+                }
+                else if (spanfb > 1000 && spanfb < 100000)
+                { TotalFriends = (System.Math.Round(((float)spanfb / 1000), 2)) + "K"; }
+                else
+                {
+                    TotalFriends = spanfb.ToString();
+                }
+
                 if (intdays < 7)
                 {
                     for (int i = 0; i < 7 - arrFbStats.Count; i++)
@@ -645,6 +775,8 @@ namespace SocialSuitePro
                 }
                 strFBArray = strFBArray.Substring(0, strFBArray.Length - 1);
                 strFBArray += "]";
+
+                spanFbFans.InnerHtml = TotalFriends;         
             }
             catch (Exception Err)
             {
@@ -653,34 +785,137 @@ namespace SocialSuitePro
             }
         }
 
-        public void getNewFollowers(int days)
+
+        //public void getNewFollowers(int days)
+        //{
+        //    try
+        //    {
+        //        SocioBoard.Domain.User user = (User)Session["LoggedUser"];
+        //        TwitterStatsRepository objtwtStatsRepo = new TwitterStatsRepository();
+        //        ArrayList arrTwtStats = objtwtStatsRepo.getAllTwitterStatsOfUser(user.Id, days);
+        //        strTwtArray = "[";
+        //        int NewTweet_Count = 0;
+        //        foreach (var item in arrTwtStats)
+        //        {
+        //            Array temp = (Array)item;
+        //            strTwtArray += (temp.GetValue(4)) + ",";
+        //            //spanNewTweets.InnerHtml = temp.GetValue(4).ToString();
+        //            NewTweet_Count += Convert.ToInt16(temp.GetValue(4));
+        //        }
+        //        spanNewTweets.InnerHtml = NewTweet_Count.ToString();
+
+        //        if (arrTwtStats.Count > 0)
+        //            strTwtArray = strTwtArray.Substring(0, strTwtArray.Length - 1);
+        //        if (arrTwtStats.Count < 7)
+        //        {
+        //            for (int i = 0; i < 7 - arrTwtStats.Count; i++)
+        //            {
+        //                strTwtArray = strTwtArray + "0,";
+        //            }
+        //        }
+        //        strTwtArray = strTwtArray.Substring(0, strTwtArray.Length - 1) + "]";
+        //    }
+        //    catch (Exception Err)
+        //    {
+        //        Console.Write(Err.Message.ToString());
+        //        logger.Error(Err.StackTrace);
+        //    }
+        //}
+
+
+
+        //public void getNewFollowers(int days)
+        //{
+        //    try
+        //    {
+        //        SocioBoard.Domain.User user = (User)Session["LoggedUser"];
+        //        TwitterStatsRepository objtwtStatsRepo = new TwitterStatsRepository();
+        //        ArrayList arrTwtStats = objtwtStatsRepo.getAllTwitterStatsOfUser(user.Id, days);
+        //        strTwtArray = "[";
+        //        int NewTweet_Count = 0;
+        //        string NewTweet_Count1 = string.Empty;
+        //        foreach (var item in arrTwtStats)
+        //        {
+        //            Array temp = (Array)item;
+        //            strTwtArray += (temp.GetValue(4)) + ",";
+        //            //spanNewTweets.InnerHtml = temp.GetValue(4).ToString();
+        //            NewTweet_Count += Convert.ToInt32(temp.GetValue(4));
+
+        //        }
+        //        if (NewTweet_Count >= 100000)
+        //        {
+        //            NewTweet_Count1 = (System.Math.Round(((float)NewTweet_Count / 1000000), 2)) + "M";
+        //        }
+        //        else if (NewTweet_Count > 1000 && NewTweet_Count < 100000)
+        //        { NewTweet_Count1 = (System.Math.Round(((float)NewTweet_Count / 1000), 2)) + "K"; }
+        //        else
+        //        {
+        //            NewTweet_Count1 = NewTweet_Count.ToString();
+        //        }
+        //        //  NewTweet_Count1 =(string.Format("{0:F2}", NewTweet_Count1));
+
+        //        spanNewTweets.InnerHtml = NewTweet_Count1;
+
+        //        if (arrTwtStats.Count > 0)
+        //            strTwtArray = strTwtArray.Substring(0, strTwtArray.Length - 1);
+        //        if (arrTwtStats.Count < 7)
+        //        {
+        //            for (int i = 0; i < 7 - arrTwtStats.Count; i++)
+        //            {
+        //                strTwtArray = strTwtArray + "0,";
+        //            }
+        //        }
+        //        strTwtArray = strTwtArray.Substring(0, strTwtArray.Length - 1) + "]";
+        //        // strTwtArray = "[7,12,7,0,0,0,0]";
+        //    }
+        //    catch (Exception Err)
+        //    {
+        //        Console.Write(Err.Message.ToString());
+        //        logger.Error(Err.StackTrace);
+        //    }
+        //}
+     
+        public void getNewFollowers()
         {
             try
             {
                 SocioBoard.Domain.User user = (User)Session["LoggedUser"];
                 TwitterStatsRepository objtwtStatsRepo = new TwitterStatsRepository();
-                ArrayList arrTwtStats = objtwtStatsRepo.getAllTwitterStatsOfUser(user.Id, days);
+                ArrayList arrTwtStats = objtwtStatsRepo.getTotalTwitterStatsOfUser(user.Id);
                 strTwtArray = "[";
                 int NewTweet_Count = 0;
+                string TotalFollower = string.Empty;
                 foreach (var item in arrTwtStats)
                 {
                     Array temp = (Array)item;
-                    strTwtArray += (temp.GetValue(4)) + ",";
-                    //spanNewTweets.InnerHtml = temp.GetValue(4).ToString();
-                    NewTweet_Count += Convert.ToInt16(temp.GetValue(4));
+                    strTwtArray += (temp.GetValue(4)) + ",";                  
+                    NewTweet_Count += Convert.ToInt32(temp.GetValue(4));
                 }
-                spanNewTweets.InnerHtml = NewTweet_Count.ToString();
-
-                if (arrTwtStats.Count > 0)
-                    strTwtArray = strTwtArray.Substring(0, strTwtArray.Length - 1);
-                if (arrTwtStats.Count < 7)
+                if (NewTweet_Count >= 100000)
                 {
-                    for (int i = 0; i < 7 - arrTwtStats.Count; i++)
-                    {
-                        strTwtArray = strTwtArray + "0,";
-                    }
+                    TotalFollower = (System.Math.Round(((float)NewTweet_Count / 1000000), 2)) + "M";
                 }
-                strTwtArray = strTwtArray.Substring(0, strTwtArray.Length - 1) + "]";
+                else if (NewTweet_Count > 1000 && NewTweet_Count < 100000)
+                { TotalFollower = (System.Math.Round(((float)NewTweet_Count / 1000), 2)) + "K"; }
+                else
+                {
+                    TotalFollower = NewTweet_Count.ToString();
+                }
+              
+                spanNewTweets.InnerHtml = TotalFollower;  
+           
+                 if (arrTwtStats.Count > 0)
+                     strTwtArray = strTwtArray.Substring(0, strTwtArray.Length - 1);
+                 if (arrTwtStats.Count < 7)
+                 {
+                     for (int i = 0; i < 7 - arrTwtStats.Count; i++)
+                     {
+                         strTwtArray = strTwtArray + "0,";
+                     }
+                 }
+                 strTwtArray = strTwtArray.Substring(0, strTwtArray.Length - 1) + "]";
+
+
             }
             catch (Exception Err)
             {

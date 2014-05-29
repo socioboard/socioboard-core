@@ -246,7 +246,7 @@ namespace SocioBoard.Helper
                     jstring += "</h1>";
                     try
                     {
-                        jstring += "<h2 class=\"username\"><a href=\"#\" class=\"pretty-link js-nav\"><span class=\"screen-name\"><s>@</s>" + item["username"] + "</span> </a></h2>";
+                        jstring += "<h2 class=\"username\"><a href=\"#\" class=\"pretty-link js-nav\"><span class=\"screen-name\">" + item["username"] + "</span> </a></h2>";
                     }
                     catch (Exception ex)
                     {
@@ -413,9 +413,9 @@ namespace SocioBoard.Helper
                                             //"<a href=\"#\" class=\"btn\">Hide</a>" +
                                             //"<a href=\"#\" onclick=\"detailsprofile('" + items["id_str"] + "')\" class=\"btn\">Full Profile <i class=\"icon-caret-right\"></i> </a><div class=\"scl\">" +
                                            "<a href=" + lnk + "  class=\"btn\" target=\"_blank\" rel=\"me nofollow\">Full Profile <i class=\"icon-caret-right\"></i> </a><div class=\"scl\">" +
-                                          "<a href=\"#\"><img alt=\"\" src=\"../Contents/img/admin/usergrey.png\"></a>" +
-                                          "<a href=\"#\"><img alt=\"\" src=\"../Contents/img/admin/goto.png\"></a>" +
-                                          "<a href=\"#\"><img alt=\"\" src=\"../Contents/img/admin/setting.png\"></a>" +
+                                          //"<a href=\"#\"><img alt=\"\" src=\"../Contents/img/admin/usergrey.png\"></a>" +
+                                          //"<a href=\"#\"><img alt=\"\" src=\"../Contents/img/admin/goto.png\"></a>" +
+                                          //"<a href=\"#\"><img alt=\"\" src=\"../Contents/img/admin/setting.png\"></a>" +
                                       "</div></div></div>" +
                                   "<div class=\"disco-feeds-info\">" +
                                       "<ul class=\"no-margin\">" +
@@ -899,10 +899,10 @@ namespace SocioBoard.Helper
                         jstring += "<div class=\"module profile-card component profile-header\">";
                         jstring += "<div class=\"profile-header-inner flex-module clearfix\" style=\"background-image: url('" + item["profile_banner_url"] + "');\">";
                         jstring += "<div class=\"profile-header-inner-overlay\"></div>";
-                        jstring += "<a class=\"profile-picture media-thumbnail js-nav\" href=\"#\"><img class=\"avatar size73\" alt=\"" + item["name"] + "\" src=\"" + item["profile_image_url"] + "\" /></a>";
+                        jstring += "<a class=\"profile-picture media-thumbnail js-nav\" target=\"_blank\" href=\"http://www.twitter.com/" + item["screen_name"] + "\"><img class=\"avatar size73\" alt=\"" + item["name"] + "\" src=\"" + item["profile_image_url"] + "\" /></a>";
                         jstring += "<div class=\"profile-card-inner\">";
                         jstring += "<h1 class=\"fullname editable-group\">";
-                        jstring += "<a href=\"www.twitter.com/" + item["name"] + "\" class=\"js-nav\">" + item["name"] + "</a>";
+                        jstring += "<a target=\"_blank\" href=\"http://www.twitter.com/" + item["screen_name"] + "\" class=\"js-nav\">" + item["name"] + "</a>";
                         jstring += "<a class=\"verified-link js-tooltip\" href=\"#\"><span class=\"icon verified verified-large-border\"><span class=\"visuallyhidden\"></span> </span></a>";
                         jstring += "</h1>";
                         jstring += "<h2 class=\"username\"><a href=\"#\" class=\"pretty-link js-nav\"><span class=\"screen-name\"><s>@</s>" + item["screen_name"] + "</span> </a></h2>";
@@ -1170,7 +1170,7 @@ namespace SocioBoard.Helper
                         jstring += "<a class=\"profile-picture media-thumbnail js-nav\" href=\"#\"><img class=\"avatar size73\" alt=\"" + item["name"] + "\" src=\"" + item["profile_image_url"] + "\" /></a>";
                         jstring += "<div class=\"profile-card-inner\">";
                         jstring += "<h1 class=\"fullname editable-group\">";
-                        jstring += "<a href=\"www.twitter.com/" + item["name"] + "\" class=\"js-nav\">" + item["name"] + "</a>";
+                        jstring += "<a target=\"_blank\" href=\"http://www.twitter.com/" + item["name"] + "\" class=\"js-nav\">" + item["name"] + "</a>";
                         jstring += "<a class=\"verified-link js-tooltip\" href=\"#\"><span class=\"icon verified verified-large-border\"><span class=\"visuallyhidden\"></span> </span></a>";
                         jstring += "</h1>";
                         jstring += "<h2 class=\"username\"><a href=\"#\" class=\"pretty-link js-nav\"><span class=\"screen-name\"><s>@</s>" + item["screen_name"] + "</span> </a></h2>";
@@ -1326,12 +1326,12 @@ namespace SocioBoard.Helper
                         jstring += "<div class=\"profile-header-inner flex-module clearfix\" style=\"background-image: url('https://pbs.twimg.com/profile_banners/215936249/1371721359');\">";
                     }
                     jstring += "<div class=\"profile-header-inner-overlay\"></div>";
-                    jstring += "<a class=\"profile-picture media-thumbnail js-nav\" href=\"#\"><img class=\"avatar size73\" alt=\"" + item["name"] + "\" src=\"http://graph.facebook.com/" + item["id"] + "/picture?type=small\" /></a>";
+                    jstring += "<a class=\"profile-picture media-thumbnail js-nav\" href=\"http://www.facebook.com/" + item["id"] + "\" rel=\"me nofollow\" target=\"_blank\"><img class=\"avatar size73\" alt=\"" + item["name"] + "\" src=\"http://graph.facebook.com/" + item["id"] + "/picture?type=small\" /></a>";
                     jstring += "<div class=\"profile-card-inner\">";
                     jstring += "<h1 class=\"fullname editable-group\">";
                     try
                     {
-                        jstring += "<a href=\"#\" class=\"js-nav\">" + item["name"] + "</a>";
+                        jstring += "<span href=\"#\" class=\"js-nav\">" + item["name"] + "</span>";
                     }
                     catch (Exception ex)
                     {
@@ -1341,7 +1341,7 @@ namespace SocioBoard.Helper
                     jstring += "</h1>";
                     try
                     {
-                        jstring += "<h2 class=\"username\"><a href=\"#\" class=\"pretty-link js-nav\"><span class=\"screen-name\"><s>@</s>" + item["username"] + "</span> </a></h2>";
+                        jstring += "<h2 class=\"username\"><span class=\"screen-name\">" + item["username"] + "</span></h2>";
                     }
                     catch (Exception ex)
                     {

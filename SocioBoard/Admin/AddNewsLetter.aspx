@@ -68,7 +68,7 @@
                                         <div>
 
                                         <div class="form-actions" style="margin: 0;">
-                            <asp:Button ID="unselect" runat="server" Text="UnSelect" 
+                            <asp:Button ID="unselect" runat="server" Text="UnSelect All" 
                                 class="btn btn-icon btn-primary circle_ok" onclick="unselect_Click" />
 						</div>
                                          <div class="form-actions" style="margin: 0;">

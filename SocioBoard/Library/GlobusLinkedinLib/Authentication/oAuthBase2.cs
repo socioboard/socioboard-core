@@ -351,9 +351,19 @@ namespace GlobusLinkedinLib.Authentication
 
         public virtual string GenerateTimeStamp()
         {
-            // Default implementation of UNIX time of the current UTC time
-            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            return Convert.ToInt64(ts.TotalSeconds).ToString();
+            //Default implementation of UNIX time of the current UTC time
+            //TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            //return Convert.ToInt64(ts.TotalSeconds).ToString();
+
+            //int r = new Random(1).Next(101, 999);
+            //string a = "1398837" + r.ToString();
+            //a = Convert.ToInt64(ts.TotalSeconds).ToString();
+
+            long unixTimestamp = DateTime.UtcNow.Ticks - new DateTime(1970, 1, 1).Ticks;
+            unixTimestamp /= TimeSpan.TicksPerSecond;
+            return unixTimestamp.ToString();
+
+            //return "1398839799";
         }
 
         /*

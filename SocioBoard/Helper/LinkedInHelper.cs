@@ -72,6 +72,7 @@ namespace SocioBoard.Helper
                             socioprofilerepo.addNewProfileForUser(socioprofile);
                         }
                         objLiRepo.updateLinkedinUser(objLinkedInAccount);
+                        HttpContext.Current.Session["alreadyexist"] = objLinkedInAccount;
                     }
                     else
                     {

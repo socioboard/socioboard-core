@@ -23,7 +23,7 @@ namespace SocioBoard
             {
                 divtxtmail.Visible = false;
                 btnforgetpass.Visible = false;
-                RequiredFieldValidator1.Visible = false;
+              //  RequiredFieldValidator1.Visible = false;
                 heading.InnerHtml = "Reset Password";
 
             }
@@ -96,10 +96,10 @@ namespace SocioBoard
                         lblerror.Text = "Your Email is wrong Please try another one";
                     }
                 }
-                else
-                {
-                    lblerror.Text = "Please enter your Email-Id";
-                }
+                //else
+                //{
+                //    lblerror.Text = "Please enter your Email-Id";
+                //}
             }
             catch (Exception Err)
             {
@@ -120,7 +120,7 @@ namespace SocioBoard
                 }
                 else
                 {
-                    lblerror.Text = "Problem Password Reset";
+                    lblerror.Text = "Problem while resetting password";
                 }
 
             }

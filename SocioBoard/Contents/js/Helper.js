@@ -118,7 +118,7 @@ function createtask(id) {
 
         $("#inbox_messages").html = "";
 
-        if (messagedescription.indexOf("Contents/img/pin.png") != -1) {
+        if (messagedescription.indexOf("Contents/img/pin") != -1) {
             messagedescription = messagedescription.replace("../Contents/img/pin.png", "");
         }
         if (messagedescription.indexOf("Contents/img/admin/goto.png") != -1) {
@@ -138,7 +138,6 @@ function createtask(id) {
                         debugger;
                         $("#tasksteam").html(msg);
                         $("#another-load").html("");
-                        //$('.scl').remove();
 
                     }
                 });
@@ -153,7 +152,6 @@ function createtask(id) {
     } catch (e)
         { }
 }
-
 
 /*save task into database*/
 function savetask() {
@@ -184,6 +182,12 @@ function savetask() {
                 chkboxid = '';
             }
 
+            if (comment == "" || comment == null) {
+                alert("Please write comment then click save!")
+                return false;
+            }
+
+
             //  var memId = $("#<%=hdnMemberId.ClientID %>").val();
             $.ajax
             ({
@@ -194,6 +198,8 @@ function savetask() {
                 dataType: "html",
                 success: function (msg) {
                     $("#popupchk").bPopup().close();
+                    $("#txttaskcomment").val() = "";
+                    $("input[type='radio']:checked").val() = "";
                 }
             });
         } else {
@@ -334,16 +340,21 @@ function detailsprofile(id) {
                 $("#another-load").html("");
                 $("#profile_popup").bPopup();
 
-                $.ajax
-        ({
-            type: "GET",
-            url: "../Helper/AjaxHelper.aspx?op=getTwitterUserTweets&profileid=" + id,
-            crossDomain: true,
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
-            success: function (msg) {
-            }
-        });
+                //                $("#facebookuserDetails").html(msg);
+                //                $("#facebookuserDetails").bPopup();
+
+                //                $.ajax
+                //        ({
+                //            type: "GET",
+                //            url: "../Helper/AjaxHelper.aspx?op=getTwitterUserTweets&profileid=" + id,
+                //            crossDomain: true,
+                //            contentType: "application/json; charset=utf-8",
+                //            dataType: "html",
+                //            success: function (msg) {
+                //                $("#facebookuserDetails").html(msg);
+                //                $("#facebookuserDetails").bPopup();
+                //            }
+                //        });
 
 
             }

@@ -25,7 +25,7 @@ namespace SocioBoard.Model
                 using (NHibernate.ITransaction transaction = session.BeginTransaction())
                 {
                     //Proceed action, to get all Data by user id.
-                    List<SocialProfile> alst = session.CreateQuery("from SocialProfile where UserId = :userid")
+                    List<SocialProfile> alst = session.CreateQuery("from SocialProfile where UserId = :userid and ProfileType!='googleplus'")
                     .SetParameter("userid", userid)
                     .List<SocialProfile>()
                     .ToList<SocialProfile>();
@@ -394,6 +394,36 @@ namespace SocioBoard.Model
                 }//End Transaction
             }//End Session
         }
+
+
+
+        public SocialProfile GetSocialProfileByProfileId(string SocialProfile)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        NHibernate.IQuery query = session.CreateQuery("from SocialProfile  where ProfileId = : ProfileId");
+                        query.SetParameter("ProfileId", SocialProfile);
+                        SocialProfile result = (SocialProfile)query.UniqueResult();
+                        return result;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+
+
+                }
+            }
+        }
+
+
 
 
     }
