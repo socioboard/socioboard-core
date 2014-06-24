@@ -1,0 +1,1483 @@
+ERROR2013-12-30 01:45:21 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2013-12-30 02:10:43 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2013-12-30 02:16:18 Class:GlobusTwitterLib.App.Core.PhotoUpload Method:Tweet Line #: 132  – The request was aborted: The connection was closed unexpectedly.
+ERROR2013-12-30 02:22:39 Class:GlobusTwitterLib.App.Core.PhotoUpload Method:Tweet Line #: 132  – URI formats are not supported.
+ERROR2013-12-30 03:14:27 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2013-12-30 03:46:32 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 122  – Length cannot be less than zero.
+Parameter name: length
+ERROR2013-12-30 03:56:25 Class:SocialSuitePro.Admin.AddNewsLetter Method:btnSave_Click Line #: 74  – Fatal error encountered during command execution.
+ERROR2013-12-30 04:01:22 Class:SocialSuitePro.Admin.AddNewsLetter Method:btnSave_Click Line #: 74  – Fatal error encountered during command execution.
+ERROR2013-12-30 04:26:48 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2013-12-30 04:43:19 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 122  – Length cannot be less than zero.
+Parameter name: length
+ERROR2013-12-30 05:06:31 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 122  – Length cannot be less than zero.
+Parameter name: length
+ERROR2013-12-30 05:48:38 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 122  – Length cannot be less than zero.
+Parameter name: length
+ERROR2013-12-31 12:07:05 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 97  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 72
+ERROR2013-12-31 12:52:08 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2013-12-31 04:07:03 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2013-12-31 04:08:06 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2013-12-31 04:14:09 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2013-12-31 04:14:09 Class:SocialSuitePro.Default Method:Page_Load Line #: 40  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Default.aspx.cs:line 33
+ERROR2013-12-31 04:15:32 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2013-12-31 04:15:46 Class:SocialSuitePro.Default Method:Page_Load Line #: 40  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Default.aspx.cs:line 33
+ERROR2013-12-31 04:16:59 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2013-12-31 05:13:27 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 122  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-01-02 01:35:00 Class:SocialSuitePro.Admin.EditUserDetail Method:Page_Load Line #: 44  –    at SocialSuitePro.Admin.EditUserDetail.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Admin\EditUserDetail.aspx.cs:line 38
+ERROR2014-01-03 10:20:27 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 97  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 72
+ERROR2014-01-03 10:22:23 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-03 10:24:28 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 97  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 72
+ERROR2014-01-03 10:25:26 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-03 10:30:12 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 97  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 72
+ERROR2014-01-03 10:32:32 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-03 10:36:12 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 97  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 72
+ERROR2014-01-03 10:37:03 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-03 10:53:00 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 60
+ERROR2014-01-03 10:54:18 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-03 10:54:43 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-03 10:55:50 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-03 10:58:30 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – Object reference not set to an instance of an object.
+ERROR2014-01-03 10:58:39 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 60
+ERROR2014-01-03 10:59:22 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-03 11:01:06 Class:? Method:lambda_method Line #: 0  – Object reference not set to an instance of an object.
+ERROR2014-01-03 11:01:06 Class:? Method:lambda_method Line #: 0  – Object reference not set to an instance of an object.
+ERROR2014-01-03 11:01:06 Class:SocialSuitePro.Home Method:Page_Load Line #: 136  –    at NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters) in p:\nhibernate-core\src\NHibernate\Loader\Loader.cs:line 1573
+   at NHibernate.Loader.Loader.ListIgnoreQueryCache(ISessionImplementor session, QueryParameters queryParameters) in p:\nhibernate-core\src\NHibernate\Loader\Loader.cs:line 1472
+   at NHibernate.Loader.Loader.List(ISessionImplementor session, QueryParameters queryParameters, ISet`1 querySpaces, IType[] resultTypes) in p:\nhibernate-core\src\NHibernate\Loader\Loader.cs:line 1467
+   at NHibernate.Hql.Ast.ANTLR.Loader.QueryLoader.List(ISessionImplementor session, QueryParameters queryParameters) in p:\nhibernate-core\src\NHibernate\Hql\Ast\ANTLR\Loader\QueryLoader.cs:line 288
+   at NHibernate.Hql.Ast.ANTLR.QueryTranslatorImpl.List(ISessionImplementor session, QueryParameters queryParameters) in p:\nhibernate-core\src\NHibernate\Hql\Ast\ANTLR\QueryTranslatorImpl.cs:line 112
+   at NHibernate.Engine.Query.HQLQueryPlan.PerformList(QueryParameters queryParameters, ISessionImplementor session, IList results) in p:\nhibernate-core\src\NHibernate\Engine\Query\HQLQueryPlan.cs:line 105
+   at NHibernate.Impl.SessionImpl.List(String query, QueryParameters queryParameters, IList results) in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 626
+   at NHibernate.Impl.SessionImpl.List[T](String query, QueryParameters parameters) in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 602
+   at NHibernate.Impl.QueryImpl.List[T]() in p:\nhibernate-core\src\NHibernate\Impl\QueryImpl.cs:line 94
+   at SocioBoard.Model.SocialProfilesRepository.getAllSocialProfilesOfUser(Guid userid) in D:\Abhay\socioboard\trunk\SocioBoard\Model\SocialProfilesRepository.cs:line 19
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 129
+ERROR2014-01-03 11:16:43 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-03 11:19:26 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-03 11:20:52 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-01-03 11:20:53 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – Object reference not set to an instance of an object.
+ERROR2014-01-03 11:44:45 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 60
+ERROR2014-01-03 11:45:25 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-03 11:46:12 Class:SocialSuitePro.Home Method:Page_Load Line #: 304  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 298
+ERROR2014-01-03 11:46:12 Class:SocialSuitePro.Home Method:Page_Load Line #: 314  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 308
+ERROR2014-01-03 04:47:26 Class:? Method:lambda_method Line #: 0  – Could not execute query: SELECT user0_.Id as Id9_0_, user0_.UserName as UserName9_0_, user0_.EmailId as EmailId9_0_, user0_.ProfileUrl as ProfileUrl9_0_, user0_.AccountType as AccountT5_9_0_, user0_.CreateDate as CreateDate9_0_, user0_.ExpiryDate as ExpiryDate9_0_, user0_.UserStatus as UserStatus9_0_, user0_.Password as Password9_0_, user0_.TimeZone as TimeZone9_0_, user0_.PaymentStatus as Payment11_9_0_ FROM User user0_ WHERE user0_.Id=?p0
+MySql.Data.MySqlClient.MySqlException (0x80004005): Fatal error encountered during command execution. ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Fatal error encountered attempting to read the resultset. ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Connection unexpectedly terminated.
+   at MySql.Data.MySqlClient.MySqlStream.LoadPacket()
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 223
+ERROR2014-01-03 04:47:30 Class:? Method:lambda_method Line #: 0  – Fatal error encountered during command execution.
+ERROR2014-01-03 04:47:30 Class:? Method:lambda_method Line #: 0  – Fatal error encountered attempting to read the resultset.
+ERROR2014-01-03 04:47:30 Class:? Method:lambda_method Line #: 0  – Connection unexpectedly terminated.
+ERROR2014-01-03 04:47:30 Class:? Method:lambda_method Line #: 0  – Fatal error encountered during command execution.
+ERROR2014-01-03 04:47:30 Class:? Method:lambda_method Line #: 0  – Fatal error encountered attempting to read the resultset.
+ERROR2014-01-03 04:47:30 Class:? Method:lambda_method Line #: 0  – Connection unexpectedly terminated.
+ERROR2014-01-03 04:47:31 Class:SocialSuitePro.Admin.UserDetails Method:Page_Load Line #: 33  – Object reference not set to an instance of an object.
+ERROR2014-01-03 04:54:48 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 122  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-01-03 04:56:10 Class:SocialSuitePro.Admin.Dashboard Method:Page_Load Line #: 122  – Length cannot be less than zero.
+Parameter name: length
+ERROR2014-01-04 10:54:00 Class:SocialScoup.Admin.DashboardStats Method:Page_Load Line #: 189  – Index was outside the bounds of the array.
+ERROR2014-01-04 02:04:07 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-04 02:06:14 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – Object reference not set to an instance of an object.
+ERROR2014-01-04 02:06:31 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – Object reference not set to an instance of an object.
+ERROR2014-01-04 02:06:38 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – Object reference not set to an instance of an object.
+ERROR2014-01-04 02:06:56 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – Object reference not set to an instance of an object.
+ERROR2014-01-04 02:07:45 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 681  – The remote server returned an error: (400) Bad Request.
+ERROR2014-01-04 02:08:10 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 681  – The remote server returned an error: (400) Bad Request.
+ERROR2014-01-04 02:08:35 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 681  – The remote server returned an error: (400) Bad Request.
+ERROR2014-01-04 02:10:09 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 681  – The remote server returned an error: (400) Bad Request.
+ERROR2014-01-04 02:10:35 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 681  – The remote server returned an error: (400) Bad Request.
+ERROR2014-01-04 02:10:57 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 681  – The remote server returned an error: (400) Bad Request.
+ERROR2014-01-04 02:11:19 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 681  – The remote server returned an error: (400) Bad Request.
+ERROR2014-01-04 02:11:45 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 681  – The remote server returned an error: (400) Bad Request.
+ERROR2014-01-04 02:12:07 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 681  – The remote server returned an error: (400) Bad Request.
+ERROR2014-01-04 03:21:02 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-04 03:25:17 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 681  – The remote server returned an error: (400) Bad Request.
+ERROR2014-01-04 03:25:49 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 681  – The remote server returned an error: (400) Bad Request.
+ERROR2014-01-04 03:35:35 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 625  – Unable to connect to the remote server
+ERROR2014-01-04 04:03:11 Class:SocialSuitePro.Admin.AddNewsLetter Method:Page_Load Line #: 46  – Object reference not set to an instance of an object.
+ERROR2014-01-04 04:34:48 Class:? Method:lambda_method Line #: 0  – Begin transaction failed
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   at MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   at MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   at MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   at MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in p:\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in p:\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.Transaction.AdoTransaction.Begin(IsolationLevel isolationLevel) in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 133
+ERROR2014-01-04 04:34:48 Class:SocialSuitePro.Admin.AddNewsLetter Method:unpaid_Click Line #: 175  – Begin failed with SQL exception
+ERROR2014-01-04 04:39:18 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-01-04 04:41:47 Class:SocialSuitePro.Admin.AddNewsLetter Method:sendmail_Click Line #: 128  – Object reference not set to an instance of an object.
+ERROR2014-01-04 04:43:01 Class:SocialSuitePro.Admin.AddNewsLetter Method:sendmail_Click Line #: 128  – Object reference not set to an instance of an object.
+ERROR2014-01-04 04:44:33 Class:SocialSuitePro.Admin.AddNewsLetter Method:sendmail_Click Line #: 128  – Object reference not set to an instance of an object.
+ERROR2014-01-04 04:59:09 Class:SocialSuitePro.Admin.AddNewsLetter Method:sendmail_Click Line #: 128  – Object reference not set to an instance of an object.
+ERROR2014-01-04 04:59:33 Class:SocialSuitePro.Admin.AddNewsLetter Method:sendmail_Click Line #: 128  – Object reference not set to an instance of an object.
+ERROR2014-01-04 04:59:55 Class:SocialSuitePro.Admin.AddNewsLetter Method:sendmail_Click Line #: 128  – Object reference not set to an instance of an object.
+ERROR2014-01-04 06:48:24 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 97  –    at Facebook.HttpHelper.OpenRead()
+   at Facebook.FacebookClient.Api(HttpMethod httpMethod, String path, Object parameters, Type resultType)
+   at Facebook.FacebookClient.Get(String path, Object parameters, Type resultType)
+   at Facebook.FacebookClient.Get(String path, Object parameters)
+   at SocialSuitePro.FacebookManager.GetAccessToken() in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 144
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 35
+ERROR2014-01-04 06:53:49 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 97  –    at Facebook.FacebookClient.ProcessResponse(HttpHelper httpHelper, String responseString, Type resultType, Boolean containsEtag, IList`1 batchEtags)
+   at Facebook.FacebookClient.Api(HttpMethod httpMethod, String path, Object parameters, Type resultType)
+   at Facebook.FacebookClient.Get(String path, Object parameters, Type resultType)
+   at Facebook.FacebookClient.Get(String path, Object parameters)
+   at SocialSuitePro.FacebookManager.GetAccessToken() in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 144
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 35
+ERROR2014-01-04 07:01:14 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 97  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 68
+ERROR2014-01-04 07:06:58 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 97  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 68
+ERROR2014-01-04 07:15:33 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 97  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 68
+ERROR2014-01-04 07:38:25 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 108  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 76
+ERROR2014-01-07 11:08:43 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-07 11:10:14 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-07 11:17:26 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 681  – The remote server returned an error: (400) Bad Request.
+ERROR2014-01-07 11:17:54 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 681  – The remote server returned an error: (400) Bad Request.
+ERROR2014-01-07 11:25:05 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 681  – The remote server returned an error: (400) Bad Request.
+ERROR2014-01-07 11:31:06 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 681  – The remote server returned an error: (400) Bad Request.
+ERROR2014-01-07 11:32:43 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 681  – The remote server returned an error: (400) Bad Request.
+ERROR2014-01-07 11:44:52 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-07 11:46:05 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-07 11:59:44 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-07 12:00:43 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-07 12:01:43 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – Object reference not set to an instance of an object.
+ERROR2014-01-07 12:49:06 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-07 12:51:01 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-07 12:51:36 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The remote server returned an error: (404) Not Found.
+ERROR2014-01-07 12:52:09 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The remote server returned an error: (404) Not Found.
+ERROR2014-01-07 12:54:03 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The remote server returned an error: (404) Not Found.
+ERROR2014-01-07 12:54:38 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The remote server returned an error: (404) Not Found.
+ERROR2014-01-07 01:07:15 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-07 01:09:01 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-07 01:14:22 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The remote server returned an error: (404) Not Found.
+ERROR2014-01-07 01:17:37 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The remote server returned an error: (404) Not Found.
+ERROR2014-01-07 01:21:36 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The remote server returned an error: (404) Not Found.
+ERROR2014-01-07 01:21:52 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The remote server returned an error: (404) Not Found.
+ERROR2014-01-07 01:22:30 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The remote server returned an error: (404) Not Found.
+ERROR2014-01-07 01:36:52 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-07 01:38:44 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-07 01:39:17 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The remote server returned an error: (404) Not Found.
+ERROR2014-01-07 01:41:09 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The remote server returned an error: (404) Not Found.
+ERROR2014-01-07 01:42:25 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The remote server returned an error: (404) Not Found.
+ERROR2014-01-07 01:48:03 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The remote server returned an error: (404) Not Found.
+ERROR2014-01-07 01:48:11 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The remote server returned an error: (404) Not Found.
+ERROR2014-01-07 01:52:05 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 949  – The given key was not present in the dictionary.
+ERROR2014-01-07 01:52:35 Class:? Method:lambda_method Line #: 0  – Could not execute command: INSERT INTO FacebookMessage (Message, MessageDate, EntryDate, ProfileId, FromId, FromName, FromProfileUrl, FbComment, FbLike, MessageId, Type, UserId, Picture, Id) VALUES (?p0, ?p1, ?p2, ?p3, ?p4, ?p5, ?p6, ?p7, ?p8, ?p9, ?p10, ?p11, ?p12, ?p13)
+MySql.Data.MySqlClient.MySqlException (0x80004005): Duplicate entry '100006025154392_176851745858996' for key 'MessageId'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteNonQuery(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 197
+ERROR2014-01-07 01:52:35 Class:? Method:lambda_method Line #: 0  – Duplicate entry '100006025154392_176851745858996' for key 'MessageId'
+ERROR2014-01-07 01:52:35 Class:? Method:lambda_method Line #: 0  – Could not synchronize database state with session
+NHibernate.Exceptions.GenericADOException: could not insert: [SocioBoard.Domain.FacebookMessage#6208f60e-a03f-489e-9e79-859e629deb87][SQL: INSERT INTO FacebookMessage (Message, MessageDate, EntryDate, ProfileId, FromId, FromName, FromProfileUrl, FbComment, FbLike, MessageId, Type, UserId, Picture, Id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)] ---> MySql.Data.MySqlClient.MySqlException: Duplicate entry '100006025154392_176851745858996' for key 'MessageId'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteNonQuery(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 203
+   at NHibernate.AdoNet.NonBatchingBatcher.AddToBatch(IExpectation expectation) in p:\nhibernate-core\src\NHibernate\AdoNet\NonBatchingBatcher.cs:line 40
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Boolean[] notNull, Int32 j, SqlCommandInfo sql, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 2656
+   --- End of inner exception stack trace ---
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Boolean[] notNull, Int32 j, SqlCommandInfo sql, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 2676
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object id, Object[] fields, Object obj, ISessionImplementor session) in p:\nhibernate-core\src\NHibernate\Persister\Entity\AbstractEntityPersister.cs:line 3062
+   at NHibernate.Action.EntityInsertAction.Execute() in p:\nhibernate-core\src\NHibernate\Action\EntityInsertAction.cs:line 59
+   at NHibernate.Engine.ActionQueue.Execute(IExecutable executable) in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 136
+   at NHibernate.Engine.ActionQueue.ExecuteActions(IList list) in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 126
+   at NHibernate.Engine.ActionQueue.ExecuteActions() in p:\nhibernate-core\src\NHibernate\Engine\ActionQueue.cs:line 169
+   at NHibernate.Event.Default.AbstractFlushingEventListener.PerformExecutions(IEventSource session) in p:\nhibernate-core\src\NHibernate\Event\Default\AbstractFlushingEventListener.cs:line 241
+ERROR2014-01-07 01:52:35 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 681  – could not insert: [SocioBoard.Domain.FacebookMessage#6208f60e-a03f-489e-9e79-859e629deb87][SQL: INSERT INTO FacebookMessage (Message, MessageDate, EntryDate, ProfileId, FromId, FromName, FromProfileUrl, FbComment, FbLike, MessageId, Type, UserId, Picture, Id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+ERROR2014-01-07 01:58:03 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-07 01:59:36 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-07 02:12:12 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 949  – The given key was not present in the dictionary.
+ERROR2014-01-07 02:12:18 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 949  – The given key was not present in the dictionary.
+ERROR2014-01-07 02:15:39 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-07 02:15:39 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-07 02:15:39 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-07 02:15:42 Class:SocialSuitePro.Feeds.AjaxFeeds Method:Page_Load Line #: 52  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-07 02:15:46 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-07 02:15:46 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-07 02:15:46 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-07 02:16:15 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 552  – Object reference not set to an instance of an object.
+ERROR2014-01-07 03:54:54 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-07 03:58:32 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-07 04:31:40 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-07 04:34:21 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-07 04:40:20 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The given key was not present in the dictionary.
+ERROR2014-01-07 04:41:12 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The given key was not present in the dictionary.
+ERROR2014-01-07 05:01:00 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-07 05:04:56 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-07 05:12:13 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The given key was not present in the dictionary.
+ERROR2014-01-07 05:59:37 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-07 06:01:00 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-07 06:29:27 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – Object reference not set to an instance of an object.
+ERROR2014-01-07 06:29:47 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – Object reference not set to an instance of an object.
+ERROR2014-01-07 06:30:27 Class:? Method:lambda_method Line #: 0  – Begin transaction failed
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   at MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   at MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   at MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   at MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in p:\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in p:\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.Transaction.AdoTransaction.Begin(IsolationLevel isolationLevel) in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 133
+ERROR2014-01-07 06:30:27 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 73  –    at NHibernate.Transaction.AdoTransaction.Begin(IsolationLevel isolationLevel) in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 148
+   at NHibernate.Transaction.AdoTransaction.Begin() in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 97
+   at NHibernate.AdoNet.ConnectionManager.BeginTransaction() in p:\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 324
+   at NHibernate.Impl.SessionImpl.BeginTransaction() in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1467
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in D:\Abhay\socioboard\trunk\SocioBoard\Model\UserRepository.cs:line 157
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in D:\Abhay\socioboard\trunk\SocialScoup\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-07 06:31:15 Class:? Method:lambda_method Line #: 0  – Begin transaction failed
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   at MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   at MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   at MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   at MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in p:\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in p:\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.Transaction.AdoTransaction.Begin(IsolationLevel isolationLevel) in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 133
+ERROR2014-01-07 06:31:15 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 73  –    at NHibernate.Transaction.AdoTransaction.Begin(IsolationLevel isolationLevel) in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 148
+   at NHibernate.Transaction.AdoTransaction.Begin() in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 97
+   at NHibernate.AdoNet.ConnectionManager.BeginTransaction() in p:\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 324
+   at NHibernate.Impl.SessionImpl.BeginTransaction() in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1467
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in D:\Abhay\socioboard\trunk\SocioBoard\Model\UserRepository.cs:line 157
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in D:\Abhay\socioboard\trunk\SocialScoup\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-07 06:40:47 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-07 06:42:07 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-07 06:46:13 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The remote server returned an error: (404) Not Found.
+ERROR2014-01-07 07:05:32 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 73  –    at SocioBoard.Helper.SessionFactory.GetNewSession() in D:\Abhay\socioboard\trunk\SocioBoard\Helper\SessionFactory.cs:line 73
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in D:\Abhay\socioboard\trunk\SocioBoard\Model\UserRepository.cs:line 155
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in D:\Abhay\socioboard\trunk\SocialScoup\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-07 07:05:57 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 73  –    at SocioBoard.Helper.SessionFactory.GetNewSession() in D:\Abhay\socioboard\trunk\SocioBoard\Helper\SessionFactory.cs:line 73
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in D:\Abhay\socioboard\trunk\SocioBoard\Model\UserRepository.cs:line 155
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in D:\Abhay\socioboard\trunk\SocialScoup\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-07 07:06:14 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-07 07:08:06 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-07 07:09:36 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The given key was not present in the dictionary.
+ERROR2014-01-07 07:12:38 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The given key was not present in the dictionary.
+ERROR2014-01-07 07:19:56 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-07 07:23:36 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The given key was not present in the dictionary.
+ERROR2014-01-07 07:24:26 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The given key was not present in the dictionary.
+ERROR2014-01-07 07:29:53 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-07 07:35:43 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 878  – The given key was not present in the dictionary.
+ERROR2014-01-08 10:32:54 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-08 10:38:48 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The remote server returned an error: (404) Not Found.
+ERROR2014-01-08 10:40:10 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The remote server returned an error: (404) Not Found.
+ERROR2014-01-08 10:42:04 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The remote server returned an error: (404) Not Found.
+ERROR2014-01-08 10:56:01 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-08 10:58:22 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-08 11:01:45 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – The remote server returned an error: (404) Not Found.
+ERROR2014-01-08 11:05:45 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-08 11:05:46 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-08 11:05:46 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-08 11:05:52 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 552  – Object reference not set to an instance of an object.
+ERROR2014-01-08 11:05:55 Class:SocialSuitePro.Feeds.AjaxFeeds Method:Page_Load Line #: 52  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-08 11:06:01 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-08 11:06:01 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-08 11:06:01 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-08 11:27:58 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-08 11:27:58 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-08 11:27:58 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-08 11:28:00 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 552  – Object reference not set to an instance of an object.
+ERROR2014-01-08 11:28:06 Class:SocialSuitePro.Feeds.AjaxFeeds Method:Page_Load Line #: 52  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-08 11:28:13 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-08 11:28:13 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-08 11:28:13 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-08 11:32:03 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 552  – Object reference not set to an instance of an object.
+ERROR2014-01-08 11:33:04 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-08 11:33:04 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-08 11:33:04 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-08 11:33:07 Class:SocialSuitePro.Feeds.AjaxFeeds Method:Page_Load Line #: 52  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-08 11:33:16 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-08 11:33:16 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-08 11:33:16 Class:SocialSuitePro.Feeds.AjaxFeeds Method:ProcessRequest Line #: 327  – Object reference not set to an instance of an object.
+ERROR2014-01-08 11:44:01 Class:SocialSuitePro.Discovery Method:getresults Line #: 116  –    at System.Net.HttpWebRequest.GetResponse()
+   at GlobusTwitterLib.Authentication.oAuthTwitter.oAuthWebRequest(Method method, String resourceUrl, SortedDictionary`2 requestParameters) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusTwitterLib\Authentication\oAuthTwitter.cs:line 205
+   at GlobusTwitterLib.Twitter.Core.SearchMethods.Search.Get_Search_Tweets(oAuthTwitter oAuth, String SearchKeyword) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusTwitterLib\Twitter.Core\SearchMethods\Search.cs:line 120
+   at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 72
+ERROR2014-01-08 11:44:21 Class:SocialSuitePro.Discovery Method:getresults Line #: 188  –    at System.Net.HttpWebRequest.GetResponse()
+   at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 138
+ERROR2014-01-08 11:45:39 Class:SocialSuitePro.Discovery Method:getresults Line #: 116  –    at System.Net.HttpWebRequest.GetResponse()
+   at GlobusTwitterLib.Authentication.oAuthTwitter.oAuthWebRequest(Method method, String resourceUrl, SortedDictionary`2 requestParameters) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusTwitterLib\Authentication\oAuthTwitter.cs:line 205
+   at GlobusTwitterLib.Twitter.Core.SearchMethods.Search.Get_Search_Tweets(oAuthTwitter oAuth, String SearchKeyword) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusTwitterLib\Twitter.Core\SearchMethods\Search.cs:line 120
+   at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 72
+ERROR2014-01-08 11:45:59 Class:SocialSuitePro.Discovery Method:getresults Line #: 188  –    at System.Net.HttpWebRequest.GetResponse()
+   at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 138
+ERROR2014-01-08 11:48:11 Class:SocialSuitePro.Discovery Method:getresults Line #: 116  –    at System.Net.HttpWebRequest.GetResponse()
+   at GlobusTwitterLib.Authentication.oAuthTwitter.oAuthWebRequest(Method method, String resourceUrl, SortedDictionary`2 requestParameters) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusTwitterLib\Authentication\oAuthTwitter.cs:line 205
+   at GlobusTwitterLib.Twitter.Core.SearchMethods.Search.Get_Search_Tweets(oAuthTwitter oAuth, String SearchKeyword) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusTwitterLib\Twitter.Core\SearchMethods\Search.cs:line 120
+   at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 72
+ERROR2014-01-08 11:48:32 Class:SocialSuitePro.Discovery Method:getresults Line #: 188  –    at System.Net.HttpWebRequest.GetResponse()
+   at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 138
+ERROR2014-01-08 11:57:40 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-08 11:59:41 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-08 12:13:08 Class:SocialSuitePro.Discovery Method:getresults Line #: 116  –    at System.Net.HttpWebRequest.GetResponse()
+   at GlobusTwitterLib.Authentication.oAuthTwitter.oAuthWebRequest(Method method, String resourceUrl, SortedDictionary`2 requestParameters) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusTwitterLib\Authentication\oAuthTwitter.cs:line 205
+   at GlobusTwitterLib.Twitter.Core.SearchMethods.Search.Get_Search_Tweets(oAuthTwitter oAuth, String SearchKeyword) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusTwitterLib\Twitter.Core\SearchMethods\Search.cs:line 120
+   at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 72
+ERROR2014-01-08 12:13:28 Class:SocialSuitePro.Discovery Method:getresults Line #: 188  –    at System.Net.HttpWebRequest.GetResponse()
+   at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 138
+ERROR2014-01-08 12:40:38 Class:SocialSuitePro.Discovery Method:getresults Line #: 116  –    at System.Net.HttpWebRequest.GetResponse()
+   at GlobusTwitterLib.Authentication.oAuthTwitter.oAuthWebRequest(Method method, String resourceUrl, SortedDictionary`2 requestParameters) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusTwitterLib\Authentication\oAuthTwitter.cs:line 205
+   at GlobusTwitterLib.Twitter.Core.SearchMethods.Search.Get_Search_Tweets(oAuthTwitter oAuth, String SearchKeyword) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusTwitterLib\Twitter.Core\SearchMethods\Search.cs:line 120
+   at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 72
+ERROR2014-01-08 12:40:59 Class:SocialSuitePro.Discovery Method:getresults Line #: 188  –    at System.Net.HttpWebRequest.GetResponse()
+   at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 138
+ERROR2014-01-08 12:40:59 Class:SocialSuitePro.Feeds.AjaxFeeds Method:Page_Load Line #: 43  – Thread was being aborted.
+ERROR2014-01-08 12:41:00 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – Object reference not set to an instance of an object.
+ERROR2014-01-08 12:41:46 Class:SocialSuitePro.Feeds.AjaxFeeds Method:Page_Load Line #: 43  – Thread was being aborted.
+ERROR2014-01-08 12:41:47 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – Object reference not set to an instance of an object.
+ERROR2014-01-08 12:42:07 Class:SocialSuitePro.Discovery Method:getresults Line #: 116  –    at System.Net.HttpWebRequest.GetResponse()
+   at GlobusTwitterLib.Authentication.oAuthTwitter.oAuthWebRequest(Method method, String resourceUrl, SortedDictionary`2 requestParameters) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusTwitterLib\Authentication\oAuthTwitter.cs:line 205
+   at GlobusTwitterLib.Twitter.Core.SearchMethods.Search.Get_Search_Tweets(oAuthTwitter oAuth, String SearchKeyword) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusTwitterLib\Twitter.Core\SearchMethods\Search.cs:line 120
+   at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 72
+ERROR2014-01-08 12:42:28 Class:SocialSuitePro.Discovery Method:getresults Line #: 188  –    at System.Net.HttpWebRequest.GetResponse()
+   at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 138
+ERROR2014-01-08 12:42:50 Class:SocialSuitePro.Feeds.AjaxFeeds Method:Page_Load Line #: 43  – Thread was being aborted.
+ERROR2014-01-08 12:42:51 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – Object reference not set to an instance of an object.
+ERROR2014-01-08 12:44:19 Class:SocialSuitePro.Discovery Method:getresults Line #: 116  –    at System.Net.HttpWebRequest.GetResponse()
+   at GlobusTwitterLib.Authentication.oAuthTwitter.oAuthWebRequest(Method method, String resourceUrl, SortedDictionary`2 requestParameters) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusTwitterLib\Authentication\oAuthTwitter.cs:line 205
+   at GlobusTwitterLib.Twitter.Core.SearchMethods.Search.Get_Search_Tweets(oAuthTwitter oAuth, String SearchKeyword) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusTwitterLib\Twitter.Core\SearchMethods\Search.cs:line 120
+   at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 72
+ERROR2014-01-08 12:44:41 Class:SocialSuitePro.Discovery Method:getresults Line #: 188  –    at System.Net.HttpWebRequest.GetResponse()
+   at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 138
+ERROR2014-01-08 12:44:41 Class:SocialSuitePro.Feeds.AjaxFeeds Method:Page_Load Line #: 43  – Thread was being aborted.
+ERROR2014-01-08 12:44:42 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – Object reference not set to an instance of an object.
+ERROR2014-01-08 12:46:19 Class:SocialSuitePro.Discovery Method:getresults Line #: 116  –    at System.Net.HttpWebRequest.GetResponse()
+   at GlobusTwitterLib.Authentication.oAuthTwitter.oAuthWebRequest(Method method, String resourceUrl, SortedDictionary`2 requestParameters) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusTwitterLib\Authentication\oAuthTwitter.cs:line 205
+   at GlobusTwitterLib.Twitter.Core.SearchMethods.Search.Get_Search_Tweets(oAuthTwitter oAuth, String SearchKeyword) in D:\Abhay\socioboard\trunk\SocioBoard\Library\GlobusTwitterLib\Twitter.Core\SearchMethods\Search.cs:line 120
+   at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 72
+ERROR2014-01-08 12:46:40 Class:SocialSuitePro.Discovery Method:getresults Line #: 188  –    at System.Net.HttpWebRequest.GetResponse()
+   at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 138
+ERROR2014-01-08 12:46:40 Class:SocialSuitePro.Feeds.AjaxFeeds Method:Page_Load Line #: 43  – Thread was being aborted.
+ERROR2014-01-08 12:46:40 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – Object reference not set to an instance of an object.
+ERROR2014-01-08 12:50:41 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-08 12:52:18 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-08 12:58:35 Class:SocialSuitePro.Discovery Method:getresults Line #: 195  –    at System.Net.HttpWebRequest.GetResponse()
+   at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 145
+ERROR2014-01-08 01:06:34 Class:SocialSuitePro.Feeds.AjaxFeeds Method:Page_Load Line #: 43  – Thread was being aborted.
+ERROR2014-01-08 01:06:34 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – Object reference not set to an instance of an object.
+ERROR2014-01-08 01:21:58 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-08 01:23:59 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-08 01:34:04 Class:SocialSuitePro.Discovery Method:getresults Line #: 199  –    at System.Net.HttpWebRequest.GetResponse()
+   at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 149
+ERROR2014-01-08 01:38:21 Class:SocialSuitePro.Discovery Method:getresults Line #: 199  –    at System.Net.HttpWebRequest.GetResponse()
+   at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 149
+ERROR2014-01-08 01:42:27 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-08 01:44:46 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-08 01:47:21 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-08 01:47:31 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-08 01:47:31 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-08 01:47:36 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-08 04:19:34 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-08 04:21:26 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-08 04:37:29 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 108  –    at Facebook.FacebookClient.ProcessResponse(HttpHelper httpHelper, String responseString, Type resultType, Boolean containsEtag, IList`1 batchEtags)
+   at Facebook.FacebookClient.Api(HttpMethod httpMethod, String path, Object parameters, Type resultType)
+   at Facebook.FacebookClient.Get(String path, Object parameters, Type resultType)
+   at Facebook.FacebookClient.Get(String path, Object parameters)
+   at SocialSuitePro.FacebookManager.GetAccessToken() in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 155
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 35
+ERROR2014-01-08 04:39:01 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 108  –    at Facebook.FacebookClient.ProcessResponse(HttpHelper httpHelper, String responseString, Type resultType, Boolean containsEtag, IList`1 batchEtags)
+   at Facebook.FacebookClient.Api(HttpMethod httpMethod, String path, Object parameters, Type resultType)
+   at Facebook.FacebookClient.Get(String path, Object parameters, Type resultType)
+   at Facebook.FacebookClient.Get(String path, Object parameters)
+   at SocialSuitePro.FacebookManager.GetAccessToken() in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 155
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 35
+ERROR2014-01-08 04:40:29 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 108  –    at Facebook.FacebookClient.ProcessResponse(HttpHelper httpHelper, String responseString, Type resultType, Boolean containsEtag, IList`1 batchEtags)
+   at Facebook.FacebookClient.Api(HttpMethod httpMethod, String path, Object parameters, Type resultType)
+   at Facebook.FacebookClient.Get(String path, Object parameters, Type resultType)
+   at Facebook.FacebookClient.Get(String path, Object parameters)
+   at SocialSuitePro.FacebookManager.GetAccessToken() in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 155
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 35
+ERROR2014-01-08 04:43:00 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 108  –    at Facebook.FacebookClient.ProcessResponse(HttpHelper httpHelper, String responseString, Type resultType, Boolean containsEtag, IList`1 batchEtags)
+   at Facebook.FacebookClient.Api(HttpMethod httpMethod, String path, Object parameters, Type resultType)
+   at Facebook.FacebookClient.Get(String path, Object parameters, Type resultType)
+   at Facebook.FacebookClient.Get(String path, Object parameters)
+   at SocialSuitePro.FacebookManager.GetAccessToken() in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 155
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 35
+ERROR2014-01-08 04:44:32 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 108  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 83
+ERROR2014-01-08 04:44:56 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-08 04:47:15 Class:SocialSuitePro.Default Method:Page_Load Line #: 51  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Default.aspx.cs:line 44
+ERROR2014-01-08 04:47:19 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-08 04:52:20 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 108  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 69
+ERROR2014-01-08 04:52:22 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-08 04:58:36 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 108  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 83
+ERROR2014-01-08 05:03:18 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 108  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 83
+ERROR2014-01-08 05:05:27 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-08 05:14:53 Class:SocialSuitePro.Default Method:Page_Load Line #: 51  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Default.aspx.cs:line 44
+ERROR2014-01-08 05:14:57 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-08 05:17:34 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 60
+ERROR2014-01-08 05:18:25 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-08 05:31:55 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 108  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 83
+ERROR2014-01-08 05:33:21 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-08 05:33:44 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-08 05:43:09 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-08 05:43:48 Class:SocialSuitePro.Home Method:Page_Load Line #: 304  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 298
+ERROR2014-01-08 05:43:48 Class:SocialSuitePro.Home Method:Page_Load Line #: 314  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 308
+ERROR2014-01-08 05:49:21 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-08 05:53:39 Class:SocialSuitePro.Home Method:Page_Load Line #: 304  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 298
+ERROR2014-01-08 05:53:39 Class:SocialSuitePro.Home Method:Page_Load Line #: 314  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 308
+ERROR2014-01-08 06:34:47 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-08 06:41:18 Class:SocialSuitePro.Home Method:Page_Load Line #: 304  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 298
+ERROR2014-01-08 06:41:18 Class:SocialSuitePro.Home Method:Page_Load Line #: 314  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 308
+ERROR2014-01-08 06:57:35 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 108  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 83
+ERROR2014-01-08 06:57:58 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-08 06:59:33 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-08 07:00:53 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 60
+ERROR2014-01-08 07:01:13 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-08 07:01:37 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 60
+ERROR2014-01-08 07:01:55 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 60
+ERROR2014-01-08 07:09:42 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-09 10:51:47 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-09 10:53:37 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-09 10:55:28 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-09 10:57:18 Class:SocialSuitePro.Home Method:AuthenticateInstagram Line #: 603  – Thread was being aborted.
+ERROR2014-01-09 10:57:40 Class:SocialSuitePro.InstagramManager Method:Page_Load Line #: 45  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.InstagramManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\InstagramManager.aspx.cs:line 41
+ERROR2014-01-09 10:57:42 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-09 11:05:08 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-09 11:10:16 Class:SocialSuitePro.Home Method:AuthenticateTwitter Line #: 551  – Thread was being aborted.
+ERROR2014-01-09 01:55:13 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-09 01:57:13 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-09 03:24:08 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-09 03:26:02 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-09 03:37:57 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-09 03:39:10 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-09 04:19:25 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-09 04:21:33 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-09 04:34:11 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-09 04:37:07 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-09 04:40:18 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 52  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 48
+ERROR2014-01-09 04:40:18 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 108  –    at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 55
+ERROR2014-01-09 04:44:44 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 52  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 48
+ERROR2014-01-09 04:44:44 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 108  –    at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 55
+ERROR2014-01-09 05:25:16 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-09 07:04:29 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-09 07:06:30 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-09 07:38:21 Class:SocialSuitePro.Feeds.AjaxFeeds Method:Page_Load Line #: 43  – Thread was being aborted.
+ERROR2014-01-09 07:38:23 Class:SocialSuitePro.Feeds.AjaxFeeds Method:Page_Load Line #: 43  – Thread was being aborted.
+ERROR2014-01-09 07:38:24 Class:SocialSuitePro.Feeds.AjaxFeeds Method:Page_Load Line #: 43  – Thread was being aborted.
+ERROR2014-01-09 07:38:43 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-09 07:40:29 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-10 10:23:14 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-10 10:25:35 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-10 10:28:44 Class:SocialSuitePro.Feeds.AjaxFeeds Method:Page_Load Line #: 52  – (OAuthException - #100) (#100) Param message must be a non-empty UTF-8 encoded string
+ERROR2014-01-10 10:46:11 Class:SocialSuitePro.Feeds.AjaxFeeds Method:Page_Load Line #: 52  – (OAuthException - #100) (#100) Param message must be a non-empty UTF-8 encoded string
+ERROR2014-01-10 10:46:25 Class:SocialSuitePro.Feeds.AjaxFeeds Method:Page_Load Line #: 52  – (OAuthException - #100) (#100) Param message must be a non-empty UTF-8 encoded string
+ERROR2014-01-10 10:58:01 Class:SocialSuitePro.Feeds.AjaxFeeds Method:Page_Load Line #: 52  – (OAuthException - #2) An unexpected error has occurred. Please retry your request later.
+ERROR2014-01-10 11:57:41 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-10 11:59:47 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-10 12:37:12 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 385  – Object reference not set to an instance of an object.
+ERROR2014-01-10 12:37:12 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 403  – Object reference not set to an instance of an object.
+ERROR2014-01-10 12:37:12 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 421  – Object reference not set to an instance of an object.
+ERROR2014-01-10 12:37:12 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 436  – Object reference not set to an instance of an object.
+ERROR2014-01-10 12:37:12 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 452  – Object reference not set to an instance of an object.
+ERROR2014-01-10 12:37:13 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 628  – Object reference not set to an instance of an object.
+ERROR2014-01-10 12:37:45 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 628  – Object reference not set to an instance of an object.
+ERROR2014-01-10 12:38:12 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 628  – Object reference not set to an instance of an object.
+ERROR2014-01-10 12:38:39 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 628  – Object reference not set to an instance of an object.
+ERROR2014-01-10 12:39:06 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 628  – Object reference not set to an instance of an object.
+ERROR2014-01-10 12:39:33 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 628  – Object reference not set to an instance of an object.
+ERROR2014-01-10 12:40:00 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 628  – Object reference not set to an instance of an object.
+ERROR2014-01-10 12:40:26 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 628  – Object reference not set to an instance of an object.
+ERROR2014-01-10 12:40:54 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 628  – Object reference not set to an instance of an object.
+ERROR2014-01-10 12:41:21 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 628  – Object reference not set to an instance of an object.
+ERROR2014-01-10 01:32:20 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-10 01:33:49 Class:SocialSuitePro.InstagramManager Method:Page_Load Line #: 45  –    at SocialSuitePro.InstagramManager.getAccessToken() in D:\Abhay\socioboard\trunk\SocialScoup\InstagramManager.aspx.cs:line 58
+   at SocialSuitePro.InstagramManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\InstagramManager.aspx.cs:line 39
+ERROR2014-01-10 01:38:07 Class:SocialSuitePro.InstagramManager Method:Page_Load Line #: 45  –    at SocialSuitePro.InstagramManager.getAccessToken() in D:\Abhay\socioboard\trunk\SocialScoup\InstagramManager.aspx.cs:line 58
+   at SocialSuitePro.InstagramManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\InstagramManager.aspx.cs:line 39
+ERROR2014-01-10 04:00:23 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-10 04:01:36 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-10 04:03:27 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-10 04:05:10 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-10 04:13:08 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-10 04:13:09 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-01-10 04:13:10 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-10 04:13:10 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-10 04:13:11 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-01-10 04:23:20 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-10 04:24:58 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-10 04:31:54 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-10 04:31:54 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-01-10 04:31:55 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-10 04:31:55 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-10 04:31:56 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-01-10 04:33:59 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-10 04:34:00 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-01-10 04:34:00 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-10 04:34:00 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-10 04:34:01 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-01-10 04:37:05 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 60
+ERROR2014-01-10 04:37:56 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-10 04:39:29 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-10 04:40:48 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-10 04:40:48 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-01-10 04:40:48 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-10 04:40:48 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-10 04:40:50 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-01-10 04:47:15 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 60
+ERROR2014-01-10 04:47:40 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-10 04:50:00 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-10 05:18:46 Class:WooSuite.Admin.AddNews Method:btnSave_Click Line #: 58  – String was not recognized as a valid Boolean.
+ERROR2014-01-10 05:18:59 Class:WooSuite.Admin.AddNews Method:btnSave_Click Line #: 58  – String was not recognized as a valid Boolean.
+ERROR2014-01-10 05:34:18 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-10 05:35:50 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-10 05:38:19 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – Object reference not set to an instance of an object.
+ERROR2014-01-10 05:38:19 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – Object reference not set to an instance of an object.
+ERROR2014-01-10 05:51:30 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-10 05:51:31 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-01-10 05:51:31 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-10 05:51:31 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-10 05:51:32 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-01-10 05:56:09 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 60
+ERROR2014-01-10 05:57:43 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-10 05:58:34 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-10 06:01:12 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-10 06:01:12 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-01-10 06:01:12 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-10 06:01:12 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-10 06:01:14 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-01-10 06:48:12 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 60
+ERROR2014-01-10 06:51:38 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-10 06:53:14 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-10 06:58:37 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-10 06:58:38 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-01-10 06:58:38 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-10 06:58:38 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-10 06:58:40 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-01-10 07:20:13 Class:WooSuite.Admin.AddNews Method:btnSave_Click Line #: 58  – String was not recognized as a valid Boolean.
+ERROR2014-01-10 07:35:47 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-10 07:37:19 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-11 12:35:57 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-11 12:36:48 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-11 12:49:21 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-11 12:50:12 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-11 01:04:33 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-11 01:06:09 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-11 01:20:08 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-11 01:21:40 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-13 10:50:26 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-13 10:52:13 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-13 11:51:55 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-13 12:30:05 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-13 12:31:41 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-13 12:39:05 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-13 12:40:40 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – Object reference not set to an instance of an object.
+ERROR2014-01-13 12:40:40 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – Object reference not set to an instance of an object.
+ERROR2014-01-13 12:40:40 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – Object reference not set to an instance of an object.
+ERROR2014-01-13 12:40:40 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – Object reference not set to an instance of an object.
+ERROR2014-01-13 12:40:40 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – Object reference not set to an instance of an object.
+ERROR2014-01-13 12:40:50 Class:SocialSuitePro.Helper.AjaxHelper Method:Page_Load Line #: 38  – Object reference not set to an instance of an object.
+ERROR2014-01-13 12:41:11 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-13 12:54:39 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-13 01:23:01 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – Object reference not set to an instance of an object.
+ERROR2014-01-13 01:24:11 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 385  – Object reference not set to an instance of an object.
+ERROR2014-01-13 01:24:11 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 403  – Object reference not set to an instance of an object.
+ERROR2014-01-13 01:24:11 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 421  – Object reference not set to an instance of an object.
+ERROR2014-01-13 01:24:11 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 436  – Object reference not set to an instance of an object.
+ERROR2014-01-13 01:24:11 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 452  – Object reference not set to an instance of an object.
+ERROR2014-01-13 01:24:15 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 628  – Object reference not set to an instance of an object.
+ERROR2014-01-13 01:24:44 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 628  – Object reference not set to an instance of an object.
+ERROR2014-01-13 01:25:06 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 628  – Object reference not set to an instance of an object.
+ERROR2014-01-13 01:25:29 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 628  – Object reference not set to an instance of an object.
+ERROR2014-01-13 01:25:52 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 628  – Object reference not set to an instance of an object.
+ERROR2014-01-13 01:26:16 Class:SocialSuitePro.Helper.AjaxHelper Method:ProcessRequest Line #: 628  – Object reference not set to an instance of an object.
+ERROR2014-01-13 02:14:36 Class:SocialSuitePro.InstagramManager Method:Page_Load Line #: 45  –    at SocialSuitePro.InstagramManager.getAccessToken() in D:\Abhay\socioboard\trunk\SocialScoup\InstagramManager.aspx.cs:line 58
+   at SocialSuitePro.InstagramManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\InstagramManager.aspx.cs:line 39
+ERROR2014-01-14 03:41:42 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-15 10:30:19 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-15 10:45:50 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-15 10:52:20 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-15 10:52:23 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-15 10:52:34 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-15 10:52:42 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-15 10:52:58 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-15 10:52:58 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-15 10:52:58 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-15 10:53:14 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-15 10:53:14 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-15 10:53:33 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-15 10:53:33 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-15 10:53:57 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-15 10:53:57 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-15 12:09:56 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-15 12:41:38 Class:SocialSuitePro.MasterPage.Site Method:Page_Load Line #: 114  – Fatal error encountered during command execution.
+ERROR2014-01-15 01:03:01 Class:SocialSuitePro.Message.Task Method:Page_Load Line #: 54  – Fatal error encountered during command execution.
+ERROR2014-01-16 10:49:55 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-16 10:52:54 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-16 11:20:02 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-16 11:20:02 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-16 11:20:20 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-16 11:20:28 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-16 11:20:35 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-16 11:20:35 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-16 11:20:42 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-16 11:20:43 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-16 11:20:57 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-16 11:20:57 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-16 11:20:57 Class:SocialSuitePro.Discovery Method:getresults Line #: 189  –    at SocialSuitePro.Discovery.getresults(String keyword) in d:\Abhay\socioboard\trunk\SocialScoup\Discovery.aspx.cs:line 177
+ERROR2014-01-16 12:24:33 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-16 05:25:56 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 132  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\GplusManager.aspx.cs:line 115
+ERROR2014-01-16 05:25:59 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 142  –    at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\GplusManager.aspx.cs:line 135
+ERROR2014-01-16 05:27:48 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 132  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\GplusManager.aspx.cs:line 115
+ERROR2014-01-16 05:27:54 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 142  –    at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\GplusManager.aspx.cs:line 135
+ERROR2014-01-16 05:32:08 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 132  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\GplusManager.aspx.cs:line 115
+ERROR2014-01-16 05:32:09 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 142  –    at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\GplusManager.aspx.cs:line 135
+ERROR2014-01-16 05:34:07 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 132  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\GplusManager.aspx.cs:line 115
+ERROR2014-01-16 05:35:09 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 142  –    at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\GplusManager.aspx.cs:line 135
+ERROR2014-01-16 05:41:59 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 108  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 83
+ERROR2014-01-16 05:48:09 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 108  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 83
+ERROR2014-01-16 05:53:14 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 132  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\GplusManager.aspx.cs:line 115
+ERROR2014-01-16 05:53:14 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 142  –    at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\GplusManager.aspx.cs:line 135
+ERROR2014-01-16 05:53:53 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 5
+ERROR2014-01-16 05:54:14 Class:SocialSuitePro.Helper.MailHelper Method:SendSendGridMail Line #: 168  – Failure sending mail.
+ERROR2014-01-16 05:54:24 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-16 06:00:30 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-16 07:03:29 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 132  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\GplusManager.aspx.cs:line 115
+ERROR2014-01-16 07:03:29 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 142  –    at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\GplusManager.aspx.cs:line 135
+ERROR2014-01-16 07:07:31 Class:SocialSuitePro.Helper.MailHelper Method:SendSendGridMail Line #: 168  – Failure sending mail.
+ERROR2014-01-16 07:07:41 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-17 12:43:56 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 108  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\FacebookManager.aspx.cs:line 69
+ERROR2014-01-17 12:44:07 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-17 01:32:24 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-17 04:21:56 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-17 04:22:23 Class:SocialSuitePro.Home Method:Page_Load Line #: 304  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 298
+ERROR2014-01-17 04:22:23 Class:SocialSuitePro.Home Method:Page_Load Line #: 314  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 308
+ERROR2014-01-17 04:24:06 Class:? Method:lambda_method Line #: 0  – Begin transaction failed
+MySql.Data.MySqlClient.MySqlException (0x80004005): Connection unexpectedly terminated.
+   at MySql.Data.MySqlClient.MySqlStream.LoadPacket()
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.Authenticate411()
+   at MySql.Data.MySqlClient.NativeDriver.Authenticate()
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in p:\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in p:\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.Transaction.AdoTransaction.Begin(IsolationLevel isolationLevel) in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 133
+ERROR2014-01-17 04:24:06 Class:SocialSuitePro.MasterPage.Site Method:Page_Load Line #: 210  – Begin failed with SQL exception
+ERROR2014-01-17 06:38:52 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-17 07:45:57 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-17 08:02:13 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-21 10:56:48 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-21 11:03:23 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-21 11:03:24 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-01-21 11:03:24 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-21 11:03:24 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-21 11:03:26 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-01-21 01:13:02 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-21 01:38:40 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-21 01:44:35 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-01-21 01:44:59 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-21 01:48:06 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-21 03:58:50 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-21 05:34:18 Class:SocialSuitePro.Message.Task Method:Page_Load Line #: 54  – Object reference not set to an instance of an object.
+ERROR2014-01-21 05:34:49 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-21 05:39:30 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-21 05:39:31 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-01-21 05:39:31 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-21 05:39:31 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-21 05:39:33 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-01-21 05:42:41 Class:? Method:lambda_method Line #: 0  – Begin transaction failed
+MySql.Data.MySqlClient.MySqlException (0x80004005): User 692531__scoup already has more than 'max_user_connections' active connections
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.Authenticate411()
+   at MySql.Data.MySqlClient.NativeDriver.Authenticate()
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in p:\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in p:\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.Transaction.AdoTransaction.Begin(IsolationLevel isolationLevel) in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 133
+ERROR2014-01-21 05:42:41 Class:SocialSuitePro.Message.Task Method:Page_Load Line #: 54  – Begin failed with SQL exception
+ERROR2014-01-21 06:31:40 Class:SocialSuitePro.Message.Task Method:Page_Load Line #: 54  – Object reference not set to an instance of an object.
+ERROR2014-01-21 06:50:01 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-21 06:56:23 Class:SocialSuitePro.Default Method:Page_Load Line #: 52  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Default.aspx.cs:line 45
+ERROR2014-01-21 06:59:32 Class:? Method:lambda_method Line #: 0  – Begin transaction failed
+MySql.Data.MySqlClient.MySqlException (0x80004005): User 692531__scoup already has more than 'max_user_connections' active connections
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.Authenticate411()
+   at MySql.Data.MySqlClient.NativeDriver.Authenticate()
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in p:\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in p:\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.Transaction.AdoTransaction.Begin(IsolationLevel isolationLevel) in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 133
+ERROR2014-01-21 06:59:32 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – Begin failed with SQL exception
+ERROR2014-01-21 07:15:37 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-21 07:58:04 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   at MySql.Data.MySqlClient.MySqlTransaction.Rollback()
+   at MySql.Data.MySqlClient.MySqlTransaction.Dispose(Boolean disposing)
+   at System.Data.Common.DbTransaction.Dispose()
+   at NHibernate.Transaction.AdoTransaction.Dispose(Boolean isDisposing) in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 368
+   at NHibernate.Transaction.AdoTransaction.Dispose() in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 340
+   at SocioBoard.Model.UserActivationRepository.GetUserActivationStatus(String UserId) in D:\Abhay\socioboard\trunk\SocioBoard\Model\UserActivationRepository.cs:line 71
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 62
+ERROR2014-01-21 08:02:26 Class:? Method:lambda_method Line #: 0  – Begin transaction failed
+MySql.Data.MySqlClient.MySqlException (0x80004005): User 692531__scoup already has more than 'max_user_connections' active connections
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.Authenticate411()
+   at MySql.Data.MySqlClient.NativeDriver.Authenticate()
+   at MySql.Data.MySqlClient.NativeDriver.Open()
+   at MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at NHibernate.Connection.DriverConnectionProvider.GetConnection() in p:\nhibernate-core\src\NHibernate\Connection\DriverConnectionProvider.cs:line 46
+   at NHibernate.AdoNet.ConnectionManager.GetConnection() in p:\nhibernate-core\src\NHibernate\AdoNet\ConnectionManager.cs:line 196
+   at NHibernate.Impl.SessionImpl.get_Connection() in p:\nhibernate-core\src\NHibernate\Impl\SessionImpl.cs:line 1634
+   at NHibernate.Transaction.AdoTransaction.Begin(IsolationLevel isolationLevel) in p:\nhibernate-core\src\NHibernate\Transaction\AdoTransaction.cs:line 133
+ERROR2014-01-21 08:02:26 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – Begin failed with SQL exception
+ERROR2014-01-21 08:05:07 Class:? Method:lambda_method Line #: 0  – Could not execute query: select twitteracc0_.Id as Id37_, twitteracc0_.TwitterUserId as TwitterU2_37_, twitteracc0_.TwitterScreenName as TwitterS3_37_, twitteracc0_.OAuthToken as OAuthToken37_, twitteracc0_.OAuthSecret as OAuthSec5_37_, twitteracc0_.UserId as UserId37_, twitteracc0_.IsActive as IsActive37_, twitteracc0_.FollowersCount as Follower8_37_, twitteracc0_.FollowingCount as Followin9_37_, twitteracc0_.ProfileUrl as ProfileUrl37_, twitteracc0_.ProfileImageUrl as Profile11_37_, twitteracc0_.TwitterName as Twitter12_37_ from TwitterAccount twitteracc0_ where twitteracc0_.UserId=?p0 and twitteracc0_.TwitterUserId=?p1
+MySql.Data.MySqlClient.MySqlException (0x80004005): Fatal error encountered during command execution. ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Fatal error encountered attempting to read the resultset. ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Reading from the stream has failed. ---> System.IO.IOException: Unable to read data from the transport connection: An established connection was aborted by the software in your host machine. ---> System.Net.Sockets.SocketException: An established connection was aborted by the software in your host machine
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.IO.BufferedStream.ReadByte()
+   at MySql.Data.MySqlClient.MySqlStream.LoadPacket()
+   at MySql.Data.MySqlClient.MySqlStream.LoadPacket()
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64& affectedRows, Int64& lastInsertId)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd) in p:\nhibernate-core\src\NHibernate\AdoNet\AbstractBatcher.cs:line 223
+ERROR2014-01-21 08:05:07 Class:? Method:lambda_method Line #: 0  – Fatal error encountered during command execution.
+ERROR2014-01-21 08:05:07 Class:? Method:lambda_method Line #: 0  – Fatal error encountered attempting to read the resultset.
+ERROR2014-01-21 08:05:07 Class:? Method:lambda_method Line #: 0  – Reading from the stream has failed.
+ERROR2014-01-21 08:05:07 Class:? Method:lambda_method Line #: 0  – Unable to read data from the transport connection: An established connection was aborted by the software in your host machine.
+ERROR2014-01-21 08:05:07 Class:? Method:lambda_method Line #: 0  – An established connection was aborted by the software in your host machine
+ERROR2014-01-21 08:05:07 Class:? Method:lambda_method Line #: 0  – Fatal error encountered during command execution.
+ERROR2014-01-21 08:05:07 Class:? Method:lambda_method Line #: 0  – Fatal error encountered attempting to read the resultset.
+ERROR2014-01-21 08:05:07 Class:? Method:lambda_method Line #: 0  – Reading from the stream has failed.
+ERROR2014-01-21 08:05:07 Class:? Method:lambda_method Line #: 0  – Unable to read data from the transport connection: An established connection was aborted by the software in your host machine.
+ERROR2014-01-21 08:05:07 Class:? Method:lambda_method Line #: 0  – An established connection was aborted by the software in your host machine
+ERROR2014-01-21 08:05:07 Class:? Method:lambda_method Line #: 0  – Fatal error encountered during command execution.
+ERROR2014-01-21 08:05:07 Class:? Method:lambda_method Line #: 0  – Fatal error encountered attempting to read the resultset.
+ERROR2014-01-21 08:05:07 Class:? Method:lambda_method Line #: 0  – Reading from the stream has failed.
+ERROR2014-01-21 08:05:07 Class:? Method:lambda_method Line #: 0  – Unable to read data from the transport connection: An established connection was aborted by the software in your host machine.
+ERROR2014-01-21 08:05:07 Class:? Method:lambda_method Line #: 0  – An established connection was aborted by the software in your host machine
+ERROR2014-01-21 08:08:19 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-21 08:18:49 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – Fatal error encountered during command execution.
+ERROR2014-01-21 08:23:38 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-21 08:36:00 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-22 10:20:49 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-22 10:34:40 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – Fatal error encountered during command execution.
+ERROR2014-01-22 10:37:46 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-22 10:53:30 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-22 11:18:05 Class:? Method:lambda_method Line #: 0  – MismatchedTokenException(102!=-1)
+ERROR2014-01-22 11:18:30 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – Object reference not set to an instance of an object.
+ERROR2014-01-22 12:06:06 Class:SocialSuitePro.AjaxLogin Method:ProcessRequest Line #: 73  –    at SocioBoard.Helper.SessionFactory.GetNewSession() in D:\Abhay\socioboard\trunk\SocioBoard\Helper\SessionFactory.cs:line 73
+   at SocioBoard.Model.UserRepository.GetUserInfo(String EmailId, String Password) in D:\Abhay\socioboard\trunk\SocioBoard\Model\UserRepository.cs:line 155
+   at SocialSuitePro.AjaxLogin.ProcessRequest() in D:\Abhay\socioboard\trunk\SocialScoup\AjaxLogin.aspx.cs:line 42
+ERROR2014-01-22 07:07:00 Class:SocialSuitePro.Admin.EditUserDetail Method:Page_Load Line #: 51  –    at SocialSuitePro.Admin.EditUserDetail.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Admin\EditUserDetail.aspx.cs:line 44
+ERROR2014-01-22 07:07:50 Class:SocialSuitePro.Admin.EditUserDetail Method:Page_Load Line #: 51  –    at SocialSuitePro.Admin.EditUserDetail.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Admin\EditUserDetail.aspx.cs:line 44
+ERROR2014-01-22 07:08:35 Class:SocialSuitePro.Admin.EditUserDetail Method:Page_Load Line #: 51  –    at SocialSuitePro.Admin.EditUserDetail.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Admin\EditUserDetail.aspx.cs:line 44
+ERROR2014-01-22 07:08:43 Class:SocialSuitePro.Admin.EditUserDetail Method:Page_Load Line #: 51  –    at SocialSuitePro.Admin.EditUserDetail.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Admin\EditUserDetail.aspx.cs:line 44
+ERROR2014-01-22 07:10:22 Class:SocialSuitePro.Admin.EditUserDetail Method:Page_Load Line #: 51  –    at SocialSuitePro.Admin.EditUserDetail.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Admin\EditUserDetail.aspx.cs:line 44
+ERROR2014-01-22 07:10:39 Class:SocialSuitePro.Admin.EditUserDetail Method:Page_Load Line #: 51  –    at SocialSuitePro.Admin.EditUserDetail.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Admin\EditUserDetail.aspx.cs:line 44
+ERROR2014-01-22 07:11:38 Class:SocialSuitePro.Admin.EditUserDetail Method:Page_Load Line #: 51  –    at SocialSuitePro.Admin.EditUserDetail.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Admin\EditUserDetail.aspx.cs:line 44
+ERROR2014-01-22 07:14:25 Class:SocialSuitePro.Admin.EditUserDetail Method:Page_Load Line #: 51  –    at SocialSuitePro.Admin.EditUserDetail.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Admin\EditUserDetail.aspx.cs:line 44
+ERROR2014-01-22 08:55:38 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-22 09:14:46 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-23 11:21:42 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 6
+ERROR2014-01-23 11:21:46 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 6
+ERROR2014-01-23 11:21:46 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 138  –    at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialScoup\GplusManager.aspx.cs:line 92
+ERROR2014-01-23 11:25:00 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 149  –    at System.Net.HttpWebRequest.GetResponse()
+   at GlobusGooglePlusLib.Authentication.oAuthToken.WebResponseGet(HttpWebRequest webRequest) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard\Library\GlobusGooglePlusLib\Authentication\oAuthToken.cs:line 164
+   at GlobusGooglePlusLib.Authentication.oAuthToken.WebRequest(Method method, String url, String postData) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard\Library\GlobusGooglePlusLib\Authentication\oAuthToken.cs:line 137
+   at GlobusGooglePlusLib.Authentication.oAuthToken.GetRefreshToken(String code) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard\Library\GlobusGooglePlusLib\Authentication\oAuthToken.cs:line 65
+   at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialScoup\GplusManager.aspx.cs:line 34
+ERROR2014-01-23 11:51:17 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 149  –    at System.Net.HttpWebRequest.GetResponse()
+   at GlobusGooglePlusLib.Authentication.oAuthToken.WebResponseGet(HttpWebRequest webRequest) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard\Library\GlobusGooglePlusLib\Authentication\oAuthToken.cs:line 164
+   at GlobusGooglePlusLib.Authentication.oAuthToken.WebRequest(Method method, String url, String postData) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard\Library\GlobusGooglePlusLib\Authentication\oAuthToken.cs:line 137
+   at GlobusGooglePlusLib.Authentication.oAuthToken.GetRefreshToken(String code) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard\Library\GlobusGooglePlusLib\Authentication\oAuthToken.cs:line 65
+   at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialScoup\GplusManager.aspx.cs:line 34
+ERROR2014-01-23 11:52:25 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 149  –    at System.Net.HttpWebRequest.GetResponse()
+   at GlobusGooglePlusLib.Authentication.oAuthToken.WebResponseGet(HttpWebRequest webRequest) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard\Library\GlobusGooglePlusLib\Authentication\oAuthToken.cs:line 164
+   at GlobusGooglePlusLib.Authentication.oAuthToken.WebRequest(Method method, String url, String postData) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard\Library\GlobusGooglePlusLib\Authentication\oAuthToken.cs:line 137
+   at GlobusGooglePlusLib.Authentication.oAuthToken.GetRefreshToken(String code) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocioBoard\Library\GlobusGooglePlusLib\Authentication\oAuthToken.cs:line 65
+   at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialScoup\GplusManager.aspx.cs:line 34
+ERROR2014-01-23 12:03:35 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 6
+ERROR2014-01-23 12:03:56 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 6
+ERROR2014-01-23 12:04:05 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 138  –    at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialScoup\GplusManager.aspx.cs:line 92
+ERROR2014-01-23 12:09:33 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 6
+ERROR2014-01-23 12:09:38 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 6
+ERROR2014-01-23 12:10:09 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 6
+ERROR2014-01-23 12:10:09 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 138  –    at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialScoup\GplusManager.aspx.cs:line 92
+ERROR2014-01-23 12:12:15 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 6
+ERROR2014-01-23 12:12:32 Class:? Method:lambda_method Line #: 0  – query did not return a unique result: 6
+ERROR2014-01-23 12:16:38 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 138  –    at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialScoup\GplusManager.aspx.cs:line 100
+ERROR2014-01-23 12:18:11 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 138  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialScoup\GplusManager.aspx.cs:line 121
+ERROR2014-01-23 12:18:12 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 149  –    at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialScoup\GplusManager.aspx.cs:line 142
+ERROR2014-01-23 12:19:15 Class:SocialSuitePro.Helper.MailHelper Method:SendSendGridMail Line #: 170  – Failure sending mail.
+ERROR2014-01-23 12:19:30 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-23 12:22:47 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 138  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialScoup\GplusManager.aspx.cs:line 95
+ERROR2014-01-23 12:22:48 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 149  –    at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialScoup\GplusManager.aspx.cs:line 142
+ERROR2014-01-23 12:22:52 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialScoup\Home.aspx.cs:line 93
+ERROR2014-01-23 12:31:16 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-23 12:37:59 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-23 12:38:00 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-01-23 12:38:00 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-23 12:38:00 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 656  – Object reference not set to an instance of an object.
+ERROR2014-01-23 12:38:01 Class:SocialSuitePro.Message.AjaxMessage Method:BindData Line #: 610  – Object reference not set to an instance of an object.
+ERROR2014-01-24 03:17:22 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in C:\Users\user\Desktop\Socialpour\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-24 03:20:23 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-24 03:21:06 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in C:\Users\user\Desktop\Socialpour\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-24 03:24:22 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-24 03:24:29 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-01-24 03:24:29 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-01-24 03:44:03 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in C:\Users\user\Desktop\Socialpour\SocialScoup\Home.aspx.cs:line 79
+ERROR2014-01-24 03:46:03 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-24 04:32:56 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-01-24 04:44:43 Class:GlobusMailLib.MailHelper Method:SendMailByMandrill Line #: 118  – Could not load file or assembly 'RestSharp, Version=104.4.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
+ERROR2014-01-24 04:46:49 Class:GlobusMailLib.MailHelper Method:SendMailByMandrill Line #: 118  – Could not load file or assembly 'RestSharp, Version=104.4.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
+ERROR2014-01-24 04:49:01 Class:GlobusMailLib.MailHelper Method:SendMailByMandrill Line #: 118  – Could not load file or assembly 'RestSharp, Version=104.4.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
+ERROR2014-01-24 04:50:52 Class:GlobusMailLib.MailHelper Method:SendMailByMandrill Line #: 118  – Could not load file or assembly 'RestSharp, Version=104.4.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
+ERROR2014-01-24 05:21:15 Class:SocialSuitePro.Home Method:Page_Load Line #: 304  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in C:\Users\user\Desktop\Socialpour\SocialScoup\Home.aspx.cs:line 298
+ERROR2014-01-24 05:21:16 Class:SocialSuitePro.Home Method:Page_Load Line #: 314  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in C:\Users\user\Desktop\Socialpour\SocialScoup\Home.aspx.cs:line 308
+ERROR2014-01-24 05:22:38 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-24 05:36:06 Class:SocialSuitePro.Default Method:Page_Load Line #: 52  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Default.Page_Load(Object sender, EventArgs e) in C:\Users\user\Desktop\Socialpour\SocialScoup\Default.aspx.cs:line 45
+ERROR2014-01-24 05:36:32 Class:SocialSuitePro.Home Method:Page_Load Line #: 304  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in C:\Users\user\Desktop\Socialpour\SocialScoup\Home.aspx.cs:line 298
+ERROR2014-01-24 05:36:32 Class:SocialSuitePro.Home Method:Page_Load Line #: 314  –    at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in C:\Users\user\Desktop\Socialpour\SocialScoup\Home.aspx.cs:line 308
+ERROR2014-01-24 05:37:48 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-24 05:46:01 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 138  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in C:\Users\user\Desktop\Socialpour\SocialScoup\GplusManager.aspx.cs:line 121
+ERROR2014-01-24 05:46:01 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 149  –    at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in C:\Users\user\Desktop\Socialpour\SocialScoup\GplusManager.aspx.cs:line 142
+ERROR2014-01-24 06:48:34 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialPour\Home.aspx.cs:line 79
+ERROR2014-01-24 06:51:32 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-01-24 06:52:07 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Abhay\socioboard\trunk\SocialPour\Home.aspx.cs:line 79
+ERROR2014-01-24 07:18:51 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialPour\Home.aspx.cs:line 60
+ERROR2014-01-24 07:19:46 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialPour\Home.aspx.cs:line 79
+ERROR2014-01-29 04:16:14 Class:SocialSuitePro.Home Method:Page_Load Line #: 116  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialPour\Home.aspx.cs:line 79
+ERROR2014-01-29 04:19:04 Class:SocialSuitePro.AjaxHome Method:Page_Load Line #: 43  – The remote server returned an error: (401) Unauthorized.
+ERROR2014-02-17 12:32:23 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 108  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialPour\FacebookManager.aspx.cs:line 69
+ERROR2014-02-17 12:56:23 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:24 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:24 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:24 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:24 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:24 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:24 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:25 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:25 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:25 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:25 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:25 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:25 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:25 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:26 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:26 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:26 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:26 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:26 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:26 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:28 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:28 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:28 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:28 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:28 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:28 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:28 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:28 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:28 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:28 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:28 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:29 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:29 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:29 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:29 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:29 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:29 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:30 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:30 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:30 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:30 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:30 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:31 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:31 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:31 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:31 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:31 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:31 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:31 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:31 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:31 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:31 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:31 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:31 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 12:56:31 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 01:29:53 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 01:29:53 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 01:29:53 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 01:29:53 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 01:29:53 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 01:29:53 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 01:29:53 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 01:29:53 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 01:29:53 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 01:29:53 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 01:29:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 01:29:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 01:29:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 01:29:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 01:29:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 01:29:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 01:29:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 01:29:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 01:29:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 01:29:55 Class:SocialSuitePro.AjaxHome Method:ProcessRequest Line #: 725  – Object reference not set to an instance of an object.
+ERROR2014-02-17 01:51:05 Class:SocialSuitePro.FacebookManager Method:Page_Load Line #: 108  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.FacebookManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialPour\FacebookManager.aspx.cs:line 69
+ERROR2014-02-17 01:52:04 Class:SocialSuitePro.Home Method:Page_Load Line #: 125  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialPour\Home.aspx.cs:line 116
+ERROR2014-02-17 01:52:04 Class:SocialSuitePro.Home Method:Page_Load Line #: 146  –    at SocialSuitePro.Home.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialPour\Home.aspx.cs:line 126
+ERROR2014-05-13 05:14:15 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 138  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialPour\GplusManager.aspx.cs:line 121
+ERROR2014-05-13 05:14:15 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 149  –    at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialPour\GplusManager.aspx.cs:line 142
+ERROR2014-05-13 05:20:50 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 138  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialPour\GplusManager.aspx.cs:line 121
+ERROR2014-05-13 05:20:50 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 149  –    at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialPour\GplusManager.aspx.cs:line 142
+ERROR2014-05-13 07:01:59 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 138  –    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialPour\GplusManager.aspx.cs:line 121
+ERROR2014-05-13 07:01:59 Class:SocialSuitePro.GplusManager Method:Page_Load Line #: 149  –    at SocialSuitePro.GplusManager.Page_Load(Object sender, EventArgs e) in D:\Ajay\New_SocialBoard\New folder\socioboard\trunk\SocialPour\GplusManager.aspx.cs:line 142

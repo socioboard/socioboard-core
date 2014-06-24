@@ -1,0 +1,84 @@
+//
+// Login section specific styles
+// --------------------------------------------------
+
+// Login
+// -------------------------
+
+body.login {
+	background: @contentBg1;
+	#login {
+	    padding: 30px 0 0;
+	    h1 {
+	    	font-size: 20pt;
+	    	color: @primaryColor;
+	    	text-align: center;
+	    	display: block;
+	    	padding: 0 0 20px;
+	    	text-shadow: @bodyTextShadow;
+	    	i {
+	    		&:before {
+	    			position: relative;
+	    			left: auto;
+	    			top: auto;
+	    			color: @bodyText;
+	    		}
+	    	}
+	    }
+	    .wrapper {
+	    	max-width: 354px;
+	    	min-width: 300px;
+	    	margin: 0 auto;
+	    	position: relative;
+	    	&.signup {
+	    		max-width: 600px;
+	    	}
+	    }
+	    .widget {
+	    	.widget-head {
+	    		padding: 0 5px 0 0;
+	    		.btn { margin: -4px 0 0 5px; }
+	    		div { font-size: 12px; }
+	    	}
+	    	.widget-footer {
+	    		height: 40px;
+	    		line-height: 40px;
+	    		p { font-size: 12px; color: @bodyText; font-weight: 600; margin: 0; width: auto; float: none; padding: 0 10px 0 35px; display: block; height: 40px; line-height: 40px; i:before { top: 7px; left: 7px; } }
+	    	}
+	    }
+	    label { font-size: 13px; color: #7c7c7c; font-weight: 600; }
+        .checkbox { margin-top: 5px; }
+        .password { float: right; font-size: 12px; font-weight: 400; }
+        input[type="text"],
+	    input[type="password"] {
+	     	font-size: 13px;
+	        height: auto;
+	        margin-bottom: 10px;
+	        padding: 5px 9px;
+	        .bevelEmboss(0,0);
+	        .rounded();
+	        background: #fff;
+		}
+		::-webkit-input-placeholder { /* WebKit browsers */ color: #ccc; }
+		:-moz-placeholder { /* Mozilla Firefox 4 to 18 */ color: #ccc; }
+		::-moz-placeholder { /* Mozilla Firefox 19+ */ color: #ccc; }
+		:-ms-input-placeholder { /* Internet Explorer 10+ */ color: #ccc; }
+		form { margin: 0; }
+        p { 
+	        margin: 5px 0;
+	        &:first-child { margin: 0 0 10px; }
+	        &:last-child { margin: 10px 0 0; } 
+	    }
+	   	.form-signin {
+	   		position: relative;
+	        max-width: 600px;
+	        margin: 0 auto 20px;
+	        background-color: #fff;
+	        border: 1px solid #e5e5e5;
+	        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+	        -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+	        box-shadow: 0 1px 2px rgba(0,0,0,.05);
+	        .inner { padding: 20px; }
+		}
+	}
+}

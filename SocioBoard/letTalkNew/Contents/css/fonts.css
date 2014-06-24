@@ -1,0 +1,57 @@
+﻿@font-face {
+	font-family: 'signikaregular';
+	src: url('../fonts/Signika-Regular.eot?');
+	src: url('../fonts/Signika-Regular.woff') format('woff'),  
+	url('../fonts/Signika-Regular.ttf') format('truetype'), 
+	url('../fonts/Signika-Regular.otf') format('opentype'), 
+	 url('../fonts/Signika-Regular.svg') format('svg');
+}
+@font-face {
+	font-family: 'SignikaLight';
+	src: url('../fonts/Signika-Light-webfont.eot');
+	src: url('../fonts/Signika-Light-webfont.eot?#iefix') format('embedded-opentype'),  
+	url('../fonts/Signika-Light-webfont.woff') format('woff'),  
+	url('../fonts/Signika-Light-webfont.ttf') format('truetype'),  
+	url('../fonts/Signika-Light-webfont.svg#SignikaLight') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'SignikaRegular';
+	src: url('../fonts/Signika-Regular-webfont.eot');
+	src: url('../fonts/Signika-Regular-webfont.eot?#iefix') format('embedded-opentype'),  
+	url('../fonts/Signika-Regular-webfont.woff') format('woff'),  
+	url('../fonts/Signika-Regular-webfont.ttf') format('truetype'),  
+	url('../fonts/Signika-Regular-webfont.svg#SignikaRegular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'SignikaSemibold';
+	src: url('../fonts/Signika-Semibold-webfont.eot');
+	src: url('../fonts/Signika-Semibold-webfont.eot?#iefix') format('embedded-opentype'),  
+	url('../fonts/Signika-Semibold-webfont.woff') format('woff'),  
+	url('../fonts/Signika-Semibold-webfont.ttf') format('truetype'),  
+	url('../fonts/Signika-Semibold-webfont.svg#SignikaSemibold') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'SignikaBold';
+	src: url('../fonts/Signika-Bold-webfont.eot');
+	src: url('../fonts/Signika-Bold-webfont.eot?#iefix') format('embedded-opentype'),  
+	url('../fonts/Signika-Bold-webfont.woff') format('woff'),  
+	url('../fonts/Signika-Bold-webfont.ttf') format('truetype'),  
+	url('../fonts/Signika-Bold-webfont.svg#SignikaBold') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+    font-family: 'OswaldRegular';
+    src: url('../fonts/oswald_0.eot');
+    src: url('../fonts/oswald_0.eot') format('embedded-opentype'),
+         url('../fonts/oswald_0.woff') format('woff'),
+         url('../fonts/oswald_0.ttf') format('truetype'),
+         url('../fonts/oswald_0.svg#OswaldRegular') format('svg');
+}

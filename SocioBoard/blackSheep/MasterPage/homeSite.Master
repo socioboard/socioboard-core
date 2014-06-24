@@ -1,0 +1,297 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="homeSite.Master.cs" Inherits="blackSheep.MasterPage.homeSite" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+        <script src="../Contents/js/html5shiv.js" type="text/javascript"></script>
+    <![endif]-->
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="../Contents/css/MasterStyle.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <!--container-->
+    <div id="suite-wrap" class="container">
+        <!--end row-->
+        <div class="row">
+            <!--span12-->
+            <div class="span12">
+                <!--content-1-->
+                <div id="content-1">
+                    <div class="suite-container-content">
+                        <div id="suite-header">
+                            <ul class="top-nav pull-left">
+                                <li><a href="../Default.aspx">Home</a> <span class="divider">&nbsp;</span></li>
+                                <li><a href="../Plans.aspx">Pricing</a> <span class="divider">&nbsp;</span></li>
+                                <li><a href="../FeaturesPage.aspx">Features</a> <span class="divider">&nbsp;</span></li>
+                                <li><a href="#">About Us</a></li>
+                            </ul>
+                            <div id="pills" class="pull-right text-center">
+                                <a id="login">Login</a> | <a id="signup">Sign Up</a>
+                            </div>
+                        </div>
+                        <div id="suite-content-1">
+                            <div id="suite-title">
+                                <h2 class="pull-left">
+                                    Woo <span id="stest">Suite</span></h2>
+                            </div>
+                            <div id="suite-slogan">
+                                <h1>
+                                    Powerful Social Media Software</h1>
+                                <p>
+                                    A Management & Engagement Platform for Social Business</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end content-1-->
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+                <!--footer-->
+                <footer>
+						    <div class="container">
+						        <div id="footer-content" class="row-fluid">
+							        <div class="span2">
+								        <h4>COMPANY</h4>
+								        <ul>
+									        <li><a href="#">Features</a></li>
+									        <li><a href="#">Customers</a></li>
+									        <li><a href="#">Pricing</a></li>
+									        <li><a href="#">About</a></li>
+									        <li><a href="#">Partners</a></li>
+									        <li><a href="#">Affiliates</a></li>
+									        <li><a href="#">Careers</a></li>
+									        <li><a href="#">Privacy</a></li>
+								        </ul>
+							        </div>
+							        <div class="span2">
+								        <h4>CONNECT</h4>
+								        <ul>
+									        <li><a href="#">Twitter</a></li>
+									        <li><a href="#">Facebook</a></li>
+									        <li><a href="#">Google+</a></li>
+									        <li><a href="#">Email Us</a></li>
+									        <li><a href="#">Insights Blog</a></li>
+								        </ul>
+							        </div>
+							        <div class="span2">
+								        <h4>DOWNLOAD</h4>
+								        <ul>
+									        <li><a href="#">iPhone</a></li>
+									        <li><a href="#">iPad</a></li>
+									        <li><a href="#">Android</a></li>
+								        </ul>
+							        </div>
+							        <div id="right-marketing-footer" class="span6">		
+								        <div class="marketing-wrap">
+									        <p class="title-marketing">Twitter Certified Product</p>
+									        <p class="desc-marketing">blackSheep is a Twitter certified partner for Engagement and Analytics</p>
+								        </div>
+								        <div class="marketing-wrap">
+									        <p class="title-marketing">Preferred Marketing Developer</p>
+									        <p class="desc-marketing">We're recognized as a PMD for Facebook Page Management & Insights.</p>
+								        </div>
+							        </div>
+						        </div>
+						    </div>
+						    <div id="copyright">&copy; 2013 blackSheep - All rights reserved.</div>
+				       </footer>
+                <!--end footer-->
+            </div>
+            <!--end span12-->
+        </div>
+        <!--end row-->
+    </div>
+    <!--end container-->
+    <!--login popup-->
+    <div id="logindiv">
+        <span class="button b-close"><span>X</span></span>
+        <div class="signin">
+            Sign in</div>
+        <!--signin_temp-->
+        <div class="signin_temp">
+           <form onsubmit="signinFunction();" action="">
+            <div class="left_area">
+                <div class="inputbg">
+                    <input type="text" id="txtEmail" placeholder="Email" onblur="checkEmail(this.value);" /></div>
+                <div class="error">
+                    <div id="signinemailMessages">
+                    </div>
+                </div>
+                <div class="input_pswd_bg">
+                    <input type="password" id="txtPassword" placeholder="Password"  onblur="if(this.value == ''){document.getElementById('signinpasswordMessages').innerHTML='Please Enter Password';}else{document.getElementById('signinpasswordMessages').innerHTML='';}"/>
+                </div>
+                <div class="error">
+                    <div id="signinpasswordMessages">
+                    </div>
+                </div>
+                <%--<div class="forgot_pswd"><input type="checkbox"  />Remember me</div>--%>
+                <div class="forgot_pswd">
+                    Forgot password? <a href="../ForgotPassword.aspx">Click here to restore</a></div>
+                <div class="loginbtn">
+                    <a onclick="signinFunction();">
+                        <img id="btnLogin" src="../Contents/img/login_btn.png" alt="" /></a>
+                </div>
+
+            </div>
+            </form >
+            <div class="right_area">
+                <div class="social_bg">
+                    <div class="you_cantext">
+                        You can also login with your social account</div>
+                    <div class="social_icon_bg">
+                        <div class="fb_icon">
+                            <a id="fb_account" href="#" onclick="facebookLogin();">
+                                <img src="../Contents/img/fb_icon_lgn.png" alt="" />
+                            </a>
+                        </div>
+                        <div class="google_icon">
+                            <a id="gp_account" href="#" onclick="googleplusLogin();">
+                             <img src="../Contents/img/google_icon.png" alt="" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="register_text">
+                        Don`t registered? <a href="../Plans.aspx">Register now!</a></div>
+                </div>
+            </div>
+        </div>
+        <!--signin_temp-->
+    </div>
+    <!--end login popup-->
+    <!--signup-->
+
+    <div id="signupdiv">
+        <span class="button b-close"><span>X</span></span>
+        <div class="signin">
+            Create Your Account</div>
+        <div class="reg_temp_reg">
+            <div class="left_reg_area">
+                <div class="inputbg">
+                    <asp:TextBox runat="server" ID="txtFirstName" placeholder="First Name"></asp:TextBox></div>
+                <div class="error">
+                    <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator5" ErrorMessage="Please Enter First Name!"
+                     ControlToValidate="txtFirstName" CssClass="ws_err_star"></asp:RequiredFieldValidator>
+                </div>
+                <div class="inputbg">
+                    <asp:TextBox runat="server" ID="txtLastName" placeholder="Last Name"></asp:TextBox></div>
+                <div class="error">
+                    <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator6" ErrorMessage="Please Enter Last Name!"
+                        ControlToValidate="txtLastName" CssClass="ws_err_star"></asp:RequiredFieldValidator>
+                </div>
+                <div class="inputbg">
+                    <input type="text" runat="server" id="EmailTxt" onblur="checkEmailForSignUp(this.value);" placeholder="Email"/></div>
+                <div class="error">
+                    <asp:RequiredFieldValidator  runat="server" ID="RequiredFieldValidator3" ErrorMessage="Please Enter Email!"
+                  ControlToValidate="PasswordTxt"   CssClass="ws_err_star"></asp:RequiredFieldValidator>
+                   <div id="RegularExpressionValidator1" style="visibility:hidden;color:Red;" >Please Enter Valid Email</div>
+                </div>
+                <div class="input_pswd_bg">
+                    <asp:TextBox runat="server" ID="PasswordTxt" TextMode="Password" placeholder="Password"></asp:TextBox></div>
+                <div class="error">
+                    <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator4" ErrorMessage="Please Enter Password!"
+                        ControlToValidate="PasswordTxt" CssClass="ws_err_star"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator runat="server" ID="RegularExpressionValidator2" ErrorMessage="Please Enter Valid Password!"
+                        ControlToValidate="EmailTxt" ValidationExpression="^\S+$" CssClass="ws_err_star_enter"></asp:RegularExpressionValidator>
+                </div>
+                <div class="input_pswd_bg">
+                    <asp:TextBox runat="server" ID="txtConfirmPassword" TextMode="Password" placeholder="Confirm Password"></asp:TextBox></div>
+                <div class="error">
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Please Enter Confirm Password!"
+                        ControlToValidate="txtConfirmPassword" CssClass="ws_err_star"></asp:RequiredFieldValidator>
+                    <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Password & Confirm Password should be same"
+                        ControlToCompare="PasswordTxt" ControlToValidate="txtConfirmPassword" CssClass="ws_err_star_enter"></asp:CompareValidator>
+                </div>
+                <div id="lblerror" style="color:red;display:block;"></div>
+                <div class="create_your_account">
+                  <a onclick="registerFunction();"> <img id="btnRegister" src="../Contents/img/create_account.png" alt=""/></a>
+                </div>
+            </div>
+            <!--
+           
+            
+            <div class="right_area_reg">
+                 <div class="social_bg">
+                    <div class="you_cantext">Sign In With Twitter <br />
+                     Your 30 day trial lasts until midnight on  <br /><b> June 27, 2013</b></div>
+                     <div class="create_your_account"><a href="#"><img src="../Contents/img/create_account.png" alt="" boeder="none" /></a></div>
+                               
+                    <div class="register_regtext">By clicking 'Create Account' you agree to the <br /> <a>Terms of Service</a> and <a>Privacy policies</a>. </div>
+                
+                 </div>
+             </div>-->
+        </div>
+    </div>
+
+    <!--end signup-->
+    </form>
+    <!-- Le javascript
+		================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../Contents/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="../Contents/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../Contents/js/modernizr.custom.28468.js" type="text/javascript"></script>
+    <script src="../Contents/js/jquery.cslider.js" type="text/javascript"></script>
+    <script src="../Contents/js/md5.js" type="text/javascript"></script>
+    <script src="../Contents/js/JSlogin.js" type="text/javascript"></script>
+    <!--bopup use for login and signup -->
+    <script src="../Contents/js/jquery.bpopup.min.js" type="text/javascript" charset=""></script>
+    <script src="../Contents/js/jquery.easing.1.3.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#da-slider').cslider({
+                autoplay: true
+            });
+        });
+
+        $(document).ready(function () {
+            //--login script here
+            $('#login').click(function () {
+                document.getElementById('signinemailMessages').innerHTML = "";
+                document.getElementById('signinpasswordMessages').innerHTML = "";
+                $('#logindiv').bPopup({
+                    easing: 'easeOutBack',
+                    positionStyle: 'fixed',
+                    speed: 650,
+                    transition: 'slideDown'
+                });
+            });
+            //                // login script end here
+
+            //                // signup script here
+            $('#signup').click(function () {
+                document.getElementById('txtFirstName').value = '';
+                document.getElementById('txtLastName').value = '';
+                document.getElementById('EmailTxt').value = '';
+                document.getElementById('PasswordTxt').value = '';
+                document.getElementById('txtConfirmPassword').value = '';
+                document.getElementById('RegularExpressionValidator1').style.visibility = 'hidden';
+                document.getElementById('RequiredFieldValidator5').style.visibility = 'hidden';
+                document.getElementById('RequiredFieldValidator6').style.visibility = 'hidden';
+                document.getElementById('RequiredFieldValidator3').style.visibility = 'hidden';
+                document.getElementById('RegularExpressionValidator2').style.visibility = 'hidden';
+                document.getElementById('RequiredFieldValidator4').style.visibility = 'hidden';
+                document.getElementById('RequiredFieldValidator7').style.visibility = 'hidden';
+                document.getElementById('CompareValidator1').style.visibility = 'hidden';
+
+                $('#signupdiv').bPopup({
+                    easing: 'easeOutBack',
+                    positionStyle: 'fixed',
+                    speed: 650,
+                    transition: 'slideIn'
+                });
+            });
+
+            // signup script end here
+
+
+          
+
+        });
+    </script>
+</body>
+</html>

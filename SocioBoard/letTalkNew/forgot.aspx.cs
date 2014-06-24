@@ -1,0 +1,125 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Configuration;
+using SocioBoard.Model;
+using SocioBoard.Domain;
+using letTalkNew.Helper;
+using log4net;
+
+namespace letTalkNew
+{
+    public partial class forgot : System.Web.UI.Page
+    {
+        ILog logger = LogManager.GetLogger(typeof(ForgotPassword));
+        string userid = string.Empty;
+      
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            //if (Request.QueryString["userid"] != null)
+            //{
+            //    userid = Request.QueryString["userid"].ToString();
+            //}
+            lblerror.Text = "";
+
+        }
+
+        protected void btnForgotPwd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool exist = false;
+                UserRepository objUserRepo = new UserRepository();
+                Registration regObject = new Registration();
+                string urlfinal = string.Empty;
+
+                if (!string.IsNullOrEmpty(txtEmail.Text))
+                {
+                    string strUrl = string.Empty;
+                    // c.customer_email = txtEmail.Text.Trim();
+                    // exist = custrepo.ExistedCustomerEmail(c);
+                    User usr = objUserRepo.getUserInfoByEmail(txtEmail.Text);
+
+                    if (usr != null)
+                    {
+                        string URL = Request.Url.AbsoluteUri;
+                        if (!string.IsNullOrEmpty(URL))
+                        {
+                            string[] ArrURL = URL.Split('/');
+                            
+                            for (int i = 0; i < ArrURL.Length - 1; i++)
+                            {
+                                if (string.IsNullOrEmpty(ArrURL[i]))
+                                {
+                                    continue;
+                                }
+                                if (i == 0)
+                                {
+                                    urlfinal += ArrURL[i] + "//";
+                                }
+                                else
+                                {
+                                    urlfinal += ArrURL[i] + "/";
+                                }
+
+                            }
+                            urlfinal += "ResetPassword.aspx";
+                        }
+
+
+                        URL = URL.Replace(URL,"ResetPassword.aspx");
+                        //strUrl = Server.MapPath("~/ChangePassword.aspx") + "?str=" + txtEmail.Text + "&type=forget";
+                        strUrl = URL.Replace("ResetPassword.aspx", "ChangePassword.aspx" + "?str=" + regObject.MD5Hash(txtEmail.Text) + "&type=forget");
+                        strUrl = (urlfinal + "?userid=" + usr.Id).ToString();
+
+                        string MailBody = "<body bgcolor=\"#FFFFFF\"><!-- Email Notification from Letstalk.com-->" +
+                    "<table id=\"Table_01\" style=\"margin-top: 50px; margin-left: auto; margin-right: auto;\"" +
+                    " align=\"center\" width=\"650px\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" ><tr>" +
+                   "<td height=\"20px\" style=\"background-color: rgb(222, 222, 222); text-align: center; font-size: 15px; font-weight: bold; font-family: Arial; color: rgb(51, 51, 51); float: left; width: 100%; margin-top: 7px; padding-top: 10px; border-bottom: 1px solid rgb(204, 204, 204); padding-bottom: 10px;\">" +
+                       "LetsTalk</td></tr><!--Email content--><tr>" +
+                   "<td style=\"background-color: #dedede; padding-top: 10px; padding-left: 25px; padding-right: 25px; padding-bottom: 30px; font-family: Tahoma; font-size: 14px; color: #181818; min-height: auto;\"><p>Hi , " + usr.UserName + "</p><p>" +
+                       "As your request, Reset Password information to Click This Link : <a href=" + strUrl + " style=\"text-decoration:none;\">Reset Password</a></td></tr><tr>" +
+                   "<td style=\"background-color: rgb(222, 222, 222); margin-top: 10px; padding-left: 20px; height: 20px; color: rgb(51, 51, 51); font-size: 15px; font-family: Arial; border-top: 1px solid rgb(204, 204, 204); padding-bottom: 10px; padding-top: 10px;\">Thanks" +
+                   "</td></tr></table><!-- End Email Notification From Letstalk.com --></body>";
+
+                        string username = ConfigurationManager.AppSettings["username"];
+                        string host = ConfigurationManager.AppSettings["host"];
+                        string port = ConfigurationManager.AppSettings["port"];
+                        string pass = ConfigurationManager.AppSettings["password"];
+                        string from = ConfigurationManager.AppSettings["fromemail"];
+
+                        //   string Body = mailformat.VerificationMail(MailBody, txtEmail.Text.ToString(), "");
+                        string Subject = "Forget Password Letstalk account";
+                        //MailHelper.SendMailMessage(host, int.Parse(port.ToString()), username, pass, txtEmail.Text.ToString(), string.Empty, string.Empty, Subject, MailBody);
+                        MailHelper.SendSendGridMail(host, Convert.ToInt32(port), from, "", txtEmail.Text.ToString(), string.Empty, string.Empty, Subject, MailBody, username, pass);
+
+                        lblerror.Text = "Your Password Changes info to send in your Email";
+                    }
+                    else
+                    {
+                        lblerror.Text = "Your Email is wrong Please try another one";
+                    }
+
+
+                }
+                else
+                {
+                    lblerror.Text = "Please type your Email";
+                }
+            }
+            catch (Exception Err)
+            {
+                logger.Error(Err.StackTrace);
+            }
+        }
+
+        
+
+        
+
+    }
+}

@@ -1,0 +1,85 @@
+.grid_1, .grid_2, .grid_3, .grid_4, .grid_5, .grid_6, .grid_7, .grid_8, .grid_9, .grid_10, .grid_11, .grid_12, .grid_13, .grid_14, .grid_15, .grid_16, .grid_17, .grid_18, .grid_19, .grid_20, .grid_21, .grid_22, .grid_23, .grid_24  {
+	display:inline;
+	float:left;
+	position:relative;
+	margin:0px;
+	padding:0px;
+	border:none;
+}
+.pad_1, .pad_2, .pad_3, .pad_4, .pad_5, .pad_6, .pad_7, .pad_8, .pad_9, .pad_10, .pad_11, .pad_12, .pad_13, .pad_14, .pad_15, {
+ float:left;
+}
+.grid_1 {
+	width:250px;
+	float: right;
+}
+.grid_2 {
+	width:100%;
+	float: left;
+}
+.grid_3 {
+	margin-right: 22px;
+	width: 30%;
+}
+.grid_4 {
+	margin-right: 35px;
+	width: 29%;
+	margin-top: 20px;
+}
+.grid_5 {
+	margin-right: 5px;
+	width: 29%;
+	margin-top: 20px;
+}
+.grid_6 {
+	padding:30px 0px;
+	margin:0px;
+	width:100%;
+}
+.grid_7 {
+	width:22%;
+}
+.grid_8 {
+	width:28%;
+}
+.grid_9 {
+	width:100%;
+}
+.grid_10 {
+	width:70%;
+}
+.grid_11 {
+	width: 27%;
+	margin-right: 30px;
+}
+.grid_12{
+	width:50%;
+	padding:10px 10px 10px 10px;
+	}
+.pad_1 {
+	padding-top:20px;
+}
+.pad_2 {
+	margin-top:20px;
+}
+.pad_3 {
+	margin-top:-40px;
+}
+.pad_4 {
+	margin-top:-80px;
+}
+.pad_5 {
+	padding-bottom:20px;
+}
+.pad_6 {
+	margin:10px 0 0px;
+}
+.pad_7 {
+	margin:0px;
+}
+.pad_8 {
+	margin-top:20px;
+}
+.pad_9 {
+	padding:0px;
+}

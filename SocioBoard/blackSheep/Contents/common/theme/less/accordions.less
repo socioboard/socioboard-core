@@ -1,0 +1,72 @@
+//
+// Accordions
+// --------------------------------------------------
+
+// Accordion
+// ------------------------- //
+
+.accordion {
+	margin: 0 0 10px;
+	position: relative;
+	.accordion-group { 
+		border-color: @contentBorder; .rounded();
+		box-shadow: 0 1px 0 0 @contentShadow1, 0 5px 4px -4px @contentShadow2;
+		-moz-box-shadow: 0 1px 0 0 @contentShadow1, 0 5px 4px -4px @contentShadow2;
+		-webkit-box-shadow: 0 1px 0 0 @contentShadow1, 0 5px 4px -4px @contentShadow2; 
+	}
+	.accordion-inner { font-size: 13px; background: @widgetBg; .rounded(); border-color: @contentBorder; }
+	.accordion-heading .accordion-toggle {
+		#gradient > .vertical(@contentGradient1, @contentGradient2);
+		color: @bodyText;
+		text-decoration: none;
+		font-weight: 600;
+		.rounded();
+		height: 29px;
+		padding: 0 10px;
+		line-height: 29px;
+	}
+	
+	&.accordion-2 {
+		border: 1px solid @contentBorder;
+		.accordion-heading .accordion-toggle {
+			border-bottom: 1px solid @contentBorder;
+			background: @widgetBg;
+			height: 38px;
+			line-height: 38px;
+			&.glyphicons {
+				padding: 0 10px;
+				i {
+					width: 30px;
+					line-height: 38px;
+					height: 38px;
+					display: block;
+					float: left;
+					&:before {
+						font-size: 20px;
+						color: #cccccc;
+						top: auto;
+						left: auto;
+						width: 30px;
+						line-height: 38px;
+						height: 38px;
+						position: relative;
+						text-align: center;
+					}
+				}
+			}
+		}
+		.accordion-body.in {
+			border-bottom: 1px solid @contentBorder;
+		}
+		.accordion-group {
+			border: none;
+			margin: 0;
+			&:last-child {
+				.accordion-body.in { border-top: 1px solid @contentBorder; }
+			}
+		}
+		.accordion-inner { 
+			border: none;
+		}
+	}
+}

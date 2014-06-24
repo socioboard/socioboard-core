@@ -1,0 +1,91 @@
+//
+// Notifications
+// --------------------------------------------------
+
+// Gritter
+// -------------------------
+
+.gritter-item-wrapper {
+	.gritter-item { 
+		p { 
+			margin: 0 0 10px; 
+			&:last-child { margin: 0; } 
+		}
+	}
+	&.gritter-primary {
+		.gritter-top { display: none; }
+		.gritter-bottom { display: none; }
+		.gritter-item {
+			background: fade(@primaryColor, 90%);
+			padding: 10px 10px 15px;
+			.rounded(10px, 10px, 10px, 10px);
+			color: #fff;
+			a { color: #fff; text-decoration: underline; }
+		}
+	}
+}
+
+// Notyfy
+// -------------------------
+
+.notyfy_wrapper {
+	border: none;
+	.rounded();
+	&.notyfy_alert { background: #ffffff; }
+	&.notyfy_error { background: #bd362f; color: #fff; }
+	&.notyfy_success { background: #51a351; color: #fff; }
+	&.notyfy_warning { background: #74614f; color: #fff; }
+	&.notyfy_information { background: #57B7E2; color: #fff; }
+	&.notyfy_confirm { background: #ffffff; }
+	&.notyfy_primary {
+		background: @primaryColor;
+		border: none;
+		&, * { color: #fff; }
+	}
+	&.notyfy_default {
+		background: #fafafa;
+	}
+	&.notyfy_dark {
+		background: darken(#64625f, 10%);
+		&, * { color: #fff; }
+	}
+}
+
+// Notyfy TOP
+// -------------------------
+
+#notyfy_container_top {
+	top: 0;
+	left: 0;
+	width: 100%;
+	.notyfy_wrapper { .rounded(); }
+}
+
+// Notyfy CONTENT (eg. Dashboard)
+// -------------------------
+
+#content-notification {
+	.notyfy_wrapper {
+		border: none;
+		box-shadow: inset 0 8px 8px -8px rgba(0, 0, 0, 0.5), inset 0 -8px 8px -8px rgba(0, 0, 0, 0.2);
+		-moz-box-shadow: inset 0 8px 8px -8px rgba(0, 0, 0, 0.5), inset 0 -8px 8px -8px rgba(0, 0, 0, 0.2);
+		-webkit-box-shadow: inset 0 8px 8px -8px rgba(0, 0, 0, 0.5), inset 0 -8px 8px -8px rgba(0, 0, 0, 0.2);
+		.rounded();
+		p { margin: 0; }
+		.notyfy_message {
+			padding: 15px 10px;
+		}
+		&.notyfy_default {
+			background: #fafafa url("../images/pattern1.png") repeat;
+		}
+		&.notyfy_dark {
+			background: darken(#64625f, 10%) url("../images/pattern1.png") repeat;
+		}
+		&.notyfy_primary {
+			background: @primaryColor url("../images/pattern1.png") repeat;
+			box-shadow: inset 0 8px 8px -8px darken(@primaryColor, 45%), inset 0 -8px 8px -8px darken(@primaryColor, 20%);
+			-moz-box-shadow: inset 0 8px 8px -8px darken(@primaryColor, 45%), inset 0 -8px 8px -8px darken(@primaryColor, 20%);
+			-webkit-box-shadow: inset 0 8px 8px -8px darken(@primaryColor, 45%), inset 0 -8px 8px -8px darken(@primaryColor, 20%);
+		}
+	}
+}

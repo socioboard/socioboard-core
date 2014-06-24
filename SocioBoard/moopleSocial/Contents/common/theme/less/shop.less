@@ -1,0 +1,136 @@
+//
+// Shop
+// --------------------------------------------------
+
+// Shop
+// -------------------------
+
+.shop-client-products {
+	&.list {
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			li {
+				&.span4:nth-child(3n+4) { margin-left: 0; }
+				margin-bottom: 10px;
+				a {
+					position: relative;
+					display: block;
+					border: 1px solid @contentBorder;
+					background: @widgetBg;
+					padding: 7px;
+					.glyphicons {
+						width: 30px;
+						height: 30px;
+						display: block;
+						padding: 0;
+						i {
+							display: block;
+							width: 30px;
+							height: 30px;
+							.rounded(2px,2px,2px,2px);
+							background: @primaryColor;
+							&:before {
+								font-size: 17px;
+								line-height: 30px;
+								color: #fff;
+								display: block;
+								text-align: center;
+								width: 30px;
+							}
+						}
+					}
+					&:hover { text-decoration: none; }
+					h5 {
+						line-height: 13px;
+						margin: 0;
+						font-weight: 400;
+						font-size: 13px;
+						padding: 0;
+					}
+					.img {
+						display: block;
+						height: 200px;
+						background: @contentBg1;
+						margin: 5px 0 0;
+						span.icon { 
+							display: block;
+							position: relative;
+							&:before {
+								position: absolute; 
+								left: 0; 
+								top: 0;
+								right: 0;
+								bottom: 0;
+								line-height: 200px;
+								text-align: center;
+								content: "\e012";
+								font-family: "Glyphicons";
+								font-size: 45px;
+								color: #cfcfce;
+								display: block;
+							} 
+						}
+					}
+				}
+			}
+		}
+	}
+	&.product-details {
+		.box {
+			border: 1px solid @contentBorder;
+			background: @widgetBg;
+			box-shadow: 0 1px 0 0 @contentShadow1, 0 5px 4px -4px @contentShadow2;
+			-moz-box-shadow: 0 1px 0 0 @contentShadow1, 0 5px 4px -4px @contentShadow2;
+			-webkit-box-shadow: 0 1px 0 0 @contentShadow1, 0 5px 4px -4px @contentShadow2;
+			padding: 10px;
+			margin: 0 0 10px;
+			position: relative;
+			p:last-child { margin: 0; }
+			h5 { margin: 0 0 10px; }
+		}
+		.share {
+			height: 32px;
+			line-height: 32px;
+			display: block;
+			a {
+				i { height: 24px; }
+				vertical-align: middle;
+				margin: 0 3px 2px;
+				&:last-child { margin: 0 0 2px 3px; }
+			}
+		}
+		.form-horizontal {
+			.control-label { width: 80px; text-align: left; padding: 0; font-size: 14px; font-weight: 600; }
+			.controls { margin-left: 100px; }
+			.control-group { margin: 0 0 5px; &:last-child { margin: 0; } }
+			.price {
+				display: block;
+				color: @primaryColor;
+				font-size: 16pt;
+				font-weight: 600;
+				margin: 0 0 10px;
+			}
+		}
+		.heading-buttons .buttons { margin: 0; }
+		h1 { font-size: 20px; font-weight: 600; line-height: normal; margin: 0 0 10px; padding: 0; }
+	}
+	&.cart {
+		.product {
+			.heading { display: block; line-height: 13px; margin: 0 0 5px; span { font-size: 12px; } }
+			h5 { margin: 0; }
+			span.col {
+				display: block;
+				float: left;
+				margin: 0 5px 0 0;
+				&:last-child { margin: 0; }
+			}
+		}
+		.cart_total { 
+			font-size: 14px; 
+			.strong { font-size: 15px; }
+			.label.large { font-size: 15px; color: #222; } 
+		}
+	}
+}

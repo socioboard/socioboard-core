@@ -1,0 +1,105 @@
+@charset "UTF-8";
+/*
+ * mopTip 2.1
+ * By Hiroki Miura (http://www.mopstudio.jp)
+ * Copyright (c) 2008 mopStudio
+ * Licensed under the MIT License: http://www.opensource.org/licenses/mit-license.php
+ * July 10, 2009
+*/
+
+#mopTip01 {
+	position: absolute;
+	/*display: none;*/
+	z-index: 999;
+	font-size: 3px;
+}
+#mopTip01 .tip {
+	vertical-align: top;
+	background-color: #FFFFFF;
+}
+#mopTip01 .content {
+	padding: 4px;
+	font-size: 11px;
+	cursor:default;
+	line-height:1.5em;
+}
+#mopTip01 .leftTop {
+	font-size: 3px;
+	height: 20px;
+	width: 20px;
+	background:url(../images/leftTop.png);
+	background-repeat: no-repeat;
+}
+#mopTip01 .rightTop {
+	font-size: 3px;
+	width: 20px;
+	background:url(../images/rightTop.png);
+	background-repeat: no-repeat;
+}
+#mopTip01 .leftBottom {
+	font-size: 3px;
+	height: 20px;
+	width: 20px;
+	background:url(../images/leftBottom.png);
+	background-repeat: no-repeat;
+}
+#mopTip01 .rightBottom {
+	font-size: 3px;
+	background:url(../images/rightBottom.png);
+	background-repeat: no-repeat;
+}
+#mopTip01 .arrow {
+	height: 20px;
+	width: 60px;
+	background:url(../images/arrowTop.png);
+	background-repeat: no-repeat;
+}
+#mopTip01 .arrowBottom {
+	height: 20px;
+	width: 60px;
+	background:url(../images/arrowBottom.png);
+	background-repeat: no-repeat;
+}
+#mopTip01 .left {
+	font-size: 3px;
+	width: 20px;
+	background:url(../images/left.png);
+	background-repeat: repeat-y;
+	background-position: top;
+}
+#mopTip01 .right {
+	font-size: 3px;
+	width: 20px;
+	background:url(../images/right.png);
+	background-repeat: repeat-y;
+}
+#mopTip01 .top {
+	background:url(../images/top.png);
+	background-repeat: repeat-x;
+}
+#mopTip01 .bottom {
+	background:url(../images/bottom.png);
+	background-repeat: repeat-x;
+}
+#mopTip01 .close {
+	font-size: 3px;
+	position: absolute;
+	height: 27px;
+	width: 27px;
+	cursor: pointer;
+	background:url(../images/closeBtn.png);
+	background-repeat: no-repeat;
+	top: 0px;
+	left: 0px;
+	display: none;
+}
+#mopTip01 .close:hover {
+	background:url(../images/closeBtn_h.png);
+	background-repeat: no-repeat;
+}
+#mopTip01 .arrowSet {
+	font-size: 3px;
+}
+#mopTip01 .arrowSetBottom {
+	font-size: 3px;
+}

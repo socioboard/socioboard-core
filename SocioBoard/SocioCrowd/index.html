@@ -1,0 +1,269 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Social Suite Pro</title>
+<link href="../Contents/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="../Contents/css/ssp-responsive.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript" src="../Contents/js/jquery-2.0.1.min.js"></script>
+<script type="text/javascript" language="javascript">
+		$(function() {
+			var pull 		= $('#pull');
+				menu 		= $('nav ul');
+				menuHeight	= menu.height();
+
+			$(pull).on('click', function(e) {
+				e.preventDefault();
+				menu.slideToggle();
+			});
+
+			$(window).resize(function(){
+        		var w = $(window).width();
+        		if(w > 320 && menu.is(':hidden')) {
+        			menu.removeAttr('style');
+        		}
+    		});
+		});
+	</script>
+</head>
+
+<body>
+<div class="container">
+
+    
+	<div class="outer-container">
+    	<div class="header-inner-container">
+        	<div class="logo-container"><a href="#"><img src="../Contents/images/logo-txt.png" alt="" /></a></div>
+            <div class="main-nav">
+            	<nav class="clearfix">
+                    <ul class="clearfix">
+                        <li><a href="#">Featured</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">About</a></li>
+                        <li class="login"><a href="#">login</a></li>
+                    </ul>
+                    <a href="#" id="pull">Menu</a>
+                </nav>
+            </div>
+            <div class="clear"></div>
+        </div> 
+    </div>
+    <div class="banner-container">
+    	<div class="banner-inner">
+        	<div class="ban-main-txt">
+            	More Than Social<br />
+                Media Management
+            </div>
+            <div class="ban-sub-text">
+            	<span>SS’PRO brings proactive social media marketing</span><br />
+                <span>to your small business</span>
+            </div>
+            <div class="trial-butn"> <a href="#"><img src="../Contents/images/trail-butn.png" alt="" /></a><br />
+                No credit card required, no software to install
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="arrow"><ul class="mainnav">
+      <li><a href="#p2"></a></li></ul></div>
+    </div>
+    <div class="anim-banner-container" style="position:relative; overflow:hidden;" id="p1">
+    	
+    	<div class="anim-banner-inner">
+        	<h1>See What our Social Media Marketing Suite Can <br />Do For Your Business</h1>
+            <p>People are talking about your brand. Why not join them? SS’PRO allows <br />
+			you to listen and engage across social media accounts from one simple platform.</p>
+            
+            <div class="ban-static"><img src="../Contents/images/nammer-2.png" alt="" /></div>
+            <div class="ban-img">
+            	<div class="mid-circle">
+                	<div class="lang-txt"><a href="#">Multi <br />Language</a></div>
+                    <div class="mid-white"><span>ss'pro</span></div>
+                    <div class="commun-txt"><a href="#">Community / <br />Cultural hub</a></div>
+                </div>
+                <div class="left-circle">
+               	  <span class="utop"><a href="#">You</a></span>
+                  <span class="ubottom"><a href="#">You</a></span>
+              </div>
+              <div class="left-pin"><span><a href="#">youR BUSINESS</a></span></div>
+                
+                <div class="right-circle">
+                	<span class="email"><a href="#">email</a></span>
+                    <span class="youtube"><a href="#">youtube</a></span>
+                    <span class="facebook"><a href="#">facebook</a></span>
+                  <span class="mob-apps"><a href="#">Mobile<br />apps</a></span>
+                    <span class="twitter"><a href="#">twitter</a></span>
+                    <span class="partner"><a href="#">partner<br />sites</a></span>
+              </div>
+              <div class="right-pin"><span><a href="#">All Major <br />
+                SociaL<br />
+                Networks,<br />
+                News sites <br />
+              &amp; bLOGS</a></span></div>
+          </div>
+        </div>
+    </div>
+    <div class="content-sec-container" id="p2">
+    	<div class="arrow-2"><ul class="mainnav">
+      <li><a href="#p3"></a></li></ul></div>
+        <div class="content-sec-inner">
+        	<div class="content-left">
+            	<h1>Efficiently engage with customers <br />across all social channels</h1>
+                <p>The Social Inbox makes it easy to keep tabs on <br />
+                social conversations and provides everything you need <br />
+                to efficiently engage with your audience.</p>
+                <ul>
+                	<li>Scheduling</li>
+                    <li>Canned reponses</li>
+                    <li>Drafts</li>
+                    <li>Approval flows</li>
+                    <li>Built-in Social CRM</li>
+                    <li>Workflow Automation</li>
+                </ul>
+                <a href="#"><img src="../Contents/images/trail-butn.png" alt="" /></a>
+            </div>
+            <div class="content-right">
+            	<img src="../Contents/images/phone-banner.png" alt="" />
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="arrow"><ul class="mainnav">
+      <li><a href="#p4"></a></li></ul></div>
+    </div>
+    <div class="reason-outer" id="p3">
+    	<div class="reason-inner">
+        	<h2>some reason </h2>
+            <h1>why people like ss’pro</h1>
+            <div class="reason-left">
+            	<img src="../Contents/images/img-1.jpg" alt="" />
+            </div>
+            <div class="reason-right">
+            	<ul>
+                	<li>Unified Smart Inbox to streamline engagement</li>
+                    <li>Social CRM tools including shared customer records</li>
+                    <li>Advanced scheduling & publishing tools including ViralPost™</li>
+                    <li>Sophisticated analytics & unlimited custom reports</li>
+                    <li>Customer support features like tasks and Helpdesk integration</li>
+                    <li>Team collaboration tools including live activity updates</li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+            <div class="ban-large-txt">Engage with all your customers on social media. Get started today.</div>
+        </div>
+    </div>
+    <div class="anim-banner-container" id="p4">
+    	<div class="signup-inner">
+        	Try Sprout risk-free for 30 days <span><a href="#"><img src="../Contents/images/signup-butn.png" alt="" align="absmiddle" /></a></span>
+        </div>
+        <div class="arrow"><ul class="mainnav">
+      <li><a href="#p5"></a></li></ul></div>
+    </div>
+    <div class="content-sec-container" id="p5">
+    	<div class="footer-inner">
+        	<div class="foot-left">
+            	<div class="foot-nav-out">
+                	<div class="foot-nav-head">Navigate </div>
+                    <ul>
+                    	<li><a href="#">Features</a></li>
+                        <li><a href="#">Customers</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">Affiliates</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
+              <div class="foot-nav-out">
+               	<div class="foot-nav-head">Connect  </div>
+                  <ul>
+                   	  <li><a href="#">Twitter</a></li>
+                      <li><a href="#">Facebook</a></li>
+                      <li><a href="#">Google+</a></li>
+                   	  <li><a href="#">Email Us</a></li>
+                      <li><a href="#">Insights Blog</a></li>
+                </ul>
+                </div>
+                <div class="foot-nav-out">
+               	<div class="foot-nav-head">Download  </div>
+                  <ul>
+                   	 <li><a href="#">iPhone</a></li>
+                     <li><a href="#">iPad</a></li>
+                     <li><a href="#">Android</a></li>
+                </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="foot-right">
+            	<div class="social-txt">
+                	<div class="foot-nav-head"> Secure, Reliable and Trusted </div>
+                    <div class="social-twitter">
+                    	<strong>Twitter Certified Product </strong>
+                        Sprout is a Twitter certified 
+                        partner for Engagement 
+                        and Analytics
+                    </div>
+                    <div class="social-fb">
+                    	<strong>Preferred Marketing Developer </strong>
+                        We're recognized as a PMD for 
+                        Facebook Page Management 
+                        <br />
+                        & Insights. 
+                    </div>
+                </div>
+                <div class="secure-txt">
+                	Sprout uses SSL 128-bit <br />
+                    encryption, 100% of the <br />
+                    time on every device.<br /><br />
+                    <a href="#"><img src="../Contents/images/verify-icon.jpg" alt="" /></a>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+            <div class="footer-botm">
+            	<div class="footer-logo"><a href="#"><img src="../Contents/images/foot-logo.png" alt="" /></a></div>
+                <div class="copy-info">Social Sprout Pro. All Rights Reserved.</div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    
+ </div>   
+    <script>!window.jQuery && document.write(unescape('%3Cscript src="../lib/jquery/jquery.js"%3E%3C/script%3E'));</script>
+
+  <script type="text/javascript" src="../Contents/js/jquery.smooth-scroll.js"></script>
+  <script type="text/javascript" language="javascript">
+    $(document).ready(function() {
+
+      $('ul.mainnav a').smoothScroll();
+
+      $('p.subnav a').click(function(event) {
+        event.preventDefault();
+        var link = this;
+        $.smoothScroll({
+          scrollTarget: link.hash
+        });
+      });
+
+      $('button.scrollsomething').click(function() {
+        $.smoothScroll({
+          scrollElement: $('div.scrollme'),
+          scrollTarget: '#findme'
+        });
+        return false;
+      });
+      $('button.scrollhorz').click(function() {
+        $.smoothScroll({
+          direction: 'left',
+          scrollElement: $('div.scrollme'),
+          scrollTarget: '.horiz'
+        });
+        return false;
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>

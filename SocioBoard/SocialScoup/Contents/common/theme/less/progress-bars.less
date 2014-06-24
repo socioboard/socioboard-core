@@ -1,0 +1,26 @@
+//
+// Progress bars
+// --------------------------------------------------
+
+// Progress bar
+// ------------------------- //
+
+.progress {
+	background: @widgetBg;
+	margin: 0 0 10px;
+	.bevelEmboss(0,0);
+	.bar { background: #e8e8e8; }
+	.bar.right { text-align: right; text-indent: 10px; direction: rtl; }
+	&.white { background: #fff; }
+	&.progress-info .bar { background: #93b9d8; }
+	&.progress-success .bar { background: @successColor; }
+	&.progress-warning .bar { background: @warningColor; }
+	&.progress-primary .bar { background: @primaryColor; }
+	&.progress-danger .bar { background: @dangerColor; }
+	&.progress-inverse .bar { background: @inverseColor; }
+	&.progress-small {
+		height: 15px;
+		.bar { font-size: 8px; line-height: 15px; &.right { text-indent: 2px; } }
+	}
+	&.progress-mini { height: 5px; }
+}

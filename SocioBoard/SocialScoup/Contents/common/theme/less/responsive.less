@@ -1,0 +1,237 @@
+//
+// Responsive
+// --------------------------------------------------
+
+// Responsive
+// ------------------------- //
+
+@media (max-width: 979px)
+{
+	body > .container-fluid.fixed { width: auto; border: none; margin: 0; }
+}
+@media (max-width: 767px)
+{
+	body { padding: 0; }
+	.nav-tabs > li > a { font-size: 10pt; }
+	.nav-tabs > li > a, .nav-pills > li > a { padding-left: 5px; padding-right: 5px; }
+	
+	.documentation .span3 .menu.affix { position: relative; top: 0; width: auto; }
+	.phone-margin.bottom { margin: 0 0 10px; }
+	.well { padding: 5px; }
+	
+	.widget {
+		.widget-body { padding: 5px; }
+		&.margin-bottom-none { margin-bottom: 10px; }
+		&.widget-tabs {
+			.widget-head {
+				height: auto;
+				padding: 0;
+				ul {
+					display: block;
+					border-right: none;
+					height: auto;
+					li { float: none; display: block; width: 100%; }
+				}
+			}
+		}
+	}
+	.widget-activity ul.list li > span.ellipsis { max-width: 60%; }
+	.widget-activity ul.list li.double > span.ellipsis { max-width: 75%; }
+	.widget-stats:not(.widget-sidebar-stats) { &, &.margin-bottom-none { margin: 0 0 10px; } }
+	.widget-gallery .nav { display: none; }
+	.widget-gallery.widget-gallery-slide .gallery { width: auto; }
+	.widget-chat .media .media-object.pull-left:after,
+	.widget-chat .media .media-object.pull-right:after { display: none; }
+	.widget-chat .media .pull-left, .widget-chat .media .pull-right { margin: 0; }
+	.widget-chat .media .media-body { border: none !important; border-top: 3px solid #8ec657 !important; }
+	.widget-chat .chat-controls { height: 60px; }
+	.widget-chat { padding-bottom: 100px !important; }
+	.tabsbar {
+		&, &.tabsbar-2 {
+			height: auto;
+			ul { height: auto; }
+		}
+	}
+	
+	.media {
+		text-align: center;
+		img.pull-left, img.pull-right { display: inline-block; }
+		blockquote { padding: 0; text-align: center; &.pull-right p, &.pull-right small { text-align: center; } }
+	}
+	.menu-right {
+		#menu { 
+			left: 0; 
+			right: auto;
+			box-shadow: -2px 0 5px rgba(0,0,0,.1) inset;
+			-moz-box-shadow: -2px 0 5px rgba(0,0,0,.1) inset;
+			-webkit-box-shadow: -2px 0 5px rgba(0,0,0,.1) inset;
+			border-left: none;
+			border-right: 1px solid #adafb1; 
+		}
+		#content { margin: 0 0 0 204px; }
+		&.menu-hidden {
+			#content { margin: 0; }
+		}
+	}
+	.row-merge {
+		> [class*="span"] ~ [class*="span"] {
+			width: auto;
+			&:after { display: none; }
+		}
+		&.border-top, & ~ & { border-top: 1px solid #e5e5e5; }
+	}
+	body.login #login {
+		padding: 50px 5px;
+	}
+	#gritter-notice-wrapper { display: none !important; }
+	.topnav .dropdown.submenu {
+		height: auto;
+		.submenu-show {
+			position: relative;
+			margin: 0 !important;
+			top: auto !important;
+			left: auto !important;
+			right: auto !important;
+		}
+	}
+	.navbar.main, 
+	.navbar.main.navbar-hidden {
+		height: 34px;
+		.wrapper { display: block; }
+		.toggle-navbar { display: none; }
+		.topnav > li > a.glyphicons.logout i { padding: 0; }
+		.topnav:last-of-type { margin: 0; }
+	}
+	.tickertape {
+		height: auto;
+		padding: 0;
+		.title { width: auto; float: none; position: relative; }
+		.marquee { margin: 0 5px 5px; }
+	}
+	.container-960 { width: auto; }
+	#landing_1 {
+		.banner-1 {
+			height: auto;
+			.item { 
+				height: auto;
+				img {
+					min-height: 0;
+					height: auto;
+				} 
+			}
+			.carousel-caption { height: auto; }
+		}
+		.banner {
+			height: auto;
+			.banner-wrapper {
+				height: auto;
+				&.banner-1 {
+					h3,p,.btn {
+						position: relative;
+						top: auto;
+						right: auto;
+					}
+					.btn { display: block; .rounded(0,0,0,0); }
+					p { margin: 0 0 5px; text-align: center; }
+					h3 { font-size: 12pt; line-height: 46px; text-align: center; }
+				}
+			}
+		}
+	}
+	#landing_2 {
+		.banner-1 {
+			height: auto;
+			.item { 
+				height: auto;
+				img {
+					min-height: auto;
+				} 
+			}
+			.carousel-caption { height: auto; }
+		}
+		.banner {
+			height: auto;
+			.banner-wrapper {
+				height: auto;
+				&.banner-1 {
+					h3,p,.btn, .buy {
+						position: relative;
+						top: auto;
+						left: auto;
+						width: auto;
+					}
+					.buy { height: 25px; line-height: 25px; padding: 10px; text-align: center; }
+					.btn { display: block; .rounded(0,0,0,0); }
+					p { margin: 0 0 5px; text-align: center; }
+					h3 { font-size: 12pt; line-height: 46px; text-align: center; }
+				}
+			}
+		}
+		.mosaic-line.mosaic-line-2 { height: auto; .right { text-align: center; } h4 { line-height: 25px; margin: 0; } }
+	}
+	.social-large {
+		height: auto;
+		a { 
+			float: none; 
+			display: block;
+			border: none;
+			border-bottom: 1px solid #e5e5e5;
+			&:last-child { border: none; } 
+		}
+	}
+	#content .heading-mosaic { height: auto !important; padding-top: 10px; padding-bottom: 10px; line-height: normal !important; }
+}
+@media (max-width: 480px)
+{
+	h1, h2, h3 { line-height: 30px; font-size: 18pt; }
+	h3.glyphicons,
+	h2.glyphicons {
+		i:before { font-size: 24px; top: 3px; left: 5px; }
+	}
+	.heading-buttons .buttons { margin-top: 10px; float: none; padding: 0 10px; .btn { margin: 0; float: none; } text-align: center; }
+	.separator { padding: 5px 0; margin: 0; }
+	.table-condensed th, .table-condensed td { padding: 4px 5px; }
+	p.glyphicons {
+		padding: 5px 0 10px 55px;
+		i:before { color: #D67170; font-size: 35pt; top: 0; }
+		&.right { padding: 0 55px 0 0; }
+	}
+}
+@media (max-width: 320px)
+{
+	.nav-tabs > li,
+	.nav-tabs > li > a,
+	.nav-tabs > li > a:hover { 
+		display: block;
+		float: none; 
+		margin: 0 0 -1px;
+		border-color: @primaryColor;
+	}
+	.nav-tabs > li:hover {
+		border-color: @primaryColor;
+	}
+	.nav-tabs > li,
+	.nav-tabs > li > a {
+		border-color: #E0D5C6;
+		background: #F5EADB;
+		.rounded();
+	}
+	.nav-tabs > .active > a, .nav-tabs > .active > a:hover { 
+		
+	}
+}
+
+@media (max-width: 979px) and (min-width: 768px)
+{
+	.widget-stats {
+		padding: 36px 0;
+		.glyphicons {
+			padding: 0;
+			i:before { font-size: 30px; top: -5px; }
+		}
+	}
+	.widget.widget-3 .widget-head {
+		padding: 0;
+		.heading { font-size: 13px; overflow: hidden; padding: 0; .glyphicons { width: 18px; float: left; } i:before { font-size: 14px; left: 0; top: 3px; } }
+	}
+}

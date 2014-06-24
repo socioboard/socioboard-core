@@ -1,0 +1,254 @@
+@font-face {
+	font-family: 'signikaregular';
+	src: url('../fonts/Signika-Regular.eot?');
+	src: url('../fonts/Signika-Regular.woff') format('woff'),  
+	url('../fonts/Signika-Regular.ttf') format('truetype'), 
+	url('../fonts/Signika-Regular.otf') format('opentype'), 
+	 url('../fonts/Signika-Regular.svg') format('svg');
+}
+@font-face {
+	font-family: 'SignikaLight';
+	src: url('../fonts/Signika-Light-webfont.eot');
+	src: url('../fonts/Signika-Light-webfont.eot?#iefix') format('embedded-opentype'),  
+	url('../fonts/Signika-Light-webfont.woff') format('woff'),  
+	url('../fonts/Signika-Light-webfont.ttf') format('truetype'),  
+	url('../fonts/Signika-Light-webfont.svg#SignikaLight') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'SignikaRegular';
+	src: url('../fonts/Signika-Regular-webfont.eot');
+	src: url('../fonts/Signika-Regular-webfont.eot?#iefix') format('embedded-opentype'),  
+	url('../fonts/Signika-Regular-webfont.woff') format('woff'),  
+	url('../fonts/Signika-Regular-webfont.ttf') format('truetype'),  
+	url('../fonts/Signika-Regular-webfont.svg#SignikaRegular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'SignikaSemibold';
+	src: url('../fonts/Signika-Semibold-webfont.eot');
+	src: url('../fonts/Signika-Semibold-webfont.eot?#iefix') format('embedded-opentype'),  
+	url('../fonts/Signika-Semibold-webfont.woff') format('woff'),  
+	url('../fonts/Signika-Semibold-webfont.ttf') format('truetype'),  
+	url('../fonts/Signika-Semibold-webfont.svg#SignikaSemibold') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'SignikaBold';
+	src: url('../fonts/Signika-Bold-webfont.eot');
+	src: url('../fonts/Signika-Bold-webfont.eot?#iefix') format('embedded-opentype'),  
+	url('../fonts/Signika-Bold-webfont.woff') format('woff'),  
+	url('../fonts/Signika-Bold-webfont.ttf') format('truetype'),  
+	url('../fonts/Signika-Bold-webfont.svg#SignikaBold') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+table.views-table {
+    width: 100%;
+}
+
+.views-table td {
+    padding: 10px 0;
+}
+td.views-field-field-summary-image {
+    padding: 0;
+    vertical-align: middle;
+}
+
+.views-field-field-summary-image div {
+    float: left;
+    padding-right: 25px;
+}
+
+.list-view-item-downloads {
+    padding-right: 60px;
+}
+.list-view-item-summary {
+    color: #666666;
+	float:left;
+	font:12px 'SignikaRegular';
+	line-height:20px;
+}
+
+.view-id-downloads .views-field-field-download-url {
+    min-width: 240px;
+    vertical-align: middle;
+}
+
+.list-view-downloads-version-label {
+    color: #898989;
+    font-size: 13px;
+    text-transform: uppercase;
+	font:14px 'SignikaRegular';
+}
+
+
+.clearfix div {
+    border: medium none;
+}
+.login-form-block-wrapper {
+    padding-top: 20px;
+	float:left;
+}
+
+.button-container-medium-bordered-noicon {
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 15px;
+    position: relative;
+    z-index: 0;
+}
+
+.button-lt-medium-bordered-noicon {
+    height: 15px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 15px;
+    z-index: -1;
+}
+
+.button-rt-medium-bordered-noicon {
+    height: 15px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 15px;
+    z-index: -1;
+}
+
+.button-lb-medium-bordered-noicon {
+    bottom: 0;
+    height: 15px;
+    left: 0;
+    position: absolute;
+    width: 15px;
+    z-index: -1;
+}
+
+.button-rb-medium-bordered-noicon {
+    bottom: 0;
+    height: 15px;
+    position: absolute;
+    right: 0;
+    width: 15px;
+    z-index: -1;
+}
+
+.button-lnt-medium-bordered-noicon {
+    left: 15px;
+    min-height: 15px;
+    position: absolute;
+    right: 15px;
+    top: 0;
+    z-index: -1;
+}
+
+.button-lnb-medium-bordered-noicon {
+    bottom: 0;
+    left: 15px;
+    min-height: 15px;
+    position: absolute;
+    right: 15px;
+    z-index: -1;
+}
+
+.button-lnl-medium-bordered-noicon {
+    bottom: 15px;
+    left: 0;
+    min-width: 15px;
+    position: absolute;
+    top: 15px;
+    z-index: -1;
+}
+
+.button-lnr-medium-bordered-noicon {
+    bottom: 15px;
+    min-width: 15px;
+    position: absolute;
+    right: 0;
+    top: 15px;
+    z-index: -1;
+}
+
+.button-body-medium-bordered-noicon {
+    background-color: rgba(0, 0, 0, 0);
+    bottom: 15px;
+    left: 15px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: -1;
+}
+
+
+.page-node-348 div.button-content-medium-bordered-noicon {
+    text-transform: uppercase;
+}
+.button-content-medium-bordered-noicon {
+    color: #000000;
+    font-weight: bold;
+}
+
+
+.button-content-medium-bordered-noicon a {
+    background-color: #FFF8E6;
+    border: 2px solid #CC9A34 !important;
+    border-radius: 25px 25px 25px 25px;
+    color: #000000;
+    font-size: 12px;
+    padding: 10px 22px 8px;
+    text-decoration: none;
+    z-index: 1;
+}
+.button-content-medium-bordered-noicon a {
+    background-color: #F27935;
+    border: 2px solid #ca5d20 !important;
+    border-radius: 25px 25px 25px 25px;
+    color: #FFFFFF;
+    font-size: 12px;
+    padding: 10px 22px 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+    z-index: 1;
+	font:12px 'SignikaRegular';
+}
+
+.views-table td {
+    padding: 10px 0;
+}
+.views-field-field-download-url {
+    min-width: 240px;
+    vertical-align: middle;
+}
+.views-field {
+}
+
+.list-view-item-downloads-link a{
+	color: #0769b4;
+    text-decoration: none;
+	font:12px 'SignikaRegular';
+	float:left;
+	width:100%;
+	padding:5px 0px 5px 0px
+}
+
+.views-table tr{
+	float:left;
+	width:100%;
+	border-bottom:1px dashed #ccc;
+}
+
+.views-field-type h3{
+	color: #676565;
+    text-decoration: none;
+	font:18px 'SignikaBold';
+	float:left;
+	width:100%;
+	padding:5px 0px 5px 0px
+}

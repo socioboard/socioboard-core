@@ -1,0 +1,47 @@
+//
+// Alerts
+// --------------------------------------------------
+
+// Alert
+// ------------------------- //
+
+.alert { 
+	margin: 0 0 10px;
+	color: #fff;
+	h4 { margin: 0 0 5px; color: #fff; }
+	border-color: @warningColor;
+	background: @warningColor;
+	text-shadow: 0 1px 0 rgba(0,0,0,.1);
+	
+	&.alert-error {
+		background: @dangerColor;
+		color: #fff;
+		border-color: @dangerColor;
+		.close { color: #fff; }
+		h4 { color: #fff; }
+	}
+	&.alert-primary {
+		background: @primaryColor;
+		color: #fff;
+		border-color: @primaryColor;
+		.close { color: #fff; }
+		h4 { color: #fff; }
+	}
+	&.alert-info {
+		background: #dff3f8;
+		color: #7399b9;
+		border-color: #93b9d8;
+		.close { color: #7399b9; }
+	}
+	&.alert-success {
+		border-color: @successColor;
+		background: @successColor;
+		color: #fff;
+		.close, h4 { color: #fff; }
+	}
+	.close {
+		opacity: 1;
+		filter: alpha(opacity=100);
+		color: #fff;
+	}
+}

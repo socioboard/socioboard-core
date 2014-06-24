@@ -1,0 +1,161 @@
+//
+// Layout
+// --------------------------------------------------
+
+// General
+// -------------------------
+
+.innerLR { padding: 0 @spacing; position: relative; }
+.innerTB { padding: @spacing 0; position: relative; }
+.innerAll { padding: @spacing; position: relative; }
+.innerL { padding-left: @spacing; position: relative; }
+.innerR { padding-right: @spacing; position: relative; }
+.innerT { padding-top: @spacing; position: relative; }
+.innerB { padding-bottom: @spacing; position: relative; }
+
+// Other Utilities
+// -------------------------
+
+.center { text-align: center !important; }
+.right { text-align: right; }
+.margin-bottom-none { margin-bottom: 0 !important; }
+.margin-none { margin: 0 !important; }
+.padding-none { padding: 0 !important; }
+.padding-none-TB { padding-bottom: 0 !important; padding-top: 0 !important; }
+.relativeWrap { position: relative; }
+.text-primary { color: @primaryColor; }
+
+// Grid
+// -------------------------
+
+.row-merge {
+	position: relative;
+	> [class*="span"] ~ [class*="span"] {
+		margin-left: 0;
+		&:after { position: absolute; top: 0; bottom: 0; width: 1px; background: @contentBorder; content: ""; }
+	}
+	> [class*="span"] ~ [class*="span3"] { width: 25.26315789473684%; }
+	> [class*="span"] ~ [class*="span4"] { width: 33.68421052631579%; }
+	> [class*="span"] ~ [class*="span5"] { width: 42.10526315789473%; }
+	> [class*="span"] ~ [class*="span6"] { width: 50.74626865671642%; }
+	> [class*="span"] ~ [class*="span9"] { width: 75.78947368421052%; }
+	&.border-top, & ~ & { border-top: 1px solid @contentBorder; }
+	&.border-bottom { border-bottom: 1px solid @contentBorder; }
+}
+
+// Main Wrapper
+// -------------------------
+
+#wrapper {
+	position: relative;
+	overflow: hidden;
+	float: left;
+	width: 100%;
+	border-top: 1px solid @containerBorder;
+}
+
+// Content
+// -------------------------
+
+body > .container-fluid { 
+	padding: 0;
+	background: @containerBg;
+	&.fixed { 
+		margin: 30px auto 30px;
+		border-left: 1px solid @containerBorder;
+		border-right: 1px solid @containerBorder;
+		width: 94%;
+	}
+	&.documentation {
+		background: #fff;
+	}
+}
+
+body > .container-fluid.fixed { 
+	.rounded(5px, 5px, 0, 0);
+	#wrapper { .rounded(5px, 5px, 0, 0); }
+	#content { .rounded(0, 5px, 0, 0); }
+}
+.navbar.main, .navbar.main .wrapper { .rounded(5px, 5px, 0, 0); }
+.navbar-hidden.navbar.main { border-top: none; }
+
+#content { 
+	position: relative;
+	overflow: hidden;
+	margin: 0 0 0 229px;
+	min-width: 320px;
+	min-height: 761px;
+	padding: 0 0 @spacing;
+	background: @containerBg;
+	> .menubar { border-left: none; border-right: none; }
+	> p { padding: 0 @spacing 5px; }
+	> h1, > h2, > h3, > h4, > h5, > h6 { margin: @spacing+3 @spacing @spacing; font-weight: 400; text-shadow: @bodyTextShadow; }
+	> .filter-bar {
+		border-right: none;
+		border-left: none;
+	}
+	.heading-buttons { margin-top: @spacing; }
+	.heading-arrow {
+		text-transform: uppercase;
+		border-bottom: 1px solid @contentBorder;
+		margin: 0 0 @spacing;
+		padding: 0 @spacing;
+		font-size: 11pt;
+		height: 35px;
+		line-height: 30px;
+		position: relative;
+		&:after {
+			content: "";
+			display: inline-block;
+			width: 0;
+			height: 0;
+			border-bottom: 8px solid @contentBorder;
+			border-right: 8px solid transparent;
+			border-left: 8px solid transparent;
+			position: absolute;
+			bottom: 0;
+			left: 15px;
+		}
+		&.glyphicons { padding: 0 10px 0 40px; i:before { font-size: 17px; left: 15px; } }
+		&.margin-bottom-none { margin-bottom: 0; }
+	}
+	
+	> .widget { 
+		border-left: 0; 
+		border-right: 0;
+		.widget-head,
+		.widget-body {
+			border-left: 0; 
+			border-right: 0;
+		}
+		&:last-child { margin: 0; }
+	}
+	
+	> .table { 
+		border-left: none; border-right: none;
+		tr td:first-child { border-left: none; }
+	}
+}
+
+// Footer
+// -------------------------
+ 
+#footer {
+	color: #fff;
+	font-weight: 600;
+	position: relative;
+	overflow: hidden;
+	a:not(.btn) { color: darken(@bodyText, 15%); }
+	.copy {
+		background: @footerBg;
+		padding: 5px 10px;
+		a { color: @primaryColor; }
+		height: 20px;
+	}
+	.row-menu {
+		padding: 10px;
+		[class*="span"] {
+			> ul { margin: 0; } 
+		}
+	}
+}

@@ -1,0 +1,121 @@
+//
+// Forms
+// --------------------------------------------------
+
+// Inline
+// -------------------------
+
+.form-inline.small {
+	input,select { margin: 0 5px 0 0; .rounded(); padding: 1px 5px; border-color: #d8d9da; color: #a7a7a7; }
+	select { padding: 1px 0; height: 23px; &:last-child { margin-right: 0; } }
+	label { float: left; margin: 0 5px 0 0; display: block; }
+	.input-append 
+	{
+		&.block { display: block; }
+		input { margin: 0; width: 85%; }
+		.add-on {
+			padding: 1px 3px;
+			margin: 0 0 0 -1px;
+			.rounded();
+			background: #fff;
+			color: #d8d9da;
+			border-color: #d8d9da;
+			i:before { top: 4px; left: 4px; font-size: 14px; color: #d0d1d1; }
+		}
+	}
+}
+
+// General
+// -------------------------
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+	border-color: #c1c1c1;
+  	-webkit-box-shadow: none;
+  	-moz-box-shadow: none;
+  	box-shadow: none;
+}
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input { font-size: 13px; }
+.uniformjs .radio .disabled input[type="radio"], 
+.uniformjs .checkbox .disabled input[type="checkbox"] { margin-left: 0; }
+.uniformjs .radio, .uniformjs .checkbox { padding-left: 0; }
+.uniformjs .radio { height: auto; }
+.radio.inline + .radio.inline, .checkbox.inline + .checkbox.inline { margin-left: 3px; }
+.uniformjs label.radio { margin-bottom: 0; }
+.uniformjs label.radio.inline { margin: 0; }
+.checkbox.inline { padding-bottom: 1px; }
+.uniformjs .radio span { margin: 2px 0 0; }
+.uniformjs .checkbox span { margin: -2px 0 0; }
+label, input, button, select, textarea { font-size: 13px; }
+.input-full input { width: 83%; height: 17px; }
+legend {
+	line-height: normal;
+	height: auto;
+	font-size: 18px;
+	margin: 0 0 6px;
+	text-align: left;
+	padding: 0;
+	border: 0;
+	color: #797979;
+}
+.btn-group > .btn, .btn-group > .dropdown-menu { font-size: 13px; }
+.strong { font-weight: bold; }
+input[type=text],
+input[type=password],
+select, textarea { 
+	border-color: #D8D9DA;
+	color: #A7A7A7;
+}
+
+.control-label.center { text-align: center; }
+.form-actions { background: none; border: none; margin: 0; }
+.form-horizontal {
+	.form-actions { margin-top: 0; padding: 0; }
+	.controls { margin-left: 145px; }
+	.control-label { width: 125px; }
+	.control-group:last-child { margin: 0; }
+}
+.input-prepend .add-on,
+.input-append .add-on {
+	background: #fff;
+	i:before { color: #D0D1D1; }
+	icon { margin-top: 0; }
+}
+.input-prepend .add-on.glyphicons,
+.input-append .add-on.glyphicons {
+	background: #fff;
+	i:before { font-size: 14px; left: 7px; top: 7px; color: #D0D1D1; }
+}
+.input-append .add-on.glyphicons i:before { left: 6px; }
+
+// Select2 Templating
+// -------------------------
+
+.select2-container img.flag,
+.select2-drop img.flag {
+	height: 10px;
+	width: 15px;
+	padding-right: 10px;
+}
+
+// DateTimePicker
+// -------------------------
+
+.datetimepicker table tr td span.active:hover, .datetimepicker table tr td span.active:hover:hover, .datetimepicker table tr td span.active.disabled:hover, .datetimepicker table tr td span.active.disabled:hover:hover, .datetimepicker table tr td span.active:active, .datetimepicker table tr td span.active:hover:active, .datetimepicker table tr td span.active.disabled:active, .datetimepicker table tr td span.active.disabled:hover:active, .datetimepicker table tr td span.active.active, .datetimepicker table tr td span.active:hover.active, .datetimepicker table tr td span.active.disabled.active, .datetimepicker table tr td span.active.disabled:hover.active, .datetimepicker table tr td span.active.disabled, .datetimepicker table tr td span.active:hover.disabled, .datetimepicker table tr td span.active.disabled.disabled, .datetimepicker table tr td span.active.disabled:hover.disabled, .datetimepicker table tr td span.active[disabled], .datetimepicker table tr td span.active:hover[disabled], .datetimepicker table tr td span.active.disabled[disabled], .datetimepicker table tr td span.active.disabled:hover[disabled],
+.datetimepicker table tr td.active:hover, .datetimepicker table tr td.active:hover:hover, .datetimepicker table tr td.active.disabled:hover, .datetimepicker table tr td.active.disabled:hover:hover, .datetimepicker table tr td.active:active, .datetimepicker table tr td.active:hover:active, .datetimepicker table tr td.active.disabled:active, .datetimepicker table tr td.active.disabled:hover:active, .datetimepicker table tr td.active.active, .datetimepicker table tr td.active:hover.active, .datetimepicker table tr td.active.disabled.active, .datetimepicker table tr td.active.disabled:hover.active, .datetimepicker table tr td.active.disabled, .datetimepicker table tr td.active:hover.disabled, .datetimepicker table tr td.active.disabled.disabled, .datetimepicker table tr td.active.disabled:hover.disabled, .datetimepicker table tr td.active[disabled], .datetimepicker table tr td.active:hover[disabled], .datetimepicker table tr td.active.disabled[disabled], .datetimepicker table tr td.active.disabled:hover[disabled] {
+	background: @primaryColor;
+}

@@ -1,0 +1,72 @@
+@import url("pepper-ginder-custom.css");
+
+
+
+#demos-list {padding: 0;}
+
+#flairs {text-align: center;}
+#flairs ul {list-style: none; padding: 0;}
+#flairs li {display: inline;}
+
+.demo {
+	vertical-align: top;
+	display: inline-block;
+	margin: 1em 1%;
+	width: 44%;
+	background-color: rgba(0, 0, 0, .1);
+	padding: 0 2%;
+	border-radius: 10px;
+}
+
+.demo.full-row {
+	width: 95%;
+}
+
+.demo ul, .demo ol {list-style-position: inside;}
+.demo .box {
+	float: left;
+	margin: 0 1em 1em 0;
+}
+
+.example {
+	color: #006400;
+}
+
+.important-note {
+	font-weight: bold;
+	color: #B22222;
+}
+
+.reference-to {
+	font-size: large;
+	font-weight: bold;
+}
+
+.code-box {clear:both;}
+.code {
+	padding: 5px;
+	color: #333;
+	background-color: white;
+	font: small monospace;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+	background: #F8F7F6 url('images/ui-bg_fine-grain_10_f8f7f6_60x60.png') 50% 50% repeat;
+}
+
+/* begin: jQuery UI Datepicker moving pixels fix */
+table.ui-datepicker-calendar {border-collapse: separate;}
+.ui-datepicker-calendar td {border: 1px solid transparent;}
+/* end: jQuery UI Datepicker moving pixels fix */
+
+/* begin: jQuery UI Datepicker emphasis on selected dates */
+.ui-datepicker .ui-datepicker-calendar .ui-state-highlight a {
+	background: #743620 none;
+	color: white;
+}
+/* end: jQuery UI Datepicker emphasis on selected dates */
+
+
+/* begin: jQuery UI Datepicker hide datepicker helper */
+#ui-datepicker-div {display:none;}
+/* end: jQuery UI Datepicker hide datepicker helper */

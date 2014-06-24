@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+
+  <class name="FacebookGroup" table="FacebookGroup" lazy="false">
+    <id name="Id" column="Id" >
+      <generator class="guid"/>
+    </id>
+    <property name="UserId">
+      <column name="UserId" />
+    </property>
+    <property name="ProfileId">
+      <column name="ProfileId"  />
+    </property>
+    <property name="GroupId">
+      <column name="GroupId"  />
+    </property>
+    <property name="Icon">
+      <column name="Icon"  />
+    </property>
+    <property name="Cover">
+      <column name="Cover"  />
+    </property>
+
+    <property name="Owner">
+      <column name="Owner"  />
+    </property>
+
+    <property name="Name">
+      <column name="Name"  />
+    </property>
+
+    <property name="Description">
+      <column name="Description"  />
+    </property>
+
+    <property name="Link">
+      <column name="Link"  />
+    </property>
+
+
+    <property name="Privacy">
+      <column name="Privacy"  />
+    </property>
+
+    <property name="UpdatedTime">
+      <column name="UpdatedTime"  />
+    </property>
+
+    <property name="EntryDate">
+      <column name="EntryDate"  />
+    </property>
+
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,59 @@
+//
+// Pagination
+// --------------------------------------------------
+
+// Pagination
+// ------------------------- //
+
+.pagination ul {
+	background: @widgetBg;
+	box-shadow: 0 1px 0 0 @contentShadow1, 0 5px 4px -4px @contentShadow2;
+	-moz-box-shadow: 0 1px 0 0 @contentShadow1, 0 5px 4px -4px @contentShadow2;
+	-webkit-box-shadow: 0 1px 0 0 @contentShadow1, 0 5px 4px -4px @contentShadow2;
+}
+.pagination ul > li > a:hover {
+	box-shadow: 0 0 6px 1px rgba(0,0,0,.2) inset;
+	-webkit-box-shadow: 0 0 6px 1px rgba(0,0,0,.2) inset;
+	-moz-box-shadow: 0 0 6px 1px rgba(0,0,0,.2) inset;
+}
+.pagination ul > li > a:hover,
+.pagination ul > li.primary > a {
+	border-color: lighten(@primaryColor,10%);
+	background: @primaryColor;
+	color: #fff;
+	font-weight: 600;
+	text-shadow: 0 1px 0 rgba(0,0,0,.5);
+} 
+.pagination ul > .active > a, 
+.pagination ul > .active > span {
+	border-color: @primaryColor;
+	background: @primaryColor;
+	color: #fff;
+	font-weight: 600;
+	text-shadow: 0 1px 0 rgba(0,0,0,.5);
+	box-shadow: 0 0 6px 1px rgba(0,0,0,.2) inset;
+	-webkit-box-shadow: 0 0 6px 1px rgba(0,0,0,.2) inset;
+	-moz-box-shadow: 0 0 6px 1px rgba(0,0,0,.2) inset;
+}
+.pagination ul > li > a, 
+.pagination ul > li > span {
+	border-color: @contentBorder;
+	background: @widgetBg;
+}
+.pagination ul > .primary.disabled > a,
+.pagination ul > .disabled > a,
+.pagination ul > .disabled > span {
+	border-color: @contentBorder;
+	background: @widgetBg;
+	color: #dddddd;
+	font-weight: 600;
+	text-shadow: none;
+	.bevelEmboss(0,0);
+}
+.pagination ul > .disabled > a:hover {
+	border-color: @contentBorder;
+	background: @widgetBg;
+	color: #dddddd;
+	text-shadow: none;
+	.bevelEmboss(0,0);
+}

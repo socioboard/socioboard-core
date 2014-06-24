@@ -1,0 +1,180 @@
+//
+// Scaffolding
+// --------------------------------------------------
+
+// Body
+// -------------------------
+
+body { 
+	font-family: 'Open Sans', sans-serif; 
+	background: @bodyBg;
+	font-size: 13px;
+	color: @bodyText;
+}
+
+// Outlines
+// -------------------------
+
+*, a:focus { outline: none !important; }
+button:focus { outline: none !important; }
+button::-moz-focus-inner { border: 0; }
+
+// Links
+// -------------------------
+
+a:hover { color: @linkHover; }
+a { color: @primaryColor; outline: 0 !important; }
+
+// Headings 
+// -------------------------
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Open Sans', sans-serif;
+	margin: 0 0 5px;
+	font-weight: 600;
+	color: @bodyText;
+	&.glyphicons {
+		color: @bodyText;
+	}
+	span {
+		color: @subheadingText;
+		font-weight: 400;
+		padding: 0 5px;
+		font-style: italic;
+	}
+}
+h1 span, h2 span, h3 span {
+	font-size: 50%;
+	text-transform: none;
+	padding: 0;
+	position: relative;
+	top: -3px;
+	font-weight: 400;
+}
+h1, h2, h3 { line-height: 30px; }
+
+// Heading with buttons
+// -------------------------
+
+.heading-buttons {
+	h1,h2,h3,h4,h5,h6 { display: inline-block; margin: 0 @spacing; &.glyphicons { display: inline-block; } }
+	.buttons {
+		margin-top: 3px;
+		margin-right: @spacing;
+		text-align: right;
+	}
+	.btn { 
+		margin-right: @spacing; 
+		&:last-child { margin-right: 0; } 
+	}
+}
+
+// Paragraphs
+// -------------------------
+
+p { 
+	margin: 0 0 10px; 
+	line-height: normal; 
+}
+.lead { margin: 0 0 10px; }
+.glyphicons { color: @bodyText; }
+
+// Lists
+// -------------------------
+
+ul.icons {
+	text-align: left; padding: 0;
+	li { 
+		display: block;
+		padding: 0 0 0 25px;
+		line-height: 22px;
+		color: @bodyText;
+		i:before { color: @bodyText; font-size: 17px; left: 0; top: 4px; } 
+	}
+}
+
+// Other
+// -------------------------
+
+input, button, select, textarea { font-family: 'Open Sans', sans-serif; }
+
+// Code
+// -------------------------
+
+pre.prettyprint {
+	word-break: normal;
+	word-wrap: normal;
+	white-space: pre;
+	background-color: @preBg1;
+	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(50%, @preBg1), color-stop(50%, @preBg2));
+	background-image: -webkit-linear-gradient(@preBg1 50%, @preBg2 50%);
+	background-image: -moz-linear-gradient(@preBg1 50%, @preBg2 50%);
+	background-image: -o-linear-gradient(@preBg1 50%, @preBg2 50%);
+	background-image: linear-gradient(@preBg1 50%, @preBg2 50%);
+	-moz-background-size: 38px 38px;
+	background-size: 38px 38px;
+	border: 1px solid @contentBorder2;
+	display: block;
+	line-height: 19px;
+	margin-bottom: @spacing;
+	overflow: visible;
+	overflow-y: hidden;
+	padding: 0 0 0 4px;
+	.glyphicons { 
+	padding: 0 0 0 20px;
+		i:before { font-size: 17px; top: 1px; }
+	}
+	&, span { color: @bodyText; }
+}
+
+// Blockquote
+// -------------------------
+
+blockquote { 
+	&, &.pull-right { border: none; }
+	p { font-weight: 400; font-size: 13px; margin: 0 0 10px; }
+	margin: 0;
+	padding: 0 0 0 5px;
+}
+blockquote small { color: @primaryColor; }
+
+// Separators
+// -------------------------
+
+.separator { padding: @spacing 0; display: block; }
+.separator.bottom { padding: 0 0 @spacing; }
+.separator.top { padding: @spacing 0 0; }
+hr { 
+	border-top-color: @contentBorder; border-bottom: none; margin: @spacing 0;
+	&.separator {
+		padding: 0;
+		&.top { margin: @spacing 0 0; }
+		&.bottom { margin: 0 0 @spacing; }
+	}
+}
+
+// Print
+// -------------------------
+
+@media print {
+	@page { 
+	    size: auto; 
+		margin: 10mm 10mm 10mm 10mm;  
+	} 
+	#content { margin: 0 !important; padding: 0 !important; }
+	#tlyPageGuideWrapper,
+	.filter-bar { display: none !important; }
+	.table {
+		td, th { vertical-align: middle; }
+		th { padding: 3px; text-align: center; }
+		img { float: left; }
+	}
+}
+
+// Google maps
+// -------------------------
+
+.map_canvas img { max-width: none !important; }
+.streetview { width:100%; height:300px; }
+.ui-dialog-vevent .dtstart { display:none; }
+.ui-dialog-vevent .website { margin:0 0 1em; }

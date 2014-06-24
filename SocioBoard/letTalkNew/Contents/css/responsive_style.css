@@ -1,0 +1,238 @@
+﻿/* --------------- Responsiv css here -------------------- */
+@media (max-width:1400px)
+{    
+    .navbar-toggle,.navbarcollapse{display:none;}
+    section > .main > .section_top > .container_right > .profile_div > .profile_add_div{margin-top: 23px;}
+    #message_list_right{width:80%; word-wrap: break-word; color: #777777;}
+    .drop_top{background: url("../../Contents/img/drop_top.png") repeat scroll 0 0 transparent;height: 12px; width: 183px;}
+    .ws_msg_right {float: right;height: auto; margin-right: 12px; margin-top: 20px; width: 260px;}
+    
+    /* ----------- feeds Page ----------- */
+    .sub_name li a{width:100px;}
+    .row_fluid1{width: 31.5%;}
+    .row_fluid1 > h2{ width:85.5%;}
+    .container_right nav{height:auto !important;}
+    
+    .knob{margin:-65px 0px 0px 20px !important;}    
+}
+ @media (max-width: 1355px) 
+ {
+     
+    .knob{margin:-65px 0px 0px 20px !important;}    
+    .navbarcollapse {max-height: 340px;padding-right: 15px;padding-left: 15px;overflow-x: visible;border-top: 1px solid transparent;box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);-webkit-overflow-scrolling: touch;}
+    .navbarcollapse:before,.navbarcollapse:after { display: table; content: " ";}
+    .navbarcollapse:after {clear: both;}
+    
+    .navbarcollapse {background: none repeat scroll 0 0 #000000;float: left; margin: 0; padding: 0; position: absolute; top: 49px;width: 100%; z-index: 9; display:none;}
+
+    .navbarcollapse:before,.navbarcollapse:after {display: table;content: " ";}
+    .navbarcollapse:after {clear: both;}
+    .navbarcollapse.in {overflow-y: auto;}
+    
+    .navbar-default .navbar-text {color: #777777;}
+    .navbar-default .navbar-nav > li > a {width: 100%; float:left;color: #FFFFFF;font-family: arial;font-size: 18px;padding-bottom: 5px; padding-left: 2%;padding-top: 5px; text-decoration: none;}
+    .navbar-default .navbar-nav > li > a:hover,.navbar-default .navbar-nav > li > a:focus {color: #333333;background-color: #E7E7E7;}
+    .navbar-default .navbar-nav > .active > a,.navbar-default .navbar-nav > .active > a:hover,.navbar-default .navbar-nav > .active > a:focus { background-color: #E7E7E7; color: #555555; float: left; font-family: arial; font-size: 18px; padding-bottom: 5px; padding-left: 2%; padding-top: 5px; text-decoration: none; width: 98%;}
+    .navbar-default .navbar-nav > .disabled > a,.navbar-default .navbar-nav > .disabled > a:hover,.navbar-default .navbar-nav > .disabled > a:focus {color: #cccccc;background-color: transparent;}
+    .navbar-default .navbar-toggle {border-color: #dddddd;}
+    .navbarcollapse.in{margin:0; padding:0;}
+    .navbar-default .navbar-toggle:hover,.navbar-default .navbar-toggle:focus {background-color: #dddddd;}
+    .navbar-default .navbar-toggle .icon-bar {background-color: #cccccc;}
+    .navbar-default .navbarcollapse,.navbar-default .navbar-form {border-color: #e6e6e6;}
+    .navbar-default .navbar-nav > .dropdown > a:hover .caret,.navbar-default .navbar-nav > .dropdown > a:focus .caret {border-top-color: #333333;border-bottom-color: #333333;}
+    .navbar-default .navbar-nav > .open > a,.navbar-default .navbar-nav > .open > a:hover,.navbar-default .navbar-nav > .open > a:focus {color: #555555; background-color: #e7e7e7;}
+    .navbar-default .navbar-nav > .open > a .caret,.navbar-default .navbar-nav > .open > a:hover .caret,.navbar-default .navbar-nav > .open > a:focus .caret {border-top-color: #555555;border-bottom-color: #555555;}
+    .navbar-default .navbar-nav > .dropdown > a .caret {border-top-color: #777777; border-bottom-color: #777777;}
+ }
+ 
+ @media (max-width: 1325px) 
+ {
+    header > .header{width:99% !important;}
+    header > .header > nav {width:79.12%; float:left;}   
+    header > .header > .letstalk_logo{width:15.54% !important;}
+    header > .header > .letstalk_logo > a > img {}
+    header > .header > .logout > a > img{width:100% !important; height:100% !important;}
+    header > .header > .logout{width:4.15% !important;}
+    
+    section > .main{width:99% !important;}
+    section > .main > .section_top > .container_right {width:63.24% !important;}
+    section > .main > .section_top > .container_right > .profile_div{width:100% !important;}
+    
+    nav > .menu{margin:1.8% auto 0 !important;}
+    nav > .menu > ul > li{margin-left:3.16% !important;}
+    
+    aside{width:35.47% !important;}    
+    aside > .lsidebar > .userprofile > .userphoto{width:28% !important; margin:3.2% 0 3.2% 3.2% !important;}
+    aside > .lsidebar > .userprofile > .user_details{width:60% !important; margin-left: 2.12% !important;  margin-top: 5.31% !important;}
+    aside > .lsidebar > .msgtask > .msg_group,aside > .lsidebar > .msgtask > .task_group{padding: 3.19% 0 0.42% 2.12% !important;}
+    aside > .lsidebar > .msgtask > .msg_group > .msgroup_all, aside > .lsidebar > .msgtask > .task_group > .msgroup_all{margin-left:2.12% !important;}
+    
+    
+    /* ----------------- Login Page ------------------ */
+    .login_sub_width { margin: 7.54% auto !important; width: 32.45% !important;}}
+    
+/* default screen */
+@media (max-width: 1280px) 
+{
+    section > .main > .section_top > .container_right { width:63.24%; }
+    aside{width:35.47%;}
+}
+
+
+@media (max-width: 1000px)
+{
+    
+    .login_sub_width {width: 45.45% !important;}
+}
+ @media (max-width: 900px) 
+ {
+     
+}
+ @media (max-width: 657px) 
+ {
+     
+}
+ @media (min-width: 768px) and (max-width: 979px) {
+}
+ @media (max-width: 767px) {
+}
+ @media (max-width: 620px) {
+}
+ @media (max-width: 520px) {
+}
+
+
+/* laptop screen */
+@media (max-width: 1024px) {
+}
+
+/* tablet potrate */
+@media (max-width: 768px) 
+{
+    
+     header > .header > nav,header > .header > .logout{display:none;}
+     .navbar-toggle{margin-top:14px !important; }
+    .navbar-toggle{display:block;}
+    .navbar-toggle .icon-bar {background-color: #CCCCCC; }
+    .navbar-toggle .icon-bar {border-radius: 1px 1px 1px 1px; clear: left;display: block;float: left;height: 2px; margin-top: 5px; width: 22px;}
+    .navbar-toggle {cursor:pointer;background-color: rgba(0, 0, 0, 0);border: 1px solid #FFFFFF;border-radius: 4px 4px 4px 4px; float: right; height: auto; margin-bottom: 8px; margin-right: 15px; margin-top: 7px; padding-bottom: 6px; padding-top: 3px; position: relative;}   
+   
+    .navbarcollapse {margin-right: 0; margin-left: 0;}
+    .navbarcollapse {border-top: 0; box-shadow: none;}
+    .navbarcollapse.collapse {display: block !important; height: auto !important; padding-bottom: 0; overflow: visible !important;}
+    .navbarcollapse.in { overflow-y: visible;}
+    .navbarcollapse .navbar-nav.navbar-left:first-child { margin-left: -15px;}
+    .navbarcollapse .navbar-nav.navbar-right:last-child {margin-right: -15px;}
+    .navbarcollapse .navbar-text:last-child {margin-right: 0;}    
+    .navbarcollapse.in > .nav.navbar-nav{ background: none repeat scroll 0 0 #000000; display: block; float: left; margin: 0;padding: 0;width: 100%;}
+    .navbarcollapse.collapse > .nav.navbar-nav{display:none;}
+    
+    .navbar-nav .open .dropdown-menu { position: static; float: none; width: auto; margin-top: 0;background-color: transparent; border: 0; box-shadow: none;}
+    .navbar-nav .open .dropdown-menu > li > a, .navbar-nav .open .dropdown-menu .dropdown-header {padding: 5px 15px 5px 25px;}
+    .navbar-nav .open .dropdown-menu > li > a {line-height: 20px;}
+    .navbar-nav .open .dropdown-menu > li > a:hover,.navbar-nav .open .dropdown-menu > li > a:focus {background-image: none;}
+    
+    .navbar-default .navbar-nav > li:first-child {border-bottom: 1px solid #999999; border-top: medium none;}
+    .navbar-default .navbar-nav > li{border-bottom: 1px solid #333333;border-top: 1px solid #000000;float: left;width: 100%;}    
+    
+    #message_list{margin:8px 0 !important;}    
+    #message_list_right{width:72%; font-family: signikaregular; font-size: 10px;}
+    #message_list_img{padding: 3.51% 0 3.51% 4.41% !important; width:21% !important;}
+    #message_list_img_soci{margin: 11.29% 0 0 -1.67% !important;}
+    #message_list_right a{font-size:11px !important;}
+    #message_list_right>h2{font-size:11px !important;}
+}
+
+/* Phone Landscape */
+@media (max-width: 480px) 
+{
+    
+    .login_sub_width {width: 59.45% !important;}
+}
+
+
+
+/* Phone Portrait */
+@media only screen and (max-width: 320px)
+ {
+     /* -------------- Login -------------------- */
+     header{height:auto !important; float:left;}
+     header > .header{height:auto !important;}
+     header > .header > .letstalk_logo > a > img { margin-top: -13px !important; max-width: 106px !important; }
+     header > .header > .letstalk_logo > a {float: left; height: 20px !important;}
+     
+     .login_sub_width {margin: 16px auto !important; width: 98% !important;}
+     .login_common_width {padding:0 !important;}
+     .login_common_width fieldset h1 em{margin: 6px 0 0 !important;}
+     .login_common_width fieldset span input[type="text"],.login_common_width fieldset span label,.login_common_width fieldset span input[type="password"]{padding: 2.75% 0 2.75% 1.75% !important;}
+     
+     
+     /* -------------- home page ----------------- */
+     aside {width: 100% !important;}
+     aside > .lsidebar > .userprofile > .userphoto {margin: 3.2% 0 3.2% 3.2% !important; width: 39% !important;}
+     #circle3{width:100% !important; margin-left: 83px !important;}
+     #circle4 {width:83% !important;}     #set{margin:0 !important;}
+     
+     .group_details {width:68.91% !important; font-size: 12px !important;}
+     .social_connection_group{width:100% !important;}
+     
+     aside > .lsidebar > .userprofile > .user_details { margin-left: 0 !important; margin-top: 1.31% !important; text-align: center;width: 100% !important;}
+     aside > .leftsidebar_bot{width:100% !important;}
+     aside > .leftsidebar_bot > .lsidebar > .mailbox > .mailbox_bot > ul > li > .mail_tab{width:72% !important;}
+     aside > .leftsidebar_bot > .lsidebar > .banner{width:100% !important;}
+     aside > .leftsidebar_bot > .lsidebar > .mailbox > .mailbox_top{padding:1.70% !important;}
+     aside > .leftsidebar_bot > .lsidebar > .mailbox > .mailbox_bot > ul > li:hover, aside > .leftsidebar_bot > .lsidebar > .mailbox > .mailbox_bot > ul > li.active,
+     aside > .leftsidebar_bot > .lsidebar > .mailbox > .mailbox_bot > ul > li{width:98.5% !important;}
+     aside > .lsidebar > .userprofile{width:96.8% !important;}
+     
+     section > .main > .section_top > .container_right, section > .main > .section_top > .container_right > .graph {width: 100% !important;}
+     section > .main > .section_top > .container_right > .profile_div > .profile_connection {width: 100% !important;}
+     section > .main > .section_top > .container_right > .profile_div > .profile_add_div{padding-right: 36%; width: 64% !important;}
+     section > .main > .section_top > .container_right > .graph > .social_graph{width: 98.92% !important;}
+     section > .main > .section_top > .container_right > .profile_div{padding: 0.851% 0 !important;}
+     section > .main > .section_top > .container_right > .profile_div > .profile_add_div{margin-top: 0;}
+     section > .main > .section_top > .container_right > .profile_div > .profile_users{margin-left: 4% !important; width: 96% !important;}
+     
+     .container_right nav{height:auto !important;}
+     .container_right nav ul{padding-bottom:27px !important;}
+     .container_right nav li{margin-right: 2% !important;}
+     .container_right nav li a {padding-left: 38% !important; font-size:11px !important;}
+     .container_right nav li:last-child {margin-right: 0 !important;}
+     .container_right nav li:last-child a {padding: 0 !important;}
+     .container_right nav li:nth-child(2) a {padding-left: 47% !important;}
+     .container_right nav li:last-child a {padding: 4px 0 0 31px !important;}
+     
+     .progress-bar{width: 91.16% !important; margin: 2.43% 0 4.87% !important;}
+     canvas {width:60px !important; height:65px !important;}
+     .knob {margin: -49px 0 0 3px !important;}
+     
+     #f_right_width > div {width: 65px !important;}
+     #content {margin: 2.38% 1.19% !important; width: 100% !important;}
+     #home_social_width{width:98% !important;}
+     #home_social_width span { margin-left: 36%; margin-top: 4%; width: 20% !important;}
+     #home_social_width ul li{width:98% !important;}
+     #home_social_width_1 {margin: 0 !important; padding: 1.19% !important; width: 94% !important;}
+     #home_social_width_1 span{padding: 1.19% !important; width: 97.5% !important}
+     
+     #pagenation { float: left !important; width: 100% !important;}
+     
+     .drop_top{background: url("../../Contents/img/drop_top_mid_point.png") repeat scroll 0 0 transparent;}
+     #linkbox {left: 55px;}
+     
+     
+     /* ---------------- Message page --------------- */
+     #msg_task_open{padding:8% 10% 10% 5% !important; width: 77.86% !important;}
+     .msg_view.threefourth{width: 35.54% !important;}
+    #content_msg{width:auto !important; margin:0 !important;}
+    #message_list_img_soci{margin: 5.29%% 0 0 -1.67% !important;}
+    #message_list_img_soci{margin-top:4.29% !important;}
+    .assign_task_to{width: 96.72% !important; margin-left:4.66% !important;}
+    .assign_task_to textarea{width: 81% !important;}
+    .ws_msg_right {float: left; height: auto; margin-right: 12px; margin-top: -9px; width: 100%;}
+    
+    
+    /* ------------ Feeds Page --------------------- */
+    .sub_name li {width:30%;}
+    .row_fluid1{width: 98%;}
+    .row_fluid1 > h2{ width:87.5%;}
+ }

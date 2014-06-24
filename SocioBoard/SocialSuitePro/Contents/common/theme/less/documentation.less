@@ -1,0 +1,55 @@
+//
+// Documentation
+// --------------------------------------------------
+
+// Icons
+// ------------------------- //
+
+#docs_icons {
+	text-align: center;
+	padding: 0 20px;
+	.glyphicons {
+		display: inline-block;
+		*display: inline;
+		*zoom: 1;
+		width: 125px;
+		font-size: 12px;
+		line-height: 48px;
+		overflow: hidden;
+		color: @bodyText;
+	}
+	.glyphicons i:before {
+		line-height: 55px !important;
+		color: @primaryColor;
+	}
+}
+
+// Documentation
+// ------------------------- //
+
+.documentation {
+	ul {
+		ul { margin-bottom: 10px; }
+	}
+	.span3 .menu.affix { position: fixed; top: 20px; width: 220px; }
+	
+	.show-grid {
+		margin-top: 10px;
+		margin-bottom: 20px;
+		[class*="span"] {
+			background-color: lighten(#232628, 20%);
+			text-align: center;
+			.rounded(3px,3px,3px,3px);
+			min-height: 40px;
+			line-height: 40px;
+			color: #fff;
+		}
+		.show-grid {
+			margin-top: 0;
+			margin-bottom: 0;
+			[class*="span"] {
+				background-color: lighten(#232628, 40%);
+			}
+		}	
+	}
+}

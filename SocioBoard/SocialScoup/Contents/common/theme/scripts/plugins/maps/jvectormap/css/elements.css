@@ -1,0 +1,24 @@
+.jvm-legend {
+	line-height: 2em;
+	margin-top: 5px;
+}
+
+.jvm-legend span {
+	vertical-align: middle;
+}
+
+.jvm-legend-item {
+	width: 2em;
+	height: 2em;
+	display: inline-block;
+}
+.jvm-legend span:not(.jvm-legend-item) { margin-right: 10px; }
+.jvm-legend span:last-child { margin-left: 0; }
+
+.jvm-legend-item-ps {
+	background: #FF69B4;
+}
+
+.jvm-legend-item-ump {
+	background: #4169E1;
+}

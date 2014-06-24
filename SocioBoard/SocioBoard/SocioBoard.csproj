@@ -1,0 +1,1124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{74A1C81B-649C-483D-87C3-68099C72C486}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SocioBoard</RootNamespace>
+    <AssemblyName>SocioBoard</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.1.3.42154, Culture=neutral, PublicKeyToken=3a9cab8f8d22bfb7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook">
+      <HintPath>Lib\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Hammock, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Hammock.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>Lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.0.7.0, Culture=neutral, PublicKeyToken=5573ae1cac4b3dac, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity, Version=6.0.7.0, Culture=neutral, PublicKeyToken=5573ae1cac4b3dac, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\MySql.Data.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Linq, Version=1.0.0.4000, Culture=neutral, PublicKeyToken=444cf6a87fdab271, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\NHibernate.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernateHelper, Version=1.1.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\NHibernateHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="OAuth, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AjaxHome.aspx" />
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\Facebook.dll" />
+    <Content Include="bin\GlobusTwitterLib.dll" />
+    <Content Include="bin\GlobusTwitterLib.pdb" />
+    <Content Include="bin\Iesi.Collections.dll" />
+    <Content Include="bin\Iesi.Collections.pdb" />
+    <Content Include="bin\Iesi.Collections.xml" />
+    <Content Include="bin\Mappings\FacebookAccount.hbm.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="bin\Mappings\FacebookFeed.hbm.xml" />
+    <Content Include="bin\Mappings\FacebookMessage.hbm.xml" />
+    <Content Include="bin\Mappings\Group.hbm.xml" />
+    <Content Include="bin\Mappings\GroupProfile.hbm.xml" />
+    <Content Include="bin\Mappings\Groups.hbm.xml" />
+    <Content Include="bin\Mappings\InstagramAccount.hbm.xml" />
+    <Content Include="bin\Mappings\InstagramComment.hbm.xml" />
+    <Content Include="bin\Mappings\InstagramFeed.hbm.xml" />
+    <Content Include="bin\Mappings\LinkedInAccount.hbm.xml" />
+    <Content Include="bin\Mappings\LinkedInFeed.hbm.xml" />
+    <Content Include="bin\Mappings\LinkedinMessage.hbm.xml" />
+    <Content Include="bin\Mappings\SocialProfile.hbm.xml" />
+    <Content Include="bin\Mappings\TaskComment.hbm.xml" />
+    <Content Include="bin\Mappings\Tasks.hbm.xml" />
+    <Content Include="bin\Mappings\Team.hbm.xml" />
+    <Content Include="bin\Mappings\TwitterAccount.hbm.xml" />
+    <Content Include="bin\Mappings\TwitterFeed.hbm.xml" />
+    <Content Include="bin\Mappings\TwitterMessage.hbm.xml" />
+    <Content Include="bin\Mappings\TwitterStats.hbm.xml" />
+    <Content Include="bin\Mappings\User.hbm.xml" />
+    <Content Include="bin\MySql.Data.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\MySql.Data.Entity.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\NHibernate.dll" />
+    <Content Include="bin\NHibernate.Linq.dll" />
+    <Content Include="bin\NHibernate.Linq.xml" />
+    <Content Include="bin\NHibernate.pdb" />
+    <Content Include="bin\NHibernate.xml" />
+    <Content Include="bin\NHibernateHelper.dll" />
+    <Content Include="bin\NHibernateHelper.pdb" />
+    <Content Include="bin\OAuth.dll" />
+    <Content Include="bin\SocioBoard.dll" />
+    <Content Include="bin\SocioBoard.pdb" />
+    <Content Include="Contents\Images\00031502_normal.jpg" />
+    <Content Include="Contents\Images\325.gif" />
+    <Content Include="Contents\Images\328.gif" />
+    <Content Include="Contents\Images\360.gif" />
+    <Content Include="Contents\Images\AddBtn.png" />
+    <Content Include="Contents\Images\add_btn.png" />
+    <Content Include="Contents\Images\add_btn_hover.png" />
+    <Content Include="Contents\Images\clock.png" />
+    <Content Include="Contents\Images\closewhiteclose.png" />
+    <Content Include="Contents\Images\closewicon.png" />
+    <Content Include="Contents\Images\clsoegreyclose.png" />
+    <Content Include="Contents\Images\delete.png" />
+    <Content Include="Contents\Images\group-folder-sprite.png" />
+    <Content Include="Contents\Images\home\1.png" />
+    <Content Include="Contents\Images\home\about.png" />
+    <Content Include="Contents\Images\home\about_hover.png" />
+    <Content Include="Contents\Images\home\breakup_line.png" />
+    <Content Include="Contents\Images\home\chatter.png" />
+    <Content Include="Contents\Images\home\chatter_hover.png" />
+    <Content Include="Contents\Images\home\forgote_header_bg.png" />
+    <Content Include="Contents\Images\home\gloves.png" />
+    <Content Include="Contents\Images\home\home-logo.png" />
+    <Content Include="Contents\Images\home\home_footer_bg.png" />
+    <Content Include="Contents\Images\home\home_header_bg.png" />
+    <Content Include="Contents\Images\home\home_login.png" />
+    <Content Include="Contents\Images\home\home_login_btn.png" />
+    <Content Include="Contents\Images\home\home_logo.png" />
+    <Content Include="Contents\Images\home\home_signup_bottom.png" />
+    <Content Include="Contents\Images\home\home_signup_btn.png" />
+    <Content Include="Contents\Images\home\home_signup_top.png" />
+    <Content Include="Contents\Images\home\home_sign_text.png" />
+    <Content Include="Contents\Images\home\home_sinup_btn.png" />
+    <Content Include="Contents\Images\home\home_sinup_btn_hover.png" />
+    <Content Include="Contents\Images\home\list_style_img.png" />
+    <Content Include="Contents\Images\home\pricing.png" />
+    <Content Include="Contents\Images\home\pricing_hover.png" />
+    <Content Include="Contents\Images\home\rivew.png" />
+    <Content Include="Contents\Images\home\rivew_hover.png" />
+    <Content Include="Contents\Images\home\signin_up_top_img.png" />
+    <Content Include="Contents\Images\home\sign_up_bottom_img.png" />
+    <Content Include="Contents\Images\home\sign_up_mid_img.png" />
+    <Content Include="Contents\Images\home\submit_btn.png" />
+    <Content Include="Contents\Images\home\take_a_quick_tour.png" />
+    <Content Include="Contents\Images\home\user_client.png" />
+    <Content Include="Contents\Images\home\view_planpricingbtn.png" />
+    <Content Include="Contents\Images\home\view_plave_pricing_btn.png" />
+    <Content Include="Contents\Images\home\yammer.png" />
+    <Content Include="Contents\Images\pricing.png" />
+    <Content Include="Contents\Images\pricing\center_left.png" />
+    <Content Include="Contents\Images\pricing\center_right.png" />
+    <Content Include="Contents\Images\pricing\deluxe.png" />
+    <Content Include="Contents\Images\pricing\plus_icon.png" />
+    <Content Include="Contents\Images\pricing\premium_text.png" />
+    <Content Include="Contents\Images\pricing\pricing_bot.png" />
+    <Content Include="Contents\Images\pricing\pricing_mid.png" />
+    <Content Include="Contents\Images\pricing\pricing_top.png" />
+    <Content Include="Contents\Images\pricing\signup_gfree_trail.png" />
+    <Content Include="Contents\Images\pricing\signup_gfree_trail_hover.png" />
+    <Content Include="Contents\Images\pricing\signup_g_now.png" />
+    <Content Include="Contents\Images\pricing\signup_g_now_hover.png" />
+    <Content Include="Contents\Images\pricing\sinup_now.png" />
+    <Content Include="Contents\Images\pricing\sinup_now_hover.png" />
+    <Content Include="Contents\Images\pricing\standard.png" />
+    <Content Include="Contents\Images\pricing\standered_bot.png" />
+    <Content Include="Contents\Images\pricing\standered_mid.png" />
+    <Content Include="Contents\Images\pricing\standered_top.png" />
+    <Content Include="Contents\Images\pricing\start_free_trail.png" />
+    <Content Include="Contents\Images\pricing\start_free_trail_hover.png" />
+    <Content Include="Contents\Images\pricing_hover.png" />
+    <Content Include="Contents\Images\reports\engagementreport.PNG" />
+    <Content Include="Contents\Images\reports\groupsstat.PNG" />
+    <Content Include="Contents\Images\reports\twitter.PNG" />
+    <Content Include="Contents\Images\small_loader.gif" />
+    <Content Include="Contents\Images\analytics_img.png" />
+    <Content Include="Contents\Images\an_24X24.png" />
+    <Content Include="Contents\Images\archive.png" />
+    <Content Include="Contents\Images\attechphoto.png" />
+    <Content Include="Contents\Images\blank_img.png" />
+    <Content Include="Contents\Images\break.png" />
+    <Content Include="Contents\Images\button-cross.png" />
+    <Content Include="Contents\Images\button_img.png" />
+    <Content Include="Contents\Images\button_img_hover.png" />
+    <Content Include="Contents\Images\discovery.png" />
+    <Content Include="Contents\Images\drop_arrow.png" />
+    <Content Include="Contents\Images\drop_bottom.png" />
+    <Content Include="Contents\Images\drop_mid.png" />
+    <Content Include="Contents\Images\drop_top.png" />
+    <Content Include="Contents\Images\facebook.png" />
+    <Content Include="Contents\Images\fb_24X24.png" />
+    <Content Include="Contents\Images\fb_icon.png" />
+    <Content Include="Contents\Images\fb_img.png" />
+    <Content Include="Contents\Images\feeds.png" />
+    <Content Include="Contents\Images\glyphicons-halflings.png" />
+    <Content Include="Contents\Images\google_analytics.png" />
+    <Content Include="Contents\Images\google_plus.png" />
+    <Content Include="Contents\Images\Google_plus_24x24.png" />
+    <Content Include="Contents\Images\gplus.png" />
+    <Content Include="Contents\Images\gplus_48X48.png" />
+    <Content Include="Contents\Images\graph.png" />
+    <Content Include="Contents\Images\Groups.jpg" />
+    <Content Include="Contents\Images\Groups.png" />
+    <Content Include="Contents\Images\heart-broken-small.png" />
+    <Content Include="Contents\Images\heart-dark-fill.png" />
+    <Content Include="Contents\Images\heart-dark-mask-outline02.png" />
+    <Content Include="Contents\Images\home.png" />
+    <Content Include="Contents\Images\icon_edit.png" />
+    <Content Include="Contents\Images\images.jpg" />
+    <Content Include="Contents\Images\imgloader.gif" />
+    <Content Include="Contents\Images\instagram\comment_btn.png" />
+    <Content Include="Contents\Images\instagram\comment_btn_hover.png" />
+    <Content Include="Contents\Images\instagram\girls.png" />
+    <Content Include="Contents\Images\instagram\instalike.png" />
+    <Content Include="Contents\Images\instagram\like_btn.png" />
+    <Content Include="Contents\Images\instagram\like_btn_hover.png" />
+    <Content Include="Contents\Images\instagram\moment.png" />
+    <Content Include="Contents\Images\instagram_24X24.png" />
+    <Content Include="Contents\Images\link.png" />
+    <Content Include="Contents\Images\linked_25X24.png" />
+    <Content Include="Contents\Images\link_icon.png" />
+    <Content Include="Contents\Images\link_img.png" />
+    <Content Include="Contents\Images\loader.gif" />
+    <Content Include="Contents\Images\Login\input_box.png" />
+    <Content Include="Contents\Images\Login\lg_top_shadow.png" />
+    <Content Include="Contents\Images\Login\login_bg.png" />
+    <Content Include="Contents\Images\Login\login_body.png" />
+    <Content Include="Contents\Images\Login\login_btn.png" />
+    <Content Include="Contents\Images\Login\login_btn_hover.png" />
+    <Content Include="Contents\Images\Login\user_icon.png" />
+    <Content Include="Contents\Images\Login\user_pwd.png" />
+    <Content Include="Contents\Images\logo.png" />
+    <Content Include="Contents\Images\menu_select_img.png" />
+    <Content Include="Contents\Images\msg.png" />
+    <Content Include="Contents\Images\msg\network_click.png" />
+    <Content Include="Contents\Images\msg\network_fb_icon.png" />
+    <Content Include="Contents\Images\msg\network_linked.png" />
+    <Content Include="Contents\Images\msg\Network_non_click.png" />
+    <Content Include="Contents\Images\msg\network_plus.png" />
+    <Content Include="Contents\Images\msg\Network_search.png" />
+    <Content Include="Contents\Images\msg\network_twt.png" />
+    <Content Include="Contents\Images\msg\sidebar.png" />
+    <Content Include="Contents\Images\normal.jpg" />
+    <Content Include="Contents\Images\pat_leftnavli.png" />
+    <Content Include="Contents\Images\picture.jpg" />
+    <Content Include="Contents\Images\pin.png" />
+    <Content Include="Contents\Images\profileloader.jpg" />
+    <Content Include="Contents\Images\profile_loader.gif" />
+    <Content Include="Contents\Images\ps\select.png" />
+    <Content Include="Contents\Images\publish.png" />
+    <Content Include="Contents\Images\red_Close.png" />
+    <Content Include="Contents\Images\reg\reg_bot.png" />
+    <Content Include="Contents\Images\reg\reg_header.png" />
+    <Content Include="Contents\Images\reg\reg_mid.png" />
+    <Content Include="Contents\Images\reg\sign_up_btn.png" />
+    <Content Include="Contents\Images\reg\sign_up_btn_hover.png" />
+    <Content Include="Contents\Images\replay.png" />
+    <Content Include="Contents\Images\reports.png" />
+    <Content Include="Contents\Images\Search.png" />
+    <Content Include="Contents\Images\sendbtn.png" />
+    <Content Include="Contents\Images\setting.png" />
+    <Content Include="Contents\Images\sh\arrow-down.png" />
+    <Content Include="Contents\Images\sh\attach_photo.png" />
+    <Content Include="Contents\Images\sh\bg_modal_dialog-LIGHTER1.png" />
+    <Content Include="Contents\Images\sh\cross.png" />
+    <Content Include="Contents\Images\sh\draft.png" />
+    <Content Include="Contents\Images\sh\filedanagha20mamwoosuit.jpg" />
+    <Content Include="Contents\Images\sh\quee.png" />
+    <Content Include="Contents\Images\sh\shedule_msg.png" />
+    <Content Include="Contents\Images\small_loader.gif" />
+    <Content Include="Contents\Images\Social-Crowd.png" />
+    <Content Include="Contents\Images\Social-Crowd1.png" />
+    <Content Include="Contents\Images\sprite-main-142-pdf-4.png" />
+    <Content Include="Contents\Images\sun.jpeg" />
+    <Content Include="Contents\Images\task\radio.png" />
+    <Content Include="Contents\Images\task\selected_radio.png" />
+    <Content Include="Contents\Images\task\task_pin.png" />
+    <Content Include="Contents\Images\TM\fb_tm.png" />
+    <Content Include="Contents\Images\TM\ga_bg.png" />
+    <Content Include="Contents\Images\TM\ga_tm.png" />
+    <Content Include="Contents\Images\TM\profile.png" />
+    <Content Include="Contents\Images\TM\profile_hover.png" />
+    <Content Include="Contents\Images\TM\team.png" />
+    <Content Include="Contents\Images\TM\team_hover.png" />
+    <Content Include="Contents\Images\TM\twt_cin.png" />
+    <Content Include="Contents\Images\twiter_24X24.png" />
+    <Content Include="Contents\Images\twitter.png" />
+    <Content Include="Contents\Images\twticon.png" />
+    <Content Include="Contents\Images\twt_icon.png" />
+    <Content Include="Contents\Images\twt_img.png" />
+    <Content Include="Contents\Images\user_client.png" />
+    <Content Include="Contents\Images\white_x.png" />
+    <Content Include="Contents\Images\ws_bg.png" />
+    <Content Include="Contents\Images\ws_top_bg.png" />
+    <Content Include="Contents\Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Contents\Scripts\Feeds.js" />
+    <Content Include="Contents\Scripts\Helper.js" />
+    <Content Include="Contents\Scripts\Home.js" />
+    <Content Include="Contents\Scripts\InviteTeamMember.js" />
+    <Content Include="Contents\Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Contents\Scripts\jquery-1.4.1.js" />
+    <Content Include="Contents\Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Contents\Scripts\jquery-latest.pack.js" />
+    <Content Include="Contents\Scripts\jquery.bpopup-0.9.3.min.js" />
+    <Content Include="Contents\Scripts\jquery.bpopup.min.js" />
+    <Content Include="Contents\Scripts\jquery.easing.1.3.js" />
+    <Content Include="Contents\Scripts\jquery.fileupload.js" />
+    <Content Include="Contents\Scripts\jquery.jscroll.js" />
+    <Content Include="Contents\Scripts\jquery.jscroll.min.js" />
+    <Content Include="Contents\Scripts\jquery.min.js" />
+    <Content Include="Contents\Scripts\jquery.ptTimeSelect.css" />
+    <Content Include="Contents\Scripts\jquery.ptTimeSelect.js" />
+    <Content Include="Contents\Scripts\jquery.session.js" />
+    <Content Include="Contents\Scripts\jquery.ui.core.js" />
+    <Content Include="Contents\Scripts\jquery.ui.datepicker.js" />
+    <Content Include="Contents\Scripts\jquery.uploadify-3.1.js" />
+    <Content Include="Contents\Scripts\jquery.uploadify-3.1.min.js" />
+    <Content Include="Contents\Scripts\jsapi.js" />
+    <Content Include="Contents\Scripts\JSlogin.js" />
+    <Content Include="Contents\Scripts\login.js" />
+    <Content Include="Contents\Scripts\Message.js" />
+    <Content Include="Contents\Scripts\multidatepicker\css\images\ui-bg_diagonal-maze_20_6e4f1c_10x10.png" />
+    <Content Include="Contents\Scripts\multidatepicker\css\images\ui-bg_diagonal-maze_40_000000_10x10.png" />
+    <Content Include="Contents\Scripts\multidatepicker\css\images\ui-bg_fine-grain_10_eceadf_60x60.png" />
+    <Content Include="Contents\Scripts\multidatepicker\css\images\ui-bg_fine-grain_10_f8f7f6_60x60.png" />
+    <Content Include="Contents\Scripts\multidatepicker\css\images\ui-bg_fine-grain_15_d3c05a_60x60.png" />
+    <Content Include="Contents\Scripts\multidatepicker\css\images\ui-bg_fine-grain_15_eceadf_60x60.png" />
+    <Content Include="Contents\Scripts\multidatepicker\css\images\ui-bg_fine-grain_15_ffffff_60x60.png" />
+    <Content Include="Contents\Scripts\multidatepicker\css\images\ui-bg_fine-grain_65_654b24_60x60.png" />
+    <Content Include="Contents\Scripts\multidatepicker\css\images\ui-bg_fine-grain_68_b83400_60x60.png" />
+    <Content Include="Contents\Scripts\multidatepicker\css\images\ui-icons_222222_256x240.png" />
+    <Content Include="Contents\Scripts\multidatepicker\css\images\ui-icons_3572ac_256x240.png" />
+    <Content Include="Contents\Scripts\multidatepicker\css\images\ui-icons_8c291d_256x240.png" />
+    <Content Include="Contents\Scripts\multidatepicker\css\images\ui-icons_b83400_256x240.png" />
+    <Content Include="Contents\Scripts\multidatepicker\css\images\ui-icons_fbdb93_256x240.png" />
+    <Content Include="Contents\Scripts\multidatepicker\css\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Contents\Scripts\multidatepicker\css\mdp.css" />
+    <Content Include="Contents\Scripts\multidatepicker\css\pepper-ginder-custom.css" />
+    <Content Include="Contents\Scripts\multidatepicker\css\prettify.css" />
+    <Content Include="Contents\Scripts\multidatepicker\favicon.ico" />
+    <Content Include="Contents\Scripts\multidatepicker\img\sflogo.gif" />
+    <Content Include="Contents\Scripts\multidatepicker\img\valid-html401-blue.png" />
+    <Content Include="Contents\Scripts\multidatepicker\index.html" />
+    <Content Include="Contents\Scripts\multidatepicker\jquery-ui.multidatespicker.js" />
+    <Content Include="Contents\Scripts\multidatepicker\jquery.ui.datepicker.js" />
+    <Content Include="Contents\Scripts\multidatepicker\js\jquery-1.7.2.js" />
+    <Content Include="Contents\Scripts\multidatepicker\js\jquery.min.js" />
+    <Content Include="Contents\Scripts\multidatepicker\js\jquery.ui.core.js" />
+    <Content Include="Contents\Scripts\multidatepicker\js\jquery.ui.datepicker-es.js" />
+    <Content Include="Contents\Scripts\multidatepicker\js\jquery.ui.datepicker.js" />
+    <Content Include="Contents\Scripts\multidatepicker\js\lang-css.js" />
+    <Content Include="Contents\Scripts\multidatepicker\js\prettify.js" />
+    <Content Include="Contents\Scripts\multidatepicker\mdp-icon.png" />
+    <Content Include="Contents\Scripts\pttimepickerjs\jquery-ui-1.10.0.custom.min.css" />
+    <Content Include="Contents\Scripts\pttimepickerjs\jquery.ptTimeSelect.css" />
+    <Content Include="Contents\Scripts\pttimepickerjs\jquery.ptTimeSelect.js" />
+    <Content Include="Contents\Scripts\scripting.min.js" />
+    <Content Include="Contents\Scripts\SpryAccordion.js" />
+    <Content Include="Contents\Scripts\timepicer\GPL-LICENSE.txt" />
+    <Content Include="Contents\Scripts\timepicer\i18n\i18n.html" />
+    <Content Include="Contents\Scripts\timepicer\i18n\jquery.ui.timepicker-cs.js" />
+    <Content Include="Contents\Scripts\timepicer\i18n\jquery.ui.timepicker-de.js" />
+    <Content Include="Contents\Scripts\timepicer\i18n\jquery.ui.timepicker-es.js" />
+    <Content Include="Contents\Scripts\timepicer\i18n\jquery.ui.timepicker-fr.js" />
+    <Content Include="Contents\Scripts\timepicer\i18n\jquery.ui.timepicker-hr.js" />
+    <Content Include="Contents\Scripts\timepicer\i18n\jquery.ui.timepicker-it.js" />
+    <Content Include="Contents\Scripts\timepicer\i18n\jquery.ui.timepicker-ja.js" />
+    <Content Include="Contents\Scripts\timepicer\i18n\jquery.ui.timepicker-nl.js" />
+    <Content Include="Contents\Scripts\timepicer\i18n\jquery.ui.timepicker-pl.js" />
+    <Content Include="Contents\Scripts\timepicer\i18n\jquery.ui.timepicker-pt-BR.js" />
+    <Content Include="Contents\Scripts\timepicer\i18n\jquery.ui.timepicker-sl.js" />
+    <Content Include="Contents\Scripts\timepicer\i18n\jquery.ui.timepicker-sv.js" />
+    <Content Include="Contents\Scripts\timepicer\i18n\jquery.ui.timepicker-tr.js" />
+    <Content Include="Contents\Scripts\timepicer\include\jquery-1.9.0.min.js" />
+    <Content Include="Contents\Scripts\timepicer\include\ui-1.10.0\jquery.ui.core.min.js" />
+    <Content Include="Contents\Scripts\timepicer\include\ui-1.10.0\jquery.ui.position.min.js" />
+    <Content Include="Contents\Scripts\timepicer\include\ui-1.10.0\jquery.ui.tabs.min.js" />
+    <Content Include="Contents\Scripts\timepicer\include\ui-1.10.0\jquery.ui.widget.min.js" />
+    <Content Include="Contents\Scripts\timepicer\include\ui-1.10.0\ui-lightness\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Contents\Scripts\timepicer\include\ui-1.10.0\ui-lightness\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Contents\Scripts\timepicer\include\ui-1.10.0\ui-lightness\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Contents\Scripts\timepicer\include\ui-1.10.0\ui-lightness\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Contents\Scripts\timepicer\include\ui-1.10.0\ui-lightness\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Contents\Scripts\timepicer\include\ui-1.10.0\ui-lightness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Contents\Scripts\timepicer\include\ui-1.10.0\ui-lightness\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Contents\Scripts\timepicer\include\ui-1.10.0\ui-lightness\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Contents\Scripts\timepicer\include\ui-1.10.0\ui-lightness\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Contents\Scripts\timepicer\include\ui-1.10.0\ui-lightness\images\ui-icons_222222_256x240.png" />
+    <Content Include="Contents\Scripts\timepicer\include\ui-1.10.0\ui-lightness\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Contents\Scripts\timepicer\include\ui-1.10.0\ui-lightness\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Contents\Scripts\timepicer\include\ui-1.10.0\ui-lightness\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Contents\Scripts\timepicer\include\ui-1.10.0\ui-lightness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Contents\Scripts\timepicer\include\ui-1.10.0\ui-lightness\jquery-ui-1.10.0.custom.min.css" />
+    <Content Include="Contents\Scripts\timepicer\index.html" />
+    <Content Include="Contents\Scripts\timepicer\jquery.ui.timepicker.css" />
+    <Content Include="Contents\Scripts\timepicer\jquery.ui.timepicker.js" />
+    <Content Include="Contents\Scripts\timepicer\MIT-LICENSE.txt" />
+    <Content Include="Contents\Scripts\uploadify.css" />
+    <Content Include="Contents\Scripts\uploadify.swf" />
+    <Content Include="Contents\Scripts\UsersAndGroups.js" />
+    <Content Include="Contents\Styles\bootstrap-combined.min.css" />
+    <Content Include="Contents\Styles\bootstrap-datetimepicker.min.css" />
+    <Content Include="Contents\Styles\Login.css" />
+    <Content Include="Contents\Styles\Site.css" />
+    <Content Include="Contents\Styles\Style.css" />
+    <Content Include="Contents\Styles\Style11.css" />
+    <Content Include="Contents\Styles\Style_0304.css" />
+    <Content Include="Contents\Styles\Style_07_05.css" />
+    <Content Include="Contents\Styles\Style_0904.css" />
+    <Content Include="Contents\Styles\Style_104.css" />
+    <Content Include="Contents\Styles\Style_12_04.css" />
+    <Content Include="Contents\Styles\Style_44.css" />
+    <Content Include="Contents\Styles\Style_54.css" />
+    <Content Include="Contents\UserImages\3_th.jpg" />
+    <Content Include="Contents\UserImages\Hydrangeas.jpg" />
+    <Content Include="Contents\UserImages\Jellyfish.jpg" />
+    <Content Include="Contents\UserImages\Jellyfish_3_th.jpg" />
+    <Content Include="Contents\UserImages\Koala.jpg" />
+    <Content Include="Contents\UserImages\Koala3_th.jpg" />
+    <Content Include="Contents\UserImages\Lighthouse.jpg" />
+    <Content Include="Contents\UserImages\Penguins.jpg" />
+    <Content Include="Contents\UserImages\Tulips.jpg" />
+    <Content Include="Contents\UserImages\want_icon3.png" />
+    <Content Include="Default.aspx" />
+    <Content Include="Discovery\AjaxDiscovery.aspx" />
+    <Content Include="Discovery\Discovery.aspx" />
+    <Content Include="FacebookManager.aspx" />
+    <Content Include="FeaturePage.aspx" />
+    <Content Include="Feeds\AjaxFeed.aspx" />
+    <Content Include="Feeds\Feeds.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="GplusManager.aspx" />
+    <Content Include="Group\Group.aspx" />
+    <Content Include="Helper\AjaxHelper.aspx" />
+    <Content Include="hibernate.cfg.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Home.aspx" />
+    <Content Include="InstagramManager.aspx" />
+    <Content Include="Lib\Antlr3.Runtime.dll" />
+    <Content Include="Lib\Hammock.dll" />
+    <Content Include="Lib\Iesi.Collections.dll" />
+    <Content Include="Lib\Iesi.Collections.pdb" />
+    <Content Include="Lib\Iesi.Collections.xml" />
+    <Content Include="Lib\MySql.Data.dll" />
+    <Content Include="Lib\MySql.Data.Entity.dll" />
+    <Content Include="Lib\Newtonsoft.Json.dll" />
+    <Content Include="Lib\NHibernate.dll" />
+    <Content Include="Lib\NHibernate.Linq.dll" />
+    <Content Include="Lib\NHibernate.Linq.xml" />
+    <Content Include="Lib\NHibernate.pdb" />
+    <Content Include="Lib\NHibernate.xml" />
+    <Content Include="Lib\NHibernateHelper.dll" />
+    <Content Include="Lib\NHibernateHelper.pdb" />
+    <Content Include="LinkedInManager.aspx" />
+    <Content Include="Login.aspx" />
+    <EmbeddedResource Include="Mappings\FacebookAccount.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookMessage.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\InstagramAccount.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\LinkedInAccount.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\LinkedinMessage.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TwitterAccount.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TwitterMessage.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\User.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="Mails\Layouts\RegistrationMail.html" />
+    <EmbeddedResource Include="Mappings\SocialProfile.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookFeed.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TwitterFeed.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\LinkedInFeed.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Groups.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\InstagramComment.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\InstagramFeed.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\GroupProfile.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TaskComment.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Tasks.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Team.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\ScheduledMessage.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\DiscoverySearch.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\GooglePlusAccount.hbm.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\GooglePlusActivities.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookStats.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\PaymentTransaction.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookInsightStats.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookInsightPostStats.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Package.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\News.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Ads.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\GoogleAnalyticsAccount.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Drafts.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\RssFeeds.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\ArchiveMessage.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\NewsLetter.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TeamMemberProfile.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TwitterStats.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\vwTwitterStats.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TwitterDirectMessages.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Log.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\RssReader.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Admin.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Blog_Comments.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Blog_Posts.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="Mappings\BusinessSetting.hbm.xml" />
+    <Content Include="Mappings\FacebookGroup.hbm.xml" />
+    <EmbeddedResource Include="Mappings\UserPackageRelation.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="Mappings\GoogleAnalyticsStats.hbm.xml" />
+    <EmbeddedResource Include="Mappings\UserActivation.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\ReplyMessage.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="Message\AjaxMessage.aspx" />
+    <Content Include="Message\Message.aspx" />
+    <Content Include="Message\Task.aspx" />
+    <Content Include="obj\Debug\SocioboardFinal.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\SocioboardFinal.dll" />
+    <Content Include="obj\Debug\SocioboardFinal.pdb" />
+    <Content Include="Pricing.aspx" />
+    <Content Include="Registration.aspx" />
+    <Content Include="Reports\TwitterReport.aspx" />
+    <Content Include="Schedule.aspx" />
+    <Content Include="Setting\AjaxInsertGroup.aspx" />
+    <Content Include="Setting\BillingSuccess.aspx" />
+    <Content Include="Setting\BusinessSetting.aspx" />
+    <Content Include="Setting\InviteMember.aspx" />
+    <Content Include="Setting\PersonalSettings.aspx" />
+    <Content Include="Setting\UsersAndGroups.aspx" />
+    <Content Include="SocioBoard.csproj" />
+    <Content Include="TwitterManager.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AjaxHome.aspx.cs">
+      <DependentUpon>AjaxHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjaxHome.aspx.designer.cs">
+      <DependentUpon>AjaxHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Discovery\AjaxDiscovery.aspx.cs">
+      <DependentUpon>AjaxDiscovery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Discovery\AjaxDiscovery.aspx.designer.cs">
+      <DependentUpon>AjaxDiscovery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Discovery\Discovery.aspx.cs">
+      <DependentUpon>Discovery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Discovery\Discovery.aspx.designer.cs">
+      <DependentUpon>Discovery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\Admin.cs" />
+    <Compile Include="Domain\Ads.cs" />
+    <Compile Include="Domain\ArchiveMessage.cs" />
+    <Compile Include="Domain\Blog_Comments.cs" />
+    <Compile Include="Domain\Blog_Posts.cs" />
+    <Compile Include="Domain\BusinessSetting.cs" />
+    <Compile Include="Domain\DiscoverySearch.cs" />
+    <Compile Include="Domain\Drafts.cs" />
+    <Compile Include="Domain\FacebookAccount.cs" />
+    <Compile Include="Domain\FacebookFeed.cs" />
+    <Compile Include="Domain\FacebookGroup.cs" />
+    <Compile Include="Domain\FacebookInsightPostStats.cs" />
+    <Compile Include="Domain\FacebookInsightStats.cs" />
+    <Compile Include="Domain\FacebookMessage.cs" />
+    <Compile Include="Domain\FacebookStats.cs" />
+    <Compile Include="Domain\GoogleAnalyticsAccount.cs" />
+    <Compile Include="Domain\GoogleAnalyticsStats.cs" />
+    <Compile Include="Domain\GooglePlusAccount.cs" />
+    <Compile Include="Domain\GooglePlusActivities.cs" />
+    <Compile Include="Domain\GroupProfile.cs" />
+    <Compile Include="Domain\Groups.cs" />
+    <Compile Include="Domain\IAdsRepository.cs" />
+    <Compile Include="Domain\IArchiveMessageRepository.cs" />
+    <Compile Include="Domain\IBlog_CommentsRepository.cs" />
+    <Compile Include="Domain\IBlog_PostsRepository.cs" />
+    <Compile Include="Domain\IBusinessSettingRepository.cs" />
+    <Compile Include="Domain\IDiscoverySearchRepository.cs" />
+    <Compile Include="Domain\IDraftsRepository.cs" />
+    <Compile Include="Domain\IFacebbookInsightStatsRepository.cs" />
+    <Compile Include="Domain\IFacebookAccountRepository.cs" />
+    <Compile Include="Domain\IFacebookFeedRepository.cs" />
+    <Compile Include="Domain\IFacebookInsightPostStats.cs" />
+    <Compile Include="Domain\IFacebookStatsRepository.cs" />
+    <Compile Include="Domain\IGoogleAnalyticsAccountRepository.cs" />
+    <Compile Include="Domain\IGoogleAnalyticsStatsRepository.cs" />
+    <Compile Include="Domain\IGooglePlusAccountRepository.cs" />
+    <Compile Include="Domain\IGooglePlusActivitiesRepository.cs" />
+    <Compile Include="Domain\IGroupProfilesRepository.cs" />
+    <Compile Include="Domain\IGroupRepository.cs" />
+    <Compile Include="Domain\IInstagramAccountRepository.cs" />
+    <Compile Include="Domain\IInstagramComment.cs" />
+    <Compile Include="Domain\IInstagramFeed.cs" />
+    <Compile Include="Domain\ILinkedInAccountRepository.cs" />
+    <Compile Include="Domain\ILinkedInFeedRepository.cs" />
+    <Compile Include="Domain\ILogException.cs" />
+    <Compile Include="Domain\INewsLetterRepository.cs" />
+    <Compile Include="Domain\INewsRepository.cs" />
+    <Compile Include="Domain\InstagramAccount.cs" />
+    <Compile Include="Domain\InstagramComment.cs" />
+    <Compile Include="Domain\InstagramFeed.cs" />
+    <Compile Include="Domain\IPackageRepository.cs" />
+    <Compile Include="Domain\IRssFeedsRepository.cs" />
+    <Compile Include="Domain\IRssReader.cs" />
+    <Compile Include="Domain\IScheduledMessageRepository.cs" />
+    <Compile Include="Domain\ISocialProfilesRepository.cs" />
+    <Compile Include="Domain\ITaskCommentRepository.cs" />
+    <Compile Include="Domain\ITaskRepository.cs" />
+    <Compile Include="Domain\ITeamMemberProfileRepository.cs" />
+    <Compile Include="Domain\ITeamRepository.cs" />
+    <Compile Include="Domain\ITwitterAccountRepository.cs" />
+    <Compile Include="Domain\ITwitterDirectMessagesRepository.cs" />
+    <Compile Include="Domain\ITwitterFeedRepository.cs" />
+    <Compile Include="Domain\ITwitterMessageRepository.cs" />
+    <Compile Include="Domain\ITwitterStatsRepository.cs" />
+    <Compile Include="Domain\IUserPackageRelation.cs" />
+    <Compile Include="Domain\IUserRepository.cs" />
+    <Compile Include="Domain\LinkedInAccount.cs" />
+    <Compile Include="Domain\LinkedInFeed.cs" />
+    <Compile Include="Domain\LinkedInMessage.cs" />
+    <Compile Include="Domain\Log.cs" />
+    <Compile Include="Domain\Messages.cs" />
+    <Compile Include="Domain\News.cs" />
+    <Compile Include="Domain\NewsLetter.cs" />
+    <Compile Include="Domain\Package.cs" />
+    <Compile Include="Domain\PaymentTransaction.cs" />
+    <Compile Include="Domain\ProjectDetails.cs" />
+    <Compile Include="Domain\Replymessage.cs" />
+    <Compile Include="Domain\RssFeeds.cs" />
+    <Compile Include="Domain\RssReader.cs" />
+    <Compile Include="Domain\ScheduledMessage.cs" />
+    <Compile Include="Domain\SocialProfile.cs" />
+    <Compile Include="Domain\TaskComment.cs" />
+    <Compile Include="Domain\Tasks.cs" />
+    <Compile Include="Domain\Team.cs" />
+    <Compile Include="Domain\TeamMemberProfile.cs" />
+    <Compile Include="Domain\TwitterAccount.cs" />
+    <Compile Include="Domain\TwitterDirectMessages.cs" />
+    <Compile Include="Domain\TwitterFeed.cs" />
+    <Compile Include="Domain\TwitterMessage.cs" />
+    <Compile Include="Domain\TwitterStats.cs" />
+    <Compile Include="Domain\User.cs" />
+    <Compile Include="Domain\UserActivation.cs" />
+    <Compile Include="Domain\UserPackageRelation.cs" />
+    <Compile Include="Domain\vwTwitterStats.cs" />
+    <Compile Include="FacebookManager.aspx.cs">
+      <DependentUpon>FacebookManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FacebookManager.aspx.designer.cs">
+      <DependentUpon>FacebookManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FeaturePage.aspx.cs">
+      <DependentUpon>FeaturePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FeaturePage.aspx.designer.cs">
+      <DependentUpon>FeaturePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Feeds\AjaxFeed.aspx.cs">
+      <DependentUpon>AjaxFeed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Feeds\AjaxFeed.aspx.designer.cs">
+      <DependentUpon>AjaxFeed.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Feeds\Feeds.aspx.cs">
+      <DependentUpon>Feeds.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Feeds\Feeds.aspx.designer.cs">
+      <DependentUpon>Feeds.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="GplusManager.aspx.cs">
+      <DependentUpon>GplusManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GplusManager.aspx.designer.cs">
+      <DependentUpon>GplusManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Group\Group.aspx.cs">
+      <DependentUpon>Group.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Group\Group.aspx.designer.cs">
+      <DependentUpon>Group.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\AjaxHelper.aspx.cs">
+      <DependentUpon>AjaxHelper.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Helper\AjaxHelper.aspx.designer.cs">
+      <DependentUpon>AjaxHelper.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\clsFeedsAndMessages.cs" />
+    <Compile Include="Helper\CustomMultithreads.cs" />
+    <Compile Include="Helper\DateExtension.cs" />
+    <Compile Include="Helper\Extensions.cs" />
+    <Compile Include="Helper\FacebookHelper.cs" />
+    <Compile Include="Helper\FacebookInsightStatsHelper.cs" />
+    <Compile Include="Helper\GanalyticsHelper.cs" />
+    <Compile Include="Helper\GplusHelper.cs" />
+    <Compile Include="Helper\LinkedInHelper.cs" />
+    <Compile Include="Helper\MailHelper.cs" />
+    <Compile Include="Helper\MailSender.cs" />
+    <Compile Include="Helper\Payment.cs" />
+    <Compile Include="Helper\SessionFactory.cs" />
+    <Compile Include="Helper\TwitterHelper.cs" />
+    <Compile Include="Helper\TwitterStatsHelper.cs" />
+    <Compile Include="Helper\UrlExtractor.cs" />
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InstagramManager.aspx.cs">
+      <DependentUpon>InstagramManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InstagramManager.aspx.designer.cs">
+      <DependentUpon>InstagramManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LinkedInManager.aspx.cs">
+      <DependentUpon>LinkedInManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LinkedInManager.aspx.designer.cs">
+      <DependentUpon>LinkedInManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage\Home.Master.cs">
+      <DependentUpon>Home.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\Home.Master.designer.cs">
+      <DependentUpon>Home.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Message\AjaxMessage.aspx.cs">
+      <DependentUpon>AjaxMessage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Message\AjaxMessage.aspx.designer.cs">
+      <DependentUpon>AjaxMessage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Message\Message.aspx.cs">
+      <DependentUpon>Message.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Message\Message.aspx.designer.cs">
+      <DependentUpon>Message.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Message\Task.aspx.cs">
+      <DependentUpon>Task.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Message\Task.aspx.designer.cs">
+      <DependentUpon>Task.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AdminRepository.cs" />
+    <Compile Include="Model\AdsRepository.cs" />
+    <Compile Include="Model\ArchiveMessageRepository.cs" />
+    <Compile Include="Model\Blog_CommentsRepository.cs" />
+    <Compile Include="Model\Blog_PostsRepository.cs" />
+    <Compile Include="Model\BusinessSettingRepository.cs" />
+    <Compile Include="Model\DataTableGenerator.cs" />
+    <Compile Include="Model\DiscoverySearchRepository.cs" />
+    <Compile Include="Model\DraftsRepository.cs" />
+    <Compile Include="Model\FacebookAccountRepository.cs" />
+    <Compile Include="Model\FacebookFeedRepository.cs" />
+    <Compile Include="Model\FacebookGroupRepository.cs" />
+    <Compile Include="Model\FacebookInsightPostStatsRepository.cs" />
+    <Compile Include="Model\FacebookInsightStatsRepository.cs" />
+    <Compile Include="Model\FacebookMessageRepository.cs" />
+    <Compile Include="Model\FacebookStatsRepository.cs" />
+    <Compile Include="Model\GoogleAnalyticsAccountRepository.cs" />
+    <Compile Include="Model\GoogleAnalyticsStatsRepository.cs" />
+    <Compile Include="Model\GooglePlusActivitiesRepository.cs" />
+    <Compile Include="Model\GooglePlusAccountRepository.cs" />
+    <Compile Include="Model\GroupProfileRepository.cs" />
+    <Compile Include="Model\GroupRepository.cs" />
+    <Compile Include="Model\InstagramAccountRepository.cs" />
+    <Compile Include="Model\InstagramCommentRepository.cs" />
+    <Compile Include="Model\InstagramFeedRepository.cs" />
+    <Compile Include="Model\LinkedInAccountRepository.cs" />
+    <Compile Include="Model\LinkedInFeedRepository.cs" />
+    <Compile Include="Model\LogRepository.cs" />
+    <Compile Include="Model\NewsLetterRepository.cs" />
+    <Compile Include="Model\NewsRepository.cs" />
+    <Compile Include="Model\PackageRepository.cs" />
+    <Compile Include="Model\PaymentTransactionRepository.cs" />
+    <Compile Include="Model\ReplyMessageRepository.cs" />
+    <Compile Include="Model\RssFeedsRepository.cs" />
+    <Compile Include="Model\RssReaderRepository.cs" />
+    <Compile Include="Model\ScheduledMessageRepository.cs" />
+    <Compile Include="Model\SocialProfilesRepository.cs" />
+    <Compile Include="Model\TaskCommentRepository.cs" />
+    <Compile Include="Model\TaskRepository.cs" />
+    <Compile Include="Model\TeamMemberProfileRepository.cs" />
+    <Compile Include="Model\TeamRepository.cs" />
+    <Compile Include="Model\TwitterAccountRepository.cs" />
+    <Compile Include="Model\TwitterDirectMessageRepository.cs" />
+    <Compile Include="Model\TwitterFeedRepository.cs" />
+    <Compile Include="Model\TwitterMessageRepository.cs" />
+    <Compile Include="Model\TwitterStatsRepository.cs" />
+    <Compile Include="Model\UserActivationRepository.cs" />
+    <Compile Include="Model\UserPackageRelationRepository.cs" />
+    <Compile Include="Model\UserRepository.cs" />
+    <Compile Include="Pricing.aspx.cs">
+      <DependentUpon>Pricing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pricing.aspx.designer.cs">
+      <DependentUpon>Pricing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registration.aspx.cs">
+      <DependentUpon>Registration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registration.aspx.designer.cs">
+      <DependentUpon>Registration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TwitterReport.aspx.cs">
+      <DependentUpon>TwitterReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\TwitterReport.aspx.designer.cs">
+      <DependentUpon>TwitterReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Schedule.aspx.cs">
+      <DependentUpon>Schedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Schedule.aspx.designer.cs">
+      <DependentUpon>Schedule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\AjaxInsertGroup.aspx.cs">
+      <DependentUpon>AjaxInsertGroup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Setting\AjaxInsertGroup.aspx.designer.cs">
+      <DependentUpon>AjaxInsertGroup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\BillingSuccess.aspx.cs">
+      <DependentUpon>BillingSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Setting\BillingSuccess.aspx.designer.cs">
+      <DependentUpon>BillingSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\BusinessSetting.aspx.cs">
+      <DependentUpon>BusinessSetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Setting\BusinessSetting.aspx.designer.cs">
+      <DependentUpon>BusinessSetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\InviteMember.aspx.cs">
+      <DependentUpon>InviteMember.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Setting\InviteMember.aspx.designer.cs">
+      <DependentUpon>InviteMember.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\PersonalSettings.aspx.cs">
+      <DependentUpon>PersonalSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Setting\PersonalSettings.aspx.designer.cs">
+      <DependentUpon>PersonalSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\UsersAndGroups.aspx.cs">
+      <DependentUpon>UsersAndGroups.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Setting\UsersAndGroups.aspx.designer.cs">
+      <DependentUpon>UsersAndGroups.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TwitterManager.aspx.cs">
+      <DependentUpon>TwitterManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TwitterManager.aspx.designer.cs">
+      <DependentUpon>TwitterManager.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Contents\Images\user_img\" />
+    <Folder Include="Design\" />
+    <Folder Include="Library\" />
+    <Folder Include="Messages\" />
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MasterPage\Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Contents\Images\instagram.rar" />
+    <Content Include="Contents\Images\Login.zip" />
+    <None Include="Contents\Scripts\multidatepicker\README.md" />
+    <Content Include="Contents\Scripts\timepicer\jquery-ui-timepicker-0.3.2.zip" />
+    <None Include="Contents\Styles\Style.rar" />
+    <Content Include="MasterPage\Home.Master" />
+    <Compile Include="Domain\IFacebookMessageRepository.cs" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Library\GlobusGooglePlusLib\GlobusGooglePlusLib.csproj">
+      <Project>{910F101C-C7E0-47F9-BCB6-CD793362E818}</Project>
+      <Name>GlobusGooglePlusLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="Library\GlobusInstagramLib\GlobusInstagramLib\GlobusInstagramLib.csproj">
+      <Project>{FC2E4794-2CB4-4AAA-A0AD-5483C931B3F0}</Project>
+      <Name>GlobusInstagramLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="Library\GlobusLinkedinLib\GlobusLinkedinLib.csproj">
+      <Project>{DB6AB2D5-8BDD-46C5-AB04-E8313FA19007}</Project>
+      <Name>GlobusLinkedinLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="Library\GlobusTwitterLib\GlobusTwitterLib.csproj">
+      <Project>{7051E5B4-23D1-4C8F-A459-D66AD79BCDF9}</Project>
+      <Name>GlobusTwitterLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>5330</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

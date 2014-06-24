@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>PayPalMerchantSDK</id>
+    <version>2.5.103</version>
+    <title>PayPal Merchant SDK for .NET</title>
+    <authors>PayPal</authors>
+    <owners>PayPal</owners>
+    <licenseUrl>https://github.com/paypal/merchant-sdk-dotnet/blob/v2.5.103/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/paypal/merchant-sdk-dotnet/tree/v2.5.103</projectUrl>
+    <iconUrl>https://www.paypal.com/en_GB/Marketing/i/logo/PayPal_logo_150x65.gif</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>The PayPal Merchant SDK provides the following:
+SetExpressCheckout API Operation (NVP/SOAP): The SetExpressCheckout API operation initiates an Express Checkout transaction.
+DoDirectPayment API Operation (NVP/SOAP): The DoDirectPayment API Operation enables you to process a credit card payment.
+MassPay API Operation (NVP/SOAP): The MassPay API operation makes a payment to one or more PayPal account holders.
+GetRecurringPaymentsProfileDetails API Operation (NVP/SOAP): Obtain information about a recurring payments profile.
+ManageRecurringPaymentsProfileStatus API Operation (NVP/SOAP): The ManageRecurringPaymentsProfileStatus API operation cancels, suspends, or reactivates a recurring payments profile.
+UpdateRecurringPaymentsProfile API Operation (NVP/SOAP): The UpdateRecurringPaymentsProfile API operation updates a recurring payments profile.
+DoReferenceTransaction API Operation (NVP/SOAP): The DoReferenceTransaction API operation processes a payment from a buyer’s account, which is identified by a previous transaction.</description>
+    <summary>The PayPal Merchant SDK lets you do API operations within the PayPal Merchant API WSDL viz., Express Checkout, DoDirectPayment, Mass Pay, Recurring Payments, and DoReferenceTransaction.</summary>
+    <releaseNotes>Version 2.5.103 - June 07, 2013 
+
+ - Updated stubs for 103 release.
+ 
+You can see source code of this release in github under https://github.com/paypal/merchant-sdk-dotnet/tree/v2.5.103.
+--------------------------------------------------------------------------------------------------
+Version 2.4.102 - May 23, 2013 
+
+ - Updated stubs for 102 release.
+ 
+You can see source code of this release in github under https://github.com/paypal/merchant-sdk-dotnet/tree/v2.4.102.
+--------------------------------------------------------------------------------------------------
+Version 2.4.101 - April 30, 2013 
+
+ - Updated core dll.
+ - Bug fix for json serialization issue (https://github.com/paypal/merchant-sdk-dotnet/issues/4)
+ 
+You can see source code of this release in github under https://github.com/paypal/merchant-sdk-dotnet/tree/v2.4.101.
+--------------------------------------------------------------------------------------------------
+Version 2.4.100 - March 26, 2013 
+
+ - Updated stubs for 100 release
+ - Added dynamic configuration support by passing configuration parameters using hash map.
+ - Added intellisense support.
+ 
+You can see source code of this release in github under https://github.com/paypal/merchant-sdk-dotnet/tree/v2.4.100.
+--------------------------------------------------------------------------------------------------
+Version 2.3.98 - February 12, 2013 
+
+ - Updated IPN Listener in samples for IPN core class fix.
+ 
+You can see source code of this release in github under https://github.com/paypal/merchant-sdk-dotnet/tree/v2.3.98.
+--------------------------------------------------------------------------------------------------
+Version 2.2.98 - February 05, 2013 
+
+ - Updated stubs for 98 release.
+ - Added Nuget support.
+ 
+You can see source code of this release in github under https://github.com/paypal/merchant-sdk-dotnet/tree/v2.2.98.
+--------------------------------------------------------------------------------------------------
+Version 2.1.96 - December 14, 2012 
+
+ - Added support for Instant Payment Notification (Refer IPN-README.md for more details)
+ - Added new feature for supporting multiple endpoints based on portname for using different sdks together.
+ - Fixes for serialization issue (https://github.com/paypal/merchant-sdk-java/issues/1)
+ 
+You can see source code of this release in github under https://github.com/paypal/merchant-sdk-dotnet/tree/v2.1.96.
+--------------------------------------------------------------------------------------------------
+
+Version 2.0.96 - November 28, 2012 
+
+ - SDK refreshed to Release 96
+    - Added support for passing in credentials dynamically for Authentication, now the call 
+      wrappers have an argument for passing credentials
+    - New type ThirdPartyAuthorization has been added to support Subject and Token based Authorizations. The earlier
+      setAccessToken and setTokenSecret have been deprecated. You can set an instance of ThirdPartyAuthorization to an 
+      ICredntial and pass ICredential as a parameter to  API call
+    - DOTNET code Refactoring bug fixed (refer : https://github.com/paypal/SDKs/issues/34)
+--------------------------------------------------------------------------------------------------
+
+
+Version 1.2.95 - September 28, 2012 
+
+ - SDK refreshed to Release 95. Please refer https://www.x.com/developers/paypal/documentation-tools/release-notes#MerchantAPI
+ - SDK now supports third party permission by subject header. Configure subject header
+     in the configuration file, this is basically third party merchant email address who has 
+   given permission to you to call api on their behalf.
+ - Bug fixed for Page styling attributes (eg: cpp-header**) serialization. (https://github.com/paypal/SDKs/issues/31)
+ - Bug fixed for 'convertToXML' method for not escaping xml element correctly.(https://github.com/paypal/SDKs/issues/17)
+ - Assembly files are updated with assembly versions.(https://github.com/paypal/SDKs/issues/18)
+ - Bug fixed for BasicAmountType serialization without currencyID attribute. (https://github.com/paypal/SDKs/issues/23)
+ - Updated SDK sample
+--------------------------------------------------------------------------------------------------
+
+
+Version 1.1.93 - August 14, 2012 
+
+ - SDK refreshed to Release 93. Please refer https://www.x.com/developers/paypal/documentation-tools/release-notes#MerchantAPI
+ - SDK Core - Deserialization Logic Change
+--------------------------------------------------------------------------------------------------
+
+
+Version 1.0.92 - July 30, 2012 
+
+ - Stable release
+--------------------------------------------------------------------------------------------------
+
+
+Version 0.8.92 - July 17, 2012 
+
+ - wsdl update version 0.8.92
+--------------------------------------------------------------------------------------------------
+  
+
+Version 0.8.90 - July 11, 2012
+
+ - Nant script added for SDK automation.            
+--------------------------------------------------------------------------------------------------
+
+Version 0.8.90 - 11-June-2012
+
+ - wsdl update version 90.0 
+--------------------------------------------------------------------------------------------------
+
+Version 0.8.88  - 11-May-2012
+
+ - wsdl update version 88.0     
+--------------------------------------------------------------------------------------------------
+
+Version 0.7.86 - 17-Apr-2012
+
+ - Fix for incorrect Permissions header (X-PP-AUTHORIZATION) 
+--------------------------------------------------------------------------------------------------
+
+Version 0.6.86 - 27-Feb-2012
+
+ - Initial release   
+--------------------------------------------------------------------------------------------------</releaseNotes>
+    <copyright>Copyright © eBay Inc., 2009-2013</copyright>
+    <language>en-US</language>
+    <tags>PayPal Merchant SDK .NET C#</tags>
+    <dependencies>
+      <dependency id="PayPalCoreSDK" version="1.3.1" />
+    </dependencies>
+    <references>
+      <reference file="PayPalMerchantSDK.dll" />
+    </references>
+  </metadata>
+</package>

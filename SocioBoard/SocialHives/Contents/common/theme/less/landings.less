@@ -1,0 +1,209 @@
+//
+// Landing pages
+// --------------------------------------------------
+
+#landing_1 {
+	.mosaic-line {
+		height: 58px;
+		line-height: 58px;
+		border-bottom: 1px solid @contentBorder;
+	}
+	.banner-1 {
+		height: 223px;
+		margin-bottom: 30px;
+		background: #2e2d2b;
+		.item {
+			height: 223px;
+			overflow: hidden;
+			img { min-height: 100%; }
+		}
+		.carousel-indicators {
+			top: auto;
+			bottom: -20px;
+			right: 0;
+			li {
+				background: lighten(@primaryColor, 20%);
+				&.active { background: @primaryColor; }
+			}
+		}
+		.carousel-caption {
+			height: 223px;
+			top: 0;
+			h4 { font-size: 12pt; }
+			a { text-decoration: underline; color: @primaryColor; }
+		}
+	}
+	.banner {
+		background: #000;
+		height: 321px;
+		.banner-wrapper {
+			height: 321px;
+			position: relative;
+			overflow: hidden;
+			&.banner-1 {
+				margin: 0;
+				background: #000;
+				h3 {
+					height: 46px;
+					line-height: 46px;
+					top: 65px;
+					right: 27px;
+					position: absolute;
+					background: #fff;
+					color: @primaryColor;
+					font-size: 22pt;
+					font-weight: bold;
+					padding: 0 15px;
+				}
+				p {
+					position: absolute;
+					top: 126px;
+					right: 27px;
+					background: #1f1e1e;
+					color: #fff;
+					line-height: 25px;
+					width: 370px;
+					text-align: right;
+					padding: 10px 15px;
+					a { text-decoration: underline; color: @primaryColor; }
+				}
+				.btn { 
+					position: absolute;
+					top: 232px;
+					right: 27px; 
+				}
+			}
+		}
+	}
+}
+
+#landing_2 {
+	.mosaic-line {
+		height: 58px;
+		line-height: 58px;
+		border-bottom: 1px solid @contentBorder;
+		h4 { line-height: 58px; }
+		&.mosaic-line-2 {
+			height: 97px;
+			line-height: normal;
+			border: none;
+			h4 { line-height: 70px; }
+		}
+	}
+	.banner {
+		background: #000;
+		height: 321px;
+		.banner-wrapper {
+			height: 321px;
+			position: relative;
+			overflow: hidden;
+			&.banner-1 {
+				margin: 0;
+				h3 {
+					height: 46px;
+					line-height: 46px;
+					top: 65px;
+					left: 27px;
+					position: absolute;
+					background: #fff;
+					color: @primaryColor;
+					font-size: 22pt;
+					font-weight: bold;
+					padding: 0 15px;
+				}
+				p {
+					position: absolute;
+					top: 126px;
+					left: 27px;
+					background: #1f1e1e;
+					color: #fff;
+					line-height: 25px;
+					width: 440px;
+					text-align: right;
+					padding: 10px 15px;
+					a { text-decoration: underline; color: @primaryColor; }
+				}
+				.buy {
+					display: block;
+					position: absolute;
+					top: 242px;
+					left: 210px;
+					color: #fff;
+					font-size: 11pt;
+					a { text-decoration: underline; color: @primaryColor; }
+				}
+				.btn { 
+					position: absolute;
+					top: 232px;
+					left: 27px; 
+				}
+			}
+		}
+	}
+}
+
+// Other
+// -------------------------
+
+.container-960 { width: 960px; margin: 0 auto; }
+.separator-line { width: 100%; height: 1px; background: @contentBorder; margin-bottom: 10px; }
+
+div.glyphicons {
+	padding: 0 0 0 35px;
+	i:before { color: #cccccc; }
+	&.glyphicon-large {
+		padding: 0 0 0 75px;
+		i:before { font-size: 50px; left: 0; }
+		&.group-column {
+			padding: 0 0 0 85px;
+			i:before { font-size: 45px; left: 12px; }
+		}
+	}
+	&.glyphicon-top {
+		padding: 0;
+		text-align: center;
+		i {
+			display: block;
+			position: relative;
+			&:before {
+				position: relative;
+				left: auto;
+				top: auto;
+			}
+		}
+		&.glyphicon-xlarge {
+			i { padding: 0 0 10px; }
+			i:before { font-size: 70px; }
+		}
+	}
+	&.glyphicon-primary {
+		i:before { color: @primaryColor; }
+	}
+}
+.social-large {
+	height: 97px;
+	a {
+		display: block;
+		height: 77px;
+		float: left;
+		padding: 10px 21px;
+		color: #d5d5d5;
+		background: @widgetBg;
+		font-weight: bold;
+		text-align: center;
+		border-right: 1px solid @contentBorder;
+		text-decoration: none;
+		i {
+			display: block;
+			position: relative;
+			padding: 0 0 8px;
+			&:before { display: block; text-align: center; top: auto; left: auto; position: relative; font-size: 50px; color: #d5d5d5; }
+		}
+		&.active, &:hover {
+			color: #fff;
+			background: @primaryColor;
+			i:before { color: #fff; }
+		}
+		&:last-child { border: none; }
+	}
+}

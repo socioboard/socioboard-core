@@ -1,0 +1,319 @@
+//
+// Tables
+// --------------------------------------------------
+
+// Regular Tables
+// -------------------------
+
+.table { 
+	margin: 0; position: relative; .rounded(); &.table-white { background: #fff; }
+}
+.table th, .table td { border-top-color: @contentBorder2; }
+.table td.center, .table th.center { text-align: center; }
+.table td.right, .table th.right { text-align: right; }
+
+// Condensed
+// -------------------------
+
+.table-condensed { font-size: 10pt; }
+.table-condensed th, .table-condensed td { padding: 4px 10px; }
+
+// Borderless
+// -------------------------
+
+.table-borderless {
+	th, td { border: none; }
+}
+
+// Striped
+// -------------------------
+
+.table-striped tbody tr:nth-child(odd) td, .table-striped tbody tr:nth-child(odd) th { background-color: @contentBg1; }
+
+// Bordered
+// -------------------------
+
+.table-bordered { 
+	border-color: @contentBorder; th, td { border-color: @contentBorder; }
+	thead:first-child tr:first-child>th:first-child, 
+	tbody:first-child tr:first-child>td:first-child, 
+	tbody:first-child tr:first-child>th:first-child,
+	thead:first-child tr:first-child>th:last-child, 
+	tbody:first-child tr:first-child>td:last-child, 
+	tbody:first-child tr:first-child>th:last-child,
+	thead:last-child tr:last-child>th:first-child, 
+	tbody:last-child tr:last-child>td:first-child, 
+	tbody:last-child tr:last-child>th:first-child, 
+	tfoot:last-child tr:last-child>td:first-child, 
+	tfoot:last-child tr:last-child>th:first-child {
+		.rounded();
+	}
+	box-shadow: 0 1px 0 0 @contentShadow1, 0 5px 4px -4px @contentShadow2;
+	-moz-box-shadow: 0 1px 0 0 @contentShadow1, 0 5px 4px -4px @contentShadow2;
+	-webkit-box-shadow: 0 1px 0 0 @contentShadow1, 0 5px 4px -4px @contentShadow2;
+}
+
+// Utilities
+// -------------------------
+
+.table-fill td { background: #F8F8F8; }
+.table .progress:last-child,
+.table .alert:last-child { margin: 0; }
+.table .shortRight { width: 25%; text-align: right; direction: rtl; text-indent: 10px; }
+.table-large-spacing td { padding: 20px 15px; }
+.table .thead td { padding: 8px; font-weight: bold; }
+.table-vertical-center td,
+.table-vertical-center th { vertical-align: middle; }
+
+// table-thead-simple
+// -------------------------
+
+.table-thead-simple {
+	thead {
+		th {
+			background: none;
+			border-left: none;
+			border-right: none;
+			border-top: none;
+			border-bottom: 1px solid @contentBorder2;
+			color: @bodyText;
+			.rounded();
+			text-shadow: none;
+			text-transform: none;
+			.bevelEmboss(0,0);
+		}
+	}
+	&.table-thead-border-none {
+		border-top: none;
+		.rounded();
+		thead {
+			th {
+				border-bottom: none;
+			}
+		}
+		thead:first-child tr:first-child > th:last-child, 
+		tbody:first-child tr:first-child > td:last-child, 
+		tbody:first-child tr:first-child > th:last-child { .rounded(); }
+	}
+}
+
+// Table Primary
+// -------------------------
+
+.table-primary {
+	border-color: @contentBorder;
+	border-top: none;
+	thead 
+	{
+		th { 
+			border-color: @primaryColor;
+			background-color: @primaryColor;
+			color: #fff;
+			font-size: 14px;
+		}
+		&:first-child tr:first-child > th:first-child,
+		&:first-child tr:first-child > th:last-child {  }
+	}
+	tbody td {
+		color: @bodyText;
+		background: @contentBg1;
+		border-width: 0px; 
+		&.important { color: @primaryColor; font-weight: 600; }
+		&.actions { padding-right: 1px; }
+	}
+	&.table-bordered {
+		tbody td {
+			border-color: @contentBorder;
+			border-width: 1px;
+			/*
+			box-shadow: 0 0 0 1px #fff inset;
+			-webkit-box-shadow: 0 0 0 1px #fff inset;
+			-moz-box-shadow: 0 0 0 1px #fff inset;
+			*/
+		}
+	}
+	tbody tr:nth-child(odd) td, 
+	tbody tr:nth-child(odd) th {
+		background: @widgetBg;
+	}
+	tbody tr.selectable td { cursor: pointer; }
+	tbody tr.selected td,
+	tbody tr.selectable:hover td {
+		background: darken(@contentBorder, 5%);
+		box-shadow: 0 0 0 1px darken(@contentBorder, 20%) inset;
+		-webkit-box-shadow: 0 0 0 1px darken(@contentBorder, 20%) inset;
+		-moz-box-shadow: 0 0 0 1px darken(@contentBorder, 20%) inset; 
+	}
+}
+
+// Pricing tables
+// -------------------------
+
+.table-pricing {
+	th, td {
+		padding: 10px;
+	}
+	.plan { font-weight: 600; font-size: 14px; display: block; }
+	.price { font-weight: 600; font-size: 24px; display: block; }
+	.heading { font-weight: 600; font-size: 24px; vertical-align: middle; }
+	.glyphicons.standard {
+		vertical-align: middle;
+		&.circle_ok {
+			i:before { color: #9fc75f; }
+		}
+	}
+}
+.table-pricing-2 {
+	th { padding: 12px 0; background: #64625f; font-size: 14px; color: #fff; border-color: #5a5855; }
+	.pricing {
+		td {
+			padding: 12px 10px 10px;
+			background: #e5e5e5;
+			border-color: #cecece;
+		}
+	}
+}
+
+// DataTables
+// -------------------------
+
+#DataTables_Table_0_filter { text-align: right; }
+#DataTables_Table_0_length select { width: 80px; }
+#DataTables_Table_0_info { padding: 20px 0; }
+.dataTables_paginate { text-align: right; }
+
+// Google Visualization Tables
+// -------------------------
+
+.google-visualization-table-div-page {
+	margin: 10px 0 0 0 !important;
+	.a-d-e-h-g { padding: 0; border: none; margin: 0; }
+	.a-d-e-f-g, .a-d-e-h-g { border-style: none; }
+	.a-d-e-o-q .a-d-e-h-g { border: none; }
+	.a-d-e { background: none; margin-left: 5px; }
+	.a-d-e.a-d-e-o-p { margin-left: 0; }
+}
+.google-visualization-table-table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	border: 1px solid #e5e5e5;
+	border-left: 0;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	font-size: 10pt;
+	background: none !important;
+	td, .tableHeaderRow td {
+		padding: 4px 10px;
+		border: none;
+		border-left: 1px solid #e5e5e5;
+		border-top: 1px solid #e5e5e5;
+		line-height: 20px;
+	}
+	.tableHeaderRow td { font-weight: bold; vertical-align: bottom; }
+	tbody tr:nth-child(odd) td, tbody tr:nth-child(odd) td {
+		background-color: rgba(255,255,255,.5);
+	}
+	.tableHeaderRow:first-child tr:first-child > td:first-child, 
+	tbody:first-child tr:first-child > td:first-child {
+		-webkit-border-top-left-radius: 4px;
+		border-top-left-radius: 4px;
+		-moz-border-radius-topleft: 4px;
+	}
+	.tableHeaderRow:first-child tr:first-child > td:last-child, 
+	tbody:first-child tr:first-child > td:last-child {
+		-webkit-border-top-right-radius: 4px;
+		border-top-right-radius: 4px;
+		-moz-border-radius-topright: 4px;
+	}
+	tbody:last-child tr:last-child > td:first-child {
+		-webkit-border-bottom-left-radius: 4px;
+		border-bottom-left-radius: 4px;
+		-moz-border-radius-bottomleft: 4px;
+	}
+	tbody:last-child tr:last-child > td:last-child {
+		-webkit-border-bottom-right-radius: 4px;
+		border-bottom-right-radius: 4px;
+		-moz-border-radius-bottomright: 4px;
+	}
+	.tableHeaderRow:first-child tr:first-child td, 
+	tbody:first-child tr:first-child td {
+		border-top: 0;
+	}
+}
+
+// Responsive Tables
+// -------------------------
+
+@media only screen and (max-width: 979px)
+{	
+	.table-responsive {
+		&.swipe-horizontal {
+			width: 100%; border-collapse: collapse; border-spacing: 0;
+			display: block; position: relative; width: 100%;
+			border-left: 1px solid #DDD;
+			th, td { 
+				display: block; margin: 0; vertical-align: top;
+				&:last-child { }
+			}
+			th { text-align: right; border-bottom: 0; border-left: 0; }
+			td { min-height: 1.25em; text-align: left; border-left: 0; border-right: 0; border-bottom: 0; border-top: 0; }
+			thead { 
+				display: block; float: left;
+				tr { display: block; } 
+			}
+			tbody {
+				display: block; width: auto; position: relative; overflow-x: auto; white-space: nowrap; word-spacing: 0; letter-spacing: 0; font-size: 0;
+				tr { display: inline-block; vertical-align: top; border-left: 1px solid #e5e5e5; } 
+			}
+		}
+		&.block {
+			/* Force table to not be like tables anymore */
+			table, thead, tbody, th, td, tr { 
+				display: block;
+			}
+
+			/* Hide table headers (but not display: none;, for accessibility) */
+			thead tr { 
+				position: absolute;
+				top: -9999px;
+				left: -9999px;
+			}
+
+			tr { border: 1px solid #e5e5e5; }
+		 	td { 
+				/* Behave  like a "row" */
+				border: none;
+				border-bottom: 1px solid #e5e5e5; 
+				position: relative;
+				padding-left: 50%; 
+				white-space: normal;
+				text-align:left;
+			}
+		 
+			td:before { 
+				/* Now like a table header */
+				position: absolute;
+				/* Top/left values mimic padding */
+				vertical-align: middle;
+				left: 6px;
+				width: 45%; 
+				padding-right: 10px; 
+				white-space: nowrap;
+				text-align:right;
+				font-weight: bold;
+			}
+		 
+			/* Label the data */
+			td:before { content: attr(data-title); }
+		}
+	}
+}
+
+// Invoice
+// -------------------------
+
+.table-invoice {
+	td { border: none; padding: 0; }
+}

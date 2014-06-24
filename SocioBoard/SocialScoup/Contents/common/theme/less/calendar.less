@@ -1,0 +1,31 @@
+//
+// Calendar
+// --------------------------------------------------
+
+// Calendar
+// ------------------------- //
+
+.fc-state-highlight { background: rgba(0,0,0,.2); }
+#external-events ul { list-style: none; margin: 0 0 20px; }
+#external-events li {
+	margin: 0 0 5px;
+	padding: 2px 5px;
+	background: @primaryColor;
+	color: #fff;
+	text-shadow: 0 1px 0 rgba(0,0,0, .5);
+	font-size: .85em;
+	cursor: pointer;
+	.rounded(3px,3px,3px,3px);
+	.bevelEmboss();
+}
+#external-events li.glyphicons { 
+	padding: 2px 5px 2px 30px;
+	display: block;
+	i:before { font-size: 14px; color: #fff; top: 0; left: 0; background: rgba(0,0,0,.3); height: 24px; width: 24px; line-height: 24px; text-align: center; .rounded(3px, 0, 0, 3px); border-right: 1px solid rgba(255,255,255,.4); }
+}
+.fc-header-title h2 { font-size: 16pt; line-height: 25px; }
+.fc-event-skin { border-color: @primaryColor; background-color: @primaryColor; text-shadow: 0 1px 0 rgba(0,0,0, .5); .bevelEmboss(); }
+.fc-event-time, .fc-event-title { padding: 0 5px; }
+#calendar .btn-group .btn-primary {
+	margin-right: 2px;
+}

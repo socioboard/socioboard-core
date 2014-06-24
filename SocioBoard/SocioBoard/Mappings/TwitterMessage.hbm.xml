@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+
+  <class name="TwitterMessage" table="TwitterMessage" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="TwitterMsg">
+      <column name="TwitterMessage" />
+    </property>
+    <property name="MessageDate">
+      <column name="MessageDate"  />
+    </property>
+    <property name="EntryDate">
+      <column name="EntryDate"  />
+    </property>
+    <property name="ProfileId">
+      <column name="ProfileId"  />
+    </property>
+    
+    <property name="ReadStatus">
+      <column name="ReadStatus"  />
+    </property>
+    <property name="FromId">
+      <column name="FromId"  />
+    </property>
+
+    <property name="FromName">
+      <column name="FromName"  />
+    </property>
+
+    <property name="FromProfileUrl">
+      <column name="FromProfileUrl"  />
+    </property>
+
+  
+
+
+    <property name="ScreenName">
+      <column name="ScreenName"  />
+    </property>
+
+    <property name="MessageId">
+      <column name="MessageId"  />
+    </property>
+    <property name="Type">
+      <column name="Type"  />
+    </property>
+
+    <property name="UserId">
+      <column name="UserId"  />
+    </property>
+
+    <property name="SourceUrl">
+      <column name="SourceUrl"  />
+    </property>
+
+    <property name="InReplyToStatusUserId">
+      <column name="InReplyToStatusUserId"  />
+    </property>
+
+    <property name="FromScreenName">
+      <column name="FromScreenName"  />
+    </property>
+    
+
+  </class>
+</hibernate-mapping>
