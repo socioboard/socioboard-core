@@ -159,3 +159,82 @@ C:\Users\GLB-117\Desktop\New folder (5)\SocioBoard Product\bin\NHibernateHelper.
 C:\Users\GLB-117\Desktop\New folder (5)\SocioBoard Product\bin\RestSharp.xml
 C:\Users\GLB-117\Desktop\New folder (5)\SocioBoard Product\bin\System.Net.Http.xml
 C:\Users\GLB-117\Desktop\New folder (5)\SocioBoard Product\obj\Debug\SocioBoard 1.0.dll
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\UserActivation.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\LoginLogs.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\Coupon.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\UserRefRelation.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\Invitation.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\Admin.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\Ads.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\ArchiveMessage.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\Blog_Comments.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\Blog_Posts.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\BusinessSetting.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\DiscoverySearch.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\Drafts.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\FacebookAccount.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\FacebookFeed.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\FacebookGroup.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\FacebookInsightPostStats.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\FacebookInsightStats.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\FacebookMessage.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\FacebookStats.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\GoogleAnalyticsAccount.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\GoogleAnalyticsStats.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\GooglePlusAccount.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\GooglePlusActivities.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\GroupProfile.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\Groups.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\InstagramAccount.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\InstagramComment.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\InstagramFeed.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\LinkedinAccount.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\LinkedInFeed.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\LinkedinMessage.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\Log.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\News.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\NewsLetter.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\Package.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\PaymentTransaction.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\RssFeeds.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\RssReader.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\ScheduledMessage.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\SocialProfile.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\TaskComment.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\Tasks.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\Team.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\TeamMemberProfile.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\TwitterAccount.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\TwitterDirectMessages.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\TwitterFeed.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\TwitterMessage.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\TwitterStats.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\User.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\UserPackageRelation.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mappings\vwTwitterStats.hbm.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Domain\FacebookInsightPostStats.cs
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\SocioBoard 1.0.dll
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\SocioBoard 1.0.pdb
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\CloudSponge.dll
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\CloudSpongeLib.dll
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\GlobusMailLib.dll
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\PayPalCoreSDK.dll
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Recaptcha.Web.dll
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\SendGridMail.dll
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\SendGridPlus.dll
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\System.Net.Http.dll
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Mandrill.dll
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\CodeScales.Http.dll
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\GlobusMailLib.pdb
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\GlobusTwitterLib.pdb
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Iesi.Collections.pdb
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\Iesi.Collections.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\NHibernate.pdb
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\NHibernate.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\NHibernate.Linq.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\NHibernateHelper.pdb
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\RestSharp.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\bin\System.Net.Http.xml
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\obj\Debug\SocioBoard 1.0.csprojResolveAssemblyReference.cache
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\obj\Debug\SocioBoard 1.0.dll
+E:\E DRIVE\New Projects\socioboard-asembla\socioboard\trunk\obj\Debug\SocioBoard 1.0.pdb

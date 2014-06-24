@@ -14,6 +14,7 @@
                             <a href="#collapseOne"  data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle">
                                 <i class="icon-caret-right" style="margin-right: 10px"></i>Suggestion </a>
                         </div>
+
                         <div class="accordion-body collapse" id="collapseOne">
                             <div class="accordion-inner">
                                 <ul>
