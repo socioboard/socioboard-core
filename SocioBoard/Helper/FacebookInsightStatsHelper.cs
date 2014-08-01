@@ -249,7 +249,7 @@ namespace SocioBoard.Helper
             }
         }
 
-        public string getLocationInsight(string fbUserId, Guid UserId, int days)
+        public string getLocationInsight(string fbUserId,int days)
         {
             string strLocationArray = string.Empty;
             try
@@ -259,7 +259,7 @@ namespace SocioBoard.Helper
                 string previousDate = string.Empty;
                 FacebookInsightStatsRepository objfbiRepo = new FacebookInsightStatsRepository();
 
-                ArrayList arrList = objfbiRepo.getFacebookInsightStatsLocationById(fbUserId, UserId, days);
+                ArrayList arrList = objfbiRepo.getFacebookInsightStatsLocationById(fbUserId, days);
                 foreach (var item in arrList)
                 {
                     Array temp = (Array)item;
@@ -289,7 +289,7 @@ namespace SocioBoard.Helper
             return strLocationArray;
         }
 
-        public string getLikesByGenderAge(string fbUserId, Guid UserId, int days)
+        public string getLikesByGenderAge(string fbUserId,int days)
         {
             string strFbAgeArray = string.Empty;
             try
@@ -297,7 +297,7 @@ namespace SocioBoard.Helper
                 string strAgem = "0,";
                 string strAgef = "0,";
                 FacebookInsightStatsRepository objfbiRepo = new FacebookInsightStatsRepository();
-                ArrayList arrList = objfbiRepo.getFacebookInsightStatsAgeWiseById(fbUserId, UserId, days);
+                ArrayList arrList = objfbiRepo.getFacebookInsightStatsAgeWiseById(fbUserId,days);
                 strFbAgeArray = "[";
                 foreach (var item in arrList)
                 {
@@ -335,7 +335,7 @@ namespace SocioBoard.Helper
             return strFbAgeArray;
         }
 
-        public string getPageImressions(string fbUserId, Guid UserId, int days)
+        public string getPageImressions(string fbUserId,int days)
         {
             string strPageImpression = string.Empty;
             try
@@ -343,7 +343,7 @@ namespace SocioBoard.Helper
                 string strDate = string.Empty;
                 string strImpression = string.Empty;
                 FacebookInsightStatsRepository objfbiRepo = new FacebookInsightStatsRepository();
-                ArrayList arrList = objfbiRepo.getFacebookInsightStatsById(fbUserId, UserId, days);
+                ArrayList arrList = objfbiRepo.getFacebookInsightStatsById(fbUserId, days);
                 foreach (var item in arrList)
                 {
                     Array temp = (Array)item;
@@ -370,20 +370,22 @@ namespace SocioBoard.Helper
             return strPageImpression;
         }
 
-        public string getStoriesCount(string fbUserId, Guid UserId, int days)
+        public string getStoriesCount(string fbUserId,int days)
         {
+            string strStoriescount = string.Empty;
             string strStories = string.Empty;
+            string strDate = string.Empty;
             try
             {
-              
+
                 FacebookInsightStatsRepository objfbiRepo = new FacebookInsightStatsRepository();
-                ArrayList arrList = objfbiRepo.getFacebookInsightStatsById(fbUserId, UserId, days);
+                ArrayList arrList = objfbiRepo.getFacebookInsightStatsById(fbUserId, days);
                 foreach (var item in arrList)
                 {
                     Array temp = (Array)item;
                     if (temp.GetValue(7) != null)
                     {
-                        //strDate = strDate + temp.GetValue(9) + ",";
+                        strDate = strDate + temp.GetValue(10) + ",";
                         strStories = strStories + temp.GetValue(7) + ",";
                     }
                 }
@@ -392,26 +394,204 @@ namespace SocioBoard.Helper
                     for (int i = 0; i < 7 - arrList.Count; i++)
                     {
                         strStories = strStories + "0,";
-                        //strDate = strDate + " ,";
+                        strDate = strDate + " ,";
                     }
                 }
-                strStories = strStories.Substring(0, strStories.Length - 1);
+                strStoriescount = strDate.Substring(0, strDate.Length - 1) + "@" + strStories.Substring(0, strStories.Length - 1);
             }
             catch (Exception Err)
             {
                 Console.Write(Err.StackTrace);
             }
-            return strStories;
+            return strStoriescount;
         }
 
-        public string getInteractionCount(string fbUserId, Guid UserId, int days)
+
+
+
+
+
+
+
+
+
+
+
+        public string getlikeUnlike(string fbUserId, int days)
+        {
+            //string strPageImpression = string.Empty;
+            string likeunlikeDate = string.Empty;
+            string strDate = string.Empty;
+            string strImpression = string.Empty;
+            FacebookStatsRepository objFbStatsRepo = new FacebookStatsRepository();
+            ArrayList arrFbFanCnt = objFbStatsRepo.FancountFacebookStats(fbUserId, days);
+            string strFancnt = string.Empty;
+            string unFancnt = string.Empty;
+            int NumberOfDays = days;
+            int increament = 0;
+            if (arrFbFanCnt.Count > 5)
+            {
+                increament = arrFbFanCnt.Count / 5;
+            }
+
+            //  strArray = "[";
+            string str = string.Empty;
+            int cnt = 0;
+            if (arrFbFanCnt.Count > 0)
+            {
+                if (increament > 0)
+                {
+                    for (int j = 0; j < arrFbFanCnt.Count; j = j + increament)
+                    {
+                        Array temp = (Array)arrFbFanCnt[j];
+                        strFancnt = strFancnt + temp.GetValue(10).ToString() + ",";
+                        cnt++;
+                    }
+                }
+                else
+                {
+                    foreach (var itemTS in arrFbFanCnt)
+                    {
+                        Array temp = (Array)itemTS;
+                        strFancnt = strFancnt + temp.GetValue(10).ToString() + ",";
+                        cnt++;
+                    }
+                }
+
+            }
+            if (cnt < 7)
+            {
+                for (int j = 0; j < 7 - cnt; j++)
+                {
+                    str = str + "0,";
+                }
+            }
+
+            strFancnt = str + strFancnt;
+            strFancnt = strFancnt.Substring(0, strFancnt.Length - 1);
+      
+
+
+            if (arrFbFanCnt.Count > 5)
+            {
+                increament = arrFbFanCnt.Count / 5;
+            }
+            List<int> Fancnt = new List<int>();
+            List<int> UnFanCnt = new List<int>();
+            List<int> dts = new List<int>();
+            List<string> entrydate = new List<string>();
+            Dictionary<string, int> dicForcnt = new Dictionary<string, int>();
+            int big = 0;
+            int small = 0;
+            int diff = 0;
+            int rslt = 0;
+            int i = 0;
+
+            foreach (var item in arrFbFanCnt)
+            {
+                Array temp = (Array)item;
+
+                Fancnt.Add(int.Parse((temp.GetValue(10)).ToString()));
+                
+            }
+            
+           
+            for (i = 0; i < Fancnt.Count - 1; i++)
+            {
+                if (Fancnt[i] < Fancnt[i + 1])
+                {
+                    big = Fancnt[i + 1];
+                    small = Fancnt[i];
+                    diff = big - small;
+                    unFancnt = unFancnt + diff + ",";
+                  
+                }
+            }
+
+            string str12 = string.Empty;
+            if (UnFanCnt.Count <= 6)
+            {
+                for (int j = unFancnt.Count(); j <= 7; j++)
+                {
+                    str12 = str12 + "0,";
+                }
+            }
+
+            unFancnt = str12 + unFancnt;
+            unFancnt = unFancnt.Substring(0, unFancnt.Length - 1);
+           
+            string TimePeriod = string.Empty;
+            DateTime dateforsubtract = DateTime.Now;
+            
+            string differencedate = string.Empty;
+            if (NumberOfDays == 15)
+            {
+                for (int k = 0; k < NumberOfDays; k = k + 3)
+                {
+
+                    differencedate = dateforsubtract.Subtract(TimeSpan.FromDays(k)).ToShortDateString();
+                    TimePeriod += differencedate + ",";
+                }
+            }
+            if (NumberOfDays == 30)
+            {
+                for (int k = 0; k < NumberOfDays; k = k + 5)
+                {
+                   
+                    differencedate = dateforsubtract.Subtract(TimeSpan.FromDays(k)).ToShortDateString();
+                    TimePeriod += differencedate + ",";
+                }
+            }
+            if (NumberOfDays == 60)
+            {
+                for (int k = 0; k < NumberOfDays; k = k + 10)
+                {
+                    
+                    differencedate = dateforsubtract.Subtract(TimeSpan.FromDays(k)).ToShortDateString();
+                    TimePeriod += differencedate + ",";
+                }
+            }
+            if (NumberOfDays == 90)
+            {
+                for (int k = 0; k < NumberOfDays; k = k + 15)
+                {
+                   
+                    differencedate = dateforsubtract.Subtract(TimeSpan.FromDays(k)).ToShortDateString();
+                    TimePeriod += differencedate + ",";
+                }
+            }
+
+
+            TimePeriod = TimePeriod.Substring(0, TimePeriod.Length - 1);
+
+            likeunlikeDate = strFancnt + "@" + unFancnt + "@" + TimePeriod;
+
+            return likeunlikeDate;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public string getInteractionCount(string fbUserId, int days)
         {
             string strStories = string.Empty;
             try
             {
 
                 FacebookInsightStatsRepository objfbiRepo = new FacebookInsightStatsRepository();
-                ArrayList arrList = objfbiRepo.getFacebookInsightStatsById(fbUserId, UserId, days);
+                ArrayList arrList = objfbiRepo.getFacebookInsightStatsById(fbUserId,days);
                 foreach (var item in arrList)
                 {
                     Array temp = (Array)item;

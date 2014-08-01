@@ -24,6 +24,7 @@ namespace SocialSuitePro.MasterPage
         public int tot_acc = 0;
         public int profileCount = 0;
         string Datetime = string.Empty;
+   
         protected void Page_Load(object sender, EventArgs e)
         {
             HttpContext.Current.Response.Cache.SetExpires(DateTime.UtcNow.AddDays(-1));
@@ -31,10 +32,13 @@ namespace SocialSuitePro.MasterPage
             HttpContext.Current.Response.Cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
             HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.NoCache);
             HttpContext.Current.Response.Cache.SetNoStore();
+            TeamRepository objTeamRepository = new TeamRepository();
+            GroupRepository objGroupRepository = new GroupRepository();
 
             try
             {
                 User user = (User)Session["LoggedUser"];
+               // SocioBoard.Domain.Team team = (SocioBoard.Domain.Team)Session["GroupName"];
 
                 #region check user Activation
 
@@ -46,7 +50,7 @@ namespace SocialSuitePro.MasterPage
                     {
                         if (user.ActivationStatus == "0" || user.ActivationStatus ==null)
                         {
-                            actdiv.InnerHtml = "<span >Your account is not yet activated.Check your E-mail to activate your account.</span><a id=\"resendmail\" uid=\""+user.Id+"\" href=\"#\">Resend Mail</a>";
+                            actdiv.InnerHtml = "<marquee behavior=\"scroll\" direction=\"left\"><span >Your account is not yet activated.Check your E-mail to activate your account.</span><a id=\"resendmail\" uid=\""+user.Id+"\" href=\"#\">Resend Mail</a></marquee>";
                             if (Request.QueryString["stat"] == "activate")
                             {
                                 if (Request.QueryString["id"] != null)
@@ -113,7 +117,7 @@ namespace SocialSuitePro.MasterPage
 
                 if (!IsPostBack)
                 {
-                    
+                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "my", " logout();", true);
 
                     if (user == null)
                         Response.Redirect("/Default.aspx");
@@ -127,9 +131,11 @@ namespace SocialSuitePro.MasterPage
                         {
                             if (!SBUtils.IsUserWorkingDaysValid(user.ExpiryDate))
                             {
-                                //cmposecontainer.Attributes.Add("display", "none");
+                               // cmposecontainer.Attributes.Add("display", "none");
                                 cmposecontainer.Attributes.CssStyle.Add("display", "none");
-                                topbtn.Attributes.CssStyle.Add("display", "none");
+                                //topbtn.Attributes.CssStyle.Add("display", "none");
+                                cmposecontainer.Attributes.CssStyle.Add("display", "none");
+                                searchcontainer.Attributes.CssStyle.Add("display", "none");
                             }
                         }
                         #endregion
@@ -141,16 +147,16 @@ namespace SocialSuitePro.MasterPage
                         {
                             if (Session["IncomingTasks"] != null)
                             {
-                                incom_tasks.InnerHtml = Convert.ToString((int)Session["IncomingTasks"]);
-                                incomTasks.InnerHtml = Convert.ToString((int)Session["IncomingTasks"]);
+                                //incom_tasks.InnerHtml = Convert.ToString((int)Session["IncomingTasks"]);
+                                //incomTasks.InnerHtml = Convert.ToString((int)Session["IncomingTasks"]);
                             }
                             else
                             {
-                                TaskRepository taskRepo = new TaskRepository();
-                                ArrayList alst = taskRepo.getAllIncompleteTasksOfUser(user.Id);
-                                Session["IncomingTasks"] = alst.Count;
-                                incom_tasks.InnerHtml = Convert.ToString(alst.Count);
-                                incomTasks.InnerHtml = Convert.ToString(alst.Count);
+                                //TaskRepository taskRepo = new TaskRepository();
+                                //ArrayList alst = taskRepo.getAllIncompleteTasksOfUser(user.Id,team.GroupId);
+                                //Session["IncomingTasks"] = alst.Count;
+                                //incom_tasks.InnerHtml = Convert.ToString(alst.Count);
+                                //incomTasks.InnerHtml = Convert.ToString(alst.Count);
                             }
                         }
                         catch (Exception es)
@@ -160,15 +166,23 @@ namespace SocialSuitePro.MasterPage
                         }
                         try
                         {
+
+                            FacebookFeedRepository objFacebookFeedRepository = new FacebookFeedRepository();
+                            int alstfeedfb = objFacebookFeedRepository.countUnreadMessages(user.Id);
+                            TwitterMessageRepository objTwitterMessageRepository = new TwitterMessageRepository();
+                            int alstMsgtwt = objTwitterMessageRepository.getCountUnreadMessages(user.Id);
+                            incom_messages.InnerHtml = (alstfeedfb + alstMsgtwt).ToString();
+
+
                             if (Session["CountMessages"] != null)
                             {
-                                incom_messages.InnerHtml = Convert.ToString((int)Session["CountMessages"]);
-                                incomMessages.InnerHtml = Convert.ToString((int)Session["CountMessages"]);
+                                //incom_messages.InnerHtml = Convert.ToString((int)Session["CountMessages"]);
+                                //incomMessages.InnerHtml = Convert.ToString((int)Session["CountMessages"]);
                             }
                             else
                             {
-                                incom_messages.InnerHtml = "0";
-                                incomMessages.InnerHtml = "0";
+                                //incom_messages.InnerHtml = "0";
+                                //incomMessages.InnerHtml = "0";
                             }
                         }
                         catch (Exception sx)
@@ -177,14 +191,101 @@ namespace SocialSuitePro.MasterPage
                             Console.WriteLine(sx.Message);
                         }
 
-                        usernm.InnerHtml = "Hello, <a href=\"../Settings/PersonalSettings.aspx\"> " + user.UserName + "</a> ";
+                      
+//======================================================================================================                                      
+
+                        try
+                        {
+
+                            ArrayList totalAccuount = objTeamRepository.getAllAccountUser(user.EmailId,user.Id);
+                            if (totalAccuount.Count != 0)
+                            {
+                                string drodownselectedvalue = string.Empty;
+                                try
+                                {
+                                    foreach (Guid item in totalAccuount)
+                                    {
+                                        Guid GroupIde = (Guid)item;
+
+                                        List<Groups> GetData = objGroupRepository.getAllGroupsDetail(GroupIde);
+                                        if (GetData.Count != 0)
+                                        {
+                                            string val = string.Empty;
+                                            foreach (var items in GetData)
+                                            {
+                                                try
+                                                {
+                                                    if (items.GroupName == "Socioboard")
+                                                    {
+                                                        drodownselectedvalue = items.Id.ToString();
+                                                    }
+                                                    groupsselection.Items.Add(new ListItem((string)items.GroupName, items.Id.ToString()));
+                                                }
+                                                catch { }
+                                            }
+
+                                        }
+
+                                    }
+
+                                    if (Session["groupcheck"] == null)
+                                    {
+                                        int i = 0;
+                                        groupsselection.SelectedIndex = groupsselection.Items.IndexOf(groupsselection.Items.FindByText("Socioboard"));
+                                        //groupsselection.SelectedIndex = groupsselection.Items.IndexOf(groupsselection.Items.FindByValue("Socioboard"));
+                                        //ListItem li =  groupsselection.Items.FindByText(drodownselectedvalue);
+                                        //li.Selected = true;
+                                        Session["groupcheck"] = groupsselection.Items.FindByText("Socioboard").Value;
+                                    }
+                                    else
+                                    {
+                                        groupsselection.SelectedIndex = groupsselection.Items.IndexOf(groupsselection.Items.FindByValue((string)Session["groupcheck"]));
+                                        //groupsselection.se.SelectedIndex = Session["groupcheck"];
+                                    }
+
+                                    //if (Session["groupcheck"] == null)
+                                    //{
+
+                                    //    groupsselection.SelectedValue = (drodownselectedvalue);
+                                    //    Session["groupcheck"] = groupsselection.SelectedValue;
+                                    //}
+                                    //else
+                                    //{
+                                    //    groupsselection.SelectedIndex = Session["groupcheck"];
+                                    //}
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine(ex.Message);
+                                    logger.Error("Error : " + ex.Message);
+                                    logger.Error("Error : " + ex.StackTrace);
+                                }
+                            }
+
+
+
+
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                            logger.Error("Error : " + ex.Message);
+                            logger.Error("Error : " + ex.StackTrace);
+                        }
+
+//=====================================================================================================================================                                            
+                        usernm.InnerHtml = "Hello, " + user.UserName + " ";
                         if (!string.IsNullOrEmpty(user.ProfileUrl))
                         {
                             // Datetime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToLongDateString() + " " + TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToShortTimeString() + " (" + user.TimeZone + ")";
                             //userimg.InnerHtml = "<a href=\"../Settings/PersonalSettings.aspx\"><img id=\"loggeduserimg\" src=\"" + user.ProfileUrl + "\" alt=\"" + user.UserName + "\" /></a></a>";
+                            userimg.InnerHtml = "<img id=\"loggeduserimg\" src=\"" + user.ProfileUrl + "\" alt=\"" + user.UserName + "\" />";
+                            userimg.InnerHtml = "<img id=\"loggeduserimg\" src=\"" + user.ProfileUrl + "\" alt=\"" + user.UserName + "\" />";
                             //userinf.InnerHtml = Datetime;
                             //{ 
-                            //    userimg.InnerHtml = "<a href=\"../Settings/PersonalSettings.aspx\"><img id=\"loggeduserimg\" src=\"" + user.ProfileUrl + "\" alt=\"" + user.UserName + "\" height=\"100\" width=\"100\"/></a></a>";
+                                //userimg.InnerHtml = "<a href=\"../Settings/PersonalSettings.aspx\"><img id=\"loggeduserimg\" src=\"" + user.ProfileUrl + "\" alt=\"" + user.UserName + "\" height=\"100\" width=\"100\"/></a></a>";
+                                userimg.InnerHtml = "<img id=\"loggeduserimg\" src=\"" + user.ProfileUrl + "\" alt=\"" + user.UserName + "\" height=\"100\" width=\"100\"/>";
+                                userimg.InnerHtml = "<img id=\"loggeduserimg\" src=\"" + user.ProfileUrl + "\" alt=\"" + user.UserName + "\" height=\"100\" width=\"100\"/>";
                             if (user.TimeZone != null)
                             {
                                 Datetime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToLongDateString() + " " + TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToShortTimeString() + " (" + user.TimeZone + ")";
@@ -200,6 +301,8 @@ namespace SocialSuitePro.MasterPage
                         {
                             //Datetime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToLongDateString() + " " + TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, user.TimeZone).ToShortTimeString() + " (" + user.TimeZone + ")";
                             //userimg.InnerHtml = "<a href=\"../Settings/PersonalSettings.aspx\"><img id=\"loggeduserimg\" src=\"../Contents/img/blank_img.png\" alt=\"" + user.UserName + "\"/></a>";
+                            userimg.InnerHtml = "<img id=\"loggeduserimg\" src=\"../Contents/img/blank_img.png\" alt=\"" + user.UserName + "\"/>";
+                            userimg.InnerHtml = "<img id=\"loggeduserimg\" src=\"../Contents/img/blank_img.png\" alt=\"" + user.UserName + "\"/>";
 
                             //userinf.InnerHtml = Datetime;
                             if (user.TimeZone != null)
@@ -218,7 +321,7 @@ namespace SocialSuitePro.MasterPage
                         {
 
                             GroupRepository grouprepo = new GroupRepository();
-                            List<Groups> lstgroups = grouprepo.getAllGroups(user.Id);
+                            List<Groups> lstgroups = grouprepo.getAllGroupsCompleteDetails(user.Id);
                             string totgroups = string.Empty;
                             if (lstgroups.Count != 0)
                             {
@@ -243,7 +346,15 @@ namespace SocialSuitePro.MasterPage
                             Console.WriteLine(ex.Message);
                         }
                     }
+                 
+                   
+
                 }
+
+                //Team lstDetails = objTeamRepository.getAllGroupsDetails(user.EmailId.ToString(), Guid.Parse(groupsselection.SelectedItem.Value));
+                //Session["GroupName"] = lstDetails;
+
+
             }
             catch (Exception ex)
             {
@@ -454,7 +565,18 @@ namespace SocialSuitePro.MasterPage
                         objUserRefRelation = lstUserRefRelation[0];
                         objUserRefRelation.Status = "1";
                         objUser = objUserRepository.getUsersById(lstUserRefRelation[0].ReferenceUserId);
-                        objUser.ExpiryDate = objUser.ExpiryDate.AddDays(30);
+                        if (objUser.ExpiryDate <= DateTime.Now)
+                        {
+                            objUser.ExpiryDate = DateTime.Now.AddDays(30);
+                        }
+                        else if (objUser.ExpiryDate > DateTime.Now)
+                        {
+                            objUser.ExpiryDate = objUser.ExpiryDate.AddDays(30);
+                        }
+                        else
+                        {
+                            objUser.ExpiryDate = objUser.ExpiryDate.AddDays(30);
+                        }
                         objUser.AccountType = "Premium";
                         objPackage = objPackageRepository.getPackageDetails("Premium");
 
@@ -476,6 +598,20 @@ namespace SocialSuitePro.MasterPage
             }
             return ret;
         }
+
+        //protected void groupsselection_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    SocioBoard.Domain.User user = (User)Session["LoggedUser"];
+        //    string GroupNames =string.Empty;
+
+        //    groupsselection.SelectedItem.ToString();
+        //    TeamRepository objTeamRepository = new TeamRepository();
+        //    Team lstDetails = objTeamRepository.getAllGroupsDetails(user.EmailId.ToString(),Guid.Parse(groupsselection.SelectedValue));
+           
+        //    Session["GroupName"] = lstDetails;
+        //    Session["groupcheck"] = groupsselection.SelectedValue;
+         
+        //}
 
 
 

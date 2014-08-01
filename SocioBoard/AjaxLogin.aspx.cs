@@ -57,13 +57,115 @@ namespace SocialSuitePro
                             // List<User> lstUser = new List<User>();
                             if (Session["LoggedUser"] != null)
                             {
-                                SocioBoard.Domain.User.lstUser.Add((User)Session["LoggedUser"]);
-                                Application["OnlineUsers"] = SocioBoard.Domain.User.lstUser;
-                                objLoginLogs.Id = new Guid();
-                                objLoginLogs.UserId = user.Id;
-                                objLoginLogs.UserName = user.UserName;
-                                objLoginLogs.LoginTime = DateTime.Now.AddHours(11.50);
-                                objLoginLogsRepository.Add(objLoginLogs);
+                                //SocioBoard.Domain.User.lstUser.Add((User)Session["LoggedUser"]);
+                                //Application["OnlineUsers"] = SocioBoard.Domain.User.lstUser;
+                                //objLoginLogs.Id = new Guid();
+                                //objLoginLogs.UserId = user.Id;
+                                //objLoginLogs.UserName = user.UserName;
+                                //objLoginLogs.LoginTime = DateTime.Now.AddHours(11.50);
+                                //objLoginLogsRepository.Add(objLoginLogs);
+                                Groups objGroups = new Groups();
+                                GroupRepository objGroupRepository = new GroupRepository();
+                                Team objteam = new Team();
+                                TeamRepository objTeamRepository = new TeamRepository();
+                                objGroups = objGroupRepository.getGroupDetail(user.Id);
+                                if (objGroups == null)
+                                {
+                                    //================================================================================
+                                    //Insert into group
+
+                                    try
+                                    {
+                                        objGroups = new Groups();
+                                        objGroups.Id = Guid.NewGuid();
+                                        objGroups.GroupName = ConfigurationManager.AppSettings["DefaultGroupName"];
+                                        objGroups.UserId = user.Id;
+                                        objGroups.EntryDate = DateTime.Now;
+                                        objGroupRepository.AddGroup(objGroups);
+
+                                        objteam.Id = Guid.NewGuid();
+                                        objteam.GroupId = objGroups.Id;
+                                        objteam.UserId = user.Id;
+                                        objteam.EmailId = user.EmailId;
+                                        // teams.FirstName = user.UserName;
+                                        objTeamRepository.addNewTeam(objteam);
+
+                                        SocialProfile objSocialProfile = new SocialProfile();
+                                        SocialProfilesRepository objSocialProfilesRepository = new SocialProfilesRepository();
+
+                                        List<SocialProfile> lstSocialProfile = objSocialProfilesRepository.getAllSocialProfilesOfUser(user.Id);
+                                        if (lstSocialProfile != null)
+                                        {
+                                            if (lstSocialProfile.Count > 0)
+                                            {
+                                                foreach (SocialProfile item in lstSocialProfile)
+                                                {
+                                                    try
+                                                    {
+                                                        TeamMemberProfile objTeamMemberProfile = new TeamMemberProfile();
+                                                        TeamMemberProfileRepository objTeamMemberProfileRepository = new TeamMemberProfileRepository();
+                                                        objTeamMemberProfile.Id = Guid.NewGuid();
+                                                        objTeamMemberProfile.TeamId = objteam.Id;
+                                                        objTeamMemberProfile.ProfileId = item.ProfileId;
+                                                        objTeamMemberProfile.ProfileType = item.ProfileType;
+                                                        objTeamMemberProfile.Status = item.ProfileStatus;
+                                                        objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
+                                                        objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
+                                                    }
+                                                    catch (Exception ex)
+                                                    {
+                                                        Console.WriteLine(ex.Message);
+                                                    }
+
+                                                }
+                                            }
+                                        }
+
+
+
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Console.WriteLine(ex.Message);
+                                        logger.Error("Error : " + ex.Message);
+                                        logger.Error("Error : " + ex.StackTrace);
+                                    }
+
+                                    //==========================================================================================================
+
+                                }
+
+                                BusinessSetting objBusinessSetting = new BusinessSetting();
+                                BusinessSettingRepository objBusinessSettingRepository = new BusinessSettingRepository();
+                                List<BusinessSetting> lstBusinessSetting = objBusinessSettingRepository.GetBusinessSettingByUserId(user.Id);
+                                if (lstBusinessSetting.Count == 0)
+                                {
+                                    try
+                                    {
+                                        List<Groups> lstGroups = objGroupRepository.getAllGroups(user.Id);
+                                        foreach (Groups item in lstGroups)
+                                        {
+                                            objBusinessSetting = new BusinessSetting();
+                                            objBusinessSetting.Id = Guid.NewGuid();
+                                            objBusinessSetting.BusinessName = item.GroupName;
+                                            //objbsnssetting.GroupId = team.GroupId;
+                                            objBusinessSetting.GroupId = item.Id;
+                                            objBusinessSetting.AssigningTasks = false;
+                                            objBusinessSetting.AssigningTasks = false;
+                                            objBusinessSetting.TaskNotification = false;
+                                            objBusinessSetting.TaskNotification = false;
+                                            objBusinessSetting.FbPhotoUpload = 0;
+                                            objBusinessSetting.UserId = user.Id;
+                                            objBusinessSetting.EntryDate = DateTime.Now;
+                                            objBusinessSettingRepository.AddBusinessSetting(objBusinessSetting);
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Console.WriteLine(ex.StackTrace);
+                                    }
+                                }
+
                             }
                             Response.Write("user");
                         }

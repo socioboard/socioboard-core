@@ -110,7 +110,7 @@ namespace SocialSuitePro.Admin
                         // if (ddltatus.SelectedValue == "1")
                         FBAcc.FbUserName = txtName.Text;
                         status = true;
-                        fbAcc.IsActive = status;
+                        fbAcc.IsActive = 1;
                         objFbRepo.updateFacebookUser(fbAcc);
                     }
                     if (type == "ins")

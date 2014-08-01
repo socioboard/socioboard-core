@@ -320,7 +320,7 @@ namespace SocioBoard.Model
                     try
                     {
                         //Proceed action, to get feeds of twitter account by profile id.
-                        List<TwitterFeed> lstmsg = session.CreateQuery("from TwitterFeed where ProfileId = :profid and Type ='twt_feeds'")
+                        List<TwitterFeed> lstmsg = session.CreateQuery("from TwitterFeed where ProfileId = :profid and Type ='twt_feeds' order by FeedDate desc")
 
                         .SetParameter("profid", profileid)
                         .List<TwitterFeed>()

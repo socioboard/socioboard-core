@@ -16,6 +16,8 @@ using System.Text;
 using System.IO;
 using System.Text.RegularExpressions;
 using GlobusLinkedinLib.Authentication;
+using GlobusTumblerLib.App.Core;
+using GlobusTumblrLib.Authentication;
 
 namespace SocialSuitePro
 {
@@ -24,7 +26,16 @@ namespace SocialSuitePro
         ILog logger = LogManager.GetLogger(typeof(Default));
         protected void Page_Load(object sender, EventArgs e)
         {
-            logger.Error("Testing");
+
+           
+
+         //   logger.Error("Testing");
+           //   var url = "http://api.tumblr.com/v2/blog/surajrai123.tumblr.com/info?api_key=iu8L04PbSze3N6ZNvsizUnYezcikYRx9J40DVldtNoqb4hYHzP";
+          //  oAuthTumbler obj=new oAuthTumbler();
+         //     string str= obj.Get_Activities_List(url);
+           
+
+
             //linkedincompanypagetest();
             //Dictionary<string, string> allinfo = ReadLargeFile("D:/registration.txt");
             //UserRepository objUserRepository=new UserRepository ();
@@ -48,7 +59,6 @@ namespace SocialSuitePro
             try
             {
                 
-
                 if (Session["isemailexist"] != null)
                 {
                     if (Session["isemailexist"].ToString() == "emailnotexist")
@@ -74,17 +84,10 @@ namespace SocialSuitePro
                         Session.Abandon();
                         Session.Clear();
                         Session.RemoveAll();
-                       
                     }
-
                 }
-
-
                 if (Session["LoggedUser"] != null)
                     Response.Redirect("Home.aspx");
-
-
-
 
 
                // Session.Clear();

@@ -26,33 +26,58 @@ namespace SocialSuitePro.Reports
         public string strRetweet = string.Empty;
         public string strEngInf = string.Empty;
         public string strAgeDiff = string.Empty;
+        public string strTwtMention = string.Empty;
+
         public static string twtProfileId = string.Empty;
+        string TwtProfileId = string.Empty;
+
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
                 SocioBoard.Domain.User user = (User)Session["LoggedUser"];
                 if (user == null)
-                    Response.Redirect("/Default.aspx");       
+                    Response.Redirect("/Default.aspx");
+
+
                 TwitterAccountRepository objtwtAccRepo = new TwitterAccountRepository();
-                ArrayList arrTwtAcc= objtwtAccRepo.getAllTwitterAccountsOfUser(user.Id);
+                TeamMemberProfileRepository objTeamMemberProfileRepository = new TeamMemberProfileRepository();
+
+
+                SocioBoard.Domain.Team team = (SocioBoard.Domain.Team)Session["GroupName"];
+
+                List<TeamMemberProfile> allprofiles = objTeamMemberProfileRepository.getTwtTeamMemberProfileData(team.Id);
+
+                foreach (TeamMemberProfile item in allprofiles)
+                {
+                    TwtProfileId += item.ProfileId + ',';
+                }
+                TwtProfileId = TwtProfileId.Substring(0, TwtProfileId.Length - 1);
+
+
+                List<TwitterAccount> arrTwtAcc = objtwtAccRepo.getAllAccountDetail(TwtProfileId);                          
                 string twtUser = string.Empty;
                 string twtProfileId = string.Empty;
+
                 spandiv.InnerHtml = "from " + DateTime.Now.AddDays(-15).ToShortDateString() + "-" + DateTime.Now.ToShortDateString();
                 foreach (TwitterAccount item in arrTwtAcc)
                 {
-                    twtUser = twtUser + "<div  class=\"teitter\"><ul><li><a id=\"facebook_connect\" onclick='getProfileGraph(\""+ item.TwitterUserId +"\",\""+item.TwitterScreenName+"\",\""+item.ProfileImageUrl+"\",\""+ item.FollowersCount +"\")'><span style=\"float:left;margin: 3px 0 0 5px;\" >" + item.TwitterScreenName + "</span></a></li></ul></div>";
+                    twtUser = twtUser + "<div  class=\"teitter\"><ul><li><a id=\"facebook_connect\" onclick='getProfileGraph(\"" + item.TwitterUserId + "\",\"" + item.TwitterScreenName + "\",\"" + item.ProfileImageUrl + "\",\"" + item.FollowersCount + "\")'><span style=\"float:left;margin: 3px 0 0 5px;\" >" + item.TwitterScreenName + "</span></a></li></ul></div>";
                     twtProfileId = item.TwitterUserId;
                     divnameId.InnerHtml = item.TwitterScreenName;
                     profileImg.ImageUrl = item.ProfileImageUrl;
                     spanFollowers.InnerHtml = item.FollowersCount.ToString();
+                    Session["twtProfileId"] = twtProfileId;
                 }
                 divtwtUser.InnerHtml = twtUser;
                 try
                 {
-                    strTwtArray = objtwtStatsHelper.getNewFollowers(user, twtProfileId,15);
-                    int index=strTwtArray.LastIndexOf(',');
-                    divnewFollower.InnerHtml = strTwtArray.Substring(index+1);
+                    strTwtArray = objtwtStatsHelper.getNewFollowers(twtProfileId, 15);
+                    int index = strTwtArray.LastIndexOf(',');
+                    divnewFollower.InnerHtml = strTwtArray.Substring(index + 1);
                 }
                 catch (Exception Err)
                 {
@@ -60,9 +85,9 @@ namespace SocialSuitePro.Reports
                 }
                 try
                 {
-                strTwtFollowing = objtwtStatsHelper.getNewFollowing(user, twtProfileId,15);
-                int index = strTwtFollowing.LastIndexOf(',');
-                divFollowed.InnerHtml = strTwtArray.Substring(index+1);
+                    strTwtFollowing = objtwtStatsHelper.getNewFollowing(twtProfileId, 15);
+                    int index = strTwtFollowing.LastIndexOf(',');
+                    divFollowed.InnerHtml = strTwtArray.Substring(index + 1);
                 }
                 catch (Exception Err)
                 {
@@ -78,7 +103,7 @@ namespace SocialSuitePro.Reports
                 }
                 try
                 {
-                strIncomingMsg = objtwtStatsHelper.getIncomingMsg(user, twtProfileId,15);
+                    strIncomingMsg = objtwtStatsHelper.getIncomingMsg( twtProfileId, 15);
                 }
                 catch (Exception Err)
                 {
@@ -86,7 +111,7 @@ namespace SocialSuitePro.Reports
                 }
                 try
                 {
-                    strDmRecieve = objtwtStatsHelper.getDirectMessageRecieve(user, twtProfileId);
+                    strDmRecieve = objtwtStatsHelper.getDirectMessageRecieve( twtProfileId, 15);
                 }
                 catch (Exception Err)
                 {
@@ -94,7 +119,7 @@ namespace SocialSuitePro.Reports
                 }
                 try
                 {
-                strDMSent = objtwtStatsHelper.getDirectMessageSent(user, twtProfileId);
+                    strDMSent = objtwtStatsHelper.getDirectMessageSent(twtProfileId, 15);
                 }
                 catch (Exception Err)
                 {
@@ -102,7 +127,7 @@ namespace SocialSuitePro.Reports
                 }
                 try
                 {
-                strSentMsg = objtwtStatsHelper.getSentMsg(user, twtProfileId,15);
+                    strSentMsg = objtwtStatsHelper.getSentMsg(twtProfileId, 15);
                 }
                 catch (Exception Err)
                 {
@@ -110,7 +135,7 @@ namespace SocialSuitePro.Reports
                 }
                 try
                 {
-                strRetweet = objtwtStatsHelper.getRetweets(user, twtProfileId,15);
+                    strRetweet = objtwtStatsHelper.getRetweets(twtProfileId, 15);
                 }
                 catch (Exception Err)
                 {
@@ -118,7 +143,7 @@ namespace SocialSuitePro.Reports
                 }
                 try
                 {
-                strEngInf = objtwtStatsHelper.getEngagements(user, twtProfileId,15) + "@" + objtwtStatsHelper.getInfluence(user, twtProfileId,15);
+                    strEngInf = objtwtStatsHelper.getEngagements(twtProfileId, 15) + "@" + objtwtStatsHelper.getInfluence( twtProfileId, 15) + "@" + objtwtStatsHelper.getdate(twtProfileId, 15);
                 }
                 catch (Exception Err)
                 {
@@ -129,22 +154,37 @@ namespace SocialSuitePro.Reports
                     strAgeDiff = objtwtStatsRepo.getAgeDiffCount(twtProfileId, 15);
                 }
                 catch (Exception Err)
-                { 
-                    
+                {
+                    Console.Write(Err.StackTrace);
                 }
+
+                try
+                {
+                    strTwtMention = objtwtStatsHelper.getTwtMention(twtProfileId, 15);
+                }
+                catch (Exception Err)
+                {
+                    Console.Write(Err.StackTrace);
+                }
+
+
                 var strgenderTwt = Session["twtGender"].ToString().Split(',');
-                divtwtMale.InnerHtml = strgenderTwt[0] + "%";
-                divtwtfeMale.InnerHtml = strgenderTwt[1]+"%";
+                //divtwtMale.InnerHtml = strgenderTwt[0] + "%";
+               // divtwtfeMale.InnerHtml = strgenderTwt[1] + "%";
             }
         }
 
         protected void btnfifteen_Click(object sender, EventArgs e)
         {
             SocioBoard.Domain.User user = (User)Session["LoggedUser"];
+            twtProfileId = Session["twtProfileId"].ToString();
+
+            TwtProfileDetails(twtProfileId);
+
             spandiv.InnerHtml = "from " + DateTime.Now.AddDays(-15).ToShortDateString() + "-" + DateTime.Now.ToShortDateString();
             try
             {
-                strTwtArray = objtwtStatsHelper.getNewFollowers(user, twtProfileId,15);
+                strTwtArray = objtwtStatsHelper.getNewFollowers(twtProfileId, 15);
             }
             catch (Exception Err)
             {
@@ -152,7 +192,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strTwtFollowing = objtwtStatsHelper.getNewFollowing(user, twtProfileId, 15);
+                strTwtFollowing = objtwtStatsHelper.getNewFollowing(twtProfileId, 15);
             }
             catch (Exception Err)
             {
@@ -168,7 +208,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strIncomingMsg = objtwtStatsHelper.getIncomingMsg(user, twtProfileId, 15);
+                strIncomingMsg = objtwtStatsHelper.getIncomingMsg(twtProfileId, 15);
             }
             catch (Exception Err)
             {
@@ -176,7 +216,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strDmRecieve = objtwtStatsHelper.getDirectMessageRecieve(user, twtProfileId);
+               strDmRecieve = objtwtStatsHelper.getDirectMessageRecieve(twtProfileId, 15);
             }
             catch (Exception Err)
             {
@@ -184,7 +224,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strDMSent = objtwtStatsHelper.getDirectMessageSent(user, twtProfileId);
+                strDMSent = objtwtStatsHelper.getDirectMessageSent(twtProfileId, 15);
             }
             catch (Exception Err)
             {
@@ -192,7 +232,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strSentMsg = objtwtStatsHelper.getSentMsg(user, twtProfileId, 15);
+                strSentMsg = objtwtStatsHelper.getSentMsg(twtProfileId, 15);
             }
             catch (Exception Err)
             {
@@ -200,7 +240,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strRetweet = objtwtStatsHelper.getRetweets(user, twtProfileId, 15);
+                strRetweet = objtwtStatsHelper.getRetweets(twtProfileId, 15);
             }
             catch (Exception Err)
             {
@@ -208,7 +248,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strEngInf = objtwtStatsHelper.getEngagements(user, twtProfileId,15) + "@" + objtwtStatsHelper.getInfluence(user, twtProfileId,15);
+                strEngInf = objtwtStatsHelper.getEngagements(twtProfileId, 15) + "@" + objtwtStatsHelper.getInfluence(twtProfileId, 15) + "@" + objtwtStatsHelper.getdate( twtProfileId, 15);
             }
             catch (Exception Err)
             {
@@ -222,15 +262,31 @@ namespace SocialSuitePro.Reports
             {
                 Console.Write(Err.StackTrace);
             }
+
+            try
+            {
+                strTwtMention = objtwtStatsHelper.getTwtMention(twtProfileId, 15);
+            }
+            catch (Exception Err)
+            {
+                Console.Write(Err.StackTrace);
+            }
+
+
+
+
+        
         }
 
         protected void btnthirty_Click(object sender, EventArgs e)
         {
             SocioBoard.Domain.User user = (User)Session["LoggedUser"];
+            twtProfileId = Session["twtProfileId"].ToString();
+            TwtProfileDetails(twtProfileId);
             spandiv.InnerHtml = "from " + DateTime.Now.AddDays(-30).ToShortDateString() + "-" + DateTime.Now.ToShortDateString();
             try
             {
-                strTwtArray = objtwtStatsHelper.getNewFollowers(user, twtProfileId,30);
+                strTwtArray = objtwtStatsHelper.getNewFollowers(twtProfileId, 30);
             }
             catch (Exception Err)
             {
@@ -238,7 +294,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strTwtFollowing = objtwtStatsHelper.getNewFollowing(user, twtProfileId, 30);
+                strTwtFollowing = objtwtStatsHelper.getNewFollowing( twtProfileId, 30);
             }
             catch (Exception Err)
             {
@@ -246,7 +302,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strTwtAge = objtwtStatsHelper.GetFollowersAgeWise(user,30);
+                strTwtAge = objtwtStatsHelper.GetFollowersAgeWise(user, 30);
             }
             catch (Exception Err)
             {
@@ -254,7 +310,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strIncomingMsg = objtwtStatsHelper.getIncomingMsg(user, twtProfileId, 30);
+                strIncomingMsg = objtwtStatsHelper.getIncomingMsg(twtProfileId, 30);
             }
             catch (Exception Err)
             {
@@ -262,7 +318,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strDmRecieve = objtwtStatsHelper.getDirectMessageRecieve(user, twtProfileId);
+                strDmRecieve = objtwtStatsHelper.getDirectMessageRecieve(twtProfileId, 30);
             }
             catch (Exception Err)
             {
@@ -270,7 +326,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strDMSent = objtwtStatsHelper.getDirectMessageSent(user, twtProfileId);
+                strDMSent = objtwtStatsHelper.getDirectMessageSent(twtProfileId, 30);
             }
             catch (Exception Err)
             {
@@ -278,7 +334,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strSentMsg = objtwtStatsHelper.getSentMsg(user, twtProfileId, 30);
+                strSentMsg = objtwtStatsHelper.getSentMsg(twtProfileId, 30);
             }
             catch (Exception Err)
             {
@@ -286,7 +342,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strRetweet = objtwtStatsHelper.getRetweets(user, twtProfileId,30);
+                strRetweet = objtwtStatsHelper.getRetweets( twtProfileId, 30);
             }
             catch (Exception Err)
             {
@@ -294,7 +350,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strEngInf = objtwtStatsHelper.getEngagements(user, twtProfileId,15) + "@" + objtwtStatsHelper.getInfluence(user, twtProfileId,30);
+                strEngInf = objtwtStatsHelper.getEngagements(twtProfileId, 30) + "@" + objtwtStatsHelper.getInfluence( twtProfileId, 30) + "@" + objtwtStatsHelper.getdate( twtProfileId, 30);
             }
             catch (Exception Err)
             {
@@ -302,21 +358,36 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strAgeDiff = objtwtStatsRepo.getAgeDiffCount(twtProfileId,30);
+                strAgeDiff = objtwtStatsRepo.getAgeDiffCount(twtProfileId, 30);
             }
             catch (Exception Err)
             {
                 Console.Write(Err.StackTrace);
             }
+
+            try
+            {
+                strTwtMention = objtwtStatsHelper.getTwtMention(twtProfileId, 30);
+            }
+            catch (Exception Err)
+            {
+                Console.Write(Err.StackTrace);
+            }
+
+
+
+
         }
 
         protected void btnsixty_Click(object sender, EventArgs e)
         {
             SocioBoard.Domain.User user = (User)Session["LoggedUser"];
+            twtProfileId = Session["twtProfileId"].ToString();
+            TwtProfileDetails(twtProfileId);
             spandiv.InnerHtml = "from " + DateTime.Now.AddDays(-60).ToShortDateString() + "-" + DateTime.Now.ToShortDateString();
             try
             {
-                strTwtArray = objtwtStatsHelper.getNewFollowers(user, twtProfileId,60);
+                strTwtArray = objtwtStatsHelper.getNewFollowers( twtProfileId, 60);
             }
             catch (Exception Err)
             {
@@ -324,7 +395,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strTwtFollowing = objtwtStatsHelper.getNewFollowing(user, twtProfileId, 60);
+                strTwtFollowing = objtwtStatsHelper.getNewFollowing( twtProfileId, 60);
             }
             catch (Exception Err)
             {
@@ -340,7 +411,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strIncomingMsg = objtwtStatsHelper.getIncomingMsg(user, twtProfileId,60);
+                strIncomingMsg = objtwtStatsHelper.getIncomingMsg( twtProfileId, 60);
             }
             catch (Exception Err)
             {
@@ -348,7 +419,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strDmRecieve = objtwtStatsHelper.getDirectMessageRecieve(user, twtProfileId);
+                strDmRecieve = objtwtStatsHelper.getDirectMessageRecieve(twtProfileId, 60);
             }
             catch (Exception Err)
             {
@@ -356,7 +427,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strDMSent = objtwtStatsHelper.getDirectMessageSent(user, twtProfileId);
+                strDMSent = objtwtStatsHelper.getDirectMessageSent(twtProfileId, 60);
             }
             catch (Exception Err)
             {
@@ -364,7 +435,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strSentMsg = objtwtStatsHelper.getSentMsg(user, twtProfileId, 60);
+                strSentMsg = objtwtStatsHelper.getSentMsg(twtProfileId, 60);
             }
             catch (Exception Err)
             {
@@ -372,7 +443,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strRetweet = objtwtStatsHelper.getRetweets(user, twtProfileId,60);
+                strRetweet = objtwtStatsHelper.getRetweets( twtProfileId, 60);
             }
             catch (Exception Err)
             {
@@ -380,7 +451,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strEngInf = objtwtStatsHelper.getEngagements(user, twtProfileId,15) + "@" + objtwtStatsHelper.getInfluence(user, twtProfileId,60);
+                strEngInf = objtwtStatsHelper.getEngagements(twtProfileId, 60) + "@" + objtwtStatsHelper.getInfluence(twtProfileId, 60) + "@" + objtwtStatsHelper.getdate( twtProfileId, 60);
             }
             catch (Exception Err)
             {
@@ -394,15 +465,32 @@ namespace SocialSuitePro.Reports
             {
                 Console.Write(Err.StackTrace);
             }
+
+            try
+            {
+                strTwtMention = objtwtStatsHelper.getTwtMention(twtProfileId, 60);
+            }
+            catch (Exception Err)
+            {
+                Console.Write(Err.StackTrace);
+            }
+
+
+
+
+
+
         }
 
         protected void btnninty_Click(object sender, EventArgs e)
         {
             SocioBoard.Domain.User user = (User)Session["LoggedUser"];
+            twtProfileId = Session["twtProfileId"].ToString();
+            TwtProfileDetails(twtProfileId);
             spandiv.InnerHtml = "from " + DateTime.Now.AddDays(-90).ToShortDateString() + "-" + DateTime.Now.ToShortDateString();
             try
             {
-                strTwtArray = objtwtStatsHelper.getNewFollowers(user, twtProfileId,90);
+                strTwtArray = objtwtStatsHelper.getNewFollowers(twtProfileId, 90);
             }
             catch (Exception Err)
             {
@@ -410,7 +498,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strTwtFollowing = objtwtStatsHelper.getNewFollowing(user, twtProfileId, 90);
+                strTwtFollowing = objtwtStatsHelper.getNewFollowing(twtProfileId, 90);
             }
             catch (Exception Err)
             {
@@ -426,7 +514,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strIncomingMsg = objtwtStatsHelper.getIncomingMsg(user, twtProfileId,90);
+                strIncomingMsg = objtwtStatsHelper.getIncomingMsg(twtProfileId, 90);
             }
             catch (Exception Err)
             {
@@ -434,7 +522,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strDmRecieve = objtwtStatsHelper.getDirectMessageRecieve(user, twtProfileId);
+                strDmRecieve = objtwtStatsHelper.getDirectMessageRecieve(twtProfileId, 90);
             }
             catch (Exception Err)
             {
@@ -442,7 +530,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strDMSent = objtwtStatsHelper.getDirectMessageSent(user, twtProfileId);
+                strDMSent = objtwtStatsHelper.getDirectMessageSent(twtProfileId, 90);
             }
             catch (Exception Err)
             {
@@ -450,7 +538,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strSentMsg = objtwtStatsHelper.getSentMsg(user, twtProfileId, 90);
+                strSentMsg = objtwtStatsHelper.getSentMsg( twtProfileId, 90);
             }
             catch (Exception Err)
             {
@@ -458,7 +546,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strRetweet = objtwtStatsHelper.getRetweets(user, twtProfileId,90);
+                strRetweet = objtwtStatsHelper.getRetweets(twtProfileId, 90);
             }
             catch (Exception Err)
             {
@@ -466,7 +554,7 @@ namespace SocialSuitePro.Reports
             }
             try
             {
-                strEngInf = objtwtStatsHelper.getEngagements(user, twtProfileId,15) + "@" + objtwtStatsHelper.getInfluence(user, twtProfileId,90);
+                strEngInf = objtwtStatsHelper.getEngagements(twtProfileId, 90) + "@" + objtwtStatsHelper.getInfluence( twtProfileId, 90) + "@" + objtwtStatsHelper.getdate(twtProfileId, 90);
             }
             catch (Exception Err)
             {
@@ -480,6 +568,37 @@ namespace SocialSuitePro.Reports
             {
                 Console.Write(Err.StackTrace);
             }
+
+            try
+            {
+                strTwtMention = objtwtStatsHelper.getTwtMention(twtProfileId, 90);
+            }
+            catch (Exception Err)
+            {
+                Console.Write(Err.StackTrace);
+            }
+
+
+
+
         }
+
+
+
+        protected void TwtProfileDetails(string twtid)
+        {
+            TwitterAccountRepository objtwtAccRepo = new TwitterAccountRepository();
+            TwitterAccount arrTwtAcc = objtwtAccRepo.getUserInfo(twtid);
+
+            twtProfileId = arrTwtAcc.TwitterUserId;
+            divnameId.InnerHtml = arrTwtAcc.TwitterScreenName;
+            profileImg.ImageUrl = arrTwtAcc.ProfileImageUrl;
+            spanFollowers.InnerHtml = arrTwtAcc.FollowersCount.ToString();
+
+        }
+
+
+
+
     }
 }

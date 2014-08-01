@@ -54,6 +54,7 @@ function Countmessagewords() {
     var Fbidcount = 0;
     var twtIdcount = 0;
     var LinkedInIdcount = 0;
+    var tumblrIdcount = 0;
     var totalmessagewords1 = 0;
     var chkidforusertest = new Array();
 
@@ -84,15 +85,18 @@ function Countmessagewords() {
             if (arr[0].indexOf("lin") != -1) {
                 LinkedInIdcount++;
             }
+            if (arr[0].indexOf("lin") != -1) {
+                tumblrIdcount++;
+            }
         } catch (e) {
 
         }
     }
 
-    if (Fbidcount > 0 && twtIdcount == 0 && LinkedInIdcount == 0) {
+    if (Fbidcount > 0 && twtIdcount == 0 && LinkedInIdcount == 0 && tumblrIdcount == 0) {
         totalmessagewords1 = 5000;
     }
-    else if (Fbidcount >= 0 && twtIdcount == 0 && LinkedInIdcount > 0) {
+    else if (Fbidcount >= 0 && twtIdcount == 0 && LinkedInIdcount > 0 && tumblrIdcount == 0) {
         totalmessagewords1 = 700;
     }
 

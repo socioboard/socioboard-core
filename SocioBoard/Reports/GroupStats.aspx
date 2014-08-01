@@ -19,7 +19,7 @@
         {
             width: auto;
             float: right;
-            margin-top: 17px;
+            margin-top: 8px;
         }
         .knob
         {
@@ -43,20 +43,20 @@
         <div id="sidebar">
             <div class="sidebar-inner">
                 <a href="#" class="btn actives">GROUP REPORT
-                    <img src="../Contents/img/admin/boxes.png" alt="" class="pull-right" /></a>
+                    <img src="../Contents/img/admin/boxes.png" alt="" class="pull-right pulimg" /></a>
                 <a href="FacebookReport.aspx" class="btn">Facebook Pages
-                    <img src="../Contents/img/admin/fbicon2.png" alt="" class="pull-right" /></a>
+                    <img src="../Contents/img/admin/fbicon2.png" alt="" class="pull-right pulimg" /></a>
                 <a href="TwitterReport.aspx" class="btn">Twitter Reports
-                    <img src="../Contents/img/admin/twittericon2.png" alt="" class="pull-right" /></a>
+                    <img src="../Contents/img/admin/twittericon2.png" alt="" class="pull-right pulimg" /></a>
                 <a href="TeamReport.aspx" class="btn">Team Report
-                    <img src="../Contents/img/admin/peoples.png" alt="" class="pull-right" /></a>
+                    <img src="../Contents/img/admin/peoples.png" alt="" class="pull-right pulimg" /></a>
                      <%-- <a class="btn" href="GoogleAnalytics.aspx">Google Analytics Report <img class="pull-right" alt="" src="../Contents/img/admin/peoples.png"></a>	--%>
                 <%--	<a href="#" class="btn">Twitter Comparison <img src="../Contents/img/admin/loopback.png" alt="" class="pull-right" /></a>
 					<a href="#" class="btn">Sent Message <img src="../Contents/img/admin/bar-chart.png" alt="" class="pull-right" /></a>				--%>
             </div>
         </div>
         <div id="contentcontainer-report">
-            <div id="content" style="margin-left: -115px; width: 855px;">
+            <div id="content" style="margin-left: -174px; width: 855px;">
                 <%--<div class="alert alert-suite-grey">
 							<div class="title">
 								<h1>Inter</h1>

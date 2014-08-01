@@ -159,6 +159,105 @@ namespace SocioBoard.Model
                 }//End Transaction
             }//End Session
         }
+        public List<Groups> getAllGroupsCompleteDetails(Guid Userid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    List<Groups> alstFBAccounts = session.CreateQuery("from Groups where UserId = :userid and GroupName !='Socioboard'")
+                    .SetParameter("userid", Userid)
+                    .List<Groups>()
+                    .ToList<Groups>();
+
+                    #region oldcode
+                    //List<Groups> alstFBAccounts = new List<Groups>();
+
+                    //  foreach (Groups item in query.Enumerable())
+                    //  {
+                    //      alstFBAccounts.Add(item);
+                    //  }
+                    //   
+                    #endregion
+                    return alstFBAccounts;
+                }//End Transaction
+            }//End Session
+        }
+
+
+
+        public Groups getGroupDetail(Guid userid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+
+                        List<Groups> lstDetails = session.CreateQuery("from Groups where UserId=:userid and GroupName='Socioboard'")
+
+                        .SetParameter("userid", userid)
+                       .List<Groups>()
+                       .ToList<Groups>();
+                        return lstDetails[0];
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+
+
+
+
+
+
+
+
+
+
+        public Groups getGroupName(Guid id)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                  
+                        List<Groups> lstDetails = session.CreateQuery("from Groups where Id=:id ")
+
+                        .SetParameter("id", id)
+                       .List<Groups>()
+                       .ToList<Groups>();
+                        return lstDetails[0];
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+
+
+
+
+
+
 
 
         /// <checkGroupExists>
@@ -328,6 +427,69 @@ namespace SocioBoard.Model
                 }//End Transaction
             }//End Session
         }
+
+
+
+
+
+
+
+        public ArrayList getAllGroupsDetails(Guid GroupIde)
+        {
+
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    NHibernate.IQuery query = session.CreateSQLQuery("Select * from groups where Id=:GroupIde")
+                   .SetParameter("GroupIde", GroupIde);
+                    ArrayList alstStats = new ArrayList();
+
+                    foreach (var item in query.List())
+                    {
+                        alstStats.Add(item);
+                    }
+                    return alstStats;
+
+                }
+            }
+
+        }
+
+
+
+        public List<Groups> getAllGroupsDetail(Guid GroupIde)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //proceed action, to get all messages by user id and profileid.
+                        List<Groups> lstDetails = session.CreateQuery("from Groups where Id=:GroupIde")
+                       .SetParameter("GroupIde", GroupIde)
+                       .List<Groups>()
+                       .ToList<Groups>();
+                        return lstDetails;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+
+
+
+
+
+
 
 
     }

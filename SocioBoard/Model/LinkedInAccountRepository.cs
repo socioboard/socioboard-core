@@ -71,16 +71,13 @@ namespace SocioBoard.Model
         /// <param name="liaccount">Set Values in a LinkedInAccount Class Property and Pass the Object of LinkedInAccount Class (SocioBoard.Domain.LinkedInAccount).</param>
         public void updateLinkedinUser(LinkedInAccount liaccount)
         {
-            //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
-                //After Session creation, start Transaction. 
                 using (NHibernate.ITransaction transaction = session.BeginTransaction())
                 {
                     try
                     {
-                        //Proceed action, to update user linkedin account deatils
-                        session.CreateQuery("Update LinkedInAccount set LinkedinUserName =:LinkedinUserName,OAuthToken =:OAuthToken,OAuthSecret=:OAuthSecret,OAuthVerifier=:OAuthVerifier,EmailId=:EmailId,Connections=:Connections,ProfileUrl =:profileurl where LinkedinUserId = :LinkedinUserId and UserId = :UserId")
+                        session.CreateQuery("Update LinkedInAccount set LinkedinUserName =:LinkedinUserName,OAuthToken =:OAuthToken,OAuthSecret=:OAuthSecret,OAuthVerifier=:OAuthVerifier,EmailId=:EmailId,Connections=:Connections,ProfileUrl =:profileurl,ProfileImageUrl=:profilepicurl where LinkedinUserId = :LinkedinUserId and UserId = :UserId")
                             .SetParameter("LinkedinUserName", liaccount.LinkedinUserName)
                             .SetParameter("OAuthToken", liaccount.OAuthToken)
                             .SetParameter("OAuthSecret", liaccount.OAuthSecret)
@@ -89,6 +86,7 @@ namespace SocioBoard.Model
                             .SetParameter("LinkedinUserId", liaccount.LinkedinUserId)
                             .SetParameter("UserId", liaccount.UserId)
                             .SetParameter("profileurl", liaccount.ProfileUrl)
+                             .SetParameter("profilepicurl", liaccount.ProfileImageUrl)
                             .SetParameter("Connections", liaccount.Connections)
                             .ExecuteUpdate();
                         transaction.Commit();
@@ -98,8 +96,8 @@ namespace SocioBoard.Model
                         Console.WriteLine(ex.StackTrace);
                         // return 0;
                     }
-                }//End Transaction
-            }//End Session
+                }
+            }
         }
 
 
@@ -176,6 +174,58 @@ namespace SocioBoard.Model
                 }//End Transaction
             }//End Session
         }
+
+
+
+
+        public List<LinkedInAccount> getAllAccountDetail(string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        string str = "from LinkedInAccount where  LinkedinUserId IN(";
+                        string[] arrsrt = profileid.Split(',');
+                        foreach (string sstr in arrsrt)
+                        {
+                            str += "'"+(sstr) +"'"+ ",";
+                        }
+                        str = str.Substring(0, str.Length - 1);
+                        str += ") group by LinkedinUserId";
+                        List<LinkedInAccount> alst = session.CreateQuery(str)
+                       .List<LinkedInAccount>()
+                       .ToList<LinkedInAccount>();
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Trasaction
+            }//End session
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         /// <getAllLinkedinAccounts>
@@ -309,6 +359,54 @@ namespace SocioBoard.Model
                 }//End Transaction
             }//End Session
         }
+
+
+
+
+        public LinkedInAccount getUserInformation(string liuserid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction. 
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get details of account.
+                        List<LinkedInAccount> objlst = session.CreateQuery("from LinkedInAccount where LinkedinUserId = :LinkedinUserId ")                    
+                        .SetParameter("LinkedinUserId", liuserid)
+                        .List<LinkedInAccount>().ToList<LinkedInAccount>();
+                        LinkedInAccount result = new LinkedInAccount();
+                        if (objlst.Count > 0)
+                        {
+                            result = objlst[0];
+                        }
+                        return result;
+                       
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         /// <DeleteLinkedInAccountByUserid>

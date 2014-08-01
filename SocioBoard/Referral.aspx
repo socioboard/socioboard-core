@@ -1,9 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Referral.aspx.cs" Inherits="SocioBoard.Referrals1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Referral.aspx.cs" Inherits="SocioBoard.Referral" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title>Referral</title>
+    <link rel="shortcut icon" href="Contents/img/ssp/logo-bg.png" type="image/x-icon">
     <script src="Contents/js/jquery-1.9.1.min.js" type="text/javascript"></script>
     <link rel="Stylesheet" type="text/css" href="Contents/css/socialsuite.css" />
     <script type="text/javascript" charset="utf-8">
@@ -12,9 +13,9 @@
 
         var csPageOptions = {
 
-                      domain_key: "QHBFU6D43BDCTQJT3XVZ", //socioboard.com
+                     // domain_key: "QHBFU6D43BDCTQJT3XVZ", //socioboard.com
                       //domain_key: "J4FZ2BEGUE3MR8F7Y8ZA",//dev
-            //domain_key: "TWKAHHLNJW4RYVFGMHPL",//local
+            domain_key: "TWKAHHLNJW4RYVFGMHPL",//local
             afterSubmitContacts: function (array_of_contacts) {
                 var allcheckedmail = '';
                 for (i in array_of_contacts) {

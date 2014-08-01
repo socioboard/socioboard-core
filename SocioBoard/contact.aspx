@@ -16,12 +16,23 @@
             var email = $('#email').val();
             var Subject = $('#Subject').val();
             var profile = $('#profile').val();
-          //  if (name == "" || lname == "" || email == "" || Subject == "" || profile == "") {
-             if (name == "" || email == ""|| profile == "") {
+            //  if (name == "" || lname == "" || email == "" || Subject == "" || profile == "") {
+            if (name == "" || email == "" || profile == "") {
                 alert('Please fill all the fields')
                 return false;
             }
-             {
+            {
+
+
+                if (!validateFName(name)) {
+                    alert('Please enter valid First Name');
+                    return false;
+                }
+                else if (!validateLName(lname)) {
+                    alert('Please enter valid Last Name');
+                    return false;
+                }
+              
                 if (!validateEmail(email)) {
                     alert('not valid email');
                     return false;
@@ -74,6 +85,35 @@
             return true;
         }
     }
+
+
+    function validateFName($name) {
+        var fnameReg = /^[a-z._]+$/;
+        if (!fnameReg.test($name)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    function validateLName($lname) {
+
+        var lnameReg = /^[a-z._]+$/;
+        if (!lnameReg.test($lname)) {
+            return false;
+        } else {
+            return true;
+        }
+
+
+    }
+
+
+
+
+
+
+
+
 </script>
 
 <hr />

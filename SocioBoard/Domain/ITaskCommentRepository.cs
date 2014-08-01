@@ -9,6 +9,6 @@ namespace SocioBoard.Domain
     interface ITaskCommentRepository
     {
         void addTaskComment(TaskComment taskcomment);
-        ArrayList getAllTasksCommentOfUser(Guid UserId, Guid TaskId);
+        ArrayList getAllTasksCommentOfUser(Guid TaskId);
     }
 }

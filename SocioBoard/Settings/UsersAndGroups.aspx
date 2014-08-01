@@ -66,12 +66,21 @@
                             <input id="txtGroupName" name="txtGroupName" type="text" />
                         </div>
                         <ul>
-                            <li><a id="TwitterOAuth" runat="server" onserverclick="TwitterOAuthRedirect" >
+                           <%-- <li><a id="TwitterOAuth" runat="server" onserverclick="TwitterOAuthRedirect" >
+                          
                                 <img src="../Contents/img/twt_icon.png" width="16" height="16" alt="" />
                                 <span>Twitter</span> </a></li>
                             <li><a id="facebook_connect" runat="server" onserverclick="FacebookRedirect" >
                                 <img src="../Contents/img/fb_24X24.png" width="16" height="16" alt="" />
-                                <span>Facebook</span> </a></li>
+                                <span>Facebook</span> </a></li>--%>
+
+                                 <li><a id="creategroup" runat="server" onserverclick="CreateGroups" >                  
+                                <img src="../Contents/img/twt_icon.png" width="16" height="16" alt="" />
+                                <span>Submit</span> </a></li>
+
+
+
+
                         </ul>
                     </div>
                     <div id="Div1" class="email_div">
@@ -133,19 +142,65 @@
                         </div>
                     </div>
                 </div>
-                <div class="userandgroups">
+            
+
+
+
+   <div class="userandgroups">
                     <div class="invite_friends">
-                        Team Members <a runat="server" id="inviteteamfromUserAndGroups" href="#">
+                      Invite Team Members <a runat="server" id="inviteteamfromUserAndGroups" href="#">
                             <input id="Button3" onclick="gettingSessionForGroup();" type="button" value="Invite a New Team Member" />
                         </a>
+
+                     <div id= "invitememberdetails" style="margin-top:10px">
+                     
+                   <%--  <div id="item">
+                     <div style="float:inherit">
+                     <span class="img">
+                        <img width="48" height="48" src="" alt="">
+                        <i>
+                        </span></div>                    
+                     <div class="fourfifth">
+                        <div style="font-size:small font">AbhayKumar</div>
+                                                </div>
+                     </div>--%>
+                     
+                     
+                     </div>
+
+
+
                     </div>
-                    <div class="first_name_last_name_div">
-                    </div>
-                    <div class="email_div">
-                        <div id="inviTeamMem" runat="server">
-                        </div>
-                    </div>
+                   
                 </div>
+
+  <div class="userandgroups">
+                    <div class="invite_friends">                    
+                     <div id= "InviteMemberAddProfiles" style="margin-top:10px;">
+                     
+                  <%-- <div id="item" style="float:left">
+                     <div style="float:left">
+                     <span class="img">
+                        <img width="48" height="48" src="../Contents/img/instagram_24X24.png" alt=""/>
+                       <i><img style="margin-left:-18px" width="16" height="16" src="../Contents/img/instagram_24X24.png" alt=""/></i>
+                        </span>
+                        
+                    </div>                    
+                    <div  style="float:left">
+                        <div style="font-size:small">AbhayKumar</div>
+                                                </div>
+                     </div> --%>  
+                      
+                     
+                     
+                     
+                     
+                                                        
+                     </div>
+                    </div>                   
+                </div>
+
+
                 <div class="ws_tm_button_div">
                
     
@@ -194,15 +249,15 @@
                 for (var i = 0; i < countdiv.length; i++) {
                     var stringidchk = countdiv[i].id.split('_');
 
-                    $("#usergroups_" + stringidchk[1]).hide();
-
+                    //$("#usergroups_" + stringidchk[1]).hide();
                 }
-
             }
+
+
         });
-
-
-
+       // alert(id);
+        GetAllInviteMembers(id);
+        //alert(id);
     }
 
 
@@ -210,6 +265,198 @@
     function GetGroupName(profilename) {
 
     }
+
+
+    function GetAllInviteMembers(id) {
+        debugger;
+       // alert(id);
+
+        var groupid = id.split('_');     
+        var actualgroupid = document.getElementById("itemid_" + groupid[1]).innerHTML;
+        try {
+            $.ajax({
+                type: "POST",
+                url: "../Settings/AjaxInsertGroup.aspx?op=GetInviteMember&groupId=" + actualgroupid,
+                data: '',
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (msg) {
+                    // alert(msg);
+                    $('#invitememberdetails').html(msg);
+
+                }
+            });
+        } catch (e) {
+
+        }
+    
+    }
+
+
+    function ShowInviteMemberProfileDetails(groupid, emailid, userid) {
+
+        try {
+            $.ajax({
+                type: "POST",
+                url: "../Settings/AjaxInsertGroup.aspx?op=ShowInviteMemberProfileDetails&groupId=" + groupid + "&emailid=" + emailid + "&userid=" + userid,
+                data: '',
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (msg) {
+                    // alert(msg);
+                    $('#InviteMemberAddProfiles').html(msg);
+
+                }
+            });
+        } catch (e) {
+
+        }
+
+    }
+
+
+    function RemoveInviteMemberFromGroup(id) {
+        try {
+            $.ajax({
+                type: "POST",
+                url: "../Settings/AjaxInsertGroup.aspx?op=RemoveInviteMemberFromGroup&Id=" + id,
+                data: '',
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (msg) {
+                    window.location.reload();
+                }
+            });
+        } catch (e) {
+
+        }
+
+    }
+
+//    function RemoveInviteMemberProfileFromTeamMember(teamid, profileid) {
+//        try {
+//            $.ajax({
+//                type: "POST",
+//                url: "../Settings/AjaxInsertGroup.aspx?op=RemoveInviteMemberProfileFromTeamMember&TeamId=" + teamid + "&ProfileId=" + profileid,
+//                data: '',
+//                contentType: "application/json; charset=utf-8",
+//                dataType: "html",
+//                success: function (msg) {
+//                    window.location.reload();
+//                }
+//            });
+
+//        } catch (e) {
+
+//        }
+//    
+//    
+    //     }
+
+
+
+
+
+    //write by Hozefa 4-7-2014
+  function RemoveInviteMemberProfileFromTeamMember(teamid, profileid,grpId,emailId,userId) {
+        try {
+            $.ajax({
+                type: "POST",
+                url: "../Settings/AjaxInsertGroup.aspx?op=RemoveInviteMemberProfileFromTeamMember&TeamId=" + teamid + "&ProfileId=" + profileid,
+                data: '',
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (msg) {
+                    // window.location.reload();
+                    ShowInviteMemberProfileDetails(grpId, emailId, userId)
+                }
+            });
+
+        } catch (e) {
+
+        }
+    
+    
+     }
+
+
+
+
+
+
+//     function AddProfileInInviteTeamMember(profileid, groupid, profiletype) {
+//         try {
+
+//             debugger;
+//             var teamid = $("input[type='radio'].abc:checked").val();
+//             if (teamid == null) { 
+//            alert('please select invited member!')
+//            }
+
+//             $.ajax
+//        ({
+//            type: "POST",
+//            url: "../Settings/AjaxInsertGroup.aspx?op=AddProfileInInviteTeamMember&Profileid=" + profileid + "&Groupid =" + groupid + "&Profiletype=" + profiletype+"&Teamid="+teamid,
+//            data: '',
+//            contentType: "application/json; charset=utf-8",
+//            dataType: "html",
+//            success: function (msg) {
+//                window.location.reload();
+
+
+//            }
+//        });
+
+
+//         }
+//         catch (ees) {
+
+//         }
+//     }
+
+     function AddProfileInInviteTeamMember(profileid, groupid, profiletype) {
+         try {
+
+             debugger;
+             var teamid = $("input[type='radio'].abc:checked").val();
+             if (teamid == null) {
+                 alert('please select invited member!')
+                 return false;
+             }
+
+             $.ajax
+        ({
+            type: "POST",
+            url: "../Settings/AjaxInsertGroup.aspx?op=AddProfileInInviteTeamMember&Profileid=" + profileid + "&Groupid=" + groupid + "&Profiletype=" + profiletype + "&Teamid=" + teamid,
+            data: '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (msg) {
+                //window.location.reload();
+
+                var requestdata = msg.split("_");
+                var result = requestdata[0];
+                var EmailId = requestdata[1];
+                var uId = null;
+                if (result == "Fail") {
+                    alert("This Profile is Already Added.");
+                }
+                else {
+                    ShowInviteMemberProfileDetails(groupid, EmailId, uId)
+                }
+
+            }
+        });
+
+
+         }
+         catch (e) {
+
+         }
+     }
+
+
+
 
 
 

@@ -1,11 +1,17 @@
 ﻿
-function publishcontent(id) {
+function publishcontent(id,msg,msgid) {
     debugger;
     if (id == "schedulemessage") {
         $("#content").css('display', 'block');
         $("#content_wooqueue").css('display', 'none');
         $("#content_drafts").css('display', 'none');
         $("#content_rsspost").css('display', 'none');
+        var mmsg = '';
+        if (msg != "") {
+            mmsg = msg;
+            $("#textareavaluetosendmessage_scheduler").val(mmsg);
+            $('#schedulemessage').attr('msgid', msgid);
+        }
     }
     else if (id == "wooqueue") {
         debugger;
@@ -59,13 +65,29 @@ function publishcontent(id) {
     }
 }
 
+
+
+
+
 function saveDrafts() {
     debugger;
     try {
+        var msgid = $('#schedulemessage').attr('msgid');
         var message = $("#textareavaluetosendmessage_scheduler").val().trim();
-        if (message != '') {
-            debugger;
-            $.ajax
+        if (message == "") {
+            alert('Please enter Message');
+            return false;
+        }
+        if (msgid !== undefined) {
+            editDraftsMessg(msgid, message);
+            $('#schedulemessage').removeAttr('msgid');
+            $('#textareavaluetosendmessage_scheduler').val('');
+            alertify.success("Updated Successfully");
+        }
+        else {
+            if (message != '') {
+                debugger;
+                $.ajax
         ({
             type: "POST",
             url: "../AjaxHome.aspx?op=savedrafts&message=" + message,
@@ -80,18 +102,33 @@ function saveDrafts() {
             }
         });
 
-        }
-        else {
-            debugger;
-            $("#messageCount_scheduler").css('color', 'pink');
-            $("#messageCount_scheduler").html('Please Enter Message To Save Drafts');
-        }
+            }
+            else {
+                debugger;
+                $("#messageCount_scheduler").css('color', 'pink');
+                $("#messageCount_scheduler").html('Please Enter Message To Save Drafts');
+            }
 
-
+        }
     } catch (e) {
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function writemessage(message) {
     debugger;
@@ -387,7 +424,34 @@ function deleteDraftMessage(id) {
 }
 
 
-function editDraftsMessage(id,msg) {
+function deleteDraftMsg(id) {
+
+    try {
+        $.ajax({
+            url: '../Helper/AjaxHelper.aspx?op=deletedrafts&id=' + id,
+            type: "GET",
+            dataType: "html",
+            success: function (msg) {
+            }
+
+
+        });
+    } catch (e) {
+
+    }
+}
+
+
+
+
+
+
+function editDraftsMessage(id, msg) {
+    publishcontent("schedulemessage",msg,id).click();
+    alert('adasdasd');
+}
+
+    function editDraftsMessage1(id,msg) {
     try {
         debugger;
 
@@ -406,7 +470,7 @@ function editDraftsMessage(id,msg) {
                     // return;
                 }
                 else if (parseInt(str.length) > 140) {
-                    alert('Message length must not greater than 140 character!');
+                    alert('Message length should not be greater than 140 characters');
                     editDraftsMessage(id, str);
                 }
                 else {
@@ -429,6 +493,31 @@ function editDraftsMessage(id,msg) {
 
             }
         }, msgg);
+    } catch (e) {
+
+    }
+
+}
+
+
+
+function editDraftsMessg(id, msg) {
+    try {
+        debugger;
+        //var defautl = $("#message_" + id).html();
+        var defautl = $("#message_" + id).html(msg);
+        var msgg = msg;
+            $.ajax({
+                url: '../Helper/AjaxHelper.aspx?op=savedrafts&id=' + id + '&newstr=' + msg,
+                type: 'GET',
+                dataType: 'html',
+                success: function (mg) {
+                }
+
+            });
+   
+
+
     } catch (e) {
 
     }

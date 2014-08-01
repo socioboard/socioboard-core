@@ -5,7 +5,7 @@
 </asp:Content>--%>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
-    <div id="mainwrapper-message" class="container">
+    <div id="mainwrapper" class="container">
         <div id="sidebar" class="discovery">
             <div class="sidebar-inner">
                 <div id="accordion2" class="accordion">
@@ -14,7 +14,6 @@
                             <a href="#collapseOne"  data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle">
                                 <i class="icon-caret-right" style="margin-right: 10px"></i>Suggestion </a>
                         </div>
-
                         <div class="accordion-body collapse" id="collapseOne">
                             <div class="accordion-inner">
                                 <ul>
@@ -216,9 +215,12 @@
                                 </div>
                                 <div class="input_text_select">
                                 	<asp:TextBox ID="txtSearchText" runat="server"></asp:TextBox>
-                                     <asp:Button ID="btnSearch" runat="server" Text="Search" onclick="btnSearch_Click"
-                                        ></asp:Button>
-
+                                     <asp:Button ID="btnSearch" runat="server" Text="Search" onclick="btnSearch_Click" class="btn btnk span5 btnspan"></asp:Button>
+                                    <%-- <div>
+                                    <input type="checkbox" runat="server" id="chkbyname" name="chk_byname" value="byName" /> By Name </br>
+                                    <input type="checkbox" runat="server" id="chkbykeyword" name="chk_bykeyword" value="bykeyword" /> By Keyword </br>
+                                    
+                                     </div>--%>
                                 </div>
 
                                 <div id="searchresults"  runat="server" class="messages">

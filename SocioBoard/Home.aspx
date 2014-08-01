@@ -146,13 +146,13 @@
             });
 
             //this is to avoid go to login page
-            function DisableBackButton() {
-                window.history.forward()
-            }
-            DisableBackButton();
-            window.onload = DisableBackButton;
-            window.onpageshow = function (evt) { if (evt.persisted) DisableBackButton() }
-            window.onunload = function () { void (o) }
+//            function DisableBackButton() {
+//                window.history.forward()
+//            }
+//            DisableBackButton();
+//            window.onload = DisableBackButton;
+//            window.onpageshow = function (evt) { if (evt.persisted) DisableBackButton() }
+//            window.onunload = function () { void (o) }
             //this is to avoid go to login page
 
         </script>
@@ -174,7 +174,7 @@
 					</div>
                     <div class="clear"></div>
                 	<div class="cols2">
-                    	<h4>New Twitter Followers</h4>
+                    	<h4>Twitter Followers</h4>
                         <span class="counter" id="spanNewTweets" runat="server">0</span>
                       <%--    <div id="chart_div" style="width: 230px; height: 80px;"></div>--%>
 						<%--<canvas id="div_twt" height="50" width="90">--%>
@@ -188,10 +188,10 @@
                     <div class="clear"></div>
 				</div>
 
-				<div class="sidebar-inner">
-                	<a href="Message/Messages.aspx" class="btn">GO TO INBOX <img src="../Contents/img/admin/emailtiny.png" alt="" class="pull-right" /></a>
-                	<a href="Message/Task.aspx" class="btn">VIEW TASK <img src="../Contents/img/admin/hammertiny.png" alt="" class="pull-right" /></a>
-				<a href="Reports/GroupStats.aspx" class="btn">VIEW REPORT <img src="../Contents/img/admin/reportstiny.png" alt="" class="pull-right" /></a>
+				<div class="sidebar-inner sidebar-innerpading">
+                	<a href="Message/Messages.aspx" class="btn">GO TO INBOX <img src="../Contents/img/admin/emailtiny.png" alt="" class="pull-right imgtiny" /></a>
+                	<a href="Message/Task.aspx" class="btn">VIEW TASK <img src="../Contents/img/admin/hammertiny.png" alt="" class="pull-right imgtinyt" /></a>
+				<a href="Reports/GroupStats.aspx" class="btn">VIEW REPORT <img src="../Contents/img/admin/reportstiny.png" alt="" class="pull-right imgtinyl" /></a>
 				</div>
 				<%--<div class="sidebar-inner">
                 	<h1>Select Profile</h1>
@@ -215,11 +215,11 @@
             <div id="contentcontainer2">
             	<div id="contentcontainer1">
                 	<div id="content">
-						<div class="alert alert-suite">
-							<button data-dismiss="alert" class="close" type="button" style="color:#FFFFFF">×</button>
+						<%--<div class="alert alert-suite">
+							<button data-dismiss="alert" class="close" type="button">×</button>
 							<p id="divNews" runat="server">Welcome to SocioBoard Your Social Business Partners</p>
                             <div class="red-caret"></div>
-						</div>
+						</div>--%>
 						<%--<div class="title">
 							<h1>Audience Demographics</h1>
 							<span runat="server" id="acrossProfile" class=""></span>
@@ -302,67 +302,17 @@
                     	<div class="rsidebar-inner">
                         	<h3>Profile</h3>
                            <p class="stitlemini">connected</p>
-                            <p id="usedAccount" runat="server" class="stitlemini">connected</p>
+                            <p id="usedAccount" runat="server" class="stitlemini"></p>
                             <div id="manageprofiles">
                             <ul class="rsidebar-profile">
-                            	<%--<li>
-									<div class="userpictiny">
-										<img src="../Contents/img/admin/user.png" height="48" width="48" alt="" title="PRAB KUMAR" />
-										<a href="#" class="userurlpic" title=""><img src="../Contents/img/admin/searchmini.png" alt=""></a>
-									</div>
-								</li>
-                            	<li>
-									<div class="userpictiny">
-										<img src="../Contents/img/admin/user3.png" height="48" width="48" alt="" title="PRAB KUMAR" />
-										<a href="#" class="userurlpic" title=""><img src="../Contents/img/admin/searchmini.png" alt=""></a>
-									</div>
-								</li>
-                            	<li>
-									<div class="userpictiny">
-										<img src="../Contents/img/admin/user.png" height="48" width="48" alt="" title="PRAB KUMAR" />
-										<a href="#" class="userurlpic" title=""><img src="../Contents/img/admin/searchmini.png" alt=""></a>
-									</div>
-								</li>
-                            	<li>
-									<div class="userpictiny">
-										<img src="../Contents/img/admin/user3.png" height="48" width="48" alt="" title="PRAB KUMAR" />
-										<a href="#" class="userurlpic" title=""><img src="../Contents/img/admin/searchmini.png" alt=""></a>
-									</div>
-								</li>
-                            	<li>
-									<div class="userpictiny">
-										<img src="../Contents/img/admin/user.png" height="48" width="48" alt="" title="PRAB KUMAR" />
-										<a href="#" class="userurlpic" title=""><img src="../Contents/img/admin/searchmini.png" alt=""></a>
-									</div>
-								</li>
-                            	<li>
-								
-								</li>--%>
+                            
 							</ul>
                             </div>
-                            	<div id="expanderHead" class="userpictiny add userpic">
+                            		<div id="expander" runat="server"><div id="expanderHead" class="userpictiny add userpic">
 										<a><img src="../Contents/img/admin/addprofile.png" height="48" width="48" alt="" /></a>
                                         <div id="linkbox" style="display: none;">
                                             <ul>
-                                               <%-- <li><a id="facebook_connect">
-                                                    <img src="../Contents/img/fb_24X24.png" width="16" height="16" alt="" />
-                                                    <span>Facebook</span> </a></li>
-                                                <li><a id="LinkedInLink"  runat="server" onserverclick="AuthenticateLinkedin">
-                                                    <img src="../Contents/img/linked_25X24.png" width="16" height="16" alt="" />
-                                                    <span>LinkedIn</span> </a></li>--%>
-                                              <%--<li><a id="TwitterOAuth" runat="server" onserverclick="AuthenticateTwitter">
-                                                    <img src="../Contents/img/twt_icon.png" width="16" height="16" alt="" />
-                                                    <span>Twitter</span> </a></li>
-                                                <li><a id="googleplus_connect" runat="server">
-                                                    <img src="Contents/Images/google_plus.png" width="16" height="16" alt="" />
-                                                    <span>Google Plus</span> </a></li>--%>
-                                            <%--    <li><a id="googleanalytics_connect" runat="server" href="#">
-                                                    <img src="../Contents/img/google_analytics.png" width="16" height="16" alt="" />
-                                                    <span>Google Analytics</span> </a></li>--%>
-                                               <%-- <li><a id="InstagramConnect"  runat="server" onserverclick="AuthenticateInstagram">
-                                                    <img src="../Contents/img/instagram_24X24.png" width="16" height="16" alt="" />
-                                                    <span>Instagram</span> </a></li>--%>
-
+                                            
                                             </ul>
                                             <div class="drop_top"></div>
                                             <div class="drop_mid loginbox">
@@ -406,6 +356,29 @@
                                                         </li>
                                                     </ul> 
                                                  </div>
+
+                                                 <div class="teitter">
+                                                    <ul>
+                                                        <li>
+                                                            <a id="TumblrConnect"  runat="server" onserverclick="AuthenticateTumblr">
+                                                                <img width="18" border="none" style="float:left;" alt=""  src="../Contents/img/tumblr.png" />
+                                                                <span style="float:left;margin: 3px 0 0 5px;">Tumblr</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul> 
+                                                 </div>
+                                                  <div class="teitter">
+                                                    <ul>
+                                                        <li>
+                                                            <a id="YoutubeConnect"  runat="server" onserverclick="AuthenticateYoutube">
+                                                                <img width="18" border="none" style="float:left;" alt=""  src="../Contents/img/youtube.png" />
+                                                                <span style="float:left;margin: 3px 0 0 5px;">Youtube</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul> 
+                                                 </div>
+
+
                                                    <%-- <div class="teitter">
                                                     <ul>
                                                         <li>
@@ -428,7 +401,7 @@
                                                  </div>--%>
                                             </div>
                                         </div>
-						        </div>
+						        </div></div>
 						</div>
                 
                     	<div class="rsidebar-inner">
@@ -467,7 +440,7 @@
                                     <div  class="drop_mid loginbox">
                                         <div class="teitter">
                                             <ul runat="server" id="getAllGroupsOnHome">
-                                                <li><a>No Records Found</a></li>
+                                                <li>No Records Found</li>
                                                     
                                             </ul>
                                         </div>
@@ -481,11 +454,14 @@
 						</div>                        
                     	<div class="rsidebar-inner">
                         	<h3>Recent Followers</h3>
-                            <ul id="recentfollowers userpic">
+                           <%-- <ul id="recentfollowers userpic">
+                            	
+                            </ul>--%>
+                             <ul id="recentfollowers">
                             	
                             </ul>
 						</div> 
-                        <div class="rsidebar-inner">
+                        <%--<div class="rsidebar-inner">
 
                         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                             <!-- socioboard -->
@@ -497,7 +473,7 @@
                                 (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
                         
-                        </div>
+                        </div>--%>
                                                
 					</div>
 

@@ -293,7 +293,7 @@
         <div id="mainwrapper-message" class="container">
 			<div id="sidebar">
 				<div class="sidebar-inner">
-                	<a id="smart_inbox" href="Messages.aspx" class="btn active"><img src="../Contents/img/admin/chatbtn.png" alt="" >Smart Inbox <span runat="server" id="blackcount" class="info"></span></a>
+                	<a id="smart_inbox" href="Messages.aspx" class="btn active"><img src="../Contents/img/admin/chatbtn.png" alt="" >Smart Inbox<%-- <span runat="server" id="blackcount" class="info"></span>--%></a>
                 	<a id="task_href" href="Task.aspx" class="btn"><img src="../Contents/img/admin/markerbtn.png" alt="" >My Task</a>
                     <a id="sent_messages" href="#" onclick="BindInboxMessageonMessageTab();" class="btn"><img src="../Contents/img/admin/envbtn.png" alt="" >Sent Message</a>
                     <a id="archive_message" href="#" onclick="BindArchiveMessages();" class="btn"><img src="../Contents/img/admin/envbtn.png" alt="" >Archive Message</a>

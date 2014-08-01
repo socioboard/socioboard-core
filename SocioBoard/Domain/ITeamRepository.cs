@@ -10,7 +10,7 @@ namespace SocioBoard.Domain
         void addNewTeam(Team team);
         int deleteTeam(Team team);
         void updateTeam(Team team);
-        List<Team> getAllTeamsOfUser(Guid Userid);
+        List<Team> getAllTeamsOfUser(Guid Userid,Guid GroupId,string EmailId);
         Team getTeam(string Emailid, Guid UserId);
         Team getMemberById(Guid memberId, Guid UserId);
     }

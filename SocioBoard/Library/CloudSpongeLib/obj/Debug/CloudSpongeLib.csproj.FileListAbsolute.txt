@@ -5,3 +5,9 @@ D:\Abhay\socioboard\trunk\CloudSpongeLib\bin\Debug\CloudSponge.dll
 D:\Abhay\socioboard\trunk\CloudSpongeLib\obj\Debug\ResolveAssemblyReference.cache
 D:\Abhay\socioboard\trunk\CloudSpongeLib\obj\Debug\CloudSpongeLib.dll
 D:\Abhay\socioboard\trunk\CloudSpongeLib\obj\Debug\CloudSpongeLib.pdb
+C:\Users\GLB-115\Desktop\sb\trunk\SocioBoard\Library\CloudSpongeLib\bin\Debug\CloudSpongeLib.dll.config
+C:\Users\GLB-115\Desktop\sb\trunk\SocioBoard\Library\CloudSpongeLib\bin\Debug\CloudSpongeLib.dll
+C:\Users\GLB-115\Desktop\sb\trunk\SocioBoard\Library\CloudSpongeLib\bin\Debug\CloudSpongeLib.pdb
+C:\Users\GLB-115\Desktop\sb\trunk\SocioBoard\Library\CloudSpongeLib\obj\Debug\CloudSpongeLib.csprojResolveAssemblyReference.cache
+C:\Users\GLB-115\Desktop\sb\trunk\SocioBoard\Library\CloudSpongeLib\obj\Debug\CloudSpongeLib.dll
+C:\Users\GLB-115\Desktop\sb\trunk\SocioBoard\Library\CloudSpongeLib\obj\Debug\CloudSpongeLib.pdb

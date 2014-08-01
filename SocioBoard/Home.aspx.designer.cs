@@ -58,15 +58,6 @@ namespace SocialSuitePro {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl bindads;
         
         /// <summary>
-        /// divNews control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divNews;
-        
-        /// <summary>
         /// usedAccount control.
         /// </summary>
         /// <remarks>
@@ -74,6 +65,15 @@ namespace SocialSuitePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl usedAccount;
+        
+        /// <summary>
+        /// expander control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl expander;
         
         /// <summary>
         /// TwitterOAuth control.
@@ -101,6 +101,24 @@ namespace SocialSuitePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor InstagramConnect;
+        
+        /// <summary>
+        /// TumblrConnect control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor TumblrConnect;
+        
+        /// <summary>
+        /// YoutubeConnect control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor YoutubeConnect;
         
         /// <summary>
         /// teamMem control.

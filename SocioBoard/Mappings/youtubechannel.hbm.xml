@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+  <class name="YoutubeChannel" table="YoutubeChannel" lazy="true" >
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="Channelid">
+      <column name="ChannelId"/>
+    </property>
+    <property name="Likesid">
+      <column name="LikesId"/>
+    </property>
+    <property name="Favoritesid">
+      <column name="FavoritesId"/>
+    </property>
+    <property name="Uploadsid">
+      <column name="UploadsId"/>
+    </property>
+    <property name="Watchhistoryid">
+      <column name="WatchHistoryId"/>
+    </property>
+    <property name="Watchlaterid">
+      <column name="WatchLaterId"/>
+    </property>
+    <property name="Googleplususerid">
+      <column name="GooglePlusUserId"/>
+    </property>
+    <property name="ViewCount">
+      <column name="ViewCount"/>
+    </property>
+    <property name="CommentCount">
+      <column name="CommentCount"/>
+    </property>
+    <property name="SubscriberCount">
+      <column name="SubscriberCount"/>
+    </property>
+    <property name="HiddenSubscriberCount">
+      <column name="HiddenSubscriberCount"/>
+    </property>
+    <property name="VideoCount">
+      <column name="VideoCount"/>
+    </property>
+    
+    
+  </class>
+</hibernate-mapping>

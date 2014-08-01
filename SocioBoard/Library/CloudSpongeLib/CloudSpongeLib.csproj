@@ -31,9 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CloudSponge, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f6cb525c9c95a435, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\GLB-116\Desktop\CloudSponge.dll</HintPath>
+    <Reference Include="CloudSponge">
+      <HintPath>..\SocioBoard Product\lib\CloudSponge.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

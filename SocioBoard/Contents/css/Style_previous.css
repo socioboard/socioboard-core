@@ -26,7 +26,7 @@ body
 {
 	margin:0;
 	padding:0;
-	background:url("../img/admin/navi.png") repeat-x scroll 0 0 #393939;
+	background:url("../img/admin/navi.png") repeat-x scroll 0 0 #fff;
 	font-family:sans-serif, Helvetica,;
 	/*background:url(../img/ws_bg.png);
     background:#fff;
@@ -2257,6 +2257,7 @@ ul.options_list li a
     height: auto;
     margin-top: 15px;
     width: 260px;
+    padding:0 10px;
 }
 ul.options_list li a:hover
 {
@@ -2756,27 +2757,28 @@ ul.options_list li a > .checkbx_green
 {
 	width:120px;
 	height:35px;
-	margin-left:5px;
+	margin-left:8px;
 	font-family: sans-serif;
     font-size: 13px;
     text-align: center;
     color: #fff;
-    border-radius: 5px;
-    background-image:url(../../Contents/img/button_img.png);
+    border-radius:5px;
+    background-color:#5B5B5B;
+    /*background-image:url(../../Contents/img/button_img.png);*/
 }
 .ws_tm_button_div input[type="button"]:hover,
 .ws_tm_button_div input[type="submit"]:hover
 {
 	width:120px;
 	height:35px;
-	margin-left:5px;
+	margin-left:8px;
 	font-family: sans-serif;
     font-size: 13px;
     text-align: center;
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
-    background-image:url(../../Contents/img/button_img_hover.png);
+    /*background-image:url(../../Contents/img/button_img_hover.png);*/
 }
 
 
@@ -2879,7 +2881,7 @@ ul.options_list li a > .checkbx_green
     cursor: pointer;
     border-radius: 5px;
     background-image: linear-gradient(top, #2BA4E3, #168AC6);
-    background: none repeat scroll 0 0 #333333;
+    background: none repeat scroll 0 0 #5B5B5B;
 }
 .ws_ps_user_content
 {
@@ -3924,7 +3926,7 @@ ul.user-stats li > .photo_stat
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
-    background-image:url(../../Contents/img/button_img.png);
+    /*background-image:url(../../Contents/img/button_img.png);*/
 }
 .task_ws_tm_button_div > input[type="button"]:hover,
 .task_ws_tm_button_div > input[type="submit"]:hover
@@ -3939,7 +3941,7 @@ ul.user-stats li > .photo_stat
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
-    background-image:url(../../Contents/img/button_img_hover.png);
+    /*background-image:url(../../Contents/img/button_img_hover.png);*/
 }
 
 #content_msg {
@@ -4014,6 +4016,8 @@ ul.user-stats li > .photo_stat
 .task_user_assign > ul > li:first-child 
 {
     box-shadow: none;
+   
+   
 }
 
 .task_user_assign > ul > li > a {
@@ -4023,7 +4027,7 @@ ul.user-stats li > .photo_stat
     padding: 6px 0 8px 10px;
     text-decoration: none;
 	width:92%;
-	height:auto;
+	height:25px;
 	float:left;
 	cursor:pointer;
 }
@@ -6031,7 +6035,7 @@ section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-statu
 .smart_search  > .input_text_select input[type="button"],
 .smart_search  > .input_text_select input[type="submit"]
 {
-    background-image: url("../img/button_img_hover.png");
+    /*background-image: url("../img/button_img_hover.png");
     color: #FFFFFF;
     float: left;
     font-size: 16px;
@@ -6041,12 +6045,12 @@ section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-statu
     outline: medium none aqua;
     text-align: center;
     width: 120px;
-	cursor:pointer;
+	cursor:pointer;*/
 }
 .smart_search  > .input_text_select input[type="button"]:hover,
 .smart_search  > .input_text_select input[type="submit"]:hover
 {
-    background-image: url("../img/button_img.png");
+    /*background-image: url("../img/button_img.png");
     color: #FFFFFF;
     float: left;
     font-size: 16px;
@@ -6056,7 +6060,7 @@ section.messages.msg_view.inbox_msgs > .messages > section > .read > .task-statu
     outline: medium none aqua;
     text-align: center;
     width: 120px;
-	cursor:pointer;
+	cursor:pointer;*/
 }
 .discovery_twitterAccounts_rightbar_radio_list {
     float: left;
@@ -6967,7 +6971,7 @@ margin:14px 0 0 10px;
 #addicbox 
 {
     position: absolute;
-    right: -10px;
+    /*right: -10px;*/
     top: 42px;
     display: none;
     z-index: 50;
@@ -7008,7 +7012,7 @@ margin:14px 0 0 10px;
 .drop_mid
 {
 	width:183px;
-	height:250px;
+	height:163px;
 	overflow-x:hidden;
 	overflow-y:auto;
 	background: url(../../Contents/img/drop_mid.png);
@@ -8389,7 +8393,7 @@ body.login {
 #userset
 {
     position: absolute;
-    right: -53px;
+    right: 6px;
     top: 42px;
     display: none;
     z-index: 50;
@@ -8402,7 +8406,7 @@ body.login {
 {
     display: none;
     position: absolute;
-    right: 7px;
+    right: 67px;
     top: 42px;
     z-index: 50;
 }
@@ -8419,7 +8423,7 @@ body.login {
 
 .counterbg
 {
-    padding:5px; background:#3E5B85; color:#fff; font-size:10px; float:left;height: 9px; margin-top: 17px;
+    padding:5px; background:#C4C8C9; color:#fff; font-size:10px; float:left;height: 9px; margin-top: 17px;
 }
 
 .counterbg span
@@ -8617,13 +8621,14 @@ body.login {
     border-radius: 5px 5px 5px 5px;
     color: #FFFFFF;
     float: left;
-    font-family: sans-serif;
+    font-family: arial;
     font-weight: bold;
     height: 20px;
     margin-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 4px;
-    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right:55px;
     text-align: center;
     width: 100%;
 }
@@ -8633,7 +8638,7 @@ body.login {
 }
 
 #searchcontent > a > img {
-    margin-top: 5px;
+    /*margin-top: 5px;*/
 }
 
 
@@ -9229,13 +9234,14 @@ ol.recent-tweets >li
 }
 .sub_tabs
 {
-    width:330px;
+    width:315px;
     height:auto;
     float:left;
+    margin:0 0 0 10px;
 }
 .datebg
 {
-    background: none repeat scroll 0 0 #99A1A3;
+    background: none repeat scroll 0 0 #81898B;
     float: left;
     margin-left: 10px;
     min-height: 300px;
@@ -9296,7 +9302,7 @@ ol.recent-tweets >li
 }
 #mainwrapper-message #message-list li.unread
 {
-    background: none repeat scroll 0 0 #999999;
+    /*background: none repeat scroll 0 0 #999999;*/
     height: 90px;
     opacity: 0.7;
     padding: 15px;
@@ -9789,7 +9795,6 @@ ol.recent-tweets >li
 
 .woo_logout
 {
-    background: none repeat scroll 0 0 #CDCDCD;
     border-radius: 3px;
     color: #CECECE;
     cursor: pointer;
@@ -9800,13 +9805,10 @@ ol.recent-tweets >li
     font-weight: bold;
     height: 20px;
     line-height: normal;
-    margin:5px 0 0 10px;
     opacity: 0.8;
-    padding: 7px;
     text-align: center;
     text-decoration: none !important;
     vertical-align: baseline;
-    width: 90px;
 }
 
 /* --------------- select -------------- */
@@ -9975,8 +9977,8 @@ span.button:hover {
 
 #change_password > label {color: #333333;float: left; font-family: sans-serif;font-size: 13px;height: auto;margin-bottom: 5px; width: 100%;}
 #change_password > span.lblerror {float: left;font-family: sans-serif;font-size: 11px;width: 100%;}
-.cngpwd {background: none repeat scroll 0 0 #333333; border-radius: 5px 5px 5px 5px; color: #FFFFFF; padding: 10px;}
-#btncancel { background: none repeat scroll 0 0 #333333; border-radius: 5px 5px 5px 5px; color: #FFFFFF; padding: 10px 25px;}
+.cngpwd {background: none repeat scroll 0 0 #5B5B5B ;border-radius: 5px 5px 5px 5px; color: #FFFFFF; padding: 10px;}
+#btncancel { background: none repeat scroll 0 0 #5B5B5B; border-radius: 5px 5px 5px 5px; color: #FFFFFF; padding: 10px 25px;}
 
 
 
@@ -9999,6 +10001,7 @@ p > span.ok_display, p > span.cancel_display {
     border-radius: 5px;
     color: #FFFFFF;
     float: right;
+    cursor:pointer;
     margin-left: 10px;
     padding: 5px 14px;
 }
@@ -10021,7 +10024,8 @@ color:#FF0000;
 
 .selected_Li
 {
-    background-color:Blue;
+    background-color:#505050;
+    padding:0 10px;
 }
 
 #publishing span {
@@ -10031,3 +10035,26 @@ color:#FF0000;
 #discovery  span {
     margin-left: -10px;
 }
+
+span.groupname{ height:20px; overflow:hidden; position:absolute;}
+.pic > img{width:200px; height:200px;}
+
+.space{margin-left:0px !important;}
+.btn_follow{ padding:9px 18px;}
+.btn_follow:hover{background-color:#f89406 !important;*background-color:#df8505 !important;}
+.space{margin-left:0px !important;}
+
+
+.tumb_bg{border:1px solid #999; border-radius:4px; box-shadow:1px solid #666;}
+.tumb_description{padding: 2px; color:#000;}
+.tumb_pic{padding:10px;}
+.teaser{padding:4px; text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;overflow:hidden; height:10px;}
+.feed_slug{padding:2px;height:30px;}
+.pics_space{margin-left:11px !important;}
+.tumb_title{ background: none repeat scroll 0 0 #f15c39;
+    color: #fff;
+    font-size: 15px;
+    height: 24px;}
+.tumb_span{padding: 2px 0 0 10px; font-size:12px;}
+.tumbli{background: none repeat scroll 0% 0% rgb(204, 204, 204); border-radius: 3px;}
+.tab-content{overflow:inherit !important;}

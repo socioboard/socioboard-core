@@ -12,57 +12,67 @@ namespace SocioBoard.Helper
     public class clsFeedsAndMessages
     {
         public static int messagescount = 0;
-        public DataSet bindMessagesIntoDataTable(User user)
+        string facebookid = string.Empty;
+        string twitterid = string.Empty;
+        string googleplusid = string.Empty;
+   
+        public DataSet bindMessagesIntoDataTable(Guid id)
         {
-            SocialProfilesRepository socioprofrepo = new SocialProfilesRepository();
-            List<SocialProfile> alstprofiles = socioprofrepo.getAllSocialProfilesOfUser(user.Id);
+            //SocialProfilesRepository socioprofrepo = new SocialProfilesRepository();
+            //List<SocialProfile> alstprofiles = socioprofrepo.getAllSocialProfilesOfUser(user.Id);
+
+            TeamMemberProfileRepository objTeamMemberProfileRepository = new TeamMemberProfileRepository();
+            List<TeamMemberProfile> alstprofiles = objTeamMemberProfileRepository.getAllTeamMemberProfilesOfTeam(id);
+
+
 
             // DataTableGenerator datatablegenerepo = new DataTableGenerator();
             Messages mstable = new Messages();
             DataSet ds = DataTableGenerator.CreateDataSetForTable(mstable);
             //  DataSet ds = datatablegenerepo.CreateDataSetForTable(mstable);
 
-            foreach (SocialProfile item in alstprofiles)
+            foreach (TeamMemberProfile item in alstprofiles)
             {
                 if (item.ProfileType == "facebook")
                 {
                     FacebookFeedRepository fbfeedRepo = new FacebookFeedRepository();
-                    List<FacebookFeed> alstfeedfb = fbfeedRepo.getUnreadMessages(user.Id, item.ProfileId);
+                    List<FacebookFeed> alstfeedfb = fbfeedRepo.getUnreadMessages(item.ProfileId);
                     foreach (FacebookFeed facebookmsg in alstfeedfb)
                     {
-                        ds.Tables[0].Rows.Add(facebookmsg.ProfileId, "facebook", facebookmsg.FromId, facebookmsg.FromName, facebookmsg.FromProfileUrl, facebookmsg.FeedDate, facebookmsg.FeedDescription, facebookmsg.FbComment, facebookmsg.FbLike, facebookmsg.FeedId, facebookmsg.Type,facebookmsg.ReadStatus);
+                        ds.Tables[0].Rows.Add(facebookmsg.ProfileId, "facebook", facebookmsg.FromId, facebookmsg.FromName, facebookmsg.FromProfileUrl, facebookmsg.FeedDate, facebookmsg.FeedDescription, facebookmsg.FbComment, facebookmsg.FbLike, facebookmsg.FeedId, facebookmsg.Type, facebookmsg.ReadStatus);
                     }
                 }
                 else if (item.ProfileType == "twitter")
                 {
                     TwitterMessageRepository twtmsgrepo = new TwitterMessageRepository();
-                    List<TwitterMessage> lstmsgtwtuser = twtmsgrepo.getUnreadMessages(user.Id, item.ProfileId);
+                    List<TwitterMessage> lstmsgtwtuser = twtmsgrepo.getUnreadMessages(item.ProfileId);
                     foreach (TwitterMessage lst in lstmsgtwtuser)
                     {
-                        ds.Tables[0].Rows.Add(lst.ProfileId, "twitter", lst.FromId, lst.FromScreenName, lst.FromProfileUrl, lst.MessageDate, lst.TwitterMsg, "", "", lst.MessageId, lst.Type,lst.ReadStatus);
+                        ds.Tables[0].Rows.Add(lst.ProfileId, "twitter", lst.FromId, lst.FromScreenName, lst.FromProfileUrl, lst.MessageDate, lst.TwitterMsg, "", "", lst.MessageId, lst.Type, lst.ReadStatus);
                     }
                 }
                 else if (item.ProfileType == "googleplus")
                 {
 
                 }
-               
+
 
             }
-            
-            
-            foreach (SocialProfile item in alstprofiles)
+
+
+            foreach (TeamMemberProfile item in alstprofiles)
             {
                 if (item.ProfileType == "facebook")
                 {
                     try
                     {
-                        FacebookFeedRepository fbfeedrepo = new FacebookFeedRepository();
-                        List<FacebookFeed> alstfbmsgs = fbfeedrepo.getAllReadFacebookFeeds(user.Id, item.ProfileId);
-                        foreach (FacebookFeed facebookmsg in alstfbmsgs)
-                        {
-                            ds.Tables[0].Rows.Add(facebookmsg.ProfileId, "facebook", facebookmsg.FromId, facebookmsg.FromName, facebookmsg.FromProfileUrl, facebookmsg.FeedDate, facebookmsg.FeedDescription, facebookmsg.FbComment, facebookmsg.FbLike, facebookmsg.FeedId, facebookmsg.Type,facebookmsg.ReadStatus);
-                        }
+                        //FacebookFeedRepository fbfeedrepo = new FacebookFeedRepository();
+                        //List<FacebookFeed> alstfbmsgs = fbfeedrepo.getAllReadFacebookFeeds(user.Id, item.ProfileId);
+                        //foreach (FacebookFeed facebookmsg in alstfbmsgs)
+                        //{
+                        //    ds.Tables[0].Rows.Add(facebookmsg.ProfileId, "facebook", facebookmsg.FromId, facebookmsg.FromName, facebookmsg.FromProfileUrl, facebookmsg.FeedDate, facebookmsg.FeedDescription, facebookmsg.FbComment, facebookmsg.FbLike, facebookmsg.FeedId, facebookmsg.Type,facebookmsg.ReadStatus);
+                        //}
+                        facebookid += item.ProfileId + ",";
                     }
                     catch (Exception ex)
                     {
@@ -73,12 +83,13 @@ namespace SocioBoard.Helper
                 {
                     try
                     {
-                        TwitterMessageRepository twtmsgrepo = new TwitterMessageRepository();
-                        List<TwitterMessage> lstmsgtwtuser = twtmsgrepo.getAllReadMessagesOfUser(user.Id, item.ProfileId);
-                        foreach (TwitterMessage lst in lstmsgtwtuser)
-                        {
-                            ds.Tables[0].Rows.Add(lst.ProfileId, "twitter", lst.FromId, lst.FromScreenName, lst.FromProfileUrl, lst.MessageDate, lst.TwitterMsg, "", "", lst.MessageId, lst.Type,lst.ReadStatus);
-                        }
+                        //TwitterMessageRepository twtmsgrepo = new TwitterMessageRepository();
+                        //List<TwitterMessage> lstmsgtwtuser = twtmsgrepo.getAllReadMessagesOfUser(user.Id, item.ProfileId);
+                        //foreach (TwitterMessage lst in lstmsgtwtuser)
+                        //{
+                        //    ds.Tables[0].Rows.Add(lst.ProfileId, "twitter", lst.FromId, lst.FromScreenName, lst.FromProfileUrl, lst.MessageDate, lst.TwitterMsg, "", "", lst.MessageId, lst.Type,lst.ReadStatus);
+                        //}
+                        twitterid += item.ProfileId + ",";
                     }
                     catch (Exception ex)
                     {
@@ -89,12 +100,13 @@ namespace SocioBoard.Helper
                 {
                     try
                     {
-                        GooglePlusActivitiesRepository objActRepo = new GooglePlusActivitiesRepository();
-                        List<GooglePlusActivities> lstmsggauser = objActRepo.getAllgoogleplusActivityOfUser(user.Id, item.ProfileId);
-                        foreach (GooglePlusActivities lst in lstmsggauser)
-                        {
-                            ds.Tables[0].Rows.Add(lst.GpUserId, "googleplus", lst.FromId, lst.FromUserName, lst.FromProfileImage, lst.PublishedDate, lst.Content, "", "", lst.ActivityId, "activities");
-                        }
+                        //GooglePlusActivitiesRepository objActRepo = new GooglePlusActivitiesRepository();
+                        //List<GooglePlusActivities> lstmsggauser = objActRepo.getAllgoogleplusActivityOfUser(user.Id, item.ProfileId);
+                        //foreach (GooglePlusActivities lst in lstmsggauser)
+                        //{
+                        //    ds.Tables[0].Rows.Add(lst.GpUserId, "googleplus", lst.FromId, lst.FromUserName, lst.FromProfileImage, lst.PublishedDate, lst.Content, "", "", lst.ActivityId, "activities");
+                        //}
+                        googleplusid += item.ProfileId + ",";
                     }
                     catch (Exception ex)
                     {
@@ -103,6 +115,86 @@ namespace SocioBoard.Helper
                 }
 
             }
+            if (facebookid != "")
+            {
+                facebookid = facebookid.Substring(0, facebookid.Length - 1);
+            }
+            if (twitterid != "")
+            {
+                twitterid = twitterid.Substring(0, twitterid.Length - 1);
+            }
+            if (googleplusid != "")
+            {
+                googleplusid = googleplusid.Substring(0, googleplusid.Length - 1);
+            }
+
+            FacebookFeedRepository fbfeedRepository = new FacebookFeedRepository();
+            List<FacebookFeed> alstfbmsgs = fbfeedRepository.getAllReadFbFeeds(facebookid);
+            try
+            {
+                foreach (FacebookFeed facebookmsg in alstfbmsgs)
+                {
+                    try
+                    {
+                        ds.Tables[0].Rows.Add(facebookmsg.ProfileId, "facebook", facebookmsg.FromId, facebookmsg.FromName, facebookmsg.FromProfileUrl, facebookmsg.FeedDate, facebookmsg.FeedDescription, facebookmsg.FbComment, facebookmsg.FbLike, facebookmsg.FeedId, facebookmsg.Type, facebookmsg.ReadStatus);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+
+
+            TwitterMessageRepository twtmsgRepository = new TwitterMessageRepository();
+            List<TwitterMessage> lstmsgtwt = twtmsgRepository.getAlltwtMessagesOfUser(twitterid);
+            try
+            {
+                foreach (TwitterMessage lst in lstmsgtwt)
+                {
+                    try
+                    {
+                        ds.Tables[0].Rows.Add(lst.ProfileId, "twitter", lst.FromId, lst.FromScreenName, lst.FromProfileUrl, lst.MessageDate, lst.TwitterMsg, "", "", lst.MessageId, lst.Type, lst.ReadStatus);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+
+
+            GooglePlusActivitiesRepository objActRepository = new GooglePlusActivitiesRepository();
+            List<GooglePlusActivities> lstmsggpl = objActRepository.getAllgplusOfUser(googleplusid);
+            try
+            {
+                foreach (GooglePlusActivities lst in lstmsggpl)
+                {
+                    try
+                    {
+                        ds.Tables[0].Rows.Add(lst.GpUserId, "googleplus", lst.FromId, lst.FromUserName, lst.FromProfileImage, lst.PublishedDate, lst.Content, "", "", lst.ActivityId, "activities");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
             return ds;
         }
 
@@ -111,7 +203,7 @@ namespace SocioBoard.Helper
             Messages mstable = new Messages();
             DataSet ds = DataTableGenerator.CreateDataSetForTable(mstable);
 
-           
+
 
             if (!string.IsNullOrEmpty(network))
             {
@@ -134,16 +226,16 @@ namespace SocioBoard.Helper
                 {
                     TwitterAccountRepository twtaccountrepo = new TwitterAccountRepository();
                     TwitterFeedRepository twtfeedrepo = new TwitterFeedRepository();
-                    ArrayList alsttwtaccount =  twtaccountrepo.getAllTwitterAccountsOfUser(user.Id);
+                    ArrayList alsttwtaccount = twtaccountrepo.getAllTwitterAccountsOfUser(user.Id);
                     foreach (TwitterAccount item in alsttwtaccount)
                     {
                         List<TwitterFeed> lsttwtmsg = twtfeedrepo.getAllTwitterFeedOfUsers(user.Id, item.TwitterUserId);
                         foreach (TwitterFeed twtmsg in lsttwtmsg)
                         {
-                            ds.Tables[0].Rows.Add(twtmsg.ProfileId, "twitter",twtmsg.FromId, twtmsg.FromScreenName, twtmsg.FromProfileUrl, twtmsg.FeedDate, twtmsg.Feed, "","", twtmsg.MessageId, twtmsg.Type);
+                            ds.Tables[0].Rows.Add(twtmsg.ProfileId, "twitter", twtmsg.FromId, twtmsg.FromScreenName, twtmsg.FromProfileUrl, twtmsg.FeedDate, twtmsg.Feed, "", "", twtmsg.MessageId, twtmsg.Type);
                         }
                     }
-                
+
                 }
                 else if (network == "linkedin")
                 {
@@ -155,7 +247,7 @@ namespace SocioBoard.Helper
                         List<LinkedInFeed> lsttwtmsg = lifeedrepo.getAllLinkedInFeedsOfUser(user.Id, item.LinkedinUserId);
                         foreach (LinkedInFeed limsg in lsttwtmsg)
                         {
-                            ds.Tables[0].Rows.Add(limsg.ProfileId, "linkedin", limsg.FromId, limsg.FromName,limsg.FromPicUrl , limsg.FeedsDate, limsg.Feeds, "", "", "", limsg.Type);
+                            ds.Tables[0].Rows.Add(limsg.ProfileId, "linkedin", limsg.FromId, limsg.FromName, limsg.FromPicUrl, limsg.FeedsDate, limsg.Feeds, "", "", "", limsg.Type);
                         }
                     }
 
@@ -163,7 +255,7 @@ namespace SocioBoard.Helper
                 else if (network == "instagram")
                 {
                     InstagramAccountRepository insAccRepo = new InstagramAccountRepository();
-                    InstagramFeedRepository insFeedRepo=new InstagramFeedRepository();
+                    InstagramFeedRepository insFeedRepo = new InstagramFeedRepository();
                     ArrayList alstlistaccount = insAccRepo.getAllInstagramAccountsOfUser(user.Id);
                     foreach (InstagramAccount item in alstlistaccount)
                     {
@@ -211,12 +303,12 @@ namespace SocioBoard.Helper
                     List<TwitterDirectMessages> lstmsgtwtuser = twtmsgrepo.getAllDirectMessagesById(item.ProfileId);
                     foreach (TwitterDirectMessages lst in lstmsgtwtuser)
                     {
-                       ds.Tables[0].Rows.Add(lst.SenderId, "twitter", lst.SenderId, lst.SenderScreenName, lst.SenderProfileUrl, lst.CreatedDate, lst.Message, "", "", lst.MessageId, lst.Type);
+                        ds.Tables[0].Rows.Add(lst.SenderId, "twitter", lst.SenderId, lst.SenderScreenName, lst.SenderProfileUrl, lst.CreatedDate, lst.Message, "", "", lst.MessageId, lst.Type);
                     }
                 }
                 else if (item.ProfileType == "googleplus")
                 {
-                   
+
                 }
 
             }

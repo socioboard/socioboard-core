@@ -6,8 +6,8 @@
      $(document).ready(function () {
 
          $("#btnresetpass").click(function () {
-             var pass = $("#txtpass").val();
-             var cpass = $("#txtconfirmpass").val();
+             var pass = document.getElementById("txtpass").val();
+             var cpass = document.getElementById("txtconfirmpass").val();
              if (pass == "" || cpass == "") {
                  $("#lblerror").text("Please enter Password and Confirmpassword");
                  return false;
@@ -55,6 +55,11 @@
                     ControlToValidate="txtEmail" CssClass="ws_err_star"></asp:RequiredFieldValidator>
                     <br />
                 <asp:RegularExpressionValidator ID="revEmail" runat="server" ErrorMessage="Please Enter Valid Email!" ControlToValidate="txtEmail" CssClass="ws_err_star_enter" ValidationExpression="^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*(\.[A-Za-z]{2,3})$"></asp:RegularExpressionValidator>--%>
+
+           
+
+
+
             </div>          
           
             <div class="create_your_account" id="btnforgetpass" runat="server">

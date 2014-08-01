@@ -31,6 +31,15 @@ namespace SocialSuitePro.MasterPage {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// groupsselection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect groupsselection;
+        
+        /// <summary>
         /// incom_messages control.
         /// </summary>
         /// <remarks>
@@ -49,40 +58,13 @@ namespace SocialSuitePro.MasterPage {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl incom_tasks;
         
         /// <summary>
-        /// incomMessages control.
+        /// userimg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor incomMessages;
-        
-        /// <summary>
-        /// incomTasks control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor incomTasks;
-        
-        /// <summary>
-        /// cmposecontainer control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cmposecontainer;
-        
-        /// <summary>
-        /// actdiv control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl actdiv;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl userimg;
         
         /// <summary>
         /// usernm control.
@@ -146,6 +128,33 @@ namespace SocialSuitePro.MasterPage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl inviteRedirect;
+        
+        /// <summary>
+        /// cmposecontainer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cmposecontainer;
+        
+        /// <summary>
+        /// searchcontainer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl searchcontainer;
+        
+        /// <summary>
+        /// actdiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl actdiv;
         
         /// <summary>
         /// ContentPlaceHolder1 control.

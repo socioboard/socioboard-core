@@ -29,6 +29,12 @@ namespace GlobusLinkedinLib.App.Core
             public string PersonHeadLine { get; set; }
             public string PictureUrl { get; set; }
             public string Message { get; set; }
+            public string GroupName { get; set; }
+            public string id { get; set; }
+            public string Description { get; set; }
+            public string Title { get; set; }
+            public string ShortenUrl { get; set; }
+
         }
 
 
@@ -45,7 +51,7 @@ namespace GlobusLinkedinLib.App.Core
             //SocialStream socialStream = new SocialStream();
             ShareAndSocialStream socialStream = new ShareAndSocialStream();
             xmlResult = socialStream.Get_NetworkUpdates(OAuth, Count);
-           
+
             XmlNodeList xmlNodeList = xmlResult.GetElementsByTagName("update");
 
             foreach (XmlNode xn in xmlNodeList)
@@ -58,52 +64,72 @@ namespace GlobusLinkedinLib.App.Core
                     network_Updates.DateTime = JavaTimeStampToDateTime(timestamp);
 
 
-                        try
-                        {
-                            network_Updates.UpdateType = Element.GetElementsByTagName("update-type")[0].InnerText;
-                        }
-                        catch
-                        { }
+                    try
+                    {
+                        network_Updates.UpdateType = Element.GetElementsByTagName("update-type")[0].InnerText;
+                    }
+                    catch
+                    { }
 
-                        try
-                        {
-                            network_Updates.PersonId = Element.GetElementsByTagName("id")[0].InnerText;
-                        }
-                        catch
-                        { }
-
-                    
+                    try
+                    {
+                        network_Updates.PersonId = Element.GetElementsByTagName("id")[0].InnerText;
+                    }
+                    catch
+                    { }
 
 
-                        try
-                        {
-                            network_Updates.PersonFirstName = Element.GetElementsByTagName("first-name")[0].InnerText;
-                        }
-                        catch
-                        { }
+                    try
+                    {
+                        network_Updates.Description = Element.GetElementsByTagName("description")[0].InnerText;
+                    }
+                    catch
+                    { }
 
-                        try
-                        {
-                            network_Updates.PersonLastName = Element.GetElementsByTagName("last-name")[0].InnerText;
-                        }
-                        catch
-                        { }
 
-                        try
-                        {
-                            network_Updates.PersonHeadLine = Element.GetElementsByTagName("headline")[0].InnerText;
-                        }
-                        catch 
-                        {   }
-                    
-                        try
-                        {
-                            network_Updates.PictureUrl = Element.GetElementsByTagName("picture-url")[0].InnerText;
-                        }
-                        catch
-                        {  }
+                    try
+                    {
+                        network_Updates.Title = Element.GetElementsByTagName("title")[0].InnerText;
+                    }
+                    catch
+                    { }
 
-                   
+                    try
+                    {
+                        network_Updates.ShortenUrl = Element.GetElementsByTagName("shortened-url")[0].InnerText;
+                    }
+                    catch
+                    { }
+
+                    try
+                    {
+                        network_Updates.PersonFirstName = Element.GetElementsByTagName("first-name")[0].InnerText;
+                    }
+                    catch
+                    { }
+
+                    try
+                    {
+                        network_Updates.PersonLastName = Element.GetElementsByTagName("last-name")[0].InnerText;
+                    }
+                    catch
+                    { }
+
+                    try
+                    {
+                        network_Updates.PersonHeadLine = Element.GetElementsByTagName("headline")[0].InnerText;
+                    }
+                    catch
+                    { }
+
+                    try
+                    {
+                        network_Updates.PictureUrl = Element.GetElementsByTagName("picture-url")[0].InnerText;
+                    }
+                    catch
+                    { }
+
+
 
 
 
@@ -177,7 +203,7 @@ namespace GlobusLinkedinLib.App.Core
                     }
                     else if (MessageType == "SHAR")
                     {
-                        //network_Updates.Message = network_Updates.PersonFirstName + " " + network_Updates.PersonLastName + "Updated their profile picture";
+                        network_Updates.Message = network_Updates.Title + " " + network_Updates.Description + "" + network_Updates.ShortenUrl;
                     }
                     else if (MessageType == "STAT")
                     {
@@ -246,9 +272,9 @@ namespace GlobusLinkedinLib.App.Core
 
                     NetworkUpdatesList.Add(network_Updates);
                 }
-                catch 
-                {                    
-                    
+                catch
+                {
+
                 }
             }
             return NetworkUpdatesList;

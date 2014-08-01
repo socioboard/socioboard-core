@@ -159,7 +159,7 @@ namespace SocioBoard.Model
                     try
                     {
                         //Proceed action, to get twitter messages where read status is 1.
-                        List<TwitterMessage> lstmsg = session.CreateQuery("from TwitterMessage where ReadStatus = 1 and UserId = :userid and ProfileId = :profid ORDER BY EntryDate DESC")
+                        List<TwitterMessage> lstmsg = session.CreateQuery("from TwitterMessage where ReadStatus = 1 and UserId = :userid and ProfileId = :profid ORDER BY MessageDate DESC")
                        .SetParameter("userid", UserId)
                        .SetParameter("profid", profileid)
                        .List<TwitterMessage>()
@@ -170,6 +170,99 @@ namespace SocioBoard.Model
                         //{
                         //    lstmsg.Add(item);
                         //}
+                        return lstmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End Session
+        }
+
+
+
+
+        public List<TwitterMessage> getAlltwtMessagesOfUser(string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, open up a Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get twitter messages where read status is 1.
+                        // List<TwitterMessage> lstmsg = session.CreateQuery("from TwitterMessage where ReadStatus = 1 and UserId = :userid and ProfileId = :profid ORDER BY MessageDate DESC")
+                        //.SetParameter("userid", UserId)
+                        //.SetParameter("profid", profileid)
+                        //.List<TwitterMessage>()
+                        //.ToList<TwitterMessage>();
+
+                        string str = "from TwitterMessage where ReadStatus = 1 and ProfileId IN(";
+                        string[] arrsrt = profileid.Split(',');
+                        foreach (string sstr in arrsrt)
+                        {
+                            str += Convert.ToInt64(sstr) + ",";
+                        }
+                        str = str.Substring(0, str.Length - 1);
+                        str += ") ORDER BY MessageDate DESC";
+
+                        List<TwitterMessage> lstmsg = session.CreateQuery(str)
+                            // List<TwitterMessage> lstmsg = session.CreateQuery("from TwitterMessage where ReadStatus = 1 and UserId = :userid and ProfileId IN(:profid) ORDER BY MessageDate DESC")
+                     // .SetParameter("userid", UserId)
+                            // .SetParameter("profid", profileid.Replace(@"\", string.Empty).ToString())
+                      .List<TwitterMessage>()
+                      .ToList<TwitterMessage>();
+
+
+
+                        //List<TwitterMessage> lstmsg = new List<TwitterMessage>();
+                        //foreach (TwitterMessage item in query.Enumerable<TwitterMessage>().OrderByDescending(x => x.MessageDate))
+                        //{
+                        //    lstmsg.Add(item);
+                        //}
+                        return lstmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End Session
+        }
+
+
+
+        public List<TwitterMessage> getAlltwtMessages(string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, open up a Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                       
+                        string str = "from TwitterMessage where  ProfileId IN(";
+                        string[] arrsrt = profileid.Split(',');
+                        foreach (string sstr in arrsrt)
+                        {
+                            str += Convert.ToInt64(sstr) + ",";
+                        }
+                        str = str.Substring(0, str.Length - 1);
+                        str += ")";
+
+                        List<TwitterMessage> lstmsg = session.CreateQuery(str)
+                        
+                      .List<TwitterMessage>()
+                      .ToList<TwitterMessage>();                       
                         return lstmsg;
                     }
                     catch (Exception ex)
@@ -320,7 +413,7 @@ namespace SocioBoard.Model
                     {
                         //Proceed action, to get all twitter messages of profile by profile id
                         // And order by Entry date.
-                        List<TwitterMessage> lstmsg = session.CreateQuery("from TwitterMessage where  ProfileId = :profid ORDER BY EntryDate DESC")
+                        List<TwitterMessage> lstmsg = session.CreateQuery("from TwitterMessage where  ProfileId = :profid ORDER BY MessageDate DESC")
                         .SetParameter("profid", profileid)
                         .List<TwitterMessage>()
                         .ToList<TwitterMessage>();
@@ -426,7 +519,7 @@ namespace SocioBoard.Model
         /// <param name="profileId">Profile id (string)</param>
         /// <param name="days">Number of day's (int)</param>
         /// <returns>Return values in the form of array list.(ArrayList)</returns>
-        public ArrayList gettwtMessageStatsByProfileId(Guid UserId,string profileId,int days)
+        public ArrayList gettwtMessageStatsByProfileId(string profileId, int days)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -437,8 +530,9 @@ namespace SocioBoard.Model
                     try
                     {
                         //Proceed action, to get total number of twitter messages of prifile.
-                        NHibernate.IQuery query = session.CreateSQLQuery("Select Distinct Count(MessageId) from TwitterMessage where EntryDate>=DATE_ADD(NOW(),INTERVAL -" + days + " DAY) and UserId =:userid and ProfileId='" + profileId + "' Group by DATE_FORMAT(EntryDate,'%y-%m-%d') ")
-                            .SetParameter("userid", UserId);
+                        NHibernate.IQuery query = session.CreateSQLQuery("Select Distinct Count(MessageId) from TwitterMessage where MessageDate>=DATE_ADD(NOW(),INTERVAL -" + days + " DAY) and  ProfileId=:profileId")
+                            //.SetParameter("days", days)
+                        .SetParameter("profileId", profileId);
                         ArrayList alstFBmsgs = new ArrayList();
 
                         foreach (var item in query.List())
@@ -600,7 +694,7 @@ namespace SocioBoard.Model
             }//End Session
         }
 
-        public ArrayList getRetweetStatsByProfileId(Guid UserId, string profileId,int days)
+        public ArrayList getRetweetStatsByProfileId( string profileId, int days)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -610,12 +704,11 @@ namespace SocioBoard.Model
                 {
                     try
                     {
-                        //NHibernate.IQuery query = session.CreateSQLQuery("Select Distinct Count(MessageId) from TwitterMessage where Type=:retweet and EntryDate>=DATE_ADD(NOW(),INTERVAL -" + days + " DAY) and UserId =:userid and ProfileId=:profileId Group by DATE_FORMAT(EntryDate,'%y-%m-%d') ")
-                            NHibernate.IQuery query = session.CreateSQLQuery("Select Distinct Count(MessageId) from TwitterMessage where Type=:retweet and UserId =:userid and ProfileId=:profileId")
-                            .SetParameter("userid", UserId)
-                        .SetParameter("profileId", profileId)
-                        //.SetParameter("retweet", "twt_retweets");
-                        .SetParameter("retweet", "twt_usertweets");
+
+                        NHibernate.IQuery query = session.CreateSQLQuery("Select Distinct Count(MessageId) from TwitterMessage where Type='twt_retweets' and  ProfileId=:profileId and MessageDate>=DATE_ADD(NOW(),INTERVAL -" + days + " DAY) Group by DATE_FORMAT(EntryDate,'%y-%m-%d') ")
+                          //  .SetParameter("days", days)
+                        .SetParameter("profileId", profileId);
+                        
                         ArrayList alstFBmsgs = new ArrayList();
 
                         foreach (var item in query.List())
@@ -838,7 +931,7 @@ namespace SocioBoard.Model
             }//End Session
         }
 
-        public int updateMessageStatus(Guid UserId)
+        public int updateMessageStatus(string profileid)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -848,8 +941,8 @@ namespace SocioBoard.Model
                 {
                     try
                     {
-                        int i = session.CreateQuery("Update TwitterMessage set ReadStatus =1 where UserId = :id")
-                                   .SetParameter("id", UserId)
+                        int i = session.CreateQuery("Update TwitterMessage set ReadStatus =1 where ProfileId = :profileid")
+                                   .SetParameter("profileid", profileid)
                                    .ExecuteUpdate();
                         transaction.Commit();
                         return i;
@@ -932,6 +1025,69 @@ namespace SocioBoard.Model
                     {
                         Console.WriteLine(ex.StackTrace);
                         return 0;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+
+        public ArrayList gettwtscheduledByProfileId( string profileId, int days)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, open up a Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        NHibernate.IQuery query = session.CreateSQLQuery("Select Count(Id) from scheduledmessage where ScheduleTime>=DATE_ADD(NOW(),INTERVAL -" + days + " DAY) and  ProfileId=:profileId and status=1")
+                           // .SetParameter("days", days)
+                        .SetParameter("profileId", profileId);
+                        ArrayList alstFBmsgs = new ArrayList();
+
+                        foreach (var item in query.List())
+                        {
+                            alstFBmsgs.Add(item);
+                        }
+                        return alstFBmsgs;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+        public ArrayList getMentionStatsByProfileId(string profileId, int days)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, open up a Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        
+                        NHibernate.IQuery query = session.CreateSQLQuery("Select Distinct Count(MessageId) from TwitterMessage where Type='twt_mentions' and  ProfileId=:profileId and MessageDate>=DATE_ADD(NOW(),INTERVAL -" + days + " DAY)")
+                          //  .SetParameter("days", days)
+                        .SetParameter("profileId", profileId);
+                       
+                        ArrayList alstFBmsgs = new ArrayList();
+
+                        foreach (var item in query.List())
+                        {
+                            alstFBmsgs.Add(item);
+                        }
+                        return alstFBmsgs;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
                     }
                 }//End Transaction
             }//End Session

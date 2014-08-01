@@ -15,7 +15,7 @@ namespace SocioBoard.Domain
         public string EmailId { get; set; }
         public string Type { get; set; }
         public string ProfileUrl { get; set; }
-        public bool IsActive { get; set; }
+        public int IsActive { get; set; }
         public Guid UserId { get; set; }
        // public string ProfileUrl { get; set; }
     }

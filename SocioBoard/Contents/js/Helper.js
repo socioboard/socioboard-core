@@ -1,7 +1,22 @@
 ﻿var chkid = new Array();
 
-
+document.writeln("<script type='text/javascript' src='../Contents/js/reloadfbgraph.js'></script>");
 //alert("helper");
+
+
+var fbAgeArr;
+var fbImpArr;
+var fbLocArr;
+var fbstory;
+
+var likeunlikedt;
+var pageimpression;
+var PgId;
+var NumberOfDays = 15;
+var nm;
+var Img;
+var Acces;
+
 
 
 
@@ -162,6 +177,13 @@ function savetask() {
         var dd = msg.indexOf('msgdescription_');
         var ss = msg.substring(dd + 15, dd + 17);
         var id = "";
+
+        var curdate = new Date();
+        var now = (curdate.getMonth() + 1) + "/" + curdate.getDate() + "/" + curdate.getFullYear() + " " + curdate.getHours() + ":" + curdate.getMinutes() + ":" + curdate.getSeconds();
+        
+
+
+
         if (ss.indexOf("") == -1) {
             id = ss;
         } else {
@@ -379,12 +401,7 @@ function detailsdiscoverytwitter(id) {
         debugger;
         var sd = '';
         var msgname = '';
-        //            if (id.indexOf('rowname_') != -1) {
-        //                sd = document.getElementById(id).innerHTML;
-        //            } else {
-        //                sd = id;
-        //            }
-
+       
         $.ajax
         ({
             type: "GET",
@@ -394,13 +411,10 @@ function detailsdiscoverytwitter(id) {
             dataType: "html",
             success: function (msg) {
                 debugger;
-                //alert('alert');
-                //alert(msg);
+              
                 $("#facebookuserDetails").html(msg);
                 $("#facebookuserDetails").bPopup();
-                //                                $("#details").html(msg);
-                //                                $("#another-load").html("");
-                //                                $("#profile_popup").bPopup();
+             
             },
             error: function (err) {
                 alert(err);
@@ -408,7 +422,7 @@ function detailsdiscoverytwitter(id) {
             }
         });
     } catch (e) {
-        //  alert(e);
+      
     }
 }
 
@@ -455,6 +469,38 @@ function detailsdiscoveryfacebook(id) {
         //  alert(e);
     }
 }
+
+/*display the Discovery detail information for tumblr*/
+//function detailsdiscoverytumblr(id) {
+//    try {
+//        debugger;
+//        $("#another-load").html('<img src="../Contents/img/360.gif" />');
+//        debugger;
+//        var sd = '';
+//        var msgname = '';
+//      
+//        $.ajax
+//        ({
+//            type: "GET",
+//            url: "../Helper/AjaxHelper.aspx?op=detailsdiscoverytumblr&profileid=" + id,
+//            crossDomain: true,
+//            contentType: "application/json; charset=utf-8",
+//            dataType: "html",
+//            success: function (msg) {
+//                debugger;
+//           
+//                $("#facebookuserDetails").html(msg);
+//                $("#facebookuserDetails").bPopup();
+//               
+//            },
+//            error: function (e) {
+
+//            }
+//        });
+//    } catch (e) {
+//        
+//    }
+//}
 
 
 
@@ -590,6 +636,57 @@ function chkMessage(id) {
     }
 }
 
+
+
+/******************************************/
+
+
+function getProfilefbGraph(id, name, img, access) {
+    PgId = id;
+    Img = img;
+    Acces = access;
+    nm = name;
+    debugger;
+    $.ajax
+                        ({
+                            type: "GET",
+                            //url: "AjaxReport.aspx?op=facebook&id=" + id+ "&access=" + access+ "&NumberOfDays=" + NumberOfDays,
+                            url: "AjaxReport.aspx?op=facebook&id=" + id + "&access=" + access,
+                            data: '',
+                            contentType: "application/text; charset=utf-8",
+                            success: function (msg) {
+                                debugger;
+                                //  alert(msg);
+                                //var c=document.getElementById("cvs");
+                                //var ctx=c.getContext("2d");
+                                //ctx.clearRect(0,0,739,100);
+                                var fbData = msg.split("_");
+                                fbAgeArr = JSON.parse(fbData[0]);
+
+                                debugger;
+                                fbImpArr = fbData[1].split("@");
+                                fbLocArr = fbData[2].split("@");
+                                var ImAgE = fbData[6];
+                                likeunlikedt = fbData[5].split("@");
+                                fbstory = fbData[7].split("@");
+
+
+
+                                $('#ContentPlaceHolder1_divPageName').html(name);
+                                $('#ContentPlaceHolder1_divPageLikes').html(fbData[3]);
+                                $('#ContentPlaceHolder1_fbProfileImg').attr('src', ImAgE);
+                                $('#ContentPlaceHolder1_spanTalking').html(fbData[4]);
+                                $('#ContentPlaceHolder1_divpost').html(fbData[8]);
+
+
+                                reloadfbGraph(likeunlikedt);
+                                reloadimpresGraph(fbImpArr);
+                                reloadStoriesGraph(fbstory);
+                                // alert(twtArr);
+                            }
+
+                        });
+}
 
 
 

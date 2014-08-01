@@ -163,7 +163,7 @@ namespace SocioBoard.Model
         /// </summary>
         /// <param name="profileid">Profile id of linkedin account (string)</param>
         /// <returns>Return object of LinkedInFeed Class with value of each member in the form of list.(List<LinkedInFeed>)</returns>
-        public List<LinkedInFeed> getAllLinkedInFeedsOfProfile(string profileid)
+        public List<LinkedInFeed> getAllLinkedInFeedsOfProfile(string ProfileId)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -174,8 +174,8 @@ namespace SocioBoard.Model
                     try
                     {
                         //Proceed action, to get all feed of account
-                        List<LinkedInFeed> alst = session.CreateQuery("from LinkedInFeed where ProfileId = :profileId ORDER BY EntryDate DESC")
-                        .SetParameter("profileId", profileid)
+                        List<LinkedInFeed> alst = session.CreateQuery("from LinkedInFeed where ProfileId = :ProfileId ORDER BY EntryDate DESC")
+                        .SetParameter("ProfileId", ProfileId)
                         .List<LinkedInFeed>()
                         .ToList<LinkedInFeed>();
 

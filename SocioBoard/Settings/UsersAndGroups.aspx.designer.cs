@@ -58,22 +58,13 @@ namespace SocialSuitePro.Settings {
         protected global::System.Web.UI.WebControls.Label memberName;
         
         /// <summary>
-        /// TwitterOAuth control.
+        /// creategroup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor TwitterOAuth;
-        
-        /// <summary>
-        /// facebook_connect control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor facebook_connect;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor creategroup;
         
         /// <summary>
         /// AllGroups control.
@@ -164,14 +155,5 @@ namespace SocialSuitePro.Settings {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor inviteteamfromUserAndGroups;
-        
-        /// <summary>
-        /// inviTeamMem control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl inviTeamMem;
     }
 }

@@ -7,8 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SocialSuitePro.Settings
-{
+namespace SocialSuitePro.Settings {
     
     
     public partial class BusinessSetting {
@@ -66,42 +65,6 @@ namespace SocialSuitePro.Settings
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton rbEnableTaskNoti;
-        
-        /// <summary>
-        /// rbDoNotShowPromt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbDoNotShowPromt;
-        
-        /// <summary>
-        /// rbShowPromt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbShowPromt;
-        
-        /// <summary>
-        /// rbFbTimeLine control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbFbTimeLine;
-        
-        /// <summary>
-        /// rbFbWooSuitePhotos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbFbWooSuitePhotos;
         
         /// <summary>
         /// btnSubmit control.

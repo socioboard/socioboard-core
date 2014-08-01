@@ -177,7 +177,7 @@ namespace SocioBoard.Model
         /// <param name="UserId">user id.(Guid)</param>
         /// <param name="profileId">Profile id.(String)</param>
         /// <returns>Return values in the form of array list.(ArrayList)</returns>
-        public ArrayList gettwtDMRecieveStatsByProfileId(Guid UserId, string profileId)
+        public ArrayList gettwtDMRecieveStatsByProfileId(string profileId, int days)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -188,8 +188,9 @@ namespace SocioBoard.Model
                     try
                     {
                         //Proceed action, to get total count of message for last 7 day's by sender id and profileId.
-                        NHibernate.IQuery query = session.CreateSQLQuery("Select Distinct Count(MessageId) from TwitterDirectMessages where EntryDate>=DATE_ADD(NOW(),INTERVAL -7 DAY) and UserId =:userid and RecipientId='" + profileId + "' Group by DATE_FORMAT(EntryDate,'%y-%m-%d') ")
-                            .SetParameter("userid", UserId);
+                        NHibernate.IQuery query = session.CreateSQLQuery("Select Distinct Count(MessageId) from TwitterDirectMessages where EntryDate >= DATE_ADD(NOW(),INTERVAL -" + days + " DAY) and  RecipientId=: profileId ")
+                            //.SetParameter("days", days)
+                         .SetParameter("profileId", profileId);
                         ArrayList alstFBmsgs = new ArrayList();
 
                         foreach (var item in query.List())
@@ -214,7 +215,7 @@ namespace SocioBoard.Model
         /// <param name="UserId">User id.(Guid)</param>
         /// <param name="profileId">Profile id.(String)</param>
         /// <returns>Return values in the form of array list.(ArrayList)</returns>
-        public ArrayList gettwtDMSendStatsByProfileId(Guid UserId, string profileId)
+        public ArrayList gettwtDMSendStatsByProfileId(string profileId, int days)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -224,9 +225,10 @@ namespace SocioBoard.Model
                 {
                     try
                     {
-                        //Proceed action, to get total count of message for last 7 day's by sender id.
-                        NHibernate.IQuery query = session.CreateSQLQuery("Select Distinct Count(MessageId) from TwitterDirectMessages where EntryDate>=DATE_ADD(NOW(),INTERVAL -7 DAY) and UserId =:userid and SenderId='" + profileId + "' Group by DATE_FORMAT(EntryDate,'%y-%m-%d') ")
-                            .SetParameter("userid", UserId);
+                        //Proceed action, to get total count of message for last 7 day's by sender id and profileId.
+                        NHibernate.IQuery query = session.CreateSQLQuery("Select Distinct Count(MessageId) from TwitterDirectMessages where EntryDate >= DATE_ADD(NOW(),INTERVAL -" + days + " DAY) and  SenderId='" + profileId + "'");
+                            //.SetParameter("days", days)
+                       //  .SetParameter("profile", profileId);
                         ArrayList alstFBmsgs = new ArrayList();
 
                         foreach (var item in query.List())
@@ -243,7 +245,6 @@ namespace SocioBoard.Model
                 }//End Transaction
             }//End Session
         }
-
 
         /// <DeleteTwitterDirectMessagesByUserid>
         /// Delete Twitter Direct Messages By User id.

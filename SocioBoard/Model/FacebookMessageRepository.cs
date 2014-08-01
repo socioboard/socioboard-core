@@ -599,5 +599,40 @@ namespace SocioBoard.Model
 
 
 
+        public List<FacebookMessage> getAllMessageDetail(string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        string str = "from FacebookMessage where ProfileId IN(";
+                        string[] arrsrt = profileid.Split(',');
+                        foreach (string sstr in arrsrt)
+                        {
+                            str += Convert.ToInt64(sstr) + ",";
+                        }
+                        str = str.Substring(0, str.Length - 1);
+                        str += ")";
+                        List<FacebookMessage> alst = session.CreateQuery(str)
+                       .List<FacebookMessage>()
+                       .ToList<FacebookMessage>();
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Trasaction
+            }//End session
+        }
+
+
     }
 }

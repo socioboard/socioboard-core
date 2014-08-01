@@ -165,5 +165,40 @@ namespace SocioBoard.Helper
                 logger.Error(ex.Message);
             }
         }
+
+        public static void SendTaskNotificationEmail(string Fromemail, string Toemail, string subject, string EmailMessage)
+        {
+            try
+            {
+                Registration reg = new Registration();
+                //string tid = reg.MD5Hash(email);
+                MailHelper mailhelper = new MailHelper();
+                string mailpath = HttpContext.Current.Server.MapPath("~/Layouts/Mails/SendInvitation.htm");
+                string html = File.ReadAllText(mailpath);
+                //string fromemail = ConfigurationManager.AppSettings["fromemail"];
+                string fromemail = Fromemail;
+                string usernameSend = ConfigurationManager.AppSettings["username"];
+                string host = ConfigurationManager.AppSettings["host"];
+                string port = ConfigurationManager.AppSettings["port"];
+                string pass = ConfigurationManager.AppSettings["password"];
+                //string urllogin = "http://socioboard.com/Default.aspx";
+                // string registrationurl = "http://socioboard.com/Registration.aspx?tid=" + teamid;
+                //string Body = mailhelper.InvitationMail(html, username, sendername, "", urllogin, registrationurl);
+                string Body = EmailMessage;
+                //string Subject = "You've been Invited to " + username + " Socioboard Account";
+                string Subject = subject;
+                //   MailHelper.SendMailMessage(host, int.Parse(port.ToString()), fromemail, pass, email, string.Empty, string.Empty, Subject, Body);
+
+
+                MailHelper.SendSendGridMail(host, Convert.ToInt32(port), fromemail, "", Toemail, "", "", Subject, Body, usernameSend, pass);
+
+            }
+            catch (Exception ex)
+            {
+
+                logger.Error(ex.Message);
+            }
+        }
+
     }
 }

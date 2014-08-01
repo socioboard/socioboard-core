@@ -40,7 +40,7 @@ namespace SocioBoard.Message
                 {
                     try
                     {
-                        blackcount.InnerHtml = Convert.ToString((int)Session["CountMessages"]);
+                     //   blackcount.InnerHtml = Convert.ToString((int)Session["CountMessages"]);
                     }
                     catch (Exception ex)
                     {

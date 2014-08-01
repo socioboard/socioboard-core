@@ -153,7 +153,9 @@
                             </div>
                             <div class="assign_task_to">
                              <img src="../Contents/img/blank_img.png" alt="" />
-                                <textarea id="txtcmt"  placeholder="Your comment (viewable only to team members)"></textarea>
+                               <div id="asd">
+                                <textarea  id="txttitle"   placeholder="Your enter Title here"></textarea></div>
+                               <div id="sdf"><textarea  id="txtcmt"  placeholder="Your comment (viewable only to team members)"></textarea></div>
                             </div>
                             <div class="task_ws_tm_button_div">
                              <input id="save_task" type="button" name="" id="close" value="Post"  onclick="postFBGroupFeeds();"/>
@@ -189,6 +191,8 @@
             $("#feeds").removeClass('active');
             $("#discovery").removeClass('active');
             $("#publishing").removeClass('active');
+
+            $("#groups").addClass('active');
             $("#Li1").addClass('active');
 
 
@@ -221,10 +225,22 @@
             var gid = $('.post').attr("gid");
             debugger;
             if (gid === "" || gid === null) {
-                alert('Please select one group for posting');
+                alert('Please add group first');
             }
             else {
-                $('#popupchk12').bPopup();
+
+                if (gid.indexOf("lin_") > -1) {
+                    $('.assign_task_to > #asd').removeClass('asd');
+                    $('#popupchk12').bPopup();
+
+                }
+                else {
+
+                    $('#popupchk12').bPopup();
+                    $('.assign_task_to > #asd').addClass('asd');
+
+
+                }
             }
         }
     </script>

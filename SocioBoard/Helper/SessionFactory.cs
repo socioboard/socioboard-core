@@ -39,7 +39,7 @@ namespace SocioBoard.Helper
                     path = configfilepath;
                 }
                 config.Configure(path);
-                config.AddAssembly("SocioBoard 1.0");//adds all the embedded resources .hbm.xml
+                config.AddAssembly("SocioBoard");//adds all the embedded resources .hbm.xml
                 sFactory = config.BuildSessionFactory();
             }
             catch (Exception ex)

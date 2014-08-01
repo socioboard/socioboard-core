@@ -137,28 +137,47 @@ google.load("visualization", "1", {packages:["corechart"]});
 	      }
 	  }
 	  //@ Mentions Graph
-	  
-	  google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart_e);
-      function drawChart_e() {
-        var data = google.visualization.arrayToDataTable([
-          ['Month', 'ENGAGEMENT'],
-          ['May',  4],
-          ['June',  4],
-          ['July',  4],
-          ['August',  4]
-        ]);
 
-        var options = {
-		  hAxis: { textPosition: 'none' },
-		  vAxis: { textPosition: 'none' },
-		 hAxis: {gridlines: {color: '#ffffff'}},
-		  series: [{color: '#75bf55', visibleInLegend: true}]
-        };
+	  function getTwtMention(item) {
+	      google.setOnLoadCallback(drawChart_d);
+	      function drawChart_d() {
+	          var data = google.visualization.arrayToDataTable(item);
 
-        var chart = new google.visualization.LineChart(document.getElementById('mention_graph'));
-        chart.draw(data, options);
-      }
+	          var options = {
+	              hAxis: { textPosition: 'none' },
+	              vAxis: { textPosition: 'none' },
+	              hAxis: { gridlines: { color: '#ffffff'} },
+	              series: [{ color: '#535353', visibleInLegend: true}]
+	          };
+
+	          var chart = new google.visualization.LineChart(document.getElementById('mention_graph'));
+	          chart.draw(data, options);
+	      }
+	  }
+
+
+
+//	  google.load("visualization", "1", {packages:["corechart"]});
+//      google.setOnLoadCallback(drawChart_e);
+//      function drawChart_e() {
+//        var data = google.visualization.arrayToDataTable([
+//          ['Month', 'ENGAGEMENT'],
+//          ['May',  4],
+//          ['June',  4],
+//          ['July',  4],
+//          ['August',  4]
+//        ]);
+
+//        var options = {
+//		  hAxis: { textPosition: 'none' },
+//		  vAxis: { textPosition: 'none' },
+//		 hAxis: {gridlines: {color: '#ffffff'}},
+//		  series: [{color: '#75bf55', visibleInLegend: true}]
+//        };
+
+//        var chart = new google.visualization.LineChart(document.getElementById('mention_graph'));
+//        chart.draw(data, options);
+//      }
 	  
 	  
 	  //Message Sent Graph

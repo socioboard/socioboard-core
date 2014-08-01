@@ -86,7 +86,7 @@ namespace SocialSuitePro
                 objInsRepo.updateInstagramUser(objInsAccount);
                 if (!socioprofilerepo.checkUserProfileExist(socioprofile))
                 {
-                    socioprofilerepo.addNewProfileForUser(socioprofile);
+                    socioprofilerepo.addNewProfileForUser(socioprofile);                
                 }
             }
             else
@@ -95,9 +95,26 @@ namespace SocialSuitePro
                 if (!socioprofilerepo.checkUserProfileExist(socioprofile))
                 {
                     socioprofilerepo.addNewProfileForUser(socioprofile);
+                    GroupRepository objGroupRepository = new GroupRepository();
+                    SocioBoard.Domain.Team team = (SocioBoard.Domain.Team)HttpContext.Current.Session["GroupName"];
+                    Groups lstDetails = objGroupRepository.getGroupName(team.GroupId);
+                    if (lstDetails.GroupName == "Socioboard")
+                    {
+                        TeamMemberProfileRepository objTeamMemberProfileRepository = new TeamMemberProfileRepository();
+                        TeamMemberProfile teammemberprofile = new TeamMemberProfile();
+                        teammemberprofile.Id = Guid.NewGuid();
+                        teammemberprofile.TeamId = team.Id;
+                        teammemberprofile.ProfileId = socioprofile.ProfileId;
+                        teammemberprofile.ProfileType = "instagram";
+                        teammemberprofile.StatusUpdateDate = DateTime.Now;
+
+                        objTeamMemberProfileRepository.addNewTeamMember(teammemberprofile);
+
+                    }
+
                 }
             }
-       string messages =     getIntagramImages(objInsAccount);
+            string messages = getIntagramImages(objInsAccount);
 
           
             Response.Write(messages);

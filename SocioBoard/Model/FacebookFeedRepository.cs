@@ -29,7 +29,56 @@ namespace SocioBoard.Model
             }//End session
         }
 
-        
+
+        public List<FacebookFeed> getAllFeedDetail(string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        string str = "from FacebookFeed where ProfileId IN(";
+                        string[] arrsrt = profileid.Split(',');
+                        foreach (string sstr in arrsrt)
+                        {
+                            str += Convert.ToInt64(sstr) + ",";
+                        }
+                        str = str.Substring(0, str.Length - 1);
+                        str += ")";
+                        List<FacebookFeed> alst = session.CreateQuery(str)
+                       .List<FacebookFeed>()
+                       .ToList<FacebookFeed>();
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Trasaction
+            }//End session
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public int deleteFacebookFeed(FacebookFeed fbfeed)
         {
             throw new NotImplementedException();
@@ -281,7 +330,8 @@ namespace SocioBoard.Model
                     {
                         //Proceed action to get all feeds of user.
                         List<FacebookFeed> lstfbfeed = session.CreateQuery("from FacebookFeed where ReadStatus = 0 and UserId=:userid and ProfileId = :profid ORDER BY EntryDate DESC")
-                                     .SetParameter("userid", UserId)
+                           //   List<FacebookFeed> lstfbfeed = session.CreateQuery("from FacebookFeed where ReadStatus = 0  and ProfileId = :profid ORDER BY EntryDate DESC")
+                                   //  .SetParameter("userid", UserId)
                                      .SetParameter("profid", profileId)
                                      .List<FacebookFeed>()
                                      .ToList<FacebookFeed>();
@@ -307,7 +357,42 @@ namespace SocioBoard.Model
             }//End session
         }
 
+        public List<FacebookFeed> getUnreadMessages(string profileId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action to get all feeds of user.                    
+                         List<FacebookFeed> lstfbfeed = session.CreateQuery("from FacebookFeed where ReadStatus = 0  and ProfileId = :profid ORDER BY EntryDate DESC")                        
+                                     .SetParameter("profid", profileId)
+                                     .List<FacebookFeed>()
+                                     .ToList<FacebookFeed>();
 
+                        #region Oldcode
+                        //List<FacebookFeed> lstfbfeed = new List<FacebookFeed>();
+                        //foreach (FacebookFeed item in query.Enumerable<FacebookFeed>())
+                        //{
+                        //    lstfbfeed.Add(item);
+                        //} 
+                        #endregion
+
+
+                        return lstfbfeed;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End session
+        }
         /// <getAllFacebookUserFeeds>
         /// Get All Facebook User Feeds
         /// </summary>
@@ -324,7 +409,7 @@ namespace SocioBoard.Model
                     try
                     {
                         //Proceed action, to get all facebook feeds of profile by facebook profile id  
-                        List<FacebookFeed> alst = session.CreateQuery("from FacebookFeed where  ProfileId = :profileId ORDER BY EntryDate DESC")
+                        List<FacebookFeed> alst = session.CreateQuery("from FacebookFeed where  ProfileId = :profileId ORDER BY FeedDate DESC")
                         .SetParameter("profileId", profileid)
                         .List<FacebookFeed>()
                         .ToList<FacebookFeed>();
@@ -393,7 +478,7 @@ namespace SocioBoard.Model
         /// </summary>
         /// <param name="UserId">User Id (Guid)</param>
         /// <returns>When process is successfullt done its return 1 otherwise return 0.</returns>
-        public int updateMessageStatus(Guid UserId)
+        public int updateMessageStatus(string profileid)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -404,8 +489,8 @@ namespace SocioBoard.Model
                     try
                     {
                         //Proceed action, to update status by user id.
-                        int i = session.CreateQuery("Update FacebookFeed set ReadStatus =1 where UserId = :id")
-                                   .SetParameter("id", UserId)
+                        int i = session.CreateQuery("Update FacebookFeed set ReadStatus =1 where ProfileId = :profileid")
+                                   .SetParameter("profileid", profileid)
                                    .ExecuteUpdate();
                         transaction.Commit();
                         return i;
@@ -439,7 +524,7 @@ namespace SocioBoard.Model
                     {
                         //Proceed action, to get all read feed messages by user id and profile id. 
                         //Order by EntryDate DESC
-                        List<FacebookFeed> alst = session.CreateQuery("from FacebookFeed where ReadStatus = 1 and UserId = :userid and ProfileId = :profileId ORDER BY EntryDate DESC")
+                        List<FacebookFeed> alst = session.CreateQuery("from FacebookFeed where ReadStatus = 1 and UserId = :userid and ProfileId = :profileId ORDER BY FeedDate DESC")
                        .SetParameter("userid", UserId)
                        .SetParameter("profileId", profileid)
                        .List<FacebookFeed>()
@@ -466,6 +551,51 @@ namespace SocioBoard.Model
                 }//End Trasaction
             }//End session
         }
+
+        public List<FacebookFeed> getAllReadFbFeeds(string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get all read feed messages by user id and profile id. 
+                        //Order by EntryDate DESC
+
+                        string str = "from FacebookFeed where ReadStatus = 1 and ProfileId IN(";
+                        string[] arrsrt = profileid.Split(',');
+                        foreach (string sstr in arrsrt)
+                        {
+                            str += Convert.ToInt64(sstr) + ",";
+                        }
+                        str = str.Substring(0, str.Length - 1);
+                        str += ") ORDER BY FeedDate DESC";
+                       // List<FacebookFeed> alst = session.CreateQuery("from FacebookFeed where ReadStatus = 1 and UserId = :userid and ProfileId = :profileId ORDER BY FeedDate DESC")
+                        List<FacebookFeed> alst = session.CreateQuery(str)
+                      // .SetParameter("userid", UserId)
+                       //.SetParameter("profileId", profileid)
+                       .List<FacebookFeed>()
+                       .ToList<FacebookFeed>();
+
+
+                 
+
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Trasaction
+            }//End session
+        }
+       
 
 
         /// <countInteractions>

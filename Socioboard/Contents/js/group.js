@@ -1,6 +1,10 @@
 ﻿
 var grpId = "";
 var accToken = "";
+var linkedInUserId = "";
+
+
+
 function facebookgroupdetails(gid, fbUserId) {
     $(".gcontent").empty();
     //alert("abhay");
@@ -147,52 +151,110 @@ function myDate(dt) {
 
 
 function postFBGroupFeeds() {
+    debugger;
     var gid = grpId;
-    var fbUserId = accToken;
-    var msg = $('#txtcmt').val();
-    if (msg == "" || msg == null) {
-        alert("Please enter in Comment Box");
-        return false;
-    }
-    //alert(msg);
+    //alert(gid);
 
+    if (gid.indexOf("lin_") > -1) {
 
-    $.ajax({
-        url: "../Group/AjaxGroup.aspx?op=postFBGroupFeeds",
-        type: "post",
-        data: "{'gid':'" + gid + "','ack':'" + fbUserId + "','msg':'" + msg + "'}",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (msg) {
-            //alert(msg);
-            if (msg != "") {
-                alert("Success !!");
-                facebookgroupdetails(gid, fbUserId);
-                //to close a popupbox begin
-                document.getElementById('txtcmt').value = "";
-               // $('#close').live('click', function (e) {
-                $('#close').click('click', function (e) {
-                    $('#popupchk12').bPopup().close();
-                });
-                //to close a popupbox end
+        gid = gid.split('_')[1];
+        //  alert(gid);
+        var title = $('#txttitle').val();
+        var msg = $('#txtcmt').val();
 
-                $('#close').click();
-            }
-            else {
-                // alert("failure");
-                //alert("Please enter in Comment Box");
-            }
-
-        },
-        error: function () {
-             alert("failure");
-
+        if (title == "" || title == null) {
+            alert("Please enter title");
+            return false;
         }
 
-    });
+
+        if (msg == "" || msg == null) {
+            alert("Please enter in Comment Box");
+            return false;
+        }
+
+
+        linkedInUserId = linkedInUserId;
+
+        $.ajax({
+            url: "../Group/AjaxGroup.aspx?op=postLinkedInGroupFeeds&groupid=" + gid + "&LinkedinUserId=" + linkedInUserId + "&msg=" + msg + "&title=" + title,
+            type: "post",
+
+            success: function (msg) {
+
+                if (msg != "") {
+                    alert("Success !!");
+                    // facebookgroupdetails(gid, fbUserId);
+                    //to close a popupbox begin
+                    document.getElementById('txtcmt').value = "";
+                    // $('#close').live('click', function (e) {
+                    $('#close').click('click', function (e) {
+                        $('#popupchk12').bPopup().close();
+                    });
+                    //to close a popupbox end
+
+                    $('#close').click();
+                }
+                else {
+                }
+
+            },
+            error: function () {
+                alert("failure");
+
+            }
+
+        });
+
+    }
+    else {
+
+
+        var fbUserId = accToken;
+        var msg = $('#txtcmt').val();
+        if (msg == "" || msg == null) {
+            alert("Please enter in Comment Box");
+            return false;
+        }
+        //alert(msg);
+
+
+        $.ajax({
+            url: "../Group/AjaxGroup.aspx?op=postFBGroupFeeds",
+            type: "post",
+            data: "{'gid':'" + gid + "','ack':'" + fbUserId + "','msg':'" + msg + "'}",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (msg) {
+                //alert(msg);
+                if (msg != "") {
+                    alert("Success !!");
+                    facebookgroupdetails(gid, fbUserId);
+                    //to close a popupbox begin
+                    document.getElementById('txtcmt').value = "";
+                    // $('#close').live('click', function (e) {
+                    $('#close').click('click', function (e) {
+                        $('#popupchk12').bPopup().close();
+                    });
+                    //to close a popupbox end
+
+                    $('#close').click();
+                }
+                else {
+                    // alert("failure");
+                    //alert("Please enter in Comment Box");
+                }
+
+            },
+            error: function () {
+                alert("failure");
+
+            }
+
+        });
+    }
 
 }
-
 
 
 
@@ -221,3 +283,73 @@ function abc() {
                             + '</div>'
                        + '</div>');
 }
+
+
+
+//=================linkedin group---------------------
+function linkedingroupdetails(groupid, linUserId) {
+    // alert(groupid);
+
+    grpId = "lin_" + groupid;
+    linkedInUserId = linUserId;
+    $.ajax({
+
+        type: "post",
+        //   type: "POST",
+        url: "../Group/AjaxGroup.aspx?op=getlinkedInGroupDetails&groupid=" + groupid + "&linkuserid=" + linUserId,
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (message) {
+
+            $('div .alert_suite_title > a').attr("gid", grpId);
+
+            $(".gcontent").html(message);
+
+        }
+    });
+}
+
+function FollowPosts(groupid, GpPostid, LinkedinUserId, isFollowing) {
+
+    // alert(GpPostid);
+    $.ajax({
+
+        type: "post",
+        type: "POST",
+        url: "../Group/AjaxGroup.aspx?op=FollowPost&groupid=" + GpPostid + "&LinkedinUserId=" + LinkedinUserId + "&isFollowing=" + isFollowing,
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (message) {
+            linkedingroupdetails(groupid, LinkedinUserId);
+
+            // $(".gcontent").html(message);
+
+        }
+    });
+}
+function LikePosts(groupid, GpPostid, LinkedinUserId, isLike) {
+
+    // alert(GpPostid);
+    $.ajax({
+
+        type: "post",
+        type: "POST",
+        url: "../Group/AjaxGroup.aspx?op=LikePost&groupid=" + GpPostid + "&LinkedinUserId=" + LinkedinUserId + "&isLike=" + isLike,
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (message) {
+            linkedingroupdetails(groupid, LinkedinUserId);
+
+            // $(".gcontent").html(message);
+
+        }
+    });
+}
+
+
+
+
+

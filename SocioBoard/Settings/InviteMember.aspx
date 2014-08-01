@@ -38,11 +38,11 @@
                             <input type="text" value="Last Name"  />--%>
                             <div class="first_error">
                                 <asp:TextBox ID="txtFirstName" runat="server" placeholder="FirstName"></asp:TextBox>
-                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="star-ribbon" runat="server" ErrorMessage="Please Fill the First Name" ControlToValidate="txtFirstName" ForeColor="Red"></asp:RequiredFieldValidator>
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="star-ribbon" runat="server" ErrorMessage="" ControlToValidate="txtFirstName" ForeColor="Red"></asp:RequiredFieldValidator>
                            </div>
                             <div class="first_error">                                
                                 <asp:TextBox ID="txtLastName" runat="server"  placeholder="LastName"></asp:TextBox>                             
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please Fill the Last Name" ControlToValidate="txtLastName" ForeColor="Red"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="" ControlToValidate="txtLastName" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </div>
                             <div class="first_error">     
                             </div>
@@ -54,29 +54,29 @@
                         <div class="email_div">
                         	 <%--<input type="text" value="Email"  />--%>
                              <asp:TextBox ID="txtEmail" runat="server" placeholder="Enter Email Address"></asp:TextBox>
-                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Please Fill the Email Address" ControlToValidate="txtEmail" ForeColor="Red"></asp:RequiredFieldValidator>
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="" ControlToValidate="txtEmail" ForeColor="Red"></asp:RequiredFieldValidator>
                               <span class="error-keyup-3"></span>
                         </div>
-                        <h5 class="add2networks_header">
+                      <%--  <h5 class="add2networks_header">
                         	Set access level and configure networks and permissions in the 
                             <em>globus</em>
                              group
-                        </h5>
-                        <div class="admin_user">
+                        </h5>--%>
+                     <%--   <div class="admin_user">
                         	<div class="admin_part">
                             	<div class="amdmin_checkbox">
                                     
                                 	<%--<input type="checkbox" name="" />--%>
-                                    <asp:RadioButton ID="rbAdmin" runat="server" 
-                                         ValidationGroup="User"  GroupName="Radio"  />
+                                   <%-- <asp:RadioButton ID="rbAdmin" runat="server" 
+                                         ValidationGroup="User"  GroupName="Radio"  />--%>
 
                                   <%--  <asp:CheckBox ID="chkAdmin" runat="server" AutoPostBack="True" 
                                         oncheckedchanged="chkAdmin_CheckedChanged" ValidationGroup="User" />--%>
-                                    <div class="admin_content">
+                                   <%-- <div class="admin_content">
                                     	Admin<span class="font-12">(extended privileges)</span>
                                     </div>
-                                </div>
-                            	<div id="pick_networks">
+                                </div>--%>
+                            	<%--<div id="pick_networks">
                                 	<ul>
                                     	<li>Send, Schedule or Draft Messages</li>
                                         <li>Read, Reply and Publish messages</li>
@@ -87,19 +87,19 @@
                                         <li>View all tasks on a team</li>
                                     </ul>
                                 </div>
-                            </div>
-                            <div class="user_part">
+                            </div>--%>
+                          <%--  <div class="user_part">
                             	<div class="amdmin_checkbox">
                                 	<%--<input type="checkbox" name="" />--%>
-                                      <asp:RadioButton ID="rbUser" runat="server"
-                                        ValidationGroup="User" GroupName="Radio" />
+                                     <%-- <asp:RadioButton ID="rbUser" runat="server"
+                                        ValidationGroup="User" GroupName="Radio" />--%>
                                    <%--  <asp:CheckBox ID="chkUser" runat="server" AutoPostBack="True" 
                                         oncheckedchanged="chkUser_CheckedChanged" ValidationGroup="User" />--%>
-                                    <div class="admin_content">
+                                    <%--<div class="admin_content">
                                     	User<span class="font-12">(limited privileges)</span>
                                     </div>
-                                </div>
-                            	<div id="pick_networks">
+                                </div>--%>
+                            	<%--<div id="pick_networks">
                                 	<ul>
                                     	<li>Send, Schedule or Draft Messages</li>
                                         <li>Read, Reply and Publish messages</li>
@@ -109,10 +109,10 @@
                                         <li>Add / Remove Social Profiles</li>
                                         <li>View all tasks on a team</li>
                                     </ul>
-                                </div>
-                            </div>
+                                </div>--%>
+                          <%--  </div>
                                               
-                        </div>
+                        </div>--%>
                         
                         <div class="ws_tm_network">
                         
@@ -191,6 +191,28 @@
                                  No Accounts For this Group
                                 </div>
                                </div>
+
+
+
+
+                               <div class="ganalytics">
+                            	<div class="ganalytics_list">
+                                	<div class="ganalytics_icon"></div>
+                                    <div class="desc">Tumblr Profile</div>
+                                    <div class="filter">
+                                    <input type="checkbox" id="selectallTumblr"/>
+                                    </div>
+                                </div>
+                                <div id="TumblrAc" runat="server" class="ws_tm_network_one">
+                                 No Accounts For this Group
+                                </div>
+                               </div>
+
+
+
+
+
+
 
                                <div id="totalaccountscheck" style="display:none;" runat="server"></div>
                                </div>

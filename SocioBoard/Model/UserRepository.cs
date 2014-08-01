@@ -246,6 +246,11 @@ namespace SocioBoard.Model
                 }
             }
         }
+
+
+   
+
+
         public int ChangePassword(string newpassword, string oldpassword, string Emailid)
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -295,6 +300,7 @@ namespace SocioBoard.Model
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.StackTrace);
+                        user = null;
                     }
                 }
             }

@@ -97,6 +97,44 @@ namespace SocioBoard.Model
         }
 
 
+        public int DeleteArchiveMessage(Guid userid, string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction. 
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        // Proceed action, to delete data 
+                        // And return integer value when it is success or failed (0 or 1).
+                        NHibernate.IQuery query = session.CreateQuery("delete from ArchiveMessage where UserId = :userid and ProfileId = :Pro")
+                            .SetParameter("userid", userid)
+                            .SetParameter("Pro", profileid);
+                        int isUpdated = query.ExecuteUpdate();
+                        transaction.Commit();
+                        return isUpdated;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+                }// End using trasaction
+            }// End using session
+        }
+
+
+
+
+
+
+
+
+
+
+
         /// <UpdateArchiveMessage>
         /// update ArchieveMessage by UserId.
         /// </summary>
@@ -143,7 +181,7 @@ namespace SocioBoard.Model
                 {
                     //Proceed action to get Archive messages
                     // And return list of archive messages.
-                   List<ArchiveMessage> alstFBAccounts = session.CreateQuery("from ArchiveMessage where UserId = :userid")
+                    List<ArchiveMessage> alstFBAccounts = session.CreateQuery("from ArchiveMessage where UserId = :userid order by CreatedDateTime desc")
                    .SetParameter("userid", Userid)
                    .List<ArchiveMessage>()
                    .ToList<ArchiveMessage>();
@@ -163,7 +201,35 @@ namespace SocioBoard.Model
             }//Using using session
         }
 
+        public List<ArchiveMessage> getAllArchiveMessage(string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction. 
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    //Proceed action to get Archive messages
+                    // And return list of archive messages.
+                    List<ArchiveMessage> alstFBAccounts = session.CreateQuery("from ArchiveMessage where ProfileId = :profileid order by CreatedDateTime desc")
+                   .SetParameter("profileid", profileid)
+                   .List<ArchiveMessage>()
+                   .ToList<ArchiveMessage>();
+                    return alstFBAccounts;
 
+                    #region oldcode
+                    //List<ArchiveMessage> alstFBAccounts = new List<ArchiveMessage>();
+
+                    //foreach (ArchiveMessage item in query.Enumerable())
+                    //{
+                    //    alstFBAccounts.Add(item);
+                    //} 
+                    #endregion
+
+
+                }//End using transaction  
+            }//Using using session
+        }
         /// <checkArchiveMessageExists>
         /// Get all ArchieveMessage by UserId and MessageId.
         /// </summary>

@@ -112,7 +112,7 @@ namespace SocialSuitePro.Settings
                         }
                         else
                         {
-                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Message", "alert('Password Mismatch.')", true);
+                           // ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Message", "alert('Password Mismatch111111.')", true);
                         }
                     }
                     else
@@ -136,7 +136,7 @@ namespace SocialSuitePro.Settings
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-
+            UserRepository objUserRepository = new UserRepository();
             try
             {
                 User user = (User)Session["LoggedUser"];
@@ -169,22 +169,67 @@ namespace SocialSuitePro.Settings
                     bool isEmail = Regex.IsMatch(txtEmail.Text.Trim(), @"\A(?:[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?)\Z");
                     if (isEmail)
                     {
-                         user.UserName = txtFirstName.Text + " " + txtLastName.Text;
-                            user.TimeZone = ddlTimeZone.SelectedItem.Value;
-                            user.EmailId = txtEmail.Text;
-                            UserRepository.Update(user);
-                            Session["LoggedUser"] = user;
-                      
+
+
+                        if (txtEmail.Text.Trim()!=user.EmailId)
+                        {
+                             bool useremailcheck = objUserRepository.IsUserExist(txtEmail.Text.Trim());
+                             if (useremailcheck != true)
+                             {
+                                 try
+                                 {
+                                     user.UserName = txtFirstName.Text + " " + txtLastName.Text;
+                                     user.TimeZone = ddlTimeZone.SelectedItem.Value;
+                                     user.EmailId = txtEmail.Text;
+                                     UserRepository.Update(user);
+                                     Session["LoggedUser"] = user;
+                                 }
+                                 catch (Exception ex)
+                                 {
+
+                                     Console.WriteLine(ex.Message);
+                                 }
+                             }
+                             else
+                             {
+
+                                 ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('EmailId already Exist');", true);
+                                 return;
+
+                             }
+                    }
+                    else
+                        {
+                            try
+                            {
+                                user.UserName = txtFirstName.Text + " " + txtLastName.Text;
+                                user.TimeZone = ddlTimeZone.SelectedItem.Value;
+                                user.EmailId = txtEmail.Text;
+                                UserRepository.Update(user);
+                                Session["LoggedUser"] = user;
+                            }
+                            catch (Exception ex)
+                            {
+
+                                Console.WriteLine(ex.Message);
+                            }
+                        }
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please enter a valid emailId);", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please enter a valid emailId');", true);
+                        return;
+                        
                     }
+                   
                    
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please enter a emailId);", true);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please enter a emailId');", true);
+                    return;
+                    
+                   
                 }
                 //Response.Redirect(Request.RawUrl);
             }
@@ -194,6 +239,7 @@ namespace SocialSuitePro.Settings
                 Console.WriteLine(ex.Message);
             }
             Response.Redirect("PersonalSettings.aspx");
+          
         }
 
 

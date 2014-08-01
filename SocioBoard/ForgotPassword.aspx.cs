@@ -112,16 +112,25 @@ namespace SocioBoard
             try
             {
                 Registration regpage = new Registration();
-                string changedpassword = regpage.MD5Hash(txtpass.Text);
-                UserRepository userrepo = new UserRepository();
-                if (userrepo.ResetPassword(Guid.Parse(userid.ToString()), changedpassword.ToString()) > 0)
+
+                if (txtpass.Text == txtconfirmpass.Text)
                 {
-                    lblerror.Text = "Password Reset Successfully";
+                    string changedpassword = regpage.MD5Hash(txtpass.Text);
+                    UserRepository userrepo = new UserRepository();
+                    if (userrepo.ResetPassword(Guid.Parse(userid.ToString()), changedpassword.ToString()) > 0)
+                    {
+                        lblerror.Text = "Password Reset Successfully";
+                    }
+                    else
+                    {
+                        lblerror.Text = "Problem while resetting password";
+                    }
                 }
                 else
                 {
-                    lblerror.Text = "Problem while resetting password";
+                    lblerror.Text = "Password mismatch!";
                 }
+
 
             }
             catch (Exception Err)

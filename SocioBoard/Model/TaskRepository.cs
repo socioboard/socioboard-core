@@ -120,7 +120,7 @@ namespace SocioBoard.Model
         /// </summary>
         /// <param name="UserId"></param>
         /// <returns>Return values in the form of array list.(ArrayList)</returns>
-        public ArrayList getAllTasksOfUser(Guid UserId)
+        public ArrayList getAllTasksOfUser(Guid UserId, Guid GroupId)
         {
             ArrayList alstTask = new ArrayList();
             try
@@ -132,8 +132,10 @@ namespace SocioBoard.Model
                     using (NHibernate.ITransaction transaction = session.BeginTransaction())
                     {
                         //Proceed action, to get all task of user.
-                        NHibernate.IQuery query = session.CreateQuery("from Tasks where UserId = :userid");
-                        query.SetParameter("userid", UserId);
+                        NHibernate.IQuery query = session.CreateQuery("from Tasks where UserId = :UserId and AssignTaskTo !=:UserId and GroupId =:GroupId");
+                        query.SetParameter("UserId", UserId);
+                        query.SetParameter("UserId", UserId);
+                        query.SetParameter("GroupId", GroupId);
 
 
                         foreach (var item in query.Enumerable())
@@ -157,7 +159,7 @@ namespace SocioBoard.Model
         /// </summary>
         /// <param name="UserId">User id (Guid)</param>
         /// <returns>Return values in the form of array list.(ArrayList)</returns>
-        public ArrayList getAllIncompleteTasksOfUser(Guid UserId)
+        public ArrayList getAllIncompleteTasksOfUser(Guid UserId, Guid GroupId)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -166,8 +168,32 @@ namespace SocioBoard.Model
                 using (NHibernate.ITransaction transaction = session.BeginTransaction())
                 {
                     //Proceed action, to get values by user id and where status is zero.
-                    NHibernate.IQuery query = session.CreateQuery("from Tasks where UserId = :userid and TaskStatus = 0");
+                    NHibernate.IQuery query = session.CreateQuery("from Tasks where UserId = :userid and TaskStatus = 0 and GroupId =: GroupId ");
                     query.SetParameter("userid", UserId);
+                    query.SetParameter("GroupId", GroupId);
+
+                    ArrayList alstTask = new ArrayList();
+                    foreach (var item in query.Enumerable())
+                    {
+                        alstTask.Add(item);
+                    }
+                    return alstTask;
+
+                }//End Transaction
+            }//End Session
+        }
+        public ArrayList getAllIncompleteTasksOfUsers(Guid UserId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    //Proceed action, to get values by user id and where status is zero.
+                    NHibernate.IQuery query = session.CreateQuery("from Tasks where AssignTaskTo = :userid and TaskStatus = 0  and UserId!=:UserId");
+                    query.SetParameter("userid", UserId);
+                    query.SetParameter("UserId", UserId);
                     ArrayList alstTask = new ArrayList();
                     foreach (var item in query.Enumerable())
                     {
@@ -179,8 +205,54 @@ namespace SocioBoard.Model
             }//End Session
         }
 
+        public ArrayList getAllCompleteTasksOfUser(Guid UserId, Guid GroupId, Guid userid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    //Proceed action, to get values by user id and where status is zero.
+                    // NHibernate.IQuery query = session.CreateQuery("from Tasks where UserId = :userid and TaskStatus = 1 and AssignTaskTo=:userid");
+                    NHibernate.IQuery query = session.CreateQuery("from Tasks where UserId = :userid and TaskStatus = 1 and GroupId =: GroupId and AssignTaskTo=:userid ");
+                    query.SetParameter("userid", UserId);
+                    query.SetParameter("GroupId", GroupId);
+                    query.SetParameter("userid", userid);
+                    ArrayList alstTask = new ArrayList();
+                    foreach (var item in query.Enumerable())
+                    {
+                        alstTask.Add(item);
+                    }
+                    return alstTask;
 
+                }//End Transaction
+            }//End Session
+        }
+        public ArrayList getAllCompleteTasksOfUsers(Guid UserId, Guid GroupId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    //Proceed action, to get values by user id and where status is zero.
+                    //NHibernate.IQuery query = session.CreateQuery("from Tasks where AssignTaskTo = :userid and TaskStatus = 1 and UserId!=:UserId");
+                    NHibernate.IQuery query = session.CreateQuery("from Tasks where AssignTaskTo = :userid and TaskStatus = 1 and UserId!=:UserId  and GroupId =: GroupId");
+                    query.SetParameter("userid", UserId);
+                    query.SetParameter("UserId", UserId);
+                    query.SetParameter("GroupId", GroupId);
+                    ArrayList alstTask = new ArrayList();
+                    foreach (var item in query.Enumerable())
+                    {
+                        alstTask.Add(item);
+                    }
+                    return alstTask;
 
+                }//End Transaction
+            }//End Session
+        }
         /// <getTaskById>
         /// Get Task By Id
         /// </summary>
@@ -322,7 +394,7 @@ namespace SocioBoard.Model
         /// <param name="UserId">User id.(Guid)</param>
         /// <param name="AssignTo">Assign to.(Guid)</param>
         /// <returns>Return values in the form of array list.(ArrayList)</returns>
-        public ArrayList getAllMyTasksOfUser(Guid UserId, Guid AssignTo)
+        public ArrayList getAllMyTasksOfUser(Guid AssignTo, Guid GroupId)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -331,9 +403,10 @@ namespace SocioBoard.Model
                 using (NHibernate.ITransaction transaction = session.BeginTransaction())
                 {
                     //Proceed action, to get values by user id and assign task to.
-                    NHibernate.IQuery query = session.CreateQuery("from Tasks where UserId = :userid and AssignTaskTo=:AssignTo");
-                    query.SetParameter("userid", UserId);
+                    NHibernate.IQuery query = session.CreateQuery("from Tasks where AssignTaskTo=:AssignTo and GroupId=:GroupId");
+                    //query.SetParameter("userid", UserId);
                     query.SetParameter("AssignTo", AssignTo);
+                    query.SetParameter("GroupId", GroupId);
                     ArrayList alstTask = new ArrayList();
 
                     foreach (var item in query.Enumerable())
@@ -353,7 +426,7 @@ namespace SocioBoard.Model
         /// <param name="USerId">User id.(Guid)</param>
         /// <param name="days">Number of Days.(int)</param>
         /// <returns>Return values in the form of array list.(ArrayList)</returns>
-        public ArrayList getTasksByUserwithDetail(Guid USerId, int days)
+        public ArrayList getTasksByUserwithDetail(Guid USerId, int days, Guid GroupId)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -361,18 +434,30 @@ namespace SocioBoard.Model
                 //After Session creation, start Transaction.
                 using (NHibernate.ITransaction transaction = session.BeginTransaction())
                 {
-                    //Proceed action, to get details of task.
-                    var queryString = @"SELECT * FROM Tasks ts LEFT JOIN User u on ts.AssignTaskTo=u.Id where ts.UserId=:userid and AssignDate>=DATE_ADD(NOW(),INTERVAL -" + days + " DAY)";
-                    var query = session.CreateSQLQuery(queryString)
-                     .SetParameter("userid", USerId);
-
-                    ArrayList alstTask = new ArrayList();
-
-                    foreach (var item in query.List())
+                    //Proceed action, to get details of task. //ts.UserId=:userid and //.SetParameter("userid", USerId)
+                    //var queryString = @"SELECT * FROM Tasks ts LEFT JOIN User u on ts.AssignTaskTo=u.Id where ts.UserId=:userid and AssignDate>=DATE_ADD(NOW(),INTERVAL -" + days + " DAY)";
+                    //var queryString = @"SELECT * FROM Tasks ts LEFT JOIN User u on ts.AssignTaskTo=u.Id where ts.GroupId=:GroupId and  AssignDate>=DATE_ADD(NOW(),INTERVAL -" + days + " DAY)";
+                    try
                     {
-                        alstTask.Add(item);
+                        var queryString = @"select * from tasks where (AssignTaskTo =:userid or UserId =:userid) and GroupId =:GroupId and  AssignDate>=DATE_ADD(NOW(),INTERVAL -" + days + " DAY)";
+                        var query = session.CreateSQLQuery(queryString)
+                            .SetParameter("userid", USerId)
+                            .SetParameter("GroupId", GroupId);
+                        //.SetParameter("GroupId", GroupId);
+
+                        ArrayList alstTask = new ArrayList();
+
+                        foreach (var item in query.List())
+                        {
+                            alstTask.Add(item);
+                        }
+                        return alstTask;
                     }
-                    return alstTask;
+                    catch (Exception)
+                    {
+                        
+                        throw;
+                    }
 
                 }//End Transaction
             }//End Session

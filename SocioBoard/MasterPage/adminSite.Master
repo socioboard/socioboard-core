@@ -353,6 +353,14 @@
 							</ul>
 							
 						</li>
+                          <li class="hasSubmenu active">
+							<a data-toggle="collapse" href="#Ul6"><i></i><span>Mandrill Account</span></a>
+							<ul class="collapse in" id="Ul7">
+								<li class=""><a href="../Admin/AddMandrillAccount.aspx"><span>Entry Account</span></a></li>
+								<li class=" active"><a href="../Admin/ManageMandrillAccount.aspx"><span>Manage Mandrill Account</span></a></li>
+							</ul>
+							
+						</li>
 						<!-- // Account Submenu Level 2 END -->
 						
 						<!-- Landings Submenu Level 2 -->

@@ -105,7 +105,7 @@
                             ValidationGroup="setting" ForeColor="Red" SetFocusOnError="True"></asp:CompareValidator>
                        
                         <%-- <div class="ws_tm_ps_button_div">--%>
-                        <asp:Button class="cngpwd" ID="btnChangePassword" runat="server" Text="Change Password"
+                        <asp:Button class="cngpwd" ID="btnChangePassword" runat="server"  Text="Change Password"
                             OnClick="changePassoword" />
                         <input id="btncancel" type="button" value="Cancel" />
                         <%-- </div>--%>

@@ -193,6 +193,32 @@ namespace SocioBoard.Model
             }//End session
         }
 
+        public InstagramAccount getInstagramAccountDetailsById(string Insuserid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+
+                    //Proceed action to get Instagram Account Details.
+                    List<InstagramAccount> objlst = session.CreateQuery("from InstagramAccount where  InstagramId = :InstagramId ")
+                     .SetParameter("InstagramId", Insuserid)
+                    .List<InstagramAccount>().ToList<InstagramAccount>();
+                    InstagramAccount result = new InstagramAccount();
+                    if (objlst.Count > 0)
+                    {
+                        result = objlst[0];
+                    }
+                    return result;
+                }//End Transaction
+            }//End session
+        }
+
+
+
+
 
         /// <checkInstagramUserExists>
         /// Check if instagram user is Exist or not in Database by InUserId(String) and UserId(Guid).

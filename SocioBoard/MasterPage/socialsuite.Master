@@ -6,6 +6,7 @@
 <head id="Head1" runat="server">
     <title>Socioboard - Generate More leads on Social Media| Social CRM | Social Media CMS
     </title>
+    <meta name="google-site-verification" content="suNXfJWYY3E7tilc3XsF5M2qZgSml8fGZVb5RfDOWaA" />
     <meta name="description" content="A new fast growing, advanced, easy, open-source social media marketing tool to engage your audience with great features such as live chat, news feed, timeline, profiles, events, notifications, likes, analytics, insights and much more hit the digital media marketing lately.Most applications in this domain have a very narrow and limited approach towards end users, people feel caught up in a whirlpool of using the same features without customization and scaling up. Socioboard plans to help users out of this narrow limiting vision of the current social media dashboards today." />
     <meta name="keywords" content="Social Media Management Software, Social Media Management tool, Open Source Social Media Management, Social Media Management" />
     <meta property="og:image" content="http://socioboard.com/Contents/img/ssp/slidegraph.png" />
@@ -23,7 +24,6 @@
     <script src="../Contents/js/JSlogin.js" type="text/javascript"></script>
     <script src="../Contents/js/googleanalytics.js" type="text/javascript"></script>
     <script src="../Contents/js/clickDesk.js" type="text/javascript"></script>
-    
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -32,18 +32,17 @@
     <div class="container">
         <!--outer-container-->
         <div class="outer-container" id="p5">
-        <div class="skypenumbg">
-           <div class="skypenum">
-                skype - socioboard.support &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  IN: +<span>91 9713317771</span>, US: +<span>1 408 5209502</span>, UK: +<span> 442032395414</span> 
+            <div class="skypenumbg">
+                <div class="skypenum">
+                    skype - socioboard.support &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IN: +<span>91 9713317771</span>,
+                    US: +<span>1 408 5209502</span>, UK: +<span> 442032395414</span>
+                </div>
             </div>
-        </div>
             <div class="header-inner-container">
-            
                 <div class="logo-container">
                     <a href="../Default.aspx">
                         <img src="../Contents/img/ssp/logo-txt.png" alt="" /></a></div>
                 <div class="main-nav">
-                
                     <div class="social_plugin">
                         <span class='st_facebook_large'><a target="_blank" href="https://www.facebook.com/SocioBoard">
                             <img src="../Contents/img/ssp/facebook_32.png" alt="Facebook" /></a></span>
@@ -93,6 +92,8 @@
                 <li><a href="../Features.aspx#monitor">Monitor</a></li>
                 <li><a href="../Features.aspx#analyze">Analyze</a></li>
                 <li><a href="../Features.aspx#report">Report</a></li>
+                <li style="float: right; margin: -22px 5px 0 0;"><a class="button_userguid" href="#">
+                    GET USER GUIDE</a></li>
             </ul>
         </div>
         <!--end outer-container-->
@@ -166,7 +167,7 @@
                         <br />
                         time on every device.<br />
                         <br />
-                        <a href="#" style="cursor: default;">
+                        <a>
                             <img src="../Contents/img/ssp/verify-icon.jpg" alt="" /></a>
                     </div>
                     <div class="clear">
@@ -186,6 +187,23 @@
                 <div class="clear">
                 </div>
             </div>
+            <!-- Start of StatCounter Code for Default Guide -->
+            <script type="text/javascript">
+                var sc_project = 9930597;
+                var sc_invisible = 1;
+                var sc_security = "3850c63d";
+                var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+                document.write("<sc" + "ript type='text/javascript' src='" + scJsHost +
+"statcounter.com/counter/counter.js'></" + "script>");
+            </script>
+            <noscript>
+                <div class="statcounter">
+                    <a title="hits counter" href="http://statcounter.com/" target="_blank">
+                        <img class="statcounter" src="http://c.statcounter.com/9930597/0/3850c63d/1/" alt="hits
+counter"></a></div>
+            </noscript>
+            <!-- End of StatCounter Code for Default Guide -->
         </div>
         <!--end content-sec-container-->
     </div>
@@ -259,8 +277,8 @@
         <div class="left_area">
             <div class="inputbg">
                 <%--<input type="text" id="txtEmail" placeholder="Email" onblur="checkEmail(this.value);" />--%>
-                <input type="text" id="txtEmail" placeholder="Email"/>
-                </div>
+                <input type="text" id="txtEmail" placeholder="Email" />
+            </div>
             <div class="error">
                 <div id="signinemailMessages">
                 </div>
@@ -360,6 +378,4 @@
 
     });
 </script>
-
-
 </html>

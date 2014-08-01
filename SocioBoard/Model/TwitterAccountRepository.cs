@@ -137,6 +137,43 @@ namespace SocioBoard.Model
 
 
 
+
+        public List<TwitterAccount> getAllAccountDetail(string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        string str = "from TwitterAccount where  TwitterUserId IN(";
+                        string[] arrsrt = profileid.Split(',');
+                        foreach (string sstr in arrsrt)
+                        {
+                            str += Convert.ToInt64(sstr) + ",";
+                        }
+                        str = str.Substring(0, str.Length - 1);
+                        str += ") group by TwitterUserId";
+                        List<TwitterAccount> alst = session.CreateQuery(str)
+                       .List<TwitterAccount>()
+                       .ToList<TwitterAccount>();
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Trasaction
+            }//End session
+        }
+
+
+
         /// <getAllTwitterAccounts>
         /// Get All Twitter Accounts
         /// </summary>
@@ -239,6 +276,44 @@ namespace SocioBoard.Model
                 }//End Transaction
             }//End Session
         }
+
+
+
+
+        public TwitterAccount getUserInformation(string twtuserid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get account details by user id and twitter id.
+                       List<TwitterAccount> objlst  = session.CreateQuery("from TwitterAccount where  TwitterUserId = :Twtuserid")
+                     
+                        .SetParameter("Twtuserid", twtuserid)
+                       .List<TwitterAccount>().ToList<TwitterAccount>();
+                       TwitterAccount result = new TwitterAccount();
+                       if (objlst.Count > 0)
+                       {
+                           result = objlst[0];
+                       }
+                       return result;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End Session
+        }
+
+
 
 
         /// <getUserInformation>

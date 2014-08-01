@@ -42,7 +42,9 @@ function BindArchiveMessages() {
     $("#sent_messages").removeClass('active');
     $("#smart_inbox").removeClass('active');
     $("#archive_message").addClass('active');
+    $(".ws_msg_right").hide();
 
+    $(".right-sidebar1").hide();
     bindmessageajax = $.ajax
         ({
             type: "POST",
@@ -367,6 +369,9 @@ function BindInboxMessageonMessageTab() {
     } catch (e) {
 
     }
+    $(".right-sidebar1").hide();
+
+
     // $("#inbox_msgs").html('<img src="../Contents/img/328.gif" alt="" height="50" width="50" style="margin-left: 350px;" />');
 
     $("#home_loader").show();

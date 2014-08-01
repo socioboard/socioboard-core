@@ -3,19 +3,33 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-<%--<script type="text/javascript" language="javascript">
-    window.history.forward(1);
-    document.attachEvent("onkeydown", my_onkeydown_handler);
-    function my_onkeydown_handler() {
-        switch (event.keyCode) {
-            case 116: // F5;
-                event.returnValue = false;
-                event.keyCode = 0;
-                window.status = "We have disabled F5";
-                break;
-        }
-    }
-</script>--%>
+
+
+
+<script type="text/javascript" language="javascript">
+//    window.history.forward(1);
+//    document.attachEvent("onkeydown", my_onkeydown_handler);
+//    function my_onkeydown_handler() {
+//        switch (event.keyCode) {
+//            case 116: // F5;
+//                event.returnValue = false;
+//                event.keyCode = 0;
+//                window.status = "We have disabled F5";
+//                break;
+//        }
+//    }
+
+     function DisableBackButton() {
+                window.history.forward()
+            }
+            DisableBackButton();
+            window.onload = DisableBackButton;
+            window.onpageshow = function (evt) { if (evt.persisted) DisableBackButton() }
+            window.onunload = function () { void (o) }
+
+
+
+</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <%--  <div class="outer-container">

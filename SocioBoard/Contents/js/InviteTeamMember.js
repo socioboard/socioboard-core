@@ -226,3 +226,57 @@ $("#selectallIns").change(function () {
 
 
 
+/*************Tumblr**********************************/
+var chktumb = new Array();
+$("#selectallTumblr").change(function () {
+    debugger;
+    if ($('#selectallTumblr').is(':checked')) {
+        var totalprofiels = document.getElementById('ContentPlaceHolder1_totalaccountscheck').innerHTML;
+        try {
+
+            for (var i = 0; i < totalprofiels; i++) {
+                var vdffd = document.getElementById('tumblrcheck_' + i);
+                if (vdffd != undefined) {
+                    chktumb.push(vdffd);
+                }
+            }
+            if (chktumb.length == 0) {
+                alertify.alert("No profiles for Tumblr");
+                $('#selectallIns').removeAttr('checked');
+            } else {
+                for (var j = 0; j < chktumb.length; j++) {
+
+                    var cid = chktumb[j].id;
+                    $("#" + cid).attr("checked", "checked");
+                    selectprofiles.push(cid);
+                }
+            }
+
+        } catch (e)
+            { }
+
+    } else {
+        var totalprofielss = document.getElementById('ContentPlaceHolder1_totalaccountscheck').innerHTML;
+
+
+        try {
+
+            for (var i = 0; i < totalprofielss; i++) {
+                var vdffdd = document.getElementById('tumblrcheck_' + i);
+                if (vdffdd != undefined) {
+                    chktumb.push(vdffdd);
+                }
+            }
+            if (chkins.length != 0) {
+                for (var j = 0; j < chktumb.length; j++) {
+                    var cid = chktumb[j].id;
+                    $("#" + cid).removeAttr("checked");
+                    selectprofiles.splice(cid, 1);
+                }
+            }
+
+        } catch (e) {
+        }
+
+    }
+});

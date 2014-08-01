@@ -53,37 +53,64 @@ namespace SocioBoard
                 {
                     // ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Captcha is correct');", true);
 
-                    if (IsValidEmail(email.Value))
+                    if (IsValidName(name.Value))
                     {
-                        if (IsItNumber(phone.Value))
+                        if (IsValidDesignation(designation.Value))
                         {
-                            if (name.Value == "" || designation.Value == "" || company.Value == "" || location.Value == "" || website.Value == "" || email.Value == "" || phone.Value == "" || message.Value == "")
+                            if (IsValidCompany(company.Value))
                             {
+                                if (IsValidEmail(email.Value))
+                                {
+                                    if (IsItNumber(phone.Value))
+                                    {
+                                        if (name.Value == "" || designation.Value == "" || company.Value == "" || location.Value == "" || website.Value == "" || email.Value == "" || phone.Value == "" || message.Value == "")
+                                        {
+                                            ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please fill all fields!');", true);
+                                            return ;
+                                        }
+                                        else
+                                        {
+                                            sendmail(name.Value, designation.Value, company.Value, location.Value, website.Value, email.Value, phone.Value, message.Value);
+                                            name.Value = null;
+                                            designation.Value = null;
+                                            company.Value = null;
+                                            location.Value = null;
+                                            website.Value = null;
+                                            email.Value = null;
+                                            phone.Value = null;
+                                            message.Value = null;
+                                            ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Mail send successfully');", true);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Invalid Phone No');", true);
+                                    }
+                                }
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Invalid email address');", true);
+                                }
 
                             }
                             else
                             {
-                                sendmail(name.Value, designation.Value, company.Value, location.Value, website.Value, email.Value, phone.Value, message.Value);
-                                name.Value = null;
-                                designation.Value = null;
-                                company.Value = null;
-                                location.Value = null;
-                                website.Value = null;
-                                email.Value = null;
-                                phone.Value = null;
-                                message.Value = null;
-                                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Mail send successfully');", true);
+                                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Invalid Company Name');", true);
                             }
+
                         }
+
                         else
                         {
-                            ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Invalid Phone No');", true);
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Invalid Designation');", true);
                         }
+
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Invalid email address');", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Invalid Name');", true);
                     }
+
 
                 }
                 else
@@ -127,7 +154,27 @@ namespace SocioBoard
             return !isnumber.IsMatch(inputvalue);
         }
 
+        public static bool IsValidName(string name)
+        {
+            bool ret = false;
+            ret = Regex.IsMatch(name, @"[a-z_]+$");
+            return ret;
+        }
 
+
+        bool IsValidDesignation(string designation)
+        {
+            bool ret = false;
+            ret = Regex.IsMatch(designation, @"[a-z_]+$");
+            return ret;
+        }
+
+        bool IsValidCompany(string Company)
+        {
+            bool ret = false;
+            ret = Regex.IsMatch(Company, @"[a-z_]+$");
+            return ret;
+        }
 
     }
 }

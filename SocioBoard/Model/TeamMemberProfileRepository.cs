@@ -61,6 +61,32 @@ namespace SocioBoard.Model
                 }//End Transaction
             }//End Session
         }
+        public int deleteTeamMember(Guid teamid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to deleting team profile by id and team id.
+                        NHibernate.IQuery query = session.CreateQuery("delete from TeamMemberProfile where TeamId = :teamid")
+                                        .SetParameter("teamid", teamid);
+                                       
+                        int isUpdated = query.ExecuteUpdate();
+                        transaction.Commit();
+                        return isUpdated;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+                }//End Transaction
+            }//End Session
+        }
 
 
         /// <updateTeamMember>
@@ -126,6 +152,125 @@ namespace SocioBoard.Model
                 }//End Transaction
             }//End Session
         }
+
+
+
+
+
+
+
+        public List<TeamMemberProfile> getTeamMemberProfileData(Guid TeamId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    //Proceed action, to get details of team by team id.
+                    List<TeamMemberProfile> alstFBAccounts = session.CreateQuery("from TeamMemberProfile where TeamId = :teamid and ProfileType='facebook'")
+                    .SetParameter("teamid", TeamId)
+                    .List<TeamMemberProfile>()
+                    .ToList<TeamMemberProfile>();
+
+                    //List<TeamMemberProfile> alstFBAccounts = new List<TeamMemberProfile>();
+
+                    //foreach (TeamMemberProfile item in query.Enumerable())
+                    //{
+                    //    alstFBAccounts.Add(item);
+                    //}
+                    return alstFBAccounts;
+
+                }//End Transaction
+            }//End Session
+        }
+
+
+        public List<TeamMemberProfile> getTwtTeamMemberProfileData(Guid TeamId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    //Proceed action, to get details of team by team id.
+                    List<TeamMemberProfile> alstFBAccounts = session.CreateQuery("from TeamMemberProfile where TeamId = :teamid and ProfileType='twitter'")
+                    .SetParameter("teamid", TeamId)
+                    .List<TeamMemberProfile>()
+                    .ToList<TeamMemberProfile>();
+
+                    //List<TeamMemberProfile> alstFBAccounts = new List<TeamMemberProfile>();
+
+                    //foreach (TeamMemberProfile item in query.Enumerable())
+                    //{
+                    //    alstFBAccounts.Add(item);
+                    //}
+                    return alstFBAccounts;
+
+                }//End Transaction
+            }//End Session
+        }
+        public List<TeamMemberProfile> getTumblrTeamMemberProfileData(Guid TeamId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    //Proceed action, to get details of team by team id.
+                    List<TeamMemberProfile> alstFBAccounts = session.CreateQuery("from TeamMemberProfile where TeamId = :teamid and ProfileType='tumblr'")
+                    .SetParameter("teamid", TeamId)
+                    .List<TeamMemberProfile>()
+                    .ToList<TeamMemberProfile>();
+
+                    //List<TeamMemberProfile> alstFBAccounts = new List<TeamMemberProfile>();
+
+                    //foreach (TeamMemberProfile item in query.Enumerable())
+                    //{
+                    //    alstFBAccounts.Add(item);
+                    //}
+                    return alstFBAccounts;
+
+                }//End Transaction
+            }//End Session
+        }
+
+        public List<TeamMemberProfile> getLinkedInTeamMemberProfileData(Guid TeamId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    //Proceed action, to get details of team by team id.
+                    List<TeamMemberProfile> alstFBAccounts = session.CreateQuery("from TeamMemberProfile where TeamId = :teamid and ProfileType='linkedIn'")
+                    .SetParameter("teamid", TeamId)
+                    .List<TeamMemberProfile>()
+                    .ToList<TeamMemberProfile>();
+
+                    //List<TeamMemberProfile> alstFBAccounts = new List<TeamMemberProfile>();
+
+                    //foreach (TeamMemberProfile item in query.Enumerable())
+                    //{
+                    //    alstFBAccounts.Add(item);
+                    //}
+                    return alstFBAccounts;
+
+                }//End Transaction
+            }//End Session
+        }
+
+
+
+
+
+
+
+
+
 
 
         /// <getTeamMemberProfile>
@@ -229,6 +374,91 @@ namespace SocioBoard.Model
                 }//End Transaction
             }//End Session
         }
+
+        /// <returns>Return 1 for success and 0 for failure.(int) </returns>
+        public int DeleteTeamMemberProfileByTeamId(Guid teamid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to delete records of user.
+                        NHibernate.IQuery query = session.CreateQuery("delete from TeamMemberProfile where TeamId = :teamid")
+                                        .SetParameter("teamid", teamid);
+                        int isUpdated = query.ExecuteUpdate();
+                        transaction.Commit();
+                        return isUpdated;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+
+        public int DeleteTeamMemberProfileByUserid(string ProfileId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to delete records of user.
+                        NHibernate.IQuery query = session.CreateQuery("delete from TeamMemberProfile where ProfileId = :ProfileId")
+                                        .SetParameter("ProfileId", ProfileId);
+                        int isUpdated = query.ExecuteUpdate();
+                        transaction.Commit();
+                        return isUpdated;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+
+
+        public int DeleteTeamMemberProfileByTeamIdProfileId(string ProfileId,Guid teamid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to delete records of user.
+                        NHibernate.IQuery query = session.CreateQuery("delete from TeamMemberProfile where ProfileId = :ProfileId and TeamId=:teamid")
+                          .SetParameter("ProfileId", ProfileId)
+                          .SetParameter("teamid", teamid);
+                        int isUpdated = query.ExecuteUpdate();
+                        transaction.Commit();
+                        return isUpdated;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+
 
 
     }

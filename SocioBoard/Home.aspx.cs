@@ -19,6 +19,8 @@ using System.Collections;
 using SocioBoard.Helper;
 using GlobusTwitterLib.Twitter.Core.UserMethods;
 using log4net;
+using GlobusTumblrLib.Authentication;
+
 
 namespace SocialSuitePro
 {
@@ -33,7 +35,9 @@ namespace SocialSuitePro
         public string strFBArray = string.Empty;
         public int tot_acc = 0;
         public int profileCount = 0;
+       
         ILog logger = LogManager.GetLogger(typeof(Home));
+      
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -48,23 +52,43 @@ namespace SocialSuitePro
                 UserActivation objUserActivation = new UserActivation();
                 UserActivationRepository objUserActivationRepository = new UserActivationRepository();
                 SocialProfilesRepository objSocioRepo = new SocialProfilesRepository();
+                GroupRepository objGroupRepository = new GroupRepository();
+                TeamMemberProfileRepository objTeamMemberProfileRepository = new TeamMemberProfileRepository();
+                Team team;
+
+
                 SocioBoard.Domain.User user = (User)Session["LoggedUser"];
-                Session["facebooktotalprofiles"] = null;
 
 
+                if (Session["GroupName"] == null)
+                {                    
+                    Groups objGroupDetails = objGroupRepository.getGroupDetail(user.Id);                   
+                    team = objTeamRepo.getAllDetails(objGroupDetails.Id, user.EmailId);
+                    Session["GroupName"] = team;
+                }
 
-                if (user.Password == null)
+                else
                 {
-
-                    Response.Redirect("/Pricing.aspx");
+                    team = (SocioBoard.Domain.Team)Session["GroupName"];
                 }
 
 
+                
+           
+
+                Session["facebooktotalprofiles"] = null;
+
+                if (user.Password == null)
+                {
+                    Response.Redirect("/Pricing.aspx");
+                }
+
+             
 
                 #region Days remaining
-                if (Session["days_remaining"] == null)
+                if (Session["days_remaining"] == null )
                 {
-                    if (user.PaymentStatus == "unpaid")
+                    if (user.PaymentStatus == "unpaid" && user.AccountType!="Free")
                     {
                         int daysremaining = (user.ExpiryDate.Date - DateTime.Now.Date).Days;
                         if (daysremaining < 0)
@@ -89,11 +113,9 @@ namespace SocialSuitePro
 
                 #endregion
 
-
-
                 #region for You can use only 30 days as Unpaid User
 
-                if (user.PaymentStatus.ToLower() == "unpaid")
+                if (user.PaymentStatus.ToLower() == "unpaid" && user.AccountType != "Free")
                 {
                     if (!SBUtils.IsUserWorkingDaysValid(user.ExpiryDate))
                     {
@@ -108,10 +130,11 @@ namespace SocialSuitePro
                 Session["GreaterThan30Days"] = null;
                 #endregion
 
+
+
                 if (!IsPostBack)
                 {
-
-                    try
+                   try
                     {
                         if (user == null)
                         {
@@ -139,99 +162,7 @@ namespace SocialSuitePro
 
 
                     }
-
-
-
-                    //if (Request.QueryString != null)
-                    //{
-                    //    try
-                    //    {
-                    //        if (Request.QueryString["activate"] != null)
-                    //        {
-                    //            if (Request.QueryString["id"] != null)
-                    //            {
-
-                    //                string refid = Request.QueryString["id"].ToString();
-                    //                objUserRefRelationRepository.UpdateStatusByReferenceAndRefreeId(user.Id, Guid.Parse(refid));
-
-
-
-
-                    //            }
-                    //        }
-                    //    }
-                    //    catch (Exception ex)
-                    //    {
-
-                    //        Console.Write(ex.Message);
-                    //    }
-
-                    //}
-
-
-
-
-
-
-
-
-
-
-                    //#region check user Activation
-
-                    //try
-                    //{
-                    //    if (objUserActivation != null)
-                    //    {
-                    //        if (objUserActivation.ActivationStatus == "0")
-                    //        {
-                    //            if (Request.QueryString["stat"] == "activate")
-                    //            {
-                    //                if (Request.QueryString["id"] != null)
-                    //                {
-                    //                    //objUserActivation = objUserActivationRepository.GetUserActivationStatusbyid(Request.QueryString["id"].ToString());
-                    //                    if (objUserActivation.UserId.ToString() == Request.QueryString["id"].ToString())
-                    //                    {
-                    //                        objUserActivation.Id = objUserActivation.Id; //Guid.Parse(Request.QueryString["id"]);
-                    //                        objUserActivation.UserId = Guid.Parse(Request.QueryString["id"]);// objUserActivation.UserId;
-                    //                        objUserActivation.ActivationStatus = "1";
-                    //                        UserActivationRepository.Update(objUserActivation);
-
-
-
-                    //                    }
-                    //                    else
-                    //                    {
-                    //                        Session["ActivationError"] = "Wrong Activation Link please contact Admin!";
-                    //                        //ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Wrong Activation Link please contact Admin!');", true);
-                    //                        //Response.Redirect("ActivationLink.aspx");
-                    //                    }
-                    //                }
-                    //                else
-                    //                {
-                    //                    Session["ActivationError"] = "Wrong Activation Link please contact Admin!";
-                    //                    //ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Wrong Activation Link please contact Admin!');", true);
-                    //                    //Response.Redirect("ActivationLink.aspx");
-                    //                }
-
-                    //            }
-                    //            else
-                    //            {
-                    //               // Response.Redirect("ActivationLink.aspx");
-                    //            }
-
-
-                    //        }
-                    //    }
-                    //}
-                    //catch (Exception ex)
-                    //{
-                    //    Console.WriteLine(ex.Message);
-                    //    logger.Error(ex.StackTrace);
-                    //}
-                    //#endregion
-
-
+               
 
                     #region Count Used Accounts
                     try
@@ -247,7 +178,21 @@ namespace SocialSuitePro
                         profileCount = objSocioRepo.getAllSocialProfilesOfUser(user.Id).Count;
                         Session["ProfileCount"] = profileCount;
                         Session["TotalAccount"] = tot_acc;
-                        usedAccount.InnerHtml = " using " + profileCount + " of " + tot_acc;
+
+                        try
+                        {
+
+                           
+                            Groups lstDetail = objGroupRepository.getGroupName(team.GroupId);
+                            if (lstDetail.GroupName == "Socioboard")
+                            {
+                                usedAccount.InnerHtml = " using " + profileCount + " of " + tot_acc;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error(ex.StackTrace);
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -255,6 +200,21 @@ namespace SocialSuitePro
                     }
                     #endregion
 
+
+
+
+                    try
+                    {
+                        Groups lstDetails = objGroupRepository.getGroupName(team.GroupId);
+                        if (lstDetails.GroupName != "Socioboard")
+                        {
+                            expander.Attributes.CssStyle.Add("display", "none");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
 
 
                     //this is used to check whether facebok account Already Exist
@@ -290,7 +250,7 @@ namespace SocialSuitePro
                     try
                     {
                         News nws = objNewsRepo.getNewsForHome();
-                        divNews.InnerHtml = nws.NewsDetail;
+                        //divNews.InnerHtml = nws.NewsDetail;
                     }
                     catch (Exception Err)
                     {
@@ -384,8 +344,8 @@ namespace SocialSuitePro
                     try
                     {
                         string strTeam = string.Empty;
-                        List<Team> team = objTeamRepo.getAllTeamsOfUser(user.Id);
-                        foreach (Team item in team)
+                        List<Team> teams = objTeamRepo.getAllTeamsOfUser(user.Id,team.GroupId,user.EmailId);
+                        foreach (Team item in teams)
                         {
                             strTeam += "<div class=\"userpictiny\"><a target=\"_blank\" href=\"#\">" +
                                         "<img width=\"48\" height=\"48\" title=\"" + item.FirstName + "\" alt=\"\" src=\"../Contents/img/blank_img.png\">" +
@@ -516,16 +476,111 @@ namespace SocialSuitePro
                         Console.Write(Err.Message.ToString());
                         logger.Error(Err.StackTrace);
                     }
-                    getgrphData();
+                    //getgrphData();
                     // getNewFriends(7);
-                    getNewFriends();
-                    getNewFollowers();
+                  //  getNewFriends();
+                  //  getNewFollowers();
                     #endregion
 
+                    #region GetFollower
+
+        
+            try
+            {
+                String TwtProfileId = string.Empty;
+               
+                TwitterStatsRepository objtwtStatsRepo = new TwitterStatsRepository();
+
+                List<TeamMemberProfile> objTeamMemberProfile = objTeamMemberProfileRepository.getTwtTeamMemberProfileData(team.Id);
+                foreach (TeamMemberProfile item in objTeamMemberProfile)
+                {
+                    TwtProfileId += item.ProfileId + ',';
+
+                }
+                TwtProfileId = TwtProfileId.Substring(0, TwtProfileId.Length - 1);
+
+                List<TwitterStats> arrTwtStats = objtwtStatsRepo.getAllAccountDetail(TwtProfileId);
+              
+                //strTwtArray = "[";
+                int NewTweet_Count = 0;
+                string TotalFollower = string.Empty;
+                foreach (TwitterStats item in arrTwtStats)
+                {                   
+                    NewTweet_Count += item.FollowerCount;
+                }
+                if (NewTweet_Count >= 100000)
+                {
+                    TotalFollower = (System.Math.Round(((float)NewTweet_Count / 1000000), 2)) + "M";
+                }
+                else if (NewTweet_Count > 1000 && NewTweet_Count < 100000)
+                { TotalFollower = (System.Math.Round(((float)NewTweet_Count / 1000), 2)) + "K"; }
+                else
+                {
+                    TotalFollower = NewTweet_Count.ToString();
+                }
+
+                spanNewTweets.InnerHtml = TotalFollower;         
+            }
+            catch (Exception Err)
+            {
+                Console.Write(Err.Message.ToString());
+                logger.Error(Err.StackTrace);
+            }
+       
+
+                    #endregion
+
+            #region GetFacebookFanPage
+
+            try
+            {
+                String FbProfileId = string.Empty;
+
+               FacebookStatsRepository objFacebookStatsRepository = new FacebookStatsRepository();
+
+               List<TeamMemberProfile> objTeamMemberProfile = objTeamMemberProfileRepository.getTeamMemberProfileData(team.Id);
+                foreach (TeamMemberProfile item in objTeamMemberProfile)
+                {
+                    FbProfileId += item.ProfileId + ',';
+
+                }
+                FbProfileId = FbProfileId.Substring(0, FbProfileId.Length - 1);
+
+                List<FacebookStats> arrFbStats = objFacebookStatsRepository.getAllAccountDetail(FbProfileId);
+
+                //strTwtArray = "[";
+                int NewFbFan_Count = 0;
+                string TotalFriends = string.Empty;
+                foreach (FacebookStats item in arrFbStats)
+                {
+                    NewFbFan_Count += item.FanCount;
+                }
+                if (NewFbFan_Count >= 100000)
+                {
+                    TotalFriends = (System.Math.Round(((float)NewFbFan_Count / 1000000), 2)) + "M";
+                }
+                else if (NewFbFan_Count > 1000 && NewFbFan_Count < 100000)
+                { TotalFriends = (System.Math.Round(((float)NewFbFan_Count / 1000), 2)) + "K"; }
+                else
+                {
+                    TotalFriends = NewFbFan_Count.ToString();
+                }
+
+                spanFbFans.InnerHtml = TotalFriends;
+
+            }
+            catch (Exception Err)
+            {
+                Console.Write(Err.Message.ToString());
+                logger.Error(Err.StackTrace);
+            }
+       
+            #endregion
 
 
-                    #region IncomingMessages
-                    try
+
+            #region IncomingMessages
+            try
                     {
                         FacebookFeedRepository fbFeedRepo = new FacebookFeedRepository();
                         int fbmessagescout = fbFeedRepo.countUnreadMessages(user.Id);
@@ -539,410 +594,143 @@ namespace SocialSuitePro
                         logger.Error(ex.StackTrace);
                     }
                     #endregion
+          
+                    
+                    
+                    
+                    
+                    
+            #region NewIncomingMessage
 
-
-                }
-            }
-            catch (Exception Err)
-            {
-                Console.Write(Err.StackTrace);
-            }
-        }
-        public void getgrphData()
-        {
             try
             {
-                SocioBoard.Domain.User user = (User)Session["LoggedUser"];
-                FacebookAccountRepository objfb = new FacebookAccountRepository();
+                String FbProfileId = string.Empty;
+                String TwtProfileId = string.Empty;
+                List<TeamMemberProfile> objTeamMemberProfile = objTeamMemberProfileRepository.getAllTeamMemberProfilesOfTeam(team.Id);
+                foreach (TeamMemberProfile item in objTeamMemberProfile)
+                {
+                    try
+                    {
+                        if (item.ProfileType == "facebook")
+                        {
+                            FbProfileId += item.ProfileId + ',';
+                        }
+
+                        else if (item.ProfileType == "twitter") 
+                        {
+                            TwtProfileId += item.ProfileId + ',';
+                        }
+                    }
+                    catch (Exception Err)
+                    {
+                        Console.Write(Err.StackTrace);
+                        logger.Error(Err.StackTrace);
+                    }
+
+                }
+
+                try
+                {
+                    FbProfileId = FbProfileId.Substring(0, FbProfileId.Length - 1);
+                    
+                    TwtProfileId = TwtProfileId.Substring(0, TwtProfileId.Length - 1);
+                }
+                catch (Exception Err)
+                {
+                    Console.Write(Err.StackTrace);
+                    logger.Error(Err.StackTrace);
+                }
+                FacebookFeedRepository objFacebookFeedRepository = new FacebookFeedRepository();
+                List<FacebookFeed> alstfb = objFacebookFeedRepository.getAllFeedDetail(FbProfileId);
+             // FacebookMessageRepository objFacebookMessageRepository = new FacebookMessageRepository();
                 TwitterMessageRepository objtwttatsRepo = new TwitterMessageRepository();
-                ArrayList alstfb = objfb.getFbMessageStatsHome(user.Id, 7);
-                ArrayList alstTwt = objtwttatsRepo.gettwtMessageStatsHome(user.Id, 7);
-                strArray = "[";
-                if (alstfb.Count > 0 && alstTwt.Count > 0)
-                {
-                    int imcomMsg_Clounter = 0;
-                    //int alstCount=0;
-                    //if (alstfb.Count < alstTwt.Count)
-                    //    alstCount = alstfb.Count;
-                    //else
-                    //    alstCount = alstTwt.Count;
-                    for (int i = 0; i < 7; i++)
-                    {
-                        string strTwtCnt = string.Empty;
-                        string strFbCnt = string.Empty;
-                        if (alstTwt.Count <= i)
-                            strTwtCnt = "0";
-                        else
-                            strTwtCnt = alstTwt[i].ToString();
-                        if (alstfb.Count <= i)
-                            strFbCnt = "0";
-                        else
-                            strFbCnt = alstfb[i].ToString();
-                        strArray = strArray + "[" + strFbCnt + "," + strTwtCnt + "],";
-                        //spanIncoming.InnerHtml = (int.Parse(strTwtCnt) + int.Parse(strFbCnt)).ToString();
-                        imcomMsg_Clounter += (int.Parse(strTwtCnt) + int.Parse(strFbCnt));
-                    }
-                    spanIncoming.InnerHtml = (imcomMsg_Clounter).ToString();
-                }
-                else
-                {
-                    for (int i = 0; i < 7; i++)
-                    {
-                        strArray = strArray + "[0,0],";
-                    }
-                }
-                strArray = strArray.Substring(0, strArray.Length - 1) + "]";
+             // List<FacebookMessage> alstfb = objFacebookMessageRepository.getAllMessageDetail(FbProfileId);
+                List<TwitterMessage> alstTwt = objtwttatsRepo.getAlltwtMessages(TwtProfileId);
 
-                ArrayList alstTwtFeed = objtwttatsRepo.gettwtFeedsStatsHome(user.Id, 7);
-                ArrayList alstFBFeed = objfb.getFbFeedsStatsHome(user.Id);
-                strSentArray = "[";
+              int TotalFbMsgCount = 0;
+              int TotalTwtMsgCount = 0;
 
-                if (alstFBFeed.Count > 0 && alstTwtFeed.Count > 0)
-                {
-                    int SentMsg_Counter = 0;
-                    int alstSentCount = 0;
-                    if (alstTwtFeed.Count < alstFBFeed.Count)
-                        alstSentCount = alstTwtFeed.Count;
-                    else
-                        alstSentCount = alstFBFeed.Count;
-                    for (int i = 0; i < 7; i++)
-                    {
-                        string strTwtFeedCnt = string.Empty;
-                        string strFbFeedCnt = string.Empty;
-                        if (alstTwtFeed.Count <= i)
-                            strTwtFeedCnt = "0";
-                        else
-                            strTwtFeedCnt = alstTwtFeed[i].ToString();
-                        if (alstFBFeed.Count <= i)
-                            strFbFeedCnt = "0";
-                        else
-                            strFbFeedCnt = alstFBFeed[i].ToString();
-                        strSentArray = strSentArray + "[" + strFbFeedCnt + "," + strTwtFeedCnt + "],";
-                        // spanSent.InnerHtml = (int.Parse(strFbFeedCnt) + int.Parse(strTwtFeedCnt)).ToString();
-                        SentMsg_Counter += (int.Parse(strFbFeedCnt) + int.Parse(strTwtFeedCnt));
-                    }
-                    //spanSent.InnerHtml = (SentMsg_Counter).ToString();
-                    //ScheduledMessageRepository objScheduledMessageRepository=new ScheduledMessageRepository ();
-                   // spanSent.InnerHtml = objScheduledMessageRepository.getAllSentMessagesOfUser(user.Id).Count().ToString();
-                }
-                else
-                {
-                    for (int i = 0; i < 7; i++)
-                    {
-                        strSentArray = strSentArray + "[0,0],";
-                    }
-                }
-                strSentArray = strSentArray.Substring(0, strSentArray.Length - 1) + "]";
-                ScheduledMessageRepository objScheduledMessageRepository = new ScheduledMessageRepository();
-                spanSent.InnerHtml = objScheduledMessageRepository.getAllSentMessagesOfUser(user.Id).Count().ToString();
+              try
+              {
+                   TotalFbMsgCount = alstfb.Count;
+                   TotalTwtMsgCount = alstTwt.Count;
+              }
+              catch (Exception Err)
+              {
+                  Console.Write(Err.StackTrace);
+                  logger.Error(Err.StackTrace);
+              }
+             spanIncoming.InnerHtml = (TotalFbMsgCount+TotalTwtMsgCount).ToString();
 
-            }
+             string profileid = string.Empty;               
+              ScheduledMessageRepository objScheduledMessageRepository = new ScheduledMessageRepository();
+              foreach (TeamMemberProfile item in objTeamMemberProfile)
+              {
+                  profileid += item.ProfileId + ',';
+              }
+
+              profileid = profileid.Substring(0, profileid.Length - 1);
+
+              spanSent.InnerHtml = objScheduledMessageRepository.getAllSentMessageDetails(profileid).Count().ToString();
+
+                }
+            
             catch (Exception Err)
             {
                 Console.Write(Err.StackTrace);
                 logger.Error(Err.StackTrace);
             }
+
         }
 
-        //public void getNewFriends(int days)
-        //{
-        //    try
-        //    {
-        //        SocioBoard.Domain.User user = (User)Session["LoggedUser"];
-        //        FacebookStatsRepository objfbStatsRepo = new FacebookStatsRepository();
-        //        ArrayList arrFbStats = objfbStatsRepo.getAllFacebookStatsOfUser(user.Id, days);
 
-        //        // Get facebook page like ...
-        //        FacebookAccountRepository ObjAcFbAccount = new FacebookAccountRepository();
-        //        int TotalLikes = ObjAcFbAccount.getPagelikebyUserId(user.Id);
+           #endregion
 
-        //        strFBArray = "[";
-        //        int intdays = 1;
-        //        foreach (var item in arrFbStats)
-        //        {
-        //            Array temp = (Array)item;
-        //            strFBArray += (int.Parse(temp.GetValue(3).ToString()) + int.Parse(temp.GetValue(4).ToString())) + ",";
-        //            //spanFbFans.InnerHtml = (int.Parse(temp.GetValue(3).ToString()) + int.Parse(temp.GetValue(4).ToString())).ToString();
-        //            spanFbFans.InnerHtml = (TotalLikes).ToString();
-        //            intdays++;
-        //        }
-        //        if (intdays < 7)
-        //        {
-        //            for (int i = 0; i < 7 - arrFbStats.Count; i++)
-        //            {
-        //                strFBArray = strFBArray + "0,";
-        //            }
-        //        }
-        //        strFBArray = strFBArray.Substring(0, strFBArray.Length - 1);
-        //        strFBArray += "]";
-        //    }
-        //    catch (Exception Err)
-        //    {
-        //        Console.Write(Err.Message.ToString());
-        //        logger.Error(Err.StackTrace);
-        //    }
-        //}
-
-
-        //public void getNewFriends(int days)
-        //{
-        //    try
-        //    {
-        //        SocioBoard.Domain.User user = (User)Session["LoggedUser"];
-        //        FacebookStatsRepository objfbStatsRepo = new FacebookStatsRepository();
-        //        ArrayList arrFbStats = objfbStatsRepo.getAllFacebookStatsOfUser(user.Id, days);
-
-        //        // Get facebook page like ...
-        //        FacebookAccountRepository ObjAcFbAccount = new FacebookAccountRepository();
-        //        int TotalLikes = ObjAcFbAccount.getPagelikebyUserId(user.Id);
-        //        string TotalLikes1 = string.Empty;
-        //        if (TotalLikes >= 100000)
-        //        {
-        //            TotalLikes1 = (System.Math.Round(((float)TotalLikes / 1000000), 2)) + "M";
-        //        }
-        //        else if (TotalLikes > 1000 && TotalLikes < 100000)
-        //        { TotalLikes1 = (System.Math.Round(((float)TotalLikes / 1000), 2)) + "K"; }
-        //        else
-        //        {
-        //            TotalLikes1 = TotalLikes.ToString();
-        //        }
-
-        //        strFBArray = "[";
-        //        int intdays = 1;
-        //        foreach (var item in arrFbStats)
-        //        {
-        //            Array temp = (Array)item;
-        //            strFBArray += (int.Parse(temp.GetValue(3).ToString()) + int.Parse(temp.GetValue(4).ToString())) + ",";
-        //            //spanFbFans.InnerHtml = (int.Parse(temp.GetValue(3).ToString()) + int.Parse(temp.GetValue(4).ToString())).ToString();
-        //            spanFbFans.InnerHtml = (TotalLikes1);
-        //            intdays++;
-        //        }
-        //        if (intdays < 7)
-        //        {
-        //            for (int i = 0; i < 7 - arrFbStats.Count; i++)
-        //            {
-        //                strFBArray = strFBArray + "0,";
-        //            }
-        //        }
-        //        strFBArray = strFBArray.Substring(0, strFBArray.Length - 1);
-        //        strFBArray += "]";
-        //    }
-        //    catch (Exception Err)
-        //    {
-        //        Console.Write(Err.Message.ToString());
-        //        logger.Error(Err.StackTrace);
-        //    }
-        //}
-        public void getNewFriends()
-        {
-            try
-            {
-                SocioBoard.Domain.User user = (User)Session["LoggedUser"];
-                FacebookStatsRepository objfbStatsRepo = new FacebookStatsRepository();
-                ArrayList arrFbStats = objfbStatsRepo.getTotalFacebookStatsOfUser(user.Id);
-
-                // Get facebook page like ...
-                FacebookAccountRepository ObjAcFbAccount = new FacebookAccountRepository();
-            //   int TotalLikes = ObjAcFbAccount.getPagelikebyUserId(user.Id);
-                 int spanfb=0;
-                strFBArray = "[";
-                int intdays = 1;
-                foreach (var item in arrFbStats)
-                {
-                    Array temp = (Array)item;
-                    strFBArray += (int.Parse(temp.GetValue(3).ToString()) + int.Parse(temp.GetValue(4).ToString())) + ",";
-                    spanfb += (int.Parse(temp.GetValue(3).ToString()) + int.Parse(temp.GetValue(4).ToString()));                
-                    intdays++;
-                }
-                string TotalFriends = string.Empty;
-                if (spanfb >= 100000)
-                {
-                    TotalFriends = (System.Math.Round(((float)spanfb / 1000000), 2)) + "M";
-                }
-                else if (spanfb > 1000 && spanfb < 100000)
-                { TotalFriends = (System.Math.Round(((float)spanfb / 1000), 2)) + "K"; }
-                else
-                {
-                    TotalFriends = spanfb.ToString();
-                }
-
-                if (intdays < 7)
-                {
-                    for (int i = 0; i < 7 - arrFbStats.Count; i++)
-                    {
-                        strFBArray = strFBArray + "0,";
-                    }
-                }
-                strFBArray = strFBArray.Substring(0, strFBArray.Length - 1);
-                strFBArray += "]";
-
-                spanFbFans.InnerHtml = TotalFriends;         
-            }
+             }
+            
             catch (Exception Err)
             {
-                Console.Write(Err.Message.ToString());
-                logger.Error(Err.StackTrace);
+                Console.Write(Err.StackTrace);
             }
         }
-
-
-        //public void getNewFollowers(int days)
-        //{
-        //    try
-        //    {
-        //        SocioBoard.Domain.User user = (User)Session["LoggedUser"];
-        //        TwitterStatsRepository objtwtStatsRepo = new TwitterStatsRepository();
-        //        ArrayList arrTwtStats = objtwtStatsRepo.getAllTwitterStatsOfUser(user.Id, days);
-        //        strTwtArray = "[";
-        //        int NewTweet_Count = 0;
-        //        foreach (var item in arrTwtStats)
-        //        {
-        //            Array temp = (Array)item;
-        //            strTwtArray += (temp.GetValue(4)) + ",";
-        //            //spanNewTweets.InnerHtml = temp.GetValue(4).ToString();
-        //            NewTweet_Count += Convert.ToInt16(temp.GetValue(4));
-        //        }
-        //        spanNewTweets.InnerHtml = NewTweet_Count.ToString();
-
-        //        if (arrTwtStats.Count > 0)
-        //            strTwtArray = strTwtArray.Substring(0, strTwtArray.Length - 1);
-        //        if (arrTwtStats.Count < 7)
-        //        {
-        //            for (int i = 0; i < 7 - arrTwtStats.Count; i++)
-        //            {
-        //                strTwtArray = strTwtArray + "0,";
-        //            }
-        //        }
-        //        strTwtArray = strTwtArray.Substring(0, strTwtArray.Length - 1) + "]";
-        //    }
-        //    catch (Exception Err)
-        //    {
-        //        Console.Write(Err.Message.ToString());
-        //        logger.Error(Err.StackTrace);
-        //    }
-        //}
-
-
-
-        //public void getNewFollowers(int days)
-        //{
-        //    try
-        //    {
-        //        SocioBoard.Domain.User user = (User)Session["LoggedUser"];
-        //        TwitterStatsRepository objtwtStatsRepo = new TwitterStatsRepository();
-        //        ArrayList arrTwtStats = objtwtStatsRepo.getAllTwitterStatsOfUser(user.Id, days);
-        //        strTwtArray = "[";
-        //        int NewTweet_Count = 0;
-        //        string NewTweet_Count1 = string.Empty;
-        //        foreach (var item in arrTwtStats)
-        //        {
-        //            Array temp = (Array)item;
-        //            strTwtArray += (temp.GetValue(4)) + ",";
-        //            //spanNewTweets.InnerHtml = temp.GetValue(4).ToString();
-        //            NewTweet_Count += Convert.ToInt32(temp.GetValue(4));
-
-        //        }
-        //        if (NewTweet_Count >= 100000)
-        //        {
-        //            NewTweet_Count1 = (System.Math.Round(((float)NewTweet_Count / 1000000), 2)) + "M";
-        //        }
-        //        else if (NewTweet_Count > 1000 && NewTweet_Count < 100000)
-        //        { NewTweet_Count1 = (System.Math.Round(((float)NewTweet_Count / 1000), 2)) + "K"; }
-        //        else
-        //        {
-        //            NewTweet_Count1 = NewTweet_Count.ToString();
-        //        }
-        //        //  NewTweet_Count1 =(string.Format("{0:F2}", NewTweet_Count1));
-
-        //        spanNewTweets.InnerHtml = NewTweet_Count1;
-
-        //        if (arrTwtStats.Count > 0)
-        //            strTwtArray = strTwtArray.Substring(0, strTwtArray.Length - 1);
-        //        if (arrTwtStats.Count < 7)
-        //        {
-        //            for (int i = 0; i < 7 - arrTwtStats.Count; i++)
-        //            {
-        //                strTwtArray = strTwtArray + "0,";
-        //            }
-        //        }
-        //        strTwtArray = strTwtArray.Substring(0, strTwtArray.Length - 1) + "]";
-        //        // strTwtArray = "[7,12,7,0,0,0,0]";
-        //    }
-        //    catch (Exception Err)
-        //    {
-        //        Console.Write(Err.Message.ToString());
-        //        logger.Error(Err.StackTrace);
-        //    }
-        //}
-     
-        public void getNewFollowers()
-        {
-            try
-            {
-                SocioBoard.Domain.User user = (User)Session["LoggedUser"];
-                TwitterStatsRepository objtwtStatsRepo = new TwitterStatsRepository();
-                ArrayList arrTwtStats = objtwtStatsRepo.getTotalTwitterStatsOfUser(user.Id);
-                strTwtArray = "[";
-                int NewTweet_Count = 0;
-                string TotalFollower = string.Empty;
-                foreach (var item in arrTwtStats)
-                {
-                    Array temp = (Array)item;
-                    strTwtArray += (temp.GetValue(4)) + ",";                  
-                    NewTweet_Count += Convert.ToInt32(temp.GetValue(4));
-                }
-                if (NewTweet_Count >= 100000)
-                {
-                    TotalFollower = (System.Math.Round(((float)NewTweet_Count / 1000000), 2)) + "M";
-                }
-                else if (NewTweet_Count > 1000 && NewTweet_Count < 100000)
-                { TotalFollower = (System.Math.Round(((float)NewTweet_Count / 1000), 2)) + "K"; }
-                else
-                {
-                    TotalFollower = NewTweet_Count.ToString();
-                }
-              
-                spanNewTweets.InnerHtml = TotalFollower;  
-           
-                 if (arrTwtStats.Count > 0)
-                     strTwtArray = strTwtArray.Substring(0, strTwtArray.Length - 1);
-                 if (arrTwtStats.Count < 7)
-                 {
-                     for (int i = 0; i < 7 - arrTwtStats.Count; i++)
-                     {
-                         strTwtArray = strTwtArray + "0,";
-                     }
-                 }
-                 strTwtArray = strTwtArray.Substring(0, strTwtArray.Length - 1) + "]";
-
-
-            }
-            catch (Exception Err)
-            {
-                Console.Write(Err.Message.ToString());
-                logger.Error(Err.StackTrace);
-            }
-        }
+      
+    
 
         public void AuthenticateFacebook(object sender, EventArgs e)
         {
             try
             {
-                int profilecount = (int)Session["ProfileCount"];
-                int totalaccount = (int)Session["TotalAccount"];
-                if (profilecount < totalaccount)
-                {
-                    Session["fbSocial"] = "a";
-                    fb_account.HRef = "http://www.facebook.com/dialog/oauth/?scope=publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,user_groups,offline_access,publish_actions,manage_pages&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
-                    //fb_account.HRef = "http://www.facebook.com/dialog/oauth/?scope=publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,offline_access&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
-                    // fb_cont.HRef = fb_account.HRef;
-                    Response.Redirect(fb_account.HRef);
-                }
-                else
-                {
-                    // Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Change the Plan to Add More Accounts');", true);
+                GroupRepository objGroupRepository = new GroupRepository();
+                SocioBoard.Domain.Team team = (SocioBoard.Domain.Team)Session["GroupName"];
+                Groups lstDetails = objGroupRepository.getGroupName(team.GroupId);
 
+
+                try
+                {
+                    int profilecount = (int)Session["ProfileCount"];
+                    int totalaccount = (int)Session["TotalAccount"];
+
+                    if (lstDetails.GroupName == "Socioboard")
+                    {
+                        if (profilecount < totalaccount)
+                        {
+                            Session["fbSocial"] = "a";
+                            fb_account.HRef = "http://www.facebook.com/dialog/oauth/?scope=publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,user_groups,offline_access,publish_actions,manage_pages&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
+                            //fb_account.HRef = "http://www.facebook.com/dialog/oauth/?scope=publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,offline_access&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
+                            // fb_cont.HRef = fb_account.HRef;
+                            Response.Redirect(fb_account.HRef);
+                        }
+                        else
+                        {
+                            // Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Change the Plan to Add More Accounts');", true);
+
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex.Message);
                 }
             }
             catch (Exception ex)
@@ -955,18 +743,34 @@ namespace SocialSuitePro
         {
             try
             {
-                int profilecount = (int)Session["ProfileCount"];
-                int totalaccount = (int)Session["TotalAccount"];
-                if (profilecount < totalaccount)
+                GroupRepository objGroupRepository = new GroupRepository();
+                SocioBoard.Domain.Team team = (SocioBoard.Domain.Team)Session["GroupName"];
+                Groups lstDetails = objGroupRepository.getGroupName(team.GroupId);
+
+
+                try
                 {
-                    TwitterHelper twthelper = new TwitterHelper();
-                    string twtredirecturl = twthelper.TwitterRedirect(ConfigurationManager.AppSettings["consumerKey"], ConfigurationManager.AppSettings["consumerSecret"], ConfigurationManager.AppSettings["callbackurl"]);
-                    Response.Redirect(twtredirecturl);
+                    int profilecount = (int)Session["ProfileCount"];
+                    int totalaccount = (int)Session["TotalAccount"];
+
+                    if (lstDetails.GroupName == "Socioboard")
+                    {
+                        if (profilecount < totalaccount)
+                        {
+                            TwitterHelper twthelper = new TwitterHelper();
+                            string twtredirecturl = twthelper.TwitterRedirect(ConfigurationManager.AppSettings["consumerKey"], ConfigurationManager.AppSettings["consumerSecret"], ConfigurationManager.AppSettings["callbackurl"]);
+                            Response.Redirect(twtredirecturl);
+                        }
+                        else
+                        {
+                            //Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Change the Plan to Add More Accounts');", true);
+                        }
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    //Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Change the Plan to Add More Accounts');", true);
+                    logger.Error(ex.Message);
                 }
             }
             catch (Exception ex)
@@ -979,23 +783,37 @@ namespace SocialSuitePro
         {
             try
             {
-                int profilecount = (int)Session["ProfileCount"];
-                int totalaccount = (int)Session["TotalAccount"];
-                if (profilecount < totalaccount)
-                {
-                    oAuthLinkedIn Linkedin_oauth = new oAuthLinkedIn();
-                    string authLink = Linkedin_oauth.AuthorizationLinkGet();
-                    Session["reuqestToken"] = Linkedin_oauth.Token;
-                    Session["reuqestTokenSecret"] = Linkedin_oauth.TokenSecret;
+                GroupRepository objGroupRepository = new GroupRepository();
+                SocioBoard.Domain.Team team = (SocioBoard.Domain.Team)Session["GroupName"];
+                Groups lstDetails = objGroupRepository.getGroupName(team.GroupId);
 
-                    this.LinkedInLink.HRef = "";
-                    this.LinkedInLink.HRef = authLink;
-                    Response.Redirect(authLink);
-                }
-                else
+                try
                 {
-                    //Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Change the Plan to Add More Accounts');", true);
+                    int profilecount = (int)Session["ProfileCount"];
+                    int totalaccount = (int)Session["TotalAccount"];
+                    if (lstDetails.GroupName == "Socioboard")
+                    {
+                        if (profilecount < totalaccount)
+                        {
+                            oAuthLinkedIn Linkedin_oauth = new oAuthLinkedIn();
+                            string authLink = Linkedin_oauth.AuthorizationLinkGet();
+                            Session["reuqestToken"] = Linkedin_oauth.Token;
+                            Session["reuqestTokenSecret"] = Linkedin_oauth.TokenSecret;
+
+                            this.LinkedInLink.HRef = "";
+                            this.LinkedInLink.HRef = authLink;
+                            Response.Redirect(authLink);
+                        }
+                        else
+                        {
+                            //Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Change the Plan to Add More Accounts');", true);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex.Message);
                 }
             }
             catch (Exception ex)
@@ -1008,19 +826,33 @@ namespace SocialSuitePro
         {
             try
             {
-                int profilecount = (int)Session["ProfileCount"];
-                int totalaccount = (int)Session["TotalAccount"];
-                if (profilecount < totalaccount)
+                GroupRepository objGroupRepository = new GroupRepository();
+                SocioBoard.Domain.Team team = (SocioBoard.Domain.Team)Session["GroupName"];
+                Groups lstDetails = objGroupRepository.getGroupName(team.GroupId);
+
+                try
                 {
-                    GlobusInstagramLib.Authentication.ConfigurationIns config = new GlobusInstagramLib.Authentication.ConfigurationIns("https://instagram.com/oauth/authorize/", ConfigurationManager.AppSettings["InstagramClientKey"].ToString(), ConfigurationManager.AppSettings["InstagramClientSec"].ToString(), ConfigurationManager.AppSettings["InstagramCallBackURL"].ToString(), "https://api.instagram.com/oauth/access_token", "https://api.instagram.com/v1/", "");
-                    oAuthInstagram _api = oAuthInstagram.GetInstance(config);
-                    InstagramConnect.HRef = _api.AuthGetUrl("likes+comments+basic+relationships");
-                    Response.Redirect(_api.AuthGetUrl("likes+comments+basic+relationships"));
+                    int profilecount = (int)Session["ProfileCount"];
+                    int totalaccount = (int)Session["TotalAccount"];
+                    if (lstDetails.GroupName == "Socioboard")
+                    {
+                        if (profilecount < totalaccount)
+                        {
+                            GlobusInstagramLib.Authentication.ConfigurationIns config = new GlobusInstagramLib.Authentication.ConfigurationIns("https://instagram.com/oauth/authorize/", ConfigurationManager.AppSettings["InstagramClientKey"].ToString(), ConfigurationManager.AppSettings["InstagramClientSec"].ToString(), ConfigurationManager.AppSettings["InstagramCallBackURL"].ToString(), "https://api.instagram.com/oauth/access_token", "https://api.instagram.com/v1/", "");
+                            oAuthInstagram _api = oAuthInstagram.GetInstance(config);
+                            InstagramConnect.HRef = _api.AuthGetUrl("likes+comments+basic+relationships");
+                            Response.Redirect(_api.AuthGetUrl("likes+comments+basic+relationships"));
+                        }
+                        else
+                        {
+                            // Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Change the Plan to Add More Accounts');", true);
+                        }
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    // Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Change the Plan to Add More Accounts');", true);
+                    logger.Error(ex.Message);
                 }
             }
             catch (Exception ex)
@@ -1060,6 +892,7 @@ namespace SocialSuitePro
                 int totalaccount = (int)Session["TotalAccount"];
                 if (profilecount < totalaccount)
                 {
+                   
                     oAuthTokenGa obj = new oAuthTokenGa();
                     Response.Redirect(obj.GetAutherizationLinkGa("https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/analytics.readonly"));
                 }
@@ -1075,7 +908,7 @@ namespace SocialSuitePro
             }
         }
 
-        public void fbPage_connect(object sender, EventArgs e)
+        public void AuthenticateTumblr(object sender, EventArgs e)
         {
             try
             {
@@ -1083,23 +916,87 @@ namespace SocialSuitePro
                 int totalaccount = (int)Session["TotalAccount"];
                 if (profilecount < totalaccount)
                 {
-                    try
-                    {
-                        Session["fbSocial"] = "p";
-                        string fbpageconnectClick = "http://www.facebook.com/dialog/oauth/?scope=publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,offline_access&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
-                        Response.Redirect(fbpageconnectClick);
-                    }
-                    catch (Exception Err)
-                    {
-                        Console.Write(Err.Message.ToString());
-                        logger.Error(Err.StackTrace);
-                    }
+                    oAuthTumbler requestHelper = new oAuthTumbler();
+                    oAuthTumbler.TumblrConsumerKey = ConfigurationManager.AppSettings["TumblrClientKey"];
+                    oAuthTumbler.TumblrConsumerSecret = ConfigurationManager.AppSettings["TumblrClientSec"];
+                    requestHelper.CallBackUrl = ConfigurationManager.AppSettings["TumblrCallBackURL"];
+                    Response.Redirect(requestHelper.GetAuthorizationLink());
                 }
                 else
                 {
                     // Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
-
                     ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Change the Plan to Add More Accounts');", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message);
+            }
+        }
+
+        public void AuthenticateYoutube(object sender, EventArgs e)
+        {
+            try
+            {
+                int profilecount = (int)Session["ProfileCount"];
+                int totalaccount = (int)Session["TotalAccount"];
+                if (profilecount < totalaccount)
+                {
+                    oAuthTokenYoutube objoAuthTokenYoutube = new oAuthTokenYoutube();
+
+                    Response.Redirect("https://accounts.google.com/o/oauth2/auth?client_id=" + ConfigurationManager.AppSettings["YtconsumerKey"] + "&redirect_uri=" + ConfigurationManager.AppSettings["Ytredirect_uri"] + "&scope=https://www.googleapis.com/auth/youtube+https://www.googleapis.com/auth/youtube.readonly+https://www.googleapis.com/auth/youtubepartner+https://www.googleapis.com/auth/youtubepartner-channel-audit+https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/plus.me&response_type=code&access_type=offline");
+                }
+                else
+                {
+                    //Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Change the Plan to Add More Accounts');", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message);
+            }
+        }
+
+        public void fbPage_connect(object sender, EventArgs e)
+        {
+            try
+            {
+                GroupRepository objGroupRepository = new GroupRepository();
+                SocioBoard.Domain.Team team = (SocioBoard.Domain.Team)Session["GroupName"];
+                Groups lstDetails = objGroupRepository.getGroupName(team.GroupId);
+
+                try
+                {
+                    int profilecount = (int)Session["ProfileCount"];
+                    int totalaccount = (int)Session["TotalAccount"];
+                    if (lstDetails.GroupName == "Socioboard")
+                    {
+                        if (profilecount < totalaccount)
+                        {
+                            try
+                            {
+                                Session["fbSocial"] = "p";
+                                string fbpageconnectClick = "http://www.facebook.com/dialog/oauth/?scope=publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,offline_access&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
+                                Response.Redirect(fbpageconnectClick);
+                            }
+                            catch (Exception Err)
+                            {
+                                Console.Write(Err.Message.ToString());
+                                logger.Error(Err.StackTrace);
+                            }
+                        }
+                        else
+                        {
+                            // Response.Write("<script>SimpleMessageAlert('Change the Plan to Add More Accounts');</script>");
+
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Change the Plan to Add More Accounts');", true);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex.Message);
                 }
             }
             catch (Exception ex)
@@ -1133,5 +1030,13 @@ namespace SocialSuitePro
             TimeSpan span = d2.Subtract(d1);
             return (int)span.TotalDays;
         }
+
+
+      
+
+    
+
+
+
     }
 }

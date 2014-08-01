@@ -67,10 +67,8 @@ namespace GlobusLinkedinLib.App.Core
 
             }
             catch 
-            {
-            }
-           
-
+            { }
+          
             try
             {
                 UserProfile.first_name = xmlResult.GetElementsByTagName("first-name")[0].InnerText;

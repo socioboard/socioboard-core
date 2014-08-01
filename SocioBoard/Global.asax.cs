@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
 
-namespace SocialSuitePro
+namespace SocioBoard
 {
     public class Global : System.Web.HttpApplication
     {
@@ -13,8 +13,8 @@ namespace SocialSuitePro
         void Application_Start(object sender, EventArgs e)
         {
             // Code that runs on application startup
-            
-            
+
+
 
             log4net.Config.XmlConfigurator.Configure();
         }

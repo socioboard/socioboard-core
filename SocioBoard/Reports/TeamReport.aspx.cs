@@ -27,8 +27,8 @@ namespace SocialSuitePro.Reports
                 if (user == null)
                     Response.Redirect("/Default.aspx");
 
-               spanDate.InnerHtml="from " + DateTime.Now.AddDays(-15).ToShortDateString() + " to " + DateTime.Now.ToShortDateString();
-               spanTopDate.InnerHtml = "from " + DateTime.Now.AddDays(-15).ToShortDateString() + " to " + DateTime.Now.ToShortDateString(); 
+                spanDate.InnerHtml = "from " + DateTime.Now.AddDays(-15).ToShortDateString() + " to " + DateTime.Now.ToShortDateString();
+                spanTopDate.InnerHtml = "from " + DateTime.Now.AddDays(-15).ToShortDateString() + " to " + DateTime.Now.ToShortDateString();
                 try
                 {
                     getTaskDetail(15);
@@ -54,28 +54,51 @@ namespace SocialSuitePro.Reports
             try
             {
                 User user = (User)Session["LoggedUser"];
+                SocioBoard.Domain.Team team = (SocioBoard.Domain.Team)Session["GroupName"];
                 TaskRepository objTaskRepo = new TaskRepository();
                 List<object> destination = new List<object>();
-                ArrayList lstTask = objTaskRepo.getTasksByUserwithDetail(user.Id, days);
-                string strTask = "<div class=\"task-labels\"><div class=\"task-labe-1\">TASK OWNER</div><div class=\"task-labe-2\">ASSIGNED</div>"+
-                                 "<div class=\"task-labe-3\">TASK MESSAGE</div><div class=\"task-labe-4\">ASSIGN DATE</div><div class=\"task-labe-5\">COMPLETION DATE</div>"+
+                //ArrayList lstTask = objTaskRepo.getTasksByUserwithDetail(user.Id, days);
+                ArrayList lstTask = objTaskRepo.getTasksByUserwithDetail(user.Id, days, team.GroupId);
+                string strTask = "<div class=\"task-labels\"><div class=\"task-labe-1\">TASK OWNER</div><div class=\"task-labe-2\">ASSIGNED</div>" +
+                                 "<div class=\"task-labe-3\">TASK MESSAGE</div><div class=\"task-labe-4\">ASSIGN DATE</div><div class=\"task-labe-5\">COMPLETION DATE</div>" +
                                  "<div class=\"task-labe-6\">STATUS</div><div class=\"clear\"></div></div>";
                 foreach (var item in lstTask)
                 {
                     Array temp = (Array)item;
                     string taskStatus = string.Empty;
                     string completeDate = string.Empty;
-                    if (temp.GetValue(4).Equals(false))
+                    if (temp.GetValue(5).Equals(false))
                     {
                         taskStatus = "Incomplete";
                     }
                     else
                     {
                         taskStatus = "Completed";
-                        completeDate = temp.GetValue(6).ToString();
+                        //completeDate = temp.GetValue(6).ToString();
+                        //0001-01-01 00:00:00
                     }
-                    strTask = strTask + "<div class=\"task-header\"><div class=\"task-header-owner\"><div class=\"avathar-pub\"><img src=\"" + temp.GetValue(10) + "\" alt=\"\" /></div>" +
-                                    "<div class=\"task-header-owner-name\">" + user.UserName + "</div><div class=\"clear\"></div></div><div class=\"assigned-lable\">" + temp.GetValue(8) + "</div><div class=\"assigned-lable\">" + temp.GetValue(1) + "</div><div class=\"task-text-3\">" + temp.GetValue(5) + "</div>" +
+                    if (temp.GetValue(7).Equals("0001-01-01 00:00:00"))
+                    {
+                        completeDate = "Pending";
+                    }
+                    else
+                    {
+                        completeDate = temp.GetValue(7).ToString();
+                    }
+                    UserRepository objusrrepo = new UserRepository();
+                    Guid ownid = (Guid)temp.GetValue(3);
+                    User taskowner = objusrrepo.getUsersById(ownid);
+                    Guid assgnId = (Guid)temp.GetValue(4);
+                    User asgntaskto = objusrrepo.getUsersById(assgnId);
+
+
+
+                    //strTask = strTask + "<div class=\"task-header\"><div class=\"task-header-owner\"><div class=\"avathar-pub\"><img src=\"" + temp.GetValue(10) + "\" alt=\"\" /></div>" +
+                    //                "<div class=\"task-header-owner-name\">" + user.UserName + "</div><div class=\"clear\"></div></div><div class=\"assigned-lable\">" + temp.GetValue(8) + "</div><div class=\"assigned-lable\">" + temp.GetValue(1) + "</div><div class=\"task-text-3\">" + temp.GetValue(5) + "</div>" +
+                    //                "<div class=\"task-text-4\">" + completeDate + "</div><div class=\"task-text-5\">" + taskStatus + "</div><div class=\"clear\"></div></div>";
+
+                    strTask = strTask + "<div class=\"task-header\"><div class=\"task-header-owner\"><div class=\"avathar-pub\"><img src=\"" + taskowner.ProfileUrl + "\" alt=\"\" /></div>" +
+                                    "<div class=\"task-header-owner-name\">" + taskowner.UserName + "</div><div class=\"clear\"></div></div><div class=\"assigned-lable\">" + asgntaskto.UserName + "</div><div class=\"assigned-lable\">" + temp.GetValue(2) + "</div><div class=\"task-text-3\">" + temp.GetValue(6) + "</div>" +
                                     "<div class=\"task-text-4\">" + completeDate + "</div><div class=\"task-text-5\">" + taskStatus + "</div><div class=\"clear\"></div></div>";
 
                     temp.GetValue(0);
@@ -83,7 +106,7 @@ namespace SocialSuitePro.Reports
                 taskCount = lstTask.Count;
                 taskdiv.InnerHtml = strTask;
                 divName.InnerHtml = user.UserName;
-               
+
             }
             catch (Exception err)
             {
@@ -104,7 +127,7 @@ namespace SocialSuitePro.Reports
             }
             catch (Exception err)
             {
-               Console.Write(err.StackTrace);
+                Console.Write(err.StackTrace);
             }
         }
 
@@ -112,7 +135,7 @@ namespace SocialSuitePro.Reports
         {
 
             spanDate.InnerHtml = "from " + DateTime.Now.AddDays(-15).ToShortDateString() + " to " + DateTime.Now.ToShortDateString();
-            spanTopDate.InnerHtml = "from " + DateTime.Now.AddDays(-15).ToShortDateString() + " to " + DateTime.Now.ToShortDateString(); 
+            spanTopDate.InnerHtml = "from " + DateTime.Now.AddDays(-15).ToShortDateString() + " to " + DateTime.Now.ToShortDateString();
             try
             {
                 getTaskDetail(15);
@@ -136,7 +159,7 @@ namespace SocialSuitePro.Reports
         {
 
             spanDate.InnerHtml = "from " + DateTime.Now.AddDays(-30).ToShortDateString() + " to " + DateTime.Now.ToShortDateString();
-            spanTopDate.InnerHtml = "from " + DateTime.Now.AddDays(-30).ToShortDateString() + " to " + DateTime.Now.ToShortDateString(); 
+            spanTopDate.InnerHtml = "from " + DateTime.Now.AddDays(-30).ToShortDateString() + " to " + DateTime.Now.ToShortDateString();
             try
             {
                 getTaskDetail(30);
@@ -160,7 +183,7 @@ namespace SocialSuitePro.Reports
         {
 
             spanDate.InnerHtml = "from " + DateTime.Now.AddDays(-60).ToShortDateString() + " to " + DateTime.Now.ToShortDateString();
-            spanTopDate.InnerHtml = "from " + DateTime.Now.AddDays(-60).ToShortDateString() + " to " + DateTime.Now.ToShortDateString(); 
+            spanTopDate.InnerHtml = "from " + DateTime.Now.AddDays(-60).ToShortDateString() + " to " + DateTime.Now.ToShortDateString();
             try
             {
                 getTaskDetail(60);
@@ -184,7 +207,7 @@ namespace SocialSuitePro.Reports
         {
 
             spanDate.InnerHtml = "from " + DateTime.Now.AddDays(-90).ToShortDateString() + " to " + DateTime.Now.ToShortDateString();
-            spanTopDate.InnerHtml = "from " + DateTime.Now.AddDays(-90).ToShortDateString() + " to " + DateTime.Now.ToShortDateString(); 
+            spanTopDate.InnerHtml = "from " + DateTime.Now.AddDays(-90).ToShortDateString() + " to " + DateTime.Now.ToShortDateString();
             try
             {
                 getTaskDetail(90);

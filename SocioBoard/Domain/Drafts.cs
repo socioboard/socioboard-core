@@ -12,5 +12,7 @@ namespace SocioBoard.Domain
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
         public string Message { get; set; }
+        public Guid GroupId { get; set; }
+
     }
 }

@@ -106,6 +106,39 @@ namespace SocioBoard.Model
 
 
 
+        public int updateSocialProfileStatus(SocialProfile socio)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to update existing data from new profile value.
+                        NHibernate.IQuery query = session.CreateQuery("Update SocialProfile set ProfileStatus=:profilestaus where UserId = :userid and ProfileId = :profileid")
+
+                                        .SetParameter("profilestaus", socio.ProfileStatus)
+                                         .SetParameter("userid", socio.UserId)
+                                         .SetParameter("profileid", socio.ProfileId);
+                        int isUpdated = query.ExecuteUpdate();
+                        transaction.Commit();
+                        return isUpdated;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+
+
+
+
         /// <getLimitProfilesOfUser>
         /// Get Limit Profiles Of User
         /// </summary>
@@ -121,13 +154,13 @@ namespace SocioBoard.Model
                 using (NHibernate.ITransaction transaction = session.BeginTransaction())
                 {
                     //Set defaulr max result
-                    int maxResult = 3;
+                    int maxResult = 6;
                     //Check the limit is not zero
-                    if (limit == 0)
-                        maxResult = 2;
+                    //if (limit == 0)
+                    //    maxResult = 2;
 
                     //Proceed action, to get records by user id.
-                    NHibernate.IQuery query = session.CreateQuery("from SocialProfile where UserId = :userid");
+                    NHibernate.IQuery query = session.CreateQuery("from SocialProfile where UserId = :userid and ProfileType!='googleplus' and ProfileType!='googleanalytics' ");
                     query.SetFirstResult(limit);
                     query.SetMaxResults(maxResult);
                     query.SetParameter("userid", userid);

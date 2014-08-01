@@ -26,6 +26,10 @@ namespace SocioBoard.Message
         {
 
             User use = (User)Session["LoggedUser"];
+          
+
+
+
             if (use == null)
                 Response.Redirect("/Default.aspx");
             try
@@ -42,26 +46,59 @@ namespace SocioBoard.Message
         }
 
         void ProcessRequest()
-        {
+        { 
+            SocioBoard.Domain.Team team = (SocioBoard.Domain.Team)Session["GroupName"];
+            TeamMemberProfileRepository objTeamMemberProfileRepository = new TeamMemberProfileRepository();
+            TwitterAccountRepository twtaccountrepo = new TwitterAccountRepository();
+            FacebookAccountRepository facerepo = new FacebookAccountRepository();
+            LinkedInAccountRepository linkrepo = new LinkedInAccountRepository();
+                 
+
             try
             {
                 User user = (User)Session["LoggedUser"];
                 if (Request.QueryString["op"] != null)
                 {
+                    //if (Request.QueryString["op"] == "bindMessages")
+                    //{
+                    //    DataSet ds = null;
+                    //    if (Session["MessageDataTable"] == null)
+                    //    {
+                    //        clsFeedsAndMessages clsfeedsandmess = new clsFeedsAndMessages();
+                    //        ds = clsfeedsandmess.bindMessagesIntoDataTable(user);
+                    //        FacebookFeedRepository fbFeedRepo = new FacebookFeedRepository();
+                    //        Session["MessageDataTable"] = ds;
+                    //    }
+                    //    else
+                    //    {
+                    //        ds = (DataSet)Session["MessageDataTable"];
+                    //    }
+                    //    string message = this.BindData(ds.Tables[0]);
+
+                    //    if (string.IsNullOrEmpty(message))
+                    //    {
+                    //        message = "Sorry no data !";
+                    //    }
+
+                    //    Response.Write(message);
+
+                    //}
+
+
                     if (Request.QueryString["op"] == "bindMessages")
                     {
                         DataSet ds = null;
-                        if (Session["MessageDataTable"] == null)
-                        {
+                        //if (Session["MessageDataTable"] == null)
+                        //{
                             clsFeedsAndMessages clsfeedsandmess = new clsFeedsAndMessages();
-                            ds = clsfeedsandmess.bindMessagesIntoDataTable(user);
+                            ds = clsfeedsandmess.bindMessagesIntoDataTable(team.Id);
                             FacebookFeedRepository fbFeedRepo = new FacebookFeedRepository();
                             Session["MessageDataTable"] = ds;
-                        }
-                        else
-                        {
+                        //}
+                        //else
+                        //{
                             ds = (DataSet)Session["MessageDataTable"];
-                        }
+                      //  }
                         string message = this.BindData(ds.Tables[0]);
 
                         if (string.IsNullOrEmpty(message))
@@ -72,6 +109,14 @@ namespace SocioBoard.Message
                         Response.Write(message);
 
                     }
+
+
+
+
+
+
+
+
                     else if (Request.QueryString["op"] == "inbox_messages")
                     {
                         DataSet ds = null;
@@ -89,6 +134,67 @@ namespace SocioBoard.Message
                         Response.Write(message);
 
                     }
+                    //else if (Request.QueryString["op"] == "bindProfiles")
+                    //{
+
+                    //    string profiles = string.Empty;
+                    //    int i = 0;
+                    //    profiles += "<ul class=\"options_list\">";
+
+                    //    /*Binding facebook profiles in Accordian*/
+                    //    FacebookAccountRepository facerepo = new FacebookAccountRepository();
+                    //    ArrayList alstfacebookprofiles = facerepo.getOnlyFacebookAccountsOfUser(user.Id);
+                    //    foreach (FacebookAccount item in alstfacebookprofiles)
+                    //    {
+                    //        try
+                    //        {
+                    //            profiles += "<ul><li><a id=\"checkimg_" + i + "\" href=\"#\" onclick=\"checkprofile('checkimg_" + i + "','" + item.FbUserId + "','message','facebook');\"><img src=\"../Contents/img/admin/fbicon.png\"  width=\"15\" height=\"15\" alt=\"\" >" + item.FbUserName + "</a></li>";
+                    //            i++;
+                    //        }
+                    //        catch (Exception ex)
+                    //        {
+                    //            logger.Error(ex.Message);
+                    //            Console.WriteLine(ex.Message);
+                    //        }
+
+                    //    }
+
+
+                    //    /*Binding TwitterProfiles in Accordian*/
+                    //    TwitterAccountRepository twtaccountrepo = new TwitterAccountRepository();
+                    //    ArrayList alsttwt = twtaccountrepo.getAllTwitterAccountsOfUser(user.Id);
+                    //    foreach (TwitterAccount item in alsttwt)
+                    //    {
+                    //        try
+                    //        {
+                    //            profiles += "<ul><li><a href=\"#\" id=\"checkimg_" + i + "\" onclick=\"checkprofile('checkimg_" + i + "','" + item.TwitterUserId + "','message','twitter');\"><img src=\"../Contents/img/admin/twittericon.png\"  width=\"15\" height=\"15\" alt=\"\" >" + item.TwitterScreenName + "</a></li>";
+                    //            i++;
+                    //        }
+                    //        catch (Exception ex)
+                    //        {
+                    //            logger.Error(ex.Message);
+                    //            Console.WriteLine(ex.Message);
+                    //        }
+                    //    }
+
+                    //    GooglePlusAccountRepository gpAccRepo = new GooglePlusAccountRepository();
+                    //    ArrayList alstgp = gpAccRepo.getAllGooglePlusAccountsOfUser(user.Id);
+                    //    foreach (GooglePlusAccount item in alstgp)
+                    //    {
+                    //        try
+                    //        {
+                    //            profiles += "<ul><li><a href=\"#\" id=\"checkimg_" + i + "\" onclick=\"checkprofile('checkimg_" + i + "','" + item.GpUserId + "','message','googleplus');\"><img src=\"../Contents/img/google_plus.png\"  width=\"15\" height=\"15\" alt=\"\" >" + item.GpUserName + "</a></li>";
+                    //            i++;
+                    //        }
+                    //        catch (Exception esx)
+                    //        {
+                    //            logger.Error(esx.Message);
+                    //            Console.WriteLine(esx.Message);
+                    //        }
+                    //    }
+                    //    profiles += "</ul><input type=\"hidden\" id=\"profilecounter\" value=\"" + i + "\">";
+                    //    Response.Write(profiles);
+                    //}
                     else if (Request.QueryString["op"] == "bindProfiles")
                     {
 
@@ -97,59 +203,67 @@ namespace SocioBoard.Message
                         profiles += "<ul class=\"options_list\">";
 
                         /*Binding facebook profiles in Accordian*/
-                        FacebookAccountRepository facerepo = new FacebookAccountRepository();
-                        ArrayList alstfacebookprofiles = facerepo.getOnlyFacebookAccountsOfUser(user.Id);
-                        foreach (FacebookAccount item in alstfacebookprofiles)
+                       
+                        List<TeamMemberProfile> alstprofiles = objTeamMemberProfileRepository.getAllTeamMemberProfilesOfTeam(team.Id);
+                        foreach (TeamMemberProfile item in alstprofiles)
                         {
-                            try
+                            if (item.ProfileType == "facebook")
                             {
-                                profiles += "<ul><li><a id=\"checkimg_" + i + "\" href=\"#\" onclick=\"checkprofile('checkimg_" + i + "','" + item.FbUserId + "','message','facebook');\"><img src=\"../Contents/img/admin/fbicon.png\"  width=\"15\" height=\"15\" alt=\"\" >" + item.FbUserName + "</a></li>";
-                                i++;
-                            }
-                            catch (Exception ex)
-                            {
-                                logger.Error(ex.Message);
-                                Console.WriteLine(ex.Message);
+                                
+                                FacebookAccount alstfacebookprofiles = facerepo.getUserDetails(item.ProfileId);
+                                try
+                                {
+                                    profiles += "<ul><li><a id=\"checkimg_" + i + "\" href=\"#\" onclick=\"checkprofile('checkimg_" + i + "','" + alstfacebookprofiles.FbUserId + "','message','facebook');\"><img src=\"../Contents/img/admin/fbicon.png\"  width=\"15\" height=\"15\" alt=\"\" >" + alstfacebookprofiles.FbUserName + "</a></li>";
+                                    i++;
+                                }
+                                catch (Exception ex)
+                                {
+                                    logger.Error(ex.Message);
+                                    Console.WriteLine(ex.Message);
+                                }
+
                             }
 
+
+                            else if (item.ProfileType == "twitter")
+                            {
+                               
+                                TwitterAccount alsttwt = twtaccountrepo.getUserInformation(item.ProfileId);
+                                try
+                                {
+                                    profiles += "<ul><li><a href=\"#\" id=\"checkimg_" + i + "\" onclick=\"checkprofile('checkimg_" + i + "','" + alsttwt.TwitterUserId + "','message','twitter');\"><img src=\"../Contents/img/admin/twittericon.png\"  width=\"15\" height=\"15\" alt=\"\" >" + alsttwt.TwitterScreenName + "</a></li>";
+                                    i++;
+                                }
+                                catch (Exception ex)
+                                {
+                                    logger.Error(ex.Message);
+                                    Console.WriteLine(ex.Message);
+                                }
+                            }
+                            else if (item.ProfileType == "google")
+                            {
+                                GooglePlusAccountRepository gpAccRepo = new GooglePlusAccountRepository();
+                                GooglePlusAccount alstgp = gpAccRepo.getUserDetails(item.ProfileId);
+                                try
+                                {
+                                    profiles += "<ul><li><a href=\"#\" id=\"checkimg_" + i + "\" onclick=\"checkprofile('checkimg_" + i + "','" + alstgp.GpUserId + "','message','googleplus');\"><img src=\"../Contents/img/google_plus.png\"  width=\"15\" height=\"15\" alt=\"\" >" + alstgp.GpUserName + "</a></li>";
+                                    i++;
+                                }
+                                catch (Exception esx)
+                                {
+                                    logger.Error(esx.Message);
+                                    Console.WriteLine(esx.Message);
+                                }
+
+                            }
+                            
                         }
-
-
-                        /*Binding TwitterProfiles in Accordian*/
-                        TwitterAccountRepository twtaccountrepo = new TwitterAccountRepository();
-                        ArrayList alsttwt = twtaccountrepo.getAllTwitterAccountsOfUser(user.Id);
-                        foreach (TwitterAccount item in alsttwt)
-                        {
-                            try
-                            {
-                                profiles += "<ul><li><a href=\"#\" id=\"checkimg_" + i + "\" onclick=\"checkprofile('checkimg_" + i + "','" + item.TwitterUserId + "','message','twitter');\"><img src=\"../Contents/img/admin/twittericon.png\"  width=\"15\" height=\"15\" alt=\"\" >" + item.TwitterScreenName + "</a></li>";
-                                i++;
-                            }
-                            catch (Exception ex)
-                            {
-                                logger.Error(ex.Message);
-                                Console.WriteLine(ex.Message);
-                            }
-                        }
-
-                        GooglePlusAccountRepository gpAccRepo = new GooglePlusAccountRepository();
-                        ArrayList alstgp = gpAccRepo.getAllGooglePlusAccountsOfUser(user.Id);
-                        foreach (GooglePlusAccount item in alstgp)
-                        {
-                            try
-                            {
-                                profiles += "<ul><li><a href=\"#\" id=\"checkimg_" + i + "\" onclick=\"checkprofile('checkimg_" + i + "','" + item.GpUserId + "','message','googleplus');\"><img src=\"../Contents/img/google_plus.png\"  width=\"15\" height=\"15\" alt=\"\" >" + item.GpUserName + "</a></li>";
-                                i++;
-                            }
-                            catch (Exception esx)
-                            {
-                                logger.Error(esx.Message);
-                                Console.WriteLine(esx.Message);
-                            }
-                        }
+                                                                  
                         profiles += "</ul><input type=\"hidden\" id=\"profilecounter\" value=\"" + i + "\">";
                         Response.Write(profiles);
                     }
+
+
                     else if (Request.QueryString["op"] == "changeTaskStatus")
                     {
                         Guid taskid = Guid.Parse(Request.QueryString["taskid"]);
@@ -163,15 +277,21 @@ namespace SocioBoard.Message
                         objTaskRepo.updateTaskStatus(taskid, user.Id, status);
 
                     }
+
+
+
+
                     else if (Request.QueryString["op"] == "savetask")
                     {
                         string descritption = Request.QueryString["description"];
-                        Guid idtoassign = Guid.Empty;
+                        //string time = Request.QueryString["now"];
+
+                       Guid idtoassign = Guid.Empty;
                         try
                         {
                             if (Request.QueryString["memberid"] != string.Empty)
                             {
-                                idtoassign = Guid.Parse(Request.QueryString["memberid"].ToString());
+                               idtoassign = Guid.Parse(Request.QueryString["memberid"]);
                             }
                         }
                         catch (Exception ex)
@@ -181,7 +301,8 @@ namespace SocioBoard.Message
                         }
                         Tasks objTask = new Tasks();
                         TaskRepository objTaskRepo = new TaskRepository();
-                        objTask.AssignDate = DateTime.Now.ToString("yyyy-MM-dd H:mm:ss").ToString();
+                        objTask.AssignDate = Request.QueryString["now"]; //DateTime.Now.ToString("yyyy-MM-dd H:mm:ss").ToString();
+                        objTask.GroupId = team.GroupId;
                         objTask.AssignTaskTo = idtoassign;
                         objTask.TaskStatus = false;
                         objTask.TaskMessage = descritption;
@@ -190,11 +311,11 @@ namespace SocioBoard.Message
                         objTask.Id = taskid;
                         objTaskRepo.addTask(objTask);
 
-                        /////////////////       
+  
                         string comment = Request.QueryString["comment"];
                         if (!string.IsNullOrEmpty(comment))
                         {
-                            string curdate = DateTime.Now.ToString("yyyy-MM-dd H:mm:ss").ToString();
+                            string curdate = Request.QueryString["now"]; //DateTime.Now.ToString("yyyy-MM-dd H:mm:ss").ToString();
                             TaskComment objcmt = new TaskComment();
                             TaskCommentRepository objcmtRepo = new TaskCommentRepository();
                             objcmt.Comment = comment;
@@ -207,32 +328,62 @@ namespace SocioBoard.Message
                         }
 
                     }
-                    else if (Request.QueryString["op"] == "bindteam")
+
+                    else  if (Request.QueryString["op"] == "bindteam")
                     {
                         TeamRepository objTeam = new TeamRepository();
                         string message = string.Empty;
                         message += "<ul>";
-                        IEnumerable<dynamic> result = objTeam.getAllTeamsOfUser(user.Id);
 
-                        if (result != null)
+                        //IEnumerable<dynamic> result = objTeam.getAllTeamsOfUser(user.Id,team.GroupId);
+                        //IEnumerable<dynamic> result = objTeam.getAllTeamsOfUser(user.Id, team.GroupId);
+                        BusinessSettingRepository objBsnsSettingRepo = new BusinessSettingRepository();
+                        BusinessSetting objbsns = objBsnsSettingRepo.IsNotificationTaskEnable(team.GroupId);
+                        if (objbsns.AssigningTasks == true || team.UserId == user.Id)
                         {
+                            IEnumerable<dynamic> result = objTeam.getAllTeamsOfUser(user.Id, team.GroupId, user.EmailId);
                             foreach (Team item in result)
                             {
+                                try
+                                {
+                                    //===========================new code added=========================
 
-                                message += "<li><a>";
-                                message += "<img src=\"../Contents/img/blank_img.png\" alt=\"\" />";
-                                message += "<span class=\"name\">" +
-                                                         item.FirstName + " " + item.LastName +
-                                                     "</span>" +
-                                                  " <span>" +
-                                                  "<input id=\"customerid_" + item.Id + "\" type=\"radio\" name=\"team_members\" value=\"customerid_" + item.Id + "\">" +
-                                                  "</span>" +
-                                                 "</a></li>";
+                                    UserRepository objUserRepository = new UserRepository();
+                                    User objdetails = objUserRepository.getUserInfoByEmail(item.EmailId);
+                                    if (objdetails != null)
+                                    {
+                                        message += "<li><a>";
+                                        if (objdetails.ProfileUrl == null)
+                                        {
+                                            message += "<img src=\"../Contents/img/blank_img.png\" alt=\"\" />";
+                                        }
+                                        else
+                                        {
+                                            message += "<img src=\"" + objdetails.ProfileUrl + "\" alt=\"\" />";
+                                        }
+
+
+                                        message += "<span class=\"name\">" +
+                                                                 objdetails.UserName +
+                                                             "</span>" +
+                                                          " <span>" +
+                                                          "<input id=\"customerid_" + objdetails.Id + "\" type=\"radio\" name=\"team_members\" value=\"customerid_" + objdetails.Id + "\">" +
+                                                          "</span>" +
+                                                         "</a></li>";
+
+                                        //message += "<li><a>";
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine("Error : " + ex.StackTrace);
+                                }
                             }
 
-                            message += "<li><a>";
+                            //  message += "<li><a>";
                             if (string.IsNullOrEmpty(user.ProfileUrl))
                             {
+                                message += "<li><a>";
 
                                 message += "<img src=\"../Contents/img/blank_img.png\" alt=\"\" />";
                             }
@@ -277,85 +428,161 @@ namespace SocioBoard.Message
                         message += "</ul>";
                         Response.Write(message);
                     }
+
+
                     else if (Request.QueryString["op"] == "sentmsg")
                     {
+
+                       
                         ScheduledMessageRepository objScheduledMessageRepository = new ScheduledMessageRepository();
-                        UserRepository objUserRepository = new UserRepository();
+                    
                         string message = string.Empty;
-                        message += "<ul  id=\"message-list\">";
-                        List<ScheduledMessage> result = objScheduledMessageRepository.getAllSentMessagesOfUser(user.Id);
-                        int sorteddatacount = 0;
-                        if (result != null && result.Count > 0)
+                     //   message += "<ul  id=\"message-list\">";
+                        try
                         {
-                            foreach (ScheduledMessage item in result)
+
+                            List<TeamMemberProfile> alstprofiles = objTeamMemberProfileRepository.getAllTeamMemberProfilesOfTeam(team.Id);
+                            foreach (TeamMemberProfile items in alstprofiles)
                             {
-                                try
+                                List<ScheduledMessage> result = objScheduledMessageRepository.getAllSentMessagesOfUser(items.ProfileId);
+                                int sorteddatacount = 0;
+                                if (result != null && result.Count > 0)
                                 {
-                                    //User  objUser=objUserRepository.getUsersById(item.
-                                    //SocialProfilesRepository objSocialProfilesRepository = new SocialProfilesRepository();
-                                    //SocialProfile objSocialProfile = objSocialProfilesRepository.GetSocialProfileByProfileId(item.ProfileId);
-
-                                    message += "<li>";
-                                    sorteddatacount++;
-                                    if (item.ProfileType == "twitter")
+                                    foreach (ScheduledMessage item in result)
                                     {
-                                        TwitterAccountRepository objTwitterAccountRepository = new TwitterAccountRepository();
-                                        TwitterAccount objTwitterAccount = objTwitterAccountRepository.getUserInformation(item.UserId, item.ProfileId);
-                                        message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img href=\"http://twitter.com/" + objTwitterAccount.TwitterScreenName + "\" target=\"_blank\" id=\"formprofileurl_" + sorteddatacount + "\" src=\"" + objTwitterAccount.ProfileImageUrl + "\" height=\"48\" width=\"48\" alt=\"\" title=\"\" />" +
-                                                     "<a href=\"http://twitter.com/" + objTwitterAccount.TwitterScreenName + "\" target=\"_blank\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/twticon.png\" width=\"16\" height=\"16\" alt=\"\"></a></div>" +
-                                                     "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>" + item.ShareMessage + "</p>" +
-                                                         "<div class=\"message-list-info\"><span><a href=\"http://twitter.com/" + objTwitterAccount.TwitterScreenName + "\" target=\"_blank\" id=\"rowname_" + sorteddatacount + "\" >" + objTwitterAccount.TwitterScreenName + "</a> " + item.CreateTime + "</span>" +
-                                                         "<div class=\"scl\">" +
-                                            //"<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
-                                                          "</div></div></div></div></li>";
-                                    }
-                                    else if (item.ProfileType == "facebook")
-                                    {
-                                        FacebookAccountRepository objFacebookAccountRepository = new FacebookAccountRepository();
-                                        FacebookAccount objFacebookAccount = objFacebookAccountRepository.getFacebookAccountDetailsById(item.ProfileId, item.UserId);
-                                        if (objFacebookAccount != null)
+                                        try
                                         {
-                                            message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img href=\"http://www.facebook.com/" + objFacebookAccount.FbUserId + "\" target=\"_blank\" id=\"formprofileurl_" + sorteddatacount + "\"  src=\"http://graph.facebook.com/" + objFacebookAccount.FbUserId + "/picture?type=small\" height=\"48\" width=\"48\" alt=\"\" title=\"\" />" +
-                                                        "<a href=\"http://www.facebook.com/" + objFacebookAccount.FbUserId + "\" target=\"_blank\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/fb_icon.png\" width=\"16\" height=\"16\" alt=\"\"></a></div>" +
-                                                        "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>" + item.ShareMessage + "</p>" +
-                                                            "<div class=\"message-list-info\"><span><a href=\"http://www.facebook.com/" + objFacebookAccount.FbUserId + "\" target=\"_blank\" id=\"rowname_" + sorteddatacount + "\" >" + objFacebookAccount.FbUserName + "</a> " + item.CreateTime + "</span>" +
-                                                            "<div class=\"scl\">" +
-                                                //"<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
-                                                            "</div></div></div></div></li>";
-                                        }
+                                            //message += "<ul  id=\"message-list\">";
+                                            //message += "<li>";
+                                            sorteddatacount++;
+                                            if (item.ProfileType == "twitter")
+                                            {
+                                                message += "<ul  id=\"message-list\">";
+                                                message += "<li>";
 
-                                    }
-                                    else if (item.ProfileType == "linkedin")
-                                    {
-                                        LinkedInAccountRepository objLinkedInAccountRepository = new LinkedInAccountRepository();
-                                        LinkedInAccount objLinkedInAccount = objLinkedInAccountRepository.getLinkedinAccountDetailsById(item.ProfileId);
-                                        if (objLinkedInAccount != null)
+
+                                                TwitterAccountRepository objTwitterAccountRepository = new TwitterAccountRepository();
+                                                TwitterAccount objTwitterAccount = objTwitterAccountRepository.getUserInformation(item.ProfileId);
+                                                if (string.IsNullOrEmpty(item.PicUrl))
+                                                {
+                                                    message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img href=\"http://twitter.com/" + objTwitterAccount.TwitterScreenName + "\" target=\"_blank\" id=\"formprofileurl_" + sorteddatacount + "\" src=\"" + objTwitterAccount.ProfileImageUrl + "\" height=\"48\" width=\"48\" alt=\"\" title=\"\" />" +
+                                                                 "<a href=\"http://twitter.com/" + objTwitterAccount.TwitterScreenName + "\" target=\"_blank\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/twticon.png\" width=\"16\" height=\"16\" alt=\"\"></a></div>" +
+                                                                 "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>" + item.ShareMessage + "</p>" +
+                                                                     "<div class=\"message-list-info\"><span><a href=\"http://twitter.com/" + objTwitterAccount.TwitterScreenName + "\" target=\"_blank\" id=\"rowname_" + sorteddatacount + "\" >" + objTwitterAccount.TwitterScreenName + "</a> " + item.CreateTime + "</span>" +
+                                                                     "<div class=\"scl\">" +
+                                                        //"<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
+                                                                      "</div></div></div></div></li>";
+                                                }
+                                                else if(!string.IsNullOrEmpty(item.PicUrl))
+                                                {
+                                                    string src = item.PicUrl;
+                                                    message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img href=\"http://twitter.com/" + objTwitterAccount.TwitterScreenName + "\" target=\"_blank\" id=\"formprofileurl_" + sorteddatacount + "\" src=\"" + objTwitterAccount.ProfileImageUrl + "\" height=\"48\" width=\"48\" alt=\"\" title=\"\" />" +
+                                                            "<a href=\"http://twitter.com/" + objTwitterAccount.TwitterScreenName + "\" target=\"_blank\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/twticon.png\" width=\"16\" height=\"16\" alt=\"\"></a></div>" +
+                                                            "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p><img style=\"margin-right:10px;margin-top:10px\" width=\"80px;\" hight=\"80px;\" src=\"" + src + "\">" + item.ShareMessage + "</p>" +
+                                                                "<div class=\"message-list-info\"><span><a href=\"http://twitter.com/" + objTwitterAccount.TwitterScreenName + "\" target=\"_blank\" id=\"rowname_" + sorteddatacount + "\" >" + objTwitterAccount.TwitterScreenName + "</a> " + item.CreateTime + "</span>" +
+                                                                "<div class=\"scl\">" +
+                                                     
+                                                                 "</div></div></div></div></li>";
+                                                }
+                                               
+
+
+
+                                                message += "</ul>";
+
+
+                                            }
+                                            else if (item.ProfileType == "facebook")
+                                            {
+                                                message += "<ul  id=\"message-list\">";
+                                                message += "<li>";
+
+
+                                                FacebookAccountRepository objFacebookAccountRepository = new FacebookAccountRepository();
+                                                FacebookAccount objFacebookAccount = objFacebookAccountRepository.getFacebookAccountDetailsById(item.ProfileId);
+                                                if (objFacebookAccount != null)
+                                                {
+                                                    if (string.IsNullOrEmpty(item.PicUrl))
+                                                    {
+                                                        message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img href=\"http://www.facebook.com/" + objFacebookAccount.FbUserId + "\" target=\"_blank\" id=\"formprofileurl_" + sorteddatacount + "\"  src=\"http://graph.facebook.com/" + objFacebookAccount.FbUserId + "/picture?type=small\" height=\"48\" width=\"48\" alt=\"\" title=\"\" />" +
+                                                                    "<a href=\"http://www.facebook.com/" + objFacebookAccount.FbUserId + "\" target=\"_blank\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/fb_icon.png\" width=\"16\" height=\"16\" alt=\"\"></a></div>" +
+                                                                    "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>" + item.ShareMessage + "</p>" +
+                                                                        "<div class=\"message-list-info\"><span><a href=\"http://www.facebook.com/" + objFacebookAccount.FbUserId + "\" target=\"_blank\" id=\"rowname_" + sorteddatacount + "\" >" + objFacebookAccount.FbUserName + "</a> " + item.CreateTime + "</span>" +
+                                                                        "<div class=\"scl\">" +
+                                                            //"<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
+                                                                        "</div></div></div></div></li>";
+                                                    }
+                                                    else if (!string.IsNullOrEmpty(item.PicUrl))
+                                                    {
+                                                        string src = item.PicUrl;
+                                                        message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img href=\"http://www.facebook.com/" + objFacebookAccount.FbUserId + "\" target=\"_blank\" id=\"formprofileurl_" + sorteddatacount + "\"  src=\"http://graph.facebook.com/" + objFacebookAccount.FbUserId + "/picture?type=small\" height=\"48\" width=\"48\" alt=\"\" title=\"\" />" +
+                                                               "<a href=\"http://www.facebook.com/" + objFacebookAccount.FbUserId + "\" target=\"_blank\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/fb_icon.png\" width=\"16\" height=\"16\" alt=\"\"></a></div>" +
+                                                               "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p><img style=\"margin-right:10px;margin-top:10px\" width=\"80px;\" hight=\"80px;\" src=\"" + src + "\">" + item.ShareMessage + "</p>" +
+                                                                   "<div class=\"message-list-info\"><span><a href=\"http://www.facebook.com/" + objFacebookAccount.FbUserId + "\" target=\"_blank\" id=\"rowname_" + sorteddatacount + "\" >" + objFacebookAccount.FbUserName + "</a> " + item.CreateTime + "</span>" +
+                                                                   "<div class=\"scl\">" +
+                                                                   "</div></div></div></div></li>";
+                                                    }
+
+                                                    message += "</ul>";
+
+
+                                                }
+
+                                            }
+                                            else if (item.ProfileType == "linkedin")
+                                            {
+                                                message += "<ul  id=\"message-list\">";
+                                                message += "<li>";
+
+
+                                                LinkedInAccountRepository objLinkedInAccountRepository = new LinkedInAccountRepository();
+                                                LinkedInAccount objLinkedInAccount = objLinkedInAccountRepository.getLinkedinAccountDetailsById(item.ProfileId);
+                                                if (objLinkedInAccount != null)
+                                                {
+                                                    if (string.IsNullOrEmpty(item.PicUrl))
+                                                    {
+                                                        message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img id=\"formprofileurl_" + sorteddatacount + "\"  src=\"" + objLinkedInAccount.ProfileImageUrl + "\" height=\"48\" width=\"48\" alt=\"\" title=\"\" />" +
+                                                                    "<span class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/link_icon.png\" width=\"16\" height=\"16\" alt=\"\" ></span></div>" +
+                                                                    "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>" + item.ShareMessage + "</p>" +
+                                                                        "<div class=\"message-list-info\"><span><a href=\"" + objLinkedInAccount.ProfileUrl + "\" target=\"_blank\" id=\"rowname_" + sorteddatacount + "\" >" + objLinkedInAccount.LinkedinUserName + "</a> " + item.CreateTime + "</span>" +
+                                                                        "<div class=\"scl\">" +
+                                                            //"<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
+                                                                        "</div></div></div></div></li>";
+                                                    }
+                                                    else if (!string.IsNullOrEmpty(item.PicUrl))
+                                                    {
+                                                        string src = item.PicUrl;
+                                                        message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img id=\"formprofileurl_" + sorteddatacount + "\"  src=\"" + objLinkedInAccount.ProfileImageUrl + "\" height=\"48\" width=\"48\" alt=\"\" title=\"\" />" +
+                                                               "<span class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/link_icon.png\" width=\"16\" height=\"16\" alt=\"\" ></span></div>" +
+                                                               "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p><img style=\"margin-right:10px;margin-top:10px\" width=\"80px;\" hight=\"80px;\" src=\"" + src + "\">" + item.ShareMessage + "</p>" +
+                                                                   "<div class=\"message-list-info\"><span><a href=\"" + objLinkedInAccount.ProfileUrl + "\" target=\"_blank\" id=\"rowname_" + sorteddatacount + "\" >" + objLinkedInAccount.LinkedinUserName + "</a> " + item.CreateTime + "</span>" +
+                                                                   "<div class=\"scl\">" +
+                                                                   "</div></div></div></div></li>";
+                                                    }
+                                                    message += "</ul>";
+                                                }
+
+                                            }
+                                        }
+                                        catch (Exception ex)
                                         {
-                                            message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img id=\"formprofileurl_" + sorteddatacount + "\"  src=\"" + objLinkedInAccount.ProfileImageUrl + "\" height=\"48\" width=\"48\" alt=\"\" title=\"\" />" +
-                                                        "<span class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/link_icon.png\" width=\"16\" height=\"16\" alt=\"\" ></span></div>" +
-                                                        "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>" + item.ShareMessage + "</p>" +
-                                                            "<div class=\"message-list-info\"><span><a href=\"" + objLinkedInAccount.ProfileUrl + "\" target=\"_blank\" id=\"rowname_" + sorteddatacount + "\" >" + objLinkedInAccount.LinkedinUserName + "</a> " + item.CreateTime + "</span>" +
-                                                            "<div class=\"scl\">" +
-                                                //"<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
-                                                            "</div></div></div></div></li>";
-
+                                            Console.WriteLine("Error : " + ex.StackTrace);
                                         }
-
                                     }
+
+                                   // message += "</ul>";
                                 }
-                                catch (Exception ex)
+                                else
                                 {
-                                    Console.WriteLine("Error : " + ex.StackTrace);
+                                   // message = "Sorry no data !";
                                 }
                             }
-
-                            message += "</ul>";
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            message = "Sorry no data !";
+                            Console.WriteLine("Error : " + ex.StackTrace);
                         }
-
+                       
                         Response.Write(message);
                     }
                     else if (Request.QueryString["op"] == "bindarchive")
@@ -363,65 +590,79 @@ namespace SocioBoard.Message
                         ArchiveMessageRepository objArchiveRepo = new ArchiveMessageRepository();
 
                         string message = string.Empty;
-                        message += "<ul  id=\"message-list\">";
-                        List<ArchiveMessage> result = objArchiveRepo.getAllArchiveMessage(user.Id);
-                        int sorteddatacount = 0;
-                        if (result != null && result.Count > 0)
+                       
+
+                        try
                         {
-                            foreach (ArchiveMessage item in result)
+                            List<TeamMemberProfile> alstprofiles = objTeamMemberProfileRepository.getAllTeamMemberProfilesOfTeam(team.Id);
+                            foreach (TeamMemberProfile items in alstprofiles)
                             {
-                                try
+                                List<ArchiveMessage> result = objArchiveRepo.getAllArchiveMessage(items.ProfileId);
+                                int sorteddatacount = 0;
+                                if (result != null && result.Count > 0)
                                 {
-                                    message += "<li>";
-                                    sorteddatacount++;
-                                    if (item.SocialGroup == "twitter")
+                                    foreach (ArchiveMessage item in result)
                                     {
-                                        message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img id=\"formprofileurl_" + sorteddatacount + "\" onclick=\"detailsdiscoverytwitter(" + item.ProfileId + ");\" src=\"" + item.ImgUrl + "\" height=\"48\" width=\"48\" alt=\"\" title=\"\" />" +
-                                                     "<a href=\"#\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/twticon.png\" width=\"16\" height=\"16\" alt=\"\" onclick=\"detailsdiscoverytwitter(\"item.ProfileId\");\"></a></div>" +
-                                                     "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>" + item.Message + "</p>" +
-                                                         "<div class=\"message-list-info\"><span><a href=\"#\" id=\"rowname_" + sorteddatacount + "\" onclick=\"detailsdiscoverytwitter(" + item.ProfileId + ");\">" + item.UserName + "</a> " + item.CreatedDateTime + "</span>" +
-                                                         "<div class=\"scl\">" +
-                                         // "<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
-                                        "<a><img onclick=replyfunction(" + sorteddatacount + ",'twitter','" + item.MessageId + "','" + item.ProfileId + "') title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
-                                                       
-                                    }
-                                    else if (item.SocialGroup == "facebook")
-                                    {
-                                        message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img id=\"formprofileurl_" + sorteddatacount + "\" onclick=\"getFacebookProfiles(" + item.ProfileId + ");\" src=\"" + item.ImgUrl + "\" height=\"48\" width=\"48\" alt=\"\" title=\"\" />" +
-                                                    "<a href=\"#\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/fb_icon.png\" width=\"16\" height=\"16\" alt=\"\" onclick=\"getFacebookProfiles(\"item.ProfileId\");\"></a></div>" +
-                                                    "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>" + item.Message + "</p>" +
-                                                        "<div class=\"message-list-info\"><span><a href=\"#\" id=\"rowname_" + sorteddatacount + "\" onclick=\"getFacebookProfiles(" + item.ProfileId + ");\">" + item.UserName + "</a> " + item.CreatedDateTime + "</span>" +
-                                                        "<div class=\"scl\">" +
-                                                        "<a><img onclick=replyfunction(" + sorteddatacount + ",'facebook','" + item.MessageId + "','" + item.ProfileId + "') title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
-                                            //"<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
-                                                       
+                                        try
+                                        {
+                                            message += "<ul  id=\"message-list\">";
+                                            message += "<li>";
+                                            sorteddatacount++;
+                                            if (item.SocialGroup == "twitter")
+                                            {
+                                                message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img id=\"formprofileurl_" + sorteddatacount + "\" onclick=\"detailsdiscoverytwitter(" + item.ProfileId + ");\" src=\"" + item.ImgUrl + "\" height=\"48\" width=\"48\" alt=\"\" title=\"\" />" +
+                                                             "<a href=\"#\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/twticon.png\" width=\"16\" height=\"16\" alt=\"\" onclick=\"detailsdiscoverytwitter(\"item.ProfileId\");\"></a></div>" +
+                                                             "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>" + item.Message + "</p>" +
+                                                                 "<div class=\"message-list-info\"><span><a href=\"#\" id=\"rowname_" + sorteddatacount + "\" onclick=\"detailsdiscoverytwitter(" + item.ProfileId + ");\">" + item.UserName + "</a> " + item.CreatedDateTime + "</span>" +
+                                                                 "<div class=\"scl\">" +
+                                                    // "<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
+                                                "<a><img onclick=replyfunction(" + sorteddatacount + ",'twitter','" + item.MessageId + "','" + item.ProfileId + "') title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
 
-                                    }
-                                    else if (item.SocialGroup == "googleplus")
-                                    {
-                                        message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img id=\"formprofileurl_" + sorteddatacount + "\" onclick=\"detailsprofile(this.alt);\" src=\"" + item.ImgUrl + "\" height=\"48\" width=\"48\" alt=\"\" title=\"\" />" +
-                                                    "<a href=\"#\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/google_plus.png\" width=\"16\" height=\"16\" alt=\"\" onclick=\"detailsprofile(this.alt);></a></div>" +
-                                                    "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>" + item.Message + "</p>" +
-                                                        "<div class=\"message-list-info\"><span><a href=\"#\" id=\"rowname_" + sorteddatacount + "\" onclick=\"detailsprofile(" + item.ProfileId + ");\">" + item.ProfileId + "</a> " + item.CreatedDateTime + "</span>" +
-                                                        "<div class=\"scl\">" +
-                                                        "<a href=\"#\"><img title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
-                                            //"<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a></div></div></div></div></li>";
-                                                       
+                                            }
+                                            else if (item.SocialGroup == "facebook")
+                                            {
+                                                message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img id=\"formprofileurl_" + sorteddatacount + "\" onclick=\"getFacebookProfiles(" + item.ProfileId + ");\" src=\"" + item.ImgUrl + "\" height=\"48\" width=\"48\" alt=\"\" title=\"\" />" +
+                                                            "<a href=\"#\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/fb_icon.png\" width=\"16\" height=\"16\" alt=\"\" onclick=\"getFacebookProfiles(\"item.ProfileId\");\"></a></div>" +
+                                                            "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>" + item.Message + "</p>" +
+                                                                "<div class=\"message-list-info\"><span><a href=\"#\" id=\"rowname_" + sorteddatacount + "\" onclick=\"getFacebookProfiles(" + item.ProfileId + ");\">" + item.UserName + "</a> " + item.CreatedDateTime + "</span>" +
+                                                                "<div class=\"scl\">" +
+                                                                "<a><img onclick=replyfunction(" + sorteddatacount + ",'facebook','" + item.MessageId + "','" + item.ProfileId + "') title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
+                                                //"<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a><a href=\"#\"><img title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
 
+
+                                            }
+                                            else if (item.SocialGroup == "googleplus")
+                                            {
+                                                message += "<div id=\"messagetaskable_" + sorteddatacount + "\" class=\"userpictiny\"><div style=\"width:60px;height:60px;float:left\"><img id=\"formprofileurl_" + sorteddatacount + "\" onclick=\"detailsprofile(this.alt);\" src=\"" + item.ImgUrl + "\" height=\"48\" width=\"48\" alt=\"\" title=\"\" />" +
+                                                            "<a href=\"#\" class=\"userurlpic\" title=\"\"><img src=\"../Contents/img/google_plus.png\" width=\"16\" height=\"16\" alt=\"\" onclick=\"detailsprofile(this.alt);></a></div>" +
+                                                            "</div><div id=\"messagedescription_" + sorteddatacount + "\" class=\"message-list-content\"><div  id=\"msgdescription_" + sorteddatacount + "\" style=\"width:500px;height:auto;float:left\"><p>" + item.Message + "</p>" +
+                                                                "<div class=\"message-list-info\"><span><a href=\"#\" id=\"rowname_" + sorteddatacount + "\" onclick=\"detailsprofile(" + item.ProfileId + ");\">" + item.ProfileId + "</a> " + item.CreatedDateTime + "</span>" +
+                                                                "<div class=\"scl\">" +
+                                                                "<a href=\"#\"><img title=\"Comment\" src=\"../Contents/img/admin/goto.png\" width=\"12\" height=\"12\" alt=\"\"/></a></div></div></div></div></li>";
+                                                //"<a id=\"createtasktwt_" + sorteddatacount + "\" href=\"#\" onclick=\"createtask(this.id);\"><img title=\"Task\" src=\"../Contents/img/pin.png\" alt=\"\" width=\"14\" height=\"17\" border=\"none\"></a></div></div></div></div></li>";
+
+
+                                            }
+                                            message += "</li>";
+                                            message += "</ul>";
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            Console.WriteLine("Error : " + ex.StackTrace);
+                                        }
                                     }
-                                    message += "</li>";
+
+                                    //message += "</ul>";
                                 }
-                                catch (Exception ex)
+                                else
                                 {
-                                    Console.WriteLine("Error : " + ex.StackTrace);
+                                  //  message = "Sorry no data !";
                                 }
                             }
-
-                            message += "</ul>";
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            message = "Sorry no data !";
+                            Console.WriteLine("Error : " + ex.StackTrace);
                         }
                         Response.Write(message);
                     }
@@ -444,9 +685,9 @@ namespace SocioBoard.Message
                         // am.UserName = Request.QueryString["UserName"];//Server.UrlDecode((string)jo["UserName"]);
                         //am.Message = Request.QueryString["Msg"];//Server.UrlDecode((string)jo["Msg"]);
                         JObject jo = JObject.Parse(line);
-                        am.Message = Server.UrlDecode((string)jo["Msg"]); ;//Server.UrlDecode((string)jo["Msg"]);
+                        am.Message = Server.UrlDecode((string)jo["Msg"]);//Server.UrlDecode((string)jo["Msg"]);
                         am.SocialGroup = Request.QueryString["Network"];// Server.UrlDecode((string)jo["Network"]);
-                        am.CreatedDateTime = Request.QueryString["CreatedTime"];
+                        am.CreatedDateTime = Convert.ToDateTime(Request.QueryString["CreatedTime"]);
                         am.MessageId = Request.QueryString["MessageId"];
                         am.ProfileId = Request.QueryString["ProfileId"];
                         am.UserName = Request.QueryString["Username"];
@@ -469,7 +710,7 @@ namespace SocioBoard.Message
                     }
                     else if (Request.QueryString["op"] == "createfacebookcomments")
                     {
-                        FacebookAccountRepository facerepo = new FacebookAccountRepository();
+                        //FacebookAccountRepository facerepo = new FacebookAccountRepository();
                         string postid = Request.QueryString["replyid"];
                         string message = Request.QueryString["replytext"];
                         string userid = Request.QueryString["userid"];
@@ -483,7 +724,7 @@ namespace SocioBoard.Message
                     }
                     else if (Request.QueryString["op"] == "getFacebookComments")
                     {
-                        FacebookAccountRepository facerepo = new FacebookAccountRepository();
+                       // FacebookAccountRepository facerepo = new FacebookAccountRepository();
                         string postid = Request.QueryString["postid"];
                         string userid = Request.QueryString["userid"];
                         FacebookAccount result = facerepo.getFacebookAccountDetailsById(userid, user.Id);
@@ -602,14 +843,67 @@ namespace SocioBoard.Message
                         }
                         Response.Write(jas);
                     }
+                    //else if (Request.QueryString["op"] == "updatedstatus")
+                    //{
+                    //    try
+                    //    {
+                    //        TwitterMessageRepository twtmsgRepo = new TwitterMessageRepository();
+                    //        int i = twtmsgRepo.updateMessageStatus(user.Id);
+                    //        FacebookFeedRepository fbfeedRepo = new FacebookFeedRepository();
+                    //        int j = fbfeedRepo.updateMessageStatus(user.Id);
+
+                    //        if (i > 0 || j > 0)
+                    //        {
+                    //            Session["CountMessages"] = 0;
+                    //            Session["MessageDataTable"] = null;
+
+
+                    //            DataSet ds = null;
+                    //            if (Session["MessageDataTable"] == null)
+                    //            {
+                    //                clsFeedsAndMessages clsfeedsandmess = new clsFeedsAndMessages();
+                    //                ds = clsfeedsandmess.bindMessagesIntoDataTable(user);
+                    //                FacebookFeedRepository fbFeedRepo = new FacebookFeedRepository();
+                    //                Session["MessageDataTable"] = ds;
+                    //            }
+                    //            else
+                    //            {
+                    //                ds = (DataSet)Session["MessageDataTable"];
+                    //            }
+                    //        }
+
+
+                    //    }
+                    //    catch (Exception ex)
+                    //    {
+                    //        logger.Error(ex.Message);
+                    //        Console.WriteLine(ex.Message);
+
+                    //    }
+                    //}
+
                     else if (Request.QueryString["op"] == "updatedstatus")
                     {
                         try
                         {
-                            TwitterMessageRepository twtmsgRepo = new TwitterMessageRepository();
-                            int i = twtmsgRepo.updateMessageStatus(user.Id);
-                            FacebookFeedRepository fbfeedRepo = new FacebookFeedRepository();
-                            int j = fbfeedRepo.updateMessageStatus(user.Id);
+                            int i = 0;
+                            int j=0;
+                            List<TeamMemberProfile> alstprofiles = objTeamMemberProfileRepository.getAllTeamMemberProfilesOfTeam(team.Id);
+                            foreach (TeamMemberProfile item in alstprofiles)
+                            {
+                                if (item.ProfileType == "twitter")
+                                {
+                                    TwitterMessageRepository twtmsgRepo = new TwitterMessageRepository();
+                                     i = twtmsgRepo.updateMessageStatus(item.ProfileId);
+                                }
+                                else if (item.ProfileType == "facebook")
+                                {
+                                    FacebookFeedRepository fbfeedRepo = new FacebookFeedRepository();
+                                     j = fbfeedRepo.updateMessageStatus(item.ProfileId);
+ 
+                                }
+                            }                         
+                          
 
                             if (i > 0 || j > 0)
                             {
@@ -621,7 +915,7 @@ namespace SocioBoard.Message
                                 if (Session["MessageDataTable"] == null)
                                 {
                                     clsFeedsAndMessages clsfeedsandmess = new clsFeedsAndMessages();
-                                    ds = clsfeedsandmess.bindMessagesIntoDataTable(user);
+                                    ds = clsfeedsandmess.bindMessagesIntoDataTable(team.Id);
                                     FacebookFeedRepository fbFeedRepo = new FacebookFeedRepository();
                                     Session["MessageDataTable"] = ds;
                                 }
@@ -640,6 +934,9 @@ namespace SocioBoard.Message
 
                         }
                     }
+
+
+
                 }
             }
             catch (Exception ex)

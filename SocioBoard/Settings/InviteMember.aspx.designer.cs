@@ -85,24 +85,6 @@ namespace SocialSuitePro.Settings {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
         
         /// <summary>
-        /// rbAdmin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbAdmin;
-        
-        /// <summary>
-        /// rbUser control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbUser;
-        
-        /// <summary>
         /// TwitterAc control.
         /// </summary>
         /// <remarks>
@@ -137,6 +119,15 @@ namespace SocialSuitePro.Settings {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl InstagramAc;
+        
+        /// <summary>
+        /// TumblrAc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl TumblrAc;
         
         /// <summary>
         /// totalaccountscheck control.

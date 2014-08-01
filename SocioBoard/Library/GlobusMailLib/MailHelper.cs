@@ -7,16 +7,46 @@ using log4net;
 using System.Net.Mail;
 using System.Net;
 using System.Web;
-using Amazon.SimpleEmail;
-using System.Collections;
-using Amazon.SimpleEmail.Model;
-using Amazon.DynamoDBv2;
+using Mandrill;
 
 namespace GlobusMailLib
 {
     public class MailHelper
     {
+
+        /// <summary>
+        /// LogManager.GetLogger(typeof(MailHelper));
+        /// is used for Log4Net to display the logger.Error || logger.Info in log.txt file 
+        /// the Log4Net setting is difined in Web.config File.
+        /// </summary>
         ILog logger = LogManager.GetLogger(typeof(MailHelper));
+
+        /// <summary>
+        /// SendMailBySendGrid
+        /// this function is used for sending mail vai SendGrid
+        /// the main input  parameter is :
+        ///<add key="host" value="smtp.sendgrid.net" />
+        /// <add key="port" value="25" />
+        /// <add key="username" value="socioboard"/>
+        /// <add key="fromemail" value="xyz@xyz.com"/>
+        /// <add key="password" value="xyz" />
+        ///<add key="tomail" value="xyz@xyz.com" />
+        ///
+        /// its return : success if mail send else return string.Empty;
+        /// 
+        /// </summary>
+        /// <param name="Host"></param>
+        /// <param name="port"></param>
+        /// <param name="from"></param>
+        /// <param name="passsword"></param>
+        /// <param name="to"></param>
+        /// <param name="bcc"></param>
+        /// <param name="cc"></param>
+        /// <param name="subject"></param>
+        /// <param name="body"></param>
+        /// <param name="sendgridUserName"></param>
+        /// <param name="sendgridPassword"></param>
+        /// <returns></returns>
 
         public string SendMailBySendGrid(string Host, int port, string from, string passsword, string to, string bcc, string cc, string subject, string body, string sendgridUserName, string sendgridPassword)
         {
@@ -53,6 +83,30 @@ namespace GlobusMailLib
             return sendMailBySendGrid;
         }
 
+        /// <summary>
+        /// SendMailBySMTP
+        /// this function is used for sending mail vai SMTP</summary>
+        /// the main parameter is 
+        /// <add key="host" value="smtp.net" />
+        /// <add key="port" value="25" />
+        /// <add key="username" value="socioboard"/>
+        /// <add key="fromemail" value="xyz@xyz.com"/>
+        /// <add key="password" value="xyz" />
+        ///<add key="tomail" value="xyz@xyz.com" />
+        /// its return : success if mail send else return string.Empty;
+        /// :<param name="Host"></param>
+        /// <param name="port"></param>
+        /// <param name="from"></param>
+        /// <param name="passsword"></param>
+        /// <param name="to"></param>
+        /// <param name="bcc"></param>
+        /// <param name="cc"></param>
+        /// <param name="subject"></param>
+        /// <param name="body"></param>
+        /// <param name="sendgridUserName"></param>
+        /// <param name="sendgridPassword"></param>
+        /// <returns></returns>
+
         public string SendMailBySMTP(string Host, int port, string from, string passsword, string to, string bcc, string cc, string subject, string body, string sendgridUserName, string sendgridPassword)
         {
             string sendMailBySMTP = string.Empty;
@@ -86,18 +140,43 @@ namespace GlobusMailLib
             return sendMailBySMTP;
         }
 
+        /// <summary>
+        /// SendMailByMandrill
+        /// this function is used for sending mail vai Mandrill</summary></summary>
+        /// the main parameter is
+        /// <add key="host" value="smtp.mandrillapp.com" />
+        /// <param name="port"></param>
+        /// <add key="port" value="25" />
+        /// <param name="from"></param>
+        /// <add key="username" value="socioboard"/>
+        /// <param name="passsword"></param>
+        /// <add key="fromemail" value="xyz@xyz.com"/>
+        /// <param name="to"></param>
+        /// <add key="password" value="xyz" />
+        /// <param name="bcc"></param>
+        /// add key="tomail" value="xyz@xyz.com" />
+        /// its return : success if mail send else return string.Empty;
+        /// <param name="cc"></param>
+        /// <param name="Host"></param>
+        /// <param name="subject"></param>
+        /// <param name="body"></param>
+        /// <param name="sendgridUserName"></param>
+        /// <param name="sendgridPassword"></param>
+        /// <returns></returns>
+
         public string SendMailByMandrill(string Host, int port, string from, string passsword, string to, string bcc, string cc, string subject, string body, string sendgridUserName, string sendgridPassword)
         {
             string sendMailByMandrill = string.Empty;
+
+            GetStatusFromSendMailByMandrill(Host, port, from, passsword, to, bcc, cc, subject, body, sendgridUserName, sendgridPassword);
+
             try
             {
-
                 Mandrill.EmailMessage message = new Mandrill.EmailMessage();
                 //message.from_email = from;
                 //message.from_name = from;//"AlexPieter";
                 message.from_email = from;
                 message.from_name = "Socioboard Support";
-                //message.from_name = "Socialscoup Support";
                 message.html = body;
                 message.subject = subject;
                 message.to = new List<Mandrill.EmailAddress>()
@@ -114,7 +193,7 @@ namespace GlobusMailLib
                     {
                         logger.Error(result.Email + " " + result.RejectReason);
                     }
-                    status = Mandrill.EmailResultStatus.Sent.ToString();
+                    //status = Mandrill.EmailResultStatus.Sent.ToString();
                     //  LogManager.Current.LogError(result.Email, "", "", "", null, string.Format("Email failed to send: {0}", result.RejectReason));
                 }
 
@@ -130,11 +209,141 @@ namespace GlobusMailLib
             return sendMailByMandrill;
         }
 
-
+        /// <summary>
+        /// SendMailByMandrill
+        /// this function is used for sending mail vai Mandrill</summary></summary>
+        /// the main parameter is
+        /// <add key="host" value="smtp.mandrillapp.com" />
+        /// <param name="port"></param>
+        /// <add key="port" value="25" />
+        /// <param name="from"></param>
+        /// <add key="username" value="socioboard"/>
+        /// <param name="passsword"></param>
+        /// <add key="fromemail" value="xyz@xyz.com"/>
+        /// <param name="to"></param>
+        /// <add key="password" value="xyz" />
+        /// <param name="bcc"></param>
+        /// add key="tomail" value="xyz@xyz.com" />
+        /// its return : EmailResultStatus i.e Sent, Rejected etc.
+        /// <param name="cc"></param>
+        /// <param name="Host"></param>
+        /// <param name="subject"></param>
+        /// <param name="body"></param>
+        /// <param name="sendgridUserName"></param>
+        /// <param name="sendgridPassword"></param>
+        /// <returns></returns>
 
         public string GetStatusFromSendMailByMandrill(string Host, int port, string from, string passsword, string to, string bcc, string cc, string subject, string body, string sendgridUserName, string sendgridPassword)
         {
             string sendMailByMandrill = string.Empty;
+            try
+            {
+
+                Mandrill.EmailMessage message = new Mandrill.EmailMessage();
+                //message.from_email = from;
+                //message.from_name = from;//"AlexPieter";
+                message.from_email = "support@socioboard.com";
+                message.from_name = "Socioboard Support";
+                message.html = body;
+                message.subject = subject;
+                message.to = new List<Mandrill.EmailAddress>()
+                {
+                  new Mandrill.EmailAddress(to)
+                };
+
+
+                Mandrill.MandrillApi mandrillApi = new Mandrill.MandrillApi(sendgridPassword, false);
+
+
+                //List<RejectInfo> ri=mandrillApi.ListRejects();
+
+                var results = mandrillApi.SendMessage(message);
+                string status = string.Empty;
+                foreach (var result in results)
+                {
+                    try
+                    {
+                        if (result.Status != Mandrill.EmailResultStatus.Sent)
+                        {
+                            logger.Error(result.Email + " " + result.RejectReason);
+
+                        }
+
+                        if (Mandrill.EmailResultStatus.Sent == result.Status)
+                        {
+                            status = Mandrill.EmailResultStatus.Sent.ToString();
+                        }
+                        else if (Mandrill.EmailResultStatus.Invalid == result.Status)
+                        {
+                            status = Mandrill.EmailResultStatus.Invalid.ToString();
+                        }
+                        else if (Mandrill.EmailResultStatus.Queued == result.Status)
+                        {
+                            status = Mandrill.EmailResultStatus.Queued.ToString();
+                        }
+                        else if (Mandrill.EmailResultStatus.Rejected == result.Status)
+                        {
+                            status = Mandrill.EmailResultStatus.Rejected.ToString();
+                        }
+                        else if (Mandrill.EmailResultStatus.Scheduled == result.Status)
+                        {
+                            status = Mandrill.EmailResultStatus.Scheduled.ToString();
+                        }
+                        else
+                        {
+                            status = result.RejectReason;
+                        }
+                        //status = Mandrill.EmailResultStatus;
+                        //  LogManager.Current.LogError(result.Email, "", "", "", null, string.Format("Email failed to send: {0}", result.RejectReason));
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        logger.Error(ex.Message);
+                        sendMailByMandrill = ex.Message;
+                    }
+                }
+
+                sendMailByMandrill = status;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                logger.Error(ex.Message);
+                sendMailByMandrill = ex.Message;
+            }
+
+            return sendMailByMandrill;
+        }
+
+
+        /// <summary>
+        /// SendMailByMandrill
+        /// this function is used for Get Rejected Mail of Mandrill</summary></summary>
+        /// the main parameter is
+        /// <add key="host" value="smtp.mandrillapp.com" />
+        /// <param name="port"></param>
+        /// <add key="port" value="25" />
+        /// <param name="from"></param>
+        /// <add key="username" value="socioboard"/>
+        /// <param name="passsword"></param>
+        /// <add key="fromemail" value="xyz@xyz.com"/>
+        /// <param name="to"></param>
+        /// <add key="password" value="xyz" />
+        /// <param name="bcc"></param>
+        /// add key="tomail" value="xyz@xyz.com" />
+        /// its return : List<RejectInfo> ie hardbouce , softbounce, rejected etc.
+        /// /// <param name="subject"></param>
+        /// <param name="body"></param>
+        /// <param name="sendgridUserName"></param>
+        /// <param name="sendgridPassword"></param>
+        /// <returns></returns>
+
+        public List<RejectInfo> GetListRejectInfoByMandrill(string Host, int port, string from, string passsword, string to, string bcc, string cc, string subject, string body, string sendgridUserName, string sendgridPassword)
+        {
+            string sendMailByMandrill = string.Empty;
+            List<RejectInfo> ri = new List<RejectInfo>();
             try
             {
 
@@ -151,19 +360,10 @@ namespace GlobusMailLib
                 };
 
                 Mandrill.MandrillApi mandrillApi = new Mandrill.MandrillApi(sendgridPassword, false);
-                var results = mandrillApi.SendMessage(message);
-                string status = string.Empty;
-                foreach (var result in results)
-                {
-                    if (result.Status != Mandrill.EmailResultStatus.Sent)
-                    {
-                        logger.Error(result.Email + " " + result.RejectReason);
-                    }
-                    status = Mandrill.EmailResultStatus.Sent.ToString();
-                    //  LogManager.Current.LogError(result.Email, "", "", "", null, string.Format("Email failed to send: {0}", result.RejectReason));
-                }
 
-                sendMailByMandrill = status;
+
+                ri = mandrillApi.ListRejects();
+
             }
             catch (Exception ex)
             {
@@ -172,8 +372,34 @@ namespace GlobusMailLib
                 sendMailByMandrill = ex.Message;
             }
 
-            return sendMailByMandrill;
+            return ri;
         }
+
+
+        /// <summary>
+        /// SendMailByMandrill
+        /// this function is used for sending mail vai Mandrill for Enterprise Module</summary></summary>
+        /// the main parameter is
+        /// <add key="host" value="smtp.mandrillapp.com" />
+        /// <param name="port"></param>
+        /// <add key="port" value="25" />
+        /// <param name="from"></param>
+        /// <add key="username" value="socioboard"/>
+        /// <param name="passsword"></param>
+        /// <add key="fromemail" value="xyz@xyz.com"/>
+        /// <param name="to"></param>
+        /// <add key="password" value="xyz" />
+        /// <param name="bcc"></param>
+        /// add key="tomail" value="xyz@xyz.com" />
+        /// its return : success if mail send else return string.Empty;
+        /// <param name="cc"></param>
+        /// <param name="Host"></param>
+        /// <param name="subject"></param>
+        /// <param name="body"></param>
+        /// <param name="sendgridUserName"></param>
+        /// <param name="sendgridPassword"></param>
+        /// <returns></returns>
+
 
         public string SendMailByMandrillForEnterPrise(string name, string Host, int port, string from, string passsword, string to, string bcc, string cc, string subject, string body, string sendgridUserName, string sendgridPassword)
         {
@@ -216,60 +442,5 @@ namespace GlobusMailLib
 
             return sendMailByMandrill;
         }
-
-
-
-
-        //public string SendMailByAmazonSES(string Host, int port, string from, string passsword, string to, string bcc, string cc, string subject, string body, string AWSAccessKey, string AWSSecretKey)
-        //{
-        //    string res = "";
-        //    //INITIALIZE AWS CLIENT//
-        //    //AmazonSimpleEmailServiceConfig amConfig = new AmazonSimpleEmailServiceConfig();
-        //    //amConfig.UseSecureStringForAwsSecretKey = false;
-
-        //    //AmazonSimpleEmailServiceConfig amazonConfiguration = new AmazonSimpleEmailServiceConfig();
-        //    //AmazonSimpleEmailServiceClient client =new AmazonSimpleEmailServiceClient(AWSAccessKey, AWSSecretKey, amazonConfiguration);
-
-        //    var amazonConfiguration = new AmazonDynamoDBConfig
-        //    {
-        //        ServiceURL = "https://dynamodb.eu-west-1.amazonaws.com/"
-        //    };
-        //   // AmazonDynamoDBClient amzClient = new AmazonDynamoDBClient(AWSAccessKey, AWSSecretKey, amazonConfiguration);
-        //  //  AmazonSimpleEmailService aa=new AmazonSimpleEmailService ();
-
-        //    //AmazonSimpleEmailServiceClient amzClient = new AmazonSimpleEmailServiceClient(AWSAccessKey, AWSSecretKey, amazonConfiguration);
-        //    //ConfigurationManager.AppSettings["AWSAccessKey"].ToString(),
-        //    //ConfigurationManager.AppSettings["AWSSecretKey"].ToString(), amConfig);
-
-
-        //    //ArrayList that holds To Emails. It can hold 1 Email to any
-        //    //number of emails in case what to send same message to many users.
-        //    ArrayList arrmail = new ArrayList();
-        //    arrmail.Add(to);
-
-        //    //Create Your Bcc Addresses as well as Message Body and Subject
-        //    Destination dest = new Destination();
-        //    //dest.WithBccAddresses((string[])to.ToArray(typeof(string)));
-        //    // string body = Body;
-        //    // string subject = "Subject : " + txtSubject.Text;
-        //    Body bdy = new Body();
-        //    bdy.Html = new Amazon.SimpleEmail.Model.Content(body);
-        //    Amazon.SimpleEmail.Model.Content title = new Amazon.SimpleEmail.Model.Content(subject);
-        //    Message message = new Message(title, bdy);
-
-        //    //Create A Request to send Email to this ArrayList with this body and subject
-        //    try
-        //    {
-        //        SendEmailRequest ser = new SendEmailRequest(from, dest, message);
-        //        //SendEmailResponse seResponse = amzClient;
-        //        SendEmailResult seResult = seResponse.SendEmailResult;
-        //        //SendEmailResult seResult = seResponse.SendEmailResult;
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //    }
-        //    return res;
-        //}
     }
 }

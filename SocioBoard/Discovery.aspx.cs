@@ -47,18 +47,32 @@ namespace SocialSuitePro
             {
                 Console.WriteLine("Error : " + ex.StackTrace);
             }
+
+          
         }
 
         public void btnSearch_Click(object sender, EventArgs e)
         {
-            //string searchRes = getresults(txtSearchText.Text);
-            //searchresults.InnerHtml = "<ul id=\"message-list\">" + searchRes + "</ul>";
-
+           
             try
             {
                 //if (!string.IsNullOrEmpty(txtSearchText.Text))
                 //{
-                    string searchRes = getresults(txtSearchText.Text);
+
+                var SearchBy = string.Empty;
+
+                //if (chkbykeyword)
+                //{
+                //    SearchBy = chkbykeyword.Value;
+                //}
+                //else
+                //{
+                //    SearchBy = chkbykeyword.Value;
+                //}
+                //var abc =chkbysearch.Items.Cast<ListItem>().Where(i => i.Selected).Select(i => i.Value);
+                //var SearchBy1 = chkbysearch.Items.Cast<ListItem>().Where(li => li.Selected).Select(li => li.Value).ToList();
+                
+                string searchRes = getresults(txtSearchText.Text);
                     if (!string.IsNullOrEmpty(searchRes))
                     {
                         searchresults.InnerHtml = "<ul id=\"message-list\">" + searchRes + "</ul>";
@@ -395,5 +409,7 @@ namespace SocialSuitePro
             }
             return checkFacebookToken;
         }
+
+        
     }
 }

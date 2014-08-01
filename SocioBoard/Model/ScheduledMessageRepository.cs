@@ -5,11 +5,13 @@ using System.Web;
 using SocioBoard.Domain;
 using SocioBoard.Helper;
 using SocioBoard.Admin.Scheduler;
+using log4net;
 
 namespace SocioBoard.Model
 {
     public class ScheduledMessageRepository : IScheduledMessageRepository
     {
+        ILog logger = LogManager.GetLogger(typeof(ScheduledMessageRepository));
         /// <addNewMessage>
         /// Add New Message
         /// </summary>
@@ -80,6 +82,44 @@ namespace SocioBoard.Model
                 }//End Transaction
             }//End Session
         }
+
+
+
+
+
+        public void deleteMessage(Guid Id, string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        // Proceed action to delete scheduled message by Id.
+                        int i = session.CreateQuery("delete from ScheduledMessage where UserId = :id and ProfileId = :Prof")
+                                 .SetParameter("id", Id)
+                                 .SetParameter("Prof", profileid)
+                                 .ExecuteUpdate();
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+
+
+
+
+
+
+
 
 
         /// <updateMessage>
@@ -404,6 +444,51 @@ namespace SocioBoard.Model
         }
 
 
+
+
+
+        public List<ScheduledMessage> getAllMessagesOfUser(string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //proceed action, to get all messages by user id and profileid.
+                        List<ScheduledMessage> lstschmsg = session.CreateQuery("from ScheduledMessage where  ScheduleTime > :schtime and ProfileId =:profileid and Status = 0 order by ScheduleTime desc")
+                       .SetParameter("schtime", DateTime.Now)
+                       .SetParameter("profileid", profileid)
+                       .List<ScheduledMessage>()
+                       .ToList<ScheduledMessage>();
+
+
+                        //List<ScheduledMessage> lstschmsg = new List<ScheduledMessage>();
+                        //foreach (ScheduledMessage item in query.Enumerable())
+                        //{
+                        //    lstschmsg.Add(item);
+                        //}
+                        return lstschmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+
+
+
+
+
+
+
+
         /// <getAllMessages>
         /// Get All Messages by date.
         /// </summary>
@@ -532,6 +617,100 @@ namespace SocioBoard.Model
 
 
 
+
+
+        public List<ScheduledMessage> getAllMessagesDetail(string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        string str = "from ScheduledMessage where  ProfileId IN(";
+                        string[] arrsrt = profileid.Split(',');
+                        foreach (string sstr in arrsrt)
+                        {
+                            str += "'"+(sstr) +"'"+ ",";
+                        }
+                        str = str.Substring(0, str.Length - 1);
+                        str += ") order by ScheduleTime desc ";
+                        List<ScheduledMessage> alst = session.CreateQuery(str)
+                       .List<ScheduledMessage>()
+                       .ToList<ScheduledMessage>();
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Trasaction
+            }//End session
+        }
+
+
+
+
+
+
+        public List<ScheduledMessage> getAllSentMessageDetails(string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        string str = "from ScheduledMessage where Status=1 and ProfileId IN(";
+                        string[] arrsrt = profileid.Split(',');
+                        foreach (string sstr in arrsrt)
+                        {
+                            str += "'" + (sstr) + "'" + ",";
+                        }
+                        str = str.Substring(0, str.Length - 1);
+                        str += ")";
+                        List<ScheduledMessage> alst = session.CreateQuery(str)
+                       .List<ScheduledMessage>()
+                       .ToList<ScheduledMessage>();
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Trasaction
+            }//End session
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         /// <getAllIUnSentMessagesOfUser>
         /// Get AllI UnSent Messages Of User
         /// </summary>
@@ -582,7 +761,7 @@ namespace SocioBoard.Model
                     try
                     {
                         //Proceed action,to get all unread messages.
-                        List<ScheduledMessage> lstschtime = session.CreateQuery("from ScheduledMessage where Status = 1 and UserId =:userid order by ScheduleTime desc")
+                        List<ScheduledMessage> lstschtime = session.CreateQuery("from ScheduledMessage where Status = 1 and UserId =:userid order by ClientTime desc")
                           .SetParameter("userid", UserId)
                           .List<ScheduledMessage>()
                           .ToList<ScheduledMessage>();
@@ -600,6 +779,34 @@ namespace SocioBoard.Model
             }//End Session
         }
 
+        public List<ScheduledMessage> getAllSentMessagesOfUser(string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action,to get all unread messages.
+                        List<ScheduledMessage> lstschtime = session.CreateQuery("from ScheduledMessage where Status = 1 and ProfileId =:profileid order by ClientTime desc")
+                          .SetParameter("profileid", profileid)
+                          .List<ScheduledMessage>()
+                          .ToList<ScheduledMessage>();
+
+                        //  List<ScheduledMessage> lstschtime = query.Enumerable<ScheduledMessage>().ToList<ScheduledMessage>();
+
+                        return lstschtime;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
 
 
 
@@ -764,6 +971,67 @@ namespace SocioBoard.Model
             }
 
             return lstScheduledTracker;
+        }
+
+
+        public bool deleteScheduleMessage(Guid userid, string messageid)
+        {
+            bool status = false;
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to delete existing account by user id and twitter id.
+                        NHibernate.IQuery query = session.CreateQuery("delete from ScheduledMessage where UserId = :userid and Id = :messageid")
+                                        .SetParameter("userid", userid)
+                                        .SetParameter("messageid", messageid);
+                        int isUpdated = query.ExecuteUpdate();
+                        transaction.Commit();
+                        status = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex.Message);
+                    }
+                    return status;
+                }//End Transaction
+            }//End Session
+        }
+        public void UpdateScheduleMessage(Guid userid, string messageid, string mess, DateTime dt)
+        {
+
+            //Creates a database connection and opens up a session
+            try
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    //After Session creation, start Transaction.
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        //Proceed action, to update existing Draft message by draft id.
+                        session.CreateQuery("Update ScheduledMessage set ShareMessage =:mess,ScheduleTime =:dt where UserId = :userid and Id = :messageid")
+                            .SetParameter("mess", mess)
+                            .SetParameter("userid", userid)
+                            .SetParameter("dt", dt)
+                            .SetParameter("messageid", messageid)
+                            .ExecuteUpdate();
+                        transaction.Commit();
+
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message);
+
+            }
+
+
         }
 
 

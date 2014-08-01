@@ -7,7 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SocialSuitePro {
+namespace SocioBoard
+{
     
     
     public partial class Publishing {
@@ -31,6 +32,15 @@ namespace SocialSuitePro {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// groupsselection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList groupsselection;
+        
+        /// <summary>
         /// incom_messages control.
         /// </summary>
         /// <remarks>
@@ -49,22 +59,13 @@ namespace SocialSuitePro {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl incom_tasks;
         
         /// <summary>
-        /// incomMessages control.
+        /// userimg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor incomMessages;
-        
-        /// <summary>
-        /// incomTasks control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor incomTasks;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl userimg;
         
         /// <summary>
         /// usernm control.
@@ -74,6 +75,15 @@ namespace SocialSuitePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl usernm;
+        
+        /// <summary>
+        /// topbtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl topbtn;
         
         /// <summary>
         /// master_facebook_connect control.
@@ -119,6 +129,15 @@ namespace SocialSuitePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl inviteRedirect;
+        
+        /// <summary>
+        /// actdiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl actdiv;
         
         /// <summary>
         /// rdata control.

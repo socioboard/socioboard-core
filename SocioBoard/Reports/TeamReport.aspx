@@ -75,6 +75,7 @@
                             </div>
                             <div class="task-list-outer" id="taskdiv" runat="server">
                             	<div class="task-labels">
+                                    <div class="task-labe-1"></div>
                                 	<div class="task-labe-1">TASK OWNER</div>
                                     <div class="task-labe-2">ASSIGNED</div>
                                     <div class="task-labe-3">TASK MESSAGE</div>

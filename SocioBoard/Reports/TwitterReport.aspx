@@ -234,9 +234,9 @@
                             
                             <div class="agerange-right">
                             	<div class="key-header">
-                                	<h2>By GENDER</h2>
+                              <%--  	<h2>By GENDER</h2>--%>
                                 </div>
-                                <div class="male-female-outer">
+                              <%--  <div class="male-female-outer">
                                 	<div class="male-left" id="divtwtMale" runat="server">
                                     	83%<span>MALE FOLLOWERS</span>
                                     </div>
@@ -244,7 +244,7 @@
                                     	83%<span>MALE FOLLOWERS</span>
                                     </div>
                                     <div class="clear"></div>
-                                </div>
+                                </div>--%>
                            <%--     <div class="gender-info">
                                 	Men between the ages of 18-20 appear to be the 
 leading force among your followers.
@@ -325,14 +325,17 @@ leading force among your followers.
 
 
             var twtArr = "<%=strTwtArray %>".split(",");
-            var twtFollowArr = "<%=strTwtFollowing %>".split(",");;
+            var twtFollowArr = "<%=strTwtFollowing %>".split(","); ;
             var twtInMsgArr = "<%=strIncomingMsg %>".split(",");
-            var twtSentMsgArr  = "<%=strSentMsg %>".split(",");
+            var twtSentMsgArr = "<%=strSentMsg %>".split(",");
             var twtDMRecArr = "<%=strDmRecieve %>".split(",");
             var twtDMArrSent = "<%=strDMSent %>".split(",");
             var reTwt = "<%=strRetweet %>".split(",");
             var ageDiff = "<%=strAgeDiff %>".split(",");
-            function getProfileGraph(id,name,img,follower) {
+
+            var twtmention = "<%=strTwtMention %>".split(",");
+
+            function getProfileGraph(id, name, img, follower) {
                 debugger;
                 $.ajax
                         ({
@@ -349,6 +352,7 @@ leading force among your followers.
                                 $("#msg_rece_graph").empty();
                                 $("#dir_msg_sent_graph").empty();
                                 $("#retweet_graph").empty();
+                                $("#mention_graph").empty();
 
                                 var twtData = msg.split("@");
 
@@ -368,6 +372,9 @@ leading force among your followers.
                                 $("#<%=divdms.ClientID %>").html(twtlen[twtlen.length - 1]);
                                 twtlen = twtData[6].split(',');
                                 $("#<%=divretweetCnt.ClientID %>").html(twtlen[twtlen.length - 1]);
+                                twtlen = twtData[10].split(',');
+                                $("#<%=divMention.ClientID %>").html(twtlen[twtlen.length - 1]);
+
                                 reloadGraph(twtData);
                                 /////////////////////////////////
                                 var twtindex = twtArr[0];
@@ -388,31 +395,31 @@ leading force among your followers.
             function getGraphData() {
                 debugger;
                 try {
-                   
+
                     var items = new Array(twtArr.length);
                     items[0] = new Array(2);
                     items[0][0] = "Age";
                     items[0][1] = "Visits";
                     for (var i = 0; i < twtArr.length; i++) {
-                        items[i+1] = new Array(2);
+                        items[i + 1] = new Array(2);
                         if (twtArr[i] != "") {
-                            items[i+1][0] = i;
-                            items[i+1][1] = Number(twtArr[i]);
+                            items[i + 1][0] = i;
+                            items[i + 1][1] = Number(twtArr[i]);
                             $("#<%=divnewFollower.ClientID %>").html(twtArr[i]);
                         }
 
                     }
-                   
-//                    $("#newfollower_graph").sparkline([<%=strTwtArray %>], {
-//                        type: 'line'
-//                    });
+
+                    //                    $("#newfollower_graph").sparkline([<%=strTwtArray %>], {
+                    //                        type: 'line'
+                    //                    });
                     getTwitterNewFollower(items);
                 }
                 catch (e) {
                     console.log(e);
                 }
                 try {
-                   
+
                     var itemstwtFollow = new Array(twtFollowArr.length);
                     itemstwtFollow[0] = new Array(2);
                     itemstwtFollow[0][0] = "Days";
@@ -437,26 +444,26 @@ leading force among your followers.
 
 
                 debugger;
-                try{
-                var itemstwtInMsg = new Array(twtInMsgArr.length);
-                itemstwtInMsg[0] = new Array(2);
-                itemstwtInMsg[0][0] = "Days";
-                itemstwtInMsg[0][1] = "Following";
-                for (var i = 1; i <= twtInMsgArr.length; i++) {
-                    itemstwtInMsg[i] = new Array(2);
-                    if (twtInMsgArr[i] != "") {
-                        itemstwtInMsg[i][0] = i;
-                        itemstwtInMsg[i][1] = Number(twtInMsgArr[i]);
-                        $("#<%=divMsgReceived.ClientID %>").html(twtInMsgArr[i]);
-                    }
+                try {
+                    var itemstwtInMsg = new Array(twtInMsgArr.length);
+                    itemstwtInMsg[0] = new Array(2);
+                    itemstwtInMsg[0][0] = "Days";
+                    itemstwtInMsg[0][1] = "Following";
+                    for (var i = 1; i <= twtInMsgArr.length; i++) {
+                        itemstwtInMsg[i] = new Array(2);
+                        if (twtInMsgArr[i] != "") {
+                            itemstwtInMsg[i][0] = i;
+                            itemstwtInMsg[i][1] = Number(twtInMsgArr[i]);
+                            $("#<%=divMsgReceived.ClientID %>").html(twtInMsgArr[i]);
+                        }
 
+                    }
+                    getIncomingMsg(itemstwtInMsg);
                 }
-                getIncomingMsg(itemstwtInMsg);
-            }
-            catch (e) {
-                console.log(e);
-            }
-               
+                catch (e) {
+                    console.log(e);
+                }
+
                 debugger;
                 var itemstwtSentMsg = new Array(twtSentMsgArr.length);
                 itemstwtSentMsg[0] = new Array(2);
@@ -473,7 +480,7 @@ leading force among your followers.
                 }
                 getSentMsg(itemstwtSentMsg);
 
-              
+
                 debugger;
                 var itemstwtDMRec = new Array(twtDMRecArr.length);
                 var dmr = 0;
@@ -490,11 +497,41 @@ leading force among your followers.
                     }
 
                 }
-               // $("#dmr").val(dmr);
+                // $("#dmr").val(dmr);
                 getDirectMessageReceive(itemstwtDMRec);
 
 
-             
+                //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+                debugger;
+                var itemstwtMention = new Array(twtmention.length);
+                var dmr = 0;
+                itemstwtMention[0] = new Array(2);
+                itemstwtMention[0][0] = "Days";
+                itemstwtMention[0][1] = "Following";
+                for (var i = 1; i <= twtmention.length; i++) {
+                    itemstwtMention[i] = new Array(2);
+                    if (twtmention[i] != "") {
+                        itemstwtMention[i][0] = i;
+                        itemstwtMention[i][1] = Number(twtmention[i]);
+                        dmr = Number(dmr) + Number(twtmention[i]);
+                        $("#<%=divMention.ClientID %>").html(twtmention[i]);
+                    }
+
+                }
+                // $("#dmr").val(dmr);
+                getTwtMention(itemstwtMention);
+
+
+
+                //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
                 debugger;
                 var itemstwtDMSent = new Array(twtDMArrSent.length);
                 var dmSent = 0;
@@ -507,14 +544,14 @@ leading force among your followers.
                         itemstwtDMSent[i][0] = i;
                         itemstwtDMSent[i][1] = Number(twtDMArrSent[i]);
                         dmSent = Number(dmSent) + Number(twtDMArrSent[i]);
-                        $("#<%=divdms.ClientID %>").html(twtDMRecArr[i]);
+                        $("#<%=divdms.ClientID %>").html(twtDMArrSent[i]);
                     }
                 }
-              //  $("#dms").val(dmSent);
+                //  $("#dms").val(dmSent);
                 getDirectMessageSent(itemstwtDMSent);
 
 
-               
+
                 var itemsretwt = new Array(reTwt.length);
                 var retwt = 0;
                 itemsretwt[0] = new Array(2);
@@ -530,14 +567,15 @@ leading force among your followers.
                     }
                 }
                 debugger;
-              //  $("#retweetCnt").val(retwt);
+                //  $("#retweetCnt").val(retwt);
                 getRetweet(itemsretwt);
 
                 var calTwt = "<%=strEngInf %>".split("@");
                 var engTwt = calTwt[0].split(",");
                 var infTwt = calTwt[1].split(",");
+                var twtdate = calTwt[2].split(",");
                 var itemstwt = new Array(engTwt.length);
-                var eng = 0,inf=0;
+                var eng = 0, inf = 0;
                 itemstwt[0] = new Array(3);
                 itemstwt[0][0] = "Days";
                 itemstwt[0][1] = "Engagement";
@@ -546,11 +584,11 @@ leading force among your followers.
                 for (var i = 1; i < engTwt.length; i++) {
                     itemstwt[i] = new Array(3);
                     if (engTwt[i] != "") {
-                        itemstwt[i][0] = i;
+                        itemstwt[i][0] = twtdate[i];
                         itemstwt[i][1] = Number(engTwt[i]);
                         itemstwt[i][2] = Number(infTwt[i]);
-                        eng=eng+Number(engTwt[i]);
-                        inf=inf+ Number(infTwt[i]);
+                        eng = eng + Number(engTwt[i]);
+                        inf = inf + Number(infTwt[i]);
                         // retwt = Number(retwt) + Number(reTwt[i])
                     }
                 }

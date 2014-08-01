@@ -35,36 +35,36 @@ namespace SocialSuitePro.Settings
             }
         }
 
-        protected void rbAdmin_CheckedChanged(object sender, EventArgs e)
-        {
-            rbAdmin.Checked = true;
-            rbUser.Checked = false;
-            if (rbAdmin.Checked == true && rbUser.Checked == false)
-            {
-                AccessLevel = "admin";
-            }
-            else
-            {
-                AccessLevel = "user";
-            }
-        }
+        //protected void rbAdmin_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    rbAdmin.Checked = true;
+        //    rbUser.Checked = false;
+        //    if (rbAdmin.Checked == true && rbUser.Checked == false)
+        //    {
+        //        AccessLevel = "admin";
+        //    }
+        //    else
+        //    {
+        //        AccessLevel = "user";
+        //    }
+        //}
 
 
 
-        protected void rbUser_CheckedChanged(object sender, EventArgs e)
-        {
-            rbAdmin.Checked = false;
-            rbUser.Checked = true;
+        //protected void rbUser_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    rbAdmin.Checked = false;
+        //    rbUser.Checked = true;
 
-            if (rbAdmin.Checked == false && rbUser.Checked == true)
-            {
-                AccessLevel = "user";
-            }
-            else
-            {
-                AccessLevel = "admin";
-            }
-        }
+        //    if (rbAdmin.Checked == false && rbUser.Checked == true)
+        //    {
+        //        AccessLevel = "user";
+        //    }
+        //    else
+        //    {
+        //        AccessLevel = "admin";
+        //    }
+        //}
 
         public void BindSocialProfiles()
         {
@@ -83,6 +83,7 @@ namespace SocialSuitePro.Settings
                 string bindtwitterprofiles = string.Empty;
                 string bindlinkedinprofiles = string.Empty;
                 string bindinstagramprofiles = string.Empty;
+                string bindtumblrprofiles = string.Empty;
                 int i = 0;
 
                 foreach (GroupProfile item in lstgroupprofile)
@@ -121,6 +122,20 @@ namespace SocialSuitePro.Settings
                         }
 
                     }
+
+
+                    else if (item.ProfileType == "tumblr")
+                    {
+                        TumblrAccountRepository tumblraccrepo = new TumblrAccountRepository();
+                        TumblrAccount tumblraccount = tumblraccrepo.getTumblrAccountDetailsById(item.ProfileId,user.Id);
+                        if (tumblraccount != null)
+                        {
+                            bindtumblrprofiles += "<div class=\"ws_tm_network_one\"><div class=\"ws_tm_user_name\">" + tumblraccount.tblrUserName+ "</div>" +
+                                                  "<div class=\"ws_tm_chkbx\"><input type=\"checkbox\" value=\"tumblr_" + item.ProfileId + "\" onclick=\"isProfileID('" + item.ProfileId + "')\" id=\"tumblrcheck_" + i + "\" name=\"chkbox_" + i + "\"></div></div>";
+                        }
+
+                    }
+
                     else if (item.ProfileType == "instagram")
                     {
                         InstagramAccountRepository instagramrepo = new InstagramAccountRepository();
@@ -167,7 +182,14 @@ namespace SocialSuitePro.Settings
                 {
                     LinkedInAc.InnerHtml = "No LinkedIn Profiles for " + groups.GroupName + " Group";
                 }
-
+                if (!string.IsNullOrEmpty(bindtumblrprofiles))
+                {
+                    TumblrAc.InnerHtml = bindtumblrprofiles;
+                }
+                else
+                {
+                    TumblrAc.InnerHtml = "No Tumblr Profiles for " + groups.GroupName + " Group";
+                }
                 totalaccountscheck.InnerHtml = i.ToString();
 
             }
@@ -198,26 +220,28 @@ namespace SocialSuitePro.Settings
                     {
                         if (txtEmail.Text != "Enter Email Address" && txtFirstName.Text != "First Name" && txtLastName.Text != "Last Name")
                         {
-                            if (rbAdmin.Checked || rbUser.Checked)
-                            {
-                                if (rbAdmin.Checked)
-                                {
-                                    AccessLevel = "admin";
-                                }
-                                else if (rbUser.Checked)
-                                {
-                                    AccessLevel = "user";
-                                }
+                           // if (rbAdmin.Checked || rbUser.Checked)
+                           // {
+                                //if (rbAdmin.Checked)
+                                //{
+                                //    AccessLevel = "admin";
+                                //}
+                                //else if (rbUser.Checked)
+                                //{
+                                //    AccessLevel = "user";
+                                //}
 
-                                if (AccessLevel != string.Empty)
-                                {
+                               // if (AccessLevel != string.Empty)
+                               // {
                                     TeamRepository teamrepo = new TeamRepository();
                                     Team team = null;
+                                    Guid gpId=(Guid)Session["GroupId"];
                                     User user = (User)Session["LoggedUser"];
-                                    if (!teamrepo.checkTeamExists(txtEmail.Text, user.Id))
+                                    if (!teamrepo.checkTeamExists(txtEmail.Text, user.Id, gpId))
                                     {
                                         team = new Team();
                                         team.Id = Guid.NewGuid();
+                                        team.GroupId = (Guid)Session["GroupId"];
                                         team.FirstName = txtFirstName.Text;
                                         team.LastName = txtLastName.Text;
                                         team.StatusUpdateDate = DateTime.Now;
@@ -225,13 +249,17 @@ namespace SocialSuitePro.Settings
                                         team.UserId = user.Id;
                                         team.InviteStatus = 1;
                                         team.InviteDate = DateTime.Now;
-                                        team.AccessLevel = AccessLevel;
+                                       // team.AccessLevel = AccessLevel;
                                         teamrepo.addNewTeam(team);
                                     }
                                     else
                                     {
-                                        team = teamrepo.getMemberByEmailId(user.Id, txtEmail.Text);
+                                       // team = teamrepo.getMemberByEmailId(user.Id, txtEmail.Text);
+
+                                        Response.Write("<script>alert(\"Already invited in this group\");</script>");
+
                                     }
+
                                     MailSender.SendInvitationEmail(team.FirstName + " " + team.LastName, user.UserName, team.EmailId, team.Id);
                                     if (totalchkboxesArray.Count() != 0)
                                     {
@@ -258,6 +286,7 @@ namespace SocialSuitePro.Settings
                                                     {
                                                         teammemberprofilerepo.updateTeamMember(teammember);
                                                     }
+
                                                 }
 
                                             }
@@ -271,12 +300,17 @@ namespace SocialSuitePro.Settings
                                     txtFirstName.Text = "";
                                     txtLastName.Text = "";
                                     txtEmail.Text = "";
-                                    rbAdmin.Checked = false;
-                                    rbUser.Checked = false;
+                                  //  rbAdmin.Checked = false;
+                                   // rbUser.Checked = false;
                                     Label1.Text = "Invitation Sends";
-                                }
+                              //  }
 
-                            }
+                           // }
+
+                            //else 
+                            //{
+                            //    Response.Write("<script>alert(\"Please fill Group Name\");</script>");
+                            //}
                         }
                     }
 

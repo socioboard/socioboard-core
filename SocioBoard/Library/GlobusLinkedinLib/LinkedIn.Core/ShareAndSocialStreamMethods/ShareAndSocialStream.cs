@@ -43,6 +43,33 @@ namespace GlobusLinkedinLib.LinkedIn.Core.ShareAndSocialStreamMethods
                 xmlResult.Load(new StringReader(response));
             return xmlResult;
         }
+        public XmlDocument Get_GroupUpdates(oAuthLinkedIn OAuth, int Count)
+        {
+            string response = OAuth.APIWebRequest("GET", Global.GetGroupUpdates, null);
+            if (response != "")
+                xmlResult.Load(new StringReader(response));
+            return xmlResult;
+        }
+        public XmlDocument Get_GroupPostData(oAuthLinkedIn OAuth, int Count,string groupid)
+        {
+            string posturl = "https://api.linkedin.com/v1/groups/" + groupid + "/posts:(creation-timestamp,id,title,summary,creator:(first-name,last-name,picture-url,headline,id),likes,comments,attachment:(image-url,content-domain,content-url,title,summary),relation-to-viewer)?category=discussion&order=recency&count=20";
+      
+            string response = OAuth.APIWebRequest("GET", posturl, null);
+            if (response != "")
+                xmlResult.Load(new StringReader(response));
+            return xmlResult;
+        }
+
+        //public XmlDocument Get_GroupFollowPost(oAuthLinkedIn OAuth,string gppostid)
+        //{
+        //    string posturl = "https://api.linkedin.com/v1/posts/" + gppostid + "/relation-to-viewer/is-following";
+
+        //    string response = OAuth.APIWebRequest("PUT", posturl, null);
+        //    if (response != "")
+        //        xmlResult.Load(new StringReader(response));
+        //    return xmlResult;
+        //}
+
 
         /// <summary>
         /// 

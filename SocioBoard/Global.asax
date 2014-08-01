@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="SocialSuitePro.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="SocioBoard.Global" Language="C#" %>

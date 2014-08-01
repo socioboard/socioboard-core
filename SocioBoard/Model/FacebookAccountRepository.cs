@@ -65,6 +65,44 @@ namespace SocioBoard.Model
         }
 
 
+
+
+        public void updateFacebookUserStatus(FacebookAccount fbaccount)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+
+                        // Proceed action to Update Data.
+                        // And Set the reuired paremeters to find the specific values.
+                        session.CreateQuery("Update FacebookAccount set IsActive=:status where FbUserId = :fbuserid and UserId = :userid")
+                            .SetParameter("fbuserid", fbaccount.FbUserId)
+                            .SetParameter("userid", fbaccount.UserId)
+                            .SetParameter("status", fbaccount.IsActive)
+                            .ExecuteUpdate();
+                        transaction.Commit();
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        // return 0;
+                    }
+                }//End Transaction
+            }//End session
+        }
+
+
+
+
+
+
         /// <getFbMessageStats>
         /// Get total number of id of FacebookMessage by UserId(Guid) and days(int).
         /// </summary>
@@ -455,6 +493,95 @@ namespace SocioBoard.Model
         }
 
 
+
+        public FacebookAccount getFacebookAccountDetailsById(string Fbuserid)
+        {
+
+            FacebookAccount result = new FacebookAccount();
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+
+                    // proceed action, to get all Facebook Account of User by UserId(Guid) and FbUserId(string).
+                    List<FacebookAccount> objlstfb = session.CreateQuery("from FacebookAccount where FbUserId = :Fbuserid ")
+                            .SetParameter("Fbuserid", Fbuserid)
+                       .List<FacebookAccount>().ToList<FacebookAccount>();
+                    if (objlstfb.Count > 0)
+                    {
+                        result = objlstfb[0];
+                    }
+                    return result;
+                }//End Transaction
+            }//End session
+        }
+
+
+
+
+        public List<FacebookAccount> getAllAccountDetail(string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        string str = "from FacebookAccount where  FbUserId IN(";
+                        string[] arrsrt = profileid.Split(',');
+                        foreach (string sstr in arrsrt)
+                        {
+                            str += Convert.ToInt64(sstr) + ",";
+                        }
+                        str = str.Substring(0, str.Length - 1);
+                        str += ") group by FbUserId";
+                        List<FacebookAccount> alst = session.CreateQuery(str)
+                       .List<FacebookAccount>()
+                       .ToList<FacebookAccount>();
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Trasaction
+            }//End session
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         /// <checkFacebookUserExists>
         /// Check if FacebookUser is Exist in database or not by UserId and FbuserId.
         /// </summary>
@@ -775,6 +902,74 @@ namespace SocioBoard.Model
                 }//End Transaction
             }//End session
         }
+
+
+
+
+
+
+
+
+        //public List<FacebookAccount> getAllFbAccountDetail(string ProfileId)
+        //{
+        //    using (NHibernate.ISession session = SessionFactory.GetNewSession())
+        //    {
+        //        using (NHibernate.ITransaction transaction = session.BeginTransaction())
+        //        {
+        //            try
+        //            {
+        //                string str = "from FacebookAccount where FbUserId IN(";
+        //                string[] arrst = ProfileId.Split(',');
+        //                foreach (string strr in arrst)
+        //                {
+        //                    str += Convert.ToInt64(strr) + ",";
+        //                }
+        //                str = str.Substring(0, str.Length - 1);
+        //                str += ")and Type=:page group by FbUserId";
+        //                List<FacebookAccount> alst = session.CreateQuery(str).List<FacebookAccount>().ToList<FacebookAccount>();
+        //                return alst;
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.StackTrace);
+        //                return null;
+        //            }
+        //        }
+        //    }
+        //}
+
+
+        public FacebookAccount getAllFbAccountDetail(string ProfileId)
+        {
+            List<FacebookAccount> objFbAcnt = new List<FacebookAccount>();
+            FacebookAccount objfcbkacnt = new FacebookAccount();
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+
+                    //Proceed action, to Get all FacebookAccount by UserId(Guid) and Type.
+                    objFbAcnt = session.CreateQuery("from FacebookAccount where FbUserId =:profileId And Type=:page")
+                    .SetParameter("profileId", ProfileId)
+                    .SetParameter("page", "page")
+                    .List<FacebookAccount>().ToList<FacebookAccount>();
+                    if (objFbAcnt.Count != 0)
+                    {
+                        objfcbkacnt = objFbAcnt[0];
+                    }
+                    //ArrayList alstFBAccounts = new ArrayList();
+
+                    //foreach (var item in query.Enumerable())
+                    //{
+                    //    alstFBAccounts.Add(item);
+                    //}
+                    return objfcbkacnt;
+
+                }//End Transaction
+            }//End session
+        }
+
 
 
     }

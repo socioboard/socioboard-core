@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+
+  <class name="TumblrFeed" table="TumblrFeed" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="UserId">
+      <column name="UserId"  />
+    </property>
+    <property name="ProfileId">
+      <column name="ProfileId"  />
+    </property>
+    <property name="blogname">
+      <column name="blogname"  />
+    </property>
+    <property name="blogId">
+      <column name="blogId"  />
+    </property>
+    <property name="blogposturl">
+      <column name="blogposturl"  />
+    </property>
+    
+    <property name="description">
+      <column name="description"  />
+    </property>
+    <property name="slug">
+      <column name="slug"  />
+    </property>
+    <property name="type">
+      <column name="type"  />
+    </property>
+    <property name="date">
+      <column name="date"  />
+    </property>
+    <property name="reblogkey">
+      <column name="reblogkey"  />
+    </property>
+    <property name="liked">
+      <column name="liked"  />
+    </property>
+    <property name="followed">
+      <column name="followed"  />
+    </property>
+    <property name="canreply">
+      <column name="canreply"  />
+    </property>
+    <property name="sourceurl">
+      <column name="sourceurl"  />
+    </property>
+    <property name="sourcetitle">
+      <column name="sourcetitle"  />
+    </property>
+    <property name="timestamp">
+      <column name="timestamp"  />
+    </property>
+    <property name="imageurl">
+      <column name="imageurl"  />
+    </property>
+    <property name="videourl">
+      <column name="videourl"  />
+    </property>
+    <property name="notes">
+      <column name="notes"  />
+    </property>
+
+  </class>
+</hibernate-mapping>

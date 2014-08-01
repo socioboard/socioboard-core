@@ -19,6 +19,12 @@ using GlobusLinkedinLib.Authentication;
 using log4net;
 using Newtonsoft.Json.Linq;
 using System.Data;
+using GlobusTumblrLib.Authentication;
+using GlobusTumblerLib;
+using GlobusTumblerLib.Tumblr.Core.BlogMethods;
+using GlobusGooglePlusLib.Youtube.Core;
+using GlobusGooglePlusLib.Authentication;
+using System.IO;
 
 namespace SocialSuitePro.Feeds
 {
@@ -33,17 +39,16 @@ namespace SocialSuitePro.Feeds
 
 
             SocioBoard.Domain.User use = (SocioBoard.Domain.User)Session["LoggedUser"];
+
             try
             {
                 if (use == null)
                     Response.Redirect("/Default.aspx");
-
             }
             catch (Exception ex)
             {
                 logger.Error(ex.Message);
             }
-
             try
             {
                 ProcessRequest();
@@ -57,6 +62,18 @@ namespace SocialSuitePro.Feeds
 
         public void ProcessRequest()
         {
+            SocioBoard.Domain.Team team = (SocioBoard.Domain.Team)Session["GroupName"];
+            TeamMemberProfileRepository objTeamMemberProfileRepository = new TeamMemberProfileRepository();
+            TwitterAccountRepository twtaccountrepo = new TwitterAccountRepository();
+            FacebookAccountRepository facerepo = new FacebookAccountRepository();
+            LinkedInAccountRepository linkaccrepo = new LinkedInAccountRepository();
+            InstagramAccountRepository insaccrepo = new InstagramAccountRepository();
+            TumblrAccountRepository tumblraccrepo = new TumblrAccountRepository();
+            TumblrFeedRepository objTumblrFeedRepository = new TumblrFeedRepository();
+            YoutubeAccountRepository ytaccrepo = new YoutubeAccountRepository();
+            YoutubeChannelRepository ytrchannelrpo = new YoutubeChannelRepository();
+
+
             if (!string.IsNullOrEmpty(Request.QueryString["op"]))
             {
                 SocioBoard.Domain.User user = (SocioBoard.Domain.User)Session["LoggedUser"];
@@ -64,120 +81,141 @@ namespace SocialSuitePro.Feeds
                 {
                     #region NetworkProfiles
                     string profiles = string.Empty;
-                    if (Request.QueryString["network"] == "facebook")
+                    List<TeamMemberProfile> allprofiles = objTeamMemberProfileRepository.getAllTeamMemberProfilesOfTeam(team.Id);
+
+                    int facebookcount = 0;
+                    int twittercount = 0;
+                    int linkedincount = 0;
+                    int instagramcount = 0;
+                    int tumblrcount = 0;
+                    int youtubecount = 0;
+                    int totalcounts = 0;
+
+                    foreach (TeamMemberProfile items in allprofiles)
                     {
-                        ArrayList alstfacebook = null;
-                        if (Session["facebooktotalprofiles"] == null)
-                        {
-                            FacebookAccountRepository faceaccrepo = new FacebookAccountRepository();
-                            alstfacebook = faceaccrepo.getFacebookAccountsOfUser(user.Id);
-                            Session["facebooktotalprofiles"] = alstfacebook;
-                        }
-                        else
-                        {
-                            alstfacebook = (ArrayList)Session["facebooktotalprofiles"];
-                        }
+                        totalcounts++;
 
+                        if (Request.QueryString["network"] == "facebook")
+                        {
 
-                        if (alstfacebook.Count == 0)
-                        {
-                            profiles += "<li>No Records Found !</li>";
-                        }
-                        else
-                        {
-                            foreach (FacebookAccount item in alstfacebook)
+                            if (items.ProfileType == "facebook")
                             {
-                                profiles += "<li><a id=\"lifb_" + item.FbUserId + "\" href=\"#\" onclick=\"facebookdetails('" + item.FbUserId + "');\" class=\"active\">" + item.FbUserName + "</a> </li>";
+                                facebookcount++;
+                                FacebookAccount faceaccount = facerepo.getFacebookAccountDetailsById(items.ProfileId);
+
+                                profiles += "<li><a id=\"lifb_" + faceaccount.FbUserId + "\" href=\"#\" onclick=\"facebookdetails('" + faceaccount.FbUserId + "');\" class=\"active\">" + faceaccount.FbUserName + "</a> </li>";
+                            }
+                            if (totalcounts == allprofiles.Count)
+                            {
+                                if (facebookcount == 0)
+                                { profiles = "<li>No Records Found !</li>"; }
+
+                            }
+
+                        }
+
+                        else if (Request.QueryString["network"] == "twitter")
+                        {
+                            if (items.ProfileType == "twitter")
+                            {
+                                twittercount++;
+                                TwitterAccount twtaccount = twtaccountrepo.getUserInformation(items.ProfileId);
+
+                                profiles += "<li><a id=\"litwt_" + twtaccount.TwitterUserId + "\" href=\"#\" onclick=\"twitterdetails('" + twtaccount.TwitterUserId + "');\" class=\"active\">" + twtaccount.TwitterScreenName + "</a> </li>";
+                            }
+                            if (totalcounts == allprofiles.Count)
+                            {
+                                if (twittercount == 0)
+                                { profiles = "<li>No Records Found !</li>"; }
+
+                            }
+
+                        }
+
+                        else if (Request.QueryString["network"] == "linkedin")
+                        {
+                            if (items.ProfileType == "linkedin")
+                            {
+                                linkedincount++;
+                                LinkedInAccount linkedinaccount = linkaccrepo.getLinkedinAccountDetailsById(items.ProfileId);
+
+                                profiles += "<li><a id=\"lilin_" + linkedinaccount.LinkedinUserId + "\" href=\"#\" onclick=\"linkedindetails('" + linkedinaccount.LinkedinUserId + "');\" class=\"active\">" + linkedinaccount.LinkedinUserName + "</a> </li>";
+                            }
+                            if (totalcounts == allprofiles.Count)
+                            {
+                                if (linkedincount == 0)
+                                { profiles = "<li>No Records Found !</li>"; }
+
+                            }
+
+
+                        }
+
+                        else if (Request.QueryString["network"] == "tumblr")
+                        {
+                            if (items.ProfileType == "tumblr")
+                            {
+                                tumblrcount++;
+                                TumblrAccount tumblraccount = tumblraccrepo.getTumblrAccountDetailsById(items.ProfileId);
+
+                                profiles += "<li><a id=\"lilin_" + tumblraccount.tblrUserName + "\" href=\"#\" onclick=\"tumblrdetails('" + tumblraccount.tblrUserName + "');\" class=\"active\">" + tumblraccount.tblrUserName + "</a> </li>";
+                            }
+                            if (totalcounts == allprofiles.Count)
+                            {
+                                if (tumblrcount == 0)
+                                { profiles = "<li>No Records Found !</li>"; }
+
+                            }
+                        }
+
+
+                        else if (Request.QueryString["network"] == "youtube")
+                        {
+                            if (items.ProfileType == "youtube")
+                            {
+                                youtubecount++;
+                                YoutubeAccount youtubeaccount = ytaccrepo.getYoutubeAccountDetailsById(items.ProfileId);
+
+                                profiles += "<li><a id=\"lilin_" + youtubeaccount.Ytusername + "\" href=\"#\" onclick=\"youtubedetails('" + youtubeaccount.Ytuserid + "','" + youtubeaccount.Refreshtoken + "');\" class=\"active\">" + youtubeaccount.Ytusername + "</a> </li>";
+                            }
+                            if (totalcounts == allprofiles.Count)
+                            {
+                                if (youtubecount == 0)
+                                { profiles = "<li>No Records Found !</li>"; }
+
+                            }
+                        }
+
+
+
+
+
+                        else if (Request.QueryString["network"] == "instagram")
+                        {
+                            if (items.ProfileType == "instagram")
+                            {
+                                instagramcount++;
+                                InstagramAccount alstinstagram = insaccrepo.getInstagramAccountDetailsById(items.ProfileId);
+
+                                profiles += "<li><a id=\"liins_" + alstinstagram.InstagramId + "\" href=\"#\" onclick=\"Instagramdetails('" + alstinstagram.InstagramId + "');\" class=\"active\">" + alstinstagram.InsUserName + "</a> </li>";
+                            }
+                            if (totalcounts == allprofiles.Count)
+                            {
+                                if (instagramcount == 0)
+                                { profiles = "<li>No Records Found !</li>"; }
                             }
                         }
 
                     }
-                    else if (Request.QueryString["network"] == "twitter")
-                    {
-                        ArrayList alsttwitter = null;
 
-                        if (Session["twittertotalprofiles"] == null)
-                        {
-                            TwitterAccountRepository twtaccrepo = new TwitterAccountRepository();
-                            alsttwitter = twtaccrepo.getAllTwitterAccountsOfUser(user.Id);
-                            Session["twittertotalprofiles"] = alsttwitter;
-                        }
-                        else
-                        {
-                            alsttwitter = (ArrayList)Session["twittertotalprofiles"];
-                        }
-
-                        if (alsttwitter.Count == 0)
-                        {
-                            // profiles += "<li><a  href=\"#\" class=\"active\">No Records Found</a> </li>";
-                            profiles += "<li>No Records Found !</li>";
-
-                        }
-                        else
-                        {
-
-                            foreach (TwitterAccount item in alsttwitter)
-                            {
-                                profiles += "<li><a id=\"litwt_" + item.TwitterUserId + "\" href=\"#\" onclick=\"twitterdetails('" + item.TwitterUserId + "');\" class=\"active\">" + item.TwitterScreenName + "</a> </li>";
-                            }
-                        }
-                    }
-                    else if (Request.QueryString["network"] == "linkedin")
-                    {
-                        ArrayList alstlinklist = null;
-                        if (Session["linkedintotalprofiles"] == null)
-                        {
-                            LinkedInAccountRepository linkaccrepo = new LinkedInAccountRepository();
-                            alstlinklist = linkaccrepo.getAllLinkedinAccountsOfUser(user.Id);
-                        }
-                        else
-                        {
-                            alstlinklist = (ArrayList)Session["linkedintotalprofiles"];
-                        }
-                        if (alstlinklist.Count == 0)
-                        {
-                            // profiles += "<li><a  href=\"#\" class=\"active\">No Records Found</a> </li>";
-                            profiles += "<li>No Records Found !</li>";
-                        }
-                        else
-                        {
-                            foreach (LinkedInAccount item in alstlinklist)
-                            {
-                                profiles += "<li><a id=\"lilin_" + item.LinkedinUserId + "\" href=\"#\" onclick=\"linkedindetails('" + item.LinkedinUserId + "');\" class=\"active\">" + item.LinkedinUserName + "</a> </li>";
-                            }
-                        }
-                    }
-                    else if (Request.QueryString["network"] == "instagram")
-                    {
-                        ArrayList alstinstagram = null;
-                        if (Session["instagramtotalprofiles"] == null)
-                        {
-                            InstagramAccountRepository insaccrepo = new InstagramAccountRepository();
-                            alstinstagram = insaccrepo.getAllInstagramAccountsOfUser(user.Id);
-                            Session["instagramtotalprofiles"] = alstinstagram;
-                        }
-                        else
-                        {
-                            alstinstagram = (ArrayList)Session["instagramtotalprofiles"];
-                        }
-                        if (alstinstagram.Count == 0)
-                        {
-                            profiles += "<li><a  href=\"#\" class=\"active\">No Records Found</a> </li>";
-                        }
-                        else
-                        {
-                            foreach (InstagramAccount item in alstinstagram)
-                            {
-                                profiles += "<li><a id=\"liins_" + item.InstagramId + "\" href=\"#\" onclick=\"Instagramdetails('" + item.InstagramId + "');\" class=\"active\">" + item.InsUserName + "</a> </li>";
-                            }
-                        }
-
-                    }
                     Response.Write(profiles);
                     #endregion
                 }
+
+
                 else if (Request.QueryString["op"] == "facebookwallposts")
                 {
+                    #region facebookwallposts
                     string messages = string.Empty;
                     string profileid = string.Empty;
                     string load = Request.QueryString["load"];
@@ -264,14 +302,29 @@ namespace SocialSuitePro.Feeds
                                 }
                             }
 
+                            //    messages += "</p>" +
+                            //                "<a class=\"retweets\" href=\"#\">" +
+                            //                "</a><p><span onclick=\"facebookLike('" + item.FbLike + "','" + profileid + "','" + item.MessageId + "')\" id=\"likefb_" + item.MessageId + "\" class=\"like\">Like</span><span id=\"commentfb_" + item.MessageId + "\" onclick=\"commentText('" + item.MessageId + "');\" class=\"comment\">Comment</span></p>" +
+                            //                "<p class=\"commeent_box\"><input id=\"textfb_" + item.MessageId + "\" type=\"text\" class=\"put_comments\"></p>" +
+                            //              "<p><span onclick=\"commentFB('" + item.MessageId + "','" + profileid + "')\" id=\"okfb_" + item.MessageId + "\" class=\"ok\">ok</span><span id=\"cancelfb_" + item.MessageId + "\" onclick=\"cancelFB('" + item.MessageId + "');\" class=\"cancel\"> cancel</span></p>" +
+                            //                "</div>" +
+                            //                "</li>";
+                            //}
+
+
+
                             messages += "</p>" +
-                                        "<a class=\"retweets\" href=\"#\">" +
-                                        "</a><p><span onclick=\"facebookLike('" + item.FbLike + "','" + profileid + "','" + item.MessageId + "')\" id=\"likefb_" + item.MessageId + "\" class=\"like\">Like</span><span id=\"commentfb_" + item.MessageId + "\" onclick=\"commentText('" + item.MessageId + "');\" class=\"comment\">Comment</span></p>" +
-                                        "<p class=\"commeent_box\"><input id=\"textfb_" + item.MessageId + "\" type=\"text\" class=\"put_comments\"></p>" +
-                                      "<p><span onclick=\"commentFB('" + item.MessageId + "','" + profileid + "')\" id=\"okfb_" + item.MessageId + "\" class=\"ok\">ok</span><span id=\"cancelfb_" + item.MessageId + "\" onclick=\"cancelFB('" + item.MessageId + "');\" class=\"cancel\"> cancel</span></p>" +
-                                        "</div>" +
-                                        "</li>";
+                                       "<a class=\"retweets\" href=\"#\">" +
+                                       "</a><p><span onclick=\"facebookShare('" + profileid + "','" + item.MessageId + "')\" id=\"likefb_" + item.MessageId + "\" class=\"like\">Share</span><span onclick=\"facebookLike('" + item.FbLike + "','" + profileid + "','" + item.MessageId + "')\" id=\"likefb_" + item.MessageId + "\" class=\"like\">Like</span><span id=\"commentfb_" + item.MessageId + "\" onclick=\"commentText('" + item.MessageId + "');\" class=\"comment\">Comment</span></p>" +
+                                       "<p class=\"commeent_box\"><input id=\"textfb_" + item.MessageId + "\" type=\"text\" class=\"put_comments\"></p>" +
+                                     "<p><span onclick=\"commentFB('" + item.MessageId + "','" + profileid + "')\" id=\"okfb_" + item.MessageId + "\" class=\"ok\">ok</span><span id=\"cancelfb_" + item.MessageId + "\" onclick=\"cancelFB('" + item.MessageId + "');\" class=\"cancel\"> cancel</span></p>" +
+                                       "</div>" +
+                                       "</li>";
                         }
+
+
+
+
                         catch (Exception ex)
                         {
                             logger.Error(ex.Message);
@@ -279,9 +332,11 @@ namespace SocialSuitePro.Feeds
                         }
                     }
                     Response.Write(messages);
+                    #endregion
                 }
                 else if (Request.QueryString["op"] == "fblike")
                 {
+                    #region fblikes
                     try
                     {
                         //System.IO.StreamReader sr = new System.IO.StreamReader(Request.InputStream);
@@ -301,9 +356,33 @@ namespace SocialSuitePro.Feeds
                     {
                         logger.Error(ex.Message);
                     }
+                    #endregion
                 }
+
+
+                else if (Request.QueryString["op"] == "fbshare")
+                {
+                    try
+                    {
+                        string profileid = Request.QueryString["profileid"];
+                        string id = Request.QueryString["msgid"];
+                        FacebookAccountRepository fbAccRepo = new FacebookAccountRepository();
+                        FacebookAccount fbAccount = fbAccRepo.getFacebookAccountDetailsById(profileid);
+                        FacebookClient fbClient = new FacebookClient(fbAccount.AccessToken);
+                        var s = fbClient.Post(id + "/sharedposts", null);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                }
+
+
+
                 else if (Request.QueryString["op"] == "fbcomment")
                 {
+                    #region fbcomment
                     string profileid = Request.QueryString["profileid"];
                     string message = Request.QueryString["message"];
                     FacebookAccountRepository fbAccRepo = new FacebookAccountRepository();
@@ -314,9 +393,11 @@ namespace SocialSuitePro.Feeds
                     args["message"] = message;
                     var s = fbClient.Post(id + "/comments", args);
 
+                    #endregion
                 }
                 else if (Request.QueryString["op"] == "twitternetworkdetails")
                 {
+                    #region twitternetworkdetails
                     string messages = string.Empty;
                     string profileid = Request.QueryString["profileid"];
                     TwitterFeedRepository fbmsgrepo = new TwitterFeedRepository();
@@ -390,7 +471,7 @@ namespace SocialSuitePro.Feeds
                         }
                     }
                     Response.Write(messages);
-
+                    #endregion
                 }
                 else if (Request.QueryString["op"] == "scheduler")
                 {
@@ -402,7 +483,7 @@ namespace SocialSuitePro.Feeds
                     if (network == "facebook")
                     {
                         ScheduledMessageRepository schmsgrepo = new ScheduledMessageRepository();
-                        List<ScheduledMessage> lstschmsg = schmsgrepo.getAllMessagesOfUser(user.Id, profileid);
+                        List<ScheduledMessage> lstschmsg = schmsgrepo.getAllMessagesOfUser(profileid);
 
                         if (lstschmsg.Count != 0)
                         {
@@ -411,10 +492,10 @@ namespace SocialSuitePro.Feeds
                                 try
                                 {
                                     FacebookAccountRepository faceaccrepo = new FacebookAccountRepository();
-                                    FacebookAccount faceacc = faceaccrepo.getFacebookAccountDetailsById(profileid, user.Id);
+                                    FacebookAccount faceacc = faceaccrepo.getFacebookAccountDetailsById(profileid);
                                     try
                                     {
-                                        message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"../Contents/img/blank_img.png\">" +
+                                        message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\"  src=\"https://graph.facebook.com/" + item.ProfileId + "/picture?type=small\">" +
                                                                      "</div><div class=\"pull-left feedcontent\">" +
                                                                         "<a href=\"#\" class=\"feednm\">" + faceacc.FbUserName + "</a> <span>" + item.ScheduleTime +
                                                                             " </span>" +
@@ -455,7 +536,7 @@ namespace SocialSuitePro.Feeds
                     else if (network == "twitter")
                     {
                         ScheduledMessageRepository schmsgrepo = new ScheduledMessageRepository();
-                        List<ScheduledMessage> lstschmsg = schmsgrepo.getAllMessagesOfUser(user.Id, profileid);
+                        List<ScheduledMessage> lstschmsg = schmsgrepo.getAllMessagesOfUser(profileid);
 
                         if (lstschmsg.Count != 0)
                         {
@@ -464,8 +545,8 @@ namespace SocialSuitePro.Feeds
                                 try
                                 {
                                     TwitterAccountRepository twtaccrepo = new TwitterAccountRepository();
-                                    TwitterAccount twtacc = twtaccrepo.getUserInformation(user.Id, profileid);
-                                    message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"../Contents/img/blank_img.png\">" +
+                                    TwitterAccount twtacc = twtaccrepo.getUserInformation(profileid);
+                                    message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\"  src=\"" + twtacc.ProfileImageUrl + "\">" +
                                                                     "</div><div class=\"pull-left feedcontent\">" +
                                                                        "<a href=\"#\" class=\"feednm\">" + twtacc.TwitterScreenName + "</a> <span>" + item.ScheduleTime +
                                                                            " </span>" +
@@ -497,7 +578,7 @@ namespace SocialSuitePro.Feeds
                     else if (network == "linkedin")
                     {
                         ScheduledMessageRepository schmsgrepo = new ScheduledMessageRepository();
-                        List<ScheduledMessage> lstschmsg = schmsgrepo.getAllMessagesOfUser(user.Id, profileid);
+                        List<ScheduledMessage> lstschmsg = schmsgrepo.getAllMessagesOfUser(profileid);
 
                         if (lstschmsg.Count != 0)
                         {
@@ -506,8 +587,8 @@ namespace SocialSuitePro.Feeds
                                 try
                                 {
                                     LinkedInAccountRepository linkedinrepo = new LinkedInAccountRepository();
-                                    LinkedInAccount linkedacc = linkedinrepo.getUserInformation(user.Id, profileid);
-                                    message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"../Contents/img/blank_img.png\">" +
+                                    LinkedInAccount linkedacc = linkedinrepo.getUserInformation(profileid);
+                                    message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\"  src=\"" + linkedacc.ProfileImageUrl + "\">" +
                                                                         "</div><div class=\"pull-left feedcontent\">" +
                                                                            "<a href=\"#\" class=\"feednm\">" + linkedacc.LinkedinUserName + "</a> <span>" + item.ScheduleTime +
                                                                                " </span>" +
@@ -548,10 +629,11 @@ namespace SocialSuitePro.Feeds
                 }
                 else if (Request.QueryString["op"] == "facebookfeeds")
                 {
+                    #region facebookfeeds
                     string message = string.Empty;
                     string profileid = Request.QueryString["profileid"];
                     FacebookAccountRepository faceaccrepo = new FacebookAccountRepository();
-                    FacebookAccount faceaac = faceaccrepo.getFacebookAccountDetailsById(profileid, user.Id);
+                    FacebookAccount faceaac = faceaccrepo.getFacebookAccountDetailsById(profileid);
                     FacebookFeedRepository facefeedrepo = new FacebookFeedRepository();
                     List<FacebookFeed> lstfbfeed = facefeedrepo.getAllFacebookUserFeeds(profileid);
                     UrlExtractor urlext = new UrlExtractor();
@@ -624,9 +706,11 @@ namespace SocialSuitePro.Feeds
                         }
                     }
                     Response.Write(message);
+                    #endregion
                 }
                 else if (Request.QueryString["op"] == "twitterfeeds")
                 {
+                    #region twitternfeeds
                     string message = string.Empty;
                     string profileid = Request.QueryString["profileid"];
                     TwitterMessageRepository twtmsgreop = new TwitterMessageRepository();
@@ -702,9 +786,11 @@ namespace SocialSuitePro.Feeds
                         }
                     }
                     Response.Write(message);
+                    #endregion
                 }
                 else if (Request.QueryString["op"] == "linkedinwallposts")
                 {
+                    #region linkedinwallposts
                     string message = string.Empty;
                     string profileid = Request.QueryString["profileid"];
 
@@ -716,11 +802,9 @@ namespace SocialSuitePro.Feeds
                     {
                         if (lstfeed.Count != 0)
                         {
-
-
                             if (lstfeed.Count > 500)
                             {
-                                int check= 0;
+                                int check = 0;
                                 foreach (LinkedInFeed item in lstfeed)
                                 {
                                     check++;
@@ -754,6 +838,7 @@ namespace SocialSuitePro.Feeds
                                 {
                                     try
                                     {
+
                                         message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"" + item.FromPicUrl + "\">" +
                                                                                               "</div><div class=\"pull-left feedcontent\">" +
                                                                                                  "<a style=\"cursor:default\" class=\"feednm\">" + item.FromName + "</a> <span>" + item.FeedsDate +
@@ -786,13 +871,730 @@ namespace SocialSuitePro.Feeds
                         }
                     }
                     Response.Write(message);
+                    #endregion
+                }
 
+                else if (Request.QueryString["op"] == "tumblrimages")
+                {
+
+                    #region tumblrBlog
+                    string messages = string.Empty;
+                    string profileid = Request.QueryString["profileid"];
+                    TumblrAccount objTumblrAccount = tumblraccrepo.getTumblrAccountDetailsById(profileid);
+                    List<TumblrFeed> lstfeed = objTumblrFeedRepository.getFeedOfProfile(profileid);
+
+                    string strTumblrImage = string.Empty;
+                    string image = string.Empty;
+                    try
+                    {
+
+                        if (lstfeed.Count != 0)
+                        {
+
+
+                            strTumblrImage += "<div class=\"feedcontainer\"><div class=\"pull-left span\"><div id=\"tumblrcontents\">" +
+                       "<a href=\"#\"><img onClick=\"Bpopup()\" src=\"../Contents/img/share.png\" width=\"20\" title=\"Share Content\" /></a>" +
+                    "</div></div>";
+
+
+                            foreach (TumblrFeed feed in lstfeed)
+                            {
+                                if (string.IsNullOrEmpty(feed.imageurl))
+                                {
+                                    image = "../../Contents/img/admin/Demo-Image.png";
+
+
+                                }
+                                else
+                                {
+                                    image = feed.imageurl;
+                                }
+
+
+
+                                try
+                                {
+                                    //    strTumblrImage += "<div class=\"span3\" class=\"row-fluid\"><div class=\"span box whitebg tumb_bg feedwrap\"><div class=\"tumb_title\"><span class=\"tumb_span\">" + feed.blogname+ "</span></div><div class=\"pic tumb_pic\"><img onclick=\"tumblrimage('" + feed.imageurl + "')\" alt=\"\" src=\"" + image + "\"></div><div class=\"topicon\">" +
+                                    //"<div class=\"pull-right\" id=\"like\"><a title=\"\" href=\"#\" onClick=\"LikePic('" + feed.ProfileId + "','" + feed.Id + "','" + objTumblrAccount.tblrAccessToken + "','" + objTumblrAccount.tblrAccessTokenSecret + "','" + feed.liked + "','" + feed.notes + "')\" >" + getlike(feed.liked, feed.ProfileId) + "</a><a title=\"\" href=\"#\"><img onClick=\"UnfollowBlog('" + feed.ProfileId + "','" + feed.Id + "','" + objTumblrAccount.tblrAccessToken + "','" + objTumblrAccount.tblrAccessTokenSecret + "','" + feed.blogname + "')\"   width=\"14\" alt=\"\" src=\"../Contents/img/admin/speech-bubble-left.png\"  style=\"margin-top: 9px;\"></a>" +
+                                    //"</div></div><div class=\"desc\"><p></p><span class=\"pull-left pics_space span4\">" +
+                                    //"<img width=\"12\" alt=\"\" src=\"../Contents/img/admin/dil.png\"> " + feed.notes + "</span><div class=\"clearfix\">" +
+                                    //"<div class=\"tumb_description\"><p class=\"feed_slug\"><strong>" + feed.slug + "</strong></p><p class=\"teaser\">" + feed.description + "</p></div></div>";
+
+
+
+
+
+                                    strTumblrImage += "<div class=\"span3\" class=\"row-fluid\"><div class=\"span box whitebg tumb_bg feedwrap\"><div class=\"tumb_title\"><span class=\"tumb_span\">" + feed.blogname + "</span></div><div class=\"pic tumb_pic\"><img onclick=\"tumblrimage('" + feed.imageurl + "')\" alt=\"\" src=\"" + image + "\"></div><div class=\"topicon\">" +
+                                                                    "<div class=\"pull-right\" id=\"like\"><a title=\"\" href=\"#\" onClick=\"LikePic('" + feed.ProfileId + "','" + feed.Id + "','" + objTumblrAccount.tblrAccessToken + "','" + objTumblrAccount.tblrAccessTokenSecret + "','" + feed.liked + "','" + feed.notes + "')\" >" + getlike(feed.liked, feed.ProfileId) + "</a><a title=\"\" href=\"#\"><img onClick=\"UnfollowBlog('" + feed.ProfileId + "','" + feed.Id + "','" + objTumblrAccount.tblrAccessToken + "','" + objTumblrAccount.tblrAccessTokenSecret + "','" + feed.blogname + "')\"   width=\"14\" alt=\"\" src=\"../Contents/img/admin/speech-bubble-left.png\"  style=\"margin-top: 9px;\"></a>" +
+                                                                    "</div></div><div class=\"desc\"><p></p><span class=\"pull-left pics_space span4\">" +
+                                                                    "<img width=\"12\" alt=\"\" src=\"../Contents/img/admin/dil.png\"> " + feed.notes + "</span><div class=\"clearfix\">" +
+                                                                    "<div class=\"tumb_description\"><p class=\"feed_slug\"><strong>" + feed.slug + "</strong></p><p class=\"teaser\">" + feed.description + "</p></div></div>";
+
+
+
+
+
+                                    strTumblrImage += "</div></div></div>";
+                                }
+                                catch (Exception ex)
+                                {
+                                    logger.Error(ex.Message);
+                                    Console.WriteLine(ex.Message);
+                                }
+                            }
+                            strTumblrImage += "</div>";
+                        }
+                        else
+                        {
+                            if (instagramcount == 0)
+                            {
+                                strTumblrImage = "<div class=\"grid\"><div class=\"box whitebg feedwrap\">" +
+                                             "<div class=\"topicon\"><div class=\"pull-left\"></div><div class=\"pull-right\">" +
+                                 "<a href=\"#\" title=\"\"></a><a href=\"#\" title=\"\"></a></div></div><div class=\"pic\">" +
+                                 "<img src=\"../Contents/img/no_image_found.png\" alt=\"\"></div><div class=\"desc\"><p></p></div></div></div>";
+                            }
+                        }
+
+
+                        Response.Write(strTumblrImage);
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex.Message);
+                    }
+
+
+
+                    #endregion
+                }
+                //VIDEOS
+                else if (Request.QueryString["op"] == "youtubechannel")
+                {
+                    #region youtube_channel
+                    string thumbnail = string.Empty;
+                    string videoid = string.Empty;
+                    string strYoutubechanell = string.Empty;
+                    string GooglePlusUserId = Request.QueryString["profileid"];
+                    string accesstoken = Request.QueryString["accesstoken"];
+                    oAuthTokenYoutube objoAuthTokenYoutube = new oAuthTokenYoutube();
+                    string finaltoken = objoAuthTokenYoutube.GetAccessToken(accesstoken);
+                    string strfinaltoken = string.Empty;
+
+
+                    try
+                    {
+
+                        if (!finaltoken.StartsWith("["))
+                            finaltoken = "[" + finaltoken + "]";
+                        JArray objArray = JArray.Parse(finaltoken);
+
+
+                        foreach (var item in objArray)
+                        {
+                            try
+                            {
+                                strfinaltoken = item["access_token"].ToString();
+                                break;
+                            }
+                            catch (Exception ex)
+                            {
+                                //logger.Error(ex.StackTrace);
+                                Console.WriteLine(ex.StackTrace);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        //logger.Error(ex.StackTrace);
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+
+                    YoutubeChannel objChnnelData = ytrchannelrpo.getYoutubeChannelDetailsById(GooglePlusUserId);
+                    PlaylistItems objPlaylistItems = new PlaylistItems();
+                    string objDetails = objPlaylistItems.Get_PlaylistItems_List(strfinaltoken, GlobusGooglePlusLib.Authentication.oAuthTokenYoutube.Parts.snippet.ToString(), objChnnelData.Uploadsid);
+
+                    JObject obj = JObject.Parse(objDetails);
+
+                    JArray array = (JArray)obj["items"];
+
+
+                    //strYoutubechanell = " <div class=\"row\"> ";
+
+                    int rowCount = 0;
+                    int columnCount = 0;
+
+                    //strYoutubechanell = "<div class=\"row top_select\"> <div class=\"pull-left\"><a href=\"#\"><div class=\"YtIns\">Hello</div></a></div> <div class=\"pull-right\"><select class=\"form-control\" onchange=\"dropDownChange(this,'" + GooglePlusUserId + "','" + accesstoken + "')\"><option>Video</option> <option>Play list</option> <option>Activities</option></select></div></div><div class=\"container yt_details\">";
+                    //strYoutubechanell = "<div class=\"row\">  <div class=\"pull-right\"><select class=\"form-control\" onchange=\"dropDownChange(this,'" + GooglePlusUserId + "','" + accesstoken + "')\"><option>Video</option> <option>Play list</option> <option>Activities</option></select></div></div>";
+                    strYoutubechanell = "<div class=\"row top_select\"> <div class=\"pull-left\"><a href=\"#\"><div class=\"YtIns\">Hello</div></a></div> <div class=\"pull-right\">"
+                                        + "<ul class=\"nav nav-tabs\"><li class=\"active\"><a href=\"#VIDEO\" onclick=\"dropDownChange(this,'" + GooglePlusUserId + "','" + accesstoken + "')\" data-toggle=\"tab\">VIDEO</a></li><li><a href=\"#ACT\" onclick=\"dropDownChange(this,'" + GooglePlusUserId + "','" + accesstoken + "')\" data-toggle=\"tab\">ACTIVITES</a></li><li>"
+                    + "<a href=\"#SUB\" onclick=\"dropDownChange(this,'" + GooglePlusUserId + "','" + accesstoken + "')\" data-toggle=\"tab\">SUBSCRIBTIONS</a></li></ul></div></div><div class=\"tab-content yt_details_container\"><div class=\"tab-pane active\" id=\"ACT\">"
+                    + "<div class=\"container yt_details\">";
+
+
+
+                    string strYoutubechanell1 = string.Empty;
+
+                    foreach (var item in array)
+                    {
+                        columnCount++;
+                        try
+                        {
+                            thumbnail = item["snippet"]["thumbnails"]["maxres"]["url"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+
+                        }
+                        if (string.IsNullOrEmpty(thumbnail))
+                        {
+                            try
+                            {
+                                thumbnail = item["snippet"]["thumbnails"]["high"]["url"].ToString();
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.StackTrace);
+                            }
+                        }
+
+                        try
+                        {
+                            videoid = item["snippet"]["resourceId"]["videoId"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+
+                        }
+
+
+                        string viewCount = string.Empty;
+                        string likeCount = string.Empty;
+                        string dislikeCount = string.Empty;
+                        string favoriteCount = string.Empty;
+                        string commentCount = string.Empty;
+                        if (!string.IsNullOrEmpty(videoid))
+                        {
+
+                            try
+                            {
+                                GlobusGooglePlusLib.Youtube.Core.Video ObjClsVideo = new Video();
+
+                                string videoDetails = ObjClsVideo.Get_VideoDetails_byId(videoid, strfinaltoken, "snippet,statistics");
+
+                                JObject JobjvideoDetails = JObject.Parse(videoDetails);
+
+                                var JArrvideoDetails = (JArray)(JobjvideoDetails["items"]);
+
+                                foreach (var DataVal in JArrvideoDetails)
+                                {
+                                    viewCount = DataVal["statistics"]["viewCount"].ToString();
+                                    likeCount = DataVal["statistics"]["likeCount"].ToString();
+                                    dislikeCount = DataVal["statistics"]["dislikeCount"].ToString();
+                                    favoriteCount = DataVal["statistics"]["favoriteCount"].ToString();
+                                    commentCount = DataVal["statistics"]["commentCount"].ToString();
+                                    break;
+                                }
+
+
+                            }
+                            catch (Exception)
+                            {
+                            }
+
+                        }
+
+
+                        //strYoutubechanell1 += "<div class=\"span4\">" +
+                        //                    "<div class=\"well\">" +
+                        //                     "<div class=\"video-containers thumbnail\">" +
+                        //                     "<img onclick=\"youtubevideo('" + videoid + "')\" alt=\"\" src=\"" + thumbnail + "\">" +
+                        //                     "</div><span class=\"pull-left\"><a href=\"#\"> &nbsp;<i class=\"icon-eye-open\"></i></a>" +
+                        //                     "</span></div></div>";
+
+                        strYoutubechanell1 += "<div class=\"span3\">" +
+                                            "<div class=\"span box whitebg tumb_bg\">" +
+                                             "<div class=\"yt_title\"></div><div class=\"video-containers thumbnail\">" +
+                                             "<img onclick=\"youtubevideo('" + videoid + "')\" alt=\"\" src=\"" + thumbnail + "\">" +
+                                             "</div><div class=\"icons\" style=\"width: 225px; float: left;\"><span class=\"span6 pull-left\">" +
+                                             "<a href=\"#\" style=\"float: left;\"> &nbsp;<i style=\"color: green;\" class=\"icon-hand-up\"></i></a><span class=\"pull-left\">" + likeCount + "</span></a><a href=\"#\" style=\"float: left;\"> &nbsp;<i style=\"color: red;\" class=\"icon-hand-down\"></i><span>" + dislikeCount + "</span>" +
+                                             "</a></span><span class=\"pull-right\"><a href=\"#\"> &nbsp;<i style=\"color: red;\" class=\"icon-eye-open\"></i><span>" + viewCount + "</span></a></span></div><div class=\"yt_description\"></div></div></div>";
+
+
+                        try
+                        {
+
+                            if (rowCount == 3)
+                            {
+                                //strYoutubechanell += " <div class=\"row space\">" + strYoutubechanell1 + "</div></div></div>";
+                                strYoutubechanell += " <div class=\"row space\">" + strYoutubechanell1 + "</div>";
+                                strYoutubechanell1 = string.Empty;
+                                rowCount = 0;
+                            }
+                            else
+                            {
+                                rowCount++;
+                            }
+                            if (!strYoutubechanell.Contains(strYoutubechanell1) && array.Count == columnCount)
+                            {
+                                //strYoutubechanell += " <div class=\"row space\">" + strYoutubechanell1 + "</div></div>";
+                                strYoutubechanell += " <div class=\"row space\">" + strYoutubechanell1 + "</div>";
+                            }
+
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+
+
+
+                        //strYoutubechanell += "<div class=\"span3\" class=\"row-fluid\"><div class=\"span12 box whitebg feedwrap\"><div class=\"topicon\"><div class=\"pull-left\">" +
+
+                        //                                        "</div><div class=\"pull-right\" id=\"like\"><a title=\"\" href=\"#\" onClick=\"LikePic()\" ></a><a title=\"\" href=\"#\"></a>" +
+                        //                                        "</div></div><div class=\"pic\"><img onclick=\"youtubevideo('" + videoid + "')\" alt=\"\" src=\"" + thumbnail + "\"></div><div class=\"desc\"><p></p><span class=\"pull-left span3\">" +
+                        //                                        "<img width=\"12\" alt=\"\" src=\"../Contents/img/admin/dil.png\"></span><div class=\"clearfix\">" +
+                        //                                        "</div>";
+
+
+
+                        //strYoutubechanell += "</div></div></div>";
+
+
+
+                    }
+
+                    Response.Write("<div id=\"ACT\" class=\"tab-pane active\"><div class=\"container yt_details\">" + strYoutubechanell + "\"</div></div>");
+
+                    #endregion
+                }
+
+                //ACTIVITIES
+                else if (Request.QueryString["op"] == "youtubeactivity")
+                {
+                    #region youtube_ACTIVITIES
+                    
+                    string strYoutubechanell = string.Empty;
+                    string GooglePlusUserId = Request.QueryString["profileid"];
+                    string accesstoken = Request.QueryString["accesstoken"];
+                    oAuthTokenYoutube objoAuthTokenYoutube = new oAuthTokenYoutube();
+                    string finaltoken = objoAuthTokenYoutube.GetAccessToken(accesstoken);
+                    string strfinaltoken = string.Empty;
+
+                    try
+                    {
+
+                        if (!finaltoken.StartsWith("["))
+                            finaltoken = "[" + finaltoken + "]";
+                        JArray objArray = JArray.Parse(finaltoken);
+
+
+                        foreach (var item in objArray)
+                        {
+                            try
+                            {
+
+                                strfinaltoken = item["access_token"].ToString();
+
+                                break;
+
+                            }
+                            catch (Exception ex)
+                            {
+                                //logger.Error(ex.StackTrace);
+                                Console.WriteLine(ex.StackTrace);
+
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        //logger.Error(ex.StackTrace);
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+
+                    YoutubeChannel objChnnelData = ytrchannelrpo.getYoutubeChannelDetailsById(GooglePlusUserId);
+                    GlobusGooglePlusLib.Youtube.Core.Activities objActivities = new Activities();
+                    string objDetails = objActivities.Get_All_Activities(strfinaltoken, oAuthTokenYoutube.Parts.snippet, true, 50);
+
+                    JObject obj = JObject.Parse(objDetails);
+
+                    JArray array = (JArray)obj["items"];
+
+                    int rowCount = 0;
+                    int columnCount = 0;
+
+                    strYoutubechanell = "";
+
+                    string strYoutubechanell1 = string.Empty;
+
+                    foreach (var item in array)
+                    {
+                        string title = string.Empty;
+                        string description = string.Empty;
+                        string thumbnail = string.Empty;
+                        string videoid = string.Empty;
+
+                        columnCount++;
+
+                        #region << Title >>
+
+                        try
+                        {
+                            title = item["snippet"]["title"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+
+                        }
+                        #endregion
+
+                        #region << Description >>
+
+                        try
+                        {
+                            description = item["snippet"]["description"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+
+                        }
+                        #endregion
+
+                        #region  << Thumbnail >>
+
+                        try
+                        {
+                            thumbnail = item["snippet"]["thumbnails"]["maxres"]["url"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+
+                        }
+                        if (string.IsNullOrEmpty(thumbnail))
+                        {
+
+                            try
+                            {
+                                thumbnail = item["snippet"]["thumbnails"]["high"]["url"].ToString();
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.StackTrace);
+                            }
+                        }
+                        #endregion
+
+                        try
+                        {
+                            videoid = item["snippet"]["resourceId"]["videoId"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                        }
+
+
+                        string viewCount = string.Empty;
+                        string likeCount = string.Empty;
+                        string dislikeCount = string.Empty;
+                        string favoriteCount = string.Empty;
+                        string commentCount = string.Empty;
+                        if (!string.IsNullOrEmpty(videoid))
+                        {
+
+                            try
+                            {
+                                GlobusGooglePlusLib.Youtube.Core.Video ObjClsVideo = new Video();
+
+                                string videoDetails = ObjClsVideo.Get_VideoDetails_byId(videoid, strfinaltoken, "snippet,statistics");
+
+                                JObject JobjvideoDetails = JObject.Parse(videoDetails);
+
+                                var JArrvideoDetails = (JArray)(JobjvideoDetails["items"]);
+
+                                foreach (var DataVal in JArrvideoDetails)
+                                {
+                                    viewCount = DataVal["statistics"]["viewCount"].ToString();
+                                    likeCount = DataVal["statistics"]["likeCount"].ToString();
+                                    dislikeCount = DataVal["statistics"]["dislikeCount"].ToString();
+                                    favoriteCount = DataVal["statistics"]["favoriteCount"].ToString();
+                                    commentCount = DataVal["statistics"]["commentCount"].ToString();
+                                    break;
+                                }
+
+
+                            }
+                            catch (Exception)
+                            {
+                            }
+
+                        }
+
+
+
+
+
+                        strYoutubechanell1 += "<div class=\"span3\">" +
+                                              "<div class=\"span box whitebg tumb_bg\">" +
+                                             "<div class=\"yt_title\">" + title + "</div><div class=\"video-containers thumbnail\">" +
+                                             "<img onclick=\"youtubevideo('" + videoid + "')\" alt=\"\" src=\"" + thumbnail + "\">" +
+                                             "</div><div class=\"yt_description\">" + description + "</div></div></div>";
+
+
+
+                        try
+                        {
+                            if (rowCount == 3)
+                            {
+                                strYoutubechanell += " <div class=\"row space\">" + strYoutubechanell1 + "</div>";
+                                strYoutubechanell1 = string.Empty;
+                                rowCount = 0;
+                            }
+                            else
+                            {
+                                rowCount++;
+                            }
+                            if (!strYoutubechanell.Contains(strYoutubechanell1) && array.Count == columnCount)
+                            {
+                                strYoutubechanell += " <div class=\"row space\">" + strYoutubechanell1 + "</div>";
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+                    }
+
+                    Response.Write(strYoutubechanell);
+
+                    #endregion
+                }
+                //SUBSCRIBTIONS
+                else if (Request.QueryString["op"] == "youtubesubscribe")
+                {
+                    #region youtube_SUBSCRIBE
+                    
+                    string strYoutubechanell = string.Empty;
+                    string GooglePlusUserId = Request.QueryString["profileid"];
+                    string accesstoken = Request.QueryString["accesstoken"];
+                    oAuthTokenYoutube objoAuthTokenYoutube = new oAuthTokenYoutube();
+                    string finaltoken = objoAuthTokenYoutube.GetAccessToken(accesstoken);
+                    string strfinaltoken = string.Empty;
+
+                    try
+                    {
+
+                        if (!finaltoken.StartsWith("["))
+                            finaltoken = "[" + finaltoken + "]";
+                        JArray objArray = JArray.Parse(finaltoken);
+
+
+                        foreach (var item in objArray)
+                        {
+                            try
+                            {
+
+                                strfinaltoken = item["access_token"].ToString();
+
+                                break;
+
+                            }
+                            catch (Exception ex)
+                            {
+                                //logger.Error(ex.StackTrace);
+                                Console.WriteLine(ex.StackTrace);
+
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        //logger.Error(ex.StackTrace);
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+
+                    Subscriptions _Subscriptions = new Subscriptions();
+
+
+                    string _strSubscriptions = _Subscriptions.Get_Subscriptions_List(strfinaltoken, oAuthTokenYoutube.Parts.snippet.ToString());
+
+                    //YoutubeChannel objChnnelData = ytrchannelrpo.getYoutubeChannelDetailsById(GooglePlusUserId);
+                    //GlobusGooglePlusLib.Youtube.Core.Activities objActivities = new Activities();
+                    //string objDetails = objActivities.Get_All_Activities(strfinaltoken, oAuthTokenYoutube.Parts.snippet, true, 50);
+
+                    JObject obj = JObject.Parse(_strSubscriptions);
+
+                    JArray array = (JArray)obj["items"];
+
+                    int rowCount = 0;
+                    int columnCount = 0;
+
+                    strYoutubechanell = "";
+
+                    string strYoutubechanell1 = string.Empty;
+
+                    foreach (var item in array)
+                    {
+                        string title = string.Empty;
+                        string description = string.Empty;
+                        string _resoucechannelId = string.Empty;
+                        string thumbnail = string.Empty;
+
+                        columnCount++;
+
+                        #region << Title >>
+
+                        try
+                        {
+                            title = item["snippet"]["title"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+
+                        }
+                        #endregion
+
+                        #region << Description >>
+
+                        try
+                        {
+                            description = item["snippet"]["description"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+
+                        }
+                        #endregion
+
+                        #region  << Thumbnail >>
+
+                        try
+                        {
+                            thumbnail = item["snippet"]["thumbnails"]["maxres"]["url"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+
+                        }
+                        if (string.IsNullOrEmpty(thumbnail))
+                        {
+
+                            try
+                            {
+                                thumbnail = item["snippet"]["thumbnails"]["high"]["url"].ToString();
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.StackTrace);
+                            }
+                        }
+                        #endregion
+
+                        try
+                        {
+                            _resoucechannelId = item["snippet"]["resourceId"]["channelId"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                        }
+
+
+                        string viewCount = string.Empty;
+                        string subscriberCount = string.Empty;
+                        string hiddenSubscriberCount = string.Empty;
+                        string videoCount = string.Empty;
+                        string commentCount = string.Empty;
+                        if (!string.IsNullOrEmpty(_resoucechannelId))
+                        {
+
+                            try
+                            {
+                                GlobusGooglePlusLib.Youtube.Core.Channels _Channels = new Channels();
+
+                                string videoDetails = _Channels.Get_Channel_List(strfinaltoken, (oAuthTokenYoutube.Parts.snippet.ToString() + "," + oAuthTokenYoutube.Parts.statistics.ToString()), _resoucechannelId);
+
+                                JObject JobjvideoDetails = JObject.Parse(videoDetails);
+
+                                var JArrvideoDetails = (JArray)(JobjvideoDetails["items"]);
+
+                                foreach (var DataVal in JArrvideoDetails)
+                                {
+                                    viewCount = DataVal["statistics"]["viewCount"].ToString();
+                                    subscriberCount = DataVal["statistics"]["subscriberCount"].ToString();
+                                    hiddenSubscriberCount = DataVal["statistics"]["hiddenSubscriberCount"].ToString();
+                                    videoCount = DataVal["statistics"]["videoCount"].ToString();
+                                    commentCount = DataVal["statistics"]["commentCount"].ToString();
+                                    break;
+                                }
+
+
+                            }
+                            catch (Exception)
+                            {
+                            }
+
+                        }
+
+
+                        strYoutubechanell1 += "<div class=\"span3\">" +
+                                              "<div class=\"span box whitebg tumb_bg\">" +
+                                             "<div class=\"yt_title\">" + title + "</div><div class=\"video-containers thumbnail\">" +
+                                             "<img onclick=\"#\" alt=\"\" src=\"" + thumbnail + "\">" +
+                                             "</div><div class=\"icons\" style=\"width: 225px; float: left;\"><span class=\"span6 pull-left\">" +
+                                             "<a href=\"#\" style=\"float: left;\"> &nbsp;<i style=\"color: green;\" class=\"icon-facetime-video\"></i></a>" +
+                                             "<span class=\"pull-left\">&nbsp;" + videoCount + "</span></a><a href=\"#\" style=\"float: left;\"> &nbsp;<i style=\"color: red;\" class=\"icon-comment\"></i>" +
+                                             "<span>&nbsp;" + commentCount + "</span></a></span><span class=\"pull-right\"><a href=\"#\"> &nbsp;<i style=\"color: red; padding-right: 5px;\" class=\"icon-eye-open\"></i><span>&nbsp;" + viewCount + "</span></a>" +
+                                             "</span></div><div class=\"yt_description\">" + description + "</div></div></div>";
+
+
+
+                        try
+                        {
+                            if (rowCount == 3)
+                            {
+                                strYoutubechanell += " <div class=\"row space\">" + strYoutubechanell1 + "</div>";
+                                strYoutubechanell1 = string.Empty;
+                                rowCount = 0;
+                            }
+                            else
+                            {
+                                rowCount++;
+                            }
+                            if (!strYoutubechanell.Contains(strYoutubechanell1) && array.Count == columnCount)
+                            {
+                                strYoutubechanell += " <div class=\"row space\">" + strYoutubechanell1 + "</div>";
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+                    }
+
+                    Response.Write(strYoutubechanell);
+
+                    #endregion
                 }
                 else if (Request.QueryString["op"] == "linkedinfeeds")
                 {
+                    #region linkedinfeeds
                     string profileid = Request.QueryString["profileid"];
                     LinkedInAccountRepository linkedinAccRepo = new LinkedInAccountRepository();
-                    LinkedInAccount linkacc = linkedinAccRepo.getUserInformation(user.Id, profileid);
+                    LinkedInAccount linkacc = linkedinAccRepo.getUserInformation(profileid);
                     oAuthLinkedIn oauthlin = new oAuthLinkedIn();
                     oauthlin.ConsumerKey = ConfigurationManager.AppSettings["LiApiKey"];
                     oauthlin.ConsumerSecret = ConfigurationManager.AppSettings["LiSecretKey"];
@@ -823,7 +1625,7 @@ namespace SocialSuitePro.Feeds
                                 }
                                 message += "<li><div class=\"feedim pull-left\"><img alt=\"\" width=\"31\" height=\"31\" src=\"" + picurl + "\">" +
                                                                        "</div><div class=\"pull-left feedcontent\">" +
-                                                                          "<a href=\"" + linkacc.ProfileUrl+ "\" target=\"_blank\" class=\"feednm\">" + item.PersonFirstName + " " + item.PersonLastName + "</a> <span>" + item.DateTime +
+                                                                          "<a href=\"" + linkacc.ProfileUrl + "\" target=\"_blank\" class=\"feednm\">" + item.PersonFirstName + " " + item.PersonLastName + "</a> <span>" + item.DateTime +
                                                                               " </span>" +
                                                                            "<p>" + item.Message + "</p>" +
                                                                            "<a class=\"retweets\" href=\"#\">" +
@@ -851,14 +1653,16 @@ namespace SocialSuitePro.Feeds
                                                                                          "</li>";
                     }
                     Response.Write(message);
+                    #endregion
                 }
                 else if (Request.QueryString["op"] == "facebookapi")
                 {
+                    #region facebookapi
                     try
                     {
                         string profileid = Request.QueryString["profileid"];
-                        FacebookAccountRepository facerepo = new FacebookAccountRepository();
-                        FacebookAccount faceaccount = facerepo.getFacebookAccountDetailsById(profileid, user.Id);
+                        // FacebookAccountRepository facerepo = new FacebookAccountRepository();
+                        FacebookAccount faceaccount = facerepo.getFacebookAccountDetailsById(profileid);
                         FacebookHelper fbhelper = new FacebookHelper();
                         FacebookClient fbclient = new FacebookClient(faceaccount.AccessToken);
                         dynamic profile = fbclient.Get("me");
@@ -872,6 +1676,7 @@ namespace SocialSuitePro.Feeds
                         logger.Error(ex.Message);
                         Console.WriteLine(ex.Message);
                     }
+                    #endregion
                 }
                 else if (Request.QueryString["op"] == "twitterapi")
                 {
@@ -912,8 +1717,6 @@ namespace SocialSuitePro.Feeds
                     {
                         instagramcount = 0;
                     }
-
-
 
                     InstagramAccountRepository objInsAccRepo = new InstagramAccountRepository();
                     InstagramFeedRepository objInsFeedRepo = new InstagramFeedRepository();
@@ -1017,7 +1820,335 @@ namespace SocialSuitePro.Feeds
                     }
                 }
 
+
+
+                else if (Request.QueryString["op"] == "UnfollowTumblrBlog")
+                {
+                    try
+                    {
+                        string blogname = Request.QueryString["blogname"].ToString();
+                        string profileid = Request.QueryString["profileid"];
+                        string accesstoken = Request.QueryString["accesstoken"];
+                        string accesstokensecret = Request.QueryString["accesstokensecret"];
+                        Guid id = Guid.Parse(Request.QueryString["id"]);
+                        try
+                        {
+                            string msg = "success";
+                            BlogsFollowers objunfollowblog = new BlogsFollowers();
+                            objunfollowblog.Unfollowblog(accesstoken, accesstokensecret, blogname);
+                            int result = objTumblrFeedRepository.DeleteTumblrDataByProfileid(profileid, blogname);
+                            Response.Write(msg);
+
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error(ex.Message);
+                            Console.WriteLine(ex.Message);
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex.Message);
+                        Console.WriteLine(ex.Message);
+                    }
+
+                }
+
+
+                else if (Request.QueryString["op"] == "tumblrTextPost")
+                {
+
+                    try
+                    {
+                        string ProfileId = Request.QueryString["profileid"].ToString();
+                        string body = Request.QueryString["msg"].ToString();
+                        string title = Request.QueryString["title"].ToString();
+                        TumblrAccount objTumblrAccount = tumblraccrepo.getTumblrAccountDetailsById(ProfileId);
+                        PublishedPosts objPublishedPosts = new PublishedPosts();
+                        objPublishedPosts.PostData(objTumblrAccount.tblrAccessToken, objTumblrAccount.tblrAccessTokenSecret, ProfileId, body, title, "text");
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                }
+
+
+                else if (Request.QueryString["op"] == "tumblrQuotePost")
+                {
+
+                    try
+                    {
+                        string ProfileId = Request.QueryString["profileid"].ToString();
+                        string source = Request.QueryString["source"].ToString();
+                        string quote = Request.QueryString["quote"].ToString();
+                        TumblrAccount objTumblrAccount = tumblraccrepo.getTumblrAccountDetailsById(ProfileId);
+                        PublishedPosts objPublishedPosts = new PublishedPosts();
+                        objPublishedPosts.PostData(objTumblrAccount.tblrAccessToken, objTumblrAccount.tblrAccessTokenSecret, ProfileId, source, quote, "quote");
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                }
+
+                else if (Request.QueryString["op"] == "tumblrLinkPost")
+                {
+
+                    try
+                    {
+                        string ProfileId = Request.QueryString["profileid"].ToString();
+                        string linkurl = Request.QueryString["linkurl"].ToString();
+                        string title = Request.QueryString["title"].ToString();
+                        string description = Request.QueryString["description"].ToString();
+                        TumblrAccount objTumblrAccount = tumblraccrepo.getTumblrAccountDetailsById(ProfileId);
+                        PublishedPosts objPublishedPosts = new PublishedPosts();
+                        objPublishedPosts.PostdescriptionData(objTumblrAccount.tblrAccessToken, objTumblrAccount.tblrAccessTokenSecret, ProfileId, linkurl, title, description, "link");
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                }
+
+
+
+
+
+                else if (Request.QueryString["op"] == "tumblrImagePost")
+                {
+                    string caption = string.Empty;
+
+                    try
+                    {
+                        string ProfileId = Request.QueryString["profileid"].ToString();
+                        try
+                        {
+                            caption = Request.QueryString["caption"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                        }
+                        var fi = Request.Files["file"];
+
+                        string file = string.Empty;
+                        if (fi != null)
+                        {
+                            var path = Server.MapPath("~/Contents/img/upload");
+                            file = path + "/" + fi.FileName;
+                            if (!Directory.Exists(path))
+                            {
+                                Directory.CreateDirectory(path);
+                            }
+                            fi.SaveAs(file);
+                        }
+
+                        string filepath = file;
+
+                        TumblrAccount objTumblrAccount = tumblraccrepo.getTumblrAccountDetailsById(ProfileId);
+                        PublishedPosts objPublishedPosts = new PublishedPosts();
+                        objPublishedPosts.PostData(objTumblrAccount.tblrAccessToken, objTumblrAccount.tblrAccessTokenSecret, ProfileId, caption, filepath, "photo");
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                }
+
+
+
+                else if (Request.QueryString["op"] == "tumblrAudioPost")
+                {
+                    string caption = string.Empty;
+
+                    try
+                    {
+                        string ProfileId = Request.QueryString["profileid"].ToString();
+
+                        var fi = Request.Files["file"];
+
+                        string file = string.Empty;
+                        if (fi != null)
+                        {
+                            var path = Server.MapPath("~/Contents/img/upload");
+                            file = path + "/" + fi.FileName;
+                            //if (!Directory.Exists(path))
+                            //{
+                            //    Directory.CreateDirectory(path);
+                            //}
+                            //fi.SaveAs(file);
+                        }
+
+                        string filepath = file;
+
+                        TumblrAccount objTumblrAccount = tumblraccrepo.getTumblrAccountDetailsById(ProfileId);
+                        PublishedPosts objPublishedPosts = new PublishedPosts();
+                        objPublishedPosts.PostAudioData(objTumblrAccount.tblrAccessToken, objTumblrAccount.tblrAccessTokenSecret, ProfileId, filepath, "audio");
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+
+                }
+
+
+
+                else if (Request.QueryString["op"] == "tumblrVideoPost")
+                {
+                    string caption = string.Empty;
+
+                    try
+                    {
+                        string ProfileId = Request.QueryString["profileid"].ToString();
+                        string VideoUrl = Request.QueryString["VideoUrl"].ToString();
+                        string VideoContent = Request.QueryString["VideoContent"].ToString();
+
+                        var fi = Request.Files["file"];
+
+                        string file = string.Empty;
+                        if (fi != null)
+                        {
+                            var path = Server.MapPath("~/Contents/img/upload");
+                            file = path + "/" + fi.FileName;
+                            if (!Directory.Exists(path))
+                            {
+                                Directory.CreateDirectory(path);
+                            }
+                            fi.SaveAs(file);
+                        }
+
+                        string filepath = file;
+
+                        TumblrAccount objTumblrAccount = tumblraccrepo.getTumblrAccountDetailsById(ProfileId);
+                        PublishedPosts objPublishedPosts = new PublishedPosts();
+                        objPublishedPosts.PostdescriptionData(objTumblrAccount.tblrAccessToken, objTumblrAccount.tblrAccessTokenSecret, ProfileId, filepath, VideoUrl, VideoContent, "video");
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+
+                }
+
+                else if (Request.QueryString["op"] == "tumblrChatPost")
+                {
+
+                    try
+                    {
+                        string ProfileId = Request.QueryString["profileid"].ToString();
+                        string body = Request.QueryString["body"].ToString();
+                        string title = Request.QueryString["title"].ToString();
+                        string tag = Request.QueryString["tag"].ToString();
+                        TumblrAccount objTumblrAccount = tumblraccrepo.getTumblrAccountDetailsById(ProfileId);
+                        PublishedPosts objPublishedPosts = new PublishedPosts();
+                        objPublishedPosts.PostdescriptionData(objTumblrAccount.tblrAccessToken, objTumblrAccount.tblrAccessTokenSecret, ProfileId, body, title, tag, "chat");
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+                else if (Request.QueryString["op"] == "LikeUnlikeTumblrImage")
+                {
+
+                    int likestatus = Convert.ToInt16(Request.QueryString["likes"]);
+                    string profileid = Request.QueryString["profileid"];
+                    string accesstoken = Request.QueryString["accesstoken"];
+                    string accesstokensecret = Request.QueryString["accesstokensecret"];
+                    Guid id = Guid.Parse(Request.QueryString["id"]);
+                    int notes = Convert.ToInt16(Request.QueryString["notes"]);
+
+
+                    try
+                    {
+                        int like = 0;
+                        if (likestatus == 0)
+                        {
+                            like = 1;
+                        }
+                        int i = objTumblrFeedRepository.UpdateDashboardOfProfileLikes(profileid, id, like);
+
+                        int s = objTumblrFeedRepository.UpdateDashboardOfProfileNotes(profileid, id, like, notes);
+
+                        TumblrFeed obj = objTumblrFeedRepository.getFeedOfProfilebyIdProfileId(profileid, id);
+                        BlogsLikes objBlogsLikes = new BlogsLikes();
+
+                        objBlogsLikes.likeBlog(accesstoken, accesstokensecret, obj.blogId, obj.reblogkey, like);
+
+
+                        //KeyValuePair<string, string> LoginDetails = new KeyValuePair<string, string>(accesstoken, accesstokensecret);
+                        //var prms = new Dictionary<string, object>();
+                        //prms.Add("id", obj.blogId);
+                        //prms.Add("reblog_key", obj.reblogkey);
+                        //var postUrl = "";
+
+                        //if (like == 1)
+                        //{
+                        //    postUrl = "https://api.tumblr.com/v2/user/like/";
+                        //}
+                        //else
+                        //{
+                        //    postUrl = "https://api.tumblr.com/v2/user/unlike/";
+                        //}
+                        //string result = oAuthTumbler.OAuthData(postUrl, "POST", LoginDetails.Key, LoginDetails.Value, prms);
+
+                        //string result1 = string.Empty;
+                        //result1 = result;
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex.Message);
+                        Console.WriteLine(ex.Message);
+                    }
+                }
             }
+        }
+
+        public string getlike(int a, string profileid)
+        {
+            string ret = "";
+            if (a == 0)
+            {
+                ret = "<img id=\"heartEmpty_" + profileid + "\" width=\"14\" alt=\"\" src=\"../Contents/img/admin/heart-empty.jpg\" title=\"Like\"  style=\"margin-top: 9px;\">";
+            }
+            else
+            {
+                ret = "<img id=\"heartEmpty_" + profileid + "\" width=\"14\" alt=\"\" src=\"../Contents/img/admin/dil.png\"  title=\"UnLike\" style=\"margin-top: 9px;\">";
+            }
+            return ret;
         }
 
         public bool likefunction(string id, string userid, string accesstoken)
@@ -1191,6 +2322,8 @@ namespace SocialSuitePro.Feeds
 
 
         }
+
+
 
     }
 }

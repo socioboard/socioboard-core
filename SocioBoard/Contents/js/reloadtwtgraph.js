@@ -7,8 +7,12 @@
     twtSentMsgArr = twtData[5].split(",");
     reTwt = twtData[6].split(",");
     ageDiff = twtData[7].split(",");
+    twtmention = twtData[10].split(",");
+
     var engTwt = twtData[8].split(",");
     var infTwt = twtData[9].split(",");
+    var TwtDate = twtData[11].split(",");
+
     debugger;
     ///////////Followers/////////////////////
     var items = new Array(twtArr.length);
@@ -58,6 +62,33 @@
 
     var chart = new google.visualization.LineChart(document.getElementById('newfollowed_graph'));
     chart.draw(data, options);
+
+    ////////////////////Mention///////////////////////////////////////
+
+    var itemstwtMention = new Array(twtmention.length);
+    itemstwtMention[0] = new Array(2);
+    itemstwtMention[0][0] = "Days";
+    itemstwtMention[0][1] = "Following";
+    for (var i = 1; i <= twtmention.length; i++) {
+        itemstwtMention[i] = new Array(2);
+        if (twtmention[i] != "") {
+            itemstwtMention[i][0] = i;
+            itemstwtMention[i][1] = Number(twtmention[i]);
+        }
+    }
+    var data = google.visualization.arrayToDataTable(itemstwtMention);
+
+    var options = {
+        hAxis: { textPosition: 'none' },
+        vAxis: { textPosition: 'none' },
+        hAxis: { gridlines: { color: '#ffffff'} },
+        series: [{ color: '#7ac143', visibleInLegend: true}]
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById('mention_graph'));
+    chart.draw(data, options);
+
+
 
     ////////////////////Incoming Msgs///////////////////
 
@@ -227,7 +258,8 @@ itemstwt[0][2] = "Influence";
 for (var i = 1; i < engTwt.length; i++) {
     itemstwt[i] = new Array(3);
     if (engTwt[i] != "") {
-        itemstwt[i][0] = i;
+        // itemstwt[i][0] = i;
+        itemstwt[i][0] = TwtDate[i];
         itemstwt[i][1] = Number(engTwt[i]);
         itemstwt[i][2] = Number(infTwt[i]);
         eng = eng + Number(engTwt[i]);

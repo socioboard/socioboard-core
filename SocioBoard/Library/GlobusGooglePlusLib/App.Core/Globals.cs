@@ -10,6 +10,7 @@ namespace GlobusGooglePlusLib.App.Core
         public static string strAuthentication = "https://accounts.google.com/o/oauth2/auth";
         public static string strRefreshToken = "https://accounts.google.com/o/oauth2/token";
         public static string strUserInfo = "https://www.googleapis.com/oauth2/v1/userinfo?alt=json";
+        public static string strRevokeToken = "https://accounts.google.com/o/oauth2/revoke?token=";
 
         #region People
         public static string strGetPeopleProfile = "https://www.googleapis.com/plus/v1/people/";

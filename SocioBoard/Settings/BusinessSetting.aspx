@@ -70,7 +70,7 @@
                                     </div>
                                 </div> 
                                 
-                                <div class="invite_friends">Facebook Audience Confirmation</div>
+                               <%-- <div class="invite_friends">Facebook Audience Confirmation</div>
                                 <div class="ws_ps_user_content">                                	
                                     <div class="personal_details">
                                     	Displays a confirmation prompt to a user that they are publishing a Facebook wall post to their entire audience 
@@ -98,14 +98,14 @@
                                                 GroupName="D" />  
                                 </div>
                                               
-                           </div>
+                           </div>--%>
                            <!--end personal_setting_left-->
                         </div>
                         
                         
                         <div class="ws_tm_button_div">
                            <asp:Button ID="btnSubmit" runat="server" Text="Submit" 
-                                onclick="btnSubmit_Click" />
+                                onclick="btnSubmit_Click" class="btn btnspan btnclr" />
                         </div>
                     </div>   
     </div>

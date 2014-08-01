@@ -10,7 +10,7 @@
 namespace SocioBoard {
     
     
-    public partial class Referrals1 {
+    public partial class Referral {
         
         /// <summary>
         /// Head1 control.

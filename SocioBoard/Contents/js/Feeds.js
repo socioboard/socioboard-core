@@ -1,4 +1,5 @@
-﻿var feedajax = '';
+﻿var tumblrProfileid = '';
+var feedajax = '';
 var bindfeedsprofiles = '';
 var updatingwallposts = '';
 var feedsdataforfacebook = '';
@@ -6,6 +7,8 @@ var feedsdatafortwitter = '';
 var feedprofilesforfacebook = '';
 var feedprofilesfortwitter = '';
 var instagramimagesforfeeds = '';
+var tumblrimagesforfeeds = '';
+var youtubechannelforfeeds = '';
 //  woosuite variables
 
 var facebookwallposts = '';
@@ -22,6 +25,8 @@ var linkedinfeeds = '';
 
 var tabdata = '';
 var instagramidforlazyload = '';
+var tumblridforlazyload = '';
+var youtubeidforlazyload = '';
 
 
 
@@ -175,7 +180,7 @@ function BindProfilesforNetwork(network) {
                     var fblook = '';
 
 
-                    fblook = '<li><div class="feedim pull-left"><img width="31" height="31" src="../Contents/img/blank_img.png" alt=""></div><div class="pull-left feedcontent"><a class="feednm" href="#">No Records Found</a> <span></span><p></p><a href="#" class="retweets"></a><span></span></div></li>'
+                    fblook = '<li><div class="feedim pull-left"><img width="31" height="31" src="../Contents/img/blank_img.png" alt=""></div><div class="pull-left feedcontent"><a style=\"cursor:default\" class="feednm" href="#">No Records Found</a> <span></span><p></p><a href="#" class="retweets"></a><span></span></div></li>'
 
 
                     if (msg.indexOf('No Records Found') != -1) {
@@ -183,26 +188,29 @@ function BindProfilesforNetwork(network) {
                         $("#facebookusersforfeeds").html(msg);
                         try {
                             $("#img_paneltab1").attr('src', "../Contents/img/admin/1.png");
+                            $("#loader_tabpanel1").attr('src', "../Contents/img/admin/9.png");
                             $("#data_paneltab1").html(fblook);
                         } catch (e) {
                         }
                         try {
                             $("#img_paneltab2").attr('src', "../Contents/img/admin/1.png");
+                            $("#loader_tabpanel2").attr('src', "../Contents/img/admin/9.png");
                             $("#data_paneltab2").html(fblook);
                         } catch (e) {
                         }
                         try {
                             $("#img_paneltab3").attr('src', "../Contents/img/admin/1.png");
+                            $("#loader_tabpanel3").attr('src', "../Contents/img/admin/9.png");
                             $("#data_paneltab3").html(fblook);
                         } catch (e) {
                         }
                         try {
-                            $("#title_paneltab1").html("WallPosts");
+                            $("#title_paneltab1").html("Wall Posts");
                         } catch (e) {
                         }
 
                         try {
-                            $("#title_paneltab2").html("NewsFeeds");
+                            $("#title_paneltab2").html("News Feeds");
                         } catch (e) {
 
                         }
@@ -240,6 +248,12 @@ function BindProfilesforNetwork(network) {
                     $("#linkedinprofilesforfeed").html(msg);
                 } else if (network == "instagram") {
                     $("#instagramprofilesforfeed").html(msg);
+                }
+                else if (network == "tumblr") {
+                    $("#tumblrprofilesforfeed").html(msg);
+                }
+                else if (network == "youtube") {
+                    $("#youtubeprofilesforfeed").html(msg);
                 }
             }
         });
@@ -289,8 +303,10 @@ function getFollowers(id) {
             dataType: "html",
             success: function (msg) {
                 debugger;
-
-                $("#inbox_msgs").html(msg);
+                //$("#inbox_msgs").html('asdasdasdas');
+                // $("#inbox_msgs").html(msg);
+                $("#content").html(msg);
+                //  $(".smart_search").html(msg);
 
             }
         });
@@ -312,7 +328,12 @@ function getFollowers(id) {
 function facebookdetails(id) {
     debugger;
     try {
-
+        $("#img_paneltab1").attr('src', "../Contents/img/admin/1.png");
+        $("#title_paneltab1").html("Wall Posts");
+        $("#img_paneltab2").attr('src', "../Contents/img/admin/1.png");
+        $("#title_paneltab2").html("News Feeds");
+        $("#img_paneltab3").attr('src', "../Contents/img/admin/1.png");
+        $("#title_paneltab4").html("Scheduled Messages");
         $("#instag").load("../Layouts/feedstab.htm");
 
         debugger;
@@ -419,15 +440,21 @@ function facebookdetails(id) {
                 try {
                     $("#loader_tabpanel1").bind("click", function () {
                         // alert("refreshWallpostFacebook(id)");
+                        $("#img_paneltab1").attr('src', "../Contents/img/admin/1.png");
+                        $("#title_paneltab1").html("Wall Posts");
+                        $("#img_paneltab2").attr('src', "../Contents/img/admin/1.png");
+                        $("#title_paneltab2").html("News Feeds");
+                        $("#img_paneltab3").attr('src', "../Contents/img/admin/1.png");
+                        $("#title_paneltab4").html("Scheduled Messages");
                         refreshWallpostFacebook(id);
 
                     });
-                    $("#img_paneltab1").attr('src', "../Contents/img/admin/1.png");
+                    // $("#img_paneltab1").attr('src', "../Contents/img/admin/1.png");
                 } catch (e) {
                 }
 
                 try {
-                    $("#title_paneltab1").html("WallPosts");
+                    // $("#title_paneltab1").html("Wall Posts");
                 } catch (e) {
                 }
                 try {
@@ -472,7 +499,7 @@ function facebookdetails(id) {
                                 } catch (e) {
                                 }
                                 try {
-                                    $("#title_paneltab1").html("WallPosts");
+                                    $("#title_paneltab1").html("Wall Posts");
                                 } catch (e) {
                                 }
                                 try {
@@ -550,7 +577,7 @@ function facebookdetails(id) {
 
                 }
                 try {
-                    $("#title_paneltab2").html("NewsFeeds");
+                    $("#title_paneltab2").html("News Feeds");
                 } catch (e) {
 
                 }
@@ -756,7 +783,7 @@ function twitterdetails(id) {
             dataType: "html",
             success: function (msg) {
                 try {
-                    $("#img_paneltab1").attr('src', "../Contents/img/admin/6.png");
+                    $("#img_paneltab1").attr('src', "../Contents/img/admin/2.png");
                 } catch (e) {
 
                 }
@@ -803,14 +830,14 @@ function twitterdetails(id) {
                                         refreshWallpostTwitter(id);
 
                                     });
-                                    $("#img_paneltab1").attr('src', "../Contents/img/admin/6.png");
+                                    $("#img_paneltab1").attr('src', "../Contents/img/admin/2.png");
                                 } catch (e) {
 
                                 }
 
 
                                 try {
-                                    $("#img_paneltab1").attr('src', "../Contents/img/admin/6.png");
+                                    $("#img_paneltab1").attr('src', "../Contents/img/admin/2.png");
                                 } catch (e) {
 
 
@@ -865,12 +892,12 @@ function twitterdetails(id) {
                         refreshSchedularMessageTwitter(id);
 
                     });
-                    $("#img_paneltab3").attr('src', "../Contents/img/admin/6.png");
+                    $("#img_paneltab3").attr('src', "../Contents/img/admin/2.png");
                 } catch (e) {
 
                 }
                 try {
-                    $("#img_paneltab3").attr('src', "../Contents/img/admin/6.png");
+                    $("#img_paneltab3").attr('src', "../Contents/img/admin/2.png");
                 } catch (e) {
                 }
                 try {
@@ -915,12 +942,12 @@ function twitterdetails(id) {
                         refreshFeedsTwitter(id);
 
                     });
-                    $("#img_paneltab2").attr('src', "../Contents/img/admin/6.png");
+                    $("#img_paneltab2").attr('src', "../Contents/img/admin/2.png");
                 } catch (e) {
 
                 }
                 try {
-                    $("#img_paneltab2").attr('src', "../Contents/img/admin/6.png");
+                    $("#img_paneltab2").attr('src', "../Contents/img/admin/2.png");
                 } catch (e) {
                 }
                 try {
@@ -1181,6 +1208,605 @@ function linkedindetails(id) {
 }
 
 
+//***************tumblr data**********
+
+
+function tumblrdetails(id) {
+    debugger;
+    try {
+
+    } catch (e) {
+
+    }
+
+    try {
+        $("#instag").html("");
+    } catch (e) {
+
+    }
+    try {
+        linkedinscheduler.abort();
+    } catch (e) {
+
+    }
+    try {
+        linkedinwallposts.abort();
+    } catch (e) {
+
+    }
+    try {
+        linkedinscheduler.abort();
+    } catch (e) {
+
+    }
+    try {
+        twitterfeeds.abort();
+    } catch (e) {
+
+    }
+    try {
+        twitterscheduler.abort();
+    } catch (e) {
+
+    }
+    try {
+        twittertweets.abort();
+    } catch (e) {
+
+    }
+    try {
+        facebookwallposts.abort();
+    } catch (e) {
+
+    }
+
+    try {
+        facebookfeeds.abort();
+    } catch (e) {
+
+    }
+    try {
+        facebookscheduler.abort();
+    } catch (e) {
+
+    }
+
+    try {
+        instagramimagesforfeeds.abort();
+    } catch (e) {
+
+    }
+
+    try {
+        tumblrimagesforfeeds.abort();
+    } catch (e) {
+
+    }
+
+
+    tumblridforlazyload = id;
+
+    tumblrProfileid = id;
+
+
+    $.ajax({
+        type: "POST",
+        url: "../Feeds/AjaxFeeds.aspx?op=tumblrimages&profileid=" + id,
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (msg) {
+            $("#instag").html(msg);
+
+
+            $(document).on('scroll', tumblrimages);
+
+
+        }
+    });
+
+}
+
+
+
+
+function LikePic(profileid, id, accesstoken, accesstokensecret, liked, notes) {
+    // alert(notes);
+    debugger;
+    $.ajax({
+        type: "POST",
+        url: "../Feeds/AjaxFeeds.aspx?op=LikeUnlikeTumblrImage&profileid=" + profileid + "&id=" + id + "&accesstoken=" + accesstoken + "&accesstokensecret=" + accesstokensecret + "&likes=" + liked + "&notes=" + notes,
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (msg) {
+            $.ajax({
+                type: "POST",
+                url: "../Feeds/AjaxFeeds.aspx?op=tumblrimages&profileid=" + profileid,
+                data: '',
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (msg) {
+                    $("#instag").html(msg);
+
+                    $(document).on('scroll', tumblrimages);
+
+
+                }
+            });
+        }
+    });
+
+}
+
+function UnfollowBlog(profileid, id, accesstoken, accesstokensecret, blogname) {
+    // alert(notes);
+    debugger;
+    $.ajax({
+        type: "POST",
+        url: "../Feeds/AjaxFeeds.aspx?op=UnfollowTumblrBlog&profileid=" + profileid + "&id=" + id + "&accesstoken=" + accesstoken + "&accesstokensecret=" + accesstokensecret + "&blogname=" + blogname,
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (msg) {
+            $.ajax({
+                type: "POST",
+                url: "../Feeds/AjaxFeeds.aspx?op=tumblrimages&profileid=" + profileid,
+                data: '',
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (msg) {
+                    $("#instag").html(msg);
+
+                    // $(document).on('scroll', tumblrimages);
+
+
+                }
+            });
+        }
+    });
+
+}
+
+
+
+
+
+
+
+
+
+
+function tumblrimage(src) {
+    debugger;
+
+    if (src.indexOf('_s.png') != -1) {
+        var newsrc = src.replace('_s.png', '_n.png');
+        $("#popupimages").attr('src', newsrc);
+    } else if (src.indexOf('_s.jpg') != -1) {
+        var newsrcP = src.replace('_s.jpg', '_n.jpg');
+        $("#popupimages").attr('src', newsrcP);
+    } else {
+        $("#popupimages").attr('src', src);
+    }
+    $("#tumblrImagePopup").bPopup({
+
+        positionStyle: 'fixed'
+
+    });
+
+}
+function tumblrimageclose() {
+
+    $("#popupimages").attr('src', "../Contents/img/43px_on_transparent.gif");
+
+}
+
+
+function youtubevideo(src) {
+    debugger;
+
+    if (src.indexOf('_s.png') != -1) {
+        var newsrc = src.replace('_s.png', '_n.png');
+        $("#popupimagesyt").attr('src', newsrc);
+    } else if (src.indexOf('_s.jpg') != -1) {
+        var newsrcP = src.replace('_s.jpg', '_n.jpg');
+        $("#popupimagesyt").attr('src', newsrcP);
+    } else {
+        //src = "https://www.youtube.com/watch?v=" + src;
+        src = "http://www.youtube.com/embed/" + src;
+        $("#popupimagesyt").attr('src', src);
+    }
+    $("#youtubeImagePopup").bPopup({
+
+        positionStyle: 'fixed'
+
+    });
+
+}
+function tumblrimageclose() {
+
+    $("#popupimages").attr('src', "../Contents/img/43px_on_transparent.gif");
+
+}
+
+
+function Bpopup() {
+
+    $('#tumblrcontent').bPopup();
+
+}
+
+function postTextOnTumblr() {
+    try {
+
+        var profileid = tumblrProfileid;
+        var title = $('#inputTextTitle').val();
+        var msg = $('#inputTextMessage').val();
+
+        if (title == "" || title == null) {
+            alert("Please enter title");
+            return false;
+        }
+        if (msg == "" || msg == null) {
+            alert("Please enter in Comment Box");
+            return false;
+        }
+        $.ajax({
+            type: "POST",
+            url: "../Feeds/AjaxFeeds.aspx?op=tumblrTextPost&profileid=" + profileid + "&msg=" + msg + "&title=" + title,
+            data: '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (msg) {
+
+            }
+        });
+    } catch (e) {
+
+    }
+}
+
+
+
+function postPhotoOnTumblr() {
+
+    try {
+        var fd = new FormData();
+
+        var filesimage = document.getElementById('txtUrl').files[0];
+        //  alert(filesimage);
+        fd.append('file', filesimage);
+
+
+        var profileid = tumblrProfileid;
+        var caption = $('#txtCaption').val();
+
+
+        $.ajax({
+            type: "POST",
+            url: "../Feeds/AjaxFeeds.aspx?op=tumblrImagePost&profileid=" + profileid + "&caption=" + caption,
+            data: fd,
+            processData: false,
+            contentType: false,
+            dataType: "html",
+            success: function (msg) {
+
+
+            }
+        });
+
+
+
+    } catch (e) {
+        alert(e);
+    }
+
+
+}
+
+function postQuoteOnTumblr() {
+
+    try {
+
+        var profileid = tumblrProfileid;
+        var quote = $('#txtQuote').val();
+        var source = $('#txtQuotesource').val();
+
+
+        if (quote == "" || quote == null) {
+            alert("Please select quote!");
+            return false;
+        }
+        if (source == "" || source == null) {
+            alert("Please select source!");
+            return false;
+        }
+        $.ajax({
+            type: "POST",
+            url: "../Feeds/AjaxFeeds.aspx?op=tumblrQuotePost&profileid=" + profileid + "&source=" + source + "&quote=" + quote,
+            data: '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (msg) {
+
+
+            }
+        });
+
+
+
+    } catch (e) {
+
+    }
+
+
+}
+function postLinkOnTumblr() {
+
+    try {
+
+        var profileid = tumblrProfileid;
+        var linkurl = $('#txtUrls').val();
+        var title = $('#txtTitle').val();
+        var description = $('#txtDescription').val();
+
+        if (linkurl == "" || linkurl == null) {
+            alert("Please select quote!");
+            return false;
+        }
+        if (title == "" || title == null) {
+            alert("Please select source!");
+            return false;
+        }
+        $.ajax({
+            type: "POST",
+            url: "../Feeds/AjaxFeeds.aspx?op=tumblrLinkPost&profileid=" + profileid + "&linkurl=" + linkurl + "&title=" + title + "&description=" + description,
+            data: '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (msg) {
+
+
+            }
+        });
+
+
+
+    } catch (e) {
+
+    }
+
+
+}
+
+
+
+
+function postChatOnTumblr() {
+
+    try {
+
+        var profileid = tumblrProfileid;
+        var title = $('#txtChatTitle').val();
+        var body = $('#txtChatBody').val();
+        var tag = $('#txtChatTag').val();
+
+        if (body == "" || body == null) {
+            alert("Please Enter!");
+            return false;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "../Feeds/AjaxFeeds.aspx?op=tumblrChatPost&profileid=" + profileid + "&title=" + title + "&body=" + body + "&tag=" + tag,
+            data: '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (msg) {
+
+
+            }
+        });
+
+
+
+    } catch (e) {
+
+    }
+
+
+}
+
+function postAudioOnTumblr() {
+
+    try {
+        var fd = new FormData();
+
+        var filesaudio = document.getElementById('fileAudio').files[0];
+
+        fd.append('file', filesaudio);
+
+
+        var profileid = tumblrProfileid;
+        // var caption = $('#txtCaption').val();
+
+
+        $.ajax({
+            type: "POST",
+            url: "../Feeds/AjaxFeeds.aspx?op=tumblrAudioPost&profileid=" + profileid,
+            data: fd,
+            processData: false,
+            contentType: false,
+            dataType: "html",
+            success: function (msg) {
+
+
+            }
+        });
+
+
+
+    } catch (e) {
+        alert(e);
+    }
+
+
+}
+
+function postVideoOnTumblr() {
+    debugger;
+    try {
+        var fd = new FormData();
+
+        var filesvideo = document.getElementById('fileVideo').files[0];
+
+        fd.append('file', filesvideo);
+
+        var VideoUrl = $('#txtVideoUrl').val();
+        var VideoContent = $('#txtVideoContent').val();
+        var profileid = tumblrProfileid;
+
+
+        $.ajax({
+            type: "POST",
+            url: "../Feeds/AjaxFeeds.aspx?op=tumblrVideoPost&profileid=" + profileid + "&VideoUrl=" + VideoUrl + "&VideoContent=" + VideoContent,
+            data: fd,
+            processData: false,
+            contentType: false,
+            dataType: "html",
+            success: function (msg) {
+
+            }
+        });
+
+
+
+    } catch (e) {
+        alert(e);
+    }
+
+
+}
+
+
+
+//***************youtube data**********
+
+
+function youtubedetails(id, token) {
+    debugger;
+    try {
+
+    } catch (e) {
+
+    }
+
+    try {
+        $("#instag").html("");
+    } catch (e) {
+
+    }
+    try {
+        linkedinscheduler.abort();
+    } catch (e) {
+
+    }
+    try {
+        linkedinwallposts.abort();
+    } catch (e) {
+
+    }
+    try {
+        linkedinscheduler.abort();
+    } catch (e) {
+
+    }
+    try {
+        twitterfeeds.abort();
+    } catch (e) {
+
+    }
+    try {
+        twitterscheduler.abort();
+    } catch (e) {
+
+    }
+    try {
+        twittertweets.abort();
+    } catch (e) {
+
+    }
+    try {
+        facebookwallposts.abort();
+    } catch (e) {
+
+    }
+
+    try {
+        facebookfeeds.abort();
+    } catch (e) {
+
+    }
+    try {
+        facebookscheduler.abort();
+    } catch (e) {
+
+    }
+
+    try {
+        instagramimagesforfeeds.abort();
+    } catch (e) {
+
+    }
+
+    try {
+        tumblrimagesforfeeds.abort();
+    } catch (e) {
+
+    }
+
+    try {
+        youtubechannelforfeeds.abort();
+    } catch (e) {
+
+    }
+
+    youtubeidforlazyload = id;
+    $.ajax({
+        type: "POST",
+        url: "../Feeds/AjaxFeeds.aspx?op=youtubechannel&profileid=" + id + "&accesstoken=" + token,
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (msg) {
+            //alert(msg);
+            $("#instag").html(msg);
+
+            //            $.ajax({
+            //                type: "POST",
+            //                url: "../Feeds/AjaxFeeds.aspx?op=instagramApi&profileid=" + id,
+            //                data: '',
+            //                contentType: "application/json; charset=utf-8",
+            //                dataType: "html",
+            //                success: function (data) {
+            //                }
+            //            });
+            // $(document).on('scroll',youtubeimages);
+
+
+        }
+    });
+
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -1395,7 +2021,7 @@ function refreshWallpostFacebook(id) {
             } catch (e) {
             }
             try {
-                $("#title_paneltab1").html("WallPosts");
+                $("#title_paneltab1").html("Wall Posts");
             } catch (e) {
             }
             try {
@@ -1449,7 +2075,7 @@ function refreshFeedsFacebook(id) {
             } catch (e) {
             }
             try {
-                $("#title_paneltab2").html("NewsFeeds");
+                $("#title_paneltab2").html("News Feeds");
             } catch (e) {
             }
             try {
@@ -1540,7 +2166,7 @@ function refreshWallpostTwitter(id) {
         dataType: "html",
         success: function (msg) {
             try {
-                $("#img_paneltab1").attr('src', "../Contents/img/admin/6.png");
+                $("#img_paneltab1").attr('src', "../Contents/img/admin/2.png");
             } catch (e) {
             }
             try {
@@ -1584,7 +2210,7 @@ function refreshFeedsTwitter(id) {
         dataType: "html",
         success: function (msg) {
             try {
-                $("#img_paneltab2").attr('src', "../Contents/img/admin/6.png");
+                $("#img_paneltab2").attr('src', "../Contents/img/admin/2.png");
             } catch (e) {
             }
             try {
@@ -1626,7 +2252,7 @@ function refreshSchedularMessageTwitter(id) {
         dataType: "html",
         success: function (msg) {
             try {
-                $("#img_paneltab3").attr('src', "../Contents/img/admin/6.png");
+                $("#img_paneltab3").attr('src', "../Contents/img/admin/2.png");
             } catch (e) {
             }
             try {
@@ -1792,7 +2418,7 @@ function facebookLike(id, profileid, fbid) {
         var lik = $("#likefb_" + fbid).html();
 
         if (lik == "Like") {
-            $("#likefb_" + fbid).html("UnLike");
+            $("#likefb_" + fbid).html("Unlike");
 
             $.ajax({
                 type: "POST",
@@ -1801,13 +2427,13 @@ function facebookLike(id, profileid, fbid) {
                 contentType: "application/json; charset=utf-8",
                 success: function (e) {
                     debugger;
-                    alertify.success("Updated Successfully");
+                    alertify.success("Liked Successfully");
                 }
             });
 
 
         }
-        else if (lik == "UnLike") {
+        else if (lik == "Unlike") {
             $("#likefb_" + fbid).html("Like");
         }
 
@@ -1862,9 +2488,9 @@ function commentFB(fbid, profileid) {
         contentType: "application/json; charset=utf-8",
         success: function (e) {
             debugger;
-            $("#okfb_" + fbid).css('display','');
+            $("#okfb_" + fbid).css('display', '');
             alertify.success("Commented Successfully");
-            
+
             cancelFB(fbid);
 
         }
@@ -1872,4 +2498,102 @@ function commentFB(fbid, profileid) {
 
 
 
+}
+
+
+
+function dropDownChange(sval, id, token) {
+    var SFVal = $(sval).html();
+    if (SFVal.indexOf("VIDEO") > -1) {
+        debugger;
+        youtubedetails(id, token);
+    }
+    else if (SFVal.indexOf("SUBSCRIBTIONS") > -1) {
+        debugger;
+        //youtubesubscribe
+        YoutubePostReq("youtubesubscribe", id, token);
+    }
+    else if (SFVal.indexOf("ACTIVITES") > -1) {
+        debugger;
+        YoutubePostReq("youtubeactivity", id, token);
+    }
+    else {
+        alert("Please Select any Featur.");
+    }
+
+    debugger;
+}
+
+function YoutubePostReq(option, profileid, token) {
+    debugger;
+    $.ajax({
+        type: "POST",
+        url: "../Feeds/AjaxFeeds.aspx?op=" + option + "&profileid=" + profileid + "&accesstoken=" + token,
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        success: function (msg) {
+            debugger;
+            //            $(".yt_details").empty();
+            //            $(".yt_details").html(msg);
+            $(".yt_details_container").empty();
+            $(".yt_details_container").html(msg);
+            //alertify.success("Commented Successfully");
+        }
+    });
+
+
+}
+
+function TwtFolloUser(event, id) {
+    debugger;
+    var cls = $(event).attr("class");
+    var Userid = $(event).attr("userid");
+    //var Userid = $(event).attr("followerid");
+    var screenname = $(event).attr("screenname");
+    var accesstoken = $(event).attr("token");
+
+    if (cls.indexOf("btn_follow") > -1) {
+        debugger;
+
+        $.ajax({
+            type: "POST",
+            url: "../Helper/AjaxHelper.aspx?op=TwtFolloUser&id=\"" + id + "\"&Userid=" + Userid + "&screen_name=" + screenname + "&accesstoken=" + accesstoken,
+            data: '',
+            //contentType: "application/json; charset=utf-8",
+            success: function (msg) {
+                debugger;
+                $(event).removeClass("btn_follow");
+                $(event).addClass("btn_unfollow");
+                $(event).html();
+                $(event).html('Unfollow');
+                alertify.success("Follow Successfully.");
+            },
+            error: function (err) {
+                alert(err);
+                debugger;
+            }
+        });
+    }
+    else if (cls.indexOf("btn_unfollow") > -1) {
+        debugger;
+
+        $.ajax({
+            type: "POST",
+            url: "../Helper/AjaxHelper.aspx?op=TwtUnfolloUser&id=\"" + id + "\"&Userid=" + Userid + "&screen_name=" + screenname + "&accesstoken=" + accesstoken,
+            data: '',
+            //contentType: "application/json; charset=utf-8",
+            success: function (msg) {
+                debugger;
+                $(event).removeClass("btn_unfollow");
+                $(event).addClass("btn_follow");
+                $(event).html();
+                $(event).html('Follow');
+                alertify.success("Unfollow Successfully");
+            },
+            error: function (err) {
+                alert(err);
+                debugger;
+            }
+        });
+    }
 }

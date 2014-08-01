@@ -163,7 +163,7 @@ namespace SocioBoard.Model
         /// </summary>
         /// <param name="UserId">Pass the Guid of user.</param>
         /// <returns>List of Draft messages.</returns>
-        public List<Drafts> getAllDrafts(Guid UserId)
+        public List<Drafts> getAllDrafts(Guid groupid)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -174,8 +174,8 @@ namespace SocioBoard.Model
                     try
                     {
                         //Proceed action, to check draft is exist by user id.
-                        List<Drafts> lst = session.CreateQuery("From Drafts where UserId = :userid")
-                                           .SetParameter("userid", UserId)
+                        List<Drafts> lst = session.CreateQuery("From Drafts where GroupId = :groupid")
+                                           .SetParameter("groupid", groupid)
                                            .List<Drafts>()
                                            .ToList<Drafts>();
                         #region oldcode

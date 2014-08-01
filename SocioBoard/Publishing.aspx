@@ -1,7 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Publishing.aspx.cs" Inherits="SocialSuitePro.Publishing" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Publishing.aspx.cs" Inherits="SocioBoard.Publishing" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<link rel="shortcut icon" href="/Contents/img/ivon.ico" type="image/x-icon">
 <link href="../Contents/js/multidatepicker/css/mdp.css" rel="stylesheet" type="text/css" />
 <link href="../Contents/js/multidatepicker/css/prettify.css" rel="stylesheet" type="text/css" />
 <link href="../Contents/js/multidatepicker/css/pepper-ginder-custom.css" rel="stylesheet"
@@ -57,6 +58,9 @@
 </head>
 <script type="text/javascript">
     $(document).ready(function () {
+        $('.woo_logout').click(function () {
+            $.session.set("selectedGroup_Socioboard", '');
+        });
         $('.cross').click(function () {
             debugger;
             $('.rederrormsg').fadeOut();
@@ -132,11 +136,24 @@
 
         }
     }
-
-
-
-
 </script>
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+    var sc_project = 9930597;
+    var sc_invisible = 1;
+    var sc_security = "3850c63d";
+    var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+    document.write("<sc" + "ript type='text/javascript' src='" + scJsHost +
+"statcounter.com/counter/counter.js'></" + "script>");
+</script>
+<noscript><div class="statcounter"><a title="hits counter"
+href="http://statcounter.com/" target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/9930597/0/3850c63d/1/" alt="hits
+counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
 <style type="text/css">
     /*Rss feeds Css updated on 03/08/2013**/
     
@@ -613,16 +630,38 @@
         display: block;
     }
 </style>
+<script language="javascript">
+    function toggle() {
+        var ele = document.getElementById("toggleText");
+        var text = document.getElementById("displayText");
+        if (ele.style.display == "block") {
+            ele.style.display = "none";
+            //text.innerHTML = "Show Registration";
+        }
+        else {
+            ele.style.display = "block";
+
+        }
+    } 
+</script>
 <body>
     <form id="form1" runat="server">
+    
     <div id="header">
         <div id="top-nav">
-            <div class="container">
-                <div id="logo">
-                    <a href="/Home.aspx">
-                        <img src="../Contents/img/under_sspro_logo.png" alt="SocialSuitePro" /></a>
-                </div>
-                <div id="infocontainer" style="width: 730px;">
+            
+               
+                <div id="infocontainer">
+
+
+                  
+                    <asp:DropDownList ID="groupsselection" runat="server" AutoPostBack="True" 
+                        OnSelectedIndexChanged="groupsselection_SelectedIndexChanged">
+                    </asp:DropDownList>
+           
+
+                   <a class="premium" href="../Referral.aspx">Get free Premium Account</a>
+
                     <div id="msgcontainer">
                         <div id="msgcontent">
                             <a href="../Message/Messages.aspx">
@@ -631,62 +670,69 @@
                             <a href="../Message/Task.aspx">
                                 <img alt="" src="../Contents/img/admin/remotetiny.png"><span runat="server" id="incom_tasks">0</span></a></div>
                     </div>
-                    Information! Now You have <a href="~/Message/Messages.aspx" id="incomMessages" runat="server">
-                        0</a> Incoming Message and <a runat="server" id="incomTasks" href="../Message/Task.aspx">
-                            0</a> Task <a class="premium" href="../Referral.aspx">Get free Premium Account</a>
-                    <a href="../Default.aspx?type=logout" class="woo_logout" style="text-decoration: none;
-                        color: #CECECE;">
-                        <img src="../Contents/img/logout_woo.png" style="margin-right: 4px;" alt="" /><b>Logout</b>
-                    </a>
+                    <%--Information! Now You have <a href="~/Message/Messages.aspx" id="incomMessages" runat="server">
+                        25</a> Incoming Message and <a runat="server" id="incomTasks" href="../Message/Task.aspx">
+                            0</a> Task <a class="premium" href="../Referral.aspx">Get free Premium Account</a>--%>
+                    
+
                     <div id="errsuccess" class="greenerrormsg">
                         <span id="errsuccessmsg" class="msg">Successfull your work</span> <span class="cross">
                             X</span></div>
                 </div>
-                <div id="cmposecontainer">
-                    <div id="composecontent" class="composecontent">
-                        <a href="#">
-                            <img src="../Contents/img/admin/111.png" alt="" />
-                            Compose</a>
-                    </div>
-                    <div id="searchcontent">
-                        <a href="#">
-                            <img src="../Contents/img/admin/061.png" alt="" /></a>
-                    </div>
-                </div>
-            </div>
+               
+
+                
+
+            
         </div>
+        <%--<div id="actdiv" runat=server> <span >Your accout is not yet activated.Check your E-mail to activate your account.</span><a href="#">Resend 
+
+Mail</a></div>--%>
+        
         <div id="navi">
+         
             <div class="container">
-                <div id="usercontainer">
-                    <%--<div id="userimg" runat="server"></div>--%>
-                    <div id="usernm" runat="server">
-                    </div>
-                    <%--<div id="userinf" runat="server"></div>--%>
+                <div id="logo">
+                    <a href="../Home.aspx">
+                        <img src="../Contents/img/under_sspro_logo.png" alt="Socio Board" /></a>
                 </div>
-                <div class="navbar pull-right">
+                <div class="navbar">
                     <div class="navbar-inner">
                         <ul class="nav">
-                            <li id="home"><a href="../Home.aspx">
-                                <img src="../Contents/img/admin/home.png" alt="" width="40" />Home</a> </li>
-                            <li id="message"><a href="../Message/Messages.aspx">
-                                <img src="../Contents/img/admin/mail.png" alt="" width="40" />Message</a> </li>
-                            <li id="feeds"><a href="../Feeds/Feeds.aspx">
-                                <img src="../Contents/img/admin/feeds.png" alt="" width="40" />Feeds</a> </li>
-                            <li id="publishing" class="active"><a href="../Publishing.aspx">
-                                <img src="../Contents/img/admin/publishing.png" alt="" width="40" /><span>Publishing</span></a>
-                            </li>
-                            <li id="discovery"><a href="../Discovery.aspx">
-                                <img src="../Contents/img/admin/discovery.png" alt="" width="40" /><span>Discovery</span></a>
-                            </li>
-                            <li><a href="Reports/GroupStats.aspx">
-                                <img src="../Contents/img/admin/reports.png" alt="" height="40" />Reports</a>
-                            </li>
-                            <li id="Li1"><a href="../Group/Group.aspx">
-                                <img src="../Contents/img/admin/group.png" alt="" width="40" />Groups</a> </li>
+                            <li id="home"title="Home"><a href="../Home.aspx">
+                                <img src="../Contents/img/admin/home.png" alt="" width="40" /></a> </li>
+                            <li id="message"><a href="../Message/Messages.aspx" title="Message">
+                                <img src="../Contents/img/admin/mail.png" alt="" width="40" /></a> </li>
+                            <li id="feeds"><a href="../Feeds/Feeds.aspx" title="Feeds">
+                                <img src="../Contents/img/admin/feeds.png" alt="" width="40" /></a> </li>
+                            <li id="publishing" class="active"><a href="../Publishing.aspx" title="Publishing">
+                                <img src="../Contents/img/admin/publishing.png" alt="" width="40" /></a> </li>
+                            <li id="discovery"><a href="../Discovery.aspx" title="Discovery">
+                                <img src="../Contents/img/admin/discovery.png" alt="" width="40" /></a> </li>
+                            <li id="reports"><a href="../Reports/GroupStats.aspx" title="Reports">
+                                <img src="../Contents/img/admin/reports.png" alt="" height="40" /></a> </li>
+                            <li id="groups"><a href="../Group/Group.aspx" title="Groups">
+                                <img src="../Contents/img/admin/group.png" alt="" width="40" /></a> </li>
                         </ul>
                     </div>
+    
                 </div>
-                <div id="topbtn">
+
+                <div class="usrnm">
+                      <a id="displayText" href="javascript:toggle();" class="showhide_text">
+                          <div id="usercontainer">
+                            <div id="userimg" runat="server">
+                            </div>
+                            <div id="usernm" runat="server">
+                            </div>
+                            <div class="dropdownl"></div>
+                            <%--<div id="userinf" runat="server">
+                            </div>--%>
+                        </div>
+                      </a>
+                      <div id="toggleText" class="toggletext">
+                      
+                        <div id="topbtn" runat="server">
                     <div class="navbar">
                         <div class="navbar-inner">
                             <ul class="nav">
@@ -700,9 +746,9 @@
                                     </ul>--%>
                                 </li>
                                 <li><a id="addico">
-                                    <img src="../Contents/img/admin/addico.png" alt="" /></a>
+                                    <img  id="imgaddico" src="../Contents/img/admin/addico.png" alt="" title="Social Media" /></a>
                                     <div id="addicbox" style="display: none;">
-                                        <div class="drop_top">
+                                        <div class="drop_top_left_poin">
                                         </div>
                                         <div class="drop_mid loginbox">
                                             <div class="teitter">
@@ -729,36 +775,57 @@
                                             <div class="teitter">
                                                 <ul>
                                                     <li><a id="master_InstagramConnect" runat="server" onserverclick="AuthenticateInstagram">
-                                                        <img width="18" border="none" style="float: left;" alt="" src="../Contents/img/instagram_24X24.png" />
+                                                        <img width="18" border="none" style="float: left;" alt="" src="../Contents/img/instagram_24X24.png" 
+
+/>
                                                         <span style="float: left; margin: 3px 0 0 5px;">Instagram</span> </a></li>
                                                 </ul>
                                             </div>
-                                            <%-- <div class="teitter">
-                                                <ul>
-                                                    <li><a id="master_GooglePlusConnect" runat="server" onserverclick="AuthenticateGooglePlus">
-                                                        <img width="18" border="none" style="float: left;" alt="" src="../Contents/img/google_plus.png" />
-                                                        <span style="float: left; margin: 3px 0 0 5px;">Google Plus</span> </a></li>
-                                                </ul>
-                                            </div>--%>
+                                            <%--  <div class="teitter">
+                                                    <ul>
+                                                        <li>
+                                                            <a id="master_GooglePlusConnect" runat="server" onserverclick="AuthenticateGooglePlus">
+                                                                <img width="18" border="none" style="float:left;" alt=""  
+
+src="../Contents/img/google_plus.png" />
+                                                                <span style="float:left;margin: 3px 0 0 5px;">Google Plus</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul> 
+                                                 </div>
+
+                                                 <div class="teitter">
+                                                    <ul>
+                                                        <li>
+                                                            <a id="master_googleanalyticsConnect" runat="server" onserverclick="AuthenticateGoogleAnalytics">
+                                                                <img width="18" border="none" style="float:left;" alt=""  src="../Contents/img/an_24X24.png" 
+
+/>
+                                                                <span style="float:left;margin: 3px 0 0 5px;">GoogleAnalytics</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul> 
+                                                 </div>--%>
                                         </div>
                                     </div>
                                 </li>
                                 <li id="masterInvite"><a id="master_invite">
-                                    <img src="../Contents/img/admin/user2.png" alt="" /></a>
+                                    <img  src="../Contents/img/admin/user2.png" alt="" title="Invite a Team Member" /></a>
                                     <div id="inviteTeam" style="display: none;">
                                         <div class="drop_top">
                                         </div>
                                         <div class="drop_mid loginbox">
                                             <div class="teitter">
                                                 <ul id="inviteRedirect" runat="server">
-                                                    <li><a id="GroupNone">No Groups Found </a></li>
+                                                    <%--<li><a id="GroupNone">No Groups Found </a></li>--%>
+                                                     <li id="GroupNone">No Groups Found</li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                <li><a id="usersetting">
-                                    <img src="../Contents/img/admin/usersetting.png" alt="" /></a>
+                                <li ><a id="usersetting">
+                                    <img src="../Contents/img/admin/usersetting.png" alt="" title="Setting" /></a>
                                     <div id="userset" style="display: none;">
                                         <div class="drop_top">
                                         </div>
@@ -786,25 +853,49 @@
                                         </div>
                                     </div>
                                 </li>
+                                <li >
+                                  <a href="../Default.aspx?type=logout" class="woo_logout" style="text-decoration: none;
+                        color: #767676;">
+                        <img src="../Contents/img/logout_woo.png" style="margin-right: 4px;" alt="" /></a>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
+                      
+                      </div>
+                    </div>
+                
+                   <div id="cmposecontainer">
+                    <div id="composecontent" class="composecontent">
+                        <a href="#"><img src="../Contents/img/admin/111.png" width="20" title="Compose" /></a>
+                    </div>
+                    </div>
+                    <div id="cmposecontainer">
+                    <div id="searchcontent">
+                        <a href="#"><img src="../Contents/img/admin/061.png" width="20" title="Search contact" /></a>
+                    </div>
+                </div>      
+                
             </div>
         </div>
+        <div id="actdiv" runat="server">
+        </div>
     </div>
+    
     <div class="container" id="mainwrapper">
         <div id="sidebar">
             <div class="sidebar-inner">
                 <a class="btn active" id="schedulemessage" onclick="publishcontent(this.id);" href="#">
                     Schedule Message</a><a class="btn" id="wooqueue" onclick="publishcontent(this.id);"
-                        href="#">SocioQueue</a> <a id="drafts" onclick="publishcontent(this.id);" class="btn"
+                        href="#">Socio Queue</a> <a id="drafts" onclick="publishcontent(this.id);" class="btn"
                             href="#">Drafts</a>
                 <%--<a id="rsspost" onclick="publishcontent(this.id);" class="btn"
                                 href="#">Post Via RSS</a>--%>
             </div>
         </div>
-        <div id="contentcontainer2-publishing">
+
+        <div id="contentcontainer2-publishing" style="width:970px;">
             <div id="contentcontainer1-publishing">
                 <div id="content">
                     <%-- <div class="alert alert-suite">
@@ -848,7 +939,7 @@
                                     <div id="btnaddnewmessage">
                                         <div id="addContainer_scheduler">
                                             <div id="abb_scheduler">
-                                                <a class="btn span6" style="height: 31px;">And +</a></div>
+                                                <a class="btn btnk span6" style="height: 31px;">Add +</a></div>
                                             <div style="clear: both">
                                             </div>
                                             <div id="ab_scheduler" style="position: absolute; z-index: 999; margin-left: -20px;">
@@ -901,18 +992,12 @@
                             </div>
                             <div class="span6" id="rightspan">
                                 <%-- <img alt="" src="Contents/img/admin/righ-details.png">--%>
-                                <div class="sub_tabs">
-                                    <div onclick="saveDrafts();" class="savetodraft">
-                                        Save To Draft</div>
-                                    <div id="scheduleimg" style="float: right;">
-                                        <img onclick="ScheduleMessage()" src="../Contents/img/schedule.png" alt="" />
-                                    </div>
-                                </div>
+                                
                                 <div class="datebg">
                                     <div id="multicaleder">
                                     </div>
                                     <div class="watchtimeshow">
-                                        <input type="text" style="width: 65px;" value="" id="timepickerforScheduler" disabled="disabled" />
+                                        <input type="text" style="width:65px;" value="" id="timepickerforScheduler" disabled="disabled" />
                                         <img id="imgtimepicker" src="Contents/img/clock.png" alt="" />
                                         <div id="chktimepicker">
                                         </div>
@@ -920,10 +1005,16 @@
                                     <div id="adddates_scheduler">
                                     </div>
                                 </div>
-                                <div class="composecontent" style="float: right; margin: 70px 39px 0 0;">
-                                    <a style="color: #D5928C; font-weight: bolder; height: 30px; margin-top: 7px; width: 60px;"
-                                        class="btn span6 composecontent">Send</a>
+                                <div class="sub_tabs">
+                                    <div onclick="ScheduleMessage();" class="btn btnk span5">Schedule</div>
+                                    <div id="scheduleimg" style="float: right;" class="btn btnk span5" onclick="saveDrafts();">Save To Draft</div>
+                                    <%--<div id="scheduleimg" style="float: right;">
+                                        <img onclick="ScheduleMessage()" src="../Contents/img/schedule.png" alt="" />
+                                    </div>--%>
                                 </div>
+                               <%-- <div class="composecontent" style="float: right; margin: 10px 39px 0 0;">
+                                    <a class="btn btnk span11">Send</a>
+                                </div>--%>
                             </div>
                         </div>
                     </div>
@@ -940,6 +1031,7 @@
                                         <div class="task-activity">Send From</div>
                                         <div class="task-message">Message</div>
                                         <div class="task-status" style="width:43px;">Edit</div>
+                                          <div class="task-status" style="width:43px;">Delete</div>
                                         <div class="task-status">Status</div>
                                         <div class="task-status">Network</div>
                                     </div>
@@ -1008,7 +1100,7 @@
             <div class="pht_text_counter">
                 <div class="pht_bg">
                     <div class="bgpht">
-                        <img id="imageofuser" src="../Contents/img/normal.jpg" alt="" style="height: 50px;" /></div>
+                        <img id="imageofuser" src="../Contents/img/blank_img.jpg" alt="" style="height: 50px;" /></div>
                     <div class="twitter_icon">
                         <a href="#">
                             <img id="socialIcon" src="../Contents/img/twitter.png" alt="" border="none" width="20" /></a></div>
@@ -1326,7 +1418,7 @@
             debugger;
             var index = $.inArray(dates, datearr);
             if (index < 0) {
-                $('#adddates_scheduler').append('<div id="' + dates + '"  class="btn span12" style="width:47%;height:31px;cursor: default;"  ><b>' + dates + '</b> </ div></div>');
+                $('#adddates_scheduler').append('<div id="' + dates + '"  class="btn span12" style="width:auto;height:31px;cursor: default;"  ><b>' + dates + '</b> </ div></div>');
                 datearr.push(dates);
             }
             else {
@@ -1356,7 +1448,7 @@
             $.ajax
                ({
                    type: "POST",
-                   url: "../AjaxHome.aspx?op=MasterCompose",
+                   url: "../AjaxHome.aspx?op=MasterComposesc",
                    data: '',
                    contentType: "application/json; charset=utf-8",
                    dataType: "html",
@@ -1491,6 +1583,99 @@
 
 
 
+    function deletequeue(id) {
+
+
+
+        alertify.confirm("Are you Sure want to delete this Page ?", function (e) {
+            if (e) {
+            $.ajax
+        ({
+            type: "POST",
+            url: "../AjaxHome.aspx?op=deletequeuemsg&messageid=" + id,
+            data: '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (msg) {
+                $('#' + id).parent('span').parent('div').parent('section').parent('div').parent('section').fadeOut(900);
+                alertify.success("Message removed successfully !");
+
+            }
+        });
+       
+		 }
+        });
+    }
+    function Editqueue(id, sharemessage) {
+        try {
+            debugger;
+
+            //var defautl = $("#message_" + id).html();
+            var defautl = $("#message_" + id).html(sharemessage);
+
+            var msgg = sharemessage;
+
+            alertify.prompt("Please Enter New Message", function (e, str) {
+
+                if (e) {
+                    //alert(parseInt(str.length));
+                    if (str == "") {
+                        alert('Please enter The Message, you cant leave Empty Message box..!!');
+                        EditSchedulemessage(id, sharemessage);
+                        // return;
+                    }
+                    else if (parseInt(str.length) > 140) {
+                        alert('Message length must should not be greater than 140 character!');
+                        EditSchedulemessage(id, str);
+                    }
+                    else {
+
+
+                        $.ajax({
+                            url: '../AjaxHome.aspx?op=Editqueuemsg&messageid=' + id + '&newstr=' + str,
+                            type: 'GET',
+                            dataType: 'html',
+                            success: function (mg) {
+                                var idd = '#edit_' + id;
+                                //alert(idd);
+                                $(idd).html(str);
+                                alertify.success("Updated Successfully");
+
+                            }
+
+                        });
+                    }
+
+                } else {
+
+                }
+            }, msgg);
+        } catch (e) {
+
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1563,6 +1748,15 @@
                     chkidforusertest.push(singleprofileIdforscheduler);
                 }
             }
+
+
+            else {
+                alert('Please select atleast one account!');
+                return false;
+            }
+
+
+
             if (datearr.length == 0) {
                 //                var today = new Date();
                 //                var dd = today.getDate();
@@ -1587,6 +1781,17 @@
                        $("#timepickerforScheduler").val('');
                        $("#adddates_scheduler").html('');
                        closeonCompose();
+                       var msgid = $('#schedulemessage').attr('msgid');
+                       if (msgid != "") {
+                           deleteDraftMsg(msgid);
+                            $('#schedulemessage').removeAttr('msgid');
+                           alertify.success("Scheduled Successfully");
+                       }
+                       else {
+                           alertify.success("Scheduled Successfully");
+                       }
+
+
                    }
                });
             }
@@ -1643,7 +1848,7 @@
     $(".composecontent").click(function () {
         debugger;
         closeonCompose();
-        //  ("#composeBox").bPopup();
+          //("#composeBox").bPopup();
         $('#composeBox').bPopup({
             fadeSpeed: 'slow', //can be a string ('slow'/'fast') or int
             followSpeed: 1500, //can be a string ('slow'/'fast') or int
@@ -1721,6 +1926,12 @@
         });
 
     });
+
+    function delete1(id) {
+    alert(id);
+    }
+
+
 
     function PerformClick(id) {
         debugger;

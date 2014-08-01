@@ -15,6 +15,6 @@ namespace SocioBoard.Domain
             public string UserName { get; set; }
             public string MessageId { get; set; }
             public string Message { get; set; }
-            public string CreatedDateTime { get; set; }
+            public DateTime CreatedDateTime { get; set; }
     }
 }

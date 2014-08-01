@@ -78,7 +78,7 @@ namespace SocioBoard.Model
         /// <param name="userId">UserId FacebookInsightStats(Guid).</param>
         /// <param name="days">Integer Days.</param>
         /// <returns>Return all Facebookinsight Stats in form of Array List.</returns>
-        public ArrayList getFacebookInsightStatsById(string Fbuserid, Guid userId, int days)
+        public ArrayList getFacebookInsightStatsById(string Fbuserid, int days)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -88,9 +88,10 @@ namespace SocioBoard.Model
                 {
 
                     //Proceed action, to get all FacebookinsightSatats of user from Database by UserId(Guid) and FbUserId(string).
-                    NHibernate.IQuery query = session.CreateSQLQuery("Select * from FacebookInsightStats where FbUserId = :Fbuserid and UserId=:userId and CountDate<=DATE_ADD(NOW(),INTERVAL -" + days + " DAY) Group BY Week(CountDate)");
+
+                    NHibernate.IQuery query = session.CreateSQLQuery("Select * from FacebookInsightStats where FbUserId = :Fbuserid and EntryDate>=DATE_ADD(NOW(),INTERVAL -" + days + " DAY) ORDER BY EntryDate DESC");
                     query.SetParameter("Fbuserid", Fbuserid);
-                    query.SetParameter("userId", userId);
+                    
                     ArrayList alstFBInsightStats = new ArrayList();
 
                     foreach (var item in query.List())
@@ -111,7 +112,7 @@ namespace SocioBoard.Model
         /// <param name="userId">UserId FacebookInsightStats(Guid).</param>
         /// <param name="days">Integer Days.</param>
         /// <returns>Return all Facebookinsight Stats by Location in form of Array List.</returns>
-        public ArrayList getFacebookInsightStatsLocationById(string Fbuserid, Guid userId, int days)
+        public ArrayList getFacebookInsightStatsLocationById(string Fbuserid, int days)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -121,9 +122,8 @@ namespace SocioBoard.Model
                 {
 
                     //Proceed action to get all FacebookinsightStats of user from Database by UserId(Guid) and FbUserId(string) and Location.
-                    NHibernate.IQuery query = session.CreateSQLQuery("Select * from FacebookInsightStats where FbUserId = :Fbuserid and UserId=:userId and Location is not null and CountDate<=DATE_ADD(NOW(),INTERVAL -" + days + " DAY) Group BY Location,Week(CountDate)");
+                    NHibernate.IQuery query = session.CreateSQLQuery("Select * from FacebookInsightStats where FbUserId = :Fbuserid and Location is not null and CountDate<=DATE_ADD(NOW(),INTERVAL -" + days + " DAY) Group BY Location,Week(CountDate)");
                     query.SetParameter("Fbuserid", Fbuserid);
-                    query.SetParameter("userId", userId);
                     ArrayList alstFBInsightStats = new ArrayList();
 
                     foreach (var item in query.List())
@@ -144,7 +144,7 @@ namespace SocioBoard.Model
         /// <param name="userId">UserId FacebookInsightStats(Guid).</param>
         /// <param name="days">Integer Days.</param>
         /// <returns>Return all Facebookinsight Stats by Age wise in form of Array List.</returns>
-        public ArrayList getFacebookInsightStatsAgeWiseById(string Fbuserid, Guid userId, int days)
+        public ArrayList getFacebookInsightStatsAgeWiseById(string Fbuserid,int days)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -154,9 +154,8 @@ namespace SocioBoard.Model
                 {
 
                     //Proceed action to get all FacebookinsightStats of user from Database by UserId(Guid) and FbUserId(string) and Age wise.
-                    NHibernate.IQuery query = session.CreateSQLQuery("Select * from FacebookInsightStats where FbUserId = :Fbuserid and UserId=:userId and AgeDiff is not null and CountDate<=DATE_SUB(NOW(),INTERVAL " + days + " DAY) Group BY Week(CountDate)");
+                    NHibernate.IQuery query = session.CreateSQLQuery("Select * from FacebookInsightStats where FbUserId = :Fbuserid and AgeDiff is not null and CountDate<=DATE_SUB(NOW(),INTERVAL " + days + " DAY) Group BY Week(CountDate)");
                     query.SetParameter("Fbuserid", Fbuserid);
-                    query.SetParameter("userId", userId);
                     ArrayList alstFBInsightStats = new ArrayList();
 
                     foreach (var item in query.List())

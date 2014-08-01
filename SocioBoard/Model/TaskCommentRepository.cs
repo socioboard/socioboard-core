@@ -38,7 +38,7 @@ namespace SocioBoard.Model
         /// <param name="UserId">User id.(Guid)</param>
         /// <param name="TaskId">Task id.(Guid)</param>
         /// <returns>Return Array list with value.(ArrayList)</returns>
-        public ArrayList getAllTasksCommentOfUser(Guid UserId, Guid TaskId)
+        public ArrayList getAllTasksCommentOfUser( Guid TaskId)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -47,8 +47,8 @@ namespace SocioBoard.Model
                 using (NHibernate.ITransaction transaction = session.BeginTransaction())
                 {
                     //Proceed action, to get Task comments by user id and task id. 
-                    NHibernate.IQuery query = session.CreateQuery("from TaskComment where UserId = :userid and TaskId=:taskid");
-                    query.SetParameter("userid", UserId);
+                    NHibernate.IQuery query = session.CreateQuery("from TaskComment where  TaskId=:taskid");
+                 //   query.SetParameter("userid", UserId);
                     query.SetParameter("taskid", TaskId);
                     ArrayList alstTaskcomment = new ArrayList();
 

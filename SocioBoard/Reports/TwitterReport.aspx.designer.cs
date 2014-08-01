@@ -7,8 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SocialSuitePro.Reports
-{
+namespace SocialSuitePro.Reports {
     
     
     public partial class TwitterReport {
@@ -201,23 +200,5 @@ namespace SocialSuitePro.Reports
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divdms;
-        
-        /// <summary>
-        /// divtwtMale control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divtwtMale;
-        
-        /// <summary>
-        /// divtwtfeMale control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divtwtfeMale;
     }
 }

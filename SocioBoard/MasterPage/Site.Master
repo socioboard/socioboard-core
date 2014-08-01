@@ -1,6 +1,8 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SocialSuitePro.MasterPage.Site" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SocialSuitePro.MasterPage.Site"  %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
 <!---/Date Time Picker-->
 <link rel="shortcut icon" href="/Contents/img/ivon.ico" type="image/x-icon">
@@ -28,11 +30,15 @@
 <script src="../Contents/js/Helper.js" type="text/javascript"></script>
 <script src="../Contents/js/googleanalytics.js" type="text/javascript"></script>
 <script src="../Contents/js/clickDesk.js" type="text/javascript"></script>
+<script src="../Contents/js/jquery.cookie.js" type="text/javascript"></script>
+<script src="../Contents/js/jquery.session1.js" type="text/javascript"></script>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta charset="utf-8">
     <title>SocioBoard - Generate More leads on Social Media| Social CRM | Social Media CMS
     </title>
+    <meta name="google-site-verification" content="suNXfJWYY3E7tilc3XsF5M2qZgSml8fGZVb5RfDOWaA" />
     <meta name="description" content="A new fast growing, advanced, easy, open-source social media marketing tool to engage your audience with great features such as live chat, news feed, timeline, profiles, events, notifications, likes, analytics, insights and much more hit the digital media marketing lately.Most applications in this domain have a very narrow and limited approach towards end users, people feel caught up in a whirlpool of using the same features without customization and scaling up. Socioboard plans to help users out of this narrow limiting vision of the current social media dashboards today." />
     <meta name="keywords" content="Social Media Management Software, Social Media Management tool, Open Source Social Media Management, Social Media Management" />
     <meta name="author" content="">
@@ -41,6 +47,10 @@
     <meta property="og:url" content="http://socioboard.com" />
     <meta property="og:site_name" content="Socioboard" />
     <meta property="og:type" content="Website" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+
     <!--[if IE 7]>
 			<link href="../Contents/css/font-awesome-ie7.min.css" rel="stylesheet">
 		<![endif]-->
@@ -50,6 +60,9 @@
             <script src="../Contents/js/excanvas.js" type="text/javascript"></script>
 		<![endif]-->
     <script type="text/javascript">
+
+        var selectedGroup = ''; 
+
         function setvalue() {
 
             //  var curdt = new Date();
@@ -57,6 +70,41 @@
             $('#userinf').html(new Date());
         }
         $(document).ready(function () {
+            try {
+                //alert($.cookie("selectedGroup_Socioboard"));
+                //  alert($.session.get("selectedGroup_Socioboard"));
+            } catch (e) {
+
+            }
+            try {
+                if ($.session.get("selectedGroup_Socioboard") != null) {
+                    selectedGroup = $.session.get("selectedGroup_Socioboard");
+
+                    debugger;
+                    if (selectedGroup != '') {
+                        $("#groupsselection").val(selectedGroup);
+                    }
+
+                }
+                //                if ($.cookie("selectedGroup_Socioboard") != null) {
+                //                    selectedGroup = $.cookie("selectedGroup_Socioboard");
+
+                //                    debugger;
+                //                    if (selectedGroup != '') {
+                //                        $("#groupsselection").val(selectedGroup);
+                //                    }
+
+                //                }
+            } catch (e) {
+                alert(e);
+            }
+
+
+
+            if (selectedGroup != '') {
+                $("#groupsselection").val(selectedGroup);
+            }
+
             $('.cross').click(function () {
                 debugger;
                 $('.rederrormsg').fadeOut();
@@ -80,8 +128,48 @@
 
             // $('#userinf').html("sign in :" + new data());
 
+            $("#groupsselection").change(function () {
+                debugger;
+                //  alert('groupsselection');
+                DropDownSelectionChanged();
+            });
 
 
+
+            function DropDownSelectionChanged() {
+
+                //alert('DropDownSelectionChanged');
+
+                var ele = document.getElementById("groupsselection");
+                var selectedValue = $("#groupsselection option:selected").val();
+
+                //$.cookie("selectedGroup_Socioboard", selectedValue, { path: "/", domain: "localhost:5334" });
+                $.session.set("selectedGroup_Socioboard", selectedValue);
+
+                $.ajax
+                     ({
+                         type: 'GET',
+                         url: '../AjaxHome.aspx?groupsselection=' + selectedValue + '',
+                         contentType: "application/json; charset=utf-8",
+                         success: function (data) {
+                             //alert(data + 'sd');
+                             // window.location = self.location;
+                             location.reload();
+                             //                             if (data != '') {
+
+                             //                                 $.cookie("selectedGroup_Socioboard", data);
+                             //                                 selectedGroup = selectedValue;
+
+                             //                                 if (selectedGroup != '') {
+                             //                                     $("#groupsselection").val(data);
+                             //                                 }
+
+
+                             //                             }
+                         }
+                     });
+
+            }
 
         });
         $(function () {
@@ -144,6 +232,48 @@
         }
 
     </script>
+
+<script language="javascript">
+    function toggle() {
+        var ele = document.getElementById("toggleText");
+        var text = document.getElementById("displayText");
+        if (ele.style.display == "block") {
+            ele.style.display = "none";
+            //text.innerHTML = "Show Registration";
+        }
+        else {
+            ele.style.display = "block";
+
+        }
+    }
+
+//    $("#groupsselection").change(function () {
+//        debugger;
+//        alert('groupsselection');
+////        DropDownSelectionChanged();
+//    });
+
+   
+
+    
+</script>
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+    var sc_project = 9930597;
+    var sc_invisible = 1;
+    var sc_security = "3850c63d";
+    var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+    document.write("<sc" + "ript type='text/javascript' src='" + scJsHost +
+"statcounter.com/counter/counter.js'></" + "script>");
+</script>
+<noscript><div class="statcounter"><a title="hits counter"
+href="http://statcounter.com/" target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/9930597/0/3850c63d/1/" alt="hits
+counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -152,12 +282,26 @@
     <form id="form1" runat="server">
     <div id="header">
         <div id="top-nav">
-            <div class="container">
-                <div id="logo">
-                    <a href="../Home.aspx">
-                        <img src="../Contents/img/under_sspro_logo.png" alt="Socio Board" /></a>
-                </div>
-                <div id="infocontainer" style="width: 641px;">
+            
+               
+                <div id="infocontainer">
+                  
+                  
+               
+                <select id="groupsselection" runat="server" >
+                 
+                    </select>
+                    
+                 <%--  <asp:DropDownList ID="groupsselection" runat="server" 
+                        onselectedindexchanged="groupsselection_SelectedIndexChanged">
+                    </asp:DropDownList>
+--%>
+                
+          
+
+
+                   <a class="premium" href="../Referral.aspx">Get free Premium Account</a>
+
                     <div id="msgcontainer">
                         <div id="msgcontent">
                             <a href="../Message/Messages.aspx">
@@ -166,67 +310,67 @@
                             <a href="../Message/Task.aspx">
                                 <img alt="" src="../Contents/img/admin/remotetiny.png"><span runat="server" id="incom_tasks">0</span></a></div>
                     </div>
-                    Information! Now You have <a href="~/Message/Messages.aspx" id="incomMessages" runat="server">
+                    <%--Information! Now You have <a href="~/Message/Messages.aspx" id="incomMessages" runat="server">
                         25</a> Incoming Message and <a runat="server" id="incomTasks" href="../Message/Task.aspx">
-                            0</a> Task <a class="premium" href="../Referral.aspx">Get free Premium Account</a>
+                            0</a> Task <a class="premium" href="../Referral.aspx">Get free Premium Account</a>--%>
                     
 
                     <div id="errsuccess" class="greenerrormsg">
                         <span id="errsuccessmsg" class="msg">Successfull your work</span> <span class="cross">
                             X</span></div>
                 </div>
-                <div id="cmposecontainer" runat="server">
-                    <div id="composecontent">
-                        <a href="#">
-                            <img src="../Contents/img/admin/111.png" width="20" />
-                            Compose</a>
-                    </div>
-                    <div id="searchcontent">
-                        <a href="#">
-                            <img src="../Contents/img/admin/061.png" /></a>
-                    </div>
-                </div>
+               
 
-                <a href="../Default.aspx?type=logout" class="woo_logout" style="text-decoration: none;
-                        color: #767676;">
-                        <img src="../Contents/img/logout_woo.png" style="margin-right: 4px;" alt="" />Logout</a>
+                
 
-            </div>
+            
         </div>
         <%--<div id="actdiv" runat=server> <span >Your accout is not yet activated.Check your E-mail to activate your account.</span><a href="#">Resend Mail</a></div>--%>
-        <div id="actdiv" runat="server">
-        </div>
+        
         <div id="navi">
+         
             <div class="container">
-                <div id="usercontainer">
-                    <%--<div id="userimg" runat="server">
-                    </div>--%>
-                    <div id="usernm" runat="server">
-                    </div>
-                    <%--<div id="userinf" runat="server">
-                    </div>--%>
+                <div id="logo">
+                    <a href="../Home.aspx">
+                        <img src="../Contents/img/under_sspro_logo.png" alt="Socio Board" /></a>
                 </div>
-                <div class="navbar pull-right">
+                <div class="navbar">
                     <div class="navbar-inner">
                         <ul class="nav">
-                            <li id="home" class="active"><a href="../Home.aspx">
-                                <img src="../Contents/img/admin/home.png" alt="" width="40" /><span>Home</span></a> </li>
-                            <li id="message"><a href="../Message/Messages.aspx">
-                                <img src="../Contents/img/admin/mail.png" alt="" width="40" /><span>Message</span></a> </li>
-                            <li id="feeds"><a href="../Feeds/Feeds.aspx">
-                                <img src="../Contents/img/admin/feeds.png" alt="" width="40" /><span>Feeds</span></a> </li>
-                            <li id="publishing"><a href="../Publishing.aspx">
-                                <img src="../Contents/img/admin/publishing.png" alt="" width="40" /><span>Publishing</span></a> </li>
-                            <li id="discovery"><a href="../Discovery.aspx">
-                                <img src="../Contents/img/admin/discovery.png" alt="" width="40" /><span>Discovery</span></a> </li>
-                            <li id="reports"><a href="../Reports/GroupStats.aspx">
-                                <img src="../Contents/img/admin/reports.png" alt="" height="40" /><span>Reports</span></a> </li>
-                            <li id="Li1"><a href="../Group/Group.aspx">
-                                <img src="../Contents/img/admin/group.png" alt="" width="40" /><span>Groups</span></a> </li>
+                            <li id="home" class="active" title="Home"><a href="../Home.aspx">
+                                <img src="../Contents/img/admin/home.png" alt="" width="40" /></a> </li>
+                            <li id="message"><a href="../Message/Messages.aspx" title="Message">
+                                <img src="../Contents/img/admin/mail.png" alt="" width="40" /></a> </li>
+                            <li id="feeds"><a href="../Feeds/Feeds.aspx" title="Feeds">
+                                <img src="../Contents/img/admin/feeds.png" alt="" width="40" /></a> </li>
+                            <li id="publishing"><a href="../Publishing.aspx" title="Publishing">
+                                <img src="../Contents/img/admin/publishing.png" alt="" width="40" /></a> </li>
+                            <li id="discovery"><a href="../Discovery.aspx" title="Discovery">
+                                <img src="../Contents/img/admin/discovery.png" alt="" width="40" /></a> </li>
+                            <li id="reports"><a href="../Reports/GroupStats.aspx" title="Reports">
+                                <img src="../Contents/img/admin/reports.png" alt="" height="40" /></a> </li>
+                            <li id="groups"><a href="../Group/Group.aspx" title="Groups">
+                                <img src="../Contents/img/admin/group.png" alt="" width="40" /></a> </li>
                         </ul>
                     </div>
+    
                 </div>
-                <div id="topbtn" runat="server">
+
+                <div class="usrnm">
+                      <a id="displayText" href="javascript:toggle();" class="showhide_text">
+                          <div id="usercontainer">
+                            <div id="userimg" runat="server">
+                            </div>
+                            <div id="usernm" runat="server">
+                            </div>
+                            <div class="dropdownl"></div>
+                            <%--<div id="userinf" runat="server">
+                            </div>--%>
+                        </div>
+                      </a>
+                      <div id="toggleText" class="toggletext">
+                      
+                        <div id="topbtn" runat="server">
                     <div class="navbar">
                         <div class="navbar-inner">
                             <ul class="nav">
@@ -298,7 +442,7 @@
                                     </div>
                                 </li>
                                 <li id="masterInvite"><a id="master_invite">
-                                    <img src="../Contents/img/admin/user2.png" alt="" title="Title" /></a>
+                                    <img  src="../Contents/img/admin/user2.png" alt="" title="Invite a Team Member" /></a>
                                     <div id="inviteTeam" style="display: none;">
                                         <div class="drop_top">
                                         </div>
@@ -341,11 +485,33 @@
                                         </div>
                                     </div>
                                 </li>
+                                <li >
+                                  <a href="../Default.aspx?type=logout" class="woo_logout" style="text-decoration: none;
+                        color: #767676;">
+                        <img alt="Logout" title="Logout" src="../Contents/img/logout_woo.png" style="margin-right: 4px;" alt="" /></a>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
+                      
+                      </div>
+                    </div>
+                
+                <div id="cmposecontainer" runat="server">
+                    <div id="composecontent">
+                        <a href="#"><img src="../Contents/img/admin/111.png" width="20" title="Compose" /></a>
+                    </div>
+                    </div>
+                    <div id="searchcontainer" runat="server">
+                    <div id="searchcontent">
+                        <a href="#"><img src="../Contents/img/admin/061.png" width="20" title="Search contact" /></a>
+                    </div>
+                </div>      
+                
             </div>
+        </div>
+        <div id="actdiv" runat="server">
         </div>
     </div>
     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
@@ -618,7 +784,7 @@
                                 <textarea id="Textarea1" rows="" cols="" name="" placeholder="Write your message here"></textarea>
                             </div>
                             <div class="task_ws_tm_button_div">
-                            	<input id="Button1" type="button" name="" value="Comment"  onclick="twittercomments();"/>
+                            	<input id="Button1" class="btn btnspan btnclr" type="button" name="" value="Comment"  onclick="twittercomments();" style=" margin:0 0 0 42px !important;"/>
                               <%--  <input id="cancel11" type="button" name="" value="CANCEL" />--%>
                             </div>
                         </section>

@@ -95,6 +95,60 @@ namespace SocioBoard.Model
         }
 
 
+        public List<GooglePlusActivities> getAllgplusOfUser(string profileId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get all google plus activities.
+
+
+
+                        string str = "from GooglePlusActivities where GpUserId IN(";
+                        string[] arrsrt = profileId.Split(',');
+                        foreach (string sstr in arrsrt)
+                        {
+                            str += Convert.ToInt64(sstr) + ",";
+                        }
+                        str = str.Substring(0, str.Length - 1);
+                        str += ") ORDER BY EntryDate DESC";
+
+                       // List<GooglePlusActivities> alst = session.CreateQuery("from GooglePlusActivities where UserId = :userid and GpUserId = :profileId")
+                        List<GooglePlusActivities> alst = session.CreateQuery(str)
+                      //  .SetParameter("userid", UserId)
+                       // .SetParameter("profileId", profileId)
+                        .List<GooglePlusActivities>()
+                        .ToList<GooglePlusActivities>();
+
+
+
+                        #region oldcode
+                        //List<GooglePlusActivities> alst = new List<GooglePlusActivities>();
+                        //foreach (GooglePlusActivities item in query.Enumerable<GooglePlusActivities>().OrderByDescending(x => x.PublishedDate))
+                        //{
+                        //    alst.Add(item);
+                        //} 
+                        #endregion
+
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End session
+        }
+
+
         /// <getAllgoogleplusActivityOfUser>
         /// Get the all user activities on google plus by profile id.
         /// </summary>

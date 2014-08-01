@@ -21,14 +21,17 @@ namespace SocioBoard.Message
         public static Guid custid = Guid.Empty;
         static string imgpath = string.Empty;
         ArrayList taskdata = new ArrayList();
-        static string custname = string.Empty;
+        string TaskStatus = string.Empty;
 
+        static string custname = string.Empty;
+        UserRepository objUserRepository = new UserRepository();
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
                 SocioBoard.Domain.User user = (User)Session["LoggedUser"];
 
+              
                 #region for You can use only 30 days as Unpaid User
 
                 if (user.PaymentStatus.ToLower() == "unpaid")
@@ -66,7 +69,7 @@ namespace SocioBoard.Message
 
                 if (!IsPostBack)
                 {
-                    this.rdbtnmytask_CheckedChanged(sender, e);
+                   this.rdbtnmytask_CheckedChanged(sender, e);
                 }
 
             }
@@ -80,19 +83,25 @@ namespace SocioBoard.Message
         protected void bindTeamTask()
         {
             string path = "";
-            string strbind = string.Empty;//"Sorry no data !";
+            string strbind = string.Empty;
             taskdiv.InnerHtml = "";
             int i = 0;
             int taskid = 0;
             string preaddedcomment = "";
+            SocioBoard.Domain.Team team = (SocioBoard.Domain.Team)Session["GroupName"];
             TaskCommentRepository objTaskCmtRepo = new TaskCommentRepository();
-            taskdata = taskrepo.getAllTasksOfUser(custid);
+            taskdata = taskrepo.getAllTasksOfUser(custid,team.GroupId);
             foreach (Tasks item in taskdata)
             {
-                //if (item.pic_url == "")
-                //    path = "../Contents/img/blank_img.png";
-                //else
-                //    path = "../Contents/user_image/" + item.pic_url;
+                if (item.TaskStatus == true)
+                {
+                    TaskStatus = "Completed";
+
+                }
+                else
+                {
+                    TaskStatus = "Pending";
+                }
 
                 imgpath = path;
                 i++;
@@ -105,12 +114,12 @@ namespace SocioBoard.Message
                                    "<img width=\"32\" height=\"32\" border=\"0\" class=\"avatar\" src=" + path + " />" +
                                    "</section><section class=\"task-message font-13 third\"><a class=\"tip_left\">" + item.TaskMessage + "</a>" +
                                   "</section><section class=\"task-status\"><div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
-                                     "<b>" + item.TaskStatus + "</b><span class=\"ui-sproutmenu-status\">" +
+                                     "<b>" + TaskStatus + "</b><span class=\"ui-sproutmenu-status\">" +
                                       "<img id=\"img_" + item.Id + "_" + item.TaskStatus + "\" class=\"edit_button\" src=\"../Contents/img/icon_edit.png\" onclick=\"PerformClick(this.id)\" title=\"Edit Status\" />" +
                                       "</span></a></div></section></div>" +
                                       "</section>";
 
-                ArrayList pretask = objTaskCmtRepo.getAllTasksCommentOfUser(item.UserId, item.Id);
+                ArrayList pretask = objTaskCmtRepo.getAllTasksCommentOfUser(item.Id);
                 if (pretask != null)
                 {
                     preaddedcomment += "<div id=" + item.Id + " style=\"display:none\" >";
@@ -141,9 +150,9 @@ namespace SocioBoard.Message
 
         protected void rdbtnteamtask_CheckedChanged(object sender, EventArgs e)
         {
-            // IEnumerable<dynamic> task = taskrepo.GetAllTaskbyCustId(custid);
-
+          
             User user = (User)Session["LoggedUser"];
+            SocioBoard.Domain.Team team = (SocioBoard.Domain.Team)Session["GroupName"];
 
             if (chkincomplete.Checked == true)
             {
@@ -159,7 +168,7 @@ namespace SocioBoard.Message
             }
 
             string path = "";
-            string strbind = string.Empty;//"Sorry no data !";
+            string strbind = string.Empty;
             taskdiv.InnerHtml = "";
             int i = 0;
             string preaddedcomment = "";
@@ -175,48 +184,75 @@ namespace SocioBoard.Message
 
             TaskCommentRepository objTaskCmtRepo = new TaskCommentRepository();
             TeamRepository objTeam = new TeamRepository();
-            taskdata = taskrepo.getAllTasksOfUser(custid);
+            taskdata = taskrepo.getAllTasksOfUser(custid,team.GroupId);
             foreach (Tasks item in taskdata)
             {
-                //if (item.pic_url == "")
-                //path = "../Contents/img/blank_img.png";
-                //else
-                //    path = "../Contents/user_image/" + item.pic_url;
-                Team team = objTeam.getMemberById(item.AssignTaskTo, item.UserId);
-                string strAssignedTo = string.Empty;
-                if (team == null)
+                if (item.TaskStatus == true)
                 {
-                    strAssignedTo = custname;
+                    TaskStatus = "Completed";
+
                 }
                 else
-                    strAssignedTo = team.FirstName;
+                {
+                    TaskStatus = "Pending";
+                }
+
+                string strAssignedTo = string.Empty;
+                User objdetails = objUserRepository.getUsersById(item.AssignTaskTo);                            
+                strAssignedTo = objdetails.UserName;
+             
                 imgpath = path;
                 i++;
-                strbind += "<section class=\"section\" id=\"Section" + item.Id + "\"><div class=\"js-task-cont read\">"+
-                            "<span id=\"taskcomment\" class=\"ficon task_active\">" +
-                                  "<img  onclick=\"getmemberdata('" + item.Id + "');\" src=\"../Contents/img/task_pin.png\" width=\"14\" height=\"17\" alt=\"\" /></span>" +
-                           "<section class=\"task-activity third\"><p>" + strAssignedTo + "</p><div>" + item.AssignDate + "</div><input type=\"hidden\" id=\"hdntaskid_" + i + "\" value=" + item.Id + " />" +
-                                  "<p>Assigned by " + custname + "</p></section>" +     
-                                  "<section class=\"task-owner\">" +
-                                   "<img width=\"32\" height=\"32\" border=\"0\" class=\"avatar\" src=" + path + " />" +
-                                   "</section><section class=\"task-message font-13 third\"><a class=\"tip_left\">" + item.TaskMessage + "</a>" +
-                                  "</section><section class=\"task-status\"><div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
-                                      "<b>" + item.TaskStatus +"</b><span class=\"ui-sproutmenu-status\">"+
-                                      "<img id=\"img_" + item.Id + "_" + item.TaskStatus + "\" class=\"edit_button\" src=\"../Contents/img/icon_edit.png\" onclick=\"PerformClick(this.id)\" title=\"Edit Status\" />" +
-                                      "</span></a></div></section></div>" +
-                                      "</section>";
 
-                ArrayList pretask = objTaskCmtRepo.getAllTasksCommentOfUser(item.UserId, item.Id);
+                if (user.Id == item.UserId)
+                {
+                    strbind += "<section class=\"section\" id=\"Section" + item.Id + "\"><div class=\"js-task-cont read\">" +
+                                "<span id=\"taskcomment\" class=\"ficon task_active\">" +
+                                      "<img  onclick=\"getmemberdata('" + item.Id + "');\" src=\"../Contents/img/task_pin.png\" width=\"14\" height=\"17\" alt=\"\" /></span>" +
+                               "<section class=\"task-activity third\"><p>" + strAssignedTo + "</p><div>" + item.AssignDate + "</div><input type=\"hidden\" id=\"hdntaskid_" + i + "\" value=" + item.Id + " />" +
+                                      "<p>Assigned by " + custname + "</p></section>" +
+                                      "<section class=\"task-owner\">" +
+                                       "<img width=\"32\" height=\"32\" border=\"0\" class=\"avatar\" src=" + path + " />" +
+                                       "</section><section class=\"task-message font-13 third\"><a class=\"tip_left\">" + item.TaskMessage + "</a>" +
+                                      "</section><section class=\"task-status\"><div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
+                                          "<b>" + TaskStatus + "</b><span class=\"ui-sproutmenu-status\">" +
+                        // user.Id.ToString()==item.UserId.ToString()?"<img id=\"img_" + item.Id + "_" + item.TaskStatus + "\" class=\"edit_button\" src=\"../Contents/img/icon_edit.png\" onclick=\"PerformClick(this.id)\" title=\"Edit Status\" />":""+
+                                          "<img id=\"img_" + item.Id + "_" + item.TaskStatus + "\" class=\"edit_button\" src=\"../Contents/img/icon_edit.png\" onclick=\"PerformClick(this.id)\" title=\"Edit Status\" />" +
+                                          "</span></a></div></section></div>" +
+                                          "</section>";
+                }
+
+                else
+                {
+                    strbind += "<section class=\"section\" id=\"Section" + item.Id + "\"><div class=\"js-task-cont read\">" +
+                             "<span id=\"taskcomment\" class=\"ficon task_active\">" +
+                                   "<img  onclick=\"getmemberdata('" + item.Id + "');\" src=\"../Contents/img/task_pin.png\" width=\"14\" height=\"17\" alt=\"\" /></span>" +
+                            "<section class=\"task-activity third\"><p>" + strAssignedTo + "</p><div>" + item.AssignDate + "</div><input type=\"hidden\" id=\"hdntaskid_" + i + "\" value=" + item.Id + " />" +
+                                   "<p>Assigned by " + custname + "</p></section>" +
+                                   "<section class=\"task-owner\">" +
+                                    "<img width=\"32\" height=\"32\" border=\"0\" class=\"avatar\" src=" + path + " />" +
+                                    "</section><section class=\"task-message font-13 third\"><a class=\"tip_left\">" + item.TaskMessage + "</a>" +
+                                   "</section><section class=\"task-status\"><div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
+                                       "<b>" + TaskStatus + "</b><span class=\"ui-sproutmenu-status\">" +                                                   
+                                       "</span></a></div></section></div>" +
+                                       "</section>";
+                }
+
+
+                ArrayList pretask = objTaskCmtRepo.getAllTasksCommentOfUser(item.Id);
                 if (pretask != null)
                 {
                     preaddedcomment += "<div id=" + item.Id + " style=\"display:none\" >";
                     foreach (TaskComment items in pretask)
                     {
+                        User details = objUserRepository.getUsersById(items.UserId);
+                        string strAssigned = details.UserName;
+
                         preaddedcomment += "<div id=\"task_comment_" + item.Id + "_" + items.Id + "\" class=\"assign_comments\" >" +
                                         "<section><article class=\"task_assign\">" +
                                         "<img src=" + imgpath + " width=\"30\" height=\"30\" alt=\"\"  />  " +
                                             "<article><input id=\"hdncommentsid\" type=\"hidden\" value=" + items.Id + " /><p class=\"msg_article\">" + items.Comment + "</p>" +
-                                                "<aside class=\"days_ago\"> By " + custname + " at " + items.CommentDate + "</aside>" +
+                                                "<aside class=\"days_ago\"> By " + strAssigned + " at " + items.CommentDate + "</aside>" +
                                             "</article></article></section></div>";
                     }
 
@@ -239,12 +275,13 @@ namespace SocioBoard.Message
         {
 
             User user = (User)Session["LoggedUser"];
+            SocioBoard.Domain.Team team = (SocioBoard.Domain.Team)Session["GroupName"];
             string imagepathofuser = string.Empty;
-            string path = "";
-            string strbind = string.Empty;//"Sorry no data !";
+          //  string path = "";
+            string strbind = string.Empty;
             taskdiv.InnerHtml = "";
             int i = 0;
-            int taskid = 0;
+          //  int taskid = 0;
             string preaddedcomment = "";
             if (chkincomplete.Checked == true)
             {
@@ -258,8 +295,7 @@ namespace SocioBoard.Message
             {
                 rdbtnteamtask.Checked = false;
             }
-            // bindTeamTask();
-
+           
             if (string.IsNullOrEmpty(user.ProfileUrl))
             {
                 imagepathofuser = "../Contents/img/blank_img.png";
@@ -270,57 +306,76 @@ namespace SocioBoard.Message
             }
 
 
-
-            taskdata = taskrepo.getAllMyTasksOfUser(custid, custid);
+            
+            taskdata = taskrepo.getAllMyTasksOfUser(custid,team.GroupId);
             TaskCommentRepository objTaskCmtRepo = new TaskCommentRepository();
             TeamRepository objTeam = new TeamRepository();
             foreach (Tasks item in taskdata)
             {
+                if (item.TaskStatus == true)
+                {
+                    TaskStatus = "Completed";
 
+                }
+                else
+                {
+                    TaskStatus = "Pending";
+                }
+                  
+                  
                 try
                 {
-                    Team team = objTeam.getMemberById(item.AssignTaskTo, item.UserId);
-                    string strAssignedTo = string.Empty;
-                    if (team == null)
-                    {
-                        strAssignedTo = custname;
-                    }
-                    else
-                        strAssignedTo = team.FirstName;
-
-
-
-
-
-
-
+                    User objdetails = objUserRepository.getUsersById(item.UserId);
+                     string strAssignedby = objdetails.UserName;                
                     i++;
-
-                    strbind += "<section class=\"section\" id=\"Section" + item.Id + "\"><div class=\"js-task-cont read\">" +
+                    if (user.Id == objdetails.Id)
+                    {
+                        strbind += "<section class=\"section\" id=\"Section" + item.Id + "\"><div class=\"js-task-cont read\">" +
                                 "<span id=\"taskcomment\" class=\"ficon task_active\">" +
                                           "<img  onclick=\"getmemberdata('" + item.Id + "');\" src=\"../Contents/img/task_pin.png\" width=\"14\" height=\"17\" alt=\"\" /></span>" +
-                                "<section class=\"task-activity third\"><p>" + strAssignedTo + "</p><div>" + item.AssignDate + "</div><input type=\"hidden\" id=\"hdntaskid_" + i + "\" value=" + item.Id + " />" +
-                                      "<p>Assigned by " + custname + "</p></section>" +
+                                "<section class=\"task-activity third\"><p>" + custname + "</p><div>" + item.AssignDate + "</div><input type=\"hidden\" id=\"hdntaskid_" + i + "\" value=" + item.Id + " />" +
+                                      "<p>Assigned by " + strAssignedby + "</p></section>" +
                                 "<section class=\"task-owner\">" +
                                        "<img width=\"32\" height=\"32\" border=\"0\" class=\"avatar\" src=\"" + imagepathofuser + "\" />" +
                                        "</section><section class=\"task-message font-13 third\"><a class=\"tip_left\">" + item.TaskMessage + "</a>" +
                                       "</section><section class=\"task-status\"><div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
-                                          "<b>" + item.TaskStatus + "</b><span class=\"ui-sproutmenu-status\">" +
+                                          "<b>" + TaskStatus + "</b><span class=\"ui-sproutmenu-status\">" +
                                           "<img id=\"img_" + item.Id + "_" + item.TaskStatus + "\" class=\"edit_button\" src=\"../Contents/img/icon_edit.png\" onclick=\"PerformClick(this.id)\" title=\"Edit Status\" />" +
                                           "</span></a></div></section></div>" +
                                           "</section>";
-
-                    ArrayList pretask = objTaskCmtRepo.getAllTasksCommentOfUser(item.UserId, item.Id);
+                    }
+                    else
+                    {
+                        strbind += "<section class=\"section\" id=\"Section" + item.Id + "\"><div class=\"js-task-cont read\">" +
+                             "<span id=\"taskcomment\" class=\"ficon task_active\">" +
+                                       "<img  onclick=\"getmemberdata('" + item.Id + "');\" src=\"../Contents/img/task_pin.png\" width=\"14\" height=\"17\" alt=\"\" /></span>" +
+                             "<section class=\"task-activity third\"><p>" + custname + "</p><div>" + item.AssignDate + "</div><input type=\"hidden\" id=\"hdntaskid_" + i + "\" value=" + item.Id + " />" +
+                                   "<p>Assigned by " + strAssignedby + "</p></section>" +
+                             "<section class=\"task-owner\">" +
+                                    "<img width=\"32\" height=\"32\" border=\"0\" class=\"avatar\" src=\"" + imagepathofuser + "\" />" +
+                                    "</section><section class=\"task-message font-13 third\"><a class=\"tip_left\">" + item.TaskMessage + "</a>" +
+                                   "</section><section class=\"task-status\"><div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
+                                       "<b>" + TaskStatus + "</b><span class=\"ui-sproutmenu-status\">" +
+                                
+                                       "</span></a></div></section></div>" +
+                                       "</section>";
+                    }
+                    ArrayList pretask = objTaskCmtRepo.getAllTasksCommentOfUser(item.Id);
                     if (pretask != null)
                     {
                         preaddedcomment += "<div id=" + item.Id + " style=\"display:none\" >";
                         foreach (TaskComment items in pretask)
                         {
+                            User details = objUserRepository.getUsersById(items.UserId);
+                            string strAssigned = details.UserName;
+
+
+
                             preaddedcomment += "<div id=\"task_comment_" + item.Id + "_" + items.Id + "\" class=\"assign_comments\" >" +
                                             "<section><article class=\"task_assign\">" +
                                             "<img src=" + imgpath + " width=\"30\" height=\"30\" alt=\"\"  />  " +
                                                 "<article><input id=\"hdncommentsid\" type=\"hidden\" value=" + items.Id + " /><p class=\"msg_article\">" + items.Comment + "</p>" +
-                                                    "<aside class=\"days_ago\"> By " + custname + " at " + items.CommentDate + "</aside>" +
+                                                    "<aside class=\"days_ago\"> By " + strAssigned + " at " + items.CommentDate + "</aside>" +
                                                 "</article></article></section></div>";
                         }
 
@@ -344,12 +399,14 @@ namespace SocioBoard.Message
             prevComments.InnerHtml = preaddedcomment;
 
         }
+   
 
         protected void chkincomplete_CheckedChanged(object sender, EventArgs e)
         {
             User user = (User)Session["LoggedUser"];
+            SocioBoard.Domain.Team team = (SocioBoard.Domain.Team)Session["GroupName"];
             string path = "";
-            string strbind = string.Empty;//"Sorry no data !";
+            string strbind = string.Empty;
             taskdiv.InnerHtml = "";
             int i = 0;
             int taskid = 0;
@@ -381,50 +438,84 @@ namespace SocioBoard.Message
                     path = user.ProfileUrl;
                 }
 
-                taskdata = taskrepo.getAllTasksOfUserByStatus(custid, false);
+                taskdata = taskrepo.getAllIncompleteTasksOfUser(custid,team.GroupId);
+                foreach (Tasks item in taskrepo.getAllIncompleteTasksOfUsers(custid))
+                {
+                    taskdata.Add(item);
+                }
+                   
+
                 TaskCommentRepository objTaskCmtRepo = new TaskCommentRepository();
                 TeamRepository objTeam = new TeamRepository();
                 foreach (Tasks item in taskdata)
                 {
-                    //if (item.pic_url == "")
-                    //    path = "../Contents/img/blank_img.png";
-                    //else
-                    //    path = "../Contents/user_image/" + item.pic_url;
-                    Team team = objTeam.getMemberById(item.AssignTaskTo, item.UserId);
-                    string strAssignedTo = string.Empty;
-                    if (team == null)
+                    if (item.TaskStatus == true)
                     {
-                        strAssignedTo = custname;
+                        TaskStatus = "Completed";
+
                     }
                     else
-                        strAssignedTo = team.FirstName;
+                    {
+                        TaskStatus = "Pending";
+                    }
+
+
+
+                    User objdetails = objUserRepository.getUsersById(item.AssignTaskTo);
+                    string strAssignedTo = objdetails.UserName;
+                    User objdetail = objUserRepository.getUsersById(item.UserId);
+                    string strAssignedBy = objdetail.UserName;
                     imgpath = path;
                     i++;
-                    strbind += "<section class=\"section\" id=\"Section" + item.Id + "\"><div class=\"js-task-cont read\">"+
-                                "<span id=\"taskcomment\" class=\"ficon task_active\">" +
-                                          "<img  onclick=\"getmemberdata('" + item.Id + "');\" src=\"../Contents/img/task_pin.png\" width=\"14\" height=\"17\" alt=\"\" /></span>" +
-                               "<section class=\"task-activity third\"><p>" + strAssignedTo + "</p><div>" + item.AssignDate + "</div><input type=\"hidden\" id=\"hdntaskid_" + i + "\" value=" + item.Id + " />" +
-                                      "<p>Assigned by " + custname + "</p></section>" +
-                               "<section class=\"task-owner\">" +
-                                       "<img width=\"32\" height=\"32\" border=\"0\" class=\"avatar\" src=" + path + " />" +
-                                       "</section><section class=\"task-message font-13 third\"><a class=\"tip_left\">" + item.TaskMessage + "</a>" +
-                                      "</section><section class=\"task-status\"><div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
-                                        "<b>" + item.TaskStatus + "</b><span class=\"ui-sproutmenu-status\">" +
-                                          "<img id=\"img_" + item.Id + "_" + item.TaskStatus + "\" class=\"edit_button\" src=\"../Contents/img/icon_edit.png\" onclick=\"PerformClick(this.id)\" title=\"Edit Status\" />" +
-                                          "</span></a></div></section></div>" +
-                                          "</section>";
 
-                    ArrayList pretask = objTaskCmtRepo.getAllTasksCommentOfUser(item.UserId, item.Id);
+
+                    if (user.Id == objdetail.Id)
+                    {
+                        strbind += "<section class=\"section\" id=\"Section" + item.Id + "\"><div class=\"js-task-cont read\">" +
+                                    "<span id=\"taskcomment\" class=\"ficon task_active\">" +
+                                              "<img  onclick=\"getmemberdata('" + item.Id + "');\" src=\"../Contents/img/task_pin.png\" width=\"14\" height=\"17\" alt=\"\" /></span>" +
+                                   "<section class=\"task-activity third\"><p>" + strAssignedTo + "</p><div>" + item.AssignDate + "</div><input type=\"hidden\" id=\"hdntaskid_" + i + "\" value=" + item.Id + " />" +
+                                          "<p>Assigned by " + strAssignedBy + "</p></section>" +
+                                   "<section class=\"task-owner\">" +
+                                           "<img width=\"32\" height=\"32\" border=\"0\" class=\"avatar\" src=" + path + " />" +
+                                           "</section><section class=\"task-message font-13 third\"><a class=\"tip_left\">" + item.TaskMessage + "</a>" +
+                                          "</section><section class=\"task-status\"><div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
+                                            "<b>" + TaskStatus + "</b><span class=\"ui-sproutmenu-status\">" +
+                                              "<img id=\"img_" + item.Id + "_" + item.TaskStatus + "\" class=\"edit_button\" src=\"../Contents/img/icon_edit.png\" onclick=\"PerformClick(this.id)\" title=\"Edit Status\" />" +
+                                              "</span></a></div></section></div>" +
+                                              "</section>";
+                    }
+                    else
+                    {
+                        strbind += "<section class=\"section\" id=\"Section" + item.Id + "\"><div class=\"js-task-cont read\">" +
+                                      "<span id=\"taskcomment\" class=\"ficon task_active\">" +
+                                                "<img  onclick=\"getmemberdata('" + item.Id + "');\" src=\"../Contents/img/task_pin.png\" width=\"14\" height=\"17\" alt=\"\" /></span>" +
+                                     "<section class=\"task-activity third\"><p>" + strAssignedTo + "</p><div>" + item.AssignDate + "</div><input type=\"hidden\" id=\"hdntaskid_" + i + "\" value=" + item.Id + " />" +
+                                            "<p>Assigned by " + strAssignedBy + "</p></section>" +
+                                     "<section class=\"task-owner\">" +
+                                             "<img width=\"32\" height=\"32\" border=\"0\" class=\"avatar\" src=" + path + " />" +
+                                             "</section><section class=\"task-message font-13 third\"><a class=\"tip_left\">" + item.TaskMessage + "</a>" +
+                                            "</section><section class=\"task-status\"><div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
+                                              "<b>" + TaskStatus + "</b><span class=\"ui-sproutmenu-status\">" +                            
+                                                "</span></a></div></section></div>" +
+                                                "</section>";
+                    }
+
+                    ArrayList pretask = objTaskCmtRepo.getAllTasksCommentOfUser(item.Id);
                     if (pretask != null)
                     {
                         preaddedcomment += "<div id=" + item.Id + " style=\"display:none\" >";
                         foreach (TaskComment items in pretask)
                         {
+
+                            User details = objUserRepository.getUsersById(items.UserId);
+                            string strAssigned = details.UserName;
+
                             preaddedcomment += "<div id=\"task_comment_" + item.Id + "_" + items.Id + "\" class=\"assign_comments\" >" +
                                             "<section><article class=\"task_assign\">" +
                                             "<img src=" + imgpath + " width=\"30\" height=\"30\" alt=\"\"  />  " +
                                                 "<article><input id=\"hdncommentsid\" type=\"hidden\" value=" + items.Id + " /><p class=\"msg_article\">" + items.Comment + "</p>" +
-                                                    "<aside class=\"days_ago\"> By " + custname + " at  " + items.CommentDate + "</aside>" +
+                                                    "<aside class=\"days_ago\"> By " + strAssigned + " at  " + items.CommentDate + "</aside>" +
                                                 "</article></article></section></div>";
                         }
 
@@ -436,7 +527,7 @@ namespace SocioBoard.Message
 
                 if (string.IsNullOrEmpty(strbind))
                 {
-                     strbind ="Sorry no data !";
+                    strbind = "Sorry no data !";
                 }
 
                 taskdiv.InnerHtml = strbind;
@@ -460,6 +551,7 @@ namespace SocioBoard.Message
         protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             User user = (User)Session["LoggedUser"];
+            SocioBoard.Domain.Team team = (SocioBoard.Domain.Team)Session["GroupName"];
             if (CheckBox1.Checked)
             {
                 if (chkincomplete.Checked == true)
@@ -474,9 +566,9 @@ namespace SocioBoard.Message
                 if (rdbtnteamtask.Checked == true)
                     rdbtnteamtask.Checked = false;
 
-                // IEnumerable<dynamic> task = taskrepo.GetAllTaskbyCustId(custid);
+              
                 string path = "";
-                string strbind = string.Empty;//"Sorry no data !";
+                string strbind = string.Empty;
                 taskdiv.InnerHtml = "";
                 int i = 0;
                 string preaddedcomment = "";
@@ -490,51 +582,88 @@ namespace SocioBoard.Message
                     path = user.ProfileUrl;
                 }
 
-
-                taskdata = taskrepo.getAllTasksOfUserByStatus(custid, true);
+                //taskdata = taskrepo.getAllCompleteTasksOfUser(custid, custid);
+                taskdata = taskrepo.getAllCompleteTasksOfUser(custid, team.GroupId,custid);
+                //foreach (Tasks item in taskrepo.getAllCompleteTasksOfUsers(custid))
+                //{
+                //    taskdata.Add(item);
+                //}
+                foreach (Tasks item in taskrepo.getAllCompleteTasksOfUsers(custid,team.GroupId))
+                {
+                    taskdata.Add(item);
+                }
                 TaskCommentRepository objTaskCmtRepo = new TaskCommentRepository();
                 TeamRepository objTeam = new TeamRepository();
                 foreach (Tasks item in taskdata)
                 {
-                    //if (item.pic_url == "")
-                    //    path = "../Contents/img/blank_img.png";
-                    //else
-                    //    path = "../Contents/user_image/" + item.pic_url;
-                    Team team = objTeam.getMemberById(item.AssignTaskTo, item.UserId);
-                    string strAssignedTo = string.Empty;
-                    if (team == null)
+                    if (item.TaskStatus == true)
                     {
-                        strAssignedTo = custname;
+                        TaskStatus = "Completed";
+
                     }
                     else
-                        strAssignedTo = team.FirstName;
+                    {
+                        TaskStatus = "Pending";
+                    }
+
+
+
+                    User objdetails = objUserRepository.getUsersById(item.AssignTaskTo);
+                    string strAssignedTo = objdetails.UserName;
+                    User objdetail = objUserRepository.getUsersById(item.UserId);
+                    string strAssignedBy = objdetail.UserName;
                     imgpath = path;
                     i++;
-                    strbind += "<section class=\"section\" id=\"Section" + item.Id + "\"><div class=\"js-task-cont read\">"+
-                                "<span id=\"taskcomment\" class=\"ficon task_active\">" +
-                                          "<img  onclick=\"getmemberdata('" + item.Id + "');\" src=\"../Contents/img/task_pin.png\" width=\"14\" height=\"17\" alt=\"\" /></span>" +
-                               "<section class=\"task-activity third\"><p>" + strAssignedTo + "</p><div>" + item.AssignDate + "</div><input type=\"hidden\" id=\"hdntaskid_" + i + "\" value=" + item.Id + " />" +
-                                      "<p>Assigned by " + custname + "</p></section>" +
-                                "<section class=\"task-owner\">" +
-                                       "<img width=\"32\" height=\"32\" border=\"0\" class=\"avatar\" src=" + path + " />" +
-                                       "</section><section class=\"task-message font-13 third\"><a class=\"tip_left\">" + item.TaskMessage + "</a>" +
-                                      "</section><section class=\"task-status\"><div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
-                                        "<b>" + item.TaskStatus + "</b><span class=\"ui-sproutmenu-status\">" +
-                                          "<img id=\"img_" + item.Id + "_" + item.TaskStatus + "\" class=\"edit_button\" src=\"../Contents/img/icon_edit.png\" onclick=\"PerformClick(this.id)\" title=\"Edit Status\" />" +
-                                          "</span></a></div></section></div>" +
-                                          "</section>";
 
-                    ArrayList pretask = objTaskCmtRepo.getAllTasksCommentOfUser(item.UserId, item.Id);
+                    if (user.Id == objdetail.Id)
+                    {
+                        strbind += "<section class=\"section\" id=\"Section" + item.Id + "\"><div class=\"js-task-cont read\">" +
+                                    "<span id=\"taskcomment\" class=\"ficon task_active\">" +
+                                              "<img  onclick=\"getmemberdata('" + item.Id + "');\" src=\"../Contents/img/task_pin.png\" width=\"14\" height=\"17\" alt=\"\" /></span>" +
+                                   "<section class=\"task-activity third\"><p>" + strAssignedTo + "</p><div>" + item.AssignDate + "</div><input type=\"hidden\" id=\"hdntaskid_" + i + "\" value=" + item.Id + " />" +
+                                          "<p>Assigned by " + strAssignedBy + "</p></section>" +
+                                    "<section class=\"task-owner\">" +
+                                           "<img width=\"32\" height=\"32\" border=\"0\" class=\"avatar\" src=" + path + " />" +
+                                           "</section><section class=\"task-message font-13 third\"><a class=\"tip_left\">" + item.TaskMessage + "</a>" +
+                                          "</section><section class=\"task-status\"><div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
+                                            "<b>" + TaskStatus + "</b><span class=\"ui-sproutmenu-status\">" +
+                                              "<img id=\"img_" + item.Id + "_" + item.TaskStatus + "\" class=\"edit_button\" src=\"../Contents/img/icon_edit.png\" onclick=\"PerformClick(this.id)\" title=\"Edit Status\" />" +
+                                              "</span></a></div></section></div>" +
+                                              "</section>";
+                    }
+
+                    else
+                    {
+                        strbind += "<section class=\"section\" id=\"Section" + item.Id + "\"><div class=\"js-task-cont read\">" +
+                                    "<span id=\"taskcomment\" class=\"ficon task_active\">" +
+                                              "<img  onclick=\"getmemberdata('" + item.Id + "');\" src=\"../Contents/img/task_pin.png\" width=\"14\" height=\"17\" alt=\"\" /></span>" +
+                                   "<section class=\"task-activity third\"><p>" + strAssignedTo + "</p><div>" + item.AssignDate + "</div><input type=\"hidden\" id=\"hdntaskid_" + i + "\" value=" + item.Id + " />" +
+                                          "<p>Assigned by " + strAssignedBy + "</p></section>" +
+                                    "<section class=\"task-owner\">" +
+                                           "<img width=\"32\" height=\"32\" border=\"0\" class=\"avatar\" src=" + path + " />" +
+                                           "</section><section class=\"task-message font-13 third\"><a class=\"tip_left\">" + item.TaskMessage + "</a>" +
+                                          "</section><section class=\"task-status\"><div class=\"ui_light floating task_status_change\"><a class=\"ui-sproutmenu\" href=\"#nogo\">" +
+                                            "<b>" + TaskStatus + "</b><span class=\"ui-sproutmenu-status\">" +                            
+                                              "</span></a></div></section></div>" +
+                                              "</section>";
+                    }
+
+
+                    ArrayList pretask = objTaskCmtRepo.getAllTasksCommentOfUser(item.Id);
                     if (pretask != null)
                     {
                         preaddedcomment += "<div id=" + item.Id + " style=\"display:none\" >";
                         foreach (TaskComment items in pretask)
                         {
+                            User details = objUserRepository.getUsersById(items.UserId);
+                            string strAssigned = details.UserName;
+
+                            
                             preaddedcomment += "<div id=\"task_comment_" + item.Id + "_" + items.Id + "\" class=\"assign_comments\" >" +
                                             "<section><article class=\"task_assign\">" +
                                             "<img src=" + imgpath + " width=\"30\" height=\"30\" alt=\"\"  />  " +
                                                 "<article><input id=\"hdncommentsid\" type=\"hidden\" value=" + items.Id + " /><p class=\"msg_article\">" + items.Comment + "</p>" +
-                                                    "<aside class=\"days_ago\"> By " + custname + " at " + items.CommentDate + "</aside>" +
+                                                    "<aside class=\"days_ago\"> By " + strAssigned + " at " + items.CommentDate + "</aside>" +
                                                 "</article></article></section></div>";
                         }
 
@@ -572,6 +701,7 @@ namespace SocioBoard.Message
                 try
                 {
                     Guid taskid = Guid.Parse(hdnTask_id.Value);
+                    SocioBoard.Domain.Team team = (SocioBoard.Domain.Team)Session["GroupName"];
                     string curdate = DateTime.Now.ToString("yyyy-MM-dd H:mm:ss ").ToString();
                     TaskCommentRepository objTaskCmtRepo = new TaskCommentRepository();
                     TaskComment objTaskCmt = new TaskComment();
@@ -583,7 +713,7 @@ namespace SocioBoard.Message
                     objTaskCmtRepo.addTaskComment(objTaskCmt);
                     hdnTask_id.Value = "";
                     TaskRepository taskRepo = new TaskRepository();
-                    ArrayList alst = taskRepo.getAllIncompleteTasksOfUser(custid);
+                    ArrayList alst = taskRepo.getAllIncompleteTasksOfUser(custid,team.GroupId);
                     Session["IncomingTasks"] = alst.Count;
                     txtComment.Text = "";
                 }
@@ -598,12 +728,14 @@ namespace SocioBoard.Message
         {
             Response.Redirect("Task.aspx", false);
         }
+        
         protected void btn_Click(object sender, EventArgs e)
         {
             try
             {
                 int res = 0;
                 Guid taskid = Guid.Parse(hdnTask_id.Value);
+                SocioBoard.Domain.Team team = (SocioBoard.Domain.Team)Session["GroupName"];
                 bool status = bool.Parse(hdnstatus.Value.ToString());
                 if (status == true)
                     status = false;
@@ -612,7 +744,7 @@ namespace SocioBoard.Message
                 TaskRepository objTaskRepo = new TaskRepository();
                 objTaskRepo.updateTaskStatus(taskid, custid, status);
                 TaskRepository taskRepo = new TaskRepository();
-                ArrayList alst = taskRepo.getAllIncompleteTasksOfUser(custid);
+                ArrayList alst = taskRepo.getAllIncompleteTasksOfUser(custid,team.GroupId);
                 Session["IncomingTasks"] = alst.Count;
                 bindTeamTask();
             }

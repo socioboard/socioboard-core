@@ -361,7 +361,7 @@ namespace SocioBoard.Helper
                     Users twtUser = new Users();
                     oAuthTwitter oauth = new oAuthTwitter();
                     TwitterAccountRepository TwtAccRepo = new TwitterAccountRepository();
-                    TwitterAccount TwtAccount = TwtAccRepo.getUserInformation(user.Id, Request.QueryString["id"]);
+                    TwitterAccount TwtAccount = TwtAccRepo.getUserInformation(Request.QueryString["id"]);
                     oauth.AccessToken = TwtAccount.OAuthToken;
                     oauth.AccessTokenSecret = TwtAccount.OAuthSecret;
                     oauth.ConsumerKey = ConfigurationManager.AppSettings["consumerKey"];
@@ -387,7 +387,7 @@ namespace SocioBoard.Helper
                                     {
 
                                         jquery += "<li class=\"shadower\">" +
-                                              "<div class=\"disco-feeds\">" +
+                                              "<div class=\"disco-feeds disco_title\">" +
                                                   "<div class=\"star-ribbon\"></div>" +
                                                   "<div class=\"disco-feeds-img\">" +
                                                       "<img alt=\"\" src=\"" + items["profile_image_url"] + "\" style=\"height: 100px; width: 100px;\" class=\"pull-left\">" +
@@ -412,14 +412,14 @@ namespace SocioBoard.Helper
                                         jquery += "</p>" +
                                             //"<a href=\"#\" class=\"btn\">Hide</a>" +
                                             //"<a href=\"#\" onclick=\"detailsprofile('" + items["id_str"] + "')\" class=\"btn\">Full Profile <i class=\"icon-caret-right\"></i> </a><div class=\"scl\">" +
-                                           "<a href=" + lnk + "  class=\"btn\" target=\"_blank\" rel=\"me nofollow\">Full Profile <i class=\"icon-caret-right\"></i> </a><div class=\"scl\">" +
+                                           "<a href=" + lnk + "  class=\"btn disco-feedsbtn\" target=\"_blank\" rel=\"me nofollow\">Full Profile <i class=\"icon-caret-right\"></i> </a><div class=\"scl\"><a id=\"btn_follow\" class=\"btn btn-primary btn_follow\" userid=\"" + items["id"] + "\" screenname=\"" + items["screen_name"].ToString() + "\" token=\"" + oauth.AccessToken.ToString() + "\" onclick=\"TwtFolloUser(this, "+ TwtAccount.TwitterUserId +")\">Follow</a>" +
                                           //"<a href=\"#\"><img alt=\"\" src=\"../Contents/img/admin/usergrey.png\"></a>" +
                                           //"<a href=\"#\"><img alt=\"\" src=\"../Contents/img/admin/goto.png\"></a>" +
                                           //"<a href=\"#\"><img alt=\"\" src=\"../Contents/img/admin/setting.png\"></a>" +
-                                      "</div></div></div>" +
-                                  "<div class=\"disco-feeds-info\">" +
-                                      "<ul class=\"no-margin\">" +
-                                          "<li><a href=\"#\"><img src=\"../Contents/img/admin/markerbtn2.png\" alt=\"\">";
+                                            "</div></div></div>" +
+                                            "<div class=\"disco-feeds-info\">" +
+                                            "<ul class=\"no-margin\">" +
+                                            "<li><a href=\"#\"><img src=\"../Contents/img/admin/markerbtn2.png\" alt=\"\">";
 
                                         if (!string.IsNullOrEmpty(items["time_zone"].ToString()))
                                         {
@@ -497,12 +497,47 @@ namespace SocioBoard.Helper
                         }
 
                     }
-
-
-
-
+                                        
                     Response.Write(jquery);
                 }
+                else if ((Request.QueryString["op"] == "TwtFolloUser") || (Request.QueryString["op"] == "TwtUnfolloUser"))
+                {
+                    GlobusTwitterLib.Twitter.Core.FriendshipMethods.Friendship objFriendship = new GlobusTwitterLib.Twitter.Core.FriendshipMethods.Friendship();
+
+                    string _id = Request.QueryString["id"].Replace("\"", string.Empty);
+                    string _UserId = Request.QueryString["Userid"].ToString();
+                    string _screen_name = Request.QueryString["screen_name"].ToString();
+                    string _accesstoken = Request.QueryString["accesstoken"].ToString();
+
+                    User user = (User)Session["LoggedUser"];
+                    TwitterAccountRepository TwtAccRepo = new TwitterAccountRepository();
+                    TwitterAccount TwtAccount = TwtAccRepo.getUserInformation(_id);
+                    oAuthTwitter oauth = new oAuthTwitter();
+                    oauth.AccessToken = TwtAccount.OAuthToken;
+                    oauth.AccessTokenSecret = TwtAccount.OAuthSecret;
+                    oauth.ConsumerKey = ConfigurationManager.AppSettings["consumerKey"];
+                    oauth.ConsumerKeySecret = ConfigurationManager.AppSettings["consumerSecret"];
+                    oauth.TwitterScreenName = TwtAccount.TwitterScreenName;
+                    oauth.TwitterUserId = TwtAccount.TwitterUserId;
+
+                    JArray response = new JArray();
+
+                    if (Request.QueryString["op"] == "TwtFolloUser")
+                    {
+                        response = objFriendship.Post_Friendships_Create_New(oauth, _UserId, _screen_name); 
+                    }
+                    else if (Request.QueryString["op"] == "TwtUnfolloUser")
+                    {
+                        response = objFriendship.Post_Friendship_Destroy_New(oauth, _UserId, _screen_name);
+                    }
+                    else
+                    {
+
+                    }
+
+                    Response.Write(response);
+                }
+
                 else if (Request.QueryString["op"] == "deletedrafts")
                 {
                     Guid id = Guid.Parse(Request.QueryString["id"]);

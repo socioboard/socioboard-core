@@ -335,11 +335,28 @@ namespace SocialSuitePro
                     if (!socioprofilerepo.checkUserProfileExist(socioprofile))
                     {
                         socioprofilerepo.addNewProfileForUser(socioprofile);
+
+
+                        GroupRepository objGroupRepository = new GroupRepository();
+                        SocioBoard.Domain.Team team = (SocioBoard.Domain.Team)HttpContext.Current.Session["GroupName"];
+                        Groups lstDetails = objGroupRepository.getGroupName(team.GroupId);
+                        if (lstDetails.GroupName == "Socioboard")
+                        {
+                            TeamMemberProfileRepository objTeamMemberProfileRepository = new TeamMemberProfileRepository();
+                            TeamMemberProfile teammemberprofile = new TeamMemberProfile();
+                            teammemberprofile.Id = Guid.NewGuid();
+                            teammemberprofile.TeamId = team.Id;
+                            teammemberprofile.ProfileId = twitterAccount.TwitterUserId;
+                            teammemberprofile.ProfileType = "twitter";
+                            teammemberprofile.StatusUpdateDate = DateTime.Now;
+
+                            objTeamMemberProfileRepository.addNewTeamMember(teammemberprofile);
+                        }
                     }
                     else
                     {
                         socioprofilerepo.updateSocialProfile(socioprofile);
-                    }
+                    }                  
                 }
                 else
                 {

@@ -32,7 +32,7 @@
 	
 	
 	<!-- LESS.js Library -->
-	<script src="../Contents/common/theme/scripts/plugins/system/less.min.js"></script>
+	<script type="text/javascript" src="../Contents/common/theme/scripts/plugins/system/less.min.js"></script>
     <script type="text/javascript">
         window.history.forward(-1);
     </script>
@@ -42,6 +42,19 @@
         }
         setTimeout("disableBackButton()", 0);
 </script>
+
+<script type="text/javascript">
+    function nospaces(t) {
+        if (t.value.match(/\s/g)) {
+            // alert('Sorry, you are not allowed to enter any spaces');
+            t.value = t.value.replace(/\s/g, '');
+        }
+    }
+</script>
+
+
+
+
 </head>
 <body class="login" onunload="disableBackButton()">
 	
@@ -74,7 +87,7 @@
 						<label>Password <%--<a class="password" href="">forgot your password?</a>--%></label>
 						
                          <asp:TextBox ID="txtPassword" required="" runat="server" class="input-block-level" 
-                            placeholder="Your Password" TextMode="Password" autocomplete="off"></asp:TextBox>
+                            placeholder="Your Password" TextMode="Password" autocomplete="off" onkeyup="nospaces(this)"></asp:TextBox>
 					
 						<div class="separator bottom"></div> 
 						<div class="row-fluid">

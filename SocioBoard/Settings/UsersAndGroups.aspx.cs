@@ -55,7 +55,7 @@ namespace SocialSuitePro.Settings
             {
 
 
-                List<Groups> lstgroup = grouprepo.getAllGroups(user.Id);
+                List<Groups> lstgroup = grouprepo.getAllGroupsCompleteDetails(user.Id);
 
                 if (lstgroup.Count != 0)
                 {
@@ -77,138 +77,192 @@ namespace SocialSuitePro.Settings
             }
 
         }
-        public void TwitterOAuthRedirect(object sender, EventArgs e)
+        //public void TwitterOAuthRedirect(object sender, EventArgs e)
+        //{
+        //    User user = (User)Session["LoggedUser"];
+
+        //    oAuthTwitter OAuth = new oAuthTwitter();
+
+        //    if (ddlGroup.SelectedIndex > 0)
+        //    {
+        //        HiddenFieldGroupNameInDDl.Value = ddlGroup.SelectedItem.Text;
+
+        //        if (!string.IsNullOrEmpty(HiddenFieldGroupNameInDDl.Value))
+        //        {
+        //            GroupRepository grouprepo = new GroupRepository();
+        //            Groups group = grouprepo.getGroupDetails(user.Id, HiddenFieldGroupNameInDDl.Value.ToString());
+        //            Session["GroupName"] = group;
+        //            TwitterHelper twthelper = new TwitterHelper();
+        //            string twtredirecturl = twthelper.TwitterRedirect(ConfigurationManager.AppSettings["consumerKey"], ConfigurationManager.AppSettings["consumerSecret"], ConfigurationManager.AppSettings["callbackurl"]);
+        //            Response.Redirect(twtredirecturl);
+
+        //        }
+        //    }
+        //    else
+        //    {
+        //        try
+        //        {
+        //            string txtgroup = Page.Request.Form["txtGroupName"].ToString().Trim();
+
+
+
+        //            if (!string.IsNullOrEmpty(txtgroup))
+        //            {
+        //                GroupRepository grouprepo = new GroupRepository();
+        //                Groups group = new Groups();
+        //                group.Id = Guid.NewGuid();
+        //                group.GroupName = txtgroup;
+        //                group.UserId = user.Id;
+        //                group.EntryDate = DateTime.Now;
+        //                if (!grouprepo.checkGroupExists(user.Id, txtgroup))
+        //                {
+        //                    grouprepo.AddGroup(group);
+        //                    Groups grou = grouprepo.getGroupDetails(user.Id, txtgroup);
+        //                    Session["GroupName"] = grou;
+        //                }
+        //                else
+        //                {
+        //                    Groups grou = grouprepo.getGroupDetails(user.Id, txtgroup);
+        //                    Session["GroupName"] = grou;
+        //                }
+        //                if (Request["oauth_token"] == null)
+        //                {
+        //                    Session["UserAndGroupsForTwitter"] = "twitter";
+        //                    TwitterHelper twthelper = new TwitterHelper();
+        //                    string twtredirecturl = twthelper.TwitterRedirect(ConfigurationManager.AppSettings["consumerKey"], ConfigurationManager.AppSettings["consumerSecret"], ConfigurationManager.AppSettings["callbackurl"]);
+        //                    Response.Redirect(twtredirecturl);
+
+        //                }
+        //            }
+        //            else
+        //            {
+        //                Response.Write("<script>alert(\"Please fill Group Name\");</script>");
+        //            }
+
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            Console.WriteLine(ex.StackTrace);
+        //        }
+        //    }
+
+
+        //}
+        //public void FacebookRedirect(object sender, EventArgs e)
+        //{
+        //    User user = (User)Session["LoggedUser"];
+
+        //if (ddlGroup.SelectedIndex > 0)
+        //{
+        //    HiddenFieldGroupNameInDDl.Value = ddlGroup.SelectedItem.Text;
+        //    if (!string.IsNullOrEmpty(HiddenFieldGroupNameInDDl.Value))
+        //    {
+        //        GroupRepository grouprepo = new GroupRepository();
+        //        Groups group = grouprepo.getGroupDetails(user.Id, HiddenFieldGroupNameInDDl.Value.ToString());
+        //        Session["GroupName"] = group;
+        //        Session["UserAndGroupsForFacebook"] = "facebook";
+        //        facebook_connect.HRef = "http://www.facebook.com/dialog/oauth/?scope=publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,offline_access&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
+        //        FbOuthForProfile.HRef = facebook_connect.HRef;
+        //        Response.Redirect(facebook_connect.HRef);
+        //    }
+        //}
+        //else
+        //{
+        //    try
+        //    {
+        //        string txtgroup = Page.Request.Form["txtGroupName"].ToString();
+
+        //        if (!string.IsNullOrEmpty(txtgroup))
+        //        {
+        //            GroupRepository grouprepo = new GroupRepository();
+        //            Groups group = new Groups();
+        //            group.Id = Guid.NewGuid();
+        //            group.GroupName = txtgroup;
+        //            group.UserId = user.Id;
+        //            group.EntryDate = DateTime.Now;
+        //            if (!grouprepo.checkGroupExists(user.Id, txtgroup))
+        //            {
+        //                grouprepo.AddGroup(group);
+        //                Groups grou = grouprepo.getGroupDetails(user.Id, txtgroup);
+        //                Session["GroupName"] = grou;
+        //            }
+        //            else
+        //            {
+        //                Groups grou = grouprepo.getGroupDetails(user.Id, txtgroup);
+        //                Session["GroupName"] = grou;
+        //            }
+        //            Session["UserAndGroupsForFacebook"] = "facebook";
+        //            facebook_connect.HRef = "http://www.facebook.com/dialog/oauth/?scope=publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,offline_access&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
+        //            FbOuthForProfile.HRef = facebook_connect.HRef;
+        //            Response.Redirect(facebook_connect.HRef);
+
+        //        }
+        //        else
+        //        {
+        //            Response.Write("<script>alert(\"Please fill Group Name\");</script>");
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.StackTrace);
+        //    }
+        //}
+        public void CreateGroups(object sender, EventArgs e)
         {
-            User user = (User)Session["LoggedUser"];
-
-            oAuthTwitter OAuth = new oAuthTwitter();
-
-            if (ddlGroup.SelectedIndex > 0)
+            try
             {
-                HiddenFieldGroupNameInDDl.Value = ddlGroup.SelectedItem.Text;
-
-                if (!string.IsNullOrEmpty(HiddenFieldGroupNameInDDl.Value))
+                User user = (User)Session["LoggedUser"];
+                string txtgroup = Page.Request.Form["txtGroupName"].ToString().Trim();
+                if (!string.IsNullOrEmpty(txtgroup))
                 {
                     GroupRepository grouprepo = new GroupRepository();
-                    Groups group = grouprepo.getGroupDetails(user.Id, HiddenFieldGroupNameInDDl.Value.ToString());
-                    Session["GroupName"] = group;
-                    TwitterHelper twthelper = new TwitterHelper();
-                    string twtredirecturl = twthelper.TwitterRedirect(ConfigurationManager.AppSettings["consumerKey"], ConfigurationManager.AppSettings["consumerSecret"], ConfigurationManager.AppSettings["callbackurl"]);
-                    Response.Redirect(twtredirecturl);
+                    Groups group = new Groups();
+                    group.Id = Guid.NewGuid();
+                    group.GroupName = txtgroup;
+                    group.UserId = user.Id;
+                    group.EntryDate = DateTime.Now;
+                    if (!grouprepo.checkGroupExists(user.Id, txtgroup))
+                    {
+                        grouprepo.AddGroup(group);
+                        Groups grou = grouprepo.getGroupDetails(user.Id, txtgroup);
+                        //Session["GroupName"] = grou;
+                    }
 
+                    BusinessSettingRepository busnrepo = new BusinessSettingRepository();
+                    //SocioBoard.Domain.Team team = (SocioBoard.Domain.Team)Session["GroupName"];
+                    SocioBoard.Domain.BusinessSetting objbsnssetting = new SocioBoard.Domain.BusinessSetting();
+
+                    if (!busnrepo.checkBusinessExists(user.Id, txtgroup))
+                    {
+                        objbsnssetting.Id = Guid.NewGuid();
+                        objbsnssetting.BusinessName = txtgroup;
+                        //objbsnssetting.GroupId = team.GroupId;
+                        objbsnssetting.GroupId = group.Id;
+                        objbsnssetting.AssigningTasks = false;
+                        objbsnssetting.AssigningTasks = false;
+                        objbsnssetting.TaskNotification = false;
+                        objbsnssetting.TaskNotification = false;
+                        objbsnssetting.FbPhotoUpload = 0;
+                        objbsnssetting.UserId = user.Id;
+                        objbsnssetting.EntryDate = DateTime.Now;
+                        busnrepo.AddBusinessSetting(objbsnssetting);
+
+                    }                  
                 }
+
+                else
+                {
+                    Response.Write("<script>alert(\"Please fill Group Name\");</script>");
+                }
+
+                Response.Redirect("UsersAndGroups.aspx");
             }
-            else
+            catch (Exception ex)
             {
-                try
-                {
-                    string txtgroup = Page.Request.Form["txtGroupName"].ToString().Trim();
-
-
-
-                    if (!string.IsNullOrEmpty(txtgroup))
-                    {
-                        GroupRepository grouprepo = new GroupRepository();
-                        Groups group = new Groups();
-                        group.Id = Guid.NewGuid();
-                        group.GroupName = txtgroup;
-                        group.UserId = user.Id;
-                        group.EntryDate = DateTime.Now;
-                        if (!grouprepo.checkGroupExists(user.Id, txtgroup))
-                        {
-                            grouprepo.AddGroup(group);
-                            Groups grou = grouprepo.getGroupDetails(user.Id, txtgroup);
-                            Session["GroupName"] = grou;
-                        }
-                        else
-                        {
-                            Groups grou = grouprepo.getGroupDetails(user.Id, txtgroup);
-                            Session["GroupName"] = grou;
-                        }
-                        if (Request["oauth_token"] == null)
-                        {
-                            Session["UserAndGroupsForTwitter"] = "twitter";
-                            TwitterHelper twthelper = new TwitterHelper();
-                            string twtredirecturl = twthelper.TwitterRedirect(ConfigurationManager.AppSettings["consumerKey"], ConfigurationManager.AppSettings["consumerSecret"], ConfigurationManager.AppSettings["callbackurl"]);
-                            Response.Redirect(twtredirecturl);
-
-                        }
-                    }
-                    else
-                    {
-                        Response.Write("<script>alert(\"Please fill Group Name\");</script>");
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.StackTrace);
-                }
+                Console.WriteLine(ex.StackTrace);
             }
-
-
         }
-        public void FacebookRedirect(object sender, EventArgs e)
-        {
-            User user = (User)Session["LoggedUser"];
 
-            if (ddlGroup.SelectedIndex > 0)
-            {
-                HiddenFieldGroupNameInDDl.Value = ddlGroup.SelectedItem.Text;
-                if (!string.IsNullOrEmpty(HiddenFieldGroupNameInDDl.Value))
-                {
-                    GroupRepository grouprepo = new GroupRepository();
-                    Groups group = grouprepo.getGroupDetails(user.Id, HiddenFieldGroupNameInDDl.Value.ToString());
-                    Session["GroupName"] = group;
-                    Session["UserAndGroupsForFacebook"] = "facebook";
-                    facebook_connect.HRef = "http://www.facebook.com/dialog/oauth/?scope=publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,offline_access&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
-                    FbOuthForProfile.HRef = facebook_connect.HRef;
-                    Response.Redirect(facebook_connect.HRef);
-                }
-            }
-            else
-            {
-                try
-                {
-                    string txtgroup = Page.Request.Form["txtGroupName"].ToString();
-
-                    if (!string.IsNullOrEmpty(txtgroup))
-                    {
-                        GroupRepository grouprepo = new GroupRepository();
-                        Groups group = new Groups();
-                        group.Id = Guid.NewGuid();
-                        group.GroupName = txtgroup;
-                        group.UserId = user.Id;
-                        group.EntryDate = DateTime.Now;
-                        if (!grouprepo.checkGroupExists(user.Id, txtgroup))
-                        {
-                            grouprepo.AddGroup(group);
-                            Groups grou = grouprepo.getGroupDetails(user.Id, txtgroup);
-                            Session["GroupName"] = grou;
-                        }
-                        else
-                        {
-                            Groups grou = grouprepo.getGroupDetails(user.Id, txtgroup);
-                            Session["GroupName"] = grou;
-                        }
-                        Session["UserAndGroupsForFacebook"] = "facebook";
-                        facebook_connect.HRef = "http://www.facebook.com/dialog/oauth/?scope=publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,offline_access&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
-                        FbOuthForProfile.HRef = facebook_connect.HRef;
-                        Response.Redirect(facebook_connect.HRef);
-
-                    }
-                    else
-                    {
-                        Response.Write("<script>alert(\"Please fill Group Name\");</script>");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.StackTrace);
-                }
-            }
-
-        }
         public void GetAllGroups(List<Groups> lstgroup)
         {
 
@@ -220,7 +274,7 @@ namespace SocialSuitePro.Settings
 
                 if (i == 0)
                 {
-                    bindgroups += "<li runat=\"server\" onclick=\"changeClassandProfilesOfGroup(this.id);\" onserverclick=\"BindAllProfilesAccordingToGroup(this.id)\" id=\"group_" + i + "\" class=\"fifth standard selected puff\"><span id=\"itemid_" + i + "\" style=\"display:none;\">" + item.Id + "</span>" +
+                    bindgroups += "<li runat=\"server\" onclick=\"changeClassandProfilesOfGroup(this.id);\"  onserverclick=\"BindAllProfilesAccordingToGroup(this.id)\" id=\"group_" + i + "\" class=\"fifth standard selected puff\"><span id=\"itemid_" + i + "\" style=\"display:none;\">" + item.Id + "</span>" +
                                     "<div class=\"folder_green group_sprite grp hide-text\">" + item.GroupName + "</div>" +
                "<a href=\"javascript:void(0);\" class=\"grp_name\">" +
                 "<span class=\"text\">" + item.GroupName + "</span>" +
@@ -231,7 +285,7 @@ namespace SocialSuitePro.Settings
                 }
                 else
                 {
-                    bindgroups += "<li onclick=\"changeClassandProfilesOfGroup(this.id);\" id=\"group_" + i + "\" class=\"fifth standard\"><span id=\"itemid_" + i + "\" style=\"display:none;\">" + item.Id + "</span>" +
+                    bindgroups += "<li onclick=\"changeClassandProfilesOfGroup(this.id);\"  id=\"group_" + i + "\" class=\"fifth standard\"><span id=\"itemid_" + i + "\" style=\"display:none;\">" + item.Id + "</span>" +
                                    "<div class=\"folder_green group_sprite grp hide-text\">" + item.GroupName + "</div>" +
               "<a href=\"javascript:void(0);\" class=\"grp_name\">" +
                "<span class=\"text\">" + item.GroupName + "</span>" +
@@ -300,7 +354,7 @@ namespace SocialSuitePro.Settings
                         }
                         else
                         {
-                            profileimgurl = linkedaccount.ProfileUrl;
+                            profileimgurl = linkedaccount.ProfileImageUrl;
                         }
                         bindprofiles += "<div onclick=\"transfertoGroup('linkedin','" + item.ProfileId + "')\" id=\"usergroups_" + item.ProfileId + "\" class=\"ws_conct active\"><span class=\"img\"><img width=\"48\" height=\"48\" alt=\"\" src=\"" + profileimgurl + "\" ><i>" +
                                          "<img width=\"16\" height=\"16\" alt=\"\" src=\"../Contents/img/link_icon.png\"></i></span>" +
@@ -329,7 +383,27 @@ namespace SocialSuitePro.Settings
                             "<span class=\"add remove\">✖</span></div></div>";
                     }
                 }
+                else if (item.ProfileType == "tumblr")
+                {
+                    if (!SelectedGroupProfiles.InnerHtml.Contains("tumblr_" + item.ProfileId))
+                    {
+                        string profileimgurl = string.Empty;
+                        TumblrAccountRepository tumblrrepo = new TumblrAccountRepository();
+                        TumblrAccount tumblraccount = tumblrrepo.getTumblrAccountDetailsById(item.ProfileId, UserId);
+                        if (tumblraccount.tblrProfilePicUrl == string.Empty)
+                        {
+                            profileimgurl = "../../Contents/img/blank_img.png";
+                        }
+                        else
+                        {
+                            profileimgurl = "http://api.tumblr.com/v2/blog/" + tumblraccount.tblrUserName + ".tumblr.com/avatar";
+                        }
 
+                        bindprofiles += "<div onclick=\"transfertoGroup('tumblr','" + item.ProfileId + "')\" id=\"usergroups_" + item.ProfileId + "\" class=\"ws_conct active\"><span class=\"img\"><img width=\"48\" height=\"48\" src=\"http://api.tumblr.com/v2/blog/" + tumblraccount.tblrUserName + ".tumblr.com/avatar\" alt=\"\"><i>" +
+                                          "<img width=\"16\" height=\"16\" alt=\"\" src=\"../Contents/img/tumblr.png\"></i></span><div class=\"fourfifth\"><div class=\"location-container\">" + tumblraccount.tblrUserName + "</div>" +
+                            "<span class=\"add remove\">✖</span></div></div>";
+                    }
+                }
             }
             AllGroupProfiles.InnerHtml = bindprofiles;
 

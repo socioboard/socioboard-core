@@ -81,11 +81,7 @@ namespace SocialSuitePro
                     catch (Exception ex)
                     {
                         logger.Error(ex.StackTrace);
-
                     }
-
-
-
                     try
                     {
                         _oauth.AccessTokenGet(oauth_token);
@@ -95,7 +91,6 @@ namespace SocialSuitePro
                         logger.Error(ex.StackTrace);
 
                     }
-
 
                     // Update Access Token in DB 
                     try
@@ -115,11 +110,9 @@ namespace SocialSuitePro
                     catch (Exception ex)
                     {
                         logger.Error(ex.StackTrace);
-
                     }
                     try
                     {
-
                         liHelper.GetLinkedInUserProfile(objUserProfile, _oauth, user);
                     }
                     catch (Exception ex)
