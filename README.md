@@ -99,4 +99,4 @@ Build Instructions
 
 1. Once you load the project in visual studio, you have see a solution structure with following projects.
 
-(http://i.imgur.com/C4qbKrG.png)
+![](http://i.imgur.com/C4qbKrG.png)
