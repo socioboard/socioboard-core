@@ -11,8 +11,8 @@
     <property name="Subject">
       <column name="Subject" />
     </property>
-    <property name="NewsLetterDetail">
-      <column name="NewsLetterDetail" />
+    <property name="NewsLetterBody">
+      <column name="NewsLetterBody" />
     </property>
     <property name="UserId">
       <column name="UserId" />

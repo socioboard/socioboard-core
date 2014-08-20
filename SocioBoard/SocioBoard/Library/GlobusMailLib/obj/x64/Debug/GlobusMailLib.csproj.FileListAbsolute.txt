@@ -1,0 +1,43 @@
+C:\Users\Admin\Desktop\sb\trunk\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\GlobusMailLib.dll
+C:\Users\Admin\Desktop\sb\trunk\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\GlobusMailLib.pdb
+C:\Users\Admin\Desktop\sb\trunk\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\FSharp.Core.dll
+C:\Users\Admin\Desktop\sb\trunk\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\log4net.dll
+C:\Users\Admin\Desktop\sb\trunk\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\Mandrill.dll
+C:\Users\Admin\Desktop\sb\trunk\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\Newtonsoft.Json.dll
+C:\Users\Admin\Desktop\sb\trunk\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\RestSharp.dll
+C:\Users\Admin\Desktop\sb\trunk\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\SendGridMail.dll
+C:\Users\Admin\Desktop\sb\trunk\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\ServiceStack.Text.dll
+C:\Users\Admin\Desktop\sb\trunk\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\System.Net.Http.dll
+C:\Users\Admin\Desktop\sb\trunk\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\FSharp.Core.xml
+C:\Users\Admin\Desktop\sb\trunk\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\System.Net.Http.xml
+C:\Users\Admin\Desktop\sb\trunk\SocioBoard\Library\GlobusMailLib\obj\x64\Debug\GlobusMailLib.dll
+C:\Users\Admin\Desktop\sb\trunk\SocioBoard\Library\GlobusMailLib\obj\x64\Debug\GlobusMailLib.pdb
+C:\Users\GLB-002\Desktop\socioboard code for github\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\GlobusMailLib.dll
+C:\Users\GLB-002\Desktop\socioboard code for github\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\GlobusMailLib.pdb
+C:\Users\GLB-002\Desktop\socioboard code for github\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\FSharp.Core.dll
+C:\Users\GLB-002\Desktop\socioboard code for github\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\log4net.dll
+C:\Users\GLB-002\Desktop\socioboard code for github\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\Mandrill.dll
+C:\Users\GLB-002\Desktop\socioboard code for github\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\Newtonsoft.Json.dll
+C:\Users\GLB-002\Desktop\socioboard code for github\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\RestSharp.dll
+C:\Users\GLB-002\Desktop\socioboard code for github\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\SendGridMail.dll
+C:\Users\GLB-002\Desktop\socioboard code for github\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\ServiceStack.Text.dll
+C:\Users\GLB-002\Desktop\socioboard code for github\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\System.Net.Http.dll
+C:\Users\GLB-002\Desktop\socioboard code for github\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\FSharp.Core.xml
+C:\Users\GLB-002\Desktop\socioboard code for github\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\System.Net.Http.xml
+C:\Users\GLB-002\Desktop\socioboard code for github\SocioBoard\Library\GlobusMailLib\obj\x64\Debug\GlobusMailLib.dll
+C:\Users\GLB-002\Desktop\socioboard code for github\SocioBoard\Library\GlobusMailLib\obj\x64\Debug\GlobusMailLib.pdb
+F:\socioboard\socioboard\SocioBoard\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\GlobusMailLib.dll
+F:\socioboard\socioboard\SocioBoard\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\GlobusMailLib.pdb
+F:\socioboard\socioboard\SocioBoard\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\FSharp.Core.dll
+F:\socioboard\socioboard\SocioBoard\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\log4net.dll
+F:\socioboard\socioboard\SocioBoard\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\Mandrill.dll
+F:\socioboard\socioboard\SocioBoard\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\Newtonsoft.Json.dll
+F:\socioboard\socioboard\SocioBoard\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\RestSharp.dll
+F:\socioboard\socioboard\SocioBoard\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\SendGridMail.dll
+F:\socioboard\socioboard\SocioBoard\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\ServiceStack.Text.dll
+F:\socioboard\socioboard\SocioBoard\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\System.Net.Http.dll
+F:\socioboard\socioboard\SocioBoard\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\FSharp.Core.xml
+F:\socioboard\socioboard\SocioBoard\SocioBoard\Library\GlobusMailLib\bin\x64\Debug\System.Net.Http.xml
+F:\socioboard\socioboard\SocioBoard\SocioBoard\Library\GlobusMailLib\obj\x64\Debug\GlobusMailLib.csprojResolveAssemblyReference.cache
+F:\socioboard\socioboard\SocioBoard\SocioBoard\Library\GlobusMailLib\obj\x64\Debug\GlobusMailLib.dll
+F:\socioboard\socioboard\SocioBoard\SocioBoard\Library\GlobusMailLib\obj\x64\Debug\GlobusMailLib.pdb

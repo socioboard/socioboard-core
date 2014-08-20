@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+  <class name="YoutubeAccount" table="YoutubeAccount" lazy="true" >
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="Ytuserid">
+      <column name="YtUserId"/>
+    </property>
+    <property name="Ytusername">
+      <column name="YtUserName"/>
+    </property>
+    <property name="Ytprofileimage">
+      <column name="YtProfileImage"/>
+    </property>
+    <property name="Accesstoken">
+      <column name="AccessToken"/>
+    </property>
+    <property name="Refreshtoken">
+      <column name="RefreshToken"/>
+    </property>
+    <property name="Isactive">
+      <column name="IsActive"/>
+    </property>
+    <property name="Emailid">
+      <column name="EmailId"/>
+    </property>
+    <property name="Entrydate">
+      <column name="EntryDate"/>
+    </property>
+    <property name="UserId">
+      <column name="UserId"/>
+    </property>
+  </class>
+</hibernate-mapping>

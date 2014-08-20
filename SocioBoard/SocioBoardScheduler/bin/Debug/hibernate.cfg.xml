@@ -5,11 +5,26 @@
     <property name="dialect">NHibernate.Dialect.MySQLDialect</property>
     <property name="connection.driver_class">NHibernate.Driver.MySqlDataDriver</property>
     <property name="connection.connection_string">
-     Data Source=localhost;User ID=root;Password=abhay;persist security info=False;initial catalog=692531_devsoc;
-     
+      <!--Data Source=50.57.219.27;User ID=692531_woofinal;Password=Woo_0987;persist security info=False;initial catalog=692531_woosuite_final;-->
+      <!--Data Source=mysql51-062.wc1.ord1.stabletransit.com;User ID=692531_ssp;Password=SSp_123456;persist security info=False;initial catalog=692531_ssp;charset=utf8;-->
 
+
+      <!--Data Source=localhost;User ID=root;Password=abhay;persist security info=False;initial catalog=ss;pooling=false;charset=utf8;-->
+
+
+      Data Source=198.57.215.219;User ID=IIhed_ss;Password=menu32sa#;persist security info=False;initial catalog=IIhedoro_socialscoup;pooling=false;charset=utf8;
+
+
+
+      <!--Data Source=50.57.219.12;User ID=692531_ssp;Password=SSp_123456;persist security info=False;initial catalog=692531_ssp;charset=utf8;-->
+
+
+      <!--Data Source=50.57.219.21;User ID= 692531_sociob;Password=Max4321Micro;persist security info=False;initial catalog=692531_socioboard;pooling=false;charset=utf8-->
+
+      <!--Data Source=localhost;User ID=root;Password=123456;persist security info=False;initial catalog=mooplesocial;-->
     </property>
     <property name="show_sql">true</property>
   </session-factory>
+ 
 </hibernate-configuration>
 

@@ -9,6 +9,8 @@ namespace GlobusLinkedinLib.App.Core
     {
         public static string GetNetworkUserUpdates = "http://api.linkedin.com/v1/people/id=";
         public static string GetNetworkUpdates = "http://api.linkedin.com/v1/people/~/network/updates";
+        public static string GetGroupUpdates = "https://api.linkedin.com/v1/people/~/group-memberships";
+
         public static string GetJobSearchTitle = "http://api.linkedin.com/v1/job-search?job-title=";
         public static string GetJobSearchKeyword = "http://api.linkedin.com/v1/job-search?keywords=";
         public static string GetUserProfile = "http://api.linkedin.com/v1/people/~:(id,first-name,last-name,headline,picture_url,educations,location,date_of_birth)";

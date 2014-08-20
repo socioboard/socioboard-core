@@ -17,19 +17,29 @@ using GlobusTwitterLib.Authentication;
 using GlobusTwitterLib.App.Core;
 using GlobusTwitterLib.Twitter.Core.UserMethods;
 using Newtonsoft.Json.Linq;
-using SocioBoard.Helper;
+using log4net;
 using System.Configuration;
 
-namespace SocioBoard
+using SocioBoard.Helper;
+using SocioBoard;
+using GlobusTwitterLib.Twitter.Core.TweetMethods;
+
+namespace SocialSuitePro
 {
+
     public partial class TwitterManager : System.Web.UI.Page
     {
+
+        ILog logger = LogManager.GetLogger(typeof(TwitterManager));
+
         //Manages oAuth Related Functionality of Twitter, part of GlobusTwitterLib
         oAuthTwitter OAuth = new oAuthTwitter(ConfigurationManager.AppSettings["consumerKey"], ConfigurationManager.AppSettings["consumerSecret"], ConfigurationManager.AppSettings["callbackurl"]);
 
+        oAuthTwitter OAuthNew = new oAuthTwitter(ConfigurationManager.AppSettings["consumerKey"], ConfigurationManager.AppSettings["consumerSecret"], ConfigurationManager.AppSettings["callbackurl"]);
+
         //SocioBoard Domain Class to store Twitter Data
         TwitterAccount twitterAccount = new TwitterAccount();
-
+        TwitterAccount newtwitterAccount = new TwitterAccount();
         //GlobusLib Class for managing Twitter Users
         TwitterUserController twtUserController = new TwitterUserController();
 
@@ -37,18 +47,23 @@ namespace SocioBoard
         //  TwitterUser twtUser = new TwitterUser();
         TwitterAccountRepository twtrepo = new TwitterAccountRepository();
 
+        //Creates new instance of Users Class to Model Twitter User
         Users userinfo = new Users();
+
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
             User user = (User)Session["LoggedUser"];
             if (!IsPostBack)
             {
-                if (Session["login"] == null)
-                {
-                    if (user == null)
-                    { Response.Redirect("Login.aspx"); }
-                }
+           
+                //if (Session["login"] == null)
+                //{
+                //    if (user == null)
+                //    { Response.Redirect("Default.aspx"); }
+                //}
 
                 try
                 {
@@ -67,6 +82,7 @@ namespace SocioBoard
                             }
                             catch (Exception ex)
                             {
+                                logger.Error(ex.StackTrace);
                                 Console.WriteLine(ex.StackTrace);
                                 Session["UserAndGroupsForTwitter"] = null;
                                 Response.Redirect("/Settings/UsersAndGroups.aspx");
@@ -81,6 +97,7 @@ namespace SocioBoard
                         }
                         catch (Exception ex)
                         {
+                            logger.Error(ex.StackTrace);
                             Console.WriteLine(ex.StackTrace);
                             Session["profilesforcomposemessage"] = null;
                             Response.Redirect("Home.aspx");
@@ -92,6 +109,7 @@ namespace SocioBoard
 
                 catch (Exception ex)
                 {
+                    logger.Error(ex.StackTrace);
                     Console.WriteLine(ex.StackTrace);
 
                 }
@@ -104,59 +122,72 @@ namespace SocioBoard
         /// </summary>
         private void getAccessToken()
         {
-            TwitterHelper twthelper = new TwitterHelper();
             User user = (User)Session["LoggedUser"];
+            TwitterHelper twthelper = new TwitterHelper();
+
             if (Request["oauth_token"] != null)
             {
+
+
                 try
                 {
                     getTwitterUserProfile();
                 }
                 catch (Exception ex)
                 {
+                    logger.Error(ex.StackTrace);
+                    Console.WriteLine(ex.StackTrace);
+                }
+                try
+                {
+                    twthelper.getMentions(OAuth, twitterAccount, user.Id);
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex.StackTrace);
+                    Console.WriteLine(ex.StackTrace);
+                }
+
+                try
+                {
+                    twthelper.getReTweetsOfUser(OAuth, twitterAccount, user.Id);
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex.StackTrace);
                     Console.WriteLine(ex.StackTrace);
                 }
 
 
                 try
                 {
-                    twthelper.getReTweetsOfUser(OAuth, twitterAccount,user.Id);
+                    twthelper.getUserTweets(OAuth, twitterAccount, user.Id);
                 }
-                catch (Exception wx)
+                catch (Exception ex)
                 {
-                    Console.WriteLine(wx.StackTrace);
+                    logger.Error(ex.StackTrace);
+                    Console.WriteLine(ex.StackTrace);
                 }
-
-
                 try
                 {
-                    twthelper.getUserTweets(OAuth, twitterAccount,user.Id);
+                    twthelper.getUserFeed(OAuth, twitterAccount, user.Id);
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.StackTrace);
+                    logger.Error(ex.StackTrace);
                 }
                 try
                 {
-                    twthelper.getUserFeed(OAuth, twitterAccount,user.Id);
+                    twthelper.getSentDirectMessages(OAuth, twitterAccount, user.Id);
                 }
                 catch (Exception ex)
                 {
+                    logger.Error(ex.StackTrace);
                     Console.WriteLine(ex.StackTrace);
-
-                }
-                try
-                {
-                    twthelper.getSentDirectMessages(OAuth, twitterAccount,user.Id);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.StackTrace);
-
                 }
 
             }
-
 
         }
 
@@ -180,6 +211,11 @@ namespace SocioBoard
             User user = (User)Session["LoggedUser"];
             SocialProfilesRepository socioprofilerepo = new SocialProfilesRepository();
             SocialProfile socioprofile = new SocialProfile();
+
+            #region for managing referrals
+            ManageReferrals(OAuth); 
+            #endregion
+         
             foreach (var item in profile)
             {
                 try
@@ -274,6 +310,7 @@ namespace SocioBoard
                         }
                     }
                 }
+
                 TwitterStatsRepository objTwtstats = new TwitterStatsRepository();
                 TwitterStats objStats = new TwitterStats();
                 Random rNum = new Random();
@@ -298,15 +335,35 @@ namespace SocioBoard
                     if (!socioprofilerepo.checkUserProfileExist(socioprofile))
                     {
                         socioprofilerepo.addNewProfileForUser(socioprofile);
+
+
+                        GroupRepository objGroupRepository = new GroupRepository();
+                        SocioBoard.Domain.Team team = (SocioBoard.Domain.Team)HttpContext.Current.Session["GroupName"];
+                        Groups lstDetails = objGroupRepository.getGroupName(team.GroupId);
+                        if (lstDetails.GroupName == "Socioboard")
+                        {
+                            TeamMemberProfileRepository objTeamMemberProfileRepository = new TeamMemberProfileRepository();
+                            TeamMemberProfile teammemberprofile = new TeamMemberProfile();
+                            teammemberprofile.Id = Guid.NewGuid();
+                            teammemberprofile.TeamId = team.Id;
+                            teammemberprofile.ProfileId = twitterAccount.TwitterUserId;
+                            teammemberprofile.ProfileType = "twitter";
+                            teammemberprofile.StatusUpdateDate = DateTime.Now;
+
+                            objTeamMemberProfileRepository.addNewTeamMember(teammemberprofile);
+                        }
                     }
                     else
                     {
                         socioprofilerepo.updateSocialProfile(socioprofile);
-                    }
+                    }                  
                 }
                 else
                 {
+                    HttpContext.Current.Session["alreadyexist"] = twitterAccount;
                     twtrepo.updateTwitterUser(twitterAccount);
+                    TwitterMessageRepository twtmsgreponew = new TwitterMessageRepository();
+                    twtmsgreponew.updateScreenName(twitterAccount.TwitterUserId, twitterAccount.TwitterScreenName);
                     if (!socioprofilerepo.checkUserProfileExist(socioprofile))
                     {
                         socioprofilerepo.addNewProfileForUser(socioprofile);
@@ -350,7 +407,25 @@ namespace SocioBoard
             }
         }
 
+        private void ManageReferrals(oAuthTwitter OAuth)
+        {
+            try
+            {
+                if (Session["twittermsg"] != null)
+                {
+                    TwitterHelper twthelper = new TwitterHelper();
+                    Tweet twt = new Tweet();
+                    JArray post = twt.Post_Statuses_Update(OAuth, Session["twittermsg"].ToString());
+                    Response.Redirect("Referrals.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+        }
+
+
+
     }
 }
-       
-  

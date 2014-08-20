@@ -260,6 +260,18 @@ namespace GlobusTwitterLib.Twitter.Core.FriendshipMethods
            return JArray.Parse(response);
        }
 
+       public JArray Post_Friendships_Create_New(oAuthTwitter oAuth, string UserId, string screen_name)
+       {
+           SortedDictionary<string, string> strdic = new SortedDictionary<string, string>();
+           strdic.Add("user_id", UserId);
+           strdic.Add("screen_name", screen_name);
+           string RequestUrl = Globals.PostFriendshipsCreateUrl;
+           string response = oAuth.oAuthWebRequest(oAuthTwitter.Method.POST, RequestUrl, strdic);
+           if (!response.StartsWith("["))
+               response = "[" + response + "]";
+           return JArray.Parse(response);
+       }
+
        /// <summary>
        /// Allows the authenticating user to unfollow the user specified in the ID parameter.
        /// </summary>
@@ -273,6 +285,18 @@ namespace GlobusTwitterLib.Twitter.Core.FriendshipMethods
            SortedDictionary<string, string> strdic = new SortedDictionary<string, string>();
            strdic.Add("user_id", UserId);
            string response = oAuth.oAuthWebRequest(oAuthTwitter.Method.POST, RequestUrl,strdic);
+           if (!response.StartsWith("["))
+               response = "[" + response + "]";
+           return JArray.Parse(response);
+       }
+
+       public JArray Post_Friendship_Destroy_New(oAuthTwitter oAuth, string UserId, string screen_name)
+       {
+           SortedDictionary<string, string> strdic = new SortedDictionary<string, string>();
+           strdic.Add("user_id", UserId);
+           strdic.Add("screen_name", screen_name);
+           string RequestUrl = Globals.PostFriendshipsDestroyUrl;
+           string response = oAuth.oAuthWebRequest(oAuthTwitter.Method.POST, RequestUrl, strdic);
            if (!response.StartsWith("["))
                response = "[" + response + "]";
            return JArray.Parse(response);

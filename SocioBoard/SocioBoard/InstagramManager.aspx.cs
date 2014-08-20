@@ -10,14 +10,16 @@ using SocioBoard.Domain;
 using GlobusInstagramLib.App.Core;
 using SocioBoard.Model;
 using System.Collections;
+using log4net;
 
-namespace SocioBoard
+namespace SocialSuitePro
 {
     public partial class InstagramManager : System.Web.UI.Page
     {
         oAuthInstagram objInsta = new oAuthInstagram();
         InstagramAccountRepository objInsRepo = new InstagramAccountRepository();
         oAuthInstagram _api;
+        ILog logger = LogManager.GetLogger(typeof(InstagramManager));
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,6 +33,7 @@ namespace SocioBoard
                     }
                     catch (Exception ex)
                     {
+                        logger.Error(ex.StackTrace);
                         Console.WriteLine(ex.StackTrace);
                     }
                     getAccessToken();
@@ -39,6 +42,7 @@ namespace SocioBoard
                 }
                 catch (Exception ex)
                 {
+                    logger.Error(ex.StackTrace);
                     Console.WriteLine(ex.StackTrace);
                 }
             }
@@ -78,10 +82,11 @@ namespace SocioBoard
 
             if (objInsRepo.checkInstagramUserExists(access.user.id, user.Id))
             {
+                HttpContext.Current.Session["alreadyexist"] = objInsAccount;
                 objInsRepo.updateInstagramUser(objInsAccount);
                 if (!socioprofilerepo.checkUserProfileExist(socioprofile))
                 {
-                    socioprofilerepo.addNewProfileForUser(socioprofile);
+                    socioprofilerepo.addNewProfileForUser(socioprofile);                
                 }
             }
             else
@@ -90,12 +95,32 @@ namespace SocioBoard
                 if (!socioprofilerepo.checkUserProfileExist(socioprofile))
                 {
                     socioprofilerepo.addNewProfileForUser(socioprofile);
+                    GroupRepository objGroupRepository = new GroupRepository();
+                    SocioBoard.Domain.Team team = (SocioBoard.Domain.Team)HttpContext.Current.Session["GroupName"];
+                    Groups lstDetails = objGroupRepository.getGroupName(team.GroupId);
+                    if (lstDetails.GroupName == "Socioboard")
+                    {
+                        TeamMemberProfileRepository objTeamMemberProfileRepository = new TeamMemberProfileRepository();
+                        TeamMemberProfile teammemberprofile = new TeamMemberProfile();
+                        teammemberprofile.Id = Guid.NewGuid();
+                        teammemberprofile.TeamId = team.Id;
+                        teammemberprofile.ProfileId = socioprofile.ProfileId;
+                        teammemberprofile.ProfileType = "instagram";
+                        teammemberprofile.StatusUpdateDate = DateTime.Now;
+
+                        objTeamMemberProfileRepository.addNewTeamMember(teammemberprofile);
+
+                    }
+
                 }
             }
-            getIntagramImages(objInsAccount);
+            string messages = getIntagramImages(objInsAccount);
+
+          
+            Response.Write(messages);
         }
 
-        public void getIntagramImages(InstagramAccount objInsAccount)
+        public string getIntagramImages( InstagramAccount objInsAccount)
         {
             InstagramAccountRepository objIns = new InstagramAccountRepository();
             InstagramResponse<GlobusInstagramLib.App.Core.User[]> userinf = new InstagramResponse<GlobusInstagramLib.App.Core.User[]>();
@@ -109,74 +134,86 @@ namespace SocioBoard
             InstagramFeed objFeed = new InstagramFeed();
             InstagramComment objinsComment = new InstagramComment();
             InstagramCommentRepository objInsRepo = new InstagramCommentRepository();
-            //  ArrayList aslt = objIns.getAllInstagramAccountsOfUser(instaid);
+          //  ArrayList aslt = objIns.getAllInstagramAccountsOfUser(instaid);
             string html = string.Empty;
             int i = 0;
             // string[] allhtmls = new string[aslt.Count];
             string[] allhtmls = new string[0];
             int countofimages = 0;
-
-            try
-            {
-                userinf2 = objMedia.GetMediaPopular(objInsAccount.AccessToken);
-
-            }
-            catch { }
-
-
-            if (userinf2 != null)
-            {
-                for (int j = 0; j < userinf2.data.Count(); j++)
-                {
+            GlobusInstagramLib.Instagram.Core.UsersMethods.Users userInstagram = new GlobusInstagramLib.Instagram.Core.UsersMethods.Users();
                     try
                     {
-                        usercmts = objComment.GetComment(userinf2.data[j].id, objInsAccount.AccessToken);
-                        bool liked = false;
-                        try
-                        {
-                            liked = objLikes.LikeToggle(userinf2.data[j].id, objInsAccount.InstagramId, objInsAccount.AccessToken);
-                        }
-                        catch
-                        {
-                        }
-                        int n = usercmts.data.Count();
-                        for (int cmt = usercmts.data.Count() - 1; cmt > usercmts.data.Count() - 3; cmt--)
-                        {
-                            objinsComment.Comment = usercmts.data[cmt].text;
-                            objinsComment.CommentDate = usercmts.data[cmt].created_time.ToString();
-                            objinsComment.CommentId = usercmts.data[cmt].id;
-                            objinsComment.EntryDate = DateTime.Now.ToString();
-                            objinsComment.FeedId = userinf2.data[j].id;
-                            objinsComment.Id = Guid.NewGuid();
-                            objinsComment.InstagramId = objInsAccount.InstagramId;
-                            objinsComment.UserId = objInsAccount.UserId;
-                            objinsComment.FromName = usercmts.data[cmt].from.full_name;
-                            objinsComment.FromProfilePic = usercmts.data[cmt].from.profile_picture;
-                            if (!objInsRepo.checkInstagramCommentExists(usercmts.data[cmt].id, objInsAccount.UserId))
-                                objInsRepo.addInstagramComment(objinsComment);
-                        }
-                        objFeed.EntryDate = DateTime.Now;
-                        objFeed.FeedDate = userinf2.data[j].created_time.ToString();
-                        objFeed.FeedId = userinf2.data[j].id;
-                        objFeed.FeedImageUrl = userinf2.data[j].images.low_resolution.url.ToString();
-                        objFeed.InstagramId = objInsAccount.InstagramId;
-                        objFeed.LikeCount = userinf2.data[j].likes.count;
-                        objFeed.UserId = objInsAccount.UserId;
-                        if (!objInsFeedRepo.checkInstagramFeedExists(userinf2.data[j].id, objInsAccount.UserId))
-                            objInsFeedRepo.addInstagramFeed(objFeed);
-
+                        userinf2 = userInstagram.UserRecentMedia(objInsAccount.InstagramId,string.Empty,string.Empty,"20",string.Empty,string.Empty,objInsAccount.AccessToken);
 
                     }
-                    catch
+                    catch(Exception ex) {
+                        logger.Error(ex.StackTrace);
+                    }
+
+
+                    if (userinf2 != null)
                     {
+                        for (int j = 0; j < userinf2.data.Count(); j++)
+                        {
+                            try
+                            {
+                                usercmts = objComment.GetComment(userinf2.data[j].id,objInsAccount.AccessToken);
+                                bool liked = false;
+                                try
+                                {
+                                    liked = objLikes.LikeToggle(userinf2.data[j].id, objInsAccount.InstagramId, objInsAccount.AccessToken);
+                                }
+                                catch(Exception ex)
+                                {
+                                    logger.Error(ex.StackTrace);
+                                }
+                                int n = usercmts.data.Count();
+                                for (int cmt = usercmts.data.Count() - 1; cmt > usercmts.data.Count() - 3; cmt--)
+                                {
+                                    try
+                                    {
+                                        objinsComment.Comment = usercmts.data[cmt].text;
+                                        objinsComment.CommentDate = usercmts.data[cmt].created_time.ToString();
+                                        objinsComment.CommentId = usercmts.data[cmt].id;
+                                        objinsComment.EntryDate = DateTime.Now.ToString();
+                                        objinsComment.FeedId = userinf2.data[j].id;
+                                        objinsComment.Id = Guid.NewGuid();
+                                        objinsComment.InstagramId = objInsAccount.InstagramId;
+                                        objinsComment.UserId = objInsAccount.UserId;
+                                        objinsComment.FromName = usercmts.data[cmt].from.full_name;
+                                        objinsComment.FromProfilePic = usercmts.data[cmt].from.profile_picture;
+                                        if (!objInsRepo.checkInstagramCommentExists(usercmts.data[cmt].id, objInsAccount.UserId))
+                                            objInsRepo.addInstagramComment(objinsComment);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        logger.Error(ex.StackTrace);
+                                        Console.WriteLine(ex.StackTrace);
+                                    }
+                                }
+                                objFeed.EntryDate = DateTime.Now;
+                                objFeed.FeedDate = userinf2.data[j].created_time.ToString();
+                                objFeed.FeedId = userinf2.data[j].id;
+                                objFeed.FeedImageUrl = userinf2.data[j].images.low_resolution.url.ToString();
+                                objFeed.InstagramId = objInsAccount.InstagramId;
+                                objFeed.LikeCount = userinf2.data[j].likes.count;
+                                objFeed.UserId = objInsAccount.UserId;
+                                if (!objInsFeedRepo.checkInstagramFeedExists(userinf2.data[j].id, objInsAccount.UserId))
+                                    objInsFeedRepo.addInstagramFeed(objFeed);
+
+
+                            }
+                            catch(Exception ex)
+                            {
+                                logger.Error(ex.StackTrace);
+                            }
+                            i++;
+
+                        }
                     }
                     i++;
-
-                }
-            }
-            i++;
-
-
+                
+            
             string totalhtml = string.Empty;
             try
             {
@@ -185,11 +222,15 @@ namespace SocioBoard
                     totalhtml = totalhtml + allhtmls[k];
                 }
             }
-            catch
+            catch(Exception ex)
             {
+                logger.Error(ex.StackTrace);
+
             }
             Session["AllHtmls"] = allhtmls;
-            Response.Write(totalhtml);
+            return totalhtml;
+
+          
         }
     }
 }

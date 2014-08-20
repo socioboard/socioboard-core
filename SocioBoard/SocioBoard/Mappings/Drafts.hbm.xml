@@ -19,5 +19,12 @@
     <property name="Message">
       <column name="Message"  />
     </property>
+
+    <property name="GroupId">
+      <column name="GroupId"/>
+    </property>
+    
+    
+    
   </class>
 </hibernate-mapping>

@@ -5,17 +5,35 @@
     <property name="dialect">NHibernate.Dialect.MySQLDialect</property>
     <property name="connection.driver_class">NHibernate.Driver.MySqlDataDriver</property>
     <property name="connection.connection_string">
-      <!--Data Source=50.57.219.21;User ID= 692531_sociob;Password=S0c10b043d;persist security info=False;initial catalog=692531_socioboard;pooling=false;charset=utf8;-->
+      <!--Data Source=mysql51-031.wc1.ord1.stabletransit.com;User ID=692531_woofinal;Password=Woo_0987;persist security info=False;initial catalog=692531_woosuite_final;-->
 
-      Data Source=mysql51-042.wc1.ord1.stabletransit.com;User ID= 692531_sociob;Password=S0c10b043d;persist security info=False;initial catalog=692531_socioboard;pooling=false;charset=utf8
-      <!--Data Source=50.57.219.27;User ID=692531_socio;Password=Soc_0987;persist security info=False;initial catalog=692531_socioboard_final;-->
-      <!--Data Source=50.57.219.27;User ID=692531_woofinal;Password=Woo_0987;persist security info=False;initial catalog=692531_woosuite_final;-->
-    </property> 
+
+
+      <!--Data Source=mysql51-034.wc1.ord1.stabletransit.com;User ID=692531__scoup;Password=ETrt_0987;persist security info=False;initial catalog=692531_scoup;charset=utf8;POOLING=FALSE;-->
+
+
+      <!--Data Source=50.57.219.31;User ID=692531__scoup;Password=ETrt_0987;persist security info=False;initial catalog=692531_scoup;pooling=false;charset=utf8;-->
+
+
+      <!--Data Source=96.0.242.186;User ID=root;Password=menu32sa#;persist security info=False;initial catalog=Socialscoup;pooling=false;charset=utf8;-->
+
+      Data Source=localhost;User ID= root;Password=abhay;persist security info=False;initial catalog=abhay3;pooling=false;charset=utf8;
+
+      <!--Data Source=50.57.219.21;User ID= 692531_sociob;Password=Max4321Micro;persist security info=False;initial catalog=692531_socioboard;pooling=false;charset=utf8-->
+
+
+    </property>
     <property name="show_sql">true</property>
   </session-factory>
 
-
-
-  
+  <!--<session-factory>
+    <property name="connection.provider">NHibernate.Connection.DriverConnectionProvider</property>
+    <property name="dialect">NHibernate.Dialect.MySQLDialect</property>
+    <property name="connection.driver_class">NHibernate.Driver.MySqlDataDriver</property>
+    <property name="connection.connection_string">
+      Data Source=98.130.0.102;User ID=C230527_sprout;Password=SS1234;persist security info=False;initial catalog=C230527_sproutsocial;
+    </property>
+    <property name="show_sql">true</property>
+  </session-factory>-->
 </hibernate-configuration>
 

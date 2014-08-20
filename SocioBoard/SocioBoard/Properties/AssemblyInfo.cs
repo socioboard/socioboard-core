@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("SocioBoard")]
-[assembly: AssemblyCopyright("Copyright ©  2013")]
+[assembly: AssemblyCopyright("Copyright ©  2013-2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("78959610-0629-471d-826a-9c4f1bcc1b3c")]
+[assembly: Guid("1f926d6e-249d-4de2-b5f1-5845a760646b")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -34,3 +34,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
+

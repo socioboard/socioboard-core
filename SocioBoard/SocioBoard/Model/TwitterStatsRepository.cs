@@ -101,6 +101,28 @@ namespace SocioBoard.Model
             }
         }
 
+
+        public System.Collections.ArrayList getTotalTwitterStatsOfUser(Guid UserId)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    NHibernate.IQuery query = session.CreateSQLQuery("Select * from TwitterStats where UserId =:userid");
+                    query.SetParameter("userid", UserId);
+                    ArrayList alstTwtStats = new ArrayList();
+
+                    foreach (var item in query.List())
+                    {
+                        alstTwtStats.Add(item);
+                    }
+                    return alstTwtStats;
+
+                }
+            }
+        }
+
+
         public bool checkTwitterStatsExists(string TwtUserId, Guid Userid)
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -130,7 +152,9 @@ namespace SocioBoard.Model
             }
         }
 
-        public ArrayList getTwitterStatsByIdDay(Guid userid, string twtuserid, int days)
+
+
+        public bool checkTwitterStatsExistsnew(string TwtUserId, Guid Userid,int followercount)
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
@@ -138,9 +162,55 @@ namespace SocioBoard.Model
                 {
                     try
                     {
-                        //
-                        NHibernate.IQuery query = session.CreateSQLQuery("Select * from TwitterStats where UserId = :userid and TwitterId = :Twtuserid and EntryDate>=DATE_ADD(NOW(),INTERVAL -" + days + " DAY) Group By Date(EntryDate)");
-                        query.SetParameter("userid", userid);
+                        NHibernate.IQuery query = session.CreateQuery("from TwitterStats where UserId = :userid and FollowerCount=:followercount and TwitterId = :Twtuserid and Date_format(EntryDate,'%yy-%m-%d') LIKE Date_format(Now(),'%yy-%m-%d')");
+                        query.SetParameter("userid", Userid);
+
+                        query.SetParameter("followercount", followercount);
+                        query.SetParameter("Twtuserid", TwtUserId);
+                        var result = query.UniqueResult();
+
+                        if (result == null)
+                            return false;
+                        else
+                            return true;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return true;
+                    }
+
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public ArrayList getTwitterStatsByIdDay(string twtuserid, int days)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+
+                        NHibernate.IQuery query = session.CreateSQLQuery("Select * from TwitterStats where  TwitterId = :Twtuserid and EntryDate>=DATE_ADD(NOW(),INTERVAL -" + days + " DAY) order by EntryDate desc limit 1");
+                       // query.SetParameter("days", days);
                         query.SetParameter("Twtuserid", twtuserid);
                         ArrayList alstTwtStats = new ArrayList();
 
@@ -161,7 +231,8 @@ namespace SocioBoard.Model
             }
         }
 
-        public ArrayList getTwitterStatsById(Guid userid, string twtuserid, int days)
+
+        public ArrayList getTwitterStatsById(string twtuserid, int days)
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
@@ -170,8 +241,8 @@ namespace SocioBoard.Model
                     try
                     {
                         //Select * from TwitterStats where UserId = :userid and TwitterId = :Twtuserid and EntryDate>=DATE_ADD(NOW(),INTERVAL -" + days + " DAY) Group By Date(EntryDate)
-                        NHibernate.IQuery query = session.CreateSQLQuery("SELECT * FROM TwitterStats WHERE EntryDate > DATE_SUB(NOW(), INTERVAL "+ days +" DAY) and UserId = :userid and TwitterId = :Twtuserid GROUP BY WEEK(EntryDate)");
-                        query.SetParameter("userid", userid);
+                        NHibernate.IQuery query = session.CreateSQLQuery("SELECT * FROM TwitterStats WHERE EntryDate>=DATE_ADD(NOW(),INTERVAL -" + days + " DAY) and  TwitterId = :Twtuserid Group By Date(EntryDate)");
+                       // query.SetParameter("days", days);
                         query.SetParameter("Twtuserid", twtuserid);
                         ArrayList alstTwtStats = new ArrayList();
 
@@ -180,7 +251,7 @@ namespace SocioBoard.Model
                             alstTwtStats.Add(item);
                         }
                         return alstTwtStats;
-                      
+
                     }
                     catch (Exception ex)
                     {
@@ -395,5 +466,130 @@ namespace SocioBoard.Model
                 }
             }
         }
+
+
+
+        public int DeleteTwitterStatsByUserid(Guid userid)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        NHibernate.IQuery query = session.CreateQuery("delete from TwitterStats where UserId = :userid")
+                                        .SetParameter("userid", userid);
+                        int isUpdated = query.ExecuteUpdate();
+                        transaction.Commit();
+                        return isUpdated;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+                }
+            }
+        }
+
+
+        public List<TwitterStats> getAllAccountDetail(string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        string str = "from TwitterStats where  TwitterId IN(";
+                        string[] arrsrt = profileid.Split(',');
+                        foreach (string sstr in arrsrt)
+                        {
+                            str += Convert.ToInt64(sstr) + ",";
+                        }
+                        str = str.Substring(0, str.Length - 1);
+                        str += ") group by TwitterId";
+                        List<TwitterStats> alst = session.CreateQuery(str)
+                       .List<TwitterStats>()
+                       .ToList<TwitterStats>();
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Trasaction
+            }//End session
+        }
+
+
+        public ArrayList getTwitterStatsByIdbeforeDay(string twtuserid, int days)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+
+                        NHibernate.IQuery query = session.CreateSQLQuery("Select * from TwitterStats where  TwitterId = :Twtuserid and EntryDate < DATE_ADD(NOW(),INTERVAL -" + days + " DAY) order by EntryDate desc limit 1");
+                      //  query.SetParameter("days", days);
+                        query.SetParameter("Twtuserid", twtuserid);
+                        ArrayList alstTwtStats = new ArrayList();
+
+                        foreach (var item in query.List())
+                        {
+                            alstTwtStats.Add(item);
+                        }
+                        return alstTwtStats;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }
+            }
+        }
+
+
+        public ArrayList getTwitterStByIdbeforeDay(string twtuserid, int days)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+
+                        NHibernate.IQuery query = session.CreateSQLQuery("Select * from TwitterStats where  TwitterId = :Twtuserid and EntryDate>= DATE_ADD(NOW(),INTERVAL -" + days + " DAY) order by EntryDate asc limit 1");
+                      //  query.SetParameter("days", days);
+                        query.SetParameter("Twtuserid", twtuserid);
+                        ArrayList alstTwtStats = new ArrayList();
+
+                        foreach (var item in query.List())
+                        {
+                            alstTwtStats.Add(item);
+                        }
+                        return alstTwtStats;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }
+            }
+        }
+
     }
 }

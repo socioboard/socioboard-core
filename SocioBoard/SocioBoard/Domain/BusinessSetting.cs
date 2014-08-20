@@ -9,8 +9,9 @@ namespace SocioBoard.Domain
     {
         public Guid Id { get; set; }
         public string BusinessName { get; set; }
-        public int AssigningTasks { get; set; }
-        public int TaskNotification { get; set; }
+        public Guid GroupId { get; set; }
+        public bool AssigningTasks { get; set; }
+        public bool TaskNotification { get; set; }
         public int FbPhotoUpload { get; set; }
         public Guid UserId { get; set; }
         public DateTime EntryDate { get; set; }

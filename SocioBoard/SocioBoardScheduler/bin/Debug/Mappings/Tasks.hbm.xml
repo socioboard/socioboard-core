@@ -8,6 +8,9 @@
     <id name="Id" column="Id" >
       <generator class="guid"/>
     </id>
+    <property name="GroupId">
+      <column name="GroupId"/>
+    </property>
     <property name="TaskMessage">
       <column name="TaskMessage" />
     </property>

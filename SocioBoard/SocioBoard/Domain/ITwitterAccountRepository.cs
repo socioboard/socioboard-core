@@ -13,5 +13,6 @@ namespace SocioBoard.Domain
         int updateTwitterUser(TwitterAccount fbaccount);
         ArrayList getAllTwitterAccountsOfUser(Guid UserId);
         bool checkTwitterUserExists(string TwtUserId, Guid Userid);
+
     }
 }

@@ -11,6 +11,9 @@
     <property name="BusinessName">
       <column name="BusinessName" />
     </property>
+    <property name="GroupId">
+      <column name="GroupId"/>
+    </property>
     <property name="AssigningTasks">
       <column name="AssigningTasks" />
     </property>
@@ -26,6 +29,6 @@
     <property name="EntryDate">
       <column name="EntryDate"  />
     </property>
-    
+
   </class>
 </hibernate-mapping>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+  
+  <class name="TumblrAccount" table="TumblrAccount" lazy="false">
+    <id name="Id" column="Id" >
+      <generator class="guid"/>
+    </id>
+    <property name="tblrUserName">
+      <column name="tblrUserName" />
+    </property>
+
+    <property name="UserId">
+      <column name="UserId"  />
+    </property>
+    
+    <property name="tblrAccessToken">
+      <column name="tblrAccessToken"  />
+    </property>
+    <property name="tblrAccessTokenSecret">
+      <column name="tblrAccessTokenSecret"  />
+    </property>
+    
+    <property name="tblrProfilePicUrl">
+      <column name="tblrProfilePicUrl"  />
+    </property>
+    
+    <property name="IsActive">
+      <column name="IsActive"  />
+    </property>
+  </class>
+
+</hibernate-mapping>

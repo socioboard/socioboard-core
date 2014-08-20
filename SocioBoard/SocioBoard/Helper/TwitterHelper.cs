@@ -11,6 +11,7 @@ using GlobusTwitterLib.App.Core;
 using Hammock.Authentication.OAuth;
 using Hammock;
 using GlobusTwitterLib.Twitter.Core.TimeLineMethods;
+using GlobusTwitterLib.Twitter.Core.SearchMethods;
 
 namespace SocioBoard.Helper
 {
@@ -771,6 +772,24 @@ namespace SocioBoard.Helper
                
             }
 
+        }
+
+        public static bool CheckTwitterToken(oAuthTwitter objoAuthTwitter, string txtvalue)
+        {
+            bool CheckTwitterToken = false;
+            //oAuthTwitter oAuthTwt = new oAuthTwitter();
+            Search search = new Search();
+
+            try
+            {
+                JArray twitterSearchResult = search.Get_Search_Tweets(objoAuthTwitter, txtvalue);
+                CheckTwitterToken = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return CheckTwitterToken;
         }
 
     }

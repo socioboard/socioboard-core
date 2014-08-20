@@ -13,6 +13,6 @@ namespace SocioBoard.Domain
         void updateFacebookInsightStats(FacebookInsightStats fbaccount);
         ArrayList getAllFacebookInsightStatsOfUser(Guid UserId);
         bool checkFacebookInsightStatsExists(string FbUserId, Guid Userid, string countdate, string agediff);
-        ArrayList getFacebookInsightStatsById(string Fbuserid, Guid userId,int days);
+        ArrayList getFacebookInsightStatsById(string Fbuserid,int days);
     }
 }

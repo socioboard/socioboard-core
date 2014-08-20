@@ -11,10 +11,11 @@ using System.Configuration;
 
 namespace SocialSiteDataService
 {
-    public class InstagramData
+    public class InstagramData : SocialSiteDataFeeds
     {
-        public void GetInstagramData(Guid UserId)
+        public void GetData(object objUserId)
         {
+            Guid UserId = (Guid)objUserId;
             getIntagramImages(UserId);
         }
         public void getIntagramImages(object instaId)
@@ -129,5 +130,14 @@ namespace SocialSiteDataService
             }
           
         }
+
+        
+
+        public void GetSearchData(object parameters)
+        {
+            throw new NotImplementedException();
+        }
+
+       
     }
 }

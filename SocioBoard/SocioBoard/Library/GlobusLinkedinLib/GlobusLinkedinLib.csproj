@@ -41,7 +41,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>0</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.Core\Global.cs" />
+    <Compile Include="App.Core\LinkedInGroup.cs" />
     <Compile Include="App.Core\LinkedInJob.cs" />
     <Compile Include="App.Core\LinkedInNetwork.cs" />
     <Compile Include="App.Core\LinkedInProfile.cs" />

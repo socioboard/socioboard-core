@@ -9,9 +9,9 @@ using SocioBoard.Domain;
 
 namespace SocialSiteDataService
 {
-    public class GoogleAnalyticsData
+    public class GoogleAnalyticsData:SocialSiteDataFeeds
     {
-        public void getAnalytics(object obj)
+        public void GetData(object obj)
         {
             GanalyticsHelper objGaHelper = new GanalyticsHelper();
             Guid user = Guid.Parse(obj.ToString());
@@ -27,6 +27,12 @@ namespace SocialSiteDataService
                 objGaHelper.getYearWiseAnalyticsApi(temp.GetValue(0).ToString(), user);
 
             }
+        }
+
+
+        public void GetSearchData(object parameters)
+        {
+            throw new NotImplementedException();
         }
     }
 }

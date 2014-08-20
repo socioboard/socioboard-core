@@ -7,10 +7,12 @@ using Facebook;
 using SocioBoard.Model;
 using System.Collections;
 using SocioBoard.Domain;
+using System.Net;
+using System.IO;
 
 namespace SocialSiteDataService
 {
-    class FacebookData
+    class FacebookData:SocialSiteDataFeeds
     {
         public void GetFacebookData(object userId)
         {
@@ -304,5 +306,235 @@ namespace SocialSiteDataService
         }
 
 
+
+        public void GetData(object userId)
+        {
+            Guid UserId = (Guid)userId;
+            FacebookAccountRepository objFbRepo = new FacebookAccountRepository();
+            FacebookHelper fbhelper = new FacebookHelper();
+            ArrayList arrFbAcc = objFbRepo.getAllFacebookAccountsOfUser(UserId);
+            foreach (FacebookAccount itemFb in arrFbAcc)
+            {
+                FacebookHelper objFbHelper = new FacebookHelper();
+                FacebookInsightStatsHelper fbiHelper = new FacebookInsightStatsHelper();
+                try
+                {
+                    FacebookClient fb = new FacebookClient();
+                    fb.AccessToken = itemFb.AccessToken;
+
+                    var feeds = fb.Get("/me/feed");
+                    var home = fb.Get("me/home");
+                    var profile = fb.Get("me");
+                    getFacebookUserHome(home, profile, UserId);
+                    getFacebookUserFeeds(feeds, profile, UserId);
+                    getFacebookProfile(profile, UserId);
+                    FacebookAccountRepository fbAccRepo = new FacebookAccountRepository();
+                    try
+                    {
+                        int fancountacc = 0;
+                        dynamic fanacccount = fb.Get("fql", new { q = "SELECT friend_count FROM user WHERE uid=" + itemFb.FbUserId });
+                        foreach (var friend in fanacccount.data)
+                        {
+                            fancountacc = Convert.ToInt32(friend.friend_count);
+                        }
+
+                        fbAccRepo.updateFriendsCount(itemFb.FbUserId, itemFb.UserId, fancountacc);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    if (itemFb.Type == "page")
+                    {
+                        try
+                        {
+                            fbiHelper.getFanPageLikesByGenderAge(itemFb.FbUserId, UserId, 10);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+
+                        try
+                        {
+                            fbiHelper.getPageImpresion(itemFb.FbUserId, UserId, 10);
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.Message);
+
+                        }
+                        try
+                        {
+                            fbiHelper.getStories(itemFb.FbUserId, UserId, 10);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                        try
+                        {
+                            fbiHelper.getLocation(itemFb.FbUserId, UserId, 10);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                        try
+                        {
+                            fbiHelper.getFanPost(itemFb.FbUserId, UserId, 10);
+                        }
+                        catch (Exception ex)
+                        {
+                        }
+
+                        try
+                        {
+                            int fancountPage = 0;
+                            dynamic fancount = fb.Get("fql", new { q = " SELECT fan_count FROM page WHERE page_id =" + itemFb.FbUserId });
+                            foreach (var friend in fancount.data)
+                            {
+                                fancountPage = Convert.ToInt32(friend.fan_count);
+                            }
+                            // FacebookAccountRepository fbAccRepo = new FacebookAccountRepository();
+                            fbAccRepo.updateFansCount(itemFb.FbUserId, itemFb.UserId, fancountPage);
+
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+
+                    }
+                    //  var friendsgenderstats = fb.Get("me/friends?fields=gender");
+                    // fbhelper.getfbFriendsGenderStats(friendsgenderstats, profile, UserId);
+                }
+                catch (Exception Err)
+                {
+                    Console.Write(Err.Message);
+                }
+            }
+        }
+
+        public void GetSearchData(object parameters)
+        {
+            #region Facebook
+            try
+            {
+                Array arrayParams = (Array)parameters;
+
+                DiscoverySearch dissearch = (DiscoverySearch)arrayParams.GetValue(0);
+                DiscoverySearchRepository dissearchrepo = (DiscoverySearchRepository)arrayParams.GetValue(1);
+                DiscoverySearch discoverySearch = (DiscoverySearch)arrayParams.GetValue(2);
+
+
+                #region FacebookSearch
+
+                string accesstoken = string.Empty;
+
+                FacebookAccountRepository fbAccRepo = new FacebookAccountRepository();
+                //ArrayList asltFbAccount = fbAccRepo.getAllFacebookAccounts();
+                ArrayList asltFbAccount = fbAccRepo.getAllFacebookAccountsOfUser(discoverySearch.UserId);
+
+                foreach (FacebookAccount item in asltFbAccount)
+                {
+                    accesstoken = item.AccessToken;
+                    if (FacebookHelper.CheckFacebookToken(accesstoken, discoverySearch.SearchKeyword))
+                    {
+
+                        break;
+                    }
+                }
+
+                string facebookSearchUrl = "https://graph.facebook.com/search?q=" + discoverySearch.SearchKeyword + " &type=post&access_token=" + accesstoken;
+                var facerequest = (HttpWebRequest)WebRequest.Create(facebookSearchUrl);
+                facerequest.Method = "GET";
+                string outputface = string.Empty;
+                using (var response = facerequest.GetResponse())
+                {
+                    using (var stream = new StreamReader(response.GetResponseStream(), Encoding.GetEncoding(1252)))
+                    {
+                        outputface = stream.ReadToEnd();
+                    }
+                }
+                if (!outputface.StartsWith("["))
+                    outputface = "[" + outputface + "]";
+
+
+                Newtonsoft.Json.Linq.JArray facebookSearchResult = Newtonsoft.Json.Linq.JArray.Parse(outputface);
+
+                foreach (var item in facebookSearchResult)
+                {
+                    var data = item["data"];
+
+                    foreach (var chile in data)
+                    {
+                        try
+                        {
+                            dissearch.CreatedTime = DateTime.Parse(chile["created_time"].ToString());
+
+                            dissearch.EntryDate = DateTime.Now;
+
+                            dissearch.FromId = chile["from"]["id"].ToString();
+
+                            dissearch.FromName = chile["from"]["name"].ToString();
+
+                            try
+                            {
+                                dissearch.ProfileImageUrl = "http://graph.facebook.com/" + chile["from"]["id"] + "/picture?type=small";
+                            }
+                            catch { }
+
+                            dissearch.SearchKeyword = discoverySearch.SearchKeyword;
+
+                            dissearch.Network = "facebook";
+
+                            try
+                            {
+                                dissearch.Message = chile["message"].ToString();
+                            }
+                            catch { }
+                            try
+                            {
+                                dissearch.Message = chile["story"].ToString();
+                            }
+                            catch { }
+
+                            dissearch.MessageId = chile["id"].ToString();
+
+                            dissearch.Id = Guid.NewGuid();
+
+                            dissearch.UserId = discoverySearch.UserId;
+
+                            if (!dissearchrepo.isKeywordPresent(dissearch.SearchKeyword, dissearch.MessageId))
+                            {
+                                dissearchrepo.addNewSearchResult(dissearch);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            //logger.Error(ex.StackTrace);
+                            Console.WriteLine(ex.StackTrace);
+                        }
+
+
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                //logger.Error(ex.StackTrace);
+                Console.WriteLine(ex.StackTrace);
+            }
+                #endregion
+
+            #endregion
+        }
+
+
+
+       
     }
 }

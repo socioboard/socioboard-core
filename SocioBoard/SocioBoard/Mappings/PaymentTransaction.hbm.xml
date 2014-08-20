@@ -40,6 +40,13 @@
     <property name="IPNTrackId">
       <column name="IPNTrackId"  />
     </property>
+
+    <property name="VersionType">
+      <column name="VersionType"  />
+    </property>
+    <property name="DetailsInfo">
+      <column name="DetailsInfo"  />
+    </property>
     
   </class>
 </hibernate-mapping>

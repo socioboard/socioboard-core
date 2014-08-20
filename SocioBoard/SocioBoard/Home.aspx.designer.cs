@@ -7,28 +7,73 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SocioBoard {
+namespace SocialSuitePro {
     
     
     public partial class Home {
         
         /// <summary>
-        /// profiles control.
+        /// spanIncoming control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl profiles;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanIncoming;
         
         /// <summary>
-        /// LinkedInLink control.
+        /// spanSent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor LinkedInLink;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanSent;
+        
+        /// <summary>
+        /// spanNewTweets control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanNewTweets;
+        
+        /// <summary>
+        /// spanFbFans control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanFbFans;
+        
+        /// <summary>
+        /// bindads control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl bindads;
+        
+        /// <summary>
+        /// usedAccount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl usedAccount;
+        
+        /// <summary>
+        /// expander control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl expander;
         
         /// <summary>
         /// TwitterOAuth control.
@@ -40,6 +85,15 @@ namespace SocioBoard {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor TwitterOAuth;
         
         /// <summary>
+        /// LinkedInLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor LinkedInLink;
+        
+        /// <summary>
         /// InstagramConnect control.
         /// </summary>
         /// <remarks>
@@ -49,13 +103,31 @@ namespace SocioBoard {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor InstagramConnect;
         
         /// <summary>
-        /// Team control.
+        /// TumblrConnect control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Team;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor TumblrConnect;
+        
+        /// <summary>
+        /// YoutubeConnect control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor YoutubeConnect;
+        
+        /// <summary>
+        /// teamMem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl teamMem;
         
         /// <summary>
         /// team_member control.
@@ -67,58 +139,22 @@ namespace SocioBoard {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl team_member;
         
         /// <summary>
-        /// TeamMemConnect control.
+        /// teammember control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor TeamMemConnect;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl teammember;
         
         /// <summary>
-        /// demograp control.
+        /// getAllGroupsOnHome control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl demograp;
-        
-        /// <summary>
-        /// twt_cont control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor twt_cont;
-        
-        /// <summary>
-        /// link_cont control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor link_cont;
-        
-        /// <summary>
-        /// inst_cont control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor inst_cont;
-        
-        /// <summary>
-        /// usedAccount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl usedAccount;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl getAllGroupsOnHome;
         
         /// <summary>
         /// fb_account control.

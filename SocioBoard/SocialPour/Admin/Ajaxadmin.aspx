@@ -1,1 +1,0 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Ajaxadmin.aspx.cs" Inherits="SocialScoup.Admin.Ajaxadmin" %>

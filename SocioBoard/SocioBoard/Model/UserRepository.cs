@@ -37,18 +37,8 @@ namespace SocioBoard.Model
             {
                 using (NHibernate.ITransaction transaction = session.BeginTransaction())
                 {
-                    try
-                    {
-                        session.Save(user);
-                        transaction.Commit();
-                    }
-                    catch (Exception ex)
-                    {
-
-                        Console.WriteLine(ex.StackTrace);
-                    }
-
-                    
+                    session.Save(user);
+                    transaction.Commit();
                 }
             }
         }
@@ -92,40 +82,47 @@ namespace SocioBoard.Model
                 }
             }
         }
-        public static void UpdateAccountType(User user)
-        {
-            using (NHibernate.ISession session = SessionFactory.GetNewSession())
-            {
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
-                {
-                    try
-                    {
-                        int i = session.CreateQuery("Update User set ProfileUrl =:profileurl, UserName =: username , EmailId=:emailid,AccountType=:accounttype,UserStatus=:userstatus,ExpiryDate=:expirydate,TimeZone=:timezone where Id = :twtuserid")
-                                  .SetParameter("twtuserid", user.Id)
-                                  .SetParameter("profileurl", user.ProfileUrl)
-                                  .SetParameter("username", user.UserName)
-                                  .SetParameter("emailid", user.EmailId)
-                                .SetParameter("accounttype", user.AccountType)
-                                  .SetParameter("userstatus", user.UserStatus)
-                                  .SetParameter("expirydate", user.ExpiryDate)
-                                  .SetParameter("timezone", user.TimeZone)
-                                  .ExecuteUpdate();
-                        transaction.Commit();
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
 
-                    }
-
-
-                }
-            }
-        }
-
-        public int UpdateCreatDateByUserId(User user)
+        public  int UpdateReferenceUserByUserId(User user)
         {
             int i = 0;
+            try
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        try
+                        {
+                            i = session.CreateQuery("Update User set ReferenceStatus =:referenceStatus where Id = :id")
+                                      .SetParameter("referenceStatus", user.ReferenceStatus)
+                                      .SetParameter("id", user.Id)
+
+                                      .ExecuteUpdate();
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+
+                        }
+
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+
+            }
+
+            return i;
+        }
+
+        public int  UpdateCreatDateByUserId(User user)
+        {
+            int i=0;
             try
             {
                 using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -138,6 +135,41 @@ namespace SocioBoard.Model
                                       .SetParameter("createDate", user.CreateDate)
                                       .SetParameter("accountType", user.AccountType)
                                       .SetParameter("paymentStatus", user.PaymentStatus)
+                                      .SetParameter("id", user.Id)
+                                      .ExecuteUpdate();
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+
+                        }
+
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+            return i;
+        }
+
+        public int UpdateActivationStatusByUserId(User user)
+        {
+            int i = 0;
+            try
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        try
+                        {
+                            i = session.CreateQuery("Update User set ActivationStatus =:activationStatus where Id = :id")
+                                      .SetParameter("activationStatus", user.ActivationStatus)
                                       .SetParameter("id", user.Id)
                                       .ExecuteUpdate();
                             transaction.Commit();
@@ -214,6 +246,11 @@ namespace SocioBoard.Model
                 }
             }
         }
+
+
+   
+
+
         public int ChangePassword(string newpassword, string oldpassword, string Emailid)
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -248,34 +285,27 @@ namespace SocioBoard.Model
         }
         public User getUserInfoByEmail(string emailId)
         {
-            User result = new User();
+            List<User> lstUser = new List<User>();
+            User user = new User();
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
                 using (NHibernate.ITransaction transaction = session.BeginTransaction())
                 {
                     try
                     {
-                        NHibernate.IQuery query = session.CreateQuery("from  User u where u.EmailId = : email");
-                        query.SetParameter("email", emailId);
-                        try
-                        {
-                            result = query.UniqueResult<User>();
-                        }
-                        catch (Exception)
-                        {
-                            result = query.List<User>().ToList<User>()[0];
-                        }
-                        return result;
+                        lstUser = session.CreateQuery("from  User u where u.EmailId = : email")
+                        .SetParameter("email", emailId).List<User>().ToList<User>();
+                          user=lstUser[0];
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.StackTrace);
-                        return null;
-
+                        user = null;
                     }
                 }
             }
 
+            return user;
         }
         public void UpdatePassword(string emailid, string password, Guid id, string username, string accounttype)
         {
@@ -302,6 +332,99 @@ namespace SocioBoard.Model
             }
 
         }
+
+        public int UpdateUserExpiryDateById(User user)
+        {
+            int i=0;
+            try
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        try
+                        {
+                            i = session.CreateQuery("Update User set ExpiryDate=:expirydate, AccountType=:accounttype where Id = :id")
+                                      .SetParameter("id", user.Id)
+                                      .SetParameter("accounttype", user.AccountType)
+                                      .SetParameter("expirydate", user.ExpiryDate)
+                                      .ExecuteUpdate();
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+
+                        }
+
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+
+            }
+
+            return i;
+        }
+
+
+        public void SetUserByUserId(string emailid, string password, Guid id, string username, string accounttype,string couponcode)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        int i = session.CreateQuery("Update User set EmailId=:email, UserName =: username, Password =:pass, AccountType= :acctype,CouponCode=:couponCode where Id = :twtuserid")
+                                  .SetParameter("twtuserid", id)
+                                  .SetParameter("email", emailid)
+                                  .SetParameter("pass", password)
+                                  .SetParameter("acctype", accounttype)
+                                  .SetParameter("username", username)
+                                  .SetParameter("couponCode", couponcode)
+                                  .ExecuteUpdate();
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                }
+            }
+
+        }
+
+        public int DeleteUser(Guid id)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        int i = session.CreateQuery("Delete from User where Id = :userid")
+                                  .SetParameter("userid", id)
+                                  .ExecuteUpdate();
+                        transaction.Commit();
+                        return i;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+
+
+                }
+            }
+
+        }
+
         public int ResetPassword(Guid id, string password)
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -338,7 +461,7 @@ namespace SocioBoard.Model
                 {
                     try
                     {
-                        NHibernate.IQuery query = session.CreateQuery("from User");
+                        NHibernate.IQuery query = session.CreateQuery("from User where Id !=null");
                         List<User> alstUser = new List<User>();
                         foreach (User item in query.Enumerable())
                         {
@@ -505,6 +628,36 @@ namespace SocioBoard.Model
         }
 
 
+        public static void UpdateAccountType(User user)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        int i = session.CreateQuery("Update User set ProfileUrl =:profileurl, UserName =: username , EmailId=:emailid,AccountType=:accounttype,UserStatus=:userstatus,ExpiryDate=:expirydate,TimeZone=:timezone where Id = :twtuserid")
+                                  .SetParameter("twtuserid", user.Id)
+                                  .SetParameter("profileurl", user.ProfileUrl)
+                                  .SetParameter("username", user.UserName)
+                                  .SetParameter("emailid", user.EmailId)
+                                .SetParameter("accounttype", user.AccountType)
+                                  .SetParameter("userstatus", user.UserStatus)
+                                  .SetParameter("expirydate", user.ExpiryDate)
+                                  .SetParameter("timezone", user.TimeZone)
+                                  .ExecuteUpdate();
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+
+                    }
+
+
+                }
+            }
+        }
         public void UpdateAccountType(Guid Userid, string AccountType)
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -529,6 +682,40 @@ namespace SocioBoard.Model
         }
 
 
+        public int UpdatePaymentStatusByUserId(User user)
+        {
+            int i = 0;
+            try
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+
+                        try
+                        {
+                            i = session.CreateQuery("Update User set PaymentStatus=:paymentStatus  where Id = :userid")
+                                     .SetParameter("userid", user.Id)
+                                     .SetParameter("paymentStatus", user.PaymentStatus)
+                                     .ExecuteUpdate();
+                            transaction.Commit();
+
+
+                        }
+                        catch { }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error : " + ex.StackTrace);
+            }
+
+            return i;
+
+        }
+
+
         /********************/
 
         public List<User> testing()
@@ -539,8 +726,8 @@ namespace SocioBoard.Model
                 {
                     try
                     {
-                        List<User> s = session.CreateQuery("from User").List<User>().ToList<User>();
-                        return s;
+                      List<User> s  = session.CreateQuery("from User").List<User>().ToList<User>();
+                      return s;
                         //List<User> alstUser = new List<User>();
                         //foreach (User item in query.Enumerable())
                         //{
@@ -558,41 +745,6 @@ namespace SocioBoard.Model
                 }
             }
         }
-
-
-
-
-        public int DeleteUser(Guid id)
-        {
-            using (NHibernate.ISession session = SessionFactory.GetNewSession())
-            {
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
-                {
-                    try
-                    {
-                        int i = session.CreateQuery("Delete from User where Id = :userid")
-                                  .SetParameter("userid", id)
-                                  .ExecuteUpdate();
-                        transaction.Commit();
-                        return i;
-
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
-                        return 0;
-                    }
-
-
-                }
-            }
-
-        }
-
-
-
-
-
 
         //public int ResetPassword(Guid id, string password)
         //{
@@ -621,6 +773,98 @@ namespace SocioBoard.Model
         //    }
 
         //}
+
+
+
+        public List<User> GetAllUsersByCreateDate(string date)
+        {
+            List<User> alstUser = new List<User>();
+            try
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        try
+                        {
+                            alstUser = session.CreateQuery("from User where CreateDate < '2014-02-10' order by CreateDate desc").List<User>().ToList<User>();
+                            //.SetParameter("date", date).List<User>().ToList<User>();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                            return null;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine("Error : " + ex.StackTrace);
+            }
+
+            return alstUser;
+        }
+
+        public List<User> GetUserByCouponCode(User user)
+        {
+            List<User> alstUser = new List<User>();
+            try
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        try
+                        {
+                            alstUser = session.CreateQuery("from User where CouponCode=:couponCode")
+                            .SetParameter("couponCode", user.CouponCode)
+                            .List<User>().ToList<User>();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                            
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine("Error : " + ex.StackTrace);
+            }
+
+            return alstUser;
+        }
+
+
+        public int DeleteUserByUserid(Guid userid)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        NHibernate.IQuery query = session.CreateQuery("delete from User where Id = :userid")
+                                        .SetParameter("userid", userid);
+                        int isUpdated = query.ExecuteUpdate();
+                        transaction.Commit();
+                        return isUpdated;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+                }
+            }
+        }
+
 
     }
 }

@@ -29,6 +29,8 @@ namespace GlobusLinkedinLib.App.Core
             public string PersonHeadLine { get; set; }
             public string PictureUrl { get; set; }
             public string Message { get; set; }
+            public string Comment { get; set; }
+
         }
 
         /// <summary>
@@ -102,7 +104,7 @@ namespace GlobusLinkedinLib.App.Core
 
                     try
                     {
-                        user_Updates.PersonHeadLine = Element.GetElementsByTagName("headline")[0].InnerText;
+                        user_Updates.Comment = Element.GetElementsByTagName("comment")[0].InnerText;
                     }
                     catch
                     { }
@@ -194,6 +196,10 @@ namespace GlobusLinkedinLib.App.Core
                     else if (MessageType == "SHAR")
                     {
                         //user_Updates.Message = user_Updates.PersonFirstName + " " + user_Updates.PersonLastName + "Updated their profile picture";
+
+                        user_Updates.Message = user_Updates.PersonFirstName + " " + user_Updates.PersonLastName + " " + "Updated as" + " " + user_Updates.Comment;
+                    
+                    
                     }
                     else if (MessageType == "STAT")
                     {

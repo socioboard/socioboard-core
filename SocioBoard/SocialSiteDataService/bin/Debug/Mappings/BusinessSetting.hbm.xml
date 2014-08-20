@@ -2,7 +2,7 @@
 <hibernate-mapping
       xmlns="urn:nhibernate-mapping-2.2"
       namespace="SocioBoard.Domain"
-      assembly="SocioBoard 1.0">
+      assembly="SocioBoard">
 
   <class name="BusinessSetting" table="BusinessSetting" lazy="false">
     <id name="Id" column="Id">
@@ -10,6 +10,9 @@
     </id>
     <property name="BusinessName">
       <column name="BusinessName" />
+    </property>
+    <property name="GroupId">
+      <column name="GroupId"/>
     </property>
     <property name="AssigningTasks">
       <column name="AssigningTasks" />
@@ -26,6 +29,6 @@
     <property name="EntryDate">
       <column name="EntryDate"  />
     </property>
-    
+
   </class>
 </hibernate-mapping>

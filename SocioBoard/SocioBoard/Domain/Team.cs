@@ -16,5 +16,7 @@ namespace SocioBoard.Domain
         public string LastName { get; set; }
         public string EmailId { get; set; }
         public string AccessLevel { get; set; }
+        public Guid GroupId { get; set; }
+
     }
 }

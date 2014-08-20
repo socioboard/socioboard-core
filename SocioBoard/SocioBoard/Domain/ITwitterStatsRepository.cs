@@ -13,6 +13,6 @@ namespace SocioBoard.Domain
         int updateTwitterStats(TwitterStats twitterstats);
         ArrayList getAllTwitterStatsOfUser(Guid UserId,int days);
         bool checkTwitterStatsExists(string TwitterStataID, Guid Userid);
-        ArrayList getTwitterStatsById(Guid userId, string TwitterStataID, int days);
+        ArrayList getTwitterStatsById(string TwitterStataID, int days);
     }
 }

@@ -7,21 +7,19 @@ namespace SocioBoard.Helper
 {
     public class Payment
     {
-        public string PayWithPayPal(string amount, string itemInfo, string name, string phone, string email, string currency, string paypalemail, string successUrl, string failUrl, string callBackUrl, string cancelurl, string notifyurl, string custom)
+        public string PayWithPayPal(string amount, string itemInfo, string name, string phone, string email, string currency, string paypalemail, string successUrl, string failUrl, string callBackUrl, string cancelurl,string notifyurl,string custom)
         {
             string redirecturl = "";
 
             try
             {
 
-               
-
                 //Mention URL to redirect content to paypal site
-                //redirecturl += "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_xclick&business=" +
-                //                       paypalemail;
-
                 redirecturl += "https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=" +
                                        paypalemail;
+
+                //redirecturl += "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_xclick&business=" +
+                //                       paypalemail;
 
                 //First name i assign static based on login details assign this value
                 redirecturl += "&first_name=" + name;
@@ -75,15 +73,32 @@ namespace SocioBoard.Helper
                 redirecturl += "&notify_url=" + notifyurl;
 
                 redirecturl += "&custom=" + custom;
-
+                
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error : " + ex.StackTrace);
             }
-            return redirecturl;
+                return   redirecturl;
         }
 
+        /// <summary>
+        /// Recurring Payment With Paypal By Ajay Pandey
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <param name="itemInfo"></param>
+        /// <param name="name"></param>
+        /// <param name="phone"></param>
+        /// <param name="email"></param>
+        /// <param name="currency"></param>
+        /// <param name="paypalemail"></param>
+        /// <param name="successUrl"></param>
+        /// <param name="failUrl"></param>
+        /// <param name="callBackUrl"></param>
+        /// <param name="cancelurl"></param>
+        /// <param name="notifyurl"></param>
+        /// <param name="custom"></param>
+        /// <returns></returns>
         public string RecurringPaymentWithPayPal(string amount, string itemInfo, string name, string phone, string email, string currency, string paypalemail, string successUrl, string failUrl, string callBackUrl, string cancelurl, string notifyurl, string custom)
         {
             string redirecturl = "";
@@ -173,7 +188,7 @@ namespace SocioBoard.Helper
 
                 redirecturl += "&currency_code=" + currency;
 
-
+                
 
                 //Success return page url
                 redirecturl += "&return=" +
@@ -186,17 +201,15 @@ namespace SocioBoard.Helper
                 redirecturl += "&custom=" + custom;
 
 
-                //Subscription Params   
-
+                 //Subscription Params   
+    
                 //"<input type='hidden' name='a3' value=$nettotal>".
-
-                redirecturl += "&a3=" + amount;
-
                 //"<input type='hidden' name='p3' value='1'>". 
-
-                redirecturl += "&p3=1";
-
                 //"<input type='hidden' name='t3' value='M'>". 
+
+
+                redirecturl += "&a3="+amount;
+                redirecturl += "&p3=1";
 
                 redirecturl += "&t3=M";
 
@@ -210,10 +223,10 @@ namespace SocioBoard.Helper
                 //<!-- Set recurring payments Retry if Failed  -->
 
                 //"<input type='hidden' name='sra' value='1'>".
-
+                
                 redirecturl += "&sra=3";
 
-
+                
 
             }
             catch (Exception ex)
@@ -222,7 +235,6 @@ namespace SocioBoard.Helper
             }
             return redirecturl;
         }
-
 
     }
 }

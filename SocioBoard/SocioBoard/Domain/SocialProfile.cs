@@ -14,8 +14,6 @@ namespace SocioBoard.Domain
         public string ProfileType { get; set; }
         public DateTime ProfileDate { get; set; }
         public int ProfileStatus { get; set; }
-        
-
 
     }
 }

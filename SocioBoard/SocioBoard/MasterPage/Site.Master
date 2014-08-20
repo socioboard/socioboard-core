@@ -1,350 +1,526 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SocioBoard.MasterPage.Site" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SocialSuitePro.MasterPage.Site"  %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+<!---/Date Time Picker-->
+<link rel="shortcut icon" href="/Contents/img/ivon.ico" type="image/x-icon">
+<link href="../Contents/css/Style_previous.css" rel="stylesheet" type="text/css" />
+<link href="../Contents/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../Contents/css/admin.css" rel="stylesheet" type="text/css" />
+<link href="../Contents/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+<!---Date Time Picker-->
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+<script src="../Contents/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+<%--<script src="../Contents/js/jquery.session.js" type="text/javascript"></script>--%>
+<script src="../Contents/js/jquery.bpopup-0.9.3.min.js" type="text/javascript"></script>
+<script src="../Contents/js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript"></script>
+<script src="../Contents/js/login.js" type="text/javascript"></script>
+<link href="http://localhost:5334/Contents/css/fonts.css" rel="stylesheet" type="text/css" />
+<link href="../Contents/css/fonts.css" rel="stylesheet" type="text/css" />
+<%--this is for stylish alert box--%>
+<script src="../Contents/js/alertify.min.js" type="text/javascript"></script>
+<link href="../Contents/css/alertify.core.css" rel="stylesheet" type="text/css" />
+<link href="../Contents/css/alertify.default.css" rel="stylesheet" type="text/css"
+    id="toggleCSS" />
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script src="../Contents/js/Home.js" type="text/javascript"></script>
+<script src="../Contents/js/Message.js" type="text/javascript"></script>
+<script src="../Contents/js/Helper.js" type="text/javascript"></script>
+<script src="../Contents/js/googleanalytics.js" type="text/javascript"></script>
+<script src="../Contents/js/clickDesk.js" type="text/javascript"></script>
+<script src="../Contents/js/jquery.cookie.js" type="text/javascript"></script>
+<script src="../Contents/js/jquery.session1.js" type="text/javascript"></script>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
-    <title>Brandzter</title>
-    <link href="../Contents/Styles/Style.css" rel="stylesheet" type="text/css" />
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
-    
-    <!---/Date Time Picker-->
-    <link href="../Contents/Styles/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />
-    <link href="../Contents/Styles/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
-  
-    
-<!---Date Time Picker-->
-<script src="../Contents/Scripts/jquery.fileupload.js" type="text/javascript"></script>
-<script type="text/javascript" src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
-    <script src="../Contents/Scripts/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
-    <script src="../Contents/Scripts/jquery.session.js" type="text/javascript"></script>
-    <script src="../Contents/Scripts/jquery.bpopup-0.9.3.min.js" type="text/javascript"></script>
-    <script src="../Contents/Scripts/login.js" type="text/javascript"></script>
-    <script src="../Contents/Scripts/Feeds.js" type="text/javascript"></script>
-    <script src="../Contents/Scripts/Home.js" type="text/javascript"></script>
-    <script src="../Contents/Scripts/Message.js" type="text/javascript"></script>
-    <script src="../Contents/Scripts/Helper.js" type="text/javascript"></script>
+    <meta charset="utf-8">
+    <title>SocioBoard - Generate More leads on Social Media| Social CRM | Social Media CMS
+    </title>
+    <meta name="google-site-verification" content="suNXfJWYY3E7tilc3XsF5M2qZgSml8fGZVb5RfDOWaA" />
+    <meta name="description" content="A new fast growing, advanced, easy, open-source social media marketing tool to engage your audience with great features such as live chat, news feed, timeline, profiles, events, notifications, likes, analytics, insights and much more hit the digital media marketing lately.Most applications in this domain have a very narrow and limited approach towards end users, people feel caught up in a whirlpool of using the same features without customization and scaling up. Socioboard plans to help users out of this narrow limiting vision of the current social media dashboards today." />
+    <meta name="keywords" content="Social Media Management Software, Social Media Management tool, Open Source Social Media Management, Social Media Management" />
+    <meta name="author" content="">
+    <meta property="og:image" content="http://socioboard.com/Contents/img/ssp/slidegraph.png" />
+    <meta property="og:title" content="SocioBoard - Generate More leads on Social Media|  Social CRM | Social Media CMS" />
+    <meta property="og:url" content="http://socioboard.com" />
+    <meta property="og:site_name" content="Socioboard" />
+    <meta property="og:type" content="Website" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+
+    <!--[if IE 7]>
+			<link href="../Contents/css/font-awesome-ie7.min.css" rel="stylesheet">
+		<![endif]-->
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+			<script src="../Contents/js/html5shiv.js"></script>
+            <script src="../Contents/js/excanvas.js" type="text/javascript"></script>
+		<![endif]-->
+    <script type="text/javascript">
+
+        var selectedGroup = '';
+
+        function setvalue() {
+
+            //  var curdt = new Date();
+            // var index=curdt.indexOf('G');
+            $('#userinf').html(new Date());
+        }
+        $(document).ready(function () {
+            try {
+                //alert($.cookie("selectedGroup_Socioboard"));
+                //  alert($.session.get("selectedGroup_Socioboard"));
+            } catch (e) {
+
+            }
+            try {
+                if ($.session.get("selectedGroup_Socioboard") != null) {
+                    selectedGroup = $.session.get("selectedGroup_Socioboard");
+
+                    debugger;
+                    if (selectedGroup != '') {
+                        $("#groupsselection").val(selectedGroup);
+                    }
+
+                }
+                //                if ($.cookie("selectedGroup_Socioboard") != null) {
+                //                    selectedGroup = $.cookie("selectedGroup_Socioboard");
+
+                //                    debugger;
+                //                    if (selectedGroup != '') {
+                //                        $("#groupsselection").val(selectedGroup);
+                //                    }
+
+                //                }
+            } catch (e) {
+                alert(e);
+            }
 
 
-    <link href="../Contents/Styles/Style.css" rel="stylesheet" type="text/css" />
+
+            if (selectedGroup != '') {
+                $("#groupsselection").val(selectedGroup);
+            }
+
+            $('.cross').click(function () {
+                debugger;
+                $('.rederrormsg').fadeOut();
+                $('.greenerrormsg').fadeOut();
+            });
+
+            $('#addico').click(function () {
+                $('#inviteTeam').hide();
+                $('#userset').hide();
+            });
+
+            $('#master_invite').click(function () {
+                $('#addicbox').hide();
+                $('#userset').hide();
+            });
+
+            $('#usersetting').click(function () {
+                $('#addicbox').hide();
+                $('#inviteTeam').hide();
+            });
+
+            // $('#userinf').html("sign in :" + new data());
+
+            $("#groupsselection").change(function () {
+                debugger;
+                //  alert('groupsselection');
+                DropDownSelectionChanged();
+            });
 
 
-   <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
-    <style type="text/css">
-        body
-        {
-            font-family: verdana;
-            font-size: 15px;
+
+            function DropDownSelectionChanged() {
+
+                //alert('DropDownSelectionChanged');
+
+                var ele = document.getElementById("groupsselection");
+                var selectedValue = $("#groupsselection option:selected").val();
+
+                //$.cookie("selectedGroup_Socioboard", selectedValue, { path: "/", domain: "localhost:5334" });
+                $.session.set("selectedGroup_Socioboard", selectedValue);
+
+                $.ajax
+                     ({
+                         type: 'GET',
+                         url: '../AjaxHome.aspx?groupsselection=' + selectedValue + '',
+                         contentType: "application/json; charset=utf-8",
+                         success: function (data) {
+                             //alert(data + 'sd');
+                             // window.location = self.location;
+                             location.reload();
+                             //                             if (data != '') {
+
+                             //                                 $.cookie("selectedGroup_Socioboard", data);
+                             //                                 selectedGroup = selectedValue;
+
+                             //                                 if (selectedGroup != '') {
+                             //                                     $("#groupsselection").val(data);
+                             //                                 }
+
+
+                             //                             }
+                         }
+                     });
+
+            }
+
+        });
+        $(function () {
+            window.onbeforeunload = confirmExit;
+            function confirmExit() {
+                $.ajax
+                     ({
+                         type: 'POST',
+                         url: '../AjaxLogin.aspx?op=removeuser',
+                         contentType: "application/json; charset=utf-8",
+                         success: function (data) {
+
+                         }
+                     });
+                //   return "If you leave this page you will lose your changes. Are you sure?";
+            }
+            //                $(function () {
+            //                    //                    $("a").click(function () {
+            //                    //                        window.onbeforeunload = null;
+            //                    //                    });
+            //                    $("input").click(function () {
+            //                        window.onbeforeunload = null;
+            //                    });
+            //                });
+        });
+
+
+
+        function showimage() {
+
+            try {
+                var filesinput = $('#fileuploadImage');
+
+                debugger;
+
+                if (filesinput !== 'undefined' && filesinput[0].files[0] !== null) {
+                    $('#showBlock').css('display', 'block');
+
+                }
+            } catch (e) {
+
+            }
         }
-        
-        a
-        {
-            color: #333;
-            text-decoration: none;
+        function deleteimage() {
+
+            try {
+                var filesinput = $('#fileuploadImage');
+
+                debugger;
+
+                if (filesinput !== 'undefined') {
+                    $('#showBlock').css('display', 'none');
+                    // $('#fileuploadImage').val() = "";
+                    document.getElementById('fileuploadImage').value = "";
+
+                }
+            } catch (e) {
+
+            }
         }
-        a:hover
-        {
-            color: #ccc;
-            text-decoration: none;
-            
+
+    </script>
+
+<script language="javascript">
+    function toggle() {
+        var ele = document.getElementById("toggleText");
+        var text = document.getElementById("displayText");
+        if (ele.style.display == "block") {
+            ele.style.display = "none";
+            //text.innerHTML = "Show Registration";
         }
-        
-        #mask
-        {
-            position: fixed;
-            left: 0;
-            top: 0;
-            z-index: 9000;
-            background-color: #000;
-            display: none;
+        else {
+            ele.style.display = "block";
+
         }
-        
-        #mask1 .mask1
-        {
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: 9000;
-            background-color: #000;
-            display: none;
-        }
-        
-        #boxes .window
-        {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 440px;
-            height: 200px;
-            display: none;
-            z-index: 9999;
-            padding: 20px;
-        }
-        
-        #boxes #dialog, #boxes #other_dialog
-        {
-            background-color: #FFFFFF;
-            border-radius: 10px 10px 10px 10px;
-            height: auto;
-            padding: 10px;
-            width: 375px;
-        }
-        #other_dialog
-        {
-            width: 800px !important;
-            background: none !important;
-            border-radius: 0 !important;
-            position: fixed;
-            margin-top: -30px;
-        }
-        .schedule_div
-        {
-            float: left;
-            height: auto;
-            margin-left: 76px;
-            margin-top: 5px;
-            width: 890px;
-        }
-        .close
-        {
-            background: none repeat scroll 0 0 #FF0000;
-            border-radius: 15px 15px 15px 15px;
-            color: #FFFFFF;
-            float: right;
-            height: 19px;
-            text-align: center;
-            width: 19px;
-        }
-        #quick_search
-        {
-            border: 1px solid #178BC7;
-            border-radius: 5px 5px 5px 5px;
-            float: left;
-            height: 25px;
-            width: 369px;
-        }
-        .search_window
-        {
-            width: 375px;
-            height: auto;
-            float: left;
-        }
-        .search_window h4
-        {
-            color: #178BC7;
-            float: left;
-            font-family: Arial;
-            font-size: 18px;
-            margin-top: 0;
-            width: auto;
-        }
-        #qs_search_results h4
-        {
-            width: 375px;
-            height: auto;
-            float: left;
-            margin-top: 3px;
-        }
-        .search_window a.close
-        {
-            width: 20px;
-            float: right;
-            font-family: Arial;
-            font-size: 13px;
-            background: #ff0000;
-            color: #fff;
-            text-align: center;
-            border-radius: 18px;
-        }
-        #output
-        {
-            float: left;
-            height: auto;
-            list-style: none outside none;
-            margin-top: -12px;
-            overflow: hidden;
-            width: 375px;
-        }
-        #output ul
-        {
-            float: left;
-            height: 144px;
-            list-style: none outside none;
-            margin-top: -8px;
-            overflow-x: hidden;
-            overflow-y: auto;
-            padding-top: 7px;
-            width: 353px;
-        }
-        #output ul li
-        {
-            border: 1px solid #CCCCCC;
-            cursor: pointer;
-            height: auto;
-            list-style: none outside none;
-            margin: 4px 0 0 -37px;
-            padding: 15px;
-            width: 335px;
-        }
-        .compose_msgbtn
-        {
-            background: none repeat scroll 0 0 #095982;
-            border-radius: 5px 5px 5px 5px;
-            color: #FFFFFF;
-            float: left;
-            height: 14px;
-            padding: 10px;
-            width: 144px;
-            margin-left: 5px;
-        }
-        #facebookuserDetails_master
-        {
-            background-color: #FFFFFF;
-            border-radius: 10px 10px 10px 10px;
-            box-shadow: 0 0 25px 5px #999999;
-            color: #111111;
-            display: none;
-            left: 135.5px;
-            opacity: 1;
-            padding: 25px;
-            position: absolute;
-            top: 167px;
-            z-index: 9999;
-        }
-    </style>   
+    }
+
+    //    $("#groupsselection").change(function () {
+    //        debugger;
+    //        alert('groupsselection');
+    ////        DropDownSelectionChanged();
+    //    });
+
    
-    
-</head>
-<body>
-<script type="text/javascript" language="javascript">
+
     
 </script>
-    <form id="FormMaster" runat="server">
-  
-    <div class="main_page">
-    <div class="header">
-        <div class="header_wrapper">
-                <div class="header_wrapper_top">
-                    <!--a class="logout" href="../Login.aspx">Logout</a-->
-                    <div class="settings">
-                        <a class="settingclick">
-                            <img id="commonmenuforAll" src="../Contents/Images/setting.png" width="16" height="18" alt=""  /></a>
-                        <div id="commonmenuforAllClick" class="ss_actions_menu">
-                            <div class="title">
-                                Settings</div>
-                            <div class="submenus">
-                                <a href="../Setting/PersonalSettings.aspx">Personal Settings</a> <a href="../Setting/BusinessSetting.aspx">
-                                    Business Settings</a> <a href="../Setting/UsersAndGroups.aspx">Users & Groups</a>
+
+<!-- Start of StatCounter Code for Default Guide -->
+<%--<script type="text/javascript">
+    var sc_project = 9930597;
+    var sc_invisible = 1;
+    var sc_security = "3850c63d";
+    var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+    document.write("<sc" + "ript type='text/javascript' src='" + scJsHost +
+"statcounter.com/counter/counter.js'></" + "script>");
+</script>
+<noscript><div class="statcounter"><a title="hits counter"
+href="http://statcounter.com/" target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/9930597/0/3850c63d/1/" alt="hits
+counter"></a></div></noscript>--%>
+<!-- End of StatCounter Code for Default Guide -->
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <%-- onload="setvalue();"--%>
+    <form id="form1" runat="server">
+    <div id="header">
+        <div id="top-nav">
+            
+               
+                <div id="infocontainer">
+                  
+                  
+               
+                <select id="groupsselection" runat="server" >
+                 
+                    </select>
+                    
+                 <%--  <asp:DropDownList ID="groupsselection" runat="server" 
+                        onselectedindexchanged="groupsselection_SelectedIndexChanged">
+                    </asp:DropDownList>
+--%>
+                
+          
+
+
+                   <a class="premium" href="../Referral.aspx">Get free Premium Account</a>
+
+                    <div id="msgcontainer">
+                        <div id="msgcontent">
+                            <a href="../Message/Messages.aspx">
+                                <img alt="" src="../Contents/img/admin/msgtiny.png" /><span runat="server" id="incom_messages">0</span></a></div>
+                        <div id="tskcontent">
+                            <a href="../Message/Task.aspx">
+                                <img alt="" src="../Contents/img/admin/remotetiny.png"><span runat="server" id="incom_tasks">0</span></a></div>
+                    </div>
+                    <%--Information! Now You have <a href="~/Message/Messages.aspx" id="incomMessages" runat="server">
+                        25</a> Incoming Message and <a runat="server" id="incomTasks" href="../Message/Task.aspx">
+                            0</a> Task <a class="premium" href="../Referral.aspx">Get free Premium Account</a>--%>
+                    
+
+                    <div id="errsuccess" class="greenerrormsg">
+                        <span id="errsuccessmsg" class="msg">Successfull your work</span> <span class="cross">
+                            X</span></div>
+                </div>
+               
+
+                
+
+            
+        </div>
+        <%--<div id="actdiv" runat=server> <span >Your accout is not yet activated.Check your E-mail to activate your account.</span><a href="#">Resend Mail</a></div>--%>
+        
+        <div id="navi">
+         
+            <div class="container">
+                <div id="logo">
+                    <a href="../Home.aspx">
+                        <img src="../Contents/img/under_sspro_logo.png" alt="Socio Board" /></a>
+                </div>
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                            <li id="home" class="active" title="Home"><a href="../Home.aspx">
+                                <img src="../Contents/img/admin/home.png" alt="" width="40" /></a> </li>
+                            <li id="message"><a href="../Message/Messages.aspx" title="Message">
+                                <img src="../Contents/img/admin/mail.png" alt="" width="40" /></a> </li>
+                            <li id="feeds"><a href="../Feeds/Feeds.aspx" title="Feeds">
+                                <img src="../Contents/img/admin/feeds.png" alt="" width="40" /></a> </li>
+                            <li id="publishing"><a href="../Publishing.aspx" title="Publishing">
+                                <img src="../Contents/img/admin/publishing.png" alt="" width="40" /></a> </li>
+                            <li id="discovery"><a href="../Discovery.aspx" title="Discovery">
+                                <img src="../Contents/img/admin/discovery.png" alt="" width="40" /></a> </li>
+                            <li id="reports"><a href="../Reports/GroupStats.aspx" title="Reports">
+                                <img src="../Contents/img/admin/reports.png" alt="" height="40" /></a> </li>
+                            <li id="groups"><a href="../Group/Group.aspx" title="Groups">
+                                <img src="../Contents/img/admin/group.png" alt="" width="40" /></a> </li>
+                        </ul>
+                    </div>
+    
+                </div>
+
+                <div class="usrnm">
+                      <a id="displayText" href="javascript:toggle();" class="showhide_text">
+                          <div id="usercontainer">
+                            <div id="userimg" runat="server">
                             </div>
-                            <a class="logout" href="../Login.aspx">Logout</a>
+                            <div id="usernm" runat="server">
+                            </div>
+                            <div class="dropdownl"></div>
+                            <%--<div id="userinf" runat="server">
+                            </div>--%>
+                        </div>
+                      </a>
+                      <div id="toggleText" class="toggletext">
+                      
+                        <div id="topbtn" runat="server">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <ul class="nav">
+                                <li class="dropdown">
+                                    <%--<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="../Contents/img/admin/inter.png" alt="">Inter<b class="caret" style="margin-left: 60px;
+                                        margin-right: 10px"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">
+                                            <img src="../Contents/img/891.png" alt="" /></a></li>
+                                    </ul>--%>
+                                </li>
+                                <li><a id="addico">
+                                    <img  id="imgaddico" src="../Contents/img/admin/addico.png" alt="" title="Social Media" /></a>
+                                    <div id="addicbox" style="display: none;">
+                                        <div class="drop_top_left_poin">
+                                        </div>
+                                        <div class="drop_mid loginbox">
+                                            <div class="teitter">
+                                                <ul>
+                                                    <li><a id="master_facebook_connect" runat="server" onserverclick="AuthenticateFacebook">
+                                                        <img width="18" border="none" style="float: left;" alt="" src="../Contents/img/facebook.png" />
+                                                        <span style="float: left; margin: 3px 0 0 5px;">Facebook</span> </a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="teitter">
+                                                <ul>
+                                                    <li><a id="master_TwitterOAuth" runat="server" onserverclick="AuthenticateTwitter">
+                                                        <img width="18" border="none" style="float: left;" alt="" src="../Contents/img/twitter.png" />
+                                                        <span style="float: left; margin: 3px 0 0 5px;">Twitter</span> </a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="teitter">
+                                                <ul>
+                                                    <li><a id="master_LinkedInLink" runat="server" onserverclick="AuthenticateLinkedin">
+                                                        <img width="18" border="none" style="float: left;" alt="" src="../Contents/img/link.png" />
+                                                        <span style="float: left; margin: 3px 0 0 5px;">LinkedIn</span> </a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="teitter">
+                                                <ul>
+                                                    <li><a id="master_InstagramConnect" runat="server" onserverclick="AuthenticateInstagram">
+                                                        <img width="18" border="none" style="float: left;" alt="" src="../Contents/img/instagram_24X24.png" />
+                                                        <span style="float: left; margin: 3px 0 0 5px;">Instagram</span> </a></li>
+                                                </ul>
+                                            </div>
+                                            <%--  <div class="teitter">
+                                                    <ul>
+                                                        <li>
+                                                            <a id="master_GooglePlusConnect" runat="server" onserverclick="AuthenticateGooglePlus">
+                                                                <img width="18" border="none" style="float:left;" alt=""  src="../Contents/img/google_plus.png" />
+                                                                <span style="float:left;margin: 3px 0 0 5px;">Google Plus</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul> 
+                                                 </div>
+
+                                                 <div class="teitter">
+                                                    <ul>
+                                                        <li>
+                                                            <a id="master_googleanalyticsConnect" runat="server" onserverclick="AuthenticateGoogleAnalytics">
+                                                                <img width="18" border="none" style="float:left;" alt=""  src="../Contents/img/an_24X24.png" />
+                                                                <span style="float:left;margin: 3px 0 0 5px;">GoogleAnalytics</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul> 
+                                                 </div>--%>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li id="masterInvite"><a id="master_invite">
+                                    <img  src="../Contents/img/admin/user2.png" alt="" title="Invite a Team Member" /></a>
+                                    <div id="inviteTeam" style="display: none;">
+                                        <div class="drop_top">
+                                        </div>
+                                        <div class="drop_mid loginbox">
+                                            <div class="teitter">
+                                                <ul id="inviteRedirect" runat="server">
+                                                    <%--<li><a id="GroupNone">No Groups Found </a></li>--%>
+                                                     <li id="GroupNone">No Groups Found</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li ><a id="usersetting">
+                                    <img src="../Contents/img/admin/usersetting.png" alt="" title="Setting" /></a>
+                                    <div id="userset" style="display: none;">
+                                        <div class="drop_top">
+                                        </div>
+                                        <div class="drop_mid loginbox">
+                                            <div class="teitter">
+                                                <ul>
+                                                    <li><a href="../Settings/PersonalSettings.aspx">Personal Settings</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="teitter">
+                                                <ul>
+                                                    <li><a href="../Settings/BusinessSetting.aspx">Business Settings</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="teitter">
+                                                <ul>
+                                                    <li><a href="../Settings/UsersAndGroups.aspx">User and Groups</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="teitter">
+                                                <ul>
+                                                    <li><a href="../Settings/Billing.aspx">Billing</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li >
+                                  <a href="../Default.aspx?type=logout" class="woo_logout" style="text-decoration: none;
+                        color: #767676;">
+                        <img alt="Logout" title="Logout" src="../Contents/img/logout_woo.png" style="margin-right: 4px;" alt="" /></a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                     
-                    <div id="addprofilesfromMaster"  class="team_member">
-                    
-                     <div id="expanderContentForMaster" style="display: none;">
-             <ul>
-                        <li><a id="facebook_connect_master">
-                            <img src="../Contents/Images/fb_24X24.png" width="16" height="16" alt="" />
-                            <span>Facebook</span> </a></li>
-                        <li><a id="LinkedInLink_master"  runat="server" onserverclick="AuthenticateLinkedin">
-                            <img src="../Contents/Images/linked_25X24.png" width="16" height="16" alt="" />
-                            <span>LinkedIn</span> </a></li>
-                      <li><a id="TwitterOAuth_master" runat="server" onserverclick="AuthenticateTwitter" >
-                            <img src="../Contents/Images/twt_icon.png" width="16" height="16" alt="" />
-                            <span>Twitter</span> </a></li>
-                       <%-- <li><a id="googleplus_connect" runat="server">
-                            <img src="Contents/Images/google_plus.png" width="16" height="16" alt="" />
-                            <span>Google Plus</span> </a></li>--%>
-                        <li><a id="googleanalytics_connect_master" runat="server" href="#">
-                            <img src="../Contents/Images/google_analytics.png" width="16" height="16" alt="" />
-                            <span>Google Analytics</span> </a></li>
-                        <li><a id="InstagramConnect_master"  runat="server" onserverclick="AuthenticateInstagram">
-                            <img src="../Contents/Images/instagram_24X24.png" width="16" height="16" alt="" />
-                            <span>Instagram</span> </a></li>
-                     
-
-                    </ul>
                 </div>
-                   
+                      
+                      </div>
                     </div>
-                    <div class="profile">
+                
+                <div id="cmposecontainer" runat="server">
+                    <div id="composecontent">
+                        <a href="#"><img src="../Contents/img/admin/111.png" width="20" title="Compose" /></a>
                     </div>
-                    <asp:Label ID="username" runat="server" Style="color: White; float: right; font-size: 12px;
-                        margin: 5px 13px 0 0;"></asp:Label>
-                </div>
-                <!--header_wrapper_bottom-->
-                <div class="header_wrapper_bottom">
-                    <div  class="social_crowdlogo">
-                        <a href="/Home.aspx">
-                           <img src="../Contents/Images/home/home-logo.png"  alt=""/></a></div>
-                   <ul class="menu">
-                        <li><a id="home" href="../Home.aspx"  title="Go to dashboard"><span
-                            class="icon">
-                            <img src="../Contents/Images/home.png" width="24" height="24" alt="" /></span> <span
-                                class="content">HOME</span> </a></li>
-                        <li class="break"></li>
-                        <li><a id="message" href="../Message/Message.aspx" class="" title="Go to messages">
-                            <span class="icon">
-                                <img src="../Contents/Images/msg.png" width="24" height="19" alt="" /></span>
-                            <span class="content">MESSAGES</span> </a></li>
-                        <li class="break"></li>
-                        <li><a id="feeds" href="../Feeds/Feeds.aspx" title="Go to timeline"><span class="icon">
-                            <img src="../Contents/Images/feeds.png" width="24" height="24" alt="" /></span>
-                            <span class="content">FEEDS</span> </a></li>
-                        <li class="break"></li>
-                        <li><a id="publishing" href="../Schedule.aspx"><span class="icon">
-                            <img src="../Contents/Images/publish.png" width="24" height="24" alt="" /></span>
-                            <span class="content">PUBLISHING</span> </a></li>
-                        <li class="break"></li>
-                        <li><a id="discovery" href="../Discovery/Discovery.aspx" title="Monitor our brands ,track new competition, find new costumers ">
-                            <span class="icon">
-                                <img src="../Contents/Images/discovery.png" width="24" height="24" alt="" /></span>
-                            <span class="content">DISCOVERY</span> </a></li>
-                        <li class="break"></li>
-                        <li><a id="reports" href="../Reports/TwitterReport.aspx" title="View reports"><span class="icon">
-                            <img src="../Contents/Images/reports.png" width="24" height="24" alt="" /></span>
-                            <span class="content">REPORTS</span> </a></li>
-                        <li class="break"></li>
-                         <li><a id="A1" href="../Group/Group.aspx" title="View reports"><span class="icon">
-                            <img src="../Contents/Images/reports.png" width="24" height="24" alt="" /></span>
-                            <span class="content">GROUPS</span> </a></li>
-                        <li class="break"></li>
-                    </ul>
-                    <ul>
-                        <li><a class="modal" href="#dialog" name="modal">
-                            <img src="../Contents/Images/Search.png" width="16" height="16" /></a></li>
-                           
-                        <%--   <li><a class="compose_msgbtn" href="#other_dialog" name="compose_msgbtn">Compose Message</a></li>--%>
-                    </ul>
-                    
-                        <a href="#"><div id="composeBtn" class="compose">Compose</div></a>
-                    
-                </div>
-                <!--end header_wrapper_bottom-->
+                    </div>
+                    <div id="searchcontainer" runat="server">
+                    <div id="searchcontent">
+                        <a href="#"><img src="../Contents/img/admin/061.png" width="20" title="Search contact" /></a>
+                    </div>
+                </div>      
+                
             </div>
         </div>
-        <%--<div class="header">
-         <img src="../Contents/Images/Social-Crowd1.png"  alt=""/>
-        </div>--%>
-        <div class="container_main">
-   
-            <div class="container_wrapper">
-                <asp:ContentPlaceHolder ID="MainContent" runat="server">
-                </asp:ContentPlaceHolder>
-            </div>
-   
+        <div id="actdiv" runat="server">
         </div>
     </div>
-    <div id="mask" style="height: 775px;"></div>
-   
- 
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
     </form>
-    <div id="popupchk">
+    <%--div for task--%>
+    <div id="popupchk" abhay="check">
         <span class="close_button b-close"><span id="close">X</span></span>
-       
-       
-        <div id="content" role="main" style="padding: 0;">
+        <div id="content_msg" role="main" style="padding: 0;">
             <section id="inbox" class="threefourth messages msg_view" style="margin: 0;">
                             <div id="inbox_messages" class="messages taskable">
                             
@@ -353,7 +529,7 @@
 	                            <div class="sub_small">Leave a Comment</div>
                             </div>
                             <div class="assign_task_to">
-                            	<img src="../Contents/Images/blank_img.png" alt="" />
+                            	<img src="../Contents/img/blank_img.png" alt="" />
                                 <textarea id="txttaskcomment" rows="" cols="" name="" placeholder="Your comment (viewable only to team members)"></textarea>
                             </div>
                             <div class="task_ws_tm_button_div">
@@ -366,282 +542,271 @@
             <div class="quarter">
                 <div class="sub_small">
                     Assign Task To</div>
-                <%--   <div class="button small pop1" data-bpopup="{"fadeSpeed":"slow", "followSpeed":1500, "modalColor":"greenYellow"}">hello</div>--%>
             </div>
             <div id="tasksteam" class="task_user_assign">
-                <%--    <ul>
-                            	<li>
-                                	<a>
-                                    	<img src="../Contents/Images/blank_img.png" alt="" /> 
-                                        <span class="name">
-                                        	anagha deshpande 
-                                            <span class="online_status">
-                                            	<span>.</span>online
-                                            </span>
-                                        </span>
-                                        <span class="radio_button selected"></span>
-                                    </a>
-                                </li>
-                                
-                                <li>
-                                	<a>
-                                    	<img src="../Contents/Images/blank_img.png" alt="" /> 
-                                        <span class="name">
-                                        	anagha deshpande 
-                                            <span class="offline_status">
-                                            	<span>.</span>Offline
-                                            </span>
-                                        </span>
-                                        <span class="radio_button"></span>
-                                    </a>
-                                </li>
-                                
-                                <li>
-                                	<a>
-                                    	<img src="../Contents/Images/blank_img.png" alt="" /> 
-                                        <span class="name">
-                                        	anagha deshpande 
-                                            <span class="offline_status">
-                                            	<span>.</span>Offline
-                                            </span>
-                                        </span>
-                                        <span class="radio_button"></span>
-                                    </a>
-                                </li>
-                                
-                                <li>
-                                	<a>
-                                    	<img src="../Contents/Images/blank_img.png" alt="" /> 
-                                        <span class="name">
-                                        	anagha deshpande 
-                                            <span class="offline_status">
-                                            	<span>.</span>Offline
-                                            </span>
-                                        </span>
-                                        <span class="radio_button"></span>
-                                    </a>
-                                </li>
-                            </ul>--%>
             </div>
         </div>
     </div>
- 
-    <%--div for compose message--%>
+    
+    <%--div for compose button--%>
     <div id="composeBox" class="compose_box">
-      <span class="close_button b-close"><span id="Span1" onclick="closeonCompose()">X</span></span>
-       <div class="newmsd">NEW MESSAGE</div>
-       <div class="pht_text_counter">
-         <div class="pht_bg">
-            <div  class="bgpht"><img id="imageofuser" src="../Contents/Images/blank_img.png" alt=""  style="height:50px;"/></div>
-            <div class="twitter_icon"><a href="#"><img id="socialIcon" src="../Contents/Images/twitter.png" alt="" border="none" width="20" /></a></div>
-              <div id="loginContainer">
-                <div id="loginButton"><img src="../Contents/Images/drop_arrow.png" alt="" /></div>
-                <div style="clear:both"></div>
-                <div id="loginBox">                
-                   <div class="drop_top"></div>
-                     <div class="drop_mid">   <img src="../Contents/Images/small_loader.gif" alt="" style="margin-left:90px;"/></div>
-                <%--          <div class="twitte_text">TWITTER</div>
-                        <div class="teitter">
-                           <ul>
-                              <li><a href="#"><img src="../Contents/Images/twitter.png" alt="" border="none" width="20" style="float:left;" /> <span style="float:left;margin: 3px 0 0 5px;">Sumitghosh</span></a></li>
-                              <li><a href="#"><img src="../Contents/Images/twitter.png" alt="" border="none" width="20" style="float:left;" /> <span  style="float:left;margin: 3px 0 0 5px;">Raj07</span></a></li>
-                           </ul>
+        <span class="close_button b-close"><span id="Span1" onclick="closeonCompose()">X</span></span>
+        <div class="newmsd">
+            NEW MESSAGE</div>
+        <div class="pht_text_counter">
+            <div class="pht_bg">
+                <div class="bgpht">
+                    <img id="imageofuser" src="../Contents/img/blank_img.png" alt="" style="height: 50px;" /></div>
+                <div class="twitter_icon">
+                    <a href="#">
+                        <img id="socialIcon" src="../Contents/img/twitter.png" alt="" border="none" width="20" /></a>
+                </div>
+                <div id="loginContainer">
+                    <div id="loginButton">
+                        <img src="../Contents/img/drop_arrow.png" alt="" /></div>
+                    <div style="clear: both">
+                    </div>
+                    <div id="loginBox">
+                        <div class="drop_top">
                         </div>
-                        
-                         <div class="twitte_text">LINKEDIN</div>
-                        <div class="teitter">
-                           <ul>
-                              <li><a href="#"><img src="../Contents/Images/link.png" alt="" border="none" width="18" style="float:left;" /><span style="float:left;margin: 3px 0 0 5px;"> Shyam SIngh</span></a></li>
-                           </ul>
-                        </div>
-                        
-                        <div class="twitte_text">FACEBOOK</div>
-                        <div class="teitter">
-                           <ul>
-                              <li><a href="#"><img src="../Contents/Images/facebook.png" alt="" border="none" width="18" style="float:left;" /><span style="float:left;margin: 3px 0 0 5px;"> Shyam SIngh</span></a></li>
-                              <li><a href="#"><img src="../Contents/Images/facebook.png" alt="" border="none" width="18" style="float:left;" /><span style="float:left;margin: 3px 0 0 5px;"> GLobussoft</span></a></li>
-                           </ul>
-                        </div>
-                        
-                     </div>--%>
-                 
+                        <div class="drop_mid">
+                            <img src="../Contents/img/small_loader.gif" alt="" style="margin-left: 90px;" /></div>
+                    </div>
                 </div>
             </div>
-         </div>
-         
-         <div class="drop_textare"><textarea id="textareavaluetosendmessage"></textarea></div>
-         
-         <div id="messageCount" class="counter_bg">140</div>
-         
-    </div>
-    
-    
-    <div class="pht_addbtn">
-         <div id="addContainer">
-                <div id="addButton"><img src="../Contents/Images/AddBtn.png" alt="" /></div>
-               <div id="divformultiusers"></div>
-                <div style="clear:both"></div>
-                <div id="addBox">                
-                    <div class="drop_top"></div>
-                     <div class="drop_mid">  <img src="../Contents/Images/small_loader.gif" style="margin-left:90px;" alt=""/> </div>
-                   <%--     <div class="twitte_text">TWITTER</div>
-                        <div class="teitter">
-                           <ul>
-                              <li><a href="#"><img src="../Contents/Images/twitter.png" alt="" border="none" width="20" style="float:left;" /> <span style="float:left;margin: 3px 0 0 5px;">Sumitghosh</span></a></li>
-                              <li><a href="#"><img src="../Contents/Images/twitter.png" alt="" border="none" width="20" style="float:left;" /> <span  style="float:left;margin: 3px 0 0 5px;">Raj07</span></a></li>
-                           </ul>
-                        </div>
-                        
-                         <div class="twitte_text">LINKEDIN</div>
-                        <div class="teitter">
-                           <ul>
-                              <li><a href="#"><img src="../Contents/Images/link.png" alt="" border="none" width="18" style="float:left;" /><span style="float:left;margin: 3px 0 0 5px;"> Shyam SIngh</span></a></li>
-                           </ul>
-                        </div>
-                        
-                        <div class="twitte_text">FACEBOOK</div>
-                        <div class="teitter">
-                           <ul>
-                              <li><a href="#"><img src="../Contents/Images/facebook.png" alt="" border="none" width="18" style="float:left;" /><span style="float:left;margin: 3px 0 0 5px;"> Shyam SIngh</span></a></li>
-                              <li><a href="#"><img src="../Contents/Images/facebook.png" alt="" border="none" width="18" style="float:left;" /><span style="float:left;margin: 3px 0 0 5px;"> GLobussoft</span></a></li>
-                           </ul>
-                        </div>
-                        
-                     </div>--%>
-                  
+            <div class="drop_textare">
+                <textarea id="textareavaluetosendmessage" cols="3" rows="5"></textarea></div>
+            <div id="messageCount" class="counter_bg">
+                140</div>
+        </div>
+        <div class="pht_addbtn">
+            <div id="addContainer">
+                <div id="addButton">
+                    <img src="../Contents/img/AddBtn.png" alt="" /></div>
+                <div id="divformultiusers">
+                </div>
+                <div style="clear: both">
+                </div>
+                <div id="addBox">
+                    <div class="drop_top">
+                    </div>
+                    <div class="drop_mid">
+                        <img src="../Contents/img/small_loader.gif" style="margin-left: 90px;" alt="" />
+                    </div>
                 </div>
             </div>
-    </div>
-        
-    
-            <div class="pht_addbtn">
-      <%--         <div class="btn btn-success fileinput-button" style="background:url('../Contents/Images/attechphoto.png') transparent; height: 6px;width: 73px !important;margin: 12px 0 0 0; float:left; border:none;">
+        </div>
+        <div class="pht_addbtn">
+                <%--         <div class="btn btn-success fileinput-button" style="background:url('../Contents/img/attechphoto.png') transparent; height: 6px;width: 73px !important;margin: 12px 0 0 0; float:left; border:none;">
                    <input id="fileupload" type="file" name="files[]" multiple>
                 </div>--%>
 
-                <div class="send_btn"><a id="sendMessageBtn" onclick="SendMessage()" href="#"><img src="../Contents/Images/sendbtn.png" alt="" /></a></div>
-               <%-- <div style="width:20px; height:20px;"><img src=</div>--%>
-                
-                 <div class="well">
-       <%--     <div id="datetimepicker1" class="input-append date">
-            <input data-format="dd/MM/yyyy hh:mm:ss" type="text"></input>
-            <span class="add-on">
-            <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-            </i>
-            </span>
-            </div>--%>
-            </div>
-          
-                
-              </div>
+                <div class="form-group" >
+          <label class="control-label span2">Interval Time:</label><select style="width:90px;" id="ddlIntervalTime" class="form-control span4">
+              <option>1</option>
+              <option>2</option>
+              <option>5</option>
+              <option>10</option>
+                                                                   </select>
+         </div>
 
-       
-    </div>
-   <%-- </div>
-    </div>--%>
 
-    <%--div for facebook user details in popup--%>
-    <div id="facebookuserDetails" >
-        <span class="close_button b-close"><span id="Span2">X</span></span>
-        <div id="facebookdetails" role="main">
-            <section id="facebookinbox" class="threefourth messages msg_view" style="margin: 0;">
-                <div id="detailsfacebook" class="messages taskable">
+                <div class="send_btn">
+                    <a id="sendMessageBtn" onclick="SendMessage()" href="#">
+                        <img src="../Contents/img/sendbtn.png" alt="" /></a></div>
+
+                          <div class="filebutton">
+                    <input id="fileuploadText" type="file" name="" onchange="showText()" accept="*/*" />
                 </div>
-                </section>
+
+                <div class="filebutton">
+                    <input id="fileuploadImage" type="file" name="" onchange="showimage()" accept="image/*" />
+                </div>
+               <div id="showBlock" class="fileupload_data" style="background-color: #222222; border: 1px solid #000000;
+                border-radius: 5px; color: #FFFFFF; display: block; margin-top: -1px; padding: 5px;" onclick="deleteimage()">
+                <span style="float:right; margin-left:5px" ></span>
+                <label style="float:right;font-size:small">Remove Image x </label></div>
+            </div>
+        </div>
+    
+    <%--div for facebook user details--%>
+    <div id="facebookuserDetails" class="modal-content" style="padding: 0;">
+        <button class="modal-btn button b-close" type="button">
+            <span class="icon close-medium"><span class="visuallyhidden">X</span></span></button>
+        <div class="modal-header">
+            <h3 class="modal-title">
+                Profile summary</h3>
+        </div>
+        <div class="modal-body profile-modal">
+            <div class="module profile-card component profile-header">
+                <div class="profile-header-inner flex-module clearfix" style="background-image: url('https://pbs.twimg.com/profile_banners/215936249/1371721359');">
+                    <div class="profile-header-inner-overlay">
+                    </div>
+                    <a class="profile-picture media-thumbnail js-nav" href="#">
+                        <img class="avatar size73" src="https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg"
+                            alt=""></a>
+                    <div class="profile-card-inner">
+                        <h1 class="fullname editable-group">
+                            <a href="#" class="js-nav">anagha</a> <a class="verified-link js-tooltip" href="#"><span
+                                class="icon verified verified-large-border"><span class="visuallyhidden"></span>
+                            </span></a>
+                        </h1>
+                        <h2 class="username">
+                            <a href="#" class="pretty-link js-nav"><span class="screen-name"><s></s>anagha Globuss</span></a></h2>
+                        <div class="bio-container editable-group">
+                            <p class="bio profile-field">
+                            </p>
+                        </div>
+                        <p class="location-and-url">
+                            <span class="location-container editable-group"><span class="location profile-field">
+                            </span></span><span class="divider hidden"></span><span class="url editable-group"><span
+                                class="profile-field"><a title="#" href="#" target="_blank">https://plus.google.com/116365125354454736359
+                                </a></span></span>
+                        </p>
+                        <div style="cursor: pointer; width: 16px; height: 16px; display: inline-block;">
+                            &nbsp;</div>
+                        <p>
+                        </p>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="default-footer">
+                        <div class="btn-group">
+                            <div class="follow_button">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-social-proof">
+                    <div class="follow-bar">
+                    </div>
+                </div>
+            </div>
+            <ol class="recent-tweets">
+                <li class="">
+                    <div>
+                        <i class="dogear"></i>
+                    </div>
+                </li>
+            </ol>
+            <div class="go_to_profile">
+                <small><a href="https://plus.google.com/116365125354454736359" target="_blank" class="view_profile">
+                    Go to full profile →</a></small>
+            </div>
+        </div>
+        <div class="loading">
+            <span class="spinner-bigger"></span>
         </div>
     </div>
-    
-    <%--div for userdetails for Twitter--%>
-    <div id="userdetails" style="background-color: #FFFFFF; border-radius: 10px 10px 10px 10px;
-        box-shadow: 0 0 25px 5px #999999; color: #111111; min-width: 1045px; padding: 25px;
-        display: none;">
-        <span class="close_button b-close"><span id="Span3">X</span></span>
-        <div id="checkdetails" role="main">
-            <section id="inbox1" class="threefourth messages msg_view" style="margin: 0;">
-                <div id="details" class="messages taskable">
-                </div>
+    <%--div for contact search--%>
+    <div id="contactsearch">
+        <span class="close_button b-close"><span id="Span4">X</span></span>
+        <div class="search_title">
+            Contact Search</div>
+        <div class="search_box">
+            <input type="text" value="" id="contactvalue" />
+            <a>
+                <img src="../Contents/img/search_box.png" width="16" height="16" alt="" /></a>
+        </div>
+        <div id="contactsearchresults" role="main">
+            <section id="contactsection" class="threefourth messages msg_view" style="margin: 0;">
+             
              </section>
         </div>
     </div>
-
-
-    <script type="text/javascript" language="javascript">
-        $("#addprofilesfromMaster").click(function (e) {
-            debugger;
-              $("#expanderContentForMaster").slideToggle();
-        });
-          $("#facebook_connect_master").click(function (e) {
-              debugger;
-              ShowFacebookDialog(false);
-              e.preventDefault();
-          });
-
-          $(function () {
-              'use strict';
-              // Change this to the location of your server-side upload handler:
-              var url = (window.location.hostname === 'blueimp.github.com' ||
-                        window.location.hostname === 'blueimp.github.io') ?
-                        '//jquery-file-upload.appspot.com/' : 'server/php/';
-              $('#fileupload').fileupload({
-                  url: url,
-                  dataType: 'json',
-                  done: function (e, data) {
-                      $.each(data.result.files, function (index, file) {
-                          $('<p/>').text(file.name).appendTo('#files');
-                      });
-                  },
-                  progressall: function (e, data) {
-                      var progress = parseInt(data.loaded / data.total * 100, 10);
-                      $('#progress .bar').css(
-                        'width',
-                        progress + '%'
-                    );
-                  }
-              });
-          });
-
-          $("#composeBtn").click(function () {
-              debugger;
-              //  ("#composeBox").bPopup();
-              $('#composeBox').bPopup({
-                  fadeSpeed: 'slow', //can be a string ('slow'/'fast') or int
-                  followSpeed: 1500, //can be a string ('slow'/'fast') or int
-                  modalColor: 'black',
-                  modalClose: false,
-                  opacity: 0.6,
-                  positionStyle: 'fixed'
-              });
-
-              var totalmessagewords = 140;
-              bindProfilesComposeMessage();
-
-              $('#textareavaluetosendmessage').bind('keyup', function () {
-
-                  var charactersUsed = $(this).val().length;
-
-                  if (charactersUsed > totalmessagewords) {
-                      charactersUsed = totalmessagewords;
-                      $(this).val($(this).val().substr(0, totalmessagewords));
-                      $(this).scrollTop($(this)[0].scrollHeight);
-                  }
-
-                  var charactersRemaining = totalmessagewords - charactersUsed;
-
-                  $('#messageCount').html(charactersRemaining);
-
-              });
-          });
-
-          $('#commonmenuforAll').click(function () {
-              $('#commonmenuforAllClick').toggle();
-          });
-
-       
-    </script>
-    
-    
-    
-   
-    
+    <%--div for userdetails for Twitter--%>
+    <div id="profile_popup" class="modal-content">
+        <button type="button" class="modal-btn button b-close">
+            <span class="icon close-medium"><span class="visuallyhidden">X</span></span></button>
+        <div class="modal-header">
+            <h3 class="modal-title">
+                Profile summary</h3>
+        </div>
+        <div class="modal-body profile-modal">
+            <div class="module profile-card component profile-header">
+                <div style="background-image: url('https://pbs.twimg.com/profile_banners/215936249/1371721359');"
+                    class="profile-header-inner flex-module clearfix">
+                    <div class="profile-header-inner-overlay">
+                    </div>
+                    <a href="#" class="profile-picture media-thumbnail js-nav">
+                        <img src="https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg"
+                            alt="" class="avatar size73"></a>
+                    <div class="profile-card-inner">
+                        <h1 class="fullname editable-group">
+                            <a class="js-nav" href="#">anagha</a> <a href="#" class="verified-link js-tooltip"><span
+                                class="icon verified verified-large-border"><span class="visuallyhidden"></span>
+                            </span></a>
+                        </h1>
+                        <h2 class="username">
+                            <a class="pretty-link js-nav" href="#"><span class="screen-name"><s></s>anagha Globuss</span></a></h2>
+                        <div class="bio-container editable-group">
+                            <p class="bio profile-field">
+                            </p>
+                        </div>
+                        <p class="location-and-url">
+                            <span class="location-container editable-group"><span class="location profile-field">
+                            </span></span><span class="divider hidden"></span><span class="url editable-group"><span
+                                class="profile-field"><a target="_blank" href="#" title="#">https://plus.google.com/116365125354454736359
+                                </a></span></span>
+                        </p>
+                        <div style="cursor: pointer; width: 16px; height: 16px; display: inline-block;">
+                            &nbsp;</div>
+                        <p>
+                        </p>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="default-footer">
+                        <div class="btn-group">
+                            <div class="follow_button">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-social-proof">
+                    <div class="follow-bar">
+                    </div>
+                </div>
+            </div>
+            <ol class="recent-tweets">
+                <li class="">
+                    <div>
+                        <i class="dogear"></i>
+                    </div>
+                </li>
+            </ol>
+            <div class="go_to_profile">
+                <small><a class="view_profile" target="_blank" href="https://plus.google.com/116365125354454736359">
+                    Go to full profile →</a></small>
+            </div>
+        </div>
+        <div class="loading">
+            <span class="spinner-bigger"></span>
+        </div>
+    </div>
+    <!--reply-->
+    <div id="replysection">
+        <span class="close_button b-close"><span id="Span3">X</span></span>
+        <div id="Div2" role="main" style="padding: 0;">
+            <section id="inbox" class="threefourth messages msg_view" style="margin: 0;">
+                            <div id="replyMessages" class="messages taskable">
+                            
+                            </div>
+                            <div class="task_leave_comment">
+	                            <div class="sub_small">Leave a Comment</div>
+                            </div>
+                            <div class="assign_task_to">
+                            	<img src="../Contents/img/blank_img.png" alt="" />
+                                <textarea id="Textarea1" rows="" cols="" name="" placeholder="Write your message here"></textarea>
+                            </div>
+                            <div class="task_ws_tm_button_div">
+                            	<input id="Button1" class="btn btnspan btnclr" type="button" name="" value="Comment"  onclick="twittercomments();" style=" margin:0 0 0 42px !important;"/>
+                              <%--  <input id="cancel11" type="button" name="" value="CANCEL" />--%>
+                            </div>
+                        </section>
+        </div>
+    </div>
 </body>
+<script src="../Contents/js/Feeds.js" type="text/javascript"></script>
+<script src="../Contents/js/master.js" type="text/javascript"></script>
 </html>

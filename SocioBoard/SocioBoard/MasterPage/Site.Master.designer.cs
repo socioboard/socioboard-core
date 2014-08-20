@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SocioBoard.MasterPage {
+namespace SocialSuitePro.MasterPage {
     
     
     public partial class Site {
@@ -31,66 +31,147 @@ namespace SocioBoard.MasterPage {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
         
         /// <summary>
-        /// FormMaster control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm FormMaster;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// LinkedInLink_master control.
+        /// groupsselection control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor LinkedInLink_master;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect groupsselection;
         
         /// <summary>
-        /// TwitterOAuth_master control.
+        /// incom_messages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor TwitterOAuth_master;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl incom_messages;
         
         /// <summary>
-        /// googleanalytics_connect_master control.
+        /// incom_tasks control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor googleanalytics_connect_master;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl incom_tasks;
         
         /// <summary>
-        /// InstagramConnect_master control.
+        /// userimg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor InstagramConnect_master;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl userimg;
         
         /// <summary>
-        /// username control.
+        /// usernm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label username;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl usernm;
         
         /// <summary>
-        /// MainContent control.
+        /// topbtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl topbtn;
+        
+        /// <summary>
+        /// master_facebook_connect control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor master_facebook_connect;
+        
+        /// <summary>
+        /// master_TwitterOAuth control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor master_TwitterOAuth;
+        
+        /// <summary>
+        /// master_LinkedInLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor master_LinkedInLink;
+        
+        /// <summary>
+        /// master_InstagramConnect control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor master_InstagramConnect;
+        
+        /// <summary>
+        /// inviteRedirect control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl inviteRedirect;
+        
+        /// <summary>
+        /// cmposecontainer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cmposecontainer;
+        
+        /// <summary>
+        /// searchcontainer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl searchcontainer;
+        
+        /// <summary>
+        /// actdiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl actdiv;
+        
+        /// <summary>
+        /// ContentPlaceHolder1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
     }
 }

@@ -36,50 +36,58 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime">
-      <HintPath>..\trunk\bin\Antlr3.Runtime.dll</HintPath>
+      <HintPath>..\SocioBoard\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Facebook.dll</HintPath>
+    <Reference Include="CloudSponge">
+      <HintPath>..\SocioBoard\lib\CloudSponge.dll</HintPath>
     </Reference>
-    <Reference Include="GlobusInstagramLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\trunk\bin\GlobusInstagramLib.dll</HintPath>
+    <Reference Include="CloudSpongeLib">
+      <HintPath>..\SocioBoard\lib\CloudSpongeLib.dll</HintPath>
     </Reference>
-    <Reference Include="GlobusLinkedinLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\GlobusLinkedinLib.dll</HintPath>
+    <Reference Include="CodeScales.Http">
+      <HintPath>..\SocioBoard\lib\CodeScales.Http.dll</HintPath>
     </Reference>
-    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\trunk\bin\Iesi.Collections.dll</HintPath>
+    <Reference Include="Facebook">
+      <HintPath>..\SocioBoard\lib\Facebook.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.5.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\trunk\bin\MySql.Data.dll</HintPath>
+    <Reference Include="Facebook.Silverlight">
+      <HintPath>..\SocioBoard\lib\Facebook.Silverlight.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data.Entity, Version=6.5.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\trunk\bin\MySql.Data.Entity.dll</HintPath>
+    <Reference Include="Facebook.Web">
+      <HintPath>..\SocioBoard\lib\Facebook.Web.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Facebook.Web.Mvc">
+      <HintPath>..\SocioBoard\lib\Facebook.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\trunk\bin\NHibernate.dll</HintPath>
+    <Reference Include="Facebook.Winforms">
+      <HintPath>..\SocioBoard\lib\Facebook.Winforms.dll</HintPath>
+    </Reference>
+    <Reference Include="FacebookGraphAPI">
+      <HintPath>..\SocioBoard\lib\FacebookGraphAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="GlobusGooglePlusLib">
+      <HintPath>..\SocioBoard\lib\GlobusGooglePlusLib.dll</HintPath>
+    </Reference>
+    <Reference Include="GlobusInstagramLib">
+      <HintPath>..\SocioBoard\lib\GlobusInstagramLib.dll</HintPath>
+    </Reference>
+    <Reference Include="GlobusLinkedinLib">
+      <HintPath>..\SocioBoard\lib\GlobusLinkedinLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\SocioBoard\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\SocioBoard\lib\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate.Linq">
-      <HintPath>..\trunk\bin\NHibernate.Linq.dll</HintPath>
+      <HintPath>..\SocioBoard\lib\NHibernate.Linq.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernateHelper, Version=1.1.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\NHibernateHelper.dll</HintPath>
+    <Reference Include="NHibernateHelper">
+      <HintPath>..\SocioBoard\lib\NHibernateHelper.dll</HintPath>
     </Reference>
-    <Reference Include="OAuth, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\trunk\bin\OAuth.dll</HintPath>
+    <Reference Include="OAuth">
+      <HintPath>..\SocioBoard\lib\OAuth.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -183,13 +191,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SocioBoard\SocioBoard.csproj">
+      <Project>{489126F9-9C92-4F3B-8643-F698F4A0C737}</Project>
+      <Name>SocioBoard 1.0</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SocioBoard\Library\GlobusTwitterLib\GlobusTwitterLib.csproj">
       <Project>{7051E5B4-23D1-4C8F-A459-D66AD79BCDF9}</Project>
       <Name>GlobusTwitterLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SocioBoard\SocioBoard.csproj">
-      <Project>{74A1C81B-649C-483D-87C3-68099C72C486}</Project>
-      <Name>SocioBoard</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

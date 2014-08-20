@@ -5,6 +5,9 @@ using System.Web;
 using SocioBoard.Domain;
 using SocioBoard.Model;
 using Facebook;
+using System.Net;
+using System.IO;
+using System.Text;
 
 namespace SocioBoard.Helper
 {
@@ -71,7 +74,7 @@ namespace SocioBoard.Helper
                 catch
                 {
                 }
-                fbAccount.IsActive = true;
+                fbAccount.IsActive = 1;
                 try
                 {
                     if (HttpContext.Current.Session["fbSocial"] != null)
@@ -192,15 +195,41 @@ namespace SocioBoard.Helper
                             fbrepo.addFacebookUser(fbAccount);
                             if (!socioprofilerepo.checkUserProfileExist(socioprofile))
                             {
+                               
                                 socioprofilerepo.addNewProfileForUser(socioprofile);
+
+                                GroupRepository objGroupRepository = new GroupRepository();
+                                SocioBoard.Domain.Team team = (SocioBoard.Domain.Team)HttpContext.Current.Session["GroupName"];
+                                Groups lstDetails = objGroupRepository.getGroupName(team.GroupId);
+                                if (lstDetails.GroupName == "Socioboard")
+                                {                                   
+                                    TeamMemberProfileRepository objTeamMemberProfileRepository = new TeamMemberProfileRepository();                                  
+                                    TeamMemberProfile teammemberprofile = new TeamMemberProfile();
+                                    teammemberprofile.Id = Guid.NewGuid();
+                                    teammemberprofile.TeamId = team.Id;
+                                    teammemberprofile.ProfileId = fbAccount.FbUserId;
+                                    teammemberprofile.ProfileType = "facebook";
+                                    teammemberprofile.StatusUpdateDate = DateTime.Now;
+
+                                    objTeamMemberProfileRepository.addNewTeamMember(teammemberprofile);
+
+                                }
+
+
+
+
                             }
                             else
                             {
                                 socioprofilerepo.updateSocialProfile(socioprofile);
                             }
+
+                           
+
                         }
                         else
                         {
+                            HttpContext.Current.Session["alreadyexist"] = fbAccount;
                             fbrepo.updateFacebookUser(fbAccount);
                             if (!socioprofilerepo.checkUserProfileExist(socioprofile))
                             {
@@ -560,6 +589,50 @@ namespace SocioBoard.Helper
             return lstfacefeed;
         }
 
+
+
+
+
+        public int getfanCount(ref FacebookStats objfbsts)
+        {
+            int friendscnt = 0;
+            long friendscount = 0;
+            try
+            {
+
+                FacebookClient fb = new FacebookClient();
+
+                string accessToken = HttpContext.Current.Session["accesstoken"].ToString();
+
+                fb.AccessToken = accessToken;
+
+
+                var client = new FacebookClient();
+
+                dynamic me = fb.Get("me");
+
+
+                dynamic friedscount = fb.Get("fql", new { q = "SELECT friend_count FROM user WHERE uid=me()" });
+
+                foreach (var friend in friedscount.data)
+                {
+                    friendscount = friend.friend_count;
+                }
+
+                friendscnt = Convert.ToInt32(friendscount);
+
+
+            }
+            catch (Exception ex)
+            {
+                //logger.Error(ex.StackTrace);
+                //Console.WriteLine(ex.StackTrace);
+
+            }
+            return friendscnt;
+        }
+
+
         public void getfbFriendsGenderStats(dynamic data, dynamic profile, Guid userId)
         {
             FacebookStats objfbStats = new FacebookStats();
@@ -579,9 +652,50 @@ namespace SocioBoard.Helper
             objfbStats.Id = Guid.NewGuid();
             objfbStats.MaleCount = malecount;
             objfbStats.UserId = userId;
+            objfbStats.FanCount = getfanCount(ref objfbStats);
             objFBStatsRepo.addFacebookStats(objfbStats);
 
         }
+
+
+        public void getfbFriendsGenderStatsForFanPage(dynamic profile, Guid userId, ref FacebookAccount objfbacnt)
+        {
+            FacebookStats objfbStats = new FacebookStats();
+            FacebookStatsRepository objFBStatsRepo = new FacebookStatsRepository();
+            //int malecount = 0;
+            //int femalecount = 0;
+            //foreach (var item in data["data"])
+            //{
+            //    if (item["gender"] == "male")
+            //        malecount++;
+            //    else if (item["gender"] == "female")
+            //        femalecount++;
+            //}
+            objfbStats.EntryDate = DateTime.Now;
+            objfbStats.FbUserId = profile["id"].ToString();
+            //objfbStats.FemaleCount = femalecount;
+            objfbStats.Id = Guid.NewGuid();
+            //objfbStats.MaleCount = malecount;
+            objfbStats.UserId = userId;
+            objfbStats.FanCount = objfbacnt.Friends;
+            //objfbStats.ShareCount = getShareCount();
+            //objfbStats.CommentCount = getCommentCount();
+            //objfbStats.LikeCount = getLikeCount();
+            objFBStatsRepo.addFacebookStats(objfbStats);
+            FacebookInsightStatsHelper objfbinshlpr = new FacebookInsightStatsHelper();
+            string pId = profile["id"].ToString();
+            //string pId = "329139457226886";
+            objfbinshlpr.getPageImpresion(pId, userId, 7);
+
+        }
+
+
+
+
+
+
+
+
 
         public void getInboxMessages(dynamic data, dynamic profile, Guid userId)
         {
@@ -704,6 +818,31 @@ namespace SocioBoard.Helper
                     }
                 
             }
+        }
+
+        public static bool CheckFacebookToken(string fbtoken, string txtvalue)
+        {
+            bool checkFacebookToken = false;
+            try
+            {
+                string facebookSearchUrl = "https://graph.facebook.com/search?q=" + txtvalue + " &type=post&access_token=" + fbtoken;
+                var facerequest = (HttpWebRequest)WebRequest.Create(facebookSearchUrl);
+                facerequest.Method = "GET";
+                string outputface = string.Empty;
+                using (var response = facerequest.GetResponse())
+                {
+                    using (var stream = new StreamReader(response.GetResponseStream(), Encoding.GetEncoding(1252)))
+                    {
+                        outputface = stream.ReadToEnd();
+                    }
+                }
+                checkFacebookToken = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return checkFacebookToken;
         }
     }
 }

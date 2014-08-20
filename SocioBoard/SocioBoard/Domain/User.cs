@@ -18,6 +18,12 @@ namespace SocioBoard.Domain
         public string Password { get; set; }
         public string TimeZone { get; set; }
         public string PaymentStatus { get; set; }
+        public string ActivationStatus { get; set; }
+        public string CouponCode { get; set; }
+        public string ReferenceStatus { get; set; }
+        public string RefereeStatus { get; set; }
+        public string UserType { get; set; }
+        
         public static List<User> lstUser=new List<User>(); 
     }
 }

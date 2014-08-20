@@ -12,7 +12,6 @@ namespace SocioBoard.Helper
 
         public string[] splitUrlFromString(string text)
         {
-            string[] st = null;
             try
             {
 
@@ -37,7 +36,7 @@ namespace SocioBoard.Helper
 
                 MatchCollection ms = regx.Matches(text.TrimStart('"').TrimEnd('"'));
                  string sd = string.Empty;
-                 st = new string[mss.Count + 2];
+                 string[] st = new string[mss.Count + 2];
                  ArrayList aslt = new ArrayList();
                  int i = 0;
                  string fortesting = string.Empty;
@@ -45,36 +44,28 @@ namespace SocioBoard.Helper
                  {
                      foreach (Match item in mss)
                      {
-                         try
-                         {
-                             aslt.Add(item.Value.ToString());
-                             string[] stringseprators = new string[] { item.Value };
+                         aslt.Add(item.Value.ToString());
+                         string[] stringseprators = new string[] { item.Value };
 
-                             if (i == 0)
+                         if (i == 0)
+                         {
+                             string[] sstr = text.Split(stringseprators, StringSplitOptions.None);
+                             st[0] = sstr[0];
+                             st[i + 1] = item.Value;
+                             fortesting = sstr[1];
+                         }
+                         else
+                         {
+                             if (string.IsNullOrEmpty(st[i]))
                              {
-                                 string[] sstr = text.Split(stringseprators, StringSplitOptions.None);
-                                 st[0] = sstr[0];
+                                 string[] ssstr = fortesting.Split(stringseprators, StringSplitOptions.None);
+                                 st[i] = ssstr[0];
                                  st[i + 1] = item.Value;
-                                 fortesting = sstr[1];
+                                 fortesting = ssstr[1];
                              }
-                             else
-                             {
-                                 if (string.IsNullOrEmpty(st[i]))
-                                 {
-                                     string[] ssstr = fortesting.Split(stringseprators, StringSplitOptions.None);
-                                     st[i] = ssstr[0];
-                                     st[i + 1] = item.Value;
-                                     fortesting = ssstr[1];
-                                 }
-                             }
+                         }
 
-                             i = i + 2;
-                         }
-                         catch (Exception ex)
-                         {
-                             Console.WriteLine(ex.StackTrace);
-                            // return null;
-                         }
+                         i = i + 2;
                      }
                      st[i] = fortesting;
                  }
@@ -82,16 +73,14 @@ namespace SocioBoard.Helper
                  {
                      st[0] = text;
                  }
-               
+                return st;
 
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-                //return null;
+                return null;
             }
-
-            return st;
         }
     }
 }

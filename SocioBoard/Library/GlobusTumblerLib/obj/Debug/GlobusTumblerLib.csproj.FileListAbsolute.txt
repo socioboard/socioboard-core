@@ -1,5 +1,0 @@
-D:\Abhay\socioboard\trunk\GlobusTumblerLib\obj\Debug\ResolveAssemblyReference.cache
-D:\Abhay\socioboard\trunk\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.dll
-D:\Abhay\socioboard\trunk\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.pdb
-D:\Abhay\socioboard\trunk\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.dll
-D:\Abhay\socioboard\trunk\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.pdb

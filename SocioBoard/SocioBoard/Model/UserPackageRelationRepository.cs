@@ -199,6 +199,64 @@ namespace SocioBoard.Model
             return i;
         }
 
+        public int UpdatePackageRelationByUserIdAndPackageId(User userPackageRelation)
+        {
+            int i = 0;
+            try
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        try
+                        {
+                            i = session.CreateQuery("Update UserPackageRelation set PackageStatus =:packageStatus where UserId = :userId")
+                               .SetParameter("packageStatus", false)
+                               .SetParameter("userId", userPackageRelation.Id)
+                               .ExecuteUpdate();
+                            transaction.Commit();
+
+
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                            // return 0;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Error : " + ex.StackTrace);
+                Console.WriteLine("Error : " + ex.StackTrace);
+            }
+            return i;
+        }
+
+        public int DeleteuserPackageRelationByUserid(Guid userid)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        NHibernate.IQuery query = session.CreateQuery("delete from userPackageRelation where UserId = :userid")
+                                        .SetParameter("userid", userid);
+                        int isUpdated = query.ExecuteUpdate();
+                        transaction.Commit();
+                        return isUpdated;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+                }
+            }
+        }
+
         
     }
 }

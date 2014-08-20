@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Reflection;
 
 
 namespace SocioBoard.Helper
@@ -22,7 +23,7 @@ namespace SocioBoard.Helper
 
 
         public static string configfilepath { get; set; }
-        
+
         public static void Init()
         {
             try

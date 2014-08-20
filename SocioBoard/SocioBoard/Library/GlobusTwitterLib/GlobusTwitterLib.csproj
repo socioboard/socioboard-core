@@ -40,7 +40,8 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>strongnameKey_GlobusTwitterLib.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime">
@@ -64,13 +65,8 @@
     <Reference Include="FacebookGraphAPI">
       <HintPath>..\..\Lib\FacebookGraphAPI.dll</HintPath>
     </Reference>
-    <Reference Include="Hammock, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hammock.1.3.1\lib\4.0\Hammock.dll</HintPath>
-    </Reference>
-    <Reference Include="Hammock.ClientProfile, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hammock.1.3.1\lib\4.0\Hammock.ClientProfile.dll</HintPath>
+    <Reference Include="Hammock">
+      <HintPath>..\..\lib\Hammock.dll</HintPath>
     </Reference>
     <Reference Include="Iesi.Collections">
       <HintPath>..\..\Lib\Iesi.Collections.dll</HintPath>
@@ -193,9 +189,6 @@
     <Content Include="bin\Debug\Newtonsoft.Json.dll" />
     <Content Include="bin\Debug\OAuth.dll" />
     <Content Include="changelog.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="strongnameKey_GlobusTwitterLib.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

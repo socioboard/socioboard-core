@@ -8,12 +8,15 @@ using SocioBoard.Domain;
 using GlobusLinkedinLib.Authentication;
 using GlobusLinkedinLib.App.Core;
 using SocioBoard.Helper;
+using log4net;
 using SocioBoard.Model;
 
-namespace SocioBoard
+namespace SocialSuitePro
 {
     public partial class LinkedInManager : System.Web.UI.Page
     {
+        ILog logger = LogManager.GetLogger(typeof(LinkedInManager));
+
         oAuthLinkedIn _oauth = new oAuthLinkedIn();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,7 +24,7 @@ namespace SocioBoard
             {
                 User user = (User)Session["LoggedUser"];
                 if (user == null)
-                { Response.Redirect("Login.aspx"); }
+                { Response.Redirect("Default.aspx"); }
 
                 try
                 {
@@ -32,6 +35,7 @@ namespace SocioBoard
 
                 catch (Exception ex)
                 {
+                    logger.Error(ex.StackTrace);
                     Console.WriteLine(ex.StackTrace);
                     Session["profilesforcomposemessage"] = null;
                     Response.Redirect("Home.aspx");
@@ -42,8 +46,8 @@ namespace SocioBoard
         public void GetAccessToken()
         {
             LinkedInProfile objProfile = new LinkedInProfile();
-            LinkedInProfile.UserProfile objUserProfile=new LinkedInProfile.UserProfile();
-            LinkedInHelper liHelper=new LinkedInHelper();
+            LinkedInProfile.UserProfile objUserProfile = new LinkedInProfile.UserProfile();
+            LinkedInHelper liHelper = new LinkedInHelper();
             User user = (User)Session["LoggedUser"];
             string oauth_token = Request.QueryString["oauth_token"];
             string oauth_verifier = Request.QueryString["oauth_verifier"];
@@ -57,32 +61,35 @@ namespace SocioBoard
                     {
                         _oauth.Token = oauth_token;
                     }
-                    catch
+                    catch (Exception ex)
                     {
+                        logger.Error(ex.StackTrace);
                     }
                     try
                     {
                         _oauth.TokenSecret = Session["reuqestTokenSecret"].ToString();
                     }
-                    catch
+                    catch (Exception ex)
                     {
-
+                        logger.Error(ex.StackTrace);
 
                     }
                     try
                     {
                         _oauth.Verifier = oauth_verifier;
                     }
-                    catch
+                    catch (Exception ex)
                     {
+                        logger.Error(ex.StackTrace);
                     }
-
                     try
                     {
                         _oauth.AccessTokenGet(oauth_token);
                     }
-                    catch
+                    catch (Exception ex)
                     {
+                        logger.Error(ex.StackTrace);
+
                     }
 
                     // Update Access Token in DB 
@@ -100,27 +107,37 @@ namespace SocioBoard
                     {
                         objUserProfile = objProfile.GetUserProfile(_oauth);
                     }
-                    catch
+                    catch (Exception ex)
                     {
+                        logger.Error(ex.StackTrace);
                     }
                     try
                     {
-                       
                         liHelper.GetLinkedInUserProfile(objUserProfile, _oauth, user);
                     }
-                    catch
-                    { }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex.StackTrace);
+
+                    }
                     try
                     {
-                      // liHelper.getLinkedInNetworkUpdate(_oauth,user);
+                        // liHelper.getLinkedInNetworkUpdate(_oauth,user);
                     }
-                    catch
-                    { }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex.StackTrace);
+
+                    }
                     Session["LinkedInUser"] = _oauth;
                     Session["datatable"] = null;
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                logger.Error(ex.StackTrace);
+
+            }
         }
 
         public int UpdateLDToken(string LDUserId, string LDAccessToken)

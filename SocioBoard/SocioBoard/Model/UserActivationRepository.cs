@@ -4,26 +4,29 @@ using System.Linq;
 using System.Web;
 using SocioBoard.Domain;
 using SocioBoard.Helper;
-using NHibernate.Criterion;
-using NHibernate;
-using NHibernateHelper;
-using NHibernate.Transform;
-using System.Collections;
 
 namespace SocioBoard.Model
 {
     public class UserActivationRepository
     {
 
+
         public static void Add(UserActivation user)
         {
-            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            try
             {
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
                 {
-                    session.Save(user);
-                    transaction.Commit();
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        session.Save(user);
+                        transaction.Commit();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -100,6 +103,30 @@ namespace SocioBoard.Model
 
 
 
+                }
+            }
+        }
+
+
+        public int DeleteUserActivationByUserid(Guid userid)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        NHibernate.IQuery query = session.CreateQuery("delete from UserActivation where UserId = :userid")
+                                        .SetParameter("userid", userid);
+                        int isUpdated = query.ExecuteUpdate();
+                        transaction.Commit();
+                        return isUpdated;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
                 }
             }
         }

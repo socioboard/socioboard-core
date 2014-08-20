@@ -9,7 +9,7 @@ namespace SocioBoard.Domain
     {
         public Guid	Id { get; set; }
         public string Subject { get; set; }
-	    public string NewsLetterDetail { get; set; }
+	    public string NewsLetterBody { get; set; }
 	    public Guid UserId{ get; set; }
 	    public bool SendStatus{ get; set; }
         public DateTime SendDate { get; set; }

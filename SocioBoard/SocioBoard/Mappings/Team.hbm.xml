@@ -11,6 +11,11 @@
     <property name="UserId">
       <column name="UserId" />
     </property>
+
+    <property name="GroupId">
+      <column name="GroupId" />
+    </property>
+    
     <property name="EmailId">
       <column name="EmailId"  />
     </property>

@@ -75,7 +75,27 @@ namespace SocioBoard.Model
             }
 
         }
+        public ArrayList getTotalFacebookStatsOfUser(Guid UserId)
+        {
 
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    NHibernate.IQuery query = session.CreateSQLQuery("Select * from FacebookStats where UserId = :userid ")
+                   .SetParameter("userid", UserId);
+                    ArrayList alstFBStats = new ArrayList();
+
+                    foreach (var item in query.List())
+                    {
+                        alstFBStats.Add(item);
+                    }
+                    return alstFBStats;
+
+                }
+            }
+
+        }
         public FacebookStats getFacebookStatsById(string Fbuserid, Guid userId)
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -164,5 +184,114 @@ namespace SocioBoard.Model
                 }
             }
         }
+
+
+        public int DeleteFacebookStatsByUserid(Guid userid)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        NHibernate.IQuery query = session.CreateQuery("delete from FacebookStats where UserId = :userid")
+                                        .SetParameter("userid", userid);
+                        int isUpdated = query.ExecuteUpdate();
+                        transaction.Commit();
+                        return isUpdated;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+                }
+            }
+        }
+
+
+        public List<FacebookStats> getAllAccountDetail(string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        string str = "from FacebookStats where  FbUserId IN(";
+                        string[] arrsrt = profileid.Split(',');
+                        foreach (string sstr in arrsrt)
+                        {
+                            str += Convert.ToInt64(sstr) + ",";
+                        }
+                        str = str.Substring(0, str.Length - 1);
+                        str += ") group by FbUserId";
+                        List<FacebookStats> alst = session.CreateQuery(str)
+                       .List<FacebookStats>()
+                       .ToList<FacebookStats>();
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Trasaction
+            }//End session
+        }
+
+
+        public ArrayList FancountFacebookStats(string FBuserid,int days)
+        {
+            //List<FacebookStats> lstFacebookStats = new List<FacebookStats>();
+            //string fan1=string.Empty;
+            //int Fancnt=0;
+            var frmdate = DateTime.Now;
+
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //NHibernate.IQuery query = session.CreateSQLQuery("select * from  Facebookstats where UserId = :userid and FbUserId = :fbuserid ORDER BY EntryDate DESC")
+                        //                .SetParameter("fbuserid", FBuserid)
+                        //                .SetParameter("userid", userid);
+
+                        /// coded by hozefa......
+                        NHibernate.IQuery query = session.CreateSQLQuery("select * from Facebookstats where FbUserId = :fbuserid and EntryDate>=DATE_ADD(NOW(),INTERVAL -" + days + " DAY)  ORDER BY EntryDate DESC ")
+                                        .SetParameter("fbuserid", FBuserid);
+                                        
+
+                        ArrayList alstFBfanCnt = new ArrayList();
+                        //List<FacebookStats>().ToList<FacebookStats>();
+                        foreach (var item in query.List())
+                        {
+                            alstFBfanCnt.Add(item);
+                        }
+
+
+                        return alstFBfanCnt;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
+
+
     }
 }

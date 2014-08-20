@@ -42,7 +42,7 @@ namespace SocioBoardScheduler
 
 
                     //string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\SocioBoardScheduler\SocioBoardScheduler\1.0.0.0\hibernate.cfg.xml";//Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\hibernate.cfg.xml";////System.IO.Path.GetFullPath("hibernate.cfg.xml");
-                    string dirPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\SocialScoup\";
+                    string dirPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\SocialScoupSchedulerNew";
                     string path = dirPath + "\\hibernate.cfg.xml";
                     string startUpFilePath = Application.StartupPath + "\\hibernate.cfg.xml";
 
@@ -59,9 +59,9 @@ namespace SocioBoardScheduler
                     NHibernate.ISession session = SessionFactory.GetNewSession();
                     ScheduledMessageRepository schrepo = new ScheduledMessageRepository();
 
-                    new Thread(() =>
-                    {
-                        // while (true)
+                    //new Thread(() =>
+                    //{
+                        while (true)
                         {
                             try
                             {
@@ -82,17 +82,17 @@ namespace SocioBoardScheduler
 
                                                 switch (media)
                                                 {
-                                                    case "twitter1":
+                                                    case "twitter":
                                                         try
                                                         {
                                                             TwitterScheduler twtscheduler = new TwitterScheduler();
                                                             ScheduledMessage twtSch = item;
-                                                            //Thread thread_TwtMailSend = new Thread(() => { twtscheduler.PostScheduleMessage(twtSch); });
-                                                            //thread_TwtMailSend.Start();
+                                                            Thread thread_TwtMailSend = new Thread(() => { twtscheduler.PostScheduleMessage(twtSch); });
+                                                            thread_TwtMailSend.Start();
 
 
                                                             #region For Testing
-                                                            twtscheduler.PostScheduleMessage(twtSch);
+                                                           // twtscheduler.PostScheduleMessage(twtSch);
                                                             #endregion
                                                         }
                                                         catch (Exception ex)
@@ -106,8 +106,8 @@ namespace SocioBoardScheduler
                                                         {
                                                             FacebookScheduler facescheduler = new FacebookScheduler();
                                                             ScheduledMessage fbSch = item;
-                                                            // Thread thread_FaceBook = new Thread(() => { facescheduler.PostScheduleMessage(fbSch); });
-                                                            // thread_FaceBook.Start();
+                                                           // Thread thread_FaceBook = new Thread(() => { facescheduler.PostScheduleMessage(fbSch); });
+                                                          //  thread_FaceBook.Start();
 
                                                             #region For Testing
                                                             facescheduler.PostScheduleMessage(fbSch);
@@ -119,7 +119,7 @@ namespace SocioBoardScheduler
                                                         }
                                                         break;
 
-                                                    case "linkedin1":
+                                                    case "linkedin":
                                                         try
                                                         {
                                                             LinkedInScheduler linkedscheduler = new LinkedInScheduler();
@@ -171,7 +171,7 @@ namespace SocioBoardScheduler
                         }
 
 
-                    }).Start();
+                    //}).Start();
                 }
                 catch (Exception ex)
                 {

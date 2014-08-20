@@ -10,9 +10,9 @@ using SocioBoard.Domain;
 
 namespace SocialSiteDataService
 {
-    class LinkedInData
+    class LinkedInData : SocialSiteDataFeeds
     {
-        public void GetLinkedIndata(object UserId)
+        public void GetData(object UserId)
         {
             Guid userId = (Guid)UserId;
 
@@ -25,9 +25,18 @@ namespace SocialSiteDataService
                 _oauth.Token = itemLi.OAuthToken;
                 _oauth.TokenSecret = itemLi.OAuthSecret;
                 _oauth.Verifier = itemLi.OAuthVerifier;
+                objliHelper.GetUserProfile(_oauth, itemLi.LinkedinUserId,userId);
+               
                 objliHelper.GetLinkedInFeeds(_oauth, itemLi.LinkedinUserId, userId);
             }
 
+        }
+
+       
+
+        public void GetSearchData(object parameters)
+        {
+            throw new NotImplementedException();
         }
     }
 }

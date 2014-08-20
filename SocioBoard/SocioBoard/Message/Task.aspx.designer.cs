@@ -13,6 +13,15 @@ namespace SocioBoard.Message {
     public partial class Task {
         
         /// <summary>
+        /// blackcount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl blackcount;
+        
+        /// <summary>
         /// taskdiv control.
         /// </summary>
         /// <remarks>
@@ -74,15 +83,6 @@ namespace SocioBoard.Message {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancel;
-        
-        /// <summary>
-        /// Div2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div2;
         
         /// <summary>
         /// rdbtnmytask control.
@@ -155,5 +155,14 @@ namespace SocioBoard.Message {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdntaskcommentid;
+        
+        /// <summary>
+        /// hdnComment_Date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnComment_Date;
     }
 }

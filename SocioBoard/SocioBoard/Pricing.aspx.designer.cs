@@ -7,18 +7,81 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SocioBoard {
+namespace SocialSuitePro.MasterPage {
     
     
     public partial class Pricing {
         
         /// <summary>
-        /// form1 control.
+        /// freePlan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor freePlan;
+        
+        /// <summary>
+        /// standardplan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor standardplan;
+        
+        /// <summary>
+        /// premiumplan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor premiumplan;
+        
+        /// <summary>
+        /// deluxeplan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor deluxeplan;
+        
+        /// <summary>
+        /// SocioBasicplan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor SocioBasicplan;
+        
+        /// <summary>
+        /// SocioStandardplan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor SocioStandardplan;
+        
+        /// <summary>
+        /// SocioPremiumplan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor SocioPremiumplan;
+        
+        /// <summary>
+        /// SocioDeluxeplan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor SocioDeluxeplan;
     }
 }
