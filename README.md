@@ -100,3 +100,17 @@ Build Instructions
 1. Once you load the project in visual studio, you have see a solution structure with following projects.
 
 ![](http://i.imgur.com/C4qbKrG.png)
+
+2. Build the entire solution, if you face build errors like - 
+
+![] http://i.imgur.com/Pn7cMzE.png
+
+You need to go to the respective project and add references from the lib folder located inside the socioboard project folder.
+
+All libraries are placed here
+
+![]http://i.imgur.com/GNQYhZR.png
+
+![]http://i.imgur.com/yecXpHJ.png
+
+
