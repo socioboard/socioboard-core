@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+
+  <class name="GoogleAnalyticsStats" table="GoogleAnalyticsStats" lazy="false">
+    <id name="Id" column="Id" >
+      <generator class="guid"/>
+    </id>
+    <property name="GaAccountId">
+      <column name="GaAccountId" />
+    </property>
+    <property name="GaProfileId">
+      <column name="GaProfileId"  />
+    </property>
+    <property name="gaDate">
+      <column name="gaDate"  />
+    </property>
+    <property name="gaMonth">
+      <column name="gaMonth"  />
+    </property>
+    <property name="gaYear">
+      <column name="gaYear"  />
+    </property>
+    <property name="gaCountry">
+      <column name="gaCountry"  />
+    </property>
+    <property name="gaRegion">
+      <column name="gaRegion"  />
+    </property>
+    <property name="gaVisits">
+      <column name="gaVisits" />
+    </property>
+    <property name="EntryDate">
+      <column name="EntryDate"  />
+    </property>
+    <property name="UserId">
+      <column name="UserId"  />
+    </property>
+  </class>
+</hibernate-mapping>

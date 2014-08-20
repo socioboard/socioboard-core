@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+
+  <class name="Tasks" table="Tasks" lazy="false">
+    <id name="Id" column="Id" >
+      <generator class="guid"/>
+    </id>
+    <property name="GroupId">
+      <column name="GroupId"/>
+    </property>
+    <property name="TaskMessage">
+      <column name="TaskMessage" />
+    </property>
+    <property name="UserId">
+      <column name="UserId"  />
+    </property>
+    <property name="AssignTaskTo">
+      <column name="AssignTaskTo"  />
+    </property>
+    <property name="TaskStatus">
+      <column name="TaskStatus"  />
+    </property>
+    <property name="AssignDate">
+      <column name="AssignDate"  />
+    </property>
+    <property name="CompletionDate">
+      <column name="CompletionDate"  />
+    </property>
+    
+
+  </class>
+</hibernate-mapping>

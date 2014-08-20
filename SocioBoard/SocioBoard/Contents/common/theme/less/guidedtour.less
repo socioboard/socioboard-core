@@ -1,0 +1,94 @@
+//
+// Guided Tour
+// --------------------------------------------------
+
+// Guided Tour Button
+// -------------------------
+
+#guided-tour {
+	position: fixed;
+	z-index: 10000;
+	top: 100px; 
+	right: -100%;
+	width: 40px;
+	height: 20px;
+	padding: 10px;
+	background: @primaryColor;
+	font-size: 14pt;
+	color: #fff;
+	text-align: center;
+	box-shadow: -1px 3px 5px rgba(0,0,0,.2);
+	-moz-box-shadow: -1px 3px 5px rgba(0,0,0,.2);
+	-webkit-box-shadow: -1px 3px 5px rgba(0,0,0,.2);
+	text-shadow: 0 1px 0 rgba(0,0,0,.2);
+	cursor: pointer;
+	.transition(width .5s ease);
+	overflow: hidden;
+	white-space: nowrap;
+	.hide { 
+		float: left; 
+		height: 0; 
+		display: inline-block !important; 
+		opacity: 0; 
+		.transition(opacity .6s ease);
+	}
+	#close-tour { 
+		display: none;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		padding: 10px;
+		color: rgba(0,0,0,.8);
+		text-shadow: 0 1px 0 #fff;
+		background: rgba(255,255,255,.6);
+		&:hover { background: rgba(255,255,255,.9); }
+	}
+	&:hover {
+		width: 100px;
+		padding: 10px 40px 10px 10px;
+		.hide { padding: 0 5px 0 0; opacity: 1; height: auto; }
+		#close-tour { display: block; }
+	}
+}
+
+// Guided Tour
+// -------------------------
+
+#tlyPageGuideWrapper #tlyPageGuideMessages { 
+	margin: 0; width: 100%; height: auto; padding: 20px; z-index: 9000;
+	div { margin: 0 90px 0 120px; }
+	h4 { color: #fff; }
+	p:last-child { margin: 0; }
+}
+#tlyPageGuideWrapper #tlyPageGuide li { background: rgba(0,0,0,.4); }
+#tlyPageGuideWrapper #tlyPageGuide li:hover { background: rgba(0,0,0,.9); }
+#tlyPageGuideWrapper #tlyPageGuide li {
+	&.tlypageguide_right:after,
+	&.tlypageguide_left:after,
+	&.tlypageguide_top:after { border-top-color: rgba(0,0,0,.3); }
+	&.tlypageguide_bottom:after { border-bottom-color: rgba(0,0,0,.3); }
+	&.tlypageguide_right:hover,
+	&.tlypageguide_left:hover,
+	&.tlypageguide_top:hover { 
+		margin: 0;
+		&:after { border-top-color: rgba(0,0,0,.9); } 
+	}
+	&.tlypageguide_bottom:hover { 
+		margin: 0;
+		&:after { border-bottom-color: rgba(0,0,0,.9); } 
+	}
+}
+.tlypageguide_shadow:after { background: fade(@primaryColor, 20%); }
+#tlyPageGuideWrapper #tlyPageGuide li.tlypageguide-active { background: @primaryColor; }
+#tlyPageGuideWrapper #tlyPageGuide li.tlypageguide-active.tlypageguide_right:after, #tlyPageGuideWrapper #tlyPageGuide li.tlypageguide-active.tlypageguide_left:after, #tlyPageGuideWrapper #tlyPageGuide li.tlypageguide-active.tlypageguide_top:after {
+	border-top-color: @primaryColor;
+}
+#tlyPageGuideWrapper #tlyPageGuide li.tlypageguide-active.tlypageguide_bottom:after {
+	border-bottom-color: @primaryColor;
+}
+#tlyPageGuideWrapper #tlyPageGuideMessages .tlypageguide_back, #tlyPageGuideWrapper #tlyPageGuideMessages .tlypageguide_fwd {
+	top: 29px;
+}
+#tlyPageGuideWrapper #tlyPageGuideMessages span { top: 20px; background: @primaryColor; }
+#tlyPageGuideWrapper #tlyPageGuideMessages .tlypageguide_close { background: @primaryColor; }

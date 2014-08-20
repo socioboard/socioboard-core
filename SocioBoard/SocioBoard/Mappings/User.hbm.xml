@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+  
+  <class name="User" table="User" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="UserName">
+      <column name="UserName" />
+    </property>
+    <property name="EmailId">
+      <column name="EmailId"  />
+    </property>
+    <property name="ProfileUrl">
+      <column name="ProfileUrl"  />
+    </property>
+    <property name="AccountType">
+      <column name="AccountType"  />
+    </property>
+
+
+    <property name="CreateDate">
+      <column name="CreateDate"  />
+    </property>
+
+    <property name="ExpiryDate">
+      <column name="ExpiryDate"  />
+    </property>
+
+    <property name="UserStatus">
+      <column name="UserStatus"  />
+    </property>
+    <property name="Password">
+      <column name="Password"  />
+    </property>
+
+    <property name="TimeZone">
+      <column name="TimeZone"  />
+    </property>
+  
+
+
+    <property name="PaymentStatus">
+      <column name="PaymentStatus"  />
+    </property>
+
+    <property name="ActivationStatus">
+      <column name="ActivationStatus"  />
+    </property>
+
+    <property name="CouponCode">
+      <column name="CouponCode"  />
+    </property>
+
+    <property name="ReferenceStatus">
+      <column name="ReferenceStatus"  />
+    </property>
+
+    <property name="RefereeStatus">
+      <column name="RefereeStatus"  />
+    </property>
+
+    <property name="UserType">
+      <column name="UserType"  />
+    </property>
+    
+
+  </class>
+</hibernate-mapping>

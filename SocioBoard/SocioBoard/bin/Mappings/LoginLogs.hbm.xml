@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+
+  <class name="LoginLogs" table="LoginLogs" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="UserId">
+      <column name="UserId" />
+    </property>
+    <property name="UserName">
+      <column name="UserName"  />
+    </property>
+    <property name="LoginTime">
+      <column name="LoginTime" />
+    </property>
+  </class>
+</hibernate-mapping>

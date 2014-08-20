@@ -1,0 +1,10 @@
+C:\Users\user\Desktop\SocialSuitePro\bin\SocialSuitePro.dll
+C:\Users\user\Desktop\SocialSuitePro\bin\SocialSuitePro.pdb
+C:\Users\user\Desktop\SocialSuitePro\bin\PayPalCoreSDK.dll
+C:\Users\user\Desktop\SocialSuitePro\bin\SendGridMail.dll
+C:\Users\user\Desktop\SocialSuitePro\bin\SendGridPlus.dll
+C:\Users\user\Desktop\SocialSuitePro\bin\System.Net.Http.dll
+C:\Users\user\Desktop\SocialSuitePro\bin\CodeScales.Http.dll
+C:\Users\user\Desktop\SocialSuitePro\bin\System.Net.Http.xml
+C:\Users\user\Desktop\SocialSuitePro\obj\Debug\SocialSuitePro.dll
+C:\Users\user\Desktop\SocialSuitePro\obj\Debug\SocialSuitePro.pdb

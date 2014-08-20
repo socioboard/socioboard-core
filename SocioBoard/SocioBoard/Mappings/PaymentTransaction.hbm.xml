@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+
+  <class name="PaymentTransaction" table="PaymentTransaction" lazy="false">
+    <id name="Id" column="Id" >
+      <generator class="guid"/>
+    </id>
+    <property name="PayPalTransactionId">
+      <column name="PayPalTransactionId" />
+    </property>
+    <property name="AmountPaid">
+      <column name="AmountPaid"  />
+    </property>
+    
+    <property name="PaymentDate">
+      <column name="PaymentDate"  />
+    </property>
+    <property name="UserId">
+      <column name="UserId"  />
+    </property>
+
+    <property name="PaymentStatus">
+      <column name="PaymentStatus"  />
+    </property>
+    <property name="PayerId">
+      <column name="PayerId"  />
+    </property>
+    <property name="ReceiverId">
+      <column name="ReceiverId"  />
+    </property>
+    <property name="PayerEmail">
+      <column name="PayerEmail"  />
+    </property>
+    <property name="PaypalPaymentDate">
+      <column name="PaypalPaymentDate"  />
+    </property>
+    <property name="IPNTrackId">
+      <column name="IPNTrackId"  />
+    </property>
+
+    <property name="VersionType">
+      <column name="VersionType"  />
+    </property>
+    <property name="DetailsInfo">
+      <column name="DetailsInfo"  />
+    </property>
+    
+  </class>
+</hibernate-mapping>

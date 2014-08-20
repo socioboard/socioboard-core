@@ -1,0 +1,115 @@
+@spriteGrid: 20px;
+@spriteBackgroundSize: 60px 140px;
+
+.bevelEmboss(@ol:0.2, @od:0.2) {
+	box-shadow: inset 1px 1px 1px rgba(255, 255, 255, @ol), inset -1px -1px 1px rgba(0, 0, 0, @od);
+	-moz-box-shadow: inset 1px 1px 1px rgba(255, 255, 255, @ol), inset -1px -1px 1px rgba(0, 0, 0, @od);
+	-webkit-box-shadow: inset 1px 1px 1px rgba(255, 255, 255, @ol), inset -1px -1px 1px rgba(0, 0, 0, @od);
+}
+
+.rounded (@a:0, @b:0, @c:0, @d:0)
+{
+	-webkit-border-radius: @a @b @c @d;
+	-moz-border-radius: @a @b @c @d;
+	border-radius: @a @b @c @d;
+}
+.backgroundSize (@bg:auto)
+{
+	-moz-background-size:@bg;
+	-ie-background-size:@bg;
+	-o-background-size:@bg;
+	-webkit-background-size:@bg;
+	background-size:@bg;
+}
+.sprite (@x, @y)
+{
+	.spriteFile(sprite1x);
+	background-position: -(@x*@spriteGrid) -(@y*@spriteGrid);
+	.backgroundSize(@spriteBackgroundSize);
+}
+.spriteFile (@file, @path:"")
+{
+	background-image: url("../@{path}images/@{file}.png");
+}
+.spriteHelper(@image, @x, @y, @spriteX, @spriteY)
+{
+   background: url("img/@{image}.png") no-repeat;
+   background-position: -(@x*@spriteX) -(@y*@spriteY);
+}
+.hideText
+{
+   text-indent: -999em;
+   letter-spacing: -999em;
+   overflow: hidden;
+}
+.spriteReplace(@x, @y) 
+{
+   .sprite(@x, @y);
+   .hideText;
+}
+.spriteReplace (@x, @y, @width, @height) 
+{
+   .sprite(@x, @y);
+   .hideText;
+   width: @width;
+   height: @height;
+}
+.spriteInline(@x, @y)
+{
+   .sprite(@x, @y);
+   display: inline-block;
+   content: "";
+}
+.spriteInline(@x, @y, @width, @height)
+{
+   .sprite(@x, @y);
+   display: inline-block;
+   content: "";
+   width: @width;
+   height: @height;
+}
+.spritePadded(@x, @y)
+{
+   .sprite(@x, @y);
+   position: absolute;
+   content: "";
+}
+.spritePadded(@x, @y, @width, @height)
+{
+   .sprite(@x, @y);
+   position: absolute;
+   content: "";
+   width: @width;
+   height: @height;
+}
+
+// Transitions
+.transition(@transition) {
+  -webkit-transition: @transition;
+     -moz-transition: @transition;
+       -o-transition: @transition;
+          transition: @transition;
+}
+
+#gradient {
+	.horizontal(@startColor: #555, @endColor: #333) {
+		background-color: @endColor;
+	    background-image: -moz-linear-gradient(left, @startColor, @endColor); // FF 3.6+
+	    background-image: -webkit-gradient(linear, 0 0, 100% 0, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
+	    background-image: -webkit-linear-gradient(left, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+	    background-image: -o-linear-gradient(left, @startColor, @endColor); // Opera 11.10
+	    background-image: linear-gradient(to right, @startColor, @endColor); // Standard, IE10
+	    background-repeat: repeat-x;
+	    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@startColor),argb(@endColor))); // IE9 and down
+	}
+	.vertical(@startColor: #555, @endColor: #333) {
+	    background-color: mix(@startColor, @endColor, 60%);
+	    background-image: -moz-linear-gradient(top, @startColor, @endColor); // FF 3.6+
+	    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
+	    background-image: -webkit-linear-gradient(top, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+	    background-image: -o-linear-gradient(top, @startColor, @endColor); // Opera 11.10
+	    background-image: linear-gradient(to bottom, @startColor, @endColor); // Standard, IE10
+		background-repeat: repeat-x;
+		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@startColor),argb(@endColor))); // IE9 and down
+	}
+}

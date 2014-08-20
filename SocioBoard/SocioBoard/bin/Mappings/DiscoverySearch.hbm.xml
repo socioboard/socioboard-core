@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+
+  <class name="DiscoverySearch" table="DiscoverySearch" lazy="false">
+    <id name="Id" column="Id" >
+      <generator class="guid"/>
+    </id>
+    <property name="FromName">
+      <column name="FromName" />
+    </property>
+    <property name="FromId">
+      <column name="FromId"  />
+    </property>
+    <property name="Message">
+      <column name="Message"  />
+    </property>
+    <property name="CreatedTime">
+      <column name="CreatedTime"  />
+    </property>
+
+
+    <property name="EntryDate">
+      <column name="EntryDate"  />
+    </property>
+
+    <property name="Network">
+      <column name="Network"  />
+    </property>
+
+    <property name="ProfileImageUrl">
+      <column name="ProfileImageUrl"  />
+    </property>
+
+    <property name="MessageId">
+      <column name="MessageId"  />
+    </property>
+    <property name="SearchKeyword">
+      <column name="SearchKeyword"  />
+    </property>
+    <property name="UserId">
+      <column name="UserId"  />
+    </property>
+  </class>
+</hibernate-mapping>

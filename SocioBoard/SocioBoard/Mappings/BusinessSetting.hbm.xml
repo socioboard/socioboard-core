@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+
+  <class name="BusinessSetting" table="BusinessSetting" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="BusinessName">
+      <column name="BusinessName" />
+    </property>
+    <property name="GroupId">
+      <column name="GroupId"/>
+    </property>
+    <property name="AssigningTasks">
+      <column name="AssigningTasks" />
+    </property>
+    <property name="TaskNotification">
+      <column name="TaskNotification" />
+    </property>
+    <property name="FbPhotoUpload">
+      <column name="FbPhotoUpload"  />
+    </property>
+    <property name="UserId">
+      <column name="UserId"  />
+    </property>
+    <property name="EntryDate">
+      <column name="EntryDate"  />
+    </property>
+
+  </class>
+</hibernate-mapping>

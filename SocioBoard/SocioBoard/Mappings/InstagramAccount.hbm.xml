@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+
+  <class name="InstagramAccount" table="InstagramAccount" lazy="false">
+    <id name="Id" column="Id" >
+      <generator class="guid"/>
+    </id>
+    <property name="InstagramId">
+      <column name="InstagramId" />
+    </property>
+    <property name="AccessToken">
+      <column name="AccessToken"  />
+    </property>
+    <property name="InsUserName">
+      <column name="InsUserName"  />
+    </property>
+    <property name="UserId">
+      <column name="UserId"  />
+    </property>
+    <property name="IsActive">
+      <column name="IsActive"  />
+    </property>
+    <property name="Followers">
+      <column name="Followers"  />
+    </property>
+    <property name="FollowedBy">
+      <column name="FollowedBy"  />
+    </property>
+    <property name="ProfileUrl">
+      <column name="ProfileUrl"  />
+    </property>
+    <property name="TotalImages">
+      <column name="TotalImages"  />
+    </property>    
+  </class>
+</hibernate-mapping>

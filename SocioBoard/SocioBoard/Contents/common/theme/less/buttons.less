@@ -1,0 +1,255 @@
+//
+// Buttons
+// --------------------------------------------------
+
+// Button
+// -------------------------
+
+.btn { font-weight: 600; }
+.btn-block { width: 100%; }
+.btn + .btn:not(.btn-block) { margin: 0 0 0 5px; }
+.btn-group { .btn + .btn:not(.btn-block) { margin: 0; } }
+
+// Default
+// -------------------------
+
+.btn-default {
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+	color: rgba(0,0,0,.6);
+	text-shadow: 0 1px 0 #fff;
+	font-weight: 600;
+	#gradient > .vertical(lighten(#e7e7e7, 5%),#e7e7e7);
+	border: 1px solid #e7e7e7;
+	box-shadow: 0 1px 0 0 #fff inset, 0 0 0 1px darken(#e7e7e7, 10%);
+	-moz-box-shadow: 0 1px 0 0 #fff inset, 0 0 0 1px darken(#e7e7e7, 10%);
+	-webkit-box-shadow: 0 1px 0 0 #fff inset, 0 0 0 1px darken(#e7e7e7, 10%);
+}
+.btn-group.open .btn-default.dropdown-toggle,
+.btn-default.disabled, .btn-default[disabled],
+.btn-default:hover, .btn-default:focus { background: #e8e8e8; }
+.btn-default:active, .btn-default.active { background: #e8e8e8; color: #fff; text-shadow: none; }
+.btn-default .caret { border-top-color: rgba(0,0,0,.5); }
+
+// Warning
+// -------------------------
+
+.btn-warning {
+	#gradient > .vertical(lighten(@warningColor, 10%),@warningColor);
+	box-shadow: 0 1px 0 0 rgba(255,255,255,0.3) inset, 0 0 0 1px darken(@warningColor, 10%);
+	-moz-box-shadow: 0 1px 0 0 rgba(255,255,255,0.3) inset, 0 0 0 1px darken(@warningColor, 10%);
+	-webkit-box-shadow: 0 1px 0 0 rgba(255,255,255,0.3) inset, 0 0 0 1px darken(@warningColor, 10%);
+	border: 1px solid @warningColor;
+	color: #ffffff;
+	text-shadow: 0 1px 0 rgba(0,0,0,.5);
+	&.glyphicons {
+		i:before { color: rgba(255,255,255,.5); text-shadow: none; }
+	}
+}
+.btn-group.open .btn-warning.dropdown-toggle,
+.btn-warning.disabled, .btn-warning[disabled],
+.btn-warning:hover, .btn-warning:focus { background: @warningColor; color: #fff; }
+.btn-warning:active, .btn-warning.active { background: @warningColor; color: #fff; }
+.btn-warning .caret { border-top-color: rgba(255,255,255,.7); border-bottom-color: rgba(255,255,255,.7); }
+
+// Info
+// -------------------------
+
+.btn-info {
+	background: #93B9D8;
+	border: 1px solid #93B9D8;
+	color: #ffffff;
+	text-shadow: 0 1px 0 rgba(0,0,0,.5);
+	&.glyphicons {
+		i:before { color: rgba(255,255,255,.5); text-shadow: none; }
+	}
+}
+.btn-group.open .btn-info.dropdown-toggle,
+.btn-info.disabled, .btn-info[disabled],
+.btn-info:hover, .btn-info:focus { background: #93B9D8; color: #fff; }
+.btn-info:active, .btn-info.active { background: #93B9D8; color: #fff; }
+.btn-info .caret { border-top-color: rgba(255,255,255,.7); border-bottom-color: rgba(255,255,255,.7); }
+
+// Danger
+// -------------------------
+
+.btn-danger {
+	#gradient > .vertical(lighten(@dangerColor, 10%), @dangerColor);
+	border: 1px solid @dangerColor;
+	box-shadow: 0 1px 0 0 rgba(255,255,255,0.3) inset, 0 0 0 1px darken(@dangerColor, 10%);
+	-moz-box-shadow: 0 1px 0 0 rgba(255,255,255,0.3) inset, 0 0 0 1px darken(@dangerColor, 10%);
+	-webkit-box-shadow: 0 1px 0 0 rgba(255,255,255,0.3) inset, 0 0 0 1px darken(@dangerColor, 10%);
+	color: #ffffff;
+	text-shadow: 0 1px 0 rgba(0,0,0,.5);
+	&.glyphicons {
+		i:before { color: rgba(255,255,255,.5); text-shadow: none; }
+	}
+}
+.btn-group.open .btn-danger.dropdown-toggle,
+.btn-danger.disabled, .btn-danger[disabled],
+.btn-danger:hover, .btn-danger:focus { background: @dangerColor; color: #fff; }
+.btn-danger:active, .btn-danger.active { background: @dangerColor; color: #fff; }
+.btn-danger .caret { border-top-color: rgba(255,255,255,.7); border-bottom-color: rgba(255,255,255,.7); }
+
+// Primary
+// -------------------------
+
+.btn-primary {
+	#gradient > .vertical(lighten(@primaryColor, 10%), @primaryColor);
+	border: 1px solid @primaryColor;
+	box-shadow: 0 1px 0 0 rgba(255,255,255,0.3) inset, 0 0 0 1px darken(@primaryColor, 10%);
+	-moz-box-shadow: 0 1px 0 0 rgba(255,255,255,0.3) inset, 0 0 0 1px darken(@primaryColor, 10%);
+	-webkit-box-shadow: 0 1px 0 0 rgba(255,255,255,0.3) inset, 0 0 0 1px darken(@primaryColor, 10%);
+	color: #ffffff;
+	text-shadow: 0 1px 0 rgba(0,0,0,.5);
+	&.glyphicons {
+		i:before { color: rgba(255,255,255,.4); text-shadow: none; }
+	}
+}
+.btn-group.open .btn-primary.dropdown-toggle,
+.btn-primary.disabled, .btn-primary[disabled],
+.btn-primary:hover, .btn-primary:focus { background: @primaryColor; color: #fff; }
+.btn-primary:active, .btn-primary.active { background: @primaryColor; color: #fff; }
+.btn-primary .caret { border-top-color: #ffffff; border-bottom-color: #ffffff; }
+
+// Inverse
+// -------------------------
+
+.btn-inverse {
+	#gradient > .vertical(lighten(@inverseColor, 10%), @inverseColor);
+	border: 1px solid @inverseColor;
+	box-shadow: 0 1px 0 0 rgba(255,255,255,0.3) inset, 0 0 0 1px darken(@inverseColor, 10%);
+	-moz-box-shadow: 0 1px 0 0 rgba(255,255,255,0.3) inset, 0 0 0 1px darken(@inverseColor, 10%);
+	-webkit-box-shadow: 0 1px 0 0 rgba(255,255,255,0.3) inset, 0 0 0 1px darken(@inverseColor, 10%);
+	color: #ffffff;
+	text-shadow: 0 1px 0 rgba(0,0,0,.5);
+	&.glyphicons {
+		i:before { color: #919293; text-shadow: none; }
+	}
+}
+.btn-group.open .btn-inverse.dropdown-toggle,
+.btn-inverse.disabled, .btn-inverse[disabled],
+.btn-inverse:hover, .btn-inverse:focus { background: @inverseColor; color: #fff; }
+.btn-inverse:active, .btn-inverse.active { background: @inverseColor; color: #fff; }
+.btn-inverse .caret { border-top-color: #fff; border-bottom-color: #fff; }
+
+// Success
+// -------------------------
+
+.btn-success {
+	#gradient > .vertical(lighten(@successColor, 10%), @successColor);
+	border: 1px solid @successColor;
+	box-shadow: 0 1px 0 0 rgba(255,255,255,0.3) inset, 0 0 0 1px darken(@successColor, 10%);
+	-moz-box-shadow: 0 1px 0 0 rgba(255,255,255,0.3) inset, 0 0 0 1px darken(@successColor, 10%);
+	-webkit-box-shadow: 0 1px 0 0 rgba(255,255,255,0.3) inset, 0 0 0 1px darken(@successColor, 10%);
+	color: #ffffff;
+	text-shadow: 0 1px 0 rgba(0,0,0,.5);
+	&.glyphicons {
+		i:before { color: #a2bc9b; text-shadow: none; }
+	}
+}
+.btn-group.open .btn-success.dropdown-toggle,
+.btn-success.disabled, .btn-success[disabled],
+.btn-success:hover, .btn-success:focus { background: @successColor; color: #fff; }
+.btn-success:active, .btn-success.active { background: @successColor; color: #fff; }
+.btn-success .caret { border-top-color: #fff; border-bottom-color: #fff; }
+
+// Button groups
+// -------------------------
+
+.btn-group .btn-primary:not(.dropdown-toggle) { margin-right: 2px; }
+.btn-group-vertical.block { display: block; }
+//.bootstrap-select.btn-group, .bootstrap-select.btn-group[class*="span"] { margin: 0; }
+.btn-group.btn-block {
+	padding: 0;
+	position: relative;
+	.leadcontainer {
+		left: 0;
+	    position: absolute;
+	    right: 29px;
+	    > .btn:first-child {
+	    	.rounded();
+			margin-left: 0;
+			-webkit-border-bottom-left-radius: 4px;
+			border-bottom-left-radius: 4px;
+			-webkit-border-top-left-radius: 4px;
+			border-top-left-radius: 4px;
+			-moz-border-radius-bottomleft: 4px;
+			-moz-border-radius-topleft: 4px;
+			text-align: left;
+		}
+	}
+	.dropdown-lead {
+	    box-sizing: border-box;
+	    width: 100%;
+	}
+	.dropdown-toggle {
+		width: 30px;
+	    float: right;
+	    box-sizing: border-box;
+	    text-align: center;
+	    padding-left: 0;
+	    padding-right: 0;
+	}
+}
+
+// Button icon stacked
+// -------------------------
+
+.btn-icon-stacked {
+	text-align: left;
+	padding: 5px 5px 5px 45px;
+	i {
+		display: block;
+		width: 24px;
+		height: 24px;
+		position: absolute;
+		left: 10px;
+		top: 10px;
+		&:before { left: auto; top: auto; position: relative; text-align: center; }
+	}
+	span { 
+		display: block; 
+		font-size: 13px;
+		line-height: normal;
+	}
+}
+
+// Button other styles
+// -------------------------
+
+.btn-facebook {
+	color: #fff;
+	text-shadow: 0 1px 0 rgba(0,0,0,.1);
+	#gradient > .vertical(lighten(#5d7cb6, 10%), #5d7cb6);
+	border: 1px solid #5d7cb6;
+	box-shadow: 0 1px 0 0 rgba(255,255,255,0.3) inset, 0 0 0 1px darken(#5d7cb6, 10%);
+	-moz-box-shadow: 0 1px 0 0 rgba(255,255,255,0.3) inset, 0 0 0 1px darken(#5d7cb6, 10%);
+	-webkit-box-shadow: 0 1px 0 0 rgba(255,255,255,0.3) inset, 0 0 0 1px darken(#5d7cb6, 10%);
+	i:before { color: #fff; }
+	&:hover { background: lighten(#5d7cb6, 10%); color: #fff; }
+}
+.btn-google {
+	color: #fff;
+	text-shadow: 0 1px 0 rgba(0,0,0,.1);
+	#gradient > .vertical(lighten(#9e3838, 10%), #9e3838);
+	border: 1px solid #9e3838;
+	box-shadow: 0 1px 0 0 rgba(255,255,255,0.3) inset, 0 0 0 1px darken(#9e3838, 10%);
+	-moz-box-shadow: 0 1px 0 0 rgba(255,255,255,0.3) inset, 0 0 0 1px darken(#9e3838, 10%);
+	-webkit-box-shadow: 0 1px 0 0 rgba(255,255,255,0.3) inset, 0 0 0 1px darken(#9e3838, 10%);
+	i:before { color: #fff; }
+	&:hover { background: lighten(#9e3838, 10%); color: #fff; }
+}
+
+// Toggle view code Button
+// -------------------------
+
+.btn-toggle-code { position: absolute; bottom: 0; right: 0; z-index: 1000; .rounded(); &.outside { bottom: -24px; } }
+
+// ONLY Buttons on UI Demo Page (Table)
+// -------------------------
+
+#demo_buttons {
+	.btn-block { max-width: 200px; margin: 0 auto; }
+	thead th { width: 25%; }
+}
+

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+  <class name="Drafts" table="Drafts" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="UserId">
+      <column name="UserId" />
+    </property>
+    <property name="CreatedDate">
+      <column name="CreatedDate" />
+    </property>
+    <property name="ModifiedDate">
+      <column name="ModifiedDate"  />
+    </property>
+    <property name="Message">
+      <column name="Message"  />
+    </property>
+
+    <property name="GroupId">
+      <column name="GroupId"/>
+    </property>
+    
+    
+    
+  </class>
+</hibernate-mapping>

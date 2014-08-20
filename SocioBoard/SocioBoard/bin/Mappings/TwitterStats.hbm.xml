@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="SocioBoard.Domain"
+      assembly="SocioBoard">
+
+  <class name="TwitterStats" table="TwitterStats" lazy="false">
+    <id name="Id" column="Id" >
+      <generator class="guid"/>
+    </id>
+    <property name="TwitterId">
+      <column name="TwitterId" />
+    </property>
+    <property name="UserId">
+      <column name="UserId"  />
+    </property>
+    <property name="FollowingCount">
+      <column name="FollowingCount"  />
+    </property>
+    <property name="Engagement">
+      <column name="Engagement"  />
+    </property>
+    <property name="Influence">
+      <column name="Influence"  />
+    </property>
+    <property name="FollowerCount">
+      <column name="FollowerCount"  />
+    </property>
+    <property name="DMRecievedCount">
+      <column name="DMRecievedCount"  />
+    </property>
+    <property name="DMSentCount">
+      <column name="DMSentCount"  />
+    </property>
+    <property name="Age1820">
+      <column name="Age1820"  />
+    </property>
+    <property name="Age2124">
+      <column name="Age2124"  />
+    </property>
+    <property name="Age2534">
+      <column name="Age2534"  />
+    </property>
+    <property name="Age3544">
+      <column name="Age3544"  />
+    </property>
+    <property name="Age4554">
+      <column name="Age4554"  />
+    </property>
+    <property name="Age5564">
+      <column name="Age5564"  />
+    </property>
+    <property name="Age65">
+      <column name="Age65"  />
+    </property>
+    <property name="EntryDate">
+      <column name="EntryDate" />
+    </property>
+
+  </class>
+</hibernate-mapping>

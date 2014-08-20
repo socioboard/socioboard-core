@@ -1,0 +1,16 @@
+C:\Users\Admin\Desktop\sb\trunk\SocioBoard\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.dll
+C:\Users\Admin\Desktop\sb\trunk\SocioBoard\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.pdb
+C:\Users\Admin\Desktop\sb\trunk\SocioBoard\Library\GlobusTumblerLib\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Admin\Desktop\sb\trunk\SocioBoard\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.dll
+C:\Users\Admin\Desktop\sb\trunk\SocioBoard\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.pdb
+C:\Users\GLB-002\Desktop\socioboard code for github\SocioBoard\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.dll
+C:\Users\GLB-002\Desktop\socioboard code for github\SocioBoard\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.pdb
+C:\Users\GLB-002\Desktop\socioboard code for github\SocioBoard\Library\GlobusTumblerLib\bin\Debug\Newtonsoft.Json.dll
+C:\Users\GLB-002\Desktop\socioboard code for github\SocioBoard\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.dll
+C:\Users\GLB-002\Desktop\socioboard code for github\SocioBoard\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.pdb
+F:\socioboard\socioboard\SocioBoard\SocioBoard\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.dll
+F:\socioboard\socioboard\SocioBoard\SocioBoard\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.pdb
+F:\socioboard\socioboard\SocioBoard\SocioBoard\Library\GlobusTumblerLib\bin\Debug\Newtonsoft.Json.dll
+F:\socioboard\socioboard\SocioBoard\SocioBoard\Library\GlobusTumblerLib\obj\Debug\GlobusTumblrLib.csprojResolveAssemblyReference.cache
+F:\socioboard\socioboard\SocioBoard\SocioBoard\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.dll
+F:\socioboard\socioboard\SocioBoard\SocioBoard\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.pdb
