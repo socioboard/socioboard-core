@@ -93,3 +93,24 @@ The scheduler service, developed in C#, would run on a 24/7 server. This schedul
 Devices and Platforms : 
 =========================
 Socioboard is available on web, desktop and mobiles. We have Android and iOS apps which work in tandem with the web app.
+=========================
+
+Build Instructions
+
+1. Once you load the project in visual studio, you have see a solution structure with following projects.
+
+![](http://i.imgur.com/C4qbKrG.png)
+
+2. Build the entire solution, if you face build errors like - 
+
+![](http://i.imgur.com/Pn7cMzE.png)
+
+You need to go to the respective project and add references from the lib folder located inside the socioboard project folder.
+
+All libraries are placed here
+
+![](http://i.imgur.com/GNQYhZR.png)
+
+![](http://i.imgur.com/yecXpHJ.png)
+
+
