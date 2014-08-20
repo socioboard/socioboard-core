@@ -103,14 +103,14 @@ Build Instructions
 
 2. Build the entire solution, if you face build errors like - 
 
-![] http://i.imgur.com/Pn7cMzE.png
+![](http://i.imgur.com/Pn7cMzE.png)
 
 You need to go to the respective project and add references from the lib folder located inside the socioboard project folder.
 
 All libraries are placed here
 
-![]http://i.imgur.com/GNQYhZR.png
+![](http://i.imgur.com/GNQYhZR.png)
 
-![]http://i.imgur.com/yecXpHJ.png
+![](http://i.imgur.com/yecXpHJ.png)
 
 
