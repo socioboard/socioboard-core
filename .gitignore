@@ -7,4 +7,4 @@
 /SocioBoard/DBSchema
 /SocioBoard/SocialSiteDataService
 /SocioBoard/SocioBoardScheduler
-/SocioBoard/Socioboard.sln
+/SocioBoard/Socioboard/hibernate.cfg.xml
