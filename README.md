@@ -99,7 +99,7 @@ Build Instructions
 
 1. Once you load the project in visual studio, you have see a solution structure with following projects.
 
-![](http://i.imgur.com/C4qbKrG.png)
+![](http://prntscr.com/4us00q)
 
 2. Build the entire solution, if you face build errors like - 
 
