@@ -109,8 +109,8 @@ You need to go to the respective project and add references from the lib folder 
 
 All libraries are placed here
 
-![](http://i.imgur.com/GNQYhZR.png)
+![](http://i.imgur.com/XYEb4eY.png)
 
-![](http://i.imgur.com/yecXpHJ.png)
+![](http://i.imgur.com/GZY0Y9B.png)
 
 
