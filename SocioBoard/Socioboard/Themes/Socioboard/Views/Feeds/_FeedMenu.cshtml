@@ -1,0 +1,148 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+}
+
+
+<a href="#"><i class="fa fa-envelope fa-fw"></i>Feeds<i class="fa arrow"></i></a>
+<ul class="nav nav-second-level">
+    @foreach (var item in (Dictionary<string, List<object>>)Model)
+    {
+        try
+        {
+            if (item.Key == "facebook")
+            {
+                List<object> lstFacebookAccount = (List<object>)item.Value;
+                string profileimage = string.Empty;
+                if (lstFacebookAccount.Count > 0)
+                {
+        <li>
+            <a href="#">Facebook <span class="fa arrow"></span></a>
+            <ul class="nav nav-third-level">
+                @foreach (var facebook in lstFacebookAccount)
+                {
+                    FacebookAccount objFacebookAccount = (FacebookAccount)facebook;
+                    <li onclick="facebookdetails('@objFacebookAccount.FbUserId');">
+                        <a href="#">@objFacebookAccount.FbUserName</a>
+                    </li> 
+                }
+            </ul>
+            <!-- /.nav-third-level -->
+        </li>
+                }
+            }
+            if (item.Key == "twitter")
+            {
+                List<object> lstTwitterAccount = (List<object>)item.Value;
+                string profileimage = string.Empty;
+                if (lstTwitterAccount.Count > 0)
+                {
+        <li>
+            <a href="#">Twitter <span class="fa arrow"></span></a>
+            <ul class="nav nav-third-level">
+                @foreach (var twitterAccount in lstTwitterAccount)
+                {
+                    TwitterAccount objTwitterAccount = (TwitterAccount)twitterAccount;
+                    <li onclick="twitterdetails('@objTwitterAccount.TwitterUserId');">
+                        <a href="#">@objTwitterAccount.TwitterScreenName</a>
+                    </li> 
+                }
+
+            </ul>
+            <!-- /.nav-third-level -->
+        </li>
+                }
+            }
+            if (item.Key == "linkedin")
+            {
+                List<object> lstLinkedinAccount = (List<object>)item.Value;
+                string profileimage = string.Empty;
+                if (lstLinkedinAccount.Count > 0)
+                {
+        <li>
+            <a href="#">Linkedin <span class="fa arrow"></span></a>
+            <ul class="nav nav-third-level">
+                @foreach (var linkedin in lstLinkedinAccount)
+                {
+                    LinkedInAccount objFacebookAccount = (LinkedInAccount)linkedin;
+                    <li onclick="linkedindetails('@objFacebookAccount.LinkedinUserId');">
+                        <a href="#">@objFacebookAccount.LinkedinUserName</a>
+                    </li> 
+                }
+
+            </ul>
+            <!-- /.nav-third-level -->
+        </li>
+                }
+            }
+            if (item.Key == "instagram")
+            {
+                List<object> lstInstagramAccount = (List<object>)item.Value;
+                string profileimage = string.Empty;
+                if (lstInstagramAccount.Count > 0)
+                {
+        <li>
+            <a href="#">Instagram <span class="fa arrow"></span></a>
+            <ul class="nav nav-third-level">
+                @foreach (var Instagram in lstInstagramAccount)
+                {
+                    InstagramAccount objInstagramAccount = (InstagramAccount)Instagram;
+                    <li onclick="Instagramdetails('@objInstagramAccount.InstagramId');">
+                        <a href="#">@objInstagramAccount.InsUserName</a>
+                    </li> 
+                }
+            </ul>
+            <!-- /.nav-third-level -->
+        </li>
+                }
+            }
+            if (item.Key == "tumblr")
+            {
+                List<object> lstFacebookAccount = (List<object>)item.Value;
+                string profileimage = string.Empty;
+                if (lstFacebookAccount.Count > 0)
+                {
+        <li>
+            <a href="#">Tumblr <span class="fa arrow"></span></a>
+            <ul class="nav nav-third-level">
+                @foreach (var facebook in lstFacebookAccount)
+                {
+                    TumblrAccount objTumblrAccount = (TumblrAccount)facebook;
+                    <li onclick="tumblrdetails('@objTumblrAccount.tblrUserName');">
+                        <a href="#">@objTumblrAccount.tblrUserName</a>
+                    </li> 
+                }
+            </ul>
+            <!-- /.nav-third-level -->
+        </li>
+                }
+            }
+            if (item.Key == "youtube")
+            {
+                List<object> lstYoutubeAccount = (List<object>)item.Value;
+                string profileimage = string.Empty;
+                if (lstYoutubeAccount.Count > 0)
+                {
+        <li>
+            <a href="#">Youtube <span class="fa arrow"></span></a>
+            <ul class="nav nav-third-level">
+                @foreach (var YoutubeAccount in lstYoutubeAccount)
+                {
+                    YoutubeAccount objYoutubeAccount = (YoutubeAccount)YoutubeAccount;
+                    <li onclick="youtubedetails('@objYoutubeAccount.Ytuserid');">
+                        <a href="#">@objYoutubeAccount.Ytusername</a>
+                    </li> 
+                }
+
+            </ul>
+            <!-- /.nav-third-level -->
+        </li>
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+        }
+    }
+</ul>
+

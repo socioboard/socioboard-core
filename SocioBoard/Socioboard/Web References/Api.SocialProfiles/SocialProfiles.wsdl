@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AddSocialProfile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileStatus" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSocialProfileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddSocialProfileResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProfileByProfileId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProfileByProfileIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteProfileByProfileIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProfileByUserId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProfileByUserIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteProfileByUserIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SocialProfileByUserId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SocialProfileByUserIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SocialProfileByUserIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SocialProfileByProfilType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SocialProfileByProfilTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SocialProfileByProfilTypeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddSocialProfileSoapIn">
+    <wsdl:part name="parameters" element="tns:AddSocialProfile" />
+  </wsdl:message>
+  <wsdl:message name="AddSocialProfileSoapOut">
+    <wsdl:part name="parameters" element="tns:AddSocialProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProfileByProfileIdSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteProfileByProfileId" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProfileByProfileIdSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteProfileByProfileIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProfileByUserIdSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteProfileByUserId" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProfileByUserIdSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteProfileByUserIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="SocialProfileByUserIdSoapIn">
+    <wsdl:part name="parameters" element="tns:SocialProfileByUserId" />
+  </wsdl:message>
+  <wsdl:message name="SocialProfileByUserIdSoapOut">
+    <wsdl:part name="parameters" element="tns:SocialProfileByUserIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="SocialProfileByProfilTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:SocialProfileByProfilType" />
+  </wsdl:message>
+  <wsdl:message name="SocialProfileByProfilTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:SocialProfileByProfilTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddSocialProfileHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="ProfileType" type="s:string" />
+    <wsdl:part name="ProfileStatus" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddSocialProfileHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProfileByProfileIdHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProfileByProfileIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProfileByUserIdHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProfileByUserIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SocialProfileByUserIdHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SocialProfileByUserIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SocialProfileByProfilTypeHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SocialProfileByProfilTypeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddSocialProfileHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="ProfileType" type="s:string" />
+    <wsdl:part name="ProfileStatus" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddSocialProfileHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProfileByProfileIdHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProfileByProfileIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProfileByUserIdHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProfileByUserIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SocialProfileByUserIdHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SocialProfileByUserIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SocialProfileByProfilTypeHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SocialProfileByProfilTypeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="SocialProfilesSoap">
+    <wsdl:operation name="AddSocialProfile">
+      <wsdl:input message="tns:AddSocialProfileSoapIn" />
+      <wsdl:output message="tns:AddSocialProfileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfileByProfileId">
+      <wsdl:input message="tns:DeleteProfileByProfileIdSoapIn" />
+      <wsdl:output message="tns:DeleteProfileByProfileIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfileByUserId">
+      <wsdl:input message="tns:DeleteProfileByUserIdSoapIn" />
+      <wsdl:output message="tns:DeleteProfileByUserIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SocialProfileByUserId">
+      <wsdl:input message="tns:SocialProfileByUserIdSoapIn" />
+      <wsdl:output message="tns:SocialProfileByUserIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SocialProfileByProfilType">
+      <wsdl:input message="tns:SocialProfileByProfilTypeSoapIn" />
+      <wsdl:output message="tns:SocialProfileByProfilTypeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SocialProfilesHttpGet">
+    <wsdl:operation name="AddSocialProfile">
+      <wsdl:input message="tns:AddSocialProfileHttpGetIn" />
+      <wsdl:output message="tns:AddSocialProfileHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfileByProfileId">
+      <wsdl:input message="tns:DeleteProfileByProfileIdHttpGetIn" />
+      <wsdl:output message="tns:DeleteProfileByProfileIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfileByUserId">
+      <wsdl:input message="tns:DeleteProfileByUserIdHttpGetIn" />
+      <wsdl:output message="tns:DeleteProfileByUserIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SocialProfileByUserId">
+      <wsdl:input message="tns:SocialProfileByUserIdHttpGetIn" />
+      <wsdl:output message="tns:SocialProfileByUserIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SocialProfileByProfilType">
+      <wsdl:input message="tns:SocialProfileByProfilTypeHttpGetIn" />
+      <wsdl:output message="tns:SocialProfileByProfilTypeHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SocialProfilesHttpPost">
+    <wsdl:operation name="AddSocialProfile">
+      <wsdl:input message="tns:AddSocialProfileHttpPostIn" />
+      <wsdl:output message="tns:AddSocialProfileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfileByProfileId">
+      <wsdl:input message="tns:DeleteProfileByProfileIdHttpPostIn" />
+      <wsdl:output message="tns:DeleteProfileByProfileIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfileByUserId">
+      <wsdl:input message="tns:DeleteProfileByUserIdHttpPostIn" />
+      <wsdl:output message="tns:DeleteProfileByUserIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SocialProfileByUserId">
+      <wsdl:input message="tns:SocialProfileByUserIdHttpPostIn" />
+      <wsdl:output message="tns:SocialProfileByUserIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SocialProfileByProfilType">
+      <wsdl:input message="tns:SocialProfileByProfilTypeHttpPostIn" />
+      <wsdl:output message="tns:SocialProfileByProfilTypeHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SocialProfilesSoap" type="tns:SocialProfilesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddSocialProfile">
+      <soap:operation soapAction="http://tempuri.org/AddSocialProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfileByProfileId">
+      <soap:operation soapAction="http://tempuri.org/DeleteProfileByProfileId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfileByUserId">
+      <soap:operation soapAction="http://tempuri.org/DeleteProfileByUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SocialProfileByUserId">
+      <soap:operation soapAction="http://tempuri.org/SocialProfileByUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SocialProfileByProfilType">
+      <soap:operation soapAction="http://tempuri.org/SocialProfileByProfilType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SocialProfilesSoap12" type="tns:SocialProfilesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddSocialProfile">
+      <soap12:operation soapAction="http://tempuri.org/AddSocialProfile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfileByProfileId">
+      <soap12:operation soapAction="http://tempuri.org/DeleteProfileByProfileId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfileByUserId">
+      <soap12:operation soapAction="http://tempuri.org/DeleteProfileByUserId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SocialProfileByUserId">
+      <soap12:operation soapAction="http://tempuri.org/SocialProfileByUserId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SocialProfileByProfilType">
+      <soap12:operation soapAction="http://tempuri.org/SocialProfileByProfilType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SocialProfilesHttpGet" type="tns:SocialProfilesHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="AddSocialProfile">
+      <http:operation location="/AddSocialProfile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfileByProfileId">
+      <http:operation location="/DeleteProfileByProfileId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfileByUserId">
+      <http:operation location="/DeleteProfileByUserId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SocialProfileByUserId">
+      <http:operation location="/SocialProfileByUserId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SocialProfileByProfilType">
+      <http:operation location="/SocialProfileByProfilType" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SocialProfilesHttpPost" type="tns:SocialProfilesHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="AddSocialProfile">
+      <http:operation location="/AddSocialProfile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfileByProfileId">
+      <http:operation location="/DeleteProfileByProfileId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfileByUserId">
+      <http:operation location="/DeleteProfileByUserId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SocialProfileByUserId">
+      <http:operation location="/SocialProfileByUserId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SocialProfileByProfilType">
+      <http:operation location="/SocialProfileByProfilType" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SocialProfiles">
+    <wsdl:port name="SocialProfilesSoap" binding="tns:SocialProfilesSoap">
+      <soap:address location="http://localhost:6361/Services/SocialProfiles.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SocialProfilesSoap12" binding="tns:SocialProfilesSoap12">
+      <soap12:address location="http://localhost:6361/Services/SocialProfiles.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SocialProfilesHttpGet" binding="tns:SocialProfilesHttpGet">
+      <http:address location="http://localhost:6361/Services/SocialProfiles.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SocialProfilesHttpPost" binding="tns:SocialProfilesHttpPost">
+      <http:address location="http://localhost:6361/Services/SocialProfiles.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

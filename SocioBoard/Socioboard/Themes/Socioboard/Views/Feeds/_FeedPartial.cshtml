@@ -1,0 +1,126 @@
+﻿@{
+    string networktype = (string)Model;
+}
+@if (networktype == "instagram" || networktype == "tumblr" || networktype == "youtube")
+{
+    <div class="container-fluid">
+        <div id="feedimages" class="row">
+           
+           
+        </div>
+
+
+
+    </div>
+}
+else
+{ 
+    <div class="container-fluid">
+        <h1 class="page-header">Live Feeds</h1>
+        <div id="feedsdata" class="row">
+
+
+            <div class="col-md-4">
+                <div class="chat-panel panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="">
+                            <img src="" id="img_paneltab1" /></i><span id="title_paneltab1"></span><a href="#"><i id="refreshpanel1" class="fa fa-refresh pull-right"></i></a></h3>
+
+                    </div>
+                    <div id="data_paneltab1" class="panel-body">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="chat-panel panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="">
+                            <img src="" id="img_paneltab2" /></i><span id="title_paneltab2"></span><a href="#"><i id="refreshpanel2" class="fa fa-refresh pull-right"></i></a></h3>
+
+                    </div>
+                    <div id="data_paneltab2" class="panel-body">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="chat-panel panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="">
+                            <img src="" id="img_paneltab3" /></i><span id="title_paneltab3"></span><a href="#"><i id="refreshpanel3" class="fa fa-refresh pull-right"></i></a></h3>
+
+                    </div>
+                    <div id="data_paneltab3" class="panel-body">
+                    </div>
+                </div>
+            </div>
+            <small class=" text-muted"></small>
+        </div>
+        <small class=" text-muted"></small>
+    </div>
+}
+<script type="text/javascript">
+
+
+
+
+
+    $(document).ready(function () {
+
+
+
+
+
+        var facebookwall = _.throttle(facebookwallscrolldata, 3000);
+        $("#data_paneltab1").scroll(ccc);
+
+        function ccc() {
+            var network = $("#data_paneltab1").attr('network');
+            if (network == "facebook") {
+                facebookwall();
+            }
+        }
+
+        $('#refreshpanel1').click(function () {
+           // alert('asdasd');
+            var nwt = $('#refreshpanel1').attr('nwt');
+            var nwtid = $('#refreshpanel1').attr('nwtid');
+            if (nwt == '' && nwtid == '') {
+                alert('Please select any account first');
+            }
+            else {
+                if (nwt == "facebook") {
+                    refreshWallpostFacebook(nwtid);
+                }
+            }
+        });
+        $('#refreshpanel2').click(function () {
+            var nwt = $('#refreshpanel2').attr('nwt');
+            var nwtid = $('#refreshpanel2').attr('nwtid');
+            if (nwt == '' && nwtid == '') {
+                alert('Please select any account first');
+            }
+            else {
+                if (nwt == "facebook") {
+                    refreshFeedsFacebook(nwtid);
+                }
+            }
+        });
+        $('#refreshpanel3').click(function () {
+            var nwt = $('#refreshpanel2').attr('nwt');
+            var nwtid = $('#refreshpanel2').attr('nwtid');
+            if (nwt == '' && nwtid == '') {
+                alert('Please select any account first');
+            }
+            else {
+                if (nwt == "facebook") {
+                    refreshFeedsFacebook(nwtid);
+                }
+            }
+        });
+        $('.ytvideo').on('click', function () {
+            //alert('asdasdasd');
+        });
+    });
+</script>

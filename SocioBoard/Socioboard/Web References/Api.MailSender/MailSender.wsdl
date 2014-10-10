@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SendMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profile" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendMailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendAgencyMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendAgencyMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendAgencyMailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendEnterpriseMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="designation" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="location" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="companywebsite" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendEnterpriseMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendEnterpriseMailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendCareerMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="filepath" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="filename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="filetype" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendCareerMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendCareerMailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SendMailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMail" />
+  </wsdl:message>
+  <wsdl:message name="SendMailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendAgencyMailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendAgencyMail" />
+  </wsdl:message>
+  <wsdl:message name="SendAgencyMailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendAgencyMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendEnterpriseMailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendEnterpriseMail" />
+  </wsdl:message>
+  <wsdl:message name="SendEnterpriseMailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendEnterpriseMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendCareerMailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendCareerMail" />
+  </wsdl:message>
+  <wsdl:message name="SendCareerMailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendCareerMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMailHttpGetIn">
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="lname" type="s:string" />
+    <wsdl:part name="email" type="s:string" />
+    <wsdl:part name="Subject" type="s:string" />
+    <wsdl:part name="profile" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendMailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendAgencyMailHttpGetIn">
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="lname" type="s:string" />
+    <wsdl:part name="email" type="s:string" />
+    <wsdl:part name="Company" type="s:string" />
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="Phone" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendAgencyMailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendEnterpriseMailHttpGetIn">
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="designation" type="s:string" />
+    <wsdl:part name="email" type="s:string" />
+    <wsdl:part name="location" type="s:string" />
+    <wsdl:part name="Company" type="s:string" />
+    <wsdl:part name="companywebsite" type="s:string" />
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="Phone" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendEnterpriseMailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendCareerMailHttpGetIn">
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="lname" type="s:string" />
+    <wsdl:part name="email" type="s:string" />
+    <wsdl:part name="Subject" type="s:string" />
+    <wsdl:part name="profile" type="s:string" />
+    <wsdl:part name="filepath" type="s:string" />
+    <wsdl:part name="filename" type="s:string" />
+    <wsdl:part name="filetype" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendCareerMailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendMailHttpPostIn">
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="lname" type="s:string" />
+    <wsdl:part name="email" type="s:string" />
+    <wsdl:part name="Subject" type="s:string" />
+    <wsdl:part name="profile" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendMailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendAgencyMailHttpPostIn">
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="lname" type="s:string" />
+    <wsdl:part name="email" type="s:string" />
+    <wsdl:part name="Company" type="s:string" />
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="Phone" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendAgencyMailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendEnterpriseMailHttpPostIn">
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="designation" type="s:string" />
+    <wsdl:part name="email" type="s:string" />
+    <wsdl:part name="location" type="s:string" />
+    <wsdl:part name="Company" type="s:string" />
+    <wsdl:part name="companywebsite" type="s:string" />
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="Phone" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendEnterpriseMailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendCareerMailHttpPostIn">
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="lname" type="s:string" />
+    <wsdl:part name="email" type="s:string" />
+    <wsdl:part name="Subject" type="s:string" />
+    <wsdl:part name="profile" type="s:string" />
+    <wsdl:part name="filepath" type="s:string" />
+    <wsdl:part name="filename" type="s:string" />
+    <wsdl:part name="filetype" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendCareerMailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="MailSenderSoap">
+    <wsdl:operation name="SendMail">
+      <wsdl:input message="tns:SendMailSoapIn" />
+      <wsdl:output message="tns:SendMailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendAgencyMail">
+      <wsdl:input message="tns:SendAgencyMailSoapIn" />
+      <wsdl:output message="tns:SendAgencyMailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendEnterpriseMail">
+      <wsdl:input message="tns:SendEnterpriseMailSoapIn" />
+      <wsdl:output message="tns:SendEnterpriseMailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendCareerMail">
+      <wsdl:input message="tns:SendCareerMailSoapIn" />
+      <wsdl:output message="tns:SendCareerMailSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="MailSenderHttpGet">
+    <wsdl:operation name="SendMail">
+      <wsdl:input message="tns:SendMailHttpGetIn" />
+      <wsdl:output message="tns:SendMailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendAgencyMail">
+      <wsdl:input message="tns:SendAgencyMailHttpGetIn" />
+      <wsdl:output message="tns:SendAgencyMailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendEnterpriseMail">
+      <wsdl:input message="tns:SendEnterpriseMailHttpGetIn" />
+      <wsdl:output message="tns:SendEnterpriseMailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendCareerMail">
+      <wsdl:input message="tns:SendCareerMailHttpGetIn" />
+      <wsdl:output message="tns:SendCareerMailHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="MailSenderHttpPost">
+    <wsdl:operation name="SendMail">
+      <wsdl:input message="tns:SendMailHttpPostIn" />
+      <wsdl:output message="tns:SendMailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendAgencyMail">
+      <wsdl:input message="tns:SendAgencyMailHttpPostIn" />
+      <wsdl:output message="tns:SendAgencyMailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendEnterpriseMail">
+      <wsdl:input message="tns:SendEnterpriseMailHttpPostIn" />
+      <wsdl:output message="tns:SendEnterpriseMailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendCareerMail">
+      <wsdl:input message="tns:SendCareerMailHttpPostIn" />
+      <wsdl:output message="tns:SendCareerMailHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MailSenderSoap" type="tns:MailSenderSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendMail">
+      <soap:operation soapAction="http://tempuri.org/SendMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendAgencyMail">
+      <soap:operation soapAction="http://tempuri.org/SendAgencyMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEnterpriseMail">
+      <soap:operation soapAction="http://tempuri.org/SendEnterpriseMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendCareerMail">
+      <soap:operation soapAction="http://tempuri.org/SendCareerMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MailSenderSoap12" type="tns:MailSenderSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendMail">
+      <soap12:operation soapAction="http://tempuri.org/SendMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendAgencyMail">
+      <soap12:operation soapAction="http://tempuri.org/SendAgencyMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEnterpriseMail">
+      <soap12:operation soapAction="http://tempuri.org/SendEnterpriseMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendCareerMail">
+      <soap12:operation soapAction="http://tempuri.org/SendCareerMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MailSenderHttpGet" type="tns:MailSenderHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="SendMail">
+      <http:operation location="/SendMail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendAgencyMail">
+      <http:operation location="/SendAgencyMail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEnterpriseMail">
+      <http:operation location="/SendEnterpriseMail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendCareerMail">
+      <http:operation location="/SendCareerMail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MailSenderHttpPost" type="tns:MailSenderHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="SendMail">
+      <http:operation location="/SendMail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendAgencyMail">
+      <http:operation location="/SendAgencyMail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEnterpriseMail">
+      <http:operation location="/SendEnterpriseMail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendCareerMail">
+      <http:operation location="/SendCareerMail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MailSender">
+    <wsdl:port name="MailSenderSoap" binding="tns:MailSenderSoap">
+      <soap:address location="http://localhost:6361/Services/MailSender.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MailSenderSoap12" binding="tns:MailSenderSoap12">
+      <soap12:address location="http://localhost:6361/Services/MailSender.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MailSenderHttpGet" binding="tns:MailSenderHttpGet">
+      <http:address location="http://localhost:6361/Services/MailSender.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MailSenderHttpPost" binding="tns:MailSenderHttpPost">
+      <http:address location="http://localhost:6361/Services/MailSender.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

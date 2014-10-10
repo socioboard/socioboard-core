@@ -1,0 +1,263 @@
+﻿
+@using Domain.Socioboard.Domain;
+@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+
+    Socioboard.Helper.SBUtils.TwitterReportDetail objTwitterReportDetail = (Socioboard.Helper.SBUtils.TwitterReportDetail)Model;
+}       
+
+<script src="~/Themes/Socioboard/Contents/js/highcharts.js"></script>
+<script src="~/Themes/Socioboard/Contents/js/exporting.js"></script>
+
+<script type="text/javascript">
+    
+    $(document).ready(function () { loadChart(); 
+        piechart();   
+    });
+   function loadChart() {
+
+       debugger;
+         
+       var engage = $('#container').attr('engage');
+       engage = engage.split(",");
+       var influenc = $('#container').attr('influenc');
+       influenc = influenc.split(",");
+       var dt = $('#container').attr('dt');
+       dt = dt.split(",");         
+        $('#container').highcharts({
+            chart: {
+                type: 'area'
+            },
+            title: {
+                text: 'Area chart with negative values'
+            },
+            xAxis: {
+                categories: dt
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Engagement',
+              
+                data: engage
+            },  {
+                name: 'Influence',
+             
+                data: influenc
+            }]
+        });
+   }
+
+   function piechart() {
+
+       Highcharts.getOptions().plotOptions.pie.colors = (function () {
+           var colors = [],
+               base = Highcharts.getOptions().colors[0],
+               i;
+           for (i = 0; i < 10; i += 1) {
+               colors.push(Highcharts.Color(base).brighten((i - 3) / 7).get());
+           }
+           return colors;
+       }());
+
+        var Age1820= $('#container1').attr("Age1820");
+        var Age2124= $('#container1').attr("Age2124");
+        var Age2534 = $('#container1').attr("Age2534");
+        var Age3544 = $('#container1').attr("Age3544");
+        var Age4554 = $('#container1').attr("Age4554");
+        var Age5564 = $('#container1').attr("Age5564");
+       // alert(Age5564);
+
+       try {
+           $('#container1').highcharts({
+               chart: {
+                   plotBackgroundColor: null,
+                   plotBorderWidth: null,
+                   plotShadow: false
+               },
+               title: {
+                   text: 'Browser market shares at a specific website, 2014'
+               },
+               tooltip: {
+                   pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+               },
+               plotOptions: {
+                   pie: {
+                       allowPointSelect: true,
+                       cursor: 'pointer',
+                       dataLabels: {
+                           enabled: true,
+                           format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                           style: {
+                               color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                           }
+                       }
+                   }
+               },
+               series: [{
+                   type: 'pie',
+                   name: 'Browser share',
+                   data: [
+                       ['18-20', Number(Age1820)],
+                       ['21-24', Number(Age2124)],
+                       {
+                           name: '25-34',
+                           y: Number(Age2534),
+                           sliced: true,
+                           selected: true
+                       },
+                       ['35-44', Number(Age3544)],
+                       ['45-54', Number(Age4554)],
+                       ['55-64', Number(Age5564)]
+                   ]
+               }]
+           });
+       } catch (e) {
+           alert(e);
+       }
+   }
+    </script>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Twitter Reports</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-users fa-fw"></i>
+                            <strong>TWITTER ACCOUNT REPORT</strong> from @DateTime.Now.Date - @DateTime.Now.Date.AddDays(-objTwitterReportDetail.lstTwitterStats[0].days)
+                            <div class="btn-group pull-right">
+                                <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle" type="button">
+                                    <i class="fa fa-chevron-down"></i>
+                                </button>
+                                <ul class="dropdown-menu slidedown">
+                                    <li>
+                                        <a onclick="twitterdetails(@objTwitterReportDetail.lstTwitterStats[0].TwitterId,15)" href="#">
+                                            <i class="fa fa-refresh fa-fw"></i> 15
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a onclick="twitterdetails(@objTwitterReportDetail.lstTwitterStats[0].TwitterId,30)" href="#">
+                                            <i class="fa fa-refresh fa-fw"></i> 30
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a onclick="twitterdetails(@objTwitterReportDetail.lstTwitterStats[0].TwitterId,60)" href="#">
+                                            <i class="fa fa-refresh fa-fw"></i> 60
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a onclick="twitterdetails(@objTwitterReportDetail.lstTwitterStats[0].TwitterId,90)" href="#">
+                                            <i class="fa fa-refresh fa-fw"></i> 90
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="col-md-6">
+                                <ul class="list-group">
+                                  <li class="list-group-item">
+                                   <img class="TweetsprofilePic" src="@objTwitterReportDetail.lstTwitterStats[0].TwtProfImgUrl"> @objTwitterReportDetail.lstTwitterStats[0].TwtUserName
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge">@objTwitterReportDetail.lstTwitterStats[0].FollowerCount</span>
+                                    New Follower
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge">@objTwitterReportDetail.lstTwitterStats[0].FollowingCount</span>
+                                    You Followed
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge">@objTwitterReportDetail.lstTwitterStats[0].TwtMention</span>
+                                    Mentions
+                                  </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                            <ul class="list-group">
+                                  
+                                  <li class="list-group-item">
+                                    <span class="badge">@objTwitterReportDetail.lstTwitterStats[0].TwtMention</span>
+                                    Message Sent
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge">@objTwitterReportDetail.lstTwitterStats[0].TwtMention</span>
+                                    Message Received
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge"><a target="_blank" href="retweets.html"><i class="fa fa-link fa-fw"></i></a></span>
+                                    <span class="badge">@objTwitterReportDetail.lstTwitterStats[0].TwtRetweet</span>
+
+                                    Retweets
+                                  </li>
+                                   <li class="list-group-item">
+                                    <span class="badge">@objTwitterReportDetail.lstTwitterStats[0].DMRecievedCount</span>
+                                    Direct Message (Received)
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge">@objTwitterReportDetail.lstTwitterStats[0].DMSentCount</span>
+                                    Direct Message (Send)
+                                  </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+               
+                <!-- /.col-lg-12 -->
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> <strong>KEY INDICATORS</strong> Measure how you’re conversing with your audience.</h3>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                        
+                             <div id="container" dt="@objTwitterReportDetail.lstTwitterStats[0].EntryDate" influenc="@objTwitterReportDetail.lstTwitterStats[0].Influence"  engage="@objTwitterReportDetail.lstTwitterStats[0].Engagement" style="min-width: 210px; height: 300px; margin: 0 auto"></div>
+                             </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+                <!-- /.col-lg-12 -->
+                <div class="col-lg-12">
+                   
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-twitter-square fa-fw"></i>  <strong>FOLLOWER DEMOGRAPHICS</strong> Learn more about your audience to shape your messaging &amp; campaigns.</h3>
+                            </div>
+                            <div class="panel-body">
+                                                                
+                             @*    <div id="morris-donut-chart"><svg height="352" version="1.1" width="1016" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; top: -0.799988px;"><desc>Created with RaphaÃ«l 2.1.2</desc><defs/><path style="opacity: 0;" fill="none" stroke="#0b62a4" d="M508,290.8333333333333A112.33333333333333,112.33333333333333,0,0,0,614.0483986027914,215.54746862555191" stroke-width="2" opacity="0"/><path style="" fill="#0b62a4" stroke="#ffffff" d="M508,293.8333333333333A115.33333333333333,115.33333333333333,0,0,0,616.8805516812042,216.53686689745092L662.352342773499,232.4222058184962A163.5,163.5,0,0,1,508,342Z" stroke-width="3"/><path style="opacity: 1;" fill="none" stroke="#3980b5" d="M614.0483986027914,215.54746862555191A112.33333333333333,112.33333333333333,0,0,0,407.22832001158343,128.8628537273753" stroke-width="2" opacity="1"/><path style="" fill="#3980b5" stroke="#ffffff" d="M616.8805516812042,216.53686689745092A115.33333333333333,115.33333333333333,0,0,0,404.5370882018038,127.53723261030224L356.8424800173751,104.04428059106294A168.5,168.5,0,0,1,667.0725979041871,234.07120293832787Z" stroke-width="3"/><path style="opacity: 0;" fill="none" stroke="#679dc6" d="M407.22832001158343,128.8628537273753A112.33333333333333,112.33333333333333,0,0,0,507.9647094431052,290.8333277899056" stroke-width="2" opacity="0"/><path style="" fill="#679dc6" stroke="#ffffff" d="M404.5370882018038,127.53723261030224A115.33333333333333,115.33333333333333,0,0,0,507.9637669653246,293.8333276418615L507.94863496095877,341.9999919315985A163.5,163.5,0,0,1,361.3278663670079,106.25364911951806Z" stroke-width="3"/><text style="text-anchor: middle; font: 800 15px &quot;Arial&quot;;" x="508" y="168.5" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" font-size="15px" font-weight="800" transform="matrix(1.9631,0,0,1.9631,-489.7398,-170.9515)" stroke-width="0.5093966369930762"><tspan dy="5">In-Store Sales</tspan></text><text style="text-anchor: middle; font: 14px &quot;Arial&quot;;" x="508" y="188.5" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" font-size="14px" transform="matrix(2.3403,0,0,2.3403,-681.5313,-241.9201)" stroke-width="0.427299703264095"><tspan dy="5">30</tspan></text></svg></div>
+                                                *@        
+                               
+                                
+                                <div id="container1" Age1820="@objTwitterReportDetail.lstTwitterStats[0].Age1820"
+                                    Age2124="@objTwitterReportDetail.lstTwitterStats[0].Age2124"
+                                    Age2534="@objTwitterReportDetail.lstTwitterStats[0].Age2534"
+                                    Age3544="@objTwitterReportDetail.lstTwitterStats[0].Age3544"
+                                    Age4554="@objTwitterReportDetail.lstTwitterStats[0].Age4554"
+                                    Age5564="@objTwitterReportDetail.lstTwitterStats[0].Age5564"
+                                    Age65="@objTwitterReportDetail.lstTwitterStats[0].Age65"                                                                                                                                             
+                                    
+                                      style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                                
+                                   </div>
+                        </div>
+               </div>
+            </div>
+            <!-- /.row -->
+      
+
+  

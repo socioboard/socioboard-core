@@ -1,0 +1,94 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    bool check = true;
+    string hrefPost = string.Empty;
+}
+<ul class="chat">
+    @foreach (var item in (Dictionary<object, List<ScheduledMessage>>)Model)
+    {
+        if (item.Value.Count > 0)
+        {
+
+            if (item.Value[0].ProfileType == "facebook")
+            {
+                FacebookAccount objFacebookAccount = (FacebookAccount)item.Key;
+                foreach (ScheduledMessage scheduledmsg in item.Value)
+                {
+        <li class="left clearfix">
+            <span class="chat-img pull-left">
+                <img src="https://graph.facebook.com/@objFacebookAccount.FbUserId/picture?type=small" class="img-circle profilePic" alt="User Avatar">
+            </span>
+            <div class="chat-body clearfix">
+                <div>
+                    <strong class="primary-font">@objFacebookAccount.FbUserName</strong>
+                    <small class="pull-right text-muted">
+                        <i class="fa fa-clock-o fa-fw"></i>@scheduledmsg.ScheduleTime
+                                            </small>
+                </div>
+               
+
+                <p>
+                   @scheduledmsg.ShareMessage
+                                
+                </p>
+            </div>
+        </li>
+                }
+            }
+            else if (item.Value[0].ProfileType == "twitter")
+            {
+                TwitterAccount objTwitterAccount = (TwitterAccount)item.Key;
+                foreach (ScheduledMessage scheduledmsg in item.Value)
+                {
+        <li class="left clearfix">
+            <span class="chat-img pull-left">
+                <img src="@objTwitterAccount.ProfileImageUrl" class="img-circle profilePic" alt="User Avatar">
+            </span>
+            <div class="chat-body clearfix">
+                <div>
+                    <strong class="primary-font">@objTwitterAccount.TwitterScreenName</strong>
+                    <small class="pull-right text-muted">
+                        <i class="fa fa-clock-o fa-fw"></i>@scheduledmsg.ScheduleTime
+                                            </small>
+                </div>
+               
+
+                <p>
+                   @scheduledmsg.ShareMessage
+                                
+                </p>
+            </div>
+        </li>
+                }
+            }
+            else if (item.Value[0].ProfileType == "linkedin")
+            {
+                LinkedInAccount objLinkedInAccount = (LinkedInAccount)item.Key;
+                foreach (ScheduledMessage scheduledmsg in item.Value)
+                {
+        <li class="left clearfix">
+            <span class="chat-img pull-left">
+                <img src="@objLinkedInAccount.ProfileImageUrl" class="img-circle profilePic" alt="User Avatar">
+            </span>
+            <div class="chat-body clearfix">
+                <div>
+                    <strong class="primary-font">@objLinkedInAccount.LinkedinUserName</strong>
+                    <small class="pull-right text-muted">
+                        <i class="fa fa-clock-o fa-fw"></i>@scheduledmsg.ScheduleTime
+                                            </small>
+                </div>
+               
+
+                <p>
+                   @scheduledmsg.ShareMessage
+                                
+                </p>
+            </div>
+        </li>
+                }
+            }
+
+        }
+    }
+</ul>

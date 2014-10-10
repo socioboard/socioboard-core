@@ -1,0 +1,157 @@
+﻿@using System.Data;
+@using Socioboard.Helper;
+@{
+    //Socioboard.Controllers.MessagesController obj = new Socioboard.Controllers.MessagesController();
+
+    //DataTable objj = new DataTable();
+    //objj=obj.bindMessages().Tables[0];
+
+    DataTable dt = (DataTable)Model;
+    //DataTable dt = objj;
+    string message = string.Empty;
+    
+    try
+    {
+        if (Session["CountMessages"] != null)
+        {
+            string count = Convert.ToString((int)Session["CountMessages"]);
+            if (count == "0")
+            {
+                //message = "No Message found";
+
+            }
+
+        }
+    }
+    catch (Exception ex)
+    {
+
+    }
+
+    //string message = string.Empty;
+    DataView dv = dt.DefaultView;
+    dv.Sort = "ReadStatus ,MessageDate desc";
+    DataTable sortedDT = dv.ToTable();
+    int sorteddatacount = 0;
+}
+
+<div id="contentcontainer2">
+    <div id="contentcontainer1-message">
+        <div id="inbox_msgs">
+
+            @if (sortedDT.Rows.Count > 0)
+            {
+                Domain.Socioboard.Domain.User user = (Domain.Socioboard.Domain.User)Session["LoggedUser"];
+            }
+            @{ UrlExtractor urlextarct = new UrlExtractor();}
+
+            <ul id="message-list">
+                @{foreach (DataRow row in sortedDT.Rows)
+                  {
+                      //Html.Raw("<li>");
+                      try
+                      {
+                          string icon = "";
+                          string onClick = "";
+                          string network = "";
+                          if (row["Network"].ToString() == "twitter")
+                          {
+                              icon = "twticon.png";
+                              onClick = "detailsdiscoverytwitter";
+                              network = "twitter";
+                          }
+                          else if (row["Network"].ToString() == "facebook")
+                          {
+                              icon = "fb_icon.png";
+                              onClick = "getFacebookProfiles";
+                              network = "facebook";
+                          }
+
+                          if (row["ReadStatus"].ToString() == "0")
+                          {
+                              Html.Raw("<li class=\"unread\">");
+                          }
+                          else
+                          {
+                              Html.Raw("<li>");
+                          }
+           
+                    <div class="userpictiny" id="messagetaskable_"@sorteddatacount"" >
+                        <div style="width: 60px; height: 60px; float: left">
+                            <img width="48" height="48" title="@row["FromName"]" alt="@row["FromId"]" src="@row["FromProfileUrl"]" onclick="@onClick"(this.alt);"" id="formprofileurl_"@sorteddatacount""><a title="" class="userurlpic" href="#"><img width="16" height="16" alt="" src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/"@icon".png"></a>
+                        </div>
+                        <span id="network_"@sorteddatacount"" style="display:none;">@network</span>
+                    </div>
+                    <div class="message-list-content" id="messagedescription_"@sorteddatacount"">
+                        <div style="width: 500px; height: auto; float: left" id="msgdescription_0"@sorteddatacount"">
+
+                            <p>
+                                @{string[] str = urlextarct.splitUrlFromString(row["Message"].ToString());}
+                                @foreach (string substritem in str)
+                                {
+                                    if (!string.IsNullOrEmpty(substritem))
+                                    {
+                                        if (substritem.Contains("http"))
+                                        {
+                                            Html.Raw("<a target=\"_blank\" href=\"" + substritem + "\">" + substritem + "</a>");
+                                        }
+                                        else
+                                        {
+                                    @substritem;
+                                        }
+                                    }
+                                }
+
+                            </p>
+                            <div class="message-list-info">
+                                <span><a onclick=""@onClick"("'@row["FromId"]'");"" id="rowname_"@sorteddatacount"" href="#">@row["FromName"]</a><div id="createdtime_"@sorteddatacount"">@row["MessageDate"].ToString()</div>
+                                </span>
+                                <div class="scl">
+                                    <a onclick="createtask(this.id);" href="#" id="createtasktwt_"@sorteddatacount"">
+                                        <img width="14" height="17" border="none" alt="" src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/pin.png" title="Task"></a><a onclick="replyfunction(@sorteddatacount,'@network','@row["MessageId"].ToString()','@row["FromId"].ToString()');" href="#" id="replyfunction_0"><img width="12" height="12" border="none" alt="" src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/admin/goto.png" title="Comment"></a><a onclick="savearchivemsg(@sorteddatacount,'@network','@row["MessageId"].ToString()','@row["ProfileId"].ToString()');" href="#" id="savearchive_"@sorteddatacount""><img width="14" height="17" border="none" alt="" src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/archive.png" title="Archive"></a>
+                                </div>
+                            </div>
+                        </div>
+                    @*</div>*@
+                             
+                      }
+                      catch (Exception)
+                      {
+
+                          throw;
+                      }
+
+                      sorteddatacount++;
+                      //Html.Raw("</li>");
+                  }
+
+                 
+                }
+
+
+            </ul>
+        </div>
+
+    </div>
+    <div class="home_loader">
+
+        <section class="main">
+            <!-- the component -->
+            <div class="demo-4">
+                <div inner="" style="width: 120px; height: 120px; display: none;" class="loaderwrapper">
+                    <span>L</span>
+                    <span>o</span>
+                    <span>a</span>
+                    <span>d</span>
+                    <span>i</span>
+                    <span>n</span>
+                    <span>g</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</div>
+
+
+

@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container" id="mainwrapper-message">
+    
+   @* @Html.Partial("_MessagesLeftSideBarPartial")
+
+    @Html.Partial("_MessagesMidPartial")
+   
+    @Html.Partial("_MessagesRightSideBarPartial")*@
+
+    <div id="contentcontainer2" class="partialContents" data-url="/Messages/accordianprofiles">
+        <img src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" />
+        Loading . . .
+     
+       
+    </div>
+
+   @* <div id="right-sidebar_home" class="partialContents" data-url="/Home/UserProfile">
+        <img src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" />
+        Loading . . .
+     
+
+       
+    </div>*@
+
+</div>
+
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        debugger;
+        //$.noConflict();
+        $("#home").removeClass('active');
+        $("#message").addClass('active');
+        $("#feeds").removeClass('active');
+        $("#discovery").removeClass('active');
+        $("#publishing").removeClass('active');
+
+        $("#aad").data();
+
+        if (document.URL.indexOf('q=sent') == -1) {
+            BindSmartInbox();
+
+        } else {
+            BindSent();
+        }
+
+
+        $(".partialContents").each(function (index, item) {
+            var url = $(item).data("url");
+            if (url && url.length > 0) {
+                $(item).load(url);
+            }
+        });
+
+        function BindSmartInbox() {
+            debugger;
+            BindMessages('abc');
+            BindProfilesInMessageTab();
+
+        }
+
+        function BindSent() {
+            BindInboxMessageonMessageTab();
+            BindProfilesInMessageTab();
+
+        }
+
+
+        function Updatemessages() {
+            debugger;
+
+
+
+        }
+
+        $("#messagetype").click(function () {
+            $('#profile').addClass('collapsed');
+        });
+
+        $("#profile").click(function () {
+            $('#messagetype').addClass('collapsed');
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+

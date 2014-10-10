@@ -1,0 +1,67 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+}
+
+
+<a href="#"><i class="fa fa-envelope fa-fw"></i>Reports<i class="fa arrow"></i></a>
+<ul class="nav nav-second-level">
+
+    <li>
+            <a onclick="loadgroupstat(7)" href="#">GroupReport <span class="fa arrow"></span></a></li>
+
+    @foreach (var item in (Dictionary<string, List<object>>)Model)
+    {
+        if (item.Key == "facebook")
+        {
+            List<object> lstFacebookAccount = (List<object>)item.Value;
+            string profileimage = string.Empty;
+            if (lstFacebookAccount.Count>0)
+            {
+        <li>
+            <a href="#">FacebookReport <span class="fa arrow"></span></a>
+            <ul class="nav nav-third-level">
+                @foreach (var facebook in lstFacebookAccount)
+                {
+                    FacebookAccount objFacebookAccount = (FacebookAccount)facebook;
+                    <li onclick="check();">
+                        <a href="#">@objFacebookAccount.FbUserName</a>
+                    </li> 
+                }
+            </ul>
+            <!-- /.nav-third-level -->
+        </li>
+    }
+        }
+        if (item.Key == "twitter")
+        {
+            List<object> lstTwitterAccount = (List<object>)item.Value;
+            string profileimage = string.Empty;
+            if (lstTwitterAccount.Count > 0)
+            {
+        <li>
+            <a href="#">TwitterReport <span class="fa arrow"></span></a>
+            <ul class="nav nav-third-level">
+                @foreach (var twitterAccount in lstTwitterAccount)
+                {
+                    TwitterAccount objTwitterAccount = (TwitterAccount)twitterAccount;
+                    <li onclick="twitterdetails('@objTwitterAccount.TwitterUserId',7);">
+                        <a href="#">@objTwitterAccount.TwitterScreenName</a>
+                    </li> 
+                }
+               
+            </ul>
+            <!-- /.nav-third-level -->
+        </li>
+    }
+        }                
+    }
+
+     <li>
+            <a onclick="TeamReportDetails(7);" href="#">TeamReport <span class="fa arrow"></span></a></li>
+
+
+
+
+</ul>
+

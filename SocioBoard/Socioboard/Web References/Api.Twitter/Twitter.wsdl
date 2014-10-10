@@ -1,0 +1,860 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="GetTwitterRedirectUrl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="consumerKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="consumerSecret" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CallBackUrl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTwitterRedirectUrlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTwitterRedirectUrlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddTwitterAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="client_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="client_secret" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="redirect_uri" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="requestToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="requestSecret" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="requestVerifier" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddTwitterAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddTwitterAccountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTwitterData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="twitterid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTwitterDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTwitterDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SheduleTwitterMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TwitterId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sscheduledmsgguid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SheduleTwitterMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SheduleTwitterMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserProile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OAuth" type="tns:oAuthTwitter" />
+            <s:element minOccurs="0" maxOccurs="1" name="TwitterScreenName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="oAuthTwitter">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:OAuthBase">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="CallBackUrl" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ConsumerKey" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ConsumerKeySecret" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="AccessToken" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="AccessTokenSecret" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="OAuthVerifer" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TwitterScreenName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ProfileImage" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TwitterUserId" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="OAuthBase" />
+      <s:element name="getUserProileResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getUserTweets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OAuth" type="tns:oAuthTwitter" />
+            <s:element minOccurs="0" maxOccurs="1" name="TwitterScreenName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TwitterUserId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserTweetsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getUserFeed">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OAuth" type="tns:oAuthTwitter" />
+            <s:element minOccurs="0" maxOccurs="1" name="TwitterScreenName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TwitterUserId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserFeedResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getTwitterStats">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="twitterAccount" type="tns:TwitterAccount" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TwitterAccount">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="TwitterUserId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TwitterScreenName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OAuthToken" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OAuthSecret" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="FollowersCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsActive" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="FollowingCount" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProfileUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProfileImageUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TwitterName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProfileType" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getTwitterStatsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="TwitterComposeMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="currentdatetime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="picurl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TwitterComposeMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TwitterComposeMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TwitterRecentFollower">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TwitterRecentFollowerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TwitterRecentFollowerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TwitterReplyUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="statusid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TwitterReplyUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TwitterReplyUpdateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetTwitterRedirectUrlSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTwitterRedirectUrl" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterRedirectUrlSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTwitterRedirectUrlResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddTwitterAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:AddTwitterAccount" />
+  </wsdl:message>
+  <wsdl:message name="AddTwitterAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:AddTwitterAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTwitterDataSoapIn">
+    <wsdl:part name="parameters" element="tns:getTwitterData" />
+  </wsdl:message>
+  <wsdl:message name="getTwitterDataSoapOut">
+    <wsdl:part name="parameters" element="tns:getTwitterDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="SheduleTwitterMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:SheduleTwitterMessage" />
+  </wsdl:message>
+  <wsdl:message name="SheduleTwitterMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:SheduleTwitterMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserProileSoapIn">
+    <wsdl:part name="parameters" element="tns:getUserProile" />
+  </wsdl:message>
+  <wsdl:message name="getUserProileSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserProileResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserTweetsSoapIn">
+    <wsdl:part name="parameters" element="tns:getUserTweets" />
+  </wsdl:message>
+  <wsdl:message name="getUserTweetsSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserTweetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserFeedSoapIn">
+    <wsdl:part name="parameters" element="tns:getUserFeed" />
+  </wsdl:message>
+  <wsdl:message name="getUserFeedSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserFeedResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTwitterStatsSoapIn">
+    <wsdl:part name="parameters" element="tns:getTwitterStats" />
+  </wsdl:message>
+  <wsdl:message name="getTwitterStatsSoapOut">
+    <wsdl:part name="parameters" element="tns:getTwitterStatsResponse" />
+  </wsdl:message>
+  <wsdl:message name="TwitterComposeMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:TwitterComposeMessage" />
+  </wsdl:message>
+  <wsdl:message name="TwitterComposeMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:TwitterComposeMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="TwitterRecentFollowerSoapIn">
+    <wsdl:part name="parameters" element="tns:TwitterRecentFollower" />
+  </wsdl:message>
+  <wsdl:message name="TwitterRecentFollowerSoapOut">
+    <wsdl:part name="parameters" element="tns:TwitterRecentFollowerResponse" />
+  </wsdl:message>
+  <wsdl:message name="TwitterReplyUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:TwitterReplyUpdate" />
+  </wsdl:message>
+  <wsdl:message name="TwitterReplyUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:TwitterReplyUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterRedirectUrlHttpGetIn">
+    <wsdl:part name="consumerKey" type="s:string" />
+    <wsdl:part name="consumerSecret" type="s:string" />
+    <wsdl:part name="CallBackUrl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterRedirectUrlHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddTwitterAccountHttpGetIn">
+    <wsdl:part name="client_id" type="s:string" />
+    <wsdl:part name="client_secret" type="s:string" />
+    <wsdl:part name="redirect_uri" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="requestToken" type="s:string" />
+    <wsdl:part name="requestSecret" type="s:string" />
+    <wsdl:part name="requestVerifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddTwitterAccountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getTwitterDataHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="twitterid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getTwitterDataHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SheduleTwitterMessageHttpGetIn">
+    <wsdl:part name="TwitterId" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="sscheduledmsgguid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SheduleTwitterMessageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterComposeMessageHttpGetIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="currentdatetime" type="s:string" />
+    <wsdl:part name="picurl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterComposeMessageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterRecentFollowerHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterRecentFollowerHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterReplyUpdateHttpGetIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="statusid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterReplyUpdateHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterRedirectUrlHttpPostIn">
+    <wsdl:part name="consumerKey" type="s:string" />
+    <wsdl:part name="consumerSecret" type="s:string" />
+    <wsdl:part name="CallBackUrl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterRedirectUrlHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddTwitterAccountHttpPostIn">
+    <wsdl:part name="client_id" type="s:string" />
+    <wsdl:part name="client_secret" type="s:string" />
+    <wsdl:part name="redirect_uri" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="requestToken" type="s:string" />
+    <wsdl:part name="requestSecret" type="s:string" />
+    <wsdl:part name="requestVerifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddTwitterAccountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getTwitterDataHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="twitterid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getTwitterDataHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SheduleTwitterMessageHttpPostIn">
+    <wsdl:part name="TwitterId" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="sscheduledmsgguid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SheduleTwitterMessageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterComposeMessageHttpPostIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="currentdatetime" type="s:string" />
+    <wsdl:part name="picurl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterComposeMessageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterRecentFollowerHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterRecentFollowerHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterReplyUpdateHttpPostIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="statusid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterReplyUpdateHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="TwitterSoap">
+    <wsdl:operation name="GetTwitterRedirectUrl">
+      <wsdl:input message="tns:GetTwitterRedirectUrlSoapIn" />
+      <wsdl:output message="tns:GetTwitterRedirectUrlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTwitterAccount">
+      <wsdl:input message="tns:AddTwitterAccountSoapIn" />
+      <wsdl:output message="tns:AddTwitterAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTwitterData">
+      <wsdl:input message="tns:getTwitterDataSoapIn" />
+      <wsdl:output message="tns:getTwitterDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SheduleTwitterMessage">
+      <wsdl:input message="tns:SheduleTwitterMessageSoapIn" />
+      <wsdl:output message="tns:SheduleTwitterMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserProile">
+      <wsdl:input message="tns:getUserProileSoapIn" />
+      <wsdl:output message="tns:getUserProileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserTweets">
+      <wsdl:input message="tns:getUserTweetsSoapIn" />
+      <wsdl:output message="tns:getUserTweetsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserFeed">
+      <wsdl:input message="tns:getUserFeedSoapIn" />
+      <wsdl:output message="tns:getUserFeedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTwitterStats">
+      <wsdl:input message="tns:getTwitterStatsSoapIn" />
+      <wsdl:output message="tns:getTwitterStatsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterComposeMessage">
+      <wsdl:input message="tns:TwitterComposeMessageSoapIn" />
+      <wsdl:output message="tns:TwitterComposeMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterRecentFollower">
+      <wsdl:input message="tns:TwitterRecentFollowerSoapIn" />
+      <wsdl:output message="tns:TwitterRecentFollowerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterReplyUpdate">
+      <wsdl:input message="tns:TwitterReplyUpdateSoapIn" />
+      <wsdl:output message="tns:TwitterReplyUpdateSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TwitterHttpGet">
+    <wsdl:operation name="GetTwitterRedirectUrl">
+      <wsdl:input message="tns:GetTwitterRedirectUrlHttpGetIn" />
+      <wsdl:output message="tns:GetTwitterRedirectUrlHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTwitterAccount">
+      <wsdl:input message="tns:AddTwitterAccountHttpGetIn" />
+      <wsdl:output message="tns:AddTwitterAccountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTwitterData">
+      <wsdl:input message="tns:getTwitterDataHttpGetIn" />
+      <wsdl:output message="tns:getTwitterDataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SheduleTwitterMessage">
+      <wsdl:input message="tns:SheduleTwitterMessageHttpGetIn" />
+      <wsdl:output message="tns:SheduleTwitterMessageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterComposeMessage">
+      <wsdl:input message="tns:TwitterComposeMessageHttpGetIn" />
+      <wsdl:output message="tns:TwitterComposeMessageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterRecentFollower">
+      <wsdl:input message="tns:TwitterRecentFollowerHttpGetIn" />
+      <wsdl:output message="tns:TwitterRecentFollowerHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterReplyUpdate">
+      <wsdl:input message="tns:TwitterReplyUpdateHttpGetIn" />
+      <wsdl:output message="tns:TwitterReplyUpdateHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TwitterHttpPost">
+    <wsdl:operation name="GetTwitterRedirectUrl">
+      <wsdl:input message="tns:GetTwitterRedirectUrlHttpPostIn" />
+      <wsdl:output message="tns:GetTwitterRedirectUrlHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTwitterAccount">
+      <wsdl:input message="tns:AddTwitterAccountHttpPostIn" />
+      <wsdl:output message="tns:AddTwitterAccountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTwitterData">
+      <wsdl:input message="tns:getTwitterDataHttpPostIn" />
+      <wsdl:output message="tns:getTwitterDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SheduleTwitterMessage">
+      <wsdl:input message="tns:SheduleTwitterMessageHttpPostIn" />
+      <wsdl:output message="tns:SheduleTwitterMessageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterComposeMessage">
+      <wsdl:input message="tns:TwitterComposeMessageHttpPostIn" />
+      <wsdl:output message="tns:TwitterComposeMessageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterRecentFollower">
+      <wsdl:input message="tns:TwitterRecentFollowerHttpPostIn" />
+      <wsdl:output message="tns:TwitterRecentFollowerHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterReplyUpdate">
+      <wsdl:input message="tns:TwitterReplyUpdateHttpPostIn" />
+      <wsdl:output message="tns:TwitterReplyUpdateHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TwitterSoap" type="tns:TwitterSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTwitterRedirectUrl">
+      <soap:operation soapAction="http://tempuri.org/GetTwitterRedirectUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTwitterAccount">
+      <soap:operation soapAction="http://tempuri.org/AddTwitterAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTwitterData">
+      <soap:operation soapAction="http://tempuri.org/getTwitterData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SheduleTwitterMessage">
+      <soap:operation soapAction="http://tempuri.org/SheduleTwitterMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserProile">
+      <soap:operation soapAction="http://tempuri.org/getUserProile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserTweets">
+      <soap:operation soapAction="http://tempuri.org/getUserTweets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserFeed">
+      <soap:operation soapAction="http://tempuri.org/getUserFeed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTwitterStats">
+      <soap:operation soapAction="http://tempuri.org/getTwitterStats" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterComposeMessage">
+      <soap:operation soapAction="http://tempuri.org/TwitterComposeMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterRecentFollower">
+      <soap:operation soapAction="http://tempuri.org/TwitterRecentFollower" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterReplyUpdate">
+      <soap:operation soapAction="http://tempuri.org/TwitterReplyUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TwitterSoap12" type="tns:TwitterSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTwitterRedirectUrl">
+      <soap12:operation soapAction="http://tempuri.org/GetTwitterRedirectUrl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTwitterAccount">
+      <soap12:operation soapAction="http://tempuri.org/AddTwitterAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTwitterData">
+      <soap12:operation soapAction="http://tempuri.org/getTwitterData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SheduleTwitterMessage">
+      <soap12:operation soapAction="http://tempuri.org/SheduleTwitterMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserProile">
+      <soap12:operation soapAction="http://tempuri.org/getUserProile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserTweets">
+      <soap12:operation soapAction="http://tempuri.org/getUserTweets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserFeed">
+      <soap12:operation soapAction="http://tempuri.org/getUserFeed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTwitterStats">
+      <soap12:operation soapAction="http://tempuri.org/getTwitterStats" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterComposeMessage">
+      <soap12:operation soapAction="http://tempuri.org/TwitterComposeMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterRecentFollower">
+      <soap12:operation soapAction="http://tempuri.org/TwitterRecentFollower" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterReplyUpdate">
+      <soap12:operation soapAction="http://tempuri.org/TwitterReplyUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TwitterHttpGet" type="tns:TwitterHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetTwitterRedirectUrl">
+      <http:operation location="/GetTwitterRedirectUrl" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTwitterAccount">
+      <http:operation location="/AddTwitterAccount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTwitterData">
+      <http:operation location="/getTwitterData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SheduleTwitterMessage">
+      <http:operation location="/SheduleTwitterMessage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterComposeMessage">
+      <http:operation location="/TwitterComposeMessage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterRecentFollower">
+      <http:operation location="/TwitterRecentFollower" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterReplyUpdate">
+      <http:operation location="/TwitterReplyUpdate" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TwitterHttpPost" type="tns:TwitterHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetTwitterRedirectUrl">
+      <http:operation location="/GetTwitterRedirectUrl" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTwitterAccount">
+      <http:operation location="/AddTwitterAccount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTwitterData">
+      <http:operation location="/getTwitterData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SheduleTwitterMessage">
+      <http:operation location="/SheduleTwitterMessage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterComposeMessage">
+      <http:operation location="/TwitterComposeMessage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterRecentFollower">
+      <http:operation location="/TwitterRecentFollower" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterReplyUpdate">
+      <http:operation location="/TwitterReplyUpdate" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Twitter">
+    <wsdl:port name="TwitterSoap" binding="tns:TwitterSoap">
+      <soap:address location="http://localhost:6361/Services/Twitter.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TwitterSoap12" binding="tns:TwitterSoap12">
+      <soap12:address location="http://localhost:6361/Services/Twitter.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TwitterHttpGet" binding="tns:TwitterHttpGet">
+      <http:address location="http://localhost:6361/Services/Twitter.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TwitterHttpPost" binding="tns:TwitterHttpPost">
+      <http:address location="http://localhost:6361/Services/Twitter.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

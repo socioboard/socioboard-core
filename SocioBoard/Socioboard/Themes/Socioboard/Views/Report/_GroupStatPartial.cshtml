@@ -1,0 +1,364 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    string path = System.Configuration.ConfigurationManager.AppSettings["domain"];
+    bool check = true;
+      int i=0;
+    GroupStatDetails _GroupStatDetails = (GroupStatDetails)Model;
+}
+
+
+<script src="~/Themes/Socioboard/Contents/js/highcharts.js"></script>
+<script src="~/Themes/Socioboard/Contents/js/exporting.js"></script>
+<script type="text/javascript">
+    
+
+    function getddatesort(dt) {
+        
+        var arrmsg1 = dt.getMonth();
+        var arrmsg = dt.getDate();
+      
+        var month = new Array();
+        month[1] = "Jan";
+        month[2] = "Feb";
+        month[3] = "Mar";
+        month[4] = "Apr";
+        month[5] = "May";
+        month[6] = "June";
+        month[7] = "July";
+        month[8] = "Aug";
+        month[9] = "Sept";
+        month[10] = "Oct";
+        month[11] = "Nov";
+        month[12] = "Dec";
+        // var n = month[parseInt(arrmsg1[1])];
+        arrmsg += " "+ month[arrmsg1];
+        //alert(arrmsg);
+        return arrmsg;
+    }
+   
+    $(document).ready(function ()
+    {
+        loadMentionChart();
+        loadTweetChart();
+    });
+   
+    function loadMentionChart() {
+
+        var data = $('#container1').attr('usermention');
+        data = data.split("^");
+
+        var tweet = data[0];
+        var tweet1 = tweet.split(',');
+        debugger;
+        var tweet2 = [];
+        for (var i = 0; i < tweet1.length; i++) {
+            tweet2.push(parseInt(tweet1[i]));
+        }
+        var date = data[1];
+        var date1 = date.split(',');
+        var date2 = [];
+        for (var i = 0; i < date1.length; i++) {
+            var dtt = new Date(date1[i]);
+            date2.push(getddatesort(dtt));
+        }
+
+
+        $('#container1').highcharts({
+            title: {
+                text: 'Mention',
+                x: -20 //center
+            },
+            //subtitle: {
+            //    text: 'Source: WorldClimate.com',
+            //    x: -20
+            //},
+            xAxis: {
+                categories: date2
+            },
+            yAxis: {
+                title: {
+                    text: 'Temperature (°C)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: ''
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: 'Mention',
+                data: tweet2
+            }]
+        });
+    }
+
+    function loadTweetChart() {
+
+        var data = $('#container').attr('usertweets');
+        data = data.split("^");
+
+        var tweet = data[0];
+        var tweet1 = tweet.split(',');
+        debugger;
+        var tweet2=[];
+        for (var i = 0; i < tweet1.length; i++) {
+            tweet2.push(parseInt(tweet1[i]));
+        }
+        var date = data[1];
+        var date1 = date.split(',');
+        var date2 = [];
+        for (var i = 0; i < date1.length; i++) {
+            var dtt = new Date(date1[i]);
+            date2.push(getddatesort(dtt));
+        }
+
+
+        $('#container').highcharts({
+            title: {
+                text: 'User Tweets',
+                x: -20 //center
+            },
+            //subtitle: {
+            //    text: 'Source: WorldClimate.com',
+            //    x: -20
+            //},
+            xAxis: {
+                categories: date2                                        
+            },
+            yAxis: {
+                title: {
+                    text: 'Temperature (°C)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: ''
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: 'Tweets',
+                data: tweet2
+            }]
+        });
+    }
+    </script>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Groups Reports</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-users fa-fw"></i>
+                            <strong>GROUP STATS</strong> General stats across your Inter group
+                            <div class="btn-group pull-right">
+                                <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle" type="button">
+                                    <i class="fa fa-chevron-down"></i>
+                                </button>
+                                <ul class="dropdown-menu slidedown">
+                                    <li>
+                                        <a onclick="loadgroupstat(15)" href="#">
+                                            <i class="fa fa-refresh fa-fw"></i> 15
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a onclick="loadgroupstat(30)" href="#">
+                                            <i class="fa fa-refresh fa-fw"></i> 30
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a onclick="loadgroupstat(60)" href="#">
+                                            <i class="fa fa-refresh fa-fw"></i> 60
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a onclick="loadgroupstat(90)" href="#">
+                                            <i class="fa fa-refresh fa-fw"></i> 90
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="col-md-6">
+                                <ul class="list-group">
+                                  <li class="list-group-item">
+                                    <span class="badge">@_GroupStatDetails.IncommingMessage</span>
+                                    Incoming Messages
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge">@_GroupStatDetails.SentMessage</span>
+                                    Sent Message
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge">@_GroupStatDetails.TwitterFollower</span>
+                                    New Twitter Followers
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge">@_GroupStatDetails.FacebookFan</span>
+                                    New Facebook Fans
+
+                                  </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                            <ul class="list-group">
+                                  <li class="list-group-item">
+                                      i= @(_GroupStatDetails.Retweet+_GroupStatDetails.Mention)
+                                    <span class="badge">@i</span>
+                                    INTERACTIONS
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge">14</span>
+                                    PROFILES BY USERS
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge">1</span>
+                                    IMPRESSIONS
+                                  </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+               
+                <!-- /.col-lg-12 -->
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> <strong>ENGAGEMENT REPORT</strong> These metrics are based on replies sent from profiles within the '' group</h3>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" >
+                           <div >
+                       <div id="container" usertweets="@_GroupStatDetails.UserTweetGraph" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                       
+                           <div >
+                             <div usermention="@_GroupStatDetails.MentionGraph" id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                               </div>
+
+                        </div>
+
+                   
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+                <!-- /.col-lg-12 -->
+                <div class="col-lg-12">
+                   
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-twitter-square fa-fw"></i>  <strong>TWITTER STATS</strong> Stats for 2 Twitter accounts in the Inter group</h3>
+                            </div>
+                            <div class="panel-body">
+                                <!--collapes-->
+                                <div id="accordion" class="panel-group">
+                                  <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                      <h4 class="panel-title">
+                                        <a href="#collapseOne" data-parent="#accordion" data-toggle="collapse">
+                                         <i class="fa fa-male fa-fw"></i> Plain Text
+                                        </a>
+                                      </h4>
+                                    </div>
+                                    <div class="panel-collapse collapse in" id="collapseOne">
+                                      <div class="panel-body">
+                                       @_GroupStatDetails.PlainText
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                      <h4 class="panel-title">
+                                        <a href="#collapseTwo" data-parent="#accordion" data-toggle="collapse">
+                                          <i class="fa fa-female fa-fw"></i> Photo Link
+                                        </a>
+                                      </h4>
+                                    </div>
+                                    <div class="panel-collapse collapse" id="collapseTwo">
+                                      <div class="panel-body">
+                                       @_GroupStatDetails.PhotoLink
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                      <h4 class="panel-title">
+                                        <a href="#collapseThree" data-parent="#accordion" data-toggle="collapse">
+                                          <i class="fa fa-twitter fa-fw"></i>Twitter Stats
+                                        </a>
+                                      </h4>
+                                    </div>
+                                    <div class="panel-collapse collapse" id="collapseThree">
+                                      <div class="panel-body">
+                                        <strong>@_GroupStatDetails.TwitterFollower</strong> New followers in this time period.
+                                      </div>
+                                    </div>
+                                  </div>
+                            
+                                  <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                      <h4 class="panel-title">
+                                        <a href="#collapseFive" data-parent="#accordion" data-toggle="collapse">
+                                          <i class="fa fa-eye fa-fw"></i>Mentioned
+                                        </a>
+                                      </h4>
+                                    </div>
+                                    <div class="panel-collapse collapse" id="collapseFive">
+                                      <div class="panel-body">
+                                       @_GroupStatDetails.Mention
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                      <h4 class="panel-title">
+                                        <a href="#collapseSix" data-parent="#accordion" data-toggle="collapse">
+                                          <i class="fa fa-exchange fa-fw"></i>Retweets
+                                        </a>
+                                      </h4>
+                                    </div>
+                                    <div class="panel-collapse collapse" id="collapseSix">
+                                      <div class="panel-body">
+                                         @_GroupStatDetails.Retweet
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!--collapsible-->
+                            </div>
+                        </div>
+               </div>
+                
+            </div>
+            <!-- /.row -->
+      

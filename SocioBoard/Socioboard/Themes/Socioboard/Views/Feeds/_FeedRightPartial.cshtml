@@ -1,0 +1,36 @@
+﻿<div style="width: 980px;" id="contentcontainer-feeds">
+    <div id="content">
+        <div class="row-fluid" id="instag">
+            <div class="span4 rounder shadower whitebg feedwrap " id="paneltab1">
+
+                @Html.Partial("_Panel1Partial")
+            </div>
+
+            <div class="span4 rounder shadower whitebg feedwrap" id="paneltab2">
+                @try
+                {
+                    @Html.Partial("_Panel2Partial")
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+
+            </div>
+            <div class="span4 rounder shadower whitebg feedwrap" id="paneltab3">
+                @try
+                {
+                     @Html.Partial("_Panel3Partial")
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+               
+
+            </div>
+
+        </div>
+    </div>
+</div>

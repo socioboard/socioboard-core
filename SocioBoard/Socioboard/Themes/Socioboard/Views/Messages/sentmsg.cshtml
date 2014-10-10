@@ -1,0 +1,20 @@
+﻿<div id="page-wrapper" style="min-height: 385px;">
+
+   
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#page-wrapper').load('../Messages/loadsentmsg');
+        $('#side-menu a').removeClass('active');
+        $("#message").addClass('active');
+        $("#message").children().addClass('active');
+    });
+
+    function hideTask(divId) {
+        alert(divId);
+        $('#' + divId).removeClass('in');
+    }
+
+</script>

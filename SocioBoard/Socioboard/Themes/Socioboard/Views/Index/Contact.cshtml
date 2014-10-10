@@ -1,0 +1,146 @@
+﻿<section class="map" id="contact">
+        <iframe width="100%" height="450" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1944.2822179286532!2d77.6154475!3d12.9356925!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae144e41105dbd%3A0x6188a5bb947bfdf4!2sL+V+.+Complex%2C+1st+Main+Rd%2C+Koramangala+7th+Block%2C+Koramangala+Layout%2C+Bengaluru%2C+Karnataka+560030!5e0!3m2!1sen!2sin!4v1407845791034"></iframe>
+
+    </section>
+
+<section class="services bg-primary" id="services">
+        <div class="container">
+                 
+            <div class="col-md-offset-3 col-md-6">
+                 <h2>Contact</h2>    
+                <form role="form">
+                    <div class="form-group input-group">
+                        <span class="input-group-addon">F</span>
+                        <input type="text" placeholder="First Name" class="form-control" id="name">
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-group-addon">L</span>
+                        <input type="text" placeholder="Last Name" class="form-control" id="lname">
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-group-addon">E</span>
+                        <input type="text" placeholder="Email id" class="form-control" id="email">
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-group-addon">S</span>
+                        <input type="text" placeholder="You Subject" class="form-control" id="Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Message" rows="3" class="form-control" id="profile"></textarea>
+                    </div>
+                    <button class="btn btn-warning" type="button" id="submit">Submit Button</button>
+                    <button class="btn btn-default" type="reset">Reset Button</button>
+                </form>   
+            </div>
+        </div>
+        <!-- /.container -->
+
+    </section>
+
+<script type="text/javascript">
+   
+     $(document).ready(function () {
+       
+         $('#submit').click(function () {
+          
+             var name = $('#name').val();
+             var lname = $('#lname').val();
+             var email = $('#email').val();
+             var Subject = $('#Subject').val();
+             var profile = $('#profile').val();
+          
+             if (name == "" || email == "" || profile == "") {
+                 alert('Please fill all the fields')
+                 return false;
+             }
+             {
+
+
+                 if (!validateFName(name)) {
+                     alert('Please enter valid First Name');
+                     return false;
+                 }
+                 else if (!validateLName(lname)) {
+                     alert('Please enter valid Last Name');
+                     return false;
+                 }
+              
+                 if (!validateEmail(email)) {
+                     alert('not valid email');
+                     return false;
+                 }
+
+                 else {
+                   
+                     $.ajax({
+                         url: "../Index/SendMail",
+                         type: "post",
+                         data: 'name=' + name + '&lname=' + lname + '&email=' + email + '&Subject=' + Subject + '&profile=' + profile,
+                         success: function (data) {
+                             if (data == "Success") {
+                                alertify.success('Mail has been sent successfully!');
+                                 $('#name').val('');
+                                 $('#lname').val('');
+                                 $('#email').val('');
+                                 $('#Subject').val('');
+                                 $('#profile').val('');
+                             }
+                             else {
+                                 alertify.error("failure");
+                                 return false;
+                             }
+                         },
+                         error: function () {
+                             alert("failure");
+                         
+                         }
+                     });
+
+                 }
+
+             }
+
+
+
+
+         });
+     });
+    function validateEmail($email) {
+        var emailReg = /^([\w-\.]+@@([\w-]+\.)+[\w-]{2,4})?$/;
+        if (!emailReg.test($email)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+
+    function validateFName($name) {
+        var fnameReg = /^[A-Z,a-z._]+$/;
+        if (!fnameReg.test($name)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    function validateLName($lname) {
+
+        var lnameReg = /^[A-Z,a-z._]+$/;
+        if (!lnameReg.test($lname)) {
+            return false;
+        } else {
+            return true;
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+</script>

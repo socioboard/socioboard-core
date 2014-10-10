@@ -1,0 +1,155 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    User objUser = (User)Session["User"];
+}
+<div class="container-fluid">
+    <h1 class="page-header">User And Group</h1>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <!-- Nav tabs -->
+
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div id="Users" class="tab-pane fade active in">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Groups
+                                                   
+                                    <div class="btn-group pull-right">
+                                        <button data-target="#addGroup" data-toggle="modal" class="btn btn-default btn-xs" type="button">
+                                            <i class="fa fa-plus fa-2x"></i>
+                                        </button>
+                                    </div>
+                            </div>
+                            <div class="panel-body">
+                                <p>Groups are used to categorize social profiles together to help manage and report on your social media efforts efficiently. Learn more about Groups</p>
+
+                                <ul class="nav nav-tabs partialContents" id="grouptabs" data-url="/UserGroup/LoadGroup">
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="partialContents" id="groupinfo" style="display: none">
+                                    <div id="home123" class="">
+                                        <div class="panel-body" id="profileconnectedwithgroup">
+                                        </div>
+
+                                        <div class="panel-body partialContents" id="userprofiles" data-url="/UserGroup/LoadGroupUserProfiles">
+                                        </div>
+
+                                        <div class="panel-body" id="pendinguserforcurrentgroup">
+                                           
+                                        </div>
+
+                                        <div class="panel-body" id="accepteduserforcurrentgroup">
+                                           
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- </div> -->
+                                <!-- /.panel-body -->
+                            </div>
+                            <!-- /.panel -->
+
+                        </div>
+                    </div>
+
+                    <!-- addgroup Modal -->
+                    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="addGroup" class="modal fade" style="display: none;">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                    <h4 id="myModalLabel" class="modal-title">Create a Group</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Groups help you organize your social profiles and team members. Name your group and you can begin connecting social profiles and adding team members to it.</p>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">Group Name</span>
+                                        <input id="txtgroupname" type="text" placeholder="Name" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                                    <button id="btnaddgroup" class="btn btn-primary" type="button">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end of addgroup modal-->
+
+
+
+                      <!-- Invite Team Member Modal -->
+                    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="inviteteammember" class="modal fade" style="display: none;">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                    <h4 id="myModalLabel" class="modal-title">Invite your Friend to <span id="usergroupname"></span></h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Groups help you organize your social profiles and team members. Name your group and you can begin connecting social profiles and adding team members to it. Twitter or Facebook required to create a group.</p>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">Email</span>
+                                        <input id="txtteamemail" type="text" placeholder="Name" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                                    <button onclick="addteam()" id="btnaddteam" class="btn btn-primary" type="button">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end of addgroup modal-->
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+
+    <!-- /.panel-body -->
+</div>
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        $(".partialContents").each(function (index, item) {
+            var url = $(item).data("url");
+            if (url && url.length > 0) {
+                $(item).load(url);
+            }
+        });
+
+        $('#btnaddgroup').click(function () {
+            var gname = $('#txtgroupname').val();
+            if (gname == "") {
+                alertify.error('Please Enter a group Name');
+                return;
+            }
+            if (gname == "Socioboard") {
+                alertify.error('Please change group Name');
+                return;
+            }
+            $.ajax({
+                type: 'POST',
+                url: '../UserGroup/AddGroup?groupname=' + gname,
+                success: function (msg) {
+                    $('#addGroup').modal('hide');
+                    window.location = self.location;
+                }
+            });
+        });
+
+    });
+</script>

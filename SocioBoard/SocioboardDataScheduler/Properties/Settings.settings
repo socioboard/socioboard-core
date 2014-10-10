@@ -1,0 +1,51 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SocioboardDataScheduler.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SocioboardDataScheduler_Api_ScheduledMessage_ScheduledMessage" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://api.socioboard.com/Services/ScheduledMessage.asmx</Value>
+    </Setting>
+    <Setting Name="SocioboardDataScheduler_Api_FacebookAccount_FacebookAccount" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://api.socioboard.com/Services/FacebookAccount.asmx</Value>
+    </Setting>
+    <Setting Name="SocioboardDataScheduler_Api_SocialProfile_SocialProfile" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://api.socioboard.com/Services/SocialProfile.asmx</Value>
+    </Setting>
+    <Setting Name="SocioboardDataScheduler_Api_TwitterAccount_TwitterAccount" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://api.socioboard.com/Services/TwitterAccount.asmx</Value>
+    </Setting>
+    <Setting Name="SocioboardDataScheduler_Api_Facebook_Facebook" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://api.socioboard.com/Services/Facebook.asmx</Value>
+    </Setting>
+    <Setting Name="SocioboardDataScheduler_Api_Youtube_Youtube" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://api.socioboard.com/Services/Youtube.asmx</Value>
+    </Setting>
+    <Setting Name="SocioboardDataScheduler_Api_LinkedinAccount_LinkedinAccount" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://api.socioboard.com/Services/LinkedinAccount.asmx</Value>
+    </Setting>
+    <Setting Name="SocioboardDataScheduler_Api_YoutubeAccount_YoutubeAccount" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://api.socioboard.com/Services/YoutubeAccount.asmx</Value>
+    </Setting>
+    <Setting Name="SocioboardDataScheduler_Api_Twitter_Twitter" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://api.socioboard.com/Services/Twitter.asmx</Value>
+    </Setting>
+    <Setting Name="SocioboardDataScheduler_Api_TumblrAccount_TumblrAccount" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://api.socioboard.com/Services/TumblrAccount.asmx</Value>
+    </Setting>
+    <Setting Name="SocioboardDataScheduler_Api_Tumblr_Tumblr" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://api.socioboard.com/Services/Tumblr.asmx</Value>
+    </Setting>
+    <Setting Name="SocioboardDataScheduler_Api_Instagram_Instagram" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://api.socioboard.com/Services/Instagram.asmx</Value>
+    </Setting>
+    <Setting Name="SocioboardDataScheduler_Api_InstagramAccount_InstagramAccount" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://api.socioboard.com/Services/InstagramAccount.asmx</Value>
+    </Setting>
+    <Setting Name="SocioboardDataScheduler_Api_NewsLetter_NewsLetter" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://api.socioboard.com/Services/NewsLetter.asmx</Value>
+    </Setting>
+    <Setting Name="SocioboardDataScheduler_Api_Linkedin_Linkedin" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://api.socioboard.com/Services/Linkedin.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

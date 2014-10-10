@@ -1,0 +1,34 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    User objUser = (User)Session["User"];
+}
+
+<h4>Accepted Team Members</h4>
+
+@foreach (var item in (List<Domain.Socioboard.Domain.Team>)Model)
+{
+    Socioboard.Api.User.User ApiobjUser = new Socioboard.Api.User.User();
+    User objUserInfo = (User)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjUser.getUserInfoByEmail(item.EmailId), typeof(User)));
+
+    if (objUserInfo != null)
+    {
+    <div class="col-sm-1 groupuserpictiny">
+        <a target="_blank" href="#">
+            <img src="@objUserInfo.ProfileUrl" class="img-responsive img-rounded" title="@item.EmailId"></a>
+
+    </div>
+    }
+    else
+    { 
+    <div class="col-sm-1 groupuserpictiny">
+        <a target="_blank" href="#">
+            <img src="/Themes/@path/Contents/img/user.png" class="img-responsive img-rounded" title="@item.EmailId"></a>
+
+    </div>
+    }
+
+}
+
+
+

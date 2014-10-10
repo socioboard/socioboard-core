@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetTwitterAccountDetailsById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTwitterAccountDetailsByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTwitterAccountDetailsByIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteTwitterAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteTwitterAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteTwitterAccountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllTwitterAccountsOfUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllTwitterAccountsOfUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllTwitterAccountsOfUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllTwitterAccountsByUserIdAndGroupId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllTwitterAccountsByUserIdAndGroupIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllTwitterAccountsByUserIdAndGroupIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllAccountDetailsByProfileId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllAccountDetailsByProfileIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllAccountDetailsByProfileIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserInformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TwtUserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getUserInformationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetTwitterAccountDetailsByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTwitterAccountDetailsById" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterAccountDetailsByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTwitterAccountDetailsByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTwitterAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteTwitterAccount" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTwitterAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteTwitterAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllTwitterAccountsOfUserSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllTwitterAccountsOfUser" />
+  </wsdl:message>
+  <wsdl:message name="getAllTwitterAccountsOfUserSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllTwitterAccountsOfUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTwitterAccountsByUserIdAndGroupIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllTwitterAccountsByUserIdAndGroupId" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTwitterAccountsByUserIdAndGroupIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllTwitterAccountsByUserIdAndGroupIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllAccountDetailsByProfileIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllAccountDetailsByProfileId" />
+  </wsdl:message>
+  <wsdl:message name="GetAllAccountDetailsByProfileIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllAccountDetailsByProfileIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserInformationSoapIn">
+    <wsdl:part name="parameters" element="tns:getUserInformation" />
+  </wsdl:message>
+  <wsdl:message name="getUserInformationSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterAccountDetailsByIdHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterAccountDetailsByIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTwitterAccountHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTwitterAccountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllTwitterAccountsOfUserHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllTwitterAccountsOfUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTwitterAccountsByUserIdAndGroupIdHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTwitterAccountsByUserIdAndGroupIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllAccountDetailsByProfileIdHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllAccountDetailsByProfileIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserInformationHttpGetIn">
+    <wsdl:part name="TwtUserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserInformationHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterAccountDetailsByIdHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterAccountDetailsByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTwitterAccountHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTwitterAccountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllTwitterAccountsOfUserHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllTwitterAccountsOfUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTwitterAccountsByUserIdAndGroupIdHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTwitterAccountsByUserIdAndGroupIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllAccountDetailsByProfileIdHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllAccountDetailsByProfileIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserInformationHttpPostIn">
+    <wsdl:part name="TwtUserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserInformationHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="TwitterAccountSoap">
+    <wsdl:operation name="GetTwitterAccountDetailsById">
+      <wsdl:input message="tns:GetTwitterAccountDetailsByIdSoapIn" />
+      <wsdl:output message="tns:GetTwitterAccountDetailsByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTwitterAccount">
+      <wsdl:input message="tns:DeleteTwitterAccountSoapIn" />
+      <wsdl:output message="tns:DeleteTwitterAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllTwitterAccountsOfUser">
+      <wsdl:input message="tns:getAllTwitterAccountsOfUserSoapIn" />
+      <wsdl:output message="tns:getAllTwitterAccountsOfUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterAccountsByUserIdAndGroupId">
+      <wsdl:input message="tns:GetAllTwitterAccountsByUserIdAndGroupIdSoapIn" />
+      <wsdl:output message="tns:GetAllTwitterAccountsByUserIdAndGroupIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAccountDetailsByProfileId">
+      <wsdl:input message="tns:GetAllAccountDetailsByProfileIdSoapIn" />
+      <wsdl:output message="tns:GetAllAccountDetailsByProfileIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserInformation">
+      <wsdl:input message="tns:getUserInformationSoapIn" />
+      <wsdl:output message="tns:getUserInformationSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TwitterAccountHttpGet">
+    <wsdl:operation name="GetTwitterAccountDetailsById">
+      <wsdl:input message="tns:GetTwitterAccountDetailsByIdHttpGetIn" />
+      <wsdl:output message="tns:GetTwitterAccountDetailsByIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTwitterAccount">
+      <wsdl:input message="tns:DeleteTwitterAccountHttpGetIn" />
+      <wsdl:output message="tns:DeleteTwitterAccountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllTwitterAccountsOfUser">
+      <wsdl:input message="tns:getAllTwitterAccountsOfUserHttpGetIn" />
+      <wsdl:output message="tns:getAllTwitterAccountsOfUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterAccountsByUserIdAndGroupId">
+      <wsdl:input message="tns:GetAllTwitterAccountsByUserIdAndGroupIdHttpGetIn" />
+      <wsdl:output message="tns:GetAllTwitterAccountsByUserIdAndGroupIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAccountDetailsByProfileId">
+      <wsdl:input message="tns:GetAllAccountDetailsByProfileIdHttpGetIn" />
+      <wsdl:output message="tns:GetAllAccountDetailsByProfileIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserInformation">
+      <wsdl:input message="tns:getUserInformationHttpGetIn" />
+      <wsdl:output message="tns:getUserInformationHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TwitterAccountHttpPost">
+    <wsdl:operation name="GetTwitterAccountDetailsById">
+      <wsdl:input message="tns:GetTwitterAccountDetailsByIdHttpPostIn" />
+      <wsdl:output message="tns:GetTwitterAccountDetailsByIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTwitterAccount">
+      <wsdl:input message="tns:DeleteTwitterAccountHttpPostIn" />
+      <wsdl:output message="tns:DeleteTwitterAccountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllTwitterAccountsOfUser">
+      <wsdl:input message="tns:getAllTwitterAccountsOfUserHttpPostIn" />
+      <wsdl:output message="tns:getAllTwitterAccountsOfUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterAccountsByUserIdAndGroupId">
+      <wsdl:input message="tns:GetAllTwitterAccountsByUserIdAndGroupIdHttpPostIn" />
+      <wsdl:output message="tns:GetAllTwitterAccountsByUserIdAndGroupIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAccountDetailsByProfileId">
+      <wsdl:input message="tns:GetAllAccountDetailsByProfileIdHttpPostIn" />
+      <wsdl:output message="tns:GetAllAccountDetailsByProfileIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserInformation">
+      <wsdl:input message="tns:getUserInformationHttpPostIn" />
+      <wsdl:output message="tns:getUserInformationHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TwitterAccountSoap" type="tns:TwitterAccountSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTwitterAccountDetailsById">
+      <soap:operation soapAction="http://tempuri.org/GetTwitterAccountDetailsById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTwitterAccount">
+      <soap:operation soapAction="http://tempuri.org/DeleteTwitterAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTwitterAccountsOfUser">
+      <soap:operation soapAction="http://tempuri.org/getAllTwitterAccountsOfUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterAccountsByUserIdAndGroupId">
+      <soap:operation soapAction="http://tempuri.org/GetAllTwitterAccountsByUserIdAndGroupId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAccountDetailsByProfileId">
+      <soap:operation soapAction="http://tempuri.org/GetAllAccountDetailsByProfileId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserInformation">
+      <soap:operation soapAction="http://tempuri.org/getUserInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TwitterAccountSoap12" type="tns:TwitterAccountSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTwitterAccountDetailsById">
+      <soap12:operation soapAction="http://tempuri.org/GetTwitterAccountDetailsById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTwitterAccount">
+      <soap12:operation soapAction="http://tempuri.org/DeleteTwitterAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTwitterAccountsOfUser">
+      <soap12:operation soapAction="http://tempuri.org/getAllTwitterAccountsOfUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterAccountsByUserIdAndGroupId">
+      <soap12:operation soapAction="http://tempuri.org/GetAllTwitterAccountsByUserIdAndGroupId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAccountDetailsByProfileId">
+      <soap12:operation soapAction="http://tempuri.org/GetAllAccountDetailsByProfileId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserInformation">
+      <soap12:operation soapAction="http://tempuri.org/getUserInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TwitterAccountHttpGet" type="tns:TwitterAccountHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetTwitterAccountDetailsById">
+      <http:operation location="/GetTwitterAccountDetailsById" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTwitterAccount">
+      <http:operation location="/DeleteTwitterAccount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTwitterAccountsOfUser">
+      <http:operation location="/getAllTwitterAccountsOfUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterAccountsByUserIdAndGroupId">
+      <http:operation location="/GetAllTwitterAccountsByUserIdAndGroupId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAccountDetailsByProfileId">
+      <http:operation location="/GetAllAccountDetailsByProfileId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserInformation">
+      <http:operation location="/getUserInformation" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TwitterAccountHttpPost" type="tns:TwitterAccountHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetTwitterAccountDetailsById">
+      <http:operation location="/GetTwitterAccountDetailsById" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTwitterAccount">
+      <http:operation location="/DeleteTwitterAccount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTwitterAccountsOfUser">
+      <http:operation location="/getAllTwitterAccountsOfUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterAccountsByUserIdAndGroupId">
+      <http:operation location="/GetAllTwitterAccountsByUserIdAndGroupId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAccountDetailsByProfileId">
+      <http:operation location="/GetAllAccountDetailsByProfileId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserInformation">
+      <http:operation location="/getUserInformation" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TwitterAccount">
+    <wsdl:port name="TwitterAccountSoap" binding="tns:TwitterAccountSoap">
+      <soap:address location="http://localhost:6361/Services/TwitterAccount.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TwitterAccountSoap12" binding="tns:TwitterAccountSoap12">
+      <soap12:address location="http://localhost:6361/Services/TwitterAccount.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TwitterAccountHttpGet" binding="tns:TwitterAccountHttpGet">
+      <http:address location="http://localhost:6361/Services/TwitterAccount.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TwitterAccountHttpPost" binding="tns:TwitterAccountHttpPost">
+      <http:address location="http://localhost:6361/Services/TwitterAccount.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

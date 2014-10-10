@@ -1,0 +1,1327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="GetLinkedinRedirectUrl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="consumerKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="consumerSecret" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLinkedinRedirectUrlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLinkedinRedirectUrlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddLinkedinAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oauth_token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oauth_verifier" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reuqestTokenSecret" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="consumerKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="consumerSecret" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddLinkedinAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddLinkedinAccountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLinkedUserUpdates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLinkedUserUpdatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLinkedUserUpdatesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLinkedUsergroupsDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLinkedUsergroupsDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLinkedUsergroupsDetailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLinkedGroupsDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLinkedGroupsDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLinkedGroupsDetailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLinkedGroupsDataDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="linkedinId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLinkedGroupsDataDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLinkedGroupsDataDetailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CommentOnLinkedInPost">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GpPostid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedinUserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CommentOnLinkedInPostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CommentOnLinkedInPostResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LikeOnLinkedinPost">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GpPostid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedinUserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="islike" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LikeOnLinkedinPostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LikeOnLinkedinPostResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FollowLinkedinPost">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GpPostid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedinUserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="isFollowing" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FollowLinkedinPostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FollowLinkedinPostResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostLinkedInGroupFeeds">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="gid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="linkedInUserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostLinkedInGroupFeedsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostLinkedInGroupFeedsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LinkedinComposeMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="currentdatetime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="picurl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LinkedinComposeMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedinComposeMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SheduleLinkedInMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedInId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sscheduledmsgguid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SheduleLinkedInMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SheduleLinkedInMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLinkedInData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedinId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLinkedInDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getLinkedInDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserProfile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OAuth" type="tns:oAuthLinkedIn" />
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedinUserId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="user" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="oAuthLinkedIn">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:oAuthBase2">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ConsumerKey" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ConsumerSecret" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TokenSecret" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="oAuthBase2">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Verifier" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUserProfileResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLinkedInUserProfile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="data" />
+            <s:element minOccurs="0" maxOccurs="1" name="_oauth" type="tns:oAuthLinkedIn" />
+            <s:element minOccurs="1" maxOccurs="1" name="user" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedinUserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLinkedInUserProfileResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLinkedInFeeds">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_oauth" type="tns:oAuthLinkedIn" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLinkedInFeedsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetLinkedinRedirectUrlSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLinkedinRedirectUrl" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinRedirectUrlSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLinkedinRedirectUrlResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddLinkedinAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:AddLinkedinAccount" />
+  </wsdl:message>
+  <wsdl:message name="AddLinkedinAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:AddLinkedinAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedUserUpdatesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLinkedUserUpdates" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedUserUpdatesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLinkedUserUpdatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedUsergroupsDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLinkedUsergroupsDetail" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedUsergroupsDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLinkedUsergroupsDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedGroupsDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLinkedGroupsDetail" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedGroupsDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLinkedGroupsDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedGroupsDataDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLinkedGroupsDataDetail" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedGroupsDataDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLinkedGroupsDataDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="CommentOnLinkedInPostSoapIn">
+    <wsdl:part name="parameters" element="tns:CommentOnLinkedInPost" />
+  </wsdl:message>
+  <wsdl:message name="CommentOnLinkedInPostSoapOut">
+    <wsdl:part name="parameters" element="tns:CommentOnLinkedInPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="LikeOnLinkedinPostSoapIn">
+    <wsdl:part name="parameters" element="tns:LikeOnLinkedinPost" />
+  </wsdl:message>
+  <wsdl:message name="LikeOnLinkedinPostSoapOut">
+    <wsdl:part name="parameters" element="tns:LikeOnLinkedinPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="FollowLinkedinPostSoapIn">
+    <wsdl:part name="parameters" element="tns:FollowLinkedinPost" />
+  </wsdl:message>
+  <wsdl:message name="FollowLinkedinPostSoapOut">
+    <wsdl:part name="parameters" element="tns:FollowLinkedinPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="PostLinkedInGroupFeedsSoapIn">
+    <wsdl:part name="parameters" element="tns:PostLinkedInGroupFeeds" />
+  </wsdl:message>
+  <wsdl:message name="PostLinkedInGroupFeedsSoapOut">
+    <wsdl:part name="parameters" element="tns:PostLinkedInGroupFeedsResponse" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinComposeMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:LinkedinComposeMessage" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinComposeMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:LinkedinComposeMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="SheduleLinkedInMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:SheduleLinkedInMessage" />
+  </wsdl:message>
+  <wsdl:message name="SheduleLinkedInMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:SheduleLinkedInMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="getLinkedInDataSoapIn">
+    <wsdl:part name="parameters" element="tns:getLinkedInData" />
+  </wsdl:message>
+  <wsdl:message name="getLinkedInDataSoapOut">
+    <wsdl:part name="parameters" element="tns:getLinkedInDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserProfileSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserProfile" />
+  </wsdl:message>
+  <wsdl:message name="GetUserProfileSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedInUserProfileSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLinkedInUserProfile" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedInUserProfileSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLinkedInUserProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedInFeedsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLinkedInFeeds" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedInFeedsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLinkedInFeedsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinRedirectUrlHttpGetIn">
+    <wsdl:part name="consumerKey" type="s:string" />
+    <wsdl:part name="consumerSecret" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinRedirectUrlHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddLinkedinAccountHttpGetIn">
+    <wsdl:part name="oauth_token" type="s:string" />
+    <wsdl:part name="oauth_verifier" type="s:string" />
+    <wsdl:part name="reuqestTokenSecret" type="s:string" />
+    <wsdl:part name="consumerKey" type="s:string" />
+    <wsdl:part name="consumerSecret" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddLinkedinAccountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedUserUpdatesHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedUserUpdatesHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedUsergroupsDetailHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedUsergroupsDetailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedGroupsDetailHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedGroupsDetailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedGroupsDataDetailHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="linkedinId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedGroupsDataDetailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CommentOnLinkedInPostHttpGetIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="GpPostid" type="s:string" />
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="LinkedinUserId" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CommentOnLinkedInPostHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="LikeOnLinkedinPostHttpGetIn">
+    <wsdl:part name="GpPostid" type="s:string" />
+    <wsdl:part name="LinkedinUserId" type="s:string" />
+    <wsdl:part name="islike" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LikeOnLinkedinPostHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="FollowLinkedinPostHttpGetIn">
+    <wsdl:part name="GpPostid" type="s:string" />
+    <wsdl:part name="LinkedinUserId" type="s:string" />
+    <wsdl:part name="isFollowing" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FollowLinkedinPostHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PostLinkedInGroupFeedsHttpGetIn">
+    <wsdl:part name="gid" type="s:string" />
+    <wsdl:part name="linkedInUserId" type="s:string" />
+    <wsdl:part name="msg" type="s:string" />
+    <wsdl:part name="title" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PostLinkedInGroupFeedsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinComposeMessageHttpGetIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="currentdatetime" type="s:string" />
+    <wsdl:part name="picurl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinComposeMessageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SheduleLinkedInMessageHttpGetIn">
+    <wsdl:part name="LinkedInId" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="sscheduledmsgguid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SheduleLinkedInMessageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getLinkedInDataHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="LinkedinId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getLinkedInDataHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinRedirectUrlHttpPostIn">
+    <wsdl:part name="consumerKey" type="s:string" />
+    <wsdl:part name="consumerSecret" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinRedirectUrlHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddLinkedinAccountHttpPostIn">
+    <wsdl:part name="oauth_token" type="s:string" />
+    <wsdl:part name="oauth_verifier" type="s:string" />
+    <wsdl:part name="reuqestTokenSecret" type="s:string" />
+    <wsdl:part name="consumerKey" type="s:string" />
+    <wsdl:part name="consumerSecret" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddLinkedinAccountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedUserUpdatesHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedUserUpdatesHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedUsergroupsDetailHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedUsergroupsDetailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedGroupsDetailHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedGroupsDetailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedGroupsDataDetailHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="linkedinId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedGroupsDataDetailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CommentOnLinkedInPostHttpPostIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="GpPostid" type="s:string" />
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="LinkedinUserId" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CommentOnLinkedInPostHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="LikeOnLinkedinPostHttpPostIn">
+    <wsdl:part name="GpPostid" type="s:string" />
+    <wsdl:part name="LinkedinUserId" type="s:string" />
+    <wsdl:part name="islike" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LikeOnLinkedinPostHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="FollowLinkedinPostHttpPostIn">
+    <wsdl:part name="GpPostid" type="s:string" />
+    <wsdl:part name="LinkedinUserId" type="s:string" />
+    <wsdl:part name="isFollowing" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FollowLinkedinPostHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PostLinkedInGroupFeedsHttpPostIn">
+    <wsdl:part name="gid" type="s:string" />
+    <wsdl:part name="linkedInUserId" type="s:string" />
+    <wsdl:part name="msg" type="s:string" />
+    <wsdl:part name="title" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PostLinkedInGroupFeedsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinComposeMessageHttpPostIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="currentdatetime" type="s:string" />
+    <wsdl:part name="picurl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinComposeMessageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SheduleLinkedInMessageHttpPostIn">
+    <wsdl:part name="LinkedInId" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="sscheduledmsgguid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SheduleLinkedInMessageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getLinkedInDataHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="LinkedinId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getLinkedInDataHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="LinkedinSoap">
+    <wsdl:operation name="GetLinkedinRedirectUrl">
+      <wsdl:input message="tns:GetLinkedinRedirectUrlSoapIn" />
+      <wsdl:output message="tns:GetLinkedinRedirectUrlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddLinkedinAccount">
+      <wsdl:input message="tns:AddLinkedinAccountSoapIn" />
+      <wsdl:output message="tns:AddLinkedinAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedUserUpdates">
+      <wsdl:input message="tns:GetLinkedUserUpdatesSoapIn" />
+      <wsdl:output message="tns:GetLinkedUserUpdatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedUsergroupsDetail">
+      <wsdl:input message="tns:GetLinkedUsergroupsDetailSoapIn" />
+      <wsdl:output message="tns:GetLinkedUsergroupsDetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedGroupsDetail">
+      <wsdl:input message="tns:GetLinkedGroupsDetailSoapIn" />
+      <wsdl:output message="tns:GetLinkedGroupsDetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedGroupsDataDetail">
+      <wsdl:input message="tns:GetLinkedGroupsDataDetailSoapIn" />
+      <wsdl:output message="tns:GetLinkedGroupsDataDetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CommentOnLinkedInPost">
+      <wsdl:input message="tns:CommentOnLinkedInPostSoapIn" />
+      <wsdl:output message="tns:CommentOnLinkedInPostSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LikeOnLinkedinPost">
+      <wsdl:input message="tns:LikeOnLinkedinPostSoapIn" />
+      <wsdl:output message="tns:LikeOnLinkedinPostSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FollowLinkedinPost">
+      <wsdl:input message="tns:FollowLinkedinPostSoapIn" />
+      <wsdl:output message="tns:FollowLinkedinPostSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostLinkedInGroupFeeds">
+      <wsdl:input message="tns:PostLinkedInGroupFeedsSoapIn" />
+      <wsdl:output message="tns:PostLinkedInGroupFeedsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinComposeMessage">
+      <wsdl:input message="tns:LinkedinComposeMessageSoapIn" />
+      <wsdl:output message="tns:LinkedinComposeMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SheduleLinkedInMessage">
+      <wsdl:input message="tns:SheduleLinkedInMessageSoapIn" />
+      <wsdl:output message="tns:SheduleLinkedInMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLinkedInData">
+      <wsdl:input message="tns:getLinkedInDataSoapIn" />
+      <wsdl:output message="tns:getLinkedInDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProfile">
+      <wsdl:input message="tns:GetUserProfileSoapIn" />
+      <wsdl:output message="tns:GetUserProfileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedInUserProfile">
+      <wsdl:input message="tns:GetLinkedInUserProfileSoapIn" />
+      <wsdl:output message="tns:GetLinkedInUserProfileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedInFeeds">
+      <wsdl:input message="tns:GetLinkedInFeedsSoapIn" />
+      <wsdl:output message="tns:GetLinkedInFeedsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="LinkedinHttpGet">
+    <wsdl:operation name="GetLinkedinRedirectUrl">
+      <wsdl:input message="tns:GetLinkedinRedirectUrlHttpGetIn" />
+      <wsdl:output message="tns:GetLinkedinRedirectUrlHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddLinkedinAccount">
+      <wsdl:input message="tns:AddLinkedinAccountHttpGetIn" />
+      <wsdl:output message="tns:AddLinkedinAccountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedUserUpdates">
+      <wsdl:input message="tns:GetLinkedUserUpdatesHttpGetIn" />
+      <wsdl:output message="tns:GetLinkedUserUpdatesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedUsergroupsDetail">
+      <wsdl:input message="tns:GetLinkedUsergroupsDetailHttpGetIn" />
+      <wsdl:output message="tns:GetLinkedUsergroupsDetailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedGroupsDetail">
+      <wsdl:input message="tns:GetLinkedGroupsDetailHttpGetIn" />
+      <wsdl:output message="tns:GetLinkedGroupsDetailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedGroupsDataDetail">
+      <wsdl:input message="tns:GetLinkedGroupsDataDetailHttpGetIn" />
+      <wsdl:output message="tns:GetLinkedGroupsDataDetailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CommentOnLinkedInPost">
+      <wsdl:input message="tns:CommentOnLinkedInPostHttpGetIn" />
+      <wsdl:output message="tns:CommentOnLinkedInPostHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LikeOnLinkedinPost">
+      <wsdl:input message="tns:LikeOnLinkedinPostHttpGetIn" />
+      <wsdl:output message="tns:LikeOnLinkedinPostHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FollowLinkedinPost">
+      <wsdl:input message="tns:FollowLinkedinPostHttpGetIn" />
+      <wsdl:output message="tns:FollowLinkedinPostHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostLinkedInGroupFeeds">
+      <wsdl:input message="tns:PostLinkedInGroupFeedsHttpGetIn" />
+      <wsdl:output message="tns:PostLinkedInGroupFeedsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinComposeMessage">
+      <wsdl:input message="tns:LinkedinComposeMessageHttpGetIn" />
+      <wsdl:output message="tns:LinkedinComposeMessageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SheduleLinkedInMessage">
+      <wsdl:input message="tns:SheduleLinkedInMessageHttpGetIn" />
+      <wsdl:output message="tns:SheduleLinkedInMessageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLinkedInData">
+      <wsdl:input message="tns:getLinkedInDataHttpGetIn" />
+      <wsdl:output message="tns:getLinkedInDataHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="LinkedinHttpPost">
+    <wsdl:operation name="GetLinkedinRedirectUrl">
+      <wsdl:input message="tns:GetLinkedinRedirectUrlHttpPostIn" />
+      <wsdl:output message="tns:GetLinkedinRedirectUrlHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddLinkedinAccount">
+      <wsdl:input message="tns:AddLinkedinAccountHttpPostIn" />
+      <wsdl:output message="tns:AddLinkedinAccountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedUserUpdates">
+      <wsdl:input message="tns:GetLinkedUserUpdatesHttpPostIn" />
+      <wsdl:output message="tns:GetLinkedUserUpdatesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedUsergroupsDetail">
+      <wsdl:input message="tns:GetLinkedUsergroupsDetailHttpPostIn" />
+      <wsdl:output message="tns:GetLinkedUsergroupsDetailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedGroupsDetail">
+      <wsdl:input message="tns:GetLinkedGroupsDetailHttpPostIn" />
+      <wsdl:output message="tns:GetLinkedGroupsDetailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedGroupsDataDetail">
+      <wsdl:input message="tns:GetLinkedGroupsDataDetailHttpPostIn" />
+      <wsdl:output message="tns:GetLinkedGroupsDataDetailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CommentOnLinkedInPost">
+      <wsdl:input message="tns:CommentOnLinkedInPostHttpPostIn" />
+      <wsdl:output message="tns:CommentOnLinkedInPostHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LikeOnLinkedinPost">
+      <wsdl:input message="tns:LikeOnLinkedinPostHttpPostIn" />
+      <wsdl:output message="tns:LikeOnLinkedinPostHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FollowLinkedinPost">
+      <wsdl:input message="tns:FollowLinkedinPostHttpPostIn" />
+      <wsdl:output message="tns:FollowLinkedinPostHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostLinkedInGroupFeeds">
+      <wsdl:input message="tns:PostLinkedInGroupFeedsHttpPostIn" />
+      <wsdl:output message="tns:PostLinkedInGroupFeedsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinComposeMessage">
+      <wsdl:input message="tns:LinkedinComposeMessageHttpPostIn" />
+      <wsdl:output message="tns:LinkedinComposeMessageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SheduleLinkedInMessage">
+      <wsdl:input message="tns:SheduleLinkedInMessageHttpPostIn" />
+      <wsdl:output message="tns:SheduleLinkedInMessageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLinkedInData">
+      <wsdl:input message="tns:getLinkedInDataHttpPostIn" />
+      <wsdl:output message="tns:getLinkedInDataHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LinkedinSoap" type="tns:LinkedinSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLinkedinRedirectUrl">
+      <soap:operation soapAction="http://tempuri.org/GetLinkedinRedirectUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLinkedinAccount">
+      <soap:operation soapAction="http://tempuri.org/AddLinkedinAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedUserUpdates">
+      <soap:operation soapAction="http://tempuri.org/GetLinkedUserUpdates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedUsergroupsDetail">
+      <soap:operation soapAction="http://tempuri.org/GetLinkedUsergroupsDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedGroupsDetail">
+      <soap:operation soapAction="http://tempuri.org/GetLinkedGroupsDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedGroupsDataDetail">
+      <soap:operation soapAction="http://tempuri.org/GetLinkedGroupsDataDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CommentOnLinkedInPost">
+      <soap:operation soapAction="http://tempuri.org/CommentOnLinkedInPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LikeOnLinkedinPost">
+      <soap:operation soapAction="http://tempuri.org/LikeOnLinkedinPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FollowLinkedinPost">
+      <soap:operation soapAction="http://tempuri.org/FollowLinkedinPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostLinkedInGroupFeeds">
+      <soap:operation soapAction="http://tempuri.org/PostLinkedInGroupFeeds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinComposeMessage">
+      <soap:operation soapAction="http://tempuri.org/LinkedinComposeMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SheduleLinkedInMessage">
+      <soap:operation soapAction="http://tempuri.org/SheduleLinkedInMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLinkedInData">
+      <soap:operation soapAction="http://tempuri.org/getLinkedInData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProfile">
+      <soap:operation soapAction="http://tempuri.org/GetUserProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedInUserProfile">
+      <soap:operation soapAction="http://tempuri.org/GetLinkedInUserProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedInFeeds">
+      <soap:operation soapAction="http://tempuri.org/GetLinkedInFeeds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LinkedinSoap12" type="tns:LinkedinSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLinkedinRedirectUrl">
+      <soap12:operation soapAction="http://tempuri.org/GetLinkedinRedirectUrl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLinkedinAccount">
+      <soap12:operation soapAction="http://tempuri.org/AddLinkedinAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedUserUpdates">
+      <soap12:operation soapAction="http://tempuri.org/GetLinkedUserUpdates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedUsergroupsDetail">
+      <soap12:operation soapAction="http://tempuri.org/GetLinkedUsergroupsDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedGroupsDetail">
+      <soap12:operation soapAction="http://tempuri.org/GetLinkedGroupsDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedGroupsDataDetail">
+      <soap12:operation soapAction="http://tempuri.org/GetLinkedGroupsDataDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CommentOnLinkedInPost">
+      <soap12:operation soapAction="http://tempuri.org/CommentOnLinkedInPost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LikeOnLinkedinPost">
+      <soap12:operation soapAction="http://tempuri.org/LikeOnLinkedinPost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FollowLinkedinPost">
+      <soap12:operation soapAction="http://tempuri.org/FollowLinkedinPost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostLinkedInGroupFeeds">
+      <soap12:operation soapAction="http://tempuri.org/PostLinkedInGroupFeeds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinComposeMessage">
+      <soap12:operation soapAction="http://tempuri.org/LinkedinComposeMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SheduleLinkedInMessage">
+      <soap12:operation soapAction="http://tempuri.org/SheduleLinkedInMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLinkedInData">
+      <soap12:operation soapAction="http://tempuri.org/getLinkedInData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProfile">
+      <soap12:operation soapAction="http://tempuri.org/GetUserProfile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedInUserProfile">
+      <soap12:operation soapAction="http://tempuri.org/GetLinkedInUserProfile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedInFeeds">
+      <soap12:operation soapAction="http://tempuri.org/GetLinkedInFeeds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LinkedinHttpGet" type="tns:LinkedinHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetLinkedinRedirectUrl">
+      <http:operation location="/GetLinkedinRedirectUrl" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLinkedinAccount">
+      <http:operation location="/AddLinkedinAccount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedUserUpdates">
+      <http:operation location="/GetLinkedUserUpdates" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedUsergroupsDetail">
+      <http:operation location="/GetLinkedUsergroupsDetail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedGroupsDetail">
+      <http:operation location="/GetLinkedGroupsDetail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedGroupsDataDetail">
+      <http:operation location="/GetLinkedGroupsDataDetail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CommentOnLinkedInPost">
+      <http:operation location="/CommentOnLinkedInPost" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LikeOnLinkedinPost">
+      <http:operation location="/LikeOnLinkedinPost" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FollowLinkedinPost">
+      <http:operation location="/FollowLinkedinPost" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostLinkedInGroupFeeds">
+      <http:operation location="/PostLinkedInGroupFeeds" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinComposeMessage">
+      <http:operation location="/LinkedinComposeMessage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SheduleLinkedInMessage">
+      <http:operation location="/SheduleLinkedInMessage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLinkedInData">
+      <http:operation location="/getLinkedInData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LinkedinHttpPost" type="tns:LinkedinHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetLinkedinRedirectUrl">
+      <http:operation location="/GetLinkedinRedirectUrl" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLinkedinAccount">
+      <http:operation location="/AddLinkedinAccount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedUserUpdates">
+      <http:operation location="/GetLinkedUserUpdates" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedUsergroupsDetail">
+      <http:operation location="/GetLinkedUsergroupsDetail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedGroupsDetail">
+      <http:operation location="/GetLinkedGroupsDetail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedGroupsDataDetail">
+      <http:operation location="/GetLinkedGroupsDataDetail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CommentOnLinkedInPost">
+      <http:operation location="/CommentOnLinkedInPost" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LikeOnLinkedinPost">
+      <http:operation location="/LikeOnLinkedinPost" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FollowLinkedinPost">
+      <http:operation location="/FollowLinkedinPost" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostLinkedInGroupFeeds">
+      <http:operation location="/PostLinkedInGroupFeeds" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinComposeMessage">
+      <http:operation location="/LinkedinComposeMessage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SheduleLinkedInMessage">
+      <http:operation location="/SheduleLinkedInMessage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLinkedInData">
+      <http:operation location="/getLinkedInData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Linkedin">
+    <wsdl:port name="LinkedinSoap" binding="tns:LinkedinSoap">
+      <soap:address location="http://api.socioboard.com/Services/Linkedin.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LinkedinSoap12" binding="tns:LinkedinSoap12">
+      <soap12:address location="http://api.socioboard.com/Services/Linkedin.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LinkedinHttpGet" binding="tns:LinkedinHttpGet">
+      <http:address location="http://api.socioboard.com/Services/Linkedin.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LinkedinHttpPost" binding="tns:LinkedinHttpPost">
+      <http:address location="http://api.socioboard.com/Services/Linkedin.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

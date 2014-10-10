@@ -1,0 +1,327 @@
+﻿@using Socioboard.Helper;
+<div id="contentcontainer1">
+    <div id="content">
+
+        <div class="title">
+            <h1>My recent profile</h1>
+            <span class="">Snapshots of your connected accounts</span>
+            <div class="clearfix"></div>
+            <div id="midsnaps">
+
+                <div class="row-fluid">
+                    @{
+                        int counter = 0;
+                        foreach (var item in (Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, Dictionary<object, List<object>>>)Model)
+                        {
+                            Random rNum = new Random();
+                            if (item.Key.ProfileType == "facebook")
+                            {
+                                var dic_profileinfo = item.Value.ElementAt(counter);
+                                //  var item = dictionary.ElementAt(index);
+                                Domain.Socioboard.Domain.FacebookAccount objFacebookAccount = (Domain.Socioboard.Domain.FacebookAccount)dic_profileinfo.Key;
+                                List<object> lstdic = (List<object>)dic_profileinfo.Value;
+                                List<Domain.Socioboard.Domain.FacebookFeed> lstFacebookFeed = new List<Domain.Socioboard.Domain.FacebookFeed>();
+    
+                        <div id="mid_"@objFacebookAccount.FbUserId"" style="height: 213px;" class="span4 rounder recpro">
+                            <div class="concotop">
+                                <div onclick="detailsdiscoveryfacebook('@objFacebookAccount.FbUserId');" class="userpictiny">
+                                    <img width="56" height="56" title="@objFacebookAccount.FbUserName" alt="" src="http://graph.facebook.com/@objFacebookAccount.FbUserId/picture?type=small"><a title="" class="userurlpic" href="#"><img width="16" height="16" alt="" src="../Contents/img/fb_icon.png"></a>
+                                </div>
+                                <div onclick="detailsdiscoveryfacebook('@objFacebookAccount.FbUserId');" class="useraccname">@objFacebookAccount.FbUserName</div>
+                                <div class="usercounter">
+                                    <div class="userfoll">@objFacebookAccount.Friends<span><b style="font-size: 13px;">Friends</b></span></div>
+                                    <div class="userppd">
+                                        @Math.Round(rNum.NextDouble(), 2)<span>Avg. Post
+                                        <br>
+                                            Per Day</span>
+                                    </div>
+                                </div>
+                                <h5>Recent message</h5>
+                            </div>
+                            <div class="concoteng">
+                                <ul class="mess">
+
+                                    @for (int i = 0; i < lstdic.Count; i++)
+                                    {
+                                        Domain.Socioboard.Domain.FacebookFeed objFacebookFeed = ((Domain.Socioboard.Domain.FacebookFeed)lstdic[i]);
+                                      
+                                        <li>
+                                            <div class="messpic">
+                                                <img title="" alt="" src="http://graph.facebook.com/@objFacebookAccount.FbUserId/picture?type=small">
+                                            </div>
+                                            <div class="messtext">@objFacebookFeed.FeedDescription</div>
+                                        </li> 
+                                        
+                                        if (lstdic.Count > 3)
+                                        {
+                                            if (i == 1)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+               
+                            }
+
+                            if (item.Key.ProfileType == "twitter")
+                            {
+
+
+                                var dic_profileinfo = item.Value.ElementAt(counter);
+                                //  var item = dictionary.ElementAt(index);
+                                Domain.Socioboard.Domain.TwitterAccount objTwitterAccount = (Domain.Socioboard.Domain.TwitterAccount)dic_profileinfo.Key;
+                                List<object> lstdic = (List<object>)dic_profileinfo.Value;
+                                List<Domain.Socioboard.Domain.TwitterFeed> lstTwitterFeed = new List<Domain.Socioboard.Domain.TwitterFeed>();
+    
+        
+        
+        
+        
+        
+                        <div class="span4 rounder recpro" style="height: 213px;" id="mid_"@objTwitterAccount.TwitterUserId"">
+                            <div class="concotop">
+                                <div class="userpictiny" onclick="detailsdiscoverytwitter('@objTwitterAccount.TwitterUserId');">
+                                    <img width="56" height="56" src="@objTwitterAccount.ProfileImageUrl" alt="" title="@objTwitterAccount.TwitterScreenName"><a href="#" class="userurlpic" title=""><img width="16" height="16" src="../Contents/img/twticon.png" alt=""></a>
+                                </div>
+                                <div class="useraccname" onclick="detailsdiscoverytwitter('@objTwitterAccount.TwitterUserId');">@objTwitterAccount.TwitterScreenName</div>
+                                <div class="usercounter">
+                                    <div class="userfoll">@objTwitterAccount.FollowersCount<span><b style="font-size: 13px;">Followers</b></span></div>
+                                    <div class="userppd">@Math.Round(rNum.NextDouble(), 2)<span>Avg. tweet
+                    <br>
+                                        Per Day</span>
+                                    </div>
+                                </div>
+                                <h5>Recent message</h5>
+                            </div>
+                            <div class="concoteng">
+                                <ul class="mess">
+                                    @for (int i = 0; i < lstdic.Count; i++)
+                                    {
+                                        Domain.Socioboard.Domain.TwitterFeed objTwitterFeed = ((Domain.Socioboard.Domain.TwitterFeed)lstdic[i]);
+                                        string ms = string.Empty;
+                                        if (objTwitterFeed.Feed.Length > 20)
+                                        {
+                                            ms = objTwitterFeed.Feed.Substring(0, 20) + "...";
+
+                                        }
+                                        else
+                                        {
+                                            ms = objTwitterFeed.Feed;
+                                        }
+                                        <li>
+                                            <div class="messpic">
+                                                <img src="@objTwitterFeed.FromProfileUrl" alt="" title="">
+                                            </div>
+                                            <div class="messtext">"@ms"</div>
+                                        </li>
+                                        if (lstdic.Count > 3)
+                                        {
+                                            if (i == 1)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+        
+                            }
+                            if (item.Key.ProfileType == "linkedin")
+                            {
+                                var dic_profileinfo = item.Value.ElementAt(counter);
+                                Domain.Socioboard.Domain.LinkedInAccount objLinkedInAccount = (Domain.Socioboard.Domain.LinkedInAccount)dic_profileinfo.Key;
+                                List<object> lstdic = (List<object>)dic_profileinfo.Value;
+                                List<Domain.Socioboard.Domain.LinkedInFeed> lstLinkedInFeed = new List<Domain.Socioboard.Domain.LinkedInFeed>();
+                                int linkedinConcount = 0;
+                                try
+                                {
+                                    linkedinConcount = objLinkedInAccount.Connections;
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine(ex.Message);
+                                }
+                        <div class="span4 rounder recpro" style="height: 213px;" id="mid_"@objLinkedInAccount.LinkedinUserId"">
+                            <div class="concotop">
+                                <div class="userpictiny" onclick="detailsdiscoverylnk('@objLinkedInAccount.LinkedinUserId')">
+                                    <img width="56" height="56" src="@objLinkedInAccount.ProfileImageUrl" alt="" title="@objLinkedInAccount.LinkedinUserName"><a href="#" class="userurlpic" title=""><img width="16" height="16" src="../Contents/img/link_icon.png" alt=""></a>
+                                </div>
+                                <div class="useraccname">"@objLinkedInAccount.LinkedinUserName"</div>
+                                <div class="usercounter">
+                                    <div class="userfoll">@linkedinConcount<span>Connections</span></div>
+                                    <div class="userppd">
+                                        @Math.Round(rNum.NextDouble(), 2)<span>Avg. Post
+                <br>
+                                            Per Day</span>
+                                    </div>
+                                </div>
+                                <h5>Recent message</h5>
+                            </div>
+                            <div class="concoteng">
+                                <ul class="mess">
+
+
+                                    @for (int i = 0; i < lstdic.Count; i++)
+                                    {
+                                        Domain.Socioboard.Domain.LinkedInFeed objLinkedInFeed = ((Domain.Socioboard.Domain.LinkedInFeed)lstdic[i]);
+                                        string ms = string.Empty;
+                                        if (objLinkedInFeed.Feeds.Length > 20)
+                                        {
+                                            ms = objLinkedInFeed.Feeds.Substring(0, 20) + "...";
+
+                                        }
+                                        else
+                                        {
+                                            ms = objLinkedInFeed.Feeds;
+                                        }
+                                        <li>
+                                            <div class="messpic">
+                                                <img src="@objLinkedInFeed.FromPicUrl" alt="" title="">
+                                            </div>
+                                            <div class="messtext">@ms</div>
+                                        </li>
+                                        if (lstdic.Count > 3)
+                                        {
+                                            if (i == 1)
+                                            {
+                                                break;
+                                            }
+                                        }
+                                    }
+
+
+                                </ul>
+                            </div>
+                        </div>
+            
+            
+            
+                            }
+                            if (item.Key.ProfileType == "instagram")
+                            {
+                                var dic_profileinfo = item.Value.ElementAt(counter);
+                                //  var item = dictionary.ElementAt(index);
+                                Domain.Socioboard.Domain.InstagramAccount objInstagramAccount = (Domain.Socioboard.Domain.InstagramAccount)dic_profileinfo.Key;
+                                
+                                
+                                
+                        <div class="span4 rounder recpro" style="height: 213px;" id="mid_"@objInstagramAccount.InstagramId"">
+                            <div class="concotop">
+                                <div class="userpictiny" onclick="detailsdiscoveryInstagram('@objInstagramAccount.InstagramId')">
+                                    <img width="56" height="56" src="@objInstagramAccount.ProfileUrl" alt="" title="@objInstagramAccount.InsUserName"><a href="#" class="userurlpic" title=""><img width="16" height="16" src="../Contents/img/instagram_24X24.png" alt=""></a>
+                                </div>
+                                <a target="_blank" href="http://instagram.com/"@objInstagramAccount.InsUserName"">
+                                    <div class="useraccname">@SBUtils.Getsortpofilename(objInstagramAccount.InsUserName)</div>
+                                </a>
+                            </div>
+                            <div class="concoteng">
+                                <div class="pillow_fade">
+                                    <div class="fb_notifications">
+                                        <ul class="user-stats">
+                                            <li>
+                                                <div class="photo_stat">photos</div>
+                                                <div class="number-stat">@objInstagramAccount.TotalImages</div>
+                                            </li>
+                                            <li>
+                                                <div class="photo_stat">following</div>
+                                                <div class="number-stat">@objInstagramAccount.FollowedBy</div>
+                                            </li>
+                                            <li>
+                                                <div class="photo_stat">followers</div>
+                                                <div class="number-stat">@objInstagramAccount.Followers</div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+                            }
+                            if (item.Key.ProfileType == "tumblr")
+                            {
+
+                                var dic_profileinfo = item.Value.ElementAt(counter);
+                                //  var item = dictionary.ElementAt(index);
+                                Domain.Socioboard.Domain.TumblrAccount objTumblrAccount = (Domain.Socioboard.Domain.TumblrAccount)dic_profileinfo.Key;
+                                string tumblruserimage = "http://api.tumblr.com/v2/blog/" + objTumblrAccount.tblrUserName + ".tumblr.com/avatar";
+                                string profileurl = "http://" + objTumblrAccount.tblrUserName + ".tumblr.com";
+                        <div class="span4 rounder recpro" style="height: 213px;" id="mid_surajrai123">
+                            <div class="concotop">
+                                <div class="userpictiny" onclick="detailsdiscoveryTumblr('@objTumblrAccount.tblrUserName')">
+                                    <img width="56" height="56" src="@tumblruserimage" alt="" title="surajrai123"><a href="#" class="userurlpic" title=""><img width="16" height="16" src="../Contents/img/tumblr.png" alt=""></a></div>
+                                <a target="_blank" href="@profileurl">
+                                    <div class="useraccname">@Socioboard.Helper.SBUtils.Getsortpofilename(objTumblrAccount.tblrUserName)</div>
+                                </a></div>
+                            <div class="concoteng">
+                                <div class="pillow_fade">
+                                    <div class="fb_notifications">
+                                        <ul class="user-stats">
+                                            <li>
+                                                <div class="photo_stat">post</div>
+                                                <div class="number-stat">37</div>
+                                            </li>
+                                            <li>
+                                                <div class="photo_stat">likes</div>
+                                                <div class="number-stat">72</div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                
+                                
+                            }
+                            if (item.Key.ProfileType == "youtube")
+                            {
+                                var dic_profileinfo = item.Value.ElementAt(counter);
+                                Domain.Socioboard.Domain.YoutubeAccount objYoutubeAccount = (Domain.Socioboard.Domain.YoutubeAccount)dic_profileinfo.Key;
+                                List<object> lstdic = (List<object>)dic_profileinfo.Value;
+                                Domain.Socioboard.Domain.YoutubeChannel objYoutubeChannel = ((Domain.Socioboard.Domain.YoutubeChannel)lstdic[0]);
+                                
+                        <div class="span4 rounder recpro" style="height: 213px;" id="mid_"@objYoutubeAccount.Ytuserid"">
+                            <div class="concotop">
+                                <div class="userpictiny" onclick="detailsdiscoveryYoutube('@objYoutubeAccount.Ytuserid')">
+                                    <img width="56" height="56" src="@objYoutubeAccount.Ytprofileimage" alt="" title="@objYoutubeAccount.Ytusername"><a href="#" class="userurlpic" title=""><img width="16" height="16" src="../Contents/img/youtube.png" alt=""></a>
+                                </div>
+                                <div class="useraccname" onclick="detailsdiscoveryYoutube('@objYoutubeAccount.Ytuserid')">Abhay</div>
+                            </div>
+                            <div class="concoteng">
+                                <div class="pillow_fade">
+                                    <div class="fb_notifications">
+                                        <ul class="user-stats">
+                                            <li>
+                                                <div class="photo_stat">Total View</div>
+                                                <div class="number-stat">@objYoutubeChannel.ViewCount</div>
+                                            </li>
+                                            <li>
+                                                <div class="photo_stat">Total Subcriber</div>
+                                                <div class="number-stat">@objYoutubeChannel.SubscriberCount</div>
+                                            </li>
+                                            <li>
+                                                <div class="photo_stat">Total Video</div>
+                                                <div class="number-stat">@objYoutubeChannel.VideoCount</div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                
+                            }
+                            counter++;
+                        }
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="home_loader">
+        <img width="100" height="100" alt="" src="" id="hm_loader" style="display: none;">
+    </div>
+</div>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetTwitterAccountDetailsById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTwitterAccountDetailsByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTwitterAccountDetailsByIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteTwitterAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteTwitterAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteTwitterAccountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetTwitterAccountDetailsByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTwitterAccountDetailsById" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterAccountDetailsByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTwitterAccountDetailsByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTwitterAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteTwitterAccount" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTwitterAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteTwitterAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterAccountDetailsByIdHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterAccountDetailsByIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTwitterAccountHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTwitterAccountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterAccountDetailsByIdHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTwitterAccountDetailsByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTwitterAccountHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTwitterAccountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="TwitterAccountSoap">
+    <wsdl:operation name="GetTwitterAccountDetailsById">
+      <wsdl:input message="tns:GetTwitterAccountDetailsByIdSoapIn" />
+      <wsdl:output message="tns:GetTwitterAccountDetailsByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTwitterAccount">
+      <wsdl:input message="tns:DeleteTwitterAccountSoapIn" />
+      <wsdl:output message="tns:DeleteTwitterAccountSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TwitterAccountHttpGet">
+    <wsdl:operation name="GetTwitterAccountDetailsById">
+      <wsdl:input message="tns:GetTwitterAccountDetailsByIdHttpGetIn" />
+      <wsdl:output message="tns:GetTwitterAccountDetailsByIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTwitterAccount">
+      <wsdl:input message="tns:DeleteTwitterAccountHttpGetIn" />
+      <wsdl:output message="tns:DeleteTwitterAccountHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TwitterAccountHttpPost">
+    <wsdl:operation name="GetTwitterAccountDetailsById">
+      <wsdl:input message="tns:GetTwitterAccountDetailsByIdHttpPostIn" />
+      <wsdl:output message="tns:GetTwitterAccountDetailsByIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTwitterAccount">
+      <wsdl:input message="tns:DeleteTwitterAccountHttpPostIn" />
+      <wsdl:output message="tns:DeleteTwitterAccountHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TwitterAccountSoap" type="tns:TwitterAccountSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTwitterAccountDetailsById">
+      <soap:operation soapAction="http://tempuri.org/GetTwitterAccountDetailsById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTwitterAccount">
+      <soap:operation soapAction="http://tempuri.org/DeleteTwitterAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TwitterAccountSoap12" type="tns:TwitterAccountSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTwitterAccountDetailsById">
+      <soap12:operation soapAction="http://tempuri.org/GetTwitterAccountDetailsById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTwitterAccount">
+      <soap12:operation soapAction="http://tempuri.org/DeleteTwitterAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TwitterAccountHttpGet" type="tns:TwitterAccountHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetTwitterAccountDetailsById">
+      <http:operation location="/GetTwitterAccountDetailsById" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTwitterAccount">
+      <http:operation location="/DeleteTwitterAccount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TwitterAccountHttpPost" type="tns:TwitterAccountHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetTwitterAccountDetailsById">
+      <http:operation location="/GetTwitterAccountDetailsById" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTwitterAccount">
+      <http:operation location="/DeleteTwitterAccount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TwitterAccount">
+    <wsdl:port name="TwitterAccountSoap" binding="tns:TwitterAccountSoap">
+      <soap:address location="http://api.socioboard.com/Services/TwitterAccount.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TwitterAccountSoap12" binding="tns:TwitterAccountSoap12">
+      <soap12:address location="http://api.socioboard.com/Services/TwitterAccount.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TwitterAccountHttpGet" binding="tns:TwitterAccountHttpGet">
+      <http:address location="http://api.socioboard.com/Services/TwitterAccount.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TwitterAccountHttpPost" binding="tns:TwitterAccountHttpPost">
+      <http:address location="http://api.socioboard.com/Services/TwitterAccount.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

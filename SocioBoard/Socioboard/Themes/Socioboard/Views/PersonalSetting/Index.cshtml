@@ -1,0 +1,52 @@
+﻿<div id="page-wrapper">
+</div>
+
+
+
+<script type="text/javascript">
+    function loadpersonalsetting() {
+        $('#page-wrapper').load('../PersonalSetting/LoadPersonalSetting')
+    }
+
+    function changesetting(id) {
+        alert('asdasd');
+        var fn = $('#fname').val();
+        var ln = $('#lname').val();
+        var email = $('#email').val();
+        var dt = $('#ContentPlaceHolder1_ddlTimeZone :selected').text();
+        if (fn == "")
+        {
+            alertify.error('Please enter First Name');
+            return false;
+        }
+        if (ln == "") {
+            alertify.error('Please enter Last Name');
+            return false;
+            }
+       
+        
+        $.ajax({
+            type: 'POST',
+            url: '../PersonalSetting/EditUserInfo?id=' + id + '&fname=' + fn + '&lname=' + ln + '&email=' + email + '&dt=' + dt,
+            success: function (msg) {
+                if (msg == 1) {
+                    alertify.success('Update Successfully');
+                }
+                else {
+                    alertify.error('Error please check');
+                }
+                // $('#feeds').html('').append(msg);
+               // window.location = self.location;
+            },
+            async: false
+        });
+    }
+
+    $(document).ready(function () {
+        loadpersonalsetting();
+        $('#savepersonalsetting').live('click', 'savepersonalsetting', function () {
+            alert('asdasd');
+        });
+    });
+
+</script>

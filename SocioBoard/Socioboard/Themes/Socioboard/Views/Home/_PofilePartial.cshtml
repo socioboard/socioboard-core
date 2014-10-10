@@ -1,0 +1,118 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+}
+@foreach (var item in (Dictionary<TeamMemberProfile, object>)Model)
+{
+    if (item.Key.ProfileType == "facebook")
+    {
+        FacebookAccount objFacebookAccount = (FacebookAccount)item.Value;
+        string profileimage = string.Empty;
+        
+    <div class="col-sm-6 userpictiny" style="margin-bottom:10px">
+        @*<div class="delet_icon" onclick="confirmDel('@objFacebookAccount.FbUserId','fb','fb');"></div>*@
+        @if(objFacebookAccount.IsActive==2)
+        {
+        <a title="Click here to update your Account" href="@Socioboard.Helper.SBUtils.GetFacebookRedirectLink()" target="_blank">
+            <img src="/Themes/@path/Contents/img/update.png" class="img-responsive btn btn-default btn-block profilePicsize"></a>
+        }
+        else
+        {
+            <div class="delet_icon" onclick="confirmDel('@objFacebookAccount.FbUserId','fb','fb');"></div>
+        <a title="@objFacebookAccount.FbUserName" href="http://www.facebook.com/@objFacebookAccount.FbUserId/" target="_blank">
+            <img src="http://graph.facebook.com/@objFacebookAccount.FbUserId/picture?type=small" class="img-responsive btn btn-default btn-block profilePicsize"></a>
+        }
+        <img  src="/Themes/@path/Contents/img/fb_icon.png" class="img-responsive img-circle socialIconPoss">
+    </div>
+    }
+    if (item.Key.ProfileType == "twitter")
+    {
+        TwitterAccount objTwitterAccount = (TwitterAccount)item.Value;
+    <div class="col-sm-6 userpictiny" style="margin-bottom:10px">
+        <div class="delet_icon" onclick="confirmDel('@objTwitterAccount.TwitterUserId','twt','twt');"></div>
+        <a title="@objTwitterAccount.TwitterScreenName" href="http://twitter.com/@objTwitterAccount.TwitterScreenName" target="_blank">
+            <img src="@objTwitterAccount.ProfileImageUrl" class="img-responsive btn btn-default btn-block profilePicsize"></a>
+        <img  src="/Themes/@path/Contents/img/twticon.png" class="img-responsive img-circle socialIconPoss">
+    </div>
+    }
+    if (item.Key.ProfileType == "linkedin")
+    {
+        LinkedInAccount objLinkedInAccount = (LinkedInAccount)item.Value;
+    <div class="col-sm-6 userpictiny" style="margin-bottom:10px">
+        <div class="delet_icon" onclick="confirmDel('@objLinkedInAccount.LinkedinUserId','linkedin','linkedin');"></div>
+        <a title="@objLinkedInAccount.LinkedinUserName" href="@objLinkedInAccount.ProfileUrl" target="_blank">
+            <img src="@objLinkedInAccount.ProfileImageUrl" class="img-responsive btn btn-default btn-block profilePicsize"></a>
+        <img  src="/Themes/@path/Contents/img/link_icon.png" class="img-responsive img-circle socialIconPoss">
+    </div>
+    }
+    if (item.Key.ProfileType == "instagram")
+    {
+        InstagramAccount objInstagramAccount = (InstagramAccount)item.Value;
+    <div class="col-sm-6 userpictiny" style="margin-bottom:10px">
+        <div class="delet_icon" onclick="confirmDel('@objInstagramAccount.InstagramId','instagram','instagram');"></div>
+        <a title="@objInstagramAccount.InsUserName" href="#" >
+            <img src="@objInstagramAccount.ProfileUrl" class="img-responsive btn btn-default btn-block profilePicsize"></a>
+        <img  src="/Themes/@path/Contents/img/instagram_24X24.png" class="img-responsive img-circle socialIconPoss">
+    </div>
+    }
+    if (item.Key.ProfileType == "tumblr")
+    {
+        TumblrAccount objTumblrAccount = (TumblrAccount)item.Value;
+        string tumblruserimage = "http://api.tumblr.com/v2/blog/" + objTumblrAccount.tblrUserName + ".tumblr.com/avatar";
+    <div class="col-sm-6 userpictiny" style="margin-bottom:10px">
+        <div class="delet_icon" onclick="confirmDel('@objTumblrAccount.tblrUserName','tumblr','tumblr');"></div>
+        <a title="@objTumblrAccount.tblrUserName" href="http://@objTumblrAccount.tblrUserName .tumblr.com/" target="_blank">
+            <img src="@tumblruserimage" class="img-responsive btn btn-default btn-block profilePicsize"></a>
+        <img src="/Themes/@path/Contents/img/tumblr.png" class="img-responsive img-circle socialIconPoss">
+    </div>
+    }
+    if (item.Key.ProfileType == "youtube")
+    {
+        YoutubeAccount objYoutubeAccount = (YoutubeAccount)item.Value;
+    <div class="col-sm-6 userpictiny" style="margin-bottom:10px">
+        <div class="delet_icon" onclick="confirmDel('@objYoutubeAccount.Ytuserid','youtube','youtube');"></div>
+        <a title="@objYoutubeAccount.Ytusername" href="https://plus.google.com/@objYoutubeAccount.Ytuserid/" target="_blank">
+            <img src="@objYoutubeAccount.Ytprofileimage" class="img-responsive btn btn-default btn-block profilePicsize"></a>
+        <img src="/Themes/@path/Contents/img/youtube.png" class="img-responsive img-circle socialIconPoss">
+    </div>
+    }
+}
+<div class="col-sm-6" style="margin-bottom:10px">
+    <div class="btn-group pull-right">
+        <img class="img-responsive btn btn-default btn-block dropdown-toggle" src="/Themes/@path/Contents/img/addprofile.png" data-toggle="dropdown" />
+        <ul class="dropdown-menu slidedown">
+            <li onclick="facebookpopup()" >
+              @*  <a href="../FacebookManager/AuthenticateFacebook">*@
+                     <a href="#">
+                    <i class="fa fa-facebook-square fa-fw"></i>Facebook
+                </a>
+            </li>
+            <li>
+                <a href="../TwitterManager/AuthenticateTwitter">
+                    <i class="fa fa-twitter-square fa-fw"></i>Twitter
+                </a>
+            </li>
+            <li>
+                <a href="../LinkedinManager/AuthenticateLinkedin">
+                    <i class="fa fa-linkedin-square fa-fw"></i>LinkedIn
+                </a>
+            </li>
+            <li>
+                <a href="../InstagramManager/AuthenticateInstagram">
+                    <i class="fa fa-instagram fa-fw"></i>instagram
+                </a>
+            </li>
+
+            <li>
+                <a href="../TumblrManager/AuthenticateTumblr">
+                    <i class="fa fa-tumblr-square fa-fw"></i>Tumblr
+                </a>
+            </li>
+            <li>
+                <a href="../YoutubeManager/AuthenticateYoutube">
+                    <i class="fa fa-youtube-square fa-fw"></i>YouTube
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

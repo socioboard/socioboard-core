@@ -1,0 +1,38 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+     Domain.Socioboard.Domain.User objuser = (Domain.Socioboard.Domain.User)Session["User"];
+}
+<thead>
+    <tr>
+        <th>User</th>
+        <th>Message</th>
+        <th>Edit</th>
+         <th>Delete</th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var item in (List<Domain.Socioboard.Domain.Drafts>)Model)
+    {
+    <tr class="odd gradeX" id="@item.Id">
+        <td>
+            <div class="col-xs-6">
+                <img src="@objuser.ProfileUrl" class="img-circle profilePic" data-toggle="modal" data-target="#profileModal">
+            </div>
+            <div class="col-xs-6">
+                <span>@objuser.UserName<br>
+                    @item.CreatedDate</span>
+            </div>
+        </td>
+        <td>@item.Message</td>
+        <td>
+            <button  type="button" class="btn btn-warning btn-circle" onclick="editdraft('@item.Id','@item.Message')"><i class="fa fa-pencil"></i></button>
+        </td>
+        <td class="center ">
+                    <button onclick="deletedraftmsg('@item.Id')" class="btn btn-danger btn-circle" type="button"><i class="fa fa-times"></i></button>
+                </td>
+    </tr>
+    }
+
+</tbody>
+

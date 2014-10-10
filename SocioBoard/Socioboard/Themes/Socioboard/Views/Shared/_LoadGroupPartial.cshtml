@@ -1,0 +1,79 @@
+﻿@using Domain.Socioboard.Domain;
+@{ 
+    //System.Threading.Thread.Sleep(2*1000);
+    User objUser = (User)Session["User"];
+    if (objUser == null)
+    {
+        Response.Redirect("../Index/Index");
+    }
+    //Socioboard.Api.Groups.Groups objApiGroups = new Socioboard.Api.Groups.Groups();
+    //List<Domain.Socioboard.Domain.Groups> lstgroup = (List<Domain.Socioboard.Domain.Groups>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objApiGroups.GetGroupDetailsByUserId(objUser.Id.ToString()), typeof(List<Domain.Socioboard.Domain.Groups>)));
+    
+    Socioboard.Api.Team.Team ApiobjTeam = new Socioboard.Api.Team.Team();
+    List<Domain.Socioboard.Domain.Groups> lstgroup = (List<Domain.Socioboard.Domain.Groups>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjTeam.GetTeamByUserId(objUser.Id.ToString()), typeof(List<Domain.Socioboard.Domain.Groups>)));
+    string groupname = string.Empty;
+}
+
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+  <i class="fa fa-chevron-down fa-fw"></i>
+</button>
+@if (Session["group"] == null)
+{
+    <ul class="dropdown-menu slidedown">
+        @foreach (Groups item in lstgroup)
+        {
+
+            if (@item.GroupName == "Socioboard")
+            {
+                groupname = @item.GroupName;
+            <li>
+                <a href="#" class="groupclk" grpid="@item.Id.ToString()">
+                    <i class="fa fa-star fa-fw"></i>@item.GroupName
+                </a>
+            </li>
+                string groupid = item.Id.ToString();
+                HttpContext.Current.Session["group"] = groupid;
+            }
+            else
+            {
+            <li>
+                <a href="#" class="groupclk" grpid="@item.Id.ToString()">
+                    <i class="fa fa-star fa-fw"></i>@item.GroupName
+                </a>
+            </li>
+
+            }
+
+        }
+    </ul>
+     <div class="pull-right"><strong><i class="fa fa-fw"></i>Socioboard</strong></div>
+}
+else
+{
+    <ul class="dropdown-menu slidedown">
+        @foreach (Groups item in lstgroup)
+        {
+
+            if (item.Id.ToString() == (Session["group"].ToString()))
+            {
+                groupname = @item.GroupName;
+            <li>
+                <a href="#" class="groupclk" grpid="@item.Id.ToString()">
+                    <i class="fa fa-star fa-fw"></i>@item.GroupName
+                </a>
+            </li>
+                HttpContext.Current.Session["group"] = item.Id;
+            }
+            else
+            {
+
+            <li>
+                <a href="#" class="groupclk" grpid="@item.Id.ToString()">
+                    <i class="fa fa-star fa-fw"></i>@item.GroupName
+                </a>
+            </li>
+            }
+        }
+    </ul>
+     <div class="pull-right"><strong><i class="fa fa-fw"></i>@groupname</strong></div>
+}

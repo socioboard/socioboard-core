@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AddYoutubeAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="client_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="client_secret" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="redirect_uri" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddYoutubeAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddYoutubeAccountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getYoutubeData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="youtubeId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getYoutubeDataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddYoutubeAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:AddYoutubeAccount" />
+  </wsdl:message>
+  <wsdl:message name="AddYoutubeAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:AddYoutubeAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="getYoutubeDataSoapIn">
+    <wsdl:part name="parameters" element="tns:getYoutubeData" />
+  </wsdl:message>
+  <wsdl:message name="getYoutubeDataSoapOut">
+    <wsdl:part name="parameters" element="tns:getYoutubeDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddYoutubeAccountHttpGetIn">
+    <wsdl:part name="client_id" type="s:string" />
+    <wsdl:part name="client_secret" type="s:string" />
+    <wsdl:part name="redirect_uri" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="code" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddYoutubeAccountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getYoutubeDataHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="youtubeId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getYoutubeDataHttpGetOut" />
+  <wsdl:message name="AddYoutubeAccountHttpPostIn">
+    <wsdl:part name="client_id" type="s:string" />
+    <wsdl:part name="client_secret" type="s:string" />
+    <wsdl:part name="redirect_uri" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="code" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddYoutubeAccountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getYoutubeDataHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="youtubeId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getYoutubeDataHttpPostOut" />
+  <wsdl:portType name="YoutubeSoap">
+    <wsdl:operation name="AddYoutubeAccount">
+      <wsdl:input message="tns:AddYoutubeAccountSoapIn" />
+      <wsdl:output message="tns:AddYoutubeAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getYoutubeData">
+      <wsdl:input message="tns:getYoutubeDataSoapIn" />
+      <wsdl:output message="tns:getYoutubeDataSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="YoutubeHttpGet">
+    <wsdl:operation name="AddYoutubeAccount">
+      <wsdl:input message="tns:AddYoutubeAccountHttpGetIn" />
+      <wsdl:output message="tns:AddYoutubeAccountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getYoutubeData">
+      <wsdl:input message="tns:getYoutubeDataHttpGetIn" />
+      <wsdl:output message="tns:getYoutubeDataHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="YoutubeHttpPost">
+    <wsdl:operation name="AddYoutubeAccount">
+      <wsdl:input message="tns:AddYoutubeAccountHttpPostIn" />
+      <wsdl:output message="tns:AddYoutubeAccountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getYoutubeData">
+      <wsdl:input message="tns:getYoutubeDataHttpPostIn" />
+      <wsdl:output message="tns:getYoutubeDataHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="YoutubeSoap" type="tns:YoutubeSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddYoutubeAccount">
+      <soap:operation soapAction="http://tempuri.org/AddYoutubeAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getYoutubeData">
+      <soap:operation soapAction="http://tempuri.org/getYoutubeData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="YoutubeSoap12" type="tns:YoutubeSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddYoutubeAccount">
+      <soap12:operation soapAction="http://tempuri.org/AddYoutubeAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getYoutubeData">
+      <soap12:operation soapAction="http://tempuri.org/getYoutubeData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="YoutubeHttpGet" type="tns:YoutubeHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="AddYoutubeAccount">
+      <http:operation location="/AddYoutubeAccount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getYoutubeData">
+      <http:operation location="/getYoutubeData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="YoutubeHttpPost" type="tns:YoutubeHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="AddYoutubeAccount">
+      <http:operation location="/AddYoutubeAccount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getYoutubeData">
+      <http:operation location="/getYoutubeData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Youtube">
+    <wsdl:port name="YoutubeSoap" binding="tns:YoutubeSoap">
+      <soap:address location="http://api.socioboard.com/Services/Youtube.asmx" />
+    </wsdl:port>
+    <wsdl:port name="YoutubeSoap12" binding="tns:YoutubeSoap12">
+      <soap12:address location="http://api.socioboard.com/Services/Youtube.asmx" />
+    </wsdl:port>
+    <wsdl:port name="YoutubeHttpGet" binding="tns:YoutubeHttpGet">
+      <http:address location="http://api.socioboard.com/Services/Youtube.asmx" />
+    </wsdl:port>
+    <wsdl:port name="YoutubeHttpPost" binding="tns:YoutubeHttpPost">
+      <http:address location="http://api.socioboard.com/Services/Youtube.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

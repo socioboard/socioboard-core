@@ -1,0 +1,22 @@
+﻿@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    string teamid = Request.QueryString["teamid"];
+}
+<section class="services bg-primary partialContents" id="services" data-url="/Index/LoadRegistration?teamid=@teamid">
+    <img src="~/Themes/@path/Contents/img/loader.gif" />
+    Loading . . 
+
+   
+</section>
+
+
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        $(".partialContents").each(function (index, item) {
+            var url = $(item).data("url");
+            if (url && url.length > 0) {
+                $(item).load(url);
+            }
+        });
+    });
+</script>

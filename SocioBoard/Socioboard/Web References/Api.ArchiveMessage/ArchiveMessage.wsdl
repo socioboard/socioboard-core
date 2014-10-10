@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AddArchiveMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SocialGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CreatedDateTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ImgUrl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddArchiveMessageResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CheckArchiveMessageExists">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="messageid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckArchiveMessageExistsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckArchiveMessageExistsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllArchiveMessagesDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllArchiveMessagesDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllArchiveMessagesDetailsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddArchiveMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:AddArchiveMessage" />
+  </wsdl:message>
+  <wsdl:message name="AddArchiveMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:AddArchiveMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckArchiveMessageExistsSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckArchiveMessageExists" />
+  </wsdl:message>
+  <wsdl:message name="CheckArchiveMessageExistsSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckArchiveMessageExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllArchiveMessagesDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllArchiveMessagesDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetAllArchiveMessagesDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllArchiveMessagesDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddArchiveMessageHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="SocialGroup" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+    <wsdl:part name="MessageId" type="s:string" />
+    <wsdl:part name="Message" type="s:string" />
+    <wsdl:part name="CreatedDateTime" type="s:string" />
+    <wsdl:part name="ImgUrl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddArchiveMessageHttpGetOut" />
+  <wsdl:message name="CheckArchiveMessageExistsHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="messageid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckArchiveMessageExistsHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetAllArchiveMessagesDetailsHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllArchiveMessagesDetailsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddArchiveMessageHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="SocialGroup" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+    <wsdl:part name="MessageId" type="s:string" />
+    <wsdl:part name="Message" type="s:string" />
+    <wsdl:part name="CreatedDateTime" type="s:string" />
+    <wsdl:part name="ImgUrl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddArchiveMessageHttpPostOut" />
+  <wsdl:message name="CheckArchiveMessageExistsHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="messageid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckArchiveMessageExistsHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetAllArchiveMessagesDetailsHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllArchiveMessagesDetailsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="ArchiveMessageSoap">
+    <wsdl:operation name="AddArchiveMessage">
+      <wsdl:input message="tns:AddArchiveMessageSoapIn" />
+      <wsdl:output message="tns:AddArchiveMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckArchiveMessageExists">
+      <wsdl:input message="tns:CheckArchiveMessageExistsSoapIn" />
+      <wsdl:output message="tns:CheckArchiveMessageExistsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllArchiveMessagesDetails">
+      <wsdl:input message="tns:GetAllArchiveMessagesDetailsSoapIn" />
+      <wsdl:output message="tns:GetAllArchiveMessagesDetailsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ArchiveMessageHttpGet">
+    <wsdl:operation name="AddArchiveMessage">
+      <wsdl:input message="tns:AddArchiveMessageHttpGetIn" />
+      <wsdl:output message="tns:AddArchiveMessageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckArchiveMessageExists">
+      <wsdl:input message="tns:CheckArchiveMessageExistsHttpGetIn" />
+      <wsdl:output message="tns:CheckArchiveMessageExistsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllArchiveMessagesDetails">
+      <wsdl:input message="tns:GetAllArchiveMessagesDetailsHttpGetIn" />
+      <wsdl:output message="tns:GetAllArchiveMessagesDetailsHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ArchiveMessageHttpPost">
+    <wsdl:operation name="AddArchiveMessage">
+      <wsdl:input message="tns:AddArchiveMessageHttpPostIn" />
+      <wsdl:output message="tns:AddArchiveMessageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckArchiveMessageExists">
+      <wsdl:input message="tns:CheckArchiveMessageExistsHttpPostIn" />
+      <wsdl:output message="tns:CheckArchiveMessageExistsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllArchiveMessagesDetails">
+      <wsdl:input message="tns:GetAllArchiveMessagesDetailsHttpPostIn" />
+      <wsdl:output message="tns:GetAllArchiveMessagesDetailsHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ArchiveMessageSoap" type="tns:ArchiveMessageSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddArchiveMessage">
+      <soap:operation soapAction="http://tempuri.org/AddArchiveMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckArchiveMessageExists">
+      <soap:operation soapAction="http://tempuri.org/CheckArchiveMessageExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllArchiveMessagesDetails">
+      <soap:operation soapAction="http://tempuri.org/GetAllArchiveMessagesDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ArchiveMessageSoap12" type="tns:ArchiveMessageSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddArchiveMessage">
+      <soap12:operation soapAction="http://tempuri.org/AddArchiveMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckArchiveMessageExists">
+      <soap12:operation soapAction="http://tempuri.org/CheckArchiveMessageExists" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllArchiveMessagesDetails">
+      <soap12:operation soapAction="http://tempuri.org/GetAllArchiveMessagesDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ArchiveMessageHttpGet" type="tns:ArchiveMessageHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="AddArchiveMessage">
+      <http:operation location="/AddArchiveMessage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="CheckArchiveMessageExists">
+      <http:operation location="/CheckArchiveMessageExists" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllArchiveMessagesDetails">
+      <http:operation location="/GetAllArchiveMessagesDetails" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ArchiveMessageHttpPost" type="tns:ArchiveMessageHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="AddArchiveMessage">
+      <http:operation location="/AddArchiveMessage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="CheckArchiveMessageExists">
+      <http:operation location="/CheckArchiveMessageExists" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllArchiveMessagesDetails">
+      <http:operation location="/GetAllArchiveMessagesDetails" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ArchiveMessage">
+    <wsdl:port name="ArchiveMessageSoap" binding="tns:ArchiveMessageSoap">
+      <soap:address location="http://localhost:6361/Services/ArchiveMessage.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ArchiveMessageSoap12" binding="tns:ArchiveMessageSoap12">
+      <soap12:address location="http://localhost:6361/Services/ArchiveMessage.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ArchiveMessageHttpGet" binding="tns:ArchiveMessageHttpGet">
+      <http:address location="http://localhost:6361/Services/ArchiveMessage.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ArchiveMessageHttpPost" binding="tns:ArchiveMessageHttpPost">
+      <http:address location="http://localhost:6361/Services/ArchiveMessage.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

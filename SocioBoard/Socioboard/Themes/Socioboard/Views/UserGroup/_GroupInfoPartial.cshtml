@@ -1,0 +1,19 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    User objUser = (User)Session["User"];
+}
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        $(".GroupInfoPartial").each(function (index, item) {
+            var url = $(item).data("url");
+            if (url && url.length > 0) {
+                $(item).load(url);
+            }
+        });
+    });
+</script>

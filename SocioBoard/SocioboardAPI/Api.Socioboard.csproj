@@ -1,0 +1,871 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B5C88250-C9CF-47CC-AB17-AAB30CFDBD26}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Api.Socioboard</RootNamespace>
+    <AssemblyName>Api.Socioboard</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Hammock, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Hammock.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Mandrill">
+      <HintPath>lib\Mandrill.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.3.3.4.4000\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Linq, Version=1.0.0.4000, Culture=neutral, PublicKeyToken=444cf6a87fdab271, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\NHibernate.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernateHelper, Version=1.1.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\NHibernateHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>lib\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SendGridMail, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\SendGridMail.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\MailHelper.cs" />
+    <Compile Include="Helper\MailSender.cs" />
+    <Compile Include="Helper\SessionFactory.cs" />
+    <Compile Include="Helper\Utility.cs" />
+    <Compile Include="Model\ArchiveMessageRepository.cs" />
+    <Compile Include="Model\BusinessSettingRepository.cs" />
+    <Compile Include="Model\DiscoverySearchRepository.cs" />
+    <Compile Include="Model\DraftsRepository.cs" />
+    <Compile Include="Model\FacebookAccountRepository.cs" />
+    <Compile Include="Model\FacebookFanPageRepository.cs" />
+    <Compile Include="Model\FacebookFeedRepository.cs" />
+    <Compile Include="Model\FacebookMessageRepository.cs" />
+    <Compile Include="Model\GooglePlusAccountRepository.cs" />
+    <Compile Include="Model\GroupProfileRepository.cs" />
+    <Compile Include="Model\GroupsRepository.cs" />
+    <Compile Include="Model\InstagramAccountRepository.cs" />
+    <Compile Include="Model\InstagramCommentRepository.cs" />
+    <Compile Include="Model\InstagramFeedRepository.cs" />
+    <Compile Include="Model\InvitationRepository.cs" />
+    <Compile Include="Model\LinkedInAccountRepository.cs" />
+    <Compile Include="Model\LinkedInFeedRepository.cs" />
+    <Compile Include="Model\NewsLetterRepository.cs" />
+    <Compile Include="Model\PackageRepository.cs" />
+    <Compile Include="Model\ScheduledMessageRepository.cs" />
+    <Compile Include="Model\SocialProfilesRepository.cs" />
+    <Compile Include="Model\TaskCommentRepository.cs" />
+    <Compile Include="Model\TaskRepository.cs" />
+    <Compile Include="Model\TeamMemberProfileRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Model\TeamRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Model\TumblrAccountRepository.cs" />
+    <Compile Include="Model\TumblrFeedRepository.cs" />
+    <Compile Include="Model\TwitterAccountFollowersRepository.cs" />
+    <Compile Include="Model\TwitterAccountRepository.cs" />
+    <Compile Include="Model\TwitterDirectMessageRepository.cs" />
+    <Compile Include="Model\TwitterFeedRepository.cs" />
+    <Compile Include="Model\TwitterMessageRepository.cs" />
+    <Compile Include="Model\TwitterStatsRepository.cs" />
+    <Compile Include="Model\UserActivationRepository.cs" />
+    <Compile Include="Model\UserPackageRelationRepository.cs" />
+    <Compile Include="Model\UserRepository.cs" />
+    <Compile Include="Model\YoutubeAccountRepository.cs" />
+    <Compile Include="Model\YoutubeChannelRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Admin.asmx.cs">
+      <DependentUpon>Admin.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Ads.asmx.cs">
+      <DependentUpon>Ads.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\ArchiveMessage.asmx.cs">
+      <DependentUpon>ArchiveMessage.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Blog_Comments.asmx.cs">
+      <DependentUpon>Blog_Comments.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Blog_Posts.asmx.cs">
+      <DependentUpon>Blog_Posts.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\BusinessSetting.asmx.cs">
+      <DependentUpon>BusinessSetting.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Coupon.asmx.cs">
+      <DependentUpon>Coupon.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\DiscoverySearch.asmx.cs">
+      <DependentUpon>DiscoverySearch.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Drafts.asmx.cs">
+      <DependentUpon>Drafts.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Facebook.asmx.cs">
+      <DependentUpon>Facebook.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\FacebookAccount.asmx.cs">
+      <DependentUpon>FacebookAccount.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\FacebookFanPage.asmx.cs">
+      <DependentUpon>FacebookFanPage.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\FacebookFeed.asmx.cs">
+      <DependentUpon>FacebookFeed.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\FacebookInsightPostStats.asmx.cs">
+      <DependentUpon>FacebookInsightPostStats.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\FacebookInsightStats.asmx.cs">
+      <DependentUpon>FacebookInsightStats.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\FacebookMessage.asmx.cs">
+      <DependentUpon>FacebookMessage.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\FacebookStats.asmx.cs">
+      <DependentUpon>FacebookStats.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\GoogleAnalyticsAccount.asmx.cs">
+      <DependentUpon>GoogleAnalyticsAccount.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\GoogleAnalyticsStats.asmx.cs">
+      <DependentUpon>GoogleAnalyticsStats.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\GooglePlusAccount.asmx.cs">
+      <DependentUpon>GooglePlusAccount.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\GooglePlusActivities.asmx.cs">
+      <DependentUpon>GooglePlusActivities.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\GroupProfile.asmx.cs">
+      <DependentUpon>GroupProfile.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Groups.asmx.cs">
+      <DependentUpon>Groups.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Instagram.asmx.cs">
+      <DependentUpon>Instagram.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\InstagramAccount.asmx.cs">
+      <DependentUpon>InstagramAccount.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\InstagramComment.asmx.cs">
+      <DependentUpon>InstagramComment.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\InstagramFeed.asmx.cs">
+      <DependentUpon>InstagramFeed.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Invitation.asmx.cs">
+      <DependentUpon>Invitation.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Linkedin.asmx.cs">
+      <DependentUpon>Linkedin.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\LinkedinAccount.asmx.cs">
+      <DependentUpon>LinkedinAccount.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\LinkedInFeed.asmx.cs">
+      <DependentUpon>LinkedInFeed.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\LinkedinMessage.asmx.cs">
+      <DependentUpon>LinkedinMessage.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Log.asmx.cs">
+      <DependentUpon>Log.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\LoginLogs.asmx.cs">
+      <DependentUpon>LoginLogs.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\MailSender.asmx.cs">
+      <DependentUpon>MailSender.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\News.asmx.cs">
+      <DependentUpon>News.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\NewsLetter.asmx.cs">
+      <DependentUpon>NewsLetter.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Package.asmx.cs">
+      <DependentUpon>Package.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\PaymentTransaction.asmx.cs">
+      <DependentUpon>PaymentTransaction.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\RssFeeds.asmx.cs">
+      <DependentUpon>RssFeeds.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\RssReader.asmx.cs">
+      <DependentUpon>RssReader.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\ScheduledMessage.asmx.cs">
+      <DependentUpon>ScheduledMessage.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\SocialProfile.asmx.cs">
+      <DependentUpon>SocialProfile.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\TaskComment.asmx.cs">
+      <DependentUpon>TaskComment.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Tasks.asmx.cs">
+      <DependentUpon>Tasks.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Team.asmx.cs">
+      <DependentUpon>Team.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\TeamMemberProfile.asmx.cs">
+      <DependentUpon>TeamMemberProfile.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Tumblr.asmx.cs">
+      <DependentUpon>Tumblr.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\TumblrAccount.asmx.cs">
+      <DependentUpon>TumblrAccount.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\TumblrFeed.asmx.cs">
+      <DependentUpon>TumblrFeed.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Twitter.asmx.cs">
+      <DependentUpon>Twitter.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\TwitterAccount.asmx.cs">
+      <DependentUpon>TwitterAccount.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\TwitterAccountFollowers.asmx.cs">
+      <DependentUpon>TwitterAccountFollowers.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\TwitterDirectMessages.asmx.cs">
+      <DependentUpon>TwitterDirectMessages.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\TwitterFeed.asmx.cs">
+      <DependentUpon>TwitterFeed.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\TwitterMessage.asmx.cs">
+      <DependentUpon>TwitterMessage.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\TwitterStats.asmx.cs">
+      <DependentUpon>TwitterStats.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\User.asmx.cs">
+      <DependentUpon>User.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\UserActivation.asmx.cs">
+      <DependentUpon>UserActivation.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\UserPackageRelation.asmx.cs">
+      <DependentUpon>UserPackageRelation.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\UserRefRelation.asmx.cs">
+      <DependentUpon>UserRefRelation.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Youtube.asmx.cs">
+      <DependentUpon>Youtube.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\YoutubeAccount.asmx.cs">
+      <DependentUpon>YoutubeAccount.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\YoutubeChannel.asmx.cs">
+      <DependentUpon>YoutubeChannel.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\bin\MySql.Data.dll" />
+    <Content Include="bin\CodeScales.Http.dll" />
+    <Content Include="bin\Facebook.dll" />
+    <Content Include="bin\Facebook.Silverlight.dll" />
+    <Content Include="bin\Facebook.Web.dll" />
+    <Content Include="bin\Facebook.Web.Mvc.dll" />
+    <Content Include="bin\Facebook.Winforms.dll" />
+    <Content Include="bin\FacebookGraphAPI.dll" />
+    <Content Include="bin\GlobusGooglePlusLib.dll" />
+    <Content Include="bin\GlobusInstagramLib.dll" />
+    <Content Include="bin\GlobusLinkedinLib.dll" />
+    <Content Include="bin\GlobusTwitterLib.dll" />
+    <Content Include="bin\Hammock.dll" />
+    <Content Include="bin\Iesi.Collections.dll" />
+    <Content Include="bin\Iesi.Collections.pdb" />
+    <Content Include="bin\Iesi.Collections.xml" />
+    <Content Include="bin\log4net.dll" />
+    <Content Include="bin\Mappings\Admin.hbm.xml" />
+    <Content Include="bin\Mappings\Ads.hbm.xml" />
+    <Content Include="bin\Mappings\ArchiveMessage.hbm.xml" />
+    <Content Include="bin\Mappings\Blog_Comments.hbm.xml" />
+    <Content Include="bin\Mappings\Blog_Posts.hbm.xml" />
+    <Content Include="bin\Mappings\DiscoverySearch.hbm.xml" />
+    <Content Include="bin\Mappings\Drafts.hbm.xml" />
+    <Content Include="bin\Mappings\FacebookAccount.hbm.xml" />
+    <Content Include="bin\Mappings\FacebookFeed.hbm.xml" />
+    <Content Include="bin\Mappings\FacebookGroup.hbm.xml" />
+    <Content Include="bin\Mappings\FacebookInsightPostStats.hbm.xml" />
+    <Content Include="bin\Mappings\FacebookInsightStats.hbm.xml" />
+    <Content Include="bin\Mappings\FacebookMessage.hbm.xml" />
+    <Content Include="bin\Mappings\FacebookStats.hbm.xml" />
+    <Content Include="bin\Mappings\GoogleAnalyticsAccount.hbm.xml" />
+    <Content Include="bin\Mappings\GooglePlusAccount.hbm.xml" />
+    <Content Include="bin\Mappings\GooglePlusActivities.hbm.xml" />
+    <Content Include="bin\Mappings\GroupProfile.hbm.xml" />
+    <Content Include="bin\Mappings\Groups.hbm.xml" />
+    <Content Include="bin\Mappings\InstagramAccount.hbm.xml" />
+    <Content Include="bin\Mappings\InstagramComment.hbm.xml" />
+    <Content Include="bin\Mappings\InstagramFeed.hbm.xml" />
+    <Content Include="bin\Mappings\LinkedInAccount.hbm.xml" />
+    <Content Include="bin\Mappings\LinkedInFeed.hbm.xml" />
+    <Content Include="bin\Mappings\LinkedinMessage.hbm.xml" />
+    <Content Include="bin\Mappings\Log.hbm.xml" />
+    <Content Include="bin\Mappings\News.hbm.xml" />
+    <Content Include="bin\Mappings\NewsLetter.hbm.xml" />
+    <Content Include="bin\Mappings\Package.hbm.xml" />
+    <Content Include="bin\Mappings\PaymentTransaction.hbm.xml" />
+    <Content Include="bin\Mappings\RssFeeds.hbm.xml" />
+    <Content Include="bin\Mappings\RssReader.hbm.xml" />
+    <Content Include="bin\Mappings\ScheduledMessage.hbm.xml" />
+    <Content Include="bin\Mappings\SocialProfile.hbm.xml" />
+    <Content Include="bin\Mappings\TaskComment.hbm.xml" />
+    <Content Include="bin\Mappings\Tasks.hbm.xml" />
+    <Content Include="bin\Mappings\Team.hbm.xml" />
+    <Content Include="bin\Mappings\TeamMemberProfile.hbm.xml" />
+    <Content Include="bin\Mappings\TwitterAccount.hbm.xml" />
+    <Content Include="bin\Mappings\TwitterDirectMessages.hbm.xml" />
+    <Content Include="bin\Mappings\TwitterFeed.hbm.xml" />
+    <Content Include="bin\Mappings\TwitterMessage.hbm.xml" />
+    <Content Include="bin\Mappings\TwitterStats.hbm.xml" />
+    <Content Include="bin\Mappings\User.hbm.xml" />
+    <Content Include="bin\Mappings\vwTwitterStats.hbm.xml" />
+    <Content Include="bin\MySql.Data.dll" />
+    <Content Include="bin\MySql.Data.Entity.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\NHibernate.dll" />
+    <Content Include="bin\NHibernate.Linq.dll" />
+    <Content Include="bin\NHibernate.Linq.xml" />
+    <Content Include="bin\NHibernateHelper.dll" />
+    <Content Include="bin\NHibernateHelper.pdb" />
+    <Content Include="bin\OAuth.dll" />
+    <Content Include="bin\PayPalCoreSDK.dll" />
+    <Content Include="bin\SendGridMail.dll" />
+    <Content Include="bin\SendGridPlus.dll" />
+    <Content Include="bin\SocioBoard.dll" />
+    <Content Include="bin\System.Net.Http.dll" />
+    <Content Include="bin\Winthusiasm.HtmlEditor.dll" />
+    <Content Include="Global.asax" />
+    <Content Include="hibernate.cfg.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="index.html" />
+    <Content Include="Layouts\Mails\GroupInvitation.html" />
+    <Content Include="lib\Antlr3.Runtime.dll" />
+    <Content Include="lib\CodeScales.Http.dll" />
+    <Content Include="lib\Facebook.dll" />
+    <Content Include="lib\Facebook.Silverlight.dll" />
+    <Content Include="lib\Facebook.Web.dll" />
+    <Content Include="lib\Facebook.Web.Mvc.dll" />
+    <Content Include="lib\Facebook.Winforms.dll" />
+    <Content Include="lib\FacebookGraphAPI.dll" />
+    <Content Include="lib\GlobusGooglePlusLib.dll" />
+    <Content Include="lib\GlobusGooglePlusLib.pdb" />
+    <Content Include="lib\GlobusInstagramLib.dll" />
+    <Content Include="lib\GlobusInstagramLib.pdb" />
+    <Content Include="lib\GlobusLinkedinLib.dll" />
+    <Content Include="lib\GlobusLinkedinLib.pdb" />
+    <Content Include="lib\GlobusTwitterLib.dll" />
+    <Content Include="lib\GlobusTwitterLib.pdb" />
+    <Content Include="lib\Hammock.dll" />
+    <Content Include="lib\Iesi.Collections.dll" />
+    <Content Include="lib\Iesi.Collections.pdb" />
+    <Content Include="lib\Iesi.Collections.xml" />
+    <Content Include="lib\itextsharp.dll" />
+    <Content Include="lib\itextsharp.pdfa.dll" />
+    <Content Include="lib\log4net.dll" />
+    <Content Include="lib\MySql.Data.dll" />
+    <Content Include="lib\MySql.Data.Entity.dll" />
+    <Content Include="lib\Newtonsoft.Json.dll" />
+    <Content Include="lib\NHibernate.dll" />
+    <Content Include="lib\NHibernate.Linq.dll" />
+    <Content Include="lib\NHibernate.Linq.xml" />
+    <Content Include="lib\NHibernate.pdb" />
+    <Content Include="lib\NHibernate.xml" />
+    <Content Include="lib\NHibernateHelper.dll" />
+    <Content Include="lib\NHibernateHelper.pdb" />
+    <Content Include="lib\OAuth.dll" />
+    <Content Include="lib\PayPalCoreSDK.dll" />
+    <Content Include="lib\SendGridMail.dll" />
+    <Content Include="lib\SendGridPlus.dll" />
+    <Content Include="lib\SocioBoard.dll" />
+    <Content Include="lib\SocioBoard.pdb" />
+    <Content Include="lib\System.Net.Http.dll" />
+    <Content Include="lib\System.Net.Http.xml" />
+    <Content Include="lib\Winthusiasm.HtmlEditor.dll" />
+    <Content Include="lib\WooSuite.dll" />
+    <Content Include="lib\WooSuite.pdb" />
+    <Content Include="Log\log.txt" />
+    <EmbeddedResource Include="Mappings\User.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Groups.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\SocialProfile.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Team.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TeamMemberProfile.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookAccount.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TumblrAccount.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookFeed.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TwitterAccount.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TwitterFeed.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\LinkedInAccount.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\YoutubeAccount.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Admin.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Ads.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\ArchiveMessage.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Blog_Comments.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Blog_Posts.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\BusinessSetting.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Coupon.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\DiscoverySearch.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Drafts.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookGroup.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookInsightPostStats.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookInsightStats.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookMessage.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookStats.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\GoogleAnalyticsAccount.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\GoogleAnalyticsStats.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\GooglePlusAccount.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\GooglePlusActivities.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\GroupProfile.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\GroupScheduleMessage.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\InstagramAccount.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\InstagramComment.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\InstagramFeed.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Invitation.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\LinkedInFeed.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\LinkedinMessage.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Log.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\LoginLogs.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\MandrillAccount.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\News.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\NewsLetter.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Package.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\PaymentTransaction.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\RssFeeds.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\RssReader.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\ScheduledMessage.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TaskComment.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Tasks.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TumblrFeed.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TwitterDirectMessages.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TwitterMessage.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TwitterStats.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\UserActivation.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\UserPackageRelation.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\UserRefRelation.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\youtubechannel.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="obj\Debug\SocialCrowd.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\SocialSuitePro.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\SocialSuitePro.dll" />
+    <Content Include="obj\Debug\SocialSuitePro.pdb" />
+    <Content Include="obj\Debug\SocioCrowd.dll" />
+    <Content Include="obj\Debug\SocioCrowd.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\SocialCrowd.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\Debug\SocialSuitePro.csprojResolveAssemblyReference.cache" />
+    <Content Include="Services\Admin.asmx" />
+    <Content Include="Services\Ads.asmx" />
+    <Content Include="Services\ArchiveMessage.asmx" />
+    <Content Include="Services\Blog_Comments.asmx" />
+    <Content Include="Services\Blog_Posts.asmx" />
+    <Content Include="Services\BusinessSetting.asmx" />
+    <Content Include="Services\Coupon.asmx" />
+    <Content Include="Services\DiscoverySearch.asmx" />
+    <Content Include="Services\Drafts.asmx" />
+    <Content Include="Services\Facebook.asmx" />
+    <Content Include="Services\FacebookAccount.asmx" />
+    <Content Include="Services\FacebookFanPage.asmx" />
+    <Content Include="Services\FacebookFeed.asmx" />
+    <Content Include="Services\FacebookInsightPostStats.asmx" />
+    <Content Include="Services\FacebookInsightStats.asmx" />
+    <Content Include="Services\FacebookMessage.asmx" />
+    <Content Include="Services\FacebookStats.asmx" />
+    <Content Include="Services\GoogleAnalyticsAccount.asmx" />
+    <Content Include="Services\GoogleAnalyticsStats.asmx" />
+    <Content Include="Services\GooglePlusAccount.asmx" />
+    <Content Include="Services\GooglePlusActivities.asmx" />
+    <Content Include="Services\GroupProfile.asmx" />
+    <Content Include="Services\Groups.asmx" />
+    <Content Include="Services\Instagram.asmx" />
+    <Content Include="Services\InstagramAccount.asmx" />
+    <Content Include="Services\InstagramComment.asmx" />
+    <Content Include="Services\InstagramFeed.asmx" />
+    <Content Include="Services\Invitation.asmx" />
+    <Content Include="Services\Linkedin.asmx" />
+    <Content Include="Services\LinkedinAccount.asmx" />
+    <Content Include="Services\LinkedInFeed.asmx" />
+    <Content Include="Services\LinkedinMessage.asmx" />
+    <Content Include="Services\Log.asmx" />
+    <Content Include="Services\LoginLogs.asmx" />
+    <Content Include="Services\MailSender.asmx" />
+    <Content Include="Services\News.asmx" />
+    <Content Include="Services\NewsLetter.asmx" />
+    <Content Include="Services\Package.asmx" />
+    <Content Include="Services\PaymentTransaction.asmx" />
+    <Content Include="Services\RssFeeds.asmx" />
+    <Content Include="Services\RssReader.asmx" />
+    <Content Include="Services\ScheduledMessage.asmx" />
+    <Content Include="Services\SocialProfile.asmx" />
+    <Content Include="Services\TaskComment.asmx" />
+    <Content Include="Services\Tasks.asmx" />
+    <Content Include="Services\Team.asmx" />
+    <Content Include="Services\TeamMemberProfile.asmx" />
+    <Content Include="Services\Tumblr.asmx" />
+    <Content Include="Services\TumblrAccount.asmx" />
+    <Content Include="Services\TumblrFeed.asmx" />
+    <Content Include="Services\Twitter.asmx" />
+    <Content Include="Services\TwitterAccount.asmx" />
+    <Content Include="Services\TwitterAccountFollowers.asmx" />
+    <Content Include="Services\TwitterDirectMessages.asmx" />
+    <Content Include="Services\TwitterFeed.asmx" />
+    <Content Include="Services\TwitterMessage.asmx" />
+    <Content Include="Services\TwitterStats.asmx" />
+    <Content Include="Services\User.asmx" />
+    <Content Include="Services\UserActivation.asmx" />
+    <Content Include="Services\UserPackageRelation.asmx" />
+    <Content Include="Services\UserRefRelation.asmx" />
+    <Content Include="Services\Youtube.asmx" />
+    <Content Include="Services\YoutubeAccount.asmx" />
+    <Content Include="Services\YoutubeChannel.asmx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Contents\img\upload\" />
+    <Folder Include="Contents\img\user_img\" />
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain.Socioboard\Domain.Socioboard.csproj">
+      <Project>{96ecfb64-a9ac-45f4-85bf-185e9c6a0f53}</Project>
+      <Name>Domain.Socioboard</Name>
+    </ProjectReference>
+    <ProjectReference Include="Library\GlobusGooglePlusLib\GlobusGooglePlusLib.csproj">
+      <Project>{910f101c-c7e0-47f9-bcb6-cd793362e818}</Project>
+      <Name>GlobusGooglePlusLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="Library\GlobusInstagramLib\GlobusInstagramLib\GlobusInstagramLib.csproj">
+      <Project>{fc2e4794-2cb4-4aaa-a0ad-5483c931b3f0}</Project>
+      <Name>GlobusInstagramLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="Library\GlobusLinkedinLib\GlobusLinkedinLib.csproj">
+      <Project>{db6ab2d5-8bdd-46c5-ab04-e8313fa19007}</Project>
+      <Name>GlobusLinkedinLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="Library\GlobusMailLib\GlobusMailLib.csproj">
+      <Project>{f0a38425-5313-4e83-9568-b6d9c1d6efa6}</Project>
+      <Name>GlobusMailLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="Library\GlobusTumblerLib\GlobusTumblrLib.csproj">
+      <Project>{f22fce49-27e9-4eca-b6f6-c39a8707df59}</Project>
+      <Name>GlobusTumblrLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="Library\GlobusTwitterLib\GlobusTwitterLib.csproj">
+      <Project>{7051e5b4-23d1-4c8f-a459-d66ad79bcdf9}</Project>
+      <Name>GlobusTwitterLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>6361</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

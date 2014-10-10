@@ -1,0 +1,16 @@
+﻿@{
+    
+    List<string> _AccountImages = (List<string>)Model;
+    
+}
+
+
+@foreach (var item in _AccountImages)
+{
+    <div class="col-md-2 Pad5">
+        <div class="checkbox check">
+            <input type="checkbox">
+        </div>
+        <img id="Img1" src="@item" alt="" style="height: 50px;">
+    </div>
+}

@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s2="http://tempuri.org/AbstractTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="UploadFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="f" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadFileResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ADDScheduledMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="typeandid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ShareMessage" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ClientTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="ScheduleTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PicUrl" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CreateTime" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ADDScheduledMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ADDScheduledMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateScheduledMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="typeidandmsgid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ShareMessage" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="scheduledTime" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="picurl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateScheduledMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateScheduledMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateScheduledMessageByMsgId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="msgId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateScheduledMessageByMsgIdResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllScheduledMessageByUserId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllScheduledMessageByUserIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllScheduledMessageByUserIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllUnSentMessagesOfUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllUnSentMessagesOfUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllUnSentMessagesOfUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWooQueueMessageByUserId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWooQueueMessageByUserIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWooQueueMessageByUserIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetScheduleMessageByMessageId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MessageId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetScheduleMessageByMessageIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetScheduleMessageByMessageIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckMessageExistsAtTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="schetime" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckMessageExistsAtTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckMessageExistsAtTimeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getScheduledMessageByProfileType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getScheduledMessageByProfileTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getScheduledMessageByProfileTypeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <s:schema targetNamespace="http://tempuri.org/AbstractTypes">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="UploadFileSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadFile" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="ADDScheduledMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:ADDScheduledMessage" />
+  </wsdl:message>
+  <wsdl:message name="ADDScheduledMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:ADDScheduledMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateScheduledMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateScheduledMessage" />
+  </wsdl:message>
+  <wsdl:message name="UpdateScheduledMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateScheduledMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateScheduledMessageByMsgIdSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateScheduledMessageByMsgId" />
+  </wsdl:message>
+  <wsdl:message name="UpdateScheduledMessageByMsgIdSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateScheduledMessageByMsgIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageByUserIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllScheduledMessageByUserId" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageByUserIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllScheduledMessageByUserIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUnSentMessagesOfUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllUnSentMessagesOfUser" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUnSentMessagesOfUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllUnSentMessagesOfUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWooQueueMessageByUserIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWooQueueMessageByUserId" />
+  </wsdl:message>
+  <wsdl:message name="GetWooQueueMessageByUserIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWooQueueMessageByUserIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetScheduleMessageByMessageIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetScheduleMessageByMessageId" />
+  </wsdl:message>
+  <wsdl:message name="GetScheduleMessageByMessageIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetScheduleMessageByMessageIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckMessageExistsAtTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckMessageExistsAtTime" />
+  </wsdl:message>
+  <wsdl:message name="CheckMessageExistsAtTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckMessageExistsAtTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getScheduledMessageByProfileTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:getScheduledMessageByProfileType" />
+  </wsdl:message>
+  <wsdl:message name="getScheduledMessageByProfileTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:getScheduledMessageByProfileTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileHttpGetIn">
+    <wsdl:part name="f" type="s2:StringArray" />
+    <wsdl:part name="fileName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ADDScheduledMessageHttpGetIn">
+    <wsdl:part name="typeandid" type="s:string" />
+    <wsdl:part name="ShareMessage" type="s:string" />
+    <wsdl:part name="ClientTime" type="s:string" />
+    <wsdl:part name="ScheduleTime" type="s:string" />
+    <wsdl:part name="Status" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="PicUrl" type="s:string" />
+    <wsdl:part name="CreateTime" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ADDScheduledMessageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateScheduledMessageHttpGetIn">
+    <wsdl:part name="typeidandmsgid" type="s:string" />
+    <wsdl:part name="ShareMessage" type="s:string" />
+    <wsdl:part name="scheduledTime" type="s:string" />
+    <wsdl:part name="picurl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateScheduledMessageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageByUserIdHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageByUserIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUnSentMessagesOfUserHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUnSentMessagesOfUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWooQueueMessageByUserIdHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWooQueueMessageByUserIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetScheduleMessageByMessageIdHttpGetIn">
+    <wsdl:part name="MessageId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetScheduleMessageByMessageIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckMessageExistsAtTimeHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="schetime" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckMessageExistsAtTimeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getScheduledMessageByProfileTypeHttpGetIn">
+    <wsdl:part name="profileType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getScheduledMessageByProfileTypeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileHttpPostIn">
+    <wsdl:part name="f" type="s2:StringArray" />
+    <wsdl:part name="fileName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ADDScheduledMessageHttpPostIn">
+    <wsdl:part name="typeandid" type="s:string" />
+    <wsdl:part name="ShareMessage" type="s:string" />
+    <wsdl:part name="ClientTime" type="s:string" />
+    <wsdl:part name="ScheduleTime" type="s:string" />
+    <wsdl:part name="Status" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="PicUrl" type="s:string" />
+    <wsdl:part name="CreateTime" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ADDScheduledMessageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateScheduledMessageHttpPostIn">
+    <wsdl:part name="typeidandmsgid" type="s:string" />
+    <wsdl:part name="ShareMessage" type="s:string" />
+    <wsdl:part name="scheduledTime" type="s:string" />
+    <wsdl:part name="picurl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateScheduledMessageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageByUserIdHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageByUserIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUnSentMessagesOfUserHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUnSentMessagesOfUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWooQueueMessageByUserIdHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWooQueueMessageByUserIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetScheduleMessageByMessageIdHttpPostIn">
+    <wsdl:part name="MessageId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetScheduleMessageByMessageIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckMessageExistsAtTimeHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="schetime" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckMessageExistsAtTimeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getScheduledMessageByProfileTypeHttpPostIn">
+    <wsdl:part name="profileType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getScheduledMessageByProfileTypeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="ScheduledMessageSoap">
+    <wsdl:operation name="UploadFile">
+      <wsdl:input message="tns:UploadFileSoapIn" />
+      <wsdl:output message="tns:UploadFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ADDScheduledMessage">
+      <wsdl:input message="tns:ADDScheduledMessageSoapIn" />
+      <wsdl:output message="tns:ADDScheduledMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateScheduledMessage">
+      <wsdl:input message="tns:UpdateScheduledMessageSoapIn" />
+      <wsdl:output message="tns:UpdateScheduledMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateScheduledMessageByMsgId">
+      <wsdl:input message="tns:UpdateScheduledMessageByMsgIdSoapIn" />
+      <wsdl:output message="tns:UpdateScheduledMessageByMsgIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageByUserId">
+      <wsdl:input message="tns:GetAllScheduledMessageByUserIdSoapIn" />
+      <wsdl:output message="tns:GetAllScheduledMessageByUserIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUnSentMessagesOfUser">
+      <wsdl:input message="tns:GetAllUnSentMessagesOfUserSoapIn" />
+      <wsdl:output message="tns:GetAllUnSentMessagesOfUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWooQueueMessageByUserId">
+      <wsdl:input message="tns:GetWooQueueMessageByUserIdSoapIn" />
+      <wsdl:output message="tns:GetWooQueueMessageByUserIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetScheduleMessageByMessageId">
+      <wsdl:input message="tns:GetScheduleMessageByMessageIdSoapIn" />
+      <wsdl:output message="tns:GetScheduleMessageByMessageIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckMessageExistsAtTime">
+      <wsdl:input message="tns:CheckMessageExistsAtTimeSoapIn" />
+      <wsdl:output message="tns:CheckMessageExistsAtTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getScheduledMessageByProfileType">
+      <wsdl:input message="tns:getScheduledMessageByProfileTypeSoapIn" />
+      <wsdl:output message="tns:getScheduledMessageByProfileTypeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ScheduledMessageHttpGet">
+    <wsdl:operation name="UploadFile">
+      <wsdl:input message="tns:UploadFileHttpGetIn" />
+      <wsdl:output message="tns:UploadFileHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ADDScheduledMessage">
+      <wsdl:input message="tns:ADDScheduledMessageHttpGetIn" />
+      <wsdl:output message="tns:ADDScheduledMessageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateScheduledMessage">
+      <wsdl:input message="tns:UpdateScheduledMessageHttpGetIn" />
+      <wsdl:output message="tns:UpdateScheduledMessageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageByUserId">
+      <wsdl:input message="tns:GetAllScheduledMessageByUserIdHttpGetIn" />
+      <wsdl:output message="tns:GetAllScheduledMessageByUserIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUnSentMessagesOfUser">
+      <wsdl:input message="tns:GetAllUnSentMessagesOfUserHttpGetIn" />
+      <wsdl:output message="tns:GetAllUnSentMessagesOfUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWooQueueMessageByUserId">
+      <wsdl:input message="tns:GetWooQueueMessageByUserIdHttpGetIn" />
+      <wsdl:output message="tns:GetWooQueueMessageByUserIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetScheduleMessageByMessageId">
+      <wsdl:input message="tns:GetScheduleMessageByMessageIdHttpGetIn" />
+      <wsdl:output message="tns:GetScheduleMessageByMessageIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckMessageExistsAtTime">
+      <wsdl:input message="tns:CheckMessageExistsAtTimeHttpGetIn" />
+      <wsdl:output message="tns:CheckMessageExistsAtTimeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getScheduledMessageByProfileType">
+      <wsdl:input message="tns:getScheduledMessageByProfileTypeHttpGetIn" />
+      <wsdl:output message="tns:getScheduledMessageByProfileTypeHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ScheduledMessageHttpPost">
+    <wsdl:operation name="UploadFile">
+      <wsdl:input message="tns:UploadFileHttpPostIn" />
+      <wsdl:output message="tns:UploadFileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ADDScheduledMessage">
+      <wsdl:input message="tns:ADDScheduledMessageHttpPostIn" />
+      <wsdl:output message="tns:ADDScheduledMessageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateScheduledMessage">
+      <wsdl:input message="tns:UpdateScheduledMessageHttpPostIn" />
+      <wsdl:output message="tns:UpdateScheduledMessageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageByUserId">
+      <wsdl:input message="tns:GetAllScheduledMessageByUserIdHttpPostIn" />
+      <wsdl:output message="tns:GetAllScheduledMessageByUserIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUnSentMessagesOfUser">
+      <wsdl:input message="tns:GetAllUnSentMessagesOfUserHttpPostIn" />
+      <wsdl:output message="tns:GetAllUnSentMessagesOfUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWooQueueMessageByUserId">
+      <wsdl:input message="tns:GetWooQueueMessageByUserIdHttpPostIn" />
+      <wsdl:output message="tns:GetWooQueueMessageByUserIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetScheduleMessageByMessageId">
+      <wsdl:input message="tns:GetScheduleMessageByMessageIdHttpPostIn" />
+      <wsdl:output message="tns:GetScheduleMessageByMessageIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckMessageExistsAtTime">
+      <wsdl:input message="tns:CheckMessageExistsAtTimeHttpPostIn" />
+      <wsdl:output message="tns:CheckMessageExistsAtTimeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getScheduledMessageByProfileType">
+      <wsdl:input message="tns:getScheduledMessageByProfileTypeHttpPostIn" />
+      <wsdl:output message="tns:getScheduledMessageByProfileTypeHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ScheduledMessageSoap" type="tns:ScheduledMessageSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UploadFile">
+      <soap:operation soapAction="http://tempuri.org/UploadFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ADDScheduledMessage">
+      <soap:operation soapAction="http://tempuri.org/ADDScheduledMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateScheduledMessage">
+      <soap:operation soapAction="http://tempuri.org/UpdateScheduledMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateScheduledMessageByMsgId">
+      <soap:operation soapAction="http://tempuri.org/UpdateScheduledMessageByMsgId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageByUserId">
+      <soap:operation soapAction="http://tempuri.org/GetAllScheduledMessageByUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUnSentMessagesOfUser">
+      <soap:operation soapAction="http://tempuri.org/GetAllUnSentMessagesOfUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWooQueueMessageByUserId">
+      <soap:operation soapAction="http://tempuri.org/GetWooQueueMessageByUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetScheduleMessageByMessageId">
+      <soap:operation soapAction="http://tempuri.org/GetScheduleMessageByMessageId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckMessageExistsAtTime">
+      <soap:operation soapAction="http://tempuri.org/CheckMessageExistsAtTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getScheduledMessageByProfileType">
+      <soap:operation soapAction="http://tempuri.org/getScheduledMessageByProfileType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ScheduledMessageSoap12" type="tns:ScheduledMessageSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UploadFile">
+      <soap12:operation soapAction="http://tempuri.org/UploadFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ADDScheduledMessage">
+      <soap12:operation soapAction="http://tempuri.org/ADDScheduledMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateScheduledMessage">
+      <soap12:operation soapAction="http://tempuri.org/UpdateScheduledMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateScheduledMessageByMsgId">
+      <soap12:operation soapAction="http://tempuri.org/UpdateScheduledMessageByMsgId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageByUserId">
+      <soap12:operation soapAction="http://tempuri.org/GetAllScheduledMessageByUserId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUnSentMessagesOfUser">
+      <soap12:operation soapAction="http://tempuri.org/GetAllUnSentMessagesOfUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWooQueueMessageByUserId">
+      <soap12:operation soapAction="http://tempuri.org/GetWooQueueMessageByUserId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetScheduleMessageByMessageId">
+      <soap12:operation soapAction="http://tempuri.org/GetScheduleMessageByMessageId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckMessageExistsAtTime">
+      <soap12:operation soapAction="http://tempuri.org/CheckMessageExistsAtTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getScheduledMessageByProfileType">
+      <soap12:operation soapAction="http://tempuri.org/getScheduledMessageByProfileType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ScheduledMessageHttpGet" type="tns:ScheduledMessageHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="UploadFile">
+      <http:operation location="/UploadFile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ADDScheduledMessage">
+      <http:operation location="/ADDScheduledMessage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateScheduledMessage">
+      <http:operation location="/UpdateScheduledMessage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageByUserId">
+      <http:operation location="/GetAllScheduledMessageByUserId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUnSentMessagesOfUser">
+      <http:operation location="/GetAllUnSentMessagesOfUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWooQueueMessageByUserId">
+      <http:operation location="/GetWooQueueMessageByUserId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetScheduleMessageByMessageId">
+      <http:operation location="/GetScheduleMessageByMessageId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckMessageExistsAtTime">
+      <http:operation location="/CheckMessageExistsAtTime" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getScheduledMessageByProfileType">
+      <http:operation location="/getScheduledMessageByProfileType" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ScheduledMessageHttpPost" type="tns:ScheduledMessageHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="UploadFile">
+      <http:operation location="/UploadFile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ADDScheduledMessage">
+      <http:operation location="/ADDScheduledMessage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateScheduledMessage">
+      <http:operation location="/UpdateScheduledMessage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageByUserId">
+      <http:operation location="/GetAllScheduledMessageByUserId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUnSentMessagesOfUser">
+      <http:operation location="/GetAllUnSentMessagesOfUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWooQueueMessageByUserId">
+      <http:operation location="/GetWooQueueMessageByUserId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetScheduleMessageByMessageId">
+      <http:operation location="/GetScheduleMessageByMessageId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckMessageExistsAtTime">
+      <http:operation location="/CheckMessageExistsAtTime" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getScheduledMessageByProfileType">
+      <http:operation location="/getScheduledMessageByProfileType" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ScheduledMessage">
+    <wsdl:port name="ScheduledMessageSoap" binding="tns:ScheduledMessageSoap">
+      <soap:address location="http://api.socioboard.com/Services/ScheduledMessage.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ScheduledMessageSoap12" binding="tns:ScheduledMessageSoap12">
+      <soap12:address location="http://api.socioboard.com/Services/ScheduledMessage.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ScheduledMessageHttpGet" binding="tns:ScheduledMessageHttpGet">
+      <http:address location="http://api.socioboard.com/Services/ScheduledMessage.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ScheduledMessageHttpPost" binding="tns:ScheduledMessageHttpPost">
+      <http:address location="http://api.socioboard.com/Services/ScheduledMessage.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

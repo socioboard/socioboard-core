@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AddFacebookAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddFacebookAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddFacebookAccountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SheduleFacebookMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FacebookId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sscheduledmsgguid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SheduleFacebookMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SheduleFacebookMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFacebookData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FbId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFacebookDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFacebookDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddFacebookAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:AddFacebookAccount" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:AddFacebookAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="SheduleFacebookMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:SheduleFacebookMessage" />
+  </wsdl:message>
+  <wsdl:message name="SheduleFacebookMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:SheduleFacebookMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFacebookData" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFacebookDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountHttpGetIn">
+    <wsdl:part name="code" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SheduleFacebookMessageHttpGetIn">
+    <wsdl:part name="FacebookId" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="sscheduledmsgguid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SheduleFacebookMessageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookDataHttpGetIn">
+    <wsdl:part name="FbId" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookDataHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountHttpPostIn">
+    <wsdl:part name="code" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SheduleFacebookMessageHttpPostIn">
+    <wsdl:part name="FacebookId" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="sscheduledmsgguid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SheduleFacebookMessageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookDataHttpPostIn">
+    <wsdl:part name="FbId" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookDataHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="FacebookSoap">
+    <wsdl:operation name="AddFacebookAccount">
+      <wsdl:input message="tns:AddFacebookAccountSoapIn" />
+      <wsdl:output message="tns:AddFacebookAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SheduleFacebookMessage">
+      <wsdl:input message="tns:SheduleFacebookMessageSoapIn" />
+      <wsdl:output message="tns:SheduleFacebookMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookData">
+      <wsdl:input message="tns:GetFacebookDataSoapIn" />
+      <wsdl:output message="tns:GetFacebookDataSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="FacebookHttpGet">
+    <wsdl:operation name="AddFacebookAccount">
+      <wsdl:input message="tns:AddFacebookAccountHttpGetIn" />
+      <wsdl:output message="tns:AddFacebookAccountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SheduleFacebookMessage">
+      <wsdl:input message="tns:SheduleFacebookMessageHttpGetIn" />
+      <wsdl:output message="tns:SheduleFacebookMessageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookData">
+      <wsdl:input message="tns:GetFacebookDataHttpGetIn" />
+      <wsdl:output message="tns:GetFacebookDataHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="FacebookHttpPost">
+    <wsdl:operation name="AddFacebookAccount">
+      <wsdl:input message="tns:AddFacebookAccountHttpPostIn" />
+      <wsdl:output message="tns:AddFacebookAccountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SheduleFacebookMessage">
+      <wsdl:input message="tns:SheduleFacebookMessageHttpPostIn" />
+      <wsdl:output message="tns:SheduleFacebookMessageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookData">
+      <wsdl:input message="tns:GetFacebookDataHttpPostIn" />
+      <wsdl:output message="tns:GetFacebookDataHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FacebookSoap" type="tns:FacebookSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddFacebookAccount">
+      <soap:operation soapAction="http://tempuri.org/AddFacebookAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SheduleFacebookMessage">
+      <soap:operation soapAction="http://tempuri.org/SheduleFacebookMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookData">
+      <soap:operation soapAction="http://tempuri.org/GetFacebookData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FacebookSoap12" type="tns:FacebookSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddFacebookAccount">
+      <soap12:operation soapAction="http://tempuri.org/AddFacebookAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SheduleFacebookMessage">
+      <soap12:operation soapAction="http://tempuri.org/SheduleFacebookMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookData">
+      <soap12:operation soapAction="http://tempuri.org/GetFacebookData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FacebookHttpGet" type="tns:FacebookHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="AddFacebookAccount">
+      <http:operation location="/AddFacebookAccount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SheduleFacebookMessage">
+      <http:operation location="/SheduleFacebookMessage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookData">
+      <http:operation location="/GetFacebookData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FacebookHttpPost" type="tns:FacebookHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="AddFacebookAccount">
+      <http:operation location="/AddFacebookAccount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SheduleFacebookMessage">
+      <http:operation location="/SheduleFacebookMessage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookData">
+      <http:operation location="/GetFacebookData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Facebook">
+    <wsdl:port name="FacebookSoap" binding="tns:FacebookSoap">
+      <soap:address location="http://api.socioboard.com/Services/Facebook.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FacebookSoap12" binding="tns:FacebookSoap12">
+      <soap12:address location="http://api.socioboard.com/Services/Facebook.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FacebookHttpGet" binding="tns:FacebookHttpGet">
+      <http:address location="http://api.socioboard.com/Services/Facebook.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FacebookHttpPost" binding="tns:FacebookHttpPost">
+      <http:address location="http://api.socioboard.com/Services/Facebook.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

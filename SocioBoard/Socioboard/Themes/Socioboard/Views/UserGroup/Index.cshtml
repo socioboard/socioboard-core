@@ -1,0 +1,135 @@
+﻿<div id="page-wrapper">
+</div>
+
+
+
+<script type="text/javascript">
+    function loadusergroup() {
+        $('#page-wrapper').load('../UserGroup/LoadUserGroup')
+    }
+    function loadgroupinfo(groupid, groupname) {
+        $.ajax({
+            type: 'POST',
+            url: '../UserGroup/connectedprofilestothisgroup?selectedgroupid=' + groupid,
+            success: function (msg) {
+                $('#profileconnectedwithgroup').html(msg);
+                $('#groupinfo').css({ "display": "block" });
+                $('#groupname').html(" " + groupname);
+                
+                
+            },
+            async: false
+        });
+       
+        $.ajax({
+            type: 'POST',
+            url: '../UserGroup/PendingUser?selectedgroupid=' + groupid,
+            success: function (msg) {
+                $('#pendinguserforcurrentgroup').html(msg);
+                
+                $('#invitationmember').attr('usergroupname', groupname);
+            },
+            async: false
+        });
+        $.ajax({
+            type: 'POST',
+            url: '../UserGroup/AcceptedUser?selectedgroupid=' + groupid,
+            success: function (msg) {
+                $('#accepteduserforcurrentgroup').html(msg);
+
+            },
+            async: false
+        });
+    }
+
+    function addtocurrentgroup(profileid, profilepic, networkicon, network) {
+
+        if ($('#profileconnectedwithgroup').html().indexOf(profileid) <= -1) {
+            $('#profileconnectedwithgroup').append('<div id="' + profileid + '" style="display:none" class="col-sm-1 groupuserpictiny"><div class="delet_icon" onclick="removeprofilefromgroup(\'' + profileid + '\')"></div><img  src=' + profilepic + ' class="img-responsive img-rounded groupprofiles"><img class="img-responsive img-circle groupsocialIconPoss" src=' + networkicon + '></div>');
+            $('#' + profileid).fadeIn(750);
+            $.ajax({
+                type: 'POST',
+                url: '../UserGroup/AddprofileToCurrentGroup?profileid=' + profileid + '&network=' + network,
+                success: function (msg) {
+
+                },
+                async: false
+            });
+        }
+        else {
+            alertify.error("Profile Already Exist");
+        }
+    };
+
+    function removeprofilefromgroup(profileid) {
+        //alert(profileid);
+        $('#' + profileid).hide(250, function () {
+            $('#' + profileid).remove();
+        });
+        $.ajax({
+            type: 'POST',
+            url: '../UserGroup/DeleteprofileFromCurrentGroup?profileid=' + profileid,
+            success: function (msg) {
+
+            },
+            async: false
+        });
+    }
+
+    function confirmDelGroup(groupid) {
+        alertify.confirm("Are you Sure want to delete this Group ?", function (e) {
+            if (e) {
+                $.ajax
+        ({
+            type: "POST",
+            url: "../UserGroup/DeleteGroup?Groupid=" + groupid,
+            data: '',
+            dataType: "html",
+            success: function (msg) {
+                alertify.success("Group Deleted Successfully");
+                window.location = self.location;
+
+            }
+        });
+            } else {
+                debugger;
+
+            }
+        });
+    }
+
+    function inviteteammember()
+    {
+        $('#inviteteammember').modal('show');
+        $('#usergroupname').html(" " + $('#invitationmember').attr('usergroupname'))
+        
+    }
+
+    function addteam()
+    {
+        var teamemail = $('#txtteamemail').val();
+        if (teamemail == "") {
+            alertify.error("Please enter your friend email")
+            return false;
+        }
+        else {
+            alert(teamemail);
+            $.ajax({
+                type: 'POST',
+                url: '../UserGroup/AddTeamMember?email=' + teamemail,
+                success: function (msg) {
+                    $('#inviteteammember').modal('hide');
+                    alertify.success('Mail send successfully');
+                },
+                async: false
+            });
+        }
+    }
+
+
+    $(document).ready(function () {
+        loadusergroup();
+
+    });
+
+</script>

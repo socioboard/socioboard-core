@@ -1,0 +1,425 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    bool check = true;
+}
+
+
+<ul class="chat">
+    @foreach (var dicitem in (Dictionary<string, List<object>>)Model)
+    {
+        if (dicitem.Key == "facebook")
+        {
+            List<object> lstdic = (List<object>)dicitem.Value;
+            foreach (var facebookmsg in lstdic)
+            {
+                FacebookMessage item = (FacebookMessage)facebookmsg;
+                try
+                {
+                    string[] str = Socioboard.Helper.UrlExtractor.splitUrlFromString(item.Message);
+                    if (check == true)
+                    { 
+        <li class="left clearfix">
+            <span class="chat-img pull-left">
+                <img src="@item.FromProfileUrl" class="img-circle profilePic" alt="User Avatar" onclick="getFacebookProfiles('@item.FromId')">
+            </span>
+            <div class="chat-body clearfix">
+                <div>
+                    <a target="_blank" href="http://www.facebook.com/@item.FromId"><strong class="primary-font">@item.FromName</strong></a>
+                    <small class="pull-right text-muted">
+                        <i class="fa fa-clock-o fa-fw"></i>12 mins ago
+                                            </small>
+                </div>
+                @foreach (string substritem in str)
+                {
+                    try
+                    {
+                        if (!string.IsNullOrEmpty(substritem))
+                        {
+                            if (substritem.Contains("http"))
+                            {
+                    <a target="_blank" href="@substritem ">@substritem</a>
+                            }
+                            else
+                            {
+                                string hrefPost = string.Empty;
+
+                                try
+                                {
+                                    hrefPost = "https://www.facebook.com/" + item.FromId + "/posts/" + item.MessageId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine("Error : " + ex.StackTrace);
+
+                                }
+                                if (!string.IsNullOrEmpty(hrefPost))
+                                {
+                    <a target="_blank" href="@hrefPost">@substritem</a>
+                                }
+                                else
+                                {
+                    @substritem;
+
+                                }
+                            }
+
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+
+                }
+            </div>
+            <br />
+            <div class="input-group">
+                <input type="text" id="textfb_@item.MessageId" class="form-control input-sm" placeholder="Type your comment here...">
+                <span class="input-group-btn">
+                    <button class="btn btn-warning btn-sm" id="okfb_@item.MessageId" onclick="commentFB('@item.MessageId','@item.ProfileId')">
+                        Comment
+                                           
+                                       
+                    </button>
+
+                    @if (item.FbLike == "likes")
+                    {
+                        <button status="@item.FbLike" id="likefb_@item.MessageId" onclick="facebookLike('@item.Id','@item.ProfileId','@item.MessageId')" type="button" class="btn btn-info btn-circle">
+                            <i class="fa fa-thumbs-o-up"></i>
+                        </button>
+                    }
+                    else
+                    {
+                        <button status="@item.FbLike" id="likefb_@item.MessageId" onclick="facebookLike('@item.Id','@item.ProfileId','@item.MessageId')" type="button" class="btn btn-info btn-circle">
+                            <i class="fa fa-thumbs-o-down"></i>
+                        </button>
+                    
+                    }
+                </span>
+            </div>
+        </li>
+                    check = false;
+                    }
+                    else
+                    {
+        <li class="right clearfix">
+            <span class="chat-img pull-right">
+                <img src="@item.FromProfileUrl" class="img-circle profilePic" alt="User Avatar" onclick="getFacebookProfiles('@item.FromId')">
+            </span>
+            <div class="chat-body clearfix">
+                <div>
+                    <a target="_blank" href="http://www.facebook.com/@item.FromId"><strong class="pull-right primary-font">@item.FromName</strong></a>
+                    <small class="text-muted">
+                        <i class="fa fa-clock-o fa-fw"></i>12 mins ago
+                                            </small>
+                </div>
+                @foreach (string substritem in str)
+                {
+                    try
+                    {
+                        if (!string.IsNullOrEmpty(substritem))
+                        {
+                            if (substritem.Contains("http"))
+                            {
+                    <a target="_blank" href="@substritem ">@substritem</a>
+                            }
+                            else
+                            {
+                                string hrefPost = string.Empty;
+
+                                try
+                                {
+                                    hrefPost = "https://www.facebook.com/" + item.FromId + "/posts/" + item.MessageId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine("Error : " + ex.StackTrace);
+
+                                }
+                                if (!string.IsNullOrEmpty(hrefPost))
+                                {
+                    <a target="_blank" href="@hrefPost">@substritem</a>
+                                }
+                                else
+                                {
+                    @substritem;
+
+                                }
+                            }
+
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+
+                }
+            </div>
+            <br />
+            <div class="input-group">
+                <input type="text" id="textfb_@item.MessageId" class="form-control input-sm" placeholder="Type your comment here...">
+                <span class="input-group-btn">
+                    <button class="btn btn-warning btn-sm" id="okfb_@item.MessageId" onclick="commentFB('@item.MessageId','@item.ProfileId')">
+                        Comment
+                                           
+                                       
+                    </button>
+                    @if (item.FbLike == "likes")
+                    {
+                        <button status="@item.FbLike" id="likefb_@item.MessageId" onclick="facebookLike('@item.Id','@item.ProfileId','@item.MessageId')" type="button" class="btn btn-info btn-circle">
+                            <i class="fa fa-thumbs-o-up"></i>
+                        </button>
+                    }
+                    else
+                    {
+                        <button status="@item.FbLike" id="likefb_@item.MessageId" onclick="facebookLike('@item.Id','@item.ProfileId','@item.MessageId')" type="button" class="btn btn-info btn-circle">
+                            <i class="fa fa-thumbs-o-down"></i>
+                        </button>
+                    
+                    }
+
+                </span>
+            </div>
+        </li>  
+                    check = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+        }
+
+
+        if (dicitem.Key == "twitter")
+        {
+            List<object> lstdic = (List<object>)dicitem.Value;
+            foreach (var twitterfeed in lstdic)
+            {
+                TwitterFeed item = (TwitterFeed)twitterfeed;
+                try
+                {
+                    string[] str = Socioboard.Helper.UrlExtractor.splitUrlFromString(item.Feed);
+                    if (check == true)
+                    { 
+        <li class="left clearfix">
+            <span class="chat-img pull-left">
+                <img src="@item.FromProfileUrl" class="img-circle profilePic" alt="User Avatar" onclick="getFacebookProfiles('@item.FromId')">
+            </span>
+            <div class="chat-body clearfix">
+                <div>
+                    <a target="_blank" href="http://www.facebook.com/@item.FromId"><strong class="primary-font">@item.FromName</strong></a>
+                    <small class="pull-right text-muted">
+                        <i class="fa fa-clock-o fa-fw"></i>12 mins ago
+                                            </small>
+                </div>
+                @foreach (string substritem in str)
+                {
+                    try
+                    {
+                        if (!string.IsNullOrEmpty(substritem))
+                        {
+                            if (substritem.Contains("http"))
+                            {
+                    <a target="_blank" href="@substritem ">@substritem</a>
+                            }
+                            else
+                            {
+                                string hrefPost = string.Empty;
+
+                                try
+                                {
+                                    hrefPost = "https://www.twitter.com/" + item.FromId + "/status/" + item.MessageId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine("Error : " + ex.StackTrace);
+
+                                }
+                                if (!string.IsNullOrEmpty(hrefPost))
+                                {
+                    <a target="_blank" href="@hrefPost">@substritem</a>
+                                }
+                                else
+                                {
+                    @substritem;
+
+                                }
+                            }
+
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                       
+                    }
+
+                }
+            </div>
+
+
+        </li>
+                check = false;
+                    }
+                    else
+                    {
+        <li class="right clearfix">
+            <span class="chat-img pull-right">
+                <img src="@item.FromProfileUrl" class="img-circle profilePic" alt="User Avatar" onclick="getFacebookProfiles('@item.FromId')">
+            </span>
+            <div class="chat-body clearfix">
+                <div>
+                    <a target="_blank" href="http://www.facebook.com/@item.FromId"><strong class="pull-right primary-font">@item.FromName</strong></a>
+                    <small class="text-muted">
+                        <i class="fa fa-clock-o fa-fw"></i>12 mins ago
+                                            </small>
+                </div>
+                @foreach (string substritem in str)
+                {
+                    try
+                    {
+                        if (!string.IsNullOrEmpty(substritem))
+                        {
+                            if (substritem.Contains("http"))
+                            {
+                    <a target="_blank" href="@substritem ">@substritem</a>
+                            }
+                            else
+                            {
+                                string hrefPost = string.Empty;
+
+                                try
+                                {
+                                    hrefPost = "https://www.twitter.com/" + item.FromId + "/status/" + item.MessageId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine("Error : " + ex.StackTrace);
+
+                                }
+                                if (!string.IsNullOrEmpty(hrefPost))
+                                {
+                    <a target="_blank" href="@hrefPost">@substritem</a>
+                                }
+                                else
+                                {
+                    @substritem;
+
+                                }
+                            }
+
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+
+                }
+            </div>
+
+        </li>  
+                check = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+
+
+
+
+                //Twitter Finished
+
+
+            }
+        }
+
+        if (dicitem.Key == "linkedin")
+        {
+            List<object> lstdic = (List<object>)dicitem.Value;
+            foreach (var linkedfeed in lstdic)
+            {
+                LinkedInFeed item = (LinkedInFeed)linkedfeed;
+                try
+                {
+                    string[] str = Socioboard.Helper.UrlExtractor.splitUrlFromString(item.Feeds);
+                    string PicUrl = string.Empty;
+                    if (string.IsNullOrEmpty(item.FromPicUrl))
+                    {
+                        PicUrl = "../Contents/img/blank_img.png";
+                    }
+                    else
+                    {
+                        PicUrl = item.FromPicUrl;
+                    }
+                    if (check == true)
+                    { 
+        <li class="left clearfix">
+            <span class="chat-img pull-left">
+                <img src="@PicUrl" class="img-circle profilePic" alt="User Avatar" onclick="getFacebookProfiles('@item.FromId')">
+            </span>
+            <div class="chat-body clearfix">
+                <div>
+                    <a target="_blank" href="#"><strong class="primary-font">@item.FromName</strong></a>
+                    <small class="pull-right text-muted">
+                        <i class="fa fa-clock-o fa-fw"></i>@item.FeedsDate
+                    </small>
+                </div>
+
+                <a target="_blank" href="#">@item.Feeds</a>
+            </div>
+
+
+        </li>
+                        check = false;
+                    }
+                    else
+                    {
+        <li class="right clearfix">
+            <span class="chat-img pull-right">
+                <img src="@PicUrl" class="img-circle profilePic" alt="User Avatar" onclick="getFacebookProfiles('@item.FromId')">
+            </span>
+            <div class="chat-body clearfix">
+                <div>
+                    <a target="_blank" href="#"><strong class="pull-right primary-font">@item.FromName</strong></a>
+                    <small class="text-muted">
+                        <i class="fa fa-clock-o fa-fw"></i>12 mins ago
+                                            </small>
+                </div>
+
+                <a target="_blank" href="#">@item.Feeds</a>
+
+            </div>
+
+        </li>  
+                        check = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+
+
+
+
+                //Twitter Finished
+
+
+            }
+        }
+
+
+
+
+    }
+
+</ul>

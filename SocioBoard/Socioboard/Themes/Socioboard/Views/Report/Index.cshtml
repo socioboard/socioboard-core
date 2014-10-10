@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "Report";
+}
+
+
+
+<script type="text/javascript">
+      
+    function TeamReportDetails(days)
+    {
+        var fd = new FormData();
+     
+        fd.append("days", days);
+        $.ajax({
+            type: 'POST',
+            url: '../Report/Teamreportpartial',
+            data: fd,
+            processData: false,
+            contentType: false,
+            success: function (msg) {
+              
+                $('#page-wrapper').html('').append(msg);
+            },
+            async: false
+        });
+    }
+
+    function loadgroupstat(days)
+    {
+        var fd = new FormData();
+
+        fd.append("days", days);
+        $.ajax({
+            type: 'POST',
+            url: '../Report/GroupStatPartial',
+            data: fd,
+            processData: false,
+            contentType: false,
+            success: function (msg) {
+
+                $('#page-wrapper').html('').append(msg);
+            },
+            async: false
+        });
+    }
+
+
+    function twitterdetails(twtProfileId,days)
+    {
+        var fd = new FormData();
+        fd.append("twtProfileId", twtProfileId);
+        fd.append("days", days);
+
+        $.ajax({
+            type: 'POST',
+            url: '../Report/TwitterReportPartial',
+            data: fd,
+            processData: false,
+            contentType: false,
+            success: function (msg) {                
+                $('#page-wrapper').html('').append(msg);
+               // loadChart();
+            },
+            async: false
+        });
+    }
+
+    function loadfeesmenu() {
+
+       // alert('load feeds');
+        //$('#feeds').load('../Feeds/loadmenu');
+        $.ajax({
+            type: 'POST',
+            url: '../Report/loadmenu',
+            success: function (msg) {
+                //alert(msg);
+                $('#reports').html('').append(msg);
+            },
+            async: false
+        });
+    }
+
+    $(document).ready(function () {
+        debugger;
+        $('#side-menu a').removeClass('active');
+        $("#reports").addClass('active');
+        $("#reports").children().addClass('active');
+        loadfeesmenu();
+
+       
+    });
+
+</script>
+
+
+<div id="page-wrapper">
+
+</div>

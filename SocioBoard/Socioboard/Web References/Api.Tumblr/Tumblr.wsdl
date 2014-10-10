@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetTumblrRedirectUrl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="consumerKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="consumerSecret" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CallBackUrl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTumblrRedirectUrlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTumblrRedirectUrlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddTumblrAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="client_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="client_secret" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="redirect_uri" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddTumblrAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddTumblrAccountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTumblrData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Tumblrid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTumblrDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTumblrDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SheduleTumblrMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TumblrId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sscheduledmsgguid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SheduleTumblrMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SheduleTumblrMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TumblerData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tumblrusername" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TumblerDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TumblerDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TumblrComposeMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="currentdatetime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="picurl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TumblrComposeMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TumblrComposeMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetTumblrRedirectUrlSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTumblrRedirectUrl" />
+  </wsdl:message>
+  <wsdl:message name="GetTumblrRedirectUrlSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTumblrRedirectUrlResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddTumblrAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:AddTumblrAccount" />
+  </wsdl:message>
+  <wsdl:message name="AddTumblrAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:AddTumblrAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTumblrDataSoapIn">
+    <wsdl:part name="parameters" element="tns:getTumblrData" />
+  </wsdl:message>
+  <wsdl:message name="getTumblrDataSoapOut">
+    <wsdl:part name="parameters" element="tns:getTumblrDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="SheduleTumblrMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:SheduleTumblrMessage" />
+  </wsdl:message>
+  <wsdl:message name="SheduleTumblrMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:SheduleTumblrMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="TumblerDataSoapIn">
+    <wsdl:part name="parameters" element="tns:TumblerData" />
+  </wsdl:message>
+  <wsdl:message name="TumblerDataSoapOut">
+    <wsdl:part name="parameters" element="tns:TumblerDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="TumblrComposeMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:TumblrComposeMessage" />
+  </wsdl:message>
+  <wsdl:message name="TumblrComposeMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:TumblrComposeMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTumblrRedirectUrlHttpGetIn">
+    <wsdl:part name="consumerKey" type="s:string" />
+    <wsdl:part name="consumerSecret" type="s:string" />
+    <wsdl:part name="CallBackUrl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTumblrRedirectUrlHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddTumblrAccountHttpGetIn">
+    <wsdl:part name="client_id" type="s:string" />
+    <wsdl:part name="client_secret" type="s:string" />
+    <wsdl:part name="redirect_uri" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="code" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddTumblrAccountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getTumblrDataHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="Tumblrid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getTumblrDataHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SheduleTumblrMessageHttpGetIn">
+    <wsdl:part name="TumblrId" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="sscheduledmsgguid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SheduleTumblrMessageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TumblerDataHttpGetIn">
+    <wsdl:part name="tumblrusername" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TumblerDataHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TumblrComposeMessageHttpGetIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="currentdatetime" type="s:string" />
+    <wsdl:part name="picurl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TumblrComposeMessageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTumblrRedirectUrlHttpPostIn">
+    <wsdl:part name="consumerKey" type="s:string" />
+    <wsdl:part name="consumerSecret" type="s:string" />
+    <wsdl:part name="CallBackUrl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTumblrRedirectUrlHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddTumblrAccountHttpPostIn">
+    <wsdl:part name="client_id" type="s:string" />
+    <wsdl:part name="client_secret" type="s:string" />
+    <wsdl:part name="redirect_uri" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="code" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddTumblrAccountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getTumblrDataHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="Tumblrid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getTumblrDataHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SheduleTumblrMessageHttpPostIn">
+    <wsdl:part name="TumblrId" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="sscheduledmsgguid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SheduleTumblrMessageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TumblerDataHttpPostIn">
+    <wsdl:part name="tumblrusername" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TumblerDataHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TumblrComposeMessageHttpPostIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="currentdatetime" type="s:string" />
+    <wsdl:part name="picurl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TumblrComposeMessageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="TumblrSoap">
+    <wsdl:operation name="GetTumblrRedirectUrl">
+      <wsdl:input message="tns:GetTumblrRedirectUrlSoapIn" />
+      <wsdl:output message="tns:GetTumblrRedirectUrlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTumblrAccount">
+      <wsdl:input message="tns:AddTumblrAccountSoapIn" />
+      <wsdl:output message="tns:AddTumblrAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTumblrData">
+      <wsdl:input message="tns:getTumblrDataSoapIn" />
+      <wsdl:output message="tns:getTumblrDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SheduleTumblrMessage">
+      <wsdl:input message="tns:SheduleTumblrMessageSoapIn" />
+      <wsdl:output message="tns:SheduleTumblrMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TumblerData">
+      <wsdl:input message="tns:TumblerDataSoapIn" />
+      <wsdl:output message="tns:TumblerDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TumblrComposeMessage">
+      <wsdl:input message="tns:TumblrComposeMessageSoapIn" />
+      <wsdl:output message="tns:TumblrComposeMessageSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TumblrHttpGet">
+    <wsdl:operation name="GetTumblrRedirectUrl">
+      <wsdl:input message="tns:GetTumblrRedirectUrlHttpGetIn" />
+      <wsdl:output message="tns:GetTumblrRedirectUrlHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTumblrAccount">
+      <wsdl:input message="tns:AddTumblrAccountHttpGetIn" />
+      <wsdl:output message="tns:AddTumblrAccountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTumblrData">
+      <wsdl:input message="tns:getTumblrDataHttpGetIn" />
+      <wsdl:output message="tns:getTumblrDataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SheduleTumblrMessage">
+      <wsdl:input message="tns:SheduleTumblrMessageHttpGetIn" />
+      <wsdl:output message="tns:SheduleTumblrMessageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TumblerData">
+      <wsdl:input message="tns:TumblerDataHttpGetIn" />
+      <wsdl:output message="tns:TumblerDataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TumblrComposeMessage">
+      <wsdl:input message="tns:TumblrComposeMessageHttpGetIn" />
+      <wsdl:output message="tns:TumblrComposeMessageHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TumblrHttpPost">
+    <wsdl:operation name="GetTumblrRedirectUrl">
+      <wsdl:input message="tns:GetTumblrRedirectUrlHttpPostIn" />
+      <wsdl:output message="tns:GetTumblrRedirectUrlHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTumblrAccount">
+      <wsdl:input message="tns:AddTumblrAccountHttpPostIn" />
+      <wsdl:output message="tns:AddTumblrAccountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTumblrData">
+      <wsdl:input message="tns:getTumblrDataHttpPostIn" />
+      <wsdl:output message="tns:getTumblrDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SheduleTumblrMessage">
+      <wsdl:input message="tns:SheduleTumblrMessageHttpPostIn" />
+      <wsdl:output message="tns:SheduleTumblrMessageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TumblerData">
+      <wsdl:input message="tns:TumblerDataHttpPostIn" />
+      <wsdl:output message="tns:TumblerDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TumblrComposeMessage">
+      <wsdl:input message="tns:TumblrComposeMessageHttpPostIn" />
+      <wsdl:output message="tns:TumblrComposeMessageHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TumblrSoap" type="tns:TumblrSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTumblrRedirectUrl">
+      <soap:operation soapAction="http://tempuri.org/GetTumblrRedirectUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTumblrAccount">
+      <soap:operation soapAction="http://tempuri.org/AddTumblrAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTumblrData">
+      <soap:operation soapAction="http://tempuri.org/getTumblrData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SheduleTumblrMessage">
+      <soap:operation soapAction="http://tempuri.org/SheduleTumblrMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TumblerData">
+      <soap:operation soapAction="http://tempuri.org/TumblerData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TumblrComposeMessage">
+      <soap:operation soapAction="http://tempuri.org/TumblrComposeMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TumblrSoap12" type="tns:TumblrSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTumblrRedirectUrl">
+      <soap12:operation soapAction="http://tempuri.org/GetTumblrRedirectUrl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTumblrAccount">
+      <soap12:operation soapAction="http://tempuri.org/AddTumblrAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTumblrData">
+      <soap12:operation soapAction="http://tempuri.org/getTumblrData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SheduleTumblrMessage">
+      <soap12:operation soapAction="http://tempuri.org/SheduleTumblrMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TumblerData">
+      <soap12:operation soapAction="http://tempuri.org/TumblerData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TumblrComposeMessage">
+      <soap12:operation soapAction="http://tempuri.org/TumblrComposeMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TumblrHttpGet" type="tns:TumblrHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetTumblrRedirectUrl">
+      <http:operation location="/GetTumblrRedirectUrl" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTumblrAccount">
+      <http:operation location="/AddTumblrAccount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTumblrData">
+      <http:operation location="/getTumblrData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SheduleTumblrMessage">
+      <http:operation location="/SheduleTumblrMessage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TumblerData">
+      <http:operation location="/TumblerData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TumblrComposeMessage">
+      <http:operation location="/TumblrComposeMessage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TumblrHttpPost" type="tns:TumblrHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetTumblrRedirectUrl">
+      <http:operation location="/GetTumblrRedirectUrl" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTumblrAccount">
+      <http:operation location="/AddTumblrAccount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTumblrData">
+      <http:operation location="/getTumblrData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SheduleTumblrMessage">
+      <http:operation location="/SheduleTumblrMessage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TumblerData">
+      <http:operation location="/TumblerData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TumblrComposeMessage">
+      <http:operation location="/TumblrComposeMessage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Tumblr">
+    <wsdl:port name="TumblrSoap" binding="tns:TumblrSoap">
+      <soap:address location="http://localhost:6361/Services/Tumblr.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TumblrSoap12" binding="tns:TumblrSoap12">
+      <soap12:address location="http://localhost:6361/Services/Tumblr.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TumblrHttpGet" binding="tns:TumblrHttpGet">
+      <http:address location="http://localhost:6361/Services/Tumblr.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TumblrHttpPost" binding="tns:TumblrHttpPost">
+      <http:address location="http://localhost:6361/Services/Tumblr.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,20 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    User objUser = (User)Session["User"];
+}
+@foreach (var item in (List<Domain.Socioboard.Domain.Groups>)Model)
+{
+    if (item.GroupName != System.Configuration.ConfigurationManager.AppSettings["domain"])
+    {
+    <li style="width:150px;"><a data-toggle="tab" href="#@item.Id">
+        <div class="deletegroup">
+            <div onclick="confirmDelGroup('@item.Id');" class="delet_icon"></div>
+            <img onclick="loadgroupinfo('@item.Id','@item.GroupName')"  class="img-responsive" src="/Themes/@path/Contents/img/group-folder-sprite.png">
+        </div>
+        @item.GroupName</a>
+    </li>
+    }
+}
+
+

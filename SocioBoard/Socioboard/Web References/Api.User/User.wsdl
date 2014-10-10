@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmailId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Pass_x0020_Username">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmailId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AccountType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Pass_x0020_UsernameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Pass_x0020_UsernameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="timezone" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddTeamMembers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="teamid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddTeamMembersResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ChangePassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmailId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangePasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChangePasswordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProfilesConnected">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProfilesConnectedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProfilesConnectedResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUsersById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUsersByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getUsersByIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserInfoByEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userEmail" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserInfoByEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getUserInfoByEmailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="Pass_x0020_UsernameSoapIn">
+    <wsdl:part name="parameters" element="tns:Pass_x0020_Username" />
+  </wsdl:message>
+  <wsdl:message name="Pass_x0020_UsernameSoapOut">
+    <wsdl:part name="parameters" element="tns:Pass_x0020_UsernameResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateUser" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddTeamMembersSoapIn">
+    <wsdl:part name="parameters" element="tns:AddTeamMembers" />
+  </wsdl:message>
+  <wsdl:message name="AddTeamMembersSoapOut">
+    <wsdl:part name="parameters" element="tns:AddTeamMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:ChangePassword" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:ChangePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProfilesConnectedSoapIn">
+    <wsdl:part name="parameters" element="tns:ProfilesConnected" />
+  </wsdl:message>
+  <wsdl:message name="ProfilesConnectedSoapOut">
+    <wsdl:part name="parameters" element="tns:ProfilesConnectedResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUsersByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:getUsersById" />
+  </wsdl:message>
+  <wsdl:message name="getUsersByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:getUsersByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserInfoByEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:getUserInfoByEmail" />
+  </wsdl:message>
+  <wsdl:message name="getUserInfoByEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserInfoByEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginHttpGetIn">
+    <wsdl:part name="EmailId" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LoginHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Pass_x0020_UsernameHttpGetIn">
+    <wsdl:part name="EmailId" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="AccountType" type="s:string" />
+    <wsdl:part name="Username" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Pass_x0020_UsernameHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="fname" type="s:string" />
+    <wsdl:part name="lname" type="s:string" />
+    <wsdl:part name="timezone" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddTeamMembersHttpGetIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="teamid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddTeamMembersHttpGetOut" />
+  <wsdl:message name="ChangePasswordHttpGetIn">
+    <wsdl:part name="EmailId" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="NewPassword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ProfilesConnectedHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ProfilesConnectedHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getUsersByIdHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getUsersByIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserInfoByEmailHttpGetIn">
+    <wsdl:part name="userEmail" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserInfoByEmailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="LoginHttpPostIn">
+    <wsdl:part name="EmailId" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LoginHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Pass_x0020_UsernameHttpPostIn">
+    <wsdl:part name="EmailId" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="AccountType" type="s:string" />
+    <wsdl:part name="Username" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Pass_x0020_UsernameHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="fname" type="s:string" />
+    <wsdl:part name="lname" type="s:string" />
+    <wsdl:part name="timezone" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddTeamMembersHttpPostIn">
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="teamid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddTeamMembersHttpPostOut" />
+  <wsdl:message name="ChangePasswordHttpPostIn">
+    <wsdl:part name="EmailId" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="NewPassword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ProfilesConnectedHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ProfilesConnectedHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getUsersByIdHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getUsersByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserInfoByEmailHttpPostIn">
+    <wsdl:part name="userEmail" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserInfoByEmailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="UserSoap">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Pass Username</wsdl:documentation>
+      <wsdl:input name="Pass_x0020_Username" message="tns:Pass_x0020_UsernameSoapIn" />
+      <wsdl:output name="Pass_x0020_Username" message="tns:Pass_x0020_UsernameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <wsdl:input message="tns:UpdateUserSoapIn" />
+      <wsdl:output message="tns:UpdateUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTeamMembers">
+      <wsdl:input message="tns:AddTeamMembersSoapIn" />
+      <wsdl:output message="tns:AddTeamMembersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <wsdl:input message="tns:ChangePasswordSoapIn" />
+      <wsdl:output message="tns:ChangePasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProfilesConnected">
+      <wsdl:input message="tns:ProfilesConnectedSoapIn" />
+      <wsdl:output message="tns:ProfilesConnectedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUsersById">
+      <wsdl:input message="tns:getUsersByIdSoapIn" />
+      <wsdl:output message="tns:getUsersByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserInfoByEmail">
+      <wsdl:input message="tns:getUserInfoByEmailSoapIn" />
+      <wsdl:output message="tns:getUserInfoByEmailSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="UserHttpGet">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginHttpGetIn" />
+      <wsdl:output message="tns:LoginHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Pass Username</wsdl:documentation>
+      <wsdl:input name="Pass_x0020_Username" message="tns:Pass_x0020_UsernameHttpGetIn" />
+      <wsdl:output name="Pass_x0020_Username" message="tns:Pass_x0020_UsernameHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <wsdl:input message="tns:UpdateUserHttpGetIn" />
+      <wsdl:output message="tns:UpdateUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTeamMembers">
+      <wsdl:input message="tns:AddTeamMembersHttpGetIn" />
+      <wsdl:output message="tns:AddTeamMembersHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <wsdl:input message="tns:ChangePasswordHttpGetIn" />
+      <wsdl:output message="tns:ChangePasswordHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProfilesConnected">
+      <wsdl:input message="tns:ProfilesConnectedHttpGetIn" />
+      <wsdl:output message="tns:ProfilesConnectedHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUsersById">
+      <wsdl:input message="tns:getUsersByIdHttpGetIn" />
+      <wsdl:output message="tns:getUsersByIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserInfoByEmail">
+      <wsdl:input message="tns:getUserInfoByEmailHttpGetIn" />
+      <wsdl:output message="tns:getUserInfoByEmailHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="UserHttpPost">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginHttpPostIn" />
+      <wsdl:output message="tns:LoginHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Pass Username</wsdl:documentation>
+      <wsdl:input name="Pass_x0020_Username" message="tns:Pass_x0020_UsernameHttpPostIn" />
+      <wsdl:output name="Pass_x0020_Username" message="tns:Pass_x0020_UsernameHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <wsdl:input message="tns:UpdateUserHttpPostIn" />
+      <wsdl:output message="tns:UpdateUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTeamMembers">
+      <wsdl:input message="tns:AddTeamMembersHttpPostIn" />
+      <wsdl:output message="tns:AddTeamMembersHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <wsdl:input message="tns:ChangePasswordHttpPostIn" />
+      <wsdl:output message="tns:ChangePasswordHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProfilesConnected">
+      <wsdl:input message="tns:ProfilesConnectedHttpPostIn" />
+      <wsdl:output message="tns:ProfilesConnectedHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUsersById">
+      <wsdl:input message="tns:getUsersByIdHttpPostIn" />
+      <wsdl:output message="tns:getUsersByIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserInfoByEmail">
+      <wsdl:input message="tns:getUserInfoByEmailHttpPostIn" />
+      <wsdl:output message="tns:getUserInfoByEmailHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UserSoap" type="tns:UserSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <soap:operation soapAction="http://tempuri.org/Pass Username" style="document" />
+      <wsdl:input name="Pass_x0020_Username">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="Pass_x0020_Username">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap:operation soapAction="http://tempuri.org/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTeamMembers">
+      <soap:operation soapAction="http://tempuri.org/AddTeamMembers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <soap:operation soapAction="http://tempuri.org/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProfilesConnected">
+      <soap:operation soapAction="http://tempuri.org/ProfilesConnected" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUsersById">
+      <soap:operation soapAction="http://tempuri.org/getUsersById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserInfoByEmail">
+      <soap:operation soapAction="http://tempuri.org/getUserInfoByEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UserSoap12" type="tns:UserSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <soap12:operation soapAction="http://tempuri.org/Pass Username" style="document" />
+      <wsdl:input name="Pass_x0020_Username">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="Pass_x0020_Username">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap12:operation soapAction="http://tempuri.org/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTeamMembers">
+      <soap12:operation soapAction="http://tempuri.org/AddTeamMembers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <soap12:operation soapAction="http://tempuri.org/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProfilesConnected">
+      <soap12:operation soapAction="http://tempuri.org/ProfilesConnected" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUsersById">
+      <soap12:operation soapAction="http://tempuri.org/getUsersById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserInfoByEmail">
+      <soap12:operation soapAction="http://tempuri.org/getUserInfoByEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UserHttpGet" type="tns:UserHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Login">
+      <http:operation location="/Login" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <http:operation location="/Pass Username" />
+      <wsdl:input name="Pass_x0020_Username">
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output name="Pass_x0020_Username">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <http:operation location="/UpdateUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTeamMembers">
+      <http:operation location="/AddTeamMembers" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <http:operation location="/ChangePassword" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProfilesConnected">
+      <http:operation location="/ProfilesConnected" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUsersById">
+      <http:operation location="/getUsersById" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserInfoByEmail">
+      <http:operation location="/getUserInfoByEmail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UserHttpPost" type="tns:UserHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Login">
+      <http:operation location="/Login" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <http:operation location="/Pass Username" />
+      <wsdl:input name="Pass_x0020_Username">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="Pass_x0020_Username">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <http:operation location="/UpdateUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTeamMembers">
+      <http:operation location="/AddTeamMembers" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <http:operation location="/ChangePassword" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProfilesConnected">
+      <http:operation location="/ProfilesConnected" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUsersById">
+      <http:operation location="/getUsersById" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserInfoByEmail">
+      <http:operation location="/getUserInfoByEmail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="User">
+    <wsdl:port name="UserSoap" binding="tns:UserSoap">
+      <soap:address location="http://localhost:6361/Services/User.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UserSoap12" binding="tns:UserSoap12">
+      <soap12:address location="http://localhost:6361/Services/User.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UserHttpGet" binding="tns:UserHttpGet">
+      <http:address location="http://localhost:6361/Services/User.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UserHttpPost" binding="tns:UserHttpPost">
+      <http:address location="http://localhost:6361/Services/User.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

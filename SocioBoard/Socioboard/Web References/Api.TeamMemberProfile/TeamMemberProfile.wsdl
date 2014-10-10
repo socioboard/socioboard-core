@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AddTeamMemberProfile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TeamId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddTeamMemberProfileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddTeamMemberProfileResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeamMemberProfilesByTeamId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TeamId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeamMemberProfilesByTeamIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTeamMemberProfilesByTeamIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllTeamMemberProfilesOfTeam">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TeamId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllTeamMemberProfilesOfTeamResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllTeamMemberProfilesOfTeamResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeamMembeDetailsForGroupReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TeamId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="days" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeamMembeDetailsForGroupReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTeamMembeDetailsForGroupReportResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddTeamMemberProfileSoapIn">
+    <wsdl:part name="parameters" element="tns:AddTeamMemberProfile" />
+  </wsdl:message>
+  <wsdl:message name="AddTeamMemberProfileSoapOut">
+    <wsdl:part name="parameters" element="tns:AddTeamMemberProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamMemberProfilesByTeamIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTeamMemberProfilesByTeamId" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamMemberProfilesByTeamIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTeamMemberProfilesByTeamIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllTeamMemberProfilesOfTeamSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllTeamMemberProfilesOfTeam" />
+  </wsdl:message>
+  <wsdl:message name="getAllTeamMemberProfilesOfTeamSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllTeamMemberProfilesOfTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamMembeDetailsForGroupReportSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTeamMembeDetailsForGroupReport" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamMembeDetailsForGroupReportSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTeamMembeDetailsForGroupReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddTeamMemberProfileHttpGetIn">
+    <wsdl:part name="TeamId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="ProfileType" type="s:string" />
+    <wsdl:part name="Status" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddTeamMemberProfileHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamMemberProfilesByTeamIdHttpGetIn">
+    <wsdl:part name="TeamId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamMemberProfilesByTeamIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllTeamMemberProfilesOfTeamHttpGetIn">
+    <wsdl:part name="TeamId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllTeamMemberProfilesOfTeamHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamMembeDetailsForGroupReportHttpGetIn">
+    <wsdl:part name="TeamId" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamMembeDetailsForGroupReportHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddTeamMemberProfileHttpPostIn">
+    <wsdl:part name="TeamId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="ProfileType" type="s:string" />
+    <wsdl:part name="Status" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddTeamMemberProfileHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamMemberProfilesByTeamIdHttpPostIn">
+    <wsdl:part name="TeamId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamMemberProfilesByTeamIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllTeamMemberProfilesOfTeamHttpPostIn">
+    <wsdl:part name="TeamId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllTeamMemberProfilesOfTeamHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamMembeDetailsForGroupReportHttpPostIn">
+    <wsdl:part name="TeamId" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamMembeDetailsForGroupReportHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="TeamMemberProfileSoap">
+    <wsdl:operation name="AddTeamMemberProfile">
+      <wsdl:input message="tns:AddTeamMemberProfileSoapIn" />
+      <wsdl:output message="tns:AddTeamMemberProfileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamMemberProfilesByTeamId">
+      <wsdl:input message="tns:GetTeamMemberProfilesByTeamIdSoapIn" />
+      <wsdl:output message="tns:GetTeamMemberProfilesByTeamIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllTeamMemberProfilesOfTeam">
+      <wsdl:input message="tns:getAllTeamMemberProfilesOfTeamSoapIn" />
+      <wsdl:output message="tns:getAllTeamMemberProfilesOfTeamSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamMembeDetailsForGroupReport">
+      <wsdl:input message="tns:GetTeamMembeDetailsForGroupReportSoapIn" />
+      <wsdl:output message="tns:GetTeamMembeDetailsForGroupReportSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TeamMemberProfileHttpGet">
+    <wsdl:operation name="AddTeamMemberProfile">
+      <wsdl:input message="tns:AddTeamMemberProfileHttpGetIn" />
+      <wsdl:output message="tns:AddTeamMemberProfileHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamMemberProfilesByTeamId">
+      <wsdl:input message="tns:GetTeamMemberProfilesByTeamIdHttpGetIn" />
+      <wsdl:output message="tns:GetTeamMemberProfilesByTeamIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllTeamMemberProfilesOfTeam">
+      <wsdl:input message="tns:getAllTeamMemberProfilesOfTeamHttpGetIn" />
+      <wsdl:output message="tns:getAllTeamMemberProfilesOfTeamHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamMembeDetailsForGroupReport">
+      <wsdl:input message="tns:GetTeamMembeDetailsForGroupReportHttpGetIn" />
+      <wsdl:output message="tns:GetTeamMembeDetailsForGroupReportHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TeamMemberProfileHttpPost">
+    <wsdl:operation name="AddTeamMemberProfile">
+      <wsdl:input message="tns:AddTeamMemberProfileHttpPostIn" />
+      <wsdl:output message="tns:AddTeamMemberProfileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamMemberProfilesByTeamId">
+      <wsdl:input message="tns:GetTeamMemberProfilesByTeamIdHttpPostIn" />
+      <wsdl:output message="tns:GetTeamMemberProfilesByTeamIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllTeamMemberProfilesOfTeam">
+      <wsdl:input message="tns:getAllTeamMemberProfilesOfTeamHttpPostIn" />
+      <wsdl:output message="tns:getAllTeamMemberProfilesOfTeamHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamMembeDetailsForGroupReport">
+      <wsdl:input message="tns:GetTeamMembeDetailsForGroupReportHttpPostIn" />
+      <wsdl:output message="tns:GetTeamMembeDetailsForGroupReportHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TeamMemberProfileSoap" type="tns:TeamMemberProfileSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddTeamMemberProfile">
+      <soap:operation soapAction="http://tempuri.org/AddTeamMemberProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamMemberProfilesByTeamId">
+      <soap:operation soapAction="http://tempuri.org/GetTeamMemberProfilesByTeamId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTeamMemberProfilesOfTeam">
+      <soap:operation soapAction="http://tempuri.org/getAllTeamMemberProfilesOfTeam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamMembeDetailsForGroupReport">
+      <soap:operation soapAction="http://tempuri.org/GetTeamMembeDetailsForGroupReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TeamMemberProfileSoap12" type="tns:TeamMemberProfileSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddTeamMemberProfile">
+      <soap12:operation soapAction="http://tempuri.org/AddTeamMemberProfile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamMemberProfilesByTeamId">
+      <soap12:operation soapAction="http://tempuri.org/GetTeamMemberProfilesByTeamId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTeamMemberProfilesOfTeam">
+      <soap12:operation soapAction="http://tempuri.org/getAllTeamMemberProfilesOfTeam" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamMembeDetailsForGroupReport">
+      <soap12:operation soapAction="http://tempuri.org/GetTeamMembeDetailsForGroupReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TeamMemberProfileHttpGet" type="tns:TeamMemberProfileHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="AddTeamMemberProfile">
+      <http:operation location="/AddTeamMemberProfile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamMemberProfilesByTeamId">
+      <http:operation location="/GetTeamMemberProfilesByTeamId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTeamMemberProfilesOfTeam">
+      <http:operation location="/getAllTeamMemberProfilesOfTeam" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamMembeDetailsForGroupReport">
+      <http:operation location="/GetTeamMembeDetailsForGroupReport" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TeamMemberProfileHttpPost" type="tns:TeamMemberProfileHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="AddTeamMemberProfile">
+      <http:operation location="/AddTeamMemberProfile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamMemberProfilesByTeamId">
+      <http:operation location="/GetTeamMemberProfilesByTeamId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTeamMemberProfilesOfTeam">
+      <http:operation location="/getAllTeamMemberProfilesOfTeam" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamMembeDetailsForGroupReport">
+      <http:operation location="/GetTeamMembeDetailsForGroupReport" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TeamMemberProfile">
+    <wsdl:port name="TeamMemberProfileSoap" binding="tns:TeamMemberProfileSoap">
+      <soap:address location="http://localhost:6361/Services/TeamMemberProfile.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TeamMemberProfileSoap12" binding="tns:TeamMemberProfileSoap12">
+      <soap12:address location="http://localhost:6361/Services/TeamMemberProfile.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TeamMemberProfileHttpGet" binding="tns:TeamMemberProfileHttpGet">
+      <http:address location="http://localhost:6361/Services/TeamMemberProfile.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TeamMemberProfileHttpPost" binding="tns:TeamMemberProfileHttpPost">
+      <http:address location="http://localhost:6361/Services/TeamMemberProfile.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,160 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div id="page-wrapper">
+
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">Draft_message</h2>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Draft Tables
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover extable" id="dataTables">
+                        </table>
+                    </div>
+                    <!--Comment Modal -->
+                    <div class="modal fade" id="Editdraftmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                </div>
+                                <div class="modal-body">
+                                    <h4>EDIT DRAFT MESSAGE</h4>
+                                    <textarea id="editdrafttextarea" class="form-control" rows="3" placeholder=""></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button id="saveeditdraft" type="button" class="btn btn-default ">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end of model-->
+
+                    <!-- CLOSEModal -->
+                    <div class="modal fade" id="deleteconfirmationmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+                                </div>
+                                <div class="modal-body col-md-12">
+                                    <p>Are you sure,you want to delete this Draft Message ?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button id="deletedraft" type="button" class="btn btn-primary">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end of CLOSEmodel-->
+
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+
+</div>
+
+
+
+<script type="text/javascript">
+    function bindraft() {
+        $.ajax({
+            type: 'POST',
+            url: '../Publishing/loaddrafts',
+            success: function (msg) {
+                //alert(msg);
+                $('.extable').html(msg);
+            },
+            async: false
+        });
+    };
+
+
+    function editdraft(id, message) {
+        $('#editdrafttextarea').val(message);
+        $('#Editdraftmodal').modal('show');
+        $('#saveeditdraft').attr('draftid', id)
+    }
+
+
+    function deletedraftmsg(id) {
+
+        $('#deleteconfirmationmodal').modal('show');
+        $('#deletedraft').attr('draftid', id)
+    }
+
+
+
+    $(document).ready(function (e) {
+        bindraft();
+        $("#publishing").addClass('active');
+        //$('li a').find('ul').remove();
+        $('li a').removeClass('active');
+        $('#socioqueue a').addClass('active');
+        $('#dataTables').dataTable({
+        });
+
+        $('#saveeditdraft').on('click', function () {
+            //alert($('#saveeditdraft').attr('draftid'));
+            $('#Editdraftmodal').modal('hide');
+            var draftid = $('#saveeditdraft').attr('draftid')
+            var draftmsg = $('#editdrafttextarea').val();
+            if (draftmsg == '') {
+                alertify.error("Please enter a message to save");
+            }
+            //alertify.success("Liked Successfully");
+            $.ajax({
+                type: 'POST',
+                url: '../Publishing/ModifyDraftMessage?draftid=' + draftid + '&draftmsg=' + draftmsg,
+                success: function (msg) {
+                    //alert(msg);
+                    bindraft();
+                },
+                // async: false
+            });
+        });
+
+
+        $('#deletedraft').on('click', function () {
+           
+            //alert($('#saveeditdraft').attr('draftid'));
+            $('#deleteconfirmationmodal').modal('hide');
+            var draftid = $('#deletedraft').attr('draftid');
+            $('#' + draftid).hide();
+            $.ajax({
+                type: 'POST',
+                url: '../Publishing/DeleteDraftMessage?draftid=' + draftid,
+                success: function (msg) {
+                    alertify.success("Message Deleted successfully");
+                },
+            });
+        });
+    });
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,241 @@
+﻿
+@using Domain.Socioboard.Domain;
+@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    bool check = true;
+   
+}
+
+
+
+<ul class="chat">
+
+    @foreach (var item in (Dictionary<string, List<object>>)Model)
+    {
+        if (item.Key == "facebook")
+        {
+             List<object> lstdic = (List<object>)item.Value;
+            foreach (var fbgrpmsg in lstdic)
+            {
+
+           FacebookGroupData _FacebookGroupData = (FacebookGroupData)fbgrpmsg;              
+                
+                if (check == true)
+                {
+
+                    <li class="left clearfix">
+                            <span class="chat-img pull-left">
+                                <img src="@_FacebookGroupData.ProfilePic" class="img-circle profilePic" alt="User Avatar">
+                            </span>
+                            <div class="chat-body clearfix">
+                                <div>
+                                    <strong class="primary-font">@_FacebookGroupData.Name</strong>
+                                    <small class="pull-right text-muted">
+                                        <i class="fa fa-clock-o fa-fw"></i>@_FacebookGroupData.CreatedTime
+                                            </small>
+                                </div>
+                                <p>
+                                    @_FacebookGroupData.Message
+                                       
+                                </p>
+                            </div>
+
+                            <div class="input-group">
+                                 <input type="text" id="txt_@_FacebookGroupData.PostId" class="form-control input-sm" placeholder="Type your comment here...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-warning btn-sm" id="comment_@_FacebookGroupData.PostId" onclick="CommentOnFbGroupPost('@_FacebookGroupData.PostId','@_FacebookGroupData.accesstoken')">
+                                        Comment 
+                                           
+                                    </button>
+                                    <button type="button" class="btn btn-info btn-circle">
+                                        <i class="fa fa-thumbs-o-up"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-circle">
+                                        <i class="fa fa-heart"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </li>
+
+                    check = false;
+
+                }
+                else { 
+                
+                 <li class="right clearfix">
+                            <span class="chat-img pull-right">
+                                <img src="@_FacebookGroupData.ProfilePic" class="img-circle profilePic" alt="User Avatar">
+                            </span>
+                            <div class="chat-body clearfix">
+                                <div>
+                                    <small class=" text-muted">
+                                        <i class="fa fa-clock-o fa-fw"></i>@_FacebookGroupData.CreatedTime</small>
+                                    <strong class="pull-right primary-font">@_FacebookGroupData.Name</strong>
+                                </div>
+                                <p>
+                                     @_FacebookGroupData.Message
+                                       
+                                </p>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="txt_@_FacebookGroupData.PostId" class="form-control input-sm" placeholder="Type your comment here...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-warning btn-sm" id="comment_@_FacebookGroupData.PostId" onclick="CommentOnFbGroupPost('@_FacebookGroupData.PostId','@_FacebookGroupData.accesstoken')">
+                                        Comment                                          
+                                    </button>
+                                    <button type="button" class="btn btn-info btn-circle">
+                                        <i class="fa fa-thumbs-o-up"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-circle">
+                                        <i class="fa fa-heart"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </li>
+                    check = true;
+                }
+            
+            }
+        
+        
+        }
+        
+        
+        else if (item.Key=="linkedin")
+        {
+             List<object> lstdic = (List<object>)item.Value;
+            
+  
+            foreach (var linkedingrpmsg in lstdic)
+            {
+
+                LinkedInGroup.Group_Updates _LinkedInGroup = (LinkedInGroup.Group_Updates)linkedingrpmsg;              
+                
+                string username=_LinkedInGroup.firstname;
+                username= username + " "+_LinkedInGroup.lastname;
+
+                
+                if (check == true)
+                {
+
+                    <li class="left clearfix">
+                            <span class="chat-img pull-left">
+                                <img src="@_LinkedInGroup.pictureurl" class="img-circle profilePic" alt="User Avatar">
+                            </span>
+                            <div class="chat-body clearfix">
+                                <div>
+                                    <strong class="primary-font">@username</strong>
+                                    <small class="pull-right text-muted">
+                                        <i class="fa fa-clock-o fa-fw"></i>
+                                            </small>
+                                </div>
+                                <p style="font-size:medium">
+                                    @_LinkedInGroup.title
+                                       
+                                </p>
+                                <p>
+                                    @_LinkedInGroup.summary                                       
+                                </p>
+                            </div>
+
+                            <div class="input-group">
+                                <input type="text" id="textlin_@_LinkedInGroup.GpPostid" class="form-control input-sm" placeholder="Type your comment here...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-warning btn-sm" id="oklin_@_LinkedInGroup.GpPostid" onclick="commentLin('@_LinkedInGroup.GpPostid','@_LinkedInGroup.LinkedInProfileId','@_LinkedInGroup.id');">
+                                        Comment
+                                           
+                                    </button>
+                                    <button type="button" class="btn btn-info btn-circle" id="like_@_LinkedInGroup.GpPostid" onclick="LikePosts('@_LinkedInGroup.GpPostid','@_LinkedInGroup.LinkedInProfileId','@_LinkedInGroup.id','@_LinkedInGroup.isLiked');">
+                                       @if(_LinkedInGroup.isLiked==0)                                                                               
+                                        {
+                                         <i class="fa fa-thumbs-o-up"></i>}
+                                        else
+                                        {
+                                        <i class="fa fa-thumbs-o-down"></i>                                        
+                                        }
+
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-circle" id="follow_@_LinkedInGroup.GpPostid" onclick="FollowPosts('@_LinkedInGroup.GpPostid','@_LinkedInGroup.LinkedInProfileId','@_LinkedInGroup.id','@_LinkedInGroup.isFollowing');">
+                                         @if(_LinkedInGroup.isFollowing==0)                                                                               
+                                        {
+                                        <i class="fa fa-heart"></i>
+                                         }
+                                        else
+                                        {
+                                         <i class="fa fa-heart:after"></i>                                       
+                                        }                                      
+                                    </button>
+                                </span>
+                            </div>
+                        </li>
+
+                    check = false;
+
+                }
+                else { 
+                
+                 <li class="right clearfix">
+                            <span class="chat-img pull-right">
+                                <img src="@_LinkedInGroup.pictureurl" class="img-circle profilePic" alt="User Avatar">
+                            </span>
+                            <div class="chat-body clearfix">
+                                <div>
+                                    <small class=" text-muted">
+                                        <i class="fa fa-clock-o fa-fw"></i></small>
+                                    <strong class="pull-right primary-font">@username</strong>
+                                </div>
+                               <p style="font-size:medium">
+                                    @_LinkedInGroup.title
+                                       
+                                </p>
+                                <p>
+                                    @_LinkedInGroup.summary                                       
+                                </p>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="textlin_@_LinkedInGroup.GpPostid" class="form-control input-sm" placeholder="Type your comment here...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-warning btn-sm" id="oklin_@_LinkedInGroup.GpPostid" onclick="commentLin('@_LinkedInGroup.GpPostid','@_LinkedInGroup.LinkedInProfileId','@_LinkedInGroup.id');">
+                                        Comment
+                                           
+                                    </button>
+                                     <button type="button" class="btn btn-info btn-circle" id="like_@_LinkedInGroup.GpPostid" onclick="LikePosts('@_LinkedInGroup.GpPostid','@_LinkedInGroup.LinkedInProfileId','@_LinkedInGroup.id','@_LinkedInGroup.isLiked');">
+                                       @if(_LinkedInGroup.isLiked==0)                                                                               
+                                        {
+                                         <i class="fa fa-thumbs-o-up"></i>}
+                                        else
+                                        {
+                                        <i class="fa fa-thumbs-o-down"></i>                                        
+                                        }
+
+                                    </button>
+                                       <button type="button" class="btn btn-danger btn-circle" id="follow_@_LinkedInGroup.GpPostid" onclick="FollowPosts('@_LinkedInGroup.GpPostid','@_LinkedInGroup.LinkedInProfileId','@_LinkedInGroup.id','@_LinkedInGroup.isFollowing');">
+                                         @if(_LinkedInGroup.isFollowing==0)                                                                               
+                                        {
+                                        <i class="fa fa-heart"></i>
+                                         }
+                                        else
+                                        {
+                                         <i class="fa fa-heart:after"></i>                                       
+                                        }
+
+                                    </button>
+                                </span>
+                            </div>
+                        </li>
+                    check = true;
+                }
+            
+            }
+        
+        
+        }
+        
+        
+        
+        
+        
+        
+        
+    }
+ </ul>

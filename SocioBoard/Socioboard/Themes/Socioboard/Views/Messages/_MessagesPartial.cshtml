@@ -1,0 +1,66 @@
+﻿<div class="container" id="mainwrapper-message">
+    
+    @Html.Partial("_MessagesSideBarPartial")
+
+    @Html.Partial("_MessagesMidPartial")
+
+    @Html.Partial("_MessagesRightSideBarPartial")
+
+</div>
+
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        debugger;
+
+        $('#side-menu a').removeClass('active');
+        $("#feeds").addClass('active');
+        $("#feeds").children().addClass('active');
+
+        //$.noConflict();
+        $("#home").removeClass('active');
+        $("#message").addClass('active');
+        $("#feeds").removeClass('active');
+        $("#discovery").removeClass('active');
+        $("#publishing").removeClass('active');
+
+        $("#aad").data();
+
+        if (document.URL.indexOf('q=sent') == -1) {
+            BindSmartInbox();
+
+        } else {
+            BindSent();
+        }
+
+
+        function BindSmartInbox() {
+            debugger;
+            BindMessages('abc');
+            BindProfilesInMessageTab();
+
+        }
+
+        function BindSent() {
+            BindInboxMessageonMessageTab();
+            BindProfilesInMessageTab();
+
+        }
+
+
+        function Updatemessages() {
+            debugger;
+
+
+
+        }
+
+        $("#messagetype").click(function () {
+            $('#profile').addClass('collapsed');
+        });
+
+        $("#profile").click(function () {
+            $('#messagetype').addClass('collapsed');
+        });
+    });
+</script>

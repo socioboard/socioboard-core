@@ -1,0 +1,165 @@
+﻿@using System.Data;
+@using Socioboard.Helper;
+@using Socioboard.Api;
+@using Domain.Socioboard.Domain;
+@using System.Web.Script.Serialization;
+@{
+   
+    List<Domain.Socioboard.Domain.ScheduledMessage> lstAllSentMsg = (List<Domain.Socioboard.Domain.ScheduledMessage>)Model;
+    int sorteddatacount = 0;
+
+    Domain.Socioboard.Domain.User user = (Domain.Socioboard.Domain.User)Session["User"];
+    Socioboard.Api.TwitterAccount.TwitterAccount objApiTwitterAccount = new Socioboard.Api.TwitterAccount.TwitterAccount();
+    Socioboard.Api.FacebookAccount.FacebookAccount objApiFacebookAccount = new Socioboard.Api.FacebookAccount.FacebookAccount();
+    Socioboard.Api.LinkedinAccount.LinkedinAccount objApiLinkedinAccount = new Socioboard.Api.LinkedinAccount.LinkedinAccount();
+    Socioboard.Api.TumblrAccount.TumblrAccount objApiTumblrAccount = new Socioboard.Api.TumblrAccount.TumblrAccount();
+
+    Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
+}
+
+@*<div id="page-wrapper">*@
+
+<div class="container-fluid" style="margin-top:25px">
+<div class="col-md-12">
+<div class="col-md-9">
+    <div class="row">
+        <h2>Sent Messages</h2>
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+
+                    @{
+                        try
+                        {
+                                if (lstAllSentMsg != null && lstAllSentMsg.Count > 0)
+                                {
+                                    foreach (ScheduledMessage item in lstAllSentMsg)
+                                    {
+                                        try
+                                        {
+                                            string icon = "";
+                                            string onClick = "";
+                                            string network = "";
+                                            string ScreenName = "";
+                                            string ProfileImageUrl = "";
+                                            if (item.ProfileType == "twitter")
+                                            {
+                                                icon = "twticon.png";
+                                                onClick = "detailsdiscoverytwitter";
+                                                network = "twitter";
+                                                Domain.Socioboard.Domain.TwitterAccount objTwitterAccount = (Domain.Socioboard.Domain.TwitterAccount)new JavaScriptSerializer().Deserialize(objApiTwitterAccount.getUserInformation(item.ProfileId), typeof(Domain.Socioboard.Domain.TwitterAccount));
+                                                ScreenName = objTwitterAccount.TwitterScreenName;
+                                                ProfileImageUrl = objTwitterAccount.ProfileImageUrl;
+                                            }
+                                            else if (item.ProfileType == "facebook")
+                                            {
+                                                icon = "fb_icon.png";
+                                                onClick = "getFacebookProfiles";
+                                                network = "facebook";
+                                                Domain.Socioboard.Domain.FacebookAccount objFacebookAccount = (Domain.Socioboard.Domain.FacebookAccount)new JavaScriptSerializer().Deserialize(objApiFacebookAccount.getFacebookAccountDetailsById(objUser.Id.ToString(), item.ProfileId), typeof(Domain.Socioboard.Domain.FacebookAccount));
+                                                ScreenName = objFacebookAccount.FbUserName;
+                                                ProfileImageUrl = "http://graph.facebook.com/" + objFacebookAccount.FbUserId + "/picture?type=small";
+                                            }
+                                            else if(item.ProfileType=="linkedin")
+                                            {
+                                                icon = "link_icon.png";
+                                                onClick = "";
+                                                network = "linkedin";
+                                                Domain.Socioboard.Domain.LinkedInAccount objLinkedInAccount = (Domain.Socioboard.Domain.LinkedInAccount)new JavaScriptSerializer().Deserialize(objApiLinkedinAccount.GetLinkedinAccountDetailsById(objUser.Id.ToString(),item.ProfileId),typeof(Domain.Socioboard.Domain.LinkedInAccount));
+                                                ScreenName = objLinkedInAccount.LinkedinUserName;
+                                                ProfileImageUrl = objLinkedInAccount.ProfileImageUrl;
+                                                if(ProfileImageUrl==null || ProfileImageUrl == "")
+                                                {
+                                                    ProfileImageUrl = "/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/blank_img.png";
+                                                }
+                                            }
+                                            else if (item.ProfileType == "tumblr")
+                                            {
+                                                icon = "tumblr.png";
+                                                onClick = "";
+                                                network = "tumblr";
+                                                Domain.Socioboard.Domain.TumblrAccount objTumblrAccount = (Domain.Socioboard.Domain.TumblrAccount)new JavaScriptSerializer().Deserialize(objApiTumblrAccount.GetTumblrAccountDetailsById(objUser.Id.ToString(),item.ProfileId),typeof(Domain.Socioboard.Domain.TumblrAccount));
+                                                ProfileImageUrl = "http://api.tumblr.com/v2/blog/"+ objTumblrAccount.tblrUserName +".tumblr.com/avatar";
+                                                ScreenName = objTumblrAccount.tblrUserName;
+                                            }
+                                            
+                        <div class="panel panel-primary" id="messagetaskable_@sorteddatacount">
+                                        <div class="panel-heading">
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <img title="@ScreenName" alt="@item.ProfileId" src="@ProfileImageUrl" id="formprofileurl_@sorteddatacount" class="img-circle" data-toggle="modal" data-target="#profileModal" style="height:50px;width:50px">
+                                                    <img class="img-responsive img-circle" src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/@icon" style="margin-left: 35px; margin-top: -20px;">
+                                                    <span>@ScreenName</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel-body">
+                                            <p>@item.ShareMessage</p>
+                                        </div>
+                                        <div class="panel-footer">
+                                            <a href="#">
+                                                <span class="pull-left">View Details</span></a>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                        }
+                                        catch { }
+                                        sorteddatacount++;
+                                    }
+                                }
+                                else
+                                {
+                                    
+                                }
+                        }
+                        catch{}
+                        
+                    }
+                    <!-- Modal -->
+                    <div class="modal fade" id="CommentReply" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <img src="Contents/img/photo.png" class="img-circle">
+                                    <img class="img-responsive img-circle" src="Contents/img/twticon.png" style="margin-left: 35px; margin-top: -20px;">
+                                </div>
+                                <div class="modal-body">
+                                    <h4>LEAVE A COMMENT</h4>
+                                    <textarea class="form-control" rows="3" placeholder="Write your message here"></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default " data-dismiss="modal">Comment</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end of model-->
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Profile Summary</h4>
+                            </div>
+                            <div class="modal-body col-md-12">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end of model-->
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+@*</div>*@
+

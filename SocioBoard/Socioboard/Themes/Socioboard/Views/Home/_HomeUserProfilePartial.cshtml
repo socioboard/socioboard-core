@@ -1,0 +1,78 @@
+﻿@using Domain.Socioboard.Domain;
+
+@{ 
+    string path = System.Configuration.ConfigurationManager.AppSettings["domain"];
+    User objUser = (User)Session["User"];
+    if (objUser == null)
+    {
+        Response.Redirect("../Index/Index");
+    }
+    Socioboard.Api.Groups.Groups ApiobjGroups = new Socioboard.Api.Groups.Groups();
+    List<Domain.Socioboard.Domain.Groups> lstgroup = (List<Domain.Socioboard.Domain.Groups>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByUserId(objUser.Id.ToString()), typeof(List<Domain.Socioboard.Domain.Groups>)));
+    string groupname = string.Empty;
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <i class="fa fa-bell fa-fw"></i>Profiles
+                       
+    </div>
+    <!-- /.panel-heading -->
+    <div class="row panel-body profilepartial" data-url="/Home/loadprofiles">
+        <img src="/Themes/@path/Contents/img/loader.gif" />
+        Loading . . .
+    </div>
+    <!-- /.panel-body -->
+</div>
+<!-- /.panel -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <i class="fa fa-bar-chart-o fa-fw"></i>Team Members
+                       
+    </div>
+    <div class="panel-body">
+        <div class="btn-group">
+            <img class="img-responsive btn btn-default btn-block dropdown-toggle" src="/Themes/@path/Contents/img/invite.png" data-toggle="dropdown" />
+            <ul class="dropdown-menu slidedown">
+
+                @foreach (var item in lstgroup)
+                {
+                    if (item.GroupName != path)
+                    { 
+                    <li>
+                        <a href="../UserGroup/Index">
+                            <i class="fa fa-plus fa-fw"></i>@item.GroupName
+                        </a>
+                    </li>
+                    }
+
+                }
+            </ul>
+        </div>
+    </div>
+    <!-- /.panel-body -->
+</div>
+<!-- /.panel -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <i class="fa fa-bar-chart-o fa-fw"></i>Recent Followers
+    </div>
+    <div class="row panel-body profilepartial" data-url="/Home/RecentProfiles">
+        <img src="/Themes/@path//Contents/img/loader.gif" />
+        Loading . . .
+    </div>
+    <!-- /.panel-body -->
+</div>
+<!-- /.panel -->
+
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        //alert('profilepartial');
+        $(".profilepartial").each(function (index, item) {
+            var url = $(item).data("url");
+            if (url && url.length > 0) {
+                $(item).load(url);
+            }
+        });
+    });
+</script>

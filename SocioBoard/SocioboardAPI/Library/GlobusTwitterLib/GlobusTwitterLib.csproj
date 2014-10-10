@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7051E5B4-23D1-4C8F-A459-D66AD79BCDF9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GlobusTwitterLib</RootNamespace>
+    <AssemblyName>GlobusTwitterLib</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\..\Lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook">
+      <HintPath>..\..\Lib\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook.Silverlight">
+      <HintPath>..\..\Lib\Facebook.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook.Web">
+      <HintPath>..\..\Lib\Facebook.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook.Web.Mvc">
+      <HintPath>..\..\Lib\Facebook.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook.Winforms">
+      <HintPath>..\..\Lib\Facebook.Winforms.dll</HintPath>
+    </Reference>
+    <Reference Include="FacebookGraphAPI">
+      <HintPath>..\..\Lib\FacebookGraphAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="Hammock">
+      <HintPath>..\..\lib\Hammock.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\..\Lib\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\Lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\MySql.Data.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\Lib\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Linq">
+      <HintPath>..\..\Lib\NHibernate.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernateHelper">
+      <HintPath>..\..\Lib\NHibernateHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="OAuth">
+      <HintPath>..\..\Lib\OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.Core\PhotoUpload.cs" />
+    <Compile Include="App.Core\TwitterErrorConroller.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="App.Core\TwitterFriendsController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="App.Core\TwitterSearchController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="App.Core\TwitterUser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="App.Core\TwitterUserController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="App.Core\TwitterWebRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Authentication\BasicAuth.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Authentication\IAuthentication.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Authentication\OAuthBase.cs" />
+    <Compile Include="Authentication\oAuthTwitter.cs" />
+    <Compile Include="GlobalEnums.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="App.Core\Globals.cs" />
+    <Compile Include="Twitter.Core\AccountMethods\Account.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Twitter.Core\DirectMessageMethods\DirectMessage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Twitter.Core\Enumerations.cs" />
+    <Compile Include="Twitter.Core\FriendshipMethods\Friendship.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Twitter.Core\SearchMethods\Search.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Twitter.Core\SocialGraphMethods\SocialGraph.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Twitter.Core\StatusMethods\Status.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Twitter.Core\TimeLineMethods\TimeLine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Twitter.Core\TweetMethods\Tweet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Twitter.Core\UserMethods\Account.cs" />
+    <Compile Include="Twitter.Core\UserMethods\Users.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Twitter.Core\BlockMethods\" />
+    <Folder Include="Twitter.Core\FavoriteMethods\" />
+    <Folder Include="Twitter.Core\HelpMethods\" />
+    <Folder Include="Twitter.Core\ListMembersMethods\" />
+    <Folder Include="Twitter.Core\ListMethods\" />
+    <Folder Include="Twitter.Core\ListSubscribersMethods\" />
+    <Folder Include="Twitter.Core\LocalTrendsMethods\" />
+    <Folder Include="Twitter.Core\NotificationMethods\" />
+    <Folder Include="Twitter.Core\OAuthMethods\" />
+    <Folder Include="Twitter.Core\SavedSearchesMethods\" />
+    <Folder Include="Twitter.Core\SpamReportingMethods\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\GlobusTwitterLib.dll" />
+    <Content Include="bin\Debug\GlobusTwitterLib.pdb" />
+    <Content Include="bin\Debug\Hammock.dll" />
+    <Content Include="bin\Debug\Newtonsoft.Json.dll" />
+    <Content Include="bin\Debug\OAuth.dll" />
+    <Content Include="changelog.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

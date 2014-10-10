@@ -1,0 +1,467 @@
+﻿using Api.Socioboard.Helper;
+using Api.Socioboard.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Script.Serialization;
+using System.Web.Script.Services;
+using System.Web.Services;
+using Domain.Socioboard.Domain;
+using System.Configuration;
+using log4net;
+
+
+namespace Api.Socioboard.Services
+{
+    /// <summary>
+    /// Summary description for UserService
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
+    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+    [ScriptService]
+    public class User : System.Web.Services.WebService
+    {
+        ILog logger = LogManager.GetLogger(typeof(User));
+        TeamRepository objTeamRepository = new TeamRepository();
+        UserRepository userrepo = new UserRepository();
+        GroupsRepository objGroupsRepository = new GroupsRepository();
+        GroupProfileRepository objGroupProfileRepository = new GroupProfileRepository();
+        TeamMemberProfileRepository objTeamMemberProfileRepository = new TeamMemberProfileRepository();
+        Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile;
+
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string Login(string EmailId, string Password)
+        {
+            logger.Error("Checking Abhay");
+            try
+            {
+                UserRepository userrepo = new UserRepository();
+                Domain.Socioboard.Domain.User user = userrepo.GetUserInfo(EmailId, Utility.MD5Hash(Password));
+                if (user != null)
+                {
+                    return new JavaScriptSerializer().Serialize(user);
+                }
+                else
+                {
+                    return new JavaScriptSerializer().Serialize("Not Exist");
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Error : " + ex.Message);
+                logger.Error("Error : " + ex.StackTrace);
+                Console.WriteLine(ex.StackTrace);
+                return null;
+            }
+        }
+
+
+        //[WebMethod(MessageName = "Pass First & Last Names", Description = "Pass First & Last Names")]
+        //[ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        //public string Register(string EmailId, string Password, string AccountType, string FirstName, string LastName)
+        //{
+
+        //    try
+        //    {
+        //        //UserRepository userrepo = new UserRepository();
+
+
+        //        //UserActivationRepository objUserActivation = new UserActivationRepository();
+
+        //        if (!userrepo.IsUserExist(EmailId))
+        //        {
+
+
+        //            Domain.Socioboard.Domain.User user = new Domain.Socioboard.Domain.User();
+        //            user.AccountType = AccountType;
+        //            user.EmailId = EmailId;
+        //            user.CreateDate = DateTime.Now;
+        //            user.ExpiryDate = DateTime.Now.AddMonths(1);
+        //            user.Password = Utility.MD5Hash(Password);
+        //            user.PaymentStatus = "unpaid";
+        //            user.ProfileUrl = string.Empty;
+        //            user.TimeZone = string.Empty;
+        //            user.UserName = FirstName + " " + LastName;
+        //            user.UserStatus = 1;
+        //            user.Id = Guid.NewGuid();
+        //            UserRepository.Add(user);
+
+        //            return new JavaScriptSerializer().Serialize(user);
+        //        }
+        //        else
+        //        {
+        //            //return "Email Already Exists";
+        //            return new JavaScriptSerializer().Serialize("Email Already Exists");
+        //        }
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.StackTrace);
+        //        //return "Something Went Wrong";
+        //        return new JavaScriptSerializer().Serialize("Something Went Wrong");
+        //    }
+
+
+
+        //}
+
+        [WebMethod(MessageName = "Pass Username", Description = "Pass Username")]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string Register(string EmailId, string Password, string AccountType, string Username)
+        {
+
+            try
+            {
+                //UserRepository userrepo = new UserRepository();
+
+                //Domain.Socioboard.Domain.UserActivation objUserActivation = new Domain.Socioboard.Domain.UserActivation();
+                //UserActivationRepository objUserActivation = new UserActivationRepository();
+
+                if (!userrepo.IsUserExist(EmailId))
+                {
+
+
+                    Domain.Socioboard.Domain.User user = new Domain.Socioboard.Domain.User();
+                    user.AccountType = AccountType;
+                    user.EmailId = EmailId;
+                    user.CreateDate = DateTime.Now;
+                    user.ExpiryDate = DateTime.Now.AddMonths(1);
+                    user.Password = Utility.MD5Hash(Password);
+                    user.PaymentStatus = "unpaid";
+                    user.ProfileUrl = string.Empty;
+                    user.TimeZone = string.Empty;
+                    user.UserName = Username;//FirstName + " " + LastName;
+                    user.UserStatus = 1;
+                    user.Id = Guid.NewGuid();
+                    UserRepository.Add(user);
+
+                    ////add value in UserActivation
+                    //UserActivation.AddUserActivation(user);
+
+                    //add value in userpackage
+                    UserPackageRelation.AddUserPackageRelation(user);
+
+
+                    try
+                    {
+                        Domain.Socioboard.Domain.Groups groups = AddGroupByUserId(user.Id);
+                        BusinessSettingRepository busnrepo = new BusinessSettingRepository();
+                        BusinessSetting.AddBusinessSetting(user.Id, groups.Id, groups.GroupName);
+                        Team.AddTeamByGroupIdUserId(user.Id, user.EmailId, groups.Id);
+
+                        UpdateTeam(EmailId, user.Id.ToString(), user.UserName);
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        logger.Error("Error : " + ex.Message);
+                        logger.Error("Error : " + ex.StackTrace);
+                    }
+
+
+                    //MailSender.SendEMail(user.UserName, Password, EmailId);
+                    return new JavaScriptSerializer().Serialize(user);
+                }
+                else
+                {
+                    return "Email Already Exists";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+
+
+
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string UpdateUser(string UserId, string fname, string lname, string timezone)
+        {
+           int ret= userrepo.UpdateUserById(Guid.Parse(UserId), fname + " " + lname, timezone);
+           return ret.ToString();
+        }
+
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        private void UpdateTeam(string EmailId, string userid, string username)
+        {
+            Domain.Socioboard.Domain.Groups objGroups = objGroupsRepository.getGroupDetails(Guid.Parse(userid), ConfigurationManager.AppSettings["DefaultGroupName"]);
+            List<Domain.Socioboard.Domain.Team> lstTeam = objTeamRepository.GetAllTeamOfUserEmail(EmailId, objGroups.Id);
+            foreach (var team in lstTeam)
+            {
+                Team objTeam = new Team();
+                objTeam.UpdateTeam(userid, team.Id.ToString(), username);
+                AddTeamMembers(team.GroupId.ToString(),team.Id.ToString());
+            }
+        }
+        
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public void AddTeamMembers(string groupid,string teamid)
+        {
+            List<Domain.Socioboard.Domain.GroupProfile> lstGroupProfile = objGroupProfileRepository.GetAllGroupProfiles(Guid.Parse(groupid));
+            foreach (var GroupProfile in lstGroupProfile)
+            {
+                objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
+                objTeamMemberProfile.Id = Guid.NewGuid();
+                objTeamMemberProfile.TeamId = Guid.Parse(teamid);
+                objTeamMemberProfile.ProfileId = GroupProfile.ProfileId;
+                objTeamMemberProfile.ProfileType = GroupProfile.ProfileType;
+                objTeamMemberProfile.Status = 1;
+                objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
+                objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
+            }
+        }
+
+
+
+
+
+        private static Domain.Socioboard.Domain.Groups AddGroupByUserId(Guid userId)
+        {
+            Domain.Socioboard.Domain.Groups groups = new Domain.Socioboard.Domain.Groups();
+            GroupsRepository objGroupRepository = new GroupsRepository();
+
+            groups.Id = Guid.NewGuid();
+            groups.GroupName = ConfigurationManager.AppSettings["DefaultGroupName"];
+            groups.UserId = userId;
+            groups.EntryDate = DateTime.Now;
+
+            objGroupRepository.AddGroup(groups);
+            return groups;
+        }
+
+        //private static void AddUserPackageRelation(Domain.Socioboard.Domain.User user)
+        //{
+        //    Domain.Socioboard.Domain.UserPackageRelation objUserPackageRelation = new Domain.Socioboard.Domain.UserPackageRelation();
+        //    UserPackageRelationRepository objUserPackageRelationRepository = new UserPackageRelationRepository();
+        //    PackageRepository objPackageRepository = new PackageRepository();
+
+        //    Domain.Socioboard.Domain.Package objPackage = objPackageRepository.getPackageDetails(user.AccountType);
+        //    objUserPackageRelation.Id = new Guid();
+        //    objUserPackageRelation.PackageId = objPackage.Id;
+        //    objUserPackageRelation.UserId = user.Id;
+        //    objUserPackageRelation.PackageStatus = true;
+
+        //    objUserPackageRelationRepository.AddUserPackageRelation(objUserPackageRelation);
+        //}
+
+        //private static void AddUserActivation(Domain.Socioboard.Domain.User user)
+        //{
+        //    Domain.Socioboard.Domain.UserActivation objUserActivation = new Domain.Socioboard.Domain.UserActivation();
+        //    objUserActivation.Id = Guid.NewGuid();
+        //    objUserActivation.UserId = user.Id;
+        //    objUserActivation.ActivationStatus = "0";
+        //    UserActivationRepository.Add(objUserActivation);
+        //}
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string ChangePassword(string EmailId, string Password, string NewPassword)
+        {
+            try
+            {
+                User user = new User();
+                UserRepository userrepo = new UserRepository();
+                int i = userrepo.ChangePassword(NewPassword, Password, EmailId);
+                if (i == 1)
+                {
+                    return "Password Changed Successfully";
+                }
+                else
+                {
+                    return "Invalid EmailId";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Please Try Again";
+            }
+        }
+
+
+
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string ProfilesConnected(string UserId)
+        {
+            try
+            {
+
+                Guid userid = Guid.Parse(UserId);
+                SocialProfilesRepository socialRepo = new SocialProfilesRepository();
+                List<Domain.Socioboard.Domain.SocialProfile> lstsocioprofile = socialRepo.getAllSocialProfilesOfUser(userid);
+                List<profileConnected> lstProfile = new List<profileConnected>();
+                foreach (Domain.Socioboard.Domain.SocialProfile sp in lstsocioprofile)
+                {
+                    profileConnected pc = new profileConnected();
+                    pc.Id = sp.Id;
+                    pc.ProfileDate = sp.ProfileDate;
+                    pc.ProfileId = sp.ProfileId;
+                    pc.ProfileStatus = sp.ProfileStatus;
+                    pc.ProfileType = sp.ProfileType;
+                    pc.UserId = sp.UserId;
+                    if (sp.ProfileType == "facebook")
+                    {
+                        try
+                        {
+                            FacebookAccountRepository objFbAccRepo = new FacebookAccountRepository();
+                            Domain.Socioboard.Domain.FacebookAccount objFbAcc = objFbAccRepo.getUserDetails(sp.ProfileId);
+                            pc.ProfileName = objFbAcc.FbUserName;
+                            pc.ProfileImgUrl = "http://graph.facebook.com/" + sp.ProfileId + "/picture?type=small";
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                        }
+                    }
+                    else if (sp.ProfileType == "twitter")
+                    {
+                        try
+                        {
+                            TwitterAccountRepository objTwtAccRepo = new TwitterAccountRepository();
+                            Domain.Socioboard.Domain.TwitterAccount objTwtAcc = objTwtAccRepo.getUserInfo(sp.ProfileId);
+                            pc.ProfileName = objTwtAcc.TwitterScreenName;
+                            pc.ProfileImgUrl = objTwtAcc.ProfileImageUrl;
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                        }
+                    }
+                    else if (sp.ProfileType == "instagram")
+                    {
+                        try
+                        {
+                            InstagramAccountRepository objInsAccRepo = new InstagramAccountRepository();
+                            Domain.Socioboard.Domain.InstagramAccount objInsAcc = objInsAccRepo.getInstagramAccountById(sp.ProfileId);
+                            pc.ProfileName = objInsAcc.InsUserName;
+                            pc.ProfileImgUrl = objInsAcc.ProfileUrl;
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                        }
+                    }
+                    else if (sp.ProfileType == "linkedin")
+                    {
+                        try
+                        {
+                            LinkedInAccountRepository objLiAccRepo = new LinkedInAccountRepository();
+                            Domain.Socioboard.Domain.LinkedInAccount objLiAcc = objLiAccRepo.getLinkedinAccountDetailsById(sp.ProfileId);
+                            pc.ProfileName = objLiAcc.LinkedinUserName;
+                            pc.ProfileImgUrl = objLiAcc.ProfileImageUrl;
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                        }
+                    }
+                    else if (sp.ProfileType == "googleplus")
+                    {
+                        try
+                        {
+                            GooglePlusAccountRepository objGpAccRepo = new GooglePlusAccountRepository();
+                            Domain.Socioboard.Domain.GooglePlusAccount objGpAcc = objGpAccRepo.getUserDetails(sp.ProfileId);
+                            pc.ProfileName = objGpAcc.GpUserName;
+                            pc.ProfileImgUrl = objGpAcc.GpProfileImage;
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                        }
+                    }
+                    else if (sp.ProfileType == "tumblr")
+                    {
+                        try
+                        {
+                            TumblrAccountRepository objTumblrAccountRepository = new TumblrAccountRepository();
+                            Domain.Socioboard.Domain.TumblrAccount objTumblrAccount = objTumblrAccountRepository.getTumblrAccountDetailsById(sp.ProfileId);
+                            pc.ProfileName = objTumblrAccount.tblrUserName;
+                            pc.ProfileImgUrl = objTumblrAccount.tblrProfilePicUrl;
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                        }
+                    }
+                    else if (sp.ProfileType == "youtube")
+                    {
+                        try
+                        {
+                            YoutubeAccountRepository objYoutubeAccountRepository = new YoutubeAccountRepository();
+                            Domain.Socioboard.Domain.YoutubeAccount objYoutubeAccount = objYoutubeAccountRepository.getYoutubeAccountDetailsById(sp.ProfileId);
+                            pc.ProfileName = objYoutubeAccount.Ytusername;
+                            pc.ProfileImgUrl = objYoutubeAccount.Ytprofileimage;
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                        }
+                    }
+                    lstProfile.Add(pc);
+                }
+                return new JavaScriptSerializer().Serialize(lstProfile);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return new JavaScriptSerializer().Serialize("Please Try Again");
+            }
+        }
+
+        //getUsersById
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string getUsersById(string UserId)
+        {
+            Domain.Socioboard.Domain.User objUser = new Domain.Socioboard.Domain.User();
+            objUser = userrepo.getUsersById(Guid.Parse(UserId));
+
+            return new JavaScriptSerializer().Serialize(objUser);
+        }
+
+        //getUserInfoByEmail
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string getUserInfoByEmail(string userEmail)
+        {
+            Domain.Socioboard.Domain.User objUser = new Domain.Socioboard.Domain.User();
+            objUser = userrepo.getUserInfoByEmail(userEmail);
+
+            return new JavaScriptSerializer().Serialize(objUser);
+        }
+
+
+    }
+
+    public class profileConnected
+    {
+        public Guid Id { get; set; }
+        public Guid UserId { get; set; }
+        public string ProfileId { get; set; }
+        public string ProfileType { get; set; }
+        public DateTime ProfileDate { get; set; }
+        public int ProfileStatus { get; set; }
+        public string ProfileName { get; set; }
+        public string ProfileImgUrl { get; set; }
+
+    }
+}

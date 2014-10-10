@@ -1,0 +1,27 @@
+<div id="page-wrapper" style="min-height: 385px;">
+
+   
+</div>
+<script src="~/Themes/Socioboard/Contents/js/Message.js"></script>
+<script src="~/Themes/Socioboard/Contents/js/Helper.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#page-wrapper').load('../Messages/loadarchive');
+        $('#side-menu a').removeClass('active');
+        $("#message").addClass('active');
+        $("#message").children().addClass('active');
+    });
+
+    function hideTask(divId) {
+        alert(divId);
+        $('#' + divId).removeClass('in');
+    }
+    function opnCommentReply(network, messageid, ProfileId) {
+        debugger;
+        var buttonhtm = "<button type=\"button\" class=\"btn btn-default\" onclick=\"saveCommentReply('" + network + "','" + messageid + "','" + ProfileId + "')\">Comment</button>";
+        $("#leaveCommentReply").html(buttonhtm);
+        $("#CommentReplyArchive").modal('show');
+
+    }
+</script>

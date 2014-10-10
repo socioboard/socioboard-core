@@ -1,0 +1,236 @@
+﻿@using System.Data;
+@using Socioboard.Helper;
+@using System.Web.Script.Serialization;
+@{
+    //Domain.Socioboard.Domain.User objdetails = (Domain.Socioboard.Domain.User)Session["User"];
+
+    List<Domain.Socioboard.Domain.Tasks> lstTasks = (List<Domain.Socioboard.Domain.Tasks>)Model;
+
+    Socioboard.Api.User.User objApiUser = new Socioboard.Api.User.User();
+
+    Socioboard.Api.Tasks.Tasks objApiTasks = new Socioboard.Api.Tasks.Tasks();
+    
+}
+
+<div class="container-fluid">
+    <div class="col-md-12">
+
+        <div class="col-md-9">
+            <div class="row">
+                <h2 class="page-header">My Task</h2>
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Pending Group
+                       
+                            </div>
+                            <!-- .panel-heading -->
+                            <div class="panel-body">
+                                <div id="accordion" class="panel-group">
+
+                                    @foreach (var item in lstTasks)
+                                    {
+                                        Domain.Socioboard.Domain.User objdetails = (Domain.Socioboard.Domain.User)new JavaScriptSerializer().Deserialize(objApiUser.getUsersById(item.AssignTaskTo.ToString()), typeof(Domain.Socioboard.Domain.User));
+                                        string imgpath = string.Empty;
+                                        if (string.IsNullOrEmpty(objdetails.ProfileUrl))
+                                        {
+                                            imgpath = "../Contents/img/blank_img.png";
+                                        }
+                                        else
+                                        {
+                                            imgpath = objdetails.ProfileUrl;
+                                        }    
+                                        
+                                        @:<div class="panel panel-default" id="Section"@item.Id">
+                                            <div class="panel-heading">
+                                                                                            <h4 class="panel-title">
+                                                                                                <a class="collapsed" href="#@item.Id" data-parent="#accordion" data-toggle="collapse"><i class="fa fa-thumb-tack fa-fw"></i></a><span>
+                                            @objdetails.UserName</span><p>Assigned by @objdetails.UserName</p>
+                                                                                                <br>
+                                                                                                <span>@item.TaskMessage</span>
+                                                                                                <i data-target="#EditModal" data-toggle="modal" class="fa fa-pencil fa-fw pull-right"></i>
+                                                                                            </h4>
+                                                                                        </div>
+                                            
+                                        List<Domain.Socioboard.Domain.TaskComment> pretask = (List<Domain.Socioboard.Domain.TaskComment>)new JavaScriptSerializer().Deserialize(objApiTasks.getAllTasksCommentOfUser(item.Id.ToString()), typeof(List<Domain.Socioboard.Domain.TaskComment>));
+                                        if (pretask.Count > 0 && pretask != null)
+                                        {
+                                                <div style="height: 0px;" class="panel-collapse collapse" id="@item.Id">
+                                                   <div class="panel-body">
+                                                      <ul class="list-group">
+
+                                                    @foreach (Domain.Socioboard.Domain.TaskComment taskComment in pretask)
+                                                    {
+                                                        @:<li id="task_comment_@item.Id" + "_" + @taskComment.Id" class="list-group-item assign_comments">
+                                                            <img class="commentsmallsize" src="@imgpath"><span class="commentmargin">@taskComment.Comment</span>
+                                                            <span class="pull-right">By @objdetails.UserName at @taskComment.CommentDate</span>
+                                                        @:</li>
+                                                    }
+                                               
+                                                      @*  <li class="list-group-item">
+                                                            <img class="commentsmallsize" src="Contents/img/photo.png"><span class="commentmargin">Hello all chanchal</span>
+                                                            <span class="pull-right">By Sumit Ghosh at 8/21/2014 5:45:49 AM</span>
+                                                        </li>*@
+                                                       @* <li class="list-group-item">
+                                                            <img class=" commentsmallsize" src="Contents/img/photo.png">
+                                                            hit http://t. like
+                                                    
+                                                            <span class="pull-right">By Sumit Ghosh at 8/21/2014 5:45:49 AM</span>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <img class=" commentsmallsize" src="Contents/img/photo.png">
+                                                            Hi everyone
+                                                    
+                                                            <span class="pull-right">By Sumit Ghosh at 8/21/2014 5:45:49 AM</span>
+                                                        </li>*@
+                                                    </ul>
+
+                                                    <div class="col-md-3">
+                                                        <img class="img-responsive img-circle profilePic" src="@objdetails.ProfileUrl">
+                                                        <img src="Contents/img/twticon.png" class="img-responsive img-circle msgiconPoss">
+                                                        <span>@objdetails.UserName</span>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <textarea id="txtTaskComment" placeholder="Leave a comment" rows="3" class="form-control"></textarea>
+                                                        <button id="taskcomment" class="btn btn-primary " onclick="addTaskComment('@item.Id')" type="button">OK</button>
+                                                        <button onclick="hideTask('@item.Id')" data-dismiss="modal" class="btn btn-default " type="button">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                            
+                                        @:</div> 
+                                                                                                                                                    }
+
+
+                                    @*<div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" href="#collapseTwo" data-parent="#accordion" data-toggle="collapse"><i class="fa fa-thumb-tack fa-fw"></i>Sumit Ghosh Assigned by Sumit Ghosh</a>
+                                                <i data-target="#EditModal" data-toggle="modal" class="fa fa-pencil fa-fw pull-right"></i>
+                                            </h4>
+                                        </div>
+                                        <div style="height: 0px;" class="panel-collapse collapse" id="collapseTwo">
+                                            <div class="panel-body">
+                                                <p data-target="#ActivityModal" data-toggle="modal"><i class="fa fa-expand fa-fw"></i>Now that's an awesome Growth Hack! Awesome job Gaurav Dahake riding on MI's demand!</p>
+                                            </div>
+                                        </div>
+                                    </div>*@
+                                </div>
+                            </div>
+                            <!-- .panel-body -->
+                        </div>
+                        <!-- /.panel -->
+
+
+
+                        <!-- Edit Modal -->
+                        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="EditModal" class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                        <h4 id="myModalLabel" class="modal-title">Edit Status</h4>
+                                    </div>
+                                    <div class="modal-body col-md-12">
+                                        <p>Are you sure want to change status?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary " type="button">OK</button>
+                                        <button data-dismiss="modal" class="btn btn-default " type="button">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end of editmodel-->
+
+                        <!-- TASK ACTIVITY Modal -->
+                        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="ActivityModal" class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                        <h4 id="myModalLabel" class="modal-title">TASK ACTIVITY</h4>
+                                    </div>
+                                    <div class="modal-body col-md-12">
+                                        <div class="col-xs-3">
+                                            <img data-target="#profileModal" data-toggle="modal" class="img-circle profilePic" src="Contents/img/photo.png">
+                                            <img src="Contents/img/twticon.png" class="img-responsive img-circle msgiconPoss">
+                                            <span>Chanchal</span>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <p>Hey check this out.</p>
+                                            <span>By Sumit Ghosh at 8/21/2014 5:45:49 AM</span>
+                                            <textarea placeholder="Leave a comment" rows="3" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary " type="button">Save</button>
+                                        <button data-dismiss="modal" class="btn btn-default " type="button">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end of TASK ACTIVITY model-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-3">
+            <div style="margin-top: 65px;" class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bell fa-fw"></i>MANAGE TASK
+                       
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox">
+                                    Check me out
+                                               
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox">
+                                    Check me out
+                                               
+                                </label>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="radio">
+                                <label class="radio">
+                                    <input type="radio" value="option1" id="inlineRadio1" name="inlineRadioOptions">
+                                    My task
+                                           
+                                </label>
+                                <div class="divder"></div>
+                                <label class="radio">
+                                    <input type="radio" value="option2" id="inlineRadio2" name="inlineRadioOptions">
+                                    Team task
+                                           
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- /.panel-body -->
+            </div>
+
+
+        </div>
+    </div>
+
+</div>

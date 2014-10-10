@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetAllInstagramAccounts">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllInstagramAccountsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllInstagramAccountsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserInformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedinId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserInformationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteInstagramAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteInstagramAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteInstagramAccountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllInstagramAccountsByUserIdAndGroupId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllInstagramAccountsByUserIdAndGroupIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllInstagramAccountsByUserIdAndGroupIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllInstagramAccountsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllInstagramAccounts" />
+  </wsdl:message>
+  <wsdl:message name="GetAllInstagramAccountsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllInstagramAccountsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserInformationSoapIn">
+    <wsdl:part name="parameters" element="tns:UserInformation" />
+  </wsdl:message>
+  <wsdl:message name="UserInformationSoapOut">
+    <wsdl:part name="parameters" element="tns:UserInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteInstagramAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteInstagramAccount" />
+  </wsdl:message>
+  <wsdl:message name="DeleteInstagramAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteInstagramAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllInstagramAccountsByUserIdAndGroupIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllInstagramAccountsByUserIdAndGroupId" />
+  </wsdl:message>
+  <wsdl:message name="GetAllInstagramAccountsByUserIdAndGroupIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllInstagramAccountsByUserIdAndGroupIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllInstagramAccountsHttpGetIn">
+    <wsdl:part name="Userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllInstagramAccountsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UserInformationHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="LinkedinId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UserInformationHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteInstagramAccountHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteInstagramAccountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllInstagramAccountsByUserIdAndGroupIdHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllInstagramAccountsByUserIdAndGroupIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllInstagramAccountsHttpPostIn">
+    <wsdl:part name="Userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllInstagramAccountsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UserInformationHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="LinkedinId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UserInformationHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteInstagramAccountHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteInstagramAccountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllInstagramAccountsByUserIdAndGroupIdHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllInstagramAccountsByUserIdAndGroupIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="InstagramAccountSoap">
+    <wsdl:operation name="GetAllInstagramAccounts">
+      <wsdl:input message="tns:GetAllInstagramAccountsSoapIn" />
+      <wsdl:output message="tns:GetAllInstagramAccountsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserInformation">
+      <wsdl:input message="tns:UserInformationSoapIn" />
+      <wsdl:output message="tns:UserInformationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteInstagramAccount">
+      <wsdl:input message="tns:DeleteInstagramAccountSoapIn" />
+      <wsdl:output message="tns:DeleteInstagramAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllInstagramAccountsByUserIdAndGroupId">
+      <wsdl:input message="tns:GetAllInstagramAccountsByUserIdAndGroupIdSoapIn" />
+      <wsdl:output message="tns:GetAllInstagramAccountsByUserIdAndGroupIdSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="InstagramAccountHttpGet">
+    <wsdl:operation name="GetAllInstagramAccounts">
+      <wsdl:input message="tns:GetAllInstagramAccountsHttpGetIn" />
+      <wsdl:output message="tns:GetAllInstagramAccountsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserInformation">
+      <wsdl:input message="tns:UserInformationHttpGetIn" />
+      <wsdl:output message="tns:UserInformationHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteInstagramAccount">
+      <wsdl:input message="tns:DeleteInstagramAccountHttpGetIn" />
+      <wsdl:output message="tns:DeleteInstagramAccountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllInstagramAccountsByUserIdAndGroupId">
+      <wsdl:input message="tns:GetAllInstagramAccountsByUserIdAndGroupIdHttpGetIn" />
+      <wsdl:output message="tns:GetAllInstagramAccountsByUserIdAndGroupIdHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="InstagramAccountHttpPost">
+    <wsdl:operation name="GetAllInstagramAccounts">
+      <wsdl:input message="tns:GetAllInstagramAccountsHttpPostIn" />
+      <wsdl:output message="tns:GetAllInstagramAccountsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserInformation">
+      <wsdl:input message="tns:UserInformationHttpPostIn" />
+      <wsdl:output message="tns:UserInformationHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteInstagramAccount">
+      <wsdl:input message="tns:DeleteInstagramAccountHttpPostIn" />
+      <wsdl:output message="tns:DeleteInstagramAccountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllInstagramAccountsByUserIdAndGroupId">
+      <wsdl:input message="tns:GetAllInstagramAccountsByUserIdAndGroupIdHttpPostIn" />
+      <wsdl:output message="tns:GetAllInstagramAccountsByUserIdAndGroupIdHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InstagramAccountSoap" type="tns:InstagramAccountSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllInstagramAccounts">
+      <soap:operation soapAction="http://tempuri.org/GetAllInstagramAccounts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserInformation">
+      <soap:operation soapAction="http://tempuri.org/UserInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteInstagramAccount">
+      <soap:operation soapAction="http://tempuri.org/DeleteInstagramAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllInstagramAccountsByUserIdAndGroupId">
+      <soap:operation soapAction="http://tempuri.org/GetAllInstagramAccountsByUserIdAndGroupId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="InstagramAccountSoap12" type="tns:InstagramAccountSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllInstagramAccounts">
+      <soap12:operation soapAction="http://tempuri.org/GetAllInstagramAccounts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserInformation">
+      <soap12:operation soapAction="http://tempuri.org/UserInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteInstagramAccount">
+      <soap12:operation soapAction="http://tempuri.org/DeleteInstagramAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllInstagramAccountsByUserIdAndGroupId">
+      <soap12:operation soapAction="http://tempuri.org/GetAllInstagramAccountsByUserIdAndGroupId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="InstagramAccountHttpGet" type="tns:InstagramAccountHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetAllInstagramAccounts">
+      <http:operation location="/GetAllInstagramAccounts" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserInformation">
+      <http:operation location="/UserInformation" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteInstagramAccount">
+      <http:operation location="/DeleteInstagramAccount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllInstagramAccountsByUserIdAndGroupId">
+      <http:operation location="/GetAllInstagramAccountsByUserIdAndGroupId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="InstagramAccountHttpPost" type="tns:InstagramAccountHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetAllInstagramAccounts">
+      <http:operation location="/GetAllInstagramAccounts" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserInformation">
+      <http:operation location="/UserInformation" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteInstagramAccount">
+      <http:operation location="/DeleteInstagramAccount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllInstagramAccountsByUserIdAndGroupId">
+      <http:operation location="/GetAllInstagramAccountsByUserIdAndGroupId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InstagramAccount">
+    <wsdl:port name="InstagramAccountSoap" binding="tns:InstagramAccountSoap">
+      <soap:address location="http://localhost:6361/Services/InstagramAccount.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InstagramAccountSoap12" binding="tns:InstagramAccountSoap12">
+      <soap12:address location="http://localhost:6361/Services/InstagramAccount.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InstagramAccountHttpGet" binding="tns:InstagramAccountHttpGet">
+      <http:address location="http://localhost:6361/Services/InstagramAccount.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InstagramAccountHttpPost" binding="tns:InstagramAccountHttpPost">
+      <http:address location="http://localhost:6361/Services/InstagramAccount.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

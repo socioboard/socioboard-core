@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetAllTwitterStatsDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="days" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllTwitterStatsDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllTwitterStatsDetailsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllTwitterStatsDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllTwitterStatsDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTwitterStatsDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllTwitterStatsDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTwitterStatsDetailsHttpGetIn">
+    <wsdl:part name="Profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTwitterStatsDetailsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTwitterStatsDetailsHttpPostIn">
+    <wsdl:part name="Profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTwitterStatsDetailsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="TwitterStatsSoap">
+    <wsdl:operation name="GetAllTwitterStatsDetails">
+      <wsdl:input message="tns:GetAllTwitterStatsDetailsSoapIn" />
+      <wsdl:output message="tns:GetAllTwitterStatsDetailsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TwitterStatsHttpGet">
+    <wsdl:operation name="GetAllTwitterStatsDetails">
+      <wsdl:input message="tns:GetAllTwitterStatsDetailsHttpGetIn" />
+      <wsdl:output message="tns:GetAllTwitterStatsDetailsHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TwitterStatsHttpPost">
+    <wsdl:operation name="GetAllTwitterStatsDetails">
+      <wsdl:input message="tns:GetAllTwitterStatsDetailsHttpPostIn" />
+      <wsdl:output message="tns:GetAllTwitterStatsDetailsHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TwitterStatsSoap" type="tns:TwitterStatsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllTwitterStatsDetails">
+      <soap:operation soapAction="http://tempuri.org/GetAllTwitterStatsDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TwitterStatsSoap12" type="tns:TwitterStatsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllTwitterStatsDetails">
+      <soap12:operation soapAction="http://tempuri.org/GetAllTwitterStatsDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TwitterStatsHttpGet" type="tns:TwitterStatsHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetAllTwitterStatsDetails">
+      <http:operation location="/GetAllTwitterStatsDetails" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TwitterStatsHttpPost" type="tns:TwitterStatsHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetAllTwitterStatsDetails">
+      <http:operation location="/GetAllTwitterStatsDetails" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TwitterStats">
+    <wsdl:port name="TwitterStatsSoap" binding="tns:TwitterStatsSoap">
+      <soap:address location="http://localhost:6361/Services/TwitterStats.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TwitterStatsSoap12" binding="tns:TwitterStatsSoap12">
+      <soap12:address location="http://localhost:6361/Services/TwitterStats.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TwitterStatsHttpGet" binding="tns:TwitterStatsHttpGet">
+      <http:address location="http://localhost:6361/Services/TwitterStats.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TwitterStatsHttpPost" binding="tns:TwitterStatsHttpPost">
+      <http:address location="http://localhost:6361/Services/TwitterStats.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

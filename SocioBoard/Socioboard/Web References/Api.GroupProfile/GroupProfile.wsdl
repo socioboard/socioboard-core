@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetAllProfilesConnectedWithGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllProfilesConnectedWithGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllProfilesConnectedWithGroupResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddProfileToGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="network" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddProfileToGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddProfileToGroupResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProfileFromGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProfileFromGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteProfileFromGroupResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllProfilesConnectedWithGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllProfilesConnectedWithGroup" />
+  </wsdl:message>
+  <wsdl:message name="GetAllProfilesConnectedWithGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllProfilesConnectedWithGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddProfileToGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:AddProfileToGroup" />
+  </wsdl:message>
+  <wsdl:message name="AddProfileToGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:AddProfileToGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProfileFromGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteProfileFromGroup" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProfileFromGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteProfileFromGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllProfilesConnectedWithGroupHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllProfilesConnectedWithGroupHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddProfileToGroupHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="network" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddProfileToGroupHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProfileFromGroupHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProfileFromGroupHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllProfilesConnectedWithGroupHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllProfilesConnectedWithGroupHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddProfileToGroupHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="network" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddProfileToGroupHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProfileFromGroupHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProfileFromGroupHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="GroupProfileSoap">
+    <wsdl:operation name="GetAllProfilesConnectedWithGroup">
+      <wsdl:input message="tns:GetAllProfilesConnectedWithGroupSoapIn" />
+      <wsdl:output message="tns:GetAllProfilesConnectedWithGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProfileToGroup">
+      <wsdl:input message="tns:AddProfileToGroupSoapIn" />
+      <wsdl:output message="tns:AddProfileToGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfileFromGroup">
+      <wsdl:input message="tns:DeleteProfileFromGroupSoapIn" />
+      <wsdl:output message="tns:DeleteProfileFromGroupSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="GroupProfileHttpGet">
+    <wsdl:operation name="GetAllProfilesConnectedWithGroup">
+      <wsdl:input message="tns:GetAllProfilesConnectedWithGroupHttpGetIn" />
+      <wsdl:output message="tns:GetAllProfilesConnectedWithGroupHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProfileToGroup">
+      <wsdl:input message="tns:AddProfileToGroupHttpGetIn" />
+      <wsdl:output message="tns:AddProfileToGroupHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfileFromGroup">
+      <wsdl:input message="tns:DeleteProfileFromGroupHttpGetIn" />
+      <wsdl:output message="tns:DeleteProfileFromGroupHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="GroupProfileHttpPost">
+    <wsdl:operation name="GetAllProfilesConnectedWithGroup">
+      <wsdl:input message="tns:GetAllProfilesConnectedWithGroupHttpPostIn" />
+      <wsdl:output message="tns:GetAllProfilesConnectedWithGroupHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProfileToGroup">
+      <wsdl:input message="tns:AddProfileToGroupHttpPostIn" />
+      <wsdl:output message="tns:AddProfileToGroupHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfileFromGroup">
+      <wsdl:input message="tns:DeleteProfileFromGroupHttpPostIn" />
+      <wsdl:output message="tns:DeleteProfileFromGroupHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GroupProfileSoap" type="tns:GroupProfileSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllProfilesConnectedWithGroup">
+      <soap:operation soapAction="http://tempuri.org/GetAllProfilesConnectedWithGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProfileToGroup">
+      <soap:operation soapAction="http://tempuri.org/AddProfileToGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfileFromGroup">
+      <soap:operation soapAction="http://tempuri.org/DeleteProfileFromGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GroupProfileSoap12" type="tns:GroupProfileSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllProfilesConnectedWithGroup">
+      <soap12:operation soapAction="http://tempuri.org/GetAllProfilesConnectedWithGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProfileToGroup">
+      <soap12:operation soapAction="http://tempuri.org/AddProfileToGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfileFromGroup">
+      <soap12:operation soapAction="http://tempuri.org/DeleteProfileFromGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GroupProfileHttpGet" type="tns:GroupProfileHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetAllProfilesConnectedWithGroup">
+      <http:operation location="/GetAllProfilesConnectedWithGroup" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProfileToGroup">
+      <http:operation location="/AddProfileToGroup" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfileFromGroup">
+      <http:operation location="/DeleteProfileFromGroup" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GroupProfileHttpPost" type="tns:GroupProfileHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetAllProfilesConnectedWithGroup">
+      <http:operation location="/GetAllProfilesConnectedWithGroup" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProfileToGroup">
+      <http:operation location="/AddProfileToGroup" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfileFromGroup">
+      <http:operation location="/DeleteProfileFromGroup" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GroupProfile">
+    <wsdl:port name="GroupProfileSoap" binding="tns:GroupProfileSoap">
+      <soap:address location="http://localhost:6361/Services/GroupProfile.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GroupProfileSoap12" binding="tns:GroupProfileSoap12">
+      <soap12:address location="http://localhost:6361/Services/GroupProfile.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GroupProfileHttpGet" binding="tns:GroupProfileHttpGet">
+      <http:address location="http://localhost:6361/Services/GroupProfile.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GroupProfileHttpPost" binding="tns:GroupProfileHttpPost">
+      <http:address location="http://localhost:6361/Services/GroupProfile.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

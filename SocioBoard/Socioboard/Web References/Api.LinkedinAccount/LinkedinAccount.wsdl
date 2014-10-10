@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="UserInformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedinId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserInformationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllLinkedinAccountsOfUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllLinkedinAccountsOfUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllLinkedinAccountsOfUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLinkedinAccountDetailsById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedinId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLinkedinAccountDetailsByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLinkedinAccountDetailsByIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteLinkedinAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteLinkedinAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteLinkedinAccountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllLinkedinAccountsByUserIdAndGroupId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllLinkedinAccountsByUserIdAndGroupIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllLinkedinAccountsByUserIdAndGroupIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="UserInformationSoapIn">
+    <wsdl:part name="parameters" element="tns:UserInformation" />
+  </wsdl:message>
+  <wsdl:message name="UserInformationSoapOut">
+    <wsdl:part name="parameters" element="tns:UserInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinAccountsOfUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllLinkedinAccountsOfUser" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinAccountsOfUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllLinkedinAccountsOfUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinAccountDetailsByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLinkedinAccountDetailsById" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinAccountDetailsByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLinkedinAccountDetailsByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLinkedinAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteLinkedinAccount" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLinkedinAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteLinkedinAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinAccountsByUserIdAndGroupIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllLinkedinAccountsByUserIdAndGroupId" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinAccountsByUserIdAndGroupIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllLinkedinAccountsByUserIdAndGroupIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserInformationHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="LinkedinId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UserInformationHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinAccountsOfUserHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinAccountsOfUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinAccountDetailsByIdHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="LinkedinId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinAccountDetailsByIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLinkedinAccountHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLinkedinAccountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinAccountsByUserIdAndGroupIdHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinAccountsByUserIdAndGroupIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UserInformationHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="LinkedinId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UserInformationHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinAccountsOfUserHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinAccountsOfUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinAccountDetailsByIdHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="LinkedinId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinAccountDetailsByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLinkedinAccountHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLinkedinAccountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinAccountsByUserIdAndGroupIdHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinAccountsByUserIdAndGroupIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="LinkedinAccountSoap">
+    <wsdl:operation name="UserInformation">
+      <wsdl:input message="tns:UserInformationSoapIn" />
+      <wsdl:output message="tns:UserInformationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinAccountsOfUser">
+      <wsdl:input message="tns:GetAllLinkedinAccountsOfUserSoapIn" />
+      <wsdl:output message="tns:GetAllLinkedinAccountsOfUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedinAccountDetailsById">
+      <wsdl:input message="tns:GetLinkedinAccountDetailsByIdSoapIn" />
+      <wsdl:output message="tns:GetLinkedinAccountDetailsByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLinkedinAccount">
+      <wsdl:input message="tns:DeleteLinkedinAccountSoapIn" />
+      <wsdl:output message="tns:DeleteLinkedinAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinAccountsByUserIdAndGroupId">
+      <wsdl:input message="tns:GetAllLinkedinAccountsByUserIdAndGroupIdSoapIn" />
+      <wsdl:output message="tns:GetAllLinkedinAccountsByUserIdAndGroupIdSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="LinkedinAccountHttpGet">
+    <wsdl:operation name="UserInformation">
+      <wsdl:input message="tns:UserInformationHttpGetIn" />
+      <wsdl:output message="tns:UserInformationHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinAccountsOfUser">
+      <wsdl:input message="tns:GetAllLinkedinAccountsOfUserHttpGetIn" />
+      <wsdl:output message="tns:GetAllLinkedinAccountsOfUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedinAccountDetailsById">
+      <wsdl:input message="tns:GetLinkedinAccountDetailsByIdHttpGetIn" />
+      <wsdl:output message="tns:GetLinkedinAccountDetailsByIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLinkedinAccount">
+      <wsdl:input message="tns:DeleteLinkedinAccountHttpGetIn" />
+      <wsdl:output message="tns:DeleteLinkedinAccountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinAccountsByUserIdAndGroupId">
+      <wsdl:input message="tns:GetAllLinkedinAccountsByUserIdAndGroupIdHttpGetIn" />
+      <wsdl:output message="tns:GetAllLinkedinAccountsByUserIdAndGroupIdHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="LinkedinAccountHttpPost">
+    <wsdl:operation name="UserInformation">
+      <wsdl:input message="tns:UserInformationHttpPostIn" />
+      <wsdl:output message="tns:UserInformationHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinAccountsOfUser">
+      <wsdl:input message="tns:GetAllLinkedinAccountsOfUserHttpPostIn" />
+      <wsdl:output message="tns:GetAllLinkedinAccountsOfUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedinAccountDetailsById">
+      <wsdl:input message="tns:GetLinkedinAccountDetailsByIdHttpPostIn" />
+      <wsdl:output message="tns:GetLinkedinAccountDetailsByIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLinkedinAccount">
+      <wsdl:input message="tns:DeleteLinkedinAccountHttpPostIn" />
+      <wsdl:output message="tns:DeleteLinkedinAccountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinAccountsByUserIdAndGroupId">
+      <wsdl:input message="tns:GetAllLinkedinAccountsByUserIdAndGroupIdHttpPostIn" />
+      <wsdl:output message="tns:GetAllLinkedinAccountsByUserIdAndGroupIdHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LinkedinAccountSoap" type="tns:LinkedinAccountSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UserInformation">
+      <soap:operation soapAction="http://tempuri.org/UserInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinAccountsOfUser">
+      <soap:operation soapAction="http://tempuri.org/GetAllLinkedinAccountsOfUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedinAccountDetailsById">
+      <soap:operation soapAction="http://tempuri.org/GetLinkedinAccountDetailsById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLinkedinAccount">
+      <soap:operation soapAction="http://tempuri.org/DeleteLinkedinAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinAccountsByUserIdAndGroupId">
+      <soap:operation soapAction="http://tempuri.org/GetAllLinkedinAccountsByUserIdAndGroupId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LinkedinAccountSoap12" type="tns:LinkedinAccountSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UserInformation">
+      <soap12:operation soapAction="http://tempuri.org/UserInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinAccountsOfUser">
+      <soap12:operation soapAction="http://tempuri.org/GetAllLinkedinAccountsOfUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedinAccountDetailsById">
+      <soap12:operation soapAction="http://tempuri.org/GetLinkedinAccountDetailsById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLinkedinAccount">
+      <soap12:operation soapAction="http://tempuri.org/DeleteLinkedinAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinAccountsByUserIdAndGroupId">
+      <soap12:operation soapAction="http://tempuri.org/GetAllLinkedinAccountsByUserIdAndGroupId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LinkedinAccountHttpGet" type="tns:LinkedinAccountHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="UserInformation">
+      <http:operation location="/UserInformation" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinAccountsOfUser">
+      <http:operation location="/GetAllLinkedinAccountsOfUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedinAccountDetailsById">
+      <http:operation location="/GetLinkedinAccountDetailsById" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLinkedinAccount">
+      <http:operation location="/DeleteLinkedinAccount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinAccountsByUserIdAndGroupId">
+      <http:operation location="/GetAllLinkedinAccountsByUserIdAndGroupId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LinkedinAccountHttpPost" type="tns:LinkedinAccountHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="UserInformation">
+      <http:operation location="/UserInformation" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinAccountsOfUser">
+      <http:operation location="/GetAllLinkedinAccountsOfUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedinAccountDetailsById">
+      <http:operation location="/GetLinkedinAccountDetailsById" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLinkedinAccount">
+      <http:operation location="/DeleteLinkedinAccount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinAccountsByUserIdAndGroupId">
+      <http:operation location="/GetAllLinkedinAccountsByUserIdAndGroupId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LinkedinAccount">
+    <wsdl:port name="LinkedinAccountSoap" binding="tns:LinkedinAccountSoap">
+      <soap:address location="http://localhost:6361/Services/LinkedinAccount.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LinkedinAccountSoap12" binding="tns:LinkedinAccountSoap12">
+      <soap12:address location="http://localhost:6361/Services/LinkedinAccount.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LinkedinAccountHttpGet" binding="tns:LinkedinAccountHttpGet">
+      <http:address location="http://localhost:6361/Services/LinkedinAccount.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LinkedinAccountHttpPost" binding="tns:LinkedinAccountHttpPost">
+      <http:address location="http://localhost:6361/Services/LinkedinAccount.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

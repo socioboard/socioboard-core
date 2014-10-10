@@ -1,0 +1,210 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div id="page-wrapper">
+    <div class="container-fluid" style="margin-top:25px">
+        <div class="col-md-12">
+    
+   @* @Html.Partial("_MessagesLeftSideBarPartial")
+
+    @Html.Partial("_MessagesMidPartial")
+   
+    @Html.Partial("_MessagesRightSideBarPartial")*@
+
+      <div id="right-sidebar_home" class="partialContents" data-url="/Messages/MessagesMidPartialNew">
+        <img src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" />
+        Loading . . .
+    </div> 
+
+    <div id="contentcontainer2" class="partialContents" data-url="/Messages/accordianprofiles">
+        <img @*src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif"*@ />
+        @*Loading . . .*@
+     
+       
+    </div>
+
+   @* <div id="right-sidebar_home" class="partialContents" data-url="/Home/UserProfile">
+        <img src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" />
+        Loading . . .
+     
+
+       
+    </div>*@
+
+            </div>
+            </div>
+
+</div>
+
+<script src="~/Themes/Socioboard/Contents/js/Message.js"></script>
+<script src="~/Themes/Socioboard/Contents/js/Helper.js"></script>
+<script src="~/Themes/Socioboard/Contents/js/underscore.js"></script>
+
+<script language="javascript" type="text/javascript">
+
+    var throttled = _.throttle(onScroll, 3000);
+
+
+    function opentask(msgdesc)
+    {
+      //  alert(msgdesc);
+        $('#savetask').attr('msgdesc', msgdesc);
+        $('#task').modal('show');
+    }
+
+    function opnCommentReply(id, network, messageid, ProfileId) {
+        debugger;
+        var buttonhtm = "<button type=\"button\" class=\"btn btn-default\" onclick=\"saveCommentReply('" + network + "','" + messageid + "','" + ProfileId + "')\">Comment</button>";
+        $("#leaveCommentReply").html(buttonhtm);
+        $("#CommentReply").modal('show');
+
+    }
+    //function openaddTaskComment(msgdesc) {
+    //    //  alert(msgdesc);
+    //    $('#savetask').attr('msgdesc', msgdesc);
+    //    $('#task').modal('show');
+    //}
+
+    function BindInboxMessages() {
+
+        $.ajax
+       ({
+           type: "GET",
+           url: "../Messages/MessagesMidPartialNew",
+           data: '',
+           contentType: "application/json; charset=utf-8",
+           dataType: "html",
+           success: function (msg) {
+               if (msg.indexOf("nodata") > -1) {
+                   //No data Found...!!
+               }
+               else {
+                   $("#divBindMessage").html(msg);
+                   $(".loaderwrapper").css("display", "none");
+               }
+
+           }
+       });
+
+    }
+
+    function onScroll() {
+        var closeToBottom = ($(window).scrollTop() + $(window).height() > $(document).height() - 100);
+        if (closeToBottom) {
+            $.ajax
+        ({
+            type: "GET",
+            url: "../Messages/BindInboxOnScroll",
+            data: '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (msg) {
+                if (msg.indexOf("nodata") > -1) {
+                    //No data Found...!!
+                }
+                else {
+                    $("#divBindMessage").append(msg);
+                    $(".loaderwrapper").css("display", "none");
+                }
+
+            }
+        });
+        }
+    }
+
+    $(document).ready(function () {
+        debugger;
+        //alert('singham');
+
+        //$('#right-sidebar_home').on("click", )
+        
+        BindInboxMessages();
+
+        debugger;
+        $(".partialContents").each(function (index, item) {
+            var url = $(item).data("url");
+            if (url && url.length > 0) {
+                $(item).load(url);
+            }
+            
+            //$(window).on('scroll', function (event) {
+            //    onScroll();
+            //});
+            $(window).scroll(throttled);
+        });
+
+        //set initial state.
+        //$('#textbox1').val($(this).is(':checked'));
+
+        $('.checkbox  input[type=checkbox] input').change(function () {
+           alert($(this).is(':checked'));
+        });
+
+        $('.checkbox  input[type=checkbox] input').click(function () {
+            if (!$(this).is(':checked')) {
+                return confirm("Are you sure?");
+            }
+        });
+
+        //$.noConflict();
+        $('#side-menu a').removeClass('active');
+        $("#message").addClass('active');
+        $("#message").children().addClass('active');
+
+        $("#aad").data();
+
+        if (document.URL.indexOf('q=sent') == -1) {
+            BindSmartInbox();
+
+        } else {
+            BindSent();
+        }
+
+      
+
+        function BindSmartInbox() {
+            debugger;
+            BindMessages('abc');
+            BindProfilesInMessageTab();
+
+        }
+
+        function BindSent() {
+            BindInboxMessageonMessageTab();
+            BindProfilesInMessageTab();
+
+        }
+
+
+        function Updatemessages() {
+            debugger;
+
+
+
+        }
+
+        $("#messagetype").click(function () {
+            $('#profile').addClass('collapsed');
+        });
+
+        $("#profile").click(function () {
+            $('#messagetype').addClass('collapsed');
+        });
+
+       
+
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+

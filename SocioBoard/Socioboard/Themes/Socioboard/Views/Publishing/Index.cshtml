@@ -1,0 +1,199 @@
+﻿@{
+    //ViewBag.Title = "Home Page";
+}
+
+
+
+
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <h1 class="page-header">Schedule Message</h1>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <span>Add account to scheduled message</span>
+                            <div class="btn-group pull-right">
+                                <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle" type="button">
+                                    <i class="fa fa-chevron-down fa-2x"></i>
+                                </button>
+                                <ul class="dropdown-menu slidedown" id="binduserforcompose">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>5000</label>
+                        <div id="bindcomposescheduledprofiles"></div>
+                        <textarea id="txtscheduled" placeholder="type your message here" rows="3" class="form-control"></textarea>
+                    </div>
+                    <div class="hero-unit">
+                        <input type="text" id="scheduleddate" placeholder="click to show datepicker" readonly="">
+                    </div>
+
+                    <div class="input-append bootstrap-timepicker">
+                        <input id="scheduledtime" type="text" class="input-small" readonly="">
+                        <span class="add-on"><i class="icon-time"><img src="~/Themes/Socioboard/Contents/img/clock.png"></i></span>
+
+                    </div>
+                    <div class="panel-footer">
+
+                        <button id="scheduled" class="btn btn-outline btn-default" type="button">Schdeule</button>
+                        <button type="button" class="btn btn-outline btn-default" id="savedraft">Save To Draft</button>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script type="text/javascript">
+        var arrbinduser = [];
+        function bindcomposemessage() {
+            $.ajax({
+                type: 'POST',
+                url: '../Publishing/ComposeScheduledMessage',
+                success: function (msg) {
+                    //alert(msg);
+                    $('#binduserforcompose').html(msg);
+                },
+                async: false
+            });
+
+
+        };
+
+        function checkisuserexist(profileidwithnetwork) {
+            if (jQuery.inArray(profileidwithnetwork, arrbinduser) === -1) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+        function removebindfrofiles(profileid, network) {
+            //alert(clas);
+            $('#' + profileid).hide(250, function () {
+                $('#' + profileid).remove();
+            });
+            var i = arrbinduser.indexOf(profileid + "~" + network);
+            if (i != -1) {
+                arrbinduser.splice(i, 1);
+            }
+        }
+
+        function bindfrofiles(network, name, profileid) {
+            if (checkisuserexist(profileid + "~" + network) == false) {
+                arrbinduser.push(profileid + "~" + network);
+                $('#bindcomposescheduledprofiles').append('<span style="display:none" class="pull-right btn btn-default bindprof" onclick="removebindfrofiles(\'' + profileid + '\',\'' + network + '\')" id=' + profileid + ' data-toggle="tooltip" data-placement="right" title="click to remove"><i class="fa fa-' + network + ' fa-fw"></i>' + name + '</span>');
+                $('#' + profileid).fadeIn(250);
+            }
+            else {
+                alertify.set({ delay: 1000 });
+                alertify.error('This Account Already Added')
+            }
+
+        };
+        $(document).ready(function (e) {
+        $('#scheduledtime').timepicker();
+        $("#publishing").addClass('active');
+        $('li a').removeClass('active');
+        $('#scheduledmsg a').addClass('active');
+        $('#scheduleddate').datepicker({
+            multidate: true,
+            todayHighlight: true,
+            startDate: 'd',
+            clearBtn: true
+        });
+        bindcomposemessage();
+
+        $('#scheduled').click(function () {
+            debugger;
+            var curdate = new Date();
+            var now = (curdate.getMonth() + 1) + "/" + curdate.getDate() + "/" + curdate.getFullYear() + " " + curdate.getHours() + ":" + curdate.getMinutes() + ":" + (curdate.getSeconds() < 10 ? '0' + curdate.getSeconds() : curdate.getSeconds());
+            var scheduledmessage = $('#txtscheduled').val();
+            var scheduleddate = $('#scheduleddate').val();
+            var scheduledtime = $('#scheduledtime').val();
+            var allprofiles = '';
+            if (scheduledmessage == "") {
+                alertify.set({ delay: 1000 });
+                alertify.error('Please Enter a message ');
+                return false;
+            }
+            if (scheduleddate == "") {
+                alertify.set({ delay: 1000 });
+                alertify.error('Please Select a Date');
+                return false;
+            }
+            if (scheduledtime == "") {
+                alertify.set({ delay: 1000 });
+                alertify.error('Please Select a Time');
+                return false;
+            }
+            if (arrbinduser.length < 1) {
+                alertify.set({ delay: 1000 });
+                alertify.error('Please Select Profiles to Scheduled a message');
+                return false;
+            }
+            for (var i = 0; i < arrbinduser.length; i++) {
+                allprofiles += arrbinduser[i] + "<:>";
+            }
+            allprofiles = allprofiles.substr(0, allprofiles.length - 3);
+
+            $.ajax({
+                type: 'POST',
+                url: '../Publishing/ScheduledMessage?scheduledmessage=' + scheduledmessage + '&scheduleddate=' + scheduleddate + '&scheduledtime=' + scheduledtime + '&profiles=' + allprofiles+'&clienttime='+now,
+                success: function (msg) {
+                    $('#scheduleddate').datepicker('setDate', null);
+                    $('#txtscheduled').val('');
+                    $('#scheduleddate').val('');
+                    $('#scheduledtime').val('');
+                    alertify.set({ delay: 1000 });
+                    alertify.success('Message Scheduled Successfully');
+                    arrbinduser = [];
+
+                    $('.bindprof').hide(1000, function () {
+                        $('#bindcomposescheduledprofiles').html('');
+                    });
+                }
+            });
+
+        });
+
+        $('#savedraft').click(function () {
+            var scheduledmessage = $('#txtscheduled').val();
+            $.ajax({
+                type: 'POST',
+                url: '../Publishing/SaveDraft?scheduledmessage=' + scheduledmessage,
+                success: function (msg) {
+                    $('#scheduleddate').datepicker('setDate', null);
+                    $('#txtscheduled').val('');
+                    $('#scheduleddate').val('');
+                    $('#scheduledtime').val('');
+                    alertify.set({ delay: 1000 });
+                    alertify.success('Draft Save Successfully');
+                    arrbinduser = [];
+
+                    $('.bindprof').hide(1000, function () {
+                        $('#bindcomposescheduledprofiles').html('');
+                    });
+                }
+            });
+        });
+        });
+
+
+
+    </script>

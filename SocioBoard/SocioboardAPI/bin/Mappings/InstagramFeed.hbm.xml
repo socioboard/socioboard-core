@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+
+  <class name="InstagramFeed" table="InstagramFeed" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="FeedImageUrl">
+      <column name="FeedImageUrl" />
+    </property>
+    <property name="FeedDate">
+      <column name="FeedDate"  />
+    </property>
+    <property name="EntryDate">
+      <column name="EntryDate"  />
+    </property>
+    <property name="InstagramId">
+      <column name="InstagramId"  />
+    </property>
+    <property name="UserId">
+      <column name="UserId"  />
+    </property>
+    <property name="FeedId">
+      <column name="FeedId"  />
+    </property>
+    <property name="LikeCount">
+      <column name="LikeCount"  />
+    </property>
+
+    <property name="IsLike">
+      <column name="IsLike"  />
+    </property>
+    <property name="CommentCount">
+      <column name="CommentCount"  />
+    </property>
+    <property name="AdminUser">
+      <column name="AdminUser"  />
+    </property>
+    
+    
+    
+    
+    
+    
+    
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<div id="page-wrapper" style="min-height: 385px;">
+
+   
+</div>
+
+
+<script src="~/Themes/Socioboard/Contents/js/Message.js"></script>
+<script src="~/Themes/Socioboard/Contents/js/Helper.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#page-wrapper').load('../Messages/loadtask');
+        $('#side-menu a').removeClass('active');
+        $("#message").addClass('active');
+        $("#message").children().addClass('active');
+    });
+
+    function hideTask(divId) {
+        alert(divId);
+        $('#' + divId).removeClass('in');
+    }
+
+</script>

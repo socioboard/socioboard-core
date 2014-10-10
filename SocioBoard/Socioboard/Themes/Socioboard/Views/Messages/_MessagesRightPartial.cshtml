@@ -1,0 +1,92 @@
+@using Domain.Socioboard.Domain;
+@using Socioboard.Helper;
+@{
+    List<TeamMemberProfile> alstprofiles = (List<TeamMemberProfile>)Model;
+    
+    
+}
+
+        <div class="col-md-3">
+           @* <div style="margin-top: 65px;" class="chat-panel panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> MANAGE TASK
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                                        <ul class="list-group">
+                                          <li class="list-group-item">
+                                            <div class="checkbox">
+                                                <label>
+                                                  <input type="checkbox"> Check me out
+                                                </label>
+                                              </div>
+                                          </li>
+                                          <li class="list-group-item">
+                                            <div class="checkbox">
+                                                <label>
+                                                  <input type="checkbox"> Check me out
+                                                </label>
+                                              </div>
+                                          </li>
+                                          
+                                          <li class="list-group-item">
+                                            <div class="radio">
+                                            <label class="radio">
+                                                <input type="radio" value="option1" id="inlineRadio1" name="inlineRadioOptions"> My task
+                                            </label>
+                                            <div class="divder"></div>
+                                            <label class="radio">
+                                                <input type="radio" value="option2" id="inlineRadio2" name="inlineRadioOptions"> Team task
+                                            </label>
+                                        </div>
+                                          </li>
+                                        </ul>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>*@
+
+          <div class="chat-panel panel panel-default" style="margin-top: 65px;">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> PROFILES
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="accordianprofiles">
+                                        <ul class="list-group">
+
+                                             @foreach (TeamMemberProfile item in alstprofiles)
+                                             {
+                                                 if (item.ProfileType == "facebook")
+                                                 {
+                                                     FacebookAccount alstfacebookprofiles = SocialAccountsAPIHelper.GetFacebookAccount(item.ProfileId);
+
+                                                   <li class="list-group-item">
+                                            <div class="checkbox">
+                                                <label>
+                                                  <input type="checkbox" id="fb_@alstfacebookprofiles.FbUserId" onclick="chkProfilemessage(this.id);"> @alstfacebookprofiles.FbUserName
+                                                </label>
+                                              </div>
+                                          </li>
+                                                 }
+                                                 else if (item.ProfileType == "twitter")
+                                                 {
+                                                     TwitterAccount alsttwt = SocialAccountsAPIHelper.GetTwitterAccount(item.ProfileId);
+
+                                                         <li class="list-group-item">
+                                            <div class="checkbox">
+                                                <label>
+                                                  <input type="checkbox" id="fb_@alsttwt.TwitterUserId" onclick="chkProfilemessage(this.id);"> @alsttwt.TwitterScreenName
+                                                </label>
+                                              </div>
+                                          </li>
+                                                 }
+
+                                             }
+
+                                        </ul>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    
+          
+        </div>
+   

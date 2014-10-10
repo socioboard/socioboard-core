@@ -1,0 +1,136 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+
+    Domain.Socioboard.Domain.User objuser = (Domain.Socioboard.Domain.User)Model;
+
+}
+
+
+@if (objuser != null)
+{
+    string[] name;
+    string fname = string.Empty;
+    string lname = string.Empty;
+    try
+    {
+        name = objuser.UserName.Split(' ');
+        fname = name[0];
+        lname = string.Empty;
+        for (int i = 1; i < name.Length; i++)
+        {
+            lname += name[i];
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
+
+    <div class="container">
+
+        <div class="col-md-offset-3 col-md-6">
+            <h2>Create Your Account</h2>
+            <form role="form">
+                <div class="form-group input-group">
+                    <span class="input-group-addon">A</span>
+                    <select id="package" class="form-control">
+                        <option value="Free" selected="selected">Select Account Type</option>
+                        <option value="Free">Basic(Free)</option>
+                        <option value="Standard">Standard</option>
+                        <option value="Deluxe">Deluxe</option>
+                        <option value="Premium">Premium</option>
+                        <option value="SocioBasic">SocioBasic</option>
+                        <option value="SocioStandard">SocioStandard</option>
+                        <option value="SocioPremium">SocioPremium</option>
+                        <option value="SocioDeluxe">SocioDeluxe</option>
+                    </select>
+                </div>
+
+                <div class="form-group input-group">
+                    <span class="input-group-addon">F</span>
+                    <input value="@fname" id="txtrFirstName" type="text" placeholder="First Name" class="form-control">
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">L</span>
+                    <input value="@lname" id="txtrLastName" type="text" placeholder="Last Name" class="form-control">
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">E</span>
+                    <input value="@objuser.EmailId" id="txtrEmail" type="email" placeholder="Email id" class="form-control" readonly="">
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">*</span>
+                    <input id="txtrPassword" type="password" placeholder="Password" class="form-control">
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">*</span>
+                    <input id="txtrConfirmPassword" type="password" placeholder="Confirm Password" class="form-control">
+                </div>
+                <div class="form-group input-group">
+
+                    <input type="password" placeholder="Coupon Code(Optional)" class="form-control">
+                    <span class="input-group-addon"><a href="#">Click to verify</a></span>
+                </div>
+                <button onclick="register()" class="btn btn-warning" type="button">Create Account</button>
+                <button class="btn btn-default" type="reset">Reset</button>
+            </form>
+        </div>
+    </div>
+}
+else
+{
+
+    <div class="container">
+
+        <div class="col-md-offset-3 col-md-6">
+            <h2>Create Your Account</h2>
+            <form role="form">
+                <div class="form-group input-group">
+                    <span class="input-group-addon">A</span>
+                    <select id="package" class="form-control">
+                        <option value="Free" selected="selected">Select Account Type</option>
+                        <option value="Free">Basic(Free)</option>
+                        <option value="Standard">Standard</option>
+                        <option value="Deluxe">Deluxe</option>
+                        <option value="Premium">Premium</option>
+                        <option value="SocioBasic">SocioBasic</option>
+                        <option value="SocioStandard">SocioStandard</option>
+                        <option value="SocioPremium">SocioPremium</option>
+                        <option value="SocioDeluxe">SocioDeluxe</option>
+                    </select>
+                </div>
+
+                <div class="form-group input-group">
+                    <span class="input-group-addon">F</span>
+                    <input id="txtrFirstName" type="text" placeholder="First Name" class="form-control">
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">L</span>
+                    <input id="txtrLastName" type="text" placeholder="Last Name" class="form-control">
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">E</span>
+                    <input id="txtrEmail" type="email" placeholder="Email id" class="form-control">
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">*</span>
+                    <input id="txtrPassword" type="password" placeholder="Password" class="form-control">
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">*</span>
+                    <input id="txtrConfirmPassword" type="password" placeholder="Confirm Password" class="form-control">
+                </div>
+                <div class="form-group input-group">
+
+                    <input type="password" placeholder="Coupon Code(Optional)" class="form-control">
+                    <span class="input-group-addon"><a href="#">Click to verify</a></span>
+                </div>
+                <button onclick="register()" class="btn btn-warning" type="button">Create Account</button>
+                <button class="btn btn-default" type="reset">Reset</button>
+            </form>
+        </div>
+    </div>
+}
+
+<!-- /.container -->

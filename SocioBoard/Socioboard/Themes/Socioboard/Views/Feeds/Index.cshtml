@@ -1,0 +1,77 @@
+﻿
+<link href="../Themes/SocioboardContents/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+<script src="../Themes/Socioboard/Contents/js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript"></script>
+<script src="../Themes/Socioboard/Contents/js/jquery.lazyscrollloading-src.js" type="text/javascript"></script>
+<script src="../Themes/Socioboard/Contents/js/jquery.easing.1.3.js" type="text/javascript"></script>
+<script src="../Themes/Socioboard/Contents/js/Feeds.js"></script>
+<script src="~/Themes/Socioboard/Contents/js/underscore.js"></script>
+
+
+<script type="text/javascript">
+    function loadfeesmenu() {
+        //alert('load feeds');
+        //$('#feeds').load('../Feeds/loadmenu');
+        $.ajax({
+            type: 'POST',
+            url: '../Feeds/loadmenu',
+            success: function (msg) {
+                $('#feeds').html('').append(msg);
+            },
+            async: false
+        });
+    }
+
+    function LikeUnlikeInstagramPost(LikeCount, IsLike, FeedId, InstagramId) {
+        var fd = new formdata();
+        fd.append("LikeCount", LikeCount);
+        fd.append("IsLike", IsLike);
+        fd.append("FeedId", FeedId);
+        fd.append("InstagramId", InstagramId);
+
+        $.ajax({
+
+            type: 'POST',
+            url: '../Feeds/LikeUnlikeInstagramPost',
+            data: fd,
+            processData: false,
+            contentType: false,
+            dataType: "html",
+            success: function (msg) {
+                if (msg == 'unlike') {
+
+                    var count = parseInt($("#" + FeedId + "_count").html()) + 1;
+                    $("#" + FeedId).attr("title", unlike);
+                    $("#" + FeedId).removeClass().addClass('fa fa-heart fa-fw')
+                }
+                else {
+                    var count = parseInt($("#" + FeedId + "_count").html()) - 1;
+                    $("#" + FeedId).attr("title", like);
+                    $("#" + FeedId).removeClass().addClass('fa fa-heart-o fa-fw')
+                }
+
+            },
+            async: false
+        });
+
+    }
+
+
+
+
+
+
+    $(document).ready(function () {
+        $('#side-menu a').removeClass('active');
+        $("#feeds").addClass('active');
+        $("#feeds").children().addClass('active');
+        loadfeesmenu();
+    });
+</script>
+
+
+<div id="page-wrapper" style="min-height: 278px;">
+    
+</div>
+
+
+

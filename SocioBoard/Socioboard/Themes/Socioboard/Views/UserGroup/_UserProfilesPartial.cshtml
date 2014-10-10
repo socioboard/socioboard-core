@@ -1,0 +1,69 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    User objUser = (User)Session["User"];
+}
+
+<h4>Profiles available for connection</h4>
+@foreach (var item in (Dictionary<SocialProfile, object>)Model)
+{
+    if (item.Key.ProfileType == "facebook")
+    {
+        FacebookAccount objFacebookAccount = (FacebookAccount)item.Value;
+        string profileimage = string.Empty;
+    <div class="col-sm-1 groupuserpictiny">
+        <img onclick="addtocurrentgroup('@objFacebookAccount.FbUserId','http://graph.facebook.com/@objFacebookAccount.FbUserId/picture?type=small','/Themes/@path/Contents/img/fb_icon.png','facebook')" src="http://graph.facebook.com/@objFacebookAccount.FbUserId/picture?type=small" class="img-responsive img-rounded groupprofiles">
+        <img class="img-responsive img-circle groupsocialIconPoss" src="/Themes/@path/Contents/img/fb_icon.png">
+    </div>
+    }
+    if (item.Key.ProfileType == "twitter")
+    {
+        TwitterAccount objTwitterAccount = (TwitterAccount)item.Value;
+        string profileimage = string.Empty;
+    <div class="col-sm-1 groupuserpictiny">
+        <img onclick="addtocurrentgroup('@objTwitterAccount.TwitterUserId','@objTwitterAccount.ProfileImageUrl','/Themes/@path/Contents/img/twticon.png','twitter')" src="@objTwitterAccount.ProfileImageUrl" class="img-responsive img-rounded groupprofiles">
+        <img class="img-responsive img-circle groupsocialIconPoss" src="/Themes/@path/Contents/img/twticon.png">
+    </div>
+    }
+    if (item.Key.ProfileType == "linkedin")
+    {
+        LinkedInAccount objLinkedInAccount = (LinkedInAccount)item.Value;
+
+        string profileimage = string.Empty;
+    <div class="col-sm-1 groupuserpictiny">
+        <img onclick="addtocurrentgroup('@objLinkedInAccount.LinkedinUserId','@objLinkedInAccount.ProfileImageUrl','/Themes/@path/Contents/img/link_icon.png','linkedin')" src="@objLinkedInAccount.ProfileImageUrl" class="img-responsive img-rounded groupprofiles">
+        <img class="img-responsive img-circle groupsocialIconPoss" src="/Themes/@path/Contents/img/link_icon.png">
+    </div>
+    }
+    if (item.Key.ProfileType == "instagram")
+    {
+        InstagramAccount objInstagramAccount = (InstagramAccount)item.Value;
+
+        string profileimage = string.Empty;
+    <div class="col-sm-1 groupuserpictiny">
+        <img onclick="addtocurrentgroup('@objInstagramAccount.InstagramId','@objInstagramAccount.ProfileUrl','/Themes/@path/Contents/img/instagram_24X24.png','instagram')" src="@objInstagramAccount.ProfileUrl" class="img-responsive img-rounded groupprofiles">
+        <img class="img-responsive img-circle groupsocialIconPoss" src="/Themes/@path/Contents/img/instagram_24X24.png">
+    </div>
+    }
+    if (item.Key.ProfileType == "tumblr")
+    {
+        TumblrAccount objTumblrAccount = (TumblrAccount)item.Value;
+        string tumblruserimage = "http://api.tumblr.com/v2/blog/" + objTumblrAccount.tblrUserName + ".tumblr.com/avatar";
+    <div class="col-sm-1 groupuserpictiny">
+        <img onclick="addtocurrentgroup('@objTumblrAccount.tblrUserName','@tumblruserimage','/Themes/@path/Contents/img/tumblr.png','tumblr')" src="@tumblruserimage" class="img-responsive img-rounded groupprofiles">
+        <img class="img-responsive img-circle groupsocialIconPoss" src="/Themes/@path/Contents/img/tumblr.png">
+    </div>
+    }
+    if (item.Key.ProfileType == "youtube")
+    {
+        YoutubeAccount objYoutubeAccount = (YoutubeAccount)item.Value;
+        string profileimage = string.Empty;
+    <div class="col-sm-1 groupuserpictiny">
+        <img onclick="addtocurrentgroup('@objYoutubeAccount.Ytuserid','@objYoutubeAccount.Ytprofileimage','/Themes/@path/Contents/img/youtube.png','youtube')" src="@objYoutubeAccount.Ytprofileimage" class="img-responsive img-rounded groupprofiles">
+        <img class="img-responsive img-circle groupsocialIconPoss" src="/Themes/@path/Contents/img/youtube.png">
+    </div>
+    }
+}
+
+
+

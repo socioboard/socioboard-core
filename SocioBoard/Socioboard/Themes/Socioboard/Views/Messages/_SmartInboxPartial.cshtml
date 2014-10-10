@@ -1,0 +1,234 @@
+﻿@using System.Data;
+@using Socioboard.Helper;
+@using Socioboard.Api;
+@using Domain.Socioboard.Domain;
+@using System.Web.Script.Serialization;
+@{
+    //Socioboard.Controllers.MessagesController obj = new Socioboard.Controllers.MessagesController();
+
+    //DataTable objj = new DataTable();
+    //objj=obj.bindMessages().Tables[0];
+
+    DataTable dt = (DataTable)Model.Tables[0];
+    //DataTable dt = objj;
+    string message = string.Empty;
+
+    try
+    {
+        if (Session["CountMessages"] != null)
+        {
+            string count = Convert.ToString((int)Session["CountMessages"]);
+            if (count == "0")
+            {
+                //message = "No Message found";
+
+            }
+
+        }
+    }
+    catch (Exception ex)
+    {
+
+    }
+
+    //string message = string.Empty;
+    DataView dv = dt.DefaultView;
+    dv.Sort = "ReadStatus ,MessageDate desc";
+    DataTable sortedDT = dv.ToTable();
+    int sorteddatacount = 0;
+
+    Domain.Socioboard.Domain.User user = (Domain.Socioboard.Domain.User)Session["User"];
+}
+
+@* @if (sortedDT.Rows.Count > 0)
+                                {
+                                    Domain.Socioboard.Domain.User user = (Domain.Socioboard.Domain.User)Session["LoggedUser"];
+                                }*@
+@{ UrlExtractor urlextarct = new UrlExtractor();}
+
+@* Looping Start *@
+
+@{foreach (DataRow row in sortedDT.Rows)
+  {
+      try
+      {
+          string icon = "";
+          string onClick = "";
+          string network = "";
+          if (row["Network"].ToString() == "twitter")
+          {
+              icon = "twticon.png";
+              onClick = "detailsdiscoverytwitter";
+              network = "twitter";
+          }
+          else if (row["Network"].ToString() == "facebook")
+          {
+              icon = "fb_icon.png";
+              onClick = "getFacebookProfiles";
+              network = "facebook";
+          }
+                                          
+    <div class="panel panel-primary" id="messagetaskable_@sorteddatacount">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <img @*src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/@icon"*@ title="@row["FromName"]" alt="@row["FromId"]" src="@row["FromProfileUrl"]" id="formprofileurl_@sorteddatacount" onclick=""@onClick"(this.alt)" class="img-circle" data-toggle="modal" data-target="#profileModal">
+                    <img class="img-responsive img-circle" src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/@icon" style="margin-left: 35px; margin-top: -20px;">
+                    <span id="screanName_@sorteddatacount">@row["FromName"]</span>
+                    <span style="float: left">@row["MessageDate"]</span>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            @*<p>Sumit Ghosh is now friends with Chanchal and Abhimanyu</p>*@
+            <p id="msg_@sorteddatacount">@row["Message"]</p>
+        </div>
+
+
+
+
+        <div class="panel-footer">
+            @* <a href="#">
+                                                <span class="pull-left">View Details</span></a>*@
+            <span class="pull-right">
+                @* <i id="task_@row["FromId"]" class="fa fa-thumb-tack fa-fw" data-toggle="modal" data-target="#task"></i>*@
+                <i id="task_@row["FromId"]" class="fa fa-thumb-tack fa-fw" onclick="opentask('@row["Message"]')"></i>
+                <i id="CommentReply_@row["FromId"]" class="fa fa-reply fa-fw" onclick="opnCommentReply('@sorteddatacount', '@network.ToString()', '@row["MessageId"].ToString()', '@row["ProfileId"].ToString()')"></i>
+                <i id="archiveMessage_@row["FromId"]" class="fa fa-folder-open fa-fw form-group" onclick="SaveArchive('@sorteddatacount','@network.ToString()','@row["ProfileId"].ToString()','@row["MessageId"].ToString()','@row["MessageDate"].ToString()')"></i>
+            </span>
+            <div class="clearfix"></div>
+
+        </div>
+    </div>
+          sorteddatacount++;
+      }
+      catch (Exception)
+      {
+
+          throw;
+      }
+
+
+
+  }
+}
+
+@* Looping End *@
+
+<!-- Modal -->
+<div class="modal fade" id="task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                @* <img src="Contents/img/photo.png" class="img-circle">
+                                                <img class="img-responsive img-circle" src="Contents/img/twticon.png" style="margin-left: 35px; margin-top: -20px;">*@
+            </div>
+
+            <div class="modal-body col-md-12">
+                <div class="col-md-8">
+                    <h4>LEAVE A COMMENT</h4>
+                    <textarea id="txtsavetask" class="form-control" rows="3" placeholder="Your comment (viewable only to team members)"></textarea>
+                </div>
+                <div class="col-md-4">
+                    <h4>ASSIGN TASK TO</h4>
+
+                    @{
+                        try
+                        {
+                             Socioboard.Api.Twitter.Twitter objApiTwitter = new Socioboard.Api.Twitter.Twitter();
+
+                        Domain.Socioboard.Domain.Team team = SBUtils.GetTeamFromGroupId();
+
+                        Socioboard.Api.BusinessSetting.BusinessSetting objApiBusinessSetting = new Socioboard.Api.BusinessSetting.BusinessSetting();
+                        BusinessSetting objbsns = (BusinessSetting)new JavaScriptSerializer().Deserialize(objApiBusinessSetting.IsNotificationTaskEnable(team.GroupId), typeof(BusinessSetting));
+
+                        if (objbsns.AssigningTasks == true || team.UserId == user.Id)
+                        {
+                            Socioboard.Api.Team.Team objApiTeam = new Socioboard.Api.Team.Team();
+
+                            List<Domain.Socioboard.Domain.Team> result = (List<Domain.Socioboard.Domain.Team>)new JavaScriptSerializer().Deserialize(objApiTeam.getAllTeamsOfUser(user.Id.ToString(), team.GroupId.ToString(), user.EmailId), typeof(List<Domain.Socioboard.Domain.Team>));
+
+                            foreach (Team item in result)
+                            {
+                                //===========================new code added=========================
+                                try
+                                {
+                                     Socioboard.Api.User.User objApiUser = new Socioboard.Api.User.User();
+                                     User objdetails = (User)new JavaScriptSerializer().Deserialize(objApiUser.getUserInfoByEmail(item.EmailId), typeof(User));
+                                                  
+                                    @:<div class="radio">
+                                        @:<label>
+                                            @:<input type="radio" name="optionsRadios" id="customerid_@objdetails.Id + "" value="customerid_@objdetails.Id" @*checked*@>
+                                            @objdetails.UserName
+                                        @:</label>
+                                    @:</div>
+                                }
+                                catch {}
+                               
+                            }
+                        }
+                        }
+                        catch {}
+                       
+                                          
+                    }
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="savetask" type="button" class="btn btn-default" data-dismiss="modal" onclick="savetask()">Save</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="CommentReply" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button id="closecommentpopup" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                @*  <img src="Contents/img/photo.png" class="img-circle">
+                                                <img class="img-responsive img-circle" src="Contents/img/twticon.png" style="margin-left: 35px; margin-top: -20px;">*@
+            </div>
+            <div class="modal-body">
+                <h4>LEAVE A COMMENT</h4>
+                <textarea id="comment_text" class="form-control" rows="3" placeholder="Write your message here"></textarea>
+            </div>
+            <div id="leaveCommentReply" class="modal-footer">
+                <button type="button" class="btn btn-default ">Comment</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end of model-->
+
+@*   <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="Contents/img/photo.png" class="img-circle" data-toggle="modal" data-target="#profileModal">
+                                                <img class="img-responsive img-circle" src="Contents/img/fb_icon.png" style="margin-left: 35px; margin-top: -20px;">
+                                                <span>Chanchal</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <p>Chanchal commented on his own profile</p>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <a href="#">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </a>
+                                    </div>
+                                </div>*@

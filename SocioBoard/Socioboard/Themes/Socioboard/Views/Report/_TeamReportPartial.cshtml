@@ -1,0 +1,163 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    string path = System.Configuration.ConfigurationManager.AppSettings["domain"];
+    bool check = true;
+    List<TaskByUser> objLstTaskByUser = (List<TaskByUser>)Model;
+    string str = string.Empty;
+     if (objLstTaskByUser.Count != null && objLstTaskByUser.Count != 0)
+     {
+          str = DateTime.Now.Date.ToString("yyyy-MM-dd") + "-" + DateTime.Now.Date.AddDays(-objLstTaskByUser[0].days).ToString("yyyy-MM-dd");
+
+     }
+     }
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#example1').dataTable();
+    });
+
+</script>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Team Reports</h1>
+    </div>
+
+</div>
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-users fa-fw"></i>
+            @if (objLstTaskByUser.Count != null && objLstTaskByUser.Count != 0)
+            {
+                   <strong>INTER REPORT</strong> <span>from</span> @str
+            }
+            else
+            {
+            
+             <strong>INTER REPORT</strong> <span>No Data available..</span>
+            
+            }
+            <div class="btn-group pull-right">
+                <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle" type="button">
+                    <i class="fa fa-chevron-down"></i>
+                </button>
+                <ul class="dropdown-menu slidedown">
+                    <li>
+                        <a onclick="TeamReportDetails(15)" href="#">
+                            <i class="fa fa-refresh fa-fw"></i>15
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="TeamReportDetails(30)" href="#">
+                            <i class="fa fa-refresh fa-fw"></i>30
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="TeamReportDetails(60)" href="#">
+                            <i class="fa fa-refresh fa-fw"></i>60
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="TeamReportDetails(90)" href="#">
+                            <i class="fa fa-refresh fa-fw"></i>90
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <!-- /.panel-heading -->
+         @if (objLstTaskByUser.Count != null && objLstTaskByUser.Count != 0)
+     {
+        <div class="panel-body">
+            <img class="img-circle profilePic" src="@objLstTaskByUser[0].ProfileUrl">
+
+            <span>@objLstTaskByUser[0].UserName</span>
+
+            <span class="pull-right">@objLstTaskByUser.Count TOTAL POSTS</span>
+        </div>
+         }
+    </div>
+    <!-- /.panel -->
+</div>
+     @if (objLstTaskByUser.Count != null && objLstTaskByUser.Count != 0)
+     {
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            TASKS
+                       
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="table-responsive">
+
+                <table class="table table-striped table-bordered table-hover extable" id="example1">
+                    <thead>
+
+                        <tr>
+
+                            <th>TaskOwner
+                            </th>
+                            <th>AssignTaskTo
+                            </th>
+                            <th>TaskMessage
+                            </th>
+                            <th>AssignDate
+                            </th>
+                            <th>CompeteDate
+                            </th>
+                            <th>Status
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in objLstTaskByUser)
+                        {
+                            if (check == true)
+                            {                                     
+                            <tr class="gradeA odd">
+                                <td class="sorting_1">@item.AssignByUserName</td>
+                                <td class=" ">@item.AssignToUserName</td>
+                                <td class=" ">@item.TaskMessage</td>
+                                <td class="center ">@item.AssignDate</td>
+                                <td class="center ">@item.CompletionDate</td>
+                                <td class="center ">@item.TaskStatus</td>
+                            </tr>
+                                           
+                                check = false;
+                            }
+                            else
+                            {     
+                            <tr class="gradeA even">
+                                <td class="sorting_1">@item.AssignByUserName</td>
+                                <td class=" ">@item.AssignToUserName</td>
+                                <td class=" ">@item.TaskMessage</td>
+                                <td class="center ">@item.AssignDate</td>
+                                <td class="center ">@item.CompletionDate</td>
+                                <td class="center ">@item.TaskStatus</td>
+                            </tr>
+                                           
+                                check = true;
+
+                            }
+                        }
+
+                    </tbody>
+                </table>
+
+
+            </div>
+            <!-- /.table-responsive -->
+
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>
+}
+
+
