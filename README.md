@@ -99,7 +99,7 @@ Build Instructions
 
 1. Once you load the project in visual studio, you have see a solution structure with following projects.
 
-![](http://i.imgur.com/C4qbKrG.png)
+![](http://i.imgur.com/eyHq8gv.png)
 
 2. Build the entire solution, if you face build errors like - 
 
@@ -109,8 +109,8 @@ You need to go to the respective project and add references from the lib folder 
 
 All libraries are placed here
 
-![](http://i.imgur.com/GNQYhZR.png)
+![](http://i.imgur.com/XYEb4eY.png)
 
-![](http://i.imgur.com/yecXpHJ.png)
+![](http://i.imgur.com/GZY0Y9B.png)
 
 
