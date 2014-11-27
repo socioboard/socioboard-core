@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using SocioBoard.Domain;
-using SocioBoard.Helper;
+using Api.Socioboard.Helper;
+using Domain.Socioboard.Domain;
 
 namespace SocioBoard.Model
 {
@@ -14,19 +14,29 @@ namespace SocioBoard.Model
         /// Save PayPal Transaction Details
         /// </summary>
         /// <param name="paymentTransaction">Set the payment details in a payment Transaction Class Property and Pass the Object of PaymentTransaction Class.(Domain.paymentTransaction)</param>
-        public void SavePayPalTransaction(PaymentTransaction paymentTransaction)
+        public string SavePayPalTransaction(PaymentTransaction paymentTransaction)
         {
-            //Creates a database connection and opens up a session
-            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            try
             {
-                //After Session creation, start Transaction. 
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                //Creates a database connection and opens up a session
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
                 {
-                    //Proceed action, to save details of paypal transaction.
-                    session.Save(paymentTransaction);
-                    transaction.Commit();
-                }//End Transaction
-            }//End Session
+                    //After Session creation, start Transaction. 
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        //Proceed action, to save details of paypal transaction.
+                        session.Save(paymentTransaction);
+                        transaction.Commit();
+
+                        return "Success";
+                    }//End Transaction
+                }//End Session
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return "Failure";
+            }
         }
     }
 }

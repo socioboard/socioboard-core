@@ -214,7 +214,8 @@ namespace GlobusLinkedinLib.App.Core
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.StackTrace);
-                        group_Updates.pictureurl = "../../Contents/img/blank_img.png";
+                        group_Updates.pictureurl = "www.socioboard.com/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/blank_img.png";//"../../Contents/img/blank_img.png";
+                       
                     }
                     
                     try

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -211,6 +212,36 @@ namespace Api.Socioboard.Services
             }
         }
 
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllFacebookPageByUserIdAndGroupId(string userid, string groupid)
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.FacebookAccount> lstFacebookAccount = new List<Domain.Socioboard.Domain.FacebookAccount>();
+                Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(groupid));
+                List<Domain.Socioboard.Domain.TeamMemberProfile> lstTeamMemberProfile = objTeamMemberProfileRepository.GetTeamMemberProfileByTeamIdAndProfileType(objTeam.Id, "facebook_page");
+                foreach (var item in lstTeamMemberProfile)
+                {
+                    try
+                    {
+                        lstFacebookAccount.Add(objFacebookAccountRepository.getFacebookAccountDetailsById(item.ProfileId, Guid.Parse(userid)));
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+                return new JavaScriptSerializer().Serialize(lstFacebookAccount);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+
         //vikash
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -228,6 +259,34 @@ namespace Api.Socioboard.Services
             }
 
         }
+
+        public string getFbToken()
+        {
+
+            Domain.Socioboard.Domain.FacebookAccount _FacebookAccount = objFacebookAccountRepository.getToken();
+            string token = _FacebookAccount.AccessToken;
+
+            return token;
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllFacebookAccounts()
+        {
+            try
+            {
+                FacebookAccountRepository objFbRepo = new FacebookAccountRepository();
+                ArrayList lstFBAcc = objFbRepo.getAllFacebookAccounts();
+                return new JavaScriptSerializer().Serialize(lstFBAcc);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+
+
 
 
     }

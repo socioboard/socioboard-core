@@ -1,0 +1,30 @@
+﻿@using Domain.Socioboard.Domain;
+
+<thead>
+    <tr>
+        <td>Edit</td>
+        <td>Delete</td>
+        <th>Name</th>
+        <th>Account Type</th>
+        <th>Create Date</th>
+        <th>Email Id</th>
+        <th>User Status</th>
+    </tr>
+</thead>
+
+<tbody>
+    @foreach (var item in (List<User>)Model)
+    {
+        
+        <tr class="odd gradeX">
+            <td onclick="EditUserDetails('@item.Id');"><i class="fa fa-pencil fa-fw" style="cursor:pointer"></i></td>
+            <td onclick="DeleteUserDetails('@item.Id');"><i class="fa fa-trash fa-fw" style="cursor:pointer"></i></td>
+            <td>@item.UserName</td>
+            <td>@item.AccountType</td>
+            <td>@item.CreateDate</td>
+            <td>@item.EmailId</td>
+            <td>@item.UserStatus</td>
+        </tr>
+    }
+</tbody>
+

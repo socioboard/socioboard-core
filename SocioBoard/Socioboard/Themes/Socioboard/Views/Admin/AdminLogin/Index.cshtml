@@ -1,0 +1,154 @@
+﻿@{
+    //ViewBag.Title = "Home Page";
+    string path = System.Configuration.ConfigurationManager.AppSettings["domain"];
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+   @* <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Chanchal Santra">*@
+    @*<link rel="shortcut icon" href="../Contents/img/ivon.ico" type="image/x-icon">*@
+
+    <title>SocioBoard | Admin Login</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/Themes/@path/Contents/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/Themes/@path/Contents/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="/Themes/@path/Contents/css/plugins/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/Themes/@path/Contents/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="/Themes/@path/Contents/css/plugins/morris.css" rel="stylesheet">
+    <link href="/Themes/@path/Contents/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/Themes/@path/Contents/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div class="container-fluid header">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-user fa-fw"></i>Socioboard Admin</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form">
+                            <fieldset>
+                                <div class="form-group">
+                                    <input id="txtAdminEmail" class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input id="txtAdminPassword" class="form-control" placeholder="Password" name="password" type="password">
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                    </label>
+                                </div>
+                                <div id="AdminSignInErrorMessages"></div>
+                                <!-- Change this to a button or input when using this as a form -->
+                                <div onclick="AdminsigninFunction();" id="btnAdminLogin" class="btn btn-lg btn-warning btn-block" style="cursor:pointer";>Login<i class="fa fa-fw fa-sign-in fa-lx"></i></div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- jQuery Version 1.11.0 -->
+    <script src="/Themes/@path/Contents/js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/Themes/@path/Contents/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/Themes/@path/Contents/js/plugins/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="/Themes/@path/Contents/js/plugins/morris/raphael.min.js"></script>
+    <script src="/Themes/@path/Contents/js/plugins/morris/morris.min.js"></script>
+    
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/Themes/@path/Contents/js/sb-admin-2.js"></script>
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+    function AdminsigninFunction() {
+        debugger;
+        try {
+            var username = document.getElementById('txtAdminEmail').value;
+            var password = document.getElementById('txtAdminPassword').value;
+
+
+            if (password != '' && password != undefined) {
+                //password = CryptoJS.MD5(document.getElementById('txtPassword').value);
+            }
+            if (username != '' && password != '' && username != undefined && password != undefined) {
+
+                document.getElementById('btnAdminLogin').src = "../../Contents/img/bx_loader.gif";
+
+                $.ajax({
+                    type: 'POST',
+                    //url: '../../Default/AjaxLogin.aspx?op=login&username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password),
+                    url: '../AdminLogin/AdminLogin?op=login&username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password),
+                    success: function (msg) {
+                        debugger;
+                        if (msg == "Admin") {
+                            //alert(msg);
+                            //window.location = "../Home.aspx";
+                            //window.location = "../Referrals.aspx";
+                            window.top.location = "../AdminHome/Dashboard";
+                        }
+                        else {
+                            $("#AdminSignInErrorMessages").html(msg);
+                        }
+                    }
+
+                });
+
+            } else { alert("All fields are mandatory") }
+
+        } catch (e) {
+
+        }
+
+    }
+
+    $("#txtAdminPassword").bind("keydown", function (event) {
+        var keycode = (event.keyCode ? event.keyCode : (event.which ? event.which : event.charCode));
+        if (keycode == 13) {
+            AdminsigninFunction();
+            return false;
+        } else {
+            return true;
+        }
+    });
+</script>

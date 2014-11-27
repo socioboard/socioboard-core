@@ -2,6 +2,15 @@
     //ViewBag.Title = "Home Page";
     string path = System.Configuration.ConfigurationManager.AppSettings["domain"];
 }
+
+@if (ViewBag.Isaccountactivatedfirsttime == "true" || Request["ReturnUrl"]!=null) 
+{
+    <script>
+        $(document).ready(function () {
+            $('#myModal').modal('show');
+        });
+    </script>
+}
 <header class="header" id="top">
     <div class="text-vertical-center">
         <h1 style="text-shadow: 0px 0px 15px #ffffff; margin-top: 50px;">BEYOND<br>
@@ -69,7 +78,7 @@
                                 <strong>Get User Guide</strong>
                             </h4>
                             <p>To learn more,download Guide book</p>
-                            <a target="_blank" class="btn btn-dark" href="http://www.socioboard.com/Themes/socioboard/Contents/common/Socioboard_User_Guide_1.0.2_Ver 7.pdf">Download Guide Book
+                            <a target="_blank" class="btn btn-dark" href="http://localhost:9821/Themes/socioboard/Contents/common/Socioboard_User_Guide_1.0.2_Ver 7.pdf">Download Guide Book
                                 </a>
                         </div>
                     </div>

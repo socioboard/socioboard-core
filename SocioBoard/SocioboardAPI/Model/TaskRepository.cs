@@ -782,8 +782,33 @@ namespace Api.Socioboard.Services
             }
             return alstTask;
         }
-    
-    
+
+        public void UpdateTaskReadStatus(Guid TaskId, Guid UserId, Guid GroupId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get Task status and completion date by user id and task id.
+                        session.CreateQuery("Update Tasks set ReadStatus = 1 where Id = :taskid and UserId = :userid and GroupId = :groupid")
+                            .SetParameter("userid", UserId)
+                            .SetParameter("taskid", TaskId)
+                            .SetParameter("groupid", GroupId)
+                            .ExecuteUpdate();
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        // return 0;
+                    }
+                }//End Transaction
+            }//End Session
+        }
     
     
     

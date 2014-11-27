@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetPostComments">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="postid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPostCommentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPostCommentsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetPostCommentsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPostComments" />
+  </wsdl:message>
+  <wsdl:message name="GetPostCommentsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPostCommentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPostCommentsHttpGetIn">
+    <wsdl:part name="postid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPostCommentsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPostCommentsHttpPostIn">
+    <wsdl:part name="postid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPostCommentsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="FbPageCommentSoap">
+    <wsdl:operation name="GetPostComments">
+      <wsdl:input message="tns:GetPostCommentsSoapIn" />
+      <wsdl:output message="tns:GetPostCommentsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="FbPageCommentHttpGet">
+    <wsdl:operation name="GetPostComments">
+      <wsdl:input message="tns:GetPostCommentsHttpGetIn" />
+      <wsdl:output message="tns:GetPostCommentsHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="FbPageCommentHttpPost">
+    <wsdl:operation name="GetPostComments">
+      <wsdl:input message="tns:GetPostCommentsHttpPostIn" />
+      <wsdl:output message="tns:GetPostCommentsHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FbPageCommentSoap" type="tns:FbPageCommentSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetPostComments">
+      <soap:operation soapAction="http://tempuri.org/GetPostComments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FbPageCommentSoap12" type="tns:FbPageCommentSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetPostComments">
+      <soap12:operation soapAction="http://tempuri.org/GetPostComments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FbPageCommentHttpGet" type="tns:FbPageCommentHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetPostComments">
+      <http:operation location="/GetPostComments" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FbPageCommentHttpPost" type="tns:FbPageCommentHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetPostComments">
+      <http:operation location="/GetPostComments" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FbPageComment">
+    <wsdl:port name="FbPageCommentSoap" binding="tns:FbPageCommentSoap">
+      <soap:address location="http://localhost:6361/Services/FbPageComment.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FbPageCommentSoap12" binding="tns:FbPageCommentSoap12">
+      <soap12:address location="http://localhost:6361/Services/FbPageComment.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FbPageCommentHttpGet" binding="tns:FbPageCommentHttpGet">
+      <http:address location="http://localhost:6361/Services/FbPageComment.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FbPageCommentHttpPost" binding="tns:FbPageCommentHttpPost">
+      <http:address location="http://localhost:6361/Services/FbPageComment.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

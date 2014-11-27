@@ -1,0 +1,27 @@
+﻿
+@using Domain.Socioboard.Domain;
+@{Layout = null;   }
+<thead>
+    <tr>
+        <th>Edit</th>
+        <th>News</th>
+        <th>Entry Date</th>
+        <th>Expiry Date</th>
+        <th>Status</th>
+    </tr>
+</thead>
+
+<tbody>
+    @foreach (var item in (List<News>)Model)
+    {
+        
+        <tr class="odd gradeX">
+            <td onclick="EditNewsDetails('@item.Id');"><i class="fa fa-pencil fa-fw" style="cursor:pointer"></i></td>
+            <td>@item.NewsDetail</td>
+            <td>@item.EntryDate</td>
+            <td>@item.ExpiryDate</td>
+            <td>@item.Status</td>
+        </tr>
+    }
+</tbody>
+

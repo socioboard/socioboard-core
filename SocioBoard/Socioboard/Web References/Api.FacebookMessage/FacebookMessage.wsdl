@@ -92,6 +92,65 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getAllFacebookTagOfUsers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllFacebookTagOfUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllFacebookTagOfUsersResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllFacebookstatusOfUsers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllFacebookstatusOfUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllFacebookstatusOfUsersResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllFacebookUserFeedOfUsers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllFacebookUserFeedOfUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllFacebookUserFeedOfUsersResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMessageDetailByMessageid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MessageId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMessageDetailByMessageidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMessageDetailByMessageidResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -130,6 +189,30 @@
   </wsdl:message>
   <wsdl:message name="getAllFacebookMessagesOfUserByProfileIdSoapOut">
     <wsdl:part name="parameters" element="tns:getAllFacebookMessagesOfUserByProfileIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookTagOfUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllFacebookTagOfUsers" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookTagOfUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllFacebookTagOfUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookstatusOfUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllFacebookstatusOfUsers" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookstatusOfUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllFacebookstatusOfUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookUserFeedOfUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllFacebookUserFeedOfUsers" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookUserFeedOfUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllFacebookUserFeedOfUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMessageDetailByMessageidSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMessageDetailByMessageid" />
+  </wsdl:message>
+  <wsdl:message name="GetMessageDetailByMessageidSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMessageDetailByMessageidResponse" />
   </wsdl:message>
   <wsdl:message name="UserHomeWithLimitHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
@@ -171,6 +254,33 @@
     <wsdl:part name="ProfileId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="getAllFacebookMessagesOfUserByProfileIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookTagOfUsersHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookTagOfUsersHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookstatusOfUsersHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookstatusOfUsersHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookUserFeedOfUsersHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookUserFeedOfUsersHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMessageDetailByMessageidHttpGetIn">
+    <wsdl:part name="MessageId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMessageDetailByMessageidHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="UserHomeWithLimitHttpPostIn">
@@ -215,6 +325,33 @@
   <wsdl:message name="getAllFacebookMessagesOfUserByProfileIdHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="getAllFacebookTagOfUsersHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookTagOfUsersHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookstatusOfUsersHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookstatusOfUsersHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookUserFeedOfUsersHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookUserFeedOfUsersHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMessageDetailByMessageidHttpPostIn">
+    <wsdl:part name="MessageId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMessageDetailByMessageidHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="FacebookMessageSoap">
     <wsdl:operation name="UserHomeWithLimit">
       <wsdl:input message="tns:UserHomeWithLimitSoapIn" />
@@ -239,6 +376,22 @@
     <wsdl:operation name="getAllFacebookMessagesOfUserByProfileId">
       <wsdl:input message="tns:getAllFacebookMessagesOfUserByProfileIdSoapIn" />
       <wsdl:output message="tns:getAllFacebookMessagesOfUserByProfileIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookTagOfUsers">
+      <wsdl:input message="tns:getAllFacebookTagOfUsersSoapIn" />
+      <wsdl:output message="tns:getAllFacebookTagOfUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookstatusOfUsers">
+      <wsdl:input message="tns:getAllFacebookstatusOfUsersSoapIn" />
+      <wsdl:output message="tns:getAllFacebookstatusOfUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookUserFeedOfUsers">
+      <wsdl:input message="tns:getAllFacebookUserFeedOfUsersSoapIn" />
+      <wsdl:output message="tns:getAllFacebookUserFeedOfUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageDetailByMessageid">
+      <wsdl:input message="tns:GetMessageDetailByMessageidSoapIn" />
+      <wsdl:output message="tns:GetMessageDetailByMessageidSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookMessageHttpGet">
@@ -266,6 +419,22 @@
       <wsdl:input message="tns:getAllFacebookMessagesOfUserByProfileIdHttpGetIn" />
       <wsdl:output message="tns:getAllFacebookMessagesOfUserByProfileIdHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="getAllFacebookTagOfUsers">
+      <wsdl:input message="tns:getAllFacebookTagOfUsersHttpGetIn" />
+      <wsdl:output message="tns:getAllFacebookTagOfUsersHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookstatusOfUsers">
+      <wsdl:input message="tns:getAllFacebookstatusOfUsersHttpGetIn" />
+      <wsdl:output message="tns:getAllFacebookstatusOfUsersHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookUserFeedOfUsers">
+      <wsdl:input message="tns:getAllFacebookUserFeedOfUsersHttpGetIn" />
+      <wsdl:output message="tns:getAllFacebookUserFeedOfUsersHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageDetailByMessageid">
+      <wsdl:input message="tns:GetMessageDetailByMessageidHttpGetIn" />
+      <wsdl:output message="tns:GetMessageDetailByMessageidHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookMessageHttpPost">
     <wsdl:operation name="UserHomeWithLimit">
@@ -291,6 +460,22 @@
     <wsdl:operation name="getAllFacebookMessagesOfUserByProfileId">
       <wsdl:input message="tns:getAllFacebookMessagesOfUserByProfileIdHttpPostIn" />
       <wsdl:output message="tns:getAllFacebookMessagesOfUserByProfileIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookTagOfUsers">
+      <wsdl:input message="tns:getAllFacebookTagOfUsersHttpPostIn" />
+      <wsdl:output message="tns:getAllFacebookTagOfUsersHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookstatusOfUsers">
+      <wsdl:input message="tns:getAllFacebookstatusOfUsersHttpPostIn" />
+      <wsdl:output message="tns:getAllFacebookstatusOfUsersHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookUserFeedOfUsers">
+      <wsdl:input message="tns:getAllFacebookUserFeedOfUsersHttpPostIn" />
+      <wsdl:output message="tns:getAllFacebookUserFeedOfUsersHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageDetailByMessageid">
+      <wsdl:input message="tns:GetMessageDetailByMessageidHttpPostIn" />
+      <wsdl:output message="tns:GetMessageDetailByMessageidHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="FacebookMessageSoap" type="tns:FacebookMessageSoap">
@@ -342,6 +527,42 @@
     </wsdl:operation>
     <wsdl:operation name="getAllFacebookMessagesOfUserByProfileId">
       <soap:operation soapAction="http://tempuri.org/getAllFacebookMessagesOfUserByProfileId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookTagOfUsers">
+      <soap:operation soapAction="http://tempuri.org/getAllFacebookTagOfUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookstatusOfUsers">
+      <soap:operation soapAction="http://tempuri.org/getAllFacebookstatusOfUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookUserFeedOfUsers">
+      <soap:operation soapAction="http://tempuri.org/getAllFacebookUserFeedOfUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageDetailByMessageid">
+      <soap:operation soapAction="http://tempuri.org/GetMessageDetailByMessageid" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -406,6 +627,42 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAllFacebookTagOfUsers">
+      <soap12:operation soapAction="http://tempuri.org/getAllFacebookTagOfUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookstatusOfUsers">
+      <soap12:operation soapAction="http://tempuri.org/getAllFacebookstatusOfUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookUserFeedOfUsers">
+      <soap12:operation soapAction="http://tempuri.org/getAllFacebookUserFeedOfUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageDetailByMessageid">
+      <soap12:operation soapAction="http://tempuri.org/GetMessageDetailByMessageid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="FacebookMessageHttpGet" type="tns:FacebookMessageHttpGet">
     <http:binding verb="GET" />
@@ -463,6 +720,42 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAllFacebookTagOfUsers">
+      <http:operation location="/getAllFacebookTagOfUsers" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookstatusOfUsers">
+      <http:operation location="/getAllFacebookstatusOfUsers" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookUserFeedOfUsers">
+      <http:operation location="/getAllFacebookUserFeedOfUsers" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageDetailByMessageid">
+      <http:operation location="/GetMessageDetailByMessageid" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="FacebookMessageHttpPost" type="tns:FacebookMessageHttpPost">
     <http:binding verb="POST" />
@@ -513,6 +806,42 @@
     </wsdl:operation>
     <wsdl:operation name="getAllFacebookMessagesOfUserByProfileId">
       <http:operation location="/getAllFacebookMessagesOfUserByProfileId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookTagOfUsers">
+      <http:operation location="/getAllFacebookTagOfUsers" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookstatusOfUsers">
+      <http:operation location="/getAllFacebookstatusOfUsers" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookUserFeedOfUsers">
+      <http:operation location="/getAllFacebookUserFeedOfUsers" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageDetailByMessageid">
+      <http:operation location="/GetMessageDetailByMessageid" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

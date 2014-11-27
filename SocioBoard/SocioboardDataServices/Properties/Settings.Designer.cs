@@ -186,7 +186,17 @@ namespace SocioboardDataServices.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Twitter.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/TwitterAccount.asmx")]
+        public string SocioboardDataServices_Api_TwitterAccount_TwitterAccount {
+            get {
+                return ((string)(this["SocioboardDataServices_Api_TwitterAccount_TwitterAccount"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Twitter.asmx")]
         public string SocioboardDataServices_Api_Twitter_Twitter {
             get {
                 return ((string)(this["SocioboardDataServices_Api_Twitter_Twitter"]));
@@ -196,10 +206,10 @@ namespace SocioboardDataServices.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/TwitterAccount.asmx")]
-        public string SocioboardDataServices_Api_TwitterAccount_TwitterAccount {
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/FacebookStats.asmx")]
+        public string SocioboardDataServices_Api_FacebookStats_FacebookStats {
             get {
-                return ((string)(this["SocioboardDataServices_Api_TwitterAccount_TwitterAccount"]));
+                return ((string)(this["SocioboardDataServices_Api_FacebookStats_FacebookStats"]));
             }
         }
     }

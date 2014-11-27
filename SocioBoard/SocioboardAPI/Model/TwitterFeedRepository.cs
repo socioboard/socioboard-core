@@ -141,6 +141,43 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+        // Edited by Antima
+
+         /// <getAllTwitterFeedOfUsers>
+        /// Get All Twitter Feed Of Users
+        /// </summary>
+        /// <param name="UserId">User id.(Guid)</param>
+        /// <param name="profileid">Profile id.(String)</param>
+        /// <returns>Return object of TwitterFeed Class with  value of each member in the form of list.(List<TwitterFeed>)</returns>
+     
+        public List<Domain.Socioboard.Domain.TwitterFeed> getAllTwitterFeedOfUsers(Guid UserId, string profileid,int count)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        List<Domain.Socioboard.Domain.TwitterFeed> lstmsg = session.CreateQuery("from TwitterFeed where UserId = :userid and ProfileId = :profid")
+                        .SetParameter("userid", UserId)
+                        .SetParameter("profid", profileid)
+                        .SetFirstResult(count)
+                        .SetMaxResults(10)
+                        .List<Domain.Socioboard.Domain.TwitterFeed>()
+                        .ToList<Domain.Socioboard.Domain.TwitterFeed>();
+                      
+                        return lstmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
 
         /// <checkTwitterFeedExists>
         /// Check Twitter Feed is Exists or not
@@ -483,7 +520,36 @@ namespace Api.Socioboard.Services
         }
 
 
+        public Domain.Socioboard.Domain.TwitterFeed getTwitterFeed(string id)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get feeds of twitter account by profile id.
+                        Domain.Socioboard.Domain.TwitterFeed lstmsg = session.CreateQuery("from TwitterFeed where Id = :id")
+                        .SetParameter("id", id).UniqueResult<Domain.Socioboard.Domain.TwitterFeed>();
 
+
+                        //List<TwitterFeed> lstmsg = new List<TwitterFeed>();
+                        //foreach (TwitterFeed item in query.Enumerable<TwitterFeed>().OrderByDescending(x => x.FeedDate))
+                        //{
+                        //    lstmsg.Add(item);
+                        //}
+                        return lstmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
 
 
 

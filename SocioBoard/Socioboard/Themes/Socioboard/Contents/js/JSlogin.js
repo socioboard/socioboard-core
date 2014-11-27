@@ -1,5 +1,5 @@
 ﻿
-
+document.write('<script type="text/javascript" language="javascript" src="../Themes/Socioboard/Views/Home/Index.cshtml"></script>')
 
 function checkEmail(email) {
     try {
@@ -91,18 +91,39 @@ function signinFunction() {
             //document.getElementById('btnlogin').src = "../../Contents/img/bx_loader.gif";
             $('#btnlogin').html("<img class='img-portfolio img-responsive' src='/Themes/Socioboard/Contents/img/bx_loader.gif'>");
 
-
             $.ajax({
                 type: 'POST',
                 //url: '../../Default/AjaxLogin.aspx?op=login&username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password),
                 url: '../Index/AjaxLogin?op=login&username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password),
                 success: function (msg) {
                     debugger;
+
                     if (msg == "user") {
                         //alert(msg);
                         //window.location = "../Home.aspx";
                         //window.location = "../Referrals.aspx";
                         window.top.location = "../Home/Index";
+
+                        // Edited by Antima
+
+                        if ($("#RememberMe").is(':checked')) {
+                            checkCookie(username, password);
+                        }
+                    }
+                        // Edited by Antima[1/11/2014]
+                    else if (msg == "notactivated") {
+                        $.ajax({
+                            type: 'POST',
+                            url: '../Index/UserActivation',
+                            success: function (msg) {
+                                if (msg == 'Success') {
+                                    window.location = '../Index/UserActivation1?email=' + username;
+                                }
+                            }
+                        });
+                    }
+                    else if (msg == "unpaid") {
+                        window.location = '../PersonalSetting/Index';
                     }
                     else {
                         document.getElementById('signinpasswordMessages').innerHTML = msg;
@@ -111,17 +132,54 @@ function signinFunction() {
                 }
 
             });
-        } else if (username == '' || username == undefined) {
-            document.getElementById('signinemailMessages').innerHTML = "Please Enter Email Address";
-        } else if (password == '' || password == undefined) {
-            document.getElementById('signinpasswordMessages').innerHTML = 'Please Enter Password';
-        }
+            //} else if (username == '' || username == undefined) {
+            //    document.getElementById('signinemailMessages').innerHTML = "Please Enter Email Address";
+            //} else if (password == '' || password == undefined) {
+            //    document.getElementById('signinpasswordMessages').innerHTML = 'Please Enter Password';
+        } else { alert("All fields are mandatory") }
 
     } catch (e) {
 
     }
 
 }
+
+// Edited by Antima
+
+function setCookie(cemail, cpwd, exdays) {
+    debugger;
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cemail + "=" + cpwd + "; " + expires;
+}
+
+function getCookie(cemail) {
+    debugger;
+    var name = cemail + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1);
+        if (c.indexOf(name) != -1) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function checkCookie(username, password) {
+    debugger;
+    var check = getCookie(username);
+    if (check != "") {
+        //  window.alert("Welcome again " + username);
+    } else {
+        if (username != "" && username != null && password != "" && password != null) {
+            setCookie(username, password, 90);
+        }
+    }
+}
+
 
 function checkEmailForSignUp(email) {
     try {
@@ -150,82 +208,74 @@ function checkEmailForSignUp(email) {
 }
 
 
-function registerFunction() {
-    debugger;
-    try {
-        var email = document.getElementById('EmailTxt').value;
-        var password = document.getElementById('PasswordTxt').value;
-        var firstname = document.getElementById('txtFirstName').value;
-        var lastname = document.getElementById('txtLastName').value;
-        var confirmpassword = document.getElementById('txtConfirmPassword').value;
-        if (firstname != '') {
-            document.getElementById('RequiredFieldValidator5').style.visibility = 'hidden';
+//commented  by vikash
 
-            if (lastname != '') {
-                document.getElementById('RequiredFieldValidator6').style.visibility = 'hidden';
+//function register() {
+//    debugger;
+//    try {
+//        var email = $('#txtrEmail').val();
+//        var password = $('#txtrPassword').val();
+//        var firstname = $('#txtrFirstName').val();
+//        var lastname = $('#txtrLastName').val();
+//        var confirmpassword = $('#txtrConfirmPassword').val();
+//        var packag = $("#package :selected").val();
+//        if (firstname != '') {
 
-                if (email != '') {
-                    document.getElementById('RequiredFieldValidator3').style.visibility = 'hidden';
-                    document.getElementById('RegularExpressionValidator1').style.visibility = "hidden";
-                    if (password != '') {
+//            if (lastname != '') {
 
-                        document.getElementById('RequiredFieldValidator4').style.visibility = 'hidden';
-                        if (confirmpassword != '') {
+//                if (email != '') {
 
-                            document.getElementById('RequiredFieldValidator7').style.visibility = 'hidden';
+//                    if (password != '') {
 
-                            if (password == confirmpassword) {
-                                alert(password);
-                                //var cryptpassword = CryptoJS.MD5(password);
-                                document.getElementById('btnRegister').src = "../Contents/img/bx_loader.gif";
-                                document.getElementById('lblerror').innerHTML = "";
-                                var totaldata = "{ 'email':'" + email + "', 'password': '" + password + "' , 'firstname':'" + firstname + "', 'lastname':'" + lastname + "' }";
-                                debugger;
-                                $.ajax({
-                                    type: "POST",
-                                    url: "../AjaxLogin.aspx?op=register",
-                                    data: totaldata,
-                                    contentType: "application/json; charset=utf-8",
-                                    dataType: "html",
-                                    success: function (msg) {
-                                        debugger;
-                                        if (msg == "user") {
-                                            window.location = "../Plans.aspx";
-                                        } else {
-                                            document.getElementById('lblerror').innerHTML = msg;
-                                            document.getElementById('btnRegister').src = "../Contents/img/create_account.png";
-                                        }
-                                    }
 
-                                });
-                            } else {
-                                document.getElementById('CompareValidator1').style.visibility = 'visible';
-                            }
-                        } else {
-                            document.getElementById('RequiredFieldValidator7').style.visibility = 'visible';
-                        }
-                    } else {
-                        document.getElementById('RequiredFieldValidator4').style.visibility = 'visible';
-                    }
-                } else {
-                    document.getElementById('RequiredFieldValidator3').style.visibility = 'visible';
-                }
 
-            } else {
-                document.getElementById('RequiredFieldValidator6').style.visibility = 'visible';
-            }
-        } else {
-            document.getElementById('RequiredFieldValidator5').style.visibility = 'visible';
+//                        if (confirmpassword != '') {
 
-        }
-    } catch (e) {
 
-    }
-}
-function getParameterByName(name) {
-    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
-    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
-}
+//                            if (password == confirmpassword) {
+
+//                                var totaldata = "{ 'email':'" + email + "', 'password': '" + password + "' , 'firstname':'" + firstname + "', 'lastname':'" + lastname + "', 'package':'" + packag + "' }";
+//                                debugger;
+//                                $.ajax({
+//                                    type: "POST",
+//                                    url: "../Index/Signup",
+//                                    data: totaldata,
+//                                    contentType: "application/json; charset=utf-8",
+
+//                                    success: function (msg) {
+//                                        alert("msg");
+//                                        alert(msg);
+//                                        window.location = "../Home/Index";
+//                                    }
+
+//                                });
+//                            } else {
+
+//                            }
+//                        } else {
+
+//                        }
+//                    } else {
+
+//                    }
+//                } else {
+
+//                }
+
+//            } else {
+
+//            }
+//        } else {
+
+//        }
+//    } catch (e) {
+
+//    }
+//}
+
+
+//----------------vikash---------//
+var strength = "";
 function register() {
     debugger;
     try {
@@ -236,68 +286,224 @@ function register() {
         var confirmpassword = $('#txtrConfirmPassword').val();
         var packag = $("#package :selected").val();
         var hint = getParameterByName("teamid");
-        if (firstname != '') {
-            //document.getElementById('RequiredFieldValidator5').style.visibility = 'hidden';
+        var Lower_FirstName = firstname.toLowerCase();
+        var Lower_LastName = lastname.toLowerCase();
+        if (packag != '') {
 
-            if (lastname != '') {
-                //document.getElementById('RequiredFieldValidator6').style.visibility = 'hidden';
+            if (firstname != '') {
 
-                if (email != '') {
-                    //document.getElementById('RequiredFieldValidator3').style.visibility = 'hidden';
-                    //document.getElementById('RegularExpressionValidator1').style.visibility = "hidden";
-                    if (password != '') {
+                if (validateFName(firstname)) {
 
-                        //document.getElementById('RequiredFieldValidator4').style.visibility = 'hidden';
-                        if (confirmpassword != '') {
+                    if (lastname != '') {
 
-                            //document.getElementById('RequiredFieldValidator7').style.visibility = 'hidden';
+                        if (validateLName(lastname)) {
 
-                            if (password == confirmpassword) {
-                                //var cryptpassword = CryptoJS.MD5(password);
-                                // document.getElementById('btnRegister').src = "../Contents/img/bx_loader.gif";
-                                // document.getElementById('lblerror').innerHTML = "";
-                                var totaldata = "{ 'email':'" + email + "', 'password': '" + password + "' , 'firstname':'" + firstname + "', 'lastname':'" + lastname + "', 'package':'" + packag + "' }";
-                                debugger;
-                                $.ajax({
-                                    type: "POST",
-                                    url: "../Index/Signup",
-                                    data: totaldata,
-                                    contentType: "application/json; charset=utf-8",
-                                    //dataType: "html",
-                                    success: function (msg) {
-                                        if (hint != "") {
-                                            window.location = "../Home/Index?teamid='" + hint + "'";
+                            if (email != '') {
+
+                                if (validateEmail(email)) {
+
+                                    if (Lower_FirstName != Lower_LastName) {
+
+                                        if (password != '') {
+
+                                            if (confirmpassword != '') {
+
+                                                if (password == confirmpassword) {
+
+                                                    if (strength != "weak") {
+
+                                                        var totaldata = "{ 'email':'" + email + "', 'password': '" + password + "' , 'firstname':'" + firstname + "', 'lastname':'" + lastname + "', 'package':'" + packag + "' }";
+                                                        alertify.prompt("Are you sure, You want to register with ", function (e, str) {
+                                                            debugger;
+                                                            if (e) {
+                                                                email = str;
+                                                                $('#txtrEmail').val(str);
+                                                                if (validateEmail(email)) {
+                                                                    $.ajax({
+                                                                        type: "POST",
+                                                                        url: "../Index/Signup",
+                                                                        data: totaldata,
+                                                                        contentType: "application/json; charset=utf-8",
+                                                                        success: function (msg) {
+                                                                            debugger;
+                                                                            if (msg == "Email Already Exists") {
+                                                                                alertify.set({ delay: 5000 });
+                                                                                alertify.error("Email Already Exists")
+                                                                                return;
+                                                                            }
+
+                                                                            $.ajax({
+                                                                                type: "GET",
+                                                                                url: "../Index/SendRegistrationMail?emailId=" + email,
+                                                                                data: '',
+                                                                                success: function (msg) {
+                                                                                    if (msg == "Success") {
+                                                                                        alertify.success('Mail has been send Successfully!!');
+                                                                                        alert('Please check your mail to activate your Account.');
+                                                                                        $('#txtrEmail').val('');
+                                                                                        $('#txtrPassword').val('');
+                                                                                        $('#txtrFirstName').val('');
+                                                                                        $('#txtrLastName').val('');
+                                                                                        $('#txtrConfirmPassword').val('');
+                                                                                    }
+                                                                                    else {
+                                                                                        alertify.error("failure");
+
+                                                                                    }
+                                                                                },
+                                                                                error: function () {
+                                                                                    alert("failure");
+                                                                                }
+                                                                            });
+
+                                                                            //if (hint != "" && hint != null) {
+                                                                            //    window.location = "../Home/Index?teamid='" + hint + "'";
+                                                                            //}
+                                                                            //else {
+                                                                            //    window.location = "../Home/Index";
+                                                                            //}
+
+
+                                                                        }
+
+                                                                    });
+                                                                } else {
+                                                                    alertify.error("Invalid Emal");
+                                                                    return;
+                                                                }
+                                                            } else { }
+                                                        }, email);
+                                                    } else {
+                                                        alertify.error("Not Valid Password");
+                                                        return;
+                                                    }
+                                                } else {
+                                                    alertify.error("Password and Confirm Password is not Matched");
+                                                    return;
+                                                }
+                                            } else {
+                                                alertify.error("Enter Confirm Password");
+                                                return;
+                                            }
+                                        } else {
+                                            alertify.error("Enter Password");
+                                            return;
                                         }
-                                        else {
-                                            window.location = "../Home/Index";
-                                        }
-
-                                       
+                                    } else {
+                                        alertify.error("First Name and Last Name Can not be same!");
+                                        return;
                                     }
 
-                                });
+                                } else {
+                                    alertify.error("Invalid Emal");
+                                    return;
+                                }
                             } else {
-                                //document.getElementById('CompareValidator1').style.visibility = 'visible';
+                                alertify.error("Enter Email");
+                                return;
                             }
                         } else {
-                            //document.getElementById('RequiredFieldValidator7').style.visibility = 'visible';
+                            alertify.error("Invalid Last Name");
+                            return;
                         }
-                    } else {
-                        //document.getElementById('RequiredFieldValidator4').style.visibility = 'visible';
-                    }
-                } else {
-                    //document.getElementById('RequiredFieldValidator3').style.visibility = 'visible';
-                }
 
+                    } else {
+                        alertify.error("Enter Last Name");
+                        return;
+                    }
+
+                } else {
+                    alertify.error("Invalid First Name");
+                    return;
+                }
             } else {
-                //document.getElementById('RequiredFieldValidator6').style.visibility = 'visible';
+                alertify.error("Enter First Name");
+                return;
             }
         } else {
-            //document.getElementById('RequiredFieldValidator5').style.visibility = 'visible';
-
+            alertify.error("Select Account Type");
+            return;
         }
     } catch (e) {
 
+    }
+}
+
+function password() {
+    debugger;
+    var strongRegex = new RegExp("^(?=.{7,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+    var mediumRegex = new RegExp("^(?=.{5,})(((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+    if ($('#txtrPassword').val() != "") {
+        if ($('#txtrPassword').val().length <= 15) {
+            if (strongRegex.test($('#txtrPassword').val())) {
+                $('#stregth').html('<b>Strong!</b>');
+                $('#weak').css("background-color", "#006400");
+                $('#medium').css("background-color", "#006400");
+                $('#strong').css("background-color", "#006400");
+                strength = "";
+            } else if (mediumRegex.test($('#txtrPassword').val())) {
+                $('#stregth').html('<b>Medium!</b>');
+                $('#weak').css("background-color", "#FFFF00");
+                $('#medium').css("background-color", "#FFFF00");
+                $('#strong').css("background-color", "rgb(204, 204, 204)");
+                strength = "";
+            } else {
+                $('#stregth').html('<b>Weak!</b>');
+                strength = "weak";
+                $('#weak').css("background-color", "#FF0000");
+                $('#medium').css("background-color", "rgb(204, 204, 204)");
+                $('#strong').css("background-color", "rgb(204, 204, 204)");
+            }
+        } else {
+            var pass = $('#txtrPassword').val();
+            $('#txtrPassword').val(pass.substring(0, 15));
+        }
+    }
+    else {
+        $('#stregth').html('<b>Weak!</b>');
+        $('#weak').css("background-color", "#FF0000");
+        $('#medium').css("background-color", "rgb(204, 204, 204)");
+        $('#strong').css("background-color", "rgb(204, 204, 204)");
+    }
+    return true;
+}
+
+function validateEmail($email) {
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    if (!emailReg.test($email)) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function validateFName($Fname) {
+    //var fnameReg = /^[A-Z,a-z._]+$/;
+    //regular expression for accept numbers and characters
+    var fnameReg = /^[a-zA-Z0-9_]*$/;
+    if (!fnameReg.test($Fname)) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function validateLName($lname) {
+    //var lnameReg = /^[A-Z,a-z._]+$/;
+    var lnameReg = /^[a-zA-Z0-9_]*$/;
+    if (!lnameReg.test($lname)) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function validatePhone($Phoneno) {
+    var phoneReg = /^\d{10}$/;
+    if (!phoneReg.test($Phoneno)) {
+        return false;
+    } else {
+        return true;
     }
 }
 
@@ -436,3 +642,48 @@ function RegisterDefault(plantype) {
     }
 
 }
+
+function getParameterByName(name) {
+    debugger;
+    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
+function ResentActivationMail(email) {
+    $.ajax({
+        type: "GET",
+        url: "../Index/SendRegistrationMail?emailId=" + email,
+        data: '',
+        success: function (msg) {
+            if (msg == "Success") {
+                alertify.success('Mail has been send Successfully!!');
+                alert('Please check your mail to activate your Account.');
+            }
+            else {
+                alertify.error("failure");
+
+            }
+        },
+        error: function () {
+            alert("failure");
+        }
+    });
+
+}
+
+$(document).ready(function () {
+    $('input').keypress(function (e) {
+        var is_shift_pressed = false;
+        debugger;
+        if (e.shiftKey) {
+            is_shift_pressed = e.shiftKey;
+        }
+
+        if (((e.which >= 65 && e.which <= 90) && !is_shift_pressed) || ((e.which >= 97 && e.which <= 122) && is_shift_pressed)) {
+            $("#signinpasswordMessages").html("Caps Lock Is On");
+        }
+        else {
+            $("#signinpasswordMessages").html("");
+        }
+    });
+});

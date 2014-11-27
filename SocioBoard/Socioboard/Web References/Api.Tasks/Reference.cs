@@ -49,6 +49,10 @@ namespace Socioboard.Api.Tasks {
         
         private System.Threading.SendOrPostCallback AddNewTaskWithGroupOperationCompleted;
         
+        private System.Threading.SendOrPostCallback ChangeTaskStatusOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdateTaskReadStatusOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -116,6 +120,12 @@ namespace Socioboard.Api.Tasks {
         
         /// <remarks/>
         public event AddNewTaskWithGroupCompletedEventHandler AddNewTaskWithGroupCompleted;
+        
+        /// <remarks/>
+        public event ChangeTaskStatusCompletedEventHandler ChangeTaskStatusCompleted;
+        
+        /// <remarks/>
+        public event UpdateTaskReadStatusCompletedEventHandler UpdateTaskReadStatusCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CreateNewTask", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -421,7 +431,8 @@ namespace Socioboard.Api.Tasks {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddNewTaskWithGroup", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void AddNewTaskWithGroup(string description, string userid, Domain.Socioboard.Domain.Tasks task, string assigntoId, string comment, string AssignDate, string groupid) {
+        public void AddNewTaskWithGroup(string description, string userid, Domain.Socioboard.Domain.Tasks task, string assigntoId, string comment, string AssignDate, string groupid)
+        {
             this.Invoke("AddNewTaskWithGroup", new object[] {
                         description,
                         userid,
@@ -460,6 +471,72 @@ namespace Socioboard.Api.Tasks {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ChangeTaskStatus", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string ChangeTaskStatus(string UserId, string TaskId, string Status) {
+            object[] results = this.Invoke("ChangeTaskStatus", new object[] {
+                        UserId,
+                        TaskId,
+                        Status});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ChangeTaskStatusAsync(string UserId, string TaskId, string Status) {
+            this.ChangeTaskStatusAsync(UserId, TaskId, Status, null);
+        }
+        
+        /// <remarks/>
+        public void ChangeTaskStatusAsync(string UserId, string TaskId, string Status, object userState) {
+            if ((this.ChangeTaskStatusOperationCompleted == null)) {
+                this.ChangeTaskStatusOperationCompleted = new System.Threading.SendOrPostCallback(this.OnChangeTaskStatusOperationCompleted);
+            }
+            this.InvokeAsync("ChangeTaskStatus", new object[] {
+                        UserId,
+                        TaskId,
+                        Status}, this.ChangeTaskStatusOperationCompleted, userState);
+        }
+        
+        private void OnChangeTaskStatusOperationCompleted(object arg) {
+            if ((this.ChangeTaskStatusCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ChangeTaskStatusCompleted(this, new ChangeTaskStatusCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateTaskReadStatus", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string UpdateTaskReadStatus(string TaskId, string UserId, string GroupId) {
+            object[] results = this.Invoke("UpdateTaskReadStatus", new object[] {
+                        TaskId,
+                        UserId,
+                        GroupId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UpdateTaskReadStatusAsync(string TaskId, string UserId, string GroupId) {
+            this.UpdateTaskReadStatusAsync(TaskId, UserId, GroupId, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateTaskReadStatusAsync(string TaskId, string UserId, string GroupId, object userState) {
+            if ((this.UpdateTaskReadStatusOperationCompleted == null)) {
+                this.UpdateTaskReadStatusOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateTaskReadStatusOperationCompleted);
+            }
+            this.InvokeAsync("UpdateTaskReadStatus", new object[] {
+                        TaskId,
+                        UserId,
+                        GroupId}, this.UpdateTaskReadStatusOperationCompleted, userState);
+        }
+        
+        private void OnUpdateTaskReadStatusOperationCompleted(object arg) {
+            if ((this.UpdateTaskReadStatusCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateTaskReadStatusCompleted(this, new UpdateTaskReadStatusCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -477,6 +554,7 @@ namespace Socioboard.Api.Tasks {
             return false;
         }
     }
+    
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
@@ -649,6 +727,58 @@ namespace Socioboard.Api.Tasks {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
     public delegate void AddNewTaskWithGroupCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void ChangeTaskStatusCompletedEventHandler(object sender, ChangeTaskStatusCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ChangeTaskStatusCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ChangeTaskStatusCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void UpdateTaskReadStatusCompletedEventHandler(object sender, UpdateTaskReadStatusCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpdateTaskReadStatusCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpdateTaskReadStatusCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
 }
 
 #pragma warning restore 1591

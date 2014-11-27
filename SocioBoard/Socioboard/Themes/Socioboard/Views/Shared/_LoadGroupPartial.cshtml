@@ -20,14 +20,16 @@
 @if (Session["group"] == null)
 {
     <ul class="dropdown-menu slidedown">
+        <li style="cursor:not-allowed;"><div style="margin-left:17px"><b>Groups</b></div></li>
         @foreach (Groups item in lstgroup)
         {
-
-            if (@item.GroupName == "Socioboard")
+            try
+            {
+                if (item.GroupName == "Socioboard")
             {
                 groupname = @item.GroupName;
             <li>
-                <a href="#" class="groupclk" grpid="@item.Id.ToString()">
+                <a href="#" class="groupclk" grpid="@item.Id.ToString()" title="@item.GroupName Group">
                     <i class="fa fa-star fa-fw"></i>@item.GroupName
                 </a>
             </li>
@@ -37,12 +39,18 @@
             else
             {
             <li>
-                <a href="#" class="groupclk" grpid="@item.Id.ToString()">
+                <a href="#" class="groupclk" grpid="@item.Id.ToString()" title="@item.GroupName Group">
                     <i class="fa fa-star fa-fw"></i>@item.GroupName
                 </a>
             </li>
 
             }
+            }
+            catch (Exception)
+            {
+                
+            }
+            
 
         }
     </ul>
@@ -51,27 +59,30 @@
 else
 {
     <ul class="dropdown-menu slidedown">
+        <li style="cursor:not-allowed;"><div style="margin-left:17px"><b>Groups</b></div></li>
         @foreach (Groups item in lstgroup)
         {
-
-            if (item.Id.ToString() == (Session["group"].ToString()))
+            if(item!=null)
             {
-                groupname = @item.GroupName;
-            <li>
-                <a href="#" class="groupclk" grpid="@item.Id.ToString()">
-                    <i class="fa fa-star fa-fw"></i>@item.GroupName
-                </a>
-            </li>
-                HttpContext.Current.Session["group"] = item.Id;
-            }
-            else
-            {
+                if (item.Id.ToString() == (Session["group"].ToString()))
+                {
+                    groupname = @item.GroupName;
+                <li>
+                    <a href="#" class="groupclk" grpid="@item.Id.ToString()" title="@item.GroupName Group">
+                        <i class="fa fa-star fa-fw"></i>@item.GroupName
+                    </a>
+                </li>
+                    HttpContext.Current.Session["group"] = item.Id;
+                }
+                else
+                {
 
-            <li>
-                <a href="#" class="groupclk" grpid="@item.Id.ToString()">
-                    <i class="fa fa-star fa-fw"></i>@item.GroupName
-                </a>
-            </li>
+                <li>
+                    <a href="#" class="groupclk" grpid="@item.Id.ToString()" title="@item.GroupName Group">
+                        <i class="fa fa-star fa-fw"></i>@item.GroupName
+                    </a>
+                </li>
+                }
             }
         }
     </ul>

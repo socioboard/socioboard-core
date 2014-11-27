@@ -50,6 +50,8 @@ namespace SocioboardDataServices.Api.Twitter {
         
         private System.Threading.SendOrPostCallback TwitterRecentFollowerOperationCompleted;
         
+        private System.Threading.SendOrPostCallback TwitterReplyUpdateOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -117,6 +119,9 @@ namespace SocioboardDataServices.Api.Twitter {
         
         /// <remarks/>
         public event TwitterRecentFollowerCompletedEventHandler TwitterRecentFollowerCompleted;
+        
+        /// <remarks/>
+        public event TwitterReplyUpdateCompletedEventHandler TwitterReplyUpdateCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetTwitterRedirectUrl", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -453,6 +458,41 @@ namespace SocioboardDataServices.Api.Twitter {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/TwitterReplyUpdate", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string TwitterReplyUpdate(string message, string userid, string profileid, string statusid) {
+            object[] results = this.Invoke("TwitterReplyUpdate", new object[] {
+                        message,
+                        userid,
+                        profileid,
+                        statusid});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void TwitterReplyUpdateAsync(string message, string userid, string profileid, string statusid) {
+            this.TwitterReplyUpdateAsync(message, userid, profileid, statusid, null);
+        }
+        
+        /// <remarks/>
+        public void TwitterReplyUpdateAsync(string message, string userid, string profileid, string statusid, object userState) {
+            if ((this.TwitterReplyUpdateOperationCompleted == null)) {
+                this.TwitterReplyUpdateOperationCompleted = new System.Threading.SendOrPostCallback(this.OnTwitterReplyUpdateOperationCompleted);
+            }
+            this.InvokeAsync("TwitterReplyUpdate", new object[] {
+                        message,
+                        userid,
+                        profileid,
+                        statusid}, this.TwitterReplyUpdateOperationCompleted, userState);
+        }
+        
+        private void OnTwitterReplyUpdateOperationCompleted(object arg) {
+            if ((this.TwitterReplyUpdateCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.TwitterReplyUpdateCompleted(this, new TwitterReplyUpdateCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -618,9 +658,9 @@ namespace SocioboardDataServices.Api.Twitter {
         
         private System.Guid userIdField;
         
-        private bool isActiveField;
-        
         private int followersCountField;
+        
+        private bool isActiveField;
         
         private int followingCountField;
         
@@ -693,22 +733,22 @@ namespace SocioboardDataServices.Api.Twitter {
         }
         
         /// <remarks/>
-        public bool IsActive {
-            get {
-                return this.isActiveField;
-            }
-            set {
-                this.isActiveField = value;
-            }
-        }
-        
-        /// <remarks/>
         public int FollowersCount {
             get {
                 return this.followersCountField;
             }
             set {
                 this.followersCountField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsActive {
+            get {
+                return this.isActiveField;
+            }
+            set {
+                this.isActiveField = value;
             }
         }
         
@@ -922,6 +962,32 @@ namespace SocioboardDataServices.Api.Twitter {
         private object[] results;
         
         internal TwitterRecentFollowerCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void TwitterReplyUpdateCompletedEventHandler(object sender, TwitterReplyUpdateCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class TwitterReplyUpdateCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal TwitterReplyUpdateCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

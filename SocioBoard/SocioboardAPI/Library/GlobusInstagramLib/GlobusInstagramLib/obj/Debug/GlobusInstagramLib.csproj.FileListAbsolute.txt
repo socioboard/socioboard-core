@@ -3,7 +3,8 @@ C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusInstagramLib\G
 C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.dll
 C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.pdb
 C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.csprojResolveAssemblyReference.cache
-C:\Users\SUMIT\Desktop\New folder\sb 2.0\trunk\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\bin\Debug\GlobusInstagramLib.dll
-C:\Users\SUMIT\Desktop\New folder\sb 2.0\trunk\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\bin\Debug\GlobusInstagramLib.pdb
-C:\Users\SUMIT\Desktop\New folder\sb 2.0\trunk\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.dll
-C:\Users\SUMIT\Desktop\New folder\sb 2.0\trunk\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.pdb
+D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\bin\Debug\GlobusInstagramLib.dll
+D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\bin\Debug\GlobusInstagramLib.pdb
+D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.csprojResolveAssemblyReference.cache
+D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.dll
+D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.pdb

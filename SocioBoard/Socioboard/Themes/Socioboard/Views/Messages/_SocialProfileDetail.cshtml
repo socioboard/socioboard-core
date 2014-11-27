@@ -1,0 +1,99 @@
+﻿@using Domain.Socioboard.Helper;
+@using Domain.Socioboard.Domain;
+@{
+    string path = System.Configuration.ConfigurationManager.AppSettings["domain"];
+    
+    foreach (var item in (Dictionary<string, object>)Model)
+    {
+        if (item.Key == "Twitter")
+        {
+            TwitterProfileDetails objTwitterAccount = (TwitterProfileDetails)item.Value;
+            
+             <div class="col-md-12" style="text-align: center; background: linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.73) 100%) repeat scroll 0px 0px transparent; padding: 15px;">
+                                    <a target="_blank" href="http://www.twitter.com/@objTwitterAccount.screen_name"></a><img src="@objTwitterAccount.profile_image_url" alt="@objTwitterAccount.name" class="img-thumbnail" />
+                                    <h2><a target="_blank" href="http://www.twitter.com/@objTwitterAccount.screen_name">@objTwitterAccount.name</a></h2>
+                                    <p>@objTwitterAccount.screen_name</p>
+                                    <p>@objTwitterAccount.Status_Text</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <ul class="list-inline">
+                                        <li style="border-right: 1px solid #eeeeee;float: left;padding: 11px 7px 6px;text-align: center;width: 78px;">
+                                            <a style="text-decoration:none;">
+                                                <strong>@objTwitterAccount.friends_count</strong>
+                                                <span>Following</span>
+                                            </a>
+                                        </li>
+                                        <li style="border-right: 1px solid #eeeeee;float: left;padding: 11px 7px 6px;text-align: center;width: 78px;">
+                                            <a style="text-decoration:none;">
+                                                <strong>@objTwitterAccount.followers_count</strong>
+                                                <span>Followers</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-12" style="text-align:center;">
+                                    <a target="_blank" href="http://www.twitter.com/@objTwitterAccount.screen_name">Go to full profile →</a>
+                                </div>
+        }
+        if (item.Key == "Facebook")
+        {
+            FacebookAccount objFacebookAccount = (FacebookAccount)item.Value;
+            
+             <div class="col-md-12" style="text-align: center; background: linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.73) 100%) repeat scroll 0px 0px transparent; padding: 15px;">
+                                    <a target="_blank" href="https://www.facebook.com/@objFacebookAccount.FbUserId"></a><img src="http://graph.facebook.com/@objFacebookAccount.FbUserId/picture?type=small" alt="@objFacebookAccount.FbUserName" class="img-thumbnail" />
+                                    <h2><a target="_blank" href="https://www.facebook.com/@objFacebookAccount.FbUserId">@objFacebookAccount.FbUserName</a></h2>
+                                    @*<p>@objTwitterAccount.screen_name</p>
+                                    <p>@objTwitterAccount.Status_Text</p>*@
+                                </div>
+                                <div class="col-md-12">
+                                    <ul class="list-inline">
+                                        <li style="border-right: 1px solid #eeeeee;float: left;padding: 11px 7px 6px;text-align: center;width: 78px;">
+                                            <a style="text-decoration:none;">
+                                                <strong>@objFacebookAccount.Friends</strong>
+                                                <span>Friends</span>
+                                            </a>
+                                        </li>
+                                       @* <li style="border-right: 1px solid #eeeeee;float: left;padding: 11px 7px 6px;text-align: center;width: 78px;">
+                                            <a style="text-decoration:none;">
+                                                <strong>@objTwitterAccount.followers_count</strong>
+                                                <span>Followers</span>
+                                            </a>
+                                        </li>*@
+                                    </ul>
+                                </div>
+                                <div class="col-md-12" style="text-align:center;">
+                                    <a target="_blank" href="https://www.facebook.com/@objFacebookAccount.FbUserId">Go to full profile →</a>
+                                </div>
+        }
+        if (item.Key == "Linkedin")
+        {
+            LinkedInAccount objLinkedinAccount = (LinkedInAccount)item.Value;
+            
+             <div class="col-md-12" style="text-align: center; background: linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.73) 100%) repeat scroll 0px 0px transparent; padding: 15px;">
+                                    <a target="_blank" href="@objLinkedinAccount.ProfileUrl"></a><img src="@objLinkedinAccount.ProfileImageUrl" alt="@objLinkedinAccount.LinkedinUserName" class="img-thumbnail" />
+                                    <h2><a target="_blank" href="@objLinkedinAccount.ProfileUrl">@objLinkedinAccount.LinkedinUserName</a></h2>
+                                    @*<p>@objTwitterAccount.screen_name</p>*@
+                                    <p>@objLinkedinAccount.EmailId</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <ul class="list-inline">
+                                        <li style="border-right: 1px solid #eeeeee;float: left;padding: 11px 7px 6px;text-align: center;width: 78px;">
+                                            <a style="text-decoration:none;">
+                                                <strong>@objLinkedinAccount.Connections</strong>
+                                                <span>Connection</span>
+                                            </a>
+                                        </li>
+                                       @* <li style="border-right: 1px solid #eeeeee;float: left;padding: 11px 7px 6px;text-align: center;width: 78px;">
+                                            <a style="text-decoration:none;">
+                                                <strong>@objTwitterAccount.followers_count</strong>
+                                                <span>Followers</span>
+                                            </a>
+                                        </li>*@
+                                    </ul>
+                                </div>
+                                <div class="col-md-12" style="text-align:center;">
+                                    <a target="_blank" href="@objLinkedinAccount.ProfileUrl">Go to full profile →</a>
+                                </div>
+        }
+    }
+ }

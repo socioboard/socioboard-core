@@ -85,11 +85,13 @@
                                             
                         <div class="panel panel-primary" id="messagetaskable_@sorteddatacount">
                                         <div class="panel-heading">
-                                            <div class="row">
+                                            <div class="row" style="width:750px;">
                                                 <div class="col-xs-3">
-                                                    <img title="@ScreenName" alt="@item.ProfileId" src="@ProfileImageUrl" id="formprofileurl_@sorteddatacount" class="img-circle" data-toggle="modal" data-target="#profileModal" style="height:50px;width:50px">
+                                                    @*<img title="@ScreenName" alt="@item.ProfileId" src="@ProfileImageUrl" id="formprofileurl_@sorteddatacount" class="img-circle" data-toggle="modal" data-target="#profileModal" style="height:50px;width:50px">*@
+                                                    <img title="@ScreenName" alt="@item.ProfileId" src="@ProfileImageUrl" id="formprofileurl_@sorteddatacount" class="img-circle" onclick="DetailsofProfile('@item.ProfileId','@network')" style="height:50px;width:50px">
                                                     <img class="img-responsive img-circle" src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/@icon" style="margin-left: 35px; margin-top: -20px;">
                                                     <span>@ScreenName</span>
+                                                    <span style="float: left">@item.ScheduleTime</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -97,8 +99,8 @@
                                             <p>@item.ShareMessage</p>
                                         </div>
                                         <div class="panel-footer">
-                                            <a href="#">
-                                                <span class="pull-left">View Details</span></a>
+                                           @* <a href="#">
+                                                <span class="pull-left">View Details</span></a>*@
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
@@ -138,17 +140,42 @@
                 </div>
 
                 <!-- Modal -->
-                <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal fade" id="ProfileDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                 <h4 class="modal-title" id="myModalLabel">Profile Summary</h4>
                             </div>
-                            <div class="modal-body col-md-12">
+                            <div id="ProfileDetailBody" class="modal-body col-md-12">
+                              @*  <div class="col-md-12" style="text-align: center; background: linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.73) 100%) repeat scroll 0px 0px transparent; padding: 15px;">
+                                    <img src="/Themes/@path/Contents/img/apple-touch-icon-72-precomposed.png" class="img-thumbnail" />
+                                    <p><h2>abhay mondal</h2></p>
+                                    <p>abhaymondal3</p>
+                                    <p>iPhone6</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <ul class="list-inline">
+                                        <li style="border-right: 1px solid #eeeeee;float: left;padding: 11px 7px 6px;text-align: center;width: 78px;">
+                                            <a style="text-decoration:none;">
+                                                <strong>73</strong>
+                                                <span>Following</span>
+                                            </a>
+                                        </li>
+                                        <li style="border-right: 1px solid #eeeeee;float: left;padding: 11px 7px 6px;text-align: center;width: 78px;">
+                                            <a style="text-decoration:none;">
+                                                <strong>15</strong>
+                                                <span>Followers</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-12" style="text-align:center;">
+                                    <a href="#">Go to full profile →</a>
+                                </div>*@
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger " data-dismiss="modal">Close</button>
 
                             </div>
                         </div>
@@ -159,7 +186,174 @@
         </div>
     </div>
 </div>
+
+    <div class="col-md-3" style="padding-top: 62px">
+        <div class="col-md-12" style="border: 1px solid rgb(153, 153, 153); background: none repeat scroll 0% 0% rgb(248, 248, 248); padding: 4%;">
+        <div class="list-group">
+            <a href="#" class="list-group-item btn btn-default report_today" style="margin-bottom: 4%; background: #e4e3e4;" onclick="loadsentmessagesbydate('0')"><strong>Today</strong></a>
+            <a href="#" class="list-group-item btn btn-default report_yesterday" style="margin-bottom: 4%; background: #e4e3e4;" onclick="loadsentmessagesbydate('1')"><strong>Yesterday</strong></a>
+            <a href="#" class="list-group-item btn btn-default report_7_days" style="margin-bottom: 4%; background: #e4e3e4;" onclick="loadsentmessagesbydays('7')"><strong>Last 7 Days</strong></a>
+            <a href="#" class="list-group-item btn btn-default report_30_days" style="margin-bottom: 4%; background: #e4e3e4;" onclick="loadsentmessagesbydays('30')"><strong>Last 30 Days</strong></a>
+            <a href="#" class="list-group-item btn btn-default report_this_month" style="margin-bottom: 4%; background: #e4e3e4;" onclick="loadsentmessagesbymonth('0')"><strong>This Month</strong></a>
+            <a href="#" class="list-group-item btn btn-default report_last_month" style="margin-bottom: 4%; background: #e4e3e4;" onclick="loadsentmessagesbymonth('1')"><strong>Last Month</strong></a>
+            <a href="#" class="list-group-item btn btn-default report_range" style="background: #e4e3e4; margin-bottom: 4%;" onclick="Show_range()"><strong>Custom Range</strong></a>
+           <div class="range_inputs" style="padding-top: 1%; display:none">
+                <div style="margin-left: 2%; padding-bottom: 5%;" class="input-group col-md-5 pull-left">
+                    <label for="dates">From</label><input id="fromdate" type="text" class="form-control">
+                </div>
+                <div style="margin-left: 13%; padding-bottom: 5%;" class="input-group col-md-5 pull-left">
+                    <label for="dates">To</label><input id="todate" type="text" class="form-control">
+                </div>
+                <button class="btn btn-default btn-success clearBtn col-md-5 customrange_submit" style="margin-left: 5%" onclick="loadsentmessagesforCustomrange()">Submit</button>
+                <button class="btn btn-default clearBtn btn-danger col-md-5" style="margin-left: 4%" onclick="clearbutton()">Clear</button>
+            </div>
+        </div> 
+         </div>
+    </div>
+
 </div>
 </div>
 @*</div>*@
 
+<script type="text/javascript">
+    function DetailsofProfile(id, network)
+    {
+        debugger;
+        try {
+            debugger;
+            debugger;
+            
+            $("#ProfileDetailBody").html("");
+            $.ajax
+            ({
+                type: "GET",
+                url: "../Messages/getProfileDetails?Profileid=" + id + '&Network=' + network,
+                crossDomain: true,
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (msg) {
+                    debugger;
+
+                    $("#ProfileDetailBody").append(msg);
+                    $("#ProfileDetail").modal('show');
+
+                },
+                error: function (err) {
+                    alert(err);
+                    debugger;
+                }
+            });
+        } catch (e) {
+
+        }
+    }
+
+
+    $(document).ready(function (e) {
+        $('#fromdate').datepicker({
+            multidate: false,
+            todayHighlight: true,
+            startDate: '',
+            endDate: 'd',
+            clearBtn: true
+        });
+        $('#todate').datepicker({
+            multidate: false,
+            todayHighlight: true,
+            startDate: '',
+            endDate: 'd',
+            clearBtn: true
+        });
+    });
+    function loadsentmessagesbydate(day) {
+        debugger;
+        $('#page-wrapper').html("");
+        $.ajax({
+            type: "POST",
+            url: "../Messages/LoadSentmsgByDay?day=" + day,
+            data: '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (msg) {
+                $('#page-wrapper').append(msg);
+                if (day == 0) {
+                    $('.report_today').addClass('active');
+                }
+                else if (day == 1) {
+                    $('.report_yesterday').addClass('active');
+                }
+            }
+        });
+    }
+    function loadsentmessagesbydays(days) {
+        debugger;
+        $('#page-wrapper').html("");
+        $.ajax({
+            type: "POST",
+            url: "../Messages/LoadSentmsgByDays?days=" + days,
+            data: '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (msg) {
+                $('#page-wrapper').append(msg);
+                if (days == 7) {
+                    $('.report_7_days').addClass('active');
+                }
+                else if (days == 30) {
+                    $('.report_30_days').addClass('active');
+                }
+            }
+        });
+    }
+    function loadsentmessagesbymonth(month) {
+        debugger;
+        $('#page-wrapper').html("");
+        $.ajax({
+            type: "POST",
+            url: "../Messages/LoadSentmsgByMonth?month=" + month,
+            data: '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (msg) {
+                $('#page-wrapper').append(msg);
+                if (month == 0) {
+                    $('.report_this_month').addClass('active');
+                }
+                else if (month == 1) {
+                    $('.report_last_month').addClass('active');
+                }
+            }
+        });
+    }
+    function loadsentmessagesforCustomrange() {
+        debugger;
+        var sdate = $('#fromdate').val();
+        var ldate = $('#todate').val();
+        if (sdate != "" && ldate != "") {
+            $('#page-wrapper').html("");
+            $.ajax({
+                type: "POST",
+                url: "../Messages/LoadSentmsgForCustomrange?sdate=" + sdate + "&ldate=" + ldate,
+                data: '',
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (msg) {
+                    $('#page-wrapper').append(msg);
+                    $('.report_range').addClass('active');
+                    $('.report_range').html(sdate + ' - ' + ldate);
+                }
+            });
+        }
+    }
+    function Show_range() {
+        debugger;
+        $('.range_inputs').toggle();
+    }
+    function clearbutton() {
+        $('#fromdate').val('');
+        $('#todate').val('');
+    }
+
+
+
+</script>

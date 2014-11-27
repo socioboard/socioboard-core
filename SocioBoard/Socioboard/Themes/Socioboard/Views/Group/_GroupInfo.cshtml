@@ -34,9 +34,15 @@
                                         <i class="fa fa-clock-o fa-fw"></i>@_FacebookGroupData.CreatedTime
                                             </small>
                                 </div>
+                                @if (!string.IsNullOrEmpty(_FacebookGroupData.Picture))
+                                {
+                                    <div>
+                                    <img class="image img-responsive" src="@_FacebookGroupData.Picture"/>
+                                </div>
+                                }
                                 <p>
                                     @_FacebookGroupData.Message
-                                       
+                                     
                                 </p>
                             </div>
 
@@ -72,6 +78,13 @@
                                         <i class="fa fa-clock-o fa-fw"></i>@_FacebookGroupData.CreatedTime</small>
                                     <strong class="pull-right primary-font">@_FacebookGroupData.Name</strong>
                                 </div>
+
+                                 @if (!string.IsNullOrEmpty(_FacebookGroupData.Picture))
+                                {
+                                    <div>
+                                    <img class="image img-responsive" src="@_FacebookGroupData.Picture"/>
+                                </div>
+                                }
                                 <p>
                                      @_FacebookGroupData.Message
                                        
@@ -130,10 +143,11 @@
                                         <i class="fa fa-clock-o fa-fw"></i>
                                             </small>
                                 </div>
-                                <p style="font-size:medium">
+                                <p style="font-weight: bolder;">
                                     @_LinkedInGroup.title
                                        
                                 </p>
+                                
                                 <p>
                                     @_LinkedInGroup.summary                                       
                                 </p>
@@ -185,7 +199,7 @@
                                         <i class="fa fa-clock-o fa-fw"></i></small>
                                     <strong class="pull-right primary-font">@username</strong>
                                 </div>
-                               <p style="font-size:medium">
+                                   <p style="font-weight: bolder;">
                                     @_LinkedInGroup.title
                                        
                                 </p>

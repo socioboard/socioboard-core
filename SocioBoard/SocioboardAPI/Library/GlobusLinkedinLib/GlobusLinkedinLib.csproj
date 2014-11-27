@@ -71,11 +71,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.Core\Global.cs" />
+    <Compile Include="App.Core\LinkedinCompanyPage.cs" />
     <Compile Include="App.Core\LinkedInGroup.cs" />
     <Compile Include="App.Core\LinkedInJob.cs" />
     <Compile Include="App.Core\LinkedInNetwork.cs" />
+    <Compile Include="App.Core\LinkedinPageComment.cs" />
+    <Compile Include="App.Core\LinkedinPageUpdate.cs" />
     <Compile Include="App.Core\LinkedInProfile.cs" />
     <Compile Include="App.Core\LinkedInUser.cs" />
+    <Compile Include="LinkedIn.Core\CompanyMethods\Company.cs" />
     <Compile Include="LinkedIn.Core\JobsMethods\Jobs.cs" />
     <Compile Include="LinkedIn.Core\JobsMethods\JobSearch.cs" />
     <Compile Include="LinkedIn.Core\PeopleAndConnectionMethods\PeopleAndConnection.cs" />

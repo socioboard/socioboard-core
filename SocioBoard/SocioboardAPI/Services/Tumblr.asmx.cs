@@ -454,5 +454,23 @@ namespace Api.Socioboard.Services
         }
 
 
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string UpdateTumblrAccountByAdmin(string ObjTumblr)
+        {
+            Domain.Socioboard.Domain.TumblrAccount ObjTumblrAccount = (Domain.Socioboard.Domain.TumblrAccount)(new JavaScriptSerializer().Deserialize(ObjTumblr, typeof(Domain.Socioboard.Domain.TumblrAccount)));
+            try
+            {
+                objTumblrAccountRepository.updateTumblrUser(ObjTumblrAccount);
+                return new JavaScriptSerializer().Serialize("Update Successfully");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return new JavaScriptSerializer().Serialize("Something went Wrong");
+            }
+        }
+
+
     }
 }

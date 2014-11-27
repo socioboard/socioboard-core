@@ -45,6 +45,14 @@ namespace Socioboard.Api.User {
         
         private System.Threading.SendOrPostCallback getUserInfoByEmailOperationCompleted;
         
+        private System.Threading.SendOrPostCallback ResetPasswordOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdateUsertoactivateOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback changePaymentStatusOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdateUserAccountInfoByUserIdOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -106,6 +114,18 @@ namespace Socioboard.Api.User {
         
         /// <remarks/>
         public event getUserInfoByEmailCompletedEventHandler getUserInfoByEmailCompleted;
+        
+        /// <remarks/>
+        public event ResetPasswordCompletedEventHandler ResetPasswordCompleted;
+        
+        /// <remarks/>
+        public event UpdateUsertoactivateCompletedEventHandler UpdateUsertoactivateCompleted;
+        
+        /// <remarks/>
+        public event changePaymentStatusCompletedEventHandler changePaymentStatusCompleted;
+        
+        /// <remarks/>
+        public event UpdateUserAccountInfoByUserIdCompletedEventHandler UpdateUserAccountInfoByUserIdCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Login", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -360,6 +380,134 @@ namespace Socioboard.Api.User {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ResetPassword", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string ResetPassword(System.Guid id, string password) {
+            object[] results = this.Invoke("ResetPassword", new object[] {
+                        id,
+                        password});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ResetPasswordAsync(System.Guid id, string password) {
+            this.ResetPasswordAsync(id, password, null);
+        }
+        
+        /// <remarks/>
+        public void ResetPasswordAsync(System.Guid id, string password, object userState) {
+            if ((this.ResetPasswordOperationCompleted == null)) {
+                this.ResetPasswordOperationCompleted = new System.Threading.SendOrPostCallback(this.OnResetPasswordOperationCompleted);
+            }
+            this.InvokeAsync("ResetPassword", new object[] {
+                        id,
+                        password}, this.ResetPasswordOperationCompleted, userState);
+        }
+        
+        private void OnResetPasswordOperationCompleted(object arg) {
+            if ((this.ResetPasswordCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ResetPasswordCompleted(this, new ResetPasswordCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateUsertoactivate", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int UpdateUsertoactivate(string UserId, string ActivationStatus) {
+            object[] results = this.Invoke("UpdateUsertoactivate", new object[] {
+                        UserId,
+                        ActivationStatus});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UpdateUsertoactivateAsync(string UserId, string ActivationStatus) {
+            this.UpdateUsertoactivateAsync(UserId, ActivationStatus, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateUsertoactivateAsync(string UserId, string ActivationStatus, object userState) {
+            if ((this.UpdateUsertoactivateOperationCompleted == null)) {
+                this.UpdateUsertoactivateOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateUsertoactivateOperationCompleted);
+            }
+            this.InvokeAsync("UpdateUsertoactivate", new object[] {
+                        UserId,
+                        ActivationStatus}, this.UpdateUsertoactivateOperationCompleted, userState);
+        }
+        
+        private void OnUpdateUsertoactivateOperationCompleted(object arg) {
+            if ((this.UpdateUsertoactivateCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateUsertoactivateCompleted(this, new UpdateUsertoactivateCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/changePaymentStatus", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string changePaymentStatus(string UserId, string ActivationStatus) {
+            object[] results = this.Invoke("changePaymentStatus", new object[] {
+                        UserId,
+                        ActivationStatus});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void changePaymentStatusAsync(string UserId, string ActivationStatus) {
+            this.changePaymentStatusAsync(UserId, ActivationStatus, null);
+        }
+        
+        /// <remarks/>
+        public void changePaymentStatusAsync(string UserId, string ActivationStatus, object userState) {
+            if ((this.changePaymentStatusOperationCompleted == null)) {
+                this.changePaymentStatusOperationCompleted = new System.Threading.SendOrPostCallback(this.OnchangePaymentStatusOperationCompleted);
+            }
+            this.InvokeAsync("changePaymentStatus", new object[] {
+                        UserId,
+                        ActivationStatus}, this.changePaymentStatusOperationCompleted, userState);
+        }
+        
+        private void OnchangePaymentStatusOperationCompleted(object arg) {
+            if ((this.changePaymentStatusCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.changePaymentStatusCompleted(this, new changePaymentStatusCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateUserAccountInfoByUserId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int UpdateUserAccountInfoByUserId(string userid, string AccountType, System.DateTime ExpiryDate, string PaymentStatus) {
+            object[] results = this.Invoke("UpdateUserAccountInfoByUserId", new object[] {
+                        userid,
+                        AccountType,
+                        ExpiryDate,
+                        PaymentStatus});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UpdateUserAccountInfoByUserIdAsync(string userid, string AccountType, System.DateTime ExpiryDate, string PaymentStatus) {
+            this.UpdateUserAccountInfoByUserIdAsync(userid, AccountType, ExpiryDate, PaymentStatus, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateUserAccountInfoByUserIdAsync(string userid, string AccountType, System.DateTime ExpiryDate, string PaymentStatus, object userState) {
+            if ((this.UpdateUserAccountInfoByUserIdOperationCompleted == null)) {
+                this.UpdateUserAccountInfoByUserIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateUserAccountInfoByUserIdOperationCompleted);
+            }
+            this.InvokeAsync("UpdateUserAccountInfoByUserId", new object[] {
+                        userid,
+                        AccountType,
+                        ExpiryDate,
+                        PaymentStatus}, this.UpdateUserAccountInfoByUserIdOperationCompleted, userState);
+        }
+        
+        private void OnUpdateUserAccountInfoByUserIdOperationCompleted(object arg) {
+            if ((this.UpdateUserAccountInfoByUserIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateUserAccountInfoByUserIdCompleted(this, new UpdateUserAccountInfoByUserIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -560,6 +708,110 @@ namespace Socioboard.Api.User {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void ResetPasswordCompletedEventHandler(object sender, ResetPasswordCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ResetPasswordCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ResetPasswordCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void UpdateUsertoactivateCompletedEventHandler(object sender, UpdateUsertoactivateCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpdateUsertoactivateCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpdateUsertoactivateCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void changePaymentStatusCompletedEventHandler(object sender, changePaymentStatusCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class changePaymentStatusCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal changePaymentStatusCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void UpdateUserAccountInfoByUserIdCompletedEventHandler(object sender, UpdateUserAccountInfoByUserIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpdateUserAccountInfoByUserIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpdateUserAccountInfoByUserIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }

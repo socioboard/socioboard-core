@@ -600,12 +600,12 @@ namespace Api.Socioboard.Services
                     {
                         //Proceed action, to Check if FacebookUser is Exist in database or not by UserId and FbuserId.
                         // And Set the reuired paremeters to find the specific values.
-                        NHibernate.IQuery query = session.CreateQuery("from FacebookAccount where UserId = :userid and FbUserId = :fbuserid");
-                        query.SetParameter("userid", Userid);
-                        query.SetParameter("fbuserid", FbUserId);
-                        var result = query.UniqueResult();
-
-                        if (result == null)
+                        List<Domain.Socioboard.Domain.FacebookAccount> alst = session.CreateQuery("from FacebookAccount where UserId = :userid and FbUserId = :fbuserid")
+                        .SetParameter("userid", Userid)
+                        .SetParameter("fbuserid", FbUserId)
+                        .List<Domain.Socioboard.Domain.FacebookAccount>()
+                       .ToList<Domain.Socioboard.Domain.FacebookAccount>();
+                        if (alst.Count==0 || alst == null)
                             return false;
                         else
                             return true;
@@ -904,12 +904,6 @@ namespace Api.Socioboard.Services
         }
 
 
-
-
-
-
-
-
         //public List<FacebookAccount> getAllFbAccountDetail(string ProfileId)
         //{
         //    using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -969,17 +963,45 @@ namespace Api.Socioboard.Services
         }
 
 
-
-
-
-
-
-
-
-
         ArrayList IFacebookAccountRepository.getAllFacebookAccountsOfUser(Guid UserId)
         {
             throw new NotImplementedException();
         }
+
+        public Domain.Socioboard.Domain.FacebookAccount getToken()
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get all read feed messages by user id and profile id. 
+                        //Order by EntryDate DESC
+                        List<Domain.Socioboard.Domain.FacebookAccount> alst = session.CreateQuery("from FacebookAccount where AccessToken!=''")                    
+                       .List<Domain.Socioboard.Domain.FacebookAccount>()
+                       .ToList<Domain.Socioboard.Domain.FacebookAccount>();
+                        Random rd = new Random();
+                        int randomNo = rd.Next(0, alst.Count);
+                        return alst[randomNo];
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Trasaction
+            }//End session
+        
+        
+        }
+
+
+
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿@{
-    //ViewBag.Title = "Home Page";
+                    //ViewBag.Title = "Home Page";
 }
+
 
 
 <div id="page-wrapper">
@@ -25,20 +26,52 @@
     </div>
 </div>
 
+<div class="modal fade" id="SocialProfileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-backdrop fade in" style="height: 1048px;"></div>
+    <div class="modal-dialog">
+        <div class="modal-content" style="box-shadow: none ! important; background-color: transparent;  margin-top: 21%; border:none ! important">
+            <div class="modal-body">
+                @* <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              *@
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6" style="margin-bottom: 10px; margin-left: 20px;">
+
+                            <a onclick="AddFacebookProfile()" class="btn btn-social-icon btn-facebook">
+                                <i class="fa fa-facebook"></i></a>
+
+                            <a onclick="AddYouTubeProfile()" class="btn btn-social-icon btn-dropbox"><i class="fa fa-dropbox"></i></a>
+                            <a onclick="AddInstagramProfile()" class="btn btn-social-icon btn-instagram"><i class="fa fa-instagram"></i></a>
+                            <a onclick="AddLinkedInProfile()" class="btn btn-social-icon btn-linkedin"><i class="fa fa-linkedin"></i></a>
+                            <a onclick="AddTumblerProfile()" class="btn btn-social-icon btn-tumblr"><i class="fa fa-tumblr"></i></a>
+                            <a onclick="AddTwitterProfile()" class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a>
+                        </div>
+                        <div class="col-md-12">
+                            <p style="color: white; padding-left: 45px; margin-top: 3%;">Attach Your Social Network Profile for Beginning With Socioboard</p>
+                        </div>
+                        <div class="col-md-6 col-xs-offset-2">
+                            <a id="AttachProfile" href="#" onclick="AddProfile()" class="btn btn-danger" type="button" value="Attach Your Profile" style="margin-top: 31px;">Attach Your Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script type="text/javascript">
 
     function getParameterByName(name) {
+        debugger;
         var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
         return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
     }
 
-    function AddfbPage(fbpagename, fbpageid, fbpagetoken, email)
-    {
-       
+    function AddfbPage(fbpagename, fbpageid, fbpagetoken, email) {
+
         $.ajax({
             type: 'POST',
-            url: '../FacebookManager/AddFbPage?profileid=' + fbpageid + '&accesstoken=' + fbpagetoken+'&email='+email,
+            url: '../FacebookManager/AddFbPage?profileid=' + fbpageid + '&accesstoken=' + fbpagetoken + '&email=' + email,
             contentType: false,
             success: function (data) {
                 alertify.set({ delay: 3000 });
@@ -48,18 +81,18 @@
                 window.location = '../Home/Index';
             }
         });
-        
+
     }
 
     function AddfbGroup(fbgroupname, fbgroupid, fbtoken, email) {
         debugger;
-      
+
         $.ajax({
             type: 'POST',
             url: '../FacebookManager/AddFbGroup?ProfileGroupId=' + fbgroupid + '&accesstoken=' + fbtoken + '&email=' + email + '&Name=' + fbgroupname,
             contentType: false,
             success: function (data) {
-            
+
                 alertify.set({ delay: 3000 });
                 $('#facebookpageinfo').css({ 'display': 'none' });
                 $('#facebookpopup').modal('hide');
@@ -70,26 +103,96 @@
 
     }
 
+    function DisplayRemainingDaysMsg() {
+        debugger;
+
+        $.ajax({
+            type: "POST",
+            url: "../Index/RemainingDays",
+            contentType: false,
+            success: function (msg) {
+                if (msg !== "") {
+                    alertify.alert(msg);
+                }
+            }
+        });
+
+    }
+
+    // Edited by Antima
+
+    function AddProfilepopUp() {
+        debugger;
+        //alert("success");
+        $('#SocialProfileModal').modal({
+            backdrop: 'static'
+        });
+    }
+
+    function AddProfile() {
+        debugger;
+
+        var profileType = $("#AttachProfile").html();
+        if (profileType == "Attach Your Profile") {
+            alert("Please Select a profile.!!");
+        }
+    }
+
+    function AddFacebookProfile() {
+        debugger;
+        $("#AttachProfile").html('Attach Facebook Profile');
+        $("#AttachProfile").attr('href', '../FacebookManager/AuthenticateFacebook');
+    }
+
+    function AddTwitterProfile() {
+        debugger;
+        $("#AttachProfile").html('Attach Twitter Profile');
+        $("#AttachProfile").attr('href', '../TwitterManager/AuthenticateTwitter');
+    }
+
+    function AddLinkedInProfile() {
+        debugger;
+        $("#AttachProfile").html('Attach LinkedIn Profile');
+        $("#AttachProfile").attr('href', '../LinkedinManager/AuthenticateLinkedin');
+    }
+
+    function AddInstagramProfile() {
+        debugger;
+        $("#AttachProfile").html('Attach Instagram Profile');
+        $("#AttachProfile").attr('href', '../InstagramManager/AuthenticateInstagram');
+    }
+
+    function AddTumblerProfile() {
+        debugger;
+        $("#AttachProfile").html('Attach Tumbler Profile');
+        $("#AttachProfile").attr('href', '../TumblrManager/AuthenticateTumblr');
+    }
+
+    function AddYouTubeProfile() {
+        debugger;
+        $("#AttachProfile").html('Attach YouTube Profile');
+        $("#AttachProfile").attr('href', '../YoutubeManager/AuthenticateYoutube');
+    }
+
     $(document).ready(function (e) {
-        var hint =getParameterByName("hint");
-        if (hint != "" || hint != null)
-        {
-            if (hint == "fbpage")
-            {
+        debugger
+        var hint = getParameterByName("hint");
+        if (hint != "" || hint != null) {
+            if (hint == "fbpage") {
                 $.ajax({
                     type: 'POST',
                     url: '../FacebookManager/GetFBPage',
                     success: function (msg) {
-                     
+
                         var fbpagearr = msg.split('~');
                         for (var i = 0; i < fbpagearr.length; i++) {
                             var fbpageinfoarr = fbpagearr[i].split('`');
                             try {
-                                $('#fbpagebind').append('<a style="cursor: pointer;margin-left:21px" onclick="AddfbPage(\'' + fbpageinfoarr[0] + '\',\'' + fbpageinfoarr[1] + '\',\'' + fbpageinfoarr[2]+ '\',\'' + fbpageinfoarr[3] + '\')">' + fbpageinfoarr[0] + '</a><br />');
+                                $('#fbpagebind').append('<a style="cursor: pointer;margin-left:21px" onclick="AddfbPage(\'' + fbpageinfoarr[0] + '\',\'' + fbpageinfoarr[1] + '\',\'' + fbpageinfoarr[2] + '\',\'' + fbpageinfoarr[3] + '\')">' + fbpageinfoarr[0] + '</a><br />');
                             } catch (e) {
 
                             }
-                        }                       
+                        }
                         $('#facebookpageinfo').css({ 'display': 'block' });
                         $('#facebookpopup').modal('show');
                     },
@@ -103,7 +206,7 @@
                     type: 'POST',
                     url: '../FacebookManager/GetFBGroup',
                     success: function (msg) {
-                        
+
                         var fbgrouparr = msg.split('~');
                         for (var i = 0; i < fbgrouparr.length; i++) {
                             var fbgroupinfoarr = fbgrouparr[i].split('`');
@@ -119,8 +222,36 @@
                     async: false
                 });
             }
+            else if (hint == "linpage") {
+                $.ajax({
+                    type: 'POST',
+                    url: '../LinkedinManager/GetLinkedinCompanyPage',
+                    success: function (msg) {
+                        if (msg == "Pages Not Found in this Account!") {
+                            $('#lipagebind').append(msg);
+                        }
+                        else {
+                            //alert(msg);
+                            var lipagearr = msg.split('~');
+                            for (var i = 0; i < lipagearr.length; i++) {
+                                var lipageinfoarr = lipagearr[i].split('`');
+                                try {
+                                    $('#lipagebind').append('<a style="cursor: pointer;margin-left:21px" onclick="AddLinPage(\'' + lipageinfoarr[0] + '\',\'' + lipageinfoarr[1] + '\',\'' + lipageinfoarr[2] + '\')">' + lipageinfoarr[1] + '</a><br />');
+                                } catch (e) {
+
+                                }
+                            }
+                        }
+
+                        $('#linkedincompanypageinfo').css({ 'display': 'block' });
+                        $('#linkedinpopup').modal('show');
+                    },
+                    async: false
+                });
+
+            }
         }
-       
+
         $('#message').find('ul').remove();
         $('#feeds').find('ul').remove();
         $('#publishing').find('ul').remove();
@@ -142,31 +273,50 @@
             alert(e);
         }
 
-       // $('#groupsselection').change(function () {
-       //    // alert($("#groupsselection option:selected").text());
-       //     //alert($("#groupsselection").val());
-       //     var groupid = $("#groupsselection").val();
-       //     $.ajax
-       //({
-       //    type: "POST",
-       //    url: "../Home/ChangeGroup?groupid=" + groupid,
-       //    data: '',
-       //    contentType: "application/json; charset=utf-8",
-       //    dataType: "html",
-       //    success: function (msg) {
-       //        window.location = self.location;
-       //    }
-       //});
-       // });
+        // $('#groupsselection').change(function () {
+        //    // alert($("#groupsselection option:selected").text());
+        //     //alert($("#groupsselection").val());
+        //     var groupid = $("#groupsselection").val();
+        //     $.ajax
+        //({
+        //    type: "POST",
+        //    url: "../Home/ChangeGroup?groupid=" + groupid,
+        //    data: '',
+        //    contentType: "application/json; charset=utf-8",
+        //    dataType: "html",
+        //    success: function (msg) {
+        //        window.location = self.location;
+        //    }
+        //});
+        // });
+        DisplayRemainingDaysMsg();
 
+        // Edited by Antima
+
+        debugger;
+        $.ajax({
+            type: 'GET',
+            url: '../Home/AddFirstProfile',
+            success: function (msg) {
+                if (msg == "AddProfile") {
+                    AddProfilepopUp();
+                }
+            }
+        });
     });
 
 
 </script>
 
+<input type="hidden" id="acctype" value="@ViewBag.AccountType" />
 
-
-
+<script>
+    $(document).ready(function () {
+        if ($('#acctype').val() == "Premium") {
+            $('#PremiumAccount').hide();
+        }
+    });
+</script>
 
 
 

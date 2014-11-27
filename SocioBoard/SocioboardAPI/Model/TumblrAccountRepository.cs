@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Domain.Socioboard.Domain;
 using Api.Socioboard.Helper;
+using System.Collections;
 
 namespace Api.Socioboard.Services
 {
@@ -226,6 +227,29 @@ namespace Api.Socioboard.Services
 
                 }//End Trasaction
             }//End session
+        }
+
+
+        public ArrayList getAllTumblrAccounts()
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction. 
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    //Proceed action, to get all linkedin accounts.
+                    NHibernate.IQuery query = session.CreateQuery("from TumblrAccount");
+                    ArrayList alstTumblrAccounts = new ArrayList();
+
+                    foreach (var item in query.Enumerable())
+                    {
+                        alstTumblrAccounts.Add(item);
+                    }
+                    return alstTumblrAccounts;
+
+                }//End Transaction
+            }//End Session
         }
 
 

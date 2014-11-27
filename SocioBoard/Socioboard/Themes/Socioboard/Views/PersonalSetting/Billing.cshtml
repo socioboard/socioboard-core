@@ -1,0 +1,37 @@
+﻿<div id="page-wrapper">
+</div>
+
+
+
+<script type="text/javascript">
+    function loadpersonalsetting() {
+        debugger;
+        $('#page-wrapper').load('../PersonalSetting/LoadBillingPartial')
+    }
+    $(document).ready(function () {
+        debugger;
+        $('#left_sidebar').css('display', 'none');
+        $('#page-wrapper').css('margin', '0px');
+        $("#search_contact").css("pointer-events", "none");
+        $("#compose_message").css("pointer-events", "none");
+        loadpersonalsetting();
+    });
+    var arr = [];
+    function UpgradePlan(e) {
+        debugger;
+        var plan = $(e).parent().parent().children('.pricing-heading').html().replace('\n','').trim();
+        arr = $(e).parent().parent().children('.pricing-price').html().replace().trim().split(' ');
+        var price = arr[0];
+        $.ajax({
+            type: "POST",
+            url: "../PersonalSetting/UpgradeAccountByPayPal?plan="+ plan +"&price="+price,
+            data: '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (msg) {
+                window.open(msg);
+            }
+        });
+
+    }
+</script>

@@ -14,7 +14,7 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <i class="fa fa-bell fa-fw"></i>Profiles
+        <i class="fa fa-bell fa-fw"></i> Social Profiles
                        
     </div>
     <!-- /.panel-heading -->
@@ -27,7 +27,7 @@
 <!-- /.panel -->
 <div class="panel panel-default">
     <div class="panel-heading">
-        <i class="fa fa-bar-chart-o fa-fw"></i>Team Members
+        <i class="fa fa-bar-chart-o fa-fw"></i> Team Members
                        
     </div>
     <div class="panel-body">
@@ -40,7 +40,7 @@
                     if (item.GroupName != path)
                     { 
                     <li>
-                        <a href="../UserGroup/Index">
+                        <a @*href="../UserGroup/connectedprofilestothisgroup?selectedgroupid=@item.Id"*@href="../UserGroup/Index">
                             <i class="fa fa-plus fa-fw"></i>@item.GroupName
                         </a>
                     </li>
@@ -55,7 +55,7 @@
 <!-- /.panel -->
 <div class="panel panel-default">
     <div class="panel-heading">
-        <i class="fa fa-bar-chart-o fa-fw"></i>Recent Followers
+        <i class="fa fa-bar-chart-o fa-fw"></i> Recent Followers
     </div>
     <div class="row panel-body profilepartial" data-url="/Home/RecentProfiles">
         <img src="/Themes/@path//Contents/img/loader.gif" />

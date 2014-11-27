@@ -1,15 +1,16 @@
 ﻿@using Domain.Socioboard.Domain;
 @{
+    Layout = null;
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    int Cnt = 0;
 }
 
 
-<a href="#"><i class="fa fa-envelope fa-fw"></i>Feeds<i class="fa arrow"></i></a>
+<a href="#"><i class="fa fa-link fa-2x"></i><span class="tweaked-margin">Feeds</span><i class="fa arrow"></i></a>
 <ul class="nav nav-second-level">
     @foreach (var item in (Dictionary<string, List<object>>)Model)
     {
-        try
-        {
+        
             if (item.Key == "facebook")
             {
                 List<object> lstFacebookAccount = (List<object>)item.Value;
@@ -53,34 +54,84 @@
         </li>
                 }
             }
-            if (item.Key == "linkedin")
+            if (item.Key == "linkedin" || item.Key == "linkedincompanypage")
             {
-                List<object> lstLinkedinAccount = (List<object>)item.Value;
-                string profileimage = string.Empty;
-                if (lstLinkedinAccount.Count > 0)
+
+                if (Cnt == 0)
                 {
-        <li>
-            <a href="#">Linkedin <span class="fa arrow"></span></a>
-            <ul class="nav nav-third-level">
-                @foreach (var linkedin in lstLinkedinAccount)
-                {
-                    LinkedInAccount objFacebookAccount = (LinkedInAccount)linkedin;
-                    <li onclick="linkedindetails('@objFacebookAccount.LinkedinUserId');">
-                        <a href="#">@objFacebookAccount.LinkedinUserName</a>
-                    </li> 
+                    @:<li>
+                    @:<a href="#">LinkedIn <span class="fa arrow"></span></a>
+                    @:<ul class="nav nav-third-level">   
+                 Cnt++;
                 }
 
-            </ul>
-            <!-- /.nav-third-level -->
-        </li>
-                }
-            }
-            if (item.Key == "instagram")
-            {
-                List<object> lstInstagramAccount = (List<object>)item.Value;
-                string profileimage = string.Empty;
-                if (lstInstagramAccount.Count > 0)
+
+                if (item.Key == "linkedin")
                 {
+                    List<object> lstLinkedinAccount = (List<object>)item.Value;
+                    string profileimage = string.Empty;
+                    if (lstLinkedinAccount.Count > 0)
+                    {
+
+                      <li>
+                      <a href="#">LinkedIn Account<span class="fa arrow"></span></a>
+                      <ul class="nav nav-third-level">
+                      @foreach (var linkedin in lstLinkedinAccount)
+                      {
+                          if(linkedin!=null)
+                          {
+                               LinkedInAccount objFacebookAccount = (LinkedInAccount)linkedin;
+                               <li onclick="linkedindetails('@objFacebookAccount.LinkedinUserId');">
+                               <a href="#">@objFacebookAccount.LinkedinUserName</a>
+                                </li> 
+                          }
+                         
+                      }
+                          </ul>
+                                </li>
+             
+               
+           
+                    }
+                }
+
+
+                if (item.Key == "linkedincompanypage")
+                {
+                    List<object> lstLinkedInCompanyPage = (List<object>)item.Value;
+                    string profileimage = string.Empty;
+                    if (lstLinkedInCompanyPage.Count > 0)
+                    {
+
+                        <li>
+                        <a href="#">LinkedIn Company Page<span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                        @foreach (var linkedin in lstLinkedInCompanyPage)
+                        {
+                            if(linkedin != null)
+                            {
+                                 LinkedinCompanyPage objLiCompanyPage = (LinkedinCompanyPage)linkedin;
+                               <li onclick="linkedinpagedetails('@objLiCompanyPage.LinkedinPageId');">
+                               <a href="#">@objLiCompanyPage.LinkedinPageName</a>
+                               </li>
+                            }
+                            
+                        }
+                          </ul>
+                                </li>
+                    }
+                @:</ul>
+                    <!-- /.nav-third-level -->
+                @:</li>
+                                             
+                }
+        }
+        if (item.Key == "instagram")
+        {
+            List<object> lstInstagramAccount = (List<object>)item.Value;
+            string profileimage = string.Empty;
+            if (lstInstagramAccount.Count > 0)
+            {
         <li>
             <a href="#">Instagram <span class="fa arrow"></span></a>
             <ul class="nav nav-third-level">
@@ -94,14 +145,14 @@
             </ul>
             <!-- /.nav-third-level -->
         </li>
-                }
             }
-            if (item.Key == "tumblr")
+        }
+        if (item.Key == "tumblr")
+        {
+            List<object> lstFacebookAccount = (List<object>)item.Value;
+            string profileimage = string.Empty;
+            if (lstFacebookAccount.Count > 0)
             {
-                List<object> lstFacebookAccount = (List<object>)item.Value;
-                string profileimage = string.Empty;
-                if (lstFacebookAccount.Count > 0)
-                {
         <li>
             <a href="#">Tumblr <span class="fa arrow"></span></a>
             <ul class="nav nav-third-level">
@@ -115,14 +166,14 @@
             </ul>
             <!-- /.nav-third-level -->
         </li>
-                }
             }
-            if (item.Key == "youtube")
+        }
+        if (item.Key == "youtube")
+        {
+            List<object> lstYoutubeAccount = (List<object>)item.Value;
+            string profileimage = string.Empty;
+            if (lstYoutubeAccount.Count > 0)
             {
-                List<object> lstYoutubeAccount = (List<object>)item.Value;
-                string profileimage = string.Empty;
-                if (lstYoutubeAccount.Count > 0)
-                {
         <li>
             <a href="#">Youtube <span class="fa arrow"></span></a>
             <ul class="nav nav-third-level">
@@ -137,11 +188,7 @@
             </ul>
             <!-- /.nav-third-level -->
         </li>
-                }
             }
-        }
-        catch (Exception ex)
-        {
         }
     }
 </ul>

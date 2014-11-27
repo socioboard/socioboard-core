@@ -348,8 +348,9 @@ function BindInboxMessageonMessageTab() {
     debugger;
 
 
-    try {
+    try { 
         $("#sent_messages").addClass('active');
+
     } catch (e) {
 
     }

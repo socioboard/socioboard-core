@@ -31,6 +31,8 @@ namespace Socioboard.Api.FacebookFeed {
         
         private System.Threading.SendOrPostCallback getAllFacebookFeedsByUserIdAndProfileIdOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getAllFacebookFeedsByUserIdAndProfileId1OperationCompleted;
+        
         private System.Threading.SendOrPostCallback getUnreadMessagesOperationCompleted;
         
         private System.Threading.SendOrPostCallback getAllReadFbFeedsOperationCompleted;
@@ -38,6 +40,8 @@ namespace Socioboard.Api.FacebookFeed {
         private System.Threading.SendOrPostCallback getAllFeedDetailOperationCompleted;
         
         private System.Threading.SendOrPostCallback getAllFeedDetail1OperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetFacebookFeedByFeedIdOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -81,6 +85,9 @@ namespace Socioboard.Api.FacebookFeed {
         public event getAllFacebookFeedsByUserIdAndProfileIdCompletedEventHandler getAllFacebookFeedsByUserIdAndProfileIdCompleted;
         
         /// <remarks/>
+        public event getAllFacebookFeedsByUserIdAndProfileId1CompletedEventHandler getAllFacebookFeedsByUserIdAndProfileId1Completed;
+        
+        /// <remarks/>
         public event getUnreadMessagesCompletedEventHandler getUnreadMessagesCompleted;
         
         /// <remarks/>
@@ -91,6 +98,9 @@ namespace Socioboard.Api.FacebookFeed {
         
         /// <remarks/>
         public event getAllFeedDetail1CompletedEventHandler getAllFeedDetail1Completed;
+        
+        /// <remarks/>
+        public event GetFacebookFeedByFeedIdCompletedEventHandler GetFacebookFeedByFeedIdCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAllFacebookFeedsByUserIdAndProfileId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -120,6 +130,39 @@ namespace Socioboard.Api.FacebookFeed {
             if ((this.getAllFacebookFeedsByUserIdAndProfileIdCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getAllFacebookFeedsByUserIdAndProfileIdCompleted(this, new getAllFacebookFeedsByUserIdAndProfileIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAllFacebookFeedsByUserIdAndProfileId1", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getAllFacebookFeedsByUserIdAndProfileId1(string UserId, string ProfileId, int count) {
+            object[] results = this.Invoke("getAllFacebookFeedsByUserIdAndProfileId1", new object[] {
+                        UserId,
+                        ProfileId,
+                        count});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAllFacebookFeedsByUserIdAndProfileId1Async(string UserId, string ProfileId, int count) {
+            this.getAllFacebookFeedsByUserIdAndProfileId1Async(UserId, ProfileId, count, null);
+        }
+        
+        /// <remarks/>
+        public void getAllFacebookFeedsByUserIdAndProfileId1Async(string UserId, string ProfileId, int count, object userState) {
+            if ((this.getAllFacebookFeedsByUserIdAndProfileId1OperationCompleted == null)) {
+                this.getAllFacebookFeedsByUserIdAndProfileId1OperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAllFacebookFeedsByUserIdAndProfileId1OperationCompleted);
+            }
+            this.InvokeAsync("getAllFacebookFeedsByUserIdAndProfileId1", new object[] {
+                        UserId,
+                        ProfileId,
+                        count}, this.getAllFacebookFeedsByUserIdAndProfileId1OperationCompleted, userState);
+        }
+        
+        private void OngetAllFacebookFeedsByUserIdAndProfileId1OperationCompleted(object arg) {
+            if ((this.getAllFacebookFeedsByUserIdAndProfileId1Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAllFacebookFeedsByUserIdAndProfileId1Completed(this, new getAllFacebookFeedsByUserIdAndProfileId1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -242,6 +285,37 @@ namespace Socioboard.Api.FacebookFeed {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetFacebookFeedByFeedId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetFacebookFeedByFeedId(string userid, string feedid) {
+            object[] results = this.Invoke("GetFacebookFeedByFeedId", new object[] {
+                        userid,
+                        feedid});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetFacebookFeedByFeedIdAsync(string userid, string feedid) {
+            this.GetFacebookFeedByFeedIdAsync(userid, feedid, null);
+        }
+        
+        /// <remarks/>
+        public void GetFacebookFeedByFeedIdAsync(string userid, string feedid, object userState) {
+            if ((this.GetFacebookFeedByFeedIdOperationCompleted == null)) {
+                this.GetFacebookFeedByFeedIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetFacebookFeedByFeedIdOperationCompleted);
+            }
+            this.InvokeAsync("GetFacebookFeedByFeedId", new object[] {
+                        userid,
+                        feedid}, this.GetFacebookFeedByFeedIdOperationCompleted, userState);
+        }
+        
+        private void OnGetFacebookFeedByFeedIdOperationCompleted(object arg) {
+            if ((this.GetFacebookFeedByFeedIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetFacebookFeedByFeedIdCompleted(this, new GetFacebookFeedByFeedIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -273,6 +347,32 @@ namespace Socioboard.Api.FacebookFeed {
         private object[] results;
         
         internal getAllFacebookFeedsByUserIdAndProfileIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void getAllFacebookFeedsByUserIdAndProfileId1CompletedEventHandler(object sender, getAllFacebookFeedsByUserIdAndProfileId1CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAllFacebookFeedsByUserIdAndProfileId1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAllFacebookFeedsByUserIdAndProfileId1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -377,6 +477,32 @@ namespace Socioboard.Api.FacebookFeed {
         private object[] results;
         
         internal getAllFeedDetail1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetFacebookFeedByFeedIdCompletedEventHandler(object sender, GetFacebookFeedByFeedIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetFacebookFeedByFeedIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetFacebookFeedByFeedIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

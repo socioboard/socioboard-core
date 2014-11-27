@@ -165,6 +165,7 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End session
         }
+
         public bool isResultsPresent(string keyword)
         {
             return false;
@@ -200,8 +201,6 @@ namespace Api.Socioboard.Services
             }//End session
         }
 
-
-
         public List<Domain.Socioboard.Domain.DiscoverySearch> GetAllSearchKeywordsByUserId(Guid Userid, string keyword, string network)
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -226,5 +225,47 @@ namespace Api.Socioboard.Services
                 }
             }
         }
+
+        // Edited by Antima
+
+        public bool isKeywordPresentforNetwork(string keyword, string Network)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //proceed action to check if keyword is present in database or not.
+                        // And Set the reuired paremeters to find the specific values.
+                        NHibernate.IQuery query = session.CreateQuery("from DiscoverySearch where SearchKeyword = :keyword and Network = :Network");
+
+                        query.SetParameter("keyword", keyword);
+                        query.SetParameter("Network", Network);
+                        List<Domain.Socioboard.Domain.DiscoverySearch> lst = new List<Domain.Socioboard.Domain.DiscoverySearch>();
+
+                        foreach (Domain.Socioboard.Domain.DiscoverySearch item in query.Enumerable())
+                        {
+                            lst.Add(item);
+                        }
+
+                        if (lst.Count == 0)
+                            return false;
+                        else
+                            return true;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return true;
+                    }
+
+                }//End Transaction
+            }//End session
+        }
+
     }
 }

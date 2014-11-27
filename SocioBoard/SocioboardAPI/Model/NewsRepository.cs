@@ -6,7 +6,7 @@ using Api.Socioboard.Helper;
 using Domain.Socioboard.Domain;
 using NHibernate.Criterion;
 
-namespace SocioBoard.Model
+namespace Api.Socioboard.Model
 {
     public class NewsRepository : INewsRepository
     {

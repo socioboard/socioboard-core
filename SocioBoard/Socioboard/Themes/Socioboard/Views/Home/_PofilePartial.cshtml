@@ -1,10 +1,11 @@
 ﻿@using Domain.Socioboard.Domain;
 @{
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    string LdPreofilePic =string.Empty;
 }
 @foreach (var item in (Dictionary<TeamMemberProfile, object>)Model)
 {
-    if (item.Key.ProfileType == "facebook")
+    if (item.Key.ProfileType == "facebook" || item.Key.ProfileType == "facebook_page")
     {
         FacebookAccount objFacebookAccount = (FacebookAccount)item.Value;
         string profileimage = string.Empty;
@@ -25,6 +26,7 @@
         <img  src="/Themes/@path/Contents/img/fb_icon.png" class="img-responsive img-circle socialIconPoss">
     </div>
     }
+    
     if (item.Key.ProfileType == "twitter")
     {
         TwitterAccount objTwitterAccount = (TwitterAccount)item.Value;
@@ -35,7 +37,7 @@
         <img  src="/Themes/@path/Contents/img/twticon.png" class="img-responsive img-circle socialIconPoss">
     </div>
     }
-    if (item.Key.ProfileType == "linkedin")
+    if (item.Key.ProfileType == "linkedin"&&item.Value!=null)
     {
         LinkedInAccount objLinkedInAccount = (LinkedInAccount)item.Value;
     <div class="col-sm-6 userpictiny" style="margin-bottom:10px">
@@ -71,13 +73,37 @@
         YoutubeAccount objYoutubeAccount = (YoutubeAccount)item.Value;
     <div class="col-sm-6 userpictiny" style="margin-bottom:10px">
         <div class="delet_icon" onclick="confirmDel('@objYoutubeAccount.Ytuserid','youtube','youtube');"></div>
-        <a title="@objYoutubeAccount.Ytusername" href="https://plus.google.com/@objYoutubeAccount.Ytuserid/" target="_blank">
+        <a title="@objYoutubeAccount.Ytusername" href="https://www.youtube.com/user/@objYoutubeAccount.Ytuserid/" target="_blank">
             <img src="@objYoutubeAccount.Ytprofileimage" class="img-responsive btn btn-default btn-block profilePicsize"></a>
         <img src="/Themes/@path/Contents/img/youtube.png" class="img-responsive img-circle socialIconPoss">
     </div>
     }
+    if (item.Key.ProfileType == "linkedincompanypage")
+    {
+        LinkedinCompanyPage objLinkedinCompanyPage = (LinkedinCompanyPage)item.Value;
+        if(objLinkedinCompanyPage!=null)
+        {
+             if (!string.IsNullOrEmpty(objLinkedinCompanyPage.LogoUrl))
+        {
+            LdPreofilePic = objLinkedinCompanyPage.LogoUrl;
+        }
+        else
+        {
+            LdPreofilePic = "../../Contents/img/blank_img.png";
+        }
+    <div class="col-sm-6 userpictiny">
+        <div class="delet_icon" onclick="confirmDel('@objLinkedinCompanyPage.LinkedinPageId','liComPage','liComPage');"></div>
+        <a title="@objLinkedinCompanyPage.LinkedinPageName" href="https://www.linkedin.com/company/@objLinkedinCompanyPage.LinkedinPageId" target="_blank">
+            <img src="@LdPreofilePic" class="img-responsive btn btn-default btn-block"></a>
+        <img  src="/Themes/@path/Contents/img/link_icon.png" class="img-responsive img-circle socialIconPoss">
+    </div>
+        }
+       
+    }
 }
-<div class="col-sm-6" style="margin-bottom:10px">
+@{if (Convert.ToInt32(Session["ProfileCount"]) < Convert.ToInt32(Session["TotalAccount"]))
+  {
+      <div class="col-sm-6" style="margin-bottom:10px">
     <div class="btn-group pull-right">
         <img class="img-responsive btn btn-default btn-block dropdown-toggle" src="/Themes/@path/Contents/img/addprofile.png" data-toggle="dropdown" />
         <ul class="dropdown-menu slidedown">
@@ -92,8 +118,9 @@
                     <i class="fa fa-twitter-square fa-fw"></i>Twitter
                 </a>
             </li>
-            <li>
-                <a href="../LinkedinManager/AuthenticateLinkedin">
+            <li  onclick="linkedinpopup()">
+                @*<a href="../LinkedinManager/AuthenticateLinkedin">*@
+                <a href="#">
                     <i class="fa fa-linkedin-square fa-fw"></i>LinkedIn
                 </a>
             </li>
@@ -116,3 +143,17 @@
         </ul>
     </div>
 </div>
+  }
+  else
+  {
+      <div class="col-sm-6" style="margin-bottom:10px">
+
+    <div class="btn-group pull-right" data-toggle="tooltip" data-placement="top" title="Please upgrade your package or remove any social account to add a new social account!!">
+        <img class="img-responsive btn btn-default btn-block" src="/Themes/@path/Contents/img/addprofile.png" />
+    </div>
+</div>
+  }
+}
+
+
+

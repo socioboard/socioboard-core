@@ -1,0 +1,58 @@
+﻿<div id="page-wrapper">
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Manage Profiles</h1>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Manage Profile Table
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="row"></div>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%" id="ManageProfileDataTable">
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+
+    </div>
+    <!-- /.row -->
+
+
+</div>
+<script src="~/Themes/Socioboard/Contents/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+
+    function bindmanageprofile() {
+        debugger;
+        $.ajax({
+            type: 'POST',
+            url: '../UserDetails/LoadManageProfile',
+            success: function (msg) {
+                //alert(msg);
+                $('#ManageProfileDataTable').html(msg);
+                $('#ManageProfileDataTable').dataTable();
+            },
+        });
+    }
+
+    function EditProfilesDetails(ProfileId,UserId,Network)
+    {
+        window.top.location.href = "../UserDetails/EditProfileDetails?ProfileId=" + ProfileId + "&UserId=" + UserId + "&Network=" + Network;
+    }
+
+
+    $(document).ready(function () {
+        bindmanageprofile();
+    });
+</script>

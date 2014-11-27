@@ -1,41 +1,29 @@
 ﻿@using Domain.Socioboard.Domain;
 @{
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
-
-    Domain.Socioboard.Domain.User objuser = (Domain.Socioboard.Domain.User)Model;
+     Domain.Socioboard.Domain.User objuser = (Domain.Socioboard.Domain.User)Model;
 
 }
 
 
-@if (objuser != null)
+@if(objuser!=null)
 {
-    string[] name;
-    string fname = string.Empty;
-    string lname = string.Empty;
-    try
+     string[] name = objuser.UserName.Split(' ');
+         string fname = name[0];
+         string lname = string.Empty;
+    for (int i = 1; i < name.Length; i++)
     {
-        name = objuser.UserName.Split(' ');
-        fname = name[0];
-        lname = string.Empty;
-        for (int i = 1; i < name.Length; i++)
-        {
-            lname += name[i];
-        }
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine(ex.Message);
+        lname += name[i];
     }
 
     <div class="container">
-
         <div class="col-md-offset-3 col-md-6">
             <h2>Create Your Account</h2>
             <form role="form">
                 <div class="form-group input-group">
                     <span class="input-group-addon">A</span>
                     <select id="package" class="form-control">
-                        <option value="Free" selected="selected">Select Account Type</option>
+                        <option value="" selected="selected">Select Account Type</option>
                         <option value="Free">Basic(Free)</option>
                         <option value="Standard">Standard</option>
                         <option value="Deluxe">Deluxe</option>
@@ -46,7 +34,6 @@
                         <option value="SocioDeluxe">SocioDeluxe</option>
                     </select>
                 </div>
-
                 <div class="form-group input-group">
                     <span class="input-group-addon">F</span>
                     <input value="@fname" id="txtrFirstName" type="text" placeholder="First Name" class="form-control">
@@ -57,19 +44,28 @@
                 </div>
                 <div class="form-group input-group">
                     <span class="input-group-addon">E</span>
-                    <input value="@objuser.EmailId" id="txtrEmail" type="email" placeholder="Email id" class="form-control" readonly="">
+                    <input value="@objuser.EmailId" id="txtrEmail" type="email" placeholder="Email id" class="form-control">
                 </div>
                 <div class="form-group input-group">
                     <span class="input-group-addon">*</span>
-                    <input id="txtrPassword" type="password" placeholder="Password" class="form-control">
-                </div>
-                <div class="form-group input-group">
-                    <span class="input-group-addon">*</span>
-                    <input id="txtrConfirmPassword" type="password" placeholder="Confirm Password" class="form-control">
-                </div>
-                <div class="form-group input-group">
+                  <input id="txtrPassword"  type="password"   placeholder="Password" class="form-control" onkeyup="password()">
+                       <div style="margin-top: 5px; margin-right: -15%;" class="pull-right">
+                            <p id="stregth"></p>
+                       </div>
 
-                    <input type="password" placeholder="Coupon Code(Optional)" class="form-control">
+                        <div class="pull-right" style="margin-right: -35%; margin-top: 25px;">
+                          <div id="weak" class="col-md-1" style="background-color: rgb(204, 204, 204); border-radius: 3px 0px 0px 3px; padding: 8px 3px 0px 50px;"></div>
+                          <div id="medium" class="col-md-1" style="background-color: rgb(204, 204, 204); padding: 8px 3px 0px 50px;"></div>
+                          <div id="strong" class="col-md-1" style="background-color: rgb(204, 204, 204); padding: 8px 3px 0px 50px; border-radius: 0px 3px 3px 0px;"></div>
+                        </div>    
+                     </div>
+
+                <div class="form-group input-group">
+                    <span class="input-group-addon">*</span>
+                    <input id="txtrConfirmPassword"  type="password" placeholder="Confirm Password" class="form-control">
+                </div>
+                <div class="form-group input-group">
+                    <input type="text" placeholder="Coupon Code(Optional)" class="form-control">
                     <span class="input-group-addon"><a href="#">Click to verify</a></span>
                 </div>
                 <button onclick="register()" class="btn btn-warning" type="button">Create Account</button>
@@ -89,7 +85,7 @@ else
                 <div class="form-group input-group">
                     <span class="input-group-addon">A</span>
                     <select id="package" class="form-control">
-                        <option value="Free" selected="selected">Select Account Type</option>
+                        <option value="" selected="selected">Select Account Type</option>
                         <option value="Free">Basic(Free)</option>
                         <option value="Standard">Standard</option>
                         <option value="Deluxe">Deluxe</option>
@@ -100,7 +96,6 @@ else
                         <option value="SocioDeluxe">SocioDeluxe</option>
                     </select>
                 </div>
-
                 <div class="form-group input-group">
                     <span class="input-group-addon">F</span>
                     <input id="txtrFirstName" type="text" placeholder="First Name" class="form-control">
@@ -115,15 +110,24 @@ else
                 </div>
                 <div class="form-group input-group">
                     <span class="input-group-addon">*</span>
-                    <input id="txtrPassword" type="password" placeholder="Password" class="form-control">
-                </div>
+                    <input id="txtrPassword"  type="password"   placeholder="Password" class="form-control" onkeyup="password()">
+                       <div style="margin-top: 5px; margin-right: -15%;" class="pull-right">
+                            <p id="stregth"></p>
+                       </div>
+
+                        <div class="pull-right" style="margin-right: -35%; margin-top: 25px;">
+                          <div id="weak" class="col-md-1" style="background-color: rgb(204, 204, 204); border-radius: 3px 0px 0px 3px; padding: 8px 3px 0px 50px;"></div>
+                          <div id="medium" class="col-md-1" style="background-color: rgb(204, 204, 204); padding: 8px 3px 0px 50px;"></div>
+                          <div id="strong" class="col-md-1" style="background-color: rgb(204, 204, 204); padding: 8px 3px 0px 50px; border-radius: 0px 3px 3px 0px;"></div>
+                        </div>    
+                     </div>
+
                 <div class="form-group input-group">
                     <span class="input-group-addon">*</span>
                     <input id="txtrConfirmPassword" type="password" placeholder="Confirm Password" class="form-control">
                 </div>
                 <div class="form-group input-group">
-
-                    <input type="password" placeholder="Coupon Code(Optional)" class="form-control">
+                    <input type="text" placeholder="Coupon Code(Optional)" class="form-control">
                     <span class="input-group-addon"><a href="#">Click to verify</a></span>
                 </div>
                 <button onclick="register()" class="btn btn-warning" type="button">Create Account</button>

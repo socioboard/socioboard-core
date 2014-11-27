@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetDropboxRedirectUrl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="consumerKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="redirectUrl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDropboxRedirectUrlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDropboxRedirectUrlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserDropBoxData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserDropBoxDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserDropBoxDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddDropboxAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddDropboxAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddDropboxAccountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetDropboxRedirectUrlSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDropboxRedirectUrl" />
+  </wsdl:message>
+  <wsdl:message name="GetDropboxRedirectUrlSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDropboxRedirectUrlResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserDropBoxDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserDropBoxData" />
+  </wsdl:message>
+  <wsdl:message name="GetUserDropBoxDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserDropBoxDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddDropboxAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:AddDropboxAccount" />
+  </wsdl:message>
+  <wsdl:message name="AddDropboxAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:AddDropboxAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDropboxRedirectUrlHttpGetIn">
+    <wsdl:part name="consumerKey" type="s:string" />
+    <wsdl:part name="redirectUrl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDropboxRedirectUrlHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserDropBoxDataHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserDropBoxDataHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddDropboxAccountHttpGetIn">
+    <wsdl:part name="code" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddDropboxAccountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDropboxRedirectUrlHttpPostIn">
+    <wsdl:part name="consumerKey" type="s:string" />
+    <wsdl:part name="redirectUrl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDropboxRedirectUrlHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserDropBoxDataHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserDropBoxDataHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddDropboxAccountHttpPostIn">
+    <wsdl:part name="code" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddDropboxAccountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="DropboxSoap">
+    <wsdl:operation name="GetDropboxRedirectUrl">
+      <wsdl:input message="tns:GetDropboxRedirectUrlSoapIn" />
+      <wsdl:output message="tns:GetDropboxRedirectUrlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDropBoxData">
+      <wsdl:input message="tns:GetUserDropBoxDataSoapIn" />
+      <wsdl:output message="tns:GetUserDropBoxDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDropboxAccount">
+      <wsdl:input message="tns:AddDropboxAccountSoapIn" />
+      <wsdl:output message="tns:AddDropboxAccountSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DropboxHttpGet">
+    <wsdl:operation name="GetDropboxRedirectUrl">
+      <wsdl:input message="tns:GetDropboxRedirectUrlHttpGetIn" />
+      <wsdl:output message="tns:GetDropboxRedirectUrlHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDropBoxData">
+      <wsdl:input message="tns:GetUserDropBoxDataHttpGetIn" />
+      <wsdl:output message="tns:GetUserDropBoxDataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDropboxAccount">
+      <wsdl:input message="tns:AddDropboxAccountHttpGetIn" />
+      <wsdl:output message="tns:AddDropboxAccountHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DropboxHttpPost">
+    <wsdl:operation name="GetDropboxRedirectUrl">
+      <wsdl:input message="tns:GetDropboxRedirectUrlHttpPostIn" />
+      <wsdl:output message="tns:GetDropboxRedirectUrlHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDropBoxData">
+      <wsdl:input message="tns:GetUserDropBoxDataHttpPostIn" />
+      <wsdl:output message="tns:GetUserDropBoxDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDropboxAccount">
+      <wsdl:input message="tns:AddDropboxAccountHttpPostIn" />
+      <wsdl:output message="tns:AddDropboxAccountHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DropboxSoap" type="tns:DropboxSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDropboxRedirectUrl">
+      <soap:operation soapAction="http://tempuri.org/GetDropboxRedirectUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDropBoxData">
+      <soap:operation soapAction="http://tempuri.org/GetUserDropBoxData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDropboxAccount">
+      <soap:operation soapAction="http://tempuri.org/AddDropboxAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DropboxSoap12" type="tns:DropboxSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDropboxRedirectUrl">
+      <soap12:operation soapAction="http://tempuri.org/GetDropboxRedirectUrl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDropBoxData">
+      <soap12:operation soapAction="http://tempuri.org/GetUserDropBoxData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDropboxAccount">
+      <soap12:operation soapAction="http://tempuri.org/AddDropboxAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DropboxHttpGet" type="tns:DropboxHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetDropboxRedirectUrl">
+      <http:operation location="/GetDropboxRedirectUrl" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDropBoxData">
+      <http:operation location="/GetUserDropBoxData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDropboxAccount">
+      <http:operation location="/AddDropboxAccount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DropboxHttpPost" type="tns:DropboxHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetDropboxRedirectUrl">
+      <http:operation location="/GetDropboxRedirectUrl" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDropBoxData">
+      <http:operation location="/GetUserDropBoxData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDropboxAccount">
+      <http:operation location="/AddDropboxAccount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Dropbox">
+    <wsdl:port name="DropboxSoap" binding="tns:DropboxSoap">
+      <soap:address location="http://localhost:6361/Services/Dropbox.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DropboxSoap12" binding="tns:DropboxSoap12">
+      <soap12:address location="http://localhost:6361/Services/Dropbox.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DropboxHttpGet" binding="tns:DropboxHttpGet">
+      <http:address location="http://localhost:6361/Services/Dropbox.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DropboxHttpPost" binding="tns:DropboxHttpPost">
+      <http:address location="http://localhost:6361/Services/Dropbox.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

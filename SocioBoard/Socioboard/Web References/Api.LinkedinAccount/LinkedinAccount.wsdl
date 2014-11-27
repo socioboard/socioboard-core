@@ -77,6 +77,16 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetAllLinkedinAccounts">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllLinkedinAccountsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllLinkedinAccountsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -109,6 +119,12 @@
   </wsdl:message>
   <wsdl:message name="GetAllLinkedinAccountsByUserIdAndGroupIdSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllLinkedinAccountsByUserIdAndGroupIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinAccountsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllLinkedinAccounts" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinAccountsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllLinkedinAccountsResponse" />
   </wsdl:message>
   <wsdl:message name="UserInformationHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
@@ -143,6 +159,10 @@
     <wsdl:part name="groupid" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetAllLinkedinAccountsByUserIdAndGroupIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinAccountsHttpGetIn" />
+  <wsdl:message name="GetAllLinkedinAccountsHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="UserInformationHttpPostIn">
@@ -180,6 +200,10 @@
   <wsdl:message name="GetAllLinkedinAccountsByUserIdAndGroupIdHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetAllLinkedinAccountsHttpPostIn" />
+  <wsdl:message name="GetAllLinkedinAccountsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="LinkedinAccountSoap">
     <wsdl:operation name="UserInformation">
       <wsdl:input message="tns:UserInformationSoapIn" />
@@ -200,6 +224,10 @@
     <wsdl:operation name="GetAllLinkedinAccountsByUserIdAndGroupId">
       <wsdl:input message="tns:GetAllLinkedinAccountsByUserIdAndGroupIdSoapIn" />
       <wsdl:output message="tns:GetAllLinkedinAccountsByUserIdAndGroupIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinAccounts">
+      <wsdl:input message="tns:GetAllLinkedinAccountsSoapIn" />
+      <wsdl:output message="tns:GetAllLinkedinAccountsSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="LinkedinAccountHttpGet">
@@ -223,6 +251,10 @@
       <wsdl:input message="tns:GetAllLinkedinAccountsByUserIdAndGroupIdHttpGetIn" />
       <wsdl:output message="tns:GetAllLinkedinAccountsByUserIdAndGroupIdHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinAccounts">
+      <wsdl:input message="tns:GetAllLinkedinAccountsHttpGetIn" />
+      <wsdl:output message="tns:GetAllLinkedinAccountsHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="LinkedinAccountHttpPost">
     <wsdl:operation name="UserInformation">
@@ -244,6 +276,10 @@
     <wsdl:operation name="GetAllLinkedinAccountsByUserIdAndGroupId">
       <wsdl:input message="tns:GetAllLinkedinAccountsByUserIdAndGroupIdHttpPostIn" />
       <wsdl:output message="tns:GetAllLinkedinAccountsByUserIdAndGroupIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinAccounts">
+      <wsdl:input message="tns:GetAllLinkedinAccountsHttpPostIn" />
+      <wsdl:output message="tns:GetAllLinkedinAccountsHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LinkedinAccountSoap" type="tns:LinkedinAccountSoap">
@@ -286,6 +322,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllLinkedinAccountsByUserIdAndGroupId">
       <soap:operation soapAction="http://tempuri.org/GetAllLinkedinAccountsByUserIdAndGroupId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinAccounts">
+      <soap:operation soapAction="http://tempuri.org/GetAllLinkedinAccounts" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -341,6 +386,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinAccounts">
+      <soap12:operation soapAction="http://tempuri.org/GetAllLinkedinAccounts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LinkedinAccountHttpGet" type="tns:LinkedinAccountHttpGet">
     <http:binding verb="GET" />
@@ -389,6 +443,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinAccounts">
+      <http:operation location="/GetAllLinkedinAccounts" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LinkedinAccountHttpPost" type="tns:LinkedinAccountHttpPost">
     <http:binding verb="POST" />
@@ -430,6 +493,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllLinkedinAccountsByUserIdAndGroupId">
       <http:operation location="/GetAllLinkedinAccountsByUserIdAndGroupId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinAccounts">
+      <http:operation location="/GetAllLinkedinAccounts" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

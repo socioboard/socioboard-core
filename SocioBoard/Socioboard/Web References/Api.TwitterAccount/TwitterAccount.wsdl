@@ -91,6 +91,16 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetAllTwitterAccounts">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllTwitterAccountsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllTwitterAccountsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -129,6 +139,12 @@
   </wsdl:message>
   <wsdl:message name="getUserInformationSoapOut">
     <wsdl:part name="parameters" element="tns:getUserInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTwitterAccountsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllTwitterAccounts" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTwitterAccountsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllTwitterAccountsResponse" />
   </wsdl:message>
   <wsdl:message name="GetTwitterAccountDetailsByIdHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
@@ -169,6 +185,10 @@
     <wsdl:part name="TwtUserId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="getUserInformationHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTwitterAccountsHttpGetIn" />
+  <wsdl:message name="GetAllTwitterAccountsHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetTwitterAccountDetailsByIdHttpPostIn">
@@ -212,6 +232,10 @@
   <wsdl:message name="getUserInformationHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetAllTwitterAccountsHttpPostIn" />
+  <wsdl:message name="GetAllTwitterAccountsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="TwitterAccountSoap">
     <wsdl:operation name="GetTwitterAccountDetailsById">
       <wsdl:input message="tns:GetTwitterAccountDetailsByIdSoapIn" />
@@ -236,6 +260,10 @@
     <wsdl:operation name="getUserInformation">
       <wsdl:input message="tns:getUserInformationSoapIn" />
       <wsdl:output message="tns:getUserInformationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterAccounts">
+      <wsdl:input message="tns:GetAllTwitterAccountsSoapIn" />
+      <wsdl:output message="tns:GetAllTwitterAccountsSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TwitterAccountHttpGet">
@@ -263,6 +291,10 @@
       <wsdl:input message="tns:getUserInformationHttpGetIn" />
       <wsdl:output message="tns:getUserInformationHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterAccounts">
+      <wsdl:input message="tns:GetAllTwitterAccountsHttpGetIn" />
+      <wsdl:output message="tns:GetAllTwitterAccountsHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TwitterAccountHttpPost">
     <wsdl:operation name="GetTwitterAccountDetailsById">
@@ -288,6 +320,10 @@
     <wsdl:operation name="getUserInformation">
       <wsdl:input message="tns:getUserInformationHttpPostIn" />
       <wsdl:output message="tns:getUserInformationHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterAccounts">
+      <wsdl:input message="tns:GetAllTwitterAccountsHttpPostIn" />
+      <wsdl:output message="tns:GetAllTwitterAccountsHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="TwitterAccountSoap" type="tns:TwitterAccountSoap">
@@ -339,6 +375,15 @@
     </wsdl:operation>
     <wsdl:operation name="getUserInformation">
       <soap:operation soapAction="http://tempuri.org/getUserInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterAccounts">
+      <soap:operation soapAction="http://tempuri.org/GetAllTwitterAccounts" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -403,6 +448,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterAccounts">
+      <soap12:operation soapAction="http://tempuri.org/GetAllTwitterAccounts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="TwitterAccountHttpGet" type="tns:TwitterAccountHttpGet">
     <http:binding verb="GET" />
@@ -460,6 +514,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterAccounts">
+      <http:operation location="/GetAllTwitterAccounts" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="TwitterAccountHttpPost" type="tns:TwitterAccountHttpPost">
     <http:binding verb="POST" />
@@ -510,6 +573,15 @@
     </wsdl:operation>
     <wsdl:operation name="getUserInformation">
       <http:operation location="/getUserInformation" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterAccounts">
+      <http:operation location="/GetAllTwitterAccounts" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

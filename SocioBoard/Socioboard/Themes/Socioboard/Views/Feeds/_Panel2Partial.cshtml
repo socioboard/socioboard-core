@@ -1,5 +1,6 @@
 ﻿@using Domain.Socioboard.Domain;
 @{
+    Layout = null;
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
     bool check = true;
     string hrefPost = string.Empty;
@@ -56,7 +57,7 @@
                 TwitterMessage item = (TwitterMessage)twittermsg;
         <li class="left clearfix">
             <span class="chat-img pull-left">
-                <img alt="User Avatar" class="img-circle profilePic" src="@item.FromProfileUrl"/>
+                <img id="user_avtar" alt="User Avatar" class="img-circle profilePic" src="@item.FromProfileUrl"/>
             </span>
             <div class="chat-body clearfix">
                 <div>

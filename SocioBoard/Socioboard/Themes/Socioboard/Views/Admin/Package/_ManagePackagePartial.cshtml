@@ -1,0 +1,24 @@
+﻿@using Domain.Socioboard.Domain;
+@{Layout = null;}
+<thead>
+    <tr>
+        <th>Edit</th>
+        <th>Package</th>
+        <th>Price</th>
+        <th>Entry Date</th>
+    </tr>
+</thead>
+
+<tbody>
+    @foreach (var item in (List<Package>)Model)
+    {
+        
+        <tr class="odd gradeX">
+            <td onclick="EditPackageDetails('@item.Id');"><i class="fa fa-pencil fa-fw" style="cursor:pointer"></i></td>
+            <td>@item.PackageName</td>
+            <td>@item.Pricing</td>
+            <td>@item.EntryDate</td>
+        </tr>
+    }
+</tbody>
+

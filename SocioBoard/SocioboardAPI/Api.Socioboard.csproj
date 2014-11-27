@@ -105,29 +105,43 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\AddlinkedinCompanyPage.cs" />
     <Compile Include="Helper\MailHelper.cs" />
     <Compile Include="Helper\MailSender.cs" />
     <Compile Include="Helper\SessionFactory.cs" />
     <Compile Include="Helper\Utility.cs" />
+    <Compile Include="Model\AdminRepository.cs" />
     <Compile Include="Model\ArchiveMessageRepository.cs" />
     <Compile Include="Model\BusinessSettingRepository.cs" />
     <Compile Include="Model\DiscoverySearchRepository.cs" />
     <Compile Include="Model\DraftsRepository.cs" />
+    <Compile Include="Model\DropboxAccountRepository.cs" />
     <Compile Include="Model\FacebookAccountRepository.cs" />
     <Compile Include="Model\FacebookFanPageRepository.cs" />
     <Compile Include="Model\FacebookFeedRepository.cs" />
     <Compile Include="Model\FacebookMessageRepository.cs" />
+    <Compile Include="Model\FacebookStatsRepository.cs" />
+    <Compile Include="Model\FbPageSharerRepository.cs" />
+    <Compile Include="Model\FbPageCommentRepository.cs" />
+    <Compile Include="Model\FbPageLikerRepository.cs" />
+    <Compile Include="Model\FbPagePostCommentLikerRepository.cs" />
+    <Compile Include="Model\FbPagePostRepository.cs" />
     <Compile Include="Model\GooglePlusAccountRepository.cs" />
     <Compile Include="Model\GroupProfileRepository.cs" />
+    <Compile Include="Model\GroupScheduleMessageRepository.cs" />
     <Compile Include="Model\GroupsRepository.cs" />
     <Compile Include="Model\InstagramAccountRepository.cs" />
     <Compile Include="Model\InstagramCommentRepository.cs" />
     <Compile Include="Model\InstagramFeedRepository.cs" />
     <Compile Include="Model\InvitationRepository.cs" />
     <Compile Include="Model\LinkedInAccountRepository.cs" />
+    <Compile Include="Model\LinkedinCompanyPageRepository.cs" />
     <Compile Include="Model\LinkedInFeedRepository.cs" />
+    <Compile Include="Model\LinkedinPagePostRepository.cs" />
     <Compile Include="Model\NewsLetterRepository.cs" />
     <Compile Include="Model\PackageRepository.cs" />
+    <Compile Include="Model\PaymentTransactionRepository.cs" />
+    <Compile Include="Model\ReplyMessageRepository.cs" />
     <Compile Include="Model\ScheduledMessageRepository.cs" />
     <Compile Include="Model\SocialProfilesRepository.cs" />
     <Compile Include="Model\TaskCommentRepository.cs" />
@@ -188,6 +202,14 @@
       <DependentUpon>Drafts.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Services\Dropbox.asmx.cs">
+      <DependentUpon>Dropbox.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\DropboxAccount.asmx.cs">
+      <DependentUpon>DropboxAccount.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Services\Facebook.asmx.cs">
       <DependentUpon>Facebook.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -220,6 +242,18 @@
       <DependentUpon>FacebookStats.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Services\FbPageComment.asmx.cs">
+      <DependentUpon>FbPageComment.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\FbPageLiker.asmx.cs">
+      <DependentUpon>FbPageLiker.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\FbPagePost.asmx.cs">
+      <DependentUpon>FbPagePost.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Services\GoogleAnalyticsAccount.asmx.cs">
       <DependentUpon>GoogleAnalyticsAccount.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -242,6 +276,10 @@
     </Compile>
     <Compile Include="Services\Groups.asmx.cs">
       <DependentUpon>Groups.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\GroupScheduleMessage.asmx.cs">
+      <DependentUpon>GroupScheduleMessage.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Services\Instagram.asmx.cs">
@@ -272,6 +310,10 @@
       <DependentUpon>LinkedinAccount.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Services\LinkedinCompanyPage.asmx.cs">
+      <DependentUpon>LinkedinCompanyPage.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Services\LinkedInFeed.asmx.cs">
       <DependentUpon>LinkedInFeed.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -290,6 +332,10 @@
     </Compile>
     <Compile Include="Services\MailSender.asmx.cs">
       <DependentUpon>MailSender.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Messages.asmx.cs">
+      <DependentUpon>Messages.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Services\News.asmx.cs">
@@ -578,6 +624,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Admin.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Ads.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -714,6 +761,30 @@
     <EmbeddedResource Include="Mappings\youtubechannel.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FbPageComment.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FbPageLiker.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FbPagePost.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FbPagePostCommentLiker.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="Mappings\DropboxAccount.hbm.xml" />
+    <Content Include="Mappings\FacebookFanPage.xml" />
+    <EmbeddedResource Include="Mappings\LinkedinCompanyPage.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\LinkedinCompanyPagePosts.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\ReplyMessage.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="Mappings\TwitterAccountFollowers.hbm.xml" />
     <Content Include="obj\Debug\SocialCrowd.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\SocialSuitePro.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\SocialSuitePro.dll" />
@@ -722,6 +793,9 @@
     <Content Include="obj\Debug\SocioCrowd.pdb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Mappings\FbPageSharer.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="obj\Debug\SocialCrowd.csprojResolveAssemblyReference.cache" />
     <None Include="obj\Debug\SocialSuitePro.csprojResolveAssemblyReference.cache" />
@@ -734,6 +808,8 @@
     <Content Include="Services\Coupon.asmx" />
     <Content Include="Services\DiscoverySearch.asmx" />
     <Content Include="Services\Drafts.asmx" />
+    <Content Include="Services\Dropbox.asmx" />
+    <Content Include="Services\DropboxAccount.asmx" />
     <Content Include="Services\Facebook.asmx" />
     <Content Include="Services\FacebookAccount.asmx" />
     <Content Include="Services\FacebookFanPage.asmx" />
@@ -742,12 +818,16 @@
     <Content Include="Services\FacebookInsightStats.asmx" />
     <Content Include="Services\FacebookMessage.asmx" />
     <Content Include="Services\FacebookStats.asmx" />
+    <Content Include="Services\FbPageComment.asmx" />
+    <Content Include="Services\FbPageLiker.asmx" />
+    <Content Include="Services\FbPagePost.asmx" />
     <Content Include="Services\GoogleAnalyticsAccount.asmx" />
     <Content Include="Services\GoogleAnalyticsStats.asmx" />
     <Content Include="Services\GooglePlusAccount.asmx" />
     <Content Include="Services\GooglePlusActivities.asmx" />
     <Content Include="Services\GroupProfile.asmx" />
     <Content Include="Services\Groups.asmx" />
+    <Content Include="Services\GroupScheduleMessage.asmx" />
     <Content Include="Services\Instagram.asmx" />
     <Content Include="Services\InstagramAccount.asmx" />
     <Content Include="Services\InstagramComment.asmx" />
@@ -755,11 +835,13 @@
     <Content Include="Services\Invitation.asmx" />
     <Content Include="Services\Linkedin.asmx" />
     <Content Include="Services\LinkedinAccount.asmx" />
+    <Content Include="Services\LinkedinCompanyPage.asmx" />
     <Content Include="Services\LinkedInFeed.asmx" />
     <Content Include="Services\LinkedinMessage.asmx" />
     <Content Include="Services\Log.asmx" />
     <Content Include="Services\LoginLogs.asmx" />
     <Content Include="Services\MailSender.asmx" />
+    <Content Include="Services\Messages.asmx" />
     <Content Include="Services\News.asmx" />
     <Content Include="Services\NewsLetter.asmx" />
     <Content Include="Services\Package.asmx" />
@@ -825,6 +907,10 @@
     <ProjectReference Include="Library\GlobusMailLib\GlobusMailLib.csproj">
       <Project>{f0a38425-5313-4e83-9568-b6d9c1d6efa6}</Project>
       <Name>GlobusMailLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="Library\GlobussDropboxLib\GlobussDropboxLib.csproj">
+      <Project>{6d6144cd-7e41-44e8-9c7d-28c47675e2c3}</Project>
+      <Name>GlobussDropboxLib</Name>
     </ProjectReference>
     <ProjectReference Include="Library\GlobusTumblerLib\GlobusTumblrLib.csproj">
       <Project>{f22fce49-27e9-4eca-b6f6-c39a8707df59}</Project>

@@ -37,6 +37,12 @@ namespace Socioboard.Api.MailSender {
         
         private System.Threading.SendOrPostCallback SendCareerMailOperationCompleted;
         
+        private System.Threading.SendOrPostCallback SendRequestForDemoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SendChangePasswordMailOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SendFeedMailOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -86,6 +92,15 @@ namespace Socioboard.Api.MailSender {
         
         /// <remarks/>
         public event SendCareerMailCompletedEventHandler SendCareerMailCompleted;
+        
+        /// <remarks/>
+        public event SendRequestForDemoCompletedEventHandler SendRequestForDemoCompleted;
+        
+        /// <remarks/>
+        public event SendChangePasswordMailCompletedEventHandler SendChangePasswordMailCompleted;
+        
+        /// <remarks/>
+        public event SendFeedMailCompletedEventHandler SendFeedMailCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SendMail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -250,6 +265,111 @@ namespace Socioboard.Api.MailSender {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SendRequestForDemo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string SendRequestForDemo(string name, string lname, string email, string Subject, string body) {
+            object[] results = this.Invoke("SendRequestForDemo", new object[] {
+                        name,
+                        lname,
+                        email,
+                        Subject,
+                        body});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SendRequestForDemoAsync(string name, string lname, string email, string Subject, string body) {
+            this.SendRequestForDemoAsync(name, lname, email, Subject, body, null);
+        }
+        
+        /// <remarks/>
+        public void SendRequestForDemoAsync(string name, string lname, string email, string Subject, string body, object userState) {
+            if ((this.SendRequestForDemoOperationCompleted == null)) {
+                this.SendRequestForDemoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSendRequestForDemoOperationCompleted);
+            }
+            this.InvokeAsync("SendRequestForDemo", new object[] {
+                        name,
+                        lname,
+                        email,
+                        Subject,
+                        body}, this.SendRequestForDemoOperationCompleted, userState);
+        }
+        
+        private void OnSendRequestForDemoOperationCompleted(object arg) {
+            if ((this.SendRequestForDemoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SendRequestForDemoCompleted(this, new SendRequestForDemoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SendChangePasswordMail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string SendChangePasswordMail(string emailId, string mailBody, string Subject) {
+            object[] results = this.Invoke("SendChangePasswordMail", new object[] {
+                        emailId,
+                        mailBody,
+                        Subject});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SendChangePasswordMailAsync(string emailId, string mailBody, string Subject) {
+            this.SendChangePasswordMailAsync(emailId, mailBody, Subject, null);
+        }
+        
+        /// <remarks/>
+        public void SendChangePasswordMailAsync(string emailId, string mailBody, string Subject, object userState) {
+            if ((this.SendChangePasswordMailOperationCompleted == null)) {
+                this.SendChangePasswordMailOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSendChangePasswordMailOperationCompleted);
+            }
+            this.InvokeAsync("SendChangePasswordMail", new object[] {
+                        emailId,
+                        mailBody,
+                        Subject}, this.SendChangePasswordMailOperationCompleted, userState);
+        }
+        
+        private void OnSendChangePasswordMailOperationCompleted(object arg) {
+            if ((this.SendChangePasswordMailCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SendChangePasswordMailCompleted(this, new SendChangePasswordMailCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SendFeedMail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string SendFeedMail(string emailId, string feed, string fromname, string mailBody) {
+            object[] results = this.Invoke("SendFeedMail", new object[] {
+                        emailId,
+                        feed,
+                        fromname,
+                        mailBody});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SendFeedMailAsync(string emailId, string feed, string fromname, string mailBody) {
+            this.SendFeedMailAsync(emailId, feed, fromname, mailBody, null);
+        }
+        
+        /// <remarks/>
+        public void SendFeedMailAsync(string emailId, string feed, string fromname, string mailBody, object userState) {
+            if ((this.SendFeedMailOperationCompleted == null)) {
+                this.SendFeedMailOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSendFeedMailOperationCompleted);
+            }
+            this.InvokeAsync("SendFeedMail", new object[] {
+                        emailId,
+                        feed,
+                        fromname,
+                        mailBody}, this.SendFeedMailOperationCompleted, userState);
+        }
+        
+        private void OnSendFeedMailOperationCompleted(object arg) {
+            if ((this.SendFeedMailCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SendFeedMailCompleted(this, new SendFeedMailCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -359,6 +479,84 @@ namespace Socioboard.Api.MailSender {
         private object[] results;
         
         internal SendCareerMailCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void SendRequestForDemoCompletedEventHandler(object sender, SendRequestForDemoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SendRequestForDemoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SendRequestForDemoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void SendChangePasswordMailCompletedEventHandler(object sender, SendChangePasswordMailCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SendChangePasswordMailCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SendChangePasswordMailCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void SendFeedMailCompletedEventHandler(object sender, SendFeedMailCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SendFeedMailCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SendFeedMailCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

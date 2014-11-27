@@ -78,6 +78,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\Api.FacebookStats\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\Api.Facebook\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -173,6 +178,11 @@
     </None>
     <None Include="Web References\Api.FacebookFeed\FacebookFeed.wsdl" />
     <None Include="Web References\Api.FacebookFeed\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\Api.FacebookStats\FacebookStats.wsdl" />
+    <None Include="Web References\Api.FacebookStats\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -308,6 +318,17 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_FacebookFeed_FacebookFeed</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/Services/FacebookStats.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.FacebookStats\</RelPath>
+      <UpdateFromURL>http://localhost:6361/Services/FacebookStats.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SocioboardDataServices_Api_FacebookStats_FacebookStats</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost:6361/Services/Instagram.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
@@ -513,10 +534,13 @@
     <None Include="Web References\Api.Linkedin\Linkedin.disco" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Web References\Api.TwitterAccount\TwitterAccount.disco" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Web References\Api.Twitter\Twitter.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\Api.TwitterAccount\TwitterAccount.disco" />
+    <None Include="Web References\Api.FacebookStats\FacebookStats.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,91 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    string path = System.Configuration.ConfigurationManager.AppSettings["domain"];
+    string id = (string)Model;
+    bool check = true;
+    int i = 0;
+    Socioboard.Api.FbPagePost.FbPagePost ApiobjFbPagePost = new Socioboard.Api.FbPagePost.FbPagePost();
+    Domain.Socioboard.Domain.FbPagePost objFbPagePost = (Domain.Socioboard.Domain.FbPagePost)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjFbPagePost.GetPostDetails(id.ToString()), typeof(Domain.Socioboard.Domain.FbPagePost)));
+
+    Socioboard.Api.FbPageComment.FbPageComment ApiobjFbPageComment = new Socioboard.Api.FbPageComment.FbPageComment();
+    List<Domain.Socioboard.Domain.FbPageComment> lstFbPageComment = (List<Domain.Socioboard.Domain.FbPageComment>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjFbPageComment.GetPostComments(objFbPagePost.PostId.ToString()), typeof(List<Domain.Socioboard.Domain.FbPageComment>)));
+
+    Socioboard.Api.FbPageLiker.FbPageLiker apiobjFbPageLiker = new Socioboard.Api.FbPageLiker.FbPageLiker();
+    List<Domain.Socioboard.Domain.FbPageLiker> lstFbPageLiker = (List<Domain.Socioboard.Domain.FbPageLiker>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(apiobjFbPageLiker.GetLikeByPostId(objFbPagePost.PostId.ToString(), objFbPagePost.UserId.ToString()), typeof(List<Domain.Socioboard.Domain.FbPageLiker>)));
+
+    
+    
+
+    }
+
+<div class="row">
+    <div class="col-lg-8">
+        <img src="http://graph.facebook.com/@objFbPagePost.FromId/picture?type=small" class="TweetsprofilePic">
+        <a href="https://www.facebook.com/@objFbPagePost.FromId">@objFbPagePost.FromName</a>
+
+        <small class="text-muted"><i class="fa fa-clock-o"></i>@objFbPagePost.PostDate</small>
+        <div>
+            <a href="https://www.facebook.com/@objFbPagePost.PostId" target="_blank">
+                <p>@objFbPagePost.Post</p>
+            </a>
+            @if (!string.IsNullOrEmpty(objFbPagePost.PictureUrl))
+            {
+                <img class="img-responsive" src="@objFbPagePost.PictureUrl">
+            }
+            <p></p>
+            <button type="button" class="btn btn-primary btn-xs"><i class="fa fa-thumbs-up fa-fw"></i>@objFbPagePost.Likes Like</button>
+            <button type="button" class="btn btn-primary btn-xs dropdown" onclick="showHideDiv('div-1')"><i class="fa fa-comments fa-fw"></i>@objFbPagePost.Comments Comments</button>
+            <button type="button" class="btn btn-primary btn-xs"><i class="fa fa-share-alt fa-fw"></i>@objFbPagePost.Shares Shares</button>
+            <!-- Comment toggle -->
+            <div id="div-1" style="display: none;">
+                <div class="chat-panel panel panel-default">
+                    <div class="panel-body">
+                        <ul class="chat">
+                            @foreach (var item in lstFbPageComment)
+                            {
+                                <li class="left clearfix">
+                                    <span class="chat-img pull-left">
+                                        <img src="http://graph.facebook.com/@item.FromId/picture?type=small" class="img-circle profilePic" alt="User Avatar">
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div>
+                                            <strong class="primary-font">@item.FromName</strong>
+                                            <small class="pull-right text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i>@item.Commentdate</small>
+                                        </div>
+                                        <p>
+                                            @item.Comment
+
+                                        </p>
+                                    </div>
+                                    <div class="input-group pull-right">
+
+                                        <span class="input-group-btn ">
+
+                                            <button class="btn btn-info btn-circle" type="button">
+                                                <i class="fa fa-thumbs-o-up">@item.Likes</i>
+                                            </button>
+
+                                        </span>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3" style="height: 300px; overflow: scroll;">
+        <ul class="chat">
+            <li class="left clearfix"><button class="btn btn-primary btn-xs" type="button"><i class=""></i> Likes</button></li>
+            @foreach (var item in lstFbPageLiker)
+            {
+                 <li class="left clearfix"><a href="http://www.facebook.com/@item.FromId" target="_blank">@item.FromName</a></li>
+            }
+        </ul>
+
+
+    </div>
+</div>

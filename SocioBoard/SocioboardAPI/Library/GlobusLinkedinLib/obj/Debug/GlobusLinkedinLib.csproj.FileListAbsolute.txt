@@ -6,11 +6,11 @@ C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusLinkedinLib\bi
 C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusLinkedinLib\obj\Debug\GlobusLinkedinLib.csprojResolveAssemblyReference.cache
 C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusLinkedinLib\obj\Debug\GlobusLinkedinLib.dll
 C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusLinkedinLib\obj\Debug\GlobusLinkedinLib.pdb
-C:\Users\SUMIT\Desktop\New folder\sb 2.0\trunk\SocioboardAPI\Library\GlobusLinkedinLib\bin\Debug\GlobusLinkedinLib.dll
-C:\Users\SUMIT\Desktop\New folder\sb 2.0\trunk\SocioboardAPI\Library\GlobusLinkedinLib\bin\Debug\GlobusLinkedinLib.pdb
-C:\Users\SUMIT\Desktop\New folder\sb 2.0\trunk\SocioboardAPI\Library\GlobusLinkedinLib\bin\Debug\Domain.Socioboard.dll
-C:\Users\SUMIT\Desktop\New folder\sb 2.0\trunk\SocioboardAPI\Library\GlobusLinkedinLib\bin\Debug\Newtonsoft.Json.dll
-C:\Users\SUMIT\Desktop\New folder\sb 2.0\trunk\SocioboardAPI\Library\GlobusLinkedinLib\bin\Debug\Domain.Socioboard.pdb
-C:\Users\SUMIT\Desktop\New folder\sb 2.0\trunk\SocioboardAPI\Library\GlobusLinkedinLib\obj\Debug\GlobusLinkedinLib.csprojResolveAssemblyReference.cache
-C:\Users\SUMIT\Desktop\New folder\sb 2.0\trunk\SocioboardAPI\Library\GlobusLinkedinLib\obj\Debug\GlobusLinkedinLib.dll
-C:\Users\SUMIT\Desktop\New folder\sb 2.0\trunk\SocioboardAPI\Library\GlobusLinkedinLib\obj\Debug\GlobusLinkedinLib.pdb
+D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusLinkedinLib\bin\Debug\GlobusLinkedinLib.dll
+D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusLinkedinLib\bin\Debug\GlobusLinkedinLib.pdb
+D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusLinkedinLib\bin\Debug\Domain.Socioboard.dll
+D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusLinkedinLib\bin\Debug\Newtonsoft.Json.dll
+D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusLinkedinLib\bin\Debug\Domain.Socioboard.pdb
+D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusLinkedinLib\obj\Debug\GlobusLinkedinLib.csprojResolveAssemblyReference.cache
+D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusLinkedinLib\obj\Debug\GlobusLinkedinLib.dll
+D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusLinkedinLib\obj\Debug\GlobusLinkedinLib.pdb

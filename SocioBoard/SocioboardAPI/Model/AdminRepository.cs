@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using SocioBoard.Domain;
-using SocioBoard.Helper;
+using Domain.Socioboard.Domain;
+using Api.Socioboard.Helper;
 
 
 namespace SocioBoard.Model
@@ -13,8 +13,8 @@ namespace SocioBoard.Model
         /// <Add>
         /// Add a new admin in DataBase. 
         /// </summary>
-        /// <param name="user">Set Values in a Admin Class Property and Pass the Object of Admin Class (SocioBoard.Domain.Admin).</param>
-        public static void Add(SocioBoard.Domain.Admin user)
+        /// <param name="user">Set Values in a Admin Class Property and Pass the Object of Admin Class (Domain.Socioboard.Domain.Admin).</param>
+        public static void Add(Domain.Socioboard.Domain.Admin user)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -34,7 +34,7 @@ namespace SocioBoard.Model
         /// Update a existing admin.
         /// </summary>
         /// <param name="user">Set Values in a Admin Class Property and Pass the Object of Admin Class.</param>
-        public static void Update(SocioBoard.Domain.Admin user)
+        public static void Update(Domain.Socioboard.Domain.Admin user)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -71,7 +71,7 @@ namespace SocioBoard.Model
         /// <param name="UserName">Admin UserName </param>
         /// <param name="Password">Admin Password</param>
         /// <returns>Return Latest Information of Admin</returns>
-        public SocioBoard.Domain.Admin GetUserInfo(string UserName, string Password)
+        public Domain.Socioboard.Domain.Admin GetUserInfo(string UserName, string Password)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -88,7 +88,7 @@ namespace SocioBoard.Model
                         query.SetParameter("password", Password);
 
                         // Get the UniqueResult and return.
-                        SocioBoard.Domain.Admin result = (SocioBoard.Domain.Admin)query.UniqueResult();
+                        Domain.Socioboard.Domain.Admin result = (Domain.Socioboard.Domain.Admin)query.UniqueResult();
                         return result;
 
                     }

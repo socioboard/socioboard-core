@@ -1,15 +1,15 @@
 ﻿<div class="container-fluid">
-                <div class="col-md-12">
-                    <h1 class="page-header">Discovery allows you to find new customers by searching for keywords around your business.</h1>
-                    <div class="input-group custom-search-form">
-                        <input id="txtsearch" type="text" placeholder="Search..." class="form-control">
-                            <span class="input-group-btn">
-                                <button id="searchdiscovery" type="button" class="btn btn-default">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                    </div>
-                   @* <div class="checkbox">
+    <div class="col-md-12">
+        <h1 class="page-header">Discovery allows you to find new customers by searching with keywords around your business.</h1>
+        <div class="input-group custom-search-form">
+            <input id="txtsearch" type="text" placeholder="Type your Keyword here..." class="form-control">
+            <span class="input-group-btn">
+                <button id="searchdiscovery" type="button" class="btn btn-default">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+        @* <div class="checkbox">
                       <label>
                         <input type="checkbox" value="">
                         By Name
@@ -21,32 +21,91 @@
                         By Keyword
                       </label>
                     </div>*@
-                </div>
-                <div class="divider"></div>
-                <div class="col-md-12">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-facebook fa-fw"></i> Facebook</h3>
-                            </div>
-                            <div class="panel-body">
-                                <ul id="facebookdiscovery" class="chat">
-                                
-                                </ul>
-                            <div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-twitter  fa-fw"></i> Tweeter Posts</h3>
-                            </div>
-                            <div class="panel-body">
-                                <ul id="twitterdiscovery" class="chat">
-                                
-                                </ul>
-                            <div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    </div>
+    <div class="divider"></div>
+    <div class="col-md-9">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-facebook fa-fw"></i>Facebook Posts</h3>
             </div>
+            <div class="panel-body">
+                <ul id="facebookdiscovery" class="chat">
+                </ul>
+                <div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-twitter  fa-fw"></i>Twitter Posts</h3>
+            </div>
+            <div class="panel-body">
+                <ul id="twitterdiscovery" class="chat">
+                </ul>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="border: 1px solid rgb(153, 153, 153); background: none repeat scroll 0% 0% rgb(248, 248, 248); padding: 0%; border-color: #428bca;" class="col-md-3">
+        <div class="list-group">
+            <div class="panel-heading" style="border-color: #428bca; background-color: #428bca; color: #fff">
+                <h3 class="panel-title"><i></i>Search History</h3>
+            </div>
+            <div class="panel-body" style="border-color: #428bca;">
+                @*<ul id="" class=""></ul>*@
+
+                @foreach (string item in (List<string>)Model)
+                {
+                   <div style="padding-left: 0px" ><h5 style="cursor:pointer" onclick="searchKeywordFromHistory('@item')">@item</h5></div>
+                }
+               
+            </div>
+        </div>  
+    </div>
+</div>
+
+ @*Edited by Antima*@
+
+<script type="text/javascript">
+
+    $('#txtsearch').keypress(function (e) {
+        debugger;
+        var key = e.which;
+        if (key == 13)  // the enter key code
+        {
+            $("#searchdiscovery").click();
+        }
+    });
+
+    // Edited by Antima
+
+    function searchKeywordFromHistory(keyword)
+    {
+        debugger;
+        alert("success");
+        $('#txtsearch').val(keyword);
+
+        $('#facebookdiscovery').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />');
+        $('#twitterdiscovery').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />');
+        $.ajax({
+            type: 'GET',
+            url: '../Discovery/SearchFacebook?keyword=' + keyword,
+            success: function (msg) {
+                //alert(msg);
+                $('#facebookdiscovery').html(msg);
+            }
+        });
+        $.ajax({
+            type: 'GET',
+            url: '../Discovery/SearchTwitter?keyword=' + keyword,
+            success: function (msg) {
+                //alert(msg);
+                $('#twitterdiscovery').html(msg);
+            }
+        });
+
+    }
+
+</script>

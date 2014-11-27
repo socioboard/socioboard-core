@@ -20,6 +20,9 @@ namespace Api.Socioboard.Services
     {
         FacebookFanPageRepository objrepo = new FacebookFanPageRepository();
       
+
+
+      
         public int FacebookFans(string userid, string profileid, string days)
         {
             int counts = 0;
@@ -34,9 +37,7 @@ namespace Api.Socioboard.Services
                 {
                     counts += objrepo.getAllFancountDetail(Guid.Parse(userid), item, Convert.ToInt32(days));
                     count += objrepo.getAllFancountDetailbeforedays(Guid.Parse(userid), item, Convert.ToInt32(days));
-
-                }      
-                
+                }                     
             }             
             catch (Exception ex)
             {
@@ -46,6 +47,12 @@ namespace Api.Socioboard.Services
             return Totalcount;
   
         }
+
+
+
+
+
+
 
     }
 }

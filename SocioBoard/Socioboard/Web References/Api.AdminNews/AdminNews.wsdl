@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetAllNews">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllNewsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateNews">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObjPackage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateNewsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNewsById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NewsId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNewsByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNewsByIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddNews">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObjPackage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="News" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddNewsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllNewsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllNews" />
+  </wsdl:message>
+  <wsdl:message name="GetAllNewsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllNewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateNewsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateNews" />
+  </wsdl:message>
+  <wsdl:message name="UpdateNewsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateNewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNewsByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNewsById" />
+  </wsdl:message>
+  <wsdl:message name="GetNewsByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNewsByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddNewsSoapIn">
+    <wsdl:part name="parameters" element="tns:AddNews" />
+  </wsdl:message>
+  <wsdl:message name="AddNewsSoapOut">
+    <wsdl:part name="parameters" element="tns:AddNewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllNewsHttpGetIn" />
+  <wsdl:message name="GetAllNewsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateNewsHttpGetIn">
+    <wsdl:part name="ObjPackage" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateNewsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNewsByIdHttpGetIn">
+    <wsdl:part name="NewsId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNewsByIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddNewsHttpGetIn">
+    <wsdl:part name="ObjPackage" type="s:string" />
+    <wsdl:part name="News" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddNewsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllNewsHttpPostIn" />
+  <wsdl:message name="GetAllNewsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateNewsHttpPostIn">
+    <wsdl:part name="ObjPackage" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateNewsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNewsByIdHttpPostIn">
+    <wsdl:part name="NewsId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNewsByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddNewsHttpPostIn">
+    <wsdl:part name="ObjPackage" type="s:string" />
+    <wsdl:part name="News" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddNewsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="AdminNewsSoap">
+    <wsdl:operation name="GetAllNews">
+      <wsdl:input message="tns:GetAllNewsSoapIn" />
+      <wsdl:output message="tns:GetAllNewsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNews">
+      <wsdl:input message="tns:UpdateNewsSoapIn" />
+      <wsdl:output message="tns:UpdateNewsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNewsById">
+      <wsdl:input message="tns:GetNewsByIdSoapIn" />
+      <wsdl:output message="tns:GetNewsByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNews">
+      <wsdl:input message="tns:AddNewsSoapIn" />
+      <wsdl:output message="tns:AddNewsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AdminNewsHttpGet">
+    <wsdl:operation name="GetAllNews">
+      <wsdl:input message="tns:GetAllNewsHttpGetIn" />
+      <wsdl:output message="tns:GetAllNewsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNews">
+      <wsdl:input message="tns:UpdateNewsHttpGetIn" />
+      <wsdl:output message="tns:UpdateNewsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNewsById">
+      <wsdl:input message="tns:GetNewsByIdHttpGetIn" />
+      <wsdl:output message="tns:GetNewsByIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNews">
+      <wsdl:input message="tns:AddNewsHttpGetIn" />
+      <wsdl:output message="tns:AddNewsHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AdminNewsHttpPost">
+    <wsdl:operation name="GetAllNews">
+      <wsdl:input message="tns:GetAllNewsHttpPostIn" />
+      <wsdl:output message="tns:GetAllNewsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNews">
+      <wsdl:input message="tns:UpdateNewsHttpPostIn" />
+      <wsdl:output message="tns:UpdateNewsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNewsById">
+      <wsdl:input message="tns:GetNewsByIdHttpPostIn" />
+      <wsdl:output message="tns:GetNewsByIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNews">
+      <wsdl:input message="tns:AddNewsHttpPostIn" />
+      <wsdl:output message="tns:AddNewsHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AdminNewsSoap" type="tns:AdminNewsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllNews">
+      <soap:operation soapAction="http://tempuri.org/GetAllNews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNews">
+      <soap:operation soapAction="http://tempuri.org/UpdateNews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewsById">
+      <soap:operation soapAction="http://tempuri.org/GetNewsById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNews">
+      <soap:operation soapAction="http://tempuri.org/AddNews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AdminNewsSoap12" type="tns:AdminNewsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllNews">
+      <soap12:operation soapAction="http://tempuri.org/GetAllNews" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNews">
+      <soap12:operation soapAction="http://tempuri.org/UpdateNews" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewsById">
+      <soap12:operation soapAction="http://tempuri.org/GetNewsById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNews">
+      <soap12:operation soapAction="http://tempuri.org/AddNews" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AdminNewsHttpGet" type="tns:AdminNewsHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetAllNews">
+      <http:operation location="/GetAllNews" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNews">
+      <http:operation location="/UpdateNews" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewsById">
+      <http:operation location="/GetNewsById" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNews">
+      <http:operation location="/AddNews" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AdminNewsHttpPost" type="tns:AdminNewsHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetAllNews">
+      <http:operation location="/GetAllNews" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNews">
+      <http:operation location="/UpdateNews" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewsById">
+      <http:operation location="/GetNewsById" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNews">
+      <http:operation location="/AddNews" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AdminNews">
+    <wsdl:port name="AdminNewsSoap" binding="tns:AdminNewsSoap">
+      <soap:address location="http://localhost:6361/Services/AdminNews.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdminNewsSoap12" binding="tns:AdminNewsSoap12">
+      <soap12:address location="http://localhost:6361/Services/AdminNews.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdminNewsHttpGet" binding="tns:AdminNewsHttpGet">
+      <http:address location="http://localhost:6361/Services/AdminNews.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdminNewsHttpPost" binding="tns:AdminNewsHttpPost">
+      <http:address location="http://localhost:6361/Services/AdminNews.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

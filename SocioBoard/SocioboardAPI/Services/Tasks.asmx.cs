@@ -137,7 +137,6 @@ namespace Api.Socioboard.Services
             return new JavaScriptSerializer().Serialize(status);
         }
 
-
         //getAllTasksOfUserList
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -303,6 +302,57 @@ namespace Api.Socioboard.Services
                 objcmt.UserId = Guid.Parse(userid);
                 objcmtRepo.addTaskComment(objcmt);
             }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string ChangeTaskStatus(string UserId, string TaskId, string Status)
+        {
+            string ret = string.Empty;
+            try
+            {
+                Guid taskid = Guid.Parse(TaskId);
+                bool status = bool.Parse(Status);
+                if (status == true)
+                    status = false;
+                else
+                    status = true;
+                TaskRepository objTaskRepo = new TaskRepository();
+                objTaskRepo.updateTaskStatus(taskid, Guid.Parse(UserId), status);
+                ret = "Success";
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.StackTrace);
+                ret = "Fail";
+            }
+            return new JavaScriptSerializer().Serialize(ret);
+        }
+
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string UpdateTaskReadStatus(string TaskId, string UserId, string GroupId)
+        {
+            string ret = string.Empty;
+            try
+            {
+                TaskRepository taskrepo = new TaskRepository();
+                Guid taskid = Guid.Parse(TaskId);
+                Guid userid = Guid.Parse(UserId);
+                Guid groupid = Guid.Parse(GroupId);
+
+                taskrepo.UpdateTaskReadStatus(taskid, userid, groupid);
+
+                ret = "Success";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                ret = "Fail";
+            }
+            return new JavaScriptSerializer().Serialize(ret);
         }
 
 

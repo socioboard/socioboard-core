@@ -70,7 +70,7 @@
                                           
     <div class="panel panel-primary" id="messagetaskable_@sorteddatacount">
         <div class="panel-heading">
-            <div class="row">
+            <div class="row" style="width:750px;">
                 <div class="col-xs-3">
                     <img @*src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/@icon"*@ title="@row["FromName"]" alt="@row["FromId"]" src="@row["FromProfileUrl"]" id="formprofileurl_@sorteddatacount" onclick=""@onClick"(this.alt)" class="img-circle" data-toggle="modal" data-target="#profileModal">
                     <img class="img-responsive img-circle" src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/@icon" style="margin-left: 35px; margin-top: -20px;">
@@ -93,10 +93,27 @@
             @* <a href="#">
                                                 <span class="pull-left">View Details</span></a>*@
             <span class="pull-right">
-                @* <i id="task_@row["FromId"]" class="fa fa-thumb-tack fa-fw" data-toggle="modal" data-target="#task"></i>*@
-                <i id="task_@row["FromId"]" class="fa fa-thumb-tack fa-fw" onclick="opentask('@row["Message"]')"></i>
-                <i id="CommentReply_@row["FromId"]" class="fa fa-reply fa-fw" onclick="opnCommentReply('@sorteddatacount', '@network.ToString()', '@row["MessageId"].ToString()', '@row["ProfileId"].ToString()')"></i>
-                <i id="archiveMessage_@row["FromId"]" class="fa fa-folder-open fa-fw form-group" onclick="SaveArchive('@sorteddatacount','@network.ToString()','@row["ProfileId"].ToString()','@row["MessageId"].ToString()','@row["MessageDate"].ToString()')"></i>
+                 @if (row["Network"].ToString()=="facebook")
+                {
+                    Socioboard.Api.FacebookMessage.FacebookMessage ApiobjFacebookMessage = new Socioboard.Api.FacebookMessage.FacebookMessage();
+                    Domain.Socioboard.Domain.FacebookMessage fbmsg = (Domain.Socioboard.Domain.FacebookMessage)new JavaScriptSerializer().Deserialize(ApiobjFacebookMessage.GetMessageDetailByMessageid(row["MessageId"].ToString()), typeof(Domain.Socioboard.Domain.FacebookMessage));
+                    if(fbmsg!=null)
+                    {
+                        if (row["FbLike"].ToString()=="likes")
+                        {
+                        <a id="fblike_@row["MessageId"]" class="" onclick="facebookLikeUnlike('@fbmsg.Id.ToString()', '@row["ProfileId"]', '@row["MessageId"]')" title="Unlike this" status="@row["FbLike"]" style="cursor:pointer;color:black">Unlike</a>
+                        }
+                        else
+                        {
+                        <a id="fblike_@row["MessageId"]" class="" onclick="facebookLikeUnlike('@fbmsg.Id.ToString()', '@row["ProfileId"]', '@row["MessageId"]')" title="Like this" status="@row["FbLike"]" style="cursor:pointer;color:black">Like</a>
+                        }
+                    }
+                }
+                 @*<i id="task_@row["FromId"]" class="fa fa-thumb-tack fa-fw" data-toggle="modal" data-target="#task"></i>*@
+                <i id="task_@row["FromId"]" class="fa fa-thumb-tack fa-fw" title="Task" onclick="opentask('@row["Message"]')" style="cursor:pointer"></i>
+                <i id="CommentReply_@row["FromId"]" class="fa fa-reply fa-fw" title="Comment" onclick="opnCommentReply('@sorteddatacount', '@network.ToString()', '@row["MessageId"].ToString()', '@row["ProfileId"].ToString()')" style="cursor:pointer"></i>
+                <i id="archiveMessage_@row["FromId"]" class="fa fa-folder-open fa-fw form-group" title="Archive" onclick="SaveArchive('@sorteddatacount','@network.ToString()','@row["ProfileId"].ToString()','@row["MessageId"].ToString()','@row["MessageDate"].ToString()')" style="cursor:pointer"></i>
+                <i onclick="MailPopUpMsg('@row["MessageId"].ToString()','@row["Network"]');" id="mailmessage_@sorteddatacount" style="cursor:pointer"><img width="16" height="13" border="none" alt="" src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/icon-messages.png" title="Email"></i>
             </span>
             <div class="clearfix"></div>
 
@@ -118,11 +135,12 @@
 @* Looping End *@
 
 <!-- Modal -->
-<div class="modal fade" id="task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+ <div class="modal fade" id="task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
 
-            <div class="modal-header">
+            <div class="modal-header" style="height: 48px">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 @* <img src="Contents/img/photo.png" class="img-circle">
                                                 <img class="img-responsive img-circle" src="Contents/img/twticon.png" style="margin-left: 35px; margin-top: -20px;">*@

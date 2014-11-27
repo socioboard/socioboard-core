@@ -62,5 +62,32 @@ namespace GlobusGooglePlusLib.Youtube.Core
             return response;
         }
 
+
+
+        public string Get_Channel_List_serarch(string accesstoken, string search)
+        {
+           // string RequestUrl = "https://www.googleapis.com/youtube/v3/channels?part=" + part + "&id=" + Id + "&key=" + accesstoken;
+            string RequestUrl = "https://www.googleapis.com/plus/v1/activities?query=salman&key=" + accesstoken;
+            Uri path = new Uri(RequestUrl);
+            string[] header = { "Authorization", "X-JavaScript-User-Agent" };
+            string[] val = { "Bearer " + accesstoken, "Google APIs Explorer" };
+            string response = string.Empty;
+            try
+            {
+                response = objoAuthTokenYoutube.WebRequestHeader(path, header, val, GlobusGooglePlusLib.Authentication.oAuthToken.Method.GET.ToString());
+                //if (!response.StartsWith("["))
+                //    response = "[" + response + "]";
+            }
+            catch (Exception Err)
+            {
+                Console.Write(Err.StackTrace);
+            }
+
+            return response;
+        }
+
+
+
+
     }
 }

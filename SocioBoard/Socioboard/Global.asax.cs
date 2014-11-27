@@ -25,6 +25,7 @@ namespace Socioboard
             ViewEngines.Engines.Add(new CustomViewLocationRazorViewEngine());
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
+           // GlobalFilters.Filters.Add(new MyExpirePageActionFilterAttribute());
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
@@ -35,5 +36,6 @@ namespace Socioboard
             // Code that runs when a new session is started
             Session.Timeout = 60;
         }
+        
     }
 }

@@ -1,0 +1,35 @@
+﻿@{
+    //Layout = null;
+}
+
+
+
+
+
+<div class="col-sm-5 col-sm-offset-4" style="margin-top: 90px;">
+
+    <div class="panel panel-primary">
+        <div class="panel panel-heading"> Confirm User Activation</div>
+        <div class="panel-body">
+           @* <a href="#" class="pull-right" style="margin-top: -20px;">Login</a>*@
+            <div class="row">
+                <div class="col-sm-7 col-sm-offset-2">
+                    First Activate your Account.
+                    For this please check your mail.
+
+                    OR 
+
+                    For again sending Mail 
+                    Please click here....
+                    <form method="post" id="emailid">
+                       @* <input type="text" class="input-lg form-control" name="EmailId" id="EId" placeholder="Enter Your Email Id" autocomplete="off">*@
+                        <br>
+                        <button id="sendMailBtn" type="button" class="btn btn-success" onclick="ResentActivationMail('@ViewBag.Email')">SEND MAIL</button>
+                        @*  <input type="submit" class="col-xs-6 btn btn-success btn-load btn-lg" value="SUBMIT" onclick="sendmail()">*@
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

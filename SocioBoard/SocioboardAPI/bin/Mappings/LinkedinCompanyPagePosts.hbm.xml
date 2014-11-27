@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+
+  <class name="LinkedinCompanyPagePosts" table="LinkedinCompanyPagePosts" lazy="false">
+    <id name="Id" column="Id" >
+      <generator class="guid"/>
+    </id>
+    <property name="Posts">
+      <column name="Posts" />
+    </property>
+    <property name="PostDate">
+      <column name="PostDate"  />
+    </property>
+    <property name="EntryDate">
+      <column name="EntryDate"  />
+    </property>
+    <property name="UserId">
+      <column name="UserId"  />
+    </property>
+    <property name="Type">
+      <column name="Type" />
+    </property>
+
+    <property name="PostId">
+      <column name="PostId" />
+    </property>
+
+    <property name="UpdateKey">
+      <column name="UpdateKey" />
+    </property>
+
+    <property name="PageId">
+      <column name="PageId" />
+    </property>
+    <property name="PostImageUrl">
+      <column name="PostImageUrl"  />
+    </property>
+
+    <property name="Likes">
+      <column name="Likes"  />
+    </property>
+
+    <property name="Comments">
+      <column name="Comments"  />
+    </property>
+
+    <property name="IsLiked">
+      <column name="IsLiked"  />
+    </property>
+  </class>
+</hibernate-mapping>

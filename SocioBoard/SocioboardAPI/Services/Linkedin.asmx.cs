@@ -45,6 +45,9 @@ namespace Api.Socioboard.Services
         public string GetLinkedinRedirectUrl(string consumerKey, string consumerSecret)
         {
             logger.Error("GetLinkedinRedirectUrl()");
+
+            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
+
             string authLink = string.Empty;
             oAuthLinkedIn Linkedin_oauth = new oAuthLinkedIn();
             Linkedin_oauth.ConsumerKey = consumerKey;
@@ -62,6 +65,9 @@ namespace Api.Socioboard.Services
             try
             {
                 logger.Error("AddLinkedinAccount()");
+
+                System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
+
                 string ret = string.Empty;
                 LinkedInProfile objProfile = new LinkedInProfile();
                 LinkedInProfile.UserProfile objUserProfile = new LinkedInProfile.UserProfile();
@@ -277,6 +283,8 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetLinkedUserUpdates(string profileid, string UserId)
         {
+            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
+
             string authLink = string.Empty;
             LinkedInAccountRepository linkedinAccRepo = new LinkedInAccountRepository();
             LinkedInAccount linkacc = linkedinAccRepo.getUserInformation(Guid.Parse(UserId), profileid);
@@ -378,7 +386,7 @@ namespace Api.Socioboard.Services
             
 
          }
-        [WebMethod]
+         [WebMethod]
          [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
          public string LikeOnLinkedinPost(string GpPostid, string LinkedinUserId, string islike,string userid)
          {
@@ -676,6 +684,31 @@ namespace Api.Socioboard.Services
 
          }
 
+         [WebMethod]
+         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+         public string LinkedinProfileDetails(string Userid, string ProfileId)
+         {
+             Domain.Socioboard.Domain.LinkedInAccount objLinkedinAccount = new Domain.Socioboard.Domain.LinkedInAccount();
+             objLinkedinAccount = objLinkedInAccountRepository.getUserInformation(Guid.Parse(Userid), ProfileId);
+             return new JavaScriptSerializer().Serialize(objLinkedinAccount);
+         }
+
+         [WebMethod]
+         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+         public string UpdateLinkedinAccountByAdmin(string ObjLinkedin)
+         {
+             Domain.Socioboard.Domain.LinkedInAccount objLinkedinAccount = (Domain.Socioboard.Domain.LinkedInAccount)(new JavaScriptSerializer().Deserialize(ObjLinkedin, typeof(Domain.Socioboard.Domain.LinkedInAccount)));
+             try
+             {
+                 objLinkedInAccountRepository.updateLinkedinUser(objLinkedinAccount);
+                 return new JavaScriptSerializer().Serialize("Update Successfully");
+             }
+             catch (Exception ex)
+             {
+                 Console.WriteLine(ex.StackTrace);
+                 return new JavaScriptSerializer().Serialize("Something went Wrong");
+             }
+         }
 
     }
 }

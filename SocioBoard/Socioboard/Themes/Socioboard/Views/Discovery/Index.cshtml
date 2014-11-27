@@ -20,14 +20,17 @@
         $("#discovery").children().addClass('active');
         LoadDiscoveryPage();
         $('#searchdiscovery').on('click', function () {
-            var keyword = $('#txtsearch').val();
+            debugger;
+            var keyword = encodeURIComponent($("#txtsearch").val());
             if (keyword == "")
             {
                 alertify.error('Please Enter A Keyword');
                 return;
             }
+            $('#facebookdiscovery').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />');
+            $('#twitterdiscovery').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />');
             $.ajax({
-                type: 'POST',
+                type: 'GET',
                 url: '../Discovery/SearchFacebook?keyword=' + keyword,
                 success: function (msg) {
                     //alert(msg);
@@ -35,7 +38,7 @@
                 }
             });
             $.ajax({
-                type: 'POST',
+                type: 'GET',
                 url: '../Discovery/SearchTwitter?keyword=' + keyword,
                 success: function (msg) {
                     //alert(msg);

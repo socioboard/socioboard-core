@@ -9,7 +9,7 @@
     }
 
     function changesetting(id) {
-        alert('asdasd');
+        debugger;
         var fn = $('#fname').val();
         var ln = $('#lname').val();
         var email = $('#email').val();
@@ -22,8 +22,17 @@
         if (ln == "") {
             alertify.error('Please enter Last Name');
             return false;
-            }
+        }
+        if (fn.search(/[a-zA-Z]/) == -1)
+        {
+            alertify.error('Please enter a Proper First Name which contain Character');
+            return false;
+        }
        
+        if (ln.search(/[a-zA-Z]/) == -1) {
+            alertify.error('Please enter a Proper Last Name which contain Character');
+            return false;
+        }
         
         $.ajax({
             type: 'POST',
@@ -42,11 +51,94 @@
         });
     }
 
+    // Edited by Antima
+
+    function AddImage() {
+        debugger;
+        var filesinput = $('#uploadImage');
+        var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+        if (filesinput != undefined && filesinput[0].files[0] != null) {
+            if (hasExtension('uploadImage', fileExtension)) {
+                $('#showRemoveImage').css('display', 'block');
+            }
+            else {
+                alertify.set({ delay: 3000 });
+                alertify.error("File Extention is not current. Please upload any image file");
+                $('#uploadImage').val('');
+                return;
+            }
+
+        }
+    }
+
+    function Upgradeplan(e) {
+        debugger;
+        var UpgradeType = $(e).attr('id');
+        $.ajax({
+            type: 'POST',
+            url: '../PersonalSetting/PaypalUpgradePlan?UpgradeType=' + UpgradeType,
+            success: function (msg) {
+                window.open(msg);
+            },
+            async: false
+        });
+    }
+
     $(document).ready(function () {
         loadpersonalsetting();
         $('#savepersonalsetting').live('click', 'savepersonalsetting', function () {
             alert('asdasd');
         });
     });
+
+    function changePassword(EmailId) {
+       
+        var op = $('#oldpass').val();
+        var np = $('#newpass').val();
+        var cp = $('#confirmpass').val();
+        var dt = $('#ContentPlaceHolder1_ddlTimeZone :selected').text();
+        if (op == "") {
+            alertify.error('Please enter Old Password');
+            return false;
+        }
+        if (np == "") {
+            alertify.error('Please enter New Password');
+            return false;
+        }
+        if (cp == "") {
+            alertify.error('Please confirm Password');
+            return false;
+        }
+       
+
+        $.ajax({
+            type: 'POST',
+            url: '../PersonalSetting/ChangePassword?id=' + EmailId + '&oldpass=' + op + '&newpass=' + np + '&confirmpass=' + cp,
+            //alert('yes');
+            success: function (msg) {
+                if (msg == "Password Changed Successfully") {
+                    alertify.success('Password Changed Successfully');
+                    $('#ResetModal').modal('hide');
+                }
+                else if (msg == "Invalid EmailId or Password") {
+                    alertify.success('Invalid EmailId or Password');
+                }
+                else if (msg == "New Password and Confirm Password mismatch") {
+                    alertify.success("New Password and Confirm Password mismatch");
+                   
+                }
+                else {
+                    alertify.error('Error please check');
+
+                }
+                $('#oldpass').val('');
+                $('#newpass').val('');
+                $('#confirmpass').val('');
+                // $('#feeds').html('').append(msg);
+                // window.location = self.location;
+            },
+            async: false
+        });
+    }
 
 </script>

@@ -83,6 +83,44 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+        // Edited by Antima
+
+        /// <getAllLinkedInFeedsOfUser>
+        /// Get the all linkedIn Feeds Of User
+        /// </summary>
+        /// <param name="UserId">id of user account(Guid)</param>
+        /// <param name="profileid">Profile id of linkedin (String)</param>
+        /// <returns>Return object of LinkedInFeed Class with value of each member in the form of list.(List<LinkedInFeed>)</returns>
+        public List<Domain.Socioboard.Domain.LinkedInFeed> getAllLinkedInFeedsOfUser(Guid UserId, string profileid, int count)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction. 
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get linkedin feeds
+                        List<Domain.Socioboard.Domain.LinkedInFeed> alst = session.CreateQuery("from LinkedInFeed where UserId = :userid and ProfileId = :profileId")
+                        .SetParameter("userid", UserId)
+                        .SetParameter("profileId", profileid)
+                        .SetFirstResult(count)
+                        .SetMaxResults(10)
+                        .List<Domain.Socioboard.Domain.LinkedInFeed>()
+                        .ToList<Domain.Socioboard.Domain.LinkedInFeed>();
+
+                        return alst;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End Session
+        }
 
         /// <checkLinkedInFeedExists>
         /// Check Linkedin feed is exists or not.
@@ -232,6 +270,39 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+        // Edited by Antima
+
+        public List<Domain.Socioboard.Domain.LinkedInFeed> getAllLinkedInFeedsOfProfileWithId(string ProfileId, string Id)
+        {
+            List<Domain.Socioboard.Domain.LinkedInFeed> objlist = new List<Domain.Socioboard.Domain.LinkedInFeed>();
+
+            Guid id = Guid.Parse(Id);
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction. 
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get all feed of account
+                        objlist = session.CreateQuery("from LinkedInFeed where ProfileId = :ProfileId and Id = :Id")
+                        .SetParameter("ProfileId", ProfileId)
+                        .SetParameter("Id", id)
+                        .List<Domain.Socioboard.Domain.LinkedInFeed>()
+                        .ToList<Domain.Socioboard.Domain.LinkedInFeed>();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End Session
+            return objlist;
+        }
 
     }
 }

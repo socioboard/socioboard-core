@@ -32,7 +32,7 @@ namespace SocioboardDataServices
         //           //itemTwt.UserId=ApiObjTwitterAccount.
         //            Api.TwitterAccount.TwitterAccount ApiobjTwitterAccount = new Api.TwitterAccount.TwitterAccount();
         //            ret=ApiobjTwitterAccount.getTwitterData(
-                   
+
         //        }
         //    }
         //    catch (Exception ex)
@@ -408,8 +408,8 @@ namespace SocioboardDataServices
         //}
 
 
-       // public void GetData(object UserId)
-            public string GetData(object UserId, string profileid)
+        // public void GetData(object UserId)
+        public string GetData(object UserId, string profileid)
         {
             string ret = string.Empty;
             try
@@ -418,13 +418,13 @@ namespace SocioboardDataServices
                 //string ret = string.Empty;
                 Api.TwitterAccount.TwitterAccount ApiObjTwitterAccount = new Api.TwitterAccount.TwitterAccount();
                 List<Domain.Socioboard.Domain.TwitterAccount> lstTwitterAccount = (List<Domain.Socioboard.Domain.TwitterAccount>)(new JavaScriptSerializer().Deserialize(ApiObjTwitterAccount.getAllTwitterAccountsOfUser(userId.ToString()), typeof(List<Domain.Socioboard.Domain.TwitterAccount>)));
-                
+
                 foreach (TwitterAccount itemTwt in lstTwitterAccount)
                 {
-                    
+
                     Api.Twitter.Twitter ApiObjTwitter = new Api.Twitter.Twitter();
-                    ret=ApiObjTwitter.getTwitterData(itemTwt.UserId.ToString(), itemTwt.TwitterUserId);
-                    
+                    ret = ApiObjTwitter.getTwitterData(itemTwt.UserId.ToString(), itemTwt.TwitterUserId);
+
                 }
                 return ret;
             }

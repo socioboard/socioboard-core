@@ -9,7 +9,7 @@ using System.IO;
 
 namespace GlobusLinkedinLib.LinkedIn.Core.PeopleMethods
 {
-    class People
+    public class People
     {
         private XmlDocument xmlResult;
         public People()

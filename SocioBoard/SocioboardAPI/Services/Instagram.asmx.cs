@@ -14,6 +14,7 @@ using Api.Socioboard.Helper;
 using GlobusInstagramLib.Authentication;
 using GlobusInstagramLib.App.Core;
 using log4net;
+using System.Collections;
 
 namespace Api.Socioboard.Services
 {
@@ -391,6 +392,39 @@ namespace Api.Socioboard.Services
                 Console.WriteLine(ex.StackTrace);     
             }
             return str;
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllInstagramAccounts()
+        {
+            try
+            {
+                ArrayList lstLiAcc = objInstagramAccountRepository.getAllInstagramAccounts();
+                return new JavaScriptSerializer().Serialize(lstLiAcc);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string UpdateInstagramAccountByAdmin(string ObjInstagram)
+        {
+            Domain.Socioboard.Domain.InstagramAccount ObjInstagramAccount = (Domain.Socioboard.Domain.InstagramAccount)(new JavaScriptSerializer().Deserialize(ObjInstagram, typeof(Domain.Socioboard.Domain.InstagramAccount)));
+            try
+            {
+                objInstagramAccountRepository.updateInstagramUser(ObjInstagramAccount);
+                return new JavaScriptSerializer().Serialize("Update Successfully");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return new JavaScriptSerializer().Serialize("Something went Wrong");
+            }
         }
        
     }

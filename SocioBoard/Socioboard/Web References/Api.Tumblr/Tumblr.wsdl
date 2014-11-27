@@ -100,6 +100,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="UpdateTumblrAccountByAdmin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObjTumblr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateTumblrAccountByAdminResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateTumblrAccountByAdminResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -138,6 +152,12 @@
   </wsdl:message>
   <wsdl:message name="TumblrComposeMessageSoapOut">
     <wsdl:part name="parameters" element="tns:TumblrComposeMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTumblrAccountByAdminSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateTumblrAccountByAdmin" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTumblrAccountByAdminSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateTumblrAccountByAdminResponse" />
   </wsdl:message>
   <wsdl:message name="GetTumblrRedirectUrlHttpGetIn">
     <wsdl:part name="consumerKey" type="s:string" />
@@ -187,6 +207,12 @@
     <wsdl:part name="picurl" type="s:string" />
   </wsdl:message>
   <wsdl:message name="TumblrComposeMessageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTumblrAccountByAdminHttpGetIn">
+    <wsdl:part name="ObjTumblr" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTumblrAccountByAdminHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetTumblrRedirectUrlHttpPostIn">
@@ -239,6 +265,12 @@
   <wsdl:message name="TumblrComposeMessageHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="UpdateTumblrAccountByAdminHttpPostIn">
+    <wsdl:part name="ObjTumblr" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTumblrAccountByAdminHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="TumblrSoap">
     <wsdl:operation name="GetTumblrRedirectUrl">
       <wsdl:input message="tns:GetTumblrRedirectUrlSoapIn" />
@@ -263,6 +295,10 @@
     <wsdl:operation name="TumblrComposeMessage">
       <wsdl:input message="tns:TumblrComposeMessageSoapIn" />
       <wsdl:output message="tns:TumblrComposeMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTumblrAccountByAdmin">
+      <wsdl:input message="tns:UpdateTumblrAccountByAdminSoapIn" />
+      <wsdl:output message="tns:UpdateTumblrAccountByAdminSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TumblrHttpGet">
@@ -290,6 +326,10 @@
       <wsdl:input message="tns:TumblrComposeMessageHttpGetIn" />
       <wsdl:output message="tns:TumblrComposeMessageHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="UpdateTumblrAccountByAdmin">
+      <wsdl:input message="tns:UpdateTumblrAccountByAdminHttpGetIn" />
+      <wsdl:output message="tns:UpdateTumblrAccountByAdminHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TumblrHttpPost">
     <wsdl:operation name="GetTumblrRedirectUrl">
@@ -315,6 +355,10 @@
     <wsdl:operation name="TumblrComposeMessage">
       <wsdl:input message="tns:TumblrComposeMessageHttpPostIn" />
       <wsdl:output message="tns:TumblrComposeMessageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTumblrAccountByAdmin">
+      <wsdl:input message="tns:UpdateTumblrAccountByAdminHttpPostIn" />
+      <wsdl:output message="tns:UpdateTumblrAccountByAdminHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="TumblrSoap" type="tns:TumblrSoap">
@@ -366,6 +410,15 @@
     </wsdl:operation>
     <wsdl:operation name="TumblrComposeMessage">
       <soap:operation soapAction="http://tempuri.org/TumblrComposeMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTumblrAccountByAdmin">
+      <soap:operation soapAction="http://tempuri.org/UpdateTumblrAccountByAdmin" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -430,6 +483,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="UpdateTumblrAccountByAdmin">
+      <soap12:operation soapAction="http://tempuri.org/UpdateTumblrAccountByAdmin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="TumblrHttpGet" type="tns:TumblrHttpGet">
     <http:binding verb="GET" />
@@ -487,6 +549,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="UpdateTumblrAccountByAdmin">
+      <http:operation location="/UpdateTumblrAccountByAdmin" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="TumblrHttpPost" type="tns:TumblrHttpPost">
     <http:binding verb="POST" />
@@ -537,6 +608,15 @@
     </wsdl:operation>
     <wsdl:operation name="TumblrComposeMessage">
       <http:operation location="/TumblrComposeMessage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTumblrAccountByAdmin">
+      <http:operation location="/UpdateTumblrAccountByAdmin" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

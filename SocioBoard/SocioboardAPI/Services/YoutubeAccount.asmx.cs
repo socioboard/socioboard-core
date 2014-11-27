@@ -1,6 +1,7 @@
 ﻿using Api.Socioboard.Helper;
 using Api.Socioboard.Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -107,6 +108,25 @@ namespace Api.Socioboard.Services
                 return "Something Went Wrong";
             }
         }
+
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllYoutubeAccounts()
+        {
+            try
+            {
+                YoutubeAccountRepository objyoutube = new YoutubeAccountRepository();
+                List<Domain.Socioboard.Domain.YoutubeAccount> lstYoutubeAcc = objyoutube.getAllYoutubeAccounts();
+                return new JavaScriptSerializer().Serialize(lstYoutubeAcc);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+
 
 
 

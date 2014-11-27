@@ -28,9 +28,14 @@ namespace SocioboardDataServices
                 //FacebookHelper objFbHelper = new FacebookHelper();
                 try
                 {
-
+                    //Facebook profile data
                     Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
                     ret = ApiobjFacebook.GetFacebookData(itemFb.FbUserId, itemFb.UserId.ToString());
+
+
+                    //Add Facebook Stats
+                    Api.FacebookStats.FacebookStats _FacebookStats = new Api.FacebookStats.FacebookStats();
+                    bool abc = _FacebookStats.AddFacebookFriendsGender(itemFb.UserId.ToString(), itemFb.FbUserId);
 
                 }
                 catch (Exception Err)

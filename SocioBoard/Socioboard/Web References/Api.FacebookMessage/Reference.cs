@@ -41,6 +41,14 @@ namespace Socioboard.Api.FacebookMessage {
         
         private System.Threading.SendOrPostCallback getAllFacebookMessagesOfUserByProfileIdOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getAllFacebookTagOfUsersOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getAllFacebookstatusOfUsersOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getAllFacebookUserFeedOfUsersOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetMessageDetailByMessageidOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -96,6 +104,18 @@ namespace Socioboard.Api.FacebookMessage {
         
         /// <remarks/>
         public event getAllFacebookMessagesOfUserByProfileIdCompletedEventHandler getAllFacebookMessagesOfUserByProfileIdCompleted;
+        
+        /// <remarks/>
+        public event getAllFacebookTagOfUsersCompletedEventHandler getAllFacebookTagOfUsersCompleted;
+        
+        /// <remarks/>
+        public event getAllFacebookstatusOfUsersCompletedEventHandler getAllFacebookstatusOfUsersCompleted;
+        
+        /// <remarks/>
+        public event getAllFacebookUserFeedOfUsersCompletedEventHandler getAllFacebookUserFeedOfUsersCompleted;
+        
+        /// <remarks/>
+        public event GetMessageDetailByMessageidCompletedEventHandler GetMessageDetailByMessageidCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UserHomeWithLimit", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -284,6 +304,128 @@ namespace Socioboard.Api.FacebookMessage {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAllFacebookTagOfUsers", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getAllFacebookTagOfUsers(string UserId, string ProfileId) {
+            object[] results = this.Invoke("getAllFacebookTagOfUsers", new object[] {
+                        UserId,
+                        ProfileId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAllFacebookTagOfUsersAsync(string UserId, string ProfileId) {
+            this.getAllFacebookTagOfUsersAsync(UserId, ProfileId, null);
+        }
+        
+        /// <remarks/>
+        public void getAllFacebookTagOfUsersAsync(string UserId, string ProfileId, object userState) {
+            if ((this.getAllFacebookTagOfUsersOperationCompleted == null)) {
+                this.getAllFacebookTagOfUsersOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAllFacebookTagOfUsersOperationCompleted);
+            }
+            this.InvokeAsync("getAllFacebookTagOfUsers", new object[] {
+                        UserId,
+                        ProfileId}, this.getAllFacebookTagOfUsersOperationCompleted, userState);
+        }
+        
+        private void OngetAllFacebookTagOfUsersOperationCompleted(object arg) {
+            if ((this.getAllFacebookTagOfUsersCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAllFacebookTagOfUsersCompleted(this, new getAllFacebookTagOfUsersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAllFacebookstatusOfUsers", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getAllFacebookstatusOfUsers(string UserId, string ProfileId) {
+            object[] results = this.Invoke("getAllFacebookstatusOfUsers", new object[] {
+                        UserId,
+                        ProfileId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAllFacebookstatusOfUsersAsync(string UserId, string ProfileId) {
+            this.getAllFacebookstatusOfUsersAsync(UserId, ProfileId, null);
+        }
+        
+        /// <remarks/>
+        public void getAllFacebookstatusOfUsersAsync(string UserId, string ProfileId, object userState) {
+            if ((this.getAllFacebookstatusOfUsersOperationCompleted == null)) {
+                this.getAllFacebookstatusOfUsersOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAllFacebookstatusOfUsersOperationCompleted);
+            }
+            this.InvokeAsync("getAllFacebookstatusOfUsers", new object[] {
+                        UserId,
+                        ProfileId}, this.getAllFacebookstatusOfUsersOperationCompleted, userState);
+        }
+        
+        private void OngetAllFacebookstatusOfUsersOperationCompleted(object arg) {
+            if ((this.getAllFacebookstatusOfUsersCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAllFacebookstatusOfUsersCompleted(this, new getAllFacebookstatusOfUsersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAllFacebookUserFeedOfUsers", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getAllFacebookUserFeedOfUsers(string UserId, string ProfileId) {
+            object[] results = this.Invoke("getAllFacebookUserFeedOfUsers", new object[] {
+                        UserId,
+                        ProfileId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAllFacebookUserFeedOfUsersAsync(string UserId, string ProfileId) {
+            this.getAllFacebookUserFeedOfUsersAsync(UserId, ProfileId, null);
+        }
+        
+        /// <remarks/>
+        public void getAllFacebookUserFeedOfUsersAsync(string UserId, string ProfileId, object userState) {
+            if ((this.getAllFacebookUserFeedOfUsersOperationCompleted == null)) {
+                this.getAllFacebookUserFeedOfUsersOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAllFacebookUserFeedOfUsersOperationCompleted);
+            }
+            this.InvokeAsync("getAllFacebookUserFeedOfUsers", new object[] {
+                        UserId,
+                        ProfileId}, this.getAllFacebookUserFeedOfUsersOperationCompleted, userState);
+        }
+        
+        private void OngetAllFacebookUserFeedOfUsersOperationCompleted(object arg) {
+            if ((this.getAllFacebookUserFeedOfUsersCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAllFacebookUserFeedOfUsersCompleted(this, new getAllFacebookUserFeedOfUsersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetMessageDetailByMessageid", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetMessageDetailByMessageid(string MessageId) {
+            object[] results = this.Invoke("GetMessageDetailByMessageid", new object[] {
+                        MessageId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetMessageDetailByMessageidAsync(string MessageId) {
+            this.GetMessageDetailByMessageidAsync(MessageId, null);
+        }
+        
+        /// <remarks/>
+        public void GetMessageDetailByMessageidAsync(string MessageId, object userState) {
+            if ((this.GetMessageDetailByMessageidOperationCompleted == null)) {
+                this.GetMessageDetailByMessageidOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetMessageDetailByMessageidOperationCompleted);
+            }
+            this.InvokeAsync("GetMessageDetailByMessageid", new object[] {
+                        MessageId}, this.GetMessageDetailByMessageidOperationCompleted, userState);
+        }
+        
+        private void OnGetMessageDetailByMessageidOperationCompleted(object arg) {
+            if ((this.GetMessageDetailByMessageidCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetMessageDetailByMessageidCompleted(this, new GetMessageDetailByMessageidCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -445,6 +587,110 @@ namespace Socioboard.Api.FacebookMessage {
         private object[] results;
         
         internal getAllFacebookMessagesOfUserByProfileIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void getAllFacebookTagOfUsersCompletedEventHandler(object sender, getAllFacebookTagOfUsersCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAllFacebookTagOfUsersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAllFacebookTagOfUsersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void getAllFacebookstatusOfUsersCompletedEventHandler(object sender, getAllFacebookstatusOfUsersCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAllFacebookstatusOfUsersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAllFacebookstatusOfUsersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void getAllFacebookUserFeedOfUsersCompletedEventHandler(object sender, getAllFacebookUserFeedOfUsersCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAllFacebookUserFeedOfUsersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAllFacebookUserFeedOfUsersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetMessageDetailByMessageidCompletedEventHandler(object sender, GetMessageDetailByMessageidCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetMessageDetailByMessageidCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetMessageDetailByMessageidCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

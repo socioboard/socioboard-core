@@ -52,7 +52,7 @@ namespace GlobusLinkedinLib.LinkedIn.Core.ShareAndSocialStreamMethods
         }
         public XmlDocument Get_GroupPostData(oAuthLinkedIn OAuth, int Count,string groupid)
         {
-            string posturl = "https://api.linkedin.com/v1/groups/" + groupid + "/posts:(creation-timestamp,id,title,summary,creator:(first-name,last-name,picture-url,headline,id),likes,comments,attachment:(image-url,content-domain,content-url,title,summary),relation-to-viewer)?category=discussion&order=recency&count=20";
+            string posturl = "https://api.linkedin.com/v1/groups/" + groupid + "/posts:(creation-timestamp,id,title,summary,creator:(first-name,last-name,picture-url,headline,id),likes,comments,attachment:(image-url,content-domain,content-url,title,summary),relation-to-viewer)?category=discussion&order=recency&count=50";
       
             string response = OAuth.APIWebRequest("GET", posturl, null);
             if (response != "")

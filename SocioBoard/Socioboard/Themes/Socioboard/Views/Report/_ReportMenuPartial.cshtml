@@ -24,7 +24,7 @@
                 @foreach (var facebook in lstFacebookAccount)
                 {
                     FacebookAccount objFacebookAccount = (FacebookAccount)facebook;
-                    <li onclick="check();">
+                    <li onclick="GetFbPageDetails('@objFacebookAccount.FbUserId','@objFacebookAccount.UserId');">
                         <a href="#">@objFacebookAccount.FbUserName</a>
                     </li> 
                 }

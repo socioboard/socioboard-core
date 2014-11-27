@@ -1,5 +1,10 @@
 ﻿@{
+    
+    Layout = null;
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+
+        //if (Session["User"] != null)
+        //    Response.Redirect("../Home/Index");
 }
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -26,18 +31,20 @@
     <script src="~/Themes/@path/Contents/js/googleanalytics.js" type="text/javascript"></script>
     <script src="~/Themes/@path/Contents/js/clickDesk.js" type="text/javascript"></script>
     <!-- Bootstrap Core CSS -->
-    <link href="~/Themes/@path/Contents/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/Themes/@path/Contents/css/sb-admin-2.css" rel="stylesheet">
+    <link href="~/Themes/@path/Contents/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Themes/@path/Contents/css/sb-admin-2.css" rel="stylesheet" />
     <!-- Custom CSS -->
-    <link href="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/css/stylish-portfolio.css" rel="stylesheet">
+    <link href="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/css/stylish-portfolio.css" rel="stylesheet" />
 
     <!-- Custom Fonts -->
     <link href="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    
+
     <link rel="Stylesheet" type="text/css" href="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/css/smoothDivScroll.css" />
-       <script src="/Themes/@path/Contents/js/alertify.min.js" type="text/javascript"></script>
+    <script src="/Themes/@path/Contents/js/alertify.min.js" type="text/javascript"></script>
     <link href="/Themes/@path/Contents/css/alertify.core.css" rel="stylesheet" type="text/css" />
     <link href="/Themes/@path/Contents/css/alertify.default.css" rel="stylesheet" type="text/css" id="toggleCSS" />
+
+    <script src="/Themes/@path/Contents/js/ads.js" type="text/javascript"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -69,6 +76,12 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav pull-right">
+                         @*Edited by Antima[24/11/2014]*@
+                         <li>
+                             @*<button class="btn btn-success btn-sm" data-toggle="modal" data-target="#helpModal" style="margin-top: 10px;">HELP</button>*@
+                     
+                            <a data-toggle="modal" data-target="#helpModal" style="cursor:pointer">Help</a>
+                        </li>
                         <li>
                             <a href="../Index/Company" target="">Company</a>
                         </li>
@@ -97,6 +110,9 @@
                         <li>
                             <a href="../Index/Download" target="">Download</a>
                         </li>
+                         <li>
+                            <a href="../Home/Training" target="">Training</a>
+                        </li>
                         <li>
                             <a href="../Index/contact" target="">Contact Us</a>
                         </li>
@@ -118,49 +134,92 @@
                     </div>
                     <div class="modal-body col-md-12">
                         <div class="col-md-6">
-                            <div class="input-group">
+                            <div class="input-group" style="padding-bottom: 27px;">
                                 <span class="input-group-addon">*</span>
-                                <input id="txtEmail" type="text" class="form-control" placeholder="Username" />
+                                <input id="txtEmail" type="text" class="form-control" placeholder="Email" onblur="retpwd();" />
                             </div>
-                            <hr class="small" />
+                            @*   <hr class="small" />*@
                             <div class="input-group">
                                 <span class="input-group-addon">*</span>
                                 <input type="password" class="form-control" id="txtPassword" placeholder="Password" />
                             </div>
-                            </br>
-                            <p id="signinpasswordMessages"></p>
-                            <p>Forgot password? &nbsp <a href="http://www.socioboard.com/ForgotPassword.aspx">Click here to restore</a></p>
-                            <hr class="small" />
+                            <br />
+                            <p id="signinpasswordMessages" style="color: red"></p>
+
+                            <div class="remember_me" style="padding-bottom: 16px; margin-top: -8px">
+                                <input type="checkbox" id="RememberMe">
+                                Remember me
+                            </div>
+                            <p>Forgot Password? <a href="../ForgotPassword/Index">Click here to restore</a></p>
+                            @* <hr class="small" />*@
                             <div id="btnlogin" onclick="signinFunction();">
                                 <button type="button" class="btn btn-warning">Login</button>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group">
-                                <p>You can also Register with your social account</p>
+                                <p>You can also Register with your Social Account</p>
                             </div>
-
                             <div class="input-group">
                                 <a id="fb_account" href="#" onclick="googleplusLogin();">
                                     <img src="/Themes/@path/Contents/img/google_icon.png" alt="">
                                 </a>
-
                                 <a id="fb_account" href="#" onclick="facebookLogin();">
-                                    <img src="/Themes/@path/Contents/img/fb_icon_lgn.png" alt="">
+                                    <img src="/Themes/@path/Contents/img/fb_icon_new.png" alt="">
                                 </a>
-                                <p>Not Yet Registered? &nbsp <a href="../Index/Pricing">Register now!</a></p>
-
+                                <p>Not Yet Registered? &nbsp <a href="../Index/Pricing">Register Now</a></p>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         @* <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>*@
-
                     </div>
                 </div>
             </div>
         </div>
         <!--end of model-->
+
+        @*Edited by Antima[24/11/2014]*@
+
+        <!-- helpModal -->
+        <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="width: 1111px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Help Your Customers</h4>
+                    </div>
+                    <div class="modal-body col-md-12" style="background: beige">
+                        <h2 class="text-center" style="padding-left: 250px">Make a Decision</h2>
+                        <div class="col-md-6">
+                            <!-- 4:3 aspect ratio -->
+                            <div class="embed-responsive embed-responsive-4by3">
+                                <iframe width="640" height="360" src="//www.youtube.com/embed/zpOULjyy-n8?feature=player_embedded" frameborder="0" allowfullscreen></iframe>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Send Video in Email</h5>
+                            <div class="input-group">
+
+                                <label>Enter your Email Address and we'll send you an awesome video email</label>
+                            </div>
+                            <div class="input-group">
+
+                                <span class="input-group-addon"><i class="fa fa-at"></i></span>
+                                <input id="emailaddress" type="text" class="form-control" placeholder="Email ID" />
+                            </div>
+                            <label>Or try it free!!</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success" onclick="SendVideoMail()">Send Mail</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end of helpModal-->
     </div>
 
     <!--end of header-->
@@ -203,7 +262,7 @@
                         </li>
                     </ul>
                     <hr class="small">
-                    <p class="text-muted">COPYRIGHT © 2013 - 2014 SOCIOBOARD TECHNOLOGIES PVT. LTD. ALL RIGHTS RESERVED.</p>
+                    <p class="text-muted">Copyright © 2013 - 2014 SOCIOBOARD Technologies Pvt. Ltd. All Rights Reserved.</p>
                 </div>
             </div>
         </div>
@@ -269,6 +328,18 @@
 
 
     <script type="text/javascript">
+        // Edited by Antima
+
+        function retpwd() {
+            debugger;
+            var email = $("#txtEmail").val();
+            if (email != "") {
+                $("#RememberMe").is(':checked')
+                var pwd = getCookie(email);
+                document.getElementById("txtPassword").value = pwd;
+            }
+        }
+
         $(function () {
             $('#da-slider').cslider({
                 autoplay: true
@@ -342,7 +413,7 @@
         });
 
         // Scrolls to the selected menu item on the page
-     
+
     </script>
 
     <!-- jQuery library - Please load it from Google API's -->
@@ -374,6 +445,51 @@
             });
         });
     </script>
+
+    @*Edited by Antima[24/11/2014]*@
+
+    <script type="text/javascript">
+
+        function SendVideoMail() {
+            debugger;
+            alert("Success");
+            var EmailId = $('#emailaddress').val().trim();
+            if (EmailId != "") {
+                debugger;
+                if (!validateEmail(EmailId)) {
+                    alert('Please enter valid Email ID');
+                    return false;
+                }
+                else {
+                    debugger;
+                    alert("Antima");
+
+                    $.ajax({
+                        type: 'GET',
+                        url: '../Index/SendVideoMail',
+                        data: { "EmailId": EmailId },
+                        success: function (msg) {
+                            alert(msg);
+                            alertify.success("Mail has been send succeefully");
+                        }
+                    });
+                }
+            }
+            else {
+                alert("Please Enter a EMail Address");
+            }
+        }
+
+        function validateEmail($email) {
+            var emailReg = /^([\w-\.]+@@([\w-]+\.)+[\w-]{2,4})?$/;
+            if (!emailReg.test($email)) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+
 
 </body>
 

@@ -16,7 +16,15 @@ namespace Socioboard.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            if (Session["Paid_User"].ToString() == "Unpaid")
+            {
+                return RedirectToAction("Billing", "PersonalSetting");
+            }
+            else
+            {
+                return View();
+            }
+           // return View();
         }
         public ActionResult LoadUserGroup()
         {
@@ -96,30 +104,106 @@ namespace Socioboard.Controllers
             List<Domain.Socioboard.Domain.Team> lstteam = (List<Domain.Socioboard.Domain.Team>)(new JavaScriptSerializer().Deserialize(ApiobjTeam.GetTeamByStatus(selectedgroupid, objUser.Id.ToString(), "1"), typeof(List<Domain.Socioboard.Domain.Team>)));
             return PartialView("_AcceptedUserPartial", lstteam);
         }
+        //public ActionResult AddTeamMember(string email)
+        //{
+        //    string response = string.Empty;
+
+        //    User objUser = (User)Session["User"];
+        //    string selectedgroupid = Session["selectedgroupid"].ToString();
+        //    Api.Team.Team ApiobjTeam = new Api.Team.Team();
+        //    Api.User.User ApiobjUser = new Api.User.User();
+        //    User objuserinfo = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUserInfoByEmail(email), typeof(User)));
+        //    if (objuserinfo != null)
+        //    {
+        //        string[] name = objuserinfo.UserName.Split(' ');
+        //        string fname = name[0];
+        //        string lname = string.Empty;
+        //        for (int i = 1; i < name.Length; i++)
+        //        {
+        //            lname += name[i];
+        //        }
+        //       response = ApiobjTeam.AddTeam(objuserinfo.Id.ToString(), "0", fname, lname, email, "", selectedgroupid, objUser.EmailId, objUser.UserName);
+        //    }
+        //    else
+        //    {
+        //        response = ApiobjTeam.AddTeam(Guid.NewGuid().ToString(), "0", "", "", email, "", selectedgroupid, objUser.EmailId, objUser.UserName);
+        //    }
+        //    //return Content("_AcceptedUserPartial");
+        //    return Content(response);
+        //}
+
+        // Edited by Antima[6/11/2014]
+
         public ActionResult AddTeamMember(string email)
         {
+            //string[] arr = new string[]{};
+            List<string> arr = new List<string>();
+            string[] arr1 = new string[]{};
+            string SentMails = string.Empty;
+            string NotSentMails = string.Empty;
             User objUser = (User)Session["User"];
             string selectedgroupid = Session["selectedgroupid"].ToString();
             Api.Team.Team ApiobjTeam = new Api.Team.Team();
             Api.User.User ApiobjUser = new Api.User.User();
-            User objuserinfo = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUserInfoByEmail(email), typeof(User)));
-            if (objuserinfo != null)
+            if (email.Contains(','))
             {
-                string[] name = objuserinfo.UserName.Split(' ');
-                string fname = name[0];
-                string lname = string.Empty;
-                for (int i = 1; i < name.Length; i++)
-                {
-                    lname += name[i];
-                }
-                ApiobjTeam.AddTeam(objuserinfo.Id.ToString(), "0", fname, lname, email, "", selectedgroupid, objUser.EmailId, objUser.UserName);
+                arr = email.Split(',').ToList();
             }
             else
             {
-                ApiobjTeam.AddTeam(Guid.NewGuid().ToString(), "0", "", "", email, "", selectedgroupid, objUser.EmailId, objUser.UserName);
+               //arr[0] = email;
+                arr.Add(email);
             }
-            return Content("_AcceptedUserPartial");
+
+            foreach (var item in arr)
+            {
+                if (item.Contains(':'))
+                {
+                    arr1 = item.Split(':');
+                }
+
+                string res = "";
+                User objuserinfo = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUserInfoByEmail(arr1[0]), typeof(User)));
+
+                if (objuserinfo != null)
+                {
+                    string[] name = objuserinfo.UserName.Split(' ');
+                    string fname = name[0];
+                    string lname = string.Empty;
+                    for (int i = 1; i < name.Length; i++)
+                    {
+                        lname += name[i];
+                    }
+
+                    res = ApiobjTeam.AddTeam(objuserinfo.Id.ToString(), "0", fname, lname, arr1[0], "", selectedgroupid, objUser.EmailId, objUser.UserName);
+                }
+                else
+                {
+                    res = ApiobjTeam.AddTeam(objUser.Id.ToString(), "0", arr1[1], arr1[2], arr1[0], "", selectedgroupid, objUser.EmailId, objUser.UserName);
+                }
+                //SentMails += res + ',';
+
+                if (!string.IsNullOrEmpty(res) && SentMails != "Something Went Wrong")
+                {
+                    Domain.Socioboard.Domain.Team objDomainTeam = (Domain.Socioboard.Domain.Team)new JavaScriptSerializer().Deserialize(res, typeof(Domain.Socioboard.Domain.Team));
+                    if (objDomainTeam != null)
+                    {
+                        SentMails += objDomainTeam.EmailId + ',';
+                    }
+                }
+                else
+                {
+                    NotSentMails += arr1[0] + ',';
+                }
+            }
+           // return Content("_AcceptedUserPartial");
+
+            SentMails = "{\"SentMails\":" + "\"" + SentMails + "\",\"NotSentMails\":" + "\"" + NotSentMails + "\"}";
+
+                return Content(SentMails);
         }
+
+
 
     }
 }

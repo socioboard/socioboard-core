@@ -8,6 +8,7 @@ using System.Web.Script.Serialization;
 using System.Web.Script.Services;
 using System.Web.Services;
 using Domain.Socioboard.Domain;
+using System.Collections;
 
 namespace Api.Socioboard.Services
 {
@@ -118,6 +119,22 @@ namespace Api.Socioboard.Services
                     }
                 }
                 return new JavaScriptSerializer().Serialize(lstLinkedInAccount);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllLinkedinAccounts()
+        {
+            try
+            {
+                ArrayList lstLiAcc = objlinkedinaccrepo.getAllLinkedinAccounts();
+                return new JavaScriptSerializer().Serialize(lstLiAcc);
             }
             catch (Exception ex)
             {

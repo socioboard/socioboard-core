@@ -46,7 +46,7 @@ namespace Api.Socioboard.Services
             Domain.Socioboard.Domain.YoutubeAccount objYoutubeAccount = new Domain.Socioboard.Domain.YoutubeAccount();
             Domain.Socioboard.Domain.YoutubeChannel objYoutubeChannel;
             YoutubeChannelRepository objYoutubeChannelRepository = new YoutubeChannelRepository();
-            YoutubeAccountRepository objYoutubeAccountRepository = new YoutubeAccountRepository(); 
+            YoutubeAccountRepository objYoutubeAccountRepository = new YoutubeAccountRepository();
             #endregion
             #region Get AccessToken and RefreshToken
             objToken.ConsumerKey = client_id;
@@ -84,7 +84,7 @@ namespace Api.Socioboard.Services
             {
                 Console.WriteLine(ex.StackTrace);
 
-            } 
+            }
             #endregion
             #region Get user Profile and Add Youtube Account
             JArray userinfo = new JArray();
@@ -192,11 +192,11 @@ namespace Api.Socioboard.Services
                 {
                     Console.WriteLine(ex.StackTrace);
                 }
-               if(!objYoutubeChannelRepository.checkYoutubeChannelExists(objYoutubeChannel.Channelid,Guid.Parse(UserId)))
-               {
-                   YoutubeChannelRepository.Add(objYoutubeChannel);
-               }
-            } 
+                if (!objYoutubeChannelRepository.checkYoutubeChannelExists(objYoutubeChannel.Channelid, Guid.Parse(UserId)))
+                {
+                    YoutubeChannelRepository.Add(objYoutubeChannel);
+                }
+            }
             #endregion
             #region Add TeamMemberProfile
             Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
@@ -230,7 +230,7 @@ namespace Api.Socioboard.Services
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string GetYoutubeChannelVideos(string userid,string profileid)
+        public string GetYoutubeChannelVideos(string userid, string profileid)
         {
             string ret = string.Empty;
             string strfinaltoken = string.Empty;
@@ -243,15 +243,15 @@ namespace Api.Socioboard.Services
             JObject objArray = JObject.Parse(finaltoken);
             //foreach (var item in objArray)
             //{
-                try
-                {
-                    strfinaltoken = objArray["access_token"].ToString();
-                   // break;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.StackTrace);
-                }
+            try
+            {
+                strfinaltoken = objArray["access_token"].ToString();
+                // break;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
             //}
             PlaylistItems objPlaylistItems = new PlaylistItems();
             try
@@ -260,7 +260,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
-             
+
             }
 
 
@@ -285,12 +285,12 @@ namespace Api.Socioboard.Services
                 objRefresh = ObjoAuthTokenYoutube.GetRefreshToken(code, ConfigurationManager.AppSettings["YtconsumerKey"], ConfigurationManager.AppSettings["YtconsumerSecret"], ConfigurationManager.AppSettings["Ytredirect_uri"]);
                 logger.Error("Abhay: " + new System.Diagnostics.StackFrame(0, true).GetFileLineNumber());
 
-                logger.Error("1 "+code + " " + ConfigurationManager.AppSettings["YtconsumerKey"] + " " + ConfigurationManager.AppSettings["YtconsumerSecret"] + " " + ConfigurationManager.AppSettings["Ytredirect_uri"]);
+                logger.Error("1 " + code + " " + ConfigurationManager.AppSettings["YtconsumerKey"] + " " + ConfigurationManager.AppSettings["YtconsumerSecret"] + " " + ConfigurationManager.AppSettings["Ytredirect_uri"]);
 
             }
             catch (Exception ex)
             {
-                logger.Error("2 "+code + " " + ConfigurationManager.AppSettings["YtconsumerKey"] + " " + ConfigurationManager.AppSettings["YtconsumerSecret"] + " " + ConfigurationManager.AppSettings["Ytredirect_uri"]);
+                logger.Error("2 " + code + " " + ConfigurationManager.AppSettings["YtconsumerKey"] + " " + ConfigurationManager.AppSettings["YtconsumerSecret"] + " " + ConfigurationManager.AppSettings["Ytredirect_uri"]);
                 logger.Error(ex.Message);
                 logger.Error(ex.StackTrace);
             }
@@ -323,7 +323,7 @@ namespace Api.Socioboard.Services
             catch (Exception ex)
             {
             }
-            
+
             foreach (var itemEmail in userinfo)
             {
                 try
@@ -331,7 +331,7 @@ namespace Api.Socioboard.Services
                     objuser.EmailId = itemEmail["email"].ToString();
                     objuser.UserName = itemEmail["given_name"].ToString();
                     objuser.ProfileUrl = itemEmail["picture"].ToString();
-                   
+
                 }
                 catch (Exception ex)
                 {
@@ -418,6 +418,28 @@ namespace Api.Socioboard.Services
             }
 
         }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public void Get_Channel_List_serarch(string token, string search)
+        {
+            GlobusGooglePlusLib.Youtube.Core.Channels ObjChannel = new GlobusGooglePlusLib.Youtube.Core.Channels();
+            JArray objarray = new JArray();
+            try
+            {
+                //string part = (oAuthTokenYoutube.Parts.contentDetails.ToString() + "," + oAuthTokenYoutube.Parts.statistics.ToString());
+                string Value = ObjChannel.Get_Channel_List_serarch(token, search);
+                JObject UserChannels = JObject.Parse(@Value);
+                objarray = (JArray)UserChannels["items"];
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+
+
+
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string getYoutubeData(string UserId, string youtubeId)
@@ -463,6 +485,21 @@ namespace Api.Socioboard.Services
             return str;
         }
 
-
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string UpdateYouTubeAccountByAdmin(string ObjYouTube)
+        {
+            Domain.Socioboard.Domain.YoutubeAccount ObjYouTubeAccount = (Domain.Socioboard.Domain.YoutubeAccount)(new JavaScriptSerializer().Deserialize(ObjYouTube, typeof(Domain.Socioboard.Domain.YoutubeAccount)));
+            try
+            {
+                objYoutubeAccountRepository.updateYoutubeUser(ObjYouTubeAccount);
+                return new JavaScriptSerializer().Serialize("Update Successfully");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return new JavaScriptSerializer().Serialize("Something went Wrong");
+            }
+        }
     }
 }

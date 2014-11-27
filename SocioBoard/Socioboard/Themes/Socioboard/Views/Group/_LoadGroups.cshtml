@@ -39,7 +39,7 @@
                             <input type="checkbox" value="fb_@FbAccount.AccessToken" id="@FbAccount.FbUserId _fb_ @item_value.GroupId">
                         </label>
                     </div>
-                    <div  style="margin-top: -15px; margin-left: 18px;"><span onclick="facebookgroupdetails('@item_value.GroupId','@FbAccount.AccessToken');"  id="">@item_value.Name</span></div>
+                    <div  style="margin-top: -15px; margin-left: 18px; cursor: pointer;"><span onclick="facebookgroupdetails('@item_value.GroupId','@FbAccount.AccessToken');"  id="">@item_value.Name</span></div>
                 </div>
                   
               }                                        
@@ -80,7 +80,7 @@
                             <input type="checkbox" value="lin_@LinkedInAccount.LinkedinUserId" id="@LinkedInAccount.LinkedinUserId  _lin_ @item_value.id;">
                         </label>
                     </div>
-                    <div style="margin-top: -15px; margin-left: 18px;"><span onclick="linkedingroupdetails('@item_value.id','@LinkedInAccount.LinkedinUserId');"  id="">@item_value.GroupName</span></div>
+                    <div style="margin-top: -15px; margin-left: 18px; cursor: pointer;"><span onclick="linkedingroupdetails('@item_value.id','@LinkedInAccount.LinkedinUserId');"  id="">@item_value.GroupName</span></div>
                 </div>
                   
               }                                        

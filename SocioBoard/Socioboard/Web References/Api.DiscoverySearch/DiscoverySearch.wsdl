@@ -60,6 +60,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getAllSearchKeywords">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllSearchKeywordsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllSearchKeywordsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -87,6 +101,12 @@
   <wsdl:message name="contactSearchTwitterSoapOut">
     <wsdl:part name="parameters" element="tns:contactSearchTwitterResponse" />
   </wsdl:message>
+  <wsdl:message name="getAllSearchKeywordsSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllSearchKeywords" />
+  </wsdl:message>
+  <wsdl:message name="getAllSearchKeywordsSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllSearchKeywordsResponse" />
+  </wsdl:message>
   <wsdl:message name="DiscoverySearchFacebookHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="keyword" type="s:string" />
@@ -111,6 +131,12 @@
     <wsdl:part name="keyword" type="s:string" />
   </wsdl:message>
   <wsdl:message name="contactSearchTwitterHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllSearchKeywordsHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllSearchKeywordsHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="DiscoverySearchFacebookHttpPostIn">
@@ -139,6 +165,12 @@
   <wsdl:message name="contactSearchTwitterHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="getAllSearchKeywordsHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllSearchKeywordsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="DiscoverySearchSoap">
     <wsdl:operation name="DiscoverySearchFacebook">
       <wsdl:input message="tns:DiscoverySearchFacebookSoapIn" />
@@ -155,6 +187,10 @@
     <wsdl:operation name="contactSearchTwitter">
       <wsdl:input message="tns:contactSearchTwitterSoapIn" />
       <wsdl:output message="tns:contactSearchTwitterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllSearchKeywords">
+      <wsdl:input message="tns:getAllSearchKeywordsSoapIn" />
+      <wsdl:output message="tns:getAllSearchKeywordsSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="DiscoverySearchHttpGet">
@@ -174,6 +210,10 @@
       <wsdl:input message="tns:contactSearchTwitterHttpGetIn" />
       <wsdl:output message="tns:contactSearchTwitterHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="getAllSearchKeywords">
+      <wsdl:input message="tns:getAllSearchKeywordsHttpGetIn" />
+      <wsdl:output message="tns:getAllSearchKeywordsHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="DiscoverySearchHttpPost">
     <wsdl:operation name="DiscoverySearchFacebook">
@@ -191,6 +231,10 @@
     <wsdl:operation name="contactSearchTwitter">
       <wsdl:input message="tns:contactSearchTwitterHttpPostIn" />
       <wsdl:output message="tns:contactSearchTwitterHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllSearchKeywords">
+      <wsdl:input message="tns:getAllSearchKeywordsHttpPostIn" />
+      <wsdl:output message="tns:getAllSearchKeywordsHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="DiscoverySearchSoap" type="tns:DiscoverySearchSoap">
@@ -224,6 +268,15 @@
     </wsdl:operation>
     <wsdl:operation name="contactSearchTwitter">
       <soap:operation soapAction="http://tempuri.org/contactSearchTwitter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllSearchKeywords">
+      <soap:operation soapAction="http://tempuri.org/getAllSearchKeywords" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -270,6 +323,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAllSearchKeywords">
+      <soap12:operation soapAction="http://tempuri.org/getAllSearchKeywords" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="DiscoverySearchHttpGet" type="tns:DiscoverySearchHttpGet">
     <http:binding verb="GET" />
@@ -309,6 +371,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAllSearchKeywords">
+      <http:operation location="/getAllSearchKeywords" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="DiscoverySearchHttpPost" type="tns:DiscoverySearchHttpPost">
     <http:binding verb="POST" />
@@ -341,6 +412,15 @@
     </wsdl:operation>
     <wsdl:operation name="contactSearchTwitter">
       <http:operation location="/contactSearchTwitter" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllSearchKeywords">
+      <http:operation location="/getAllSearchKeywords" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

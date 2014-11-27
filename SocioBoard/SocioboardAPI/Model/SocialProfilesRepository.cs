@@ -227,17 +227,17 @@ namespace Api.Socioboard.Services
                     try
                     {
                         //Proceed action, to check Data.
-                        NHibernate.IQuery query = session.CreateQuery("from SocialProfile where UserId = :userid and ProfileId = :profileid and  ProfileType = :profiletype");
-                        query.SetParameter("userid", socio.UserId);
-                        query.SetParameter("profileid", socio.ProfileId);
-                        query.SetParameter("profiletype", socio.ProfileType);
+                        List<Domain.Socioboard.Domain.SocialProfile> alst = session.CreateQuery("from SocialProfile where UserId = :userid and ProfileId = :profileid and  ProfileType = :profiletype")
+                        .SetParameter("userid", socio.UserId)
+                        .SetParameter("profileid", socio.ProfileId)
+                        .SetParameter("profiletype", socio.ProfileType)
+                        .List<Domain.Socioboard.Domain.SocialProfile>()
+                    .ToList<Domain.Socioboard.Domain.SocialProfile>();
 
-                        var result = query.UniqueResult();
-                        if (result == null)
+                        if (alst == null || alst.Count==0)
                             return false;
                         else
                             return true;
-
                     }
                     catch (Exception ex)
                     {

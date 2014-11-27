@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Domain.Socioboard.Domain;
 using Api.Socioboard.Helper;
+using System.Collections;
 
 namespace Api.Socioboard.Services
 {
@@ -173,9 +174,53 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+        public List<Domain.Socioboard.Domain.YoutubeAccount> getAllYoutubeAccounts()
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction. 
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    //Proceed action, to get all linkedin accounts.
+                    List<Domain.Socioboard.Domain.YoutubeAccount> lstmsg = session.CreateQuery("from YoutubeAccount")
+                         .List<Domain.Socioboard.Domain.YoutubeAccount>()
+                         .ToList<Domain.Socioboard.Domain.YoutubeAccount>();
+                    return lstmsg;
 
+                }//End Transaction
+            }//End Session
+        }
 
-
+        public void updateYoutubeUser(Domain.Socioboard.Domain.YoutubeAccount youtubeAccount)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.CreateQuery("Update YoutubeAccount set YtUserName =:Ytusername,YtUserId=:Ytuserid,YtProfileImage=:Ytprofileimage,AccessToken=:Accesstoken,RefreshToken=:Refreshtoken,IsActive=:IsActive,EmailId=:Emailid,EntryDate=:Entrydate,UserId=:UserId where YtUserId =:Ytuserid and UserId = :UserId")
+                            .SetParameter("Ytusername", youtubeAccount.Ytusername)
+                            .SetParameter("Ytuserid", youtubeAccount.Ytuserid)
+                            .SetParameter("Accesstoken", youtubeAccount.Accesstoken)
+                            .SetParameter("Refreshtoken", youtubeAccount.Refreshtoken)
+                            .SetParameter("UserId", youtubeAccount.UserId)
+                            .SetParameter("Emailid", youtubeAccount.Emailid)
+                            .SetParameter("Entrydate", youtubeAccount.Entrydate)
+                            .SetParameter("Ytprofileimage", youtubeAccount.Ytprofileimage)
+                            .SetParameter("IsActive", "1")
+                            .ExecuteUpdate();
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        // return 0;
+                    }
+                }
+            }
+        }
 
 
     }

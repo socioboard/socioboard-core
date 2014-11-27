@@ -20,11 +20,22 @@ namespace Api.Socioboard.Services
     [ScriptService]
     public class Package : System.Web.Services.WebService
     {
+        PackageRepository ObjPackageRepo = new PackageRepository();
+
 
         [WebMethod]
-        public string HelloWorld()
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllPackage()
         {
-            return "Hello World";
+            try{
+            List<Domain.Socioboard.Domain.Package> lstPackage =ObjPackageRepo.getAllPackage();
+            return new JavaScriptSerializer().Serialize(lstPackage);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
         }
     }
 }

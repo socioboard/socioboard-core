@@ -37,7 +37,7 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string Login(string EmailId, string Password)
         {
-            logger.Error("Checking Abhay");
+            logger.Error("Checking Abhay123");
             try
             {
                 UserRepository userrepo = new UserRepository();
@@ -123,6 +123,8 @@ namespace Api.Socioboard.Services
                 //Domain.Socioboard.Domain.UserActivation objUserActivation = new Domain.Socioboard.Domain.UserActivation();
                 //UserActivationRepository objUserActivation = new UserActivationRepository();
 
+                logger.Error("Register");
+
                 if (!userrepo.IsUserExist(EmailId))
                 {
 
@@ -138,6 +140,7 @@ namespace Api.Socioboard.Services
                     user.TimeZone = string.Empty;
                     user.UserName = Username;//FirstName + " " + LastName;
                     user.UserStatus = 1;
+                    user.ActivationStatus = "0"; 
                     user.Id = Guid.NewGuid();
                     UserRepository.Add(user);
 
@@ -277,7 +280,7 @@ namespace Api.Socioboard.Services
             {
                 User user = new User();
                 UserRepository userrepo = new UserRepository();
-                int i = userrepo.ChangePassword(NewPassword, Password, EmailId);
+                int i = userrepo.ChangePassword(Utility.MD5Hash(NewPassword), Utility.MD5Hash(Password), EmailId);
                 if (i == 1)
                 {
                     return "Password Changed Successfully";
@@ -449,7 +452,40 @@ namespace Api.Socioboard.Services
             return new JavaScriptSerializer().Serialize(objUser);
         }
 
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string ResetPassword(Guid id, string password)
+        {
+            int objUser = userrepo.ResetPassword(id, password);
 
+            return new JavaScriptSerializer().Serialize(objUser.ToString());
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public int UpdateUsertoactivate(string UserId, string ActivationStatus)
+        {
+            int ret = userrepo.UpdateUserbyUserId(Guid.Parse(UserId), ActivationStatus);
+            return ret;
+        }
+
+        //Added by Sumit Gupta [11/15/14]
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string changePaymentStatus(string UserId, string ActivationStatus)
+        {
+            int ret = userrepo.changePaymentStatus(Guid.Parse(UserId), ActivationStatus);
+            return new JavaScriptSerializer().Serialize(ret);//ret;
+        }
+        //vikash [20/11/2014]
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public int UpdateUserAccountInfoByUserId(string userid, string AccountType, DateTime ExpiryDate, string PaymentStatus)
+        {
+
+            int ret = userrepo.UpdateUserAccountInfoByUserId(userid, AccountType, ExpiryDate, PaymentStatus);
+            return ret;
+        }
     }
 
     public class profileConnected

@@ -36,6 +36,7 @@ function facebookgroupdetails(gid, fbaccesstoken) {
         }
 
     });
+    $(".panel-body").scrollTop(o);
 }           
       
 
@@ -191,10 +192,11 @@ function linkedingroupdetails(groupid, linUserId) {
             $('#groupinfo').html(message);
         }
     });
+    $(".panel-body").scrollTop(o);
 }
 
 function FollowPosts(GpPostid, LinkedinUserId, groupid, isFollowing) {
-    alert(GpPostid);
+    //alert(GpPostid);
 
     $.ajax({
 

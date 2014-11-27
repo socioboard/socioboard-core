@@ -603,6 +603,97 @@ namespace Api.Socioboard.Services
             return "";
         }
 
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string AddComposeMessage(string UserId, string ProfileId, string ProfileType, string Message)
+        {
+            ScheduledMessageRepository objScheduledMessageRepository = new ScheduledMessageRepository();
+
+            Domain.Socioboard.Domain.ScheduledMessage objScheduledMessage = new Domain.Socioboard.Domain.ScheduledMessage();
+            objScheduledMessage.ShareMessage = Message;
+            objScheduledMessage.ClientTime = DateTime.Now;
+            objScheduledMessage.ScheduleTime = DateTime.Now;
+            objScheduledMessage.CreateTime = DateTime.Now;
+            objScheduledMessage.Status = true;
+            objScheduledMessage.UserId = Guid.Parse(UserId);
+            objScheduledMessage.ProfileType = ProfileType;
+            objScheduledMessage.ProfileId = ProfileId;
+            objScheduledMessageRepository.addNewMessage(objScheduledMessage);
+            return "";
+        }
+        //vikash
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllScheduledMessageforADay(string userid, string profileid, string days)
+        {
+            List<Domain.Socioboard.Domain.ScheduledMessage> _ScheduledMessage = new List<Domain.Socioboard.Domain.ScheduledMessage>();
+            try
+            {
+                _ScheduledMessage = objScheduledMessageRepository.getAllSentMessageDetailsforADay(Guid.Parse(userid), profileid, Convert.ToInt32(days));
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+            return new JavaScriptSerializer().Serialize(_ScheduledMessage);
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllScheduledMessageByDays(string userid, string profileid, string days)
+        {
+            List<Domain.Socioboard.Domain.ScheduledMessage> _ScheduledMessage = new List<Domain.Socioboard.Domain.ScheduledMessage>();
+            try
+            {
+                _ScheduledMessage = objScheduledMessageRepository.getAllSentMessageDetailsByDays(Guid.Parse(userid), profileid, Convert.ToInt32(days));
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+            return new JavaScriptSerializer().Serialize(_ScheduledMessage);
+        }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllScheduledMessageByMonth(string userid, string profileid, string month)
+        {
+            List<Domain.Socioboard.Domain.ScheduledMessage> _ScheduledMessage = new List<Domain.Socioboard.Domain.ScheduledMessage>();
+            try
+            {
+                _ScheduledMessage = objScheduledMessageRepository.getAllSentMessageDetailsByMonth(Guid.Parse(userid), profileid, Convert.ToInt32(month));
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+            return new JavaScriptSerializer().Serialize(_ScheduledMessage);
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllSentMessageDetailsForCustomrange(string userid, string profileid, string sdate, string ldate)
+        {
+            List<Domain.Socioboard.Domain.ScheduledMessage> _ScheduledMessage = new List<Domain.Socioboard.Domain.ScheduledMessage>();
+            try
+            {
+                _ScheduledMessage = objScheduledMessageRepository.getAllSentMessageDetailsForCustomrange(Guid.Parse(userid), profileid, Convert.ToDateTime(sdate), Convert.ToDateTime(ldate));
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+            return new JavaScriptSerializer().Serialize(_ScheduledMessage);
+        }
+
         public string CompareDateWithclient(string clientdate, string scheduletime)
         {
             DateTime client = Convert.ToDateTime(clientdate);

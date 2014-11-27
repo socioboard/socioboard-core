@@ -1,0 +1,909 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetLinkedinCompanyPage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oauth_token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oauth_verifier" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reuqestTokenSecret" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="consumerKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="consumerSecret" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLinkedinCompanyPageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLinkedinCompanyPageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddLinkedinCompanyPage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyPageId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oauth" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddLinkedinCompanyPageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddLinkedinCompanyPageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLinkedinPagePostComment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Oauth" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updatekey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLinkedinPagePostCommentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLinkedinPagePostCommentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateUpdateOnLinkedinCompanyPage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PageId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PostMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateUpdateOnLinkedinCompanyPageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateUpdateOnLinkedinCompanyPageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PsotCommentOnLinkedinCompanyPageUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PageId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Updatekey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PsotCommentOnLinkedinCompanyPageUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PsotCommentOnLinkedinCompanyPageUpdateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PutLikeOnLinkedinCompanyPageUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PageId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Updatekey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IsLike" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PutLikeOnLinkedinCompanyPageUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PutLikeOnLinkedinCompanyPageUpdateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteLinkedinCompanyPage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedinPageId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteLinkedinCompanyPageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteLinkedinCompanyPageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLinkedinCompanyPageDetailsByUserIdAndPageId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedinPageId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLinkedinCompanyPageDetailsByUserIdAndPageIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLinkedinCompanyPageDetailsByUserIdAndPageIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllLinkedinCompanyPageByUserIdAndGroupId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllLinkedinCompanyPageByUserIdAndGroupIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllLinkedinCompanyPageByUserIdAndGroupIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllLinkedinCompanyPagePostsByUserIdAndProfileId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedinPageId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllLinkedinCompanyPagePostsByUserIdAndProfileIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllLinkedinCompanyPagePostsByUserIdAndProfileIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetLinkedinCompanyPageSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLinkedinCompanyPage" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinCompanyPageSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLinkedinCompanyPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddLinkedinCompanyPageSoapIn">
+    <wsdl:part name="parameters" element="tns:AddLinkedinCompanyPage" />
+  </wsdl:message>
+  <wsdl:message name="AddLinkedinCompanyPageSoapOut">
+    <wsdl:part name="parameters" element="tns:AddLinkedinCompanyPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinPagePostCommentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLinkedinPagePostComment" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinPagePostCommentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLinkedinPagePostCommentResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateUpdateOnLinkedinCompanyPageSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateUpdateOnLinkedinCompanyPage" />
+  </wsdl:message>
+  <wsdl:message name="CreateUpdateOnLinkedinCompanyPageSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateUpdateOnLinkedinCompanyPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="PsotCommentOnLinkedinCompanyPageUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:PsotCommentOnLinkedinCompanyPageUpdate" />
+  </wsdl:message>
+  <wsdl:message name="PsotCommentOnLinkedinCompanyPageUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:PsotCommentOnLinkedinCompanyPageUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="PutLikeOnLinkedinCompanyPageUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:PutLikeOnLinkedinCompanyPageUpdate" />
+  </wsdl:message>
+  <wsdl:message name="PutLikeOnLinkedinCompanyPageUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:PutLikeOnLinkedinCompanyPageUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLinkedinCompanyPageSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteLinkedinCompanyPage" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLinkedinCompanyPageSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteLinkedinCompanyPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinCompanyPageDetailsByUserIdAndPageIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLinkedinCompanyPageDetailsByUserIdAndPageId" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinCompanyPageDetailsByUserIdAndPageIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLinkedinCompanyPageDetailsByUserIdAndPageIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinCompanyPageByUserIdAndGroupIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllLinkedinCompanyPageByUserIdAndGroupId" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinCompanyPageByUserIdAndGroupIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllLinkedinCompanyPageByUserIdAndGroupIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinCompanyPagePostsByUserIdAndProfileIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllLinkedinCompanyPagePostsByUserIdAndProfileId" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinCompanyPagePostsByUserIdAndProfileIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllLinkedinCompanyPagePostsByUserIdAndProfileIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinCompanyPageHttpGetIn">
+    <wsdl:part name="oauth_token" type="s:string" />
+    <wsdl:part name="oauth_verifier" type="s:string" />
+    <wsdl:part name="reuqestTokenSecret" type="s:string" />
+    <wsdl:part name="consumerKey" type="s:string" />
+    <wsdl:part name="consumerSecret" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinCompanyPageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddLinkedinCompanyPageHttpGetIn">
+    <wsdl:part name="CompanyPageId" type="s:string" />
+    <wsdl:part name="oauth" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddLinkedinCompanyPageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinPagePostCommentHttpGetIn">
+    <wsdl:part name="Oauth" type="s:string" />
+    <wsdl:part name="updatekey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinPagePostCommentHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateUpdateOnLinkedinCompanyPageHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="PageId" type="s:string" />
+    <wsdl:part name="PostMessage" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateUpdateOnLinkedinCompanyPageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PsotCommentOnLinkedinCompanyPageUpdateHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="PageId" type="s:string" />
+    <wsdl:part name="Updatekey" type="s:string" />
+    <wsdl:part name="Comment" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PsotCommentOnLinkedinCompanyPageUpdateHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PutLikeOnLinkedinCompanyPageUpdateHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="PageId" type="s:string" />
+    <wsdl:part name="Updatekey" type="s:string" />
+    <wsdl:part name="IsLike" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PutLikeOnLinkedinCompanyPageUpdateHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLinkedinCompanyPageHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="LinkedinPageId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLinkedinCompanyPageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinCompanyPageDetailsByUserIdAndPageIdHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="LinkedinPageId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinCompanyPageDetailsByUserIdAndPageIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinCompanyPageByUserIdAndGroupIdHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinCompanyPageByUserIdAndGroupIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinCompanyPagePostsByUserIdAndProfileIdHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="LinkedinPageId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinCompanyPagePostsByUserIdAndProfileIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinCompanyPageHttpPostIn">
+    <wsdl:part name="oauth_token" type="s:string" />
+    <wsdl:part name="oauth_verifier" type="s:string" />
+    <wsdl:part name="reuqestTokenSecret" type="s:string" />
+    <wsdl:part name="consumerKey" type="s:string" />
+    <wsdl:part name="consumerSecret" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinCompanyPageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddLinkedinCompanyPageHttpPostIn">
+    <wsdl:part name="CompanyPageId" type="s:string" />
+    <wsdl:part name="oauth" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddLinkedinCompanyPageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinPagePostCommentHttpPostIn">
+    <wsdl:part name="Oauth" type="s:string" />
+    <wsdl:part name="updatekey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinPagePostCommentHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateUpdateOnLinkedinCompanyPageHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="PageId" type="s:string" />
+    <wsdl:part name="PostMessage" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateUpdateOnLinkedinCompanyPageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PsotCommentOnLinkedinCompanyPageUpdateHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="PageId" type="s:string" />
+    <wsdl:part name="Updatekey" type="s:string" />
+    <wsdl:part name="Comment" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PsotCommentOnLinkedinCompanyPageUpdateHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PutLikeOnLinkedinCompanyPageUpdateHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="PageId" type="s:string" />
+    <wsdl:part name="Updatekey" type="s:string" />
+    <wsdl:part name="IsLike" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PutLikeOnLinkedinCompanyPageUpdateHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLinkedinCompanyPageHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="LinkedinPageId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLinkedinCompanyPageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinCompanyPageDetailsByUserIdAndPageIdHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="LinkedinPageId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedinCompanyPageDetailsByUserIdAndPageIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinCompanyPageByUserIdAndGroupIdHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinCompanyPageByUserIdAndGroupIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinCompanyPagePostsByUserIdAndProfileIdHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="LinkedinPageId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedinCompanyPagePostsByUserIdAndProfileIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="LinkedinCompanyPageSoap">
+    <wsdl:operation name="GetLinkedinCompanyPage">
+      <wsdl:input message="tns:GetLinkedinCompanyPageSoapIn" />
+      <wsdl:output message="tns:GetLinkedinCompanyPageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddLinkedinCompanyPage">
+      <wsdl:input message="tns:AddLinkedinCompanyPageSoapIn" />
+      <wsdl:output message="tns:AddLinkedinCompanyPageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedinPagePostComment">
+      <wsdl:input message="tns:GetLinkedinPagePostCommentSoapIn" />
+      <wsdl:output message="tns:GetLinkedinPagePostCommentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateUpdateOnLinkedinCompanyPage">
+      <wsdl:input message="tns:CreateUpdateOnLinkedinCompanyPageSoapIn" />
+      <wsdl:output message="tns:CreateUpdateOnLinkedinCompanyPageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PsotCommentOnLinkedinCompanyPageUpdate">
+      <wsdl:input message="tns:PsotCommentOnLinkedinCompanyPageUpdateSoapIn" />
+      <wsdl:output message="tns:PsotCommentOnLinkedinCompanyPageUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PutLikeOnLinkedinCompanyPageUpdate">
+      <wsdl:input message="tns:PutLikeOnLinkedinCompanyPageUpdateSoapIn" />
+      <wsdl:output message="tns:PutLikeOnLinkedinCompanyPageUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLinkedinCompanyPage">
+      <wsdl:input message="tns:DeleteLinkedinCompanyPageSoapIn" />
+      <wsdl:output message="tns:DeleteLinkedinCompanyPageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedinCompanyPageDetailsByUserIdAndPageId">
+      <wsdl:input message="tns:GetLinkedinCompanyPageDetailsByUserIdAndPageIdSoapIn" />
+      <wsdl:output message="tns:GetLinkedinCompanyPageDetailsByUserIdAndPageIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinCompanyPageByUserIdAndGroupId">
+      <wsdl:input message="tns:GetAllLinkedinCompanyPageByUserIdAndGroupIdSoapIn" />
+      <wsdl:output message="tns:GetAllLinkedinCompanyPageByUserIdAndGroupIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinCompanyPagePostsByUserIdAndProfileId">
+      <wsdl:input message="tns:GetAllLinkedinCompanyPagePostsByUserIdAndProfileIdSoapIn" />
+      <wsdl:output message="tns:GetAllLinkedinCompanyPagePostsByUserIdAndProfileIdSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="LinkedinCompanyPageHttpGet">
+    <wsdl:operation name="GetLinkedinCompanyPage">
+      <wsdl:input message="tns:GetLinkedinCompanyPageHttpGetIn" />
+      <wsdl:output message="tns:GetLinkedinCompanyPageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddLinkedinCompanyPage">
+      <wsdl:input message="tns:AddLinkedinCompanyPageHttpGetIn" />
+      <wsdl:output message="tns:AddLinkedinCompanyPageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedinPagePostComment">
+      <wsdl:input message="tns:GetLinkedinPagePostCommentHttpGetIn" />
+      <wsdl:output message="tns:GetLinkedinPagePostCommentHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateUpdateOnLinkedinCompanyPage">
+      <wsdl:input message="tns:CreateUpdateOnLinkedinCompanyPageHttpGetIn" />
+      <wsdl:output message="tns:CreateUpdateOnLinkedinCompanyPageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PsotCommentOnLinkedinCompanyPageUpdate">
+      <wsdl:input message="tns:PsotCommentOnLinkedinCompanyPageUpdateHttpGetIn" />
+      <wsdl:output message="tns:PsotCommentOnLinkedinCompanyPageUpdateHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PutLikeOnLinkedinCompanyPageUpdate">
+      <wsdl:input message="tns:PutLikeOnLinkedinCompanyPageUpdateHttpGetIn" />
+      <wsdl:output message="tns:PutLikeOnLinkedinCompanyPageUpdateHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLinkedinCompanyPage">
+      <wsdl:input message="tns:DeleteLinkedinCompanyPageHttpGetIn" />
+      <wsdl:output message="tns:DeleteLinkedinCompanyPageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedinCompanyPageDetailsByUserIdAndPageId">
+      <wsdl:input message="tns:GetLinkedinCompanyPageDetailsByUserIdAndPageIdHttpGetIn" />
+      <wsdl:output message="tns:GetLinkedinCompanyPageDetailsByUserIdAndPageIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinCompanyPageByUserIdAndGroupId">
+      <wsdl:input message="tns:GetAllLinkedinCompanyPageByUserIdAndGroupIdHttpGetIn" />
+      <wsdl:output message="tns:GetAllLinkedinCompanyPageByUserIdAndGroupIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinCompanyPagePostsByUserIdAndProfileId">
+      <wsdl:input message="tns:GetAllLinkedinCompanyPagePostsByUserIdAndProfileIdHttpGetIn" />
+      <wsdl:output message="tns:GetAllLinkedinCompanyPagePostsByUserIdAndProfileIdHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="LinkedinCompanyPageHttpPost">
+    <wsdl:operation name="GetLinkedinCompanyPage">
+      <wsdl:input message="tns:GetLinkedinCompanyPageHttpPostIn" />
+      <wsdl:output message="tns:GetLinkedinCompanyPageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddLinkedinCompanyPage">
+      <wsdl:input message="tns:AddLinkedinCompanyPageHttpPostIn" />
+      <wsdl:output message="tns:AddLinkedinCompanyPageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedinPagePostComment">
+      <wsdl:input message="tns:GetLinkedinPagePostCommentHttpPostIn" />
+      <wsdl:output message="tns:GetLinkedinPagePostCommentHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateUpdateOnLinkedinCompanyPage">
+      <wsdl:input message="tns:CreateUpdateOnLinkedinCompanyPageHttpPostIn" />
+      <wsdl:output message="tns:CreateUpdateOnLinkedinCompanyPageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PsotCommentOnLinkedinCompanyPageUpdate">
+      <wsdl:input message="tns:PsotCommentOnLinkedinCompanyPageUpdateHttpPostIn" />
+      <wsdl:output message="tns:PsotCommentOnLinkedinCompanyPageUpdateHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PutLikeOnLinkedinCompanyPageUpdate">
+      <wsdl:input message="tns:PutLikeOnLinkedinCompanyPageUpdateHttpPostIn" />
+      <wsdl:output message="tns:PutLikeOnLinkedinCompanyPageUpdateHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLinkedinCompanyPage">
+      <wsdl:input message="tns:DeleteLinkedinCompanyPageHttpPostIn" />
+      <wsdl:output message="tns:DeleteLinkedinCompanyPageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedinCompanyPageDetailsByUserIdAndPageId">
+      <wsdl:input message="tns:GetLinkedinCompanyPageDetailsByUserIdAndPageIdHttpPostIn" />
+      <wsdl:output message="tns:GetLinkedinCompanyPageDetailsByUserIdAndPageIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinCompanyPageByUserIdAndGroupId">
+      <wsdl:input message="tns:GetAllLinkedinCompanyPageByUserIdAndGroupIdHttpPostIn" />
+      <wsdl:output message="tns:GetAllLinkedinCompanyPageByUserIdAndGroupIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinCompanyPagePostsByUserIdAndProfileId">
+      <wsdl:input message="tns:GetAllLinkedinCompanyPagePostsByUserIdAndProfileIdHttpPostIn" />
+      <wsdl:output message="tns:GetAllLinkedinCompanyPagePostsByUserIdAndProfileIdHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LinkedinCompanyPageSoap" type="tns:LinkedinCompanyPageSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLinkedinCompanyPage">
+      <soap:operation soapAction="http://tempuri.org/GetLinkedinCompanyPage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLinkedinCompanyPage">
+      <soap:operation soapAction="http://tempuri.org/AddLinkedinCompanyPage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedinPagePostComment">
+      <soap:operation soapAction="http://tempuri.org/GetLinkedinPagePostComment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUpdateOnLinkedinCompanyPage">
+      <soap:operation soapAction="http://tempuri.org/CreateUpdateOnLinkedinCompanyPage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PsotCommentOnLinkedinCompanyPageUpdate">
+      <soap:operation soapAction="http://tempuri.org/PsotCommentOnLinkedinCompanyPageUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutLikeOnLinkedinCompanyPageUpdate">
+      <soap:operation soapAction="http://tempuri.org/PutLikeOnLinkedinCompanyPageUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLinkedinCompanyPage">
+      <soap:operation soapAction="http://tempuri.org/DeleteLinkedinCompanyPage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedinCompanyPageDetailsByUserIdAndPageId">
+      <soap:operation soapAction="http://tempuri.org/GetLinkedinCompanyPageDetailsByUserIdAndPageId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinCompanyPageByUserIdAndGroupId">
+      <soap:operation soapAction="http://tempuri.org/GetAllLinkedinCompanyPageByUserIdAndGroupId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinCompanyPagePostsByUserIdAndProfileId">
+      <soap:operation soapAction="http://tempuri.org/GetAllLinkedinCompanyPagePostsByUserIdAndProfileId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LinkedinCompanyPageSoap12" type="tns:LinkedinCompanyPageSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLinkedinCompanyPage">
+      <soap12:operation soapAction="http://tempuri.org/GetLinkedinCompanyPage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLinkedinCompanyPage">
+      <soap12:operation soapAction="http://tempuri.org/AddLinkedinCompanyPage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedinPagePostComment">
+      <soap12:operation soapAction="http://tempuri.org/GetLinkedinPagePostComment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUpdateOnLinkedinCompanyPage">
+      <soap12:operation soapAction="http://tempuri.org/CreateUpdateOnLinkedinCompanyPage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PsotCommentOnLinkedinCompanyPageUpdate">
+      <soap12:operation soapAction="http://tempuri.org/PsotCommentOnLinkedinCompanyPageUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutLikeOnLinkedinCompanyPageUpdate">
+      <soap12:operation soapAction="http://tempuri.org/PutLikeOnLinkedinCompanyPageUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLinkedinCompanyPage">
+      <soap12:operation soapAction="http://tempuri.org/DeleteLinkedinCompanyPage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedinCompanyPageDetailsByUserIdAndPageId">
+      <soap12:operation soapAction="http://tempuri.org/GetLinkedinCompanyPageDetailsByUserIdAndPageId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinCompanyPageByUserIdAndGroupId">
+      <soap12:operation soapAction="http://tempuri.org/GetAllLinkedinCompanyPageByUserIdAndGroupId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinCompanyPagePostsByUserIdAndProfileId">
+      <soap12:operation soapAction="http://tempuri.org/GetAllLinkedinCompanyPagePostsByUserIdAndProfileId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LinkedinCompanyPageHttpGet" type="tns:LinkedinCompanyPageHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetLinkedinCompanyPage">
+      <http:operation location="/GetLinkedinCompanyPage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLinkedinCompanyPage">
+      <http:operation location="/AddLinkedinCompanyPage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedinPagePostComment">
+      <http:operation location="/GetLinkedinPagePostComment" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUpdateOnLinkedinCompanyPage">
+      <http:operation location="/CreateUpdateOnLinkedinCompanyPage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PsotCommentOnLinkedinCompanyPageUpdate">
+      <http:operation location="/PsotCommentOnLinkedinCompanyPageUpdate" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutLikeOnLinkedinCompanyPageUpdate">
+      <http:operation location="/PutLikeOnLinkedinCompanyPageUpdate" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLinkedinCompanyPage">
+      <http:operation location="/DeleteLinkedinCompanyPage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedinCompanyPageDetailsByUserIdAndPageId">
+      <http:operation location="/GetLinkedinCompanyPageDetailsByUserIdAndPageId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinCompanyPageByUserIdAndGroupId">
+      <http:operation location="/GetAllLinkedinCompanyPageByUserIdAndGroupId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinCompanyPagePostsByUserIdAndProfileId">
+      <http:operation location="/GetAllLinkedinCompanyPagePostsByUserIdAndProfileId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LinkedinCompanyPageHttpPost" type="tns:LinkedinCompanyPageHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetLinkedinCompanyPage">
+      <http:operation location="/GetLinkedinCompanyPage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLinkedinCompanyPage">
+      <http:operation location="/AddLinkedinCompanyPage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedinPagePostComment">
+      <http:operation location="/GetLinkedinPagePostComment" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUpdateOnLinkedinCompanyPage">
+      <http:operation location="/CreateUpdateOnLinkedinCompanyPage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PsotCommentOnLinkedinCompanyPageUpdate">
+      <http:operation location="/PsotCommentOnLinkedinCompanyPageUpdate" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutLikeOnLinkedinCompanyPageUpdate">
+      <http:operation location="/PutLikeOnLinkedinCompanyPageUpdate" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLinkedinCompanyPage">
+      <http:operation location="/DeleteLinkedinCompanyPage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedinCompanyPageDetailsByUserIdAndPageId">
+      <http:operation location="/GetLinkedinCompanyPageDetailsByUserIdAndPageId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinCompanyPageByUserIdAndGroupId">
+      <http:operation location="/GetAllLinkedinCompanyPageByUserIdAndGroupId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedinCompanyPagePostsByUserIdAndProfileId">
+      <http:operation location="/GetAllLinkedinCompanyPagePostsByUserIdAndProfileId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LinkedinCompanyPage">
+    <wsdl:port name="LinkedinCompanyPageSoap" binding="tns:LinkedinCompanyPageSoap">
+      <soap:address location="http://localhost:6361/Services/LinkedinCompanyPage.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LinkedinCompanyPageSoap12" binding="tns:LinkedinCompanyPageSoap12">
+      <soap12:address location="http://localhost:6361/Services/LinkedinCompanyPage.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LinkedinCompanyPageHttpGet" binding="tns:LinkedinCompanyPageHttpGet">
+      <http:address location="http://localhost:6361/Services/LinkedinCompanyPage.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LinkedinCompanyPageHttpPost" binding="tns:LinkedinCompanyPageHttpPost">
+      <http:address location="http://localhost:6361/Services/LinkedinCompanyPage.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

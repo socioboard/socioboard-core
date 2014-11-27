@@ -1,0 +1,13 @@
+﻿<script type="text/javascript">
+    $(document).ready(function () {
+        $(".partialContents").each(function (index, item) {
+            var url = $(item).data("url");
+            if (url && url.length > 0) {
+                $(item).load(url);
+            }
+        });
+    });
+    </script>
+<div id="divForgotPassword" class="partialContents" data-url="../ForgotPassword/ForgetPassword">
+
+</div>

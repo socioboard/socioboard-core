@@ -1,0 +1,17 @@
+C:\Users\Admin\Desktop\Sb2.0\trunk\Domain.Socioboard\bin\Debug\Domain.Socioboard.dll
+C:\Users\Admin\Desktop\Sb2.0\trunk\Domain.Socioboard\bin\Debug\Domain.Socioboard.pdb
+C:\Users\Admin\Desktop\Sb2.0\trunk\Domain.Socioboard\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Admin\Desktop\Sb2.0\trunk\Domain.Socioboard\obj\Debug\Domain.Socioboard.dll
+C:\Users\Admin\Desktop\Sb2.0\trunk\Domain.Socioboard\obj\Debug\Domain.Socioboard.pdb
+C:\Users\GLB-116\Desktop\sb 2.0\trunk\Domain.Socioboard\bin\Debug\Domain.Socioboard.dll
+C:\Users\GLB-116\Desktop\sb 2.0\trunk\Domain.Socioboard\bin\Debug\Domain.Socioboard.pdb
+C:\Users\GLB-116\Desktop\sb 2.0\trunk\Domain.Socioboard\bin\Debug\Newtonsoft.Json.dll
+C:\Users\GLB-116\Desktop\sb 2.0\trunk\Domain.Socioboard\obj\Debug\Domain.Socioboard.dll
+C:\Users\GLB-116\Desktop\sb 2.0\trunk\Domain.Socioboard\obj\Debug\Domain.Socioboard.pdb
+C:\Users\GLB-116\Desktop\sb 2.0\trunk\Domain.Socioboard\obj\Debug\Domain.Socioboard.csprojResolveAssemblyReference.cache
+D:\SURAJ RAI\sb 2.0\trunk\Domain.Socioboard\bin\Debug\Domain.Socioboard.dll
+D:\SURAJ RAI\sb 2.0\trunk\Domain.Socioboard\bin\Debug\Domain.Socioboard.pdb
+D:\SURAJ RAI\sb 2.0\trunk\Domain.Socioboard\bin\Debug\Newtonsoft.Json.dll
+D:\SURAJ RAI\sb 2.0\trunk\Domain.Socioboard\obj\Debug\Domain.Socioboard.dll
+D:\SURAJ RAI\sb 2.0\trunk\Domain.Socioboard\obj\Debug\Domain.Socioboard.pdb
+D:\SURAJ RAI\sb 2.0\trunk\Domain.Socioboard\obj\Debug\Domain.Socioboard.csprojResolveAssemblyReference.cache

@@ -94,6 +94,8 @@ namespace Api.Socioboard.Services
         {
             try
             {
+                System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
+
                 string ret = string.Empty;
                 Users userinfo = new Users();
                 oAuthTwitter OAuth = new oAuthTwitter(client_id, client_secret, redirect_uri);
@@ -793,9 +795,11 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public String getTwitterData(string UserId, string twitterid)
         {
-            string ret=string.Empty;
+            string ret = string.Empty;
             try
             {
+                System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
+
                 Guid userId = Guid.Parse(UserId);
                 oAuthTwitter OAuth = new oAuthTwitter(ConfigurationManager.AppSettings["consumerKey"], ConfigurationManager.AppSettings["consumerSecret"], ConfigurationManager.AppSettings["callbackurl"]);
                 TwitterAccountRepository objTwtRepo = new TwitterAccountRepository();
@@ -813,6 +817,10 @@ namespace Api.Socioboard.Services
                     getUserProile(OAuth, itemTwt.TwitterUserId, userId);
                     getUserTweets(OAuth, itemTwt.TwitterScreenName, itemTwt.TwitterUserId, userId);
                     getUserFeed(OAuth, itemTwt.TwitterScreenName, itemTwt.TwitterUserId, userId);
+
+                    Domain.Socioboard.Domain.TwitterAccount _TwitterAccount = objTwtRepo.GetUserInformation(itemTwt.UserId, itemTwt.TwitterUserId);
+                    if (_TwitterAccount != null)
+                        getTwitterStats(_TwitterAccount);
                 }
                 return "twitter Info Updated Successfully";
             }
@@ -1279,10 +1287,9 @@ namespace Api.Socioboard.Services
                 objStats.Engagement = (replies + retweets) / twitterAccount.FollowersCount;
             else
                 objStats.Engagement = 0;
-            //  objStats.Influence=
-            // objStats.Engagement=
+
             objStats.EntryDate = DateTime.Now;
-            if (!objTwtstats.checkTwitterStatsExists(twitterAccount.TwitterUserId, twitterAccount.UserId))
+            if (!objTwtstats.checkTwitterStatsExists(twitterAccount.TwitterUserId, twitterAccount.UserId, objStats.FollowerCount, objStats.FollowingCount))
                 objTwtstats.addTwitterStats(objStats);
         }
 
@@ -1335,7 +1342,6 @@ namespace Api.Socioboard.Services
             Users twtUsers = new Users();
             foreach (Domain.Socioboard.Domain.TwitterAccount itemTwt in lstAccRepo)
             {
-
                 oauth = new oAuthTwitter();
                 oauth.AccessToken = itemTwt.OAuthToken;
                 oauth.AccessTokenSecret = itemTwt.OAuthSecret;
@@ -1384,6 +1390,178 @@ namespace Api.Socioboard.Services
             Tweet twt = new Tweet();
             JArray replypost = twt.Post_StatusesUpdate(OAuthTwt, message, statusid);
             return new JavaScriptSerializer().Serialize(replypost);
+        }
+
+        //-------vikash-----------//
+
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string TwitterReteet_post(string userid, string profileid, string messageid)
+        {
+            Domain.Socioboard.Domain.TwitterAccount objTwitterAccount = objTwitterAccountRepository.GetUserInformation(Guid.Parse(userid), profileid);
+            oAuthTwitter OAuthTwt = new oAuthTwitter();
+            OAuthTwt.AccessToken = objTwitterAccount.OAuthToken;
+            OAuthTwt.AccessTokenSecret = objTwitterAccount.OAuthSecret;
+            OAuthTwt.TwitterScreenName = objTwitterAccount.TwitterScreenName;
+            OAuthTwt.TwitterUserId = objTwitterAccount.TwitterUserId;
+            this.SetCofigDetailsForTwitter(OAuthTwt);
+            Tweet twt = new Tweet();
+            JArray retweetpost = twt.Post_Statuses_RetweetsById(OAuthTwt, messageid, "");
+            if (retweetpost.HasValues == true)
+            {
+                return "succeess";
+            }
+
+            else
+            {
+                return "failuer";
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string TwitterFavorite_post(string userid, string profileid, string messageid)
+        {
+            Domain.Socioboard.Domain.TwitterAccount objTwitterAccount = objTwitterAccountRepository.GetUserInformation(Guid.Parse(userid), profileid);
+            oAuthTwitter OAuthTwt = new oAuthTwitter();
+            OAuthTwt.AccessToken = objTwitterAccount.OAuthToken;
+            OAuthTwt.AccessTokenSecret = objTwitterAccount.OAuthSecret;
+            OAuthTwt.TwitterScreenName = objTwitterAccount.TwitterScreenName;
+            OAuthTwt.TwitterUserId = objTwitterAccount.TwitterUserId;
+            this.SetCofigDetailsForTwitter(OAuthTwt);
+            Tweet twt = new Tweet();
+            JArray favoritepost = twt.Post_favorites(OAuthTwt, messageid);
+            if (favoritepost.HasValues == true)
+            {
+                return "succeess";
+            }
+
+            else
+            {
+                return "failuer";
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string SpamUser_post(string userid, string SpammerScreanName, string UserProfileId)
+        {
+            Domain.Socioboard.Domain.TwitterAccount objTwitterAccount = objTwitterAccountRepository.GetUserInformation(Guid.Parse(userid), UserProfileId);
+            oAuthTwitter OAuthTwt = new oAuthTwitter();
+            OAuthTwt.AccessToken = objTwitterAccount.OAuthToken;
+            OAuthTwt.AccessTokenSecret = objTwitterAccount.OAuthSecret;
+            OAuthTwt.TwitterScreenName = objTwitterAccount.TwitterScreenName;
+            OAuthTwt.TwitterUserId = objTwitterAccount.TwitterUserId;
+            this.SetCofigDetailsForTwitter(OAuthTwt);
+            Tweet twt = new Tweet();
+            JArray spampost = twt.Post_report_as_spammer(OAuthTwt, SpammerScreanName);
+            if (spampost.HasValues == true)
+            {
+                return "succeess";
+            }
+
+            else
+            {
+                return "failuer";
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string TwitterProfileDetails(string userid, string profileid)
+        {
+            List<Domain.Socioboard.Helper.TwitterProfileDetails> lstTwitterRecentFollower = new List<Domain.Socioboard.Helper.TwitterProfileDetails>();
+            List<Domain.Socioboard.Domain.TwitterAccount> listallTwtaccount = objTwitterAccountRepository.getAllTwitterAccountsOfUser(Guid.Parse(userid));
+            Domain.Socioboard.Helper.TwitterProfileDetails objTwtProfileDescription = new Domain.Socioboard.Helper.TwitterProfileDetails();
+            oAuthTwitter OAuthTwt = new oAuthTwitter();
+            foreach (Domain.Socioboard.Domain.TwitterAccount childnoe in listallTwtaccount)
+            {
+                OAuthTwt.AccessToken = childnoe.OAuthToken;
+                OAuthTwt.AccessTokenSecret = childnoe.OAuthSecret;
+                OAuthTwt.TwitterScreenName = childnoe.TwitterScreenName;
+                OAuthTwt.TwitterUserId = childnoe.TwitterUserId;
+                this.SetCofigDetailsForTwitter(OAuthTwt);
+                if (CheckTwitterTokenByUserId(OAuthTwt, profileid))
+                {
+                    break;
+                }
+            }
+            Users userinfo = new Users();
+            JArray userlookup = userinfo.Get_Users_LookUp(OAuthTwt, profileid);
+            foreach (var items in userlookup)
+            {
+                objTwtProfileDescription.screen_name = items["screen_name"].ToString();
+                objTwtProfileDescription.name = items["name"].ToString();
+                try
+                {
+                    objTwtProfileDescription.profile_image_url = items["profile_image_url"].ToString();
+                }
+                catch (Exception)
+                {
+
+                    objTwtProfileDescription.profile_image_url = null;
+                }
+                try
+                {
+                    objTwtProfileDescription.profile_banner_url = items["profile_banner_url"].ToString();
+                }
+                catch (Exception)
+                {
+
+                    objTwtProfileDescription.profile_banner_url = null;
+                }
+                try
+                {
+                    objTwtProfileDescription.Status_Text = items["status"]["text"].ToString();
+                }
+                catch (Exception)
+                {
+
+                    objTwtProfileDescription.Status_Text = null;
+                }
+                objTwtProfileDescription.Url = items["url"].ToString();
+                objTwtProfileDescription.friends_count = items["friends_count"].ToString();
+                objTwtProfileDescription.followers_count = items["followers_count"].ToString();
+            }
+
+
+            return new JavaScriptSerializer().Serialize(objTwtProfileDescription);
+        }
+        public bool CheckTwitterTokenByUserId(oAuthTwitter objoAuthTwitter, string userid)
+        {
+            bool CheckTwitterTokenByUserId = false;
+            //oAuthTwitter oAuthTwt = new oAuthTwitter();
+            Users twtUser = new Users();
+            try
+            {
+                Users userinfo = new Users();
+                JArray userlookup = userinfo.Get_Users_LookUp(objoAuthTwitter, userid);
+                CheckTwitterTokenByUserId = true;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return CheckTwitterTokenByUserId;
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string UpdateTwitterAccountByAdmin(string ObjTwitter)
+        {
+            Domain.Socioboard.Domain.TwitterAccount objTwitterAccount = (Domain.Socioboard.Domain.TwitterAccount)(new JavaScriptSerializer().Deserialize(ObjTwitter, typeof(Domain.Socioboard.Domain.TwitterAccount)));
+            try
+            {
+                objTwitterAccountRepository.updateTwitterUser(objTwitterAccount);
+                return new JavaScriptSerializer().Serialize("Update Successfully");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return new JavaScriptSerializer().Serialize("Something went Wrong");
+            }
         }
 
     }

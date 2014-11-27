@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Script.Services;
 using System.Web.Services;
+using log4net;
 
 namespace Api.Socioboard.Services
 {
@@ -22,6 +23,7 @@ namespace Api.Socioboard.Services
 
     public class Groups : System.Web.Services.WebService
     {
+        ILog logger = LogManager.GetLogger(typeof(Groups));
         Domain.Socioboard.Domain.Groups group = new Domain.Socioboard.Domain.Groups();
         GroupsRepository grouprepo = new GroupsRepository();
         GroupProfileRepository objGroupProfileRepository = new GroupProfileRepository();
@@ -64,6 +66,7 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetGroupDetailsByGroupId(string GroupId)
         {
+            logger.Error("GetGroupDetailsByGroupId inside function");
             try
             {
                 Domain.Socioboard.Domain.Groups objGroups = grouprepo.getGroupName(Guid.Parse(GroupId));
@@ -71,6 +74,8 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
+                logger.Error(ex.StackTrace);
                 Console.WriteLine(ex.StackTrace);
                 return "Something Went Wrong";
             }
@@ -155,16 +160,12 @@ namespace Api.Socioboard.Services
                 objGroupProfileRepository.DeleteAllGroupProfile(Guid.Parse(GroupId));
 
                 grouprepo.DeleteGroup(Guid.Parse(GroupId));
-                List<Domain.Socioboard.Domain.Team> lstTeam = objTeamRepository.GetAllTeamExcludeUser(Guid.Parse(GroupId));
+                List<Domain.Socioboard.Domain.Team> lstTeam = objTeamRepository.GetAllTeamExcludeUser(Guid.Parse(GroupId), Guid.Parse(Userid));
                 foreach (var item in lstTeam)
                 {
                     objTeamMemberProfileRepository.DeleteTeamMemberProfileByTeamId(item.Id);
                 }
-                foreach (var item in lstTeam)
-                {
-                    objTeamRepository.deleteinviteteamMember(item.Id);
-                }
-                
+
                 // int i = grouprepo.DeleteGroup(Guid.Parse(GroupId));
                 //if (i == 1)
                 //{

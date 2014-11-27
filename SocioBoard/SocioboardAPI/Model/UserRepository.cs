@@ -898,5 +898,74 @@ namespace Api.Socioboard.Model
             return i;
 
         }
+
+        // Edited by Antima[1/11/2014]
+
+        public int UpdateUserbyUserId(Guid UserId, string ActivationStatus)
+        {
+            int i = 0;
+            try
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        try
+                        {
+
+                            i = session.CreateQuery("Update User set ActivationStatus=:ActivationStatus where Id = :UserId")
+                                     .SetParameter("UserId", UserId)
+                                     .SetParameter("ActivationStatus", ActivationStatus)
+                                     .ExecuteUpdate();
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            return i;
+        }
+
+        // Edited by Vikash[20/11/2014]
+        public int UpdateUserAccountInfoByUserId(string userid, string AccountType, DateTime ExpiryDate, string PaymentStatus)
+        {
+            int i = 0;
+            try
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        try
+                        {
+
+                            i = session.CreateQuery("Update User set AccountType =: AccountType, ExpiryDate =: ExpiryDate, PaymentStatus =: PaymentStatus where Id = :UserId")
+                                     .SetParameter("UserId", userid)
+                                     .SetParameter("AccountType", AccountType)
+                                     .SetParameter("ExpiryDate", ExpiryDate)
+                                     .SetParameter("PaymentStatus", PaymentStatus)
+                                     .ExecuteUpdate();
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            return i;
+        }
     }
 }

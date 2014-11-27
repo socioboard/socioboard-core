@@ -295,6 +295,78 @@
                 </div>
                 <!-- end pricing-box -->
             </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="~/Themes/Socioboard/Contents/img/ssp/phone-banner-new1.png" class="img-responsive" />
+                </div>
+                <div class="col-md-8" style="text-align: left;">
+                    <h1>Enterprise and Agency</h1>
+                    <p>Socioboard offers customizable enterprise and agency solutions to fit your business—scalable, secure and with highest level of service quality & 24/7 Support should you face any problems. Contact us today to discuss your unique needs with one of our product specialists.</p>
+                    @*<button class="btn btn-default" onclick="RequestForDemo()">Request For Demo</button>*@
+
+
+
+                    <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#DemoModal">
+              REQUEST A DEMO
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="DemoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <img style="height: 40px; float: left; margin-top: -6px" src="http://wiki.socioboard.com/skins/common/images/logo.png">
+                        <h4 class="modal-title" id="DemoModalLabel" style="margin-left:60px">Request a Demo or More Informations</h4>
+                    </div>
+                  <div class="modal-body col-md-12">
+        
+                                        <div class="input-group col-md-5 pull-left" style="margin-left:4%; padding-bottom: 4%;">
+                                           <label for="username-email">First Name</label><span class="pull-right text-danger">*</span>
+                                            <input id="FName" type="text" class="form-control">
+                                        </div>
+                                        <div class="input-group col-md-5 pull-right" style="margin-right:4%; padding-bottom: 4%;">
+                                           <label for="username-email">Last Name</label><span class="pull-right text-danger"></span>
+                                            <input id="LName" type="text" class="form-control">
+                                        </div>
+                                        <div class="input-group col-md-5 pull-left" style="margin-left:4%; padding-bottom: 4%;">
+                                           <label for="username-email">Email ID</label><span class="pull-right text-danger">*</span>
+                                            <input id="Email" type="text" class="form-control">
+                                        </div>
+                                        <div class="input-group col-md-5 pull-right" style="margin-right:4%; padding-bottom: 4%;">
+                                           <label for="username-email">Skype ID</label><span class="pull-right text-danger"></span>
+                                            <input id="SkypeId" type="text" class="form-control">
+                                        </div>
+                                        <div class="input-group col-md-5 pull-left" style="margin-left:4%; padding-bottom: 4%;">
+                                           <label for="username-email">Company Name</label><span class="pull-right text-danger">*</span>
+                                            <input id="CName" type="text" class="form-control">
+                                        </div>
+                                        <div class="input-group col-md-5 pull-right" style="margin-right:4%; padding-bottom: 4%;">
+                                           <label for="username-email">Phone Number</label><span class="pull-right text-danger"></span>
+                                            <input id="PhoneNo" type="text" class="form-control">
+                                        </div>
+                                        <div class="input-group col-md-11 pull-left" style="margin-left:4%; padding-bottom: 4%;">
+                                           <label for="username-email">Notes</label><span class="pull-right text-danger"></span>
+                                            <textarea id="Notes" class="form-control" rows="4" style="resize:none"></textarea>
+                                        </div>
+                                    </div>
+      
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" onclick="Reset()">RESET</button>
+                    <button type="button" class="btn btn-primary" onclick="SendDemoRequest()">SEND REQUEST</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- End of Modal -->
+
+
+                </div>
+            </div>
+
             <!-- end col-md-3 -->
         </div>
         <!-- end row -->
@@ -302,3 +374,118 @@
     <!-- end container -->
 
 </section>
+
+<script type="text/javascript">
+    function RequestForDemo() {
+        $('#DemoModal').modal('show');
+    }
+
+
+    function SendDemoRequest() {
+        debugger;
+        var fname = $('#FName').val();
+        var lname = $('#LName').val();
+        var email = $('#Email').val();
+        var company = $('#CName').val();
+        var phone = $('#PhoneNo').val();
+        var Subject = 'Request For Demo';
+        var notes = $('#Notes').val();
+        var SkypeId = $('#SkypeId').val();
+        debugger;
+        if (fname == "" || email == "" || company=="") {
+            alert('Please fill all requered fields')
+            return false;
+        }
+        {
+            if (!validateFName(fname)) {
+                alert('Please enter valid First Name');
+                return false;
+            }
+            else if (!validateLName(lname)) {
+                alert('Please enter valid Last Name');
+                return false;
+            }
+            else if (!validateEmail(email)) {
+                alert('not valid email');
+                return false;
+            }
+            else if (!validatePhone(phone)) {
+                alert('not valid phone number');
+                return false;
+            }
+            else {
+                $.ajax({
+                    url: "../Index/SendRequestForDemo?fname=" + fname + "&lname=" + lname + "&email=" + email + "&Skype=" + SkypeId + "&Subject=" + Subject + "&company=" + company + "&phone=" + phone + "&notes=" + notes,
+                    type: "post",
+                    data: '',
+                    processData: false,
+                    contentType: false,
+                    success: function (msg) {
+                        debugger;
+                        if (msg == "Success") {
+                            alertify.success('Mail has been sent successfully!');
+                            $('#FName').val('');
+                            $('#LName').val('');
+                            $('#Email').val('');
+                            $('#Notes').val('');
+                            $('#CName').val('');
+                            $('#PhoneNo').val('');
+                            $('#SkypeId').val('');
+                            $('.close').click();
+                        }
+                        else {
+                            alertify.error("Email Sending Failed! Please try again");
+                            return false;
+                        }
+                    },
+                    error: function () {
+                        alert("failure");
+                    }
+                });
+            }
+        }
+    }
+
+    function Reset() {
+        $('#FName').val('');
+        $('#LName').val('');
+        $('#Email').val('');
+        $('#Notes').val('');
+        $('#CName').val('');
+        $('#PhoneNo').val('');
+        $('#SkypeId').val('');
+    }
+
+    function validateEmail($email) {
+        var emailReg = /^([\w-\.]+@@([\w-]+\.)+[\w-]{2,4})?$/;
+        if (!emailReg.test($email)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    function validateFName($name) {
+        var fnameReg = /^[A-Z,a-z._]+$/;
+        if (!fnameReg.test($name)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    function validateLName($lname) {
+        var lnameReg = /^[A-Z,a-z._]+$/;
+        if (!lnameReg.test($lname)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    function validatePhone($Phoneno) {
+        var phoneReg = /^\d{10}$/;
+        if (!phoneReg.test($Phoneno)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+</script>

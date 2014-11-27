@@ -102,5 +102,53 @@ namespace Api.Socioboard.Services
 
         }
 
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string SendRequestForDemo(string name, string lname, string email, string Subject, string body)
+        {
+            string ret = string.Empty;
+            string tomail = ConfigurationManager.AppSettings["tomail"];
+            string usernameSend = ConfigurationManager.AppSettings["Mandrillusername"];
+            string host = ConfigurationManager.AppSettings["Mandrillhost"];
+            string port = ConfigurationManager.AppSettings["Mandrillport"];
+            string pass = ConfigurationManager.AppSettings["Mandrillpassword"];
+            MailHelper objMailHelper = new MailHelper();
+            ret = objMailHelper.SendDemoMailByMandrill(host, Convert.ToInt32(port), email, "", tomail, "", "", Subject, body, name + " " + lname, pass);
+            return ret;
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string SendChangePasswordMail(string emailId, string mailBody, string Subject)
+        {
+            string ret = string.Empty;
+            string username = ConfigurationManager.AppSettings["username"];
+            string host = ConfigurationManager.AppSettings["Mandrillhost"];
+            string port = ConfigurationManager.AppSettings["Mandrillport"];
+            string pass = ConfigurationManager.AppSettings["Mandrillpassword"];
+            string from = ConfigurationManager.AppSettings["tomail"];
+            // string from = ConfigurationManager.AppSettings["Mandrillusername"];
+
+            MailHelper objMailHelper = new MailHelper();
+            ret = objMailHelper.SendFeedMailByMandrill(host, Convert.ToInt32(port), from, pass, emailId, Subject, mailBody);
+            return ret;
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string SendFeedMail(string emailId, string feed, string fromname, string mailBody)
+        {
+            string ret = string.Empty;
+            string username = ConfigurationManager.AppSettings["username"];
+            string host = ConfigurationManager.AppSettings["Mandrillhost"];
+            string port = ConfigurationManager.AppSettings["Mandrillport"];
+            string pass = ConfigurationManager.AppSettings["Mandrillpassword"];
+            //   string from = ConfigurationManager.AppSettings["Mandrillusername"];
+            string from = ConfigurationManager.AppSettings["tomail"];
+            string Subject = "Reported by " + fromname + " through Socio Board";
+            MailHelper objMailHelper = new MailHelper();
+            ret = objMailHelper.SendFeedMailByMandrill(host, Convert.ToInt32(port), from, pass, emailId, Subject, mailBody);
+            return ret;
+        }
     }
 }

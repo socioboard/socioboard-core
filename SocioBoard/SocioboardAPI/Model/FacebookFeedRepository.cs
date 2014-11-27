@@ -105,7 +105,31 @@ namespace Api.Socioboard.Services
 
 
 
+        public Domain.Socioboard.Domain.FacebookFeed GetFacebookFeedByFeedId(Guid userid, string feedid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, open up a Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        NHibernate.IQuery query = session.CreateQuery("from FacebookFeed where UserId =: userid and FeedId = :feedid");
+                        query.SetParameter("feedid", feedid);
+                        query.SetParameter("userid", userid);
+                        var result = query.UniqueResult();
+                        return (Domain.Socioboard.Domain.FacebookFeed)result;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
 
+                }//End Transaction
+            }//End Session
+        }
 
 
 
@@ -626,7 +650,38 @@ namespace Api.Socioboard.Services
             }//End session
         }
 
+        // Edited by Antima
+        public List<Domain.Socioboard.Domain.FacebookFeed> getAllFacebookFeeds(Guid UserId, string profileid,int count)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get all read feed messages by user id and profile id. 
+                        //Order by EntryDate DESC
+                        List<Domain.Socioboard.Domain.FacebookFeed> alst = session.CreateQuery("from FacebookFeed where  UserId = :userid and ProfileId = :profileId ORDER BY FeedDate DESC")
+                       .SetParameter("userid", UserId)
+                       .SetParameter("profileId", profileid)
+                       .SetFirstResult(count)
+                        .SetMaxResults(10)
+                       .List<Domain.Socioboard.Domain.FacebookFeed>()
+                       .ToList<Domain.Socioboard.Domain.FacebookFeed>();
 
+                        return alst;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Trasaction
+            }//End session
+        }
 
         public List<Domain.Socioboard.Domain.FacebookFeed> getAllReadFbFeeds(string profileid)
         {

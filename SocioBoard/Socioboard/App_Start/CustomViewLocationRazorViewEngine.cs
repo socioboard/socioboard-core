@@ -24,19 +24,22 @@ namespace Socioboard.App_Start
             ViewLocationFormats = new[] 
         {
             "~/Themes/"+domainname+"/Views/{1}/{0}.cshtml", "~/Themes/"+domainname+"/Views/{1}/{0}.vbhtml",
-            "~/Themes/"+domainname+"/Views/Shared/{0}.cshtml", "~/Themes/"+domainname+"/Views/Shared/{0}.vbhtml"
+            "~/Themes/"+domainname+"/Views/Shared/{0}.cshtml", "~/Themes/"+domainname+"/Views/Shared/{0}.vbhtml",
+             "~/Themes/"+domainname+"/Views/Admin/{1}/{0}.cshtml", "~/Themes/"+domainname+"/Views/Admin/{1}/{0}.vbhtml"
         };
 
             MasterLocationFormats = new[] 
         {
             "~/Themes/"+domainname+"/Views/{1}/{0}.cshtml", "~/Themes/"+domainname+"/Views/{1}/{0}.vbhtml",
-            "~/Themes/"+domainname+"/Views/Shared/{0}.cshtml", "~/Themes/"+domainname+"/Views/Shared/{0}.vbhtml"
+            "~/Themes/"+domainname+"/Views/Shared/{0}.cshtml", "~/Themes/"+domainname+"/Views/Shared/{0}.vbhtml",
+             "~/Themes/"+domainname+"/Views/Admin/{1}/{0}.cshtml", "~/Themes/"+domainname+"/Views/Admin/{1}/{0}.vbhtml"
         };
 
             PartialViewLocationFormats = new[] 
         {
             "~/Themes/"+domainname+"/Views/{1}/{0}.cshtml", "~/Themes/"+domainname+"/Views/{1}/{0}.vbhtml",
-            "~/Themes/"+domainname+"/Views/Shared/{0}.cshtml", "~/Themes/"+domainname+"/Views/Shared/{0}.vbhtml"
+            "~/Themes/"+domainname+"/Views/Shared/{0}.cshtml", "~/Themes/"+domainname+"/Views/Shared/{0}.vbhtml",
+             "~/Themes/"+domainname+"/Views/Admin/{1}/{0}.cshtml", "~/Themes/"+domainname+"/Views/Admin/{1}/{0}.vbhtml"
         };
         }
     }

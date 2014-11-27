@@ -9,6 +9,7 @@
 
 <script type="text/javascript">
     function loadfeesmenu() {
+        debugger;
         //alert('load feeds');
         //$('#feeds').load('../Feeds/loadmenu');
         $.ajax({
@@ -19,6 +20,25 @@
             },
             async: false
         });
+
+        
+    }
+
+
+    function DisplayDefaultFeed()
+    {
+        debugger;
+       // var cnt = $('ul#items li').length;
+        var x = $('#feeds > ul > li > ul > li');
+        if (x.length > 0)
+        {
+            $('#feeds > ul > li > ul > li')[0].click();
+        }
+        //if (!$("ul").has("li").length) {
+        //    alertify.alert("No Data");
+        //}
+
+
     }
 
     function LikeUnlikeInstagramPost(LikeCount, IsLike, FeedId, InstagramId) {
@@ -55,7 +75,7 @@
 
     }
 
-
+   
 
 
 
@@ -65,6 +85,7 @@
         $("#feeds").addClass('active');
         $("#feeds").children().addClass('active');
         loadfeesmenu();
+        DisplayDefaultFeed();
     });
 </script>
 
@@ -75,3 +96,10 @@
 
 
 
+<div class="modal fade" id="twtmailpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+       </div>
+
+<div class="modal fade" id="mailpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+       </div>

@@ -66,6 +66,10 @@ namespace GlobusTwitterLib.App.Core
        public static string PostAccountUpdateProfileBannerUrl = "https://api.twitter.com/1.1/account/update_profile_banner.json";
        public static string GetUsersProfileBannerUrl = "https://api.twitter.com/1.1/users/profile_banner.json";
 
+       public static string PostStatusFavoritesById = "https://api.twitter.com/1.1/favorites/create.json";
+       public static string PostUserReportAsSpammerById = "https://api.twitter.com/1.1/users/report_spam.json";
+       public static string PostFriedshipDestroyById = "https://api.twitter.com/1.1/friendships/destroy.json";
+
 
        #endregion
 

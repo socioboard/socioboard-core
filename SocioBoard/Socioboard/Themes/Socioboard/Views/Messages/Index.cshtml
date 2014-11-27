@@ -12,7 +12,7 @@
    
     @Html.Partial("_MessagesRightSideBarPartial")*@
 
-      <div id="right-sidebar_home" class="partialContents" data-url="/Messages/MessagesMidPartialNew">
+      <div style="margin-top:20px" id="right-sidebar_home" class="partialContents" data-url="/Messages/MessagesMidPartialNew">
         <img src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" />
         Loading . . .
     </div> 
@@ -41,6 +41,9 @@
 <script src="~/Themes/Socioboard/Contents/js/Helper.js"></script>
 <script src="~/Themes/Socioboard/Contents/js/underscore.js"></script>
 
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
 <script language="javascript" type="text/javascript">
 
     var throttled = _.throttle(onScroll, 3000);
@@ -48,7 +51,8 @@
 
     function opentask(msgdesc)
     {
-      //  alert(msgdesc);
+        debugger;
+     //   alert(msgdesc);
         $('#savetask').attr('msgdesc', msgdesc);
         $('#task').modal('show');
     }
@@ -195,6 +199,51 @@
        
 
     });
+
+    function MailPopUpMsg(msgid, ntk) {
+        $.ajax({
+            type: 'POST',
+            url: '../Messages/ShowMsgMailPopUp?MsgId=' + msgid + '&Network=' + ntk,
+            dataType: "html",
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                $('#msgmailpopup').html(data);
+                $("#msgmailpopup").modal('show');
+            }
+        });
+    }
+
+    function facebookLikeUnlike(msgguid, profileid, fbmsgid) {
+        debugger;
+        try {
+
+            var status = $("#fblike_" + fbmsgid).attr('status');
+
+            $.ajax({
+                type: "POST",
+                url: "../Feeds/FacebookLike?fbid=" + fbmsgid + "&profileid=" + profileid + "&msgid=" + msgguid,
+                data: '',
+                contentType: "application/json; charset=utf-8",
+                success: function (e) {
+                    if (status == "likes") {
+                        $("#fblike_" + fbmsgid).attr('status', 'unlike');
+                        $("#fblike_" + fbmsgid).attr('title', 'Like this');
+                        $("#fblike_" + fbmsgid).html('Like');
+                        alertify.success("Unliked Successfully");
+                    }
+                    else {
+                        $("#fblike_" + fbmsgid).attr('status', 'likes');
+                        $("#fblike_" + fbmsgid).attr('title', 'Unlike this');
+                        $("#fblike_" + fbmsgid).html('Like');
+                        alertify.success("Liked Successfully");
+                    }
+                  
+                }
+            });
+        }catch(e){}
+    }
+
 </script>
 
 

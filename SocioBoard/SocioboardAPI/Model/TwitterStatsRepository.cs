@@ -151,6 +151,40 @@ namespace Api.Socioboard.Services
             }
         }
 
+        public bool checkTwitterStatsExists(string TwtUserId, Guid Userid, int FollowerCount, int FollowingCount)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //NHibernate.IQuery query = session.CreateQuery("from TwitterStats where UserId = :userid and TwitterId = :Twtuserid and FollowerCount: followercount and FollowingCount: followingcount and Date_format(EntryDate,'%yy-%m-%d') LIKE Date_format(Now(),'%yy-%m-%d')");
+                        NHibernate.IQuery query = session.CreateQuery("from TwitterStats where UserId = :userid and TwitterId = :Twtuserid and FollowerCount = :followercount and FollowingCount = :followingcount and Date_format(EntryDate,'%yy-%m-%d') LIKE Date_format(Now(),'%yy-%m-%d')");
+
+                        query.SetParameter("userid", Userid);
+                        query.SetParameter("Twtuserid", TwtUserId);
+                        query.SetParameter("followercount", FollowerCount);
+                        query.SetParameter("followingcount", FollowingCount);
+
+                        var result = query.UniqueResult();
+
+                        if (result == null)
+                            return false;
+                        else
+                            return true;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return true;
+                    }
+
+                }
+            }
+        }
+
         public bool checkTwitterStatsExistsnew(string TwtUserId, Guid Userid,int followercount)
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())

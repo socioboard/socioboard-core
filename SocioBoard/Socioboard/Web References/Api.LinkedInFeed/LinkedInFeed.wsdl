@@ -17,6 +17,37 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetLinkedInFeeds1">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedInId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLinkedInFeeds1Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLinkedInFeeds1Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllLinkedInFeedsOfProfileWithId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllLinkedInFeedsOfProfileWithIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllLinkedInFeedsOfProfileWithIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -26,11 +57,38 @@
   <wsdl:message name="GetLinkedInFeedsSoapOut">
     <wsdl:part name="parameters" element="tns:GetLinkedInFeedsResponse" />
   </wsdl:message>
+  <wsdl:message name="GetLinkedInFeeds1SoapIn">
+    <wsdl:part name="parameters" element="tns:GetLinkedInFeeds1" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedInFeeds1SoapOut">
+    <wsdl:part name="parameters" element="tns:GetLinkedInFeeds1Response" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedInFeedsOfProfileWithIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllLinkedInFeedsOfProfileWithId" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedInFeedsOfProfileWithIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllLinkedInFeedsOfProfileWithIdResponse" />
+  </wsdl:message>
   <wsdl:message name="GetLinkedInFeedsHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="LinkedInId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetLinkedInFeedsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedInFeeds1HttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="LinkedInId" type="s:string" />
+    <wsdl:part name="count" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedInFeeds1HttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedInFeedsOfProfileWithIdHttpGetIn">
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="Id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedInFeedsOfProfileWithIdHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetLinkedInFeedsHttpPostIn">
@@ -40,10 +98,33 @@
   <wsdl:message name="GetLinkedInFeedsHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetLinkedInFeeds1HttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="LinkedInId" type="s:string" />
+    <wsdl:part name="count" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedInFeeds1HttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedInFeedsOfProfileWithIdHttpPostIn">
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="Id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLinkedInFeedsOfProfileWithIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="LinkedInFeedSoap">
     <wsdl:operation name="GetLinkedInFeeds">
       <wsdl:input message="tns:GetLinkedInFeedsSoapIn" />
       <wsdl:output message="tns:GetLinkedInFeedsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedInFeeds1">
+      <wsdl:input message="tns:GetLinkedInFeeds1SoapIn" />
+      <wsdl:output message="tns:GetLinkedInFeeds1SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedInFeedsOfProfileWithId">
+      <wsdl:input message="tns:GetAllLinkedInFeedsOfProfileWithIdSoapIn" />
+      <wsdl:output message="tns:GetAllLinkedInFeedsOfProfileWithIdSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="LinkedInFeedHttpGet">
@@ -51,17 +132,51 @@
       <wsdl:input message="tns:GetLinkedInFeedsHttpGetIn" />
       <wsdl:output message="tns:GetLinkedInFeedsHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetLinkedInFeeds1">
+      <wsdl:input message="tns:GetLinkedInFeeds1HttpGetIn" />
+      <wsdl:output message="tns:GetLinkedInFeeds1HttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedInFeedsOfProfileWithId">
+      <wsdl:input message="tns:GetAllLinkedInFeedsOfProfileWithIdHttpGetIn" />
+      <wsdl:output message="tns:GetAllLinkedInFeedsOfProfileWithIdHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="LinkedInFeedHttpPost">
     <wsdl:operation name="GetLinkedInFeeds">
       <wsdl:input message="tns:GetLinkedInFeedsHttpPostIn" />
       <wsdl:output message="tns:GetLinkedInFeedsHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetLinkedInFeeds1">
+      <wsdl:input message="tns:GetLinkedInFeeds1HttpPostIn" />
+      <wsdl:output message="tns:GetLinkedInFeeds1HttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedInFeedsOfProfileWithId">
+      <wsdl:input message="tns:GetAllLinkedInFeedsOfProfileWithIdHttpPostIn" />
+      <wsdl:output message="tns:GetAllLinkedInFeedsOfProfileWithIdHttpPostOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LinkedInFeedSoap" type="tns:LinkedInFeedSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetLinkedInFeeds">
       <soap:operation soapAction="http://tempuri.org/GetLinkedInFeeds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedInFeeds1">
+      <soap:operation soapAction="http://tempuri.org/GetLinkedInFeeds1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedInFeedsOfProfileWithId">
+      <soap:operation soapAction="http://tempuri.org/GetAllLinkedInFeedsOfProfileWithId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -81,6 +196,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetLinkedInFeeds1">
+      <soap12:operation soapAction="http://tempuri.org/GetLinkedInFeeds1" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedInFeedsOfProfileWithId">
+      <soap12:operation soapAction="http://tempuri.org/GetAllLinkedInFeedsOfProfileWithId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LinkedInFeedHttpGet" type="tns:LinkedInFeedHttpGet">
     <http:binding verb="GET" />
@@ -93,11 +226,47 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetLinkedInFeeds1">
+      <http:operation location="/GetLinkedInFeeds1" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedInFeedsOfProfileWithId">
+      <http:operation location="/GetAllLinkedInFeedsOfProfileWithId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LinkedInFeedHttpPost" type="tns:LinkedInFeedHttpPost">
     <http:binding verb="POST" />
     <wsdl:operation name="GetLinkedInFeeds">
       <http:operation location="/GetLinkedInFeeds" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedInFeeds1">
+      <http:operation location="/GetLinkedInFeeds1" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinkedInFeedsOfProfileWithId">
+      <http:operation location="/GetAllLinkedInFeedsOfProfileWithId" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

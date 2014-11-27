@@ -81,6 +81,57 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="SendRequestForDemo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="body" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendRequestForDemoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendRequestForDemoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendChangePasswordMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="emailId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mailBody" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendChangePasswordMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendChangePasswordMailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendFeedMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="emailId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="feed" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fromname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mailBody" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendFeedMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendFeedMailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -107,6 +158,24 @@
   </wsdl:message>
   <wsdl:message name="SendCareerMailSoapOut">
     <wsdl:part name="parameters" element="tns:SendCareerMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendRequestForDemoSoapIn">
+    <wsdl:part name="parameters" element="tns:SendRequestForDemo" />
+  </wsdl:message>
+  <wsdl:message name="SendRequestForDemoSoapOut">
+    <wsdl:part name="parameters" element="tns:SendRequestForDemoResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendChangePasswordMailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendChangePasswordMail" />
+  </wsdl:message>
+  <wsdl:message name="SendChangePasswordMailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendChangePasswordMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendFeedMailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendFeedMail" />
+  </wsdl:message>
+  <wsdl:message name="SendFeedMailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendFeedMailResponse" />
   </wsdl:message>
   <wsdl:message name="SendMailHttpGetIn">
     <wsdl:part name="name" type="s:string" />
@@ -153,6 +222,33 @@
     <wsdl:part name="filetype" type="s:string" />
   </wsdl:message>
   <wsdl:message name="SendCareerMailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendRequestForDemoHttpGetIn">
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="lname" type="s:string" />
+    <wsdl:part name="email" type="s:string" />
+    <wsdl:part name="Subject" type="s:string" />
+    <wsdl:part name="body" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendRequestForDemoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendChangePasswordMailHttpGetIn">
+    <wsdl:part name="emailId" type="s:string" />
+    <wsdl:part name="mailBody" type="s:string" />
+    <wsdl:part name="Subject" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendChangePasswordMailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendFeedMailHttpGetIn">
+    <wsdl:part name="emailId" type="s:string" />
+    <wsdl:part name="feed" type="s:string" />
+    <wsdl:part name="fromname" type="s:string" />
+    <wsdl:part name="mailBody" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendFeedMailHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="SendMailHttpPostIn">
@@ -202,6 +298,33 @@
   <wsdl:message name="SendCareerMailHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="SendRequestForDemoHttpPostIn">
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="lname" type="s:string" />
+    <wsdl:part name="email" type="s:string" />
+    <wsdl:part name="Subject" type="s:string" />
+    <wsdl:part name="body" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendRequestForDemoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendChangePasswordMailHttpPostIn">
+    <wsdl:part name="emailId" type="s:string" />
+    <wsdl:part name="mailBody" type="s:string" />
+    <wsdl:part name="Subject" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendChangePasswordMailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendFeedMailHttpPostIn">
+    <wsdl:part name="emailId" type="s:string" />
+    <wsdl:part name="feed" type="s:string" />
+    <wsdl:part name="fromname" type="s:string" />
+    <wsdl:part name="mailBody" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendFeedMailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="MailSenderSoap">
     <wsdl:operation name="SendMail">
       <wsdl:input message="tns:SendMailSoapIn" />
@@ -218,6 +341,18 @@
     <wsdl:operation name="SendCareerMail">
       <wsdl:input message="tns:SendCareerMailSoapIn" />
       <wsdl:output message="tns:SendCareerMailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendRequestForDemo">
+      <wsdl:input message="tns:SendRequestForDemoSoapIn" />
+      <wsdl:output message="tns:SendRequestForDemoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendChangePasswordMail">
+      <wsdl:input message="tns:SendChangePasswordMailSoapIn" />
+      <wsdl:output message="tns:SendChangePasswordMailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendFeedMail">
+      <wsdl:input message="tns:SendFeedMailSoapIn" />
+      <wsdl:output message="tns:SendFeedMailSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="MailSenderHttpGet">
@@ -237,6 +372,18 @@
       <wsdl:input message="tns:SendCareerMailHttpGetIn" />
       <wsdl:output message="tns:SendCareerMailHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="SendRequestForDemo">
+      <wsdl:input message="tns:SendRequestForDemoHttpGetIn" />
+      <wsdl:output message="tns:SendRequestForDemoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendChangePasswordMail">
+      <wsdl:input message="tns:SendChangePasswordMailHttpGetIn" />
+      <wsdl:output message="tns:SendChangePasswordMailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendFeedMail">
+      <wsdl:input message="tns:SendFeedMailHttpGetIn" />
+      <wsdl:output message="tns:SendFeedMailHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="MailSenderHttpPost">
     <wsdl:operation name="SendMail">
@@ -254,6 +401,18 @@
     <wsdl:operation name="SendCareerMail">
       <wsdl:input message="tns:SendCareerMailHttpPostIn" />
       <wsdl:output message="tns:SendCareerMailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendRequestForDemo">
+      <wsdl:input message="tns:SendRequestForDemoHttpPostIn" />
+      <wsdl:output message="tns:SendRequestForDemoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendChangePasswordMail">
+      <wsdl:input message="tns:SendChangePasswordMailHttpPostIn" />
+      <wsdl:output message="tns:SendChangePasswordMailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendFeedMail">
+      <wsdl:input message="tns:SendFeedMailHttpPostIn" />
+      <wsdl:output message="tns:SendFeedMailHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="MailSenderSoap" type="tns:MailSenderSoap">
@@ -287,6 +446,33 @@
     </wsdl:operation>
     <wsdl:operation name="SendCareerMail">
       <soap:operation soapAction="http://tempuri.org/SendCareerMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendRequestForDemo">
+      <soap:operation soapAction="http://tempuri.org/SendRequestForDemo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendChangePasswordMail">
+      <soap:operation soapAction="http://tempuri.org/SendChangePasswordMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendFeedMail">
+      <soap:operation soapAction="http://tempuri.org/SendFeedMail" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -333,6 +519,33 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SendRequestForDemo">
+      <soap12:operation soapAction="http://tempuri.org/SendRequestForDemo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendChangePasswordMail">
+      <soap12:operation soapAction="http://tempuri.org/SendChangePasswordMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendFeedMail">
+      <soap12:operation soapAction="http://tempuri.org/SendFeedMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="MailSenderHttpGet" type="tns:MailSenderHttpGet">
     <http:binding verb="GET" />
@@ -372,6 +585,33 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SendRequestForDemo">
+      <http:operation location="/SendRequestForDemo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendChangePasswordMail">
+      <http:operation location="/SendChangePasswordMail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendFeedMail">
+      <http:operation location="/SendFeedMail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="MailSenderHttpPost" type="tns:MailSenderHttpPost">
     <http:binding verb="POST" />
@@ -404,6 +644,33 @@
     </wsdl:operation>
     <wsdl:operation name="SendCareerMail">
       <http:operation location="/SendCareerMail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendRequestForDemo">
+      <http:operation location="/SendRequestForDemo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendChangePasswordMail">
+      <http:operation location="/SendChangePasswordMail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendFeedMail">
+      <http:operation location="/SendFeedMail" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

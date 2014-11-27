@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using SocioBoard.Domain;
-using SocioBoard.Helper;
 using System.Collections;
 using NHibernate.Criterion;
 using NHibernate.Type;
+using Domain.Socioboard.Domain;
+using Api.Socioboard.Helper;
 
 namespace SocioBoard.Model
 {
-    public class FacebookStatsRepository : IFacebookStatsRepository
+    public class FacebookStatsRepository //: IFacebookStatsRepository
     {
         public void addFacebookStats(FacebookStats fbstats)
         {
@@ -75,6 +75,7 @@ namespace SocioBoard.Model
             }
 
         }
+
         public ArrayList getTotalFacebookStatsOfUser(Guid UserId)
         {
 
@@ -96,6 +97,7 @@ namespace SocioBoard.Model
             }
 
         }
+
         public FacebookStats getFacebookStatsById(string Fbuserid, Guid userId)
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -134,6 +136,39 @@ namespace SocioBoard.Model
                     {
                         Console.WriteLine(ex.StackTrace);
                         return true;
+                    }
+
+                }
+            }
+        }
+
+        public bool checkFacebookStatsExists(string FbUserId, Guid Userid, int FanCount,int maleCount ,int FemaleCount)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        NHibernate.IQuery query = session.CreateQuery("from FacebookStats where UserId = :userid and MaleCount = :malecount and FanCount = :fancount and FemaleCount = :femalecount and FbUserId = :fbuserid and  Date_format(EntryDate,'%yy-%m-%d') LIKE Date_format(Now(),'%yy-%m-%d')");
+                        query.SetParameter("userid", Userid);
+                        query.SetParameter("fbuserid", FbUserId);
+                        query.SetParameter("fancount", FanCount);
+                        query.SetParameter("malecount", maleCount);
+                        query.SetParameter("femalecount", FemaleCount);
+                        List<FacebookStats> result = query.List<FacebookStats>()
+                       .ToList<FacebookStats>();;
+
+                        if (result.Count == 0)
+                            return true;
+                        else
+                            return false;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return false;
                     }
 
                 }
@@ -184,8 +219,7 @@ namespace SocioBoard.Model
                 }
             }
         }
-
-
+        
         public int DeleteFacebookStatsByUserid(Guid userid)
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -208,8 +242,7 @@ namespace SocioBoard.Model
                 }
             }
         }
-
-
+        
         public List<FacebookStats> getAllAccountDetail(string profileid)
         {
             //Creates a database connection and opens up a session
@@ -243,8 +276,7 @@ namespace SocioBoard.Model
                 }//End Trasaction
             }//End session
         }
-
-
+        
         public ArrayList FancountFacebookStats(string FBuserid,int days)
         {
             //List<FacebookStats> lstFacebookStats = new List<FacebookStats>();

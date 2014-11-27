@@ -15,7 +15,7 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-12">
-                            <span>Add account to scheduled message</span>
+                           @* <span>Add Accounts to Schedule Message</span>*@
                             <div class="btn-group pull-right">
                                 <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle" type="button">
                                     <i class="fa fa-chevron-down fa-2x"></i>
@@ -28,12 +28,12 @@
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
-                        <label>5000</label>
+                        <div id="MessageCount" class="counter_bg"></div>
                         <div id="bindcomposescheduledprofiles"></div>
-                        <textarea id="txtscheduled" placeholder="type your message here" rows="3" class="form-control"></textarea>
+                        <textarea id="txtscheduled" placeholder="Type your message here" rows="3" class="form-control"></textarea>
                     </div>
                     <div class="hero-unit">
-                        <input type="text" id="scheduleddate" placeholder="click to show datepicker" readonly="">
+                        <input type="text" id="scheduleddate" placeholder="Click to show datepicker" >
                     </div>
 
                     <div class="input-append bootstrap-timepicker">
@@ -41,22 +41,20 @@
                         <span class="add-on"><i class="icon-time"><img src="~/Themes/Socioboard/Contents/img/clock.png"></i></span>
 
                     </div>
+                    
                     <div class="panel-footer">
 
-                        <button id="scheduled" class="btn btn-outline btn-default" type="button">Schdeule</button>
-                        <button type="button" class="btn btn-outline btn-default" id="savedraft">Save To Draft</button>
+                        <button id="scheduled" class="btn btn-outline btn-default" type="button">Schedeule</button>
+                        <button type="button" class="btn btn-outline btn-default" id="savedraft">Save To Drafts</button>
 
                     </div>
                 </div>
-
-
-
             </div>
         </div>
     </div>
 
-
-
+</div>
+    
 
     <script type="text/javascript">
         var arrbinduser = [];
@@ -95,10 +93,38 @@
         }
 
         function bindfrofiles(network, name, profileid) {
+            var totalmessagewords = 0;
             if (checkisuserexist(profileid + "~" + network) == false) {
                 arrbinduser.push(profileid + "~" + network);
                 $('#bindcomposescheduledprofiles').append('<span style="display:none" class="pull-right btn btn-default bindprof" onclick="removebindfrofiles(\'' + profileid + '\',\'' + network + '\')" id=' + profileid + ' data-toggle="tooltip" data-placement="right" title="click to remove"><i class="fa fa-' + network + ' fa-fw"></i>' + name + '</span>');
                 $('#' + profileid).fadeIn(250);
+
+                totalmessagewords = BindChracterAccordingProfile(network);
+                $('#MessageCount').html(totalmessagewords);
+
+
+                $('#txtscheduled').bind('keyup', function () {
+
+                    debugger;
+                    var totalmessagewords = 0;
+                    var last = arrbinduser.slice(-1)[0]
+                    var strarr = last.split('~');
+                    var Network = strarr[1];
+
+                    totalmessagewords = BindChracterAccordingProfile(Network);
+
+                    var charactersUsed = $(this).val().length;
+
+                    if (charactersUsed > totalmessagewords) {
+                        charactersUsed = totalmessagewords;
+                        $(this).val($(this).val().substr(0, totalmessagewords));
+                    }
+
+                    var charactersRemaining = totalmessagewords - charactersUsed;
+
+                    $('#MessageCount').html(charactersRemaining);
+
+                });
             }
             else {
                 alertify.set({ delay: 1000 });
@@ -106,6 +132,22 @@
             }
 
         };
+
+        function BindChracterAccordingProfile(network) {
+            var totalmessagewords = 0;
+            if (network == "facebook") {
+                totalmessagewords = 5000;
+            }
+            if (network == "twitter") {
+                totalmessagewords = 140;
+            }
+            if (network == "linkedin") {
+                totalmessagewords = 600;
+            }
+
+            return totalmessagewords;
+        }
+
         $(document).ready(function (e) {
         $('#scheduledtime').timepicker();
         $("#publishing").addClass('active');
@@ -116,6 +158,10 @@
             todayHighlight: true,
             startDate: 'd',
             clearBtn: true
+        });
+            // Edited by Antima[6/11/2014]
+        $('#scheduleddate').on('change', function () {
+            $('.datepicker').hide();
         });
         bindcomposemessage();
 
@@ -150,6 +196,35 @@
             for (var i = 0; i < arrbinduser.length; i++) {
                 allprofiles += arrbinduser[i] + "<:>";
             }
+
+
+
+            for (var i = 0; i < arrbinduser.length; i++) {
+                var account = arrbinduser[i];
+                var strarray = account.split('~');
+                var ProfileType = strarray[1];
+                if (ProfileType == 'facebook') {
+                    if (scheduledmessage.length > 5000) {
+                        alertify.error("Facebook Not Support more than 5000 characters");
+                        return;
+                    }
+                }
+                if (ProfileType == 'twitter') {
+                    if (scheduledmessage.length > 140) {
+                        alertify.error("Twitter Not Support more than 140 characters");
+                        return;
+                    }
+                }
+                if (ProfileType == 'linkedin') {
+                    if (scheduledmessage.length > 600) {
+                        alertify.error("Linkedin Not Support more than 600 characters");
+                        return;
+                    }
+                }
+
+            }
+
+
             allprofiles = allprofiles.substr(0, allprofiles.length - 3);
 
             $.ajax({
@@ -166,6 +241,7 @@
 
                     $('.bindprof').hide(1000, function () {
                         $('#bindcomposescheduledprofiles').html('');
+                        $('#MessageCount').html('');
                     });
                 }
             });

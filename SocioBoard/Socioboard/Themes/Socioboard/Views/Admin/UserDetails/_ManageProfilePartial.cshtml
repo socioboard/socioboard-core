@@ -1,0 +1,116 @@
+﻿@using Domain.Socioboard.Domain;
+
+<thead>
+    <tr>
+        <td></td>
+        <td>Name</td>
+        <th>Profile Type</th>
+        <th>Friends</th>
+    </tr>
+</thead>
+
+<tbody>
+    @{
+        Socioboard.Api.FacebookAccount.FacebookAccount objfbAccount = new Socioboard.Api.FacebookAccount.FacebookAccount();
+        List<FacebookAccount> arrlstfbacc = (List<FacebookAccount>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objfbAccount.GetAllFacebookAccounts(), typeof(List<FacebookAccount>)));
+        foreach (FacebookAccount item in arrlstfbacc)
+        { 
+            <tr class="odd gradeX">
+                <td onclick="EditProfilesDetails('@item.FbUserId','@item.UserId','Facebook');"><i class="fa fa-pencil fa-fw" style="cursor:pointer"></i></td>
+                @*<td onclick="DeleteUserDetails('@item.Id');"><i class="fa fa-trash fa-fw" style="cursor:pointer"></i></td>*@
+                <td>@item.FbUserName</td>
+                <td>Facebook</td>
+                <td>@item.Friends</td>
+                
+            </tr>
+        }
+
+
+        Socioboard.Api.TwitterAccount.TwitterAccount objTwtrAccount = new Socioboard.Api.TwitterAccount.TwitterAccount();
+        List<TwitterAccount> lstwtacc = (List<TwitterAccount>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objTwtrAccount.GetAllTwitterAccounts(), typeof(List<TwitterAccount>)));
+        foreach (TwitterAccount item in lstwtacc)
+        { 
+            <tr class="odd gradeX">
+                <td onclick="EditProfilesDetails('@item.TwitterUserId','@item.UserId','Twitter');"><i class="fa fa-pencil fa-fw" style="cursor:pointer"></i></td>
+                @*<td onclick="DeleteUserDetails('@item.Id');"><i class="fa fa-trash fa-fw" style="cursor:pointer"></i></td>*@
+                <td>@item.TwitterScreenName</td>
+                <td>Twitter</td>
+                <td>@item.FollowersCount</td>
+                
+            </tr>
+        }
+
+        Socioboard.Api.LinkedinAccount.LinkedinAccount objLiAcc = new Socioboard.Api.LinkedinAccount.LinkedinAccount();
+        List<LinkedInAccount> lsLiacc = (List<LinkedInAccount>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objLiAcc.GetAllLinkedinAccounts(), typeof(List<LinkedInAccount>)));
+        foreach (LinkedInAccount item in lsLiacc)
+        { 
+            <tr class="odd gradeX">
+                <td onclick="EditProfilesDetails('@item.LinkedinUserId','@item.UserId','Linkedin');"><i class="fa fa-pencil fa-fw" style="cursor:pointer"></i></td>
+                @*<td onclick="DeleteUserDetails('@item.Id');"><i class="fa fa-trash fa-fw" style="cursor:pointer"></i></td>*@
+                <td>@item.LinkedinUserName</td>
+                <td>Linkedin</td>
+                <td>@item.Connections</td>
+                
+            </tr>
+        }
+
+        Socioboard.Api.Instagram.Instagram objInstgrmAccount = new Socioboard.Api.Instagram.Instagram();
+        List<InstagramAccount> lstInsAcc = (List<InstagramAccount>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objInstgrmAccount.GetAllInstagramAccounts(), typeof(List<InstagramAccount>)));
+        foreach (InstagramAccount item in lstInsAcc)
+        { 
+            <tr class="odd gradeX">
+                <td onclick="EditProfilesDetails('@item.InstagramId','@item.UserId','Instagram');"><i class="fa fa-pencil fa-fw" style="cursor:pointer"></i></td>
+                @*<td onclick="DeleteUserDetails('@item.Id');"><i class="fa fa-trash fa-fw" style="cursor:pointer"></i></td>*@
+                <td>@item.InsUserName</td>
+                <td>Instagram</td>
+                <td>@item.Followers</td>
+                
+            </tr>
+        }
+
+        Socioboard.Api.TumblrAccount.TumblrAccount objTumblrAccount = new Socioboard.Api.TumblrAccount.TumblrAccount();
+        List<TumblrAccount> lstTumblrAcc = (List<TumblrAccount>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objTumblrAccount.GetAllTumblrAccounts(), typeof(List<TumblrAccount>)));
+        foreach (TumblrAccount item in lstTumblrAcc)
+        { 
+            <tr class="odd gradeX">
+                @*<td onclick="EditProfilesDetails('@item.tblrUserName','@item.UserId','Tumblr');"><i class="fa fa-pencil fa-fw" style="cursor:pointer"></i></td>*@
+                <td><i class="fa fa-exclamation-triangle"></i></td>
+                @*<td onclick="DeleteUserDetails('@item.Id');"><i class="fa fa-trash fa-fw" style="cursor:pointer"></i></td>*@
+                <td>@item.tblrUserName</td>
+                <td>Tumblr</td>
+                <td></td>
+                
+            </tr>
+        }
+
+        Socioboard.Api.YoutubeAccount.YoutubeAccount objYoutubeAccount = new Socioboard.Api.YoutubeAccount.YoutubeAccount();
+        List<YoutubeAccount> lstYoutubeAcc = (List<YoutubeAccount>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objYoutubeAccount.GetAllYoutubeAccounts(), typeof(List<YoutubeAccount>)));
+        foreach (YoutubeAccount item in lstYoutubeAcc)
+        { 
+            <tr class="odd gradeX">
+                <td onclick="EditProfilesDetails('@item.Ytuserid','@item.UserId','Youtube');"><i class="fa fa-pencil fa-fw" style="cursor:pointer"></i></td>
+                @*<td onclick="DeleteUserDetails('@item.Id');"><i class="fa fa-trash fa-fw" style="cursor:pointer"></i></td>*@
+                <td>@item.Ytusername</td>
+                <td>Youtube</td>
+                <td></td>
+                
+            </tr>
+        }
+
+        Socioboard.Api.GooglePlusAccount.GooglePlusAccount objGPAccount = new Socioboard.Api.GooglePlusAccount.GooglePlusAccount();
+        List<GooglePlusAccount> lstGPacc = (List<GooglePlusAccount>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objGPAccount.GetAllGooglePlusAccounts(), typeof(List<GooglePlusAccount>)));
+        foreach (GooglePlusAccount item in lstGPacc)
+        { 
+            <tr class="odd gradeX">
+                <td onclick="EditProfilesDetails('@item.GpUserId ','@item.UserId','GooglePlus');"><i class="fa fa-pencil fa-fw" style="cursor:pointer"></i></td>
+                @*<td onclick="DeleteUserDetails('@item.Id');"><i class="fa fa-trash fa-fw" style="cursor:pointer"></i></td>*@
+                <td>@item.GpUserName</td>
+                <td>Google Plus</td>
+                <td></td>
+                
+            </tr>
+        }
+    }
+</tbody>
+
+

@@ -145,6 +145,62 @@ namespace Api.Socioboard.Services
             }
         }
 
+        // Edited by Antima
 
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string getAllFacebookTagOfUsers(string UserId, string ProfileId)
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookTag = objFacebookMessageRepository.getAllFacebookTagOfUsers(Guid.Parse(UserId), ProfileId);
+                return new JavaScriptSerializer().Serialize(lstFacebookTag);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string getAllFacebookstatusOfUsers(string UserId, string ProfileId)
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookstatus = objFacebookMessageRepository.getAllFacebookstatusOfUsers(Guid.Parse(UserId), ProfileId);
+                return new JavaScriptSerializer().Serialize(lstFacebookstatus);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string getAllFacebookUserFeedOfUsers(string UserId, string ProfileId)
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookUserFeed = objFacebookMessageRepository.getAllFacebookUserFeedOfUsers(Guid.Parse(UserId), ProfileId);
+                return new JavaScriptSerializer().Serialize(lstFacebookUserFeed);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetMessageDetailByMessageid(string MessageId)
+        {
+            Domain.Socioboard.Domain.FacebookMessage objFacebookMessage = objFacebookMessageRepository.GetMessageDetailByMessageid(MessageId);
+            return new JavaScriptSerializer().Serialize(objFacebookMessage);
+
+        }
     }
 }

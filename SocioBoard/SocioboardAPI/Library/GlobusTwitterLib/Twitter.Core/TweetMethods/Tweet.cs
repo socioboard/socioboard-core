@@ -187,6 +187,34 @@ namespace GlobusTwitterLib.Twitter.Core.TweetMethods
                 response = "[" + response + "]";
             return JArray.Parse(response);
         }
-       
+
+        #region post status favorite
+        public JArray Post_favorites(oAuthTwitter oAuth, string desirestatusId)
+        {
+            string RequestUrl = Globals.PostStatusFavoritesById;
+            SortedDictionary<string, string> strdic = new SortedDictionary<string, string>();
+            strdic.Add("id", desirestatusId);
+            string response = oAuth.oAuthWebRequest(oAuthTwitter.Method.POST, RequestUrl, strdic);
+            if (!response.StartsWith("["))
+                response = "[" + response + "]";
+            return JArray.Parse(response);
+        }
+        #endregion
+
+        #region post user report as spam
+
+        public JArray Post_report_as_spammer(oAuthTwitter oAuth, string userScreaanNameorId)
+        {
+            string RequestUrl = Globals.PostUserReportAsSpammerById;
+            SortedDictionary<string, string> strdic = new SortedDictionary<string, string>();
+            strdic.Add("screen_name", userScreaanNameorId);
+            string response = oAuth.oAuthWebRequest(oAuthTwitter.Method.POST, RequestUrl, strdic);
+            if (!response.StartsWith("["))
+                response = "[" + response + "]";
+            return JArray.Parse(response);
+        }
+
+        #endregion
+
     }
 }

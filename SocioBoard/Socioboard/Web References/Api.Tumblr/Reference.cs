@@ -41,6 +41,8 @@ namespace Socioboard.Api.Tumblr {
         
         private System.Threading.SendOrPostCallback TumblrComposeMessageOperationCompleted;
         
+        private System.Threading.SendOrPostCallback UpdateTumblrAccountByAdminOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -96,6 +98,9 @@ namespace Socioboard.Api.Tumblr {
         
         /// <remarks/>
         public event TumblrComposeMessageCompletedEventHandler TumblrComposeMessageCompleted;
+        
+        /// <remarks/>
+        public event UpdateTumblrAccountByAdminCompletedEventHandler UpdateTumblrAccountByAdminCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetTumblrRedirectUrl", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -300,6 +305,35 @@ namespace Socioboard.Api.Tumblr {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateTumblrAccountByAdmin", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string UpdateTumblrAccountByAdmin(string ObjTumblr) {
+            object[] results = this.Invoke("UpdateTumblrAccountByAdmin", new object[] {
+                        ObjTumblr});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UpdateTumblrAccountByAdminAsync(string ObjTumblr) {
+            this.UpdateTumblrAccountByAdminAsync(ObjTumblr, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateTumblrAccountByAdminAsync(string ObjTumblr, object userState) {
+            if ((this.UpdateTumblrAccountByAdminOperationCompleted == null)) {
+                this.UpdateTumblrAccountByAdminOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateTumblrAccountByAdminOperationCompleted);
+            }
+            this.InvokeAsync("UpdateTumblrAccountByAdmin", new object[] {
+                        ObjTumblr}, this.UpdateTumblrAccountByAdminOperationCompleted, userState);
+        }
+        
+        private void OnUpdateTumblrAccountByAdminOperationCompleted(object arg) {
+            if ((this.UpdateTumblrAccountByAdminCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateTumblrAccountByAdminCompleted(this, new UpdateTumblrAccountByAdminCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -461,6 +495,32 @@ namespace Socioboard.Api.Tumblr {
         private object[] results;
         
         internal TumblrComposeMessageCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void UpdateTumblrAccountByAdminCompletedEventHandler(object sender, UpdateTumblrAccountByAdminCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpdateTumblrAccountByAdminCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpdateTumblrAccountByAdminCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

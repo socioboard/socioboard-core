@@ -1,6 +1,7 @@
 ﻿using Api.Socioboard.Helper;
 using Api.Socioboard.Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -111,7 +112,21 @@ namespace Api.Socioboard.Services
             }
         }
 
-
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllTumblrAccounts()
+        {
+            try
+            {
+                ArrayList lstTumblrAcc = objTumblrAccountRepository.getAllTumblrAccounts();
+                return new JavaScriptSerializer().Serialize(lstTumblrAcc);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
 
 
     }

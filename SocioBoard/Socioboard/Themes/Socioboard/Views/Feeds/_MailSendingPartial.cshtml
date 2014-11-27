@@ -1,0 +1,134 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    bool check = true;
+}
+
+
+@{
+    //Domain.Socioboard.Domain.TwitterFeed twtfeed = (Domain.Socioboard.Domain.TwitterFeed)Model;
+    string ScreenName = string.Empty;
+    string FromScreenName = string.Empty;
+    string Feed = string.Empty;
+    string FeedDate = string.Empty;
+    string MessageId = string.Empty;
+    string FeedLink = string.Empty;
+    Dictionary<string, object> feed = (Dictionary<string, object>)Model;
+    foreach(var item in feed)
+    {
+        if(item.Key=="twt")
+        {
+            Domain.Socioboard.Domain.TwitterFeed twtfeed=(Domain.Socioboard.Domain.TwitterFeed)item.Value;
+            ScreenName = twtfeed.ScreenName;
+            FromScreenName = twtfeed.FromScreenName;
+            Feed = twtfeed.Feed;
+            FeedDate =twtfeed.FeedDate.ToString();
+            MessageId = twtfeed.MessageId;
+            FeedLink = "https://twitter.com/@FromScreenName/status/@MessageId";
+        }
+        else if(item.Key=="linkedin")
+        {
+            Domain.Socioboard.Domain.LinkedInFeed linkitem = (Domain.Socioboard.Domain.LinkedInFeed)item.Value;
+            Socioboard.Api.LinkedinAccount.LinkedinAccount ApiobjLinkedInaccount = new Socioboard.Api.LinkedinAccount.LinkedinAccount();
+            Domain.Socioboard.Domain.LinkedInAccount linkaccount = (Domain.Socioboard.Domain.LinkedInAccount)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjLinkedInaccount.UserInformation(@linkitem.UserId.ToString(), @linkitem.ProfileId), typeof(Domain.Socioboard.Domain.LinkedInAccount)));
+
+            ScreenName = linkaccount.LinkedinUserName;
+            FromScreenName = linkitem.FromName;
+            Feed = linkitem.Feeds;
+            FeedDate = linkitem.Feeds.ToString();
+            MessageId = linkitem.FeedId;
+            FeedLink = "";
+        }
+    }  
+    }
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header model_head">
+            <button type="button" class="close" id="CloseLinkedInPopUp" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">Email Message</h4>
+        </div>
+        <div class="modal-body col-md-12">
+            <div class="col-md-12">
+                <div class="col-md-2 textb" style="font-weight: 700;">From</div>
+                <div class="small_heading col-md-10" id="from_name">@ScreenName</div>
+            </div>
+            <div class="col-md-12 tpspace">
+                <div class="col-md-2 textb" style="font-weight: 700;">To</div>
+                <div class="small_heading col-md-10">
+                    <input type="text" class="form-control" id="to_send" style="margin-bottom: 10px; margin-top: 5px;">
+                </div>
+            </div>
+            @*<input type="text" class="form-control" id="to_send" style="float: left; width: 391px;"></div></div>*@
+            <div class="col-md-12 tpspace">
+                <div class="col-md-2 textb" style="font-weight: 700;">Subject</div>
+                <div class="small_heading col-md-10">
+                    <label>Mail forwarded by @ScreenName</label>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-2 textb"></div>
+                <div class="col-md-10">
+                    <textarea class="col-md-12" id="mail_body" name="" placeholder="" rows="5" style="margin-top: 2px;">&#64;@FromScreenName said: @Feed &#10;&#10;@FeedDate&#10;&#10;@FeedLink &#10;&#10;Sent from Socioboard (http://www.socioboard.com/)</textarea>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            @*   <button id="sendMailBtn" type="button" class="btn btn-primary" onclick="sendmail('@item.ProfileId','@item.Id')">Send</button>*@
+            <button id="sendMailBtn" type="button" class="btn btn-primary" onclick="sendmail()">Send</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function sendmail() {
+        debugger;
+        var feed = $('#mail_body').val();
+        var fromname = $('#from_name').html();
+        var emailId = $('#to_send').val();
+        if (emailId == "") {
+            alert('Please enter EmailId');
+            return false;
+        }
+
+        if (!validateEmail(emailId)) {
+            alert('not valid email');
+            return false;
+        }
+            //$('body').click(function (e){
+            //    $('.dropdown-menu slidedown').hide();
+            //}
+            //    );
+
+        else {
+            debugger;
+            $.ajax({
+                type: "GET",
+                url: "../Feeds/SendFeedMail?emailId=" + emailId + "&feed=" + encodeURIComponent(feed) + "&fromname=" + fromname,
+                data: '',
+                success: function (msg) {
+                    if (msg == "Success") {
+                        alertify.success('Mail has been send Successfully!!');
+                    }
+                    else {
+                        alertify.error("failure");
+                    }
+                    $('#CloseLinkedInPopUp').click();
+                },
+                error: function () {
+                    alert("failure");
+                }
+            });
+        }
+    }
+
+
+    function validateEmail(email) {
+        var emailReg = /^([\w-\.]+@@([\w-]+\.)+[\w-]{2,4})?$/;
+        if (!emailReg.test(email)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+</script>

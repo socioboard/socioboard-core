@@ -1,0 +1,84 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    Package objUser = (Package)Model;   
+}
+
+<div style="min-height: 382px;" id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Edit User Details</h1>
+            </div>
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @objUser.PackageName
+
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <!-- Nav tabs -->
+
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="Personal">
+
+                                <div class="col-md-6">
+                                    <form role="form" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label for="username-email">Name</label><span class="pull-right text-danger">*</span>
+                                            <input id="PackageName" value="@objUser.PackageName" type="text" class="form-control" placeholder="Name" readonly="true">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username-email">Pricing</label><span class="pull-right text-danger">*</span>
+                                            <input id="PackagePrice"  value="@objUser.Pricing" type="text" class="form-control">
+                                        </div>
+                                        <button onclick="UpdatePackage('@objUser.Id')"; id="UpdatePackageData" type="button" class="btn btn-warning">Update</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+</div>
+<script>
+    function UpdatePackage(Id) {
+        debugger;
+        var PackagePrice = $("#PackagePrice").val();
+        if (PackagePrice == "") {
+            alertify.error('Please enter Price');
+            return false;
+        }
+
+        if (PackagePrice.search(/[0-9]/) == -1) {
+            alertify.error('Please enter a Proper Pricing which contain Numeric');
+            return false;
+        }
+
+
+        $.ajax({
+            type: 'POST',
+            url: '../Package/UpdatePackage?Price=' + PackagePrice,
+            success: function (msg) {
+                if (msg == "Package Updated Successfully") {
+                    alertify.success('Package Updated Successfully');
+                    window.top.location.href = "../Package/ManagePackage";
+                }
+                else {
+                    alertify.error('Error please check');
+                }
+            },
+            async: false
+        });
+    }
+</script>

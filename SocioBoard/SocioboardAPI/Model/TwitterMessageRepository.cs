@@ -139,6 +139,41 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+        // Edited by Antima
+
+        public List<Domain.Socioboard.Domain.TwitterMessage> getAllTwitterMessagesOfUser(Guid UserId, string profileid,int count)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, open up a Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get messages of profile by profile id and user id.
+                        
+                        List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.CreateQuery("from TwitterMessage where UserId = :userid and ProfileId = :profid")
+                        .SetParameter("userid", UserId)
+                        .SetParameter("profid", profileid)
+                        .SetFirstResult(count)
+                        .SetMaxResults(10)
+                        .List<Domain.Socioboard.Domain.TwitterMessage>()
+                        .ToList<Domain.Socioboard.Domain.TwitterMessage>();
+                        
+                        return lstmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End Session
+        }
+
+
         /// <getAllReadMessagesOfUser>
         /// Get All Read Messages Of User
         /// </summary>
@@ -366,6 +401,32 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+
+        public Domain.Socioboard.Domain.TwitterMessage GetTwitterMessageByMessageId(Guid userid, string messageid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, open up a Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        NHibernate.IQuery query = session.CreateQuery("from TwitterMessage where UserId =: userid and MessageId = :messid");
+                        query.SetParameter("messid", messageid);
+                        query.SetParameter("userid", userid);
+                        var result = query.UniqueResult();
+                        return (Domain.Socioboard.Domain.TwitterMessage)result;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End Session
+        }
 
         /// <getAllTwitterMessages>
         /// Get All Twitter Messages
@@ -1198,5 +1259,112 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
+
+        // Edited by Antima
+
+        /// <getAllTwitterFeedOfUsers>
+        /// Get All Twitter User Tweet Of Users
+        /// </summary>
+        /// <param name="UserId">User id.(Guid)</param>
+        /// <param name="profileid">Profile id.(String)</param>
+        /// <returns>Return object of TwitterFeed Class with  value of each member in the form of list.(List<TwitterFeed>)</returns>
+        public List<Domain.Socioboard.Domain.TwitterMessage> getAllTwitterUsertweetOfUsers(Guid UserId, string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.CreateQuery("from TwitterMessage where UserId = :UserId and ProfileId = :profileid and Type ='twt_usertweets'")
+                        .SetParameter("UserId", UserId)
+                        .SetParameter("profileid", profileid)
+                            // .SetMaxResults(10)
+                        .List<Domain.Socioboard.Domain.TwitterMessage>()
+                        .ToList<Domain.Socioboard.Domain.TwitterMessage>();
+
+                        return lstmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+
+        /// <getAllTwitterFeedOfUsers>
+        /// Get All Twitter Retweet Of Users
+        /// </summary>
+        /// <param name="UserId">User id.(Guid)</param>
+        /// <param name="profileid">Profile id.(String)</param>
+        /// <returns>Return object of TwitterFeed Class with  value of each member in the form of list.(List<TwitterFeed>)</returns>
+        public List<Domain.Socioboard.Domain.TwitterMessage> getAllTwitterRetweetOfUsers(Guid UserId, string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.CreateQuery("from TwitterMessage where UserId = :UserId and ProfileId = :profileid and Type ='twt_retweets'")
+                        .SetParameter("UserId", UserId)
+                        .SetParameter("profileid", profileid)
+                            // .SetMaxResults(10)
+                        .List<Domain.Socioboard.Domain.TwitterMessage>()
+                        .ToList<Domain.Socioboard.Domain.TwitterMessage>();
+
+                        return lstmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+
+        /// <getAllTwitterFeedOfUsers>
+        /// Get All Twitter Mentions Of Users
+        /// </summary>
+        /// <param name="UserId">User id.(Guid)</param>
+        /// <param name="profileid">Profile id.(String)</param>
+        /// <returns>Return object of TwitterFeed Class with  value of each member in the form of list.(List<TwitterFeed>)</returns>
+        public List<Domain.Socioboard.Domain.TwitterMessage> getAllTwitterMentionsOfUsers(Guid UserId, string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.CreateQuery("from TwitterMessage where UserId = :UserId and ProfileId = :profileid and Type ='twt_mentions'")
+                        .SetParameter("UserId", UserId)
+                        .SetParameter("profileid", profileid)
+                            // .SetMaxResults(10)
+                        .List<Domain.Socioboard.Domain.TwitterMessage>()
+                        .ToList<Domain.Socioboard.Domain.TwitterMessage>();
+
+                        return lstmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
     }
 }

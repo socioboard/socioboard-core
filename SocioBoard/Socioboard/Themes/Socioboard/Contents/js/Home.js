@@ -943,6 +943,24 @@ function CountMessages() {
 }
 
 
+function AddLinPage(id, name, oauth) {
+    debugger;
+    $.ajax({
+        type: 'POST',
+        url: '../LinkedinManager/AddLinkedinCompanyPage?id=' + id + '&oauth=' + oauth,
+        contentType: false,
+        success: function (data) {
+            alertify.set({ delay: 3000 });
+            $('#linkedincompanypageinfo').css({ 'display': 'none' });
+            $('#linkedinpopup').modal('hide');
+            alertify.success("Linkedin Company Page Added Successfully");
+            window.location = '../Home/Index';
+
+        }
+
+    });
+}
+
 
 
 

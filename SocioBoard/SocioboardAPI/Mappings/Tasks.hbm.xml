@@ -29,6 +29,9 @@
     <property name="CompletionDate">
       <column name="CompletionDate"  />
     </property>
+    <property name="ReadStatus">
+      <column name="ReadStatus"  />
+    </property>
     
 
   </class>

@@ -39,6 +39,25 @@ namespace Api.Socioboard.Services
             }
         }
 
+        // Edited by Antima
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string getAllFacebookFeedsByUserIdAndProfileId1(string UserId, string ProfileId, int count)
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.FacebookFeed> lstFacebookFeed = objFacebookFeedRepository.getAllFacebookFeeds(Guid.Parse(UserId), ProfileId, count);
+                return new JavaScriptSerializer().Serialize(lstFacebookFeed);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+
+
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string getUnreadMessages(string ProfileId)
@@ -96,6 +115,23 @@ namespace Api.Socioboard.Services
             {
                 List<Domain.Socioboard.Domain.FacebookFeed> lstFacebookFeed = objFacebookFeedRepository.getAllFeedDetail1(ProfileId, Guid.Parse(userid));
                 return new JavaScriptSerializer().Serialize(lstFacebookFeed);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetFacebookFeedByFeedId(string userid, string feedid)
+        {
+            try
+            {
+                Domain.Socioboard.Domain.FacebookFeed _FacebookFeed = objFacebookFeedRepository.GetFacebookFeedByFeedId(Guid.Parse(userid), feedid);
+                return new JavaScriptSerializer().Serialize(_FacebookFeed);
             }
             catch (Exception ex)
             {

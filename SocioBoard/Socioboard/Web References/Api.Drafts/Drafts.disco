@@ -4,3 +4,13 @@
   <soap address="http://localhost:6361/Services/Drafts.asmx" xmlns:q1="http://tempuri.org/" binding="q1:DraftsSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
   <soap address="http://localhost:6361/Services/Drafts.asmx" xmlns:q2="http://tempuri.org/" binding="q2:DraftsSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
 </discovery>
+
+
+
+
+
+
+
+
+
+

@@ -5,11 +5,10 @@
 
 
 <script type="text/javascript">
-      
-    function TeamReportDetails(days)
-    {
+
+    function TeamReportDetails(days) {
         var fd = new FormData();
-     
+
         fd.append("days", days);
         $.ajax({
             type: 'POST',
@@ -18,15 +17,14 @@
             processData: false,
             contentType: false,
             success: function (msg) {
-              
+
                 $('#page-wrapper').html('').append(msg);
             },
             async: false
         });
     }
 
-    function loadgroupstat(days)
-    {
+    function loadgroupstat(days) {
         var fd = new FormData();
 
         fd.append("days", days);
@@ -44,9 +42,20 @@
         });
     }
 
+    function GetFbPageDetails(FbUserId, UserId) {
+        $.ajax({
+            type: 'POST',
+            url: "../Report/FbPagePostDetails?FbUserId=" + FbUserId + "&UserId=" + UserId,
+            success: function (msg) {
+                $('#page-wrapper').html('').append(msg);
+            }
 
-    function twitterdetails(twtProfileId,days)
-    {
+        });
+
+    }
+
+    function twitterdetails(twtProfileId, days) {
+        debugger;
         var fd = new FormData();
         fd.append("twtProfileId", twtProfileId);
         fd.append("days", days);
@@ -57,9 +66,9 @@
             data: fd,
             processData: false,
             contentType: false,
-            success: function (msg) {                
+            success: function (msg) {
                 $('#page-wrapper').html('').append(msg);
-               // loadChart();
+                // loadChart();
             },
             async: false
         });
@@ -67,7 +76,7 @@
 
     function loadfeesmenu() {
 
-       // alert('load feeds');
+        // alert('load feeds');
         //$('#feeds').load('../Feeds/loadmenu');
         $.ajax({
             type: 'POST',
@@ -80,19 +89,57 @@
         });
     }
 
+    function getfacebookpostcomment(id) {
+        $.ajax({
+            type: 'POST',
+            url: '../Report/loadPostDetails?id='+id,
+            success: function (msg) {
+                $('#loadpostdetails').html(msg);
+            },
+            async: false
+        });
+
+        $('#CommentDetailsModall').modal('show');
+    }
+
+    function showHideDiv(id) {
+        var obj = document.getElementById(id);
+        if (obj.style.display == "none") {
+            obj.style.display = 'block';
+        } else if (obj.style.display == "block") {
+            obj.style.display = 'none';
+        }
+    }
+
+
     $(document).ready(function () {
         debugger;
         $('#side-menu a').removeClass('active');
         $("#reports").addClass('active');
         $("#reports").children().addClass('active');
         loadfeesmenu();
-
-       
     });
 
 </script>
 
 
 <div id="page-wrapper">
+</div>
 
+<div class="modal fade" id="CommentDetailsModall" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 id="myModalLabel" class="modal-title">Post Details</h4>
+            </div>
+            <div id="loadpostdetails" class="modal-body loadcomment">
+               
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                <button class="btn btn-primary" type="button">Save changes</button>
+            </div>
+        </div>
+    </div>
 </div>

@@ -26,6 +26,9 @@ namespace Domain.Socioboard.Factory
                 case "tumblr":
                     objISocialSiteAccount = new TumblrAccount();
                     break;
+                case "linkedincompanypage":
+                    objISocialSiteAccount = new LinkedinCompanyPage();
+                    break;
                 default:
                     break;
             }

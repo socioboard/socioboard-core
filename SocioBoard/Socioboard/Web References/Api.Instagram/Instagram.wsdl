@@ -116,6 +116,30 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetAllInstagramAccounts">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllInstagramAccountsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllInstagramAccountsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateInstagramAccountByAdmin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObjInstagram" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateInstagramAccountByAdminResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateInstagramAccountByAdminResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
     <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
@@ -162,6 +186,18 @@
   <wsdl:message name="InstagramLikeUnLikeSoapOut">
     <wsdl:part name="parameters" element="tns:InstagramLikeUnLikeResponse" />
   </wsdl:message>
+  <wsdl:message name="GetAllInstagramAccountsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllInstagramAccounts" />
+  </wsdl:message>
+  <wsdl:message name="GetAllInstagramAccountsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllInstagramAccountsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInstagramAccountByAdminSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateInstagramAccountByAdmin" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInstagramAccountByAdminSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateInstagramAccountByAdminResponse" />
+  </wsdl:message>
   <wsdl:message name="getInstagramDataHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="InstagramId" type="s:string" />
@@ -204,6 +240,16 @@
     <wsdl:part name="UserId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="InstagramLikeUnLikeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllInstagramAccountsHttpGetIn" />
+  <wsdl:message name="GetAllInstagramAccountsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInstagramAccountByAdminHttpGetIn">
+    <wsdl:part name="ObjInstagram" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInstagramAccountByAdminHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="getInstagramDataHttpPostIn">
@@ -250,6 +296,16 @@
   <wsdl:message name="InstagramLikeUnLikeHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetAllInstagramAccountsHttpPostIn" />
+  <wsdl:message name="GetAllInstagramAccountsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInstagramAccountByAdminHttpPostIn">
+    <wsdl:part name="ObjInstagram" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInstagramAccountByAdminHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="InstagramSoap">
     <wsdl:operation name="getInstagramData">
       <wsdl:input message="tns:getInstagramDataSoapIn" />
@@ -275,6 +331,14 @@
       <wsdl:input message="tns:InstagramLikeUnLikeSoapIn" />
       <wsdl:output message="tns:InstagramLikeUnLikeSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllInstagramAccounts">
+      <wsdl:input message="tns:GetAllInstagramAccountsSoapIn" />
+      <wsdl:output message="tns:GetAllInstagramAccountsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInstagramAccountByAdmin">
+      <wsdl:input message="tns:UpdateInstagramAccountByAdminSoapIn" />
+      <wsdl:output message="tns:UpdateInstagramAccountByAdminSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="InstagramHttpGet">
     <wsdl:operation name="getInstagramData">
@@ -297,6 +361,14 @@
       <wsdl:input message="tns:InstagramLikeUnLikeHttpGetIn" />
       <wsdl:output message="tns:InstagramLikeUnLikeHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllInstagramAccounts">
+      <wsdl:input message="tns:GetAllInstagramAccountsHttpGetIn" />
+      <wsdl:output message="tns:GetAllInstagramAccountsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInstagramAccountByAdmin">
+      <wsdl:input message="tns:UpdateInstagramAccountByAdminHttpGetIn" />
+      <wsdl:output message="tns:UpdateInstagramAccountByAdminHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="InstagramHttpPost">
     <wsdl:operation name="getInstagramData">
@@ -318,6 +390,14 @@
     <wsdl:operation name="InstagramLikeUnLike">
       <wsdl:input message="tns:InstagramLikeUnLikeHttpPostIn" />
       <wsdl:output message="tns:InstagramLikeUnLikeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllInstagramAccounts">
+      <wsdl:input message="tns:GetAllInstagramAccountsHttpPostIn" />
+      <wsdl:output message="tns:GetAllInstagramAccountsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInstagramAccountByAdmin">
+      <wsdl:input message="tns:UpdateInstagramAccountByAdminHttpPostIn" />
+      <wsdl:output message="tns:UpdateInstagramAccountByAdminHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="InstagramSoap" type="tns:InstagramSoap">
@@ -369,6 +449,24 @@
     </wsdl:operation>
     <wsdl:operation name="InstagramLikeUnLike">
       <soap:operation soapAction="http://tempuri.org/InstagramLikeUnLike" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllInstagramAccounts">
+      <soap:operation soapAction="http://tempuri.org/GetAllInstagramAccounts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInstagramAccountByAdmin">
+      <soap:operation soapAction="http://tempuri.org/UpdateInstagramAccountByAdmin" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -433,6 +531,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllInstagramAccounts">
+      <soap12:operation soapAction="http://tempuri.org/GetAllInstagramAccounts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInstagramAccountByAdmin">
+      <soap12:operation soapAction="http://tempuri.org/UpdateInstagramAccountByAdmin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="InstagramHttpGet" type="tns:InstagramHttpGet">
     <http:binding verb="GET" />
@@ -481,6 +597,24 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllInstagramAccounts">
+      <http:operation location="/GetAllInstagramAccounts" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInstagramAccountByAdmin">
+      <http:operation location="/UpdateInstagramAccountByAdmin" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="InstagramHttpPost" type="tns:InstagramHttpPost">
     <http:binding verb="POST" />
@@ -522,6 +656,24 @@
     </wsdl:operation>
     <wsdl:operation name="InstagramLikeUnLike">
       <http:operation location="/InstagramLikeUnLike" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllInstagramAccounts">
+      <http:operation location="/GetAllInstagramAccounts" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInstagramAccountByAdmin">
+      <http:operation location="/UpdateInstagramAccountByAdmin" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

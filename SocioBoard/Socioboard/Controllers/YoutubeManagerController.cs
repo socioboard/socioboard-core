@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using log4net;
 
 namespace Socioboard.Controllers
 {
@@ -14,6 +15,7 @@ namespace Socioboard.Controllers
         //
         // GET: /YoutubeManager/
 
+        ILog logger = LogManager.GetLogger(typeof(YoutubeManagerController));
         public ActionResult Index()
         {
             return View();
@@ -28,17 +30,24 @@ namespace Socioboard.Controllers
             Api.User.User ApiobjUser = new Api.User.User();
             if (Session["googlepluslogin"] != null)
             {
-                objUser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(apiobjYoutube.GoogleLogin(code), typeof(Domain.Socioboard.Domain.User)));
-                checkuserexist = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUserInfoByEmail(objUser.EmailId.ToString()), typeof(Domain.Socioboard.Domain.User)));
-                if (checkuserexist != null)
+                if (!string.IsNullOrEmpty(code))
                 {
-                    Session["User"] = checkuserexist;
-                    return RedirectToAction("Index", "Home");
+                    objUser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(apiobjYoutube.GoogleLogin(code), typeof(Domain.Socioboard.Domain.User)));
+                    checkuserexist = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUserInfoByEmail(objUser.EmailId.ToString()), typeof(Domain.Socioboard.Domain.User)));
+                    if (checkuserexist != null)
+                    {
+                        Session["User"] = checkuserexist;
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        Session["User"] = objUser;
+                        return RedirectToAction("Registration", "Index");
+                    }
                 }
                 else
                 {
-                    Session["User"] = objUser;
-                    return RedirectToAction("Registration", "Index");
+                    return RedirectToAction("Index", "Index");
                 }
             }
             else
@@ -78,13 +87,26 @@ namespace Socioboard.Controllers
                     {
                         Api.Groups.Groups objApiGroups = new Api.Groups.Groups();
                         JObject group = JObject.Parse(objApiGroups.GetGroupDetailsByGroupId(Session["group"].ToString().ToString()));
-                        int profilecount = (Int16)(Session["ProfileCount"]);
-                        int totalaccount = (Int16)Session["TotalAccount"];
-                        if (Convert.ToString(group["GroupName"]) == "Socioboard")
+                        int profilecount = 0;
+                        int totalaccount = 0;
+                        try
+                        {
+                            profilecount = (Int16)(Session["ProfileCount"]);
+                            totalaccount = (Int16)Session["TotalAccount"];
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error("ex.Message : " + ex.Message);
+                            logger.Error("ex.StackTrace : " + ex.StackTrace);
+                        }
                         {
                             if (profilecount < totalaccount)
                             {
                                 //string redirect = "https://accounts.google.com/o/oauth2/auth?client_id=" + ConfigurationManager.AppSettings["YtconsumerKey"] + "&redirect_uri=" + ConfigurationManager.AppSettings["Ytredirect_uri"] + "&scope=https://www.googleapis.com/auth/youtube+https://www.googleapis.com/auth/youtube.readonly+https://www.googleapis.com/auth/youtubepartner+https://www.googleapis.com/auth/youtubepartner-channel-audit+https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/plus.me&response_type=code&access_type=offline";
+                                Response.Redirect("https://accounts.google.com/o/oauth2/auth?client_id=" + ConfigurationManager.AppSettings["YtconsumerKey"] + "&redirect_uri=" + ConfigurationManager.AppSettings["Ytredirect_uri"] + "&scope=https://www.googleapis.com/auth/youtube+https://www.googleapis.com/auth/youtube.readonly+https://www.googleapis.com/auth/youtubepartner+https://www.googleapis.com/auth/youtubepartner-channel-audit+https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/plus.me&response_type=code&access_type=offline");
+                            }
+                            else if (profilecount == 0 || totalaccount == 0)
+                            {
                                 Response.Redirect("https://accounts.google.com/o/oauth2/auth?client_id=" + ConfigurationManager.AppSettings["YtconsumerKey"] + "&redirect_uri=" + ConfigurationManager.AppSettings["Ytredirect_uri"] + "&scope=https://www.googleapis.com/auth/youtube+https://www.googleapis.com/auth/youtube.readonly+https://www.googleapis.com/auth/youtubepartner+https://www.googleapis.com/auth/youtubepartner-channel-audit+https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/plus.me&response_type=code&access_type=offline");
                             }
                             else

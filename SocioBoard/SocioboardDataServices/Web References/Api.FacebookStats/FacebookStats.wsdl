@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AddFacebookFriendsGender">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FacebookUserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddFacebookFriendsGenderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddFacebookFriendsGenderResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddFacebookFriendsGenderSoapIn">
+    <wsdl:part name="parameters" element="tns:AddFacebookFriendsGender" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookFriendsGenderSoapOut">
+    <wsdl:part name="parameters" element="tns:AddFacebookFriendsGenderResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookFriendsGenderHttpGetIn">
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="FacebookUserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookFriendsGenderHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookFriendsGenderHttpPostIn">
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="FacebookUserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookFriendsGenderHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:portType name="FacebookStatsSoap">
+    <wsdl:operation name="AddFacebookFriendsGender">
+      <wsdl:input message="tns:AddFacebookFriendsGenderSoapIn" />
+      <wsdl:output message="tns:AddFacebookFriendsGenderSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="FacebookStatsHttpGet">
+    <wsdl:operation name="AddFacebookFriendsGender">
+      <wsdl:input message="tns:AddFacebookFriendsGenderHttpGetIn" />
+      <wsdl:output message="tns:AddFacebookFriendsGenderHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="FacebookStatsHttpPost">
+    <wsdl:operation name="AddFacebookFriendsGender">
+      <wsdl:input message="tns:AddFacebookFriendsGenderHttpPostIn" />
+      <wsdl:output message="tns:AddFacebookFriendsGenderHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FacebookStatsSoap" type="tns:FacebookStatsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddFacebookFriendsGender">
+      <soap:operation soapAction="http://tempuri.org/AddFacebookFriendsGender" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FacebookStatsSoap12" type="tns:FacebookStatsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddFacebookFriendsGender">
+      <soap12:operation soapAction="http://tempuri.org/AddFacebookFriendsGender" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FacebookStatsHttpGet" type="tns:FacebookStatsHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="AddFacebookFriendsGender">
+      <http:operation location="/AddFacebookFriendsGender" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FacebookStatsHttpPost" type="tns:FacebookStatsHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="AddFacebookFriendsGender">
+      <http:operation location="/AddFacebookFriendsGender" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FacebookStats">
+    <wsdl:port name="FacebookStatsSoap" binding="tns:FacebookStatsSoap">
+      <soap:address location="http://localhost:6361/Services/FacebookStats.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FacebookStatsSoap12" binding="tns:FacebookStatsSoap12">
+      <soap12:address location="http://localhost:6361/Services/FacebookStats.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FacebookStatsHttpGet" binding="tns:FacebookStatsHttpGet">
+      <http:address location="http://localhost:6361/Services/FacebookStats.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FacebookStatsHttpPost" binding="tns:FacebookStatsHttpPost">
+      <http:address location="http://localhost:6361/Services/FacebookStats.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

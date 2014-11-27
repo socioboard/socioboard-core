@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AddPackage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObjPackage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddPackageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddPackageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllPackage">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllPackageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllPackageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePackage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObjPackage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePackageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdatePackageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPackageDetailsById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PackageId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPackageDetailsByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPackageDetailsByIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddPackageSoapIn">
+    <wsdl:part name="parameters" element="tns:AddPackage" />
+  </wsdl:message>
+  <wsdl:message name="AddPackageSoapOut">
+    <wsdl:part name="parameters" element="tns:AddPackageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPackageSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllPackage" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPackageSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllPackageResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePackageSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdatePackage" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePackageSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdatePackageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPackageDetailsByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPackageDetailsById" />
+  </wsdl:message>
+  <wsdl:message name="GetPackageDetailsByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPackageDetailsByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddPackageHttpGetIn">
+    <wsdl:part name="ObjPackage" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddPackageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPackageHttpGetIn" />
+  <wsdl:message name="GetAllPackageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePackageHttpGetIn">
+    <wsdl:part name="ObjPackage" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePackageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPackageDetailsByIdHttpGetIn">
+    <wsdl:part name="PackageId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPackageDetailsByIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddPackageHttpPostIn">
+    <wsdl:part name="ObjPackage" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddPackageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPackageHttpPostIn" />
+  <wsdl:message name="GetAllPackageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePackageHttpPostIn">
+    <wsdl:part name="ObjPackage" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePackageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPackageDetailsByIdHttpPostIn">
+    <wsdl:part name="PackageId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPackageDetailsByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="AdminPackageDetailsSoap">
+    <wsdl:operation name="AddPackage">
+      <wsdl:input message="tns:AddPackageSoapIn" />
+      <wsdl:output message="tns:AddPackageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPackage">
+      <wsdl:input message="tns:GetAllPackageSoapIn" />
+      <wsdl:output message="tns:GetAllPackageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePackage">
+      <wsdl:input message="tns:UpdatePackageSoapIn" />
+      <wsdl:output message="tns:UpdatePackageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackageDetailsById">
+      <wsdl:input message="tns:GetPackageDetailsByIdSoapIn" />
+      <wsdl:output message="tns:GetPackageDetailsByIdSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AdminPackageDetailsHttpGet">
+    <wsdl:operation name="AddPackage">
+      <wsdl:input message="tns:AddPackageHttpGetIn" />
+      <wsdl:output message="tns:AddPackageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPackage">
+      <wsdl:input message="tns:GetAllPackageHttpGetIn" />
+      <wsdl:output message="tns:GetAllPackageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePackage">
+      <wsdl:input message="tns:UpdatePackageHttpGetIn" />
+      <wsdl:output message="tns:UpdatePackageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackageDetailsById">
+      <wsdl:input message="tns:GetPackageDetailsByIdHttpGetIn" />
+      <wsdl:output message="tns:GetPackageDetailsByIdHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AdminPackageDetailsHttpPost">
+    <wsdl:operation name="AddPackage">
+      <wsdl:input message="tns:AddPackageHttpPostIn" />
+      <wsdl:output message="tns:AddPackageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPackage">
+      <wsdl:input message="tns:GetAllPackageHttpPostIn" />
+      <wsdl:output message="tns:GetAllPackageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePackage">
+      <wsdl:input message="tns:UpdatePackageHttpPostIn" />
+      <wsdl:output message="tns:UpdatePackageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPackageDetailsById">
+      <wsdl:input message="tns:GetPackageDetailsByIdHttpPostIn" />
+      <wsdl:output message="tns:GetPackageDetailsByIdHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AdminPackageDetailsSoap" type="tns:AdminPackageDetailsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddPackage">
+      <soap:operation soapAction="http://tempuri.org/AddPackage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPackage">
+      <soap:operation soapAction="http://tempuri.org/GetAllPackage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePackage">
+      <soap:operation soapAction="http://tempuri.org/UpdatePackage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPackageDetailsById">
+      <soap:operation soapAction="http://tempuri.org/GetPackageDetailsById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AdminPackageDetailsSoap12" type="tns:AdminPackageDetailsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddPackage">
+      <soap12:operation soapAction="http://tempuri.org/AddPackage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPackage">
+      <soap12:operation soapAction="http://tempuri.org/GetAllPackage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePackage">
+      <soap12:operation soapAction="http://tempuri.org/UpdatePackage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPackageDetailsById">
+      <soap12:operation soapAction="http://tempuri.org/GetPackageDetailsById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AdminPackageDetailsHttpGet" type="tns:AdminPackageDetailsHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="AddPackage">
+      <http:operation location="/AddPackage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPackage">
+      <http:operation location="/GetAllPackage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePackage">
+      <http:operation location="/UpdatePackage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPackageDetailsById">
+      <http:operation location="/GetPackageDetailsById" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AdminPackageDetailsHttpPost" type="tns:AdminPackageDetailsHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="AddPackage">
+      <http:operation location="/AddPackage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPackage">
+      <http:operation location="/GetAllPackage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePackage">
+      <http:operation location="/UpdatePackage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPackageDetailsById">
+      <http:operation location="/GetPackageDetailsById" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AdminPackageDetails">
+    <wsdl:port name="AdminPackageDetailsSoap" binding="tns:AdminPackageDetailsSoap">
+      <soap:address location="http://localhost:6361/Services/AdminPackageDetails.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdminPackageDetailsSoap12" binding="tns:AdminPackageDetailsSoap12">
+      <soap12:address location="http://localhost:6361/Services/AdminPackageDetails.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdminPackageDetailsHttpGet" binding="tns:AdminPackageDetailsHttpGet">
+      <http:address location="http://localhost:6361/Services/AdminPackageDetails.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdminPackageDetailsHttpPost" binding="tns:AdminPackageDetailsHttpPost">
+      <http:address location="http://localhost:6361/Services/AdminPackageDetails.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

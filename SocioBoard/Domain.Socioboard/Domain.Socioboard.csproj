@@ -63,6 +63,11 @@
     <Compile Include="Domain\FacebookInsightStats.cs" />
     <Compile Include="Domain\FacebookMessage.cs" />
     <Compile Include="Domain\FacebookStats.cs" />
+    <Compile Include="Domain\FbPageComment.cs" />
+    <Compile Include="Domain\FbPageLiker.cs" />
+    <Compile Include="Domain\FbPagePost.cs" />
+    <Compile Include="Domain\FbPagePostCommentLiker.cs" />
+    <Compile Include="Domain\FbPageSharer.cs" />
     <Compile Include="Domain\GoogleAnalyticsAccount.cs" />
     <Compile Include="Domain\GoogleAnalyticsStats.cs" />
     <Compile Include="Domain\GooglePlusAccount.cs" />
@@ -122,9 +127,12 @@
     <Compile Include="Domain\IUserPackageRelation.cs" />
     <Compile Include="Domain\IUserRepository.cs" />
     <Compile Include="Domain\LinkedinAccount.cs" />
+    <Compile Include="Domain\LinkedinCompanyPage.cs" />
+    <Compile Include="Domain\LinkedinCompanyPagePosts.cs" />
     <Compile Include="Domain\LinkedInFeed.cs" />
     <Compile Include="Domain\LinkedInGroup.cs" />
     <Compile Include="Domain\LinkedInMessage.cs" />
+    <Compile Include="Domain\LinkedinPageComment.cs" />
     <Compile Include="Domain\LinkedInUser.cs" />
     <Compile Include="Domain\Log.cs" />
     <Compile Include="Domain\LoginLogs.cs" />
@@ -161,6 +169,7 @@
     <Compile Include="Domain\YoutubeAccount.cs" />
     <Compile Include="Domain\YoutubeChannel.cs" />
     <Compile Include="Factory\SocialSiteAccountFactory.cs" />
+    <Compile Include="Helper\TwitterProfileDetails.cs" />
     <Compile Include="Helper\TwitterRecentFollower.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

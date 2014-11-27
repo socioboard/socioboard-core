@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetAllUsers">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllUsersResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserByIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUserAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmailId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Package" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUserAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateUserAccountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllUsers" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserById" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateUserAccount" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateUserAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUsersHttpGetIn" />
+  <wsdl:message name="GetAllUsersHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByIdHttpGetIn">
+    <wsdl:part name="Id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserAccountHttpGetIn">
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+    <wsdl:part name="EmailId" type="s:string" />
+    <wsdl:part name="Package" type="s:string" />
+    <wsdl:part name="Status" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserAccountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserHttpGetIn">
+    <wsdl:part name="Id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUsersHttpPostIn" />
+  <wsdl:message name="GetAllUsersHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByIdHttpPostIn">
+    <wsdl:part name="Id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserAccountHttpPostIn">
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+    <wsdl:part name="EmailId" type="s:string" />
+    <wsdl:part name="Package" type="s:string" />
+    <wsdl:part name="Status" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserAccountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserHttpPostIn">
+    <wsdl:part name="Id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="AdminUserDetailsSoap">
+    <wsdl:operation name="GetAllUsers">
+      <wsdl:input message="tns:GetAllUsersSoapIn" />
+      <wsdl:output message="tns:GetAllUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserById">
+      <wsdl:input message="tns:GetUserByIdSoapIn" />
+      <wsdl:output message="tns:GetUserByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserAccount">
+      <wsdl:input message="tns:UpdateUserAccountSoapIn" />
+      <wsdl:output message="tns:UpdateUserAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input message="tns:DeleteUserSoapIn" />
+      <wsdl:output message="tns:DeleteUserSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AdminUserDetailsHttpGet">
+    <wsdl:operation name="GetAllUsers">
+      <wsdl:input message="tns:GetAllUsersHttpGetIn" />
+      <wsdl:output message="tns:GetAllUsersHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserById">
+      <wsdl:input message="tns:GetUserByIdHttpGetIn" />
+      <wsdl:output message="tns:GetUserByIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserAccount">
+      <wsdl:input message="tns:UpdateUserAccountHttpGetIn" />
+      <wsdl:output message="tns:UpdateUserAccountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input message="tns:DeleteUserHttpGetIn" />
+      <wsdl:output message="tns:DeleteUserHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AdminUserDetailsHttpPost">
+    <wsdl:operation name="GetAllUsers">
+      <wsdl:input message="tns:GetAllUsersHttpPostIn" />
+      <wsdl:output message="tns:GetAllUsersHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserById">
+      <wsdl:input message="tns:GetUserByIdHttpPostIn" />
+      <wsdl:output message="tns:GetUserByIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserAccount">
+      <wsdl:input message="tns:UpdateUserAccountHttpPostIn" />
+      <wsdl:output message="tns:UpdateUserAccountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input message="tns:DeleteUserHttpPostIn" />
+      <wsdl:output message="tns:DeleteUserHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AdminUserDetailsSoap" type="tns:AdminUserDetailsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllUsers">
+      <soap:operation soapAction="http://tempuri.org/GetAllUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserById">
+      <soap:operation soapAction="http://tempuri.org/GetUserById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserAccount">
+      <soap:operation soapAction="http://tempuri.org/UpdateUserAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap:operation soapAction="http://tempuri.org/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AdminUserDetailsSoap12" type="tns:AdminUserDetailsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllUsers">
+      <soap12:operation soapAction="http://tempuri.org/GetAllUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserById">
+      <soap12:operation soapAction="http://tempuri.org/GetUserById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserAccount">
+      <soap12:operation soapAction="http://tempuri.org/UpdateUserAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap12:operation soapAction="http://tempuri.org/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AdminUserDetailsHttpGet" type="tns:AdminUserDetailsHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetAllUsers">
+      <http:operation location="/GetAllUsers" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserById">
+      <http:operation location="/GetUserById" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserAccount">
+      <http:operation location="/UpdateUserAccount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <http:operation location="/DeleteUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AdminUserDetailsHttpPost" type="tns:AdminUserDetailsHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetAllUsers">
+      <http:operation location="/GetAllUsers" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserById">
+      <http:operation location="/GetUserById" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserAccount">
+      <http:operation location="/UpdateUserAccount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <http:operation location="/DeleteUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AdminUserDetails">
+    <wsdl:port name="AdminUserDetailsSoap" binding="tns:AdminUserDetailsSoap">
+      <soap:address location="http://localhost:6361/Services/AdminUserDetails.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdminUserDetailsSoap12" binding="tns:AdminUserDetailsSoap12">
+      <soap12:address location="http://localhost:6361/Services/AdminUserDetails.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdminUserDetailsHttpGet" binding="tns:AdminUserDetailsHttpGet">
+      <http:address location="http://localhost:6361/Services/AdminUserDetails.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdminUserDetailsHttpPost" binding="tns:AdminUserDetailsHttpPost">
+      <http:address location="http://localhost:6361/Services/AdminUserDetails.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

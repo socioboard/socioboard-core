@@ -10,6 +10,7 @@
 
                 <div class="row-fluid">
                     @{
+                        
                         int counter = 0;
                         foreach (var item in (Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, Dictionary<object, List<object>>>)Model)
                         {
@@ -242,7 +243,6 @@
                             }
                             if (item.Key.ProfileType == "tumblr")
                             {
-
                                 var dic_profileinfo = item.Value.ElementAt(counter);
                                 //  var item = dictionary.ElementAt(index);
                                 Domain.Socioboard.Domain.TumblrAccount objTumblrAccount = (Domain.Socioboard.Domain.TumblrAccount)dic_profileinfo.Key;
@@ -272,8 +272,6 @@
                                 </div>
                             </div>
                         </div>
-                                
-                                
                             }
                             if (item.Key.ProfileType == "youtube")
                             {
@@ -310,13 +308,10 @@
                                 </div>
                             </div>
                         </div>
-                                
                             }
                             counter++;
                         }
                     }
-
-
                 </div>
             </div>
         </div>

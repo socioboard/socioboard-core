@@ -2,6 +2,22 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Iski">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IskiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IskiResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="AddFacebookAccount">
         <s:complexType>
           <s:sequence>
@@ -228,9 +244,122 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="AddFbPagePost">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accesstoken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddFbPagePostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddFbPagePostResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllFbPagePostDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pageid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllFbPagePostDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllFbPagePostDetailsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddFacebookPagesByUrl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="groupId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddFacebookPagesByUrlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddFacebookPagesByUrlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFbPageDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="url" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFbPageDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFbPageDetailsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FacebookProfileDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FacebookProfileDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FacebookProfileDetailsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddAllFbPagePost">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accesstoken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddAllFbPagePostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddAllFbPagePostResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateFacebookAccountByAdmin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObjFacebook" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateFacebookAccountByAdminResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateFacebookAccountByAdminResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="IskiSoapIn">
+    <wsdl:part name="parameters" element="tns:Iski" />
+  </wsdl:message>
+  <wsdl:message name="IskiSoapOut">
+    <wsdl:part name="parameters" element="tns:IskiResponse" />
+  </wsdl:message>
   <wsdl:message name="AddFacebookAccountSoapIn">
     <wsdl:part name="parameters" element="tns:AddFacebookAccount" />
   </wsdl:message>
@@ -314,6 +443,56 @@
   </wsdl:message>
   <wsdl:message name="CommentOnFbGroupPostSoapOut">
     <wsdl:part name="parameters" element="tns:CommentOnFbGroupPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddFbPagePostSoapIn">
+    <wsdl:part name="parameters" element="tns:AddFbPagePost" />
+  </wsdl:message>
+  <wsdl:message name="AddFbPagePostSoapOut">
+    <wsdl:part name="parameters" element="tns:AddFbPagePostResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFbPagePostDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllFbPagePostDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFbPagePostDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllFbPagePostDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookPagesByUrlSoapIn">
+    <wsdl:part name="parameters" element="tns:AddFacebookPagesByUrl" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookPagesByUrlSoapOut">
+    <wsdl:part name="parameters" element="tns:AddFacebookPagesByUrlResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFbPageDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFbPageDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetFbPageDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFbPageDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="FacebookProfileDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:FacebookProfileDetails" />
+  </wsdl:message>
+  <wsdl:message name="FacebookProfileDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:FacebookProfileDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddAllFbPagePostSoapIn">
+    <wsdl:part name="parameters" element="tns:AddAllFbPagePost" />
+  </wsdl:message>
+  <wsdl:message name="AddAllFbPagePostSoapOut">
+    <wsdl:part name="parameters" element="tns:AddAllFbPagePostResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFacebookAccountByAdminSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateFacebookAccountByAdmin" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFacebookAccountByAdminSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateFacebookAccountByAdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="IskiHttpGetIn">
+    <wsdl:part name="code" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IskiHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="AddFacebookAccountHttpGetIn">
     <wsdl:part name="code" type="s:string" />
@@ -427,6 +606,65 @@
     <wsdl:part name="Accesstoken" type="s:string" />
   </wsdl:message>
   <wsdl:message name="CommentOnFbGroupPostHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFbPagePostHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="accesstoken" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFbPagePostHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFbPagePostDetailsHttpGetIn">
+    <wsdl:part name="pageid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFbPagePostDetailsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookPagesByUrlHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="profileId" type="s:string" />
+    <wsdl:part name="groupId" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookPagesByUrlHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFbPageDetailsHttpGetIn">
+    <wsdl:part name="url" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFbPageDetailsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="FacebookProfileDetailsHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FacebookProfileDetailsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddAllFbPagePostHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="accesstoken" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddAllFbPagePostHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFacebookAccountByAdminHttpGetIn">
+    <wsdl:part name="ObjFacebook" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFacebookAccountByAdminHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="IskiHttpPostIn">
+    <wsdl:part name="code" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IskiHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="AddFacebookAccountHttpPostIn">
@@ -543,7 +781,62 @@
   <wsdl:message name="CommentOnFbGroupPostHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="AddFbPagePostHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="accesstoken" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFbPagePostHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFbPagePostDetailsHttpPostIn">
+    <wsdl:part name="pageid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFbPagePostDetailsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookPagesByUrlHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="profileId" type="s:string" />
+    <wsdl:part name="groupId" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookPagesByUrlHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFbPageDetailsHttpPostIn">
+    <wsdl:part name="url" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFbPageDetailsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="FacebookProfileDetailsHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FacebookProfileDetailsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddAllFbPagePostHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="accesstoken" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddAllFbPagePostHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFacebookAccountByAdminHttpPostIn">
+    <wsdl:part name="ObjFacebook" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFacebookAccountByAdminHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="FacebookSoap">
+    <wsdl:operation name="Iski">
+      <wsdl:input message="tns:IskiSoapIn" />
+      <wsdl:output message="tns:IskiSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="AddFacebookAccount">
       <wsdl:input message="tns:AddFacebookAccountSoapIn" />
       <wsdl:output message="tns:AddFacebookAccountSoapOut" />
@@ -600,8 +893,40 @@
       <wsdl:input message="tns:CommentOnFbGroupPostSoapIn" />
       <wsdl:output message="tns:CommentOnFbGroupPostSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="AddFbPagePost">
+      <wsdl:input message="tns:AddFbPagePostSoapIn" />
+      <wsdl:output message="tns:AddFbPagePostSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFbPagePostDetails">
+      <wsdl:input message="tns:GetAllFbPagePostDetailsSoapIn" />
+      <wsdl:output message="tns:GetAllFbPagePostDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookPagesByUrl">
+      <wsdl:input message="tns:AddFacebookPagesByUrlSoapIn" />
+      <wsdl:output message="tns:AddFacebookPagesByUrlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFbPageDetails">
+      <wsdl:input message="tns:GetFbPageDetailsSoapIn" />
+      <wsdl:output message="tns:GetFbPageDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FacebookProfileDetails">
+      <wsdl:input message="tns:FacebookProfileDetailsSoapIn" />
+      <wsdl:output message="tns:FacebookProfileDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddAllFbPagePost">
+      <wsdl:input message="tns:AddAllFbPagePostSoapIn" />
+      <wsdl:output message="tns:AddAllFbPagePostSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFacebookAccountByAdmin">
+      <wsdl:input message="tns:UpdateFacebookAccountByAdminSoapIn" />
+      <wsdl:output message="tns:UpdateFacebookAccountByAdminSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookHttpGet">
+    <wsdl:operation name="Iski">
+      <wsdl:input message="tns:IskiHttpGetIn" />
+      <wsdl:output message="tns:IskiHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="AddFacebookAccount">
       <wsdl:input message="tns:AddFacebookAccountHttpGetIn" />
       <wsdl:output message="tns:AddFacebookAccountHttpGetOut" />
@@ -658,8 +983,40 @@
       <wsdl:input message="tns:CommentOnFbGroupPostHttpGetIn" />
       <wsdl:output message="tns:CommentOnFbGroupPostHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="AddFbPagePost">
+      <wsdl:input message="tns:AddFbPagePostHttpGetIn" />
+      <wsdl:output message="tns:AddFbPagePostHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFbPagePostDetails">
+      <wsdl:input message="tns:GetAllFbPagePostDetailsHttpGetIn" />
+      <wsdl:output message="tns:GetAllFbPagePostDetailsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookPagesByUrl">
+      <wsdl:input message="tns:AddFacebookPagesByUrlHttpGetIn" />
+      <wsdl:output message="tns:AddFacebookPagesByUrlHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFbPageDetails">
+      <wsdl:input message="tns:GetFbPageDetailsHttpGetIn" />
+      <wsdl:output message="tns:GetFbPageDetailsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FacebookProfileDetails">
+      <wsdl:input message="tns:FacebookProfileDetailsHttpGetIn" />
+      <wsdl:output message="tns:FacebookProfileDetailsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddAllFbPagePost">
+      <wsdl:input message="tns:AddAllFbPagePostHttpGetIn" />
+      <wsdl:output message="tns:AddAllFbPagePostHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFacebookAccountByAdmin">
+      <wsdl:input message="tns:UpdateFacebookAccountByAdminHttpGetIn" />
+      <wsdl:output message="tns:UpdateFacebookAccountByAdminHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookHttpPost">
+    <wsdl:operation name="Iski">
+      <wsdl:input message="tns:IskiHttpPostIn" />
+      <wsdl:output message="tns:IskiHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="AddFacebookAccount">
       <wsdl:input message="tns:AddFacebookAccountHttpPostIn" />
       <wsdl:output message="tns:AddFacebookAccountHttpPostOut" />
@@ -716,9 +1073,46 @@
       <wsdl:input message="tns:CommentOnFbGroupPostHttpPostIn" />
       <wsdl:output message="tns:CommentOnFbGroupPostHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="AddFbPagePost">
+      <wsdl:input message="tns:AddFbPagePostHttpPostIn" />
+      <wsdl:output message="tns:AddFbPagePostHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFbPagePostDetails">
+      <wsdl:input message="tns:GetAllFbPagePostDetailsHttpPostIn" />
+      <wsdl:output message="tns:GetAllFbPagePostDetailsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookPagesByUrl">
+      <wsdl:input message="tns:AddFacebookPagesByUrlHttpPostIn" />
+      <wsdl:output message="tns:AddFacebookPagesByUrlHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFbPageDetails">
+      <wsdl:input message="tns:GetFbPageDetailsHttpPostIn" />
+      <wsdl:output message="tns:GetFbPageDetailsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FacebookProfileDetails">
+      <wsdl:input message="tns:FacebookProfileDetailsHttpPostIn" />
+      <wsdl:output message="tns:FacebookProfileDetailsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddAllFbPagePost">
+      <wsdl:input message="tns:AddAllFbPagePostHttpPostIn" />
+      <wsdl:output message="tns:AddAllFbPagePostHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFacebookAccountByAdmin">
+      <wsdl:input message="tns:UpdateFacebookAccountByAdminHttpPostIn" />
+      <wsdl:output message="tns:UpdateFacebookAccountByAdminHttpPostOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="FacebookSoap" type="tns:FacebookSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Iski">
+      <soap:operation soapAction="http://tempuri.org/Iski" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddFacebookAccount">
       <soap:operation soapAction="http://tempuri.org/AddFacebookAccount" style="document" />
       <wsdl:input>
@@ -845,9 +1239,81 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddFbPagePost">
+      <soap:operation soapAction="http://tempuri.org/AddFbPagePost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFbPagePostDetails">
+      <soap:operation soapAction="http://tempuri.org/GetAllFbPagePostDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookPagesByUrl">
+      <soap:operation soapAction="http://tempuri.org/AddFacebookPagesByUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFbPageDetails">
+      <soap:operation soapAction="http://tempuri.org/GetFbPageDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FacebookProfileDetails">
+      <soap:operation soapAction="http://tempuri.org/FacebookProfileDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAllFbPagePost">
+      <soap:operation soapAction="http://tempuri.org/AddAllFbPagePost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFacebookAccountByAdmin">
+      <soap:operation soapAction="http://tempuri.org/UpdateFacebookAccountByAdmin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="FacebookSoap12" type="tns:FacebookSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Iski">
+      <soap12:operation soapAction="http://tempuri.org/Iski" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddFacebookAccount">
       <soap12:operation soapAction="http://tempuri.org/AddFacebookAccount" style="document" />
       <wsdl:input>
@@ -974,9 +1440,81 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddFbPagePost">
+      <soap12:operation soapAction="http://tempuri.org/AddFbPagePost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFbPagePostDetails">
+      <soap12:operation soapAction="http://tempuri.org/GetAllFbPagePostDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookPagesByUrl">
+      <soap12:operation soapAction="http://tempuri.org/AddFacebookPagesByUrl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFbPageDetails">
+      <soap12:operation soapAction="http://tempuri.org/GetFbPageDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FacebookProfileDetails">
+      <soap12:operation soapAction="http://tempuri.org/FacebookProfileDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAllFbPagePost">
+      <soap12:operation soapAction="http://tempuri.org/AddAllFbPagePost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFacebookAccountByAdmin">
+      <soap12:operation soapAction="http://tempuri.org/UpdateFacebookAccountByAdmin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="FacebookHttpGet" type="tns:FacebookHttpGet">
     <http:binding verb="GET" />
+    <wsdl:operation name="Iski">
+      <http:operation location="/Iski" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddFacebookAccount">
       <http:operation location="/AddFacebookAccount" />
       <wsdl:input>
@@ -1096,6 +1634,69 @@
     </wsdl:operation>
     <wsdl:operation name="CommentOnFbGroupPost">
       <http:operation location="/CommentOnFbGroupPost" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFbPagePost">
+      <http:operation location="/AddFbPagePost" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFbPagePostDetails">
+      <http:operation location="/GetAllFbPagePostDetails" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookPagesByUrl">
+      <http:operation location="/AddFacebookPagesByUrl" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFbPageDetails">
+      <http:operation location="/GetFbPageDetails" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FacebookProfileDetails">
+      <http:operation location="/FacebookProfileDetails" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAllFbPagePost">
+      <http:operation location="/AddAllFbPagePost" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFacebookAccountByAdmin">
+      <http:operation location="/UpdateFacebookAccountByAdmin" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -1106,6 +1707,15 @@
   </wsdl:binding>
   <wsdl:binding name="FacebookHttpPost" type="tns:FacebookHttpPost">
     <http:binding verb="POST" />
+    <wsdl:operation name="Iski">
+      <http:operation location="/Iski" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddFacebookAccount">
       <http:operation location="/AddFacebookAccount" />
       <wsdl:input>
@@ -1225,6 +1835,69 @@
     </wsdl:operation>
     <wsdl:operation name="CommentOnFbGroupPost">
       <http:operation location="/CommentOnFbGroupPost" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFbPagePost">
+      <http:operation location="/AddFbPagePost" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFbPagePostDetails">
+      <http:operation location="/GetAllFbPagePostDetails" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFacebookPagesByUrl">
+      <http:operation location="/AddFacebookPagesByUrl" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFbPageDetails">
+      <http:operation location="/GetFbPageDetails" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FacebookProfileDetails">
+      <http:operation location="/FacebookProfileDetails" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAllFbPagePost">
+      <http:operation location="/AddAllFbPagePost" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFacebookAccountByAdmin">
+      <http:operation location="/UpdateFacebookAccountByAdmin" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

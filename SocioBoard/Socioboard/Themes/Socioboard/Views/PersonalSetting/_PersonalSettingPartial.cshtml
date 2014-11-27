@@ -8,7 +8,11 @@
     {
         lname += fnamelname[i];
     }
+
+    string path = System.Configuration.ConfigurationManager.AppSettings["domain"];
 }
+    
+
 <div class="container-fluid">
     <h1 class="page-header">Settings</h1>
     <div class="panel panel-default">
@@ -26,32 +30,47 @@
                 <div class="tab-pane active" id="Personal">
                     
                     <div class="col-md-6">
-                        <form role="form">
-                            <div class="form-group input-group">
-                                <span class="input-group-addon">N</span>
-                                <input id="fname" value="@fname" type="text" class="form-control" placeholder="First Name">
-                            </div>
-                            <div class="form-group input-group">
-                                <span class="input-group-addon">L</span>
-                                <input id="lname" value="@lname" type="text" class="form-control" placeholder="Last Name">
-                            </div>
-                            <div class="form-group input-group">
-                                <span class="input-group-addon">E</span>
-                                <input readonly="" id="email" value="@objUser.EmailId" type="text" class="form-control" placeholder="Email id">
-                            </div>
-                            <button type="reset" class="btn btn-default">Reset Password</button>
+                        <form role="form" class="form-horizontal">
                             <div class="form-group">
+                               @* <span class="input-group-addon">First Name</span>
+                                <input id="fname" value="@fname" type="text" class="form-control" placeholder="First Name">*@
+                                <label for="username-email">First Name</label><span class="pull-right text-danger">*</span>
+                        <input id="fname" value="@fname" type="text" class="form-control" placeholder="First Name">
+                            </div>
+                            <div class="form-group">
+                              @*  <span class="input-group-addon">Last Name</span>
+                                <input id="lname" value="@lname" type="text" class="form-control" placeholder="Last Name">*@
+                                 <label for="username-email">Last Name</label><span class="pull-right text-danger">*</span>
+                        <input id="lname" value="@lname" type="text" class="form-control" placeholder="Last Name">
+                            </div>
+                            <div class="form-group">
+                                @*<span class="input-group-addon">Email Address</span>
+                                <input readonly="" id="email" value="@objUser.EmailId" type="text" class="form-control" placeholder="Email id">*@
+                                 <label for="username-email">E-mail Address</label><span class="pull-right text-danger">*</span>
+                        <input id="email" placeholder="E-mail Id" value="@objUser.EmailId" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                            <button type="reset" class="btn btn-primary" data-toggle="modal" data-target="#ResetModal">Change Password</button>
+                                </div>
+                            @*<div class="form-group">
                                 <img src="@objUser.ProfileUrl" class="img-circle profilePic" alt="User Avatar">
                                 <label>Team members will see the avatar you have set.</label>
-                                <input type="file">
+                                <div><input id="uploadImage" type="file" class="btn btn-default col-md-6" onchange="AddImage()"></div>
+                            </div>*@
+
+                            <div class="form-group">
+                               @* <img src="@objUser.ProfileUrl" class="img-circle profilePic" alt="User Avatar">*@
+                                <label>Team members will see the avatar you have set.</label>
+                                <div><input  id="input-24" type="file" class="btn btn-default col-md-6"></div>
                             </div>
+
                             <div class="form-group">
 
                                 <div class="time_zone">
-                                    Time Zone
+                                  <label for="time_zone">Time Zone</label>  
                                 </div>
                                 <div class="ps_select">
-                                    <select id="ContentPlaceHolder1_ddlTimeZone" class="select">
+                                    <select id="ContentPlaceHolder1_ddlTimeZone" class="select form-control">
                                          @foreach (var timeZoneInfo in TimeZoneInfo.GetSystemTimeZones())
                                          {
                                              if (timeZoneInfo.DisplayName == objUser.TimeZone)
@@ -67,6 +86,11 @@
                                 </div>
                             </div>
                             <button onclick="changesetting('@objUser.Id')" id="savepersonalsetting" type="button" class="btn btn-warning">Save</button>
+                        
+                          <button id="MonthlyUpgrade" onclick="Upgradeplan(this)" class="btn btn-success" type="submit">Upgrade to Monthly plan</button>
+                            <button id="YearlyUpgrade" onclick="Upgradeplan(this)" class="btn btn-success" type="submit">Upgrade to yearly plan</button>
+                        
+                        
                         </form>
                     </div>
                 </div>
@@ -80,3 +104,51 @@
     </div>
     <!-- /.panel-body -->
 </div>
+@* start Reset password modal *@
+<div class="modal fade" id="ResetModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Change Password</h4>
+      </div>
+      <form class="modal-body">
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"></span>
+                                <input id="oldpass" value="" type="password" class="form-control" placeholder="Old Password">
+                            </div>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"></span>
+                                <input id="newpass" value="" type="password" class="form-control" placeholder="New Password">
+                            </div>
+            <div class="form-group input-group">
+                                <span class="input-group-addon"></span>
+                                <input id="confirmpass" value="" type="password" class="form-control" placeholder="Confirm Password">
+                            </div>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button onclick="changePassword('@objUser.EmailId')" type="button" class="btn btn-primary">Save changes</button>
+          </form>
+      </div>
+    </div>
+  </div>
+
+@* End Reset password modal  *@
+@* Scripts to upload image *@
+<link href="~/Themes/@path/Contents/css/fileinput.min.css" rel="stylesheet" />
+<script src="~/Themes/@path/Contents/js/fileinput.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#input-24").fileinput({
+            showUpload: false,
+            showRemove: false,
+            @if(!string.IsNullOrEmpty(@objUser.ProfileUrl))
+            {
+               <text>  initialPreview: [
+"<img src='@objUser.ProfileUrl' class='file-preview-image' >",
+            ],</text>
+            }
+           
+        });
+    });
+</script>
+@* End scripts upload image *@

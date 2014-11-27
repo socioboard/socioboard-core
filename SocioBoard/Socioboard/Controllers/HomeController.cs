@@ -10,61 +10,68 @@ using Socioboard.Helper;
 using System.Text.RegularExpressions;
 using System.Web.Script.Serialization;
 using System.IO;
+using Socioboard.App_Start;
 
 namespace Socioboard.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index(string teamid)
+
+
+        [MyExpirePageActionFilter]
+        [Authorize]
+        public ActionResult Index()
         {
-            User objUser = (User)Session["User"];
-            if (teamid != null)
+
+            if (Session["Paid_User"] !=null && Session["Paid_User"].ToString() == "Unpaid")
             {
-                if (objUser != null)
+                return RedirectToAction("Billing", "PersonalSetting");
+            }
+            else
+            {
+                ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+                #region Count Used Accounts
+                try
                 {
-                    Api.Team.Team ApiobjTeam = new Api.Team.Team();
-                    Team objuserinfo = (Team)(new JavaScriptSerializer().Deserialize(ApiobjTeam.GetTeamById(teamid), typeof(Team)));
-                    if (objuserinfo.InviteStatus == 0)
-                    {
-                        ApiobjTeam.UpdateTeam(objUser.Id.ToString(), teamid, objUser.UserName);
-                    }
-                    Response.Redirect("../Home/Index", true);
+                    User objUser = (User)Session["User"];
+                    Api.SocialProfile.SocialProfile apiobjSocialProfile = new Api.SocialProfile.SocialProfile();
+
+                    apiobjSocialProfile.GetAllSocialProfiles();
+
+                    Session["ProfileCount"] = Convert.ToInt16(apiobjSocialProfile.GetAllSocialProfilesOfUserCount(objUser.Id.ToString()).ToString());
+                    Session["TotalAccount"] = Convert.ToInt16(SBUtils.GetUserPackageProfileCount(objUser.AccountType));
+                    ViewBag.AccountType = objUser.AccountType;
+                    //if (Session["GroupName"] == null)
+                    //{
+                    //    Groups objGroupDetails = objGroupRepository.getGroupDetail(user.Id);
+                    //    team = objTeamRepo.getAllDetails(objGroupDetails.Id, user.EmailId);
+                    //    Session["GroupName"] = team;
+                    //}
+
+                    //else
+                    //{
+                    //    team = (SocioBoard.Domain.Team)Session["GroupName"];
+                    //}    
+
+
+
+
+
                 }
-                else
+                catch (Exception ex)
                 {
-                   //Response.Redirect("Index/Registration?teamid="+teamid +"");
-                   return RedirectToAction("Registration", "Index", new { teamid = teamid });
-                    
+                    Console.WriteLine(ex.Message);
                 }
-            }
-            Session["fblogin"] = null;
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-            #region Count Used Accounts
-            try
-            {
-                Api.SocialProfile.SocialProfile apiobjSocialProfile = new Api.SocialProfile.SocialProfile();
+                #endregion
+                if (Session["SocialManagerInfo"] != null)
+                {
 
-                apiobjSocialProfile.GetAllSocialProfiles();
-
-                Session["ProfileCount"] = Convert.ToInt16(apiobjSocialProfile.GetAllSocialProfilesOfUserCount(objUser.Id.ToString()).ToString());
-                Session["TotalAccount"] = Convert.ToInt16(SBUtils.GetUserPackageProfileCount(objUser.AccountType));
+                }
+                int ProfileCount = int.Parse(Session["ProfileCount"].ToString());
+                return View(User);
+                // return PartialView("_HomePartial");
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            #endregion
-            if (Session["SocialManagerInfo"] != null)
-            {
-
-            }
-            return View(User);
-            // return PartialView("_HomePartial");
         }
-
-
-
-
 
         public ActionResult About()
         {
@@ -174,6 +181,11 @@ namespace Socioboard.Controllers
                 Api.YoutubeAccount.YoutubeAccount apiobjYoutubeAccount = new Api.YoutubeAccount.YoutubeAccount();
                 apiobjYoutubeAccount.DeleteYoutubeAccount(objUser.Id.ToString(), profileid, Session["group"].ToString());
             }
+            else if (type == "liComPage")
+            {
+                Api.LinkedinCompanyPage.LinkedinCompanyPage apiobjLinkedinCompanyPage = new Api.LinkedinCompanyPage.LinkedinCompanyPage();
+                apiobjLinkedinCompanyPage.DeleteLinkedinCompanyPage(objUser.Id.ToString(), profileid, Session["group"].ToString());
+            }
             return Content("Deleted");
         }
 
@@ -213,7 +225,7 @@ namespace Socioboard.Controllers
             {
                 if (fi != null)
                 {
-                    var path = Server.MapPath("~/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "Contents/img/upload");
+                    var path = Server.MapPath("~/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/upload");
 
                     // var path = System.Configuration.ConfigurationManager.AppSettings["MailSenderDomain"]+"Contents/img/upload";
                     file = path + "/" + fi.FileName;
@@ -234,12 +246,14 @@ namespace Socioboard.Controllers
 
             DbxNext:
 
+                if (!string.IsNullOrEmpty(DropboxImg[0]))
+                {
                 if (DropboxImg.Count() != 0 && DropboxImg.Count() >= DBXCount)
                 {
                     file = DropboxImg[DBXCount];
                     DBXCount++;
                 }
-
+                }
 
                 if (profiletype == "facebook")
                 {
@@ -261,9 +275,17 @@ namespace Socioboard.Controllers
                     Api.Tumblr.Tumblr ApiobjTumblr = new Api.Tumblr.Tumblr();
                     ApiobjTumblr.TumblrComposeMessage(message, profileid, objGroups.UserId.ToString(), curdaatetimetime, file);
                 }
-                if (DBXCount < DropboxImg.Count())
+
+
+                Api.ScheduledMessage.ScheduledMessage objAddComposeSentMessage = new Api.ScheduledMessage.ScheduledMessage();
+                objAddComposeSentMessage.AddComposeMessage(objGroups.UserId.ToString(), profileid, profiletype, message);
+
+                if (!string.IsNullOrEmpty(DropboxImg[0]))
                 {
-                    goto DbxNext;
+                    if (DBXCount < DropboxImg.Count())
+                    {
+                        goto DbxNext;
+                    }
                 }
             }
             return Content("");
@@ -273,7 +295,7 @@ namespace Socioboard.Controllers
         {
              User objUser = (User)Session["User"];
             Api.Twitter.Twitter ApiobjTwitter = new Api.Twitter.Twitter();
-            List<Domain.Socioboard.Helper.TwitterRecentFollower> lstTwitterRecentFollower = (List<Domain.Socioboard.Helper.TwitterRecentFollower>)(new JavaScriptSerializer().Deserialize(ApiobjTwitter.TwitterRecentFollower(objUser.Id.ToString()), typeof(List<Domain.Socioboard.Helper.TwitterRecentFollower>)));
+             List<Domain.Socioboard.Helper.TwitterRecentFollower> lstTwitterRecentFollower = (List<Domain.Socioboard.Helper.TwitterRecentFollower>)(new JavaScriptSerializer().Deserialize(ApiobjTwitter.TwitterRecentFollower(objUser.Id.ToString()), typeof(List<Domain.Socioboard.Helper.TwitterRecentFollower>)));
             return PartialView("_RecentFollowerPartial", lstTwitterRecentFollower);
         }
 
@@ -376,10 +398,19 @@ namespace Socioboard.Controllers
 
         public ActionResult ContactSearchFacebook(string keyword)
         {
-            Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
-            Api.DiscoverySearch.DiscoverySearch ApiobjDiscoverySearch = new Api.DiscoverySearch.DiscoverySearch();
             List<Domain.Socioboard.Domain.DiscoverySearch> lstDiscoverySearch = new List<Domain.Socioboard.Domain.DiscoverySearch>();
-            lstDiscoverySearch = (List<Domain.Socioboard.Domain.DiscoverySearch>)(new JavaScriptSerializer().Deserialize(ApiobjDiscoverySearch.contactSearchFacebook(keyword), typeof(List<Domain.Socioboard.Domain.DiscoverySearch>)));
+            try
+            {
+                Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
+                Api.DiscoverySearch.DiscoverySearch ApiobjDiscoverySearch = new Api.DiscoverySearch.DiscoverySearch();
+               
+                lstDiscoverySearch = (List<Domain.Socioboard.Domain.DiscoverySearch>)(new JavaScriptSerializer().Deserialize(ApiobjDiscoverySearch.contactSearchFacebook(keyword), typeof(List<Domain.Socioboard.Domain.DiscoverySearch>)));
+               
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
             return PartialView("_FacebookContactPartial", lstDiscoverySearch);
         }
 
@@ -391,6 +422,16 @@ namespace Socioboard.Controllers
             List<Domain.Socioboard.Domain.DiscoverySearch> lstDiscoverySearch = new List<Domain.Socioboard.Domain.DiscoverySearch>();
             lstDiscoverySearch = (List<Domain.Socioboard.Domain.DiscoverySearch>)(new JavaScriptSerializer().Deserialize(ApiobjDiscoverySearch.contactSearchTwitter(keyword), typeof(List<Domain.Socioboard.Domain.DiscoverySearch>)));
             return PartialView("_TwitterContactPartial", lstDiscoverySearch);
+        }
+
+        public ActionResult pagenotfound() 
+        {
+            return View("pagenotfound");
+        }
+
+        public ActionResult training()
+        {
+            return View();
         }
     }
 }

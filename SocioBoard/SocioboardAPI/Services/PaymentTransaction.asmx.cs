@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Script.Services;
 using System.Web.Services;
+using SocioBoard.Model;
 
 namespace Api.Socioboard.Services
 {
@@ -21,10 +22,26 @@ namespace Api.Socioboard.Services
     public class PaymentTransaction : System.Web.Services.WebService
     {
 
+        PaymentTransactionRepository objPaymentTransactionRepository = new PaymentTransactionRepository();
+
         [WebMethod]
         public string HelloWorld()
         {
             return "Hello World";
+        }
+
+        [WebMethod]
+        public string SavePayPalTransaction(string userID, string amountPaid)
+        {
+            Domain.Socioboard.Domain.PaymentTransaction objPaymentTransaction = new Domain.Socioboard.Domain.PaymentTransaction();
+            objPaymentTransaction.AmountPaid = amountPaid;
+            objPaymentTransaction.PaymentDate = DateTime.Now;
+            objPaymentTransaction.PaymentStatus="paid";
+            objPaymentTransaction.UserId = Guid.Parse(userID);
+
+            string paymentResponse = objPaymentTransactionRepository.SavePayPalTransaction(objPaymentTransaction);
+
+            return new JavaScriptSerializer().Serialize(paymentResponse);
         }
     }
 }

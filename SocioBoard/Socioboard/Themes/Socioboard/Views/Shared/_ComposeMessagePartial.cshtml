@@ -1,5 +1,7 @@
 ﻿@using Domain.Socioboard.Domain;
 @{
+    
+    
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
 }
 @foreach (var item in (Dictionary<TeamMemberProfile, object>)Model)
@@ -9,7 +11,10 @@
         FacebookAccount objFacebookAccount = (FacebookAccount)item.Value;
     <li onclick="bindfrofilesmaster('facebook','@objFacebookAccount.FbUserName','@objFacebookAccount.FbUserId')">
         <a href="#">
-            <i class="fa fa-facebook fa-fw"></i>@objFacebookAccount.FbUserName
+            @*<i class="fa fa-facebook fa-fw"></i>@objFacebookAccount.FbUserName*@
+            <img src="http://graph.facebook.com/@objFacebookAccount.FbUserId/picture?type=small" class="img-circle profilePics" >
+            <img src
+                ="/Themes/@path/Contents/img/fb_icon.png" class="icon_share">@objFacebookAccount.FbUserName
         </a>
     </li>
     }
@@ -18,7 +23,9 @@
         TwitterAccount objTwitterAccount = (TwitterAccount)item.Value;
     <li onclick="bindfrofilesmaster('twitter','@objTwitterAccount.TwitterScreenName','@objTwitterAccount.TwitterUserId')">
         <a href="#">
-            <i class="fa fa-twitter  fa-fw"></i>@objTwitterAccount.TwitterScreenName
+            @*<i class="fa fa-twitter  fa-fw"></i>@objTwitterAccount.TwitterScreenName*@
+            <img src="@objTwitterAccount.ProfileImageUrl" class="img-circle profilePics" >
+            <img src="/Themes/@path/Contents/img/twticon.png" class="icon_share">@objTwitterAccount.TwitterScreenName
         </a>
     </li>
     }
@@ -27,7 +34,9 @@
         LinkedInAccount objLinkedInAccount = (LinkedInAccount)item.Value;
     <li onclick="bindfrofilesmaster('linkedin','@objLinkedInAccount.LinkedinUserName','@objLinkedInAccount.LinkedinUserId')">
         <a href="#">
-            <i class="fa fa-linkedin fa-fw"></i>@objLinkedInAccount.LinkedinUserName
+            @*<i class="fa fa-linkedin fa-fw"></i>@objLinkedInAccount.LinkedinUserName*@
+            <img src="@objLinkedInAccount.ProfileImageUrl" class="img-circle profilePics" >
+            <img src="/Themes/@path/Contents/img/link_icon.png" class="icon_share">@objLinkedInAccount.LinkedinUserName
         </a>
     </li>
     }
@@ -42,7 +51,9 @@
         string tumblruserimage = "http://api.tumblr.com/v2/blog/" + objTumblrAccount.tblrUserName + ".tumblr.com/avatar";
     <li onclick="bindfrofilesmaster('tumblr','@objTumblrAccount.tblrUserName','@objTumblrAccount.tblrUserName')">
         <a href="#">
-            <i class="fa fa-tumblr fa-fw"></i>@objTumblrAccount.tblrUserName
+            @*<i class="fa fa-tumblr fa-fw"></i>@objTumblrAccount.tblrUserName*@
+            <img src="@tumblruserimage" class="img-circle profilePics" >
+            <img src="/Themes/@path/Contents/img/tumblr.png" class="icon_share">@objTumblrAccount.tblrUserName
         </a>
     </li>
     }

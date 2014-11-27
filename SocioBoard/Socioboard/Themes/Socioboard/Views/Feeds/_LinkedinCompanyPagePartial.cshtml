@@ -1,0 +1,273 @@
+﻿@{
+
+    Domain.Socioboard.Domain.LinkedinCompanyPage objcompanypageInfo = ViewBag.LinkedinPageInformation;
+    List<Domain.Socioboard.Domain.LinkedinCompanyPagePosts> lstpagepost = ViewBag.LinkedinPagePost;
+    GlobusLinkedinLib.App.Core.LinkedinPageUpdate objLiPageupdate = new GlobusLinkedinLib.App.Core.LinkedinPageUpdate();
+    GlobusLinkedinLib.App.Core.LinkedinPageUpdate.CompanyPagePosts objLinkedinPageLike = new GlobusLinkedinLib.App.Core.LinkedinPageUpdate.CompanyPagePosts();
+    List<Domain.Socioboard.Domain.LinkdeinPageComment> objLipagepostComnt = new List<Domain.Socioboard.Domain.LinkdeinPageComment>();
+    int count = 1;
+ 
+
+        <div class="container-fluid">
+            <h1 class="page-header"><i class="fa fa-institution"></i>@objcompanypageInfo.LinkedinPageName</h1>
+
+            <div class="row">
+                <div class="col-md-7">
+                    <textarea class="form-control" cols="7" id="txtPostofPage" placeholder="Share an Update"></textarea>
+                    <div class="fileUpload attach">
+    				    <input type="file" class="upload" />
+				    </div>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 1%; padding-bottom: 1%;">
+                <div class="col-md-2 col-md-push-6">
+                    <button class="btn btn-primary" name="update" onclick="SendPostOnLiCompanyPage('@objcompanypageInfo.LinkedinPageId')">Share</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bookmark fa-fw"></i>Description
+                        </div>
+                        <div class="panel-body">
+                            <img src="@objcompanypageInfo.LogoUrl">
+                            <p>@objcompanypageInfo.Description</p>
+                            <pre><strong>Specialties</strong>
+                                <br>@objcompanypageInfo.Specialties</pre>
+                            <dl class="col-md-4">
+                                <dt>Website</dt>
+                                <dd>@objcompanypageInfo.WebsiteUrl</dd>
+                                <dt>Industry</dt>
+                                <dd>@objcompanypageInfo.Industries</dd>
+                            </dl>
+                            <dl class="col-md-4">
+                                <dt>Type</dt>
+                                <dd>@objcompanypageInfo.CompanyType</dd>
+                                <dt>Headquarters</dt>
+                                <dd>@objcompanypageInfo.Locations</dd>
+                            </dl>
+                            <dl class="col-md-4">
+                                <dt>Company Size</dt>
+                                <dd>@objcompanypageInfo.EmployeeCountRange</dd>
+                                <dt>Founded</dt>
+                                <dd>@objcompanypageInfo.FoundedYear</dd>
+                            </dl>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="chat-panel panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i>News Feeds<a href="#"><i class="fa fa-refresh pull-right"></i></a></h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="chat">
+                        
+                        
+                        @foreach (var item in lstpagepost)
+                        {
+                                GlobusLinkedinLib.Authentication.oAuthLinkedIn Linkedin_oauth = new GlobusLinkedinLib.Authentication.oAuthLinkedIn();
+
+                                Linkedin_oauth.Verifier = objcompanypageInfo.OAuthVerifier;
+                                Linkedin_oauth.TokenSecret = objcompanypageInfo.OAuthSecret;
+                                Linkedin_oauth.Token = objcompanypageInfo.OAuthToken;
+                                Linkedin_oauth.Id = objcompanypageInfo.LinkedinPageId;
+                                Linkedin_oauth.FirstName = objcompanypageInfo.LinkedinPageName;
+
+                                objLinkedinPageLike = objLiPageupdate.GetPostLike(Linkedin_oauth, item.UpdateKey, objcompanypageInfo.LinkedinPageId);
+                                
+                                string linkedinoauth = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(Linkedin_oauth);
+                                Socioboard.Api.LinkedinCompanyPage.LinkedinCompanyPage objLinkedinCompanypage = new Socioboard.Api.LinkedinCompanyPage.LinkedinCompanyPage();
+                                objLipagepostComnt = (List<Domain.Socioboard.Domain.LinkdeinPageComment>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objLinkedinCompanypage.GetLinkedinPagePostComment(linkedinoauth,item.UpdateKey), typeof(List<Domain.Socioboard.Domain.LinkdeinPageComment>)));
+                                int cnt = objLipagepostComnt.Count();
+                            
+                            if (count % 2 == 0)
+                            {
+                                
+                                 <li class="right clearfix">
+                                    <span class="chat-img pull-right">
+                                        <img src="@objcompanypageInfo.LogoUrl" class="img-rounded profilePic" alt="User Avatar">
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div>
+                                            <small class=" text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i>@TimeOfPost(item.PostDate)</small>
+                                            <strong class="pull-right primary-font"><a target="_blank" href="https://www.linkedin.com/company/@objcompanypageInfo.LinkedinPageId">@objcompanypageInfo.LinkedinPageName</a></strong>
+                                        </div>
+                                        <p>
+                                            @if (!string.IsNullOrEmpty(item.PostImageUrl))
+                                            {
+                                                <img src="@item.PostImageUrl" />
+                                            }
+                                            @item.Posts
+                                        </p>
+                                    </div>
+                                    <div class="input-group">
+                                        <input id="lipgcmntbx_@item.UpdateKey" type="text" class="form-control input-sm" placeholder="Type your comment here...">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-warning btn-sm" id="btn-chat" onclick="licomntonpagepost("'@objcompanypageInfo.LinkedinPageId'","'@item.UpdateKey'")">
+                                                Comment <span class="badge">@item.Comments</span>
+                                            </button>
+                                            <button type="button" class="btn btn-info btn-circle" onclick="LikePagePosts('@objcompanypageInfo.LinkedinPageId','@item.UpdateKey','@objLinkedinPageLike.isLiked')">
+                                                @if (objLinkedinPageLike.isLiked==0)
+                                                {
+                                                    <i class="fa fa-thumbs-o-up"></i><span class="badge">@item.Likes</span>
+                                                }
+                                                else
+                                                {
+                                                    <i class="fa fa-thumbs-o-down"></i><span class="badge">@item.Likes</span>
+                                                } 
+                                            </button>
+                                        </span>
+                                    </div>
+                                     @if (cnt > 0)
+                                     {
+                                          <a id="cmntlink_@item.UpdateKey" onclick="viewallcomentlink('@item.UpdateKey','@cnt')">View all Comments</a>
+                                         
+                                     }
+                                      @if (cnt != 0)
+                                     {
+                                              <div class="col-md-12 Pad10" style="display:none" id="allcommnetbox_@item.UpdateKey">
+                                              <ul class="list-unstyled">
+                                             @foreach (Domain.Socioboard.Domain.LinkdeinPageComment postcomnt in objLipagepostComnt)
+                                             {
+                                                    <li class="comments_li"><div class="row"><div style="float: left;"><img width="30" src="@postcomnt.PictureUrl" alt=""/></div><div class="col-md-6 pull-left"><div class="spacetop"><a href="#">@postcomnt.FirstName @postcomnt.LastName</a><span class="mar_img">@postcomnt.Comment</span><div class="mic-info">@TimeOfPost(postcomnt.CommentTime)</div></div></div></div></li>
+                                                    
+                                             }
+                                             </ul>
+                                             </div>
+                                     }
+                                   
+                                        
+                                            
+                                       
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="left clearfix">
+                                    <span class="chat-img pull-left">
+                                        <img src="@objcompanypageInfo.LogoUrl" class="img-rounded profilePic" alt="User Avatar">
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div>
+                                            <strong class="primary-font"><a target="_blank" href="https://www.linkedin.com/company/@objcompanypageInfo.LinkedinPageId">@objcompanypageInfo.LinkedinPageName</a></strong>
+                                            <small class="pull-right text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i>@TimeOfPost(item.PostDate)
+                                            </small>
+                                        </div>
+                                        <p>
+                                             @if (!string.IsNullOrEmpty(item.PostImageUrl))
+                                            {
+                                                <img src="@item.PostImageUrl" />
+                                            }
+                                             @item.Posts
+                                        </p>
+                                    </div>
+
+                                    <div class="input-group">
+                                        <input id="lipgcmntbx_@item.UpdateKey" type="text" class="form-control input-sm" placeholder="Type your comment here...">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-warning btn-sm" id="btn-chat" onclick="licomntonpagepost('@objcompanypageInfo.LinkedinPageId','@item.UpdateKey')">
+                                                Comment <span class="badge">@item.Comments</span>
+                                            </button>
+                                            <button type="button" class="btn btn-info btn-circle" onclick="LikePagePosts('@objcompanypageInfo.LinkedinPageId','@item.UpdateKey','@objLinkedinPageLike.isLiked')">
+                                                 @if (objLinkedinPageLike.isLiked==0)
+                                                {
+                                                    <i class="fa fa-thumbs-o-up"></i><span class="badge">@item.Likes</span>
+                                                }
+                                                else
+                                                {
+                                                    <i class="fa fa-thumbs-o-down"></i><span class="badge">@item.Likes</span>
+                                                } 
+                                            </button>
+                                        </span>
+                                    </div>
+                                     @if (cnt > 0)
+                                     {
+                                         <a id="cmntlink_@item.UpdateKey"  onclick="viewallcomentlink('@item.UpdateKey','@cnt')">View all Comments</a>
+                                     }
+                                     @if (cnt != 0)
+                                     {
+                                              <div class="col-md-12 Pad10" style="display:none" id="allcommnetbox_@item.UpdateKey">
+                                              <ul class="list-unstyled">
+                                             @foreach (Domain.Socioboard.Domain.LinkdeinPageComment postcomnt in objLipagepostComnt)
+                                             {
+                                                    <li class="comments_li"><div class="row"><div style="float: left;"><img width="30" src="@postcomnt.PictureUrl" alt=""/></div><div class="col-md-6 pull-left"><div class="spacetop"><a href="#">@postcomnt.FirstName @postcomnt.LastName</a><span class="mar_img">@postcomnt.Comment</span><div class="mic-info">@TimeOfPost(postcomnt.CommentTime)</div></div></div></div></li>
+                                                    
+                                             }
+                                             </ul>
+                                             </div>
+                                     }
+                                </li> 
+                            }
+                            count++;
+                        
+                                
+                            }  
+                               
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+}
+
+@helper  TimeOfPost (DateTime dt)
+{
+    TimeSpan span = DateTime.Now - dt;
+    if (span.Days > 365)
+    {
+        int years = (span.Days / 365);
+        if (span.Days % 365 != 0)
+        {
+            years += 1;
+        }
+        @String.Format("{0} {1} ago",
+        years, years == 1 ? "year" : "years");
+    }
+    else if (span.Days > 30)
+    {
+        int months = (span.Days / 30);
+        if (span.Days % 31 != 0)
+        {
+            months += 1;
+        }
+        @String.Format("{0} {1} ago",
+        months, months == 1 ? "month" : "months");
+    }
+    else if (span.Days > 0)
+    {
+         @String.Format("{0} {1} ago",
+        span.Days, span.Days == 1 ? "day" : "days");
+    }
+    else if (span.Hours > 0)
+    {
+        @String.Format("{0} {1} ago",
+        span.Hours, span.Hours == 1 ? "hour" : "hours");
+    }
+    else if (span.Minutes > 0)
+    {
+        @String.Format("{0} {1} ago",
+         span.Minutes, span.Minutes == 1 ? "minute" : "minutes");
+    }
+    else if (span.Seconds > 5)
+    {
+        @String.Format("{0} seconds ago", span.Seconds);
+    }
+    else if (span.Seconds <= 5)
+    {
+        @String.Format("just now");
+    }
+}
+

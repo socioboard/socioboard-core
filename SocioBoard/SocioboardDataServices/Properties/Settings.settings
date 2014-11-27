@@ -50,11 +50,14 @@
     <Setting Name="SocioboardDataServices_Api_Linkedin_Linkedin" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://api.socioboard.com/Services/Linkedin.asmx</Value>
     </Setting>
-    <Setting Name="SocioboardDataServices_Api_Twitter_Twitter" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://api.socioboard.com/Services/Twitter.asmx</Value>
-    </Setting>
     <Setting Name="SocioboardDataServices_Api_TwitterAccount_TwitterAccount" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://api.socioboard.com/Services/TwitterAccount.asmx</Value>
+    </Setting>
+    <Setting Name="SocioboardDataServices_Api_Twitter_Twitter" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/Twitter.asmx</Value>
+    </Setting>
+    <Setting Name="SocioboardDataServices_Api_FacebookStats_FacebookStats" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/FacebookStats.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>

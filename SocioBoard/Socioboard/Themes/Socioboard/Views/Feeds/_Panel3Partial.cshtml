@@ -1,10 +1,75 @@
 ﻿@using Domain.Socioboard.Domain;
 @{
+    Layout = null;
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
     bool check = true;
     string hrefPost = string.Empty;
 }
+
+ @*Edited by Antima*@
+
 <ul class="chat">
+    @foreach (var item in (Dictionary<string, List<object>>)Model)
+    {
+        if (item.Value.Count > 0)
+        {
+
+            if (item.Key == "facebook")
+            {
+                 List<object> lstdic = (List<object>)item.Value;
+                 foreach (FacebookMessage FacebookMessage in lstdic)
+                {
+        <li class="left clearfix">
+            <span class="chat-img pull-left">
+                <img src="@FacebookMessage.FromProfileUrl" class="img-circle profilePic" alt="User Avatar">
+            </span>
+            <div class="chat-body clearfix">
+                <div>
+                    
+                    <a target="_blank" href="http://www.facebook.com/@FacebookMessage.FromId"><strong class="primary-font">@FacebookMessage.FromName</strong></a>
+                    <small class="pull-right text-muted">
+                        <i class="fa fa-clock-o fa-fw"></i>
+                       @FacebookMessage.MessageDate
+                    </small>
+                </div>
+                <p>
+                    <a target="_blank" href="https://www.facebook.com/@FacebookMessage.FromId/posts/@FacebookMessage.MessageId.Replace(@FacebookMessage.FromId, string.Empty).Replace("_", string.Empty).Trim()"> @FacebookMessage.Message </a>
+                </p>
+            </div>
+        </li>
+                }
+            }
+            else if (item.Key == "twitter")
+            {
+                //TwitterAccount objTwitterAccount = (TwitterAccount)item.Key;\
+                List<object> lstdic = (List<object>)item.Value;
+                foreach (TwitterMessage TwitterMessage in lstdic)
+                {
+        <li class="left clearfix">
+            <span class="chat-img pull-left">
+                <img src="@TwitterMessage.FromProfileUrl" class="img-circle profilePic" alt="User Avatar">
+            </span>
+            <div class="chat-body clearfix">
+                <div>
+                    <a target="_blank" href="http://www.twitter.com/@TwitterMessage.FromScreenName"><strong class="primary-font">@TwitterMessage.FromScreenName</strong></a>
+                    <small class="pull-right text-muted">
+                        <i class="fa fa-clock-o fa-fw"></i>@TwitterMessage.MessageDate
+                    </small>
+                </div>
+                <p>
+                   <a target="_blank" href="https://twitter.com/@TwitterMessage.FromScreenName/status/@TwitterMessage.MessageId"> @TwitterMessage.TwitterMsg</a>
+                </p>
+            </div>
+        </li>
+                }
+            }
+        }
+    }
+</ul>
+
+
+
+@*<ul class="chat">
     @foreach (var item in (Dictionary<object, List<ScheduledMessage>>)Model)
     {
         if (item.Value.Count > 0)
@@ -91,4 +156,4 @@
 
         }
     }
-</ul>
+</ul>*@

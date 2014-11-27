@@ -153,7 +153,142 @@ namespace Api.Socioboard.Services
             }//End session
         }
 
+        //vikash
 
+        public List<Domain.Socioboard.Domain.ScheduledMessage> getAllSentMessageDetailsforADay(Guid userid, string profileid, int days)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        string str = "from ScheduledMessage where UserId=:userid and  Status=1 and ProfileId IN(";
+                        string[] arrsrt = profileid.Split(',');
+                        foreach (string sstr in arrsrt)
+                        {
+                            str += "'" + (sstr) + "'" + ",";
+                        }
+                        str = str.Substring(0, str.Length - 1);
+                        str += ") order by ScheduleTime desc";
+                        List<Domain.Socioboard.Domain.ScheduledMessage> alst = session.CreateQuery(str).SetParameter("userid", userid)
+                       .List<Domain.Socioboard.Domain.ScheduledMessage>()
+                       .ToList<Domain.Socioboard.Domain.ScheduledMessage>().Where(a => a.ScheduleTime.Date == DateTime.Now.AddDays(-days).Date).ToList<Domain.Socioboard.Domain.ScheduledMessage>();
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Trasaction
+            }//End session
+        }
+
+        public List<Domain.Socioboard.Domain.ScheduledMessage> getAllSentMessageDetailsByDays(Guid userid, string profileid, int days)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        string str = "from ScheduledMessage where UserId=:userid and  Status=1 and ProfileId IN(";
+                        string[] arrsrt = profileid.Split(',');
+                        foreach (string sstr in arrsrt)
+                        {
+                            str += "'" + (sstr) + "'" + ",";
+                        }
+                        str = str.Substring(0, str.Length - 1);
+                        str += ") order by ScheduleTime desc";
+                        List<Domain.Socioboard.Domain.ScheduledMessage> alst = session.CreateQuery(str).SetParameter("userid", userid)
+                       .List<Domain.Socioboard.Domain.ScheduledMessage>()
+                       .ToList<Domain.Socioboard.Domain.ScheduledMessage>().Where(a => a.ScheduleTime.Date >= DateTime.Now.AddDays(-days).Date).ToList<Domain.Socioboard.Domain.ScheduledMessage>();
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Trasaction
+            }//End session
+        }
+
+        public List<Domain.Socioboard.Domain.ScheduledMessage> getAllSentMessageDetailsByMonth(Guid userid, string profileid, int month)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        string str = "from ScheduledMessage where UserId=:userid and  Status=1 and ProfileId IN(";
+                        string[] arrsrt = profileid.Split(',');
+                        foreach (string sstr in arrsrt)
+                        {
+                            str += "'" + (sstr) + "'" + ",";
+                        }
+                        str = str.Substring(0, str.Length - 1);
+                        str += ") order by ScheduleTime desc";
+                        List<Domain.Socioboard.Domain.ScheduledMessage> alst = session.CreateQuery(str).SetParameter("userid", userid)
+                       .List<Domain.Socioboard.Domain.ScheduledMessage>()
+                       .ToList<Domain.Socioboard.Domain.ScheduledMessage>().Where(a => a.ScheduleTime.Month == DateTime.Now.AddMonths(-month).Month).ToList<Domain.Socioboard.Domain.ScheduledMessage>();
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Trasaction
+            }//End session
+        }
+        public List<Domain.Socioboard.Domain.ScheduledMessage> getAllSentMessageDetailsForCustomrange(Guid userid, string profileid, DateTime sdate, DateTime ldate)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        string str = "from ScheduledMessage where UserId=:userid and  Status=1 and ProfileId IN(";
+                        string[] arrsrt = profileid.Split(',');
+                        foreach (string sstr in arrsrt)
+                        {
+                            str += "'" + (sstr) + "'" + ",";
+                        }
+                        str = str.Substring(0, str.Length - 1);
+                        str += ") order by ScheduleTime desc";
+                        List<Domain.Socioboard.Domain.ScheduledMessage> alst = session.CreateQuery(str).SetParameter("userid", userid)
+                       .List<Domain.Socioboard.Domain.ScheduledMessage>()
+                       .ToList<Domain.Socioboard.Domain.ScheduledMessage>().Where(a => a.ScheduleTime.Date >= sdate && a.ScheduleTime.Date <= ldate).ToList<Domain.Socioboard.Domain.ScheduledMessage>();
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Trasaction
+            }//End session
+        }
     
         /// <updateMessage>
         /// Update Message status by id.

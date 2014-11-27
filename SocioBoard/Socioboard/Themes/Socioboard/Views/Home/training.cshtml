@@ -1,0 +1,488 @@
+﻿@{
+    Layout = null;
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Chancahl Santra">
+    <link rel="shortcut icon" href="../../Themes/Socioboard/Contents/img/ivon.ico" type="image/x-icon">
+
+    <title>Socioboard - Generate More leads on Social Media| Social CRM | Social Media CMS</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../Themes/Socioboard/Contents/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="../../Themes/Socioboard/Contents/css/sb-admin-2.css" rel="stylesheet" />
+    <!-- Custom Fonts -->
+    <link href="../../Themes/Socioboard/Contents/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+    <link href="../../Themes/Socioboard/Contents/css/smoothDivScroll.css" rel="stylesheet" />
+    <link href="../../Themes/Socioboard/Contents/css/custom.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.Contents/js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+</head>
+
+<body>
+     <div class="container">
+
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><img src="Contents/img/logo.png" class="img-responsive" style="margin-top: -15px;"/></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <form class="navbar-form navbar-right" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Type your company name here & see your page">
+                        </div>
+                            <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                    <ul class="nav navbar-nav pull-right">
+                        <li>
+                            <a href="../Index/Company">Company</a>
+                        </li>
+                        <li>
+                            <a href="../Index/Features">Features</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Versions <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="http://socioboard.org/" target="_blank">Community</a></li>
+                                <li><a href="../Versions/Agency" target="_blank">Agency</a></li>
+                                <li><a href="../Versions/Enterprise" target="_blank">Enterprise</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="../Index/Pricing" target="_blank">Pricing</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Insights <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="http://wiki.socioboard.com/index.php/Main_Page" target="_blank">Wiki</a></li>
+                                <li><a href="http://blog.socioboard.com/category/cases" target="_blank">Cases</a></li>
+                                <li><a href="http://blog.socioboard.com/" target="_blank">Blogs</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="../Index/Download" target="_blank">Download</a>
+                        </li>
+                        <li>
+                            <a href="../Index/contact" target="_blank">Contact Us</a>
+                        </li>
+                        <li>
+                            <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal" style="margin-top: 10px;">LOGIN</button>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <!-- Button trigger modal -->
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+                    </div>
+                    <div class="modal-body col-md-12">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon">*</span>
+                                <input id="txtEmail" type="text" class="form-control" placeholder="Email" />
+                            </div>
+                            <hr class="small" />
+                            <div class="input-group">
+                                <span class="input-group-addon">*</span>
+                                <input type="password" class="form-control" id="txtPassword" placeholder="Password" />
+                            </div>
+                            <br />
+                            <p id="signinpasswordMessages" style="color: red"></p>
+                            <p>Forgot Password? <a href="../ForgotPassword/Index">Click here to restore</a></p>
+                            <hr class="small" />
+                            <div id="btnlogin" onclick="signinFunction();">
+                                <button type="button" class="btn btn-warning">Login</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <p>You can also Register with your Social Account</p>
+                            </div>
+
+                            <div class="input-group">
+                                <a id="fb_account" href="#" onclick="googleplusLogin();">
+                                    <img src="/Themes/@path/Contents/img/google_icon.png" alt="">
+                                </a>
+
+                                <a id="fb_account" href="#" onclick="facebookLogin();">
+                                    <img src="/Themes/@path/Contents/img/fb_icon_new.png" alt="">
+                                </a>
+                                <p>Not Yet Registered? &nbsp <a href="../Index/Pricing">Register Now</a></p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        @* <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>*@
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end of model-->
+    </div>
+
+
+
+    <!-- Header -->
+   <!--  <header id="top" class="header">
+        <div class="text-vertical-center">
+            <h1 style="text-shadow: 0px 0px 15px #ffffff; margin-top: 50px;">BEYOND<br> SOCIAL MEDIA MANAGEMENT</h1>
+            <h3 style="background-color: aliceblue; opacity: 0.7;">Socioboard offers you an advanced, easy, versatile, customizable and scalable open-source social media marketing tool to drive your brand to newer heights</h3>
+            <br>
+            <a href="http://www.socioboard.com/Pricing.aspx" class="btn btn-dark" target="_blank">
+                <img class="img-responsive" src="Contents/img/trail-butn.png"/>
+            </a>
+        </div>
+    </header> -->
+
+    <!-- About -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-12">
+                    <h1><u>Live Online Training</u></h1>
+                    <h3>Wondering how to proceed since you are not a geek and tech savvy person?</h3>
+                    <h3>Get the most out of Socioboard through live online training. It is comprehensive and serves your purpose whether you want to get the basics or dig deeper with our Software. Our instructors help you with a professional flow of training.</h3>
+                    <br>
+                    <h3>We offer online live training to our clients through Skype and TeamViewer only at $100 for 10 hours.</h3>
+                    <br>
+                    <h4>Click the below button and start learning.</h4>
+                  <div class="service-item">
+                            <a href="../Index/PaypalPage">
+                                <span class="fa-stack fa-4x">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-download fa-stack-1x text-primary"></i>
+                                </span>
+                                </a>
+                            </div>
+        </div>
+                    
+                  
+
+                </div>
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+
+    </section>
+
+    <!-- Services -->
+
+
+    <!-- Footer -->
+    <footer style="padding:0px !important">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h4><strong>GET IN TOUCH WITH US</strong>
+                    </h4>
+                    <p>L V . Complex<br>7th Block, 80 Feet Road, Koramangala Layout, Bangalore-560095</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-phone fa-fw"></i> +91 80 4166 0003</li>
+                        <li><i class="fa fa-phone fa-fw"></i> +91 97 1331 7771</li>
+                        <li><i class="fa fa-skype fa-fw"></i> socioboard.support</li>
+                    </ul>
+                    <br>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="https://www.facebook.com/SocioBoard" target="_blank"><i class="fa fa-facebook-square fa-fw fa-3x"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/Socioboard" target="_blank"><i class="fa fa-twitter-square fa-fw fa-3x"></i></a>
+                        </li>
+                        <li>
+                            <a href="http://www.linkedin.com/company/socioboard" target="_blank"><i class="fa fa-linkedin-square fa-fw fa-3x"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://plus.google.com/s/socioboard" target="_blank"><i class="fa fa-google-plus-square fa-fw fa-3x"></i></a>
+                        </li>
+                    </ul>
+                    <hr class="small">
+                    <p class="text-muted">COPYRIGHT © 2013 - 2014 SOCIOBOARD TECHNOLOGIES PVT. LTD. ALL RIGHTS RESERVED.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+ 
+
+    <!-- jQuery Version 1.11.0 -->
+    <script src="../../Themes/Socioboard/Contents/js/jquery-2.0.1.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../Themes/Socioboard/Contents/js/bootstrap.min.js"></script>
+    <script src="../../Themes/Socioboard/Contents/js/jquery.nicescroll.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script>
+        // Closes the sidebar menu
+        $("#menu-close").click(function (e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("active");
+        });
+
+        // Opens the sidebar menu
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("active");
+        });
+
+        // Scrolls to the selected menu item on the page
+        $(function () {
+            $('a[href*=#]:not([href=#])').click(function () {
+                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    if (target.length) {
+                        $('html,body').animate({
+                            scrollTop: target.offset().top
+                        }, 1000);
+                        return false;
+                    }
+                }
+            });
+        });
+</script>
+
+<!-- jQuery library - Please load it from Google API's -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+
+<!-- jQuery UI (Custom Download containing only Widget and Effects Core)
+    You can make your own at: http://jqueryui.com/download -->
+    <script src="../../Themes/Socioboard/Contents/js/jquery-ui-1.10.3.custom.min.js"></script>
+<!-- Latest version (3.1.4) of jQuery Mouse Wheel by Brandon Aaron
+    You will find it here: https://github.com/brandonaaron/jquery-mousewheel -->
+    <script src="../../Themes/Socioboard/Contents/js/jquery.mousewheel.min.js"></script>
+
+    <!-- jQuery Kinectic (1.8.2) used for touch scrolling -->
+    <!-- https://github.com/davetayls/jquery.kinetic/ -->
+    <script src="../../Themes/Socioboard/Contents/js/jquery.kinetic.min.js"></script>
+    <!-- Smooth Div Scroll 1.3 minified-->
+    <script src="../../Themes/Socioboard/Contents/js/jquery.smoothdivscroll-1.3-min.js"></script>
+<!-- If you want to look at the uncompressed version you find it at
+    Contents/js/jquery.smoothDivScroll-1.3.js -->
+    <!-- Plugin initialization -->
+    <script type="text/javascript">
+        // Initialize the plugin with no custom options
+        $(document).ready(function () {
+            // None of the options are set
+            $("div#makeMeScrollable").smoothDivScroll({
+                autoScrollingMode: "onStart"
+            });
+        });
+</script>
+     <script src="~/Themes/@path/Contents/js/jquery-2.0.1.min.js" type="text/javascript"></script>
+    <script src="~/Themes/@path/Contents/js/jquery.bpopup.min.js" type="text/javascript" charset=""></script>
+    <script src="~/Themes/@path/Contents/js/jquery.easing.1.3.js" type="text/javascript"></script>
+    <script src="~/Themes/@path/Contents/js/md5.js" type="text/javascript"></script>
+    <script src="~/Themes/@path/Contents/js/JSlogin.js" type="text/javascript"></script>
+    <script src="~/Themes/@path/Contents/js/googleanalytics.js" type="text/javascript"></script>
+    <script src="~/Themes/@path/Contents/js/clickDesk.js" type="text/javascript"></script>
+      <script type="text/javascript" language="javascript">        !window.jQuery && document.write(unescape('%3Cscript src="../lib/jquery/jquery.js"%3E%3C/script%3E'));</script>
+    <script src="~/Themes/@path/Contents/js/jquery.smooth-scroll.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#txtPassword").bind("keydown", function (event) {
+                var keycode = (event.keyCode ? event.keyCode : (event.which ? event.which : event.charCode));
+                if (keycode == 13) {
+                    signinFunction();
+                    return false;
+                } else {
+                    return true;
+                }
+            });
+            $('ul.mainnav a').smoothScroll();
+
+            $('p.subnav a').click(function (event) {
+                event.preventDefault();
+                var link = this;
+                $.smoothScroll({
+                    scrollTarget: link.hash
+                });
+            });
+
+            $('button.scrollsomething').click(function () {
+                $.smoothScroll({
+                    scrollElement: $('div.scrollme'),
+                    scrollTarget: '#findme'
+                });
+                return false;
+            });
+            $('button.scrollhorz').click(function () {
+                $.smoothScroll({
+                    direction: 'left',
+                    scrollElement: $('div.scrollme'),
+                    scrollTarget: '.horiz'
+                });
+                return false;
+            });
+
+            $("#loginbtn").click(function () {
+                debugger;
+                document.getElementById('txtEmail').value = "";
+                document.getElementById('txtPassword').value = "";
+                document.getElementById('signinemailMessages').innerHTML = "";
+                document.getElementById('signinpasswordMessages').innerHTML = "";
+                $('#logindiv').bPopup({
+                    easing: 'easeOutBack',
+                    positionStyle: 'fixed',
+                    speed: 650,
+                    transition: 'slideDown'
+                });
+            });
+
+
+        });
+
+    </script>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $('#da-slider').cslider({
+                autoplay: true
+            });
+        });
+
+        $(document).ready(function () {
+            //--login script here
+            $('#login').click(function () {
+                document.getElementById('signinemailMessages').innerHTML = "";
+                document.getElementById('signinpasswordMessages').innerHTML = "";
+                $('#logindiv').bPopup({
+                    easing: 'easeOutBack',
+                    positionStyle: 'fixed',
+                    speed: 650,
+                    transition: 'slideDown'
+                });
+            });
+            //                // login script end here
+
+            //                // signup script here
+            $('#signup').click(function () {
+                document.getElementById('txtFirstName').value = '';
+                document.getElementById('txtLastName').value = '';
+                document.getElementById('EmailTxt').value = '';
+                document.getElementById('PasswordTxt').value = '';
+                document.getElementById('txtConfirmPassword').value = '';
+                document.getElementById('RegularExpressionValidator1').style.visibility = 'hidden';
+                document.getElementById('RequiredFieldValidator5').style.visibility = 'hidden';
+                document.getElementById('RequiredFieldValidator6').style.visibility = 'hidden';
+                document.getElementById('RequiredFieldValidator3').style.visibility = 'hidden';
+                document.getElementById('RegularExpressionValidator2').style.visibility = 'hidden';
+                document.getElementById('RequiredFieldValidator4').style.visibility = 'hidden';
+                document.getElementById('RequiredFieldValidator7').style.visibility = 'hidden';
+                document.getElementById('CompareValidator1').style.visibility = 'hidden';
+
+                $('#signupdiv').bPopup({
+                    easing: 'easeOutBack',
+                    positionStyle: 'fixed',
+                    speed: 650,
+                    transition: 'slideIn'
+                });
+            });
+
+            // signup script end here
+
+
+
+
+        });
+    </script>
+
+    <!-- jQuery Version 1.11.0 -->
+    <script src="~/Themes/@path/Contents/js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Themes/@path/Contents/js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script>
+        // Closes the sidebar menu
+        $("#menu-close").click(function (e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("active");
+        });
+
+        // Opens the sidebar menu
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("active");
+        });
+
+        // Scrolls to the selected menu item on the page
+
+    </script>
+
+    <!-- jQuery library - Please load it from Google API's -->
+    <!-- jQuery UI (Custom Download containing only Widget and Effects Core)
+    You can make your own at: http://jqueryui.com/download -->
+    <script src="/Themes/@path/Contents/js/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+
+    <!-- Latest version (3.1.4) of jQuery Mouse Wheel by Brandon Aaron
+    You will find it here: https://github.com/brandonaaron/jquery-mousewheel -->
+    <script src="/Themes/@path/Contents/js/jquery.mousewheel.min.js" type="text/javascript"></script>
+
+    <!-- jQuery Kinectic (1.8.2) used for touch scrolling -->
+    <!-- https://github.com/davetayls/jquery.kinetic/ -->
+    <script src="/Themes/@path/Contents/js/jquery.kinetic.min.js" type="text/javascript"></script>
+
+    <!-- Smooth Div Scroll 1.3 minified-->
+    <script src="/Themes/@path/Contents/js/jquery.smoothdivscroll-1.3-min.js" type="text/javascript"></script>
+
+    <!-- If you want to look at the uncompressed version you find it at
+    Contents/js/jquery.smoothDivScroll-1.3.js -->
+
+    <!-- Plugin initialization -->
+    <script type="text/javascript">
+        // Initialize the plugin with no custom options
+        $(document).ready(function () {
+            // None of the options are set
+            $("div#makeMeScrollable").smoothDivScroll({
+                autoScrollingMode: "onStart"
+            });
+        });
+    </script>
+
+</body>
+
+</html>
+

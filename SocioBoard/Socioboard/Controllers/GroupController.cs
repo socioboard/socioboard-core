@@ -14,7 +14,15 @@ namespace Socioboard.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            if (Session["Paid_User"].ToString() == "Unpaid")
+            {
+                return RedirectToAction("Billing", "PersonalSetting");
+            }
+            else
+            {
+                return View();
+            }
+            //return View();
         }        
       
         public ActionResult LoadGroups()

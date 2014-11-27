@@ -498,7 +498,7 @@ namespace GlobusMailLib
                 var fileBytes = File.ReadAllBytes(file);
                 Mandrill.EmailMessage message = new Mandrill.EmailMessage();
                 message.from_email = from;
-                message.from_name = "Socioboard Support";
+                message.from_name = sendgridUserName;
                 message.html = body;
                 message.subject = subject;
                 message.attachments = new[]
@@ -517,12 +517,39 @@ namespace GlobusMailLib
                 Mandrill.MandrillApi mandrillApi = new Mandrill.MandrillApi(sendgridPassword, false);
                 var results = mandrillApi.SendMessage(message);
                 string status = string.Empty;
+                string replysubject = string.Empty;
+                string replybody = string.Empty;
                 foreach (var result in results)
                 {
-                    if (result.Status != Mandrill.EmailResultStatus.Sent)
+                    if (result.Status == Mandrill.EmailResultStatus.Sent || result.Status == Mandrill.EmailResultStatus.Queued)
+                    {
+                        replysubject = "Resume Rcieved";
+                        replybody = "Hello there,</br>We have received your resume. </br>Our HR team will connect to you in time.</br>Warm regards,<p>Best regards,<br/><br />" +
+                        "Support Team<br/>Socioboard Technologies Pvt. Ltd.<br /><br /><a href=\"http://www.socioboard.com\"><img src=\"http://i739.photobucket.com/albums/xx33/Alan_Wilson3526/logo-txt2_zpsc7861ad5.png\" alt=\"\"></a></p>" +
+                        "<p style=\"font-family:Calibri(Body); font-size:12px;.\"><b>Mumbai Office:</b> Unit 206, Shri Krishna Building,Lokhandwala, Andheri West,Mumbai 400053India </br>" +
+                        "<b>Phone:</b> +91-90090-23807, <b>Skype:</b> socioboard.support </br>Socioboard Enterprise and SaaS Versions: <a href=\"http://www.socioboard.com\">http://www.socioboard.com<br /></a> Socioboard Community Version: <a href=\"http://www.socioboard.org\">http://www.socioboard.org</a><br>" +
+                        "</p><table><tr><td><a href=\"https://www.facebook.com/SocioBoard\" target=\"_blank\"><img src=\"http://i739.photobucket.com/albums/xx33/Alan_Wilson3526/facebook-48_zps62d89d59.png\" alt=”Facebook” width=”35? height=”35? border=0></a></td>" +
+                        "<td><a href=\"https://plus.google.com/s/socioboard\" target=\"_blank\"><img src=\"http://i739.photobucket.com/albums/xx33/Alan_Wilson3526/googleplus-30_zps62d89d59.png\" alt=\"G+\"width=”35? height=”35? border=0></a></td>" +
+                        "<td><a href=\"http://www.linkedin.com/company/socioboard\" target=\"_blank\"><img src=\"http://i739.photobucket.com/albums/xx33/Alan_Wilson3526/linkedin-48_zpsceb0f4e2.png\" alt=”LinkedIn” width=”35? height=”35? border=0></a></td>" +
+                        "<td><a href=\"https://twitter.com/Socioboard\" target=\"_blank\"><img src=\"http://i739.photobucket.com/albums/xx33/Alan_Wilson3526/twitter-48_zps57c64c90.png\" alt=”Twitter” width=”35? height=”35? border=0></a></td>" +
+                        "</tr></table>";
+                    }
+                    else
                     {
                         logger.Error(result.Email + " " + result.RejectReason);
+                        replysubject = "Resume Not Recieved";
+                        replybody = "Hi there,</br>Oops!!</br>Apparently there was some error and we couldn’t receive your resume.</br>Please try again." +
+                        "<p>Best regards,<br />Support Team<br/>Socioboard Technologies Pvt. Ltd.<br /><a href=\"http://www.socioboard.com\"><img src=\"http://i739.photobucket.com/albums/xx33/Alan_Wilson3526/logo-txt2_zpsc7861ad5.png\" alt=\"\"></a>" +
+                        "<br/></p><p style=\"font-family:Calibri(Body); font-size:12px;\"><b>Bangalore Office:</b> L V Complex, 2nd Floor, No.58, 7th Block, 80 Feet Road, Koramangala, Bangalore-560095</br>" +
+                        "Karnataka, India</br><b><br />Phone:</b> +91-90090-23807, <b>Skype:</b> socioboard.support </br><br />Socioboard Enterprise and SaaS Versions: <a href=\"http://www.socioboard.com\">http://www.socioboard.com<br />" +
+                        "</a>  Socioboard Community Version: <a href=\"http://www.socioboard.org\">http://www.socioboard.org</a><br></p><table><tr>" +
+                        "<td><a href=\"https://www.facebook.com/SocioBoard\" target=\"_blank\"><img src=\"http://i739.photobucket.com/albums/xx33/Alan_Wilson3526/facebook-48_zps62d89d59.png\" alt=”Facebook” width=”35? height=”35? border=0></a></td>" +
+                        "<td><a href=\"https://plus.google.com/s/socioboard\" target=\"_blank\"><img src=\"http://i739.photobucket.com/albums/xx33/Alan_Wilson3526/googleplus-30_zps62d89d59.png\" alt=\"G+\"width=”35? height=”35? border=0></a></td>" +
+                        "<td><a href=\"http://www.linkedin.com/company/socioboard\" target=\"_blank\"><img src=\"http://i739.photobucket.com/albums/xx33/Alan_Wilson3526/linkedin-48_zpsceb0f4e2.png\" alt=”LinkedIn” width=”35? height=”35? border=0></a></td>" +
+                        "<td><a href=\"https://twitter.com/Socioboard\" target=\"_blank\"><img src=\"http://i739.photobucket.com/albums/xx33/Alan_Wilson3526/twitter-48_zps57c64c90.png\" alt=”Twitter” width=”35? height=”35? border=0></a></td>" +
+                        "</tr></table>";
                     }
+                    string rtn = ReplyForCareerMail(to, replybody, replysubject, from, sendgridPassword);
                 }
 
                 sendMailByMandrill = "Success";
@@ -531,7 +558,144 @@ namespace GlobusMailLib
             {
                 Console.WriteLine(ex.Message);
                 logger.Error(ex.Message);
+
                 sendMailByMandrill = ex.Message;
+            }
+
+            return sendMailByMandrill;
+        }
+
+        public string SendDemoMailByMandrill(string Host, int port, string from, string passsword, string to, string bcc, string cc, string subject, string body, string sendgridUserName, string sendgridPassword)
+        {
+            string sendMailByMandrill = string.Empty;
+            try
+            {
+
+                Mandrill.EmailMessage message = new Mandrill.EmailMessage();
+                message.from_email = from;
+                message.from_name = sendgridUserName;
+                message.html = body;
+                message.subject = subject;
+                message.to = new List<Mandrill.EmailAddress>()
+                {
+                  new Mandrill.EmailAddress(to)
+                };
+                Mandrill.MandrillApi mandrillApi = new Mandrill.MandrillApi(sendgridPassword, false);
+                var results = mandrillApi.SendMessage(message);
+                string status = string.Empty;
+                string replysubject = string.Empty;
+                string replybody = string.Empty;
+                foreach (var result in results)
+                {
+                    if (result.Status == Mandrill.EmailResultStatus.Sent || result.Status == Mandrill.EmailResultStatus.Queued)
+                    {
+                        replysubject = "Request Rcieved";
+                        replybody = "Hello there,</br>We have received your request for a demo. </br>Our Support team will connect to you in time.</br>Warm regards,<p>Best regards,<br/><br />" +
+                        "Support Team<br/>Socioboard Technologies Pvt. Ltd.<br /><br /><a href=\"http://www.socioboard.com\"><img src=\"http://i739.photobucket.com/albums/xx33/Alan_Wilson3526/logo-txt2_zpsc7861ad5.png\" alt=\"\"></a></p>" +
+                        "<p style=\"font-family:Calibri(Body); font-size:12px;.\"><b>Mumbai Office:</b> Unit 206, Shri Krishna Building,Lokhandwala, Andheri West,Mumbai 400053India </br>" +
+                        "<b>Phone:</b> +91-90090-23807, <b>Skype:</b> socioboard.support </br>Socioboard Enterprise and SaaS Versions: <a href=\"http://www.socioboard.com\">http://www.socioboard.com<br /></a> Socioboard Community Version: <a href=\"http://www.socioboard.org\">http://www.socioboard.org</a><br>" +
+                        "</p><table><tr><td><a href=\"https://www.facebook.com/SocioBoard\" target=\"_blank\"><img src=\"http://i739.photobucket.com/albums/xx33/Alan_Wilson3526/facebook-48_zps62d89d59.png\" alt=”Facebook” width=”35? height=”35? border=0></a></td>" +
+                        "<td><a href=\"https://plus.google.com/s/socioboard\" target=\"_blank\"><img src=\"http://i739.photobucket.com/albums/xx33/Alan_Wilson3526/googleplus-30_zps62d89d59.png\" alt=\"G+\"width=”35? height=”35? border=0></a></td>" +
+                        "<td><a href=\"http://www.linkedin.com/company/socioboard\" target=\"_blank\"><img src=\"http://i739.photobucket.com/albums/xx33/Alan_Wilson3526/linkedin-48_zpsceb0f4e2.png\" alt=”LinkedIn” width=”35? height=”35? border=0></a></td>" +
+                        "<td><a href=\"https://twitter.com/Socioboard\" target=\"_blank\"><img src=\"http://i739.photobucket.com/albums/xx33/Alan_Wilson3526/twitter-48_zps57c64c90.png\" alt=”Twitter” width=”35? height=”35? border=0></a></td>" +
+                        "</tr></table>";
+                    }
+                    else
+                    {
+                        logger.Error(result.Email + " " + result.RejectReason);
+                        replysubject = "Request Not Recieved";
+                        replybody = "Hi there,</br>Oops!!</br>Apparently there was some error and we couldn’t receive your resume.</br>Please try again." +
+                        "<p>Best regards,<br />Support Team<br/>Socioboard Technologies Pvt. Ltd.<br /><a href=\"http://www.socioboard.com\"><img src=\"http://i739.photobucket.com/albums/xx33/Alan_Wilson3526/logo-txt2_zpsc7861ad5.png\" alt=\"\"></a>" +
+                        "<br/></p><p style=\"font-family:Calibri(Body); font-size:12px;\"><b>Bangalore Office:</b> L V Complex, 2nd Floor, No.58, 7th Block, 80 Feet Road, Koramangala, Bangalore-560095</br>" +
+                        "Karnataka, India</br><b><br />Phone:</b> +91-90090-23807, <b>Skype:</b> socioboard.support </br><br />Socioboard Enterprise and SaaS Versions: <a href=\"http://www.socioboard.com\">http://www.socioboard.com<br />" +
+                        "</a>  Socioboard Community Version: <a href=\"http://www.socioboard.org\">http://www.socioboard.org</a><br></p><table><tr>" +
+                        "<td><a href=\"https://www.facebook.com/SocioBoard\" target=\"_blank\"><img src=\"http://i739.photobucket.com/albums/xx33/Alan_Wilson3526/facebook-48_zps62d89d59.png\" alt=”Facebook” width=”35? height=”35? border=0></a></td>" +
+                        "<td><a href=\"https://plus.google.com/s/socioboard\" target=\"_blank\"><img src=\"http://i739.photobucket.com/albums/xx33/Alan_Wilson3526/googleplus-30_zps62d89d59.png\" alt=\"G+\"width=”35? height=”35? border=0></a></td>" +
+                        "<td><a href=\"http://www.linkedin.com/company/socioboard\" target=\"_blank\"><img src=\"http://i739.photobucket.com/albums/xx33/Alan_Wilson3526/linkedin-48_zpsceb0f4e2.png\" alt=”LinkedIn” width=”35? height=”35? border=0></a></td>" +
+                        "<td><a href=\"https://twitter.com/Socioboard\" target=\"_blank\"><img src=\"http://i739.photobucket.com/albums/xx33/Alan_Wilson3526/twitter-48_zps57c64c90.png\" alt=”Twitter” width=”35? height=”35? border=0></a></td>" +
+                        "</tr></table>";
+                    }
+                    string rtn = ReplyForCareerMail(to, replybody, replysubject, from, sendgridPassword);
+                }
+
+                sendMailByMandrill = "Success";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                logger.Error(ex.Message);
+
+                sendMailByMandrill = ex.Message;
+            }
+
+            return sendMailByMandrill;
+        }
+
+        public string ReplyForCareerMail(string from, string body, string subject, string to, string password)
+        {
+            string sendMailByMandrill = string.Empty;
+            try
+            {
+                Mandrill.EmailMessage message = new Mandrill.EmailMessage();
+                message.from_email = from;
+                message.from_name = "Socioboard Support";
+                message.html = body;
+                message.subject = subject;
+                message.to = new List<Mandrill.EmailAddress>()
+                {
+                  new Mandrill.EmailAddress(to)
+                };
+                Mandrill.MandrillApi mandrillApi = new Mandrill.MandrillApi(password, false);
+                var results = mandrillApi.SendMessage(message);
+                string status = string.Empty;
+                foreach (var result in results)
+                {
+                }
+                sendMailByMandrill = "Success";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                logger.Error(ex.Message);
+                sendMailByMandrill = ex.Message;
+            }
+            return sendMailByMandrill;
+        }
+
+        public string SendFeedMailByMandrill(string Host, int port, string from, string passsword, string to, string subject, string body)
+        {
+            string sendMailByMandrill = string.Empty;
+            try
+            {
+
+                Mandrill.EmailMessage message = new Mandrill.EmailMessage();
+                message.from_email = from;
+                message.from_name = from;
+                message.html = body;
+                message.subject = subject;
+                message.to = new List<Mandrill.EmailAddress>()
+                {
+                  new Mandrill.EmailAddress(to)
+                };
+
+                Mandrill.MandrillApi mandrillApi = new Mandrill.MandrillApi(passsword, false);
+                var results = mandrillApi.SendMessage(message);
+
+                foreach (var result in results)
+                {
+                    if (result.Status != Mandrill.EmailResultStatus.Sent)
+                    {
+                        // logger.Error(result.Email + " " + result.RejectReason);
+                    }
+                    //  LogManager.Current.LogError(result.Email, "", "", "", null, string.Format("Email failed to send: {0}", result.RejectReason));
+                }
+
+                sendMailByMandrill = "Success";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                //logger.Error(ex.Message);
             }
 
             return sendMailByMandrill;

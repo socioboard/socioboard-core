@@ -20,7 +20,7 @@
 
     <thead>
         <tr>
-            <th>Send From</th>
+            <th>Sent From</th>
             <th>Message</th>
             <th>Network</th>
             <th>Status</th>
@@ -76,7 +76,8 @@
                     </div>
                     <div class="col-xs-6">
                         <span>@objuser.UserName<br>
-                            @item.ScheduleTime</span>
+                            @*@item.ScheduleTime</span>*@
+                            @ScheduleTime(item.ClientTime,@item.CreateTime,@item.ScheduleTime)</span>
                     </div>
                 </td>
                 <td>@item.ShareMessage</td>
@@ -100,3 +101,29 @@
 
     </tbody>
 
+@helper  ScheduleTime(DateTime clientdate, DateTime server, DateTime scheduletime)
+{
+    DateTime client = Convert.ToDateTime(clientdate);
+    string strTimeNow = String.Format("{0:s}", client).Replace('T', ' ');
+    DateTime schedule = Convert.ToDateTime(scheduletime);
+    if (DateTime.Compare(client, server) > 0)
+    {
+
+        //double minutes = (server - client).TotalMinutes;
+        double minutes = (client - server).TotalMinutes;
+        schedule = schedule.AddMinutes(minutes);
+        @String.Format(schedule.ToString());
+
+    }
+    else if (DateTime.Compare(client, server) == 0)
+    {
+        @String.Format(schedule.ToString());
+    }
+    else if (DateTime.Compare(client, server) < 0)
+    {
+        //double minutes = (server - client).TotalMinutes;
+        double minutes = (client - server).TotalMinutes;
+        schedule = schedule.AddMinutes(minutes);
+        @String.Format(schedule.ToString());
+    }
+}

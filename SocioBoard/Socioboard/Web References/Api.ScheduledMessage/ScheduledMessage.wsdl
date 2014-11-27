@@ -283,6 +283,88 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="AddComposeMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddComposeMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddComposeMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllScheduledMessageforADay">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="days" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllScheduledMessageforADayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllScheduledMessageforADayResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllScheduledMessageByDays">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="days" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllScheduledMessageByDaysResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllScheduledMessageByDaysResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllScheduledMessageByMonth">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="month" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllScheduledMessageByMonthResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllScheduledMessageByMonthResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllSentMessageDetailsForCustomrange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sdate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ldate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllSentMessageDetailsForCustomrangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllSentMessageDetailsForCustomrangeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
     <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
@@ -412,6 +494,36 @@
   </wsdl:message>
   <wsdl:message name="AddAllScheduledMessageSoapOut">
     <wsdl:part name="parameters" element="tns:AddAllScheduledMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddComposeMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:AddComposeMessage" />
+  </wsdl:message>
+  <wsdl:message name="AddComposeMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:AddComposeMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageforADaySoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllScheduledMessageforADay" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageforADaySoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllScheduledMessageforADayResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageByDaysSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllScheduledMessageByDays" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageByDaysSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllScheduledMessageByDaysResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageByMonthSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllScheduledMessageByMonth" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageByMonthSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllScheduledMessageByMonthResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllSentMessageDetailsForCustomrangeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllSentMessageDetailsForCustomrange" />
+  </wsdl:message>
+  <wsdl:message name="GetAllSentMessageDetailsForCustomrangeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllSentMessageDetailsForCustomrangeResponse" />
   </wsdl:message>
   <wsdl:message name="UploadFileHttpGetIn">
     <wsdl:part name="f" type="s2:StringArray" />
@@ -545,6 +657,48 @@
     <wsdl:part name="PicUrl" type="s:string" />
   </wsdl:message>
   <wsdl:message name="AddAllScheduledMessageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddComposeMessageHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="ProfileType" type="s:string" />
+    <wsdl:part name="Message" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddComposeMessageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageforADayHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageforADayHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageByDaysHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageByDaysHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageByMonthHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="month" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageByMonthHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllSentMessageDetailsForCustomrangeHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="sdate" type="s:string" />
+    <wsdl:part name="ldate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllSentMessageDetailsForCustomrangeHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="UploadFileHttpPostIn">
@@ -681,6 +835,48 @@
   <wsdl:message name="AddAllScheduledMessageHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="AddComposeMessageHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="ProfileType" type="s:string" />
+    <wsdl:part name="Message" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddComposeMessageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageforADayHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageforADayHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageByDaysHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="days" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageByDaysHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageByMonthHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="month" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllScheduledMessageByMonthHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllSentMessageDetailsForCustomrangeHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="sdate" type="s:string" />
+    <wsdl:part name="ldate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllSentMessageDetailsForCustomrangeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="ScheduledMessageSoap">
     <wsdl:operation name="UploadFile">
       <wsdl:input message="tns:UploadFileSoapIn" />
@@ -754,6 +950,26 @@
       <wsdl:input message="tns:AddAllScheduledMessageSoapIn" />
       <wsdl:output message="tns:AddAllScheduledMessageSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="AddComposeMessage">
+      <wsdl:input message="tns:AddComposeMessageSoapIn" />
+      <wsdl:output message="tns:AddComposeMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageforADay">
+      <wsdl:input message="tns:GetAllScheduledMessageforADaySoapIn" />
+      <wsdl:output message="tns:GetAllScheduledMessageforADaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageByDays">
+      <wsdl:input message="tns:GetAllScheduledMessageByDaysSoapIn" />
+      <wsdl:output message="tns:GetAllScheduledMessageByDaysSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageByMonth">
+      <wsdl:input message="tns:GetAllScheduledMessageByMonthSoapIn" />
+      <wsdl:output message="tns:GetAllScheduledMessageByMonthSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSentMessageDetailsForCustomrange">
+      <wsdl:input message="tns:GetAllSentMessageDetailsForCustomrangeSoapIn" />
+      <wsdl:output message="tns:GetAllSentMessageDetailsForCustomrangeSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ScheduledMessageHttpGet">
     <wsdl:operation name="UploadFile">
@@ -824,6 +1040,26 @@
       <wsdl:input message="tns:AddAllScheduledMessageHttpGetIn" />
       <wsdl:output message="tns:AddAllScheduledMessageHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="AddComposeMessage">
+      <wsdl:input message="tns:AddComposeMessageHttpGetIn" />
+      <wsdl:output message="tns:AddComposeMessageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageforADay">
+      <wsdl:input message="tns:GetAllScheduledMessageforADayHttpGetIn" />
+      <wsdl:output message="tns:GetAllScheduledMessageforADayHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageByDays">
+      <wsdl:input message="tns:GetAllScheduledMessageByDaysHttpGetIn" />
+      <wsdl:output message="tns:GetAllScheduledMessageByDaysHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageByMonth">
+      <wsdl:input message="tns:GetAllScheduledMessageByMonthHttpGetIn" />
+      <wsdl:output message="tns:GetAllScheduledMessageByMonthHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSentMessageDetailsForCustomrange">
+      <wsdl:input message="tns:GetAllSentMessageDetailsForCustomrangeHttpGetIn" />
+      <wsdl:output message="tns:GetAllSentMessageDetailsForCustomrangeHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ScheduledMessageHttpPost">
     <wsdl:operation name="UploadFile">
@@ -893,6 +1129,26 @@
     <wsdl:operation name="AddAllScheduledMessage">
       <wsdl:input message="tns:AddAllScheduledMessageHttpPostIn" />
       <wsdl:output message="tns:AddAllScheduledMessageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddComposeMessage">
+      <wsdl:input message="tns:AddComposeMessageHttpPostIn" />
+      <wsdl:output message="tns:AddComposeMessageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageforADay">
+      <wsdl:input message="tns:GetAllScheduledMessageforADayHttpPostIn" />
+      <wsdl:output message="tns:GetAllScheduledMessageforADayHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageByDays">
+      <wsdl:input message="tns:GetAllScheduledMessageByDaysHttpPostIn" />
+      <wsdl:output message="tns:GetAllScheduledMessageByDaysHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageByMonth">
+      <wsdl:input message="tns:GetAllScheduledMessageByMonthHttpPostIn" />
+      <wsdl:output message="tns:GetAllScheduledMessageByMonthHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSentMessageDetailsForCustomrange">
+      <wsdl:input message="tns:GetAllSentMessageDetailsForCustomrangeHttpPostIn" />
+      <wsdl:output message="tns:GetAllSentMessageDetailsForCustomrangeHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ScheduledMessageSoap" type="tns:ScheduledMessageSoap">
@@ -1052,6 +1308,51 @@
     </wsdl:operation>
     <wsdl:operation name="AddAllScheduledMessage">
       <soap:operation soapAction="http://tempuri.org/AddAllScheduledMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddComposeMessage">
+      <soap:operation soapAction="http://tempuri.org/AddComposeMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageforADay">
+      <soap:operation soapAction="http://tempuri.org/GetAllScheduledMessageforADay" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageByDays">
+      <soap:operation soapAction="http://tempuri.org/GetAllScheduledMessageByDays" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageByMonth">
+      <soap:operation soapAction="http://tempuri.org/GetAllScheduledMessageByMonth" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSentMessageDetailsForCustomrange">
+      <soap:operation soapAction="http://tempuri.org/GetAllSentMessageDetailsForCustomrange" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1224,6 +1525,51 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddComposeMessage">
+      <soap12:operation soapAction="http://tempuri.org/AddComposeMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageforADay">
+      <soap12:operation soapAction="http://tempuri.org/GetAllScheduledMessageforADay" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageByDays">
+      <soap12:operation soapAction="http://tempuri.org/GetAllScheduledMessageByDays" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageByMonth">
+      <soap12:operation soapAction="http://tempuri.org/GetAllScheduledMessageByMonth" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSentMessageDetailsForCustomrange">
+      <soap12:operation soapAction="http://tempuri.org/GetAllSentMessageDetailsForCustomrange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ScheduledMessageHttpGet" type="tns:ScheduledMessageHttpGet">
     <http:binding verb="GET" />
@@ -1380,6 +1726,51 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddComposeMessage">
+      <http:operation location="/AddComposeMessage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageforADay">
+      <http:operation location="/GetAllScheduledMessageforADay" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageByDays">
+      <http:operation location="/GetAllScheduledMessageByDays" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageByMonth">
+      <http:operation location="/GetAllScheduledMessageByMonth" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSentMessageDetailsForCustomrange">
+      <http:operation location="/GetAllSentMessageDetailsForCustomrange" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ScheduledMessageHttpPost" type="tns:ScheduledMessageHttpPost">
     <http:binding verb="POST" />
@@ -1529,6 +1920,51 @@
     </wsdl:operation>
     <wsdl:operation name="AddAllScheduledMessage">
       <http:operation location="/AddAllScheduledMessage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddComposeMessage">
+      <http:operation location="/AddComposeMessage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageforADay">
+      <http:operation location="/GetAllScheduledMessageforADay" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageByDays">
+      <http:operation location="/GetAllScheduledMessageByDays" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllScheduledMessageByMonth">
+      <http:operation location="/GetAllScheduledMessageByMonth" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSentMessageDetailsForCustomrange">
+      <http:operation location="/GetAllSentMessageDetailsForCustomrange" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

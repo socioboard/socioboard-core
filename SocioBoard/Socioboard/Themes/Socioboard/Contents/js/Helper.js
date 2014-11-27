@@ -1,6 +1,6 @@
 ﻿var chkid = new Array();
 
-document.writeln("<script type='text/javascript' src='../Contents/js/reloadfbgraph.js'></script>");
+document.writeln("<script type='text/javascript' src='/Themes/Socioboard/Contents/js/reloadfbgraph.js'></script>");
 //alert("helper");
 
 
@@ -28,7 +28,7 @@ function checkprofile(tagid, id, page, network) {
     try {
 
         //alert(tagid);
-        $("#another-load").html('<img src="../Contents/img/360.gif" />');
+        $("#another-load").html('<img src="/Themes/Socioboard/Contents/img/360.gif" />');
 
         $('#accordianprofiles a').removeAttr('class');
         $('#' + tagid).attr('class', 'selected_Li');

@@ -773,8 +773,136 @@ namespace Api.Socioboard.Services
         }
 
 
+        // Edited by Antima
+
+        /// <getAllFacebookTagOfUsers>
+        /// Get All Facebook Tag Of Users
+        /// </summary>
+        /// <param name="UserId">User id.(Guid)</param>
+        /// <param name="profileid">Profile id.(String)</param>
+        /// <returns>Return object of FacebookTag Class with  value of each member in the form of list.(List<FacebookMessage>)</returns>
+        public List<Domain.Socioboard.Domain.FacebookMessage> getAllFacebookTagOfUsers(Guid UserId, string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        List<Domain.Socioboard.Domain.FacebookMessage> lstmsg = session.CreateQuery("from FacebookMessage where UserId = :UserId and ProfileId = :profileid and Type ='fb_tag'")
+                        .SetParameter("UserId", UserId)
+                        .SetParameter("profileid", profileid)
+                            // .SetMaxResults(10)
+                        .List<Domain.Socioboard.Domain.FacebookMessage>()
+                        .ToList<Domain.Socioboard.Domain.FacebookMessage>();
+
+                        return lstmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+        /// <getAllFacebookTagOfUsers>
+        /// Get All Facebook status Of Users
+        /// </summary>
+        /// <param name="UserId">User id.(Guid)</param>
+        /// <param name="profileid">Profile id.(String)</param>
+        /// <returns>Return object of FacebookTag Class with  value of each member in the form of list.(List<FacebookMessage>)</returns>
+        public List<Domain.Socioboard.Domain.FacebookMessage> getAllFacebookstatusOfUsers(Guid UserId, string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        List<Domain.Socioboard.Domain.FacebookMessage> lstmsg = session.CreateQuery("from FacebookMessage where UserId = :UserId and ProfileId = :profileid and Type ='fb_home' and ProfileId = FromId")
+                        .SetParameter("UserId", UserId)
+                        .SetParameter("profileid", profileid)
+                            // .SetMaxResults(10)
+                        .List<Domain.Socioboard.Domain.FacebookMessage>()
+                        .ToList<Domain.Socioboard.Domain.FacebookMessage>();
+
+                        return lstmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+        /// <getAllFacebookTagOfUsers>
+        /// Get All Facebook UserFeed Of Users
+        /// </summary>
+        /// <param name="UserId">User id.(Guid)</param>
+        /// <param name="profileid">Profile id.(String)</param>
+        /// <returns>Return object of FacebookTag Class with  value of each member in the form of list.(List<FacebookMessage>)</returns>
+        public List<Domain.Socioboard.Domain.FacebookMessage> getAllFacebookUserFeedOfUsers(Guid UserId, string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        List<Domain.Socioboard.Domain.FacebookMessage> lstmsg = session.CreateQuery("from FacebookMessage where UserId = :UserId and ProfileId = :profileid and Type ='fb_home' and ProfileId != FromId")
+                        .SetParameter("UserId", UserId)
+                        .SetParameter("profileid", profileid)
+                            // .SetMaxResults(10)
+                        .List<Domain.Socioboard.Domain.FacebookMessage>()
+                        .ToList<Domain.Socioboard.Domain.FacebookMessage>();
+
+                        return lstmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
 
 
+        public Domain.Socioboard.Domain.FacebookMessage GetMessageDetailByMessageid(string msgid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action to Check Message is Exist or not.
+                        NHibernate.IQuery query = session.CreateQuery("from FacebookMessage where MessageId = :msgid");
+                        query.SetParameter("msgid", msgid);
+                        Domain.Socioboard.Domain.FacebookMessage result = (Domain.Socioboard.Domain.FacebookMessage)query.UniqueResult();
+                        return result;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End session
+        }
 
     }
 }

@@ -38,7 +38,23 @@ namespace Api.Socioboard.Services
             }
         }
 
+        // Edited by Antima
 
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllTwitterFeedsByUserIdAndProfileId1(string UserId, string ProfileId, int count)
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.TwitterFeed> lstTwitterFeed = objTwitterFeedRepository.getAllTwitterFeedOfUsers(Guid.Parse(UserId), ProfileId, count);
+                return new JavaScriptSerializer().Serialize(lstTwitterFeed);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
         //getAllTwitterFeedOfUsers
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -78,5 +94,20 @@ namespace Api.Socioboard.Services
 
         }
 
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetTwitterFeedById(string id)
+        {
+            try
+            {
+                Domain.Socioboard.Domain.TwitterFeed twtfeed = objTwitterFeedRepository.getTwitterFeed(id);
+                return new JavaScriptSerializer().Serialize(twtfeed);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace);
+                return null;
+            }
+        }
     }
 }

@@ -37,6 +37,8 @@ namespace Socioboard.Api.DiscoverySearch {
         
         private System.Threading.SendOrPostCallback contactSearchTwitterOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getAllSearchKeywordsOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -86,6 +88,9 @@ namespace Socioboard.Api.DiscoverySearch {
         
         /// <remarks/>
         public event contactSearchTwitterCompletedEventHandler contactSearchTwitterCompleted;
+        
+        /// <remarks/>
+        public event getAllSearchKeywordsCompletedEventHandler getAllSearchKeywordsCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DiscoverySearchFacebook", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -208,6 +213,35 @@ namespace Socioboard.Api.DiscoverySearch {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAllSearchKeywords", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getAllSearchKeywords(string UserId) {
+            object[] results = this.Invoke("getAllSearchKeywords", new object[] {
+                        UserId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAllSearchKeywordsAsync(string UserId) {
+            this.getAllSearchKeywordsAsync(UserId, null);
+        }
+        
+        /// <remarks/>
+        public void getAllSearchKeywordsAsync(string UserId, object userState) {
+            if ((this.getAllSearchKeywordsOperationCompleted == null)) {
+                this.getAllSearchKeywordsOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAllSearchKeywordsOperationCompleted);
+            }
+            this.InvokeAsync("getAllSearchKeywords", new object[] {
+                        UserId}, this.getAllSearchKeywordsOperationCompleted, userState);
+        }
+        
+        private void OngetAllSearchKeywordsOperationCompleted(object arg) {
+            if ((this.getAllSearchKeywordsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAllSearchKeywordsCompleted(this, new getAllSearchKeywordsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -317,6 +351,32 @@ namespace Socioboard.Api.DiscoverySearch {
         private object[] results;
         
         internal contactSearchTwitterCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void getAllSearchKeywordsCompletedEventHandler(object sender, getAllSearchKeywordsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAllSearchKeywordsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAllSearchKeywordsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

@@ -23,10 +23,6 @@ namespace Api.Socioboard.Services
         TeamRepository teamrepo = new TeamRepository();
         Domain.Socioboard.Domain.Team team = new Domain.Socioboard.Domain.Team();
         GroupsRepository objGroupsRepository = new GroupsRepository();
-        GroupProfileRepository objGroupProfileRepository = new GroupProfileRepository();
-        Domain.Socioboard.Domain.GroupProfile objGroupProfile = new Domain.Socioboard.Domain.GroupProfile();
-        Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
-        TeamMemberProfileRepository objTeamMemberProfileRepository = new TeamMemberProfileRepository();
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -49,26 +45,74 @@ namespace Api.Socioboard.Services
                     team.AccessLevel = AccessLevel;
                     teamrepo.addNewTeam(team);
                     string check = team.Id.ToString();
-                }
-                string mailpath = HttpContext.Current.Server.MapPath("~/Layouts/Mails/GroupInvitation.html");
-                string html = File.ReadAllText(mailpath);
-                html = html.Replace("[join link]", ConfigurationManager.AppSettings["MailSenderDomain"] + "Home/Index?teamid=" + team.Id.ToString());
-                string usernameSend = ConfigurationManager.AppSettings["Mandrillusername"];
-                string host = ConfigurationManager.AppSettings["Mandrillhost"];
-                string port = ConfigurationManager.AppSettings["Mandrillport"];
-                string pass = ConfigurationManager.AppSettings["Mandrillpassword"];
-                GlobusMailLib.MailHelper objMailHelper = new GlobusMailLib.MailHelper();
-                objMailHelper.SendMailByMandrill(host, Convert.ToInt32(port), useremail, username, "", EmailId, "", "", "Group Invitation", html, usernameSend, pass);
 
+                    string mailpath = HttpContext.Current.Server.MapPath("~/Layouts/Mails/GroupInvitation.html");
+                    string html = File.ReadAllText(mailpath);
+                    html = html.Replace("[join link]", ConfigurationManager.AppSettings["MailSenderDomain"] + "Home/Index?teamid=" + team.Id.ToString());
+                    string usernameSend = ConfigurationManager.AppSettings["Mandrillusername"];
+                    string host = ConfigurationManager.AppSettings["Mandrillhost"];
+                    string port = ConfigurationManager.AppSettings["Mandrillport"];
+                    string pass = ConfigurationManager.AppSettings["Mandrillpassword"];
+                    GlobusMailLib.MailHelper objMailHelper = new GlobusMailLib.MailHelper();
+                    objMailHelper.SendMailByMandrill(host, Convert.ToInt32(port), useremail, username, "", EmailId, "", "", "Group Invitation", html, usernameSend, pass);
+
+                    return new JavaScriptSerializer().Serialize(team);
+                }
+                else
+                {
+                    return "";
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
                 return "Something Went Wrong";
             }
-            return new JavaScriptSerializer().Serialize(team);
-
         }
+
+        //public string AddTeam(string UserId, string InviteStatus, string FirstName, string LastName, string EmailId, string AccessLevel, string GroupId, string useremail, string username)
+        //{
+        //    try
+        //    {
+        //        if (!teamrepo.checkTeamExists(EmailId, Guid.Parse(UserId), Guid.Parse(GroupId)))
+        //        {
+        //            team.Id = Guid.NewGuid();
+        //            team.UserId = Guid.Parse(UserId);
+        //            team.InviteStatus = Convert.ToInt32(InviteStatus);
+        //            team.InviteDate = DateTime.Now;
+        //            team.StatusUpdateDate = DateTime.Now;
+        //            team.GroupId = Guid.Parse(GroupId);
+        //            team.StatusUpdateDate = DateTime.Now;
+        //            team.FirstName = FirstName;
+        //            team.LastName = LastName;
+        //            team.EmailId = EmailId;
+        //            team.AccessLevel = AccessLevel;
+        //            teamrepo.addNewTeam(team);
+        //            string check = team.Id.ToString();
+
+        //            string mailpath = HttpContext.Current.Server.MapPath("~/Layouts/Mails/GroupInvitation.html");
+        //            string html = File.ReadAllText(mailpath);
+        //            html = html.Replace("[join link]", ConfigurationManager.AppSettings["MailSenderDomain"] + "Home/Index?teamid=" + team.Id.ToString());
+        //            string usernameSend = ConfigurationManager.AppSettings["Mandrillusername"];
+        //            string host = ConfigurationManager.AppSettings["Mandrillhost"];
+        //            string port = ConfigurationManager.AppSettings["Mandrillport"];
+        //            string pass = ConfigurationManager.AppSettings["Mandrillpassword"];
+        //            GlobusMailLib.MailHelper objMailHelper = new GlobusMailLib.MailHelper();
+        //            objMailHelper.SendMailByMandrill(host, Convert.ToInt32(port), useremail, username, "", EmailId, "", "", "Group Invitation", html, usernameSend, pass);
+        //        }
+        //        else
+        //        {
+
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.StackTrace);
+        //        return "Something Went Wrong";
+        //    }
+        //    return new JavaScriptSerializer().Serialize(team);
+
+        //}
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -155,19 +199,8 @@ namespace Api.Socioboard.Services
                 team.StatusUpdateDate = DateTime.Now;
                 team.InviteStatus = 1;
                 teamrepo.updateTeam(team);
-                Domain.Socioboard.Domain.Team objTeam=teamrepo.getTeamById(Guid.Parse(teamid));
-                List<Domain.Socioboard.Domain.GroupProfile> lstGroupProfile = objGroupProfileRepository.GetAllGroupProfiles(objTeam.GroupId);
-                foreach (var item in lstGroupProfile)
-                {
-                    objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
-                    objTeamMemberProfile.Id = Guid.NewGuid();
-                    objTeamMemberProfile.TeamId = Guid.Parse(teamid);
-                    objTeamMemberProfile.ProfileId = item.ProfileId;
-                    objTeamMemberProfile.ProfileType = item.ProfileType;
-                    objTeamMemberProfile.Status = 1;
-                    objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
-                    objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
-                }
+                User objUser=new Services.User ();
+               
                     
             }
             catch (Exception ex)

@@ -671,32 +671,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-        public List<Domain.Socioboard.Domain.Team> GetAllTeamExcludeUser(Guid groupId)
-        {
-            //Creates a database connection and opens up a session
-            using (NHibernate.ISession session = SessionFactory.GetNewSession())
-            {
-                //After Session creation, start Transaction.
-                using (NHibernate.ITransaction transaction = session.BeginTransaction())
-                {
-                    try
-                    {
-
-                        List<Domain.Socioboard.Domain.Team> alstFBAccounts = session.CreateQuery("from Team where GroupId=:groupId")
-                        .SetParameter("groupId", groupId)
-                        .List<Domain.Socioboard.Domain.Team>()
-                        .ToList<Domain.Socioboard.Domain.Team>();
-                        return alstFBAccounts;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
-                        return null;
-                    }
-
-                }//End Transaction
-            }//End Session
-        }
 
         public Domain.Socioboard.Domain.Team GetAllTeam(Guid groupId, Guid userid)
         {

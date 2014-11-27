@@ -1,5 +1,6 @@
 ﻿@using Domain.Socioboard.Domain;
 @{
+    Layout = null;
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
     bool check = true;
 }
@@ -27,7 +28,7 @@
                 <div>
                     <a target="_blank" href="http://www.facebook.com/@item.FromId"><strong class="primary-font">@item.FromName</strong></a>
                     <small class="pull-right text-muted">
-                        <i class="fa fa-clock-o fa-fw"></i>12 mins ago
+                        <i class="fa fa-clock-o fa-fw"></i>@item.MessageDate
                                             </small>
                 </div>
                 @foreach (string substritem in str)
@@ -112,7 +113,7 @@
                 <div>
                     <a target="_blank" href="http://www.facebook.com/@item.FromId"><strong class="pull-right primary-font">@item.FromName</strong></a>
                     <small class="text-muted">
-                        <i class="fa fa-clock-o fa-fw"></i>12 mins ago
+                        <i class="fa fa-clock-o fa-fw"></i>@item.MessageDate
                                             </small>
                 </div>
                 @foreach (string substritem in str)
@@ -197,6 +198,7 @@
 
         if (dicitem.Key == "twitter")
         {
+            int i=0;
             List<object> lstdic = (List<object>)dicitem.Value;
             foreach (var twitterfeed in lstdic)
             {
@@ -216,6 +218,22 @@
                     <small class="pull-right text-muted">
                         <i class="fa fa-clock-o fa-fw"></i>12 mins ago
                                             </small>
+
+                    <div class="btn-group pull-right open" style="width: 4%;">
+                    <div id="feed_action_@i.ToString()" class="menu_button" title = "Option" style="height: auto; float: right;" onClick="Show_twt_menu('@i.ToString()')">
+                    <img src="~/Themes/Socioboard/Contents/img/setting-icon-vector.png"/>
+                    </div>
+                        <div id="dropdownmenu_@i.ToString()" class="hidden_menu" style="margin-top: 10px; margin-left: -11px; display: none;">
+                            <ul class="dropdown-menu slidedown" style="display: block; margin-left:-140px">
+                                <li><a onClick="RetweetPopup('@item.ScreenName','@item.ProfileId','@item.MessageId');"><i class="fa fa-retweet-square fa-fw"></i>Retweet</a></li> 
+                                <li><a onClick="FavoritePopup('@item.ScreenName','@item.ProfileId','@item.MessageId');"><i class="fa fa-favorite-square fa-fw"></i>Favorite</a></li>
+                                <li><a onClick="QuoteMessagePopup('@item.ProfileId','@item.Feed.Replace("'","")');"><i class="fa fa-quote-square fa-fw"></i>Quote Message</a></li>
+                                <li><a onClick="MailPopUpTwt('@item.Id');" ><i class="fa fa-mail-square fa-fw"></i>Email Message</a></li>
+                                <li><a onClick="SpamUserPopup('@item.FromScreenName','@item.ProfileId');"><i class="fa fa-spam-square fa-fw"></i>Report as spam</a></li>
+                            </ul>     
+                         </div>
+                    </div>
+
                 </div>
                 @foreach (string substritem in str)
                 {
@@ -280,6 +298,22 @@
                     <small class="text-muted">
                         <i class="fa fa-clock-o fa-fw"></i>12 mins ago
                                             </small>
+
+                    <div class="btn-group pull-right open" style="width: 4%;">
+                    <div id="feed_action_@i.ToString()" class="menu_button" title = "Option" style="height: auto; float: right;" onClick="Show_twt_menu('@i.ToString()')">
+                    <img src="~/Themes/Socioboard/Contents/img/setting-icon-vector.png"/>
+                    </div>
+                        <div id="dropdownmenu_@i.ToString()" class="hidden_menu" style="margin-top: 10px; margin-left: -11px; display: none;">
+                            <ul class="dropdown-menu slidedown" style="display: block; margin-left:-140px">
+                                <li><a onClick="RetweetPopup('@item.ScreenName','@item.ProfileId','@item.MessageId');"><i class="fa fa-retweet-square fa-fw"></i>Retweet</a></li> 
+                                <li><a onClick="FavoritePopup('@item.ScreenName','@item.ProfileId','@item.MessageId');"><i class="fa fa-favorite-square fa-fw"></i>Favorite</a></li>
+                                <li><a onClick="QuoteMessagePopup('@item.ProfileId','@item.Feed.Replace("'","")');"><i class="fa fa-quote-square fa-fw"></i>Quote Message</a></li>
+                                <li><a onClick="MailPopUpTwt('@item.Id');" ><i class="fa fa-mail-square fa-fw"></i>Email Message</a></li>
+                                <li><a onClick="SpamUserPopup('@item.FromScreenName','@item.ProfileId');"><i class="fa fa-spam-square fa-fw"></i>Report as spam</a></li>
+                            </ul>     
+                         </div>
+                    </div>
+
                 </div>
                 @foreach (string substritem in str)
                 {
@@ -334,7 +368,7 @@
                 {
                 }
 
-
+                i++;
 
 
                 //Twitter Finished
@@ -373,6 +407,7 @@
                     <small class="pull-right text-muted">
                         <i class="fa fa-clock-o fa-fw"></i>@item.FeedsDate
                     </small>
+                    <div id="sendMailleft"> <span class="mail_icon" onclick="mail('@item.ProfileId','@item.Id')"><img alt="" src="/Themes/@path/Contents/img/download.jpg" title="Mail"></span></div>
                 </div>
 
                 <a target="_blank" href="#">@item.Feeds</a>
@@ -392,8 +427,9 @@
                 <div>
                     <a target="_blank" href="#"><strong class="pull-right primary-font">@item.FromName</strong></a>
                     <small class="text-muted">
-                        <i class="fa fa-clock-o fa-fw"></i>12 mins ago
+                        <i class="fa fa-clock-o fa-fw"></i>@item.FeedsDate
                                             </small>
+                     <div id="sendMailright" onclick="#mail"> <span class="mail_icon" onclick="mail('@item.ProfileId','@item.Id')"><img alt="" src="/Themes/@path/Contents/img/download.jpg" title="Mail"></span></div>
                 </div>
 
                 <a target="_blank" href="#">@item.Feeds</a>
@@ -423,3 +459,69 @@
     }
 
 </ul>
+
+<div class="modal fade" id="QuoteCompose" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   
+    <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button id="closequotepopup" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                        <h4 id="myModalLabel" class="modal-title">QUOTE MESSAGE</h4>
+                    </div>
+                    <div class="modal-body col-md-12">
+                        <div class="col-md-2">
+                        
+                  <img id="quotemessageimg" src="" class="img-circle">
+                <img class="img-responsive img-circle" src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/twticon.png" style="margin-left: 35px; margin-top: -20px;">
+                                                                   
+                        </div>
+                        <div class="col-md-9">
+                            <div class="input-group col-md-12">
+                                <textarea rows="3" class="form-control" id="Quote_text" onkeyup="countChar()"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <br>
+                              <div id="showRemove" class="upload_data btn btn-default btn-sm" style="background-color: rgb(34, 34, 34); border: 1px solid rgb(0, 0, 0); color: rgb(255, 255, 255); float: left; border-radius: 5px; margin-right: 6px; display: none;" onclick="ImageDelete()">
+                <span style="float:right; margin-left:5px"></span>
+                <label style="float:right;font-size:small;display:block;">Remove Image x </label>
+            </div>
+            <input type="file" accept="image/*" name="" class="btn btn-default col-md-3"  onchange="Addimage()" name="" id="uploadImage" style="">                               
+                                
+                            </div>
+                        </div>
+                          <div class="col-md-1" id="compose_count">140</div>
+                        <div id="binduserprofiles">
+                        </div>
+                    </div>
+                    <div class="modal-footer" id="leaveQuotecompose">
+                        <button class="btn btn-primary" type="button" id="sendMessageBtn">Post</button>
+                        <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                    </div>
+                </div>
+            </div>
+</div>
+
+<script type="text/javascript">
+    
+    function mail(ProfileId, Id) {
+        debugger;
+
+        $.ajax({
+            type: "GET",
+            url: "../Feeds/ShowPopUp?ProfileId=" + ProfileId + "&Id=" + Id,
+            data: '',
+            dataType: "html",
+            success: function (msg) {
+                debugger;
+                //  alertify.success("Hello");
+                $('#mailpopup').html(msg);
+                $('#mailpopup').modal('show');
+            },
+            error: function (err) {
+                alert(err);
+                debugger;
+            }
+        });
+    }
+
+    </script>

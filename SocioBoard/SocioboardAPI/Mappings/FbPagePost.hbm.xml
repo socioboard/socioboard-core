@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+
+  <class name="FbPagePost" table="FbPagePost" lazy="false">
+    <id name="Id" column="Id" >
+      <generator class="guid"/>
+    </id>
+    <property name="UserId">
+      <column name="UserId" />
+    </property>
+    <property name="PageId">
+      <column name="PageId"  />
+    </property>
+    
+    
+    <property name="FromId">
+      <column name="FromId"  />
+    </property>
+    <property name="FromName">
+      <column name="FromName"  />
+    </property>
+    <property name="Type">
+      <column name="Type"  />
+    </property>
+    <property name="StatusType">
+      <column name="StatusType"  />
+    </property>
+    <property name="PictureUrl">
+      <column name="PictureUrl"  />
+    </property>
+    <property name="LinkUrl">
+      <column name="LinkUrl"  />
+    </property>
+    <property name="IconUrl">
+      <column name="IconUrl"  />
+    </property>
+    <property name="PostId">
+      <column name="PostId"  />
+    </property>
+    <property name="Post">
+      <column name="Post"  />
+    </property>
+    <property name="PostDate">
+      <column name="PostDate"  />
+    </property>
+    <property name="EntryDate">
+      <column name="EntryDate"  />
+    </property>
+    <property name="Likes">
+      <column name="Likes"  />
+    </property>
+    <property name="Comments">
+      <column name="Comments"  />
+    </property>
+    <property name="Shares">
+      <column name="Shares"  />
+    </property>
+
+    <property name="UserLikes">
+      <column name="UserLikes"  />
+    </property>
+    
+  </class>
+</hibernate-mapping>
+

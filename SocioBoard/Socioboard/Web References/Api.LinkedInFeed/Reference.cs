@@ -31,6 +31,10 @@ namespace Socioboard.Api.LinkedInFeed {
         
         private System.Threading.SendOrPostCallback GetLinkedInFeedsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetLinkedInFeeds1OperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetAllLinkedInFeedsOfProfileWithIdOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -73,6 +77,12 @@ namespace Socioboard.Api.LinkedInFeed {
         public event GetLinkedInFeedsCompletedEventHandler GetLinkedInFeedsCompleted;
         
         /// <remarks/>
+        public event GetLinkedInFeeds1CompletedEventHandler GetLinkedInFeeds1Completed;
+        
+        /// <remarks/>
+        public event GetAllLinkedInFeedsOfProfileWithIdCompletedEventHandler GetAllLinkedInFeedsOfProfileWithIdCompleted;
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetLinkedInFeeds", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string GetLinkedInFeeds(string UserId, string LinkedInId) {
             object[] results = this.Invoke("GetLinkedInFeeds", new object[] {
@@ -100,6 +110,70 @@ namespace Socioboard.Api.LinkedInFeed {
             if ((this.GetLinkedInFeedsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetLinkedInFeedsCompleted(this, new GetLinkedInFeedsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetLinkedInFeeds1", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetLinkedInFeeds1(string UserId, string LinkedInId, int count) {
+            object[] results = this.Invoke("GetLinkedInFeeds1", new object[] {
+                        UserId,
+                        LinkedInId,
+                        count});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetLinkedInFeeds1Async(string UserId, string LinkedInId, int count) {
+            this.GetLinkedInFeeds1Async(UserId, LinkedInId, count, null);
+        }
+        
+        /// <remarks/>
+        public void GetLinkedInFeeds1Async(string UserId, string LinkedInId, int count, object userState) {
+            if ((this.GetLinkedInFeeds1OperationCompleted == null)) {
+                this.GetLinkedInFeeds1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetLinkedInFeeds1OperationCompleted);
+            }
+            this.InvokeAsync("GetLinkedInFeeds1", new object[] {
+                        UserId,
+                        LinkedInId,
+                        count}, this.GetLinkedInFeeds1OperationCompleted, userState);
+        }
+        
+        private void OnGetLinkedInFeeds1OperationCompleted(object arg) {
+            if ((this.GetLinkedInFeeds1Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetLinkedInFeeds1Completed(this, new GetLinkedInFeeds1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllLinkedInFeedsOfProfileWithId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetAllLinkedInFeedsOfProfileWithId(string ProfileId, string Id) {
+            object[] results = this.Invoke("GetAllLinkedInFeedsOfProfileWithId", new object[] {
+                        ProfileId,
+                        Id});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAllLinkedInFeedsOfProfileWithIdAsync(string ProfileId, string Id) {
+            this.GetAllLinkedInFeedsOfProfileWithIdAsync(ProfileId, Id, null);
+        }
+        
+        /// <remarks/>
+        public void GetAllLinkedInFeedsOfProfileWithIdAsync(string ProfileId, string Id, object userState) {
+            if ((this.GetAllLinkedInFeedsOfProfileWithIdOperationCompleted == null)) {
+                this.GetAllLinkedInFeedsOfProfileWithIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllLinkedInFeedsOfProfileWithIdOperationCompleted);
+            }
+            this.InvokeAsync("GetAllLinkedInFeedsOfProfileWithId", new object[] {
+                        ProfileId,
+                        Id}, this.GetAllLinkedInFeedsOfProfileWithIdOperationCompleted, userState);
+        }
+        
+        private void OnGetAllLinkedInFeedsOfProfileWithIdOperationCompleted(object arg) {
+            if ((this.GetAllLinkedInFeedsOfProfileWithIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAllLinkedInFeedsOfProfileWithIdCompleted(this, new GetAllLinkedInFeedsOfProfileWithIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -135,6 +209,58 @@ namespace Socioboard.Api.LinkedInFeed {
         private object[] results;
         
         internal GetLinkedInFeedsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetLinkedInFeeds1CompletedEventHandler(object sender, GetLinkedInFeeds1CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetLinkedInFeeds1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetLinkedInFeeds1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetAllLinkedInFeedsOfProfileWithIdCompletedEventHandler(object sender, GetAllLinkedInFeedsOfProfileWithIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAllLinkedInFeedsOfProfileWithIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAllLinkedInFeedsOfProfileWithIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

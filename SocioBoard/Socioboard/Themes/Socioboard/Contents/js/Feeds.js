@@ -330,7 +330,7 @@ function facebookdetails(id) {
     try {
         loadfeedpartialpage = $.ajax({
             type: "POST",
-            url: "../Feeds/LoadFeedPartialPage?netword=facebook",
+            url: "../Feeds/LoadFeedPartialPage?netword=facebook&id=" + id,
             data: '',
             contentType: "application/json; charset=utf-8",
             dataType: "html",
@@ -342,14 +342,16 @@ function facebookdetails(id) {
                     $('#refreshpanel2').attr('nwt', 'fb');
                     $('#refreshpanel2').attr('nwtid', id);
                     $('#refreshpanel3').attr('nwt', 'fb');
-                    $('#refreshpanel4').attr('nwtid', id);
+                    $('#refreshpanel3').attr('nwtid', id);
                     $('#data_paneltab1').attr('network', 'facebook');
                     $("#img_paneltab1").attr('src', "/Themes/Socioboard/Contents/img/admin/1.png");
                     $("#title_paneltab1").html("Wall Posts");
+                    $('#data_paneltab2').attr('network', 'facebook');
                     $("#img_paneltab2").attr('src', "/Themes/Socioboard/Contents/img/admin/1.png");
                     $("#title_paneltab2").html("News Feeds");
                     $("#img_paneltab3").attr('src', "/Themes/Socioboard/Contents/img/admin/1.png");
-                    $("#title_paneltab3").html("Scheduled Messages");
+                    $("#title_paneltab3").html("User Feeds");
+                    $('#fbfeedsfilter').css("display", "block");
                 } catch (e) {
                 }
             }
@@ -395,14 +397,63 @@ function facebookdetails(id) {
 
             }
         });
+
+        //facebookfeeds = $.ajax({
+        //    type: "POST",
+        //    url: "../Feeds/AjaxFeeds?op=facebookfeeds&profileid=" + id,
+        //    data: '',
+        //    contentType: "application/json; charset=utf-8",
+        //    dataType: "html",
+        //    success: function (msg) {
+        //        try {
+        //            $("#loader_tabpanel2").bind("click", function () {
+        //                // alert("  refreshFeedsFacebook");
+        //                //refreshFeedsFacebook(id);
+
+        //            });
+        //            //$("#img_paneltab1").attr('src', "../Contents/img/admin/1.png");
+        //        } catch (e) {
+        //        }
+        //        try {
+        //            //  $("#img_paneltab2").attr('src', "../Contents/img/admin/1.png");
+        //        } catch (e) {
+        //        }
+        //        try {
+        //            // $("#loader_tabpanel2").attr('src', "../Contents/img/admin/9.png");
+        //        } catch (e) {
+
+        //        }
+        //        try {
+        //            // $("#title_paneltab2").html("News Feeds");
+        //        } catch (e) {
+
+        //        }
+        //        try {
+        //            $("#data_paneltab2").html(msg);
+        //        } catch (e) {
+
+        //        }
+
+        //        try {
+        //            //  $("#data_paneltab2").mCustomScrollbar("update");
+        //        } catch (e) {
+
+        //        }
+        //    }
+        //});
+
+        // Edited by Antima
+
         facebookfeeds = $.ajax({
+
             type: "POST",
-            url: "../Feeds/AjaxFeeds?op=facebookfeeds&profileid=" + id,
+            url: "../Feeds/AjaxFeeds?op=facebookfeeds&load=first&profileid=" + id,
             data: '',
             contentType: "application/json; charset=utf-8",
             dataType: "html",
             success: function (msg) {
                 try {
+                    debugger;
                     $("#loader_tabpanel2").bind("click", function () {
                         // alert("  refreshFeedsFacebook");
                         //refreshFeedsFacebook(id);
@@ -437,73 +488,74 @@ function facebookdetails(id) {
 
                 }
             }
+
+
         });
 
 
 
 
 
+        //facebookscheduler = $.ajax({
+        //    type: "POST",
+        //    url: "../Feeds/scheduler?network=facebook&profileid=" + id,
+        //    data: '',
+        //    contentType: "application/json; charset=utf-8",
+        //    dataType: "html",
+        //    success: function (msg) {
+
+        //        try {
+        //            $("#loader_tabpanel3").bind("click", function () {
+        //                //alert("refreshSchedularMessageFacebook");
+        //                //refreshSchedularMessageFacebook(id);
+
+        //            });
+        //            //$("#img_paneltab1").attr('src', "../Contents/img/admin/1.png");
+        //        } catch (e) {
+        //        }
+
+        //        try {
+        //            // $("#img_paneltab3").attr('src', "../Contents/img/admin/1.png");
+        //        } catch (e) {
+
+        //        }
 
 
+        //        try {
+        //            // $("#loader_tabpanel3").attr('src', "../Contents/img/admin/9.png");
+        //        } catch (e) {
 
+        //        }
+        //        try {
+        //            // $("#title_paneltab3").html("Scheduled Messages");
+        //        } catch (e) {
 
-        facebookscheduler = $.ajax({
-            type: "POST",
-            url: "../Feeds/scheduler?network=facebook&profileid=" + id,
-            data: '',
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
-            success: function (msg) {
+        //        }
+        //        try {
+        //            $("#data_paneltab3").html(msg);
+        //        } catch (e) {
 
-                try {
-                    $("#loader_tabpanel3").bind("click", function () {
-                        //alert("refreshSchedularMessageFacebook");
-                        //refreshSchedularMessageFacebook(id);
+        //        }
+        //        try {
+        //            $("#data_paneltab3").mCustomScrollbar("update");
+        //        } catch (e) {
 
-                    });
-                    //$("#img_paneltab1").attr('src', "../Contents/img/admin/1.png");
-                } catch (e) {
-                }
+        //        }
 
-                try {
-                    // $("#img_paneltab3").attr('src', "../Contents/img/admin/1.png");
-                } catch (e) {
-
-                }
-
-
-                try {
-                    // $("#loader_tabpanel3").attr('src', "../Contents/img/admin/9.png");
-                } catch (e) {
-
-                }
-                try {
-                    // $("#title_paneltab3").html("Scheduled Messages");
-                } catch (e) {
-
-                }
-                try {
-                    $("#data_paneltab3").html(msg);
-                } catch (e) {
-
-                }
-                try {
-                    $("#data_paneltab3").mCustomScrollbar("update");
-                } catch (e) {
-
-                }
-
-            }
-        });
+        //    }
+        //});
 
     } catch (e) {
 
     }
+    return true;
+
 }
 
 
 function facebookwallscrolldata() {
     debugger;
+    alert("facebookwallscrolldata");
     try {
         // $("#data_paneltab1").off('scroll', facebookwallscrolldata);
 
@@ -532,6 +584,121 @@ function facebookwallscrolldata() {
 
 
 }
+// Edited by Antima
+
+function facebookfeedscrolldata() {
+    debugger;
+    try {
+        var $container = $("#data_paneltab2");
+        $.ajax({
+            type: "POST",
+            url: "../Feeds/AjaxFeeds?load=scroll",
+            data: '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (facemsg) {
+                debugger;
+                $("#data_paneltab2").append(facemsg);
+            }
+        });
+    } catch (e) {
+    }
+    return true;
+
+}
+
+function FacebookUserFeeds(id) {
+ 
+        $("#title_paneltab3").html("User Feeds");
+
+        FacebookUserFeeds = $.ajax({
+            type: "GET",
+            url: "/Feeds/FacebookUserFeeds",
+            data: { "profileid": id },
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            beforeSend : function(){
+                console.log("test");
+            },
+            success: function (msg) {
+                console.log("I")
+               
+                    $("#data_paneltab3").html(msg);
+                    console.log("testend");
+               
+            },
+            error: function (e) {
+                console.log("testerr");
+
+                console.log(e);
+                alert("gfgh");
+            }
+        });
+   
+}
+
+function FacebookStatus(id) {
+   
+        $("#title_paneltab3").html("Status");
+
+        FacebookStatus = $.ajax({
+            type: "GET",
+            url: "/Feeds/FacebookStatus",
+            data: { "profileid": id },
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            beforeSend: function () {
+                console.log("test");
+            },
+            success: function (msg) {
+              
+                    $("#data_paneltab3").html(msg);
+                    console.log("testend");
+               
+
+
+                
+            },
+            error: function (e) {
+                console.log("testerr");
+
+                console.log(e);
+                alert("gfgh");
+            }
+        });
+   
+}
+
+
+function FacebookTag(id) {
+    console.log("FacebookTag begin")
+   
+        $("#title_paneltab3").html("Tags");
+
+        FacebookTag = $.ajax({
+            type: "GET",
+            url: "/Feeds/FacebookTag",
+            data: {profileid: id},
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            beforeSend: function () {
+                console.log("test");
+            },
+            success: function (msg) {
+               
+                    $("#data_paneltab3").html(msg);
+                    console.log("testend");
+
+                
+            },
+            error: function (e) {
+                console.log(e);
+                console.log("testerr");
+                alert("gfgh");
+            }
+        });
+   
+}
 
 
 /*************Twitter****************/
@@ -541,7 +708,7 @@ function twitterdetails(id) {
     try {
         loadfeedpartialpage = $.ajax({
             type: "POST",
-            url: "../Feeds/LoadFeedPartialPage?network=twitter",
+            url: "../Feeds/LoadFeedPartialPage?network=twitter&id=" + id,
             data: '',
             contentType: "application/json; charset=utf-8",
             dataType: "html",
@@ -553,14 +720,16 @@ function twitterdetails(id) {
                     $('#refreshpanel2').attr('nwt', 'twt');
                     $('#refreshpanel2').attr('nwtid', id);
                     $('#refreshpanel3').attr('nwt', 'twt');
-                    $('#refreshpanel4').attr('nwtid', id);
+                    $('#refreshpanel3').attr('nwtid', id);
                     $('#data_paneltab1').attr('network', 'twitter');
                     $("#img_paneltab1").attr('src', "/Themes/Socioboard/Contents/img/admin/2.png");
                     $("#title_paneltab1").html("Feeds");
+                    $('#data_paneltab2').attr('network', 'twitter');
                     $("#img_paneltab2").attr('src', "/Themes/Socioboard/Contents/img/admin/2.png");
                     $("#title_paneltab2").html("Tweets");
                     $("#img_paneltab3").attr('src', "/Themes/Socioboard/Contents/img/admin/2.png");
-                    $("#title_paneltab3").html("Scheduled Messages");
+                    $("#title_paneltab3").html("User Tweet");
+                    $('#twtfeedsfilter').css("display", "block");
                 } catch (e) {
                 }
             }
@@ -569,9 +738,39 @@ function twitterdetails(id) {
 
 
 
+        //$.ajax({
+        //    type: "POST",
+        //    url: "../Feeds/TwitterNetworkDetails?profileid=" + id,
+        //    data: '',
+        //    contentType: "application/json; charset=utf-8",
+        //    dataType: "html",
+        //    success: function (msg) {
+        //        try {
+        //            $("#loader_tabpanel1").bind("click", function () {
+        //                //alert("refreshWallpostTwitter");
+        //                //refreshWallpostTwitter(id);
+
+        //            });
+        //        } catch (e) {
+
+        //        }
+
+        //        try {
+        //            $("#data_paneltab1").html(msg);
+        //        } catch (e) {
+
+        //        }
+        //        try {
+        //            $("#data_paneltab1").mCustomScrollbar("update");
+        //        } catch (e) {
+
+        //        }
+        //    }
+        //});
+
         $.ajax({
             type: "POST",
-            url: "../Feeds/TwitterNetworkDetails?profileid=" + id,
+            url: "../Feeds/TwitterNetworkDetails?&load=first&profileid=" + id,
             data: '',
             contentType: "application/json; charset=utf-8",
             dataType: "html",
@@ -580,12 +779,9 @@ function twitterdetails(id) {
                     $("#loader_tabpanel1").bind("click", function () {
                         //alert("refreshWallpostTwitter");
                         //refreshWallpostTwitter(id);
-
                     });
                 } catch (e) {
-
                 }
-
                 try {
                     $("#data_paneltab1").html(msg);
                 } catch (e) {
@@ -606,9 +802,41 @@ function twitterdetails(id) {
 
 
 
+        //twitterfeeds = $.ajax({
+        //    type: "POST",
+        //    url: "../Feeds/TwitterFeeds?profileid=" + id,
+        //    data: '',
+        //    contentType: "application/json; charset=utf-8",
+        //    dataType: "html",
+        //    success: function (msg) {
+        //        try {
+        //            $("#loader_tabpanel2").bind("click", function () {
+        //                //alert(" refreshSchedularMessageTwitter");
+        //                //refreshSchedularMessageTwitter(id);
+
+        //            });
+        //        } catch (e) {
+
+        //        }
+
+        //        try {
+        //            $("#data_paneltab2").html(msg);
+        //        } catch (e) {
+
+        //        }
+        //        try {
+        //            $("#data_paneltab2").mCustomScrollbar("update");
+        //        } catch (e) {
+
+        //        }
+
+
+        //    }
+        //});
+
         twitterfeeds = $.ajax({
             type: "POST",
-            url: "../Feeds/TwitterFeeds?profileid=" + id,
+            url: "../Feeds/TwitterFeeds?&load=first&profileid=" + id,
             data: '',
             contentType: "application/json; charset=utf-8",
             dataType: "html",
@@ -617,7 +845,6 @@ function twitterdetails(id) {
                     $("#loader_tabpanel2").bind("click", function () {
                         //alert(" refreshSchedularMessageTwitter");
                         //refreshSchedularMessageTwitter(id);
-
                     });
                 } catch (e) {
 
@@ -633,40 +860,38 @@ function twitterdetails(id) {
                 } catch (e) {
 
                 }
-
-
             }
         });
 
-        twitterscheduler = $.ajax({
-            type: "POST",
-            url: "../Feeds/scheduler?network=twitter&profileid=" + id,
-            data: '',
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
-            success: function (msg) {
+        //twitterscheduler = $.ajax({
+        //    type: "POST",
+        //    url: "../Feeds/scheduler?network=twitter&profileid=" + id,
+        //    data: '',
+        //    contentType: "application/json; charset=utf-8",
+        //    dataType: "html",
+        //    success: function (msg) {
 
-                try {
-                    $("#loader_tabpanel3").bind("click", function () {
-                        //alert("refreshFeedsTwitter");
-                        refreshFeedsTwitter(id);
+        //        try {
+        //            $("#loader_tabpanel3").bind("click", function () {
+        //                //alert("refreshFeedsTwitter");
+        //                refreshFeedsTwitter(id);
 
-                    });
-                } catch (e) {
+        //            });
+        //        } catch (e) {
 
-                }
-                try {
-                    $("#data_paneltab3").html(msg);
-                } catch (e) {
+        //        }
+        //        try {
+        //            $("#data_paneltab3").html(msg);
+        //        } catch (e) {
 
-                }
-                try {
-                    $("#data_paneltab3").mCustomScrollbar("update");
-                } catch (e) {
+        //        }
+        //        try {
+        //            $("#data_paneltab3").mCustomScrollbar("update");
+        //        } catch (e) {
 
-                }
-            }
-        });
+        //        }
+        //    }
+        //});
 
 
 
@@ -676,8 +901,128 @@ function twitterdetails(id) {
 
 }
 
+function Twitterscrolldata() {
+    debugger;
+    try {
 
+        var $container = $("#data_paneltab1");
 
+        $.ajax({
+            type: "POST",
+            url: "../Feeds/TwitterNetworkDetails?load=scroll",
+            data: '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (twtmsg) {
+                debugger;
+                //$("#data_paneltab1").on('scroll', facebookwallscrolldata);
+                $("#data_paneltab1").append(twtmsg);
+            }
+        });
+        // }
+        //  });
+
+    } catch (e) {
+    }
+}
+
+function Twitterfeedscrolldata() {
+    debugger;
+    try {
+
+        var $container = $("#data_paneltab2");
+
+        $.ajax({
+            type: "POST",
+            url: "../Feeds/TwitterFeeds?load=scroll",
+            data: '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (twtmsg) {
+                debugger;
+                //$("#data_paneltab1").on('scroll', facebookwallscrolldata);
+                $("#data_paneltab2").append(twtmsg);
+            }
+        });
+        // }
+        //  });
+
+    } catch (e) {
+    }
+}
+
+function TwitterUserTweet(id) {
+    try {
+        debugger;
+        $("#title_paneltab3").html("User Tweet");
+
+        TwitterUserTweet = $.ajax({
+            type: "POST",
+            url: "/Feeds/TwitterUserTweet?profileid=" + id,
+            data: '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (msg) {
+                try {
+                    debugger;
+                    $("#data_paneltab3").html(msg);
+                } catch (e) {
+
+                }
+            }
+        });
+    } catch (e) {
+
+    }
+}
+
+function TwitterRetweets(id) {
+    try {
+        debugger;
+        $("#title_paneltab3").html("Retweets");
+        TwitterRetweets = $.ajax({
+            type: "POST",
+            url: "../Feeds/TwitterRetweets?profileid=" + id,
+            data: '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (msg) {
+                try {
+                    debugger;
+                    $("#data_paneltab3").html(msg);
+                } catch (e) {
+
+                }
+            }
+        });
+    } catch (e) {
+
+    }
+}
+
+function TwitterMentions(id) {
+    try {
+        debugger;
+        $("#title_paneltab3").html("Mentions");
+        TwitterMentions = $.ajax({
+            type: "POST",
+            url: "../Feeds/TwitterMentions?profileid=" + id,
+            data: '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (msg) {
+                try {
+                    debugger;
+                    $("#data_paneltab3").html(msg);
+                } catch (e) {
+
+                }
+            }
+        });
+    } catch (e) {
+
+    }
+}
 
 function linkedindetails(id) {
 
@@ -700,7 +1045,7 @@ function linkedindetails(id) {
                     $('#refreshpanel2').attr('nwt', 'linkedin');
                     $('#refreshpanel2').attr('nwtid', id);
                     $('#refreshpanel3').attr('nwt', 'linkedin');
-                    $('#refreshpanel4').attr('nwtid', id);
+                    $('#refreshpanel3').attr('nwtid', id);
                     $('#data_paneltab1').attr('network', 'linkedin');
                     $("#img_paneltab1").attr('src', "/Themes/Socioboard/Contents/img/admin/5.png");
                     $("#title_paneltab1").html("Network Updates");
@@ -716,9 +1061,35 @@ function linkedindetails(id) {
 
 
 
+        //linkedinwallposts = $.ajax({
+        //    type: "POST",
+        //    url: "../Feeds/linkedinwallposts?profileid=" + id,
+        //    data: '',
+        //    contentType: "application/json; charset=utf-8",
+        //    dataType: "html",
+        //    success: function (msg) {
+        //        try {
+        //            $("#loader_tabpanel1").bind("click", function () {
+        //                // alert("refreshWallpostLinkedin");
+        //                //refreshWallpostLinkedin(id);
+
+        //            });
+        //            //$("#img_paneltab1").attr('src', "../Contents/img/admin/5.png");
+        //        } catch (e) {
+        //        }
+
+        //        try {
+        //            $("#data_paneltab1").html(msg);
+        //        } catch (e) {
+
+        //        }
+        //    }
+        //});
+
         linkedinwallposts = $.ajax({
             type: "POST",
-            url: "../Feeds/linkedinwallposts?profileid=" + id,
+            //  url: "../Feeds/TwitterNetworkDetails?&load=first&profileid=" + id,
+            url: "../Feeds/linkedinwallposts?&load=first&profileid=" + id,
             data: '',
             contentType: "application/json; charset=utf-8",
             dataType: "html",
@@ -839,6 +1210,167 @@ function linkedindetails(id) {
 
     }
 }
+
+function LinkedInscrolldata() {
+    debugger;
+    try {
+
+        var $container = $("#data_paneltab1");
+
+        $.ajax({
+            type: "POST",
+            url: "../Feeds/linkedinwallposts?load=scroll",
+            data: '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (linkedinmsg) {
+                debugger;
+                //$("#data_paneltab1").on('scroll', facebookwallscrolldata);
+                $("#data_paneltab1").append(linkedinmsg);
+            }
+        });
+        // }
+        //  });
+
+    } catch (e) {
+    }
+}
+
+
+//******************* Linkedin Page******************
+
+
+
+function linkedinpagedetails(id) {
+    debugger;
+    $.ajax({
+        type: "POST",
+        url: "../Feeds/linkedinPageWallPost?profileid=" + id,
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (msg) {
+            try {
+                $("#page-wrapper").html(msg);
+
+            } catch (e) {
+            }
+        }
+    });
+
+}
+
+function viewallcomentlink(id, cnt) {
+    debugger;
+
+    var text = document.getElementById("cmntlink_" + id).innerHTML;
+    if (text == "View all Comments") {
+        debugger;
+        $("#allcommnetbox_" + id).css("display", "block");
+        document.getElementById("cmntlink_" + id).innerHTML = "Hide all Comment";
+    }
+    else {
+        $("#allcommnetbox_" + id).css("display", "none");
+        document.getElementById("cmntlink_" + id).innerHTML = "View all Comments";
+    }
+
+}
+
+function licomntonpagepost(pageid, updatekey) {
+    debugger;
+    var coment = $("#lipgcmntbx_" + updatekey).val();
+    if (coment == "") {
+        alertify.alert("Please write something to comment on a Post!");
+        return false;
+    }
+    $("#linkedinpage-feeds").css("display", "block");
+
+    $.ajax({
+        type: "POST",
+        url: "../Feeds/linkedinpagecomentonpost?pageid=" + pageid + "&updatekey=" + updatekey + "&comment=" + coment,
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (msg) {
+            debugger;
+            linkedinpagedetails(pageid);
+
+        }
+    });
+
+
+
+
+}
+
+function LikePagePosts(Pageid, Updatekey, isLike) {
+    debugger;
+
+    $.ajax({
+
+
+        type: "POST",
+        url: "../Feeds/LikeCompanyPagePost?pageid=" + Pageid + "&updatekey=" + Updatekey + "&isLike=" + isLike,
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (message) {
+
+
+            linkedinpagedetails(Pageid);
+
+        }
+    });
+
+}
+
+
+function SendPostOnLiCompanyPage(id) {
+    debugger;
+    //fileimage = document.getElementById('fileuploadforpost').files[0];
+
+    //var lpd = new FormData();
+    //var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+    //if (fileimage != null) {
+    //    if (hasExtension('fileuploadforpost', fileExtension)) {
+    //        lpd.append('fileimg', fileimage);
+    //    }
+    //    else {
+    //        alert("File Extention is not current. Please upload any image file");
+    //        return;
+    //    }
+    //}
+    var pageid = id;
+    var post = $("#txtPostofPage").val();
+
+    //if ((post == "" || post == null) && (fileimage == "" || fileimage == null)) {
+    if ((post == "" || post == null)) {
+        alert("Please write something or Attach to Post..!");
+        return false;
+    }
+    //lpd.append("pageid", pageid);
+    //lpd.append('postmessage', post);
+
+
+    $.ajax({
+        type: "post",
+        url: "../Feeds/CreatePostOnPage?Pageid=" + pageid + "&Post=" + post,
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (message) {
+
+            $("#txtPostofPage").val('');
+            linkedinpagedetails(Pageid);
+
+        }
+    });
+
+}
+
+
+
+
 
 
 //***************tumblr data**********
@@ -1435,13 +1967,13 @@ function fbimageclose() {
 }
 
 
-var throttled = _.throttle(facebookwallscrolldata, 20000);
+//var throttled = throttle(facebookwallscrolldata, 20000);
 
 
 function refreshWallpostFacebook(id) {
     debugger;
     try {
-        $("#loader_tabpanel1").attr('src', '../Contents/img/891.png');
+        $("#refreshpanel1").attr('src', '../Themes/Socioboard/Contents/img/891.png');
     } catch (e) {
 
     }
@@ -1464,7 +1996,7 @@ function refreshWallpostFacebook(id) {
             } catch (e) {
             }
             try {
-                $("#loader_tabpanel1").attr('src', "/Themes/Socioboard/Contents/img/admin/9.png");
+                $("#refreshpanel1").attr('src', "../Themes/Socioboard/Contents/img/admin/9.png");
             } catch (e) {
             }
             try {
@@ -1491,12 +2023,10 @@ function refreshWallpostFacebook(id) {
     });
 }
 
-
-
 function refreshFeedsFacebook(id) {
     debugger;
     try {
-        $("#loader_tabpanel2").attr('src', '../Contents/img/891.png');
+        $("#refreshpanel2").attr('src', '../Themes/Socioboard/Contents/img/891.png');
     } catch (e) {
 
     }
@@ -1519,9 +2049,8 @@ function refreshFeedsFacebook(id) {
             } catch (e) {
             }
             try {
-                $("#loader_tabpanel2").attr('src', "/Themes/Socioboard/Contents/img/admin/9.png");
-            } catch (e) {
-            }
+                $("#refreshpanel2").attr('src', "../Themes/Socioboard/Contents/img/admin/9.png");
+            } catch (e) { }
             try {
                 $("#title_paneltab2").html("News Feeds");
             } catch (e) {
@@ -1548,7 +2077,7 @@ function refreshFeedsFacebook(id) {
 function refreshSchedularMessageFacebook(id) {
     debugger;
     try {
-        $("#loader_tabpanel3").attr('src', '../Contents/img/891.png');
+        $("#refreshpanel3").attr('src', '../Themes/Socioboard/Contents/img/891.png');
     } catch (e) {
 
     }
@@ -1571,7 +2100,7 @@ function refreshSchedularMessageFacebook(id) {
             } catch (e) {
             }
             try {
-                $("#loader_tabpanel3").attr('src', "/Themes/Socioboard/Contents/img/admin/9.png");
+                $("#refreshpanel3").attr('src', "../Themes/Socioboard/Contents/img/admin/9.png");
             } catch (e) {
             }
             try {
@@ -1602,23 +2131,23 @@ function refreshSchedularMessageFacebook(id) {
 function refreshWallpostTwitter(id) {
     debugger;
     try {
-        $("#loader_tabpanel1").attr('src', '../Contents/img/891.png');
+        $("#refreshpanel1").attr('src', '../Themes/Socioboard/Contents/img/891.png');
     } catch (e) {
 
     }
     $.ajax({
         type: "POST",
-        url: "../Feeds/AjaxFeeds.aspx?op=twitternetworkdetails&profileid=" + id,
+        url: "../Feeds/TwitterNetworkDetails?profileid=" + id,
         data: '',
         contentType: "application/json; charset=utf-8",
         dataType: "html",
         success: function (msg) {
             try {
-                $("#img_paneltab1").attr('src', "../Contents/img/admin/2.png");
+                $("#img_paneltab1").attr('src', "../Themes/Socioboard/Contents/img/admin/2.png");
             } catch (e) {
             }
             try {
-                $("#loader_tabpanel1").attr('src', "../Contents/img/admin/9.png");
+                $("#refreshpanel1").attr('src', "../Themes/Socioboard/Contents/img/admin/9.png");
             } catch (e) {
 
             }
@@ -1641,28 +2170,26 @@ function refreshWallpostTwitter(id) {
     });
 }
 
-
-
 function refreshFeedsTwitter(id) {
     debugger;
     try {
-        $("#loader_tabpanel2").attr('src', '../Contents/img/891.png');
+        $("#refreshpanel2").attr('src', '../Themes/Socioboard/Contents/img/891.png');
     } catch (e) {
 
     }
     $.ajax({
         type: "POST",
-        url: "../Feeds/AjaxFeeds.aspx?op=twitterfeeds&profileid=" + id,
+        url: "../Feeds/TwitterFeeds?profileid=" + id,
         data: '',
         contentType: "application/json; charset=utf-8",
         dataType: "html",
         success: function (msg) {
             try {
-                $("#img_paneltab2").attr('src', "../Contents/img/admin/2.png");
+                $("#img_paneltab2").attr('src', "../Themes/Socioboard/Contents/img/admin/2.png");
             } catch (e) {
             }
             try {
-                $("#loader_tabpanel2").attr('src', "../Contents/img/admin/9.png");
+                $("#refreshpanel2").attr('src', "../Themes/Socioboard/Contents/img/admin/9.png");
             } catch (e) {
 
             }
@@ -1688,23 +2215,23 @@ function refreshFeedsTwitter(id) {
 function refreshSchedularMessageTwitter(id) {
     debugger;
     try {
-        $("#loader_tabpanel3").attr('src', '../Contents/img/891.png');
+        $("#refreshpanel3").attr('src', '../Themes/Socioboard/Contents/img/891.png');
     } catch (e) {
 
     }
     $.ajax({
         type: "POST",
-        url: "../Feeds/AjaxFeeds.aspx?op=scheduler&network=twitter&profileid=" + id,
+        url: "../Feeds/scheduler?network=twitter&profileid=" + id,
         data: '',
         contentType: "application/json; charset=utf-8",
         dataType: "html",
         success: function (msg) {
             try {
-                $("#img_paneltab3").attr('src', "../Contents/img/admin/2.png");
+                $("#img_paneltab3").attr('src', "../Themes/Socioboard/Contents/img/admin/2.png");
             } catch (e) {
             }
             try {
-                $("#loader_tabpanel3").attr('src', "../Contents/img/admin/9.png");
+                $("#refreshpanel3").attr('src', "../Themes/Socioboard/Contents/img/admin/9.png");
             } catch (e) {
 
             }
@@ -1730,29 +2257,26 @@ function refreshSchedularMessageTwitter(id) {
 
 
 
-
-
-
 function refreshWallpostLinkedin(id) {
     debugger;
     try {
-        $("#loader_tabpanel1").attr('src', '../Contents/img/891.png');
+        $("#refreshpanel1").attr('src', '../Themes/Socioboard/Contents/img/891.png');
     } catch (e) {
 
     }
     $.ajax({
         type: "POST",
-        url: "../Feeds/AjaxFeeds.aspx?op=linkedinwallposts&profileid=" + id,
+        url: "../Feeds/linkedinwallposts?profileid=" + id,
         data: '',
         contentType: "application/json; charset=utf-8",
         dataType: "html",
         success: function (msg) {
             try {
-                $("#img_paneltab1").attr('src', "../Contents/img/admin/5.png");
+                $("#img_paneltab1").attr('src', "/Themes/Socioboard/Contents/img/admin/5.png");
             } catch (e) {
             }
             try {
-                $("#loader_tabpanel1").attr('src', "../Contents/img/admin/9.png");
+                $("#refreshpanel1").attr('src', "../Themes/Socioboard/Contents/img/admin/9.png");
             } catch (e) {
 
             }
@@ -1772,28 +2296,26 @@ function refreshWallpostLinkedin(id) {
     });
 }
 
-
-
 function refreshFeedsLinkedin(id) {
     debugger;
     try {
-        $("#loader_tabpanel2").attr('src', '../Contents/img/891.png');
+        $("#refreshpanel2").attr('src', '../Themes/Socioboard/Contents/img/891.png');
     } catch (e) {
 
     }
     $.ajax({
         type: "POST",
-        url: "../Feeds/AjaxFeeds.aspx?op=linkedinfeeds&profileid=" + id,
+        url: "../Feeds/LinkedinFeeds?profileid=" + id,
         data: '',
         contentType: "application/json; charset=utf-8",
         dataType: "html",
         success: function (msg) {
             try {
-                $("#img_paneltab2").attr('src', "../Contents/img/admin/5.png");
+                $("#img_paneltab2").attr('src', "/Themes/Socioboard/Contents/img/admin/5.png");
             } catch (e) {
             }
             try {
-                $("#loader_tabpanel2").attr('src', "../Contents/img/admin/9.png");
+                $("#refreshpanel2").attr('src', "../Themes/Socioboard/Contents/img/admin/9.png");
             } catch (e) {
 
             }
@@ -1816,23 +2338,23 @@ function refreshFeedsLinkedin(id) {
 function refreshSchedularMessageLinkedin(id) {
     debugger;
     try {
-        $("#loader_tabpanel3").attr('src', '../Contents/img/891.png');
+        $("#refreshpanel3").attr('src', '../Themes/Socioboard/Contents/img/891.png');
     } catch (e) {
 
     }
     $.ajax({
         type: "POST",
-        url: "../Feeds/AjaxFeeds.aspx?op=scheduler&network=linkedin&profileid=" + id,
+        url: "../Feeds/scheduler?network=linkedin&profileid=" + id,
         data: '',
         contentType: "application/json; charset=utf-8",
         dataType: "html",
         success: function (msg) {
             try {
-                $("#img_paneltab3").attr('src', "../Contents/img/admin/5.png");
+                $("#img_paneltab3").attr('src', "/Themes/Socioboard/Contents/img/admin/5.png");
             } catch (e) {
             }
             try {
-                $("#loader_tabpanel3").attr('src', "../Contents/img/admin/9.png");
+                $("#refreshpanel3").attr('src', "../Themes/Socioboard/Contents/img/admin/9.png");
             } catch (e) {
 
             }
@@ -1851,6 +2373,7 @@ function refreshSchedularMessageLinkedin(id) {
         }
     });
 }
+
 
 
 
@@ -1879,7 +2402,12 @@ function facebookLike(msgid, profileid, fbid) {
                     $("#likefb_" + fbid).attr('status', 'likes');
                     $("#likefb_" + fbid).html('<i class="fa fa-thumbs-o-up"></i>');
                 }
-                alertify.success("Liked Successfully");
+                if (status == "unlike") {
+                    alertify.success("Unliked Successfully");
+                }
+                else {
+                    alertify.success("Liked Successfully");
+                }
             }
         });
 
@@ -2043,4 +2571,216 @@ function TwtFolloUser(event, id) {
             }
         });
     }
+}
+
+
+///-------------------------vikash------------------------////
+
+function Show_twt_menu(i) {
+    debugger;
+    var id = "dropdownmenu_" + i;
+    var menu = document.getElementById(id);
+
+    if (menu.style.display == 'block') {
+        menu.style.display = 'none';
+    } else {
+        menu.style.display = 'block';
+    }
+}
+
+function RetweetPopup(ScreenName, ProfileId, MessageId) {
+    debugger;
+    var message = 'Retweet this message from @' + ScreenName + '?';
+    $(".hidden_menu").hide();
+    alertify.confirm(message, function (e) {
+        if (e) {
+            debugger;
+            $.ajax({
+                type: "POST",
+                url: "../Feeds/retweetmessage?MessageId=" + MessageId + "&ProfileId=" + ProfileId,
+                dataType: "html",
+                success: function (msg) {
+                    debugger;
+                    if (msg == "succeess") {
+                        alertify.success("Message has been RETWEETED");
+                    }
+                    else {
+                        alertify.log("Message has been already RETWEETED");
+                    }
+                },
+                error: function (err) {
+                    alertify.error("Somthing went Wrong!");
+                }
+            });
+        }
+        else {
+            debugger;
+        }
+    });
+}
+
+function FavoritePopup(ScreenName, ProfileId, MessageId) {
+    debugger;
+    $(".hidden_menu").hide();
+    var message = 'Favorite this message from @' + ScreenName + '?';
+    alertify.confirm(message, function (e) {
+        if (e) {
+            $.ajax({
+                type: "POSt",
+                url: "../Feeds/favoritemessage?MessageId=" + MessageId + "&ProfileId=" + ProfileId,
+                dataType: "html",
+                success: function (msg) {
+                    if (msg == "succeess") {
+                        alertify.success("Message has been FAVOTITED");
+                    }
+                    else {
+                        alertify.log("Message has been already FAVOTITED");
+                    }
+                },
+                error: function (err) {
+                    alertify.error("Somthing went Wrong!");
+                }
+            });
+        }
+        else {
+            debugger;
+        }
+    });
+}
+
+function SpamUserPopup(FromScreenName, ProfileId) {
+    debugger;
+    $(".hidden_menu").hide();
+    var msg = "Are you sure you want to report @" + FromScreenName + " as a spammer?"
+    alertify.confirm(msg, function (e) {
+        if (e) {
+            debugger;
+            $.ajax({
+                type: "POST",
+                url: "../Feeds/spamuser?SpammerScreanName=" + FromScreenName + "&UserProfileId=" + ProfileId,
+                dataType: "html",
+                success: function (msg) {
+                    var str = "@" + FromScreenName + " has been reported as SPAM";
+                    alertify.success(str);
+                },
+                error: function (err) {
+                    alertify.error("Somthing went Wrong!");
+                }
+            });
+        }
+        else { }
+    });
+
+}
+
+function QuoteMessagePopup(ProfileId, Feed) {
+    debugger;
+    $(".hidden_menu").hide();
+    var buttonhtm = "<button type=\"button\" class=\"btn btn-default\" onclick=\"SendQuoteCompose('" + ProfileId + "')\">Post</button>";
+    buttonhtm += "<button data-dismiss=\"modal\" class=\"btn btn-default\" type=\"button\">Close</button>";
+    $("#leaveQuotecompose").html(buttonhtm);
+    var img = $("#user_avtar").attr('src');
+    $("#quotemessageimg").attr('src', img);
+    $("#Quote_text").val(Feed);
+    var len = Feed.length;
+    $('#compose_count').text(140 - len);
+    $("#QuoteCompose").modal('show');
+
+}
+function SendQuoteCompose(profileid) {
+    debugger;
+    var curdate = new Date();
+    var curdaatetimetime = (curdate.getMonth() + 1) + "/" + curdate.getDate() + "/" + curdate.getFullYear() + " " + curdate.getHours() + ":" + curdate.getMinutes() + ":" + curdate.getSeconds();
+    var user = profileid + "~twitter";
+
+    var fd = new FormData();
+    var filesimage = document.getElementById('uploadImage').files[0];
+
+    var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+    if (filesimage != null) {
+        if (hasExtension('uploadImage', fileExtension)) {
+            fd.append('file', filesimage);
+        }
+        else {
+            alert("File Extention is not current. Please upload any image file");
+            return;
+        }
+    }
+
+    var message = $("#Quote_text").val();
+
+    if (message != '' || filesimage != null) {
+        $.ajax({
+            type: 'POST',
+            url: '../Home/ComposeMessageSend?message=' + encodeURIComponent(message) + '&allprofiles=' + user + '&curdaatetimetime=' + curdaatetimetime,
+            data: fd,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                $('#closequotepopup').click();
+                alertify.success("Message Sent Successfully");
+                $('#uploadImage').val('');
+                $('#showRemove').css('display', 'none');
+            }
+        });
+    }
+    else {
+
+    }
+
+}
+
+
+function countChar() {
+    debugger;
+    var val = document.getElementById('Quote_text').value;
+    var len = val.length;
+    if (len > 140) {
+        document.getElementById('Quote_text').value = val.substring(0, 140);
+    } else {
+        $('#compose_count').text(140 - len);
+
+    }
+}
+
+function Addimage() {
+    debugger;
+    var filesinput = $('#uploadImage');
+    if (filesinput != undefined && filesinput[0].files[0] != null) {
+        $('#showRemove').css('display', 'block');
+    }
+}
+
+function ImageDelete() {
+
+    try {
+        var filesinput = $('#uploadImage');
+
+        debugger;
+
+        if (filesinput !== 'undefined') {
+            $('#showRemove').css('display', 'none');
+            document.getElementById('uploadImage').value = "";
+
+        }
+    } catch (e) {
+
+    }
+}
+
+function MailPopUpTwt(feedid) {
+    debugger;
+    $(".hidden_menu").hide();
+    $.ajax({
+        type: 'POST',
+        url: '../Feeds/ShowTwtMailPopUp?Id=' + feedid,
+        dataType: "html",
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            $('#twtmailpopup').html(data);
+            $("#twtmailpopup").modal('show');
+        }
+    });
+
 }

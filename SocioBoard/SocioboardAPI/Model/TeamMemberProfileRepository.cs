@@ -7,7 +7,7 @@ using System.Linq;
 using System.Web;
 namespace Api.Socioboard.Services
 {
-    public class TeamMemberProfileRepository:ITeamMemberProfileRepository
+    public class TeamMemberProfileRepository : ITeamMemberProfileRepository
     {
 
         /// <addNewTeamMember>
@@ -74,7 +74,7 @@ namespace Api.Socioboard.Services
                         //Proceed action, to deleting team profile by id and team id.
                         NHibernate.IQuery query = session.CreateQuery("delete from TeamMemberProfile where TeamId = :teamid")
                                         .SetParameter("teamid", teamid);
-                                       
+
                         int isUpdated = query.ExecuteUpdate();
                         transaction.Commit();
                         return isUpdated;
@@ -108,7 +108,7 @@ namespace Api.Socioboard.Services
                             .SetParameter("status", team.Status)
                             .SetParameter("statusdate", team.StatusUpdateDate)
                             .SetParameter("teamid", team.TeamId)
-                            .SetParameter("profileId",team.ProfileId)
+                            .SetParameter("profileId", team.ProfileId)
                             .ExecuteUpdate();
                         transaction.Commit();
                     }
@@ -154,7 +154,7 @@ namespace Api.Socioboard.Services
         }
 
 
-      
+
 
 
         public List<Domain.Socioboard.Domain.TeamMemberProfile> getTeamMemberProfileData(Guid TeamId)
@@ -262,7 +262,7 @@ namespace Api.Socioboard.Services
         }
 
 
-        public List<Domain.Socioboard.Domain.TeamMemberProfile> GetTeamMemberProfileByTeamIdAndProfileType(Guid TeamId,string profiletype)
+        public List<Domain.Socioboard.Domain.TeamMemberProfile> GetTeamMemberProfileByTeamIdAndProfileType(Guid TeamId, string profiletype)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -348,11 +348,12 @@ namespace Api.Socioboard.Services
                     try
                     {
                         //Get the details of team profile by team id and profile id.
-                        NHibernate.IQuery query = session.CreateQuery("from TeamMemberProfile where TeamId = :teamid and ProfileId = :profileid");
-                        query.SetParameter("teamid", Teamid);
-                        query.SetParameter("profileid", ProfileId);
-                        var alstFBAccounts = query.UniqueResult<TeamMemberProfile>();
-                        if (alstFBAccounts == null)
+                        List<Domain.Socioboard.Domain.TeamMemberProfile> alstFBAccounts = session.CreateQuery("from TeamMemberProfile where TeamId = :teamid and ProfileId = :profileid")
+                         .SetParameter("teamid", Teamid)
+                         .SetParameter("profileid", ProfileId)
+                        .List<Domain.Socioboard.Domain.TeamMemberProfile>()
+                     .ToList<Domain.Socioboard.Domain.TeamMemberProfile>();
+                        if (alstFBAccounts == null || alstFBAccounts.Count==0)
                             return false;
                         else
                             return true;
@@ -454,7 +455,7 @@ namespace Api.Socioboard.Services
 
 
 
-        public int DeleteTeamMemberProfileByTeamIdProfileId(string ProfileId,Guid teamid)
+        public int DeleteTeamMemberProfileByTeamIdProfileId(string ProfileId, Guid teamid)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())

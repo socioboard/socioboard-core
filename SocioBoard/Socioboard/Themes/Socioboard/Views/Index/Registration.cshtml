@@ -1,8 +1,7 @@
 ﻿@{
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
-    string teamid = Request.QueryString["teamid"];
 }
-<section class="services bg-primary partialContents" id="services" data-url="/Index/LoadRegistration?teamid=@teamid">
+<section class="services bg-primary partialContents" id="services" data-url="/Index/LoadRegistration">
     <img src="~/Themes/@path/Contents/img/loader.gif" />
     Loading . . 
 
