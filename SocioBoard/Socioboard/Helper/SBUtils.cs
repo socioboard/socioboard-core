@@ -576,7 +576,7 @@ namespace Socioboard.Helper
             return lstGroupName;
         }
 
-        public static Dictionary<string, List<object>> GetFbGroupDataAccordingGroupId(string groupid, string accesstoken)
+        public static Dictionary<string, List<object>> GetFbGroupDataAccordingGroupId(string groupid, string accesstoken, string profileid)
         {
             User objUser = (User)System.Web.HttpContext.Current.Session["User"];
             Dictionary<string, List<object>> dic_profilessnap = new Dictionary<string, List<object>>();
@@ -585,7 +585,7 @@ namespace Socioboard.Helper
             groupdata = new List<object>();
             Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
 
-            List<FacebookGroupData> lstFacebookAccount = (List<FacebookGroupData>)(new JavaScriptSerializer().Deserialize(ApiobjFacebook.GetAllFbGroupdata(groupid.ToString(), accesstoken.ToString()), typeof(List<FacebookGroupData>)));
+            List<FacebookGroupData> lstFacebookAccount = (List<FacebookGroupData>)(new JavaScriptSerializer().Deserialize(ApiobjFacebook.GetAllFbGroupdata(groupid.ToString(), accesstoken.ToString(), profileid), typeof(List<FacebookGroupData>)));
             foreach (var FacebookGroupData in lstFacebookAccount)
             {
                 groupdata.Add(FacebookGroupData);
@@ -1107,7 +1107,32 @@ namespace Socioboard.Helper
             }
             return TotalFollowerCount;
         }
-       
+       // vikash
+
+        //public static string GetAllFacebookFancountofUser(string profileid, string userid)
+        //{
+        //    int _totalCount = 0;
+        //    string TotalfanCount = string.Empty;
+        //    try
+        //    {
+        //        Api.FacebookAccount.FacebookAccount ApiobjFacebookAccount = new Api.FacebookAccount.FacebookAccount();
+        //        List<FacebookAccount> lstAllFacebookAccountDetails = (List<FacebookAccount>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookAccount.GetAllFacebookAccountDetails(profileid, userid), typeof(List<FacebookAccount>)));
+        //        foreach (FacebookAccount item in lstAllFacebookAccountDetails)
+        //        {
+        //            if (item.Type == "Page")
+        //            {
+        //                _totalCount += item.Friends;
+        //            }
+        //        }
+        //        TotalfanCount = _totalCount.ToString();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+        //    return TotalfanCount;
+        //}
+        // vikash [02/12/2014]
         public static string GetAllFacebookFancountofUser(string profileid, string userid)
         {
             int _totalCount = 0;
@@ -1118,12 +1143,27 @@ namespace Socioboard.Helper
                 List<FacebookAccount> lstAllFacebookAccountDetails = (List<FacebookAccount>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookAccount.GetAllFacebookAccountDetails(profileid, userid), typeof(List<FacebookAccount>)));
                 foreach (FacebookAccount item in lstAllFacebookAccountDetails)
                 {
-                    if (item.Type == "page")
+                    if (item.Type == "Page")
                     {
                         _totalCount += item.Friends;
                     }
                 }
-                TotalfanCount = _totalCount.ToString();
+                if (_totalCount > 1000000)
+                {
+                    int r = _totalCount % 1000000;
+                    int t = _totalCount / 1000000;
+                    TotalfanCount = t.ToString() + "." + (r / 10000).ToString() + "M";
+                }
+                else if (_totalCount > 1000)
+                {
+                    int r = _totalCount % 1000;
+                    int t = _totalCount / 1000;
+                    TotalfanCount = t.ToString() + "." + (r / 100).ToString() + "K";
+                }
+                else
+                {
+                    TotalfanCount = _totalCount.ToString();
+                }
             }
             catch (Exception ex)
             {
