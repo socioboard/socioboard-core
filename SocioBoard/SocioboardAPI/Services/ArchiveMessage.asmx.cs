@@ -55,6 +55,30 @@ namespace Api.Socioboard.Services
             bool status = objArchiveMessageRepository.checkArchiveMessageExists(Guid.Parse(userid), messageid);
             return status;
         }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public void DeleteArchiveMessage(string UserId, string ProfileId, string SocialGroup, string UserName, string MessageId, string Message, string CreatedDateTime, string ImgUrl)
+        {
+            Domain.Socioboard.Domain.ArchiveMessage ApiobjArchiveMessage = new Domain.Socioboard.Domain.ArchiveMessage();
+            try
+            {
+                if (SocialGroup == "facebook")
+                {
+                    FacebookMessageRepository objFacebookMessageRepository = new FacebookMessageRepository();
+                    objFacebookMessageRepository.DeleteFacebookMessagebymessageid(Message, MessageId, Guid.Parse(UserId));
+
+                }
+                if (SocialGroup == "twitter")
+                {
+                    TwitterMessageRepository objTwitterMessageRepository = new TwitterMessageRepository();
+                    objTwitterMessageRepository.DeleteTwitterMessagebymessageid(Message, MessageId, Guid.Parse(UserId));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace);
+            }
+        }
 
        
 

@@ -34,6 +34,23 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="DeleteArchiveMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SocialGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CreatedDateTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ImgUrl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteArchiveMessageResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="GetAllArchiveMessagesDetails">
         <s:complexType>
           <s:sequence>
@@ -65,6 +82,12 @@
   <wsdl:message name="CheckArchiveMessageExistsSoapOut">
     <wsdl:part name="parameters" element="tns:CheckArchiveMessageExistsResponse" />
   </wsdl:message>
+  <wsdl:message name="DeleteArchiveMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteArchiveMessage" />
+  </wsdl:message>
+  <wsdl:message name="DeleteArchiveMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteArchiveMessageResponse" />
+  </wsdl:message>
   <wsdl:message name="GetAllArchiveMessagesDetailsSoapIn">
     <wsdl:part name="parameters" element="tns:GetAllArchiveMessagesDetails" />
   </wsdl:message>
@@ -89,6 +112,17 @@
   <wsdl:message name="CheckArchiveMessageExistsHttpGetOut">
     <wsdl:part name="Body" element="tns:boolean" />
   </wsdl:message>
+  <wsdl:message name="DeleteArchiveMessageHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="SocialGroup" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+    <wsdl:part name="MessageId" type="s:string" />
+    <wsdl:part name="Message" type="s:string" />
+    <wsdl:part name="CreatedDateTime" type="s:string" />
+    <wsdl:part name="ImgUrl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteArchiveMessageHttpGetOut" />
   <wsdl:message name="GetAllArchiveMessagesDetailsHttpGetIn">
     <wsdl:part name="userid" type="s:string" />
     <wsdl:part name="profileid" type="s:string" />
@@ -114,6 +148,17 @@
   <wsdl:message name="CheckArchiveMessageExistsHttpPostOut">
     <wsdl:part name="Body" element="tns:boolean" />
   </wsdl:message>
+  <wsdl:message name="DeleteArchiveMessageHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="SocialGroup" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+    <wsdl:part name="MessageId" type="s:string" />
+    <wsdl:part name="Message" type="s:string" />
+    <wsdl:part name="CreatedDateTime" type="s:string" />
+    <wsdl:part name="ImgUrl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteArchiveMessageHttpPostOut" />
   <wsdl:message name="GetAllArchiveMessagesDetailsHttpPostIn">
     <wsdl:part name="userid" type="s:string" />
     <wsdl:part name="profileid" type="s:string" />
@@ -130,6 +175,10 @@
       <wsdl:input message="tns:CheckArchiveMessageExistsSoapIn" />
       <wsdl:output message="tns:CheckArchiveMessageExistsSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="DeleteArchiveMessage">
+      <wsdl:input message="tns:DeleteArchiveMessageSoapIn" />
+      <wsdl:output message="tns:DeleteArchiveMessageSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetAllArchiveMessagesDetails">
       <wsdl:input message="tns:GetAllArchiveMessagesDetailsSoapIn" />
       <wsdl:output message="tns:GetAllArchiveMessagesDetailsSoapOut" />
@@ -144,6 +193,10 @@
       <wsdl:input message="tns:CheckArchiveMessageExistsHttpGetIn" />
       <wsdl:output message="tns:CheckArchiveMessageExistsHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="DeleteArchiveMessage">
+      <wsdl:input message="tns:DeleteArchiveMessageHttpGetIn" />
+      <wsdl:output message="tns:DeleteArchiveMessageHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetAllArchiveMessagesDetails">
       <wsdl:input message="tns:GetAllArchiveMessagesDetailsHttpGetIn" />
       <wsdl:output message="tns:GetAllArchiveMessagesDetailsHttpGetOut" />
@@ -157,6 +210,10 @@
     <wsdl:operation name="CheckArchiveMessageExists">
       <wsdl:input message="tns:CheckArchiveMessageExistsHttpPostIn" />
       <wsdl:output message="tns:CheckArchiveMessageExistsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteArchiveMessage">
+      <wsdl:input message="tns:DeleteArchiveMessageHttpPostIn" />
+      <wsdl:output message="tns:DeleteArchiveMessageHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetAllArchiveMessagesDetails">
       <wsdl:input message="tns:GetAllArchiveMessagesDetailsHttpPostIn" />
@@ -176,6 +233,15 @@
     </wsdl:operation>
     <wsdl:operation name="CheckArchiveMessageExists">
       <soap:operation soapAction="http://tempuri.org/CheckArchiveMessageExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteArchiveMessage">
+      <soap:operation soapAction="http://tempuri.org/DeleteArchiveMessage" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -213,6 +279,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DeleteArchiveMessage">
+      <soap12:operation soapAction="http://tempuri.org/DeleteArchiveMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAllArchiveMessagesDetails">
       <soap12:operation soapAction="http://tempuri.org/GetAllArchiveMessagesDetails" style="document" />
       <wsdl:input>
@@ -241,6 +316,13 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DeleteArchiveMessage">
+      <http:operation location="/DeleteArchiveMessage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
     <wsdl:operation name="GetAllArchiveMessagesDetails">
       <http:operation location="/GetAllArchiveMessagesDetails" />
       <wsdl:input>
@@ -268,6 +350,13 @@
       <wsdl:output>
         <mime:mimeXml part="Body" />
       </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteArchiveMessage">
+      <http:operation location="/DeleteArchiveMessage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
     </wsdl:operation>
     <wsdl:operation name="GetAllArchiveMessagesDetails">
       <http:operation location="/GetAllArchiveMessagesDetails" />

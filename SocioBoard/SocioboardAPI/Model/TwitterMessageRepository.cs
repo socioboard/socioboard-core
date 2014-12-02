@@ -30,6 +30,39 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+
+
+        public int DeleteTwitterMessagebymessageid(string facemsg, string msgid, Guid userid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction. 
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        // Proceed action, to delete data 
+                        // And return integer value when it is success or failed (0 or 1).
+                        object query = session.CreateSQLQuery("delete from TwitterMessage where UserId = :userid and MessageId = :messageid and TwitterMessage = :message")
+                             .SetParameter("userid", userid)
+                             .SetParameter("messageid", msgid)
+                             .SetParameter("message", facemsg)
+                             .UniqueResult();
+                        //int isUpdated = query.ExecuteUpdate();
+                        transaction.Commit();
+                        return 1;
+                        //return isUpdated;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+                }// End using trasaction
+            }// End using session
+        }
+
         /// <deleteTwitterMessage>
         /// Delete Twitter Message
         /// </summary>

@@ -83,7 +83,29 @@
 
     }
 
-   
+    function LikeOnFBGroupPost(postid, accesstoken, isliked) {
+        debugger;
+        $.ajax({
+            type: 'POST',
+            url: "../Group/LikeOnFbGroupPost?GpPostid=" + postid + "&AcceessToken=" + accesstoken + "&Isliked=" + isliked,
+            success: function (msg) {
+                if (msg == "like") {
+                    alertify.success("Liked Successfully");
+                    $("#like_" + postid).children().removeClass().addClass("fa fa-thumbs-o-down");
+                    $("#like_" + postid).attr("onclick", "LikeOnFBGroupPost('" + postid + "','" + accesstoken + "','liked')");
+                }
+                else if (msg == "unlike") {
+                    alertify.success("Unliked Successfully");
+                    $("#like_" + postid).children().removeClass().addClass("fa fa-thumbs-o-up");
+                    $("#like_" + postid).attr("onclick", "LikeOnFBGroupPost('" + postid + "','" + accesstoken + "','')");
+                }
+                else {
+                    alertify.error(msg);
+                }
+            }
+
+        });
+    }
 
 
 

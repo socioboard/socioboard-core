@@ -9,6 +9,7 @@ using Socioboard.Helper;
 
 namespace Socioboard.Controllers
 {
+    [Authorize]
     public class PublishingController : Controller
     {
         //
@@ -16,6 +17,7 @@ namespace Socioboard.Controllers
 
         public ActionResult Index()
         {
+            @ViewBag.Message = Request.QueryString["Message"];
             if (Session["Paid_User"].ToString() == "Unpaid")
             {
                 return RedirectToAction("Billing", "PersonalSetting");

@@ -11,6 +11,7 @@ using log4net;
 
 namespace Socioboard.Controllers
 {
+    [Authorize]
     public class ReportController : Controller
     {
         ILog logger = LogManager.GetLogger(typeof(ReportController));

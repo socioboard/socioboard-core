@@ -80,9 +80,6 @@
     <Setting Name="Socioboard_Api_InstagramComment_InstagramComment" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/Services/InstagramComment.asmx</Value>
     </Setting>
-    <Setting Name="Socioboard_Api_ArchiveMessage_ArchiveMessage" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:6361/Services/ArchiveMessage.asmx</Value>
-    </Setting>
     <Setting Name="Socioboard_Api_FbPageLiker_FbPageLiker" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/Services/FbPageLiker.asmx</Value>
     </Setting>
@@ -131,11 +128,14 @@
     <Setting Name="Socioboard_Api_PaymentTransaction_PaymentTransaction" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/Services/PaymentTransaction.asmx</Value>
     </Setting>
-    <Setting Name="Socioboard_Api_Facebook_Facebook" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:6361/Services/Facebook.asmx</Value>
-    </Setting>
     <Setting Name="Socioboard_Api_User_User" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/Services/User.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_ArchiveMessage_ArchiveMessage" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/ArchiveMessage.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_Facebook_Facebook" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/Facebook.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -285,16 +285,6 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/ArchiveMessage.asmx")]
-        public string Socioboard_Api_ArchiveMessage_ArchiveMessage {
-            get {
-                return ((string)(this["Socioboard_Api_ArchiveMessage_ArchiveMessage"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/FbPageLiker.asmx")]
         public string Socioboard_Api_FbPageLiker_FbPageLiker {
             get {
@@ -455,20 +445,30 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Facebook.asmx")]
-        public string Socioboard_Api_Facebook_Facebook {
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/User.asmx")]
+        public string Socioboard_Api_User_User {
             get {
-                return ((string)(this["Socioboard_Api_Facebook_Facebook"]));
+                return ((string)(this["Socioboard_Api_User_User"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/User.asmx")]
-        public string Socioboard_Api_User_User {
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/ArchiveMessage.asmx")]
+        public string Socioboard_Api_ArchiveMessage_ArchiveMessage {
             get {
-                return ((string)(this["Socioboard_Api_User_User"]));
+                return ((string)(this["Socioboard_Api_ArchiveMessage_ArchiveMessage"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Facebook.asmx")]
+        public string Socioboard_Api_Facebook_Facebook {
+            get {
+                return ((string)(this["Socioboard_Api_Facebook_Facebook"]));
             }
         }
     }

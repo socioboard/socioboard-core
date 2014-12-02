@@ -161,22 +161,23 @@ namespace Socioboard.Api.User {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Pass Username", RequestElementName="Pass Username", RequestNamespace="http://tempuri.org/", ResponseElementName="Pass UsernameResponse", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("Pass UsernameResult")]
-        public string Register(string EmailId, string Password, string AccountType, string Username) {
+        public string Register(string EmailId, string Password, string AccountType, string Username, string ActivationStatus) {
             object[] results = this.Invoke("Register", new object[] {
                         EmailId,
                         Password,
                         AccountType,
-                        Username});
+                        Username,
+                        ActivationStatus});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void RegisterAsync(string EmailId, string Password, string AccountType, string Username) {
-            this.RegisterAsync(EmailId, Password, AccountType, Username, null);
+        public void RegisterAsync(string EmailId, string Password, string AccountType, string Username, string ActivationStatus) {
+            this.RegisterAsync(EmailId, Password, AccountType, Username, ActivationStatus, null);
         }
         
         /// <remarks/>
-        public void RegisterAsync(string EmailId, string Password, string AccountType, string Username, object userState) {
+        public void RegisterAsync(string EmailId, string Password, string AccountType, string Username, string ActivationStatus, object userState) {
             if ((this.RegisterOperationCompleted == null)) {
                 this.RegisterOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRegisterOperationCompleted);
             }
@@ -184,7 +185,8 @@ namespace Socioboard.Api.User {
                         EmailId,
                         Password,
                         AccountType,
-                        Username}, this.RegisterOperationCompleted, userState);
+                        Username,
+                        ActivationStatus}, this.RegisterOperationCompleted, userState);
         }
         
         private void OnRegisterOperationCompleted(object arg) {

@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Socioboard.Controllers
 {
+    [Authorize]
     public class GroupController : Controller
     {
         //
@@ -31,9 +32,9 @@ namespace Socioboard.Controllers
         }
         
         [HttpPost]
-        public ActionResult GroupPosts(string grpId, string accToken)
+        public ActionResult GroupPosts(string grpId, string accToken, string ProfileId)
         {
-            return PartialView("_GroupInfo", Helper.SBUtils.GetFbGroupDataAccordingGroupId(grpId, accToken));
+            return PartialView("_GroupInfo", Helper.SBUtils.GetFbGroupDataAccordingGroupId(grpId, accToken, ProfileId));
         }
         
         [HttpPost]
@@ -145,7 +146,12 @@ namespace Socioboard.Controllers
             }
             return Content("success");
         }
-
+        public ActionResult LikeOnFbGroupPost(string GpPostid, string AcceessToken, string Isliked)
+        {
+            Api.Facebook.Facebook _Facebook = new Api.Facebook.Facebook();
+            string ret = _Facebook.LikeFBGroupPost(GpPostid, AcceessToken, Isliked);
+            return Content(ret);
+        }
 
     }
 }

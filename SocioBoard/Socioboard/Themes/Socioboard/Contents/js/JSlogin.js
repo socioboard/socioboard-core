@@ -324,13 +324,15 @@ function register() {
                                                                         url: "../Index/Signup",
                                                                         data: totaldata,
                                                                         contentType: "application/json; charset=utf-8",
-                                                                        success: function (msg) {
+                                                                        success: function (msg_Signup) {
                                                                             debugger;
-                                                                            if (msg == "Email Already Exists") {
+                                                                            if (msg_Signup == "Email Already Exists") {
                                                                                 alertify.set({ delay: 5000 });
                                                                                 alertify.error("Email Already Exists")
                                                                                 return;
                                                                             }
+
+                                                                           
 
                                                                             $.ajax({
                                                                                 type: "GET",
@@ -339,7 +341,12 @@ function register() {
                                                                                 success: function (msg) {
                                                                                     if (msg == "Success") {
                                                                                         alertify.success('Mail has been send Successfully!!');
-                                                                                        alert('Please check your mail to activate your Account.');
+                                                                                        if (msg_Signup.indexOf("Facebook Registration") > 0 && msg_Signup != null) {
+                                                                                            //Dont alert to activate account
+                                                                                        }
+                                                                                        else {
+                                                                                            alert('Please check your mail to activate your Account.');
+                                                                                        }
                                                                                         $('#txtrEmail').val('');
                                                                                         $('#txtrPassword').val('');
                                                                                         $('#txtrFirstName').val('');

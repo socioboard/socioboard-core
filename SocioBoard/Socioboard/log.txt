@@ -266,3 +266,165 @@ ERROR2014-11-27 03:54:58 Class:Socioboard.Controllers.FacebookManagerController 
 ERROR2014-11-27 03:54:58 Class:Socioboard.Controllers.FacebookManagerController Method:AuthenticateFacebook Line #: 157  – 1000
 ERROR2014-11-27 05:51:48 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
 ERROR2014-11-27 05:57:23 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-28 04:38:36 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-28 04:38:36 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-28 07:08:30 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-28 07:13:38 Class:Socioboard.Helper.clsFeedsAndMessages Method:bindMessagesIntoDataTable Line #: 99  – Exception Message : Invalid JSON primitive: Something.
+ERROR2014-11-28 07:13:38 Class:Socioboard.Helper.clsFeedsAndMessages Method:bindMessagesIntoDataTable Line #: 100  – Exception Message :    at System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   at System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   at System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(String input, Type targetType)
+   at Socioboard.Helper.clsFeedsAndMessages.bindMessagesIntoDataTable(Guid id) in d:\SURAJ RAI\sb 2.0\trunk\Socioboard\Helper\clsFeedsAndMessages.cs:line 60
+ERROR2014-11-28 07:13:40 Class:Socioboard.Helper.clsFeedsAndMessages Method:bindMessagesIntoDataTable Line #: 99  – Exception Message : Invalid JSON primitive: Something.
+ERROR2014-11-28 07:13:40 Class:Socioboard.Helper.clsFeedsAndMessages Method:bindMessagesIntoDataTable Line #: 100  – Exception Message :    at System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   at System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   at System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(String input, Type targetType)
+   at Socioboard.Helper.clsFeedsAndMessages.bindMessagesIntoDataTable(Guid id) in d:\SURAJ RAI\sb 2.0\trunk\Socioboard\Helper\clsFeedsAndMessages.cs:line 60
+ERROR2014-11-28 07:14:11 Class:Socioboard.Helper.clsFeedsAndMessages Method:bindMessagesIntoDataTable Line #: 99  – Exception Message : Invalid JSON primitive: Something.
+ERROR2014-11-28 07:14:11 Class:Socioboard.Helper.clsFeedsAndMessages Method:bindMessagesIntoDataTable Line #: 100  – Exception Message :    at System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   at System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   at System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(String input, Type targetType)
+   at Socioboard.Helper.clsFeedsAndMessages.bindMessagesIntoDataTable(Guid id) in d:\SURAJ RAI\sb 2.0\trunk\Socioboard\Helper\clsFeedsAndMessages.cs:line 60
+ERROR2014-11-28 07:14:13 Class:Socioboard.Helper.clsFeedsAndMessages Method:bindMessagesIntoDataTable Line #: 99  – Exception Message : Invalid JSON primitive: Something.
+ERROR2014-11-28 07:14:13 Class:Socioboard.Helper.clsFeedsAndMessages Method:bindMessagesIntoDataTable Line #: 100  – Exception Message :    at System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   at System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   at System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(String input, Type targetType)
+   at Socioboard.Helper.clsFeedsAndMessages.bindMessagesIntoDataTable(Guid id) in d:\SURAJ RAI\sb 2.0\trunk\Socioboard\Helper\clsFeedsAndMessages.cs:line 60
+ERROR2014-11-28 07:18:31 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-28 07:22:59 Class:Socioboard.Helper.clsFeedsAndMessages Method:bindMessagesIntoDataTable Line #: 99  – Exception Message : Invalid JSON primitive: Something.
+ERROR2014-11-28 07:22:59 Class:Socioboard.Helper.clsFeedsAndMessages Method:bindMessagesIntoDataTable Line #: 100  – Exception Message :    at System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   at System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   at System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(String input, Type targetType)
+   at Socioboard.Helper.clsFeedsAndMessages.bindMessagesIntoDataTable(Guid id) in d:\SURAJ RAI\sb 2.0\trunk\Socioboard\Helper\clsFeedsAndMessages.cs:line 60
+ERROR2014-11-28 07:23:01 Class:Socioboard.Helper.clsFeedsAndMessages Method:bindMessagesIntoDataTable Line #: 99  – Exception Message : Invalid JSON primitive: Something.
+ERROR2014-11-28 07:23:01 Class:Socioboard.Helper.clsFeedsAndMessages Method:bindMessagesIntoDataTable Line #: 100  – Exception Message :    at System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   at System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   at System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(String input, Type targetType)
+   at Socioboard.Helper.clsFeedsAndMessages.bindMessagesIntoDataTable(Guid id) in d:\SURAJ RAI\sb 2.0\trunk\Socioboard\Helper\clsFeedsAndMessages.cs:line 60
+ERROR2014-11-28 07:23:37 Class:Socioboard.Helper.clsFeedsAndMessages Method:bindMessagesIntoDataTable Line #: 99  – Exception Message : Invalid JSON primitive: Something.
+ERROR2014-11-28 07:23:37 Class:Socioboard.Helper.clsFeedsAndMessages Method:bindMessagesIntoDataTable Line #: 100  – Exception Message :    at System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   at System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   at System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(String input, Type targetType)
+   at Socioboard.Helper.clsFeedsAndMessages.bindMessagesIntoDataTable(Guid id) in d:\SURAJ RAI\sb 2.0\trunk\Socioboard\Helper\clsFeedsAndMessages.cs:line 60
+ERROR2014-11-28 07:23:39 Class:Socioboard.Helper.clsFeedsAndMessages Method:bindMessagesIntoDataTable Line #: 99  – Exception Message : Invalid JSON primitive: Something.
+ERROR2014-11-28 07:23:39 Class:Socioboard.Helper.clsFeedsAndMessages Method:bindMessagesIntoDataTable Line #: 100  – Exception Message :    at System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializePrimitiveObject()
+   at System.Web.Script.Serialization.JavaScriptObjectDeserializer.DeserializeInternal(Int32 depth)
+   at System.Web.Script.Serialization.JavaScriptObjectDeserializer.BasicDeserialize(String input, Int32 depthLimit, JavaScriptSerializer serializer)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(JavaScriptSerializer serializer, String input, Type type, Int32 depthLimit)
+   at System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(String input, Type targetType)
+   at Socioboard.Helper.clsFeedsAndMessages.bindMessagesIntoDataTable(Guid id) in d:\SURAJ RAI\sb 2.0\trunk\Socioboard\Helper\clsFeedsAndMessages.cs:line 60
+ERROR2014-11-29 10:55:50 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 10:59:51 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 11:01:19 Class:Socioboard.Controllers.IndexController Method:Signup Line #: 187  – Abhay
+ERROR2014-11-29 11:01:21 Class:Socioboard.Controllers.IndexController Method:Signup Line #: 221  – res_Registration: Something Went Wrong
+ERROR2014-11-29 11:03:58 Class:Socioboard.Controllers.IndexController Method:Signup Line #: 187  – Abhay
+ERROR2014-11-29 11:03:59 Class:Socioboard.Controllers.IndexController Method:Signup Line #: 221  – res_Registration: {"Id":"044cd15a-e968-4eab-881c-71b40122af7d","UserName":"Aby Kumar","AccountType":"SocioBasic","ProfileUrl":"","EmailId":"abhaymondal@globussoft.com","CreateDate":"\/Date(1417239238484)\/","ExpiryDate":"\/Date(1419831238485)\/","UserStatus":1,"Password":"bfd59291e825b5f2bbf1eb76569f8fe7","TimeZone":"","PaymentStatus":"unpaid","ActivationStatus":"0","CouponCode":null,"ReferenceStatus":null,"RefereeStatus":null,"UserType":null}
+ERROR2014-11-29 11:11:36 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 11:14:33 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 11:16:08 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 11:16:12 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 11:20:02 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 11:26:04 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 11:30:10 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 11:34:10 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 11:35:23 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 11:36:45 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 11:37:20 Class:Socioboard.Controllers.FacebookManagerController Method:AuthenticateFacebook Line #: 178  – 6293d53b-5a96-49e1-8301-bf19f4c7a570
+ERROR2014-11-29 11:37:20 Class:Socioboard.Controllers.FacebookManagerController Method:AuthenticateFacebook Line #: 179  – 6293d53b-5a96-49e1-8301-bf19f4c7a570
+ERROR2014-11-29 11:37:20 Class:Socioboard.Controllers.FacebookManagerController Method:AuthenticateFacebook Line #: 181  – 0
+ERROR2014-11-29 11:37:20 Class:Socioboard.Controllers.FacebookManagerController Method:AuthenticateFacebook Line #: 182  – 5
+ERROR2014-11-29 11:37:44 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 50  – Abhay twittermanager
+ERROR2014-11-29 11:37:44 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 60  – GetGroupDetailsByGroupId before
+ERROR2014-11-29 11:37:44 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 62  – GetGroupDetailsByGroupId after
+ERROR2014-11-29 11:37:44 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 71  – 1
+ERROR2014-11-29 11:37:44 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 72  – 5
+ERROR2014-11-29 11:37:53 Class:Socioboard.Controllers.TwitterManagerController Method:Twitter Line #: 39  –    at Socioboard.Controllers.TwitterManagerController.Twitter() in d:\SURAJ RAI\sb 2.0\trunk\Socioboard\Controllers\TwitterManagerController.cs:line 34
+ERROR2014-11-29 11:37:53 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 11:38:23 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 50  – Abhay twittermanager
+ERROR2014-11-29 11:38:23 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 60  – GetGroupDetailsByGroupId before
+ERROR2014-11-29 11:38:23 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 62  – GetGroupDetailsByGroupId after
+ERROR2014-11-29 11:38:23 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 71  – 1
+ERROR2014-11-29 11:38:23 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 72  – 5
+ERROR2014-11-29 11:38:26 Class:Socioboard.Controllers.TwitterManagerController Method:Twitter Line #: 39  –    at Socioboard.Controllers.TwitterManagerController.Twitter() in d:\SURAJ RAI\sb 2.0\trunk\Socioboard\Controllers\TwitterManagerController.cs:line 34
+ERROR2014-11-29 11:38:26 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 11:38:48 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 11:39:36 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 11:49:47 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 01:03:39 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 01:07:11 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 01:07:54 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 01:41:12 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 01:42:18 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 01:43:41 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 05:06:07 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-11-29 05:08:08 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-12-01 11:52:21 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-12-01 11:54:15 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-12-01 11:54:47 Class:Socioboard.Controllers.FacebookManagerController Method:AuthenticateFacebook Line #: 178  – 9896b496-9827-4d30-a441-804566fe1001
+ERROR2014-12-01 11:54:47 Class:Socioboard.Controllers.FacebookManagerController Method:AuthenticateFacebook Line #: 179  – 9896b496-9827-4d30-a441-804566fe1001
+ERROR2014-12-01 11:54:47 Class:Socioboard.Controllers.FacebookManagerController Method:AuthenticateFacebook Line #: 181  – 0
+ERROR2014-12-01 11:54:47 Class:Socioboard.Controllers.FacebookManagerController Method:AuthenticateFacebook Line #: 182  – 100
+ERROR2014-12-01 11:55:13 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 50  – Abhay twittermanager
+ERROR2014-12-01 11:55:14 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 60  – GetGroupDetailsByGroupId before
+ERROR2014-12-01 11:55:14 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 62  – GetGroupDetailsByGroupId after
+ERROR2014-12-01 11:55:14 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 71  – 1
+ERROR2014-12-01 11:55:14 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 72  – 100
+ERROR2014-12-01 11:55:29 Class:Socioboard.Controllers.TwitterManagerController Method:Twitter Line #: 39  –    at Socioboard.Controllers.TwitterManagerController.Twitter() in d:\SURAJ RAI\sb 2.0\trunk\Socioboard\Controllers\TwitterManagerController.cs:line 34
+ERROR2014-12-01 11:55:29 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-12-01 11:56:01 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 50  – Abhay twittermanager
+ERROR2014-12-01 11:56:01 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 60  – GetGroupDetailsByGroupId before
+ERROR2014-12-01 11:56:01 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 62  – GetGroupDetailsByGroupId after
+ERROR2014-12-01 11:56:01 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 71  – 1
+ERROR2014-12-01 11:56:01 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 72  – 100
+ERROR2014-12-01 12:51:23 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-12-02 11:07:23 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-12-02 11:08:46 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-12-02 11:26:36 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-12-02 11:29:56 Class:Socioboard.Controllers.FacebookManagerController Method:Addfacebookpagebyurl Line #: 306  – Enter in try Addfacebookpagebyurl
+ERROR2014-12-02 11:29:56 Class:Socioboard.Controllers.FacebookManagerController Method:Addfacebookpagebyurl Line #: 310  – Enter in try Addfacebookpagebyurl 1
+ERROR2014-12-02 11:29:57 Class:Socioboard.Controllers.FacebookManagerController Method:Addfacebookpagebyurl Line #: 327  – data = fb.Get
+ERROR2014-12-02 11:29:57 Class:Socioboard.Controllers.FacebookManagerController Method:Addfacebookpagebyurl Line #: 328  – 163364503715353
+ERROR2014-12-02 11:29:57 Class:Socioboard.Controllers.FacebookManagerController Method:Addfacebookpagebyurl Line #: 335  – Inside apiobjFacebook.AddFacebookPagesByUrl
+ERROR2014-12-02 11:37:42 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 50  – Abhay twittermanager
+ERROR2014-12-02 11:37:42 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 60  – GetGroupDetailsByGroupId before
+ERROR2014-12-02 11:37:42 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 62  – GetGroupDetailsByGroupId after
+ERROR2014-12-02 11:37:42 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 71  – 8
+ERROR2014-12-02 11:37:42 Class:Socioboard.Controllers.TwitterManagerController Method:AuthenticateTwitter Line #: 72  – 1000
+ERROR2014-12-02 12:38:47 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-12-02 12:54:23 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-12-02 12:59:14 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-12-02 12:59:44 Class:Socioboard.Controllers.IndexController Method:Signup Line #: 187  – Abhay
+ERROR2014-12-02 12:59:45 Class:Socioboard.Controllers.IndexController Method:Signup Line #: 231  – res_Registration: {"Id":"2acc813c-d0cc-4c2f-bfc4-0ad96a3c8b3e","UserName":"Sradha Goyal","EmailId":"levelrecess965@hotmail.com","ProfileUrl":"","AccountType":"SocioBasic","CreateDate":"\/Date(1417505384363)\/","ExpiryDate":"\/Date(1420183784363)\/","UserStatus":1,"Password":"bfd59291e825b5f2bbf1eb76569f8fe7","TimeZone":"","PaymentStatus":"unpaid","ActivationStatus":"0","CouponCode":null,"ReferenceStatus":null,"RefereeStatus":null,"UserType":null}
+ERROR2014-12-02 01:04:15 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-12-02 01:05:19 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-12-02 01:33:10 Class:Socioboard.Controllers.IndexController Method:Signup Line #: 187  – Abhay
+ERROR2014-12-02 01:33:12 Class:Socioboard.Controllers.IndexController Method:Signup Line #: 231  – res_Registration: {"Id":"8b27072b-a883-4580-afbb-5af731edc707","UserName":"Ira Grant","EmailId":"ira_grant4502@hotmail.com","ProfileUrl":"","AccountType":"SocioBasic","CreateDate":"\/Date(1417507390763)\/","ExpiryDate":"\/Date(1420185790763)\/","UserStatus":1,"Password":"bfd59291e825b5f2bbf1eb76569f8fe7","TimeZone":"","PaymentStatus":"unpaid","ActivationStatus":null,"CouponCode":null,"ReferenceStatus":null,"RefereeStatus":null,"UserType":null}
+ERROR2014-12-02 01:33:50 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-12-02 01:37:05 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-12-02 01:37:44 Class:Socioboard.Controllers.IndexController Method:Signup Line #: 187  – Abhay
+ERROR2014-12-02 01:37:45 Class:Socioboard.Controllers.IndexController Method:Signup Line #: 231  – res_Registration: {"Id":"1842c9d9-e2ce-4c85-a92d-384931143d8b","UserName":"Ira Grant","EmailId":"ira_grant4502@hotmail.com","ProfileUrl":"","AccountType":"SocioBasic","CreateDate":"\/Date(1417507664613)\/","ExpiryDate":"\/Date(1420186064613)\/","UserStatus":1,"Password":"bfd59291e825b5f2bbf1eb76569f8fe7","TimeZone":"","PaymentStatus":"unpaid","ActivationStatus":null,"CouponCode":null,"ReferenceStatus":null,"RefereeStatus":null,"UserType":null}
+ERROR2014-12-02 01:41:33 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-12-02 01:42:04 Class:Socioboard.Controllers.IndexController Method:Signup Line #: 187  – Abhay
+ERROR2014-12-02 01:43:02 Class:Socioboard.Controllers.IndexController Method:Signup Line #: 231  – res_Registration: {"Id":"b02768c1-2513-4175-a35f-9a565a9b69de","UserName":"Ira Grant","AccountType":"SocioBasic","ProfileUrl":"","EmailId":"ira_grant4502@hotmail.com","CreateDate":"\/Date(1417507965935)\/","ExpiryDate":"\/Date(1420186367110)\/","UserStatus":1,"Password":"bfd59291e825b5f2bbf1eb76569f8fe7","TimeZone":"","PaymentStatus":"unpaid","ActivationStatus":"1","CouponCode":null,"ReferenceStatus":null,"RefereeStatus":null,"UserType":null}
+ERROR2014-12-02 01:52:36 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-12-02 01:52:42 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-12-02 01:53:31 Class:Socioboard.Controllers.IndexController Method:Signup Line #: 187  – Abhay
+ERROR2014-12-02 01:53:32 Class:Socioboard.Controllers.IndexController Method:Signup Line #: 231  – res_Registration: {"Id":"32e9058d-538e-4c15-b169-10b0bb114ce2","UserName":"Ira Grant","AccountType":"SocioBasic","ProfileUrl":"","EmailId":"ira_grant4502@hotmail.com","CreateDate":"\/Date(1417508611435)\/","ExpiryDate":"\/Date(1420187011435)\/","UserStatus":1,"Password":"bfd59291e825b5f2bbf1eb76569f8fe7","TimeZone":"","PaymentStatus":"unpaid","ActivationStatus":"1","CouponCode":null,"ReferenceStatus":null,"RefereeStatus":null,"UserType":null}
+ERROR2014-12-02 01:53:52 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-12-02 01:54:15 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay
+ERROR2014-12-02 02:00:00 Class:Socioboard.Controllers.IndexController Method:Signup Line #: 187  – Abhay
+ERROR2014-12-02 02:00:01 Class:Socioboard.Controllers.IndexController Method:Signup Line #: 231  – res_Registration: {"Id":"ed19fde2-2394-4774-9b83-9c2cafdffb14","UserName":"Richard BAmin","EmailId":"deefox41796b@hotmail.com","ProfileUrl":"","AccountType":"SocioBasic","CreateDate":"\/Date(1417509000704)\/","ExpiryDate":"\/Date(1420187400704)\/","UserStatus":1,"Password":"bfd59291e825b5f2bbf1eb76569f8fe7","TimeZone":"","PaymentStatus":"unpaid","ActivationStatus":"1","CouponCode":null,"ReferenceStatus":null,"RefereeStatus":null,"UserType":null}
+ERROR2014-12-02 02:01:08 Class:Socioboard.Controllers.IndexController Method:Index Line #: 29  – Abhay

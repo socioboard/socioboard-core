@@ -2249,11 +2249,6 @@
     <Content Include="Themes\Socioboard\Views\UserGroup\_ViewStart.cshtml" />
     <Content Include="Themes\Socioboard\Views\Messages\Archive.cshtml" />
     <Content Include="Themes\Socioboard\Views\Messages\_ArchivePartial.cshtml" />
-    <Content Include="Web References\Api.ArchiveMessage\ArchiveMessage.wsdl" />
-    <Content Include="Web References\Api.ArchiveMessage\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
     <Content Include="Themes\Socioboard\Views\Messages\_SmartInboxPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\DropboxManager\_DropBoxImagePartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Report\_GroupStatPartial.cshtml" />
@@ -2279,6 +2274,17 @@
     <Content Include="Themes\Socioboard\Views\MultilanguageSetting\Company.cshtml" />
     <Content Include="Themes\Socioboard\Views\PersonalSetting\Billing.cshtml" />
     <Content Include="Themes\Socioboard\Views\PersonalSetting\_BillingPartial.cshtml" />
+    <Content Include="Web References\Api.ArchiveMessage\ArchiveMessage.wsdl" />
+    <Content Include="Web References\Api.ArchiveMessage\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Themes\Socioboard\Views\Messages\_MailMsgBodyPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Messages\_MailMsgSendingPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Home\training.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Themes\Socioboard\Views\Home\pagenotfound.cshtml" />
     <None Include="Web References\Api.BusinessSetting\BusinessSetting.disco" />
     <Content Include="Themes\Socioboard\Views\Feeds\_FeedRightPartial.cshtml">
       <SubType>Code</SubType>
@@ -2336,6 +2342,7 @@
     <Content Include="Themes\Socioboard\Views\Versions\Enterprise.cshtml" />
     <Content Include="Themes\Socioboard\Views\Publishing\_DraftPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Index\_RegistrationPartial.cshtml" />
+    <Content Include="Web References\Api.ArchiveMessage\ArchiveMessage.disco" />
     <Content Include="Web References\Api.DiscoverySearch\DiscoverySearch.wsdl" />
     <Content Include="Web References\Api.DiscoverySearch\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -2349,9 +2356,6 @@
     <None Include="Web References\Api.Drafts\Drafts.disco">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Web References\Api.ArchiveMessage\ArchiveMessage.disco">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Web References\Api.DiscoverySearch\DiscoverySearch.disco">
       <SubType>Designer</SubType>
     </Content>
@@ -2366,10 +2370,8 @@
     <Content Include="Web References\Api.FacebookFeed\FacebookFeed.disco">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Web References\Api.FacebookMessage\FacebookMessage.disco" />
-    <None Include="Web References\Api.Facebook\Facebook.disco">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="Web References\Api.FacebookMessage\FacebookMessage.disco" />
+    <None Include="Web References\Api.Facebook\Facebook.disco" />
     <Content Include="Web References\Api.FbPageComment\FbPageComment.disco" />
     <Content Include="Web References\Api.FbPageLiker\FbPageLiker.disco" />
     <Content Include="Web References\Api.DropboxAccount\DropboxAccount.wsdl" />
@@ -2390,11 +2392,11 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
-    <Content Include="Web References\Api.FacebookMessage\FacebookMessage.wsdl" />
-    <Content Include="Web References\Api.FacebookMessage\Reference.map">
+    <None Include="Web References\Api.FacebookMessage\FacebookMessage.wsdl" />
+    <None Include="Web References\Api.FacebookMessage\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <None Include="Web References\Api.Facebook\Facebook.wsdl" />
     <None Include="Web References\Api.Facebook\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -2482,11 +2484,11 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
     <Content Include="Web References\Api.PaymentTransaction\PaymentTransaction.disco" />
-    <Content Include="Web References\Api.ScheduledMessage\Reference.map">
+    <None Include="Web References\Api.ScheduledMessage\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
-    <Content Include="Web References\Api.ScheduledMessage\ScheduledMessage.wsdl" />
+    </None>
+    <None Include="Web References\Api.ScheduledMessage\ScheduledMessage.wsdl" />
     <Content Include="Web References\Api.PaymentTransaction\PaymentTransaction.wsdl" />
     <Content Include="Web References\Api.PaymentTransaction\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -2498,7 +2500,7 @@
     </None>
     <None Include="Web References\Api.SocialProfile\SocialProfile.wsdl" />
     <Content Include="Web References\Api.MailSender\MailSender.disco" />
-    <Content Include="Web References\Api.ScheduledMessage\ScheduledMessage.disco" />
+    <None Include="Web References\Api.ScheduledMessage\ScheduledMessage.disco" />
     <Content Include="Web References\Api.TaskComment\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -2577,18 +2579,18 @@
     <None Include="Web References\Api.Twitter\Twitter.disco" />
     <None Include="Web References\Api.Tumblr\Tumblr.disco" />
     <None Include="Web References\Api.TumblrAccount\TumblrAccount.disco" />
-    <Content Include="Web References\Api.User\Reference.map">
+    <None Include="Web References\Api.User\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
-    <Content Include="Web References\Api.User\User.wsdl" />
+    </None>
+    <None Include="Web References\Api.User\User.wsdl" />
     <None Include="Web References\Api.YoutubeAccount\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\Api.YoutubeAccount\YoutubeAccount.disco" />
     <Content Include="Web References\Api.TwitterStats\TwitterStats.disco" />
-    <Content Include="Web References\Api.User\User.disco" />
+    <None Include="Web References\Api.User\User.disco" />
     <Content Include="Web References\Api.YoutubeChannel\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -2638,17 +2640,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/Facebook.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Facebook\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/Facebook.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_Facebook_Facebook</CachedSettingsPropName>
-    </WebReferenceUrl>
     <WebReferenceUrl Include="http://api.socioboard.com/services/FacebookAccount.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.FacebookAccount\</RelPath>
@@ -2791,6 +2782,17 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_DropboxAccount_DropboxAccount</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/Services/Facebook.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Facebook\</RelPath>
+      <UpdateFromURL>http://localhost:6361/Services/Facebook.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_Facebook_Facebook</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost:6361/Services/FacebookFeed.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>

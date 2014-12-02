@@ -33,6 +33,8 @@ namespace Socioboard.Api.ArchiveMessage {
         
         private System.Threading.SendOrPostCallback CheckArchiveMessageExistsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback DeleteArchiveMessageOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetAllArchiveMessagesDetailsOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
@@ -78,6 +80,9 @@ namespace Socioboard.Api.ArchiveMessage {
         
         /// <remarks/>
         public event CheckArchiveMessageExistsCompletedEventHandler CheckArchiveMessageExistsCompleted;
+        
+        /// <remarks/>
+        public event DeleteArchiveMessageCompletedEventHandler DeleteArchiveMessageCompleted;
         
         /// <remarks/>
         public event GetAllArchiveMessagesDetailsCompletedEventHandler GetAllArchiveMessagesDetailsCompleted;
@@ -152,6 +157,48 @@ namespace Socioboard.Api.ArchiveMessage {
             if ((this.CheckArchiveMessageExistsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.CheckArchiveMessageExistsCompleted(this, new CheckArchiveMessageExistsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DeleteArchiveMessage", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void DeleteArchiveMessage(string UserId, string ProfileId, string SocialGroup, string UserName, string MessageId, string Message, string CreatedDateTime, string ImgUrl) {
+            this.Invoke("DeleteArchiveMessage", new object[] {
+                        UserId,
+                        ProfileId,
+                        SocialGroup,
+                        UserName,
+                        MessageId,
+                        Message,
+                        CreatedDateTime,
+                        ImgUrl});
+        }
+        
+        /// <remarks/>
+        public void DeleteArchiveMessageAsync(string UserId, string ProfileId, string SocialGroup, string UserName, string MessageId, string Message, string CreatedDateTime, string ImgUrl) {
+            this.DeleteArchiveMessageAsync(UserId, ProfileId, SocialGroup, UserName, MessageId, Message, CreatedDateTime, ImgUrl, null);
+        }
+        
+        /// <remarks/>
+        public void DeleteArchiveMessageAsync(string UserId, string ProfileId, string SocialGroup, string UserName, string MessageId, string Message, string CreatedDateTime, string ImgUrl, object userState) {
+            if ((this.DeleteArchiveMessageOperationCompleted == null)) {
+                this.DeleteArchiveMessageOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteArchiveMessageOperationCompleted);
+            }
+            this.InvokeAsync("DeleteArchiveMessage", new object[] {
+                        UserId,
+                        ProfileId,
+                        SocialGroup,
+                        UserName,
+                        MessageId,
+                        Message,
+                        CreatedDateTime,
+                        ImgUrl}, this.DeleteArchiveMessageOperationCompleted, userState);
+        }
+        
+        private void OnDeleteArchiveMessageOperationCompleted(object arg) {
+            if ((this.DeleteArchiveMessageCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DeleteArchiveMessageCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -234,6 +281,10 @@ namespace Socioboard.Api.ArchiveMessage {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void DeleteArchiveMessageCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]

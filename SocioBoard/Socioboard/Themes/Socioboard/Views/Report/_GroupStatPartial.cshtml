@@ -229,8 +229,8 @@
                             <div class="col-md-6">
                             <ul class="list-group">
                                   <li class="list-group-item">
-                                      i= @(_GroupStatDetails.Retweet+_GroupStatDetails.Mention)
-                                    <span class="badge">@i</span>
+                                      @*i= @(_GroupStatDetails.Retweet+_GroupStatDetails.Mention)*@
+                                    <span class="badge">@(_GroupStatDetails.Retweet+_GroupStatDetails.Mention)</span>
                                     INTERACTIONS
                                   </li>
                                   <li class="list-group-item">

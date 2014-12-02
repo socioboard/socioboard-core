@@ -800,6 +800,34 @@ function saveCommentReply(network, messageid, ProfileId) {
     }
 
 }
+//function SaveArchive(id, network, ProfileId, MessageId, MessageDate) {
+//    debugger;
+//    var profileurl = $("#formprofileurl_" + id).attr('src');
+//    var message = $("#msg_" + id).html();
+//    var username = $("#screanName_" + id).html();
+
+//    $.ajax
+//           ({
+//               type: "POST",
+//               url: "../Messages/SaveArchiveMessage?ProfileId=" + ProfileId + "&MessageId=" + MessageId + "&network=" + network + "&username=" + username + "&MessageDate=" + MessageDate + "&profileurl=" + profileurl + "&message=" + encodeURIComponent(message),
+//               data: '',
+//               contentType: "application/json; charset=utf-8",
+//               dataType: "html",
+//               success: function (msg) {
+//                   debugger;
+//                   if (msg == "Archived successfully") {
+//                       alertify.success(msg);
+//                   }
+//                   else {
+//                       alertify.error(msg);
+//                   }
+
+//               }
+//           });
+
+
+//}
+
 function SaveArchive(id, network, ProfileId, MessageId, MessageDate) {
     debugger;
     var profileurl = $("#formprofileurl_" + id).attr('src');
@@ -816,6 +844,8 @@ function SaveArchive(id, network, ProfileId, MessageId, MessageDate) {
                success: function (msg) {
                    debugger;
                    if (msg == "Archived successfully") {
+                       $('#' + 'messagetaskable_' + id).fadeOut(900);
+                       deletearchmesage(id, network, ProfileId, MessageId, MessageDate);
                        alertify.success(msg);
                    }
                    else {
@@ -824,6 +854,29 @@ function SaveArchive(id, network, ProfileId, MessageId, MessageDate) {
 
                }
            });
+
+
+}
+
+
+
+
+function deletearchmesage(id, network, ProfileId, MessageId, MessageDate) {
+    debugger;
+    var profileurl = $("#formprofileurl_" + id).attr('src');
+    var message = $("#msg_" + id).html();
+    var username = $("#screanName_" + id).html();
+    $.ajax
+          ({
+              type: "POST",
+              url: "../Messages/DeleteArchiveMessage?ProfileId=" + ProfileId + "&MessageId=" + MessageId + "&network=" + network + "&username=" + username + "&MessageDate=" + MessageDate + "&profileurl=" + profileurl + "&message=" + encodeURIComponent(message),
+              data: '',
+              contentType: "application/json; charset=utf-8",
+              dataType: "html",
+              success: function (msg) {
+
+              }
+          });
 
 
 }

@@ -113,7 +113,7 @@ namespace Api.Socioboard.Services
 
         [WebMethod(MessageName = "Pass Username", Description = "Pass Username")]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string Register(string EmailId, string Password, string AccountType, string Username)
+        public string Register(string EmailId, string Password, string AccountType, string Username, string ActivationStatus="0")
         {
 
             try
@@ -140,7 +140,7 @@ namespace Api.Socioboard.Services
                     user.TimeZone = string.Empty;
                     user.UserName = Username;//FirstName + " " + LastName;
                     user.UserStatus = 1;
-                    user.ActivationStatus = "0"; 
+                    user.ActivationStatus = ActivationStatus;//"0"; 
                     user.Id = Guid.NewGuid();
                     UserRepository.Add(user);
 

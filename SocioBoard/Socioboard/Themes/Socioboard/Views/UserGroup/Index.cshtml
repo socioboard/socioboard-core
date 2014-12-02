@@ -209,10 +209,17 @@
                         EMailarray.pop();
                     }
                     $("#invitetablebody").html("");
-                    alertify.success('Mail send successfully');
+                    //alertify.success('Mail send successfully');
 
-                    alert('SentMails : ' + jQuery.parseJSON(msg).SentMails);
-                    alert('Already Sent Mails : ' + jQuery.parseJSON(msg).NotSentMails);
+                    //alert('SentMails : ' + jQuery.parseJSON(msg).SentMails);
+                    //alert('Already Sent Mails : ' + jQuery.parseJSON(msg).NotSentMails);
+
+                    if (jQuery.parseJSON(msg).SentMails == "" && jQuery.parseJSON(msg).NotSentMails != "") {
+                        alertify.success('Mail already send');
+                    }
+                    else {
+                        alertify.success('Mail send successfully');
+                    }
 
                 }
                 else {

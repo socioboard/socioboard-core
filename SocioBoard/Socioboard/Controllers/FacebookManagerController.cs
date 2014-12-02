@@ -10,6 +10,8 @@ using System.Web.Script.Serialization;
 using Socioboard.Api.User;
 using Facebook;
 using System.Net;
+using System.Web.Security;
+using Socioboard.Helper;
 
 namespace Socioboard.Controllers
 {
@@ -43,19 +45,44 @@ namespace Socioboard.Controllers
                     Api.Facebook.Facebook apiobjFacebook = new Api.Facebook.Facebook();
                     Api.User.User ApiobjUser = new Api.User.User();
                     objUser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(apiobjFacebook.FacebookLogin(code), typeof(Domain.Socioboard.Domain.User)));
+
                     try
                     {
                         // objUser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(apiobjFacebook.FacebookLogin(code), typeof(Domain.Socioboard.Domain.User)));
                         checkuserexist = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUserInfoByEmail(objUser.EmailId.ToString()), typeof(Domain.Socioboard.Domain.User)));
+                        FormsAuthentication.SetAuthCookie(checkuserexist.UserName, false);
                     }
                     catch (Exception e) { }
                     if (checkuserexist != null)
                     {
                         Session["User"] = checkuserexist;
+                        int daysremaining = 0;
+
+                        daysremaining = (checkuserexist.ExpiryDate.Date - DateTime.Now.Date).Days;
+                        if (daysremaining > 0)
+                        {
+                            #region Count Used Accounts
+                            try
+                            {
+                                Session["Paid_User"] = "Paid";
+                                Api.SocialProfile.SocialProfile apiobjSocialProfile = new Api.SocialProfile.SocialProfile();
+                                Session["ProfileCount"] = Convert.ToInt32(apiobjSocialProfile.GetAllSocialProfilesOfUserCount(objUser.Id.ToString()).ToString());
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.Message);
+                            }
+                            #endregion
+                        }
+                        else
+                        {
+                            Session["Paid_User"] = "Unpaid";
+                        }
                         return RedirectToAction("Index", "Home");
                     }
                     else
                     {
+                        objUser.ActivationStatus = "1";
                         Session["User"] = objUser;
                         return RedirectToAction("Registration", "Index");
                     }

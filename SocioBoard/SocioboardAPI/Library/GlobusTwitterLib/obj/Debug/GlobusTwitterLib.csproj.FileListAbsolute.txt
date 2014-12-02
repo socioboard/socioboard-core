@@ -45,6 +45,6 @@ D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\NHibe
 D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\NHibernate.xml
 D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\NHibernate.Linq.xml
 D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\NHibernateHelper.pdb
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusTwitterLib\obj\Debug\GlobusTwitterLib.csprojResolveAssemblyReference.cache
 D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusTwitterLib\obj\Debug\GlobusTwitterLib.dll
 D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusTwitterLib\obj\Debug\GlobusTwitterLib.pdb
+D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusTwitterLib\obj\Debug\GlobusTwitterLib.csprojResolveAssemblyReference.cache

@@ -471,7 +471,8 @@ namespace Api.Socioboard.Services
             try
             {
                 ScheduledMessageRepository objScheduledMessageRepository = new ScheduledMessageRepository();
-                List<Domain.Socioboard.Domain.ScheduledMessage> lstallScheduledMessage = objScheduledMessageRepository.getAllMessagesDetail(profileid, Guid.Parse(userid));
+                //List<Domain.Socioboard.Domain.ScheduledMessage> lstallScheduledMessage = objScheduledMessageRepository.getAllMessagesDetail(profileid, Guid.Parse(userid));
+                List<Domain.Socioboard.Domain.ScheduledMessage> lstallScheduledMessage = objScheduledMessageRepository.getAllSentMessageDetails(profileid, Guid.Parse(userid));
                 return new JavaScriptSerializer().Serialize(lstallScheduledMessage);
             }
             catch (Exception ex)

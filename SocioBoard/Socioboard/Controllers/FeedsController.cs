@@ -9,6 +9,7 @@ using System.Web.Script.Serialization;
 
 namespace Socioboard.Controllers
 {
+    [Authorize]
     public class FeedsController : Controller
     {
         public static int facebookwallcount = 0;

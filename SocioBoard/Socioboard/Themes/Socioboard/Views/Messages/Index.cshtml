@@ -36,6 +36,9 @@
             </div>
 
 </div>
+<div class="modal fade" id="msgmailpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+       </div>
 
 <script src="~/Themes/Socioboard/Contents/js/Message.js"></script>
 <script src="~/Themes/Socioboard/Contents/js/Helper.js"></script>
@@ -201,6 +204,7 @@
     });
 
     function MailPopUpMsg(msgid, ntk) {
+        debugger;
         $.ajax({
             type: 'POST',
             url: '../Messages/ShowMsgMailPopUp?MsgId=' + msgid + '&Network=' + ntk,

@@ -10,7 +10,7 @@ var fileimage = "";
 
 
 
-function facebookgroupdetails(gid, fbaccesstoken) {
+function facebookgroupdetails(gid, fbaccesstoken ,profileid) {
    
     grpId = gid;
     accToken = fbaccesstoken;
@@ -18,7 +18,7 @@ function facebookgroupdetails(gid, fbaccesstoken) {
     $('#postongp > a').attr("gid", gid);
 
     $.ajax({
-        url: "../Group/GroupPosts?grpId=" + grpId + "&accToken=" + accToken,
+        url: "../Group/GroupPosts?grpId=" + grpId + "&accToken=" + accToken + "&ProfileId=" + profileid,
         type: "post",
         data: '',
         contentType: "application/json; charset=utf-8",

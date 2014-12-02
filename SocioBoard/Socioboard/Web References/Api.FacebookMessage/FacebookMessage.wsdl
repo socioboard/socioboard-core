@@ -151,6 +151,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetFacebookMessageByMessageId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="msgid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFacebookMessageByMessageIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFacebookMessageByMessageIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -213,6 +228,12 @@
   </wsdl:message>
   <wsdl:message name="GetMessageDetailByMessageidSoapOut">
     <wsdl:part name="parameters" element="tns:GetMessageDetailByMessageidResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookMessageByMessageIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFacebookMessageByMessageId" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookMessageByMessageIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFacebookMessageByMessageIdResponse" />
   </wsdl:message>
   <wsdl:message name="UserHomeWithLimitHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
@@ -281,6 +302,13 @@
     <wsdl:part name="MessageId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetMessageDetailByMessageidHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookMessageByMessageIdHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="msgid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookMessageByMessageIdHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="UserHomeWithLimitHttpPostIn">
@@ -352,6 +380,13 @@
   <wsdl:message name="GetMessageDetailByMessageidHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetFacebookMessageByMessageIdHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="msgid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookMessageByMessageIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="FacebookMessageSoap">
     <wsdl:operation name="UserHomeWithLimit">
       <wsdl:input message="tns:UserHomeWithLimitSoapIn" />
@@ -392,6 +427,10 @@
     <wsdl:operation name="GetMessageDetailByMessageid">
       <wsdl:input message="tns:GetMessageDetailByMessageidSoapIn" />
       <wsdl:output message="tns:GetMessageDetailByMessageidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookMessageByMessageId">
+      <wsdl:input message="tns:GetFacebookMessageByMessageIdSoapIn" />
+      <wsdl:output message="tns:GetFacebookMessageByMessageIdSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookMessageHttpGet">
@@ -435,6 +474,10 @@
       <wsdl:input message="tns:GetMessageDetailByMessageidHttpGetIn" />
       <wsdl:output message="tns:GetMessageDetailByMessageidHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetFacebookMessageByMessageId">
+      <wsdl:input message="tns:GetFacebookMessageByMessageIdHttpGetIn" />
+      <wsdl:output message="tns:GetFacebookMessageByMessageIdHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookMessageHttpPost">
     <wsdl:operation name="UserHomeWithLimit">
@@ -476,6 +519,10 @@
     <wsdl:operation name="GetMessageDetailByMessageid">
       <wsdl:input message="tns:GetMessageDetailByMessageidHttpPostIn" />
       <wsdl:output message="tns:GetMessageDetailByMessageidHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookMessageByMessageId">
+      <wsdl:input message="tns:GetFacebookMessageByMessageIdHttpPostIn" />
+      <wsdl:output message="tns:GetFacebookMessageByMessageIdHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="FacebookMessageSoap" type="tns:FacebookMessageSoap">
@@ -563,6 +610,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetMessageDetailByMessageid">
       <soap:operation soapAction="http://tempuri.org/GetMessageDetailByMessageid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookMessageByMessageId">
+      <soap:operation soapAction="http://tempuri.org/GetFacebookMessageByMessageId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -663,6 +719,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetFacebookMessageByMessageId">
+      <soap12:operation soapAction="http://tempuri.org/GetFacebookMessageByMessageId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="FacebookMessageHttpGet" type="tns:FacebookMessageHttpGet">
     <http:binding verb="GET" />
@@ -756,6 +821,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetFacebookMessageByMessageId">
+      <http:operation location="/GetFacebookMessageByMessageId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="FacebookMessageHttpPost" type="tns:FacebookMessageHttpPost">
     <http:binding verb="POST" />
@@ -842,6 +916,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetMessageDetailByMessageid">
       <http:operation location="/GetMessageDetailByMessageid" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookMessageByMessageId">
+      <http:operation location="/GetFacebookMessageByMessageId" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

@@ -101,7 +101,7 @@
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Insights <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
+                            <ul class="dropdown-menu" role="menu" id="insightsanchore">
                                 <li><a href="http://wiki.socioboard.com/index.php/Main_Page" target="_blank">Wiki</a></li>
                                 <li><a href="http://blog.socioboard.com/category/cases" target="_blank">Cases</a></li>
                                 <li><a href="http://blog.socioboard.com/" target="_blank">Blogs</a></li>
@@ -233,7 +233,7 @@
     <!--content-sec-container-->
 
     <!-- Footer -->
-    <footer>
+    <footer class="trainingcss">
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 col-lg-offset-1 text-center">
@@ -489,7 +489,24 @@
             }
         }
     </script>
+    <script type="text/javascript">
+                                            $(document.body).on('click', '#Insightsdiv', function (e) {
+                                                if (!$('#insightsanchore').parent().hasClass('open')) {
+                                                    $('#insightsanchore').parent().addClass('open')
+                                                }
+                                                e.stopPropagation();
+                                            });
+                                            //function insightsanchoreshow()
+                                            //{
+                                            //      //  $('#insightsanchore').dropdown('toggle');
+                                            //    if (!$('#insightsanchore').parent().hasClass('open')) {
+                                            //        $('#insightsanchore').parent().addClass('open')
+                                            //    }
+                                            //   // $('#insightsanchore').show();
 
+                                            //    // return false;
+                                            //}
+    </script>
 
 </body>
 

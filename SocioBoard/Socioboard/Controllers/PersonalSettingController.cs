@@ -9,6 +9,7 @@ using Socioboard.Helper;
 
 namespace Socioboard.Controllers
 {
+    [Authorize]
     public class PersonalSettingController : Controller
     {
         //
@@ -93,11 +94,11 @@ namespace Socioboard.Controllers
 
                 if (UpgradeType == "MonthlyUpgrade")
                 {
-                    amount = "7.99";
+                    amount = "99.99";
                 }
                 else
                 {
-                    amount = "14.99";
+                    amount = "1199.88";
                 }
 
                 Session["PaymentAmount"] = amount;

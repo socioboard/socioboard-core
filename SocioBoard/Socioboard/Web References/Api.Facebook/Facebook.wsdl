@@ -54,6 +54,7 @@
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="accestoken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -351,6 +352,22 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="LikeFBGroupPost">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="postid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accesstoken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Isliked" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LikeFBGroupPostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LikeFBGroupPostResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -486,6 +503,12 @@
   <wsdl:message name="UpdateFacebookAccountByAdminSoapOut">
     <wsdl:part name="parameters" element="tns:UpdateFacebookAccountByAdminResponse" />
   </wsdl:message>
+  <wsdl:message name="LikeFBGroupPostSoapIn">
+    <wsdl:part name="parameters" element="tns:LikeFBGroupPost" />
+  </wsdl:message>
+  <wsdl:message name="LikeFBGroupPostSoapOut">
+    <wsdl:part name="parameters" element="tns:LikeFBGroupPostResponse" />
+  </wsdl:message>
   <wsdl:message name="IskiHttpGetIn">
     <wsdl:part name="code" type="s:string" />
     <wsdl:part name="UserId" type="s:string" />
@@ -512,6 +535,7 @@
   <wsdl:message name="GetAllFbGroupdataHttpGetIn">
     <wsdl:part name="groupid" type="s:string" />
     <wsdl:part name="accestoken" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetAllFbGroupdataHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -659,6 +683,14 @@
   <wsdl:message name="UpdateFacebookAccountByAdminHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="LikeFBGroupPostHttpGetIn">
+    <wsdl:part name="postid" type="s:string" />
+    <wsdl:part name="accesstoken" type="s:string" />
+    <wsdl:part name="Isliked" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LikeFBGroupPostHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="IskiHttpPostIn">
     <wsdl:part name="code" type="s:string" />
     <wsdl:part name="UserId" type="s:string" />
@@ -685,6 +717,7 @@
   <wsdl:message name="GetAllFbGroupdataHttpPostIn">
     <wsdl:part name="groupid" type="s:string" />
     <wsdl:part name="accestoken" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetAllFbGroupdataHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -832,6 +865,14 @@
   <wsdl:message name="UpdateFacebookAccountByAdminHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="LikeFBGroupPostHttpPostIn">
+    <wsdl:part name="postid" type="s:string" />
+    <wsdl:part name="accesstoken" type="s:string" />
+    <wsdl:part name="Isliked" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LikeFBGroupPostHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="FacebookSoap">
     <wsdl:operation name="Iski">
       <wsdl:input message="tns:IskiSoapIn" />
@@ -920,6 +961,10 @@
     <wsdl:operation name="UpdateFacebookAccountByAdmin">
       <wsdl:input message="tns:UpdateFacebookAccountByAdminSoapIn" />
       <wsdl:output message="tns:UpdateFacebookAccountByAdminSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LikeFBGroupPost">
+      <wsdl:input message="tns:LikeFBGroupPostSoapIn" />
+      <wsdl:output message="tns:LikeFBGroupPostSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookHttpGet">
@@ -1011,6 +1056,10 @@
       <wsdl:input message="tns:UpdateFacebookAccountByAdminHttpGetIn" />
       <wsdl:output message="tns:UpdateFacebookAccountByAdminHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="LikeFBGroupPost">
+      <wsdl:input message="tns:LikeFBGroupPostHttpGetIn" />
+      <wsdl:output message="tns:LikeFBGroupPostHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookHttpPost">
     <wsdl:operation name="Iski">
@@ -1100,6 +1149,10 @@
     <wsdl:operation name="UpdateFacebookAccountByAdmin">
       <wsdl:input message="tns:UpdateFacebookAccountByAdminHttpPostIn" />
       <wsdl:output message="tns:UpdateFacebookAccountByAdminHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LikeFBGroupPost">
+      <wsdl:input message="tns:LikeFBGroupPostHttpPostIn" />
+      <wsdl:output message="tns:LikeFBGroupPostHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="FacebookSoap" type="tns:FacebookSoap">
@@ -1295,6 +1348,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateFacebookAccountByAdmin">
       <soap:operation soapAction="http://tempuri.org/UpdateFacebookAccountByAdmin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LikeFBGroupPost">
+      <soap:operation soapAction="http://tempuri.org/LikeFBGroupPost" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1503,6 +1565,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="LikeFBGroupPost">
+      <soap12:operation soapAction="http://tempuri.org/LikeFBGroupPost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="FacebookHttpGet" type="tns:FacebookHttpGet">
     <http:binding verb="GET" />
@@ -1704,6 +1775,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="LikeFBGroupPost">
+      <http:operation location="/LikeFBGroupPost" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="FacebookHttpPost" type="tns:FacebookHttpPost">
     <http:binding verb="POST" />
@@ -1898,6 +1978,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateFacebookAccountByAdmin">
       <http:operation location="/UpdateFacebookAccountByAdmin" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LikeFBGroupPost">
+      <http:operation location="/LikeFBGroupPost" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

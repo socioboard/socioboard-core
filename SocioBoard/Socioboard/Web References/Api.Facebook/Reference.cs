@@ -73,6 +73,8 @@ namespace Socioboard.Api.Facebook {
         
         private System.Threading.SendOrPostCallback UpdateFacebookAccountByAdminOperationCompleted;
         
+        private System.Threading.SendOrPostCallback LikeFBGroupPostOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -178,6 +180,9 @@ namespace Socioboard.Api.Facebook {
         public event UpdateFacebookAccountByAdminCompletedEventHandler UpdateFacebookAccountByAdminCompleted;
         
         /// <remarks/>
+        public event LikeFBGroupPostCompletedEventHandler LikeFBGroupPostCompleted;
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Iski", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string Iski(string code, string UserId, string GroupId) {
             object[] results = this.Invoke("Iski", new object[] {
@@ -276,26 +281,28 @@ namespace Socioboard.Api.Facebook {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllFbGroupdata", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string GetAllFbGroupdata(string groupid, string accestoken) {
+        public string GetAllFbGroupdata(string groupid, string accestoken, string profileid) {
             object[] results = this.Invoke("GetAllFbGroupdata", new object[] {
                         groupid,
-                        accestoken});
+                        accestoken,
+                        profileid});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void GetAllFbGroupdataAsync(string groupid, string accestoken) {
-            this.GetAllFbGroupdataAsync(groupid, accestoken, null);
+        public void GetAllFbGroupdataAsync(string groupid, string accestoken, string profileid) {
+            this.GetAllFbGroupdataAsync(groupid, accestoken, profileid, null);
         }
         
         /// <remarks/>
-        public void GetAllFbGroupdataAsync(string groupid, string accestoken, object userState) {
+        public void GetAllFbGroupdataAsync(string groupid, string accestoken, string profileid, object userState) {
             if ((this.GetAllFbGroupdataOperationCompleted == null)) {
                 this.GetAllFbGroupdataOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllFbGroupdataOperationCompleted);
             }
             this.InvokeAsync("GetAllFbGroupdata", new object[] {
                         groupid,
-                        accestoken}, this.GetAllFbGroupdataOperationCompleted, userState);
+                        accestoken,
+                        profileid}, this.GetAllFbGroupdataOperationCompleted, userState);
         }
         
         private void OnGetAllFbGroupdataOperationCompleted(object arg) {
@@ -898,6 +905,39 @@ namespace Socioboard.Api.Facebook {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/LikeFBGroupPost", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string LikeFBGroupPost(string postid, string accesstoken, string Isliked) {
+            object[] results = this.Invoke("LikeFBGroupPost", new object[] {
+                        postid,
+                        accesstoken,
+                        Isliked});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void LikeFBGroupPostAsync(string postid, string accesstoken, string Isliked) {
+            this.LikeFBGroupPostAsync(postid, accesstoken, Isliked, null);
+        }
+        
+        /// <remarks/>
+        public void LikeFBGroupPostAsync(string postid, string accesstoken, string Isliked, object userState) {
+            if ((this.LikeFBGroupPostOperationCompleted == null)) {
+                this.LikeFBGroupPostOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLikeFBGroupPostOperationCompleted);
+            }
+            this.InvokeAsync("LikeFBGroupPost", new object[] {
+                        postid,
+                        accesstoken,
+                        Isliked}, this.LikeFBGroupPostOperationCompleted, userState);
+        }
+        
+        private void OnLikeFBGroupPostOperationCompleted(object arg) {
+            if ((this.LikeFBGroupPostCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.LikeFBGroupPostCompleted(this, new LikeFBGroupPostCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -1475,6 +1515,32 @@ namespace Socioboard.Api.Facebook {
         private object[] results;
         
         internal UpdateFacebookAccountByAdminCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void LikeFBGroupPostCompletedEventHandler(object sender, LikeFBGroupPostCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class LikeFBGroupPostCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal LikeFBGroupPostCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

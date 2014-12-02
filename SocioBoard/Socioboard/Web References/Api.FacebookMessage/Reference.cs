@@ -49,6 +49,8 @@ namespace Socioboard.Api.FacebookMessage {
         
         private System.Threading.SendOrPostCallback GetMessageDetailByMessageidOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetFacebookMessageByMessageIdOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -116,6 +118,9 @@ namespace Socioboard.Api.FacebookMessage {
         
         /// <remarks/>
         public event GetMessageDetailByMessageidCompletedEventHandler GetMessageDetailByMessageidCompleted;
+        
+        /// <remarks/>
+        public event GetFacebookMessageByMessageIdCompletedEventHandler GetFacebookMessageByMessageIdCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UserHomeWithLimit", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -426,6 +431,37 @@ namespace Socioboard.Api.FacebookMessage {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetFacebookMessageByMessageId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetFacebookMessageByMessageId(string userid, string msgid) {
+            object[] results = this.Invoke("GetFacebookMessageByMessageId", new object[] {
+                        userid,
+                        msgid});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetFacebookMessageByMessageIdAsync(string userid, string msgid) {
+            this.GetFacebookMessageByMessageIdAsync(userid, msgid, null);
+        }
+        
+        /// <remarks/>
+        public void GetFacebookMessageByMessageIdAsync(string userid, string msgid, object userState) {
+            if ((this.GetFacebookMessageByMessageIdOperationCompleted == null)) {
+                this.GetFacebookMessageByMessageIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetFacebookMessageByMessageIdOperationCompleted);
+            }
+            this.InvokeAsync("GetFacebookMessageByMessageId", new object[] {
+                        userid,
+                        msgid}, this.GetFacebookMessageByMessageIdOperationCompleted, userState);
+        }
+        
+        private void OnGetFacebookMessageByMessageIdOperationCompleted(object arg) {
+            if ((this.GetFacebookMessageByMessageIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetFacebookMessageByMessageIdCompleted(this, new GetFacebookMessageByMessageIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -691,6 +727,32 @@ namespace Socioboard.Api.FacebookMessage {
         private object[] results;
         
         internal GetMessageDetailByMessageidCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetFacebookMessageByMessageIdCompletedEventHandler(object sender, GetFacebookMessageByMessageIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetFacebookMessageByMessageIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetFacebookMessageByMessageIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

@@ -906,7 +906,41 @@ namespace Api.Socioboard.Services
 
 
 
-        public List<Domain.Socioboard.Domain.ScheduledMessage> getAllSentMessageDetails(string profileid)
+        //public List<Domain.Socioboard.Domain.ScheduledMessage> getAllSentMessageDetails(string profileid)
+        //{
+        //    //Creates a database connection and opens up a session
+        //    using (NHibernate.ISession session = SessionFactory.GetNewSession())
+        //    {
+        //        //Begin session trasaction and opens up.
+        //        using (NHibernate.ITransaction transaction = session.BeginTransaction())
+        //        {
+        //            try
+        //            {
+        //                string str = "from ScheduledMessage where Status=1 and ProfileId IN(";
+        //                string[] arrsrt = profileid.Split(',');
+        //                foreach (string sstr in arrsrt)
+        //                {
+        //                    str += "'" + (sstr) + "'" + ",";
+        //                }
+        //                str = str.Substring(0, str.Length - 1);
+        //                str += ")";
+        //                List<Domain.Socioboard.Domain.ScheduledMessage> alst = session.CreateQuery(str)
+        //               .List<Domain.Socioboard.Domain.ScheduledMessage>()
+        //               .ToList<Domain.Socioboard.Domain.ScheduledMessage>();
+        //                return alst;
+
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.StackTrace);
+        //                return null;
+        //            }
+
+        //        }//End Trasaction
+        //    }//End session
+        //}
+
+        public List<Domain.Socioboard.Domain.ScheduledMessage> getAllSentMessageDetails(string profileid, Guid userid)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -916,7 +950,7 @@ namespace Api.Socioboard.Services
                 {
                     try
                     {
-                        string str = "from ScheduledMessage where Status=1 and ProfileId IN(";
+                        string str = "from ScheduledMessage where UserId=:userid and Status=1 and ProfileId IN(";
                         string[] arrsrt = profileid.Split(',');
                         foreach (string sstr in arrsrt)
                         {
@@ -924,7 +958,7 @@ namespace Api.Socioboard.Services
                         }
                         str = str.Substring(0, str.Length - 1);
                         str += ")";
-                        List<Domain.Socioboard.Domain.ScheduledMessage> alst = session.CreateQuery(str)
+                        List<Domain.Socioboard.Domain.ScheduledMessage> alst = session.CreateQuery(str).SetParameter("userid", userid)
                        .List<Domain.Socioboard.Domain.ScheduledMessage>()
                        .ToList<Domain.Socioboard.Domain.ScheduledMessage>();
                         return alst;
@@ -939,6 +973,8 @@ namespace Api.Socioboard.Services
                 }//End Trasaction
             }//End session
         }
+
+
 
 
 

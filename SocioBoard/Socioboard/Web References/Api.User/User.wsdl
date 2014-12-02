@@ -25,6 +25,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="AccountType" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ActivationStatus" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -278,6 +279,7 @@
     <wsdl:part name="Password" type="s:string" />
     <wsdl:part name="AccountType" type="s:string" />
     <wsdl:part name="Username" type="s:string" />
+    <wsdl:part name="ActivationStatus" type="s:string" />
   </wsdl:message>
   <wsdl:message name="Pass_x0020_UsernameHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -357,6 +359,7 @@
     <wsdl:part name="Password" type="s:string" />
     <wsdl:part name="AccountType" type="s:string" />
     <wsdl:part name="Username" type="s:string" />
+    <wsdl:part name="ActivationStatus" type="s:string" />
   </wsdl:message>
   <wsdl:message name="Pass_x0020_UsernameHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />

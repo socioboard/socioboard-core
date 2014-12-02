@@ -113,7 +113,7 @@
                 <i id="task_@row["FromId"]" class="fa fa-thumb-tack fa-fw" title="Task" onclick="opentask('@row["Message"]')" style="cursor:pointer"></i>
                 <i id="CommentReply_@row["FromId"]" class="fa fa-reply fa-fw" title="Comment" onclick="opnCommentReply('@sorteddatacount', '@network.ToString()', '@row["MessageId"].ToString()', '@row["ProfileId"].ToString()')" style="cursor:pointer"></i>
                 <i id="archiveMessage_@row["FromId"]" class="fa fa-folder-open fa-fw form-group" title="Archive" onclick="SaveArchive('@sorteddatacount','@network.ToString()','@row["ProfileId"].ToString()','@row["MessageId"].ToString()','@row["MessageDate"].ToString()')" style="cursor:pointer"></i>
-                <i onclick="MailPopUpMsg('@row["MessageId"].ToString()','@row["Network"]');" id="mailmessage_@sorteddatacount" style="cursor:pointer"><img width="16" height="13" border="none" alt="" src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/icon-messages.png" title="Email"></i>
+                <i onclick="MailPopUpMsg('@row["MessageId"].ToString()','@row["Network"]');" id="mailmessage_@sorteddatacount" style="cursor:pointer" class="fa fa-envelope"></i>
             </span>
             <div class="clearfix"></div>
 

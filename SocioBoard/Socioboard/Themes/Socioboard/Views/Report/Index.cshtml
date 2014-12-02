@@ -5,7 +5,19 @@
 
 
 <script type="text/javascript">
+    function DisplayDefaultReports() {
 
+        // var cnt = $('ul#items li').length;
+        var x = $('#reports > ul > li');
+        if (x.length > 0) {
+            $('#reports > ul > li > a').click();
+        }
+        //if (!$("ul").has("li").length) {
+        //    alertify.alert("No Data");
+        //}
+
+
+    }
     function TeamReportDetails(days) {
         var fd = new FormData();
 
@@ -118,6 +130,8 @@
         $("#reports").addClass('active');
         $("#reports").children().addClass('active');
         loadfeesmenu();
+        //DisplayDefaultReports();
+        loadgroupstat('7');
     });
 
 </script>

@@ -314,11 +314,10 @@ namespace Socioboard.Controllers
                 try
                 {
                     //Domain.Socioboard.Domain.TeamMemberProfile item = (Domain.Socioboard.Domain.TeamMemberProfile)(profile.Value);
-                    if (item.Key.ProfileType == "facebook")
+                    if (item.Key.ProfileType == "facebook" || item.Key.ProfileType == "facebook_page")
                     {
                         FbProfileId += item.Key.ProfileId + ',';
                     }
-
                     else if (item.Key.ProfileType == "twitter")
                     {
                         TwtProfileId += item.Key.ProfileId + ',';

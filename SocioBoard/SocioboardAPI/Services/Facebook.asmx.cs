@@ -670,7 +670,7 @@ namespace Api.Socioboard.Services
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string GetAllFbGroupdata(string groupid, string accestoken)
+        public string GetAllFbGroupdata(string groupid, string accestoken, string profileid)
         {
             List<FacebookGroupData> _FacebookGroupData = new List<FacebookGroupData>();
 
@@ -766,16 +766,33 @@ namespace Api.Socioboard.Services
                     {
                         Console.WriteLine(ex.StackTrace);
                     }
-
                     try
                     {
-                        obj.Userlikes = item["user_likes"].ToString();
+                        dynamic likeddata = item["likes"]["data"];
+                        foreach (var item_liked in likeddata)
+                        {
+                            string i = item_liked["id"].ToString();
+                            if (i == profileid)
+                            {
+                                obj.Userlikes = "liked";
+                            }
+                        }
 
                     }
-                    catch (Exception ex)
+                    catch
                     {
-                        Console.WriteLine(ex.StackTrace);
+                        obj.Userlikes = "";
                     }
+
+                    //try
+                    //{
+                    //    obj.Userlikes = item["user_likes"].ToString();
+
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    Console.WriteLine(ex.StackTrace);
+                    //}
                     try
                     {
                         obj.CreatedTime = DateTime.Parse(item["created_time"].ToString());
@@ -2492,7 +2509,35 @@ namespace Api.Socioboard.Services
             }
         }
 
-        
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string LikeFBGroupPost(string postid, string accesstoken, string Isliked)
+        {
+            string ret = "";
+            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
+            FacebookClient fb = new FacebookClient();
+            fb.AccessToken = accesstoken;
+            try
+            {
+                if (Isliked == "liked")
+                {
+                    dynamic unlike = fb.Delete(postid + "/likes", null);
+                    ret = "unlike";
+                }
+                else
+                {
+                    dynamic like = fb.Post(postid + "/likes", null);
+                    ret = "like";
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                ret = "Somthing Went Wrong";
+            }
+
+            return ret;
+        }
 
 
     }

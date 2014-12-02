@@ -6,6 +6,6 @@ C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\
 C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.csprojResolveAssemblyReference.cache
 D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\bin\Debug\GlobusGooglePlusLib.dll
 D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\bin\Debug\GlobusGooglePlusLib.pdb
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.csprojResolveAssemblyReference.cache
 D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.dll
 D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.pdb
+D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.csprojResolveAssemblyReference.cache

@@ -6,6 +6,6 @@ C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj
 D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.dll
 D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.pdb
 D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\Newtonsoft.Json.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblrLib.csprojResolveAssemblyReference.cache
 D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.dll
 D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.pdb
+D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblrLib.csprojResolveAssemblyReference.cache

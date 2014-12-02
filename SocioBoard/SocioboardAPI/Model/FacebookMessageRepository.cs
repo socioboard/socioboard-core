@@ -687,6 +687,38 @@ namespace Api.Socioboard.Services
                 }//End Trasaction
             }//End session
         }
+        public int DeleteFacebookMessagebymessageid(string facemsg, string msgid, Guid userid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction. 
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        // Proceed action, to delete data 
+                        // And return integer value when it is success or failed (0 or 1).
+                        object query = session.CreateSQLQuery("delete from FacebookMessage where UserId = :userid and MessageId = :messageid and Message = :message")
+                            .SetParameter("message", facemsg)
+                                        .SetParameter("userid", userid)
+                        .SetParameter("messageid", msgid)
+                        .UniqueResult();
+                        //int isUpdated = query.ExecuteUpdate();
+                        transaction.Commit();
+                        //return isUpdated;
+                        return 1;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+                }// End using trasaction
+            }// End using session
+        }
+
+
 
         /// <getAllWallpostsOfProfile>
         ///  Get all Wallpost of User by ProfileId(string)
@@ -904,5 +936,30 @@ namespace Api.Socioboard.Services
             }//End session
         }
 
+        public Domain.Socioboard.Domain.FacebookMessage GetFacebookMessageByMessageId(Guid userid, string MessageId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, open up a Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        NHibernate.IQuery query = session.CreateQuery("from FacebookMessage where UserId =: userid and MessageId = :MessageId");
+                        query.SetParameter("MessageId", MessageId);
+                        query.SetParameter("userid", userid);
+                        var result = query.UniqueResult();
+                        return (Domain.Socioboard.Domain.FacebookMessage)result;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End Session
+        }
     }
 }

@@ -7,6 +7,7 @@ using System.Web.Script.Serialization;
 
 namespace Socioboard.Controllers
 {
+    [Authorize]
     public class DiscoveryController : Controller
     {
         //

@@ -53,8 +53,12 @@
                                         Comment 
                                            
                                     </button>
-                                    <button type="button" class="btn btn-info btn-circle">
-                                        <i class="fa fa-thumbs-o-up"></i>
+                                    <button type="button" class="btn btn-info btn-circle" id="like_@_FacebookGroupData.PostId" onclick="LikeOnFBGroupPost('@_FacebookGroupData.PostId','@_FacebookGroupData.accesstoken','@_FacebookGroupData.Userlikes')">
+                                        @if(_FacebookGroupData.Userlikes=="liked"){
+                                            <i class="fa fa-thumbs-o-down"></i>
+                                        }else{
+                                            <i class="fa fa-thumbs-o-up"></i>
+                                        }
                                     </button>
                                     <button type="button" class="btn btn-danger btn-circle">
                                         <i class="fa fa-heart"></i>
@@ -97,8 +101,12 @@
                                         Comment 
                                            
                                     </button>
-                                    <button type="button" class="btn btn-info btn-circle">
-                                        <i class="fa fa-thumbs-o-up"></i>
+                                    <button type="button" class="btn btn-info btn-circle" id="like_@_FacebookGroupData.PostId" onclick="LikeOnFBGroupPost('@_FacebookGroupData.PostId','@_FacebookGroupData.accesstoken','@_FacebookGroupData.Userlikes')">
+                                        @if(_FacebookGroupData.Userlikes=="liked"){
+                                            <i class="fa fa-thumbs-o-down"></i>
+                                        }else{
+                                            <i class="fa fa-thumbs-o-up"></i>
+                                        }
                                     </button>
                                     <button type="button" class="btn btn-danger btn-circle">
                                         <i class="fa fa-heart"></i>

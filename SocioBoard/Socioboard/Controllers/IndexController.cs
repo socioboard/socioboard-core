@@ -22,10 +22,10 @@ namespace Socioboard.Controllers
 
         public ActionResult Index()
         {
-            if (Session["User"] != null) 
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            //if (Session["User"] != null)
+            //{
+            //    return RedirectToAction("Index", "Home");
+            //}
             logger.Error("Abhay");
             //Session.Abandon();
             //Session.Clear();
@@ -185,6 +185,7 @@ namespace Socioboard.Controllers
         public ActionResult Signup()
         {
             logger.Error("Abhay");
+            User _user=(User)Session["User"];
             Domain.Socioboard.Domain.User user = new Domain.Socioboard.Domain.User();
             Session["AjaxLogin"] = "register";
             string retmsg = string.Empty;
@@ -213,11 +214,20 @@ namespace Socioboard.Controllers
                 user.EmailId = Server.UrlDecode((string)jo["email"]);
                 user.Password = Server.UrlDecode((string)jo["password"]);
                 user.UserStatus = 1;
-                user.ActivationStatus = "0";
+
+                if (_user.ActivationStatus == "1" && _user != null) //If Login from Facebook, then ActivationStatus would be 1, refer to FacebookManager Controller
+                {
+                    user.ActivationStatus = "1"; 
+                }
+                else
+                {
+                    user.ActivationStatus = "0"; 
+                }
+
                 string firstName = Server.UrlDecode((string)jo["firstname"]);
                 string lastName = Server.UrlDecode((string)jo["lastname"]);
                 Api.User.User objApiUser = new Api.User.User();
-                string res_Registration = objApiUser.Register(user.EmailId, user.Password, user.AccountType, user.UserName);
+                string res_Registration = objApiUser.Register(user.EmailId, user.Password, user.AccountType, user.UserName, user.ActivationStatus);
                 logger.Error("res_Registration: "+res_Registration);
                 if (res_Registration != "Email Already Exists")
                 {
@@ -244,6 +254,8 @@ namespace Socioboard.Controllers
                 Console.WriteLine(ex.StackTrace);
             }
             //return View("_RegistrationPartial");
+
+           
             return Content(retmsg);
         }
 
@@ -376,6 +388,13 @@ namespace Socioboard.Controllers
             {
                 Console.WriteLine(ex.StackTrace);
             }
+
+            User _user = (User)Session["User"];
+            if (_user.ActivationStatus == "1" && _user != null)
+            {
+                mailsender += ">> Facebook Registration";
+            }
+
             return Content(mailsender);
         }
 
@@ -444,6 +463,36 @@ namespace Socioboard.Controllers
             Api.MailSender.MailSender ApiobjMailSender = new Api.MailSender.MailSender();
             string mailsender = ApiobjMailSender.SendRequestForDemo(fname, lname, email, Subject, Body);
             return Content(mailsender);
+        }
+
+        public ActionResult PaypalAgency()
+        {
+            string pay = "";
+            try
+            {
+                Helper.Payment payme = new Payment();
+
+                string amount = "2999";
+                string plantype = "White Label version";
+                string UserName = "Socioboard";
+                string EmailId = "support@socioboard.com";
+
+                //String EnterPriseSuccessURL = ConfigurationManager.AppSettings["EnterPriseSuccessURL"];
+                //String EnterPriseFailedURL = ConfigurationManager.AppSettings["EnterPriseFailedURL"];
+                //String EnterPrisepaypalemail = ConfigurationManager.AppSettings["EnterPrisepaypalemail"];
+                String userId = "";
+
+                pay = payme.PayWithPayPal(amount, plantype, UserName, "", EmailId, "USD", ConfigurationManager.AppSettings["Downloadpaypalemail"], ConfigurationManager.AppSettings["DownloadSuccessURL"],
+                                      ConfigurationManager.AppSettings["DownloadFailedURL"], ConfigurationManager.AppSettings["DownloadSuccessURL"], ConfigurationManager.AppSettings["EnterPrisecancelurl"], ConfigurationManager.AppSettings["EnterPrisenotifyurl"], userId);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            //return View();
+            Response.Redirect(pay);
+            return Content("");
         }
 
     }

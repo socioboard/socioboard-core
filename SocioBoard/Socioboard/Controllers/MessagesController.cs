@@ -12,6 +12,7 @@ using Socioboard.Helper;
 
 namespace Socioboard.Controllers
 {
+    [Authorize]
     public class MessagesController : Controller
     {
         //
@@ -502,6 +503,38 @@ namespace Socioboard.Controllers
             }
         }
 
+        public ActionResult DeleteArchiveMessage()
+        {
+            try
+            {
+                Api.ArchiveMessage.ArchiveMessage ApiobjArchiveMessage = new Api.ArchiveMessage.ArchiveMessage();
+                Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
+                string ProfileId = Request.QueryString["ProfileId"];
+                string MessageId = Request.QueryString["MessageId"];
+                string Network = Request.QueryString["network"];
+                string UserName = Request.QueryString["username"];
+                string MessageDate = Request.QueryString["MessageDate"];
+                string ProfileUrl = Request.QueryString["profileurl"];
+                string Message = Request.QueryString["message"];
+                try
+                {
+                    ApiobjArchiveMessage.DeleteArchiveMessage(objUser.Id.ToString(), ProfileId, Network, UserName, MessageId, Message, MessageDate, ProfileUrl);
+                    return Content("Archived successfully");
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                    return Content("Somthing went wrong!!");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return Content("");
+            }
+        }
+
         public ActionResult Archive()
         {
             if (Session["Paid_User"].ToString() == "Unpaid")
@@ -703,7 +736,7 @@ namespace Socioboard.Controllers
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
             Dictionary<string, object> twtinfo = new Dictionary<string, object>();
             Api.TwitterMessage.TwitterMessage ApiobjTwitterMessage = new Api.TwitterMessage.TwitterMessage();
-            Api.FacebookFeed.FacebookFeed ApiobjFacebookFeed = new Api.FacebookFeed.FacebookFeed();
+            Api.FacebookMessage.FacebookMessage ApiobjFacebookMessage = new Api.FacebookMessage.FacebookMessage();
             if (Network == "twitter")
             {
                 Domain.Socioboard.Domain.TwitterMessage twtmessage = (Domain.Socioboard.Domain.TwitterMessage)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.GetTwitterMessageByMessageId(objUser.Id.ToString(), MsgId), typeof(Domain.Socioboard.Domain.TwitterMessage)));
@@ -711,7 +744,7 @@ namespace Socioboard.Controllers
             }
             else if (Network == "facebook")
             {
-                Domain.Socioboard.Domain.FacebookFeed fbmessage = (Domain.Socioboard.Domain.FacebookFeed)(new JavaScriptSerializer().Deserialize(ApiobjFacebookFeed.GetFacebookFeedByFeedId(objUser.Id.ToString(), MsgId), typeof(Domain.Socioboard.Domain.FacebookFeed)));
+                Domain.Socioboard.Domain.FacebookMessage fbmessage = (Domain.Socioboard.Domain.FacebookMessage)(new JavaScriptSerializer().Deserialize(ApiobjFacebookMessage.GetFacebookMessageByMessageId(objUser.Id.ToString(), MsgId), typeof(Domain.Socioboard.Domain.FacebookMessage)));
                 twtinfo.Add("fb_msg", fbmessage);
             }
             return PartialView("_MailMsgSendingPartial", twtinfo);

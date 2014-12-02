@@ -540,6 +540,7 @@
     </Content>
     <Content Include="index.html" />
     <Content Include="Layouts\Mails\GroupInvitation.html" />
+    <Content Include="Layouts\Mails\GroupInvitation1.html" />
     <Content Include="lib\Antlr3.Runtime.dll" />
     <Content Include="lib\CodeScales.Http.dll" />
     <Content Include="lib\Facebook.dll" />
