@@ -967,5 +967,31 @@ namespace Api.Socioboard.Model
             }
             return i;
         }
+
+        // Added by Sumit Gupta[3/12/2014]
+        public int UpdateChangePasswordKey(Guid Userid, string ChangePasswordKey)
+        {
+            int i = 0;
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+
+                    try
+                    {
+                        i = session.CreateQuery("Update User set ChangePasswordKey=:ChangePasswordKey  where Id = :userid")
+                                  .SetParameter("userid", Userid)
+                                  .SetParameter("ChangePasswordKey", ChangePasswordKey)
+                                  .ExecuteUpdate();
+                        transaction.Commit();
+
+                        
+                    }
+                    catch { }
+                }
+            }
+            return i;
+
+        }
     }
 }

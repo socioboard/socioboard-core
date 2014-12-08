@@ -375,16 +375,6 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Team.asmx")]
-        public string Socioboard_Api_Team_Team {
-            get {
-                return ((string)(this["Socioboard_Api_Team_Team"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/MailSender.asmx")]
         public string Socioboard_Api_MailSender_MailSender {
             get {
@@ -445,16 +435,6 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/User.asmx")]
-        public string Socioboard_Api_User_User {
-            get {
-                return ((string)(this["Socioboard_Api_User_User"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/ArchiveMessage.asmx")]
         public string Socioboard_Api_ArchiveMessage_ArchiveMessage {
             get {
@@ -469,6 +449,26 @@ namespace Socioboard.Properties {
         public string Socioboard_Api_Facebook_Facebook {
             get {
                 return ((string)(this["Socioboard_Api_Facebook_Facebook"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/User.asmx")]
+        public string Socioboard_Api_User_User {
+            get {
+                return ((string)(this["Socioboard_Api_User_User"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Team.asmx")]
+        public string Socioboard_Api_Team_Team {
+            get {
+                return ((string)(this["Socioboard_Api_Team_Team"]));
             }
         }
     }

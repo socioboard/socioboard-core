@@ -1,30 +1,30 @@
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\GlobusMailLib.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\GlobusMailLib.pdb
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\FSharp.Core.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\log4net.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\Mandrill.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\Newtonsoft.Json.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\RestSharp.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\SendGridMail.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\ServiceStack.Text.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\System.Net.Http.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\FSharp.Core.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\System.Net.Http.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\obj\Debug\GlobusMailLib.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\obj\Debug\GlobusMailLib.pdb
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\obj\Debug\GlobusMailLib.csprojResolveAssemblyReference.cache
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\GlobusMailLib.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\GlobusMailLib.pdb
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\FSharp.Core.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\log4net.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\Mandrill.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\Newtonsoft.Json.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\RestSharp.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\SendGridMail.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\ServiceStack.Text.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\System.Net.Http.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\FSharp.Core.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\System.Net.Http.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\obj\Debug\GlobusMailLib.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\obj\Debug\GlobusMailLib.pdb
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusMailLib\obj\Debug\GlobusMailLib.csprojResolveAssemblyReference.cache
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\GlobusMailLib.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\GlobusMailLib.pdb
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\FSharp.Core.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\log4net.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\Mandrill.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\Newtonsoft.Json.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\RestSharp.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\SendGridMail.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\ServiceStack.Text.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\System.Net.Http.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\FSharp.Core.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\System.Net.Http.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\obj\Debug\GlobusMailLib.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\obj\Debug\GlobusMailLib.pdb
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\obj\Debug\GlobusMailLib.csprojResolveAssemblyReference.cache
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\GlobusMailLib.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\GlobusMailLib.pdb
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\FSharp.Core.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\log4net.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\Mandrill.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\Newtonsoft.Json.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\RestSharp.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\SendGridMail.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\ServiceStack.Text.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\System.Net.Http.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\FSharp.Core.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\System.Net.Http.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\obj\Debug\GlobusMailLib.csprojResolveAssemblyReference.cache
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\obj\Debug\GlobusMailLib.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusMailLib\obj\Debug\GlobusMailLib.pdb

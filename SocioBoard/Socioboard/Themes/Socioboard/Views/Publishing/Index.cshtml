@@ -4,7 +4,34 @@
 
 
 
+<style>
+    
 
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+input[readonly] {
+  background-color: white !important;
+  cursor: text !important;
+}
+
+
+</style>
 
 <div id="page-wrapper">
     <div class="container-fluid">
@@ -32,6 +59,26 @@
                         <div id="bindcomposescheduledprofiles"></div>
                         <textarea id="txtscheduled" placeholder="Type your message here" rows="3" class="form-control">@ViewBag.Message</textarea>
                     </div>
+                    @*vikash [04/12/2014]*@
+                    <div class="form-group">
+                                <div>
+                                    <div class="fileinput fileinput-new" data-provides="fileinput" style="width:40%;">
+                                        <div id="tumbnail">
+  					                        <div class="fileinput-preview fileinput-exists thumbnail pull-left" style="max-width: 200px;"></div>
+                                            <a href="#" class="fileinput-exists pull-left" data-dismiss="fileinput" style="margin-left: -3%;margin-top:-16px"><h4>x</h4></a>
+                                        </div>
+  					                    <div>
+    					                    <span class="btn btn-default btn-file col-md-12" style="padding: 0px;">
+                       		                    <span class="fileinput-new"></span>
+                           	                    <span class="fileinput-exists"></span>
+                                                <span class="btn btn-primary btn-file pull-right">Browse&hellip;
+                                                    <input type="file" id="scheduleimageupload" onchange="AddImageScheduleMessage()">
+                                                </span>
+                       	                    </span>
+  					                    </div>
+                                    </div>
+                                </div>
+                            </div>
                     <div class="hero-unit">
                         <input type="text" id="scheduleddate" placeholder="Click to show datepicker" >
                     </div>
@@ -55,6 +102,29 @@
 
 </div>
     
+<script type="text/javascript">
+    $(document).on('change', '.btn-file :file', function () {
+        var input = $(this),
+            numFiles = input.get(0).files ? input.get(0).files.length : 1,
+            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+        input.trigger('fileselect', [numFiles, label]);
+    });
+
+    $(document).ready(function () {
+        $('.btn-file :file').on('fileselect', function (event, numFiles, label) {
+
+            var input = $(this).parents('.input-group').find(':text'),
+                log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+            if (input.length) {
+                input.val(log);
+            } else {
+                if (log) alert(log);
+            }
+
+        });
+    });
+</script>
 
     <script type="text/javascript">
         var arrbinduser = [];
@@ -169,6 +239,11 @@
             debugger;
             var curdate = new Date();
             var now = (curdate.getMonth() + 1) + "/" + curdate.getDate() + "/" + curdate.getFullYear() + " " + curdate.getHours() + ":" + curdate.getMinutes() + ":" + (curdate.getSeconds() < 10 ? '0' + curdate.getSeconds() : curdate.getSeconds());
+            var fd = new FormData();
+            var filesimage = document.getElementById('scheduleimageupload').files[0];
+            if (filesimage != null) {
+                fd.append('file', filesimage);
+            }
             var scheduledmessage = $('#txtscheduled').val();
             var scheduleddate = $('#scheduleddate').val();
             var scheduledtime = $('#scheduledtime').val();
@@ -270,6 +345,21 @@
         });
         });
 
+        function AddImageScheduleMessage() {
+            debugger;
+            var filesinput = $('#scheduleimageupload');
+            var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+            if (filesinput != undefined && filesinput[0].files[0] != null) {
+                if (hasExtension('scheduleimageupload', fileExtension)) {
 
+                }
+                else {
+                    alertify.set({ delay: 3000 });
+                    alertify.error("File Extention is not current. Please upload any image file");
+                    $('#scheduleimageupload').val('');
+                    return;
+                }
+            }
+        }
 
     </script>

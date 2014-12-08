@@ -6,7 +6,7 @@ using Domain.Socioboard.Domain;
 using Api.Socioboard.Helper;
 
 
-namespace SocioBoard.Model
+namespace Api.Socioboard.Services
 {
     public class AdminRepository
     {

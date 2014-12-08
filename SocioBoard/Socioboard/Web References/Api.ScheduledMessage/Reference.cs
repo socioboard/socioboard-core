@@ -75,11 +75,13 @@ namespace Socioboard.Api.ScheduledMessage {
         
         private System.Threading.SendOrPostCallback GetAllSentMessageDetailsForCustomrangeOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetAllScheduledDetailsOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
         public ScheduledMessage() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_ScheduledMessage_ScheduledMessage;
+            this.Url = "http://localhost:6361/Services/ScheduledMessage.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -181,6 +183,9 @@ namespace Socioboard.Api.ScheduledMessage {
         
         /// <remarks/>
         public event GetAllSentMessageDetailsForCustomrangeCompletedEventHandler GetAllSentMessageDetailsForCustomrangeCompleted;
+        
+        /// <remarks/>
+        public event GetAllScheduledDetailsCompletedEventHandler GetAllScheduledDetailsCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UploadFile", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -937,6 +942,33 @@ namespace Socioboard.Api.ScheduledMessage {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllScheduledDetails", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetAllScheduledDetails() {
+            object[] results = this.Invoke("GetAllScheduledDetails", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAllScheduledDetailsAsync() {
+            this.GetAllScheduledDetailsAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetAllScheduledDetailsAsync(object userState) {
+            if ((this.GetAllScheduledDetailsOperationCompleted == null)) {
+                this.GetAllScheduledDetailsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllScheduledDetailsOperationCompleted);
+            }
+            this.InvokeAsync("GetAllScheduledDetails", new object[0], this.GetAllScheduledDetailsOperationCompleted, userState);
+        }
+        
+        private void OnGetAllScheduledDetailsOperationCompleted(object arg) {
+            if ((this.GetAllScheduledDetailsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAllScheduledDetailsCompleted(this, new GetAllScheduledDetailsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -1518,6 +1550,32 @@ namespace Socioboard.Api.ScheduledMessage {
         private object[] results;
         
         internal GetAllSentMessageDetailsForCustomrangeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetAllScheduledDetailsCompletedEventHandler(object sender, GetAllScheduledDetailsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAllScheduledDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAllScheduledDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

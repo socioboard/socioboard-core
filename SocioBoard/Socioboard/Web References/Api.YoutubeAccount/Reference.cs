@@ -43,7 +43,7 @@ namespace Socioboard.Api.YoutubeAccount {
         
         /// <remarks/>
         public YoutubeAccount() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_YoutubeAccount_YoutubeAccount;
+            this.Url = "http://localhost:6361/Services/YoutubeAccount.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

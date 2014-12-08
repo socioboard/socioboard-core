@@ -225,7 +225,15 @@ namespace Api.Socioboard.Services
             long friendscount = 0;
             try
             {
-                Domain.Socioboard.Domain.FacebookAccount objFacebookAccount = objFacebookAccountRepository.getFacebookAccountDetailsById(FbId, Guid.Parse(UserId));
+                Domain.Socioboard.Domain.FacebookAccount objFacebookAccount = new Domain.Socioboard.Domain.FacebookAccount();
+                if (objFacebookAccountRepository.checkFacebookUserExists(FbId, Guid.Parse(UserId)))
+                {
+                   objFacebookAccount= objFacebookAccountRepository.getFacebookAccountDetailsById(FbId, Guid.Parse(UserId));
+                }
+                else
+                {
+                    objFacebookAccount = objFacebookAccountRepository.getFacebookAccountDetailsById(FbId);
+                }
 
 
                 FacebookClient fb = new FacebookClient();
@@ -963,7 +971,14 @@ namespace Api.Socioboard.Services
             {
                 objScheduledMessage = objScheduledMessageRepository.GetScheduledMessageDetails(Guid.Parse(sscheduledmsgguid));
 
-                objFacebookAccount = objFacebookAccountRepository.getFacebookAccountDetailsById(FacebookId, Guid.Parse(UserId));
+                if (objFacebookAccountRepository.checkFacebookUserExists(FacebookId, Guid.Parse(UserId)))
+                {
+                    objFacebookAccount = objFacebookAccountRepository.getFacebookAccountDetailsById(FacebookId, Guid.Parse(UserId));
+                }
+                else
+                {
+                    objFacebookAccount = objFacebookAccountRepository.getFacebookAccountDetailsById(FacebookId);
+                }
                 if (objFacebookAccount != null)
                 {
 
@@ -1977,7 +1992,17 @@ namespace Api.Socioboard.Services
         public string FacebookProfileDetails(string UserId, string ProfileId)
         {
          objFacebookAccount = new Domain.Socioboard.Domain.FacebookAccount();
-         Domain.Socioboard.Domain.FacebookAccount FacebookAccount = objFacebookAccountRepository.getFacebookAccountDetailsById(ProfileId, Guid.Parse(UserId));
+         Domain.Socioboard.Domain.FacebookAccount FacebookAccount = new Domain.Socioboard.Domain.FacebookAccount();
+             //objFacebookAccountRepository.getFacebookAccountDetailsById(ProfileId, Guid.Parse(UserId));
+         if (objFacebookAccountRepository.checkFacebookUserExists(ProfileId, Guid.Parse(UserId)))
+         {
+             FacebookAccount = objFacebookAccountRepository.getFacebookAccountDetailsById(ProfileId, Guid.Parse(UserId));
+         }
+         else
+         {
+             FacebookAccount = objFacebookAccountRepository.getFacebookAccountDetailsById(ProfileId);
+         }
+
          long friendscount = 0;
          FacebookClient fb = new FacebookClient();
          fb.AccessToken = FacebookAccount.AccessToken;

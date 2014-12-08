@@ -35,6 +35,8 @@ namespace SocioboardDataServices.Api.InstagramAccount {
         
         private System.Threading.SendOrPostCallback DeleteInstagramAccountOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetAllInstagramAccountsByUserIdAndGroupIdOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -81,6 +83,9 @@ namespace SocioboardDataServices.Api.InstagramAccount {
         
         /// <remarks/>
         public event DeleteInstagramAccountCompletedEventHandler DeleteInstagramAccountCompleted;
+        
+        /// <remarks/>
+        public event GetAllInstagramAccountsByUserIdAndGroupIdCompletedEventHandler GetAllInstagramAccountsByUserIdAndGroupIdCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllInstagramAccounts", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -176,6 +181,37 @@ namespace SocioboardDataServices.Api.InstagramAccount {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllInstagramAccountsByUserIdAndGroupId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetAllInstagramAccountsByUserIdAndGroupId(string userid, string groupid) {
+            object[] results = this.Invoke("GetAllInstagramAccountsByUserIdAndGroupId", new object[] {
+                        userid,
+                        groupid});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAllInstagramAccountsByUserIdAndGroupIdAsync(string userid, string groupid) {
+            this.GetAllInstagramAccountsByUserIdAndGroupIdAsync(userid, groupid, null);
+        }
+        
+        /// <remarks/>
+        public void GetAllInstagramAccountsByUserIdAndGroupIdAsync(string userid, string groupid, object userState) {
+            if ((this.GetAllInstagramAccountsByUserIdAndGroupIdOperationCompleted == null)) {
+                this.GetAllInstagramAccountsByUserIdAndGroupIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllInstagramAccountsByUserIdAndGroupIdOperationCompleted);
+            }
+            this.InvokeAsync("GetAllInstagramAccountsByUserIdAndGroupId", new object[] {
+                        userid,
+                        groupid}, this.GetAllInstagramAccountsByUserIdAndGroupIdOperationCompleted, userState);
+        }
+        
+        private void OnGetAllInstagramAccountsByUserIdAndGroupIdOperationCompleted(object arg) {
+            if ((this.GetAllInstagramAccountsByUserIdAndGroupIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAllInstagramAccountsByUserIdAndGroupIdCompleted(this, new GetAllInstagramAccountsByUserIdAndGroupIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -259,6 +295,32 @@ namespace SocioboardDataServices.Api.InstagramAccount {
         private object[] results;
         
         internal DeleteInstagramAccountCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetAllInstagramAccountsByUserIdAndGroupIdCompletedEventHandler(object sender, GetAllInstagramAccountsByUserIdAndGroupIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAllInstagramAccountsByUserIdAndGroupIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAllInstagramAccountsByUserIdAndGroupIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

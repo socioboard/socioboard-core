@@ -37,7 +37,7 @@ namespace Socioboard.Api.PaymentTransaction {
         
         /// <remarks/>
         public PaymentTransaction() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_PaymentTransaction_PaymentTransaction;
+            this.Url = "http://localhost:6361/Services/PaymentTransaction.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

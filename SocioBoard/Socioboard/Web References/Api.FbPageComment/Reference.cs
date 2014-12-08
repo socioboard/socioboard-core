@@ -35,7 +35,7 @@ namespace Socioboard.Api.FbPageComment {
         
         /// <remarks/>
         public FbPageComment() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_FbPageComment_FbPageComment;
+            this.Url = "http://localhost:6361/Services/FbPageComment.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

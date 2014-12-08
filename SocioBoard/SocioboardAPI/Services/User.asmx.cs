@@ -10,6 +10,7 @@ using System.Web.Services;
 using Domain.Socioboard.Domain;
 using System.Configuration;
 using log4net;
+using System.Collections;
 
 
 namespace Api.Socioboard.Services
@@ -148,7 +149,7 @@ namespace Api.Socioboard.Services
                     //UserActivation.AddUserActivation(user);
 
                     //add value in userpackage
-                    UserPackageRelation.AddUserPackageRelation(user);
+                   // UserPackageRelation.AddUserPackageRelation(user);
 
 
                     try
@@ -486,6 +487,87 @@ namespace Api.Socioboard.Services
             int ret = userrepo.UpdateUserAccountInfoByUserId(userid, AccountType, ExpiryDate, PaymentStatus);
             return ret;
         }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string UserCountByMonth()
+        {
+            try
+            {
+                ArrayList ret = userrepo.UserCountByMonth();
+                return new JavaScriptSerializer().Serialize(ret);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return null;
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string UserCountByAccTypeMonth()
+        {
+            try
+            {
+                ArrayList ret = userrepo.UserCountByAccTypeMonth();
+                return new JavaScriptSerializer().Serialize(ret);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return null;
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string PaidUserCountByMonth()
+        {
+            try
+            {
+                ArrayList ret = userrepo.PaidUserCountByMonth();
+                return new JavaScriptSerializer().Serialize(ret);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return null;
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string UnPaidUserCountByMonth()
+        {
+            try
+            {
+                ArrayList ret = userrepo.UnPaidUserCountByMonth();
+                return new JavaScriptSerializer().Serialize(ret);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return null;
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string UpdateForgetPasswordKey(string userID, string ForgetPasswordKey)
+        {
+            try
+            {
+                int ret = userrepo.UpdateChangePasswordKey(Guid.Parse(userID), ForgetPasswordKey);
+                return new JavaScriptSerializer().Serialize(ret);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return null;
+            }
+        }
+
     }
 
     public class profileConnected

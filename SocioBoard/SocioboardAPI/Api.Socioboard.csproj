@@ -111,8 +111,10 @@
     <Compile Include="Helper\SessionFactory.cs" />
     <Compile Include="Helper\Utility.cs" />
     <Compile Include="Model\AdminRepository.cs" />
+    <Compile Include="Model\AdsRepository.cs" />
     <Compile Include="Model\ArchiveMessageRepository.cs" />
     <Compile Include="Model\BusinessSettingRepository.cs" />
+    <Compile Include="Model\CouponRepository.cs" />
     <Compile Include="Model\DiscoverySearchRepository.cs" />
     <Compile Include="Model\DraftsRepository.cs" />
     <Compile Include="Model\DropboxAccountRepository.cs" />
@@ -139,6 +141,7 @@
     <Compile Include="Model\LinkedInFeedRepository.cs" />
     <Compile Include="Model\LinkedinPagePostRepository.cs" />
     <Compile Include="Model\NewsLetterRepository.cs" />
+    <Compile Include="Model\NewsRepository.cs" />
     <Compile Include="Model\PackageRepository.cs" />
     <Compile Include="Model\PaymentTransactionRepository.cs" />
     <Compile Include="Model\ReplyMessageRepository.cs" />
@@ -168,6 +171,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Admin.asmx.cs">
       <DependentUpon>Admin.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\AdminNews.asmx.cs">
+      <DependentUpon>AdminNews.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\AdminPackageDetails.asmx.cs">
+      <DependentUpon>AdminPackageDetails.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\AdminUserDetails.asmx.cs">
+      <DependentUpon>AdminUserDetails.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Services\Ads.asmx.cs">
@@ -588,6 +603,7 @@
     <Content Include="Log\log.txt" />
     <EmbeddedResource Include="Mappings\User.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Groups.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -801,6 +817,9 @@
     <None Include="obj\Debug\SocialCrowd.csprojResolveAssemblyReference.cache" />
     <None Include="obj\Debug\SocialSuitePro.csprojResolveAssemblyReference.cache" />
     <Content Include="Services\Admin.asmx" />
+    <Content Include="Services\AdminNews.asmx" />
+    <Content Include="Services\AdminPackageDetails.asmx" />
+    <Content Include="Services\AdminUserDetails.asmx" />
     <Content Include="Services\Ads.asmx" />
     <Content Include="Services\ArchiveMessage.asmx" />
     <Content Include="Services\Blog_Comments.asmx" />

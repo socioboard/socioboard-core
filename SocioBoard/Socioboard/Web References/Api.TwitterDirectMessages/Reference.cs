@@ -37,7 +37,7 @@ namespace Socioboard.Api.TwitterDirectMessages {
         
         /// <remarks/>
         public TwitterDirectMessages() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_TwitterDirectMessages_TwitterDirectMessages;
+            this.Url = "http://localhost:6361/Services/TwitterDirectMessages.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

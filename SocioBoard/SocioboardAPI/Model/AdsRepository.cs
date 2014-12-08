@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using SocioBoard.Domain;
-using SocioBoard.Helper;
+using Domain.Socioboard.Domain;
+using Api.Socioboard.Helper;
 using System.Collections;
 
-namespace SocioBoard.Model
+namespace Api.Socioboard.Services
 {
     public class AdsRepository : IAdsRepository
     {
@@ -15,7 +15,7 @@ namespace SocioBoard.Model
         /// Add a new Advertisement in a Database.
         /// </summary>
         /// <param name="ads">Set Values in a Ads Class Property and Pass the Object of Ads Class.(Domain.Ads)</param>
-        public void AddAds(Ads ads)
+        public void AddAds(Domain.Socioboard.Domain.Ads ads)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -68,7 +68,7 @@ namespace SocioBoard.Model
         /// update/change a ImageUrl,Script,ExpiryDate and Status of existing Ads.
         /// </summary>
         /// <param name="ads">Set Values in a Ads Class Property and Pass the Object of Ads Class.(Domain.Ads)</param>
-        public void UpdateAds(Ads ads)
+        public void UpdateAds(Domain.Socioboard.Domain.Ads ads)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -105,7 +105,7 @@ namespace SocioBoard.Model
         /// get all existing Ads.
         /// </summary>
         /// <returns>return all advertisement from Ads Table of Database</returns>
-        public List<Ads> getAllAds()
+        public List<Domain.Socioboard.Domain.Ads> getAllAds()
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -115,7 +115,7 @@ namespace SocioBoard.Model
                 {
 
                     //Proceed to get all data.
-                    List<Ads> alstFBAccounts = session.CreateQuery("from Ads").List<Ads>().ToList<Ads>();
+                    List<Domain.Socioboard.Domain.Ads> alstFBAccounts = session.CreateQuery("from Ads").List<Domain.Socioboard.Domain.Ads>().ToList<Domain.Socioboard.Domain.Ads>();
                     return alstFBAccounts;
 
                     #region oldmethod
@@ -205,7 +205,7 @@ namespace SocioBoard.Model
         }
 
 
-        public Ads getAdsDetails(string adsUrl)
+        public Domain.Socioboard.Domain.Ads getAdsDetails(string adsUrl)
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
             {
@@ -215,7 +215,7 @@ namespace SocioBoard.Model
                     {
                         NHibernate.IQuery query = session.CreateQuery("from Package where ImageUrl=:adsUrl");
                         query.SetParameter("adsUrl", adsUrl);
-                        Ads grou = query.UniqueResult<Ads>();
+                        Domain.Socioboard.Domain.Ads grou = query.UniqueResult<Domain.Socioboard.Domain.Ads>();
                         return grou;
                     }
                     catch (Exception ex)
@@ -235,7 +235,7 @@ namespace SocioBoard.Model
         /// </summary>
         /// <param name="adsid">Id of the Ads(Guid)</param>
         /// <returns>Return Unique object of Ads</returns>
-        public Ads getAdsDetailsbyId(Guid adsid)
+        public Domain.Socioboard.Domain.Ads getAdsDetailsbyId(Guid adsid)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -251,7 +251,7 @@ namespace SocioBoard.Model
                         // And return unique result of Ad 
                         NHibernate.IQuery query = session.CreateQuery("from Ads where Id=:adsid");
                         query.SetParameter("adsid", adsid);
-                        Ads grou = query.UniqueResult<Ads>();
+                        Domain.Socioboard.Domain.Ads grou = query.UniqueResult<Domain.Socioboard.Domain.Ads>();
                         return grou;
                     }
                     catch (Exception ex)

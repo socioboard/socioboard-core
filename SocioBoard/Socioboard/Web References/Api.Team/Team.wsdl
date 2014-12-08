@@ -84,6 +84,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="UpdateTeambyteamid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="teamid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateTeambyteamidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateTeambyteamidResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetTeamByUserId">
         <s:complexType>
           <s:sequence>
@@ -147,6 +161,12 @@
   <wsdl:message name="UpdateTeamSoapOut">
     <wsdl:part name="parameters" element="tns:UpdateTeamResponse" />
   </wsdl:message>
+  <wsdl:message name="UpdateTeambyteamidSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateTeambyteamid" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTeambyteamidSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateTeambyteamidResponse" />
+  </wsdl:message>
   <wsdl:message name="GetTeamByUserIdSoapIn">
     <wsdl:part name="parameters" element="tns:GetTeamByUserId" />
   </wsdl:message>
@@ -199,6 +219,12 @@
     <wsdl:part name="UserName" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdateTeamHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTeambyteamidHttpGetIn">
+    <wsdl:part name="teamid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTeambyteamidHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetTeamByUserIdHttpGetIn">
@@ -257,6 +283,12 @@
   <wsdl:message name="UpdateTeamHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="UpdateTeambyteamidHttpPostIn">
+    <wsdl:part name="teamid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTeambyteamidHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="GetTeamByUserIdHttpPostIn">
     <wsdl:part name="userid" type="s:string" />
   </wsdl:message>
@@ -292,6 +324,10 @@
       <wsdl:input message="tns:UpdateTeamSoapIn" />
       <wsdl:output message="tns:UpdateTeamSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="UpdateTeambyteamid">
+      <wsdl:input message="tns:UpdateTeambyteamidSoapIn" />
+      <wsdl:output message="tns:UpdateTeambyteamidSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetTeamByUserId">
       <wsdl:input message="tns:GetTeamByUserIdSoapIn" />
       <wsdl:output message="tns:GetTeamByUserIdSoapOut" />
@@ -322,6 +358,10 @@
       <wsdl:input message="tns:UpdateTeamHttpGetIn" />
       <wsdl:output message="tns:UpdateTeamHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="UpdateTeambyteamid">
+      <wsdl:input message="tns:UpdateTeambyteamidHttpGetIn" />
+      <wsdl:output message="tns:UpdateTeambyteamidHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetTeamByUserId">
       <wsdl:input message="tns:GetTeamByUserIdHttpGetIn" />
       <wsdl:output message="tns:GetTeamByUserIdHttpGetOut" />
@@ -351,6 +391,10 @@
     <wsdl:operation name="UpdateTeam">
       <wsdl:input message="tns:UpdateTeamHttpPostIn" />
       <wsdl:output message="tns:UpdateTeamHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTeambyteamid">
+      <wsdl:input message="tns:UpdateTeambyteamidHttpPostIn" />
+      <wsdl:output message="tns:UpdateTeambyteamidHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetTeamByUserId">
       <wsdl:input message="tns:GetTeamByUserIdHttpPostIn" />
@@ -401,6 +445,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateTeam">
       <soap:operation soapAction="http://tempuri.org/UpdateTeam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTeambyteamid">
+      <soap:operation soapAction="http://tempuri.org/UpdateTeambyteamid" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -474,6 +527,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="UpdateTeambyteamid">
+      <soap12:operation soapAction="http://tempuri.org/UpdateTeambyteamid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetTeamByUserId">
       <soap12:operation soapAction="http://tempuri.org/GetTeamByUserId" style="document" />
       <wsdl:input>
@@ -540,6 +602,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="UpdateTeambyteamid">
+      <http:operation location="/UpdateTeambyteamid" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetTeamByUserId">
       <http:operation location="/GetTeamByUserId" />
       <wsdl:input>
@@ -599,6 +670,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateTeam">
       <http:operation location="/UpdateTeam" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTeambyteamid">
+      <http:operation location="/UpdateTeambyteamid" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

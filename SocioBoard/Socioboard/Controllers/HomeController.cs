@@ -23,10 +23,18 @@ namespace Socioboard.Controllers
         public ActionResult Index()
         {
 
+            if (Request.QueryString["teamid"] != null)
+            {
+                string teamid = Request.QueryString["teamid"].ToString();
+                Api.Team.Team _apiteam = new Api.Team.Team();
+                _apiteam.UpdateTeambyteamid(teamid);
+
+            }
             if (Session["Paid_User"] !=null && Session["Paid_User"].ToString() == "Unpaid")
             {
                 return RedirectToAction("Billing", "PersonalSetting");
             }
+         
             else
             {
                 ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
@@ -212,12 +220,12 @@ namespace Socioboard.Controllers
 
 
             //Get Dropbox Selected Images
-            string[] DropboxImg = null;
-            try
-            {
-                DropboxImg = Request.Form["DropboxImg"].Split(',');
-            }
-            catch { };
+            //string[] DropboxImg = null;
+            //try
+            //{
+            //    DropboxImg = Request.Form["DropboxImg"].Split(',');
+            //}
+            //catch { };
 
 
 
@@ -246,14 +254,14 @@ namespace Socioboard.Controllers
 
             DbxNext:
 
-                if (!string.IsNullOrEmpty(DropboxImg[0]))
-                {
-                if (DropboxImg.Count() != 0 && DropboxImg.Count() >= DBXCount)
-                {
-                    file = DropboxImg[DBXCount];
-                    DBXCount++;
-                }
-                }
+                //if (!string.IsNullOrEmpty(DropboxImg[0]))
+                //{
+                //if (DropboxImg.Count() != 0 && DropboxImg.Count() >= DBXCount)
+                //{
+                //    file = DropboxImg[DBXCount];
+                //    DBXCount++;
+                //}
+                //}
 
                 if (profiletype == "facebook")
                 {
@@ -280,13 +288,13 @@ namespace Socioboard.Controllers
                 Api.ScheduledMessage.ScheduledMessage objAddComposeSentMessage = new Api.ScheduledMessage.ScheduledMessage();
                 objAddComposeSentMessage.AddComposeMessage(objGroups.UserId.ToString(), profileid, profiletype, message);
 
-                if (!string.IsNullOrEmpty(DropboxImg[0]))
-                {
-                    if (DBXCount < DropboxImg.Count())
-                    {
-                        goto DbxNext;
-                    }
-                }
+                //if (!string.IsNullOrEmpty(DropboxImg[0]))
+                //{
+                //    if (DBXCount < DropboxImg.Count())
+                //    {
+                //        goto DbxNext;
+                //    }
+                //}
             }
             return Content("");
         }

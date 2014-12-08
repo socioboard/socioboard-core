@@ -45,7 +45,7 @@ namespace Socioboard.Api.Drafts {
         
         /// <remarks/>
         public Drafts() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_Drafts_Drafts;
+            this.Url = "http://localhost:6361/Services/Drafts.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

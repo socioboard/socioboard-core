@@ -63,10 +63,18 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetLinkedinAccountDetailsById(string UserId, string LinkedinId)
         {
+             Domain.Socioboard.Domain.LinkedInAccount LinkedAccount=new LinkedInAccount ();
             try
             {
                 Guid Userid = Guid.Parse(UserId);
-                Domain.Socioboard.Domain.LinkedInAccount LinkedAccount = objlinkedinaccrepo.getUserInformation(Userid, LinkedinId);
+                if(objlinkedinaccrepo.checkLinkedinUserExists(LinkedinId,Userid))
+                {
+               LinkedAccount = objlinkedinaccrepo.getUserInformation(Userid, LinkedinId);
+                }
+                else
+                {
+                    LinkedAccount=objlinkedinaccrepo.getUserInformation(LinkedinId);
+                }
                 return new JavaScriptSerializer().Serialize(LinkedAccount);
             }
             catch (Exception ex)
@@ -104,6 +112,7 @@ namespace Api.Socioboard.Services
         {
             try
             {
+                LinkedInAccountRepository _objLinkedInAccountRepository = new LinkedInAccountRepository();
                 List<Domain.Socioboard.Domain.LinkedInAccount> lstLinkedInAccount = new List<Domain.Socioboard.Domain.LinkedInAccount>();
                 Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(groupid));
                 List<Domain.Socioboard.Domain.TeamMemberProfile> lstTeamMemberProfile = objTeamMemberProfileRepository.GetTeamMemberProfileByTeamIdAndProfileType(objTeam.Id, "linkedin");
@@ -111,11 +120,18 @@ namespace Api.Socioboard.Services
                 {
                     try
                     {
+                        if(_objLinkedInAccountRepository.checkLinkedinUserExists(item.ProfileId,Guid.Parse(userid)))
+                        {
                         lstLinkedInAccount.Add(objlinkedinaccrepo.getUserInformation(Guid.Parse(userid), item.ProfileId));
+                        }
+                        else
+                        {
+                            lstLinkedInAccount.Add(objlinkedinaccrepo.getUserInformation(item.ProfileId));
+                        }
                     }
                     catch (Exception)
                     {
-
+                        
                     }
                 }
                 return new JavaScriptSerializer().Serialize(lstLinkedInAccount);

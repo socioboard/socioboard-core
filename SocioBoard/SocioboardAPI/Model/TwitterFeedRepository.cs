@@ -30,6 +30,78 @@ namespace Api.Socioboard.Services
         }
 
 
+        public bool checkTwitteUserExists(string ProfileId, Guid Userid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to Check if FacebookUser is Exist in database or not by UserId and FbuserId.
+                        // And Set the reuired paremeters to find the specific values.
+                        List<Domain.Socioboard.Domain.TwitterFeed> alst = session.CreateQuery("from TwitterFeed where UserId = :userid and ProfileId = :fbuserid")
+                        .SetParameter("userid", Userid)
+                        .SetParameter("fbuserid", ProfileId)
+                        .List<Domain.Socioboard.Domain.TwitterFeed>()
+                       .ToList<Domain.Socioboard.Domain.TwitterFeed>();
+                        if (alst.Count == 0 || alst == null)
+                            return false;
+                        else
+                            return true;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return true;
+                    }
+
+                }//End Transaction
+            }//End session
+        }
+
+
+
+        public List<Domain.Socioboard.Domain.TwitterFeed> getAllTwitterUserFeeds(string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get all facebook feeds of profile by facebook profile id  
+                        List<Domain.Socioboard.Domain.TwitterFeed> alst = session.CreateQuery("from TwitterFeed where  ProfileId = :profileId ORDER BY FeedDate DESC")
+                        .SetParameter("profileId", profileid)
+                        .List<Domain.Socioboard.Domain.TwitterFeed>()
+                        .ToList<Domain.Socioboard.Domain.TwitterFeed>();
+
+                        #region oldcode
+                        //List<FacebookFeed> alst = new List<FacebookFeed>();
+                        //foreach (FacebookFeed item in query.Enumerable<FacebookFeed>().OrderByDescending(x => x.FeedDate))
+                        //{
+                        //    alst.Add(item);
+                        //} 
+                        #endregion
+
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }// End session
+        }
+
+
         /// <deleteTwitterFeed>
         /// Delete Twitter Feed
         /// </summary>

@@ -21,7 +21,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobusTwitterLib", "Sociobo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobussDropboxLib", "SocioboardAPI\Library\GlobussDropboxLib\GlobussDropboxLib.csproj", "{6D6144CD-7E41-44E8-9C7D-28C47675E2C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocioboardDataServices", "SocioboardDataServices\SocioboardDataServices.csproj", "{F4AA4F9E-2601-44ED-B48A-A4F48F2D8321}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocioboardDataServices", "SocioboardDataServicesOld\SocioboardDataServices.csproj", "{F4AA4F9E-2601-44ED-B48A-A4F48F2D8321}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocioboardDataScheduler", "SocioboardDataScheduler\SocioboardDataScheduler.csproj", "{B692E99E-6826-449F-B2A5-66F90C39C5C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -169,6 +171,18 @@ Global
 		{F4AA4F9E-2601-44ED-B48A-A4F48F2D8321}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F4AA4F9E-2601-44ED-B48A-A4F48F2D8321}.Release|x64.ActiveCfg = Release|Any CPU
 		{F4AA4F9E-2601-44ED-B48A-A4F48F2D8321}.Release|x86.ActiveCfg = Release|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Release|x64.ActiveCfg = Release|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

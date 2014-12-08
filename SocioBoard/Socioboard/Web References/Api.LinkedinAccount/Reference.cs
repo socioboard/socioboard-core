@@ -45,7 +45,7 @@ namespace Socioboard.Api.LinkedinAccount {
         
         /// <remarks/>
         public LinkedinAccount() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_LinkedinAccount_LinkedinAccount;
+            this.Url = "http://localhost:6361/Services/LinkedinAccount.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

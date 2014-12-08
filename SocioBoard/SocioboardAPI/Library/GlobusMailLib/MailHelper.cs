@@ -700,5 +700,44 @@ namespace GlobusMailLib
 
             return sendMailByMandrill;
         }
+
+        public string SendAddNewsLatterMail(string Host, int port, string from, string passsword, string to, string subject, string body)
+        {
+            string sendMailByMandrill = string.Empty;
+            try
+            {
+
+                Mandrill.EmailMessage message = new Mandrill.EmailMessage();
+                message.from_email = from;
+                message.from_name = from;
+                message.html = body;
+                message.subject = subject;
+                message.to = new List<Mandrill.EmailAddress>()
+                {
+                  new Mandrill.EmailAddress(to)
+                };
+
+                Mandrill.MandrillApi mandrillApi = new Mandrill.MandrillApi(passsword, false);
+                var results = mandrillApi.SendMessage(message);
+
+                foreach (var result in results)
+                {
+                    if (result.Status != Mandrill.EmailResultStatus.Sent)
+                    {
+                        // logger.Error(result.Email + " " + result.RejectReason);
+                    }
+                    //  LogManager.Current.LogError(result.Email, "", "", "", null, string.Format("Email failed to send: {0}", result.RejectReason));
+                }
+
+                sendMailByMandrill = "Success";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                //logger.Error(ex.Message);
+            }
+
+            return sendMailByMandrill;
+        }
     }
 }

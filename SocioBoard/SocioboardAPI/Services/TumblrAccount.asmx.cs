@@ -26,13 +26,24 @@ namespace Api.Socioboard.Services
         TeamMemberProfileRepository objTeamMemberProfileRepository = new TeamMemberProfileRepository();
         TumblrAccountRepository objTumblrAccountRepository = new TumblrAccountRepository();
         TumblrFeedRepository objTumblrFeedRepository = new TumblrFeedRepository();
+       
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetTumblrAccountDetailsById(string UserId, string ProfileId)
         {
             try
             {
-                Domain.Socioboard.Domain.TumblrAccount objTumblrAccount = objTumblrAccountRepository.getTumblrAccountDetailsById(ProfileId, Guid.Parse(UserId));
+                Domain.Socioboard.Domain.TumblrAccount objTumblrAccount=new Domain.Socioboard.Domain.TumblrAccount ();
+                objTumblrAccount.UserId = Guid.Parse(UserId);
+                objTumblrAccount.tblrUserName = ProfileId;
+                if(objTumblrAccountRepository.checkTubmlrUserExists(objTumblrAccount))
+                {
+                objTumblrAccount = objTumblrAccountRepository.getTumblrAccountDetailsById(ProfileId, Guid.Parse(UserId));
+                }
+                else
+                {
+                    objTumblrAccount = objTumblrAccountRepository.getTumblrAccountDetailsById(ProfileId);
+            }
                 return new JavaScriptSerializer().Serialize(objTumblrAccount);
             }
             catch (Exception ex)

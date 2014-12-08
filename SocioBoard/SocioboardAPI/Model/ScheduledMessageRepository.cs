@@ -5,6 +5,7 @@ using System.Web;
 using log4net;
 using Api.Socioboard.Helper;
 using Domain.Socioboard.Domain;
+using Domain.Socioboard.Helper;
 
 
 namespace Api.Socioboard.Services
@@ -1218,63 +1219,63 @@ namespace Api.Socioboard.Services
         /// Get All Scheduled Details
         /// </summary>
         /// <returns>Return object of ScheduledMessage Class with  value of each member in the form of  list.(List<ScheduledMessage>)</returns>
-        //public List<Domain.Socioboard.Domain.ScheduledMessage> GetAllScheduledDetails()
-        //{
-        //    List<Domain.Socioboard.Domain.ScheduledMessage> lstScheduledTracker = new List<Domain.Socioboard.Domain.ScheduledMessage>();
+        public List<Domain.Socioboard.Helper.ScheduledTracker> GetAllScheduledDetails()
+        {
+            List<ScheduledTracker> lstScheduledTracker = new List<ScheduledTracker>();
 
-        //    try
-        //    {
-        //        //Creates a database connection and opens up a session
-        //        using (NHibernate.ISession session = SessionFactory.GetNewSession())
-        //        {
-        //            //After Session creation, start Transaction.
-        //            using (NHibernate.ITransaction transaction = session.BeginTransaction())
-        //            {
-        //                try
-        //                {
-        //                    //Proceed action, to get all schedule data.
-        //                    var res = session.CreateQuery("select count(Id), UserId from ScheduledMessage group by UserId order by ScheduleTime desc").SetMaxResults(100);
+            try
+            {
+                //Creates a database connection and opens up a session
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    //After Session creation, start Transaction.
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+                        try
+                        {
+                            //Proceed action, to get all schedule data.
+                            var res = session.CreateQuery("select count(Id), UserId from ScheduledMessage group by UserId order by ScheduleTime desc").SetMaxResults(100);
 
-        //                    //Get the the all returned values from res
-        //                    foreach (Object[] item in res.Enumerable())
-        //                    {
-        //                        try
-        //                        {
-        //                            //add values in ScheduledTracker class object
-        //                            // set the values in class property
-        //                            // and add in List for returning list of objects. 
-        //                            // Type type = item.GetType();
-        //                            ScheduledTracker objscheduledTracker = new ScheduledTracker();
-        //                            objscheduledTracker._count = Convert.ToInt32(item[item.Length - 2]);
-        //                            objscheduledTracker._Id = Convert.ToString(item[item.Length - 1]);
+                            //Get the the all returned values from res
+                            foreach (Object[] item in res.Enumerable())
+                            {
+                                try
+                                {
+                                    //add values in ScheduledTracker class object
+                                    // set the values in class property
+                                    // and add in List for returning list of objects. 
+                                    // Type type = item.GetType();
+                                    ScheduledTracker objscheduledTracker = new ScheduledTracker();
+                                    objscheduledTracker.Count = Convert.ToInt32(item[item.Length - 2]);
+                                    objscheduledTracker.Id = Convert.ToString(item[item.Length - 1]);
 
-        //                            //Add class object in List.
-        //                            lstScheduledTracker.Add(objscheduledTracker);
+                                    //Add class object in List.
+                                    lstScheduledTracker.Add(objscheduledTracker);
 
-        //                        }
-        //                        catch (Exception ex)
-        //                        {
-        //                            Console.WriteLine("Error : " + ex.StackTrace);
-        //                        }
-        //                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine("Error : " + ex.StackTrace);
+                                }
+                            }
 
-        //                }
-        //                catch (Exception ex)
-        //                {
-        //                    Console.WriteLine(ex.StackTrace);
-        //                    //return null;
-        //                }
-        //            }//End Transaction
-        //        }//End Session
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.StackTrace);
-        //        //return null;
-        //    }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                            //return null;
+                        }
+                    }//End Transaction
+                }//End Session
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                //return null;
+            }
 
-        //    return lstScheduledTracker;
-        //}
+            return lstScheduledTracker;
+        }
 
 
         public bool deleteScheduleMessage(Guid userid, string messageid)

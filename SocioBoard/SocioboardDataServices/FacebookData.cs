@@ -17,35 +17,52 @@ namespace SocioboardDataServices
         {
             string ret = string.Empty;
             Guid UserId = (Guid)userId;
+            //clsFacebookDataScraper objFacebookDataScraper = new clsFacebookDataScraper();
+            //objFacebookDataScraper.GetFbPost(UserId.ToString(), profileId);
             Api.FacebookFeed.FacebookFeed ApiObjFacebookFeed = new Api.FacebookFeed.FacebookFeed();
             ApiObjFacebookFeed.getAllFacebookFeedsByUserIdAndProfileId(userId.ToString(), profileId);
             Api.FacebookAccount.FacebookAccount ApiObjFacebookAccount = new Api.FacebookAccount.FacebookAccount();
-            List<Domain.Socioboard.Domain.FacebookAccount> lstFacebookAccounts = (List<Domain.Socioboard.Domain.FacebookAccount>)(new JavaScriptSerializer().Deserialize(ApiObjFacebookAccount.GetFacebookAccountByUserId(UserId.ToString()), typeof(List<Domain.Socioboard.Domain.FacebookAccount>)));
+            //List<Domain.Socioboard.Domain.FacebookAccount> lstFacebookAccounts = (List<Domain.Socioboard.Domain.FacebookAccount>)(new JavaScriptSerializer().Deserialize(ApiObjFacebookAccount.GetFacebookAccountByUserId(UserId.ToString()), typeof(List<Domain.Socioboard.Domain.FacebookAccount>)));
             //FacebookHelper fbhelper = new FacebookHelper();
+            string fblist = ApiObjFacebookAccount.getUserDetails(profileId.ToString());
+            Domain.Socioboard.Domain.FacebookAccount lstFacebookAccounts = (Domain.Socioboard.Domain.FacebookAccount)(new JavaScriptSerializer().Deserialize(fblist, typeof(Domain.Socioboard.Domain.FacebookAccount)));
+            Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
+            ret = ApiobjFacebook.GetFacebookData(lstFacebookAccounts.FbUserId, lstFacebookAccounts.UserId.ToString());
+            //foreach (FacebookAccount itemFb in lstFacebookAccounts)
+            //{
+            //    //FacebookHelper objFbHelper = new FacebookHelper();
+            //    try
+            //    {
+            //        //Facebook profile data
+            //        Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
+            //        ret = ApiobjFacebook.GetFacebookData(itemFb.FbUserId, itemFb.UserId.ToString());
 
-            foreach (FacebookAccount itemFb in lstFacebookAccounts)
-            {
-                //FacebookHelper objFbHelper = new FacebookHelper();
-                try
-                {
-                    //Facebook profile data
-                    Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
-                    ret = ApiobjFacebook.GetFacebookData(itemFb.FbUserId, itemFb.UserId.ToString());
 
+            //        //Add Facebook Stats
+            //        Api.FacebookStats.FacebookStats _FacebookStats = new Api.FacebookStats.FacebookStats();
+            //        bool abc = _FacebookStats.AddFacebookFriendsGender(itemFb.UserId.ToString(), itemFb.FbUserId);
 
-                    //Add Facebook Stats
-                    Api.FacebookStats.FacebookStats _FacebookStats = new Api.FacebookStats.FacebookStats();
-                    bool abc = _FacebookStats.AddFacebookFriendsGender(itemFb.UserId.ToString(), itemFb.FbUserId);
-
-                }
-                catch (Exception Err)
-                {
-                    Console.Write(Err.Message);
-                }
-            }
+            //    }
+            //    catch (Exception Err)
+            //    {
+            //        Console.Write(Err.Message);
+            //    }
+            //}
             return ret;
         }
 
+
+        //public string GetPageData(object userId, string profileId)
+        //{
+        //    string ret = string.Empty;
+        //    Guid UserId = (Guid)userId;
+        //    clsFacebookDataScraper objFacebookDataScraper = new clsFacebookDataScraper();
+        //    objFacebookDataScraper.GetFbPost(UserId.ToString(), profileId);
+        //        return ret;
+        //}
+
+      
+        
         public void GetSearchData(object parameters)
         {
             #region Facebook

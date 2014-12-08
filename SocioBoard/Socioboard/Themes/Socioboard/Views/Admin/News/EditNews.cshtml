@@ -43,20 +43,16 @@
                                                 <label for="username-email">Status</label><span class="pull-right text-danger">*</span>
                                                 <select id="ddlNewsStatus" class="select form-control">
                                                     @{
-                                                        string[]strstatus =new string[]{"true","false"};
-                                                        foreach (string item in strstatus)
-                                                        {
-
-                                                            if (ObjNews.Status == bool.Parse(item))
+                                                        if (ObjNews.Status == bool.Parse("true"))
                                                             {
-                                                                <option selected value="@item">@item</option>
+                                                                <option selected value="true">Enable</option>
+                                                                <option  value="false">Disable</option>
                                                             }
-                                                            else
-                                                            { 
-                                                                <option value="@item">@item</option>
-                                                            }
-                                                            
-                                                        }
+                                                         else
+                                                         { 
+                                                                <option  value="true">Enable</option>
+                                                                <option selected value="false">Disable</option>
+                                                         }
                                             
                                                     }
                                                 </select>

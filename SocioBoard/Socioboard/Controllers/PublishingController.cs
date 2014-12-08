@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Domain.Socioboard.Domain;
 using System.Web.Script.Serialization;
 using Socioboard.Helper;
+using System.IO;
 
 namespace Socioboard.Controllers
 {
@@ -115,9 +116,28 @@ namespace Socioboard.Controllers
 
         public ActionResult ScheduledMessage(string scheduledmessage, string scheduleddate, string scheduledtime, string profiles, string clienttime)
         {
+            var fi = Request.Files["file"];
+            string file = string.Empty;
+            if (Request.Files.Count > 0)
+            {
+                if (fi != null)
+                {
+                    var path = Server.MapPath("~/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/upload");
+
+                    // var path = System.Configuration.ConfigurationManager.AppSettings["MailSenderDomain"]+"Contents/img/upload";
+                    file = path + "\\" + fi.FileName;
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    fi.SaveAs(file);
+                    path = path + "\\" + fi.FileName;
+                }
+            }
+
              User objUser = (User)Session["User"];
             Api.ScheduledMessage.ScheduledMessage ApiobjScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
-            string retmsg = ApiobjScheduledMessage.AddAllScheduledMessage(profiles, scheduledmessage, clienttime, scheduleddate, scheduledtime, objUser.Id.ToString(), "");
+            string retmsg = ApiobjScheduledMessage.AddAllScheduledMessage(profiles, scheduledmessage, clienttime, scheduleddate, scheduledtime, objUser.Id.ToString(), file);
             return Content("_ComposeMessagePartial");
         }
 

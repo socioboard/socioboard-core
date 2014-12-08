@@ -30,9 +30,19 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetYoutubeAccountDetailsById(string UserId, string ProfileId)
         {
+            Domain.Socioboard.Domain.YoutubeAccount objYoutubeAccount=new Domain.Socioboard.Domain.YoutubeAccount ();
             try
             {
-                Domain.Socioboard.Domain.YoutubeAccount objYoutubeAccount = objYoutubeAccountRepository.getYoutubeAccountDetailsById(ProfileId, Guid.Parse(UserId));
+                objYoutubeAccount.Ytuserid=ProfileId;
+                objYoutubeAccount.UserId=Guid.Parse(UserId);
+                if (objYoutubeAccountRepository.checkTubmlrUserExists(objYoutubeAccount))
+                {
+                    objYoutubeAccount = objYoutubeAccountRepository.getYoutubeAccountDetailsById(ProfileId, Guid.Parse(UserId));
+                }
+                else
+                {
+                    objYoutubeAccount = objYoutubeAccountRepository.getYoutubeAccountDetailsById(ProfileId);
+                }
                 return new JavaScriptSerializer().Serialize(objYoutubeAccount);
             }
             catch (Exception ex)

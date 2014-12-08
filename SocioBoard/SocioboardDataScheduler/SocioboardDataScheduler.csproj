@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SocioboardDataScheduler</RootNamespace>
     <AssemblyName>SocioboardDataScheduler</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,27 +36,12 @@
     <Reference Include="Facebook">
       <HintPath>..\SocioboardAPI\lib\Facebook.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.7.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SocioboardAPI\lib\MySql.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="MySql.Data.Entity, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SocioboardAPI\lib\MySql.Data.Entity.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SocioboardAPI\lib\NHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate.Linq, Version=1.0.0.4000, Culture=neutral, PublicKeyToken=444cf6a87fdab271, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SocioboardAPI\bin\NHibernate.Linq.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernateHelper, Version=1.1.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SocioboardAPI\lib\NHibernateHelper.dll</HintPath>
+      <HintPath>bin\Debug\log4net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Web.Extensions" />
@@ -76,9 +62,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="NewsLetterScheduler.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -173,24 +156,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="bin\Debug\SocioboardDataScheduler.exe.config" />
-    <None Include="bin\Debug\SocioboardDataScheduler.vshost.exe.config">
+    <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="obj\Debug\build.force" />
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="obj\Debug\SocioboardDataScheduler.csprojResolveAssemblyReference.cache" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </None>
     <None Include="Web References\Api.FacebookAccount\FacebookAccount.wsdl" />
     <None Include="Web References\Api.FacebookAccount\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </None>
     <None Include="Web References\Api.Facebook\Facebook.wsdl" />
     <None Include="Web References\Api.Facebook\Reference.map">
@@ -256,7 +232,9 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.YoutubeAccount\YoutubeAccount.wsdl" />
+    <None Include="Web References\Api.YoutubeAccount\YoutubeAccount.wsdl">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web References\Api.Youtube\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -440,12 +418,6 @@
     <None Include="Web References\Api.ScheduledMessage\ScheduledMessage.disco" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Domain.Socioboard\Domain.Socioboard.csproj">
-      <Project>{96ecfb64-a9ac-45f4-85bf-185e9c6a0f53}</Project>
-      <Name>Domain.Socioboard</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Web References\Api.FacebookAccount\FacebookAccount.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -476,9 +448,7 @@
     <None Include="Web References\Api.Tumblr\Tumblr.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\Api.Instagram\Instagram.disco">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="Web References\Api.Instagram\Instagram.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\Api.InstagramAccount\InstagramAccount.disco" />
@@ -490,33 +460,14 @@
     <None Include="Web References\Api.Linkedin\Linkedin.disco" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\Domain.Socioboard.dll" />
-    <Content Include="bin\Debug\Domain.Socioboard.pdb" />
-    <Content Include="bin\Debug\Facebook.dll" />
-    <Content Include="bin\Debug\Iesi.Collections.dll" />
-    <Content Include="bin\Debug\Iesi.Collections.pdb" />
-    <Content Include="bin\Debug\Iesi.Collections.xml" />
-    <Content Include="bin\Debug\MySql.Data.dll" />
-    <Content Include="bin\Debug\MySql.Data.Entity.dll" />
-    <Content Include="bin\Debug\Newtonsoft.Json.dll" />
-    <Content Include="bin\Debug\NHibernate.dll" />
-    <Content Include="bin\Debug\NHibernate.Linq.dll" />
-    <Content Include="bin\Debug\NHibernate.pdb" />
-    <Content Include="bin\Debug\NHibernate.xml" />
-    <Content Include="bin\Debug\NHibernateHelper.dll" />
-    <Content Include="bin\Debug\NHibernateHelper.pdb" />
-    <Content Include="bin\Debug\SocioboardDataScheduler.exe" />
-    <Content Include="bin\Debug\SocioboardDataScheduler.pdb" />
-    <Content Include="bin\Debug\SocioboardDataScheduler.vshost.exe" />
-    <Content Include="bin\MySql.Data.dll" />
-    <Content Include="bin\MySql.Data.Entity.dll" />
-    <Content Include="obj\Debug\SocioboardDataScheduler.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\SocioboardDataScheduler.exe" />
-    <Content Include="obj\Debug\SocioboardDataScheduler.pdb" />
-    <Content Include="obj\Debug\TempPE\Web References.Api.Facebook.Reference.cs.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Release\" />
+    <ProjectReference Include="..\Domain.Socioboard\Domain.Socioboard.csproj">
+      <Project>{96ECFB64-A9AC-45F4-85BF-185E9C6A0F53}</Project>
+      <Name>Domain.Socioboard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SocioboardAPI\Api.Socioboard.csproj">
+      <Project>{B5C88250-C9CF-47CC-AB17-AAB30CFDBD26}</Project>
+      <Name>Api.Socioboard</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

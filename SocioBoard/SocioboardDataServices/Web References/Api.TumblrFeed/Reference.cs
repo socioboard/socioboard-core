@@ -29,7 +29,7 @@ namespace SocioboardDataServices.Api.TumblrFeed {
     [System.Web.Services.WebServiceBindingAttribute(Name="TumblrFeedSoap", Namespace="http://tempuri.org/")]
     public partial class TumblrFeed : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
-        private System.Threading.SendOrPostCallback HelloWorldOperationCompleted;
+        private System.Threading.SendOrPostCallback GetAllTumblrFeedOfUsersOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -70,32 +70,36 @@ namespace SocioboardDataServices.Api.TumblrFeed {
         }
         
         /// <remarks/>
-        public event HelloWorldCompletedEventHandler HelloWorldCompleted;
+        public event GetAllTumblrFeedOfUsersCompletedEventHandler GetAllTumblrFeedOfUsersCompleted;
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/HelloWorld", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string HelloWorld() {
-            object[] results = this.Invoke("HelloWorld", new object[0]);
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllTumblrFeedOfUsers", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetAllTumblrFeedOfUsers(string UserId, string ProfileId) {
+            object[] results = this.Invoke("GetAllTumblrFeedOfUsers", new object[] {
+                        UserId,
+                        ProfileId});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void HelloWorldAsync() {
-            this.HelloWorldAsync(null);
+        public void GetAllTumblrFeedOfUsersAsync(string UserId, string ProfileId) {
+            this.GetAllTumblrFeedOfUsersAsync(UserId, ProfileId, null);
         }
         
         /// <remarks/>
-        public void HelloWorldAsync(object userState) {
-            if ((this.HelloWorldOperationCompleted == null)) {
-                this.HelloWorldOperationCompleted = new System.Threading.SendOrPostCallback(this.OnHelloWorldOperationCompleted);
+        public void GetAllTumblrFeedOfUsersAsync(string UserId, string ProfileId, object userState) {
+            if ((this.GetAllTumblrFeedOfUsersOperationCompleted == null)) {
+                this.GetAllTumblrFeedOfUsersOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllTumblrFeedOfUsersOperationCompleted);
             }
-            this.InvokeAsync("HelloWorld", new object[0], this.HelloWorldOperationCompleted, userState);
+            this.InvokeAsync("GetAllTumblrFeedOfUsers", new object[] {
+                        UserId,
+                        ProfileId}, this.GetAllTumblrFeedOfUsersOperationCompleted, userState);
         }
         
-        private void OnHelloWorldOperationCompleted(object arg) {
-            if ((this.HelloWorldCompleted != null)) {
+        private void OnGetAllTumblrFeedOfUsersOperationCompleted(object arg) {
+            if ((this.GetAllTumblrFeedOfUsersCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.HelloWorldCompleted(this, new HelloWorldCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GetAllTumblrFeedOfUsersCompleted(this, new GetAllTumblrFeedOfUsersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -120,17 +124,17 @@ namespace SocioboardDataServices.Api.TumblrFeed {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void HelloWorldCompletedEventHandler(object sender, HelloWorldCompletedEventArgs e);
+    public delegate void GetAllTumblrFeedOfUsersCompletedEventHandler(object sender, GetAllTumblrFeedOfUsersCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class HelloWorldCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetAllTumblrFeedOfUsersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal HelloWorldCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal GetAllTumblrFeedOfUsersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

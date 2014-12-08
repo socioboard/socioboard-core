@@ -35,7 +35,7 @@ namespace Socioboard.Api.FbPageLiker {
         
         /// <remarks/>
         public FbPageLiker() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_FbPageLiker_FbPageLiker;
+            this.Url = "http://localhost:6361/Services/FbPageLiker.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

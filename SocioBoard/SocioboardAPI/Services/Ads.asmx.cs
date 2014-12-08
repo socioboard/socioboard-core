@@ -21,10 +21,88 @@ namespace Api.Socioboard.Services
     public class Ads : System.Web.Services.WebService
     {
 
+
+        AdsRepository objAdsRepo = new AdsRepository();
+
         [WebMethod]
         public string HelloWorld()
         {
             return "Hello World";
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllAds()
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.Ads> objAds = objAdsRepo.getAllAds();
+                return new JavaScriptSerializer().Serialize(objAds);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return null;
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAdsdetailsById(string AdsId)
+        {
+            try
+            {
+                Domain.Socioboard.Domain.Ads objAds = objAdsRepo.getAdsDetailsbyId(Guid.Parse(AdsId));
+                return new JavaScriptSerializer().Serialize(objAds);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string UpdateAdvertisement(string ObjAdvertisement)
+        {
+            try
+            {
+                Domain.Socioboard.Domain.Ads ObjAds = (Domain.Socioboard.Domain.Ads)(new JavaScriptSerializer().Deserialize(ObjAdvertisement, typeof(Domain.Socioboard.Domain.Ads)));
+                objAdsRepo.UpdateAds(ObjAds);
+                return new JavaScriptSerializer().Serialize("Updated Successfully");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return null;
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string AddAdvertisement(string ObjAdvertisement, string Advertise)
+        {
+            try
+            {
+                if (objAdsRepo.checkAdsExists(Advertise))
+                {
+                    Domain.Socioboard.Domain.Ads ObjAds = (Domain.Socioboard.Domain.Ads)(new JavaScriptSerializer().Deserialize(ObjAdvertisement, typeof(Domain.Socioboard.Domain.Ads)));
+                    objAdsRepo.UpdateAds(ObjAds);
+                    return new JavaScriptSerializer().Serialize("Success");
+                }
+                else
+                {
+                    Domain.Socioboard.Domain.Ads ObjAds = (Domain.Socioboard.Domain.Ads)(new JavaScriptSerializer().Deserialize(ObjAdvertisement, typeof(Domain.Socioboard.Domain.Ads)));
+                    objAdsRepo.AddAds(ObjAds);
+                    return new JavaScriptSerializer().Serialize("Success");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return null;
+            }
         }
     }
 }

@@ -1226,6 +1226,14 @@ namespace Socioboard.Helper
         }
 
 
+        public static string GenerateRandomUniqueString()
+        {
+            Guid g = Guid.NewGuid();
+            string GuidString = Convert.ToBase64String(g.ToByteArray());
+            GuidString = GuidString.Replace("=", "");
+            GuidString = GuidString.Replace("+", "");
+            return GuidString;
+        }
 
     }
 

@@ -125,6 +125,23 @@ function signinFunction() {
                     else if (msg == "unpaid") {
                         window.location = '../PersonalSetting/Index';
                     }
+
+                    //Modified by Hozefa
+                    else if (msg == "SuperAdmin") {
+                        //alert(msg);
+                        //window.location = "../Home.aspx";
+                        //window.location = "../Referrals.aspx";
+                        window.top.location = "../AdminHome/Dashboard";
+
+                        // Edited by Antima
+
+                        //if ($("#RememberMe").is(':checked')) {
+                        //    checkCookie(username, password);
+                        //}
+                    }
+
+
+
                     else {
                         document.getElementById('signinpasswordMessages').innerHTML = msg;
                         $('#btnlogin').html("<button class='btn btn-warning' type='button'>Login</button>");

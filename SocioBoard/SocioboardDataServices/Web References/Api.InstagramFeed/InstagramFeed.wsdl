@@ -108,16 +108,16 @@
   </wsdl:binding>
   <wsdl:service name="InstagramFeed">
     <wsdl:port name="InstagramFeedSoap" binding="tns:InstagramFeedSoap">
-      <soap:address location="http://api.socioboard.com/Services/InstagramFeed.asmx" />
+      <soap:address location="http://localhost:6361/Services/InstagramFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramFeedSoap12" binding="tns:InstagramFeedSoap12">
-      <soap12:address location="http://api.socioboard.com/Services/InstagramFeed.asmx" />
+      <soap12:address location="http://localhost:6361/Services/InstagramFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramFeedHttpGet" binding="tns:InstagramFeedHttpGet">
-      <http:address location="http://api.socioboard.com/Services/InstagramFeed.asmx" />
+      <http:address location="http://localhost:6361/Services/InstagramFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramFeedHttpPost" binding="tns:InstagramFeedHttpPost">
-      <http:address location="http://api.socioboard.com/Services/InstagramFeed.asmx" />
+      <http:address location="http://localhost:6361/Services/InstagramFeed.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

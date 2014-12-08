@@ -1,0 +1,24 @@
+﻿@using Domain.Socioboard.Domain;
+@{Layout = null;}
+<thead>
+    <tr>
+        <th>Message</th>
+        <th>Scheduled Time</th>
+        <th>Status</th>
+    </tr>
+</thead>
+
+<tbody>
+    @foreach (Domain.Socioboard.Domain.ScheduledMessage item in (List<Domain.Socioboard.Domain.ScheduledMessage>)Model)
+    {
+
+        
+        <tr class="odd gradeX">
+            <td>@item.ShareMessage</td>
+            <td>@item.ScheduleTime</td>
+            <td>@item.Status</td>
+        </tr>
+    }
+</tbody>
+
+

@@ -47,6 +47,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetAllYoutubeAccountsByUserIdAndGroupId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllYoutubeAccountsByUserIdAndGroupIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllYoutubeAccountsByUserIdAndGroupIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -68,6 +83,12 @@
   <wsdl:message name="DeleteYoutubeAccountSoapOut">
     <wsdl:part name="parameters" element="tns:DeleteYoutubeAccountResponse" />
   </wsdl:message>
+  <wsdl:message name="GetAllYoutubeAccountsByUserIdAndGroupIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllYoutubeAccountsByUserIdAndGroupId" />
+  </wsdl:message>
+  <wsdl:message name="GetAllYoutubeAccountsByUserIdAndGroupIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllYoutubeAccountsByUserIdAndGroupIdResponse" />
+  </wsdl:message>
   <wsdl:message name="GetYoutubeAccountDetailsByIdHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="ProfileId" type="s:string" />
@@ -87,6 +108,13 @@
     <wsdl:part name="GroupId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="DeleteYoutubeAccountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllYoutubeAccountsByUserIdAndGroupIdHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllYoutubeAccountsByUserIdAndGroupIdHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetYoutubeAccountDetailsByIdHttpPostIn">
@@ -110,6 +138,13 @@
   <wsdl:message name="DeleteYoutubeAccountHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetAllYoutubeAccountsByUserIdAndGroupIdHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllYoutubeAccountsByUserIdAndGroupIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="YoutubeAccountSoap">
     <wsdl:operation name="GetYoutubeAccountDetailsById">
       <wsdl:input message="tns:GetYoutubeAccountDetailsByIdSoapIn" />
@@ -122,6 +157,10 @@
     <wsdl:operation name="DeleteYoutubeAccount">
       <wsdl:input message="tns:DeleteYoutubeAccountSoapIn" />
       <wsdl:output message="tns:DeleteYoutubeAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllYoutubeAccountsByUserIdAndGroupId">
+      <wsdl:input message="tns:GetAllYoutubeAccountsByUserIdAndGroupIdSoapIn" />
+      <wsdl:output message="tns:GetAllYoutubeAccountsByUserIdAndGroupIdSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="YoutubeAccountHttpGet">
@@ -137,6 +176,10 @@
       <wsdl:input message="tns:DeleteYoutubeAccountHttpGetIn" />
       <wsdl:output message="tns:DeleteYoutubeAccountHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllYoutubeAccountsByUserIdAndGroupId">
+      <wsdl:input message="tns:GetAllYoutubeAccountsByUserIdAndGroupIdHttpGetIn" />
+      <wsdl:output message="tns:GetAllYoutubeAccountsByUserIdAndGroupIdHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="YoutubeAccountHttpPost">
     <wsdl:operation name="GetYoutubeAccountDetailsById">
@@ -150,6 +193,10 @@
     <wsdl:operation name="DeleteYoutubeAccount">
       <wsdl:input message="tns:DeleteYoutubeAccountHttpPostIn" />
       <wsdl:output message="tns:DeleteYoutubeAccountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllYoutubeAccountsByUserIdAndGroupId">
+      <wsdl:input message="tns:GetAllYoutubeAccountsByUserIdAndGroupIdHttpPostIn" />
+      <wsdl:output message="tns:GetAllYoutubeAccountsByUserIdAndGroupIdHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="YoutubeAccountSoap" type="tns:YoutubeAccountSoap">
@@ -174,6 +221,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteYoutubeAccount">
       <soap:operation soapAction="http://tempuri.org/DeleteYoutubeAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllYoutubeAccountsByUserIdAndGroupId">
+      <soap:operation soapAction="http://tempuri.org/GetAllYoutubeAccountsByUserIdAndGroupId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -211,6 +267,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllYoutubeAccountsByUserIdAndGroupId">
+      <soap12:operation soapAction="http://tempuri.org/GetAllYoutubeAccountsByUserIdAndGroupId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="YoutubeAccountHttpGet" type="tns:YoutubeAccountHttpGet">
     <http:binding verb="GET" />
@@ -234,6 +299,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteYoutubeAccount">
       <http:operation location="/DeleteYoutubeAccount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllYoutubeAccountsByUserIdAndGroupId">
+      <http:operation location="/GetAllYoutubeAccountsByUserIdAndGroupId" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -271,19 +345,28 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllYoutubeAccountsByUserIdAndGroupId">
+      <http:operation location="/GetAllYoutubeAccountsByUserIdAndGroupId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="YoutubeAccount">
     <wsdl:port name="YoutubeAccountSoap" binding="tns:YoutubeAccountSoap">
-      <soap:address location="http://api.socioboard.com/Services/YoutubeAccount.asmx" />
+      <soap:address location="http://localhost:6361/Services/YoutubeAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="YoutubeAccountSoap12" binding="tns:YoutubeAccountSoap12">
-      <soap12:address location="http://api.socioboard.com/Services/YoutubeAccount.asmx" />
+      <soap12:address location="http://localhost:6361/Services/YoutubeAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="YoutubeAccountHttpGet" binding="tns:YoutubeAccountHttpGet">
-      <http:address location="http://api.socioboard.com/Services/YoutubeAccount.asmx" />
+      <http:address location="http://localhost:6361/Services/YoutubeAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="YoutubeAccountHttpPost" binding="tns:YoutubeAccountHttpPost">
-      <http:address location="http://api.socioboard.com/Services/YoutubeAccount.asmx" />
+      <http:address location="http://localhost:6361/Services/YoutubeAccount.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

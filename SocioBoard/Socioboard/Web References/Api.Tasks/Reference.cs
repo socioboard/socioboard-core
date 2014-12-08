@@ -57,7 +57,7 @@ namespace Socioboard.Api.Tasks {
         
         /// <remarks/>
         public Tasks() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_Tasks_Tasks;
+            this.Url = "http://localhost:6361/Services/Tasks.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -129,7 +129,7 @@ namespace Socioboard.Api.Tasks {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CreateNewTask", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void CreateNewTask(string description, string userid, Domain.Socioboard.Domain.Tasks task, string assigntoId, string comment) {
+        public void CreateNewTask(string description, string userid, Tasks1 task, string assigntoId, string comment) {
             this.Invoke("CreateNewTask", new object[] {
                         description,
                         userid,
@@ -139,12 +139,12 @@ namespace Socioboard.Api.Tasks {
         }
         
         /// <remarks/>
-        public void CreateNewTaskAsync(string description, string userid, Domain.Socioboard.Domain.Tasks task, string assigntoId, string comment) {
+        public void CreateNewTaskAsync(string description, string userid, Tasks1 task, string assigntoId, string comment) {
             this.CreateNewTaskAsync(description, userid, task, assigntoId, comment, null);
         }
         
         /// <remarks/>
-        public void CreateNewTaskAsync(string description, string userid, Domain.Socioboard.Domain.Tasks task, string assigntoId, string comment, object userState) {
+        public void CreateNewTaskAsync(string description, string userid, Tasks1 task, string assigntoId, string comment, object userState) {
             if ((this.CreateNewTaskOperationCompleted == null)) {
                 this.CreateNewTaskOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateNewTaskOperationCompleted);
             }
@@ -393,7 +393,7 @@ namespace Socioboard.Api.Tasks {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/addTask", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void addTask(string description, string userid, Domain.Socioboard.Domain.Tasks task, string assigntoId, string comment, string AssignDate) {
+        public void addTask(string description, string userid, Tasks1 task, string assigntoId, string comment, string AssignDate) {
             this.Invoke("addTask", new object[] {
                         description,
                         userid,
@@ -404,12 +404,12 @@ namespace Socioboard.Api.Tasks {
         }
         
         /// <remarks/>
-        public void addTaskAsync(string description, string userid, Domain.Socioboard.Domain.Tasks task, string assigntoId, string comment, string AssignDate) {
+        public void addTaskAsync(string description, string userid, Tasks1 task, string assigntoId, string comment, string AssignDate) {
             this.addTaskAsync(description, userid, task, assigntoId, comment, AssignDate, null);
         }
         
         /// <remarks/>
-        public void addTaskAsync(string description, string userid, Domain.Socioboard.Domain.Tasks task, string assigntoId, string comment, string AssignDate, object userState) {
+        public void addTaskAsync(string description, string userid, Tasks1 task, string assigntoId, string comment, string AssignDate, object userState) {
             if ((this.addTaskOperationCompleted == null)) {
                 this.addTaskOperationCompleted = new System.Threading.SendOrPostCallback(this.OnaddTaskOperationCompleted);
             }
@@ -431,8 +431,7 @@ namespace Socioboard.Api.Tasks {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddNewTaskWithGroup", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void AddNewTaskWithGroup(string description, string userid, Domain.Socioboard.Domain.Tasks task, string assigntoId, string comment, string AssignDate, string groupid)
-        {
+        public void AddNewTaskWithGroup(string description, string userid, Tasks1 task, string assigntoId, string comment, string AssignDate, string groupid) {
             this.Invoke("AddNewTaskWithGroup", new object[] {
                         description,
                         userid,
@@ -444,12 +443,12 @@ namespace Socioboard.Api.Tasks {
         }
         
         /// <remarks/>
-        public void AddNewTaskWithGroupAsync(string description, string userid, Domain.Socioboard.Domain.Tasks task, string assigntoId, string comment, string AssignDate, string groupid) {
+        public void AddNewTaskWithGroupAsync(string description, string userid, Tasks1 task, string assigntoId, string comment, string AssignDate, string groupid) {
             this.AddNewTaskWithGroupAsync(description, userid, task, assigntoId, comment, AssignDate, groupid, null);
         }
         
         /// <remarks/>
-        public void AddNewTaskWithGroupAsync(string description, string userid, Domain.Socioboard.Domain.Tasks task, string assigntoId, string comment, string AssignDate, string groupid, object userState) {
+        public void AddNewTaskWithGroupAsync(string description, string userid, Tasks1 task, string assigntoId, string comment, string AssignDate, string groupid, object userState) {
             if ((this.AddNewTaskWithGroupOperationCompleted == null)) {
                 this.AddNewTaskWithGroupOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddNewTaskWithGroupOperationCompleted);
             }
@@ -555,6 +554,122 @@ namespace Socioboard.Api.Tasks {
         }
     }
     
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="Tasks", Namespace="http://tempuri.org/")]
+    public partial class Tasks1 {
+        
+        private System.Guid idField;
+        
+        private System.Guid groupIdField;
+        
+        private string taskMessageField;
+        
+        private System.Guid userIdField;
+        
+        private System.Guid assignTaskToField;
+        
+        private bool taskStatusField;
+        
+        private string assignDateField;
+        
+        private System.DateTime completionDateField;
+        
+        private int readStatusField;
+        
+        /// <remarks/>
+        public System.Guid Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.Guid GroupId {
+            get {
+                return this.groupIdField;
+            }
+            set {
+                this.groupIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string TaskMessage {
+            get {
+                return this.taskMessageField;
+            }
+            set {
+                this.taskMessageField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.Guid UserId {
+            get {
+                return this.userIdField;
+            }
+            set {
+                this.userIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.Guid AssignTaskTo {
+            get {
+                return this.assignTaskToField;
+            }
+            set {
+                this.assignTaskToField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool TaskStatus {
+            get {
+                return this.taskStatusField;
+            }
+            set {
+                this.taskStatusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string AssignDate {
+            get {
+                return this.assignDateField;
+            }
+            set {
+                this.assignDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime CompletionDate {
+            get {
+                return this.completionDateField;
+            }
+            set {
+                this.completionDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ReadStatus {
+            get {
+                return this.readStatusField;
+            }
+            set {
+                this.readStatusField = value;
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]

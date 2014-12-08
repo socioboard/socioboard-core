@@ -24,6 +24,9 @@ namespace Domain.Socioboard.Domain
         public string RefereeStatus { get; set; }
         public string UserType { get; set; }
 
+        public string ChangePasswordKey { get; set; }
+        public int IsKeyUsed { get; set; }
+
         public static List<User> lstUser = new List<User>();
     }
 }

@@ -1,0 +1,240 @@
+﻿@using Domain.Socioboard.Domain;
+
+<div id="page-wrapper">
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Add News letter</h1>
+                </div>
+
+                  <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            
+
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label>Subject</label>
+                                            <input class="form-control" id="txtNewsLatterSubject" placeholder="Enter Subject">
+                                        </div>
+                                         <div class='box'>
+                                <div class='box-header'>
+                                </div><!-- /.box-header -->
+                                <div class='box-body pad'>
+                                    <form>
+                                        <textarea class="textarea" id="txtNewslatterEditor" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                    </form>
+                                </div>
+                            </div>
+
+
+
+
+                                         <div class="col-xs-6">
+                                            <label for="username-email">Send Date</label><span class="pull-right text-danger">*</span>
+                                            <input id="NewsLatterSendDate" placeholder="--Select Date--" type="text" class="form-control">
+                                        </div>
+                                        
+                                        <div class="col-md-12">
+                                            <div class="col-md-4" style="margin-top:10px; margin-bottom:10px;">
+                                                <input type="submit" class="btn btn-icon btn-primary circle_ok" id="btnUnSelectAll" value="UnSelect All">
+                                            </div>
+                                            <div class="col-md-4" style="margin-top:10px; margin-bottom:10px;">
+                                                <input type="submit" class="btn btn-icon btn-primary circle_ok" id="btnSelectAllDeluxe" value="Select All Deluxe" >
+                                            </div>
+                                             <div class="col-md-4" style="margin-top:10px; margin-bottom:10px;">
+                                                <input type="submit" class="btn btn-icon btn-primary circle_ok" id="btnSelectAllSocioDeluxe" value="Select All SocioDeluxe">
+                                            </div>
+                                            <div class="col-md-4" style="margin-top:10px; margin-bottom:10px;">
+                                                <input type="submit" class="btn btn-icon btn-primary circle_ok" id="btnSelectAll" value="Select All" >
+                                            </div>
+                                            <div class="col-md-4" style="margin-top:10px; margin-bottom:10px;">
+                                                <input type="submit" class="btn btn-icon btn-primary circle_ok" id="btnSelectAllPremium" value="Select All Premium" >
+                                            </div>
+                                            <div class="col-md-4" style="margin-top:10px; margin-bottom:10px;">
+                                                <input type="submit" class="btn btn-icon btn-primary circle_ok" id="btnSelectAllSocioPremium" value="Select All SocioPremium" >
+                                            </div>
+                                             <div class="col-md-4" style="margin-top:10px; margin-bottom:10px;">
+                                                <input type="submit" class="btn btn-icon btn-primary circle_ok" id="btnSelectAllPaid" value="Select All Paid" >
+                                            </div>
+                                            <div class="col-md-4" style="margin-top:10px; margin-bottom:10px;">
+                                                <input type="submit" class="btn btn-icon btn-primary circle_ok" id="btnSelectAllStandard" value="Select All Standard" >
+                                            </div>
+                                            <div class="col-md-4" style="margin-top:10px; margin-bottom:10px;">
+                                                <input type="submit" class="btn btn-icon btn-primary circle_ok" id="btnSelectAllSocioStandard" value="Select All SocioStandard" >
+                                            </div>
+                                            <div class="col-md-4" style="margin-top:10px; margin-bottom:10px;">
+                                                <input type="submit" class="btn btn-icon btn-primary circle_ok" id="btnSelectAllUnpaid" value="Select All Unpaid" >
+                                            </div>
+                                            <div class="col-md-4" style="margin-top:10px; margin-bottom:10px;">
+                                                <input type="submit" class="btn btn-icon btn-primary circle_ok" id="btnSelectAllFree" value="Select All Free">
+                                            </div>
+                                            <div class="col-md-4" style="margin-top:10px; margin-bottom:10px;">
+                                                <input type="submit" class="btn btn-icon btn-primary circle_ok" id="btnSelectAllSocioBasic" value="Select All SocioBasic">
+                                            </div>
+
+                                        </div>
+                                        <div class="controls scroll col-md-12">
+                                            @foreach (var item in (List<User>)Model)
+                                            {
+                                                <div class="col-md-4">
+                                                <input type="checkbox" name="checkboxlist" class="scheckboxs" id="AllUsersMails" value="@item.Id" data-Paystatus="@item.PaymentStatus"data-PackageType="@item.AccountType" /> 
+                                                @item.UserName
+                                                </div>
+                                            }
+    
+                                        </div>
+                                        <div>
+                                        <button type="submit" class="btn btn-default" onclick="SendNewsLatter();">Add News Latter</button>
+                                            </div>
+                                    </form>
+                            
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+                   
+            </div>
+            <!-- /.row -->
+    
+          
+        </div>
+<script src="~/Themes/Socioboard/Contents/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+        $('#NewsLatterSendDate').datepicker({
+            startDate: '-0m'
+            //endDate: '+2d'
+        }).on('changeDate', function (ev) {
+            $('#sDate1').text($('#datepicker').data('date'));
+            $('#datepicker').datepicker('hide');
+        });
+
+            //bootstrap WYSIHTML5 - text editor
+            $(".textarea").wysihtml5();
+    });
+    $("#btnSelectAll").click(function () {
+    var checkboxes = document.getElementsByTagName('input');
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].type == 'checkbox') {
+                checkboxes[i].checked = true;
+            }
+            }
+
+    
+    });
+
+    $("#btnUnSelectAll").click(function () {
+        $('.scheckboxs').prop("checked", false);
+
+    });
+
+    $("#btnSelectAllPaid").click(function () {
+        $('.scheckboxs').prop("checked", false);
+
+        $('[data-Paystatus="paid"]').prop("checked", true);
+    });
+
+    $("#btnSelectAllUnpaid").click(function () {
+        //clearallcheckboxofuser();
+        $('.scheckboxs').prop("checked", false);
+
+        $('[data-paystatus="unpaid"]').prop("checked", true);
+    });
+    $("#btnSelectAllDeluxe").click(function () {
+        //clearallcheckboxofuser();
+        $('.scheckboxs').prop("checked", false);
+
+        $('[data-PackageType="Deluxe"]').prop("checked", true);
+    });
+    $("#btnSelectAllPremium").click(function () {
+        //clearallcheckboxofuser();
+        $('.scheckboxs').prop("checked", false);
+
+        $('[data-packagetype="Premium"]').prop("checked", true);
+    });
+    $("#btnSelectAllStandard").click(function () {
+        //clearallcheckboxofuser();
+        $('.scheckboxs').prop("checked", false);
+
+        $('[data-packagetype="Standard"]').prop("checked", true);
+    });
+    $("#btnSelectAllFree").click(function () {
+        //clearallcheckboxofuser();
+        $('.scheckboxs').prop("checked", false);
+
+        $('[data-packagetype="Free"]').prop("checked", true);
+    });
+    $("#btnSelectAllSocioDeluxe").click(function () {
+        $('.scheckboxs').prop("checked", false);
+
+        $('[data-packagetype="SocioDeluxe"]').prop("checked", true);
+    });
+    $("#btnSelectAllSocioPremium").click(function () {
+        $('.scheckboxs').prop("checked", false);
+
+        $('[data-packagetype="SocioPremium"]').prop("checked", true);
+    });
+    $("#btnSelectAllSocioStandard").click(function () {
+        $('.scheckboxs').prop("checked", false);
+
+        $('[data-packagetype="SocioStandard"]').prop("checked", true);
+    });
+    $("#btnSelectAllSocioBasic").click(function () {
+        $('.scheckboxs').prop("checked", false);
+
+        $('[data-packagetype="SocioBasic"]').prop("checked", true);
+    });
+
+    function SendNewsLatter()
+    {
+        debugger;
+        var Subject = $("#txtNewsLatterSubject").val();
+        var NewsBody = $("#txtNewslatterEditor").val();
+        var SendDate = $("#NewsLatterSendDate").val();
+
+        var UserIds = $('input[name=checkboxlist]:checked').map(function () {
+            return $(this).val();
+        }).get();
+        if (UserIds == "" || UserIds == null)
+        {
+            alertify.error("Please Select at least one User to send Add news latter!");
+            return false;
+        }
+        if (Subject == "") {
+            alertify.error('Please enter Subject');
+            return false;
+        }
+        if (NewsBody == "") {
+            alertify.error('Please enter News Latter Content to Send');
+            return false;
+        }
+        if (SendDate == "")
+        {
+            alertify.error('Please select Date');
+        }
+        $.ajax({
+            type: 'POST',
+            url: '../AddNewsLatter/SendAddNewsLatter?Subject=' + Subject + '&NewsBody=' + NewsBody + '&SendDate=' + SendDate + '&UserIds=' + UserIds,
+            success: function (msg) {
+                if (msg == "Success") {
+                    alertify.success('Successfully Added');
+                    window.top.location.href = "../AddNewsLatter/LoadAddNewsLatter";
+                }
+                else {
+                    alertify.error('Error please check');
+                }
+            },
+            async: false
+        });
+    }
+
+
+   
+</script>
+

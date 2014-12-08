@@ -31,11 +31,15 @@ namespace SocioboardDataScheduler.Api.Instagram {
         
         private System.Threading.SendOrPostCallback getInstagramDataOperationCompleted;
         
+        private System.Threading.SendOrPostCallback SheduleInstagramMessageOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetInstagramRedirectUrlOperationCompleted;
         
         private System.Threading.SendOrPostCallback AddInstagramAccountOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetIntagramImagesOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback InstagramLikeUnLikeOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -79,6 +83,9 @@ namespace SocioboardDataScheduler.Api.Instagram {
         public event getInstagramDataCompletedEventHandler getInstagramDataCompleted;
         
         /// <remarks/>
+        public event SheduleInstagramMessageCompletedEventHandler SheduleInstagramMessageCompleted;
+        
+        /// <remarks/>
         public event GetInstagramRedirectUrlCompletedEventHandler GetInstagramRedirectUrlCompleted;
         
         /// <remarks/>
@@ -88,11 +95,15 @@ namespace SocioboardDataScheduler.Api.Instagram {
         public event GetIntagramImagesCompletedEventHandler GetIntagramImagesCompleted;
         
         /// <remarks/>
+        public event InstagramLikeUnLikeCompletedEventHandler InstagramLikeUnLikeCompleted;
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getInstagramData", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void getInstagramData(string UserId, string InstagramId) {
-            this.Invoke("getInstagramData", new object[] {
+        public string getInstagramData(string UserId, string InstagramId) {
+            object[] results = this.Invoke("getInstagramData", new object[] {
                         UserId,
                         InstagramId});
+            return ((string)(results[0]));
         }
         
         /// <remarks/>
@@ -113,7 +124,40 @@ namespace SocioboardDataScheduler.Api.Instagram {
         private void OngetInstagramDataOperationCompleted(object arg) {
             if ((this.getInstagramDataCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.getInstagramDataCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.getInstagramDataCompleted(this, new getInstagramDataCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SheduleInstagramMessage", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string SheduleInstagramMessage(string InstagramId, string UserId, string sscheduledmsgguid) {
+            object[] results = this.Invoke("SheduleInstagramMessage", new object[] {
+                        InstagramId,
+                        UserId,
+                        sscheduledmsgguid});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SheduleInstagramMessageAsync(string InstagramId, string UserId, string sscheduledmsgguid) {
+            this.SheduleInstagramMessageAsync(InstagramId, UserId, sscheduledmsgguid, null);
+        }
+        
+        /// <remarks/>
+        public void SheduleInstagramMessageAsync(string InstagramId, string UserId, string sscheduledmsgguid, object userState) {
+            if ((this.SheduleInstagramMessageOperationCompleted == null)) {
+                this.SheduleInstagramMessageOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSheduleInstagramMessageOperationCompleted);
+            }
+            this.InvokeAsync("SheduleInstagramMessage", new object[] {
+                        InstagramId,
+                        UserId,
+                        sscheduledmsgguid}, this.SheduleInstagramMessageOperationCompleted, userState);
+        }
+        
+        private void OnSheduleInstagramMessageOperationCompleted(object arg) {
+            if ((this.SheduleInstagramMessageCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SheduleInstagramMessageCompleted(this, new SheduleInstagramMessageCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -215,6 +259,43 @@ namespace SocioboardDataScheduler.Api.Instagram {
             if ((this.GetIntagramImagesCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetIntagramImagesCompleted(this, new GetIntagramImagesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InstagramLikeUnLike", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string InstagramLikeUnLike(string LikeCount, string IsLike, string FeedId, string InstagramId, string UserId) {
+            object[] results = this.Invoke("InstagramLikeUnLike", new object[] {
+                        LikeCount,
+                        IsLike,
+                        FeedId,
+                        InstagramId,
+                        UserId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void InstagramLikeUnLikeAsync(string LikeCount, string IsLike, string FeedId, string InstagramId, string UserId) {
+            this.InstagramLikeUnLikeAsync(LikeCount, IsLike, FeedId, InstagramId, UserId, null);
+        }
+        
+        /// <remarks/>
+        public void InstagramLikeUnLikeAsync(string LikeCount, string IsLike, string FeedId, string InstagramId, string UserId, object userState) {
+            if ((this.InstagramLikeUnLikeOperationCompleted == null)) {
+                this.InstagramLikeUnLikeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInstagramLikeUnLikeOperationCompleted);
+            }
+            this.InvokeAsync("InstagramLikeUnLike", new object[] {
+                        LikeCount,
+                        IsLike,
+                        FeedId,
+                        InstagramId,
+                        UserId}, this.InstagramLikeUnLikeOperationCompleted, userState);
+        }
+        
+        private void OnInstagramLikeUnLikeOperationCompleted(object arg) {
+            if ((this.InstagramLikeUnLikeCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InstagramLikeUnLikeCompleted(this, new InstagramLikeUnLikeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -380,7 +461,55 @@ namespace SocioboardDataScheduler.Api.Instagram {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void getInstagramDataCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    public delegate void getInstagramDataCompletedEventHandler(object sender, getInstagramDataCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getInstagramDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getInstagramDataCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void SheduleInstagramMessageCompletedEventHandler(object sender, SheduleInstagramMessageCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SheduleInstagramMessageCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SheduleInstagramMessageCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
@@ -447,6 +576,32 @@ namespace SocioboardDataScheduler.Api.Instagram {
         private object[] results;
         
         internal GetIntagramImagesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void InstagramLikeUnLikeCompletedEventHandler(object sender, InstagramLikeUnLikeCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class InstagramLikeUnLikeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal InstagramLikeUnLikeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

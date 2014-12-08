@@ -53,7 +53,7 @@ namespace Socioboard.Api.LinkedinCompanyPage {
         
         /// <remarks/>
         public LinkedinCompanyPage() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_LinkedinCompanyPage_LinkedinCompanyPage;
+            this.Url = "http://localhost:6361/Services/LinkedinCompanyPage.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

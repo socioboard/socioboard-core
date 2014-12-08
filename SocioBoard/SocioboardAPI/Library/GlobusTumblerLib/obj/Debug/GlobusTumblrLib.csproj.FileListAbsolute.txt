@@ -1,11 +1,11 @@
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.pdb
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\Newtonsoft.Json.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.pdb
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.pdb
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\Newtonsoft.Json.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.pdb
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblrLib.csprojResolveAssemblyReference.cache
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.pdb
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\Newtonsoft.Json.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.pdb
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.pdb
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\Newtonsoft.Json.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblrLib.csprojResolveAssemblyReference.cache
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.pdb

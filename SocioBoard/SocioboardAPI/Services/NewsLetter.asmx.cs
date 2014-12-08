@@ -114,5 +114,23 @@ namespace Api.Socioboard.Services
             }
             return ret;
         }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string AddNewsLatter(string ObjNewsLatter)
+        {
+            try
+            {
+                Domain.Socioboard.Domain.NewsLetter objnewsLatter = (Domain.Socioboard.Domain.NewsLetter)(new JavaScriptSerializer().Deserialize(ObjNewsLatter, typeof(Domain.Socioboard.Domain.NewsLetter)));
+                ObjNewsLetterRepository.AddNewsLetter(objnewsLatter);
+                return new JavaScriptSerializer().Serialize("Success");
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine("Error : " + ex.StackTrace);
+                return new JavaScriptSerializer().Serialize("Something went wrong!");
+            }
+        }
     }
 }

@@ -35,7 +35,7 @@ namespace Socioboard.Api.TwitterStats {
         
         /// <remarks/>
         public TwitterStats() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_TwitterStats_TwitterStats;
+            this.Url = "http://localhost:6361/Services/TwitterStats.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

@@ -27,9 +27,18 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetAllYoutubeChannelByUserIdAndProfileId(string UserId, string ProfileId)
         {
+             Domain.Socioboard.Domain.YoutubeChannel lstYoutubeChannel=new Domain.Socioboard.Domain.YoutubeChannel ();
             try
             {
-                Domain.Socioboard.Domain.YoutubeChannel lstYoutubeChannel = objYoutubeChannelRepository.getYoutubeChannelDetailsById(ProfileId, Guid.Parse(UserId));
+                if (objYoutubeChannelRepository.checkYoutubeChannelExists(ProfileId, Guid.Parse(UserId)))
+                {
+                    lstYoutubeChannel = objYoutubeChannelRepository.getYoutubeChannelDetailsById(ProfileId, Guid.Parse(UserId));
+                }
+                else
+                {
+                    lstYoutubeChannel = objYoutubeChannelRepository.getYoutubeChannelDetailsById(ProfileId);
+                }
+
                 return new JavaScriptSerializer().Serialize(lstYoutubeChannel);
             }
             catch (Exception ex)

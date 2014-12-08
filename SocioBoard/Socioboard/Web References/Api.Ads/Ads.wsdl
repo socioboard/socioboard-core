@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllAds">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllAdsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllAdsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAdsdetailsById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AdsId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAdsdetailsByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAdsdetailsByIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateAdvertisement">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObjAdvertisement" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateAdvertisementResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateAdvertisementResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddAdvertisement">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObjAdvertisement" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Advertise" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddAdvertisementResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddAdvertisementResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllAdsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllAds" />
+  </wsdl:message>
+  <wsdl:message name="GetAllAdsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllAdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAdsdetailsByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAdsdetailsById" />
+  </wsdl:message>
+  <wsdl:message name="GetAdsdetailsByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAdsdetailsByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAdvertisementSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateAdvertisement" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAdvertisementSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateAdvertisementResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddAdvertisementSoapIn">
+    <wsdl:part name="parameters" element="tns:AddAdvertisement" />
+  </wsdl:message>
+  <wsdl:message name="AddAdvertisementSoapOut">
+    <wsdl:part name="parameters" element="tns:AddAdvertisementResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpGetIn" />
+  <wsdl:message name="HelloWorldHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllAdsHttpGetIn" />
+  <wsdl:message name="GetAllAdsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAdsdetailsByIdHttpGetIn">
+    <wsdl:part name="AdsId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAdsdetailsByIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAdvertisementHttpGetIn">
+    <wsdl:part name="ObjAdvertisement" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAdvertisementHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddAdvertisementHttpGetIn">
+    <wsdl:part name="ObjAdvertisement" type="s:string" />
+    <wsdl:part name="Advertise" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddAdvertisementHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpPostIn" />
+  <wsdl:message name="HelloWorldHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllAdsHttpPostIn" />
+  <wsdl:message name="GetAllAdsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAdsdetailsByIdHttpPostIn">
+    <wsdl:part name="AdsId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAdsdetailsByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAdvertisementHttpPostIn">
+    <wsdl:part name="ObjAdvertisement" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAdvertisementHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddAdvertisementHttpPostIn">
+    <wsdl:part name="ObjAdvertisement" type="s:string" />
+    <wsdl:part name="Advertise" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddAdvertisementHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="AdsSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAds">
+      <wsdl:input message="tns:GetAllAdsSoapIn" />
+      <wsdl:output message="tns:GetAllAdsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAdsdetailsById">
+      <wsdl:input message="tns:GetAdsdetailsByIdSoapIn" />
+      <wsdl:output message="tns:GetAdsdetailsByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAdvertisement">
+      <wsdl:input message="tns:UpdateAdvertisementSoapIn" />
+      <wsdl:output message="tns:UpdateAdvertisementSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddAdvertisement">
+      <wsdl:input message="tns:AddAdvertisementSoapIn" />
+      <wsdl:output message="tns:AddAdvertisementSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AdsHttpGet">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldHttpGetIn" />
+      <wsdl:output message="tns:HelloWorldHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAds">
+      <wsdl:input message="tns:GetAllAdsHttpGetIn" />
+      <wsdl:output message="tns:GetAllAdsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAdsdetailsById">
+      <wsdl:input message="tns:GetAdsdetailsByIdHttpGetIn" />
+      <wsdl:output message="tns:GetAdsdetailsByIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAdvertisement">
+      <wsdl:input message="tns:UpdateAdvertisementHttpGetIn" />
+      <wsdl:output message="tns:UpdateAdvertisementHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddAdvertisement">
+      <wsdl:input message="tns:AddAdvertisementHttpGetIn" />
+      <wsdl:output message="tns:AddAdvertisementHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AdsHttpPost">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldHttpPostIn" />
+      <wsdl:output message="tns:HelloWorldHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAds">
+      <wsdl:input message="tns:GetAllAdsHttpPostIn" />
+      <wsdl:output message="tns:GetAllAdsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAdsdetailsById">
+      <wsdl:input message="tns:GetAdsdetailsByIdHttpPostIn" />
+      <wsdl:output message="tns:GetAdsdetailsByIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAdvertisement">
+      <wsdl:input message="tns:UpdateAdvertisementHttpPostIn" />
+      <wsdl:output message="tns:UpdateAdvertisementHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddAdvertisement">
+      <wsdl:input message="tns:AddAdvertisementHttpPostIn" />
+      <wsdl:output message="tns:AddAdvertisementHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AdsSoap" type="tns:AdsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAds">
+      <soap:operation soapAction="http://tempuri.org/GetAllAds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAdsdetailsById">
+      <soap:operation soapAction="http://tempuri.org/GetAdsdetailsById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAdvertisement">
+      <soap:operation soapAction="http://tempuri.org/UpdateAdvertisement" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAdvertisement">
+      <soap:operation soapAction="http://tempuri.org/AddAdvertisement" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AdsSoap12" type="tns:AdsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAds">
+      <soap12:operation soapAction="http://tempuri.org/GetAllAds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAdsdetailsById">
+      <soap12:operation soapAction="http://tempuri.org/GetAdsdetailsById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAdvertisement">
+      <soap12:operation soapAction="http://tempuri.org/UpdateAdvertisement" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAdvertisement">
+      <soap12:operation soapAction="http://tempuri.org/AddAdvertisement" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AdsHttpGet" type="tns:AdsHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="HelloWorld">
+      <http:operation location="/HelloWorld" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAds">
+      <http:operation location="/GetAllAds" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAdsdetailsById">
+      <http:operation location="/GetAdsdetailsById" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAdvertisement">
+      <http:operation location="/UpdateAdvertisement" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAdvertisement">
+      <http:operation location="/AddAdvertisement" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AdsHttpPost" type="tns:AdsHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="HelloWorld">
+      <http:operation location="/HelloWorld" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAds">
+      <http:operation location="/GetAllAds" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAdsdetailsById">
+      <http:operation location="/GetAdsdetailsById" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAdvertisement">
+      <http:operation location="/UpdateAdvertisement" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAdvertisement">
+      <http:operation location="/AddAdvertisement" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Ads">
+    <wsdl:port name="AdsSoap" binding="tns:AdsSoap">
+      <soap:address location="http://localhost:6361/Services/Ads.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdsSoap12" binding="tns:AdsSoap12">
+      <soap12:address location="http://localhost:6361/Services/Ads.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdsHttpGet" binding="tns:AdsHttpGet">
+      <http:address location="http://localhost:6361/Services/Ads.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdsHttpPost" binding="tns:AdsHttpPost">
+      <http:address location="http://localhost:6361/Services/Ads.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

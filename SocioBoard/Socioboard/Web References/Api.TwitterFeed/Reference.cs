@@ -41,7 +41,7 @@ namespace Socioboard.Api.TwitterFeed {
         
         /// <remarks/>
         public TwitterFeed() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_TwitterFeed_TwitterFeed;
+            this.Url = "http://localhost:6361/Services/TwitterFeed.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

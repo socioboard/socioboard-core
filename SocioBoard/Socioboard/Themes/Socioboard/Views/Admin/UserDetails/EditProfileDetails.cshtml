@@ -1,0 +1,152 @@
+﻿@using Domain.Socioboard.Helper;
+@using Domain.Socioboard.Domain;
+
+
+  <div style="min-height: 382px;" id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Edit Profile Details</h1>
+            </div>
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Profile
+
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <!-- Nav tabs -->
+
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="Personal">
+
+                                <div class="col-md-6">
+                                    <form role="form" class="form-horizontal">
+                                        @{
+                                            string NetworkType=string.Empty;
+                                            foreach (var item in (Dictionary<string, object>)Model)
+                                            {
+                                            
+                                                if (item.Key == "Facebook")
+                                                {
+                                                    FacebookAccount objFacebookAccount = (FacebookAccount)item.Value;
+                                                    <div class="form-group">
+                                                        <label for="username-email">Profile Name</label><span class="pull-right text-danger">*</span>
+                                                        <input value="@objFacebookAccount.FbUserName" type="text" class="form-control UserProfileData">
+                                                    </div>
+                                                    NetworkType = "Facebook";
+                                                }
+
+                                                if (item.Key == "Twitter")
+                                                {
+                                                    TwitterAccount objTwitterAccount = (TwitterAccount)item.Value;
+                                                    <div class="form-group">
+                                                        <label for="username-email">Profile Name</label><span class="pull-right text-danger">*</span>
+                                                        <input value="@objTwitterAccount.TwitterScreenName" type="text" class="form-control UserProfileData">
+                                                    </div>
+                                                    NetworkType = "Twitter";
+                                                }
+
+                                                if (item.Key == "Linkedin")
+                                                {
+                                                    LinkedInAccount objLinkedinAccount = (LinkedInAccount)item.Value;
+                                                    <div class="form-group">
+                                                        <label for="username-email">Profile Name</label><span class="pull-right text-danger">*</span>
+                                                        <input value="@objLinkedinAccount.LinkedinUserName" type="text" class="form-control UserProfileData">
+                                                    </div>
+                                                    NetworkType = "Linkedin";
+                                                }
+
+                                                if (item.Key == "Instagram")
+                                                {
+                                                    InstagramAccount objInstagramAccount = (InstagramAccount)item.Value;
+                                                    <div class="form-group">
+                                                        <label for="username-email">Profile Name</label><span class="pull-right text-danger">*</span>
+                                                        <input value="@objInstagramAccount.InsUserName" type="text" class="form-control UserProfileData">
+                                                    </div>
+                                                    NetworkType = "Instagram";
+                                                }
+
+                                                if (item.Key == "Tumblr")
+                                                {
+                                                    TumblrAccount objTumblrAccount = (TumblrAccount)item.Value;
+                                                    <div class="form-group">
+                                                        <label for="username-email">Profile Name</label><span class="pull-right text-danger">*</span>
+                                                        <input value="@objTumblrAccount.tblrUserName" type="text" class="form-control UserProfileData">
+                                                    </div>
+                                                    NetworkType = "Tumblr";
+                                                }
+
+                                                if (item.Key == "Youtube")
+                                                {
+                                                    YoutubeAccount objYoutubeAccount = (YoutubeAccount)item.Value;
+                                                    <div class="form-group">
+                                                        <label for="username-email">Profile Name</label><span class="pull-right text-danger">*</span>
+                                                        <input value="@objYoutubeAccount.Ytusername" type="text" class="form-control UserProfileData">
+                                                    </div>
+                                                    NetworkType = "Youtube";
+                                                }
+
+                                                if (item.Key == "GooglePlus")
+                                                {
+                                                    GooglePlusAccount objGooglePlusAccount = (GooglePlusAccount)item.Value;
+                                                    <div class="form-group">
+                                                        <label for="username-email">Profile Name</label><span class="pull-right text-danger">*</span>
+                                                        <input placeholder="E-mail Id" value="@objGooglePlusAccount.GpUserName" type="text" class="form-control UserProfileData">
+                                                    </div>
+                                                    NetworkType = "GooglePlus";
+                                                }
+                                            }
+                                        }
+                                                                                                                    
+                                    <button onclick="UpdateProfile('@NetworkType')"; id="UpdateProfileData" type="button" class="btn btn-warning">Update</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+</div>
+<script>
+    function UpdateProfile(Network) {
+        debugger;
+        var ProfileName = $('.UserProfileData').val();
+        if (ProfileName == "") {
+            alertify.error('Please enter Profile Name');
+            return false;
+        }
+
+
+        $.ajax({
+            type: 'POST',
+            url: '../UserDetails/UpdateProfileDetails?Network=' + Network + '&ProfileName=' + ProfileName,
+            success: function (msg) {
+                if (msg == "Update Successfully") {
+                    alertify.success('Update Successfully');
+                    window.top.location.href = "../UserDetails/ManageProfile";
+                }
+                else {
+                    alertify.error('Error please check');
+                }
+            },
+            async: false
+        });
+    }
+</script>
+    
+    
+    
+    
+   

@@ -69,6 +69,41 @@ namespace Api.Socioboard.Services
             }//End session
         }
 
+
+        public bool checkTubmlrUserExists(Domain.Socioboard.Domain.YoutubeAccount objTumblrAccount)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to Check if FacebookUser is Exist in database or not by UserId and FbuserId.
+                        // And Set the reuired paremeters to find the specific values.
+                        NHibernate.IQuery query = session.CreateQuery("from YoutubeAccount where UserId = :uidd and YtUserId = :tbuname");
+                        query.SetParameter("uidd", objTumblrAccount.UserId);
+                        query.SetParameter("tbuname", objTumblrAccount.Ytuserid);
+                        var result = query.UniqueResult();
+
+                        if (result == null)
+                            return false;
+                        else
+                            return true;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return true;
+                    }
+
+                }//End Transaction
+            }//End session
+        }
+
+
         public Domain.Socioboard.Domain.YoutubeAccount getYoutubeAccountDetailsById(string youtubeId)
         {
 

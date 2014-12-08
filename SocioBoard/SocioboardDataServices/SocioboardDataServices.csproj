@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SocioboardDataServices</RootNamespace>
     <AssemblyName>SocioboardDataServices</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,14 +33,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ChilkatDotNet2, Version=9.2.0.0, Culture=neutral, PublicKeyToken=eb5fc1fc52ef09bd, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\ChilkatDotNet2.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\SocioboardAPI\lib\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SocioboardAPI\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,8 +58,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\ChilkatHttpHelpr.cs" />
+    <Compile Include="Classes\FacebookUser.cs" />
+    <Compile Include="Classes\Globals.cs" />
+    <Compile Include="Classes\GlobusHttpHelper.cs" />
+    <Compile Include="Classes\GlobusLogHelper.cs" />
+    <Compile Include="Classes\RemoveAllHtmlTag.cs" />
+    <Compile Include="Classes\socioHelper.cs" />
+    <Compile Include="Classes\Utils.cs" />
+    <Compile Include="clsFacebookDataScraper.cs" />
     <Compile Include="clsSocialSiteDataFeedsFactory.cs" />
     <Compile Include="FacebookData.cs" />
+    <Compile Include="FacebookFanPageData.cs" />
     <Compile Include="InstagramData.cs" />
     <Compile Include="LinkedInData.cs" />
     <Compile Include="Program.cs" />
@@ -84,6 +105,21 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="Web References\Api.Facebook\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Api.FbPageComment\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Api.FbPageLiker\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Api.FbPagePost\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -148,6 +184,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\Api.User\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\Api.YoutubeAccount\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -161,7 +202,9 @@
     <Compile Include="YouTubeData.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -170,6 +213,7 @@
     <None Include="Web References\Api.DiscoverySearch\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Web References\Api.FacebookAccount\FacebookAccount.wsdl" />
     <None Include="Web References\Api.FacebookAccount\Reference.map">
@@ -188,6 +232,21 @@
     </None>
     <None Include="Web References\Api.Facebook\Facebook.wsdl" />
     <None Include="Web References\Api.Facebook\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\Api.FbPageComment\FbPageComment.wsdl" />
+    <None Include="Web References\Api.FbPageComment\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\Api.FbPageLiker\FbPageLiker.wsdl" />
+    <None Include="Web References\Api.FbPageLiker\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\Api.FbPagePost\FbPagePost.wsdl" />
+    <None Include="Web References\Api.FbPagePost\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -251,6 +310,11 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\Api.Twitter\Twitter.wsdl" />
+    <None Include="Web References\Api.User\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\Api.User\User.wsdl" />
     <None Include="Web References\Api.YoutubeAccount\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -266,6 +330,10 @@
     <ProjectReference Include="..\Domain.Socioboard\Domain.Socioboard.csproj">
       <Project>{96ecfb64-a9ac-45f4-85bf-185e9c6a0f53}</Project>
       <Name>Domain.Socioboard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SocioboardAPI\Library\GlobusTumblerLib\GlobusTumblrLib.csproj">
+      <Project>{f22fce49-27e9-4eca-b6f6-c39a8707df59}</Project>
+      <Name>GlobusTumblrLib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -329,6 +397,39 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_FacebookStats_FacebookStats</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/Services/FbPageComment.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.FbPageComment\</RelPath>
+      <UpdateFromURL>http://localhost:6361/Services/FbPageComment.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SocioboardDataServices_Api_FbPageComment_FbPageComment</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/Services/FbPageLiker.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.FbPageLiker\</RelPath>
+      <UpdateFromURL>http://localhost:6361/Services/FbPageLiker.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SocioboardDataServices_Api_FbPageLiker_FbPageLiker</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/Services/FbPagePost.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.FbPagePost\</RelPath>
+      <UpdateFromURL>http://localhost:6361/Services/FbPagePost.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SocioboardDataServices_Api_FbPagePost_FbPagePost</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost:6361/Services/Instagram.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
@@ -462,6 +563,17 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_TwitterAccount_TwitterAccount</CachedSettingsPropName>
     </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/Services/User.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.User\</RelPath>
+      <UpdateFromURL>http://localhost:6361/Services/User.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SocioboardDataServices_Api_User_User</CachedSettingsPropName>
+    </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost:6361/Services/Youtube.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Youtube\</RelPath>
@@ -489,9 +601,6 @@
     <None Include="Web References\Api.SocialProfile\SocialProfile.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\Api.FacebookAccount\FacebookAccount.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Web References\Api.FacebookFeed\FacebookFeed.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -502,9 +611,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\Api.TumblrFeed\TumblrFeed.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\Api.LinkedinAccount\LinkedinAccount.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\Api.InstagramAccount\InstagramAccount.disco" />
@@ -519,19 +625,10 @@
     <None Include="Web References\Api.YoutubeAccount\YoutubeAccount.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\Api.Facebook\Facebook.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Web References\Api.Instagram\Instagram.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\Api.Tumblr\Tumblr.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Web References\Api.Youtube\Youtube.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\Api.Linkedin\Linkedin.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\Api.TwitterAccount\TwitterAccount.disco" />
@@ -541,6 +638,35 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\Api.FacebookStats\FacebookStats.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.Facebook\Facebook.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.FbPagePost\FbPagePost.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.FbPageLiker\FbPageLiker.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.FbPageComment\FbPageComment.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.Tumblr\Tumblr.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.User\User.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.FacebookAccount\FacebookAccount.disco">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.Linkedin\Linkedin.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.LinkedinAccount\LinkedinAccount.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

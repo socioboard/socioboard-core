@@ -41,7 +41,7 @@ namespace Socioboard.Api.ArchiveMessage {
         
         /// <remarks/>
         public ArchiveMessage() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_ArchiveMessage_ArchiveMessage;
+            this.Url = "http://localhost:6361/Services/ArchiveMessage.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

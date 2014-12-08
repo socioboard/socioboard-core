@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using Socioboard.Helper;
 
 namespace Socioboard.Controllers
 {
@@ -38,6 +39,17 @@ namespace Socioboard.Controllers
             string mailsender = "";
             try
             {
+                //Generate a random unique string
+                string strRandomUnique = SBUtils.GenerateRandomUniqueString();
+
+                //Update random unique string in User
+                string res_UpdateChangePasswordKey = ApiobjUser.UpdateForgetPasswordKey(objuser.Id.ToString(), strRandomUnique);
+
+                if (res_UpdateChangePasswordKey=="1")
+                {
+                    ViewBag.ForgetPasswordKey = strRandomUnique;
+                }
+
                 var mailBody = Helper.SBUtils.RenderViewToString(this.ControllerContext, "_ForgotPasswordMailBodyPartial", objuser);
                 string Subject = "Forget password Socioboard Account";
 
@@ -50,9 +62,9 @@ namespace Socioboard.Controllers
             return Content(mailsender);
         }
 
-        public ActionResult ResetPassword(string emailId)
+        public ActionResult ResetPassword(string ForgetPasswordKey)
         {
-            return PartialView("_ResetPasswordPartial", emailId);
+            return PartialView("_ResetPasswordPartial", ForgetPasswordKey);
         }
 
         public ActionResult SendResetPasswordMail(string emailId, string Password)

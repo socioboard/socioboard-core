@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Domain.Socioboard.Domain
 {
-    interface IAdsRepository
+   public interface IAdsRepository
     {
         void AddAds(Ads ads);
         int DeleteAds(Guid newsid);

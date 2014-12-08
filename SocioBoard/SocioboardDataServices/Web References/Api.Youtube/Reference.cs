@@ -35,6 +35,8 @@ namespace SocioboardDataServices.Api.Youtube {
         
         private System.Threading.SendOrPostCallback GoogleLoginOperationCompleted;
         
+        private System.Threading.SendOrPostCallback Get_Channel_List_serarchOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getYoutubeDataOperationCompleted;
         
         private System.Threading.SendOrPostCallback SheduleYoutubeMessageOperationCompleted;
@@ -85,6 +87,9 @@ namespace SocioboardDataServices.Api.Youtube {
         
         /// <remarks/>
         public event GoogleLoginCompletedEventHandler GoogleLoginCompleted;
+        
+        /// <remarks/>
+        public event Get_Channel_List_serarchCompletedEventHandler Get_Channel_List_serarchCompleted;
         
         /// <remarks/>
         public event getYoutubeDataCompletedEventHandler getYoutubeDataCompleted;
@@ -188,6 +193,36 @@ namespace SocioboardDataServices.Api.Youtube {
             if ((this.GoogleLoginCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GoogleLoginCompleted(this, new GoogleLoginCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Get_Channel_List_serarch", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void Get_Channel_List_serarch(string token, string search) {
+            this.Invoke("Get_Channel_List_serarch", new object[] {
+                        token,
+                        search});
+        }
+        
+        /// <remarks/>
+        public void Get_Channel_List_serarchAsync(string token, string search) {
+            this.Get_Channel_List_serarchAsync(token, search, null);
+        }
+        
+        /// <remarks/>
+        public void Get_Channel_List_serarchAsync(string token, string search, object userState) {
+            if ((this.Get_Channel_List_serarchOperationCompleted == null)) {
+                this.Get_Channel_List_serarchOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGet_Channel_List_serarchOperationCompleted);
+            }
+            this.InvokeAsync("Get_Channel_List_serarch", new object[] {
+                        token,
+                        search}, this.Get_Channel_List_serarchOperationCompleted, userState);
+        }
+        
+        private void OnGet_Channel_List_serarchOperationCompleted(object arg) {
+            if ((this.Get_Channel_List_serarchCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Get_Channel_List_serarchCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -351,6 +386,10 @@ namespace SocioboardDataServices.Api.Youtube {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void Get_Channel_List_serarchCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]

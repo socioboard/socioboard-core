@@ -39,7 +39,7 @@ namespace Socioboard.Api.GroupProfile {
         
         /// <remarks/>
         public GroupProfile() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_GroupProfile_GroupProfile;
+            this.Url = "http://localhost:6361/Services/GroupProfile.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

@@ -284,10 +284,17 @@ namespace Api.Socioboard.Services
         public string GetLinkedUserUpdates(string profileid, string UserId)
         {
             System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
-
+            LinkedInAccount linkacc;
             string authLink = string.Empty;
             LinkedInAccountRepository linkedinAccRepo = new LinkedInAccountRepository();
-            LinkedInAccount linkacc = linkedinAccRepo.getUserInformation(Guid.Parse(UserId), profileid);
+            if (linkedinAccRepo.checkLinkedinUserExists(profileid, Guid.Parse(UserId)))
+            {
+                linkacc = linkedinAccRepo.getUserInformation(Guid.Parse(UserId), profileid);
+            }
+            else
+            {
+                linkacc = linkedinAccRepo.getUserInformation(profileid);
+            }
             oAuthLinkedIn oauthlin = new oAuthLinkedIn();
             oauthlin.ConsumerKey = ConfigurationManager.AppSettings["LiApiKey"];
             oauthlin.ConsumerSecret = ConfigurationManager.AppSettings["LiSecretKey"];
@@ -307,9 +314,17 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetLinkedUsergroupsDetail(string profileid, string UserId)
         {
+             LinkedInAccount linkacc;
             string authLink = string.Empty;
             LinkedInAccountRepository linkedinAccRepo = new LinkedInAccountRepository();
-            LinkedInAccount linkacc = linkedinAccRepo.getUserInformation(Guid.Parse(UserId), profileid);
+            if (linkedinAccRepo.checkLinkedinUserExists(profileid, Guid.Parse(UserId)))
+            {
+                linkacc = linkedinAccRepo.getUserInformation(Guid.Parse(UserId), profileid);
+            }
+            else
+            {
+                linkacc = linkedinAccRepo.getUserInformation(profileid);
+            }
             oAuthLinkedIn oauthlin = new oAuthLinkedIn();
             oauthlin.ConsumerKey = ConfigurationManager.AppSettings["LiApiKey"];
             oauthlin.ConsumerSecret = ConfigurationManager.AppSettings["LiSecretKey"];
@@ -328,9 +343,17 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetLinkedGroupsDetail(string profileid,string userid)
         {
+            LinkedInAccount linkacc;
             string authLink = string.Empty;
             LinkedInAccountRepository linkedinAccRepo = new LinkedInAccountRepository();
-            LinkedInAccount linkacc = linkedinAccRepo.getUserInformation(Guid.Parse(userid), profileid);
+            if (linkedinAccRepo.checkLinkedinUserExists(profileid, Guid.Parse(userid)))
+            {
+                linkacc = linkedinAccRepo.getUserInformation(Guid.Parse(userid), profileid);
+            }
+            else
+            {
+                linkacc = linkedinAccRepo.getUserInformation(profileid);
+            }
             oAuthLinkedIn oauthlin = new oAuthLinkedIn();
             oauthlin.ConsumerKey = ConfigurationManager.AppSettings["LiApiKey"];
             oauthlin.ConsumerSecret = ConfigurationManager.AppSettings["LiSecretKey"];
@@ -348,9 +371,18 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetLinkedGroupsDataDetail(string userid,string groupid, string linkedinId)
         {
+            LinkedInAccount linkacc;
             string authLink = string.Empty;
             LinkedInAccountRepository linkedinAccRepo = new LinkedInAccountRepository();
-            LinkedInAccount linkacc = linkedinAccRepo.getUserInformation(Guid.Parse(userid), linkedinId);
+            if (linkedinAccRepo.checkLinkedinUserExists(linkedinId, Guid.Parse(userid)))
+            {
+                linkacc = linkedinAccRepo.getUserInformation(Guid.Parse(userid), linkedinId);
+            }
+            else
+            {
+                linkacc = linkedinAccRepo.getUserInformation(linkedinId);
+            }
+           // LinkedInAccount linkacc = linkedinAccRepo.getUserInformation(Guid.Parse(userid), linkedinId);
             oAuthLinkedIn oauthlin = new oAuthLinkedIn();
             oauthlin.ConsumerKey = ConfigurationManager.AppSettings["LiApiKey"];
             oauthlin.ConsumerSecret = ConfigurationManager.AppSettings["LiSecretKey"];
@@ -369,9 +401,17 @@ namespace Api.Socioboard.Services
          [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
          public string CommentOnLinkedInPost(string groupid, string GpPostid, string message, string LinkedinUserId,string userid)
          {
+             LinkedInAccount linkacc;
              string authLink = string.Empty;
              LinkedInAccountRepository linkedinAccRepo = new LinkedInAccountRepository();
-             LinkedInAccount linkacc = linkedinAccRepo.getUserInformation(Guid.Parse(userid), LinkedinUserId);
+             if (linkedinAccRepo.checkLinkedinUserExists(LinkedinUserId, Guid.Parse(userid)))
+             {
+                 linkacc = linkedinAccRepo.getUserInformation(Guid.Parse(userid), LinkedinUserId);
+             }
+             else
+             {
+                 linkacc = linkedinAccRepo.getUserInformation(LinkedinUserId);
+             }
              oAuthLinkedIn oauthlin = new oAuthLinkedIn();
              oauthlin.ConsumerKey = ConfigurationManager.AppSettings["LiApiKey"];
              oauthlin.ConsumerSecret = ConfigurationManager.AppSettings["LiSecretKey"];
@@ -401,9 +441,17 @@ namespace Api.Socioboard.Services
                  likestatus = "false"; 
              }
 
+             LinkedInAccount linkacc;
              string authLink = string.Empty;
              LinkedInAccountRepository linkedinAccRepo = new LinkedInAccountRepository();
-             LinkedInAccount linkacc = linkedinAccRepo.getUserInformation(Guid.Parse(userid), LinkedinUserId);
+             if (linkedinAccRepo.checkLinkedinUserExists(LinkedinUserId, Guid.Parse(userid)))
+             {
+                 linkacc = linkedinAccRepo.getUserInformation(Guid.Parse(userid), LinkedinUserId);
+             }
+             else
+             {
+                 linkacc = linkedinAccRepo.getUserInformation(LinkedinUserId);
+             }
              oAuthLinkedIn oauthlin = new oAuthLinkedIn();
              oauthlin.ConsumerKey = ConfigurationManager.AppSettings["LiApiKey"];
              oauthlin.ConsumerSecret = ConfigurationManager.AppSettings["LiSecretKey"];
@@ -434,9 +482,17 @@ namespace Api.Socioboard.Services
                 FollowStatus = "false";
             }
 
+            LinkedInAccount linkacc;
             string authLink = string.Empty;
             LinkedInAccountRepository linkedinAccRepo = new LinkedInAccountRepository();
-            LinkedInAccount linkacc = linkedinAccRepo.getUserInformation(Guid.Parse(userid), LinkedinUserId);
+            if (linkedinAccRepo.checkLinkedinUserExists(LinkedinUserId, Guid.Parse(userid)))
+            {
+                linkacc = linkedinAccRepo.getUserInformation(Guid.Parse(userid), LinkedinUserId);
+            }
+            else
+            {
+                linkacc = linkedinAccRepo.getUserInformation(LinkedinUserId);
+            }
             oAuthLinkedIn oauthlin = new oAuthLinkedIn();
             oauthlin.ConsumerKey = ConfigurationManager.AppSettings["LiApiKey"];
             oauthlin.ConsumerSecret = ConfigurationManager.AppSettings["LiSecretKey"];
@@ -456,10 +512,18 @@ namespace Api.Socioboard.Services
          [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string PostLinkedInGroupFeeds(string gid, string linkedInUserId, string msg, string title, string userid) 
-        {          
+        {
+            LinkedInAccount linkacc;
             string authLink = string.Empty;
             LinkedInAccountRepository linkedinAccRepo = new LinkedInAccountRepository();
-            LinkedInAccount linkacc = linkedinAccRepo.getUserInformation(Guid.Parse(userid), linkedInUserId);
+            if (linkedinAccRepo.checkLinkedinUserExists(linkedInUserId, Guid.Parse(userid)))
+            {
+                linkacc = linkedinAccRepo.getUserInformation(Guid.Parse(userid), linkedInUserId);
+            }
+            else
+            {
+                linkacc = linkedinAccRepo.getUserInformation(linkedInUserId);
+            }
             oAuthLinkedIn oauthlin = new oAuthLinkedIn();
             oauthlin.ConsumerKey = ConfigurationManager.AppSettings["LiApiKey"];
             oauthlin.ConsumerSecret = ConfigurationManager.AppSettings["LiSecretKey"];
@@ -479,7 +543,17 @@ namespace Api.Socioboard.Services
          public string LinkedinComposeMessage(String message, String profileid, string userid, string currentdatetime, string picurl)
          {
              string ret = "";
-             Domain.Socioboard.Domain.LinkedInAccount LinkedAccount = objLinkedInAccountRepository.getUserInformation(Guid.Parse(userid), profileid);
+             LinkedInAccount LinkedAccount;
+             string authLink = string.Empty;
+             LinkedInAccountRepository linkedinAccRepo = new LinkedInAccountRepository();
+             if (linkedinAccRepo.checkLinkedinUserExists(profileid, Guid.Parse(userid)))
+             {
+                 LinkedAccount = linkedinAccRepo.getUserInformation(Guid.Parse(userid), profileid);
+             }
+             else
+             {
+                 LinkedAccount = linkedinAccRepo.getUserInformation(profileid);
+             }
              oAuthLinkedIn Linkedin_oauth = new oAuthLinkedIn();
              Linkedin_oauth.Verifier = LinkedAccount.OAuthVerifier;
              Linkedin_oauth.TokenSecret = LinkedAccount.OAuthSecret;
@@ -507,11 +581,20 @@ namespace Api.Socioboard.Services
          public string SheduleLinkedInMessage(string LinkedInId, string UserId, string sscheduledmsgguid)
          {
              string str = string.Empty;
+             LinkedInAccount LinkedAccount;
+             string authLink = string.Empty;
+             LinkedInAccountRepository linkedinAccRepo = new LinkedInAccountRepository();
              try
              {
                  objScheduledMessage = objScheduledMessageRepository.GetScheduledMessageDetails(Guid.Parse(sscheduledmsgguid));
-                 objLinkedInAccount = objLinkedInAccountRepository.getUserInformation(Guid.Parse(UserId), LinkedInId);
-
+                 if (linkedinAccRepo.checkLinkedinUserExists(LinkedInId, Guid.Parse(UserId)))
+                 {
+                     LinkedAccount = linkedinAccRepo.getUserInformation(Guid.Parse(UserId), LinkedInId);
+                 }
+                 else
+                 {
+                     LinkedAccount = linkedinAccRepo.getUserInformation(LinkedInId);
+                 }
                  oAuthLinkedIn Linkedin_oauth = new oAuthLinkedIn();
                  Linkedin_oauth.ConsumerKey = System.Configuration.ConfigurationSettings.AppSettings["LiApiKey"].ToString();
                  Linkedin_oauth.ConsumerSecret = System.Configuration.ConfigurationSettings.AppSettings["LiSecretKey"].ToString();
@@ -586,12 +669,21 @@ namespace Api.Socioboard.Services
                  Linkedin_Oauth.ConsumerKey = ConfigurationManager.AppSettings["LiApiKey"];
                  Linkedin_Oauth.ConsumerSecret = ConfigurationManager.AppSettings["LiSecretKey"];
                  LinkedInAccountRepository objLinkedInAccountRepository = new LinkedInAccountRepository();
-                 Domain.Socioboard.Domain.LinkedInAccount LinkedinAccount = objLinkedInAccountRepository.getUserInformation(userId, LinkedinId);
+                 LinkedInAccount LinkedAccount;
+                 LinkedInAccountRepository linkedinAccRepo = new LinkedInAccountRepository();
+                 if (linkedinAccRepo.checkLinkedinUserExists(LinkedinId, Guid.Parse(UserId)))
+                 {
+                     LinkedAccount = linkedinAccRepo.getUserInformation(Guid.Parse(UserId), LinkedinId);
+                 }
+                 else
+                 {
+                     LinkedAccount = linkedinAccRepo.getUserInformation(LinkedinId);
+                 }
 
-                 Linkedin_Oauth.Token = LinkedinAccount.OAuthToken;
-                 Linkedin_Oauth.TokenSecret = LinkedinAccount.OAuthSecret;
-                 Linkedin_Oauth.Verifier = LinkedinAccount.OAuthVerifier;
-                 GetUserProfile(Linkedin_Oauth, LinkedinAccount.LinkedinUserId, userId);
+                 Linkedin_Oauth.Token = LinkedAccount.OAuthToken;
+                 Linkedin_Oauth.TokenSecret = LinkedAccount.OAuthSecret;
+                 Linkedin_Oauth.Verifier = LinkedAccount.OAuthVerifier;
+                 GetUserProfile(Linkedin_Oauth, LinkedAccount.LinkedinUserId, userId);
                  GetLinkedInFeeds(Linkedin_Oauth, LinkedinId, userId);
                  return "linkedin Info Updated";
              }
@@ -689,7 +781,15 @@ namespace Api.Socioboard.Services
          public string LinkedinProfileDetails(string Userid, string ProfileId)
          {
              Domain.Socioboard.Domain.LinkedInAccount objLinkedinAccount = new Domain.Socioboard.Domain.LinkedInAccount();
-             objLinkedinAccount = objLinkedInAccountRepository.getUserInformation(Guid.Parse(Userid), ProfileId);
+             LinkedInAccountRepository _objLinkedInAccountRepository = new LinkedInAccountRepository();
+             if (_objLinkedInAccountRepository.checkLinkedinUserExists(ProfileId, Guid.Parse(Userid)))
+             {
+                 objLinkedinAccount = _objLinkedInAccountRepository.getUserInformation(Guid.Parse(Userid), ProfileId);
+             }
+             else
+             {
+                 objLinkedinAccount = _objLinkedInAccountRepository.getUserInformation(ProfileId);
+             }
              return new JavaScriptSerializer().Serialize(objLinkedinAccount);
          }
 

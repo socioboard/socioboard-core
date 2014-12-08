@@ -41,7 +41,7 @@ namespace Socioboard.Api.AdminNews {
         
         /// <remarks/>
         public AdminNews() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_AdminNews_AdminNews;
+            this.Url = "http://localhost:6361/Services/AdminNews.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

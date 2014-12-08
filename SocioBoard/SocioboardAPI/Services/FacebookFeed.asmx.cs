@@ -27,9 +27,17 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string getAllFacebookFeedsByUserIdAndProfileId(string UserId, string ProfileId)
         {
+             List<Domain.Socioboard.Domain.FacebookFeed> lstFacebookFeed=new List<Domain.Socioboard.Domain.FacebookFeed> ();
             try
             {
-                List<Domain.Socioboard.Domain.FacebookFeed> lstFacebookFeed = objFacebookFeedRepository.getAllFacebookFeeds(Guid.Parse(UserId), ProfileId);
+                if (objFacebookFeedRepository.checkFacebookUserExists(ProfileId, Guid.Parse(UserId)))
+                {
+                    lstFacebookFeed = objFacebookFeedRepository.getAllFacebookFeeds(Guid.Parse(UserId), ProfileId);
+                }
+                else
+                {
+                     lstFacebookFeed = objFacebookFeedRepository.getAllFacebookUserFeeds(ProfileId);
+                }
                 return new JavaScriptSerializer().Serialize(lstFacebookFeed);
             }
             catch (Exception ex)

@@ -31,11 +31,15 @@ namespace Socioboard.Api.Admin {
         
         private System.Threading.SendOrPostCallback LoginOperationCompleted;
         
+        private System.Threading.SendOrPostCallback ChangeAdminPasswordOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdateAdminSettingOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
         public Admin() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_Admin_Admin;
+            this.Url = "http://localhost:6361/Services/admin.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -73,6 +77,12 @@ namespace Socioboard.Api.Admin {
         public event LoginCompletedEventHandler LoginCompleted;
         
         /// <remarks/>
+        public event ChangeAdminPasswordCompletedEventHandler ChangeAdminPasswordCompleted;
+        
+        /// <remarks/>
+        public event UpdateAdminSettingCompletedEventHandler UpdateAdminSettingCompleted;
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Login", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string Login(string UserName, string Password) {
             object[] results = this.Invoke("Login", new object[] {
@@ -100,6 +110,68 @@ namespace Socioboard.Api.Admin {
             if ((this.LoginCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.LoginCompleted(this, new LoginCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ChangeAdminPassword", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string ChangeAdminPassword(string NewPassword, string OldPassword, string UserName) {
+            object[] results = this.Invoke("ChangeAdminPassword", new object[] {
+                        NewPassword,
+                        OldPassword,
+                        UserName});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ChangeAdminPasswordAsync(string NewPassword, string OldPassword, string UserName) {
+            this.ChangeAdminPasswordAsync(NewPassword, OldPassword, UserName, null);
+        }
+        
+        /// <remarks/>
+        public void ChangeAdminPasswordAsync(string NewPassword, string OldPassword, string UserName, object userState) {
+            if ((this.ChangeAdminPasswordOperationCompleted == null)) {
+                this.ChangeAdminPasswordOperationCompleted = new System.Threading.SendOrPostCallback(this.OnChangeAdminPasswordOperationCompleted);
+            }
+            this.InvokeAsync("ChangeAdminPassword", new object[] {
+                        NewPassword,
+                        OldPassword,
+                        UserName}, this.ChangeAdminPasswordOperationCompleted, userState);
+        }
+        
+        private void OnChangeAdminPasswordOperationCompleted(object arg) {
+            if ((this.ChangeAdminPasswordCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ChangeAdminPasswordCompleted(this, new ChangeAdminPasswordCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateAdminSetting", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string UpdateAdminSetting(string ObjADmin) {
+            object[] results = this.Invoke("UpdateAdminSetting", new object[] {
+                        ObjADmin});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UpdateAdminSettingAsync(string ObjADmin) {
+            this.UpdateAdminSettingAsync(ObjADmin, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateAdminSettingAsync(string ObjADmin, object userState) {
+            if ((this.UpdateAdminSettingOperationCompleted == null)) {
+                this.UpdateAdminSettingOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateAdminSettingOperationCompleted);
+            }
+            this.InvokeAsync("UpdateAdminSetting", new object[] {
+                        ObjADmin}, this.UpdateAdminSettingOperationCompleted, userState);
+        }
+        
+        private void OnUpdateAdminSettingOperationCompleted(object arg) {
+            if ((this.UpdateAdminSettingCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateAdminSettingCompleted(this, new UpdateAdminSettingCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -135,6 +207,58 @@ namespace Socioboard.Api.Admin {
         private object[] results;
         
         internal LoginCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void ChangeAdminPasswordCompletedEventHandler(object sender, ChangeAdminPasswordCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ChangeAdminPasswordCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ChangeAdminPasswordCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void UpdateAdminSettingCompletedEventHandler(object sender, UpdateAdminSettingCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpdateAdminSettingCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpdateAdminSettingCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

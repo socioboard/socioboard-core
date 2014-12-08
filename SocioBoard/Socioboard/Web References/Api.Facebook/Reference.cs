@@ -79,7 +79,7 @@ namespace Socioboard.Api.Facebook {
         
         /// <remarks/>
         public Facebook() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_Facebook_Facebook;
+            this.Url = "http://localhost:6361/Services/Facebook.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

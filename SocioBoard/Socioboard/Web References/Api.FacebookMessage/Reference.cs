@@ -55,7 +55,7 @@ namespace Socioboard.Api.FacebookMessage {
         
         /// <remarks/>
         public FacebookMessage() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_FacebookMessage_FacebookMessage;
+            this.Url = "http://localhost:6361/Services/FacebookMessage.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

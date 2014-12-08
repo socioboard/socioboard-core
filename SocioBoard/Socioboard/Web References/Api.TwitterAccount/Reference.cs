@@ -47,7 +47,7 @@ namespace Socioboard.Api.TwitterAccount {
         
         /// <remarks/>
         public TwitterAccount() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_TwitterAccount_TwitterAccount;
+            this.Url = "http://localhost:6361/Services/TwitterAccount.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

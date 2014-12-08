@@ -37,7 +37,7 @@ namespace Socioboard.Api.BusinessSetting {
         
         /// <remarks/>
         public BusinessSetting() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_BusinessSetting_BusinessSetting;
+            this.Url = "http://localhost:6361/Services/BusinessSetting.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

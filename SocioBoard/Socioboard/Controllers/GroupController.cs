@@ -28,6 +28,7 @@ namespace Socioboard.Controllers
       
         public ActionResult LoadGroups()
         {
+           
             return PartialView("_LoadGroups", Helper.SBUtils.GetGroupsMenuAccordingToGroup());
         }
         

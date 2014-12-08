@@ -45,7 +45,7 @@ namespace Socioboard.Api.Groups {
         
         /// <remarks/>
         public Groups() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_Groups_Groups;
+            this.Url = "http://localhost:6361/Services/Groups.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

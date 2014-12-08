@@ -22,6 +22,23 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="SendNewsLetter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="body" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewsLetterId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendNewsLetterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendNewsLetterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -37,6 +54,12 @@
   <wsdl:message name="GetAllNewsLettersSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllNewsLettersResponse" />
   </wsdl:message>
+  <wsdl:message name="SendNewsLetterSoapIn">
+    <wsdl:part name="parameters" element="tns:SendNewsLetter" />
+  </wsdl:message>
+  <wsdl:message name="SendNewsLetterSoapOut">
+    <wsdl:part name="parameters" element="tns:SendNewsLetterResponse" />
+  </wsdl:message>
   <wsdl:message name="HelloWorldHttpGetIn" />
   <wsdl:message name="HelloWorldHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -45,12 +68,30 @@
   <wsdl:message name="GetAllNewsLettersHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="SendNewsLetterHttpGetIn">
+    <wsdl:part name="body" type="s:string" />
+    <wsdl:part name="Subject" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="NewsLetterId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendNewsLetterHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="HelloWorldHttpPostIn" />
   <wsdl:message name="HelloWorldHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetAllNewsLettersHttpPostIn" />
   <wsdl:message name="GetAllNewsLettersHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendNewsLetterHttpPostIn">
+    <wsdl:part name="body" type="s:string" />
+    <wsdl:part name="Subject" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="NewsLetterId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendNewsLetterHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:portType name="NewsLetterSoap">
@@ -62,6 +103,10 @@
       <wsdl:input message="tns:GetAllNewsLettersSoapIn" />
       <wsdl:output message="tns:GetAllNewsLettersSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="SendNewsLetter">
+      <wsdl:input message="tns:SendNewsLetterSoapIn" />
+      <wsdl:output message="tns:SendNewsLetterSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="NewsLetterHttpGet">
     <wsdl:operation name="HelloWorld">
@@ -72,6 +117,10 @@
       <wsdl:input message="tns:GetAllNewsLettersHttpGetIn" />
       <wsdl:output message="tns:GetAllNewsLettersHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="SendNewsLetter">
+      <wsdl:input message="tns:SendNewsLetterHttpGetIn" />
+      <wsdl:output message="tns:SendNewsLetterHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="NewsLetterHttpPost">
     <wsdl:operation name="HelloWorld">
@@ -81,6 +130,10 @@
     <wsdl:operation name="GetAllNewsLetters">
       <wsdl:input message="tns:GetAllNewsLettersHttpPostIn" />
       <wsdl:output message="tns:GetAllNewsLettersHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendNewsLetter">
+      <wsdl:input message="tns:SendNewsLetterHttpPostIn" />
+      <wsdl:output message="tns:SendNewsLetterHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NewsLetterSoap" type="tns:NewsLetterSoap">
@@ -96,6 +149,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllNewsLetters">
       <soap:operation soapAction="http://tempuri.org/GetAllNewsLetters" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendNewsLetter">
+      <soap:operation soapAction="http://tempuri.org/SendNewsLetter" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -124,6 +186,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SendNewsLetter">
+      <soap12:operation soapAction="http://tempuri.org/SendNewsLetter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NewsLetterHttpGet" type="tns:NewsLetterHttpGet">
     <http:binding verb="GET" />
@@ -138,6 +209,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllNewsLetters">
       <http:operation location="/GetAllNewsLetters" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendNewsLetter">
+      <http:operation location="/SendNewsLetter" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -166,19 +246,28 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SendNewsLetter">
+      <http:operation location="/SendNewsLetter" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="NewsLetter">
     <wsdl:port name="NewsLetterSoap" binding="tns:NewsLetterSoap">
-      <soap:address location="http://api.socioboard.com/Services/NewsLetter.asmx" />
+      <soap:address location="http://localhost:6361/Services/NewsLetter.asmx" />
     </wsdl:port>
     <wsdl:port name="NewsLetterSoap12" binding="tns:NewsLetterSoap12">
-      <soap12:address location="http://api.socioboard.com/Services/NewsLetter.asmx" />
+      <soap12:address location="http://localhost:6361/Services/NewsLetter.asmx" />
     </wsdl:port>
     <wsdl:port name="NewsLetterHttpGet" binding="tns:NewsLetterHttpGet">
-      <http:address location="http://api.socioboard.com/Services/NewsLetter.asmx" />
+      <http:address location="http://localhost:6361/Services/NewsLetter.asmx" />
     </wsdl:port>
     <wsdl:port name="NewsLetterHttpPost" binding="tns:NewsLetterHttpPost">
-      <http:address location="http://api.socioboard.com/Services/NewsLetter.asmx" />
+      <http:address location="http://localhost:6361/Services/NewsLetter.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

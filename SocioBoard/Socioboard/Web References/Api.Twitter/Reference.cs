@@ -66,7 +66,7 @@ namespace Socioboard.Api.Twitter {
         
         /// <remarks/>
         public Twitter() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_Twitter_Twitter;
+            this.Url = "http://localhost:6361/Services/Twitter.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -842,9 +842,9 @@ namespace Socioboard.Api.Twitter {
         
         private System.Guid userIdField;
         
-        private int followersCountField;
-        
         private bool isActiveField;
+        
+        private int followersCountField;
         
         private int followingCountField;
         
@@ -917,22 +917,22 @@ namespace Socioboard.Api.Twitter {
         }
         
         /// <remarks/>
-        public int FollowersCount {
-            get {
-                return this.followersCountField;
-            }
-            set {
-                this.followersCountField = value;
-            }
-        }
-        
-        /// <remarks/>
         public bool IsActive {
             get {
                 return this.isActiveField;
             }
             set {
                 this.isActiveField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int FollowersCount {
+            get {
+                return this.followersCountField;
+            }
+            set {
+                this.followersCountField = value;
             }
         }
         

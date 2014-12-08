@@ -494,10 +494,18 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetLinkedinCompanyPageDetailsByUserIdAndPageId(string UserId, string LinkedinPageId)
         {
+            Domain.Socioboard.Domain.LinkedinCompanyPage LinkedinCompanyPage=new Domain.Socioboard.Domain.LinkedinCompanyPage ();
             try
             {
                 Guid Userid = Guid.Parse(UserId);
-                Domain.Socioboard.Domain.LinkedinCompanyPage LinkedinCompanyPage = objLinkedCmpnyPgeRepo.getCompanyPageInformation(Userid, LinkedinPageId);
+                if (objLinkedCmpnyPgeRepo.checkLinkedinPageExists(LinkedinPageId, Userid))
+                {
+                    LinkedinCompanyPage = objLinkedCmpnyPgeRepo.getCompanyPageInformation(Userid, LinkedinPageId);
+                }
+                else
+                {
+                    LinkedinCompanyPage = objLinkedCmpnyPgeRepo.getCompanyPageInformation(LinkedinPageId);
+                }
                 return new JavaScriptSerializer().Serialize(LinkedinCompanyPage);
             }
             catch (Exception ex)

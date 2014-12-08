@@ -21,10 +21,95 @@ namespace Api.Socioboard.Services
     public class Coupon : System.Web.Services.WebService
     {
 
+        CouponRepository ObjCouponRepo = new CouponRepository();
+
         [WebMethod]
         public string HelloWorld()
         {
             return "Hello World";
         }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllCoupons()
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.Coupon> lstNews = ObjCouponRepo.GetAllCoupon();
+                return new JavaScriptSerializer().Serialize(lstNews);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return null;
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string UpdateCoupons(string ObjCoupons)
+        {
+            try
+            {
+                Domain.Socioboard.Domain.Coupon objcoupon = (Domain.Socioboard.Domain.Coupon)(new JavaScriptSerializer().Deserialize(ObjCoupons, typeof(Domain.Socioboard.Domain.Coupon)));
+                if (ObjCouponRepo.GetCouponByCouponCode(objcoupon).Count < 1 || ObjCouponRepo.GetCouponByCouponCode(objcoupon).Count == 0)
+                {
+                    ObjCouponRepo.SetCouponById(objcoupon);
+                    return new JavaScriptSerializer().Serialize("Updated Successfully");
+                }
+                else
+                {
+                    return new JavaScriptSerializer().Serialize("Coupon Already Exist");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return null;
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetCouponsById(string ObjCoupons)
+        {
+            try
+            {
+                Domain.Socioboard.Domain.Coupon Coupon = (Domain.Socioboard.Domain.Coupon)(new JavaScriptSerializer().Deserialize(ObjCoupons, typeof(Domain.Socioboard.Domain.Coupon)));
+                List<Domain.Socioboard.Domain.Coupon> objNews = ObjCouponRepo.GetCouponByCouponId(Coupon);
+                return new JavaScriptSerializer().Serialize(objNews);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return null;
+            }
+        }
+
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string AddCoupons(string ObjCoupons)
+        {
+            try
+            {
+                Domain.Socioboard.Domain.Coupon objcoupon = (Domain.Socioboard.Domain.Coupon)(new JavaScriptSerializer().Deserialize(ObjCoupons, typeof(Domain.Socioboard.Domain.Coupon)));
+                if (ObjCouponRepo.GetCouponByCouponCode(objcoupon).Count < 1 || ObjCouponRepo.GetCouponByCouponCode(objcoupon).Count == 0)
+                {
+                    ObjCouponRepo.Add(objcoupon);
+                    return new JavaScriptSerializer().Serialize("Added Successfully");
+                }
+                else
+                {
+                    return new JavaScriptSerializer().Serialize("Coupon Already Exist");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return null;
+            }
+        }
+
     }
 }

@@ -25,10 +25,18 @@ namespace Api.Socioboard.Services
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetAllTwitterFeedsByUserIdAndProfileId(string UserId, string ProfileId)
-        {
+        { 
+            List<Domain.Socioboard.Domain.TwitterFeed> lstTwitterFeed=new List<Domain.Socioboard.Domain.TwitterFeed> ();
             try
             {
-                List<Domain.Socioboard.Domain.TwitterFeed> lstTwitterFeed = objTwitterFeedRepository.getAllTwitterFeedOfUsers(Guid.Parse(UserId), ProfileId);
+                if (objTwitterFeedRepository.checkTwitteUserExists(ProfileId, Guid.Parse(UserId)))
+                {
+                    lstTwitterFeed = objTwitterFeedRepository.getAllTwitterFeedOfUsers(Guid.Parse(UserId), ProfileId);
+                }
+                else
+                {
+                    lstTwitterFeed = objTwitterFeedRepository.getAllTwitterUserFeeds(ProfileId);
+                }
                 return new JavaScriptSerializer().Serialize(lstTwitterFeed);
             }
             catch (Exception ex)

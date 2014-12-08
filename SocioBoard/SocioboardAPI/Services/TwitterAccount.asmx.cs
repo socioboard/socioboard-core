@@ -35,9 +35,17 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetTwitterAccountDetailsById(string UserId, string ProfileId)
         {
+             Domain.Socioboard.Domain.TwitterAccount objTwitterAccount=new Domain.Socioboard.Domain.TwitterAccount ();
             try
             {
-                Domain.Socioboard.Domain.TwitterAccount objTwitterAccount = objTwitterAccountRepository.GetUserInformation(Guid.Parse(UserId), ProfileId);
+                if (objTwitterAccountRepository.checkTwitterUserExists(ProfileId, Guid.Parse(UserId)))
+                {
+                    objTwitterAccount = objTwitterAccountRepository.GetUserInformation(Guid.Parse(UserId), ProfileId);
+                }
+                else
+                {
+                    objTwitterAccount = objTwitterAccountRepository.getUserInformation(ProfileId);
+                }
                 return new JavaScriptSerializer().Serialize(objTwitterAccount);
             }
             catch (Exception ex)

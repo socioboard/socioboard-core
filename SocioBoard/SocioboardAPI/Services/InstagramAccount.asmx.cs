@@ -40,11 +40,18 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string UserInformation(string UserId, string LinkedinId)
         {
+            objInstagramAccount = new Domain.Socioboard.Domain.InstagramAccount();
             try
             {
                 Guid Userid = Guid.Parse(UserId);
-                objInstagramAccount=new Domain.Socioboard.Domain.InstagramAccount ();
-                objInstagramAccount = objLinkedInAccountRepository.getInstagramAccountDetailsById(LinkedinId, Userid);
+                if (objLinkedInAccountRepository.checkInstagramUserExists(LinkedinId, Guid.Parse(UserId)))
+                {
+                    objInstagramAccount = objLinkedInAccountRepository.getInstagramAccountDetailsById(LinkedinId, Userid);
+                }
+                else
+                {
+                    objInstagramAccount = objLinkedInAccountRepository.getInstagramAccountDetailsById(LinkedinId);
+                }
                 return new JavaScriptSerializer().Serialize(objInstagramAccount);
             }
             catch (Exception ex)

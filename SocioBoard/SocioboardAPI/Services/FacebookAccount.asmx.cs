@@ -196,7 +196,14 @@ namespace Api.Socioboard.Services
                 {
                     try
                     {
-                        lstFacebookAccount.Add(objFacebookAccountRepository.getFacebookAccountDetailsById(item.ProfileId, Guid.Parse(userid)));
+                        if (objFacebookAccountRepository.checkFacebookUserExists(item.ProfileId, Guid.Parse(userid)))
+                        {
+                            lstFacebookAccount.Add(objFacebookAccountRepository.getFacebookAccountDetailsById(item.ProfileId, Guid.Parse(userid)));
+                        }
+                        else
+                        {
+                            lstFacebookAccount.Add(objFacebookAccountRepository.getFacebookAccountDetailsById(item.ProfileId));
+                        }
                     }
                     catch (Exception)
                     {

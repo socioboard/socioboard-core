@@ -158,6 +158,7 @@ namespace Api.Socioboard.Services
             teams.GroupId = groupId;
             teams.UserId = userId;
             teams.EmailId = userEmailId;
+            teams.InviteStatus = 1;
             objTeamRepository.addNewTeam(teams);
         }
 
@@ -202,6 +203,25 @@ namespace Api.Socioboard.Services
                 User objUser=new Services.User ();
                
                     
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+            return new JavaScriptSerializer().Serialize(team);
+
+        }
+
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string UpdateTeambyteamid(string teamid)
+        {
+            try
+            {
+                teamrepo.updateTeambyteamid(Guid.Parse(teamid));
+                User objUser = new Services.User();
             }
             catch (Exception ex)
             {

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using SocioBoard.Domain;
-using SocioBoard.Helper;
+using Domain.Socioboard.Domain;
+using Api.Socioboard.Helper;
 
-namespace SocioBoard.Model
+namespace Api.Socioboard.Services
 {
     public class CouponRepository
     {
@@ -15,7 +15,7 @@ namespace SocioBoard.Model
         /// </summary>
         /// <param name="user">Set Values in a coupon Class Property and Pass the Object of coupon Class (SocioBoard.Domain.Admin).</param>
         /// <returns>When successfully added it return Added otherwise  it return null.</returns>
-        public string Add(Coupon coupon)
+        public string Add(Domain.Socioboard.Domain.Coupon coupon)
         {
             string res = null;
             try
@@ -46,9 +46,9 @@ namespace SocioBoard.Model
         /// </summary>
         /// <param name="coupon">Set coupon value in a coupon Property Class and Pass the Object of coupon Class as a paremeter.(SocioBoard.Domain.Admin).</param>
         /// <returns>coupon values in the list of coupon properies class object.(List<Coupon>) </returns>
-        public List<Coupon> GetCouponByCouponCode(Coupon coupon)
+        public List<Domain.Socioboard.Domain.Coupon> GetCouponByCouponCode(Domain.Socioboard.Domain.Coupon coupon)
         {
-            List<Coupon> res = new List<Coupon>();
+            List<Domain.Socioboard.Domain.Coupon> res = new List<Domain.Socioboard.Domain.Coupon>();
             try
             {
                 //Creates a database connection and opens up a session
@@ -60,7 +60,7 @@ namespace SocioBoard.Model
                         //Proceed action, to get coupon detail by coupon code.
                         res = session.CreateQuery("from Coupon u where u.CouponCode = : couponCode")
                         .SetParameter("couponCode", coupon.CouponCode)
-                        .List<Coupon>().ToList<Coupon>();
+                        .List<Domain.Socioboard.Domain.Coupon>().ToList<Domain.Socioboard.Domain.Coupon>();
                     }//End transaction
                 }//End session
             }
@@ -77,10 +77,10 @@ namespace SocioBoard.Model
         /// </summary>
         /// <param name="coupon">Set coupon value in a coupon Property Class and Pass the Object of coupon Class as a paremeter.(SocioBoard.Domain.Admin).</param>
         /// <returns>coupon values in the list of coupon properties classes.(List<Domain.Coupon>) </returns>
-        public List<Coupon> GetCouponByCouponId(Coupon coupon)
+        public List<Domain.Socioboard.Domain.Coupon> GetCouponByCouponId(Domain.Socioboard.Domain.Coupon coupon)
         {
             //Coupon res = null;
-            List<Coupon> res = new List<Coupon>();
+            List<Domain.Socioboard.Domain.Coupon> res = new List<Domain.Socioboard.Domain.Coupon>();
             try
             {
                 //Creates a database connection and opens up a session
@@ -91,7 +91,7 @@ namespace SocioBoard.Model
                         //Proceed action, to get coupon detail by coupon id.
                         res = session.CreateQuery("from Coupon u where u.Id = : id")
                         .SetParameter("id", coupon.Id)
-                        .List<Coupon>().ToList<Coupon>();
+                        .List<Domain.Socioboard.Domain.Coupon>().ToList<Domain.Socioboard.Domain.Coupon>();
                     }//End transaction
                 }//End session
             }
@@ -107,10 +107,10 @@ namespace SocioBoard.Model
         /// Get the all Coupons
         /// </summary>
         /// <returns>List of coupons.(List<Domain.Coupon>)</returns>
-        public List<Coupon> GetAllCoupon()
+        public List<Domain.Socioboard.Domain.Coupon> GetAllCoupon()
         {
 
-            List<Coupon> res = new List<Coupon>();
+            List<Domain.Socioboard.Domain.Coupon> res = new List<Domain.Socioboard.Domain.Coupon>();
             try
             {
                 //Creates a database connection and opens up a session
@@ -120,7 +120,7 @@ namespace SocioBoard.Model
                     using (NHibernate.ITransaction transaction = session.BeginTransaction())
                     {
                         //Proceed action to get all coupons.
-                        res = session.CreateQuery("from Coupon").List<Coupon>().ToList<Coupon>();
+                        res = session.CreateQuery("from Coupon").List<Domain.Socioboard.Domain.Coupon>().ToList<Domain.Socioboard.Domain.Coupon>();
 
                     }//End transaction
                 }//End session
@@ -138,7 +138,7 @@ namespace SocioBoard.Model
         /// </summary>
         /// <param name="coupon">Set coupon value in a coupon Property Class and Pass the Object of coupon Class as a paremeter.(SocioBoard.Domain.Admin).</param>
         /// <returns>1 for success and 0 for fail</returns>
-        public int SetCouponById(Coupon coupon)
+        public int SetCouponById(Domain.Socioboard.Domain.Coupon coupon)
         {
             int res = 0;
             

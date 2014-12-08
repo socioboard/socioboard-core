@@ -35,7 +35,7 @@ namespace Socioboard.Api.TumblrFeed {
         
         /// <remarks/>
         public TumblrFeed() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_TumblrFeed_TumblrFeed;
+            this.Url = "http://localhost:6361/Services/TumblrFeed.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

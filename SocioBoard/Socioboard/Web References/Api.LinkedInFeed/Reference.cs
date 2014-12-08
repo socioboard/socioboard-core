@@ -39,7 +39,7 @@ namespace Socioboard.Api.LinkedInFeed {
         
         /// <remarks/>
         public LinkedInFeed() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_LinkedInFeed_LinkedInFeed;
+            this.Url = "http://localhost:6361/Services/LinkedInFeed.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

@@ -39,7 +39,7 @@ namespace Socioboard.Api.Dropbox {
         
         /// <remarks/>
         public Dropbox() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_Dropbox_Dropbox;
+            this.Url = "http://localhost:6361/Services/Dropbox.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

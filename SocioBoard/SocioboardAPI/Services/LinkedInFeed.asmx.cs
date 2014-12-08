@@ -24,9 +24,17 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetLinkedInFeeds(string UserId, string LinkedInId)
         {
+             List<Domain.Socioboard.Domain.LinkedInFeed> lstlinkedinfeeds=new List<Domain.Socioboard.Domain.LinkedInFeed> ();
             try
             {
-                List<Domain.Socioboard.Domain.LinkedInFeed> lstlinkedinfeeds = objLinkedInFeedRepository.getAllLinkedInFeedsOfUser(Guid.Parse(UserId), LinkedInId);
+                if (objLinkedInFeedRepository.checkLinkedInUserExists(LinkedInId, Guid.Parse(UserId)))
+                {
+                    lstlinkedinfeeds = objLinkedInFeedRepository.getAllLinkedInFeedsOfUser(Guid.Parse(UserId), LinkedInId);
+                }
+                else
+                {
+                    lstlinkedinfeeds = objLinkedInFeedRepository.getAllLinkedInUserFeeds(LinkedInId);
+                }
                 return new JavaScriptSerializer().Serialize(lstlinkedinfeeds);
             }
             catch (Exception ex)

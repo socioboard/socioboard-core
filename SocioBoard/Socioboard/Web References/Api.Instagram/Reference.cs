@@ -49,7 +49,7 @@ namespace Socioboard.Api.Instagram {
         
         /// <remarks/>
         public Instagram() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_Instagram_Instagram;
+            this.Url = "http://localhost:6361/Services/Instagram.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -400,7 +400,7 @@ namespace Socioboard.Api.Instagram {
         
         private string insUserNameField;
         
-        private string profileUrlField;
+        private System.Guid userIdField;
         
         private bool isActiveField;
         
@@ -408,9 +408,9 @@ namespace Socioboard.Api.Instagram {
         
         private int followedByField;
         
-        private int totalImagesField;
+        private string profileUrlField;
         
-        private System.Guid userIdField;
+        private int totalImagesField;
         
         private string profileTypeField;
         
@@ -455,12 +455,12 @@ namespace Socioboard.Api.Instagram {
         }
         
         /// <remarks/>
-        public string ProfileUrl {
+        public System.Guid UserId {
             get {
-                return this.profileUrlField;
+                return this.userIdField;
             }
             set {
-                this.profileUrlField = value;
+                this.userIdField = value;
             }
         }
         
@@ -495,22 +495,22 @@ namespace Socioboard.Api.Instagram {
         }
         
         /// <remarks/>
+        public string ProfileUrl {
+            get {
+                return this.profileUrlField;
+            }
+            set {
+                this.profileUrlField = value;
+            }
+        }
+        
+        /// <remarks/>
         public int TotalImages {
             get {
                 return this.totalImagesField;
             }
             set {
                 this.totalImagesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.Guid UserId {
-            get {
-                return this.userIdField;
-            }
-            set {
-                this.userIdField = value;
             }
         }
         

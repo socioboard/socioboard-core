@@ -1,0 +1,153 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    Domain.Socioboard.Domain.Coupon objcoupon = Model;
+}
+
+<div style="min-height: 382px;" id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Edit Coupon Details</h1>
+            </div>
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <!-- Nav tabs -->
+
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="Personal">
+
+                                <div class="col-md-6">
+                                    <form role="form" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label for="username-email">Coupon Code</label><span class="pull-right text-danger">*</span>
+                                            <input id="Coupencode" value="@objcoupon.CouponCode" type="text" class="form-control">
+                                        </div>
+                                       
+                                        <div class="form-group">
+                                            <label for="username-email">Entry Date</label><span class="pull-right text-danger">*</span>
+                                            <input id="CpnEntryDate" value="@objcoupon.EntryCouponDate" type="text" class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="username-email">Expiry Date</label><span class="pull-right text-danger">*</span>
+                                            <input id="CnpExpiryDate" value="@objcoupon.ExpCouponDate" type="text" class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="ps_select">
+                                                <label for="username-email">Status</label><span class="pull-right text-danger">*</span>
+                                                <select id="ddlCnpStatus" class="select form-control">
+                                                    @{
+
+                                                            if (objcoupon.Status =="1")
+                                                            {
+                                                                <option selected value="1">Enable</option>
+                                                                <option value="0">Disable</option>
+                                                            }
+                                                            else
+                                                            { 
+                                                                <option  value="1">Enable</option>
+                                                                <option selected value="0">Disable</option>
+                                                            }
+
+                                            
+                                                    }
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <button onclick="UpdateCoupon('@objcoupon.Id')"; id="UpdateCouponData" type="button" class="btn btn-warning">Update</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+</div>
+<script src="~/Themes/Socioboard/Contents/js/jquery-1.10.2.min.js"></script>
+<script>
+    function UpdateCoupon(Id) {
+        debugger;
+        var couponcode = $('#Coupencode').val();
+        var EntryDate = $("#CpnEntryDate").val(); 
+        var ExpiryDate = $("#CnpExpiryDate").val(); 
+        var Status = $('#ddlCnpStatus :selected').val();
+
+        
+        
+
+            if (couponcode == "") {
+                alertify.error('Please enter Coupon Code');
+                return false;
+            }
+
+            if (EntryDate == "") {
+                alertify.error('Please select EntryDate Date');
+                return false;
+            }
+
+            if (ExpiryDate == "") {
+                alertify.error('Please select Expiry Date');
+                return false;
+            }
+           
+            if (Status == "") {
+                alertify.error('Please select Status');
+                return false;
+            }
+
+
+
+
+            $.ajax({
+                type: 'POST',
+                url: '../Coupons/UpdateCoupons?couponcode=' + couponcode + '&EntryDate=' + EntryDate + '&ExpiryDate=' + ExpiryDate + '&Status=' + Status,
+                success: function (msg) {
+                    if (msg == "Updated Successfully") {
+                        alertify.success('Updated Successfully');
+                        window.top.location.href = "../Coupons/ManageCoupons";
+                    }
+                    else if (msg == "Coupon Already Exist")
+                        {
+                        alertify.error('Coupon Already Exist');
+                    }
+                },
+                async: false
+            });
+        }
+    
+
+    $(document).ready(function () {
+        $('#CpnEntryDate').datepicker({
+            startDate: '-0m'
+            //endDate: '+2d'
+        }).on('changeDate', function (ev) {
+            $('#sDate1').text($('#datepicker').data('date'));
+            $('#datepicker').datepicker('hide');
+        });
+
+        $('#CnpExpiryDate').datepicker({
+            startDate: '-0m'
+            //endDate: '+2d'
+        }).on('changeDate', function (ev) {
+            $('#sDate1').text($('#datepicker').data('date'));
+            $('#datepicker').datepicker('hide');
+        });
+    });
+</script>

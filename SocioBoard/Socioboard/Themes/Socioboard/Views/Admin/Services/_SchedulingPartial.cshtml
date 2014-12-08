@@ -1,0 +1,34 @@
+﻿@using Domain.Socioboard.Domain;
+@{Layout = null;}
+<thead>
+    <tr>
+        <th>Name</th>
+        <th>Total Schedule Message</th>
+        <th>Already Scheduled </th>
+        <th>Remaining</th>
+    </tr>
+</thead>
+
+<tbody>
+    @foreach (Domain.Socioboard.Helper.ScheduledTracker item in (List<Domain.Socioboard.Helper.ScheduledTracker>)Model)
+    {
+
+        Socioboard.Api.ScheduledMessage.ScheduledMessage ApiobjSchMsg = new Socioboard.Api.ScheduledMessage.ScheduledMessage();
+        List<ScheduledMessage> lstUnsentScheduledMessage = (List<ScheduledMessage>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjSchMsg.GetAllUnSentMessagesOfUser(item.Id), typeof(List<ScheduledMessage>)));
+
+        Socioboard.Api.User.User ApiobjUser = new Socioboard.Api.User.User();
+        User ObjUser = (User)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjUser.getUsersById(item.Id), typeof(User)));
+        
+        
+        
+        
+        
+        <tr class="odd gradeX">
+            <td><a href="../Services/SchedulingDetails?Id=@ObjUser.Id"     style="cursor:pointer">@ObjUser.UserName</a></td>
+            <td>@item.Count</td>
+            <td>@(item.Count-lstUnsentScheduledMessage.Count())</td>
+            <td>@lstUnsentScheduledMessage.Count()</td>
+        </tr>
+    }
+</tbody>
+

@@ -722,7 +722,22 @@ namespace Api.Socioboard.Services
             return schedule.ToString();
         }
 
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllScheduledDetails()
+        {
+            List<Domain.Socioboard.Helper.ScheduledTracker> _AllScheduledMessage = new List<Domain.Socioboard.Helper.ScheduledTracker>();
+            try
+            {
+                _AllScheduledMessage = objScheduledMessageRepository.GetAllScheduledDetails();
 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            return new JavaScriptSerializer().Serialize(_AllScheduledMessage);
+        }
 
        
 

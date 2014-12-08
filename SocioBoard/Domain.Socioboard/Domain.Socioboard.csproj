@@ -169,6 +169,7 @@
     <Compile Include="Domain\YoutubeAccount.cs" />
     <Compile Include="Domain\YoutubeChannel.cs" />
     <Compile Include="Factory\SocialSiteAccountFactory.cs" />
+    <Compile Include="Helper\ScheduledTracker.cs" />
     <Compile Include="Helper\TwitterProfileDetails.cs" />
     <Compile Include="Helper\TwitterRecentFollower.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

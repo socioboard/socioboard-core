@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Domain.Socioboard.Domain
 {
-    interface INewsRepository
+   public interface INewsRepository
     {
         void AddNews(News news);
         int DeleteNews(Guid newsid);

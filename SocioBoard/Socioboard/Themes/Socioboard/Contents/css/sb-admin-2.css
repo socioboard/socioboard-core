@@ -133,6 +133,11 @@ hr.small {
     margin-top: 50px;
 }
 
+.headerProfilePic {
+    height: 30px;
+    width: 35px;
+}
+
 /* About */
 
 .about {

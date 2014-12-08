@@ -49,7 +49,7 @@ namespace Socioboard.Api.SocialProfile {
         
         /// <remarks/>
         public SocialProfile() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_SocialProfile_SocialProfile;
+            this.Url = "http://localhost:6361/Services/SocialProfile.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

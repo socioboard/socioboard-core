@@ -29,7 +29,7 @@ namespace SocioboardDataServices.Api.InstagramComment {
     [System.Web.Services.WebServiceBindingAttribute(Name="InstagramCommentSoap", Namespace="http://tempuri.org/")]
     public partial class InstagramComment : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
-        private System.Threading.SendOrPostCallback HelloWorldOperationCompleted;
+        private System.Threading.SendOrPostCallback GetInstagramFeedsCommentOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -70,32 +70,36 @@ namespace SocioboardDataServices.Api.InstagramComment {
         }
         
         /// <remarks/>
-        public event HelloWorldCompletedEventHandler HelloWorldCompleted;
+        public event GetInstagramFeedsCommentCompletedEventHandler GetInstagramFeedsCommentCompleted;
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/HelloWorld", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string HelloWorld() {
-            object[] results = this.Invoke("HelloWorld", new object[0]);
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetInstagramFeedsComment", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetInstagramFeedsComment(string UserId, string FeedId) {
+            object[] results = this.Invoke("GetInstagramFeedsComment", new object[] {
+                        UserId,
+                        FeedId});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void HelloWorldAsync() {
-            this.HelloWorldAsync(null);
+        public void GetInstagramFeedsCommentAsync(string UserId, string FeedId) {
+            this.GetInstagramFeedsCommentAsync(UserId, FeedId, null);
         }
         
         /// <remarks/>
-        public void HelloWorldAsync(object userState) {
-            if ((this.HelloWorldOperationCompleted == null)) {
-                this.HelloWorldOperationCompleted = new System.Threading.SendOrPostCallback(this.OnHelloWorldOperationCompleted);
+        public void GetInstagramFeedsCommentAsync(string UserId, string FeedId, object userState) {
+            if ((this.GetInstagramFeedsCommentOperationCompleted == null)) {
+                this.GetInstagramFeedsCommentOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetInstagramFeedsCommentOperationCompleted);
             }
-            this.InvokeAsync("HelloWorld", new object[0], this.HelloWorldOperationCompleted, userState);
+            this.InvokeAsync("GetInstagramFeedsComment", new object[] {
+                        UserId,
+                        FeedId}, this.GetInstagramFeedsCommentOperationCompleted, userState);
         }
         
-        private void OnHelloWorldOperationCompleted(object arg) {
-            if ((this.HelloWorldCompleted != null)) {
+        private void OnGetInstagramFeedsCommentOperationCompleted(object arg) {
+            if ((this.GetInstagramFeedsCommentCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.HelloWorldCompleted(this, new HelloWorldCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GetInstagramFeedsCommentCompleted(this, new GetInstagramFeedsCommentCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -120,17 +124,17 @@ namespace SocioboardDataServices.Api.InstagramComment {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void HelloWorldCompletedEventHandler(object sender, HelloWorldCompletedEventArgs e);
+    public delegate void GetInstagramFeedsCommentCompletedEventHandler(object sender, GetInstagramFeedsCommentCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class HelloWorldCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetInstagramFeedsCommentCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal HelloWorldCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal GetInstagramFeedsCommentCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

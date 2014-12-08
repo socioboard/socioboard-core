@@ -1,0 +1,152 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    Admin objAdmin = (Admin)Session["AdminProfile"];
+
+    string path = System.Configuration.ConfigurationManager.AppSettings["domain"];
+}
+    
+
+<div class="container-fluid">
+    <h1 class="page-header">Settings</h1>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            @objAdmin.UserName
+                       
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <!-- Nav tabs -->
+            
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane active" id="Personal">
+                    
+                    <div class="col-md-6">
+                        <form role="form" class="form-horizontal">
+                            <div class="form-group">
+                               @* <span class="input-group-addon">First Name</span>
+                                <input id="fname" value="@fname" type="text" class="form-control" placeholder="First Name">*@
+                                <label for="username-email">First Name</label><span class="pull-right text-danger">*</span>
+                        <input id="adminfname" value="@objAdmin.FirstName" type="text" class="form-control" placeholder="First Name">
+                            </div>
+                            <div class="form-group">
+                              @*  <span class="input-group-addon">Last Name</span>
+                                <input id="lname" value="@lname" type="text" class="form-control" placeholder="Last Name">*@
+                                 <label for="username-email">Last Name</label><span class="pull-right text-danger">*</span>
+                        <input id="adminlname" value="@objAdmin.LastName" type="text" class="form-control" placeholder="Last Name">
+                            </div>
+                            <div class="form-group">
+                                @*<span class="input-group-addon">Email Address</span>
+                                <input readonly="" id="email" value="@objUser.EmailId" type="text" class="form-control" placeholder="Email id">*@
+                                 <label for="username-email">User Name</label><span class="pull-right text-danger">*</span>
+                        <input id="adminusername" placeholder="E-mail Id" value="@objAdmin.UserName" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                            <button type="reset" class="btn btn-primary" onclick="AdminChangePassword();">Change Password</button>
+                                </div>
+                            <div id="SuccesMessageChngPswrd" style="padding-left:26px;padding-bottom:10px;color:green;font-size:small;display:none"></div>
+                            @*<div class="form-group">
+                                <img src="@objUser.ProfileUrl" class="img-circle profilePic" alt="User Avatar">
+                                <label>Team members will see the avatar you have set.</label>
+                                <div><input id="uploadImage" type="file" class="btn btn-default col-md-6" onchange="AddImage()"></div>
+                            </div>*@
+
+                            <div class="form-group">
+                               @* <img src="@objUser.ProfileUrl" class="img-circle profilePic" alt="User Avatar">*@
+                                <div><input  id="adminimg" type="file" class="btn btn-default col-md-6"></div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="time_zone">
+                                  <label for="time_zone">Time Zone</label>  
+                                </div>
+                                <div class="ps_select">
+                                    <select id="ddladminTimeZone" class="select form-control">
+                                         @foreach (var timeZoneInfo in TimeZoneInfo.GetSystemTimeZones())
+                                         {
+                                             if (timeZoneInfo.DisplayName == objAdmin.TimeZone)
+                                             {
+                                                 <option selected value="@timeZoneInfo.DisplayName">@timeZoneInfo.Id</option>
+                                             }
+                                             else
+                                             { 
+                                             <option value="@timeZoneInfo.DisplayName">@timeZoneInfo.Id</option>
+                                             }
+                                         }
+                                    </select>
+                                </div>
+                            </div>
+                            <button onclick="changeadminsetting()" id="saveadminsetting" type="button" class="btn btn-warning">Save</button>
+                        
+                        
+                        
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+          
+        </div>
+    </div>
+    <!-- /.panel-body -->
+</div>
+@* start Reset password modal *@
+<div class="modal fade" id="AdminResetModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Change Password</h4>
+      </div>
+      <form class="modal-body">
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"></span>
+                                <input id="Adminoldpass" value="" type="password" onblur="ChkOldPswd()" class="form-control" placeholder="Old Password">
+                            </div>
+                            <div id="ErrorWrongPasswrd" style="padding-left:26px;padding-bottom:10px;color:red;font-size:small;display:none"></div>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"></span>
+                                <input id="Adminnewpass" value="" type="password" onblur="ChkNewPswd()" class="form-control" placeholder="New Password">
+                            </div>
+                            <div id="ErrorNewPasswrd" style="padding-left:26px;padding-bottom:10px;color:red;font-size:small;display:none"></div>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"></span>
+                                <input id="Adminconfirmpass" value="" type="password" onblur="ChkConfirmPswd()" class="form-control" placeholder="Confirm Password">
+                            </div>
+                            <div id="ErrorconfrmPasswrd" style="padding-left:26px;padding-bottom:10px;color:red;font-size:small;display:none"></div>
+            <button onclick="closepopupchngpswd()" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button onclick="changeadminPassword('@objAdmin.Id')" type="button" class="btn btn-primary">Save changes</button>
+          </form>
+      </div>
+    </div>
+  </div>
+
+@* End Reset password modal  *@
+@* Scripts to upload image *@
+<link href="~/Themes/@path/Contents/css/fileinput.min.css" rel="stylesheet" />
+<script src="~/Themes/@path/Contents/js/fileinput.min.js"></script>
+
+<script type="text/javascript">
+
+</script>
+@*<script>
+    $(document).ready(function () {
+        $("#input-24").fileinput({
+            showUpload: false,
+            showRemove: false,
+            @if(!string.IsNullOrEmpty(@objUser.ProfileUrl))
+            {
+               <text>  initialPreview: [
+"<img src='@objUser.ProfileUrl' class='file-preview-image' >",
+            ],</text>
+            }
+           
+        });
+    });
+</script>*@
+@* End scripts upload image *@

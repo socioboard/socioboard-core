@@ -29,6 +29,39 @@ namespace Api.Socioboard.Services
             }//End session
         }
 
+        public bool checkFacebookUserExists(string ProfileId, Guid Userid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to Check if FacebookUser is Exist in database or not by UserId and FbuserId.
+                        // And Set the reuired paremeters to find the specific values.
+                        List<Domain.Socioboard.Domain.FacebookFeed> alst = session.CreateQuery("from FacebookFeed where UserId = :userid and ProfileId = :fbuserid")
+                        .SetParameter("userid", Userid)
+                        .SetParameter("fbuserid", ProfileId)
+                        .List<Domain.Socioboard.Domain.FacebookFeed>()
+                       .ToList<Domain.Socioboard.Domain.FacebookFeed>();
+                        if (alst.Count == 0 || alst == null)
+                            return false;
+                        else
+                            return true;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return true;
+                    }
+
+                }//End Transaction
+            }//End session
+        }
+
 
         public List<Domain.Socioboard.Domain.FacebookFeed> getAllFeedDetail(string profileid)
         {

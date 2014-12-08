@@ -18,7 +18,18 @@
 }
 
 @*<div id="page-wrapper">*@
+<style type="text/css">
+    .border-radius {
+        border-radius:13px; -webkit-border-radius:13px; -moz-border-radius:13px; -o-border-radius:13px; -ms-border-radius:13px;
+        padding:4px 22px;
+        width:110px;
+        color:#666;
+    }
+        .border-radius:hover {
+            border:1px solid #e4e3e4;
+        }
 
+</style>
 <div class="container-fluid" style="margin-top:25px">
 <div class="col-md-12">
 <div class="col-md-9">
@@ -187,7 +198,8 @@
     </div>
 </div>
 
-    <div class="col-md-3" style="padding-top: 62px">
+    <div class="col-md-3" style="padding-top: 20px">
+        <div class="col-md-12 btn btn-success" style="margin-bottom:7px" data-target="#Eport_sent_message" data-toggle="modal">Export to CSV</div>
         <div class="col-md-12" style="border: 1px solid rgb(153, 153, 153); background: none repeat scroll 0% 0% rgb(248, 248, 248); padding: 4%;">
         <div class="list-group">
             <a href="#" class="list-group-item btn btn-default report_today" style="margin-bottom: 4%; background: #e4e3e4;" onclick="loadsentmessagesbydate('0')"><strong>Today</strong></a>
@@ -214,7 +226,48 @@
 </div>
 </div>
 @*</div>*@
-
+<div class="modal fade" id="Eport_sent_message" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <h4>Export sent message data</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="export_sent_inner">
+                                        <div class="intro">
+                                            <p>Messages will be exported in CSV format - Comma Separated Values. This data can be opened and analyzed in applications such as Microsoft Excel, Apple Numbers or Google Docs.</p>
+                                            <div class=""></div></div>
+                                        <div class="row">
+                                        <div class="col-md-4" id=""><label>Choose Date Range</label>
+                                            <ul class="" style="list-style: outside none none;padding-left:10px">
+                                                <li><a class="btn active border-radius" id="export_to_csv_0" onclick="eporttocsv('0')">Today</a></li>
+                                                <li><a class="btn border-radius" id="export_to_csv_1" onclick="eporttocsv('1')">Yesterday</a></li>
+                                                <li><a class="btn border-radius" id="export_to_csv_2" onclick="eporttocsv('2')">Last 7 Days</a></li>
+                                                <li><a class="btn border-radius" id="export_to_csv_3" onclick="eporttocsv('3')">Last 30 Days</a></li>
+                                                <li><a class="btn border-radius" id="export_to_csv_4" onclick="eporttocsv('4')">This Month</a></li>
+                                                <li><a class="btn border-radius" id="export_to_csv_5" onclick="eporttocsv('5')">Last Month</a></li>
+                                                <li><a class="btn border-radius" id="export_to_csv_6" onclick="eporttocsv('6')">Custom</a></li>
+                                            </ul>
+                                        </div>
+                                        <div id="date_range_div" style="display:none;margin-left:-27px" class="col-md-8">
+                                            <div style="float:left">
+                                                 <label for="dates">From</label><input type="text" id="cal_left" class="form-control">
+                                            </div>
+                                            <div style="float:right;margin-left:13px">
+                                                <label for="dates">To</label><input type="text" id="cal_right" class="form-control">
+                                            </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <a class="btn btn-default" data-dismiss="modal">Cancel</a>
+                                    <a id="export_btn" class="btn btn-success" href="../Messages/ExportSentmsgByDay?day=0" data-dismiss="">Export to CSV</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 <script type="text/javascript">
     function DetailsofProfile(id, network)
     {
@@ -353,7 +406,113 @@
         $('#fromdate').val('');
         $('#todate').val('');
     }
-
-
+    //------------------------
+    $("#cal_left").datepicker({
+        multidate: false,
+        dateFormat: "yy-mm-dd",
+        endDate: 'd',
+        clearBtn: true
+    });
+    $("#cal_right").datepicker({
+        multidate: false,
+        dateFormat: "yy-mm-dd",
+        endDate: 'd',
+        clearBtn: true
+    });
+    function ExportsentmessagesforCustomrange() {
+        debugger;
+        var sdate = $('#cal_left').val();
+        var ldate = $('#cal_right').val();
+        if (sdate != "" && ldate != "") {
+            window.location = "../Messages/ExportSentmsgForCustomrange?sdate=" + sdate + "&ldate=" + ldate;
+        }
+    }
+    function eporttocsv(key) {
+        debugger;
+        if (key == '0') {
+            $('#export_btn').removeAttr('onclick');
+            $('#export_btn').attr("href", "../Messages/ExportSentmsgByDay?day=0");
+            $('#date_range_div').css('display', 'none');
+            $('#export_to_csv_0').addClass('active');
+            $('#export_to_csv_1').removeClass('active');
+            $('#export_to_csv_2').removeClass('active');
+            $('#export_to_csv_3').removeClass('active');
+            $('#export_to_csv_4').removeClass('active');
+            $('#export_to_csv_5').removeClass('active');
+            $('#export_to_csv_6').removeClass('active');
+        }
+        else if (key == '1') {
+            $('#export_btn').removeAttr('onclick');
+            $('#export_btn').attr("href", "../Messages/ExportSentmsgByDay?day=1");
+            $('#date_range_div').css('display', 'none');
+            $('#export_to_csv_0').removeClass('active');
+            $('#export_to_csv_1').addClass('active');
+            $('#export_to_csv_2').removeClass('active');
+            $('#export_to_csv_3').removeClass('active');
+            $('#export_to_csv_4').removeClass('active');
+            $('#export_to_csv_5').removeClass('active');
+            $('#export_to_csv_6').removeClass('active');
+        }
+        else if (key == '2') {
+            $('#export_btn').removeAttr('onclick');
+            $('#export_btn').attr("href", "../Messages/ExportSentmsgByDays?days=7");
+            $('#date_range_div').css('display', 'none');
+            $('#export_to_csv_0').removeClass('active');
+            $('#export_to_csv_1').removeClass('active');
+            $('#export_to_csv_2').addClass('active');
+            $('#export_to_csv_3').removeClass('active');
+            $('#export_to_csv_4').removeClass('active');
+            $('#export_to_csv_5').removeClass('active');
+            $('#export_to_csv_6').removeClass('active');
+        }
+        else if (key == '3') {
+            $('#export_btn').removeAttr('onclick');
+            $('#export_btn').attr("href", "../Messages/ExportSentmsgByDays?days=30");
+            $('#date_range_div').css('display', 'none');
+            $('#export_to_csv_0').removeClass('active');
+            $('#export_to_csv_1').removeClass('active');
+            $('#export_to_csv_2').removeClass('active');
+            $('#export_to_csv_3').addClass('active');
+            $('#export_to_csv_4').removeClass('active');
+            $('#export_to_csv_5').removeClass('active');
+            $('#export_to_csv_6').removeClass('active');
+        }
+        else if (key == '4') {
+            $('#export_btn').removeAttr('onclick');
+            $('#export_btn').attr("href", "../Messages/ExportSentmsgByMonth?month=0");
+            $('#date_range_div').css('display', 'none');
+            $('#export_to_csv_0').removeClass('active');
+            $('#export_to_csv_1').removeClass('active');
+            $('#export_to_csv_2').removeClass('active');
+            $('#export_to_csv_3').removeClass('active');
+            $('#export_to_csv_4').addClass('active');
+            $('#export_to_csv_5').removeClass('active');
+            $('#export_to_csv_6').removeClass('active');
+        }
+        else if (key == '5') {
+            $('#export_btn').removeAttr('onclick');
+            $('#export_btn').attr("href", "../Messages/ExportSentmsgByMonth?month=1");
+            $('#date_range_div').css('display', 'none');
+            $('#export_to_csv_0').removeClass('active');
+            $('#export_to_csv_1').removeClass('active');
+            $('#export_to_csv_2').removeClass('active');
+            $('#export_to_csv_3').removeClass('active');
+            $('#export_to_csv_4').removeClass('active');
+            $('#export_to_csv_5').addClass('active');
+            $('#export_to_csv_6').removeClass('active');
+        }
+        else if (key == '6') {
+            $('#export_btn').removeAttr("href");
+            $('#export_btn').attr("onclick", "ExportsentmessagesforCustomrange()");
+            $('#date_range_div').css('display', 'block');
+            $('#export_to_csv_0').removeClass('active');
+            $('#export_to_csv_1').removeClass('active');
+            $('#export_to_csv_2').removeClass('active');
+            $('#export_to_csv_3').removeClass('active');
+            $('#export_to_csv_4').removeClass('active');
+            $('#export_to_csv_5').removeClass('active');
+            $('#export_to_csv_6').addClass('active');
+        }
+    }
 
 </script>

@@ -46,5 +46,48 @@ namespace Api.Socioboard.Services
                 return null;
             }
         }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string ChangeAdminPassword(string NewPassword,string OldPassword, string UserName)
+        {
+            try
+            {
+                AdminRepository AdminRepo = new AdminRepository();
+                int i = AdminRepo.ChangePassword(NewPassword, OldPassword,UserName);
+                if (i != 0)
+                {
+                    return new JavaScriptSerializer().Serialize("Password Changed Successfully");
+                }
+                else
+                {
+                    return new JavaScriptSerializer().Serialize("Not Exist");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return null;
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string UpdateAdminSetting(string ObjADmin)
+        {
+            try
+            {
+                AdminRepository ObjAdminRepo = new AdminRepository();
+                Domain.Socioboard.Domain.Admin objadmin = (Domain.Socioboard.Domain.Admin)(new JavaScriptSerializer().Deserialize(ObjADmin, typeof(Domain.Socioboard.Domain.Admin)));
+                AdminRepository.Update(objadmin);
+                return new JavaScriptSerializer().Serialize("Setting Updated Successfully");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return null;
+            }
+        }
+
     }
 }

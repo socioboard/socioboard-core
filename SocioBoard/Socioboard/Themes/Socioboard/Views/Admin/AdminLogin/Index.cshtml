@@ -69,7 +69,11 @@
                                 </div>
                                 <div id="AdminSignInErrorMessages"></div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <div onclick="AdminsigninFunction();" id="btnAdminLogin" class="btn btn-lg btn-warning btn-block" style="cursor:pointer";>Login<i class="fa fa-fw fa-sign-in fa-lx"></i></div>
+                                @*<button onclick="AdminsigninFunction();" id="btnAdminLogin" class="btn btn-lg btn-warning btn-block" style="cursor:pointer";>Login<i class="fa fa-fw fa-sign-in fa-lx"></i></button>*@
+                                <div class="loginbtn" style="cursor:pointer">
+                                    <a onclick="AdminsigninFunction();">
+                                    <img id="btnAdminLogin" src="../Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/AdminLogin-Button.png" alt="" /></a>
+                                </div>
                             </fieldset>
                         </form>
                     </div>
@@ -113,7 +117,7 @@
             }
             if (username != '' && password != '' && username != undefined && password != undefined) {
 
-                document.getElementById('btnAdminLogin').src = "../../Contents/img/bx_loader.gif";
+                document.getElementById('btnAdminLogin').src = "../Contents/img/bx_loader.gif";
 
                 $.ajax({
                     type: 'POST',
@@ -129,6 +133,8 @@
                         }
                         else {
                             $("#AdminSignInErrorMessages").html(msg);
+                            $('#btnAdminLogin').html("<button class='btn btn-warning' type='button'>Login</button>");
+
                         }
                     }
 

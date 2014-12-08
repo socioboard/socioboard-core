@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 using Newtonsoft.Json.Linq;
 using Socioboard.Api.TeamMemberProfile;
 using Socioboard.Helper;
@@ -305,7 +307,7 @@ namespace Socioboard.Controllers
 
             }
 
-            Domain.Socioboard.Domain.Tasks objTasks = new Domain.Socioboard.Domain.Tasks();
+            Api.Tasks.Tasks1 objTasks = new Api.Tasks.Tasks1();
 
             Api.Tasks.Tasks objApiTasks = new Api.Tasks.Tasks();
             objApiTasks.AddNewTaskWithGroup(descritption, objUser.Id.ToString(), objTasks, idtoassign.ToString(), comment, AssignDate, groupid);
@@ -751,6 +753,151 @@ namespace Socioboard.Controllers
             //return PartialView("_TwitterMailSendingPartial", twtfeed);
         }
 
-        
+        //Vikash [04/12/2014]
+        public void ExportSentMessages(List<Domain.Socioboard.Domain.ScheduledMessage> _ScheduledMessage, Domain.Socioboard.Domain.User _user)
+        {
+            var details = new System.Data.DataTable("sentmessage");
+            details.Columns.Add("Date", typeof(string));
+            details.Columns.Add("Network", typeof(string));
+            details.Columns.Add("ProfileId", typeof(string));
+            details.Columns.Add("Sent By", typeof(string));
+            details.Columns.Add("Message", typeof(string));
+            foreach (Domain.Socioboard.Domain.ScheduledMessage item_sent in _ScheduledMessage)
+            {
+                details.Rows.Add(item_sent.ScheduleTime, item_sent.ProfileType, item_sent.ProfileId, _user.UserName, item_sent.ShareMessage);
+            }
+            var grid = new GridView();
+            grid.DataSource = details;
+            grid.DataBind();
+            Response.ClearContent();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment; filename=SentMessages_" + (DateTime.Now.Ticks).ToString() + ".xls");
+            Response.ContentType = "application/ms-excel";
+            Response.Charset = "";
+            StringWriter sw = new StringWriter();
+            HtmlTextWriter htw = new HtmlTextWriter(sw);
+            grid.RenderControl(htw);
+            Response.Output.Write(sw.ToString());
+            Response.Flush();
+            Response.End();
+        }
+
+        public ActionResult ExportSentmsgByDay(string day)
+        {
+            string AllProfileId = string.Empty;
+            Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
+            Api.ScheduledMessage.ScheduledMessage ApiobjScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
+            Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = SBUtils.GetUserProfilesccordingToGroup();
+            foreach (var item in allprofileofuser)
+            {
+                try
+                {
+                    AllProfileId += item.Key.ProfileId + ',';
+                }
+                catch (Exception Err)
+                {
+                    Console.Write(Err.StackTrace);
+                }
+            }
+            try
+            {
+                AllProfileId = AllProfileId.Substring(0, (AllProfileId.Length - 1));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            List<Domain.Socioboard.Domain.ScheduledMessage> lstSchedulemsg = (List<Domain.Socioboard.Domain.ScheduledMessage>)(new JavaScriptSerializer().Deserialize(ApiobjScheduledMessage.GetAllScheduledMessageforADay(objUser.Id.ToString(), AllProfileId, day), typeof(List<Domain.Socioboard.Domain.ScheduledMessage>)));
+            ExportSentMessages(lstSchedulemsg, objUser);
+            return RedirectToAction("sentmsg");
+        }
+        public ActionResult ExportSentmsgByDays(string days)
+        {
+            string AllProfileId = string.Empty;
+            Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
+            Api.ScheduledMessage.ScheduledMessage ApiobjScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
+            Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = SBUtils.GetUserProfilesccordingToGroup();
+            foreach (var item in allprofileofuser)
+            {
+                try
+                {
+                    AllProfileId += item.Key.ProfileId + ',';
+                }
+                catch (Exception Err)
+                {
+                    Console.Write(Err.StackTrace);
+                }
+            }
+            try
+            {
+                AllProfileId = AllProfileId.Substring(0, (AllProfileId.Length - 1));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            List<Domain.Socioboard.Domain.ScheduledMessage> lstSchedulemsg = (List<Domain.Socioboard.Domain.ScheduledMessage>)(new JavaScriptSerializer().Deserialize(ApiobjScheduledMessage.GetAllScheduledMessageByDays(objUser.Id.ToString(), AllProfileId, days), typeof(List<Domain.Socioboard.Domain.ScheduledMessage>)));
+            ExportSentMessages(lstSchedulemsg, objUser);
+            return RedirectToAction("sentmsg");
+        }
+        public ActionResult ExportSentmsgByMonth(string month)
+        {
+            string AllProfileId = string.Empty;
+            Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
+            Api.ScheduledMessage.ScheduledMessage ApiobjScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
+            Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = SBUtils.GetUserProfilesccordingToGroup();
+            foreach (var item in allprofileofuser)
+            {
+                try
+                {
+                    AllProfileId += item.Key.ProfileId + ',';
+                }
+                catch (Exception Err)
+                {
+                    Console.Write(Err.StackTrace);
+                }
+            }
+            try
+            {
+                AllProfileId = AllProfileId.Substring(0, (AllProfileId.Length - 1));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            List<Domain.Socioboard.Domain.ScheduledMessage> lstSchedulemsg = (List<Domain.Socioboard.Domain.ScheduledMessage>)(new JavaScriptSerializer().Deserialize(ApiobjScheduledMessage.GetAllScheduledMessageByMonth(objUser.Id.ToString(), AllProfileId, month), typeof(List<Domain.Socioboard.Domain.ScheduledMessage>)));
+            ExportSentMessages(lstSchedulemsg, objUser);
+            return RedirectToAction("sentmsg");
+        }
+        public ActionResult ExportSentmsgForCustomrange(string sdate, string ldate)
+        {
+            string AllProfileId = string.Empty;
+            Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
+            Api.ScheduledMessage.ScheduledMessage ApiobjScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
+            Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = SBUtils.GetUserProfilesccordingToGroup();
+            foreach (var item in allprofileofuser)
+            {
+                try
+                {
+                    AllProfileId += item.Key.ProfileId + ',';
+                }
+                catch (Exception Err)
+                {
+                    Console.Write(Err.StackTrace);
+                }
+            }
+            try
+            {
+                AllProfileId = AllProfileId.Substring(0, (AllProfileId.Length - 1));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            List<Domain.Socioboard.Domain.ScheduledMessage> lstSchedulemsg = (List<Domain.Socioboard.Domain.ScheduledMessage>)(new JavaScriptSerializer().Deserialize(ApiobjScheduledMessage.GetAllSentMessageDetailsForCustomrange(objUser.Id.ToString(), AllProfileId, sdate, ldate), typeof(List<Domain.Socioboard.Domain.ScheduledMessage>)));
+            ExportSentMessages(lstSchedulemsg, objUser);
+            return RedirectToAction("sentmsg");
+        }
+
     }
 }

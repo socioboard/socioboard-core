@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllCoupons">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllCouponsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllCouponsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCoupons">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObjCoupons" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCouponsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateCouponsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCouponsById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObjCoupons" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCouponsByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCouponsByIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddCoupons">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObjCoupons" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddCouponsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddCouponsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCouponsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllCoupons" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCouponsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllCouponsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCouponsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCoupons" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCouponsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCouponsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCouponsByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCouponsById" />
+  </wsdl:message>
+  <wsdl:message name="GetCouponsByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCouponsByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddCouponsSoapIn">
+    <wsdl:part name="parameters" element="tns:AddCoupons" />
+  </wsdl:message>
+  <wsdl:message name="AddCouponsSoapOut">
+    <wsdl:part name="parameters" element="tns:AddCouponsResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpGetIn" />
+  <wsdl:message name="HelloWorldHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCouponsHttpGetIn" />
+  <wsdl:message name="GetAllCouponsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCouponsHttpGetIn">
+    <wsdl:part name="ObjCoupons" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCouponsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCouponsByIdHttpGetIn">
+    <wsdl:part name="ObjCoupons" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCouponsByIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddCouponsHttpGetIn">
+    <wsdl:part name="ObjCoupons" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddCouponsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpPostIn" />
+  <wsdl:message name="HelloWorldHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCouponsHttpPostIn" />
+  <wsdl:message name="GetAllCouponsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCouponsHttpPostIn">
+    <wsdl:part name="ObjCoupons" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCouponsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCouponsByIdHttpPostIn">
+    <wsdl:part name="ObjCoupons" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCouponsByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddCouponsHttpPostIn">
+    <wsdl:part name="ObjCoupons" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddCouponsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="CouponSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCoupons">
+      <wsdl:input message="tns:GetAllCouponsSoapIn" />
+      <wsdl:output message="tns:GetAllCouponsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCoupons">
+      <wsdl:input message="tns:UpdateCouponsSoapIn" />
+      <wsdl:output message="tns:UpdateCouponsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCouponsById">
+      <wsdl:input message="tns:GetCouponsByIdSoapIn" />
+      <wsdl:output message="tns:GetCouponsByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCoupons">
+      <wsdl:input message="tns:AddCouponsSoapIn" />
+      <wsdl:output message="tns:AddCouponsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CouponHttpGet">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldHttpGetIn" />
+      <wsdl:output message="tns:HelloWorldHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCoupons">
+      <wsdl:input message="tns:GetAllCouponsHttpGetIn" />
+      <wsdl:output message="tns:GetAllCouponsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCoupons">
+      <wsdl:input message="tns:UpdateCouponsHttpGetIn" />
+      <wsdl:output message="tns:UpdateCouponsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCouponsById">
+      <wsdl:input message="tns:GetCouponsByIdHttpGetIn" />
+      <wsdl:output message="tns:GetCouponsByIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCoupons">
+      <wsdl:input message="tns:AddCouponsHttpGetIn" />
+      <wsdl:output message="tns:AddCouponsHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CouponHttpPost">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldHttpPostIn" />
+      <wsdl:output message="tns:HelloWorldHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCoupons">
+      <wsdl:input message="tns:GetAllCouponsHttpPostIn" />
+      <wsdl:output message="tns:GetAllCouponsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCoupons">
+      <wsdl:input message="tns:UpdateCouponsHttpPostIn" />
+      <wsdl:output message="tns:UpdateCouponsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCouponsById">
+      <wsdl:input message="tns:GetCouponsByIdHttpPostIn" />
+      <wsdl:output message="tns:GetCouponsByIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCoupons">
+      <wsdl:input message="tns:AddCouponsHttpPostIn" />
+      <wsdl:output message="tns:AddCouponsHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CouponSoap" type="tns:CouponSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCoupons">
+      <soap:operation soapAction="http://tempuri.org/GetAllCoupons" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCoupons">
+      <soap:operation soapAction="http://tempuri.org/UpdateCoupons" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCouponsById">
+      <soap:operation soapAction="http://tempuri.org/GetCouponsById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCoupons">
+      <soap:operation soapAction="http://tempuri.org/AddCoupons" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CouponSoap12" type="tns:CouponSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCoupons">
+      <soap12:operation soapAction="http://tempuri.org/GetAllCoupons" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCoupons">
+      <soap12:operation soapAction="http://tempuri.org/UpdateCoupons" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCouponsById">
+      <soap12:operation soapAction="http://tempuri.org/GetCouponsById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCoupons">
+      <soap12:operation soapAction="http://tempuri.org/AddCoupons" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CouponHttpGet" type="tns:CouponHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="HelloWorld">
+      <http:operation location="/HelloWorld" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCoupons">
+      <http:operation location="/GetAllCoupons" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCoupons">
+      <http:operation location="/UpdateCoupons" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCouponsById">
+      <http:operation location="/GetCouponsById" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCoupons">
+      <http:operation location="/AddCoupons" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CouponHttpPost" type="tns:CouponHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="HelloWorld">
+      <http:operation location="/HelloWorld" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCoupons">
+      <http:operation location="/GetAllCoupons" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCoupons">
+      <http:operation location="/UpdateCoupons" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCouponsById">
+      <http:operation location="/GetCouponsById" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCoupons">
+      <http:operation location="/AddCoupons" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Coupon">
+    <wsdl:port name="CouponSoap" binding="tns:CouponSoap">
+      <soap:address location="http://localhost:6361/Services/Coupon.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CouponSoap12" binding="tns:CouponSoap12">
+      <soap12:address location="http://localhost:6361/Services/Coupon.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CouponHttpGet" binding="tns:CouponHttpGet">
+      <http:address location="http://localhost:6361/Services/Coupon.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CouponHttpPost" binding="tns:CouponHttpPost">
+      <http:address location="http://localhost:6361/Services/Coupon.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

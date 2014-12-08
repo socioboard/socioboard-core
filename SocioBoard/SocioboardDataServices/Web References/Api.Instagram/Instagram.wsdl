@@ -98,6 +98,24 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="InstagramLikeUnLike">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LikeCount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IsLike" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FeedId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="InstagramId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InstagramLikeUnLikeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InstagramLikeUnLikeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
     <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
@@ -138,6 +156,12 @@
   <wsdl:message name="GetIntagramImagesSoapOut">
     <wsdl:part name="parameters" element="tns:GetIntagramImagesResponse" />
   </wsdl:message>
+  <wsdl:message name="InstagramLikeUnLikeSoapIn">
+    <wsdl:part name="parameters" element="tns:InstagramLikeUnLike" />
+  </wsdl:message>
+  <wsdl:message name="InstagramLikeUnLikeSoapOut">
+    <wsdl:part name="parameters" element="tns:InstagramLikeUnLikeResponse" />
+  </wsdl:message>
   <wsdl:message name="getInstagramDataHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="InstagramId" type="s:string" />
@@ -170,6 +194,16 @@
     <wsdl:part name="code" type="s:string" />
   </wsdl:message>
   <wsdl:message name="AddInstagramAccountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramLikeUnLikeHttpGetIn">
+    <wsdl:part name="LikeCount" type="s:string" />
+    <wsdl:part name="IsLike" type="s:string" />
+    <wsdl:part name="FeedId" type="s:string" />
+    <wsdl:part name="InstagramId" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramLikeUnLikeHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="getInstagramDataHttpPostIn">
@@ -206,6 +240,16 @@
   <wsdl:message name="AddInstagramAccountHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="InstagramLikeUnLikeHttpPostIn">
+    <wsdl:part name="LikeCount" type="s:string" />
+    <wsdl:part name="IsLike" type="s:string" />
+    <wsdl:part name="FeedId" type="s:string" />
+    <wsdl:part name="InstagramId" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramLikeUnLikeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="InstagramSoap">
     <wsdl:operation name="getInstagramData">
       <wsdl:input message="tns:getInstagramDataSoapIn" />
@@ -227,6 +271,10 @@
       <wsdl:input message="tns:GetIntagramImagesSoapIn" />
       <wsdl:output message="tns:GetIntagramImagesSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="InstagramLikeUnLike">
+      <wsdl:input message="tns:InstagramLikeUnLikeSoapIn" />
+      <wsdl:output message="tns:InstagramLikeUnLikeSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="InstagramHttpGet">
     <wsdl:operation name="getInstagramData">
@@ -245,6 +293,10 @@
       <wsdl:input message="tns:AddInstagramAccountHttpGetIn" />
       <wsdl:output message="tns:AddInstagramAccountHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="InstagramLikeUnLike">
+      <wsdl:input message="tns:InstagramLikeUnLikeHttpGetIn" />
+      <wsdl:output message="tns:InstagramLikeUnLikeHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="InstagramHttpPost">
     <wsdl:operation name="getInstagramData">
@@ -262,6 +314,10 @@
     <wsdl:operation name="AddInstagramAccount">
       <wsdl:input message="tns:AddInstagramAccountHttpPostIn" />
       <wsdl:output message="tns:AddInstagramAccountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InstagramLikeUnLike">
+      <wsdl:input message="tns:InstagramLikeUnLikeHttpPostIn" />
+      <wsdl:output message="tns:InstagramLikeUnLikeHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="InstagramSoap" type="tns:InstagramSoap">
@@ -304,6 +360,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetIntagramImages">
       <soap:operation soapAction="http://tempuri.org/GetIntagramImages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramLikeUnLike">
+      <soap:operation soapAction="http://tempuri.org/InstagramLikeUnLike" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -359,6 +424,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="InstagramLikeUnLike">
+      <soap12:operation soapAction="http://tempuri.org/InstagramLikeUnLike" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="InstagramHttpGet" type="tns:InstagramHttpGet">
     <http:binding verb="GET" />
@@ -391,6 +465,15 @@
     </wsdl:operation>
     <wsdl:operation name="AddInstagramAccount">
       <http:operation location="/AddInstagramAccount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramLikeUnLike">
+      <http:operation location="/InstagramLikeUnLike" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -437,19 +520,28 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="InstagramLikeUnLike">
+      <http:operation location="/InstagramLikeUnLike" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Instagram">
     <wsdl:port name="InstagramSoap" binding="tns:InstagramSoap">
-      <soap:address location="http://api.socioboard.com/Services/Instagram.asmx" />
+      <soap:address location="http://localhost:6361/Services/Instagram.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramSoap12" binding="tns:InstagramSoap12">
-      <soap12:address location="http://api.socioboard.com/Services/Instagram.asmx" />
+      <soap12:address location="http://localhost:6361/Services/Instagram.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramHttpGet" binding="tns:InstagramHttpGet">
-      <http:address location="http://api.socioboard.com/Services/Instagram.asmx" />
+      <http:address location="http://localhost:6361/Services/Instagram.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramHttpPost" binding="tns:InstagramHttpPost">
-      <http:address location="http://api.socioboard.com/Services/Instagram.asmx" />
+      <http:address location="http://localhost:6361/Services/Instagram.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

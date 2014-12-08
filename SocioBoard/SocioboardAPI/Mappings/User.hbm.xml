@@ -67,6 +67,13 @@
       <column name="UserType"  />
     </property>
 
+    <property name="ChangePasswordKey">
+      <column name="ChangePasswordKey"  />
+    </property>
+
+    <property name="IsKeyUsed">
+      <column name="IsKeyUsed"  />
+    </property>
 
   </class>
 </hibernate-mapping>

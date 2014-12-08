@@ -37,7 +37,7 @@ namespace Socioboard.Api.FbPagePost {
         
         /// <remarks/>
         public FbPagePost() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_FbPagePost_FbPagePost;
+            this.Url = "http://localhost:6361/Services/FbPagePost.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

@@ -43,7 +43,7 @@ namespace Socioboard.Api.TumblrAccount {
         
         /// <remarks/>
         public TumblrAccount() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_TumblrAccount_TumblrAccount;
+            this.Url = "http://localhost:6361/Services/TumblrAccount.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

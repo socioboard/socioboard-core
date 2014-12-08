@@ -1,0 +1,264 @@
+﻿<div id="page-wrapper">
+</div>
+
+
+<script src="~/Themes/Socioboard/Contents/js/jquery-2.0.1.min.js"></script>
+
+<script type="text/javascript">
+    
+    function loadpersonalsetting() {
+        $('#page-wrapper').load('../AdminSetting/LoadAdminSetting')
+    }
+
+
+    function changeadminsetting()
+    {
+        debugger;
+        var adminchangesettingdata = new FormData();
+        var filesimage = document.getElementById('adminimg').files[0];
+
+        var adminfname = $('#adminfname').val();
+        var adminlname = $("#adminlname").val();
+        var adminusername = $("#adminusername").val();
+        var AdminTimeZone = $('#ddladminTimeZone :selected').val();
+
+        if (adminfname == "") {
+            alertify.error('Please enter First Name');
+            return false;
+        }
+        if (adminlname == "") {
+            alertify.error('Please enter last Name');
+            return false;
+        }
+        if (adminusername == "") {
+            alertify.error('Please enter User Name');
+            return false;
+        }
+
+        if (adminfname.search(/[a-zA-Z]/) == -1) {
+            alertify.error('Please enter a Proper First Name which contain Character');
+            return false;
+        }
+        if (adminlname.search(/[a-zA-Z]/) == -1) {
+            alertify.error('Please enter a Proper Last Name which contain Character');
+            return false;
+        }
+
+        if (filesimage != null) {
+            adminchangesettingdata.append('adminprofileimage', filesimage);
+        }
+
+
+        adminchangesettingdata.append("Adminfname", adminfname);
+        adminchangesettingdata.append("Adminlname", adminlname);
+        adminchangesettingdata.append("Adminusername", adminusername);
+        adminchangesettingdata.append("AdminTimeZone", AdminTimeZone);
+        adminchangesettingdata.append("Adminimg", filesimage);
+
+        $.ajax({
+            type: 'POST',
+            url: '../AdminSetting/UpdateAdminSettingData',
+            data: adminchangesettingdata,
+            processData: false,
+            contentType: false,
+            success: function (msg) {
+                if (msg == "Setting Updated Successfully") 
+                {
+                    alertify.success('Setting Updated Successfully"');
+                    window.location.href = "../AdminSetting/Index";
+
+                }
+                else {
+                    alertify.error('Error please check');
+                }
+                // $('#feeds').html('').append(msg);
+                // window.location = self.location;
+            },
+            async: false
+        });
+    }
+
+    $(document).ready(function () {
+        loadpersonalsetting();
+    });
+
+
+    function AdminChangePassword() {
+        jQuery.noConflict();
+        debugger;
+        $('#AdminResetModal').modal('show');
+    }
+
+    function changeadminPassword(id, password)
+    {
+        var AdminPrivate = new FormData();
+
+        var NewPassword = $('#Adminnewpass').val();
+        var OldPassword = $('#Adminoldpass').val();
+        var ConfirmPassword = $('#Adminconfirmpass').val();
+
+        if (!ChkOldPswd())
+        {
+            return false;
+        }
+
+        if (!ChkNewPswd())
+        {
+            return false;
+        }
+        if (!ChkConfirmPswd())
+        {
+            return false;
+        }
+
+        AdminPrivate.append('NewPassword', NewPassword);
+        AdminPrivate.append('OldPassword', OldPassword);
+
+
+        $.ajax({
+            type: 'POST',
+            url: '../AdminSetting/ChangeAdminPassword',
+            data: AdminPrivate,
+            processData: false,
+            contentType: false,
+            success: function (msg) {
+                if (msg == "Password Changed Successfully") {
+                    //alertify.success('Password Changed Successfully');
+                    $('#AdminResetModal').modal('hide');
+                    $('#Adminoldpass').val('');
+                    $('#Adminnewpass').val('');
+                    $('#Adminconfirmpass').val('');
+                    $("#ErrorWrongPasswrd").html("");
+                    $("#ErrorWrongPasswrd").css('display', 'none');
+                    $("#ErrorNewPasswrd").html("");
+                    $("#ErrorNewPasswrd").css('display', 'none');
+                    $("#ErrorconfrmPasswrd").html("");
+                    $("#ErrorconfrmPasswrd").css('display', 'none');
+                    $("#SuccesMessageChngPswrd").html("Password Changed Successfully");
+                    $("#SuccesMessageChngPswrd").css('display', 'block');
+
+                    //window.location.href = "../AdminSetting/Index";
+                }
+                else if (msg=="Entered Old Password Not Match!")
+                {
+                    $("#ErrorWrongPasswrd").html("Wrong Old password!");
+                    $("#ErrorWrongPasswrd").css('display', 'block');
+                }
+                else if (msg == "You can't Use Old password as New Password!") {
+                    $("#ErrorNewPasswrd").html("You can't Use Old password as New Password!");
+                    $("#ErrorNewPasswrd").css('display', 'block');
+                }
+            },
+            //async: false
+        });
+    }
+
+    function closepopupchngpswd()
+    {
+        $('#AdminResetModal').modal('hide');
+        $('#Adminoldpass').val('');
+        $('#Adminnewpass').val('');
+        $('#Adminconfirmpass').val('');
+        $("#ErrorWrongPasswrd").html("");
+        $("#ErrorWrongPasswrd").css('display', 'none');
+        $("#ErrorNewPasswrd").html("");
+        $("#ErrorNewPasswrd").css('display', 'none');
+        $("#ErrorconfrmPasswrd").html("");
+        $("#ErrorconfrmPasswrd").css('display', 'none');
+    }
+
+    function ChkOldPswd()
+    {
+        debugger;
+        var typeOldPswd = $('#Adminoldpass').val();
+        if(typeOldPswd==""){
+            $("#ErrorWrongPasswrd").html("Old password Field can't be Null!");
+            $("#ErrorWrongPasswrd").css('display', 'block');
+            return false;
+        }
+        else {
+            $("#ErrorWrongPasswrd").html("");
+            $("#ErrorWrongPasswrd").css('display', 'none');
+            return true;
+            //if (Password !== typeOldPswd) {
+            //    //alertify.error("Entered Old Password Not Match!");
+            //    $("#ErrorWrongPasswrd").html("Wrong Old password!");
+            //    $("#ErrorWrongPasswrd").css('display', 'block');
+            //    return false;
+            //}
+            //else {
+            //    $("#ErrorWrongPasswrd").html("");
+            //    $("#ErrorWrongPasswrd").css('display', 'none');
+            //    return true;
+            //}
+        }
+
+
+
+        
+    }
+
+
+    function ChkNewPswd() {
+        debugger;
+        var TypeNewPswd = $('#Adminnewpass').val();
+        if (TypeNewPswd == "") {
+            $("#ErrorNewPasswrd").html("New password Field can't be Null!");
+            $("#ErrorNewPasswrd").css('display', 'block');
+            return false;
+        }
+        else {
+            $("#ErrorNewPasswrd").html("");
+            $("#ErrorNewPasswrd").css('display', 'none');
+            return true;
+            //if (Password == TypeNewPswd) {
+            //    //alertify.error("Entered Old Password Not Match!");
+            //    $("#ErrorNewPasswrd").html("You can't Use Old password as New Password!");
+            //    $("#ErrorNewPasswrd").css('display', 'block');
+            //    return false;
+            //}
+            //else {
+            //    $("#ErrorNewPasswrd").html("");
+            //    $("#ErrorNewPasswrd").css('display', 'none');
+            //    return true;
+            //}
+        }
+
+
+
+        
+    }
+
+
+    function ChkConfirmPswd() {
+        debugger;
+        var TypeNewPswd = $("#Adminnewpass").val();
+        var TypeConfirmPswd = $('#Adminconfirmpass').val();
+        if (TypeConfirmPswd == "") {
+            $("#ErrorconfrmPasswrd").html("Confirm password Field can't be Null!");
+            $("#ErrorconfrmPasswrd").css('display', 'block');
+            return false;
+        }
+        else {
+            $("#ErrorconfrmPasswrd").html("");
+            $("#ErrorconfrmPasswrd").css('display', 'none');
+            if (TypeConfirmPswd !== TypeNewPswd) {
+                //alertify.error("Entered Old Password Not Match!");
+                $("#ErrorconfrmPasswrd").html("Password Doesn't Match");
+                $("#ErrorconfrmPasswrd").css('display', 'block');
+                return false;
+            }
+            else {
+                $("#ErrorconfrmPasswrd").html("");
+                $("#ErrorconfrmPasswrd").css('display', 'none');
+                return true;
+            }
+        }
+
+
+
+      
+    }
+
+
+</script>

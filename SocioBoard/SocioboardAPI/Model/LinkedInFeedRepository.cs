@@ -28,6 +28,41 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+
+
+        public bool checkLinkedInUserExists(string ProfileId, Guid Userid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to Check if FacebookUser is Exist in database or not by UserId and FbuserId.
+                        // And Set the reuired paremeters to find the specific values.
+                        List<Domain.Socioboard.Domain.LinkedInFeed> alst = session.CreateQuery("from LinkedInFeed where UserId = :userid and ProfileId = :fbuserid")
+                        .SetParameter("userid", Userid)
+                        .SetParameter("fbuserid", ProfileId)
+                        .List<Domain.Socioboard.Domain.LinkedInFeed>()
+                       .ToList<Domain.Socioboard.Domain.LinkedInFeed>();
+                        if (alst.Count == 0 || alst == null)
+                            return false;
+                        else
+                            return true;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return true;
+                    }
+
+                }//End Transaction
+            }//End session
+        }
+
         public int deleteLinkedInFeed(Domain.Socioboard.Domain.LinkedInFeed lifeed)
         {
             throw new NotImplementedException();
@@ -81,6 +116,44 @@ namespace Api.Socioboard.Services
 
                 }//End Transaction
             }//End Session
+        }
+
+
+        public List<Domain.Socioboard.Domain.LinkedInFeed> getAllLinkedInUserFeeds(string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get all facebook feeds of profile by facebook profile id  
+                        List<Domain.Socioboard.Domain.LinkedInFeed> alst = session.CreateQuery("from LinkedInFeed where  ProfileId = :profileId ORDER BY FeedsDate DESC")
+                        .SetParameter("profileId", profileid)
+                        .List<Domain.Socioboard.Domain.LinkedInFeed>()
+                        .ToList<Domain.Socioboard.Domain.LinkedInFeed>();
+
+                        #region oldcode
+                        //List<FacebookFeed> alst = new List<FacebookFeed>();
+                        //foreach (FacebookFeed item in query.Enumerable<FacebookFeed>().OrderByDescending(x => x.FeedDate))
+                        //{
+                        //    alst.Add(item);
+                        //} 
+                        #endregion
+
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }// End session
+
         }
 
         // Edited by Antima

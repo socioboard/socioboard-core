@@ -37,7 +37,7 @@ namespace Socioboard.Api.TaskComment {
         
         /// <remarks/>
         public TaskComment() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_TaskComment_TaskComment;
+            this.Url = "http://localhost:6361/Services/TaskComment.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

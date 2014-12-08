@@ -35,7 +35,7 @@ namespace Socioboard.Api.InstagramComment {
         
         /// <remarks/>
         public InstagramComment() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_InstagramComment_InstagramComment;
+            this.Url = "http://localhost:6361/Services/InstagramComment.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

@@ -41,7 +41,7 @@ namespace Socioboard.Api.AdminPackageDetails {
         
         /// <remarks/>
         public AdminPackageDetails() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_AdminPackageDetails_AdminPackageDetails;
+            this.Url = "http://localhost:6361/Services/AdminPackageDetails.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

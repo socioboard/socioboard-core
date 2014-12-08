@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using System.Web.Security;
 
 namespace Socioboard.Controllers
 {
@@ -32,6 +33,8 @@ namespace Socioboard.Controllers
             if (str != "Not Exist")
             {
                 objAdmin = (Domain.Socioboard.Domain.Admin)(new JavaScriptSerializer().Deserialize(LoginData, typeof(Domain.Socioboard.Domain.Admin)));
+                FormsAuthentication.SetAuthCookie(objAdmin.UserName, false);
+                Session["AdminProfile"] = objAdmin;
                 returnmsg = "Admin";
             }
             else
@@ -43,5 +46,13 @@ namespace Socioboard.Controllers
             return Content(returnmsg);
         }
 
+        public ActionResult AdminLogout()
+        {
+            Session.Abandon();
+            Session.Clear();
+            Session.RemoveAll();
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index");
+        }
     }
 }

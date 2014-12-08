@@ -39,6 +39,8 @@ namespace Socioboard.Api.Team {
         
         private System.Threading.SendOrPostCallback UpdateTeamOperationCompleted;
         
+        private System.Threading.SendOrPostCallback UpdateTeambyteamidOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetTeamByUserIdOperationCompleted;
         
         private System.Threading.SendOrPostCallback getAllTeamsOfUserOperationCompleted;
@@ -47,7 +49,7 @@ namespace Socioboard.Api.Team {
         
         /// <remarks/>
         public Team() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_Team_Team;
+            this.Url = "http://localhost:6361/Services/Team.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -95,6 +97,9 @@ namespace Socioboard.Api.Team {
         
         /// <remarks/>
         public event UpdateTeamCompletedEventHandler UpdateTeamCompleted;
+        
+        /// <remarks/>
+        public event UpdateTeambyteamidCompletedEventHandler UpdateTeambyteamidCompleted;
         
         /// <remarks/>
         public event GetTeamByUserIdCompletedEventHandler GetTeamByUserIdCompleted;
@@ -268,6 +273,35 @@ namespace Socioboard.Api.Team {
             if ((this.UpdateTeamCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.UpdateTeamCompleted(this, new UpdateTeamCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateTeambyteamid", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string UpdateTeambyteamid(string teamid) {
+            object[] results = this.Invoke("UpdateTeambyteamid", new object[] {
+                        teamid});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UpdateTeambyteamidAsync(string teamid) {
+            this.UpdateTeambyteamidAsync(teamid, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateTeambyteamidAsync(string teamid, object userState) {
+            if ((this.UpdateTeambyteamidOperationCompleted == null)) {
+                this.UpdateTeambyteamidOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateTeambyteamidOperationCompleted);
+            }
+            this.InvokeAsync("UpdateTeambyteamid", new object[] {
+                        teamid}, this.UpdateTeambyteamidOperationCompleted, userState);
+        }
+        
+        private void OnUpdateTeambyteamidOperationCompleted(object arg) {
+            if ((this.UpdateTeambyteamidCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateTeambyteamidCompleted(this, new UpdateTeambyteamidCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -469,6 +503,32 @@ namespace Socioboard.Api.Team {
         private object[] results;
         
         internal UpdateTeamCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void UpdateTeambyteamidCompletedEventHandler(object sender, UpdateTeambyteamidCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpdateTeambyteamidCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpdateTeambyteamidCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

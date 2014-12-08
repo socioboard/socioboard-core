@@ -41,7 +41,7 @@ namespace Socioboard.Api.TeamMemberProfile {
         
         /// <remarks/>
         public TeamMemberProfile() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_TeamMemberProfile_TeamMemberProfile;
+            this.Url = "http://localhost:6361/Services/TeamMemberProfile.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

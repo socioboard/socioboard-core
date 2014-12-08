@@ -1,174 +1,276 @@
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\User.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Groups.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\SocialProfile.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Team.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\TeamMemberProfile.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\FacebookAccount.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\TumblrAccount.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\FacebookFeed.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\TwitterAccount.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\TwitterFeed.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\LinkedInAccount.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\YoutubeAccount.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Admin.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Ads.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\ArchiveMessage.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Blog_Comments.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Blog_Posts.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\BusinessSetting.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Coupon.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\DiscoverySearch.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Drafts.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\FacebookGroup.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\FacebookInsightPostStats.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\FacebookInsightStats.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\FacebookMessage.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\FacebookStats.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\GoogleAnalyticsAccount.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\GoogleAnalyticsStats.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\GooglePlusAccount.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\GooglePlusActivities.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\GroupProfile.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\GroupScheduleMessage.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\InstagramAccount.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\InstagramComment.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\InstagramFeed.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Invitation.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\LinkedInFeed.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\LinkedinMessage.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Log.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\LoginLogs.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\MandrillAccount.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\News.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\NewsLetter.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Package.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\PaymentTransaction.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\RssFeeds.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\RssReader.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\ScheduledMessage.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\TaskComment.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Tasks.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\TumblrFeed.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\TwitterDirectMessages.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\TwitterMessage.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\TwitterStats.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\UserActivation.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\UserPackageRelation.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\UserRefRelation.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mappings\youtubechannel.hbm.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Api.Socioboard.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Api.Socioboard.pdb
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Domain.Socioboard.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\GlobusGooglePlusLib.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\GlobusInstagramLib.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\GlobusLinkedinLib.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\GlobusMailLib.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\GlobusTumblerLib.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\GlobusTwitterLib.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Mandrill.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\RestSharp.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\OAuth.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\System.Net.Http.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\Domain.Socioboard.pdb
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\GlobusGooglePlusLib.pdb
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\GlobusInstagramLib.pdb
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\GlobusLinkedinLib.pdb
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\GlobusMailLib.pdb
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\GlobusTumblerLib.pdb
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\GlobusTwitterLib.pdb
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\bin\System.Net.Http.xml
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\obj\Debug\Api.Socioboard.csprojResolveAssemblyReference.cache
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\obj\Debug\Api.Socioboard.dll
-C:\Users\GLB-116\Desktop\sb 2.0\trunk\SocioboardAPI\obj\Debug\Api.Socioboard.pdb
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\User.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Groups.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\SocialProfile.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Team.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\TeamMemberProfile.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\FacebookAccount.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\TumblrAccount.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\FacebookFeed.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\TwitterAccount.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\TwitterFeed.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\LinkedInAccount.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\YoutubeAccount.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Admin.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Ads.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\ArchiveMessage.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Blog_Comments.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Blog_Posts.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\BusinessSetting.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Coupon.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\DiscoverySearch.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Drafts.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\FacebookGroup.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\FacebookInsightPostStats.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\FacebookInsightStats.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\FacebookMessage.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\FacebookStats.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\GoogleAnalyticsAccount.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\GoogleAnalyticsStats.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\GooglePlusAccount.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\GooglePlusActivities.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\GroupProfile.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\GroupScheduleMessage.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\InstagramAccount.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\InstagramComment.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\InstagramFeed.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Invitation.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\LinkedInFeed.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\LinkedinMessage.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Log.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\LoginLogs.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\MandrillAccount.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\News.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\NewsLetter.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Package.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\PaymentTransaction.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\RssFeeds.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\RssReader.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\ScheduledMessage.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\TaskComment.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\Tasks.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\TumblrFeed.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\TwitterDirectMessages.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\TwitterMessage.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\TwitterStats.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\UserActivation.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\UserPackageRelation.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\UserRefRelation.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\youtubechannel.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\FbPageComment.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\FbPageLiker.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\FbPagePost.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\FbPagePostCommentLiker.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\LinkedinCompanyPage.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\LinkedinCompanyPagePosts.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\ReplyMessage.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mappings\FbPageSharer.hbm.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Api.Socioboard.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Api.Socioboard.pdb
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Domain.Socioboard.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\GlobusGooglePlusLib.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\GlobusInstagramLib.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\GlobusLinkedinLib.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\GlobusMailLib.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\GlobussDropboxLib.exe
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\GlobusTumblerLib.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\GlobusTwitterLib.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Mandrill.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\RestSharp.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\OAuth.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\System.Net.Http.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\Domain.Socioboard.pdb
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\GlobusGooglePlusLib.pdb
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\GlobusInstagramLib.pdb
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\GlobusLinkedinLib.pdb
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\GlobusMailLib.pdb
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\GlobusTumblerLib.pdb
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\GlobusTwitterLib.pdb
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\GlobussDropboxLib.pdb
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\bin\System.Net.Http.xml
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\obj\Debug\Api.Socioboard.csprojResolveAssemblyReference.cache
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\obj\Debug\Api.Socioboard.dll
-D:\SURAJ RAI\sb 2.0\trunk\SocioboardAPI\obj\Debug\Api.Socioboard.pdb
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\User.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Groups.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\SocialProfile.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Team.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TeamMemberProfile.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FacebookAccount.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TumblrAccount.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FacebookFeed.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TwitterAccount.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TwitterFeed.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\LinkedInAccount.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\YoutubeAccount.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Admin.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Ads.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\ArchiveMessage.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Blog_Comments.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Blog_Posts.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\BusinessSetting.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Coupon.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\DiscoverySearch.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Drafts.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FacebookGroup.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FacebookInsightPostStats.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FacebookInsightStats.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FacebookMessage.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FacebookStats.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\GoogleAnalyticsAccount.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\GoogleAnalyticsStats.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\GooglePlusAccount.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\GooglePlusActivities.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\GroupProfile.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\GroupScheduleMessage.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\InstagramAccount.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\InstagramComment.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\InstagramFeed.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Invitation.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\LinkedInFeed.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\LinkedinMessage.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Log.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\LoginLogs.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\MandrillAccount.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\News.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\NewsLetter.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Package.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\PaymentTransaction.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\RssFeeds.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\RssReader.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\ScheduledMessage.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TaskComment.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Tasks.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TumblrFeed.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TwitterDirectMessages.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TwitterMessage.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TwitterStats.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\UserActivation.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\UserPackageRelation.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\UserRefRelation.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\youtubechannel.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FbPageComment.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FbPageLiker.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FbPagePost.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FbPagePostCommentLiker.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\LinkedinCompanyPage.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\LinkedinCompanyPagePosts.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\ReplyMessage.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FbPageSharer.hbm.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Api.Socioboard.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Api.Socioboard.pdb
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Domain.Socioboard.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusGooglePlusLib.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusInstagramLib.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusLinkedinLib.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusMailLib.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobussDropboxLib.exe
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusTumblerLib.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusTwitterLib.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mandrill.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\RestSharp.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\OAuth.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\System.Net.Http.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Domain.Socioboard.pdb
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusGooglePlusLib.pdb
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusInstagramLib.pdb
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusLinkedinLib.pdb
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusMailLib.pdb
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusTumblerLib.pdb
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusTwitterLib.pdb
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobussDropboxLib.pdb
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\bin\System.Net.Http.xml
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\obj\Debug\Api.Socioboard.csprojResolveAssemblyReference.cache
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\obj\Debug\Api.Socioboard.dll
+E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\obj\Debug\Api.Socioboard.pdb
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\User.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Groups.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\SocialProfile.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Team.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TeamMemberProfile.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FacebookAccount.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TumblrAccount.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FacebookFeed.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TwitterAccount.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TwitterFeed.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\LinkedInAccount.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\YoutubeAccount.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Admin.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Ads.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\ArchiveMessage.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Blog_Comments.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Blog_Posts.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\BusinessSetting.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Coupon.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\DiscoverySearch.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Drafts.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FacebookGroup.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FacebookInsightPostStats.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FacebookInsightStats.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FacebookMessage.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FacebookStats.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\GoogleAnalyticsAccount.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\GoogleAnalyticsStats.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\GooglePlusAccount.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\GooglePlusActivities.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\GroupProfile.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\GroupScheduleMessage.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\InstagramAccount.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\InstagramComment.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\InstagramFeed.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Invitation.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\LinkedInFeed.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\LinkedinMessage.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Log.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\LoginLogs.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\MandrillAccount.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\News.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\NewsLetter.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Package.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\PaymentTransaction.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\RssFeeds.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\RssReader.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\ScheduledMessage.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TaskComment.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Tasks.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TumblrFeed.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TwitterDirectMessages.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TwitterMessage.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TwitterStats.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\UserActivation.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\UserPackageRelation.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\UserRefRelation.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\youtubechannel.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FbPageComment.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FbPageLiker.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FbPagePost.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FbPagePostCommentLiker.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\LinkedinCompanyPage.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\LinkedinCompanyPagePosts.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\ReplyMessage.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FbPageSharer.hbm.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Api.Socioboard.dll
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Api.Socioboard.pdb
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Domain.Socioboard.dll
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusGooglePlusLib.dll
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusInstagramLib.dll
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusLinkedinLib.dll
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusMailLib.dll
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobussDropboxLib.exe
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusTumblerLib.dll
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusTwitterLib.dll
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mandrill.dll
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\RestSharp.dll
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\OAuth.dll
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\System.Net.Http.dll
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Domain.Socioboard.pdb
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusGooglePlusLib.pdb
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusInstagramLib.pdb
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusLinkedinLib.pdb
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusMailLib.pdb
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusTumblerLib.pdb
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusTwitterLib.pdb
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobussDropboxLib.pdb
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\System.Net.Http.xml
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\obj\Debug\Api.Socioboard.csprojResolveAssemblyReference.cache
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\obj\Debug\Api.Socioboard.dll
+D:\AnjaniProject\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\obj\Debug\Api.Socioboard.pdb
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\User.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Groups.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\SocialProfile.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Team.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TeamMemberProfile.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FacebookAccount.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TumblrAccount.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FacebookFeed.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TwitterAccount.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TwitterFeed.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\LinkedInAccount.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\YoutubeAccount.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Admin.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Ads.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\ArchiveMessage.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Blog_Comments.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Blog_Posts.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\BusinessSetting.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Coupon.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\DiscoverySearch.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Drafts.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FacebookGroup.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FacebookInsightPostStats.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FacebookInsightStats.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FacebookMessage.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FacebookStats.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\GoogleAnalyticsAccount.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\GoogleAnalyticsStats.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\GooglePlusAccount.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\GooglePlusActivities.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\GroupProfile.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\GroupScheduleMessage.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\InstagramAccount.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\InstagramComment.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\InstagramFeed.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Invitation.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\LinkedInFeed.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\LinkedinMessage.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Log.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\LoginLogs.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\MandrillAccount.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\News.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\NewsLetter.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Package.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\PaymentTransaction.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\RssFeeds.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\RssReader.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\ScheduledMessage.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TaskComment.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\Tasks.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TumblrFeed.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TwitterDirectMessages.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TwitterMessage.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\TwitterStats.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\UserActivation.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\UserPackageRelation.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\UserRefRelation.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\youtubechannel.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FbPageComment.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FbPageLiker.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FbPagePost.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FbPagePostCommentLiker.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\LinkedinCompanyPage.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\LinkedinCompanyPagePosts.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\ReplyMessage.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mappings\FbPageSharer.hbm.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Api.Socioboard.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Api.Socioboard.pdb
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Domain.Socioboard.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusGooglePlusLib.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusInstagramLib.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusLinkedinLib.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusMailLib.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobussDropboxLib.exe
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusTumblerLib.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusTwitterLib.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Mandrill.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\RestSharp.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\OAuth.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\System.Net.Http.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\Domain.Socioboard.pdb
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusGooglePlusLib.pdb
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusInstagramLib.pdb
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusLinkedinLib.pdb
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusMailLib.pdb
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusTumblerLib.pdb
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobusTwitterLib.pdb
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\GlobussDropboxLib.pdb
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\bin\System.Net.Http.xml
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\obj\Debug\Api.Socioboard.csprojResolveAssemblyReference.cache
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\obj\Debug\Api.Socioboard.dll
+D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\obj\Debug\Api.Socioboard.pdb

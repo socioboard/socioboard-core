@@ -180,6 +180,16 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Start\CustomViewLocationRazorViewEngine.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Admin\AddNewsLatterController.cs" />
+    <Compile Include="Controllers\Admin\AdminHomeController.cs" />
+    <Compile Include="Controllers\Admin\AdminLoginController.cs" />
+    <Compile Include="Controllers\Admin\AdminSettingController.cs" />
+    <Compile Include="Controllers\Admin\AdvertisementController.cs" />
+    <Compile Include="Controllers\Admin\CouponsController.cs" />
+    <Compile Include="Controllers\Admin\NewsController.cs" />
+    <Compile Include="Controllers\Admin\PackageController.cs" />
+    <Compile Include="Controllers\Admin\ServicesController.cs" />
+    <Compile Include="Controllers\Admin\UserDetailsController.cs" />
     <Compile Include="Controllers\DropboxManagerController.cs" />
     <Compile Include="Controllers\ForgotPasswordController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
@@ -225,12 +235,42 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Include="Web References\Api.AdminNews\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Api.AdminPackageDetails\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Api.AdminUserDetails\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Api.Admin\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Api.Ads\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\Api.ArchiveMessage\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="Web References\Api.BusinessSetting\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Api.Coupon\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -290,6 +330,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\Api.GooglePlusAccount\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\Api.GroupProfile\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -341,6 +386,11 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="Web References\Api.MailSender\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Api.NewsLetter\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -2274,18 +2324,85 @@
     <Content Include="Themes\Socioboard\Views\MultilanguageSetting\Company.cshtml" />
     <Content Include="Themes\Socioboard\Views\PersonalSetting\Billing.cshtml" />
     <Content Include="Themes\Socioboard\Views\PersonalSetting\_BillingPartial.cshtml" />
-    <Content Include="Web References\Api.ArchiveMessage\ArchiveMessage.wsdl" />
-    <Content Include="Web References\Api.ArchiveMessage\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    <Content Include="Web References\Api.AdminNews\AdminNews.disco" />
+    <Content Include="Web References\Api.AdminPackageDetails\AdminPackageDetails.disco" />
+    <Content Include="Web References\Api.AdminUserDetails\AdminUserDetails.disco" />
+    <Content Include="Web References\Api.Admin\admin.disco" />
+    <Content Include="Web References\Api.Ads\Ads.disco" />
     <Content Include="Themes\Socioboard\Views\Messages\_MailMsgBodyPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Messages\_MailMsgSendingPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Home\training.cshtml">
       <SubType>Code</SubType>
     </Content>
     <Content Include="Themes\Socioboard\Views\Home\pagenotfound.cshtml" />
-    <None Include="Web References\Api.BusinessSetting\BusinessSetting.disco" />
+    <Content Include="Themes\Socioboard\Views\Admin\AddNewsLatter\LoadAddNewsLatter.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\AddNewsLatter\_ViewStart.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\AdminHome\Dashboard.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\AdminHome\_ViewStart.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\AdminLogin\Index.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\AdminSetting\Index.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\AdminSetting\_AdminSettingPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\AdminSetting\_ViewStart.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\Advertisement\CreateAdvertisement.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\Advertisement\EditAdvertisement.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\Advertisement\ManageAdvertisement.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\Advertisement\_ManageAdvertisement.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\Advertisement\_ViewStart.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\Coupons\CreateCoupons.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\Coupons\EditCoupons.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\Coupons\ManageCoupons.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\Coupons\_ManageCouponsPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\Coupons\_ViewStart.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\News\CreateNews.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\News\EditNews.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\News\ManageNews.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\News\_ManageNewsPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\News\_ViewStart.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\Package\EditPackage.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\Package\ManagePackage.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\Package\_ManagePackagePartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\Package\_ViewStart.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\Services\Scheduling.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\Services\SchedulingDetails.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\Services\_SchedulingDetailsPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\Services\_SchedulingPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\Services\_ViewStart.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\UserDetails\EditUserDetails.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\UserDetails\ManageProfile.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\UserDetails\ManageUser.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\UserDetails\_ManageProfilePartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\UserDetails\_ManageUserPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\UserDetails\_ViewStart.cshtml" />
+    <Content Include="Web References\Api.Admin\admin.wsdl" />
+    <Content Include="Web References\Api.Admin\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\Api.AdminNews\AdminNews.wsdl" />
+    <Content Include="Web References\Api.AdminNews\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\Api.AdminPackageDetails\AdminPackageDetails.wsdl" />
+    <Content Include="Web References\Api.AdminPackageDetails\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\Api.AdminUserDetails\AdminUserDetails.wsdl" />
+    <Content Include="Web References\Api.AdminUserDetails\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\Api.Ads\Ads.wsdl" />
+    <Content Include="Web References\Api.Ads\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\Api.ArchiveMessage\ArchiveMessage.wsdl" />
+    <Content Include="Web References\Api.ArchiveMessage\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <Content Include="Themes\Socioboard\Views\Feeds\_FeedRightPartial.cshtml">
       <SubType>Code</SubType>
     </Content>
@@ -2316,11 +2433,6 @@
     <Content Include="Themes\Socioboard\Views\Messages\_TaskPartial - Copy.cshtml" />
     <Content Include="Themes\Socioboard\Views\Messages\_TaskPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Messages\_ViewStart.cshtml" />
-    <None Include="Web References\Api.BusinessSetting\BusinessSetting.wsdl" />
-    <None Include="Web References\Api.BusinessSetting\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="Themes\Socioboard\Views\Index\_PricingPartial.cshtml">
       <SubType>Code</SubType>
     </Content>
@@ -2343,72 +2455,61 @@
     <Content Include="Themes\Socioboard\Views\Publishing\_DraftPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Index\_RegistrationPartial.cshtml" />
     <Content Include="Web References\Api.ArchiveMessage\ArchiveMessage.disco" />
+    <Content Include="Web References\Api.BusinessSetting\BusinessSetting.disco" />
+    <Content Include="Web References\Api.Coupon\Coupon.disco" />
+    <Content Include="Web References\Api.BusinessSetting\BusinessSetting.wsdl" />
+    <Content Include="Web References\Api.BusinessSetting\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\Api.Coupon\Coupon.wsdl" />
+    <Content Include="Web References\Api.Coupon\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <Content Include="Web References\Api.DiscoverySearch\DiscoverySearch.wsdl" />
     <Content Include="Web References\Api.DiscoverySearch\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
-    <None Include="Web References\Api.Drafts\Drafts.wsdl" />
-    <None Include="Web References\Api.Drafts\Reference.map">
+    <Content Include="Web References\Api.DiscoverySearch\DiscoverySearch.disco" />
+    <Content Include="Web References\Api.Drafts\Drafts.disco" />
+    <Content Include="Web References\Api.Drafts\Drafts.wsdl" />
+    <Content Include="Web References\Api.Drafts\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\Api.Drafts\Drafts.disco">
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="Web References\Api.DiscoverySearch\DiscoverySearch.disco">
-      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web References\Api.DropboxAccount\DropboxAccount.disco" />
-    <Content Include="Web References\Api.Dropbox\Dropbox.disco" />
-    <None Include="Web References\Api.FacebookAccount\FacebookAccount.wsdl" />
-    <None Include="Web References\Api.FacebookAccount\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\Api.FacebookAccount\FacebookAccount.disco" />
-    <Content Include="Web References\Api.FacebookFeed\FacebookFeed.disco">
-      <SubType>Designer</SubType>
-    </Content>
-    <None Include="Web References\Api.FacebookMessage\FacebookMessage.disco" />
-    <None Include="Web References\Api.Facebook\Facebook.disco" />
-    <Content Include="Web References\Api.FbPageComment\FbPageComment.disco" />
-    <Content Include="Web References\Api.FbPageLiker\FbPageLiker.disco" />
-    <Content Include="Web References\Api.DropboxAccount\DropboxAccount.wsdl" />
-    <Content Include="Web References\Api.DropboxAccount\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
     <Content Include="Web References\Api.Dropbox\Dropbox.wsdl" />
     <Content Include="Web References\Api.Dropbox\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
-    <Content Include="Web References\Api.FbPagePost\FbPagePost.disco" />
-    <Content Include="Web References\Api.FacebookFeed\FacebookFeed.wsdl">
-      <SubType>Designer</SubType>
+    <Content Include="Web References\Api.Dropbox\Dropbox.disco" />
+    <Content Include="Web References\Api.FacebookAccount\FacebookAccount.disco" />
+    <Content Include="Web References\Api.FacebookAccount\FacebookAccount.wsdl" />
+    <Content Include="Web References\Api.FacebookAccount\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
+    <Content Include="Web References\Api.FacebookFeed\FacebookFeed.wsdl" />
     <Content Include="Web References\Api.FacebookFeed\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
-    <None Include="Web References\Api.FacebookMessage\FacebookMessage.wsdl" />
-    <None Include="Web References\Api.FacebookMessage\Reference.map">
+    <Content Include="Web References\Api.FacebookFeed\FacebookFeed.disco" />
+    <Content Include="Web References\Api.FacebookMessage\FacebookMessage.disco" />
+    <Content Include="Web References\Api.Facebook\Facebook.disco" />
+    <Content Include="Web References\Api.FbPageComment\FbPageComment.disco" />
+    <Content Include="Web References\Api.FbPageLiker\FbPageLiker.disco" />
+    <Content Include="Web References\Api.FbPagePost\FbPagePost.disco" />
+    <Content Include="Web References\Api.Facebook\Facebook.wsdl" />
+    <Content Include="Web References\Api.Facebook\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\Api.Facebook\Facebook.wsdl" />
-    <None Include="Web References\Api.Facebook\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\Api.GroupProfile\GroupProfile.wsdl" />
-    <None Include="Web References\Api.GroupProfile\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="Web References\Api.FbPageLiker\FbPageLiker.wsdl" />
-    <Content Include="Web References\Api.FbPageLiker\Reference.map">
+    </Content>
+    <Content Include="Web References\Api.FacebookMessage\FacebookMessage.wsdl" />
+    <Content Include="Web References\Api.FacebookMessage\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
@@ -2417,8 +2518,25 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
+    <Content Include="Web References\Api.FbPageLiker\FbPageLiker.wsdl" />
+    <Content Include="Web References\Api.FbPageLiker\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <Content Include="Web References\Api.FbPagePost\FbPagePost.wsdl" />
     <Content Include="Web References\Api.FbPagePost\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\Api.GooglePlusAccount\GooglePlusAccount.wsdl" />
+    <Content Include="Web References\Api.GooglePlusAccount\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\Api.GooglePlusAccount\GooglePlusAccount.disco" />
+    <Content Include="Web References\Api.GroupProfile\GroupProfile.disco" />
+    <Content Include="Web References\Api.GroupProfile\GroupProfile.wsdl" />
+    <Content Include="Web References\Api.GroupProfile\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
@@ -2427,18 +2545,17 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
-    <None Include="Web References\Api.InstagramAccount\InstagramAccount.wsdl" />
-    <None Include="Web References\Api.InstagramAccount\Reference.map">
+    <Content Include="Web References\Api.Groups\Groups.disco" />
+    <Content Include="Web References\Api.InstagramAccount\InstagramAccount.disco" />
+    <Content Include="Web References\Api.InstagramComment\InstagramComment.disco" />
+    <Content Include="Web References\Api.InstagramFeed\InstagramFeed.disco" />
+    <Content Include="Web References\Api.Instagram\Instagram.wsdl" />
+    <Content Include="Web References\Api.Instagram\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\Api.GroupProfile\GroupProfile.disco">
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="Web References\Api.Groups\Groups.disco" />
-    <Content Include="Web References\Api.InstagramComment\InstagramComment.disco" />
-    <Content Include="Web References\Api.InstagramFeed\InstagramFeed.wsdl" />
-    <Content Include="Web References\Api.InstagramFeed\Reference.map">
+    </Content>
+    <Content Include="Web References\Api.InstagramAccount\InstagramAccount.wsdl" />
+    <Content Include="Web References\Api.InstagramAccount\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
@@ -2447,119 +2564,124 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
-    <None Include="Web References\Api.Instagram\Instagram.wsdl" />
-    <None Include="Web References\Api.Instagram\Reference.map">
+    <Content Include="Web References\Api.InstagramFeed\InstagramFeed.wsdl" />
+    <Content Include="Web References\Api.InstagramFeed\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\Api.LinkedinAccount\LinkedinAccount.wsdl" />
-    <None Include="Web References\Api.LinkedinAccount\Reference.map">
+    </Content>
+    <Content Include="Web References\Api.Instagram\Instagram.disco" />
+    <Content Include="Web References\Api.LinkedinAccount\LinkedinAccount.disco" />
+    <Content Include="Web References\Api.LinkedinAccount\LinkedinAccount.wsdl" />
+    <Content Include="Web References\Api.LinkedinAccount\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\Api.Instagram\Instagram.disco" />
-    <None Include="Web References\Api.InstagramAccount\InstagramAccount.disco" />
-    <Content Include="Web References\Api.InstagramFeed\InstagramFeed.disco" />
-    <Content Include="Web References\Api.LinkedinCompanyPage\LinkedinCompanyPage.disco" />
-    <None Include="Web References\Api.LinkedInFeed\LinkedInFeed.wsdl" />
-    <None Include="Web References\Api.LinkedInFeed\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\Api.LinkedinAccount\LinkedinAccount.disco" />
-    <None Include="Web References\Api.LinkedInFeed\LinkedInFeed.disco" />
+    </Content>
     <Content Include="Web References\Api.LinkedinCompanyPage\LinkedinCompanyPage.wsdl" />
     <Content Include="Web References\Api.LinkedinCompanyPage\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
-    <None Include="Web References\Api.Linkedin\Linkedin.wsdl" />
-    <None Include="Web References\Api.Linkedin\Reference.map">
+    <Content Include="Web References\Api.LinkedinCompanyPage\LinkedinCompanyPage.disco" />
+    <Content Include="Web References\Api.LinkedInFeed\LinkedInFeed.disco" />
+    <Content Include="Web References\Api.Linkedin\Linkedin.disco" />
+    <Content Include="Web References\Api.MailSender\MailSender.disco" />
+    <Content Include="Web References\Api.NewsLetter\NewsLetter.disco" />
+    <Content Include="Web References\Api.Linkedin\Linkedin.wsdl" />
+    <Content Include="Web References\Api.Linkedin\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    </Content>
+    <Content Include="Web References\Api.LinkedInFeed\LinkedInFeed.wsdl" />
+    <Content Include="Web References\Api.LinkedInFeed\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <Content Include="Web References\Api.MailSender\MailSender.wsdl" />
     <Content Include="Web References\Api.MailSender\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
-    <Content Include="Web References\Api.PaymentTransaction\PaymentTransaction.disco" />
-    <None Include="Web References\Api.ScheduledMessage\Reference.map">
+    <Content Include="Web References\Api.NewsLetter\NewsLetter.wsdl" />
+    <Content Include="Web References\Api.NewsLetter\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\Api.ScheduledMessage\ScheduledMessage.wsdl" />
+    </Content>
     <Content Include="Web References\Api.PaymentTransaction\PaymentTransaction.wsdl" />
     <Content Include="Web References\Api.PaymentTransaction\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
-    <None Include="Web References\Api.SocialProfile\Reference.map">
+    <Content Include="Web References\Api.ScheduledMessage\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\Api.SocialProfile\SocialProfile.wsdl" />
-    <Content Include="Web References\Api.MailSender\MailSender.disco" />
-    <None Include="Web References\Api.ScheduledMessage\ScheduledMessage.disco" />
+    </Content>
+    <Content Include="Web References\Api.ScheduledMessage\ScheduledMessage.wsdl" />
+    <Content Include="Web References\Api.PaymentTransaction\PaymentTransaction.disco" />
+    <Content Include="Web References\Api.ScheduledMessage\ScheduledMessage.disco" />
+    <Content Include="Web References\Api.SocialProfile\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\Api.SocialProfile\SocialProfile.disco" />
     <Content Include="Web References\Api.TaskComment\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
+    <Content Include="Web References\Api.TaskComment\TaskComment.disco" />
+    <Content Include="Web References\Api.SocialProfile\SocialProfile.wsdl" />
     <Content Include="Web References\Api.TaskComment\TaskComment.wsdl" />
     <Content Include="Web References\Api.Tasks\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
-    <Content Include="Web References\Api.Tasks\Tasks.wsdl" />
-    <None Include="Web References\Api.TeamMemberProfile\Reference.map">
+    <Content Include="Web References\Api.Tasks\Tasks.disco" />
+    <Content Include="Web References\Api.TeamMemberProfile\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\Api.TeamMemberProfile\TeamMemberProfile.disco" />
-    <Content Include="Web References\Api.Tasks\Tasks.disco" />
+    </Content>
+    <Content Include="Web References\Api.TeamMemberProfile\TeamMemberProfile.disco" />
     <Content Include="Web References\Api.Team\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
     <Content Include="Web References\Api.Team\Team.wsdl" />
-    <None Include="Web References\Api.TumblrAccount\Reference.map">
+    <Content Include="Web References\Api.TeamMemberProfile\TeamMemberProfile.wsdl" />
+    <Content Include="Web References\Api.Team\Team.disco" />
+    <Content Include="Web References\Api.TumblrAccount\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\Api.TumblrAccount\TumblrAccount.wsdl" />
-    <None Include="Web References\Api.Linkedin\Linkedin.disco" />
-    <Content Include="Web References\Api.TaskComment\TaskComment.disco" />
-    <Content Include="Web References\Api.Team\Team.disco" />
+    </Content>
+    <Content Include="Web References\Api.TumblrAccount\TumblrAccount.disco" />
     <Content Include="Web References\Api.TumblrFeed\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
+    <Content Include="Web References\Api.TumblrFeed\TumblrFeed.disco" />
+    <Content Include="Web References\Api.Tumblr\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\Api.Tumblr\Tumblr.wsdl" />
+    <Content Include="Web References\Api.TumblrAccount\TumblrAccount.wsdl" />
     <Content Include="Web References\Api.TumblrFeed\TumblrFeed.wsdl" />
-    <None Include="Web References\Api.Tumblr\Reference.map">
+    <Content Include="Web References\Api.Tumblr\Tumblr.disco" />
+    <Content Include="Web References\Api.TwitterAccount\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\Api.Tumblr\Tumblr.wsdl" />
-    <None Include="Web References\Api.TwitterAccount\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\Api.TwitterAccount\TwitterAccount.disco" />
+    </Content>
+    <Content Include="Web References\Api.TwitterAccount\TwitterAccount.disco" />
+    <Content Include="Web References\Api.TwitterAccount\TwitterAccount.wsdl" />
     <Content Include="Web References\Api.TwitterDirectMessages\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
     <Content Include="Web References\Api.TwitterDirectMessages\TwitterDirectMessages.wsdl" />
-    <None Include="Web References\Api.TwitterFeed\Reference.map">
+    <Content Include="Web References\Api.TwitterDirectMessages\TwitterDirectMessages.disco" />
+    <Content Include="Web References\Api.TwitterFeed\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\Api.TwitterFeed\TwitterFeed.wsdl" />
-    <None Include="Web References\Api.TwitterAccount\TwitterAccount.wsdl" />
-    <None Include="Web References\Api.TwitterFeed\TwitterFeed.disco" />
-    <None Include="Web References\Api.SocialProfile\SocialProfile.disco" />
-    <Content Include="Web References\Api.TumblrFeed\TumblrFeed.disco" />
-    <Content Include="Web References\Api.TwitterDirectMessages\TwitterDirectMessages.disco" />
+    </Content>
+    <Content Include="Web References\Api.TwitterFeed\TwitterFeed.disco" />
     <Content Include="Web References\Api.TwitterMessage\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -2569,28 +2691,33 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
-    <Content Include="Web References\Api.TwitterStats\TwitterStats.wsdl" />
-    <Content Include="Web References\Api.TwitterMessage\TwitterMessage.wsdl" />
-    <None Include="Web References\Api.Twitter\Reference.map">
+    <Content Include="Web References\Api.TwitterStats\TwitterStats.disco" />
+    <Content Include="Web References\Api.Twitter\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\Api.Twitter\Twitter.wsdl" />
-    <None Include="Web References\Api.Twitter\Twitter.disco" />
-    <None Include="Web References\Api.Tumblr\Tumblr.disco" />
-    <None Include="Web References\Api.TumblrAccount\TumblrAccount.disco" />
+    </Content>
+    <Content Include="Web References\Api.Twitter\Twitter.wsdl" />
+    <Content Include="Web References\Api.TwitterFeed\TwitterFeed.wsdl" />
+    <Content Include="Web References\Api.TwitterMessage\TwitterMessage.wsdl" />
+    <Content Include="Web References\Api.TwitterStats\TwitterStats.wsdl" />
+    <Content Include="Web References\Api.Tasks\Tasks.wsdl" />
+    <Content Include="Web References\Api.DropboxAccount\DropboxAccount.wsdl" />
+    <Content Include="Web References\Api.DropboxAccount\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <None Include="Web References\Api.User\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\Api.User\User.wsdl" />
-    <None Include="Web References\Api.YoutubeAccount\Reference.map">
+    <None Include="Web References\Api.User\User.disco" />
+    <Content Include="Web References\Api.Twitter\Twitter.disco" />
+    <Content Include="Web References\Api.YoutubeAccount\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\Api.YoutubeAccount\YoutubeAccount.disco" />
-    <Content Include="Web References\Api.TwitterStats\TwitterStats.disco" />
-    <None Include="Web References\Api.User\User.disco" />
+    </Content>
+    <Content Include="Web References\Api.YoutubeAccount\YoutubeAccount.disco" />
     <Content Include="Web References\Api.YoutubeChannel\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -2620,10 +2747,9 @@
     <Content Include="Themes\Socioboard\Views\Home\_HomeUserActivityPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Home\_HomeProfileSnapshotPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Home\_HomeUserProfilePartial.cshtml" />
-    <None Include="Web References\Api.TeamMemberProfile\TeamMemberProfile.wsdl" />
-    <None Include="Web References\Api.YoutubeAccount\YoutubeAccount.wsdl" />
-    <Content Include="Web References\Api.YoutubeChannel\YoutubeChannel.wsdl" />
     <Content Include="Web References\Api.Youtube\Youtube.wsdl" />
+    <Content Include="Web References\Api.YoutubeAccount\YoutubeAccount.wsdl" />
+    <Content Include="Web References\Api.YoutubeChannel\YoutubeChannel.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2640,137 +2766,668 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/FacebookAccount.asmx">
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/admin.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.FacebookAccount\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/FacebookAccount.asmx</UpdateFromURL>
+      <RelPath>Web References\Api.Admin\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/admin.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_FacebookAccount_FacebookAccount</CachedSettingsPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/FbPageComment.asmx">
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/AdminNews.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.FbPageComment\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/FbPageComment.asmx</UpdateFromURL>
+      <RelPath>Web References\Api.AdminNews\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/AdminNews.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_FbPageComment_FbPageComment</CachedSettingsPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/FbPageLiker.asmx">
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/AdminPackageDetails.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.FbPageLiker\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/FbPageLiker.asmx</UpdateFromURL>
+      <RelPath>Web References\Api.AdminPackageDetails\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/AdminPackageDetails.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_FbPageLiker_FbPageLiker</CachedSettingsPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/FbPagePost.asmx">
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/AdminUserDetails.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.FbPagePost\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/FbPagePost.asmx</UpdateFromURL>
+      <RelPath>Web References\Api.AdminUserDetails\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/AdminUserDetails.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_FbPagePost_FbPagePost</CachedSettingsPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/Groups.asmx">
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/Ads.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Groups\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/Groups.asmx</UpdateFromURL>
+      <RelPath>Web References\Api.Ads\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/Ads.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_Groups_Groups</CachedSettingsPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/PaymentTransaction.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.PaymentTransaction\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/PaymentTransaction.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_PaymentTransaction_PaymentTransaction</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/Team.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Team\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/Team.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_Team_Team</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/ArchiveMessage.asmx">
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/ArchiveMessage.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.ArchiveMessage\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/ArchiveMessage.asmx</UpdateFromURL>
+      <UpdateFromURL>http://devapi.socioboard.com/services/ArchiveMessage.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_ArchiveMessage_ArchiveMessage</CachedSettingsPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/BusinessSetting.asmx">
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/BusinessSetting.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.BusinessSetting\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/BusinessSetting.asmx</UpdateFromURL>
+      <UpdateFromURL>http://devapi.socioboard.com/services/BusinessSetting.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_BusinessSetting_BusinessSetting</CachedSettingsPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/DiscoverySearch.asmx">
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/Coupon.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Coupon\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/Coupon.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/DiscoverySearch.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.DiscoverySearch\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/DiscoverySearch.asmx</UpdateFromURL>
+      <UpdateFromURL>http://devapi.socioboard.com/services/DiscoverySearch.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_DiscoverySearch_DiscoverySearch</CachedSettingsPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Drafts.asmx">
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/Drafts.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Drafts\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Drafts.asmx</UpdateFromURL>
+      <UpdateFromURL>http://devapi.socioboard.com/services/Drafts.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_Drafts_Drafts</CachedSettingsPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Dropbox.asmx">
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/Dropbox.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Dropbox\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Dropbox.asmx</UpdateFromURL>
+      <UpdateFromURL>http://devapi.socioboard.com/services/Dropbox.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_Dropbox_Dropbox</CachedSettingsPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/Facebook.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Facebook\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/Facebook.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/FacebookAccount.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.FacebookAccount\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/FacebookAccount.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/FacebookFeed.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.FacebookFeed\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/FacebookFeed.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/FacebookMessage.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.FacebookMessage\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/FacebookMessage.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/FbPageComment.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.FbPageComment\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/FbPageComment.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/FbPageLiker.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.FbPageLiker\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/FbPageLiker.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/FbPagePost.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.FbPagePost\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/FbPagePost.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/GooglePlusAccount.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.GooglePlusAccount\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/GooglePlusAccount.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/GroupProfile.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.GroupProfile\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/GroupProfile.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/Groups.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Groups\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/Groups.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/Instagram.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Instagram\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/Instagram.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/InstagramAccount.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.InstagramAccount\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/InstagramAccount.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/InstagramComment.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.InstagramComment\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/InstagramComment.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/InstagramFeed.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.InstagramFeed\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/InstagramFeed.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/Linkedin.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Linkedin\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/Linkedin.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/LinkedinAccount.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.LinkedinAccount\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/LinkedinAccount.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/LinkedinCompanyPage.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.LinkedinCompanyPage\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/LinkedinCompanyPage.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/LinkedInFeed.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.LinkedInFeed\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/LinkedInFeed.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/MailSender.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.MailSender\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/MailSender.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/NewsLetter.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.NewsLetter\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/NewsLetter.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/PaymentTransaction.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.PaymentTransaction\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/PaymentTransaction.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/ScheduledMessage.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.ScheduledMessage\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/ScheduledMessage.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/SocialProfile.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.SocialProfile\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/SocialProfile.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/TaskComment.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.TaskComment\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/TaskComment.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/Tasks.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Tasks\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/Tasks.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/Team.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Team\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/Team.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/TeamMemberProfile.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.TeamMemberProfile\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/TeamMemberProfile.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/Tumblr.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Tumblr\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/Tumblr.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/TumblrAccount.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.TumblrAccount\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/TumblrAccount.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/TumblrFeed.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.TumblrFeed\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/TumblrFeed.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/Twitter.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Twitter\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/Twitter.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/TwitterAccount.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.TwitterAccount\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/TwitterAccount.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/TwitterDirectMessages.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.TwitterDirectMessages\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/TwitterDirectMessages.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/TwitterFeed.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.TwitterFeed\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/TwitterFeed.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/TwitterMessage.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.TwitterMessage\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/TwitterMessage.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/TwitterStats.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.TwitterStats\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/TwitterStats.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/Services/User.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.User\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/Services/User.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/Youtube.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Youtube\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/Youtube.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/YoutubeAccount.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.YoutubeAccount\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/YoutubeAccount.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://devapi.socioboard.com/services/YoutubeChannel.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.YoutubeChannel\</RelPath>
+      <UpdateFromURL>http://devapi.socioboard.com/services/YoutubeChannel.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost:6361/Services/DropboxAccount.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
@@ -2780,349 +3437,10 @@
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_DropboxAccount_DropboxAccount</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Facebook.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Facebook\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Facebook.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_Facebook_Facebook</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/FacebookFeed.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.FacebookFeed\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/FacebookFeed.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_FacebookFeed_FacebookFeed</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/FacebookMessage.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.FacebookMessage\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/FacebookMessage.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_FacebookMessage_FacebookMessage</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/GroupProfile.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.GroupProfile\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/GroupProfile.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_GroupProfile_GroupProfile</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Instagram.asmx%3fop=GetTwitterRedirectUrl">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Instagram\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Instagram.asmx%3fop=GetTwitterRedirectUrl</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_Instagram_Instagram</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/InstagramAccount.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.InstagramAccount\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/InstagramAccount.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_InstagramAccount_InstagramAccount</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/InstagramComment.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.InstagramComment\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/InstagramComment.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_InstagramComment_InstagramComment</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/InstagramFeed.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.InstagramFeed\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/InstagramFeed.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_InstagramFeed_InstagramFeed</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Linkedin.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Linkedin\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Linkedin.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_Linkedin_Linkedin</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/LinkedinAccount.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.LinkedinAccount\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/LinkedinAccount.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_LinkedinAccount_LinkedinAccount</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/LinkedinCompanyPage.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.LinkedinCompanyPage\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/LinkedinCompanyPage.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_LinkedinCompanyPage_LinkedinCompanyPage</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/LinkedInFeed.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.LinkedInFeed\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/LinkedInFeed.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_LinkedInFeed_LinkedInFeed</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/MailSender.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.MailSender\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/MailSender.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_MailSender_MailSender</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/ScheduledMessage.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.ScheduledMessage\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/ScheduledMessage.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_ScheduledMessage_ScheduledMessage</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/SocialProfile.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.SocialProfile\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/SocialProfile.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_SocialProfile_SocialProfile</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/TaskComment.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.TaskComment\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/TaskComment.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_TaskComment_TaskComment</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Tasks.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Tasks\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Tasks.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_Tasks_Tasks</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/TeamMemberProfile.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.TeamMemberProfile\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/TeamMemberProfile.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_TeamMemberProfile_TeamMemberProfile</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Tumblr.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Tumblr\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Tumblr.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_Tumblr_Tumblr</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/TumblrAccount.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.TumblrAccount\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/TumblrAccount.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_TumblrAccount_TumblrAccount</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/TumblrFeed.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.TumblrFeed\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/TumblrFeed.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_TumblrFeed_TumblrFeed</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Twitter.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Twitter\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Twitter.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_Twitter_Twitter</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/TwitterAccount.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.TwitterAccount\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/TwitterAccount.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_TwitterAccount_TwitterAccountRepository1</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/TwitterDirectMessages.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.TwitterDirectMessages\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/TwitterDirectMessages.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_TwitterDirectMessages_TwitterDirectMessages</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/TwitterFeed.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.TwitterFeed\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/TwitterFeed.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_TwitterFeed_TwitterFeed</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/TwitterMessage.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.TwitterMessage\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/TwitterMessage.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_TwitterMessage_TwitterMessage</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/TwitterStats.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.TwitterStats\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/TwitterStats.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_TwitterStats_TwitterStats</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/User.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.User\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/User.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_User_User</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Youtube.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Youtube\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Youtube.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_Youtube_Youtube</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/YoutubeAccount.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.YoutubeAccount\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/YoutubeAccount.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_YoutubeAccount_YoutubeAccount</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/YoutubeChannel.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.YoutubeChannel\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/YoutubeChannel.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_YoutubeChannel_YoutubeChannel</CachedSettingsPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,86 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    int CouponNo=(int)Model;
+}
+
+<div style="min-height: 382px;" id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Edit Coupon Details</h1>
+            </div>
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <!-- Nav tabs -->
+
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="Personal">
+
+                                <div class="col-md-6">
+                                    <form role="form" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label for="username-email">Coupon Code</label><span class="pull-right text-danger">*</span>
+                                            @CouponNo <input id="AddCoupencode" type="text" class="form-control">
+                                        </div>
+                                       
+                                        
+                                        <button onclick="AddCoupon()"; id="AddCouponData" type="button" class="btn btn-warning">Save</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+</div>
+<script src="~/Themes/Socioboard/Contents/js/jquery-1.10.2.min.js"></script>
+<script>
+    function AddCoupon() {
+        debugger;
+        var couponcode = $('#AddCoupencode').val();
+
+        if (couponcode == "") {
+            alertify.error('Please enter Coupon Code');
+            return false;
+        }
+
+       
+
+
+
+
+        $.ajax({
+            type: 'POST',
+            url: '../Coupons/AddCoupons?Couponcode=' + couponcode,
+            success: function (msg) {
+                if (msg == "Added Successfully") {
+                    alertify.success('Added Successfully');
+                    window.top.location.href = "../Coupons/ManageCoupons";
+                }
+                else if (msg == "Coupon Already Exist") {
+                    alertify.error('Coupon Already Exist');
+                }
+            },
+            async: false
+        });
+    }
+
+
+    $(document).ready(function () {
+    });
+</script>

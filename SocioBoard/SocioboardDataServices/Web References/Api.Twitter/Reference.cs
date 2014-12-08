@@ -52,6 +52,14 @@ namespace SocioboardDataServices.Api.Twitter {
         
         private System.Threading.SendOrPostCallback TwitterReplyUpdateOperationCompleted;
         
+        private System.Threading.SendOrPostCallback TwitterReteet_postOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback TwitterFavorite_postOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SpamUser_postOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback TwitterProfileDetailsOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -122,6 +130,18 @@ namespace SocioboardDataServices.Api.Twitter {
         
         /// <remarks/>
         public event TwitterReplyUpdateCompletedEventHandler TwitterReplyUpdateCompleted;
+        
+        /// <remarks/>
+        public event TwitterReteet_postCompletedEventHandler TwitterReteet_postCompleted;
+        
+        /// <remarks/>
+        public event TwitterFavorite_postCompletedEventHandler TwitterFavorite_postCompleted;
+        
+        /// <remarks/>
+        public event SpamUser_postCompletedEventHandler SpamUser_postCompleted;
+        
+        /// <remarks/>
+        public event TwitterProfileDetailsCompletedEventHandler TwitterProfileDetailsCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetTwitterRedirectUrl", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -489,6 +509,136 @@ namespace SocioboardDataServices.Api.Twitter {
             if ((this.TwitterReplyUpdateCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.TwitterReplyUpdateCompleted(this, new TwitterReplyUpdateCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/TwitterReteet_post", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string TwitterReteet_post(string userid, string profileid, string messageid) {
+            object[] results = this.Invoke("TwitterReteet_post", new object[] {
+                        userid,
+                        profileid,
+                        messageid});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void TwitterReteet_postAsync(string userid, string profileid, string messageid) {
+            this.TwitterReteet_postAsync(userid, profileid, messageid, null);
+        }
+        
+        /// <remarks/>
+        public void TwitterReteet_postAsync(string userid, string profileid, string messageid, object userState) {
+            if ((this.TwitterReteet_postOperationCompleted == null)) {
+                this.TwitterReteet_postOperationCompleted = new System.Threading.SendOrPostCallback(this.OnTwitterReteet_postOperationCompleted);
+            }
+            this.InvokeAsync("TwitterReteet_post", new object[] {
+                        userid,
+                        profileid,
+                        messageid}, this.TwitterReteet_postOperationCompleted, userState);
+        }
+        
+        private void OnTwitterReteet_postOperationCompleted(object arg) {
+            if ((this.TwitterReteet_postCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.TwitterReteet_postCompleted(this, new TwitterReteet_postCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/TwitterFavorite_post", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string TwitterFavorite_post(string userid, string profileid, string messageid) {
+            object[] results = this.Invoke("TwitterFavorite_post", new object[] {
+                        userid,
+                        profileid,
+                        messageid});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void TwitterFavorite_postAsync(string userid, string profileid, string messageid) {
+            this.TwitterFavorite_postAsync(userid, profileid, messageid, null);
+        }
+        
+        /// <remarks/>
+        public void TwitterFavorite_postAsync(string userid, string profileid, string messageid, object userState) {
+            if ((this.TwitterFavorite_postOperationCompleted == null)) {
+                this.TwitterFavorite_postOperationCompleted = new System.Threading.SendOrPostCallback(this.OnTwitterFavorite_postOperationCompleted);
+            }
+            this.InvokeAsync("TwitterFavorite_post", new object[] {
+                        userid,
+                        profileid,
+                        messageid}, this.TwitterFavorite_postOperationCompleted, userState);
+        }
+        
+        private void OnTwitterFavorite_postOperationCompleted(object arg) {
+            if ((this.TwitterFavorite_postCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.TwitterFavorite_postCompleted(this, new TwitterFavorite_postCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SpamUser_post", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string SpamUser_post(string userid, string SpammerScreanName, string UserProfileId) {
+            object[] results = this.Invoke("SpamUser_post", new object[] {
+                        userid,
+                        SpammerScreanName,
+                        UserProfileId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SpamUser_postAsync(string userid, string SpammerScreanName, string UserProfileId) {
+            this.SpamUser_postAsync(userid, SpammerScreanName, UserProfileId, null);
+        }
+        
+        /// <remarks/>
+        public void SpamUser_postAsync(string userid, string SpammerScreanName, string UserProfileId, object userState) {
+            if ((this.SpamUser_postOperationCompleted == null)) {
+                this.SpamUser_postOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSpamUser_postOperationCompleted);
+            }
+            this.InvokeAsync("SpamUser_post", new object[] {
+                        userid,
+                        SpammerScreanName,
+                        UserProfileId}, this.SpamUser_postOperationCompleted, userState);
+        }
+        
+        private void OnSpamUser_postOperationCompleted(object arg) {
+            if ((this.SpamUser_postCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SpamUser_postCompleted(this, new SpamUser_postCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/TwitterProfileDetails", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string TwitterProfileDetails(string userid, string profileid) {
+            object[] results = this.Invoke("TwitterProfileDetails", new object[] {
+                        userid,
+                        profileid});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void TwitterProfileDetailsAsync(string userid, string profileid) {
+            this.TwitterProfileDetailsAsync(userid, profileid, null);
+        }
+        
+        /// <remarks/>
+        public void TwitterProfileDetailsAsync(string userid, string profileid, object userState) {
+            if ((this.TwitterProfileDetailsOperationCompleted == null)) {
+                this.TwitterProfileDetailsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnTwitterProfileDetailsOperationCompleted);
+            }
+            this.InvokeAsync("TwitterProfileDetails", new object[] {
+                        userid,
+                        profileid}, this.TwitterProfileDetailsOperationCompleted, userState);
+        }
+        
+        private void OnTwitterProfileDetailsOperationCompleted(object arg) {
+            if ((this.TwitterProfileDetailsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.TwitterProfileDetailsCompleted(this, new TwitterProfileDetailsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -988,6 +1138,110 @@ namespace SocioboardDataServices.Api.Twitter {
         private object[] results;
         
         internal TwitterReplyUpdateCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void TwitterReteet_postCompletedEventHandler(object sender, TwitterReteet_postCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class TwitterReteet_postCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal TwitterReteet_postCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void TwitterFavorite_postCompletedEventHandler(object sender, TwitterFavorite_postCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class TwitterFavorite_postCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal TwitterFavorite_postCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void SpamUser_postCompletedEventHandler(object sender, SpamUser_postCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SpamUser_postCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SpamUser_postCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void TwitterProfileDetailsCompletedEventHandler(object sender, TwitterProfileDetailsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class TwitterProfileDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal TwitterProfileDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

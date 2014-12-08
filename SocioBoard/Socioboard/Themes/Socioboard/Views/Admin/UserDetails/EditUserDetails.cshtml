@@ -1,4 +1,4 @@
-﻿@using Domain.Socioboard.Domain;
+﻿    @using Domain.Socioboard.Domain;
 @{
     User objUser = (User)Model;   
 }
@@ -66,20 +66,17 @@
                                                 <label for="username-email">Status</label><span class="pull-right text-danger">*</span>
                                                 <select id="ddlUserStatus" class="select form-control">
                                                     @{
-                                                        int[]strstatus =new int[]{1,0};
-                                                        foreach (int item in strstatus)
-                                                        {
-                                                            
-                                                            if (objUser.UserStatus == item)
+                                                        if (objUser.UserStatus == 1)
                                                             {
                                                                 <option selected value="1">Enable</option>
+                                                                <option  value="0">Disable</option>
                                                             }
-                                                            else
-                                                            { 
-                                                                <option value="0">Disable</option>
-                                                            }
-                                                            
-                                                        }
+                                                         else
+                                                         { 
+                                                                <option  value="1">Enable</option>
+                                                                <option selected value="0">Disable</option>
+                                                         }
+                                            
                                             
                                                     }
                                                 </select>

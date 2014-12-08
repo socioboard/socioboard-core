@@ -47,7 +47,7 @@ namespace Socioboard.Api.FacebookFeed {
         
         /// <remarks/>
         public FacebookFeed() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_FacebookFeed_FacebookFeed;
+            this.Url = "http://localhost:6361/Services/FacebookFeed.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

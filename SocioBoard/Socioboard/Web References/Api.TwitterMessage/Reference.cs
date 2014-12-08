@@ -53,7 +53,7 @@ namespace Socioboard.Api.TwitterMessage {
         
         /// <remarks/>
         public TwitterMessage() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_TwitterMessage_TwitterMessage;
+            this.Url = "http://localhost:6361/Services/TwitterMessage.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

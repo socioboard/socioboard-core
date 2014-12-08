@@ -43,11 +43,13 @@ namespace Socioboard.Api.MailSender {
         
         private System.Threading.SendOrPostCallback SendFeedMailOperationCompleted;
         
+        private System.Threading.SendOrPostCallback SendAddNewsLatterMailOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
         public MailSender() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_MailSender_MailSender;
+            this.Url = "http://localhost:6361/Services/MailSender.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -101,6 +103,9 @@ namespace Socioboard.Api.MailSender {
         
         /// <remarks/>
         public event SendFeedMailCompletedEventHandler SendFeedMailCompleted;
+        
+        /// <remarks/>
+        public event SendAddNewsLatterMailCompletedEventHandler SendAddNewsLatterMailCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SendMail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -370,6 +375,39 @@ namespace Socioboard.Api.MailSender {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SendAddNewsLatterMail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string SendAddNewsLatterMail(string emailId, string mailBody, string Subject) {
+            object[] results = this.Invoke("SendAddNewsLatterMail", new object[] {
+                        emailId,
+                        mailBody,
+                        Subject});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SendAddNewsLatterMailAsync(string emailId, string mailBody, string Subject) {
+            this.SendAddNewsLatterMailAsync(emailId, mailBody, Subject, null);
+        }
+        
+        /// <remarks/>
+        public void SendAddNewsLatterMailAsync(string emailId, string mailBody, string Subject, object userState) {
+            if ((this.SendAddNewsLatterMailOperationCompleted == null)) {
+                this.SendAddNewsLatterMailOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSendAddNewsLatterMailOperationCompleted);
+            }
+            this.InvokeAsync("SendAddNewsLatterMail", new object[] {
+                        emailId,
+                        mailBody,
+                        Subject}, this.SendAddNewsLatterMailOperationCompleted, userState);
+        }
+        
+        private void OnSendAddNewsLatterMailOperationCompleted(object arg) {
+            if ((this.SendAddNewsLatterMailCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SendAddNewsLatterMailCompleted(this, new SendAddNewsLatterMailCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -557,6 +595,32 @@ namespace Socioboard.Api.MailSender {
         private object[] results;
         
         internal SendFeedMailCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void SendAddNewsLatterMailCompletedEventHandler(object sender, SendAddNewsLatterMailCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SendAddNewsLatterMailCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SendAddNewsLatterMailCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

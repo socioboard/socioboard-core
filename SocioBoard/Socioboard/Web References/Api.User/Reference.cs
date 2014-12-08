@@ -53,11 +53,21 @@ namespace Socioboard.Api.User {
         
         private System.Threading.SendOrPostCallback UpdateUserAccountInfoByUserIdOperationCompleted;
         
+        private System.Threading.SendOrPostCallback UserCountByMonthOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UserCountByAccTypeMonthOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback PaidUserCountByMonthOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UnPaidUserCountByMonthOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdateForgetPasswordKeyOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
         public User() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_User_User;
+            this.Url = "http://localhost:6361/Services/User.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -126,6 +136,21 @@ namespace Socioboard.Api.User {
         
         /// <remarks/>
         public event UpdateUserAccountInfoByUserIdCompletedEventHandler UpdateUserAccountInfoByUserIdCompleted;
+        
+        /// <remarks/>
+        public event UserCountByMonthCompletedEventHandler UserCountByMonthCompleted;
+        
+        /// <remarks/>
+        public event UserCountByAccTypeMonthCompletedEventHandler UserCountByAccTypeMonthCompleted;
+        
+        /// <remarks/>
+        public event PaidUserCountByMonthCompletedEventHandler PaidUserCountByMonthCompleted;
+        
+        /// <remarks/>
+        public event UnPaidUserCountByMonthCompletedEventHandler UnPaidUserCountByMonthCompleted;
+        
+        /// <remarks/>
+        public event UpdateForgetPasswordKeyCompletedEventHandler UpdateForgetPasswordKeyCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Login", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -510,6 +535,145 @@ namespace Socioboard.Api.User {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UserCountByMonth", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string UserCountByMonth() {
+            object[] results = this.Invoke("UserCountByMonth", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UserCountByMonthAsync() {
+            this.UserCountByMonthAsync(null);
+        }
+        
+        /// <remarks/>
+        public void UserCountByMonthAsync(object userState) {
+            if ((this.UserCountByMonthOperationCompleted == null)) {
+                this.UserCountByMonthOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUserCountByMonthOperationCompleted);
+            }
+            this.InvokeAsync("UserCountByMonth", new object[0], this.UserCountByMonthOperationCompleted, userState);
+        }
+        
+        private void OnUserCountByMonthOperationCompleted(object arg) {
+            if ((this.UserCountByMonthCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UserCountByMonthCompleted(this, new UserCountByMonthCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UserCountByAccTypeMonth", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string UserCountByAccTypeMonth() {
+            object[] results = this.Invoke("UserCountByAccTypeMonth", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UserCountByAccTypeMonthAsync() {
+            this.UserCountByAccTypeMonthAsync(null);
+        }
+        
+        /// <remarks/>
+        public void UserCountByAccTypeMonthAsync(object userState) {
+            if ((this.UserCountByAccTypeMonthOperationCompleted == null)) {
+                this.UserCountByAccTypeMonthOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUserCountByAccTypeMonthOperationCompleted);
+            }
+            this.InvokeAsync("UserCountByAccTypeMonth", new object[0], this.UserCountByAccTypeMonthOperationCompleted, userState);
+        }
+        
+        private void OnUserCountByAccTypeMonthOperationCompleted(object arg) {
+            if ((this.UserCountByAccTypeMonthCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UserCountByAccTypeMonthCompleted(this, new UserCountByAccTypeMonthCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/PaidUserCountByMonth", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string PaidUserCountByMonth() {
+            object[] results = this.Invoke("PaidUserCountByMonth", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void PaidUserCountByMonthAsync() {
+            this.PaidUserCountByMonthAsync(null);
+        }
+        
+        /// <remarks/>
+        public void PaidUserCountByMonthAsync(object userState) {
+            if ((this.PaidUserCountByMonthOperationCompleted == null)) {
+                this.PaidUserCountByMonthOperationCompleted = new System.Threading.SendOrPostCallback(this.OnPaidUserCountByMonthOperationCompleted);
+            }
+            this.InvokeAsync("PaidUserCountByMonth", new object[0], this.PaidUserCountByMonthOperationCompleted, userState);
+        }
+        
+        private void OnPaidUserCountByMonthOperationCompleted(object arg) {
+            if ((this.PaidUserCountByMonthCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.PaidUserCountByMonthCompleted(this, new PaidUserCountByMonthCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UnPaidUserCountByMonth", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string UnPaidUserCountByMonth() {
+            object[] results = this.Invoke("UnPaidUserCountByMonth", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UnPaidUserCountByMonthAsync() {
+            this.UnPaidUserCountByMonthAsync(null);
+        }
+        
+        /// <remarks/>
+        public void UnPaidUserCountByMonthAsync(object userState) {
+            if ((this.UnPaidUserCountByMonthOperationCompleted == null)) {
+                this.UnPaidUserCountByMonthOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUnPaidUserCountByMonthOperationCompleted);
+            }
+            this.InvokeAsync("UnPaidUserCountByMonth", new object[0], this.UnPaidUserCountByMonthOperationCompleted, userState);
+        }
+        
+        private void OnUnPaidUserCountByMonthOperationCompleted(object arg) {
+            if ((this.UnPaidUserCountByMonthCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UnPaidUserCountByMonthCompleted(this, new UnPaidUserCountByMonthCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateForgetPasswordKey", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string UpdateForgetPasswordKey(string userID, string ForgetPasswordKey) {
+            object[] results = this.Invoke("UpdateForgetPasswordKey", new object[] {
+                        userID,
+                        ForgetPasswordKey});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UpdateForgetPasswordKeyAsync(string userID, string ForgetPasswordKey) {
+            this.UpdateForgetPasswordKeyAsync(userID, ForgetPasswordKey, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateForgetPasswordKeyAsync(string userID, string ForgetPasswordKey, object userState) {
+            if ((this.UpdateForgetPasswordKeyOperationCompleted == null)) {
+                this.UpdateForgetPasswordKeyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateForgetPasswordKeyOperationCompleted);
+            }
+            this.InvokeAsync("UpdateForgetPasswordKey", new object[] {
+                        userID,
+                        ForgetPasswordKey}, this.UpdateForgetPasswordKeyOperationCompleted, userState);
+        }
+        
+        private void OnUpdateForgetPasswordKeyOperationCompleted(object arg) {
+            if ((this.UpdateForgetPasswordKeyCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateForgetPasswordKeyCompleted(this, new UpdateForgetPasswordKeyCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -814,6 +978,136 @@ namespace Socioboard.Api.User {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void UserCountByMonthCompletedEventHandler(object sender, UserCountByMonthCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UserCountByMonthCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UserCountByMonthCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void UserCountByAccTypeMonthCompletedEventHandler(object sender, UserCountByAccTypeMonthCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UserCountByAccTypeMonthCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UserCountByAccTypeMonthCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void PaidUserCountByMonthCompletedEventHandler(object sender, PaidUserCountByMonthCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class PaidUserCountByMonthCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal PaidUserCountByMonthCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void UnPaidUserCountByMonthCompletedEventHandler(object sender, UnPaidUserCountByMonthCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UnPaidUserCountByMonthCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UnPaidUserCountByMonthCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void UpdateForgetPasswordKeyCompletedEventHandler(object sender, UpdateForgetPasswordKeyCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpdateForgetPasswordKeyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpdateForgetPasswordKeyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }

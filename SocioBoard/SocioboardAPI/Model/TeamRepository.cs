@@ -594,7 +594,7 @@ namespace Api.Socioboard.Services
                     try
                     {
 
-                        List<Domain.Socioboard.Domain.Team> alstFBAccounts = session.CreateQuery("from Team where GroupId=:groupId")
+                        List<Domain.Socioboard.Domain.Team> alstFBAccounts = session.CreateQuery("from Team where GroupId=:groupId order by StatusUpdateDate")
                         .SetParameter("groupId", groupId)
                         .List<Domain.Socioboard.Domain.Team>()
                         .ToList<Domain.Socioboard.Domain.Team>();
@@ -772,6 +772,34 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+
+        public void updateTeambyteamid(Guid teamid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to update team details.
+                        session.CreateQuery("Update Team set InviteStatus=1 where Id = :teamid")
+                                      .SetParameter("teamid", teamid)
+                            .ExecuteUpdate();
+                        transaction.Commit();
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        // return 0;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
         public List<Domain.Socioboard.Domain.Team> GetAllTeamOfUserEmail(string emailid, Guid groupid)
         {
             //Creates a database connection and opens up a session
@@ -818,7 +846,7 @@ namespace Api.Socioboard.Services
                     try
                     {
                         //Proceed action, to get team details.
-                        List<Domain.Socioboard.Domain.Team> alstFBAccounts = session.CreateQuery("from Team where UserId =:uid")
+                        List<Domain.Socioboard.Domain.Team> alstFBAccounts = session.CreateQuery("from Team where UserId =:uid and InviteStatus =1")
                        .SetParameter("uid", userid)
                         .List<Domain.Socioboard.Domain.Team>()
                         .ToList<Domain.Socioboard.Domain.Team>();
