@@ -12,6 +12,7 @@
     Socioboard.Api.Team.Team ApiobjTeam = new Socioboard.Api.Team.Team();
     List<Domain.Socioboard.Domain.Groups> lstgroup = (List<Domain.Socioboard.Domain.Groups>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjTeam.GetTeamByUserId(objUser.Id.ToString()), typeof(List<Domain.Socioboard.Domain.Groups>)));
     string groupname = string.Empty;
+    string groupId = string.Empty;
 }
 
 <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -25,7 +26,7 @@
         {
             try
             {
-                if (item.GroupName == "Socioboard")
+                if (item.GroupName.Equals("Socioboard"))
             {
                 groupname = @item.GroupName;
             <li>
@@ -43,7 +44,7 @@
                     <i class="fa fa-star fa-fw"></i>@item.GroupName
                 </a>
             </li>
-
+                groupId = item.Id.ToString();
             }
             }
             catch (Exception)
@@ -52,6 +53,10 @@
             }
             
 
+        }
+        @if (HttpContext.Current.Session["group"] == null &&!string.IsNullOrEmpty(groupId)) 
+        {
+            HttpContext.Current.Session["group"] = groupId;
         }
     </ul>
      <div class="pull-right"><strong><i class="fa fa-fw"></i>Socioboard</strong></div>

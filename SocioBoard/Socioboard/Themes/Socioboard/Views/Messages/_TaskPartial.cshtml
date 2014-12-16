@@ -9,6 +9,8 @@
     Socioboard.Api.User.User objApiUser = new Socioboard.Api.User.User();
 
     Socioboard.Api.Tasks.Tasks objApiTasks = new Socioboard.Api.Tasks.Tasks();
+    Domain.Socioboard.Domain.User LoggedUser = (Domain.Socioboard.Domain.User)Session["User"];
+    string TaskType = ViewBag.Task;
     
 }
 
@@ -17,67 +19,97 @@
 
         <div class="col-md-9">
             <div class="row">
-                <h2 class="page-header">My Tasks</h2>
+                <h2 class="page-header">@TaskType</h2>
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Pending Group
+                                Tasks
                        
                             </div>
                             <!-- .panel-heading -->
                             <div class="panel-body">
                                 <div id="accordion" class="panel-group">
 
-                                    @foreach (var item in lstTasks)
-                                    {
-                                        Domain.Socioboard.Domain.User objdetails = (Domain.Socioboard.Domain.User)new JavaScriptSerializer().Deserialize(objApiUser.getUsersById(item.AssignTaskTo.ToString()), typeof(Domain.Socioboard.Domain.User));
-                                        string imgpath = string.Empty;
-                                        if (string.IsNullOrEmpty(objdetails.ProfileUrl))
+                                    @{
+                                        if (lstTasks.Count > 0)
                                         {
-                                            imgpath = "../Contents/img/blank_img.png";
-                                        }
-                                        else
-                                        {
-                                            imgpath = objdetails.ProfileUrl;
-                                        }
 
-                                        if (item.ReadStatus == 1)
-                                        {
-                                            @:<div class="panel panel-default" id="Section"@item.Id">
+
+
+                                            foreach (var item in lstTasks)
+                                            {
+                                                Domain.Socioboard.Domain.User objdetails = (Domain.Socioboard.Domain.User)new JavaScriptSerializer().Deserialize(objApiUser.getUsersById(item.AssignTaskTo.ToString()), typeof(Domain.Socioboard.Domain.User));
+                                                Domain.Socioboard.Domain.User objAssignUserDetails = (Domain.Socioboard.Domain.User)new JavaScriptSerializer().Deserialize(objApiUser.getUsersById(item.UserId.ToString()), typeof(Domain.Socioboard.Domain.User));
+                                                string imgpath = string.Empty;
+                                                if (string.IsNullOrEmpty(objdetails.ProfileUrl))
+                                                {
+                                                    imgpath = "../Contents/img/blank_img.png";
+                                                }
+                                                else
+                                                {
+                                                    imgpath = objdetails.ProfileUrl;
+                                                }
+
+                                                if (item.ReadStatus == 1)
+                                                {
+                                        @:<div class="panel panel-default" id="Section"@item.Id">
                                         }
-                                        else
-                                        {
-                                            @:<div class="panel panel-default" id="Section"@item.Id" style="opacity:0.4;">
+                                                else
+                                                {
+                                        @:<div class="panel panel-default" id="Section"@item.Id" style="opacity:0.4;">
                                             string ret = (string)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objApiTasks.UpdateTaskReadStatus(item.Id.ToString(), item.UserId.ToString(), item.GroupId.ToString()), typeof(string)));
-                                         
-                                             }
+
+                                                }
                                         
-                                                  <div class="panel-heading">
+                                            <div class="panel-heading">
                                              <h4 class="panel-title">
                                           <a class="collapsed" href="#@item.Id" data-parent="#accordion" data-toggle="collapse"><i class="fa fa-thumb-tack fa-fw"></i></a><span>
-                                            @objdetails.UserName</span><p>Assigned by @objdetails.UserName</p>
+                                            @objdetails.UserName</span><p>Assigned by @objAssignUserDetails.UserName</p>
                                                                                                 <br>
                                                                                                 <span>@item.TaskMessage</span>
                                                                                                 @*<i data-target="#EditModal" data-toggle="modal" class="fa fa-pencil fa-fw pull-right"></i>*@
-                                        <i id="@(item.Id + "_" + item.TaskStatus)"  onclick="PerformClick(this.id)" class="fa fa-pencil fa-fw pull-right"></i>
-                                                                                            </h4>
+                                                 @if (item.TaskStatus==true)
+                                                 {
+                                                    @:<div class="pull-right">                                      
+                                                    <span>Completed</span>
+                                                    if (LoggedUser.Id == objAssignUserDetails.Id)
+                                                    {
+                                                    @:<i id="@(item.Id + "_" + item.TaskStatus)"  onclick="PerformClick(this.id)" class="fa fa-pencil fa-fw" style="cursor:pointer"></i>
+                                                    }
+                                            
+                                                 }
+                                                 else
+                                                 {
+                                                    @:<div class="pull-right">                                      
+                                                    <span>Pending</span>
+                                                    if (LoggedUser.Id == objAssignUserDetails.Id)
+                                                    {
+                                                    @:<i id="@(item.Id + "_" + item.TaskStatus)"  onclick="PerformClick(this.id)" class="fa fa-pencil fa-fw" style="cursor:pointer"></i>
+                                                    }
+                                            
+                                                 }
+                                            
+                                                
+                                                    </h4>
                                                 
                                                    </div>
                                             
-                                        List<Domain.Socioboard.Domain.TaskComment> pretask = (List<Domain.Socioboard.Domain.TaskComment>)new JavaScriptSerializer().Deserialize(objApiTasks.getAllTasksCommentOfUser(item.Id.ToString()), typeof(List<Domain.Socioboard.Domain.TaskComment>));
-                                        if (pretask.Count > 0 && pretask != null)
-                                        {
-                                          <div style="height: 0px;" class="panel-collapse collapse" id="@item.Id">
-                                                   <div class="panel-body">
+                                                 List<Domain.Socioboard.Domain.TaskComment> pretask = (List<Domain.Socioboard.Domain.TaskComment>)new JavaScriptSerializer().Deserialize(objApiTasks.getAllTasksCommentOfUser(item.Id.ToString()), typeof(List<Domain.Socioboard.Domain.TaskComment>));
+                                                 if (pretask.Count > 0 && pretask != null)
+                                                 {
+                                                    <div style="height: 0px;" class="panel-collapse collapse" id="@item.Id">
+                                                    <div class="panel-body">
                                                       <ul class="list-group">
 
                                                     @foreach (Domain.Socioboard.Domain.TaskComment taskComment in pretask)
                                                     {
+
+                                                        Domain.Socioboard.Domain.User objcomntUserDetails = (Domain.Socioboard.Domain.User)new JavaScriptSerializer().Deserialize(objApiUser.getUsersById(taskComment.UserId.ToString()), typeof(Domain.Socioboard.Domain.User));
                                                         @:<li id="task_comment_@item.Id" + "_" + @taskComment.Id" class="list-group-item assign_comments">
                                                         <img class="commentsmallsize" src="
                                                         @imgpath"><span class="commentmargin">@taskComment.Comment</span>
-                                                         <span class="pull-right">By @objdetails.UserName at @taskComment.CommentDate</span>
+                                                        <span class="pull-right">By @objcomntUserDetails.UserName at @taskComment.CommentDate</span>
                                                         @:</li>
                                                     }
 
@@ -111,11 +143,17 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            }
+                                                 }
                                             
                                         @:</div> 
                                        
-                                                                                                                                                    }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            @:<div>Sorry, you have no any Task in this Group.</div>
+                                        }
+                                    }
 
 
                                     @*<div class="panel panel-default">
@@ -203,7 +241,7 @@
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                         <ul class="list-group">
-                            <li class="list-group-item">
+                            @*<li class="list-group-item">
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox">
@@ -220,19 +258,31 @@
                                                
                                     </label>
                                 </div>
-                            </li>
+                            </li>*@
 
                             <li class="list-group-item">
                                 <div class="radio">
                                     <label class="radio">
-                                        <input type="radio" value="option1" id="inlineRadio1" name="inlineRadioOptions">
+                                        <input type="radio" value="option1" id="rdMyTask" name="inlineRadioOptions" onclick="TaskFilteration(this.id);">
                                         My Task
                                            
                                     </label>
                                     <div class="divder"></div>
                                     <label class="radio">
-                                        <input type="radio" value="option2" id="inlineRadio2" name="inlineRadioOptions">
+                                        <input type="radio" value="option2" id="rdTeamTask" name="inlineRadioOptions" onclick="TaskFilteration(this.id);">
                                         Team Task
+                                           
+                                    </label>
+                                    <div class="divder"></div>
+                                    <label class="radio">
+                                        <input type="radio" value="option2" id="rdIncompleteTask" name="inlineRadioOptions" onclick="TaskFilteration(this.id);">
+                                        Incomplete Task
+                                           
+                                    </label>
+                                    <div class="divder"></div>
+                                    <label class="radio">
+                                        <input type="radio" value="option2" id="rdCompleteTask" name="inlineRadioOptions" onclick="TaskFilteration(this.id);">
+                                        Complete Task
                                            
                                     </label>
                                 </div>
@@ -283,4 +333,42 @@
                 }
             });
         }
+
+        //$("#rdMyTask").change(function () {
+        //    debugger;
+        //    window.location.href = "../Messages/Task";
+        //    //$("#rdMyTask").attr("checked", true);
+        //});
+        //$("#").change(function () {
+        //    debugger;
+        //    //alert("clicked");
+        //});
+        //$("#rdIncompleteTask").change(function () {
+        //    debugger;
+        //    //alert("clicked");
+        //});
+        //$("#rdIncompleteTask").change(function () {
+        //    debugger;
+        //    //alert("clicked");
+        //});
+
+        $(document).ready(function () {
+
+            var TaskType = "@TaskType";
+            if (TaskType == "MyTask") {
+                $("#rdMyTask").attr("checked", true);
+            }
+            if (TaskType == "MyTask") {
+                $("#rdMyTask").attr("checked", true);
+            }
+            if (TaskType == "IncompleteTask") {
+                $("#rdIncompleteTask").attr("checked", true);
+            }
+            if (TaskType == "CompleteTask") {
+                $("#rdCompleteTask").attr("checked", true);
+            }
+            if (TaskType == "TeamTask") {
+                $("#rdTeamTask").attr("checked", true);
+            }
+        });
     </script>

@@ -1,6 +1,7 @@
 ﻿using log4net;
 using Newtonsoft.Json.Linq;
 using Socioboard.Api.Linkedin;
+using Socioboard.App_Start;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,6 +12,8 @@ using System.Web.Script.Serialization;
 
 namespace Socioboard.Controllers
 {
+    [Authorize]
+    [CustomAuthorize]
     public class LinkedinManagerController : Controller
     {
         //

@@ -29,6 +29,35 @@
                                             <label for="username-email">Coupon Code</label><span class="pull-right text-danger">*</span>
                                             @CouponNo <input id="AddCoupencode" type="text" class="form-control">
                                         </div>
+
+
+                                         <div class="form-group">
+                                            <label for="username-email">Entry Date</label><span class="pull-right text-danger">*</span>
+                                            <input id="NewCpnEntryDate" value="" type="text" class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="username-email">Expiry Date</label><span class="pull-right text-danger">*</span>
+                                            <input id="NewCnpExpiryDate" value="" type="text" class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="username-email">Discount In Percentage (%)</label><span class="pull-right text-danger">*</span>
+                                            <input id="NewCnpDiscountPercent" value="" type="text" class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="ps_select">
+                                                <label for="username-email">Status</label><span class="pull-right text-danger">*</span>
+                                                <select id="NewddlCnpStatus" class="select form-control">
+                                                            
+                                                                <option selected value="1">Enable</option>
+                                                                <option value="0">Disable</option>
+                                                       
+                                                </select>
+                                            </div>
+
+                                        </div>
                                        
                                         
                                         <button onclick="AddCoupon()"; id="AddCouponData" type="button" class="btn btn-warning">Save</button>
@@ -52,21 +81,50 @@
 <script>
     function AddCoupon() {
         debugger;
+        var EntryDate = $("#NewCpnEntryDate").val();
+        var ExpiryDate = $("#NewCnpExpiryDate").val();
+        var Status = $('#NewddlCnpStatus :selected').val();
         var couponcode = $('#AddCoupencode').val();
+        var Percentage = $('#NewCnpDiscountPercent').val();
+        var IntPercent = parseInt(Percentage);
 
         if (couponcode == "") {
             alertify.error('Please enter Coupon Code');
             return false;
         }
 
-       
+        if (EntryDate == "") {
+            alertify.error('Please select EntryDate Date');
+            return false;
+        }
 
+        if (ExpiryDate == "") {
+            alertify.error('Please select Expiry Date');
+            return false;
+        }
+
+        if (Status == "") {
+            alertify.error('Please select Status');
+            return false;
+        }
+        if (IntPercent >= 0 && IntPercent <= 100)
+        {
+            return true;
+        }
+        else {
+            alertify.error('Please Enter Percentage in 0 to 100 only!');
+            return false;
+        }
+        if (Percentage.search(/[0-9]/) == -1) {
+            alertify.error('Please enter a Proper Percentafe which contain Numeric');
+            return false;
+        }
 
 
 
         $.ajax({
             type: 'POST',
-            url: '../Coupons/AddCoupons?Couponcode=' + couponcode,
+            url: '../Coupons/AddCoupons?Couponcode=' + couponcode + '&EntryDate=' + EntryDate + '&ExpiryDate=' + ExpiryDate + '&Status=' + Status + '&Percentage=' + Percentage,
             success: function (msg) {
                 if (msg == "Added Successfully") {
                     alertify.success('Added Successfully');
@@ -82,5 +140,20 @@
 
 
     $(document).ready(function () {
+        $('#NewCpnEntryDate').datepicker({
+            startDate: '-0m'
+            //endDate: '+2d'
+        }).on('changeDate', function (ev) {
+            $('#sDate1').text($('#datepicker').data('date'));
+            $('#datepicker').datepicker('hide');
+        });
+
+        $('#NewCnpExpiryDate').datepicker({
+            startDate: '-0m'
+            //endDate: '+2d'
+        }).on('changeDate', function (ev) {
+            $('#sDate1').text($('#datepicker').data('date'));
+            $('#datepicker').datepicker('hide');
+        });
     });
 </script>

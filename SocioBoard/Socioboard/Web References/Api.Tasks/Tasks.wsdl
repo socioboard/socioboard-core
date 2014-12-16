@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:import namespace="http://microsoft.com/wsdl/types/" />
@@ -200,6 +200,51 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetAllIncompleteTaskofUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllIncompleteTaskofUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllIncompleteTaskofUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllCompleteTaskofUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllCompleteTaskofUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllCompleteTaskofUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllTeamTask">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllTeamTaskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllTeamTaskResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
     <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
@@ -282,6 +327,24 @@
   <wsdl:message name="UpdateTaskReadStatusSoapOut">
     <wsdl:part name="parameters" element="tns:UpdateTaskReadStatusResponse" />
   </wsdl:message>
+  <wsdl:message name="GetAllIncompleteTaskofUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllIncompleteTaskofUser" />
+  </wsdl:message>
+  <wsdl:message name="GetAllIncompleteTaskofUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllIncompleteTaskofUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCompleteTaskofUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllCompleteTaskofUser" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCompleteTaskofUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllCompleteTaskofUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTeamTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllTeamTask" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTeamTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllTeamTaskResponse" />
+  </wsdl:message>
   <wsdl:message name="CreateNewTaskForAnroidHttpGetIn">
     <wsdl:part name="description" type="s:string" />
     <wsdl:part name="userid" type="s:string" />
@@ -349,6 +412,27 @@
     <wsdl:part name="GroupId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdateTaskReadStatusHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllIncompleteTaskofUserHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllIncompleteTaskofUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCompleteTaskofUserHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCompleteTaskofUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTeamTaskHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTeamTaskHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="CreateNewTaskForAnroidHttpPostIn">
@@ -420,6 +504,27 @@
   <wsdl:message name="UpdateTaskReadStatusHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetAllIncompleteTaskofUserHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllIncompleteTaskofUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCompleteTaskofUserHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCompleteTaskofUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTeamTaskHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTeamTaskHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="TasksSoap">
     <wsdl:operation name="CreateNewTask">
       <wsdl:input message="tns:CreateNewTaskSoapIn" />
@@ -469,6 +574,18 @@
       <wsdl:input message="tns:UpdateTaskReadStatusSoapIn" />
       <wsdl:output message="tns:UpdateTaskReadStatusSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllIncompleteTaskofUser">
+      <wsdl:input message="tns:GetAllIncompleteTaskofUserSoapIn" />
+      <wsdl:output message="tns:GetAllIncompleteTaskofUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCompleteTaskofUser">
+      <wsdl:input message="tns:GetAllCompleteTaskofUserSoapIn" />
+      <wsdl:output message="tns:GetAllCompleteTaskofUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTeamTask">
+      <wsdl:input message="tns:GetAllTeamTaskSoapIn" />
+      <wsdl:output message="tns:GetAllTeamTaskSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TasksHttpGet">
     <wsdl:operation name="CreateNewTaskForAnroid">
@@ -507,6 +624,18 @@
       <wsdl:input message="tns:UpdateTaskReadStatusHttpGetIn" />
       <wsdl:output message="tns:UpdateTaskReadStatusHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllIncompleteTaskofUser">
+      <wsdl:input message="tns:GetAllIncompleteTaskofUserHttpGetIn" />
+      <wsdl:output message="tns:GetAllIncompleteTaskofUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCompleteTaskofUser">
+      <wsdl:input message="tns:GetAllCompleteTaskofUserHttpGetIn" />
+      <wsdl:output message="tns:GetAllCompleteTaskofUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTeamTask">
+      <wsdl:input message="tns:GetAllTeamTaskHttpGetIn" />
+      <wsdl:output message="tns:GetAllTeamTaskHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TasksHttpPost">
     <wsdl:operation name="CreateNewTaskForAnroid">
@@ -544,6 +673,18 @@
     <wsdl:operation name="UpdateTaskReadStatus">
       <wsdl:input message="tns:UpdateTaskReadStatusHttpPostIn" />
       <wsdl:output message="tns:UpdateTaskReadStatusHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllIncompleteTaskofUser">
+      <wsdl:input message="tns:GetAllIncompleteTaskofUserHttpPostIn" />
+      <wsdl:output message="tns:GetAllIncompleteTaskofUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCompleteTaskofUser">
+      <wsdl:input message="tns:GetAllCompleteTaskofUserHttpPostIn" />
+      <wsdl:output message="tns:GetAllCompleteTaskofUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTeamTask">
+      <wsdl:input message="tns:GetAllTeamTaskHttpPostIn" />
+      <wsdl:output message="tns:GetAllTeamTaskHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="TasksSoap" type="tns:TasksSoap">
@@ -649,6 +790,33 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateTaskReadStatus">
       <soap:operation soapAction="http://tempuri.org/UpdateTaskReadStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllIncompleteTaskofUser">
+      <soap:operation soapAction="http://tempuri.org/GetAllIncompleteTaskofUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCompleteTaskofUser">
+      <soap:operation soapAction="http://tempuri.org/GetAllCompleteTaskofUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTeamTask">
+      <soap:operation soapAction="http://tempuri.org/GetAllTeamTask" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -767,6 +935,33 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllIncompleteTaskofUser">
+      <soap12:operation soapAction="http://tempuri.org/GetAllIncompleteTaskofUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCompleteTaskofUser">
+      <soap12:operation soapAction="http://tempuri.org/GetAllCompleteTaskofUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTeamTask">
+      <soap12:operation soapAction="http://tempuri.org/GetAllTeamTask" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="TasksHttpGet" type="tns:TasksHttpGet">
     <http:binding verb="GET" />
@@ -849,6 +1044,33 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllIncompleteTaskofUser">
+      <http:operation location="/GetAllIncompleteTaskofUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCompleteTaskofUser">
+      <http:operation location="/GetAllCompleteTaskofUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTeamTask">
+      <http:operation location="/GetAllTeamTask" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="TasksHttpPost" type="tns:TasksHttpPost">
     <http:binding verb="POST" />
@@ -924,6 +1146,33 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateTaskReadStatus">
       <http:operation location="/UpdateTaskReadStatus" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllIncompleteTaskofUser">
+      <http:operation location="/GetAllIncompleteTaskofUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCompleteTaskofUser">
+      <http:operation location="/GetAllCompleteTaskofUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTeamTask">
+      <http:operation location="/GetAllTeamTask" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

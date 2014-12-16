@@ -61,7 +61,7 @@
                             <div class="form-group">
                                @* <img src="@objUser.ProfileUrl" class="img-circle profilePic" alt="User Avatar">*@
                                 <label>Team members will see the avatar you have set.</label>
-                                <div><input  id="input-24" type="file" class="btn btn-default col-md-6"></div>
+                                <div><input  id="input-24" type="file" class="btn btn-default col-md-6" onchange="AddImage()"></div>
                             </div>
 
                             <div class="form-group">
@@ -73,7 +73,7 @@
                                     <select id="ContentPlaceHolder1_ddlTimeZone" class="select form-control">
                                          @foreach (var timeZoneInfo in TimeZoneInfo.GetSystemTimeZones())
                                          {
-                                             if (timeZoneInfo.DisplayName == objUser.TimeZone)
+                                             if (timeZoneInfo.StandardName == objUser.TimeZone)
                                              {
                                                  <option selected value="@timeZoneInfo.DisplayName">@timeZoneInfo.Id</option>
                                              }

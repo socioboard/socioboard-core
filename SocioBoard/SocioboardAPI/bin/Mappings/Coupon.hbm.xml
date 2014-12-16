@@ -20,6 +20,9 @@
     <property name="Status">
       <column name="Status"  />
     </property>
+    <property name="Discount">
+      <column name="Discount"/>
+    </property> 
 
   </class>
 </hibernate-mapping>

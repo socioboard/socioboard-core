@@ -8,10 +8,12 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Domain.Socioboard.Domain;
 using log4net;
+using Socioboard.App_Start;
 
 namespace Socioboard.Controllers
 {
     [Authorize]
+    [CustomAuthorize]
     public class ReportController : Controller
     {
         ILog logger = LogManager.GetLogger(typeof(ReportController));

@@ -42,58 +42,58 @@
                     @{
                         try
                         {
-                                if (lstAllSentMsg != null && lstAllSentMsg.Count > 0)
+                            if (lstAllSentMsg != null && lstAllSentMsg.Count > 0)
+                            {
+                                foreach (ScheduledMessage item in lstAllSentMsg)
                                 {
-                                    foreach (ScheduledMessage item in lstAllSentMsg)
+                                    try
                                     {
-                                        try
+                                        string icon = "";
+                                        string onClick = "";
+                                        string network = "";
+                                        string ScreenName = "";
+                                        string ProfileImageUrl = "";
+                                        if (item.ProfileType == "twitter")
                                         {
-                                            string icon = "";
-                                            string onClick = "";
-                                            string network = "";
-                                            string ScreenName = "";
-                                            string ProfileImageUrl = "";
-                                            if (item.ProfileType == "twitter")
+                                            icon = "twticon.png";
+                                            onClick = "detailsdiscoverytwitter";
+                                            network = "twitter";
+                                            Domain.Socioboard.Domain.TwitterAccount objTwitterAccount = (Domain.Socioboard.Domain.TwitterAccount)new JavaScriptSerializer().Deserialize(objApiTwitterAccount.getUserInformation(item.ProfileId), typeof(Domain.Socioboard.Domain.TwitterAccount));
+                                            ScreenName = objTwitterAccount.TwitterScreenName;
+                                            ProfileImageUrl = objTwitterAccount.ProfileImageUrl;
+                                        }
+                                        else if (item.ProfileType == "facebook")
+                                        {
+                                            icon = "fb_icon.png";
+                                            onClick = "getFacebookProfiles";
+                                            network = "facebook";
+                                            Domain.Socioboard.Domain.FacebookAccount objFacebookAccount = (Domain.Socioboard.Domain.FacebookAccount)new JavaScriptSerializer().Deserialize(objApiFacebookAccount.getFacebookAccountDetailsById(objUser.Id.ToString(), item.ProfileId), typeof(Domain.Socioboard.Domain.FacebookAccount));
+                                            ScreenName = objFacebookAccount.FbUserName;
+                                            ProfileImageUrl = "http://graph.facebook.com/" + objFacebookAccount.FbUserId + "/picture?type=small";
+                                        }
+                                        else if (item.ProfileType == "linkedin")
+                                        {
+                                            icon = "link_icon.png";
+                                            onClick = "";
+                                            network = "linkedin";
+                                            Domain.Socioboard.Domain.LinkedInAccount objLinkedInAccount = (Domain.Socioboard.Domain.LinkedInAccount)new JavaScriptSerializer().Deserialize(objApiLinkedinAccount.GetLinkedinAccountDetailsById(objUser.Id.ToString(), item.ProfileId), typeof(Domain.Socioboard.Domain.LinkedInAccount));
+                                            ScreenName = objLinkedInAccount.LinkedinUserName;
+                                            ProfileImageUrl = objLinkedInAccount.ProfileImageUrl;
+                                            if (ProfileImageUrl == null || ProfileImageUrl == "")
                                             {
-                                                icon = "twticon.png";
-                                                onClick = "detailsdiscoverytwitter";
-                                                network = "twitter";
-                                                Domain.Socioboard.Domain.TwitterAccount objTwitterAccount = (Domain.Socioboard.Domain.TwitterAccount)new JavaScriptSerializer().Deserialize(objApiTwitterAccount.getUserInformation(item.ProfileId), typeof(Domain.Socioboard.Domain.TwitterAccount));
-                                                ScreenName = objTwitterAccount.TwitterScreenName;
-                                                ProfileImageUrl = objTwitterAccount.ProfileImageUrl;
+                                                ProfileImageUrl = "/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/blank_img.png";
                                             }
-                                            else if (item.ProfileType == "facebook")
-                                            {
-                                                icon = "fb_icon.png";
-                                                onClick = "getFacebookProfiles";
-                                                network = "facebook";
-                                                Domain.Socioboard.Domain.FacebookAccount objFacebookAccount = (Domain.Socioboard.Domain.FacebookAccount)new JavaScriptSerializer().Deserialize(objApiFacebookAccount.getFacebookAccountDetailsById(objUser.Id.ToString(), item.ProfileId), typeof(Domain.Socioboard.Domain.FacebookAccount));
-                                                ScreenName = objFacebookAccount.FbUserName;
-                                                ProfileImageUrl = "http://graph.facebook.com/" + objFacebookAccount.FbUserId + "/picture?type=small";
-                                            }
-                                            else if(item.ProfileType=="linkedin")
-                                            {
-                                                icon = "link_icon.png";
-                                                onClick = "";
-                                                network = "linkedin";
-                                                Domain.Socioboard.Domain.LinkedInAccount objLinkedInAccount = (Domain.Socioboard.Domain.LinkedInAccount)new JavaScriptSerializer().Deserialize(objApiLinkedinAccount.GetLinkedinAccountDetailsById(objUser.Id.ToString(),item.ProfileId),typeof(Domain.Socioboard.Domain.LinkedInAccount));
-                                                ScreenName = objLinkedInAccount.LinkedinUserName;
-                                                ProfileImageUrl = objLinkedInAccount.ProfileImageUrl;
-                                                if(ProfileImageUrl==null || ProfileImageUrl == "")
-                                                {
-                                                    ProfileImageUrl = "/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/blank_img.png";
-                                                }
-                                            }
-                                            else if (item.ProfileType == "tumblr")
-                                            {
-                                                icon = "tumblr.png";
-                                                onClick = "";
-                                                network = "tumblr";
-                                                Domain.Socioboard.Domain.TumblrAccount objTumblrAccount = (Domain.Socioboard.Domain.TumblrAccount)new JavaScriptSerializer().Deserialize(objApiTumblrAccount.GetTumblrAccountDetailsById(objUser.Id.ToString(),item.ProfileId),typeof(Domain.Socioboard.Domain.TumblrAccount));
-                                                ProfileImageUrl = "http://api.tumblr.com/v2/blog/"+ objTumblrAccount.tblrUserName +".tumblr.com/avatar";
-                                                ScreenName = objTumblrAccount.tblrUserName;
-                                            }
-                                            
+                                        }
+                                        else if (item.ProfileType == "tumblr")
+                                        {
+                                            icon = "tumblr.png";
+                                            onClick = "";
+                                            network = "tumblr";
+                                            Domain.Socioboard.Domain.TumblrAccount objTumblrAccount = (Domain.Socioboard.Domain.TumblrAccount)new JavaScriptSerializer().Deserialize(objApiTumblrAccount.GetTumblrAccountDetailsById(objUser.Id.ToString(), item.ProfileId), typeof(Domain.Socioboard.Domain.TumblrAccount));
+                                            ProfileImageUrl = "http://api.tumblr.com/v2/blog/" + objTumblrAccount.tblrUserName + ".tumblr.com/avatar";
+                                            ScreenName = objTumblrAccount.tblrUserName;
+                                        }
+                                        item.ScheduleTime = TimeZoneInfo.ConvertTimeFromUtc(item.ScheduleTime, TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"));
                         <div class="panel panel-primary" id="messagetaskable_@sorteddatacount">
                                         <div class="panel-heading">
                                             <div class="row" style="width:750px;">
@@ -115,17 +115,17 @@
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
-                                        }
-                                        catch { }
-                                        sorteddatacount++;
                                     }
+                                    catch { }
+                                    sorteddatacount++;
                                 }
-                                else
-                                {
-                                    
-                                }
+                            }
+                            else
+                            {
+
+                            }
                         }
-                        catch{}
+                        catch { }
                         
                     }
                     <!-- Modal -->
@@ -151,7 +151,7 @@
                 </div>
 
                 <!-- Modal -->
-                <div class="modal fade" id="ProfileDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                @*    <div class="modal fade" id="ProfileDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -159,7 +159,7 @@
                                 <h4 class="modal-title" id="myModalLabel">Profile Summary</h4>
                             </div>
                             <div id="ProfileDetailBody" class="modal-body col-md-12">
-                              @*  <div class="col-md-12" style="text-align: center; background: linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.73) 100%) repeat scroll 0px 0px transparent; padding: 15px;">
+                              <div class="col-md-12" style="text-align: center; background: linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.73) 100%) repeat scroll 0px 0px transparent; padding: 15px;">
                                     <img src="/Themes/@path/Contents/img/apple-touch-icon-72-precomposed.png" class="img-thumbnail" />
                                     <p><h2>abhay mondal</h2></p>
                                     <p>abhaymondal3</p>
@@ -183,7 +183,7 @@
                                 </div>
                                 <div class="col-md-12" style="text-align:center;">
                                     <a href="#">Go to full profile →</a>
-                                </div>*@
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger " data-dismiss="modal">Close</button>
@@ -191,7 +191,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>*@
                 <!--end of model-->
             </div>
         </div>
@@ -250,11 +250,11 @@
                                                 <li><a class="btn border-radius" id="export_to_csv_6" onclick="eporttocsv('6')">Custom</a></li>
                                             </ul>
                                         </div>
-                                        <div id="date_range_div" style="display:none;margin-left:-27px" class="col-md-8">
+                                        <div id="date_range_div" style="display:none;margin-left:-40px" class="col-md-8">
                                             <div style="float:left">
                                                  <label for="dates">From</label><input type="text" id="cal_left" class="form-control">
                                             </div>
-                                            <div style="float:right;margin-left:13px">
+                                            <div style="float:right;margin-right:-35px">
                                                 <label for="dates">To</label><input type="text" id="cal_right" class="form-control">
                                             </div>
                                         </div>
@@ -269,37 +269,37 @@
                         </div>
                     </div>
 <script type="text/javascript">
-    function DetailsofProfile(id, network)
-    {
-        debugger;
-        try {
-            debugger;
-            debugger;
+    //function DetailsofProfile(id, network)
+    //{
+    //    debugger;
+    //    try {
+    //        debugger;
+    //        debugger;
             
-            $("#ProfileDetailBody").html("");
-            $.ajax
-            ({
-                type: "GET",
-                url: "../Messages/getProfileDetails?Profileid=" + id + '&Network=' + network,
-                crossDomain: true,
-                contentType: "application/json; charset=utf-8",
-                dataType: "html",
-                success: function (msg) {
-                    debugger;
+    //        $("#ProfileDetailBody").html("");
+    //        $.ajax
+    //        ({
+    //            type: "GET",
+    //            url: "../Messages/getProfileDetails?Profileid=" + id + '&Network=' + network,
+    //            crossDomain: true,
+    //            contentType: "application/json; charset=utf-8",
+    //            dataType: "html",
+    //            success: function (msg) {
+    //                debugger;
 
-                    $("#ProfileDetailBody").append(msg);
-                    $("#ProfileDetail").modal('show');
+    //                $("#ProfileDetailBody").append(msg);
+    //                $("#ProfileDetail").modal('show');
 
-                },
-                error: function (err) {
-                    alert(err);
-                    debugger;
-                }
-            });
-        } catch (e) {
+    //            },
+    //            error: function (err) {
+    //                alert(err);
+    //                debugger;
+    //            }
+    //        });
+    //    } catch (e) {
 
-        }
-    }
+    //    }
+    //}
 
 
     $(document).ready(function (e) {

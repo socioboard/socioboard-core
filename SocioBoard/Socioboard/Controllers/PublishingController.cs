@@ -7,10 +7,12 @@ using Domain.Socioboard.Domain;
 using System.Web.Script.Serialization;
 using Socioboard.Helper;
 using System.IO;
+using Socioboard.App_Start;
 
 namespace Socioboard.Controllers
 {
     [Authorize]
+    [CustomAuthorize]
     public class PublishingController : Controller
     {
         //

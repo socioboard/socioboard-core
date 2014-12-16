@@ -5,10 +5,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Domain.Socioboard.Domain;
+using Socioboard.App_Start;
 
 
 namespace Socioboard.Controllers
 {
+    [Authorize]
+    [CustomAuthorize]
     public class DropboxManagerController : Controller
     {
         //

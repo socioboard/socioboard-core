@@ -4,8 +4,13 @@ E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusGooglePl
 E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.dll
 E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.pdb
 E:\Hozefa\master\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.csprojResolveAssemblyReference.cache
-D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\bin\Debug\GlobusGooglePlusLib.dll
-D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\bin\Debug\GlobusGooglePlusLib.pdb
-D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.csprojResolveAssemblyReference.cache
-D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.dll
-D:\PrjctGupta\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.pdb
+D:\Suresh\Hozefa\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\bin\Debug\GlobusGooglePlusLib.dll
+D:\Suresh\Hozefa\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\bin\Debug\GlobusGooglePlusLib.pdb
+D:\Suresh\Hozefa\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.dll
+D:\Suresh\Hozefa\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.pdb
+D:\Suresh\Hozefa\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.csprojResolveAssemblyReference.cache
+D:\Suresh\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\bin\Debug\GlobusGooglePlusLib.dll
+D:\Suresh\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\bin\Debug\GlobusGooglePlusLib.pdb
+D:\Suresh\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.dll
+D:\Suresh\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.pdb
+D:\Suresh\SB Update 29-10-2014\SB Update 29-10-2014\trunk\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.csprojResolveAssemblyReference.cache

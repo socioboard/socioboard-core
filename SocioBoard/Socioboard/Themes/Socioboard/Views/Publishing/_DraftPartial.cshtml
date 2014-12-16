@@ -15,6 +15,8 @@
 <tbody>
     @foreach (var item in (List<Domain.Socioboard.Domain.Drafts>)Model)
     {
+        item.CreatedDate = TimeZoneInfo.ConvertTimeFromUtc(item.CreatedDate,
+TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"));
     <tr class="odd gradeX" id="@item.Id">
         <td>
             <div class="col-xs-6">

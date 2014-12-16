@@ -7,7 +7,7 @@ using System.Web.Script.Serialization;
 
 namespace Socioboard.Controllers.Admin
 {
-    [Authorize]
+   [Authorize(Users = "Aby Kumar")]
     public class CouponsController : Controller
     {
         //
@@ -45,8 +45,8 @@ namespace Socioboard.Controllers.Admin
             objCoupons.Status = Status;
             string ObjCoupn = (new JavaScriptSerializer().Serialize(objCoupons));
             Api.Coupon.Coupon apiobjNews = new Api.Coupon.Coupon();
-            string NewsUpdateMessage = (string)(new JavaScriptSerializer().Deserialize(apiobjNews.UpdateCoupons(ObjCoupn), typeof(string)));
-            return Content(NewsUpdateMessage);
+            string CouponUpdateMessage = (string)(new JavaScriptSerializer().Deserialize(apiobjNews.UpdateCoupons(ObjCoupn), typeof(string)));
+            return Content(CouponUpdateMessage);
         }
         public ActionResult CreateCoupons()
         {
@@ -55,18 +55,19 @@ namespace Socioboard.Controllers.Admin
             int CouponNo = lstCoupons.Count + 1;
             return View(CouponNo);
         }
-        public ActionResult AddCoupons(string Couponcode)
+        public ActionResult AddCoupons(string Couponcode, string EntryDate, string ExpiryDate, string Status, string Percentage)
         {
             Domain.Socioboard.Domain.Coupon objCoupons = new  Domain.Socioboard.Domain.Coupon();
             objCoupons.Id = Guid.NewGuid();
             objCoupons.CouponCode = Couponcode;
-            objCoupons.ExpCouponDate = DateTime.Now;
-            objCoupons.ExpCouponDate = DateTime.Now;
-            objCoupons.Status = "0";
+            objCoupons.ExpCouponDate = Convert.ToDateTime(EntryDate);
+            objCoupons.ExpCouponDate = Convert.ToDateTime(ExpiryDate);
+            objCoupons.Status = Status;
+            objCoupons.Discount = Convert.ToInt16(Percentage);
             string ObjCoupn = (new JavaScriptSerializer().Serialize(objCoupons));
-            Api.Coupon.Coupon apiobjNews = new Api.Coupon.Coupon();
-            string NewsUpdateMessage = (string)(new JavaScriptSerializer().Deserialize(apiobjNews.AddCoupons(ObjCoupn), typeof(string)));
-            return Content(NewsUpdateMessage);
+            Api.Coupon.Coupon apiobjCoupon = new Api.Coupon.Coupon();
+            string CouponUpdateMessage = (string)(new JavaScriptSerializer().Deserialize(apiobjCoupon.AddCoupons(ObjCoupn), typeof(string)));
+            return Content(CouponUpdateMessage);
         }
 
     }

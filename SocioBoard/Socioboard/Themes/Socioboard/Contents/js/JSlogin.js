@@ -97,20 +97,13 @@ function signinFunction() {
                 url: '../Index/AjaxLogin?op=login&username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password),
                 success: function (msg) {
                     debugger;
-
-                    if (msg == "user") {
-                        //alert(msg);
-                        //window.location = "../Home.aspx";
-                        //window.location = "../Referrals.aspx";
-                        window.top.location = "../Home/Index";
-
-                        // Edited by Antima
-
-                        if ($("#RememberMe").is(':checked')) {
-                            checkCookie(username, password);
-                        }
+                    if ($("#RememberMe").is(':checked')) {
+                        checkCookie(username, password);
                     }
-                        // Edited by Antima[1/11/2014]
+                    if (msg == "user") {
+                        window.top.location = "../Home/Index";
+                    }
+                       // Edited by Antima[1/11/2014]
                     else if (msg == "notactivated") {
                         $.ajax({
                             type: 'POST',
@@ -128,20 +121,8 @@ function signinFunction() {
 
                     //Modified by Hozefa
                     else if (msg == "SuperAdmin") {
-                        //alert(msg);
-                        //window.location = "../Home.aspx";
-                        //window.location = "../Referrals.aspx";
                         window.top.location = "../AdminHome/Dashboard";
-
-                        // Edited by Antima
-
-                        //if ($("#RememberMe").is(':checked')) {
-                        //    checkCookie(username, password);
-                        //}
                     }
-
-
-
                     else {
                         document.getElementById('signinpasswordMessages').innerHTML = msg;
                         $('#btnlogin').html("<button class='btn btn-warning' type='button'>Login</button>");
@@ -168,9 +149,25 @@ function setCookie(cemail, cpwd, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
     var expires = "expires=" + d.toUTCString();
-    document.cookie = cemail + "=" + cpwd + "; " + expires;
+    document.cookie = "logininfo" + cemail + "=" + cpwd + ";" + expires;
 }
-
+//Added By vikash
+function GetAllCookies()
+{
+    var clist = [];
+    var j = 0;
+    debugger;
+    var Cookies = document.cookie.split(';');
+    for (var i = 0; i < Cookies.length; i++) {
+        var currentcooki = Cookies[i];
+        if (currentcooki.indexOf("logininfo") > -1)
+        {
+            clist[j] = currentcooki;
+            j++;
+        }
+    }
+    return clist[0].replace("logininfo","");
+}
 function getCookie(cemail) {
     debugger;
     var name = cemail + "=";
@@ -187,7 +184,7 @@ function getCookie(cemail) {
 
 function checkCookie(username, password) {
     debugger;
-    var check = getCookie(username);
+    var check = getCookie("logininfo" + username);
     if (check != "") {
         //  window.alert("Welcome again " + username);
     } else {
@@ -398,7 +395,7 @@ function register() {
                                                             } else { }
                                                         }, email);
                                                     } else {
-                                                        alertify.error("Not Valid Password");
+                                                        alertify.error("Password should contain atleast 6 characters and should be alphanumeric");
                                                         return;
                                                     }
                                                 } else {
@@ -458,6 +455,7 @@ function password() {
     var strongRegex = new RegExp("^(?=.{7,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
     var mediumRegex = new RegExp("^(?=.{5,})(((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
     if ($('#txtrPassword').val() != "") {
+        $('#password_strength').css('display', 'block');
         if ($('#txtrPassword').val().length <= 15) {
             if (strongRegex.test($('#txtrPassword').val())) {
                 $('#stregth').html('<b>Strong!</b>');
@@ -488,6 +486,7 @@ function password() {
         $('#weak').css("background-color", "#FF0000");
         $('#medium').css("background-color", "rgb(204, 204, 204)");
         $('#strong').css("background-color", "rgb(204, 204, 204)");
+        $('#password_strength').css('display', 'none');
     }
     return true;
 }
@@ -535,8 +534,8 @@ function validatePhone($Phoneno) {
 function facebookLogin() {
     try {
         debugger;
-        $('#gp_account').css('display', 'none');
-        // $('#gp_account').attr('onclick', '');
+        //$('#gp_account').css('display', 'none');
+        $('#gp_account').attr('onclick', '');
         //$("#fb_account img").attr('src', '../../Contents/img/bx_loader.gif');
 
         $.ajax({
@@ -558,8 +557,8 @@ function facebookLogin() {
 function googleplusLogin() {
     try {
         debugger;
-        $('#fb_account').css('display', 'none');
-        // $('#fb_account').attr('onclick', '');
+        //$('#fb_account').css('display', 'none');
+        $('#fb_account').attr('onclick', '');
         //$("#gp_account img").attr('src', '../Contents/img/bx_loader.gif');
 
         $.ajax({

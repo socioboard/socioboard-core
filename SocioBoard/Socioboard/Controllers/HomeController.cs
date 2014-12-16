@@ -11,15 +11,17 @@ using System.Text.RegularExpressions;
 using System.Web.Script.Serialization;
 using System.IO;
 using Socioboard.App_Start;
+using log4net;
 
 namespace Socioboard.Controllers
 {
     public class HomeController : Controller
     {
-
+        private ILog logger = LogManager.GetLogger(typeof(HomeController));
 
         [MyExpirePageActionFilter]
-        [Authorize]
+        // [Authorize]
+        [CustomAuthorize]
         public ActionResult Index()
         {
 
@@ -30,11 +32,11 @@ namespace Socioboard.Controllers
                 _apiteam.UpdateTeambyteamid(teamid);
 
             }
-            if (Session["Paid_User"] !=null && Session["Paid_User"].ToString() == "Unpaid")
+            if (Session["Paid_User"] != null && Session["Paid_User"].ToString() == "Unpaid")
             {
                 return RedirectToAction("Billing", "PersonalSetting");
             }
-         
+
             else
             {
                 ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
@@ -107,7 +109,7 @@ namespace Socioboard.Controllers
             // Thread.Sleep(3 * 1000);
             return PartialView("_HomeUserProfilePartial");
         }
-       
+
         public ActionResult LoadGroup()
         {
             User objUser = (User)Session["User"];
@@ -128,7 +130,7 @@ namespace Socioboard.Controllers
             return PartialView("_LoadGroupPartial", lstgroup);
 
         }
-       
+
         public ActionResult ChangeGroup()
         {
             string groupid = Request.QueryString["groupid"].ToString();
@@ -158,43 +160,62 @@ namespace Socioboard.Controllers
             string profileid = Request.QueryString["profileid"].ToString();
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
 
-            if (type == "fb")
+            // Edited By Antima[15/12/2014]
+            string GroupId = Session["group"].ToString();
+            Api.Team.Team objApiTeam = new Api.Team.Team();
+            Domain.Socioboard.Domain.Team team = (Domain.Socioboard.Domain.Team)new JavaScriptSerializer().Deserialize(objApiTeam.GetTeamByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Team));
+            Guid AdminUserId = team.UserId;
+            try
             {
-
-                Api.FacebookAccount.FacebookAccount ApiobjFacebookAccount = new Api.FacebookAccount.FacebookAccount();
-                ApiobjFacebookAccount.DeleteFacebookAccount(objUser.Id.ToString(), profileid, Session["group"].ToString());
+                if (AdminUserId == objUser.Id)
+                {
+                    if (type == "fb")
+                    {
+                        Api.FacebookAccount.FacebookAccount ApiobjFacebookAccount = new Api.FacebookAccount.FacebookAccount();
+                        ApiobjFacebookAccount.DeleteFacebookAccount(objUser.Id.ToString(), profileid, Session["group"].ToString());
+                    }
+                    else if (type == "twt")
+                    {
+                        Api.TwitterAccount.TwitterAccount apiobjTwitterAccount = new Api.TwitterAccount.TwitterAccount();
+                        apiobjTwitterAccount.DeleteTwitterAccount(objUser.Id.ToString(), profileid, Session["group"].ToString());
+                    }
+                    else if (type == "linkedin")
+                    {
+                        Api.LinkedinAccount.LinkedinAccount apiobjLinkedinAccount = new Api.LinkedinAccount.LinkedinAccount();
+                        apiobjLinkedinAccount.DeleteLinkedinAccount(objUser.Id.ToString(), profileid, Session["group"].ToString());
+                    }
+                    else if (type == "instagram")
+                    {
+                        Api.InstagramAccount.InstagramAccount apiobjInstagramAccount = new Api.InstagramAccount.InstagramAccount();
+                        apiobjInstagramAccount.DeleteInstagramAccount(objUser.Id.ToString(), profileid, Session["group"].ToString());
+                    }
+                    else if (type == "tumblr")
+                    {
+                        Api.TumblrAccount.TumblrAccount apiobjTumblrAccount = new Api.TumblrAccount.TumblrAccount();
+                        apiobjTumblrAccount.DeleteTumblrAccount(objUser.Id.ToString(), profileid, Session["group"].ToString());
+                    }
+                    else if (type == "youtube")
+                    {
+                        Api.YoutubeAccount.YoutubeAccount apiobjYoutubeAccount = new Api.YoutubeAccount.YoutubeAccount();
+                        apiobjYoutubeAccount.DeleteYoutubeAccount(objUser.Id.ToString(), profileid, Session["group"].ToString());
+                    }
+                    else if (type == "liComPage")
+                    {
+                        Api.LinkedinCompanyPage.LinkedinCompanyPage apiobjLinkedinCompanyPage = new Api.LinkedinCompanyPage.LinkedinCompanyPage();
+                        apiobjLinkedinCompanyPage.DeleteLinkedinCompanyPage(objUser.Id.ToString(), profileid, Session["group"].ToString());
+                    }
+                    return Content("Deleted");
+                }
+                else
+                {
+                    return Content("Not Deleted");
+                }
             }
-            else if (type == "twt")
+            catch (Exception ex)
             {
-                Api.TwitterAccount.TwitterAccount apiobjTwitterAccount = new Api.TwitterAccount.TwitterAccount();
-                apiobjTwitterAccount.DeleteTwitterAccount(objUser.Id.ToString(), profileid, Session["group"].ToString());
+                Console.WriteLine(ex.StackTrace);
+                return Content("Not Deleted");
             }
-            else if (type == "linkedin")
-            {
-                Api.LinkedinAccount.LinkedinAccount apiobjLinkedinAccount = new Api.LinkedinAccount.LinkedinAccount();
-                apiobjLinkedinAccount.DeleteLinkedinAccount(objUser.Id.ToString(), profileid, Session["group"].ToString());
-            }
-            else if (type == "instagram")
-            {
-                Api.InstagramAccount.InstagramAccount apiobjInstagramAccount = new Api.InstagramAccount.InstagramAccount();
-                apiobjInstagramAccount.DeleteInstagramAccount(objUser.Id.ToString(), profileid, Session["group"].ToString());
-            }
-            else if (type == "tumblr")
-            {
-                Api.TumblrAccount.TumblrAccount apiobjTumblrAccount = new Api.TumblrAccount.TumblrAccount();
-                apiobjTumblrAccount.DeleteTumblrAccount(objUser.Id.ToString(), profileid, Session["group"].ToString());
-            }
-            else if (type == "youtube")
-            {
-                Api.YoutubeAccount.YoutubeAccount apiobjYoutubeAccount = new Api.YoutubeAccount.YoutubeAccount();
-                apiobjYoutubeAccount.DeleteYoutubeAccount(objUser.Id.ToString(), profileid, Session["group"].ToString());
-            }
-            else if (type == "liComPage")
-            {
-                Api.LinkedinCompanyPage.LinkedinCompanyPage apiobjLinkedinCompanyPage = new Api.LinkedinCompanyPage.LinkedinCompanyPage();
-                apiobjLinkedinCompanyPage.DeleteLinkedinCompanyPage(objUser.Id.ToString(), profileid, Session["group"].ToString());
-            }
-            return Content("Deleted");
         }
 
         public ActionResult ComposeMessage()
@@ -236,13 +257,14 @@ namespace Socioboard.Controllers
                     var path = Server.MapPath("~/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/upload");
 
                     // var path = System.Configuration.ConfigurationManager.AppSettings["MailSenderDomain"]+"Contents/img/upload";
-                    file = path + "/" + fi.FileName;
+                    file = path + "\\" + fi.FileName;
                     if (!Directory.Exists(path))
                     {
                         Directory.CreateDirectory(path);
                     }
                     fi.SaveAs(file);
-                    path=path+"/" + fi.FileName;
+                    path = path + "\\" + fi.FileName;
+                    logger.Error(path);
                 }
             }
             foreach (var item in profileandidarr)
@@ -265,8 +287,8 @@ namespace Socioboard.Controllers
 
                 if (profiletype == "facebook")
                 {
-                     Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
-                     ApiobjFacebook.FacebookComposeMessage(message, profileid, objGroups.UserId.ToString(), curdaatetimetime, file);
+                    Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
+                    ApiobjFacebook.FacebookComposeMessage(message, profileid, objGroups.UserId.ToString(), curdaatetimetime, file);
                 }
                 if (profiletype == "twitter")
                 {
@@ -275,8 +297,8 @@ namespace Socioboard.Controllers
 
                 } if (profiletype == "linkedin")
                 {
-                     Api.Linkedin.Linkedin ApiobjLinkedin = new Api.Linkedin.Linkedin();
-                     ApiobjLinkedin.LinkedinComposeMessage(message, profileid, objGroups.UserId.ToString(), curdaatetimetime, file);
+                    Api.Linkedin.Linkedin ApiobjLinkedin = new Api.Linkedin.Linkedin();
+                    ApiobjLinkedin.LinkedinComposeMessage(message, profileid, objGroups.UserId.ToString(), curdaatetimetime, file);
                 }
                 if (profiletype == "tumblr")
                 {
@@ -301,9 +323,9 @@ namespace Socioboard.Controllers
 
         public ActionResult RecentProfiles()
         {
-             User objUser = (User)Session["User"];
+            User objUser = (User)Session["User"];
             Api.Twitter.Twitter ApiobjTwitter = new Api.Twitter.Twitter();
-             List<Domain.Socioboard.Helper.TwitterRecentFollower> lstTwitterRecentFollower = (List<Domain.Socioboard.Helper.TwitterRecentFollower>)(new JavaScriptSerializer().Deserialize(ApiobjTwitter.TwitterRecentFollower(objUser.Id.ToString()), typeof(List<Domain.Socioboard.Helper.TwitterRecentFollower>)));
+            List<Domain.Socioboard.Helper.TwitterRecentFollower> lstTwitterRecentFollower = (List<Domain.Socioboard.Helper.TwitterRecentFollower>)(new JavaScriptSerializer().Deserialize(ApiobjTwitter.TwitterRecentFollower(objUser.Id.ToString()), typeof(List<Domain.Socioboard.Helper.TwitterRecentFollower>)));
             return PartialView("_RecentFollowerPartial", lstTwitterRecentFollower);
         }
 
@@ -380,20 +402,20 @@ namespace Socioboard.Controllers
             {
                 Console.WriteLine(ex.StackTrace);
             }
-            try 
-	        {	        
-		        Api.ScheduledMessage.ScheduledMessage objScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
-                allsentmsgcount = ((List<ScheduledMessage>)(new JavaScriptSerializer().Deserialize(objScheduledMessage.getAllSentMessageDetails(AllProfileId,objUser.Id.ToString()), typeof(List<ScheduledMessage>)))).Count;
+            try
+            {
+                Api.ScheduledMessage.ScheduledMessage objScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
+                allsentmsgcount = ((List<ScheduledMessage>)(new JavaScriptSerializer().Deserialize(objScheduledMessage.getAllSentMessageDetails(AllProfileId, objUser.Id.ToString()), typeof(List<ScheduledMessage>)))).Count;
 
-	        }
-	        catch (Exception ex)
-	        {
+            }
+            catch (Exception ex)
+            {
                 Console.WriteLine(ex.StackTrace);
-	        }            
+            }
             string _totalIncomingMessage = (fbmsgcount + twtmsgcount).ToString();
             string _totalSentMessage = allsentmsgcount.ToString();
-            string _totalTwitterFollowers = SBUtils.GetAllTwitterFollowersCountofUser(TwtProfileId,objUser.Id.ToString());
-            string _totalFacebookFan = SBUtils.GetAllFacebookFancountofUser(FbProfileId,objUser.Id.ToString());
+            string _totalTwitterFollowers = SBUtils.GetAllTwitterFollowersCountofUser(TwtProfileId, objUser.Id.ToString());
+            string _totalFacebookFan = SBUtils.GetAllFacebookFancountofUser(FbProfileId, objUser.Id.ToString());
 
             ViewBag._totalIncomingMessage = _totalIncomingMessage;
             ViewBag._totalSentMessage = _totalSentMessage;
@@ -410,9 +432,9 @@ namespace Socioboard.Controllers
             {
                 Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
                 Api.DiscoverySearch.DiscoverySearch ApiobjDiscoverySearch = new Api.DiscoverySearch.DiscoverySearch();
-               
+
                 lstDiscoverySearch = (List<Domain.Socioboard.Domain.DiscoverySearch>)(new JavaScriptSerializer().Deserialize(ApiobjDiscoverySearch.contactSearchFacebook(keyword), typeof(List<Domain.Socioboard.Domain.DiscoverySearch>)));
-               
+
             }
             catch (Exception ex)
             {
@@ -431,7 +453,7 @@ namespace Socioboard.Controllers
             return PartialView("_TwitterContactPartial", lstDiscoverySearch);
         }
 
-        public ActionResult pagenotfound() 
+        public ActionResult pagenotfound()
         {
             return View("pagenotfound");
         }

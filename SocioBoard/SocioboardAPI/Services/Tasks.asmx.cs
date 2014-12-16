@@ -142,10 +142,15 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string getAllTasksOfUserList(string userid, string groupid)
         {
+            ArrayList TaskData = new ArrayList();
             List<Domain.Socioboard.Domain.Tasks> taskdata = new List<Domain.Socioboard.Domain.Tasks>();
             TaskRepository taskrepo = new TaskRepository();
-            taskdata = taskrepo.getAllTasksOfUserList(Guid.Parse(userid), Guid.Parse(groupid));
-            return new JavaScriptSerializer().Serialize(taskdata);
+            TaskData = taskrepo.getAllMyTasksOfUser(Guid.Parse(userid), Guid.Parse(groupid));
+            foreach (Domain.Socioboard.Domain.Tasks item in TaskData)
+            {
+                taskdata.Add(item);
+            }
+            return new JavaScriptSerializer().Serialize(TaskData);
         }
 
         [WebMethod]
@@ -303,7 +308,8 @@ namespace Api.Socioboard.Services
                 objcmtRepo.addTaskComment(objcmt);
             }
         }
-
+        
+        //ChangeTaskStatus
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string ChangeTaskStatus(string UserId, string TaskId, string Status)
@@ -355,6 +361,64 @@ namespace Api.Socioboard.Services
             return new JavaScriptSerializer().Serialize(ret);
         }
 
+        //Get all InCompleteTask of the User.
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllIncompleteTaskofUser(string userid, string groupid)
+        {
+            TaskRepository taskrepo = new TaskRepository();
+            ArrayList TaskData = new ArrayList();
+
+            TaskData = taskrepo.getAllIncompleteTasksOfUser(Guid.Parse(userid), Guid.Parse(groupid));
+            foreach (Domain.Socioboard.Domain.Tasks item in taskrepo.getAllIncompleteTasksOfUsers(Guid.Parse(userid)))
+            {
+                TaskData.Add(item);
+            }
+            List<Domain.Socioboard.Domain.Tasks> taskdata = new List<Domain.Socioboard.Domain.Tasks>();
+            foreach (Domain.Socioboard.Domain.Tasks item in TaskData)
+            {
+                taskdata.Add(item);
+            }
+            return new JavaScriptSerializer().Serialize(TaskData);
+        }
+
+        //Get all Complete Task of User.
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllCompleteTaskofUser(string userid, string groupid)
+        {
+            TaskRepository taskrepo = new TaskRepository();
+            ArrayList TaskData = new ArrayList();
+
+            TaskData = taskrepo.getAllCompleteTasksOfUser(Guid.Parse(userid), Guid.Parse(groupid),Guid.Parse(userid));
+            foreach (Domain.Socioboard.Domain.Tasks item in taskrepo.getAllCompleteTasksOfUsers(Guid.Parse(userid), Guid.Parse(groupid)))
+            {
+                TaskData.Add(item);
+            }
+            List<Domain.Socioboard.Domain.Tasks> taskdata = new List<Domain.Socioboard.Domain.Tasks>();
+            foreach (Domain.Socioboard.Domain.Tasks item in TaskData)
+            {
+                taskdata.Add(item);
+            }
+            return new JavaScriptSerializer().Serialize(TaskData);
+        }
+
+        //Get all Team Task.
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllTeamTask(string userid, string groupid)
+        {
+            TaskRepository taskrepo = new TaskRepository();
+            ArrayList TaskData = new ArrayList();
+
+            TaskData = taskrepo.getAllTasksOfUser(Guid.Parse(userid), Guid.Parse(groupid));
+            List<Domain.Socioboard.Domain.Tasks> taskdata = new List<Domain.Socioboard.Domain.Tasks>();
+            foreach (Domain.Socioboard.Domain.Tasks item in TaskData)
+            {
+                taskdata.Add(item);
+            }
+            return new JavaScriptSerializer().Serialize(TaskData);
+        }
 
 
 

@@ -6,12 +6,15 @@ using System.Web.Mvc;
 using Domain.Socioboard.Domain;
 using Socioboard.Helper;
 using System.Web.Script.Serialization;
+using Socioboard.App_Start;
 
 namespace Socioboard.Controllers
 {
     [Authorize]
+    [CustomAuthorize]
     public class UserGroupController : Controller
     {
+       
         //
         // GET: /UserGroup/
 
@@ -38,7 +41,6 @@ namespace Socioboard.Controllers
             List<Domain.Socioboard.Domain.Groups> lstgroup = (List<Domain.Socioboard.Domain.Groups>)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objApiGroups.GetGroupDetailsByUserId(objUser.Id.ToString()), typeof(List<Domain.Socioboard.Domain.Groups>)));
             return PartialView("_GroupPartial", lstgroup);
         }
-
         public ActionResult LoadGroupInfo(string selectedgroupid)
         {
             return PartialView("_GroupInfoPartial", selectedgroupid);

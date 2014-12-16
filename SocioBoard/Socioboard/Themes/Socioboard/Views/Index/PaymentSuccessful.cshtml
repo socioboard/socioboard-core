@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "~/Themes/Socioboard/Views/Shared/_Socialsuite.cshtml";
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
-    }
+}
 
 
 <!DOCTYPE html>
@@ -13,12 +13,18 @@
 </head>
 <body>
     <div>
-    <div id="paymentsuccessful1" style="margin-top:75px">
-                                <h4>Information</h4>
-                                <p>You have succefully paid for socioboard installation.</p>
-        <p>For more information please free to contact us via syp or can do mail to us.</p>
-        <p>For using socioboard please <a href="../Index/Index">click here</a></p>
-                            </div>
-    </div>
+        <div id="paymentsuccessful1" style="margin-top: 75px">
+            <header id="top" class="header">
+
+                <div class="box_training" style="opacity: 0.8;height:895px">
+                    <div class="text-vertical-center">
+                        <h1 class="thankyou" style="margin-top: 130px; margin-left: 150px; font-size: 90px;">Thank You</h1>
+                        <a href="Index/default">
+                            <button type="button" class="btn btn-warning btn-lg" style="margin-left: 160px;">Continue<i class="fa fa-fw fa-chevron-right"></i></button></a>
+                    </div>
+                </div>
+
+            </header>
+        </div>
 </body>
 </html>

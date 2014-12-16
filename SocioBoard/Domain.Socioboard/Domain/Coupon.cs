@@ -11,6 +11,7 @@ namespace Domain.Socioboard.Domain
         public string CouponCode { get; set; }
         public DateTime EntryCouponDate { get; set; }
         public DateTime ExpCouponDate { get; set; }
+        public int Discount { get; set; }
         public string Status { get; set; }
     }
 }

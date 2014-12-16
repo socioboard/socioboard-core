@@ -101,11 +101,11 @@
                     {
                         if (row["FbLike"].ToString()=="likes")
                         {
-                        <a id="fblike_@row["MessageId"]" class="" onclick="facebookLikeUnlike('@fbmsg.Id.ToString()', '@row["ProfileId"]', '@row["MessageId"]')" title="Unlike this" status="@row["FbLike"]" style="cursor:pointer;color:black">Unlike</a>
+                        <a id="fblike_@row["MessageId"]" class="" onclick="facebookLikeUnlike('@fbmsg.Id.ToString()', '@row["ProfileId"]', '@row["MessageId"]')" title="Like this" status="@row["FbLike"]" style="cursor:pointer;color:black">Like</a>
                         }
                         else
                         {
-                        <a id="fblike_@row["MessageId"]" class="" onclick="facebookLikeUnlike('@fbmsg.Id.ToString()', '@row["ProfileId"]', '@row["MessageId"]')" title="Like this" status="@row["FbLike"]" style="cursor:pointer;color:black">Like</a>
+                        <a id="fblike_@row["MessageId"]" class="" onclick="facebookLikeUnlike('@fbmsg.Id.ToString()', '@row["ProfileId"]', '@row["MessageId"]')" title="Unlike this" status="@row["FbLike"]" style="cursor:pointer;color:black">Unlike</a>
                         }
                     }
                 }

@@ -6,11 +6,14 @@ using System.Xml;
 using GlobusLinkedinLib.App.Core;
 using System.IO;
 using GlobusLinkedinLib.Authentication;
+using System.Text.RegularExpressions;
+using log4net;
 
 namespace GlobusLinkedinLib.LinkedIn.Core.SocialStreamMethods
 {
     public class SocialStream
     {
+        ILog logger = LogManager.GetLogger(typeof(SocialStream));
          private XmlDocument xmlResult;
 
 
@@ -37,8 +40,12 @@ namespace GlobusLinkedinLib.LinkedIn.Core.SocialStreamMethods
          public string SetStatusUpdate(oAuthLinkedIn OAuth, string msg)
          {
              string xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
-             xml += "<current-status>" + msg + "</current-status>";
-             string response = OAuth.APIWebRequest("PUT", Global.StatusUpdate, xml);             
+             //xml += "<current-status>" + msg + "</current-status>";
+             //string response = OAuth.APIWebRequest("PUT", Global.StatusUpdate, xml);
+
+            xml+= "<share>";
+            xml += "<comment>" + msg + "</comment><visibility><code>anyone</code></visibility></share>";
+            string response = OAuth.APIWebRequest("POST", "https://api.linkedin.com/v1/people/~/shares", xml);
              return response;
          }
 
@@ -103,7 +110,8 @@ namespace GlobusLinkedinLib.LinkedIn.Core.SocialStreamMethods
 
          public string SetImageStatusUpdate(oAuthLinkedIn OAuth, string msg, string file)
          {
-             string xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><share><comment>" + msg + "</comment><content><title></title><submitted-image-url>" + file + "</submitted-image-url></content><visibility><code>anyone</code></visibility></share>";
+             logger.Error(file);
+             string xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><share><comment>" + msg + "</comment><content><title></title><submitted-url>http://dev.socioboard.com/</submitted-url><submitted-image-url>" + file + "</submitted-image-url></content><visibility><code>anyone</code></visibility></share>";
              string response = OAuth.APIWebRequest("POST", Global.StatusUpdateImage, xml);
              return response;
          }

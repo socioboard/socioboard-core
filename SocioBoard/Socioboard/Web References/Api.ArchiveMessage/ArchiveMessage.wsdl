@@ -370,16 +370,16 @@
   </wsdl:binding>
   <wsdl:service name="ArchiveMessage">
     <wsdl:port name="ArchiveMessageSoap" binding="tns:ArchiveMessageSoap">
-      <soap:address location="http://localhost:6361/Services/ArchiveMessage.asmx" />
+      <soap:address location="http://api.socioboard.com/Services/ArchiveMessage.asmx" />
     </wsdl:port>
     <wsdl:port name="ArchiveMessageSoap12" binding="tns:ArchiveMessageSoap12">
-      <soap12:address location="http://localhost:6361/Services/ArchiveMessage.asmx" />
+      <soap12:address location="http://api.socioboard.com/Services/ArchiveMessage.asmx" />
     </wsdl:port>
     <wsdl:port name="ArchiveMessageHttpGet" binding="tns:ArchiveMessageHttpGet">
-      <http:address location="http://localhost:6361/Services/ArchiveMessage.asmx" />
+      <http:address location="http://api.socioboard.com/Services/ArchiveMessage.asmx" />
     </wsdl:port>
     <wsdl:port name="ArchiveMessageHttpPost" binding="tns:ArchiveMessageHttpPost">
-      <http:address location="http://localhost:6361/Services/ArchiveMessage.asmx" />
+      <http:address location="http://api.socioboard.com/Services/ArchiveMessage.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

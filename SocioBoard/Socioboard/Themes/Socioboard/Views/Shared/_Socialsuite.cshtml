@@ -115,7 +115,7 @@
                             <a href="../Index/contact" target="">Contact Us</a>
                         </li>
                         <li>
-                            <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal" style="margin-top: 10px;">LOGIN</button>
+                            <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal" onclick=" SetUser();" style="margin-top: 10px;">LOGIN</button>
                         </li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
@@ -326,14 +326,28 @@
 
 
     <script type="text/javascript">
+        //Added By Vikash
+        function SetUser()
+        {
+            debugger;
+            var currentcookie = GetAllCookies().split('=');
+            var email = currentcookie[0].trim();
+            var pass = currentcookie[1].trim();
+            if (email != "") {
+                $("#RememberMe").attr('checked', 'checked');
+                document.getElementById("txtEmail").value = email;
+                document.getElementById("txtPassword").value = pass;
+            }
+        }
+
         // Edited by Antima
 
         function retpwd() {
             debugger;
             var email = $("#txtEmail").val();
             if (email != "") {
-                $("#RememberMe").is(':checked');
-                var pwd = getCookie(email);
+                $("#RememberMe").prop('checked', true);
+                var pwd = getCookie("logininfo"+email.trim());
                 document.getElementById("txtPassword").value = pwd;
             }
         }
@@ -346,6 +360,7 @@
 
         $(document).ready(function () {
             //--login script here
+           
             $('#login').click(function () {
                 document.getElementById('signinemailMessages').innerHTML = "";
                 document.getElementById('signinpasswordMessages').innerHTML = "";

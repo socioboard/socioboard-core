@@ -2,7 +2,6 @@
 </div>
 
 
-
 <script type="text/javascript">
     function loadpersonalsetting() {
         $('#page-wrapper').load('../PersonalSetting/LoadPersonalSetting')
@@ -40,6 +39,7 @@
             success: function (msg) {
                 if (msg == 1) {
                     alertify.success('Update Successfully');
+                    window.location.href = "../PersonalSetting/Index";
                 }
                 else {
                     alertify.error('Error please check');
@@ -55,16 +55,17 @@
 
     function AddImage() {
         debugger;
-        var filesinput = $('#uploadImage');
+        var filesinput = $('#input-24');
+   //     var filesinput = $('#uploadImage');
         var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
         if (filesinput != undefined && filesinput[0].files[0] != null) {
-            if (hasExtension('uploadImage', fileExtension)) {
+            if (hasExtension('input-24', fileExtension)) {
                 $('#showRemoveImage').css('display', 'block');
             }
             else {
                 alertify.set({ delay: 3000 });
                 alertify.error("File Extention is not current. Please upload any image file");
-                $('#uploadImage').val('');
+                $('#input-24').val('');
                 return;
             }
 
@@ -110,35 +111,40 @@
             return false;
         }
        
+        if (op == np) {
+            alertify.success('Old and New Password should not be same');
+        }
+        else {
+            $.ajax({
+                type: 'POST',
+                url: '../PersonalSetting/ChangePassword?id=' + EmailId + '&oldpass=' + op + '&newpass=' + np + '&confirmpass=' + cp,
+                //alert('yes');
+                success: function (msg) {
+                    if (msg == "Password Changed Successfully") {
+                        alertify.success('Password Changed Successfully');
+                        $('#ResetModal').modal('hide');
+                    }
+                    else if (msg == "Invalid EmailId or Password") {
+                        alertify.success('Invalid EmailId or Password');
+                    }
+                    else if (msg == "New Password and Confirm Password mismatch") {
+                        alertify.success("New Password and Confirm Password mismatch");
 
-        $.ajax({
-            type: 'POST',
-            url: '../PersonalSetting/ChangePassword?id=' + EmailId + '&oldpass=' + op + '&newpass=' + np + '&confirmpass=' + cp,
-            //alert('yes');
-            success: function (msg) {
-                if (msg == "Password Changed Successfully") {
-                    alertify.success('Password Changed Successfully');
-                    $('#ResetModal').modal('hide');
-                }
-                else if (msg == "Invalid EmailId or Password") {
-                    alertify.success('Invalid EmailId or Password');
-                }
-                else if (msg == "New Password and Confirm Password mismatch") {
-                    alertify.success("New Password and Confirm Password mismatch");
-                   
-                }
-                else {
-                    alertify.error('Error please check');
+                    }
+                    else {
+                        alertify.error('Error please check');
 
-                }
-                $('#oldpass').val('');
-                $('#newpass').val('');
-                $('#confirmpass').val('');
-                // $('#feeds').html('').append(msg);
-                // window.location = self.location;
-            },
-            async: false
-        });
+                    }
+                    $('#oldpass').val('');
+                    $('#newpass').val('');
+                    $('#confirmpass').val('');
+                    // $('#feeds').html('').append(msg);
+                    // window.location = self.location;
+                },
+                async: false
+            });
+        }
+       
     }
 
 </script>

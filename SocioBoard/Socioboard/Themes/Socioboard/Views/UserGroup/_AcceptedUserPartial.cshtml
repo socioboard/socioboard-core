@@ -13,9 +13,10 @@
 
     if (objUserInfo != null)
     {
-    <div class="col-sm-1 groupuserpictiny">
-        <a target="_blank" href="#">
-            <img src="@objUserInfo.ProfileUrl" class="img-responsive img-rounded" title="@item.EmailId"></a>
+    <div class="col-sm-3 groupuserpictiny">
+        <a href="#">
+            <img src="@objUserInfo.ProfileUrl" class="img-responsive img-rounded" title="@item.EmailId" style="float:left">
+            <div>@objUserInfo.UserName</div></a>
 
     </div>
     }

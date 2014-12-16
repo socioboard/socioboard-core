@@ -3,15 +3,14 @@
     int divcount = 0;
     string picurl = string.Empty;
 }
-<h2 class="page-header">My Recent Profile</h2>
+<h2 class="page-header">Live Feeds</h2>
 <div class="col-xs-12">
-   
+
     @foreach (var dicitem in (Dictionary<string, Dictionary<object, List<object>>>)Model)
     {
         if (dicitem.Key == "instagram")
         {
             foreach (var items in (Dictionary<object, List<object>>)dicitem.Value)
-                       
             {
                 object obj = (object)items.Key;
 
@@ -38,25 +37,19 @@
                                 </div>
                                
                                 <div class="pull-left">
-                                    if(@item.IsLike==0)
+                                   @* if(@item.IsLike==0)
                                     {
                                     <i id="@item.FeedId" onClick="LikeUnlikeInstagramPost(@item.LikeCount,@item.IsLike,@item.FeedId,@item.InstagramId)" title="Like" class="fa fa-heart-o fa-fw"></i>
                                    }
                                     else{
                                      <i id="@item.FeedId" onClick="LikeUnlikeInstagramPost(@item.LikeCount,@item.IsLike,@item.FeedId,@item.InstagramId)" title="UnLike" class="fa fa-heart fa-fw"></i>
-                                     }
+                                     }*@
                                 </div>
-
-
-
-
-
-
                             </div>
                             <div style="height:100px;overflow-y:scroll;"  class="panel-footer">
 
-           @foreach (Domain.Socioboard.Domain.InstagramComment item_value in  (List<object>)items.Value)
-             {
+           @foreach (Domain.Socioboard.Domain.InstagramComment item_value in (List<object>)items.Value)
+           {
                                 <div class="row">
                                     <div style="float: left;">
                                        <img width="30" alt="" src="@item_value.FromProfilePic">
@@ -74,11 +67,11 @@
                             </div>
                         </div>
                     </div>
-                if (divcount == 4)
-                {
-                    divcount = 0; 
+           if (divcount == 4)
+           {
+               divcount = 0; 
                  @:</div>
-                                             }
+                                                             }
 
             }
         }
@@ -119,13 +112,11 @@
                             </div>
                         </div>
                     </div>
-
-
                                  if (divcount == 4)
                                  {
                                      divcount = 0; 
                  @:</div>
-                                         }
+                                                         }
 
             }
         }
@@ -171,7 +162,7 @@
                             {
                                 divcount = 0; 
                  @:</div>
-                                 }
+                                         }
 
             }
         }

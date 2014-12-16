@@ -6,9 +6,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using log4net;
+using Socioboard.App_Start;
 
 namespace Socioboard.Controllers
 {
+    [Authorize]
+    [CustomAuthorize]
     public class TumblrManagerController : Controller
     {
         ILog logger = LogManager.GetLogger(typeof(TumblrManagerController));

@@ -1,5 +1,4 @@
-﻿
-<link href="../Themes/SocioboardContents/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+﻿<link href="../Themes/SocioboardContents/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 <script src="../Themes/Socioboard/Contents/js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript"></script>
 <script src="../Themes/Socioboard/Contents/js/jquery.lazyscrollloading-src.js" type="text/javascript"></script>
 <script src="../Themes/Socioboard/Contents/js/jquery.easing.1.3.js" type="text/javascript"></script>
@@ -21,17 +20,15 @@
             async: false
         });
 
-        
+
     }
 
 
-    function DisplayDefaultFeed()
-    {
+    function DisplayDefaultFeed() {
         debugger;
-       // var cnt = $('ul#items li').length;
+        // var cnt = $('ul#items li').length;
         var x = $('#feeds > ul > li > ul > li');
-        if (x.length > 0)
-        {
+        if (x.length > 0) {
             $('#feeds > ul > li > ul > li')[0].click();
         }
         //if (!$("ul").has("li").length) {
@@ -75,11 +72,6 @@
 
     }
 
-   
-
-
-
-
     $(document).ready(function () {
         $('#side-menu a').removeClass('active');
         $("#feeds").addClass('active');
@@ -91,15 +83,140 @@
 
 
 <div id="page-wrapper" style="min-height: 278px;">
-    
 </div>
 
 
 
 <div class="modal fade" id="twtmailpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-       </div>
+</div>
 
 <div class="modal fade" id="mailpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>
+<script src="/Themes/Socioboard/Contents/js/jquery-1.11.0.js"></script>
+<script>
+    var facebookfeed = _.throttle(facebookfeedscrolldata, 3000);
+    var twittertweet = _.throttle(Twitterfeedscrolldata, 3000);
+    //  var linkedinfeed = _.throttle(LinkedInfeedscrolldata, 3000);
 
-       </div>
+    var facebookwall = _.throttle(facebookwallscrolldata, 3000);
+    var twitterfeed = _.throttle(Twitterscrolldata, 3000);
+    var linkedinnetworkupdate = _.throttle(LinkedInscrolldata, 3000);
+    function ccc() {
+        // alert("ccc");
+        debugger;
+        var network = $("#data_paneltab1").attr('network');
+        if (network == "facebook") {
+            facebookwall();
+        }
+        if (network == "twitter") {
+            twitterfeed();
+        }
+        if (network == "linkedin") {
+            linkedinnetworkupdate();
+        }
+    }
+
+    function feedbind() {
+        debugger;
+        var network = $("#data_paneltab2").attr('network');
+        if (network == "facebook") {
+            facebookfeed();
+        }
+        if (network == "twitter") {
+            twittertweet();
+        }
+        if (network == "linkedin") {
+            linkedinfeed();
+        }
+    }
+
+    function FacebookUserFeeds() {
+        debugger;
+        var nwtid = $('#refreshpanel2').attr('nwtid');
+        $("#title_paneltab3").html("User Feeds");
+
+        $.ajax({
+            type: "GET",
+            url: "/Feeds/FacebookUserFeeds",
+            data: { "profileid": nwtid },
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            beforeSend: function () {
+                console.log("test");
+            },
+            success: function (msg) {
+                console.log("I")
+
+                $("#data_paneltab3").html(msg);
+                console.log("testend");
+            },
+            error: function (e) {
+                console.log("testerr");
+
+                console.log(e);
+                alert("gfgh");
+            }
+        });
+    }
+
+    function FacebookStatus() {
+        debugger;
+        var nwtid = $('#refreshpanel2').attr('nwtid');
+        $("#title_paneltab3").html("Status");
+
+        $.ajax({
+            type: "GET",
+            url: "/Feeds/FacebookStatus",
+            data: { "profileid": nwtid },
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            beforeSend: function () {
+                console.log("test");
+            },
+            success: function (msg) {
+
+                $("#data_paneltab3").html(msg);
+                console.log("testend");
+            },
+            error: function (e) {
+                console.log("testerr");
+                console.log(e);
+                alert("gfgh");
+            }
+        });
+    }
+
+    function FacebookTag() {
+        debugger;
+        var nwtid = $('#refreshpanel2').attr('nwtid');
+
+        //   console.log("FacebookTag begin")
+
+        $("#title_paneltab3").html("Tags");
+
+        $.ajax({
+            type: "GET",
+            url: "/Feeds/FacebookTag",
+            data: { profileid: nwtid },
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            beforeSend: function () {
+                console.log("test");
+            },
+            success: function (msg) {
+                $("#data_paneltab3").html(msg);
+                console.log("testend");
+            },
+            error: function (e) {
+                console.log(e);
+                console.log("testerr");
+                alert("gfgh");
+            }
+        });
+    }
+
+   
+
+
+
+</script>

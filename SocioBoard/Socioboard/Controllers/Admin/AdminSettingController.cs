@@ -11,7 +11,7 @@ using System.IO;
 
 namespace Socioboard.Controllers.Admin
 {
-    [Authorize]
+    [Authorize(Users = "Aby Kumar")]
     public class AdminSettingController : Controller
     {
         //

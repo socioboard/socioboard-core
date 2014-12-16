@@ -3,28 +3,28 @@
 }
 
 <div id="page-wrapper">
-    <div class="container-fluid" style="margin-top:25px">
+    <div class="container-fluid" style="margin-top: 25px">
         <div class="col-md-12">
-    
-   @* @Html.Partial("_MessagesLeftSideBarPartial")
+
+            @* @Html.Partial("_MessagesLeftSideBarPartial")
 
     @Html.Partial("_MessagesMidPartial")
    
     @Html.Partial("_MessagesRightSideBarPartial")*@
 
-      <div style="margin-top:20px" id="right-sidebar_home" class="partialContents" data-url="/Messages/MessagesMidPartialNew">
-        <img src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" />
-        Loading . . .
-    </div> 
+            <div style="margin-top: 20px" id="right-sidebar_home" class="partialContents" data-url="/Messages/MessagesMidPartialNew">
+                <img src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" />
+                Loading . . .
+            </div>
 
-    <div id="contentcontainer2" class="partialContents" data-url="/Messages/accordianprofiles">
-        <img @*src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif"*@ />
-        @*Loading . . .*@
-     
-       
-    </div>
+            <div id="contentcontainer2" class="partialContents" data-url="/Messages/accordianprofiles">
+                <img @*src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif"*@ />
+                @*Loading . . .*@
 
-   @* <div id="right-sidebar_home" class="partialContents" data-url="/Home/UserProfile">
+
+            </div>
+
+            @* <div id="right-sidebar_home" class="partialContents" data-url="/Home/UserProfile">
         <img src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" />
         Loading . . .
      
@@ -32,19 +32,18 @@
        
     </div>*@
 
-            </div>
-            </div>
+        </div>
+    </div>
 
 </div>
 <div class="modal fade" id="msgmailpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-       </div>
+</div>
 
 <script src="~/Themes/Socioboard/Contents/js/Message.js"></script>
 <script src="~/Themes/Socioboard/Contents/js/Helper.js"></script>
 <script src="~/Themes/Socioboard/Contents/js/underscore.js"></script>
 
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+@*<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>*@
 
 
 <script language="javascript" type="text/javascript">
@@ -52,10 +51,9 @@
     var throttled = _.throttle(onScroll, 3000);
 
 
-    function opentask(msgdesc)
-    {
+    function opentask(msgdesc) {
         debugger;
-     //   alert(msgdesc);
+        //   alert(msgdesc);
         $('#savetask').attr('msgdesc', msgdesc);
         $('#task').modal('show');
     }
@@ -125,7 +123,7 @@
         //alert('singham');
 
         //$('#right-sidebar_home').on("click", )
-        
+
         BindInboxMessages();
 
         debugger;
@@ -134,7 +132,7 @@
             if (url && url.length > 0) {
                 $(item).load(url);
             }
-            
+
             //$(window).on('scroll', function (event) {
             //    onScroll();
             //});
@@ -145,7 +143,7 @@
         //$('#textbox1').val($(this).is(':checked'));
 
         $('.checkbox  input[type=checkbox] input').change(function () {
-           alert($(this).is(':checked'));
+            alert($(this).is(':checked'));
         });
 
         $('.checkbox  input[type=checkbox] input').click(function () {
@@ -168,7 +166,7 @@
             BindSent();
         }
 
-      
+
 
         function BindSmartInbox() {
             debugger;
@@ -199,7 +197,7 @@
             $('#messagetype').addClass('collapsed');
         });
 
-       
+
 
     });
 
@@ -232,20 +230,20 @@
                 success: function (e) {
                     if (status == "likes") {
                         $("#fblike_" + fbmsgid).attr('status', 'unlike');
+                        $("#fblike_" + fbmsgid).attr('title', 'Unlike this');
+                        $("#fblike_" + fbmsgid).html('Unlike');
+                        alertify.success("Liked Successfully");
+                    }
+                    else {
+                        $("#fblike_" + fbmsgid).attr('status', 'likes');
                         $("#fblike_" + fbmsgid).attr('title', 'Like this');
                         $("#fblike_" + fbmsgid).html('Like');
                         alertify.success("Unliked Successfully");
                     }
-                    else {
-                        $("#fblike_" + fbmsgid).attr('status', 'likes');
-                        $("#fblike_" + fbmsgid).attr('title', 'Unlike this');
-                        $("#fblike_" + fbmsgid).html('Like');
-                        alertify.success("Liked Successfully");
-                    }
-                  
+
                 }
             });
-        }catch(e){}
+        } catch (e) { }
     }
 
 </script>

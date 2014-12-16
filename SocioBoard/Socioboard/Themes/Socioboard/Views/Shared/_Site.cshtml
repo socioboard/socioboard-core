@@ -61,7 +61,7 @@
     <link href="/Themes/@path/Contents/css/alertify.default.css" rel="stylesheet" type="text/css" id="toggleCSS" />
     <link href="/Themes/@path/Contents/css/plugins/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>
     <script src="/Themes/@path/Contents/js/clickDesk.js" type="text/javascript"></script>
-     <!--Edit by Vikas-->
+    <!--Edit by Vikas-->
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
 </head>
@@ -109,6 +109,9 @@
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="../UserGroup/Index"><img src="/Themes/@path/Contents/img/groups_.png">User and Group<i class="fa arrow"></i></a>
+                        </li>
+                         <li class="divider"></li>
+                        <li><a href="../BusinessSetting/Index"><img src="/Themes/@path/Contents/img/buisness icon.png">Buisness Setting<i class="fa arrow"></i></a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="../PersonalSetting/Index"><i class="fa fa-gear fa-2x"></i>Settings</a>
@@ -232,15 +235,15 @@
                             </div>*@
                             <div class="row">
                                 <div class="input-group col-md-9" style="float: left;">
-                                    <textarea id="textareavaluetosendmessage" class="form-control" rows="3" style="width: 390px; height: 100px;resize: none;"></textarea>
+                                    <textarea id="textareavaluetosendmessage" class="form-control" rows="3" style="width: 390px; height: 100px; resize: none;"></textarea>
                                 </div>
                                 <div style="float: left; padding: 2px;" class="input-group col-md-3">
                                     <div id="messageCount" class="counter_bg"></div>
                                 </div>
 
-                                 @*Edited by Antima*@
+                                @*Edited by Antima*@
 
-                                  <div class="col-md-11 input-group custom-search-form">
+                                <div class="col-md-11 input-group custom-search-form">
                                     <input type="text" id="textareavaluetoshrinkUrl" class="form-control" placeholder="Write URL to shrink">
                                     <span class="input-group-btn">
                                         <button id="btn_URLShortened" class="btn btn-success" type="button">
@@ -268,7 +271,7 @@
                     </div>
                     <div class="modal-footer">
                         <button id="sendMessageBtn" type="button" class="btn btn-primary">Send</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button id="closeMessaegBtn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <div style="height: auto; display: none; padding: 10px; border: medium ridge; margin-top: 10px;" class="dropbox_file col-md-12"></div>
                     </div>
 
@@ -297,14 +300,13 @@
                         </div>
                         <div class="chat-panel panel panel-default">
 
-                             @*Edited by Antima*@
-                           @* <div class="panel-heading">
+                            @*Edited by Antima*@
+                            @* <div class="panel-heading">
                                 <i class="fa fa-search fa-fw"></i>
                                 Search Result
                             </div>*@
 
                             <div class="panel-heading" id="SearchContact">
-                               
                             </div>
 
                             <!-- /.panel-heading -->
@@ -360,7 +362,7 @@
     <script src="/Themes/Socioboard/Contents/js/bootstrap-timepicker.min.js"></script>
     <script src="../../Themes/@path/Contents/js/googleanalytics.js" type="text/javascript"></script>
 
-    
+
 
     <script type="text/javascript">
 
@@ -390,6 +392,7 @@
         }
 
         function removebindfrofilesmaster(profileid, network) {
+            debugger;
             $('#' + profileid).hide(250, function () {
                 $('#' + profileid).remove();
             });
@@ -402,11 +405,12 @@
         }
 
         function bindfrofilesmaster(network, name, profileid) {
+            debugger;
             var totalmessagewords = 0;
             if (checkisuserexistmaster(profileid + "~" + network) == false) {
                 arrbindusermaster.push(profileid + "~" + network);
                 //alert(profileid + "~" + network);
-                $('#binduserprofiles').append('<span style="display:none" class="pull-right btn btn-default bindprof" onclick="removebindfrofilesmaster(\'' + profileid + '\',\'' + network + '\')" id=' + profileid + ' data-toggle="tooltip" data-placement="right" title="click to remove"><i class="fa fa-' + network + ' fa-fw"></i>' + name + '</span>');
+                $('#binduserprofiles').append('<span style="display:none" class="pull-right btn btn-default bindprof userpictiny" onclick="removebindfrofilesmaster(\'' + profileid + '\',\'' + network + '\')" id=' + profileid + ' data-toggle="tooltip" data-placement="right" title="click to remove"><div class="delet_icon" onclick="removebindfrofilesmaster(\'' + profileid + '\',\'' + network + '\')" style="margin-left: 83px;"></div><i class="fa fa-' + network + ' fa-fw"></i>' + name + '</span>');
                 $('#' + profileid).fadeIn(250);
                 totalmessagewords = BindChracterAccordingProfile(network);
                 $('#messageCount').html(totalmessagewords);
@@ -448,25 +452,19 @@
             });
         }
         var networkAcceptLength = [{ name: "twitter", value: 140 }, { name: "linkedin", value: 600 }, { name: "facebook", value: 5000 }];
-        function getnetworkMaxAcceptLength(network)
-        {
-            for (var i = 0; i < networkAcceptLength.length; i++)
-            {
-                if (networkAcceptLength[i].name == network)
-                {
+        function getnetworkMaxAcceptLength(network) {
+            for (var i = 0; i < networkAcceptLength.length; i++) {
+                if (networkAcceptLength[i].name == network) {
                     return networkAcceptLength[i].value;
                 }
             }
         }
 
-        function getMinAcceptLenfromArray()
-        {
+        function getMinAcceptLenfromArray() {
             var length = getnetworkMaxAcceptLength(arrbindusermaster[0].split('~')[1]);
-            for (var i = 0; i < arrbindusermaster.length; i++)
-            {
-                var netlength =getnetworkMaxAcceptLength(arrbindusermaster[i].split('~')[1])
-                if (length >parseInt(netlength))
-                {
+            for (var i = 0; i < arrbindusermaster.length; i++) {
+                var netlength = getnetworkMaxAcceptLength(arrbindusermaster[i].split('~')[1])
+                if (length > parseInt(netlength)) {
                     length = netlength;
                 }
             }
@@ -488,18 +486,16 @@
                 if (network == "linkedin") {
                     totalmessagewords = 600;
                 }
-               
-                
+
+
             }
-            else
-            {
+            else {
                 var maxlen = getnetworkMaxAcceptLength(network);
                 var minlen = getMinAcceptLenfromArray();
                 if (parseInt(maxlen) < parseInt(minlen)) {
                     totalmessagewords = maxlen;
                 }
-                else
-                {
+                else {
                     totalmessagewords = minlen;
 
                 }
@@ -537,7 +533,7 @@
                dataType: "html",
                success: function (msg) {
                    debugger;
-                //   alert(msg);
+                   //   alert(msg);
                    //window.location = self.location;
                    location.reload(true);
                }
@@ -613,11 +609,11 @@
                     message = $("#textareavaluetosendmessage").val().trim();
                 }
                 else {
-                    var message = $("#textareavaluetosendmessage").val().trim();
-                    message = message + " " + message1;
+                    //var message = $("#textareavaluetosendmessage").val().trim();
+                    message = message1;
                 }
 
-              //  var message = $("#textareavaluetosendmessage").val().trim();
+                //  var message = $("#textareavaluetosendmessage").val().trim();
                 for (var i = 0; i < arrbindusermaster.length; i++) {
                     allprofiles += arrbindusermaster[i] + "<:>";
                     //alert(arrbindusermaster[i]);
@@ -633,9 +629,8 @@
                             return;
                         }
                     }
-                    if (ProfileType == 'twitter')
-                    {
-                        if (message.length>140) {
+                    if (ProfileType == 'twitter') {
+                        if (message.length > 140) {
                             alertify.error("Twitter Not Support more than 140 characters");
                             return;
                         }
@@ -646,7 +641,7 @@
                             return;
                         }
                     }
-                    
+
                 }
 
                 // Get File path thru added by Dropbox
@@ -666,7 +661,7 @@
 
                 }
 
-
+                debugger;
                 allprofiles = allprofiles.substr(0, allprofiles.length - 3);
                 $('#myModal').modal('hide');
                 $.ajax({
@@ -678,11 +673,34 @@
                     success: function (data) {
                         alertify.set({ delay: 3000 });
                         alertify.success("Message Send Successfully");
+                        $("#textareavaluetosendmessage").val('');
+                        $('#showRemoveImage').css('display', 'none');
+                        $('#fileuploadImage').val('');
+                //      $('#binduserprofiles').css('display', 'none');
+                        //      $('#binduserprofiles').html('');
+
+                        // Edited by Antima[15/12/2014]
+
+                        for (var i = 0; i < arrbindusermaster.length; i++) {
+                            var account = arrbindusermaster[i];
+                            var strarray = account.split('~');
+                            var ProfileId = strarray[0];
+                            var ProfileType = strarray[1];
+                            removebindfrofilesmaster(ProfileId, ProfileType);
+                        }
                     }
 
                 });
 
 
+            });
+
+            $('#closeMessaegBtn').click(function () {
+                $("#textareavaluetosendmessage").val('');
+                $('#showRemoveImage').css('display', 'none');
+                $('#fileuploadImage').val('');
+         //     $('#binduserprofiles').css('display', 'none');
+                window.location.href = '../Home/Index';
             });
 
             $("#btn_dropbox").click(function () {
@@ -694,60 +712,68 @@
 
             $("#btn_URLShortened").click(function () {
                 debugger;
-                message = $("#textareavaluetoshrinkUrl").val().trim();
+                var ToshrinkUrl = $("#textareavaluetoshrinkUrl").val().trim();
+                var text = $("#textareavaluetosendmessage").val().trim();
 
-                //if (message != "") {
-                //    $('#btn_URLShortened').attr('disabled', true);
-                //}
-                
-                if (message.indexOf("www") > -1) {
-                    var longUrl = message;
-                    var shortUrl = $("#textareavaluetoshrinkUrl");
-                    shortUrl.html("Loading...");
-                    var defaults = {
-                        version: '2.0.1',
-                        login: 'avinash12verma',
-                        apiKey: 'R_f4aefd23995c4455b90433d700b50a3c',
-                        history: '0',
-                        longUrl: longUrl
-                    };
-
-                    //Build the URL to query
-                    var daurl = "http://api.bit.ly/shorten?"
-                                        + "version=" + defaults.version
-                                        + "&longUrl=" + defaults.longUrl
-                                        + "&login=" + defaults.login
-                                        + "&apiKey=" + defaults.apiKey
-                                        + "&history=" + defaults.history
-                                        + "&format=json&callback=?";
-
-                    // Utilize the bit.ly API
-
-                    $.ajax({
-
-                        type: 'GET',
-                        url: daurl,
-                        dataType: "jsonp",
-                        processData: false,
-                        crossDomain: true,
-                        success: function (data) {
-                            debugger;
-                            //    alert(data.results[longUrl].shortUrl);
-                            message1 = data.results[longUrl].shortUrl.toString();
-                            $("#textareavaluetosendmessage").append(message1);
-                            $("#textareavaluetoshrinkUrl").val('');
-                        },
-                        error: function (err) {
-                            debugger;
-                            alert("error");
-                        }
-                    });
-                   // $("#textareavaluetosendmessage").append(message1);
+                if (ToshrinkUrl == "") {
+                    alertify.error("Please enter a URL to shrink");
                 }
                 else {
-                    alert("please Check the URL you entered is correct");
-                }
+                    if ((ToshrinkUrl.indexOf("www") > -1) || (ToshrinkUrl.indexOf("http") > -1) || (ToshrinkUrl.indexOf("https") > -1)) {
+                        var longUrl = ToshrinkUrl;
+                        var shortUrl = $("#textareavaluetoshrinkUrl");
+                        shortUrl.html("Loading...");
+                        var defaults = {
+                            version: '2.0.1',
+                            login: 'avinash12verma',
+                            apiKey: 'R_f4aefd23995c4455b90433d700b50a3c',
+                            history: '0',
+                            longUrl: longUrl
+                        };
 
+                        //Build the URL to query
+                        var daurl = "http://api.bit.ly/shorten?"
+                                            + "version=" + defaults.version
+                                            + "&longUrl=" + defaults.longUrl
+                                            + "&login=" + defaults.login
+                                            + "&apiKey=" + defaults.apiKey
+                                            + "&history=" + defaults.history
+                                            + "&format=json&callback=?";
+
+                        // Utilize the bit.ly API
+
+                        $.ajax({
+
+                            type: 'GET',
+                            url: daurl,
+                            dataType: "jsonp",
+                            processData: false,
+                            crossDomain: true,
+                            success: function (data) {
+                                debugger;
+                                //    alert(data.results[longUrl].shortUrl);
+                                var ShrinkedUrl = data.results[longUrl].shortUrl.toString();
+                                if (text != "") {
+                                    ShrinkedUrl = text + " " + ShrinkedUrl;
+                                    //  alert(ShrinkedUrl);
+                                }
+                                //$("#textareavaluetosendmessage").append(ShrinkedUrl);
+                                $("#textareavaluetosendmessage").val(ShrinkedUrl);
+                                $("#textareavaluetoshrinkUrl").val('');
+
+                                message1 = ShrinkedUrl;
+                            },
+                            error: function (err) {
+                                debugger;
+                                alert("error");
+                            }
+                        });
+
+                    }
+                    else {
+                        alertify.error("please Check the URL you entered is correct");
+                    }
+                }
             });
 
         });
@@ -810,35 +836,64 @@
             });
         }
 
-        function Addfacebookpagebyurl() {
+        //function Addfacebookpagebyurl() {
 
+        //    var texturl = $("#_txtinputurl").val();
+
+        //    var url = texturl.split('com/')[1];
+
+        //    var name = url;
+
+        //    url = "https://graph.facebook.com/" + url;
+
+        //    var type = "fanpage"
+
+        //    $.ajax({
+        //        type: 'POST',
+        //        url: "../FacebookManager/Addfacebookpagebyurl?type=" + type + "&url=" + url + "&name=" + name,
+        //        success: function (msg) {
+        //            window.location = msg;
+        //        },
+        //        async: false
+        //    });
+
+
+
+        //}
+        function Addfacebookpagebyurl() {
+            debugger;
             var texturl = $("#_txtinputurl").val();
 
-            var url = texturl.split('com/')[1];
+            if (texturl != "" && texturl.indexOf('facebook') > 0) {
+                $('#loaderpopup').modal({
+                    Zindex: '70000'
+                });
 
-            var name = url;
+                var url = texturl.split('com/')[1];
 
-            url = "https://graph.facebook.com/" + url;
+                var name = url;
 
-            var type = "fanpage"
+                url = "https://graph.facebook.com/" + url;
 
-            $.ajax({
-                type: 'POST',
-                url: "../FacebookManager/Addfacebookpagebyurl?type=" + type + "&url=" + url + "&name=" + name,
-                success: function (msg) {
-                    window.location = msg;
-                },
-                async: false
-            });
+                var type = "fanpage"
+                // $('#facebookpopup').hide('50');
+                $.ajax({
+                    type: 'POST',
+                    url: "../FacebookManager/Addfacebookpagebyurl?type=" + type + "&url=" + url + "&name=" + name,
+                    success: function (msg) {
+                        $('#loaderpopup').hide('50');
+                        window.location = msg;
+                    },
+                    async: false
+                });
+            }
+            else {
+                alert("Please Enter a valid url");
+            }
 
 
 
         }
-
-
-
-
-
 
         function DropBoxData() {
             $.ajax
@@ -924,18 +979,18 @@
     </script>
 
     <!-- ClickDesk Live Chat Service for websites -->
-<script type='text/javascript'>
-    var _glc = _glc || []; _glc.push('all_ag9zfmNsaWNrZGVza2NoYXRyDwsSBXVzZXJzGOqp7qkBDA');
-    var glcpath = (('https:' == document.location.protocol) ? 'https://my.clickdesk.com/clickdesk-ui/browser/' :
-    'http://my.clickdesk.com/clickdesk-ui/browser/');
-    var glcp = (('https:' == document.location.protocol) ? 'https://' : 'http://');
-    var glcspt = document.createElement('script'); glcspt.type = 'text/javascript';
-    glcspt.async = true; glcspt.src = glcpath + 'livechat-new.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(glcspt, s);
-</script>
-<!-- End of ClickDesk -->
+    <script type='text/javascript'>
+        var _glc = _glc || []; _glc.push('all_ag9zfmNsaWNrZGVza2NoYXRyDwsSBXVzZXJzGOqp7qkBDA');
+        var glcpath = (('https:' == document.location.protocol) ? 'https://my.clickdesk.com/clickdesk-ui/browser/' :
+        'http://my.clickdesk.com/clickdesk-ui/browser/');
+        var glcp = (('https:' == document.location.protocol) ? 'https://' : 'http://');
+        var glcspt = document.createElement('script'); glcspt.type = 'text/javascript';
+        glcspt.async = true; glcspt.src = glcpath + 'livechat-new.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(glcspt, s);
+    </script>
+    <!-- End of ClickDesk -->
 
-     @*Edited by Antima*@
+    @*Edited by Antima*@
 
     <script type="text/javascript">
 
@@ -950,7 +1005,7 @@
 
     </script>
 
-   @*  <script type="text/javascript">
+    @*  <script type="text/javascript">
         //Disable Back Button In All Browsers.
         function disableBackButtonAllBrowsers() {
             window.history.forward()
@@ -989,7 +1044,7 @@
 </div>
 
 
-<div class="modal fade" id="facebookpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+@*<div class="modal fade" id="facebookpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -1005,6 +1060,12 @@
                 <br />
                 <a style="cursor: pointer" onclick="getfacebookpage()">
                     <i class="fa fa-facebook-square fa-2x fa-fw"></i>Facebook FanPage</a>
+                 <div class="panel-body">
+                    <div id="facebookpageinfo" style="height: 200px; overflow: auto; border: 5px inset grey; padding: 3px; display: none">
+                        <div id="fbpagebind" style="margin-top: 11px">
+                        </div>
+                    </div>
+                </div>
                 <br />
                 <br />
 
@@ -1025,6 +1086,62 @@
 
 
                 <div class="panel-body">
+                    <div id="facebookgroupinfo" style="height: 200px; overflow: auto; border: 5px inset grey; padding: 3px; display: none">
+                        <div id="fbgroupbind" style="margin-top: 11px">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+            </div>
+        </div>
+
+
+    </div>
+</div>*@
+
+<div class="modal fade" id="facebookpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 id="myModalLabel" class="modal-title">Facebook</h4>
+            </div>
+            <div class="modal-body col-md-12">
+
+                <a style="cursor: pointer" href="../FacebookManager/AuthenticateFacebook">
+                    <i class="fa fa-facebook-square fa-2x fa-fw"></i>Add Facebook Profile</a>
+
+                <br />
+                <br />
+                <a style="cursor: pointer" onclick="getfacebookpage()">
+                    <i class="fa fa-facebook-square fa-2x fa-fw"></i>Add Facebook Fanpage</a>
+                <br />
+                <br />
+                <div style="float: left">
+                    <a style="cursor: pointer" title="Get smart exportable analytics for any Facebook fanpage">
+                        <i class="fa fa-facebook-square fa-2x fa-fw"></i>Get Facebook Fanpage Analytics
+                    </a>
+                    <div style="float: left; padding-left: 5px; margin-top: 8px; margin-bottom: 12px" class="col-md-8">
+                        <input type="text" class="form-control" id="_txtinputurl" placeholder="Ex : http://www.facebook.com/socioboard">
+                    </div>
+                    <div style="float: left; margin-top: 9px">
+                        <button class="btn btn-primary btn-sm" onclick="Addfacebookpagebyurl()" type="submit">Submit</button>
+                    </div>
+                </div>
+                <br />
+                <br />
+
+                <a style="cursor: pointer; float: left" onclick="getfacebookgroup()">
+                    <i class="fa fa-facebook-square fa-2x fa-fw"></i>Add Facebook Group</a>
+                <br />
+
+
+                <div class="panel-body" style="margin-top:50px">
                     <div id="facebookpageinfo" style="height: 200px; overflow: auto; border: 5px inset grey; padding: 3px; display: none">
                         <div id="fbpagebind" style="margin-top: 11px">
                         </div>
@@ -1043,28 +1160,26 @@
     </div>
 </div>
 
-
 <div class="modal fade" id="linkedinpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h4 id="myModalLabel" class="modal-title">Add Account</h4>
+                <h4 id="myModalLabel" class="modal-title">Linkedin</h4>
             </div>
             <div class="modal-body col-md-12">
 
                 <a style="cursor: pointer" href="../LinkedinManager/AuthenticateLinkedin">
-                    <i class="fa fa-linkedin-square fa-2x fa-fw"></i>Linkedin account</a>
+                    <i class="fa fa-linkedin-square fa-2x fa-fw"></i>Add Linkedin Profile</a>
 
                 <br />
                 <br />
                 <a style="cursor: pointer" onclick="getlinkedincompanypage()">
-                    <i class="fa fa-linkedin-square fa-2x fa-fw"></i>Linkedin Company Page</a>
+                    <i class="fa fa-linkedin-square fa-2x fa-fw"></i>Add Linkedin Company Page</a>
                 <br />
                 <div class="panel-body">
-                    <div id="linkedincompanypageinfo" style="height: 200px; overflow: auto;border: 5px inset grey;padding:3px;display:none">
-                        <div id="lipagebind" style="margin-top:11px">
-                        
+                    <div id="linkedincompanypageinfo" style="height: 200px; overflow: auto; border: 5px inset grey; padding: 3px; display: none">
+                        <div id="lipagebind" style="margin-top: 11px">
                         </div>
                     </div>
                 </div>
@@ -1081,7 +1196,57 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="ProfileDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Profile Summary</h4>
+            </div>
+            <div id="ProfileDetailBody" class="modal-body col-md-12">
+                @*  <div class="col-md-12" style="text-align: center; background: linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.73) 100%) repeat scroll 0px 0px transparent; padding: 15px;">
+                                    <img src="/Themes/@path/Contents/img/apple-touch-icon-72-precomposed.png" class="img-thumbnail" />
+                                    <p><h2>abhay mondal</h2></p>
+                                    <p>abhaymondal3</p>
+                                    <p>iPhone6</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <ul class="list-inline">
+                                        <li style="border-right: 1px solid #eeeeee;float: left;padding: 11px 7px 6px;text-align: center;width: 78px;">
+                                            <a style="text-decoration:none;">
+                                                <strong>73</strong>
+                                                <span>Following</span>
+                                            </a>
+                                        </li>
+                                        <li style="border-right: 1px solid #eeeeee;float: left;padding: 11px 7px 6px;text-align: center;width: 78px;">
+                                            <a style="text-decoration:none;">
+                                                <strong>15</strong>
+                                                <span>Followers</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-12" style="text-align:center;">
+                                    <a href="#">Go to full profile →</a>
+                                </div>*@
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger " data-dismiss="modal">Close</button>
 
+            </div>
+        </div>
+    </div>
+</div>
+<!--end of model-->
 
 <!--end of ProfileModel-->
+<div class="modal fade" id="loaderpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="margin-top: 250px; margin-left: 600px">
+
+        <div>
+            <img src="/Themes/@path/Contents/img/328.gif"/>
+
+        </div>
+    </div>
 </html>

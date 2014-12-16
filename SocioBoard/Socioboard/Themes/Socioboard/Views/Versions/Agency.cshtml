@@ -8,6 +8,14 @@
 
         <div class="col-md-4">
             <h2>Now a Social Media Dashboard You Can Call Your Own!</h2>
+            <h4>Benefits:</h4>
+            <ul>
+                <li>Customizable as per your needs</li>
+                <li>Flexible Client Management</li>
+                <li>Competitive price</li>
+                <li>World Class Support</li>
+                <li>Comes with Mobile App - Android and IOS</li>
+            </ul>
             <p>Interested? One of our account managers will be in touch...</p>
             <form role="form">
                 <div class="form-group input-group">
@@ -43,18 +51,73 @@
                 Increase and nurture your clientele with the Socioboard’s offerings designed uniquely for the Agencies. These versions have a great interface that anybody can understand, powerful engagement tools and customizable analytics to monitor, analyze and report across countless social profiles. What’s more, you can feature your own logo and domain name, so your clients consider it your product, not to mention Socioboard anywhere.
                 Agencies can use commerically supported whitelabel version of Socioboard. Its fully open sourced and customizable as per your agency needs.
             </p>
-            <img src="/Themes/@path/Contents/img/ssp/phone-banner-new1.png" class="img-responsive">
+            <img src="/Themes/@path/Contents/img/agency1.png" class="img-responsive">
             <p>Agency White Label version is best suited to Small and Medium Enterprises (SMEs) who’d need support, updates, upgrades and related apps for being able to use Socioboard effectively to continue to build their clientele and their brands.</p>
-            <h4>Benefits:</h4>
-            <ul>
-                <li>Customizable as per your needs</li>
-                <li>Flexible Client Management</li>
-                <li>Competitive price</li>
-                <li>World Class Support</li>
-                <li>Comes with Mobile App - Android and IOS</li>
-            </ul>
-            <p>The White Label version is priced at $2999 per annum. Click <a target="_blank" href="../Index/PaypalAgency">here</a> to buy the White label version now!</p>
+
+            @*<p>The White Label version is priced at $2999 per annum. Click <a target="_blank" href="../Index/PaypalAgency">here</a> to buy the White label version now!</p>  *@
+
         </div>
+        <div class="col-md-12" style="padding-top: 20px; margin-left:120px">
+            <div class="" style="margin-left:100px; margin-bottom:33px"><h3>Agency White Label version is available in three different variants</h3></div>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="service-item">
+                        <a href="">
+                            <span class="fa-stack fa-4x">
+                                <i><img src="/Themes/@path/Contents/img/Agency_icon1.png" style="height:100px"></i>
+                                @*<i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-bell fa-stack-1x text-primary"></i>*@
+                            </span>
+                        </a>
+                        <h4>
+                            <strong>Agency Lite</strong>
+                        </h4>
+                    </div>
+                </div>
+                <div class="col-md-9" style="margin-top:29px; margin-left:-66px">
+                    <p><strong>Agency Lite is best suited for small agencies. You could put your logo and deploy it up.Click <a id="AgencyLite" onclick="AgencyPlan(this)" style="cursor: pointer"> here </a>to buy agency lite of $499.</strong></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="service-item">
+                        <a href="">
+                            <span class="fa-stack fa-4x">
+                                 <i><img src="/Themes/@path/Contents/img/Agency_icon2.png" style="height:100px"></i>
+                               @* <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-bell-o fa-stack-1x text-primary"></i>*@
+                            </span>
+                        </a>
+                        <h4>
+                            <strong>Agency Pro</strong>
+                        </h4>
+                    </div>
+                </div>
+                <div class="col-md-9" style="margin-top:29px; margin-left:-66px">
+                    <p><strong>Agency Pro allows you to deploy with your logo as well as your theme. It makes your customers feel at home.Click<a id="AgencyPro" onclick="AgencyPlan(this)" style="cursor: pointer">  here </a> to buy agency pro of $999.</strong></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="service-item">
+                        <a href="">
+                            <span class="fa-stack fa-4x">
+                                 <i><img src="/Themes/@path/Contents/img/Agency_icon3.png" style="height:100px"></i>
+                             @*   <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-bell-slash-o fa-stack-1x text-primary"></i>*@
+                            </span>
+                        </a>
+                        <h4>
+                            <strong>Agency Premium</strong>
+                        </h4>
+                    </div>
+                </div>
+                <div class="col-md-9" style="margin-top:29px; margin-left:-66px">
+                    <p><strong>Agency Premium offers full customization with your logo, theme and also iOS and Android apps. This is a full-fledged version suitable for scaling agencies. Click <a id="AgencyPremium" onclick="AgencyPlan(this)" style="cursor: pointer"> here </a> to buy this license of $2999.</strong></p>
+                </div>
+            </div>
+        </div>
+
     </div>
     <!-- /.container -->
 
@@ -62,7 +125,6 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-
         $('#submit').click(function () {
             debugger;
             var FirstName = $('#FirstName').val();
@@ -72,17 +134,12 @@
             var Phoneno = $('#Phone').val();
             var Message = $('#Message').val();
 
-            if (FirstName != "" || LastName != "" || EmailId != "" || Company != "" || Phoneno != "")
-            {
-                if (validateFName(FirstName))
-                {
-                    if (validateLName(LastName))
-                    {
-                        if (validateEmail(EmailId))
-                        {
-                            if (validatePhone(Phoneno))
-                            {
-                               // alert("Success");
+            if (FirstName != "" || LastName != "" || EmailId != "" || Company != "" || Phoneno != "") {
+                if (validateFName(FirstName)) {
+                    if (validateFName(LastName)) {
+                        if (validateEmail(EmailId)) {
+                            if (validatePhone(Phoneno)) {
+                                // alert("Success");
                                 $.ajax({
                                     url: "../Versions/SendAgencyMail?name=" + FirstName + "&lname=" + LastName + "&email=" + EmailId + "&Company=" + Company + "&Message=" + Message + "&phone=" + Phoneno,
                                     type: "post",
@@ -129,6 +186,20 @@
         });
     });
 
+    function AgencyPlan(e) {
+        debugger;
+        var PlanType = $(e).attr('id');
+        $.ajax({
+            type: 'POST',
+            url: '../Index/PaypalAgency?PlanType=' + PlanType,
+            success: function (msg) {
+                window.open(msg);
+            },
+            async: false
+        });
+    }
+
+
     function validatePhone($Phoneno) {
         var phoneReg = /^\d{10}$/;
         if (!phoneReg.test($Phoneno)) {
@@ -150,16 +221,6 @@
     function validateFName($FirstName) {
         var fnameReg = /^[A-Z,a-z._]+$/;
         if (!fnameReg.test($FirstName)) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    function validateLName($LastName) {
-
-        var lnameReg = /^[A-Z,a-z._]+$/;
-        if (!lnameReg.test($LastName)) {
             return false;
         } else {
             return true;

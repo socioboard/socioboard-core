@@ -14,6 +14,7 @@ using log4net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Mvc;
+using System.Text.RegularExpressions;
 
 
 namespace Socioboard.Helper
@@ -678,16 +679,19 @@ namespace Socioboard.Helper
 
 
                 Api.ScheduledMessage.ScheduledMessage ApiobjScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
+                Api.GroupScheduleMessage.GroupScheduleMessage ApiObjGrpSchduleMessage = new Api.GroupScheduleMessage.GroupScheduleMessage();
 
 
                 int intervaltime = Convert.ToInt32(intrval);
 
                 HttpContext.Current.Session["scheduletime"] = null;
                 var SelctGroupId = SelectedGroupId.ToString().Split(',');
+                
 
                 foreach (var item in SelctGroupId)
                 {
-                    string[] networkingwithid = item.Split('_');
+                    string[] networkingwithid = item.Split(new string[] { "*#*" }, StringSplitOptions.None);
+                   
 
                     if (networkingwithid[1] == "fb")
                     {
@@ -717,7 +721,7 @@ namespace Socioboard.Helper
                             _ScheduledMessage.CreateTime = DateTime.Now;
                             _ScheduledMessage.ProfileType = "facebookgroup";
                             _ScheduledMessage.ProfileId = profileid;
-                            //  _ScheduledMessage.Id = Guid.NewGuid();
+                            _ScheduledMessage.Id = Guid.NewGuid();
                             if (!string.IsNullOrEmpty(imagefile))
                             {
                                 //var path = System.Configuration.ConfigurationManager.AppSettings["MailSenderDomain"] + "Contents/img/upload";
@@ -734,12 +738,12 @@ namespace Socioboard.Helper
                             _ScheduledMessage.ShareMessage = msg;
                             _ScheduledMessage.UserId = objUser.Id;
                             _ScheduledMessage.Status = false;
+                            ApiobjScheduledMessage.AddGroupScheduleMessages(_ScheduledMessage.ScheduleTime.ToString(), _ScheduledMessage.CreateTime.ToString(), _ScheduledMessage.ProfileType.ToString(), _ScheduledMessage.ProfileId.ToString(), _ScheduledMessage.PicUrl.ToString(), _ScheduledMessage.ClientTime.ToString(), _ScheduledMessage.ShareMessage.ToString(), _ScheduledMessage.UserId.ToString(), _ScheduledMessage.Status.ToString());
 
-
-                            //  _GroupScheduleMessage.Id = Guid.NewGuid();
+                            _GroupScheduleMessage.Id = Guid.NewGuid();
                             _GroupScheduleMessage.ScheduleMessageId = _ScheduledMessage.Id;
                             _GroupScheduleMessage.GroupId = groupid;
-
+                            ApiObjGrpSchduleMessage.AddGroupScheduleMessage(_GroupScheduleMessage.ScheduleMessageId.ToString(), _GroupScheduleMessage.GroupId.ToString());
 
 
 
@@ -795,10 +799,11 @@ namespace Socioboard.Helper
                             _ScheduledMessage.ShareMessage = message; ;
                             _ScheduledMessage.UserId = objUser.Id;
                             _ScheduledMessage.Status = false;
-
+                            ApiobjScheduledMessage.AddGroupScheduleMessages(_ScheduledMessage.ScheduleTime.ToString(), _ScheduledMessage.CreateTime.ToString(), _ScheduledMessage.ProfileType.ToString(), _ScheduledMessage.ProfileId.ToString(), _ScheduledMessage.PicUrl.ToString(), _ScheduledMessage.ClientTime.ToString(), _ScheduledMessage.ShareMessage.ToString(), _ScheduledMessage.UserId.ToString(), _ScheduledMessage.Status.ToString());
                             _GroupScheduleMessage.Id = Guid.NewGuid();
                             _GroupScheduleMessage.ScheduleMessageId = _ScheduledMessage.Id;
                             _GroupScheduleMessage.GroupId = groupid;
+                            ApiObjGrpSchduleMessage.AddGroupScheduleMessage(_GroupScheduleMessage.ScheduleMessageId.ToString(), _GroupScheduleMessage.GroupId.ToString());
                         }
                         catch (Exception ex)
                         {

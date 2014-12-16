@@ -897,28 +897,37 @@ namespace Api.Socioboard.Services
         public string FacebookComposeMessage(String message, String profileid, string userid, string currentdatetime, string imagepath)
         {
             string ret = "";
+            Domain.Socioboard.Domain.FacebookAccount objFacebookAccount = objFacebookAccountRepository.getFacebookAccountDetailsById(profileid, Guid.Parse(userid));
+            FacebookClient fb = new FacebookClient();
+
+            fb.AccessToken = objFacebookAccount.AccessToken;
+            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
             var args = new Dictionary<string, object>();
             args["message"] = message;
             if (!string.IsNullOrEmpty(imagepath))
             {
                 var media = new FacebookMediaObject
                 {
-                     FileName = "filename",
+                    FileName = "filename",
                     ContentType = "image/jpeg"
                 };
                 byte[] img = System.IO.File.ReadAllBytes(imagepath);
                 media.SetValue(img);
                 args["source"] = media;
+                ret = fb.Post("/" + objFacebookAccount.FbUserId + "/photos", args).ToString();
+            }
+            else {
+                ret = fb.Post("/" + objFacebookAccount.FbUserId + "/feed", args).ToString();
             }
            
            
-            Domain.Socioboard.Domain.FacebookAccount objFacebookAccount = objFacebookAccountRepository.getFacebookAccountDetailsById(profileid, Guid.Parse(userid));
-            FacebookClient fb = new FacebookClient();
+            //Domain.Socioboard.Domain.FacebookAccount objFacebookAccount = objFacebookAccountRepository.getFacebookAccountDetailsById(profileid, Guid.Parse(userid));
+            //FacebookClient fb = new FacebookClient();
            
-            fb.AccessToken = objFacebookAccount.AccessToken;
+            //fb.AccessToken = objFacebookAccount.AccessToken;
             //fb.AccessToken = "CAACEdEose0cBANZCpywnaiXtamEZBNRpaZAj3zY9y6e62hTfHQ9oKy5LSc9MiZATY4RV5F19CgLNadYuL1neTaCU3ikhQwB7x6FtFcYOuQlQZBNL1xjQuohzHGlL9xrzHd8lQZBcK4KPwObj2ALLgnbNLmqZAywMs2JL3Ke0Vk36lm8fPzHbeode7Kndw9gbgLC5o5CmhdtzWwWzhxxjljk";
-            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
-            ret = fb.Post("/" + objFacebookAccount.FbUserId + "/photos", args).ToString();
+            //System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
+            //ret = fb.Post("/" + objFacebookAccount.FbUserId + "/feed", args).ToString();
             return ret;
         }
 

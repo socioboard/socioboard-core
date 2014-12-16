@@ -13,11 +13,28 @@
         $('#side-menu a').removeClass('active');
         $("#message").addClass('active');
         $("#message").children().addClass('active');
+        
     });
 
     function hideTask(divId) {
         alert(divId);
         $('#' + divId).removeClass('in');
+    }
+
+    function TaskFilteration(Id) {
+        debugger;
+        if (Id == "rdMyTask") {
+            $('#page-wrapper').load('../Messages/loadtask');
+        }
+        if (Id == "rdIncompleteTask") {
+            $('#page-wrapper').load('../Messages/LoadIncompleteTask');
+        }
+        if (Id == "rdCompleteTask") {
+            $('#page-wrapper').load('../Messages/LoadCompleteTask');
+        }
+        if (Id == "rdTeamTask") {
+            $('#page-wrapper').load('../Messages/LoadTeamTask');
+        }
     }
 
 </script>

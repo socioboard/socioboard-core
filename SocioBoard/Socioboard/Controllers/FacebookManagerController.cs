@@ -12,9 +12,11 @@ using Facebook;
 using System.Net;
 using System.Web.Security;
 using Socioboard.Helper;
+using Socioboard.App_Start;
 
 namespace Socioboard.Controllers
 {
+    
     public class FacebookManagerController : Controller
     {
         ILog logger = LogManager.GetLogger(typeof(FacebookManagerController));
@@ -132,6 +134,7 @@ namespace Socioboard.Controllers
             string facebookurl = "../index/index";
             if (!string.IsNullOrEmpty(op))
             {
+
                 if (op == "fbgroup")
                 {
                     Session["fblogin"] = op;
@@ -287,7 +290,8 @@ namespace Socioboard.Controllers
 
 
         }
-
+        [Authorize]
+        [CustomAuthorize]
         public ActionResult AddFbGroup(string ProfileGroupId, string accesstoken, string email, string Name)
         {
             Api.Facebook.Facebook objApiFacebook = new Api.Facebook.Facebook();

@@ -35,7 +35,6 @@ namespace Socioboard.Controllers
             //Response.Cache.SetCacheability(HttpCacheability.NoCache);
         }
 
-
         public ActionResult Logout() 
         {
             Session.Abandon();
@@ -56,7 +55,7 @@ namespace Socioboard.Controllers
             string str = logindata.Replace("\"", string.Empty).Trim();
             if (str != "Not Exist")
             {
-                objUser = (User)(new JavaScriptSerializer().Deserialize(logindata, typeof(User)));
+                 objUser = (User)(new JavaScriptSerializer().Deserialize(logindata, typeof(User)));
                 FormsAuthentication.SetAuthCookie(objUser.UserName, false);
             }
             else
@@ -416,7 +415,7 @@ namespace Socioboard.Controllers
 
             return Content(mailsender);
         }
-
+        [AllowAnonymous]
         public ActionResult ActivateAccount(string Id)
         {
             string ActivationStatus = "1";
@@ -515,34 +514,36 @@ namespace Socioboard.Controllers
             return Content(mailsender);
         }
 
-        public ActionResult PaypalAgency()
+        // Edited by Antima[09/12/2014]
+
+        public ActionResult PaypalAgency(string PlanType)
         {
             string pay = "";
             try
             {
+                Helper.Agency agency = new Agency();
                 Helper.Payment payme = new Payment();
+               
+                agency.AgencyPlan(PlanType);
+                string amount = agency.amount;
+                string plantype = agency.plantype;
+                string UserName = agency.UserName;
+                string EmailId = agency.EmailId;
+                string userId = agency.userId;
 
-                string amount = "2999";
-                string plantype = "White Label version";
-                string UserName = "Socioboard";
-                string EmailId = "support@socioboard.com";
-
-                //String EnterPriseSuccessURL = ConfigurationManager.AppSettings["EnterPriseSuccessURL"];
-                //String EnterPriseFailedURL = ConfigurationManager.AppSettings["EnterPriseFailedURL"];
-                //String EnterPrisepaypalemail = ConfigurationManager.AppSettings["EnterPrisepaypalemail"];
-                String userId = "";
+                 //pay = payme.PayWithPayPal(amount, plantype, UserName, "", EmailId, "USD", ConfigurationManager.AppSettings["Downloadpaypalemail"], ConfigurationManager.AppSettings["DownloadSuccessURL"],
+                 //                     ConfigurationManager.AppSettings["DownloadFailedURL"], ConfigurationManager.AppSettings["DownloadSuccessURL"], ConfigurationManager.AppSettings["EnterPrisecancelurl"], ConfigurationManager.AppSettings["EnterPrisenotifyurl"], userId);
 
                 pay = payme.PayWithPayPal(amount, plantype, UserName, "", EmailId, "USD", ConfigurationManager.AppSettings["Downloadpaypalemail"], ConfigurationManager.AppSettings["DownloadSuccessURL"],
-                                      ConfigurationManager.AppSettings["DownloadFailedURL"], ConfigurationManager.AppSettings["DownloadSuccessURL"], ConfigurationManager.AppSettings["EnterPrisecancelurl"], ConfigurationManager.AppSettings["EnterPrisenotifyurl"], userId);
+                                    ConfigurationManager.AppSettings["DownloadFailedURL"], ConfigurationManager.AppSettings["DownloadSuccessURL"],"","", userId);
+
 
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
             }
-            //return View();
-            Response.Redirect(pay);
-            return Content("");
+             return Content(pay);
         }
 
     }

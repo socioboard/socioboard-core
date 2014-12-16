@@ -8,23 +8,23 @@ using System.Web.Script.Serialization;
 
 namespace Socioboard.Controllers.Admin
 {
-    [Authorize]
+    [Authorize(Users = "Aby Kumar")]
     public class UserDetailsController : Controller
     {
+
         //
         // GET: /UserDetails/
-
         public ActionResult ManageUser()
         {
             return View();
         }
         public ActionResult LoadManageUser()
         {
-            Api.AdminUserDetails.AdminUserDetails ApiObjuserdetails=new Api.AdminUserDetails.AdminUserDetails();
-            List<User> lstUser=(List<User>)(new JavaScriptSerializer().Deserialize(ApiObjuserdetails.GetAllUsers(),typeof(List<User>)));
-            return PartialView("_ManageUserPartial",lstUser);
+            Api.AdminUserDetails.AdminUserDetails ApiObjuserdetails = new Api.AdminUserDetails.AdminUserDetails();
+            List<User> lstUser = (List<User>)(new JavaScriptSerializer().Deserialize(ApiObjuserdetails.GetAllUsers(), typeof(List<User>)));
+            return PartialView("_ManageUserPartial", lstUser);
         }
-        
+
         public ActionResult EditUserDetails(string Id)
         {
             Api.AdminUserDetails.AdminUserDetails ApiobjUser = new Api.AdminUserDetails.AdminUserDetails();
@@ -36,14 +36,14 @@ namespace Socioboard.Controllers.Admin
         public ActionResult UpdateUserDetails(string Id, string UserName, string EmailId, string Package, string Status)
         {
             Api.AdminUserDetails.AdminUserDetails apiobjUserUpdate = new Api.AdminUserDetails.AdminUserDetails();
-            string UpdateMessage=(string)(new JavaScriptSerializer().Deserialize(apiobjUserUpdate.UpdateUserAccount(Id,UserName,EmailId,Package,Status),typeof(string)));
+            string UpdateMessage = (string)(new JavaScriptSerializer().Deserialize(apiobjUserUpdate.UpdateUserAccount(Id, UserName, EmailId, Package, Status), typeof(string)));
             return Content(UpdateMessage);
         }
 
         public ActionResult DeleteUser(string Id)
         {
             Api.AdminUserDetails.AdminUserDetails ApiobjUser = new Api.AdminUserDetails.AdminUserDetails();
-            int deletemessage=(int)(new JavaScriptSerializer().Deserialize(ApiobjUser.DeleteUser(Id),typeof(int)));
+            int deletemessage = (int)(new JavaScriptSerializer().Deserialize(ApiobjUser.DeleteUser(Id), typeof(int)));
             return Content(deletemessage.ToString());
         }
 
@@ -58,11 +58,11 @@ namespace Socioboard.Controllers.Admin
         }
         public ActionResult EditProfileDetails(string ProfileId, string UserId, string Network)
         {
-            Dictionary<string,object> objProfileToEdit = new Dictionary<string,object>();
+            Dictionary<string, object> objProfileToEdit = new Dictionary<string, object>();
             if (Network == "Facebook")
             {
-                Api.FacebookAccount.FacebookAccount Apiobjfb=new Api.FacebookAccount.FacebookAccount();
-                FacebookAccount objFbAccount = (FacebookAccount)(new JavaScriptSerializer().Deserialize               (Apiobjfb.getFacebookAccountDetailsById(UserId, ProfileId), typeof(FacebookAccount)));
+                Api.FacebookAccount.FacebookAccount Apiobjfb = new Api.FacebookAccount.FacebookAccount();
+                FacebookAccount objFbAccount = (FacebookAccount)(new JavaScriptSerializer().Deserialize(Apiobjfb.getFacebookAccountDetailsById(UserId, ProfileId), typeof(FacebookAccount)));
                 Session["UpdateProfileData"] = objFbAccount;
                 objProfileToEdit.Add("Facebook", objFbAccount);
             }
@@ -122,15 +122,15 @@ namespace Socioboard.Controllers.Admin
                 Domain.Socioboard.Domain.FacebookAccount objfb = (FacebookAccount)Session["UpdateProfileData"];
                 objfb.IsActive = 1;
                 objfb.FbUserName = ProfileName;
-                string objFacebook=new JavaScriptSerializer().Serialize(objfb);
+                string objFacebook = new JavaScriptSerializer().Serialize(objfb);
                 Api.Facebook.Facebook ApiObjfb = new Api.Facebook.Facebook();
-                string FbMessage=(string)(new JavaScriptSerializer().Deserialize(ApiObjfb.UpdateFacebookAccountByAdmin(objFacebook),typeof(string)));
+                string FbMessage = (string)(new JavaScriptSerializer().Deserialize(ApiObjfb.UpdateFacebookAccountByAdmin(objFacebook), typeof(string)));
                 ReturnMessage = FbMessage;
-                
+
             }
             if (Network == "Twitter")
             {
-                Status=true;
+                Status = true;
                 Domain.Socioboard.Domain.TwitterAccount objfb = (TwitterAccount)Session["UpdateProfileData"];
                 objfb.IsActive = Status;
                 objfb.TwitterScreenName = ProfileName;
@@ -138,7 +138,7 @@ namespace Socioboard.Controllers.Admin
                 Api.Twitter.Twitter ApiObjfb = new Api.Twitter.Twitter();
                 string FbMessage = (string)(new JavaScriptSerializer().Deserialize(ApiObjfb.UpdateTwitterAccountByAdmin(objFacebook), typeof(string)));
                 ReturnMessage = FbMessage;
-                
+
             }
             if (Network == "Linkedin")
             {
@@ -189,7 +189,7 @@ namespace Socioboard.Controllers.Admin
                 Status = true;
                 Domain.Socioboard.Domain.GooglePlusAccount objfb = (GooglePlusAccount)Session["UpdateProfileData"];
                 objfb.IsActive = 1;
-                objfb.GpUserName= ProfileName;
+                objfb.GpUserName = ProfileName;
                 string objFacebook = new JavaScriptSerializer().Serialize(objfb);
                 Api.Twitter.Twitter ApiObjfb = new Api.Twitter.Twitter();
                 string FbMessage = (string)(new JavaScriptSerializer().Deserialize(ApiObjfb.UpdateTwitterAccountByAdmin(objFacebook), typeof(string)));

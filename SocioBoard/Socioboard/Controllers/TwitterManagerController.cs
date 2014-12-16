@@ -1,5 +1,6 @@
 ﻿using log4net;
 using Newtonsoft.Json.Linq;
+using Socioboard.App_Start;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -9,6 +10,8 @@ using System.Web.Mvc;
 
 namespace Socioboard.Controllers
 {
+    [Authorize]
+    [CustomAuthorize]
     public class TwitterManagerController : Controller
     {
         //

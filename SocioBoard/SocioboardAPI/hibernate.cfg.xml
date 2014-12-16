@@ -22,9 +22,10 @@
       <!--Data Source=localhost;User ID=root;Password=1234;persist security info=False;initial catalog=abhay4;pooling=false;old guids=true; pooling=false;charset=utf8;-->
 
 
-      Data Source=localhost;User ID= root;Password=hozefa@globussoft;persist security info=False;initial catalog=692531_devsoc;pooling=false;charset=utf8;
-
-
+      <!--Data Source=localhost;User ID= root;Password=1234;persist security info=False;initial catalog=692531_devsoc;pooling=false;charset=utf8;-->
+      <!--Data Source=173.194.240.135;User ID=root;Password=df49a27e;persist security info=False;initial catalog=devsocioboard;pooling=false; charset=utf8;-->
+      Data Source=173.194.240.135;User ID=root;Password=df49a27e;persist security info=False;initial catalog=socioboard;pooling=false; charset=utf8;
+      <!--Data Source=localhost;User ID=root;Password=1234;persist security info=False;initial catalog=abhay4;pooling=false; pooling=false;charset=utf8;-->
       <!--Data Source=us-cdbr-azure-west-a.cloudapp.net;User ID=bd8b74e3a5cf81;Password=df49a27e;persist security info=False;initial catalog=socioboard;pooling=false; pooling=false;charset=utf8;old guids=true;-->
       <!--Database=socioboard;Data Source=ap-cdbr-azure-southeast-a.cloudapp.net;User Id=b21cda0bb74eec;Password=d0725f9b-->
 

@@ -17,7 +17,7 @@
     <link rel="shortcut icon" href="../Contents/img/ivon.ico" type="image/x-icon">
 
     <title>SocioBoard Admin</title>
-
+    <script src="/Themes/@path/Contents/js/jquery-1.11.0.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="/Themes/@path/Contents/css/bootstrap.min.css" rel="stylesheet">
 
@@ -54,9 +54,8 @@
 <body>
 
     <div id="wrapper">
-
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0; height:68px;">
 
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -65,12 +64,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="home.html"><img class="img-responsive" src="../Contents/img/logo.png" alt="Socio Board" style="
-    margin-top: -14px;" /></a>
+                <a class="navbar-brand" href=""><img class="img-responsive" src="../Themes/Socioboard/Contents/img/admin/SB%20Banner_new_logo.png" alt="Socio Board" style="
+    margin-top: -14px; width:28%;" /></a>
             </div>
             <!-- /.navbar-header -->
 
-            <ul class="nav navbar-top-links navbar-right">
+            <ul class="nav navbar-top-links navbar-right" style="margin-top:-4%;">
                @* <li class="dropdown">
                         <a class="active" href="home.html"><i class="fa fa-home fa-2x"></i></a>
                 </li>
@@ -146,12 +145,12 @@
                                 <li>
                                     <a href="../UserDetails/ManageProfile"> Manage Profile</a>
                                 </li>
-                                <li>
+                                @*<li>
                                     <a href="#"> Online Users</a>
                                 </li>
                                 <li>
                                     <a href="login_details.html"> Login Details</a>
-                                </li>
+                                </li>*@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
@@ -221,7 +220,7 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li>
+                        @*<li>
                             <a href="#"><i class="fa fa-sitemap fa-fw fa-2x"></i> Mandrill Account<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -235,7 +234,7 @@
                                 </li>                              
                             </ul>
                             <!-- /.nav-second-level -->
-                        </li>
+                        </li>*@
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -377,7 +376,7 @@
     <!-- /#wrapper -->
 
     <!-- jQuery Version 1.11.0 -->
-    <script src="/Themes/@path/Contents/js/jquery-1.11.0.js"></script>
+    @*<script src="/Themes/@path/Contents/js/jquery-1.11.0.js"></script>*@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/Themes/@path/Contents/js/bootstrap.min.js"></script>
@@ -391,7 +390,7 @@
     <!-- DataTables JavaScript -->
     <script src="/Themes/@path/Contents/js/plugins/dataTables/jquery.dataTables.js"></script>
     <script src="/Themes/@path/Contents/js/plugins/dataTables/dataTables.bootstrap.js"></script>
-    <script src="/Themes/@path/Contents/js/jquery-1.10.2.min.js"></script>
+    @*<script src="/Themes/@path/Contents/js/jquery-1.10.2.min.js"></script>*@
     <script src="/Themes/@path/Contents/js/alertify.min.js" type="text/javascript"></script>
     <script src="/Themes/@path/Contents/js/bootstrap-datepicker.js"></script>
     <script src="/Themes/@path/Contents/js/bootstrap-timepicker.min.js"></script>
@@ -400,6 +399,7 @@
     <link href="/Themes/@path/Contents/css/alertify.default.css" rel="stylesheet" type="text/css" id="toggleCSS" />*@
     <!-- Custom Theme JavaScript -->
     <script src="/Themes/@path/Contents/js/sb-admin-2.js"></script>
+    <script src="~/Themes/@path/Contents/js/highcharts.js"></script>
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
         $(document).ready(function () {

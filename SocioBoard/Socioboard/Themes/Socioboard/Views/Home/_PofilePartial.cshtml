@@ -19,7 +19,7 @@
         }
         else
         {
-            <div class="delet_icon" onclick="confirmDel('@objFacebookAccount.FbUserId','fb','fb');"></div>
+            <div class="delet_icon" onclick="confirmDel('@objFacebookAccount.FbUserId','@objFacebookAccount.ProfileType','fb');"></div>
         <a title="@objFacebookAccount.FbUserName" href="http://www.facebook.com/@objFacebookAccount.FbUserId/" target="_blank">
             <img src="http://graph.facebook.com/@objFacebookAccount.FbUserId/picture?type=small" class="img-responsive btn btn-default btn-block profilePicsize"></a>
         }
@@ -40,10 +40,15 @@
     if (item.Key.ProfileType == "linkedin"&&item.Value!=null)
     {
         LinkedInAccount objLinkedInAccount = (LinkedInAccount)item.Value;
+        string up = objLinkedInAccount.ProfileImageUrl;
+        if (string.IsNullOrEmpty(up))
+        {
+            up = "/Themes/" + path + "/Contents/img/anonymousUser.jpg";
+        }
     <div class="col-sm-6 userpictiny" style="margin-bottom:10px">
         <div class="delet_icon" onclick="confirmDel('@objLinkedInAccount.LinkedinUserId','linkedin','linkedin');"></div>
         <a title="@objLinkedInAccount.LinkedinUserName" href="@objLinkedInAccount.ProfileUrl" target="_blank">
-            <img src="@objLinkedInAccount.ProfileImageUrl" class="img-responsive btn btn-default btn-block profilePicsize"></a>
+            <img src="@up" class="img-responsive btn btn-default btn-block profilePicsize"></a>
         <img  src="/Themes/@path/Contents/img/link_icon.png" class="img-responsive img-circle socialIconPoss">
     </div>
     }

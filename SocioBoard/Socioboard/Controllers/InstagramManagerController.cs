@@ -6,9 +6,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using log4net;
+using Socioboard.App_Start;
 
 namespace Socioboard.Controllers
 {
+    [Authorize]
+    [CustomAuthorize]
     public class InstagramManagerController : Controller
     {
         ILog logger = LogManager.GetLogger(typeof(InstagramManagerController));
@@ -39,7 +42,7 @@ namespace Socioboard.Controllers
 
             if (Session["SocialManagerInfo"] == null)
             {
-                return RedirectToAction("Index", "Default");
+                return RedirectToAction("Index", "Home");
             }
             return RedirectToAction("Index", "Home");
         }

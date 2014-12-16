@@ -94,7 +94,7 @@
             success: function (data) {
 
                 alertify.set({ delay: 3000 });
-                $('#facebookpageinfo').css({ 'display': 'none' });
+                $('#facebookgroupinfo').css({ 'display': 'none' });
                 $('#facebookpopup').modal('hide');
                 alertify.success("Group Added Successfully");
                 window.location = '../Home/Index';
@@ -211,12 +211,12 @@
                         for (var i = 0; i < fbgrouparr.length; i++) {
                             var fbgroupinfoarr = fbgrouparr[i].split('`');
                             try {
-                                $('#fbpagebind').append('<a style="cursor: pointer;margin-left:21px" onclick="AddfbGroup(\'' + fbgroupinfoarr[0] + '\',\'' + fbgroupinfoarr[1] + '\',\'' + fbgroupinfoarr[2] + '\',\'' + fbgroupinfoarr[3] + '\')">' + fbgroupinfoarr[0] + '</a><br />');
+                                $('#fbgroupbind').append('<a style="cursor: pointer;margin-left:21px" onclick="AddfbGroup(\'' + fbgroupinfoarr[0] + '\',\'' + fbgroupinfoarr[1] + '\',\'' + fbgroupinfoarr[2] + '\',\'' + fbgroupinfoarr[3] + '\')">' + fbgroupinfoarr[0] + '</a><br />');
                             } catch (e) {
 
                             }
                         }
-                        $('#facebookpageinfo').css({ 'display': 'block' });
+                        $('#facebookgroupinfo').css({ 'display': 'block' });
                         $('#facebookpopup').modal('show');
                     },
                     async: false

@@ -1,5 +1,6 @@
 ﻿using Domain.Socioboard.Domain;
 using Newtonsoft.Json.Linq;
+using Socioboard.App_Start;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Web.Script.Serialization;
 
 namespace Socioboard.Controllers
 {
-    [Authorize]
+   [CustomAuthorize]
     public class FeedsController : Controller
     {
         public static int facebookwallcount = 0;

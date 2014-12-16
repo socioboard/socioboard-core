@@ -586,7 +586,7 @@ namespace Api.Socioboard.Services
                     objScheduledMessage.ProfileType = profiletype;
                     objScheduledMessage.ProfileId = profileid;
                     objScheduledMessage.Id = Guid.NewGuid();
-                    objScheduledMessage.PicUrl = string.Empty;
+                    objScheduledMessage.PicUrl = PicUrl;
                     objScheduledMessage.ClientTime = Convert.ToDateTime(ClientTime);
                     objScheduledMessage.ScheduleTime = scheduleddatetime.ToLocalTime();
                     objScheduledMessage.ShareMessage = ShareMessage;

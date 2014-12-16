@@ -37,7 +37,7 @@
                
                 List<object> lstdic = (List<object>)dic_profileinfo.Value;
                 List<Domain.Socioboard.Domain.FacebookFeed> lstFacebookFeed = new List<Domain.Socioboard.Domain.FacebookFeed>();
-    
+               
         <div id="mid_"@objFacebookAccount.FbUserId"" class="col-lg-4 col-md-9">
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -47,11 +47,11 @@
                             <img src="/Themes/@path/Contents/img/fb_icon.png" class="iconPoss">
                            @* <span>@objFacebookAccount.FbUserName</span>*@
                         </div>
-                        <div class="col-xs-9 text-right">
+                        <div class="col-xs-9 text-right" style="margin-top:-15px;margin-bottom:-8px">
                             <div ><h4><strong>@objFacebookAccount.Friends</strong>
                             Fans</h4></div>
                         </div>
-                        <span class="pull-right">@Math.Round(rNum.NextDouble(), 2) Avg.<br>
+                        <span class="col-xs-9 text-right">@Math.Round(rNum.NextDouble(), 2) Avg.<br>
                             Post Per Day</span>
                         <span class="col-md-12">@objFacebookAccount.FbUserName</span>   
                     </div>
@@ -142,11 +142,11 @@
                             <img src="/Themes/@path/Contents/img/twticon.png" class="iconPoss">
                             @*<span>@objTwitterAccount.TwitterScreenName</span>*@
                         </div>
-                        <div class="col-xs-9 text-right">
+                        <div class="col-xs-9 text-right" style="margin-top:-15px;margin-bottom:-8px">
                             <div><h4><strong>@objTwitterAccount.FollowersCount</strong>
                             Fans</h4></div>
                         </div>
-                        <span class="pull-right">@Math.Round(rNum.NextDouble(), 2) Avg.<br>
+                        <span class="col-xs-9 text-right">@Math.Round(rNum.NextDouble(), 2) Avg.<br>
                             Post Per Day</span>
                         <span class="col-md-12">@objTwitterAccount.TwitterScreenName</span>
                     </div>
@@ -201,21 +201,25 @@
                 {
                     Console.WriteLine(ex.Message);
                 }
-
+                string pp = objLinkedInAccount.ProfileImageUrl;
+                if (string.IsNullOrEmpty(pp))
+                {
+                    pp = "/Themes/" + path + "/Contents/img/anonymousUser.jpg";
+                }
                         <div id="mid_"@objLinkedInAccount.LinkedinUserId"" class="col-lg-4 col-md-9">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <img title="@objLinkedInAccount.LinkedinUserName" src="@objLinkedInAccount.ProfileImageUrl" class="img-circle profilePic" >
+                            <img title="@objLinkedInAccount.LinkedinUserName" src="@pp" class="img-circle profilePic" >
                             <img src="/Themes/@path/Contents/img/link_icon.png" class="iconPoss">
                            @* <span>@objLinkedInAccount.LinkedinUserName</span>*@
                         </div>
-                        <div class="col-xs-9 text-right">
+                        <div class="col-xs-9 text-right" style="margin-top:-15px;margin-bottom:-8px">
                             <div><h4><strong>@linkedinConcount</strong>
                             Connections</h4></div>
                         </div>
-                        <span class="pull-right">@Math.Round(rNum.NextDouble(), 2) Avg.<br>
+                        <span class="col-xs-9 text-right">@Math.Round(rNum.NextDouble(), 2) Avg.<br>
                             Post Per Day</span>
                         <span class="col-md-12">@objLinkedInAccount.LinkedinUserName</span>
                     </div>
@@ -236,8 +240,13 @@
                             {
                                 ms = objLinkedInFeed.Feeds;
                             }
+                            string up = objLinkedInFeed.FromPicUrl;
+                            if (string.IsNullOrEmpty(up))
+                            {
+                                up = "/Themes/" + path + "/Contents/img/anonymousUser.jpg";
+                            }
                         <li class="list-group-item">
-                            <img class="commentsmallsize" src="@objLinkedInFeed.FromPicUrl"><span class="commentmargin" title="@objLinkedInFeed.Feeds">@ms</span>
+                            <img class="commentsmallsize" src="@pp"><span class="commentmargin" title="@objLinkedInFeed.Feeds">@ms</span>
                         </li>
                             if (lstdic.Count > 4)
                             {

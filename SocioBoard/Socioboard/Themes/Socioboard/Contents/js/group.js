@@ -295,7 +295,7 @@ function postmessage() {
 
 function Sendgroupmessage() {
     debugger;
-    var fileimage = document.getElementById('fileuploadImages').files[0];
+    var fileimage = document.getElementById('MltigroupfileuploadImage').files[0];
 
     debugger;
     var fd1 = new FormData();

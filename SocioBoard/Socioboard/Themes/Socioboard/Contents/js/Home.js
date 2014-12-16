@@ -3,10 +3,10 @@ var profilescountingtosend = 0;
 var singleprofileid = '';
 var profilesofcomposeinsession = '';
 var singleprofileIdforscheduler = '';
- var composeuseridcheck='';
- var addanotheridcheck='';
-  var composeuseridcheck_scheduler='';
- var addanotheridcheck_scheduler='';
+var composeuseridcheck = '';
+var addanotheridcheck = '';
+var composeuseridcheck_scheduler = '';
+var addanotheridcheck_scheduler = '';
 
 
 
@@ -131,7 +131,7 @@ function BindMidSnaps(loadtype) {
             success: function (msg) {
 
                 debugger;
-               // $(document).on('scroll', onScroll);
+                // $(document).on('scroll', onScroll);
                 $("#midsnaps").append(msg);
                 $("#hm_loader").attr("src", "").css('display', 'none');
             }
@@ -161,7 +161,7 @@ var reset = function () {
         },
         delay: 5000,
         buttonReverse: false,
-      
+
     });
 };
 
@@ -177,121 +177,112 @@ function SimpleMessageAlert(msg) {
 
 /*This function will delete the profile from our database 
 and remove profile from Network Profiles**/
-function confirmDel(profileid, profiletype,profile) {
+function confirmDel(profileid, profiletype, profile) {
     try {
         debugger;
         reset();
-        if(profile=="fb")
-        {
-        profiletype=profile;
-        }
+        //if (profile == "facebook")
+        //{
+        //profiletype=profile;
+        //}
 
         alertify.set({ buttonReverse: true });
-		
-		if(profiletype=="page")
-		{
-		alertify.confirm("Are you Sure want to delete this Page ?", function (e) {
-            if (e) {
-                debugger;
-                try {
-                    $('#' + profileid).hide();
-                } catch (e) {
+
+        if (profiletype == "facebook_page") {
+            alertify.confirm("Are you Sure want to delete this Page ?", function (e) {
+                if (e) {
+                    debugger;
+                    try {
+                        $('#' + profileid).hide();
+                    } catch (e) {
+
+                    }
+                    try {
+                        $('#mid_' + profileid).hide();
+                    } catch (e) {
+
+                    }
+                    try {
+                        $('#so_' + profileid).remove();
+                    } catch (e) {
+
+                    }
+                    $.ajax
+            ({
+                type: "POST",
+                url: "../Home/DeleteAccount?profile=" + profile + "&profileid=" + profileid,
+                data: '',
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (msg) {
+                    debugger;
+                    alertify.success("Page Deleted Successfully");
+                    try {
+                        var s = $("#ContentPlaceHolder1_usedAccount").html(msg);
+                    } catch (e) {
+                    }
+                }
+            });
+                } else {
+                    debugger;
 
                 }
-                try {
-                    $('#mid_' + profileid).hide();
-                } catch (e) {
+            });
+        }
+        else {
+            alertify.confirm("Are you sure,you want to delete this account ?", function (e) {
+                if (e) {
+                    debugger;
+                    try {
+                        $('#' + profileid).hide();
+                    } catch (e) {
+
+                    }
+                    try {
+                        $('#mid_' + profileid).hide();
+                    } catch (e) {
+
+                    }
+                    try {
+                        $('#so_' + profileid).remove();
+                    } catch (e) {
+
+                    }
+                    $.ajax
+            ({
+                type: "POST",
+                url: "../Home/DeleteAccount?profile=" + profile + "&profileid=" + profileid,
+                data: '',
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (msg) {
+                    debugger;
+                    window.location = "../Home/Index";
+                    if (msg == "Deleted") {
+                        alertify.success("Account Deleted Successfully");
+                    }
+                    try {
+                        var s = $("#ContentPlaceHolder1_usedAccount").html(msg);
+
+
+
+                    } catch (e) {
+
+                    }
 
                 }
-                try {
-                    $('#so_' + profileid).remove();
-                } catch (e) {
+            });
+
+
+
+
+                } else {
+                    debugger;
 
                 }
-                $.ajax
-        ({
-            type: "POST",
-            url: "../Home/DeleteAccount?profile=" + profile + "&profileid=" + profileid,
-            data: '',
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
-            success: function (msg) {
-                debugger;
-                alertify.success("Page Deleted Successfully");
-                try {
-                var s = $("#ContentPlaceHolder1_usedAccount").html(msg);
-                
-                
+            });
+        }
 
-                } catch (e) {
-
-                }
-               
-            }
-        });
-
-
-
-
-            } else {
-                debugger;
-               
-            }
-        });
-		}
-		else
-		{
-        alertify.confirm("Are you sure,you want to delete this account ?", function (e) {
-            if (e) {
-                debugger;
-                try {
-                    $('#' + profileid).hide();
-                } catch (e) {
-
-                }
-                try {
-                    $('#mid_' + profileid).hide();
-                } catch (e) {
-
-                }
-                try {
-                    $('#so_' + profileid).remove();
-                } catch (e) {
-
-                }
-                $.ajax
-        ({
-            type: "POST",
-            url: "../Home/DeleteAccount?profile=" + profile + "&profileid=" + profileid,
-            data: '',
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
-            success: function (msg) {
-                debugger;
-                window.location = "../Home/Index";
-                alertify.success("Account Deleted Successfully");
-                try {
-                var s = $("#ContentPlaceHolder1_usedAccount").html(msg);
-                
-                
-
-                } catch (e) {
-
-                }
-               
-            }
-        });
-
-
-
-
-            } else {
-                debugger;
-               
-            }
-        });
-}
-			
     } catch (e) {
 
     }
@@ -312,34 +303,34 @@ function bindProfilesComposeMessage() {
 
         }
 
-//        if (profilesofcomposeinsession == undefined) {
+        //        if (profilesofcomposeinsession == undefined) {
 
-            $.ajax
-        ({
-            type: "GET",
-            url: "../AjaxHome.aspx?op=MasterCompose",
-            data: '',
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
-            success: function (msg) {
-                debugger;
-               // $.session('compose', msg);
-                var addmsg = msg.replace(/composemessage/g, "addAnotherProfileforMessage");
-                $("#addBox").html(addmsg);
-                $("#loginBox").html(msg);
+        $.ajax
+    ({
+        type: "GET",
+        url: "../AjaxHome.aspx?op=MasterCompose",
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (msg) {
+            debugger;
+            // $.session('compose', msg);
+            var addmsg = msg.replace(/composemessage/g, "addAnotherProfileforMessage");
+            $("#addBox").html(addmsg);
+            $("#loginBox").html(msg);
 
-                var countinguserids = document.getElementById('loginBox');
-                var countdivofloginbox = countinguserids.getElementsByTagName('li');
-                var firstid = '';
-                for (var i = 0; i < countdivofloginbox.length; i++) {
-                    firstid = countdivofloginbox[i].id;
-                    break;
-                }
-
-                composemessage(firstid, 'fb');
-                
+            var countinguserids = document.getElementById('loginBox');
+            var countdivofloginbox = countinguserids.getElementsByTagName('li');
+            var firstid = '';
+            for (var i = 0; i < countdivofloginbox.length; i++) {
+                firstid = countdivofloginbox[i].id;
+                break;
             }
-        });
+
+            composemessage(firstid, 'fb');
+
+        }
+    });
 
 
     } catch (e) {
@@ -365,13 +356,12 @@ function composemessage(id, network) {
         var userid = id.split('_');
         var imageurl = document.getElementById('imgurl_' + userid[1]).innerHTML;
 
-         composeuseridcheck= userid[1];
-          if(addanotheridcheck==composeuseridcheck)
-         { 
-          alert('Already added!')     
-             return false;
+        composeuseridcheck = userid[1];
+        if (addanotheridcheck == composeuseridcheck) {
+            alert('Already added!')
+            return false;
 
-         }
+        }
 
 
         try {
@@ -395,15 +385,15 @@ function composemessage(id, network) {
             singleprofileid = 'lin_' + userid[1];
             singleprofileIdforscheduler = 'linscheduler_' + userid[1];
         }
-        
-         else if (network == 'tumb') {
+
+        else if (network == 'tumb') {
             document.getElementById('socialIcon').src = "../Contents/img/tumblr.png";
             singleprofileid = 'tumb_' + userid[1];
             singleprofileIdforscheduler = 'tumbscheduler_' + userid[1];
         }
 
-          var totalmessagewords=Countmessagewords();
-          $("#messageCount").html(totalmessagewords.toString());
+        var totalmessagewords = Countmessagewords();
+        $("#messageCount").html(totalmessagewords.toString());
 
     } catch (e) {
         debugger;
@@ -424,15 +414,14 @@ function composemessage_scheduler(id, network) {
     try {
         var userid = id.split('_');
         var imageurl = document.getElementById('imgurl_' + userid[1]).innerHTML;
-        
-         addanotheridcheck_scheduler= userid[1];
 
-       if(addanotheridcheck_scheduler==composeuseridcheck_scheduler)
-         { 
-          alert('Already added!')
-             return false;
+        addanotheridcheck_scheduler = userid[1];
 
-         }
+        if (addanotheridcheck_scheduler == composeuseridcheck_scheduler) {
+            alert('Already added!')
+            return false;
+
+        }
 
         try {
             document.getElementById('imageofuser_scheduler').src = imageurl;
@@ -480,8 +469,8 @@ function composemessage_scheduler(id, network) {
 
         }
 
-          var totalmessagewords=Countmessagewordsc();
-          $("#messageCount_scheduler").html(totalmessagewords.toString());
+        var totalmessagewords = Countmessagewordsc();
+        $("#messageCount_scheduler").html(totalmessagewords.toString());
 
     } catch (e) {
         debugger;
@@ -498,23 +487,21 @@ function addAnotherProfileforMessage(id, network) {
     var divbind = '';
     var innerhtmlofMulti = $("#divformultiusers").html();
     var userid = id.split('_');
-    var str=''
-    for(i=1;i<userid.length;i++)
-   {
-   str+=userid[i]+'_';
-   }
-   str=str.substring(0,str.length - 1);
-    userid[1]=str;
+    var str = ''
+    for (i = 1; i < userid.length; i++) {
+        str += userid[i] + '_';
+    }
+    str = str.substring(0, str.length - 1);
+    userid[1] = str;
 
-    
-    
-     addanotheridcheck=userid[1];
-   
-    if(composeuseridcheck==addanotheridcheck)
-    { 
-    alert('Already added!')
-  //  composeuseridcheck='';
-    return false;
+
+
+    addanotheridcheck = userid[1];
+
+    if (composeuseridcheck == addanotheridcheck) {
+        alert('Already added!')
+        //  composeuseridcheck='';
+        return false;
 
     }
 
@@ -563,8 +550,8 @@ function addAnotherProfileforMessage(id, network) {
 
     }
 
-      var totalmessagewords=Countmessagewords();
-        $("#messageCount").html(totalmessagewords.toString());
+    var totalmessagewords = Countmessagewords();
+    $("#messageCount").html(totalmessagewords.toString());
 
 }
 
@@ -575,21 +562,19 @@ function addAnotherProfileforMessage_scheduler(id, network) {
     var divbind = '';
 
     var userid = id.split('_');
-    var str=''
-    for(i=1;i<userid.length;i++)
-   {
-   str+=userid[i]+'_';
-   }
-   str=str.substring(0,str.length - 1);
-  userid[1]=str;
+    var str = ''
+    for (i = 1; i < userid.length; i++) {
+        str += userid[i] + '_';
+    }
+    str = str.substring(0, str.length - 1);
+    userid[1] = str;
 
 
-    addanotheridcheck_scheduler=userid[1];
-    if(composeuseridcheck_scheduler==addanotheridcheck_scheduler)
-    { 
-    alert('Already added!')
-  //  composeuseridcheck='';
-    return false;
+    addanotheridcheck_scheduler = userid[1];
+    if (composeuseridcheck_scheduler == addanotheridcheck_scheduler) {
+        alert('Already added!')
+        //  composeuseridcheck='';
+        return false;
 
     }
 
@@ -630,8 +615,8 @@ function addAnotherProfileforMessage_scheduler(id, network) {
     }
 
 
-       var totalmessagewords=Countmessagewordsc();
-      $("#messageCount_scheduler").html(totalmessagewords.toString());
+    var totalmessagewords = Countmessagewordsc();
+    $("#messageCount_scheduler").html(totalmessagewords.toString());
 
 }
 
@@ -648,7 +633,7 @@ function closeonCompose() {
     $("#adddates_scheduler").html('');
     document.getElementById('fileuploadImage').value = "";
     chkidforusertest.length = 0;
-      $("#showBlock").css('display', 'none');
+    $("#showBlock").css('display', 'none');
     try {
 
         datearr.length = 0;
@@ -681,7 +666,7 @@ function closeonCompose() {
 
     }
 
-     var messagecnt = Countmessagewords();
+    var messagecnt = Countmessagewords();
     var messagecountsc = Countmessagewordsc();
 
 
@@ -732,7 +717,7 @@ function ajaxFileUpload() {
            
     */
     try {
-       
+
 
         $('#fileuploadImage').fileupload({
             dataType: 'json',
@@ -760,53 +745,53 @@ function hasExtension(inputID, exts) {
 }
 
 function Countmessagewordsc() {
-        var Fbidcount = 0;
-        var twtIdcount = 0;
-        var LinkedInIdcount = 0;
-        var totalmessagewords1 = 0;
-        var chkidforusertest = new Array();
+    var Fbidcount = 0;
+    var twtIdcount = 0;
+    var LinkedInIdcount = 0;
+    var totalmessagewords1 = 0;
+    var chkidforusertest = new Array();
 
-        var bindingofdata = document.getElementById('divformultiusers_scheduler');
-        var countdiv = bindingofdata.getElementsByTagName('div');
+    var bindingofdata = document.getElementById('divformultiusers_scheduler');
+    var countdiv = bindingofdata.getElementsByTagName('div');
 
-        for (var i = 0; i < countdiv.length; i++) {
-            chkidforusertest.push(countdiv[i].id);
-        }
-
-        if (chkidforusertest.indexOf(singleprofileid) == -1) {
-            chkidforusertest.push(singleprofileid);
-        }
-
-
-        for (var i = 0; i < chkidforusertest.length; i++) {
-
-            var arr = chkidforusertest[i].split('_');
-
-
-            if (arr[0].indexOf("fb") != -1) {
-                Fbidcount++;
-            }
-            if (arr[0].indexOf("twt") != -1) {
-                twtIdcount++;
-            }
-            if (arr[0].indexOf("lin") != -1) {
-                LinkedInIdcount++;
-            }
-        }
-
-        if (Fbidcount > 0 && twtIdcount == 0 && LinkedInIdcount == 0) {
-            totalmessagewords1 = 5000;
-        }
-        else if (Fbidcount >= 0 && twtIdcount == 0 && LinkedInIdcount > 0) {
-            totalmessagewords1 = 700;
-        }
-
-        else {
-            totalmessagewords1 = 140;
-        }
-
-        return totalmessagewords1;
+    for (var i = 0; i < countdiv.length; i++) {
+        chkidforusertest.push(countdiv[i].id);
     }
+
+    if (chkidforusertest.indexOf(singleprofileid) == -1) {
+        chkidforusertest.push(singleprofileid);
+    }
+
+
+    for (var i = 0; i < chkidforusertest.length; i++) {
+
+        var arr = chkidforusertest[i].split('_');
+
+
+        if (arr[0].indexOf("fb") != -1) {
+            Fbidcount++;
+        }
+        if (arr[0].indexOf("twt") != -1) {
+            twtIdcount++;
+        }
+        if (arr[0].indexOf("lin") != -1) {
+            LinkedInIdcount++;
+        }
+    }
+
+    if (Fbidcount > 0 && twtIdcount == 0 && LinkedInIdcount == 0) {
+        totalmessagewords1 = 5000;
+    }
+    else if (Fbidcount >= 0 && twtIdcount == 0 && LinkedInIdcount > 0) {
+        totalmessagewords1 = 700;
+    }
+
+    else {
+        totalmessagewords1 = 140;
+    }
+
+    return totalmessagewords1;
+}
 
 
 
@@ -814,33 +799,31 @@ function SendMessage() {
     debugger;
     var fd = new FormData();
     try {
-    
-   
+
+
         var filesimage = document.getElementById('fileuploadImage').files[0];
-     
+
         debugger;
-      
+
         var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
-        if(filesimage !=null)
-        {
-        if (hasExtension('fileuploadImage', fileExtension)) {
+        if (filesimage != null) {
+            if (hasExtension('fileuploadImage', fileExtension)) {
                 fd.append('file', filesimage);
-         }
-         else
-         {
-            alert("File Extention is not current. Please upload any image file");
-            return;  
-         }
-         }
-
-        } 
-        catch (e) {
-
+            }
+            else {
+                alert("File Extention is not current. Please upload any image file");
+                return;
+            }
         }
+
+    }
+    catch (e) {
+
+    }
 
     try {
         var message = $("#textareavaluetosendmessage").val().trim();
-        if (message != ''|| filesimage !=null) {
+        if (message != '' || filesimage != null) {
 
 
             $("#sendMessageBtn").html('<img src="../Contents/img/325.gif" alt="" />');
@@ -854,12 +837,11 @@ function SendMessage() {
             if (chkidforusertest.indexOf(singleprofileid) == -1) {
                 chkidforusertest.push(singleprofileid);
             }
-            if(chkidforusertest[0]=="")
-            {
-            //alert("Please select Account");
-            alertify.alert("Please select Account");
-              $("#sendMessageBtn").html('<img src="../Contents/img/sendbtn.png" alt="" />');
-            return false;
+            if (chkidforusertest[0] == "") {
+                //alert("Please select Account");
+                alertify.alert("Please select Account");
+                $("#sendMessageBtn").html('<img src="../Contents/img/sendbtn.png" alt="" />');
+                return false;
             }
 
 
@@ -872,19 +854,19 @@ function SendMessage() {
                 type: 'POST',
                 url: '../AjaxHome.aspx?op=sendmessage&message=' + encodeURIComponent(message) + '&userid[]=' + chkidforusertest,
                 data: fd,
-               // data:fd+'&massagee='+encodeURIComponent(message)+'&userid[]='+chkidforusertest,
+                // data:fd+'&massagee='+encodeURIComponent(message)+'&userid[]='+chkidforusertest,
                 processData: false,
                 contentType: false,
                 // contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                 $("#sendMessageBtn").html('<img src="../Contents/img/sendbtn.png" alt="" />');
-                   $("#composeBox").bPopup().close();
-                    filesimage="";
+                    $("#sendMessageBtn").html('<img src="../Contents/img/sendbtn.png" alt="" />');
+                    $("#composeBox").bPopup().close();
+                    filesimage = "";
                     document.getElementById('fileuploadImage').value = "";
-                     alertify.success("Message Sent Successfully");
-                     closeonCompose();
-                     var arrmsg=data.split('~');
-                     $('#ContentPlaceHolder1_spanSent').html(arrmsg[1]);
+                    alertify.success("Message Sent Successfully");
+                    closeonCompose();
+                    var arrmsg = data.split('~');
+                    $('#ContentPlaceHolder1_spanSent').html(arrmsg[1]);
                 }
             });
         } else {
@@ -907,18 +889,18 @@ function delProfilesFromMultiusers(id) {
         $("#divformultiusers_scheduler").find("#" + id).remove();
         $("#" + id).remove();
 
-       
+
 
     } catch (e) {
         debugger;
         alert(e);
     }
-     var totalmessagewords=Countmessagewords();
-        $("#messageCount").html(totalmessagewords.toString());
+    var totalmessagewords = Countmessagewords();
+    $("#messageCount").html(totalmessagewords.toString());
 
-        
-          var totalmessagewords=Countmessagewordsc();
-        $("#messageCount_scheduler").html(totalmessagewords.toString());
+
+    var totalmessagewords = Countmessagewordsc();
+    $("#messageCount_scheduler").html(totalmessagewords.toString());
 
 
 }
@@ -963,4 +945,33 @@ function AddLinPage(id, name, oauth) {
 
 
 
+function DetailsofProfile(id, network) {
+    debugger;
+    try {
+        debugger;
+        debugger;
 
+        $("#ProfileDetailBody").html("");
+        $.ajax
+        ({
+            type: "GET",
+            url: "../Messages/getProfileDetails?Profileid=" + id + '&Network=' + network,
+            crossDomain: true,
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (msg) {
+                debugger;
+
+                $("#ProfileDetailBody").append(msg);
+                $("#ProfileDetail").modal('show');
+
+            },
+            error: function (err) {
+                alert(err);
+                debugger;
+            }
+        });
+    } catch (e) {
+
+    }
+}

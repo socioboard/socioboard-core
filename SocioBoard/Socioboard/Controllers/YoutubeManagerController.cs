@@ -7,9 +7,11 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using log4net;
+using Socioboard.App_Start;
 
 namespace Socioboard.Controllers
 {
+   
     public class YoutubeManagerController : Controller
     {
         //

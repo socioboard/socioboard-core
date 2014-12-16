@@ -555,7 +555,7 @@ function facebookdetails(id) {
 
 function facebookwallscrolldata() {
     debugger;
-    alert("facebookwallscrolldata");
+    //alert("facebookwallscrolldata");
     try {
         // $("#data_paneltab1").off('scroll', facebookwallscrolldata);
 
@@ -607,98 +607,99 @@ function facebookfeedscrolldata() {
 
 }
 
-function FacebookUserFeeds(id) {
- 
-        $("#title_paneltab3").html("User Feeds");
+//function FacebookUserFeeds(id) {
+//    debugger;
+//    alert("antima");
+//        $("#title_paneltab3").html("User Feeds");
 
-        FacebookUserFeeds = $.ajax({
-            type: "GET",
-            url: "/Feeds/FacebookUserFeeds",
-            data: { "profileid": id },
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
-            beforeSend : function(){
-                console.log("test");
-            },
-            success: function (msg) {
-                console.log("I")
+//        FacebookUserFeeds = $.ajax({
+//            type: "GET",
+//            url: "/Feeds/FacebookUserFeeds",
+//            data: { "profileid": id },
+//            contentType: "application/json; charset=utf-8",
+//            dataType: "html",
+//            beforeSend : function(){
+//                console.log("test");
+//            },
+//            success: function (msg) {
+//                console.log("I")
                
-                    $("#data_paneltab3").html(msg);
-                    console.log("testend");
+//                    $("#data_paneltab3").html(msg);
+//                    console.log("testend");
                
-            },
-            error: function (e) {
-                console.log("testerr");
+//            },
+//            error: function (e) {
+//                console.log("testerr");
 
-                console.log(e);
-                alert("gfgh");
-            }
-        });
+//                console.log(e);
+//                alert("gfgh");
+//            }
+//        });
    
-}
+//}
 
-function FacebookStatus(id) {
+//function FacebookStatus(id) {
    
-        $("#title_paneltab3").html("Status");
+//        $("#title_paneltab3").html("Status");
 
-        FacebookStatus = $.ajax({
-            type: "GET",
-            url: "/Feeds/FacebookStatus",
-            data: { "profileid": id },
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
-            beforeSend: function () {
-                console.log("test");
-            },
-            success: function (msg) {
+//        FacebookStatus = $.ajax({
+//            type: "GET",
+//            url: "/Feeds/FacebookStatus",
+//            data: { "profileid": id },
+//            contentType: "application/json; charset=utf-8",
+//            dataType: "html",
+//            beforeSend: function () {
+//                console.log("test");
+//            },
+//            success: function (msg) {
               
-                    $("#data_paneltab3").html(msg);
-                    console.log("testend");
+//                    $("#data_paneltab3").html(msg);
+//                    console.log("testend");
                
 
 
                 
-            },
-            error: function (e) {
-                console.log("testerr");
+//            },
+//            error: function (e) {
+//                console.log("testerr");
 
-                console.log(e);
-                alert("gfgh");
-            }
-        });
+//                console.log(e);
+//                alert("gfgh");
+//            }
+//        });
    
-}
+//}
 
 
-function FacebookTag(id) {
-    console.log("FacebookTag begin")
+//function FacebookTag(id) {
+//    console.log("FacebookTag begin")
    
-        $("#title_paneltab3").html("Tags");
+//        $("#title_paneltab3").html("Tags");
 
-        FacebookTag = $.ajax({
-            type: "GET",
-            url: "/Feeds/FacebookTag",
-            data: {profileid: id},
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
-            beforeSend: function () {
-                console.log("test");
-            },
-            success: function (msg) {
+//        FacebookTag = $.ajax({
+//            type: "GET",
+//            url: "/Feeds/FacebookTag",
+//            data: {profileid: id},
+//            contentType: "application/json; charset=utf-8",
+//            dataType: "html",
+//            beforeSend: function () {
+//                console.log("test");
+//            },
+//            success: function (msg) {
                
-                    $("#data_paneltab3").html(msg);
-                    console.log("testend");
+//                    $("#data_paneltab3").html(msg);
+//                    console.log("testend");
 
                 
-            },
-            error: function (e) {
-                console.log(e);
-                console.log("testerr");
-                alert("gfgh");
-            }
-        });
+//            },
+//            error: function (e) {
+//                console.log(e);
+//                console.log("testerr");
+//                alert("gfgh");
+//            }
+//        });
    
-}
+//}
 
 
 /*************Twitter****************/
@@ -956,7 +957,7 @@ function TwitterUserTweet(id) {
         debugger;
         $("#title_paneltab3").html("User Tweet");
 
-        TwitterUserTweet = $.ajax({
+        $.ajax({
             type: "POST",
             url: "/Feeds/TwitterUserTweet?profileid=" + id,
             data: '',
@@ -980,7 +981,7 @@ function TwitterRetweets(id) {
     try {
         debugger;
         $("#title_paneltab3").html("Retweets");
-        TwitterRetweets = $.ajax({
+        $.ajax({
             type: "POST",
             url: "../Feeds/TwitterRetweets?profileid=" + id,
             data: '',
@@ -1004,7 +1005,7 @@ function TwitterMentions(id) {
     try {
         debugger;
         $("#title_paneltab3").html("Mentions");
-        TwitterMentions = $.ajax({
+        $.ajax({
             type: "POST",
             url: "../Feeds/TwitterMentions?profileid=" + id,
             data: '',
@@ -1214,7 +1215,6 @@ function linkedindetails(id) {
 function LinkedInscrolldata() {
     debugger;
     try {
-
         var $container = $("#data_paneltab1");
 
         $.ajax({

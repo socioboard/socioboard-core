@@ -38,6 +38,10 @@
                 objFacebookAccount = (FacebookAccount)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjFacebookAccount.getFacebookAccountDetailsById(objGroups.UserId.ToString(), item.ProfileId.ToString()), typeof(FacebookAccount)));
                 senttoname = objFacebookAccount.FbUserName;
                 sendtoprofileimage = "http://graph.facebook.com/" + objFacebookAccount.FbUserId + "/picture?type=small";
+                if (string.IsNullOrEmpty(sendtoprofileimage))
+                {
+                    sendtoprofileimage = "/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/blank_img.png";
+                }
            
             }
             else if (item.ProfileType == "twitter")
@@ -46,6 +50,10 @@
                 objTwitterAccount = (TwitterAccount)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjTwitterAccount.GetTwitterAccountDetailsById(objGroups.UserId.ToString(), item.ProfileId.ToString()), typeof(TwitterAccount)));
                 senttoname = objTwitterAccount.TwitterScreenName;
                 sendtoprofileimage = objTwitterAccount.ProfileImageUrl;
+                if (string.IsNullOrEmpty(sendtoprofileimage))
+                {
+                    sendtoprofileimage = "/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/blank_img.png";
+                }
             }
             else if (item.ProfileType == "linkedin")
             {
@@ -53,6 +61,10 @@
                 objLinkedInAccount = (LinkedInAccount)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjLinkedinAccount.GetLinkedinAccountDetailsById(objGroups.UserId.ToString(), item.ProfileId.ToString()), typeof(LinkedInAccount)));
                 senttoname = objLinkedInAccount.LinkedinUserName;
                 sendtoprofileimage = objLinkedInAccount.ProfileImageUrl;
+                if (string.IsNullOrEmpty(sendtoprofileimage))
+                {
+                    sendtoprofileimage = "/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/blank_img.png";
+                }
             }
             else if (item.ProfileType == "instagram")
             {
@@ -64,6 +76,10 @@
                 objTumblrAccount = (TumblrAccount)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjTumblrAccount.GetTumblrAccountDetailsById(objGroups.UserId.ToString(), item.ProfileId.ToString()), typeof(TumblrAccount)));
                 senttoname = objTumblrAccount.tblrUserName;
                 sendtoprofileimage = "http://api.tumblr.com/v2/blog/" + objTumblrAccount.tblrUserName + ".tumblr.com/avatar";
+                if (string.IsNullOrEmpty(sendtoprofileimage))
+                {
+                    sendtoprofileimage = "/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/blank_img.png";
+                }
             }
             else if (item.ProfileType == "youtube")
             {
@@ -72,7 +88,7 @@
             <tr class="odd gradeX" id="@item.Id">
                 <td>
                     <div class="col-xs-6">
-                        <img src="@objuser.ProfileUrl" class="img-circle profilePic" data-toggle="modal" data-target="#profileModal">
+                        <img src="@objuser.ProfileUrl" class="img-circle profilePic" onclick="DetailsofProfile('@item.ProfileId','@item.ProfileType')">
                     </div>
                     <div class="col-xs-6">
                         <span>@objuser.UserName<br>
@@ -82,7 +98,7 @@
                 </td>
                 <td>@item.ShareMessage</td>
                 <td>
-                    <img src="@sendtoprofileimage" class="img-circle profilePic" data-toggle="modal" data-target="#profileModal">
+                    <img src="@sendtoprofileimage" class="img-circle profilePic" onclick="DetailsofProfile('@item.ProfileId','@item.ProfileType')">
 
                     @if (item.Status == true)
                     {

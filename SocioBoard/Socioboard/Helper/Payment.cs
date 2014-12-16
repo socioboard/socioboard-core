@@ -19,7 +19,7 @@ namespace Socioboard.Helper
                                        paypalemail;
 
                 //redirecturl += "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_xclick&business=" +
-                //                    paypalemail;
+                //paypalemail;
 
                 //First name i assign static based on login details assign this value
                 redirecturl += "&first_name=" + name;

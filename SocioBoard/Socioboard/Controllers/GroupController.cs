@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Socioboard.App_Start;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 namespace Socioboard.Controllers
 {
     [Authorize]
+    [CustomAuthorize]
     public class GroupController : Controller
     {
         //

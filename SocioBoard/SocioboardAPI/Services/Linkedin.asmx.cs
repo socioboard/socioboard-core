@@ -11,6 +11,7 @@ using GlobusLinkedinLib.Authentication;
 using GlobusLinkedinLib.App.Core;
 using GlobusLinkedinLib.LinkedIn.Core.SocialStreamMethods;
 using log4net;
+using System.Text.RegularExpressions;
 
 namespace Api.Socioboard.Services
 {
@@ -564,6 +565,7 @@ namespace Api.Socioboard.Services
 
              if (!string.IsNullOrEmpty(picurl))
              {
+                 picurl = ConfigurationManager.AppSettings["DomainName"].ToString() + Regex.Split(picurl, "wwwroot")[1].Replace("\\", "/");
                  string res = sociostream.SetImageStatusUpdate(Linkedin_oauth, message, picurl);
              }
              else
