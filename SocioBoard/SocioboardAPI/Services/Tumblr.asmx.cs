@@ -14,6 +14,7 @@ using Newtonsoft.Json.Linq;
 using GlobusTumblerLib.App.Core;
 using System.Text.RegularExpressions;
 using GlobusTumblerLib.Tumblr.Core.BlogMethods;
+using log4net;
 
 namespace Api.Socioboard.Services
 {
@@ -27,6 +28,7 @@ namespace Api.Socioboard.Services
     [ScriptService]
     public class Tumblr : System.Web.Services.WebService
     {
+        ILog logger = LogManager.GetLogger(typeof(Tumblr));
         GroupsRepository objGroupsRepository = new GroupsRepository();
         TeamRepository objTeamRepository = new TeamRepository();
         Domain.Socioboard.Domain.Team objteam;
@@ -68,11 +70,14 @@ namespace Api.Socioboard.Services
             oAuthTumbler.TumblrConsumerSecret = client_secret;
             requestHelper.TumblrCallBackUrl = redirect_uri;
             AccessTokenResponse = requestHelper.GetAccessToken(oAuthTumbler.TumblrToken, code);
-
+            logger.Error(AccessTokenResponse);
 
             string[] tokens = AccessTokenResponse.Split('&'); //extract access token & secret from response
+            logger.Error(tokens);
             string accessToken = tokens[0].Split('=')[1];
+            logger.Error(accessToken);
             string accessTokenSecret = tokens[1].Split('=')[1];
+            logger.Error(accessTokenSecret);
 
             KeyValuePair<string, string> LoginDetails = new KeyValuePair<string, string>(accessToken, accessTokenSecret);
 
@@ -376,30 +381,42 @@ namespace Api.Socioboard.Services
                 oAuthTumbler.TumblrToken = ObjTumblrAccount.tblrAccessToken;
                 oAuthTumbler.TumblrTokenSecret = ObjTumblrAccount.tblrAccessTokenSecret;
                 PublishedPosts objPublishedPosts = new PublishedPosts();
-
-                if (string.IsNullOrEmpty(objScheduledMessage.ShareMessage))
+                string picurl = objScheduledMessage.PicUrl;
+                string message = objScheduledMessage.ShareMessage;
+                if (string.IsNullOrEmpty(objScheduledMessage.ShareMessage) && string.IsNullOrEmpty(objScheduledMessage.PicUrl))
                 {
-                    objScheduledMessage.ShareMessage = "There is no data in Share Message !";
+                    //objScheduledMessage.ShareMessage = "There is no data in Share Message !";
+                    str = "There is no data in Share Message !";
                 }
-
-                try
+                else
                 {
-                    objPublishedPosts.PostData(ObjTumblrAccount.tblrAccessToken, ObjTumblrAccount.tblrAccessTokenSecret, ObjTumblrAccount.tblrUserName, objScheduledMessage.ShareMessage, "", "Text");
-                    str = "Message post on tumblr for Id :" + ObjTumblrAccount.tblrUserName + " and Message: " + objScheduledMessage.ShareMessage;
+                    try
+                    {
+                        //objPublishedPosts.PostData(ObjTumblrAccount.tblrAccessToken, ObjTumblrAccount.tblrAccessTokenSecret, ObjTumblrAccount.tblrUserName, objScheduledMessage.ShareMessage, "", "Text");
+                        if (!string.IsNullOrEmpty(picurl))
+                        {
+                            objPublishedPosts.PostData(ObjTumblrAccount.tblrAccessToken, ObjTumblrAccount.tblrAccessTokenSecret, objScheduledMessage.ProfileId, message, picurl, "photo");
+                        }
+                        else
+                        {
+                            objPublishedPosts.PostData(ObjTumblrAccount.tblrAccessToken, ObjTumblrAccount.tblrAccessTokenSecret, objScheduledMessage.ProfileId, message, "", "text");
+                        }
+                        str = "Message post on tumblr for Id :" + ObjTumblrAccount.tblrUserName + " and Message: " + objScheduledMessage.ShareMessage;
+                        ScheduledMessage schmsg = new ScheduledMessage();
+                        schmsg.UpdateScheduledMessageByMsgId(Guid.Parse(sscheduledmsgguid)); 
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        str = "Message is not posted";
+                    }
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.StackTrace);
-                }
-                ScheduledMessage schmsg = new ScheduledMessage();
-                schmsg.UpdateScheduledMessageByMsgId(Guid.Parse(sscheduledmsgguid));
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
+                str = ex.Message;
             }    
-            
-            
             return str;
         }
 

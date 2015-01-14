@@ -600,60 +600,73 @@ namespace Api.Socioboard.Services
                  oAuthLinkedIn Linkedin_oauth = new oAuthLinkedIn();
                  Linkedin_oauth.ConsumerKey = System.Configuration.ConfigurationSettings.AppSettings["LiApiKey"].ToString();
                  Linkedin_oauth.ConsumerSecret = System.Configuration.ConfigurationSettings.AppSettings["LiSecretKey"].ToString();
-                 Linkedin_oauth.FirstName = objLinkedInAccount.LinkedinUserName;
-                 Linkedin_oauth.Token = objLinkedInAccount.OAuthToken;
-                 Linkedin_oauth.TokenSecret = objLinkedInAccount.OAuthSecret;
-                 Linkedin_oauth.Verifier = objLinkedInAccount.OAuthVerifier;
-                 if (objLinkedInAccount != null)
+                 Linkedin_oauth.FirstName = LinkedAccount.LinkedinUserName;
+                 Linkedin_oauth.Token = LinkedAccount.OAuthToken;
+                 Linkedin_oauth.TokenSecret = LinkedAccount.OAuthSecret;
+                 Linkedin_oauth.Verifier = LinkedAccount.OAuthVerifier;
+                 string message = objScheduledMessage.ShareMessage;
+                 string picurl = objScheduledMessage.PicUrl;
+                 if (LinkedAccount != null)
                  {
-
                      try
                      {
-                         GlobusLinkedinLib.App.Core.LinkedInUser linkeduser = new GlobusLinkedinLib.App.Core.LinkedInUser();
-
-                         if (string.IsNullOrEmpty(objScheduledMessage.ShareMessage))
+                         //GlobusLinkedinLib.App.Core.LinkedInUser linkeduser = new GlobusLinkedinLib.App.Core.LinkedInUser();
+                         if (string.IsNullOrEmpty(objScheduledMessage.ShareMessage) && string.IsNullOrEmpty(objScheduledMessage.PicUrl))
                          {
-                             objScheduledMessage.ShareMessage = "There is no data in Share Message !";
-                         }
-
-                         var response = string.Empty; ;
-                         try
-                         {
-                             response = linkeduser.SetStatusUpdate(Linkedin_oauth, objScheduledMessage.ShareMessage);
-                             str = "Message post on linkedin for Id :" + objLinkedInAccount.LinkedinUserId + " and Message: " + objScheduledMessage.ShareMessage;
-                         }
-                         catch (Exception ex)
-                         {
-                             Console.WriteLine(ex.StackTrace);
-                         }
-
-                         if (string.IsNullOrEmpty(response))
-                         {
-                             ScheduledMessage schmsg = new ScheduledMessage();
-                             schmsg.UpdateScheduledMessageByMsgId(Guid.Parse(sscheduledmsgguid));
+                             //objScheduledMessage.ShareMessage = "There is no data in Share Message !";
+                             str = "There is no data in Share Message !";
                          }
                          else
                          {
-                             str = "Message not posted";
-                         }
+                             var response = string.Empty; ;
+                             try
+                             {
+                                 //response = linkeduser.SetStatusUpdate(Linkedin_oauth, objScheduledMessage.ShareMessage);
+                                 SocialStream sociostream = new SocialStream();
+                                 if (!string.IsNullOrEmpty(picurl))
+                                 {
+                                     picurl = ConfigurationManager.AppSettings["DomainName"].ToString() + Regex.Split(picurl, "wwwroot")[1].Replace("\\", "/");
+                                     response = sociostream.SetImageStatusUpdate(Linkedin_oauth, message, picurl);
+                                 }
+                                 else
+                                 {
+                                     response = sociostream.SetStatusUpdate(Linkedin_oauth, message);
+                                 }
+                             }
+                             catch (Exception ex)
+                             {
+                                 Console.WriteLine(ex.StackTrace);
+                                 str = ex.Message;
+                             }
 
+                             if (!string.IsNullOrEmpty(response))
+                             {
+                                 str = "Message post on linkedin for Id :" + LinkedAccount.LinkedinUserId + " and Message: " + objScheduledMessage.ShareMessage;
+                                 ScheduledMessage schmsg = new ScheduledMessage();
+                                 schmsg.UpdateScheduledMessageByMsgId(Guid.Parse(sscheduledmsgguid));
+                             }
+                             else
+                             {
+                                 str = "Message not posted";
+                             } 
+                         }
                      }
                      catch (Exception ex)
                      {
                          Console.WriteLine(ex.StackTrace);
+                         str = ex.Message;
                      }
                  }
                  else
                  {
-                     str = "facebook account not found for id" + objScheduledMessage.ProfileId;
+                     str = "Linkedin account not found for id" + objScheduledMessage.ProfileId;
                  }
              }
-
              catch (Exception ex)
              {
                  Console.WriteLine(ex.StackTrace);
+                 str = ex.Message;
              }
-
              return str;
          }
 

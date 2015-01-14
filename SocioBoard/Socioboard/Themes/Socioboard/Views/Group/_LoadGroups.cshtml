@@ -20,7 +20,7 @@
                 <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                 <span class="fa fa-facebook-square" style="font-size: 20px;color:#6d8bc9;"></span>
+                 <span class="fa fa-facebook-square" style="font-size: 20px;color:#6d8bc9;" ></span>
                 <a class="collapsed" href="#@FbAccount.FbUserId" data-parent="#accordion" data-toggle="collapse">@FbAccount.FbUserName</a>
                
             </h4>
@@ -30,16 +30,14 @@
                 
               @foreach (Domain.Socioboard.Domain.FacebookGroup item_value in  (List<object>)items.Value)
               {
-                  
-                  
-                  <div style="cursor:pointer" class="form-group">
-
+                  <div style="cursor:pointer;margin-left:20px" class="form-group">
                     <div class="checkbox ">
-                        <label>
-                            <input type="checkbox" value="fb_@FbAccount.AccessToken" id="@FbAccount.FbUserId*#*lin*#*@item_value.GroupId">
-                        </label>
+                       
+                            <input class="_isgroupchecked" type="checkbox" value="fb_@FbAccount.AccessToken" id="@FbAccount.FbUserId*#*lin*#*@item_value.GroupId">
+                            <span onclick="facebookgroupdetails('@item_value.GroupId','@FbAccount.AccessToken','@FbAccount.FbUserId');"  id="">@item_value.Name</span>
+                       
                     </div>
-                    <div  style="margin-top: -15px; margin-left: 18px; cursor: pointer;"><span onclick="facebookgroupdetails('@item_value.GroupId','@FbAccount.AccessToken','@FbAccount.FbUserId');"  id="">@item_value.Name</span></div>
+                    @*<div  style="margin-top: -15px; margin-left: 18px; cursor: pointer;"><span onclick="facebookgroupdetails('@item_value.GroupId','@FbAccount.AccessToken','@FbAccount.FbUserId');"  id="">@item_value.Name</span></div>*@
                 </div>
                   
               }                                        
@@ -59,6 +57,7 @@
             object obj= (object)items.Key;
 
             var LinkedInAccount = (Domain.Socioboard.Domain.LinkedInAccount)obj;
+           
                 <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
@@ -72,15 +71,15 @@
                 
               @foreach (Domain.Socioboard.Domain.LinkedInGroup.Group_Updates item_value in  (List<object>)items.Value)
               {
-                  <div style="cursor:pointer" class="form-group">
+                  <div style="cursor:pointer;margin-left:20px" class="form-group">
 
                     <div class="checkbox ">
-                        <label>
-                            
-                            <input type="checkbox" value="lin_@LinkedInAccount.LinkedinUserId" id="@LinkedInAccount.LinkedinUserId*#*lin*#*@item_value.id">
-                        </label>
+                        
+                            <input class="_isgroupchecked" type="checkbox" value="lin_@LinkedInAccount.LinkedinUserId" id="@LinkedInAccount.LinkedinUserId*#*lin*#*@item_value.id">
+                            <span onclick="linkedingroupdetails('@item_value.id','@LinkedInAccount.LinkedinUserId');"  id="">@item_value.GroupName</span>
+
                     </div>
-                    <div style="margin-top: -15px; margin-left: 18px; cursor: pointer;"><span onclick="linkedingroupdetails('@item_value.id','@LinkedInAccount.LinkedinUserId');"  id="">@item_value.GroupName</span></div>
+                    @*<div style="margin-top: -15px; margin-left: 18px; cursor: pointer;"><span onclick="linkedingroupdetails('@item_value.id','@LinkedInAccount.LinkedinUserId');"  id="">@item_value.GroupName</span></div>*@
                 </div>
                   
               }                                        

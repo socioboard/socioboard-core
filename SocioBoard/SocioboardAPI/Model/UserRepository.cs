@@ -422,6 +422,34 @@ namespace Api.Socioboard.Model
 
         }
 
+        public int DeleteUserByAdmin(Guid id)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        int i = session.CreateQuery("Update User set ActivationStatus=:status where Id = :userid")
+                                  .SetParameter("userid", id)
+                                  .SetParameter("status", "2")
+                                  .ExecuteUpdate();
+                        transaction.Commit();
+                        return i;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+
+
+                }
+            }
+
+        }
+
         public int ResetPassword(Guid id, string password)
         {
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -464,6 +492,58 @@ namespace Api.Socioboard.Model
                         {
                             alstUser.Add(item);
                         }
+
+                        return alstUser;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }
+            }
+        }
+
+        public List<User> getAllUsersByAdmin()
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        List<User> alstUser = session.CreateQuery("from User where Id !=null and ActivationStatus!=2")
+                        .List<User>().ToList<User>();
+
+                        Domain.Socioboard.Domain.User ObjUser = alstUser.Single(U => U.UserType == "SuperAdmin");
+                        if (ObjUser!=null)
+                        {
+                            alstUser.Remove(ObjUser);
+                        }
+
+                        return alstUser;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }
+            }
+        }
+
+        public List<User> getAllDeletedUsersByAdmin()
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        List<User> alstUser = session.CreateQuery("from User")
+                        .List<User>().Where(U=>U.ActivationStatus=="2").ToList<User>();
 
                         return alstUser;
 
@@ -865,7 +945,7 @@ namespace Api.Socioboard.Model
             }
         }
 
-        public int UpdateUserById(Guid Userid,string username,string timezone)
+        public int UpdateUserById(Guid Userid,string username,string timezone, string picurl)
         {
             int i = 0;
             try
@@ -877,10 +957,48 @@ namespace Api.Socioboard.Model
 
                         try
                         {
-                            i = session.CreateQuery("Update User set TimeZone=:tz , UserName=:username  where Id = :userid")
+                            i = session.CreateQuery("Update User set TimeZone=:tz, UserName=:username, ProfileUrl=:ProfileUrl where Id = :userid")
                                      .SetParameter("userid", Userid)
                                      .SetParameter("tz", timezone)
                                      .SetParameter("username", username)
+                                     .SetParameter("ProfileUrl",picurl)
+                                     .ExecuteUpdate();
+                            transaction.Commit();
+
+
+                        }
+                        catch { }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error : " + ex.StackTrace);
+            }
+
+            return i;
+
+        }
+
+
+        // Edited by Hozefa[17/12/2014]
+        public int UpdateAdminUserById(Guid Userid, string username, string timezone,string ProfileUrl)
+        {
+            int i = 0;
+            try
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+
+                        try
+                        {
+                            i = session.CreateQuery("Update User set TimeZone=:tz , UserName=:username , ProfileUrl=:profileurl  where Id = :userid")
+                                     .SetParameter("userid", Userid)
+                                     .SetParameter("tz", timezone)
+                                     .SetParameter("username", username)
+                                     .SetParameter("profileurl", ProfileUrl)
                                      .ExecuteUpdate();
                             transaction.Commit();
 
@@ -900,7 +1018,6 @@ namespace Api.Socioboard.Model
         }
 
         // Edited by Antima[1/11/2014]
-
         public int UpdateUserbyUserId(Guid UserId, string ActivationStatus)
         {
             int i = 0;
@@ -976,22 +1093,89 @@ namespace Api.Socioboard.Model
             {
                 using (NHibernate.ITransaction transaction = session.BeginTransaction())
                 {
-
                     try
                     {
-                        i = session.CreateQuery("Update User set ChangePasswordKey=:ChangePasswordKey  where Id = :userid")
+                        i = session.CreateQuery("Update User set ChangePasswordKey=:ChangePasswordKey, IsKeyUsed=0 where Id = :userid")
                                   .SetParameter("userid", Userid)
                                   .SetParameter("ChangePasswordKey", ChangePasswordKey)
                                   .ExecuteUpdate();
                         transaction.Commit();
-
-                        
                     }
                     catch { }
                 }
             }
             return i;
 
+        }
+
+        // Added by Antima[5/1/2015]
+
+        public int UpdateChangeEmailKey(Guid Userid, string ChangeEmailKey)
+        {
+            int i = 0;
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+
+                    try
+                    {
+                        i = session.CreateQuery("Update User set ChangeEmailKey=:ChangeEmailKey  where Id = :userid")
+                                  .SetParameter("userid", Userid)
+                                  .SetParameter("ChangeEmailKey", ChangeEmailKey)
+                                  .ExecuteUpdate();
+                        transaction.Commit();
+
+
+                    }
+                    catch { }
+                }
+            }
+            return i;
+
+        }
+        public int UpdateEmailId(Guid Id, string NewEmailId)
+        {
+            int i = 0;
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        i = session.CreateQuery("Update User set EmailId=:NewEmailId  where Id = :Id")
+                                  .SetParameter("Id", Id)
+                                  .SetParameter("NewEmailId", NewEmailId)
+                                  .ExecuteUpdate();
+                        transaction.Commit();
+                    }
+                    catch { }
+                }
+            }
+            return i;
+        }
+
+        public int UpdateIsEmailKeyUsed(Guid Id, string ChangeEmailKey)
+        {
+            int i = 0;
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        int IsEmailKey = 1;
+                        i = session.CreateQuery("Update User set IsEmailKeyUsed=:IsEmailKey  where Id = :Id and ChangeEmailKey =:ChangeEmailKey")
+                                  .SetParameter("IsEmailKey", IsEmailKey)
+                                  .SetParameter("Id", Id)
+                                  .SetParameter("ChangeEmailKey", ChangeEmailKey)
+                                  .ExecuteUpdate();
+                        transaction.Commit();
+                    }
+                    catch { }
+                }
+            }
+            return i;
         }
     }
 }

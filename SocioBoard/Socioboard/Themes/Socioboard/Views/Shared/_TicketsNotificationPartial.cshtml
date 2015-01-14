@@ -1,0 +1,81 @@
+﻿@using System.Data;
+@using Socioboard.Helper;
+@using Socioboard.Api;
+@using Domain.Socioboard.Domain;
+@using System.Web.Script.Serialization;
+@{
+    DataTable dt = (DataTable)Model.Tables[0];
+    string hrefPost = string.Empty;
+    Domain.Socioboard.Domain.User user = (Domain.Socioboard.Domain.User)Session["User"];
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    int sorteddatacount = 0;
+}
+@{ UrlExtractor urlextarct = new UrlExtractor();}
+
+@{foreach (DataRow row in dt.Rows)
+  {
+       try
+      {
+          string icon = "";
+          string network = "";
+          if (row["Network"].ToString() == "twitter")
+          {
+              icon = "twticon.png";
+              network = "twitter";
+              if (!string.IsNullOrEmpty(row["Message"].ToString()))
+              {
+                  try
+                  {
+                      hrefPost = "https://www.twitter.com/" + row["FromId"] + "/status/" + row["MessageId"].ToString().Replace(row["FromId"].ToString(), string.Empty).Replace("_", string.Empty).Trim();
+
+                  }
+                  catch (Exception ex)
+                  {
+                      Console.WriteLine("Error : " + ex.StackTrace);
+
+                  }
+              }
+          }
+          else if (row["Network"].ToString() == "facebook")
+          {
+              icon = "fb_icon.png";
+              network = "facebook";
+              if (!string.IsNullOrEmpty(row["Message"].ToString()))
+              {
+                  try
+                  {
+                      hrefPost = "https://www.facebook.com/" + row["FromId"] + "/posts/" + row["MessageId"].ToString().Replace(row["FromId"].ToString(), string.Empty).Replace("_", string.Empty).Trim();
+
+                  }
+                  catch (Exception ex)
+                  {
+                      Console.WriteLine("Error : " + ex.StackTrace);
+
+                  }
+              }
+          }
+          string message = string.Empty;
+         
+          if (row["Message"].ToString().Length >23)
+          {
+              message = row["Message"].ToString().Substring(0, 20) + "...";
+          }
+          else
+          {
+              message = row["Message"].ToString();
+          }
+            <li>
+        <a href="#">
+            @*<i class="fa fa-facebook fa-fw"></i>@objFacebookAccount.FbUserName*@
+            <img src="@row["FromProfileUrl"]" class="img-circle profilePics" >
+            <img src ="/Themes/@path/Contents/img/@icon" class="icon_share"><a target="_blank" style="float: left; margin-left: 60px; margin-top: -34px;" href="@hrefPost">@message</a>
+        </a>
+    </li>
+           
+       }
+      catch(Exception){
+          throw;
+      }
+      
+  }
+}

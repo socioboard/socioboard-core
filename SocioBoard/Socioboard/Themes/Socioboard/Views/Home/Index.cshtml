@@ -27,12 +27,10 @@
 </div>
 
 <div class="modal fade" id="SocialProfileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-backdrop fade in" style="height: 1048px;"></div>
+    <div class="modal fade in" style="height: 1048px;"></div>
     <div class="modal-dialog">
         <div class="modal-content" style="box-shadow: none ! important; background-color: transparent;  margin-top: 21%; border:none ! important">
             <div class="modal-body">
-                @* <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-              *@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6" style="margin-bottom: 10px; margin-left: 20px;">
@@ -76,6 +74,7 @@
             success: function (data) {
                 alertify.set({ delay: 3000 });
                 $('#facebookpageinfo').css({ 'display': 'none' });
+                jQuery.noConflict();
                 $('#facebookpopup').modal('hide');
                 alertify.success("Fan Page Added Successfully");
                 window.location = '../Home/Index';
@@ -95,6 +94,7 @@
 
                 alertify.set({ delay: 3000 });
                 $('#facebookgroupinfo').css({ 'display': 'none' });
+                jQuery.noConflict();
                 $('#facebookpopup').modal('hide');
                 alertify.success("Group Added Successfully");
                 window.location = '../Home/Index';
@@ -124,6 +124,7 @@
     function AddProfilepopUp() {
         debugger;
         //alert("success");
+        //jQuery.noConflict();
         $('#SocialProfileModal').modal({
             backdrop: 'static'
         });
@@ -194,6 +195,7 @@
                             }
                         }
                         $('#facebookpageinfo').css({ 'display': 'block' });
+                      //  jQuery.noConflict();
                         $('#facebookpopup').modal('show');
                     },
                     async: false
@@ -216,7 +218,9 @@
 
                             }
                         }
+                       // jQuery.noConflict();
                         $('#facebookgroupinfo').css({ 'display': 'block' });
+                        //jQuery.noConflict();
                         $('#facebookpopup').modal('show');
                     },
                     async: false
@@ -244,6 +248,7 @@
                         }
 
                         $('#linkedincompanypageinfo').css({ 'display': 'block' });
+                        //jQuery.noConflict();
                         $('#linkedinpopup').modal('show');
                     },
                     async: false

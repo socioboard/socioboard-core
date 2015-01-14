@@ -1,0 +1,427 @@
+﻿@using System.Data;
+@using Socioboard.Helper;
+@using Socioboard.Api;
+@using Domain.Socioboard.Domain;
+@using System.Web.Script.Serialization;
+@{
+    //  DataTable dt = (DataTable)Model.Tables[0];
+    List<Domain.Socioboard.Domain.FBTwitterFeeds> fbtwitterfeeds = (List<Domain.Socioboard.Domain.FBTwitterFeeds>)Model;
+    string message = string.Empty;
+    string hrefPost = string.Empty;
+    Domain.Socioboard.Domain.User user = (Domain.Socioboard.Domain.User)Session["User"];
+    int sorteddatacount = 0;
+}
+@{ UrlExtractor urlextarct = new UrlExtractor();}
+
+@{foreach (FBTwitterFeeds row in fbtwitterfeeds)
+  {
+      try
+      {
+          string icon = "";
+          string network = "";
+          if (row.TwitterFeed.Type == "twt_feeds")
+          {
+              icon = "twticon.png";
+              network = "twitter";
+              if (!string.IsNullOrEmpty(row.TwitterFeed.Feed.ToString()))
+              {
+                  try
+                  {
+                      hrefPost = "https://www.twitter.com/" + row.TwitterFeed.FromId + "/status/" + row.TwitterFeed.MessageId.ToString().Replace(row.TwitterFeed.FromId.ToString(), string.Empty).Replace("_", string.Empty).Trim();
+
+                  }
+                  catch (Exception ex)
+                  {
+                      Console.WriteLine("Error : " + ex.StackTrace);
+
+                  }
+              }
+    <div class="panel panel-primary" id="messagetaskable_@sorteddatacount">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-6">
+
+                    <div class="col-xs-3" style="margin-left: -20px;">
+                        <img title="@row.TwitterFeed.FromName" alt="@row.TwitterFeed.FromId" src="@row.TwitterFeed.FromProfileUrl" id="formprofileurl_@sorteddatacount" class="img-circle" data-toggle="modal" data-target="#profileModal">
+                        <img class="img-responsive img-circle" src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/@icon" style="margin-left: 35px; margin-top: -20px;">
+                        
+                    </div>
+                    <div class="col-xs-5" style="margin-top: 11px; position: absolute; margin-left: 40px;">
+                        <span id="screanName_@sorteddatacount">@row.TwitterFeed.FromName</span><br />
+                    </div>
+                    <p style="padding-top: 60px">Assigned To : <span>@row.AssignedUser</span></p>
+                </div>
+                <div class="col-xs-6">
+                    <span style="float: right;">@row.TwitterFeed.FeedDate</span><br />
+
+                    <p class="pull-right">Ticket No. <span>@row.TicketNo</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <p id="msg_@sorteddatacount"><a target="_blank" href="@hrefPost">@row.TwitterFeed.Feed</a></p>
+            <i id="CommentReply_@row.TwitterFeed.FromId" class="fa fa-reply fa-fw" title="Comment" onclick="CommentReply('@sorteddatacount', '@network.ToString()', '@row.TwitterFeed.MessageId.ToString()', '@row.TwitterFeed.ProfileId.ToString()')" style="cursor:pointer"></i>
+            @*  <a style="padding-left: 635px; cursor: pointer" data-toggle="modal" data-target="#twitterreplyModal">View Details</a>*@
+        </div>
+    </div>
+              
+          }
+          else if (row.FacebookFeed.Type == "facebook")
+          {
+              icon = "fb_icon.png";
+              network = "facebook";
+              if (!string.IsNullOrEmpty(row.FacebookFeed.FeedDescription.ToString()))
+              {
+                  try
+                  {
+                      hrefPost = "https://www.facebook.com/" + row.FacebookFeed.FromId + "/posts/" + row.FacebookFeed.MessageId.ToString().Replace(row.FacebookFeed.FromId.ToString(), string.Empty).Replace("_", string.Empty).Trim();
+
+                  }
+                  catch (Exception ex)
+                  {
+                      Console.WriteLine("Error : " + ex.StackTrace);
+
+                  }
+              }
+    <div class="panel panel-primary" id="messagetaskable_@sorteddatacount">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-6">
+
+                    <div class="col-xs-3" style="margin-left: -20px;">
+                        <img title="@row.FacebookFeed.FromName" alt="@row.FacebookFeed.FromId" src="@row.FacebookFeed.FromProfileUrl" id="formprofileurl_@sorteddatacount" class="img-circle" data-toggle="modal" data-target="#profileModal">
+                        <img class="img-responsive img-circle" src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/@icon" style="margin-left: 35px; margin-top: -20px;">
+                      
+
+                    </div>
+                    <div class="col-xs-5" style="margin-top: 11px; position: absolute; margin-left: 40px;">
+                        <span id="screanName_@sorteddatacount">@row.FacebookFeed.FromName</span><br />
+                    </div>
+                      <p style="padding-top: 60px">Assigned To : <span>@row.AssignedUser</span></p>
+                </div>
+                <div class="col-xs-6">
+                    <span style="float: right;">@row.FacebookFeed.FeedDate</span><br />
+
+                    <p class="pull-right">Ticket No. <span>@row.TicketNo</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <p id="msg_@sorteddatacount"><a target="_blank" href="@hrefPost">@row.TwitterFeed.Feed</a></p>
+            <i id="CommentReply_@row.TwitterFeed.FromId" class="fa fa-reply fa-fw" title="Comment" onclick="CommentReply('@sorteddatacount', '@network.ToString()', '@row.TwitterFeed.MessageId.ToString()', '@row.TwitterFeed.ProfileId.ToString()')" style="cursor:pointer"></i>
+            @*  <a style="padding-left: 635px; cursor: pointer" data-toggle="modal" data-target="#twitterreplyModal">View Details</a>*@
+        </div>
+    </div>
+
+          }
+
+          sorteddatacount++;
+
+      }
+      catch (Exception)
+      {
+          throw;
+      }
+  }
+}
+
+
+<!-- Modal -->
+<div class="modal fade" id="TicketReply" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button id="closecommentpopup" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                @*  <img src="Contents/img/photo.png" class="img-circle">
+                                                <img class="img-responsive img-circle" src="Contents/img/twticon.png" style="margin-left: 35px; margin-top: -20px;">*@
+            </div>
+            <div class="modal-body">
+                <h4>LEAVE A COMMENT</h4>
+                <textarea id="comment_text" class="form-control" rows="3" placeholder="Write your message here"></textarea>
+            </div>
+            <div id="leaveTicketReply" class="modal-footer">
+                <button type="button" class="btn btn-default ">Comment</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end of model-->
+
+<div class="modal fade" id="twitterreplyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header row" style="margin-left: 0px; margin-right: 0px;">
+                <button type="button" class="close col-md-1" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title col-md-5" id="myModalLabel">Direct Messages</h4>
+                <button type="button" class="btn btn-default col-md-1"><span class="fa fa-retweet"></span></button>
+                &nbsp;
+       <button class="btn btn-primary col-md-4" type="button" style="margin-left: 10px;"><span class="fa fa-envelope-o"></span>New message</button>
+            </div>
+            <div class="modal-body" style="padding: 0px;">
+                <div id="direct_messages" style="display: none;">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-xs-2 col-md-2">
+                                    <img class="avatar" src="https://abs.twimg.com/sticky/default_profile_images/default_profile_2_normal.png" alt="">
+                                </div>
+                                <div class="col-xs-9 col-md-9">
+                                    <div class="pull-left">
+                                        <a href="#">
+                                            <b class="fullname">You</b>
+                                            <small class="username"><s></s>kalyani890</small></a>
+
+                                    </div>
+                                    <div class="pull-right">
+                                        <small class="time">
+
+                                            <span>51 minutes ago</span>
+                                        </small>
+                                    </div>
+                                    <div class="comment-text pull-left">
+                                        <span class="fa fa-reply"></span>happydayyyyyyyyyy     to you                                  
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </li>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-xs-2 col-md-2">
+                                    <img class="avatar" src="https://abs.twimg.com/sticky/default_profile_images/default_profile_2_normal.png" alt="">
+                                </div>
+                                <div class="col-xs-9 col-md-9">
+                                    <div class="pull-left">
+                                        <a href="#">
+                                            <b class="fullname">You</b>
+                                            <small class="username"><s></s>kalyani890</small></a>
+
+                                    </div>
+                                    <div class="pull-right">
+                                        <small class="time">
+
+                                            <span>51 minutes ago</span>
+                                        </small>
+                                    </div>
+                                    <div class="comment-text pull-left">
+                                        <span class="fa fa-reply"></span>Hello World!............
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-xs-2 col-md-2">
+                                    <img class="avatar" src="https://abs.twimg.com/sticky/default_profile_images/default_profile_2_normal.png" alt="">
+                                </div>
+                                <div class="col-xs-9 col-md-9">
+                                    <div class="pull-left">
+                                        <a href="#">
+                                            <b class="fullname">You</b>
+                                            <small class="username"><s></s>kalyani890</small></a>
+
+                                    </div>
+                                    <div class="pull-right">
+                                        <small class="time">
+
+                                            <span>51 minutes ago</span>
+                                        </small>
+                                    </div>
+                                    <div class="comment-text pull-left">
+                                        <span class="fa fa-reply"></span>hiiii...........................                             
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-xs-2 col-md-2">
+                                    <img class="avatar" src="https://abs.twimg.com/sticky/default_profile_images/default_profile_2_normal.png" alt="">
+                                </div>
+                                <div class="col-xs-9 col-md-9">
+                                    <div class="pull-left">
+                                        <a href="#">
+                                            <b class="fullname">You</b>
+                                            <small class="username"><s></s>kalyani890</small></a>
+
+                                    </div>
+                                    <div class="pull-right">
+                                        <small class="time">
+
+                                            <span>51 minutes ago</span>
+                                        </small>
+                                    </div>
+                                    <div class="comment-text pull-left">
+                                        <span class="fa fa-reply"></span>
+
+                                        Hey dear, thank u for following me. Am waiting 2 see ur beautiful tweets,favorit and RT. 9c to mit U
+      
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="personal_chat" style="display: block;">
+
+                    <div class="col-md-12">
+                        <div class="panel panel-primary">
+
+                            <div class="panel-body">
+                                <ul class="chat">
+                                    <li class="left clearfix"><span class="chat-img pull-left">
+                                        <img class="img-rounded img-responsive" alt="User Avatar" src="http://placehold.it/50/55C1E7/fff&amp;text=U">
+                                    </span>
+                                        <div class="chat-body clearfix">
+                                            <div class="header">
+                                                <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
+                                                    <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
+                                            </div>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                    dolor, quis ullamcorper ligula sodales.
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="right clearfix"><span class="chat-img pull-right">
+                                        <img class="img-rounded img-responsive" alt="User Avatar" src="http://placehold.it/50/FA6F57/fff&amp;text=ME">
+                                    </span>
+                                        <div class="chat-body clearfix">
+                                            <div class="header">
+                                                <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>13 mins ago</small>
+                                                <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                                            </div>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                    dolor, quis ullamcorper ligula sodales.
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="left clearfix"><span class="chat-img pull-left">
+                                        <img class="img-rounded img-responsive" alt="User Avatar" src="http://placehold.it/50/55C1E7/fff&amp;text=U">
+                                    </span>
+                                        <div class="chat-body clearfix">
+                                            <div class="header">
+                                                <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
+                                                    <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
+                                            </div>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                    dolor, quis ullamcorper ligula sodales.
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="right clearfix"><span class="chat-img pull-right">
+                                        <img class="img-rounded img-responsive" alt="User Avatar" src="http://placehold.it/50/FA6F57/fff&amp;text=ME">
+                                    </span>
+                                        <div class="chat-body clearfix">
+                                            <div class="header">
+                                                <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>15 mins ago</small>
+                                                <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                                            </div>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                    dolor, quis ullamcorper ligula sodales.
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="panel-footer">
+                                <div class="input-group">
+                                    <input type="text" placeholder="Type your message here..." class="form-control input-md" id="btn-input">
+                                    <span class="input-group-btn">
+                                        <span class="tweet-counter">140</span>
+                                        <button id="btn-chat" class="btn btn-warning btn-sm">
+                                            <span class="fa fa-envelope"></span>Send</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p>Tip: you can send a message to anyone who follows you. <a href="#">Learn more</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function CommentReply(id, network, messageid, ProfileId) {
+        debugger;
+        var buttonhtm = "<button type=\"button\" class=\"btn btn-default\" onclick=\"TicketCommentReply('" + network + "','" + messageid + "','" + ProfileId + "')\">Comment</button>";
+        $("#leaveTicketReply").html(buttonhtm);
+        $("#TicketReply").modal('show');
+
+    }
+
+    function TicketCommentReply(network, messageid, ProfileId) {
+        debugger;
+        //var messageid = messageid.split("_");
+        var comment = document.getElementById("comment_text").value;
+        if (comment == "" || comment == undefined) {
+            alert("Please write Some text then click Comment!")
+            return false;
+        }
+        if (network == "facebook") {
+            $.ajax
+                ({
+                    type: "POST",
+                    url: "../Home/TicketFacebokReply?ProfileId=" + ProfileId + "&messageid=" + messageid + "&comment=" + comment,
+                    data: '',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (msg) {
+                        debugger;
+                        $("#comment_text").val('');
+                        $("#closecommentpopup").click();
+                        if (msg == "success") {
+                            alertify.success('Commented successfully');
+                        }
+                        else {
+                            alertify.error('Somthing went Wrong');
+                        }
+
+
+                    }
+                });
+        }
+        else if (network == "twitter") {
+            $.ajax
+                ({
+                    type: "POST",
+                    url: "../Home/TicketTwitterReply?ProfileId=" + ProfileId + "&messageid=" + messageid + "&comment=" + comment,
+                    data: '',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (msg) {
+                        debugger;
+                        $("#comment_text").val('');
+                        $("#closecommentpopup").click();
+                        if (msg == "success") {
+                            alertify.success('Replied successfully');
+                        }
+                        else {
+                            alertify.error('Somthing went Wrong');
+                        }
+
+                    }
+                });
+
+        }
+        else if (network == "linkedin") {
+        }
+
+    }
+
+
+</script>

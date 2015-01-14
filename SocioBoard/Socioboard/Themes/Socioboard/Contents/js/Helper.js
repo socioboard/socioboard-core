@@ -228,6 +228,7 @@ function savetask() {
 
         try {
             var description = $('#savetask').attr('msgdesc');
+            var msgdate = $('#savetask').attr('msgdate');
         } catch (e) {
             alert(e);
         }
@@ -253,11 +254,12 @@ function savetask() {
             $.ajax
             ({
                 type: "POST",
-                url: "../Messages/savetask?description=" + description + "&memberid=" + dat[1] + "&comment=" + comment,
+                url: "../Messages/savetask?description=" + description + "&memberid=" + dat[1] + "&comment=" + comment + "&msgdate=" + msgdate,
                 data: '',
                 contentType: "application/json; charset=utf-8",
                 dataType: "html",
                 success: function (msg) {
+                    //jQuery.noConflict();
                     $("#popupchk").bPopup().close();
                     $("#txttaskcomment").val() = "";
                     $("input[type='radio']:checked").val() = "";
@@ -714,12 +716,16 @@ function getProfilefbGraph(id, name, img, access) {
 
 function addTaskComment(taskid) {
     //var taskid=taskid;
-    var comment = $('#txtTaskComment').val();
-
+    debugger;
+    var comment = $("#txtTaskComment_" + taskid).val();
+    var curdate = new Date();
+    var CommentDateTime = (curdate.getMonth() + 1) + "/" + curdate.getDate() + "/" + curdate.getFullYear() + " " + curdate.getHours() + ":" + curdate.getMinutes() + ":" + (curdate.getSeconds() < 10 ? '0' + curdate.getSeconds() : curdate.getSeconds());
+    //Pad given value to the left with "0"
+   
     $.ajax
           ({
               type: "POST",
-              url: "../Messages/addTaskComment?taskid=" + taskid + "&comment=" + comment,
+              url: "../Messages/addTaskComment?taskid=" + taskid + "&comment=" + comment + "&CommentDateTime=" + CommentDateTime,
               data: '',
               //contentType: "application/json; charset=utf-8",
               dataType: "html",

@@ -1025,16 +1025,16 @@
   </wsdl:binding>
   <wsdl:service name="FacebookAccount">
     <wsdl:port name="FacebookAccountSoap" binding="tns:FacebookAccountSoap">
-      <soap:address location="http://localhost:6361/Services/FacebookAccount.asmx" />
+      <soap:address location="http://devapi.socioboard.com/Services/FacebookAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookAccountSoap12" binding="tns:FacebookAccountSoap12">
-      <soap12:address location="http://localhost:6361/Services/FacebookAccount.asmx" />
+      <soap12:address location="http://devapi.socioboard.com/Services/FacebookAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookAccountHttpGet" binding="tns:FacebookAccountHttpGet">
-      <http:address location="http://localhost:6361/Services/FacebookAccount.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/FacebookAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookAccountHttpPost" binding="tns:FacebookAccountHttpPost">
-      <http:address location="http://localhost:6361/Services/FacebookAccount.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/FacebookAccount.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

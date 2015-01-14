@@ -19,7 +19,7 @@
         }
         else
         {
-            <div class="delet_icon" onclick="confirmDel('@objFacebookAccount.FbUserId','@objFacebookAccount.ProfileType','fb');"></div>
+            <div class="delet_icon" onclick="confirmDel('@objFacebookAccount.FbUserId','@item.Key.ProfileType','fb');"></div>
         <a title="@objFacebookAccount.FbUserName" href="http://www.facebook.com/@objFacebookAccount.FbUserId/" target="_blank">
             <img src="http://graph.facebook.com/@objFacebookAccount.FbUserId/picture?type=small" class="img-responsive btn btn-default btn-block profilePicsize"></a>
         }
@@ -57,7 +57,7 @@
         InstagramAccount objInstagramAccount = (InstagramAccount)item.Value;
     <div class="col-sm-6 userpictiny" style="margin-bottom:10px">
         <div class="delet_icon" onclick="confirmDel('@objInstagramAccount.InstagramId','instagram','instagram');"></div>
-        <a title="@objInstagramAccount.InsUserName" href="#" >
+        <a title="@objInstagramAccount.InsUserName" href="http://instagram.com/@objInstagramAccount.InsUserName" target="_blank">
             <img src="@objInstagramAccount.ProfileUrl" class="img-responsive btn btn-default btn-block profilePicsize"></a>
         <img  src="/Themes/@path/Contents/img/instagram_24X24.png" class="img-responsive img-circle socialIconPoss">
     </div>

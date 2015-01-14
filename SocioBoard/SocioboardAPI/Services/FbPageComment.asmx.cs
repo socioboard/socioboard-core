@@ -20,16 +20,13 @@ namespace Api.Socioboard.Services
     [ScriptService]
     public class FbPageComment : System.Web.Services.WebService
     {
-
+        FbPageCommentRepository objFbPageCommentRepository = new FbPageCommentRepository();
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetPostComments(string postid)
         {
             try
             {
-                
-                FbPageCommentRepository objFbPageCommentRepository = new FbPageCommentRepository();
-
                 List<Domain.Socioboard.Domain.FbPageComment> lstfbmsgs = objFbPageCommentRepository.GetPostComments(postid);
                 return new JavaScriptSerializer().Serialize(lstfbmsgs);
             }
@@ -40,5 +37,38 @@ namespace Api.Socioboard.Services
             }
 
         }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public bool AddCommentDetails(string Jdata)
+        {
+            try
+            {
+                Domain.Socioboard.Domain.FbPageComment _FbPageComment = (Domain.Socioboard.Domain.FbPageComment)new JavaScriptSerializer().Deserialize(Jdata, typeof(Domain.Socioboard.Domain.FbPageComment));
+                objFbPageCommentRepository.addFbPageComment(_FbPageComment);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return false;
+            }
+        }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public bool IsCommentExist(string Jdata)
+        {
+            Domain.Socioboard.Domain.FbPageComment _FbPageComment = (Domain.Socioboard.Domain.FbPageComment)new JavaScriptSerializer().Deserialize(Jdata, typeof(Domain.Socioboard.Domain.FbPageComment));
+            return objFbPageCommentRepository.IsPostCommentExist(_FbPageComment);
+        }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public int UpdateFbPageCommentStatus(string Jdata)
+        {
+            Domain.Socioboard.Domain.FbPageComment _FbPageComment = (Domain.Socioboard.Domain.FbPageComment)new JavaScriptSerializer().Deserialize(Jdata, typeof(Domain.Socioboard.Domain.FbPageComment));
+            int i = objFbPageCommentRepository.UpdateFbPageCommentStatus(_FbPageComment);
+            return i;
+        }
+
     }
 }

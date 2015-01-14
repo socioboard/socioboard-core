@@ -894,16 +894,16 @@
   </wsdl:binding>
   <wsdl:service name="LinkedinCompanyPage">
     <wsdl:port name="LinkedinCompanyPageSoap" binding="tns:LinkedinCompanyPageSoap">
-      <soap:address location="http://localhost:6361/Services/LinkedinCompanyPage.asmx" />
+      <soap:address location="http://devapi.socioboard.com/Services/LinkedinCompanyPage.asmx" />
     </wsdl:port>
     <wsdl:port name="LinkedinCompanyPageSoap12" binding="tns:LinkedinCompanyPageSoap12">
-      <soap12:address location="http://localhost:6361/Services/LinkedinCompanyPage.asmx" />
+      <soap12:address location="http://devapi.socioboard.com/Services/LinkedinCompanyPage.asmx" />
     </wsdl:port>
     <wsdl:port name="LinkedinCompanyPageHttpGet" binding="tns:LinkedinCompanyPageHttpGet">
-      <http:address location="http://localhost:6361/Services/LinkedinCompanyPage.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/LinkedinCompanyPage.asmx" />
     </wsdl:port>
     <wsdl:port name="LinkedinCompanyPageHttpPost" binding="tns:LinkedinCompanyPageHttpPost">
-      <http:address location="http://localhost:6361/Services/LinkedinCompanyPage.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/LinkedinCompanyPage.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -1,8 +1,15 @@
 ﻿@using Domain.Socioboard.Domain;
 @{
-    Admin objAdmin = (Admin)Session["AdminProfile"];
+    User objAdmin = (User)Session["User"];
 
     string path = System.Configuration.ConfigurationManager.AppSettings["domain"];
+    string[] fnamelname = objAdmin.UserName.Split(' ');
+    string fname = fnamelname[0];
+    string lname = string.Empty;
+    for (int i = 1; i < fnamelname.Length; i++)
+    {
+        lname += fnamelname[i];
+    }
 }
     
 
@@ -28,20 +35,20 @@
                                @* <span class="input-group-addon">First Name</span>
                                 <input id="fname" value="@fname" type="text" class="form-control" placeholder="First Name">*@
                                 <label for="username-email">First Name</label><span class="pull-right text-danger">*</span>
-                        <input id="adminfname" value="@objAdmin.FirstName" type="text" class="form-control" placeholder="First Name">
+                        <input id="adminfname" value="@fname" type="text" class="form-control" placeholder="First Name">
                             </div>
                             <div class="form-group">
                               @*  <span class="input-group-addon">Last Name</span>
                                 <input id="lname" value="@lname" type="text" class="form-control" placeholder="Last Name">*@
                                  <label for="username-email">Last Name</label><span class="pull-right text-danger">*</span>
-                        <input id="adminlname" value="@objAdmin.LastName" type="text" class="form-control" placeholder="Last Name">
+                        <input id="adminlname" value="@lname" type="text" class="form-control" placeholder="Last Name">
                             </div>
-                            <div class="form-group">
-                                @*<span class="input-group-addon">Email Address</span>
-                                <input readonly="" id="email" value="@objUser.EmailId" type="text" class="form-control" placeholder="Email id">*@
+                            @*<div class="form-group">
+                                <span class="input-group-addon">Email Address</span>
+                                <input readonly="" id="email" value="@objUser.EmailId" type="text" class="form-control" placeholder="Email id">
                                  <label for="username-email">User Name</label><span class="pull-right text-danger">*</span>
                         <input id="adminusername" placeholder="E-mail Id" value="@objAdmin.UserName" type="text" class="form-control">
-                            </div>
+                            </div>*@
                             <div class="form-group">
                             <button type="reset" class="btn btn-primary" onclick="AdminChangePassword();">Change Password</button>
                                 </div>
@@ -54,7 +61,8 @@
 
                             <div class="form-group">
                                @* <img src="@objUser.ProfileUrl" class="img-circle profilePic" alt="User Avatar">*@
-                                <div><input  id="adminimg" type="file" class="btn btn-default col-md-6"></div>
+                                <label for="username-email">Change Profile Image</label><span class="pull-right text-danger">*</span>
+                                <div><input  id="adminimg" type="file" class="btn btn-default col-md-6" accept="image/*"></div>
                             </div>
 
                             <div class="form-group">

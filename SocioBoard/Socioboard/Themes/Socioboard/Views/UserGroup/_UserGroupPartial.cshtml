@@ -10,8 +10,6 @@
     <!-- /.panel-heading -->
     <div class="panel-body">
         <!-- Nav tabs -->
-
-
         <!-- Tab panes -->
         <div class="tab-content">
             <div id="Users" class="tab-pane fade active in">
@@ -20,12 +18,12 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 Groups
-                                                   
-                                    <div class="btn-group pull-right">
-                                        <button data-target="#addGroup" data-toggle="modal" class="btn btn-default btn-xs" type="button">
-                                            <i class="fa fa-plus fa-2x"></i>
-                                        </button>
-                                    </div>
+                                   
+                                <div class="btn-group pull-right">
+                                    <button data-target="#addGroup" data-toggle="modal" class="btn btn-default btn-xs" type="button">
+                                        <i class="fa fa-plus fa-2x"></i>
+                                    </button>
+                                </div>
                             </div>
                             <div class="panel-body">
                                 <p>Groups are used to categorize social profiles together to help manage and report on your social media efforts efficiently. Learn more about Groups</p>
@@ -43,11 +41,9 @@
                                         </div>
 
                                         <div class="panel-body" id="pendinguserforcurrentgroup">
-                                           
                                         </div>
 
                                         <div class="panel-body" id="accepteduserforcurrentgroup">
-                                           
                                         </div>
 
                                     </div>
@@ -83,109 +79,9 @@
                         </div>
                     </div>
                     <!--end of addgroup modal-->
-
-
-
-               @*       <!-- Invite Team Member Modal -->
-                    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="inviteteammember" class="modal fade" style="display: none;">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                    <h4 id="myModalLabel" class="modal-title">Invite your Friend to <span id="usergroupname"></span></h4>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Groups help you organize your social profiles and team members. Name your group and you can begin connecting social profiles and adding team members to it. Twitter or Facebook required to create a group.</p>
-                                    <div class="form-group input-group">
-                                        <span class="input-group-addon">Email</span>
-                                        <input id="txtteamemail" type="text" placeholder="Ex: abc&#64;xyz.com" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
-                                    <button onclick="addteam()" id="btnaddteam" class="btn btn-primary" type="button">Submit</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end of addgroup modal-->*@
-
-
-                    <!-- Invite Team Member Modal -->
-                    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="inviteteammember" class="modal fade" style="display: none;">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                    <h4 id="myModalLabel" class="modal-title">Invite your Friend to <span id="usergroupname"></span></h4>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Groups help you organize your social profiles and team members. Name your group and you can begin connecting social profiles and adding team members to it. Twitter or Facebook required to create a group.</p>
-                                    <div class="col-md-12 column">
-                                        <div id="inviteadded" class="row">
-                                            <table id="invitetablebody" class="table table-striped">
-                                                
-                                            </table>
-                                            @*<div class="col-md-10">*@
-                                            @* <table class="table table-striped pull-left">*@
-
-                                            @* <tbody>
-                                                        <tr>
-                                                            <td>Antima
-                                                    </td>
-                                                            <td>Jindal
-                                                    </td>
-                                                            <td>antimajindal@globussoft.com
-                                                    </td>
-                                                        </tr>
-                                                    </tbody>*@
-                                            @*</table>*@
-                                            @*  </div>*@
-                                            @* <div class="col-md-2">*@
-                                            @* <button type="submit" class="btn btn-default"><i class="fa fa-minus"></i></button>*@
-                                            @* <button class="btn btn-default col-md-8" type="submit"><i class="fa fa-minus"></i></button>
-                                            </div>*@
-
-                                        </div>
-                                        <div id="invitemembertoadd">
-                                            <form class="form-horizontal row" role="form">
-                                                <div class="form-group col-md-3" style="margin-right: 6px;">
-                                                    <label for="exampleInputFname">First Name</label><input type="text" id="exampleInputFname" class="form-control">
-                                                </div>
-                                                <div class="form-group col-md-3">
-                                                    <label for="exampleInputLname">Last Name</label><input type="text" id="exampleInputLname" class="form-control">
-                                                </div>
-                                                <div class="form-group col-md-5" style="margin-left: 7px;">
-                                                    <label for="exampleInputEmail">Email</label><input type="email" id="exampleInputEmail" class="form-control">
-                                                </div>
-                                                @* <a  style="margin-top: 24px; margin-left: 13px;" href="#"><i class="fa fa-plus"></i></a>*@
-                                                <button class="btn btn-default col-md-1" type="button" style="margin-top: 24px; margin-left: 13px;" onclick="invitemember()" ><i class="fa fa-plus"></i></button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    @* <div class="form-group input-group">
-                                        <span class="input-group-addon">Email</span>
-                                        <input id="txtteamemail" type="text" placeholder="Email" class="form-control">
-                                    </div>*@
-                                </div>
-                                <div class="modal-footer" style="border-top: none;">
-                                    <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
-                                    <button onclick="addteam()" id="btnaddteam" class="btn btn-primary" type="button" disabled="disabled">Submit</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end of addgroup modal-->
-
-
                 </div>
             </div>
-
         </div>
-
-
-
-
     </div>
 
     <!-- /.panel-body -->
@@ -200,6 +96,7 @@
         });
 
         $('#btnaddgroup').click(function () {
+            debugger;
             var gname = $('#txtgroupname').val();
             if (gname == "") {
                 alertify.error('Please Enter a group Name');
@@ -213,6 +110,7 @@
                 type: 'POST',
                 url: '../UserGroup/AddGroup?groupname=' + gname,
                 success: function (msg) {
+                   // jQuery.noConflict();
                     $('#addGroup').modal('hide');
                     window.location = self.location;
                 }

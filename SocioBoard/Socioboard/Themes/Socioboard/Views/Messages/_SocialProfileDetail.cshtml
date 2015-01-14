@@ -7,32 +7,33 @@
     {
         if (item.Key == "Twitter")
         {
-            TwitterProfileDetails objTwitterAccount = (TwitterProfileDetails)item.Value;
+            //TwitterProfileDetails objTwitterAccount = (TwitterProfileDetails)item.Value;
+            TwitterAccount objTwitterAccount = (TwitterAccount)item.Value;
             
              <div class="col-md-12" style="text-align: center; background: linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.73) 100%) repeat scroll 0px 0px transparent; padding: 15px;">
-                                    <a target="_blank" href="http://www.twitter.com/@objTwitterAccount.screen_name"></a><img src="@objTwitterAccount.profile_image_url" alt="@objTwitterAccount.name" class="img-thumbnail" />
-                                    <h2><a target="_blank" href="http://www.twitter.com/@objTwitterAccount.screen_name">@objTwitterAccount.name</a></h2>
-                                    <p>@objTwitterAccount.screen_name</p>
-                                    <p>@objTwitterAccount.Status_Text</p>
+                                    <a target="_blank" href="http://www.twitter.com/@objTwitterAccount.TwitterScreenName"></a><img src="@objTwitterAccount.ProfileImageUrl" alt="@objTwitterAccount.TwitterName" class="img-thumbnail" />
+                                    <h2><a target="_blank" href="http://www.twitter.com/@objTwitterAccount.TwitterScreenName">@objTwitterAccount.TwitterName</a></h2>
+                                    <p>@objTwitterAccount.TwitterScreenName</p>
+                               @*     <p>@objTwitterAccount.Status_Text</p>*@
                                 </div>
                                 <div class="col-md-12">
                                     <ul class="list-inline">
                                         <li style="border-right: 1px solid #eeeeee;float: left;padding: 11px 7px 6px;text-align: center;width: 78px;">
                                             <a style="text-decoration:none;">
-                                                <strong>@objTwitterAccount.friends_count</strong>
+                                                <strong>@objTwitterAccount.FollowingCount</strong>
                                                 <span>Following</span>
                                             </a>
                                         </li>
                                         <li style="border-right: 1px solid #eeeeee;float: left;padding: 11px 7px 6px;text-align: center;width: 78px;">
                                             <a style="text-decoration:none;">
-                                                <strong>@objTwitterAccount.followers_count</strong>
+                                                <strong>@objTwitterAccount.FollowersCount</strong>
                                                 <span>Followers</span>
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="col-md-12" style="text-align:center;">
-                                    <a target="_blank" href="http://www.twitter.com/@objTwitterAccount.screen_name">Go to full profile →</a>
+                                    <a target="_blank" href="http://www.twitter.com/@objTwitterAccount.TwitterScreenName">Go to full profile →</a>
                                 </div>
         }
         if (item.Key == "Facebook")

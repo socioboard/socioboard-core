@@ -180,16 +180,16 @@
   </wsdl:binding>
   <wsdl:service name="PaymentTransaction">
     <wsdl:port name="PaymentTransactionSoap" binding="tns:PaymentTransactionSoap">
-      <soap:address location="http://localhost:6361/Services/PaymentTransaction.asmx" />
+      <soap:address location="http://devapi.socioboard.com/Services/PaymentTransaction.asmx" />
     </wsdl:port>
     <wsdl:port name="PaymentTransactionSoap12" binding="tns:PaymentTransactionSoap12">
-      <soap12:address location="http://localhost:6361/Services/PaymentTransaction.asmx" />
+      <soap12:address location="http://devapi.socioboard.com/Services/PaymentTransaction.asmx" />
     </wsdl:port>
     <wsdl:port name="PaymentTransactionHttpGet" binding="tns:PaymentTransactionHttpGet">
-      <http:address location="http://localhost:6361/Services/PaymentTransaction.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/PaymentTransaction.asmx" />
     </wsdl:port>
     <wsdl:port name="PaymentTransactionHttpPost" binding="tns:PaymentTransactionHttpPost">
-      <http:address location="http://localhost:6361/Services/PaymentTransaction.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/PaymentTransaction.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

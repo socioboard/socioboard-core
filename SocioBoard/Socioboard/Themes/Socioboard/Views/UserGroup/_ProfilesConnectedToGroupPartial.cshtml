@@ -21,8 +21,8 @@
     <div id="@objFacebookAccount.FbUserId" class="col-sm-1 groupuserpictiny" >
        @*<div data-target="#closeModal" data-toggle="modal" onclick="confirmDel('415298848564891','page','fb');" class="add_icon"></div>*@
          <div class="delet_icon" onclick="removeprofilefromgroup('@objFacebookAccount.FbUserId');"></div>
-        <img src="http://graph.facebook.com/@objFacebookAccount.FbUserId/picture?type=small" class="img-responsive img-rounded groupprofiles" title="@objFacebookAccount.FbUserName">
-        <img class="img-responsive img-circle groupsocialIconPoss" src="/Themes/@path/Contents/img/fb_icon.png">
+        <a href="https://www.facebook.com/@objFacebookAccount.FbUserName" target="_blank"><img src="http://graph.facebook.com/@objFacebookAccount.FbUserId/picture?type=small" class="img-responsive img-rounded groupprofiles" title="@objFacebookAccount.FbUserName">
+        <img class="img-responsive img-circle groupsocialIconPoss" src="/Themes/@path/Contents/img/fb_icon.png"></a>
     </div>
 }
     }
@@ -35,8 +35,8 @@
     <div id="@objTwitterAccount.TwitterUserId" class="col-sm-1 groupuserpictiny">
        @*<div data-target="#closeModal" data-toggle="modal" onclick="confirmDel('415298848564891','page','fb');" class="add_icon"></div>*@
          <div class="delet_icon"  onclick="removeprofilefromgroup('@objTwitterAccount.TwitterUserId');"></div>
-        <img src="@objTwitterAccount.ProfileImageUrl" class="img-responsive img-rounded groupprofiles" title="@objTwitterAccount.TwitterScreenName">
-        <img class="img-responsive img-circle groupsocialIconPoss" src="/Themes/@path/Contents/img/twticon.png">
+        <a href="https://twitter.com/@objTwitterAccount.TwitterScreenName" target="_blank"><img src="@objTwitterAccount.ProfileImageUrl" class="img-responsive img-rounded groupprofiles" title="@objTwitterAccount.TwitterScreenName">
+        <img class="img-responsive img-circle groupsocialIconPoss" src="/Themes/@path/Contents/img/twticon.png"></a>
     </div>
 }
     }
@@ -50,8 +50,8 @@
     <div id="@objLinkedInAccount.LinkedinUserId" class="col-sm-1 groupuserpictiny" @*onclick="removeprofilefromgroup('@objLinkedInAccount.LinkedinUserId');"*@>
         @*<div data-target="#closeModal" data-toggle="modal" onclick="confirmDel('415298848564891','page','fb');" class="add_icon"></div>*@
         <div class="delet_icon" onclick="removeprofilefromgroup('@objLinkedInAccount.LinkedinUserId');"></div>
-        <img src="@objLinkedInAccount.ProfileImageUrl" class="img-responsive img-rounded groupprofiles" title="@objLinkedInAccount.LinkedinUserName">
-        <img class="img-responsive img-circle groupsocialIconPoss" src="/Themes/@path/Contents/img/link_icon.png">
+        <a href="@objLinkedInAccount.ProfileUrl" target="_blank"><img src="@objLinkedInAccount.ProfileImageUrl" class="img-responsive img-rounded groupprofiles" title="@objLinkedInAccount.LinkedinUserName">
+        <img class="img-responsive img-circle groupsocialIconPoss" src="/Themes/@path/Contents/img/link_icon.png"></a>
     </div>
         }
     }
@@ -64,8 +64,8 @@
     <div id="@objInstagramAccount.InstagramId" class="col-sm-1 groupuserpictiny" @*onclick="removeprofilefromgroup('@objInstagramAccount.InstagramId');"*@>
         @*<div data-target="#closeModal" data-toggle="modal" onclick="confirmDel('415298848564891','page','fb');" class="add_icon"></div>*@
         <div class="delet_icon" onclick="removeprofilefromgroup('@objInstagramAccount.InstagramId');"></div>
-        <img src="@objInstagramAccount.ProfileUrl" class="img-responsive img-rounded groupprofiles" title="@objInstagramAccount.InsUserName">
-        <img class="img-responsive img-circle groupsocialIconPoss" src="/Themes/@path/Contents/img/instagram_24X24.png">
+        <a href="http://instagram.com/@objInstagramAccount.InsUserName" target="_blank"><img src="@objInstagramAccount.ProfileUrl" class="img-responsive img-rounded groupprofiles" title="@objInstagramAccount.InsUserName">
+        <img class="img-responsive img-circle groupsocialIconPoss" src="/Themes/@path/Contents/img/instagram_24X24.png"></a>
     </div>
 }
     }
@@ -78,8 +78,8 @@
     <div id="@objTumblrAccount.tblrUserName" class="col-sm-1 groupuserpictiny"@* onclick="removeprofilefromgroup('@objTumblrAccount.tblrUserName');"*@>
        @*<div data-target="#closeModal" data-toggle="modal" onclick="confirmDel('415298848564891','page','fb');" class="add_icon"></div>*@
          <div class="delet_icon" onclick="removeprofilefromgroup('@objTumblrAccount.tblrUserName');"></div>
-        <img src="@tumblruserimage" class="img-responsive img-rounded groupprofiles" title="@objTumblrAccount.tblrUserName">
-        <img class="img-responsive img-circle groupsocialIconPoss" src="/Themes/@path/Contents/img/tumblr.png">
+        <a href="https://www.tumblr.com/blog/@objTumblrAccount.tblrUserName" target="_blank"><img src="@tumblruserimage" class="img-responsive img-rounded groupprofiles" title="@objTumblrAccount.tblrUserName">
+        <img class="img-responsive img-circle groupsocialIconPoss" src="/Themes/@path/Contents/img/tumblr.png"></a>
     </div>
 }
     }
@@ -92,8 +92,8 @@
     <div id="@objYoutubeAccount.Ytuserid" class="col-sm-1 groupuserpictiny" @* onclick="removeprofilefromgroup('@objYoutubeAccount.Ytuserid');"*@>
        @*<div data-target="#closeModal" data-toggle="modal" onclick="confirmDel('415298848564891','page','fb');" class="add_icon"></div>*@
          <div class="delet_icon" onclick="removeprofilefromgroup('@objYoutubeAccount.Ytuserid');"></div>
-        <img src="@objYoutubeAccount.Ytprofileimage" class="img-responsive img-rounded groupprofiles" title="@objYoutubeAccount.Ytusername">
-        <img class="img-responsive img-circle groupsocialIconPoss" src="/Themes/@path/Contents/img/youtube.png">
+        <a href="https://www.youtube.com/user/@objYoutubeAccount.Ytuserid" target="_blank"><img src="@objYoutubeAccount.Ytprofileimage" class="img-responsive img-rounded groupprofiles" title="@objYoutubeAccount.Ytusername">
+        <img class="img-responsive img-circle groupsocialIconPoss" src="/Themes/@path/Contents/img/youtube.png"></a>
     </div>
 }
     }

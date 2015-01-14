@@ -102,7 +102,14 @@ namespace Api.Socioboard.Services
                     objYoutubeAccount.Id = Guid.NewGuid();
                     objYoutubeAccount.Ytuserid = itemEmail["id"].ToString();
                     objYoutubeAccount.Emailid = itemEmail["email"].ToString();
-                    objYoutubeAccount.Ytusername = itemEmail["given_name"].ToString();
+                    try
+                    {
+                        objYoutubeAccount.Ytusername = itemEmail["given_name"].ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        objYoutubeAccount.Ytusername = itemEmail["name"].ToString();
+                    }
                     objYoutubeAccount.Ytprofileimage = itemEmail["picture"].ToString();
                     objYoutubeAccount.Accesstoken = access_token;
                     objYoutubeAccount.Refreshtoken = refreshToken;

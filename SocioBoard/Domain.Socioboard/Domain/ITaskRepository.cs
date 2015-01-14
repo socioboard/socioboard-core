@@ -9,7 +9,8 @@ namespace Domain.Socioboard.Domain
     public interface ITaskRepository
     {
         void addTask(Tasks task);
-        int deleteTask(string taskid, Guid userid);
+        //int deleteTask(string taskid, Guid userid);
+        int deleteTask(Guid taskid);
         void updateTask(Tasks task);
         ArrayList getAllTasksOfUser(Guid UserId,Guid GroupId);
         bool checkTaskExists(string taskid, Guid Userid);

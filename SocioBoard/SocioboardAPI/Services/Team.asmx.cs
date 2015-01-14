@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Script.Services;
 using System.Web.Services;
+using Api.Socioboard.Model;
 
 namespace Api.Socioboard.Services
 {
@@ -266,6 +267,61 @@ namespace Api.Socioboard.Services
             lstTeam = teamrepo.getAllTeamsOfUser(Guid.Parse(UserId), Guid.Parse(groupId), emailId);
 
             return new JavaScriptSerializer().Serialize(lstTeam);
+        }
+
+        TeamMemberProfileRepository objTeamMemberProfileRepository = new TeamMemberProfileRepository();
+        SentimentalAnalysis objSentimentalAnalysis = new SentimentalAnalysis();
+        FeedSentimentalAnalysisRepository _FeedSentimentalAnalysisRepository = new FeedSentimentalAnalysisRepository();
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string getAllGroupMembersofTeam()
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.FeedSentimentalAnalysis> lstAllProfiles = new List<Domain.Socioboard.Domain.FeedSentimentalAnalysis>();
+                List<Domain.Socioboard.Domain.TeamMemberProfile> lstTeamId = new List<Domain.Socioboard.Domain.TeamMemberProfile>();
+                List<Domain.Socioboard.Domain.Team> lstTeam = new List<Domain.Socioboard.Domain.Team>();
+                List<Domain.Socioboard.Domain.Team> lstgroupmember = new List<Domain.Socioboard.Domain.Team>();
+                List<Domain.Socioboard.Domain.Team> lstAllgroupmembers = new List<Domain.Socioboard.Domain.Team>();
+                try
+                {
+                    lstAllProfiles = _FeedSentimentalAnalysisRepository.getAllProfiles();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                }
+                foreach (var item in lstAllProfiles)
+                {
+                    try
+                    {
+                        lstTeamId = objTeamMemberProfileRepository.getAllTeamsByProfileId(item.ProfileId);
+                        foreach (var lstTeamId_item in lstTeamId)
+                        {
+                            lstTeam = teamrepo.GetTeamByTeamId(lstTeamId_item.TeamId);
+                            foreach (var lstTeam_item in lstTeam)
+                            {
+                                lstgroupmember = teamrepo.getAllDetailsUserEmail(lstTeam_item.GroupId);
+                                if (lstgroupmember.Count > 1)
+                                {
+                                    lstAllgroupmembers.AddRange(lstgroupmember);
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                }
+                return new JavaScriptSerializer().Serialize(lstAllgroupmembers);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
         }
 
     }

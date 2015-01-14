@@ -61,7 +61,7 @@ namespace Api.Socioboard.Services
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string AddTaskComment(string comment, string userId, string taskId, DateTime commentDate, DateTime entryDate)
+        public string AddTaskComment(string comment, string userId, string taskId, string commentDate, DateTime entryDate)
         {
             string status = "";
             try
@@ -74,7 +74,7 @@ namespace Api.Socioboard.Services
                 objTask.UserId = Guid.Parse(userId);
                 objTask.Comment = comment;
                 objTask.TaskId = Guid.Parse(taskId);
-                objTask.CommentDate = commentDate;
+                objTask.CommentDate = Convert.ToDateTime(commentDate);
                 objTask.EntryDate = DateTime.Now;
 
                 taskrepo.addTaskComment(objTask);

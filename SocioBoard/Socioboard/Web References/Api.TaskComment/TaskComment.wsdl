@@ -23,7 +23,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="comment" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="taskId" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="commentDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="commentDate" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="entryDate" type="s:dateTime" />
           </s:sequence>
         </s:complexType>
@@ -200,16 +200,16 @@
   </wsdl:binding>
   <wsdl:service name="TaskComment">
     <wsdl:port name="TaskCommentSoap" binding="tns:TaskCommentSoap">
-      <soap:address location="http://localhost:6361/Services/TaskComment.asmx" />
+      <soap:address location="http://devapi.socioboard.com/Services/TaskComment.asmx" />
     </wsdl:port>
     <wsdl:port name="TaskCommentSoap12" binding="tns:TaskCommentSoap12">
-      <soap12:address location="http://localhost:6361/Services/TaskComment.asmx" />
+      <soap12:address location="http://devapi.socioboard.com/Services/TaskComment.asmx" />
     </wsdl:port>
     <wsdl:port name="TaskCommentHttpGet" binding="tns:TaskCommentHttpGet">
-      <http:address location="http://localhost:6361/Services/TaskComment.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/TaskComment.asmx" />
     </wsdl:port>
     <wsdl:port name="TaskCommentHttpPost" binding="tns:TaskCommentHttpPost">
-      <http:address location="http://localhost:6361/Services/TaskComment.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/TaskComment.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

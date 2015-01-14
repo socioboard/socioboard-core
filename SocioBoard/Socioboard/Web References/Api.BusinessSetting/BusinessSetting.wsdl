@@ -27,6 +27,48 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="AddBusinessByUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObjBusinessSetting" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddBusinessByUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddBusinessByUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetailsofBusinessOwner">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetailsofBusinessOwnerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetailsofBusinessOwnerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateBuisnessSetting">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObjBusiNessSetting" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateBuisnessSettingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateBuisnessSettingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
     <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
@@ -49,12 +91,66 @@
   <wsdl:message name="IsNotificationTaskEnableSoapOut">
     <wsdl:part name="parameters" element="tns:IsNotificationTaskEnableResponse" />
   </wsdl:message>
+  <wsdl:message name="AddBusinessByUserSoapIn">
+    <wsdl:part name="parameters" element="tns:AddBusinessByUser" />
+  </wsdl:message>
+  <wsdl:message name="AddBusinessByUserSoapOut">
+    <wsdl:part name="parameters" element="tns:AddBusinessByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailsofBusinessOwnerSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetailsofBusinessOwner" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailsofBusinessOwnerSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetailsofBusinessOwnerResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBuisnessSettingSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateBuisnessSetting" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBuisnessSettingSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateBuisnessSettingResponse" />
+  </wsdl:message>
   <wsdl:message name="HelloWorldHttpGetIn" />
   <wsdl:message name="HelloWorldHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="AddBusinessByUserHttpGetIn">
+    <wsdl:part name="ObjBusinessSetting" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddBusinessByUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailsofBusinessOwnerHttpGetIn">
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailsofBusinessOwnerHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBuisnessSettingHttpGetIn">
+    <wsdl:part name="ObjBusiNessSetting" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBuisnessSettingHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="HelloWorldHttpPostIn" />
   <wsdl:message name="HelloWorldHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddBusinessByUserHttpPostIn">
+    <wsdl:part name="ObjBusinessSetting" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddBusinessByUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailsofBusinessOwnerHttpPostIn">
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailsofBusinessOwnerHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBuisnessSettingHttpPostIn">
+    <wsdl:part name="ObjBusiNessSetting" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBuisnessSettingHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:portType name="BusinessSettingSoap">
@@ -66,17 +162,53 @@
       <wsdl:input message="tns:IsNotificationTaskEnableSoapIn" />
       <wsdl:output message="tns:IsNotificationTaskEnableSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="AddBusinessByUser">
+      <wsdl:input message="tns:AddBusinessByUserSoapIn" />
+      <wsdl:output message="tns:AddBusinessByUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailsofBusinessOwner">
+      <wsdl:input message="tns:GetDetailsofBusinessOwnerSoapIn" />
+      <wsdl:output message="tns:GetDetailsofBusinessOwnerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBuisnessSetting">
+      <wsdl:input message="tns:UpdateBuisnessSettingSoapIn" />
+      <wsdl:output message="tns:UpdateBuisnessSettingSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="BusinessSettingHttpGet">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldHttpGetIn" />
       <wsdl:output message="tns:HelloWorldHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="AddBusinessByUser">
+      <wsdl:input message="tns:AddBusinessByUserHttpGetIn" />
+      <wsdl:output message="tns:AddBusinessByUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailsofBusinessOwner">
+      <wsdl:input message="tns:GetDetailsofBusinessOwnerHttpGetIn" />
+      <wsdl:output message="tns:GetDetailsofBusinessOwnerHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBuisnessSetting">
+      <wsdl:input message="tns:UpdateBuisnessSettingHttpGetIn" />
+      <wsdl:output message="tns:UpdateBuisnessSettingHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="BusinessSettingHttpPost">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldHttpPostIn" />
       <wsdl:output message="tns:HelloWorldHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBusinessByUser">
+      <wsdl:input message="tns:AddBusinessByUserHttpPostIn" />
+      <wsdl:output message="tns:AddBusinessByUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailsofBusinessOwner">
+      <wsdl:input message="tns:GetDetailsofBusinessOwnerHttpPostIn" />
+      <wsdl:output message="tns:GetDetailsofBusinessOwnerHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBuisnessSetting">
+      <wsdl:input message="tns:UpdateBuisnessSettingHttpPostIn" />
+      <wsdl:output message="tns:UpdateBuisnessSettingHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BusinessSettingSoap" type="tns:BusinessSettingSoap">
@@ -92,6 +224,33 @@
     </wsdl:operation>
     <wsdl:operation name="IsNotificationTaskEnable">
       <soap:operation soapAction="http://tempuri.org/IsNotificationTaskEnable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBusinessByUser">
+      <soap:operation soapAction="http://tempuri.org/AddBusinessByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailsofBusinessOwner">
+      <soap:operation soapAction="http://tempuri.org/GetDetailsofBusinessOwner" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBuisnessSetting">
+      <soap:operation soapAction="http://tempuri.org/UpdateBuisnessSetting" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -120,11 +279,65 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddBusinessByUser">
+      <soap12:operation soapAction="http://tempuri.org/AddBusinessByUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailsofBusinessOwner">
+      <soap12:operation soapAction="http://tempuri.org/GetDetailsofBusinessOwner" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBuisnessSetting">
+      <soap12:operation soapAction="http://tempuri.org/UpdateBuisnessSetting" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="BusinessSettingHttpGet" type="tns:BusinessSettingHttpGet">
     <http:binding verb="GET" />
     <wsdl:operation name="HelloWorld">
       <http:operation location="/HelloWorld" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBusinessByUser">
+      <http:operation location="/AddBusinessByUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailsofBusinessOwner">
+      <http:operation location="/GetDetailsofBusinessOwner" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBuisnessSetting">
+      <http:operation location="/UpdateBuisnessSetting" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -144,19 +357,46 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddBusinessByUser">
+      <http:operation location="/AddBusinessByUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailsofBusinessOwner">
+      <http:operation location="/GetDetailsofBusinessOwner" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBuisnessSetting">
+      <http:operation location="/UpdateBuisnessSetting" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="BusinessSetting">
     <wsdl:port name="BusinessSettingSoap" binding="tns:BusinessSettingSoap">
-      <soap:address location="http://localhost:6361/Services/BusinessSetting.asmx" />
+      <soap:address location="http://devapi.socioboard.com/Services/BusinessSetting.asmx" />
     </wsdl:port>
     <wsdl:port name="BusinessSettingSoap12" binding="tns:BusinessSettingSoap12">
-      <soap12:address location="http://localhost:6361/Services/BusinessSetting.asmx" />
+      <soap12:address location="http://devapi.socioboard.com/Services/BusinessSetting.asmx" />
     </wsdl:port>
     <wsdl:port name="BusinessSettingHttpGet" binding="tns:BusinessSettingHttpGet">
-      <http:address location="http://localhost:6361/Services/BusinessSetting.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/BusinessSetting.asmx" />
     </wsdl:port>
     <wsdl:port name="BusinessSettingHttpPost" binding="tns:BusinessSettingHttpPost">
-      <http:address location="http://localhost:6361/Services/BusinessSetting.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/BusinessSetting.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

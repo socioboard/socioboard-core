@@ -37,11 +37,11 @@
 <script type="text/javascript">
 
     function bindmanagenews() {
+        $('#ManageNewsDataTable').html('<center><img src="../Themes/Socioboard/Contents/img/admin/loading.gif" /></center>');
         $.ajax({
             type: 'POST',
             url: '../News/LoadNews',
             success: function (msg) {
-                //alert(msg);
                 $('#ManageNewsDataTable').html(msg);
                 $('#ManageNewsDataTable').dataTable();
             },

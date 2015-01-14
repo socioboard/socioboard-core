@@ -8,7 +8,7 @@ using System.Web.Script.Serialization;
 
 namespace Socioboard.Controllers.Admin
 {
-    [Authorize(Users = "Aby Kumar")]
+    //[Authorize(Users = "Aby Kumar")]
     public class AddNewsLatterController : Controller
     {
         
@@ -21,8 +21,10 @@ namespace Socioboard.Controllers.Admin
         //}
         public ActionResult LoadAddNewsLatter()
         {
+            Domain.Socioboard.Domain.User ObjUser = (Domain.Socioboard.Domain.User)Session["User"];
+            string Objuser = (new JavaScriptSerializer().Serialize(ObjUser));
             Api.AdminUserDetails.AdminUserDetails ApiObjuserdetails = new Api.AdminUserDetails.AdminUserDetails();
-            List<User> lstUser = (List<User>)(new JavaScriptSerializer().Deserialize(ApiObjuserdetails.GetAllUsers(), typeof(List<User>)));
+            List<User> lstUser = (List<User>)(new JavaScriptSerializer().Deserialize(ApiObjuserdetails.GetAllUsers(Objuser), typeof(List<User>)));
             return View(lstUser);
         }
         [HttpPost]

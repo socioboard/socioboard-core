@@ -18,12 +18,17 @@ namespace Socioboard
            //    url: "Admin/{action}/{id}",
            //    defaults: new { controller = "AdminLogin", action = "Index", id = UrlParameter.Optional }
            //);
-
+            routes.MapRoute(
+            name: "CompanyDashboard",
+             url: "company/{q}",
+             defaults: new { controller = "CompanyDashboard", action = "Company", q = UrlParameter.Optional }
+             );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Index", action = "Index", id = UrlParameter.Optional }
             );
+           
         }
     }
 }

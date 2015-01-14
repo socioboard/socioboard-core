@@ -15,7 +15,7 @@ namespace Socioboard.Controllers
         //
         // GET: /AdminHome/
         [MyExpirePageActionFilter]
-        [Authorize(Users = "Aby Kumar")]
+        //[Authorize(Users = "Aby Kumar")]
         public ActionResult Dashboard()
         {
 

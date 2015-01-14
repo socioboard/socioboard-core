@@ -1,4 +1,4 @@
-﻿@using Domain.Socioboard.Domain;
+﻿ @using Domain.Socioboard.Domain;
 @{
     User objUser = (User)Model;
     string[] fnamelname = objUser.UserName.Split(' ');
@@ -8,8 +8,17 @@
     {
         lname += fnamelname[i];
     }
-
+    string profileurl = string.Empty;
     string path = System.Configuration.ConfigurationManager.AppSettings["domain"];
+    if (!string.IsNullOrEmpty(objUser.ProfileUrl))
+    {
+        try{
+        profileurl = System.Text.RegularExpressions.Regex.Split(objUser.ProfileUrl, "wwwroot")[1]; 
+        }
+        catch{
+            profileurl = objUser.ProfileUrl;
+        }
+    }
 }
     
 
@@ -47,11 +56,13 @@
                                 @*<span class="input-group-addon">Email Address</span>
                                 <input readonly="" id="email" value="@objUser.EmailId" type="text" class="form-control" placeholder="Email id">*@
                                  <label for="username-email">E-mail Address</label><span class="pull-right text-danger">*</span>
-                        <input id="email" placeholder="E-mail Id" value="@objUser.EmailId" type="text" class="form-control">
+                        <input id="email" placeholder="E-mail Id" value="@objUser.EmailId" type="text" class="form-control" readonly="true">
                             </div>
                             <div class="form-group">
                             <button type="reset" class="btn btn-primary" data-toggle="modal" data-target="#ResetModal">Change Password</button>
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#ConfirmPassword">Reset Email</button>
                                 </div>
+                          
                             @*<div class="form-group">
                                 <img src="@objUser.ProfileUrl" class="img-circle profilePic" alt="User Avatar">
                                 <label>Team members will see the avatar you have set.</label>
@@ -133,6 +144,52 @@
   </div>
 
 @* End Reset password modal  *@
+
+@* start Reset Email modal *@
+<div class="modal fade" id="ResetMail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Reset Email</h4>
+      </div>
+      <div class="modal-body">
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"></span>
+                                <input id="newemail" value="" type="Email" class="form-control" placeholder="New Email">
+                            </div>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="ChangeMail" onclick="ResetEmailId()" class="btn btn-primary">Save changes</button>
+          </div>
+      </div>
+    </div>
+  </div>
+
+@* End Reset Email modal  *@
+
+@* start Password modal *@
+<div class="modal fade" id="ConfirmPassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Please Re-enter Your Password</h4>
+      </div>
+      <div class="modal-body">
+          <h5>For your security, you must re-enter your password to continue.</h5>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon">PassWord</span>
+                                <input id="CnfrmPassword" value="" type="Password" class="form-control" placeholder="Password">
+                            </div>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="ConfrmPassword" onclick="ConfirmPassword()" class="btn btn-primary">Submit</button>
+          </div>
+      </div>
+    </div>
+  </div>
+
+@* End Password modal  *@
+
 @* Scripts to upload image *@
 <link href="~/Themes/@path/Contents/css/fileinput.min.css" rel="stylesheet" />
 <script src="~/Themes/@path/Contents/js/fileinput.min.js"></script>
@@ -141,14 +198,34 @@
         $("#input-24").fileinput({
             showUpload: false,
             showRemove: false,
-            @if(!string.IsNullOrEmpty(@objUser.ProfileUrl))
+            @if(!string.IsNullOrEmpty(objUser.ProfileUrl))
             {
+                string[] profileUrl = objUser.ProfileUrl.Split(new string[] { "Socioboard" }, StringSplitOptions.None);
+                string imgurl = "/Themes/Socioboard" + profileUrl[1];
                <text>  initialPreview: [
-"<img src='@objUser.ProfileUrl' class='file-preview-image' >",
+"<img src='@imgurl' class='file-preview-image' >",
             ],</text>
             }
            
         });
+    });
+
+    $('#CnfrmPassword').keypress(function (e) {
+        debugger;
+        var key = e.which;
+        if (key == 13)  // the enter key code
+        {
+            $("#ConfrmPassword").click();
+        }
+    });
+
+    $('#newemail').keypress(function (e) {
+        debugger;
+        var key = e.which;
+        if (key == 13)  // the enter key code
+        {
+            $("#ChangeMail").click();
+        }
     });
 </script>
 @* End scripts upload image *@

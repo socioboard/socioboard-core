@@ -65,7 +65,7 @@
                 if (msg == "Setting Updated Successfully") 
                 {
                     alertify.success('Setting Updated Successfully"');
-                    window.location.href = "../AdminSetting/Index";
+                    //window.location.href = "../AdminSetting/Index";
 
                 }
                 else {
@@ -84,13 +84,13 @@
 
 
     function AdminChangePassword() {
-        jQuery.noConflict();
         debugger;
         $('#AdminResetModal').modal('show');
     }
 
     function changeadminPassword(id, password)
     {
+        debugger;
         var AdminPrivate = new FormData();
 
         var NewPassword = $('#Adminnewpass').val();
@@ -122,6 +122,7 @@
             processData: false,
             contentType: false,
             success: function (msg) {
+                //alert(msg);
                 if (msg == "Password Changed Successfully") {
                     //alertify.success('Password Changed Successfully');
                     $('#AdminResetModal').modal('hide');
@@ -169,7 +170,6 @@
 
     function ChkOldPswd()
     {
-        debugger;
         var typeOldPswd = $('#Adminoldpass').val();
         if(typeOldPswd==""){
             $("#ErrorWrongPasswrd").html("Old password Field can't be Null!");
@@ -200,7 +200,6 @@
 
 
     function ChkNewPswd() {
-        debugger;
         var TypeNewPswd = $('#Adminnewpass').val();
         if (TypeNewPswd == "") {
             $("#ErrorNewPasswrd").html("New password Field can't be Null!");
@@ -231,7 +230,6 @@
 
 
     function ChkConfirmPswd() {
-        debugger;
         var TypeNewPswd = $("#Adminnewpass").val();
         var TypeConfirmPswd = $('#Adminconfirmpass').val();
         if (TypeConfirmPswd == "") {

@@ -20,7 +20,18 @@ TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"));
     <tr class="odd gradeX" id="@item.Id">
         <td>
             <div class="col-xs-6">
-                <img src="@objuser.ProfileUrl" class="img-circle profilePic" data-toggle="modal" data-target="#profileModal">
+                @{string imgurl = objuser.ProfileUrl;}
+                @if (!string.IsNullOrEmpty(imgurl))
+                {
+                    string[] profileUrl = objuser.ProfileUrl.Split(new string[] { "Socioboard" }, StringSplitOptions.None);
+                     imgurl = "/Themes/Socioboard" + profileUrl[2];
+                    <img src="@imgurl" class="img-circle profilePic" data-toggle="modal" data-target="#profileModal">
+                }
+                else 
+                {
+                    <img src="@imgurl" class="img-circle profilePic" data-toggle="modal" data-target="#profileModal">
+                }
+                
             </div>
             <div class="col-xs-6">
                 <span>@objuser.UserName<br>

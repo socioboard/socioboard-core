@@ -147,6 +147,24 @@ namespace Api.Socioboard.Services
                 return "Something Went Wrong";
             }
         }
+
+        // Edited by Antima[20/12/2014]
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string getFacebookFeedByProfileId(string ProfileId, string FeedId)
+        {
+            try
+            {
+                Domain.Socioboard.Domain.FacebookFeed facebookfeed = objFacebookFeedRepository.getFacebookFeedByProfileId(ProfileId, FeedId);
+                return new JavaScriptSerializer().Serialize(facebookfeed);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return null;
+            }
+        }
    
     }
 }

@@ -231,5 +231,34 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+        /// <summary>
+        /// Delete TaskComment By TaskId.
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <returns></returns>
+        public int DeleteTaskCommentByTaskId(Guid TaskId)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to Delete specific data by user id.
+                        NHibernate.IQuery query = session.CreateQuery("delete from TaskComment where TaskId = :taskid")
+                                        .SetParameter("taskid", TaskId);
+                        int isUpdated = query.ExecuteUpdate();
+                        transaction.Commit();
+                        return isUpdated;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
     }
 }

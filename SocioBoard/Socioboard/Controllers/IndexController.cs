@@ -19,7 +19,7 @@ namespace Socioboard.Controllers
         //
         // GET: /Default/
         ILog logger = LogManager.GetLogger(typeof(IndexController));
-
+       // [OutputCache(Duration = 604800)]
         public ActionResult Index()
         {
             //if (Session["User"] != null)
@@ -46,6 +46,8 @@ namespace Socioboard.Controllers
         //[HttpPost]
         public ActionResult AjaxLogin(string username, string password)
         {
+            Session.Clear();
+            Session.RemoveAll();
             string returnmsg = string.Empty;
             User objUser = new User();
             string uname = Request.QueryString["username"].ToString();
@@ -64,8 +66,8 @@ namespace Socioboard.Controllers
 
                 // Edited by Antima 
 
-                HttpCookie myCookie = new HttpCookie(uname);
-                myCookie.Expires = DateTime.Now.AddDays(-1d);
+                HttpCookie myCookie = new HttpCookie("logininfo" + uname.Trim());
+                myCookie.Expires = DateTime.Now.AddDays(-1);
                 Response.Cookies.Add(myCookie);
 
                 returnmsg = "Invalid Email or Password";
@@ -124,6 +126,10 @@ namespace Socioboard.Controllers
                             Session["Paid_User"] = "Unpaid";
                             returnmsg = "unpaid";
                         }
+                    }
+                    else if (objUser.ActivationStatus == "2")
+                    {
+                        returnmsg = "User Not Exist!";
                     }
                     else
                     {
@@ -408,7 +414,7 @@ namespace Socioboard.Controllers
             }
 
             User _user = (User)Session["User"];
-            if (_user.ActivationStatus == "1" && _user != null)
+            if (_user != null && _user.ActivationStatus == "1")
             {
                 mailsender += ">> Facebook Registration";
             }
@@ -546,5 +552,13 @@ namespace Socioboard.Controllers
              return Content(pay);
         }
 
+        public ActionResult Privacy() 
+        {
+            return View("privacy");
+        }
+        public ActionResult Disclaimer() 
+        {
+            return View();
+        }
     }
 }

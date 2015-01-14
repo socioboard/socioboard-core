@@ -9,7 +9,6 @@ namespace Api.Socioboard.Services
 {
     public class TeamMemberProfileRepository : ITeamMemberProfileRepository
     {
-
         /// <addNewTeamMember>
         /// Add New TeamMember
         /// </summary>
@@ -28,7 +27,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-
 
         /// <deleteTeamMember>
         /// Delete profile of TeamMember
@@ -61,6 +59,7 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
+
         public int deleteTeamMember(Guid teamid)
         {
             //Creates a database connection and opens up a session
@@ -87,7 +86,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-
 
         /// <updateTeamMember>
         /// Update TeamMember details
@@ -121,7 +119,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
         /// <getAllTeamMemberProfilesOfTeam>
         /// Get All TeamMember Profiles Of Team
         /// </summary>
@@ -153,10 +150,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
-
-
-
         public List<Domain.Socioboard.Domain.TeamMemberProfile> getTeamMemberProfileData(Guid TeamId)
         {
             //Creates a database connection and opens up a session
@@ -183,7 +176,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
         public List<Domain.Socioboard.Domain.TeamMemberProfile> getTwtTeamMemberProfileData(Guid TeamId)
         {
             //Creates a database connection and opens up a session
@@ -209,6 +201,7 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
+        
         public List<Domain.Socioboard.Domain.TeamMemberProfile> getTumblrTeamMemberProfileData(Guid TeamId)
         {
             //Creates a database connection and opens up a session
@@ -261,7 +254,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
         public List<Domain.Socioboard.Domain.TeamMemberProfile> GetTeamMemberProfileByTeamIdAndProfileType(Guid TeamId, string profiletype)
         {
             //Creates a database connection and opens up a session
@@ -288,13 +280,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-
-
-
-
-
-
-
 
         /// <getTeamMemberProfile>
         /// Get TeamMember Profile
@@ -328,8 +313,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-
-
 
         /// <checkTeamMemberProfile>
         /// Check Team Member Profile
@@ -366,7 +349,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-
 
         /// <DeleteTeamMemberProfileByUserid>
         /// Delete Team Member Profile By Userid
@@ -426,7 +408,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
         public int DeleteTeamMemberProfileByUserid(string ProfileId)
         {
             //Creates a database connection and opens up a session
@@ -452,8 +433,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-
-
 
         public int DeleteTeamMemberProfileByTeamIdProfileId(string ProfileId, Guid teamid)
         {
@@ -482,8 +461,26 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+        // Edited by Antima[20/12/2014]
 
+        public List<Domain.Socioboard.Domain.TeamMemberProfile> getAllTeamsByProfileId(string ProfileId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    //Proceed action, to get details of team by team id.
+                    List<Domain.Socioboard.Domain.TeamMemberProfile> lstAllteam = session.CreateQuery("from TeamMemberProfile where ProfileId =:ProfileId")
+                    .SetParameter("ProfileId", ProfileId)
+                    .List<Domain.Socioboard.Domain.TeamMemberProfile>()
+                    .ToList<Domain.Socioboard.Domain.TeamMemberProfile>();
 
+                    return lstAllteam;
 
+                }//End Transaction
+            }//End Session
+        }
     }
 }

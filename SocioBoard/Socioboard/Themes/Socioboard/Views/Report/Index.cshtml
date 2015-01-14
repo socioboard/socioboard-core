@@ -48,7 +48,7 @@
             contentType: false,
             success: function (msg) {
 
-                $('#page-wrapper').html('').append(msg);
+                $('#page-wrapper').html(msg);
             },
             async: false
         });
@@ -110,7 +110,7 @@
             },
             async: false
         });
-
+       // jQuery.noConflict();
         $('#CommentDetailsModall').modal('show');
     }
 

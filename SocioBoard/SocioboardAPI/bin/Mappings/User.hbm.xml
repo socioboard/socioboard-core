@@ -75,5 +75,13 @@
       <column name="IsKeyUsed"  />
     </property>
 
+    <property name="ChangeEmailKey">
+      <column name="ChangeEmailKey"  />
+    </property>
+
+    <property name="IsEmailKeyUsed">
+      <column name="IsEmailKeyUsed"  />
+    </property>
+
   </class>
 </hibernate-mapping>

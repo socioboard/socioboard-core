@@ -2,6 +2,7 @@
 @{
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
     string status = "Pending";
+    string ProfileUrl = string.Empty;
     string senttoname = string.Empty;
     string sendtoprofileimage = string.Empty;
     string scheduleddate = string.Empty;
@@ -13,7 +14,20 @@
     LinkedInAccount objLinkedInAccount = new LinkedInAccount();
     InstagramAccount objInstagramAccount = new InstagramAccount();
     TumblrAccount objTumblrAccount = new TumblrAccount();
-    
+
+    }
+@if (!string.IsNullOrEmpty(objuser.ProfileUrl))
+{
+    try
+    {
+        string[] profileUrl = objuser.ProfileUrl.Split(new string[] { "Socioboard" }, StringSplitOptions.None);
+        string imgurl = "/Themes/Socioboard" + profileUrl[1];
+        //ProfileUrl = System.Text.RegularExpressions.Regex.Split(objuser.ProfileUrl, "wwwroot")[1];
+        ProfileUrl = imgurl;
+    }
+    catch {
+        ProfileUrl = objuser.ProfileUrl;
+    }
 }
 
 
@@ -88,7 +102,7 @@
             <tr class="odd gradeX" id="@item.Id">
                 <td>
                     <div class="col-xs-6">
-                        <img src="@objuser.ProfileUrl" class="img-circle profilePic" onclick="DetailsofProfile('@item.ProfileId','@item.ProfileType')">
+                        <img src="@ProfileUrl" class="img-circle profilePic" onclick="DetailsofProfile('@item.ProfileId','@item.ProfileType')">
                     </div>
                     <div class="col-xs-6">
                         <span>@objuser.UserName<br>

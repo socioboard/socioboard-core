@@ -206,7 +206,20 @@ namespace Socioboard.Controllers
                 return Content(SentMails);
         }
 
-
+        public ActionResult CheckprofileToCurrentGroup(Guid UserId,string GroupId)
+        {
+            Api.GroupProfile.GroupProfile ApiobjGroupProfile = new Api.GroupProfile.GroupProfile();
+            List<Domain.Socioboard.Domain.GroupProfile> lstGroupProfile = (List<Domain.Socioboard.Domain.GroupProfile>)(new JavaScriptSerializer().Deserialize(ApiobjGroupProfile.GetAllProfilesConnectedWithGroup(UserId.ToString(),GroupId),typeof(List<Domain.Socioboard.Domain.GroupProfile>)));
+            if (lstGroupProfile.Count != 0)
+            {
+                return Content("Success");
+            }
+            else
+            {
+                return Content("Failure");
+            }
+           
+        }
 
     }
 }

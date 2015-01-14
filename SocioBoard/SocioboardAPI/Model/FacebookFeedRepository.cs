@@ -62,7 +62,6 @@ namespace Api.Socioboard.Services
             }//End session
         }
 
-
         public List<Domain.Socioboard.Domain.FacebookFeed> getAllFeedDetail(string profileid)
         {
             //Creates a database connection and opens up a session
@@ -96,7 +95,6 @@ namespace Api.Socioboard.Services
                 }//End Trasaction
             }//End session
         }
-
 
         public List<Domain.Socioboard.Domain.FacebookFeed> getAllFeedDetail1(string profileid, Guid userid)
         {
@@ -132,12 +130,6 @@ namespace Api.Socioboard.Services
             }//End session
         }
 
-
-
-
-
-
-
         public Domain.Socioboard.Domain.FacebookFeed GetFacebookFeedByFeedId(Guid userid, string feedid)
         {
             //Creates a database connection and opens up a session
@@ -164,10 +156,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
-
-
-
         public int deleteFacebookFeed(Domain.Socioboard.Domain.FacebookFeed fbfeed)
         {
             throw new NotImplementedException();
@@ -177,7 +165,6 @@ namespace Api.Socioboard.Services
         {
             throw new NotImplementedException();
         }
-
 
         /// <getAllFacebookFeedsOfUser>
         /// get All Facebook Feeds Of User
@@ -223,7 +210,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End session 
         }
-
 
         /// <getAllFacebookFeedsOfUser>
         /// Get All Facebook Feeds Of User
@@ -274,7 +260,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
         /// <checkFacebookFeedExists>
         /// Check Facebook Feed is Exists
         /// </summary>
@@ -313,7 +298,6 @@ namespace Api.Socioboard.Services
             }//End session
         }
 
-
         /// <deleteAllFeedsOfUser>
         /// Delete All Feeds Of User
         /// </summary>
@@ -345,7 +329,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End session
         }
-
 
         //public int updateFacebookFeedStatus(string fbfeed)
         //{
@@ -399,7 +382,6 @@ namespace Api.Socioboard.Services
             }//End session
 
         }
-
 
         /// <getUnreadMessages>
         /// Get the All of Unread Messages of user.
@@ -524,7 +506,6 @@ namespace Api.Socioboard.Services
 
         }
 
-
         /// <checkFacebookFeedExists>
         /// Check Exists FacebookFeed by feed id. 
         /// </summary>
@@ -561,7 +542,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
         /// <updateMessageStatus>
         /// Update/Change Message Status
         /// </summary>
@@ -593,7 +573,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End session
         }
-        
 
         /// <getAllReadFacebookFeeds>
         /// Get All Read Facebook Feeds
@@ -640,8 +619,6 @@ namespace Api.Socioboard.Services
                 }//End Trasaction
             }//End session
         }
-
-
 
         public List<Domain.Socioboard.Domain.FacebookFeed> getAllFacebookFeeds(Guid UserId, string profileid)
         {
@@ -759,8 +736,6 @@ namespace Api.Socioboard.Services
                 }//End Trasaction
             }//End session
         }
-       
-
 
         /// <countInteractions>
         /// Count total number of Interactions
@@ -799,7 +774,6 @@ namespace Api.Socioboard.Services
 
         }
 
-
         /// <DeleteFacebookFeedByUserid>
         /// Delete Facebook Feed By Userid
         /// </summary>
@@ -831,5 +805,32 @@ namespace Api.Socioboard.Services
             }//End session
         }
 
+        // Edited by Antima[20/12/2014]
+
+        public Domain.Socioboard.Domain.FacebookFeed getFacebookFeedByProfileId(string ProfileId, string FeedId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get feeds of twitter account by profile id.
+                        Domain.Socioboard.Domain.FacebookFeed msg = session.CreateQuery("from FacebookFeed where ProfileId = :ProfileId and FeedId =:FeedId")
+                        .SetParameter("ProfileId", ProfileId)
+                        .SetParameter("FeedId", FeedId).UniqueResult<Domain.Socioboard.Domain.FacebookFeed>();
+
+                        return msg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
     }
 }

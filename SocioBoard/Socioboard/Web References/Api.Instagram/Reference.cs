@@ -400,7 +400,7 @@ namespace Socioboard.Api.Instagram {
         
         private string insUserNameField;
         
-        private System.Guid userIdField;
+        private string profileUrlField;
         
         private bool isActiveField;
         
@@ -408,9 +408,9 @@ namespace Socioboard.Api.Instagram {
         
         private int followedByField;
         
-        private string profileUrlField;
-        
         private int totalImagesField;
+        
+        private System.Guid userIdField;
         
         private string profileTypeField;
         
@@ -455,12 +455,12 @@ namespace Socioboard.Api.Instagram {
         }
         
         /// <remarks/>
-        public System.Guid UserId {
+        public string ProfileUrl {
             get {
-                return this.userIdField;
+                return this.profileUrlField;
             }
             set {
-                this.userIdField = value;
+                this.profileUrlField = value;
             }
         }
         
@@ -495,22 +495,22 @@ namespace Socioboard.Api.Instagram {
         }
         
         /// <remarks/>
-        public string ProfileUrl {
-            get {
-                return this.profileUrlField;
-            }
-            set {
-                this.profileUrlField = value;
-            }
-        }
-        
-        /// <remarks/>
         public int TotalImages {
             get {
                 return this.totalImagesField;
             }
             set {
                 this.totalImagesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.Guid UserId {
+            get {
+                return this.userIdField;
+            }
+            set {
+                this.userIdField = value;
             }
         }
         

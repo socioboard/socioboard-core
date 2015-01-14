@@ -64,5 +64,69 @@ namespace Api.Socioboard.Services
         }
 
 
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string AddBusinessByUser(string ObjBusinessSetting)
+        {
+            Domain.Socioboard.Domain.BusinessSetting objbsnssetting = (Domain.Socioboard.Domain.BusinessSetting)(new JavaScriptSerializer().Deserialize(ObjBusinessSetting, typeof(Domain.Socioboard.Domain.BusinessSetting)));
+            BusinessSettingRepository busnrepo = new BusinessSettingRepository();
+           
+                
+                busnrepo.AddBusinessSetting(objbsnssetting);
+
+                return new JavaScriptSerializer().Serialize(objbsnssetting);
+            
+        }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetDetailsofBusinessOwner(string GroupId)
+        {
+            BusinessSettingRepository busnrepo = new BusinessSettingRepository();
+
+            Domain.Socioboard.Domain.BusinessSetting ObjBsnsstng = busnrepo.GetDetailsofBusinessOwner(Guid.Parse(GroupId));
+            try
+            {
+                if (ObjBsnsstng != null)
+                {
+                    return new JavaScriptSerializer().Serialize(ObjBsnsstng);
+                }
+                else
+                {
+                    return new JavaScriptSerializer().Serialize(ObjBsnsstng);
+                }
+
+                
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+                return null;
+            }
+
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string UpdateBuisnessSetting(string ObjBusiNessSetting)
+        {
+            try
+            {
+                Domain.Socioboard.Domain.BusinessSetting objbsnssetting = (Domain.Socioboard.Domain.BusinessSetting)(new JavaScriptSerializer().Deserialize(ObjBusiNessSetting, typeof(Domain.Socioboard.Domain.BusinessSetting)));
+                BusinessSettingRepository busnrepo = new BusinessSettingRepository();
+           
+                
+                busnrepo.AddBusinessSetting(objbsnssetting);
+
+                return new JavaScriptSerializer().Serialize(objbsnssetting);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+        }
+
+
     }
 }

@@ -431,16 +431,16 @@
   </wsdl:binding>
   <wsdl:service name="DiscoverySearch">
     <wsdl:port name="DiscoverySearchSoap" binding="tns:DiscoverySearchSoap">
-      <soap:address location="http://localhost:6361/Services/DiscoverySearch.asmx" />
+      <soap:address location="http://devapi.socioboard.com/Services/DiscoverySearch.asmx" />
     </wsdl:port>
     <wsdl:port name="DiscoverySearchSoap12" binding="tns:DiscoverySearchSoap12">
-      <soap12:address location="http://localhost:6361/Services/DiscoverySearch.asmx" />
+      <soap12:address location="http://devapi.socioboard.com/Services/DiscoverySearch.asmx" />
     </wsdl:port>
     <wsdl:port name="DiscoverySearchHttpGet" binding="tns:DiscoverySearchHttpGet">
-      <http:address location="http://localhost:6361/Services/DiscoverySearch.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/DiscoverySearch.asmx" />
     </wsdl:port>
     <wsdl:port name="DiscoverySearchHttpPost" binding="tns:DiscoverySearchHttpPost">
-      <http:address location="http://localhost:6361/Services/DiscoverySearch.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/DiscoverySearch.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

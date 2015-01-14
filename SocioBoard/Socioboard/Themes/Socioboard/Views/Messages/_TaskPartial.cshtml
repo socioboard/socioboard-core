@@ -33,6 +33,7 @@
 
                                     @{
                                         if (lstTasks.Count > 0)
+                                            
                                         {
 
 
@@ -48,46 +49,67 @@
                                                 }
                                                 else
                                                 {
-                                                    imgpath = objdetails.ProfileUrl;
+                                                    try
+                                                    {
+                                                        string[] profileUrl = objdetails.ProfileUrl.Split(new string[] { "Socioboard" }, StringSplitOptions.None);
+                                                        imgpath = "/Themes/Socioboard" + profileUrl[2];
+                                                    }
+                                                    catch
+                                                    {
+                                                        imgpath = objdetails.ProfileUrl;
+                                                    }
+                                                    
                                                 }
 
                                                 if (item.ReadStatus == 1)
                                                 {
-                                        @:<div class="panel panel-default" id="Section"@item.Id">
+                                        @:<div class="panel panel-default" id="Section_@item.Id">
                                         }
                                                 else
                                                 {
-                                        @:<div class="panel panel-default" id="Section"@item.Id" style="opacity:0.4;">
+                                        @:<div class="panel panel-default" id="Section_@item.Id" style="opacity:0.4;">
                                             string ret = (string)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(objApiTasks.UpdateTaskReadStatus(item.Id.ToString(), item.UserId.ToString(), item.GroupId.ToString()), typeof(string)));
 
                                                 }
                                         
                                             <div class="panel-heading">
                                              <h4 class="panel-title">
-                                          <a class="collapsed" href="#@item.Id" data-parent="#accordion" data-toggle="collapse"><i class="fa fa-thumb-tack fa-fw"></i></a><span>
-                                            @objdetails.UserName</span><p>Assigned by @objAssignUserDetails.UserName</p>
+                                         @* <a class="collapsed" href="#@item.Id" data-parent="#accordion" data-toggle="collapse">*@<i class="fa fa-thumb-tack fa-fw"></i>@*</a>*@<span>
+                                            @objdetails.UserName</span>
+
+                                                 <span class="pull-right"><i class="fa fa-clock-o"></i> @item.TaskMessageDate</span>
+                                                 <p><a class="collapsed" href="#@item.Id" data-parent="#accordion" data-toggle="collapse">Assigned by @objAssignUserDetails.UserName</a></p>
                                                                                                 <br>
                                                                                                 <span>@item.TaskMessage</span>
                                                                                                 @*<i data-target="#EditModal" data-toggle="modal" class="fa fa-pencil fa-fw pull-right"></i>*@
                                                  @if (item.TaskStatus==true)
                                                  {
-                                                    @:<div class="pull-right">                                      
-                                                    <span>Completed</span>
-                                                    if (LoggedUser.Id == objAssignUserDetails.Id)
-                                                    {
+                                                    @:<div class="pull-right"> 
+                                                        if(objAssignUserDetails.UserName==LoggedUser.UserName)
+                                                        {
+                                                            @:<span>Closed By  You</span>  
+                                                        }
+                                                        else
+                                                        {
+                                                            @:<span>Closed By  @objAssignUserDetails.UserName</span>
+                                                        }
+                                                                                              
+                                                    @:<span>Completed</span>
+                                                     if (LoggedUser.Id == objAssignUserDetails.Id)
+                                                     {
                                                     @:<i id="@(item.Id + "_" + item.TaskStatus)"  onclick="PerformClick(this.id)" class="fa fa-pencil fa-fw" style="cursor:pointer"></i>
                                                     }
-                                            
+
                                                  }
                                                  else
                                                  {
-                                                    @:<div class="pull-right">                                      
+                                                    @:<div class="pull-right">
                                                     <span>Pending</span>
-                                                    if (LoggedUser.Id == objAssignUserDetails.Id)
-                                                    {
+                                                     if (LoggedUser.Id == objAssignUserDetails.Id)
+                                                     {
                                                     @:<i id="@(item.Id + "_" + item.TaskStatus)"  onclick="PerformClick(this.id)" class="fa fa-pencil fa-fw" style="cursor:pointer"></i>
                                                     }
-                                            
+
                                                  }
                                             
                                                 
@@ -132,15 +154,22 @@
                                         </ul>
 
                                                     <div class="col-md-3">
-                                                        <img class="img-responsive img-circle profilePic" src="@objdetails.ProfileUrl">
-                                                        <img src="Contents/img/twticon.png" class="img-responsive img-circle msgiconPoss">
+                                                        <img class="img-responsive img-circle profilePic" src="@imgpath">
+                                                        @*<img src="../Contents/img/twticon.png" class="img-responsive img-circle msgiconPoss">*@
                                                         <span>@objdetails.UserName</span>
                                                     </div>
                                                     <div class="col-md-9">
-                                                        <textarea id="txtTaskComment" placeholder="Leave a comment" rows="3" class="form-control"></textarea>
+                                                        <textarea id="txtTaskComment_@item.Id" placeholder="Leave a comment" rows="3" class="form-control"></textarea>
                                                         <button id="taskcomment" class="btn btn-primary " onclick="addTaskComment('@item.Id')" type="button">OK</button>
                                                         <button onclick="hideTask('@item.Id')" data-dismiss="modal" class="btn btn-default " type="button">Close</button>
                                                     </div>
+                                                        @if (item.UserId == LoggedUser.Id)
+                                                        {
+                                                            <div>
+                                                                 <a style="cursor:pointer" onclick="DeleteTask('@item.Id')">Delete Task</a>
+                                                            </div>
+                                                        }
+                                                        
                                                 </div>
                                             </div>
                                                  }
@@ -276,7 +305,7 @@
                                     <div class="divder"></div>
                                     <label class="radio">
                                         <input type="radio" value="option2" id="rdIncompleteTask" name="inlineRadioOptions" onclick="TaskFilteration(this.id);">
-                                        Incomplete Task
+                                        Pending Task
                                            
                                     </label>
                                     <div class="divder"></div>
@@ -334,6 +363,41 @@
             });
         }
 
+
+
+        function DeleteTask(id) {
+            debugger;
+            alertify.confirm('Deleting this task will completely remove the associated audit trail.', function (e) {
+                if (e) {
+                    debugger;
+                    $.ajax({
+                        type: "POST",
+                        url: "../Messages/DeleteTask?Taskid=" + id,
+                        data: '',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "html",
+                        success: function (msg) {
+                            debugger;
+                            if (msg == "Success") {
+
+                                $('#' + 'Section_' + id).fadeOut(900);
+                            }
+                            //location.reload();
+
+                        },
+
+                    });
+
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            });
+        }
+
+
+
         //$("#rdMyTask").change(function () {
         //    debugger;
         //    window.location.href = "../Messages/Task";
@@ -361,7 +425,7 @@
             if (TaskType == "MyTask") {
                 $("#rdMyTask").attr("checked", true);
             }
-            if (TaskType == "IncompleteTask") {
+            if (TaskType == "PendingTask") {
                 $("#rdIncompleteTask").attr("checked", true);
             }
             if (TaskType == "CompleteTask") {

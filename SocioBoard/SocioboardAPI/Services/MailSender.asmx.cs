@@ -166,5 +166,22 @@ namespace Api.Socioboard.Services
             ret = objMailHelper.SendAddNewsLatterMail(host, Convert.ToInt32(port), from, pass, emailId, Subject, mailBody);
             return ret;
         }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string SendTaskNotificationMail(string emailId, string mailBody, string Subject)
+        {
+            string ret = string.Empty;
+            string username = ConfigurationManager.AppSettings["username"];
+            string host = ConfigurationManager.AppSettings["Mandrillhost"];
+            string port = ConfigurationManager.AppSettings["Mandrillport"];
+            string pass = ConfigurationManager.AppSettings["Mandrillpassword"];
+            string from = ConfigurationManager.AppSettings["tomail"];
+            // string from = ConfigurationManager.AppSettings["Mandrillusername"];
+
+            MailHelper objMailHelper = new MailHelper();
+            ret = objMailHelper.SendFeedMailByMandrill(host, Convert.ToInt32(port), from, pass, emailId, Subject, mailBody);
+            return ret;
+        }
     }
 }

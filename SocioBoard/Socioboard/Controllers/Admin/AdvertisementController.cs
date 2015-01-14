@@ -8,7 +8,7 @@ using System.Web.Script.Serialization;
 
 namespace Socioboard.Controllers.Admin
 {
-    [Authorize(Users = "Aby Kumar")]
+    //[Authorize(Users = "Aby Kumar")]
     public class AdvertisementController : Controller
     {
         //

@@ -57,14 +57,41 @@ namespace Api.Socioboard.Services
             }
         }
 
+        //[WebMethod]
+        //[ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        //public string getFacebookAccountDetailsById(string UserId, string ProfileId)
+        //{
+        //    try
+        //    {
+        //        Domain.Socioboard.Domain.FacebookAccount objFacebookAccount = objFacebookAccountRepository.getFacebookAccountDetailsById(ProfileId, Guid.Parse(UserId));
+        //        return new JavaScriptSerializer().Serialize(objFacebookAccount);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.StackTrace);
+        //        return "Something Went Wrong";
+        //    }
+        //}
+
+        // Edited by Antima[20/12/2014]
+
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string getFacebookAccountDetailsById(string UserId, string ProfileId)
         {
             try
             {
-                Domain.Socioboard.Domain.FacebookAccount objFacebookAccount = objFacebookAccountRepository.getFacebookAccountDetailsById(ProfileId, Guid.Parse(UserId));
-                return new JavaScriptSerializer().Serialize(objFacebookAccount);
+                Domain.Socioboard.Domain.FacebookAccount objFacebookAccount = new Domain.Socioboard.Domain.FacebookAccount();
+                if (objFacebookAccountRepository.checkFacebookUserExists(ProfileId, Guid.Parse(UserId)))
+                {
+                    objFacebookAccount = objFacebookAccountRepository.getFacebookAccountDetailsById(ProfileId, Guid.Parse(UserId));
+                    return new JavaScriptSerializer().Serialize(objFacebookAccount);
+                }
+                else
+                {
+                    objFacebookAccount = objFacebookAccountRepository.getUserDetails(ProfileId);
+                    return new JavaScriptSerializer().Serialize(objFacebookAccount);
+                }
             }
             catch (Exception ex)
             {
@@ -72,6 +99,11 @@ namespace Api.Socioboard.Services
                 return "Something Went Wrong";
             }
         }
+
+
+
+
+
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetFacebookAccountDetailsById(string UserId)

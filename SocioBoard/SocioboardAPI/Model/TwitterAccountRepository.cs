@@ -355,7 +355,7 @@ namespace Api.Socioboard.Services
                     try
                     {
                         //Proceed action, to get twitter account details by screen name and user id.
-                        NHibernate.IQuery query = session.CreateQuery("from TwitterAccount where UserId = :userid and TwitterScreenName = :Twtuserid");
+                        NHibernate.IQuery query = session.CreateQuery("from TwitterAccount where UserId = :userid and TwitterUserId = :Twtuserid");
                         query.SetParameter("userid", userid);
                         query.SetParameter("Twtuserid", screenname);
                         Domain.Socioboard.Domain.TwitterAccount result = query.UniqueResult<Domain.Socioboard.Domain.TwitterAccount>();

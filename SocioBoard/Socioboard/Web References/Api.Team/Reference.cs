@@ -45,6 +45,8 @@ namespace Socioboard.Api.Team {
         
         private System.Threading.SendOrPostCallback getAllTeamsOfUserOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getAllGroupMembersofTeamOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -106,6 +108,9 @@ namespace Socioboard.Api.Team {
         
         /// <remarks/>
         public event getAllTeamsOfUserCompletedEventHandler getAllTeamsOfUserCompleted;
+        
+        /// <remarks/>
+        public event getAllGroupMembersofTeamCompletedEventHandler getAllGroupMembersofTeamCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddTeam", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -368,6 +373,33 @@ namespace Socioboard.Api.Team {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAllGroupMembersofTeam", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getAllGroupMembersofTeam() {
+            object[] results = this.Invoke("getAllGroupMembersofTeam", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAllGroupMembersofTeamAsync() {
+            this.getAllGroupMembersofTeamAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getAllGroupMembersofTeamAsync(object userState) {
+            if ((this.getAllGroupMembersofTeamOperationCompleted == null)) {
+                this.getAllGroupMembersofTeamOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAllGroupMembersofTeamOperationCompleted);
+            }
+            this.InvokeAsync("getAllGroupMembersofTeam", new object[0], this.getAllGroupMembersofTeamOperationCompleted, userState);
+        }
+        
+        private void OngetAllGroupMembersofTeamOperationCompleted(object arg) {
+            if ((this.getAllGroupMembersofTeamCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAllGroupMembersofTeamCompleted(this, new getAllGroupMembersofTeamCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -581,6 +613,32 @@ namespace Socioboard.Api.Team {
         private object[] results;
         
         internal getAllTeamsOfUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void getAllGroupMembersofTeamCompletedEventHandler(object sender, getAllGroupMembersofTeamCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAllGroupMembersofTeamCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAllGroupMembersofTeamCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

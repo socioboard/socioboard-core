@@ -492,7 +492,7 @@ function facebookdetails(id) {
 
         });
 
-
+        FacebookUserFeeds(id);
 
 
 
@@ -607,36 +607,36 @@ function facebookfeedscrolldata() {
 
 }
 
-//function FacebookUserFeeds(id) {
-//    debugger;
-//    alert("antima");
-//        $("#title_paneltab3").html("User Feeds");
-
-//        FacebookUserFeeds = $.ajax({
-//            type: "GET",
-//            url: "/Feeds/FacebookUserFeeds",
-//            data: { "profileid": id },
-//            contentType: "application/json; charset=utf-8",
-//            dataType: "html",
-//            beforeSend : function(){
-//                console.log("test");
-//            },
-//            success: function (msg) {
-//                console.log("I")
+function FacebookUserFeeds(id) {
+    debugger;
+    //alert("antima");
+        $("#title_paneltab3").html("User Feeds");
+        //var nwtid = $('#refreshpanel2').attr('nwtid');
+        $.ajax({
+            type: "GET",
+            url: "/Feeds/FacebookUserFeeds",
+            data: { "profileid": id },
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            beforeSend : function(){
+                console.log("test");
+            },
+            success: function (msg) {
+                console.log("I")
                
-//                    $("#data_paneltab3").html(msg);
-//                    console.log("testend");
+                    $("#data_paneltab3").html(msg);
+                    console.log("testend");
                
-//            },
-//            error: function (e) {
-//                console.log("testerr");
+            },
+            error: function (e) {
+                console.log("testerr");
 
-//                console.log(e);
-//                alert("gfgh");
-//            }
-//        });
+                console.log(e);
+                alert("Somthing went wrong");
+            }
+        });
    
-//}
+}
 
 //function FacebookStatus(id) {
    
@@ -894,7 +894,7 @@ function twitterdetails(id) {
         //    }
         //});
 
-
+        TwitterUserTweet(id);
 
     } catch (e) {
 

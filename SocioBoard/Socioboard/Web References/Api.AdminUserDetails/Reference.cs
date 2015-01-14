@@ -37,6 +37,8 @@ namespace Socioboard.Api.AdminUserDetails {
         
         private System.Threading.SendOrPostCallback DeleteUserOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getAllDeletedUsersOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -88,23 +90,28 @@ namespace Socioboard.Api.AdminUserDetails {
         public event DeleteUserCompletedEventHandler DeleteUserCompleted;
         
         /// <remarks/>
+        public event getAllDeletedUsersCompletedEventHandler getAllDeletedUsersCompleted;
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllUsers", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string GetAllUsers() {
-            object[] results = this.Invoke("GetAllUsers", new object[0]);
+        public string GetAllUsers(string Objuser) {
+            object[] results = this.Invoke("GetAllUsers", new object[] {
+                        Objuser});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void GetAllUsersAsync() {
-            this.GetAllUsersAsync(null);
+        public void GetAllUsersAsync(string Objuser) {
+            this.GetAllUsersAsync(Objuser, null);
         }
         
         /// <remarks/>
-        public void GetAllUsersAsync(object userState) {
+        public void GetAllUsersAsync(string Objuser, object userState) {
             if ((this.GetAllUsersOperationCompleted == null)) {
                 this.GetAllUsersOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllUsersOperationCompleted);
             }
-            this.InvokeAsync("GetAllUsers", new object[0], this.GetAllUsersOperationCompleted, userState);
+            this.InvokeAsync("GetAllUsers", new object[] {
+                        Objuser}, this.GetAllUsersOperationCompleted, userState);
         }
         
         private void OnGetAllUsersOperationCompleted(object arg) {
@@ -206,6 +213,35 @@ namespace Socioboard.Api.AdminUserDetails {
             if ((this.DeleteUserCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.DeleteUserCompleted(this, new DeleteUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAllDeletedUsers", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getAllDeletedUsers(string Objuser) {
+            object[] results = this.Invoke("getAllDeletedUsers", new object[] {
+                        Objuser});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAllDeletedUsersAsync(string Objuser) {
+            this.getAllDeletedUsersAsync(Objuser, null);
+        }
+        
+        /// <remarks/>
+        public void getAllDeletedUsersAsync(string Objuser, object userState) {
+            if ((this.getAllDeletedUsersOperationCompleted == null)) {
+                this.getAllDeletedUsersOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAllDeletedUsersOperationCompleted);
+            }
+            this.InvokeAsync("getAllDeletedUsers", new object[] {
+                        Objuser}, this.getAllDeletedUsersOperationCompleted, userState);
+        }
+        
+        private void OngetAllDeletedUsersOperationCompleted(object arg) {
+            if ((this.getAllDeletedUsersCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAllDeletedUsersCompleted(this, new getAllDeletedUsersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -319,6 +355,32 @@ namespace Socioboard.Api.AdminUserDetails {
         private object[] results;
         
         internal DeleteUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void getAllDeletedUsersCompletedEventHandler(object sender, getAllDeletedUsersCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAllDeletedUsersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAllDeletedUsersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

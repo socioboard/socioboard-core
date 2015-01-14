@@ -371,7 +371,7 @@ footer {
 }
 
 .navbar-top-links li a {
-    padding: 15px;
+    padding: 10px 10px 0px 10px;
     min-height: 50px;
 }
 
@@ -1443,7 +1443,19 @@ background-color: #eaeaea;
     height: 40px;
     width: 40px;
 }
-
+/*company search inputbox*/
+.global-nav__search-button {
+display: block;
+width: 10px;
+color: #000;
+background: transparent;
+border: none;
+outline: none;
+margin: -27px 0px 0px 196px;
+padding: 0;
+padding-right: 29px;
+cursor: pointer;
+}
  /*Edited by Antima*/
 
  /*

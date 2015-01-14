@@ -22,11 +22,11 @@
                     
         @:<div class="row">
 }
-                divcount++;
-                  <div class="col-lg-3 col-md-9">
+                divcount++; 
+                  <div class="col-lg-4 col-md-9">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <img style="width:200px;height:170px;" class="img-rounded img-responsive galleryImgSize" src="@item.FeedImageUrl">
+                                <img style="width:290px;height:170px;" class="img-rounded img-responsive galleryImgSize" src="@item.FeedImageUrl">
                             </div>
                             <div class="panel-body">
                                 <div class="pull-left">
@@ -37,13 +37,13 @@
                                 </div>
                                
                                 <div class="pull-left">
-                                   @* if(@item.IsLike==0)
+                                   @if(@item.IsLike==0)
                                     {
-                                    <i id="@item.FeedId" onClick="LikeUnlikeInstagramPost(@item.LikeCount,@item.IsLike,@item.FeedId,@item.InstagramId)" title="Like" class="fa fa-heart-o fa-fw"></i>
+                                    <i style="cursor:pointer; padding-left:13px; margin-top:3px;" id="@item.FeedId" onClick="LikeUnlikeInstagramPost('@item.LikeCount','@item.IsLike','@item.FeedId','@item.InstagramId')" title="Like" class="fa fa-heart-o fa-fw"></i>
                                    }
                                     else{
-                                     <i id="@item.FeedId" onClick="LikeUnlikeInstagramPost(@item.LikeCount,@item.IsLike,@item.FeedId,@item.InstagramId)" title="UnLike" class="fa fa-heart fa-fw"></i>
-                                     }*@
+                                     <i style="cursor:pointer; padding-left:13px; margin-top:3px;" id="@item.FeedId" onClick="LikeUnlikeInstagramPost('@item.LikeCount','@item.IsLike','@item.FeedId','@item.InstagramId')" title="UnLike" class="fa fa-heart fa-fw"></i>
+                                     }
                                 </div>
                             </div>
                             <div style="height:100px;overflow-y:scroll;"  class="panel-footer">
@@ -67,11 +67,11 @@
                             </div>
                         </div>
                     </div>
-           if (divcount == 4)
+           if (divcount == 3)
            {
                divcount = 0; 
                  @:</div>
-                                                             }
+                                                                             }
 
             }
         }
@@ -87,7 +87,7 @@
 }
                 divcount++;
 
-                  <div class="col-lg-3 col-md-9">
+                  <div class="col-lg-4 col-md-9">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                  @if (string.IsNullOrEmpty(item.imageurl))
@@ -98,7 +98,7 @@
                                  {
                                      picurl = item.imageurl;
                                  }
-                                <img class="img-rounded img-responsive galleryImgSize" src="@picurl">
+                                <img style="width:290px;height:170px;" class="img-rounded img-responsive galleryImgSize" src="@picurl">
                             </div>
                             <div class="panel-body">
                                 <div class="pull-left">
@@ -112,11 +112,11 @@
                             </div>
                         </div>
                     </div>
-                                 if (divcount == 4)
+                                 if (divcount == 3)
                                  {
                                      divcount = 0; 
                  @:</div>
-                                                         }
+                                                                         }
 
             }
         }
@@ -156,17 +156,13 @@
                             </div>
                         </div>
                     </div>
-
-
                             if (divcount == 4)
                             {
                                 divcount = 0; 
-                 @:</div>
-                                         }
+               @:</div>
+                  }
 
             }
         }
-
-
     }
 </div>

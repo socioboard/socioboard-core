@@ -108,16 +108,16 @@
   </wsdl:binding>
   <wsdl:service name="GroupScheduleMessage">
     <wsdl:port name="GroupScheduleMessageSoap" binding="tns:GroupScheduleMessageSoap">
-      <soap:address location="http://localhost:6361/Services/GroupScheduleMessage.asmx" />
+      <soap:address location="http://devapi.socioboard.com/Services/GroupScheduleMessage.asmx" />
     </wsdl:port>
     <wsdl:port name="GroupScheduleMessageSoap12" binding="tns:GroupScheduleMessageSoap12">
-      <soap12:address location="http://localhost:6361/Services/GroupScheduleMessage.asmx" />
+      <soap12:address location="http://devapi.socioboard.com/Services/GroupScheduleMessage.asmx" />
     </wsdl:port>
     <wsdl:port name="GroupScheduleMessageHttpGet" binding="tns:GroupScheduleMessageHttpGet">
-      <http:address location="http://localhost:6361/Services/GroupScheduleMessage.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/GroupScheduleMessage.asmx" />
     </wsdl:port>
     <wsdl:port name="GroupScheduleMessageHttpPost" binding="tns:GroupScheduleMessageHttpPost">
-      <http:address location="http://localhost:6361/Services/GroupScheduleMessage.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/GroupScheduleMessage.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

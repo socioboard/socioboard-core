@@ -20,10 +20,8 @@ namespace Api.Socioboard.Services
 
     public class TeamMemberProfile : System.Web.Services.WebService
     {
-
         TeamMemberProfileRepository teammemberrepo = new TeamMemberProfileRepository();
         Domain.Socioboard.Domain.TeamMemberProfile teammember = new Domain.Socioboard.Domain.TeamMemberProfile();
-
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -68,8 +66,6 @@ namespace Api.Socioboard.Services
             }
         }
 
-      
-
         //getAllTeamMemberProfilesOfTeam
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -86,8 +82,6 @@ namespace Api.Socioboard.Services
                 return "Something Went Wrong";
             }
         }
-
-
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -358,8 +352,6 @@ namespace Api.Socioboard.Services
 
            
         }
-
-
 
     }
 }

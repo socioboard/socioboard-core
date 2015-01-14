@@ -148,6 +148,22 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="SendTaskNotificationMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="emailId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mailBody" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendTaskNotificationMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendTaskNotificationMailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -198,6 +214,12 @@
   </wsdl:message>
   <wsdl:message name="SendAddNewsLatterMailSoapOut">
     <wsdl:part name="parameters" element="tns:SendAddNewsLatterMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendTaskNotificationMailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendTaskNotificationMail" />
+  </wsdl:message>
+  <wsdl:message name="SendTaskNotificationMailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendTaskNotificationMailResponse" />
   </wsdl:message>
   <wsdl:message name="SendMailHttpGetIn">
     <wsdl:part name="name" type="s:string" />
@@ -279,6 +301,14 @@
     <wsdl:part name="Subject" type="s:string" />
   </wsdl:message>
   <wsdl:message name="SendAddNewsLatterMailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendTaskNotificationMailHttpGetIn">
+    <wsdl:part name="emailId" type="s:string" />
+    <wsdl:part name="mailBody" type="s:string" />
+    <wsdl:part name="Subject" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendTaskNotificationMailHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="SendMailHttpPostIn">
@@ -363,6 +393,14 @@
   <wsdl:message name="SendAddNewsLatterMailHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="SendTaskNotificationMailHttpPostIn">
+    <wsdl:part name="emailId" type="s:string" />
+    <wsdl:part name="mailBody" type="s:string" />
+    <wsdl:part name="Subject" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendTaskNotificationMailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="MailSenderSoap">
     <wsdl:operation name="SendMail">
       <wsdl:input message="tns:SendMailSoapIn" />
@@ -395,6 +433,10 @@
     <wsdl:operation name="SendAddNewsLatterMail">
       <wsdl:input message="tns:SendAddNewsLatterMailSoapIn" />
       <wsdl:output message="tns:SendAddNewsLatterMailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendTaskNotificationMail">
+      <wsdl:input message="tns:SendTaskNotificationMailSoapIn" />
+      <wsdl:output message="tns:SendTaskNotificationMailSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="MailSenderHttpGet">
@@ -430,6 +472,10 @@
       <wsdl:input message="tns:SendAddNewsLatterMailHttpGetIn" />
       <wsdl:output message="tns:SendAddNewsLatterMailHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="SendTaskNotificationMail">
+      <wsdl:input message="tns:SendTaskNotificationMailHttpGetIn" />
+      <wsdl:output message="tns:SendTaskNotificationMailHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="MailSenderHttpPost">
     <wsdl:operation name="SendMail">
@@ -463,6 +509,10 @@
     <wsdl:operation name="SendAddNewsLatterMail">
       <wsdl:input message="tns:SendAddNewsLatterMailHttpPostIn" />
       <wsdl:output message="tns:SendAddNewsLatterMailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendTaskNotificationMail">
+      <wsdl:input message="tns:SendTaskNotificationMailHttpPostIn" />
+      <wsdl:output message="tns:SendTaskNotificationMailHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="MailSenderSoap" type="tns:MailSenderSoap">
@@ -532,6 +582,15 @@
     </wsdl:operation>
     <wsdl:operation name="SendAddNewsLatterMail">
       <soap:operation soapAction="http://tempuri.org/SendAddNewsLatterMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendTaskNotificationMail">
+      <soap:operation soapAction="http://tempuri.org/SendTaskNotificationMail" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -614,6 +673,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SendTaskNotificationMail">
+      <soap12:operation soapAction="http://tempuri.org/SendTaskNotificationMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="MailSenderHttpGet" type="tns:MailSenderHttpGet">
     <http:binding verb="GET" />
@@ -682,6 +750,15 @@
     </wsdl:operation>
     <wsdl:operation name="SendAddNewsLatterMail">
       <http:operation location="/SendAddNewsLatterMail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendTaskNotificationMail">
+      <http:operation location="/SendTaskNotificationMail" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -764,19 +841,28 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SendTaskNotificationMail">
+      <http:operation location="/SendTaskNotificationMail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="MailSender">
     <wsdl:port name="MailSenderSoap" binding="tns:MailSenderSoap">
-      <soap:address location="http://localhost:6361/Services/MailSender.asmx" />
+      <soap:address location="http://devapi.socioboard.com/Services/MailSender.asmx" />
     </wsdl:port>
     <wsdl:port name="MailSenderSoap12" binding="tns:MailSenderSoap12">
-      <soap12:address location="http://localhost:6361/Services/MailSender.asmx" />
+      <soap12:address location="http://devapi.socioboard.com/Services/MailSender.asmx" />
     </wsdl:port>
     <wsdl:port name="MailSenderHttpGet" binding="tns:MailSenderHttpGet">
-      <http:address location="http://localhost:6361/Services/MailSender.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/MailSender.asmx" />
     </wsdl:port>
     <wsdl:port name="MailSenderHttpPost" binding="tns:MailSenderHttpPost">
-      <http:address location="http://localhost:6361/Services/MailSender.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/MailSender.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

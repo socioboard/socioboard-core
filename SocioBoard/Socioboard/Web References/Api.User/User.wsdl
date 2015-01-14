@@ -43,6 +43,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="fname" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="lname" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="timezone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="picurl" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -239,6 +240,84 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="UpdateAdminUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="timezone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileurl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateAdminUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateAdminUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckEmailId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NewEmailId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckEmailIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckEmailIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateResetEmailKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ChangeEmailKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateResetEmailKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateResetEmailKeyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateIsEmailKeyUsed">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ChangeEmailKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateIsEmailKeyUsedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateIsEmailKeyUsedResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateEmailId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewEmailId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateEmailIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateEmailIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
       <s:element name="int" type="s:int" />
     </s:schema>
@@ -352,6 +431,36 @@
   <wsdl:message name="UpdateForgetPasswordKeySoapOut">
     <wsdl:part name="parameters" element="tns:UpdateForgetPasswordKeyResponse" />
   </wsdl:message>
+  <wsdl:message name="UpdateAdminUserSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateAdminUser" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAdminUserSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateAdminUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckEmailIdSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckEmailId" />
+  </wsdl:message>
+  <wsdl:message name="CheckEmailIdSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckEmailIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateResetEmailKeySoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateResetEmailKey" />
+  </wsdl:message>
+  <wsdl:message name="UpdateResetEmailKeySoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateResetEmailKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateIsEmailKeyUsedSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateIsEmailKeyUsed" />
+  </wsdl:message>
+  <wsdl:message name="UpdateIsEmailKeyUsedSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateIsEmailKeyUsedResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEmailIdSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateEmailId" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEmailIdSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateEmailIdResponse" />
+  </wsdl:message>
   <wsdl:message name="LoginHttpGetIn">
     <wsdl:part name="EmailId" type="s:string" />
     <wsdl:part name="Password" type="s:string" />
@@ -374,6 +483,7 @@
     <wsdl:part name="fname" type="s:string" />
     <wsdl:part name="lname" type="s:string" />
     <wsdl:part name="timezone" type="s:string" />
+    <wsdl:part name="picurl" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdateUserHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -455,6 +565,44 @@
   <wsdl:message name="UpdateForgetPasswordKeyHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="UpdateAdminUserHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="fname" type="s:string" />
+    <wsdl:part name="lname" type="s:string" />
+    <wsdl:part name="timezone" type="s:string" />
+    <wsdl:part name="profileurl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAdminUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckEmailIdHttpGetIn">
+    <wsdl:part name="NewEmailId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckEmailIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateResetEmailKeyHttpGetIn">
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="ChangeEmailKey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateResetEmailKeyHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateIsEmailKeyUsedHttpGetIn">
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="ChangeEmailKey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateIsEmailKeyUsedHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEmailIdHttpGetIn">
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="NewEmailId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEmailIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="LoginHttpPostIn">
     <wsdl:part name="EmailId" type="s:string" />
     <wsdl:part name="Password" type="s:string" />
@@ -477,6 +625,7 @@
     <wsdl:part name="fname" type="s:string" />
     <wsdl:part name="lname" type="s:string" />
     <wsdl:part name="timezone" type="s:string" />
+    <wsdl:part name="picurl" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdateUserHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -558,6 +707,44 @@
   <wsdl:message name="UpdateForgetPasswordKeyHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="UpdateAdminUserHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="fname" type="s:string" />
+    <wsdl:part name="lname" type="s:string" />
+    <wsdl:part name="timezone" type="s:string" />
+    <wsdl:part name="profileurl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAdminUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckEmailIdHttpPostIn">
+    <wsdl:part name="NewEmailId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckEmailIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateResetEmailKeyHttpPostIn">
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="ChangeEmailKey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateResetEmailKeyHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateIsEmailKeyUsedHttpPostIn">
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="ChangeEmailKey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateIsEmailKeyUsedHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEmailIdHttpPostIn">
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="NewEmailId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEmailIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="UserSoap">
     <wsdl:operation name="Login">
       <wsdl:input message="tns:LoginSoapIn" />
@@ -628,6 +815,26 @@
       <wsdl:input message="tns:UpdateForgetPasswordKeySoapIn" />
       <wsdl:output message="tns:UpdateForgetPasswordKeySoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="UpdateAdminUser">
+      <wsdl:input message="tns:UpdateAdminUserSoapIn" />
+      <wsdl:output message="tns:UpdateAdminUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckEmailId">
+      <wsdl:input message="tns:CheckEmailIdSoapIn" />
+      <wsdl:output message="tns:CheckEmailIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateResetEmailKey">
+      <wsdl:input message="tns:UpdateResetEmailKeySoapIn" />
+      <wsdl:output message="tns:UpdateResetEmailKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIsEmailKeyUsed">
+      <wsdl:input message="tns:UpdateIsEmailKeyUsedSoapIn" />
+      <wsdl:output message="tns:UpdateIsEmailKeyUsedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmailId">
+      <wsdl:input message="tns:UpdateEmailIdSoapIn" />
+      <wsdl:output message="tns:UpdateEmailIdSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="UserHttpGet">
     <wsdl:operation name="Login">
@@ -695,6 +902,26 @@
       <wsdl:input message="tns:UpdateForgetPasswordKeyHttpGetIn" />
       <wsdl:output message="tns:UpdateForgetPasswordKeyHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="UpdateAdminUser">
+      <wsdl:input message="tns:UpdateAdminUserHttpGetIn" />
+      <wsdl:output message="tns:UpdateAdminUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckEmailId">
+      <wsdl:input message="tns:CheckEmailIdHttpGetIn" />
+      <wsdl:output message="tns:CheckEmailIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateResetEmailKey">
+      <wsdl:input message="tns:UpdateResetEmailKeyHttpGetIn" />
+      <wsdl:output message="tns:UpdateResetEmailKeyHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIsEmailKeyUsed">
+      <wsdl:input message="tns:UpdateIsEmailKeyUsedHttpGetIn" />
+      <wsdl:output message="tns:UpdateIsEmailKeyUsedHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmailId">
+      <wsdl:input message="tns:UpdateEmailIdHttpGetIn" />
+      <wsdl:output message="tns:UpdateEmailIdHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="UserHttpPost">
     <wsdl:operation name="Login">
@@ -761,6 +988,26 @@
     <wsdl:operation name="UpdateForgetPasswordKey">
       <wsdl:input message="tns:UpdateForgetPasswordKeyHttpPostIn" />
       <wsdl:output message="tns:UpdateForgetPasswordKeyHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAdminUser">
+      <wsdl:input message="tns:UpdateAdminUserHttpPostIn" />
+      <wsdl:output message="tns:UpdateAdminUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckEmailId">
+      <wsdl:input message="tns:CheckEmailIdHttpPostIn" />
+      <wsdl:output message="tns:CheckEmailIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateResetEmailKey">
+      <wsdl:input message="tns:UpdateResetEmailKeyHttpPostIn" />
+      <wsdl:output message="tns:UpdateResetEmailKeyHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIsEmailKeyUsed">
+      <wsdl:input message="tns:UpdateIsEmailKeyUsedHttpPostIn" />
+      <wsdl:output message="tns:UpdateIsEmailKeyUsedHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmailId">
+      <wsdl:input message="tns:UpdateEmailIdHttpPostIn" />
+      <wsdl:output message="tns:UpdateEmailIdHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="UserSoap" type="tns:UserSoap">
@@ -911,6 +1158,51 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateForgetPasswordKey">
       <soap:operation soapAction="http://tempuri.org/UpdateForgetPasswordKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAdminUser">
+      <soap:operation soapAction="http://tempuri.org/UpdateAdminUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckEmailId">
+      <soap:operation soapAction="http://tempuri.org/CheckEmailId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateResetEmailKey">
+      <soap:operation soapAction="http://tempuri.org/UpdateResetEmailKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIsEmailKeyUsed">
+      <soap:operation soapAction="http://tempuri.org/UpdateIsEmailKeyUsed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmailId">
+      <soap:operation soapAction="http://tempuri.org/UpdateEmailId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1074,6 +1366,51 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="UpdateAdminUser">
+      <soap12:operation soapAction="http://tempuri.org/UpdateAdminUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckEmailId">
+      <soap12:operation soapAction="http://tempuri.org/CheckEmailId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateResetEmailKey">
+      <soap12:operation soapAction="http://tempuri.org/UpdateResetEmailKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIsEmailKeyUsed">
+      <soap12:operation soapAction="http://tempuri.org/UpdateIsEmailKeyUsed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmailId">
+      <soap12:operation soapAction="http://tempuri.org/UpdateEmailId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="UserHttpGet" type="tns:UserHttpGet">
     <http:binding verb="GET" />
@@ -1212,6 +1549,51 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateForgetPasswordKey">
       <http:operation location="/UpdateForgetPasswordKey" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAdminUser">
+      <http:operation location="/UpdateAdminUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckEmailId">
+      <http:operation location="/CheckEmailId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateResetEmailKey">
+      <http:operation location="/UpdateResetEmailKey" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIsEmailKeyUsed">
+      <http:operation location="/UpdateIsEmailKeyUsed" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmailId">
+      <http:operation location="/UpdateEmailId" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -1364,19 +1746,64 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="UpdateAdminUser">
+      <http:operation location="/UpdateAdminUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckEmailId">
+      <http:operation location="/CheckEmailId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateResetEmailKey">
+      <http:operation location="/UpdateResetEmailKey" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIsEmailKeyUsed">
+      <http:operation location="/UpdateIsEmailKeyUsed" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmailId">
+      <http:operation location="/UpdateEmailId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="User">
     <wsdl:port name="UserSoap" binding="tns:UserSoap">
-      <soap:address location="http://localhost:6361/services/User.asmx" />
+      <soap:address location="http://devapi.socioboard.com/Services/User.asmx" />
     </wsdl:port>
     <wsdl:port name="UserSoap12" binding="tns:UserSoap12">
-      <soap12:address location="http://localhost:6361/services/User.asmx" />
+      <soap12:address location="http://devapi.socioboard.com/Services/User.asmx" />
     </wsdl:port>
     <wsdl:port name="UserHttpGet" binding="tns:UserHttpGet">
-      <http:address location="http://localhost:6361/services/User.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/User.asmx" />
     </wsdl:port>
     <wsdl:port name="UserHttpPost" binding="tns:UserHttpPost">
-      <http:address location="http://localhost:6361/services/User.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/User.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

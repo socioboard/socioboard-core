@@ -1,0 +1,408 @@
+﻿@using Newtonsoft.Json.Linq;
+@if (ViewBag.RPage != null)
+{
+    <script>
+        $('#gplusicon').show();
+    </script>
+    <section id="gplus" class="gplus">
+        <div class="container-fluid">
+            <div class="text-center white"><i class="fa fa-google-plus-square fa-5x"></i></div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- <div class="panel panel-default">
+                <div class="panel-heading">
+                    Follower graph list weekly or monthly
+                </div> -->
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="col-lg-2 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-comments fa-3x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <strong>@ViewBag.RPage["circledByCount"]</strong>
+                                            <div>followers</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-comments fa-3x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <strong>12654</strong>
+                                            <div>views</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-comments fa-3x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <strong>12/12/12</strong>
+                                            <div>circles</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-comments fa-3x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <strong>12123</strong>
+                                            <div>comment</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-comments fa-3x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <strong>12123</strong>
+                                            <div>members</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-comments fa-3x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <strong>12123</strong>
+                                            <div>Total like</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- </div> -->
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+
+                <div class="col-lg-6">
+                    <div class="chat-panel panel panel-default">
+                        <div class="panel-heading">
+                            Recent Activity
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <ul class="chat">
+                                @{bool istrue = true;}
+                                @foreach (JObject obj in ViewBag.RecentActivities)
+                                {
+                                    try
+                                    {
+                                        if (istrue && obj["object"]["objectType"].ToString().Equals("note") && !string.IsNullOrEmpty(obj["object"]["content"].ToString()))
+                                        {
+                                    <li class="left clearfix">
+                                        <span class="chat-img pull-left">
+                                            <img src="@obj["actor"]["image"]["url"]" class="img-circle profilePic" alt="User Avatar" >
+                                        </span>
+                                        <div class="chat-body clearfix">
+                                            <div>
+                                                <strong class="primary-font">@obj["actor"]["displayName"]</strong>
+                                                <small class="pull-right text-muted">
+                                                    <i class="fa fa-clock-o fa-fw"></i>
+                                                </small>
+                                            </div>
+                                            <p>
+                                                @Html.Raw(obj["object"]["content"])
+                                            </p>
+                                        </div>
+                                    </li>
+                                            istrue = false;
+                                        }
+                                        else
+                                        {
+                                            if (obj["object"]["objectType"].ToString().Equals("note") && !string.IsNullOrEmpty(obj["object"]["content"].ToString()))
+                                            {
+                                    <li class="right clearfix">
+                                        <span class="chat-img pull-right">
+                                            <img src="@obj["actor"]["image"]["url"]" class="img-circle profilePic" alt="User Avatar">
+                                        </span>
+                                        <div class="chat-body clearfix">
+                                            <div>
+                                                <small class=" text-muted">
+                                                    <i class="fa fa-clock-o fa-fw"></i></small>
+                                                <strong class="pull-right primary-font">@obj["actor"]["displayName"]</strong>
+                                            </div>
+                                            <p>
+                                                @Html.Raw(obj["object"]["content"])
+                                            </p>
+                                        </div>
+                                    </li>
+                                                istrue = true;
+
+                                            }
+
+
+                                        }
+                                    }
+                                    catch (Exception e)
+                                    {
+
+                                    }
+
+
+                                }
+                                @*   <li class="left clearfix">
+                                    <span class="chat-img pull-left">
+                                        <img src="https://pbs.twimg.com/profile_images/486529246769082370/Fx5BMxZD.jpeg" class="img-circle profilePic" alt="User Avatar" class="img-circle">
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div>
+                                            <strong class="primary-font">Jack Sparrow</strong>
+                                            <small class="pull-right text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i>12 mins ago
+                                            </small>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="right clearfix">
+                                    <span class="chat-img pull-right">
+                                        <img src="https://pbs.twimg.com/profile_images/486529246769082370/Fx5BMxZD.jpeg" class="img-circle profilePic" alt="User Avatar" class="img-circle">
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div>
+                                            <small class=" text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i>13 mins ago</small>
+                                            <strong class="pull-right primary-font">Chanchal Santra</strong>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="left clearfix">
+                                    <span class="chat-img pull-left">
+                                        <img src="https://pbs.twimg.com/profile_images/486529246769082370/Fx5BMxZD.jpeg" class="img-circle profilePic" alt="User Avatar" class="img-circle">
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div>
+                                            <strong class="primary-font">Jack Sparrow</strong>
+                                            <small class="pull-right text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i>12 mins ago
+                                            </small>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="right clearfix">
+                                    <span class="chat-img pull-right">
+                                        <img src="https://pbs.twimg.com/profile_images/486529246769082370/Fx5BMxZD.jpeg" class="img-circle profilePic" alt="User Avatar" class="img-circle">
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div>
+                                            <small class=" text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i>13 mins ago</small>
+                                            <strong class="pull-right primary-font">Chanchal Santra</strong>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="left clearfix">
+                                    <span class="chat-img pull-left">
+                                        <img src="https://pbs.twimg.com/profile_images/486529246769082370/Fx5BMxZD.jpeg" class="img-circle profilePic" alt="User Avatar" class="img-circle">
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div>
+                                            <strong class="primary-font">Jack Sparrow</strong>
+                                            <small class="pull-right text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i>12 mins ago
+                                            </small>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="right clearfix">
+                                    <span class="chat-img pull-right">
+                                        <img src="https://pbs.twimg.com/profile_images/486529246769082370/Fx5BMxZD.jpeg" class="img-circle profilePic" alt="User Avatar" class="img-circle">
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div>
+                                            <small class=" text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i>13 mins ago</small>
+                                            <strong class="pull-right primary-font">Chanchal Santra</strong>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>*@
+                            </ul>
+                        </div>
+                        <!-- /.panel-body -->
+                        @*<div class="panel-footer">
+                            <div class="input-group">
+                                <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-warning btn-sm" id="btn-chat">
+                                        Send
+                                    </button>
+                                </span>
+                            </div>
+                        </div>*@
+                        <!-- /.panel-footer -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Infromation
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#contact_info" data-toggle="tab">contact info</a>
+                                </li>
+                                <li><a href="#website" data-toggle="tab">Website</a>
+                                </li>
+
+                                <li><a href="#gplus_url" data-toggle="tab">GPlus</a>
+                                </li>
+                                <li><a href="#gplus_tagline" data-toggle="tab">Tag Line</a>
+                                </li>
+
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="contact_info">
+                                    <h4>contact info Tab</h4>
+                                    <p>Lorem ipsum  cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                </div>
+                                <div class="tab-pane fade" id="website">
+                                    <h4>website Tab</h4>
+                                    <a href="http://www.google.com">Google</a>
+                                </div>
+
+                                <div class="tab-pane fade" id="gplus_url">
+                                    <h4>GPlus Tab</h4>
+                                    <a href="@ViewBag.RPage["url"]">@ViewBag.RPage["url"]</a>
+                                </div>
+                                <div class="tab-pane fade" id="gplus_tagline">
+                                    <h4>Tag Line</h4>
+                                    <p>@ViewBag.RPage["tagline"]</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+                                try
+                                {
+    <script src="~/Themes/Socioboard/Contents/js/jquery-2.0.1.min.js"></script>
+                                    if (!string.IsNullOrEmpty(ViewBag.RPage["cover"].ToString()) && !string.IsNullOrEmpty(ViewBag.RPage["cover"]["coverPhoto"].ToString()) && !string.IsNullOrEmpty(ViewBag.RPage["cover"]["coverPhoto"]["url"].ToString()))
+                                    {
+    <script>
+        $(document).ready(function () {
+            
+            $('.header_li').css("background", "url(@ViewBag.RPage["cover"]["coverPhoto"]["url"].ToString()) no-repeat ");
+            $('.header_li').css("display", "table");
+            $('.header_li').css("position", "relative");
+            $('.header_li').css("width", "100%");
+            $('.header_li').css("height", "100%");
+            $('.header_li').css("-webkit-background-size", "cover");
+            $('.header_li').css("background-size", "cover");
+            $('.header_li').css("-o-background-size", "cover");
+
+            $('#CompanyName').html("@ViewBag.RPage["displayName"]");
+        });
+
+    </script>
+                                    }
+                                    else
+                                    {
+    <script>
+        $(document).ready(function () {
+           
+            $('#top').hide();
+        });
+    </script>                 
+                                    }
+                                    if (!string.IsNullOrEmpty(ViewBag.RPage["image"]["url"].ToString()))
+                                    {
+    <script>
+        $(document).ready(function () {
+            $('#CompanyProfilePic').attr("src", "@ViewBag.RPage["image"]["url"]");
+        });
+
+    </script>
+                                    }
+                                    else
+                                    {
+    <script>
+        $(document).ready(function () {
+            $('#CompanyProfilePic').hide();
+        });
+
+    </script>
+                                    }
+                                }
+                                catch (Exception e) { }
+}
+else
+{
+    <script src="~/Themes/Socioboard/Contents/js/jquery-2.0.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#gplusicon').hide();
+            //$('#CompanyProfilePic').hide();
+           // $('#top').hide();
+        });
+    </script>
+}

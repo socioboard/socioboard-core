@@ -33,7 +33,6 @@ namespace Api.Socioboard.Services
         TeamMemberProfileRepository objTeamMemberProfileRepository = new TeamMemberProfileRepository();
         Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile;
 
-
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string Login(string EmailId, string Password)
@@ -60,7 +59,6 @@ namespace Api.Socioboard.Services
                 return null;
             }
         }
-
 
         //[WebMethod(MessageName = "Pass First & Last Names", Description = "Pass First & Last Names")]
         //[ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -155,12 +153,13 @@ namespace Api.Socioboard.Services
                     try
                     {
                         Domain.Socioboard.Domain.Groups groups = AddGroupByUserId(user.Id);
+                        
+                        
                         BusinessSettingRepository busnrepo = new BusinessSettingRepository();
                         BusinessSetting.AddBusinessSetting(user.Id, groups.Id, groups.GroupName);
                         Team.AddTeamByGroupIdUserId(user.Id, user.EmailId, groups.Id);
 
                         UpdateTeam(EmailId, user.Id.ToString(), user.UserName);
-
 
                     }
                     catch (Exception ex)
@@ -192,12 +191,11 @@ namespace Api.Socioboard.Services
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string UpdateUser(string UserId, string fname, string lname, string timezone)
+        public string UpdateUser(string UserId, string fname, string lname, string timezone, string picurl)
         {
-           int ret= userrepo.UpdateUserById(Guid.Parse(UserId), fname + " " + lname, timezone);
+           int ret= userrepo.UpdateUserById(Guid.Parse(UserId), fname + " " + lname, timezone, picurl);
            return ret.ToString();
         }
-
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -230,10 +228,6 @@ namespace Api.Socioboard.Services
                 objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
             }
         }
-
-
-
-
 
         private static Domain.Socioboard.Domain.Groups AddGroupByUserId(Guid userId)
         {
@@ -298,9 +292,6 @@ namespace Api.Socioboard.Services
                 return "Please Try Again";
             }
         }
-
-
-
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -568,6 +559,95 @@ namespace Api.Socioboard.Services
             }
         }
 
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string UpdateAdminUser(string UserId, string fname, string lname, string timezone,string profileurl)
+        {
+            int ret = userrepo.UpdateAdminUserById(Guid.Parse(UserId), fname + " " + lname, timezone, profileurl);
+            return ret.ToString();
+        }
+
+        // Edited by Antima [05/01/2015]
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string CheckEmailId(string NewEmailId)
+        {
+         if (!userrepo.IsUserExist(NewEmailId))
+	      {
+           return "NotExist";
+	      } 
+          else
+          {
+           return "EmailId already Exist";
+          }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string UpdateResetEmailKey(string userID, string ChangeEmailKey)
+        {
+            try
+            {
+                int ret = userrepo.UpdateChangeEmailKey(Guid.Parse(userID), ChangeEmailKey);
+                return new JavaScriptSerializer().Serialize(ret);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return null;
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string UpdateIsEmailKeyUsed(string userID, string ChangeEmailKey)
+        {
+            try
+            {
+                int ret = userrepo.UpdateIsEmailKeyUsed(Guid.Parse(userID), ChangeEmailKey);
+                return new JavaScriptSerializer().Serialize(ret);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return null;
+            }
+        }
+
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string UpdateEmailId(string Id,string GroupId,string NewEmailId)
+        {
+            try
+            {
+                int ret = 0;
+                int ret1 = 0;
+                if (!userrepo.IsUserExist(NewEmailId))
+                {
+                    ret = userrepo.UpdateEmailId(Guid.Parse(Id), NewEmailId);
+                    ret1 = objTeamRepository.UpdateEmailIdbyGroupId(Guid.Parse(Id), Guid.Parse(GroupId), NewEmailId);
+                    if (ret ==1 && ret1==1)
+                    {
+                        return "Updated Successfully";
+                    }
+                    else
+                    {
+                        return "Failed";
+                    }
+                }
+                else
+                {
+                    return "Email Id alredy Exist";
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
     }
 
     public class profileConnected

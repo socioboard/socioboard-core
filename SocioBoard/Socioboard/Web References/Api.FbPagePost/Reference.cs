@@ -33,6 +33,12 @@ namespace Socioboard.Api.FbPagePost {
         
         private System.Threading.SendOrPostCallback GetAllPostOfPageOperationCompleted;
         
+        private System.Threading.SendOrPostCallback IsPostExistOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AddPostDetailsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdateFbPagePostStatusOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -76,6 +82,15 @@ namespace Socioboard.Api.FbPagePost {
         
         /// <remarks/>
         public event GetAllPostOfPageCompletedEventHandler GetAllPostOfPageCompleted;
+        
+        /// <remarks/>
+        public event IsPostExistCompletedEventHandler IsPostExistCompleted;
+        
+        /// <remarks/>
+        public event AddPostDetailsCompletedEventHandler AddPostDetailsCompleted;
+        
+        /// <remarks/>
+        public event UpdateFbPagePostStatusCompletedEventHandler UpdateFbPagePostStatusCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetPostDetails", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -134,6 +149,93 @@ namespace Socioboard.Api.FbPagePost {
             if ((this.GetAllPostOfPageCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetAllPostOfPageCompleted(this, new GetAllPostOfPageCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IsPostExist", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool IsPostExist(string jdata) {
+            object[] results = this.Invoke("IsPostExist", new object[] {
+                        jdata});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void IsPostExistAsync(string jdata) {
+            this.IsPostExistAsync(jdata, null);
+        }
+        
+        /// <remarks/>
+        public void IsPostExistAsync(string jdata, object userState) {
+            if ((this.IsPostExistOperationCompleted == null)) {
+                this.IsPostExistOperationCompleted = new System.Threading.SendOrPostCallback(this.OnIsPostExistOperationCompleted);
+            }
+            this.InvokeAsync("IsPostExist", new object[] {
+                        jdata}, this.IsPostExistOperationCompleted, userState);
+        }
+        
+        private void OnIsPostExistOperationCompleted(object arg) {
+            if ((this.IsPostExistCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.IsPostExistCompleted(this, new IsPostExistCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddPostDetails", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool AddPostDetails(string jdata) {
+            object[] results = this.Invoke("AddPostDetails", new object[] {
+                        jdata});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AddPostDetailsAsync(string jdata) {
+            this.AddPostDetailsAsync(jdata, null);
+        }
+        
+        /// <remarks/>
+        public void AddPostDetailsAsync(string jdata, object userState) {
+            if ((this.AddPostDetailsOperationCompleted == null)) {
+                this.AddPostDetailsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddPostDetailsOperationCompleted);
+            }
+            this.InvokeAsync("AddPostDetails", new object[] {
+                        jdata}, this.AddPostDetailsOperationCompleted, userState);
+        }
+        
+        private void OnAddPostDetailsOperationCompleted(object arg) {
+            if ((this.AddPostDetailsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddPostDetailsCompleted(this, new AddPostDetailsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateFbPagePostStatus", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int UpdateFbPagePostStatus(string jdata) {
+            object[] results = this.Invoke("UpdateFbPagePostStatus", new object[] {
+                        jdata});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UpdateFbPagePostStatusAsync(string jdata) {
+            this.UpdateFbPagePostStatusAsync(jdata, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateFbPagePostStatusAsync(string jdata, object userState) {
+            if ((this.UpdateFbPagePostStatusOperationCompleted == null)) {
+                this.UpdateFbPagePostStatusOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateFbPagePostStatusOperationCompleted);
+            }
+            this.InvokeAsync("UpdateFbPagePostStatus", new object[] {
+                        jdata}, this.UpdateFbPagePostStatusOperationCompleted, userState);
+        }
+        
+        private void OnUpdateFbPagePostStatusOperationCompleted(object arg) {
+            if ((this.UpdateFbPagePostStatusCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateFbPagePostStatusCompleted(this, new UpdateFbPagePostStatusCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -204,6 +306,84 @@ namespace Socioboard.Api.FbPagePost {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void IsPostExistCompletedEventHandler(object sender, IsPostExistCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class IsPostExistCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal IsPostExistCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void AddPostDetailsCompletedEventHandler(object sender, AddPostDetailsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AddPostDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AddPostDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void UpdateFbPagePostStatusCompletedEventHandler(object sender, UpdateFbPagePostStatusCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpdateFbPagePostStatusCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpdateFbPagePostStatusCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }

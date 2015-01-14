@@ -7,7 +7,7 @@ using System.Web.Script.Serialization;
 
 namespace Socioboard.Controllers.Admin
 {
-   [Authorize(Users = "Aby Kumar")]
+   //[Authorize(Users = "Aby Kumar")]
     public class CouponsController : Controller
     {
         //
@@ -40,7 +40,7 @@ namespace Socioboard.Controllers.Admin
         {
             Domain.Socioboard.Domain.Coupon objCoupons = (Domain.Socioboard.Domain.Coupon)Session["CouponsToUpdate"];
             objCoupons.CouponCode = couponcode;
-            objCoupons.ExpCouponDate = Convert.ToDateTime(EntryDate);
+            objCoupons.EntryCouponDate = Convert.ToDateTime(EntryDate);
             objCoupons.ExpCouponDate = Convert.ToDateTime(ExpiryDate);
             objCoupons.Status = Status;
             string ObjCoupn = (new JavaScriptSerializer().Serialize(objCoupons));
@@ -60,7 +60,7 @@ namespace Socioboard.Controllers.Admin
             Domain.Socioboard.Domain.Coupon objCoupons = new  Domain.Socioboard.Domain.Coupon();
             objCoupons.Id = Guid.NewGuid();
             objCoupons.CouponCode = Couponcode;
-            objCoupons.ExpCouponDate = Convert.ToDateTime(EntryDate);
+            objCoupons.EntryCouponDate = Convert.ToDateTime(EntryDate);
             objCoupons.ExpCouponDate = Convert.ToDateTime(ExpiryDate);
             objCoupons.Status = Status;
             objCoupons.Discount = Convert.ToInt16(Percentage);

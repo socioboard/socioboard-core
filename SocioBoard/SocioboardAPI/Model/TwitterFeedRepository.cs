@@ -9,7 +9,6 @@ namespace Api.Socioboard.Services
 {
     public class TwitterFeedRepository:ITwitterFeedRepository
     {
-
         /// <addTwitterFeed>
         /// Add Twitter Feed
         /// </summary>
@@ -28,7 +27,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-
 
         public bool checkTwitteUserExists(string ProfileId, Guid Userid)
         {
@@ -62,8 +60,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End session
         }
-
-
 
         public List<Domain.Socioboard.Domain.TwitterFeed> getAllTwitterUserFeeds(string profileid)
         {
@@ -101,7 +97,6 @@ namespace Api.Socioboard.Services
             }// End session
         }
 
-
         /// <deleteTwitterFeed>
         /// Delete Twitter Feed
         /// </summary>
@@ -133,7 +128,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-
 
         /// <deleteTwitterFeed>
         /// Delete Twitter Feed
@@ -167,12 +161,10 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
         public int updateTwitterFeed(Domain.Socioboard.Domain.TwitterFeed twtfeed)
         {
             throw new NotImplementedException();
         }
-
 
         /// <getAllTwitterFeedOfUsers>
         /// Get All Twitter Feed Of Users
@@ -221,7 +213,6 @@ namespace Api.Socioboard.Services
         /// <param name="UserId">User id.(Guid)</param>
         /// <param name="profileid">Profile id.(String)</param>
         /// <returns>Return object of TwitterFeed Class with  value of each member in the form of list.(List<TwitterFeed>)</returns>
-     
         public List<Domain.Socioboard.Domain.TwitterFeed> getAllTwitterFeedOfUsers(Guid UserId, string profileid,int count)
         {
             //Creates a database connection and opens up a session
@@ -290,7 +281,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
         /// <getAllTwitterFeeds>
         /// Get All Twitter Feeds
         /// </summary>
@@ -321,7 +311,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-
 
         /// <getTwitterFeedOfUsers>
         /// Get Twitter Feed Of Users
@@ -361,8 +350,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-
-
 
         /// <getTwitterMentionsOfUser>
         /// Get Twitter Mentions Of User
@@ -405,7 +392,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
         /// <getTwitterFeedOfProfile>
         /// Get Twitter Feed Of Profile
         /// </summary>
@@ -444,7 +430,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
         /// <getTwitterMentionsOfProfile>
         /// Get Twitter Mentions Of Profile
         /// </summary>
@@ -482,7 +467,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
         /// <checkTwitterFeedExists>
         /// Check Twitter Feed Exists
         /// </summary>
@@ -519,7 +503,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
         /// <DeleteTwitterFeedByUserid>
         /// Delete Twitter Feed By Userid
         /// </summary>
@@ -551,8 +534,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
-
         public List<Domain.Socioboard.Domain.TwitterFeed> getAllInboxMessagesByProfileid(Guid userid, string profileid, int day)
         {
 
@@ -575,6 +556,8 @@ namespace Api.Socioboard.Services
                         str = str.Substring(0, str.Length - 1);
                         str += ")";
                         List<Domain.Socioboard.Domain.TwitterFeed> alst = session.CreateQuery(str)
+                       .SetParameter("AssinDate",AssignDate)
+                       .SetParameter("userid", userid)
                        .List<Domain.Socioboard.Domain.TwitterFeed>()
                        .ToList<Domain.Socioboard.Domain.TwitterFeed>();
                         return alst;
@@ -590,7 +573,6 @@ namespace Api.Socioboard.Services
             }//End session
 
         }
-
 
         public Domain.Socioboard.Domain.TwitterFeed getTwitterFeed(string id)
         {
@@ -623,6 +605,33 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+        // Edited by Antima[20/12/2014]
+
+        public Domain.Socioboard.Domain.TwitterFeed getTwitterFeedByProfileId(string ProfileId, string MessageId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get feeds of twitter account by profile id.
+                        Domain.Socioboard.Domain.TwitterFeed msg = session.CreateQuery("from TwitterFeed where ProfileId = :ProfileId and MessageId =:MessageId")
+                        .SetParameter("ProfileId", ProfileId)
+                        .SetParameter("MessageId", MessageId).UniqueResult<Domain.Socioboard.Domain.TwitterFeed>();
+
+                        return msg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
 
 
     }

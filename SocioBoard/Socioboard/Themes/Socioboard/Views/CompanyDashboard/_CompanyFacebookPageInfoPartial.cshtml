@@ -1,0 +1,344 @@
+﻿@using Newtonsoft.Json.Linq;
+@if (ViewBag.facebookPageDetailsObj != null)
+{
+    <script>
+        $('#facebookicon').show();
+    </script>
+    <section id="facebook" class="facebook">
+        <div class="container-fluid">
+            <div class="text-center white"><i class="fa fa-facebook-square fa-5x"></i></div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Follower graph list weekly or monthly
+                        </div> -->
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="col-lg-2 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-comments fa-3x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <strong>@ViewBag.facebookPageDetailsObj["talking_about_count"]</strong>
+                                            <div>Talking About Count</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-comments fa-3x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <strong>@ViewBag.facebookPageDetailsObj["likes"]</strong>
+                                            <div>like on post</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-comments fa-3x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <strong>@ViewBag.facebookPageDetailsObj["checkins"]</strong>
+                                            <div>Checkins</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-comments fa-3x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <strong>12</strong>
+                                            <div>date on posted</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-comments fa-3x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <strong>12</strong>
+                                            <div>apps</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-comments fa-3x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <strong>12</strong>
+                                            <div>photos</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel-body -->
+                    <!-- </div> -->
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+                @if (ViewBag.facebookPageNotes != null)
+                {
+                    <div class="col-lg-12">
+                        <div class="chat-panel panel panel-default">
+                            <div class="panel-heading">
+                                Notes
+                            </div>
+                            <!-- .panel-heading -->
+                            <div class="panel-body">
+                                <div class="panel-group" id="accordion">
+                                    @{int i = 0;}
+                                    @foreach (var item in ViewBag.facebookPageNotes)
+                                    {
+                                        var data = item["data"];
+
+                                        foreach (var chile in data)
+                                        {
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse_@i">@Html.Raw(chile["subject"])</a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapse_@i" class="panel-collapse collapse in">
+                                                @{i++;}
+                                                <div class="panel-body">
+                                                    @Html.Raw(chile["message"])
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }
+                                    }
+
+
+
+                                    @* <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseEight">Note #2</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseEight" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt utulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">Note #3</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseSeven" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostruugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        </div>
+                                    </div>
+                                </div>*@
+                                </div>
+                            </div>
+                            <!-- .panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-6 -->
+                }
+
+
+
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Infromation
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#description" data-toggle="tab">Description</a>
+                                </li>
+                                <li><a href="#Founded" data-toggle="tab">Founded</a>
+                                </li>
+                                <li><a href="#Mission" data-toggle="tab">Mission</a>
+                                </li>
+                                <li><a href="#About" data-toggle="tab">About</a>
+                                </li>
+                                <li><a href="#contact" data-toggle="tab">contact no</a>
+                                </li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="description">
+                                    <div class="chat-panel panel panel-default">
+                        <div class="panel-body">
+                                    <p>@Html.Raw(ViewBag.facebookPageDetailsObj["description"])</p>
+                            </div>
+                                        </div>
+                                </div>
+                                <div class="tab-pane fade" id="Founded">
+                                    <p>@ViewBag.facebookPageDetailsObj["founded"]</p>
+                                </div>
+                                <div class="tab-pane fade" id="Mission">
+                                    <h4>Mission Tab</h4>
+                                    <p>@ViewBag.facebookPageDetailsObj["mission"]</p>
+                                </div>
+                                <div class="tab-pane fade" id="About">
+                                    <h4>About Tab</h4>
+                                    <p>@Html.Raw(ViewBag.facebookPageDetailsObj["about"])</p>
+                                </div>
+                                <div class="tab-pane fade" id="contact">
+                                    <h4>contact no Tab</h4>
+                                    @ViewBag.facebookPageDetailsObj["phone"]
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Pill Tabs
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-pills pull-right">
+                                <li class="active"><a href="#website-pills" data-toggle="tab">website</a>
+                                </li>
+                               @* <li><a href="#events-pills" data-toggle="tab">events</a>
+                                </li>*@
+                                <li><a href="#username-pills" data-toggle="tab">username</a>
+                                </li>
+                                <li><a href="#products-pills" data-toggle="tab">products</a>
+                                </li>
+                                <li><a href="#city-pills" data-toggle="tab">city</a>
+                                </li>
+                                <li><a href="#country-pills" data-toggle="tab">country</a>
+                                </li>
+                                <li><a href="#links-pills" data-toggle="tab">links</a>
+                                </li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content pull-left">
+                                <div class="tab-pane fade  in active" id="website-pills">
+                                    <h4>website URL</h4>
+                                    <a href="@ViewBag.facebookPageDetailsObj["website"]">@ViewBag.facebookPageDetailsObj["website"]</a>
+                                </div>
+                               @* <div class="tab-pane fade" id="events-pills">
+                                    <h4>events Tab</h4>
+                                    <p>Lorem ipsum co laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                </div>*@
+                                <div class="tab-pane fade" id="username-pills">
+                                    <h4>@ViewBag.facebookPageDetailsObj["username"]</h4>
+                                    <p></p>
+                                </div>
+                                <div class="tab-pane fade" id="products-pills">
+                                    <h4>products Tab</h4>
+                                    <p>@ViewBag.facebookPageDetailsObj["products"]</p>
+                                </div>
+                                <div class="tab-pane fade" id="city-pills">
+                                    <h4>city Tab</h4>
+                                    @if (ViewBag.facebookPageDetailsObj["location"] != null)
+                                    {
+                                        <p>@ViewBag.facebookPageDetailsObj["location"]["city"] </p>
+                                    }
+                                </div>
+                                <div class="tab-pane fade" id="country-pills">
+                                    <h4>country Tab</h4>
+                                    @if (ViewBag.facebookPageDetailsObj["location"] != null)
+                                    {
+                                        <p>@ViewBag.facebookPageDetailsObj["location"]["country"] </p>
+                                    }
+                                </div>
+                                <div class="tab-pane fade" id="links-pills">
+                                    <h4>links Tab</h4>
+                                    <p>@Html.Raw(ViewBag.facebookPageDetailsObj["link"])</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+            </div>
+        </div>
+    </section>
+                                    try
+                                    {
+    <script src="~/Themes/Socioboard/Contents/js/jquery-2.0.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#facebookicon').show();
+         @*   //$('.header_li').css("background", "url(@ViewBag.facebookPageDetailsObj["cover"]["source"]) no-repeat ");*@
+            $('.header_li').css("display", "table");
+            $('.header_li').css("position", "relative");
+            $('.header_li').css("width", "100%");
+            $('.header_li').css("height", "100%");
+            $('.header_li').css("-webkit-background-size", "cover");
+            $('.header_li').css("background-size", "cover");
+            $('.header_li').css("-o-background-size", "cover");
+            //$('#CompanyProfilePic').attr("src", "");
+         @*   //$('#CompanyName').html("@ViewBag.facebookPageDetailsObj["name"]");*@
+        });
+    </script>
+                                    }
+                                    catch (Exception e) { }
+                                    
+                                    
+}
+else
+{
+     <script src="~/Themes/Socioboard/Contents/js/jquery-2.0.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#facebookicon').hide();
+        });
+    </script>
+}
+@*<script>
+    $(document).ready(function () {
+        $('.collapse').collapse()
+    });
+</script>*@

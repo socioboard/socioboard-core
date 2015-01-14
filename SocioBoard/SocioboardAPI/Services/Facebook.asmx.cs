@@ -11,6 +11,7 @@ using Domain.Socioboard.Domain;
 using SocioBoard.Model;
 using log4net;
 using Hammock.Web;
+using Api.Socioboard.Model;
 
 namespace Api.Socioboard.Services
 {
@@ -263,6 +264,7 @@ namespace Api.Socioboard.Services
                     try
                     {
                         friends = fb.Get("me/friends");
+                        friendscount = Convert.ToInt16(friends["summary"]["total_count"].ToString());
                     }
                     catch (Exception ex)
                     {
@@ -273,7 +275,7 @@ namespace Api.Socioboard.Services
                         }
                         return "Token Expired";
                     }
-                    friendscount = Convert.ToInt16(friends["summary"]["total_count"].ToString());
+                    
                     if (objFacebookAccountRepository.checkFacebookUserExists(Convert.ToString(profile["id"]), Guid.Parse(UserId)))
                     {
                         #region Update FacebookAccount
@@ -601,6 +603,27 @@ namespace Api.Socioboard.Services
                     objFacebookFeed.FeedDescription = message;
                     objFacebookFeed.EntryDate = DateTime.Now;
 
+                    // Edited by Antima[20/12/2014]
+
+                    SentimentalAnalysis _SentimentalAnalysis = new SentimentalAnalysis();
+                    FeedSentimentalAnalysisRepository _FeedSentimentalAnalysisRepository = new FeedSentimentalAnalysisRepository();
+
+                    try
+                    {
+                        if (_FeedSentimentalAnalysisRepository.checkFeedExists(objFacebookFeed.ProfileId.ToString(), Guid.Parse(UserId), objFacebookFeed.Id.ToString()))
+                        {
+                            if (!string.IsNullOrEmpty(message))
+                            {
+                                string Network = "facebook";
+                                _SentimentalAnalysis.GetPostSentimentsFromUclassify(Guid.Parse(UserId), objFacebookFeed.ProfileId, objFacebookFeed.MessageId, message, Network);
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+
                     if (!objFacebookFeedRepository.checkFacebookFeedExists(objFacebookFeed.FeedId))
                     {
                         objFacebookFeedRepository.addFacebookFeed(objFacebookFeed);
@@ -918,6 +941,8 @@ namespace Api.Socioboard.Services
             }
             else {
                 ret = fb.Post("/" + objFacebookAccount.FbUserId + "/feed", args).ToString();
+             //   ret = fb.Post("/" + objFacebookAccount.FbUserId + "/photos", args).ToString();
+          
             }
            
            
@@ -990,28 +1015,43 @@ namespace Api.Socioboard.Services
                 }
                 if (objFacebookAccount != null)
                 {
-
-
                     FacebookClient fbclient = new FacebookClient(objFacebookAccount.AccessToken);
                     var args = new Dictionary<string, object>();
                     args["message"] = objScheduledMessage.ShareMessage;
-
+                    string imagepath = objScheduledMessage.PicUrl;
 
                     var facebookpost = "";
                     try
                     {
-                        if (objFacebookAccount.Type == "account")
+                        //if (objFacebookAccount.Type == "account")
+                        //{
+                        //    System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
+                        //    facebookpost = fbclient.Post("/me/feed", args).ToString();
+
+
+                        //}
+                        //else
+                        //{
+                        //    System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
+                        //    facebookpost = fbclient.Post("/" + objFacebookAccount.FbUserId + "/feed", args).ToString();
+
+                        //}
+
+                        if (!string.IsNullOrEmpty(imagepath))
                         {
-                            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
-                            facebookpost = fbclient.Post("/me/feed", args).ToString();
-
-
+                            var media = new FacebookMediaObject
+                            {
+                                FileName = "filename",
+                                ContentType = "image/jpeg"
+                            };
+                            byte[] img = System.IO.File.ReadAllBytes(imagepath);
+                            media.SetValue(img);
+                            args["source"] = media;
+                            facebookpost = fbclient.Post("/" + objFacebookAccount.FbUserId + "/photos", args).ToString();
                         }
                         else
                         {
-                            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
                             facebookpost = fbclient.Post("/" + objFacebookAccount.FbUserId + "/feed", args).ToString();
-
                         }
                     }
                     catch (Exception ex)
@@ -1033,29 +1073,24 @@ namespace Api.Socioboard.Services
                             objSocialProfilesRepository.updateSocialProfileStatus(objSocialProfile);
                         }
                         Console.WriteLine(ex.Message);
+                        str = ex.Message;
                     }
 
-                    str = "Message post on facebook for Id :" + objFacebookAccount.FbUserId + " and Message: " + objScheduledMessage.ShareMessage;
-
-                    ScheduledMessageRepository schrepo = new ScheduledMessageRepository();
-                    ScheduledMessage schmsg = new ScheduledMessage();
-
-                    //objScheduledMessage.Status = true;
-                    schmsg.UpdateScheduledMessageByMsgId(Guid.Parse(sscheduledmsgguid));
+                    if (!string.IsNullOrEmpty(facebookpost))
+                    {
+                        str = "Message post on facebook for Id :" + objFacebookAccount.FbUserId + " and Message: " + objScheduledMessage.ShareMessage;
+                        ScheduledMessage schmsg = new ScheduledMessage();
+                        schmsg.UpdateScheduledMessageByMsgId(Guid.Parse(sscheduledmsgguid));
+                    }
                 }
                 else
                 {
                     str = "facebook account not found for id" + objScheduledMessage.ProfileId;
                 }
-
-
-
             }
-
             catch (Exception ex)
             {
-
-                throw;
+                str = ex.Message;
             }
             return str;
         }
@@ -1154,7 +1189,7 @@ namespace Api.Socioboard.Services
                     #region SocialProfile
                     Domain.Socioboard.Domain.SocialProfile objSocialProfile = new Domain.Socioboard.Domain.SocialProfile();
                     objSocialProfile.Id = Guid.NewGuid();
-                    objSocialProfile.ProfileType = "facebook";
+                    objSocialProfile.ProfileType = "facebook_page";
                     objSocialProfile.ProfileId = (Convert.ToString(profile["id"]));
                     objSocialProfile.UserId = Guid.Parse(userid);
                     objSocialProfile.ProfileDate = DateTime.Now;
@@ -1796,7 +1831,7 @@ namespace Api.Socioboard.Services
                 #region SocialProfile
                 Domain.Socioboard.Domain.SocialProfile objSocialProfile = new Domain.Socioboard.Domain.SocialProfile();
                 objSocialProfile.Id = Guid.NewGuid();
-                objSocialProfile.ProfileType = "facebook";
+                objSocialProfile.ProfileType = "facebook_page";
                 objSocialProfile.ProfileId = profileId;
                 objSocialProfile.UserId = Guid.Parse(userid);
                 objSocialProfile.ProfileDate = DateTime.Now;
@@ -2012,28 +2047,28 @@ namespace Api.Socioboard.Services
              FacebookAccount = objFacebookAccountRepository.getFacebookAccountDetailsById(ProfileId);
          }
 
-         long friendscount = 0;
-         FacebookClient fb = new FacebookClient();
-         fb.AccessToken = FacebookAccount.AccessToken;
-         System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
-         dynamic profile = fb.Get("me");
-         dynamic friends = fb.Get("me/friends");
-         try
-         {
-             friendscount = Convert.ToInt16(friends["summary"]["total_count"].ToString());
-         }
-         catch (Exception)
-         {
-             friendscount = 0;
-         }
-         objFacebookAccount = new Domain.Socioboard.Domain.FacebookAccount();
-         objFacebookAccount.FbUserId = (Convert.ToString(profile["id"]));
-         objFacebookAccount.FbUserName = (Convert.ToString(profile["name"]));
-         objFacebookAccount.Friends = Convert.ToInt16(friendscount);
-         objFacebookAccount.EmailId = (Convert.ToString(profile["email"]));
-         objFacebookAccount.ProfileUrl = (Convert.ToString(profile["link"]));
+         //long friendscount = 0;
+         //FacebookClient fb = new FacebookClient();
+         //fb.AccessToken = FacebookAccount.AccessToken;
+         //System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
+         //dynamic profile = fb.Get("me");
+         //dynamic friends = fb.Get("me/friends");
+         //try
+         //{
+         //    friendscount = Convert.ToInt16(friends["summary"]["total_count"].ToString());
+         //}
+         //catch (Exception)
+         //{
+         //    friendscount = 0;
+         //}
+         //objFacebookAccount = new Domain.Socioboard.Domain.FacebookAccount();
+         //objFacebookAccount.FbUserId = (Convert.ToString(profile["id"]));
+         //objFacebookAccount.FbUserName = (Convert.ToString(profile["name"]));
+         //objFacebookAccount.Friends = Convert.ToInt16(friendscount);
+         //objFacebookAccount.EmailId = (Convert.ToString(profile["email"]));
+         //objFacebookAccount.ProfileUrl = (Convert.ToString(profile["link"]));
 
-         return new JavaScriptSerializer().Serialize(objFacebookAccount);
+         return new JavaScriptSerializer().Serialize(FacebookAccount);
         }
 
         [WebMethod]
@@ -2573,6 +2608,28 @@ namespace Api.Socioboard.Services
             return ret;
         }
 
+        // Edited by Antima[20/12/2014]
 
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string TicketFacebokReply(String message, String profileid, string commentid)
+        {
+            string ret = "";
+            try
+            {
+                Domain.Socioboard.Domain.FacebookAccount objFacebookAccount = objFacebookAccountRepository.getFacebookAccountDetailsById(profileid);
+                FacebookClient fb = new FacebookClient();
+                fb.AccessToken = objFacebookAccount.AccessToken;
+                var args = new Dictionary<string, object>();
+                args["message"] = message;
+                System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
+                var s = fb.Post(commentid + "/comments", args);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace);
+            }
+            return ret;
+        }
     }
 }

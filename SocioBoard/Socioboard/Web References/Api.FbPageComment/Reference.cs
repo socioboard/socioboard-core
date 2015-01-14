@@ -31,6 +31,12 @@ namespace Socioboard.Api.FbPageComment {
         
         private System.Threading.SendOrPostCallback GetPostCommentsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback AddCommentDetailsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback IsCommentExistOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdateFbPageCommentStatusOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -73,6 +79,15 @@ namespace Socioboard.Api.FbPageComment {
         public event GetPostCommentsCompletedEventHandler GetPostCommentsCompleted;
         
         /// <remarks/>
+        public event AddCommentDetailsCompletedEventHandler AddCommentDetailsCompleted;
+        
+        /// <remarks/>
+        public event IsCommentExistCompletedEventHandler IsCommentExistCompleted;
+        
+        /// <remarks/>
+        public event UpdateFbPageCommentStatusCompletedEventHandler UpdateFbPageCommentStatusCompleted;
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetPostComments", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string GetPostComments(string postid) {
             object[] results = this.Invoke("GetPostComments", new object[] {
@@ -98,6 +113,93 @@ namespace Socioboard.Api.FbPageComment {
             if ((this.GetPostCommentsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetPostCommentsCompleted(this, new GetPostCommentsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddCommentDetails", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool AddCommentDetails(string Jdata) {
+            object[] results = this.Invoke("AddCommentDetails", new object[] {
+                        Jdata});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AddCommentDetailsAsync(string Jdata) {
+            this.AddCommentDetailsAsync(Jdata, null);
+        }
+        
+        /// <remarks/>
+        public void AddCommentDetailsAsync(string Jdata, object userState) {
+            if ((this.AddCommentDetailsOperationCompleted == null)) {
+                this.AddCommentDetailsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddCommentDetailsOperationCompleted);
+            }
+            this.InvokeAsync("AddCommentDetails", new object[] {
+                        Jdata}, this.AddCommentDetailsOperationCompleted, userState);
+        }
+        
+        private void OnAddCommentDetailsOperationCompleted(object arg) {
+            if ((this.AddCommentDetailsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddCommentDetailsCompleted(this, new AddCommentDetailsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IsCommentExist", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool IsCommentExist(string Jdata) {
+            object[] results = this.Invoke("IsCommentExist", new object[] {
+                        Jdata});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void IsCommentExistAsync(string Jdata) {
+            this.IsCommentExistAsync(Jdata, null);
+        }
+        
+        /// <remarks/>
+        public void IsCommentExistAsync(string Jdata, object userState) {
+            if ((this.IsCommentExistOperationCompleted == null)) {
+                this.IsCommentExistOperationCompleted = new System.Threading.SendOrPostCallback(this.OnIsCommentExistOperationCompleted);
+            }
+            this.InvokeAsync("IsCommentExist", new object[] {
+                        Jdata}, this.IsCommentExistOperationCompleted, userState);
+        }
+        
+        private void OnIsCommentExistOperationCompleted(object arg) {
+            if ((this.IsCommentExistCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.IsCommentExistCompleted(this, new IsCommentExistCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateFbPageCommentStatus", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int UpdateFbPageCommentStatus(string Jdata) {
+            object[] results = this.Invoke("UpdateFbPageCommentStatus", new object[] {
+                        Jdata});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UpdateFbPageCommentStatusAsync(string Jdata) {
+            this.UpdateFbPageCommentStatusAsync(Jdata, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateFbPageCommentStatusAsync(string Jdata, object userState) {
+            if ((this.UpdateFbPageCommentStatusOperationCompleted == null)) {
+                this.UpdateFbPageCommentStatusOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateFbPageCommentStatusOperationCompleted);
+            }
+            this.InvokeAsync("UpdateFbPageCommentStatus", new object[] {
+                        Jdata}, this.UpdateFbPageCommentStatusOperationCompleted, userState);
+        }
+        
+        private void OnUpdateFbPageCommentStatusOperationCompleted(object arg) {
+            if ((this.UpdateFbPageCommentStatusCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateFbPageCommentStatusCompleted(this, new UpdateFbPageCommentStatusCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -142,6 +244,84 @@ namespace Socioboard.Api.FbPageComment {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void AddCommentDetailsCompletedEventHandler(object sender, AddCommentDetailsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AddCommentDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AddCommentDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void IsCommentExistCompletedEventHandler(object sender, IsCommentExistCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class IsCommentExistCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal IsCommentExistCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void UpdateFbPageCommentStatusCompletedEventHandler(object sender, UpdateFbPageCommentStatusCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpdateFbPageCommentStatusCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpdateFbPageCommentStatusCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }

@@ -45,7 +45,7 @@
   <ItemGroup>
     <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Facebook.dll</HintPath>
+      <HintPath>..\packages\Facebook.6.8.0\lib\net40-client\Facebook.dll</HintPath>
     </Reference>
     <Reference Include="Hammock, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -86,6 +86,7 @@
       <HintPath>lib\SendGridMail.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -114,6 +115,8 @@
     <Compile Include="Model\AdsRepository.cs" />
     <Compile Include="Model\ArchiveMessageRepository.cs" />
     <Compile Include="Model\BusinessSettingRepository.cs" />
+    <Compile Include="Model\CompanyProfilesRepository.cs" />
+    <Compile Include="Model\CompanySocialProfilesRepository.cs" />
     <Compile Include="Model\CouponRepository.cs" />
     <Compile Include="Model\DiscoverySearchRepository.cs" />
     <Compile Include="Model\DraftsRepository.cs" />
@@ -128,6 +131,7 @@
     <Compile Include="Model\FbPageLikerRepository.cs" />
     <Compile Include="Model\FbPagePostCommentLikerRepository.cs" />
     <Compile Include="Model\FbPagePostRepository.cs" />
+    <Compile Include="Model\FeedSentimentalAnalysisRepository.cs" />
     <Compile Include="Model\GooglePlusAccountRepository.cs" />
     <Compile Include="Model\GroupProfileRepository.cs" />
     <Compile Include="Model\GroupScheduleMessageRepository.cs" />
@@ -155,6 +159,7 @@
     <Compile Include="Model\TeamRepository.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\TicketAssigneeStatusRepository.cs" />
     <Compile Include="Model\TumblrAccountRepository.cs" />
     <Compile Include="Model\TumblrFeedRepository.cs" />
     <Compile Include="Model\TwitterAccountFollowersRepository.cs" />
@@ -203,6 +208,14 @@
     </Compile>
     <Compile Include="Services\BusinessSetting.asmx.cs">
       <DependentUpon>BusinessSetting.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\CompanyDashboard.asmx.cs">
+      <DependentUpon>CompanyDashboard.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Companypage.asmx.cs">
+      <DependentUpon>Companypage.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Services\Coupon.asmx.cs">
@@ -381,6 +394,10 @@
       <DependentUpon>ScheduledMessage.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Services\SentimentalAnalysis.asmx.cs">
+      <DependentUpon>SentimentalAnalysis.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Services\SocialProfile.asmx.cs">
       <DependentUpon>SocialProfile.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -399,6 +416,10 @@
     </Compile>
     <Compile Include="Services\TeamMemberProfile.asmx.cs">
       <DependentUpon>TeamMemberProfile.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\TicketAssigneeStatus.asmx.cs">
+      <DependentUpon>TicketAssigneeStatus.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Services\Tumblr.asmx.cs">
@@ -791,7 +812,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <Content Include="Mappings\DropboxAccount.hbm.xml" />
-    <Content Include="Mappings\FacebookFanPage.xml" />
+    <EmbeddedResource Include="Mappings\FacebookFanPage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\LinkedinCompanyPage.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -799,6 +822,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\ReplyMessage.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FeedSentimentalAnalysis.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\TicketAssigneeStatus.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <Content Include="Mappings\TwitterAccountFollowers.hbm.xml" />
@@ -825,6 +854,8 @@
     <Content Include="Services\Blog_Comments.asmx" />
     <Content Include="Services\Blog_Posts.asmx" />
     <Content Include="Services\BusinessSetting.asmx" />
+    <Content Include="Services\CompanyDashboard.asmx" />
+    <Content Include="Services\Companypage.asmx" />
     <Content Include="Services\Coupon.asmx" />
     <Content Include="Services\DiscoverySearch.asmx" />
     <Content Include="Services\Drafts.asmx" />
@@ -869,11 +900,13 @@
     <Content Include="Services\RssFeeds.asmx" />
     <Content Include="Services\RssReader.asmx" />
     <Content Include="Services\ScheduledMessage.asmx" />
+    <Content Include="Services\SentimentalAnalysis.asmx" />
     <Content Include="Services\SocialProfile.asmx" />
     <Content Include="Services\TaskComment.asmx" />
     <Content Include="Services\Tasks.asmx" />
     <Content Include="Services\Team.asmx" />
     <Content Include="Services\TeamMemberProfile.asmx" />
+    <Content Include="Services\TicketAssigneeStatus.asmx" />
     <Content Include="Services\Tumblr.asmx" />
     <Content Include="Services\TumblrAccount.asmx" />
     <Content Include="Services\TumblrFeed.asmx" />
@@ -900,6 +933,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

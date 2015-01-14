@@ -33,6 +33,12 @@ namespace Socioboard.Api.BusinessSetting {
         
         private System.Threading.SendOrPostCallback IsNotificationTaskEnableOperationCompleted;
         
+        private System.Threading.SendOrPostCallback AddBusinessByUserOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetDetailsofBusinessOwnerOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdateBuisnessSettingOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -76,6 +82,15 @@ namespace Socioboard.Api.BusinessSetting {
         
         /// <remarks/>
         public event IsNotificationTaskEnableCompletedEventHandler IsNotificationTaskEnableCompleted;
+        
+        /// <remarks/>
+        public event AddBusinessByUserCompletedEventHandler AddBusinessByUserCompleted;
+        
+        /// <remarks/>
+        public event GetDetailsofBusinessOwnerCompletedEventHandler GetDetailsofBusinessOwnerCompleted;
+        
+        /// <remarks/>
+        public event UpdateBuisnessSettingCompletedEventHandler UpdateBuisnessSettingCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/HelloWorld", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -130,6 +145,93 @@ namespace Socioboard.Api.BusinessSetting {
             if ((this.IsNotificationTaskEnableCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.IsNotificationTaskEnableCompleted(this, new IsNotificationTaskEnableCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddBusinessByUser", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string AddBusinessByUser(string ObjBusinessSetting) {
+            object[] results = this.Invoke("AddBusinessByUser", new object[] {
+                        ObjBusinessSetting});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AddBusinessByUserAsync(string ObjBusinessSetting) {
+            this.AddBusinessByUserAsync(ObjBusinessSetting, null);
+        }
+        
+        /// <remarks/>
+        public void AddBusinessByUserAsync(string ObjBusinessSetting, object userState) {
+            if ((this.AddBusinessByUserOperationCompleted == null)) {
+                this.AddBusinessByUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddBusinessByUserOperationCompleted);
+            }
+            this.InvokeAsync("AddBusinessByUser", new object[] {
+                        ObjBusinessSetting}, this.AddBusinessByUserOperationCompleted, userState);
+        }
+        
+        private void OnAddBusinessByUserOperationCompleted(object arg) {
+            if ((this.AddBusinessByUserCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddBusinessByUserCompleted(this, new AddBusinessByUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetDetailsofBusinessOwner", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetDetailsofBusinessOwner(string GroupId) {
+            object[] results = this.Invoke("GetDetailsofBusinessOwner", new object[] {
+                        GroupId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetDetailsofBusinessOwnerAsync(string GroupId) {
+            this.GetDetailsofBusinessOwnerAsync(GroupId, null);
+        }
+        
+        /// <remarks/>
+        public void GetDetailsofBusinessOwnerAsync(string GroupId, object userState) {
+            if ((this.GetDetailsofBusinessOwnerOperationCompleted == null)) {
+                this.GetDetailsofBusinessOwnerOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetDetailsofBusinessOwnerOperationCompleted);
+            }
+            this.InvokeAsync("GetDetailsofBusinessOwner", new object[] {
+                        GroupId}, this.GetDetailsofBusinessOwnerOperationCompleted, userState);
+        }
+        
+        private void OnGetDetailsofBusinessOwnerOperationCompleted(object arg) {
+            if ((this.GetDetailsofBusinessOwnerCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetDetailsofBusinessOwnerCompleted(this, new GetDetailsofBusinessOwnerCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateBuisnessSetting", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string UpdateBuisnessSetting(string ObjBusiNessSetting) {
+            object[] results = this.Invoke("UpdateBuisnessSetting", new object[] {
+                        ObjBusiNessSetting});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UpdateBuisnessSettingAsync(string ObjBusiNessSetting) {
+            this.UpdateBuisnessSettingAsync(ObjBusiNessSetting, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateBuisnessSettingAsync(string ObjBusiNessSetting, object userState) {
+            if ((this.UpdateBuisnessSettingOperationCompleted == null)) {
+                this.UpdateBuisnessSettingOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateBuisnessSettingOperationCompleted);
+            }
+            this.InvokeAsync("UpdateBuisnessSetting", new object[] {
+                        ObjBusiNessSetting}, this.UpdateBuisnessSettingOperationCompleted, userState);
+        }
+        
+        private void OnUpdateBuisnessSettingOperationCompleted(object arg) {
+            if ((this.UpdateBuisnessSettingCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateBuisnessSettingCompleted(this, new UpdateBuisnessSettingCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -191,6 +293,84 @@ namespace Socioboard.Api.BusinessSetting {
         private object[] results;
         
         internal IsNotificationTaskEnableCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void AddBusinessByUserCompletedEventHandler(object sender, AddBusinessByUserCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AddBusinessByUserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AddBusinessByUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetDetailsofBusinessOwnerCompletedEventHandler(object sender, GetDetailsofBusinessOwnerCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetDetailsofBusinessOwnerCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetDetailsofBusinessOwnerCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void UpdateBuisnessSettingCompletedEventHandler(object sender, UpdateBuisnessSettingCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpdateBuisnessSettingCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpdateBuisnessSettingCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

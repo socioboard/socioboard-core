@@ -51,6 +51,8 @@ namespace Socioboard.Api.FacebookMessage {
         
         private System.Threading.SendOrPostCallback GetFacebookMessageByMessageIdOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetAllMessageDetailOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -121,6 +123,9 @@ namespace Socioboard.Api.FacebookMessage {
         
         /// <remarks/>
         public event GetFacebookMessageByMessageIdCompletedEventHandler GetFacebookMessageByMessageIdCompleted;
+        
+        /// <remarks/>
+        public event GetAllMessageDetailCompletedEventHandler GetAllMessageDetailCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UserHomeWithLimit", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -462,6 +467,35 @@ namespace Socioboard.Api.FacebookMessage {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllMessageDetail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetAllMessageDetail(string profileid) {
+            object[] results = this.Invoke("GetAllMessageDetail", new object[] {
+                        profileid});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAllMessageDetailAsync(string profileid) {
+            this.GetAllMessageDetailAsync(profileid, null);
+        }
+        
+        /// <remarks/>
+        public void GetAllMessageDetailAsync(string profileid, object userState) {
+            if ((this.GetAllMessageDetailOperationCompleted == null)) {
+                this.GetAllMessageDetailOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllMessageDetailOperationCompleted);
+            }
+            this.InvokeAsync("GetAllMessageDetail", new object[] {
+                        profileid}, this.GetAllMessageDetailOperationCompleted, userState);
+        }
+        
+        private void OnGetAllMessageDetailOperationCompleted(object arg) {
+            if ((this.GetAllMessageDetailCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAllMessageDetailCompleted(this, new GetAllMessageDetailCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -753,6 +787,32 @@ namespace Socioboard.Api.FacebookMessage {
         private object[] results;
         
         internal GetFacebookMessageByMessageIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetAllMessageDetailCompletedEventHandler(object sender, GetAllMessageDetailCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAllMessageDetailCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAllMessageDetailCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

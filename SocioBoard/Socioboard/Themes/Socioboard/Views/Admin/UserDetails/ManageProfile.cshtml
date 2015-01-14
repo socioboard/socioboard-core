@@ -34,7 +34,7 @@
 <script type="text/javascript">
 
     function bindmanageprofile() {
-        debugger;
+        $('#ManageProfileDataTable').html('<center><img src="../Themes/Socioboard/Contents/img/admin/loading.gif" /></center>');
         $.ajax({
             type: 'POST',
             url: '../UserDetails/LoadManageProfile',

@@ -50,7 +50,7 @@ namespace Api.Socioboard.Services
         /// <param name="taskid">Task id.(String)</param>
         /// <param name="userid">User id.(Guid)</param>
         /// <returns>Return 1 for true and 0 for false.(int)</returns>
-        public int deleteTask(string taskid, Guid userid)
+        public int deleteTask(Guid taskid)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -61,9 +61,8 @@ namespace Api.Socioboard.Services
                     try
                     {
                         //Proceed action, to delete task by task id and user id.
-                        NHibernate.IQuery query = session.CreateQuery("delete from Task where Id = :taskid and UserId = :userid")
-                                        .SetParameter("taskid", taskid)
-                                        .SetParameter("userid", userid);
+                        NHibernate.IQuery query = session.CreateQuery("delete from Tasks where Id = :taskid")
+                                        .SetParameter("taskid", taskid);
                         int isUpdated = query.ExecuteUpdate();
                         transaction.Commit();
                         return isUpdated;

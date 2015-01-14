@@ -1,0 +1,64 @@
+﻿
+@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Model;
+    string NewEmailId = TempData["NewEmailId"].ToString();
+    //var NewEmailId = ViewBag.NewEmailId;
+    }
+
+<body style="background-color: #FB6947;">
+    <div style="margin-top: 10px; margin: 0 auto; width: 630px;">
+        <div style="width: 630px; height: auto; float: left; margin-top: 50px;">
+            <div style="width: 630px; padding-top: 7px; text-align: center; height: 80px; background: none repeat scroll 0px 0px rgb(255, 188, 173);
+                border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                <a href="http://www.socioboard.com">
+                    <img src="http://www.socioboard.com/Contents/img/ssp/logo-txt.png" alt=""></a>
+            </div>
+           
+            <div style="font-family: Tahoma; font-size: 14px; background-color: #fff; color: rgb(24, 24, 24);
+                padding: 10px; float: left; width: 606px; border: 2px solid rgb(255, 255, 255);
+                border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
+                <div style="width: 610px; height: auto; float: left;">
+                    <div style="width: 610px; height: auto; float: left; font-size: 15px; font-family: Arial;
+                        margin-top: 10px;">
+                        Hi @objUser.UserName,
+                    </div>
+                    <div style="width: 610px; height: auto; float: left; font-size: 15px; font-family: Arial;
+                        margin-top: 10px;">
+                        This is support team at Socioboard.
+                    </div>
+                    <div style="width: 610px; height: auto; float: left; font-size: 15px; font-family: Arial;
+                        margin-top: 10px;">
+                        It seems you want to change your Email Id for socioboard. We have a Email Id reset link
+                        ready for you.
+                        <br>
+                        <br>
+                        Please click <a href="http://www.socioboard.com/PersonalSetting/ResetEmailId?code=@objUser.ChangeEmailKey&newEmailId=@NewEmailId" style="text-decoration:none;">here</a> to Activate.
+                    </div>
+                    <div style="width: 610px; height: auto; float: left; font-size: 15px; font-family: Arial;
+                        margin-top: 10px;">
+                        <br>
+                        Happy Socioboarding!
+                    </div>
+                    <div style="width: 610px; height: auto; float: left; font-size: 15px; font-family: Arial;
+                        margin-top: 10px;">
+                        Thanks and Regards,<br>
+                        Socioboard Support Team
+                    </div>
+                    <br>
+                    <br>
+                    <a href="http://www.socioboard.com">
+                        <img src="http://www.socioboard.com/Contents/img/ssp/logo-txt.png" alt=""></a>
+                    <div style="width: 610px; height: auto; float: left; font-size: 15px; font-family: Arial;
+                        margin-top: 10px;">
+                        follow us on Facebook: <a href="https://www.facebook.com/SocioBoard">https://www.facebook.com/Socioboard</a>
+                        <br>
+                        follow us on Twitter: <a href="https://twitter.com/Socioboard">https://twitter.com/Socioboard</a>
+                    </div>
+                   
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</body>

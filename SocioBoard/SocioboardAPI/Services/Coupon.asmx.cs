@@ -52,9 +52,9 @@ namespace Api.Socioboard.Services
             try
             {
                 Domain.Socioboard.Domain.Coupon objcoupon = (Domain.Socioboard.Domain.Coupon)(new JavaScriptSerializer().Deserialize(ObjCoupons, typeof(Domain.Socioboard.Domain.Coupon)));
-                if (ObjCouponRepo.GetCouponByCouponCode(objcoupon).Count < 1 || ObjCouponRepo.GetCouponByCouponCode(objcoupon).Count == 0)
+                int res=ObjCouponRepo.SetCouponById(objcoupon);
+                if (res==1)
                 {
-                    ObjCouponRepo.SetCouponById(objcoupon);
                     return new JavaScriptSerializer().Serialize("Updated Successfully");
                 }
                 else

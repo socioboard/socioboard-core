@@ -9,7 +9,6 @@ namespace Api.Socioboard.Services
 {
     public class TeamRepository : ITeamRepository
     {
-
         /// <addNewTeam>
         /// Add New Team
         /// </summary>
@@ -28,7 +27,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-
 
         /// <deleteTeam>
         /// Delete Team
@@ -88,8 +86,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-
-
 
         public int deleteinviteteamMember(Guid id)
         {
@@ -198,8 +194,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
-
         /// <getTeam>
         /// Get Team
         /// </summary>
@@ -234,7 +228,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
         /// <getMemberById>
         /// Get Member By Id
         /// </summary>
@@ -268,7 +261,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
         /// <getMemberByEmailId>
         /// Get Team Member By Email Id.and user id.
         /// </summary>
@@ -301,7 +293,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-
 
         /// <checkTeamExists>
         /// Check Team Exists
@@ -341,7 +332,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
         /// <getTeamByEmailId>
         /// Get Team By Email Id.
         /// </summary>
@@ -372,7 +362,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-
 
         /// <getTeamById>
         /// Get Team By Id
@@ -405,7 +394,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
         /// <updateTeamStatus>
         /// Update Team Status
         /// </summary>
@@ -434,7 +422,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-
 
         /// <DeleteTeamByUserid>
         /// Delete Team By User id
@@ -467,7 +454,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
         public Domain.Socioboard.Domain.Team getAllGroupsDetails(string emailId, Guid groupId, Guid userid)
         {
             //Creates a database connection and opens up a session
@@ -495,11 +481,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-
-
-
-
-
 
         public ArrayList getAllAccountUser(string emailId, Guid userid)
         {
@@ -551,8 +532,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
-
         public List<Domain.Socioboard.Domain.Team> getAllDetailsUserEmail(Guid groupId)
         {
             //Creates a database connection and opens up a session
@@ -581,8 +560,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
-
         public Domain.Socioboard.Domain.Team GetTeamByGroupId(Guid groupId)
         {
             //Creates a database connection and opens up a session
@@ -610,7 +587,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-
 
         public Domain.Socioboard.Domain.Team getAllDetailsByTeamID(Guid Id, Guid groupId)
         {
@@ -641,7 +617,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-
 
         public List<Domain.Socioboard.Domain.Team> GetAllTeamExcludeUser(Guid groupId, Guid userid)
         {
@@ -701,8 +676,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
-
         public List<Domain.Socioboard.Domain.Team> GetAllTeamExcludeUserAccordingtoStatus(Guid groupId, Guid userid, int status)
         {
             //Creates a database connection and opens up a session
@@ -730,11 +703,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-
-
-
-
-
 
         /// <updateTeam>
         /// Update Team
@@ -771,7 +739,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-
 
         public void updateTeambyteamid(Guid teamid)
         {
@@ -829,7 +796,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
         /// <getTeamByEmailId>
         /// Get Team By Email Id.
         /// </summary>
@@ -862,7 +828,61 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+        // Edited by Antima[20/12/2014]
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public List<Domain.Socioboard.Domain.Team> GetTeamByTeamId(Guid TeamId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get team details.
+                        List<Domain.Socioboard.Domain.Team> alstteam = session.CreateQuery("from Team where Id =:TeamId")
+                       .SetParameter("TeamId", TeamId)
+                        .List<Domain.Socioboard.Domain.Team>()
+                        .ToList<Domain.Socioboard.Domain.Team>();
+                        return alstteam;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+        // Added by Antima[5/1/2015]
+        public int UpdateEmailIdbyGroupId(Guid UserId, Guid GroupId, string NewEmailId)
+        {
+            int i = 0;
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        i = session.CreateQuery("Update Team set EmailId=:NewEmailId  where UserId = :UserId and GroupId = :GroupId")
+                                  .SetParameter("UserId", UserId)
+                                  .SetParameter("GroupId", GroupId)
+                                  .SetParameter("NewEmailId", NewEmailId)
+                                  .ExecuteUpdate();
+                        transaction.Commit();
+                    }
+                    catch { }
+                }
+            }
+            return i;
+        }
 
     }
 }

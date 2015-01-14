@@ -16,8 +16,9 @@
     Dictionary<string, object> feed = (Dictionary<string, object>)Model;
     foreach(var item in feed)
     {
-       if(item.Key=="twt_msg"){
+       if(item.Key=="twt_msg"&& item.Value!=null){
             Domain.Socioboard.Domain.TwitterMessage twtmessage = (Domain.Socioboard.Domain.TwitterMessage)item.Value;
+          
             ScreenName = twtmessage.ScreenName;
             FromScreenName = twtmessage.FromScreenName;
             Feed = twtmessage.TwitterMsg;

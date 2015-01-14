@@ -21,7 +21,7 @@ namespace Api.Socioboard.Services
     [ScriptService]
     public class FbPageLiker : System.Web.Services.WebService
     {
-
+        FbPageLikerRepository objFbPageLikerRepository = new FbPageLikerRepository();
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetLikeByPostId(string postId,string Userid)
@@ -29,7 +29,6 @@ namespace Api.Socioboard.Services
             try
             {
                 Guid userid = Guid.Parse(Userid);
-                FbPageLikerRepository objFbPageLikerRepository = new FbPageLikerRepository();
                 List<Domain.Socioboard.Domain.FbPageLiker> LstDraft = objFbPageLikerRepository.GetLikeByPostId(postId, userid);
                 return new JavaScriptSerializer().Serialize(LstDraft);
             }
@@ -37,6 +36,30 @@ namespace Api.Socioboard.Services
             {
                 return new JavaScriptSerializer().Serialize("No Data available.");
             }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public bool IsLikeExist(string Jdata)
+        {
+            Domain.Socioboard.Domain.FbPageLiker _FbPageLiker = (Domain.Socioboard.Domain.FbPageLiker)new JavaScriptSerializer().Deserialize(Jdata, typeof(Domain.Socioboard.Domain.FbPageLiker));
+            return objFbPageLikerRepository.IsLikeByPostExist(_FbPageLiker);
+        }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public bool AddLikeDetails(string Jdata)
+        {
+            try
+            {
+                Domain.Socioboard.Domain.FbPageLiker _FbPageLiker = (Domain.Socioboard.Domain.FbPageLiker)new JavaScriptSerializer().Deserialize(Jdata, typeof(Domain.Socioboard.Domain.FbPageLiker));
+                objFbPageLikerRepository.addFbPageLiker(_FbPageLiker);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
         }
 
     }

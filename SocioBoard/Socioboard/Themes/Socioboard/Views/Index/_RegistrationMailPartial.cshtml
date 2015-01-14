@@ -38,7 +38,7 @@
                     <div style="width: 610px; height: auto; float: left; font-size: 15px; font-family: Arial;
                         margin-top: 10px;">
                         <!-- Click <a href="%replink%"> here</a> to login. </div></br></br>-->
-                        <a href="http://socioboard.com/Index/ActivateAccount?Id=@objUser.Id">http://socioboard.com/Index/ActivateAccount?stat=activate&id=@objUser.Id</a>
+                        <a href="@System.Configuration.ConfigurationManager.AppSettings["DomainName"]/Index/ActivateAccount?Id=@objUser.Id">@System.Configuration.ConfigurationManager.AppSettings["DomainName"]//Index/ActivateAccount?stat=activate&id=@objUser.Id</a>
                     </div>
                     </br></br>
                     <div style="width: 610px; height: auto; float: left; font-size: 15px; font-family: Arial;

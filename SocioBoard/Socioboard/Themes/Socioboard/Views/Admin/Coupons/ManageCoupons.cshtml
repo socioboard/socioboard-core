@@ -35,7 +35,7 @@
 <script type="text/javascript">
 
     function bindmanageCoupon() {
-        debugger;
+        $('#ManageCouponsTable').html('<center><img src="../Themes/Socioboard/Contents/img/admin/loading.gif" /></center>');
         $.ajax({
             type: 'POST',
             url: '../Coupons/LoadCoupons',

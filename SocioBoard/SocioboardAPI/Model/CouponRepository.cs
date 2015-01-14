@@ -138,10 +138,41 @@ namespace Api.Socioboard.Services
         /// </summary>
         /// <param name="coupon">Set coupon value in a coupon Property Class and Pass the Object of coupon Class as a paremeter.(SocioBoard.Domain.Admin).</param>
         /// <returns>1 for success and 0 for fail</returns>
+        //public int SetCouponById(Domain.Socioboard.Domain.Coupon coupon)
+        //{
+        //    int res = 0;
+            
+        //    try
+        //    {
+        //        //Creates a database connection and opens up a session
+        //        using (NHibernate.ISession session = SessionFactory.GetNewSession())
+        //        {
+        //            using (NHibernate.ITransaction transaction = session.BeginTransaction())
+        //            {
+        //                //Proceed action, to update existing data by coupon id.
+        //                res = session.CreateQuery("Update Coupon set CouponCode=:couponCode,EntryCouponDate=:entryCouponDate,ExpCouponDate=:expCouponDate,Status=:status where Id = :id")
+        //                           .SetParameter("couponCode", coupon.CouponCode)
+        //                           .SetParameter("entryCouponDate", coupon.EntryCouponDate)
+        //                           .SetParameter("expCouponDate", coupon.ExpCouponDate)
+        //                           .SetParameter("status", coupon.Status)
+        //                           .SetParameter("id", coupon.Id)
+        //                           .ExecuteUpdate();
+        //                transaction.Commit();
+
+        //            }//End transaction
+        //        }//End session
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Error : " + ex.StackTrace);
+        //    }
+        //    return res;
+        //}
+
         public int SetCouponById(Domain.Socioboard.Domain.Coupon coupon)
         {
             int res = 0;
-            
+
             try
             {
                 //Creates a database connection and opens up a session
@@ -150,12 +181,11 @@ namespace Api.Socioboard.Services
                     using (NHibernate.ITransaction transaction = session.BeginTransaction())
                     {
                         //Proceed action, to update existing data by coupon id.
-                        res = session.CreateQuery("Update Coupon set CouponCode=:couponCode,EntryCouponDate=:entryCouponDate,ExpCouponDate=:expCouponDate,Status=:status where Id = :id")
+                        res = session.CreateQuery("Update Coupon set EntryCouponDate=:entryCouponDate,ExpCouponDate=:expCouponDate,Status=:status where CouponCode=:couponCode")
                                    .SetParameter("couponCode", coupon.CouponCode)
                                    .SetParameter("entryCouponDate", coupon.EntryCouponDate)
                                    .SetParameter("expCouponDate", coupon.ExpCouponDate)
                                    .SetParameter("status", coupon.Status)
-                                   .SetParameter("id", coupon.Id)
                                    .ExecuteUpdate();
                         transaction.Commit();
 
@@ -169,4 +199,7 @@ namespace Api.Socioboard.Services
             return res;
         }
     }
+
+
+
 }

@@ -35,6 +35,7 @@
       <HintPath>..\SocioboardAPI\lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -50,6 +51,8 @@
     <Compile Include="Domain\Blog_Comments.cs" />
     <Compile Include="Domain\Blog_Posts.cs" />
     <Compile Include="Domain\BusinessSetting.cs" />
+    <Compile Include="Domain\CompanyProfiles.cs" />
+    <Compile Include="Domain\CompanySocialProfiles.cs" />
     <Compile Include="Domain\Coupon.cs" />
     <Compile Include="Domain\DiscoverySearch.cs" />
     <Compile Include="Domain\Drafts.cs" />
@@ -68,6 +71,8 @@
     <Compile Include="Domain\FbPagePost.cs" />
     <Compile Include="Domain\FbPagePostCommentLiker.cs" />
     <Compile Include="Domain\FbPageSharer.cs" />
+    <Compile Include="Domain\FBTwitterFeeds.cs" />
+    <Compile Include="Domain\FeedSentimentalAnalysis.cs" />
     <Compile Include="Domain\GoogleAnalyticsAccount.cs" />
     <Compile Include="Domain\GoogleAnalyticsStats.cs" />
     <Compile Include="Domain\GooglePlusAccount.cs" />
@@ -152,6 +157,7 @@
     <Compile Include="Domain\Tasks.cs" />
     <Compile Include="Domain\Team.cs" />
     <Compile Include="Domain\TeamMemberProfile.cs" />
+    <Compile Include="Domain\TicketAssigneeStatus.cs" />
     <Compile Include="Domain\TumblerData.cs" />
     <Compile Include="Domain\TumblrAccount.cs" />
     <Compile Include="Domain\TumblrFeed.cs" />

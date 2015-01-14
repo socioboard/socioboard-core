@@ -368,6 +368,22 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="TicketFacebokReply">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="commentid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TicketFacebokReplyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TicketFacebokReplyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -508,6 +524,12 @@
   </wsdl:message>
   <wsdl:message name="LikeFBGroupPostSoapOut">
     <wsdl:part name="parameters" element="tns:LikeFBGroupPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="TicketFacebokReplySoapIn">
+    <wsdl:part name="parameters" element="tns:TicketFacebokReply" />
+  </wsdl:message>
+  <wsdl:message name="TicketFacebokReplySoapOut">
+    <wsdl:part name="parameters" element="tns:TicketFacebokReplyResponse" />
   </wsdl:message>
   <wsdl:message name="IskiHttpGetIn">
     <wsdl:part name="code" type="s:string" />
@@ -689,6 +711,14 @@
     <wsdl:part name="Isliked" type="s:string" />
   </wsdl:message>
   <wsdl:message name="LikeFBGroupPostHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TicketFacebokReplyHttpGetIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="commentid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TicketFacebokReplyHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="IskiHttpPostIn">
@@ -873,6 +903,14 @@
   <wsdl:message name="LikeFBGroupPostHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="TicketFacebokReplyHttpPostIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="commentid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TicketFacebokReplyHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="FacebookSoap">
     <wsdl:operation name="Iski">
       <wsdl:input message="tns:IskiSoapIn" />
@@ -965,6 +1003,10 @@
     <wsdl:operation name="LikeFBGroupPost">
       <wsdl:input message="tns:LikeFBGroupPostSoapIn" />
       <wsdl:output message="tns:LikeFBGroupPostSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TicketFacebokReply">
+      <wsdl:input message="tns:TicketFacebokReplySoapIn" />
+      <wsdl:output message="tns:TicketFacebokReplySoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookHttpGet">
@@ -1060,6 +1102,10 @@
       <wsdl:input message="tns:LikeFBGroupPostHttpGetIn" />
       <wsdl:output message="tns:LikeFBGroupPostHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="TicketFacebokReply">
+      <wsdl:input message="tns:TicketFacebokReplyHttpGetIn" />
+      <wsdl:output message="tns:TicketFacebokReplyHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookHttpPost">
     <wsdl:operation name="Iski">
@@ -1153,6 +1199,10 @@
     <wsdl:operation name="LikeFBGroupPost">
       <wsdl:input message="tns:LikeFBGroupPostHttpPostIn" />
       <wsdl:output message="tns:LikeFBGroupPostHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TicketFacebokReply">
+      <wsdl:input message="tns:TicketFacebokReplyHttpPostIn" />
+      <wsdl:output message="tns:TicketFacebokReplyHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="FacebookSoap" type="tns:FacebookSoap">
@@ -1357,6 +1407,15 @@
     </wsdl:operation>
     <wsdl:operation name="LikeFBGroupPost">
       <soap:operation soapAction="http://tempuri.org/LikeFBGroupPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TicketFacebokReply">
+      <soap:operation soapAction="http://tempuri.org/TicketFacebokReply" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1574,6 +1633,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TicketFacebokReply">
+      <soap12:operation soapAction="http://tempuri.org/TicketFacebokReply" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="FacebookHttpGet" type="tns:FacebookHttpGet">
     <http:binding verb="GET" />
@@ -1777,6 +1845,15 @@
     </wsdl:operation>
     <wsdl:operation name="LikeFBGroupPost">
       <http:operation location="/LikeFBGroupPost" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TicketFacebokReply">
+      <http:operation location="/TicketFacebokReply" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -1994,19 +2071,28 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TicketFacebokReply">
+      <http:operation location="/TicketFacebokReply" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Facebook">
     <wsdl:port name="FacebookSoap" binding="tns:FacebookSoap">
-      <soap:address location="http://localhost:6361/Services/Facebook.asmx" />
+      <soap:address location="http://devapi.socioboard.com/Services/Facebook.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookSoap12" binding="tns:FacebookSoap12">
-      <soap12:address location="http://localhost:6361/Services/Facebook.asmx" />
+      <soap12:address location="http://devapi.socioboard.com/Services/Facebook.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookHttpGet" binding="tns:FacebookHttpGet">
-      <http:address location="http://localhost:6361/Services/Facebook.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/Facebook.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookHttpPost" binding="tns:FacebookHttpPost">
-      <http:address location="http://localhost:6361/Services/Facebook.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/Facebook.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

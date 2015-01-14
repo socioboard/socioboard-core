@@ -134,6 +134,7 @@ namespace Api.Socioboard.Services
 
                  if (_TwitterMessage != null)
                  {
+
                      foreach (var item in _TwitterMessage)
                      {
                          if (item[3] == "twt_usertweets")
@@ -153,15 +154,36 @@ namespace Api.Socioboard.Services
                          }
                      }
 
+
+                   
+
+
+
+
+
                      try
                      {
+
                          usertweets = usertweets.Substring(0, usertweets.Length - 1);
                          usertweetsDates = usertweetsDates.Substring(0, usertweetsDates.Length - 1);
-                         usertweets = "usrtwet^"+usertweets + "^" + usertweetsDates;
+                         usertweets = "usrtwet^" + usertweets + "^" + usertweetsDates;
+
                      }
                      catch (Exception ex)
                      {
-                         Console.WriteLine(ex.StackTrace);
+                         int Day = Convert.ToInt32(days);
+                         string[] Days = new string[Day];
+                         for (int i = 0; i < Day; i++)
+                         {
+                             DateTime d1 = DateTime.Now.AddDays(-i);
+                             Days[i] = Convert.ToString(d1);
+                         }
+                         foreach (string item in Days)
+                         {
+                             usertweets += "0" + ',';
+                             usertweetsDates += item.ToString() + ',';
+                             usertweets = "mention^" + usertweets + "^" + usertweetsDates;
+                         }
                      }
                      try
                      {
@@ -171,7 +193,27 @@ namespace Api.Socioboard.Services
                      }
                      catch (Exception ex)
                      {
-                         Console.WriteLine(ex.StackTrace);
+                         int Day = Convert.ToInt32(days);
+                         string[] Days = new string[Day];
+                         for (int i = 0; i < Day; i++)
+                         {
+                             DateTime d1 = DateTime.Now.AddDays(-i);
+                             try
+                             {
+                                 Days[i] = Convert.ToString(d1);
+                             }
+                             catch (Exception ex1)
+                             {
+                                 
+                                 throw;
+                             }
+                         }
+                         foreach (string item in Days)
+                         {
+                             mentions += "0" + ',';
+                             mentionsDates += item.ToString() + ',';
+                             mentions = "mention^" + mentions + "^" + mentionsDates;
+                         }
                      }
                      try
                      {
@@ -181,10 +223,24 @@ namespace Api.Socioboard.Services
                      }
                      catch (Exception ex)
                      {
-                         Console.WriteLine(ex.StackTrace);
+                         int Day = Convert.ToInt32(days);
+                         string[] Days = new string[Day];
+                         for (int i = 0; i < Day; i++)
+                         {
+                             DateTime d1 = DateTime.Now.AddDays(-i);
+                             Days[i] = Convert.ToString(d1);
+                         }
+                         foreach (string item in Days)
+                         {
+                             retweets += "0" + ',';
+                             retweetsDates += item.ToString() + ',';
+                             retweets = "mention^" + retweets + "^" + retweetsDates;
+                         }
                      }
-                     
+
                  }
+                 
+                 
 
                  String totalmention = "metion"+_TwitterMention;
                  string totalretweet = "retwet" + _TwitterRetweet;

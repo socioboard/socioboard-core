@@ -37,6 +37,8 @@
 <script type="text/javascript">
 
     function bindmanageuser() {
+
+        $('#ManageUserDataTable').html('<center><img src="../Themes/Socioboard/Contents/img/admin/loading.gif" /></center>');
         $.ajax({
             type: 'POST',
             url: '../UserDetails/LoadManageUser',

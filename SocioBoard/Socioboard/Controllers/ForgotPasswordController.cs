@@ -48,7 +48,10 @@ namespace Socioboard.Controllers
                 if (res_UpdateChangePasswordKey=="1")
                 {
                     ViewBag.ForgetPasswordKey = strRandomUnique;
+                    objuser.ChangePasswordKey = strRandomUnique;
                 }
+
+                objuser.ChangePasswordKey = strRandomUnique;
 
                 var mailBody = Helper.SBUtils.RenderViewToString(this.ControllerContext, "_ForgotPasswordMailBodyPartial", objuser);
                 string Subject = "Forget password Socioboard Account";
@@ -62,13 +65,29 @@ namespace Socioboard.Controllers
             return Content(mailsender);
         }
 
-        public ActionResult ResetPassword(string ForgetPasswordKey)
+        public ActionResult ResetPassword(string emailId, string code)
         {
-            return PartialView("_ResetPasswordPartial", ForgetPasswordKey);
+            //return PartialView("_ResetPasswordPartial", ForgetPasswordKey);
+            Api.User.User ApiobjUser = new Api.User.User();
+            Domain.Socioboard.Domain.User objuser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUserInfoByEmail(emailId), typeof(Domain.Socioboard.Domain.User)));
+            Dictionary<string, string> resetdata = new Dictionary<string, string>();
+            if(objuser!=null)
+            {
+                if(objuser.ChangePasswordKey==code)
+                {
+                    resetdata.Add("emailId", emailId);
+                    resetdata.Add("code", code);
+                    //return PartialView("_ResetPasswordPartial", emailId);//ViewData);
+                }
+            }
+            return PartialView("_ResetPasswordPartial", resetdata);
         }
+
 
         public ActionResult SendResetPasswordMail(string emailId, string Password)
         {
+            string IsPasswordReset = string.Empty;
+
             Api.User.User ApiobjUser = new Api.User.User();
             
             Domain.Socioboard.Domain.User objuser = new Domain.Socioboard.Domain.User();
@@ -83,10 +102,10 @@ namespace Socioboard.Controllers
             {
                 Console.WriteLine(ex.StackTrace);
             }
-
+            
             string changedpassword = Helper.SBUtils.MD5Hash(Password);
-
-            string IsPasswordReset = (string)new JavaScriptSerializer().Deserialize(ApiobjUser.ResetPassword(objuser.Id, changedpassword), typeof(string));
+            IsPasswordReset = (string)new JavaScriptSerializer().Deserialize(ApiobjUser.ResetPassword(objuser.Id, changedpassword), typeof(string));
+            mailsender = "Password Changed Successfully";
             if (IsPasswordReset == "1")
             {
 

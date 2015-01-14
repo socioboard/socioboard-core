@@ -8,10 +8,12 @@ using Domain.Socioboard.Domain;
 using Socioboard.Helper;
 using System.Web.Script.Serialization;
 using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Socioboard.Controllers.Admin
 {
-    [Authorize(Users = "Aby Kumar")]
+    //[Authorize(Users = "Aby Kumar")]
     public class AdminSettingController : Controller
     {
         //
@@ -24,7 +26,7 @@ namespace Socioboard.Controllers.Admin
 
         public ActionResult LoadAdminSetting()
         {
-            Domain.Socioboard.Domain.Admin objAdmin = (Domain.Socioboard.Domain.Admin)Session["AdminProfile"];
+            Domain.Socioboard.Domain.User ObjUser = (Domain.Socioboard.Domain.User)Session["User"];
             return PartialView("_AdminSettingPartial");
         }
 
@@ -34,17 +36,19 @@ namespace Socioboard.Controllers.Admin
             string NewPassword = Request.Form["NewPassword"].ToString();
             string OldPassword = Request.Form["OldPassword"].ToString();
             string returnmsg=string.Empty;
-            Api.Admin.Admin ObjApiAdmin = new Api.Admin.Admin();
-            Domain.Socioboard.Domain.Admin objAdmin = (Domain.Socioboard.Domain.Admin)Session["AdminProfile"];
-            if (objAdmin.Password == OldPassword)
+            Api.User.User ApiobjUser = new Api.User.User();
+            Domain.Socioboard.Domain.User ObjUser = (Domain.Socioboard.Domain.User)Session["User"];
+            string OldPaswrd = EncodePassword(OldPassword);
+            if (ObjUser.Password == OldPaswrd)
             {
-                if (NewPassword != OldPassword)
+                if (NewPassword != OldPaswrd)
                 {
-                    string ChngePasswordMessage = (string)(new JavaScriptSerializer().Deserialize(ObjApiAdmin.ChangeAdminPassword(NewPassword, OldPassword, objAdmin.UserName.ToString()), typeof(string)));
+                    string ChngePasswordMessage = ApiobjUser.ChangePassword(ObjUser.EmailId.ToString(), OldPassword, NewPassword);
                     returnmsg = ChngePasswordMessage;
                     if (ChngePasswordMessage == "Password Changed Successfully")
                     {
-                        objAdmin.Password = NewPassword;
+                        ObjUser.Password = EncodePassword(NewPassword);
+                        Session["User"] = ObjUser;
                     }
                 }
                 else
@@ -61,13 +65,13 @@ namespace Socioboard.Controllers.Admin
 
         public ActionResult UpdateAdminSettingData()
         {
-            Domain.Socioboard.Domain.Admin objAdmin = (Domain.Socioboard.Domain.Admin)Session["AdminProfile"];
-            objAdmin.FirstName = Request.Form["Adminfname"];
-            objAdmin.LastName = Request.Form["Adminlname"];
-            objAdmin.UserName = Request.Form["Adminusername"];
-            objAdmin.TimeZone = Request.Form["AdminTimeZone"];
+            Domain.Socioboard.Domain.User ObjUser = (Domain.Socioboard.Domain.User)Session["User"];
+            string FirstName = Request.Form["Adminfname"];
+            string LastName = Request.Form["Adminlname"];
+            string TimeZone = Request.Form["AdminTimeZone"];
             var fi = Request.Files["adminprofileimage"];
             string file = string.Empty;
+            string UpdateChnfesMessage=string.Empty;
             if (Request.Files.Count > 0)
             {
                 if (fi != null)
@@ -82,21 +86,46 @@ namespace Socioboard.Controllers.Admin
                     }
                     fi.SaveAs(file);
                     path = path + "/" + fi.FileName;
-                    objAdmin.Image = path.ToString();
+                    ObjUser.ProfileUrl = path.ToString();
                 }
             }
 
 
 
-            string ObjAdminUpdate = (new JavaScriptSerializer().Serialize(objAdmin));
-             Api.Admin.Admin ObjApiAdmin = new Api.Admin.Admin();
-            string UpdateChnfesMessage = (string)(new JavaScriptSerializer().Deserialize(ObjApiAdmin.UpdateAdminSetting(ObjAdminUpdate), typeof(string)));
-            if(UpdateChnfesMessage=="Setting Updated Successfully")
+            //string ObjAdminUpdate = (new JavaScriptSerializer().Serialize(ObjUser));
+            Api.User.User ApiobjUser = new Api.User.User();
+            string ret = ApiobjUser.UpdateAdminUser(ObjUser.Id.ToString(), FirstName, LastName, TimeZone, ObjUser.ProfileUrl);
+            if (ret == "1")
             {
-                Session["AdminProfile"]=objAdmin;
+                ObjUser.UserName = FirstName + " " + LastName;
+                ObjUser.TimeZone = TimeZone;
+                Session["User"] = ObjUser;
+                UpdateChnfesMessage = "Setting Updated Successfully";
             }
             return Content(UpdateChnfesMessage);
         }
+
+        public string EncodePassword(string originalPassword)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+
+            //compute hash from the bytes of text
+            md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(originalPassword));
+
+            //get hash result after compute it
+            byte[] result = md5.Hash;
+
+            StringBuilder strBuilder = new StringBuilder();
+            for (int i = 0; i < result.Length; i++)
+            {
+                //change it into 2 hexadecimal digits
+                //for each byte
+                strBuilder.Append(result[i].ToString("x2"));
+            }
+
+            return strBuilder.ToString();
+        }
+
 
     }
 }

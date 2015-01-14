@@ -223,8 +223,12 @@ function LikePosts(GpPostid, LinkedinUserId, groupid, isLike) {
         contentType: "application/json; charset=utf-8",
         dataType: "html",
         success: function (message) {
+            if (isLike == 0) {
+                alertify.success("Liked Successfully");
+            } else if (isLike == 1) {
+                alertify.success("Unliked Successfully");
+            }
             linkedingroupdetails(groupid, LinkedinUserId);
-
         }
     });
 }
@@ -279,7 +283,6 @@ function postmessage() {
             else {
                 
             }
-
         }
     }  
     var cnt = grpIdPost.length;
@@ -288,6 +291,7 @@ function postmessage() {
         return false;
     }
     else {
+       // jQuery.noConflict();
         $('#RplyAllModal').modal('show');
     }
    
@@ -303,9 +307,9 @@ function Sendgroupmessage() {
     var msg = $("#txtmessage").val();
     var timeforsch = $("#grouptimepicker").val();
     var dateforsch = $("#datepic").val();
-    var e = document.getElementById("ddlIntervalTime");
-    var intervaltime = e.options[e.selectedIndex].value;
-
+    //var e = document.getElementById("ddlIntervalTime");
+    //var intervaltime = e.options[e.selectedIndex].value;
+    var intervaltime = $("#ddlIntervalTime").val();
     if (msg == "" || msg == null) {
         alert("Please enter in Comment Box");
         return false;
@@ -346,16 +350,15 @@ function Sendgroupmessage() {
                 document.getElementById('txtTitle').value = "";
                 document.getElementById('fileuploadImages').value = "";
                 $('#postmessagepopup').bPopup().close();
-
             }
-
         }
     });
+    $('._isgroupchecked').prop('checked', false);
     alertify.success("Posted Successfully!");
     document.getElementById('txtmessage').value = "";
     document.getElementById('txtTitle').value = "";
     document.getElementById('fileuploadImages').value = "";
-    $('#postmessagepopup').bPopup().close();
-    $('input:checkbox').removeAttr('checked');
+    //$('#postmessagepopup').bPopup().close();
+    //$('input:checkbox').removeAttr('checked');
     grpIdPost = [];
 }

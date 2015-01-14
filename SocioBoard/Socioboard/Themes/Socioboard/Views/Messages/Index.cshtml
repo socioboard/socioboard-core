@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+ @*<script src="/Themes/socioboard/Contents/js/jquery-1.11.0.js"></script>*@
 <div id="page-wrapper">
     <div class="container-fluid" style="margin-top: 25px">
         <div class="col-md-12">
@@ -18,10 +18,8 @@
             </div>
 
             <div id="contentcontainer2" class="partialContents" data-url="/Messages/accordianprofiles">
-                <img @*src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif"*@ />
+                @*<img src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" />*@
                 @*Loading . . .*@
-
-
             </div>
 
             @* <div id="right-sidebar_home" class="partialContents" data-url="/Home/UserProfile">
@@ -39,7 +37,7 @@
 <div class="modal fade" id="msgmailpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 </div>
 
-<script src="~/Themes/Socioboard/Contents/js/Message.js"></script>
+@*<script src="~/Themes/Socioboard/Contents/js/Message.js"></script>*@
 <script src="~/Themes/Socioboard/Contents/js/Helper.js"></script>
 <script src="~/Themes/Socioboard/Contents/js/underscore.js"></script>
 
@@ -51,17 +49,19 @@
     var throttled = _.throttle(onScroll, 3000);
 
 
-    function opentask(msgdesc) {
+    function opentask(msgdesc,msgdate) {
         debugger;
         //   alert(msgdesc);
         $('#savetask').attr('msgdesc', msgdesc);
-        $('#task').modal('show');
+        //jQuery.noConflict();
+        //$('#task').modal('show');                  
     }
 
     function opnCommentReply(id, network, messageid, ProfileId) {
         debugger;
         var buttonhtm = "<button type=\"button\" class=\"btn btn-default\" onclick=\"saveCommentReply('" + network + "','" + messageid + "','" + ProfileId + "')\">Comment</button>";
         $("#leaveCommentReply").html(buttonhtm);
+        //jQuery.noConflict();
         $("#CommentReply").modal('show');
 
     }
@@ -95,6 +95,7 @@
     }
 
     function onScroll() {
+        debugger;
         var closeToBottom = ($(window).scrollTop() + $(window).height() > $(document).height() - 100);
         if (closeToBottom) {
             $.ajax
@@ -170,7 +171,7 @@
 
         function BindSmartInbox() {
             debugger;
-            BindMessages('abc');
+            //BindMessages('abc');
             BindProfilesInMessageTab();
 
         }
@@ -201,6 +202,7 @@
 
     });
 
+    //jQuery.noConflict();
     function MailPopUpMsg(msgid, ntk) {
         debugger;
         $.ajax({
@@ -216,6 +218,7 @@
         });
     }
 
+    //jQuery.noConflict();
     function facebookLikeUnlike(msgguid, profileid, fbmsgid) {
         debugger;
         try {

@@ -110,7 +110,7 @@ namespace Socioboard.Api.TaskComment {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddTaskComment", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string AddTaskComment(string comment, string userId, string taskId, System.DateTime commentDate, System.DateTime entryDate) {
+        public string AddTaskComment(string comment, string userId, string taskId, string commentDate, System.DateTime entryDate) {
             object[] results = this.Invoke("AddTaskComment", new object[] {
                         comment,
                         userId,
@@ -121,12 +121,12 @@ namespace Socioboard.Api.TaskComment {
         }
         
         /// <remarks/>
-        public void AddTaskCommentAsync(string comment, string userId, string taskId, System.DateTime commentDate, System.DateTime entryDate) {
+        public void AddTaskCommentAsync(string comment, string userId, string taskId, string commentDate, System.DateTime entryDate) {
             this.AddTaskCommentAsync(comment, userId, taskId, commentDate, entryDate, null);
         }
         
         /// <remarks/>
-        public void AddTaskCommentAsync(string comment, string userId, string taskId, System.DateTime commentDate, System.DateTime entryDate, object userState) {
+        public void AddTaskCommentAsync(string comment, string userId, string taskId, string commentDate, System.DateTime entryDate, object userState) {
             if ((this.AddTaskCommentOperationCompleted == null)) {
                 this.AddTaskCommentOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddTaskCommentOperationCompleted);
             }

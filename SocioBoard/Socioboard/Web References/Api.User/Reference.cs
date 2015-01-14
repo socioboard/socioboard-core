@@ -63,6 +63,16 @@ namespace Socioboard.Api.User {
         
         private System.Threading.SendOrPostCallback UpdateForgetPasswordKeyOperationCompleted;
         
+        private System.Threading.SendOrPostCallback UpdateAdminUserOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CheckEmailIdOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdateResetEmailKeyOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdateIsEmailKeyUsedOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdateEmailIdOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -153,6 +163,21 @@ namespace Socioboard.Api.User {
         public event UpdateForgetPasswordKeyCompletedEventHandler UpdateForgetPasswordKeyCompleted;
         
         /// <remarks/>
+        public event UpdateAdminUserCompletedEventHandler UpdateAdminUserCompleted;
+        
+        /// <remarks/>
+        public event CheckEmailIdCompletedEventHandler CheckEmailIdCompleted;
+        
+        /// <remarks/>
+        public event UpdateResetEmailKeyCompletedEventHandler UpdateResetEmailKeyCompleted;
+        
+        /// <remarks/>
+        public event UpdateIsEmailKeyUsedCompletedEventHandler UpdateIsEmailKeyUsedCompleted;
+        
+        /// <remarks/>
+        public event UpdateEmailIdCompletedEventHandler UpdateEmailIdCompleted;
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Login", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string Login(string EmailId, string Password) {
             object[] results = this.Invoke("Login", new object[] {
@@ -223,22 +248,23 @@ namespace Socioboard.Api.User {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateUser", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string UpdateUser(string UserId, string fname, string lname, string timezone) {
+        public string UpdateUser(string UserId, string fname, string lname, string timezone, string picurl) {
             object[] results = this.Invoke("UpdateUser", new object[] {
                         UserId,
                         fname,
                         lname,
-                        timezone});
+                        timezone,
+                        picurl});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void UpdateUserAsync(string UserId, string fname, string lname, string timezone) {
-            this.UpdateUserAsync(UserId, fname, lname, timezone, null);
+        public void UpdateUserAsync(string UserId, string fname, string lname, string timezone, string picurl) {
+            this.UpdateUserAsync(UserId, fname, lname, timezone, picurl, null);
         }
         
         /// <remarks/>
-        public void UpdateUserAsync(string UserId, string fname, string lname, string timezone, object userState) {
+        public void UpdateUserAsync(string UserId, string fname, string lname, string timezone, string picurl, object userState) {
             if ((this.UpdateUserOperationCompleted == null)) {
                 this.UpdateUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateUserOperationCompleted);
             }
@@ -246,7 +272,8 @@ namespace Socioboard.Api.User {
                         UserId,
                         fname,
                         lname,
-                        timezone}, this.UpdateUserOperationCompleted, userState);
+                        timezone,
+                        picurl}, this.UpdateUserOperationCompleted, userState);
         }
         
         private void OnUpdateUserOperationCompleted(object arg) {
@@ -670,6 +697,167 @@ namespace Socioboard.Api.User {
             if ((this.UpdateForgetPasswordKeyCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.UpdateForgetPasswordKeyCompleted(this, new UpdateForgetPasswordKeyCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateAdminUser", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string UpdateAdminUser(string UserId, string fname, string lname, string timezone, string profileurl) {
+            object[] results = this.Invoke("UpdateAdminUser", new object[] {
+                        UserId,
+                        fname,
+                        lname,
+                        timezone,
+                        profileurl});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UpdateAdminUserAsync(string UserId, string fname, string lname, string timezone, string profileurl) {
+            this.UpdateAdminUserAsync(UserId, fname, lname, timezone, profileurl, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateAdminUserAsync(string UserId, string fname, string lname, string timezone, string profileurl, object userState) {
+            if ((this.UpdateAdminUserOperationCompleted == null)) {
+                this.UpdateAdminUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateAdminUserOperationCompleted);
+            }
+            this.InvokeAsync("UpdateAdminUser", new object[] {
+                        UserId,
+                        fname,
+                        lname,
+                        timezone,
+                        profileurl}, this.UpdateAdminUserOperationCompleted, userState);
+        }
+        
+        private void OnUpdateAdminUserOperationCompleted(object arg) {
+            if ((this.UpdateAdminUserCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateAdminUserCompleted(this, new UpdateAdminUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CheckEmailId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string CheckEmailId(string NewEmailId) {
+            object[] results = this.Invoke("CheckEmailId", new object[] {
+                        NewEmailId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CheckEmailIdAsync(string NewEmailId) {
+            this.CheckEmailIdAsync(NewEmailId, null);
+        }
+        
+        /// <remarks/>
+        public void CheckEmailIdAsync(string NewEmailId, object userState) {
+            if ((this.CheckEmailIdOperationCompleted == null)) {
+                this.CheckEmailIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCheckEmailIdOperationCompleted);
+            }
+            this.InvokeAsync("CheckEmailId", new object[] {
+                        NewEmailId}, this.CheckEmailIdOperationCompleted, userState);
+        }
+        
+        private void OnCheckEmailIdOperationCompleted(object arg) {
+            if ((this.CheckEmailIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CheckEmailIdCompleted(this, new CheckEmailIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateResetEmailKey", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string UpdateResetEmailKey(string userID, string ChangeEmailKey) {
+            object[] results = this.Invoke("UpdateResetEmailKey", new object[] {
+                        userID,
+                        ChangeEmailKey});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UpdateResetEmailKeyAsync(string userID, string ChangeEmailKey) {
+            this.UpdateResetEmailKeyAsync(userID, ChangeEmailKey, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateResetEmailKeyAsync(string userID, string ChangeEmailKey, object userState) {
+            if ((this.UpdateResetEmailKeyOperationCompleted == null)) {
+                this.UpdateResetEmailKeyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateResetEmailKeyOperationCompleted);
+            }
+            this.InvokeAsync("UpdateResetEmailKey", new object[] {
+                        userID,
+                        ChangeEmailKey}, this.UpdateResetEmailKeyOperationCompleted, userState);
+        }
+        
+        private void OnUpdateResetEmailKeyOperationCompleted(object arg) {
+            if ((this.UpdateResetEmailKeyCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateResetEmailKeyCompleted(this, new UpdateResetEmailKeyCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateIsEmailKeyUsed", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string UpdateIsEmailKeyUsed(string userID, string ChangeEmailKey) {
+            object[] results = this.Invoke("UpdateIsEmailKeyUsed", new object[] {
+                        userID,
+                        ChangeEmailKey});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UpdateIsEmailKeyUsedAsync(string userID, string ChangeEmailKey) {
+            this.UpdateIsEmailKeyUsedAsync(userID, ChangeEmailKey, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateIsEmailKeyUsedAsync(string userID, string ChangeEmailKey, object userState) {
+            if ((this.UpdateIsEmailKeyUsedOperationCompleted == null)) {
+                this.UpdateIsEmailKeyUsedOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateIsEmailKeyUsedOperationCompleted);
+            }
+            this.InvokeAsync("UpdateIsEmailKeyUsed", new object[] {
+                        userID,
+                        ChangeEmailKey}, this.UpdateIsEmailKeyUsedOperationCompleted, userState);
+        }
+        
+        private void OnUpdateIsEmailKeyUsedOperationCompleted(object arg) {
+            if ((this.UpdateIsEmailKeyUsedCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateIsEmailKeyUsedCompleted(this, new UpdateIsEmailKeyUsedCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateEmailId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string UpdateEmailId(string Id, string GroupId, string NewEmailId) {
+            object[] results = this.Invoke("UpdateEmailId", new object[] {
+                        Id,
+                        GroupId,
+                        NewEmailId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UpdateEmailIdAsync(string Id, string GroupId, string NewEmailId) {
+            this.UpdateEmailIdAsync(Id, GroupId, NewEmailId, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateEmailIdAsync(string Id, string GroupId, string NewEmailId, object userState) {
+            if ((this.UpdateEmailIdOperationCompleted == null)) {
+                this.UpdateEmailIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateEmailIdOperationCompleted);
+            }
+            this.InvokeAsync("UpdateEmailId", new object[] {
+                        Id,
+                        GroupId,
+                        NewEmailId}, this.UpdateEmailIdOperationCompleted, userState);
+        }
+        
+        private void OnUpdateEmailIdOperationCompleted(object arg) {
+            if ((this.UpdateEmailIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateEmailIdCompleted(this, new UpdateEmailIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1099,6 +1287,136 @@ namespace Socioboard.Api.User {
         private object[] results;
         
         internal UpdateForgetPasswordKeyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void UpdateAdminUserCompletedEventHandler(object sender, UpdateAdminUserCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpdateAdminUserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpdateAdminUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void CheckEmailIdCompletedEventHandler(object sender, CheckEmailIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CheckEmailIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CheckEmailIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void UpdateResetEmailKeyCompletedEventHandler(object sender, UpdateResetEmailKeyCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpdateResetEmailKeyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpdateResetEmailKeyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void UpdateIsEmailKeyUsedCompletedEventHandler(object sender, UpdateIsEmailKeyUsedCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpdateIsEmailKeyUsedCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpdateIsEmailKeyUsedCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void UpdateEmailIdCompletedEventHandler(object sender, UpdateEmailIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpdateEmailIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpdateEmailIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

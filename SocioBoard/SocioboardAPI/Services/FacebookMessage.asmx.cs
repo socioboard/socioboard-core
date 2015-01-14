@@ -209,5 +209,12 @@ namespace Api.Socioboard.Services
             Domain.Socioboard.Domain.FacebookMessage objFacebookMessage = objFacebookMessageRepository.GetFacebookMessageByMessageId(Guid.Parse(userid), msgid);
             return new JavaScriptSerializer().Serialize(objFacebookMessage);
         }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllMessageDetail(string profileid) 
+        {
+            List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookMessage = objFacebookMessageRepository.getAllMessageDetail(profileid);
+            return new JavaScriptSerializer().Serialize(lstFacebookMessage);
+        }
     }
 }

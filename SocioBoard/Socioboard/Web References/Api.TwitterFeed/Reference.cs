@@ -37,6 +37,8 @@ namespace Socioboard.Api.TwitterFeed {
         
         private System.Threading.SendOrPostCallback GetTwitterFeedByIdOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getTwitterFeedByProfileIdOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -86,6 +88,9 @@ namespace Socioboard.Api.TwitterFeed {
         
         /// <remarks/>
         public event GetTwitterFeedByIdCompletedEventHandler GetTwitterFeedByIdCompleted;
+        
+        /// <remarks/>
+        public event getTwitterFeedByProfileIdCompletedEventHandler getTwitterFeedByProfileIdCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllTwitterFeedsByUserIdAndProfileId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -212,6 +217,37 @@ namespace Socioboard.Api.TwitterFeed {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTwitterFeedByProfileId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getTwitterFeedByProfileId(string ProfileId, string MessageId) {
+            object[] results = this.Invoke("getTwitterFeedByProfileId", new object[] {
+                        ProfileId,
+                        MessageId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getTwitterFeedByProfileIdAsync(string ProfileId, string MessageId) {
+            this.getTwitterFeedByProfileIdAsync(ProfileId, MessageId, null);
+        }
+        
+        /// <remarks/>
+        public void getTwitterFeedByProfileIdAsync(string ProfileId, string MessageId, object userState) {
+            if ((this.getTwitterFeedByProfileIdOperationCompleted == null)) {
+                this.getTwitterFeedByProfileIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetTwitterFeedByProfileIdOperationCompleted);
+            }
+            this.InvokeAsync("getTwitterFeedByProfileId", new object[] {
+                        ProfileId,
+                        MessageId}, this.getTwitterFeedByProfileIdOperationCompleted, userState);
+        }
+        
+        private void OngetTwitterFeedByProfileIdOperationCompleted(object arg) {
+            if ((this.getTwitterFeedByProfileIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getTwitterFeedByProfileIdCompleted(this, new getTwitterFeedByProfileIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -321,6 +357,32 @@ namespace Socioboard.Api.TwitterFeed {
         private object[] results;
         
         internal GetTwitterFeedByIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void getTwitterFeedByProfileIdCompletedEventHandler(object sender, getTwitterFeedByProfileIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getTwitterFeedByProfileIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getTwitterFeedByProfileIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

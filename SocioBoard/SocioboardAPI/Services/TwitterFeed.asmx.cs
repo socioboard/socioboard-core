@@ -117,5 +117,23 @@ namespace Api.Socioboard.Services
                 return null;
             }
         }
+
+        // Edited by Antima[20/12/2014]
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string getTwitterFeedByProfileId(string ProfileId, string MessageId)
+        {
+            try
+            {
+                Domain.Socioboard.Domain.TwitterFeed twtfeed = objTwitterFeedRepository.getTwitterFeedByProfileId(ProfileId, MessageId);
+                return new JavaScriptSerializer().Serialize(twtfeed);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return null;
+            }
+        }
     }
 }

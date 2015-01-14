@@ -2,10 +2,11 @@
 @{
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
     User objUser = (User)Session["User"];
+    string GroupId = Session["selectedgroupid"].ToString();
 }
 
 <h4>Pending Team Members</h4>
-<span id="invitationmember" class="pull-right" onclick="inviteteammember()"><a role="button" class="btn btn-primary btn-sm">Invite a New Team Member</a></span>
+<span id="invitationmember" class="pull-right" onclick="inviteteammember('@objUser.Id','@GroupId')"><a role="button" class="btn btn-primary btn-sm">Invite a New Team Member</a></span>
 
 @*@foreach (var item in (List<Domain.Socioboard.Domain.Team>)Model)
 {

@@ -132,5 +132,31 @@ namespace Api.Socioboard.Services
             }//End session
         }
 
+        public int UpdateFbPagePostStatus(Domain.Socioboard.Domain.FbPagePost _FbPagePost)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        int i = session.CreateQuery("Update FbPagePost set Likes =:Likes,Comments =:Comments,Shares=:Shares where PostId =:PostId")
+                                                  .SetParameter("Likes", _FbPagePost.Likes)
+                                                  .SetParameter("Comments", _FbPagePost.Comments)
+                                                  .SetParameter("Shares", _FbPagePost.Shares)
+                                                  .SetParameter("PostId", _FbPagePost.PostId)
+                                                  .ExecuteUpdate();
+                        transaction.Commit();
+                        return i;
+                    }
+                    catch (Exception ex)
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
+
     }
 }

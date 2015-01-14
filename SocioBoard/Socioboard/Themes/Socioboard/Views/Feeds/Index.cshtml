@@ -39,7 +39,8 @@
     }
 
     function LikeUnlikeInstagramPost(LikeCount, IsLike, FeedId, InstagramId) {
-        var fd = new formdata();
+        debugger;
+        var fd = new FormData();
         fd.append("LikeCount", LikeCount);
         fd.append("IsLike", IsLike);
         fd.append("FeedId", FeedId);
@@ -92,7 +93,7 @@
 
 <div class="modal fade" id="mailpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 </div>
-<script src="/Themes/Socioboard/Contents/js/jquery-1.11.0.js"></script>
+@*<script src="/Themes/Socioboard/Contents/js/jquery-1.11.0.js"></script>*@
 <script>
     var facebookfeed = _.throttle(facebookfeedscrolldata, 3000);
     var twittertweet = _.throttle(Twitterfeedscrolldata, 3000);
@@ -130,34 +131,34 @@
         }
     }
 
-    function FacebookUserFeeds() {
-        debugger;
-        var nwtid = $('#refreshpanel2').attr('nwtid');
-        $("#title_paneltab3").html("User Feeds");
+    //function FacebookUserFeeds() {
+    //    debugger;
+    //    var nwtid = $('#refreshpanel2').attr('nwtid');
+    //    $("#title_paneltab3").html("User Feeds");
 
-        $.ajax({
-            type: "GET",
-            url: "/Feeds/FacebookUserFeeds",
-            data: { "profileid": nwtid },
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
-            beforeSend: function () {
-                console.log("test");
-            },
-            success: function (msg) {
-                console.log("I")
+    //    $.ajax({
+    //        type: "GET",
+    //        url: "/Feeds/FacebookUserFeeds",
+    //        data: { "profileid": nwtid },
+    //        contentType: "application/json; charset=utf-8",
+    //        dataType: "html",
+    //        beforeSend: function () {
+    //            console.log("test");
+    //        },
+    //        success: function (msg) {
+    //            console.log("I")
 
-                $("#data_paneltab3").html(msg);
-                console.log("testend");
-            },
-            error: function (e) {
-                console.log("testerr");
+    //            $("#data_paneltab3").html(msg);
+    //            console.log("testend");
+    //        },
+    //        error: function (e) {
+    //            console.log("testerr");
 
-                console.log(e);
-                alert("gfgh");
-            }
-        });
-    }
+    //            console.log(e);
+    //            alert("gfgh");
+    //        }
+    //    });
+    //}
 
     function FacebookStatus() {
         debugger;
@@ -220,3 +221,4 @@
 
 
 </script>
+@*<script src="/Themes/Socioboard/Contents/js/plugins/morris/morris-data.js"></script>*@

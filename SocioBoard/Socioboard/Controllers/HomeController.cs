@@ -12,11 +12,32 @@ using System.Web.Script.Serialization;
 using System.IO;
 using Socioboard.App_Start;
 using log4net;
+using System.Data;
 
 namespace Socioboard.Controllers
 {
-    public class HomeController : Controller
+    public class BaseController : Controller
     {
+        /// <summary>
+        /// Read the timezone offset value from cookie and store in session.
+        /// </summary>
+        /// <param name="filterContext"></param>
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            if (HttpContext.Request.Cookies.AllKeys.Contains("timezoneoffset"))
+            {
+                Session["timezoneoffset"] = HttpContext.Request.Cookies["timezoneoffset"].Value;
+            }
+            base.OnActionExecuting(filterContext);
+        }
+
+
+
+    }
+    public class HomeController : BaseController
+    {
+
+
         private ILog logger = LogManager.GetLogger(typeof(HomeController));
 
         [MyExpirePageActionFilter]
@@ -461,6 +482,107 @@ namespace Socioboard.Controllers
         public ActionResult training()
         {
             return View();
+        }
+
+        public ActionResult AddFirstProfile()
+        {
+            int ProfileCount = int.Parse(Session["ProfileCount"].ToString());
+            if (ProfileCount == 0)
+            {
+                return Content("AddProfile");
+            }
+            else
+            {
+                return Content("WrongWindow");
+            }
+        }
+
+        // Edited by Antima[20/12/2014]
+
+        public ActionResult Tickets()
+        {
+            try
+            {
+                Domain.Socioboard.Domain.User objuser = (Domain.Socioboard.Domain.User)Session["User"];
+                string groupid = Session["group"].ToString();
+                Api.SentimentalAnalysis.SentimentalAnalysis ApiobjSentimentalAnalysis = new Api.SentimentalAnalysis.SentimentalAnalysis();
+                List<Domain.Socioboard.Domain.FBTwitterFeeds> fbtwitterfeeds = new List<Domain.Socioboard.Domain.FBTwitterFeeds>();
+                fbtwitterfeeds = (List<Domain.Socioboard.Domain.FBTwitterFeeds>)(new JavaScriptSerializer().Deserialize(ApiobjSentimentalAnalysis.GetTicketsofGroup(groupid, objuser.Id.ToString()), typeof(List<Domain.Socioboard.Domain.FBTwitterFeeds>)));
+                //if (fbtwitterfeeds.Count > 0)
+                //{
+                //    return View("MyTickets", fbtwitterfeeds);
+                //}
+                return View("MyTickets", fbtwitterfeeds);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return Content("SomethingWentWrong");
+            }
+        }
+
+        public ActionResult NotificationTickets()
+        {
+            try
+            {
+                Domain.Socioboard.Domain.User objuser = (Domain.Socioboard.Domain.User)Session["User"];
+
+                DataSet ds = null;
+                clsFeedsAndMessages clsfeedsandmess = new clsFeedsAndMessages();
+
+                ds = clsfeedsandmess.bindMyTickets(objuser.Id);
+                if (ds.Tables.Count > 0 && ds != null)
+                {
+                    return PartialView("_TicketsNotificationPartial", ds);
+                }
+                else
+                {
+                    return Content("nodata");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return Content("SomethingWentWrong");
+            }
+        }
+
+        public ActionResult TicketTwitterReply()
+        {
+            try
+            {
+                Api.Twitter.Twitter ApiobjTwitter = new Api.Twitter.Twitter();
+                Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
+                string comment = Request.QueryString["comment"];
+                string ProfileId = Request.QueryString["ProfileId"];
+                string messageid = Request.QueryString["messageid"];
+                string replypost = ApiobjTwitter.TicketTwitterReply(comment, ProfileId, messageid);
+                return Content("success");
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace);
+                return Content("");
+            }
+        }
+
+        public ActionResult TicketFacebokReply()
+        {
+            try
+            {
+                Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
+                Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
+                string comment = Request.QueryString["comment"];
+                string ProfileId = Request.QueryString["ProfileId"];
+                string messageid = Request.QueryString["messageid"];
+                string replaypost = ApiobjFacebook.TicketFacebokReply(comment, ProfileId, messageid);
+                return Content("success");
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace);
+                return Content("");
+            }
         }
     }
 }

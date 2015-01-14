@@ -2047,16 +2047,16 @@
   </wsdl:binding>
   <wsdl:service name="ScheduledMessage">
     <wsdl:port name="ScheduledMessageSoap" binding="tns:ScheduledMessageSoap">
-      <soap:address location="http://localhost:6361/Services/ScheduledMessage.asmx" />
+      <soap:address location="http://devapi.socioboard.com/Services/ScheduledMessage.asmx" />
     </wsdl:port>
     <wsdl:port name="ScheduledMessageSoap12" binding="tns:ScheduledMessageSoap12">
-      <soap12:address location="http://localhost:6361/Services/ScheduledMessage.asmx" />
+      <soap12:address location="http://devapi.socioboard.com/Services/ScheduledMessage.asmx" />
     </wsdl:port>
     <wsdl:port name="ScheduledMessageHttpGet" binding="tns:ScheduledMessageHttpGet">
-      <http:address location="http://localhost:6361/Services/ScheduledMessage.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/ScheduledMessage.asmx" />
     </wsdl:port>
     <wsdl:port name="ScheduledMessageHttpPost" binding="tns:ScheduledMessageHttpPost">
-      <http:address location="http://localhost:6361/Services/ScheduledMessage.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/ScheduledMessage.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

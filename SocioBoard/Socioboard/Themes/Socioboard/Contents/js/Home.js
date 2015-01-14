@@ -216,7 +216,10 @@ function confirmDel(profileid, profiletype, profile) {
                 dataType: "html",
                 success: function (msg) {
                     debugger;
-                    alertify.success("Page Deleted Successfully");
+                    window.location = "../Home/Index";
+                    if (msg = "Deleted") {
+                        alertify.success("Page Deleted Successfully");
+                    }
                     try {
                         var s = $("#ContentPlaceHolder1_usedAccount").html(msg);
                     } catch (e) {

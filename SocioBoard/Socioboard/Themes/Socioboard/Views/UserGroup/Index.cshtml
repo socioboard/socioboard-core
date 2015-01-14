@@ -1,13 +1,13 @@
 ﻿<div id="page-wrapper">
 </div>
 
-
-
 <script type="text/javascript">
     function loadusergroup() {
         $('#page-wrapper').load('../UserGroup/LoadUserGroup')
     }
+
     function loadgroupinfo(groupid, groupname) {
+        debugger;
         $.ajax({
             type: 'POST',
             url: '../UserGroup/connectedprofilestothisgroup?selectedgroupid=' + groupid,
@@ -15,18 +15,16 @@
                 $('#profileconnectedwithgroup').html(msg);
                 $('#groupinfo').css({ "display": "block" });
                 $('#groupname').html(" " + groupname);
-                
-                
             },
             async: false
         });
-       
+
         $.ajax({
             type: 'POST',
             url: '../UserGroup/PendingUser?selectedgroupid=' + groupid,
             success: function (msg) {
                 $('#pendinguserforcurrentgroup').html(msg);
-                
+
                 $('#invitationmember').attr('usergroupname', groupname);
             },
             async: false
@@ -41,29 +39,10 @@
             async: false
         });
     }
-    //commented by vikash
-    //function addtocurrentgroup(profileid, profilepic, networkicon, network) {
-
-    //    if ($('#profileconnectedwithgroup').html().indexOf(profileid) <= -1) {
-    //        $('#profileconnectedwithgroup').append('<div id="' + profileid + '" style="display:none" class="col-sm-1 groupuserpictiny"><div data-target="#closeModal" data-toggle="modal"  class="delet_icon"></div><img onclick="removeprofilefromgroup(\'' + profileid + '\')" src=' + profilepic + ' class="img-responsive img-rounded"><img class="img-responsive img-circle groupsocialIconPoss" src=' + networkicon + '></div>');
-    //        $('#' + profileid).fadeIn(750);
-    //        $.ajax({
-    //            type: 'POST',
-    //            url: '../UserGroup/AddprofileToCurrentGroup?profileid=' + profileid + '&network=' + network,
-    //            success: function (msg) {
-
-    //            },
-    //            async: false
-    //        });
-    //    }
-    //    else {
-    //        alertify.error("Profile Already Exist");
-    //    }
-    //};
-    
+   
     function removeprofilefromgroup(profileid) {
         //alert(profileid);
-        var group =$('#groupname').html();
+        var group = $('#groupname').html();
         alertify.confirm("Are you sure, You Want to remove this account from " + group, function (e) {
             if (e) {
                 $('#' + profileid).hide(250, function () {
@@ -82,11 +61,12 @@
     }
     // added by vikash 
     function addtocurrentgroup(profileid, profilepic, networkicon, network) {
-
+        debugger;
         if ($('#profileconnectedwithgroup').html().indexOf(profileid) <= -1) {
             $('#profileconnectedwithgroup').append('<div id="' + profileid + '" style="display:none" class="col-sm-1 groupuserpictiny"><div class="delet_icon" onclick="removeprofilefromgroup(\'' + profileid + '\')"></div><img src=' + profilepic + ' class="img-responsive img-rounded"><img class="img-responsive img-circle groupsocialIconPoss" src=' + networkicon + '></div>');
             $('#' + profileid).fadeIn(750);
             $.ajax({
+
                 type: 'POST',
                 url: '../UserGroup/AddprofileToCurrentGroup?profileid=' + profileid + '&network=' + network,
                 success: function (msg) {
@@ -122,223 +102,8 @@
         });
     }
 
-    function inviteteammember()
-    {
-        $('#inviteteammember').modal('show');
-        $('#usergroupname').html(" " + $('#invitationmember').attr('usergroupname'))
-        
-    }
-    //commented by vikash
-    //function addteam()
-    //{
-    //    var teamemail = $('#txtteamemail').val();
-    //    if (teamemail == "") {
-    //        alertify.error("Please enter your friend email")
-    //        return false;
-    //    }
-    //    else {
-    //        alert(teamemail);
-    //        $.ajax({
-    //            type: 'POST',
-    //            url: '../UserGroup/AddTeamMember?email=' + teamemail,
-    //            success: function (msg) {
-
-    //            },
-    //            async: false
-    //        });
-    //    }
-    //}
-//------------vikash---------//
-    //function addteam() {
-    //    debugger;
-    //    var teamemail = $('#txtteamemail').val();
-
-    //    if (teamemail == "") {
-    //        alertify.error("Please enter your friend email")
-    //        return false;
-    //    }
-    //    else if (!validateEmail(teamemail)) {
-    //        alert('Not valid email ! Please enter valid email');
-    //        $('#txtteamemail').val('');
-    //        return false;
-    //    }
-    //    else {
-    //        alertify.confirm("Confirm Email Id : " + teamemail, function (e) {
-    //            if (e) {
-    //                $.ajax({
-    //                    type: 'POST',
-    //                    url: '../UserGroup/AddTeamMember?email=' + teamemail,
-    //                    success: function (msg) {
-    //                        $('#inviteteammember').modal('hide');
-    //                        if (msg != "") {
-    //                            alertify.success('Mail send successfully');
-    //                            $('#txtteamemail').val('');
-    //                        }
-    //                        else {
-    //                            alertify.error('Email already Exist');
-    //                        }
-    //                    },
-    //                    async: false
-    //                });
-    //            } else { }
-    //        });
-    //    }
-    //}
-
-
-    var EMailarray = [];
-    function addteam() {
-        debugger;
-        //if (typeof EMailarray[0] == 'undefined') {
-        //    EMailarray = $('#exampleInputEmail').val();
-        //    if (EMailarray == "") {
-        //            alertify.error("Please enter your friend email")
-        //            return false;
-        //    }
-        //}
-        //    else {
-        //alert(EMailarray);
-        $.ajax({
-            type: 'POST',
-            //     url: '../UserGroup/AddTeamMember?email=' + EMailarray,
-            url: "../UserGroup/AddTeamMember?email=" + EMailarray,
-            success: function (msg) {
-                $('#inviteteammember').modal('hide');
-                if (msg != "") {
-                    while (EMailarray.length > 0) {
-                        EMailarray.pop();
-                    }
-                    $("#invitetablebody").html("");
-                    //alertify.success('Mail send successfully');
-
-                    //alert('SentMails : ' + jQuery.parseJSON(msg).SentMails);
-                    //alert('Already Sent Mails : ' + jQuery.parseJSON(msg).NotSentMails);
-
-                    if (jQuery.parseJSON(msg).SentMails == "" && jQuery.parseJSON(msg).NotSentMails != "") {
-                        alertify.success('Mail already send');
-                    }
-                    else {
-                        alertify.success('Mail send successfully');
-                    }
-
-                }
-                else {
-                    while (EMailarray.length > 0) {
-                        EMailarray.pop();
-                    }
-                    $("#invitetablebody").html("");
-                    alertify.success('Mail already send');
-                }
-               
-            },
-            async: false
-        });
-    }
-    //}
-
-    function invitemember() {
-        debugger;
-        // alert(success);
-        $("#btnaddteam").prop('disabled', false);
-        var FName = $('#exampleInputFname').val();
-        var LName = $('#exampleInputLname').val();
-        var EMailId = $('#exampleInputEmail').val();
-
-        if (FName != '' || LName != '' || EMailId != '') {
-            if (!validateFName(FName)) {
-                alert('Please enter valid First Name');
-                return false;
-            }
-            if (!validateFName(LName)) {
-                alert('Please enter valid Last Name');
-                return false;
-            }
-            if (!validateEmail(EMailId)) {
-                alert('Please enter valid EmailId');
-                return false;
-            }
-            //var html = "<div><div class=\"col-md-10\"><table class=\"table table-striped pull-left\"><tbody><tr><td>" + FName + "</td><td>" + LName + "</td><td>" + EMailId + "</td></tr></tbody></table></div><div class=\"col-md-2\"<button type=\"submit\" class=\"btn btn-default\"></button><button class=\"btn btn-default col-md-8\" type=\"submit\" onclick=\"removemember(this)\"><i class=\"fa fa-minus\"></i></button></div></div>";
-            //$('#inviteadded').append(html);
-            //var html = "<tr><td>" + FName + "</td><td>" + LName + "</td><td>" + EMailId + "</td><td><button class=\"btn btn-default col-md-8\"  onclick=\"removemember(this)\"><i class=\"fa fa-minus\"></i></button></td></tr>";
-            //suresh
-            var table = document.getElementById("invitetablebody");
-            var row = table.insertRow(-1);
-           var cell1 = row.insertCell(0);
-           var cell2 = row.insertCell(1);
-           var cell3 = row.insertCell(2);
-           var cell4 = row.insertCell(3);
-
-           cell1.innerHTML = FName;
-           cell2.innerHTML = LName;
-           cell3.innerHTML = EMailId;
-           cell4.innerHTML = "<button class=\"btn btn-default col-md-8\"  onclick=\"removemember(this)\"><i class=\"fa fa-minus\"></i></button>";
-
-            EMailarray.push(EMailId + ":" + FName + ":" + LName);
-            $('#exampleInputFname').val('');
-            $('#exampleInputLname').val('');
-            $('#exampleInputEmail').val('');
-        }
-        else {
-            alert('Please fill all the fields');
-        }
-    }
-
-    function validateEmail($Email) {
-        var emailReg = /^([\w-\.]+@@([\w-]+\.)+[\w-]{2,4})?$/;
-        if (!emailReg.test($Email)) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    function validateFName($Fname) {
-        var fnameReg = /^[A-Z,a-z._]+$/;
-        if (!fnameReg.test($Fname)) {
-            return false;
-        } else {
-            return true;
-        }
-            //checks weather the email  is admin email or not if it is admin email return false
-         if (teamemail == $('#UserEmailAddress').val()) {
-            alert('Not valid email ! Please enter valid email');
-            $('#txtteamemail').val('');
-            return false;
-        }
-        else {
-            alertify.confirm("Confirm Email Id : " + teamemail, function (e) {
-                if (e) {
-                    $.ajax({
-                        type: 'POST',
-                        url: '../UserGroup/AddTeamMember?email=' + teamemail,
-                        success: function (msg) {
-                            $('#inviteteammember').modal('hide');
-                            if (msg == "success") {
-                                alertify.success('Mail send successfully');
-                                $('#txtteamemail').val('');
-                            }
-                            else {
-                                alertify.error(msg);
-                            }
-                        },
-                        async: false
-                    });
-                } else { }
-            });
-        }
-    }
-
-
-    function removemember(ele) {
-        var i = ele.parentNode.parentNode.rowIndex;
-        EMailarray.splice(i, 1);
-        document.getElementById("invitetablebody").deleteRow(i);
-
-    }
-
     $(document).ready(function () {
         loadusergroup();
-
     });
 
     function validateEmail($email) {
@@ -350,3 +115,6 @@
         }
     }
 </script>
+
+
+

@@ -1,5 +1,5 @@
 ﻿
-document.write('<script type="text/javascript" language="javascript" src="../Themes/Socioboard/Views/Home/Index.cshtml"></script>')
+document.write('<script type="text/javascript" language="javascript" src="/Themes/Socioboard/Views/Home/Index.cshtml"></script>')
 
 function checkEmail(email) {
     try {
@@ -97,8 +97,10 @@ function signinFunction() {
                 url: '../Index/AjaxLogin?op=login&username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password),
                 success: function (msg) {
                     debugger;
-                    if ($("#RememberMe").is(':checked')) {
-                        checkCookie(username, password);
+                    if (msg != "Invalid Email or Password") {
+                        if ($("#RememberMe").is(':checked')) {
+                            checkCookie(username, password);
+                        }
                     }
                     if (msg == "user") {
                         window.top.location = "../Home/Index";
@@ -122,6 +124,10 @@ function signinFunction() {
                     //Modified by Hozefa
                     else if (msg == "SuperAdmin") {
                         window.top.location = "../AdminHome/Dashboard";
+                    }
+                    else if (msg=="User Not Exist!") {
+                        document.getElementById('signinpasswordMessages').innerHTML = msg;
+                        $('#btnlogin').html("<button class='btn btn-warning' type='button'>Login</button>");
                     }
                     else {
                         document.getElementById('signinpasswordMessages').innerHTML = msg;
@@ -353,9 +359,9 @@ function register() {
                                                                                 url: "../Index/SendRegistrationMail?emailId=" + email,
                                                                                 data: '',
                                                                                 success: function (msg) {
-                                                                                    if (msg == "Success") {
+                                                                                    if (msg.indexOf("Success") != -1) {
                                                                                         alertify.success('Mail has been send Successfully!!');
-                                                                                        if (msg_Signup.indexOf("Facebook Registration") > 0 && msg_Signup != null) {
+                                                                                        if (msg.indexOf("Facebook Registration") != -1 && msg_Signup != null) {
                                                                                             //Dont alert to activate account
                                                                                         }
                                                                                         else {
@@ -456,6 +462,7 @@ function password() {
     var mediumRegex = new RegExp("^(?=.{5,})(((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
     if ($('#txtrPassword').val() != "") {
         $('#password_strength').css('display', 'block');
+        $('#_password_strength').css('display', 'block');
         if ($('#txtrPassword').val().length <= 15) {
             if (strongRegex.test($('#txtrPassword').val())) {
                 $('#stregth').html('<b>Strong!</b>');
@@ -487,6 +494,7 @@ function password() {
         $('#medium').css("background-color", "rgb(204, 204, 204)");
         $('#strong').css("background-color", "rgb(204, 204, 204)");
         $('#password_strength').css('display', 'none');
+        $('#_password_strength').css('display', 'none');
     }
     return true;
 }

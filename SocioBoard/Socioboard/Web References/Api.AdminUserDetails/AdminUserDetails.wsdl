@@ -3,7 +3,11 @@
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:element name="GetAllUsers">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Objuser" type="s:string" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="GetAllUsersResponse">
         <s:complexType>
@@ -58,6 +62,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getAllDeletedUsers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Objuser" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllDeletedUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllDeletedUsersResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -85,7 +103,15 @@
   <wsdl:message name="DeleteUserSoapOut">
     <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
   </wsdl:message>
-  <wsdl:message name="GetAllUsersHttpGetIn" />
+  <wsdl:message name="getAllDeletedUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllDeletedUsers" />
+  </wsdl:message>
+  <wsdl:message name="getAllDeletedUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllDeletedUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUsersHttpGetIn">
+    <wsdl:part name="Objuser" type="s:string" />
+  </wsdl:message>
   <wsdl:message name="GetAllUsersHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
@@ -111,7 +137,15 @@
   <wsdl:message name="DeleteUserHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="GetAllUsersHttpPostIn" />
+  <wsdl:message name="getAllDeletedUsersHttpGetIn">
+    <wsdl:part name="Objuser" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllDeletedUsersHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUsersHttpPostIn">
+    <wsdl:part name="Objuser" type="s:string" />
+  </wsdl:message>
   <wsdl:message name="GetAllUsersHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
@@ -137,6 +171,12 @@
   <wsdl:message name="DeleteUserHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="getAllDeletedUsersHttpPostIn">
+    <wsdl:part name="Objuser" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllDeletedUsersHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="AdminUserDetailsSoap">
     <wsdl:operation name="GetAllUsers">
       <wsdl:input message="tns:GetAllUsersSoapIn" />
@@ -153,6 +193,10 @@
     <wsdl:operation name="DeleteUser">
       <wsdl:input message="tns:DeleteUserSoapIn" />
       <wsdl:output message="tns:DeleteUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllDeletedUsers">
+      <wsdl:input message="tns:getAllDeletedUsersSoapIn" />
+      <wsdl:output message="tns:getAllDeletedUsersSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="AdminUserDetailsHttpGet">
@@ -172,6 +216,10 @@
       <wsdl:input message="tns:DeleteUserHttpGetIn" />
       <wsdl:output message="tns:DeleteUserHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="getAllDeletedUsers">
+      <wsdl:input message="tns:getAllDeletedUsersHttpGetIn" />
+      <wsdl:output message="tns:getAllDeletedUsersHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="AdminUserDetailsHttpPost">
     <wsdl:operation name="GetAllUsers">
@@ -189,6 +237,10 @@
     <wsdl:operation name="DeleteUser">
       <wsdl:input message="tns:DeleteUserHttpPostIn" />
       <wsdl:output message="tns:DeleteUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllDeletedUsers">
+      <wsdl:input message="tns:getAllDeletedUsersHttpPostIn" />
+      <wsdl:output message="tns:getAllDeletedUsersHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="AdminUserDetailsSoap" type="tns:AdminUserDetailsSoap">
@@ -222,6 +274,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteUser">
       <soap:operation soapAction="http://tempuri.org/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllDeletedUsers">
+      <soap:operation soapAction="http://tempuri.org/getAllDeletedUsers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -268,6 +329,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAllDeletedUsers">
+      <soap12:operation soapAction="http://tempuri.org/getAllDeletedUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="AdminUserDetailsHttpGet" type="tns:AdminUserDetailsHttpGet">
     <http:binding verb="GET" />
@@ -300,6 +370,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteUser">
       <http:operation location="/DeleteUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllDeletedUsers">
+      <http:operation location="/getAllDeletedUsers" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -346,19 +425,28 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAllDeletedUsers">
+      <http:operation location="/getAllDeletedUsers" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="AdminUserDetails">
     <wsdl:port name="AdminUserDetailsSoap" binding="tns:AdminUserDetailsSoap">
-      <soap:address location="http://localhost:6361/Services/AdminUserDetails.asmx" />
+      <soap:address location="http://devapi.socioboard.com/Services/AdminUserDetails.asmx" />
     </wsdl:port>
     <wsdl:port name="AdminUserDetailsSoap12" binding="tns:AdminUserDetailsSoap12">
-      <soap12:address location="http://localhost:6361/Services/AdminUserDetails.asmx" />
+      <soap12:address location="http://devapi.socioboard.com/Services/AdminUserDetails.asmx" />
     </wsdl:port>
     <wsdl:port name="AdminUserDetailsHttpGet" binding="tns:AdminUserDetailsHttpGet">
-      <http:address location="http://localhost:6361/Services/AdminUserDetails.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/AdminUserDetails.asmx" />
     </wsdl:port>
     <wsdl:port name="AdminUserDetailsHttpPost" binding="tns:AdminUserDetailsHttpPost">
-      <http:address location="http://localhost:6361/Services/AdminUserDetails.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/AdminUserDetails.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

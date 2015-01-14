@@ -20,7 +20,7 @@ namespace Api.Socioboard.Services
     [ScriptService]
     public class FbPagePost : System.Web.Services.WebService
     {
-
+        FbPagePostRepository objFbPagePostRepository = new FbPagePostRepository();
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetPostDetails(string postid)
@@ -28,8 +28,6 @@ namespace Api.Socioboard.Services
             try
             {
                 Guid id = Guid.Parse(postid);
-                FbPagePostRepository objFbPagePostRepository = new FbPagePostRepository();
-
                 Domain.Socioboard.Domain.FbPagePost lstfbmsgs = objFbPagePostRepository.GetPostDetails(id);
                 return new JavaScriptSerializer().Serialize(lstfbmsgs);
             }
@@ -60,5 +58,40 @@ namespace Api.Socioboard.Services
             }
 
         }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public bool IsPostExist(string jdata)
+        {
+            Domain.Socioboard.Domain.FbPagePost _FbPagePost = (Domain.Socioboard.Domain.FbPagePost)new JavaScriptSerializer().Deserialize((jdata), typeof(Domain.Socioboard.Domain.FbPagePost));
+            return objFbPagePostRepository.IsPostExist(_FbPagePost);
+        }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public bool AddPostDetails(string jdata)
+        {
+            try
+            {
+
+                Domain.Socioboard.Domain.FbPagePost _FbPagePost = (Domain.Socioboard.Domain.FbPagePost)new JavaScriptSerializer().Deserialize((jdata), typeof(Domain.Socioboard.Domain.FbPagePost));
+                objFbPagePostRepository.addFbPagePost(_FbPagePost);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace);
+                return false;
+            }
+        }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public int UpdateFbPagePostStatus(string jdata)
+        {
+            Domain.Socioboard.Domain.FbPagePost _FbPagePost = (Domain.Socioboard.Domain.FbPagePost)new JavaScriptSerializer().Deserialize((jdata), typeof(Domain.Socioboard.Domain.FbPagePost));
+            int i = objFbPagePostRepository.UpdateFbPagePostStatus(_FbPagePost);
+            return i;
+        }
+
+
     }
 }

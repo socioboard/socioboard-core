@@ -32,6 +32,9 @@
     <property name="ReadStatus">
       <column name="ReadStatus"  />
     </property>
+    <property name="TaskMessageDate">
+      <column name="TaskMessageDate"  />
+    </property>
     
 
   </class>

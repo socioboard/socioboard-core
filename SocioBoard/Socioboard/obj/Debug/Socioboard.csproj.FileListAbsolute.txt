@@ -206,58 +206,60 @@ D:\Suresh\SB Update 29-10-2014\SB Update 29-10-2014\trunk\trunk\Socioboard\bin\D
 D:\Suresh\SB Update 29-10-2014\SB Update 29-10-2014\trunk\trunk\Socioboard\obj\Debug\Socioboard.csprojResolveAssemblyReference.cache
 D:\Suresh\SB Update 29-10-2014\SB Update 29-10-2014\trunk\trunk\Socioboard\obj\Debug\Socioboard.dll
 D:\Suresh\SB Update 29-10-2014\SB Update 29-10-2014\trunk\trunk\Socioboard\obj\Debug\Socioboard.pdb
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\Socioboard.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\Socioboard.pdb
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\Antlr3.Runtime.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\Domain.Socioboard.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\DotNetOpenAuth.AspNet.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\DotNetOpenAuth.Core.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\DotNetOpenAuth.OAuth.Consumer.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\DotNetOpenAuth.OAuth.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\DotNetOpenAuth.OpenId.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\EntityFramework.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\Facebook.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\log4net.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\Microsoft.Web.Infrastructure.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\Microsoft.Web.WebPages.OAuth.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\Newtonsoft.Json.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\Recaptcha.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\Recaptcha.Web.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\System.Net.Http.Formatting.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\System.Web.Helpers.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\System.Web.Http.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\System.Web.Http.WebHost.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\System.Web.Mvc.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\System.Web.Optimization.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\System.Web.Razor.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\System.Web.WebPages.Deployment.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\System.Web.WebPages.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\System.Web.WebPages.Razor.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\WebGrease.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\WebMatrix.Data.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\WebMatrix.WebData.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\Domain.Socioboard.pdb
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\EntityFramework.xml
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\Newtonsoft.Json.xml
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\System.Net.Http.Formatting.xml
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\System.Web.Helpers.xml
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\System.Web.Http.xml
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\System.Web.Http.WebHost.xml
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\System.Web.Mvc.xml
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\System.Web.Razor.xml
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\System.Web.WebPages.xml
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\System.Web.WebPages.Deployment.xml
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\System.Web.WebPages.Razor.xml
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\WebMatrix.Data.xml
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\Microsoft.Web.WebPages.OAuth.xml
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\WebMatrix.WebData.xml
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\DotNetOpenAuth.AspNet.xml
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\DotNetOpenAuth.Core.xml
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\DotNetOpenAuth.OAuth.Consumer.xml
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\DotNetOpenAuth.OAuth.xml
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\DotNetOpenAuth.OpenId.xml
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\obj\Debug\Socioboard.csprojResolveAssemblyReference.cache
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\obj\Debug\Socioboard.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Socioboard\obj\Debug\Socioboard.pdb
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\Socioboard.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\Socioboard.pdb
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\Antlr3.Runtime.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\Domain.Socioboard.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\DotNetOpenAuth.AspNet.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\DotNetOpenAuth.Core.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\DotNetOpenAuth.OAuth.Consumer.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\DotNetOpenAuth.OAuth.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\DotNetOpenAuth.OpenId.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\EntityFramework.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\Facebook.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\GlobusInstagramLib.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\GlobusLinkedinLib.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\GlobusTwitterLib.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\log4net.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\Microsoft.Web.WebPages.OAuth.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\Newtonsoft.Json.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\Recaptcha.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\Recaptcha.Web.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\System.Web.Helpers.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\System.Web.Mvc.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\System.Web.Optimization.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\System.Web.Razor.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\System.Web.WebPages.Deployment.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\System.Web.WebPages.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\System.Web.WebPages.Razor.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\WebGrease.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\WebMatrix.Data.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\WebMatrix.WebData.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\OAuth.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\Domain.Socioboard.pdb
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\GlobusInstagramLib.pdb
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\GlobusLinkedinLib.pdb
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\GlobusTwitterLib.pdb
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\EntityFramework.xml
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\Newtonsoft.Json.xml
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\System.Web.Helpers.xml
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\System.Web.Mvc.xml
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\System.Web.Razor.xml
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\System.Web.WebPages.xml
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\System.Web.WebPages.Deployment.xml
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\System.Web.WebPages.Razor.xml
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\WebMatrix.Data.xml
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\Microsoft.Web.WebPages.OAuth.xml
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\WebMatrix.WebData.xml
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\DotNetOpenAuth.AspNet.xml
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\DotNetOpenAuth.Core.xml
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\DotNetOpenAuth.OAuth.Consumer.xml
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\DotNetOpenAuth.OAuth.xml
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\DotNetOpenAuth.OpenId.xml
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\obj\Debug\Socioboard.csprojResolveAssemblyReference.cache
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\obj\Debug\Socioboard.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\obj\Debug\Socioboard.pdb
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Socioboard\bin\Facebook.xml

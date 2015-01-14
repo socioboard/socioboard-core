@@ -627,16 +627,16 @@
   </wsdl:binding>
   <wsdl:service name="Tumblr">
     <wsdl:port name="TumblrSoap" binding="tns:TumblrSoap">
-      <soap:address location="http://localhost:6361/Services/Tumblr.asmx" />
+      <soap:address location="http://devapi.socioboard.com/Services/Tumblr.asmx" />
     </wsdl:port>
     <wsdl:port name="TumblrSoap12" binding="tns:TumblrSoap12">
-      <soap12:address location="http://localhost:6361/Services/Tumblr.asmx" />
+      <soap12:address location="http://devapi.socioboard.com/Services/Tumblr.asmx" />
     </wsdl:port>
     <wsdl:port name="TumblrHttpGet" binding="tns:TumblrHttpGet">
-      <http:address location="http://localhost:6361/Services/Tumblr.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/Tumblr.asmx" />
     </wsdl:port>
     <wsdl:port name="TumblrHttpPost" binding="tns:TumblrHttpPost">
-      <http:address location="http://localhost:6361/Services/Tumblr.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/Tumblr.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

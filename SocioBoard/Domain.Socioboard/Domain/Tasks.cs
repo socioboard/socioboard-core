@@ -16,6 +16,7 @@ namespace Domain.Socioboard.Domain
         public string AssignDate { get; set; }
         public DateTime CompletionDate { get; set; }
         public int ReadStatus { get; set; }
+        public DateTime TaskMessageDate { get; set; }
     }
     public class TaskByUser
     {

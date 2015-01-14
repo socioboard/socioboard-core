@@ -111,11 +111,19 @@
                          <li>
                             <a href="../Home/Training" target="">Training</a>
                         </li>
-                        <li>
+                       @* <li>
                             <a href="../Index/contact" target="">Contact Us</a>
+                        </li>*@
+                         <li>
+                            <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal" onclick=" SetUser();" style="margin-top: 10px;">LOGIN</button>
                         </li>
                         <li>
-                            <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal" onclick=" SetUser();" style="margin-top: 10px;">LOGIN</button>
+                            <form action="/Company" id="Companydashboard" class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input type="text" name="q" class="form-control" placeholder="Search your company here... " style="border-radius: 15px; width: 225px; padding: 0px 5px;" />
+    <button class="global-nav__search-button" type="submit"><div  class="icon fa fa-search fa-fw global-nav__search-icon"></div></button>
+  </div>
+</form>
                         </li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
@@ -271,6 +279,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#txtPassword").bind("keydown", function (event) {
+                debugger;
                 var keycode = (event.keyCode ? event.keyCode : (event.which ? event.which : event.charCode));
                 if (keycode == 13) {
                     signinFunction();
@@ -327,8 +336,7 @@
 
     <script type="text/javascript">
         //Added By Vikash
-        function SetUser()
-        {
+        function SetUser() {
             debugger;
             var currentcookie = GetAllCookies().split('=');
             var email = currentcookie[0].trim();
@@ -345,9 +353,10 @@
         function retpwd() {
             debugger;
             var email = $("#txtEmail").val();
-            if (email != "") {
+            var pwd = getCookie("logininfo" + email.trim());
+            if (email != "" && pwd != "") {
                 $("#RememberMe").prop('checked', true);
-                var pwd = getCookie("logininfo"+email.trim());
+                //var pwd = getCookie("logininfo"+email.trim());
                 document.getElementById("txtPassword").value = pwd;
             }
         }
@@ -360,7 +369,7 @@
 
         $(document).ready(function () {
             //--login script here
-           
+
             $('#login').click(function () {
                 document.getElementById('signinemailMessages').innerHTML = "";
                 document.getElementById('signinpasswordMessages').innerHTML = "";
@@ -406,16 +415,16 @@
     </script>
 
     <!-- ClickDesk Live Chat Service for websites -->
-<script type='text/javascript'>
-    var _glc = _glc || []; _glc.push('all_ag9zfmNsaWNrZGVza2NoYXRyDwsSBXVzZXJzGOqp7qkBDA');
-    var glcpath = (('https:' == document.location.protocol) ? 'https://my.clickdesk.com/clickdesk-ui/browser/' :
-    'http://my.clickdesk.com/clickdesk-ui/browser/');
-    var glcp = (('https:' == document.location.protocol) ? 'https://' : 'http://');
-    var glcspt = document.createElement('script'); glcspt.type = 'text/javascript';
-    glcspt.async = true; glcspt.src = glcpath + 'livechat-new.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(glcspt, s);
-</script>
-<!-- End of ClickDesk -->
+    <script type='text/javascript'>
+        var _glc = _glc || []; _glc.push('all_ag9zfmNsaWNrZGVza2NoYXRyDwsSBXVzZXJzGOqp7qkBDA');
+        var glcpath = (('https:' == document.location.protocol) ? 'https://my.clickdesk.com/clickdesk-ui/browser/' :
+        'http://my.clickdesk.com/clickdesk-ui/browser/');
+        var glcp = (('https:' == document.location.protocol) ? 'https://' : 'http://');
+        var glcspt = document.createElement('script'); glcspt.type = 'text/javascript';
+        glcspt.async = true; glcspt.src = glcpath + 'livechat-new.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(glcspt, s);
+    </script>
+    <!-- End of ClickDesk -->
 
     <!-- jQuery Version 1.11.0 -->
     <script src="~/Themes/@path/Contents/js/jquery-1.11.0.js"></script>
@@ -470,6 +479,24 @@
             });
         });
     </script>
+            <!-- Start of StatCounter Code for Default Guide -->
+            <script type="text/javascript">
+                var sc_project = 9930597;
+                var sc_invisible = 1;
+                var sc_security = "3850c63d";
+                var scJsHost = (("https:" == document.location.protocol) ?
+                "https://secure." : "http://www.");
+                document.write("<sc" + "ript type='text/javascript' src='" +
+                scJsHost +
+                "statcounter.com/counter/counter.js'></" + "script>");
+            </script>
+            <noscript><div class="statcounter"><a title="web stats"
+            href="http://statcounter.com/" target="_blank"><img
+            class="statcounter"
+            src="http://c.statcounter.com/9930597/0/3850c63d/1/"
+            alt="web stats"></a></div></noscript>
+            <!-- End of StatCounter Code for Default Guide -->
+
 </body>
 
 </html>

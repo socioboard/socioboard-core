@@ -37,6 +37,7 @@
 <script type="text/javascript">
 
     function bindmanageServices() {
+        $('#SchedulingDetailsDataTable').html('<center><img src="../Themes/Socioboard/Contents/img/admin/loading.gif" /></center>');
         $.ajax({
             type: 'POST',
             url: '../Services/LoadShedulingDetails',

@@ -229,6 +229,7 @@
         $('#scheduledmsg a').addClass('active');
         $('#scheduleddate').datepicker({
             multidate: true,
+            format:"dd/mm/yyyy",
             todayHighlight: true,
             startDate: 'd',
             clearBtn: true
@@ -239,10 +240,139 @@
         });
         bindcomposemessage();
 
+        
+        //$('#scheduled').click(function () {
+        //    debugger;
+        //    var curdate = new Date();
+        //    var now = (curdate.getMonth() + 1) + "/" + curdate.getDate() + "/" + curdate.getFullYear() + " " + curdate.getHours() + ":" + curdate.getMinutes() + ":" + (curdate.getSeconds() < 10 ? '0' + curdate.getSeconds() : curdate.getSeconds());
+        //    var fd = new FormData();
+        //    var filesimage = document.getElementById('scheduleimageupload').files[0];
+        //    if (filesimage != null) {
+        //        fd.append('file', filesimage);
+        //    }
+        //    var scheduledmessage = $('#txtscheduled').val();
+        //    var scheduleddate = $('#scheduleddate').val();
+        //    var scheduledtime = $('#scheduledtime').val();
+        //    var allprofiles = '';
+        //    if (scheduledmessage == "") {
+        //        alertify.set({ delay: 1000 });
+        //        alertify.error('Please Enter a message ');
+        //        return false;
+        //    }
+        //    if (scheduleddate == "") {
+        //        alertify.set({ delay: 1000 });
+        //        alertify.error('Please Select a Date');
+        //        return false;
+        //    }
+        //    if (scheduledtime == "") {
+        //        alertify.set({ delay: 1000 });
+        //        alertify.error('Please Select a Time');
+        //        return false;
+        //    }
+        //    if (arrbinduser.length < 1) {
+        //        alertify.set({ delay: 1000 });
+        //        alertify.error('Please Select Profiles to Scheduled a message');
+        //        return false;
+        //    }
+        //    for (var i = 0; i < arrbinduser.length; i++) {
+        //        allprofiles += arrbinduser[i] + "<:>";
+        //    }
+
+
+
+        //    for (var i = 0; i < arrbinduser.length; i++) {
+        //        var account = arrbinduser[i];
+        //        var strarray = account.split('~');
+        //        var ProfileType = strarray[1];
+        //        if (ProfileType == 'facebook') {
+        //            if (scheduledmessage.length > 5000) {
+        //                alertify.error("Facebook Not Support more than 5000 characters");
+        //                return;
+        //            }
+        //        }
+        //        if (ProfileType == 'twitter') {
+        //            if (scheduledmessage.length > 140) {
+        //                alertify.error("Twitter Not Support more than 140 characters");
+        //                return;
+        //            }
+        //        }
+        //        if (ProfileType == 'linkedin') {
+        //            if (scheduledmessage.length > 600) {
+        //                alertify.error("Linkedin Not Support more than 600 characters");
+        //                return;
+        //            }
+        //        }
+
+        //    }
+
+
+        //    allprofiles = allprofiles.substr(0, allprofiles.length - 3);
+
+        //    $.ajax({
+        //        type: 'POST',
+        //        url: '../Publishing/ScheduledMessage?scheduledmessage=' + scheduledmessage + '&scheduleddate=' + scheduleddate + '&scheduledtime=' + scheduledtime + '&profiles=' + allprofiles + '&clienttime=' + now,
+        //        data: fd,
+        //        processData: false,
+        //        contentType: false,
+        //        success: function (msg) {
+        //            $('#scheduleddate').datepicker('setDate', null);
+        //            $('#txtscheduled').val('');
+        //            $('#scheduleddate').val('');
+        //            $('#scheduledtime').val('');
+        //            alertify.set({ delay: 1000 });
+        //            alertify.success('Message Scheduled Successfully');
+        //            arrbinduser = [];
+
+        //            $('.bindprof').hide(1000, function () {
+        //                $('#bindcomposescheduledprofiles').html('');
+        //                $('#MessageCount').html('');
+        //            });
+        //        }
+        //    });
+
+        //});
+
         $('#scheduled').click(function () {
             debugger;
             var curdate = new Date();
-            var now = (curdate.getMonth() + 1) + "/" + curdate.getDate() + "/" + curdate.getFullYear() + " " + curdate.getHours() + ":" + curdate.getMinutes() + ":" + (curdate.getSeconds() < 10 ? '0' + curdate.getSeconds() : curdate.getSeconds());
+            var dd = curdate.getDate();
+            if (dd < 10) {
+                dd = '0' + dd
+            }
+            else {
+                dd = curdate.getDate();
+            }
+            var mm = curdate.getMonth() + 1;
+            if (mm < 10) {
+                mm = '0' + mm
+            }
+            else {
+                mm = curdate.getMonth() + 1;
+            }
+            var hh = curdate.getHours();
+            if (hh < 10) {
+                hh = '0' + hh;
+            }
+            else {
+                hh = curdate.getHours();
+            }
+            var minm = curdate.getMinutes();
+            if (minm < 10) {
+                minm = '0' + minm;
+            }
+            else {
+                minm = curdate.getMinutes();
+            }
+            var sec = curdate.getSeconds();
+            if (sec < 10) {
+                sec = '0' + sec;
+            }
+            else {
+                sec = curdate.getSeconds();
+            }
+
+            //var now = (curdate.getMonth() + 1) + "/" + (curdate.getDate.length<1? '0' : '') +curdate.getDate() + "/" + curdate.getFullYear() + " " + curdate.getHours() + ":" + curdate.getMinutes() + ":" + (curdate.getSeconds() < 10 ? '0' + curdate.getSeconds() : curdate.getSeconds());
+            var now = mm + "/" + dd + "/" + curdate.getFullYear() + " " + hh + ":" + minm + ":" + sec;
             var fd = new FormData();
             var filesimage = document.getElementById('scheduleimageupload').files[0];
             if (filesimage != null) {
@@ -250,7 +380,27 @@
             }
             var scheduledmessage = $('#txtscheduled').val();
             var scheduleddate = $('#scheduleddate').val();
-            var scheduledtime = $('#scheduledtime').val();
+            var scheduledtime1 = $('#scheduledtime').val();
+            var scheduledtime2 = scheduledtime1.split(" ");
+            var scheduledtime3 = scheduledtime2[0] + ':00';
+            var schdd = scheduledtime3.split(":");
+            var shdd = schdd[0];
+            var shmin = schdd[1];
+            var shsec = schdd[2];
+            if (shdd < 10) {
+                shdd = '0' + shdd;
+            }
+            else {
+                shdd = schdd[0];
+            }
+            if (shmin < 10) {
+                //shmin = '0' + shmin;
+                shmin = shmin;
+            }
+            else {
+                shmin = schdd[1];
+            }
+            var scheduledtime = shdd + ":" + shmin + ":" + shsec;
             var allprofiles = '';
             if (scheduledmessage == "") {
                 alertify.set({ delay: 1000 });
@@ -275,9 +425,6 @@
             for (var i = 0; i < arrbinduser.length; i++) {
                 allprofiles += arrbinduser[i] + "<:>";
             }
-
-
-
             for (var i = 0; i < arrbinduser.length; i++) {
                 var account = arrbinduser[i];
                 var strarray = account.split('~');
@@ -300,12 +447,8 @@
                         return;
                     }
                 }
-
             }
-
-
             allprofiles = allprofiles.substr(0, allprofiles.length - 3);
-
             $.ajax({
                 type: 'POST',
                 url: '../Publishing/ScheduledMessage?scheduledmessage=' + scheduledmessage + '&scheduleddate=' + scheduleddate + '&scheduledtime=' + scheduledtime + '&profiles=' + allprofiles + '&clienttime=' + now,

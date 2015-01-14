@@ -162,7 +162,7 @@ namespace Api.Socioboard.Services
             }
         }
 
-        public Domain.Socioboard.Domain.BusinessSetting IsNotificationTaskEnable(Guid groupId)
+        public Domain.Socioboard.Domain.BusinessSetting GetDetailsofBusinessOwner(Guid groupId)
         {
             // bool flag = 0;
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -172,6 +172,33 @@ namespace Api.Socioboard.Services
 
 
                     List<Domain.Socioboard.Domain.BusinessSetting> lstdetails = session.CreateQuery("from BusinessSetting where groupId=:groupId")
+                        .SetParameter("groupId", groupId).List<Domain.Socioboard.Domain.BusinessSetting>().ToList<Domain.Socioboard.Domain.BusinessSetting>();
+
+                    Domain.Socioboard.Domain.BusinessSetting objBsnsStng = new Domain.Socioboard.Domain.BusinessSetting();
+                    if (lstdetails.Count > 0)
+                    {
+                        objBsnsStng = lstdetails[0];
+                    }
+                    else {
+                        objBsnsStng = null;
+                    }
+                    return objBsnsStng;
+
+
+                }
+            }
+        }
+
+        public Domain.Socioboard.Domain.BusinessSetting IsNotificationTaskEnable(Guid groupId)
+        {
+            // bool flag = 0;
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+
+
+                    List<Domain.Socioboard.Domain.BusinessSetting> lstdetails = session.CreateQuery("from BusinessSetting where GroupId=:groupId")
                         .SetParameter("groupId", groupId).List<Domain.Socioboard.Domain.BusinessSetting>().ToList<Domain.Socioboard.Domain.BusinessSetting>();
 
                     Domain.Socioboard.Domain.BusinessSetting objBsnsStng = lstdetails[0];

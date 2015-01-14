@@ -180,7 +180,8 @@ else
 
             $('#btnUserFeeds').click(function () {
                 // alert("Userfeed");
-                FacebookUserFeeds();
+                var nwtid = $('#refreshpanel2').attr('nwtid');
+                FacebookUserFeeds(nwtid);
             });
 
             $('#btnStatus').click(function () {

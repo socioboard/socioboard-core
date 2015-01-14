@@ -212,6 +212,7 @@ function savetask() {
                 contentType: "application/json; charset=utf-8",
                 dataType: "html",
                 success: function (msg) {
+                   // jQuery.noConflict();
                     $("#popupchk").bPopup().close();
                     $("#txttaskcomment").val() = "";
                     $("input[type='radio']:checked").val() = "";

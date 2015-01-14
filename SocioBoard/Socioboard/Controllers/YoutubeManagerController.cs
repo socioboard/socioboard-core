@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using log4net;
 using Socioboard.App_Start;
+using System.Web.Security;
 
 namespace Socioboard.Controllers
 {
@@ -39,6 +40,29 @@ namespace Socioboard.Controllers
                     if (checkuserexist != null)
                     {
                         Session["User"] = checkuserexist;
+                        int daysremaining = 0;
+
+                        daysremaining = (checkuserexist.ExpiryDate.Date - DateTime.Now.Date).Days;
+                        if (daysremaining > 0)
+                        {
+                            #region Count Used Accounts
+                            try
+                            {
+                                Session["Paid_User"] = "Paid";
+                                Api.SocialProfile.SocialProfile apiobjSocialProfile = new Api.SocialProfile.SocialProfile();
+                                Session["ProfileCount"] = Convert.ToInt32(apiobjSocialProfile.GetAllSocialProfilesOfUserCount(objUser.Id.ToString()).ToString());
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.Message);
+                            }
+                            #endregion
+                        }
+                        else
+                        {
+                            Session["Paid_User"] = "Unpaid";
+                        }
+                        FormsAuthentication.SetAuthCookie(objUser.UserName, false);
                         return RedirectToAction("Index", "Home");
                     }
                     else

@@ -664,7 +664,7 @@ namespace Api.Socioboard.Services
                 {
                     try
                     {
-                        string str = "from FacebookMessage where ProfileId IN(";
+                        string str = "from FacebookMessage  where ProfileId IN(";
                         string[] arrsrt = profileid.Split(',');
                         foreach (string sstr in arrsrt)
                         {
@@ -675,6 +675,8 @@ namespace Api.Socioboard.Services
                         List<Domain.Socioboard.Domain.FacebookMessage> alst = session.CreateQuery(str)
                        .List<Domain.Socioboard.Domain.FacebookMessage>()
                        .ToList<Domain.Socioboard.Domain.FacebookMessage>();
+                        alst = alst.GroupBy(m => m.MessageId).Select(a=>a.First()).ToList();
+
                         return alst;
 
                     }
@@ -958,6 +960,38 @@ namespace Api.Socioboard.Services
                         return null;
                     }
 
+                }//End Transaction
+            }//End Session
+        }
+
+        public List<Domain.Socioboard.Domain.FacebookMessage> GetAllFacebookMessageForArchive(string profileid, Guid userid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        string str = "from FacebookMessage where UserId=:userid and ProfileId IN(";
+                        string[] arrsrt = profileid.Split(',');
+                        foreach (string sstr in arrsrt)
+                        {
+                            str += "'" + sstr + "'" + ",";
+                        }
+                        str = str.Substring(0, str.Length - 1);
+                        str += ") order by CreatedDateTime desc";
+                        List<Domain.Socioboard.Domain.FacebookMessage> alst = session.CreateQuery(str).SetParameter("userid", userid)
+                        .List<Domain.Socioboard.Domain.FacebookMessage>()
+                        .ToList<Domain.Socioboard.Domain.FacebookMessage>();
+                        return alst;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
                 }//End Transaction
             }//End Session
         }

@@ -28,7 +28,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
         /// <DeleteGroupProfile>
         /// Delete a group profile of user by profile id , group id and profile id.
         /// </summary>
@@ -95,7 +94,6 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-
         /// <UpdateGroupProfile>
         /// Update the details of group profile
         /// </summary>
@@ -124,7 +122,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-
 
         /// <getAllGroupProfiles>
         /// Get all group profiles details by user id and group id  
@@ -160,8 +157,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-
-
 
         /// <checkGroupProfileExists>
         /// Check the existing group profile
@@ -200,8 +195,6 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
-
-
 
         /// <DeleteGroupProfileByUserid>
         /// Delete group profile by userid
@@ -268,7 +261,73 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+        // Edited by Antima[20/12/2014]
 
+        public bool checkProfileExistsingroup(Guid groupid, string profileid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to find profile is exist or not.
+                        NHibernate.IQuery query = session.CreateQuery("from GroupProfile where GroupId = :id and ProfileId =:profileid");
+                        query.SetParameter("id", groupid);
+                        query.SetParameter("profileid", profileid);
+                        var result = query.UniqueResult();
+                        if (result == null)
+                            return false;
+                        else
+                            return true;
 
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return true;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+        /// <checkGroupProfileExists>
+        /// Check the existing group profile
+        /// </summary>
+        /// <param name="userid">Id of user(Guid)</param>
+        /// <param name="groupid">Id of Group(Guid)</param>
+        /// <param name="profileid">Id of profile(String)</param>
+        /// <returns>Bool(True or False).</returns>
+        public bool checkUserGroupExists(Guid userid, Guid groupid)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to find profile is exist or not.
+                        NHibernate.IQuery query = session.CreateQuery("from GroupProfile where GroupOwnerId = :userid and GroupId = :id");
+                        query.SetParameter("id", groupid);
+                        query.SetParameter("userid", userid);
+                        var result = query.UniqueResult();
+                        if (result == null)
+                            return false;
+                        else
+                            return true;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return true;
+                    }
+                }//End Transaction
+            }//End Session
+        }
     }
 }

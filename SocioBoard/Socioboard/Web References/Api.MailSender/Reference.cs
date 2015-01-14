@@ -45,6 +45,8 @@ namespace Socioboard.Api.MailSender {
         
         private System.Threading.SendOrPostCallback SendAddNewsLatterMailOperationCompleted;
         
+        private System.Threading.SendOrPostCallback SendTaskNotificationMailOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -106,6 +108,9 @@ namespace Socioboard.Api.MailSender {
         
         /// <remarks/>
         public event SendAddNewsLatterMailCompletedEventHandler SendAddNewsLatterMailCompleted;
+        
+        /// <remarks/>
+        public event SendTaskNotificationMailCompletedEventHandler SendTaskNotificationMailCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SendMail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -408,6 +413,39 @@ namespace Socioboard.Api.MailSender {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SendTaskNotificationMail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string SendTaskNotificationMail(string emailId, string mailBody, string Subject) {
+            object[] results = this.Invoke("SendTaskNotificationMail", new object[] {
+                        emailId,
+                        mailBody,
+                        Subject});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SendTaskNotificationMailAsync(string emailId, string mailBody, string Subject) {
+            this.SendTaskNotificationMailAsync(emailId, mailBody, Subject, null);
+        }
+        
+        /// <remarks/>
+        public void SendTaskNotificationMailAsync(string emailId, string mailBody, string Subject, object userState) {
+            if ((this.SendTaskNotificationMailOperationCompleted == null)) {
+                this.SendTaskNotificationMailOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSendTaskNotificationMailOperationCompleted);
+            }
+            this.InvokeAsync("SendTaskNotificationMail", new object[] {
+                        emailId,
+                        mailBody,
+                        Subject}, this.SendTaskNotificationMailOperationCompleted, userState);
+        }
+        
+        private void OnSendTaskNotificationMailOperationCompleted(object arg) {
+            if ((this.SendTaskNotificationMailCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SendTaskNotificationMailCompleted(this, new SendTaskNotificationMailCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -621,6 +659,32 @@ namespace Socioboard.Api.MailSender {
         private object[] results;
         
         internal SendAddNewsLatterMailCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void SendTaskNotificationMailCompletedEventHandler(object sender, SendTaskNotificationMailCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SendTaskNotificationMailCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SendTaskNotificationMailCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

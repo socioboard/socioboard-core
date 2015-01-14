@@ -397,14 +397,15 @@ namespace Socioboard.Helper
                 }
 
                
-                List<FacebookFeed> alstfbmsgs = (List<FacebookFeed>)new JavaScriptSerializer().Deserialize(objApiFacebookFeed.getAllFeedDetail(fbProfileid), typeof(List<FacebookFeed>));
+                //List<FacebookFeed> alstfbmsgs = (List<FacebookFeed>)new JavaScriptSerializer().Deserialize(objApiFacebookFeed.getAllFeedDetail(fbProfileid), typeof(List<FacebookFeed>));
+                List<FacebookMessage> alstfbmsgs = (List<FacebookMessage>)new JavaScriptSerializer().Deserialize(objApiFacebookMessage.GetAllMessageDetail(fbProfileid),typeof(List<FacebookMessage>));
                 try
                 {
-                    foreach (FacebookFeed facebookmsg in alstfbmsgs)
+                    foreach (FacebookMessage facebookmsg in alstfbmsgs)
                     {
                         try
                         {
-                            ds.Tables[0].Rows.Add(facebookmsg.ProfileId, "facebook", facebookmsg.FromId, facebookmsg.FromName, facebookmsg.FromProfileUrl, facebookmsg.FeedDate, facebookmsg.FeedDescription, facebookmsg.FbComment, facebookmsg.FbLike, facebookmsg.FeedId, facebookmsg.Type, facebookmsg.ReadStatus);
+                           ds.Tables[0].Rows.Add(facebookmsg.ProfileId, "facebook", facebookmsg.FromId, facebookmsg.FromName, facebookmsg.FromProfileUrl, facebookmsg.MessageDate, facebookmsg.Message, facebookmsg.FbComment, facebookmsg.FbLike, facebookmsg.MessageId, facebookmsg.Type);
                         }
                         catch (Exception ex)
                         {
@@ -443,6 +444,45 @@ namespace Socioboard.Helper
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
+            }
+            return ds;
+        }
+
+        // Edited by Antima[20/12/2014]
+
+        public DataSet bindMyTickets(Guid UserId)
+        {
+            Messages mstable = new Messages();
+            DataSet ds = DataTableGenerator.CreateDataSetForTable(mstable);
+            Api.SentimentalAnalysis.SentimentalAnalysis ApiobjSentimentalAnalysis = new Api.SentimentalAnalysis.SentimentalAnalysis();
+            List<Domain.Socioboard.Domain.FeedSentimentalAnalysis> lstNegativeFeedsOfUser = new List<Domain.Socioboard.Domain.FeedSentimentalAnalysis>();
+
+            lstNegativeFeedsOfUser = (List<Domain.Socioboard.Domain.FeedSentimentalAnalysis>)(new JavaScriptSerializer().Deserialize(ApiobjSentimentalAnalysis.getNegativeFeedsOfUser(UserId.ToString()), typeof(List<Domain.Socioboard.Domain.FeedSentimentalAnalysis>)));
+            if (lstNegativeFeedsOfUser != null)
+            {
+                foreach (var item in lstNegativeFeedsOfUser)
+                {
+
+                    string Network = item.Network;
+                    if (Network == "facebook")
+                    {
+                        Api.FacebookFeed.FacebookFeed ApiobjFacebookFeed = new Api.FacebookFeed.FacebookFeed();
+                        Domain.Socioboard.Domain.FacebookFeed facebookfeed = (Domain.Socioboard.Domain.FacebookFeed)(new JavaScriptSerializer().Deserialize(ApiobjFacebookFeed.getFacebookFeedByProfileId(item.ProfileId, item.FeedId), typeof(Domain.Socioboard.Domain.FacebookFeed)));
+                        if (facebookfeed != null)
+                        {
+                            ds.Tables[0].Rows.Add(facebookfeed.ProfileId, "facebook", facebookfeed.FromId, facebookfeed.FromName, facebookfeed.FromProfileUrl, facebookfeed.FeedDate, facebookfeed.FeedDescription, facebookfeed.FbComment, facebookfeed.FbLike, facebookfeed.FeedId, facebookfeed.Type, "");
+                        }
+                    }
+                    if (Network == "twitter")
+                    {
+                        Api.TwitterFeed.TwitterFeed ApiobjTwitterFeed = new Api.TwitterFeed.TwitterFeed();
+                        Domain.Socioboard.Domain.TwitterFeed twtfeed = (Domain.Socioboard.Domain.TwitterFeed)(new JavaScriptSerializer().Deserialize(ApiobjTwitterFeed.getTwitterFeedByProfileId(item.ProfileId, item.FeedId), typeof(Domain.Socioboard.Domain.TwitterFeed)));
+                        if (twtfeed != null)
+                        {
+                            ds.Tables[0].Rows.Add(twtfeed.ProfileId, item.Network, twtfeed.FromId, twtfeed.FromScreenName, twtfeed.FromProfileUrl, twtfeed.FeedDate, twtfeed.Feed, "", "", twtfeed.MessageId, twtfeed.Type, "");
+                        }
+                    }
+                } 
             }
             return ds;
         }

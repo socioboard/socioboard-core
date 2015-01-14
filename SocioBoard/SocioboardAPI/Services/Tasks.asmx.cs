@@ -274,7 +274,7 @@ namespace Api.Socioboard.Services
 
         //addTask
         [WebMethod]
-        public void AddNewTaskWithGroup(string description, string userid, Domain.Socioboard.Domain.Tasks task, string assigntoId, string comment, string AssignDate, string groupid)
+        public void AddNewTaskWithGroup(string description,string messagedate, string userid, Domain.Socioboard.Domain.Tasks task, string assigntoId, string comment, string AssignDate, string groupid)
         {
             string descritption = description;
             Guid idtoassign = Guid.Empty;
@@ -286,6 +286,7 @@ namespace Api.Socioboard.Services
             objTask.AssignTaskTo = idtoassign;
             objTask.TaskStatus = false;
             objTask.TaskMessage = descritption;
+            objTask.TaskMessageDate = DateTime.Parse(messagedate);
             objTask.UserId = Guid.Parse(userid);
             Guid taskid = Guid.NewGuid();
             objTask.Id = taskid;
@@ -326,6 +327,29 @@ namespace Api.Socioboard.Services
                 TaskRepository objTaskRepo = new TaskRepository();
                 objTaskRepo.updateTaskStatus(taskid, Guid.Parse(UserId), status);
                 ret = "Success";
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.StackTrace);
+                ret = "Fail";
+            }
+            return new JavaScriptSerializer().Serialize(ret);
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string DeleteTask(string TaskId)
+        {
+            string ret = string.Empty;
+            try
+            {
+                TaskRepository objTaskRepo = new TaskRepository();
+                int res= objTaskRepo.deleteTask(Guid.Parse(TaskId));
+                TaskCommentRepository ObjTaskcomentRepo = new TaskCommentRepository();
+                int i = ObjTaskcomentRepo.DeleteTaskCommentByTaskId(Guid.Parse(TaskId));
+
+                    ret = "Success";
             }
             catch (Exception ex)
             {

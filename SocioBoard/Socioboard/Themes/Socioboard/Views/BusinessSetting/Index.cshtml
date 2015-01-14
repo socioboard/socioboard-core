@@ -1,0 +1,298 @@
+﻿@{
+    string Message = ViewBag.DefaultFroup;
+    string DefaultMessage = null;
+
+    if (Message == null || Message == "")
+    {
+
+
+        Guid GroupId = Guid.Parse(Session["group"].ToString());
+        Socioboard.Api.Groups.Groups ApiobjGroup = new Socioboard.Api.Groups.Groups();
+        Domain.Socioboard.Domain.Groups ObjGroup = (Domain.Socioboard.Domain.Groups)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjGroup.GetGroupDetailsByGroupId(GroupId.ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+        Domain.Socioboard.Domain.User ObjUser = (Domain.Socioboard.Domain.User)Session["User"];
+        Socioboard.Api.BusinessSetting.BusinessSetting ApiobjBusinessSetting = new Socioboard.Api.BusinessSetting.BusinessSetting();
+        Domain.Socioboard.Domain.BusinessSetting ObjBusinessSetting = (Domain.Socioboard.Domain.BusinessSetting)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjBusinessSetting.GetDetailsofBusinessOwner(ObjGroup.Id.ToString()), typeof(Domain.Socioboard.Domain.BusinessSetting)));
+        if (ObjBusinessSetting != null)
+        {
+            
+        
+    @:<div style="min-height: 382px;" id="page-wrapper">
+<div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"></h1>
+            </div>
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @ObjBusinessSetting.BusinessName
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <!-- Nav tabs -->
+
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="Personal">
+
+                                <div class="col-md-6">
+                                    <form role="form" class="form-horizontal">
+                                            <label for="username-email">Buisness Name</label><span class="pull-right text-danger">*</span>
+                                             <div class="form-group">
+                                            @{
+            if (ObjGroup.UserId == ObjUser.Id)
+            {
+                                                    <input id="txtBuisnessName" value="@ObjBusinessSetting.BusinessName" type="text" class="form-control" placeholder="Enter News">
+                                                
+                                                
+                                            
+                                                         @:</div>
+                                                         @:<div class="form-group">
+                                                    <h3>Assigning Tasks</h3>
+                                                    <p> This setting will enable your users to assign tasks across groups and will make other group members visible. If you do not want users to assign tasks across groups, leave this setting "disabled". </p>
+
+                if (ObjBusinessSetting.AssigningTasks == true)
+                {
+                                                         <div class="col-md-5 pull-left">
+                                                        <input id="rdTaskDisable" name="chkasgntask"  value="" type="radio" class="">&nbsp;&nbsp;<label>Disabled</label>
+                                                        </div>
+                                                        <div class="pull-left">
+                                                        <input id="rdTaskEnable" name="chkasgntask" checked="checked" value="" type="radio" class="">&nbsp;&nbsp;<label>Enable cross-group assignments</label>
+                                                        </div>
+                }
+                else
+                {
+                                                        <div class="col-md-5 pull-left">
+                                                        <input id="rdTaskDisable" name="chkasgntask" checked="checked" value="" type="radio" class="">&nbsp;&nbsp;<label>Disabled</label>
+                                                        </div>
+                                                        <div class="pull-left">
+                                                        <input id="rdTaskEnable" name="chkasgntask"  value="" type="radio" class="">&nbsp;&nbsp;<label>Enable cross-group assignments</label>
+                                                            </div>
+                                                
+                }
+                                       
+                                            
+                                                    @:</div>
+
+
+                                                        @:<div class="form-group">
+                                                          <h3>Task Notification Emails</h3>
+                                                          <p> Socioboard alerts you & your team members via email on various activities.  </p>
+                                                
+                if (ObjBusinessSetting.TaskNotification == true)
+                {
+                                                        <div class="col-md-5 pull-left">
+                                                            <input id="rdTaskNotificationDisable" name="chknotify"  value="" type="radio" class="">&nbsp;&nbsp;<label>Disabled</label>
+                                                        </div>
+                                                        <div class="pull-left">
+                                                            <input id="rdTaskNotificationEnable" name="chknotify" checked="checked"  value="" type="radio" class="">&nbsp;&nbsp;<label>Enable Task Notifications</label>
+                                                        </div>
+                }
+                else
+                {
+                                                        <div class="col-md-5 pull-left">
+                                                            <input id="rdTaskNotificationDisable" name="chknotify" checked="checked"  value="" type="radio" class="">&nbsp;&nbsp;<lable>Disabled</lable>
+                                                        </div>
+                                                        <div class="pull-left">
+                                                            <input id="rdTaskNotificationEnable" name="chknotify"   value="" type="radio" class="">&nbsp;&nbsp;<label>Enable Task Notifications</label>
+                                                        </div>
+                }
+                                                    @:</div>
+
+                                        
+                                                <button onclick="UpdateBuisnessSetting('@ObjBusinessSetting.Id')"; id="UpdateBsnsSetng" type="button" class="btn btn-warning">Update Setting</button>
+
+            }
+            else
+            {
+                                                    <input id="txtBuisnessName" readonly="true" value="@ObjBusinessSetting.BusinessName" type="text" class="form-control" placeholder="Enter News">
+                                                
+                                                
+                                            
+                                                         @:</div>
+
+                                                         @:<div class="form-group">
+
+                                                
+                                                
+                                                    <h3>Assigning Tasks</h3>
+                                                    <p> This setting will enable your users to assign tasks across groups and will make other group members visible. If you do not want users to assign tasks across groups, leave this setting "disabled". </p>
+
+                if (ObjBusinessSetting.AssigningTasks == true)
+                {
+                                                         <div class="col-md-5 pull-left">
+                                                        <input id="rdTaskDisable"  name="chkasgntask" value="" type="radio" class="" disabled>&nbsp;&nbsp;<label>Disabled</label>
+                                                        </div>
+                                                        <div class="pull-left">
+                                                        <input id="rdTaskEnable" name="chkasgntask" checked="checked" value="" type="radio" class="" disabled>&nbsp;&nbsp;<label>Enable cross-group assignments</label>
+                                                        </div>
+                }
+                else
+                {
+                                                        <div class="col-md-5 pull-left">
+                                                        <input id="rdTaskDisable" name="chkasgntask" checked="checked" value="" type="radio" class="" disabled>&nbsp;&nbsp;<label>Disabled</label>
+                                                        </div>
+                                                        <div class="pull-left">
+                                                        <input id="rdTaskEnable"  name="chkasgntask" value="" type="radio" class="" disabled>&nbsp;&nbsp;<label>Enable cross-group assignments</label>
+                                                            </div>
+                                                
+                }
+                                       
+                                            
+                                                         @:</div>
+
+                                                         @:<div class="form-group">
+                                                          <h3>Task Notification Emails</h3>
+                                                          <p> Socioboard alerts you & your team members via email on various activities.  </p>
+                                                
+                if (ObjBusinessSetting.TaskNotification == true)
+                {
+                                                        <div class="col-md-5 pull-left">
+                                                            <input id="rdTaskNotificationDisable" name="chknotify"  value="" type="radio" class="" disabled>&nbsp;&nbsp;<label>Disabled</label>
+                                                        </div>
+                                                        <div class="pull-left">
+                                                            <input id="rdTaskNotificationEnable" name="chknotify" checked="checked"  value="" type="radio" class="" disabled>&nbsp;&nbsp;<label>Enable Task Notifications</label>
+                                                        </div>
+                }
+                else
+                {
+                                                        <div class="col-md-5 pull-left">
+                                                            <input id="rdTaskNotificationDisable" name="chknotify" checked="checked"  value="" type="radio" class="" disabled>&nbsp;&nbsp;<lable>Disabled</lable>
+                                                        </div>
+                                                        <div class="pull-left">
+                                                            <input id="rdTaskNotificationEnable" name="chknotify"   value="" type="radio" class="" disabled>&nbsp;&nbsp;<label>Enable Task Notifications</label>
+                                                        </div>
+                }
+                                                         @:</div>
+
+                                        
+                                                    <button onclick="UpdateBuisnessSetting('@ObjBusinessSetting.Id')"; id="UpdateBsnsSetng" type="button" disabled class="btn btn-warning">Update Setting</button>
+            }
+                                        }
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    
+        }
+        else
+        {
+            DefaultMessage = "Sorry, The Buisness Page of this Group is Not Created!";
+        }
+    }
+    else
+    {
+        DefaultMessage = "Sorry, you are not able to Setting in Default Group";
+    }
+    }
+    @if (DefaultMessage != null || DefaultMessage != "")
+    {
+        
+    @:<div style="min-height: 382px;" id="page-wrapper">
+    @: <div class="container-fluid">
+    @:   <div class="row">
+    @:     <div class="col-lg-12">
+    @:       <h1 class="page-header"></h1>
+    @:   </div>
+    @:  <div class="col-lg-12">
+    @:     <div class="panel panel-default">
+    @:         <div class="panel-heading">
+    @:            Socioboard
+    @:          </div>
+<!-- /.panel-heading -->
+
+    @:            <div class="panel-body">
+        
+    @:          <div class="tab-content">
+    @:                            <div class="tab-pane active" id="Personal">
+
+    @:                              <div class="col-md-6">
+    @:                              <form role="form" class="form-horizontal">
+    @:
+        
+        <h1>@DefaultMessage</h1>
+    
+    
+    
+    
+    @:</form>
+    @:                          </div>
+    @:                    </div>
+              
+    @:          </div>
+
+
+
+
+    @:    </div>
+    @: </div>
+    @:   </div>
+    @:  </div>
+<!-- /.panel-body -->
+
+    @:  </div>
+    
+    }
+    
+
+
+
+<script type="text/javascript">
+
+    var BsnsStng = new FormData();
+    var IsTaskAssigned = null;
+    var IsNotificationEnabled = null;
+    var BuisnessName = $("#txtBuisnessName").val();
+    function UpdateBuisnessSetting(id) {
+        debugger;
+        if ($('#rdTaskDisable').is(':checked')) {
+            IsTaskAssigned = false;
+        }
+
+        if ($('#rdTaskEnable').is(':checked')) {
+            IsTaskAssigned = true;
+        }
+
+        if ($('#rdTaskNotificationEnable').is(':checked')) {
+            IsNotificationEnabled = true;
+        }
+
+        if ($('#rdTaskNotificationDisable').is(':checked')) {
+            IsNotificationEnabled = false;
+        }
+
+        BsnsStng.append('IsTaskAssigned', IsTaskAssigned);
+        BsnsStng.append('IsNotificationEnabled', IsNotificationEnabled);
+        BsnsStng.append('BuisnessName', BuisnessName);
+        BsnsStng.append('BuisNessId', id);
+
+
+        $.ajax({
+            type: 'POST',
+            url: '../BusinessSetting/UpdateBuisnessSetting',
+            data: BsnsStng,
+            processData: false,
+            contentType: false,
+            dataType: "json",
+            success: function (msg) {
+                if (msg = "Updated Successfully") {
+                    aleryify.success("Business Setting Updated Successfully.");
+                }
+            },
+            async: false
+        });
+    }
+
+</script>

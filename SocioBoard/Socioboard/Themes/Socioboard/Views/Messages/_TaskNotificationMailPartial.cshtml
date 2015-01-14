@@ -1,0 +1,103 @@
+﻿@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+    Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Model;
+    }
+<body style="background-color: #FB6947;">
+    <div style="margin-top: 10px; margin: 0 auto; width: 630px;">
+        <div style="width: 630px; height: auto; float: left; margin-top: 50px;">
+            <div style="width: 630px; padding-top: 7px; text-align: center; height: 80px; background: none repeat scroll 0px 0px rgb(255, 188, 173);
+                border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                <a href="http://www.socioboard.com"><img src="http://www.socioboard.com/Themes/Socioboard/Contents/img/logo.png" alt="" style="margin: 10px;"></a>
+            </div>
+            <!--Email content-->
+            <div style="font-family: Tahoma; font-size: 14px; background-color: #fff; color: rgb(24, 24, 24);
+                padding: 10px; float: left; width: 606px; border: 2px solid rgb(255, 255, 255);
+                border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
+                
+                <div style="width: 610px; height: auto; float: left;">
+                
+                    <div style="width: 610px; height: auto; float: left; font-size: 15px; font-family: Arial;
+                        margin-top: 10px;">
+                        Hi @objUser.UserName,
+                    </div>
+                    
+                    <div style="width: 610px; height: auto; float: left; font-size: 15px; font-family: Arial;
+                        margin-top: 10px;">
+                        You have been assigned a task in Socioboard.
+                    </div>
+                     
+                     <div style="width: 610px; height: auto; float: left; font-size: 15px; font-family: Arial;
+                        margin-top: 10px;">
+                        Check below link:
+                    </div>
+                     
+                     <div style="width: 610px; height: auto; float: left; font-size: 15px; font-family: Arial;
+                        margin-top: 10px;">
+                         @System.Configuration.ConfigurationManager.AppSettings["DomainName"]/Messages/Task
+                    </div>
+
+                     
+                     
+                     
+                     <div style="width: 610px; height: auto; float: left; font-size: 15px; font-family: Arial;
+                        margin-top: 10px; text-align: center;">
+                        Thanks and Regards,<br>
+						Andy<br>
+						Socioboard Team
+                     </div>
+                     
+                     <br>
+                     <br>
+                     <div style=" text-align: center;"><a href="http://www.socioboard.com"><img src="http://www.socioboard.com/Themes/Socioboard/Contents/img/logo.png" alt=""></a>
+                     </div>
+                     
+                     <div style="width: 610px; height: auto; float: left; font-size: 15px; font-family: Arial;
+                        margin-top: 10px;">
+						
+                        <!-- follow us on Facebook: <a href="https://www.facebook.com/SocioBoard">https://www.facebook.com/Socioboard</a> <br>
+ follow us on Twitter: <a href="https://twitter.com/Socioboard">https://twitter.com/Socioboard</a>  -->
+ <table class="full" align="left" width="255" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td class="center" align="left" style="margin: 0;  text-transform: uppercase; font-size: 20px; color:#666666; font-family: Lucida Sans Unicode; line-height: 30px;  mso-line-height-rule: exactly;"> <span> FOLLOW US ONLINE:</span> 
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+ <table class="full" align="right" width="300" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td class="center" align="right" style="margin: 0; font-size:14px ; color:#aaaaaa; font-family: Helvetica, Arial, sans-serif; line-height: 100%;"> <span> <a href="https://www.facebook.com/SocioBoard" target="_blank"><img src="http://i.imgur.com/mrfZQKf.png?1" style="height: 70px;"></a> &nbsp;<a href="https://twitter.com/Socioboard" target="_blank"><img src="http://i.imgur.com/gSA8HbM.png?1" style="height: 70px;"></a>  &nbsp;<a href="https://plus.google.com/b/105412765098773776122/105412765098773776122/posts" target="_blank"><img src="http://i.imgur.com/EseCwni.png?1" style="height: 70px;"></a></span> 
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                     </div>
+                     
+                     
+                    <!--</br>-->
+                    
+                    <!-- <div style="width: 610px; height: auto; float: left; font-size: 15px; font-family: Arial;
+                        margin-top: 10px;">
+                        <div style="width: 150px; height: auto; float: left; font-family: Arial; font-size: 15px;">
+                            User Name:</div>
+                        <div style="width: auto; height: auto; float: left; font-family: Arial; font-size: 15px;">
+                            %EMAILID%
+                        </div>
+                    </div>-->
+                    
+                    
+                    
+                    
+                    <!--<div style="width: 610px; height: auto; float: left; font-size: 15px; font-family: Arial;
+                        margin-top: 10px;">
+                        </div>-->
+                    
+                    
+                </div>
+                
+            </div>
+            <!--End Email content-->
+        </div>
+    </div>
+	</body>

@@ -142,8 +142,8 @@
           <s:element minOccurs="0" maxOccurs="1" name="OAuthToken" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="OAuthSecret" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s1:guid" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsActive" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="FollowersCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsActive" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="FollowingCount" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="ProfileUrl" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="ProfileImageUrl" type="s:string" />
@@ -280,6 +280,22 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="TicketTwitterReply">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="statusid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TicketTwitterReplyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TicketTwitterReplyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
     <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
@@ -386,6 +402,12 @@
   <wsdl:message name="UpdateTwitterAccountByAdminSoapOut">
     <wsdl:part name="parameters" element="tns:UpdateTwitterAccountByAdminResponse" />
   </wsdl:message>
+  <wsdl:message name="TicketTwitterReplySoapIn">
+    <wsdl:part name="parameters" element="tns:TicketTwitterReply" />
+  </wsdl:message>
+  <wsdl:message name="TicketTwitterReplySoapOut">
+    <wsdl:part name="parameters" element="tns:TicketTwitterReplyResponse" />
+  </wsdl:message>
   <wsdl:message name="GetTwitterRedirectUrlHttpGetIn">
     <wsdl:part name="consumerKey" type="s:string" />
     <wsdl:part name="consumerSecret" type="s:string" />
@@ -482,6 +504,14 @@
     <wsdl:part name="ObjTwitter" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdateTwitterAccountByAdminHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TicketTwitterReplyHttpGetIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="statusid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TicketTwitterReplyHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetTwitterRedirectUrlHttpPostIn">
@@ -582,6 +612,14 @@
   <wsdl:message name="UpdateTwitterAccountByAdminHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="TicketTwitterReplyHttpPostIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="statusid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TicketTwitterReplyHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="TwitterSoap">
     <wsdl:operation name="GetTwitterRedirectUrl">
       <wsdl:input message="tns:GetTwitterRedirectUrlSoapIn" />
@@ -647,6 +685,10 @@
       <wsdl:input message="tns:UpdateTwitterAccountByAdminSoapIn" />
       <wsdl:output message="tns:UpdateTwitterAccountByAdminSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="TicketTwitterReply">
+      <wsdl:input message="tns:TicketTwitterReplySoapIn" />
+      <wsdl:output message="tns:TicketTwitterReplySoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TwitterHttpGet">
     <wsdl:operation name="GetTwitterRedirectUrl">
@@ -697,6 +739,10 @@
       <wsdl:input message="tns:UpdateTwitterAccountByAdminHttpGetIn" />
       <wsdl:output message="tns:UpdateTwitterAccountByAdminHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="TicketTwitterReply">
+      <wsdl:input message="tns:TicketTwitterReplyHttpGetIn" />
+      <wsdl:output message="tns:TicketTwitterReplyHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TwitterHttpPost">
     <wsdl:operation name="GetTwitterRedirectUrl">
@@ -746,6 +792,10 @@
     <wsdl:operation name="UpdateTwitterAccountByAdmin">
       <wsdl:input message="tns:UpdateTwitterAccountByAdminHttpPostIn" />
       <wsdl:output message="tns:UpdateTwitterAccountByAdminHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TicketTwitterReply">
+      <wsdl:input message="tns:TicketTwitterReplyHttpPostIn" />
+      <wsdl:output message="tns:TicketTwitterReplyHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="TwitterSoap" type="tns:TwitterSoap">
@@ -887,6 +937,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateTwitterAccountByAdmin">
       <soap:operation soapAction="http://tempuri.org/UpdateTwitterAccountByAdmin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TicketTwitterReply">
+      <soap:operation soapAction="http://tempuri.org/TicketTwitterReply" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1041,6 +1100,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TicketTwitterReply">
+      <soap12:operation soapAction="http://tempuri.org/TicketTwitterReply" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="TwitterHttpGet" type="tns:TwitterHttpGet">
     <http:binding verb="GET" />
@@ -1145,6 +1213,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateTwitterAccountByAdmin">
       <http:operation location="/UpdateTwitterAccountByAdmin" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TicketTwitterReply">
+      <http:operation location="/TicketTwitterReply" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -1263,19 +1340,28 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TicketTwitterReply">
+      <http:operation location="/TicketTwitterReply" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Twitter">
     <wsdl:port name="TwitterSoap" binding="tns:TwitterSoap">
-      <soap:address location="http://localhost:6361/Services/Twitter.asmx" />
+      <soap:address location="http://devapi.socioboard.com/Services/Twitter.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterSoap12" binding="tns:TwitterSoap12">
-      <soap12:address location="http://localhost:6361/Services/Twitter.asmx" />
+      <soap12:address location="http://devapi.socioboard.com/Services/Twitter.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterHttpGet" binding="tns:TwitterHttpGet">
-      <http:address location="http://localhost:6361/Services/Twitter.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/Twitter.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterHttpPost" binding="tns:TwitterHttpPost">
-      <http:address location="http://localhost:6361/Services/Twitter.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/Twitter.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

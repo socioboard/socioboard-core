@@ -90,6 +90,7 @@ namespace Socioboard.Controllers
         public ActionResult SendEnterpriseMail(string name, string designation, string email, string location, string company, string companywebsite, string messages, string Phone, string captchaErrorMessage, string recaptcha_challenge_field, string recaptcha_response_field)
         {
             bool isCaptchaCodeValid = false;
+            string mailsender = string.Empty;
             string CaptchaMessage = "";
             isCaptchaCodeValid = GetCaptchaResponse(out CaptchaMessage, recaptcha_challenge_field, recaptcha_response_field);
             //return RedirectToAction("success");
@@ -97,15 +98,14 @@ namespace Socioboard.Controllers
             if (isCaptchaCodeValid)
             {
                 Api.MailSender.MailSender ApiobjMailSender = new Api.MailSender.MailSender();
-                string mailsender = ApiobjMailSender.SendEnterpriseMail(name, designation, email, location, company, companywebsite, messages, Phone);
-                return Content(mailsender);
-                //return View();
+                mailsender = ApiobjMailSender.SendEnterpriseMail(name, designation, email, location, company, companywebsite, messages, Phone);
+               
             }
             else
             {
-                ViewBag.Message = CaptchaMessage;
+                mailsender = "Invalid Captcha";
             }
-            return View();
+            return Content(mailsender);
         }
 
         private bool GetCaptchaResponse(out string message, string recaptcha_challenge_field, string recaptcha_response_field)

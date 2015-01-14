@@ -47,6 +47,18 @@ namespace Api.Socioboard.Services
                     grouprepo.AddGroup(group);
                     Domain.Socioboard.Domain.User objUser = objUserRepository.getUsersById(Guid.Parse(UserId));
                     Team.AddTeamByGroupIdUserId(objUser.Id, objUser.EmailId, group.Id);
+                    BusinessSetting ApiobjBusinesssSetting = new BusinessSetting();
+                    Domain.Socioboard.Domain.BusinessSetting ObjBsnsStng=new Domain.Socioboard.Domain.BusinessSetting();
+                    ObjBsnsStng.Id=Guid.NewGuid();
+                    ObjBsnsStng.BusinessName=GroupName;
+                    ObjBsnsStng.GroupId=group.Id;
+                    ObjBsnsStng.AssigningTasks=false;
+                    ObjBsnsStng.TaskNotification=false;
+                    ObjBsnsStng.FbPhotoUpload=0;
+                    ObjBsnsStng.UserId=Guid.Parse(UserId);
+                    ObjBsnsStng.EntryDate=DateTime.Now;
+                    string ObjBsnsStg=(new JavaScriptSerializer().Serialize(ObjBsnsStng));
+                    string BsnsMessage = ApiobjBusinesssSetting.AddBusinessByUser(ObjBsnsStg);
                     return new JavaScriptSerializer().Serialize(group);
                 }
                 else

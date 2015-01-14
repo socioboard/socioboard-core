@@ -21,9 +21,9 @@ D:\Suresh\SB Update 29-10-2014\SB Update 29-10-2014\trunk\trunk\Domain.Socioboar
 D:\Suresh\SB Update 29-10-2014\SB Update 29-10-2014\trunk\trunk\Domain.Socioboard\obj\Debug\Domain.Socioboard.dll
 D:\Suresh\SB Update 29-10-2014\SB Update 29-10-2014\trunk\trunk\Domain.Socioboard\obj\Debug\Domain.Socioboard.pdb
 D:\Suresh\SB Update 29-10-2014\SB Update 29-10-2014\trunk\Domain.Socioboard\obj\Debug\Domain.Socioboard.csprojResolveAssemblyReference.cache
-D:\SB 2.0\SB Update 29-10-2014\trunk\Domain.Socioboard\bin\Debug\Domain.Socioboard.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Domain.Socioboard\bin\Debug\Domain.Socioboard.pdb
-D:\SB 2.0\SB Update 29-10-2014\trunk\Domain.Socioboard\bin\Debug\Newtonsoft.Json.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Domain.Socioboard\obj\Debug\Domain.Socioboard.csprojResolveAssemblyReference.cache
-D:\SB 2.0\SB Update 29-10-2014\trunk\Domain.Socioboard\obj\Debug\Domain.Socioboard.dll
-D:\SB 2.0\SB Update 29-10-2014\trunk\Domain.Socioboard\obj\Debug\Domain.Socioboard.pdb
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Domain.Socioboard\bin\Debug\Domain.Socioboard.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Domain.Socioboard\bin\Debug\Domain.Socioboard.pdb
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Domain.Socioboard\bin\Debug\Newtonsoft.Json.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Domain.Socioboard\obj\Debug\Domain.Socioboard.dll
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Domain.Socioboard\obj\Debug\Domain.Socioboard.pdb
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\Domain.Socioboard\obj\Debug\Domain.Socioboard.csprojResolveAssemblyReference.cache

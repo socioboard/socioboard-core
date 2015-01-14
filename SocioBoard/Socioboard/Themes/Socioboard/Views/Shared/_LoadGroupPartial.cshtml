@@ -15,14 +15,15 @@
     string groupId = string.Empty;
 }
 
-<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+@*<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
   <i class="fa fa-chevron-down fa-fw"></i>
-</button>
+</button>*@
 @if (Session["group"] == null)
 {
-    <ul class="dropdown-menu slidedown">
+    
+    @*<ul class="dropdown-menu slidedown">*@
         <li style="cursor:not-allowed;"><div style="margin-left:17px"><b>Groups</b></div></li>
-        @foreach (Groups item in lstgroup)
+        foreach (Groups item in lstgroup)
         {
             try
             {
@@ -30,8 +31,8 @@
             {
                 groupname = @item.GroupName;
             <li>
-                <a href="#" class="groupclk" grpid="@item.Id.ToString()" title="@item.GroupName Group">
-                    <i class="fa fa-star fa-fw"></i>@item.GroupName
+                <a href="#" class="groupclk"  style="background: #428bca;" grpid="@item.Id.ToString()" title="@item.GroupName Group">
+                    <i class="fa fa-users fa-2x fa-fw"></i>@item.GroupName
                 </a>
             </li>
                 string groupid = item.Id.ToString();
@@ -41,7 +42,7 @@
             {
             <li>
                 <a href="#" class="groupclk" grpid="@item.Id.ToString()" title="@item.GroupName Group">
-                    <i class="fa fa-star fa-fw"></i>@item.GroupName
+                    <i class="fa fa-users fa-2x fa-fw"></i>@item.GroupName
                 </a>
             </li>
                 groupId = item.Id.ToString();
@@ -54,18 +55,18 @@
             
 
         }
-        @if (HttpContext.Current.Session["group"] == null &&!string.IsNullOrEmpty(groupId)) 
+        if (HttpContext.Current.Session["group"] == null &&!string.IsNullOrEmpty(groupId)) 
         {
             HttpContext.Current.Session["group"] = groupId;
         }
-    </ul>
-     <div class="pull-right"><strong><i class="fa fa-fw"></i>Socioboard</strong></div>
+    @*</ul>
+     <div class="pull-right"><strong><i class="fa fa-fw"></i>Socioboard</strong></div>*@
 }
 else
 {
-    <ul class="dropdown-menu slidedown">
+    @*<ul class="dropdown-menu slidedown">*@
         <li style="cursor:not-allowed;"><div style="margin-left:17px"><b>Groups</b></div></li>
-        @foreach (Groups item in lstgroup)
+        foreach (Groups item in lstgroup)
         {
             if(item!=null)
             {
@@ -73,8 +74,8 @@ else
                 {
                     groupname = @item.GroupName;
                 <li>
-                    <a href="#" class="groupclk" grpid="@item.Id.ToString()" title="@item.GroupName Group">
-                        <i class="fa fa-star fa-fw"></i>@item.GroupName
+                    <a href="#"  style="background: #428bca" class="groupclk" grpid="@item.Id.ToString()" title="@item.GroupName Group">
+                      <i class="fa fa-users fa-2x fa-fw"></i>@item.GroupName
                     </a>
                 </li>
                     HttpContext.Current.Session["group"] = item.Id;
@@ -84,12 +85,12 @@ else
 
                 <li>
                     <a href="#" class="groupclk" grpid="@item.Id.ToString()" title="@item.GroupName Group">
-                        <i class="fa fa-star fa-fw"></i>@item.GroupName
+                        <i class="fa fa-users fa-2x fa-fw"></i>@item.GroupName
                     </a>
                 </li>
                 }
             }
         }
-    </ul>
-     <div class="pull-right"><strong><i class="fa fa-fw"></i>@groupname</strong></div>
+    @*</ul>
+     <div class="pull-right"><strong><i class="fa fa-fw"></i>@groupname</strong></div>*@
 }

@@ -26,6 +26,8 @@ namespace Domain.Socioboard.Domain
 
         public string ChangePasswordKey { get; set; }
         public int IsKeyUsed { get; set; }
+        public string ChangeEmailKey { get; set; }
+        public int IsEmailKeyUsed { get; set; }
 
         public static List<User> lstUser = new List<User>();
     }

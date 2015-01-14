@@ -587,7 +587,8 @@ namespace Api.Socioboard.Services
                     objScheduledMessage.ProfileId = profileid;
                     objScheduledMessage.Id = Guid.NewGuid();
                     objScheduledMessage.PicUrl = PicUrl;
-                    objScheduledMessage.ClientTime = Convert.ToDateTime(ClientTime);
+                    DateTime client = Convert.ToDateTime(ClientTime); 
+                    objScheduledMessage.ClientTime = client;
                     objScheduledMessage.ScheduleTime = scheduleddatetime.ToLocalTime();
                     objScheduledMessage.ShareMessage = ShareMessage;
                     objScheduledMessage.UserId = Guid.Parse(UserId);
@@ -697,29 +698,35 @@ namespace Api.Socioboard.Services
 
         public string CompareDateWithclient(string clientdate, string scheduletime)
         {
-            DateTime client = Convert.ToDateTime(clientdate);
-            string strTimeNow = String.Format("{0:s}", client).Replace('T', ' ');
-
-            DateTime server = DateTime.Now;
-            DateTime schedule = Convert.ToDateTime(scheduletime);
-            if (DateTime.Compare(client, server) > 0)
+            try
             {
-
-                double minutes = (server - client).TotalMinutes;
-                schedule = schedule.AddMinutes(minutes);
-
+                DateTime client = Convert.ToDateTime(clientdate);
+         
+                DateTime server = DateTime.Now;
+                DateTime schedule = Convert.ToDateTime(scheduletime);
+                {
+                    var kind = schedule.Kind; // will equal DateTimeKind.Unspecified
+                    if (DateTime.Compare(client, server) > 0)
+                    {
+                        double minutes = (server - client).TotalMinutes;
+                        schedule = schedule.AddMinutes(minutes);
+                    }
+                    else if (DateTime.Compare(client, server) == 0)
+                    {
+                    }
+                    else if (DateTime.Compare(client, server) < 0)
+                    {
+                        double minutes = (server - client).TotalMinutes;
+                        schedule = schedule.AddMinutes(minutes);
+                    }
+                }
+                return schedule.ToString();
             }
-            else if (DateTime.Compare(client, server) == 0)
+            catch (Exception ex)
             {
-
-
+                Console.WriteLine(ex.StackTrace);
+                return "";
             }
-            else if (DateTime.Compare(client, server) < 0)
-            {
-                double minutes = (server - client).TotalMinutes;
-                schedule = schedule.AddMinutes(-minutes);
-            }
-            return schedule.ToString();
         }
 
         [WebMethod]

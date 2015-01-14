@@ -16,7 +16,7 @@
     <meta name="author" content="Chanchal Santra">
     <link rel="shortcut icon" href="../Contents/img/ivon.ico" type="image/x-icon">
 
-    <title>SocioBoard Admin</title>
+    <title>Socioboard Admin</title>
     <script src="/Themes/@path/Contents/js/jquery-1.11.0.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="/Themes/@path/Contents/css/bootstrap.min.css" rel="stylesheet">
@@ -64,8 +64,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href=""><img class="img-responsive" src="../Themes/Socioboard/Contents/img/admin/SB%20Banner_new_logo.png" alt="Socio Board" style="
-    margin-top: -14px; width:28%;" /></a>
+                <a class="navbar-brand" style="width:22%;" href="../AdminHome/Dashboard"><img class="img-responsive" src="../Themes/Socioboard/Contents/img/admin/SBBanner.png" alt="Socio Board" style="
+    margin-top: -11px; width:100%;" /></a>
             </div>
             <!-- /.navbar-header -->
 
@@ -99,24 +99,29 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <!-- <i class="fa fa-user fa-2x fa-fw"></i> -->
                         @{
-                            if (ObjUser.ProfileUrl != null)
+                            if (ObjUser.ProfileUrl != null && ObjUser.ProfileUrl != "")
                             {
-                                <img src="@ObjUser.ProfileUrl" class=" headerProfilePic"><strong>@ObjUser.UserName</strong><i class="fa fa-caret-down fa-2x"></i>
+
+
+                                string[] list = ObjUser.ProfileUrl.Split(new string[] { "wwwroot\\" }, StringSplitOptions.None);
+                                string ImapgePath = "..\\" + list[1];
+
+                                <img src="@ImapgePath" class=" headerProfilePic"><strong>@ObjUser.UserName</strong><i class="fa fa-caret-down fa-2x"></i>
                             }
                             else
                             {
-                                <img src="@System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/admin/Unknown.png" class=" headerProfilePic"><strong>@ObjUser.UserName</strong><i class="fa fa-caret-down fa-2x"></i>
+                                <img src="../Themes/@path/Contents/img/user.png" class=" headerProfilePic"><strong>@ObjUser.UserName</strong><i class="fa fa-caret-down fa-2x"></i>
                             }
                             
                             }
-                        @*<img src="@ObjUser.ProfileUrl" class=" headerProfilePic"><strong>@ObjUser.UserName</strong><i class="fa fa-caret-down fa-2x"></i>*@
+                        @*<img src="https://pbs.twimg.com/profile_images/507048905217802240/MjAkkHK_.jpeg" class=" headerProfilePic"><strong>@ObjUser.UserName</strong><i class="fa fa-caret-down fa-2x"></i>*@
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                       @* <li><a href="../AdminSetting/Index"><i class="fa fa-gear fa-2x fa-fw"></i> Settings</a>
-                        </li>*@
-
-                         <li><a href=""><i class="fa fa-gear fa-2x fa-fw"></i> Settings</a>
+                        <li><a href="../AdminSetting/Index"><i class="fa fa-gear fa-2x fa-fw"></i> Settings</a>
                         </li>
+
+                        @*<li><a href=""><i class="fa fa-gear fa-2x fa-fw"></i> Settings</a>
+                        </li>*@
                         <li class="divider"></li>
                         <li><a href="../Index/Logout"><i class="fa fa-sign-out fa-2x fa-fw"></i> Logout</a>
                         </li>
@@ -137,13 +142,16 @@
                             <a class="active" href="../AdminHome/Dashboard"><i class="fa fa-dashboard fa-fw fa-2x"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-envelope fa-fw fa-2x"></i> user<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-envelope fa-fw fa-2x"></i> Users<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="../UserDetails/ManageUser"> Manage User</a>
+                                    <a href="../UserDetails/ManageUser"> Manage Users</a>
                                 </li>
                                 <li>
                                     <a href="../UserDetails/ManageProfile"> Manage Profile</a>
+                                </li>
+                                <li>
+                                    <a href="../UserDetails/LoadDeletedUsers"> Deleted Users</a>
                                 </li>
                                 @*<li>
                                     <a href="#"> Online Users</a>
@@ -155,10 +163,10 @@
                             <!-- /.nav-second-level -->
                         </li>
                        <li>
-                            <a href="#"><i class="fa fa-link fa-fw fa-2x"></i> Package<i class="fa arrow"></i></a>
+                            <a href="#"><i class="fa fa-link fa-fw fa-2x"></i> Packages<i class="fa arrow"></i></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="../Package/ManagePackage">Manage Package</span></a>
+                                    <a href="../Package/ManagePackage">Manage Packages</span></a>
                                     <!-- /.nav-third-level -->
                                 </li>
                             </ul>
@@ -178,22 +186,22 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw fa-2x"></i> News Latter<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-sitemap fa-fw fa-2x"></i> News Letter<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="../AddNewsLatter/LoadAddNewsLatter">Add News Latter</a>
+                                    <a href="../AddNewsLatter/LoadAddNewsLatter">Add News Letter</a>
                                 </li>                                
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw fa-2x"></i> Advertisment<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-sitemap fa-fw fa-2x"></i> Advertisement<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="../Advertisement/ManageAdvertisement">Manage Advertisment</a>
+                                    <a href="../Advertisement/ManageAdvertisement">Manage Advertisement</a>
                                 </li>   
                                 <li>
-                                    <a href="../Advertisement/CreateAdvertisement">Add Advertisment</a>
+                                    <a href="../Advertisement/CreateAdvertisement">Add Advertisement</a>
                                 </li>                              
                             </ul>
                             <!-- /.nav-second-level -->

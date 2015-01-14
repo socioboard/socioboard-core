@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+
+  <class name="FeedSentimentalAnalysis" table="FeedSentimentalAnalysis" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="UserId">
+      <column name="UserId"/>
+    </property>
+    <property name="AssigneUserId">
+      <column name="AssigneUserId"/>
+    </property>
+    <property name="ProfileId">
+      <column name="ProfileId"/>
+    </property>
+    <property name="FeedId">
+      <column name="FeedId"/>
+    </property>
+    <property name="Positive">
+      <column name="Positive"/>
+    </property>
+    <property name="Negative">
+      <column name="Negative"/>
+    </property>
+    <property name="EntryDate">
+      <column name="EntryDate"/>
+    </property>
+    <property name="Network">
+      <column name="Network"/>
+    </property>
+    <property name="TicketNo">
+      <column name="TicketNo"/>
+    </property>
+  </class>
+</hibernate-mapping>
