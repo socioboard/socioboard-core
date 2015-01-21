@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AddTeam">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="InviteStatus" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmailId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AccessLevel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="useremail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddTeamResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddTeamResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeamById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeamByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTeamByIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeamByGroupId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeamByGroupIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTeamByGroupIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeamByStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeamByStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTeamByStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateTeam">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="teamid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateTeamResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateTeamResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateTeambyteamid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="teamid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateTeambyteamidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateTeambyteamidResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeamByUserId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeamByUserIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTeamByUserIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllTeamsOfUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="groupId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="emailId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllTeamsOfUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllTeamsOfUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllGroupMembersofTeam">
+        <s:complexType />
+      </s:element>
+      <s:element name="getAllGroupMembersofTeamResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllGroupMembersofTeamResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddTeamSoapIn">
+    <wsdl:part name="parameters" element="tns:AddTeam" />
+  </wsdl:message>
+  <wsdl:message name="AddTeamSoapOut">
+    <wsdl:part name="parameters" element="tns:AddTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTeamById" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTeamByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByGroupIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTeamByGroupId" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByGroupIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTeamByGroupIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTeamByStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTeamByStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTeamSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateTeam" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTeamSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTeambyteamidSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateTeambyteamid" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTeambyteamidSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateTeambyteamidResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByUserIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTeamByUserId" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByUserIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTeamByUserIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllTeamsOfUserSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllTeamsOfUser" />
+  </wsdl:message>
+  <wsdl:message name="getAllTeamsOfUserSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllTeamsOfUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllGroupMembersofTeamSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllGroupMembersofTeam" />
+  </wsdl:message>
+  <wsdl:message name="getAllGroupMembersofTeamSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllGroupMembersofTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddTeamHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="InviteStatus" type="s:string" />
+    <wsdl:part name="FirstName" type="s:string" />
+    <wsdl:part name="LastName" type="s:string" />
+    <wsdl:part name="EmailId" type="s:string" />
+    <wsdl:part name="AccessLevel" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="useremail" type="s:string" />
+    <wsdl:part name="username" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddTeamHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByIdHttpGetIn">
+    <wsdl:part name="Id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByGroupIdHttpGetIn">
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByGroupIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByStatusHttpGetIn">
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="status" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByStatusHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTeamHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="teamid" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTeamHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTeambyteamidHttpGetIn">
+    <wsdl:part name="teamid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTeambyteamidHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByUserIdHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByUserIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllTeamsOfUserHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="groupId" type="s:string" />
+    <wsdl:part name="emailId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllTeamsOfUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllGroupMembersofTeamHttpGetIn" />
+  <wsdl:message name="getAllGroupMembersofTeamHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddTeamHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="InviteStatus" type="s:string" />
+    <wsdl:part name="FirstName" type="s:string" />
+    <wsdl:part name="LastName" type="s:string" />
+    <wsdl:part name="EmailId" type="s:string" />
+    <wsdl:part name="AccessLevel" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="useremail" type="s:string" />
+    <wsdl:part name="username" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddTeamHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByIdHttpPostIn">
+    <wsdl:part name="Id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByGroupIdHttpPostIn">
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByGroupIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByStatusHttpPostIn">
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="status" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByStatusHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTeamHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="teamid" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTeamHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTeambyteamidHttpPostIn">
+    <wsdl:part name="teamid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTeambyteamidHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByUserIdHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByUserIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllTeamsOfUserHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="groupId" type="s:string" />
+    <wsdl:part name="emailId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllTeamsOfUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllGroupMembersofTeamHttpPostIn" />
+  <wsdl:message name="getAllGroupMembersofTeamHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="TeamSoap">
+    <wsdl:operation name="AddTeam">
+      <wsdl:input message="tns:AddTeamSoapIn" />
+      <wsdl:output message="tns:AddTeamSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamById">
+      <wsdl:input message="tns:GetTeamByIdSoapIn" />
+      <wsdl:output message="tns:GetTeamByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByGroupId">
+      <wsdl:input message="tns:GetTeamByGroupIdSoapIn" />
+      <wsdl:output message="tns:GetTeamByGroupIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByStatus">
+      <wsdl:input message="tns:GetTeamByStatusSoapIn" />
+      <wsdl:output message="tns:GetTeamByStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTeam">
+      <wsdl:input message="tns:UpdateTeamSoapIn" />
+      <wsdl:output message="tns:UpdateTeamSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTeambyteamid">
+      <wsdl:input message="tns:UpdateTeambyteamidSoapIn" />
+      <wsdl:output message="tns:UpdateTeambyteamidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByUserId">
+      <wsdl:input message="tns:GetTeamByUserIdSoapIn" />
+      <wsdl:output message="tns:GetTeamByUserIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllTeamsOfUser">
+      <wsdl:input message="tns:getAllTeamsOfUserSoapIn" />
+      <wsdl:output message="tns:getAllTeamsOfUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllGroupMembersofTeam">
+      <wsdl:input message="tns:getAllGroupMembersofTeamSoapIn" />
+      <wsdl:output message="tns:getAllGroupMembersofTeamSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TeamHttpGet">
+    <wsdl:operation name="AddTeam">
+      <wsdl:input message="tns:AddTeamHttpGetIn" />
+      <wsdl:output message="tns:AddTeamHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamById">
+      <wsdl:input message="tns:GetTeamByIdHttpGetIn" />
+      <wsdl:output message="tns:GetTeamByIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByGroupId">
+      <wsdl:input message="tns:GetTeamByGroupIdHttpGetIn" />
+      <wsdl:output message="tns:GetTeamByGroupIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByStatus">
+      <wsdl:input message="tns:GetTeamByStatusHttpGetIn" />
+      <wsdl:output message="tns:GetTeamByStatusHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTeam">
+      <wsdl:input message="tns:UpdateTeamHttpGetIn" />
+      <wsdl:output message="tns:UpdateTeamHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTeambyteamid">
+      <wsdl:input message="tns:UpdateTeambyteamidHttpGetIn" />
+      <wsdl:output message="tns:UpdateTeambyteamidHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByUserId">
+      <wsdl:input message="tns:GetTeamByUserIdHttpGetIn" />
+      <wsdl:output message="tns:GetTeamByUserIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllTeamsOfUser">
+      <wsdl:input message="tns:getAllTeamsOfUserHttpGetIn" />
+      <wsdl:output message="tns:getAllTeamsOfUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllGroupMembersofTeam">
+      <wsdl:input message="tns:getAllGroupMembersofTeamHttpGetIn" />
+      <wsdl:output message="tns:getAllGroupMembersofTeamHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TeamHttpPost">
+    <wsdl:operation name="AddTeam">
+      <wsdl:input message="tns:AddTeamHttpPostIn" />
+      <wsdl:output message="tns:AddTeamHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamById">
+      <wsdl:input message="tns:GetTeamByIdHttpPostIn" />
+      <wsdl:output message="tns:GetTeamByIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByGroupId">
+      <wsdl:input message="tns:GetTeamByGroupIdHttpPostIn" />
+      <wsdl:output message="tns:GetTeamByGroupIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByStatus">
+      <wsdl:input message="tns:GetTeamByStatusHttpPostIn" />
+      <wsdl:output message="tns:GetTeamByStatusHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTeam">
+      <wsdl:input message="tns:UpdateTeamHttpPostIn" />
+      <wsdl:output message="tns:UpdateTeamHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTeambyteamid">
+      <wsdl:input message="tns:UpdateTeambyteamidHttpPostIn" />
+      <wsdl:output message="tns:UpdateTeambyteamidHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByUserId">
+      <wsdl:input message="tns:GetTeamByUserIdHttpPostIn" />
+      <wsdl:output message="tns:GetTeamByUserIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllTeamsOfUser">
+      <wsdl:input message="tns:getAllTeamsOfUserHttpPostIn" />
+      <wsdl:output message="tns:getAllTeamsOfUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllGroupMembersofTeam">
+      <wsdl:input message="tns:getAllGroupMembersofTeamHttpPostIn" />
+      <wsdl:output message="tns:getAllGroupMembersofTeamHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TeamSoap" type="tns:TeamSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddTeam">
+      <soap:operation soapAction="http://tempuri.org/AddTeam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamById">
+      <soap:operation soapAction="http://tempuri.org/GetTeamById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByGroupId">
+      <soap:operation soapAction="http://tempuri.org/GetTeamByGroupId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByStatus">
+      <soap:operation soapAction="http://tempuri.org/GetTeamByStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTeam">
+      <soap:operation soapAction="http://tempuri.org/UpdateTeam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTeambyteamid">
+      <soap:operation soapAction="http://tempuri.org/UpdateTeambyteamid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByUserId">
+      <soap:operation soapAction="http://tempuri.org/GetTeamByUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTeamsOfUser">
+      <soap:operation soapAction="http://tempuri.org/getAllTeamsOfUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllGroupMembersofTeam">
+      <soap:operation soapAction="http://tempuri.org/getAllGroupMembersofTeam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TeamSoap12" type="tns:TeamSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddTeam">
+      <soap12:operation soapAction="http://tempuri.org/AddTeam" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamById">
+      <soap12:operation soapAction="http://tempuri.org/GetTeamById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByGroupId">
+      <soap12:operation soapAction="http://tempuri.org/GetTeamByGroupId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByStatus">
+      <soap12:operation soapAction="http://tempuri.org/GetTeamByStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTeam">
+      <soap12:operation soapAction="http://tempuri.org/UpdateTeam" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTeambyteamid">
+      <soap12:operation soapAction="http://tempuri.org/UpdateTeambyteamid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByUserId">
+      <soap12:operation soapAction="http://tempuri.org/GetTeamByUserId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTeamsOfUser">
+      <soap12:operation soapAction="http://tempuri.org/getAllTeamsOfUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllGroupMembersofTeam">
+      <soap12:operation soapAction="http://tempuri.org/getAllGroupMembersofTeam" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TeamHttpGet" type="tns:TeamHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="AddTeam">
+      <http:operation location="/AddTeam" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamById">
+      <http:operation location="/GetTeamById" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByGroupId">
+      <http:operation location="/GetTeamByGroupId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByStatus">
+      <http:operation location="/GetTeamByStatus" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTeam">
+      <http:operation location="/UpdateTeam" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTeambyteamid">
+      <http:operation location="/UpdateTeambyteamid" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByUserId">
+      <http:operation location="/GetTeamByUserId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTeamsOfUser">
+      <http:operation location="/getAllTeamsOfUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllGroupMembersofTeam">
+      <http:operation location="/getAllGroupMembersofTeam" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TeamHttpPost" type="tns:TeamHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="AddTeam">
+      <http:operation location="/AddTeam" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamById">
+      <http:operation location="/GetTeamById" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByGroupId">
+      <http:operation location="/GetTeamByGroupId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByStatus">
+      <http:operation location="/GetTeamByStatus" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTeam">
+      <http:operation location="/UpdateTeam" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTeambyteamid">
+      <http:operation location="/UpdateTeambyteamid" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByUserId">
+      <http:operation location="/GetTeamByUserId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTeamsOfUser">
+      <http:operation location="/getAllTeamsOfUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllGroupMembersofTeam">
+      <http:operation location="/getAllGroupMembersofTeam" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Team">
+    <wsdl:port name="TeamSoap" binding="tns:TeamSoap">
+      <soap:address location="http://localhost:6361/Services/Team.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TeamSoap12" binding="tns:TeamSoap12">
+      <soap12:address location="http://localhost:6361/Services/Team.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TeamHttpGet" binding="tns:TeamHttpGet">
+      <http:address location="http://localhost:6361/Services/Team.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TeamHttpPost" binding="tns:TeamHttpPost">
+      <http:address location="http://localhost:6361/Services/Team.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

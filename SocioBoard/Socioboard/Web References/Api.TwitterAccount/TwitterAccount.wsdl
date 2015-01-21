@@ -592,16 +592,16 @@
   </wsdl:binding>
   <wsdl:service name="TwitterAccount">
     <wsdl:port name="TwitterAccountSoap" binding="tns:TwitterAccountSoap">
-      <soap:address location="http://devapi.socioboard.com/Services/TwitterAccount.asmx" />
+      <soap:address location="http://localhost:6361/Services/TwitterAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterAccountSoap12" binding="tns:TwitterAccountSoap12">
-      <soap12:address location="http://devapi.socioboard.com/Services/TwitterAccount.asmx" />
+      <soap12:address location="http://localhost:6361/Services/TwitterAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterAccountHttpGet" binding="tns:TwitterAccountHttpGet">
-      <http:address location="http://devapi.socioboard.com/Services/TwitterAccount.asmx" />
+      <http:address location="http://localhost:6361/Services/TwitterAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterAccountHttpPost" binding="tns:TwitterAccountHttpPost">
-      <http:address location="http://devapi.socioboard.com/Services/TwitterAccount.asmx" />
+      <http:address location="http://localhost:6361/Services/TwitterAccount.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

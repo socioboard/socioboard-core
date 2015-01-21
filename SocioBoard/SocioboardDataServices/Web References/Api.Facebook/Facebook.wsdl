@@ -802,16 +802,16 @@
   </wsdl:binding>
   <wsdl:service name="Facebook">
     <wsdl:port name="FacebookSoap" binding="tns:FacebookSoap">
-      <soap:address location="http://api.socioboard.com/Services/Facebook.asmx" />
+      <soap:address location="http://localhost:6361/Services/Facebook.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookSoap12" binding="tns:FacebookSoap12">
-      <soap12:address location="http://api.socioboard.com/Services/Facebook.asmx" />
+      <soap12:address location="http://localhost:6361/Services/Facebook.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookHttpGet" binding="tns:FacebookHttpGet">
-      <http:address location="http://api.socioboard.com/Services/Facebook.asmx" />
+      <http:address location="http://localhost:6361/Services/Facebook.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookHttpPost" binding="tns:FacebookHttpPost">
-      <http:address location="http://api.socioboard.com/Services/Facebook.asmx" />
+      <http:address location="http://localhost:6361/Services/Facebook.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

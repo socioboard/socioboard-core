@@ -19,3 +19,8 @@ C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusTum
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\Newtonsoft.Json.dll
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.dll
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.pdb
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.pdb
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\Newtonsoft.Json.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.pdb

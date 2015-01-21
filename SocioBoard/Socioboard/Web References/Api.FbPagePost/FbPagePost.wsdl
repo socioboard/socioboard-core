@@ -430,16 +430,16 @@
   </wsdl:binding>
   <wsdl:service name="FbPagePost">
     <wsdl:port name="FbPagePostSoap" binding="tns:FbPagePostSoap">
-      <soap:address location="http://devapi.socioboard.com/Services/FbPagePost.asmx" />
+      <soap:address location="http://localhost:6361/Services/FbPagePost.asmx" />
     </wsdl:port>
     <wsdl:port name="FbPagePostSoap12" binding="tns:FbPagePostSoap12">
-      <soap12:address location="http://devapi.socioboard.com/Services/FbPagePost.asmx" />
+      <soap12:address location="http://localhost:6361/Services/FbPagePost.asmx" />
     </wsdl:port>
     <wsdl:port name="FbPagePostHttpGet" binding="tns:FbPagePostHttpGet">
-      <http:address location="http://devapi.socioboard.com/Services/FbPagePost.asmx" />
+      <http:address location="http://localhost:6361/Services/FbPagePost.asmx" />
     </wsdl:port>
     <wsdl:port name="FbPagePostHttpPost" binding="tns:FbPagePostHttpPost">
-      <http:address location="http://devapi.socioboard.com/Services/FbPagePost.asmx" />
+      <http:address location="http://localhost:6361/Services/FbPagePost.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

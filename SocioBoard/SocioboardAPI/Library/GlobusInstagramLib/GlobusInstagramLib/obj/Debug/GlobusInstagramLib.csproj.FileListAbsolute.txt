@@ -22,3 +22,7 @@ C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusIns
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\bin\Debug\GlobusInstagramLib.pdb
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.dll
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.pdb
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\bin\Debug\GlobusInstagramLib.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\bin\Debug\GlobusInstagramLib.pdb
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.pdb

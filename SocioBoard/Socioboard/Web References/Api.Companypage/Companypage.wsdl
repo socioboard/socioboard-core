@@ -1,0 +1,2119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="getfacebookActiveAceessTokenFromDb">
+        <s:complexType />
+      </s:element>
+      <s:element name="getfacebookActiveAceessTokenFromDbResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getfacebookActiveAceessTokenFromDbResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchFacebookPage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Keyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchFacebookPageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchFacebookPageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFacebookkPageList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Keyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFacebookkPageListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getFacebookkPageListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFacebookPage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PageId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFacebookPageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getFacebookPageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFacebookPageNotes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PageId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFacebookPageNotesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getFacebookPageNotesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsfacebookAccountVerified">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fbAccountId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsfacebookAccountVerifiedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsfacebookAccountVerifiedResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TwitterSearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TwitterSearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TwitterSearchResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TwitterAccountPageWithoutLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ScreenName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TwitterAccountPageWithoutLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TwitterAccountPageWithoutLoginResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TwitterUserTimeLine">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ScreenName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TwitterUserTimeLineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TwitterUserTimeLineResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LinkedinSearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LinkedinSearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedinSearchResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LinkedinCompanyrecentActivites">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LinkedinCompanyrecentActivitesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedinCompanyrecentActivitesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LinkedinCompnayJobs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LinkedinCompnayJobsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedinCompnayJobsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InstagramSearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="WebUrl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InstagramSearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InstagramSearchResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InstagramSingleUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InstagramSingleUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InstagramSingleUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInstagramCompanyPage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Keyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInstagramCompanyPageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getInstagramCompanyPageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInstagramList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Keyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInstagramListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getInstagramListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInstagramUserRecentActivities">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInstagramUserRecentActivitiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getInstagramUserRecentActivitiesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInstagramUserDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInstagramUserDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getInstagramUserDetailsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TumblrSearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TumblrSearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TumblrSearchResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="YoutubeSearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="YoutubeSearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="YoutubeSearchResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="YoutubeSearchList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="YoutubeSearchListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="YoutubeSearchListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="YoutubeChannelPlayList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChannelId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="YoutubeChannelPlayListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="YoutubeChannelPlayListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GooglePlusSearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GooglePlusSearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GooglePlusSearchResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GooglePlusList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GooglePlusListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GooglePlusListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GooglePlusgetUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GooglePlusgetUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GooglePlusgetUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GooglePlusgetUserRecentActivities">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GooglePlusgetUserRecentActivitiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GooglePlusgetUserRecentActivitiesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getfacebookActiveAceessTokenFromDbSoapIn">
+    <wsdl:part name="parameters" element="tns:getfacebookActiveAceessTokenFromDb" />
+  </wsdl:message>
+  <wsdl:message name="getfacebookActiveAceessTokenFromDbSoapOut">
+    <wsdl:part name="parameters" element="tns:getfacebookActiveAceessTokenFromDbResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchFacebookPageSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchFacebookPage" />
+  </wsdl:message>
+  <wsdl:message name="SearchFacebookPageSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchFacebookPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookkPageListSoapIn">
+    <wsdl:part name="parameters" element="tns:getFacebookkPageList" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookkPageListSoapOut">
+    <wsdl:part name="parameters" element="tns:getFacebookkPageListResponse" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookPageSoapIn">
+    <wsdl:part name="parameters" element="tns:getFacebookPage" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookPageSoapOut">
+    <wsdl:part name="parameters" element="tns:getFacebookPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookPageNotesSoapIn">
+    <wsdl:part name="parameters" element="tns:getFacebookPageNotes" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookPageNotesSoapOut">
+    <wsdl:part name="parameters" element="tns:getFacebookPageNotesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsfacebookAccountVerifiedSoapIn">
+    <wsdl:part name="parameters" element="tns:IsfacebookAccountVerified" />
+  </wsdl:message>
+  <wsdl:message name="IsfacebookAccountVerifiedSoapOut">
+    <wsdl:part name="parameters" element="tns:IsfacebookAccountVerifiedResponse" />
+  </wsdl:message>
+  <wsdl:message name="TwitterSearchSoapIn">
+    <wsdl:part name="parameters" element="tns:TwitterSearch" />
+  </wsdl:message>
+  <wsdl:message name="TwitterSearchSoapOut">
+    <wsdl:part name="parameters" element="tns:TwitterSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="TwitterAccountPageWithoutLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:TwitterAccountPageWithoutLogin" />
+  </wsdl:message>
+  <wsdl:message name="TwitterAccountPageWithoutLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:TwitterAccountPageWithoutLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="TwitterUserTimeLineSoapIn">
+    <wsdl:part name="parameters" element="tns:TwitterUserTimeLine" />
+  </wsdl:message>
+  <wsdl:message name="TwitterUserTimeLineSoapOut">
+    <wsdl:part name="parameters" element="tns:TwitterUserTimeLineResponse" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinSearchSoapIn">
+    <wsdl:part name="parameters" element="tns:LinkedinSearch" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinSearchSoapOut">
+    <wsdl:part name="parameters" element="tns:LinkedinSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinCompanyrecentActivitesSoapIn">
+    <wsdl:part name="parameters" element="tns:LinkedinCompanyrecentActivites" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinCompanyrecentActivitesSoapOut">
+    <wsdl:part name="parameters" element="tns:LinkedinCompanyrecentActivitesResponse" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinCompnayJobsSoapIn">
+    <wsdl:part name="parameters" element="tns:LinkedinCompnayJobs" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinCompnayJobsSoapOut">
+    <wsdl:part name="parameters" element="tns:LinkedinCompnayJobsResponse" />
+  </wsdl:message>
+  <wsdl:message name="InstagramSearchSoapIn">
+    <wsdl:part name="parameters" element="tns:InstagramSearch" />
+  </wsdl:message>
+  <wsdl:message name="InstagramSearchSoapOut">
+    <wsdl:part name="parameters" element="tns:InstagramSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="InstagramSingleUserSoapIn">
+    <wsdl:part name="parameters" element="tns:InstagramSingleUser" />
+  </wsdl:message>
+  <wsdl:message name="InstagramSingleUserSoapOut">
+    <wsdl:part name="parameters" element="tns:InstagramSingleUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramCompanyPageSoapIn">
+    <wsdl:part name="parameters" element="tns:getInstagramCompanyPage" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramCompanyPageSoapOut">
+    <wsdl:part name="parameters" element="tns:getInstagramCompanyPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramListSoapIn">
+    <wsdl:part name="parameters" element="tns:getInstagramList" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramListSoapOut">
+    <wsdl:part name="parameters" element="tns:getInstagramListResponse" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramUserRecentActivitiesSoapIn">
+    <wsdl:part name="parameters" element="tns:getInstagramUserRecentActivities" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramUserRecentActivitiesSoapOut">
+    <wsdl:part name="parameters" element="tns:getInstagramUserRecentActivitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramUserDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:getInstagramUserDetails" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramUserDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:getInstagramUserDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="TumblrSearchSoapIn">
+    <wsdl:part name="parameters" element="tns:TumblrSearch" />
+  </wsdl:message>
+  <wsdl:message name="TumblrSearchSoapOut">
+    <wsdl:part name="parameters" element="tns:TumblrSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="YoutubeSearchSoapIn">
+    <wsdl:part name="parameters" element="tns:YoutubeSearch" />
+  </wsdl:message>
+  <wsdl:message name="YoutubeSearchSoapOut">
+    <wsdl:part name="parameters" element="tns:YoutubeSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="YoutubeSearchListSoapIn">
+    <wsdl:part name="parameters" element="tns:YoutubeSearchList" />
+  </wsdl:message>
+  <wsdl:message name="YoutubeSearchListSoapOut">
+    <wsdl:part name="parameters" element="tns:YoutubeSearchListResponse" />
+  </wsdl:message>
+  <wsdl:message name="YoutubeChannelPlayListSoapIn">
+    <wsdl:part name="parameters" element="tns:YoutubeChannelPlayList" />
+  </wsdl:message>
+  <wsdl:message name="YoutubeChannelPlayListSoapOut">
+    <wsdl:part name="parameters" element="tns:YoutubeChannelPlayListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusSearchSoapIn">
+    <wsdl:part name="parameters" element="tns:GooglePlusSearch" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusSearchSoapOut">
+    <wsdl:part name="parameters" element="tns:GooglePlusSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusListSoapIn">
+    <wsdl:part name="parameters" element="tns:GooglePlusList" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusListSoapOut">
+    <wsdl:part name="parameters" element="tns:GooglePlusListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusgetUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GooglePlusgetUser" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusgetUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GooglePlusgetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusgetUserRecentActivitiesSoapIn">
+    <wsdl:part name="parameters" element="tns:GooglePlusgetUserRecentActivities" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusgetUserRecentActivitiesSoapOut">
+    <wsdl:part name="parameters" element="tns:GooglePlusgetUserRecentActivitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getfacebookActiveAceessTokenFromDbHttpGetIn" />
+  <wsdl:message name="getfacebookActiveAceessTokenFromDbHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SearchFacebookPageHttpGetIn">
+    <wsdl:part name="Keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SearchFacebookPageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookkPageListHttpGetIn">
+    <wsdl:part name="Keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookkPageListHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookPageHttpGetIn">
+    <wsdl:part name="PageId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookPageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookPageNotesHttpGetIn">
+    <wsdl:part name="PageId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookPageNotesHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="IsfacebookAccountVerifiedHttpGetIn">
+    <wsdl:part name="fbAccountId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IsfacebookAccountVerifiedHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="TwitterSearchHttpGetIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterSearchHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterAccountPageWithoutLoginHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ScreenName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterAccountPageWithoutLoginHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterUserTimeLineHttpGetIn">
+    <wsdl:part name="ScreenName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterUserTimeLineHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinSearchHttpGetIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinSearchHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinCompanyrecentActivitesHttpGetIn">
+    <wsdl:part name="CompanyId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinCompanyrecentActivitesHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinCompnayJobsHttpGetIn">
+    <wsdl:part name="CompanyId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinCompnayJobsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramSearchHttpGetIn">
+    <wsdl:part name="keyword" type="s:string" />
+    <wsdl:part name="WebUrl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramSearchHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramSingleUserHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramSingleUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramCompanyPageHttpGetIn">
+    <wsdl:part name="Keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramCompanyPageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramListHttpGetIn">
+    <wsdl:part name="Keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramListHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramUserRecentActivitiesHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramUserRecentActivitiesHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramUserDetailsHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramUserDetailsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TumblrSearchHttpGetIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TumblrSearchHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="YoutubeSearchHttpGetIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="YoutubeSearchHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="YoutubeSearchListHttpGetIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="YoutubeSearchListHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="YoutubeChannelPlayListHttpGetIn">
+    <wsdl:part name="ChannelId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="YoutubeChannelPlayListHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusSearchHttpGetIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusSearchHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusListHttpGetIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusListHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusgetUserHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusgetUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusgetUserRecentActivitiesHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusgetUserRecentActivitiesHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getfacebookActiveAceessTokenFromDbHttpPostIn" />
+  <wsdl:message name="getfacebookActiveAceessTokenFromDbHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SearchFacebookPageHttpPostIn">
+    <wsdl:part name="Keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SearchFacebookPageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookkPageListHttpPostIn">
+    <wsdl:part name="Keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookkPageListHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookPageHttpPostIn">
+    <wsdl:part name="PageId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookPageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookPageNotesHttpPostIn">
+    <wsdl:part name="PageId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getFacebookPageNotesHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="IsfacebookAccountVerifiedHttpPostIn">
+    <wsdl:part name="fbAccountId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IsfacebookAccountVerifiedHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="TwitterSearchHttpPostIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterSearchHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterAccountPageWithoutLoginHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ScreenName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterAccountPageWithoutLoginHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterUserTimeLineHttpPostIn">
+    <wsdl:part name="ScreenName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterUserTimeLineHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinSearchHttpPostIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinSearchHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinCompanyrecentActivitesHttpPostIn">
+    <wsdl:part name="CompanyId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinCompanyrecentActivitesHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinCompnayJobsHttpPostIn">
+    <wsdl:part name="CompanyId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinCompnayJobsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramSearchHttpPostIn">
+    <wsdl:part name="keyword" type="s:string" />
+    <wsdl:part name="WebUrl" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramSearchHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramSingleUserHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InstagramSingleUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramCompanyPageHttpPostIn">
+    <wsdl:part name="Keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramCompanyPageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramListHttpPostIn">
+    <wsdl:part name="Keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramListHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramUserRecentActivitiesHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramUserRecentActivitiesHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramUserDetailsHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getInstagramUserDetailsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TumblrSearchHttpPostIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TumblrSearchHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="YoutubeSearchHttpPostIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="YoutubeSearchHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="YoutubeSearchListHttpPostIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="YoutubeSearchListHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="YoutubeChannelPlayListHttpPostIn">
+    <wsdl:part name="ChannelId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="YoutubeChannelPlayListHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusSearchHttpPostIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusSearchHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusListHttpPostIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusListHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusgetUserHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusgetUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusgetUserRecentActivitiesHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GooglePlusgetUserRecentActivitiesHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="CompanypageSoap">
+    <wsdl:operation name="getfacebookActiveAceessTokenFromDb">
+      <wsdl:input message="tns:getfacebookActiveAceessTokenFromDbSoapIn" />
+      <wsdl:output message="tns:getfacebookActiveAceessTokenFromDbSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchFacebookPage">
+      <wsdl:input message="tns:SearchFacebookPageSoapIn" />
+      <wsdl:output message="tns:SearchFacebookPageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookkPageList">
+      <wsdl:input message="tns:getFacebookkPageListSoapIn" />
+      <wsdl:output message="tns:getFacebookkPageListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookPage">
+      <wsdl:input message="tns:getFacebookPageSoapIn" />
+      <wsdl:output message="tns:getFacebookPageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookPageNotes">
+      <wsdl:input message="tns:getFacebookPageNotesSoapIn" />
+      <wsdl:output message="tns:getFacebookPageNotesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsfacebookAccountVerified">
+      <wsdl:input message="tns:IsfacebookAccountVerifiedSoapIn" />
+      <wsdl:output message="tns:IsfacebookAccountVerifiedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterSearch">
+      <wsdl:input message="tns:TwitterSearchSoapIn" />
+      <wsdl:output message="tns:TwitterSearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterAccountPageWithoutLogin">
+      <wsdl:input message="tns:TwitterAccountPageWithoutLoginSoapIn" />
+      <wsdl:output message="tns:TwitterAccountPageWithoutLoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterUserTimeLine">
+      <wsdl:input message="tns:TwitterUserTimeLineSoapIn" />
+      <wsdl:output message="tns:TwitterUserTimeLineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinSearch">
+      <wsdl:input message="tns:LinkedinSearchSoapIn" />
+      <wsdl:output message="tns:LinkedinSearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinCompanyrecentActivites">
+      <wsdl:input message="tns:LinkedinCompanyrecentActivitesSoapIn" />
+      <wsdl:output message="tns:LinkedinCompanyrecentActivitesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinCompnayJobs">
+      <wsdl:input message="tns:LinkedinCompnayJobsSoapIn" />
+      <wsdl:output message="tns:LinkedinCompnayJobsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InstagramSearch">
+      <wsdl:input message="tns:InstagramSearchSoapIn" />
+      <wsdl:output message="tns:InstagramSearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InstagramSingleUser">
+      <wsdl:input message="tns:InstagramSingleUserSoapIn" />
+      <wsdl:output message="tns:InstagramSingleUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramCompanyPage">
+      <wsdl:input message="tns:getInstagramCompanyPageSoapIn" />
+      <wsdl:output message="tns:getInstagramCompanyPageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramList">
+      <wsdl:input message="tns:getInstagramListSoapIn" />
+      <wsdl:output message="tns:getInstagramListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramUserRecentActivities">
+      <wsdl:input message="tns:getInstagramUserRecentActivitiesSoapIn" />
+      <wsdl:output message="tns:getInstagramUserRecentActivitiesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramUserDetails">
+      <wsdl:input message="tns:getInstagramUserDetailsSoapIn" />
+      <wsdl:output message="tns:getInstagramUserDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TumblrSearch">
+      <wsdl:input message="tns:TumblrSearchSoapIn" />
+      <wsdl:output message="tns:TumblrSearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="YoutubeSearch">
+      <wsdl:input message="tns:YoutubeSearchSoapIn" />
+      <wsdl:output message="tns:YoutubeSearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="YoutubeSearchList">
+      <wsdl:input message="tns:YoutubeSearchListSoapIn" />
+      <wsdl:output message="tns:YoutubeSearchListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="YoutubeChannelPlayList">
+      <wsdl:input message="tns:YoutubeChannelPlayListSoapIn" />
+      <wsdl:output message="tns:YoutubeChannelPlayListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusSearch">
+      <wsdl:input message="tns:GooglePlusSearchSoapIn" />
+      <wsdl:output message="tns:GooglePlusSearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusList">
+      <wsdl:input message="tns:GooglePlusListSoapIn" />
+      <wsdl:output message="tns:GooglePlusListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusgetUser">
+      <wsdl:input message="tns:GooglePlusgetUserSoapIn" />
+      <wsdl:output message="tns:GooglePlusgetUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusgetUserRecentActivities">
+      <wsdl:input message="tns:GooglePlusgetUserRecentActivitiesSoapIn" />
+      <wsdl:output message="tns:GooglePlusgetUserRecentActivitiesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CompanypageHttpGet">
+    <wsdl:operation name="getfacebookActiveAceessTokenFromDb">
+      <wsdl:input message="tns:getfacebookActiveAceessTokenFromDbHttpGetIn" />
+      <wsdl:output message="tns:getfacebookActiveAceessTokenFromDbHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchFacebookPage">
+      <wsdl:input message="tns:SearchFacebookPageHttpGetIn" />
+      <wsdl:output message="tns:SearchFacebookPageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookkPageList">
+      <wsdl:input message="tns:getFacebookkPageListHttpGetIn" />
+      <wsdl:output message="tns:getFacebookkPageListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookPage">
+      <wsdl:input message="tns:getFacebookPageHttpGetIn" />
+      <wsdl:output message="tns:getFacebookPageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookPageNotes">
+      <wsdl:input message="tns:getFacebookPageNotesHttpGetIn" />
+      <wsdl:output message="tns:getFacebookPageNotesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsfacebookAccountVerified">
+      <wsdl:input message="tns:IsfacebookAccountVerifiedHttpGetIn" />
+      <wsdl:output message="tns:IsfacebookAccountVerifiedHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterSearch">
+      <wsdl:input message="tns:TwitterSearchHttpGetIn" />
+      <wsdl:output message="tns:TwitterSearchHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterAccountPageWithoutLogin">
+      <wsdl:input message="tns:TwitterAccountPageWithoutLoginHttpGetIn" />
+      <wsdl:output message="tns:TwitterAccountPageWithoutLoginHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterUserTimeLine">
+      <wsdl:input message="tns:TwitterUserTimeLineHttpGetIn" />
+      <wsdl:output message="tns:TwitterUserTimeLineHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinSearch">
+      <wsdl:input message="tns:LinkedinSearchHttpGetIn" />
+      <wsdl:output message="tns:LinkedinSearchHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinCompanyrecentActivites">
+      <wsdl:input message="tns:LinkedinCompanyrecentActivitesHttpGetIn" />
+      <wsdl:output message="tns:LinkedinCompanyrecentActivitesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinCompnayJobs">
+      <wsdl:input message="tns:LinkedinCompnayJobsHttpGetIn" />
+      <wsdl:output message="tns:LinkedinCompnayJobsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InstagramSearch">
+      <wsdl:input message="tns:InstagramSearchHttpGetIn" />
+      <wsdl:output message="tns:InstagramSearchHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InstagramSingleUser">
+      <wsdl:input message="tns:InstagramSingleUserHttpGetIn" />
+      <wsdl:output message="tns:InstagramSingleUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramCompanyPage">
+      <wsdl:input message="tns:getInstagramCompanyPageHttpGetIn" />
+      <wsdl:output message="tns:getInstagramCompanyPageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramList">
+      <wsdl:input message="tns:getInstagramListHttpGetIn" />
+      <wsdl:output message="tns:getInstagramListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramUserRecentActivities">
+      <wsdl:input message="tns:getInstagramUserRecentActivitiesHttpGetIn" />
+      <wsdl:output message="tns:getInstagramUserRecentActivitiesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramUserDetails">
+      <wsdl:input message="tns:getInstagramUserDetailsHttpGetIn" />
+      <wsdl:output message="tns:getInstagramUserDetailsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TumblrSearch">
+      <wsdl:input message="tns:TumblrSearchHttpGetIn" />
+      <wsdl:output message="tns:TumblrSearchHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="YoutubeSearch">
+      <wsdl:input message="tns:YoutubeSearchHttpGetIn" />
+      <wsdl:output message="tns:YoutubeSearchHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="YoutubeSearchList">
+      <wsdl:input message="tns:YoutubeSearchListHttpGetIn" />
+      <wsdl:output message="tns:YoutubeSearchListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="YoutubeChannelPlayList">
+      <wsdl:input message="tns:YoutubeChannelPlayListHttpGetIn" />
+      <wsdl:output message="tns:YoutubeChannelPlayListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusSearch">
+      <wsdl:input message="tns:GooglePlusSearchHttpGetIn" />
+      <wsdl:output message="tns:GooglePlusSearchHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusList">
+      <wsdl:input message="tns:GooglePlusListHttpGetIn" />
+      <wsdl:output message="tns:GooglePlusListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusgetUser">
+      <wsdl:input message="tns:GooglePlusgetUserHttpGetIn" />
+      <wsdl:output message="tns:GooglePlusgetUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusgetUserRecentActivities">
+      <wsdl:input message="tns:GooglePlusgetUserRecentActivitiesHttpGetIn" />
+      <wsdl:output message="tns:GooglePlusgetUserRecentActivitiesHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CompanypageHttpPost">
+    <wsdl:operation name="getfacebookActiveAceessTokenFromDb">
+      <wsdl:input message="tns:getfacebookActiveAceessTokenFromDbHttpPostIn" />
+      <wsdl:output message="tns:getfacebookActiveAceessTokenFromDbHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchFacebookPage">
+      <wsdl:input message="tns:SearchFacebookPageHttpPostIn" />
+      <wsdl:output message="tns:SearchFacebookPageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookkPageList">
+      <wsdl:input message="tns:getFacebookkPageListHttpPostIn" />
+      <wsdl:output message="tns:getFacebookkPageListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookPage">
+      <wsdl:input message="tns:getFacebookPageHttpPostIn" />
+      <wsdl:output message="tns:getFacebookPageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookPageNotes">
+      <wsdl:input message="tns:getFacebookPageNotesHttpPostIn" />
+      <wsdl:output message="tns:getFacebookPageNotesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsfacebookAccountVerified">
+      <wsdl:input message="tns:IsfacebookAccountVerifiedHttpPostIn" />
+      <wsdl:output message="tns:IsfacebookAccountVerifiedHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterSearch">
+      <wsdl:input message="tns:TwitterSearchHttpPostIn" />
+      <wsdl:output message="tns:TwitterSearchHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterAccountPageWithoutLogin">
+      <wsdl:input message="tns:TwitterAccountPageWithoutLoginHttpPostIn" />
+      <wsdl:output message="tns:TwitterAccountPageWithoutLoginHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterUserTimeLine">
+      <wsdl:input message="tns:TwitterUserTimeLineHttpPostIn" />
+      <wsdl:output message="tns:TwitterUserTimeLineHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinSearch">
+      <wsdl:input message="tns:LinkedinSearchHttpPostIn" />
+      <wsdl:output message="tns:LinkedinSearchHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinCompanyrecentActivites">
+      <wsdl:input message="tns:LinkedinCompanyrecentActivitesHttpPostIn" />
+      <wsdl:output message="tns:LinkedinCompanyrecentActivitesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinCompnayJobs">
+      <wsdl:input message="tns:LinkedinCompnayJobsHttpPostIn" />
+      <wsdl:output message="tns:LinkedinCompnayJobsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InstagramSearch">
+      <wsdl:input message="tns:InstagramSearchHttpPostIn" />
+      <wsdl:output message="tns:InstagramSearchHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InstagramSingleUser">
+      <wsdl:input message="tns:InstagramSingleUserHttpPostIn" />
+      <wsdl:output message="tns:InstagramSingleUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramCompanyPage">
+      <wsdl:input message="tns:getInstagramCompanyPageHttpPostIn" />
+      <wsdl:output message="tns:getInstagramCompanyPageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramList">
+      <wsdl:input message="tns:getInstagramListHttpPostIn" />
+      <wsdl:output message="tns:getInstagramListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramUserRecentActivities">
+      <wsdl:input message="tns:getInstagramUserRecentActivitiesHttpPostIn" />
+      <wsdl:output message="tns:getInstagramUserRecentActivitiesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramUserDetails">
+      <wsdl:input message="tns:getInstagramUserDetailsHttpPostIn" />
+      <wsdl:output message="tns:getInstagramUserDetailsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TumblrSearch">
+      <wsdl:input message="tns:TumblrSearchHttpPostIn" />
+      <wsdl:output message="tns:TumblrSearchHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="YoutubeSearch">
+      <wsdl:input message="tns:YoutubeSearchHttpPostIn" />
+      <wsdl:output message="tns:YoutubeSearchHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="YoutubeSearchList">
+      <wsdl:input message="tns:YoutubeSearchListHttpPostIn" />
+      <wsdl:output message="tns:YoutubeSearchListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="YoutubeChannelPlayList">
+      <wsdl:input message="tns:YoutubeChannelPlayListHttpPostIn" />
+      <wsdl:output message="tns:YoutubeChannelPlayListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusSearch">
+      <wsdl:input message="tns:GooglePlusSearchHttpPostIn" />
+      <wsdl:output message="tns:GooglePlusSearchHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusList">
+      <wsdl:input message="tns:GooglePlusListHttpPostIn" />
+      <wsdl:output message="tns:GooglePlusListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusgetUser">
+      <wsdl:input message="tns:GooglePlusgetUserHttpPostIn" />
+      <wsdl:output message="tns:GooglePlusgetUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusgetUserRecentActivities">
+      <wsdl:input message="tns:GooglePlusgetUserRecentActivitiesHttpPostIn" />
+      <wsdl:output message="tns:GooglePlusgetUserRecentActivitiesHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CompanypageSoap" type="tns:CompanypageSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getfacebookActiveAceessTokenFromDb">
+      <soap:operation soapAction="http://tempuri.org/getfacebookActiveAceessTokenFromDb" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchFacebookPage">
+      <soap:operation soapAction="http://tempuri.org/SearchFacebookPage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookkPageList">
+      <soap:operation soapAction="http://tempuri.org/getFacebookkPageList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookPage">
+      <soap:operation soapAction="http://tempuri.org/getFacebookPage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookPageNotes">
+      <soap:operation soapAction="http://tempuri.org/getFacebookPageNotes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsfacebookAccountVerified">
+      <soap:operation soapAction="http://tempuri.org/IsfacebookAccountVerified" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterSearch">
+      <soap:operation soapAction="http://tempuri.org/TwitterSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterAccountPageWithoutLogin">
+      <soap:operation soapAction="http://tempuri.org/TwitterAccountPageWithoutLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterUserTimeLine">
+      <soap:operation soapAction="http://tempuri.org/TwitterUserTimeLine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinSearch">
+      <soap:operation soapAction="http://tempuri.org/LinkedinSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinCompanyrecentActivites">
+      <soap:operation soapAction="http://tempuri.org/LinkedinCompanyrecentActivites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinCompnayJobs">
+      <soap:operation soapAction="http://tempuri.org/LinkedinCompnayJobs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramSearch">
+      <soap:operation soapAction="http://tempuri.org/InstagramSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramSingleUser">
+      <soap:operation soapAction="http://tempuri.org/InstagramSingleUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramCompanyPage">
+      <soap:operation soapAction="http://tempuri.org/getInstagramCompanyPage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramList">
+      <soap:operation soapAction="http://tempuri.org/getInstagramList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramUserRecentActivities">
+      <soap:operation soapAction="http://tempuri.org/getInstagramUserRecentActivities" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramUserDetails">
+      <soap:operation soapAction="http://tempuri.org/getInstagramUserDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TumblrSearch">
+      <soap:operation soapAction="http://tempuri.org/TumblrSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="YoutubeSearch">
+      <soap:operation soapAction="http://tempuri.org/YoutubeSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="YoutubeSearchList">
+      <soap:operation soapAction="http://tempuri.org/YoutubeSearchList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="YoutubeChannelPlayList">
+      <soap:operation soapAction="http://tempuri.org/YoutubeChannelPlayList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusSearch">
+      <soap:operation soapAction="http://tempuri.org/GooglePlusSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusList">
+      <soap:operation soapAction="http://tempuri.org/GooglePlusList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusgetUser">
+      <soap:operation soapAction="http://tempuri.org/GooglePlusgetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusgetUserRecentActivities">
+      <soap:operation soapAction="http://tempuri.org/GooglePlusgetUserRecentActivities" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CompanypageSoap12" type="tns:CompanypageSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getfacebookActiveAceessTokenFromDb">
+      <soap12:operation soapAction="http://tempuri.org/getfacebookActiveAceessTokenFromDb" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchFacebookPage">
+      <soap12:operation soapAction="http://tempuri.org/SearchFacebookPage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookkPageList">
+      <soap12:operation soapAction="http://tempuri.org/getFacebookkPageList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookPage">
+      <soap12:operation soapAction="http://tempuri.org/getFacebookPage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookPageNotes">
+      <soap12:operation soapAction="http://tempuri.org/getFacebookPageNotes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsfacebookAccountVerified">
+      <soap12:operation soapAction="http://tempuri.org/IsfacebookAccountVerified" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterSearch">
+      <soap12:operation soapAction="http://tempuri.org/TwitterSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterAccountPageWithoutLogin">
+      <soap12:operation soapAction="http://tempuri.org/TwitterAccountPageWithoutLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterUserTimeLine">
+      <soap12:operation soapAction="http://tempuri.org/TwitterUserTimeLine" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinSearch">
+      <soap12:operation soapAction="http://tempuri.org/LinkedinSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinCompanyrecentActivites">
+      <soap12:operation soapAction="http://tempuri.org/LinkedinCompanyrecentActivites" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinCompnayJobs">
+      <soap12:operation soapAction="http://tempuri.org/LinkedinCompnayJobs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramSearch">
+      <soap12:operation soapAction="http://tempuri.org/InstagramSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramSingleUser">
+      <soap12:operation soapAction="http://tempuri.org/InstagramSingleUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramCompanyPage">
+      <soap12:operation soapAction="http://tempuri.org/getInstagramCompanyPage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramList">
+      <soap12:operation soapAction="http://tempuri.org/getInstagramList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramUserRecentActivities">
+      <soap12:operation soapAction="http://tempuri.org/getInstagramUserRecentActivities" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramUserDetails">
+      <soap12:operation soapAction="http://tempuri.org/getInstagramUserDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TumblrSearch">
+      <soap12:operation soapAction="http://tempuri.org/TumblrSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="YoutubeSearch">
+      <soap12:operation soapAction="http://tempuri.org/YoutubeSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="YoutubeSearchList">
+      <soap12:operation soapAction="http://tempuri.org/YoutubeSearchList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="YoutubeChannelPlayList">
+      <soap12:operation soapAction="http://tempuri.org/YoutubeChannelPlayList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusSearch">
+      <soap12:operation soapAction="http://tempuri.org/GooglePlusSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusList">
+      <soap12:operation soapAction="http://tempuri.org/GooglePlusList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusgetUser">
+      <soap12:operation soapAction="http://tempuri.org/GooglePlusgetUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusgetUserRecentActivities">
+      <soap12:operation soapAction="http://tempuri.org/GooglePlusgetUserRecentActivities" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CompanypageHttpGet" type="tns:CompanypageHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="getfacebookActiveAceessTokenFromDb">
+      <http:operation location="/getfacebookActiveAceessTokenFromDb" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchFacebookPage">
+      <http:operation location="/SearchFacebookPage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookkPageList">
+      <http:operation location="/getFacebookkPageList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookPage">
+      <http:operation location="/getFacebookPage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookPageNotes">
+      <http:operation location="/getFacebookPageNotes" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsfacebookAccountVerified">
+      <http:operation location="/IsfacebookAccountVerified" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterSearch">
+      <http:operation location="/TwitterSearch" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterAccountPageWithoutLogin">
+      <http:operation location="/TwitterAccountPageWithoutLogin" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterUserTimeLine">
+      <http:operation location="/TwitterUserTimeLine" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinSearch">
+      <http:operation location="/LinkedinSearch" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinCompanyrecentActivites">
+      <http:operation location="/LinkedinCompanyrecentActivites" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinCompnayJobs">
+      <http:operation location="/LinkedinCompnayJobs" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramSearch">
+      <http:operation location="/InstagramSearch" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramSingleUser">
+      <http:operation location="/InstagramSingleUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramCompanyPage">
+      <http:operation location="/getInstagramCompanyPage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramList">
+      <http:operation location="/getInstagramList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramUserRecentActivities">
+      <http:operation location="/getInstagramUserRecentActivities" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramUserDetails">
+      <http:operation location="/getInstagramUserDetails" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TumblrSearch">
+      <http:operation location="/TumblrSearch" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="YoutubeSearch">
+      <http:operation location="/YoutubeSearch" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="YoutubeSearchList">
+      <http:operation location="/YoutubeSearchList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="YoutubeChannelPlayList">
+      <http:operation location="/YoutubeChannelPlayList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusSearch">
+      <http:operation location="/GooglePlusSearch" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusList">
+      <http:operation location="/GooglePlusList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusgetUser">
+      <http:operation location="/GooglePlusgetUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusgetUserRecentActivities">
+      <http:operation location="/GooglePlusgetUserRecentActivities" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CompanypageHttpPost" type="tns:CompanypageHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="getfacebookActiveAceessTokenFromDb">
+      <http:operation location="/getfacebookActiveAceessTokenFromDb" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchFacebookPage">
+      <http:operation location="/SearchFacebookPage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookkPageList">
+      <http:operation location="/getFacebookkPageList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookPage">
+      <http:operation location="/getFacebookPage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacebookPageNotes">
+      <http:operation location="/getFacebookPageNotes" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsfacebookAccountVerified">
+      <http:operation location="/IsfacebookAccountVerified" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterSearch">
+      <http:operation location="/TwitterSearch" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterAccountPageWithoutLogin">
+      <http:operation location="/TwitterAccountPageWithoutLogin" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterUserTimeLine">
+      <http:operation location="/TwitterUserTimeLine" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinSearch">
+      <http:operation location="/LinkedinSearch" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinCompanyrecentActivites">
+      <http:operation location="/LinkedinCompanyrecentActivites" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinCompnayJobs">
+      <http:operation location="/LinkedinCompnayJobs" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramSearch">
+      <http:operation location="/InstagramSearch" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InstagramSingleUser">
+      <http:operation location="/InstagramSingleUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramCompanyPage">
+      <http:operation location="/getInstagramCompanyPage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramList">
+      <http:operation location="/getInstagramList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramUserRecentActivities">
+      <http:operation location="/getInstagramUserRecentActivities" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInstagramUserDetails">
+      <http:operation location="/getInstagramUserDetails" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TumblrSearch">
+      <http:operation location="/TumblrSearch" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="YoutubeSearch">
+      <http:operation location="/YoutubeSearch" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="YoutubeSearchList">
+      <http:operation location="/YoutubeSearchList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="YoutubeChannelPlayList">
+      <http:operation location="/YoutubeChannelPlayList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusSearch">
+      <http:operation location="/GooglePlusSearch" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusList">
+      <http:operation location="/GooglePlusList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusgetUser">
+      <http:operation location="/GooglePlusgetUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GooglePlusgetUserRecentActivities">
+      <http:operation location="/GooglePlusgetUserRecentActivities" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Companypage">
+    <wsdl:port name="CompanypageSoap" binding="tns:CompanypageSoap">
+      <soap:address location="http://localhost:6361/Services/Companypage.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CompanypageSoap12" binding="tns:CompanypageSoap12">
+      <soap12:address location="http://localhost:6361/Services/Companypage.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CompanypageHttpGet" binding="tns:CompanypageHttpGet">
+      <http:address location="http://localhost:6361/Services/Companypage.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CompanypageHttpPost" binding="tns:CompanypageHttpPost">
+      <http:address location="http://localhost:6361/Services/Companypage.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="AddTicketAssigneeStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AssignedUserId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddTicketAssigneeStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddTicketAssigneeStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllAssignedMembers">
+        <s:complexType />
+      </s:element>
+      <s:element name="getAllAssignedMembersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllAssignedMembersResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateAssigneeCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AssigneeUserId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateAssigneeCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateAssigneeCountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAssignedMembers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AssigneeUserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAssignedMembersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAssignedMembersResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddTicketAssigneeStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:AddTicketAssigneeStatus" />
+  </wsdl:message>
+  <wsdl:message name="AddTicketAssigneeStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:AddTicketAssigneeStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllAssignedMembersSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllAssignedMembers" />
+  </wsdl:message>
+  <wsdl:message name="getAllAssignedMembersSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllAssignedMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateAssigneeCountSoapIn">
+    <wsdl:part name="parameters" element="tns:updateAssigneeCount" />
+  </wsdl:message>
+  <wsdl:message name="updateAssigneeCountSoapOut">
+    <wsdl:part name="parameters" element="tns:updateAssigneeCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAssignedMembersSoapIn">
+    <wsdl:part name="parameters" element="tns:getAssignedMembers" />
+  </wsdl:message>
+  <wsdl:message name="getAssignedMembersSoapOut">
+    <wsdl:part name="parameters" element="tns:getAssignedMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllAssignedMembersHttpGetIn" />
+  <wsdl:message name="getAllAssignedMembersHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="updateAssigneeCountHttpGetIn">
+    <wsdl:part name="AssigneeUserId" type="s:string" />
+    <wsdl:part name="Count" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="updateAssigneeCountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAssignedMembersHttpGetIn">
+    <wsdl:part name="AssigneeUserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAssignedMembersHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllAssignedMembersHttpPostIn" />
+  <wsdl:message name="getAllAssignedMembersHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="updateAssigneeCountHttpPostIn">
+    <wsdl:part name="AssigneeUserId" type="s:string" />
+    <wsdl:part name="Count" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="updateAssigneeCountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAssignedMembersHttpPostIn">
+    <wsdl:part name="AssigneeUserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAssignedMembersHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="TicketAssigneeStatusSoap">
+    <wsdl:operation name="AddTicketAssigneeStatus">
+      <wsdl:input message="tns:AddTicketAssigneeStatusSoapIn" />
+      <wsdl:output message="tns:AddTicketAssigneeStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllAssignedMembers">
+      <wsdl:input message="tns:getAllAssignedMembersSoapIn" />
+      <wsdl:output message="tns:getAllAssignedMembersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateAssigneeCount">
+      <wsdl:input message="tns:updateAssigneeCountSoapIn" />
+      <wsdl:output message="tns:updateAssigneeCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAssignedMembers">
+      <wsdl:input message="tns:getAssignedMembersSoapIn" />
+      <wsdl:output message="tns:getAssignedMembersSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TicketAssigneeStatusHttpGet">
+    <wsdl:operation name="getAllAssignedMembers">
+      <wsdl:input message="tns:getAllAssignedMembersHttpGetIn" />
+      <wsdl:output message="tns:getAllAssignedMembersHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateAssigneeCount">
+      <wsdl:input message="tns:updateAssigneeCountHttpGetIn" />
+      <wsdl:output message="tns:updateAssigneeCountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAssignedMembers">
+      <wsdl:input message="tns:getAssignedMembersHttpGetIn" />
+      <wsdl:output message="tns:getAssignedMembersHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TicketAssigneeStatusHttpPost">
+    <wsdl:operation name="getAllAssignedMembers">
+      <wsdl:input message="tns:getAllAssignedMembersHttpPostIn" />
+      <wsdl:output message="tns:getAllAssignedMembersHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateAssigneeCount">
+      <wsdl:input message="tns:updateAssigneeCountHttpPostIn" />
+      <wsdl:output message="tns:updateAssigneeCountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAssignedMembers">
+      <wsdl:input message="tns:getAssignedMembersHttpPostIn" />
+      <wsdl:output message="tns:getAssignedMembersHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TicketAssigneeStatusSoap" type="tns:TicketAssigneeStatusSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddTicketAssigneeStatus">
+      <soap:operation soapAction="http://tempuri.org/AddTicketAssigneeStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllAssignedMembers">
+      <soap:operation soapAction="http://tempuri.org/getAllAssignedMembers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateAssigneeCount">
+      <soap:operation soapAction="http://tempuri.org/updateAssigneeCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAssignedMembers">
+      <soap:operation soapAction="http://tempuri.org/getAssignedMembers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TicketAssigneeStatusSoap12" type="tns:TicketAssigneeStatusSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddTicketAssigneeStatus">
+      <soap12:operation soapAction="http://tempuri.org/AddTicketAssigneeStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllAssignedMembers">
+      <soap12:operation soapAction="http://tempuri.org/getAllAssignedMembers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateAssigneeCount">
+      <soap12:operation soapAction="http://tempuri.org/updateAssigneeCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAssignedMembers">
+      <soap12:operation soapAction="http://tempuri.org/getAssignedMembers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TicketAssigneeStatusHttpGet" type="tns:TicketAssigneeStatusHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="getAllAssignedMembers">
+      <http:operation location="/getAllAssignedMembers" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateAssigneeCount">
+      <http:operation location="/updateAssigneeCount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAssignedMembers">
+      <http:operation location="/getAssignedMembers" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TicketAssigneeStatusHttpPost" type="tns:TicketAssigneeStatusHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="getAllAssignedMembers">
+      <http:operation location="/getAllAssignedMembers" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateAssigneeCount">
+      <http:operation location="/updateAssigneeCount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAssignedMembers">
+      <http:operation location="/getAssignedMembers" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TicketAssigneeStatus">
+    <wsdl:port name="TicketAssigneeStatusSoap" binding="tns:TicketAssigneeStatusSoap">
+      <soap:address location="http://localhost:6361/Services/TicketAssigneeStatus.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TicketAssigneeStatusSoap12" binding="tns:TicketAssigneeStatusSoap12">
+      <soap12:address location="http://localhost:6361/Services/TicketAssigneeStatus.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TicketAssigneeStatusHttpGet" binding="tns:TicketAssigneeStatusHttpGet">
+      <http:address location="http://localhost:6361/Services/TicketAssigneeStatus.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TicketAssigneeStatusHttpPost" binding="tns:TicketAssigneeStatusHttpPost">
+      <http:address location="http://localhost:6361/Services/TicketAssigneeStatus.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

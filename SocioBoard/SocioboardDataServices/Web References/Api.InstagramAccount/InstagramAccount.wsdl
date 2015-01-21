@@ -274,16 +274,16 @@
   </wsdl:binding>
   <wsdl:service name="InstagramAccount">
     <wsdl:port name="InstagramAccountSoap" binding="tns:InstagramAccountSoap">
-      <soap:address location="http://api.socioboard.com/Services/InstagramAccount.asmx" />
+      <soap:address location="http://localhost:6361/Services/InstagramAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramAccountSoap12" binding="tns:InstagramAccountSoap12">
-      <soap12:address location="http://api.socioboard.com/Services/InstagramAccount.asmx" />
+      <soap12:address location="http://localhost:6361/Services/InstagramAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramAccountHttpGet" binding="tns:InstagramAccountHttpGet">
-      <http:address location="http://api.socioboard.com/Services/InstagramAccount.asmx" />
+      <http:address location="http://localhost:6361/Services/InstagramAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramAccountHttpPost" binding="tns:InstagramAccountHttpPost">
-      <http:address location="http://api.socioboard.com/Services/InstagramAccount.asmx" />
+      <http:address location="http://localhost:6361/Services/InstagramAccount.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

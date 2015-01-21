@@ -53,3 +53,17 @@ C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusMai
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\FSharp.Core.xml
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusMailLib\obj\Debug\GlobusMailLib.dll
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusMailLib\obj\Debug\GlobusMailLib.pdb
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusMailLib\bin\Debug\GlobusMailLib.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusMailLib\bin\Debug\GlobusMailLib.pdb
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusMailLib\bin\Debug\FSharp.Core.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusMailLib\bin\Debug\log4net.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusMailLib\bin\Debug\Mandrill.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusMailLib\bin\Debug\Newtonsoft.Json.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusMailLib\bin\Debug\RestSharp.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusMailLib\bin\Debug\SendGridMail.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusMailLib\bin\Debug\ServiceStack.Text.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusMailLib\bin\Debug\System.Net.Http.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusMailLib\bin\Debug\FSharp.Core.xml
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusMailLib\bin\Debug\System.Net.Http.xml
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusMailLib\obj\Debug\GlobusMailLib.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusMailLib\obj\Debug\GlobusMailLib.pdb

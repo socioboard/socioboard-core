@@ -40,3 +40,11 @@ C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusLin
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusLinkedinLib\obj\Debug\GlobusLinkedinLib.csprojResolveAssemblyReference.cache
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusLinkedinLib\obj\Debug\GlobusLinkedinLib.dll
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusLinkedinLib\obj\Debug\GlobusLinkedinLib.pdb
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusLinkedinLib\bin\Debug\GlobusLinkedinLib.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusLinkedinLib\bin\Debug\GlobusLinkedinLib.pdb
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusLinkedinLib\bin\Debug\Domain.Socioboard.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusLinkedinLib\bin\Debug\Newtonsoft.Json.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusLinkedinLib\bin\Debug\Domain.Socioboard.pdb
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusLinkedinLib\obj\Debug\GlobusLinkedinLib.csprojResolveAssemblyReference.cache
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusLinkedinLib\obj\Debug\GlobusLinkedinLib.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusLinkedinLib\obj\Debug\GlobusLinkedinLib.pdb

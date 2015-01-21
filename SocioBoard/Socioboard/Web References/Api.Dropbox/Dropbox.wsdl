@@ -271,16 +271,16 @@
   </wsdl:binding>
   <wsdl:service name="Dropbox">
     <wsdl:port name="DropboxSoap" binding="tns:DropboxSoap">
-      <soap:address location="http://devapi.socioboard.com/Services/Dropbox.asmx" />
+      <soap:address location="http://localhost:6361/Services/Dropbox.asmx" />
     </wsdl:port>
     <wsdl:port name="DropboxSoap12" binding="tns:DropboxSoap12">
-      <soap12:address location="http://devapi.socioboard.com/Services/Dropbox.asmx" />
+      <soap12:address location="http://localhost:6361/Services/Dropbox.asmx" />
     </wsdl:port>
     <wsdl:port name="DropboxHttpGet" binding="tns:DropboxHttpGet">
-      <http:address location="http://devapi.socioboard.com/Services/Dropbox.asmx" />
+      <http:address location="http://localhost:6361/Services/Dropbox.asmx" />
     </wsdl:port>
     <wsdl:port name="DropboxHttpPost" binding="tns:DropboxHttpPost">
-      <http:address location="http://devapi.socioboard.com/Services/Dropbox.asmx" />
+      <http:address location="http://localhost:6361/Services/Dropbox.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

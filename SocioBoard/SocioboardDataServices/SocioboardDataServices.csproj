@@ -51,6 +51,7 @@
     <Compile Include="FacebookData.cs" />
     <Compile Include="InstagramData.cs" />
     <Compile Include="LinkedInData.cs" />
+    <Compile Include="NegativeFeeds.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -118,7 +119,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\Api.SentimentalAnalysis\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\Api.SocialProfile\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Api.Team\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Api.TicketAssigneeStatus\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -221,11 +237,26 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Web References\Api.SentimentalAnalysis\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\Api.SentimentalAnalysis\SentimentalAnalysis.wsdl" />
     <None Include="Web References\Api.SocialProfile\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\Api.SocialProfile\SocialProfile.wsdl" />
+    <None Include="Web References\Api.Team\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\Api.Team\Team.wsdl" />
+    <None Include="Web References\Api.TicketAssigneeStatus\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\Api.TicketAssigneeStatus\TicketAssigneeStatus.wsdl" />
     <None Include="Web References\Api.TumblrAccount\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -396,6 +427,17 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_LinkedinAccount_LinkedinAccount</CachedSettingsPropName>
     </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/Services/SentimentalAnalysis.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.SentimentalAnalysis\</RelPath>
+      <UpdateFromURL>http://localhost:6361/Services/SentimentalAnalysis.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SocioboardDataServices_Api_SentimentalAnalysis_SentimentalAnalysis</CachedSettingsPropName>
+    </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost:6361/Services/SocialProfile.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.SocialProfile\</RelPath>
@@ -406,6 +448,28 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_SocialProfile_SocialProfile</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/Services/Team.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Team\</RelPath>
+      <UpdateFromURL>http://localhost:6361/Services/Team.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SocioboardDataServices_Api_Team_Team</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/Services/TicketAssigneeStatus.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.TicketAssigneeStatus\</RelPath>
+      <UpdateFromURL>http://localhost:6361/Services/TicketAssigneeStatus.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SocioboardDataServices_Api_TicketAssigneeStatus_TicketAssigneeStatus</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost:6361/Services/Tumblr.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
@@ -541,6 +605,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\Api.FacebookStats\FacebookStats.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.SentimentalAnalysis\SentimentalAnalysis.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.Team\Team.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.TicketAssigneeStatus\TicketAssigneeStatus.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

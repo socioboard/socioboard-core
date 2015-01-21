@@ -108,16 +108,16 @@
   </wsdl:binding>
   <wsdl:service name="FacebookFeed">
     <wsdl:port name="FacebookFeedSoap" binding="tns:FacebookFeedSoap">
-      <soap:address location="http://api.socioboard.com/Services/FacebookFeed.asmx" />
+      <soap:address location="http://localhost:6361/Services/FacebookFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookFeedSoap12" binding="tns:FacebookFeedSoap12">
-      <soap12:address location="http://api.socioboard.com/Services/FacebookFeed.asmx" />
+      <soap12:address location="http://localhost:6361/Services/FacebookFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookFeedHttpGet" binding="tns:FacebookFeedHttpGet">
-      <http:address location="http://api.socioboard.com/Services/FacebookFeed.asmx" />
+      <http:address location="http://localhost:6361/Services/FacebookFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookFeedHttpPost" binding="tns:FacebookFeedHttpPost">
-      <http:address location="http://api.socioboard.com/Services/FacebookFeed.asmx" />
+      <http:address location="http://localhost:6361/Services/FacebookFeed.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

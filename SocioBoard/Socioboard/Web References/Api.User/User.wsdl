@@ -1794,16 +1794,16 @@
   </wsdl:binding>
   <wsdl:service name="User">
     <wsdl:port name="UserSoap" binding="tns:UserSoap">
-      <soap:address location="http://devapi.socioboard.com/Services/User.asmx" />
+      <soap:address location="http://localhost:6361/Services/User.asmx" />
     </wsdl:port>
     <wsdl:port name="UserSoap12" binding="tns:UserSoap12">
-      <soap12:address location="http://devapi.socioboard.com/Services/User.asmx" />
+      <soap12:address location="http://localhost:6361/Services/User.asmx" />
     </wsdl:port>
     <wsdl:port name="UserHttpGet" binding="tns:UserHttpGet">
-      <http:address location="http://devapi.socioboard.com/Services/User.asmx" />
+      <http:address location="http://localhost:6361/Services/User.asmx" />
     </wsdl:port>
     <wsdl:port name="UserHttpPost" binding="tns:UserHttpPost">
-      <http:address location="http://devapi.socioboard.com/Services/User.asmx" />
+      <http:address location="http://localhost:6361/Services/User.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

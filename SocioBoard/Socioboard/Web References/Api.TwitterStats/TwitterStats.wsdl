@@ -111,16 +111,16 @@
   </wsdl:binding>
   <wsdl:service name="TwitterStats">
     <wsdl:port name="TwitterStatsSoap" binding="tns:TwitterStatsSoap">
-      <soap:address location="http://devapi.socioboard.com/Services/TwitterStats.asmx" />
+      <soap:address location="http://localhost:6361/Services/TwitterStats.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterStatsSoap12" binding="tns:TwitterStatsSoap12">
-      <soap12:address location="http://devapi.socioboard.com/Services/TwitterStats.asmx" />
+      <soap12:address location="http://localhost:6361/Services/TwitterStats.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterStatsHttpGet" binding="tns:TwitterStatsHttpGet">
-      <http:address location="http://devapi.socioboard.com/Services/TwitterStats.asmx" />
+      <http:address location="http://localhost:6361/Services/TwitterStats.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterStatsHttpPost" binding="tns:TwitterStatsHttpPost">
-      <http:address location="http://devapi.socioboard.com/Services/TwitterStats.asmx" />
+      <http:address location="http://localhost:6361/Services/TwitterStats.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
