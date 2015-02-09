@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 
@@ -15,11 +16,11 @@ namespace Socioboard.Helper
             {
 
                 //Mention URL to redirect content to paypal site
-                redirecturl += "https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=" +
-                                       paypalemail;
+                //redirecturl += "https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=" +
+                //                       paypalemail;
 
-                //redirecturl += "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_xclick&business=" +
-                //paypalemail;
+                redirecturl += ConfigurationManager.AppSettings["PaypalURL"] + "/cgi-bin/webscr?cmd=_xclick&business=" +
+                paypalemail;
 
                 //First name i assign static based on login details assign this value
                 redirecturl += "&first_name=" + name;
@@ -82,5 +83,35 @@ namespace Socioboard.Helper
             return redirecturl;
         }
 
+        public static int ReferedAmountDetails(string plan)
+        {
+            int bonous = 0;
+            if (plan == "FREE" || plan == "Free") {
+                bonous = 20;
+            }
+            else if (plan == "Standard") {
+                bonous = 30;
+            }
+            else if (plan == "Premium") {
+                bonous = 40;
+            }
+            else if (plan == "Deluxe") {
+                bonous = 40;
+            }
+            else if (plan == "SocioBasic") {
+                bonous = 40;
+            }
+            else if (plan == "SocioStandard") {
+                bonous = 40;
+            }
+            else if (plan == "SocioPremium") {
+                bonous = 40;
+            }
+            else if (plan == "SocioDeluxe") {
+                bonous = 40;
+            }
+
+            return bonous;
+        }
     }
 }

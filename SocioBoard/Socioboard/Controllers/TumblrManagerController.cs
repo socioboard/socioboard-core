@@ -12,7 +12,7 @@ namespace Socioboard.Controllers
 {
     [Authorize]
     [CustomAuthorize]
-    public class TumblrManagerController : Controller
+    public class TumblrManagerController : BaseController
     {
         ILog logger = LogManager.GetLogger(typeof(TumblrManagerController));
         //

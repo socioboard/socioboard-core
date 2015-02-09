@@ -81,6 +81,22 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ChangePasswordWithoutOldPassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmailId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangePasswordWithoutOldPasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChangePasswordWithoutOldPasswordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="ProfilesConnected">
         <s:complexType>
           <s:sequence>
@@ -302,6 +318,37 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="UpdateIsKeyUsed">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateIsKeyUsedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateIsKeyUsedResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePaymentandEwalletStatusByUserId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ewallet" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accounttype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="paymentstatus" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePaymentandEwalletStatusByUserIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdatePaymentandEwalletStatusByUserIdResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="UpdateEmailId">
         <s:complexType>
           <s:sequence>
@@ -315,6 +362,21 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="UpdateEmailIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateEwalletAmount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updatedamount" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateEwalletAmountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateEwalletAmountResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -358,6 +420,12 @@
   </wsdl:message>
   <wsdl:message name="ChangePasswordSoapOut">
     <wsdl:part name="parameters" element="tns:ChangePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordWithoutOldPasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:ChangePasswordWithoutOldPassword" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordWithoutOldPasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:ChangePasswordWithoutOldPasswordResponse" />
   </wsdl:message>
   <wsdl:message name="ProfilesConnectedSoapIn">
     <wsdl:part name="parameters" element="tns:ProfilesConnected" />
@@ -455,11 +523,29 @@
   <wsdl:message name="UpdateIsEmailKeyUsedSoapOut">
     <wsdl:part name="parameters" element="tns:UpdateIsEmailKeyUsedResponse" />
   </wsdl:message>
+  <wsdl:message name="UpdateIsKeyUsedSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateIsKeyUsed" />
+  </wsdl:message>
+  <wsdl:message name="UpdateIsKeyUsedSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateIsKeyUsedResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePaymentandEwalletStatusByUserIdSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdatePaymentandEwalletStatusByUserId" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePaymentandEwalletStatusByUserIdSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdatePaymentandEwalletStatusByUserIdResponse" />
+  </wsdl:message>
   <wsdl:message name="UpdateEmailIdSoapIn">
     <wsdl:part name="parameters" element="tns:UpdateEmailId" />
   </wsdl:message>
   <wsdl:message name="UpdateEmailIdSoapOut">
     <wsdl:part name="parameters" element="tns:UpdateEmailIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEwalletAmountSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateEwalletAmount" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEwalletAmountSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateEwalletAmountResponse" />
   </wsdl:message>
   <wsdl:message name="LoginHttpGetIn">
     <wsdl:part name="EmailId" type="s:string" />
@@ -499,6 +585,14 @@
     <wsdl:part name="NewPassword" type="s:string" />
   </wsdl:message>
   <wsdl:message name="ChangePasswordHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordWithoutOldPasswordHttpGetIn">
+    <wsdl:part name="EmailId" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="NewPassword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordWithoutOldPasswordHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="ProfilesConnectedHttpGetIn">
@@ -595,12 +689,34 @@
   <wsdl:message name="UpdateIsEmailKeyUsedHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="UpdateIsKeyUsedHttpGetIn">
+    <wsdl:part name="userID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateIsKeyUsedHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePaymentandEwalletStatusByUserIdHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="ewallet" type="s:string" />
+    <wsdl:part name="accounttype" type="s:string" />
+    <wsdl:part name="paymentstatus" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePaymentandEwalletStatusByUserIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
   <wsdl:message name="UpdateEmailIdHttpGetIn">
     <wsdl:part name="Id" type="s:string" />
     <wsdl:part name="GroupId" type="s:string" />
     <wsdl:part name="NewEmailId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdateEmailIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEwalletAmountHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="updatedamount" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEwalletAmountHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="LoginHttpPostIn">
@@ -641,6 +757,14 @@
     <wsdl:part name="NewPassword" type="s:string" />
   </wsdl:message>
   <wsdl:message name="ChangePasswordHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordWithoutOldPasswordHttpPostIn">
+    <wsdl:part name="EmailId" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="NewPassword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordWithoutOldPasswordHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="ProfilesConnectedHttpPostIn">
@@ -737,12 +861,34 @@
   <wsdl:message name="UpdateIsEmailKeyUsedHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="UpdateIsKeyUsedHttpPostIn">
+    <wsdl:part name="userID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateIsKeyUsedHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePaymentandEwalletStatusByUserIdHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="ewallet" type="s:string" />
+    <wsdl:part name="accounttype" type="s:string" />
+    <wsdl:part name="paymentstatus" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePaymentandEwalletStatusByUserIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
   <wsdl:message name="UpdateEmailIdHttpPostIn">
     <wsdl:part name="Id" type="s:string" />
     <wsdl:part name="GroupId" type="s:string" />
     <wsdl:part name="NewEmailId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdateEmailIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEwalletAmountHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="updatedamount" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEwalletAmountHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:portType name="UserSoap">
@@ -766,6 +912,10 @@
     <wsdl:operation name="ChangePassword">
       <wsdl:input message="tns:ChangePasswordSoapIn" />
       <wsdl:output message="tns:ChangePasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePasswordWithoutOldPassword">
+      <wsdl:input message="tns:ChangePasswordWithoutOldPasswordSoapIn" />
+      <wsdl:output message="tns:ChangePasswordWithoutOldPasswordSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="ProfilesConnected">
       <wsdl:input message="tns:ProfilesConnectedSoapIn" />
@@ -831,9 +981,21 @@
       <wsdl:input message="tns:UpdateIsEmailKeyUsedSoapIn" />
       <wsdl:output message="tns:UpdateIsEmailKeyUsedSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="UpdateIsKeyUsed">
+      <wsdl:input message="tns:UpdateIsKeyUsedSoapIn" />
+      <wsdl:output message="tns:UpdateIsKeyUsedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaymentandEwalletStatusByUserId">
+      <wsdl:input message="tns:UpdatePaymentandEwalletStatusByUserIdSoapIn" />
+      <wsdl:output message="tns:UpdatePaymentandEwalletStatusByUserIdSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="UpdateEmailId">
       <wsdl:input message="tns:UpdateEmailIdSoapIn" />
       <wsdl:output message="tns:UpdateEmailIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEwalletAmount">
+      <wsdl:input message="tns:UpdateEwalletAmountSoapIn" />
+      <wsdl:output message="tns:UpdateEwalletAmountSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="UserHttpGet">
@@ -857,6 +1019,10 @@
     <wsdl:operation name="ChangePassword">
       <wsdl:input message="tns:ChangePasswordHttpGetIn" />
       <wsdl:output message="tns:ChangePasswordHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePasswordWithoutOldPassword">
+      <wsdl:input message="tns:ChangePasswordWithoutOldPasswordHttpGetIn" />
+      <wsdl:output message="tns:ChangePasswordWithoutOldPasswordHttpGetOut" />
     </wsdl:operation>
     <wsdl:operation name="ProfilesConnected">
       <wsdl:input message="tns:ProfilesConnectedHttpGetIn" />
@@ -918,9 +1084,21 @@
       <wsdl:input message="tns:UpdateIsEmailKeyUsedHttpGetIn" />
       <wsdl:output message="tns:UpdateIsEmailKeyUsedHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="UpdateIsKeyUsed">
+      <wsdl:input message="tns:UpdateIsKeyUsedHttpGetIn" />
+      <wsdl:output message="tns:UpdateIsKeyUsedHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaymentandEwalletStatusByUserId">
+      <wsdl:input message="tns:UpdatePaymentandEwalletStatusByUserIdHttpGetIn" />
+      <wsdl:output message="tns:UpdatePaymentandEwalletStatusByUserIdHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="UpdateEmailId">
       <wsdl:input message="tns:UpdateEmailIdHttpGetIn" />
       <wsdl:output message="tns:UpdateEmailIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEwalletAmount">
+      <wsdl:input message="tns:UpdateEwalletAmountHttpGetIn" />
+      <wsdl:output message="tns:UpdateEwalletAmountHttpGetOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="UserHttpPost">
@@ -944,6 +1122,10 @@
     <wsdl:operation name="ChangePassword">
       <wsdl:input message="tns:ChangePasswordHttpPostIn" />
       <wsdl:output message="tns:ChangePasswordHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePasswordWithoutOldPassword">
+      <wsdl:input message="tns:ChangePasswordWithoutOldPasswordHttpPostIn" />
+      <wsdl:output message="tns:ChangePasswordWithoutOldPasswordHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="ProfilesConnected">
       <wsdl:input message="tns:ProfilesConnectedHttpPostIn" />
@@ -1005,9 +1187,21 @@
       <wsdl:input message="tns:UpdateIsEmailKeyUsedHttpPostIn" />
       <wsdl:output message="tns:UpdateIsEmailKeyUsedHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="UpdateIsKeyUsed">
+      <wsdl:input message="tns:UpdateIsKeyUsedHttpPostIn" />
+      <wsdl:output message="tns:UpdateIsKeyUsedHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaymentandEwalletStatusByUserId">
+      <wsdl:input message="tns:UpdatePaymentandEwalletStatusByUserIdHttpPostIn" />
+      <wsdl:output message="tns:UpdatePaymentandEwalletStatusByUserIdHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="UpdateEmailId">
       <wsdl:input message="tns:UpdateEmailIdHttpPostIn" />
       <wsdl:output message="tns:UpdateEmailIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEwalletAmount">
+      <wsdl:input message="tns:UpdateEwalletAmountHttpPostIn" />
+      <wsdl:output message="tns:UpdateEwalletAmountHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="UserSoap" type="tns:UserSoap">
@@ -1050,6 +1244,15 @@
     </wsdl:operation>
     <wsdl:operation name="ChangePassword">
       <soap:operation soapAction="http://tempuri.org/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePasswordWithoutOldPassword">
+      <soap:operation soapAction="http://tempuri.org/ChangePasswordWithoutOldPassword" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1201,8 +1404,35 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="UpdateIsKeyUsed">
+      <soap:operation soapAction="http://tempuri.org/UpdateIsKeyUsed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaymentandEwalletStatusByUserId">
+      <soap:operation soapAction="http://tempuri.org/UpdatePaymentandEwalletStatusByUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="UpdateEmailId">
       <soap:operation soapAction="http://tempuri.org/UpdateEmailId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEwalletAmount">
+      <soap:operation soapAction="http://tempuri.org/UpdateEwalletAmount" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1251,6 +1481,15 @@
     </wsdl:operation>
     <wsdl:operation name="ChangePassword">
       <soap12:operation soapAction="http://tempuri.org/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePasswordWithoutOldPassword">
+      <soap12:operation soapAction="http://tempuri.org/ChangePasswordWithoutOldPassword" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1402,8 +1641,35 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="UpdateIsKeyUsed">
+      <soap12:operation soapAction="http://tempuri.org/UpdateIsKeyUsed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaymentandEwalletStatusByUserId">
+      <soap12:operation soapAction="http://tempuri.org/UpdatePaymentandEwalletStatusByUserId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="UpdateEmailId">
       <soap12:operation soapAction="http://tempuri.org/UpdateEmailId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEwalletAmount">
+      <soap12:operation soapAction="http://tempuri.org/UpdateEwalletAmount" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1457,6 +1723,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ChangePasswordWithoutOldPassword">
+      <http:operation location="/ChangePasswordWithoutOldPassword" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ProfilesConnected">
       <http:operation location="/ProfilesConnected" />
       <wsdl:input>
@@ -1592,8 +1867,35 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="UpdateIsKeyUsed">
+      <http:operation location="/UpdateIsKeyUsed" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaymentandEwalletStatusByUserId">
+      <http:operation location="/UpdatePaymentandEwalletStatusByUserId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="UpdateEmailId">
       <http:operation location="/UpdateEmailId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEwalletAmount">
+      <http:operation location="/UpdateEwalletAmount" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -1647,6 +1949,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ChangePasswordWithoutOldPassword">
+      <http:operation location="/ChangePasswordWithoutOldPassword" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ProfilesConnected">
       <http:operation location="/ProfilesConnected" />
       <wsdl:input>
@@ -1782,8 +2093,35 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="UpdateIsKeyUsed">
+      <http:operation location="/UpdateIsKeyUsed" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaymentandEwalletStatusByUserId">
+      <http:operation location="/UpdatePaymentandEwalletStatusByUserId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="UpdateEmailId">
       <http:operation location="/UpdateEmailId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEwalletAmount">
+      <http:operation location="/UpdateEwalletAmount" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -1794,16 +2132,16 @@
   </wsdl:binding>
   <wsdl:service name="User">
     <wsdl:port name="UserSoap" binding="tns:UserSoap">
-      <soap:address location="http://devapi.socioboard.com/Services/User.asmx" />
+      <soap:address location="http://api.socioboard.com/Services/User.asmx" />
     </wsdl:port>
     <wsdl:port name="UserSoap12" binding="tns:UserSoap12">
-      <soap12:address location="http://devapi.socioboard.com/Services/User.asmx" />
+      <soap12:address location="http://api.socioboard.com/Services/User.asmx" />
     </wsdl:port>
     <wsdl:port name="UserHttpGet" binding="tns:UserHttpGet">
-      <http:address location="http://devapi.socioboard.com/Services/User.asmx" />
+      <http:address location="http://api.socioboard.com/Services/User.asmx" />
     </wsdl:port>
     <wsdl:port name="UserHttpPost" binding="tns:UserHttpPost">
-      <http:address location="http://devapi.socioboard.com/Services/User.asmx" />
+      <http:address location="http://api.socioboard.com/Services/User.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

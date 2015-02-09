@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Socioboard.Controllers
 {
-    public class FacebookController : Controller
+    public class FacebookController : BaseController
     {
         //
         // GET: /Facebook/

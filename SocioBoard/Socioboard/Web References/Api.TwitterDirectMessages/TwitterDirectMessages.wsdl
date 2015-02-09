@@ -177,16 +177,16 @@
   </wsdl:binding>
   <wsdl:service name="TwitterDirectMessages">
     <wsdl:port name="TwitterDirectMessagesSoap" binding="tns:TwitterDirectMessagesSoap">
-      <soap:address location="http://devapi.socioboard.com/Services/TwitterDirectMessages.asmx" />
+      <soap:address location="http://api.socioboard.com/Services/TwitterDirectMessages.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterDirectMessagesSoap12" binding="tns:TwitterDirectMessagesSoap12">
-      <soap12:address location="http://devapi.socioboard.com/Services/TwitterDirectMessages.asmx" />
+      <soap12:address location="http://api.socioboard.com/Services/TwitterDirectMessages.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterDirectMessagesHttpGet" binding="tns:TwitterDirectMessagesHttpGet">
-      <http:address location="http://devapi.socioboard.com/Services/TwitterDirectMessages.asmx" />
+      <http:address location="http://api.socioboard.com/Services/TwitterDirectMessages.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterDirectMessagesHttpPost" binding="tns:TwitterDirectMessagesHttpPost">
-      <http:address location="http://devapi.socioboard.com/Services/TwitterDirectMessages.asmx" />
+      <http:address location="http://api.socioboard.com/Services/TwitterDirectMessages.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

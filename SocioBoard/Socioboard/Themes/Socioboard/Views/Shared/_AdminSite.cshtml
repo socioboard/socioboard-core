@@ -102,11 +102,14 @@
                             if (ObjUser.ProfileUrl != null && ObjUser.ProfileUrl != "")
                             {
 
-
-                                string[] list = ObjUser.ProfileUrl.Split(new string[] { "wwwroot\\" }, StringSplitOptions.None);
+                                try
+                                {
+                                     string[] list = ObjUser.ProfileUrl.Split(new string[] { "wwwroot\\" }, StringSplitOptions.None);
                                 string ImapgePath = "..\\" + list[1];
 
                                 <img src="@ImapgePath" class=" headerProfilePic"><strong>@ObjUser.UserName</strong><i class="fa fa-caret-down fa-2x"></i>
+                                }catch{}
+                               
                             }
                             else
                             {
@@ -117,13 +120,13 @@
                         @*<img src="https://pbs.twimg.com/profile_images/507048905217802240/MjAkkHK_.jpeg" class=" headerProfilePic"><strong>@ObjUser.UserName</strong><i class="fa fa-caret-down fa-2x"></i>*@
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="../AdminSetting/Index"><i class="fa fa-gear fa-2x fa-fw"></i> Settings</a>
+                        <li><a href="../AdminSetting/Index"><i class="fa fa-gear fa-2x fa-fw"></i> @GlobusMultiLanguageLib.Resources.Shared_AdminSite_Settings</a>
                         </li>
 
                         @*<li><a href=""><i class="fa fa-gear fa-2x fa-fw"></i> Settings</a>
                         </li>*@
                         <li class="divider"></li>
-                        <li><a href="../Index/Logout"><i class="fa fa-sign-out fa-2x fa-fw"></i> Logout</a>
+                        <li><a href="../Index/Logout"><i class="fa fa-sign-out fa-2x fa-fw"></i> @GlobusMultiLanguageLib.Resources.Shared_AdminSite_LogOut</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -139,19 +142,19 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a class="active" href="../AdminHome/Dashboard"><i class="fa fa-dashboard fa-fw fa-2x"></i> Dashboard</a>
+                            <a class="active" href="../AdminHome/Dashboard"><i class="fa fa-dashboard fa-fw fa-2x"></i> @GlobusMultiLanguageLib.Resources.Shared_AdminSite_DashBoard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-envelope fa-fw fa-2x"></i> Users<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-envelope fa-fw fa-2x"></i> @GlobusMultiLanguageLib.Resources.Shared_AdminSite_Users<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="../UserDetails/ManageUser"> Manage Users</a>
+                                    <a href="../UserDetails/ManageUser"> @GlobusMultiLanguageLib.Resources.Shared_AdminSite_ManageUsers</a>
                                 </li>
                                 <li>
-                                    <a href="../UserDetails/ManageProfile"> Manage Profile</a>
+                                    <a href="../UserDetails/ManageProfile"> @GlobusMultiLanguageLib.Resources.Shared_AdminSite_ManageProfile</a>
                                 </li>
                                 <li>
-                                    <a href="../UserDetails/LoadDeletedUsers"> Deleted Users</a>
+                                    <a href="../UserDetails/LoadDeletedUsers"> @GlobusMultiLanguageLib.Resources.Shared_AdminSite_DeleteUsers</a>
                                 </li>
                                 @*<li>
                                     <a href="#"> Online Users</a>
@@ -163,10 +166,10 @@
                             <!-- /.nav-second-level -->
                         </li>
                        <li>
-                            <a href="#"><i class="fa fa-link fa-fw fa-2x"></i> Packages<i class="fa arrow"></i></a>
+                            <a href="#"><i class="fa fa-link fa-fw fa-2x"></i> @GlobusMultiLanguageLib.Resources.Shared_AdminSite_Packages<i class="fa arrow"></i></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="../Package/ManagePackage">Manage Packages</span></a>
+                                    <a href="../Package/ManagePackage">@GlobusMultiLanguageLib.Resources.Shared_AdminSite_ManagePackages</span></a>
                                     <!-- /.nav-third-level -->
                                 </li>
                             </ul>
@@ -174,55 +177,55 @@
                         </li>
                         
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw fa-2x"></i> News<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-wrench fa-fw fa-2x"></i> @GlobusMultiLanguageLib.Resources.Shared_AdminSite_News<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="../News/ManageNews"> Manage News</a>
+                                    <a href="../News/ManageNews"> @GlobusMultiLanguageLib.Resources.Shared_AdminSite_ManageNews</a>
                                 </li>
                                 <li>
-                                    <a href="../News/CreateNews"> Add News</a>
+                                    <a href="../News/CreateNews"> @GlobusMultiLanguageLib.Resources.Shared_AdminSite_AddNews</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw fa-2x"></i> News Letter<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-sitemap fa-fw fa-2x"></i> @GlobusMultiLanguageLib.Resources.Shared_AdminSite_NewsLetter<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="../AddNewsLatter/LoadAddNewsLatter">Add News Letter</a>
+                                    <a href="../AddNewsLatter/LoadAddNewsLatter">@GlobusMultiLanguageLib.Resources.Shared_AdminSite_AddNewsLetter</a>
                                 </li>                                
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw fa-2x"></i> Advertisement<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-sitemap fa-fw fa-2x"></i> @GlobusMultiLanguageLib.Resources.Shared_AdminSite_Advertisements<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="../Advertisement/ManageAdvertisement">Manage Advertisement</a>
+                                    <a href="../Advertisement/ManageAdvertisement">@GlobusMultiLanguageLib.Resources.Shared_AdminSite_ManageAdvertisement</a>
                                 </li>   
                                 <li>
-                                    <a href="../Advertisement/CreateAdvertisement">Add Advertisement</a>
+                                    <a href="../Advertisement/CreateAdvertisement">@GlobusMultiLanguageLib.Resources.Shared_AdminSite_AddAdvertisement</a>
                                 </li>                              
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw fa-2x"></i> Services<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-sitemap fa-fw fa-2x"></i> @GlobusMultiLanguageLib.Resources.Shared_AdminSite_Service<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="../Services/Scheduling">Scheduling Details</a>
+                                    <a href="../Services/Scheduling">@GlobusMultiLanguageLib.Resources.Shared_AdminSite_SchedulingDetails</a>
                                 </li>                                
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw fa-2x"></i> Coupon<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-sitemap fa-fw fa-2x"></i> @GlobusMultiLanguageLib.Resources.Shared_AdminSite_Coupon<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="../Coupons/ManageCoupons">Manage Coupons</a>
+                                    <a href="../Coupons/ManageCoupons">@GlobusMultiLanguageLib.Resources.Shared_AdminSite_ManageCoupon</a>
                                 </li>                  
                                  <li>
-                                    <a href="../Coupons/CreateCoupons">Add Coupons</a>
+                                    <a href="../Coupons/CreateCoupons">@GlobusMultiLanguageLib.Resources.Shared_AdminSite_AddCoupon</a>
                                 </li>  
                                            
                             </ul>
@@ -255,8 +258,8 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="myModalLabel">New Message</h4>
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Shared_AdminSite_Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">@GlobusMultiLanguageLib.Resources.Shared_AdminSite_NewMessage</h4>
                     </div>
                     <div class="modal-body col-md-12">
                         <div class="col-md-3">
@@ -264,7 +267,7 @@
                             <hr class="small">
                             <!-- Split button -->
                             <div class="btn-group">
-                              <button type="button" class="btn btn-warning">Action</button>
+                              <button type="button" class="btn btn-warning">@GlobusMultiLanguageLib.Resources.Shared_AdminSite_Action</button>
                               <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
                                 <span class="caret"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
@@ -285,7 +288,7 @@
                             <div class="form-group">
                                 <input type="file" id="exampleInputFile">
                                 <input type="file" id="exampleInputFile">
-                                <p class="help-block">Interval Time:</p>
+                                <p class="help-block">@GlobusMultiLanguageLib.Resources.Shared_AdminSite_IntervalTime:</p>
                                 <select class="form-control">
                                   <option>1</option>
                                   <option>2</option>
@@ -297,8 +300,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Send</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">@GlobusMultiLanguageLib.Resources.Shared_AdminSite_Send</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@GlobusMultiLanguageLib.Resources.Shared_AdminSite_Close</button>
                     </div>
                 </div>
             </div>

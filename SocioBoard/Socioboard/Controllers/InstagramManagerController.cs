@@ -12,7 +12,7 @@ namespace Socioboard.Controllers
 {
     [Authorize]
     [CustomAuthorize]
-    public class InstagramManagerController : Controller
+    public class InstagramManagerController : BaseController
     {
         ILog logger = LogManager.GetLogger(typeof(InstagramManagerController));
         //

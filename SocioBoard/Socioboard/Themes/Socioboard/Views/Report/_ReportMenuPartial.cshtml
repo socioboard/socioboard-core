@@ -8,7 +8,7 @@
 <ul class="nav nav-second-level">
 
     <li>
-            <a onclick="loadgroupstat(7)" href="#">GroupReport@*<span class="fa arrow"></span>*@</a></li>
+        <a onclick="loadgroupstat(7)" href="#">GroupReport@*<span class="fa arrow"></span>*@</a></li>
 
     @foreach (var item in (Dictionary<string, List<object>>)Model)
     {
@@ -16,7 +16,7 @@
         {
             List<object> lstFacebookAccount = (List<object>)item.Value;
             string profileimage = string.Empty;
-            if (lstFacebookAccount.Count>0)
+            if (lstFacebookAccount.Count > 0)
             {
         <li>
             <a href="#">FacebookReport <span class="fa arrow"></span></a>
@@ -31,7 +31,7 @@
             </ul>
             <!-- /.nav-third-level -->
         </li>
-    }
+            }
         }
         if (item.Key == "twitter")
         {
@@ -49,16 +49,16 @@
                         <a href="#">@objTwitterAccount.TwitterScreenName</a>
                     </li> 
                 }
-               
+
             </ul>
             <!-- /.nav-third-level -->
         </li>
-    }
-        }                
+            }
+        }
     }
 
-     <li>
-            <a onclick="TeamReportDetails(7);" href="#">TeamReport@*<span class="fa arrow"></span>*@</a></li>
+    <li>
+        <a onclick="TeamReportDetails(7);" href="#">TeamReport@*<span class="fa arrow"></span>*@</a></li>
 
 
 

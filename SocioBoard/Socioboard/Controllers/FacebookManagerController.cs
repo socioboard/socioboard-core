@@ -16,18 +16,19 @@ using Socioboard.App_Start;
 
 namespace Socioboard.Controllers
 {
-    
-    public class FacebookManagerController : Controller
+
+    public class FacebookManagerController : BaseController
     {
         ILog logger = LogManager.GetLogger(typeof(FacebookManagerController));
         //
         // GET: /FacebookManager/
 
+        //[CustomAuthorize]
         public ActionResult Index()
         {
             return View();
         }
-
+        [CustomAuthorize]
         public ActionResult Facebook(string code)
         {
             if (Session["fblogin"] != null)
@@ -115,6 +116,7 @@ namespace Socioboard.Controllers
                 string facebookcode = code;
                 Api.Facebook.Facebook apiobjFacebook = new Api.Facebook.Facebook();
                 string AddfacebookAccount = apiobjFacebook.AddFacebookAccount(facebookcode, objUser.Id.ToString(), Session["group"].ToString());
+                //string AddfacebookAccount = apiobjFacebook.AddFacebookAccountAsync(facebookcode, objUser.Id.ToString(), Session["group"].ToString());
 
                 if (AddfacebookAccount == "issue_access_token")
                 {
@@ -123,6 +125,15 @@ namespace Socioboard.Controllers
                 else
                 {
                     Session["SocialManagerInfo"] = AddfacebookAccount;
+                    //try
+                    //{
+                    //    apiobjFacebook.AddFacebookAccountWithPaginationAsync(facebookcode, objUser.Id.ToString(), Session["group"].ToString());
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    logger.Error(ex.StackTrace);
+                    //    logger.Error(ex.Message);
+                    //}
                 }
             }
             return RedirectToAction("Index", "Home");
@@ -157,12 +168,12 @@ namespace Socioboard.Controllers
                     //if (System.Web.HttpContext.Current.Request.Url.Authority.ToLower().Equals("socioboard.com")) 
                     //{
                     //    Session["fbloginredircturl"] = "http://socioboard.com/FacebookManager/Facebook";
-                    //    facebookurl = "http://www.facebook.com/v1.0/dialog/oauth/?scope=user_friends,read_friendlists,publish_actions,publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,user_groups,offline_access,publish_actions,manage_pages&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=http://socioboard.com/FacebookManager/Facebook&response_type=code";
+                    //    facebookurl = "http://www.facebook.com/v2.0/dialog/oauth/?scope=user_friends,read_friendlists,publish_actions,publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,user_groups,offline_access,publish_actions,manage_pages&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=http://socioboard.com/FacebookManager/Facebook&response_type=code";
                     //}
                     //else if (System.Web.HttpContext.Current.Request.Url.Authority.ToLower().Equals("www.socioboard.com"))
                     //{
                     //    Session["fbloginredircturl"] = "http://www.socioboard.com/FacebookManager/Facebook";
-                    //    facebookurl = "http://www.facebook.com/v1.0/dialog/oauth/?scope=user_friends,read_friendlists,publish_actions,publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,user_groups,offline_access,publish_actions,manage_pages&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=http://www.socioboard.com/FacebookManager/Facebook&response_type=code";
+                    //    facebookurl = "http://www.facebook.com/v2.0/dialog/oauth/?scope=user_friends,read_friendlists,publish_actions,publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,user_groups,offline_access,publish_actions,manage_pages&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=http://www.socioboard.com/FacebookManager/Facebook&response_type=code";
                     //}
                     //else 
                     //{
@@ -242,7 +253,7 @@ namespace Socioboard.Controllers
                 lstAddFacebookPage = (List<Domain.Socioboard.Domain.AddFacebookPage>)Session["fbpage"];
                 foreach (var item in lstAddFacebookPage)
                 {
-                    ret += item.Name + "`" + item.ProfilePageId + "`" + item.AccessToken + "`" + item.Email + "~";
+                    ret += item.Name + "`" + item.ProfilePageId + "`" + item.AccessToken + "`" + item.Email + "`" + item.LikeCount + "~";
                 }
                 ret = ret.Substring(0, ret.Length - 1);
                 Session["fbpage"] = null;
@@ -260,6 +271,10 @@ namespace Socioboard.Controllers
             Api.Facebook.Facebook objApiFacebook = new Api.Facebook.Facebook();
             Domain.Socioboard.Domain.User objUser = new Domain.Socioboard.Domain.User();
             objUser = (Domain.Socioboard.Domain.User)Session["User"];
+            //objApiFacebook.AddFacebookPagesInfo(objUser.Id.ToString(), profileid, accesstoken, Session["group"].ToString(), email);
+            objApiFacebook.AddFacebookPagesInfoAsync(objUser.Id.ToString(), profileid, accesstoken, Session["group"].ToString(), email);
+
+            //Api.Facebook.Facebook objApiFacebook1 = new Api.Facebook.Facebook();
             objApiFacebook.AddFacebookPagesInfo(objUser.Id.ToString(), profileid, accesstoken, Session["group"].ToString(), email);
             return Content("");
         }

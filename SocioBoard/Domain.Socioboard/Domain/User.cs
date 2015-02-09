@@ -28,7 +28,7 @@ namespace Domain.Socioboard.Domain
         public int IsKeyUsed { get; set; }
         public string ChangeEmailKey { get; set; }
         public int IsEmailKeyUsed { get; set; }
-
+        public string Ewallet { get; set; }
         public static List<User> lstUser = new List<User>();
     }
 }

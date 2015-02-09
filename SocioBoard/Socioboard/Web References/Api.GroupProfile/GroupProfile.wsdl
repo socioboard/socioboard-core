@@ -283,16 +283,16 @@
   </wsdl:binding>
   <wsdl:service name="GroupProfile">
     <wsdl:port name="GroupProfileSoap" binding="tns:GroupProfileSoap">
-      <soap:address location="http://devapi.socioboard.com/Services/GroupProfile.asmx" />
+      <soap:address location="http://api.socioboard.com/Services/GroupProfile.asmx" />
     </wsdl:port>
     <wsdl:port name="GroupProfileSoap12" binding="tns:GroupProfileSoap12">
-      <soap12:address location="http://devapi.socioboard.com/Services/GroupProfile.asmx" />
+      <soap12:address location="http://api.socioboard.com/Services/GroupProfile.asmx" />
     </wsdl:port>
     <wsdl:port name="GroupProfileHttpGet" binding="tns:GroupProfileHttpGet">
-      <http:address location="http://devapi.socioboard.com/Services/GroupProfile.asmx" />
+      <http:address location="http://api.socioboard.com/Services/GroupProfile.asmx" />
     </wsdl:port>
     <wsdl:port name="GroupProfileHttpPost" binding="tns:GroupProfileHttpPost">
-      <http:address location="http://devapi.socioboard.com/Services/GroupProfile.asmx" />
+      <http:address location="http://api.socioboard.com/Services/GroupProfile.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

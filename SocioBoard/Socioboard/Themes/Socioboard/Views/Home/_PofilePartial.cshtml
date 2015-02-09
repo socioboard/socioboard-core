@@ -14,6 +14,7 @@
         @*<div class="delet_icon" onclick="confirmDel('@objFacebookAccount.FbUserId','fb','fb');"></div>*@
         @if(objFacebookAccount.IsActive==2)
         {
+            <div class="delet_icon" onclick="confirmDel('@objFacebookAccount.FbUserId','@item.Key.ProfileType','fb');"></div>
         <a title="Click here to update your Account" href="@Socioboard.Helper.SBUtils.GetFacebookRedirectLink()" target="_blank">
             <img src="/Themes/@path/Contents/img/update.png" class="img-responsive btn btn-default btn-block profilePicsize"></a>
         }
@@ -99,12 +100,13 @@
     <div class="col-sm-6 userpictiny">
         <div class="delet_icon" onclick="confirmDel('@objLinkedinCompanyPage.LinkedinPageId','liComPage','liComPage');"></div>
         <a title="@objLinkedinCompanyPage.LinkedinPageName" href="https://www.linkedin.com/company/@objLinkedinCompanyPage.LinkedinPageId" target="_blank">
-            <img src="@LdPreofilePic" class="img-responsive btn btn-default btn-block"></a>
+            <img src="@LdPreofilePic" class="img-responsive btn btn-default btn-block profilePicsize"></a>
         <img  src="/Themes/@path/Contents/img/link_icon.png" class="img-responsive img-circle socialIconPoss">
     </div>
         }
        
     }
+    
 }
 @{if (Convert.ToInt32(Session["ProfileCount"]) < Convert.ToInt32(Session["TotalAccount"]))
   {
@@ -112,39 +114,44 @@
     <div class="btn-group pull-right">
         <img class="img-responsive btn btn-default btn-block dropdown-toggle" src="/Themes/@path/Contents/img/addprofile.png" data-toggle="dropdown" />
         <ul class="dropdown-menu slidedown">
-            <li onclick="facebookpopup()" >
+            <li @*onclick="facebookpopup()"*@ data-target="#facebookpopup" data-toggle="modal">
               @*  <a href="../FacebookManager/AuthenticateFacebook">*@
                      <a href="#">
-                    <i class="fa fa-facebook-square fa-fw"></i>Facebook
+                    <i class="fa fa-facebook-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Facebook
                 </a>
             </li>
             <li>
                 <a href="../TwitterManager/AuthenticateTwitter">
-                    <i class="fa fa-twitter-square fa-fw"></i>Twitter
+                    <i class="fa fa-twitter-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Twitter
                 </a>
             </li>
             <li  onclick="linkedinpopup()">
                 @*<a href="../LinkedinManager/AuthenticateLinkedin">*@
                 <a href="#">
-                    <i class="fa fa-linkedin-square fa-fw"></i>LinkedIn
+                    <i class="fa fa-linkedin-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Linkedin
                 </a>
             </li>
             <li>
                 <a href="../InstagramManager/AuthenticateInstagram">
-                    <i class="fa fa-instagram fa-fw"></i>instagram
+                    <i class="fa fa-instagram fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Instagram
                 </a>
             </li>
 
             <li>
                 <a href="../TumblrManager/AuthenticateTumblr">
-                    <i class="fa fa-tumblr-square fa-fw"></i>Tumblr
+                    <i class="fa fa-tumblr-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Tumblr
                 </a>
             </li>
             <li>
                 <a href="../YoutubeManager/AuthenticateYoutube">
-                    <i class="fa fa-youtube-square fa-fw"></i>YouTube
+                    <i class="fa fa-youtube-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Youtube
                 </a>
             </li>
+             @*<li>
+                <a href="../WordpressManager/AuthenticateWordpress">
+                    <i class="fa fa-wordpress-square fa-fw"></i>Wordpress
+                </a>
+            </li>*@
         </ul>
     </div>
 </div>

@@ -37,20 +37,22 @@
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="col-md-12">
-            <h1 class="page-header">Schedule Message</h1>
+            <h1 class="page-header">@GlobusMultiLanguageLib.Resources.Publishing_Index_ScheduleMessage</h1>
 
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-12">
+                            <span style="margin-left:85%">@GlobusMultiLanguageLib.Resources.Publishing_Index_SelectProfile</span> 
                             @* <span>Add Accounts to Schedule Message</span>*@
-                            <div class="btn-group pull-right">
-                                <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle" type="button">
+                           <a href="#" title="Please Select Profile From Here"><div class="btn-group pull-right" >
+                              
+                                 <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle" type="button" >
                                     <i class="fa fa-chevron-down fa-2x"></i>
                                 </button>
                                 <ul class="dropdown-menu slidedown" id="binduserforcompose">
                                 </ul>
-                            </div>
+                            </div></a>
                         </div>
                     </div>
                 </div>
@@ -95,8 +97,8 @@
 
                     <div class="panel-footer">
 
-                        <button id="scheduled" class="btn btn-outline btn-default" type="button">Schedeule</button>
-                        <button type="button" class="btn btn-outline btn-default" id="savedraft">Save To Drafts</button>
+                        <button id="scheduled" class="btn btn-outline btn-default" type="button">@GlobusMultiLanguageLib.Resources.Publishing_Index_Schedule</button>
+                        <button type="button" class="btn btn-outline btn-default" id="savedraft">@GlobusMultiLanguageLib.Resources.Publishing_Index_SaveToDraft</button>
 
                     </div>
                 </div>
@@ -229,7 +231,7 @@
         $('#scheduledmsg a').addClass('active');
         $('#scheduleddate').datepicker({
             multidate: true,
-            format:"dd/mm/yyyy",
+             format: "yyyy/mm/dd",//format:"dd/mm/yyyy",
             todayHighlight: true,
             startDate: 'd',
             clearBtn: true
@@ -372,7 +374,8 @@
             }
 
             //var now = (curdate.getMonth() + 1) + "/" + (curdate.getDate.length<1? '0' : '') +curdate.getDate() + "/" + curdate.getFullYear() + " " + curdate.getHours() + ":" + curdate.getMinutes() + ":" + (curdate.getSeconds() < 10 ? '0' + curdate.getSeconds() : curdate.getSeconds());
-            var now = mm + "/" + dd + "/" + curdate.getFullYear() + " " + hh + ":" + minm + ":" + sec;
+            //var now = mm + "/" + dd + "/" + curdate.getFullYear() + " " + hh + ":" + minm + ":" + sec;
+			var now = curdate.getFullYear() + "/" + mm + "/" + dd + " " + hh + ":" + minm + ":" + sec;
             var fd = new FormData();
             var filesimage = document.getElementById('scheduleimageupload').files[0];
             if (filesimage != null) {
@@ -384,7 +387,9 @@
             var scheduledtime2 = scheduledtime1.split(" ");
             var scheduledtime3 = scheduledtime2[0] + ':00';
             var schdd = scheduledtime3.split(":");
+           
             var shdd = schdd[0];
+           
             var shmin = schdd[1];
             var shsec = schdd[2];
             if (shdd < 10) {
@@ -399,6 +404,11 @@
             }
             else {
                 shmin = schdd[1];
+            }
+            if (scheduledtime2[1] == "PM") {
+                if (shdd != "12") {
+                    shdd = +shdd + +12;
+                }
             }
             var scheduledtime = shdd + ":" + shmin + ":" + shsec;
             var allprofiles = '';
@@ -460,6 +470,7 @@
                     $('#txtscheduled').val('');
                     $('#scheduleddate').val('');
                     $('#scheduledtime').val('');
+                    $('#tumbnail').children().html('');
                     alertify.set({ delay: 1000 });
                     alertify.success('Message Scheduled Successfully');
                     arrbinduser = [];

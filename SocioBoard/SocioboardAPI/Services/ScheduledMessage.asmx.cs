@@ -458,11 +458,7 @@ namespace Api.Socioboard.Services
                 Console.WriteLine(ex.StackTrace);
             }
             return countdetails;
-        
         }
-
-
-
         //vikash
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -570,7 +566,6 @@ namespace Api.Socioboard.Services
     
         public string AddAllScheduledMessage(string typeandid, string ShareMessage, string ClientTime, string scheduleddate, string scheduletime, string UserId, string PicUrl)
         {
-
             string[] datearr = scheduleddate.Split(',');
             foreach (var date in datearr)
             {
@@ -599,9 +594,6 @@ namespace Api.Socioboard.Services
                     }
                 }
             }
-
-
-
             return "";
         }
 

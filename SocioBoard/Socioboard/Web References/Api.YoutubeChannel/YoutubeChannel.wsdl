@@ -108,16 +108,16 @@
   </wsdl:binding>
   <wsdl:service name="YoutubeChannel">
     <wsdl:port name="YoutubeChannelSoap" binding="tns:YoutubeChannelSoap">
-      <soap:address location="http://devapi.socioboard.com/Services/YoutubeChannel.asmx" />
+      <soap:address location="http://api.socioboard.com/Services/YoutubeChannel.asmx" />
     </wsdl:port>
     <wsdl:port name="YoutubeChannelSoap12" binding="tns:YoutubeChannelSoap12">
-      <soap12:address location="http://devapi.socioboard.com/Services/YoutubeChannel.asmx" />
+      <soap12:address location="http://api.socioboard.com/Services/YoutubeChannel.asmx" />
     </wsdl:port>
     <wsdl:port name="YoutubeChannelHttpGet" binding="tns:YoutubeChannelHttpGet">
-      <http:address location="http://devapi.socioboard.com/Services/YoutubeChannel.asmx" />
+      <http:address location="http://api.socioboard.com/Services/YoutubeChannel.asmx" />
     </wsdl:port>
     <wsdl:port name="YoutubeChannelHttpPost" binding="tns:YoutubeChannelHttpPost">
-      <http:address location="http://devapi.socioboard.com/Services/YoutubeChannel.asmx" />
+      <http:address location="http://api.socioboard.com/Services/YoutubeChannel.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

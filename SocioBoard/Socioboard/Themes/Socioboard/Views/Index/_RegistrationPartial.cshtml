@@ -8,12 +8,18 @@
 
 @if(objuser!=null)
 {
+    string fname = string.Empty;
+    string lname = string.Empty;
+    try{
      string[] name = objuser.UserName.Split(' ');
-         string fname = name[0];
-         string lname = string.Empty;
+         fname = name[0];
     for (int i = 1; i < name.Length; i++)
     {
         lname += name[i];
+    }
+    }catch(Exception ex){
+        fname = string.Empty;
+        lname = string.Empty;
     }
 
     <div class="container">
@@ -44,7 +50,7 @@
                 </div>
                 <div class="form-group input-group">
                     <span class="input-group-addon">E</span>
-                    <input value="@objuser.EmailId" id="txtrEmail" type="email" placeholder="Email id" class="form-control">
+                    <input value="@objuser.EmailId" id="txtrEmail" type="email" placeholder="Email id" class="form-control" readonly="true">
                 </div>
                 <div class="form-group input-group">
                     <span class="input-group-addon">*</span>

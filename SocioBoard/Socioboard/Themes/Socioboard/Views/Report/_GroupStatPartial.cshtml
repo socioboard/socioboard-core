@@ -16,7 +16,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Groups Reports</h1>
+                    <h1 class="page-header">@GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_GroupReports</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -26,7 +26,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="fa fa-users fa-fw"></i>
-                            <strong>GROUP STATS</strong> General stats across your Inter group
+                            <strong>@GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_GroupStats</strong> @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_GeneralStatsInterGroup
                             <div class="btn-group pull-right">
                                 <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle" type="button">
                                     <i class="fa fa-chevron-down"></i>
@@ -62,19 +62,19 @@
                                 <ul class="list-group">
                                   <li class="list-group-item">
                                     <span class="badge">@_GroupStatDetails.IncommingMessage</span>
-                                    Incoming Messages
+                                   @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_Incomingmessages
                                   </li>
                                   <li class="list-group-item">
                                     <span class="badge">@_GroupStatDetails.SentMessage</span>
-                                    Sent Message
+                                    @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_SentMessages
                                   </li>
                                   <li class="list-group-item">
                                     <span class="badge">@_GroupStatDetails.TwitterFollower</span>
-                                    New Twitter Followers
+                                    @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_NewTwitterFollower
                                   </li>
                                   <li class="list-group-item">
                                     <span class="badge">@_GroupStatDetails.FacebookFan</span>
-                                    New Facebook Fans
+                                  @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_NewFacebookFan
 
                                   </li>
                                 </ul>
@@ -84,15 +84,16 @@
                                   <li class="list-group-item">
                                       @*i= @(_GroupStatDetails.Retweet+_GroupStatDetails.Mention)*@
                                     <span class="badge">@(_GroupStatDetails.Retweet+_GroupStatDetails.Mention)</span>
-                                    INTERACTIONS
+                                    @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_Interactions
                                   </li>
                                   <li class="list-group-item">
                                     <span class="badge">14</span>
-                                    PROFILES BY USERS
+                                    @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_ProfilesByUser
+
                                   </li>
                                   <li class="list-group-item">
                                     <span class="badge">1</span>
-                                    IMPRESSIONS
+                                    @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_Impressions
                                   </li>
                                 </ul>
                             </div>
@@ -106,7 +107,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> <strong>ENGAGEMENT REPORT</strong> These metrics are based on replies sent from profiles within the '' group</h3>
+                            <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> <strong>@GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_EngagementReport</strong> @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_MetricsDescription</h3>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body" >
@@ -133,7 +134,7 @@
                    
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-twitter-square fa-fw"></i>  <strong>TWITTER STATS</strong> Stats for 2 Twitter accounts in the Inter group</h3>
+                                <h3 class="panel-title"><i class="fa fa-twitter-square fa-fw"></i>  <strong>@GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_TwitterStats</strong> @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_Statsfor2Twitteraccount</h3>
                             </div>
                             <div class="panel-body">
                                 <!--collapes-->
@@ -142,7 +143,7 @@
                                     <div class="panel-heading">
                                       <h4 class="panel-title">
                                         <a href="#collapseOne" data-parent="#accordion" data-toggle="collapse">
-                                         <i class="fa fa-male fa-fw"></i> Plain Text
+                                         <i class="fa fa-male fa-fw"></i> @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_PlainText
                                         </a>
                                       </h4>
                                     </div>
@@ -156,7 +157,7 @@
                                     <div class="panel-heading">
                                       <h4 class="panel-title">
                                         <a href="#collapseTwo" data-parent="#accordion" data-toggle="collapse">
-                                          <i class="fa fa-female fa-fw"></i> Photo Link
+                                          <i class="fa fa-female fa-fw"></i> @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_PhotoLink
                                         </a>
                                       </h4>
                                     </div>
@@ -170,13 +171,13 @@
                                     <div class="panel-heading">
                                       <h4 class="panel-title">
                                         <a href="#collapseThree" data-parent="#accordion" data-toggle="collapse">
-                                          <i class="fa fa-twitter fa-fw"></i>Twitter Stats
+                                          <i class="fa fa-twitter fa-fw"></i>@GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_TwitterStats
                                         </a>
                                       </h4>
                                     </div>
                                     <div class="panel-collapse collapse" id="collapseThree">
                                       <div class="panel-body">
-                                        <strong>@_GroupStatDetails.TwitterFollower</strong> New followers in this time period.
+                                        <strong>@_GroupStatDetails.TwitterFollower</strong> @GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_NewFollowerTimePeriod
                                       </div>
                                     </div>
                                   </div>
@@ -185,7 +186,7 @@
                                     <div class="panel-heading">
                                       <h4 class="panel-title">
                                         <a href="#collapseFive" data-parent="#accordion" data-toggle="collapse">
-                                          <i class="fa fa-eye fa-fw"></i>Mentioned
+                                          <i class="fa fa-eye fa-fw"></i>@GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_Mentioned
                                         </a>
                                       </h4>
                                     </div>
@@ -199,7 +200,7 @@
                                     <div class="panel-heading">
                                       <h4 class="panel-title">
                                         <a href="#collapseSix" data-parent="#accordion" data-toggle="collapse">
-                                          <i class="fa fa-exchange fa-fw"></i>Retweets
+                                          <i class="fa fa-exchange fa-fw"></i>@GlobusMultiLanguageLib.Resources.Report_GroupStatPartial_ReTweets
                                         </a>
                                       </h4>
                                     </div>

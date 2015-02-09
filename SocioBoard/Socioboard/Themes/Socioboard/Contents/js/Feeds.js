@@ -345,16 +345,19 @@ function facebookdetails(id) {
                     $('#refreshpanel3').attr('nwtid', id);
                     $('#data_paneltab1').attr('network', 'facebook');
                     $("#img_paneltab1").attr('src', "/Themes/Socioboard/Contents/img/admin/1.png");
-                    $("#title_paneltab1").html("Wall Posts");
+                    //$("#title_paneltab1").html("News Feeds");
+                    $("#title_paneltab1").html("Wall posts");
                     $('#data_paneltab2').attr('network', 'facebook');
                     $("#img_paneltab2").attr('src', "/Themes/Socioboard/Contents/img/admin/1.png");
+                    //$("#title_paneltab2").html("Wall Posts");
                     $("#title_paneltab2").html("News Feeds");
                     $("#img_paneltab3").attr('src', "/Themes/Socioboard/Contents/img/admin/1.png");
                     $("#title_paneltab3").html("User Feeds");
                     $('#fbfeedsfilter').css("display", "block");
                 } catch (e) {
                 }
-            }
+            },
+            async:false
         });
 
 
@@ -733,7 +736,8 @@ function twitterdetails(id) {
                     $('#twtfeedsfilter').css("display", "block");
                 } catch (e) {
                 }
-            }
+            },
+            async: false
         });
 
 
@@ -1029,7 +1033,7 @@ function linkedindetails(id) {
 
     try {
       
-
+        debugger;
 
         loadfeedpartialpage = $.ajax({
             type: "POST",
@@ -1056,7 +1060,8 @@ function linkedindetails(id) {
                     $("#title_paneltab3").html("Scheduled Messages");
                 } catch (e) {
                 }
-            }
+            },
+            async: false
         });
 
 
@@ -1174,7 +1179,7 @@ function linkedindetails(id) {
                 try {
                     $("#loader_tabpanel3").bind("click", function () {
                         // alert("refreshSchedularMessageLinkedin");
-                        refreshSchedularMessageLinkedin(id);
+                       refreshSchedularMessageLinkedin(id);
 
                     });
                     //$("#img_paneltab1").attr('src', "../Contents/img/admin/5.png");
@@ -1361,7 +1366,7 @@ function SendPostOnLiCompanyPage(id) {
         success: function (message) {
 
             $("#txtPostofPage").val('');
-            linkedinpagedetails(Pageid);
+            linkedinpagedetails(pageid);
 
         }
     });
@@ -2009,8 +2014,8 @@ function refreshWallpostFacebook(id) {
 
 
                 //$("#data_paneltab1").on('scroll', facebookwallscrolldata);
-                $("#data_paneltab1").scroll(throttled);
-
+                //$("#data_paneltab1").scroll(throttled);
+				$("#data_paneltab1").scroll(facebookwallscrolldata);
             } catch (e) {
             }
             try {
@@ -2056,12 +2061,15 @@ function refreshFeedsFacebook(id) {
             } catch (e) {
             }
             try {
-
+if(msg.indexOf('<div') > 0 && msg!=null)
+				{
                 $("#data_paneltab2").html(msg);
+				}
 
-
-                $("#data_paneltab2").on('scroll', facebookwallscrolldata);
-
+                //$("#data_paneltab2").on('scroll', facebookwallscrolldata);
+				
+				//$("#data_paneltab2").on('scroll', facebookfeedscrolldata);
+				$("#data_paneltab2").on('scroll', facebookfeed);
             } catch (e) {
             }
             try {
@@ -2104,7 +2112,7 @@ function refreshSchedularMessageFacebook(id) {
             } catch (e) {
             }
             try {
-                $("#title_paneltab3").html("Scheduled Messages");
+               // $("#title_paneltab3").html("Scheduled Messages");
             } catch (e) {
             }
             try {
@@ -2236,7 +2244,7 @@ function refreshSchedularMessageTwitter(id) {
 
             }
             try {
-                $("#title_paneltab3").html("Scheduler");
+               // $("#title_paneltab3").html("Scheduler");
             } catch (e) {
 
             }
@@ -2684,7 +2692,7 @@ function QuoteMessagePopup(ProfileId, Feed) {
     $("#Quote_text").val(Feed);
     var len = Feed.length;
     $('#compose_count').text(140 - len);
-    $("#QuoteCompose").modal('show');
+    //$("#QuoteCompose").modal('show');
 
 }
 function SendQuoteCompose(profileid) {
@@ -2779,8 +2787,76 @@ function MailPopUpTwt(feedid) {
         contentType: false,
         success: function (data) {
             $('#twtmailpopup').html(data);
-            $("#twtmailpopup").modal('show');
+            //$("#twtmailpopup").modal('show');
         }
     });
 
+}
+
+
+function WordpressDetails(siteid, WPUserId) {
+    debugger;
+    $.ajax({
+        type: "POST",
+        url: "../Feeds/LoadFeedPartialPageNew?network=wordpress",
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (msg) {
+            try {
+                $("#page-wrapper").html(msg);
+            } catch (e) {
+            }
+        }
+    });
+
+
+    $.ajax({
+        type: "POST",
+        url: "../Feeds/WordpressBlogPost?SiteId=" + siteid + "&WPUserId=" + WPUserId,
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (msg) {
+            try {
+                $("#blogfeeds").html(msg);
+            } catch (e) {
+            }
+        }
+    });
+
+
+}
+
+function loadblogpostpartial(SiteId) {
+    $.ajax({
+        type: "POST",
+        url: "../Feeds/LoadBlogPostPartial?SiteId=" + SiteId,
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (msg) {
+            try {
+                $("#page-wrapper").html(msg);
+            } catch (e) {
+            }
+        }
+    });
+}
+
+function PostBlogOnWordpress(siteid, wpuserid) {
+    debugger;
+    var title = $('#text-input-tittle').val();
+    var message = $('#text-publish-wordpress').val();
+    var tags = "";
+    $.ajax({
+        type: "POST",
+        url: "../Home/PostMessageInWordpress?siteid=" + siteid + "&WPUserId=" + wpuserid + "&Message=" + message + "&Title=" + title + "&Tags=" + tags,
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (msg) {
+            alert(msg);
+        }
+    });
 }

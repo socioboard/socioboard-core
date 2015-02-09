@@ -44,10 +44,21 @@ namespace Api.Socioboard.Services
                 ArrayList asltFbAccount = fbAccRepo.getAllFacebookAccounts();
                 string accesstoken = string.Empty;
 
-                //Access Token HARD CODED temporarily
-                accesstoken = "CAAKMrAl97iIBAD9MqfWtfjIxwFVteGCLVZBsoHpc1TZCH8Kf3KQuMebkbNYLb282cUTisu6iGZBiZAzzwxWvDhh20vCzs5mZCFZBblZBXu40BQisUjoOCZARUQklHBiK3Cx7DOgdXtbvupC4xJ1VpPjKspwiZBRzNYncjgQAyUqd5sGsXUDHcqKy0UBYkmbfq7QZCFgpyG5icOPeMhRb4TXJaic7UF7B1WHLhw2A5EW0kb3AZDZD";
+                #region Added Sumit Gupta [27/01/15]
+                foreach (Domain.Socioboard.Domain.FacebookAccount item in asltFbAccount)
+                {
+                    accesstoken = item.AccessToken;
+                    if (this.CheckFacebookToken(accesstoken, keyword))
+                    {
+                        break;
+                    }
+                } 
+                #endregion
 
-                string facebookSearchUrl = "https://graph.facebook.com/v1.0/search?q=" + keyword + " &type=post&access_token=" + accesstoken + "&limit=100";
+                ////Access Token HARD CODED temporarily
+                //accesstoken = "CAAKMrAl97iIBAD9MqfWtfjIxwFVteGCLVZBsoHpc1TZCH8Kf3KQuMebkbNYLb282cUTisu6iGZBiZAzzwxWvDhh20vCzs5mZCFZBblZBXu40BQisUjoOCZARUQklHBiK3Cx7DOgdXtbvupC4xJ1VpPjKspwiZBRzNYncjgQAyUqd5sGsXUDHcqKy0UBYkmbfq7QZCFgpyG5icOPeMhRb4TXJaic7UF7B1WHLhw2A5EW0kb3AZDZD";
+
+                string facebookSearchUrl = "https://graph.facebook.com/search?q=" + keyword + " &type=post&access_token=" + accesstoken + "&limit=100";
                 var facerequest = (HttpWebRequest)WebRequest.Create(facebookSearchUrl);
                 facerequest.Method = "GET";
                 string outputface = string.Empty;
@@ -157,7 +168,7 @@ namespace Api.Socioboard.Services
         //            //Access Token HARD CODED temporarily
         //            accesstoken = "CAAKMrAl97iIBAD9MqfWtfjIxwFVteGCLVZBsoHpc1TZCH8Kf3KQuMebkbNYLb282cUTisu6iGZBiZAzzwxWvDhh20vCzs5mZCFZBblZBXu40BQisUjoOCZARUQklHBiK3Cx7DOgdXtbvupC4xJ1VpPjKspwiZBRzNYncjgQAyUqd5sGsXUDHcqKy0UBYkmbfq7QZCFgpyG5icOPeMhRb4TXJaic7UF7B1WHLhw2A5EW0kb3AZDZD";
 
-        //            string facebookSearchUrl = "https://graph.facebook.com/v1.0/search?q=" + keyword + " &type=post&access_token=" + accesstoken + "&limit=100";
+        //            string facebookSearchUrl = "https://graph.facebook.com/search?q=" + keyword + " &type=post&access_token=" + accesstoken + "&limit=100";
         //            var facerequest = (HttpWebRequest)WebRequest.Create(facebookSearchUrl);
         //            facerequest.Method = "GET";
         //            string outputface = string.Empty;
@@ -463,7 +474,7 @@ namespace Api.Socioboard.Services
                     }
 
                 }
-                //string facebookSearchUrl = "https://graph.facebook.com/v1.0/search?q=" + keyword + " &type=post&access_token=" + accesstoken + "&limit=100";
+                //string facebookSearchUrl = "https://graph.facebook.com/search?q=" + keyword + " &type=post&access_token=" + accesstoken + "&limit=100";
                 string facebookSearchUrl = "https://graph.facebook.com/search?q=" + keyword + " &limit=20&type=user&access_token=" + accesstoken;
                 var facerequest = (HttpWebRequest)WebRequest.Create(facebookSearchUrl);
                 facerequest.Method = "GET";

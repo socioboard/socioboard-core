@@ -9,6 +9,7 @@ using System.Web.Script.Services;
 using System.Web.Services;
 using SocioBoard.Model;
 using Facebook;
+using log4net;
 
 namespace Api.Socioboard.Services
 {
@@ -22,7 +23,7 @@ namespace Api.Socioboard.Services
     [ScriptService]
     public class FacebookStats : System.Web.Services.WebService
     {
-
+        ILog logger = LogManager.GetLogger(typeof(FacebookStats));
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -44,32 +45,44 @@ namespace Api.Socioboard.Services
                 var rnum = _random.Next(0, lstFacebookAccounts.Count - 1);
                 _facebookAccount = (Domain.Socioboard.Domain.FacebookAccount)lstFacebookAccounts[rnum];
             }
-
-
-
-            FacebookClient fb = new FacebookClient();
-            fb.AccessToken = _facebookAccount.AccessToken;
-            dynamic data = fb.Get("me/friends?fields=gender");
-
-            //dynamic data, dynamic profile, Guid userId
-            Domain.Socioboard.Domain.FacebookStats objfbStats = new Domain.Socioboard.Domain.FacebookStats();
-            FacebookStatsRepository objFBStatsRepo = new FacebookStatsRepository();
             int malecount = 0;
             int femalecount = 0;
-            foreach (var item in data["data"])
+
+            Domain.Socioboard.Domain.FacebookStats objfbStats = new Domain.Socioboard.Domain.FacebookStats();
+            FacebookStatsRepository objFBStatsRepo = new FacebookStatsRepository();
+
+            FacebookClient fb = new FacebookClient(); 
+            fb.AccessToken = _facebookAccount.AccessToken;
+            try
             {
+                dynamic data = fb.Get("me/friends?fields=gender");
 
-                try
-                {
-                    if (item["gender"] == "male")
-                        malecount++;
-                    else if (item["gender"] == "female")
-                        femalecount++;
-                }
-                catch (Exception)
-                {
-                }
+                //dynamic data, dynamic profile, Guid userId
 
+
+                foreach (var item in data["data"])
+                {
+
+                    try
+                    {
+                        if (item["gender"] == "male")
+                            malecount++;
+                        else if (item["gender"] == "female")
+                            femalecount++;
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex.Message);
+                        logger.Error(ex.StackTrace);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message);
+                logger.Error(ex.StackTrace);
+                return false;
             }
             objfbStats.EntryDate = DateTime.Now;
             objfbStats.FbUserId = _facebookAccount.FbUserId;//profile["id"].ToString();

@@ -1,0 +1,243 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    User objuser = (User)Model;
+    string ProfileUrl = string.Empty;
+    }
+@if (!string.IsNullOrEmpty(objuser.ProfileUrl))
+{
+    try
+    {
+        string[] profileUrl = objuser.ProfileUrl.Split(new string[] { "Socioboard" }, StringSplitOptions.None);
+        string imgurl = "/Themes/Socioboard" + profileUrl[1];
+        //ProfileUrl = System.Text.RegularExpressions.Regex.Split(objuser.ProfileUrl, "wwwroot")[1];
+        ProfileUrl = imgurl;
+    }
+    catch {
+        ProfileUrl = objuser.ProfileUrl;
+    }
+}
+@*<div class="panel-body">*@
+                <div class="row">
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                    <img style="height: 45px;width:45px" data-target="#" data-toggle="modal" class="img-circle" src="@ProfileUrl">
+                    <span>@objuser.UserName</span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-2"> <i class="fa fa-suitcase fa-3x fa-fw"></i></div>
+                                <div class="col-sm-10"> <strong>$ @objuser.Ewallet</strong><p>@GlobusMultiLanguageLib.Resources.MyStuff_EWalletPartial_YourWalletBalance</p></div>
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-lg-8 -->
+                <div class="col-lg-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            @GlobusMultiLanguageLib.Resources.SocioBoard_MyStuff_EWalletPartial_AddMoneyToSocioBoardWallet
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                <div class="form-group">
+                                            <input placeholder="Enter Amount" class="form-control" id="input-add-money">
+                                        </div>
+                                    </div>
+
+
+                            @*<div class="col-md-4">
+
+                                <div class="form-group"> <input placeholder="Enter Promocode" class="form-control"> </div>
+                               
+                               <script>function myFunction() {
+    $('#demo').replaceWith('&lt;div class="form-group"&gt; &lt;input class="form-control" placeholder="Enter Promocode"&gt; &lt;/div&gt;');
+}
+                                </script>
+                            </div>*@
+
+
+
+                        <div class="col-md-4">
+                        <button class="btn btn-primary" type="button" id="btn-input-add-money">@GlobusMultiLanguageLib.Resources.MyStuff_EWalletPartial_AddMoneyToWallet</button>
+                    </div>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-lg-8 -->
+            </div>
+                    <hr>
+
+                @*<div class="row">
+                    <div class="col-lg-4">
+                         <label>MY ACCOUNT</label>
+                    </div>
+                    <!-- /.col-lg-8 -->
+                    <div class="col-lg-8">
+                        <form class="form-inline pull-right">
+                          <div class="form-group">
+                            <input type="password" placeholder="Search your order" id="inputPassword2" class="form-control">
+                          </div>
+                          <button class="btn btn-default" type="submit">Search</button>
+                        </form>
+                    </div>
+                    <!-- /.col-lg-8 -->
+                </div>*@                   
+                       <!-- Tab v3 -->                
+                @*<div class="row tab-v3">
+                    <div class="col-sm-3">
+                        <ul class="nav nav-pills nav-stacked"> 
+                            <li class=""><a data-toggle="tab" href="#Profile"><i class="fa fa-user"></i> Profile</a></li>
+                            <li class="active"><a data-toggle="tab" href="#wallet"><i class="fa fa-suitcase"></i> Paytm wallet</a></li>
+                            <li class=""><a data-toggle="tab" href="#Orders"><i class="fa fa-shopping-cart"></i> Your Orders</a></li>
+                            <li><a data-toggle="tab" href="#Center"><i class="fa fa-info"></i> Help Center</a></li>                        
+                        </ul>                    
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="tab-content">
+                            <div id="Profile" class="tab-pane fade">
+                                <h4>Profile</h4>
+                            </div>
+                            <div id="wallet" class="tab-pane fade active in">
+                                <h4>Paytm wallet</h4>
+                            </div>
+                            <div id="Orders" class="tab-pane fade">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <p class="pull-right"><i class="fa fa-clock-o fa-fw"></i> 05 JAN '15 10:39 AM</p>
+                                        <strong>ORDER NO. #1 </strong><p>Rs. 100</p>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                            <label>Recharge of BSNL 999999999</label><br>
+                                            <span>Qty : 1</span>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>Rs. 120</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button class="btn btn-success" type="button">Your order is successful</button>
+                                            </div>                                            
+                                             </div>
+                                             <hr>
+                                             <div class="row">
+                                            <div class="col-md-6">
+                                            <label>Recharge of BSNL 999999999</label><br>
+                                            <span>Qty : 1</span>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>Rs. 120</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button class="btn btn-success" type="button">Sent Successful</button>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+
+                                 <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <p class="pull-right"><i class="fa fa-clock-o fa-fw"></i> 05 JAN '15 10:39 AM</p>
+                                        <strong>ORDER NO. #2 </strong><p>Rs. 100</p>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                            <label>Recharge of BSNL 999999999</label><br>
+                                            <span>Qty : 1</span>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>Rs. 120</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button class="btn btn-success" type="button">Your order is successful</button>
+                                            </div>                                            
+                                             </div>
+                                             <hr>
+                                             <div class="row">
+                                            <div class="col-md-6">
+                                            <label>Recharge of BSNL 999999999</label><br>
+                                            <span>Qty : 1</span>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>Rs. 120</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button class="btn btn-success" type="button">Sent Successful</button>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+
+                                 <div class="panel panel-info">
+                                   <div class="panel-heading">
+                                        <p class="pull-right"><i class="fa fa-clock-o fa-fw"></i> 05 JAN '15 10:39 AM</p>
+                                        <strong>ORDER NO. #3 </strong><p>Rs. 100</p>                                  
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                            <label>Recharge of BSNL 999999999</label><br>
+                                            <span>Qty : 1</span>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>Rs. 120</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button class="btn btn-danger" type="button">Payment Failed</button>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                         <div class="row">
+                                            <div class="col-md-6">
+                                            <label>Recharge of BSNL 999999999</label><br>
+                                            <span>Qty : 1</span>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>Rs. 120</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button class="btn btn-success" type="button">Your order is successful</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="Center" class="tab-pane fade in">
+                                <h4>Help Center</h4>
+                            </div>
+                        </div>                                    
+                    </div>
+                </div>*@            
+                <!-- Tab v3 -->  
+                        @*</div>*@
+
+<script>
+
+    $("#btn-input-add-money").click(function () {
+        debugger;
+        var amount = $("#input-add-money").val();
+        if (amount != null) {
+            if (amount >= '0') {
+                $.ajax({
+                    type: "POST",
+                    url: "../MyStuff/RechrgeEwalletByPaypal?amount=" + amount,
+                    //success: function (msg) { window.open(msg); },
+                    success: function (msg) { window.location = msg; },
+                    error: function () {
+                        alert("Somthing Went Wrong!!");
+                        window.location = "../MyStuff/Ewallet";
+                    }
+                });
+            }
+            else { alert("Please enter amount greater then 0"); }
+        }
+    });
+
+</script>

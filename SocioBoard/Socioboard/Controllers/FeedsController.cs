@@ -11,7 +11,7 @@ using System.Web.Script.Serialization;
 namespace Socioboard.Controllers
 {
    [CustomAuthorize]
-    public class FeedsController : Controller
+    public class FeedsController : BaseController
     {
         public static int facebookwallcount = 0;
         public static int twtwallcount = 0;

@@ -117,12 +117,12 @@
 
 <div id="page-wrapper" style="min-height: 278px;">
     <div class="container-fluid">
-                <h1 class="page-header">Groups</h1>
+                <h1 class="page-header">@GlobusMultiLanguageLib.Resources.Group_Index_Groups</h1>
                 <div class="row">
                     <div class="col-md-3" >
                         <div class="chat-panel panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-users fa-fw"></i> Group Users
+                            <i class="fa fa-users fa-fw"></i> @GlobusMultiLanguageLib.Resources.Group_Index_GroupUsers
                         </div>
                         <!-- .panel-heading -->
                         <div id="loadgroup" class="panel-body">
@@ -136,7 +136,7 @@
                         <div class="chat-panel panel panel-default">
                         <div class="panel-heading">
                             <i class="fa fa-comments fa-fw"></i>
-                            Chat
+                            @GlobusMultiLanguageLib.Resources.Group_Index_Chat
                             <div class="btn-group pull-right">
                                 <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle" type="button">
                                     <i class="fa fa-chevron-down"></i>
@@ -144,12 +144,12 @@
                                 <ul class="dropdown-menu slidedown">
                                     <li>
                                         <a href="#" onclick="postmessage();">
-                                            <i class="fa fa-reply-all fa-fw"></i>  Post On Selected Group
+                                            <i class="fa fa-reply-all fa-fw"></i>  @GlobusMultiLanguageLib.Resources.Group_Index_PostOnSelectedGroup
                                         </a>
                                     </li>
                                     <li  id="postongp">
                                         <a id="grpids" gid="" href="#" onclick="userdetails12()">
-                                            <i class="fa fa-reply fa-fw"></i> Post
+                                            <i class="fa fa-reply fa-fw"></i> @GlobusMultiLanguageLib.Resources.Group_Index_Post
                                         </a>
                                     </li>
                                 </ul>
@@ -158,8 +158,8 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body" id="groupinfo">
                             <div class="text-center">
-                                <strong>Please select any group to display the feeds.</strong><br /><br />
-                                <strong class="text-danger">NO FEED FOUND</strong><br />
+                                <strong>@GlobusMultiLanguageLib.Resources.Group_Index_SelectGroupDisplayFeeds</strong><br /><br />
+                                <strong class="text-danger">@GlobusMultiLanguageLib.Resources.Group_Index_NoFeedFound</strong><br />
                                 <img src="../Themes/Socioboard/Contents/img/groupnotfound.png" class="img-responsive" style="margin-left: 38%; margin-top: 5%;" />
                             </div>
                         </div>
@@ -170,8 +170,8 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                        <h4 id="myModalLabel" class="modal-title">POST ON SELECTED GROUP</h4>
+                        <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Group_Index_Close</span></button>
+                        <h4 id="myModalLabel" class="modal-title">@GlobusMultiLanguageLib.Resources.Group_Index_PostOnSelectedGroup</h4>
                     </div>
                     <div class="modal-body col-md-12">
                        @* <div class="col-md-3">
@@ -200,20 +200,20 @@
 
                             <div class="form-group col-md-4">
                                 <input type="file" id="MltigroupfileuploadImage"  accept="image/*">
-                                <p class="help-block">Interval Time:</p>
+                                <p class="help-block">@GlobusMultiLanguageLib.Resources.Group_Index_IntervalTime</p>
                                 <select class="form-control" id="ddlIntervalTime">
-                                  <option value="1">1 Min</option>
-                                  <option value="2">2 Min</option>
-                                  <option value="3">3 Min</option>
-                                  <option value="4">4 Min</option>
-                                  <option value="5">5 Min</option>
+                                  <option value="1">@GlobusMultiLanguageLib.Resources.Group_Index_1Min</option>
+                                  <option value="2">@GlobusMultiLanguageLib.Resources.Group_Index_2Min</option>
+                                  <option value="3">@GlobusMultiLanguageLib.Resources.Group_Index_3Min</option>
+                                  <option value="4">@GlobusMultiLanguageLib.Resources.Group_Index_4Min</option>
+                                  <option value="5">@GlobusMultiLanguageLib.Resources.Group_Index_5Min</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button data-dismiss="modal" class="btn btn-primary" onclick="Sendgroupmessage();" type="button">Post</button>
-                        <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                        <button data-dismiss="modal" class="btn btn-primary" onclick="Sendgroupmessage();" type="button">@GlobusMultiLanguageLib.Resources.Group_Index_Post</button>
+                        <button data-dismiss="modal" class="btn btn-default" type="button">@GlobusMultiLanguageLib.Resources.Group_Index_Close</button>
                     </div>
                 </div>
             </div>
@@ -225,15 +225,15 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="myModalLabel">New Message</h4>
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Group_Index_Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">@GlobusMultiLanguageLib.Resources.Group_Index_NewMessage</h4>
                     </div>
                     <div class="modal-body col-md-12">
-                        <div class="col-md-3">
+                        @*<div class="col-md-3">
                             <img src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-xap1/t31.0-8/s960x960/1523017_786750101350785_664146563_o.jpg" alt="" class="img-circle" style="height: 80px; width: 80px;">
                             <hr class="small">
                             <!-- Split button -->
-                            @*<div class="btn-group">
+                            <div class="btn-group">
                                 <button type="button" class="btn btn-warning">Action</button>
                                 <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
                                     <span class="caret"></span>
@@ -244,13 +244,13 @@
                                     <li><a href="#">tweeter</a></li>
                                     <li><a href="#">gplus</a></li>
                                 </ul>
-                            </div>*@
-                        </div>
+                            </div>
+                        </div>*@
                         @*div class="col-md-9">
                             <div class="input-group col-md-12">
                                 <textarea class="form-contrttonnol" rows="3"></textarea>
                             </div>*@
-                             <div class="col-md-9">
+                             <div class="col-md-12">
                             <div class="input-group col-md-12" id="assign_task_to">
                                 <div id="asd"><input type="text" placeholder="Enter your title here" id="txttitle" class="form-control"></div>
                                 <textarea id="txtcmt" placeholder="Your comment(view table only for team members" rows="3" class="form-control"></textarea>
@@ -271,8 +271,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button id="btngrpsend" type="button" class="btn btn-primary" data-dismiss="modal"  onclick="postFBGroupFeeds()" >Send</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button id="btngrpsend" type="button" class="btn btn-primary" data-dismiss="modal"  onclick="postFBGroupFeeds()" >@GlobusMultiLanguageLib.Resources.Group_Index_Send</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@GlobusMultiLanguageLib.Resources.Group_Index_Close</button>
                     </div>
                 </div>
             </div>

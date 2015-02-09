@@ -33,9 +33,9 @@
                 <img class="img-responsive" src="@objFbPagePost.PictureUrl">
             }
             <p></p>
-            <button type="button" class="btn btn-primary btn-xs"><i class="fa fa-thumbs-up fa-fw"></i>@objFbPagePost.Likes Like</button>
-            <button type="button" class="btn btn-primary btn-xs dropdown" onclick="showHideDiv('div-1')"><i class="fa fa-comments fa-fw"></i>@objFbPagePost.Comments Comments</button>
-            <button type="button" class="btn btn-primary btn-xs"><i class="fa fa-share-alt fa-fw"></i>@objFbPagePost.Shares Shares</button>
+            <button type="button" class="btn btn-primary btn-xs"><i class="fa fa-thumbs-up fa-fw"></i>@objFbPagePost.Likes @GlobusMultiLanguageLib.Resources.Report_FbPostDetails_Like</button>
+            <button type="button" class="btn btn-primary btn-xs dropdown" onclick="showHideDiv('div-1')"><i class="fa fa-comments fa-fw"></i>@objFbPagePost.Comments @GlobusMultiLanguageLib.Resources.Report_FbPostDetails_Comments</button>
+            <button type="button" class="btn btn-primary btn-xs"><i class="fa fa-share-alt fa-fw"></i>@objFbPagePost.Shares @GlobusMultiLanguageLib.Resources.Report_FbPostDetails_Shares</button>
             <!-- Comment toggle -->
             <div id="div-1" style="display: none;">
                 <div class="chat-panel panel panel-default">
@@ -79,7 +79,7 @@
     </div>
     <div class="col-lg-3" style="height: 300px; overflow: scroll;">
         <ul class="chat">
-            <li class="left clearfix"><button class="btn btn-primary btn-xs" type="button"><i class=""></i> Likes</button></li>
+            <li class="left clearfix"><button class="btn btn-primary btn-xs" type="button"><i class=""></i> @GlobusMultiLanguageLib.Resources.Report_FbPostDetails_Likes</button></li>
             @foreach (var item in lstFbPageLiker)
             {
                  <li class="left clearfix"><a href="http://www.facebook.com/@item.FromId" target="_blank">@item.FromName</a></li>

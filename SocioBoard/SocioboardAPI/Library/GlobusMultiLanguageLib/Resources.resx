@@ -1,0 +1,2963 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Index_Features_Ourfeatures" xml:space="preserve">
+    <value>Our Features</value>
+  </data>
+  <data name="Index_Index_Analysis" xml:space="preserve">
+    <value>Analysis</value>
+  </data>
+  <data name="Index_Index_beyond" xml:space="preserve">
+    <value>BEYOND</value>
+  </data>
+  <data name="Index_Index_BtnLearnMore" xml:space="preserve">
+    <value>Learn More</value>
+  </data>
+  <data name="Index_Index_BtnUserGuide" xml:space="preserve">
+    <value>Download Guide Book</value>
+  </data>
+  <data name="SocialBoard_Index_Index_EndHeading" xml:space="preserve">
+    <value>With Socialboard, engaging your followers is so easy, fun, and insightful now. Get started today!</value>
+  </data>
+  <data name="Index_Index_engage" xml:space="preserve">
+    <value>ENGAGE YOUR FOLLOWERS EFFECTIVELY</value>
+  </data>
+  <data name="SocialBoard_Index_Index_featureHeading" xml:space="preserve">
+    <value>Socialboard makes it easy to keep tabs on social conversations and provides everything you need to efficiently engage your audience.</value>
+  </data>
+  <data name="Index_Index_feature_pt1" xml:space="preserve">
+    <value>Smart Inbox and Prompt Feeds</value>
+  </data>
+  <data name="Index_Index_feature_pt2" xml:space="preserve">
+    <value>Advanced Scheduling and Publishing</value>
+  </data>
+  <data name="Index_Index_feature_pt3" xml:space="preserve">
+    <value>Unique Social Discovery</value>
+  </data>
+  <data name="Index_Index_feature_pt4" xml:space="preserve">
+    <value>In-depth Analytics and Reports</value>
+  </data>
+  <data name="Index_Index_feature_pt5" xml:space="preserve">
+    <value>Constant Real-time Monitoring</value>
+  </data>
+  <data name="Index_Index_feature_pt6" xml:space="preserve">
+    <value>Team Collaboration Tools</value>
+  </data>
+  <data name="Index_Index_feature_pt7" xml:space="preserve">
+    <value>Social CRM and Helpdesk Integration</value>
+  </data>
+  <data name="Index_Index_feature_pt8" xml:space="preserve">
+    <value>Mobile Apps</value>
+  </data>
+  <data name="SocialBoard_Index_Index_freeSubscirption" xml:space="preserve">
+    <value>Enjoy Socialboard risk-free for 30 days!</value>
+  </data>
+  <data name="Index_Index_Insight" xml:space="preserve">
+    <value>Insights</value>
+  </data>
+  <data name="Index_Index_leverage" xml:space="preserve">
+    <value>People are talking about your brand. Why not leverage it?</value>
+  </data>
+  <data name="Index_Index_LovePt1" xml:space="preserve">
+    <value>Highly customizable and scalable open-source tool in different editions</value>
+  </data>
+  <data name="Index_Index_LovePt2" xml:space="preserve">
+    <value>Advanced scheduling &amp;amp; publishing tools</value>
+  </data>
+  <data name="Index_Index_LovePt3" xml:space="preserve">
+    <value>Prompt feeds and interactive social discovery tools</value>
+  </data>
+  <data name="Index_Index_LovePt4" xml:space="preserve">
+    <value>Sophisticated analytics on various parameters</value>
+  </data>
+  <data name="Index_Index_LovePt5" xml:space="preserve">
+    <value>Social CRM tools including shared customer records</value>
+  </data>
+  <data name="Index_Index_LovePt6" xml:space="preserve">
+    <value>Customer support features like tasks and Helpdesk integration</value>
+  </data>
+  <data name="Index_Index_LovePt7" xml:space="preserve">
+    <value>Highly efficient team collaboration tools</value>
+  </data>
+  <data name="Index_Index_LovePt8" xml:space="preserve">
+    <value>24/7 Technical Support</value>
+  </data>
+  <data name="Index_Index_LovePt9" xml:space="preserve">
+    <value>Executable across various devices and platforms</value>
+  </data>
+  <data name="SocialBoard_Index_Index_LoveSocioboard" xml:space="preserve">
+    <value>WHY PEOPLE LOVE SOCIALBOARD</value>
+  </data>
+  <data name="Index_Index_Managment" xml:space="preserve">
+    <value>SOCIAL MEDIA MANAGEMENT</value>
+  </data>
+  <data name="Index_Index_Monitor" xml:space="preserve">
+    <value>Monitor</value>
+  </data>
+  <data name="SocioBoard_Index_Index_OnBoard" xml:space="preserve">
+    <value>Get On Board to See What Our Social Media Marketing Suite Can Do for You</value>
+  </data>
+  <data name="Index_Index_OurFeatures" xml:space="preserve">
+    <value>Our Features</value>
+  </data>
+  <data name="Index_Index_socialchannels" xml:space="preserve">
+    <value>ACROSS ALL SOCIAL CHANNELS</value>
+  </data>
+  <data name="SocialBoard_Index_Index_SocioDescription" xml:space="preserve">
+    <value>Socialboard offers you an advanced, easy, versatile, customizable and scalable open-source social media marketing tool to drive your brand to newer heights</value>
+  </data>
+  <data name="SocialBoard_Index_Index_Sociodescription2" xml:space="preserve">
+    <value>Socialboard allows you to listen to, analyze and engage your followers in unusual ways across   numerous social media accounts</value>
+  </data>
+  <data name="Index_Index_Somereason" xml:space="preserve">
+    <value>some reasons</value>
+  </data>
+  <data name="Index_Index_SubHeadingAnalysis" xml:space="preserve">
+    <value>Intelligent Data Mining, Warehousing and Analysis</value>
+  </data>
+  <data name="SocialBoard_Index_Index_SubHeadingInsight" xml:space="preserve">
+    <value>Socialboard offers detailed insights for customers</value>
+  </data>
+  <data name="Index_Index_SubHeadingMonitor" xml:space="preserve">
+    <value>Realtime Tracking of Social Media Platforms</value>
+  </data>
+  <data name="Index_Index_SubHeadingUserguide" xml:space="preserve">
+    <value>To learn more,download Guide book</value>
+  </data>
+  <data name="Index_Index_Userguide" xml:space="preserve">
+    <value>Get User Guide</value>
+  </data>
+  <data name="Index_Features_Monitor" xml:space="preserve">
+    <value>Monitor</value>
+  </data>
+  <data name="Index_Features_SubHeadingMonitor" xml:space="preserve">
+    <value>Realtime Tracking of Social Media Platforms</value>
+  </data>
+  <data name="Index_Features_Analysis" xml:space="preserve">
+    <value>Analysis</value>
+  </data>
+  <data name="Index_Features_Analytics" xml:space="preserve">
+    <value>In-depth Analytics and Reports</value>
+  </data>
+  <data name="SocialBoard_Index_Features_AnalyticsDescription" xml:space="preserve">
+    <value>Socialboard uses its statistics engine and generates analytics about various activities related to your account. It incorporates group stats, facebook engagement data, twitter stats and task related stats. All these analytics can be custom-viewed according to dates, groups etc.</value>
+  </data>
+  <data name="Index_Features_Discovery" xml:space="preserve">
+    <value>Unique Social Discovery</value>
+  </data>
+  <data name="Index_Features_DiscoveryDescription" xml:space="preserve">
+    <value>Discovery is a marvelous function which socialboard offers by virtue of which users can avail a highly efficient search mechanism.</value>
+  </data>
+  <data name="Index_Features_Engagement" xml:space="preserve">
+    <value>Effective and Efficient Engagement</value>
+  </data>
+  <data name="SocialBoard_Index_Features_EngagementDescription" xml:space="preserve">
+    <value>Sociobalard has capabilities to engage audiences across various platforms.It gives every platform its due importance. The degree of engagement is customized as per the platform’s importance and number of connections in it.</value>
+  </data>
+  <data name="Index_Features_Features" xml:space="preserve">
+    <value>Features</value>
+  </data>
+  <data name="Index_Features_FeaturesDescription" xml:space="preserve">
+    <value>Social media marketers face great difficulty in accessing technology that is flexible enough to meet their needs for approval workflow, compliance, asset management, moderation, etc. Socialboard helps you leverage your social media marketing with great features such as advanced scheduling and publishing tools, prompt news feeds, interactive social discovery, sophisticated analytics, social CRM, help desk integration, collaboration tools, customizable reports and much more.
+            The dashboard displays activities of your friends such as shares, new messages, events, visited locations to name a few. Content can be put into sections as per date or by events.You can engage your friends on their activities, like posts, comment and even share them. Socialboard can help you set reminders about tasks related to friends’ updates shared.You can customize stats to view according to days, groups etc.</value>
+  </data>
+  <data name="Index_Features_Feeds" xml:space="preserve">
+    <value>Prompt Feeds</value>
+  </data>
+  <data name="Index_Features_FeedsDescription" xml:space="preserve">
+    <value>Feeds allow you to get latest status updates from friends. As of now facebook, twitter and linkedin profile can be connected to socialboard account. Users can get wallposts, status updates and scheduled messages Users can engage each other using the platform, get notifications on missed messages and much more.</value>
+  </data>
+  <data name="Index_Features_HelpDesk" xml:space="preserve">
+    <value>Helpdesk Integration</value>
+  </data>
+  <data name="SocialBoard_Index_Features_HelpDeskDescription" xml:space="preserve">
+    <value>Socialboard not only has a world class support mechanism but also offers you helpdesk integration with your socialboard account.</value>
+  </data>
+  <data name="Index_Features_Insights" xml:space="preserve">
+    <value>Insights</value>
+  </data>
+  <data name="Index_Features_MobileApps" xml:space="preserve">
+    <value>Mobile Apps</value>
+  </data>
+  <data name="Index_Features_MobileAppsDescription" xml:space="preserve">
+    <value>Fully functional version of Socialboard is available on web. Our Android and IOS apps work in tandem with the web Application.</value>
+  </data>
+  <data name="Index_Features_Monitoring" xml:space="preserve">
+    <value>Constant Real-time Monitoring</value>
+  </data>
+  <data name="SocialBoard_Index_Features_MonitoringDescription" xml:space="preserve">
+    <value>Socialboard monitors data continuously across various platforms, and gives regular feeds to the end users. Feeds allow you to be in touch with family and friends. Users can engage each other using the platform, get notifications on missed messages and even more.You can also stop someone from bothering you on this platform. We respect your privacy.</value>
+  </data>
+  <data name="Index_Features_Scheduling" xml:space="preserve">
+    <value>Advanced Scheduling and Publishing</value>
+  </data>
+  <data name="Index_Features_SchedulingDescription" xml:space="preserve">
+    <value>Publishing data is important part of engaging audience through social media platforms, through socialboard’s publishing tool users can schedule messages, maintain a queue and save drafted messages. You can’t miss any news about what your friends are doing having a dedicated page for notifications.</value>
+  </data>
+  <data name="Index_Features_SmartInbox" xml:space="preserve">
+    <value>Smart Inbox</value>
+  </data>
+  <data name="Index_Features_SmartInboxDescription" xml:space="preserve">
+    <value>All the public posts by a user and much more would be featured on the message page along with the message picture.User can views task and archived messages easily.</value>
+  </data>
+  <data name="Index_Features_SocialCRM" xml:space="preserve">
+    <value>Social CRM</value>
+  </data>
+  <data name="Index_Features_SocialCRMDescription" xml:space="preserve">
+    <value>Collaboration is a very important term in social media marketing, people can collaborate with each other to make things a mutually beneficial win-win, socialboard comes up with a marvelous functionality by virtue of which users can reach out to each other using a highly efficient collaborative mechanism. It can serve as a platform to share information with other team members and increase workability and efficiency of all teams.</value>
+  </data>
+  <data name="Index_Features_SubHeadingAnalysis" xml:space="preserve">
+    <value>Intelligent Data Mining, Warehousing and Analysis</value>
+  </data>
+  <data name="SocialBoard_Index_Features_SubHeadingInsights" xml:space="preserve">
+    <value>Socialboard offers detailed insights for customers</value>
+  </data>
+  <data name="Index_Features_SubHeadingUserguide" xml:space="preserve">
+    <value>To learn more,download Guide book</value>
+  </data>
+  <data name="Index_Features_TeamCollaboration" xml:space="preserve">
+    <value>Team Collaboration Tools</value>
+  </data>
+  <data name="Index_Features_TeamCollaborationDescription" xml:space="preserve">
+    <value>Collaboration is a very important term in social media marketing, cross-functional departments can collaborate with each other to make the marketing experience more fruitful and synergistic. Socialboard comes up with a marvelous functionality by virtue of which users can reach out to each other using a highly efficient collaboration mechanism. It can serve as a platform to share information with other team members and increase workability and efficiency of all teams.</value>
+  </data>
+  <data name="Index_Features_UserGuide" xml:space="preserve">
+    <value>Get User Guide</value>
+  </data>
+  <data name="Index_PartialPricing_30DaysFreeTrial" xml:space="preserve">
+    <value>All Plans Include a Free 30-Day Trial</value>
+  </data>
+  <data name="Index_PartialPricing_Basic" xml:space="preserve">
+    <value>Basic</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature1" xml:space="preserve">
+    <value>Comprehensive Dashboard</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature2" xml:space="preserve">
+    <value>Multiple Social Profiles Inbox</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature3" xml:space="preserve">
+    <value>Social Media Updates</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature4" xml:space="preserve">
+    <value>Scheduling Features</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature5" xml:space="preserve">
+    <value>Social Media based CRM</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature6" xml:space="preserve">
+    <value>Social Platform Reporting Tools</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature7" xml:space="preserve">
+    <value>World Class 24*7 Training &amp;amp; Support</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature8" xml:space="preserve">
+    <value>Manage up to 5 profiles</value>
+  </data>
+  <data name="Index_PartialPricing_BASICPLANS" xml:space="preserve">
+    <value>Basic Plans</value>
+  </data>
+  <data name="Index_PartialPricing_BasicSubHeading" xml:space="preserve">
+    <value>Every plan is a unique package. This one fits for individuals.</value>
+  </data>
+  <data name="Index_PartialPricing_BTNRequestADemo" xml:space="preserve">
+    <value>REQUEST A DEMO</value>
+  </data>
+  <data name="Index_PartialPricing_BTNTryNow" xml:space="preserve">
+    <value>Try Now</value>
+  </data>
+  <data name="Index_PartialPricing_Change" xml:space="preserve">
+    <value>Upgrade, Change or Cancel Anytime</value>
+  </data>
+  <data name="Index_PartialPricing_Deluxe" xml:space="preserve">
+    <value>Deluxe</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature1" xml:space="preserve">
+    <value>All Basic, Standard &amp;amp; Deluxe Features</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature2" xml:space="preserve">
+    <value>Prompt Feeds</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature3" xml:space="preserve">
+    <value>Constant Real-time Monitoring</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature4" xml:space="preserve">
+    <value>Team Collaboration Tools</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature5" xml:space="preserve">
+    <value>Social CRM</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature6" xml:space="preserve">
+    <value>World Class 24*7 Training &amp;amp; Support</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature7" xml:space="preserve">
+    <value>Manage up to 50 profiles</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeSubHeading" xml:space="preserve">
+    <value>Includes sophisticated tools for complex objectives</value>
+  </data>
+  <data name="Index_PartialPricing_ENTERPRISEANDAGENCY" xml:space="preserve">
+    <value>Enterprise and Agency</value>
+  </data>
+  <data name="SocialBoard_Index_PartialPricing_EnterpriseandAgencyDescription" xml:space="preserve">
+    <value>Socialboard offers customizable enterprise and agency solutions to fit your business—scalable, secure and with highest level of service quality &amp; 24/7 Support should you face any problems. Contact us today to discuss your unique needs with one of our product specialists.</value>
+  </data>
+  <data name="Index_PartialPricing_EXPERTPLANS" xml:space="preserve">
+    <value>Expert Plans</value>
+  </data>
+  <data name="Index_PartialPricing_Premium" xml:space="preserve">
+    <value>Premuim</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature1" xml:space="preserve">
+    <value>All Standard Plan Features</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature2" xml:space="preserve">
+    <value>Social Discovery</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature3" xml:space="preserve">
+    <value>Helpdesk Integration</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature4" xml:space="preserve">
+    <value>Powerful Statistics Engine</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature5" xml:space="preserve">
+    <value>Custom Viewable Analytics</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature6" xml:space="preserve">
+    <value>World Class 24*7 Training &amp;amp; Support</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature7" xml:space="preserve">
+    <value>RSS Feeds</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature8" xml:space="preserve">
+    <value>Manage up to 20 profiles</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimSubHeading" xml:space="preserve">
+    <value>Package you need to efficiently manage an expanding social media network.</value>
+  </data>
+  <data name="Index_PartialPricing_PricingBasic" xml:space="preserve">
+    <value>Free</value>
+  </data>
+  <data name="Index_PartialPricing_PricingDeluxe" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_PartialPricing_PricingPremium" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_PartialPricing_PricingSocioBasic" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_PartialPricing_PricingSocioDeluxe" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_PartialPricing_PricingSocioPremium" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_PartialPricing_PricingSocioStandard" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_PartialPricing_PricingStandard" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_PartialPricing_RequestDemoBtnReset" xml:space="preserve">
+    <value>RESET</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoBtnSend" xml:space="preserve">
+    <value>SEND REQUEST</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoCompanyName" xml:space="preserve">
+    <value>Company Name</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoEmail" xml:space="preserve">
+    <value>Email ID</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoFName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoNotes" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoPhNO" xml:space="preserve">
+    <value>Phone Number</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoSkypeID" xml:space="preserve">
+    <value>Skype ID</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoSName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasic" xml:space="preserve">
+    <value>SocioBasic</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature1" xml:space="preserve">
+    <value>All Basic, Standard &amp; Deluxe Features</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature2" xml:space="preserve">
+    <value>Prompt Feeds</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature3" xml:space="preserve">
+    <value>Constant Real-time Monitoring</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature4" xml:space="preserve">
+    <value>Team Collaboration Tools</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature5" xml:space="preserve">
+    <value>Social CRM</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature6" xml:space="preserve">
+    <value>World Class 24*7 Training &amp;amp; Support</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature7" xml:space="preserve">
+    <value>Manage up to 100 profiles</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicSubHeading" xml:space="preserve">
+    <value>Includes sophisticated tools for complex objectives</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxe" xml:space="preserve">
+    <value>SocioDeluxe</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature1" xml:space="preserve">
+    <value>All Basic, Standard &amp;amp; Deluxe Features</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature2" xml:space="preserve">
+    <value>Prompt Feeds</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature3" xml:space="preserve">
+    <value>Constant Real-time Monitoring</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature4" xml:space="preserve">
+    <value>Team Collaboration Tools</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature5" xml:space="preserve">
+    <value>Social CRM</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature6" xml:space="preserve">
+    <value>World Class 24*7 Training &amp;amp; Support</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature7" xml:space="preserve">
+    <value>Manage up to 1000 profiles</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeSubHeading" xml:space="preserve">
+    <value>Includes sophisticated tools for complex objectives</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature1" xml:space="preserve">
+    <value>All Basic, Standard &amp;amp; Deluxe Features</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature2" xml:space="preserve">
+    <value>Prompt Feeds</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature3" xml:space="preserve">
+    <value>Constant Real-time Monitoring</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature4" xml:space="preserve">
+    <value>Team Collaboration Tools</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature5" xml:space="preserve">
+    <value>Social CRM</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature6" xml:space="preserve">
+    <value>World Class 24*7 Training &amp;amp; Support</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature7" xml:space="preserve">
+    <value>Manage up to 500 profiles</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumSubHeading" xml:space="preserve">
+    <value>Includes sophisticated tools for complex objectives</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremuim" xml:space="preserve">
+    <value>SocioPremium</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandard" xml:space="preserve">
+    <value>SocioStandard</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature1" xml:space="preserve">
+    <value>All Basic, Standard &amp;amp; Deluxe Features</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature2" xml:space="preserve">
+    <value>Prompt Feeds</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature3" xml:space="preserve">
+    <value>Constant Real-time Monitoring</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature4" xml:space="preserve">
+    <value>Team Collaboration Tools</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature5" xml:space="preserve">
+    <value>Social CRM</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature6" xml:space="preserve">
+    <value>World Class 24*7 Training &amp;amp; Support</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature7" xml:space="preserve">
+    <value>Manage up to 200 profiles</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardSubHeading" xml:space="preserve">
+    <value>Includes sophisticated tools for complex objectives</value>
+  </data>
+  <data name="Index_PartialPricing_Standard" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature1" xml:space="preserve">
+    <value>Smart Inbox</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature2" xml:space="preserve">
+    <value>Real Time Feeds from Social Media Platforms</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature3" xml:space="preserve">
+    <value>Advanced Publishing Features</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature4" xml:space="preserve">
+    <value>Sophisticated Tools for Social Media based CRM</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature5" xml:space="preserve">
+    <value>In-Depth Reporting Tools</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature6" xml:space="preserve">
+    <value>World Class 24*7 Training &amp;amp; Support</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature7" xml:space="preserve">
+    <value>Manage up to 10 profiles</value>
+  </data>
+  <data name="Index_PartialPricing_StandardSubHeading" xml:space="preserve">
+    <value>Comprises of great tools suitable for small teams.</value>
+  </data>
+  <data name="Index_Company_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Index_Company_BtnReset" xml:space="preserve">
+    <value>Reset Button</value>
+  </data>
+  <data name="Index_Company_BtnSubmit" xml:space="preserve">
+    <value>Submit Button</value>
+  </data>
+  <data name="Index_Company_Careers" xml:space="preserve">
+    <value>Careers</value>
+  </data>
+  <data name="SocialBoard_Index_Company_CareersDescription" xml:space="preserve">
+    <value>Socialboard offers you opportunities and challenges to help you advance on your career path and achieve personal and professional development. Join our team. We’ll help you develop and accelerate your career by providing you with opportunities to amplify your talents. You can expect us to nurture your strengths and value your unique perspectives, and in return we expect you to share our passion for ‘excellence’ in everything we do.</value>
+  </data>
+  <data name="Index_Company_COMPANYHeader" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="Index_Company_Customers" xml:space="preserve">
+    <value>Customers</value>
+  </data>
+  <data name="Index_Company_Fileinput" xml:space="preserve">
+    <value>File input</value>
+  </data>
+  <data name="Index_Company_Partners" xml:space="preserve">
+    <value>Partners</value>
+  </data>
+  <data name="SocialBoard_Index_Company_PartnersDescription" xml:space="preserve">
+    <value>Socialboard is in course of establishing partnerships with Cloud Services Providers as MS Azure, Amazon AWS etc. We are also in process of hosting plugins and applications from us as well as partners. We will continuously improve features as the feedback comes from our partners.</value>
+  </data>
+  <data name="SocialBoard_Index_Company_SocioBoardDescription" xml:space="preserve">
+    <value>Socialboard is a next generation social media management application which leverages handling umpteen number of social media platforms through a revolutionary open source lite version and higher end versions which have unmatched world class technical support available round the clock. 
+                                We are trying to solve the problem which an average netizen faces while handling many social network profiles on the web. The mass generally has at least three social profiles, and businesses have a more complex social networking structure. The process of managing many social networks at once is very cumbersome and it takes its toll, Socialboard is here to settle all these issues. 
+                                Socialboard offers the following values to your business: 
+                                Objective of Socialboard is to solve the chaos surrounding social media platform management. 
+                                Most applications in this domain have a very narrow and limited approach towards end users, people feel caught up in a whirlpool, Socialboard plans to help users out of this vision.</value>
+  </data>
+  <data name="Index_Company_TextArea" xml:space="preserve">
+    <value>Text area</value>
+  </data>
+  <data name="Index_Disclaimer_Disclaimer" xml:space="preserve">
+    <value>Disclaimer</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex1" xml:space="preserve">
+    <value>The following terms and conditions will be deemed to have been accepted by the User on usage of the website socialboard.it. You are requested to read them carefully before you use the services of this site.
+                     </value>
+  </data>
+  <data name="Index_Download_DirectDownload" xml:space="preserve">
+    <value>Direct Download</value>
+  </data>
+  <data name="Index_Download_FooterMessage" xml:space="preserve">
+    <value>Want to get a professional installation done by our expert team at almost no cost?Click the button below:</value>
+  </data>
+  <data name="SocialBoard_Index_Download_SourceCodeHeading" xml:space="preserve">
+    <value>Socialboard source code is available to download through various sites. Please click respective links to download:</value>
+  </data>
+  <data name="Index_PartialPricing_BtnBuyNow" xml:space="preserve">
+    <value>Buy Now</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoInfoPage" xml:space="preserve">
+    <value>Request a Demo or More Informations</value>
+  </data>
+  <data name="SocialBoard_Versions_Agency_AgencysocioboardOffering" xml:space="preserve">
+    <value>Increase and nurture your clientele with the Socialboard’s offerings designed uniquely for the Agencies. These versions have a great interface that anybody can understand, powerful engagement tools and customizable analytics to monitor, analyze and report across countless social profiles. What’s more, you can feature your own logo and domain name, so your clients consider it your product, not to mention Socioboard anywhere.
+                Agencies can use commerically supported whitelabel version of Socioboard. Its fully open sourced and customizable as per your agency needs.</value>
+  </data>
+  <data name="Versions_Agency_AgencyWhiteLabel" xml:space="preserve">
+    <value>Agency White Label version is best suited to Small and Medium Enterprises (SMEs) who’d need support, updates, upgrades and related apps for being able to use Socioboard effectively to continue to build their clientele and their brands.</value>
+  </data>
+  <data name="Versions_Agency_AgencyWhiteLabel3Version" xml:space="preserve">
+    <value>Agency White Label version is available in three different variants</value>
+  </data>
+  <data name="Versions_Agency_AgencyWhiteLabelversion1" xml:space="preserve">
+    <value>Agency Lite</value>
+  </data>
+  <data name="Versions_Agency_AgencyWhiteLabelversion1DESC" xml:space="preserve">
+    <value>Agency Lite is best suited for small agencies. You could put your logo and deploy it up.Click</value>
+  </data>
+  <data name="Versions_Agency_AgencyWhiteLabelversion2" xml:space="preserve">
+    <value>Agency Pro</value>
+  </data>
+  <data name="Versions_Agency_AgencyWhiteLabelversion2DESC" xml:space="preserve">
+    <value>Agency Pro allows you to deploy with your logo as well as your theme. It makes your customers feel at home.Click</value>
+  </data>
+  <data name="Versions_Agency_AgencyWhiteLabelversion3" xml:space="preserve">
+    <value>Agency Premium</value>
+  </data>
+  <data name="Versions_Agency_AgencyWhiteLabelversion3DESC" xml:space="preserve">
+    <value>Agency Premium offers full customization with your logo, theme and also iOS and Android apps. This is a full-fledged version suitable for scaling agencies. Click</value>
+  </data>
+  <data name="Versions_Agency_AreyouanAgency" xml:space="preserve">
+    <value>Are you an Agency?</value>
+  </data>
+  <data name="Versions_Agency_Benifit1" xml:space="preserve">
+    <value>Customizable as per your needs</value>
+  </data>
+  <data name="Versions_Agency_Benifit2" xml:space="preserve">
+    <value>Flexible Client Management</value>
+  </data>
+  <data name="Versions_Agency_Benifit3" xml:space="preserve">
+    <value>Competitive price</value>
+  </data>
+  <data name="Versions_Agency_Benifit4" xml:space="preserve">
+    <value>World Class Support</value>
+  </data>
+  <data name="Versions_Agency_Benifit5" xml:space="preserve">
+    <value>Comes with Mobile App - Android and IOS</value>
+  </data>
+  <data name="Versions_Agency_Benifits" xml:space="preserve">
+    <value>Benefits:</value>
+  </data>
+  <data name="Versions_Agency_BtnResetInterested" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="Versions_Agency_BtnSubmitInterested" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="Versions_Agency_BuyAgencyLite" xml:space="preserve">
+    <value>to buy agency lite of $499.</value>
+  </data>
+  <data name="Versions_Agency_BuyAgencyPremium" xml:space="preserve">
+    <value>to buy this license of $2999.</value>
+  </data>
+  <data name="Versions_Agency_BuyAgencyPro" xml:space="preserve">
+    <value>to buy agency pro of $999.</value>
+  </data>
+  <data name="Versions_Agency_Click" xml:space="preserve">
+    <value>here</value>
+  </data>
+  <data name="Versions_Agency_Interested" xml:space="preserve">
+    <value>Interested? One of our account managers will be in touch...</value>
+  </data>
+  <data name="Versions_Agency_LeftHeader" xml:space="preserve">
+    <value>Now a Social Media Dashboard You Can Call Your Own</value>
+  </data>
+  <data name="Versions_EnterPrise_Description" xml:space="preserve">
+    <value>Enterprise Edition is best suited to businesses or groups looking at versatile social media dashboard capable of serving their niches well. Any institution with growing social media presence would want to have an enterprise edition of Socialboard. The degree of independence and hassle free experience which it offers to the end users is unmatched and it allows customers to focus on their business instead of wandering in the maze of social media management. Enterprise version offers support, updates and applications for unlimited profiles to be managed at an office location. The enterprise version starts from $9999 per location and is priced depending on your enterprises' custom requirements. 
+Interested in using Socialboard Enterprise version for your business now? Post your enquiry here.</value>
+  </data>
+  <data name="Versions_EnterPrise_HEADING" xml:space="preserve">
+    <value>Enterprise</value>
+  </data>
+  <data name="Versions_EnterPrise_SecurityCode" xml:space="preserve">
+    <value>Security Code</value>
+  </data>
+  <data name="BusinessSetting_Index_AssigningTasks" xml:space="preserve">
+    <value>Assigning Tasks</value>
+  </data>
+  <data name="BusinessSetting_Index_AssigningTasksDescription" xml:space="preserve">
+    <value>This setting will enable your users to assign tasks across groups and will make other group members visible. If you do not want users to assign tasks across groups, leave this setting "disabled".</value>
+  </data>
+  <data name="BusinessSetting_Index_AssigningTasksDisable" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="BusinessSetting_Index_AssigningTasksEnable" xml:space="preserve">
+    <value>Enable cross-group assignments</value>
+  </data>
+  <data name="BusinessSetting_Index_BuisnessName" xml:space="preserve">
+    <value>Buisness Name</value>
+  </data>
+  <data name="BusinessSetting_Index_NotifcationTaskDisable" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="BusinessSetting_Index_NotifcationTaskEnable" xml:space="preserve">
+    <value>Enable Task Notifications</value>
+  </data>
+  <data name="SocialBoard_BusinessSetting_Index_NotificationAlertViaEmail" xml:space="preserve">
+    <value>Socialboard alerts you &amp; your team members via email on various activities.</value>
+  </data>
+  <data name="BusinessSetting_Index_TaskNotificationEmail" xml:space="preserve">
+    <value>Task Notification Emails</value>
+  </data>
+  <data name="BusinessSetting_Index_UpdateSettings" xml:space="preserve">
+    <value>Update Setting</value>
+  </data>
+  <data name="Discovery_DiscoveryPartial_FacebookPosts" xml:space="preserve">
+    <value>Facebook Posts</value>
+  </data>
+  <data name="Discovery_DiscoveryPartial_Heading" xml:space="preserve">
+    <value>Discovery allows you to find new customers by searching with keywords around your business.</value>
+  </data>
+  <data name="Discovery_DiscoveryPartial_SearchHistory" xml:space="preserve">
+    <value>Search History</value>
+  </data>
+  <data name="Discovery_DiscoveryPartial_TwitterPosts" xml:space="preserve">
+    <value>Twitter Posts</value>
+  </data>
+  <data name="Feeds_FeedMenu_Facebook" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="Feeds_FeedMenu_Feeds" xml:space="preserve">
+    <value>Feeds</value>
+  </data>
+  <data name="Feeds_FeedMenu_Instragram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="Feeds_FeedMenu_Linkedin" xml:space="preserve">
+    <value>LinkedIn</value>
+  </data>
+  <data name="Feeds_FeedMenu_LinkedinAccount" xml:space="preserve">
+    <value>LinkedIn Account</value>
+  </data>
+  <data name="Feeds_FeedMenu_LinkedinCompanyPage" xml:space="preserve">
+    <value>LinkedIn Company Page</value>
+  </data>
+  <data name="Feeds_FeedMenu_Tumblr" xml:space="preserve">
+    <value>Tumblr</value>
+  </data>
+  <data name="Feeds_FeedMenu_Twitter" xml:space="preserve">
+    <value>Twitter</value>
+  </data>
+  <data name="Feeds_FeedMenu_Youtube" xml:space="preserve">
+    <value>Youtube</value>
+  </data>
+  <data name="Feeds_FeedPartial_Mention" xml:space="preserve">
+    <value>Mentions</value>
+  </data>
+  <data name="Feeds_FeedPartial_Retweets" xml:space="preserve">
+    <value>Retweets</value>
+  </data>
+  <data name="Feeds_FeedPartial_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Feeds_FeedPartial_Tag" xml:space="preserve">
+    <value>Tag</value>
+  </data>
+  <data name="Feeds_FeedPartial_Userfeeds" xml:space="preserve">
+    <value>User Feeds</value>
+  </data>
+  <data name="Feeds_FeedPartial_UserTweet" xml:space="preserve">
+    <value>User Tweet</value>
+  </data>
+  <data name="Feeds_Panel1Partial_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Feeds_Panel1Partial_Comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="Feeds_Panel1Partial_EmailMessage" xml:space="preserve">
+    <value>Email Message</value>
+  </data>
+  <data name="Feeds_Panel1Partial_Favourite" xml:space="preserve">
+    <value>Favorite</value>
+  </data>
+  <data name="Feeds_Panel1Partial_Post" xml:space="preserve">
+    <value>Post</value>
+  </data>
+  <data name="Feeds_Panel1Partial_QuoteMessage" xml:space="preserve">
+    <value>Quote Message</value>
+  </data>
+  <data name="Feeds_Panel1Partial_ReportAsSpam" xml:space="preserve">
+    <value>Report as spam</value>
+  </data>
+  <data name="Feeds_Panel1Partial_Retweet" xml:space="preserve">
+    <value>Retweet</value>
+  </data>
+  <data name="ForgotPasword_ForgotPasswordMailBodyPartial_FollowTwitter" xml:space="preserve">
+    <value>follow us on Twitter:</value>
+  </data>
+  <data name="SocialBoard_ForgotPasword_ForgotPasswordMailBodyPartial_HappySocioBoarding" xml:space="preserve">
+    <value>Happy Socialboarding!</value>
+  </data>
+  <data name="ForgotPasword_ForgotPasswordMailBodyPartial_NewUsernamePassword" xml:space="preserve">
+    <value>Please click</value>
+  </data>
+  <data name="ForgotPasword_ForgotPasswordMailBodyPartial_RequestRecieved" xml:space="preserve">
+    <value>It seems you have trouble logging in to Socialboard. We have a password reset link
+                        ready for you.</value>
+  </data>
+  <data name="SocialBoard_ForgotPasword_ForgotPasswordMailBodyPartial_SocioBoardSupportTeam" xml:space="preserve">
+    <value>Socialboard Support Team</value>
+  </data>
+  <data name="SocialBoard_ForgotPasword_ForgotPasswordMailBodyPartial_SupportTeamIntro" xml:space="preserve">
+    <value>This is support team at Socialboard.</value>
+  </data>
+  <data name="ForgotPasword_ForgotPasswordMailBodyPartial_ThanksRegards" xml:space="preserve">
+    <value>Thanks and Regards,</value>
+  </data>
+  <data name="ForgotPasword_ForgotPassworMailBodydPartial_FollowFacebook" xml:space="preserve">
+    <value>follow us on Facebook:</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordMailBodyPartial_FollowTwitter" xml:space="preserve">
+    <value>follow us on Twitter:</value>
+  </data>
+  <data name="SocialBoard_ForgotPasword_ResetPasswordMailBodyPartial_HappySocioBoarding" xml:space="preserve">
+    <value>Happy Socialboarding!</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordMailBodyPartial_NewUsernamePassword" xml:space="preserve">
+    <value>Please find below your username &amp; new password.</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordMailBodyPartial_RequestRecieved" xml:space="preserve">
+    <value>We received a request from you regarding a password change.</value>
+  </data>
+  <data name="SocialBoard_ForgotPasword_ResetPasswordMailBodyPartial_SocioBoardSupportTeam" xml:space="preserve">
+    <value>Socialboard Support Team</value>
+  </data>
+  <data name="SocialBoard_ForgotPasword_ResetPasswordMailBodyPartial_SupportTeamIntro" xml:space="preserve">
+    <value>This is support team at Socialboard.</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordMailBodyPartial_ThanksRegards" xml:space="preserve">
+    <value>Thanks and Regards,</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordPartial_InvalidLink" xml:space="preserve">
+    <value>Invalid Link</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordPartial_ResetPassword" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordPartial_Submit" xml:space="preserve">
+    <value>SUBMIT</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordPartial_TryAgain" xml:space="preserve">
+    <value>Try again</value>
+  </data>
+  <data name="ForgotPasword_ResetPassworMailBodydPartial_FollowFacebook" xml:space="preserve">
+    <value>follow us on Facebook:</value>
+  </data>
+  <data name="Shared_Site_AddFacebookClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Shared_Site_AddFacebookGroup" xml:space="preserve">
+    <value>Add Facebook Group</value>
+  </data>
+  <data name="Shared_Site_AddFacebookPage" xml:space="preserve">
+    <value>Add Facebook Fanpage</value>
+  </data>
+  <data name="Shared_Site_AddFacebookProfile" xml:space="preserve">
+    <value>Add Facebook Profile</value>
+  </data>
+  <data name="Shared_Site_AddFacebookSubmit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="Shared_Site_AddLinkedinClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Shared_Site_AddLinkedinCompanyPage" xml:space="preserve">
+    <value>Add Linkedin Company Page</value>
+  </data>
+  <data name="Shared_Site_AddLinkedinProfile" xml:space="preserve">
+    <value>Add Linkedin Profile</value>
+  </data>
+  <data name="Shared_Site_Affiliates" xml:space="preserve">
+    <value>Affiliates</value>
+  </data>
+  <data name="Shared_Site_ArchivedMessages" xml:space="preserve">
+    <value>Archived Messages</value>
+  </data>
+  <data name="Shared_Site_BusinessSettings" xml:space="preserve">
+    <value>Business Settings</value>
+  </data>
+  <data name="Shared_Site_ComposeMessagesClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Shared_Site_ComposeMessagesDropBox" xml:space="preserve">
+    <value>Dropbox</value>
+  </data>
+  <data name="Shared_Site_ComposeMessagesProfile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Shared_Site_ComposeMessagesSend" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="Shared_Site_ComposeMessagesURLShrink" xml:space="preserve">
+    <value>URL shrink</value>
+  </data>
+  <data name="Shared_Site_DashBoard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Shared_Site_Discovery" xml:space="preserve">
+    <value>Discovery</value>
+  </data>
+  <data name="Shared_Site_Drafts" xml:space="preserve">
+    <value>Drafts</value>
+  </data>
+  <data name="Shared_Site_Ewallet" xml:space="preserve">
+    <value>E-Wallet</value>
+  </data>
+  <data name="Shared_Site_Feeds" xml:space="preserve">
+    <value>Feeds</value>
+  </data>
+  <data name="Shared_Site_GetFacebookPageAnalytics" xml:space="preserve">
+    <value>Get Facebook Fanpage Analytics</value>
+  </data>
+  <data name="SocialBoard_Shared_Site_InvideFreindsDescription" xml:space="preserve">
+    <value>Socialboard offers to make group by virtue of which users can reach out to each other using a highly efficient collaboration mechanism.Groups serve as a platform to share information with other team members and increase workability and efficiency.</value>
+  </data>
+  <data name="Shared_Site_InviteFreinds" xml:space="preserve">
+    <value>Invite your Friend to</value>
+  </data>
+  <data name="Shared_Site_InviteFreindsClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Shared_Site_InviteFreindsEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Shared_Site_InviteFreindsFirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="Shared_Site_InviteFreindsLastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="Shared_Site_InviteFreindsSubmit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="Shared_Site_LogOut" xml:space="preserve">
+    <value>Log Out</value>
+  </data>
+  <data name="Shared_Site_Messages" xml:space="preserve">
+    <value>Messages</value>
+  </data>
+  <data name="Shared_Site_MyStuff" xml:space="preserve">
+    <value>My Stuff</value>
+  </data>
+  <data name="Shared_Site_MyTasks" xml:space="preserve">
+    <value>My Tasks</value>
+  </data>
+  <data name="Shared_Site_ProfileSummary" xml:space="preserve">
+    <value>Profile Summary</value>
+  </data>
+  <data name="Shared_Site_ProfileSummaryClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Shared_Site_Publishing" xml:space="preserve">
+    <value>Publishing</value>
+  </data>
+  <data name="Shared_Site_Reports" xml:space="preserve">
+    <value>Reports</value>
+  </data>
+  <data name="Shared_Site_SearchContact" xml:space="preserve">
+    <value>Contact Search</value>
+  </data>
+  <data name="Shared_Site_SearchContactClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Shared_Site_SecheduleMessages" xml:space="preserve">
+    <value>Schedule Messages</value>
+  </data>
+  <data name="Shared_Site_SentMessages" xml:space="preserve">
+    <value>Sent Messages</value>
+  </data>
+  <data name="Shared_Site_Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Shared_Site_SmartInbox" xml:space="preserve">
+    <value>Smart Inbox</value>
+  </data>
+  <data name="Shared_Site_SocialGroups" xml:space="preserve">
+    <value>Social Groups</value>
+  </data>
+  <data name="Shared_Site_SocialTickets" xml:space="preserve">
+    <value>Social Tickets</value>
+  </data>
+  <data name="Shared_Site_SocioQueue" xml:space="preserve">
+    <value>SocioQueue</value>
+  </data>
+  <data name="Shared_Site_UsersandGroups" xml:space="preserve">
+    <value>Users and Groups</value>
+  </data>
+  <data name="Shared_Socialsuite_Agency" xml:space="preserve">
+    <value>Agency</value>
+  </data>
+  <data name="Shared_Socialsuite_Blogs" xml:space="preserve">
+    <value>Blogs</value>
+  </data>
+  <data name="Shared_Socialsuite_Cases" xml:space="preserve">
+    <value>Cases</value>
+  </data>
+  <data name="Shared_Socialsuite_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Shared_Socialsuite_Community" xml:space="preserve">
+    <value>Community</value>
+  </data>
+  <data name="Shared_Socialsuite_Company" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="Shared_Socialsuite_Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="Shared_Socialsuite_EnterEmailForVideo" xml:space="preserve">
+    <value>Enter your Email Address and we'll send you an awesome video email</value>
+  </data>
+  <data name="Shared_Socialsuite_Enterprise" xml:space="preserve">
+    <value>Enterprise</value>
+  </data>
+  <data name="Shared_Socialsuite_Features" xml:space="preserve">
+    <value>Features</value>
+  </data>
+  <data name="Shared_Socialsuite_ForgotPassword" xml:space="preserve">
+    <value>Forgot Password?</value>
+  </data>
+  <data name="Shared_Socialsuite_GetInTouch" xml:space="preserve">
+    <value>GET IN TOUCH WITH US</value>
+  </data>
+  <data name="Shared_Socialsuite_HelpYourCustomer" xml:space="preserve">
+    <value>Help Your Customers</value>
+  </data>
+  <data name="Shared_Socialsuite_Insights" xml:space="preserve">
+    <value>Insights</value>
+  </data>
+  <data name="Shared_Socialsuite_LoginInsidePage" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Shared_Socialsuite_LoginMainPage" xml:space="preserve">
+    <value>LOGIN</value>
+  </data>
+  <data name="Shared_Socialsuite_MakeADecision" xml:space="preserve">
+    <value>Make a Decision</value>
+  </data>
+  <data name="Shared_Socialsuite_NotYetRegistered" xml:space="preserve">
+    <value>Not Yet Registered?</value>
+  </data>
+  <data name="Shared_Socialsuite_Pricing" xml:space="preserve">
+    <value>Pricing</value>
+  </data>
+  <data name="Shared_Socialsuite_RegisterNow" xml:space="preserve">
+    <value>Register Now</value>
+  </data>
+  <data name="Shared_Socialsuite_RegisterWithSocialaccounts" xml:space="preserve">
+    <value>You can also Register with your Social Account</value>
+  </data>
+  <data name="Shared_Socialsuite_RememberMe" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
+  <data name="Shared_Socialsuite_Restore" xml:space="preserve">
+    <value>Click here to restore</value>
+  </data>
+  <data name="Shared_Socialsuite_SendVideoInEmail" xml:space="preserve">
+    <value>Send Video in Email</value>
+  </data>
+  <data name="Shared_Socialsuite_SignIn" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="SocialBoard_Shared_Socialsuite_Title" xml:space="preserve">
+    <value>Socialboard - Generate More leads on Social Media| Social CRM | Social Media CMS</value>
+  </data>
+  <data name="Shared_Socialsuite_Training" xml:space="preserve">
+    <value>Training</value>
+  </data>
+  <data name="Shared_Socialsuite_TryitforFree" xml:space="preserve">
+    <value>Or try it free!!</value>
+  </data>
+  <data name="Shared_Socialsuite_Versions" xml:space="preserve">
+    <value>Versions</value>
+  </data>
+  <data name="Shared_Socialsuite_Wiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
+  <data name="ForgotPassword_ForgetPasswordPartial_ForgotPassword" xml:space="preserve">
+    <value>Forgot Password</value>
+  </data>
+  <data name="ForgotPassword_ForgetPasswordPartial_Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="ForgotPassword_ForgetPasswordPartial_Submit" xml:space="preserve">
+    <value>SUBMIT</value>
+  </data>
+  <data name="Group_Index_1Min" xml:space="preserve">
+    <value>1 Min</value>
+  </data>
+  <data name="Group_Index_2Min" xml:space="preserve">
+    <value>2 Min</value>
+  </data>
+  <data name="Group_Index_3Min" xml:space="preserve">
+    <value>3 Min</value>
+  </data>
+  <data name="Group_Index_4Min" xml:space="preserve">
+    <value>4 Min</value>
+  </data>
+  <data name="Group_Index_5Min" xml:space="preserve">
+    <value>5 Min</value>
+  </data>
+  <data name="Group_Index_Chat" xml:space="preserve">
+    <value>Chat</value>
+  </data>
+  <data name="Group_Index_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Group_Index_Groups" xml:space="preserve">
+    <value>Groups</value>
+  </data>
+  <data name="Group_Index_GroupUsers" xml:space="preserve">
+    <value>Group Users</value>
+  </data>
+  <data name="Group_Index_IntervalTime" xml:space="preserve">
+    <value>Interval Time:</value>
+  </data>
+  <data name="Group_Index_NewMessage" xml:space="preserve">
+    <value>New Message</value>
+  </data>
+  <data name="Group_Index_NoFeedFound" xml:space="preserve">
+    <value>NO FEED FOUND</value>
+  </data>
+  <data name="Group_Index_Post" xml:space="preserve">
+    <value>Post</value>
+  </data>
+  <data name="Group_Index_PostOnSelectedGroup" xml:space="preserve">
+    <value>Post On Selected Group</value>
+  </data>
+  <data name="Group_Index_SelectGroupDisplayFeeds" xml:space="preserve">
+    <value>Please select any group to display the feeds.</value>
+  </data>
+  <data name="Group_Index_Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Activities" xml:space="preserve">
+    <value>Activities</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Connections" xml:space="preserve">
+    <value>Connections</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Fans" xml:space="preserve">
+    <value>Fans</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Follower" xml:space="preserve">
+    <value>Follower</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Following" xml:space="preserve">
+    <value>Following</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Likes" xml:space="preserve">
+    <value>Likes</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_MyRecentProfiles" xml:space="preserve">
+    <value>My Recent Profiles</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Photos" xml:space="preserve">
+    <value>Photos</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Post" xml:space="preserve">
+    <value>Post</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_PostsPerDay" xml:space="preserve">
+    <value>Post Per Day</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_RecentMessages" xml:space="preserve">
+    <value>Recent message</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_TotalSubscriber" xml:space="preserve">
+    <value>Total Subcriber</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_TotalVideo" xml:space="preserve">
+    <value>Total Video</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_TotalView" xml:space="preserve">
+    <value>Total View</value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_IncomingMessages" xml:space="preserve">
+    <value>Incoming Messages</value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_NewFacebookFans" xml:space="preserve">
+    <value>New Facebook Fans</value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_SentMessages" xml:space="preserve">
+    <value>Sent Messages</value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_TwitterFollowers" xml:space="preserve">
+    <value>Twitter Followers</value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_Updates" xml:space="preserve">
+    <value>Updates</value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_ViewDetails" xml:space="preserve">
+    <value>View Details</value>
+  </data>
+  <data name="Home_HomeUserProfilePartial_Loading" xml:space="preserve">
+    <value>Loading . . .</value>
+  </data>
+  <data name="Home_HomeUserProfilePartial_RecentFollowers" xml:space="preserve">
+    <value>Recent Followers</value>
+  </data>
+  <data name="Home_HomeUserProfilePartial_SocialProfiles" xml:space="preserve">
+    <value>Social Profiles</value>
+  </data>
+  <data name="Home_HomeUserProfilePartial_TeamMembers" xml:space="preserve">
+    <value>Team Members</value>
+  </data>
+  <data name="Home_Index_Attach" xml:space="preserve">
+    <value>Attach Your Profile</value>
+  </data>
+  <data name="SocialBoard_Home_Index_AttachProfileToBeginWithSocioBoard" xml:space="preserve">
+    <value>Attach Your Social Network Profile for Beginning With Socialboard</value>
+  </data>
+  <data name="Home_PageNotFound_404NotFound" xml:space="preserve">
+    <value>404 Not Found</value>
+  </data>
+  <data name="SocialBoard_Home_PageNotFound_404PageSocioBoard" xml:space="preserve">
+    <value>404 Page Socialboard</value>
+  </data>
+  <data name="Home_PageNotFound_ContactSupport" xml:space="preserve">
+    <value>Contact Support</value>
+  </data>
+  <data name="Home_PageNotFound_Oops" xml:space="preserve">
+    <value>Oops!</value>
+  </data>
+  <data name="Home_PageNotFound_Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Home_PageNotFound_SorryErrorOccured" xml:space="preserve">
+    <value>Sorry, an error has occured, Requested page not found!</value>
+  </data>
+  <data name="Home_PageNotFound_TakeMeHome" xml:space="preserve">
+    <value>Take Me Home</value>
+  </data>
+  <data name="Home_PofilePartial_Facebook" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="Home_PofilePartial_Instagram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="Home_PofilePartial_Linkedin" xml:space="preserve">
+    <value>LinkedIn</value>
+  </data>
+  <data name="Home_PofilePartial_Tumblr" xml:space="preserve">
+    <value>Tumblr</value>
+  </data>
+  <data name="Home_PofilePartial_Twitter" xml:space="preserve">
+    <value>Twitter</value>
+  </data>
+  <data name="Home_PofilePartial_Youtube" xml:space="preserve">
+    <value>YouTube</value>
+  </data>
+  <data name="Home_Training_ClickAndStartLearning" xml:space="preserve">
+    <value>Click the below button and start learning.</value>
+  </data>
+  <data name="Home_Training_Heading1" xml:space="preserve">
+    <value>Wondering how to proceed since you are not a geek and tech savvy person?</value>
+  </data>
+  <data name="SocialBoard_Home_Training_Heading2" xml:space="preserve">
+    <value>Get the most out of Socioboard through live online training. It is comprehensive and serves your purpose whether you want to get the basics or dig deeper with our Software. Our instructors help you with a professional flow of training.</value>
+  </data>
+  <data name="Home_Training_Heading3" xml:space="preserve">
+    <value>We offer online live training to our clients through Skype and TeamViewer only at $100 for 10 hours.</value>
+  </data>
+  <data name="Home_Training_LiveOnline" xml:space="preserve">
+    <value>Live Online Training</value>
+  </data>
+  <data name="Publishing_DraftPartial_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Publishing_DraftPartial_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Publishing_DraftPartial_Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Publishing_DraftPartial_Schedule" xml:space="preserve">
+    <value>Schedule</value>
+  </data>
+  <data name="Publishing_DraftPartial_User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="Publishing_Draft_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Publishing_Draft_DraftMessages" xml:space="preserve">
+    <value>Draft_Messages</value>
+  </data>
+  <data name="Publishing_Draft_DraftTable" xml:space="preserve">
+    <value>Draft Table</value>
+  </data>
+  <data name="Publishing_Draft_EDITDRAFTMESSAGE" xml:space="preserve">
+    <value>EDIT DRAFT MESSAGE</value>
+  </data>
+  <data name="Publishing_Draft_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Publishing_Draft_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Publishing_Draft_SignIn" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="Publishing_Draft_YouWantToDeleteThisDraft" xml:space="preserve">
+    <value>Are you sure,you want to delete this Draft Message ?</value>
+  </data>
+  <data name="Publishing_Index_SaveToDraft" xml:space="preserve">
+    <value>Save To Drafts</value>
+  </data>
+  <data name="Publishing_Index_Schedule" xml:space="preserve">
+    <value>Schedule</value>
+  </data>
+  <data name="Publishing_Index_ScheduleMessage" xml:space="preserve">
+    <value>Schedule Message</value>
+  </data>
+  <data name="Publishing_Index_SelectProfile" xml:space="preserve">
+    <value>Select Profile</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_Nework" xml:space="preserve">
+    <value>Network</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_SentFrom" xml:space="preserve">
+    <value>Sent From</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Publishing_SocioQueue_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Publishing_SocioQueue_EditMessage" xml:space="preserve">
+    <value>EDIT MESSAGE</value>
+  </data>
+  <data name="Publishing_SocioQueue_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Publishing_SocioQueue_QueuedMessage" xml:space="preserve">
+    <value>Queued Messages</value>
+  </data>
+  <data name="Publishing_SocioQueue_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Publishing_SocioQueue_SocioQueue" xml:space="preserve">
+    <value>SocioQueue</value>
+  </data>
+  <data name="Publishing_SocioQueue_SureDeleteMessage" xml:space="preserve">
+    <value>Are you sure,you want to delete this Message ?</value>
+  </data>
+  <data name="Report_FbPageReport_Comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="Report_FbPageReport_ExportToExcel" xml:space="preserve">
+    <value>Export to Excel</value>
+  </data>
+  <data name="Report_FbPageReport_FacebookPagePosts" xml:space="preserve">
+    <value>Facebook Page Posts</value>
+  </data>
+  <data name="Report_FbPageReport_FbPageReports" xml:space="preserve">
+    <value>FB Page Reports</value>
+  </data>
+  <data name="Report_FbPageReport_InterReport" xml:space="preserve">
+    <value>INTER REPORT</value>
+  </data>
+  <data name="Report_FbPageReport_Like" xml:space="preserve">
+    <value>Like</value>
+  </data>
+  <data name="Report_FbPageReport_Post" xml:space="preserve">
+    <value>Post</value>
+  </data>
+  <data name="Report_FbPageReport_PostDetails" xml:space="preserve">
+    <value>Post Details</value>
+  </data>
+  <data name="Report_FbPageReport_Published" xml:space="preserve">
+    <value>Published</value>
+  </data>
+  <data name="Report_FbPageReport_Share" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="Report_FbPageReport_type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Report_FbPostDetails_Comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="Report_FbPostDetails_Like" xml:space="preserve">
+    <value>Like</value>
+  </data>
+  <data name="Report_FbPostDetails_Likes" xml:space="preserve">
+    <value>Likes</value>
+  </data>
+  <data name="Report_FbPostDetails_Shares" xml:space="preserve">
+    <value>Shares</value>
+  </data>
+  <data name="Report_GroupStatPartial_EngagementReport" xml:space="preserve">
+    <value>ENGAGEMENT REPORT</value>
+  </data>
+  <data name="Report_GroupStatPartial_GeneralStatsInterGroup" xml:space="preserve">
+    <value>General stats across your Inter group</value>
+  </data>
+  <data name="Report_GroupStatPartial_GroupReports" xml:space="preserve">
+    <value>Groups Reports</value>
+  </data>
+  <data name="Report_GroupStatPartial_GroupStats" xml:space="preserve">
+    <value>GROUP STATS</value>
+  </data>
+  <data name="Report_GroupStatPartial_Impressions" xml:space="preserve">
+    <value>IMPRESSIONS</value>
+  </data>
+  <data name="Report_GroupStatPartial_Incomingmessages" xml:space="preserve">
+    <value>Incoming Messages</value>
+  </data>
+  <data name="Report_GroupStatPartial_Interactions" xml:space="preserve">
+    <value>INTERACTIONS</value>
+  </data>
+  <data name="Report_GroupStatPartial_Mentioned" xml:space="preserve">
+    <value>Mentioned</value>
+  </data>
+  <data name="Report_GroupStatPartial_MetricsDescription" xml:space="preserve">
+    <value>These metrics are based on replies sent from profiles within the '' group</value>
+  </data>
+  <data name="Report_GroupStatPartial_NewFacebookFan" xml:space="preserve">
+    <value>New Facebook Fans</value>
+  </data>
+  <data name="Report_GroupStatPartial_NewFollowerTimePeriod" xml:space="preserve">
+    <value>New followers in this time period.</value>
+  </data>
+  <data name="Report_GroupStatPartial_NewTwitterFollower" xml:space="preserve">
+    <value>New Twitter Followers</value>
+  </data>
+  <data name="Report_GroupStatPartial_PhotoLink" xml:space="preserve">
+    <value>Photo Link</value>
+  </data>
+  <data name="Report_GroupStatPartial_PlainText" xml:space="preserve">
+    <value>Plain Text</value>
+  </data>
+  <data name="Report_GroupStatPartial_ProfilesByUser" xml:space="preserve">
+    <value>PROFILES BY USERS</value>
+  </data>
+  <data name="Report_GroupStatPartial_ReTweets" xml:space="preserve">
+    <value>Retweets</value>
+  </data>
+  <data name="Report_GroupStatPartial_SentMessages" xml:space="preserve">
+    <value>Sent Message</value>
+  </data>
+  <data name="Report_GroupStatPartial_Statsfor2Twitteraccount" xml:space="preserve">
+    <value>Stats for 2 Twitter accounts in the Inter group</value>
+  </data>
+  <data name="Report_GroupStatPartial_TwitterStats" xml:space="preserve">
+    <value>TWITTER STATS</value>
+  </data>
+  <data name="Report_Index_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Report_Index_Postdetails" xml:space="preserve">
+    <value>Post Details</value>
+  </data>
+  <data name="Report_Index_SaveChanges" xml:space="preserve">
+    <value>Save changes</value>
+  </data>
+  <data name="Report_ReportMenuPartial_AssignDate" xml:space="preserve">
+    <value>AssignDate</value>
+  </data>
+  <data name="Report_ReportMenuPartial_AssignTaskTo" xml:space="preserve">
+    <value>AssignTaskTo</value>
+  </data>
+  <data name="Report_ReportMenuPartial_CompeteDate" xml:space="preserve">
+    <value>CompeteDate</value>
+  </data>
+  <data name="Report_ReportMenuPartial_FacebookReports" xml:space="preserve">
+    <value>FacebookReport</value>
+  </data>
+  <data name="Report_ReportMenuPartial_From" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="Report_ReportMenuPartial_InterReport" xml:space="preserve">
+    <value>INTER REPORT</value>
+  </data>
+  <data name="Report_ReportMenuPartial_NoDataAvailable" xml:space="preserve">
+    <value>No Data available..</value>
+  </data>
+  <data name="Report_ReportMenuPartial_Reports" xml:space="preserve">
+    <value>Reports</value>
+  </data>
+  <data name="Report_ReportMenuPartial_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Report_ReportMenuPartial_TaskMessage" xml:space="preserve">
+    <value>TaskMessage</value>
+  </data>
+  <data name="Report_ReportMenuPartial_TaskOwner" xml:space="preserve">
+    <value>TaskOwner</value>
+  </data>
+  <data name="Report_ReportMenuPartial_Tasks" xml:space="preserve">
+    <value>TASKS</value>
+  </data>
+  <data name="Report_ReportMenuPartial_TwitterReports" xml:space="preserve">
+    <value>TwitterReport</value>
+  </data>
+  <data name="Report_TeamReportPartial_TeamReports" xml:space="preserve">
+    <value>Team Reports</value>
+  </data>
+  <data name="Report_TwitterReportPartial_DirectMessageRecieved" xml:space="preserve">
+    <value>Direct Message (Received)</value>
+  </data>
+  <data name="Report_TwitterReportPartial_DirectMessageSend" xml:space="preserve">
+    <value>Direct Message (Send)</value>
+  </data>
+  <data name="Report_TwitterReportPartial_FollowerDemographic" xml:space="preserve">
+    <value>FOLLOWER DEMOGRAPHICS</value>
+  </data>
+  <data name="Report_TwitterReportPartial_KeyIndicators" xml:space="preserve">
+    <value>KEY INDICATORS</value>
+  </data>
+  <data name="Report_TwitterReportPartial_MeasuresConversingAudiences" xml:space="preserve">
+    <value>Measure how you’re conversing with your audience.</value>
+  </data>
+  <data name="Report_TwitterReportPartial_Mentioned" xml:space="preserve">
+    <value>Mentions</value>
+  </data>
+  <data name="Report_TwitterReportPartial_MessageRecieved" xml:space="preserve">
+    <value>Message Received</value>
+  </data>
+  <data name="Report_TwitterReportPartial_MessageSent" xml:space="preserve">
+    <value>Message Sent</value>
+  </data>
+  <data name="Report_TwitterReportPartial_NewFollower" xml:space="preserve">
+    <value>New Follower</value>
+  </data>
+  <data name="Report_TwitterReportPartial_Retweets" xml:space="preserve">
+    <value>Retweets</value>
+  </data>
+  <data name="Report_TwitterReportPartial_ShapeMessagingCampaigns" xml:space="preserve">
+    <value>Learn more about your audience to shape your messaging &amp;amp; campaigns.</value>
+  </data>
+  <data name="Report_TwitterReportPartial_TwitterAccountReport" xml:space="preserve">
+    <value>TWITTER ACCOUNT REPORT</value>
+  </data>
+  <data name="Report_TwitterReportPartial_TwitterReports" xml:space="preserve">
+    <value>Twitter Reports</value>
+  </data>
+  <data name="Report_TwitterReportPartial_YouFollowed" xml:space="preserve">
+    <value>You Followed</value>
+  </data>
+  <data name="Shared_Error_AVGPost" xml:space="preserve">
+    <value>Avg. Post</value>
+  </data>
+  <data name="Shared_Error_AvgTweets" xml:space="preserve">
+    <value>Avg. tweet</value>
+  </data>
+  <data name="Shared_Error_Connections" xml:space="preserve">
+    <value>Connections</value>
+  </data>
+  <data name="Shared_Error_Follower" xml:space="preserve">
+    <value>followers</value>
+  </data>
+  <data name="Shared_Error_Followers" xml:space="preserve">
+    <value>Followers</value>
+  </data>
+  <data name="Shared_Error_Following" xml:space="preserve">
+    <value>following</value>
+  </data>
+  <data name="Shared_Error_Friends" xml:space="preserve">
+    <value>Friends</value>
+  </data>
+  <data name="Shared_Error_Likes" xml:space="preserve">
+    <value>likes</value>
+  </data>
+  <data name="Shared_Error_MyRecentProfile" xml:space="preserve">
+    <value>My recent profile</value>
+  </data>
+  <data name="Shared_Error_Perday" xml:space="preserve">
+    <value>Per Day</value>
+  </data>
+  <data name="Shared_Error_Photos" xml:space="preserve">
+    <value>photos</value>
+  </data>
+  <data name="Shared_Error_Post" xml:space="preserve">
+    <value>post</value>
+  </data>
+  <data name="Shared_Error_RecentMessages" xml:space="preserve">
+    <value>Recent message</value>
+  </data>
+  <data name="Shared_Error_SnapShotsConnectedAccounts" xml:space="preserve">
+    <value>Snapshots of your connected accounts</value>
+  </data>
+  <data name="Shared_Error_TotalSubscriber" xml:space="preserve">
+    <value>Total Subcriber</value>
+  </data>
+  <data name="Shared_Error_TotalVideo" xml:space="preserve">
+    <value>Total Video</value>
+  </data>
+  <data name="Shared_Error_TotalView" xml:space="preserve">
+    <value>Total View</value>
+  </data>
+  <data name="Shared_LoadGroupPartial_Groups" xml:space="preserve">
+    <value>Groups</value>
+  </data>
+  <data name="UserGroup_AcceptedUserPartial_AcceptedTeamMember" xml:space="preserve">
+    <value>Accepted Team Members</value>
+  </data>
+  <data name="UserGroup_PendingUserPartial_InviteANewMember" xml:space="preserve">
+    <value>Invite a New Team Member</value>
+  </data>
+  <data name="UserGroup_PendingUserPartial_PendingTeamMembers" xml:space="preserve">
+    <value>Pending Team Members</value>
+  </data>
+  <data name="UserGroup_ProfilesConnectedToGroupPartial_ProfilerLinkedTo" xml:space="preserve">
+    <value>Profile Linked To</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_CreateGroup" xml:space="preserve">
+    <value>Create a Group</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_GroupName" xml:space="preserve">
+    <value>Group Name</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_Groups" xml:space="preserve">
+    <value>Groups</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_GroupsDescription" xml:space="preserve">
+    <value>Groups are used to categorize social profiles together to help manage and report on your social media efforts efficiently. Learn more about Groups</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_GroupsDescription2" xml:space="preserve">
+    <value>Groups help you organize your social profiles and team members. Name your group and you can begin connecting social profiles and adding team members to it. Twitter or Facebook required to create a group.</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_UserAndGroup" xml:space="preserve">
+    <value>User And Group</value>
+  </data>
+  <data name="UserGroup_UserProfilePartial_ProfilesAvailable" xml:space="preserve">
+    <value>Profiles available for connection</value>
+  </data>
+  <data name="Admin_AddNewsLatter_LoadAddNewsLatter_AddNewslatter" xml:space="preserve">
+    <value>Add News letter</value>
+  </data>
+  <data name="Admin_AddNewsLatter_LoadAddNewsLatter_SendDate" xml:space="preserve">
+    <value>Send Date</value>
+  </data>
+  <data name="Admin_AddNewsLatter_LoadAddNewsLatter_Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="Admin_AdminLogin_Index_RememberMe" xml:space="preserve">
+    <value>Remember Me</value>
+  </data>
+  <data name="SocialBoard_Admin_AdminLogin_Index_SocioBoardAdmin" xml:space="preserve">
+    <value>Socialboard Admin</value>
+  </data>
+  <data name="SocialBoard_Admin_AdminLogin_Index_SocioBoardAdminLogin" xml:space="preserve">
+    <value>SocialBoard | Admin Login</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_ChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_ChangeProfileImage" xml:space="preserve">
+    <value>Change Profile Image</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_FirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_LastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_SaveChanges" xml:space="preserve">
+    <value>Save changes</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_TimeZone" xml:space="preserve">
+    <value>Time Zone</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Advertisement" xml:space="preserve">
+    <value>Advertisement</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_AdvertisementDetails" xml:space="preserve">
+    <value>Advertisement Details</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Disable" xml:space="preserve">
+    <value>Disable</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Enable" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Expirydate" xml:space="preserve">
+    <value>Expiry Date</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Image" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_ImageURL" xml:space="preserve">
+    <value>Image Url</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Or" xml:space="preserve">
+    <value>OR</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Advertisement" xml:space="preserve">
+    <value>Advertisement</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Disable" xml:space="preserve">
+    <value>Disable</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_EditAdvertDetails" xml:space="preserve">
+    <value>Edit Advertisement Details</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Enable" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_ExpiryDate" xml:space="preserve">
+    <value>Expiry Date</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Image" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_ImageURL" xml:space="preserve">
+    <value>Image Url</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Or" xml:space="preserve">
+    <value>OR</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="Admin_Advertisement_ManageAdvertisement_Manage" xml:space="preserve">
+    <value>Manage Advertisement</value>
+  </data>
+  <data name="Admin_Advertisement_ManageAdvertisement_ManageAdvertTable" xml:space="preserve">
+    <value>Manage Advertisement Table</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_AddNewCoupon" xml:space="preserve">
+    <value>Add New Coupon</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_CouponCode" xml:space="preserve">
+    <value>Coupon Code</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_Disable" xml:space="preserve">
+    <value>Disable</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_Discount" xml:space="preserve">
+    <value>Discount In Percentage (%)</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_Enable" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_EntryDate" xml:space="preserve">
+    <value>Entry Date</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_ExpiryDate" xml:space="preserve">
+    <value>Expiry Date</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_CouponCode" xml:space="preserve">
+    <value>Coupon Code</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_Disable" xml:space="preserve">
+    <value>Disable</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_EditCoupon" xml:space="preserve">
+    <value>Edit Coupon Details</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_Enable" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_EntryDate" xml:space="preserve">
+    <value>Entry Date</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_ExpiryDate" xml:space="preserve">
+    <value>Expiry Date</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="Admin_Coupons_ManageCoupons_ManageCoupon" xml:space="preserve">
+    <value>Manage Coupons</value>
+  </data>
+  <data name="Admin_Coupons_ManageCoupons_ManageCouponTable" xml:space="preserve">
+    <value>Manage Coupons Table</value>
+  </data>
+  <data name="Admin_News_CreateNews_Disable" xml:space="preserve">
+    <value>Disable</value>
+  </data>
+  <data name="Admin_News_CreateNews_EditUserDetails" xml:space="preserve">
+    <value>Edit User Details</value>
+  </data>
+  <data name="Admin_News_CreateNews_Enable" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="Admin_News_CreateNews_ExpiryDate" xml:space="preserve">
+    <value>Expiry Date</value>
+  </data>
+  <data name="Admin_News_CreateNews_News" xml:space="preserve">
+    <value>News</value>
+  </data>
+  <data name="Admin_News_CreateNews_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Admin_News_CreateNews_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Admin_News_EditNews_Disable" xml:space="preserve">
+    <value>Disable</value>
+  </data>
+  <data name="Admin_News_EditNews_EditUserdetails" xml:space="preserve">
+    <value>Edit User Details</value>
+  </data>
+  <data name="Admin_News_EditNews_Enable" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="Admin_News_EditNews_ExpiryDate" xml:space="preserve">
+    <value>Expiry Date</value>
+  </data>
+  <data name="Admin_News_EditNews_News" xml:space="preserve">
+    <value>News</value>
+  </data>
+  <data name="Admin_News_EditNews_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Admin_News_EditNews_Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="Admin_News_ManageNews_ManageNews" xml:space="preserve">
+    <value>Manage News</value>
+  </data>
+  <data name="Admin_News_ManageNews_ManageNewstable" xml:space="preserve">
+    <value>Manage News Table</value>
+  </data>
+  <data name="Admin_Package_EditPackage_EditDetails" xml:space="preserve">
+    <value>Edit Package Details</value>
+  </data>
+  <data name="Admin_Package_EditPackage_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Admin_Package_EditPackage_Pricing" xml:space="preserve">
+    <value>Pricing</value>
+  </data>
+  <data name="Admin_Package_EditPackage_Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="Admin_Package_ManagePackage_ManagePackage" xml:space="preserve">
+    <value>Manage Package</value>
+  </data>
+  <data name="Admin_Package_ManagePackage_ManagePackageTable" xml:space="preserve">
+    <value>Manage Package Table</value>
+  </data>
+  <data name="Admin_Services_SchedulingDetails_UsersSchedulingDetails" xml:space="preserve">
+    <value>Users Scheduling Details</value>
+  </data>
+  <data name="Admin_Services_SchedulingDetails_UsersSchedulingDetailsTable" xml:space="preserve">
+    <value>Users Scheduling Details Table</value>
+  </data>
+  <data name="Admin_Services_Scheduling_Scheduling" xml:space="preserve">
+    <value>Scheduling</value>
+  </data>
+  <data name="Admin_Services_Scheduling_SchedulingTable" xml:space="preserve">
+    <value>Scheduling Table</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Disable" xml:space="preserve">
+    <value>Disable</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_EditDetails" xml:space="preserve">
+    <value>Edit User Details</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Email" xml:space="preserve">
+    <value>E-mail Address</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Enable" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Package" xml:space="preserve">
+    <value>Package</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_AccountType" xml:space="preserve">
+    <value>Account Type</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_CreateDate" xml:space="preserve">
+    <value>Create Date</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_Deleted" xml:space="preserve">
+    <value>Deleted</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_DeleteUsers" xml:space="preserve">
+    <value>Deleted Users</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_DeleteUsersTable" xml:space="preserve">
+    <value>Deleted Users Table</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_EmailId" xml:space="preserve">
+    <value>Email Id</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_UsersStatus" xml:space="preserve">
+    <value>User Status</value>
+  </data>
+  <data name="Admin_UserDetails_ManageProfile_ManageProfiles" xml:space="preserve">
+    <value>Manage Profiles</value>
+  </data>
+  <data name="Admin_UserDetails_ManageProfile_ManageProfilesTable" xml:space="preserve">
+    <value>Manage Profile Table</value>
+  </data>
+  <data name="Admin_UserDetails_ManageUsers_ManageUsers" xml:space="preserve">
+    <value>Manage User</value>
+  </data>
+  <data name="Admin_UserDetails_ManageUsers_ManageUsersTable" xml:space="preserve">
+    <value>Manage User Table</value>
+  </data>
+  <data name="Index_PaymentSuccessful_Continue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="Index_PaymentSuccessful_ThankYou" xml:space="preserve">
+    <value>Thank You</value>
+  </data>
+  <data name="Index_Privacy_ConfidentialityandSecurity" xml:space="preserve">
+    <value>Confidentiality and Security of Personal Information :</value>
+  </data>
+  <data name="Index_Privacy_ConfidentialityandSecurityDescription" xml:space="preserve">
+    <value>Except as otherwise provided in this Privacy Policy we will keep your Personal Information private and will not share it with third parties, unless such disclosure is necessary to: (a) comply with a court order or other legal process; or (b) protect our rights or property. We provide you with the capability to transmit your Personal Information via secured and encrypted channels if you use a similarly equipped web browser.</value>
+  </data>
+  <data name="Index_Privacy_EmploymentInfoCollected" xml:space="preserve">
+    <value>Employment Information :</value>
+  </data>
+  <data name="Index_Privacy_EmploymentInfoCollectedDescription" xml:space="preserve">
+    <value>Through our Site we provide access to open positions under the title “Careers.” When you submit a resume via Email or through our Site, we will treat your resume with the same degree of confidentiality as if you had submitted it to us via regular mail.</value>
+  </data>
+  <data name="Index_Privacy_OtherlimitsinPrivacy" xml:space="preserve">
+    <value>Other Limits to Your Privacy :</value>
+  </data>
+  <data name="Index_Privacy_OtherlimitsinPrivacyDescription" xml:space="preserve">
+    <value>The Site contains links to other Web sites. We are not responsible for the privacy practices or the content of such Web sites. Please understand that any information that is disclosed in these areas becomes subject to the privacy policies and practices of those site. We have no control over its use and you should exercise caution when deciding to disclose your Personal Information.</value>
+  </data>
+  <data name="Index_Privacy_PersonalInfoCollected" xml:space="preserve">
+    <value>Personal Information Collected :</value>
+  </data>
+  <data name="Index_Privacy_PersonalInfoCollectedDescription" xml:space="preserve">
+    <value>In order for you to access certain specialized services and or to purchase products offered at the Site, we may require you to provide us with information that personally identifies you (“Personal Information”). Personal Information may include: (i) Contact Data (such as your name, mailing and e-mail addresses); (ii) Demographic Data (such as your zip code, state, or industry). If you communicate with us by Email, or complete survey forms online, any information you provide may be collected as Personal Information.</value>
+  </data>
+  <data name="Index_Privacy_PrivacyPolicyHeading" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="SocialBoard_Index_Privacy_SocioBoardtechPVTLtd" xml:space="preserve">
+    <value>Twinba srl</value>
+  </data>
+  <data name="Index_Privacy_SocioBoardtechPVTLtdDescription" xml:space="preserve">
+    <value>(“us,” “we” or “our”) created this Web Site Privacy Policy (“Privacy Policy”) to ensure the confidence of our visitors and clients (“you” or “your”) with our Web site (the “Site”), and to demonstrate our commitment to fair information practices and to protect your privacy.</value>
+  </data>
+  <data name="Index_Privacy_TafficDataType" xml:space="preserve">
+    <value>Traffic Data Collected :</value>
+  </data>
+  <data name="Index_Privacy_TafficDataTypeDescription" xml:space="preserve">
+    <value>We automatically track and collect the following information when you visit our Site, including your: (i) IP address; (ii) domain server; (iii) type of computer; and (iv) type of web browser (collectively “Traffic Data”). Traffic Data is anonymous information that does not personally identify you but is helpful to improve your experience on the Site and to track site usage. We may also use “cookies” to customize content specific to your interests, to ensure that you do not see the same promotional content repeatedly and to store your password (if one is required to be issued) so you do not have to re-enter it each time you visit the Site.</value>
+  </data>
+  <data name="Index_Privacy_TypesOfInfoCollected" xml:space="preserve">
+    <value>Types of Information Collected :</value>
+  </data>
+  <data name="Index_Privacy_UpdatesandChangestoPrivacy" xml:space="preserve">
+    <value>Updates and Changes to Privacy Policy:</value>
+  </data>
+  <data name="Index_Privacy_UpdatesandChangestoPrivacyDescription" xml:space="preserve">
+    <value>We reserve the right, at any time and without notice, to add to, change, update or modify this Privacy Policy, simply by posting such change, update or modification on the Site. Any such change, update or modification will be effective immediately upon posting on the Site</value>
+  </data>
+  <data name="Index_Privacy_UserChoice" xml:space="preserve">
+    <value>User Choice Regarding Collection, Use and Distribution of Personal Information :</value>
+  </data>
+  <data name="Index_Privacy_UserChoiceDescription" xml:space="preserve">
+    <value>You may choose not to provide us with any Personal Information. In that case you can still access and use much of the Site; however you will not be able to access and use portions of the Site that require your Personal Information.</value>
+  </data>
+  <data name="Index_Privacy_UsesOfInformation" xml:space="preserve">
+    <value>Uses of Information Collected :</value>
+  </data>
+  <data name="Index_Privacy_UsesOfInformationDescription" xml:space="preserve">
+    <value>We may use Contact Data to send you information about our products or services, or promotional material, or to contact you when necessary. We may use your Demographic Data to customize and tailor your experience on the Site, displaying content that may interest you according to your preferences.</value>
+  </data>
+  <data name="Index_RegistrationMailPartial_ClickTheLinkBelowToActivate" xml:space="preserve">
+    <value>Please click the link below to activate your account.</value>
+  </data>
+  <data name="Index_RegistrationMailPartial_CongratsRecievedRequest" xml:space="preserve">
+    <value>Congratulations! We have received your request for</value>
+  </data>
+  <data name="Index_RegistrationMailPartial_Hi" xml:space="preserve">
+    <value>Hi</value>
+  </data>
+  <data name="Index_RegistrationMailPartial_KeepsocioBoarding" xml:space="preserve">
+    <value>Hope you have a great time at Socialboard. Keep socialboarding... :)</value>
+  </data>
+  <data name="Index_RegistrationMailPartial_Plan" xml:space="preserve">
+    <value>plan.</value>
+  </data>
+  <data name="SocialBoard_Index_RegistrationMailPartial_SocioBoardTeam" xml:space="preserve">
+    <value>Socialboard Team</value>
+  </data>
+  <data name="Index_RegistrationMailPartial_WarmRegards" xml:space="preserve">
+    <value>Warm regards,</value>
+  </data>
+  <data name="Index_RegistrationPartial_BasicFree" xml:space="preserve">
+    <value>Basic(Free)</value>
+  </data>
+  <data name="Index_RegistrationPartial_ClickToVerify" xml:space="preserve">
+    <value>Click to verify</value>
+  </data>
+  <data name="Index_RegistrationPartial_CreateAccount" xml:space="preserve">
+    <value>Create Account</value>
+  </data>
+  <data name="Index_RegistrationPartial_CreateYourAccount" xml:space="preserve">
+    <value>Create Your Account</value>
+  </data>
+  <data name="Index_RegistrationPartial_Deluxe" xml:space="preserve">
+    <value>Deluxe</value>
+  </data>
+  <data name="Index_RegistrationPartial_Premium" xml:space="preserve">
+    <value>Premium</value>
+  </data>
+  <data name="Index_RegistrationPartial_Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="Index_RegistrationPartial_SelectAccountType" xml:space="preserve">
+    <value>Select Account Type</value>
+  </data>
+  <data name="Index_RegistrationPartial_SocioBasic" xml:space="preserve">
+    <value>SocioBasic</value>
+  </data>
+  <data name="Index_RegistrationPartial_SocioDeluxe" xml:space="preserve">
+    <value>SocioDeluxe</value>
+  </data>
+  <data name="Index_RegistrationPartial_SocioPremium" xml:space="preserve">
+    <value>SocioPremium</value>
+  </data>
+  <data name="Index_RegistrationPartial_SocioStandard" xml:space="preserve">
+    <value>SocioStandard</value>
+  </data>
+  <data name="Index_RegistrationPartial_Standard" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="Index_UserActivationPartial_CheckOrResendMail" xml:space="preserve">
+    <value>First Activate your Account.
+                    For this please check your mail.
+
+                    OR 
+
+                    For again sending Mail 
+                    Please click here....</value>
+  </data>
+  <data name="Index_UserActivationPartial_SendMail" xml:space="preserve">
+    <value>SEND MAIL</value>
+  </data>
+  <data name="Index_UserActivationPartial_UserInfo" xml:space="preserve">
+    <value>User Info</value>
+  </data>
+  <data name="Messages_ArchivePartial_ArchivedMessages" xml:space="preserve">
+    <value>Archived Messages</value>
+  </data>
+  <data name="Messages_ArchivePartial_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Messages_ArchivePartial_Comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="Messages_ArchivePartial_LeaveAComment" xml:space="preserve">
+    <value>LEAVE A COMMENT</value>
+  </data>
+  <data name="Messages_MessagesLeftSideBarPartial_ArchiveMessage" xml:space="preserve">
+    <value>Archive Message</value>
+  </data>
+  <data name="Messages_MessagesLeftSideBarPartial_MyTask" xml:space="preserve">
+    <value>My Task</value>
+  </data>
+  <data name="Messages_MessagesLeftSideBarPartial_SentMessage" xml:space="preserve">
+    <value>Sent Message</value>
+  </data>
+  <data name="Messages_MessagesLeftSideBarPartial_SmartInbox" xml:space="preserve">
+    <value>Smart Inbox</value>
+  </data>
+  <data name="Messages_MessagesMidPartialNew_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Messages_MessagesMidPartialNew_MyRecentPosts" xml:space="preserve">
+    <value>My Recent Posts</value>
+  </data>
+  <data name="Messages_MessagesMidPartialNew_ProfileSummary" xml:space="preserve">
+    <value>Profile Summary</value>
+  </data>
+  <data name="Messages_MessagesRightPartial_PROFILES" xml:space="preserve">
+    <value>PROFILES</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Messages_sentmsgPartial_ChooseDataRange" xml:space="preserve">
+    <value>Choose Date Range</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="Messages_sentmsgPartial_CSVDescription" xml:space="preserve">
+    <value>Messages will be exported in CSV format - Comma Separated Values. This data can be opened and analyzed in applications such as Microsoft Excel, Apple Numbers or Google Docs.</value>
+  </data>
+  <data name="Messages_sentmsgPartial_CustomRange" xml:space="preserve">
+    <value>Custom Range</value>
+  </data>
+  <data name="Messages_sentmsgPartial_ExportSentMessageData" xml:space="preserve">
+    <value>Export sent message data</value>
+  </data>
+  <data name="Messages_sentmsgPartial_ExportToCSV" xml:space="preserve">
+    <value>Export to CSV</value>
+  </data>
+  <data name="Messages_sentmsgPartial_From" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Last30Days" xml:space="preserve">
+    <value>Last 30 Days</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Last7Days" xml:space="preserve">
+    <value>Last 7 Days</value>
+  </data>
+  <data name="Messages_sentmsgPartial_LastMonth" xml:space="preserve">
+    <value>Last Month</value>
+  </data>
+  <data name="Messages_sentmsgPartial_LeaveAComment" xml:space="preserve">
+    <value>LEAVE A COMMENT</value>
+  </data>
+  <data name="Messages_sentmsgPartial_SentMessages" xml:space="preserve">
+    <value>Sent Messages</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="Messages_sentmsgPartial_ThisMonth" xml:space="preserve">
+    <value>This Month</value>
+  </data>
+  <data name="Messages_sentmsgPartial_To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Today" xml:space="preserve">
+    <value>Today</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Yesterday" xml:space="preserve">
+    <value>Yesterday</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_AssignTaskTo" xml:space="preserve">
+    <value>ASSIGN TASK TO</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_LeaveAComment" xml:space="preserve">
+    <value>LEAVE A COMMENT</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_Like" xml:space="preserve">
+    <value>Like</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_UnLike" xml:space="preserve">
+    <value>Unlike</value>
+  </data>
+  <data name="Messages_SocialProfileDetail_Connection" xml:space="preserve">
+    <value>Connection</value>
+  </data>
+  <data name="Messages_SocialProfileDetail_Follower" xml:space="preserve">
+    <value>Followers</value>
+  </data>
+  <data name="Messages_SocialProfileDetail_Following" xml:space="preserve">
+    <value>Following</value>
+  </data>
+  <data name="Messages_SocialProfileDetail_Freinds" xml:space="preserve">
+    <value>Friends</value>
+  </data>
+  <data name="Messages_SocialProfileDetail_GoToFullprofile" xml:space="preserve">
+    <value>Go to full profile →</value>
+  </data>
+  <data name="Messages_TaskPartial_AreYouSureValidationStatus" xml:space="preserve">
+    <value>Are you sure want to change status?</value>
+  </data>
+  <data name="Messages_TaskPartial_AssignedBy" xml:space="preserve">
+    <value>Assigned by</value>
+  </data>
+  <data name="Messages_TaskPartial_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Messages_TaskPartial_ClosedBy" xml:space="preserve">
+    <value>Closed By</value>
+  </data>
+  <data name="Messages_TaskPartial_ClosedByYou" xml:space="preserve">
+    <value>Closed By  You</value>
+  </data>
+  <data name="Messages_TaskPartial_CompleteTask" xml:space="preserve">
+    <value>Complete Task</value>
+  </data>
+  <data name="Messages_TaskPartial_DeleteTask" xml:space="preserve">
+    <value>Delete Task</value>
+  </data>
+  <data name="Messages_TaskPartial_EditStatus" xml:space="preserve">
+    <value>Edit Status</value>
+  </data>
+  <data name="Messages_TaskPartial_ManageTasks" xml:space="preserve">
+    <value>MANAGE TASKS</value>
+  </data>
+  <data name="Messages_TaskPartial_MyTask" xml:space="preserve">
+    <value>My Task</value>
+  </data>
+  <data name="Messages_TaskPartial_NoTaskInThisGroup" xml:space="preserve">
+    <value>Sorry, you have no any Task in this Group.</value>
+  </data>
+  <data name="Messages_TaskPartial_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Messages_TaskPartial_PendingTask" xml:space="preserve">
+    <value>Pending Task</value>
+  </data>
+  <data name="Messages_TaskPartial_Save" xml:space="preserve">
+    <value>Sav</value>
+  </data>
+  <data name="Messages_TaskPartial_TaskActivity" xml:space="preserve">
+    <value>TASK ACTIVITY</value>
+  </data>
+  <data name="Messages_TaskPartial_Tasks" xml:space="preserve">
+    <value>Tasks</value>
+  </data>
+  <data name="Messages_TaskPartial_TeamTask" xml:space="preserve">
+    <value>Team Task</value>
+  </data>
+  <data name="Message__MessagesRightSideBarPartial_Mentions" xml:space="preserve">
+    <value>Mentions</value>
+  </data>
+  <data name="Message__MessagesRightSideBarPartial_MessageType" xml:space="preserve">
+    <value>Message type</value>
+  </data>
+  <data name="Message__MessagesRightSideBarPartial_Profiles" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Message__MessagesRightSideBarPartial_UserFeeds" xml:space="preserve">
+    <value>User Feeds</value>
+  </data>
+  <data name="Message__MessagesRightSideBarPartial_UserTweets" xml:space="preserve">
+    <value>User Tweets</value>
+  </data>
+  <data name="Feeds_FeedsPartial_LiveFeeds" xml:space="preserve">
+    <value>Live Feeds</value>
+  </data>
+  <data name="ForgotPasword_ForgotPasswordMailBodyPartial_Here" xml:space="preserve">
+    <value>here</value>
+  </data>
+  <data name="ForgotPasword_ForgotPasswordMailBodyPartial_ToProceed" xml:space="preserve">
+    <value>to proceed with password reset.</value>
+  </data>
+  <data name="Index_Contact_Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Index_Contact_EnterEmail" xml:space="preserve">
+    <value>Enter your email below and see for yourself.</value>
+  </data>
+  <data name="Index_Contact_Reset" xml:space="preserve">
+    <value>Reset Button</value>
+  </data>
+  <data name="SocialBoardIndex_Contact_SendYourSelfAnAwesomeVideo" xml:space="preserve">
+    <value>Send yourself an awesome Socialboard explainer video</value>
+  </data>
+  <data name="SocialBoard_Index_Contact_SocioBoardStoryVideo" xml:space="preserve">
+    <value>Socialboard Story video</value>
+  </data>
+  <data name="Index_Contact_Submit" xml:space="preserve">
+    <value>Submit Button</value>
+  </data>
+  <data name="SocialBoard_Index_Contact_UnderstandSocioboardBetter" xml:space="preserve">
+    <value>understand Socialboard better!</value>
+  </data>
+  <data name="Index_Contact_WeCanHelpYou" xml:space="preserve">
+    <value>We can help you</value>
+  </data>
+  <data name="Index_Download_ClickBelow" xml:space="preserve">
+    <value>Click the button below:</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_ChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Email" xml:space="preserve">
+    <value>E-mail Address</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_FirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_LastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Password" xml:space="preserve">
+    <value>PassWord</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_ReEnterPassword" xml:space="preserve">
+    <value>Please Re-enter Your Password</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_ResetEmail" xml:space="preserve">
+    <value>Reset Email</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_SaveChanges" xml:space="preserve">
+    <value>Save changes</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_SecurityReEnterPassword" xml:space="preserve">
+    <value>For your security, you must re-enter your password to continue.</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_TeamMemberAvatar" xml:space="preserve">
+    <value>Team members will see the avatar you have set.</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_TimeZone" xml:space="preserve">
+    <value>Time Zone</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_UpgradeMonthly" xml:space="preserve">
+    <value>Upgrade to Monthly plan</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_UpgradeYearly" xml:space="preserve">
+    <value>Upgrade to yearly plan</value>
+  </data>
+  <data name="Report_TeamReportPartial_AssignDate" xml:space="preserve">
+    <value>AssignDate</value>
+  </data>
+  <data name="Report_TeamReportPartial_CompeteDate" xml:space="preserve">
+    <value>CompeteDate</value>
+  </data>
+  <data name="Report_TeamReportPartial_InterReport" xml:space="preserve">
+    <value>INTER REPORT</value>
+  </data>
+  <data name="Report_TeamReportPartial_NoDataAvailable" xml:space="preserve">
+    <value>No Data available..</value>
+  </data>
+  <data name="Report_TeamReportPartial_status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Report_TeamReportPartial_TaskAssigned" xml:space="preserve">
+    <value>AssignTaskTo</value>
+  </data>
+  <data name="Report_TeamReportPartial_TaskMessage" xml:space="preserve">
+    <value>TaskMessage</value>
+  </data>
+  <data name="Report_TeamReportPartial_TaskOwner" xml:space="preserve">
+    <value>TaskOwner</value>
+  </data>
+  <data name="Report_TeamReportPartial_Tasks" xml:space="preserve">
+    <value>TASKS</value>
+  </data>
+  <data name="UserGroup_UserProfilesPartial_ProfilesAvailable" xml:space="preserve">
+    <value>Profiles available for connection</value>
+  </data>
+  <data name="Shared_AdminSite_Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="Shared_AdminSite_AddAdvertisement" xml:space="preserve">
+    <value>Add Advertisement</value>
+  </data>
+  <data name="Shared_AdminSite_AddCoupon" xml:space="preserve">
+    <value>Add Coupons</value>
+  </data>
+  <data name="Shared_AdminSite_AddNews" xml:space="preserve">
+    <value>Add News</value>
+  </data>
+  <data name="Shared_AdminSite_AddNewsLetter" xml:space="preserve">
+    <value>Add News Letter</value>
+  </data>
+  <data name="Shared_AdminSite_Advertisements" xml:space="preserve">
+    <value>Advertisement</value>
+  </data>
+  <data name="Shared_AdminSite_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Shared_AdminSite_ContactSearch" xml:space="preserve">
+    <value>Contact Search</value>
+  </data>
+  <data name="Shared_AdminSite_Coupon" xml:space="preserve">
+    <value>Coupon</value>
+  </data>
+  <data name="Shared_AdminSite_DashBoard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Shared_AdminSite_DeleteUsers" xml:space="preserve">
+    <value>Deleted Users</value>
+  </data>
+  <data name="Shared_AdminSite_IntervalTime" xml:space="preserve">
+    <value>Interval Time:</value>
+  </data>
+  <data name="Shared_AdminSite_LogOut" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="Shared_AdminSite_ManageAdvertisement" xml:space="preserve">
+    <value>Manage Advertisement</value>
+  </data>
+  <data name="Shared_AdminSite_ManageCoupon" xml:space="preserve">
+    <value>Manage Coupons</value>
+  </data>
+  <data name="Shared_AdminSite_ManageNews" xml:space="preserve">
+    <value>Manage News</value>
+  </data>
+  <data name="Shared_AdminSite_ManagePackages" xml:space="preserve">
+    <value>Manage Packages</value>
+  </data>
+  <data name="Shared_AdminSite_ManageProfile" xml:space="preserve">
+    <value>Manage Profile</value>
+  </data>
+  <data name="Shared_AdminSite_ManageUsers" xml:space="preserve">
+    <value>Manage Users</value>
+  </data>
+  <data name="Shared_AdminSite_NewMessage" xml:space="preserve">
+    <value>New Message</value>
+  </data>
+  <data name="Shared_AdminSite_News" xml:space="preserve">
+    <value>News</value>
+  </data>
+  <data name="Shared_AdminSite_NewsLetter" xml:space="preserve">
+    <value>News Letter</value>
+  </data>
+  <data name="Shared_AdminSite_Packages" xml:space="preserve">
+    <value>Packages</value>
+  </data>
+  <data name="Shared_AdminSite_SchedulingDetails" xml:space="preserve">
+    <value>Scheduling Details</value>
+  </data>
+  <data name="Shared_AdminSite_SearchResult" xml:space="preserve">
+    <value>Search Result</value>
+  </data>
+  <data name="Shared_AdminSite_Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="Shared_AdminSite_Service" xml:space="preserve">
+    <value>Services</value>
+  </data>
+  <data name="Shared_AdminSite_Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Shared_AdminSite_Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="Shared_Site_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Shared_Site_ContactSearch" xml:space="preserve">
+    <value>Contact Search</value>
+  </data>
+  <data name="Shared_Site_DropBox" xml:space="preserve">
+    <value>Dropbox</value>
+  </data>
+  <data name="Shared_Site_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Shared_Site_FirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="Shared_Site_LastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="Shared_Site_NewMessages" xml:space="preserve">
+    <value>New Messages</value>
+  </data>
+  <data name="Shared_Site_Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Shared_Site_Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="Shared_Site_Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="Shared_Site_URLShrink" xml:space="preserve">
+    <value>URL shrink</value>
+  </data>
+  <data name="SocialBoard_Shared_SocialSuite_AddressHeader" xml:space="preserve">
+    <value>Twinba srl</value>
+  </data>
+  <data name="SocialBoard_Shared_SocialSuite_Copyright" xml:space="preserve">
+    <value>Copyright © 2015 Twinba Srl - All Rights Reserved.</value>
+  </data>
+  <data name="Shared_SocialSuite_GetInTouchWithUs" xml:space="preserve">
+    <value>GET IN TOUCH WITH US</value>
+  </data>
+  <data name="SocialBoard_Shared_SocialSuite_PhoneNumber1" xml:space="preserve">
+    <value>P.iva IT 02345600460</value>
+  </data>
+  <data name="SocialBoard_Shared_SocialSuite_PhoneNumber2" xml:space="preserve">
+    <value>Tel e Fax: 0583933060</value>
+  </data>
+  <data name="SocialBoard_Shared_SocialSuite_ProperAddress" xml:space="preserve">
+    <value>V.le Europa 1/D int. 4, Lammari, 55013 Capannori (Lu)</value>
+  </data>
+  <data name="Shared_SocialSuite_SendMail" xml:space="preserve">
+    <value>Send Mail</value>
+  </data>
+  <data name="SocialBoard_Shared_SocialSuite_SkypeSupport" xml:space="preserve">
+    <value>Twinba srl</value>
+  </data>
+  <data name="Index_Index_ImgPathTryNow" xml:space="preserve">
+    <value>/Themes/Socioboard/Contents/img/trail-butn.jpg</value>
+  </data>
+  <data name="Discovery_DiscoveryPartial_TBTextSearchPlaceholder" xml:space="preserve">
+    <value>Type your Keyword here...</value>
+  </data>
+  <data name="Feeds_Panel1Partial_TBtextfbPlaceholder" xml:space="preserve">
+    <value>Type your comment here...</value>
+  </data>
+  <data name="Home_MyTickets_MyRecentTickets" xml:space="preserve">
+    <value>My Recent Tickets</value>
+  </data>
+  <data name="Messages_TaskPartial_MyTaskHeading" xml:space="preserve">
+    <value>My Task</value>
+  </data>
+  <data name="MyStuff_Affiliates_Affiliates" xml:space="preserve">
+    <value>Affiliates</value>
+  </data>
+  <data name="MyStuff_Affiliates_InvitationDate" xml:space="preserve">
+    <value>Invitation Date</value>
+  </data>
+  <data name="MyStuff_Affiliates_InviteYourAcquitance" xml:space="preserve">
+    <value>Invite your acquaintance</value>
+  </data>
+  <data name="MyStuff_Affiliates_PersonInvited" xml:space="preserve">
+    <value>Person Invited</value>
+  </data>
+  <data name="MyStuff_Affiliates_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="MyStuff_EWalletActivityPartial_AffiliateFeeGenerate" xml:space="preserve">
+    <value>Affiliate Fee Generated($)</value>
+  </data>
+  <data name="MyStuff_EWalletActivityPartial_DurationInMonths" xml:space="preserve">
+    <value>Duration in Months</value>
+  </data>
+  <data name="MyStuff_EWalletActivityPartial_JoiningDate" xml:space="preserve">
+    <value>Joining Date</value>
+  </data>
+  <data name="MyStuff_EWalletActivityPartial_PersonInvited" xml:space="preserve">
+    <value>Person Invited</value>
+  </data>
+  <data name="MyStuff_EWalletActivityPartial_Summary" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="SocialBoard_MyStuff_EWalletPartial_AddMoneyToSocioBoardWallet" xml:space="preserve">
+    <value>ADD MONEY TO SOCIALBOARD WALLET</value>
+  </data>
+  <data name="MyStuff_EWalletPartial_AddMoneyToWallet" xml:space="preserve">
+    <value>Add Money to Wallet</value>
+  </data>
+  <data name="MyStuff_EWalletPartial_YourWalletBalance" xml:space="preserve">
+    <value>Your Wallet Balance</value>
+  </data>
+  <data name="MyStuff_EWallet_AddMoneyToWallet" xml:space="preserve">
+    <value>Add Money to Wallet</value>
+  </data>
+  <data name="MyStuff_EWallet_EWallet" xml:space="preserve">
+    <value>E - Wallet</value>
+  </data>
+  <data name="Index_Index_ImgSignupforFree" xml:space="preserve">
+    <value>/Themes/Socioboard/Contents/img/signup-butn.png</value>
+  </data>
+  <data name="MyStuff_SummaryPartial_AffiliateFee" xml:space="preserve">
+    <value>Affiliate Fee</value>
+  </data>
+  <data name="MyStuff_SummaryPartial_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="MyStuff_SummaryPartial_Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="MyStuff_SummaryPartial_Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="Versions_Agency_AgencyWhiteLabelversion4" xml:space="preserve">
+    <value>Hosted Agency Model</value>
+  </data>
+  <data name="Versions_Agency_AgencyWhiteLabelversion4DESC" xml:space="preserve">
+    <value>Hosted Agency Model offers deployment free of cost into your system &amp; 50 % revenue and IP sharing opportunities. It is a smart choice if you have less resources but expect users soon. Click</value>
+  </data>
+  <data name="Versions_Agency_ClicktoContact" xml:space="preserve">
+    <value>to contact </value>
+  </data>
+  <data name="Shared_Socialsuite_Contact" xml:space="preserve">
+    <value>Contact Us</value>
+  </data>
+  <data name="SocioBoard_Admin_AdminLogin_Index_SocioBoardAdmin" xml:space="preserve">
+    <value>Socioboard Admin</value>
+  </data>
+  <data name="SocioBoard_Admin_AdminLogin_Index_SocioBoardAdminLogin" xml:space="preserve">
+    <value>SocioBoard | Admin Login</value>
+  </data>
+  <data name="SocioBoard_BusinessSetting_Index_NotificationAlertViaEmail" xml:space="preserve">
+    <value>Socioboard alerts you &amp; your team members via email on various activities.</value>
+  </data>
+  <data name="SocioBoard_ForgotPasword_ForgotPasswordMailBodyPartial_HappySocioBoarding" xml:space="preserve">
+    <value>Happy Socioboarding!</value>
+  </data>
+  <data name="SocioBoard_ForgotPasword_ForgotPasswordMailBodyPartial_SocioBoardSupportTeam" xml:space="preserve">
+    <value>Socioboard.Support Team</value>
+  </data>
+  <data name="SocioBoard_ForgotPasword_ForgotPasswordMailBodyPartial_SupportTeamIntro" xml:space="preserve">
+    <value>This is support team at Socioboard.</value>
+  </data>
+  <data name="SocioBoard_ForgotPasword_ResetPasswordMailBodyPartial_HappySocioBoarding" xml:space="preserve">
+    <value>Happy Socioboarding!</value>
+  </data>
+  <data name="SocioBoard_ForgotPasword_ResetPasswordMailBodyPartial_SocioBoardSupportTeam" xml:space="preserve">
+    <value>Sociooard Support Team</value>
+  </data>
+  <data name="SocioBoard_Home_Index_AttachProfileToBeginWithSocioBoard" xml:space="preserve">
+    <value>Attach Your Social Network Profile for Beginning With Socioboard</value>
+  </data>
+  <data name="SocioBoard_Home_Training_Heading2" xml:space="preserve">
+    <value>Get the most out of Socioboard through live online training. It is comprehensive and serves your purpose whether you want to get the basics or dig deeper with our Software. Our instructors help you with a professional flow of training.</value>
+  </data>
+  <data name="SocioBoard_Index_Company_CareersDescription" xml:space="preserve">
+    <value>Socioboard offers you opportunities and challenges to help you advance on your career path and achieve personal and professional development. Join our team. We’ll help you develop and accelerate your career by providing you with opportunities to amplify your talents. You can expect us to nurture your strengths and value your unique perspectives, and in return we expect you to share our passion for ‘excellence’ in everything we do.</value>
+  </data>
+  <data name="SocioBoard_Index_Company_PartnersDescription" xml:space="preserve">
+    <value>Socioboard is in course of establishing partnerships with Cloud Services Providers as MS Azure, Amazon AWS etc. We are also in process of hosting plugins and applications from us as well as partners. We will continuously improve features as the feedback comes from our partners.</value>
+  </data>
+  <data name="SocioBoard_Index_Company_SocioBoardDescription" xml:space="preserve">
+    <value>Socioboard is a next generation social media management application which leverages handling umpteen number of social media platforms through a revolutionary open source lite version and higher end versions which have unmatched world class technical support available round the clock.                                                                                                                                                   We are trying to solve the problem which an average netizen faces while handling many social network profiles on the web. The mass generally has at least three social profiles, and businesses have a more complex social networking structure. The process of managing many social networks at once is very cumbersome and it takes its toll, Socioboard is here to settle all these issues.                                                                                                                                                         Socioboard offers the following values to your business:                                                                                                  Objective of Socioboard is to solve the chaos surrounding social media platform management.                                                                                                                                         Most applications in this domain have a very narrow and limited approach towards end users, people feel caught up in a whirlpool, Socialboard plans to help users out of this vision.</value>
+  </data>
+  <data name="SocioBoard_Index_Contact_SocioBoardStoryVideo" xml:space="preserve">
+    <value>Socioboard Story video</value>
+  </data>
+  <data name="SocioBoard_Index_Contact_UnderstandSocioboardBetter" xml:space="preserve">
+    <value>understand Socioboard better!</value>
+  </data>
+  <data name="SocioBoard_Index_Download_SourceCodeHeading" xml:space="preserve">
+    <value>Socioboard source code is available to download through various sites. Please click respective links to download:</value>
+  </data>
+  <data name="SocioBoard_Index_Features_AnalyticsDescription" xml:space="preserve">
+    <value>Socioboard uses its statistics engine and generates analytics about various activities related to your account. It incorporates group stats, facebook engagement data, twitter stats and task related stats. All these analytics can be custom-viewed according to dates, groups etc.</value>
+  </data>
+  <data name="SocioBoard_Index_Features_EngagementDescription" xml:space="preserve">
+    <value>Socioboard has capabilities to engage audiences across various platforms.It gives every platform its due importance. The degree of engagement is customized as per the platform’s importance and number of connections in it.</value>
+  </data>
+  <data name="SocioBoard_Index_Features_HelpDeskDescription" xml:space="preserve">
+    <value>Socioboard not only has a world class support mechanism but also offers you helpdesk integration with your socialboard account.</value>
+  </data>
+  <data name="SocioBoard_Index_Features_MonitoringDescription" xml:space="preserve">
+    <value>Socioboard monitors data continuously across various platforms, and gives regular feeds to the end users. Feeds allow you to be in touch with family and friends. Users can engage each other using the platform, get notifications on missed messages and even more.You can also stop someone from bothering you on this platform. We respect your privacy.</value>
+  </data>
+  <data name="SocioBoard_Index_Features_SubHeadingInsights" xml:space="preserve">
+    <value>Socioboard offers detailed insights for customers</value>
+  </data>
+  <data name="SocioBoard_Index_Index_EndHeading" xml:space="preserve">
+    <value>With Socioboard, engaging your followers is so easy, fun, and insightful now. Get started today!</value>
+  </data>
+  <data name="SocioBoard_Index_Index_featureHeading" xml:space="preserve">
+    <value>Socioboard makes it easy to keep tabs on social conversations and provides everything you need to efficiently engage your audience.</value>
+  </data>
+  <data name="SocioBoard_Index_Index_freeSubscirption" xml:space="preserve">
+    <value>Enjoy Socioboard risk-free for 30 days!</value>
+  </data>
+  <data name="SocioBoard_Index_Index_LoveSocioboard" xml:space="preserve">
+    <value>WHY PEOPLE LOVE SOCIOBOARD</value>
+  </data>
+  <data name="SocioBoard_Index_Index_SocioDescription" xml:space="preserve">
+    <value>Socioboard offers you an advanced, easy, versatile, customizable and scalable open-source social media marketing tool to drive your brand to newer heights</value>
+  </data>
+  <data name="SocioBoard_Index_Index_Sociodescription2" xml:space="preserve">
+    <value>Socioboard allows you to listen to, analyze and engage your followers in unusual ways across   numerous social media accounts</value>
+  </data>
+  <data name="SocioBoard_Index_Index_SubHeadingInsight" xml:space="preserve">
+    <value>Socioboard offers detailed insights for customers</value>
+  </data>
+  <data name="SocioBoard_Index_PartialPricing_EnterpriseandAgencyDescription" xml:space="preserve">
+    <value>Socioboard offers customizable enterprise and agency solutions to fit your business—scalable, secure and with highest level of service quality &amp; 24/7 Support should you face any problems. Contact us today to discuss your unique needs with one of our product specialists.</value>
+  </data>
+  <data name="SocioBoard_Index_Privacy_SocioBoardtechPVTLtd" xml:space="preserve">
+    <value>Socioboard Technologies Private Limited</value>
+  </data>
+  <data name="SocioBoard_Index_RegistrationMailPartial_KeepsocioBoarding" xml:space="preserve">
+    <value>Hope you have a great time at Socioboard. Keep socialboarding... :)</value>
+  </data>
+  <data name="SocioBoard_Index_RegistrationMailPartial_SocioBoardTeam" xml:space="preserve">
+    <value>Socioboard Team</value>
+  </data>
+  <data name="SocioBoard_Shared_Site_InvideFreindsDescription" xml:space="preserve">
+    <value>Socioboard offers to make group by virtue of which users can reach out to each other using a highly efficient collaboration mechanism.Groups serve as a platform to share information with other team members and increase workability and efficiency.</value>
+  </data>
+  <data name="SocioBoard_Shared_Socialsuite_Title" xml:space="preserve">
+    <value>Socioboard - Generate More leads on Social Media| Social CRM | Social Media CMS</value>
+  </data>
+  <data name="SocioBoard_Home_PageNotFound_404PageSocioBoard" xml:space="preserve">
+    <value>404 Page Socioboard</value>
+  </data>
+  <data name="SocioBoard_MyStuff_EWalletPartial_AddMoneyToSocioBoardWallet" xml:space="preserve">
+    <value>ADD MONEY TO SOCIOBOARD WALLET</value>
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_AddressHeader" xml:space="preserve">
+    <value>L.V COMPLEX</value>
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_Copyright" xml:space="preserve">
+    <value>Copyright © 2013 - 2014 SOCIOBOARD Technologies Pvt. Ltd. All Rights Reserved.</value>
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_PhoneNumber1" xml:space="preserve">
+    <value>+91 80 4166 0003</value>
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_PhoneNumber2" xml:space="preserve">
+    <value>+91 97 1331 7771</value>
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_ProperAddress" xml:space="preserve">
+    <value>7th Block, 80 Feet Road, Koramangala Layout, Bangalore-560095</value>
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_SkypeSupport" xml:space="preserve">
+    <value>socioboard.support</value>
+  </data>
+  <data name="SocioBoard_Versions_Agency_AgencysocioboardOffering" xml:space="preserve">
+    <value>Increase and nurture your clientele with the Socioboard’s offerings designed uniquely for the Agencies. These versions have a great interface that anybody can understand, powerful engagement tools and customizable analytics to monitor, analyze and report across countless social profiles. What’s more, you can feature your own logo and domain name, so your clients consider it your product, not to mention Socioboard anywhere.
+                Agencies can use commerically supported whitelabel version of Socioboard. Its fully open sourced and customizable as per your agency needs.</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SocialBoard_Index_Contact_SendYourSelfAnAwesomeVideo" xml:space="preserve">
+    <value>Send yourself an awesome Socioboard explainer video</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex1" xml:space="preserve">
+    <value>The following terms and conditions will be deemed to have been accepted by the User on usage of the website socialboard.it. You are requested to read them carefully before you use the services of this site.
+                     </value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex10" xml:space="preserve">
+    <value>The information contained in the Site has been obtained from sources believed to be reliable. Socialboard disclaims all warranties as to the accuracy, completeness or adequacy of such information.</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex11" xml:space="preserve">
+    <value>Socialboard makes no warranty that: (a) the Site will meet your requirements; (b) the Site will be available on an uninterrupted, timely, secure, or error-free basis; (c) the results that may be obtained from the use of the Site or any services offered through the Site will be accurate or reliable.</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex12" xml:space="preserve">
+    <value>The User’s right to privacy is of paramount importance to Socialboard. Any information provided by the User will not be shared with any third party. Socialboard reserves the right to use the information to provide the User a more personalized online experience.</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex13" xml:space="preserve">
+    <value>The Site provides links to web sites and access to content, products and services from third parties, including users, advertisers, affiliates and sponsors of the Site. You agree that Socioboard is not responsible for the availability of, and content provided on, third party web sites. The User is requested to peruse the policies posted by other web sites regarding privacy and other topics before use. Socioboard is not responsible for third party content accessible through the Site, including opinions, advice, statements and advertisements, and User shall bear all risks associated with the use of such content. Socioboard is not responsible for any loss or damage of any sort User may incur from dealing with any third party.</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex2" xml:space="preserve">
+    <value>The term User shall refer to the user who is browsing the site. The term Socialboard shall refer to Socioboard Technologies Private Limited. The term Site refers to www.socioboard.com owned and monitored by Socioboard.</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex3" xml:space="preserve">
+    <value>By using the Site, you agree to follow and be bound by the following terms and conditions concerning your use of the Site. Socialboard may revise the Terms of Use at any time without notice to you. Areas of the Site may have different terms of use posted. If there is a conflict between the Terms of Use and terms of use posted for a specific area of the Site, the latter shall have precedence with respect to your use of that area of the Site. Socioboard may terminate User’s access at any time for any reason. The provisions regarding to disclaimer of warranty, accuracy of information, and indemnification shall survive such termination. Socioboard may monitor access to the Site.</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex4" xml:space="preserve">
+    <value>Socialboard does not make any warranties, express or implied, including, without limitation, those of merchantability and fitness for a particular purpose, with respect to any information, data, statements or products made available on the Site.</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex5" xml:space="preserve">
+    <value>The Site, and all content, materials, information, software, products and services provided on the Site, are provided on an “as is” and “as available” basis. Socioboard expressly disclaims all warranties of any kind, whether express or implied, including, but not limited to, the implied warranties of merchantability, fitness for a particular purpose and non-infringement.</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex6" xml:space="preserve">
+    <value>Socialboard shall have no responsibility for any damage to User’s computer system or loss of data that results from the download of any content, materials, information from the Site.</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex7" xml:space="preserve">
+    <value>Socialboard may change or discontinue any aspect of its website at any time, including, its content or features. Socialboard reserves the right to change the terms and conditions applicable to use of the Site. Such changes shall be effective immediately upon notice, which shall be placed on the Site.</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex8" xml:space="preserve">
+    <value>In no event will Socialboard be liable for damages of any kind, including without limitation, direct, incidental or consequential damages (including, but not limited to, damages for lost profits, business interruption and loss of programs or information) arising out of the use of or inability to use Socialboard’s website, or any information provided on the website, or in the Products any claim attributable to errors, omissions or other inaccuracies in the Product or interpretations thereof. Some jurisdictions do not allow the limitation or exclusion of liability. Accordingly, some of the above limitations may not apply to the User.</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex9" xml:space="preserve">
+    <value>User agrees to indemnify, defend and hold Socialboard harmless from and against all losses, expenses, damages and costs, including reasonable attorneys’ fees, arising out of or relating to any misuse by the User of the content and services provided on the Site.</value>
+  </data>
+  <data name="SocialBoard_Index_Index_OnBoard" xml:space="preserve">
+    <value>Get On Board to See What Our Social Media Marketing Suite Can Do for You</value>
+  </data>
+  <data name="SocioBoard_Index_Contact_SendYourSelfAnAwesomeVideo" xml:space="preserve">
+    <value>Send yourself an awesome Socioboard explainer video</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex10" xml:space="preserve">
+    <value>The information contained in the Site has been obtained from sources believed to be reliable. Socioboard disclaims all warranties as to the accuracy, completeness or adequacy of such information.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex11" xml:space="preserve">
+    <value>Socioboard makes no warranty that: (a) the Site will meet your requirements; (b) the Site will be available on an uninterrupted, timely, secure, or error-free basis; (c) the results that may be obtained from the use of the Site or any services offered through the Site will be accurate or reliable.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex12" xml:space="preserve">
+    <value>The User’s right to privacy is of paramount importance to Socioboard. Any information provided by the User will not be shared with any third party. Socioboard reserves the right to use the information to provide the User a more personalized online experience.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex13" xml:space="preserve">
+    <value>The Site provides links to web sites and access to content, products and services from third parties, including users, advertisers, affiliates and sponsors of the Site. You agree that Socioboard is not responsible for the availability of, and content provided on, third party web sites. The User is requested to peruse the policies posted by other web sites regarding privacy and other topics before use. Socioboard is not responsible for third party content accessible through the Site, including opinions, advice, statements and advertisements, and User shall bear all risks associated with the use of such content. Socioboard is not responsible for any loss or damage of any sort User may incur from dealing with any third party.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex2" xml:space="preserve">
+    <value>The term User shall refer to the user who is browsing the site. The term Socioboard shall refer to Socioboard Technologies Private Limited. The term Site refers to www.socioboard.com owned and monitored by Socioboard.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex3" xml:space="preserve">
+    <value>By using the Site, you agree to follow and be bound by the following terms and conditions concerning your use of the Site. Socioboard may revise the Terms of Use at any time without notice to you. Areas of the Site may have different terms of use posted. If there is a conflict between the Terms of Use and terms of use posted for a specific area of the Site, the latter shall have precedence with respect to your use of that area of the Site. Socioboard may terminate User’s access at any time for any reason. The provisions regarding to disclaimer of warranty, accuracy of information, and indemnification shall survive such termination. Socioboard may monitor access to the Site.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex4" xml:space="preserve">
+    <value>Socioboard does not make any warranties, express or implied, including, without limitation, those of merchantability and fitness for a particular purpose, with respect to any information, data, statements or products made available on the Site.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex5" xml:space="preserve">
+    <value>The Site, and all content, materials, information, software, products and services provided on the Site, are provided on an “as is” and “as available” basis. Socioboard expressly disclaims all warranties of any kind, whether express or implied, including, but not limited to, the implied warranties of merchantability, fitness for a particular purpose and non-infringement.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex6" xml:space="preserve">
+    <value>Socioboard shall have no responsibility for any damage to User’s computer system or loss of data that results from the download of any content, materials, information from the Site.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex7" xml:space="preserve">
+    <value>Socioboard may change or discontinue any aspect of its website at any time, including, its content or features. Socioboard reserves the right to change the terms and conditions applicable to use of the Site. Such changes shall be effective immediately upon notice, which shall be placed on the Site.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex8" xml:space="preserve">
+    <value>In no event will Socioboard be liable for damages of any kind, including without limitation, direct, incidental or consequential damages (including, but not limited to, damages for lost profits, business interruption and loss of programs or information) arising out of the use of or inability to use Socioboard’s website, or any information provided on the website, or in the Products any claim attributable to errors, omissions or other inaccuracies in the Product or interpretations thereof. Some jurisdictions do not allow the limitation or exclusion of liability. Accordingly, some of the above limitations may not apply to the User.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex9" xml:space="preserve">
+    <value>User agrees to indemnify, defend and hold Socioboard harmless from and against all losses, expenses, damages and costs, including reasonable attorneys’ fees, arising out of or relating to any misuse by the User of the content and services provided on the Site.</value>
+  </data>
+</root>

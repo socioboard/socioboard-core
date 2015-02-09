@@ -15,8 +15,8 @@ using Socioboard.App_Start;
 
 namespace Socioboard.Controllers
 {
-    
-    public class MessagesController : Controller
+
+    public class MessagesController : BaseController
     {
         //
         // GET: /Message/
@@ -69,12 +69,156 @@ namespace Socioboard.Controllers
             }
         }
 
+        //Commented by SumitGupta [09-02-2015]
+        //public DataSet bindMessages()
+        //{
+        //    Domain.Socioboard.Domain.User _user = (Domain.Socioboard.Domain.User)Session["User"];
+        //    DataSet ds = null;
+        //    DataSet dataset = new DataSet();
+            
+        //    clsFeedsAndMessages clsfeedsandmess = new clsFeedsAndMessages();
+
+        //    //string[] profid = new string[] { };
+
+        //    string[] profid = (string[])Session["ProfileSelected"];
+        //    Domain.Socioboard.Domain.Team team = SBUtils.GetTeamFromGroupId();
+
+        //    try
+        //    {
+        //        string message = string.Empty;
+
+
+        //        try
+        //        {
+        //            //if (profid != null)
+        //            //{
+        //                //profid = Request.QueryString["profileid[]"].Split(',');
+        //                //if (Request.QueryString["type"] != null)
+        //                //{
+        //                    Session["countMesageDataTable_" + profid] = null;
+        //                //}
+        //            //}
+
+
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            Console.WriteLine(ex.StackTrace);
+        //        }
+
+        //        string facebook = string.Empty;
+
+        //        foreach (var item in profid)
+        //        {
+        //            if (string.IsNullOrEmpty(item))
+        //            {
+        //                facebook = "emptyprofile";
+        //            }
+        //            else
+        //            {
+        //                facebook = "profile";
+        //            }
+        //        }
+
+        //        if (string.IsNullOrEmpty(facebook))
+        //        {
+        //            facebook = "emptyprofile";
+        //        }
+
+        //        //if (facebook == "emptyprofile")
+        //        {
+        //            try
+        //            {
+        //                //DataSet ds = null;
+        //                Session["countMesageDataTable_" + profid] = null;
+        //                if (facebook == "emptyprofile")
+        //                {
+        //                    ds = clsfeedsandmess.bindMessagesIntoDataTable(team.Id); 
+        //                }
+        //                else
+        //                {
+        //                    ds = clsfeedsandmess.bindFeedMessageIntoDataTable(profid);
+        //                }
+        //                //FacebookFeedRepository fbFeedRepo = new FacebookFeedRepository();
+        //                Session["MessageDataTable"] = ds;
+
+        //                ds = (DataSet)Session["MessageDataTable"];
+
+        //                if (Session["countMessageDataTable"] == null)
+        //                {
+        //                    Session["countMessageDataTable"] = 0;
+        //                }
+        //                int noOfDataToSkip = (int)Session["countMessageDataTable"];
+        //                //DataTable records = ds.Tables[0].Rows.Cast<System.Data.DataRow>().Skip(noOfDataToSkip).Take(noOfDataToSkip + 15).CopyToDataTable();
+        //                DataTable records = ds.Tables[0].Rows.Cast<System.Data.DataRow>().Skip(noOfDataToSkip).Take(15).CopyToDataTable();
+        //                Session["countMessageDataTable"] = noOfDataToSkip + 15;
+        //                //message = this.BindData(records);
+
+        //                dataset.Tables.Add(records);
+        //                return dataset;
+                        
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.StackTrace);
+        //            }
+        //        }
+
+        //        //else
+        //        //{
+        //        //    try
+        //        //    {
+        //        //        DataSet ds = null;
+        //        //        Session["countMessageDataTable"] = null;
+
+        //        //        ds = clsfeedsandmess.bindFeedMessageIntoDataTable(profid);
+        //        //        Session["MessageDataTable"] = ds;
+
+        //        //        ds = (DataSet)Session["MessageDataTable"];
+
+
+
+        //        //        if (Session["countMesageDataTable_" + profid] == null)
+        //        //        {
+        //        //            Session["countMesageDataTable_" + profid] = 0;
+        //        //        }
+
+        //        //        int noOfDataToSkip = (int)Session["countMesageDataTable_" + profid];
+
+
+        //        //        DataTable records = ds.Tables[0].Rows.Cast<System.Data.DataRow>().Skip(noOfDataToSkip).Take(noOfDataToSkip + 15).CopyToDataTable();
+        //        //        Session["countMesageDataTable_" + profid] = noOfDataToSkip + 15;
+
+        //        //    }
+        //        //    catch (Exception ex)
+        //        //    {
+        //        //        Console.WriteLine(ex.StackTrace);
+        //        //    }
+        //        //}
+
+        //        //if (string.IsNullOrEmpty(message))
+        //        //{
+
+        //        //}
+
+        //        //Response.Write(message);
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.StackTrace);
+        //    }
+
+        //    return dataset;
+        //}
+
+        //Updated by SumitGupta [09-02-2015]
         public DataSet bindMessages()
         {
             Domain.Socioboard.Domain.User _user = (Domain.Socioboard.Domain.User)Session["User"];
             DataSet ds = null;
             DataSet dataset = new DataSet();
-            
+
             clsFeedsAndMessages clsfeedsandmess = new clsFeedsAndMessages();
 
             //string[] profid = new string[] { };
@@ -84,6 +228,20 @@ namespace Socioboard.Controllers
 
             try
             {
+                //For getting data range
+                Session["MessageDataTable"] = ds;
+
+                ds = (DataSet)Session["MessageDataTable"];
+
+                if (Session["countMessageDataTable"] == null)
+                {
+                    Session["countMessageDataTable"] = 0;
+                }
+
+                int noOfDataToSkip = (int)Session["countMessageDataTable"];
+                //DataTable records = ds.Tables[0].Rows.Cast<System.Data.DataRow>().Skip(noOfDataToSkip).Take(15).CopyToDataTable();
+                Session["countMessageDataTable"] = noOfDataToSkip + 15;
+
                 string message = string.Empty;
 
 
@@ -91,11 +249,11 @@ namespace Socioboard.Controllers
                 {
                     //if (profid != null)
                     //{
-                        //profid = Request.QueryString["profileid[]"].Split(',');
-                        //if (Request.QueryString["type"] != null)
-                        //{
-                            Session["countMesageDataTable_" + profid] = null;
-                        //}
+                    //profid = Request.QueryString["profileid[]"].Split(',');
+                    //if (Request.QueryString["type"] != null)
+                    //{
+                    Session["countMesageDataTable_" + profid] = null;
+                    //}
                     //}
 
 
@@ -132,13 +290,17 @@ namespace Socioboard.Controllers
                         Session["countMesageDataTable_" + profid] = null;
                         if (facebook == "emptyprofile")
                         {
-                            ds = clsfeedsandmess.bindMessagesIntoDataTable(team.Id); 
+                            //Updated by SumitGupta [09-02-2015]
+                            //ds = clsfeedsandmess.bindMessagesIntoDataTable(team.Id);
+                            ds = clsfeedsandmess.bindMessagesIntoDataTable(team.Id, noOfDataToSkip);
                         }
                         else
                         {
-                            ds = clsfeedsandmess.bindFeedMessageIntoDataTable(profid);
+                            //Updated by SumitGupta [09-02-2015]
+                            //ds = clsfeedsandmess.bindFeedMessageIntoDataTable(profid);
+                            ds = clsfeedsandmess.bindFeedMessageIntoDataTable(profid, noOfDataToSkip);
                         }
-                        //FacebookFeedRepository fbFeedRepo = new FacebookFeedRepository();
+                      
                         Session["MessageDataTable"] = ds;
 
                         ds = (DataSet)Session["MessageDataTable"];
@@ -147,15 +309,12 @@ namespace Socioboard.Controllers
                         {
                             Session["countMessageDataTable"] = 0;
                         }
-                        int noOfDataToSkip = (int)Session["countMessageDataTable"];
-                        //DataTable records = ds.Tables[0].Rows.Cast<System.Data.DataRow>().Skip(noOfDataToSkip).Take(noOfDataToSkip + 15).CopyToDataTable();
-                        DataTable records = ds.Tables[0].Rows.Cast<System.Data.DataRow>().Skip(noOfDataToSkip).Take(15).CopyToDataTable();
-                        Session["countMessageDataTable"] = noOfDataToSkip + 15;
-                        //message = this.BindData(records);
 
-                        dataset.Tables.Add(records);
-                        return dataset;
-                        
+                        //Updated by Sumit Gupta [09-02-2015]
+                        //dataset.Tables.Add(records);
+                        //return dataset;
+                        return ds;
+
                     }
                     catch (Exception ex)
                     {
@@ -210,7 +369,6 @@ namespace Socioboard.Controllers
 
             return dataset;
         }
-
 
         public ActionResult MessagesMidPartialNew()
         {

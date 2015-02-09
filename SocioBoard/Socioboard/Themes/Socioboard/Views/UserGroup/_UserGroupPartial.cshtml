@@ -6,7 +6,7 @@
 <input type="hidden" id="UserEmailAddress" value="@objUser.EmailId" />
 
 <div class="container-fluid">
-    <h1 class="page-header">User And Group</h1>
+    <h1 class="page-header">@GlobusMultiLanguageLib.Resources.UserGroup_UserGroupPartial_UserAndGroup</h1>
     <!-- /.panel-heading -->
     <div class="panel-body">
         <!-- Nav tabs -->
@@ -17,7 +17,7 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Groups
+                               @GlobusMultiLanguageLib.Resources.UserGroup_UserGroupPartial_Groups
                                    
                                 <div class="btn-group pull-right">
                                     <button data-target="#addGroup" data-toggle="modal" class="btn btn-default btn-xs" type="button">
@@ -26,7 +26,7 @@
                                 </div>
                             </div>
                             <div class="panel-body">
-                                <p>Groups are used to categorize social profiles together to help manage and report on your social media efforts efficiently. Learn more about Groups</p>
+                                <p>@GlobusMultiLanguageLib.Resources.UserGroup_UserGroupPartial_GroupsDescription</p>
 
                                 <ul class="nav nav-tabs partialContents" id="grouptabs" data-url="/UserGroup/LoadGroup">
                                 </ul>
@@ -61,19 +61,19 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                    <h4 id="myModalLabel" class="modal-title">Create a Group</h4>
+                                    <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.UserGroup_UserGroupPartial_Close</span></button>
+                                    <h4 id="myModalLabel" class="modal-title">@GlobusMultiLanguageLib.Resources.UserGroup_UserGroupPartial_CreateGroup</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Groups help you organize your social profiles and team members. Name your group and you can begin connecting social profiles and adding team members to it. Twitter or Facebook required to create a group.</p>
+                                    <p>@GlobusMultiLanguageLib.Resources.UserGroup_UserGroupPartial_GroupsDescription2</p>
                                     <div class="form-group input-group">
-                                        <span class="input-group-addon">Group Name</span>
+                                        <span class="input-group-addon">@GlobusMultiLanguageLib.Resources.UserGroup_UserGroupPartial_GroupName</span>
                                         <input id="txtgroupname" type="text" placeholder="Name" class="form-control">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
-                                    <button id="btnaddgroup" class="btn btn-primary" type="button">Submit</button>
+                                    <button data-dismiss="modal" class="btn btn-default" type="button">@GlobusMultiLanguageLib.Resources.UserGroup_UserGroupPartial_Close</button>
+                                    <button id="btnaddgroup" class="btn btn-primary" type="button">@GlobusMultiLanguageLib.Resources.UserGroup_UserGroupPartial_Submit</button>
                                 </div>
                             </div>
                         </div>

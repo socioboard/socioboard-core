@@ -7,27 +7,35 @@
     <id name="Id" column="Id">
       <generator class="guid"/>
     </id>
-    <property name="InvitationBody">
-      <column name="InvitationBody" />
-    </property>
-    <property name="Subject">
-      <column name="Subject" />
-    </property>
-    <property name="SenderName">
-      <column name="SenderName" />
-    </property>
-    <property name="FriendName">
-      <column name="FriendName" />
-    </property>
+    
     <property name="SenderEmail">
       <column name="SenderEmail"  />
     </property>
+    
+    <property name="SenderUserId">
+      <column name="SenderUserId"  />
+    </property>
+    
     <property name="FriendEmail">
       <column name="FriendEmail"  />
     </property>
-    <property name="LastEmailSendDate">
-      <column name="LastEmailSendDate"  />
+    
+    <property name="FriendUserId">
+      <column name="FriendUserId"  />
     </property>
+
+    <property name="InvitationCode">
+      <column name="InvitationCode"  />
+    </property>
+
+    <property name="SendInvitationDate">
+      <column name="SendInvitationDate"  />
+    </property>
+   
+    <property name="AcceptInvitationDate">
+      <column name="AcceptInvitationDate"  />
+    </property>
+      
     <property name="Status">
       <column name="Status"  />
     </property>

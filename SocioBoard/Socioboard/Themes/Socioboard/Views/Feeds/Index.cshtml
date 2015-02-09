@@ -27,10 +27,22 @@
     function DisplayDefaultFeed() {
         debugger;
         // var cnt = $('ul#items li').length;
-        var x = $('#feeds > ul > li > ul > li');
-        if (x.length > 0) {
-            $('#feeds > ul > li > ul > li')[0].click();
-        }
+        
+        //var x = $('#feeds > ul > li > ul > li');
+        //if (x.length > 0) {
+        //    $('#feeds > ul').addClass('collapse in');
+        //    $('#feeds > ul > li > ul').addClass('collapse in');
+        //   // $('#feeds > ul > li > ul > li')[0].click();
+        //}
+
+      
+
+
+
+        //var fn = $('#first-profile-load_0').attr('onclick');
+        //fn;
+        //alert("No Data");
+        //$("#first-profile-load_0").click();
         //if (!$("ul").has("li").length) {
         //    alertify.alert("No Data");
         //}
@@ -57,13 +69,18 @@
             success: function (msg) {
                 if (msg == 'unlike') {
 
-                    var count = parseInt($("#" + FeedId + "_count").html()) + 1;
-                    $("#" + FeedId).attr("title", unlike);
+                    //var count = +($("#" + FeedId + "_count").html()) + +1;
+                    var count = +LikeCount + +1;
+                    $("#count_" + FeedId).html(count);
+                    //$("#" + FeedId + "_count").html(count);
+                    $("#" + FeedId).attr("title", "unlike");
                     $("#" + FeedId).removeClass().addClass('fa fa-heart fa-fw')
                 }
                 else {
-                    var count = parseInt($("#" + FeedId + "_count").html()) - 1;
-                    $("#" + FeedId).attr("title", like);
+                    //var count = +($("#" + FeedId + "_count").html()) - +1;
+                    var count = +LikeCount - +1;
+                    $("#count_" + FeedId).html(count);
+                    $("#" + FeedId).attr("title", "like");
                     $("#" + FeedId).removeClass().addClass('fa fa-heart-o fa-fw')
                 }
 
@@ -74,10 +91,11 @@
     }
 
     $(document).ready(function () {
+        loadfeesmenu();
         $('#side-menu a').removeClass('active');
         $("#feeds").addClass('active');
         $("#feeds").children().addClass('active');
-        loadfeesmenu();
+        //$("#first-profile-load_0").click();
         DisplayDefaultFeed();
     });
 </script>
@@ -97,7 +115,7 @@
 <script>
     var facebookfeed = _.throttle(facebookfeedscrolldata, 3000);
     var twittertweet = _.throttle(Twitterfeedscrolldata, 3000);
-    //  var linkedinfeed = _.throttle(LinkedInfeedscrolldata, 3000);
+    //var linkedinfeed = _.throttle(LinkedInfeedscrolldata, 3000);
 
     var facebookwall = _.throttle(facebookwallscrolldata, 3000);
     var twitterfeed = _.throttle(Twitterscrolldata, 3000);
@@ -127,7 +145,7 @@
             twittertweet();
         }
         if (network == "linkedin") {
-            linkedinfeed();
+            //linkedinfeed();
         }
     }
 
@@ -182,7 +200,7 @@
             error: function (e) {
                 console.log("testerr");
                 console.log(e);
-                alert("gfgh");
+              
             }
         });
     }
@@ -211,7 +229,7 @@
             error: function (e) {
                 console.log(e);
                 console.log("testerr");
-                alert("gfgh");
+              
             }
         });
     }

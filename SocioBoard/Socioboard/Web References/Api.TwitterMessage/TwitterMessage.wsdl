@@ -849,16 +849,16 @@
   </wsdl:binding>
   <wsdl:service name="TwitterMessage">
     <wsdl:port name="TwitterMessageSoap" binding="tns:TwitterMessageSoap">
-      <soap:address location="http://devapi.socioboard.com/Services/TwitterMessage.asmx" />
+      <soap:address location="http://api.socioboard.com/Services/TwitterMessage.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterMessageSoap12" binding="tns:TwitterMessageSoap12">
-      <soap12:address location="http://devapi.socioboard.com/Services/TwitterMessage.asmx" />
+      <soap12:address location="http://api.socioboard.com/Services/TwitterMessage.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterMessageHttpGet" binding="tns:TwitterMessageHttpGet">
-      <http:address location="http://devapi.socioboard.com/Services/TwitterMessage.asmx" />
+      <http:address location="http://api.socioboard.com/Services/TwitterMessage.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterMessageHttpPost" binding="tns:TwitterMessageHttpPost">
-      <http:address location="http://devapi.socioboard.com/Services/TwitterMessage.asmx" />
+      <http:address location="http://api.socioboard.com/Services/TwitterMessage.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

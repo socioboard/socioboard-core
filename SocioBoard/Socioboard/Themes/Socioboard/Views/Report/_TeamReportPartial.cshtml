@@ -20,7 +20,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Team Reports</h1>
+        <h1 class="page-header">@GlobusMultiLanguageLib.Resources.Report_TeamReportPartial_TeamReports</h1>
     </div>
 
 </div>
@@ -30,12 +30,12 @@
             <i class="fa fa-users fa-fw"></i>
             @if (objLstTaskByUser.Count != null && objLstTaskByUser.Count != 0)
             {
-                   <strong>INTER REPORT</strong> <span>from</span> @str
+                   <strong>@GlobusMultiLanguageLib.Resources.Report_TeamReportPartial_InterReport</strong> <span>from</span> @str
             }
             else
             {
             
-             <strong>INTER REPORT</strong> <span>No Data available..</span>
+             <strong>@GlobusMultiLanguageLib.Resources.Report_TeamReportPartial_InterReport</strong> <span>@GlobusMultiLanguageLib.Resources.Report_TeamReportPartial_NoDataAvailable</span>
             
             }
             <div class="btn-group pull-right">
@@ -98,17 +98,17 @@
 
                         <tr>
 
-                            <th>TaskOwner
+                            <th>@GlobusMultiLanguageLib.Resources.Report_TeamReportPartial_TaskOwner
                             </th>
-                            <th>AssignTaskTo
+                            <th>@GlobusMultiLanguageLib.Resources.Report_TeamReportPartial_TaskAssigned
                             </th>
-                            <th>TaskMessage
+                            <th>@GlobusMultiLanguageLib.Resources.Report_TeamReportPartial_TaskMessage
                             </th>
-                            <th>AssignDate
+                            <th>@GlobusMultiLanguageLib.Resources.Report_TeamReportPartial_AssignDate
                             </th>
-                            <th>CompeteDate
+                            <th>@GlobusMultiLanguageLib.Resources.Report_TeamReportPartial_CompeteDate
                             </th>
-                            <th>Status
+                            <th>@GlobusMultiLanguageLib.Resources.Report_TeamReportPartial_status
                             </th>
 
                         </tr>

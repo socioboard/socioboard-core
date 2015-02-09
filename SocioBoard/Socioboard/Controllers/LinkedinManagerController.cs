@@ -14,7 +14,7 @@ namespace Socioboard.Controllers
 {
     [Authorize]
     [CustomAuthorize]
-    public class LinkedinManagerController : Controller
+    public class LinkedinManagerController : BaseController
     {
         //
         // GET: /LinkedinManager/

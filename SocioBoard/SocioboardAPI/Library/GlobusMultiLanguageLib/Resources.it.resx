@@ -1,0 +1,2912 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Admin_AddNewsLatter_LoadAddNewsLatter_AddNewslatter" xml:space="preserve">
+    <value>Aggiungi Newsletter</value>
+  </data>
+  <data name="Admin_AddNewsLatter_LoadAddNewsLatter_SendDate" xml:space="preserve">
+    <value>Data Invio</value>
+  </data>
+  <data name="Admin_AddNewsLatter_LoadAddNewsLatter_Subject" xml:space="preserve">
+    <value>Oggetto</value>
+  </data>
+  <data name="Admin_AdminLogin_Index_RememberMe" xml:space="preserve">
+    <value>Ricordati di Me</value>
+  </data>
+  <data name="SocialBoard_Admin_AdminLogin_Index_SocialBoardAdmin" xml:space="preserve">
+    <value>SocialBoard Admin</value>
+  </data>
+  <data name="SocialBoard_Admin_AdminLogin_Index_SocialBoardAdminLogin" xml:space="preserve">
+    <value>SocialBoard | Admin Login</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_ChangePassword" xml:space="preserve">
+    <value>Modifica Password</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_ChangeProfileImage" xml:space="preserve">
+    <value>Modifica Immagine Profilo</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_Close" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_FirstName" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_LastName" xml:space="preserve">
+    <value>Cognome</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_Save" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_SaveChanges" xml:space="preserve">
+    <value>Salva modifiche</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_Settings" xml:space="preserve">
+    <value>Impostazioni</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_TimeZone" xml:space="preserve">
+    <value>Time Zone</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Advertisement" xml:space="preserve">
+    <value>Pubblicità</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_AdvertisementDetails" xml:space="preserve">
+    <value>Dettagli Pubblicità</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Disable" xml:space="preserve">
+    <value>Disabilita</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Enable" xml:space="preserve">
+    <value>Abilita</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Expirydate" xml:space="preserve">
+    <value>Data di Scadenza</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Image" xml:space="preserve">
+    <value>Immagine</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_ImageURL" xml:space="preserve">
+    <value>Url Immagine</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Or" xml:space="preserve">
+    <value>oppure</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Save" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Advertisement" xml:space="preserve">
+    <value>Pubblicità</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Disable" xml:space="preserve">
+    <value>Disabilita</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_EditAdvertDetails" xml:space="preserve">
+    <value>Modifica dettagli Pubblicità</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Enable" xml:space="preserve">
+    <value>Permetti</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_ExpiryDate" xml:space="preserve">
+    <value>Data di Scadenza</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Image" xml:space="preserve">
+    <value>Immagine</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_ImageURL" xml:space="preserve">
+    <value>Url Immagine</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Or" xml:space="preserve">
+    <value>oppure</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Update" xml:space="preserve">
+    <value>Aggiorna</value>
+  </data>
+  <data name="Admin_Advertisement_ManageAdvertisement_Manage" xml:space="preserve">
+    <value>Gestisci Pubblicità</value>
+  </data>
+  <data name="Admin_Advertisement_ManageAdvertisement_ManageAdvertTable" xml:space="preserve">
+    <value>Gestisci tabella Pubblicità</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_AddNewCoupon" xml:space="preserve">
+    <value>Aggiungi nuovo Coupon</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_CouponCode" xml:space="preserve">
+    <value>Coupon Code</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_Disable" xml:space="preserve">
+    <value>Disabilita</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_Discount" xml:space="preserve">
+    <value>Sconto in percentuale (%)</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_Enable" xml:space="preserve">
+    <value>Permetti</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_EntryDate" xml:space="preserve">
+    <value>Date inizio</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_ExpiryDate" xml:space="preserve">
+    <value>Data di scadenza</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_Save" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_Status" xml:space="preserve">
+    <value>Stato</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_CouponCode" xml:space="preserve">
+    <value>Codice Coupon</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_Disable" xml:space="preserve">
+    <value>Disabilita</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_EditCoupon" xml:space="preserve">
+    <value>Edita dettagli Coupon</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_Enable" xml:space="preserve">
+    <value>Permetti</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_EntryDate" xml:space="preserve">
+    <value>Date inizio</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_ExpiryDate" xml:space="preserve">
+    <value>Data di scadenza</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_Update" xml:space="preserve">
+    <value>Aggiorna</value>
+  </data>
+  <data name="Admin_Coupons_ManageCoupons_ManageCoupon" xml:space="preserve">
+    <value>Gestisci Coupons</value>
+  </data>
+  <data name="Admin_Coupons_ManageCoupons_ManageCouponTable" xml:space="preserve">
+    <value>Gestisci tabella Coupons</value>
+  </data>
+  <data name="Admin_News_CreateNews_Disable" xml:space="preserve">
+    <value>Disabilita</value>
+  </data>
+  <data name="Admin_News_CreateNews_EditUserDetails" xml:space="preserve">
+    <value>Modifica dettagli Utente</value>
+  </data>
+  <data name="Admin_News_CreateNews_Enable" xml:space="preserve">
+    <value>Permetti</value>
+  </data>
+  <data name="Admin_News_CreateNews_ExpiryDate" xml:space="preserve">
+    <value>Data di Scadenza</value>
+  </data>
+  <data name="Admin_News_CreateNews_News" xml:space="preserve">
+    <value>News</value>
+  </data>
+  <data name="Admin_News_CreateNews_Save" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="Admin_News_CreateNews_Status" xml:space="preserve">
+    <value>Stato</value>
+  </data>
+  <data name="Admin_News_EditNews_Disable" xml:space="preserve">
+    <value>Disabilita</value>
+  </data>
+  <data name="Admin_News_EditNews_EditUserdetails" xml:space="preserve">
+    <value>Modifica dettagli Utente</value>
+  </data>
+  <data name="Admin_News_EditNews_Enable" xml:space="preserve">
+    <value>Permetti</value>
+  </data>
+  <data name="Admin_News_EditNews_ExpiryDate" xml:space="preserve">
+    <value>Data di scadenza</value>
+  </data>
+  <data name="Admin_News_EditNews_News" xml:space="preserve">
+    <value>News</value>
+  </data>
+  <data name="Admin_News_EditNews_Status" xml:space="preserve">
+    <value>Stato</value>
+  </data>
+  <data name="Admin_News_EditNews_Update" xml:space="preserve">
+    <value>Aggiorna</value>
+  </data>
+  <data name="Admin_News_ManageNews_ManageNews" xml:space="preserve">
+    <value>Gestisci Notizie</value>
+  </data>
+  <data name="Admin_News_ManageNews_ManageNewstable" xml:space="preserve">
+    <value>Gestisci Tabella Notizie</value>
+  </data>
+  <data name="Admin_Package_EditPackage_EditDetails" xml:space="preserve">
+    <value>Modifica dettagli Package</value>
+  </data>
+  <data name="Admin_Package_EditPackage_Name" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="Admin_Package_EditPackage_Pricing" xml:space="preserve">
+    <value>Prezzi</value>
+  </data>
+  <data name="Admin_Package_EditPackage_Update" xml:space="preserve">
+    <value>Aggiorna</value>
+  </data>
+  <data name="Admin_Package_ManagePackage_ManagePackage" xml:space="preserve">
+    <value>Gestisci Package</value>
+  </data>
+  <data name="Admin_Package_ManagePackage_ManagePackageTable" xml:space="preserve">
+    <value>Gestisci Tabella Package</value>
+  </data>
+  <data name="Admin_Services_SchedulingDetails_UsersSchedulingDetails" xml:space="preserve">
+    <value>Dettagli pianificazione Utenti</value>
+  </data>
+  <data name="Admin_Services_SchedulingDetails_UsersSchedulingDetailsTable" xml:space="preserve">
+    <value>Tabella dettagli pianificazione Utenti</value>
+  </data>
+  <data name="Admin_Services_Scheduling_Scheduling" xml:space="preserve">
+    <value>Pianificazione Invio</value>
+  </data>
+  <data name="Admin_Services_Scheduling_SchedulingTable" xml:space="preserve">
+    <value>Tabella Pianificazione</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Disable" xml:space="preserve">
+    <value>Disabilita</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_EditDetails" xml:space="preserve">
+    <value>Modifica dettagli Utente</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Email" xml:space="preserve">
+    <value>Indirizzo e-mail</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Enable" xml:space="preserve">
+    <value>Permetti</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Name" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Package" xml:space="preserve">
+    <value>Package</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Update" xml:space="preserve">
+    <value>Aggiorna</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_AccountType" xml:space="preserve">
+    <value>Tipo di Account</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_CreateDate" xml:space="preserve">
+    <value>Data di creazione</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_Deleted" xml:space="preserve">
+    <value>Cancellato</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_DeleteUsers" xml:space="preserve">
+    <value>Utenti eliminati</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_DeleteUsersTable" xml:space="preserve">
+    <value>Tabella Utenti Eliminati</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_EmailId" xml:space="preserve">
+    <value>Email Id</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_Name" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_UsersStatus" xml:space="preserve">
+    <value>Stato Utente</value>
+  </data>
+  <data name="Admin_UserDetails_ManageProfile_ManageProfiles" xml:space="preserve">
+    <value>Gestisci profili</value>
+  </data>
+  <data name="Admin_UserDetails_ManageProfile_ManageProfilesTable" xml:space="preserve">
+    <value>Gestisci tabella profilo</value>
+  </data>
+  <data name="Admin_UserDetails_ManageUsers_ManageUsers" xml:space="preserve">
+    <value>Gestisci Utente</value>
+  </data>
+  <data name="Admin_UserDetails_ManageUsers_ManageUsersTable" xml:space="preserve">
+    <value>Gestisci tabella utente</value>
+  </data>
+  <data name="BusinessSetting_Index_AssigningTasks" xml:space="preserve">
+    <value>Assegnazione di funzioni</value>
+  </data>
+  <data name="BusinessSetting_Index_AssigningTasksDescription" xml:space="preserve">
+    <value>Questa impostazione consentirà agli Utenti di assegnare funzioni nei gruppi e renderà questo visibile agli altri membri del gruppo. Se non si desidera che gli Utenti assegnino compiti nei gruppi, lasciare questa impostazione "disattivata".</value>
+  </data>
+  <data name="BusinessSetting_Index_AssigningTasksDisable" xml:space="preserve">
+    <value>Disabilita</value>
+  </data>
+  <data name="BusinessSetting_Index_AssigningTasksEnable" xml:space="preserve">
+    <value>Abilita assegnazioni incrociate di gruppo </value>
+  </data>
+  <data name="BusinessSetting_Index_BuisnessName" xml:space="preserve">
+    <value>Nome Business</value>
+  </data>
+  <data name="BusinessSetting_Index_NotifcationTaskDisable" xml:space="preserve">
+    <value>Attiva funzione notifiche</value>
+  </data>
+  <data name="BusinessSetting_Index_NotifcationTaskEnable" xml:space="preserve">
+    <value>Disabilita</value>
+  </data>
+  <data name="SocialBoard_BusinessSetting_Index_NotificationAlertViaEmail" xml:space="preserve">
+    <value>SocialBoard avvista voi &amp; il vostro Team, via e-mail, sulle varie attività.</value>
+  </data>
+  <data name="BusinessSetting_Index_TaskNotificationEmail" xml:space="preserve">
+    <value>Email di notifica avvisi</value>
+  </data>
+  <data name="BusinessSetting_Index_UpdateSettings" xml:space="preserve">
+    <value>Aggiornamento Impostazioni</value>
+  </data>
+  <data name="Discovery_DiscoveryPartial_FacebookPosts" xml:space="preserve">
+    <value>Facebook Posts</value>
+  </data>
+  <data name="Discovery_DiscoveryPartial_Heading" xml:space="preserve">
+    <value>Discovery consente di trovare nuovi clienti per la vostra attività ricercandoli per parole chiave.</value>
+  </data>
+  <data name="Discovery_DiscoveryPartial_SearchHistory" xml:space="preserve">
+    <value>Cronologia Ricerca </value>
+  </data>
+  <data name="Discovery_DiscoveryPartial_TwitterPosts" xml:space="preserve">
+    <value>Twitter Posts</value>
+  </data>
+  <data name="Feeds_FeedMenu_Facebook" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="Feeds_FeedMenu_Feeds" xml:space="preserve">
+    <value>Feeds</value>
+  </data>
+  <data name="Feeds_FeedMenu_Instragram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="Feeds_FeedMenu_Linkedin" xml:space="preserve">
+    <value>LinkedIn</value>
+  </data>
+  <data name="Feeds_FeedMenu_LinkedinAccount" xml:space="preserve">
+    <value>LinkedIn Account</value>
+  </data>
+  <data name="Feeds_FeedMenu_LinkedinCompanyPage" xml:space="preserve">
+    <value>LinkedIn Pagina Aziendale</value>
+  </data>
+  <data name="Feeds_FeedMenu_Tumblr" xml:space="preserve">
+    <value>Tumblr</value>
+  </data>
+  <data name="Feeds_FeedMenu_Twitter" xml:space="preserve">
+    <value>Twitter</value>
+  </data>
+  <data name="Feeds_FeedMenu_Youtube" xml:space="preserve">
+    <value>Youtube</value>
+  </data>
+  <data name="Feeds_FeedPartial_Mention" xml:space="preserve">
+    <value>Menziona</value>
+  </data>
+  <data name="Feeds_FeedPartial_Retweets" xml:space="preserve">
+    <value>Retweets</value>
+  </data>
+  <data name="Feeds_FeedPartial_Status" xml:space="preserve">
+    <value>Stato</value>
+  </data>
+  <data name="Feeds_FeedPartial_Tag" xml:space="preserve">
+    <value>Tag</value>
+  </data>
+  <data name="Feeds_FeedPartial_Userfeeds" xml:space="preserve">
+    <value>User Feeds</value>
+  </data>
+  <data name="Feeds_FeedPartial_UserTweet" xml:space="preserve">
+    <value>Tweet Utente </value>
+  </data>
+  <data name="Feeds_Panel1Partial_Close" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="Feeds_Panel1Partial_Comment" xml:space="preserve">
+    <value>Commenti</value>
+  </data>
+  <data name="Feeds_Panel1Partial_EmailMessage" xml:space="preserve">
+    <value>Messaggi Email</value>
+  </data>
+  <data name="Feeds_Panel1Partial_Favourite" xml:space="preserve">
+    <value>Favoriti</value>
+  </data>
+  <data name="Feeds_Panel1Partial_Post" xml:space="preserve">
+    <value>Post</value>
+  </data>
+  <data name="Feeds_Panel1Partial_QuoteMessage" xml:space="preserve">
+    <value>Quota Messaggio</value>
+  </data>
+  <data name="Feeds_Panel1Partial_ReportAsSpam" xml:space="preserve">
+    <value>Segnala come Spam</value>
+  </data>
+  <data name="Feeds_Panel1Partial_Retweet" xml:space="preserve">
+    <value>Retweet</value>
+  </data>
+  <data name="ForgotPassword_ForgetPasswordPartial_ForgotPassword" xml:space="preserve">
+    <value>Password dimenticata</value>
+  </data>
+  <data name="ForgotPassword_ForgetPasswordPartial_Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="ForgotPassword_ForgetPasswordPartial_Submit" xml:space="preserve">
+    <value>INVIA</value>
+  </data>
+  <data name="ForgotPasword_ForgotPasswordMailBodyPartial_FollowTwitter" xml:space="preserve">
+    <value>seguici su Twitter:</value>
+  </data>
+  <data name="SocialBoard_ForgotPasword_ForgotPasswordMailBodyPartial_HappySocialBoarding" xml:space="preserve">
+    <value>Happy SocialBoarding!</value>
+  </data>
+  <data name="ForgotPasword_ForgotPasswordMailBodyPartial_NewUsernamePassword" xml:space="preserve">
+    <value>Si prega di cliccare &lt;a href="@System.Configuration.ConfigurationManager.AppSettings["DomainName"]/ForgotPassword/ResetPassword?code=@objUser.ChangePasswordKey&amp;emailId=@objUser.EmailId" style="text-decoration:none;"&gt; qui &lt;/a&gt; per reimpostare la password.</value>
+  </data>
+  <data name="ForgotPasword_ForgotPasswordMailBodyPartial_RequestRecieved" xml:space="preserve">
+    <value>Sembra che hai problemi di accesso a SocialBoard. Possiamo inviarti un link per reimpostare la tua password. </value>
+  </data>
+  <data name="SocialBoard_ForgotPasword_ForgotPasswordMailBodyPartial_SocialBoardSupportTeam" xml:space="preserve">
+    <value>SocialBoard Support Team</value>
+  </data>
+  <data name="SocialBoard_ForgotPasword_ForgotPasswordMailBodyPartial_SupportTeamIntro" xml:space="preserve">
+    <value>Questo è team di supporto di SocialBoard.</value>
+  </data>
+  <data name="ForgotPasword_ForgotPasswordMailBodyPartial_ThanksRegards" xml:space="preserve">
+    <value>Grazie e Cordiali Saluti,</value>
+  </data>
+  <data name="ForgotPasword_ForgotPassworMailBodydPartial_FollowFacebook" xml:space="preserve">
+    <value>seguici su Facebook:</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordMailBodyPartial_FollowTwitter" xml:space="preserve">
+    <value>seguici su Twitter:</value>
+  </data>
+  <data name="SocialBoard_ForgotPasword_ResetPasswordMailBodyPartial_HappySocialBoarding" xml:space="preserve">
+    <value>Happy SocialBoarding!</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordMailBodyPartial_NewUsernamePassword" xml:space="preserve">
+    <value>Per cortesia vedi sotto il tuo Username e la nuova password.</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordMailBodyPartial_RequestRecieved" xml:space="preserve">
+    <value>Abbiamo ricevuto la tua richiesta di modifica password.</value>
+  </data>
+  <data name="SocialBoard_ForgotPasword_ResetPasswordMailBodyPartial_SocialBoardSupportTeam" xml:space="preserve">
+    <value>SocialBoard Support Team</value>
+  </data>
+  <data name="SocialBoard_ForgotPasword_ResetPasswordMailBodyPartial_SupportTeamIntro" xml:space="preserve">
+    <value>Questo è team di supporto di SocialBoard.</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordMailBodyPartial_ThanksRegards" xml:space="preserve">
+    <value>Grazie e Cordiali Saluti,</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordPartial_InvalidLink" xml:space="preserve">
+    <value>link non valido</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordPartial_ResetPassword" xml:space="preserve">
+    <value>Ripristino password</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordPartial_Submit" xml:space="preserve">
+    <value>INVIA</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordPartial_TryAgain" xml:space="preserve">
+    <value>riprova</value>
+  </data>
+  <data name="ForgotPasword_ResetPassworMailBodydPartial_FollowFacebook" xml:space="preserve">
+    <value>seguici su Facebook:</value>
+  </data>
+  <data name="Group_Index_1Min" xml:space="preserve">
+    <value>1 Min</value>
+  </data>
+  <data name="Group_Index_2Min" xml:space="preserve">
+    <value>2 Min</value>
+  </data>
+  <data name="Group_Index_3Min" xml:space="preserve">
+    <value>3 Min</value>
+  </data>
+  <data name="Group_Index_4Min" xml:space="preserve">
+    <value>4 Min</value>
+  </data>
+  <data name="Group_Index_5Min" xml:space="preserve">
+    <value>5 Min</value>
+  </data>
+  <data name="Group_Index_Chat" xml:space="preserve">
+    <value>Chat</value>
+  </data>
+  <data name="Group_Index_Close" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="Group_Index_Groups" xml:space="preserve">
+    <value>Gruppi</value>
+  </data>
+  <data name="Group_Index_GroupUsers" xml:space="preserve">
+    <value>Gruppo Utenti</value>
+  </data>
+  <data name="Group_Index_IntervalTime" xml:space="preserve">
+    <value>Intervallo di tempo:</value>
+  </data>
+  <data name="Group_Index_NewMessage" xml:space="preserve">
+    <value>Nuovo messaggio</value>
+  </data>
+  <data name="Group_Index_NoFeedFound" xml:space="preserve">
+    <value>FEED NON TROVATO</value>
+  </data>
+  <data name="Group_Index_Post" xml:space="preserve">
+    <value>Post</value>
+  </data>
+  <data name="Group_Index_PostOnSelectedGroup" xml:space="preserve">
+    <value>Pubblica nel gruppo selezionato</value>
+  </data>
+  <data name="Group_Index_SelectGroupDisplayFeeds" xml:space="preserve">
+    <value>Per favore selezionate un gruppo per visualizzare i feed.</value>
+  </data>
+  <data name="Group_Index_Send" xml:space="preserve">
+    <value>Invia</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Activities" xml:space="preserve">
+    <value>Attività</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Connections" xml:space="preserve">
+    <value>Connessioni</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Fans" xml:space="preserve">
+    <value>Fans</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Follower" xml:space="preserve">
+    <value>Follower</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Following" xml:space="preserve">
+    <value>Following</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Likes" xml:space="preserve">
+    <value>Mi piace</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_MyRecentProfiles" xml:space="preserve">
+    <value>I miei profili recenti</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Photos" xml:space="preserve">
+    <value>Foto</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Post" xml:space="preserve">
+    <value>Post</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_PostsPerDay" xml:space="preserve">
+    <value>Messaggi per giorno</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_RecentMessages" xml:space="preserve">
+    <value>Messaggi recenti</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_TotalSubscriber" xml:space="preserve">
+    <value>Totale Sottoscrizioni </value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_TotalVideo" xml:space="preserve">
+    <value>Totale Video</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_TotalView" xml:space="preserve">
+    <value>Totale Visualizzazioni</value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_IncomingMessages" xml:space="preserve">
+    <value>Messaggi in arrivo</value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_NewFacebookFans" xml:space="preserve">
+    <value>Nuovi fan di Facebook</value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_SentMessages" xml:space="preserve">
+    <value>Messaggi inviati</value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_TwitterFollowers" xml:space="preserve">
+    <value>Followers Twitter </value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_Updates" xml:space="preserve">
+    <value>Aggiornamenti</value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_ViewDetails" xml:space="preserve">
+    <value>Dettagli</value>
+  </data>
+  <data name="Home_HomeUserProfilePartial_Loading" xml:space="preserve">
+    <value>Caricamento. . .</value>
+  </data>
+  <data name="Home_HomeUserProfilePartial_RecentFollowers" xml:space="preserve">
+    <value>Followers</value>
+  </data>
+  <data name="Home_HomeUserProfilePartial_SocialProfiles" xml:space="preserve">
+    <value>Profili sociali</value>
+  </data>
+  <data name="Home_HomeUserProfilePartial_TeamMembers" xml:space="preserve">
+    <value>Membri del Team</value>
+  </data>
+  <data name="Home_Index_Attach" xml:space="preserve">
+    <value>Allega il tuo profilo</value>
+  </data>
+  <data name="SocialBoard_Home_Index_AttachProfileToBeginWithSocialBoard" xml:space="preserve">
+    <value>Connetti il tuo profilo social network per partire con SocialBoard</value>
+  </data>
+  <data name="Home_PageNotFound_404NotFound" xml:space="preserve">
+    <value>404 Not Found</value>
+  </data>
+  <data name="SocialBoard_Home_PageNotFound_404PageSocialBoard" xml:space="preserve">
+    <value>404 Pagina SocialBoard</value>
+  </data>
+  <data name="Home_PageNotFound_ContactSupport" xml:space="preserve">
+    <value>Contatta il supporto</value>
+  </data>
+  <data name="Home_PageNotFound_Oops" xml:space="preserve">
+    <value>Oops!</value>
+  </data>
+  <data name="Home_PageNotFound_Search" xml:space="preserve">
+    <value>Ricerca</value>
+  </data>
+  <data name="Home_PageNotFound_SorryErrorOccured" xml:space="preserve">
+    <value>Siamo spiacenti, si è verificato un errore, la pagina richiesta non è stata trovata!</value>
+  </data>
+  <data name="Home_PageNotFound_TakeMeHome" xml:space="preserve">
+    <value>Portami alla Home</value>
+  </data>
+  <data name="Home_PofilePartial_Facebook" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="Home_PofilePartial_Instagram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="Home_PofilePartial_Linkedin" xml:space="preserve">
+    <value>LinkedIn</value>
+  </data>
+  <data name="Home_PofilePartial_Tumblr" xml:space="preserve">
+    <value>Tumblr</value>
+  </data>
+  <data name="Home_PofilePartial_Twitter" xml:space="preserve">
+    <value>Twitter</value>
+  </data>
+  <data name="Home_PofilePartial_Youtube" xml:space="preserve">
+    <value>YouTube</value>
+  </data>
+  <data name="Home_Training_ClickAndStartLearning" xml:space="preserve">
+    <value>Fare clic sul pulsante qui sotto e iniziare la guida.</value>
+  </data>
+  <data name="Home_Training_Heading1" xml:space="preserve">
+    <value>Vuoi sapere come procedere dal momento che non sei un esperto "geek and tech"?</value>
+  </data>
+  <data name="SocialBoard_Home_Training_Heading2" xml:space="preserve">
+    <value>Ottieni il massimo dal Tuo SocialBoard attraverso la formazione online in diretta. E' una formazione completa e fa al caso vostro se desiderate ottenere le nozioni di base oppure scavare più a fondo con il nostro Tool. I nostri istruttori vi aiutano con un flusso di formazione professionale.</value>
+  </data>
+  <data name="Home_Training_Heading3" xml:space="preserve">
+    <value>Offriamo formazione online in tempo reale ai nostri clienti attraverso Skype e TeamViewer solo a € 100 per 10 ore.</value>
+  </data>
+  <data name="Home_Training_LiveOnline" xml:space="preserve">
+    <value>Live Online Training</value>
+  </data>
+  <data name="Index_Company_About" xml:space="preserve">
+    <value>Chi siamo</value>
+  </data>
+  <data name="Index_Company_BtnReset" xml:space="preserve">
+    <value>Pulsante di ripristino</value>
+  </data>
+  <data name="Index_Company_BtnSubmit" xml:space="preserve">
+    <value>Pulsante Invio</value>
+  </data>
+  <data name="Index_Company_Careers" xml:space="preserve">
+    <value>Opportunità di lavoro</value>
+  </data>
+  <data name="SocialBoard_Index_Company_CareersDescription" xml:space="preserve">
+    <value>SocialBoard offre opportunità e sfide per aiutare a progredire sul vostro percorso di carriera e raggiungere il vostro sviluppo personale e professionale. Entra nel nostro team. Vi aiuteremo a sviluppare ed accelerare la Tua carriera, fornendo opportunità per amplificare i Tuoi talenti. Potrai migliorare e nutrire i Tuoi punti di forza e valorizzarli con prospettive uniche. In cambio ci aspettiamo da Te lo spirito di condivisione della Tua/Nostra passione che per 'eccellenza' mettiamo in tutto quello che facciamo.</value>
+  </data>
+  <data name="Index_Company_COMPANYHeader" xml:space="preserve">
+    <value>Azienda</value>
+  </data>
+  <data name="Index_Company_Customers" xml:space="preserve">
+    <value>Clienti</value>
+  </data>
+  <data name="Index_Company_Fileinput" xml:space="preserve">
+    <value>Inserisci File</value>
+  </data>
+  <data name="Index_Company_Partners" xml:space="preserve">
+    <value>Collaborazioni</value>
+  </data>
+  <data name="SocialBoard_Index_Company_PartnersDescription" xml:space="preserve">
+    <value>SocialBoard è in corso di stabilire partnership con Servizi Cloud Provider come MS Azure, Amazon AWS ecc. Siamo inoltre in fase di iniziare ad ospitare plug-in e applicazioni da voi realizzate. Miglioreremo in modo costantemente le nostre caratteristiche.</value>
+  </data>
+  <data name="SocialBoard_Index_Company_SocioBoardDescription" xml:space="preserve">
+    <value>SocialBoard è un Tool per la gestione dei Social Media di nuova generazione. Permette di sfruttare al massimo tutte le piattaforme Social attraverso un rivoluzionario sistema affiancato ad un supporto tecnico di elevato livello senza pari a disposizione ventiquattro ore su ventiquattro.
+Il nostro scopo è quello di cercare di risolvere il problema che chiunque deve affrontare durante la gestione di molti profili sui social network. La maggior parte degli utenti hanno in genere almeno tre profili sociali, mentre le imprese hanno una struttura di social networking più complessa. Il processo di gestione di molti profili su social network richiede moltissimo tempo e diventa fin da subito molto oneroso economicamente, SocialBoard è stato studiato appositamente per  risolvere tutti questi problemi.
+SocialBoard offre i seguenti valori per il vostro business:
+Il nostro obbiettivo è quello di risolvere il caos che circonda la gestione dei social media.La maggior parte delle applicazioni in questo settore hanno un approccio molto ristretto e limitato nei confronti degli utenti finali, le persone si sentono coinvolti in un vortice, SocialBoard ha tantissimi piani per aiutare gli utenti a progredire in questa visione. </value>
+  </data>
+  <data name="Index_Company_TextArea" xml:space="preserve">
+    <value>Area di testo</value>
+  </data>
+  <data name="Index_Disclaimer_Disclaimer" xml:space="preserve">
+    <value>disconoscimento</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex1" xml:space="preserve">
+    <value> I seguenti termini e condizioni saranno considerati accettata dall'Utente e si basano sull'utilizzo del sito www.SocialBoard.it. Siete pregati di leggere attentamente prima di utilizzare i servizi di questo sito. 
+</value>
+  </data>
+  <data name="Index_Download_DirectDownload" xml:space="preserve">
+    <value>Download Diretto</value>
+  </data>
+  <data name="Index_Download_FooterMessage" xml:space="preserve">
+    <value>Vuoi ottenere una installazione professionale effettuata tramite il nostro team di esperti a quasi costo zero? Clicca il pulsante qui sotto:</value>
+  </data>
+  <data name="SocialBoard_Index_Download_SourceCodeHeading" xml:space="preserve">
+    <value>SocialBoard codice sorgente è disponibile per il download attraverso vari siti. Cliccate rispettivi link per scaricare:</value>
+  </data>
+  <data name="Index_Features_Analysis" xml:space="preserve">
+    <value>Analisi</value>
+  </data>
+  <data name="Index_Features_Analytics" xml:space="preserve">
+    <value>Analisi specifiche e Reports</value>
+  </data>
+  <data name="SocialBoard_Index_Features_AnalyticsDescription" xml:space="preserve">
+    <value>SocialBoard utilizza il suo motore di statistiche e genera analisi circa le varie attività relative al vostro account. Incorpora statistiche di gruppo, i dati di coinvolgimento Facebook, statistiche Twitter e le statistiche relativi alle attività. Tutte queste analisi possono essere personalizzate visualizzate in base alle date, gruppi etc.</value>
+  </data>
+  <data name="Index_Features_Discovery" xml:space="preserve">
+    <value>Discovery Social unici</value>
+  </data>
+  <data name="Index_Features_DiscoveryDescription" xml:space="preserve">
+    <value>Discovery è una funzione meravigliosa che SocialBoard offerte in virtù delle quali gli utenti possono usufruire di un meccanismo di ricerca altamente efficiente.</value>
+  </data>
+  <data name="Index_Features_Engagement" xml:space="preserve">
+    <value>Coinvolgimento efficace ed efficiente</value>
+  </data>
+  <data name="SocialBoard_Index_Features_EngagementDescription" xml:space="preserve">
+    <value>SocialBoard ha capacità di coinvolgere il pubblico attraverso varie piattaforme. Questo dà ad ogni piattaforma la dovuta importanza. Il grado di impegno viene adattato secondo importanza della piattaforma e il numero di connessioni in esso.</value>
+  </data>
+  <data name="Index_Features_Features" xml:space="preserve">
+    <value>Caratteristiche</value>
+  </data>
+  <data name="Index_Features_FeaturesDescription" xml:space="preserve">
+    <value>I social media marketing devono affrontare grandi difficoltà ad accedere tecnologia che è abbastanza flessibile per soddisfare le loro esigenze di work flow di approvazione, compliance, gestione patrimoniale, la moderazione, ecc ecc SocialBoard aiuta a sfruttare il vostro social media marketing con grandi caratteristiche, quali strumenti di pianificazione e pubblicazione avanzate, notizie prompt dei feed, Discovery Social interattiva, analisi sofisticate, CRM sociale, integrazione help desk, strumenti di collaborazione, report personalizzabili e molto altro ancora.
+Le Dashboard visualizza le attività dei tuoi amici, come azioni, nuovi messaggi, eventi, visite di luoghi per citarne alcuni. Il contenuti possono essere filtrati secondo date e/o per eventi. Tu puoi coinvolgere i tuoi amici sulle loro attività, come i messaggi, commenti e persino condividerli. SocialBoard può aiutarti a impostare i promemoria sulle attività correlate agli aggiornamenti condivisi dai tuoi amici. Puoi personalizzare le statistiche per vedere in base ai giorni, gruppi etc. </value>
+  </data>
+  <data name="Index_Features_Feeds" xml:space="preserve">
+    <value>Feeds</value>
+  </data>
+  <data name="Index_Features_FeedsDescription" xml:space="preserve">
+    <value>I Feeds consentono di ottenere gli ultimi aggiornamenti di stato degli amici. A partire da ora Facebook, Twitter e LinkedIn possono essere collegati alla tua SocialBoard. Gli utenti possono ottenere Posts sul diario, aggiornamenti di stato e messaggi programmati da inviare, gli utenti possono impegnarsi a vicenda utilizzando la piattaforma, ricevere notifiche sui messaggi persi e molto altro ancora.</value>
+  </data>
+  <data name="Index_Features_HelpDesk" xml:space="preserve">
+    <value>Integrazione Helpdesk </value>
+  </data>
+  <data name="SocialBoard_Index_Features_HelpDeskDescription" xml:space="preserve">
+    <value>SocialBoard non solo ha un meccanismo di supporto di classe mondiale, ma offre anche l'integrazione Helpdesk con il tuo account SocialBoard.</value>
+  </data>
+  <data name="Index_Features_Insights" xml:space="preserve">
+    <value>Insights</value>
+  </data>
+  <data name="Index_Features_MobileApps" xml:space="preserve">
+    <value>Applicazioni Mobili</value>
+  </data>
+  <data name="Index_Features_MobileAppsDescription" xml:space="preserve">
+    <value>Le caratteristiche globali di SocialBoard sono disponibile via web. Le nostre applicazioni Android e IOS lavorano in tandem con l'applicazione web.</value>
+  </data>
+  <data name="Index_Features_Monitor" xml:space="preserve">
+    <value>Monitor</value>
+  </data>
+  <data name="Index_Features_Monitoring" xml:space="preserve">
+    <value>Monitoraggio costante in tempo reale</value>
+  </data>
+  <data name="SocialBoard_Index_Features_MonitoringDescription" xml:space="preserve">
+    <value>SocialBoard monitora continuamente i dati su varie piattaforme, e dà i Feeds regolari per gli utenti finali. i Feeds permettono di essere in contatto con i vostri amici. Gli utenti possono interagire tra di loro utilizzando la piattaforma, ricevere notifiche sui messaggi senza risposta e anche altro. Puoi anche impedire a qualcuno di darti fastidio su questa piattaforma. Rispettiamo la tua privacy.</value>
+  </data>
+  <data name="Index_Features_Ourfeatures" xml:space="preserve">
+    <value>I nostri servizi</value>
+  </data>
+  <data name="Index_Features_Scheduling" xml:space="preserve">
+    <value>Pianificazione e Pubblicazione Avanzata</value>
+  </data>
+  <data name="Index_Features_SchedulingDescription" xml:space="preserve">
+    <value>La pubblicazione dei messaggi è la parte più importante per coinvolgere il pubblico attraverso le piattaforme sociali. SocialBoard permette di pianificare la pubblicazione di Posts e messaggi attraverso degli strumenti dedicati, di mantenere una coda e salvare i messaggi elaborati. Si potranno mantenere tutti gli aggiornamenti su ciò che i tuoi amici stanno facendo e avere una pagina dedicata per le notifiche.</value>
+  </data>
+  <data name="Index_Features_SmartInbox" xml:space="preserve">
+    <value>Posta in arrivo intelligente</value>
+  </data>
+  <data name="Index_Features_SmartInboxDescription" xml:space="preserve">
+    <value>L'utente potrà visualizzare le applicazioni e i messaggi archiviati facilmente. Tutte i Post pubblici di un utente, e molto altro, saranno presenti sulla pagina "Messaggi" con l'immagine del messaggio. </value>
+  </data>
+  <data name="Index_Features_SocialCRM" xml:space="preserve">
+    <value>Social CRM</value>
+  </data>
+  <data name="Index_Features_SocialCRMDescription" xml:space="preserve">
+    <value>La Collaborazione è un termine molto importante nel social media marketing, le persone possono collaborare tra loro per rendere le cose reciprocamente vantaggiose win-win, SocialBoard ha in se una meravigliosa funzionalità in virtù della quale gli utenti possono collegarsi gli uni agli altri con una sistema di collaborazione altamente efficiente. Può servire da piattaforma per condividere informazioni con gli altri membri del team e aumento della lavorabilità e l'efficienza di tutte le squadre.</value>
+  </data>
+  <data name="Index_Features_SubHeadingAnalysis" xml:space="preserve">
+    <value>Data Mining, Warehousing e Analisi Dati intelligente</value>
+  </data>
+  <data name="SocialBoard_Index_Features_SubHeadingInsights" xml:space="preserve">
+    <value>SocialBoard offre approfondimenti dettagliati per i clienti</value>
+  </data>
+  <data name="Index_Features_SubHeadingMonitor" xml:space="preserve">
+    <value>Monitoraggio di piattaforme di social media in tempo reali</value>
+  </data>
+  <data name="Index_Features_SubHeadingUserguide" xml:space="preserve">
+    <value>Per ulteriori informazioni, scaricare l'e-book Guida SocialBoard</value>
+  </data>
+  <data name="Index_Features_TeamCollaboration" xml:space="preserve">
+    <value>Strumenti di Collaborazione in Team</value>
+  </data>
+  <data name="Index_Features_TeamCollaborationDescription" xml:space="preserve">
+    <value>La collaborazione è un termine molto importante in social media marketing, reparti inter funzionali possono collaborare tra di loro per rendere l'esperienza di marketing più fruttuosa e sinergica. SocialBoard ha in se una meravigliosa funzionalità in virtù della quale gli utenti possono collegarsi gli uni agli altri con una sistema di collaborazione altamente efficiente. Può servire da piattaforma per condividere informazioni con gli altri membri del team e aumento della lavorabilità e l'efficienza di tutte le squadre.</value>
+  </data>
+  <data name="Index_Features_UserGuide" xml:space="preserve">
+    <value>Ottieni la Guida per l'utente</value>
+  </data>
+  <data name="Index_Index_Analysis" xml:space="preserve">
+    <value>Analisi</value>
+  </data>
+  <data name="Index_Index_beyond" xml:space="preserve">
+    <value>OLTRE</value>
+  </data>
+  <data name="Index_Index_BtnLearnMore" xml:space="preserve">
+    <value>Leggi di più…</value>
+  </data>
+  <data name="Index_Index_BtnUserGuide" xml:space="preserve">
+    <value>Scarica la Guida e-Book</value>
+  </data>
+  <data name="SocialBoard_Index_Index_EndHeading" xml:space="preserve">
+    <value>Con SocialBoard, coinvolgere i tuoi Followers è molto facile, divertente, e da ora molto intuitivo... Inizia oggi!</value>
+  </data>
+  <data name="Index_Index_engage" xml:space="preserve">
+    <value>Coinvolgere i Followers in modo Efficace</value>
+  </data>
+  <data name="SocialBoard_Index_Index_featureHeading" xml:space="preserve">
+    <value>SocialBoard permette di tenere sotto controllo le conversazioni sociali in modo semplice e fornisce tutto il necessario per coinvolgere in modo efficace il pubblico.</value>
+  </data>
+  <data name="Index_Index_feature_pt1" xml:space="preserve">
+    <value>Posta in arrivo e Prompt Feeds</value>
+  </data>
+  <data name="Index_Index_feature_pt2" xml:space="preserve">
+    <value>Pianificazione e Pubblicazione Avanzata</value>
+  </data>
+  <data name="Index_Index_feature_pt3" xml:space="preserve">
+    <value>Discovery unica sociale</value>
+  </data>
+  <data name="Index_Index_feature_pt4" xml:space="preserve">
+    <value>Analisi e Report in profondità</value>
+  </data>
+  <data name="Index_Index_feature_pt5" xml:space="preserve">
+    <value>Monitoraggio Costante in tempo reale</value>
+  </data>
+  <data name="Index_Index_feature_pt6" xml:space="preserve">
+    <value>Strumenti per Collaborazione in Team</value>
+  </data>
+  <data name="Index_Index_feature_pt7" xml:space="preserve">
+    <value>Integrazione Social CRM e Helpdesk </value>
+  </data>
+  <data name="Index_Index_feature_pt8" xml:space="preserve">
+    <value> Applicazioni Mobile</value>
+  </data>
+  <data name="SocialBoard_Index_Index_freeSubscirption" xml:space="preserve">
+    <value>SocialBoard offre un servizio di gratuito per 30 giorni senza rischi!</value>
+  </data>
+  <data name="Index_Index_Insight" xml:space="preserve">
+    <value>Insights</value>
+  </data>
+  <data name="Index_Index_leverage" xml:space="preserve">
+    <value>Le persone parlano del tuo brand. Perché non sfruttare loro per il successo del tuo Business?</value>
+  </data>
+  <data name="Index_Index_LovePt1" xml:space="preserve">
+    <value>Strumento open-source altamente personalizzabile e scalabile in diverse edizioni</value>
+  </data>
+  <data name="Index_Index_LovePt2" xml:space="preserve">
+    <value>Strumenti di pubblicazione e pianificazione avanzata</value>
+  </data>
+  <data name="Index_Index_LovePt3" xml:space="preserve">
+    <value>Feeds tempestivi e strumenti di Discovery sociale interattivi</value>
+  </data>
+  <data name="Index_Index_LovePt4" xml:space="preserve">
+    <value>Analisi sofisticate su vari parametri</value>
+  </data>
+  <data name="Index_Index_LovePt5" xml:space="preserve">
+    <value>Strumenti CRM Social, tra cui i record di condivisione dei clienti</value>
+  </data>
+  <data name="Index_Index_LovePt6" xml:space="preserve">
+    <value>Funzioni di supporto del cliente, come compiti e integrazione Helpdesk</value>
+  </data>
+  <data name="Index_Index_LovePt7" xml:space="preserve">
+    <value>Strumenti di collaborazione in Team altamente efficiente</value>
+  </data>
+  <data name="Index_Index_LovePt8" xml:space="preserve">
+    <value>Supporto tecnico 24/7</value>
+  </data>
+  <data name="Index_Index_LovePt9" xml:space="preserve">
+    <value>Eseguibile attraverso vari dispositivi e piattaforme</value>
+  </data>
+  <data name="SocialBoard_Index_Index_LoveSocialBoard" xml:space="preserve">
+    <value>Perché la gente ama SocialBoard</value>
+  </data>
+  <data name="Index_Index_Managment" xml:space="preserve">
+    <value>Social Media Management</value>
+  </data>
+  <data name="Index_Index_Monitor" xml:space="preserve">
+    <value>Monitor</value>
+  </data>
+  <data name="SocialBoard_Index_Index_OnBoard" xml:space="preserve">
+    <value>Entra in SocialBoard e vedi direttamente cosa la nostra Suite Social Media Marketing può fare per Te</value>
+  </data>
+  <data name="Index_Index_OurFeatures" xml:space="preserve">
+    <value>I nostri servizi</value>
+  </data>
+  <data name="Index_Index_socialchannels" xml:space="preserve">
+    <value>Su tutti i canali SOCIALI</value>
+  </data>
+  <data name="SocialBoard_Index_Index_SocioDescription" xml:space="preserve">
+    <value>SocialBoard offre uno strumento avanzato di social media marketing, facile, versatile, personalizzabile e scalabile, per guidare la crescita e il successo del Vostro Brand.</value>
+  </data>
+  <data name="SocialBoardIndex_Index_Sociodescription2" xml:space="preserve">
+    <value>SocialBoard permette di ascoltare, analizzare e motivare il tuo Followers in modi insoliti attraverso numerosi account di social media</value>
+  </data>
+  <data name="Index_Index_Somereason" xml:space="preserve">
+    <value>alcuni motivi</value>
+  </data>
+  <data name="Index_Index_SubHeadingAnalysis" xml:space="preserve">
+    <value>Data Mining, Warehousing e Analisi Dati intelligente</value>
+  </data>
+  <data name="SocialBoardIndex_Index_SubHeadingInsight" xml:space="preserve">
+    <value>SocialBoard offre approfondimenti dettagliati per i clienti</value>
+  </data>
+  <data name="Index_Index_SubHeadingMonitor" xml:space="preserve">
+    <value>Monitoraggio di piattaforme social media in tempo reale</value>
+  </data>
+  <data name="Index_Index_SubHeadingUserguide" xml:space="preserve">
+    <value>Per ulteriori informazioni, scaricare la Guida SocialBoard</value>
+  </data>
+  <data name="Index_Index_Userguide" xml:space="preserve">
+    <value>Ottieni la Guida per l'utente</value>
+  </data>
+  <data name="Index_PartialPricing_30DaysFreeTrial" xml:space="preserve">
+    <value>Tutti i piani includono una versione di prova gratuita per 30 giorni</value>
+  </data>
+  <data name="Index_PartialPricing_Basic" xml:space="preserve">
+    <value>Base</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature1" xml:space="preserve">
+    <value>Dashboard Globale</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature2" xml:space="preserve">
+    <value>Inbox Profili Sociali multipli </value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature3" xml:space="preserve">
+    <value>Aggiornamenti Social Media </value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature4" xml:space="preserve">
+    <value>Funzioni di Pianificazione</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature5" xml:space="preserve">
+    <value>Social Media basato su CRM</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature6" xml:space="preserve">
+    <value>Tools di segnalazione piattaforme Social</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature7" xml:space="preserve">
+    <value>Training e Supporto 24*7 di classe Mondiale</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature8" xml:space="preserve">
+    <value>Gestisci fino a 5 profili</value>
+  </data>
+  <data name="Index_PartialPricing_BASICPLANS" xml:space="preserve">
+    <value>Piano Basic</value>
+  </data>
+  <data name="Index_PartialPricing_BasicSubHeading" xml:space="preserve">
+    <value>Ogni piano è unico. Questo si adatta per le persone individuali.</value>
+  </data>
+  <data name="Index_PartialPricing_BtnBuyNow" xml:space="preserve">
+    <value>Acquista Ora</value>
+  </data>
+  <data name="Index_PartialPricing_BTNRequestADemo" xml:space="preserve">
+    <value>RICHIEDI UNA DEMO</value>
+  </data>
+  <data name="Index_PartialPricing_BTNTryNow" xml:space="preserve">
+    <value>Prova adesso</value>
+  </data>
+  <data name="Index_PartialPricing_Change" xml:space="preserve">
+    <value>In ogni momento è possibile Aggiornare, modificare o annullare il piano acquisito.</value>
+  </data>
+  <data name="Index_PartialPricing_Deluxe" xml:space="preserve">
+    <value>Deluxe</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature1" xml:space="preserve">
+    <value>Tutte le caratteristiche dei Piani Basic, Standard &amp;amp; Deluxe</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature2" xml:space="preserve">
+    <value>Feeds</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature3" xml:space="preserve">
+    <value>Monitoraggio Costante in tempo reale</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature4" xml:space="preserve">
+    <value>Strumenti per la Collaborazione in Team</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature5" xml:space="preserve">
+    <value>Social CRM</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature6" xml:space="preserve">
+    <value>Training e Supporto 24*7 di classe Mondiale</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature7" xml:space="preserve">
+    <value>Gestisci fino a 50 profili</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeSubHeading" xml:space="preserve">
+    <value>Include strumenti sofisticati per obiettivi complessi</value>
+  </data>
+  <data name="Index_PartialPricing_ENTERPRISEANDAGENCY" xml:space="preserve">
+    <value>Aziende e Agenzie</value>
+  </data>
+  <data name="SocialBoard_Index_PartialPricing_EnterpriseandAgencyDescription" xml:space="preserve">
+    <value>SocialBoard offre soluzioni aziendali e per agenzie personalizzabili, dedicate al tuo business in modo scalabile, sicuro e con un alto livello di qualità e servizio e assistenza 24/7. Contattateci oggi per discutere le vostre esigenze specifiche con uno dei nostri specialisti di prodotto.</value>
+  </data>
+  <data name="Index_PartialPricing_EXPERTPLANS" xml:space="preserve">
+    <value>Piano Expert</value>
+  </data>
+  <data name="Index_PartialPricing_Premium" xml:space="preserve">
+    <value>Premium</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature1" xml:space="preserve">
+    <value>Tutte le Caratteristiche del piano Standard</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature2" xml:space="preserve">
+    <value>Discovery Sociale</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature3" xml:space="preserve">
+    <value>Integrazione Helpdesk </value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature4" xml:space="preserve">
+    <value>Motore Statistiche Performante</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature5" xml:space="preserve">
+    <value>Visualizzazione Analisi Personalizzate</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature6" xml:space="preserve">
+    <value>Training e Supporto 24*7 di classe Mondiale</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature7" xml:space="preserve">
+    <value>feed RSS</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature8" xml:space="preserve">
+    <value>Gestisci fino a 20 profili</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimSubHeading" xml:space="preserve">
+    <value>Con questo pacchetto è possibile gestire in modo efficiente una rete in espansione dei social media.</value>
+  </data>
+  <data name="Index_PartialPricing_PricingBasic" xml:space="preserve">
+    <value>Gratis</value>
+  </data>
+  <data name="Index_PartialPricing_PricingStandard" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_PartialPricing_RequestDemoBtnReset" xml:space="preserve">
+    <value>RESET</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoBtnSend" xml:space="preserve">
+    <value>INVIA RICHIESTA</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoCompanyName" xml:space="preserve">
+    <value>Nome Della Ditta</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoEmail" xml:space="preserve">
+    <value>Email ID</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoFName" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoInfoPage" xml:space="preserve">
+    <value>Richiedi una demo o maggiori informazioni</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoNotes" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoPhNO" xml:space="preserve">
+    <value>Numero di Telefono</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoSkypeID" xml:space="preserve">
+    <value>Skype ID</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoSName" xml:space="preserve">
+    <value>Cognome</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasic" xml:space="preserve">
+    <value>SocialBoard</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature1" xml:space="preserve">
+    <value>Tutte le caratteristiche dei Piani Basic, Standard &amp;amp; Deluxe</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature2" xml:space="preserve">
+    <value>Prompt Feeds</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature3" xml:space="preserve">
+    <value>Monitoraggio Costante in tempo reale</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature4" xml:space="preserve">
+    <value>Strumenti per la Collaborazione in Team</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature5" xml:space="preserve">
+    <value>Social CRM</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature6" xml:space="preserve">
+    <value>Training e Supporto 24*7 di classe Mondiale</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature7" xml:space="preserve">
+    <value>Gestisci fino a 100 profili</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicSubHeading" xml:space="preserve">
+    <value>Include strumenti sofisticati per obiettivi complessi</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxe" xml:space="preserve">
+    <value>SocialDeluxe</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature1" xml:space="preserve">
+    <value>Tutte le caratteristiche dei Piani Basic, Standard &amp;amp; Deluxe</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature2" xml:space="preserve">
+    <value>Prompt Feeds</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature3" xml:space="preserve">
+    <value>Monitoraggio Costante in tempo reale</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature4" xml:space="preserve">
+    <value>Strumenti per la Collaborazione in Team</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature5" xml:space="preserve">
+    <value>Social CRM</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature6" xml:space="preserve">
+    <value>Training e Supporto 24*7 di classe Mondiale</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature7" xml:space="preserve">
+    <value>Gestisci fino a 1000 profili</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeSubHeading" xml:space="preserve">
+    <value>Include strumenti sofisticati per obiettivi complessi</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature1" xml:space="preserve">
+    <value>Tutte le caratteristiche dei Piani Basic, Standard &amp;amp; Deluxe</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature2" xml:space="preserve">
+    <value>Prompt Feeds</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature3" xml:space="preserve">
+    <value>Monitoraggio Costante in tempo reale</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature4" xml:space="preserve">
+    <value>Strumenti per la Collaborazione in Team</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature5" xml:space="preserve">
+    <value>Social CRM</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature6" xml:space="preserve">
+    <value>Training e Supporto 24*7 di classe Mondiale</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature7" xml:space="preserve">
+    <value>Gestisci fino a 500 profili</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumSubHeading" xml:space="preserve">
+    <value>Include strumenti sofisticati per obiettivi complessi</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremuim" xml:space="preserve">
+    <value>SocialPremium</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandard" xml:space="preserve">
+    <value>SocialStandard</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature1" xml:space="preserve">
+    <value>Tutte le caratteristiche dei Piani Basic, Standard &amp;amp; Deluxe</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature2" xml:space="preserve">
+    <value>Prompt Feeds</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature3" xml:space="preserve">
+    <value>Monitoraggio Costante in tempo reale</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature4" xml:space="preserve">
+    <value>Strumenti per la Collaborazione in Team</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature5" xml:space="preserve">
+    <value>Social CRM</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature6" xml:space="preserve">
+    <value>Training e Supporto 24*7 di classe Mondiale</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature7" xml:space="preserve">
+    <value>Gestisci fino a 200 profili</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardSubHeading" xml:space="preserve">
+    <value>Include strumenti sofisticati per obiettivi complessi</value>
+  </data>
+  <data name="Index_PartialPricing_Standard" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature1" xml:space="preserve">
+    <value>Posta in arrivo intelligente</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature2" xml:space="preserve">
+    <value>Aggiornamenti da piattaforme di social media in tempo reale</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature3" xml:space="preserve">
+    <value>Caratteristiche di pubblicazione avanzata</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature4" xml:space="preserve">
+    <value>Strumenti sofisticati per CRM basato sui Social Media</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature5" xml:space="preserve">
+    <value>Strumenti di Reporting profondi</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature6" xml:space="preserve">
+    <value>Training e Supporto 24*7 di classe Mondiale</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature7" xml:space="preserve">
+    <value>Gestisci fino a 10 profili</value>
+  </data>
+  <data name="Index_PartialPricing_StandardSubHeading" xml:space="preserve">
+    <value>Comprende dei grandi strumenti idonei per i piccoli team.</value>
+  </data>
+  <data name="Index_PaymentSuccessful_Continue" xml:space="preserve">
+    <value>Continua</value>
+  </data>
+  <data name="Index_PaymentSuccessful_ThankYou" xml:space="preserve">
+    <value>Grazie</value>
+  </data>
+  <data name="Index_Privacy_ConfidentialityandSecurity" xml:space="preserve">
+    <value>Riservatezza e sicurezza dei tuoi dati personali:</value>
+  </data>
+  <data name="Index_Privacy_ConfidentialityandSecurityDescription" xml:space="preserve">
+    <value>Salvo quanto diversamente previsto nella presente Privacy Policy terremo i vostri dati personali privati e non condivideremo con terzi, a meno che tale divulgazione sia necessaria per: (a) rispettare un ordine del tribunale o altro procedimento legale; o (b) proteggere i nostri diritti o la proprietà. Vi mettiamo a disposizione con la possibilità di trasmettere i dati personali attraverso canali sicuri e criptati se si utilizza un browser web analogamente attrezzate.</value>
+  </data>
+  <data name="Index_Privacy_EmploymentInfoCollected" xml:space="preserve">
+    <value>Informazione Occupazione:</value>
+  </data>
+  <data name="Index_Privacy_EmploymentInfoCollectedDescription" xml:space="preserve">
+    <value>Attraverso il nostro sito forniamo accesso a posizioni lavorative aperte sotto il titolo "Carriere". Quando si invia un curriculum via e-mail o attraverso il nostro sito, lo tratteremo con lo stesso grado di riservatezza, come se ci venisse inviato direttaemnte via e-mail.</value>
+  </data>
+  <data name="Index_Privacy_OtherlimitsinPrivacy" xml:space="preserve">
+    <value>Altri limiti alla Privacy:</value>
+  </data>
+  <data name="Index_Privacy_OtherlimitsinPrivacyDescription" xml:space="preserve">
+    <value>Il Sito contiene collegamenti ad altri siti web. Noi non siamo responsabili per la privacy o il contenuto di tali siti web. Vi preghiamo di comprendere che qualsiasi informazione che viene rivelata in queste aree diventa soggetto alle politiche sulla privacy e le pratiche di quei determinati siti web. Non abbiamo alcun controllo sul suo utilizzo e si dovrebbe esercitare cautela quando si decide di divulgare le vostre informazioni personali.</value>
+  </data>
+  <data name="Index_Privacy_PersonalInfoCollected" xml:space="preserve">
+    <value>Le informazioni personali raccolte:</value>
+  </data>
+  <data name="Index_Privacy_PersonalInfoCollectedDescription" xml:space="preserve">
+    <value>Per poter accedere a determinati servizi specializzati e o per acquistare prodotti offerti sul Sito, potremmo richiedere di fornirci informazioni che identificano personalmente ("Informazioni personali"). Informazioni personali possono includere: (i) di contatto (quali il nome, mailing e indirizzi di posta elettronica); (ii) di dati demografici (come il tuo codice di avviamento postale, stato o indirizzo). Se si comunica con noi via e-mail, o forme di indagine completa on-line, le informazioni fornite possono essere raccolte come dati personali.</value>
+  </data>
+  <data name="Index_Privacy_PrivacyPolicyHeading" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="SocialBoard_Index_Privacy_SocialBoardtechPVTLtd" xml:space="preserve">
+    <value>Twinba Srl</value>
+  </data>
+  <data name="Index_Privacy_SocioBoardtechPVTLtdDescription" xml:space="preserve">
+    <value>("Noi", "noi" o "nostro") abbiamo creato queste Privacy Policy ("Privacy Policy") per garantire la fiducia dei nostri visitatori e clienti ("voi" o "vostro") e le relazioni con il nostro Sito Web (il "sito "), e per dimostrare il nostro impegno per le pratiche informative corrette e per proteggere la vostra privacy.</value>
+  </data>
+  <data name="Index_Privacy_TafficDataType" xml:space="preserve">
+    <value>I dati sul traffico raccolte:</value>
+  </data>
+  <data name="Index_Privacy_TafficDataTypeDescription" xml:space="preserve">
+    <value>Tracciamo automaticamente e Raccogliamo le seguenti informazioni quando visitate il nostro sito, compreso il vostro: (i) l'indirizzo IP; (ii) del server di dominio; (iii) il tipo di computer; e (iv) il tipo di browser web (collettivamente, "dati di traffico"). Dati sul traffico sono informazioni anonime che non identificano personalmente, ma è utile per migliorare la vostra esperienza sul sito e per monitorare l'utilizzo del sito. Possiamo anche utilizzare i "cookie" per personalizzare contenuti specifici per i tuoi interessi, per garantire che non si vede lo stesso contenuto promozionale ripetutamente e per memorizzare la password (se è necessario per il rilascio) in modo da non dover reinserire ogni volta che si visita il sito.</value>
+  </data>
+  <data name="Index_Privacy_TypesOfInfoCollected" xml:space="preserve">
+    <value>Tipi di informazioni raccolte:</value>
+  </data>
+  <data name="Index_Privacy_UpdatesandChangestoPrivacy" xml:space="preserve">
+    <value>Aggiornamenti e Modifiche alla Privacy Policy:</value>
+  </data>
+  <data name="Index_Privacy_UpdatesandChangestoPrivacyDescription" xml:space="preserve">
+    <value>Ci riserviamo il diritto, in qualsiasi momento e senza preavviso, di aggiungere, modificare, aggiornare o modificare la presente Privacy Policy, semplicemente inviando tale cambiamento, l'aggiornamento o la modifica sul sito. Qualsiasi modifica, aggiornamento o modifica sarà efficace immediatamente dopo la pubblicazione sul Sito</value>
+  </data>
+  <data name="Index_Privacy_UserChoice" xml:space="preserve">
+    <value>Scelta utente Per quanto riguarda la raccolta, l'uso e la distribuzione delle informazioni personali:</value>
+  </data>
+  <data name="Index_Privacy_UserChoiceDescription" xml:space="preserve">
+    <value>Si può scegliere di non fornirci alcuna informazione personale. In tal caso, è ancora possibile accedere e utilizzare gran parte del Sito; tuttavia non sarà in grado di accedere e di utilizzare parte del sito che richiedono informazioni personali.</value>
+  </data>
+  <data name="Index_Privacy_UsesOfInformation" xml:space="preserve">
+    <value>Usi delle informazioni raccolte:</value>
+  </data>
+  <data name="Index_Privacy_UsesOfInformationDescription" xml:space="preserve">
+    <value>Possiamo usare i dati di contatto per l'invio di informazioni sui nostri prodotti o servizi o materiale promozionale, o per contattarvi in caso di necessità. Possiamo usare i vostri dati demografici per personalizzare e adattare la vostra esperienza sul sito, la visualizzazione di contenuti che potrebbero interessarti secondo le vostre preferenze.</value>
+  </data>
+  <data name="Index_RegistrationMailPartial_ClickTheLinkBelowToActivate" xml:space="preserve">
+    <value>Cliccate sul link qui sotto per attivare l'account.</value>
+  </data>
+  <data name="Index_RegistrationMailPartial_CongratsRecievedRequest" xml:space="preserve">
+    <value>Congratulazioni! Abbiamo ricevuto la tua richiesta</value>
+  </data>
+  <data name="Index_RegistrationMailPartial_Hi" xml:space="preserve">
+    <value>Ciao</value>
+  </data>
+  <data name="Index_RegistrationMailPartial_KeepSocialBoarding" xml:space="preserve">
+    <value>Spero che tu abbia un grande momento in SocialBoard. Forza SocialBoard... :)</value>
+  </data>
+  <data name="Index_RegistrationMailPartial_Plan" xml:space="preserve">
+    <value>Piano</value>
+  </data>
+  <data name="SocialBoard_Index_RegistrationMailPartial_SocialBoardTeam" xml:space="preserve">
+    <value>SocialBoard Team</value>
+  </data>
+  <data name="Index_RegistrationMailPartial_WarmRegards" xml:space="preserve">
+    <value>Cordiali saluti,</value>
+  </data>
+  <data name="Index_RegistrationPartial_BasicFree" xml:space="preserve">
+    <value>Basic(Free)</value>
+  </data>
+  <data name="Index_RegistrationPartial_ClickToVerify" xml:space="preserve">
+    <value>Clicca per verificare</value>
+  </data>
+  <data name="Index_RegistrationPartial_CreateAccount" xml:space="preserve">
+    <value>Crea un Account</value>
+  </data>
+  <data name="Index_RegistrationPartial_CreateYourAccount" xml:space="preserve">
+    <value>Crea il tuo account</value>
+  </data>
+  <data name="Index_RegistrationPartial_Deluxe" xml:space="preserve">
+    <value>Deluxe</value>
+  </data>
+  <data name="Index_RegistrationPartial_Premium" xml:space="preserve">
+    <value>Premium</value>
+  </data>
+  <data name="Index_RegistrationPartial_Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="Index_RegistrationPartial_SelectAccountType" xml:space="preserve">
+    <value>Select Account Type</value>
+  </data>
+  <data name="Index_RegistrationPartial_SocioBasic" xml:space="preserve">
+    <value>SocialBasic</value>
+  </data>
+  <data name="Index_RegistrationPartial_SocioDeluxe" xml:space="preserve">
+    <value>SocialDeluxe</value>
+  </data>
+  <data name="Index_RegistrationPartial_SocioPremium" xml:space="preserve">
+    <value>SocialPremium</value>
+  </data>
+  <data name="Index_RegistrationPartial_SocioStandard" xml:space="preserve">
+    <value>SocialStandard</value>
+  </data>
+  <data name="Index_RegistrationPartial_Standard" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="Index_UserActivationPartial_CheckOrResendMail" xml:space="preserve">
+    <value>Prima attiva il tuo account.
+                     Per questo si prega di controllare la tua email.
+                     Oppure 
+                     Per richiedere un nuovo l'invio
+                     Clicca qui .... </value>
+  </data>
+  <data name="Index_UserActivationPartial_SendMail" xml:space="preserve">
+    <value>INVIARE MAIL</value>
+  </data>
+  <data name="Index_UserActivationPartial_UserInfo" xml:space="preserve">
+    <value>Info utente</value>
+  </data>
+  <data name="Messages_ArchivePartial_ArchivedMessages" xml:space="preserve">
+    <value>Messaggi Archiviati</value>
+  </data>
+  <data name="Messages_ArchivePartial_Close" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="Messages_ArchivePartial_Comment" xml:space="preserve">
+    <value>Commento</value>
+  </data>
+  <data name="Messages_ArchivePartial_LeaveAComment" xml:space="preserve">
+    <value>LASCIA UN COMMENTO</value>
+  </data>
+  <data name="Messages_MessagesLeftSideBarPartial_ArchiveMessage" xml:space="preserve">
+    <value>Archivio Message</value>
+  </data>
+  <data name="Messages_MessagesLeftSideBarPartial_MyTask" xml:space="preserve">
+    <value>My Task</value>
+  </data>
+  <data name="Messages_MessagesLeftSideBarPartial_SentMessage" xml:space="preserve">
+    <value>Messaggio inviato</value>
+  </data>
+  <data name="Messages_MessagesLeftSideBarPartial_SmartInbox" xml:space="preserve">
+    <value>Posta in arrivo intelligente</value>
+  </data>
+  <data name="Messages_MessagesMidPartialNew_Close" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="Messages_MessagesMidPartialNew_MyRecentPosts" xml:space="preserve">
+    <value>Messaggi recenti</value>
+  </data>
+  <data name="Messages_MessagesMidPartialNew_ProfileSummary" xml:space="preserve">
+    <value>Sommario Profilo </value>
+  </data>
+  <data name="Messages_MessagesRightPartial_PROFILES" xml:space="preserve">
+    <value>PROFILI</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Cancel" xml:space="preserve">
+    <value>Cancella</value>
+  </data>
+  <data name="Messages_sentmsgPartial_ChooseDataRange" xml:space="preserve">
+    <value>Scegli Intervallo date</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Clear" xml:space="preserve">
+    <value>Cancella</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Close" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Comment" xml:space="preserve">
+    <value>Commento</value>
+  </data>
+  <data name="Messages_sentmsgPartial_CSVDescription" xml:space="preserve">
+    <value>I messaggi verranno esportati in formato CSV - Valori separati da virgole. Questi dati possono essere aperti e analizzati in applicazioni come Microsoft Excel, Apple Numbers, LibreOffice o Google Docs.</value>
+  </data>
+  <data name="Messages_sentmsgPartial_CustomRange" xml:space="preserve">
+    <value>Intervallo personalizzato</value>
+  </data>
+  <data name="Messages_sentmsgPartial_ExportSentMessageData" xml:space="preserve">
+    <value>Esportazione dei messaggio inviato</value>
+  </data>
+  <data name="Messages_sentmsgPartial_ExportToCSV" xml:space="preserve">
+    <value>Esporta in CSV</value>
+  </data>
+  <data name="Messages_sentmsgPartial_From" xml:space="preserve">
+    <value>da</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Last30Days" xml:space="preserve">
+    <value>Ultimi 30 giorni</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Last7Days" xml:space="preserve">
+    <value>Ultimi 7 giorni</value>
+  </data>
+  <data name="Messages_sentmsgPartial_LastMonth" xml:space="preserve">
+    <value>Ultimo mese</value>
+  </data>
+  <data name="Messages_sentmsgPartial_LeaveAComment" xml:space="preserve">
+    <value>LASCIA UN COMMENTO</value>
+  </data>
+  <data name="Messages_sentmsgPartial_SentMessages" xml:space="preserve">
+    <value>Messaggi inviati</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Submit" xml:space="preserve">
+    <value>Invia</value>
+  </data>
+  <data name="Messages_sentmsgPartial_ThisMonth" xml:space="preserve">
+    <value>Questo mese</value>
+  </data>
+  <data name="Messages_sentmsgPartial_To" xml:space="preserve">
+    <value>a</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Today" xml:space="preserve">
+    <value>Oggi</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Yesterday" xml:space="preserve">
+    <value>Ieri</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_AssignTaskTo" xml:space="preserve">
+    <value>Assegna attività a</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_Close" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_LeaveAComment" xml:space="preserve">
+    <value>LASCIA UN COMMENTO</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_Like" xml:space="preserve">
+    <value>Like</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_Save" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_UnLike" xml:space="preserve">
+    <value>Unlike</value>
+  </data>
+  <data name="Messages_SocialProfileDetail_Connection" xml:space="preserve">
+    <value>Collegamento</value>
+  </data>
+  <data name="Messages_SocialProfileDetail_Follower" xml:space="preserve">
+    <value>Followers</value>
+  </data>
+  <data name="Messages_SocialProfileDetail_Following" xml:space="preserve">
+    <value>Following</value>
+  </data>
+  <data name="Messages_SocialProfileDetail_Freinds" xml:space="preserve">
+    <value>Amici</value>
+  </data>
+  <data name="Messages_SocialProfileDetail_GoToFullprofile" xml:space="preserve">
+    <value>Vai a profilo completo →</value>
+  </data>
+  <data name="Messages_TaskPartial_AreYouSureValidationStatus" xml:space="preserve">
+    <value>Sei sicuro di voler cambiare lo status?</value>
+  </data>
+  <data name="Messages_TaskPartial_AssignedBy" xml:space="preserve">
+    <value>assegnato da</value>
+  </data>
+  <data name="Messages_TaskPartial_Close" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="Messages_TaskPartial_ClosedBy" xml:space="preserve">
+    <value>Chiuso da</value>
+  </data>
+  <data name="Messages_TaskPartial_ClosedByYou" xml:space="preserve">
+    <value>Chiuso da Te</value>
+  </data>
+  <data name="Messages_TaskPartial_CompleteTask" xml:space="preserve">
+    <value>Task Complete</value>
+  </data>
+  <data name="Messages_TaskPartial_DeleteTask" xml:space="preserve">
+    <value>Elimina attività</value>
+  </data>
+  <data name="Messages_TaskPartial_EditStatus" xml:space="preserve">
+    <value>Modifica dello Status</value>
+  </data>
+  <data name="Messages_TaskPartial_ManageTasks" xml:space="preserve">
+    <value>Gestisci attività</value>
+  </data>
+  <data name="Messages_TaskPartial_MyTask" xml:space="preserve">
+    <value>Le mie Task</value>
+  </data>
+  <data name="Messages_TaskPartial_NoTaskInThisGroup" xml:space="preserve">
+    <value>Spiacenti, non hai alcuna attività in questo Gruppo.</value>
+  </data>
+  <data name="Messages_TaskPartial_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Messages_TaskPartial_PendingTask" xml:space="preserve">
+    <value>Task In attesa </value>
+  </data>
+  <data name="Messages_TaskPartial_Save" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="Messages_TaskPartial_TaskActivity" xml:space="preserve">
+    <value>ATTIVITÀ TASK </value>
+  </data>
+  <data name="Messages_TaskPartial_Tasks" xml:space="preserve">
+    <value>Tasks</value>
+  </data>
+  <data name="Messages_TaskPartial_TeamTask" xml:space="preserve">
+    <value>Team Task</value>
+  </data>
+  <data name="Message__MessagesRightSideBarPartial_Mentions" xml:space="preserve">
+    <value>Menzioni</value>
+  </data>
+  <data name="Message__MessagesRightSideBarPartial_MessageType" xml:space="preserve">
+    <value>Tipo di Messaggio</value>
+  </data>
+  <data name="Message__MessagesRightSideBarPartial_Profiles" xml:space="preserve">
+    <value>Profilo</value>
+  </data>
+  <data name="Message__MessagesRightSideBarPartial_UserFeeds" xml:space="preserve">
+    <value>Feed degli utenti</value>
+  </data>
+  <data name="Message__MessagesRightSideBarPartial_UserTweets" xml:space="preserve">
+    <value>Tweets degli utenti</value>
+  </data>
+  <data name="Publishing_DraftPartial_Delete" xml:space="preserve">
+    <value>Cancella</value>
+  </data>
+  <data name="Publishing_DraftPartial_Edit" xml:space="preserve">
+    <value>Modifica</value>
+  </data>
+  <data name="Publishing_DraftPartial_Message" xml:space="preserve">
+    <value>Messaggio</value>
+  </data>
+  <data name="Publishing_DraftPartial_Schedule" xml:space="preserve">
+    <value>Programma</value>
+  </data>
+  <data name="Publishing_DraftPartial_User" xml:space="preserve">
+    <value>Utente</value>
+  </data>
+  <data name="Publishing_Draft_Close" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="Publishing_Draft_DraftMessages" xml:space="preserve">
+    <value>Bozze</value>
+  </data>
+  <data name="Publishing_Draft_DraftTable" xml:space="preserve">
+    <value>Tabella Bozze</value>
+  </data>
+  <data name="Publishing_Draft_EDITDRAFTMESSAGE" xml:space="preserve">
+    <value>EDITA BOZZA MESSAGGIO</value>
+  </data>
+  <data name="Publishing_Draft_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Publishing_Draft_Save" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="Publishing_Draft_SignIn" xml:space="preserve">
+    <value>Registrati</value>
+  </data>
+  <data name="Publishing_Draft_YouWantToDeleteThisDraft" xml:space="preserve">
+    <value>Sei sicuro di voler eliminare questa Bozza del Messaggio?</value>
+  </data>
+  <data name="Publishing_Index_SaveToDraft" xml:space="preserve">
+    <value>Salva in Bozze</value>
+  </data>
+  <data name="Publishing_Index_Schedule" xml:space="preserve">
+    <value>Programma</value>
+  </data>
+  <data name="Publishing_Index_ScheduleMessage" xml:space="preserve">
+    <value>Programma Messaggi</value>
+  </data>
+  <data name="Publishing_Index_SelectProfile" xml:space="preserve">
+    <value>Selezionare Profilo</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_Delete" xml:space="preserve">
+    <value>Cancella</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_Edit" xml:space="preserve">
+    <value>Modifica</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_Message" xml:space="preserve">
+    <value>Messaggio</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_Nework" xml:space="preserve">
+    <value>Network</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_SentFrom" xml:space="preserve">
+    <value>Inviato da</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Publishing_SocioQueue_Close" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="Publishing_SocioQueue_EditMessage" xml:space="preserve">
+    <value>EDITA MESSAGGIO</value>
+  </data>
+  <data name="Publishing_SocioQueue_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Publishing_SocioQueue_QueuedMessage" xml:space="preserve">
+    <value>Messaggi in coda</value>
+  </data>
+  <data name="Publishing_SocioQueue_Save" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="Publishing_SocioQueue_SocioQueue" xml:space="preserve">
+    <value>Coda Social </value>
+  </data>
+  <data name="Publishing_SocioQueue_SureDeleteMessage" xml:space="preserve">
+    <value>Sei sicuro di voler eliminare questo messaggio?</value>
+  </data>
+  <data name="Report_FbPageReport_Comment" xml:space="preserve">
+    <value>Commento</value>
+  </data>
+  <data name="Report_FbPageReport_ExportToExcel" xml:space="preserve">
+    <value>Esporta in Excel</value>
+  </data>
+  <data name="Report_FbPageReport_FacebookPagePosts" xml:space="preserve">
+    <value>Post Pagina Facebook</value>
+  </data>
+  <data name="Report_FbPageReport_FbPageReports" xml:space="preserve">
+    <value>Reports Pagine FB</value>
+  </data>
+  <data name="Report_FbPageReport_InterReport" xml:space="preserve">
+    <value>REPORT TRA</value>
+  </data>
+  <data name="Report_FbPageReport_Like" xml:space="preserve">
+    <value>Mi piace</value>
+  </data>
+  <data name="Report_FbPageReport_Post" xml:space="preserve">
+    <value>Post</value>
+  </data>
+  <data name="Report_FbPageReport_PostDetails" xml:space="preserve">
+    <value>Dettagli Post</value>
+  </data>
+  <data name="Report_FbPageReport_Published" xml:space="preserve">
+    <value>Pubblicato</value>
+  </data>
+  <data name="Report_FbPageReport_Share" xml:space="preserve">
+    <value>Condividi</value>
+  </data>
+  <data name="Report_FbPageReport_type" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="Report_FbPostDetails_Comments" xml:space="preserve">
+    <value>Commenti</value>
+  </data>
+  <data name="Report_FbPostDetails_Like" xml:space="preserve">
+    <value>Mi piace</value>
+  </data>
+  <data name="Report_FbPostDetails_Likes" xml:space="preserve">
+    <value>Mi piace</value>
+  </data>
+  <data name="Report_FbPostDetails_Shares" xml:space="preserve">
+    <value>Condivisioni</value>
+  </data>
+  <data name="Report_GroupStatPartial_EngagementReport" xml:space="preserve">
+    <value>ENGAGEMENT REPORT</value>
+  </data>
+  <data name="Report_GroupStatPartial_GeneralStatsInterGroup" xml:space="preserve">
+    <value>Statistiche generali in tutto il vostro gruppo Interno</value>
+  </data>
+  <data name="Report_GroupStatPartial_GroupReports" xml:space="preserve">
+    <value>Reports Gruppi </value>
+  </data>
+  <data name="Report_GroupStatPartial_GroupStats" xml:space="preserve">
+    <value>Statistiche gruppo</value>
+  </data>
+  <data name="Report_GroupStatPartial_Impressions" xml:space="preserve">
+    <value>IMPRESSIONI</value>
+  </data>
+  <data name="Report_GroupStatPartial_Incomingmessages" xml:space="preserve">
+    <value>Messaggi in arrivo</value>
+  </data>
+  <data name="Report_GroupStatPartial_Interactions" xml:space="preserve">
+    <value>INTERAZIONI</value>
+  </data>
+  <data name="Report_GroupStatPartial_Mentioned" xml:space="preserve">
+    <value>Menzionato</value>
+  </data>
+  <data name="Report_GroupStatPartial_MetricsDescription" xml:space="preserve">
+    <value>Queste metriche sono basate su risposte inviate dai profili all'interno del gruppo ''</value>
+  </data>
+  <data name="Report_GroupStatPartial_NewFacebookFan" xml:space="preserve">
+    <value>Nuovi Fan di Facebook</value>
+  </data>
+  <data name="Report_GroupStatPartial_NewFollowerTimePeriod" xml:space="preserve">
+    <value>Nuovi Followers  in questo periodo di tempo.</value>
+  </data>
+  <data name="Report_GroupStatPartial_NewTwitterFollower" xml:space="preserve">
+    <value>Nuovi Followers di Twitter</value>
+  </data>
+  <data name="Report_GroupStatPartial_PhotoLink" xml:space="preserve">
+    <value>Collegamento Foto</value>
+  </data>
+  <data name="Report_GroupStatPartial_PlainText" xml:space="preserve">
+    <value>Testo normale</value>
+  </data>
+  <data name="Report_GroupStatPartial_ProfilesByUser" xml:space="preserve">
+    <value>PROFILI PER UTENTI</value>
+  </data>
+  <data name="Report_GroupStatPartial_ReTweets" xml:space="preserve">
+    <value>Retweets</value>
+  </data>
+  <data name="Report_GroupStatPartial_SentMessages" xml:space="preserve">
+    <value>Messaggio inviato</value>
+  </data>
+  <data name="Report_GroupStatPartial_Statsfor2Twitteraccount" xml:space="preserve">
+    <value>Statistiche per 2 account Twitter del Inter gruppo</value>
+  </data>
+  <data name="Report_GroupStatPartial_TwitterStats" xml:space="preserve">
+    <value>STATISTICHE TWITTER</value>
+  </data>
+  <data name="Report_Index_Close" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="Report_Index_Postdetails" xml:space="preserve">
+    <value>Dettagli Post</value>
+  </data>
+  <data name="Report_Index_SaveChanges" xml:space="preserve">
+    <value>Salva modifiche</value>
+  </data>
+  <data name="Report_ReportMenuPartial_AssignDate" xml:space="preserve">
+    <value>Data assegnazione</value>
+  </data>
+  <data name="Report_ReportMenuPartial_AssignTaskTo" xml:space="preserve">
+    <value>Task assegnata a</value>
+  </data>
+  <data name="Report_ReportMenuPartial_CompeteDate" xml:space="preserve">
+    <value>Data di completamento</value>
+  </data>
+  <data name="Report_ReportMenuPartial_FacebookReports" xml:space="preserve">
+    <value>Report Facebook</value>
+  </data>
+  <data name="Report_ReportMenuPartial_From" xml:space="preserve">
+    <value>da</value>
+  </data>
+  <data name="Report_ReportMenuPartial_InterReport" xml:space="preserve">
+    <value>REPPORTI TRA</value>
+  </data>
+  <data name="Report_ReportMenuPartial_NoDataAvailable" xml:space="preserve">
+    <value>Non sono disponibili dati ..</value>
+  </data>
+  <data name="Report_ReportMenuPartial_Reports" xml:space="preserve">
+    <value>Rapporti</value>
+  </data>
+  <data name="Report_ReportMenuPartial_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Report_ReportMenuPartial_TaskMessage" xml:space="preserve">
+    <value>Messaggi Task</value>
+  </data>
+  <data name="Report_ReportMenuPartial_TaskOwner" xml:space="preserve">
+    <value>Proprietario Task</value>
+  </data>
+  <data name="Report_ReportMenuPartial_Tasks" xml:space="preserve">
+    <value>TASKS</value>
+  </data>
+  <data name="Report_ReportMenuPartial_TwitterReports" xml:space="preserve">
+    <value>Report Twitter</value>
+  </data>
+  <data name="Report_TeamReportPartial_TeamReports" xml:space="preserve">
+    <value>Report Team</value>
+  </data>
+  <data name="Report_TwitterReportPartial_DirectMessageRecieved" xml:space="preserve">
+    <value>Messaggio Diretti (Ricevuti)</value>
+  </data>
+  <data name="Report_TwitterReportPartial_DirectMessageSend" xml:space="preserve">
+    <value>Messaggio Diretti (Inviati)</value>
+  </data>
+  <data name="Report_TwitterReportPartial_FollowerDemographic" xml:space="preserve">
+    <value>DEMOGRAFIA FOLLOWER</value>
+  </data>
+  <data name="Report_TwitterReportPartial_KeyIndicators" xml:space="preserve">
+    <value>INDICATORI CHIAVE</value>
+  </data>
+  <data name="Report_TwitterReportPartial_MeasuresConversingAudiences" xml:space="preserve">
+    <value>Misurare quanto si sta conversando con il pubblico.</value>
+  </data>
+  <data name="Report_TwitterReportPartial_Mentioned" xml:space="preserve">
+    <value>Menzioni</value>
+  </data>
+  <data name="Report_TwitterReportPartial_MessageRecieved" xml:space="preserve">
+    <value>Messaggio ricevuto</value>
+  </data>
+  <data name="Report_TwitterReportPartial_MessageSent" xml:space="preserve">
+    <value>Messaggio inviato</value>
+  </data>
+  <data name="Report_TwitterReportPartial_NewFollower" xml:space="preserve">
+    <value>Nuovo Follower</value>
+  </data>
+  <data name="Report_TwitterReportPartial_Retweets" xml:space="preserve">
+    <value>Retweets</value>
+  </data>
+  <data name="Report_TwitterReportPartial_ShapeMessagingCampaigns" xml:space="preserve">
+    <value>Conosci di più su il pubblico per modellare i tuoi messaggi &amp;amp; campagne.</value>
+  </data>
+  <data name="Report_TwitterReportPartial_TwitterAccountReport" xml:space="preserve">
+    <value>REPORT ACCOUNT TWITTER</value>
+  </data>
+  <data name="Report_TwitterReportPartial_TwitterReports" xml:space="preserve">
+    <value>Reports Twitter </value>
+  </data>
+  <data name="Report_TwitterReportPartial_YouFollowed" xml:space="preserve">
+    <value>Hai Seguito</value>
+  </data>
+  <data name="Shared_Error_AVGPost" xml:space="preserve">
+    <value>Avg. posta</value>
+  </data>
+  <data name="Shared_Error_AvgTweets" xml:space="preserve">
+    <value>Avg. Tweet</value>
+  </data>
+  <data name="Shared_Error_Connections" xml:space="preserve">
+    <value>Connessioni</value>
+  </data>
+  <data name="Shared_Error_Follower" xml:space="preserve">
+    <value>Followers</value>
+  </data>
+  <data name="Shared_Error_Followers" xml:space="preserve">
+    <value>Followers</value>
+  </data>
+  <data name="Shared_Error_Following" xml:space="preserve">
+    <value>Following</value>
+  </data>
+  <data name="Shared_Error_Friends" xml:space="preserve">
+    <value>Amici</value>
+  </data>
+  <data name="Shared_Error_Likes" xml:space="preserve">
+    <value>likes</value>
+  </data>
+  <data name="Shared_Error_MyRecentProfile" xml:space="preserve">
+    <value>Il mio profilo recente</value>
+  </data>
+  <data name="Shared_Error_Perday" xml:space="preserve">
+    <value>per Giorno</value>
+  </data>
+  <data name="Shared_Error_Photos" xml:space="preserve">
+    <value>foto</value>
+  </data>
+  <data name="Shared_Error_Post" xml:space="preserve">
+    <value>post</value>
+  </data>
+  <data name="Shared_Error_RecentMessages" xml:space="preserve">
+    <value>messaggio recente</value>
+  </data>
+  <data name="Shared_Error_SnapShotsConnectedAccounts" xml:space="preserve">
+    <value>Istantanee degli account collegati</value>
+  </data>
+  <data name="Shared_Error_TotalSubscriber" xml:space="preserve">
+    <value>Totale Iscritti</value>
+  </data>
+  <data name="Shared_Error_TotalVideo" xml:space="preserve">
+    <value>Totale Video</value>
+  </data>
+  <data name="Shared_Error_TotalView" xml:space="preserve">
+    <value>Totale Visualizzazioni</value>
+  </data>
+  <data name="Shared_LoadGroupPartial_Groups" xml:space="preserve">
+    <value>Gruppi</value>
+  </data>
+  <data name="Shared_Site_AddFacebookClose" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="Shared_Site_AddFacebookGroup" xml:space="preserve">
+    <value>Aggiungi Gruppo Facebook</value>
+  </data>
+  <data name="Shared_Site_AddFacebookPage" xml:space="preserve">
+    <value>Aggiungi Pagina Fan Facebook</value>
+  </data>
+  <data name="Shared_Site_AddFacebookProfile" xml:space="preserve">
+    <value>Aggiungi Profilo Facebook</value>
+  </data>
+  <data name="Shared_Site_AddFacebookSubmit" xml:space="preserve">
+    <value>Invia</value>
+  </data>
+  <data name="Shared_Site_AddLinkedinClose" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="Shared_Site_AddLinkedinCompanyPage" xml:space="preserve">
+    <value>Aggiungi Pagina aziendale Linkedin</value>
+  </data>
+  <data name="Shared_Site_AddLinkedinProfile" xml:space="preserve">
+    <value>Aggiungi Profilo Linkedin</value>
+  </data>
+  <data name="Shared_Site_Affiliates" xml:space="preserve">
+    <value>Affiliati</value>
+  </data>
+  <data name="Shared_Site_ArchivedMessages" xml:space="preserve">
+    <value>Messaggi Archiviati</value>
+  </data>
+  <data name="Shared_Site_BusinessSettings" xml:space="preserve">
+    <value>Impostazioni Business</value>
+  </data>
+  <data name="Shared_Site_ComposeMessagesClose" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="Shared_Site_ComposeMessagesDropBox" xml:space="preserve">
+    <value>Dropbox</value>
+  </data>
+  <data name="Shared_Site_ComposeMessagesProfile" xml:space="preserve">
+    <value>Profilo</value>
+  </data>
+  <data name="Shared_Site_ComposeMessagesSend" xml:space="preserve">
+    <value>Invia</value>
+  </data>
+  <data name="Shared_Site_ComposeMessagesURLShrink" xml:space="preserve">
+    <value>Accorciatore URL</value>
+  </data>
+  <data name="Shared_Site_DashBoard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Shared_Site_Discovery" xml:space="preserve">
+    <value>Discovery</value>
+  </data>
+  <data name="Shared_Site_Drafts" xml:space="preserve">
+    <value>Bozze</value>
+  </data>
+  <data name="Shared_Site_Ewallet" xml:space="preserve">
+    <value>E-Wallet</value>
+  </data>
+  <data name="Shared_Site_Feeds" xml:space="preserve">
+    <value>Feeds</value>
+  </data>
+  <data name="Shared_Site_GetFacebookPageAnalytics" xml:space="preserve">
+    <value>Ottieni Analisi delle Pagina Fan Facebook</value>
+  </data>
+  <data name="SocialBoard_Shared_Site_InvideFreindsDescription" xml:space="preserve">
+    <value>SocialBoard offre la possibilità di creare gruppi in virtù dei quali gli utenti possono raggiungere gli uni agli altri con un meccanismo di collaborazione altamente efficiente. I gruppi possono servire come una piattaforma per condividere le informazioni con gli altri membri del Team e favoriscono l'aumento della lavorabilità e l'efficienza.</value>
+  </data>
+  <data name="Shared_Site_InviteFreinds" xml:space="preserve">
+    <value>Invita un amico a</value>
+  </data>
+  <data name="Shared_Site_InviteFreindsClose" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="Shared_Site_InviteFreindsEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Shared_Site_InviteFreindsFirstName" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="Shared_Site_InviteFreindsLastName" xml:space="preserve">
+    <value>Cognome</value>
+  </data>
+  <data name="Shared_Site_InviteFreindsSubmit" xml:space="preserve">
+    <value>Invio</value>
+  </data>
+  <data name="Shared_Site_LogOut" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="Shared_Site_Messages" xml:space="preserve">
+    <value>Messaggi</value>
+  </data>
+  <data name="Shared_Site_MyStuff" xml:space="preserve">
+    <value>Il mio Staff</value>
+  </data>
+  <data name="Shared_Site_MyTasks" xml:space="preserve">
+    <value>Le mie Tasks</value>
+  </data>
+  <data name="Shared_Site_ProfileSummary" xml:space="preserve">
+    <value>Sommario Profilo </value>
+  </data>
+  <data name="Shared_Site_ProfileSummaryClose" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="Shared_Site_Publishing" xml:space="preserve">
+    <value>Pubblicazione</value>
+  </data>
+  <data name="Shared_Site_Reports" xml:space="preserve">
+    <value>Reports</value>
+  </data>
+  <data name="Shared_Site_SearchContact" xml:space="preserve">
+    <value>Ricerca Contato</value>
+  </data>
+  <data name="Shared_Site_SearchContactClose" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="Shared_Site_SecheduleMessages" xml:space="preserve">
+    <value>Pianificazione Messaggi</value>
+  </data>
+  <data name="Shared_Site_SentMessages" xml:space="preserve">
+    <value>Messaggi inviati</value>
+  </data>
+  <data name="Shared_Site_Settings" xml:space="preserve">
+    <value>Impostazioni</value>
+  </data>
+  <data name="Shared_Site_SmartInbox" xml:space="preserve">
+    <value>Posta in arrivo</value>
+  </data>
+  <data name="Shared_Site_SocialGroups" xml:space="preserve">
+    <value>Gruppi Sociali</value>
+  </data>
+  <data name="Shared_Site_SocialTickets" xml:space="preserve">
+    <value>Tickets Sociali</value>
+  </data>
+  <data name="Shared_Site_SocioQueue" xml:space="preserve">
+    <value>Code Sociali</value>
+  </data>
+  <data name="Shared_Site_UsersandGroups" xml:space="preserve">
+    <value>Utenti e Gruppi</value>
+  </data>
+  <data name="Shared_Socialsuite_Agency" xml:space="preserve">
+    <value>Agenzia</value>
+  </data>
+  <data name="Shared_Socialsuite_Blogs" xml:space="preserve">
+    <value>Blog</value>
+  </data>
+  <data name="Shared_Socialsuite_Cases" xml:space="preserve">
+    <value>Casi di Studio</value>
+  </data>
+  <data name="Shared_Socialsuite_Close" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="Shared_Socialsuite_Community" xml:space="preserve">
+    <value>Community</value>
+  </data>
+  <data name="Shared_Socialsuite_Company" xml:space="preserve">
+    <value>Azienda</value>
+  </data>
+  <data name="Shared_Socialsuite_Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="Shared_Socialsuite_EnterEmailForVideo" xml:space="preserve">
+    <value>Inserisci il tuo indirizzo email e ti invieremo un'email video impressionante</value>
+  </data>
+  <data name="Shared_Socialsuite_Enterprise" xml:space="preserve">
+    <value>Impresa</value>
+  </data>
+  <data name="Shared_Socialsuite_Features" xml:space="preserve">
+    <value>Caratteristiche</value>
+  </data>
+  <data name="Shared_Socialsuite_ForgotPassword" xml:space="preserve">
+    <value>Hai dimenticato la Password?</value>
+  </data>
+  <data name="Shared_Socialsuite_GetInTouch" xml:space="preserve">
+    <value>RIMANI IN CONTATTO CON NOI</value>
+  </data>
+  <data name="Shared_Socialsuite_HelpYourCustomer" xml:space="preserve">
+    <value>Aiuta i Tuoi Clienti</value>
+  </data>
+  <data name="Shared_Socialsuite_Insights" xml:space="preserve">
+    <value>Insights</value>
+  </data>
+  <data name="Shared_Socialsuite_LoginInsidePage" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Shared_Socialsuite_LoginMainPage" xml:space="preserve">
+    <value>LOGIN</value>
+  </data>
+  <data name="Shared_Socialsuite_MakeADecision" xml:space="preserve">
+    <value>Prendi una decisione</value>
+  </data>
+  <data name="Shared_Socialsuite_NotYetRegistered" xml:space="preserve">
+    <value>Non sei ancora iscritto?</value>
+  </data>
+  <data name="Shared_Socialsuite_Pricing" xml:space="preserve">
+    <value>Prezzi</value>
+  </data>
+  <data name="Shared_Socialsuite_RegisterNow" xml:space="preserve">
+    <value>Registrati adesso</value>
+  </data>
+  <data name="Shared_Socialsuite_RegisterWithSocialaccounts" xml:space="preserve">
+    <value>È inoltre possibile registrare i tuoi account social</value>
+  </data>
+  <data name="Shared_Socialsuite_RememberMe" xml:space="preserve">
+    <value>Ricordati di me</value>
+  </data>
+  <data name="Shared_Socialsuite_Restore" xml:space="preserve">
+    <value>Clicca qui per ripristinare</value>
+  </data>
+  <data name="Shared_Socialsuite_SendVideoInEmail" xml:space="preserve">
+    <value>Invia Video in Email</value>
+  </data>
+  <data name="Shared_Socialsuite_SignIn" xml:space="preserve">
+    <value>Registrati</value>
+  </data>
+  <data name="SocialBoard_Shared_Socialsuite_Title" xml:space="preserve">
+    <value>SocialBoard - Generare più contatti su Social Media | Social CRM | Social Media CMS</value>
+  </data>
+  <data name="Shared_Socialsuite_Training" xml:space="preserve">
+    <value>Training</value>
+  </data>
+  <data name="Shared_Socialsuite_TryitforFree" xml:space="preserve">
+    <value>Oppure prova Gratis!!</value>
+  </data>
+  <data name="Shared_Socialsuite_Versions" xml:space="preserve">
+    <value>Versioni</value>
+  </data>
+  <data name="Shared_Socialsuite_Wiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
+  <data name="UserGroup_AcceptedUserPartial_AcceptedTeamMember" xml:space="preserve">
+    <value>Membri del Team accettati</value>
+  </data>
+  <data name="UserGroup_PendingUserPartial_InviteANewMember" xml:space="preserve">
+    <value>Invita un nuovo membro del Team</value>
+  </data>
+  <data name="UserGroup_PendingUserPartial_PendingTeamMembers" xml:space="preserve">
+    <value>Membri del Team in attesa</value>
+  </data>
+  <data name="UserGroup_ProfilesConnectedToGroupPartial_ProfilerLinkedTo" xml:space="preserve">
+    <value>Profilo collegato a</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_Close" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_CreateGroup" xml:space="preserve">
+    <value>Crea un Gruppo</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_GroupName" xml:space="preserve">
+    <value>Nome Gruppo</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_Groups" xml:space="preserve">
+    <value>Gruppi</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_GroupsDescription" xml:space="preserve">
+    <value>I gruppi vengono utilizzati per classificare i profili sociali insieme per aiutare a gestire e segnalare le vostre attività di social media in modo efficace. Ulteriori informazioni sui gruppi</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_GroupsDescription2" xml:space="preserve">
+    <value>I gruppi consentono di organizzare i vostri profili sociali e i membri del team. Dando un nome al gruppo si può iniziare a collegare i profili sociali e aggiungere i membri del team ad esso. L'account di Twitter o Facebook sono necessari per creare un gruppo.</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_Submit" xml:space="preserve">
+    <value>Invia</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_UserAndGroup" xml:space="preserve">
+    <value>Utente e Gruppo</value>
+  </data>
+  <data name="UserGroup_UserProfilePartial_ProfilesAvailable" xml:space="preserve">
+    <value>Profili disponibili per il collegamento</value>
+  </data>
+  <data name="SocialBoard_Versions_Agency_AgencysocioboardOffering" xml:space="preserve">
+    <value>Aumentare e nutrire la vostra clientela con le offerte SocialBoard Withelabel unico per le agenzie. Queste versioni hanno una grande interfaccia che chiunque può capire, potenti strumenti di coinvolgimento e di analisi personalizzabili per monitorare, analizzare e comunicare attraverso innumerevoli profili sociali. Cosa c'è di più, si può caratterizzare la piattaforma con il proprio logo e il nome di dominio, in modo che le clienti considerano il prodotto come Vostro.
+Le Agenzie possono utilizzare commercialmente la versione Withelabel di SocialBoard. Il suo codice è completamente open source e personalizzabile secondo i vostri bisogni delle agenzie. </value>
+  </data>
+  <data name="Versions_Agency_AgencyWhiteLabel" xml:space="preserve">
+    <value>La versione Withelabel è adatto a piccole e medie imprese (PMI), che hanno bisogno di supporto, aggiornamenti e applicazioni correlati per essere in grado di utilizzare in modo efficace SocialBoard e continuare a costruire la loro clientela e i loro marchi.</value>
+  </data>
+  <data name="Versions_Agency_AgencyWhiteLabel3Version" xml:space="preserve">
+    <value>La versione Withelabel Agenzia è disponibile in tre diverse varianti</value>
+  </data>
+  <data name="Versions_Agency_AgencyWhiteLabelversion1" xml:space="preserve">
+    <value>Agenzia Lite</value>
+  </data>
+  <data name="Versions_Agency_AgencyWhiteLabelversion1DESC" xml:space="preserve">
+    <value>Agenzia Lite è più adatto per piccole agenzie. Si potrebbe mettere il vostro logo e distribuire il prodotto. Click</value>
+  </data>
+  <data name="Versions_Agency_AgencyWhiteLabelversion2" xml:space="preserve">
+    <value>Agenzia Pro</value>
+  </data>
+  <data name="Versions_Agency_AgencyWhiteLabelversion2DESC" xml:space="preserve">
+    <value>Agenzia Pro consente avere una piattaforma con il tuo logo e con un tema personalizzato. Fa si che i vostri clienti si sentano a casa. Click</value>
+  </data>
+  <data name="Versions_Agency_AgencyWhiteLabelversion3" xml:space="preserve">
+    <value>Agenzia Premium</value>
+  </data>
+  <data name="Versions_Agency_AgencyWhiteLabelversion3DESC" xml:space="preserve">
+    <value>Agenzia Premium offre la piena personalizzazione con il vostro logo, il tema e anche le applicazioni iOS e Android. Questa è una versione a pieno titolo adatto per il ridimensionamento agenzie. Fai Click qui</value>
+  </data>
+  <data name="Versions_Agency_AreyouanAgency" xml:space="preserve">
+    <value>Sei un'agenzia?</value>
+  </data>
+  <data name="Versions_Agency_Benifit1" xml:space="preserve">
+    <value>SocialBoard è personalizzabile secondo le vostre esigenze</value>
+  </data>
+  <data name="Versions_Agency_Benifit2" xml:space="preserve">
+    <value>Gestione flessibile della Clientela-</value>
+  </data>
+  <data name="Versions_Agency_Benifit3" xml:space="preserve">
+    <value>Prezzo Competitivo</value>
+  </data>
+  <data name="Versions_Agency_Benifit4" xml:space="preserve">
+    <value>Supporto di Classe Mondiale</value>
+  </data>
+  <data name="Versions_Agency_Benifit5" xml:space="preserve">
+    <value>Viene fornito con le Applicazioni mobile Android e IOS</value>
+  </data>
+  <data name="Versions_Agency_Benifits" xml:space="preserve">
+    <value>Vantaggi:</value>
+  </data>
+  <data name="Versions_Agency_BtnResetInterested" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="Versions_Agency_BtnSubmitInterested" xml:space="preserve">
+    <value>Invia</value>
+  </data>
+  <data name="Versions_Agency_BuyAgencyLite" xml:space="preserve">
+    <value>Acquista Agenzia Lite a 499 dollari.</value>
+  </data>
+  <data name="Versions_Agency_BuyAgencyPremium" xml:space="preserve">
+    <value>Acquista Agenzia Premium a  2999 dollari.</value>
+  </data>
+  <data name="Versions_Agency_BuyAgencyPro" xml:space="preserve">
+    <value>Acquista Agenzia Pro a 999 dollari.</value>
+  </data>
+  <data name="Versions_Agency_Click" xml:space="preserve">
+    <value>qui</value>
+  </data>
+  <data name="Versions_Agency_Interested" xml:space="preserve">
+    <value>Interessato? Uno dei nostri account manager si metterà in contatto con te ...</value>
+  </data>
+  <data name="Versions_Agency_LeftHeader" xml:space="preserve">
+    <value>Ora puoi chiamare la Tua Social Media Dashboard.</value>
+  </data>
+  <data name="Versions_EnterPrise_Description" xml:space="preserve">
+    <value>L'Edizione Enterpriese è la versione più adatta alle aziende o gruppi che stanno cercando una Dashboard Social Media versatile, in grado di servire bene le loro nicchie di mercato. Ogni istituzione con la crescente presenza sui social media dovrebbe utilizzare versione Enterprise di SocialBoard dedicata. Il grado di indipendenza e di esperienza che si offre agli utenti finali è impareggiabile e permette ai clienti di concentrarsi sul proprio business invece di vagare nel labirinto della gestione dei social dei media. La versione Enterprise offre supporto, aggiornamenti e applicazioni per i profili illimitati e permette di gestire tutto ciò direttamente dal proprio ufficio. la versione Enterpriese inizia da 9.999 dollari per ogni posizione e ha un prezzo a seconda delle esigenze personalizzate le vostre imprese.
+Interessati ad utilizzare la versione SocialBoard Enterprise per la tua azienda adesso? Inserisci la tua richiesta qui. </value>
+  </data>
+  <data name="Versions_EnterPrise_HEADING" xml:space="preserve">
+    <value>impresa</value>
+  </data>
+  <data name="Versions_EnterPrise_SecurityCode" xml:space="preserve">
+    <value>Codice Di Sicurezza</value>
+  </data>
+  <data name="Index_Contact_Contact" xml:space="preserve">
+    <value>contatto</value>
+  </data>
+  <data name="Index_Contact_EnterEmail" xml:space="preserve">
+    <value>Inserisci la tua email qui sotto e vedere di persona.</value>
+  </data>
+  <data name="Index_Contact_Reset" xml:space="preserve">
+    <value>Pulsante di ripristino</value>
+  </data>
+  <data name="SocialBoard_Index_Contact_SendYourSelfAnAwesomeVideo" xml:space="preserve">
+    <value>Invia anche tu una animatore di video Socialboard impressionante</value>
+  </data>
+  <data name="Index_Contact_SocioBoardStoryVideo" xml:space="preserve">
+    <value>Socialboard Story video</value>
+  </data>
+  <data name="Index_Contact_Submit" xml:space="preserve">
+    <value>pulsante Invia</value>
+  </data>
+  <data name="SocialBoard_Index_Contact_UnderstandSocioboardBetter" xml:space="preserve">
+    <value>Capire Socialboard meglio!</value>
+  </data>
+  <data name="Index_Contact_WeCanHelpYou" xml:space="preserve">
+    <value>Possiamo aiutarvi</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_ChangePassword" xml:space="preserve">
+    <value>Cambiare La Password</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Email" xml:space="preserve">
+    <value>Indirizzo e-mail</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_FirstName" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_LastName" xml:space="preserve">
+    <value>Cognome</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Password" xml:space="preserve">
+    <value>PassWord</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_ReEnterPassword" xml:space="preserve">
+    <value>Immettere nuovamente la password</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_ResetEmail" xml:space="preserve">
+    <value>Ripristino Email</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_SaveChanges" xml:space="preserve">
+    <value>Save Modifiche</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_SecurityReEnterPassword" xml:space="preserve">
+    <value>Per la vostra sicurezza, è necessario inserire nuovamente la password per continuare.</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Settings" xml:space="preserve">
+    <value>Impostazioni</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Submit" xml:space="preserve">
+    <value>Presentare</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_TeamMemberAvatar" xml:space="preserve">
+    <value>I membri del team vedranno l'avatar è stata impostata.</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_TimeZone" xml:space="preserve">
+    <value>Time Zone</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_UpgradeMonthly" xml:space="preserve">
+    <value>Aggiornamento a piano mensile</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_UpgradeYearly" xml:space="preserve">
+    <value>Aggiornamento a piano annuale</value>
+  </data>
+  <data name="Shared_AdminSite_Action" xml:space="preserve">
+    <value>azione</value>
+  </data>
+  <data name="Shared_AdminSite_AddAdvertisement" xml:space="preserve">
+    <value>Aggiungi Pubblicità</value>
+  </data>
+  <data name="Shared_AdminSite_AddCoupon" xml:space="preserve">
+    <value>Aggiungi Coupons</value>
+  </data>
+  <data name="Shared_AdminSite_AddNews" xml:space="preserve">
+    <value>Aggiungi Notizie</value>
+  </data>
+  <data name="Shared_AdminSite_AddNewsLetter" xml:space="preserve">
+    <value>Aggiungi  notiziario</value>
+  </data>
+  <data name="Shared_AdminSite_Advertisements" xml:space="preserve">
+    <value>Pubblicità</value>
+  </data>
+  <data name="Shared_AdminSite_Close" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="Shared_AdminSite_ContactSearch" xml:space="preserve">
+    <value>Contatto Ricerca</value>
+  </data>
+  <data name="Shared_AdminSite_Coupon" xml:space="preserve">
+    <value>Coupon</value>
+  </data>
+  <data name="Shared_AdminSite_DashBoard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Shared_AdminSite_DeleteUsers" xml:space="preserve">
+    <value>Utenti eliminati</value>
+  </data>
+  <data name="Shared_AdminSite_IntervalTime" xml:space="preserve">
+    <value>Intervallo di tempo</value>
+  </data>
+  <data name="Shared_AdminSite_LogOut" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="Shared_AdminSite_ManageAdvertisement" xml:space="preserve">
+    <value>Gestisci Pubblicità</value>
+  </data>
+  <data name="Shared_AdminSite_ManageCoupon" xml:space="preserve">
+    <value>Gestisci Coupons</value>
+  </data>
+  <data name="Shared_AdminSite_ManageNews" xml:space="preserve">
+    <value>Gestisci Notizie</value>
+  </data>
+  <data name="Shared_AdminSite_ManagePackages" xml:space="preserve">
+    <value>Gestisci Package</value>
+  </data>
+  <data name="Shared_AdminSite_ManageProfile" xml:space="preserve">
+    <value>Gestisci Profile</value>
+  </data>
+  <data name="Shared_AdminSite_ManageUsers" xml:space="preserve">
+    <value>Gestisci Users</value>
+  </data>
+  <data name="Shared_AdminSite_NewMessage" xml:space="preserve">
+    <value>Nuovo messaggio</value>
+  </data>
+  <data name="Shared_AdminSite_News" xml:space="preserve">
+    <value>Notizie</value>
+  </data>
+  <data name="Shared_AdminSite_NewsLetter" xml:space="preserve">
+    <value>notiziario</value>
+  </data>
+  <data name="Shared_AdminSite_Packages" xml:space="preserve">
+    <value>Packages</value>
+  </data>
+  <data name="Shared_AdminSite_SchedulingDetails" xml:space="preserve">
+    <value>Pianificazione Dettagli</value>
+  </data>
+  <data name="Shared_AdminSite_SearchResult" xml:space="preserve">
+    <value>Risultato di ricerca</value>
+  </data>
+  <data name="Shared_AdminSite_Send" xml:space="preserve">
+    <value>Inviare</value>
+  </data>
+  <data name="Shared_AdminSite_Service" xml:space="preserve">
+    <value>Servizi</value>
+  </data>
+  <data name="Shared_AdminSite_Settings" xml:space="preserve">
+    <value>Impostazioni</value>
+  </data>
+  <data name="Shared_AdminSite_Users" xml:space="preserve">
+    <value>Utenti</value>
+  </data>
+  <data name="Shared_Site_Close" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="Shared_Site_ContactSearch" xml:space="preserve">
+    <value>Contatto Ricerca</value>
+  </data>
+  <data name="Shared_Site_DropBox" xml:space="preserve">
+    <value>Dropbox</value>
+  </data>
+  <data name="Shared_Site_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Shared_Site_FirstName" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="Shared_Site_LastName" xml:space="preserve">
+    <value>Cognome</value>
+  </data>
+  <data name="Shared_Site_NewMessages" xml:space="preserve">
+    <value>Nuovi messaggi</value>
+  </data>
+  <data name="Shared_Site_Profile" xml:space="preserve">
+    <value>profilo</value>
+  </data>
+  <data name="Shared_Site_Send" xml:space="preserve">
+    <value>inviare</value>
+  </data>
+  <data name="Shared_Site_Submit" xml:space="preserve">
+    <value>Presentare</value>
+  </data>
+  <data name="Shared_Site_URLShrink" xml:space="preserve">
+    <value>strizzacervelli URL</value>
+  </data>
+  <data name="Shared_SocialSuite_AddressHeader" xml:space="preserve">
+    <value>Twinba srl</value>
+  </data>
+  <data name="SocialBoard_Shared_SocialSuite_Copyright" xml:space="preserve">
+    <value>Copyright © 2015 Twinba Srl -  All Rights Reserved.</value>
+  </data>
+  <data name="Shared_SocialSuite_GetInTouchWithUs" xml:space="preserve">
+    <value>METTETEVI IN CONTATTO CON NOI</value>
+  </data>
+  <data name="SocialBoardShared_SocialSuite_PhoneNumber1" xml:space="preserve">
+    <value>P.iva IT 02345600460</value>
+  </data>
+  <data name="SocialBoard_Shared_SocialSuite_PhoneNumber2" xml:space="preserve">
+    <value>Tel e Fax: 0583933060</value>
+  </data>
+  <data name="SocialBoard_Shared_SocialSuite_ProperAddress" xml:space="preserve">
+    <value>V.le Europa 1/D int. 4, Lammari, 55013 Capannori (Lu)</value>
+  </data>
+  <data name="Shared_SocialSuite_SendMail" xml:space="preserve">
+    <value>Inviare Mail</value>
+  </data>
+  <data name="SocialBoard_Shared_SocialSuite_SkypeSupport" xml:space="preserve">
+    <value>Twinba srl</value>
+  </data>
+  <data name="Index_Index_ImgPathTryNow" xml:space="preserve">
+    <value>/Themes/Socioboard/Contents/img/italiano/it-trynow.png</value>
+  </data>
+  <data name="SocialBoard_Index_Index_LoveSocioboard" xml:space="preserve">
+    <value>Perché la gente ama SOCIAlBOARD</value>
+  </data>
+  <data name="Discovery_DiscoveryPartial_TBTextSearchPlaceholder" xml:space="preserve">
+    <value>Inserisci il tuo parola chiave qui...</value>
+  </data>
+  <data name="Feeds_FeedsPartial_LiveFeeds" xml:space="preserve">
+    <value>Feed live</value>
+  </data>
+  <data name="Feeds_Panel1Partial_TBtextfbPlaceholder" xml:space="preserve">
+    <value>Scrivi il tuo commento qui...</value>
+  </data>
+  <data name="Home_MyTickets_MyRecentTickets" xml:space="preserve">
+    <value>I miei Biglietti recenti</value>
+  </data>
+  <data name="Messages_TaskPartial_MyTaskHeading" xml:space="preserve">
+    <value>Il mio compito</value>
+  </data>
+  <data name="MyStuff_Affiliates_Affiliates" xml:space="preserve">
+    <value>Affiliati</value>
+  </data>
+  <data name="MyStuff_Affiliates_InvitationDate" xml:space="preserve">
+    <value>Invito Data</value>
+  </data>
+  <data name="MyStuff_Affiliates_InviteYourAcquitance" xml:space="preserve">
+    <value>Invita tuo conoscente</value>
+  </data>
+  <data name="MyStuff_Affiliates_PersonInvited" xml:space="preserve">
+    <value>persona invitata</value>
+  </data>
+  <data name="MyStuff_Affiliates_Status" xml:space="preserve">
+    <value>stato</value>
+  </data>
+  <data name="MyStuff_EWalletActivityPartial_AffiliateFeeGenerate" xml:space="preserve">
+    <value>Fee Affiliati generato ($)</value>
+  </data>
+  <data name="MyStuff_EWalletActivityPartial_DurationInMonths" xml:space="preserve">
+    <value>Periodo in mesi</value>
+  </data>
+  <data name="MyStuff_EWalletActivityPartial_JoiningDate" xml:space="preserve">
+    <value>Partecipare Data</value>
+  </data>
+  <data name="MyStuff_EWalletActivityPartial_PersonInvited" xml:space="preserve">
+    <value>persona invitata</value>
+  </data>
+  <data name="MyStuff_EWalletActivityPartial_Summary" xml:space="preserve">
+    <value>sommario</value>
+  </data>
+  <data name="SocialBoard_MyStuff_EWalletPartial_AddMoneyToSocioBoardWallet" xml:space="preserve">
+    <value>AGGIUNGI SOLDI PER SOCIALBOARD PORTAFOGLIO</value>
+  </data>
+  <data name="MyStuff_EWalletPartial_AddMoneyToWallet" xml:space="preserve">
+    <value>Aggiungere i soldi al Portafoglio</value>
+  </data>
+  <data name="MyStuff_EWalletPartial_YourWalletBalance" xml:space="preserve">
+    <value>Il tuo portafoglio saldo</value>
+  </data>
+  <data name="MyStuff_EWallet_AddMoneyToWallet" xml:space="preserve">
+    <value>Aggiungere i soldi al Portafoglio</value>
+  </data>
+  <data name="MyStuff_EWallet_EWallet" xml:space="preserve">
+    <value>E - Wallet</value>
+  </data>
+  <data name="Index_Download_ClickBelow" xml:space="preserve">
+    <value>Fare clic sul pulsante qui sotto</value>
+  </data>
+  <data name="Index_Index_ImgSignupforFree" xml:space="preserve">
+    <value>/Themes/Socioboard/Contents/img/italiano/signup-italiano.png</value>
+  </data>
+  <data name="MyStuff_SummaryPartial_AffiliateFee" xml:space="preserve">
+    <value>Fee Affiliati</value>
+  </data>
+  <data name="MyStuff_SummaryPartial_Close" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="MyStuff_SummaryPartial_Date" xml:space="preserve">
+    <value>data</value>
+  </data>
+  <data name="MyStuff_SummaryPartial_Total" xml:space="preserve">
+    <value>totale</value>
+  </data>
+  <data name="Versions_Agency_AgencyWhiteLabelversion4" xml:space="preserve">
+    <value>Hosted Model Agency</value>
+  </data>
+  <data name="Versions_Agency_AgencyWhiteLabelversion4DESC" xml:space="preserve">
+    <value>Hosted Model Agency offre dispiegamento gratuitamente nel vostro sistema e il 50% dei ricavi e opportunità di condivisione IP. Si tratta di una scelta intelligente se si hanno meno risorse, ma prevede che gli utenti presto. 
+fare clic</value>
+  </data>
+  <data name="Versions_Agency_ClicktoContact" xml:space="preserve">
+    <value>contattare</value>
+  </data>
+  <data name="Shared_Socialsuite_Contact" xml:space="preserve">
+    <value>Contattaci</value>
+  </data>
+  <data name="SocioBoardIndex_Index_Sociodescription2" xml:space="preserve">
+    <value>SocioBoard permette di ascoltare, analizzare e motivare il tuo Followers in modi insoliti attraverso numerosi account di social media</value>
+  </data>
+  <data name="SocioBoardIndex_Index_SubHeadingInsight" xml:space="preserve">
+    <value>SocioBoard offre approfondimenti dettagliati per i clienti</value>
+  </data>
+  <data name="SocioBoard_Admin_AdminLogin_Index_SocialBoardAdmin" xml:space="preserve">
+    <value>SocioBoard Admin</value>
+  </data>
+  <data name="SocioBoard_Admin_AdminLogin_Index_SocialBoardAdminLogin" xml:space="preserve">
+    <value>SocioBoard | Admin Login</value>
+  </data>
+  <data name="SocioBoard_BusinessSetting_Index_NotificationAlertViaEmail" xml:space="preserve">
+    <value>SocioBoard avvista voi &amp; il vostro Team, via e-mail, sulle varie attività.</value>
+  </data>
+  <data name="SocioBoard_ForgotPasword_ForgotPasswordMailBodyPartial_HappySocialBoarding" xml:space="preserve">
+    <value>Happy SocioBoarding!</value>
+  </data>
+  <data name="SocioBoard_ForgotPasword_ForgotPasswordMailBodyPartial_SocialBoardSupportTeam" xml:space="preserve">
+    <value>SocioBoard Support Team</value>
+  </data>
+  <data name="SocioBoard_ForgotPasword_ForgotPasswordMailBodyPartial_SupportTeamIntro" xml:space="preserve">
+    <value>Questo è team di supporto di SocioBoard.</value>
+  </data>
+  <data name="SocioBoard_ForgotPasword_ResetPasswordMailBodyPartial_HappySocialBoarding" xml:space="preserve">
+    <value>Happy SocioBoarding!</value>
+  </data>
+  <data name="SocioBoard_ForgotPasword_ResetPasswordMailBodyPartial_SocialBoardSupportTeam" xml:space="preserve">
+    <value>SocioBoard Support Team</value>
+  </data>
+  <data name="SocioBoard_ForgotPasword_ResetPasswordMailBodyPartial_SupportTeamIntro" xml:space="preserve">
+    <value>Questo è team di supporto di SocioBoard.</value>
+  </data>
+  <data name="SocioBoard_Home_Index_AttachProfileToBeginWithSocialBoard" xml:space="preserve">
+    <value>Connetti il tuo profilo social network per partire con SocioBoard</value>
+  </data>
+  <data name="SocioBoard_Home_PageNotFound_404PageSocialBoard" xml:space="preserve">
+    <value>404 Pagina SocioBoard</value>
+  </data>
+  <data name="SocioBoard_Home_Training_Heading2" xml:space="preserve">
+    <value>Ottieni il massimo dal Tuo SocioBoard attraverso la formazione online in diretta. E' una formazione completa e fa al caso vostro se desiderate ottenere le nozioni di base oppure scavare più a fondo con il nostro Tool. I nostri istruttori vi aiutano con un flusso di formazione professionale.</value>
+  </data>
+  <data name="SocioBoard_Index_Company_CareersDescription" xml:space="preserve">
+    <value>SocioBoard offre opportunità e sfide per aiutare a progredire sul vostro percorso di carriera e raggiungere il vostro sviluppo personale e professionale. Entra nel nostro team. Vi aiuteremo a sviluppare ed accelerare la Tua carriera, fornendo opportunità per amplificare i Tuoi talenti. Potrai migliorare e nutrire i Tuoi punti di forza e valorizzarli con prospettive uniche. In cambio ci aspettiamo da Te lo spirito di condivisione della Tua/Nostra passione che per 'eccellenza' mettiamo in tutto quello che facciamo.</value>
+  </data>
+  <data name="SocioBoard_Index_Company_PartnersDescription" xml:space="preserve">
+    <value>SocioBoard è in corso di stabilire partnership con Servizi Cloud Provider come MS Azure, Amazon AWS ecc. Siamo inoltre in fase di iniziare ad ospitare plug-in e applicazioni da voi realizzate. Miglioreremo in modo costantemente le nostre caratteristiche.</value>
+  </data>
+  <data name="SocioBoard_Index_Company_SocioBoardDescription" xml:space="preserve">
+    <value>SocioBoard è un Tool per la gestione dei Social Media di nuova generazione. Permette di sfruttare al massimo tutte le piattaforme Social attraverso un rivoluzionario sistema affiancato ad un supporto tecnico di elevato livello senza pari a disposizione ventiquattro ore su ventiquattro.
+Il nostro scopo è quello di cercare di risolvere il problema che chiunque deve affrontare durante la gestione di molti profili sui social network. La maggior parte degli utenti hanno in genere almeno tre profili sociali, mentre le imprese hanno una struttura di social networking più complessa. Il processo di gestione di molti profili su social network richiede moltissimo tempo e diventa fin da subito molto oneroso economicamente, SocioBoard è stato studiato appositamente per  risolvere tutti questi problemi.
+SocioBoard offre i seguenti valori per il vostro business:
+Il nostro obbiettivo è quello di risolvere il caos che circonda la gestione dei social media.La maggior parte delle applicazioni in questo settore hanno un approccio molto ristretto e limitato nei confronti degli utenti finali, le persone si sentono coinvolti in un vortice, SocialBoard ha tantissimi piani per aiutare gli utenti a progredire in questa visione. </value>
+  </data>
+  <data name="SocioBoard_Index_Contact_SendYourSelfAnAwesomeVideo" xml:space="preserve">
+    <value>Invia anche tu una animatore di video Socioboard impressionante</value>
+  </data>
+  <data name="SocioBoard_Index_Contact_UnderstandSocioboardBetter" xml:space="preserve">
+    <value>Capire Socioboard meglio!</value>
+  </data>
+  <data name="SocioBoard_Index_Download_SourceCodeHeading" xml:space="preserve">
+    <value>SocioBoard codice sorgente è disponibile per il download attraverso vari siti. Cliccate rispettivi link per scaricare:</value>
+  </data>
+  <data name="SocioBoard_Index_Features_AnalyticsDescription" xml:space="preserve">
+    <value>SocioBoard utilizza il suo motore di statistiche e genera analisi circa le varie attività relative al vostro account. Incorpora statistiche di gruppo, i dati di coinvolgimento Facebook, statistiche Twitter e le statistiche relativi alle attività. Tutte queste analisi possono essere personalizzate visualizzate in base alle date, gruppi etc.</value>
+  </data>
+  <data name="SocioBoard_Index_Features_EngagementDescription" xml:space="preserve">
+    <value>SocioBoard ha capacità di coinvolgere il pubblico attraverso varie piattaforme. Questo dà ad ogni piattaforma la dovuta importanza. Il grado di impegno viene adattato secondo importanza della piattaforma e il numero di connessioni in esso.</value>
+  </data>
+  <data name="SocioBoard_Index_Features_HelpDeskDescription" xml:space="preserve">
+    <value>SocioBoard non solo ha un meccanismo di supporto di classe mondiale, ma offre anche l'integrazione Helpdesk con il tuo account SocialBoard.</value>
+  </data>
+  <data name="SocioBoard_Index_Features_MonitoringDescription" xml:space="preserve">
+    <value>SocioBoard monitora continuamente i dati su varie piattaforme, e dà i Feeds regolari per gli utenti finali. i Feeds permettono di essere in contatto con i vostri amici. Gli utenti possono interagire tra di loro utilizzando la piattaforma, ricevere notifiche sui messaggi senza risposta e anche altro. Puoi anche impedire a qualcuno di darti fastidio su questa piattaforma. Rispettiamo la tua privacy.</value>
+  </data>
+  <data name="SocioBoard_Index_Features_SubHeadingInsights" xml:space="preserve">
+    <value>SocialBoard offre approfondimenti dettagliati per i clienti</value>
+  </data>
+  <data name="SocioBoard_Index_Index_EndHeading" xml:space="preserve">
+    <value>Con SocioBoard, coinvolgere i tuoi Followers è molto facile, divertente, e da ora molto intuitivo... Inizia oggi!</value>
+  </data>
+  <data name="SocioBoard_Index_Index_featureHeading" xml:space="preserve">
+    <value>SocioBoard permette di tenere sotto controllo le conversazioni sociali in modo semplice e fornisce tutto il necessario per coinvolgere in modo efficace il pubblico.</value>
+  </data>
+  <data name="SocioBoard_Index_Index_freeSubscirption" xml:space="preserve">
+    <value>SocioBoard offre un servizio di gratuito per 30 giorni senza rischi!</value>
+  </data>
+  <data name="SocioBoard_Index_Index_LoveSocialBoard" xml:space="preserve">
+    <value>Perché la gente ama SocioBoard</value>
+  </data>
+  <data name="SocioBoard_Index_Index_SocioDescription" xml:space="preserve">
+    <value>SocioBoard offre uno strumento avanzato di social media marketing, facile, versatile, personalizzabile e scalabile, per guidare la crescita e il successo del Vostro Brand.</value>
+  </data>
+  <data name="SocioBoard_Index_PartialPricing_EnterpriseandAgencyDescription" xml:space="preserve">
+    <value>SocioBoard offre soluzioni aziendali e per agenzie personalizzabili, dedicate al tuo business in modo scalabile, sicuro e con un alto livello di qualità e servizio e assistenza 24/7. Contattateci oggi per discutere le vostre esigenze specifiche con uno dei nostri specialisti di prodotto.</value>
+  </data>
+  <data name="SocioBoard_Index_Privacy_SocialBoardtechPVTLtd" xml:space="preserve">
+    <value>Twinba Srl</value>
+  </data>
+  <data name="SocioBoard_Index_RegistrationMailPartial_SocialBoardTeam" xml:space="preserve">
+    <value>SocioBoard Team</value>
+  </data>
+  <data name="SocioBoard_Shared_Site_InvideFreindsDescription" xml:space="preserve">
+    <value>SocioBoard offre la possibilità di creare gruppi in virtù dei quali gli utenti possono raggiungere gli uni agli altri con un meccanismo di collaborazione altamente efficiente. I gruppi possono servire come una piattaforma per condividere le informazioni con gli altri membri del Team e favoriscono l'aumento della lavorabilità e l'efficienza.</value>
+  </data>
+  <data name="SocioBoard_Shared_Socialsuite_Title" xml:space="preserve">
+    <value>SocioBoard - Generare più contatti su Social Media | Social CRM | Social Media CMS</value>
+  </data>
+  <data name="SocioBoard_Versions_Agency_AgencysocioboardOffering" xml:space="preserve">
+    <value>Aumentare e nutrire la vostra clientela con le offerte SocioBoard Withelabel unico per le agenzie. Queste versioni hanno una grande interfaccia che chiunque può capire, potenti strumenti di coinvolgimento e di analisi personalizzabili per monitorare, analizzare e comunicare attraverso innumerevoli profili sociali. Cosa c'è di più, si può caratterizzare la piattaforma con il proprio logo e il nome di dominio, in modo che le clienti considerano il prodotto come Vostro.
+Le Agenzie possono utilizzare commercialmente la versione Withelabel di SocialBoard. Il suo codice è completamente open source e personalizzabile secondo i vostri bisogni delle agenzie. </value>
+  </data>
+  <data name="SocioBoard_MyStuff_EWalletPartial_AddMoneyToSocioBoardWallet" xml:space="preserve">
+    <value>ADD MONEY TO SOCIOBOARD WALLET</value>
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_AddressHeader" xml:space="preserve">
+    <value>L.V COMPLEX</value>
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_Copyright" xml:space="preserve">
+    <value>Copyright © 2013 - 2014 SOCIOBOARD Technologies Pvt. Ltd. All Rights Reserved.</value>
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_PhoneNumber1" xml:space="preserve">
+    <value>+91 80 4166 0003</value>
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_PhoneNumber2" xml:space="preserve">
+    <value>+91 97 1331 7771</value>
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_ProperAddress" xml:space="preserve">
+    <value>7th Block, 80 Feet Road, Koramangala Layout, Bangalore-560095</value>
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_SkypeSupport" xml:space="preserve">
+    <value>socioboard.support</value>
+  </data>
+  <data name="SocioBoard_Index_Index_OnBoard" xml:space="preserve">
+    <value>Entra in SocioBoard e vedi direttamente cosa la nostra Suite Social Media Marketing può fare per Te</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex10" xml:space="preserve">
+    <value>Le informazioni contenute nel sito sono state ottenute da fonti ritenute attendibili. Twinba srl non riconosce alcuna garanzia circa l'esattezza, la completezza o l'adeguatezza di tali informazioni.</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex11" xml:space="preserve">
+    <value>Twinba srl non garantisce che: (a) il Sito soddisferà le vostre esigenze; (b) il sito sarà disponibile su una base ininterrotta, tempestivo, sicuro o privo di errori; (c) i risultati che possono essere ottenuti dall'utilizzo del Sito o eventuali servizi offerti tramite il Sito sarà accurato o affidabile.</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex12" xml:space="preserve">
+    <value>Il diritto di privacy dell'Utente è di fondamentale importanza per Twinba srl le informazioni fornite dall'Utente non saranno condivise con terze parti. Twinba srl si riserva il diritto di utilizzare le informazioni per fornire all'utente un esperienza online più personalizzata.</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex13" xml:space="preserve">
+    <value>Il Sito fornisce link a siti web e accesso a contenuti, prodotti e servizi di terzi, inclusi utenti, inserzionisti, affiliati e sponsor del sito. L'utente accetta che SocialBoard non è responsabile per la disponibilità di e contenuti forniti su, siti web di terzi. L'utente è invitato a esaminare le politiche pubblicati da altri siti web in materia di privacy e di altri argomenti prima dell'uso. Twinba srl non è responsabile dei contenuti di terzi accessibili attraverso il Sito, compresi i pareri, consigli, dichiarazioni e pubblicità, e l'utente si assume tutti i rischi associati all'utilizzo di tali contenuti. Twinba srl non è responsabile per eventuali perdite o danni di qualsiasi genere utente può incorrere trattando con terzi.</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex2" xml:space="preserve">
+    <value>Il termine Utente si riferisce all'utente che sta visitando il sito ed iscrivendosi ne diventa l'utilizzatore. Il termine Twinba si riferisce alla società Twinba srl proprietaria del sito. Il termine SocialBoard si riferisce al sito www.SocialBoard.it e Twinba srl ne detiene la gestione e la proprietaria.</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex3" xml:space="preserve">
+    <value>Utilizzando il sito, l'utente accetta di seguire e di essere vincolato dai seguenti termini e condizioni riguardanti l'utilizzo del Sito. Twinba srl può rivedere le condizioni di utilizzo in qualsiasi momento senza preavviso. Le aree del Sito possono avere diversi termini di utilizzo pubblicati. Se c'è un conflitto tra i Termini di utilizzo e le condizioni di utilizzo indicate in una specifica area, le presenti avranno la precedenza. Twinba srl può revocare l'accesso per l'utente, in qualsiasi momento e per qualsiasi motivo. Le disposizioni in materia di assenza di garanzia, accuratezza delle informazioni, e di indennizzo sopravvivranno tale risoluzione. Twinba srl può monitorare l'accesso al sito.</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex4" xml:space="preserve">
+    <value>Twinba srl non rilascia alcuna garanzia, espressa o implicita, incluso, senza limitazioni, quelle di commerciabilità e di idoneità per uno scopo particolare, per quanto riguarda tutte le informazioni, i dati, le dichiarazioni o prodotti messi a disposizione sul sito.</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex5" xml:space="preserve">
+    <value>Il Sito e tutti i contenuti, i materiali, le informazioni, software, prodotti e servizi offerti sul sito, vengono fornite "così come sono" e "come disponibili". Twinba srl declina espressamente tutte le garanzie di qualsiasi tipo, sia espressa o implicita, comprese, ma non solo, le garanzie implicite di commerciabilità, idoneità per un particolare scopo e non violazione.</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex6" xml:space="preserve">
+    <value>Twinba srl non avrà alcuna responsabilità per eventuali danni al sistema informatico dell'utente o la perdita di dati derivanti dal download di qualsiasi contenuto, i materiali, le informazioni dal sito.</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex7" xml:space="preserve">
+    <value>Twinba srl può modificare o interrompere qualsiasi aspetto del proprio sito web in qualsiasi momento, anche, il suo contenuto o le sue caratteristiche. Twinba srl si riserva il diritto di modificare i termini e le condizioni applicabili all'uso del sito. Tali modifiche saranno effettive immediatamente dopo l'avviso, che sarà posto sul sito.</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex8" xml:space="preserve">
+    <value>In nessun caso Twinba srl potrà essere ritenuta responsabile per danni di qualsiasi tipo, compresi, senza limitazione, diretta, incidentali o consequenziali (compresi, ma non limitatamente a, i danni per perdita di profitti, interruzione di attività e perdita di programmi o di dati) derivanti l'uso o dall'impossibilità di usare il sito web SocialBoard.it, o quelle fornite sul sito, o nei prodotti ogni altra indicazione attribuibile a errori, omissioni o altre imprecisioni nel prodotto o interpretazioni degli stessi. Alcune giurisdizioni non consentono la limitazione o l'esclusione di responsabilità. Di conseguenza, alcune delle limitazioni di cui sopra potrebbero non essere applicabili all'Utente.</value>
+  </data>
+  <data name="SocialBoard_Index_Disclaimer_DisclaimerTex9" xml:space="preserve">
+    <value>Utente si impegna a indennizzare, difendere Twinba srl da e contro tutte le perdite, spese, danni e costi, incluse le ragionevoli spese legali, derivanti da o in relazione a qualsiasi uso improprio da parte dell'utente dei contenuti e dei servizi forniti sul site</value>
+  </data>
+  <data name="SocialBoard_Index_Index_Sociodescription2" xml:space="preserve">
+    <value>Socialboard permette di ascoltare, analizzare e motivare il tuo seguaci in modi insoliti attraverso numerosi account di social media</value>
+  </data>
+  <data name="SocioBoardBoard_Index_Index_Sociodescription2" xml:space="preserve">
+    <value>Sociooard permette di ascoltare, analizzare e motivare il tuo seguaci in modi insoliti attraverso numerosi account di social media</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex1" xml:space="preserve">
+    <value> I seguenti termini e condizioni saranno considerati accettata dall'Utente e si basano sull'utilizzo del sito www.SocioBoard.com. Siete pregati di leggere attentamente prima di utilizzare i servizi di questo sito. 
+</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex10" xml:space="preserve">
+    <value>Le informazioni contenute nel sito sono state ottenute da fonti ritenute attendibili. Twinba srl non riconosce alcuna garanzia circa l'esattezza, la completezza o l'adeguatezza di tali informazioni.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex11" xml:space="preserve">
+    <value>Twinba srl non garantisce che: (a) il Sito soddisferà le vostre esigenze; (b) il sito sarà disponibile su una base ininterrotta, tempestivo, sicuro o privo di errori; (c) i risultati che possono essere ottenuti dall'utilizzo del Sito o eventuali servizi offerti tramite il Sito sarà accurato o affidabile.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex12" xml:space="preserve">
+    <value>Il diritto di privacy dell'Utente è di fondamentale importanza per Twinba srl le informazioni fornite dall'Utente non saranno condivise con terze parti. Twinba srl si riserva il diritto di utilizzare le informazioni per fornire all'utente un esperienza online più personalizzata.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex13" xml:space="preserve">
+    <value>Il Sito fornisce link a siti web e accesso a contenuti, prodotti e servizi di terzi, inclusi utenti, inserzionisti, affiliati e sponsor del sito. L'utente accetta che SocialBoard non è responsabile per la disponibilità di e contenuti forniti su, siti web di terzi. L'utente è invitato a esaminare le politiche pubblicati da altri siti web in materia di privacy e di altri argomenti prima dell'uso. Twinba srl non è responsabile dei contenuti di terzi accessibili attraverso il Sito, compresi i pareri, consigli, dichiarazioni e pubblicità, e l'utente si assume tutti i rischi associati all'utilizzo di tali contenuti. Twinba srl non è responsabile per eventuali perdite o danni di qualsiasi genere utente può incorrere trattando con terzi.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex2" xml:space="preserve">
+    <value>Il termine Utente si riferisce all'utente che sta visitando il sito ed iscrivendosi ne diventa l'utilizzatore. Il termine Twinba si riferisce alla società Twinba srl proprietaria del sito. Il termine SocialBoard si riferisce al sito www.SocialBoard.it e Twinba srl ne detiene la gestione e la proprietaria.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex3" xml:space="preserve">
+    <value>Utilizzando il sito, l'utente accetta di seguire e di essere vincolato dai seguenti termini e condizioni riguardanti l'utilizzo del Sito. Twinba srl può rivedere le condizioni di utilizzo in qualsiasi momento senza preavviso. Le aree del Sito possono avere diversi termini di utilizzo pubblicati. Se c'è un conflitto tra i Termini di utilizzo e le condizioni di utilizzo indicate in una specifica area, le presenti avranno la precedenza. Twinba srl può revocare l'accesso per l'utente, in qualsiasi momento e per qualsiasi motivo. Le disposizioni in materia di assenza di garanzia, accuratezza delle informazioni, e di indennizzo sopravvivranno tale risoluzione. Twinba srl può monitorare l'accesso al sito.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex4" xml:space="preserve">
+    <value>Twinba srl non rilascia alcuna garanzia, espressa o implicita, incluso, senza limitazioni, quelle di commerciabilità e di idoneità per uno scopo particolare, per quanto riguarda tutte le informazioni, i dati, le dichiarazioni o prodotti messi a disposizione sul sito.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex5" xml:space="preserve">
+    <value>Il Sito e tutti i contenuti, i materiali, le informazioni, software, prodotti e servizi offerti sul sito, vengono fornite "così come sono" e "come disponibili". Twinba srl declina espressamente tutte le garanzie di qualsiasi tipo, sia espressa o implicita, comprese, ma non solo, le garanzie implicite di commerciabilità, idoneità per un particolare scopo e non violazione.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex6" xml:space="preserve">
+    <value>Twinba srl non avrà alcuna responsabilità per eventuali danni al sistema informatico dell'utente o la perdita di dati derivanti dal download di qualsiasi contenuto, i materiali, le informazioni dal sito.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex7" xml:space="preserve">
+    <value>Twinba srl può modificare o interrompere qualsiasi aspetto del proprio sito web in qualsiasi momento, anche, il suo contenuto o le sue caratteristiche. Twinba srl si riserva il diritto di modificare i termini e le condizioni applicabili all'uso del sito. Tali modifiche saranno effettive immediatamente dopo l'avviso, che sarà posto sul sito.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex8" xml:space="preserve">
+    <value>In nessun caso Twinba srl potrà essere ritenuta responsabile per danni di qualsiasi tipo, compresi, senza limitazione, diretta, incidentali o consequenziali (compresi, ma non limitatamente a, i danni per perdita di profitti, interruzione di attività e perdita di programmi o di dati) derivanti l'uso o dall'impossibilità di usare il sito web SocialBoard.it, o quelle fornite sul sito, o nei prodotti ogni altra indicazione attribuibile a errori, omissioni o altre imprecisioni nel prodotto o interpretazioni degli stessi. Alcune giurisdizioni non consentono la limitazione o l'esclusione di responsabilità. Di conseguenza, alcune delle limitazioni di cui sopra potrebbero non essere applicabili all'Utente.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex9" xml:space="preserve">
+    <value>Utente si impegna a indennizzare, difendere Twinba srl da e contro tutte le perdite, spese, danni e costi, incluse le ragionevoli spese legali, derivanti da o in relazione a qualsiasi uso improprio da parte dell'utente dei contenuti e dei servizi forniti sul site</value>
+  </data>
+  <data name="SocioBoard_Index_Index_LoveSocioboard" xml:space="preserve">
+    <value>Perché la gente ama SOCIOBOARD</value>
+  </data>
+</root>

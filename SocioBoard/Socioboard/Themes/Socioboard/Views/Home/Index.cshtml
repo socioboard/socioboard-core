@@ -45,10 +45,10 @@
                             <a onclick="AddTwitterProfile()" class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a>
                         </div>
                         <div class="col-md-12">
-                            <p style="color: white; padding-left: 45px; margin-top: 3%;">Attach Your Social Network Profile for Beginning With Socioboard</p>
+                            <p style="color: white; padding-left: 45px; margin-top: 3%;">@GlobusMultiLanguageLib.Resources.SocioBoard_Home_Index_AttachProfileToBeginWithSocioBoard</p>
                         </div>
                         <div class="col-md-6 col-xs-offset-2">
-                            <a id="AttachProfile" href="#" onclick="AddProfile()" class="btn btn-danger" type="button" value="Attach Your Profile" style="margin-top: 31px;">Attach Your Profile</a>
+                            <a id="AttachProfile" href="#" onclick="AddProfile()" class="btn btn-danger" type="button" value="Attach Your Profile" style="margin-top: 31px;">@GlobusMultiLanguageLib.Resources.Home_Index_Attach</a>
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
             success: function (data) {
                 alertify.set({ delay: 3000 });
                 $('#facebookpageinfo').css({ 'display': 'none' });
-                jQuery.noConflict();
+                //jQuery.noConflict();
                 $('#facebookpopup').modal('hide');
                 alertify.success("Fan Page Added Successfully");
                 window.location = '../Home/Index';
@@ -94,7 +94,7 @@
 
                 alertify.set({ delay: 3000 });
                 $('#facebookgroupinfo').css({ 'display': 'none' });
-                jQuery.noConflict();
+                //jQuery.noConflict();
                 $('#facebookpopup').modal('hide');
                 alertify.success("Group Added Successfully");
                 window.location = '../Home/Index';

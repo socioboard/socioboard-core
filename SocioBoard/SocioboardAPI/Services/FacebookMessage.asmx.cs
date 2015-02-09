@@ -145,6 +145,22 @@ namespace Api.Socioboard.Services
             }
         }
 
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string getAllFacebookMessagesOfUserByProfileIdWithRange(string ProfileId, string noOfDataToSkip)
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.FacebookMessage> objFacebookMessage = objFacebookMessageRepository.getAllMessageOfProfileWithRange(ProfileId, noOfDataToSkip);
+                return new JavaScriptSerializer().Serialize(objFacebookMessage);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+
         // Edited by Antima
 
         [WebMethod]
@@ -214,6 +230,13 @@ namespace Api.Socioboard.Services
         public string GetAllMessageDetail(string profileid) 
         {
             List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookMessage = objFacebookMessageRepository.getAllMessageDetail(profileid);
+            return new JavaScriptSerializer().Serialize(lstFacebookMessage);
+        }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllMessageDetailWithRange(string profileid, string noOfDataToSkip)
+        {
+            List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookMessage = objFacebookMessageRepository.getAllMessageDetail(profileid, noOfDataToSkip);
             return new JavaScriptSerializer().Serialize(lstFacebookMessage);
         }
     }

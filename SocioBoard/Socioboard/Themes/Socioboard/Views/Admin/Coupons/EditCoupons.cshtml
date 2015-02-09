@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Edit Coupon Details</h1>
+                <h1 class="page-header">@GlobusMultiLanguageLib.Resources.Admin_Coupons_EditCoupons_EditCoupon</h1>
             </div>
             <div class="col-lg-12">
                 <div class="panel panel-default">
@@ -26,35 +26,35 @@
                                 <div class="col-md-6">
                                     <form role="form" class="form-horizontal">
                                         <div class="form-group">
-                                            <label for="username-email">Coupon Code</label><span class="pull-right text-danger"></span>
+                                            <label for="username-email">@GlobusMultiLanguageLib.Resources.Admin_Coupons_EditCoupons_CouponCode</label><span class="pull-right text-danger"></span>
                                             <input id="Coupencode" value="@objcoupon.CouponCode" type="text" class="form-control" readonly="true">
                                         </div>
                                        
                                         <div class="form-group">
-                                            <label for="username-email">Entry Date</label><span class="pull-right text-danger">*</span>
+                                            <label for="username-email">@GlobusMultiLanguageLib.Resources.Admin_Coupons_EditCoupons_EntryDate</label><span class="pull-right text-danger">*</span>
                                             <input id="CpnEntryDate" value="@objcoupon.EntryCouponDate" type="text" class="form-control">
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="username-email">Expiry Date</label><span class="pull-right text-danger">*</span>
+                                            <label for="username-email">@GlobusMultiLanguageLib.Resources.Admin_Coupons_EditCoupons_ExpiryDate</label><span class="pull-right text-danger">*</span>
                                             <input id="CnpExpiryDate" value="@objcoupon.ExpCouponDate" type="text" class="form-control">
                                         </div>
 
                                         <div class="form-group">
                                             <div class="ps_select">
-                                                <label for="username-email">Status</label><span class="pull-right text-danger">*</span>
+                                                <label for="username-email">@GlobusMultiLanguageLib.Resources.Admin_Coupons_EditCoupons_Status</label><span class="pull-right text-danger">*</span>
                                                 <select id="ddlCnpStatus" class="select form-control">
                                                     @{
 
                                                             if (objcoupon.Status =="1")
                                                             {
-                                                                <option selected value="1">Enable</option>
-                                                                <option value="0">Disable</option>
+                                                                <option selected value="1">@GlobusMultiLanguageLib.Resources.Admin_Coupons_EditCoupons_Enable</option>
+                                                                <option value="0">@GlobusMultiLanguageLib.Resources.Admin_Coupons_EditCoupons_Disable</option>
                                                             }
                                                             else
                                                             { 
-                                                                <option  value="1">Enable</option>
-                                                                <option selected value="0">Disable</option>
+                                                                <option  value="1">@GlobusMultiLanguageLib.Resources.Admin_Coupons_EditCoupons_Enable</option>
+                                                                <option selected value="0">@GlobusMultiLanguageLib.Resources.Admin_Coupons_EditCoupons_Disable</option>
                                                             }
 
                                             
@@ -63,7 +63,7 @@
                                             </div>
 
                                         </div>
-                                        <button onclick="UpdateCoupon('@objcoupon.Id')"; id="UpdateCouponData" type="button" class="btn btn-warning">Update</button>
+                                        <button onclick="UpdateCoupon('@objcoupon.Id')"; id="UpdateCouponData" type="button" class="btn btn-warning">@GlobusMultiLanguageLib.Resources.Admin_Coupons_EditCoupons_Update</button>
                                     </form>
                                 </div>
                             </div>

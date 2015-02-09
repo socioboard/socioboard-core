@@ -1,0 +1,151 @@
+﻿@{
+    List<Domain.Socioboard.Domain.WordpressFeeds> lstwpfeed = (List<Domain.Socioboard.Domain.WordpressFeeds>)Model;
+    Domain.Socioboard.Domain.WordpressSites _WordpressSites = (Domain.Socioboard.Domain.WordpressSites)ViewBag.objSite;
+    }
+@*<header id="top" class="header_li">*@
+    
+        <div class="text-vertical">
+            <div style="cursor:pointer" @*onclick="PostBlog('79771271','76047878')"*@ class="btn btn-danger pull-right" onclick="loadblogpostpartial('@_WordpressSites.SiteId')"><i class="fa fa-pencil fa-1x"></i></div>
+            <!-- <img src="Contents/img/search_comp/microsoft.png" class="galleryImgSize"> -->
+            <h1 style="text-shadow: 0px 0px 15px #ffffff; margin-top: 50px;"><a href="@_WordpressSites.SiteURL" target="_blank" style="text-decoration:none;color:#000000" title="@_WordpressSites.SiteURL">@_WordpressSites.SiteName</a></h1>
+        </div>
+    @*</header>*@
+
+@*<div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">Blog Large</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="">Blog</a></li>
+                <li class="active">Blog Large</li>
+            </ul>
+        </div>
+    </div>*@
+
+<div class="container content col-md-12">     
+        <div class="row blog-page blog-item">
+            <!-- Left Sidebar -->
+            <div class="col-md-11 md-margin-bottom-60">
+                <!--Blog Post-->     
+                @foreach (var item in lstwpfeed)
+                {
+                    
+                <div class="blog margin-bottom-40" id="wppost_@item.Id">
+                    <h2><a href="@item.PostUrl" target="_blank">@item.Title</a></h2>
+                    <div class="blog-post-tags">
+                        <ul class="list-unstyled list-inline blog-info">
+                            <li><i class="fa fa-calendar"></i>@item.CreatedTime</li>
+                            <li><i class="fa fa-pencil"></i><a href="#">@item.LikeCount Likes</a></li>
+                            <li><i class="fa fa-comments"></i> <a href="#">@item.CommentCount Comments</a></li>
+                        </ul>
+                        @*<ul class="list-unstyled list-inline blog-tags">
+                            <li>
+                                <i class="fa fa-tags"></i> 
+                                <a href="#">Technology</a> 
+                                <a href="#">Education</a>
+                                <a href="#">Internet</a>
+                                <a href="#">Media</a>
+                            </li>
+                        </ul>*@                                                
+                    </div>
+                    <div class="blog-img">
+                        <img alt="" src="Contents/img/blogs/2.jpg" class="img-responsive">
+                    </div>
+                    @Html.Raw(item.PostContent)
+                   
+                </div>
+                }
+                <!--End Blog Post-->        
+
+                <hr>
+
+                <!-- Recent Comments -->
+                @*<div class="media">
+                    <h3>Comments</h3>
+                    <a href="#" class="pull-left">
+                        <img alt="" src="Contents/img/blogs/2.jpg" class="media-object">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">Media heading <span>5 hours ago / <a href="#">Reply</a></span></h4>
+                        <p>Donec id elit non mi portas sats eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna..</p>
+
+                        <hr>
+
+                        <div class="media">
+                            <a href="#" class="pull-left">
+                                <img alt="" src="Contents/img/blogs/5.jpg" class="media-object">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">Media heading <span>17 hours ago / <a href="#">Reply</a></span></h4>
+                                <p>Donec id elit non mi portas sats eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum anibhut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna..</p>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="media">
+                            <a href="#" class="pull-left">
+                                <img alt="" src="Contents/img/blogs/11.jpg" class="media-object">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">Media heading <span>2 days ago / <a href="#">Reply</a></span></h4>
+                                <p>Donec id elit non mi portas sats eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum anibhut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna..</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@<!--/media-->
+
+                @*<div class="media">
+                    <a href="#" class="pull-left">
+                        <img alt="" src="Contents/img/blogs/9.jpg" class="media-object">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">Media heading <span>July 5,2013 / <a href="#">Reply</a></span></h4>
+                        <p>Donec id elit non mi portas sats eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna..</p>
+                    </div>
+                </div>*@<!--/media-->
+                <!-- End Recent Comments -->
+
+                <hr>
+
+                <!-- Comment Form -->
+                @*<div class="post-comment">
+                    <h3>Leave a Comment</h3>
+                    <form>
+                        <label>Name</label>
+                        <div class="row margin-bottom-20">
+                            <div class="col-md-7 col-md-offset-0">
+                                <input type="text" class="form-control">
+                            </div>                
+                        </div>
+                        
+                        <label>Email <span class="color-red">*</span></label>
+                        <div class="row margin-bottom-20">
+                            <div class="col-md-7 col-md-offset-0">
+                                <input type="text" class="form-control">
+                            </div>                
+                        </div>
+                        
+                        <label>Message</label>
+                        <div class="row margin-bottom-20">
+                            <div class="col-md-11 col-md-offset-0">
+                                <textarea rows="8" class="form-control"></textarea>
+                            </div>                
+                        </div>
+                        
+                        <p><button type="submit" class="btn-u">Send Message</button></p>
+                    </form>
+                </div>*@
+                <!-- End Comment Form -->
+            </div>
+            <!-- End Left Sidebar -->
+
+            <!-- Right Sidebar -->
+            
+            <!-- End Right Sidebar -->
+        </div><!--/row-->        
+    </div>
+
+<script>
+    $(".header_li").css('background-image', 'url(@ViewBag.imageurl)');
+    </script>

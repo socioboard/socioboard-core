@@ -12,8 +12,8 @@ using System.Web.Security;
 
 namespace Socioboard.Controllers
 {
-   
-    public class YoutubeManagerController : Controller
+
+    public class YoutubeManagerController : BaseController
     {
         //
         // GET: /YoutubeManager/

@@ -14,7 +14,7 @@
     
 
 <div class="container-fluid">
-    <h1 class="page-header">Settings</h1>
+    <h1 class="page-header">@GlobusMultiLanguageLib.Resources.Admin_AdminSetting_AdminSettingPartial_Settings</h1>
     <div class="panel panel-default">
         <div class="panel-heading">
             @objAdmin.UserName
@@ -34,13 +34,13 @@
                             <div class="form-group">
                                @* <span class="input-group-addon">First Name</span>
                                 <input id="fname" value="@fname" type="text" class="form-control" placeholder="First Name">*@
-                                <label for="username-email">First Name</label><span class="pull-right text-danger">*</span>
+                                <label for="username-email">@GlobusMultiLanguageLib.Resources.Admin_AdminSetting_AdminSettingPartial_FirstName</label><span class="pull-right text-danger">*</span>
                         <input id="adminfname" value="@fname" type="text" class="form-control" placeholder="First Name">
                             </div>
                             <div class="form-group">
                               @*  <span class="input-group-addon">Last Name</span>
                                 <input id="lname" value="@lname" type="text" class="form-control" placeholder="Last Name">*@
-                                 <label for="username-email">Last Name</label><span class="pull-right text-danger">*</span>
+                                 <label for="username-email">@GlobusMultiLanguageLib.Resources.Admin_AdminSetting_AdminSettingPartial_LastName</label><span class="pull-right text-danger">*</span>
                         <input id="adminlname" value="@lname" type="text" class="form-control" placeholder="Last Name">
                             </div>
                             @*<div class="form-group">
@@ -50,7 +50,7 @@
                         <input id="adminusername" placeholder="E-mail Id" value="@objAdmin.UserName" type="text" class="form-control">
                             </div>*@
                             <div class="form-group">
-                            <button type="reset" class="btn btn-primary" onclick="AdminChangePassword();">Change Password</button>
+                            <button type="reset" class="btn btn-primary" onclick="AdminChangePassword();">@GlobusMultiLanguageLib.Resources.Admin_AdminSetting_AdminSettingPartial_ChangePassword</button>
                                 </div>
                             <div id="SuccesMessageChngPswrd" style="padding-left:26px;padding-bottom:10px;color:green;font-size:small;display:none"></div>
                             @*<div class="form-group">
@@ -61,14 +61,14 @@
 
                             <div class="form-group">
                                @* <img src="@objUser.ProfileUrl" class="img-circle profilePic" alt="User Avatar">*@
-                                <label for="username-email">Change Profile Image</label><span class="pull-right text-danger">*</span>
+                                <label for="username-email">@GlobusMultiLanguageLib.Resources.Admin_AdminSetting_AdminSettingPartial_ChangeProfileImage</label><span class="pull-right text-danger">*</span>
                                 <div><input  id="adminimg" type="file" class="btn btn-default col-md-6" accept="image/*"></div>
                             </div>
 
                             <div class="form-group">
 
                                 <div class="time_zone">
-                                  <label for="time_zone">Time Zone</label>  
+                                  <label for="time_zone">@GlobusMultiLanguageLib.Resources.Admin_AdminSetting_AdminSettingPartial_TimeZone</label>  
                                 </div>
                                 <div class="ps_select">
                                     <select id="ddladminTimeZone" class="select form-control">
@@ -86,7 +86,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <button onclick="changeadminsetting()" id="saveadminsetting" type="button" class="btn btn-warning">Save</button>
+                            <button onclick="changeadminsetting()" id="saveadminsetting" type="button" class="btn btn-warning">@GlobusMultiLanguageLib.Resources.Admin_AdminSetting_AdminSettingPartial_Save</button>
                         
                         
                         
@@ -108,8 +108,8 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Change Password</h4>
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Admin_AdminSetting_AdminSettingPartial_Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">@GlobusMultiLanguageLib.Resources.Admin_AdminSetting_AdminSettingPartial_ChangePassword</h4>
       </div>
       <form class="modal-body">
                             <div class="form-group input-group">
@@ -127,8 +127,8 @@
                                 <input id="Adminconfirmpass" value="" type="password" onblur="ChkConfirmPswd()" class="form-control" placeholder="Confirm Password">
                             </div>
                             <div id="ErrorconfrmPasswrd" style="padding-left:26px;padding-bottom:10px;color:red;font-size:small;display:none"></div>
-            <button onclick="closepopupchngpswd()" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button onclick="changeadminPassword('@objAdmin.Id')" type="button" class="btn btn-primary">Save changes</button>
+            <button onclick="closepopupchngpswd()" type="button" class="btn btn-default" data-dismiss="modal">@GlobusMultiLanguageLib.Resources.Admin_AdminSetting_AdminSettingPartial_Close</button>
+        <button onclick="changeadminPassword('@objAdmin.Id')" type="button" class="btn btn-primary">@GlobusMultiLanguageLib.Resources.Admin_AdminSetting_AdminSettingPartial_SaveChanges</button>
           </form>
       </div>
     </div>

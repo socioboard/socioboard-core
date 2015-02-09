@@ -357,16 +357,16 @@
   </wsdl:binding>
   <wsdl:service name="LinkedinAccount">
     <wsdl:port name="LinkedinAccountSoap" binding="tns:LinkedinAccountSoap">
-      <soap:address location="http://api.socioboard.com/Services/LinkedinAccount.asmx" />
+      <soap:address location="http://devapi.socioboard.com/Services/LinkedinAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="LinkedinAccountSoap12" binding="tns:LinkedinAccountSoap12">
-      <soap12:address location="http://api.socioboard.com/Services/LinkedinAccount.asmx" />
+      <soap12:address location="http://devapi.socioboard.com/Services/LinkedinAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="LinkedinAccountHttpGet" binding="tns:LinkedinAccountHttpGet">
-      <http:address location="http://api.socioboard.com/Services/LinkedinAccount.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/LinkedinAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="LinkedinAccountHttpPost" binding="tns:LinkedinAccountHttpPost">
-      <http:address location="http://api.socioboard.com/Services/LinkedinAccount.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/LinkedinAccount.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

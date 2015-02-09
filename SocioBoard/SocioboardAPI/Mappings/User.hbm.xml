@@ -83,5 +83,9 @@
       <column name="IsEmailKeyUsed"  />
     </property>
 
+    <property name="Ewallet">
+      <column name="Ewallet"  />
+    </property>
+    
   </class>
 </hibernate-mapping>

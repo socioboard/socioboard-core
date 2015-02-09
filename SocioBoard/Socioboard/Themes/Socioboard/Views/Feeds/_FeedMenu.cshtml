@@ -1,130 +1,163 @@
 ﻿@using Domain.Socioboard.Domain;
+@using System.Web.Script.Serialization;
 @{
     Layout = null;
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
     int Cnt = 0;
+    int pcount = 0;
 }
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        debugger;
+        //alert('my test');
+        //try {
+        //    var ff = $('#first-profile-load_0').attr('onclick');
+        //    //alert(ff);
+        //    var myid = ff.replace('facebookdetails(', '').replace(');', '').replace(/'/g, '');
+        //    facebookdetails(myid);
+        //} catch (e) {
+        //    alert(e);
+        //}
+        try {
+            var x = $('#feeds > ul > li > ul > li');
+            if (x.length > 0) {
+                $('#feeds > ul').addClass('collapse in');
+                //$('#feeds > ul > li > ul').addClass('collapse in');
+                $('#feeds > ul > li > ul > li')[0].click();
+            }
+        } catch (e) {
 
-<a href="#"><i class="fa fa-rss fa-fw fa-2x"></i><span class="tweaked-margin"> Feeds</span><i class="fa arrow"></i></a>
+        }
+    });
+
+   
+</script>
+
+
+<a href="#"><i class="fa fa-link fa-2x"></i><span class="tweaked-margin">@GlobusMultiLanguageLib.Resources.Feeds_FeedMenu_Feeds</span><i class="fa arrow"></i></a>
 <ul class="nav nav-second-level">
     @foreach (var item in (Dictionary<string, List<object>>)Model)
     {
-        
-            if (item.Key == "facebook")
+        if (item.Key == "facebook")
+        {
+            List<object> lstFacebookAccount = (List<object>)item.Value;
+            string profileimage = string.Empty;
+            if (lstFacebookAccount.Count > 0)
             {
-                List<object> lstFacebookAccount = (List<object>)item.Value;
-                string profileimage = string.Empty;
-                if (lstFacebookAccount.Count > 0)
-                {
         <li>
-            <a href="#">Facebook <span class="fa arrow"></span></a>
+            <a href="#">@GlobusMultiLanguageLib.Resources.Feeds_FeedMenu_Facebook <span class="fa arrow"></span></a>
             <ul class="nav nav-third-level">
                 @foreach (var facebook in lstFacebookAccount)
                 {
                     FacebookAccount objFacebookAccount = (FacebookAccount)facebook;
-                    <li onclick="facebookdetails('@objFacebookAccount.FbUserId');">
+                    <li onclick="facebookdetails('@objFacebookAccount.FbUserId');" id="first-profile-load_@pcount">
                         <a href="#">@objFacebookAccount.FbUserName</a>
                     </li> 
+                    pcount++;
                 }
             </ul>
             <!-- /.nav-third-level -->
         </li>
-                }
             }
-            if (item.Key == "twitter")
+        }
+        if (item.Key == "twitter")
+        {
+            List<object> lstTwitterAccount = (List<object>)item.Value;
+            string profileimage = string.Empty;
+            if (lstTwitterAccount.Count > 0)
             {
-                List<object> lstTwitterAccount = (List<object>)item.Value;
-                string profileimage = string.Empty;
-                if (lstTwitterAccount.Count > 0)
-                {
         <li>
-            <a href="#">Twitter <span class="fa arrow"></span></a>
+            <a href="#">@GlobusMultiLanguageLib.Resources.Feeds_FeedMenu_Twitter <span class="fa arrow"></span></a>
             <ul class="nav nav-third-level">
                 @foreach (var twitterAccount in lstTwitterAccount)
                 {
                     TwitterAccount objTwitterAccount = (TwitterAccount)twitterAccount;
-                    <li onclick="twitterdetails('@objTwitterAccount.TwitterUserId');">
+                    <li onclick="twitterdetails('@objTwitterAccount.TwitterUserId');" id="first-profile-load_@pcount">
                         <a href="#">@objTwitterAccount.TwitterScreenName</a>
                     </li> 
+                    pcount++;
                 }
 
             </ul>
             <!-- /.nav-third-level -->
         </li>
-                }
             }
-            if (item.Key == "linkedin" || item.Key == "linkedincompanypage")
-            {
+        }
+        if (item.Key == "linkedin" || item.Key == "linkedincompanypage")
+        {
 
-                if (Cnt == 0)
-                {
+            if (Cnt == 0)
+            {
                     @:<li>
-                    @:<a href="#">LinkedIn <span class="fa arrow"></span></a>
+                    @:<a href="#">@GlobusMultiLanguageLib.Resources.Feeds_FeedMenu_Linkedin <span class="fa arrow"></span></a>
                     @:<ul class="nav nav-third-level">   
                  Cnt++;
-                }
+            }
 
 
-                if (item.Key == "linkedin")
+            if (item.Key == "linkedin")
+            {
+                List<object> lstLinkedinAccount = (List<object>)item.Value;
+                string profileimage = string.Empty;
+                if (lstLinkedinAccount.Count > 0)
                 {
-                    List<object> lstLinkedinAccount = (List<object>)item.Value;
-                    string profileimage = string.Empty;
-                    if (lstLinkedinAccount.Count > 0)
-                    {
 
                       <li>
-                      <a href="#">LinkedIn Account<span class="fa arrow"></span></a>
+                      <a href="#">@GlobusMultiLanguageLib.Resources.Feeds_FeedMenu_LinkedinAccount<span class="fa arrow"></span></a>
                       <ul class="nav nav-third-level">
                       @foreach (var linkedin in lstLinkedinAccount)
                       {
-                          if(linkedin!=null)
+                          if (linkedin != null)
                           {
-                               LinkedInAccount objFacebookAccount = (LinkedInAccount)linkedin;
-                               <li onclick="linkedindetails('@objFacebookAccount.LinkedinUserId');">
+                              LinkedInAccount objFacebookAccount = (LinkedInAccount)linkedin;
+                               <li onclick="linkedindetails('@objFacebookAccount.LinkedinUserId');" id="first-profile-load_@pcount">
                                <a href="#">@objFacebookAccount.LinkedinUserName</a>
                                 </li> 
+                              pcount++;
                           }
-                         
+
+
                       }
                           </ul>
                                 </li>
              
                
            
-                    }
                 }
+            }
 
 
-                if (item.Key == "linkedincompanypage")
+            if (item.Key == "linkedincompanypage")
+            {
+                List<object> lstLinkedInCompanyPage = (List<object>)item.Value;
+                string profileimage = string.Empty;
+                if (lstLinkedInCompanyPage.Count > 0)
                 {
-                    List<object> lstLinkedInCompanyPage = (List<object>)item.Value;
-                    string profileimage = string.Empty;
-                    if (lstLinkedInCompanyPage.Count > 0)
-                    {
 
                         <li>
-                        <a href="#">LinkedIn Company Page<span class="fa arrow"></span></a>
+                        <a href="#">@GlobusMultiLanguageLib.Resources.Feeds_FeedMenu_LinkedinCompanyPage<span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level">
                         @foreach (var linkedin in lstLinkedInCompanyPage)
                         {
-                            if(linkedin != null)
+                            if (linkedin != null)
                             {
-                                 LinkedinCompanyPage objLiCompanyPage = (LinkedinCompanyPage)linkedin;
-                               <li onclick="linkedinpagedetails('@objLiCompanyPage.LinkedinPageId');">
+                                LinkedinCompanyPage objLiCompanyPage = (LinkedinCompanyPage)linkedin;
+                               <li onclick="linkedinpagedetails('@objLiCompanyPage.LinkedinPageId');" id="first-profile-load_@pcount">
                                <a href="#">@objLiCompanyPage.LinkedinPageName</a>
                                </li>
+                                pcount++;
                             }
-                            
+
                         }
                           </ul>
                                 </li>
-                    }
+                }
                 @:</ul>
                     <!-- /.nav-third-level -->
                 @:</li>
                                              
-                }
+            }
         }
         if (item.Key == "instagram")
         {
@@ -133,14 +166,15 @@
             if (lstInstagramAccount.Count > 0)
             {
         <li>
-            <a href="#">Instagram <span class="fa arrow"></span></a>
+            <a href="#">@GlobusMultiLanguageLib.Resources.Feeds_FeedMenu_Instragram <span class="fa arrow"></span></a>
             <ul class="nav nav-third-level">
                 @foreach (var Instagram in lstInstagramAccount)
                 {
                     InstagramAccount objInstagramAccount = (InstagramAccount)Instagram;
-                    <li onclick="Instagramdetails('@objInstagramAccount.InstagramId');">
+                    <li onclick="Instagramdetails('@objInstagramAccount.InstagramId');" id="first-profile-load_@pcount">
                         <a href="#">@objInstagramAccount.InsUserName</a>
                     </li> 
+                    pcount++;
                 }
             </ul>
             <!-- /.nav-third-level -->
@@ -154,14 +188,15 @@
             if (lstFacebookAccount.Count > 0)
             {
         <li>
-            <a href="#">Tumblr <span class="fa arrow"></span></a>
+            <a href="#">@GlobusMultiLanguageLib.Resources.Feeds_FeedMenu_Tumblr <span class="fa arrow"></span></a>
             <ul class="nav nav-third-level">
                 @foreach (var facebook in lstFacebookAccount)
                 {
                     TumblrAccount objTumblrAccount = (TumblrAccount)facebook;
-                    <li onclick="tumblrdetails('@objTumblrAccount.tblrUserName');">
+                    <li onclick="tumblrdetails('@objTumblrAccount.tblrUserName');" id="first-profile-load_@pcount">
                         <a href="#">@objTumblrAccount.tblrUserName</a>
                     </li> 
+                    pcount++;
                 }
             </ul>
             <!-- /.nav-third-level -->
@@ -175,14 +210,15 @@
             if (lstYoutubeAccount.Count > 0)
             {
         <li>
-            <a href="#">Youtube <span class="fa arrow"></span></a>
+            <a href="#">@GlobusMultiLanguageLib.Resources.Feeds_FeedMenu_Tumblr <span class="fa arrow"></span></a>
             <ul class="nav nav-third-level">
                 @foreach (var YoutubeAccount in lstYoutubeAccount)
                 {
                     YoutubeAccount objYoutubeAccount = (YoutubeAccount)YoutubeAccount;
-                    <li onclick="youtubedetails('@objYoutubeAccount.Ytuserid');">
+                    <li onclick="youtubedetails('@objYoutubeAccount.Ytuserid');" id="first-profile-load_@pcount">
                         <a href="#">@objYoutubeAccount.Ytusername</a>
                     </li> 
+                    pcount++;
                 }
 
             </ul>
@@ -190,6 +226,7 @@
         </li>
             }
         }
+       
     }
 </ul>
 

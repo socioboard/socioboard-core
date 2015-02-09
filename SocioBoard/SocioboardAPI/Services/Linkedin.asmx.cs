@@ -669,7 +669,94 @@ namespace Api.Socioboard.Services
              }
              return str;
          }
+         [WebMethod]
+         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+         public string ScheduleLinkedinGroupMessage(string scheduledmsgguid, string Userid, string profileid)
+         {
+             string str = string.Empty;
+             try
+             {
+                 LinkedInAccount linkacc;
+                 string authLink = string.Empty;
+                 LinkedInAccountRepository linkedinAccRepo = new LinkedInAccountRepository();
+                 objScheduledMessage = objScheduledMessageRepository.GetScheduledMessageDetails(Guid.Parse(scheduledmsgguid));
+                 GroupScheduleMessageRepository grpschedulemessagerepo = new GroupScheduleMessageRepository();
+                 Domain.Socioboard.Domain.GroupScheduleMessage _GroupScheduleMessage = grpschedulemessagerepo.GetScheduleMessageId(objScheduledMessage.Id);
+                 if (linkedinAccRepo.checkLinkedinUserExists(profileid, Guid.Parse(Userid)))
+                 {
+                     linkacc = linkedinAccRepo.getUserInformation(Guid.Parse(Userid), profileid);
+                 }
+                 else
+                 {
+                     linkacc = linkedinAccRepo.getUserInformation(profileid);
+                 }
+                 oAuthLinkedIn oauthlin = new oAuthLinkedIn();
+                 oauthlin.ConsumerKey = ConfigurationManager.AppSettings["LiApiKey"];
+                 oauthlin.ConsumerSecret = ConfigurationManager.AppSettings["LiSecretKey"];
+                 oauthlin.FirstName = linkacc.LinkedinUserName;
+                 oauthlin.Id = linkacc.LinkedinUserId;
+                 oauthlin.Token = linkacc.OAuthToken;
+                 oauthlin.TokenSecret = linkacc.OAuthSecret;
+                 oauthlin.Verifier = linkacc.OAuthVerifier;
 
+                 string imgurl = objScheduledMessage.PicUrl;
+                 string text = objScheduledMessage.ShareMessage;
+                 string[] arrtext = null;
+                 try
+                 {
+                     arrtext = System.Text.RegularExpressions.Regex.Split(text, "$%^_^%$");
+                     if (arrtext.Count() == 1)
+                     {
+                         arrtext = null;
+                         arrtext = text.Split(new string[] { "$%^_^%$" }, StringSplitOptions.None);
+                     }
+                 }
+                 catch (Exception ex)
+                 {
+                     return "somthing went wrong";
+                 }
+                 string Title = arrtext[0];
+                 string Message = arrtext[1];
+                 string response = string.Empty;
+                 if (linkacc != null)
+                 {
+                     try
+                     {
+                         if (string.IsNullOrEmpty(objScheduledMessage.ShareMessage) && string.IsNullOrEmpty(objScheduledMessage.PicUrl))
+                         {
+                             str = "There is no data in Share Message !";
+                         }
+                         else
+                         {
+                             SocialStream sociostream = new SocialStream();
+                             if (!string.IsNullOrEmpty(imgurl))
+                             {
+                                 imgurl = ConfigurationManager.AppSettings["DomainName"].ToString() + Regex.Split(imgurl, "wwwroot")[1].Replace("\\", "/");
+                                 response = sociostream.SetImagePostUpdate(oauthlin, _GroupScheduleMessage.GroupId, Message, Title, imgurl);
+                             }
+                             else
+                             {
+                                 response = sociostream.SetPostUpdate(oauthlin, _GroupScheduleMessage.GroupId, Message, Title);
+                             }
+                         }
+                     }
+                     catch (Exception ex)
+                     {
+                     }
+
+                     str = "Message post on linkedingroup for Id :" + linkacc.LinkedinUserId + ", Title: " + Title + " and Message: " + Message;
+                     ScheduledMessage schmsg = new ScheduledMessage();
+                     schmsg.UpdateScheduledMessageByMsgId(Guid.Parse(scheduledmsgguid));
+
+                 }
+             }
+             catch (Exception ex)
+             {
+                 Console.WriteLine(ex.Message);
+                 str = ex.Message;
+             }
+             return str;
+         }
          [WebMethod]
          [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
          public string getLinkedInData(string UserId, string LinkedinId)

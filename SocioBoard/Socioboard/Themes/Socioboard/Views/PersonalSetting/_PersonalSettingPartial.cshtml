@@ -23,7 +23,7 @@
     
 
 <div class="container-fluid">
-    <h1 class="page-header">Settings</h1>
+    <h1 class="page-header">@GlobusMultiLanguageLib.Resources.PersonalSetting_PersonalSettingPartial_Settings</h1>
     <div class="panel panel-default">
         <div class="panel-heading">
             @objUser.UserName
@@ -43,24 +43,26 @@
                             <div class="form-group">
                                @* <span class="input-group-addon">First Name</span>
                                 <input id="fname" value="@fname" type="text" class="form-control" placeholder="First Name">*@
-                                <label for="username-email">First Name</label><span class="pull-right text-danger">*</span>
+                                <label for="username-email">@GlobusMultiLanguageLib.Resources.PersonalSetting_PersonalSettingPartial_FirstName</label><span class="pull-right text-danger">*</span>
                         <input id="fname" value="@fname" type="text" class="form-control" placeholder="First Name">
                             </div>
                             <div class="form-group">
                               @*  <span class="input-group-addon">Last Name</span>
                                 <input id="lname" value="@lname" type="text" class="form-control" placeholder="Last Name">*@
-                                 <label for="username-email">Last Name</label><span class="pull-right text-danger">*</span>
+                                 <label for="username-email">@GlobusMultiLanguageLib.Resources.PersonalSetting_PersonalSettingPartial_LastName</label><span class="pull-right text-danger">*</span>
                         <input id="lname" value="@lname" type="text" class="form-control" placeholder="Last Name">
                             </div>
                             <div class="form-group">
                                 @*<span class="input-group-addon">Email Address</span>
                                 <input readonly="" id="email" value="@objUser.EmailId" type="text" class="form-control" placeholder="Email id">*@
-                                 <label for="username-email">E-mail Address</label><span class="pull-right text-danger">*</span>
+                                 <label for="username-email">@GlobusMultiLanguageLib.Resources.PersonalSetting_PersonalSettingPartial_Email</label><span class="pull-right text-danger">*</span>
                         <input id="email" placeholder="E-mail Id" value="@objUser.EmailId" type="text" class="form-control" readonly="true">
                             </div>
                             <div class="form-group">
-                            <button type="reset" class="btn btn-primary" data-toggle="modal" data-target="#ResetModal">Change Password</button>
-                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#ConfirmPassword">Reset Email</button>
+                                @* Commented & Edited by Sumit Gupta [27/01/15] *@
+                            @*<button type="reset" class="btn btn-primary" data-toggle="modal" data-target="#ResetModal">Change Password</button>*@
+                            <button type="reset" class="btn btn-primary" data-toggle="modal" @*onclick="SendResetPasswordMail()"*@ data-target="#ResetModal">@GlobusMultiLanguageLib.Resources.PersonalSetting_PersonalSettingPartial_ChangePassword</button>
+                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#ConfirmPassword">@GlobusMultiLanguageLib.Resources.PersonalSetting_PersonalSettingPartial_ResetEmail</button>
                                 </div>
                           
                             @*<div class="form-group">
@@ -71,14 +73,14 @@
 
                             <div class="form-group">
                                @* <img src="@objUser.ProfileUrl" class="img-circle profilePic" alt="User Avatar">*@
-                                <label>Team members will see the avatar you have set.</label>
+                                <label>@GlobusMultiLanguageLib.Resources.PersonalSetting_PersonalSettingPartial_TeamMemberAvatar</label>
                                 <div><input  id="input-24" type="file" class="btn btn-default col-md-6" onchange="AddImage()"></div>
                             </div>
 
                             <div class="form-group">
 
                                 <div class="time_zone">
-                                  <label for="time_zone">Time Zone</label>  
+                                  <label for="time_zone">@GlobusMultiLanguageLib.Resources.PersonalSetting_PersonalSettingPartial_TimeZone</label>  
                                 </div>
                                 <div class="ps_select">
                                     <select id="ContentPlaceHolder1_ddlTimeZone" class="select form-control">
@@ -96,10 +98,10 @@
                                     </select>
                                 </div>
                             </div>
-                            <button onclick="changesetting('@objUser.Id')" id="savepersonalsetting" type="button" class="btn btn-warning">Save</button>
+                            <button onclick="changesetting('@objUser.Id')" id="savepersonalsetting" type="button" class="btn btn-warning">@GlobusMultiLanguageLib.Resources.Admin_AdminSetting_AdminSettingPartial_Save</button>
                         
-                          <button id="MonthlyUpgrade" onclick="Upgradeplan(this)" class="btn btn-success" type="submit">Upgrade to Monthly plan</button>
-                            <button id="YearlyUpgrade" onclick="Upgradeplan(this)" class="btn btn-success" type="submit">Upgrade to yearly plan</button>
+                          <button id="MonthlyUpgrade" onclick="Upgradeplan(this)" class="btn btn-success" type="submit">@GlobusMultiLanguageLib.Resources.PersonalSetting_PersonalSettingPartial_UpgradeMonthly</button>
+                            <button id="YearlyUpgrade" onclick="Upgradeplan(this)" class="btn btn-success" type="submit">@GlobusMultiLanguageLib.Resources.PersonalSetting_PersonalSettingPartial_UpgradeYearly</button>
                         
                         
                         </form>
@@ -120,8 +122,8 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Change Password</h4>
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.PersonalSetting_PersonalSettingPartial_Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">@GlobusMultiLanguageLib.Resources.PersonalSetting_PersonalSettingPartial_ChangePassword</h4>
       </div>
       <form class="modal-body">
                             <div class="form-group input-group">
@@ -136,8 +138,8 @@
                                 <span class="input-group-addon"></span>
                                 <input id="confirmpass" value="" type="password" class="form-control" placeholder="Confirm Password">
                             </div>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button onclick="changePassword('@objUser.EmailId')" type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">@GlobusMultiLanguageLib.Resources.PersonalSetting_PersonalSettingPartial_Close</button>
+        <button onclick="changePassword('@objUser.EmailId')" type="button" class="btn btn-primary">@GlobusMultiLanguageLib.Resources.PersonalSetting_PersonalSettingPartial_SaveChanges</button>
           </form>
       </div>
     </div>
@@ -151,15 +153,15 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Reset Email</h4>
+        <h4 class="modal-title" id="myModalLabel">@GlobusMultiLanguageLib.Resources.PersonalSetting_PersonalSettingPartial_ResetEmail</h4>
       </div>
       <div class="modal-body">
                             <div class="form-group input-group">
                                 <span class="input-group-addon"></span>
                                 <input id="newemail" value="" type="Email" class="form-control" placeholder="New Email">
                             </div>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="ChangeMail" onclick="ResetEmailId()" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">@GlobusMultiLanguageLib.Resources.PersonalSetting_PersonalSettingPartial_Close</button>
+        <button id="ChangeMail" onclick="ResetEmailId()" class="btn btn-primary">@GlobusMultiLanguageLib.Resources.PersonalSetting_PersonalSettingPartial_SaveChanges</button>
           </div>
       </div>
     </div>
@@ -173,16 +175,16 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Please Re-enter Your Password</h4>
+        <h4 class="modal-title" id="myModalLabel">@GlobusMultiLanguageLib.Resources.PersonalSetting_PersonalSettingPartial_ReEnterPassword</h4>
       </div>
       <div class="modal-body">
-          <h5>For your security, you must re-enter your password to continue.</h5>
+          <h5>@GlobusMultiLanguageLib.Resources.PersonalSetting_PersonalSettingPartial_SecurityReEnterPassword</h5>
                             <div class="form-group input-group">
-                                <span class="input-group-addon">PassWord</span>
+                                <span class="input-group-addon">@GlobusMultiLanguageLib.Resources.PersonalSetting_PersonalSettingPartial_Password</span>
                                 <input id="CnfrmPassword" value="" type="Password" class="form-control" placeholder="Password">
                             </div>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="ConfrmPassword" onclick="ConfirmPassword()" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">@GlobusMultiLanguageLib.Resources.PersonalSetting_PersonalSettingPartial_Close</button>
+        <button id="ConfrmPassword" onclick="ConfirmPassword()" class="btn btn-primary">@GlobusMultiLanguageLib.Resources.PersonalSetting_PersonalSettingPartial_Submit</button>
           </div>
       </div>
     </div>
@@ -227,5 +229,8 @@
             $("#ChangeMail").click();
         }
     });
+
+   
+
 </script>
 @* End scripts upload image *@

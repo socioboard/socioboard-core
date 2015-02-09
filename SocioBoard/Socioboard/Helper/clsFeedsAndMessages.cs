@@ -227,6 +227,8 @@ namespace Socioboard.Helper
             return ds;
         }
 
+       
+
         public DataSet bindFeedsIntoDataTable(User user, string network)
         {
             Messages mstable = new Messages();
@@ -440,6 +442,305 @@ namespace Socioboard.Helper
                     Console.WriteLine(ex.StackTrace);
                 }
                  
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            return ds;
+        }
+
+        public DataSet bindMessagesIntoDataTable(Guid id, int noOfDataToSkip)
+        {
+            Api.TeamMemberProfile.TeamMemberProfile objTeamMemberProfileRepository = new Api.TeamMemberProfile.TeamMemberProfile();
+            List<TeamMemberProfile> alstprofiles = (List<Domain.Socioboard.Domain.TeamMemberProfile>)new JavaScriptSerializer().Deserialize(objTeamMemberProfileRepository.GetTeamMemberProfilesByTeamId(id.ToString()), typeof(List<Domain.Socioboard.Domain.TeamMemberProfile>));
+            Api.FacebookFeed.FacebookFeed objApiFacebookFeed = new Api.FacebookFeed.FacebookFeed();
+            Api.TwitterMessage.TwitterMessage objApiTwitterMessage = new Api.TwitterMessage.TwitterMessage();
+
+            Messages mstable = new Messages();
+
+            DataSet ds = DataTableGenerator.CreateDataSetForTable(mstable);
+
+            foreach (TeamMemberProfile item in alstprofiles)
+            {
+                try
+                {
+                    if (item.ProfileType == "facebook")
+                    {
+                        //List<Domain.Socioboard.Domain.FacebookFeed> alstfeedfb = (List<Domain.Socioboard.Domain.FacebookFeed>)new JavaScriptSerializer().Deserialize(objApiFacebookFeed.getUnreadMessages(item.ProfileId), typeof(List<Domain.Socioboard.Domain.FacebookFeed>)); ;
+
+                        //foreach (FacebookFeed facebookmsg in alstfeedfb)
+                        //{
+                        //    ds.Tables[0].Rows.Add(facebookmsg.ProfileId, "facebook", facebookmsg.FromId, facebookmsg.FromName, facebookmsg.FromProfileUrl, facebookmsg.FeedDate, facebookmsg.FeedDescription, facebookmsg.FbComment, facebookmsg.FbLike, facebookmsg.FeedId, facebookmsg.Type, facebookmsg.ReadStatus);
+                        //}
+
+                        //Updated by SumitGupta [09-02-2015]
+                        //List<FacebookMessage> lstfbmsg = (List<FacebookMessage>)new JavaScriptSerializer().Deserialize(objApiFacebookMessage.getAllFacebookMessagesOfUserByProfileId(item.ProfileId), typeof(List<FacebookMessage>));
+                        List<FacebookMessage> lstfbmsg = (List<FacebookMessage>)new JavaScriptSerializer().Deserialize(objApiFacebookMessage.getAllFacebookMessagesOfUserByProfileIdWithRange(item.ProfileId, noOfDataToSkip.ToString()), typeof(List<FacebookMessage>));
+                        foreach (FacebookMessage facebookmsg in lstfbmsg)
+                        {
+                            try
+                            {
+                                ds.Tables[0].Rows.Add(facebookmsg.ProfileId, "facebook", facebookmsg.FromId, facebookmsg.FromName, facebookmsg.FromProfileUrl, facebookmsg.MessageDate, facebookmsg.Message, facebookmsg.FbComment, facebookmsg.FbLike, facebookmsg.MessageId, facebookmsg.Type, 1);
+                            }
+                            catch (Exception ex)
+                            {
+                                logger.Error("Exception Message : " + ex.Message);
+                                logger.Error("Exception Message : " + ex.StackTrace);
+                            }
+                        }
+
+                    }
+                    else if (item.ProfileType == "twitter")
+                    {
+                        List<Domain.Socioboard.Domain.TwitterMessage> lstmsgtwtuser = (List<TwitterMessage>)new JavaScriptSerializer().Deserialize(objApiTwitterMessage.getUnreadMessages(item.ProfileId), typeof(List<Domain.Socioboard.Domain.TwitterMessage>));
+
+                        foreach (TwitterMessage lst in lstmsgtwtuser)
+                        {
+                            try
+                            {
+                                ds.Tables[0].Rows.Add(lst.ProfileId, "twitter", lst.FromId, lst.FromScreenName, lst.FromProfileUrl, lst.MessageDate, lst.TwitterMsg, "", "", lst.MessageId, lst.Type, lst.ReadStatus);
+                            }
+                            catch (Exception ex)
+                            {
+                                logger.Error("Exception Message : " + ex.Message);
+                                logger.Error("Exception Message : " + ex.StackTrace);
+                            }
+                        }
+                    }
+                    else if (item.ProfileType == "googleplus")
+                    {
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    logger.Error("Exception Message : " + ex.Message);
+                    logger.Error("Exception Message : " + ex.StackTrace);
+                }
+            }
+            foreach (TeamMemberProfile item in alstprofiles)
+            {
+                if (item.ProfileType == "facebook")
+                {
+                    try
+                    {
+
+                        facebookid += item.ProfileId + ",";
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                }
+                else if (item.ProfileType == "twitter")
+                {
+                    try
+                    {
+
+                        twitterid += item.ProfileId + ",";
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                }
+                else if (item.ProfileType == "googleplus")
+                {
+                    try
+                    {
+
+                        googleplusid += item.ProfileId + ",";
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                }
+
+            }
+            if (facebookid != "")
+            {
+                facebookid = facebookid.Substring(0, facebookid.Length - 1);
+            }
+            if (twitterid != "")
+            {
+                twitterid = twitterid.Substring(0, twitterid.Length - 1);
+            }
+            if (googleplusid != "")
+            {
+                googleplusid = googleplusid.Substring(0, googleplusid.Length - 1);
+            }
+
+            // suraj===============================================================================
+            //List<FacebookFeed> alstfbmsgs = (List<FacebookFeed>)new JavaScriptSerializer().Deserialize(objApiFacebookFeed.getAllReadFbFeeds(facebookid), typeof(List<FacebookFeed>));
+
+            //try
+            //{
+            //    foreach (FacebookFeed facebookmsg in alstfbmsgs)
+            //    {
+            //        try
+            //        {
+            //            ds.Tables[0].Rows.Add(facebookmsg.ProfileId, "facebook", facebookmsg.FromId, facebookmsg.FromName, facebookmsg.FromProfileUrl, facebookmsg.FeedDate, facebookmsg.FeedDescription, facebookmsg.FbComment, facebookmsg.FbLike, facebookmsg.FeedId, facebookmsg.Type, facebookmsg.ReadStatus);
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            Console.WriteLine(ex.StackTrace);
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.StackTrace);
+            //}
+
+            //===============================================================================
+
+
+            List<TwitterMessage> lstmsgtwt = (List<TwitterMessage>)new JavaScriptSerializer().Deserialize(objApiTwitterMessage.getAlltwtMessagesOfUser(twitterid), typeof(List<TwitterMessage>));
+
+            try
+            {
+                foreach (TwitterMessage lst in lstmsgtwt)
+                {
+                    try
+                    {
+                        ds.Tables[0].Rows.Add(lst.ProfileId, "twitter", lst.FromId, lst.FromScreenName, lst.FromProfileUrl, lst.MessageDate, lst.TwitterMsg, "", "", lst.MessageId, lst.Type, lst.ReadStatus);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+
+
+            #region Commented G+ code, to be used later
+            //GooglePlusActivitiesRepository objActRepository = new GooglePlusActivitiesRepository();
+            //List<GooglePlusActivities> lstmsggpl = objActRepository.getAllgplusOfUser(googleplusid);
+            //try
+            //{
+            //    foreach (GooglePlusActivities lst in lstmsggpl)
+            //    {
+            //        try
+            //        {
+            //            ds.Tables[0].Rows.Add(lst.GpUserId, "googleplus", lst.FromId, lst.FromUserName, lst.FromProfileImage, lst.PublishedDate, lst.Content, "", "", lst.ActivityId, "activities");
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            Console.WriteLine(ex.StackTrace);
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.StackTrace);
+            //} 
+            #endregion
+
+            return ds;
+        }
+
+        public DataSet bindFeedMessageIntoDataTable(string[] profid, int noOfDataToSkip)
+        {
+            string fbProfileid = string.Empty;
+            string twtProfileid = string.Empty;
+            string profilId = string.Empty;
+            Messages mstable = new Messages();
+            DataSet ds = DataTableGenerator.CreateDataSetForTable(mstable);
+            try
+            {
+                foreach (var item in profid)
+                {
+                    if (item.Contains("fb_"))
+                    {
+                        profilId = item.ToString().Split('_')[1];
+                        fbProfileid += profilId + ',';
+                    }
+                    else if (item.Contains("twt_"))
+                    {
+                        profilId = item.ToString().Split('_')[1];
+                        twtProfileid += profilId + ',';
+                    }
+                    else
+                    {
+                        try
+                        {
+
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                        }
+                    }
+                }
+
+                try
+                {
+                    fbProfileid = fbProfileid.Substring(0, fbProfileid.Length - 1);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                }
+                try
+                {
+                    twtProfileid = twtProfileid.Substring(0, twtProfileid.Length - 1);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                }
+
+                //Updated by SumitGupta [09-02-2015]
+                //List<FacebookMessage> alstfbmsgs = (List<FacebookMessage>)new JavaScriptSerializer().Deserialize(objApiFacebookMessage.GetAllMessageDetail(fbProfileid), typeof(List<FacebookMessage>));
+                List<FacebookMessage> alstfbmsgs = (List<FacebookMessage>)new JavaScriptSerializer().Deserialize(objApiFacebookMessage.GetAllMessageDetailWithRange(fbProfileid, noOfDataToSkip.ToString()), typeof(List<FacebookMessage>));
+                try
+                {
+                    foreach (FacebookMessage facebookmsg in alstfbmsgs)
+                    {
+                        try
+                        {
+                            ds.Tables[0].Rows.Add(facebookmsg.ProfileId, "facebook", facebookmsg.FromId, facebookmsg.FromName, facebookmsg.FromProfileUrl, facebookmsg.MessageDate, facebookmsg.Message, facebookmsg.FbComment, facebookmsg.FbLike, facebookmsg.MessageId, facebookmsg.Type);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                }
+
+
+
+                List<TwitterMessage> lstmsgtwt = (List<TwitterMessage>)new JavaScriptSerializer().Deserialize(objApiTwitterMessage.getAlltwtMessages(twtProfileid), typeof(List<TwitterMessage>));
+                try
+                {
+                    foreach (TwitterMessage lst in lstmsgtwt)
+                    {
+                        try
+                        {
+                            ds.Tables[0].Rows.Add(lst.ProfileId, "twitter", lst.FromId, lst.FromScreenName, lst.FromProfileUrl, lst.MessageDate, lst.TwitterMsg, "", "", lst.MessageId, lst.Type, lst.ReadStatus);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                }
+
             }
             catch (Exception ex)
             {

@@ -37,5 +37,14 @@ namespace Api.Socioboard.Helper
            return DateTime.ParseExact(date, format, CultureInfo.InvariantCulture);
        }
 
+       public static string GenerateRandomUniqueString()
+       {
+           Guid g = Guid.NewGuid();
+           string GuidString = Convert.ToBase64String(g.ToByteArray());
+           GuidString = GuidString.Replace("=", "");
+           GuidString = GuidString.Replace("+", "");
+           return GuidString;
+       }
+
     }
 }

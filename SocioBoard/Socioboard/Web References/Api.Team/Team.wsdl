@@ -779,16 +779,16 @@
   </wsdl:binding>
   <wsdl:service name="Team">
     <wsdl:port name="TeamSoap" binding="tns:TeamSoap">
-      <soap:address location="http://devapi.socioboard.com/Services/Team.asmx" />
+      <soap:address location="http://api.socioboard.com/Services/Team.asmx" />
     </wsdl:port>
     <wsdl:port name="TeamSoap12" binding="tns:TeamSoap12">
-      <soap12:address location="http://devapi.socioboard.com/Services/Team.asmx" />
+      <soap12:address location="http://api.socioboard.com/Services/Team.asmx" />
     </wsdl:port>
     <wsdl:port name="TeamHttpGet" binding="tns:TeamHttpGet">
-      <http:address location="http://devapi.socioboard.com/Services/Team.asmx" />
+      <http:address location="http://api.socioboard.com/Services/Team.asmx" />
     </wsdl:port>
     <wsdl:port name="TeamHttpPost" binding="tns:TeamHttpPost">
-      <http:address location="http://devapi.socioboard.com/Services/Team.asmx" />
+      <http:address location="http://api.socioboard.com/Services/Team.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

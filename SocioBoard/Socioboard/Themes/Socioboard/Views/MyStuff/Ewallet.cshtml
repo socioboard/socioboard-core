@@ -1,0 +1,162 @@
+﻿
+<div id="page-wrapper">
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header col-md-6">@GlobusMultiLanguageLib.Resources.MyStuff_EWallet_EWallet</h1>
+        <div class="page-header pull-right btn btn-danger" id="btn-input-goto-money-wallet" onclick="loadewallet()">@GlobusMultiLanguageLib.Resources.MyStuff_EWallet_AddMoneyToWallet</div>
+    </div>
+    
+</div>
+<div id="Ewallet-Detail" class="panel-body">
+    <img src="~/Themes/Socioboard/Contents/img/loader.gif" />
+</div>
+
+
+
+
+    </div>
+<div class="modal fade" id="SummaryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                @*<div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <h4 class="modal-title"><strong>Chanchalsantra@globussoft.com</strong></h4>
+                                  </div>
+                                  <div class="modal-body">
+                                     <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Month</th>
+                                            <th>Affiliate Fee</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Mark</td>
+                                            <td>10</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Jacob</td>
+                                            <td>10</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>10</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Mark</td>
+                                            <td>10</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Jacob</td>
+                                            <td>10</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>10</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Mark</td>
+                                            <td>10</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Jacob</td>
+                                            <td>10</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>10</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Mark</td>
+                                            <td>10</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Jacob</td>
+                                            <td>10</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>10</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>Total</td>
+                                            <td>120</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>*@
+                            </div>
+<script>
+    $(document).ready(function () {
+        loadewalletactivity();
+    });
+    function loadewallet() {
+        debugger;
+        $("#btn-input-goto-money-wallet").removeAttr("onclick");
+        $("#btn-input-goto-money-wallet").attr("onclick","loadewalletactivity()");
+        $.ajax({
+            type: "POST",
+            url: "../MyStuff/LoadEwalletPartial",
+            success: function (msg) {
+                $('#Ewallet-Detail').html(msg);
+                $("#btn-input-goto-money-wallet").html("go back");
+            },
+            error: function () {
+                alert("Somthing Went Wrong!!");
+            }
+        });
+        
+    }
+    function loadewalletactivity()
+    {
+        $("#btn-input-goto-money-wallet").removeAttr("onclick");
+        $("#btn-input-goto-money-wallet").attr("onclick", "loadewallet()");
+        $.ajax({
+            type: "POST",
+            url: "../MyStuff/LoadEwalletActivityPartial",
+            success: function (msg) {
+                $('#Ewallet-Detail').html(msg);
+                $("#btn-input-goto-money-wallet").html("Add Money to Wallet");
+            },
+            error: function () {
+                alert("Somthing Went Wrong!!");
+            }
+        });
+    }
+    function OpnSummaryModel(frndid)
+    {
+        debugger;
+        $.ajax({
+            type: "POST",
+            url: "../MyStuff/OpenSummayModel?FriendId=" + frndid,
+            success: function (data) {
+                $("#SummaryModal").html(data);
+            }
+        });
+    }
+     
+
+</script>

@@ -1,4 +1,5 @@
 ﻿@using Domain.Socioboard.Domain;
+@using System.Web.Script.Serialization;
 @{
     Layout = null;
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
@@ -63,7 +64,33 @@
         </li>
                 }
             }
+            else if (item.Key == "linkedin") 
+            {
+                Socioboard.Api.LinkedinAccount.LinkedinAccount ApiLinkedinAccount=new Socioboard.Api.LinkedinAccount.LinkedinAccount();
+                List<object> lstdic = (List<object>)item.Value;
+                ScheduledMessage objSchedule=(ScheduledMessage)lstdic[0];
+                LinkedInAccount objLinkedInAccount = (LinkedInAccount)(new JavaScriptSerializer().Deserialize(ApiLinkedinAccount.GetLinkedinAccountDetailsById(objSchedule.UserId.ToString(),objSchedule.ProfileId), typeof(LinkedInAccount)));
+                foreach (ScheduledMessage _ScheduledMessage in lstdic)
+                {
+                    <li class="left clearfix">
+                        <span class="chat-img pull-left">
+                            <img src="@objLinkedInAccount.ProfileImageUrl" class="img-circle profilePic" alt="User Avatar">
+                        </span>
+                        <div class="chat-body clearfix">
+                            <div>
+                                <strong class="primary-font">@objLinkedInAccount.LinkedinUserName</strong>
+                                <small class="pull-left text-muted">
+                                    <i class="fa fa-clock-o fa-fw"></i>@_ScheduledMessage.ScheduleTime
+                                </small>
+                            </div>
+                            <p>
+                                @_ScheduledMessage.ShareMessage
+                            </p>
+                        </div>
+                    </li>
+            }
         }
+    }
     }
 </ul>
 

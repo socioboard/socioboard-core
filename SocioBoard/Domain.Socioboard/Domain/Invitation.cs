@@ -8,13 +8,13 @@ namespace Domain.Socioboard.Domain
     public class Invitation
     {
         public Guid Id { get; set; }
-        public string InvitationBody { get; set; }
-        public string Subject { get; set; }
-        public string SenderName { get; set; }
-        public string FriendName { get; set; }
         public string SenderEmail { get; set; }
+        public Guid SenderUserId { get; set; }
         public string FriendEmail { get; set; }
-        public DateTime LastEmailSendDate { get; set; }
-        public string Status { get; set; }
+        public Guid FriendUserId { get; set; }
+        public string InvitationCode { get; set; }
+        public int Status { get; set; }
+        public DateTime SendInvitationDate { get; set; }
+        public DateTime AcceptInvitationDate { get; set; }
     }
 }

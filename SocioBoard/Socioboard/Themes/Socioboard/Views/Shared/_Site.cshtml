@@ -18,12 +18,12 @@
 
 
     <title>SocioBoard</title>
-   
+
     <!-- Bootstrap Core CSS -->
     <link href="/Themes/@path/Contents/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- MetisMenu CSS -->
-   @* <link href="/Themes/@path/Contents/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">*@
+    @* <link href="/Themes/@path/Contents/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">*@
 
     <!-- Timeline CSS -->
     <link href="/Themes/@path/Contents/css/plugins/timeline.css" rel="stylesheet" />
@@ -50,10 +50,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    @*<script type="text/javascript" src="/Themes/@path/Contents/js/jquery-1.9.1.min.js"></script>*@
-    <script src="/Themes/@path/Contents/js/jquery-1.11.0.js"></script>
-    <script type="text/javascript" src="/Themes/Socioboard/Contents/js/jquery-cookie-plugin.js"></script>
-    <script src="/Themes/@path/Contents/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Themes/@path/Contents/js/jquery-1.9.1.min.js"></script>
 
     <script src="/Themes/@path/Contents/js/Home.js" type="text/javascript"></script>
 
@@ -70,7 +67,7 @@
     <!--Edit by Vikas-->
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
-    <script type="text/javascript" src="/Themes/Socioboard/Contents/js/highcharts.js"></script>
+   
     <script type="text/javascript" src="/Themes/Socioboard/Contents/js/exporting.js"></script>
 </head>
 
@@ -93,8 +90,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="../Home/Index">
-                    <img src="/Themes/@path/Contents/img/logo.png" alt="Socio Board" style="
-    margin-top: -14px;" /></a>
+                    <img src="/Themes/@path/Contents/img/logo.png" alt="Socio Board" style="margin-top: -14px;" /></a>
             </div>
             <!-- /.navbar-header -->
 
@@ -128,28 +124,41 @@
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                       @if (!string.IsNullOrEmpty(objUser.ProfileUrl)) 
+                       @if (!string.IsNullOrEmpty(objUser.ProfileUrl))
                        {
                            string[] profileUrl = objUser.ProfileUrl.Split(new string[] { "Socioboard" }, StringSplitOptions.None);
                            string imgurl = "/Themes/Socioboard" + profileUrl[1];
                         <strong> @User.Identity.Name </strong><img src="@imgurl" class=" headerProfilePic"><i class="fa fa-fw fa-caret-down fa-2x"></i>                           
                        }
-                        else
-                        {
-                        <strong> @User.Identity.Name </strong><img src="https://pbs.twimg.com/profile_images/507048905217802240/MjAkkHK_.jpeg" class=" headerProfilePic"><i class="fa fa-fw fa-caret-down fa-2x"></i>                           
+                       else
+                       {
+                        <strong> @User.Identity.Name </strong><img src="" class=" headerProfilePic"><i class="fa fa-fw fa-caret-down fa-2x"></i>                           
                        }
                     </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="../UserGroup/Index"><img src="/Themes/@path/Contents/img/group.png">Users and Groups</a>
+                    @*<ul class="dropdown-menu dropdown-user">
+                        <li><a href="../UserGroup/Index"><img src="/Themes/@path/Contents/img/group.png">User and Group</a>
                         </li>
                          <li class="divider"></li>
-                        <li><a href="../BusinessSetting/Index"><img src="/Themes/@path/Contents/img/buisness icon.png">Business Settings</a>
+                        <li><a href="../BusinessSetting/Index"><img src="/Themes/@path/Contents/img/buisness icon.png">Buisness Setting</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="../PersonalSetting/Index"><i class="fa fa-gear fa-2x"></i>Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="../Index/Logout"><i class="fa fa-sign-out fa-2x"></i>Log Out</a>
+                        <li><a href="../Index/Logout"><i class="fa fa-sign-out fa-2x"></i>Logout</a>
+                        </li>
+                    </ul>*@
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="../UserGroup/Index"><i class="fa fa-user fa-2x"></i><span class="" style="margin-left:8px">@GlobusMultiLanguageLib.Resources.Shared_Site_UsersandGroups</span></a>
+                        </li>
+                         <li class="divider"></li>
+                        <li><a href="../BusinessSetting/Index"><i class="fa fa-briefcase fa-2x" style="margin-left:-5px"></i><span style="margin-left:8px">@GlobusMultiLanguageLib.Resources.Shared_Site_BusinessSettings</span></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="../PersonalSetting/Index"><i class="fa fa-gear fa-2x"></i><span style="margin-left:8px">@GlobusMultiLanguageLib.Resources.Shared_Site_Settings</span></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="../Index/Logout"><i class="fa fa-sign-out fa-2x"></i><span style="margin-left:8px">@GlobusMultiLanguageLib.Resources.Shared_Site_LogOut</span></a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -164,51 +173,51 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li id="dashboard">
-                            <a class="active" href="../Home/Index"><i class="fa fa-dashboard fa-2x"></i><span class="tweaked-margin">Dashboard</span></a>
+                            <a class="active" href="../Home/Index"><i class="fa fa-dashboard fa-2x"></i><span class="tweaked-margin">@GlobusMultiLanguageLib.Resources.Shared_Site_DashBoard</span></a>
                         </li>
                         <li id="message">
-                            <a href="../Messages/Index"><i class="fa fa-envelope fa-2x"></i><span class="tweaked-margin">Messages</span><span class="fa arrow"></span></a>
+                            <a href="../Messages/Index"><i class="fa fa-envelope fa-2x"></i><span class="tweaked-margin">@GlobusMultiLanguageLib.Resources.Shared_Site_Messages</span><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="../Messages/Index">Smart Inbox</a>
+                                    <a href="../Messages/Index">@GlobusMultiLanguageLib.Resources.Shared_Site_SmartInbox</a>
                                 </li>
                                 <li>
-                                    <a href="../Messages/Task">My Tasks</a>
+                                    <a href="../Messages/Task">@GlobusMultiLanguageLib.Resources.Shared_Site_MyTasks</a>
                                 </li>
                                 <li>
-                                    <a href="../Messages/sentmsg">Sent Messages</a>
+                                    <a href="../Messages/sentmsg">@GlobusMultiLanguageLib.Resources.Shared_Site_SentMessages</a>
                                 </li>
                                 <li>
-                                    <a href="../Messages/Archive">Archived Messages</a>
+                                    <a href="../Messages/Archive">@GlobusMultiLanguageLib.Resources.Shared_Site_ArchivedMessages</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li id="feeds">
-                            <a href="../Feeds/Index"><i class="fa fa-rss fa-fw fa-2x"></i> Feeds<i class="fa arrow"></i></a>
+                            <a href="../Feeds/Index" class="left-side-menu"><i class="fa fa-rss fa-fw fa-2x"></i><span class="tweaked-margin">@GlobusMultiLanguageLib.Resources.Shared_Site_Feeds</span><i class="fa arrow"></i></a>
 
                         </li>
 
                         <li id="publishing">
-                            <a href="../Publishing/Index"><i class="fa fa-upload fa-fw fa-2x"></i> Publishing<span class="fa arrow"></span></a>
+                            <a href="../Publishing/Index" class="left-side-menu"><i class="fa fa-upload fa-fw fa-2x"></i><span class="tweaked-margin">@GlobusMultiLanguageLib.Resources.Shared_Site_Publishing</span><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li id="scheduledmsg">
-                                    <a href="../Publishing/Index">Schedule Messages</a>
+                                    <a href="../Publishing/Index">@GlobusMultiLanguageLib.Resources.Shared_Site_SecheduleMessages</a>
                                 </li>
                                 <li id="socioqueue">
-                                    <a href="../Publishing/Socioqueue">SocioQueue</a>
+                                    <a href="../Publishing/Socioqueue">@GlobusMultiLanguageLib.Resources.Shared_Site_SocioQueue</a>
                                 </li>
                                 <li id="draft">
-                                    <a href="../Publishing/Draft">Drafts</a>
+                                    <a href="../Publishing/Draft">@GlobusMultiLanguageLib.Resources.Shared_Site_Drafts</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li id="discovery">
-                            <a href="../Discovery/Index"><i class="fa fa-globe fa-fw fa-2x"></i> Discovery</a>
+                            <a href="../Discovery/Index" class="left-side-menu"><i class="fa fa-globe fa-fw fa-2x"></i><span class="tweaked-margin">@GlobusMultiLanguageLib.Resources.Shared_Site_Discovery</span></a>
                         </li>
-                        <li id="reports">
-                            <a href="../Report/Index"><i class="fa fa-file-excel-o fa-fw fa-2x"></i> Reports<span class="fa arrow"></span></a>
+                        <li id="reports" class="left-side-menu">
+                            <a href="../Report/Index"><i class="fa fa-file-excel-o fa-fw fa-2x"></i><span class="tweaked-margin">@GlobusMultiLanguageLib.Resources.Shared_Site_Reports</span><span class="fa arrow"></span></a>
                             @*<ul class="nav nav-second-level">
                                 <li>
                                     <a href="#">Group Report</a>
@@ -224,16 +233,25 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li id="group">
-                            <a href="../Group/Index"><i class="fa fa-users fa-2x"></i>Social
-                                 Groups</a>
+                            <a href="../Group/Index"><i class="fa fa-users fa-2x"></i><span class="tweaked-margin">@GlobusMultiLanguageLib.Resources.Shared_Site_SocialGroups</span></a>
 
                             <!-- /.nav-second-level -->
                         </li>
                          @*Edited by Antima[20/12/2014]*@
                         <li id="Tickets">
-                            <a href="../Home/Tickets"><i class="fa fa-ticket fa-fw fa-2x"></i> Social Tickets</a>
+                            <a href="../Home/Tickets" class="left-side-menu"><i class="fa fa-ticket fa-fw fa-2x"></i><span class="tweaked-margin">@GlobusMultiLanguageLib.Resources.Shared_Site_SocialTickets</span></a>
                         </li>
-                      
+                        <li>
+                            <a href="#" class="left-side-menu"><i class="fa fa-suitcase fa-fw fa-2x"></i><span class="tweaked-margin">@GlobusMultiLanguageLib.Resources.Shared_Site_MyStuff</span><span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse" style="height: 0px;">
+                                <li>
+                                    <a href="../MyStuff/Ewallet"><i class="fa fa-google-wallet fa-2x fa-fw"></i>@GlobusMultiLanguageLib.Resources.Shared_Site_Ewallet</a>
+                                </li>
+                                <li>
+                                    <a href="../MyStuff/Affiliates"><i class="fa fa-link fa-2x fa-fw"></i>@GlobusMultiLanguageLib.Resources.Shared_Site_Affiliates</a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -246,8 +264,8 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="myModalLabel">New Message</h4>
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Shared_Site_Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">@GlobusMultiLanguageLib.Resources.Shared_Site_NewMessages</h4>
                     </div>
                     <div class="modal-body col-md-12">
                         <div class="col-md-3">
@@ -255,7 +273,7 @@
                             <hr class="small">*@
                             <!-- Split button -->
                             <div class="btn-group">
-                                <button type="button" class="btn btn-warning">Profile</button>
+                                <button type="button" class="btn btn-warning">@GlobusMultiLanguageLib.Resources.Shared_Site_Profile</button>
                                 <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
                                     <span class="caret"></span>
                                     <span class="sr-only">Toggle Dropdown</span>
@@ -285,7 +303,7 @@
                                     <input type="text" id="textareavaluetoshrinkUrl" class="form-control" placeholder="Write URL to shrink">
                                     <span class="input-group-btn">
                                         <button id="btn_URLShortened" class="btn btn-success" type="button">
-                                            <i class="fa fa"></i>URL shrink
+                                            <i class="fa fa"></i>@GlobusMultiLanguageLib.Resources.Shared_Site_URLShrink
                                         </button>
                                     </span>
                                 </div>
@@ -300,7 +318,7 @@
                                 </div>
                                 <div class="col-md-7 pull-right">
                                     <input type="file" id="fileuploadImage" name="" onchange="AddImageComposeMessage()" class="btn btn-default col-md-6" accept="image/*">
-                                    <button class="btn btn-default col-md-5" id="btn_dropbox" style="margin-left: 10px;">Dropbox</button>
+                                    <button class="btn btn-default col-md-5" id="btn_dropbox" style="margin-left: 10px;">@GlobusMultiLanguageLib.Resources.Shared_Site_DropBox</button>
                                 </div>
                             </div>
                         </div>
@@ -308,8 +326,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button id="sendMessageBtn" type="button" class="btn btn-primary">Send</button>
-                        <button id="closeMessaegBtn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button id="sendMessageBtn" type="button" class="btn btn-primary">@GlobusMultiLanguageLib.Resources.Shared_Site_Send</button>
+                        <button id="closeMessaegBtn" type="button" class="btn btn-default" data-dismiss="modal">@GlobusMultiLanguageLib.Resources.Shared_Site_Close</button>
                         <div style="height: auto; display: none; padding: 10px; border: medium ridge; margin-top: 10px;" class="dropbox_file col-md-12"></div>
                     </div>
 
@@ -324,8 +342,8 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Contact Search</h4>
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Shared_Site_Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">@GlobusMultiLanguageLib.Resources.Shared_Site_ContactSearch</h4>
                     </div>
                     <div class="modal-body">
                         <div class="input-group custom-search-form">
@@ -374,10 +392,10 @@
     <!-- /#wrapper -->
 
     <!-- jQuery Version 1.11.0 -->
-    @*<script src="/Themes/@path/Contents/js/jquery-1.11.0.js"></script>*@
+    <script src="/Themes/@path/Contents/js/jquery-1.11.0.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    
+    <script src="/Themes/@path/Contents/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
     <script type="text/javascript" src="/Themes/@path/Contents/js/plugins/metisMenu/metisMenu.js"></script>
@@ -386,7 +404,7 @@
     <script type="text/javascript" src="/Themes/@path/Contents/js/plugins/morris/raphael.min.js"></script>
     <script type="text/javascript" src="/Themes/@path/Contents/js/plugins/morris/morris.min.js"></script>
     @*<script src="/Themes/@path/Contents/js/plugins/morris/morris-data.js"></script>*@
- @*   <script src="https://raw.githubusercontent.com/dinbror/bpopup/master/jquery.bpopup.min.js"></script>*@
+    @*   <script src="https://raw.githubusercontent.com/dinbror/bpopup/master/jquery.bpopup.min.js"></script>*@
 
     <!-- Custom Theme JavaScript -->
     <script src="/Themes/@path/Contents/js/sb-admin-2.js"></script>
@@ -403,7 +421,7 @@
 
 
     <script type="text/javascript">
-        
+
         var arrbindusermaster = [];
         var re_url = '';
         function bindcomposemessagemaster() {
@@ -566,6 +584,11 @@
                 $('#SearchContact').html('');                            // Edited by Antima
 
             });
+            (function ($) {
+
+                $('#side-menu').metisMenu();
+
+            })(jQuery);
 
 
             bindcomposemessagemaster();
@@ -716,6 +739,7 @@
 
                 debugger;
                 allprofiles = allprofiles.substr(0, allprofiles.length - 3);
+                //jQuery.noConflict();
                 //$('#myModal').modal('hide');
                 $.ajax({
                     type: 'POST',
@@ -742,6 +766,8 @@
                             var ProfileType = strarray[1];
                             removebindfrofilesmaster(ProfileId, ProfileType);
                         }
+
+                        $('#myModal').modal('hide');
                     }
 
                 });
@@ -833,11 +859,11 @@
         });
 
         function facebookpopup() {
-           // jQuery.noConflict();
+            //jQuery.noConflict();
             $('#facebookpopup').modal('show');
         }
         function linkedinpopup() {
-           // jQuery.noConflict();
+            //jQuery.noConflict();
             $('#linkedinpopup').modal('show');
         }
 
@@ -1056,8 +1082,9 @@
                 $("#btncontactsearch").click();
             }
         });
-
+        var groupid = '';
         function inviteteammember(UserId, GroupId) {
+            groupid = GroupId;
             debugger;
             $.ajax({
 
@@ -1071,7 +1098,7 @@
                     }
                     else {
                         alert("Please Add a profile to Invite a Member !!");
-                        window.location= "../UserGroup/Index";
+                        window.location = "../UserGroup/Index";
                     }
                 },
                 async: false
@@ -1080,7 +1107,7 @@
 
         }
 
-        var EMailarray = []; 
+        var EMailarray = [];
         function addteam() {
             debugger;
             //if (typeof EMailarray[0] == 'undefined') {
@@ -1095,7 +1122,7 @@
             $.ajax({
                 type: 'POST',
                 //     url: '../UserGroup/AddTeamMember?email=' + EMailarray,
-                url: "../UserGroup/AddTeamMember?email=" + EMailarray,
+                url: "../UserGroup/AddTeamMember?email=" + EMailarray + '&groupid=' + groupid,
                 success: function (msg) {
                     $('#inviteteammember').modal('hide');
                     if (msg != "") {
@@ -1249,26 +1276,26 @@
 
     </script>*@
     <!-- ProfileModal -->
-<div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="yt_model">Profile Summary</h4>
-            </div>
-            <div class="modal-body">
-                <div class="embed-responsive embed-responsive-4by3">
-                    <iframe id="popupimagesyt" class="embed-responsive-item" src=""></iframe>
+    <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Shared_Site_Close</span></button>
+                    <h4 class="modal-title" id="yt_model">@GlobusMultiLanguageLib.Resources.Shared_Site_ProfileSummary</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="embed-responsive embed-responsive-4by3">
+                        <iframe id="popupimagesyt" class="embed-responsive-item" src=""></iframe>
+                    </div>
+
                 </div>
 
             </div>
-
         </div>
     </div>
-</div>
 
 
-@*<div class="modal fade" id="facebookpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    @*<div class="modal fade" id="facebookpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -1328,108 +1355,108 @@
     </div>
 </div>*@
 
-<div class="modal fade" id="facebookpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h4 id="myModalLabel" class="modal-title">Facebook</h4>
-            </div>
-            <div class="modal-body col-md-12">
-
-                <a style="cursor: pointer" href="../FacebookManager/AuthenticateFacebook">
-                    <i class="fa fa-facebook-square fa-2x fa-fw"></i>Add Facebook Profile</a>
-
-                <br />
-                <br />
-                <a style="cursor: pointer" onclick="getfacebookpage()">
-                    <i class="fa fa-facebook-square fa-2x fa-fw"></i>Add Facebook Fanpage</a>
-                <br />
-                <br />
-                <div style="float: left">
-                    <a style="cursor: pointer" title="Get smart exportable analytics for any Facebook fanpage">
-                        <i class="fa fa-facebook-square fa-2x fa-fw"></i>Get Facebook Fanpage Analytics
-                    </a>
-                    <div style="float: left; padding-left: 5px; margin-top: 8px; margin-bottom: 12px" class="col-md-8">
-                        <input type="text" class="form-control" id="_txtinputurl" placeholder="Ex : http://www.facebook.com/socioboard">
-                    </div>
-                    <div style="float: left; margin-top: 9px">
-                        <button class="btn btn-primary btn-sm" onclick="Addfacebookpagebyurl()" type="submit">Submit</button>
-                    </div>
+    <div class="modal fade" id="facebookpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Shared_Site_Close</span></button>
+                    <h4 id="myModalLabel" class="modal-title">Facebook</h4>
                 </div>
-                <br />
-                <br />
+                <div class="modal-body col-md-12">
 
-                <a style="cursor: pointer; float: left" onclick="getfacebookgroup()">
-                    <i class="fa fa-facebook-square fa-2x fa-fw"></i>Add Facebook Group</a>
-                <br />
+                    <a style="cursor: pointer" href="../FacebookManager/AuthenticateFacebook">
+                        <i class="fa fa-facebook-square fa-2x fa-fw"></i>@GlobusMultiLanguageLib.Resources.Shared_Site_AddFacebookProfile</a>
 
-
-                <div class="panel-body" style="margin-top: 50px">
-                    <div id="facebookpageinfo" style="height: 200px; overflow: auto; border: 5px inset grey; padding: 3px; display: none">
-                        <div id="fbpagebind" style="margin-top: 11px">
+                    <br />
+                    <br />
+                    <a style="cursor: pointer" onclick="getfacebookpage()">
+                        <i class="fa fa-facebook-square fa-2x fa-fw"></i>@GlobusMultiLanguageLib.Resources.Shared_Site_AddFacebookPage</a>
+                    <br />
+                    <br />
+                    <div style="float: left">
+                        <a style="cursor: pointer" title="Get smart exportable analytics for any Facebook fanpage">
+                            <i class="fa fa-facebook-square fa-2x fa-fw"></i>@GlobusMultiLanguageLib.Resources.Shared_Site_GetFacebookPageAnalytics
+                        </a>
+                        <div style="float: left; padding-left: 5px; margin-top: 8px; margin-bottom: 12px" class="col-md-8">
+                            <input type="text" class="form-control" id="_txtinputurl" placeholder="Ex : http://www.facebook.com/socioboard">
+                        </div>
+                        <div style="float: left; margin-top: 9px">
+                            <button class="btn btn-primary btn-sm" onclick="Addfacebookpagebyurl()" type="submit">@GlobusMultiLanguageLib.Resources.Shared_Site_Submit</button>
                         </div>
                     </div>
-                </div>
+                    <br />
+                    <br />
 
-            </div>
-
-
-            <div class="modal-footer">
-                <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
-            </div>
-        </div>
+                    <a style="cursor: pointer; float: left" onclick="getfacebookgroup()">
+                        <i class="fa fa-facebook-square fa-2x fa-fw"></i>@GlobusMultiLanguageLib.Resources.Shared_Site_AddFacebookGroup</a>
+                    <br />
 
 
-    </div>
-</div>
-
-<div class="modal fade" id="linkedinpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h4 id="myModalLabel" class="modal-title">Linkedin</h4>
-            </div>
-            <div class="modal-body col-md-12">
-
-                <a style="cursor: pointer" href="../LinkedinManager/AuthenticateLinkedin">
-                    <i class="fa fa-linkedin-square fa-2x fa-fw"></i>Add Linkedin Profile</a>
-
-                <br />
-                <br />
-                <a style="cursor: pointer" onclick="getlinkedincompanypage()">
-                    <i class="fa fa-linkedin-square fa-2x fa-fw"></i>Add Linkedin Company Page</a>
-                <br />
-                <div class="panel-body">
-                    <div id="linkedincompanypageinfo" style="height: 200px; overflow: auto; border: 5px inset grey; padding: 3px; display: none">
-                        <div id="lipagebind" style="margin-top: 11px">
+                    <div class="panel-body" style="margin-top: 50px">
+                        <div id="facebookpageinfo" style="height: 200px; overflow: auto; border: 5px inset grey; padding: 3px; display: none">
+                            <div id="fbpagebind" style="margin-top: 11px">
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
+
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">@GlobusMultiLanguageLib.Resources.Shared_Site_AddFacebookClose</button>
+                </div>
             </div>
 
 
-            <div class="modal-footer">
-                <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
-            </div>
         </div>
-
-
     </div>
-</div>
 
-<!-- Modal -->
-<div class="modal fade" id="ProfileDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Profile Summary</h4>
+    <div class="modal fade" id="linkedinpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Shared_Site_Close</span></button>
+                    <h4 id="myModalLabel" class="modal-title">Linkedin</h4>
+                </div>
+                <div class="modal-body col-md-12">
+
+                    <a style="cursor: pointer" href="../LinkedinManager/AuthenticateLinkedin">
+                        <i class="fa fa-linkedin-square fa-2x fa-fw"></i>@GlobusMultiLanguageLib.Resources.Shared_Site_AddLinkedinProfile</a>
+
+                    <br />
+                    <br />
+                    <a style="cursor: pointer" onclick="getlinkedincompanypage()">
+                        <i class="fa fa-linkedin-square fa-2x fa-fw"></i>@GlobusMultiLanguageLib.Resources.Shared_Site_AddLinkedinCompanyPage</a>
+                    <br />
+                    <div class="panel-body">
+                        <div id="linkedincompanypageinfo" style="height: 200px; overflow: auto; border: 5px inset grey; padding: 3px; display: none">
+                            <div id="lipagebind" style="margin-top: 11px">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">@GlobusMultiLanguageLib.Resources.Shared_Site_AddLinkedinClose</button>
+                </div>
             </div>
-            <div id="ProfileDetailBody" class="modal-body col-md-12">
-                @*  <div class="col-md-12" style="text-align: center; background: linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.73) 100%) repeat scroll 0px 0px transparent; padding: 15px;">
+
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="ProfileDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Shared_Site_Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">@GlobusMultiLanguageLib.Resources.Shared_Site_Profile</h4>
+                </div>
+                <div id="ProfileDetailBody" class="modal-body col-md-12">
+                    @*  <div class="col-md-12" style="text-align: center; background: linear-gradient(to bottom, transparent 0px, rgba(0, 0, 0, 0.73) 100%) repeat scroll 0px 0px transparent; padding: 15px;">
                                     <img src="/Themes/@path/Contents/img/apple-touch-icon-72-precomposed.png" class="img-thumbnail" />
                                     <p><h2>abhay mondal</h2></p>
                                     <p>abhaymondal3</p>
@@ -1454,104 +1481,68 @@
                                 <div class="col-md-12" style="text-align:center;">
                                     <a href="#">Go to full profile →</a>
                                 </div>*@
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger " data-dismiss="modal">Close</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger " data-dismiss="modal">@GlobusMultiLanguageLib.Resources.Shared_Site_Close</button>
 
-            </div>
-        </div>
-    </div>
-</div>
-<!--end of model-->
-
-<!--end of ProfileModel-->
-<div class="modal fade" id="loaderpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="margin-top: 250px; margin-left: 600px">
-
-        <div>
-            <img src="/Themes/@path/Contents/img/328.gif"/>
-
-        </div>
-    </div>
-</div>
-
-    <!-- Invite Team Member Modal -->
-<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="inviteteammember" class="modal fade" style="display: none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h4 id="myModalLabel" class="modal-title">Invite your Friend to <span id="usergroupname"></span></h4>
-            </div>
-            <div class="modal-body">
-               @* <p>Groups help you organize your social profiles and team members. Name your group and you can begin connecting social profiles and adding team members to it. Twitter or Facebook required to create a group.</p>*@
-                <p>Socioboard offers to make group by virtue of which users can reach out to each other using a highly efficient collaboration mechanism.Groups serve as a platform to share information with other team members and increase workability and efficiency.</p>
-                <div class="col-md-12 column">
-                    <div id="inviteadded" class="row">
-                        <table id="invitetablebody" class="table table-striped">
-                        </table>
-                    </div>
-                    <div id="invitemembertoadd">
-                        <form class="form-horizontal row" role="form">
-                            <div class="form-group col-md-3" style="margin-right: 6px;">
-                                <label for="exampleInputFname">First Name</label><input type="text" id="exampleInputFname" class="form-control">
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="exampleInputLname">Last Name</label><input type="text" id="exampleInputLname" class="form-control">
-                            </div>
-                            <div class="form-group col-md-5" style="margin-left: 7px;">
-                                <label for="exampleInputEmail">Email</label><input type="email" id="exampleInputEmail" class="form-control">
-                            </div>
-                            <button class="btn btn-default col-md-1" type="button" style="margin-top: 24px; margin-left: 13px;" onclick="invitemember()"><i class="fa fa-plus"></i></button>
-                        </form>
-                    </div>
                 </div>
             </div>
-            <div class="modal-footer" style="border-top: none;">
-                <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
-                <button onclick="addteam()" id="btnaddteam" class="btn btn-primary" type="button" disabled="disabled">Submit</button>
+        </div>
+    </div>
+    <!--end of model-->
+
+    <!--end of ProfileModel-->
+    <div class="modal fade" id="loaderpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="margin-top: 250px; margin-left: 600px">
+
+            <div>
+                <img src="/Themes/@path/Contents/img/328.gif"/>
+
             </div>
         </div>
     </div>
-</div>
-<!--end of addgroup modal-->
+
+    <!-- Invite Team Member Modal -->
+    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="inviteteammember" class="modal fade" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Shared_Site_Close</span></button>
+                    <h4 id="myModalLabel" class="modal-title">@GlobusMultiLanguageLib.Resources.Shared_Site_InviteFreinds<span id="usergroupname"></span></h4>
+                </div>
+                <div class="modal-body">
+                    @* <p>Groups help you organize your social profiles and team members. Name your group and you can begin connecting social profiles and adding team members to it. Twitter or Facebook required to create a group.</p>*@
+                    <p>@GlobusMultiLanguageLib.Resources.SocioBoard_Shared_Site_InvideFreindsDescription</p>
+                    <div class="col-md-12 column">
+                        <div id="inviteadded" class="row">
+                            <table id="invitetablebody" class="table table-striped">
+                            </table>
+                        </div>
+                        <div id="invitemembertoadd">
+                            <form class="form-horizontal row" role="form">
+                                <div class="form-group col-md-3" style="margin-right: 6px;">
+                                    <label for="exampleInputFname">@GlobusMultiLanguageLib.Resources.Shared_Site_FirstName</label><input type="text" id="exampleInputFname" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="exampleInputLname">@GlobusMultiLanguageLib.Resources.Shared_Site_LastName</label><input type="text" id="exampleInputLname" class="form-control">
+                                </div>
+                                <div class="form-group col-md-5" style="margin-left: 7px;">
+                                    <label for="exampleInputEmail">@GlobusMultiLanguageLib.Resources.Shared_Site_LastName</label><input type="email" id="exampleInputEmail" class="form-control">
+                                </div>
+                                <button class="btn btn-default col-md-1" type="button" style="margin-top: 24px; margin-left: 13px;" onclick="invitemember()"><i class="fa fa-plus"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" style="border-top: none;">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">@GlobusMultiLanguageLib.Resources.Shared_Site_InviteFreindsClose</button>
+                    <button onclick="addteam()" id="btnaddteam" class="btn btn-primary" type="button" disabled="disabled">@GlobusMultiLanguageLib.Resources.Shared_Site_InviteFreindsSubmit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end of addgroup modal-->
     @RenderSection("Scripts", false)
-    <script src="/Themes/Socioboard/Contents/js/carhartl-jquery-cookie-92b7715/jquery.cookie.js"></script>
-    <script type="text/javascript">
-        $(function () {
-
-            var timezone_cookie = "timezoneoffset";
-
-            if (!$.cookie(timezone_cookie)) { // if the timezone cookie not exists create one.
-
-                // check if the browser supports cookie
-                var test_cookie = 'test cookie';
-                $.cookie(test_cookie, true);
-
-                if ($.cookie(test_cookie)) { // browser supports cookie
-
-                    // delete the test cookie.
-                    $.cookie(test_cookie, null);
-
-                    // create a new cookie 
-                    $.cookie(timezone_cookie, new Date().getTimezoneOffset());
-
-                    //location.reload(); // re-load the page
-                }
-            }
-            else { // if the current timezone and the one stored in cookie are different then
-                // store the new timezone in the cookie and refresh the page.
-
-                var storedOffset = parseInt($.cookie(timezone_cookie));
-                var currentOffset = new Date().getTimezoneOffset();
-
-                if (storedOffset !== currentOffset) { // user may have changed the timezone
-                    $.cookie(timezone_cookie, new Date().getTimezoneOffset());
-                   // location.reload();
-                }
-            }
-        });
-    </script>
 </body>
 
 

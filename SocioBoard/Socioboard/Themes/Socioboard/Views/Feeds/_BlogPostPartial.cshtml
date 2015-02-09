@@ -1,0 +1,142 @@
+﻿@{
+    Domain.Socioboard.Domain.WordpressSites _WordpressSites = (Domain.Socioboard.Domain.WordpressSites)Model;
+}
+<div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Write A Post</h1>
+                </div>
+
+                  <div class="col-lg-9">
+                    <div class="panel panel-default">
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">  
+                            <form role="form">
+                                <div class="form-group">
+                                    <label>Tittle</label>
+                                    <input id="text-input-tittle" class="form-control" placeholder="Enter Tittle">
+                                </div>
+                            <div class="box">
+                                <div class="box-header">
+                                </div><!-- /.box-header -->
+                                <div class="box-body pad">
+                                    <form>
+                                        <textarea id="text-publish-wordpress" class="textarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                    </form>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-info pull-right" onclick="PostBlogOnWordpress('@_WordpressSites.SiteId','@_WordpressSites.WPUserId')">Publish to @_WordpressSites.SiteName</button>
+                        </form>
+                            
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-9 -->
+
+                @*<div class="col-lg-3">
+                <div class="panel panel-default">
+                        <!-- .panel-heading -->
+                        <div class="panel-body">
+                            <div class="panel-group" id="accordion">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class=""><i class="fa fa-pencil-square-o fa-fw"></i>CHANGE STATUS</a><br>
+                                            <label>Publish Immediately</label>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse in" style="">
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">Publish Immediately
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Draft
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Pending Review
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4">Scheduled
+                                                </label>
+                                            </div>
+                                           <div class="form-group">
+                                                <!--  <div class="input-group datetimepicker">
+    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+    <input class="set-due-date form-control" type="text"/>
+  </div> -->
+
+                                          <div class="form-group">
+                                <div class='input-group date' id='datetimepicker5'>
+                                    <input type='text' class="form-control" data-date-format="YYYY/MM/DD"/>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                            $(function () {
+                                $('#datetimepicker5').datetimepicker({
+                                    pickTime: false
+                                });
+                            });
+                        </script>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed"><i class="fa fa-tags fa-fw"></i>TAGS &amp; CATEGORIES</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse" style="height: 0px;">
+                                        <div class="panel-body">
+                                            <h5>TAGS</h5>
+                                            <div class="form-group">
+                                                <label>Enter your tags below</label>
+                                                <input class="form-control">
+                                            </div>
+                                            <h5>CATEGORIES</h5>
+                                            <div class="form-group">
+                                                <label>Enter your categories below</label>
+                                                <input class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed"><i class="fa fa-picture-o fa-fw"></i>FEATURED IMAGE</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseThree" class="panel-collapse collapse" style="height: 0px;">
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                            <input type="file">
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- .panel-body -->
+                    </div>
+                </div>*@
+                   
+            </div>
+
+ 

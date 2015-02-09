@@ -26,7 +26,7 @@ namespace SocioboardDataServices.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/SocialProfile.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/SocialProfile.asmx")]
         public string SocioboardDataServices_Api_SocialProfile_SocialProfile {
             get {
                 return ((string)(this["SocioboardDataServices_Api_SocialProfile_SocialProfile"]));
@@ -36,7 +36,7 @@ namespace SocioboardDataServices.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/FacebookAccount.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/FacebookAccount.asmx")]
         public string SocioboardDataServices_Api_FacebookAccount_FacebookAccount {
             get {
                 return ((string)(this["SocioboardDataServices_Api_FacebookAccount_FacebookAccount"]));
@@ -46,7 +46,7 @@ namespace SocioboardDataServices.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/FacebookFeed.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/FacebookFeed.asmx")]
         public string SocioboardDataServices_Api_FacebookFeed_FacebookFeed {
             get {
                 return ((string)(this["SocioboardDataServices_Api_FacebookFeed_FacebookFeed"]));
@@ -56,7 +56,7 @@ namespace SocioboardDataServices.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/DiscoverySearch.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://devapi.socioboard.com/Services/DiscoverySearch.asmx")]
         public string SocioboardDataServices_Api_DiscoverySearch_DiscoverySearch {
             get {
                 return ((string)(this["SocioboardDataServices_Api_DiscoverySearch_DiscoverySearch"]));
@@ -66,7 +66,7 @@ namespace SocioboardDataServices.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/TumblrAccount.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://devapi.socioboard.com/Services/TumblrAccount.asmx")]
         public string SocioboardDataServices_Api_TumblrAccount_TumblrAccount {
             get {
                 return ((string)(this["SocioboardDataServices_Api_TumblrAccount_TumblrAccount"]));
@@ -76,7 +76,7 @@ namespace SocioboardDataServices.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/TumblrFeed.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://devapi.socioboard.com/Services/TumblrFeed.asmx")]
         public string SocioboardDataServices_Api_TumblrFeed_TumblrFeed {
             get {
                 return ((string)(this["SocioboardDataServices_Api_TumblrFeed_TumblrFeed"]));
@@ -86,7 +86,7 @@ namespace SocioboardDataServices.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/LinkedinAccount.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://devapi.socioboard.com/Services/LinkedinAccount.asmx")]
         public string SocioboardDataServices_Api_LinkedinAccount_LinkedinAccount {
             get {
                 return ((string)(this["SocioboardDataServices_Api_LinkedinAccount_LinkedinAccount"]));
@@ -96,7 +96,7 @@ namespace SocioboardDataServices.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/InstagramAccount.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://devapi.socioboard.com/Services/InstagramAccount.asmx")]
         public string SocioboardDataServices_Api_InstagramAccount_InstagramAccount {
             get {
                 return ((string)(this["SocioboardDataServices_Api_InstagramAccount_InstagramAccount"]));
@@ -106,7 +106,7 @@ namespace SocioboardDataServices.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/InstagramFeed.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://devapi.socioboard.com/Services/InstagramFeed.asmx")]
         public string SocioboardDataServices_Api_InstagramFeed_InstagramFeed {
             get {
                 return ((string)(this["SocioboardDataServices_Api_InstagramFeed_InstagramFeed"]));
@@ -116,7 +116,7 @@ namespace SocioboardDataServices.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/InstagramComment.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://devapi.socioboard.com/Services/InstagramComment.asmx")]
         public string SocioboardDataServices_Api_InstagramComment_InstagramComment {
             get {
                 return ((string)(this["SocioboardDataServices_Api_InstagramComment_InstagramComment"]));
@@ -126,7 +126,7 @@ namespace SocioboardDataServices.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/YoutubeAccount.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://devapi.socioboard.com/Services/YoutubeAccount.asmx")]
         public string SocioboardDataServices_Api_YoutubeAccount_YoutubeAccount {
             get {
                 return ((string)(this["SocioboardDataServices_Api_YoutubeAccount_YoutubeAccount"]));
@@ -136,7 +136,7 @@ namespace SocioboardDataServices.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Facebook.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Facebook.asmx")]
         public string SocioboardDataServices_Api_Facebook_Facebook {
             get {
                 return ((string)(this["SocioboardDataServices_Api_Facebook_Facebook"]));
@@ -146,7 +146,7 @@ namespace SocioboardDataServices.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Instagram.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://devapi.socioboard.com/Services/Instagram.asmx")]
         public string SocioboardDataServices_Api_Instagram_Instagram {
             get {
                 return ((string)(this["SocioboardDataServices_Api_Instagram_Instagram"]));
@@ -156,7 +156,7 @@ namespace SocioboardDataServices.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Tumblr.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://devapi.socioboard.com/Services/Tumblr.asmx")]
         public string SocioboardDataServices_Api_Tumblr_Tumblr {
             get {
                 return ((string)(this["SocioboardDataServices_Api_Tumblr_Tumblr"]));
@@ -166,7 +166,7 @@ namespace SocioboardDataServices.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Youtube.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://devapi.socioboard.com/Services/Youtube.asmx")]
         public string SocioboardDataServices_Api_Youtube_Youtube {
             get {
                 return ((string)(this["SocioboardDataServices_Api_Youtube_Youtube"]));
@@ -176,7 +176,7 @@ namespace SocioboardDataServices.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Linkedin.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://devapi.socioboard.com/Services/Linkedin.asmx")]
         public string SocioboardDataServices_Api_Linkedin_Linkedin {
             get {
                 return ((string)(this["SocioboardDataServices_Api_Linkedin_Linkedin"]));
@@ -186,20 +186,10 @@ namespace SocioboardDataServices.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/TwitterAccount.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://devapi.socioboard.com/Services/TwitterAccount.asmx")]
         public string SocioboardDataServices_Api_TwitterAccount_TwitterAccount {
             get {
                 return ((string)(this["SocioboardDataServices_Api_TwitterAccount_TwitterAccount"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Twitter.asmx")]
-        public string SocioboardDataServices_Api_Twitter_Twitter {
-            get {
-                return ((string)(this["SocioboardDataServices_Api_Twitter_Twitter"]));
             }
         }
         
@@ -210,6 +200,46 @@ namespace SocioboardDataServices.Properties {
         public string SocioboardDataServices_Api_FacebookStats_FacebookStats {
             get {
                 return ((string)(this["SocioboardDataServices_Api_FacebookStats_FacebookStats"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://devapi.socioboard.com/Services/Twitter.asmx")]
+        public string SocioboardDataServices_Api_Twitter_Twitter {
+            get {
+                return ((string)(this["SocioboardDataServices_Api_Twitter_Twitter"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Team.asmx")]
+        public string SocioboardDataServices_Api_Team_Team {
+            get {
+                return ((string)(this["SocioboardDataServices_Api_Team_Team"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/TicketAssigneeStatus.asmx")]
+        public string SocioboardDataServices_Api_TicketAssigneeStatus_TicketAssigneeStatus {
+            get {
+                return ((string)(this["SocioboardDataServices_Api_TicketAssigneeStatus_TicketAssigneeStatus"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/SentimentalAnalysis.asmx")]
+        public string SocioboardDataServices_Api_SentimentalAnalysis_SentimentalAnalysis {
+            get {
+                return ((string)(this["SocioboardDataServices_Api_SentimentalAnalysis_SentimentalAnalysis"]));
             }
         }
     }

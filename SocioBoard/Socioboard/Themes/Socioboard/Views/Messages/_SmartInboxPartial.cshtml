@@ -141,18 +141,18 @@
         <div class="modal-content">
 
             <div class="modal-header" style="height: 48px">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Messages_SmartInboxPartial_Close</span></button>
                 @* <img src="Contents/img/photo.png" class="img-circle">
                                                 <img class="img-responsive img-circle" src="Contents/img/twticon.png" style="margin-left: 35px; margin-top: -20px;">*@
             </div>
 
             <div class="modal-body col-md-12">
                 <div class="col-md-8">
-                    <h4>LEAVE A COMMENT</h4>
+                    <h4>@GlobusMultiLanguageLib.Resources.Messages_SmartInboxPartial_LeaveAComment</h4>
                     <textarea id="txtsavetask" class="form-control" rows="3" placeholder="Your comment (viewable only to team members)"></textarea>
                 </div>
                 <div class="col-md-4">
-                    <h4>ASSIGN TASK TO</h4>
+                    <h4>@GlobusMultiLanguageLib.Resources.Messages_SmartInboxPartial_AssignTaskTo</h4>
 
                     @{
                         try
@@ -199,7 +199,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button id="savetask" type="button" class="btn btn-default" data-dismiss="modal" onclick="savetask()">Save</button>
+                <button id="savetask" type="button" class="btn btn-default" data-dismiss="modal" onclick="savetask()">@GlobusMultiLanguageLib.Resources.Messages_SmartInboxPartial_Save</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -213,16 +213,16 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button id="closecommentpopup" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button id="closecommentpopup" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Messages_SmartInboxPartial_Close</span></button>
                 @*  <img src="Contents/img/photo.png" class="img-circle">
                                                 <img class="img-responsive img-circle" src="Contents/img/twticon.png" style="margin-left: 35px; margin-top: -20px;">*@
             </div>
             <div class="modal-body">
-                <h4>LEAVE A COMMENT</h4>
+                <h4>@GlobusMultiLanguageLib.Resources.Messages_SmartInboxPartial_LeaveAComment</h4>
                 <textarea id="comment_text" class="form-control" rows="3" placeholder="Write your message here"></textarea>
             </div>
             <div id="leaveCommentReply" class="modal-footer">
-                <button type="button" class="btn btn-default ">Comment</button>
+                <button type="button" class="btn btn-default ">@GlobusMultiLanguageLib.Resources.Messages_SmartInboxPartial_LeaveAComment</button>
             </div>
         </div>
     </div>

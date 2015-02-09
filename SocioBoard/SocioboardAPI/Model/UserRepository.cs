@@ -278,7 +278,39 @@ namespace Api.Socioboard.Model
                 }
             }
         }
-      
+
+        public int ChangePasswordWithoutOldPassword(string newpassword, string Emailid)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //NHibernate.IQuery query = session.CreateQuery("Update User set Password=:password where EmailId = :email and Password = :oldpass");
+                        //query.SetParameter("email", Emailid);
+                        //query.SetParameter("oldpass",oldpassword);
+                        //query.SetParameter("password",newpassword);
+                        //query.ExecuteUpdate();
+
+                        int i = session.CreateQuery("Update User set Password=:password where EmailId = :email")
+                                  .SetParameter("email", Emailid)
+                                  .SetParameter("password", newpassword)
+                                  .ExecuteUpdate();
+                        transaction.Commit();
+                        return i;
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+                }
+            }
+        }
+
         public User getUserInfoByEmail(string emailId)
         {
             List<User> lstUser = new List<User>();
@@ -588,7 +620,7 @@ namespace Api.Socioboard.Model
                 {
                     try
                     {
-                        int i = session.CreateQuery("Update User set PaymentStatus =:status where Id=:userid")
+                        int i = session.CreateQuery("Update User set PaymentStatus =:status, Ewallet=:0 where Id=:userid")
                                   .SetParameter("status", status)
                                   .SetParameter("userid", UserId)
                                   .ExecuteUpdate();
@@ -795,6 +827,40 @@ namespace Api.Socioboard.Model
 
         }
 
+
+        public int UpdatePaymentandEwalletStatusByUserId(Guid userid, string ewallet, string accounttype, string paymentstatus)
+        {
+            int i = 0;
+            try
+            {
+                using (NHibernate.ISession session = SessionFactory.GetNewSession())
+                {
+                    using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                    {
+
+                        try
+                        {
+                            i = session.CreateQuery("Update User set PaymentStatus=:paymentStatus, Ewallet=:ewallet, AccountType=:accounttype where Id = :userid")
+                                     .SetParameter("userid", userid)
+                                     .SetParameter("paymentStatus", paymentstatus)
+                                     .SetParameter("ewallet",ewallet)
+                                     .SetParameter("accounttype",accounttype)
+                                     .ExecuteUpdate();
+                            transaction.Commit();
+                        }
+                        catch {
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error : " + ex.StackTrace);
+            }
+
+            return i;
+
+        }
 
         /********************/
 
@@ -1173,6 +1239,50 @@ namespace Api.Socioboard.Model
                         transaction.Commit();
                     }
                     catch { }
+                }
+            }
+            return i;
+        }
+
+        //IsKeyUsed
+        public int UpdateIsKeyUsed(Guid Id)
+        {
+            int i = 0;
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        i = session.CreateQuery("Update User set IsKeyUsed=1  where Id = :Id")
+                                  .SetParameter("Id", Id)
+                                  .ExecuteUpdate();
+                        transaction.Commit();
+                    }
+                    catch { }
+                }
+            }
+            return i;
+        }
+
+        public int UpdateEwalletAmount(Guid userid, string amount)
+        {
+            int i = 0;
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        i = session.CreateQuery("Update User set Ewallet=:ewallet where Id = :Id")
+                                  .SetParameter("ewallet", amount)
+                                  .SetParameter("Id", userid)
+                                  .ExecuteUpdate();
+                        transaction.Commit();
+                    }
+                    catch(Exception ex) {
+                        i = 0;
+                    }
                 }
             }
             return i;

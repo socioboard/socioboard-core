@@ -12,7 +12,7 @@ namespace Socioboard.Controllers
 {
     [Authorize]
     [CustomAuthorize]
-    public class UserGroupController : Controller
+    public class UserGroupController : BaseController
     {
        
         //
@@ -145,7 +145,15 @@ namespace Socioboard.Controllers
             string SentMails = string.Empty;
             string NotSentMails = string.Empty;
             User objUser = (User)Session["User"];
-            string selectedgroupid = Session["selectedgroupid"].ToString();
+            string selectedgroupid = string.Empty;
+            if (Session["selectedgroupid"] == null || Session["selectedgroupid"] == "")
+            {
+                selectedgroupid = Request.QueryString["groupid"];
+            }
+            else
+            {
+                selectedgroupid = Session["selectedgroupid"].ToString();
+            }
             Api.Team.Team ApiobjTeam = new Api.Team.Team();
             Api.User.User ApiobjUser = new Api.User.User();
             if (email.Contains(','))

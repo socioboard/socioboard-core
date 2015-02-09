@@ -543,8 +543,8 @@ namespace Api.Socioboard.Services
                 using (NHibernate.ITransaction transaction = session.BeginTransaction())
                 {
                     DateTime AssignDate = DateTime.Now;
-                    string AssinDate = AssignDate.AddDays(-day).ToString("yyyy-MM-dd HH:mm:ss");
-
+                    //string AssinDate = AssignDate.AddDays(-day).ToString("yyyy-MM-dd HH:mm:ss");
+                    DateTime AssinDate = AssignDate.AddDays(-day);
                     try
                     {
                         string str = "from TwitterFeed where Userid=:userid and FeedDate>=:AssinDate  and ProfileId IN(";

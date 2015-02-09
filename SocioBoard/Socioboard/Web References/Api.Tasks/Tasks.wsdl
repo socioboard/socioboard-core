@@ -1265,16 +1265,16 @@
   </wsdl:binding>
   <wsdl:service name="Tasks">
     <wsdl:port name="TasksSoap" binding="tns:TasksSoap">
-      <soap:address location="http://devapi.socioboard.com/Services/Tasks.asmx" />
+      <soap:address location="http://api.socioboard.com/Services/Tasks.asmx" />
     </wsdl:port>
     <wsdl:port name="TasksSoap12" binding="tns:TasksSoap12">
-      <soap12:address location="http://devapi.socioboard.com/Services/Tasks.asmx" />
+      <soap12:address location="http://api.socioboard.com/Services/Tasks.asmx" />
     </wsdl:port>
     <wsdl:port name="TasksHttpGet" binding="tns:TasksHttpGet">
-      <http:address location="http://devapi.socioboard.com/Services/Tasks.asmx" />
+      <http:address location="http://api.socioboard.com/Services/Tasks.asmx" />
     </wsdl:port>
     <wsdl:port name="TasksHttpPost" binding="tns:TasksHttpPost">
-      <http:address location="http://devapi.socioboard.com/Services/Tasks.asmx" />
+      <http:address location="http://api.socioboard.com/Services/Tasks.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

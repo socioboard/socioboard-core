@@ -669,16 +669,16 @@
   </wsdl:binding>
   <wsdl:service name="SocialProfile">
     <wsdl:port name="SocialProfileSoap" binding="tns:SocialProfileSoap">
-      <soap:address location="http://devapi.socioboard.com/Services/SocialProfile.asmx" />
+      <soap:address location="http://api.socioboard.com/Services/SocialProfile.asmx" />
     </wsdl:port>
     <wsdl:port name="SocialProfileSoap12" binding="tns:SocialProfileSoap12">
-      <soap12:address location="http://devapi.socioboard.com/Services/SocialProfile.asmx" />
+      <soap12:address location="http://api.socioboard.com/Services/SocialProfile.asmx" />
     </wsdl:port>
     <wsdl:port name="SocialProfileHttpGet" binding="tns:SocialProfileHttpGet">
-      <http:address location="http://devapi.socioboard.com/Services/SocialProfile.asmx" />
+      <http:address location="http://api.socioboard.com/Services/SocialProfile.asmx" />
     </wsdl:port>
     <wsdl:port name="SocialProfileHttpPost" binding="tns:SocialProfileHttpPost">
-      <http:address location="http://devapi.socioboard.com/Services/SocialProfile.asmx" />
+      <http:address location="http://api.socioboard.com/Services/SocialProfile.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

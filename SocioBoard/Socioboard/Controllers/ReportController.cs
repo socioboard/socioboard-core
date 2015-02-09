@@ -14,7 +14,7 @@ namespace Socioboard.Controllers
 {
     [Authorize]
     [CustomAuthorize]
-    public class ReportController : Controller
+    public class ReportController : BaseController
     {
         ILog logger = LogManager.GetLogger(typeof(ReportController));
         //

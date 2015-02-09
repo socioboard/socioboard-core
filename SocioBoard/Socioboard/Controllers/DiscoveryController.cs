@@ -9,7 +9,7 @@ using System.Web.Script.Serialization;
 namespace Socioboard.Controllers
 {
     [CustomAuthorize]
-    public class DiscoveryController : Controller
+    public class DiscoveryController : BaseController
     {
         //
         // GET: /Discovery/

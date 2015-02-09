@@ -1,0 +1,50 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    List<Affiliates> lst=(List<Affiliates>)Model;
+    int count = 1;
+    float total = 0;
+    }
+                                
+<div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <h4 class="modal-title"><strong>@ViewBag.FriendsEmail</strong></h4>
+                                  </div>
+                                  <div class="modal-body">
+                                     <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>@GlobusMultiLanguageLib.Resources.MyStuff_SummaryPartial_Date</th>
+                                            <th>@GlobusMultiLanguageLib.Resources.MyStuff_SummaryPartial_AffiliateFee</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in lst)
+                                        {
+                                            <tr>
+                                                <td>@count</td>
+                                                <td>@item.AffiliateDate</td>
+                                                <td>@item.Amount</td>
+                                            </tr>
+                                            total += float.Parse(item.Amount);
+                                            count++;
+                                        }
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>@GlobusMultiLanguageLib.Resources.MyStuff_SummaryPartial_Total</td>
+                                            <td>@total</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                           @* </div>*@

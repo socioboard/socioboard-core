@@ -12,7 +12,7 @@ namespace Socioboard.Controllers
 {
     [Authorize]
     [CustomAuthorize]
-    public class TwitterManagerController : Controller
+    public class TwitterManagerController : BaseController
     {
         //
         // GET: /TwitterManager/

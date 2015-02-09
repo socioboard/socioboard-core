@@ -12,7 +12,7 @@ namespace Socioboard.Controllers
 {
     [Authorize]
     [CustomAuthorize]
-    public class DropboxManagerController : Controller
+    public class DropboxManagerController : BaseController
     {
         //
         // GET: /DropboxManagerController/
@@ -29,7 +29,7 @@ namespace Socioboard.Controllers
             Api.DropboxAccount.DropboxAccount _DropboxAccount = new Api.DropboxAccount.DropboxAccount();
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
             DropboxAccount _UserDetails = Newtonsoft.Json.JsonConvert.DeserializeObject<DropboxAccount>(_DropboxAccount.GetDropboxAccountDetailsByUserId(objUser.Id.ToString()));
-
+             
             if (_UserDetails != null)
             {
                 var _DropboxImageLast = Newtonsoft.Json.JsonConvert.DeserializeObject<List<string>>(_Dropbox.GetUserDropBoxData(objUser.Id.ToString()));

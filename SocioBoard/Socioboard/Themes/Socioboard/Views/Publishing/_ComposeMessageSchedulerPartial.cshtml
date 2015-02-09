@@ -4,14 +4,17 @@
 }
 @foreach (var item in (Dictionary<TeamMemberProfile, object>)Model)
 {
-    if (item.Key.ProfileType == "facebook")
+    if (item.Key.ProfileType == "facebook" || item.Key.ProfileType=="facebook_page")
     {
         FacebookAccount objFacebookAccount = (FacebookAccount)item.Value;
+        if(objFacebookAccount.AccessToken!="")
+        {
     <li onclick="bindfrofiles('facebook','@objFacebookAccount.FbUserName','@objFacebookAccount.FbUserId')">
         <a href="#">
             <i class="fa fa-facebook fa-fw"></i>@objFacebookAccount.FbUserName
                                                     </a>
     </li>
+}
     }
     if (item.Key.ProfileType == "twitter")
     {

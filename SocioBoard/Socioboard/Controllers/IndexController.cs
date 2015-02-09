@@ -14,7 +14,7 @@ using System.Web.Security;
 
 namespace Socioboard.Controllers
 {
-    public class IndexController : Controller
+    public class IndexController : BaseController
     {
         //
         // GET: /Default/
@@ -22,6 +22,17 @@ namespace Socioboard.Controllers
        // [OutputCache(Duration = 604800)]
         public ActionResult Index()
         {
+            try
+            {
+                Api.Facebook.Facebook objApiFacebook = new Api.Facebook.Facebook();
+               // var sss = objApiFacebook.AddFacebookAccountWithPaginationAsync;
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+
             //if (Session["User"] != null)
             //{
             //    return RedirectToAction("Index", "Home");
@@ -193,7 +204,9 @@ namespace Socioboard.Controllers
                 ViewBag.premiumplanHRef = "/Default/Registration?type=" + AccountType.Premium.ToString();
                 ViewBag.freePlanHRef = "/Default/Registration?type=" + AccountType.Free.ToString();
             }
+            Session["User"] = null;
             return View("_PricingPartial", new PricingModelHelper[] { objPricingModelHelper_Basic, objPricingModelHelper_Standard, objPricingModelHelper_Premium, objPricingModelHelper_Deluxe, objPricingModelHelper_SocioBasic, objPricingModelHelper_SocioStandard, objPricingModelHelper_SocioPremium, objPricingModelHelper_SocioDeluxe });
+            
         }
        
         public ActionResult Registration()
@@ -203,7 +216,7 @@ namespace Socioboard.Controllers
         
         public ActionResult Signup()
         {
-            logger.Error("Abhay");
+            logger.Error("Register");
             User _user=(User)Session["User"];
             Domain.Socioboard.Domain.User user = new Domain.Socioboard.Domain.User();
             Session["AjaxLogin"] = "register";
@@ -255,8 +268,6 @@ namespace Socioboard.Controllers
                 logger.Error("res_Registration: "+res_Registration);
                 if (res_Registration != "Email Already Exists")
                 {
-
-
                     if (user != null)
                     {
                         Api.User.User obj = new Api.User.User();
@@ -264,6 +275,17 @@ namespace Socioboard.Controllers
                         Session["User"] = user;
                         retmsg = "user";
                     }
+
+                    Domain.Socioboard.Domain.Invitation _Invitation = (Domain.Socioboard.Domain.Invitation)Session["InvitationInfo"];
+                    Api.Invitation.Invitation ApiInvitation = new Api.Invitation.Invitation();
+                    if (_Invitation != null)
+                    {
+                        if (user.EmailId == _Invitation.FriendEmail)
+                        {
+                            string ret = ApiInvitation.UpdateInvitatoinStatus(_Invitation.Id.ToString(), user.Id.ToString());
+                        }
+                    }
+
                 }
                 else
                 {
@@ -278,7 +300,8 @@ namespace Socioboard.Controllers
                 Console.WriteLine(ex.StackTrace);
             }
             //return View("_RegistrationPartial");
-
+            
+            
            
             return Content(retmsg);
         }
@@ -559,6 +582,11 @@ namespace Socioboard.Controllers
         public ActionResult Disclaimer() 
         {
             return View();
+        }
+
+        public ActionResult JoinSocioboard()
+        {
+            return View("OpenSource");
         }
     }
 }

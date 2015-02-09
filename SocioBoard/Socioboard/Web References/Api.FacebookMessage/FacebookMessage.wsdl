@@ -92,6 +92,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getAllFacebookMessagesOfUserByProfileIdWithRange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="noOfDataToSkip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllFacebookMessagesOfUserByProfileIdWithRangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllFacebookMessagesOfUserByProfileIdWithRangeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="getAllFacebookTagOfUsers">
         <s:complexType>
           <s:sequence>
@@ -180,6 +195,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetAllMessageDetailWithRange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="noOfDataToSkip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllMessageDetailWithRangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllMessageDetailWithRangeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -219,6 +249,12 @@
   <wsdl:message name="getAllFacebookMessagesOfUserByProfileIdSoapOut">
     <wsdl:part name="parameters" element="tns:getAllFacebookMessagesOfUserByProfileIdResponse" />
   </wsdl:message>
+  <wsdl:message name="getAllFacebookMessagesOfUserByProfileIdWithRangeSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllFacebookMessagesOfUserByProfileIdWithRange" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookMessagesOfUserByProfileIdWithRangeSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllFacebookMessagesOfUserByProfileIdWithRangeResponse" />
+  </wsdl:message>
   <wsdl:message name="getAllFacebookTagOfUsersSoapIn">
     <wsdl:part name="parameters" element="tns:getAllFacebookTagOfUsers" />
   </wsdl:message>
@@ -254,6 +290,12 @@
   </wsdl:message>
   <wsdl:message name="GetAllMessageDetailSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllMessageDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMessageDetailWithRangeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllMessageDetailWithRange" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMessageDetailWithRangeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllMessageDetailWithRangeResponse" />
   </wsdl:message>
   <wsdl:message name="UserHomeWithLimitHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
@@ -297,6 +339,13 @@
   <wsdl:message name="getAllFacebookMessagesOfUserByProfileIdHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="getAllFacebookMessagesOfUserByProfileIdWithRangeHttpGetIn">
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="noOfDataToSkip" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookMessagesOfUserByProfileIdWithRangeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="getAllFacebookTagOfUsersHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="ProfileId" type="s:string" />
@@ -335,6 +384,13 @@
     <wsdl:part name="profileid" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetAllMessageDetailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMessageDetailWithRangeHttpGetIn">
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="noOfDataToSkip" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMessageDetailWithRangeHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="UserHomeWithLimitHttpPostIn">
@@ -379,6 +435,13 @@
   <wsdl:message name="getAllFacebookMessagesOfUserByProfileIdHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="getAllFacebookMessagesOfUserByProfileIdWithRangeHttpPostIn">
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="noOfDataToSkip" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookMessagesOfUserByProfileIdWithRangeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="getAllFacebookTagOfUsersHttpPostIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="ProfileId" type="s:string" />
@@ -419,6 +482,13 @@
   <wsdl:message name="GetAllMessageDetailHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetAllMessageDetailWithRangeHttpPostIn">
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="noOfDataToSkip" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMessageDetailWithRangeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="FacebookMessageSoap">
     <wsdl:operation name="UserHomeWithLimit">
       <wsdl:input message="tns:UserHomeWithLimitSoapIn" />
@@ -444,6 +514,10 @@
       <wsdl:input message="tns:getAllFacebookMessagesOfUserByProfileIdSoapIn" />
       <wsdl:output message="tns:getAllFacebookMessagesOfUserByProfileIdSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="getAllFacebookMessagesOfUserByProfileIdWithRange">
+      <wsdl:input message="tns:getAllFacebookMessagesOfUserByProfileIdWithRangeSoapIn" />
+      <wsdl:output message="tns:getAllFacebookMessagesOfUserByProfileIdWithRangeSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="getAllFacebookTagOfUsers">
       <wsdl:input message="tns:getAllFacebookTagOfUsersSoapIn" />
       <wsdl:output message="tns:getAllFacebookTagOfUsersSoapOut" />
@@ -467,6 +541,10 @@
     <wsdl:operation name="GetAllMessageDetail">
       <wsdl:input message="tns:GetAllMessageDetailSoapIn" />
       <wsdl:output message="tns:GetAllMessageDetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMessageDetailWithRange">
+      <wsdl:input message="tns:GetAllMessageDetailWithRangeSoapIn" />
+      <wsdl:output message="tns:GetAllMessageDetailWithRangeSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookMessageHttpGet">
@@ -494,6 +572,10 @@
       <wsdl:input message="tns:getAllFacebookMessagesOfUserByProfileIdHttpGetIn" />
       <wsdl:output message="tns:getAllFacebookMessagesOfUserByProfileIdHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="getAllFacebookMessagesOfUserByProfileIdWithRange">
+      <wsdl:input message="tns:getAllFacebookMessagesOfUserByProfileIdWithRangeHttpGetIn" />
+      <wsdl:output message="tns:getAllFacebookMessagesOfUserByProfileIdWithRangeHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="getAllFacebookTagOfUsers">
       <wsdl:input message="tns:getAllFacebookTagOfUsersHttpGetIn" />
       <wsdl:output message="tns:getAllFacebookTagOfUsersHttpGetOut" />
@@ -517,6 +599,10 @@
     <wsdl:operation name="GetAllMessageDetail">
       <wsdl:input message="tns:GetAllMessageDetailHttpGetIn" />
       <wsdl:output message="tns:GetAllMessageDetailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMessageDetailWithRange">
+      <wsdl:input message="tns:GetAllMessageDetailWithRangeHttpGetIn" />
+      <wsdl:output message="tns:GetAllMessageDetailWithRangeHttpGetOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookMessageHttpPost">
@@ -544,6 +630,10 @@
       <wsdl:input message="tns:getAllFacebookMessagesOfUserByProfileIdHttpPostIn" />
       <wsdl:output message="tns:getAllFacebookMessagesOfUserByProfileIdHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="getAllFacebookMessagesOfUserByProfileIdWithRange">
+      <wsdl:input message="tns:getAllFacebookMessagesOfUserByProfileIdWithRangeHttpPostIn" />
+      <wsdl:output message="tns:getAllFacebookMessagesOfUserByProfileIdWithRangeHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="getAllFacebookTagOfUsers">
       <wsdl:input message="tns:getAllFacebookTagOfUsersHttpPostIn" />
       <wsdl:output message="tns:getAllFacebookTagOfUsersHttpPostOut" />
@@ -567,6 +657,10 @@
     <wsdl:operation name="GetAllMessageDetail">
       <wsdl:input message="tns:GetAllMessageDetailHttpPostIn" />
       <wsdl:output message="tns:GetAllMessageDetailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMessageDetailWithRange">
+      <wsdl:input message="tns:GetAllMessageDetailWithRangeHttpPostIn" />
+      <wsdl:output message="tns:GetAllMessageDetailWithRangeHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="FacebookMessageSoap" type="tns:FacebookMessageSoap">
@@ -625,6 +719,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAllFacebookMessagesOfUserByProfileIdWithRange">
+      <soap:operation soapAction="http://tempuri.org/getAllFacebookMessagesOfUserByProfileIdWithRange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getAllFacebookTagOfUsers">
       <soap:operation soapAction="http://tempuri.org/getAllFacebookTagOfUsers" style="document" />
       <wsdl:input>
@@ -672,6 +775,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllMessageDetail">
       <soap:operation soapAction="http://tempuri.org/GetAllMessageDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMessageDetailWithRange">
+      <soap:operation soapAction="http://tempuri.org/GetAllMessageDetailWithRange" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -736,6 +848,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAllFacebookMessagesOfUserByProfileIdWithRange">
+      <soap12:operation soapAction="http://tempuri.org/getAllFacebookMessagesOfUserByProfileIdWithRange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getAllFacebookTagOfUsers">
       <soap12:operation soapAction="http://tempuri.org/getAllFacebookTagOfUsers" style="document" />
       <wsdl:input>
@@ -783,6 +904,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllMessageDetail">
       <soap12:operation soapAction="http://tempuri.org/GetAllMessageDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMessageDetailWithRange">
+      <soap12:operation soapAction="http://tempuri.org/GetAllMessageDetailWithRange" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -847,6 +977,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAllFacebookMessagesOfUserByProfileIdWithRange">
+      <http:operation location="/getAllFacebookMessagesOfUserByProfileIdWithRange" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getAllFacebookTagOfUsers">
       <http:operation location="/getAllFacebookTagOfUsers" />
       <wsdl:input>
@@ -894,6 +1033,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllMessageDetail">
       <http:operation location="/GetAllMessageDetail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMessageDetailWithRange">
+      <http:operation location="/GetAllMessageDetailWithRange" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -958,6 +1106,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAllFacebookMessagesOfUserByProfileIdWithRange">
+      <http:operation location="/getAllFacebookMessagesOfUserByProfileIdWithRange" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getAllFacebookTagOfUsers">
       <http:operation location="/getAllFacebookTagOfUsers" />
       <wsdl:input>
@@ -1012,19 +1169,28 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllMessageDetailWithRange">
+      <http:operation location="/GetAllMessageDetailWithRange" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="FacebookMessage">
     <wsdl:port name="FacebookMessageSoap" binding="tns:FacebookMessageSoap">
-      <soap:address location="http://devapi.socioboard.com/Services/FacebookMessage.asmx" />
+      <soap:address location="http://api.socioboard.com/Services/FacebookMessage.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookMessageSoap12" binding="tns:FacebookMessageSoap12">
-      <soap12:address location="http://devapi.socioboard.com/Services/FacebookMessage.asmx" />
+      <soap12:address location="http://api.socioboard.com/Services/FacebookMessage.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookMessageHttpGet" binding="tns:FacebookMessageHttpGet">
-      <http:address location="http://devapi.socioboard.com/Services/FacebookMessage.asmx" />
+      <http:address location="http://api.socioboard.com/Services/FacebookMessage.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookMessageHttpPost" binding="tns:FacebookMessageHttpPost">
-      <http:address location="http://devapi.socioboard.com/Services/FacebookMessage.asmx" />
+      <http:address location="http://api.socioboard.com/Services/FacebookMessage.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

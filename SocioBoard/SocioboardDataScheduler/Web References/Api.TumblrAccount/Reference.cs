@@ -35,8 +35,6 @@ namespace SocioboardDataScheduler.Api.TumblrAccount {
         
         private System.Threading.SendOrPostCallback DeleteTumblrAccountOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetAllTumblrAccountsByUserIdAndGroupIdOperationCompleted;
-        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -83,9 +81,6 @@ namespace SocioboardDataScheduler.Api.TumblrAccount {
         
         /// <remarks/>
         public event DeleteTumblrAccountCompletedEventHandler DeleteTumblrAccountCompleted;
-        
-        /// <remarks/>
-        public event GetAllTumblrAccountsByUserIdAndGroupIdCompletedEventHandler GetAllTumblrAccountsByUserIdAndGroupIdCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetTumblrAccountDetailsById", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -181,37 +176,6 @@ namespace SocioboardDataScheduler.Api.TumblrAccount {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllTumblrAccountsByUserIdAndGroupId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string GetAllTumblrAccountsByUserIdAndGroupId(string userid, string groupid) {
-            object[] results = this.Invoke("GetAllTumblrAccountsByUserIdAndGroupId", new object[] {
-                        userid,
-                        groupid});
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetAllTumblrAccountsByUserIdAndGroupIdAsync(string userid, string groupid) {
-            this.GetAllTumblrAccountsByUserIdAndGroupIdAsync(userid, groupid, null);
-        }
-        
-        /// <remarks/>
-        public void GetAllTumblrAccountsByUserIdAndGroupIdAsync(string userid, string groupid, object userState) {
-            if ((this.GetAllTumblrAccountsByUserIdAndGroupIdOperationCompleted == null)) {
-                this.GetAllTumblrAccountsByUserIdAndGroupIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllTumblrAccountsByUserIdAndGroupIdOperationCompleted);
-            }
-            this.InvokeAsync("GetAllTumblrAccountsByUserIdAndGroupId", new object[] {
-                        userid,
-                        groupid}, this.GetAllTumblrAccountsByUserIdAndGroupIdOperationCompleted, userState);
-        }
-        
-        private void OnGetAllTumblrAccountsByUserIdAndGroupIdOperationCompleted(object arg) {
-            if ((this.GetAllTumblrAccountsByUserIdAndGroupIdCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetAllTumblrAccountsByUserIdAndGroupIdCompleted(this, new GetAllTumblrAccountsByUserIdAndGroupIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -295,32 +259,6 @@ namespace SocioboardDataScheduler.Api.TumblrAccount {
         private object[] results;
         
         internal DeleteTumblrAccountCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void GetAllTumblrAccountsByUserIdAndGroupIdCompletedEventHandler(object sender, GetAllTumblrAccountsByUserIdAndGroupIdCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetAllTumblrAccountsByUserIdAndGroupIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetAllTumblrAccountsByUserIdAndGroupIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

@@ -139,6 +139,7 @@ namespace Api.Socioboard.Services
                     user.TimeZone = string.Empty;
                     user.UserName = Username;//FirstName + " " + LastName;
                     user.UserStatus = 1;
+                    user.Ewallet = "0";
                     user.ActivationStatus = ActivationStatus;//"0"; 
                     user.Id = Guid.NewGuid();
                     UserRepository.Add(user);
@@ -276,6 +277,33 @@ namespace Api.Socioboard.Services
                 User user = new User();
                 UserRepository userrepo = new UserRepository();
                 int i = userrepo.ChangePassword(Utility.MD5Hash(NewPassword), Utility.MD5Hash(Password), EmailId);
+                if (i == 1)
+                {
+                    return "Password Changed Successfully";
+                }
+                else
+                {
+                    return "Invalid EmailId";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Please Try Again";
+            }
+        }
+
+        //ChangePasswordWithoutOldPassword
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string ChangePasswordWithoutOldPassword(string EmailId, string Password, string NewPassword)
+        {
+            try
+            {
+                User user = new User();
+                UserRepository userrepo = new UserRepository();
+                int i = userrepo.ChangePasswordWithoutOldPassword(Utility.MD5Hash(NewPassword), EmailId);
                 if (i == 1)
                 {
                     return "Password Changed Successfully";
@@ -614,6 +642,36 @@ namespace Api.Socioboard.Services
             }
         }
 
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string UpdateIsKeyUsed(string userID)
+        {
+            try
+            {
+                int ret = userrepo.UpdateIsKeyUsed(Guid.Parse(userID));
+                return new JavaScriptSerializer().Serialize(ret);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return null;
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public int UpdatePaymentandEwalletStatusByUserId(string userid, string ewallet, string accounttype, string paymentstatus)
+        {
+            try
+            {
+                int i = userrepo.UpdatePaymentandEwalletStatusByUserId(Guid.Parse(userid), ewallet, accounttype, paymentstatus);
+                return i;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -648,6 +706,22 @@ namespace Api.Socioboard.Services
                 return null;
             }
         }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string UpdateEwalletAmount(string UserId, string updatedamount)
+        {
+            try
+            {
+                int ret = userrepo.UpdateEwalletAmount(Guid.Parse(UserId), updatedamount);
+                return "success";
+            }
+            catch (Exception ex)
+            {
+                return "Somthing Went Wrong";
+            }
+            
+        }
+
     }
 
     public class profileConnected

@@ -10,7 +10,7 @@ namespace Socioboard.Controllers
 {
     [Authorize]
     [CustomAuthorize]
-    public class GroupController : Controller
+    public class GroupController : BaseController
     {
         //
         // GET: /Group/
@@ -113,10 +113,10 @@ namespace Socioboard.Controllers
                 {
                     if (fi != null)
                     {
-                        var path = Server.MapPath("~/Contents/img/upload");
+                        var path = Server.MapPath("~/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/upload");
 
 
-                        filepath = path + "/" + fi.FileName;
+                        filepath = path + "\\" + fi.FileName;
                         if (!Directory.Exists(path))
                         {
                             Directory.CreateDirectory(path);
@@ -125,9 +125,9 @@ namespace Socioboard.Controllers
                     }
                      imagefile = fi.FileName;
                 }
-               
 
-                string response = Helper.SBUtils.PostOnSelectedGroups(SelectedGroupId, title, msg, intrval, clienttime, time, date, imagefile);
+
+                string response = Helper.SBUtils.PostOnSelectedGroups(SelectedGroupId, title, msg, intrval, clienttime, time, date, filepath);
 
 
               return Content(response);

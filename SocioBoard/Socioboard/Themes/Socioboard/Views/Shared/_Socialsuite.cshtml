@@ -2,14 +2,14 @@
     
     Layout = null;
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
-
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
         //if (Session["User"] != null)
         //    Response.Redirect("../Home/Index");
 }
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
-    <title>Socioboard - Generate More leads on Social Media| Social CRM | Social Media CMS
+    <title>@GlobusMultiLanguageLib.Resources.SocioBoard_Shared_Socialsuite_Title
     </title>
     <meta name="google-site-verification" content="suNXfJWYY3E7tilc3XsF5M2qZgSml8fGZVb5RfDOWaA" />
     <meta name="description" content="A new fast growing, advanced, easy, open-source social media marketing tool to engage your audience with great features such as live chat, news feed, timeline, profiles, events, notifications, likes, analytics, insights and much more hit the digital media marketing lately.Most applications in this domain have a very narrow and limited approach towards end users, people feel caught up in a whirlpool of using the same features without customization and scaling up. Socioboard plans to help users out of this narrow limiting vision of the current social media dashboards today." />
@@ -56,7 +56,24 @@
     </asp:contentplaceholder>
 </head>
 <body>
-
+    @helper selected(string c, string culture)
+{
+    if (c == culture)
+    {
+        @:active
+    }
+}
+    @helper SelcetedLanguage(string culture)
+    {
+        if ("it" == culture)
+        {
+        @:Italiano
+    }
+    else if("en-us".Equals(culture))
+    {
+        @:English
+    }
+        }
     <!--start header-->
     <div class="container">
 
@@ -72,7 +89,9 @@
                     </button>
                     <a class="navbar-brand" href="../Index/Index"><img src="/Themes/@path/Contents/img/logo.png" class="img-responsive" style="margin-top: -15px;"/></a>
                 </div>
-
+                 <style>
+                            a.link.active { color:#F55C37; }
+                        </style>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav pull-right">
@@ -80,42 +99,51 @@
                          @*<li>
                             <a data-toggle="modal" data-target="#helpModal" style="cursor:pointer">Help</a>
                         </li>*@
-                        <li>
-                            <a href="../Index/Company" target="">Company</a>
+                       
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@SelcetedLanguage(culture)<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/Home/SetCulture?culture=en-us" class="link @selected("en-us", culture)"><img src="/Themes/Socioboard/Contents/img/eng.png" class="img-responsive" style="display:inline;" alt=""/> English</a></li>
+                                <li><a href="/Home/SetCulture?culture=it" class="link @selected("it", culture)"><img src="/Themes/Socioboard/Contents/img/it.png" class="img-responsive" style="display:inline;" alt=""/> Italiano</a></li>
+                                
+                                     </ul>
                         </li>
                         <li>
-                            <a href="../Index/Features" target="">Features</a>
+                            <a href="../Index/Company" target="">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Company</a>
+                        </li>
+                        <li>
+                            <a href="../Index/Features" target="">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Features</a>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Versions <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Versions <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="http://socioboard.org/" target="_blank">Community</a></li>
-                                <li><a href="../Versions/Agency" target="">Agency</a></li>
-                                <li><a href="../Versions/Enterprise" target="">Enterprise</a></li>
+                                <li><a href="http://socioboard.org/" target="_blank">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Community</a></li>
+                                <li><a href="../Versions/Agency" target="">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Agency</a></li>
+                                <li><a href="../Versions/Enterprise" target="">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Enterprise</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="../Index/Pricing" target="">Pricing</a>
+                            <a href="../Index/Pricing" target="">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Pricing</a>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Insights <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Insights<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="http://wiki.socioboard.com/index.php/Main_Page" target="_blank">Wiki</a></li>
-                                <li><a href="http://blog.socioboard.com/category/cases" target="_blank">Cases</a></li>
-                                <li><a href="http://blog.socioboard.com/" target="_blank">Blogs</a></li>
+                                <li><a href="http://wiki.socioboard.com/index.php/Main_Page" target="_blank">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Wiki</a></li>
+                                <li><a href="http://blog.socioboard.com/category/cases" target="_blank">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Cases</a></li>
+                                <li><a href="http://blog.socioboard.com/" target="_blank">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Blogs</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="../Index/Download" target="">Download</a>
+                            <a href="../Index/Download" target="">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Download</a>
                         </li>
                          <li>
-                            <a href="../Home/Training" target="">Training</a>
+                            <a href="../Home/Training" target="">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Training</a>
                         </li>
                        @* <li>
                             <a href="../Index/contact" target="">Contact Us</a>
                         </li>*@
                          <li>
-                            <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal" onclick=" SetUser();" style="margin-top: 10px;">LOGIN</button>
+                            <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal" onclick=" SetUser();" style="margin-top: 10px;">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_LoginMainPage</button>
                         </li>
                         <li>
                             <form action="/Company" id="Companydashboard" class="navbar-form navbar-left" role="search">
@@ -135,8 +163,8 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_SignIn</h4>
                     </div>
                     <div class="modal-body col-md-12">
                         <div class="col-md-6">
@@ -154,17 +182,17 @@
 
                             <div class="remember_me" style="padding-bottom: 16px; margin-top: -8px">
                                 <input type="checkbox" id="RememberMe">
-                                Remember me
+                                @GlobusMultiLanguageLib.Resources.Shared_Socialsuite_RememberMe
                             </div>
-                            <p>Forgot Password? <a href="../ForgotPassword/Index">Click here to restore</a></p>
+                            <p>@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_ForgotPassword <a href="../ForgotPassword/Index">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Restore</a></p>
                             @* <hr class="small" />*@
                             <div id="btnlogin" onclick="signinFunction();">
-                                <button type="button" class="btn btn-warning">Login</button>
+                                <button type="button" class="btn btn-warning">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_LoginInsidePage</button>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group">
-                                <p>You can also Register with your Social Account</p>
+                                <p>@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_RegisterWithSocialaccounts</p>
                             </div>
                             <div class="input-group">
                                 <a id="fb_account" href="#" onclick="googleplusLogin();">
@@ -173,7 +201,7 @@
                                 <a id="fb_account" href="#" onclick="facebookLogin();">
                                     <img src="/Themes/@path/Contents/img/fb_icon_new.png" alt="">
                                 </a>
-                                <p>Not Yet Registered? &nbsp <a href="../Index/Pricing">Register Now</a></p>
+                                <p>@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_NotYetRegistered &nbsp <a href="../Index/Pricing">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_RegisterNow</a></p>
                             </div>
                         </div>
                     </div>
@@ -193,10 +221,10 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Help Your Customers</h4>
+                        <h4 class="modal-title" id="myModalLabel">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_HelpYourCustomer</h4>
                     </div>
                     <div class="modal-body col-md-12" style="background: beige">
-                        <h2 class="text-center" style="padding-left: 250px">Make a Decision</h2>
+                        <h2 class="text-center" style="padding-left: 250px">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_MakeADecision</h2>
                         <div class="col-md-6">
                             <!-- 4:3 aspect ratio -->
                             <div class="embed-responsive embed-responsive-4by3">
@@ -205,22 +233,22 @@
 
                         </div>
                         <div class="col-md-6">
-                            <h5>Send Video in Email</h5>
+                            <h5>@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_SendVideoInEmail</h5>
                             <div class="input-group">
 
-                                <label>Enter your Email Address and we'll send you an awesome video email</label>
+                                <label>@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_EnterEmailForVideo</label>
                             </div>
                             <div class="input-group">
 
                                 <span class="input-group-addon"><i class="fa fa-at"></i></span>
                                 <input id="emailaddress" type="text" class="form-control" placeholder="Email ID" />
                             </div>
-                            <label>Or try it free!!</label>
+                            <label>@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_TryitforFree</label>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-success" onclick="SendVideoMail()">Send Mail</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Close</button>
+                        <button type="button" class="btn btn-success" onclick="SendVideoMail()">@GlobusMultiLanguageLib.Resources.Shared_SocialSuite_SendMail</button>
                     </div>
                 </div>
             </div>
@@ -243,13 +271,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 col-lg-offset-1 text-center">
-                    <h4><strong>GET IN TOUCH WITH US</strong>
+                    <h4><strong>@GlobusMultiLanguageLib.Resources.Shared_SocialSuite_GetInTouchWithUs</strong>
                     </h4>
-                    <p>L V . Complex<br>7th Block, 80 Feet Road, Koramangala Layout, Bangalore-560095</p>
+                    <p>@GlobusMultiLanguageLib.Resources.SocioBoard_Shared_SocialSuite_AddressHeader<br>@GlobusMultiLanguageLib.Resources.SocioBoard_Shared_SocialSuite_ProperAddress</p>
                     <ul class="list-unstyled">
-                        <li><i class="fa fa-phone fa-fw"></i> +91 80 4166 0003</li>
-                        <li><i class="fa fa-phone fa-fw"></i> +91 97 1331 7771</li>
-                        <li><i class="fa fa-skype fa-fw"></i> socioboard.support</a>
+                        <li><i class="fa fa-phone fa-fw"></i> @GlobusMultiLanguageLib.Resources.SocioBoard_Shared_SocialSuite_PhoneNumber1</li>
+                        <li><i class="fa fa-phone fa-fw"></i> @GlobusMultiLanguageLib.Resources.SocioBoard_Shared_SocialSuite_PhoneNumber2</li>
+                        <li><i class="fa fa-skype fa-fw"></i> @GlobusMultiLanguageLib.Resources.SocioBoard_Shared_SocialSuite_SkypeSupport
                         </li>
                     </ul>
                     <br>
@@ -268,7 +296,7 @@
                         </li>
                     </ul>
                     <hr class="small">
-                    <p class="text-muted">Copyright © 2013 - 2014 SOCIOBOARD Technologies Pvt. Ltd. All Rights Reserved.</p>
+                    <p class="text-muted">@GlobusMultiLanguageLib.Resources.SocioBoard_Shared_SocialSuite_Copyright</p>
                 </div>
             </div>
         </div>
@@ -279,7 +307,6 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#txtPassword").bind("keydown", function (event) {
-                debugger;
                 var keycode = (event.keyCode ? event.keyCode : (event.which ? event.which : event.charCode));
                 if (keycode == 13) {
                     signinFunction();
@@ -479,24 +506,6 @@
             });
         });
     </script>
-            <!-- Start of StatCounter Code for Default Guide -->
-            <script type="text/javascript">
-                var sc_project = 9930597;
-                var sc_invisible = 1;
-                var sc_security = "3850c63d";
-                var scJsHost = (("https:" == document.location.protocol) ?
-                "https://secure." : "http://www.");
-                document.write("<sc" + "ript type='text/javascript' src='" +
-                scJsHost +
-                "statcounter.com/counter/counter.js'></" + "script>");
-            </script>
-            <noscript><div class="statcounter"><a title="web stats"
-            href="http://statcounter.com/" target="_blank"><img
-            class="statcounter"
-            src="http://c.statcounter.com/9930597/0/3850c63d/1/"
-            alt="web stats"></a></div></noscript>
-            <!-- End of StatCounter Code for Default Guide -->
-
 </body>
 
 </html>

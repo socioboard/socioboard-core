@@ -24,7 +24,7 @@
                     <div class="row">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Tasks
+                                @GlobusMultiLanguageLib.Resources.Messages_TaskPartial_Tasks
                        
                             </div>
                             <!-- .panel-heading -->
@@ -78,7 +78,7 @@
                                             @objdetails.UserName</span>
 
                                                  <span class="pull-right"><i class="fa fa-clock-o"></i> @item.TaskMessageDate</span>
-                                                 <p><a class="collapsed" href="#@item.Id" data-parent="#accordion" data-toggle="collapse">Assigned by @objAssignUserDetails.UserName</a></p>
+                                                 <p><a class="collapsed" href="#@item.Id" data-parent="#accordion" data-toggle="collapse">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_AssignedBy @objAssignUserDetails.UserName</a></p>
                                                                                                 <br>
                                                                                                 <span>@item.TaskMessage</span>
                                                                                                 @*<i data-target="#EditModal" data-toggle="modal" class="fa fa-pencil fa-fw pull-right"></i>*@
@@ -87,11 +87,11 @@
                                                     @:<div class="pull-right"> 
                                                         if(objAssignUserDetails.UserName==LoggedUser.UserName)
                                                         {
-                                                            @:<span>Closed By  You</span>  
+                                                            @:<span>@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_ClosedByYou</span>  
                                                         }
                                                         else
                                                         {
-                                                            @:<span>Closed By  @objAssignUserDetails.UserName</span>
+                                                            @:<span>@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_ClosedBy  @objAssignUserDetails.UserName</span>
                                                         }
                                                                                               
                                                     @:<span>Completed</span>
@@ -160,13 +160,13 @@
                                                     </div>
                                                     <div class="col-md-9">
                                                         <textarea id="txtTaskComment_@item.Id" placeholder="Leave a comment" rows="3" class="form-control"></textarea>
-                                                        <button id="taskcomment" class="btn btn-primary " onclick="addTaskComment('@item.Id')" type="button">OK</button>
-                                                        <button onclick="hideTask('@item.Id')" data-dismiss="modal" class="btn btn-default " type="button">Close</button>
+                                                        <button id="taskcomment" class="btn btn-primary " onclick="addTaskComment('@item.Id')" type="button">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_OK</button>
+                                                        <button onclick="hideTask('@item.Id')" data-dismiss="modal" class="btn btn-default " type="button">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_Close</button>
                                                     </div>
                                                         @if (item.UserId == LoggedUser.Id)
                                                         {
                                                             <div>
-                                                                 <a style="cursor:pointer" onclick="DeleteTask('@item.Id')">Delete Task</a>
+                                                                 <a style="cursor:pointer" onclick="DeleteTask('@item.Id')">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_DeleteTask</a>
                                                             </div>
                                                         }
                                                         
@@ -180,7 +180,7 @@
                                         }
                                         else
                                         {
-                                            @:<div>Sorry, you have no any Task in this Group.</div>
+                                            @:<div>@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_NoTaskInThisGroup</div>
                                         }
                                     }
 
@@ -211,15 +211,15 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                            <h4 id="myModalLabel" class="modal-title">Edit Status</h4>
+                                            <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_Close</span></button>
+                                            <h4 id="myModalLabel" class="modal-title">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_EditStatus</h4>
                                         </div>
                                         <div class="modal-body col-md-12">
-                                            <p>Are you sure want to change status?</p>
+                                            <p>@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_AreYouSureValidationStatus</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button class="btn btn-primary " type="button">OK</button>
-                                            <button data-dismiss="modal" class="btn btn-default " type="button">Close</button>
+                                            <button class="btn btn-primary " type="button">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_OK</button>
+                                            <button data-dismiss="modal" class="btn btn-default " type="button">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_Close</button>
                                         </div>
                                     </div>
                                 </div>
@@ -231,8 +231,8 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                            <h4 id="myModalLabel" class="modal-title">TASK ACTIVITY</h4>
+                                            <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_Close</span></button>
+                                            <h4 id="myModalLabel" class="modal-title">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_TaskActivity</h4>
                                         </div>
                                         <div class="modal-body col-md-12">
                                             <div class="col-xs-3">
@@ -247,8 +247,8 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button class="btn btn-primary " type="button">Save</button>
-                                            <button data-dismiss="modal" class="btn btn-default " type="button">Close</button>
+                                            <button class="btn btn-primary " type="button">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_Save</button>
+                                            <button data-dismiss="modal" class="btn btn-default " type="button">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_Close</button>
                                         </div>
                                     </div>
                                 </div>
@@ -264,7 +264,7 @@
             <div class="col-md-3">
                 <div style="margin-top: 65px;" class="panel panel-default">
                     <div class="panel-heading">
-                        <i class="fa fa-bell fa-fw"></i>MANAGE TASKS
+                        <i class="fa fa-bell fa-fw"></i>@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_ManageTasks
                        
                     </div>
                     <!-- /.panel-heading -->
@@ -293,25 +293,25 @@
                                 <div class="radio">
                                     <label class="radio">
                                         <input type="radio" value="option1" id="rdMyTask" name="inlineRadioOptions" onclick="TaskFilteration(this.id);">
-                                        My Task
+                                        @GlobusMultiLanguageLib.Resources.Messages_TaskPartial_MyTask
                                            
                                     </label>
                                     <div class="divder"></div>
                                     <label class="radio">
                                         <input type="radio" value="option2" id="rdTeamTask" name="inlineRadioOptions" onclick="TaskFilteration(this.id);">
-                                        Team Task
+                                        @GlobusMultiLanguageLib.Resources.Messages_TaskPartial_TeamTask
                                            
                                     </label>
                                     <div class="divder"></div>
                                     <label class="radio">
                                         <input type="radio" value="option2" id="rdIncompleteTask" name="inlineRadioOptions" onclick="TaskFilteration(this.id);">
-                                        Pending Task
+                                        @GlobusMultiLanguageLib.Resources.Messages_TaskPartial_PendingTask
                                            
                                     </label>
                                     <div class="divder"></div>
                                     <label class="radio">
                                         <input type="radio" value="option2" id="rdCompleteTask" name="inlineRadioOptions" onclick="TaskFilteration(this.id);">
-                                        Complete Task
+                                        @GlobusMultiLanguageLib.Resources.Messages_TaskPartial_CompleteTask
                                            
                                     </label>
                                 </div>
@@ -403,7 +403,7 @@
         //    window.location.href = "../Messages/Task";
         //    //$("#rdMyTask").attr("checked", true);
         //});
-        //$("#").change(function () {
+        //$("#").change(function () {completed
         //    debugger;
         //    //alert("clicked");
         //});

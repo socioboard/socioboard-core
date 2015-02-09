@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="GetPostSentimentsFromUclassify">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Userid" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="feedId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Network" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPostSentimentsFromUclassifyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPostSentimentsFromUclassifyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllNegativeFeedsOfProfile">
+        <s:complexType />
+      </s:element>
+      <s:element name="getAllNegativeFeedsOfProfileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllNegativeFeedsOfProfileResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateAssignedStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AssignedUserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateAssignedStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateAssignedStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getNegativeFeedsOfUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getNegativeFeedsOfUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getNegativeFeedsOfUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTicketsofGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTicketsofGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTicketsofGroupResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetPostSentimentsFromUclassifySoapIn">
+    <wsdl:part name="parameters" element="tns:GetPostSentimentsFromUclassify" />
+  </wsdl:message>
+  <wsdl:message name="GetPostSentimentsFromUclassifySoapOut">
+    <wsdl:part name="parameters" element="tns:GetPostSentimentsFromUclassifyResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllNegativeFeedsOfProfileSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllNegativeFeedsOfProfile" />
+  </wsdl:message>
+  <wsdl:message name="getAllNegativeFeedsOfProfileSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllNegativeFeedsOfProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateAssignedStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:updateAssignedStatus" />
+  </wsdl:message>
+  <wsdl:message name="updateAssignedStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:updateAssignedStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="getNegativeFeedsOfUserSoapIn">
+    <wsdl:part name="parameters" element="tns:getNegativeFeedsOfUser" />
+  </wsdl:message>
+  <wsdl:message name="getNegativeFeedsOfUserSoapOut">
+    <wsdl:part name="parameters" element="tns:getNegativeFeedsOfUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTicketsofGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTicketsofGroup" />
+  </wsdl:message>
+  <wsdl:message name="GetTicketsofGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTicketsofGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllNegativeFeedsOfProfileHttpGetIn" />
+  <wsdl:message name="getAllNegativeFeedsOfProfileHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="updateAssignedStatusHttpGetIn">
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="AssignedUserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="updateAssignedStatusHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getNegativeFeedsOfUserHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getNegativeFeedsOfUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTicketsofGroupHttpGetIn">
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTicketsofGroupHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllNegativeFeedsOfProfileHttpPostIn" />
+  <wsdl:message name="getAllNegativeFeedsOfProfileHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="updateAssignedStatusHttpPostIn">
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="AssignedUserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="updateAssignedStatusHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getNegativeFeedsOfUserHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getNegativeFeedsOfUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTicketsofGroupHttpPostIn">
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTicketsofGroupHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="SentimentalAnalysisSoap">
+    <wsdl:operation name="GetPostSentimentsFromUclassify">
+      <wsdl:input message="tns:GetPostSentimentsFromUclassifySoapIn" />
+      <wsdl:output message="tns:GetPostSentimentsFromUclassifySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllNegativeFeedsOfProfile">
+      <wsdl:input message="tns:getAllNegativeFeedsOfProfileSoapIn" />
+      <wsdl:output message="tns:getAllNegativeFeedsOfProfileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateAssignedStatus">
+      <wsdl:input message="tns:updateAssignedStatusSoapIn" />
+      <wsdl:output message="tns:updateAssignedStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getNegativeFeedsOfUser">
+      <wsdl:input message="tns:getNegativeFeedsOfUserSoapIn" />
+      <wsdl:output message="tns:getNegativeFeedsOfUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTicketsofGroup">
+      <wsdl:input message="tns:GetTicketsofGroupSoapIn" />
+      <wsdl:output message="tns:GetTicketsofGroupSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SentimentalAnalysisHttpGet">
+    <wsdl:operation name="getAllNegativeFeedsOfProfile">
+      <wsdl:input message="tns:getAllNegativeFeedsOfProfileHttpGetIn" />
+      <wsdl:output message="tns:getAllNegativeFeedsOfProfileHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateAssignedStatus">
+      <wsdl:input message="tns:updateAssignedStatusHttpGetIn" />
+      <wsdl:output message="tns:updateAssignedStatusHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getNegativeFeedsOfUser">
+      <wsdl:input message="tns:getNegativeFeedsOfUserHttpGetIn" />
+      <wsdl:output message="tns:getNegativeFeedsOfUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTicketsofGroup">
+      <wsdl:input message="tns:GetTicketsofGroupHttpGetIn" />
+      <wsdl:output message="tns:GetTicketsofGroupHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SentimentalAnalysisHttpPost">
+    <wsdl:operation name="getAllNegativeFeedsOfProfile">
+      <wsdl:input message="tns:getAllNegativeFeedsOfProfileHttpPostIn" />
+      <wsdl:output message="tns:getAllNegativeFeedsOfProfileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateAssignedStatus">
+      <wsdl:input message="tns:updateAssignedStatusHttpPostIn" />
+      <wsdl:output message="tns:updateAssignedStatusHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getNegativeFeedsOfUser">
+      <wsdl:input message="tns:getNegativeFeedsOfUserHttpPostIn" />
+      <wsdl:output message="tns:getNegativeFeedsOfUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTicketsofGroup">
+      <wsdl:input message="tns:GetTicketsofGroupHttpPostIn" />
+      <wsdl:output message="tns:GetTicketsofGroupHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SentimentalAnalysisSoap" type="tns:SentimentalAnalysisSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetPostSentimentsFromUclassify">
+      <soap:operation soapAction="http://tempuri.org/GetPostSentimentsFromUclassify" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllNegativeFeedsOfProfile">
+      <soap:operation soapAction="http://tempuri.org/getAllNegativeFeedsOfProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateAssignedStatus">
+      <soap:operation soapAction="http://tempuri.org/updateAssignedStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNegativeFeedsOfUser">
+      <soap:operation soapAction="http://tempuri.org/getNegativeFeedsOfUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTicketsofGroup">
+      <soap:operation soapAction="http://tempuri.org/GetTicketsofGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SentimentalAnalysisSoap12" type="tns:SentimentalAnalysisSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetPostSentimentsFromUclassify">
+      <soap12:operation soapAction="http://tempuri.org/GetPostSentimentsFromUclassify" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllNegativeFeedsOfProfile">
+      <soap12:operation soapAction="http://tempuri.org/getAllNegativeFeedsOfProfile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateAssignedStatus">
+      <soap12:operation soapAction="http://tempuri.org/updateAssignedStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNegativeFeedsOfUser">
+      <soap12:operation soapAction="http://tempuri.org/getNegativeFeedsOfUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTicketsofGroup">
+      <soap12:operation soapAction="http://tempuri.org/GetTicketsofGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SentimentalAnalysisHttpGet" type="tns:SentimentalAnalysisHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="getAllNegativeFeedsOfProfile">
+      <http:operation location="/getAllNegativeFeedsOfProfile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateAssignedStatus">
+      <http:operation location="/updateAssignedStatus" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNegativeFeedsOfUser">
+      <http:operation location="/getNegativeFeedsOfUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTicketsofGroup">
+      <http:operation location="/GetTicketsofGroup" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SentimentalAnalysisHttpPost" type="tns:SentimentalAnalysisHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="getAllNegativeFeedsOfProfile">
+      <http:operation location="/getAllNegativeFeedsOfProfile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateAssignedStatus">
+      <http:operation location="/updateAssignedStatus" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNegativeFeedsOfUser">
+      <http:operation location="/getNegativeFeedsOfUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTicketsofGroup">
+      <http:operation location="/GetTicketsofGroup" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SentimentalAnalysis">
+    <wsdl:port name="SentimentalAnalysisSoap" binding="tns:SentimentalAnalysisSoap">
+      <soap:address location="http://localhost:6361/Services/SentimentalAnalysis.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SentimentalAnalysisSoap12" binding="tns:SentimentalAnalysisSoap12">
+      <soap12:address location="http://localhost:6361/Services/SentimentalAnalysis.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SentimentalAnalysisHttpGet" binding="tns:SentimentalAnalysisHttpGet">
+      <http:address location="http://localhost:6361/Services/SentimentalAnalysis.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SentimentalAnalysisHttpPost" binding="tns:SentimentalAnalysisHttpPost">
+      <http:address location="http://localhost:6361/Services/SentimentalAnalysis.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

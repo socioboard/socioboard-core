@@ -47,6 +47,7 @@
     <Compile Include="Domain\AddFacebookPage.cs" />
     <Compile Include="Domain\Admin.cs" />
     <Compile Include="Domain\Ads.cs" />
+    <Compile Include="Domain\Affiliates.cs" />
     <Compile Include="Domain\ArchiveMessage.cs" />
     <Compile Include="Domain\Blog_Comments.cs" />
     <Compile Include="Domain\Blog_Posts.cs" />
@@ -172,6 +173,9 @@
     <Compile Include="Domain\UserActivation.cs" />
     <Compile Include="Domain\UserPackageRelation.cs" />
     <Compile Include="Domain\UserRefRelation.cs" />
+    <Compile Include="Domain\WordpressAccount.cs" />
+    <Compile Include="Domain\WordpressFeeds.cs" />
+    <Compile Include="Domain\WordpressSites.cs" />
     <Compile Include="Domain\YoutubeAccount.cs" />
     <Compile Include="Domain\YoutubeChannel.cs" />
     <Compile Include="Factory\SocialSiteAccountFactory.cs" />

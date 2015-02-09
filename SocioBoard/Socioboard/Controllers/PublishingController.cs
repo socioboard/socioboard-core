@@ -13,7 +13,7 @@ namespace Socioboard.Controllers
 {
     [Authorize]
     [CustomAuthorize]
-    public class PublishingController : Controller
+    public class PublishingController : BaseController
     {
         //
         // GET: /Publishing/

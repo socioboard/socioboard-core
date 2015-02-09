@@ -13,7 +13,7 @@ using Recaptcha.Web.Mvc;
 
 namespace Socioboard.Controllers
 {
-    public class VersionsController : Controller
+    public class VersionsController : BaseController
     {
         //
         // GET: /Versions/

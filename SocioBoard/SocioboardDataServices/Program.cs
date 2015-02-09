@@ -16,8 +16,8 @@ namespace SocioboardDataServices
         {
             Program prog = new Program();
             prog.StartService(args);
-            NegativeFeeds objNegativeFeeds = new NegativeFeeds();
-            objNegativeFeeds.getAllNegativeFeeds();
+            //NegativeFeeds objNegativeFeeds = new NegativeFeeds();
+            //objNegativeFeeds.getAllNegativeFeeds();
         }
          private static void RunDataService(string profiletype)
         {
@@ -35,6 +35,11 @@ namespace SocioboardDataServices
                         {
                             try
                             {
+                                if (item.UserId.ToString()!="bbc23ca1-28f1-452c-a3a8-e58c5cc5a0f8")
+                                {
+                                    continue;
+                                }
+
                                 clsSocialSiteDataFeedsFactory objclsSocialSiteDataFeedsFactory = new clsSocialSiteDataFeedsFactory(item.ProfileType);
                                 ISocialSiteData objSocialSiteDataFeeds = objclsSocialSiteDataFeedsFactory.CreateSocialSiteDataFeedsInstance();
                                 if (objSocialSiteDataFeeds != null)

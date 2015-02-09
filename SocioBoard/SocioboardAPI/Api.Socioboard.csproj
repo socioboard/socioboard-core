@@ -113,6 +113,7 @@
     <Compile Include="Helper\Utility.cs" />
     <Compile Include="Model\AdminRepository.cs" />
     <Compile Include="Model\AdsRepository.cs" />
+    <Compile Include="Model\AffiliatesRepository.cs" />
     <Compile Include="Model\ArchiveMessageRepository.cs" />
     <Compile Include="Model\BusinessSettingRepository.cs" />
     <Compile Include="Model\CompanyProfilesRepository.cs" />
@@ -192,6 +193,10 @@
     </Compile>
     <Compile Include="Services\Ads.asmx.cs">
       <DependentUpon>Ads.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Affiliates.asmx.cs">
+      <DependentUpon>Affiliates.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Services\ArchiveMessage.asmx.cs">
@@ -575,8 +580,10 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="index.html" />
+    <Content Include="Layouts\Mails\FriendInvitation.html" />
     <Content Include="Layouts\Mails\GroupInvitation.html" />
     <Content Include="Layouts\Mails\GroupInvitation1.html" />
+    <Content Include="Layouts\Mails\Invitationmailer_template.html" />
     <Content Include="lib\Antlr3.Runtime.dll" />
     <Content Include="lib\CodeScales.Http.dll" />
     <Content Include="lib\Facebook.dll" />
@@ -811,6 +818,9 @@
     <EmbeddedResource Include="Mappings\FbPagePostCommentLiker.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Affiliates.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Mappings\DropboxAccount.hbm.xml" />
     <EmbeddedResource Include="Mappings\FacebookFanPage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -850,6 +860,7 @@
     <Content Include="Services\AdminPackageDetails.asmx" />
     <Content Include="Services\AdminUserDetails.asmx" />
     <Content Include="Services\Ads.asmx" />
+    <Content Include="Services\Affiliates.asmx" />
     <Content Include="Services\ArchiveMessage.asmx" />
     <Content Include="Services\Blog_Comments.asmx" />
     <Content Include="Services\Blog_Posts.asmx" />
@@ -973,6 +984,10 @@
     <ProjectReference Include="Library\GlobusTwitterLib\GlobusTwitterLib.csproj">
       <Project>{7051e5b4-23d1-4c8f-a459-d66ad79bcdf9}</Project>
       <Name>GlobusTwitterLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="Library\GlobusWordpressLib\GlobusWordpressLib.csproj">
+      <Project>{3d576d77-1b85-4e2c-a643-47fe4899e88b}</Project>
+      <Name>GlobusWordpressLib</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

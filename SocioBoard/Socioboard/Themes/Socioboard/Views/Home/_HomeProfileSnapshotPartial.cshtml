@@ -7,7 +7,7 @@
 }
 
 <div class="row" style="margin-left: -46px">
-    <h2>My Recent Profiles</h2>
+    <h2>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_MyRecentProfiles</h2>
     @{
         int counter = 0;
         int divcounter = 0;
@@ -31,6 +31,12 @@
             Random rNum = new Random();
             if (item.Key.ProfileType == "facebook" || item.Key.ProfileType == "facebook_page")
             {
+                string fan = string.Empty;
+                if (item.Key.ProfileType == "facebook"){
+                    fan = "Friends";
+                }else{
+                    fan = "Fans";
+                }
                 divcounter++;
                 var dic_profileinfo = item.Value.ElementAt(counter);
                 //  var item = dictionary.ElementAt(index);
@@ -42,6 +48,7 @@
                 {
                     Domain.Socioboard.Domain.FacebookFeed objFacebookFeeds = (Domain.Socioboard.Domain.FacebookFeed)lstdic[feedcount - 1];
                     days = (DateTime.Now.Date - objFacebookFeeds.FeedDate.Date).Days;
+                    
                     avg = (double)feedcount / days;
                     stravg = String.Format("{0:0.00}", avg);
                 }
@@ -58,15 +65,15 @@
                         </div>
                         <div class="col-xs-9 text-right" style="margin-top:-15px;margin-bottom:-8px">
                             <div ><h4><strong>@objFacebookAccount.Friends</strong>
-                            Fans</h4></div>
+                            @fan</h4></div>
                         </div>
                         <span class="col-xs-9 text-right">@stravg Avg.<br>
-                            Post Per Day</span>
+                           @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_PostsPerDay</span>
                         <span class="col-md-12">@objFacebookAccount.FbUserName</span>   
                     </div>
                 </div>
                 <div class="panel-body">
-                    <p>Recent message</p>
+                    <p>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_RecentMessages</p>
                    <ul class="list-group recent_height">
                         @for (int i = 0; i < lstdic.Count; i++)
                         {
@@ -116,15 +123,15 @@
                         </div>
                         <div class="col-xs-9 text-right" style="margin-top:-15px;margin-bottom:-8px">
                             <div ><h4><strong>@objFacebookAccount.Friends</strong>
-                            Fans</h4></div>
+                            @fan</h4></div>
                         </div>
                         <span class="col-xs-9 text-right">@stravg Avg.<br>
-                            Post Per Day</span>
+                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_PostsPerDay</span>
                         <span class="col-md-12">@objFacebookAccount.FbUserName</span>   
                     </div>
                 </div>
                 <div class="panel-body">
-                    <p>Recent message</p>
+                    <p>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_RecentMessages</p>
                          <ul class="list-group recent_height">
                         
                         @foreach (Domain.Socioboard.Domain.FbPagePost item_FbPagePost in lstFbPagePost)
@@ -186,15 +193,15 @@
                         </div>
                         <div class="col-xs-9 text-right" style="margin-top:-15px;margin-bottom:-8px">
                             <div><h4><strong>@objTwitterAccount.FollowersCount</strong>
-                            Fans</h4></div>
+                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Fans</h4></div>
                         </div>
                         <span class="col-xs-9 text-right">@stravg Avg.<br>
-                            Post Per Day</span>
+                           @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_PostsPerDay</span>
                         <span class="col-md-12">@objTwitterAccount.TwitterScreenName</span>
                     </div>
                 </div>
                 <div class="panel-body">
-                    <p>Recent message</p>
+                    <p>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_PostsPerDay</p>
                     <ul class="list-group recent_height">
                         @for (int i = 0; i < lstdic.Count; i++)
                         {
@@ -267,15 +274,15 @@
                         </div>
                         <div class="col-xs-9 text-right" style="margin-top:-15px;margin-bottom:-8px">
                             <div><h4><strong>@linkedinConcount</strong>
-                            Connections</h4></div>
+                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Connections</h4></div>
                         </div>
                         <span class="col-xs-9 text-right">@stravg Avg.<br>
-                            Post Per Day</span>
+                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_PostsPerDay</span>
                         <span class="col-md-12">@objLinkedInAccount.LinkedinUserName</span>
                     </div>
                 </div>
                 <div class="panel-body">
-                    <p>Recent message</p>
+                    <p>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_RecentMessages</p>
                     <ul class="list-group recent_height">
                         @for (int i = 0; i < lstdic.Count; i++)
                         {
@@ -332,19 +339,19 @@
                     </div>
                 </div>
                <div class="panel-body">
-                    <p>Activities</p>
+                    <p>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Activities</p>
                                         <ul class="list-group recent_height">
                                           <li class="list-group-item">
                                             <span class="badge">@objInstagramAccount.TotalImages</span>
-                                            Photos
+                                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Photos
                                           </li>
                                           <li class="list-group-item">
                                             <span class="badge">@objInstagramAccount.FollowedBy</span>
-                                            Follower
+                                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Follower
                                           </li>
                                           <li class="list-group-item">
                                             <span class="badge">@objInstagramAccount.Followers</span>
-                                            Following
+                                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Following
                                           </li>
                                         </ul>
                                     </div>
@@ -390,15 +397,15 @@
                     </div>
                 </div>
                <div class="panel-body">
-                    <p>Activities</p>
+                    <p>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Activities</p>
                                         <ul class="list-group recent_height">
                                           <li class="list-group-item">
                                             <span class="badge">@PostCount</span>
-                                            Post
+                                          @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Post
                                           </li>
                                           <li class="list-group-item">
                                             <span class="badge">@LikesCount</span>
-                                            Likes
+                                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Likes
                                           </li>
                                           
                                         </ul>
@@ -438,19 +445,19 @@
                     </div>
                 </div>
                <div class="panel-body">
-                    <p>Activities</p>
+                    <p>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Activities</p>
                                         <ul class="list-group recent_height">
                                           <li class="list-group-item">
                                             <span class="badge">@objYoutubeChannel.ViewCount</span>
-                                            Total View
+                                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_TotalView
                                           </li>
                                           <li class="list-group-item">
                                             <span class="badge">@objYoutubeChannel.SubscriberCount</span>
-                                            Total Subcriber
+                                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_TotalSubscriber
                                           </li>
                                           <li class="list-group-item">
                                             <span class="badge">@objYoutubeChannel.VideoCount</span>
-                                            Total Video
+                                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_TotalVideo
                                           </li>
                                         </ul>
                                     </div>
@@ -495,14 +502,14 @@
                         </div>
                         <div class="col-xs-9 text-right">
                             <div><strong>@linkedinFolwrcount</strong>
-                            Connections</div>
+                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Connections</div>
                         </div>
                         <span class="pull-right">@stravg Avg.<br>
-                            Post Per Day</span>
+                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_PostsPerDay</span>
                     </div>
                 </div>
                 <div class="panel-body">
-                    <p>Recent message</p>
+                    <p>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_RecentMessages</p>
                     <ul class="list-group">
                         @for (int i = 0; i < lstdic.Count; i++)
                         {

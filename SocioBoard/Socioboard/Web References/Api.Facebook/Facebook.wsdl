@@ -34,6 +34,22 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="AddFacebookAccountWithPagination">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddFacebookAccountWithPaginationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddFacebookAccountWithPaginationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetFacebookData">
         <s:complexType>
           <s:sequence>
@@ -161,6 +177,22 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="SheduleFacebookMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SheduleFacebookGroupMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FacebookId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sscheduledmsgguid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SheduleFacebookGroupMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SheduleFacebookGroupMessageResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -399,6 +431,12 @@
   <wsdl:message name="AddFacebookAccountSoapOut">
     <wsdl:part name="parameters" element="tns:AddFacebookAccountResponse" />
   </wsdl:message>
+  <wsdl:message name="AddFacebookAccountWithPaginationSoapIn">
+    <wsdl:part name="parameters" element="tns:AddFacebookAccountWithPagination" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountWithPaginationSoapOut">
+    <wsdl:part name="parameters" element="tns:AddFacebookAccountWithPaginationResponse" />
+  </wsdl:message>
   <wsdl:message name="GetFacebookDataSoapIn">
     <wsdl:part name="parameters" element="tns:GetFacebookData" />
   </wsdl:message>
@@ -446,6 +484,12 @@
   </wsdl:message>
   <wsdl:message name="SheduleFacebookMessageSoapOut">
     <wsdl:part name="parameters" element="tns:SheduleFacebookMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="SheduleFacebookGroupMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:SheduleFacebookGroupMessage" />
+  </wsdl:message>
+  <wsdl:message name="SheduleFacebookGroupMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:SheduleFacebookGroupMessageResponse" />
   </wsdl:message>
   <wsdl:message name="GetFacebookPagesSoapIn">
     <wsdl:part name="parameters" element="tns:GetFacebookPages" />
@@ -547,6 +591,14 @@
   <wsdl:message name="AddFacebookAccountHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="AddFacebookAccountWithPaginationHttpGetIn">
+    <wsdl:part name="code" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountWithPaginationHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="GetFacebookDataHttpGetIn">
     <wsdl:part name="FbId" type="s:string" />
     <wsdl:part name="UserId" type="s:string" />
@@ -611,6 +663,14 @@
     <wsdl:part name="sscheduledmsgguid" type="s:string" />
   </wsdl:message>
   <wsdl:message name="SheduleFacebookMessageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SheduleFacebookGroupMessageHttpGetIn">
+    <wsdl:part name="FacebookId" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="sscheduledmsgguid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SheduleFacebookGroupMessageHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetFacebookPagesHttpGetIn">
@@ -737,6 +797,14 @@
   <wsdl:message name="AddFacebookAccountHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="AddFacebookAccountWithPaginationHttpPostIn">
+    <wsdl:part name="code" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddFacebookAccountWithPaginationHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="GetFacebookDataHttpPostIn">
     <wsdl:part name="FbId" type="s:string" />
     <wsdl:part name="UserId" type="s:string" />
@@ -801,6 +869,14 @@
     <wsdl:part name="sscheduledmsgguid" type="s:string" />
   </wsdl:message>
   <wsdl:message name="SheduleFacebookMessageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SheduleFacebookGroupMessageHttpPostIn">
+    <wsdl:part name="FacebookId" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="sscheduledmsgguid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SheduleFacebookGroupMessageHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetFacebookPagesHttpPostIn">
@@ -920,6 +996,10 @@
       <wsdl:input message="tns:AddFacebookAccountSoapIn" />
       <wsdl:output message="tns:AddFacebookAccountSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountWithPagination">
+      <wsdl:input message="tns:AddFacebookAccountWithPaginationSoapIn" />
+      <wsdl:output message="tns:AddFacebookAccountWithPaginationSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetFacebookData">
       <wsdl:input message="tns:GetFacebookDataSoapIn" />
       <wsdl:output message="tns:GetFacebookDataSoapOut" />
@@ -951,6 +1031,10 @@
     <wsdl:operation name="SheduleFacebookMessage">
       <wsdl:input message="tns:SheduleFacebookMessageSoapIn" />
       <wsdl:output message="tns:SheduleFacebookMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SheduleFacebookGroupMessage">
+      <wsdl:input message="tns:SheduleFacebookGroupMessageSoapIn" />
+      <wsdl:output message="tns:SheduleFacebookGroupMessageSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetFacebookPages">
       <wsdl:input message="tns:GetFacebookPagesSoapIn" />
@@ -1018,6 +1102,10 @@
       <wsdl:input message="tns:AddFacebookAccountHttpGetIn" />
       <wsdl:output message="tns:AddFacebookAccountHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountWithPagination">
+      <wsdl:input message="tns:AddFacebookAccountWithPaginationHttpGetIn" />
+      <wsdl:output message="tns:AddFacebookAccountWithPaginationHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetFacebookData">
       <wsdl:input message="tns:GetFacebookDataHttpGetIn" />
       <wsdl:output message="tns:GetFacebookDataHttpGetOut" />
@@ -1049,6 +1137,10 @@
     <wsdl:operation name="SheduleFacebookMessage">
       <wsdl:input message="tns:SheduleFacebookMessageHttpGetIn" />
       <wsdl:output message="tns:SheduleFacebookMessageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SheduleFacebookGroupMessage">
+      <wsdl:input message="tns:SheduleFacebookGroupMessageHttpGetIn" />
+      <wsdl:output message="tns:SheduleFacebookGroupMessageHttpGetOut" />
     </wsdl:operation>
     <wsdl:operation name="GetFacebookPages">
       <wsdl:input message="tns:GetFacebookPagesHttpGetIn" />
@@ -1116,6 +1208,10 @@
       <wsdl:input message="tns:AddFacebookAccountHttpPostIn" />
       <wsdl:output message="tns:AddFacebookAccountHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountWithPagination">
+      <wsdl:input message="tns:AddFacebookAccountWithPaginationHttpPostIn" />
+      <wsdl:output message="tns:AddFacebookAccountWithPaginationHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetFacebookData">
       <wsdl:input message="tns:GetFacebookDataHttpPostIn" />
       <wsdl:output message="tns:GetFacebookDataHttpPostOut" />
@@ -1147,6 +1243,10 @@
     <wsdl:operation name="SheduleFacebookMessage">
       <wsdl:input message="tns:SheduleFacebookMessageHttpPostIn" />
       <wsdl:output message="tns:SheduleFacebookMessageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SheduleFacebookGroupMessage">
+      <wsdl:input message="tns:SheduleFacebookGroupMessageHttpPostIn" />
+      <wsdl:output message="tns:SheduleFacebookGroupMessageHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetFacebookPages">
       <wsdl:input message="tns:GetFacebookPagesHttpPostIn" />
@@ -1225,6 +1325,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountWithPagination">
+      <soap:operation soapAction="http://tempuri.org/AddFacebookAccountWithPagination" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetFacebookData">
       <soap:operation soapAction="http://tempuri.org/GetFacebookData" style="document" />
       <wsdl:input>
@@ -1290,6 +1399,15 @@
     </wsdl:operation>
     <wsdl:operation name="SheduleFacebookMessage">
       <soap:operation soapAction="http://tempuri.org/SheduleFacebookMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SheduleFacebookGroupMessage">
+      <soap:operation soapAction="http://tempuri.org/SheduleFacebookGroupMessage" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1444,6 +1562,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountWithPagination">
+      <soap12:operation soapAction="http://tempuri.org/AddFacebookAccountWithPagination" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetFacebookData">
       <soap12:operation soapAction="http://tempuri.org/GetFacebookData" style="document" />
       <wsdl:input>
@@ -1509,6 +1636,15 @@
     </wsdl:operation>
     <wsdl:operation name="SheduleFacebookMessage">
       <soap12:operation soapAction="http://tempuri.org/SheduleFacebookMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SheduleFacebookGroupMessage">
+      <soap12:operation soapAction="http://tempuri.org/SheduleFacebookGroupMessage" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1663,6 +1799,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountWithPagination">
+      <http:operation location="/AddFacebookAccountWithPagination" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetFacebookData">
       <http:operation location="/GetFacebookData" />
       <wsdl:input>
@@ -1728,6 +1873,15 @@
     </wsdl:operation>
     <wsdl:operation name="SheduleFacebookMessage">
       <http:operation location="/SheduleFacebookMessage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SheduleFacebookGroupMessage">
+      <http:operation location="/SheduleFacebookGroupMessage" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -1882,6 +2036,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddFacebookAccountWithPagination">
+      <http:operation location="/AddFacebookAccountWithPagination" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetFacebookData">
       <http:operation location="/GetFacebookData" />
       <wsdl:input>
@@ -1947,6 +2110,15 @@
     </wsdl:operation>
     <wsdl:operation name="SheduleFacebookMessage">
       <http:operation location="/SheduleFacebookMessage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SheduleFacebookGroupMessage">
+      <http:operation location="/SheduleFacebookGroupMessage" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -2083,16 +2255,16 @@
   </wsdl:binding>
   <wsdl:service name="Facebook">
     <wsdl:port name="FacebookSoap" binding="tns:FacebookSoap">
-      <soap:address location="http://devapi.socioboard.com/Services/Facebook.asmx" />
+      <soap:address location="http://api.socioboard.com/Services/Facebook.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookSoap12" binding="tns:FacebookSoap12">
-      <soap12:address location="http://devapi.socioboard.com/Services/Facebook.asmx" />
+      <soap12:address location="http://api.socioboard.com/Services/Facebook.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookHttpGet" binding="tns:FacebookHttpGet">
-      <http:address location="http://devapi.socioboard.com/Services/Facebook.asmx" />
+      <http:address location="http://api.socioboard.com/Services/Facebook.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookHttpPost" binding="tns:FacebookHttpPost">
-      <http:address location="http://devapi.socioboard.com/Services/Facebook.asmx" />
+      <http:address location="http://api.socioboard.com/Services/Facebook.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

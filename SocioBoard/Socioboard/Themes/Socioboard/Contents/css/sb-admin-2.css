@@ -1525,3 +1525,7 @@ cursor: pointer;
 .btn-vk{color:#fff;background-color:#587ea3;border-color:rgba(0,0,0,0.2)}.btn-vk:hover,.btn-vk:focus,.btn-vk:active,.btn-vk.active,.open .dropdown-toggle.btn-vk{color:#fff;background-color:#4a6a89;border-color:rgba(0,0,0,0.2)}
 .btn-vk:active,.btn-vk.active,.open .dropdown-toggle.btn-vk{background-image:none}
 .btn-vk.disabled,.btn-vk[disabled],fieldset[disabled] .btn-vk,.btn-vk.disabled:hover,.btn-vk[disabled]:hover,fieldset[disabled] .btn-vk:hover,.btn-vk.disabled:focus,.btn-vk[disabled]:focus,fieldset[disabled] .btn-vk:focus,.btn-vk.disabled:active,.btn-vk[disabled]:active,fieldset[disabled] .btn-vk:active,.btn-vk.disabled.active,.btn-vk[disabled].active,fieldset[disabled] .btn-vk.active{background-color:#587ea3;border-color:rgba(0,0,0,0.2)}
+.left-side-menu {margin-left:-7px;}
+.panel-box {border:1px solid #999; width:48%; box-shadow:0 1px 1px rgba(0, 0, 0, 0.05); padding:8px; border-radius:5px; margin-left:1%;}
+.padding-0 { padding:0;}
+.padding_lr {padding-left: 3px;padding-right: 3px;}

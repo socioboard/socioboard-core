@@ -1,8 +1,53 @@
 ﻿@{
     //ViewBag.Title = "Home Page";
     string path = System.Configuration.ConfigurationManager.AppSettings["domain"];
+    //var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
 }
-
+@*@helper selected(string c, string culture)
+{
+    if (c == culture)
+    {
+        @:checked="checked"
+    }
+}
+<h2></h2>*@
+@*@using(Html.BeginForm("SetCulture", "Home"))
+{
+    <fieldset>
+        <legend>Choose Your Language</legend>
+        <div class="control-group">
+            <div class="controls">
+                <label for="en-us">
+                    <input name="culture" id="en-us" value="en-us" type="radio" @selected("en-us", culture) /> English
+                </label>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <label for="es">
+                    <input name="culture" id="es" value="it" type="radio" @selected("it", culture)  /> Italic
+                </label>
+            </div>
+        </div>
+          <div class="control-group">
+            <div class="controls">
+                <label for="hi">
+                    <input name="culture" id="hi" value="hi" type="radio" @selected("hi", culture)  /> Hindi
+                </label>
+            </div>
+        </div>
+       <div class="control-group">
+            <div class="controls">
+                <label for="es">
+                    <input type="submit" value="change" />
+                </label>
+            </div>
+        </div>
+    </fieldset>
+        
+     
+     
+}*@
 @if (ViewBag.Isaccountactivatedfirsttime == "true" || Request["ReturnUrl"]!=null) 
 {
     <script>
@@ -13,12 +58,12 @@
 }
 <header class="header" id="top">
     <div class="text-vertical-center">
-        <h1 style="text-shadow: 0px 0px 15px #ffffff; margin-top: 50px;">BEYOND<br>
-            SOCIAL MEDIA MANAGEMENT</h1>
-        <h3 style="background-color: aliceblue; opacity: 0.7;">Socioboard offers you an advanced, easy, versatile, customizable and scalable open-source social media marketing tool to drive your brand to newer heights</h3>
+        <h1 style="text-shadow: 0px 0px 15px #ffffff; margin-top: 50px;">@GlobusMultiLanguageLib.Resources.Index_Index_beyond<br>
+            @GlobusMultiLanguageLib.Resources.Index_Index_Managment</h1>
+        <h3 style="background-color: aliceblue; opacity: 0.7;">@GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_SocioDescription</h3>
         <br>
         <a target="_blank" class="btn btn-dark" href="../Index/Pricing">
-            <img src="/Themes/@path/Contents/img/trail-butn.png" class="img-responsive">
+            <img src="@GlobusMultiLanguageLib.Resources.Index_Index_ImgPathTryNow" class="img-responsive">
         </a>
     </div>
 </header>
@@ -26,7 +71,7 @@
     <div class="container">
         <div class="row text-center">
             <div class="col-lg-10 col-lg-offset-1">
-                <h2>Our Features</h2>
+                <h2>@GlobusMultiLanguageLib.Resources.Index_Index_OurFeatures</h2>
                 <hr class="small">
                 <div class="row">
                     <div class="col-md-3 col-sm-6">
@@ -36,10 +81,10 @@
                                 <i class="fa fa-eye fa-stack-1x text-primary"></i>
                             </span>
                             <h4>
-                                <strong>Monitor</strong>
+                                <strong>@GlobusMultiLanguageLib.Resources.Index_Index_Monitor</strong>
                             </h4>
-                            <p>Realtime Tracking of Social Media Platforms</p>
-                            <a target="_blank" class="btn btn-dark" href="../Index/Features">Learn More</a>
+                            <p>@GlobusMultiLanguageLib.Resources.Index_Index_SubHeadingMonitor</p>
+                            <a target="_blank" class="btn btn-dark" href="../Index/Features">@GlobusMultiLanguageLib.Resources.Index_Index_BtnLearnMore</a>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
@@ -49,10 +94,10 @@
                                 <i class="fa fa-spinner fa-stack-1x text-primary"></i>
                             </span>
                             <h4>
-                                <strong>Analysis</strong>
+                                <strong>@GlobusMultiLanguageLib.Resources.Index_Index_Analysis</strong>
                             </h4>
-                            <p>Intelligent Data Mining, Warehousing and Analysis</p>
-                            <a target="_blank" class="btn btn-dark" href="../Index/Features">Learn More</a>
+                            <p>@GlobusMultiLanguageLib.Resources.Index_Index_SubHeadingAnalysis</p>
+                            <a target="_blank" class="btn btn-dark" href="../Index/Features">@GlobusMultiLanguageLib.Resources.Index_Index_BtnLearnMore</a>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
@@ -62,10 +107,10 @@
                                 <i class="fa fa-sign-in fa-stack-1x text-primary"></i>
                             </span>
                             <h4>
-                                <strong>Insights</strong>
+                                <strong>@GlobusMultiLanguageLib.Resources.Index_Index_Insight</strong>
                             </h4>
-                            <p>Socioboard offers detailed insights for customers</p>
-                            <a target="_blank" class="btn btn-dark" href="../Index/Features">Learn More</a>
+                            <p>@GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_SubHeadingInsight</p>
+                            <a target="_blank" class="btn btn-dark" href="../Index/Features">@GlobusMultiLanguageLib.Resources.Index_Index_BtnLearnMore</a>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
@@ -75,10 +120,10 @@
                                 <i class="fa fa-file-pdf-o fa-stack-1x text-primary"></i>
                             </span>
                             <h4>
-                                <strong>Get User Guide</strong>
+                                <strong>@GlobusMultiLanguageLib.Resources.Index_Index_Userguide</strong>
                             </h4>
-                            <p>To learn more,download Guide book</p>
-                            <a target="_blank" class="btn btn-dark" href="/Themes/socioboard/Contents/common/Socioboard_User_Guide_1.0.2_Ver 7.pdf">Download Guide Book
+                            <p>@GlobusMultiLanguageLib.Resources.Index_Index_SubHeadingUserguide</p>
+                            <a target="_blank" class="btn btn-dark" href="/Themes/socioboard/Contents/common/Socioboard_User_Guide_1.0.2_Ver 7.pdf">@GlobusMultiLanguageLib.Resources.Index_Index_BtnUserGuide
                                 </a>
                         </div>
                     </div>
@@ -99,12 +144,11 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1 text-center">
-                <h2>Get On Board to See What Our Social Media Marketing Suite Can Do for You</h2>
+                <h2>@GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_OnBoard</h2>
                 <hr class="small">
-                <h4>People are talking about your brand. Why not leverage it?
+                <h4>@GlobusMultiLanguageLib.Resources.Index_Index_leverage
                     <br>
-                    Socioboard allows you to listen to, analyze and engage your followers in unusual ways across 
-                        numerous social media accounts
+                   @GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_Sociodescription2
                     </h4>
                 <div class="row">
                     <div class="col-md-6">
@@ -133,27 +177,27 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1 text-center">
-                <h2>ENGAGE YOUR FOLLOWERS EFFECTIVELY </h2>
-                <h1>ACROSS ALL SOCIAL CHANNELS</h1>
+                <h2>@GlobusMultiLanguageLib.Resources.Index_Index_engage</h2>
+                <h1>@GlobusMultiLanguageLib.Resources.Index_Index_socialchannels</h1>
                 <hr class="small">
                 <div class="row">
 
                     <div class="col-md-6">
                         <div class="content-left">
-                            <h3 style="text-align:left">Socioboard makes it easy to keep tabs on social conversations and provides everything you need to efficiently engage your audience.</h3>
+                            <h3 style="text-align:left">@GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_featureHeading</h3>
                             <ul style="text-align:left">
-                                <li>Smart Inbox and Prompt Feeds</li>
-                                <li>Advanced Scheduling and Publishing</li>
-                                <li>Unique Social Discovery</li>
-                                <li>In-depth Analytics and Reports</li>
-                                <li>Constant Real-time Monitoring</li>
-                                <li>Team Collaboration Tools</li>
-                                <li>Social CRM and Helpdesk Integration</li>
-                                <li>Mobile Apps</li>
+                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt1</li>
+                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt2</li>
+                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt3</li>
+                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt4</li>
+                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt5</li>
+                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt6</li>
+                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt7</li>
+                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt8</li>
 
                             </ul>
                             <a target="_blank" class="btn btn-dark" href="../Index/Pricing">
-                                <img alt="" src="/Themes/@path/Contents/img/trail-butn.png" class="img-responsive">
+                                <img alt="" src="@GlobusMultiLanguageLib.Resources.Index_Index_ImgPathTryNow" class="img-responsive">
                             </a>
                         </div>
                     </div>
@@ -180,8 +224,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1 text-center">
-                <h2>some reasons</h2>
-                <h1>WHY PEOPLE LOVE SOCIOBOARD</h1>
+                <h2>@GlobusMultiLanguageLib.Resources.Index_Index_Somereason</h2>
+                <h1>@GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_LoveSocioboard</h1>
                 <hr class="small">
                 <div class="row">
                     <div class="col-md-6">
@@ -195,20 +239,20 @@
                     <div class="col-md-6">
                         <div class="content-left">
                             <ul style="text-align: left; font-weight: bold; font-family: times new roman;">
-                                <li>Highly customizable and scalable open-source tool in different editions</li>
-                                <li>Advanced scheduling &amp; publishing tools</li>
-                                <li>Prompt feeds and interactive social discovery tools</li>
-                                <li>Sophisticated analytics on various parameters</li>
-                                <li>Social CRM tools including shared customer records</li>
-                                <li>Customer support features like tasks and Helpdesk integration</li>
-                                <li>Highly efficient team collaboration tools </li>
-                                <li>24/7 Technical Support</li>
-                                <li>Executable across various devices and platforms</li>
+                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt1</li>
+                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt2</li>
+                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt3</li>
+                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt4</li>
+                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt5</li>
+                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt6</li>
+                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt7 </li>
+                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt8</li>
+                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt9</li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <h1>With Socioboard, engaging your followers is so easy, fun, and insightful now. Get started today!</h1>
+                <h1>@GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_EndHeading</h1>
                 <!-- /.row (nested) -->
             </div>
             <!-- /.col-lg-10 -->
@@ -237,11 +281,12 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h3>Enjoy Socioboard risk-free for 30 days!
+                <h3>@GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_freeSubscirption
                        
                     <a target="_blank" class="btn btn-lg btn-dark" href="../Index/Pricing">
-                        <img src="/Themes/@path/Contents/img/signup-butn.png"></a>
+                        <img src="@GlobusMultiLanguageLib.Resources.Index_Index_ImgSignupforFree"></a>
                 </h3>
+                
             </div>
         </div>
     </div>

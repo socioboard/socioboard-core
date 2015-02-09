@@ -274,21 +274,6 @@
       <s:element name="GetLinkedInFeedsResponse">
         <s:complexType />
       </s:element>
-      <s:element name="LinkedinProfileDetails">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Userid" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="LinkedinProfileDetailsResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="LinkedinProfileDetailsResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
     <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
@@ -394,12 +379,6 @@
   </wsdl:message>
   <wsdl:message name="GetLinkedInFeedsSoapOut">
     <wsdl:part name="parameters" element="tns:GetLinkedInFeedsResponse" />
-  </wsdl:message>
-  <wsdl:message name="LinkedinProfileDetailsSoapIn">
-    <wsdl:part name="parameters" element="tns:LinkedinProfileDetails" />
-  </wsdl:message>
-  <wsdl:message name="LinkedinProfileDetailsSoapOut">
-    <wsdl:part name="parameters" element="tns:LinkedinProfileDetailsResponse" />
   </wsdl:message>
   <wsdl:message name="GetLinkedinRedirectUrlHttpGetIn">
     <wsdl:part name="consumerKey" type="s:string" />
@@ -510,13 +489,6 @@
     <wsdl:part name="LinkedinId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="getLinkedInDataHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="LinkedinProfileDetailsHttpGetIn">
-    <wsdl:part name="Userid" type="s:string" />
-    <wsdl:part name="ProfileId" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="LinkedinProfileDetailsHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetLinkedinRedirectUrlHttpPostIn">
@@ -630,13 +602,6 @@
   <wsdl:message name="getLinkedInDataHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="LinkedinProfileDetailsHttpPostIn">
-    <wsdl:part name="Userid" type="s:string" />
-    <wsdl:part name="ProfileId" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="LinkedinProfileDetailsHttpPostOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
   <wsdl:portType name="LinkedinSoap">
     <wsdl:operation name="GetLinkedinRedirectUrl">
       <wsdl:input message="tns:GetLinkedinRedirectUrlSoapIn" />
@@ -702,10 +667,6 @@
       <wsdl:input message="tns:GetLinkedInFeedsSoapIn" />
       <wsdl:output message="tns:GetLinkedInFeedsSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="LinkedinProfileDetails">
-      <wsdl:input message="tns:LinkedinProfileDetailsSoapIn" />
-      <wsdl:output message="tns:LinkedinProfileDetailsSoapOut" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="LinkedinHttpGet">
     <wsdl:operation name="GetLinkedinRedirectUrl">
@@ -760,10 +721,6 @@
       <wsdl:input message="tns:getLinkedInDataHttpGetIn" />
       <wsdl:output message="tns:getLinkedInDataHttpGetOut" />
     </wsdl:operation>
-    <wsdl:operation name="LinkedinProfileDetails">
-      <wsdl:input message="tns:LinkedinProfileDetailsHttpGetIn" />
-      <wsdl:output message="tns:LinkedinProfileDetailsHttpGetOut" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="LinkedinHttpPost">
     <wsdl:operation name="GetLinkedinRedirectUrl">
@@ -817,10 +774,6 @@
     <wsdl:operation name="getLinkedInData">
       <wsdl:input message="tns:getLinkedInDataHttpPostIn" />
       <wsdl:output message="tns:getLinkedInDataHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="LinkedinProfileDetails">
-      <wsdl:input message="tns:LinkedinProfileDetailsHttpPostIn" />
-      <wsdl:output message="tns:LinkedinProfileDetailsHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LinkedinSoap" type="tns:LinkedinSoap">
@@ -962,15 +915,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetLinkedInFeeds">
       <soap:operation soapAction="http://tempuri.org/GetLinkedInFeeds" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LinkedinProfileDetails">
-      <soap:operation soapAction="http://tempuri.org/LinkedinProfileDetails" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1125,15 +1069,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="LinkedinProfileDetails">
-      <soap12:operation soapAction="http://tempuri.org/LinkedinProfileDetails" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LinkedinHttpGet" type="tns:LinkedinHttpGet">
     <http:binding verb="GET" />
@@ -1247,15 +1182,6 @@
     </wsdl:operation>
     <wsdl:operation name="getLinkedInData">
       <http:operation location="/getLinkedInData" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LinkedinProfileDetails">
-      <http:operation location="/LinkedinProfileDetails" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -1383,28 +1309,19 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="LinkedinProfileDetails">
-      <http:operation location="/LinkedinProfileDetails" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Linkedin">
     <wsdl:port name="LinkedinSoap" binding="tns:LinkedinSoap">
-      <soap:address location="http://localhost:6361/Services/Linkedin.asmx" />
+      <soap:address location="http://api.socioboard.com/Services/Linkedin.asmx" />
     </wsdl:port>
     <wsdl:port name="LinkedinSoap12" binding="tns:LinkedinSoap12">
-      <soap12:address location="http://localhost:6361/Services/Linkedin.asmx" />
+      <soap12:address location="http://api.socioboard.com/Services/Linkedin.asmx" />
     </wsdl:port>
     <wsdl:port name="LinkedinHttpGet" binding="tns:LinkedinHttpGet">
-      <http:address location="http://localhost:6361/Services/Linkedin.asmx" />
+      <http:address location="http://api.socioboard.com/Services/Linkedin.asmx" />
     </wsdl:port>
     <wsdl:port name="LinkedinHttpPost" binding="tns:LinkedinHttpPost">
-      <http:address location="http://localhost:6361/Services/Linkedin.asmx" />
+      <http:address location="http://api.socioboard.com/Services/Linkedin.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

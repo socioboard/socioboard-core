@@ -739,5 +739,41 @@ namespace GlobusMailLib
 
             return sendMailByMandrill;
         }
+
+        public string SendInvitationMailByMandrill(string SenderEmail, string SenderName, string FriendsEmail, string password, string body)
+        {
+            string sendMailByMandrill = string.Empty;
+            try
+            {
+                Mandrill.EmailMessage message = new Mandrill.EmailMessage();
+                message.from_email = SenderEmail;
+                message.from_name = SenderName;
+                message.html = body;
+                message.subject = "Your friend "+ SenderName + "has invited you to join socioboard";
+                message.to = new List<Mandrill.EmailAddress>()
+                {
+                  new Mandrill.EmailAddress(FriendsEmail)
+                };
+                Mandrill.MandrillApi mandrillApi = new Mandrill.MandrillApi(password, false);
+                var results = mandrillApi.SendMessage(message);
+                foreach (var result in results)
+                {
+                    if (result.Status == Mandrill.EmailResultStatus.Sent || result.Status == Mandrill.EmailResultStatus.Queued)
+                    {
+                        sendMailByMandrill = "success";
+                    }
+                    else
+                    {
+                        sendMailByMandrill = "failed";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                sendMailByMandrill = "failed";
+            }
+            return sendMailByMandrill;
+        }
+
     }
 }

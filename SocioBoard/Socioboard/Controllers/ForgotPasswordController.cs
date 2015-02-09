@@ -8,7 +8,7 @@ using Socioboard.Helper;
 
 namespace Socioboard.Controllers
 {
-    public class ForgotPasswordController : Controller
+    public class ForgotPasswordController : BaseController
     {
         //
         // GET: /ForgotPassword/
@@ -54,7 +54,7 @@ namespace Socioboard.Controllers
                 objuser.ChangePasswordKey = strRandomUnique;
 
                 var mailBody = Helper.SBUtils.RenderViewToString(this.ControllerContext, "_ForgotPasswordMailBodyPartial", objuser);
-                string Subject = "Forget password Socioboard Account";
+                string Subject = "You requested a password reset for your Socioboard Account";//"Forget password Socioboard Account";
 
                 mailsender = ApiobjMailSender.SendChangePasswordMail(emailId, mailBody, Subject);
             }
@@ -109,28 +109,36 @@ namespace Socioboard.Controllers
             if (IsPasswordReset == "1")
             {
 
-                objuser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUserInfoByEmail(emailId), typeof(Domain.Socioboard.Domain.User)));
-                try
-                {
-                    Api.MailSender.MailSender ApiobjMailSender = new Api.MailSender.MailSender();
+                #region Commented & edited by Sumit Gupta [28-01-15]
+                //objuser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUserInfoByEmail(emailId), typeof(Domain.Socioboard.Domain.User)));
+                //try
+                //{
+                //    Api.MailSender.MailSender ApiobjMailSender = new Api.MailSender.MailSender();
 
-                    try
-                    {
-                        objuser.Password = Password;
-                        var mailBody = Helper.SBUtils.RenderViewToString(this.ControllerContext, "_ResetPasswordMailBodyPartial", objuser);
-                        string Subject = "New password for your Socioboard Account";
+                //    try
+                //    {
+                //        objuser.Password = Password;
+                //        var mailBody = Helper.SBUtils.RenderViewToString(this.ControllerContext, "_ResetPasswordMailBodyPartial", objuser);
+                //        string Subject = "New password for your Socioboard Account";
 
-                        mailsender = ApiobjMailSender.SendChangePasswordMail(emailId, mailBody, Subject);
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.StackTrace);
-                }
+                //        mailsender = ApiobjMailSender.SendChangePasswordMail(emailId, mailBody, Subject);
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        Console.WriteLine(ex.StackTrace);
+                //    }
+                //}
+                //catch (Exception ex)
+                //{
+                //    Console.WriteLine(ex.StackTrace);
+                //} 
+
+                mailsender = "Success";
+
+                //Update IsKeyUsed to 1
+                //ApiobjUser.UpdateIsKeyUsed(objuser.Id.ToString());
+                
+                #endregion
             }
             return Content(mailsender);
         }

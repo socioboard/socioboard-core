@@ -3,6 +3,9 @@
 }
 
 
+@section Scripts
+    {
+    <script type="text/javascript" src="/Themes/Socioboard/Contents/js/highcharts.js"></script>
 
 <script type="text/javascript">
     function DisplayDefaultReports() {
@@ -104,13 +107,13 @@
     function getfacebookpostcomment(id) {
         $.ajax({
             type: 'POST',
-            url: '../Report/loadPostDetails?id='+id,
+            url: '../Report/loadPostDetails?id=' + id,
             success: function (msg) {
                 $('#loadpostdetails').html(msg);
             },
             async: false
         });
-       // jQuery.noConflict();
+        // jQuery.noConflict();
         $('#CommentDetailsModall').modal('show');
     }
 
@@ -135,6 +138,8 @@
     });
 
 </script>
+    }
+ 
 
 
 <div id="page-wrapper">

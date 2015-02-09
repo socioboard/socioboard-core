@@ -15,6 +15,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web.Mvc;
 using System.Text.RegularExpressions;
+using System.IO;
 
 
 namespace Socioboard.Helper
@@ -725,29 +726,25 @@ namespace Socioboard.Helper
                             if (!string.IsNullOrEmpty(imagefile))
                             {
                                 //var path = System.Configuration.ConfigurationManager.AppSettings["MailSenderDomain"] + "Contents/img/upload";
-                                var path = "www.socioboard.com/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/upload";
-                                string filepath = path + "/" + imagefile;
-                                _ScheduledMessage.PicUrl = filepath;
+                                //var path = "www.socioboard.com/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/upload";
+                                //string filepath = path + "/" + imagefile;
+                                _ScheduledMessage.PicUrl = imagefile;
                             }
                             else
                             {
-                                _ScheduledMessage.PicUrl = "Null";
+                                _ScheduledMessage.PicUrl = "";
                             }
 
                             _ScheduledMessage.ClientTime = Convert.ToDateTime(clienttime);
                             _ScheduledMessage.ShareMessage = msg;
                             _ScheduledMessage.UserId = objUser.Id;
                             _ScheduledMessage.Status = false;
-                            ApiobjScheduledMessage.AddGroupScheduleMessages(_ScheduledMessage.ScheduleTime.ToString(), _ScheduledMessage.CreateTime.ToString(), _ScheduledMessage.ProfileType.ToString(), _ScheduledMessage.ProfileId.ToString(), _ScheduledMessage.PicUrl.ToString(), _ScheduledMessage.ClientTime.ToString(), _ScheduledMessage.ShareMessage.ToString(), _ScheduledMessage.UserId.ToString(), _ScheduledMessage.Status.ToString());
+                            Domain.Socioboard.Domain.ScheduledMessage _Schedulemessage = (Domain.Socioboard.Domain.ScheduledMessage)new JavaScriptSerializer().Deserialize(ApiobjScheduledMessage.AddGroupScheduleMessages(_ScheduledMessage.ScheduleTime.ToString(), _ScheduledMessage.CreateTime.ToString(), _ScheduledMessage.ProfileType.ToString(), _ScheduledMessage.ProfileId.ToString(), _ScheduledMessage.PicUrl.ToString(), _ScheduledMessage.ClientTime.ToString(), _ScheduledMessage.ShareMessage.ToString(), _ScheduledMessage.UserId.ToString(), _ScheduledMessage.Status.ToString()), typeof(Domain.Socioboard.Domain.ScheduledMessage));
 
                             _GroupScheduleMessage.Id = Guid.NewGuid();
-                            _GroupScheduleMessage.ScheduleMessageId = _ScheduledMessage.Id;
+                            _GroupScheduleMessage.ScheduleMessageId = _Schedulemessage.Id;
                             _GroupScheduleMessage.GroupId = groupid;
                             ApiObjGrpSchduleMessage.AddGroupScheduleMessage(_GroupScheduleMessage.ScheduleMessageId.ToString(), _GroupScheduleMessage.GroupId.ToString());
-
-
-
-
                         }
                         catch (Exception ex)
                         {
@@ -786,22 +783,22 @@ namespace Socioboard.Helper
                             if (!string.IsNullOrEmpty(imagefile))
                             {
                                // var path = System.Configuration.ConfigurationManager.AppSettings["MailSenderDomain"] + "Contents/img/upload";
-                                var path = "www.socioboard.com/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/upload";
-                                string filepath = path + "/" + imagefile;
-                                _ScheduledMessage.PicUrl = filepath;
+                                //var path = "www.socioboard.com/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/upload";
+                                //string filepath = path + "/" + imagefile;
+                                _ScheduledMessage.PicUrl = imagefile;
 
                             }
                             else
                             {
-                                _ScheduledMessage.PicUrl = "Null";
+                                _ScheduledMessage.PicUrl = "";
                             }
                             _ScheduledMessage.ClientTime = Convert.ToDateTime(clienttime);
                             _ScheduledMessage.ShareMessage = message; ;
                             _ScheduledMessage.UserId = objUser.Id;
                             _ScheduledMessage.Status = false;
-                            ApiobjScheduledMessage.AddGroupScheduleMessages(_ScheduledMessage.ScheduleTime.ToString(), _ScheduledMessage.CreateTime.ToString(), _ScheduledMessage.ProfileType.ToString(), _ScheduledMessage.ProfileId.ToString(), _ScheduledMessage.PicUrl.ToString(), _ScheduledMessage.ClientTime.ToString(), _ScheduledMessage.ShareMessage.ToString(), _ScheduledMessage.UserId.ToString(), _ScheduledMessage.Status.ToString());
+                            Domain.Socioboard.Domain.ScheduledMessage _Schedulemessage = (Domain.Socioboard.Domain.ScheduledMessage)new JavaScriptSerializer().Deserialize(ApiobjScheduledMessage.AddGroupScheduleMessages(_ScheduledMessage.ScheduleTime.ToString(), _ScheduledMessage.CreateTime.ToString(), _ScheduledMessage.ProfileType.ToString(), _ScheduledMessage.ProfileId.ToString(), _ScheduledMessage.PicUrl.ToString(), _ScheduledMessage.ClientTime.ToString(), _ScheduledMessage.ShareMessage.ToString(), _ScheduledMessage.UserId.ToString(), _ScheduledMessage.Status.ToString()), typeof(Domain.Socioboard.Domain.ScheduledMessage));
                             _GroupScheduleMessage.Id = Guid.NewGuid();
-                            _GroupScheduleMessage.ScheduleMessageId = _ScheduledMessage.Id;
+                            _GroupScheduleMessage.ScheduleMessageId = _Schedulemessage.Id;
                             _GroupScheduleMessage.GroupId = groupid;
                             ApiObjGrpSchduleMessage.AddGroupScheduleMessage(_GroupScheduleMessage.ScheduleMessageId.ToString(), _GroupScheduleMessage.GroupId.ToString());
                         }
@@ -1257,6 +1254,33 @@ namespace Socioboard.Helper
             return GuidString;
         }
 
+        public static List<string> ReadFiletoStringList(string filepath)
+        {
+            List<string> list = new List<string>();
+            using (StreamReader reader = new StreamReader(filepath))
+            {
+                string text = "";
+                while ((text = reader.ReadLine()) != null)
+                {
+                    list.Add(text);
+                }
+            }
+            return list;
+
+
+        }
+
+        public static List<Affiliates> GetAffiliatesData(Guid UserId, Guid FriendsUserId)
+        {
+            Api.Affiliates.Affiliates ApiAffiliate = new Socioboard.Api.Affiliates.Affiliates();
+            List<Affiliates> lstAffiliate = (List<Affiliates>)new JavaScriptSerializer().Deserialize(ApiAffiliate.GetAffilieteDetailbyUserId(UserId.ToString(), FriendsUserId.ToString()), typeof(List<Affiliates>));
+            return lstAffiliate;
+        }
+
+        public static string GetWordpressRedirectLink()
+        {
+            return "https://public-api.wordpress.com/oauth2/authorize?client_id=" + ConfigurationManager.AppSettings["WordpessClientID"] + "&redirect_uri=" + ConfigurationManager.AppSettings["WordpessCallBackURL"] + "&response_type=code&scope=global";
+        }
     }
 
 }

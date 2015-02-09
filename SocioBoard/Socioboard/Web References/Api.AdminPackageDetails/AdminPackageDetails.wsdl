@@ -337,16 +337,16 @@
   </wsdl:binding>
   <wsdl:service name="AdminPackageDetails">
     <wsdl:port name="AdminPackageDetailsSoap" binding="tns:AdminPackageDetailsSoap">
-      <soap:address location="http://devapi.socioboard.com/Services/AdminPackageDetails.asmx" />
+      <soap:address location="http://api.socioboard.com/Services/AdminPackageDetails.asmx" />
     </wsdl:port>
     <wsdl:port name="AdminPackageDetailsSoap12" binding="tns:AdminPackageDetailsSoap12">
-      <soap12:address location="http://devapi.socioboard.com/Services/AdminPackageDetails.asmx" />
+      <soap12:address location="http://api.socioboard.com/Services/AdminPackageDetails.asmx" />
     </wsdl:port>
     <wsdl:port name="AdminPackageDetailsHttpGet" binding="tns:AdminPackageDetailsHttpGet">
-      <http:address location="http://devapi.socioboard.com/Services/AdminPackageDetails.asmx" />
+      <http:address location="http://api.socioboard.com/Services/AdminPackageDetails.asmx" />
     </wsdl:port>
     <wsdl:port name="AdminPackageDetailsHttpPost" binding="tns:AdminPackageDetailsHttpPost">
-      <http:address location="http://devapi.socioboard.com/Services/AdminPackageDetails.asmx" />
+      <http:address location="http://api.socioboard.com/Services/AdminPackageDetails.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

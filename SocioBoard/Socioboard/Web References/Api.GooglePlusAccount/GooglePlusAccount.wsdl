@@ -260,16 +260,16 @@
   </wsdl:binding>
   <wsdl:service name="GooglePlusAccount">
     <wsdl:port name="GooglePlusAccountSoap" binding="tns:GooglePlusAccountSoap">
-      <soap:address location="http://devapi.socioboard.com/Services/GooglePlusAccount.asmx" />
+      <soap:address location="http://api.socioboard.com/Services/GooglePlusAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="GooglePlusAccountSoap12" binding="tns:GooglePlusAccountSoap12">
-      <soap12:address location="http://devapi.socioboard.com/Services/GooglePlusAccount.asmx" />
+      <soap12:address location="http://api.socioboard.com/Services/GooglePlusAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="GooglePlusAccountHttpGet" binding="tns:GooglePlusAccountHttpGet">
-      <http:address location="http://devapi.socioboard.com/Services/GooglePlusAccount.asmx" />
+      <http:address location="http://api.socioboard.com/Services/GooglePlusAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="GooglePlusAccountHttpPost" binding="tns:GooglePlusAccountHttpPost">
-      <http:address location="http://devapi.socioboard.com/Services/GooglePlusAccount.asmx" />
+      <http:address location="http://api.socioboard.com/Services/GooglePlusAccount.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

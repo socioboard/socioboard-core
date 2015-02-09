@@ -20,13 +20,13 @@ namespace Socioboard
 
 
             //bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-            //          "~/Themes/Socioboard/Content/js/jquery-2.0.1.min.js",
-            //          "~/Themes/Socioboard/Content/js/jquery.bpopup.min.js",
-            //         "~/Themes/Socioboard/Content/js/jquery.easing.1.3.js",
-            //          "~/Themes/Socioboard/Content/js/md5.js",
-            //        "~/Themes/Socioboard/Content/js/JSlogin.js",
-            //        "~/Themes/Socioboard/Content/js/googleanalytics.js",
-            //         "~/Themes/Socioboard/Content/js/clickDesk.js"));
+            //          "~/Themes/@path/Content/js/jquery-2.0.1.min.js",
+            //          "~/Themes/@path/Content/js/jquery.bpopup.min.js",
+            //         "~/Themes/@path/Content/js/jquery.easing.1.3.js",
+            //          "~/Themes/@path/Content/js/md5.js",
+            //        "~/Themes/@path/Content/js/JSlogin.js",
+            //        "~/Themes/@path/Content/js/googleanalytics.js",
+            //         "~/Themes/@path/Content/js/clickDesk.js"));
 
        
 
@@ -54,9 +54,9 @@ namespace Socioboard
 
 
 
-            //bundles.Add(new StyleBundle("~/Themes/Socioboard/css").Include(
-            //    "~/Themes/Socioboard/Content/css/socialsuite.css",
-            //     "~/Themes/Socioboard/Content/css/fonts.css"));
+            //bundles.Add(new StyleBundle("~/Themes/@path/css").Include(
+            //    "~/Themes/@path/Content/css/socialsuite.css",
+            //     "~/Themes/@path/Content/css/fonts.css"));
 
 
             

@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SendInvitationMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SenderEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SenderName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FriendsEmail" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendInvitationMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendInvitationMailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsFriendAlreadydInvited">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FriendsEmail" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsFriendAlreadydInvitedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsFriendAlreadydInvitedResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInvitationInfoBycode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInvitationInfoBycodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInvitationInfoBycodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateInvitatoinStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="invitationid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateInvitatoinStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateInvitatoinStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllInvitedDataOfUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllInvitedDataOfUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllInvitedDataOfUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserInvitedInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserInvitedInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserInvitedInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInvitedDataOfAcceotedUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInvitedDataOfAcceotedUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInvitedDataOfAcceotedUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SendInvitationMailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendInvitationMail" />
+  </wsdl:message>
+  <wsdl:message name="SendInvitationMailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendInvitationMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsFriendAlreadydInvitedSoapIn">
+    <wsdl:part name="parameters" element="tns:IsFriendAlreadydInvited" />
+  </wsdl:message>
+  <wsdl:message name="IsFriendAlreadydInvitedSoapOut">
+    <wsdl:part name="parameters" element="tns:IsFriendAlreadydInvitedResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInvitationInfoBycodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInvitationInfoBycode" />
+  </wsdl:message>
+  <wsdl:message name="GetInvitationInfoBycodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInvitationInfoBycodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInvitatoinStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateInvitatoinStatus" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInvitatoinStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateInvitatoinStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllInvitedDataOfUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllInvitedDataOfUser" />
+  </wsdl:message>
+  <wsdl:message name="GetAllInvitedDataOfUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllInvitedDataOfUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserInvitedInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:UserInvitedInfo" />
+  </wsdl:message>
+  <wsdl:message name="UserInvitedInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:UserInvitedInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInvitedDataOfAcceotedUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInvitedDataOfAcceotedUser" />
+  </wsdl:message>
+  <wsdl:message name="GetInvitedDataOfAcceotedUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInvitedDataOfAcceotedUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendInvitationMailHttpGetIn">
+    <wsdl:part name="SenderEmail" type="s:string" />
+    <wsdl:part name="SenderName" type="s:string" />
+    <wsdl:part name="FriendsEmail" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendInvitationMailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="IsFriendAlreadydInvitedHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="FriendsEmail" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IsFriendAlreadydInvitedHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetInvitationInfoBycodeHttpGetIn">
+    <wsdl:part name="code" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInvitationInfoBycodeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInvitatoinStatusHttpGetIn">
+    <wsdl:part name="invitationid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInvitatoinStatusHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllInvitedDataOfUserHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllInvitedDataOfUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UserInvitedInfoHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UserInvitedInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInvitedDataOfAcceotedUserHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInvitedDataOfAcceotedUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendInvitationMailHttpPostIn">
+    <wsdl:part name="SenderEmail" type="s:string" />
+    <wsdl:part name="SenderName" type="s:string" />
+    <wsdl:part name="FriendsEmail" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendInvitationMailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="IsFriendAlreadydInvitedHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="FriendsEmail" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IsFriendAlreadydInvitedHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetInvitationInfoBycodeHttpPostIn">
+    <wsdl:part name="code" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInvitationInfoBycodeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInvitatoinStatusHttpPostIn">
+    <wsdl:part name="invitationid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInvitatoinStatusHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllInvitedDataOfUserHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllInvitedDataOfUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UserInvitedInfoHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UserInvitedInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInvitedDataOfAcceotedUserHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInvitedDataOfAcceotedUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="InvitationSoap">
+    <wsdl:operation name="SendInvitationMail">
+      <wsdl:input message="tns:SendInvitationMailSoapIn" />
+      <wsdl:output message="tns:SendInvitationMailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsFriendAlreadydInvited">
+      <wsdl:input message="tns:IsFriendAlreadydInvitedSoapIn" />
+      <wsdl:output message="tns:IsFriendAlreadydInvitedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvitationInfoBycode">
+      <wsdl:input message="tns:GetInvitationInfoBycodeSoapIn" />
+      <wsdl:output message="tns:GetInvitationInfoBycodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInvitatoinStatus">
+      <wsdl:input message="tns:UpdateInvitatoinStatusSoapIn" />
+      <wsdl:output message="tns:UpdateInvitatoinStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllInvitedDataOfUser">
+      <wsdl:input message="tns:GetAllInvitedDataOfUserSoapIn" />
+      <wsdl:output message="tns:GetAllInvitedDataOfUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserInvitedInfo">
+      <wsdl:input message="tns:UserInvitedInfoSoapIn" />
+      <wsdl:output message="tns:UserInvitedInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvitedDataOfAcceotedUser">
+      <wsdl:input message="tns:GetInvitedDataOfAcceotedUserSoapIn" />
+      <wsdl:output message="tns:GetInvitedDataOfAcceotedUserSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="InvitationHttpGet">
+    <wsdl:operation name="SendInvitationMail">
+      <wsdl:input message="tns:SendInvitationMailHttpGetIn" />
+      <wsdl:output message="tns:SendInvitationMailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsFriendAlreadydInvited">
+      <wsdl:input message="tns:IsFriendAlreadydInvitedHttpGetIn" />
+      <wsdl:output message="tns:IsFriendAlreadydInvitedHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvitationInfoBycode">
+      <wsdl:input message="tns:GetInvitationInfoBycodeHttpGetIn" />
+      <wsdl:output message="tns:GetInvitationInfoBycodeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInvitatoinStatus">
+      <wsdl:input message="tns:UpdateInvitatoinStatusHttpGetIn" />
+      <wsdl:output message="tns:UpdateInvitatoinStatusHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllInvitedDataOfUser">
+      <wsdl:input message="tns:GetAllInvitedDataOfUserHttpGetIn" />
+      <wsdl:output message="tns:GetAllInvitedDataOfUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserInvitedInfo">
+      <wsdl:input message="tns:UserInvitedInfoHttpGetIn" />
+      <wsdl:output message="tns:UserInvitedInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvitedDataOfAcceotedUser">
+      <wsdl:input message="tns:GetInvitedDataOfAcceotedUserHttpGetIn" />
+      <wsdl:output message="tns:GetInvitedDataOfAcceotedUserHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="InvitationHttpPost">
+    <wsdl:operation name="SendInvitationMail">
+      <wsdl:input message="tns:SendInvitationMailHttpPostIn" />
+      <wsdl:output message="tns:SendInvitationMailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsFriendAlreadydInvited">
+      <wsdl:input message="tns:IsFriendAlreadydInvitedHttpPostIn" />
+      <wsdl:output message="tns:IsFriendAlreadydInvitedHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvitationInfoBycode">
+      <wsdl:input message="tns:GetInvitationInfoBycodeHttpPostIn" />
+      <wsdl:output message="tns:GetInvitationInfoBycodeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInvitatoinStatus">
+      <wsdl:input message="tns:UpdateInvitatoinStatusHttpPostIn" />
+      <wsdl:output message="tns:UpdateInvitatoinStatusHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllInvitedDataOfUser">
+      <wsdl:input message="tns:GetAllInvitedDataOfUserHttpPostIn" />
+      <wsdl:output message="tns:GetAllInvitedDataOfUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserInvitedInfo">
+      <wsdl:input message="tns:UserInvitedInfoHttpPostIn" />
+      <wsdl:output message="tns:UserInvitedInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvitedDataOfAcceotedUser">
+      <wsdl:input message="tns:GetInvitedDataOfAcceotedUserHttpPostIn" />
+      <wsdl:output message="tns:GetInvitedDataOfAcceotedUserHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InvitationSoap" type="tns:InvitationSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendInvitationMail">
+      <soap:operation soapAction="http://tempuri.org/SendInvitationMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsFriendAlreadydInvited">
+      <soap:operation soapAction="http://tempuri.org/IsFriendAlreadydInvited" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvitationInfoBycode">
+      <soap:operation soapAction="http://tempuri.org/GetInvitationInfoBycode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInvitatoinStatus">
+      <soap:operation soapAction="http://tempuri.org/UpdateInvitatoinStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllInvitedDataOfUser">
+      <soap:operation soapAction="http://tempuri.org/GetAllInvitedDataOfUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserInvitedInfo">
+      <soap:operation soapAction="http://tempuri.org/UserInvitedInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvitedDataOfAcceotedUser">
+      <soap:operation soapAction="http://tempuri.org/GetInvitedDataOfAcceotedUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="InvitationSoap12" type="tns:InvitationSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendInvitationMail">
+      <soap12:operation soapAction="http://tempuri.org/SendInvitationMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsFriendAlreadydInvited">
+      <soap12:operation soapAction="http://tempuri.org/IsFriendAlreadydInvited" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvitationInfoBycode">
+      <soap12:operation soapAction="http://tempuri.org/GetInvitationInfoBycode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInvitatoinStatus">
+      <soap12:operation soapAction="http://tempuri.org/UpdateInvitatoinStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllInvitedDataOfUser">
+      <soap12:operation soapAction="http://tempuri.org/GetAllInvitedDataOfUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserInvitedInfo">
+      <soap12:operation soapAction="http://tempuri.org/UserInvitedInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvitedDataOfAcceotedUser">
+      <soap12:operation soapAction="http://tempuri.org/GetInvitedDataOfAcceotedUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="InvitationHttpGet" type="tns:InvitationHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="SendInvitationMail">
+      <http:operation location="/SendInvitationMail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsFriendAlreadydInvited">
+      <http:operation location="/IsFriendAlreadydInvited" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvitationInfoBycode">
+      <http:operation location="/GetInvitationInfoBycode" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInvitatoinStatus">
+      <http:operation location="/UpdateInvitatoinStatus" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllInvitedDataOfUser">
+      <http:operation location="/GetAllInvitedDataOfUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserInvitedInfo">
+      <http:operation location="/UserInvitedInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvitedDataOfAcceotedUser">
+      <http:operation location="/GetInvitedDataOfAcceotedUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="InvitationHttpPost" type="tns:InvitationHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="SendInvitationMail">
+      <http:operation location="/SendInvitationMail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsFriendAlreadydInvited">
+      <http:operation location="/IsFriendAlreadydInvited" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvitationInfoBycode">
+      <http:operation location="/GetInvitationInfoBycode" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInvitatoinStatus">
+      <http:operation location="/UpdateInvitatoinStatus" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllInvitedDataOfUser">
+      <http:operation location="/GetAllInvitedDataOfUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserInvitedInfo">
+      <http:operation location="/UserInvitedInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvitedDataOfAcceotedUser">
+      <http:operation location="/GetInvitedDataOfAcceotedUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Invitation">
+    <wsdl:port name="InvitationSoap" binding="tns:InvitationSoap">
+      <soap:address location="http://api.socioboard.com/Services/Invitation.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InvitationSoap12" binding="tns:InvitationSoap12">
+      <soap12:address location="http://api.socioboard.com/Services/Invitation.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InvitationHttpGet" binding="tns:InvitationHttpGet">
+      <http:address location="http://api.socioboard.com/Services/Invitation.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InvitationHttpPost" binding="tns:InvitationHttpPost">
+      <http:address location="http://api.socioboard.com/Services/Invitation.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -2,7 +2,8 @@
 </div>
 @using Domain.Socioboard.Domain;
 @{
-    User objUser = (User)Model;
+    //User objUser = (User)Model;
+    User objUser = Session["User"] as User;
         }
 @section Scripts
     {
@@ -90,7 +91,12 @@
                 type: 'POST',
                 url: '../PersonalSetting/PaypalUpgradePlan?UpgradeType=' + UpgradeType,
                 success: function (msg) {
-                    window.open(msg);
+                    if (msg == "success") {
+                        window.location = "../Home/Index";
+                    }
+                    else {
+                        window.open(msg);
+                    }
                 },
                 async: false
             });
@@ -224,6 +230,27 @@
                 async: false
             });
         }
+
+        function SendResetPasswordMail() {
+            var emailId = '@objUser.EmailId';
+                   $.ajax({
+                       type: "GET",
+                       url: "../ForgotPassword/SendFogotPassMail?emailId=" + emailId,
+                       data: '',
+                       success: function (msg) {
+                           if (msg == "Success") {
+                               alertify.success('Mail to reset password has been sent Successfully!!');
+                           }
+                           else {
+                               alertify.error("failure");
+                           }
+                       },
+                       error: function () {
+                           alert("failure");
+                       }
+                   });
+         }
+
     </script>
 }
 

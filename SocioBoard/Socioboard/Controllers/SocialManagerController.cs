@@ -11,7 +11,7 @@ namespace Socioboard.Controllers
 {
     [Authorize]
     [CustomAuthorize]
-    public class SocialManagerController : Controller
+    public class SocialManagerController : BaseController
     {
         //
         // GET: /SocialManager/

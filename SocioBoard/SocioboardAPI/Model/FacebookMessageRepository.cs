@@ -374,8 +374,54 @@ namespace Api.Socioboard.Services
                     {
 
                         //Proceed action, to Get all Message from FacebookMessage.
-                        List<Domain.Socioboard.Domain.FacebookMessage> alst = session.CreateQuery("from FacebookMessage where ProfileId = :profileId order by MessageDate desc" )
+                        List<Domain.Socioboard.Domain.FacebookMessage> alst = session.CreateQuery("from FacebookMessage where ProfileId = :profileId order by MessageDate desc")
                         .SetParameter("profileId", profileid)
+                        .List<Domain.Socioboard.Domain.FacebookMessage>()
+                        .ToList<Domain.Socioboard.Domain.FacebookMessage>();
+
+                        #region oldcode
+                        //List<FacebookMessage> alst = new List<FacebookMessage>();
+                        //foreach (FacebookMessage item in query.Enumerable<FacebookMessage>().OrderByDescending(x => x.MessageDate))
+                        //{
+                        //    alst.Add(item);
+                        //} 
+                        #endregion
+
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End session
+
+        }
+
+        /// <getAllMessageOfProfile>
+        /// Get all Message from facebookmessage by ProfileId(string).
+        /// </summary>
+        /// <param name="profileid">profileId FacebookMessage(String)</param>
+        /// <returns>Return all Message on behalf of ProfileId in form List type.</returns>
+        public List<Domain.Socioboard.Domain.FacebookMessage> getAllMessageOfProfileWithRange(string profileid, string noOfDataToSkip)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+
+                        //Proceed action, to Get all Message from FacebookMessage.
+                        List<Domain.Socioboard.Domain.FacebookMessage> alst = session.CreateQuery("from FacebookMessage where ProfileId = :profileId order by MessageDate DESC")
+                        .SetParameter("profileId", profileid)
+                         .SetFirstResult(Convert.ToInt32(noOfDataToSkip))
+                        .SetMaxResults(15)
                         .List<Domain.Socioboard.Domain.FacebookMessage>()
                         .ToList<Domain.Socioboard.Domain.FacebookMessage>();
 
@@ -675,7 +721,7 @@ namespace Api.Socioboard.Services
                         List<Domain.Socioboard.Domain.FacebookMessage> alst = session.CreateQuery(str)
                        .List<Domain.Socioboard.Domain.FacebookMessage>()
                        .ToList<Domain.Socioboard.Domain.FacebookMessage>();
-                        alst = alst.GroupBy(m => m.MessageId).Select(a=>a.First()).ToList();
+                        alst = alst.GroupBy(m => m.MessageId).Select(a => a.First()).ToList();
 
                         return alst;
 
@@ -689,6 +735,46 @@ namespace Api.Socioboard.Services
                 }//End Trasaction
             }//End session
         }
+
+        //Added by Sumit Gupta
+        public List<Domain.Socioboard.Domain.FacebookMessage> getAllMessageDetail(string profileid, string noOfDataToSkip)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        string str = "from FacebookMessage  where ProfileId IN(";
+                        string[] arrsrt = profileid.Split(',');
+                        foreach (string sstr in arrsrt)
+                        {
+                            str += Convert.ToInt64(sstr) + ",";
+                        }
+                        str = str.Substring(0, str.Length - 1);
+                        str += ")";
+                        List<Domain.Socioboard.Domain.FacebookMessage> alst = session.CreateQuery(str)
+                             .SetFirstResult(Convert.ToInt32(noOfDataToSkip))
+                        .SetMaxResults(15)
+                       .List<Domain.Socioboard.Domain.FacebookMessage>()
+                       .ToList<Domain.Socioboard.Domain.FacebookMessage>();
+                        alst = alst.GroupBy(m => m.MessageId).Select(a => a.First()).ToList();
+
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Trasaction
+            }//End session
+        }
+
         public int DeleteFacebookMessagebymessageid(string facemsg, string msgid, Guid userid)
         {
             //Creates a database connection and opens up a session
@@ -728,7 +814,7 @@ namespace Api.Socioboard.Services
         /// <param name="profileid">profileId FacebookMessage(String)</param>
         /// <param name="count">Count is used for counting upto 10 results.</param>
         /// <returns>Return all Message on behalf of ProfileId in form List type.</returns>
-        public List<Domain.Socioboard.Domain.FacebookMessage> GetAllWallpostsOfProfileAccordingtoGroup(string profileid, int count,Guid UserId)
+        public List<Domain.Socioboard.Domain.FacebookMessage> GetAllWallpostsOfProfileAccordingtoGroup(string profileid, int count, Guid UserId)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -773,8 +859,8 @@ namespace Api.Socioboard.Services
                 {
                     DateTime AssignDate = DateTime.Now;
                     DateTime AssinDate = AssignDate.AddDays(-day);//.ToString("yyyy-MM-dd HH:mm:ss");
-                   
-                    string msgtype="inbox_message";
+
+                    string msgtype = "inbox_message";
 
                     try
                     {
@@ -803,7 +889,7 @@ namespace Api.Socioboard.Services
 
                 }//End Trasaction
             }//End session
-        
+
         }
 
 
