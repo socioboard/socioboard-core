@@ -613,6 +613,7 @@
     <None Include="Web References\Api.FacebookStats\FacebookStats.disco" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <None Include="Web References\Api.Team\Team.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -620,6 +621,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\Api.SentimentalAnalysis\SentimentalAnalysis.disco" />
+=======
+    <None Include="Web References\Api.SentimentalAnalysis\SentimentalAnalysis.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.Team\Team.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.TicketAssigneeStatus\TicketAssigneeStatus.disco" />
+>>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

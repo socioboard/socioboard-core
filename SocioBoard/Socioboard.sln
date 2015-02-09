@@ -17,6 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobusTwitterLib", "Sociobo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobussDropboxLib", "SocioboardAPI\Library\GlobussDropboxLib\GlobussDropboxLib.csproj", "{6D6144CD-7E41-44E8-9C7D-28C47675E2C3}"
 EndProject
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocioboardDataServices", "SocioboardDataServices\SocioboardDataServices.csproj", "{F4AA4F9E-2601-44ED-B48A-A4F48F2D8321}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobusWordpressLib", "SocioboardAPI\Library\GlobusWordpressLib\GlobusWordpressLib.csproj", "{3D576D77-1B85-4E2C-A643-47FE4899E88B}"
@@ -24,6 +25,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobusMultiLanguageLib", "SocioboardAPI\Library\GlobusMultiLanguageLib\GlobusMultiLanguageLib.csproj", "{B0D1EBDB-C56E-4EA3-AE74-27DE74327957}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Socioboard", "SocioboardAPI\Api.Socioboard.csproj", "{B5C88250-C9CF-47CC-AB17-AAB30CFDBD26}"
+=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocioboardDataScheduler", "SocioboardDataScheduler\SocioboardDataScheduler.csproj", "{B692E99E-6826-449F-B2A5-66F90C39C5C2}"
+>>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocioboardDataServices", "SocioboardDataServices\SocioboardDataServices.csproj", "{F4AA4F9E-2601-44ED-B48A-A4F48F2D8321}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,6 +141,21 @@ Global
 		{6D6144CD-7E41-44E8-9C7D-28C47675E2C3}.Release|x64.ActiveCfg = Release|x86
 		{6D6144CD-7E41-44E8-9C7D-28C47675E2C3}.Release|x86.ActiveCfg = Release|x86
 		{6D6144CD-7E41-44E8-9C7D-28C47675E2C3}.Release|x86.Build.0 = Release|x86
+<<<<<<< HEAD
+=======
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Release|x64.ActiveCfg = Release|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Release|x86.ActiveCfg = Release|Any CPU
+>>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
 		{F4AA4F9E-2601-44ED-B48A-A4F48F2D8321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F4AA4F9E-2601-44ED-B48A-A4F48F2D8321}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4AA4F9E-2601-44ED-B48A-A4F48F2D8321}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -147,6 +168,7 @@ Global
 		{F4AA4F9E-2601-44ED-B48A-A4F48F2D8321}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F4AA4F9E-2601-44ED-B48A-A4F48F2D8321}.Release|x64.ActiveCfg = Release|Any CPU
 		{F4AA4F9E-2601-44ED-B48A-A4F48F2D8321}.Release|x86.ActiveCfg = Release|Any CPU
+<<<<<<< HEAD
 		{3D576D77-1B85-4E2C-A643-47FE4899E88B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3D576D77-1B85-4E2C-A643-47FE4899E88B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D576D77-1B85-4E2C-A643-47FE4899E88B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -183,6 +205,8 @@ Global
 		{B5C88250-C9CF-47CC-AB17-AAB30CFDBD26}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{B5C88250-C9CF-47CC-AB17-AAB30CFDBD26}.Release|x64.ActiveCfg = Release|Any CPU
 		{B5C88250-C9CF-47CC-AB17-AAB30CFDBD26}.Release|x86.ActiveCfg = Release|Any CPU
+=======
+>>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

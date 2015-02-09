@@ -269,6 +269,7 @@
   </wsdl:binding>
   <wsdl:service name="FbPageLiker">
     <wsdl:port name="FbPageLikerSoap" binding="tns:FbPageLikerSoap">
+<<<<<<< HEAD
       <soap:address location="http://api.socioboard.com/Services/FbPageLiker.asmx" />
     </wsdl:port>
     <wsdl:port name="FbPageLikerSoap12" binding="tns:FbPageLikerSoap12">
@@ -279,6 +280,18 @@
     </wsdl:port>
     <wsdl:port name="FbPageLikerHttpPost" binding="tns:FbPageLikerHttpPost">
       <http:address location="http://api.socioboard.com/Services/FbPageLiker.asmx" />
+=======
+      <soap:address location="http://localhost:6361/Services/FbPageLiker.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FbPageLikerSoap12" binding="tns:FbPageLikerSoap12">
+      <soap12:address location="http://localhost:6361/Services/FbPageLiker.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FbPageLikerHttpGet" binding="tns:FbPageLikerHttpGet">
+      <http:address location="http://localhost:6361/Services/FbPageLiker.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FbPageLikerHttpPost" binding="tns:FbPageLikerHttpPost">
+      <http:address location="http://localhost:6361/Services/FbPageLiker.asmx" />
+>>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

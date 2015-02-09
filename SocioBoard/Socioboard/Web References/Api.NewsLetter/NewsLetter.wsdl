@@ -249,6 +249,7 @@
   </wsdl:binding>
   <wsdl:service name="NewsLetter">
     <wsdl:port name="NewsLetterSoap" binding="tns:NewsLetterSoap">
+<<<<<<< HEAD
       <soap:address location="http://api.socioboard.com/Services/NewsLetter.asmx" />
     </wsdl:port>
     <wsdl:port name="NewsLetterSoap12" binding="tns:NewsLetterSoap12">
@@ -259,6 +260,18 @@
     </wsdl:port>
     <wsdl:port name="NewsLetterHttpPost" binding="tns:NewsLetterHttpPost">
       <http:address location="http://api.socioboard.com/Services/NewsLetter.asmx" />
+=======
+      <soap:address location="http://localhost:6361/Services/NewsLetter.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NewsLetterSoap12" binding="tns:NewsLetterSoap12">
+      <soap12:address location="http://localhost:6361/Services/NewsLetter.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NewsLetterHttpGet" binding="tns:NewsLetterHttpGet">
+      <http:address location="http://localhost:6361/Services/NewsLetter.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NewsLetterHttpPost" binding="tns:NewsLetterHttpPost">
+      <http:address location="http://localhost:6361/Services/NewsLetter.asmx" />
+>>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

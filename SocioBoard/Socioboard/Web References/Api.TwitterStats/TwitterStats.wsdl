@@ -111,6 +111,7 @@
   </wsdl:binding>
   <wsdl:service name="TwitterStats">
     <wsdl:port name="TwitterStatsSoap" binding="tns:TwitterStatsSoap">
+<<<<<<< HEAD
       <soap:address location="http://api.socioboard.com/Services/TwitterStats.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterStatsSoap12" binding="tns:TwitterStatsSoap12">
@@ -121,6 +122,18 @@
     </wsdl:port>
     <wsdl:port name="TwitterStatsHttpPost" binding="tns:TwitterStatsHttpPost">
       <http:address location="http://api.socioboard.com/Services/TwitterStats.asmx" />
+=======
+      <soap:address location="http://localhost:6361/Services/TwitterStats.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TwitterStatsSoap12" binding="tns:TwitterStatsSoap12">
+      <soap12:address location="http://localhost:6361/Services/TwitterStats.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TwitterStatsHttpGet" binding="tns:TwitterStatsHttpGet">
+      <http:address location="http://localhost:6361/Services/TwitterStats.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TwitterStatsHttpPost" binding="tns:TwitterStatsHttpPost">
+      <http:address location="http://localhost:6361/Services/TwitterStats.asmx" />
+>>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

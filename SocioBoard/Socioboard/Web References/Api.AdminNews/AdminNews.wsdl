@@ -340,6 +340,7 @@
   </wsdl:binding>
   <wsdl:service name="AdminNews">
     <wsdl:port name="AdminNewsSoap" binding="tns:AdminNewsSoap">
+<<<<<<< HEAD
       <soap:address location="http://api.socioboard.com/Services/AdminNews.asmx" />
     </wsdl:port>
     <wsdl:port name="AdminNewsSoap12" binding="tns:AdminNewsSoap12">
@@ -350,6 +351,18 @@
     </wsdl:port>
     <wsdl:port name="AdminNewsHttpPost" binding="tns:AdminNewsHttpPost">
       <http:address location="http://api.socioboard.com/Services/AdminNews.asmx" />
+=======
+      <soap:address location="http://localhost:6361/Services/AdminNews.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdminNewsSoap12" binding="tns:AdminNewsSoap12">
+      <soap12:address location="http://localhost:6361/Services/AdminNews.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdminNewsHttpGet" binding="tns:AdminNewsHttpGet">
+      <http:address location="http://localhost:6361/Services/AdminNews.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdminNewsHttpPost" binding="tns:AdminNewsHttpPost">
+      <http:address location="http://localhost:6361/Services/AdminNews.asmx" />
+>>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

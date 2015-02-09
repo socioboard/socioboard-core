@@ -274,6 +274,7 @@
   </wsdl:binding>
   <wsdl:service name="YoutubeAccount">
     <wsdl:port name="YoutubeAccountSoap" binding="tns:YoutubeAccountSoap">
+<<<<<<< HEAD
       <soap:address location="http://devapi.socioboard.com/Services/YoutubeAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="YoutubeAccountSoap12" binding="tns:YoutubeAccountSoap12">
@@ -284,6 +285,18 @@
     </wsdl:port>
     <wsdl:port name="YoutubeAccountHttpPost" binding="tns:YoutubeAccountHttpPost">
       <http:address location="http://devapi.socioboard.com/Services/YoutubeAccount.asmx" />
+=======
+      <soap:address location="http://localhost:6361/Services/YoutubeAccount.asmx" />
+    </wsdl:port>
+    <wsdl:port name="YoutubeAccountSoap12" binding="tns:YoutubeAccountSoap12">
+      <soap12:address location="http://localhost:6361/Services/YoutubeAccount.asmx" />
+    </wsdl:port>
+    <wsdl:port name="YoutubeAccountHttpGet" binding="tns:YoutubeAccountHttpGet">
+      <http:address location="http://localhost:6361/Services/YoutubeAccount.asmx" />
+    </wsdl:port>
+    <wsdl:port name="YoutubeAccountHttpPost" binding="tns:YoutubeAccountHttpPost">
+      <http:address location="http://localhost:6361/Services/YoutubeAccount.asmx" />
+>>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

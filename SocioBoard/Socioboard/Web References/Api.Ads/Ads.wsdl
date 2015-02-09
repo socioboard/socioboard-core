@@ -412,6 +412,7 @@
   </wsdl:binding>
   <wsdl:service name="Ads">
     <wsdl:port name="AdsSoap" binding="tns:AdsSoap">
+<<<<<<< HEAD
       <soap:address location="http://api.socioboard.com/Services/Ads.asmx" />
     </wsdl:port>
     <wsdl:port name="AdsSoap12" binding="tns:AdsSoap12">
@@ -422,6 +423,18 @@
     </wsdl:port>
     <wsdl:port name="AdsHttpPost" binding="tns:AdsHttpPost">
       <http:address location="http://api.socioboard.com/Services/Ads.asmx" />
+=======
+      <soap:address location="http://localhost:6361/Services/Ads.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdsSoap12" binding="tns:AdsSoap12">
+      <soap12:address location="http://localhost:6361/Services/Ads.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdsHttpGet" binding="tns:AdsHttpGet">
+      <http:address location="http://localhost:6361/Services/Ads.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdsHttpPost" binding="tns:AdsHttpPost">
+      <http:address location="http://localhost:6361/Services/Ads.asmx" />
+>>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

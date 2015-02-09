@@ -1265,6 +1265,7 @@
   </wsdl:binding>
   <wsdl:service name="Tasks">
     <wsdl:port name="TasksSoap" binding="tns:TasksSoap">
+<<<<<<< HEAD
       <soap:address location="http://api.socioboard.com/Services/Tasks.asmx" />
     </wsdl:port>
     <wsdl:port name="TasksSoap12" binding="tns:TasksSoap12">
@@ -1275,6 +1276,18 @@
     </wsdl:port>
     <wsdl:port name="TasksHttpPost" binding="tns:TasksHttpPost">
       <http:address location="http://api.socioboard.com/Services/Tasks.asmx" />
+=======
+      <soap:address location="http://localhost:6361/Services/Tasks.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TasksSoap12" binding="tns:TasksSoap12">
+      <soap12:address location="http://localhost:6361/Services/Tasks.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TasksHttpGet" binding="tns:TasksHttpGet">
+      <http:address location="http://localhost:6361/Services/Tasks.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TasksHttpPost" binding="tns:TasksHttpPost">
+      <http:address location="http://localhost:6361/Services/Tasks.asmx" />
+>>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

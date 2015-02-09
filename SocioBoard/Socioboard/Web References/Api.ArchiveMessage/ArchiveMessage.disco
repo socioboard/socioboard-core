@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+<<<<<<< HEAD
   <contractRef ref="http://api.socioboard.com/Services/ArchiveMessage.asmx?wsdl" docRef="http://api.socioboard.com/Services/ArchiveMessage.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
   <soap address="http://api.socioboard.com/Services/ArchiveMessage.asmx" xmlns:q1="http://tempuri.org/" binding="q1:ArchiveMessageSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
   <soap address="http://api.socioboard.com/Services/ArchiveMessage.asmx" xmlns:q2="http://tempuri.org/" binding="q2:ArchiveMessageSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+=======
+  <contractRef ref="http://localhost:6361/Services/ArchiveMessage.asmx?wsdl" docRef="http://localhost:6361/Services/ArchiveMessage.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://localhost:6361/Services/ArchiveMessage.asmx" xmlns:q1="http://tempuri.org/" binding="q1:ArchiveMessageSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://localhost:6361/Services/ArchiveMessage.asmx" xmlns:q2="http://tempuri.org/" binding="q2:ArchiveMessageSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+>>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
 </discovery>

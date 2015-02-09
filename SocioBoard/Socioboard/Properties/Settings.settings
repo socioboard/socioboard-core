@@ -2,6 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Socioboard.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
+<<<<<<< HEAD
     <Setting Name="Socioboard_Api_Tumblr_Tumblr" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://api.socioboard.com/Services/Tumblr.asmx</Value>
     </Setting>
@@ -169,9 +170,187 @@
     </Setting>
     <Setting Name="Socioboard_Api_TaskComment_TaskComment" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://api.socioboard.com/Services/TaskComment.asmx</Value>
+=======
+    <Setting Name="Socioboard_Api_TwitterAccount_TwitterAccountRepository1" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/TwitterAccount.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_MailSender_MailSender" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/MailSender.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_Admin_Admin" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/Admin.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_AdminNews_AdminNews" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/AdminNews.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_AdminPackageDetails_AdminPackageDetails" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/AdminPackageDetails.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_AdminUserDetails_AdminUserDetails" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/AdminUserDetails.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_Ads_Ads" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/Ads.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_ArchiveMessage_ArchiveMessage" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/ArchiveMessage.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_BusinessSetting_BusinessSetting" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/BusinessSetting.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_CompanyDashboard_CompanyDashboard" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/CompanyDashboard.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_Companypage_Companypage" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/Companypage.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_Coupon_Coupon" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/Coupon.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_DiscoverySearch_DiscoverySearch" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/DiscoverySearch.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_Drafts_Drafts" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/Drafts.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_Dropbox_Dropbox" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/Dropbox.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_Facebook_Facebook" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/Facebook.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_FacebookAccount_FacebookAccount" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/FacebookAccount.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_FacebookFeed_FacebookFeed" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/FacebookFeed.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_FbPageComment_FbPageComment" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/FbPageComment.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_FbPageLiker_FbPageLiker" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/FbPageLiker.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_FbPagePost_FbPagePost" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/FbPagePost.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_GooglePlusAccount_GooglePlusAccount" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/GooglePlusAccount.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_GroupProfile_GroupProfile" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/GroupProfile.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_Groups_Groups" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/Groups.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_GroupScheduleMessage_GroupScheduleMessage" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/GroupScheduleMessage.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_Instagram_Instagram" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/Instagram.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_InstagramAccount_InstagramAccount" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/InstagramAccount.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_InstagramComment_InstagramComment" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/InstagramComment.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_InstagramFeed_InstagramFeed" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/InstagramFeed.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_Linkedin_Linkedin" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/Linkedin.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_LinkedinAccount_LinkedinAccount" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/LinkedinAccount.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_LinkedinCompanyPage_LinkedinCompanyPage" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/LinkedinCompanyPage.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_LinkedInFeed_LinkedInFeed" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/LinkedInFeed.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_NewsLetter_NewsLetter" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/NewsLetter.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_Package_Package" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/Package.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_PaymentTransaction_PaymentTransaction" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/PaymentTransaction.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_ScheduledMessage_ScheduledMessage" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/ScheduledMessage.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_SentimentalAnalysis_SentimentalAnalysis" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/SentimentalAnalysis.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_SocialProfile_SocialProfile" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/SocialProfile.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_TaskComment_TaskComment" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/TaskComment.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_Tasks_Tasks" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/Tasks.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_Team_Team" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/Team.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_TeamMemberProfile_TeamMemberProfile" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/TeamMemberProfile.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_TicketAssigneeStatus_TicketAssigneeStatus" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/TicketAssigneeStatus.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_Tumblr_Tumblr" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/Tumblr.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_TumblrAccount_TumblrAccount" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/TumblrAccount.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_TumblrFeed_TumblrFeed" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/TumblrFeed.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_Twitter_Twitter" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/Twitter.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_TwitterAccount_TwitterAccount" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/TwitterAccount.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_TwitterDirectMessages_TwitterDirectMessages" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/TwitterDirectMessages.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_TwitterMessage_TwitterMessage" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/TwitterMessage.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_TwitterStats_TwitterStats" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/TwitterStats.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_User_User" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/User.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_Youtube_Youtube" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/Youtube.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_YoutubeAccount_YoutubeAccount" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/YoutubeAccount.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_YoutubeChannel_YoutubeChannel" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/YoutubeChannel.asmx</Value>
+>>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
     </Setting>
     <Setting Name="Socioboard_Api_DropboxAccount_DropboxAccount" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/Services/DropboxAccount.asmx</Value>
     </Setting>
+<<<<<<< HEAD
+=======
+    <Setting Name="Socioboard_Api_FacebookMessage_FacebookMessage" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/FacebookMessage.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_TwitterFeed_TwitterFeed" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/TwitterFeed.asmx</Value>
+    </Setting>
+>>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
   </Settings>
 </SettingsFile>

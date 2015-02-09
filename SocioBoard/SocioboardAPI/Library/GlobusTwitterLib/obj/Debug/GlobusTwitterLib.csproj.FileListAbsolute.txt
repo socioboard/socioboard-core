@@ -123,6 +123,7 @@ C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusTwi
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusTwitterLib\obj\Debug\GlobusTwitterLib.dll
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusTwitterLib\obj\Debug\GlobusTwitterLib.pdb
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusTwitterLib\obj\Debug\GlobusTwitterLib.csprojResolveAssemblyReference.cache
+<<<<<<< HEAD
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk - Copy\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\GlobusTwitterLib.dll
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk - Copy\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\GlobusTwitterLib.pdb
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk - Copy\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\Antlr3.Runtime.dll
@@ -247,3 +248,29 @@ D:\D drive\socioboard7feb2015\trunk -twinba\SocioboardAPI\Library\GlobusTwitterL
 D:\D drive\socioboard7feb2015\trunk -twinba\SocioboardAPI\Library\GlobusTwitterLib\obj\Debug\GlobusTwitterLib.dll
 D:\D drive\socioboard7feb2015\trunk -twinba\SocioboardAPI\Library\GlobusTwitterLib\obj\Debug\GlobusTwitterLib.pdb
 D:\D drive\socioboard7feb2015\trunk -twinba\SocioboardAPI\Library\GlobusTwitterLib\obj\Debug\GlobusTwitterLib.csprojResolveAssemblyReference.cache
+=======
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\GlobusTwitterLib.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\GlobusTwitterLib.pdb
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\Antlr3.Runtime.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\Facebook.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\Facebook.Silverlight.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\Facebook.Web.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\Facebook.Web.Mvc.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\Facebook.Winforms.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\FacebookGraphAPI.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\Iesi.Collections.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\log4net.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\MySql.Data.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\MySql.Data.Entity.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\NHibernate.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\NHibernate.Linq.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\NHibernateHelper.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\Iesi.Collections.pdb
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\Iesi.Collections.xml
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\NHibernate.pdb
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\NHibernate.xml
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\NHibernate.Linq.xml
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\bin\Debug\NHibernateHelper.pdb
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\obj\Debug\GlobusTwitterLib.dll
+D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTwitterLib\obj\Debug\GlobusTwitterLib.pdb
+>>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef

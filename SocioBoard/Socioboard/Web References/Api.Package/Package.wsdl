@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetAllPackage">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllPackageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllPackageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllPackageSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllPackage" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPackageSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllPackageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPackageHttpGetIn" />
+  <wsdl:message name="GetAllPackageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPackageHttpPostIn" />
+  <wsdl:message name="GetAllPackageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="PackageSoap">
+    <wsdl:operation name="GetAllPackage">
+      <wsdl:input message="tns:GetAllPackageSoapIn" />
+      <wsdl:output message="tns:GetAllPackageSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="PackageHttpGet">
+    <wsdl:operation name="GetAllPackage">
+      <wsdl:input message="tns:GetAllPackageHttpGetIn" />
+      <wsdl:output message="tns:GetAllPackageHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="PackageHttpPost">
+    <wsdl:operation name="GetAllPackage">
+      <wsdl:input message="tns:GetAllPackageHttpPostIn" />
+      <wsdl:output message="tns:GetAllPackageHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PackageSoap" type="tns:PackageSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllPackage">
+      <soap:operation soapAction="http://tempuri.org/GetAllPackage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PackageSoap12" type="tns:PackageSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllPackage">
+      <soap12:operation soapAction="http://tempuri.org/GetAllPackage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PackageHttpGet" type="tns:PackageHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetAllPackage">
+      <http:operation location="/GetAllPackage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PackageHttpPost" type="tns:PackageHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetAllPackage">
+      <http:operation location="/GetAllPackage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Package">
+    <wsdl:port name="PackageSoap" binding="tns:PackageSoap">
+      <soap:address location="http://localhost:6361/Services/Package.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PackageSoap12" binding="tns:PackageSoap12">
+      <soap12:address location="http://localhost:6361/Services/Package.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PackageHttpGet" binding="tns:PackageHttpGet">
+      <http:address location="http://localhost:6361/Services/Package.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PackageHttpPost" binding="tns:PackageHttpPost">
+      <http:address location="http://localhost:6361/Services/Package.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

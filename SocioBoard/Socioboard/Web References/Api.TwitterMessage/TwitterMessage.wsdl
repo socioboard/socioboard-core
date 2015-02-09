@@ -849,6 +849,7 @@
   </wsdl:binding>
   <wsdl:service name="TwitterMessage">
     <wsdl:port name="TwitterMessageSoap" binding="tns:TwitterMessageSoap">
+<<<<<<< HEAD
       <soap:address location="http://api.socioboard.com/Services/TwitterMessage.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterMessageSoap12" binding="tns:TwitterMessageSoap12">
@@ -859,6 +860,18 @@
     </wsdl:port>
     <wsdl:port name="TwitterMessageHttpPost" binding="tns:TwitterMessageHttpPost">
       <http:address location="http://api.socioboard.com/Services/TwitterMessage.asmx" />
+=======
+      <soap:address location="http://localhost:6361/Services/TwitterMessage.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TwitterMessageSoap12" binding="tns:TwitterMessageSoap12">
+      <soap12:address location="http://localhost:6361/Services/TwitterMessage.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TwitterMessageHttpGet" binding="tns:TwitterMessageHttpGet">
+      <http:address location="http://localhost:6361/Services/TwitterMessage.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TwitterMessageHttpPost" binding="tns:TwitterMessageHttpPost">
+      <http:address location="http://localhost:6361/Services/TwitterMessage.asmx" />
+>>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

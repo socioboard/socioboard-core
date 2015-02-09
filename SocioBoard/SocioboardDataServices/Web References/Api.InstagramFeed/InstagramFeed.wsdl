@@ -108,6 +108,7 @@
   </wsdl:binding>
   <wsdl:service name="InstagramFeed">
     <wsdl:port name="InstagramFeedSoap" binding="tns:InstagramFeedSoap">
+<<<<<<< HEAD
       <soap:address location="http://devapi.socioboard.com/Services/InstagramFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramFeedSoap12" binding="tns:InstagramFeedSoap12">
@@ -118,6 +119,18 @@
     </wsdl:port>
     <wsdl:port name="InstagramFeedHttpPost" binding="tns:InstagramFeedHttpPost">
       <http:address location="http://devapi.socioboard.com/Services/InstagramFeed.asmx" />
+=======
+      <soap:address location="http://localhost:6361/Services/InstagramFeed.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InstagramFeedSoap12" binding="tns:InstagramFeedSoap12">
+      <soap12:address location="http://localhost:6361/Services/InstagramFeed.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InstagramFeedHttpGet" binding="tns:InstagramFeedHttpGet">
+      <http:address location="http://localhost:6361/Services/InstagramFeed.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InstagramFeedHttpPost" binding="tns:InstagramFeedHttpPost">
+      <http:address location="http://localhost:6361/Services/InstagramFeed.asmx" />
+>>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
