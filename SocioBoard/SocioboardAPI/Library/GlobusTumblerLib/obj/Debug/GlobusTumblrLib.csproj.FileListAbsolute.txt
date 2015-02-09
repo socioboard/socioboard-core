@@ -19,3 +19,26 @@ C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusTum
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\Newtonsoft.Json.dll
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.dll
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.pdb
+C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblrLib.csprojResolveAssemblyReference.cache
+D:\SB 2.0 Assembla\trunk\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.dll
+D:\SB 2.0 Assembla\trunk\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.pdb
+D:\SB 2.0 Assembla\trunk\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\Newtonsoft.Json.dll
+D:\SB 2.0 Assembla\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.dll
+D:\SB 2.0 Assembla\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.pdb
+D:\SB 2.0 Assembla\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblrLib.csprojResolveAssemblyReference.cache
+D:\D drive\SB 2.0 Assembla\trunk\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.dll
+D:\D drive\SB 2.0 Assembla\trunk\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.pdb
+D:\D drive\SB 2.0 Assembla\trunk\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\Newtonsoft.Json.dll
+D:\D drive\SB 2.0 Assembla\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.dll
+D:\D drive\SB 2.0 Assembla\trunk\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.pdb
+C:\Users\GBS-56\Pictures\SB2.0 22_12_2014_antima\trunk -twinba\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.dll
+C:\Users\GBS-56\Pictures\SB2.0 22_12_2014_antima\trunk -twinba\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.pdb
+C:\Users\GBS-56\Pictures\SB2.0 22_12_2014_antima\trunk -twinba\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\Newtonsoft.Json.dll
+C:\Users\GBS-56\Pictures\SB2.0 22_12_2014_antima\trunk -twinba\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.dll
+C:\Users\GBS-56\Pictures\SB2.0 22_12_2014_antima\trunk -twinba\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.pdb
+D:\D drive\socioboard7feb2015\trunk -twinba\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.dll
+D:\D drive\socioboard7feb2015\trunk -twinba\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.pdb
+D:\D drive\socioboard7feb2015\trunk -twinba\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\Newtonsoft.Json.dll
+D:\D drive\socioboard7feb2015\trunk -twinba\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.dll
+D:\D drive\socioboard7feb2015\trunk -twinba\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.pdb
+D:\D drive\socioboard7feb2015\trunk -twinba\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblrLib.csprojResolveAssemblyReference.cache
