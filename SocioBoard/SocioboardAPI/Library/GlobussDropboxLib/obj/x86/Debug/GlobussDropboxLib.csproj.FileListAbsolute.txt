@@ -23,7 +23,6 @@ C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobussDr
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\Newtonsoft.Json.dll
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.exe
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.pdb
-<<<<<<< HEAD
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.csprojResolveAssemblyReference.cache
 D:\SB 2.0 Assembla\trunk\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\GlobussDropboxLib.exe.config
 D:\SB 2.0 Assembla\trunk\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\GlobussDropboxLib.exe
@@ -52,11 +51,23 @@ D:\D drive\socioboard7feb2015\trunk -twinba\SocioboardAPI\Library\GlobussDropbox
 D:\D drive\socioboard7feb2015\trunk -twinba\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.exe
 D:\D drive\socioboard7feb2015\trunk -twinba\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.pdb
 D:\D drive\socioboard7feb2015\trunk -twinba\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.csprojResolveAssemblyReference.cache
-=======
-D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\GlobussDropboxLib.exe.config
-D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\GlobussDropboxLib.exe
-D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\GlobussDropboxLib.pdb
-D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\Newtonsoft.Json.dll
-D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.exe
-D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.pdb
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
+C:\Users\GLB-199\Desktop\SB Live\SB Code_13-02-15\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\GlobussDropboxLib.exe.config
+C:\Users\GLB-199\Desktop\SB Live\SB Code_13-02-15\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\GlobussDropboxLib.exe
+C:\Users\GLB-199\Desktop\SB Live\SB Code_13-02-15\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\GlobussDropboxLib.pdb
+C:\Users\GLB-199\Desktop\SB Live\SB Code_13-02-15\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\Newtonsoft.Json.dll
+C:\Users\GLB-199\Desktop\SB Live\SB Code_13-02-15\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.exe
+C:\Users\GLB-199\Desktop\SB Live\SB Code_13-02-15\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.pdb
+D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\GlobussDropboxLib.exe.config
+D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\GlobussDropboxLib.exe
+D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\GlobussDropboxLib.pdb
+D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\Newtonsoft.Json.dll
+D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.exe
+D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.pdb
+D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.csprojResolveAssemblyReference.cache
+D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\GlobussDropboxLib.exe.config
+D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\GlobussDropboxLib.exe
+D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\GlobussDropboxLib.pdb
+D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\Newtonsoft.Json.dll
+D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.csprojResolveAssemblyReference.cache
+D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.exe
+D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.pdb

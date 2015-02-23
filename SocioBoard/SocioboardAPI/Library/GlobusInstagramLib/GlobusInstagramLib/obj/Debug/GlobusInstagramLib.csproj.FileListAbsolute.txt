@@ -22,7 +22,6 @@ C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusIns
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\bin\Debug\GlobusInstagramLib.pdb
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.dll
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.pdb
-<<<<<<< HEAD
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.csprojResolveAssemblyReference.cache
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk - Copy\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\bin\Debug\GlobusInstagramLib.dll
 C:\Users\GLB-199\Desktop\Backup\trunk19-12\trunk - Copy\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\bin\Debug\GlobusInstagramLib.pdb
@@ -48,9 +47,18 @@ D:\D drive\socioboard7feb2015\trunk -twinba\SocioboardAPI\Library\GlobusInstagra
 D:\D drive\socioboard7feb2015\trunk -twinba\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.dll
 D:\D drive\socioboard7feb2015\trunk -twinba\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.pdb
 D:\D drive\socioboard7feb2015\trunk -twinba\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.csprojResolveAssemblyReference.cache
-=======
-D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\bin\Debug\GlobusInstagramLib.dll
-D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\bin\Debug\GlobusInstagramLib.pdb
-D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.dll
-D:\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.pdb
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
+C:\Users\GLB-199\Desktop\SB Live\SB Code_13-02-15\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\bin\Debug\GlobusInstagramLib.dll
+C:\Users\GLB-199\Desktop\SB Live\SB Code_13-02-15\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\bin\Debug\GlobusInstagramLib.pdb
+C:\Users\GLB-199\Desktop\SB Live\SB Code_13-02-15\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.csprojResolveAssemblyReference.cache
+C:\Users\GLB-199\Desktop\SB Live\SB Code_13-02-15\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.dll
+C:\Users\GLB-199\Desktop\SB Live\SB Code_13-02-15\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.pdb
+D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\bin\Debug\GlobusInstagramLib.dll
+D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\bin\Debug\GlobusInstagramLib.pdb
+D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.dll
+D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.pdb
+D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.csprojResolveAssemblyReference.cache
+D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\bin\Debug\GlobusInstagramLib.dll
+D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\bin\Debug\GlobusInstagramLib.pdb
+D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.csprojResolveAssemblyReference.cache
+D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.dll
+D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusInstagramLib\GlobusInstagramLib\obj\Debug\GlobusInstagramLib.pdb
