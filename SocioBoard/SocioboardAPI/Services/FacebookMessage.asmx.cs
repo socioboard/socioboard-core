@@ -239,5 +239,64 @@ namespace Api.Socioboard.Services
             List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookMessage = objFacebookMessageRepository.getAllMessageDetail(profileid, noOfDataToSkip);
             return new JavaScriptSerializer().Serialize(lstFacebookMessage);
         }
+
+        //Added by Sumit Gupta [12-02-15]
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string getAllFacebookMessagesByUserIdWithRange(string UserId, string noOfDataToSkip)
+        {
+            List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookMessage = new List<Domain.Socioboard.Domain.FacebookMessage>();
+            try
+            {
+                //if (objFacebookFeedRepository.checkFacebookUserExists(ProfileId, Guid.Parse(UserId)))
+                {
+                    lstFacebookMessage = objFacebookMessageRepository.getAllFacebookMessagesOfSBUserWithRange(UserId, noOfDataToSkip);
+                }
+                //else
+                //{
+                //    lstFacebookFeed = objFacebookFeedRepository.getAllFacebookUserFeeds(ProfileId);
+                //}
+                return new JavaScriptSerializer().Serialize(lstFacebookMessage);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+
+        //Added by sumit gupta [13-02-2015]
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllWallpostsOfProfileAccordingtoGroupByUserIdAndProfileId1WithRange(string UserId, string keyword, string ProfileId, string count)
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.FacebookMessage> objFacebookMessage = objFacebookMessageRepository.GetAllWallpostsOfProfileAccordingtoGroupByUserIdAndProfileId1WithRange(UserId, keyword, ProfileId, count);
+                return new JavaScriptSerializer().Serialize(objFacebookMessage);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+
+        //Added by sumit gupta [13-02-2015]
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string getAllFacebookUserFeedOfUsersByUserIdAndProfileId1WithRange(string UserId, string keyword, string ProfileId, string count)
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookUserFeed = objFacebookMessageRepository.getAllFacebookUserFeedOfUsersByUserIdAndProfileId1WithRange(UserId, keyword, ProfileId, count);
+                return new JavaScriptSerializer().Serialize(lstFacebookUserFeed);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
     }
 }

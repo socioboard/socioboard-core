@@ -5,6 +5,9 @@ using System.Web;
 using System.Collections;
 using Domain.Socioboard.Domain;
 using Api.Socioboard.Helper;
+using NHibernate.Linq;
+using NHibernate.Criterion;
+
 
 namespace Api.Socioboard.Services
 {
@@ -1398,6 +1401,181 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
+
+
+        /// <getAllTwitterFeedOfUsers>
+        /// Get All Twitter Retweet Of Users
+        /// </summary>
+        /// <param name="UserId">User id.(Guid)</param>
+        /// <param name="profileid">Profile id.(String)</param>
+        /// <returns>Return object of TwitterFeed Class with  value of each member in the form of list.(List<TwitterFeed>)</returns>
+        public List<Domain.Socioboard.Domain.TwitterMessage> getAllTwitterRetweetOfUsersByKeyword(string UserId, string profileid, string keyword)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.CreateQuery("from TwitterMessage where UserId = :UserId and ProfileId = :profileid and Type ='twt_retweets'")
+                        //.SetParameter("UserId", UserId)
+                        //.SetParameter("profileid", profileid)
+                        //    // .SetMaxResults(10)
+                        //.List<Domain.Socioboard.Domain.TwitterMessage>()
+                        //.ToList<Domain.Socioboard.Domain.TwitterMessage>();
+
+                        List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.Query<Domain.Socioboard.Domain.TwitterMessage>().Where(x => x.TwitterMsg.Contains(keyword) && x.UserId.Equals(Guid.Parse(UserId)) && x.ProfileId.Equals(profileid) && x.Type.Equals("twt_retweets")).OrderByDescending(x => x.MessageDate).Take(20)//.CreateQuery("from FacebookFeed where  UserId = :UserId and FeedDescription like %' =:keyword '% ORDER BY FeedDate DESC")
+                            //.List<Domain.Socioboard.Domain.FacebookFeed>()
+                     .ToList<Domain.Socioboard.Domain.TwitterMessage>();
+
+                        return lstmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+        /// <getAllTwitterFeedOfUsers>
+        /// Get All Twitter Mentions Of Users
+        /// </summary>
+        /// <param name="UserId">User id.(Guid)</param>
+        /// <param name="profileid">Profile id.(String)</param>
+        /// <returns>Return object of TwitterFeed Class with  value of each member in the form of list.(List<TwitterFeed>)</returns>
+        public List<Domain.Socioboard.Domain.TwitterMessage> getAllTwitterMentionsOfUsersByKeyword(string UserId, string profileid, string keyword)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.CreateQuery("from TwitterMessage where UserId = :UserId and ProfileId = :profileid and Type ='twt_mentions'")
+                        //.SetParameter("UserId", UserId)
+                        //.SetParameter("profileid", profileid)
+                        //    // .SetMaxResults(10)
+                        //.List<Domain.Socioboard.Domain.TwitterMessage>()
+                        //.ToList<Domain.Socioboard.Domain.TwitterMessage>();
+
+                        List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.Query<Domain.Socioboard.Domain.TwitterMessage>().Where(x => x.TwitterMsg.Contains(keyword) && x.UserId.Equals(Guid.Parse(UserId)) && x.ProfileId.Equals(profileid) && x.Type.Equals("twt_mentions")).OrderByDescending(x => x.MessageDate).Take(20)//.CreateQuery("from FacebookFeed where  UserId = :UserId and FeedDescription like %' =:keyword '% ORDER BY FeedDate DESC")
+                            //.List<Domain.Socioboard.Domain.FacebookFeed>()
+                   .ToList<Domain.Socioboard.Domain.TwitterMessage>();
+
+                        return lstmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+        public List<Domain.Socioboard.Domain.TwitterMessage> getAllTwitterMessagesOfUserByKeyword(string UserId, string profileid, string keyword, int count)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, open up a Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get messages of profile by profile id and user id.
+
+                        //List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.CreateQuery("from TwitterMessage where UserId = :userid and ProfileId = :profid")
+                        //.SetParameter("userid", UserId)
+                        //.SetParameter("profid", profileid)
+                        //.SetFirstResult(count)
+                        //.SetMaxResults(10)
+                        //.List<Domain.Socioboard.Domain.TwitterMessage>()
+                        //.ToList<Domain.Socioboard.Domain.TwitterMessage>();
+
+                        List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.Query<Domain.Socioboard.Domain.TwitterMessage>().Where(x => x.TwitterMsg.Contains(keyword) && x.UserId.Equals(Guid.Parse(UserId)) && x.ProfileId.Equals(profileid)).OrderByDescending(x => x.MessageDate).Take(20)//.CreateQuery("from FacebookFeed where  UserId = :UserId and FeedDescription like %' =:keyword '% ORDER BY FeedDate DESC")
+                            //.List<Domain.Socioboard.Domain.FacebookFeed>()
+                  .ToList<Domain.Socioboard.Domain.TwitterMessage>();
+
+                        return lstmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End Session
+        }
+
+        /// <getAllTwitterFeedOfUsers>
+        /// Get All Twitter User Tweet Of Users
+        /// </summary>
+        /// <param name="UserId">User id.(Guid)</param>
+        /// <param name="profileid">Profile id.(String)</param>
+        /// <returns>Return object of TwitterFeed Class with  value of each member in the form of list.(List<TwitterFeed>)</returns>
+        public List<Domain.Socioboard.Domain.TwitterMessage> getAllTwitterUsertweetOfUsersByKeyword(string UserId, string profileid, string keyword)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.CreateQuery("from TwitterMessage where UserId = :UserId and ProfileId = :profileid and Type ='twt_usertweets'")
+                        //.SetParameter("UserId", UserId)
+                        //.SetParameter("profileid", profileid)
+                        //    // .SetMaxResults(10)
+                        //.List<Domain.Socioboard.Domain.TwitterMessage>()
+                        //.ToList<Domain.Socioboard.Domain.TwitterMessage>();
+
+                        List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.Query<Domain.Socioboard.Domain.TwitterMessage>().Where(x => x.TwitterMsg.Contains(keyword) && x.UserId.Equals(Guid.Parse(UserId)) && x.ProfileId.Equals(profileid) && x.Type.Equals("twt_usertweets")).OrderByDescending(x => x.MessageDate).Take(20)//.CreateQuery("from FacebookFeed where  UserId = :UserId and FeedDescription like %' =:keyword '% ORDER BY FeedDate DESC")
+                            //.List<Domain.Socioboard.Domain.FacebookFeed>()
+              .ToList<Domain.Socioboard.Domain.TwitterMessage>();
+
+                        return lstmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+        public int GetMessageCountByProfileIdAndUserId(Guid UserId, string profileids)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        string[] arrsrt = profileids.Split(',');
+                        var results = session.QueryOver<Domain.Socioboard.Domain.TwitterMessage>().Where(U => U.UserId == UserId).AndRestrictionOn(m => m.ProfileId).IsIn(arrsrt).Select(Projections.RowCount()).FutureValue<int>().Value;
+                        return Int16.Parse(results.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+                }//End Transaction
+            }// End se
+        }
+
 
     }
 }

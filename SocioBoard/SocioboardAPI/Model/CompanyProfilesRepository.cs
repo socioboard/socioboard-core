@@ -41,15 +41,15 @@ namespace Api.Socioboard.Model
                         // Proceed action to Update Data.
                         // And Set the reuired paremeters to find the specific values.
                         session.CreateQuery("Update companyprofiles set CompanyName =:CompanyName,FbProfileId =:FbProfileId,TwitterProfileId =:TwitterProfileId,LinkedinProfileId=:LinkedinProfileId,InstagramProfileId=:InstagramProfileId,YoutubeProfileId=:YoutubeProfileId,GPlusProfileId=:GPlusProfileId,TumblrProfileId=:TumblrProfileId,UserId=:UserId where Id = :Id ")
-                            .SetParameter("CompanyName", compnayProfiles.CompanyName)
-                            .SetParameter("FbProfileId", compnayProfiles.FbProfileId)
-                            .SetParameter("TwitterProfileId", compnayProfiles.TwitterProfileId)
-                            .SetParameter("LinkedinProfileId", compnayProfiles.LinkedinProfileId)
-                            .SetParameter("InstagramProfileId", compnayProfiles.InstagramProfileId)
-                            .SetParameter("YoutubeProfileId", compnayProfiles.YoutubeProfileId)
-                            .SetParameter("GPlusProfileId", compnayProfiles.GPlusProfileId)
-                            .SetParameter("TumblrProfileId", compnayProfiles.TumblrProfileId)
-                            .SetParameter("UserId", compnayProfiles.UserId)
+                            .SetParameter("CompanyName", compnayProfiles.Companyname)
+                            .SetParameter("FbProfileId", compnayProfiles.Fbprofileid)
+                            .SetParameter("TwitterProfileId", compnayProfiles.Twitterprofileid)
+                            .SetParameter("LinkedinProfileId", compnayProfiles.Linkedinprofileid)
+                            .SetParameter("InstagramProfileId", compnayProfiles.Instagramprofileid)
+                            .SetParameter("YoutubeProfileId", compnayProfiles.Youtubeprofileid)
+                            .SetParameter("GPlusProfileId", compnayProfiles.Gplusprofileid)
+                            .SetParameter("TumblrProfileId", compnayProfiles.Tumblrprofileid)
+                            .SetParameter("UserId", compnayProfiles.Userid)
                             .SetParameter("Id", compnayProfiles.Id)
                             .ExecuteUpdate();
                         transaction.Commit();
@@ -102,7 +102,7 @@ namespace Api.Socioboard.Model
 
                     foreach (Domain.Socioboard.Domain.CompanyProfiles Profile in query.Enumerable())
                     {
-                        companyNames.Add(Profile.CompanyName);
+                        companyNames.Add(Profile.Companyname);
                     }
                 }//End Transaction
             }//End session

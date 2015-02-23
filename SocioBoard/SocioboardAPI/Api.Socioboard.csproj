@@ -821,6 +821,9 @@
     <EmbeddedResource Include="Mappings\Affiliates.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Companyprofiles.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Mappings\DropboxAccount.hbm.xml" />
     <EmbeddedResource Include="Mappings\FacebookFanPage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

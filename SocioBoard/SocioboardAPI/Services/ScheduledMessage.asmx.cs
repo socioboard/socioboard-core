@@ -738,7 +738,19 @@ namespace Api.Socioboard.Services
             return new JavaScriptSerializer().Serialize(_AllScheduledMessage);
         }
 
-       
+        [WebMethod]
+        //[ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public int GetSentMessageCountByProfileIdAndUserId(string UserId, string ProfileIds)
+        {
+            try
+            {
+                return objScheduledMessageRepository.GetSentMessageCountByProfileIdAndUserId(Guid.Parse(UserId), ProfileIds);
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
 
 
 

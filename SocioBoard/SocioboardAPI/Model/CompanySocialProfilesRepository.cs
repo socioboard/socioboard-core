@@ -295,7 +295,7 @@ namespace Api.Socioboard.Model
                     try
                     {
                         //Proceed action, to delete a FacebookAccount by FbUserId and UserId.
-                        NHibernate.IQuery query = session.CreateQuery("delete from companyprofiles where Id = :id")
+                        NHibernate.IQuery query = session.CreateQuery("delete from CompanyProfiles where Id = :id")
                                                  .SetParameter("id", id);
                         int isUpdated = query.ExecuteUpdate();
                         transaction.Commit();
@@ -324,16 +324,16 @@ namespace Api.Socioboard.Model
                         // Proceed action to Update Data.
                         // And Set the reuired paremeters to find the specific values.
                         session.CreateQuery("Update companyprofiles set CompanyName=:companyName,FbProfileId=:fbPfofileId,LinkediProfileId=:linkedinPfofileId,GPlusProfileId=:gplusProfileId,InstagramProfileId=:instagramProfileId,TwitterProfileId=:twitterProfileId,TumblrProfileId=:tumblrProfileId,YoutubeProfileId=:youtubeProfileId where Id = :id and UserId = :userid")
-                            .SetParameter("companyName", companyProfiles.CompanyName)
+                            .SetParameter("companyName", companyProfiles.Companyname)
                             .SetParameter("id", companyProfiles.Id)
-                            .SetParameter("fbPfofileId", companyProfiles.FbProfileId)
-                            .SetParameter("gplusProfileId", companyProfiles.GPlusProfileId)
-                            .SetParameter("userid", companyProfiles.UserId)
-                            .SetParameter("instagramProfileId", companyProfiles.InstagramProfileId)
-                            .SetParameter("linkedinPfofileId", companyProfiles.LinkedinProfileId)
-                            .SetParameter("twitterPfofileId", companyProfiles.TwitterProfileId)
-                            .SetParameter("tumblrProfileId", companyProfiles.TumblrProfileId)
-                            .SetParameter("youtubeProfileId", companyProfiles.YoutubeProfileId)
+                            .SetParameter("fbPfofileId", companyProfiles.Fbprofileid)
+                            .SetParameter("gplusProfileId", companyProfiles.Gplusprofileid)
+                            .SetParameter("userid", companyProfiles.Userid)
+                            .SetParameter("instagramProfileId", companyProfiles.Instagramprofileid)
+                            .SetParameter("linkedinPfofileId", companyProfiles.Linkedinprofileid)
+                            .SetParameter("twitterPfofileId", companyProfiles.Twitterprofileid)
+                            .SetParameter("tumblrProfileId", companyProfiles.Tumblrprofileid)
+                            .SetParameter("youtubeProfileId", companyProfiles.Youtubeprofileid)
                             .ExecuteUpdate();
                         transaction.Commit();
                         isUpdate = true;
@@ -384,11 +384,11 @@ namespace Api.Socioboard.Model
                 using (NHibernate.ITransaction transaction = session.BeginTransaction())
                 {
                     //Proceed action, to Get all FacebookAccount.
-                    NHibernate.IQuery query = session.CreateQuery("from companyprofiles");
+                    NHibernate.IQuery query = session.CreateQuery("from CompanyProfiles");
 
                     foreach (Domain.Socioboard.Domain.CompanyProfiles Profile in query.Enumerable())
                     {
-                        companyNames.Add(Profile.CompanyName);
+                        companyNames.Add(Profile.Companyname);
                     }
                 }//End Transaction
             }//End session
@@ -404,10 +404,12 @@ namespace Api.Socioboard.Model
                 //After Session creation, start Transaction.
                 using (NHibernate.ITransaction transaction = session.BeginTransaction())
                 {
-                    NHibernate.IQuery query = session.CreateQuery("from companyprofiles where CompanyName = :CompanyName");
-                    query.SetParameter("CompanyName", Keywords);
-                    List<Domain.Socioboard.Domain.CompanyProfiles> result = (List<Domain.Socioboard.Domain.CompanyProfiles>)query.Enumerable();
-                    companyProfile = result[0];
+                    List<Domain.Socioboard.Domain.CompanyProfiles> result = session.CreateQuery("from CompanyProfiles where Companyname=:CompanyName").SetParameter("CompanyName", Keywords).List<Domain.Socioboard.Domain.CompanyProfiles>().ToList<Domain.Socioboard.Domain.CompanyProfiles>();
+                    try
+                    {
+                        companyProfile = result[0];
+                    }
+                    catch (Exception e) { }
                 }//End Transaction
             }//End session
 

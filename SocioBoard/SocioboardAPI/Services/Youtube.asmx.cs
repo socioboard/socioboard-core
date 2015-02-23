@@ -214,6 +214,10 @@ namespace Api.Socioboard.Services
             objTeamMemberProfile.ProfileType = "youtube";
             objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
             objTeamMemberProfile.ProfileId = objYoutubeAccount.Ytuserid;
+
+            objTeamMemberProfile.ProfileName = objYoutubeAccount.Ytusername;
+            objTeamMemberProfile.ProfilePicUrl = objYoutubeAccount.Ytprofileimage;
+
             if (!objTeamMemberProfileRepository.checkTeamMemberProfile(objTeam.Id, objYoutubeAccount.Ytuserid))
             {
                 objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);

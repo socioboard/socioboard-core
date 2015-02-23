@@ -165,6 +165,60 @@ namespace Api.Socioboard.Services
                 return null;
             }
         }
-   
+
+
+        //Added by Sumit Gupta [12-02-15]
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string getAllFacebookFeedsByUserIdWithRange(string UserId, string keyword, string noOfDataToSkip)
+        {
+            List<Domain.Socioboard.Domain.FacebookFeed> lstFacebookFeed = new List<Domain.Socioboard.Domain.FacebookFeed>();
+            try
+            {
+                //if (objFacebookFeedRepository.checkFacebookUserExists(ProfileId, Guid.Parse(UserId)))
+                {
+                    lstFacebookFeed = objFacebookFeedRepository.getAllFacebookFeedsOfSBUserWithRange(UserId, keyword, noOfDataToSkip);
+                }
+                //else
+                //{
+                //    lstFacebookFeed = objFacebookFeedRepository.getAllFacebookUserFeeds(ProfileId);
+                //}
+                return new JavaScriptSerializer().Serialize(lstFacebookFeed);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+
+        //getAllFacebookFeedsByUserIdAndProfileId1
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string getAllFacebookFeedsByUserIdAndProfileId1WithRange(string UserId, string keyword, string ProfileId, string count)
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.FacebookFeed> lstFacebookFeed = objFacebookFeedRepository.getAllFacebookFeedsOfSBUserWithProfileIdAndRange(UserId, ProfileId, keyword, count);
+                return new JavaScriptSerializer().Serialize(lstFacebookFeed);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+        [WebMethod]
+        //[ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public int GetFeedCountByProfileIdAndUserId(string UserId, string ProfileIds)
+        {
+            try 
+            {
+                return objFacebookFeedRepository.GetFeedCountByProfileIdAndUserId(Guid.Parse(UserId), ProfileIds);
+            }catch(Exception ex){
+                return 0;
+            }
+        }
+
     }
 }

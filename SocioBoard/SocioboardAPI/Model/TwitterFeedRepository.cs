@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using NHibernate.Linq;
 
 namespace Api.Socioboard.Services
 {
@@ -633,6 +634,45 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+
+        /// <getAllTwitterFeedOfUsers>
+        /// Get All Twitter Feed Of Users
+        /// </summary>
+        /// <param name="UserId">User id.(Guid)</param>
+        /// <param name="profileid">Profile id.(String)</param>
+        /// <returns>Return object of TwitterFeed Class with  value of each member in the form of list.(List<TwitterFeed>)</returns>
+        public List<Domain.Socioboard.Domain.TwitterFeed> getAllTwitterFeedOfUsersByKeyword(string UserId, string profileid, string keyword, int count)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //List<Domain.Socioboard.Domain.TwitterFeed> lstmsg = session.CreateQuery("from TwitterFeed where UserId = :userid and ProfileId = :profid")
+                        //.SetParameter("userid", UserId)
+                        //.SetParameter("profid", profileid)
+                        //.SetFirstResult(count)
+                        //.SetMaxResults(10)
+                        //.List<Domain.Socioboard.Domain.TwitterFeed>()
+                        //.ToList<Domain.Socioboard.Domain.TwitterFeed>();
+
+                        List<Domain.Socioboard.Domain.TwitterFeed> lstmsg = session.Query<Domain.Socioboard.Domain.TwitterFeed>().Where(x => x.Feed.Contains(keyword) && x.UserId.Equals(Guid.Parse(UserId)) && x.ProfileId.Equals(profileid)).OrderByDescending(x => x.FeedDate).Take(20)//.CreateQuery("from FacebookFeed where  UserId = :UserId and FeedDescription like %' =:keyword '% ORDER BY FeedDate DESC")
+                            //.List<Domain.Socioboard.Domain.FacebookFeed>()
+                       .ToList<Domain.Socioboard.Domain.TwitterFeed>();
+
+                        return lstmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
 
     }
 }

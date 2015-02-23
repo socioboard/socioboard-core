@@ -47,7 +47,7 @@ namespace Api.Socioboard.Services
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
 
-        
+
         public string GetTumblrRedirectUrl(string consumerKey, string consumerSecret, string CallBackUrl)
         {
             string ret = string.Empty;
@@ -98,7 +98,7 @@ namespace Api.Socioboard.Services
             objTumblrAccount.UserId = Guid.Parse(UserId);
             objTumblrAccount.tblrAccessToken = accessToken;
             objTumblrAccount.tblrAccessTokenSecret = accessTokenSecret;
-            objTumblrAccount.tblrProfilePicUrl = profile["response"]["user"]["name"].ToString();
+            objTumblrAccount.tblrProfilePicUrl = "http://api.tumblr.com/v2/blog/" + objTumblrAccount.tblrUserName + ".tumblr.com/avatar";//profile["response"]["user"]["name"].ToString();
             objTumblrAccount.IsActive = 1;
             if (!objTumblrAccountRepository.checkTubmlrUserExists(objTumblrAccount))
             {
@@ -129,16 +129,21 @@ namespace Api.Socioboard.Services
             objTeamMemberProfile.ProfileType = "tumblr";
             objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
             objTeamMemberProfile.ProfileId = objTumblrAccount.tblrUserName;
+
+            //Modified [13-02-15]
+            objTeamMemberProfile.ProfilePicUrl = objTumblrAccount.tblrProfilePicUrl;
+            objTeamMemberProfile.ProfileName = objTumblrAccount.tblrUserName;
+
             objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
             if (!objTeamMemberProfileRepository.checkTeamMemberProfile(objTeam.Id, objTumblrAccount.tblrUserName))
             {
                 objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
             }
-            
+
             #endregion
 
             #region Add Tumblr Feeds
-            AddTunblrFeeds(UserId, LoginDetails, profile["response"]["user"]["name"].ToString()); 
+            AddTunblrFeeds(UserId, LoginDetails, profile["response"]["user"]["name"].ToString());
             #endregion
 
 
@@ -340,9 +345,9 @@ namespace Api.Socioboard.Services
                     }
                 }
             }
-           
+
         }
-        
+
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string getTumblrData(string UserId, string Tumblrid)
@@ -354,15 +359,22 @@ namespace Api.Socioboard.Services
             Obj_oAuthTumbler.TumblrCallBackUrl = ConfigurationManager.AppSettings["TumblrCallBackURL"];
             TumblrAccountRepository objTumblrAccountRepository = new TumblrAccountRepository();
             Domain.Socioboard.Domain.TumblrAccount ObjTumblrAccount = objTumblrAccountRepository.getTumblrAccountDetailsById(Tumblrid, userId);
+            #region UpdateTeammemberprofile
+            Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
+            objTeamMemberProfile.ProfileName = ObjTumblrAccount.tblrUserName;
+            objTeamMemberProfile.ProfilePicUrl = ObjTumblrAccount.tblrProfilePicUrl;
+            objTeamMemberProfile.ProfileId = ObjTumblrAccount.tblrUserName;
+            objTeamMemberProfileRepository.updateTeamMemberbyprofileid(objTeamMemberProfile);
+            #endregion
             oAuthTumbler.TumblrToken = ObjTumblrAccount.tblrAccessToken;
             oAuthTumbler.TumblrTokenSecret = ObjTumblrAccount.tblrAccessTokenSecret;
-             KeyValuePair<string, string> LoginDetails = new KeyValuePair<string, string>(ObjTumblrAccount.tblrAccessToken, ObjTumblrAccount.tblrAccessTokenSecret);
-             AddTunblrFeeds(UserId, LoginDetails, ObjTumblrAccount.tblrUserName);
+            KeyValuePair<string, string> LoginDetails = new KeyValuePair<string, string>(ObjTumblrAccount.tblrAccessToken, ObjTumblrAccount.tblrAccessTokenSecret);
+            AddTunblrFeeds(UserId, LoginDetails, ObjTumblrAccount.tblrUserName);
             Domain.Socioboard.Domain.TumblrFeed tumblrTumblrFeed = new Domain.Socioboard.Domain.TumblrFeed();
             TumblrFeedRepository.Add(tumblrTumblrFeed);
             return "Tumblr info is updated successfully";
             //Obj_oAuthTumbler.TumblrOAuthVerifier=ObjTumblrAccount.tbl
-            
+
         }
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -403,7 +415,7 @@ namespace Api.Socioboard.Services
                         }
                         str = "Message post on tumblr for Id :" + ObjTumblrAccount.tblrUserName + " and Message: " + objScheduledMessage.ShareMessage;
                         ScheduledMessage schmsg = new ScheduledMessage();
-                        schmsg.UpdateScheduledMessageByMsgId(Guid.Parse(sscheduledmsgguid)); 
+                        schmsg.UpdateScheduledMessageByMsgId(Guid.Parse(sscheduledmsgguid));
                     }
                     catch (Exception ex)
                     {
@@ -416,7 +428,7 @@ namespace Api.Socioboard.Services
             {
                 Console.WriteLine(ex.StackTrace);
                 str = ex.Message;
-            }    
+            }
             return str;
         }
 

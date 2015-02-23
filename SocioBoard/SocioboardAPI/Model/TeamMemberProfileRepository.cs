@@ -482,5 +482,36 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
+
+
+
+        //edited by avinash[14/02/2015]
+        public void updateTeamMemberbyprofileid(Domain.Socioboard.Domain.TeamMemberProfile team)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to update details of team member profile.
+                        session.CreateQuery("Update TeamMemberProfile set ProfileName =:ProfileName,ProfilePicUrl =:ProfilePicUrl where ProfileId = :ProfileId")
+                            .SetParameter("ProfileName", team.ProfileName)
+                            .SetParameter("ProfilePicUrl", team.ProfilePicUrl)
+                            .SetParameter("ProfileId", team.ProfileId)
+                             .ExecuteUpdate();
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        // return 0;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
     }
 }

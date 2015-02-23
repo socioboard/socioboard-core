@@ -1081,5 +1081,134 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
+
+        //Added by Sumit Gupta [12-02-15]
+        /// <getAllFacebookUserFeeds>
+        /// Get All Facebook User Feeds
+        /// </summary>
+        /// <param name="profileid">Profile id</param>
+        /// <returns>List of Facebbok feeds (List<FacebookFeed>)</returns>
+        public List<Domain.Socioboard.Domain.FacebookMessage> getAllFacebookMessagesOfSBUserWithRange(string UserId, string noOfDataToSkip)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get all facebook feeds of profile by facebook profile id  
+                        List<Domain.Socioboard.Domain.FacebookMessage> alst = session.CreateQuery("from FacebookMessage where  UserId = :UserId order by MessageDate desc")
+                        .SetParameter("UserId", UserId)
+                          .SetFirstResult(Convert.ToInt32(noOfDataToSkip))
+                        .SetMaxResults(20)
+                        .List<Domain.Socioboard.Domain.FacebookMessage>()
+                        .ToList<Domain.Socioboard.Domain.FacebookMessage>();
+
+                        #region oldcode
+                        //List<FacebookFeed> alst = new List<FacebookFeed>();
+                        //foreach (FacebookFeed item in query.Enumerable<FacebookFeed>().OrderByDescending(x => x.FeedDate))
+                        //{
+                        //    alst.Add(item);
+                        //} 
+                        #endregion
+
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }// End session
+
+        }
+
+        //added by sumit gupta [13-02-2015]
+        /// <getAllWallpostsOfProfile>
+        ///  Get all Wallpost of User by ProfileId(string), ie. posted by User as well as Others on User's Home Page
+        /// </summary>
+        /// <param name="profileid">profileId FacebookMessage(String)</param>
+        /// <param name="count">Count is used for counting upto 10 results.</param>
+        /// <returns>Return all Message on behalf of ProfileId in form List type.</returns>
+        public List<Domain.Socioboard.Domain.FacebookMessage> GetAllWallpostsOfProfileAccordingtoGroupByUserIdAndProfileId1WithRange(string UserId, string keyword, string ProfileId, string count)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action to get all Wallpost of User from FacebookMessage.
+                        //List<Domain.Socioboard.Domain.FacebookMessage> lst = session.CreateQuery("from FacebookMessage where ProfileId = :profileId and UserId=:userid and Type='fb_home' order by MessageDate Desc")
+                        //.SetParameter("profileId", ProfileId)
+                        //.SetParameter("userid", UserId)
+                        //.SetFirstResult(count)
+                        //.SetMaxResults(10)
+                        //.List<Domain.Socioboard.Domain.FacebookMessage>()
+                        //.ToList<Domain.Socioboard.Domain.FacebookMessage>();
+
+                        List<Domain.Socioboard.Domain.FacebookMessage> lst = session.Query<Domain.Socioboard.Domain.FacebookMessage>().Where(x => x.Message.Contains(keyword) && x.UserId.Equals(Guid.Parse(UserId)) && x.ProfileId.Equals(ProfileId)).OrderByDescending(x => x.MessageDate).Take(20)//.CreateQuery("from FacebookFeed where  UserId = :UserId and FeedDescription like %' =:keyword '% ORDER BY FeedDate DESC")
+                            //.List<Domain.Socioboard.Domain.FacebookFeed>()
+                       .ToList<Domain.Socioboard.Domain.FacebookMessage>();
+
+                        return lst;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End session
+        }
+
+
+        //added by sumit gupta [13-02-2015]
+        /// <getAllFacebookTagOfUsers>
+        /// Get Other's Home Posts of User, ie. posted by others on User's Home Page
+        /// </summary>
+        /// <param name="UserId">User id.(Guid)</param>
+        /// <param name="profileid">Profile id.(String)</param>
+        /// <returns>Return object of FacebookTag Class with  value of each member in the form of list.(List<FacebookMessage>)</returns>
+        public List<Domain.Socioboard.Domain.FacebookMessage> getAllFacebookUserFeedOfUsersByUserIdAndProfileId1WithRange(string UserId, string keyword, string ProfileId, string count)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //List<Domain.Socioboard.Domain.FacebookMessage> lstmsg = session.CreateQuery("from FacebookMessage where UserId = :UserId and ProfileId = :profileid and Type ='fb_home' and ProfileId != FromId")
+                        //.SetParameter("UserId", UserId)
+                        //.SetParameter("profileid", profileid)
+                        //    // .SetMaxResults(10)
+                        //.List<Domain.Socioboard.Domain.FacebookMessage>()
+                        //.ToList<Domain.Socioboard.Domain.FacebookMessage>();
+
+                        List<Domain.Socioboard.Domain.FacebookMessage> lstmsg = session.Query<Domain.Socioboard.Domain.FacebookMessage>().Where(x => x.Message.Contains(keyword) && x.UserId.Equals(Guid.Parse(UserId)) && x.ProfileId.Equals(ProfileId) && x.Type.Equals("fb_home") && x.ProfileId != x.FromId).OrderByDescending(x => x.MessageDate).Take(20)//.CreateQuery("from FacebookFeed where  UserId = :UserId and FeedDescription like %' =:keyword '% ORDER BY FeedDate DESC")
+                            //.List<Domain.Socioboard.Domain.FacebookFeed>()
+                     .ToList<Domain.Socioboard.Domain.FacebookMessage>();
+
+                        return lstmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+
     }
 }

@@ -601,16 +601,20 @@ namespace Api.Socioboard.Services
             string profileid = string.Empty;
             try
             {
-                ArrayList alstLIAccounts = objLinkedinrepo.getAllLinkedinAccounts();
-                Domain.Socioboard.Domain.LinkedInAccount linkacc = (Domain.Socioboard.Domain.LinkedInAccount)alstLIAccounts[0];
+                // ArrayList alstLIAccounts = objLinkedinrepo.getAllLinkedinAccounts();
+                //Domain.Socioboard.Domain.LinkedInAccount linkacc = (Domain.Socioboard.Domain.LinkedInAccount)alstLIAccounts[0];
                 oAuthLinkedIn oauth = new oAuthLinkedIn();
                 oauth.ConsumerKey = ConfigurationManager.AppSettings["LiApiKey"];
                 oauth.ConsumerSecret = ConfigurationManager.AppSettings["LiSecretKey"];
-                oauth.Token = linkacc.OAuthToken;
-                oauth.TokenSecret = linkacc.OAuthSecret;
-                oauth.Verifier = linkacc.OAuthVerifier;
-                oauth.AccessTokenGet(linkacc.OAuthToken);
-
+                //oauth.Token = "49c2202b-2cd4-4c74-b5db-ce8d7f5e029e";
+                //oauth.TokenSecret = "a79cfbe5-d268-456e-8fdc-0d12869a1cf3";
+                //oauth.Verifier = "52921";
+                oauth.Token = "b82db6bb-21bb-44d2-a298-0b093708ddbf";
+                oauth.TokenSecret = "f7c9b7b8-9295-46fe-8cb4-914c1c52820f";
+                oauth.Verifier = "23836";
+                //oauth.AccessTokenGet(linkacc.OAuthToken);
+                //TODO: access Token Logic
+                oauth.AccessTokenGet("b82db6bb-21bb-44d2-a298-0b093708ddbf");
                 //oauth.AccessTokenGet();
 
                 //https://api.linkedin.com/v1/people-search? keywords=[space delimited keywords]

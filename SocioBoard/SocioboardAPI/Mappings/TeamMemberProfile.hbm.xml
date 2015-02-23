@@ -24,5 +24,12 @@
       <column name="StatusUpdateDate"  />
     </property>
 
+    <property name="ProfilePicUrl">
+      <column name="ProfilePicUrl"  />
+    </property>
+    <property name="ProfileName">
+      <column name="ProfileName"  />
+    </property>
+
   </class>
 </hibernate-mapping>

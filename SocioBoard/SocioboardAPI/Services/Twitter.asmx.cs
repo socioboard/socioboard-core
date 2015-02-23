@@ -196,6 +196,10 @@ namespace Api.Socioboard.Services
                         objTeamMemberProfile.ProfileType = "twitter";
                         objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
                         objTeamMemberProfile.ProfileId = objTwitterAccount.TwitterUserId;
+
+                        objTeamMemberProfile.ProfileName = objTwitterAccount.TwitterScreenName;
+                        objTeamMemberProfile.ProfilePicUrl = objTwitterAccount.ProfileImageUrl;
+
                         objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
                         #endregion
                         #region SocialProfile
@@ -912,7 +916,13 @@ namespace Api.Socioboard.Services
                     getUserProile(OAuth, itemTwt.TwitterUserId, userId);
                     getUserTweets(OAuth, itemTwt.TwitterScreenName, itemTwt.TwitterUserId, userId);
                     getUserFeed(OAuth, itemTwt.TwitterScreenName, itemTwt.TwitterUserId, userId);
-
+                    #region UpdateTeammemberprofile
+                    Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
+                    objTeamMemberProfile.ProfileName = itemTwt.TwitterScreenName;
+                    objTeamMemberProfile.ProfilePicUrl = itemTwt.ProfileImageUrl;
+                    objTeamMemberProfile.ProfileId = itemTwt.TwitterUserId;
+                    objTeamMemberProfileRepository.updateTeamMemberbyprofileid(objTeamMemberProfile);
+                    #endregion
                     Domain.Socioboard.Domain.TwitterAccount _TwitterAccount = objTwtRepo.GetUserInformation(itemTwt.UserId, itemTwt.TwitterUserId);
                     if (_TwitterAccount != null)
                         getTwitterStats(_TwitterAccount);

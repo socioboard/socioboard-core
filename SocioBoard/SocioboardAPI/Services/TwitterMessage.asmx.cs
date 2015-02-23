@@ -322,5 +322,78 @@ namespace Api.Socioboard.Services
             }
         }
 
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string getAllTwitterUsertweetOfUsersByKeyword(string UserId, string ProfileId, string keyword)
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.TwitterMessage> lstTwitterUsertweet = objTwitterMessageRepository.getAllTwitterUsertweetOfUsersByKeyword(UserId, ProfileId, keyword);
+                return new JavaScriptSerializer().Serialize(lstTwitterUsertweet);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string getAllTwitterRetweetOfUsersByKeyword(string UserId, string ProfileId, string keyword)
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.TwitterMessage> lstTwitterRetweet = objTwitterMessageRepository.getAllTwitterRetweetOfUsersByKeyword(UserId, ProfileId, keyword);
+                return new JavaScriptSerializer().Serialize(lstTwitterRetweet);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+
+        }
+
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string getAllTwitterMentionsOfUsersByKeyword(string UserId, string ProfileId, string keyword)
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.TwitterMessage> lstTwitterMentions = objTwitterMessageRepository.getAllTwitterMentionsOfUsersByKeyword(UserId, ProfileId, keyword);
+                return new JavaScriptSerializer().Serialize(lstTwitterMentions);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetTwitterMessages1ByKeyword(string TwitterId, string Userid, string keyword, int count)
+        {
+            List<Domain.Socioboard.Domain.TwitterMessage> lsttwtmsg = objTwitterMessageRepository.getAllTwitterMessagesOfUserByKeyword(Userid, TwitterId, keyword, count);
+            return new JavaScriptSerializer().Serialize(lsttwtmsg);
+        }
+
+        [WebMethod]
+        //[ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public int GetFeedCountByProfileIdAndUserId(string UserId, string ProfileIds)
+        {
+            try
+            {
+                return objTwitterMessageRepository.GetMessageCountByProfileIdAndUserId(Guid.Parse(UserId), ProfileIds);
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
     }
 }

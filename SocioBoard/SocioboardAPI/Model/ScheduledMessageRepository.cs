@@ -6,6 +6,7 @@ using log4net;
 using Api.Socioboard.Helper;
 using Domain.Socioboard.Domain;
 using Domain.Socioboard.Helper;
+using NHibernate.Criterion;
 
 
 namespace Api.Socioboard.Services
@@ -1338,6 +1339,30 @@ namespace Api.Socioboard.Services
 
         }
 
+
+
+        public int GetSentMessageCountByProfileIdAndUserId(Guid UserId, string profileids)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        string[] arrsrt = profileids.Split(',');
+                        var results = session.QueryOver<Domain.Socioboard.Domain.ScheduledMessage>().Where(U => U.UserId == UserId).AndRestrictionOn(m => m.ProfileId).IsIn(arrsrt).Select(Projections.RowCount()).FutureValue<int>().Value;
+                        return Int16.Parse(results.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+                }//End Transaction
+            }// End se
+        }
 
 
     }

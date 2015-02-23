@@ -135,5 +135,21 @@ namespace Api.Socioboard.Services
                 return null;
             }
         }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllTwitterFeedsByUserIdAndProfileId1ByKeyword(string UserId, string ProfileId, string keyword, int count)
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.TwitterFeed> lstTwitterFeed = objTwitterFeedRepository.getAllTwitterFeedOfUsersByKeyword(UserId, ProfileId, keyword, count);
+                return new JavaScriptSerializer().Serialize(lstTwitterFeed);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
     }
 }

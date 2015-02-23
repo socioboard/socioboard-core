@@ -204,6 +204,9 @@ namespace Api.Socioboard.Services
                         objTeamMemberProfile.ProfileType = "linkedin";
                         objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
                         objTeamMemberProfile.ProfileId = objLinkedInAccount.LinkedinUserId;
+                        objTeamMemberProfile.ProfileName = objLinkedInAccount.LinkedinUserName;
+                        objTeamMemberProfile.ProfilePicUrl = objLinkedInAccount.ProfileImageUrl;
+
                     }
                     catch (Exception ex)
                     {
@@ -776,10 +779,24 @@ namespace Api.Socioboard.Services
                  if (linkedinAccRepo.checkLinkedinUserExists(LinkedinId, Guid.Parse(UserId)))
                  {
                      LinkedAccount = linkedinAccRepo.getUserInformation(Guid.Parse(UserId), LinkedinId);
+                     #region UpdateTeammemberprofile
+                     Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
+                     objTeamMemberProfile.ProfileName = LinkedAccount.LinkedinUserName;
+                     objTeamMemberProfile.ProfilePicUrl = LinkedAccount.ProfileImageUrl;
+                     objTeamMemberProfile.ProfileId = LinkedAccount.LinkedinUserId;
+                     objTeamMemberProfileRepository.updateTeamMemberbyprofileid(objTeamMemberProfile);
+                     #endregion
                  }
                  else
                  {
                      LinkedAccount = linkedinAccRepo.getUserInformation(LinkedinId);
+                     #region UpdateTeammemberprofile
+                     Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
+                     objTeamMemberProfile.ProfileName = LinkedAccount.LinkedinUserName;
+                     objTeamMemberProfile.ProfilePicUrl = LinkedAccount.ProfileImageUrl;
+                     objTeamMemberProfile.ProfileId = LinkedAccount.LinkedinUserId;
+                     objTeamMemberProfileRepository.updateTeamMemberbyprofileid(objTeamMemberProfile);
+                     #endregion
                  }
 
                  Linkedin_Oauth.Token = LinkedAccount.OAuthToken;

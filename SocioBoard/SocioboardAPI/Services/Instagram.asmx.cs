@@ -56,6 +56,13 @@ namespace Api.Socioboard.Services
             oAuthInstagram _api = new oAuthInstagram();
             _api = oAuthInstagram.GetInstance(configi);
                 GetIntagramImages(objInstagramAccount);
+                #region UpdateTeammemberprofile
+                Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
+                objTeamMemberProfile.ProfileName = objInstagramAccount.InsUserName;
+                objTeamMemberProfile.ProfilePicUrl = objInstagramAccount.ProfileUrl;
+                objTeamMemberProfile.ProfileId = objInstagramAccount.InstagramId;
+                objTeamMemberProfileRepository.updateTeamMemberbyprofileid(objTeamMemberProfile);
+                #endregion
                 return "Instagram Info is Updated successfully"; 
         }
 
@@ -130,6 +137,11 @@ namespace Api.Socioboard.Services
                     objTeamMemberProfile.ProfileType = "instagram";
                     objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
                     objTeamMemberProfile.ProfileId = objInstagramAccount.InstagramId;
+
+                //Modified [13-02-15]
+                    objTeamMemberProfile.ProfilePicUrl = objInstagramAccount.ProfileUrl;
+                    objTeamMemberProfile.ProfileName = objInstagramAccount.InsUserName;
+
                     objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
                     #endregion
                     #region SocialProfile

@@ -53,6 +53,9 @@
       <column name="ReadStatus"  />
     </property>
 
-
+    <property name="Picture">
+      <column name="Picture"  />
+    </property>
+    
   </class>
 </hibernate-mapping>

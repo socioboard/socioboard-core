@@ -55,7 +55,7 @@ namespace Api.Socioboard.Services
             fb.AccessToken = _facebookAccount.AccessToken;
             try
             {
-                dynamic data = fb.Get("me/friends?fields=gender");
+                dynamic data = fb.Get("v2.0/me/friends?fields=gender");
 
                 //dynamic data, dynamic profile, Guid userId
 
