@@ -29,9 +29,11 @@ namespace Socioboard.Api.Companypage {
     [System.Web.Services.WebServiceBindingAttribute(Name="CompanypageSoap", Namespace="http://tempuri.org/")]
     public partial class Companypage : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
-        private System.Threading.SendOrPostCallback getfacebookActiveAceessTokenFromDbOperationCompleted;
-        
         private System.Threading.SendOrPostCallback SearchFacebookPageOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback LinkedinSearchOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getfacebookActiveAceessTokenFromDbOperationCompleted;
         
         private System.Threading.SendOrPostCallback getFacebookkPageListOperationCompleted;
         
@@ -46,8 +48,6 @@ namespace Socioboard.Api.Companypage {
         private System.Threading.SendOrPostCallback TwitterAccountPageWithoutLoginOperationCompleted;
         
         private System.Threading.SendOrPostCallback TwitterUserTimeLineOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback LinkedinSearchOperationCompleted;
         
         private System.Threading.SendOrPostCallback LinkedinCompanyrecentActivitesOperationCompleted;
         
@@ -120,10 +120,13 @@ namespace Socioboard.Api.Companypage {
         }
         
         /// <remarks/>
-        public event getfacebookActiveAceessTokenFromDbCompletedEventHandler getfacebookActiveAceessTokenFromDbCompleted;
+        public event SearchFacebookPageCompletedEventHandler SearchFacebookPageCompleted;
         
         /// <remarks/>
-        public event SearchFacebookPageCompletedEventHandler SearchFacebookPageCompleted;
+        public event LinkedinSearchCompletedEventHandler LinkedinSearchCompleted;
+        
+        /// <remarks/>
+        public event getfacebookActiveAceessTokenFromDbCompletedEventHandler getfacebookActiveAceessTokenFromDbCompleted;
         
         /// <remarks/>
         public event getFacebookkPageListCompletedEventHandler getFacebookkPageListCompleted;
@@ -145,9 +148,6 @@ namespace Socioboard.Api.Companypage {
         
         /// <remarks/>
         public event TwitterUserTimeLineCompletedEventHandler TwitterUserTimeLineCompleted;
-        
-        /// <remarks/>
-        public event LinkedinSearchCompletedEventHandler LinkedinSearchCompleted;
         
         /// <remarks/>
         public event LinkedinCompanyrecentActivitesCompletedEventHandler LinkedinCompanyrecentActivitesCompleted;
@@ -198,33 +198,6 @@ namespace Socioboard.Api.Companypage {
         public event GooglePlusgetUserRecentActivitiesCompletedEventHandler GooglePlusgetUserRecentActivitiesCompleted;
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getfacebookActiveAceessTokenFromDb", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string getfacebookActiveAceessTokenFromDb() {
-            object[] results = this.Invoke("getfacebookActiveAceessTokenFromDb", new object[0]);
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void getfacebookActiveAceessTokenFromDbAsync() {
-            this.getfacebookActiveAceessTokenFromDbAsync(null);
-        }
-        
-        /// <remarks/>
-        public void getfacebookActiveAceessTokenFromDbAsync(object userState) {
-            if ((this.getfacebookActiveAceessTokenFromDbOperationCompleted == null)) {
-                this.getfacebookActiveAceessTokenFromDbOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetfacebookActiveAceessTokenFromDbOperationCompleted);
-            }
-            this.InvokeAsync("getfacebookActiveAceessTokenFromDb", new object[0], this.getfacebookActiveAceessTokenFromDbOperationCompleted, userState);
-        }
-        
-        private void OngetfacebookActiveAceessTokenFromDbOperationCompleted(object arg) {
-            if ((this.getfacebookActiveAceessTokenFromDbCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.getfacebookActiveAceessTokenFromDbCompleted(this, new getfacebookActiveAceessTokenFromDbCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SearchFacebookPage", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string SearchFacebookPage(string Keyword) {
             object[] results = this.Invoke("SearchFacebookPage", new object[] {
@@ -250,6 +223,62 @@ namespace Socioboard.Api.Companypage {
             if ((this.SearchFacebookPageCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.SearchFacebookPageCompleted(this, new SearchFacebookPageCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/LinkedinSearch", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string LinkedinSearch(string keyword) {
+            object[] results = this.Invoke("LinkedinSearch", new object[] {
+                        keyword});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void LinkedinSearchAsync(string keyword) {
+            this.LinkedinSearchAsync(keyword, null);
+        }
+        
+        /// <remarks/>
+        public void LinkedinSearchAsync(string keyword, object userState) {
+            if ((this.LinkedinSearchOperationCompleted == null)) {
+                this.LinkedinSearchOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLinkedinSearchOperationCompleted);
+            }
+            this.InvokeAsync("LinkedinSearch", new object[] {
+                        keyword}, this.LinkedinSearchOperationCompleted, userState);
+        }
+        
+        private void OnLinkedinSearchOperationCompleted(object arg) {
+            if ((this.LinkedinSearchCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.LinkedinSearchCompleted(this, new LinkedinSearchCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getfacebookActiveAceessTokenFromDb", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getfacebookActiveAceessTokenFromDb() {
+            object[] results = this.Invoke("getfacebookActiveAceessTokenFromDb", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getfacebookActiveAceessTokenFromDbAsync() {
+            this.getfacebookActiveAceessTokenFromDbAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getfacebookActiveAceessTokenFromDbAsync(object userState) {
+            if ((this.getfacebookActiveAceessTokenFromDbOperationCompleted == null)) {
+                this.getfacebookActiveAceessTokenFromDbOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetfacebookActiveAceessTokenFromDbOperationCompleted);
+            }
+            this.InvokeAsync("getfacebookActiveAceessTokenFromDb", new object[0], this.getfacebookActiveAceessTokenFromDbOperationCompleted, userState);
+        }
+        
+        private void OngetfacebookActiveAceessTokenFromDbOperationCompleted(object arg) {
+            if ((this.getfacebookActiveAceessTokenFromDbCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getfacebookActiveAceessTokenFromDbCompleted(this, new getfacebookActiveAceessTokenFromDbCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -455,35 +484,6 @@ namespace Socioboard.Api.Companypage {
             if ((this.TwitterUserTimeLineCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.TwitterUserTimeLineCompleted(this, new TwitterUserTimeLineCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/LinkedinSearch", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string LinkedinSearch(string keyword) {
-            object[] results = this.Invoke("LinkedinSearch", new object[] {
-                        keyword});
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void LinkedinSearchAsync(string keyword) {
-            this.LinkedinSearchAsync(keyword, null);
-        }
-        
-        /// <remarks/>
-        public void LinkedinSearchAsync(string keyword, object userState) {
-            if ((this.LinkedinSearchOperationCompleted == null)) {
-                this.LinkedinSearchOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLinkedinSearchOperationCompleted);
-            }
-            this.InvokeAsync("LinkedinSearch", new object[] {
-                        keyword}, this.LinkedinSearchOperationCompleted, userState);
-        }
-        
-        private void OnLinkedinSearchOperationCompleted(object arg) {
-            if ((this.LinkedinSearchCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.LinkedinSearchCompleted(this, new LinkedinSearchCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -974,17 +974,17 @@ namespace Socioboard.Api.Companypage {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void getfacebookActiveAceessTokenFromDbCompletedEventHandler(object sender, getfacebookActiveAceessTokenFromDbCompletedEventArgs e);
+    public delegate void SearchFacebookPageCompletedEventHandler(object sender, SearchFacebookPageCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class getfacebookActiveAceessTokenFromDbCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class SearchFacebookPageCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal getfacebookActiveAceessTokenFromDbCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal SearchFacebookPageCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1000,17 +1000,43 @@ namespace Socioboard.Api.Companypage {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void SearchFacebookPageCompletedEventHandler(object sender, SearchFacebookPageCompletedEventArgs e);
+    public delegate void LinkedinSearchCompletedEventHandler(object sender, LinkedinSearchCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class SearchFacebookPageCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class LinkedinSearchCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal SearchFacebookPageCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal LinkedinSearchCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void getfacebookActiveAceessTokenFromDbCompletedEventHandler(object sender, getfacebookActiveAceessTokenFromDbCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getfacebookActiveAceessTokenFromDbCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getfacebookActiveAceessTokenFromDbCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1193,32 +1219,6 @@ namespace Socioboard.Api.Companypage {
         private object[] results;
         
         internal TwitterUserTimeLineCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void LinkedinSearchCompletedEventHandler(object sender, LinkedinSearchCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class LinkedinSearchCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal LinkedinSearchCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

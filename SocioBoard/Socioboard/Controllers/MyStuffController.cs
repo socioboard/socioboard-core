@@ -122,5 +122,14 @@ namespace Socioboard.Controllers
             ViewBag.FriendsEmail = NewUser.EmailId;
             return PartialView("_SummaryPartial",lstAffiliate);
         }
+
+
+        public ActionResult SMSServices()
+        {
+            User _User = (User)Session["User"];
+            Api.Invitation.Invitation ApiInvitation = new Api.Invitation.Invitation();
+            List<Domain.Socioboard.Domain.Invitation> lstInvite = (List<Domain.Socioboard.Domain.Invitation>)(new JavaScriptSerializer().Deserialize(ApiInvitation.GetAllInvitedDataOfUser(_User.Id.ToString()), typeof(List<Domain.Socioboard.Domain.Invitation>)));
+            return View("Affiliates", lstInvite);
+        }
     }
 }

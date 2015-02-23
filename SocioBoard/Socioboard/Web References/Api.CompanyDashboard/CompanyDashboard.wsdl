@@ -12,17 +12,17 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="AddCompanyInfo">
+      <s:element name="getCompanyProfile">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="AddCompanyInfoResponse">
+      <s:element name="getCompanyProfileResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="AddCompanyInfoResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="getCompanyProfileResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -63,11 +63,11 @@
   <wsdl:message name="getAllCompanyNamesSoapOut">
     <wsdl:part name="parameters" element="tns:getAllCompanyNamesResponse" />
   </wsdl:message>
-  <wsdl:message name="AddCompanyInfoSoapIn">
-    <wsdl:part name="parameters" element="tns:AddCompanyInfo" />
+  <wsdl:message name="getCompanyProfileSoapIn">
+    <wsdl:part name="parameters" element="tns:getCompanyProfile" />
   </wsdl:message>
-  <wsdl:message name="AddCompanyInfoSoapOut">
-    <wsdl:part name="parameters" element="tns:AddCompanyInfoResponse" />
+  <wsdl:message name="getCompanyProfileSoapOut">
+    <wsdl:part name="parameters" element="tns:getCompanyProfileResponse" />
   </wsdl:message>
   <wsdl:message name="SearchCompanyProfileSoapIn">
     <wsdl:part name="parameters" element="tns:SearchCompanyProfile" />
@@ -85,10 +85,10 @@
   <wsdl:message name="getAllCompanyNamesHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="AddCompanyInfoHttpGetIn">
-    <wsdl:part name="name" type="s:string" />
+  <wsdl:message name="getCompanyProfileHttpGetIn">
+    <wsdl:part name="keyword" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="AddCompanyInfoHttpGetOut">
+  <wsdl:message name="getCompanyProfileHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="SearchCompanyProfileHttpGetIn">
@@ -107,10 +107,10 @@
   <wsdl:message name="getAllCompanyNamesHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="AddCompanyInfoHttpPostIn">
-    <wsdl:part name="name" type="s:string" />
+  <wsdl:message name="getCompanyProfileHttpPostIn">
+    <wsdl:part name="keyword" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="AddCompanyInfoHttpPostOut">
+  <wsdl:message name="getCompanyProfileHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="SearchCompanyProfileHttpPostIn">
@@ -130,9 +130,9 @@
       <wsdl:input message="tns:getAllCompanyNamesSoapIn" />
       <wsdl:output message="tns:getAllCompanyNamesSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="AddCompanyInfo">
-      <wsdl:input message="tns:AddCompanyInfoSoapIn" />
-      <wsdl:output message="tns:AddCompanyInfoSoapOut" />
+    <wsdl:operation name="getCompanyProfile">
+      <wsdl:input message="tns:getCompanyProfileSoapIn" />
+      <wsdl:output message="tns:getCompanyProfileSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="SearchCompanyProfile">
       <wsdl:input message="tns:SearchCompanyProfileSoapIn" />
@@ -148,9 +148,9 @@
       <wsdl:input message="tns:getAllCompanyNamesHttpGetIn" />
       <wsdl:output message="tns:getAllCompanyNamesHttpGetOut" />
     </wsdl:operation>
-    <wsdl:operation name="AddCompanyInfo">
-      <wsdl:input message="tns:AddCompanyInfoHttpGetIn" />
-      <wsdl:output message="tns:AddCompanyInfoHttpGetOut" />
+    <wsdl:operation name="getCompanyProfile">
+      <wsdl:input message="tns:getCompanyProfileHttpGetIn" />
+      <wsdl:output message="tns:getCompanyProfileHttpGetOut" />
     </wsdl:operation>
     <wsdl:operation name="SearchCompanyProfile">
       <wsdl:input message="tns:SearchCompanyProfileHttpGetIn" />
@@ -166,9 +166,9 @@
       <wsdl:input message="tns:getAllCompanyNamesHttpPostIn" />
       <wsdl:output message="tns:getAllCompanyNamesHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="AddCompanyInfo">
-      <wsdl:input message="tns:AddCompanyInfoHttpPostIn" />
-      <wsdl:output message="tns:AddCompanyInfoHttpPostOut" />
+    <wsdl:operation name="getCompanyProfile">
+      <wsdl:input message="tns:getCompanyProfileHttpPostIn" />
+      <wsdl:output message="tns:getCompanyProfileHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="SearchCompanyProfile">
       <wsdl:input message="tns:SearchCompanyProfileHttpPostIn" />
@@ -190,8 +190,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddCompanyInfo">
-      <soap:operation soapAction="http://tempuri.org/AddCompanyInfo" style="document" />
+    <wsdl:operation name="getCompanyProfile">
+      <soap:operation soapAction="http://tempuri.org/getCompanyProfile" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -229,8 +229,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddCompanyInfo">
-      <soap12:operation soapAction="http://tempuri.org/AddCompanyInfo" style="document" />
+    <wsdl:operation name="getCompanyProfile">
+      <soap12:operation soapAction="http://tempuri.org/getCompanyProfile" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -268,8 +268,8 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddCompanyInfo">
-      <http:operation location="/AddCompanyInfo" />
+    <wsdl:operation name="getCompanyProfile">
+      <http:operation location="/getCompanyProfile" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -307,8 +307,8 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddCompanyInfo">
-      <http:operation location="/AddCompanyInfo" />
+    <wsdl:operation name="getCompanyProfile">
+      <http:operation location="/getCompanyProfile" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

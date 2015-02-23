@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Results>
-<<<<<<< HEAD
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://api.socioboard.com/Services/InstagramFeed.asmx?wsdl" filename="InstagramFeed.wsdl" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://api.socioboard.com/Services/InstagramFeed.asmx?disco" filename="InstagramFeed.disco" />
-=======
     <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://localhost:6361/Services/InstagramFeed.asmx?wsdl" filename="InstagramFeed.wsdl" />
     <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://localhost:6361/Services/InstagramFeed.asmx?disco" filename="InstagramFeed.disco" />
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
   </Results>
 </DiscoveryClientResultsFile>

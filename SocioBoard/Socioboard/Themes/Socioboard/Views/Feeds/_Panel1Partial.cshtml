@@ -29,8 +29,9 @@
                     <a target="_blank" href="http://www.facebook.com/@item.FromId"><strong class="primary-font">@item.FromName</strong></a>
                     <small class="pull-right text-muted">
                         <i class="fa fa-clock-o fa-fw"></i>@item.MessageDate
-                                            </small>
+                    </small>
                 </div>
+                <div style="margin-top: 2%;">
                 @foreach (string substritem in str)
                 {
                     try
@@ -68,12 +69,21 @@
 
 
                         }
+
+
                     }
                     catch (Exception ex)
                     {
                     }
 
                 }
+                @*Display image of post*@
+                @if (!string.IsNullOrEmpty(item.Picture) && item.Picture != null)
+                {
+                    <br />
+                    <img src="@item.Picture" style="width: 180px; height: 90px; margin-top: 5%;"> </img>
+                }
+                    </div>
             </div>
             <br />
             <div class="input-group">
@@ -81,8 +91,8 @@
                 <span class="input-group-btn">
                     <button class="btn btn-warning btn-sm" id="okfb_@item.MessageId" onclick="commentFB('@item.MessageId','@item.ProfileId')">
                         @GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Comment
-                                           
-                                       
+
+
                     </button>
 
                     @if (item.FbLike == "likes")
@@ -114,8 +124,9 @@
                     <a target="_blank" href="http://www.facebook.com/@item.FromId"><strong class="pull-right primary-font">@item.FromName</strong></a>
                     <small class="text-muted">
                         <i class="fa fa-clock-o fa-fw"></i>@item.MessageDate
-                                            </small>
+                    </small>
                 </div>
+                <div style="margin-top: 2%;">
                 @foreach (string substritem in str)
                 {
                     try
@@ -159,15 +170,23 @@
                     }
 
                 }
+
+                  @*Display image of post*@
+                @if (!string.IsNullOrEmpty(item.Picture) && item.Picture != null)
+                {
+                    <br />
+                    <img src="@item.Picture" style="width: 180px; height: 90px; margin-top: 5%;"> </img>
+                }
+                 </div>
             </div>
             <br />
             <div class="input-group">
                 <input type="text" id="textfb_@item.MessageId" class="form-control input-sm" placeholder="@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_TBtextfbPlaceholder">
                 <span class="input-group-btn">
                     <button class="btn btn-warning btn-sm" id="okfb_@item.MessageId" onclick="commentFB('@item.MessageId','@item.ProfileId')">
-                       @GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Comment
-                                           
-                                       
+                        @GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Comment
+
+
                     </button>
                     @if (item.FbLike == "likes")
                     {
@@ -198,7 +217,7 @@
 
         if (dicitem.Key == "twitter")
         {
-            int i=0;
+            int i = 0;
             List<object> lstdic = (List<object>)dicitem.Value;
             foreach (var twitterfeed in lstdic)
             {
@@ -216,24 +235,24 @@
                 <div>
                     <a target="_blank" href="http://www.facebook.com/@item.FromId"><strong class="primary-font">@item.FromName</strong></a>
                     <div class="btn-group pull-right open">
-                    <div id="feed_action_@i.ToString()" class="menu_button" title = "Option" style="height: auto;cursor:pointer" onClick="Show_twt_menu('@i.ToString()')">
-                     <i class="fa fa-cog"></i>
-                    </div>
+                        <div id="feed_action_@i.ToString()" class="menu_button" title = "Option" style="height: auto;cursor:pointer" onClick="Show_twt_menu('@i.ToString()')">
+                            <i class="fa fa-cog"></i>
+                        </div>
                         <div id="dropdownmenu_@i.ToString()" class="hidden_menu" style="margin-left: -11px; display: none;">
-                            <ul class="dropdown-menu slidedown" style="display: block; margin-left:-140px">
-                                <li><a onClick="RetweetPopup('@item.ScreenName','@item.ProfileId','@item.MessageId');"><i class="fa fa-retweet-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Retweet</a></li> 
+                            <ul class="dropdown-menu slidedown" style="display: block; margin-left: -140px">
+                                <li><a onClick="RetweetPopup('@item.ScreenName','@item.ProfileId','@item.MessageId');"><i class="fa fa-retweet-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Retweet</a></li>
                                 <li><a onClick="FavoritePopup('@item.ScreenName','@item.ProfileId','@item.MessageId');"><i class="fa fa-favorite-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Favourite</a></li>
-                                <li><a onClick="QuoteMessagePopup('@item.ProfileId','@item.Feed.Replace("'","")');" data-target="#QuoteCompose" data-toggle="modal"><i class="fa fa-quote-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_QuoteMessage</a></li>
+                                <li><a onClick="QuoteMessagePopup('@item.ProfileId','@item.Feed.Replace("'", "")');" data-target="#QuoteCompose" data-toggle="modal"><i class="fa fa-quote-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_QuoteMessage</a></li>
                                 <li><a onClick="MailPopUpTwt('@item.Id');" data-target="#twtmailpopup" data-toggle="modal"><i class="fa fa-mail-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_EmailMessage</a></li>
                                 <li><a onClick="SpamUserPopup('@item.FromScreenName','@item.ProfileId');"><i class="fa fa-spam-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_ReportAsSpam</a></li>
-                            </ul>     
-                         </div>
+                            </ul>
+                        </div>
                     </div>
                     <small class="pull-left text-muted">
                         <i class="fa fa-clock-o fa-fw"></i>@item.FeedDate
-                                            </small>
+                    </small>
 
-                    
+
 
                 </div>
                 @foreach (string substritem in str)
@@ -244,8 +263,9 @@
                         {
                             if (substritem.Contains("http"))
                             {
-                                <div class="pull-left" @*style="text-align:justify;"*@>
-                    <a target="_blank" href="@substritem " style="text-decoration:none">@substritem</a></div>
+                    <div class="pull-left" @*style="text-align:justify;"*@>
+                        <a target="_blank" href="@substritem " style="text-decoration:none">@substritem</a>
+                    </div>
                             }
                             else
                             {
@@ -263,8 +283,9 @@
                                 }
                                 if (!string.IsNullOrEmpty(hrefPost))
                                 {
-                                    <div class="pull-left" style="text-align:justify;">
-                    <a target="_blank" href="@hrefPost" style="text-decoration:none">@substritem</a></div>
+                    <div class="pull-left" style="text-align: justify;">
+                        <a target="_blank" href="@hrefPost" style="text-decoration:none">@substritem</a>
+                    </div>
                                 }
                                 else
                                 {
@@ -279,7 +300,7 @@
                     catch (Exception ex)
                     {
 
-                       
+
                     }
 
                 }
@@ -299,24 +320,24 @@
                 <div>
                     <a target="_blank" href="http://www.facebook.com/@item.FromId"><strong class="pull-right primary-font">@item.FromName</strong></a>
                     <div class="btn-group open">
-                    <div id="feed_action_@i.ToString()" class="menu_button" title = "Option" style="height: auto;cursor:pointer" onClick="Show_twt_menu('@i.ToString()')">
-                    <i class="fa fa-cog"></i>
-                    </div>
+                        <div id="feed_action_@i.ToString()" class="menu_button" title = "Option" style="height: auto;cursor:pointer" onClick="Show_twt_menu('@i.ToString()')">
+                            <i class="fa fa-cog"></i>
+                        </div>
                         <div id="dropdownmenu_@i.ToString()" class="hidden_menu" style="margin-left: -11px; display: none;">
-                            <ul class="dropdown-menu slidedown" style="display: block; margin-left:-12px">
-                                <li><a onClick="RetweetPopup('@item.ScreenName','@item.ProfileId','@item.MessageId');"><i class="fa fa-retweet-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Retweet</a></li> 
+                            <ul class="dropdown-menu slidedown" style="display: block; margin-left: -12px">
+                                <li><a onClick="RetweetPopup('@item.ScreenName','@item.ProfileId','@item.MessageId');"><i class="fa fa-retweet-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Retweet</a></li>
                                 <li><a onClick="FavoritePopup('@item.ScreenName','@item.ProfileId','@item.MessageId');"><i class="fa fa-favorite-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Favourite</a></li>
-                                <li><a onClick="QuoteMessagePopup('@item.ProfileId','@item.Feed.Replace("'","")');" data-target="#QuoteCompose" data-toggle="modal"><i class="fa fa-quote-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_QuoteMessage</a></li>
+                                <li><a onClick="QuoteMessagePopup('@item.ProfileId','@item.Feed.Replace("'", "")');" data-target="#QuoteCompose" data-toggle="modal"><i class="fa fa-quote-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_QuoteMessage</a></li>
                                 <li><a onClick="MailPopUpTwt('@item.Id');" data-target="#twtmailpopup" data-toggle="modal"><i class="fa fa-mail-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_EmailMessage</a></li>
                                 <li><a onClick="SpamUserPopup('@item.FromScreenName','@item.ProfileId');"><i class="fa fa-spam-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_ReportAsSpam</a></li>
-                            </ul>     
-                         </div>
+                            </ul>
+                        </div>
                     </div>
                     <small class="text-muted pull-right">
                         @item.FeedDate<i class="fa fa-clock-o fa-fw"></i>
-                                            </small>
+                    </small>
 
-                    
+
 
                 </div>
                 @foreach (string substritem in str)
@@ -327,8 +348,9 @@
                         {
                             if (substritem.Contains("http"))
                             {
-                                <div class="pull-left" @*style="text-align:justify;"*@>
-                    <a target="_blank" href="@substritem" style="text-decoration:none">@substritem</a></div>
+                    <div class="pull-left" @*style="text-align:justify;"*@>
+                        <a target="_blank" href="@substritem" style="text-decoration:none">@substritem</a>
+                    </div>
                             }
                             else
                             {
@@ -346,8 +368,9 @@
                                 }
                                 if (!string.IsNullOrEmpty(hrefPost))
                                 {
-                                    <div class="pull-right" style="text-align:justify;">
-                    <a target="_blank" href="@hrefPost" style="text-decoration:none">@substritem</a></div>
+                    <div class="pull-right" style="text-align: justify;">
+                        <a target="_blank" href="@hrefPost" style="text-decoration:none">@substritem</a>
+                    </div>
                                 }
                                 else
                                 {
@@ -413,7 +436,8 @@
                     <small class="pull-right text-muted">
                         <i class="fa fa-clock-o fa-fw"></i>@item.FeedsDate
                     </small>
-                    <div id="sendMailleft"> <span class="mail_icon" onclick="mail('@item.ProfileId','@item.Id')" data-target="#mailpopup" data-toggle="modal"><img alt="" src="/Themes/@path/Contents/img/download.jpg" title="Mail"></span></div>
+                    <div id="sendMailleft"><span class="mail_icon" onclick="mail('@item.ProfileId','@item.Id')" data-target="#mailpopup" data-toggle="modal">
+                        <img alt="" src="/Themes/@path/Contents/img/download.jpg" title="Mail"></span></div>
                 </div>
 
                 <a target="_blank" href="#">@item.Feeds</a>
@@ -434,8 +458,9 @@
                     <a target="_blank" href="#"><strong class="pull-right primary-font">@item.FromName</strong></a>
                     <small class="text-muted">
                         <i class="fa fa-clock-o fa-fw"></i>@item.FeedsDate
-                                            </small>
-                     <div id="sendMailright" onclick="#mail"> <span class="mail_icon" onclick="mail('@item.ProfileId','@item.Id')" data-target="#mailpopup" data-toggle="modal"><img alt="" src="/Themes/@path/Contents/img/download.jpg" title="Mail"></span></div>
+                    </small>
+                    <div id="sendMailright" onclick="#mail"><span class="mail_icon" onclick="mail('@item.ProfileId','@item.Id')" data-target="#mailpopup" data-toggle="modal">
+                        <img alt="" src="/Themes/@path/Contents/img/download.jpg" title="Mail"></span></div>
                 </div>
 
                 <a target="_blank" href="#">@item.Feeds</a>
@@ -467,48 +492,46 @@
 </ul>
 
 <div class="modal fade" id="QuoteCompose" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-   
+
     <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button id="closequotepopup" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                        <h4 id="myModalLabel" class="modal-title">@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_QuoteMessage</h4>
-                    </div>
-                    <div class="modal-body col-md-12">
-                        <div class="col-md-2">
-                        
-                  <img id="quotemessageimg" src="" class="img-circle">
-                <img class="img-responsive img-circle" src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/twticon.png" style="margin-left: 35px; margin-top: -20px;">
-                                                                   
-                        </div>
-                        <div class="col-md-9">
-                            <div class="input-group col-md-12">
-                                <textarea rows="3" class="form-control" id="Quote_text" onkeyup="countChar()"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <br>
-                              <div id="showRemove" class="upload_data btn btn-default btn-sm" style="background-color: rgb(34, 34, 34); border: 1px solid rgb(0, 0, 0); color: rgb(255, 255, 255); float: left; border-radius: 5px; margin-right: 6px; display: none;" onclick="ImageDelete()">
-                <span style="float:right; margin-left:5px"></span>
-                <label style="float:right;font-size:small;display:block;">Remove Image x </label>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button id="closequotepopup" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 id="myModalLabel" class="modal-title">@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_QuoteMessage</h4>
             </div>
-            <input type="file" accept="image/*" name="" class="btn btn-default col-md-3"  onchange="Addimage()" name="" id="uploadImage" style="">                               
-                                
-                            </div>
-                        </div>
-                          <div class="col-md-1" id="compose_count">140</div>
-                        <div id="binduserprofiles">
-                        </div>
+            <div class="modal-body col-md-12">
+                <div class="col-md-2">
+
+                    <img id="quotemessageimg" src="" class="img-circle">
+                    <img class="img-responsive img-circle" src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/twticon.png" style="margin-left: 35px; margin-top: -20px;">
+                </div>
+                <div class="col-md-9">
+                    <div class="input-group col-md-12">
+                        <textarea rows="3" class="form-control" id="Quote_text" onkeyup="countChar()"></textarea>
                     </div>
-                    <div class="modal-footer" id="leaveQuotecompose">
-                        <button class="btn btn-primary" type="button" id="sendMessageBtn">@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Post</button>
-                        <button data-dismiss="modal" class="btn btn-default" type="button">@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Close</button>
+                    <div class="form-group">
+                        <br>
+                        <div id="showRemove" class="upload_data btn btn-default btn-sm" style="background-color: rgb(34, 34, 34); border: 1px solid rgb(0, 0, 0); color: rgb(255, 255, 255); float: left; border-radius: 5px; margin-right: 6px; display: none;" onclick="ImageDelete()">
+                            <span style="float: right; margin-left: 5px"></span>
+                            <label style="float: right; font-size: small; display: block;">Remove Image x </label>
+                        </div>
+                        <input type="file" accept="image/*" name="" class="btn btn-default col-md-3" onchange="Addimage()" name="" id="uploadImage" style="">
                     </div>
                 </div>
+                <div class="col-md-1" id="compose_count">140</div>
+                <div id="binduserprofiles">
+                </div>
             </div>
+            <div class="modal-footer" id="leaveQuotecompose">
+                <button class="btn btn-primary" type="button" id="sendMessageBtn">@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Post</button>
+                <button data-dismiss="modal" class="btn btn-default" type="button">@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Close</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script type="text/javascript">
-    
+
     function mail(ProfileId, Id) {
         debugger;
 
@@ -530,4 +553,4 @@
         });
     }
 
-    </script>
+</script>

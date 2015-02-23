@@ -325,31 +325,38 @@ namespace Socioboard.Controllers
                 //    DBXCount++;
                 //}
                 //}
-
-                if (profiletype == "facebook")
+                try
                 {
-                    Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
-                    ApiobjFacebook.FacebookComposeMessage(message, profileid, objGroups.UserId.ToString(), curdaatetimetime, file);
+
+                    if (profiletype == "facebook")
+                    {
+                        Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
+                        ApiobjFacebook.FacebookComposeMessage(message, profileid, objGroups.UserId.ToString(), curdaatetimetime, file);
+                    }
+                    if (profiletype == "twitter")
+                    {
+                        Api.Twitter.Twitter ApiobjTwitter = new Api.Twitter.Twitter();
+                        ApiobjTwitter.TwitterComposeMessage(message, profileid, objGroups.UserId.ToString(), curdaatetimetime, file);
+
+                    } if (profiletype == "linkedin")
+                    {
+                        Api.Linkedin.Linkedin ApiobjLinkedin = new Api.Linkedin.Linkedin();
+                        ApiobjLinkedin.LinkedinComposeMessage(message, profileid, objGroups.UserId.ToString(), curdaatetimetime, file);
+                    }
+                    if (profiletype == "tumblr")
+                    {
+                        Api.Tumblr.Tumblr ApiobjTumblr = new Api.Tumblr.Tumblr();
+                        ApiobjTumblr.TumblrComposeMessage(message, profileid, objGroups.UserId.ToString(), curdaatetimetime, file);
+                    }
+
+
+                    Api.ScheduledMessage.ScheduledMessage objAddComposeSentMessage = new Api.ScheduledMessage.ScheduledMessage();
+                    objAddComposeSentMessage.AddComposeMessage(objGroups.UserId.ToString(), profileid, profiletype, message);
                 }
-                if (profiletype == "twitter")
+                catch (Exception ex)
                 {
-                    Api.Twitter.Twitter ApiobjTwitter = new Api.Twitter.Twitter();
-                    ApiobjTwitter.TwitterComposeMessage(message, profileid, objGroups.UserId.ToString(), curdaatetimetime, file);
-
-                } if (profiletype == "linkedin")
-                {
-                    Api.Linkedin.Linkedin ApiobjLinkedin = new Api.Linkedin.Linkedin();
-                    ApiobjLinkedin.LinkedinComposeMessage(message, profileid, objGroups.UserId.ToString(), curdaatetimetime, file);
+                    Console.WriteLine(ex.Message);   
                 }
-                if (profiletype == "tumblr")
-                {
-                    Api.Tumblr.Tumblr ApiobjTumblr = new Api.Tumblr.Tumblr();
-                    ApiobjTumblr.TumblrComposeMessage(message, profileid, objGroups.UserId.ToString(), curdaatetimetime, file);
-                }
-
-
-                Api.ScheduledMessage.ScheduledMessage objAddComposeSentMessage = new Api.ScheduledMessage.ScheduledMessage();
-                objAddComposeSentMessage.AddComposeMessage(objGroups.UserId.ToString(), profileid, profiletype, message);
 
                 //if (!string.IsNullOrEmpty(DropboxImg[0]))
                 //{
@@ -428,7 +435,8 @@ namespace Socioboard.Controllers
             try
             {
                 Api.FacebookFeed.FacebookFeed objFacebookFeed = new Api.FacebookFeed.FacebookFeed();
-                fbmsgcount = ((List<FacebookFeed>)(new JavaScriptSerializer().Deserialize(objFacebookFeed.getAllFeedDetail1(FbProfileId, objUser.Id.ToString()), typeof(List<FacebookFeed>)))).Count;
+                //fbmsgcount = ((List<FacebookFeed>)(new JavaScriptSerializer().Deserialize(objFacebookFeed.getAllFeedDetail1(FbProfileId, objUser.Id.ToString()), typeof(List<FacebookFeed>)))).Count;
+                fbmsgcount = objFacebookFeed.GetFeedCountByProfileIdAndUserId( objUser.Id.ToString(), FbProfileId);
             }
             catch (Exception ex)
             {
@@ -437,7 +445,8 @@ namespace Socioboard.Controllers
             try
             {
                 Api.TwitterMessage.TwitterMessage objTwitterMessage = new Api.TwitterMessage.TwitterMessage();
-                twtmsgcount = ((List<TwitterMessage>)(new JavaScriptSerializer().Deserialize(objTwitterMessage.getAlltwtMessages1(TwtProfileId, objUser.Id.ToString()), typeof(List<TwitterMessage>)))).Count;
+                //twtmsgcount = ((List<TwitterMessage>)(new JavaScriptSerializer().Deserialize(objTwitterMessage.getAlltwtMessages1(TwtProfileId, objUser.Id.ToString()), typeof(List<TwitterMessage>)))).Count;
+                twtmsgcount = objTwitterMessage.GetFeedCountByProfileIdAndUserId(objUser.Id.ToString(), FbProfileId);
             }
             catch (Exception ex)
             {
@@ -446,7 +455,8 @@ namespace Socioboard.Controllers
             try
             {
                 Api.ScheduledMessage.ScheduledMessage objScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
-                allsentmsgcount = ((List<ScheduledMessage>)(new JavaScriptSerializer().Deserialize(objScheduledMessage.getAllSentMessageDetails(AllProfileId, objUser.Id.ToString()), typeof(List<ScheduledMessage>)))).Count;
+                //allsentmsgcount = ((List<ScheduledMessage>)(new JavaScriptSerializer().Deserialize(objScheduledMessage.getAllSentMessageDetails(AllProfileId, objUser.Id.ToString()), typeof(List<ScheduledMessage>)))).Count;
+                allsentmsgcount = objScheduledMessage.GetSentMessageCountByProfileIdAndUserId(objUser.Id.ToString(), FbProfileId);
 
             }
             catch (Exception ex)
@@ -621,6 +631,12 @@ namespace Socioboard.Controllers
             }
             Response.Cookies.Add(cookie);
             return RedirectToAction("Index", "Index");
+        }
+
+
+        public ActionResult test() 
+        {
+            return View();
         }
     }
 }

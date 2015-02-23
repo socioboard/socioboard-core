@@ -8,7 +8,8 @@
     </script>
     <section id="instagram" class="instagram">
         <div class="container-fluid">
-            <div class="text-center white"><i class="fa fa-instagram fa-5x"></i></div>
+            <a href="http://instagram.com/@ViewBag.RPage["username"]" target="_blank">
+            <div class="text-center orange"><i class="fa fa-instagram fa-5x"></i></div></a>
             <div class="row">
                 <div class="col-lg-12">
                     <!-- <div class="panel panel-default">
@@ -17,7 +18,7 @@
                         </div> -->
                     <!-- /.panel-heading -->
                     <div class="panel-body">
-                        <div class="col-lg-3 col-md-6">
+                        @*<div class="col-lg-3 col-md-6">
                             <div class="panel panel-red">
                                 <div class="panel-heading">
                                     <div class="row">
@@ -31,7 +32,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                         <div class="col-lg-3 col-md-6">
                             <div class="panel panel-red">
                                 <div class="panel-heading">
@@ -41,7 +42,7 @@
                                         </div>
                                         <div class="col-xs-9 text-right">
                                             <strong>@ViewBag.RPage["counts"]["followed_by"]</strong>
-                                            <div>followers</div>
+                                            <div>Followers</div>
                                         </div>
                                     </div>
                                 </div>
@@ -56,7 +57,7 @@
                                         </div>
                                         <div class="col-xs-9 text-right">
                                             <strong>@ViewBag.RPage["counts"]["follows"]</strong>
-                                            <div>followings</div>
+                                            <div>Followings</div>
                                         </div>
                                     </div>
                                 </div>
@@ -93,7 +94,7 @@
                     <div class="col-lg-12">
                     <div class="chat-panel panel panel-default">
                         <div class="panel-heading">
-                            Recent Activity
+                            Recent Activities
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -198,7 +199,7 @@
                             </ul>
                         </div>
                         <!-- /.panel-body -->
-                        <div class="panel-footer">
+                        @*<div class="panel-footer">
                             <div class="input-group">
                                 <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
                                 <span class="input-group-btn">
@@ -207,7 +208,7 @@
                                     </button>
                                 </span>
                             </div>
-                        </div>
+                        </div>*@
                         <!-- /.panel-footer -->
                     </div>
                     <!-- /.panel -->
@@ -217,8 +218,6 @@
             </div>
         </div>
     </section>
-    
-   
 }
 else
 {

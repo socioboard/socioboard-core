@@ -26,13 +26,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Tumblr.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Tumblr.asmx")]
         public string Socioboard_Api_Tumblr_Tumblr {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/TwitterAccount.asmx")]
-        public string Socioboard_Api_TwitterAccount_TwitterAccountRepository1 {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_Tumblr_Tumblr"]));
             }
@@ -41,13 +36,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/TumblrAccount.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/TumblrAccount.asmx")]
         public string Socioboard_Api_TumblrAccount_TumblrAccount {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/MailSender.asmx")]
-        public string Socioboard_Api_MailSender_MailSender {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_TumblrAccount_TumblrAccount"]));
             }
@@ -56,13 +46,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/YoutubeAccount.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/YoutubeAccount.asmx")]
         public string Socioboard_Api_YoutubeAccount_YoutubeAccount {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Admin.asmx")]
-        public string Socioboard_Api_Admin_Admin {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_YoutubeAccount_YoutubeAccount"]));
             }
@@ -71,13 +56,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/YoutubeChannel.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/YoutubeChannel.asmx")]
         public string Socioboard_Api_YoutubeChannel_YoutubeChannel {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/AdminNews.asmx")]
-        public string Socioboard_Api_AdminNews_AdminNews {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_YoutubeChannel_YoutubeChannel"]));
             }
@@ -86,13 +66,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/TumblrFeed.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/TumblrFeed.asmx")]
         public string Socioboard_Api_TumblrFeed_TumblrFeed {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/AdminPackageDetails.asmx")]
-        public string Socioboard_Api_AdminPackageDetails_AdminPackageDetails {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_TumblrFeed_TumblrFeed"]));
             }
@@ -101,13 +76,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/TwitterDirectMessages.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/TwitterDirectMessages.asmx")]
         public string Socioboard_Api_TwitterDirectMessages_TwitterDirectMessages {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/AdminUserDetails.asmx")]
-        public string Socioboard_Api_AdminUserDetails_AdminUserDetails {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_TwitterDirectMessages_TwitterDirectMessages"]));
             }
@@ -116,13 +86,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/LinkedinAccount.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/LinkedinAccount.asmx")]
         public string Socioboard_Api_LinkedinAccount_LinkedinAccount {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Ads.asmx")]
-        public string Socioboard_Api_Ads_Ads {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_LinkedinAccount_LinkedinAccount"]));
             }
@@ -131,13 +96,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/LinkedInFeed.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/LinkedInFeed.asmx")]
         public string Socioboard_Api_LinkedInFeed_LinkedInFeed {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/ArchiveMessage.asmx")]
-        public string Socioboard_Api_ArchiveMessage_ArchiveMessage {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_LinkedInFeed_LinkedInFeed"]));
             }
@@ -146,13 +106,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
         [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Instagram.asmx")]
         public string Socioboard_Api_Instagram_Instagram {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/BusinessSetting.asmx")]
-        public string Socioboard_Api_BusinessSetting_BusinessSetting {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_Instagram_Instagram"]));
             }
@@ -161,13 +116,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/InstagramAccount.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/InstagramAccount.asmx")]
         public string Socioboard_Api_InstagramAccount_InstagramAccount {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/CompanyDashboard.asmx")]
-        public string Socioboard_Api_CompanyDashboard_CompanyDashboard {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_InstagramAccount_InstagramAccount"]));
             }
@@ -176,13 +126,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/InstagramFeed.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/InstagramFeed.asmx")]
         public string Socioboard_Api_InstagramFeed_InstagramFeed {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Companypage.asmx")]
-        public string Socioboard_Api_Companypage_Companypage {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_InstagramFeed_InstagramFeed"]));
             }
@@ -191,13 +136,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Linkedin.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Linkedin.asmx")]
         public string Socioboard_Api_Linkedin_Linkedin {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Coupon.asmx")]
-        public string Socioboard_Api_Coupon_Coupon {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_Linkedin_Linkedin"]));
             }
@@ -206,13 +146,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/BusinessSetting.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/BusinessSetting.asmx")]
         public string Socioboard_Api_BusinessSetting_BusinessSetting {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/DiscoverySearch.asmx")]
-        public string Socioboard_Api_DiscoverySearch_DiscoverySearch {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_BusinessSetting_BusinessSetting"]));
             }
@@ -221,11 +156,7 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Drafts.asmx")]
-=======
         [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Drafts.asmx")]
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
         public string Socioboard_Api_Drafts_Drafts {
             get {
                 return ((string)(this["Socioboard_Api_Drafts_Drafts"]));
@@ -235,13 +166,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Youtube.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Youtube.asmx")]
         public string Socioboard_Api_Youtube_Youtube {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Dropbox.asmx")]
-        public string Socioboard_Api_Dropbox_Dropbox {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_Youtube_Youtube"]));
             }
@@ -250,13 +176,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/TwitterStats.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/TwitterStats.asmx")]
         public string Socioboard_Api_TwitterStats_TwitterStats {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Facebook.asmx")]
-        public string Socioboard_Api_Facebook_Facebook {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_TwitterStats_TwitterStats"]));
             }
@@ -265,13 +186,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/TeamMemberProfile.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/TeamMemberProfile.asmx")]
         public string Socioboard_Api_TeamMemberProfile_TeamMemberProfile {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/FacebookAccount.asmx")]
-        public string Socioboard_Api_FacebookAccount_FacebookAccount {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_TeamMemberProfile_TeamMemberProfile"]));
             }
@@ -280,13 +196,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/TwitterAccount.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/TwitterAccount.asmx")]
         public string Socioboard_Api_TwitterAccount_TwitterAccount {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/FacebookFeed.asmx")]
-        public string Socioboard_Api_FacebookFeed_FacebookFeed {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_TwitterAccount_TwitterAccount"]));
             }
@@ -295,13 +206,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/InstagramComment.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/InstagramComment.asmx")]
         public string Socioboard_Api_InstagramComment_InstagramComment {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/FbPageComment.asmx")]
-        public string Socioboard_Api_FbPageComment_FbPageComment {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_InstagramComment_InstagramComment"]));
             }
@@ -310,13 +216,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/DiscoverySearch.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/DiscoverySearch.asmx")]
         public string Socioboard_Api_DiscoverySearch_DiscoverySearch {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/FbPageLiker.asmx")]
-        public string Socioboard_Api_FbPageLiker_FbPageLiker {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_DiscoverySearch_DiscoverySearch"]));
             }
@@ -325,13 +226,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/LinkedinCompanyPage.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/LinkedinCompanyPage.asmx")]
         public string Socioboard_Api_LinkedinCompanyPage_LinkedinCompanyPage {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/FbPagePost.asmx")]
-        public string Socioboard_Api_FbPagePost_FbPagePost {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_LinkedinCompanyPage_LinkedinCompanyPage"]));
             }
@@ -340,13 +236,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socialboard.it/Services/Dropbox.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Dropbox.asmx")]
         public string Socioboard_Api_Dropbox_Dropbox {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/GooglePlusAccount.asmx")]
-        public string Socioboard_Api_GooglePlusAccount_GooglePlusAccount {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_Dropbox_Dropbox"]));
             }
@@ -355,13 +246,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/TwitterMessage.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/TwitterMessage.asmx")]
         public string Socioboard_Api_TwitterMessage_TwitterMessage {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/GroupProfile.asmx")]
-        public string Socioboard_Api_GroupProfile_GroupProfile {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_TwitterMessage_TwitterMessage"]));
             }
@@ -370,13 +256,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/PaymentTransaction.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/PaymentTransaction.asmx")]
         public string Socioboard_Api_PaymentTransaction_PaymentTransaction {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Groups.asmx")]
-        public string Socioboard_Api_Groups_Groups {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_PaymentTransaction_PaymentTransaction"]));
             }
@@ -385,13 +266,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/ArchiveMessage.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/ArchiveMessage.asmx")]
         public string Socioboard_Api_ArchiveMessage_ArchiveMessage {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/GroupScheduleMessage.asmx")]
-        public string Socioboard_Api_GroupScheduleMessage_GroupScheduleMessage {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_ArchiveMessage_ArchiveMessage"]));
             }
@@ -400,13 +276,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/User.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/User.asmx")]
         public string Socioboard_Api_User_User {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Instagram.asmx")]
-        public string Socioboard_Api_Instagram_Instagram {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_User_User"]));
             }
@@ -415,13 +286,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Team.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Team.asmx")]
         public string Socioboard_Api_Team_Team {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/InstagramAccount.asmx")]
-        public string Socioboard_Api_InstagramAccount_InstagramAccount {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_Team_Team"]));
             }
@@ -430,28 +296,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Facebook.asmx")]
-        public string Socioboard_Api_Facebook_Facebook {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/InstagramComment.asmx")]
-        public string Socioboard_Api_InstagramComment_InstagramComment {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
-            get {
-                return ((string)(this["Socioboard_Api_Facebook_Facebook"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Twitter.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Twitter.asmx")]
         public string Socioboard_Api_Twitter_Twitter {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/InstagramFeed.asmx")]
-        public string Socioboard_Api_InstagramFeed_InstagramFeed {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_Twitter_Twitter"]));
             }
@@ -460,13 +306,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/TicketAssigneeStatus.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/TicketAssigneeStatus.asmx")]
         public string Socioboard_Api_TicketAssigneeStatus_TicketAssigneeStatus {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Linkedin.asmx")]
-        public string Socioboard_Api_Linkedin_Linkedin {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_TicketAssigneeStatus_TicketAssigneeStatus"]));
             }
@@ -475,13 +316,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/TwitterFeed.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/TwitterFeed.asmx")]
         public string Socioboard_Api_TwitterFeed_TwitterFeed {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/LinkedinAccount.asmx")]
-        public string Socioboard_Api_LinkedinAccount_LinkedinAccount {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_TwitterFeed_TwitterFeed"]));
             }
@@ -490,13 +326,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/MailSender.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/MailSender.asmx")]
         public string Socioboard_Api_MailSender_MailSender {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/LinkedinCompanyPage.asmx")]
-        public string Socioboard_Api_LinkedinCompanyPage_LinkedinCompanyPage {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_MailSender_MailSender"]));
             }
@@ -505,13 +336,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Invitation.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Invitation.asmx")]
         public string Socioboard_Api_Invitation_Invitation {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/LinkedInFeed.asmx")]
-        public string Socioboard_Api_LinkedInFeed_LinkedInFeed {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_Invitation_Invitation"]));
             }
@@ -520,13 +346,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Admin.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Admin.asmx")]
         public string Socioboard_Api_Admin1_Admin {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/NewsLetter.asmx")]
-        public string Socioboard_Api_NewsLetter_NewsLetter {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_Admin1_Admin"]));
             }
@@ -535,13 +356,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/AdminNews.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/AdminNews.asmx")]
         public string Socioboard_Api_AdminNews_AdminNews {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Package.asmx")]
-        public string Socioboard_Api_Package_Package {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_AdminNews_AdminNews"]));
             }
@@ -550,13 +366,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/AdminPackageDetails.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/AdminPackageDetails.asmx")]
         public string Socioboard_Api_AdminPackageDetails_AdminPackageDetails {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/PaymentTransaction.asmx")]
-        public string Socioboard_Api_PaymentTransaction_PaymentTransaction {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_AdminPackageDetails_AdminPackageDetails"]));
             }
@@ -565,13 +376,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/AdminUserDetails.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/AdminUserDetails.asmx")]
         public string Socioboard_Api_AdminUserDetails_AdminUserDetails {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/ScheduledMessage.asmx")]
-        public string Socioboard_Api_ScheduledMessage_ScheduledMessage {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_AdminUserDetails_AdminUserDetails"]));
             }
@@ -580,13 +386,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Ads.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Ads.asmx")]
         public string Socioboard_Api_Ads_Ads {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/SentimentalAnalysis.asmx")]
-        public string Socioboard_Api_SentimentalAnalysis_SentimentalAnalysis {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_Ads_Ads"]));
             }
@@ -595,13 +396,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Affiliates.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Affiliates.asmx")]
         public string Socioboard_Api_Affiliates_Affiliates {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/SocialProfile.asmx")]
-        public string Socioboard_Api_SocialProfile_SocialProfile {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_Affiliates_Affiliates"]));
             }
@@ -610,13 +406,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Coupon.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Coupon.asmx")]
         public string Socioboard_Api_Coupon_Coupon {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/TaskComment.asmx")]
-        public string Socioboard_Api_TaskComment_TaskComment {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_Coupon_Coupon"]));
             }
@@ -625,13 +416,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/NewsLetter.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/NewsLetter.asmx")]
         public string Socioboard_Api_NewsLetter_NewsLetter {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Tasks.asmx")]
-        public string Socioboard_Api_Tasks_Tasks {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_NewsLetter_NewsLetter"]));
             }
@@ -640,13 +426,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/GroupProfile.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/GroupProfile.asmx")]
         public string Socioboard_Api_GroupProfile_GroupProfile {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Team.asmx")]
-        public string Socioboard_Api_Team_Team {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_GroupProfile_GroupProfile"]));
             }
@@ -655,13 +436,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/FbPageLiker.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/FbPageLiker.asmx")]
         public string Socioboard_Api_FbPageLiker_FbPageLiker {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/TeamMemberProfile.asmx")]
-        public string Socioboard_Api_TeamMemberProfile_TeamMemberProfile {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_FbPageLiker_FbPageLiker"]));
             }
@@ -670,13 +446,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/FbPageComment.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/FbPageComment.asmx")]
         public string Socioboard_Api_FbPageComment_FbPageComment {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/TicketAssigneeStatus.asmx")]
-        public string Socioboard_Api_TicketAssigneeStatus_TicketAssigneeStatus {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_FbPageComment_FbPageComment"]));
             }
@@ -685,13 +456,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/services/FacebookAccount.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/FacebookAccount.asmx")]
         public string Socioboard_Api_FacebookAccount_FacebookAccount {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Tumblr.asmx")]
-        public string Socioboard_Api_Tumblr_Tumblr {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_FacebookAccount_FacebookAccount"]));
             }
@@ -700,13 +466,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/FbPagePost.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/FbPagePost.asmx")]
         public string Socioboard_Api_FbPagePost_FbPagePost {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/TumblrAccount.asmx")]
-        public string Socioboard_Api_TumblrAccount_TumblrAccount {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_FbPagePost_FbPagePost"]));
             }
@@ -715,13 +476,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Groups.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Groups.asmx")]
         public string Socioboard_Api_Groups_Groups {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/TumblrFeed.asmx")]
-        public string Socioboard_Api_TumblrFeed_TumblrFeed {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_Groups_Groups"]));
             }
@@ -730,13 +486,8 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/FacebookFeed.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/FacebookFeed.asmx")]
         public string Socioboard_Api_FacebookFeed_FacebookFeed {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Twitter.asmx")]
-        public string Socioboard_Api_Twitter_Twitter {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_FacebookFeed_FacebookFeed"]));
             }
@@ -745,134 +496,12 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/GroupScheduleMessage.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/GroupScheduleMessage.asmx")]
         public string Socioboard_Api_GroupScheduleMessage_GroupScheduleMessage {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/TwitterAccount.asmx")]
-        public string Socioboard_Api_TwitterAccount_TwitterAccount {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
             get {
                 return ((string)(this["Socioboard_Api_GroupScheduleMessage_GroupScheduleMessage"]));
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/FacebookMessage.asmx")]
-        public string Socioboard_Api_FacebookMessage_FacebookMessage {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/TwitterDirectMessages.asmx")]
-        public string Socioboard_Api_TwitterDirectMessages_TwitterDirectMessages {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
-            get {
-                return ((string)(this["Socioboard_Api_FacebookMessage_FacebookMessage"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/GooglePlusAccount.asmx")]
-        public string Socioboard_Api_GooglePlusAccount_GooglePlusAccount {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/TwitterMessage.asmx")]
-        public string Socioboard_Api_TwitterMessage_TwitterMessage {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
-            get {
-                return ((string)(this["Socioboard_Api_GooglePlusAccount_GooglePlusAccount"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/SocialProfile.asmx")]
-        public string Socioboard_Api_SocialProfile_SocialProfile {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/TwitterStats.asmx")]
-        public string Socioboard_Api_TwitterStats_TwitterStats {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
-            get {
-                return ((string)(this["Socioboard_Api_SocialProfile_SocialProfile"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/ScheduledMessage.asmx")]
-        public string Socioboard_Api_ScheduledMessage_ScheduledMessage {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/User.asmx")]
-        public string Socioboard_Api_User_User {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
-            get {
-                return ((string)(this["Socioboard_Api_ScheduledMessage_ScheduledMessage"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/SentimentalAnalysis.asmx")]
-        public string Socioboard_Api_SentimentalAnalysis_SentimentalAnalysis {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Youtube.asmx")]
-        public string Socioboard_Api_Youtube_Youtube {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
-            get {
-                return ((string)(this["Socioboard_Api_SentimentalAnalysis_SentimentalAnalysis"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/Tasks.asmx")]
-        public string Socioboard_Api_Tasks_Tasks {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/YoutubeAccount.asmx")]
-        public string Socioboard_Api_YoutubeAccount_YoutubeAccount {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
-            get {
-                return ((string)(this["Socioboard_Api_Tasks_Tasks"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-<<<<<<< HEAD
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/TaskComment.asmx")]
-        public string Socioboard_Api_TaskComment_TaskComment {
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/YoutubeChannel.asmx")]
-        public string Socioboard_Api_YoutubeChannel_YoutubeChannel {
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
-            get {
-                return ((string)(this["Socioboard_Api_TaskComment_TaskComment"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/DropboxAccount.asmx")]
-        public string Socioboard_Api_DropboxAccount_DropboxAccount {
-            get {
-                return ((string)(this["Socioboard_Api_DropboxAccount_DropboxAccount"]));
-            }
-        }
-<<<<<<< HEAD
-=======
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -887,12 +516,101 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/TwitterFeed.asmx")]
-        public string Socioboard_Api_TwitterFeed_TwitterFeed {
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/GooglePlusAccount.asmx")]
+        public string Socioboard_Api_GooglePlusAccount_GooglePlusAccount {
             get {
-                return ((string)(this["Socioboard_Api_TwitterFeed_TwitterFeed"]));
+                return ((string)(this["Socioboard_Api_GooglePlusAccount_GooglePlusAccount"]));
             }
         }
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/SocialProfile.asmx")]
+        public string Socioboard_Api_SocialProfile_SocialProfile {
+            get {
+                return ((string)(this["Socioboard_Api_SocialProfile_SocialProfile"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/ScheduledMessage.asmx")]
+        public string Socioboard_Api_ScheduledMessage_ScheduledMessage {
+            get {
+                return ((string)(this["Socioboard_Api_ScheduledMessage_ScheduledMessage"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/SentimentalAnalysis.asmx")]
+        public string Socioboard_Api_SentimentalAnalysis_SentimentalAnalysis {
+            get {
+                return ((string)(this["Socioboard_Api_SentimentalAnalysis_SentimentalAnalysis"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Tasks.asmx")]
+        public string Socioboard_Api_Tasks_Tasks {
+            get {
+                return ((string)(this["Socioboard_Api_Tasks_Tasks"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/TaskComment.asmx")]
+        public string Socioboard_Api_TaskComment_TaskComment {
+            get {
+                return ((string)(this["Socioboard_Api_TaskComment_TaskComment"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/DropboxAccount.asmx")]
+        public string Socioboard_Api_DropboxAccount_DropboxAccount {
+            get {
+                return ((string)(this["Socioboard_Api_DropboxAccount_DropboxAccount"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/CompanyDashboard.asmx")]
+        public string Socioboard_Api_CompanyDashboard_CompanyDashboard {
+            get {
+                return ((string)(this["Socioboard_Api_CompanyDashboard_CompanyDashboard"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Companypage.asmx")]
+        public string Socioboard_Api_Companypage_Companypage {
+            get {
+                return ((string)(this["Socioboard_Api_Companypage_Companypage"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Facebook.asmx")]
+        public string Socioboard_Api_Facebook_Facebook {
+            get {
+                return ((string)(this["Socioboard_Api_Facebook_Facebook"]));
+            }
+        }
     }
 }

@@ -77,6 +77,8 @@ namespace Socioboard.Api.ScheduledMessage {
         
         private System.Threading.SendOrPostCallback GetAllScheduledDetailsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetSentMessageCountByProfileIdAndUserIdOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -186,6 +188,9 @@ namespace Socioboard.Api.ScheduledMessage {
         
         /// <remarks/>
         public event GetAllScheduledDetailsCompletedEventHandler GetAllScheduledDetailsCompleted;
+        
+        /// <remarks/>
+        public event GetSentMessageCountByProfileIdAndUserIdCompletedEventHandler GetSentMessageCountByProfileIdAndUserIdCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UploadFile", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -969,6 +974,37 @@ namespace Socioboard.Api.ScheduledMessage {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetSentMessageCountByProfileIdAndUserId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int GetSentMessageCountByProfileIdAndUserId(string UserId, string ProfileIds) {
+            object[] results = this.Invoke("GetSentMessageCountByProfileIdAndUserId", new object[] {
+                        UserId,
+                        ProfileIds});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetSentMessageCountByProfileIdAndUserIdAsync(string UserId, string ProfileIds) {
+            this.GetSentMessageCountByProfileIdAndUserIdAsync(UserId, ProfileIds, null);
+        }
+        
+        /// <remarks/>
+        public void GetSentMessageCountByProfileIdAndUserIdAsync(string UserId, string ProfileIds, object userState) {
+            if ((this.GetSentMessageCountByProfileIdAndUserIdOperationCompleted == null)) {
+                this.GetSentMessageCountByProfileIdAndUserIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetSentMessageCountByProfileIdAndUserIdOperationCompleted);
+            }
+            this.InvokeAsync("GetSentMessageCountByProfileIdAndUserId", new object[] {
+                        UserId,
+                        ProfileIds}, this.GetSentMessageCountByProfileIdAndUserIdOperationCompleted, userState);
+        }
+        
+        private void OnGetSentMessageCountByProfileIdAndUserIdOperationCompleted(object arg) {
+            if ((this.GetSentMessageCountByProfileIdAndUserIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetSentMessageCountByProfileIdAndUserIdCompleted(this, new GetSentMessageCountByProfileIdAndUserIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -1585,6 +1621,32 @@ namespace Socioboard.Api.ScheduledMessage {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetSentMessageCountByProfileIdAndUserIdCompletedEventHandler(object sender, GetSentMessageCountByProfileIdAndUserIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetSentMessageCountByProfileIdAndUserIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetSentMessageCountByProfileIdAndUserIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }

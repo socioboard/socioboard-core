@@ -24,7 +24,7 @@ namespace Socioboard.Helper
 
 
 
-
+       
         #region FacebookLogic
         public bool CheckFacebookToken(string fbtoken, string txtvalue)
         {
@@ -51,10 +51,10 @@ namespace Socioboard.Helper
             return checkFacebookToken;
         }
 
-        
+
 
         //Start Facebook Search Logic
-       
+
         public string SearchFacebookPage(string Keyword)
         {
             string facebookResultPage = string.Empty;
@@ -68,7 +68,7 @@ namespace Socioboard.Helper
             }
             catch (Exception ex)
             {
-                logger.Error(ex.StackTrace);
+                logger.Error(ex.Message);
             }
 
             if (!string.IsNullOrEmpty(error) || string.IsNullOrEmpty(facebookResultPage))
@@ -95,7 +95,8 @@ namespace Socioboard.Helper
                         }
                         catch (Exception ex)
                         {
-                            logger.Error(ex.StackTrace);
+                            logger.Error(ex.Message);
+
                         }
                     }
                 }
@@ -221,11 +222,11 @@ namespace Socioboard.Helper
 
 
         //search facebook for pages and return page list
-        
+
         public string getFacebookkPageList(string Keyword)
         {
             Api.Companypage.Companypage apicompany = new Api.Companypage.Companypage();
-            string accesstoken =apicompany.getfacebookActiveAceessTokenFromDb();
+            string accesstoken = "CAACZB5L4uuV8BACXwWhgpnE6lrSuIz0vdr6HtMQM8rUEKFPBVfhuYr56OCvPmRqsWPoYaMtYmaRGPZCqRqa562eaoSXaa1xScB5zKtE5jHFw07wI0GENjFOnluGrduNhHRqJT1iNUCFnTh5GXmZAtc4AiZAPMvVXS9EidsDo9PNVQwd262eSFapVZCFvxJpIZD";
             //foreach (Domain.Socioboard.Domain.FacebookAccount item in asltFbAccount)
             //{
             //    accesstoken = item.AccessToken;
@@ -260,7 +261,7 @@ namespace Socioboard.Helper
         }
 
         //Takes pageId as input and return fb page details
-       
+
         public string getFacebookPage(string PageId)
         {
             string pageUrl = "http://graph.facebook.com/" + PageId.ToString();
@@ -277,17 +278,21 @@ namespace Socioboard.Helper
                     }
                 }
             }
-            catch (Exception e) { }
+            catch (Exception e) 
+            {
+                logger.Error(e.Message);
+
+            }
             return Outputpage;
         }
 
-       
+
         public string getFacebookPageNotes(string PageId)
         {
             //FacebookAccountRepository fbAccRepo = new FacebookAccountRepository();
             //ArrayList asltFbAccount = fbAccRepo.getAllFacebookAccounts();
             Api.Companypage.Companypage apicompany = new Api.Companypage.Companypage();
-            string accesstoken = apicompany.getfacebookActiveAceessTokenFromDb();
+            string accesstoken = "CAACZB5L4uuV8BACXwWhgpnE6lrSuIz0vdr6HtMQM8rUEKFPBVfhuYr56OCvPmRqsWPoYaMtYmaRGPZCqRqa562eaoSXaa1xScB5zKtE5jHFw07wI0GENjFOnluGrduNhHRqJT1iNUCFnTh5GXmZAtc4AiZAPMvVXS9EidsDo9PNVQwd262eSFapVZCFvxJpIZD";
             //foreach (Domain.Socioboard.Domain.FacebookAccount item in asltFbAccount)
             //{
             //    accesstoken = item.AccessToken;
@@ -320,12 +325,50 @@ namespace Socioboard.Helper
         }
 
 
-       
+        public string getFacebookPageFeeds(string PageId)
+        {
+            //FacebookAccountRepository fbAccRepo = new FacebookAccountRepository();
+            //ArrayList asltFbAccount = fbAccRepo.getAllFacebookAccounts();
+            Api.Companypage.Companypage apicompany = new Api.Companypage.Companypage();
+            string accesstoken = "CAACZB5L4uuV8BACXwWhgpnE6lrSuIz0vdr6HtMQM8rUEKFPBVfhuYr56OCvPmRqsWPoYaMtYmaRGPZCqRqa562eaoSXaa1xScB5zKtE5jHFw07wI0GENjFOnluGrduNhHRqJT1iNUCFnTh5GXmZAtc4AiZAPMvVXS9EidsDo9PNVQwd262eSFapVZCFvxJpIZD";
+            //foreach (Domain.Socioboard.Domain.FacebookAccount item in asltFbAccount)
+            //{
+            //    accesstoken = item.AccessToken;
+            //    if (this.CheckFacebookToken(accesstoken, PageId))
+            //    {
+            //        break;
+            //    }
+            //}
+            string facebookSearchUrl = "https://graph.facebook.com/v1.0/" + PageId + "/feed?limit=1000&access_token=" + accesstoken;
+            var facebooklistpagerequest = (HttpWebRequest)WebRequest.Create(facebookSearchUrl);
+            facebooklistpagerequest.Method = "GET";
+            facebooklistpagerequest.Credentials = CredentialCache.DefaultCredentials;
+            facebooklistpagerequest.AllowWriteStreamBuffering = true;
+            facebooklistpagerequest.ServicePoint.Expect100Continue = false;
+            facebooklistpagerequest.PreAuthenticate = false;
+            string outputface = string.Empty;
+            try
+            {
+                using (var response = facebooklistpagerequest.GetResponse())
+                {
+                    using (var stream = new StreamReader(response.GetResponseStream(), Encoding.GetEncoding(1252)))
+                    {
+                        outputface = stream.ReadToEnd();
+                    }
+                }
+            }
+            catch (Exception e) { }
+            return outputface;
+
+        }
+
+
+
         public bool IsfacebookAccountVerified(string fbAccountId)
         {
             bool Isverified = false;
             Api.Companypage.Companypage apicompany = new Api.Companypage.Companypage();
-            string AccessToken = apicompany.getfacebookActiveAceessTokenFromDb();
+            string AccessToken = "CAACZB5L4uuV8BACXwWhgpnE6lrSuIz0vdr6HtMQM8rUEKFPBVfhuYr56OCvPmRqsWPoYaMtYmaRGPZCqRqa562eaoSXaa1xScB5zKtE5jHFw07wI0GENjFOnluGrduNhHRqJT1iNUCFnTh5GXmZAtc4AiZAPMvVXS9EidsDo9PNVQwd262eSFapVZCFvxJpIZD";
             string Url = "https://graph.facebook.com//v2.1/20528438720?fields=is_verified&access_token=" + AccessToken;
             var fbpage = (HttpWebRequest)WebRequest.Create(Url);
             fbpage.Method = "GET";
@@ -345,14 +388,18 @@ namespace Socioboard.Helper
                     Isverified = true;
                 }
             }
-            catch (Exception e) { }
+            catch (Exception e) 
+            {
+                logger.Error(e.Message);
+
+            }
             return Isverified;
         }
 
         # endregion
 
-       # region twitter Logic
-       
+        # region twitter Logic
+
         public string TwitterSearch(string keyword)
         {
             string SingleTwitterPageResult = string.Empty;
@@ -364,7 +411,11 @@ namespace Socioboard.Helper
                     return SingleTwitterPageResult;
                 }
             }
-            catch (Exception eee) { }
+            catch (Exception eee) 
+            {
+                logger.Error(eee.Message);
+
+            }
             //int Followers = 0;
             bool ischanged = false;
             string TwitterResutPage = string.Empty;
@@ -404,6 +455,7 @@ namespace Socioboard.Helper
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
+                logger.Error(ex.Message);
                 return "";
             }
         }
@@ -450,7 +502,7 @@ namespace Socioboard.Helper
             return retvalu;
 
         }
-       
+
         public string TwitterAccountPageWithoutLogin(string UserId, string ScreenName)
         {
             JObject output = new JObject();
@@ -485,12 +537,15 @@ namespace Socioboard.Helper
 
                 }
             }
-            catch (Exception e) { }
+            catch (Exception e)
+            {
+                logger.Error(e.Message);
+            }
 
             return output.ToString();
         }
 
-       
+
         public string TwitterUserTimeLine(string ScreenName)
         {
             JArray output = new JArray();
@@ -499,6 +554,7 @@ namespace Socioboard.Helper
                 SortedDictionary<string, string> requestParameters = new SortedDictionary<string, string>();
                 //requestParameters.Add("user_id", UserId);
                 requestParameters.Add("screen_name", ScreenName);
+                requestParameters.Add("count", "198");
                 //Token URL
                 var oauth_url = "https://api.twitter.com/1.1/statuses/user_timeline.json";
                 var headerFormat = "Bearer {0}";
@@ -553,17 +609,17 @@ namespace Socioboard.Helper
             return response;
         }
 
-        # endregion 
+        # endregion
 
         # region Linkedin Logic
 
-        
+
         public string LinkedinSearch(string keyword)
         {
             string profileid = string.Empty;
             try
             {
-               // ArrayList alstLIAccounts = objLinkedinrepo.getAllLinkedinAccounts();
+                // ArrayList alstLIAccounts = objLinkedinrepo.getAllLinkedinAccounts();
                 //Domain.Socioboard.Domain.LinkedInAccount linkacc = (Domain.Socioboard.Domain.LinkedInAccount)alstLIAccounts[0];
                 oAuthLinkedIn oauth = new oAuthLinkedIn();
                 oauth.ConsumerKey = ConfigurationManager.AppSettings["LiApiKey"];
@@ -614,7 +670,7 @@ namespace Socioboard.Helper
             }
         }
 
-       
+
         public string LinkedinCompanyrecentActivites(string CompanyId)
         {
             string response = string.Empty;
@@ -625,31 +681,34 @@ namespace Socioboard.Helper
                 oAuthLinkedIn oauth = new oAuthLinkedIn();
                 oauth.ConsumerKey = ConfigurationManager.AppSettings["LiApiKey"];
                 oauth.ConsumerSecret = ConfigurationManager.AppSettings["LiSecretKey"];
-                oauth.Token = "49c2202b-2cd4-4c74-b5db-ce8d7f5e029e";
-                oauth.TokenSecret = "a79cfbe5-d268-456e-8fdc-0d12869a1cf3";
-                oauth.Verifier = "52921";
-                oauth.AccessTokenGet("e5d90a22-b939-4587-9bd7-b4951921cc00");
-                //TODO: Linked in access token logic here
-                //oauth.AccessTokenGet();
+                //oauth.Token = "49c2202b-2cd4-4c74-b5db-ce8d7f5e029e";
+                //oauth.TokenSecret = "a79cfbe5-d268-456e-8fdc-0d12869a1cf3";
+                //oauth.Verifier = "52921";
+                oauth.Token = "b82db6bb-21bb-44d2-a298-0b093708ddbf";
+                oauth.TokenSecret = "f7c9b7b8-9295-46fe-8cb4-914c1c52820f";
+                oauth.Verifier = "23836";
+                //oauth.AccessTokenGet(linkacc.OAuthToken);
+                //TODO: access Token Logic
+                oauth.AccessTokenGet("b82db6bb-21bb-44d2-a298-0b093708ddbf");
 
                 //https://api.linkedin.com/v1/people-search? keywords=[space delimited keywords]
                 //oauth.AccessTokenGet(oauth.Token);
                 // company.Get_CompanyProfileById(oauth, keyword);
                 //string response = oauth.APIWebRequest("GET", "https://api.linkedin.com/v1/companies/" + keyword + ":(id,name,email-domains,description,founded-year,end-year,locations,Specialties,website-url,status,employee-count-range,industries,company-type,logo-url,square-logo-url,blog-rss-url,num-followers,universal-name)", null);
-                response = oauth.APIWebRequest("GET", "https://api.linkedin.com/v1/companies/" + CompanyId + "/updates?start=0&count=10&event-type=status-update", null);
+                response = oauth.APIWebRequest("GET", "https://api.linkedin.com/v1/companies/" + CompanyId + "/updates?start=0&count=200&event-type=status-update", null);
             }
             catch (Exception e) { }
             return response;
 
         }
 
-       
+
         public string LinkedinCompnayJobs(string CompanyId)
         {
             string response = string.Empty;
             try
             {
-               //ArrayList alstLIAccounts = objLinkedinrepo.getAllLinkedinAccounts();
+                //ArrayList alstLIAccounts = objLinkedinrepo.getAllLinkedinAccounts();
                 //Domain.Socioboard.Domain.LinkedInAccount linkacc = (Domain.Socioboard.Domain.LinkedInAccount)alstLIAccounts[0];
                 oAuthLinkedIn oauth = new oAuthLinkedIn();
                 oauth.ConsumerKey = ConfigurationManager.AppSettings["LiApiKey"];
@@ -675,7 +734,7 @@ namespace Socioboard.Helper
         # endregion
 
         #region Instagram Logic
-       
+
         public string InstagramSearch(string keyword, string WebUrl)
         {
             string response = string.Empty;
@@ -729,7 +788,7 @@ namespace Socioboard.Helper
         }
 
 
-       
+
         public string InstagramSingleUser(string UserId)
         {
             string response = string.Empty;
@@ -756,7 +815,7 @@ namespace Socioboard.Helper
         }
 
 
-       
+
         public string getInstagramCompanyPage(string Keyword)
         {
             int followers = 0;
@@ -793,7 +852,7 @@ namespace Socioboard.Helper
 
             return ResultPage;
         }
-       
+
         public string getInstagramList(string Keyword)
         {
             string InstagramUrl = "https://api.instagram.com/v1/users/search?q=" + Keyword + "&client_id=" + ConfigurationManager.AppSettings["InstagramClientKey"] + "&count=10";
@@ -818,7 +877,7 @@ namespace Socioboard.Helper
             return outputface;
         }
 
-      
+
         public string getInstagramUserRecentActivities(string UserId)
         {
             string InstagramUrl = "https://api.instagram.com/v1/users/" + UserId + "/media/recent/?client_id=" + ConfigurationManager.AppSettings["InstagramClientKey"];
@@ -842,7 +901,7 @@ namespace Socioboard.Helper
             catch (Exception e) { }
             return outputface;
         }
-       
+
         public string getInstagramUserDetails(string UserId)
         {
             string InstagramUrl = "https://api.instagram.com/v1/users/" + UserId + "/?client_id=" + ConfigurationManager.AppSettings["InstagramClientKey"];
@@ -869,7 +928,7 @@ namespace Socioboard.Helper
         #endregion
 
         #region tumblr Logic
-       
+
         public string TumblrSearch(string keyword)
         {
             string ret = string.Empty;
@@ -898,25 +957,37 @@ namespace Socioboard.Helper
                 //}
                 //else
                 //{
-                    string TumblrSearchUrl = "http://api.tumblr.com/v2/blog/" + keyword.Replace(" ", string.Empty) + ".tumblr.com/posts/text?api_key=" + key + "&limit=10";
-                    var TumblrBlogpagerequest = (HttpWebRequest)WebRequest.Create(TumblrSearchUrl);
-                    TumblrBlogpagerequest.Method = "GET";
-                    try
+                string TumblrSearchUrl = string.Empty;
+                if (keyword.Contains(".tumblr.com"))
+                {
+                    if (keyword.Contains("http://")) 
                     {
-                        using (var response = TumblrBlogpagerequest.GetResponse())
-                        {
-                            using (var stream = new StreamReader(response.GetResponseStream(), Encoding.GetEncoding(1252)))
-                            {
-                                outputface = stream.ReadToEnd();
-                            }
-                        }
-                        JObject outputJson = JObject.Parse(outputface);
-                       // Domain.Socioboard.Domain.TumblrAccount newtumbobj = new Domain.Socioboard.Domain.TumblrAccount();
-                        //newtumbobj.tblrUserName = outputJson["response"]["blog"]["name"].ToString();
-                        //TumblrAccountRepository.Add(newtumbobj);
+                        keyword = keyword.Remove(0, 7);
                     }
-                    catch (Exception ex) { }
-               // }
+                     TumblrSearchUrl = "http://api.tumblr.com/v2/blog/" + keyword.Replace(" ", string.Empty) + "posts/text?api_key=" + key + "&limit=10";
+                }
+                else 
+                {
+                    TumblrSearchUrl = "http://api.tumblr.com/v2/blog/" + keyword.Replace(" ", string.Empty) + ".tumblr.com/posts/text?api_key=" + key + "&limit=10";                
+                }
+                var TumblrBlogpagerequest = (HttpWebRequest)WebRequest.Create(TumblrSearchUrl);
+                TumblrBlogpagerequest.Method = "GET";
+                try
+                {
+                    using (var response = TumblrBlogpagerequest.GetResponse())
+                    {
+                        using (var stream = new StreamReader(response.GetResponseStream(), Encoding.GetEncoding(1252)))
+                        {
+                            outputface = stream.ReadToEnd();
+                        }
+                    }
+                    JObject outputJson = JObject.Parse(outputface);
+                    // Domain.Socioboard.Domain.TumblrAccount newtumbobj = new Domain.Socioboard.Domain.TumblrAccount();
+                    //newtumbobj.tblrUserName = outputJson["response"]["blog"]["name"].ToString();
+                    //TumblrAccountRepository.Add(newtumbobj);
+                }
+                catch (Exception ex) { }
+                // }
 
             }
             catch (Exception ex)
@@ -929,7 +1000,7 @@ namespace Socioboard.Helper
         # endregion
 
         #region youtube Logic
-       
+
         public string YoutubeSearch(string keyword)
         {
             string response = string.Empty;
@@ -958,42 +1029,42 @@ namespace Socioboard.Helper
             //}
             //else
             //{
-                //string RequestUrl = "https://www.googleapis.com/youtube/v3/search?part=" + part + "&maxResults=" + maxResults + "&q=" + keyword + "&key=" + accesstoken;
-                //string RequestUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet,id&q=" + ytAccount.Ytusername + "&type=channel&key=" + Key;
-                string SearchList = YoutubeSearchList(keyword);
-                string RequestUrl = "https://www.googleapis.com/youtube/v3/channels?part=id,snippet,contentDetails,statistics,topicDetails,invideoPromotion&forUsername=" + keyword + "&key=" + Key;
+            //string RequestUrl = "https://www.googleapis.com/youtube/v3/search?part=" + part + "&maxResults=" + maxResults + "&q=" + keyword + "&key=" + accesstoken;
+            //string RequestUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet,id&q=" + ytAccount.Ytusername + "&type=channel&key=" + Key;
+            string SearchList = YoutubeSearchList(keyword);
+            string RequestUrl = "https://www.googleapis.com/youtube/v3/channels?part=id,snippet,contentDetails,statistics,topicDetails,invideoPromotion&forUsername=" + keyword + "&key=" + Key;
 
-                try
+            try
+            {
+                JObject Listresult = JObject.Parse(SearchList);
+                keyword = Listresult["items"][0]["id"]["channelId"].ToString();
+                RequestUrl = "https://www.googleapis.com/youtube/v3/channels?part=id,snippet,contentDetails,statistics,topicDetails,invideoPromotion&id=" + keyword + "&key=" + Key;
+
+            }
+            catch (Exception eee) { }
+
+            var facebooklistpagerequest = (HttpWebRequest)WebRequest.Create(RequestUrl);
+            facebooklistpagerequest.Method = "GET";
+            try
+            {
+                using (var youtuberesponse = facebooklistpagerequest.GetResponse())
                 {
-                    JObject Listresult = JObject.Parse(SearchList);
-                    keyword = Listresult["items"][0]["id"]["channelId"].ToString();
-                    RequestUrl = "https://www.googleapis.com/youtube/v3/channels?part=id,snippet,contentDetails,statistics,topicDetails,invideoPromotion&id=" + keyword + "&key=" + Key;
-
-                }
-                catch (Exception eee) { }
-
-                var facebooklistpagerequest = (HttpWebRequest)WebRequest.Create(RequestUrl);
-                facebooklistpagerequest.Method = "GET";
-                try
-                {
-                    using (var youtuberesponse = facebooklistpagerequest.GetResponse())
+                    using (var stream = new StreamReader(youtuberesponse.GetResponseStream(), Encoding.GetEncoding(1252)))
                     {
-                        using (var stream = new StreamReader(youtuberesponse.GetResponseStream(), Encoding.GetEncoding(1252)))
-                        {
-                            response = stream.ReadToEnd();
-                        }
+                        response = stream.ReadToEnd();
                     }
-                    //if (!response.StartsWith("["))
-                    //    response = "[" + response + "]";
-                    //JArray youtubechannels = JArray.Parse(response);
-                    //JObject resultPage = (JObject)youtubechannels[0];
-                    //Domain.Socioboard.Domain.YoutubeAccount ytnewacc = new Domain.Socioboard.Domain.YoutubeAccount();
-                    //ytnewacc.Ytusername = resultPage["items"][0]["snippet"]["title"].ToString();
-                    //ytnewacc.Ytuserid = resultPage["items"][0]["id"].ToString();
-                    //YoutubeAccountRepository.Add(ytnewacc);
                 }
-                catch (Exception e) { }
-          //  }
+                //if (!response.StartsWith("["))
+                //    response = "[" + response + "]";
+                //JArray youtubechannels = JArray.Parse(response);
+                //JObject resultPage = (JObject)youtubechannels[0];
+                //Domain.Socioboard.Domain.YoutubeAccount ytnewacc = new Domain.Socioboard.Domain.YoutubeAccount();
+                //ytnewacc.Ytusername = resultPage["items"][0]["snippet"]["title"].ToString();
+                //ytnewacc.Ytuserid = resultPage["items"][0]["id"].ToString();
+                //YoutubeAccountRepository.Add(ytnewacc);
+            }
+            catch (Exception e) { }
+            //  }
 
 
             return response;
@@ -1002,7 +1073,7 @@ namespace Socioboard.Helper
 
 
 
-       
+
         public string YoutubeSearchList(string keyword)
         {
             string response = string.Empty;
@@ -1028,13 +1099,13 @@ namespace Socioboard.Helper
             return response;
         }
 
-        
+
         public string YoutubeChannelPlayList(string ChannelId)
         {
             string Key = "AIzaSyCISaVFe_TJknn92J7xw2diFEi6Z_aroYE";
             //string RequestUrl = "https://www.googleapis.com/youtube/v3/search?part=" + part + "&maxResults=" + maxResults + "&q=" + keyword + "&key=" + accesstoken;
             //string RequestUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet,id&maxResults=20&q=" + keyword + "&key=" + Key;
-            string RequestUrl = "https://www.googleapis.com/youtube/v3/playlists?part=+id,snippet,status,contentDetails&channelId=" + ChannelId + "&key=" + Key;
+            string RequestUrl = "https://www.googleapis.com/youtube/v3/playlists?part=id,snippet,status,contentDetails,player&channelId=" + ChannelId + "&key=" + Key + "&maxResults=49";
 
             var pagerequest = (HttpWebRequest)WebRequest.Create(RequestUrl);
             pagerequest.Method = "GET";
@@ -1092,7 +1163,7 @@ namespace Socioboard.Helper
         }
 
         //Google Plus
-       
+
         public string GooglePlusSearch(string keyword)
         {
             //GooglePlusAccountRepository gpaccrepo = new GooglePlusAccountRepository();
@@ -1114,6 +1185,11 @@ namespace Socioboard.Helper
                 //bool Isfirst = true;
                 try
                 {
+                    ResultPage = GooglePlusgetUser(keyword);
+                    if (!string.IsNullOrEmpty(ResultPage)) 
+                    {
+                        return ResultPage;
+                    }
                     JObject PageList = JObject.Parse(GooglePlusList(keyword));
                     foreach (JObject item in PageList["items"])
                     {
@@ -1160,7 +1236,7 @@ namespace Socioboard.Helper
 
         }
 
-        
+
         public string GooglePlusList(string keyword)
         {
             string ret = string.Empty;
@@ -1198,7 +1274,7 @@ namespace Socioboard.Helper
             //return ret;
         }
 
-       
+
         public string GooglePlusgetUser(string UserId)
         {
             string ret = string.Empty;
@@ -1236,7 +1312,7 @@ namespace Socioboard.Helper
             //return ret;
         }
 
-        
+
         public string GooglePlusgetUserRecentActivities(string UserId)
         {
             string ret = string.Empty;
@@ -1247,7 +1323,7 @@ namespace Socioboard.Helper
                 string Key = "AIzaSyCISaVFe_TJknn92J7xw2diFEi6Z_aroYE";
                 //AIzaSyCvTBnEDnr5DEpvlVDCuxz9K9TK84rX0fE
                 //string RequestUrl = "https://www.googleapis.com/youtube/v3/search?part=" + part + "&maxResults=" + maxResults + "&q=" + keyword + "&key=" + accesstoken;
-                string RequestUrl = "https://www.googleapis.com/plus/v1/people/" + UserId + "/activities/public/?key=" + Key;
+                string RequestUrl = "https://www.googleapis.com/plus/v1/people/" + UserId + "/activities/public/?key=" + Key + "&maxResults=99";
 
                 var gpluspagerequest = (HttpWebRequest)WebRequest.Create(RequestUrl);
                 gpluspagerequest.Method = "GET";
@@ -1275,5 +1351,13 @@ namespace Socioboard.Helper
         }
 
         #endregion
+
+
+
+
+
+
+
+
     }
 }

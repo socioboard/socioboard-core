@@ -310,18 +310,6 @@
   </wsdl:binding>
   <wsdl:service name="TicketAssigneeStatus">
     <wsdl:port name="TicketAssigneeStatusSoap" binding="tns:TicketAssigneeStatusSoap">
-<<<<<<< HEAD
-      <soap:address location="http://api.socioboard.com/Services/TicketAssigneeStatus.asmx" />
-    </wsdl:port>
-    <wsdl:port name="TicketAssigneeStatusSoap12" binding="tns:TicketAssigneeStatusSoap12">
-      <soap12:address location="http://api.socioboard.com/Services/TicketAssigneeStatus.asmx" />
-    </wsdl:port>
-    <wsdl:port name="TicketAssigneeStatusHttpGet" binding="tns:TicketAssigneeStatusHttpGet">
-      <http:address location="http://api.socioboard.com/Services/TicketAssigneeStatus.asmx" />
-    </wsdl:port>
-    <wsdl:port name="TicketAssigneeStatusHttpPost" binding="tns:TicketAssigneeStatusHttpPost">
-      <http:address location="http://api.socioboard.com/Services/TicketAssigneeStatus.asmx" />
-=======
       <soap:address location="http://localhost:6361/Services/TicketAssigneeStatus.asmx" />
     </wsdl:port>
     <wsdl:port name="TicketAssigneeStatusSoap12" binding="tns:TicketAssigneeStatusSoap12">
@@ -332,7 +320,6 @@
     </wsdl:port>
     <wsdl:port name="TicketAssigneeStatusHttpPost" binding="tns:TicketAssigneeStatusHttpPost">
       <http:address location="http://localhost:6361/Services/TicketAssigneeStatus.asmx" />
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

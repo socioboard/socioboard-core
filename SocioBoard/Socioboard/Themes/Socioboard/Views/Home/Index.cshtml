@@ -45,10 +45,10 @@
                             <a onclick="AddTwitterProfile()" class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a>
                         </div>
                         <div class="col-md-12">
-                            <p style="color: white; padding-left: 45px; margin-top: 3%;">@GlobusMultiLanguageLib.Resources.SocioBoard_Home_Index_AttachProfileToBeginWithSocioBoard</p>
+                            <p style="color: white; padding-left: 45px; margin-top: 3%;">Attach Your Social Network Profile for Beginning With Socioboard</p>
                         </div>
                         <div class="col-md-6 col-xs-offset-2">
-                            <a id="AttachProfile" href="#" onclick="AddProfile()" class="btn btn-danger" type="button" value="Attach Your Profile" style="margin-top: 31px;">@GlobusMultiLanguageLib.Resources.Home_Index_Attach</a>
+                            <a id="AttachProfile" href="#" onclick="AddProfile()" class="btn btn-danger" type="button" value="Attach Your Profile" style="margin-top: 31px;">Attach Your Profile</a>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
     }
 
     function AddfbPage(fbpagename, fbpageid, fbpagetoken, email) {
-
+$('#fbpagebind').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />');
         $.ajax({
             type: 'POST',
             url: '../FacebookManager/AddFbPage?profileid=' + fbpageid + '&accesstoken=' + fbpagetoken + '&email=' + email,
@@ -189,7 +189,8 @@
                         for (var i = 0; i < fbpagearr.length; i++) {
                             var fbpageinfoarr = fbpagearr[i].split('`');
                             try {
-                                $('#fbpagebind').append('<a style="cursor: pointer;margin-left:21px" onclick="AddfbPage(\'' + fbpageinfoarr[0] + '\',\'' + fbpageinfoarr[1] + '\',\'' + fbpageinfoarr[2] + '\',\'' + fbpageinfoarr[3] + '\')">' + fbpageinfoarr[0] + '</a><br />');
+							var imageSrc = "http://graph.facebook.com/" + fbpageinfoarr[1] + "/picture?type=small";
+                                $('#fbpagebind').append('<div class="panel-box pull-left"><span class="col-md-2 padding-0"><img src=' + imageSrc + ' width="50"></span><span class="col-md-8 padding_lr">&nbsp&nbsp&nbsp' + fbpageinfoarr[0] + '<br><p>&nbsp&nbsp&nbsp' + fbpageinfoarr[4] + ' likes</p></span><span class="col-md-2 padding-0"><a style="cursor: pointer;" onclick="AddfbPage(\'' + fbpageinfoarr[0] + '\',\'' + fbpageinfoarr[1] + '\',\'' + fbpageinfoarr[2] + '\',\'' + fbpageinfoarr[3] + '\')"><img src="/Themes/Socioboard/Contents/img/plus.png"/></a></span></div>');
                             } catch (e) {
 
                             }
@@ -240,8 +241,9 @@
                             for (var i = 0; i < lipagearr.length; i++) {
                                 var lipageinfoarr = lipagearr[i].split('`');
                                 try {
-                                    $('#lipagebind').append('<a style="cursor: pointer;margin-left:21px" onclick="AddLinPage(\'' + lipageinfoarr[0] + '\',\'' + lipageinfoarr[1] + '\',\'' + lipageinfoarr[2] + '\')">' + lipageinfoarr[1] + '</a><br />');
-                                } catch (e) {
+                                
+                                $('#lipagebind').append('<a style="cursor: pointer;margin-left:21px" onclick="AddLinPage(\'' + lipageinfoarr[0] + '\',\'' + lipageinfoarr[1] + '\',\'' + lipageinfoarr[2] + '\')">' + lipageinfoarr[1] + '</a><br />');
+                            } catch (e) {
 
                                 }
                             }

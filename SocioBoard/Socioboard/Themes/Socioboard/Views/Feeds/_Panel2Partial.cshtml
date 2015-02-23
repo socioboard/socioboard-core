@@ -27,7 +27,7 @@
                     </small>
                 </div>
 
-
+                 <div style="margin-top: 2%;">
                 @try
                 {
                     hrefPost = "https://www.facebook.com/" + item.FromId + "/posts/" + item.FeedId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
@@ -38,12 +38,56 @@
                     Console.WriteLine("Error : " + ex.StackTrace);
 
                 }
-                <p>
+               @* <p>*@
                     <a target="_blank" href="@hrefPost">
                         @item.FeedDescription
                     </a>
-                </p>
+                @*</p>*@
+
+                @*Display image of post*@
+                @try
+                {
+                    if (!string.IsNullOrEmpty(item.Picture) && item.Picture != null)
+                    {
+                        <br />
+                    <img src="@item.Picture" style="width: 180px; height: 90px; margin-top: 5%;"> </img>
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.StackTrace);
+                }
+
+                     </div>
+                <br>
             </div>
+
+            @*<div class="input-group">
+                <input type="text" id="textfb_@item.MessageId" class="form-control input-sm" placeholder="Type your comment here...">
+                <span class="input-group-btn">
+                    <button class="btn btn-warning btn-sm" id="okfb_@item.MessageId" onclick="commentFB('@item.MessageId','@item.ProfileId')">
+                        @GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Comment
+
+
+                    </button>
+
+                    @if (item.FbLike == "likes")
+                    {
+                        <button status="@item.FbLike" id="likefb_@item.MessageId" onclick="facebookLike('@item.Id','@item.ProfileId','@item.MessageId')" type="button" class="btn btn-info btn-circle">
+                            <i class="fa fa-thumbs-o-up"></i>
+                        </button>
+                    }
+                    else
+                    {
+                        <button status="@item.FbLike" id="likefb_@item.MessageId" onclick="facebookLike('@item.Id','@item.ProfileId','@item.MessageId')" type="button" class="btn btn-info btn-circle">
+                            <i class="fa fa-thumbs-o-down"></i>
+                        </button>
+                    
+                    }
+                </span>
+            </div>*@
+
         </li>
             }
         }
@@ -89,8 +133,8 @@
             }
         }
 
-        
-         if (dicitem.Key == "linkedin")
+
+        if (dicitem.Key == "linkedin")
         {
 
             List<object> lstdic = (List<object>)dicitem.Value;
@@ -141,8 +185,8 @@
                 
             }
         }
-        
-        
+
+
 
     }
 </ul>

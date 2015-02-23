@@ -33,9 +33,19 @@
                        @FacebookMessage.MessageDate
                     </small>
                 </div>
-                <p>
+                 <div style="margin-top: 2%;">
+               @* <p>*@
                     <a target="_blank" href="https://www.facebook.com/@FacebookMessage.FromId/posts/@FacebookMessage.MessageId.Replace(@FacebookMessage.FromId, string.Empty).Replace("_", string.Empty).Trim()"> @FacebookMessage.Message </a>
-                </p>
+                @*</p>*@
+
+                @*Display image of post*@
+                @if (!string.IsNullOrEmpty(FacebookMessage.Picture) && FacebookMessage.Picture != null)
+                {
+                    <img src="@FacebookMessage.Picture" style="width: 50%; margin-top: 5%;"> </img>
+                }
+                
+</div>
+                <br>
             </div>
         </li>
                 }

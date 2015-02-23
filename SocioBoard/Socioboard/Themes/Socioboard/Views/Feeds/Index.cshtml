@@ -97,6 +97,28 @@
         $("#feeds").children().addClass('active');
         //$("#first-profile-load_0").click();
         DisplayDefaultFeed();
+
+        //To Load News feeds data every 15 seconds
+        try {
+            debugger;
+            FacebookLoadNewNewsFeeds();
+        } catch (e) {
+
+        }
+
+        //To Load Wall Posts data every 60 seconds
+        try {
+            FacebookLoadNewUserHome();
+        } catch (e) {
+
+        }
+        
+        ////To Load User feeds data every 60 seconds
+        //try {
+        //    FacebookLoadNewUserFeeds();
+        //} catch (e) {
+
+        //}
     });
 </script>
 

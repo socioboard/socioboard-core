@@ -15,7 +15,7 @@
     <meta name="author" content="Chancahl Santra">
     <link rel="shortcut icon" href="/Themes/@path/Contents/img/ivon.ico" type="image/x-icon">
 
-    <title>Socioboard - company</title>
+    <title>@Model.Companyname Dashboard - Your Open-source Social Media Dashboard</title>
 
 
     <!-- Bootstrap Core CSS -->
@@ -50,7 +50,20 @@
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.Contents/js/1.4.2/respond.min.js"></script>
 <![endif]-->
-
+    <style>
+        .imgloading {
+  margin-top: -30%;
+  position: fixed;
+  z-index: 10 !important;
+  left:50%;
+}
+        .imgloading1 {
+  margin-top: -30%;
+  position: fixed;
+  z-index: 10 !important;
+  left:50%;
+}
+    </style>
 </head>
 
 <body>
@@ -72,7 +85,7 @@
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    
+
                     <ul class="nav navbar-nav pull-right">
                         <li>
                             <a href="../Index/Company" target="">Company</a>
@@ -102,40 +115,40 @@
                         <li>
                             <a href="../Index/Download" target="">Download</a>
                         </li>
-                         <li>
+                        <li>
                             <a href="../Home/Training" target="">Training</a>
                         </li>
                         @*<li>
                             <a href="../Index/contact" target="">Contact Us</a>
                         </li>*@
-                         <li>
+                        <li>
                             <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal" onclick=" SetUser();" style="margin-top: 10px;">LOGIN</button>
                         </li>
                          <li>
-                            <form action="/Company" id="Companydashboard" class="navbar-form navbar-left" role="search">
+                            <div id="Companydashboard" class="navbar-form navbar-left"  role="search">
   <div class="form-group">
-    <input type="text" name="q" class="form-control" placeholder=" Search " style="border-radius: 15px; width: 225px; padding: 0px 5px;" />
-    <button class="global-nav__search-button" type="submit"><div  class="icon fa fa-search fa-fw global-nav__search-icon"></div></button>
+    <input type="text" id="q" name="q" class="form-control" placeholder=" Search " style="border-radius: 15px; width: 225px; padding: 0px 5px;" />
+    <button class="global-nav__search-button" id="btn-company-search" onclick="company()" type="button" style="cursor:pointer"><div  class="icon fa fa-search fa-fw global-nav__search-icon"></div></button>
   </div>
                                
 										
 									
-</form>
+</div>
                         </li>
-                       
+
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
             </div>
             <!-- /.container-fluid -->
             <div class='sidebarSmall'>
-                <a id="linkedinicon" style="display:none;" href="#linkedin"><i class="fa fa-linkedin-square fa-3x orange"></i></a>
-                <a id="twittericon" style="display:none;" href="#twitter"><i class="fa fa-twitter-square fa-3x orange"></i></a>
-                <a id="facebookicon" style="display:none;" href="#facebook"><i class="fa fa-facebook-square fa-3x orange"></i></a>
-                <a id="youtubeicon" style="display:none;" href="#youtube"><i class="fa fa-youtube-square fa-3x orange"></i></a>
-                <a id="instagramicon" style="display:none;" href="#instagram"><i class="fa fa-instagram-square fa-3x orange"></i></a>
-                <a id="tumblricon" style="display:none;" href="#tumblr"><i class="fa fa-tumblr-square fa-3x orange"></i></a>
-                <a id="gplusicon" style="display:none;" href="#gplus"><i class="fa fa-google-plus-square fa-3x orange"></i></a>
+                <a id="facebookicon" style="display: none;" href="#facebook"><i class="fa fa-facebook-square fa-3x orange"></i></a>
+                <a id="twittericon" style="display: none;" href="#twitter"><i class="fa fa-twitter-square fa-3x orange"></i></a>
+                <a id="linkedinicon" style="display: none;" href="#linkedin"><i class="fa fa-linkedin-square fa-3x orange"></i></a>
+                <a id="youtubeicon" style="display: none;" href="#youtube"><i class="fa fa-youtube-square fa-3x orange"></i></a>
+                <a id="instagramicon" style="display: none;" href="#instagram"><i class="fa fa-instagram-square fa-3x orange"></i></a>
+                <a id="tumblricon" style="display: none;" href="#tumblr"><i class="fa fa-tumblr-square fa-3x orange"></i></a>
+                <a id="gplusicon" style="display: none;" href="#gplus"><i class="fa fa-google-plus-square fa-3x orange"></i></a>
             </div>
         </nav>
         <!-- Button trigger modal -->
@@ -144,39 +157,21 @@
 
 
     <!-- Header -->
-    <header id="top" style="display: none;" class="header_li">
-        <div class="text-vertical-center">
-            <img src="" id="CompanyProfilePic" class="galleryImgSize">
+  
+    <header id="top"  class="header_li" style=" background: url(../../Themes/Socioboard/Contents/img/CompanydashboardDefaultcoverpic.jpg) no-repeat center center scroll; display: table;
+    position: relative;
+    width: 100%;
+    height: 100%; -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    margin-top: 50px;">
+        <div class="text-vertical-center" >
+            <img src="/Themes/@path/Contents/img/logo_company_default.png" style="display:none;" id="CompanyProfilePic" class="galleryImgSize">
             <h1 style="text-shadow: 0px 0px 15px #ffffff; margin-top: 50px;" id="CompanyName"></h1>
         </div>
     </header>
-
-    <div class="socialProfiles" data-url="/Companydashboard/CompanyLinkedinPageInfo?CompanyName=@Model.LinkedinProfileId">
-        <img src="/Themes/Socioboard/Contents/img/360.gif" />
-    </div>
-
-  @*  @try
-    {
-        @Html.Action("CompanyLinkedinPageInfo", new { CompanyName = Model.LinkedinProfileId })        
-    }
-    catch { }*@
-    <!-- linkedin -->
-
-     <div class="socialProfiles" data-url="/Companydashboard/CompanyTwitterPageInfo?CompanyName=@Model.TwitterProfileId">
-        <img src="/Themes/Socioboard/Contents/img/360.gif" />
-    </div>
-   @* @try
-    {
-        <!--twitter-->
-        @Html.Action("CompanyTwitterPageInfo",  new { CompanyName = Model.TwitterProfileId })
-    }
-    catch { }*@
-
-     <div class="socialProfiles" data-url="/Companydashboard/CompanyFacebookPageInfo?CompanyName=@Model.FbProfileId">
-        <img src="/Themes/Socioboard/Contents/img/360.gif" />
-    </div>
-
-   @* @try
+    @* @try
     {
         <!--facebook-->
         @Html.Action("CompanyFacebookPageInfo",  new { CompanyName = Model.FbProfileId })
@@ -184,10 +179,38 @@
     catch { }*@
 
 
-    <div class="socialProfiles" data-url="/Companydashboard/CompanyYoutubePageInfo?CompanyName=@Model.YoutubeProfileId">
-        <img src="/Themes/Socioboard/Contents/img/360.gif" />
+    <div class="socialProfiles" data-url="/Companydashboard/CompanyFacebookPageInfo?CompanyName=@Model.Fbprofileid">
+        <img src="/Themes/Socioboard/Contents/img/icon_loading-Recovered.gif" class="img imgloading" />
     </div>
-   @* @try
+
+    <div class="socialProfiles" data-url="/Companydashboard/CompanyTwitterPageInfo?CompanyName=@Model.Twitterprofileid">
+       <img src="/Themes/Socioboard/Contents/img/icon_loading-Recovered.gif" class="img imgloading1" />
+    </div>
+    @* @try
+    {
+        <!--twitter-->
+        @Html.Action("CompanyTwitterPageInfo",  new { CompanyName = Model.TwitterProfileId })
+    }
+    catch { }*@
+    <div class="socialProfiles" data-url="/Companydashboard/CompanyLinkedinPageInfo?CompanyName=@Model.Linkedinprofileid">
+      <img src="/Themes/Socioboard/Contents/img/icon_loading-Recovered.gif" class="img imgloading" />
+    </div>
+
+    @*  @try
+    {
+        @Html.Action("CompanyLinkedinPageInfo", new { CompanyName = Model.LinkedinProfileId })        
+    }
+    catch { }*@
+    <!-- linkedin -->
+
+    <div class="socialProfiles" data-url="/Companydashboard/CompanyYoutubePageInfo?CompanyName=@Model.Youtubeprofileid">
+     <img src="/Themes/Socioboard/Contents/img/icon_loading-Recovered.gif" class="img imgloading" />
+    </div>
+
+
+
+
+    @* @try
     {
         <!--youtube-->
         @Html.Action("CompanyYoutubePageInfo",  new { CompanyName = Model.YoutubeProfileId })
@@ -195,11 +218,11 @@
     catch { }*@
 
 
-     <div class="socialProfiles" data-url="/Companydashboard/CompanyInstagramPageInfo?CompanyName=@Model.InstagramProfileId">
-        <img src="/Themes/Socioboard/Contents/img/360.gif" />
+    <div class="socialProfiles" data-url="/Companydashboard/CompanyInstagramPageInfo?CompanyName=@Model.Instagramprofileid">
+       <img src="/Themes/Socioboard/Contents/img/icon_loading-Recovered.gif" class="img imgloading" />
     </div>
 
-   @* @try
+    @* @try
     {
         <!--Instagram-->
         @Html.Action("CompanyInstagramPageInfo",  new { CompanyName = Model.InstagramProfileId })
@@ -207,10 +230,10 @@
     catch { }*@
 
 
-    <div class="socialProfiles" data-url="/Companydashboard/CompanyTumblrPageInfo?CompanyName=@Model.TumblrProfileId">
-        <img src="/Themes/Socioboard/Contents/img/360.gif" />
+    <div class="socialProfiles" data-url="/Companydashboard/CompanyTumblrPageInfo?CompanyName=@Model.Tumblrprofileid">
+         <img src="/Themes/Socioboard/Contents/img/icon_loading-Recovered.gif" class="img imgloading" />
     </div>
-  @*  @try
+    @*  @try
     {
         <!--Tumblr-->
         @Html.Action("CompanyTumblrPageInfo",  new { CompanyName = Model.TumblrProfileId })
@@ -218,10 +241,10 @@
     catch { }*@
 
 
-     <div class="socialProfiles" data-url="/Companydashboard/CompanyGplusPageInfo?CompanyName=@Model.GPlusProfileId">
-        <img src="/Themes/Socioboard/Contents/img/360.gif" />
+    <div class="socialProfiles" data-url="/Companydashboard/CompanyGplusPageInfo?CompanyName=@Model.Gplusprofileid">
+        <img src="/Themes/Socioboard/Contents/img/icon_loading-Recovered.gif" class="img imgloading" />
     </div>
-   @* @try
+    @* @try
     {
         <!--Gplus-->
         @Html.Action("CompanyGplusPageInfo", new { CompanyName = Model.GPlusProfileId })
@@ -274,23 +297,47 @@
         //});
         //$(document).ready(function () {
         //    alert("asd");
-            $(".socialProfiles").each(function (index, item) {
-                var url = $(item).data("url");
 
-                $.ajax({
-                    url: url,
-                    type: "GET",
-                    async: true,
-                    success: function (data) {
-                        $(item).html(data);
-                    },
-                    failure:function () {
+
+
+
+
+        $(".socialProfiles").each(function (index, item) {
+            var url = $(item).data("url");
+
+            $.ajax({
+                url: url,
+                type: "GET",
+                async: true,
+                success: function (data) {
+                    $(item).html(data);
+                },
+                failure: function () {
                     $(item).html("");
 
                 }
-                });
             });
+        });
+
+
+
+
+
+
         //});
+
+        $('#q').keyup(function (e) {
+            //debugger;
+            var key = e.which;
+            if (key == 13) {
+                company();
+            }
+        });
+
+        function company() {
+            var q = $("#q").val();
+            window.top.location = "../company/" + q;
+        }
     </script>
 
 </body>

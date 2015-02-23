@@ -8,7 +8,8 @@
     </script>
      <section id="youtube" class="youtube">
         <div class="container-fluid">
-            <div class="text-center"><i class="fa fa-youtube-square fa-5x"></i></div>
+            <a href="https://www.youtube.com/channel/@ViewBag.RPage["id"]" target="_blank">
+            <div class="text-center orange"><i class="fa fa-youtube-square fa-5x"></i></div></a>
             <div class="row">
                 <div class="col-lg-12">
                     <!-- <div class="panel panel-default">
@@ -47,7 +48,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6">
+                        @*<div class="col-lg-3 col-md-6">
                             <div class="panel panel-red">
                                 <div class="panel-heading">
                                     <div class="row">
@@ -61,7 +62,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                         <div class="col-lg-3 col-md-6">
                             <div class="panel panel-red">
                                 <div class="panel-heading">
@@ -85,9 +86,9 @@
                 </div>
                 <!-- /.col-lg-12 -->
 
-
-                <!--videos sliding start-->
-                <div class="col-md-9">
+                <div class="row" id="YoutubePlayList">
+                      <!--videos sliding start-->
+                <div class="col-md-9" >
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                         <!-- Indicators -->
                         <ol class="carousel-indicators">
@@ -97,17 +98,22 @@
                         </ol>
 
                         <!-- Wrapper for slides -->
-                        @{bool Isfirst = true; int i = 0;}
+                        @{bool Isfirst = true; int i = 0; bool IsPlayListExist = false;}
                         <div class="carousel-inner">
                              @foreach (JObject obj in ViewBag.PlayList["items"])
                              {
+                                 if (Convert.ToInt32(obj["contentDetails"]["itemCount"].ToString()) > 0) 
+                                 {
+                                     IsPlayListExist = true;
+                                 }
                                  if (i == 3) { break; }
                                  string[] youtubevediourl = obj["snippet"]["thumbnails"]["default"]["url"].ToString().Split('/');
                                  if (Isfirst) 
                                  {
                                      <div class="item active">
                                 <div class="embed-responsive embed-responsive-4by3 hidden-xs">
-                                    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/@youtubevediourl[4]?rel=0" allowfullscreen=""></iframe>
+                                    @*<iframe class="embed-responsive-item" src="//www.youtube.com/embed/@youtubevediourl[4]?rel=0" allowfullscreen=""></iframe>*@
+                                      @Html.Raw(obj["player"]["embedHtml"].ToString())
                                 </div>
                                 <div class="carousel-caption">
                                     @obj["snippet"]["title"]
@@ -119,7 +125,8 @@
                                  {
                                      <div class="item">
                                 <div class="embed-responsive embed-responsive-4by3">
-                                    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/@youtubevediourl[4]?rel=0" allowfullscreen=""></iframe>
+                                  @*  <iframe class="embed-responsive-item" src="//www.youtube.com/embed/@youtubevediourl[4]?rel=0" allowfullscreen=""></iframe>*@
+                                      @Html.Raw(obj["player"]["embedHtml"].ToString())
                                 </div>
                                 <div class="carousel-caption">
                                     @obj["snippet"]["title"]
@@ -163,7 +170,8 @@
                                     <a href="#" class="list-group-item">
                                     <i class="fa fa-comment fa-fw"></i>
                                     <div class="embed-responsive embed-responsive-4by3 hidden-xs">
-                                        <iframe class="embed-responsive-item" src="//www.youtube.com/embed/@youtubevediourl[4]?rel=0" allowfullscreen=""></iframe>
+                                        @*<iframe class="embed-responsive-item" src="//www.youtube.com/embed/@youtubevediourl[4]?rel=0" allowfullscreen=""></iframe>*@
+                                        @Html.Raw(obj["player"]["embedHtml"].ToString())
                                     </div>
                                 </a>
                                 }
@@ -190,6 +198,8 @@
                     </div>
                 </div>
                 <!--end of playlist-->
+                </div>
+              
             </div>
         </div>
     </section>
@@ -197,7 +207,14 @@
          $(document).ready(function () {
              $('#youtubeicon').show();
          });
+        
     </script>
+     if(!IsPlayListExist) 
+         {
+         <script>
+             $('#YoutubePlayList').hide();
+             </script>
+}
 }
 else
 {

@@ -31,7 +31,7 @@ namespace Socioboard.Api.CompanyDashboard {
         
         private System.Threading.SendOrPostCallback getAllCompanyNamesOperationCompleted;
         
-        private System.Threading.SendOrPostCallback AddCompanyInfoOperationCompleted;
+        private System.Threading.SendOrPostCallback getCompanyProfileOperationCompleted;
         
         private System.Threading.SendOrPostCallback SearchCompanyProfileOperationCompleted;
         
@@ -79,7 +79,7 @@ namespace Socioboard.Api.CompanyDashboard {
         public event getAllCompanyNamesCompletedEventHandler getAllCompanyNamesCompleted;
         
         /// <remarks/>
-        public event AddCompanyInfoCompletedEventHandler AddCompanyInfoCompleted;
+        public event getCompanyProfileCompletedEventHandler getCompanyProfileCompleted;
         
         /// <remarks/>
         public event SearchCompanyProfileCompletedEventHandler SearchCompanyProfileCompleted;
@@ -115,31 +115,31 @@ namespace Socioboard.Api.CompanyDashboard {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddCompanyInfo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string AddCompanyInfo(string name) {
-            object[] results = this.Invoke("AddCompanyInfo", new object[] {
-                        name});
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getCompanyProfile", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getCompanyProfile(string keyword) {
+            object[] results = this.Invoke("getCompanyProfile", new object[] {
+                        keyword});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void AddCompanyInfoAsync(string name) {
-            this.AddCompanyInfoAsync(name, null);
+        public void getCompanyProfileAsync(string keyword) {
+            this.getCompanyProfileAsync(keyword, null);
         }
         
         /// <remarks/>
-        public void AddCompanyInfoAsync(string name, object userState) {
-            if ((this.AddCompanyInfoOperationCompleted == null)) {
-                this.AddCompanyInfoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddCompanyInfoOperationCompleted);
+        public void getCompanyProfileAsync(string keyword, object userState) {
+            if ((this.getCompanyProfileOperationCompleted == null)) {
+                this.getCompanyProfileOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetCompanyProfileOperationCompleted);
             }
-            this.InvokeAsync("AddCompanyInfo", new object[] {
-                        name}, this.AddCompanyInfoOperationCompleted, userState);
+            this.InvokeAsync("getCompanyProfile", new object[] {
+                        keyword}, this.getCompanyProfileOperationCompleted, userState);
         }
         
-        private void OnAddCompanyInfoOperationCompleted(object arg) {
-            if ((this.AddCompanyInfoCompleted != null)) {
+        private void OngetCompanyProfileOperationCompleted(object arg) {
+            if ((this.getCompanyProfileCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.AddCompanyInfoCompleted(this, new AddCompanyInfoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.getCompanyProfileCompleted(this, new getCompanyProfileCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -248,17 +248,17 @@ namespace Socioboard.Api.CompanyDashboard {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void AddCompanyInfoCompletedEventHandler(object sender, AddCompanyInfoCompletedEventArgs e);
+    public delegate void getCompanyProfileCompletedEventHandler(object sender, getCompanyProfileCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class AddCompanyInfoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class getCompanyProfileCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal AddCompanyInfoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal getCompanyProfileCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

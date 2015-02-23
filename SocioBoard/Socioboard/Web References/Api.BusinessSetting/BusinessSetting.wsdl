@@ -387,18 +387,6 @@
   </wsdl:binding>
   <wsdl:service name="BusinessSetting">
     <wsdl:port name="BusinessSettingSoap" binding="tns:BusinessSettingSoap">
-<<<<<<< HEAD
-      <soap:address location="http://api.socioboard.com/Services/BusinessSetting.asmx" />
-    </wsdl:port>
-    <wsdl:port name="BusinessSettingSoap12" binding="tns:BusinessSettingSoap12">
-      <soap12:address location="http://api.socioboard.com/Services/BusinessSetting.asmx" />
-    </wsdl:port>
-    <wsdl:port name="BusinessSettingHttpGet" binding="tns:BusinessSettingHttpGet">
-      <http:address location="http://api.socioboard.com/Services/BusinessSetting.asmx" />
-    </wsdl:port>
-    <wsdl:port name="BusinessSettingHttpPost" binding="tns:BusinessSettingHttpPost">
-      <http:address location="http://api.socioboard.com/Services/BusinessSetting.asmx" />
-=======
       <soap:address location="http://localhost:6361/Services/BusinessSetting.asmx" />
     </wsdl:port>
     <wsdl:port name="BusinessSettingSoap12" binding="tns:BusinessSettingSoap12">
@@ -409,7 +397,6 @@
     </wsdl:port>
     <wsdl:port name="BusinessSettingHttpPost" binding="tns:BusinessSettingHttpPost">
       <http:address location="http://localhost:6361/Services/BusinessSetting.asmx" />
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

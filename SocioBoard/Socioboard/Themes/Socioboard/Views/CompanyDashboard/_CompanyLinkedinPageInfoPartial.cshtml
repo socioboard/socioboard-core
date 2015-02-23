@@ -2,21 +2,22 @@
 @if (ViewBag.ResultCompany != null)
 {
     <script>
-            $('#linkedinicon').show();
-       
+        $('#linkedinicon').show();
+
     </script>
     <section id="linkedin" class="linkedin">
         <div class="container-fluid">
-            <div class="text-center white"><i class="fa fa-linkedin-square fa-5x"></i></div>
+            <a href="https://www.linkedin.com/company/@ViewBag.ResultCompany.SelectSingleNode("id").InnerText" target="_blank">
+            <div class="text-center orange"><i class="fa fa-linkedin-square fa-5x"></i></div></a>
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <!-- <div class="panel panel-default"> -->
                     <!-- <div class="panel-heading">
                             Follower graph list weekly or monthly
                         </div> -->
                     <!-- /.panel-heading -->
                     <div class="panel-body">
-                        <div class="col-lg-4 col-md-6">
+                        <div class="col-lg-2 col-md-3">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
                                     <div class="row">
@@ -24,14 +25,16 @@
                                             <i class="fa fa-comments fa-3x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <strong>@ViewBag.ResultCompany.SelectSingleNode("num-followers").InnerText</strong>
+                                            <strong>@try
+                                                    { @ViewBag.ResultCompany.SelectSingleNode("num-followers").InnerText }
+                                                    catch { }</strong>
                                             <div>Followers</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6">
+                        <div class="col-lg-2 col-md-3">
                             <div class="panel panel-red">
                                 <div class="panel-heading">
                                     <div class="row">
@@ -39,14 +42,16 @@
                                             <i class="fa fa-comments fa-3x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <strong>@ViewBag.ResultCompany.SelectSingleNode("employee-count-range/name").InnerText</strong>
+                                            <strong>@try
+                                                    { @ViewBag.ResultCompany.SelectSingleNode("employee-count-range/name").InnerText}
+                                                    catch { }</strong>
                                             <div>Employee</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6">
+                        <div class="col-lg-2 col-md-3">
                             <div class="panel panel-red">
                                 <div class="panel-heading">
                                     <div class="row">
@@ -54,14 +59,16 @@
                                             <i class="fa fa-comments fa-3x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <strong>12</strong>
-                                            <div>Job Post</div>
+                                            <strong>@try
+                                                    { @ViewBag.ResultCompany.SelectSingleNode("universal-name").InnerText}
+                                                    catch { }</strong>
+                                            <div>Linkedin Id</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6">
+                        <div class="col-lg-2 col-md-3">
                             <div class="panel panel-red">
                                 <div class="panel-heading">
                                     <div class="row">
@@ -69,14 +76,14 @@
                                             <i class="fa fa-comments fa-3x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <strong>12</strong>
-                                            <div>likes</div>
+                                            <strong>@try{ @ViewBag.ResultCompany.SelectSingleNode("founded-year").InnerText}catch{}</strong>
+                                            <div>Founded Year</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6">
+                     @*   <div class="col-lg-2 col-md-3">
                             <div class="panel panel-red">
                                 <div class="panel-heading">
                                     <div class="row">
@@ -91,7 +98,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6">
+                        <div class="col-lg-2 col-md-3">
                             <div class="panel panel-red">
                                 <div class="panel-heading">
                                     <div class="row">
@@ -105,14 +112,14 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                     <!-- /.panel-body -->
                     <!-- </div> -->
                     <!-- /.panel -->
                 </div>
                 <!-- /.col-lg-6 -->
-                <div class="col-lg-6">
+                @*<div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Graph list weekly or monthly.
@@ -131,7 +138,7 @@
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
-                </div>
+                </div>*@
                 <!-- /.col-lg-6 -->
                 @*<div class="col-lg-6">
                     <div class="chat-panel panel panel-default">
@@ -280,7 +287,7 @@
                     <div class="col-lg-12">
                     <div class="chat-panel panel panel-default">
                         <div class="panel-heading">
-                            Recent Activity
+                            Recent Activities
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -300,7 +307,7 @@
                                             <div>
                                                 <strong class="primary-font">@node.SelectSingleNode("update-content").SelectSingleNode("company-status-update").SelectSingleNode("share").SelectSingleNode("content").SelectSingleNode("title").InnerText</strong>
                                                 <small class="pull-right text-muted">
-                                                    <i class="fa fa-clock-o fa-fw"></i>
+                                                   
                                                 </small>
                                             </div>
                                             <p>
@@ -308,7 +315,7 @@
                                             </p>
                                         </div>
                                     </li>
-                                            istrue = false;
+                                                    istrue = false;
                                         }
                                         else
                                         {
@@ -319,7 +326,8 @@
                                         <div class="chat-body clearfix">
                                             <div>
                                                 <small class=" text-muted">
-                                                    <i class="fa fa-clock-o fa-fw"></i></small>
+                                                   
+                                                </small>
                                                 <strong class="pull-right primary-font">@node.SelectSingleNode("update-content").SelectSingleNode("company-status-update").SelectSingleNode("share").SelectSingleNode("content").SelectSingleNode("title").InnerText</strong>
                                             </div>
                                             <p>
@@ -419,7 +427,7 @@
                             </ul>
                         </div>
                         <!-- /.panel-body -->
-                        <div class="panel-footer">
+                        @*<div class="panel-footer">
                             <div class="input-group">
                                 <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
                                 <span class="input-group-btn">
@@ -428,7 +436,7 @@
                                     </button>
                                 </span>
                             </div>
-                        </div>
+                        </div>*@
                         <!-- /.panel-footer -->
                     </div>
                     <!-- /.panel -->

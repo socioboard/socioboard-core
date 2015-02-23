@@ -15,22 +15,22 @@ namespace Socioboard.Controllers
     {
         Api.CompanyDashboard.CompanyDashboard apicompanydashboard = new Api.CompanyDashboard.CompanyDashboard();
         private Helper.CompanyProfiles companyprofiles = new Helper.CompanyProfiles();
-        [OutputCache(Duration=180)]
+       // [OutputCache(Duration=180)]
         public ActionResult Company(string q) 
         {
             Domain.Socioboard.Domain.CompanyProfiles companyprofile = new Domain.Socioboard.Domain.CompanyProfiles();
-           // string result =  apicompanydashboard.SearchCompanyProfile(q);
-            string result = string.Empty;
+            string result =  apicompanydashboard.SearchCompanyProfile(q);
+            //string result = string.Empty;
             if (string.IsNullOrEmpty(result) || result.Equals("Something Went Wrong"))
             {
-                companyprofile.CompanyName = q;
-                companyprofile.FbProfileId = q.Replace(" ", string.Empty);
-                companyprofile.GPlusProfileId = q.Replace(" ", string.Empty);
-                companyprofile.InstagramProfileId = q.Replace(" ", string.Empty);
-                companyprofile.LinkedinProfileId = q.Replace(" ", string.Empty);
-                companyprofile.TumblrProfileId = q.Replace(" ", string.Empty);
-                companyprofile.TwitterProfileId = q.Replace(" ", string.Empty);
-                companyprofile.YoutubeProfileId = q.Replace(" ", string.Empty);
+                companyprofile.Companyname = q;
+                companyprofile.Fbprofileid = q.Replace(" ", string.Empty);
+                companyprofile.Gplusprofileid = q.Replace(" ", string.Empty);
+                companyprofile.Instagramprofileid = q.Replace(" ", string.Empty);
+                companyprofile.Linkedinprofileid = q.Replace(" ", string.Empty);
+                companyprofile.Tumblrprofileid = q.Replace(" ", string.Empty);
+                companyprofile.Twitterprofileid = q.Replace(" ", string.Empty);
+                companyprofile.Youtubeprofileid = q.Replace(" ", string.Empty);
             }
             else 
             {
@@ -38,34 +38,36 @@ namespace Socioboard.Controllers
             }
             return View(companyprofile);
         }
+
+
         public List<string> getAllCompanyNames(string Name) 
         {
             List<string> CompanyNames = null;
-
             return CompanyNames;
 
         }
 
 
         //[ChildActionOnly]
-        [OutputCache(Duration = 180)]
+       // [OutputCache(Duration = 180)]
         public ActionResult CompanyFacebookPageInfo(string CompanyName)
         {
             try
             {
                 JObject fbPage = JObject.Parse(companyprofiles.SearchFacebookPage(CompanyName));
                 ViewBag.facebookPageDetailsObj = fbPage;
-                string fbpageNotesstring = companyprofiles.getFacebookPageNotes(fbPage["id"].ToString());
-                if (!fbpageNotesstring.StartsWith("["))
-                    fbpageNotesstring = "[" + fbpageNotesstring + "]";
-                JArray fbpageNotes = JArray.Parse(fbpageNotesstring);
+                string fbpageNotesstring = companyprofiles.getFacebookPageFeeds(fbPage["id"].ToString());
+                //if (!fbpageNotesstring.StartsWith("["))
+                //    fbpageNotesstring = "[" + fbpageNotesstring + "]";
+                //JArray fbpageNotes = JArray.Parse(fbpageNotesstring);
+                JObject fbpageNotes = JObject.Parse(fbpageNotesstring);
                 ViewBag.facebookPageNotes = fbpageNotes;
             }
             catch (Exception e) { }
             return PartialView("_CompanyFacebookPageInfoPartial");
         }
        // [ChildActionOnly]
-        [OutputCache(Duration = 180)]
+      //  [OutputCache(Duration = 180)]
         public ActionResult CompanyYoutubePageInfo(string CompanyName)
         {
             try
@@ -82,7 +84,7 @@ namespace Socioboard.Controllers
             return PartialView("_CompanyYoutubePageInfoPartial");
         }
         //[ChildActionOnly]
-        [OutputCache(Duration = 180)]
+        //[OutputCache(Duration = 180)]
         public ActionResult CompanyTwitterPageInfo(string CompanyName)
         {
             try
@@ -97,7 +99,7 @@ namespace Socioboard.Controllers
             return PartialView("_CompanyTwitterPageInfoPartial");
         }
         //[ChildActionOnly]
-        [OutputCache(Duration = 180)]
+       // [OutputCache(Duration = 180)]
         public ActionResult CompanyInstagramPageInfo(string CompanyName)
         {
             try
@@ -112,7 +114,7 @@ namespace Socioboard.Controllers
             return PartialView("_CompanyInstagramPageInfoPartial");
         }
         //[ChildActionOnly]
-        [OutputCache(Duration = 180)]
+       // [OutputCache(Duration = 180)]
         public ActionResult CompanyLinkedinPageInfo(string CompanyName)
         {
             try
@@ -148,7 +150,7 @@ namespace Socioboard.Controllers
             return PartialView("_CompanyLinkedinPageInfoPartial");
         }
         //[ChildActionOnly]
-        [OutputCache(Duration = 180)]
+       // [OutputCache(Duration = 180)]
         public ActionResult CompanyTumblrPageInfo(string CompanyName)
         {
             try
@@ -161,7 +163,7 @@ namespace Socioboard.Controllers
             return PartialView("_CompanyTumblrPageInfoPartial");
         }
         //[ChildActionOnly]
-        [OutputCache(Duration = 180)]
+      // [OutputCache(Duration = 180)]
         public ActionResult CompanyGplusPageInfo(string CompanyName)
         {
             try

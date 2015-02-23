@@ -6,7 +6,9 @@
     </script>
     <section id="gplus" class="gplus">
         <div class="container-fluid">
-            <div class="text-center white"><i class="fa fa-google-plus-square fa-5x"></i></div>
+            <a href="https://plus.google.com/@ViewBag.RPage["id"]" target="_blank">
+            <div class="text-center orange"><i class="fa fa-google-plus-square fa-5x"></i></div>
+            </a>
             <div class="row">
                 <div class="col-lg-12">
                     <!-- <div class="panel panel-default">
@@ -15,7 +17,7 @@
                 </div> -->
                     <!-- /.panel-heading -->
                     <div class="panel-body">
-                        <div class="col-lg-2 col-md-6">
+                        <div class="col-lg-3 col-md-4">
                             <div class="panel panel-red">
                                 <div class="panel-heading">
                                     <div class="row">
@@ -24,13 +26,13 @@
                                         </div>
                                         <div class="col-xs-9 text-right">
                                             <strong>@ViewBag.RPage["circledByCount"]</strong>
-                                            <div>followers</div>
+                                            <div>Followers</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-6">
+                        <div class="col-lg-3 col-md-4">
                             <div class="panel panel-red">
                                 <div class="panel-heading">
                                     <div class="row">
@@ -38,14 +40,14 @@
                                             <i class="fa fa-comments fa-3x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <strong>12654</strong>
-                                            <div>views</div>
+                                            <strong>@ViewBag.RPage["plusOneCount"]</strong>
+                                            <div>Plus One Count</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-6">
+                        <div class="col-lg-3 col-md-4">
                             <div class="panel panel-red">
                                 <div class="panel-heading">
                                     <div class="row">
@@ -53,14 +55,14 @@
                                             <i class="fa fa-comments fa-3x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <strong>12/12/12</strong>
-                                            <div>circles</div>
+                                            <strong>@ViewBag.RPage["displayName"]</strong>
+                                            <div>Display Name</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-6">
+                      @*  <div class="col-lg-2 col-md-6">
                             <div class="panel panel-red">
                                 <div class="panel-heading">
                                     <div class="row">
@@ -104,7 +106,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
 
                         <!-- </div> -->
                         <!-- /.panel-body -->
@@ -116,7 +118,7 @@
                 <div class="col-lg-6">
                     <div class="chat-panel panel panel-default">
                         <div class="panel-heading">
-                            Recent Activity
+                            Recent Activities
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -293,44 +295,65 @@
                 <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Infromation
+                            Information
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#contact_info" data-toggle="tab">contact info</a>
-                                </li>
-                                <li><a href="#website" data-toggle="tab">Website</a>
+                                @*<li class="active"><a href="#contact_info" data-toggle="tab">contact info</a>
+                                </li>*@
+                                <li class="active"><a href="#website" data-toggle="tab">Website</a>
                                 </li>
 
                                 <li><a href="#gplus_url" data-toggle="tab">GPlus</a>
                                 </li>
-                                <li><a href="#gplus_tagline" data-toggle="tab">Tag Line</a>
+                                 @try
+                                 {
+                                     if (!string.IsNullOrEmpty(ViewBag.RPage["tagline"].ToString()))
+                                     {
+                                     <li><a href="#gplus_tagline" data-toggle="tab">Tag Line</a>
                                 </li>
+                                     }
+                                    
+                                 }
+                                 catch { }
+                              
+                               
 
                             </ul>
 
                             <!-- Tab panes -->
                             <div class="tab-content">
-                                <div class="tab-pane fade in active" id="contact_info">
+                                @*<div class="tab-pane fade in active" id="contact_info">
                                     <h4>contact info Tab</h4>
                                     <p>Lorem ipsum  cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                                <div class="tab-pane fade" id="website">
-                                    <h4>website Tab</h4>
-                                    <a href="http://www.google.com">Google</a>
+                                </div>*@
+                                <div class="tab-pane fade in active" id="website">
+                                    <h4>Website </h4>
+                                    @try
+                                    {
+                                    <a href="@ViewBag.RPage["urls"][0]["value"]">@ViewBag.RPage["urls"][0]["value"]</a>                                        
+                                    }
+                                    catch {<p>No Data Found</p> }
                                 </div>
 
                                 <div class="tab-pane fade" id="gplus_url">
-                                    <h4>GPlus Tab</h4>
+                                    <h4>GPlus </h4>
                                     <a href="@ViewBag.RPage["url"]">@ViewBag.RPage["url"]</a>
                                 </div>
+                                @try 
+                                {
+                                     if (!string.IsNullOrEmpty(ViewBag.RPage["tagline"].ToString()))
+                                {
                                 <div class="tab-pane fade" id="gplus_tagline">
-                                    <h4>Tag Line</h4>
+                                   @* <h4>Tag Line</h4>*@
                                     <p>@ViewBag.RPage["tagline"]</p>
                                 </div>
-
+                                }
+                                }
+                                catch { }
+                               
                             </div>
                         </div>
                         <!-- /.panel-body -->
@@ -378,6 +401,7 @@
                                     {
     <script>
         $(document).ready(function () {
+            $('#CompanyProfilePic').show();
             $('#CompanyProfilePic').attr("src", "@ViewBag.RPage["image"]["url"]");
         });
 

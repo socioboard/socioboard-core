@@ -205,12 +205,12 @@ function BindProfilesforNetwork(network) {
                         } catch (e) {
                         }
                         try {
-                            $("#title_paneltab1").html("Wall Posts");
+                            $("#title_paneltab1").html("News Feeds");
                         } catch (e) {
                         }
 
                         try {
-                            $("#title_paneltab2").html("News Feeds");
+                            $("#title_paneltab2").html("Wall posts");
                         } catch (e) {
 
                         }
@@ -346,18 +346,18 @@ function facebookdetails(id) {
                     $('#data_paneltab1').attr('network', 'facebook');
                     $("#img_paneltab1").attr('src', "/Themes/Socioboard/Contents/img/admin/1.png");
                     //$("#title_paneltab1").html("News Feeds");
-                    $("#title_paneltab1").html("Wall posts");
+                    $("#title_paneltab1").html("News Feeds");
                     $('#data_paneltab2').attr('network', 'facebook');
                     $("#img_paneltab2").attr('src', "/Themes/Socioboard/Contents/img/admin/1.png");
                     //$("#title_paneltab2").html("Wall Posts");
-                    $("#title_paneltab2").html("News Feeds");
+                    $("#title_paneltab2").html("Wall posts");
                     $("#img_paneltab3").attr('src', "/Themes/Socioboard/Contents/img/admin/1.png");
                     $("#title_paneltab3").html("User Feeds");
                     $('#fbfeedsfilter').css("display", "block");
                 } catch (e) {
                 }
             },
-            async:false
+            async: false
         });
 
 
@@ -400,6 +400,12 @@ function facebookdetails(id) {
 
             }
         });
+        ////To Load feeds data every 15 seconds
+        //try {
+        //    FacebookLoadNewUserHome();
+        //} catch (e) {
+
+        //}
 
         //facebookfeeds = $.ajax({
         //    type: "POST",
@@ -495,9 +501,19 @@ function facebookdetails(id) {
 
         });
 
-        FacebookUserFeeds(id);
+        try {
+            FacebookUserFeeds(id);
+        } catch (e) {
 
+        }
 
+        ////To Load feeds data every 15 seconds
+        //try {
+        //    debugger;
+        //    FacebookLoadNewNewsFeeds();
+        //} catch (e) {
+
+        //}
 
         //facebookscheduler = $.ajax({
         //    type: "POST",
@@ -613,36 +629,36 @@ function facebookfeedscrolldata() {
 function FacebookUserFeeds(id) {
     debugger;
     //alert("antima");
-        $("#title_paneltab3").html("User Feeds");
-        //var nwtid = $('#refreshpanel2').attr('nwtid');
-        $.ajax({
-            type: "GET",
-            url: "/Feeds/FacebookUserFeeds",
-            data: { "profileid": id },
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
-            beforeSend : function(){
-                console.log("test");
-            },
-            success: function (msg) {
-                console.log("I")
-               
-                    $("#data_paneltab3").html(msg);
-                    console.log("testend");
-               
-            },
-            error: function (e) {
-                console.log("testerr");
+    $("#title_paneltab3").html("User Feeds");
+    //var nwtid = $('#refreshpanel2').attr('nwtid');
+    $.ajax({
+        type: "GET",
+        url: "/Feeds/FacebookUserFeeds",
+        data: { "profileid": id },
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        beforeSend: function () {
+            console.log("test");
+        },
+        success: function (msg) {
+            console.log("I")
 
-                console.log(e);
-                alert("Somthing went wrong");
-            }
-        });
-   
+            $("#data_paneltab3").html(msg);
+            console.log("testend");
+
+        },
+        error: function (e) {
+            console.log("testerr");
+
+            console.log(e);
+            alert("Somthing went wrong");
+        }
+    });
+
 }
 
 //function FacebookStatus(id) {
-   
+
 //        $("#title_paneltab3").html("Status");
 
 //        FacebookStatus = $.ajax({
@@ -655,13 +671,13 @@ function FacebookUserFeeds(id) {
 //                console.log("test");
 //            },
 //            success: function (msg) {
-              
+
 //                    $("#data_paneltab3").html(msg);
 //                    console.log("testend");
-               
 
 
-                
+
+
 //            },
 //            error: function (e) {
 //                console.log("testerr");
@@ -670,13 +686,13 @@ function FacebookUserFeeds(id) {
 //                alert("gfgh");
 //            }
 //        });
-   
+
 //}
 
 
 //function FacebookTag(id) {
 //    console.log("FacebookTag begin")
-   
+
 //        $("#title_paneltab3").html("Tags");
 
 //        FacebookTag = $.ajax({
@@ -689,11 +705,11 @@ function FacebookUserFeeds(id) {
 //                console.log("test");
 //            },
 //            success: function (msg) {
-               
+
 //                    $("#data_paneltab3").html(msg);
 //                    console.log("testend");
 
-                
+
 //            },
 //            error: function (e) {
 //                console.log(e);
@@ -701,7 +717,7 @@ function FacebookUserFeeds(id) {
 //                alert("gfgh");
 //            }
 //        });
-   
+
 //}
 
 
@@ -1032,7 +1048,7 @@ function TwitterMentions(id) {
 function linkedindetails(id) {
 
     try {
-      
+
         debugger;
 
         loadfeedpartialpage = $.ajax({
@@ -1179,7 +1195,7 @@ function linkedindetails(id) {
                 try {
                     $("#loader_tabpanel3").bind("click", function () {
                         // alert("refreshSchedularMessageLinkedin");
-                       refreshSchedularMessageLinkedin(id);
+                        refreshSchedularMessageLinkedin(id);
 
                     });
                     //$("#img_paneltab1").attr('src', "../Contents/img/admin/5.png");
@@ -1193,7 +1209,7 @@ function linkedindetails(id) {
                 } catch (e) {
                 }
                 try {
-                   // $("#loader_tabpanel3").attr('src', "../Contents/img/admin/9.png");
+                    // $("#loader_tabpanel3").attr('src', "../Contents/img/admin/9.png");
                 } catch (e) {
 
                 }
@@ -1382,7 +1398,7 @@ function SendPostOnLiCompanyPage(id) {
 
 
 function tumblrdetails(id) {
-    
+
 
     tumblridforlazyload = id;
 
@@ -1808,7 +1824,7 @@ function postVideoOnTumblr() {
 
 
 function youtubedetails(id) {
-    
+
 
     loadfeedpartialpage = $.ajax({
         type: "POST",
@@ -1895,7 +1911,7 @@ function likesupdate(imgid, access, userid, chk) {
 
 
 function Instagramdetails(id) {
-    
+
 
     loadfeedpartialpage = $.ajax({
         type: "POST",
@@ -2005,7 +2021,7 @@ function refreshWallpostFacebook(id) {
             } catch (e) {
             }
             try {
-                $("#title_paneltab1").html("Wall Posts");
+                $("#title_paneltab1").html("News Feeds");
             } catch (e) {
             }
             try {
@@ -2015,7 +2031,7 @@ function refreshWallpostFacebook(id) {
 
                 //$("#data_paneltab1").on('scroll', facebookwallscrolldata);
                 //$("#data_paneltab1").scroll(throttled);
-				$("#data_paneltab1").scroll(facebookwallscrolldata);
+                $("#data_paneltab1").scroll(facebookwallscrolldata);
             } catch (e) {
             }
             try {
@@ -2057,19 +2073,18 @@ function refreshFeedsFacebook(id) {
                 $("#refreshpanel2").attr('src', "../Themes/Socioboard/Contents/img/admin/9.png");
             } catch (e) { }
             try {
-                $("#title_paneltab2").html("News Feeds");
+                $("#title_paneltab2").html("Wall posts");
             } catch (e) {
             }
             try {
-if(msg.indexOf('<div') > 0 && msg!=null)
-				{
-                $("#data_paneltab2").html(msg);
-				}
+                if (msg.indexOf('<div') > 0 && msg != null) {
+                    $("#data_paneltab2").html(msg);
+                }
 
                 //$("#data_paneltab2").on('scroll', facebookwallscrolldata);
-				
-				//$("#data_paneltab2").on('scroll', facebookfeedscrolldata);
-				$("#data_paneltab2").on('scroll', facebookfeed);
+
+                //$("#data_paneltab2").on('scroll', facebookfeedscrolldata);
+                $("#data_paneltab2").on('scroll', facebookfeed);
             } catch (e) {
             }
             try {
@@ -2112,7 +2127,7 @@ function refreshSchedularMessageFacebook(id) {
             } catch (e) {
             }
             try {
-               // $("#title_paneltab3").html("Scheduled Messages");
+                // $("#title_paneltab3").html("Scheduled Messages");
             } catch (e) {
             }
             try {
@@ -2244,7 +2259,7 @@ function refreshSchedularMessageTwitter(id) {
 
             }
             try {
-               // $("#title_paneltab3").html("Scheduler");
+                // $("#title_paneltab3").html("Scheduler");
             } catch (e) {
 
             }
@@ -2860,3 +2875,430 @@ function PostBlogOnWordpress(siteid, wpuserid) {
         }
     });
 }
+
+//6 functions added
+//modified by sumit gupta [13-02-2015]
+function refreshWallpostFacebook_FeedsSearch(keyword) {
+    debugger;
+    var id = $('#refreshpanel2').attr('nwtid');
+    try {
+
+        //$("#refreshpanel1").attr('src', '../Themes/Socioboard/Contents/img/891.png');
+    } catch (e) {
+
+    }
+    $.ajax({
+        type: "POST",
+        url: "../Feeds/wallposts_FeedsSearch?op=facebookwallposts&load=first&profileid=" + id + "&keyword=" + keyword,
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (msg) {
+
+            debugger;
+            try {
+                //facebookfeeds.load();
+            } catch (e) {
+
+            }
+            try {
+                $("#img_paneltab1").attr('src', "/Themes/Socioboard/Contents/img/admin/1.png");
+            } catch (e) {
+            }
+            try {
+                $("#refreshpanel1").attr('src', "../Themes/Socioboard/Contents/img/admin/9.png");
+            } catch (e) {
+            }
+            try {
+                $("#title_paneltab1").html("News Feeds");
+            } catch (e) {
+            }
+            try {
+
+                $("#data_paneltab1").html(msg);
+
+
+                //$("#data_paneltab1").on('scroll', facebookwallscrolldata);
+                //$("#data_paneltab1").scroll(throttled);
+                $("#data_paneltab1").scroll(facebookwallscrolldata);
+            } catch (e) {
+            }
+            try {
+                $("#data_paneltab1").mCustomScrollbar("update");
+            } catch (e) {
+
+            }
+
+        }
+    });
+}
+
+
+function refreshFeedsFacebook_FeedsSearch(keyword) {
+    debugger;
+    var id = $('#refreshpanel2').attr('nwtid');
+    try {
+        //$("#refreshpanel2").attr('src', '../Themes/Socioboard/Contents/img/891.png');
+    } catch (e) {
+
+    }
+    $.ajax({
+        type: "POST",
+        url: "../Feeds/AjaxFeeds_FeedsSearch?op=facebookfeeds&profileid=" + id + "&keyword=" + keyword,
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (msg) {
+
+            debugger;
+            try {
+                //facebookfeeds.load();
+            } catch (e) {
+
+            }
+            try {
+                $("#img_paneltab2").attr('src', "/Themes/Socioboard/Contents/img/admin/1.png");
+            } catch (e) {
+            }
+            try {
+                $("#refreshpanel2").attr('src', "../Themes/Socioboard/Contents/img/admin/9.png");
+            } catch (e) { }
+            try {
+                $("#title_paneltab2").html("Wall posts");
+            } catch (e) {
+            }
+            try {
+                //if (msg.indexOf('<div') > 0 && msg != null) {
+                $("#data_paneltab2").html(msg);
+                //}
+
+                //$("#data_paneltab2").on('scroll', facebookwallscrolldata);
+
+                //$("#data_paneltab2").on('scroll', facebookfeedscrolldata);
+                $("#data_paneltab2").on('scroll', facebookfeed);
+            } catch (e) {
+            }
+            try {
+                $("#data_paneltab2").mCustomScrollbar("update");
+            } catch (e) {
+
+            }
+
+        }
+    });
+}
+
+function FacebookUserFeeds_FeedsSearch(keyword) {
+    debugger;
+    var id = $('#refreshpanel2').attr('nwtid');
+    //alert("antima");
+    $("#title_paneltab3").html("User Feeds");
+    //var nwtid = $('#refreshpanel2').attr('nwtid');
+    $.ajax({
+        type: "GET",
+        url: "/Feeds/FacebookUserFeeds_FeedsSearch",
+        data: { "profileid": id, "keyword": keyword },
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        beforeSend: function () {
+            console.log("test");
+        },
+        success: function (msg) {
+            console.log("I")
+
+            $("#data_paneltab3").html(msg);
+            console.log("testend");
+
+        },
+        error: function (e) {
+            console.log("testerr");
+
+            console.log(e);
+            alert("Somthing went wrong");
+        }
+    });
+
+}
+
+function TwitterUserTweet_FeedsSearch(keyword) {
+    try {
+        debugger;
+        var id = $('#refreshpanel2').attr('nwtid');
+        $("#title_paneltab3").html("User Tweet");
+
+        $.ajax({
+            type: "POST",
+            url: "/Feeds/TwitterUserTweet_FeedsSearch?profileid=" + id + "&keyword=" + keyword,
+            data: '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (msg) {
+                try {
+                    debugger;
+                    $("#data_paneltab3").html(msg);
+                } catch (e) {
+
+                }
+            }
+        });
+    } catch (e) {
+
+    }
+}
+
+function TwitterFeeds_FeedsSearch(keyword) {
+    var id = $('#refreshpanel2').attr('nwtid');
+    twitterfeeds = $.ajax({
+        type: "POST",
+        url: "../Feeds/TwitterFeeds_FeedsSearch?&load=first&profileid=" + id + "&keyword=" + keyword,
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (msg) {
+            try {
+                $("#loader_tabpanel2").bind("click", function () {
+                    //alert(" refreshSchedularMessageTwitter");
+                    //refreshSchedularMessageTwitter(id);
+                });
+            } catch (e) {
+
+            }
+
+            try {
+                $("#data_paneltab2").html(msg);
+            } catch (e) {
+
+            }
+            try {
+                $("#data_paneltab2").mCustomScrollbar("update");
+            } catch (e) {
+
+            }
+        }
+    });
+}
+
+function TwitterNetworkDetails_FeedsSearch(keyword) {
+    var id = $('#refreshpanel2').attr('nwtid');
+    $.ajax({
+        type: "POST",
+        url: "../Feeds/TwitterNetworkDetails_FeedsSearch?&load=first&profileid=" + id + "&keyword=" + keyword,
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (msg) {
+            try {
+                $("#loader_tabpanel1").bind("click", function () {
+                    //alert("refreshWallpostTwitter");
+                    //refreshWallpostTwitter(id);
+                });
+            } catch (e) {
+            }
+            try {
+                $("#data_paneltab1").html(msg);
+            } catch (e) {
+
+            }
+            try {
+                $("#data_paneltab1").mCustomScrollbar("update");
+            } catch (e) {
+
+            }
+        }
+    });
+}
+
+//6 functions added
+//modified by sumit gupta [15-02-2015]
+function FacebookLoadNewNewsFeeds() {
+    debugger;
+    var id = $('#refreshpanel2').attr('nwtid');
+    try {
+
+        //$("#refreshpanel1").attr('src', '../Themes/Socioboard/Contents/img/891.png');
+    } catch (e) {
+
+    }
+    $.ajax({
+        type: "POST",
+        url: "../Feeds/AddLoadNewFacebookNewsFeeds?profileid=" + id,
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (msg) {
+
+            debugger;
+            try {
+                //facebookfeeds.load();
+            } catch (e) {
+
+            }
+            //try {
+            //    $("#img_paneltab2").attr('src', "/Themes/Socioboard/Contents/img/admin/1.png");
+            //} catch (e) {
+            //}
+            //try {
+            //    $("#refreshpanel2").attr('src', "../Themes/Socioboard/Contents/img/admin/9.png");
+            //} catch (e) {
+            //}
+            //try {
+            //    $("#title_paneltab2").html("Wall Posts");
+            //} catch (e) {
+            //}
+            try {
+
+                if (msg.indexOf("<div") != -1) {
+                    //$("#data_paneltab1").html(msg);
+                    var existingHtml = $("#data_paneltab2").html();
+                    $("#data_paneltab2").html('');
+                    $("#data_paneltab2").html(msg + existingHtml);
+
+
+                }
+
+                //does function of thread.sleep
+                setTimeout(function () {
+                    FacebookLoadNewNewsFeeds();
+                }, 60000);
+
+                // $("#data_paneltab2").scroll(facebookwallscrolldata);
+            } catch (e) {
+            }
+            try {
+                // $("#data_paneltab1").mCustomScrollbar("update");
+            } catch (e) {
+
+            }
+
+        }
+    });
+}
+
+function FacebookLoadNewUserHome() {
+    debugger;
+    var id = $('#refreshpanel1').attr('nwtid');
+    try {
+
+        //$("#refreshpanel1").attr('src', '../Themes/Socioboard/Contents/img/891.png');
+    } catch (e) {
+
+    }
+    $.ajax({
+        type: "POST",
+        url: "../Feeds/AddLoadNewFacebookWallPosts?profileid=" + id,
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (msg) {
+
+            debugger;
+            try {
+                //facebookfeeds.load();
+            } catch (e) {
+
+            }
+            //try {
+            //    $("#img_paneltab2").attr('src', "/Themes/Socioboard/Contents/img/admin/1.png");
+            //} catch (e) {
+            //}
+            //try {
+            //    $("#refreshpanel2").attr('src', "../Themes/Socioboard/Contents/img/admin/9.png");
+            //} catch (e) {
+            //}
+            //try {
+            //    $("#title_paneltab2").html("Wall Posts");
+            //} catch (e) {
+            //}
+            try {
+
+                if (msg.indexOf("img-circle profilePic") != -1) {
+                    //$("#data_paneltab1").html(msg);
+                    var existingHtml = $("#data_paneltab1").html();
+                    $("#data_paneltab1").html('');
+                    $("#data_paneltab1").html(msg + existingHtml);
+
+
+                }
+
+                //does function of thread.sleep
+                setTimeout(function () {
+                    FacebookLoadNewUserHome();
+                }, 15000);
+
+                // $("#data_paneltab2").scroll(facebookwallscrolldata);
+            } catch (e) {
+            }
+            try {
+                // $("#data_paneltab1").mCustomScrollbar("update");
+            } catch (e) {
+
+            }
+
+        }
+    });
+}
+
+function FacebookLoadNewUserFeeds() {
+    debugger;
+    var id = $('#refreshpanel1').attr('nwtid');
+    try {
+
+        //$("#refreshpanel1").attr('src', '../Themes/Socioboard/Contents/img/891.png');
+    } catch (e) {
+
+    }
+    $.ajax({
+        type: "POST",
+        url: "../Feeds/AddLoadNewFacebookWallPosts?profileid=" + id+"&type=userfeeds",
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (msg) {
+
+            debugger;
+            try {
+                //facebookfeeds.load();
+            } catch (e) {
+
+            }
+            //try {
+            //    $("#img_paneltab2").attr('src', "/Themes/Socioboard/Contents/img/admin/1.png");
+            //} catch (e) {
+            //}
+            //try {
+            //    $("#refreshpanel2").attr('src', "../Themes/Socioboard/Contents/img/admin/9.png");
+            //} catch (e) {
+            //}
+            //try {
+            //    $("#title_paneltab2").html("Wall Posts");
+            //} catch (e) {
+            //}
+            try {
+
+                if (msg.indexOf("img-circle profilePic") != -1) {
+                    //$("#data_paneltab1").html(msg);
+                    var existingHtml = $("#data_paneltab3").html();
+                    $("#data_paneltab3").html('');
+                    $("#data_paneltab3").html(msg + existingHtml);
+
+
+                }
+
+                //does function of thread.sleep
+                setTimeout(function () {
+                    FacebookLoadNewUserFeeds();
+                }, 15000);
+
+                // $("#data_paneltab2").scroll(facebookwallscrolldata);
+            } catch (e) {
+            }
+            try {
+                // $("#data_paneltab1").mCustomScrollbar("update");
+            } catch (e) {
+
+            }
+
+        }
+    });
+}
+

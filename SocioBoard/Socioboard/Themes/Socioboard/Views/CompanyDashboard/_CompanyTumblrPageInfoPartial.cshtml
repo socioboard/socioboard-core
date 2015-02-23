@@ -8,7 +8,9 @@
     </script>
     <section id="tumblr" class="tumblr">
         <div class="container-fluid">
-            <div class="text-center white"><i class="fa fa-tumblr-square fa-5x"></i></div>
+            <a href="@ViewBag.CompanyTumblrPageinfo["response"]["blog"]["url"]" target="_blank">
+            <div class="text-center orange"><i class="fa fa-tumblr-square fa-5x"></i></div>
+            </a>
             <div class="row">
                 <div class="col-lg-12">
                     <!-- <div class="panel panel-default">
@@ -25,8 +27,8 @@
                                             <i class="fa fa-comments fa-3x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <strong>12/12/12</strong>
-                                            <div>Date of posting</div>
+                                            <strong>@ViewBag.CompanyTumblrPageinfo["response"]["blog"]["name"]</strong>
+                                            <div>Name</div>
                                         </div>
                                     </div>
                                 </div>
@@ -41,7 +43,7 @@
                                         </div>
                                         <div class="col-xs-9 text-right">
                                             <strong>@ViewBag.CompanyTumblrPageinfo["response"]["total_posts"]</strong>
-                                            <div>Posts</div>
+                                            <div>Total Posts</div>
                                         </div>
                                     </div>
                                 </div>
@@ -55,8 +57,8 @@
                                             <i class="fa fa-comments fa-3x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <strong>12812</strong>
-                                            <div>share</div>
+                                            <strong>@ViewBag.CompanyTumblrPageinfo["response"]["blog"]["posts"]</strong>
+                                            <div>Blog Posts</div>
                                         </div>
                                     </div>
                                 </div>

@@ -35,7 +35,7 @@
 </script>
 
 
-<a href="#"><i class="fa fa-link fa-2x"></i><span class="tweaked-margin">@GlobusMultiLanguageLib.Resources.Feeds_FeedMenu_Feeds</span><i class="fa arrow"></i></a>
+<a href="#"><i class="fa fa-link fa-2x"></i><span class="tweaked-margin">Feeds</span><i class="fa arrow"></i></a>
 <ul class="nav nav-second-level">
     @foreach (var item in (Dictionary<string, List<object>>)Model)
     {
@@ -46,13 +46,13 @@
             if (lstFacebookAccount.Count > 0)
             {
         <li>
-            <a href="#">@GlobusMultiLanguageLib.Resources.Feeds_FeedMenu_Facebook <span class="fa arrow"></span></a>
+            <a href="#">Facebook <span class="fa arrow"></span></a>
             <ul class="nav nav-third-level">
                 @foreach (var facebook in lstFacebookAccount)
                 {
                     FacebookAccount objFacebookAccount = (FacebookAccount)facebook;
                     <li onclick="facebookdetails('@objFacebookAccount.FbUserId');" id="first-profile-load_@pcount">
-                        <a href="#">@objFacebookAccount.FbUserName</a>
+                        <a href="#"><img src="http://graph.facebook.com/@objFacebookAccount.FbUserId/picture?type=small" width="20" height="20"></img>&nbsp;@objFacebookAccount.FbUserName</a>
                     </li> 
                     pcount++;
                 }
@@ -68,13 +68,13 @@
             if (lstTwitterAccount.Count > 0)
             {
         <li>
-            <a href="#">@GlobusMultiLanguageLib.Resources.Feeds_FeedMenu_Twitter <span class="fa arrow"></span></a>
+            <a href="#">Twitter <span class="fa arrow"></span></a>
             <ul class="nav nav-third-level">
                 @foreach (var twitterAccount in lstTwitterAccount)
                 {
                     TwitterAccount objTwitterAccount = (TwitterAccount)twitterAccount;
                     <li onclick="twitterdetails('@objTwitterAccount.TwitterUserId');" id="first-profile-load_@pcount">
-                        <a href="#">@objTwitterAccount.TwitterScreenName</a>
+                        <a href="#"><img src="@objTwitterAccount.ProfileImageUrl" width="20" height="20"></img>&nbsp;@objTwitterAccount.TwitterScreenName</a>
                     </li> 
                     pcount++;
                 }
@@ -90,7 +90,7 @@
             if (Cnt == 0)
             {
                     @:<li>
-                    @:<a href="#">@GlobusMultiLanguageLib.Resources.Feeds_FeedMenu_Linkedin <span class="fa arrow"></span></a>
+                    @:<a href="#">LinkedIn <span class="fa arrow"></span></a>
                     @:<ul class="nav nav-third-level">   
                  Cnt++;
             }
@@ -104,7 +104,7 @@
                 {
 
                       <li>
-                      <a href="#">@GlobusMultiLanguageLib.Resources.Feeds_FeedMenu_LinkedinAccount<span class="fa arrow"></span></a>
+                      <a href="#">LinkedIn Account<span class="fa arrow"></span></a>
                       <ul class="nav nav-third-level">
                       @foreach (var linkedin in lstLinkedinAccount)
                       {
@@ -112,7 +112,7 @@
                           {
                               LinkedInAccount objFacebookAccount = (LinkedInAccount)linkedin;
                                <li onclick="linkedindetails('@objFacebookAccount.LinkedinUserId');" id="first-profile-load_@pcount">
-                               <a href="#">@objFacebookAccount.LinkedinUserName</a>
+                                    <a href="#"><img src="@objFacebookAccount.ProfileImageUrl" width="20" height="20"></img>&nbsp;@objFacebookAccount.LinkedinUserName</a>
                                 </li> 
                               pcount++;
                           }
@@ -136,7 +136,7 @@
                 {
 
                         <li>
-                        <a href="#">@GlobusMultiLanguageLib.Resources.Feeds_FeedMenu_LinkedinCompanyPage<span class="fa arrow"></span></a>
+                        <a href="#">LinkedIn Company Page<span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level">
                         @foreach (var linkedin in lstLinkedInCompanyPage)
                         {
@@ -144,7 +144,7 @@
                             {
                                 LinkedinCompanyPage objLiCompanyPage = (LinkedinCompanyPage)linkedin;
                                <li onclick="linkedinpagedetails('@objLiCompanyPage.LinkedinPageId');" id="first-profile-load_@pcount">
-                               <a href="#">@objLiCompanyPage.LinkedinPageName</a>
+                                    <a href="#"><img src="@objLiCompanyPage.LogoUrl" width="20" height="20"></img>&nbsp;@objLiCompanyPage.LinkedinPageName</a>
                                </li>
                                 pcount++;
                             }
@@ -166,13 +166,13 @@
             if (lstInstagramAccount.Count > 0)
             {
         <li>
-            <a href="#">@GlobusMultiLanguageLib.Resources.Feeds_FeedMenu_Instragram <span class="fa arrow"></span></a>
+            <a href="#">Instagram <span class="fa arrow"></span></a>
             <ul class="nav nav-third-level">
                 @foreach (var Instagram in lstInstagramAccount)
                 {
                     InstagramAccount objInstagramAccount = (InstagramAccount)Instagram;
                     <li onclick="Instagramdetails('@objInstagramAccount.InstagramId');" id="first-profile-load_@pcount">
-                        <a href="#">@objInstagramAccount.InsUserName</a>
+                        <a href="#"><img src="@objInstagramAccount.ProfileUrl" width="20" height="20"></img>&nbsp;@objInstagramAccount.InsUserName</a>
                     </li> 
                     pcount++;
                 }
@@ -188,13 +188,14 @@
             if (lstFacebookAccount.Count > 0)
             {
         <li>
-            <a href="#">@GlobusMultiLanguageLib.Resources.Feeds_FeedMenu_Tumblr <span class="fa arrow"></span></a>
+            <a href="#">Tumblr <span class="fa arrow"></span></a>
             <ul class="nav nav-third-level">
                 @foreach (var facebook in lstFacebookAccount)
                 {
                     TumblrAccount objTumblrAccount = (TumblrAccount)facebook;
+                    string tumblruserimage = "http://api.tumblr.com/v2/blog/" + objTumblrAccount.tblrUserName + ".tumblr.com/avatar";
                     <li onclick="tumblrdetails('@objTumblrAccount.tblrUserName');" id="first-profile-load_@pcount">
-                        <a href="#">@objTumblrAccount.tblrUserName</a>
+                        <a href="#"><img src="@tumblruserimage" width="20" height="20"></img>&nbsp;@objTumblrAccount.tblrUserName</a>
                     </li> 
                     pcount++;
                 }
@@ -210,13 +211,13 @@
             if (lstYoutubeAccount.Count > 0)
             {
         <li>
-            <a href="#">@GlobusMultiLanguageLib.Resources.Feeds_FeedMenu_Tumblr <span class="fa arrow"></span></a>
+            <a href="#">Youtube <span class="fa arrow"></span></a>
             <ul class="nav nav-third-level">
                 @foreach (var YoutubeAccount in lstYoutubeAccount)
                 {
                     YoutubeAccount objYoutubeAccount = (YoutubeAccount)YoutubeAccount;
                     <li onclick="youtubedetails('@objYoutubeAccount.Ytuserid');" id="first-profile-load_@pcount">
-                        <a href="#">@objYoutubeAccount.Ytusername</a>
+                        <a href="#"><img src="@objYoutubeAccount.Ytprofileimage" width="20" height="20"></img>&nbsp;@objYoutubeAccount.Ytusername</a>
                     </li> 
                     pcount++;
                 }
@@ -226,7 +227,37 @@
         </li>
             }
         }
-       
+        @*if (item.Key == "wordpress")
+        {
+            List<object> lstWordpressAccount = (List<object>)item.Value;
+            if (lstWordpressAccount.Count > 0)
+            {
+             <li>
+                <a href="#">Wordpress <span class="fa arrow"></span></a>
+                <ul class="nav nav-third-level">
+                @foreach (var WordpressAccount in lstWordpressAccount)
+                {
+                    Domain.Socioboard.Domain.WordpressAccount objWordpressAccount = (Domain.Socioboard.Domain.WordpressAccount)WordpressAccount;
+                    Socioboard.Api.WordpressSites.WordpressSites apiWordpressSites = new Socioboard.Api.WordpressSites.WordpressSites();
+                    <li>
+                        <a href="#">@objWordpressAccount.WpUserName<span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            @{
+                    List<WordpressSites> lstWordpressSites = (List<WordpressSites>)new JavaScriptSerializer().Deserialize(apiWordpressSites.GetAllSitesByWPUserId(objWordpressAccount.UserId.ToString(), objWordpressAccount.WpUserId), typeof(List<WordpressSites>));
+                    foreach (var WordpressSite in lstWordpressSites)
+                    {
+                                     <li onclick="WordpressDetails('@WordpressSite.SiteId','@WordpressSite.WPUserId')">
+                                           <a href="#">@WordpressSite.SiteName</a>
+                                     </li>
+                    }
+                              }
+                            </ul>
+                    </li>
+                }
+                </ul>
+            </li>
+            }
+        }*@
     }
 </ul>
 

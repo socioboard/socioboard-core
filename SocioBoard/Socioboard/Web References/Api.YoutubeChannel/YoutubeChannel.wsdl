@@ -108,18 +108,6 @@
   </wsdl:binding>
   <wsdl:service name="YoutubeChannel">
     <wsdl:port name="YoutubeChannelSoap" binding="tns:YoutubeChannelSoap">
-<<<<<<< HEAD
-      <soap:address location="http://api.socioboard.com/Services/YoutubeChannel.asmx" />
-    </wsdl:port>
-    <wsdl:port name="YoutubeChannelSoap12" binding="tns:YoutubeChannelSoap12">
-      <soap12:address location="http://api.socioboard.com/Services/YoutubeChannel.asmx" />
-    </wsdl:port>
-    <wsdl:port name="YoutubeChannelHttpGet" binding="tns:YoutubeChannelHttpGet">
-      <http:address location="http://api.socioboard.com/Services/YoutubeChannel.asmx" />
-    </wsdl:port>
-    <wsdl:port name="YoutubeChannelHttpPost" binding="tns:YoutubeChannelHttpPost">
-      <http:address location="http://api.socioboard.com/Services/YoutubeChannel.asmx" />
-=======
       <soap:address location="http://localhost:6361/Services/YoutubeChannel.asmx" />
     </wsdl:port>
     <wsdl:port name="YoutubeChannelSoap12" binding="tns:YoutubeChannelSoap12">
@@ -130,7 +118,6 @@
     </wsdl:port>
     <wsdl:port name="YoutubeChannelHttpPost" binding="tns:YoutubeChannelHttpPost">
       <http:address location="http://localhost:6361/Services/YoutubeChannel.asmx" />
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

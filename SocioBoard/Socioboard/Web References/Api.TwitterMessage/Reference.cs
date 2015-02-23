@@ -49,6 +49,16 @@ namespace Socioboard.Api.TwitterMessage {
         
         private System.Threading.SendOrPostCallback GetTwitterMessageByMessageIdOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getAllTwitterUsertweetOfUsersByKeywordOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getAllTwitterRetweetOfUsersByKeywordOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getAllTwitterMentionsOfUsersByKeywordOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetTwitterMessages1ByKeywordOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetFeedCountByProfileIdAndUserIdOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -116,6 +126,21 @@ namespace Socioboard.Api.TwitterMessage {
         
         /// <remarks/>
         public event GetTwitterMessageByMessageIdCompletedEventHandler GetTwitterMessageByMessageIdCompleted;
+        
+        /// <remarks/>
+        public event getAllTwitterUsertweetOfUsersByKeywordCompletedEventHandler getAllTwitterUsertweetOfUsersByKeywordCompleted;
+        
+        /// <remarks/>
+        public event getAllTwitterRetweetOfUsersByKeywordCompletedEventHandler getAllTwitterRetweetOfUsersByKeywordCompleted;
+        
+        /// <remarks/>
+        public event getAllTwitterMentionsOfUsersByKeywordCompletedEventHandler getAllTwitterMentionsOfUsersByKeywordCompleted;
+        
+        /// <remarks/>
+        public event GetTwitterMessages1ByKeywordCompletedEventHandler GetTwitterMessages1ByKeywordCompleted;
+        
+        /// <remarks/>
+        public event GetFeedCountByProfileIdAndUserIdCompletedEventHandler GetFeedCountByProfileIdAndUserIdCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetTwitterMessages", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -424,6 +449,171 @@ namespace Socioboard.Api.TwitterMessage {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAllTwitterUsertweetOfUsersByKeyword", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getAllTwitterUsertweetOfUsersByKeyword(string UserId, string ProfileId, string keyword) {
+            object[] results = this.Invoke("getAllTwitterUsertweetOfUsersByKeyword", new object[] {
+                        UserId,
+                        ProfileId,
+                        keyword});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAllTwitterUsertweetOfUsersByKeywordAsync(string UserId, string ProfileId, string keyword) {
+            this.getAllTwitterUsertweetOfUsersByKeywordAsync(UserId, ProfileId, keyword, null);
+        }
+        
+        /// <remarks/>
+        public void getAllTwitterUsertweetOfUsersByKeywordAsync(string UserId, string ProfileId, string keyword, object userState) {
+            if ((this.getAllTwitterUsertweetOfUsersByKeywordOperationCompleted == null)) {
+                this.getAllTwitterUsertweetOfUsersByKeywordOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAllTwitterUsertweetOfUsersByKeywordOperationCompleted);
+            }
+            this.InvokeAsync("getAllTwitterUsertweetOfUsersByKeyword", new object[] {
+                        UserId,
+                        ProfileId,
+                        keyword}, this.getAllTwitterUsertweetOfUsersByKeywordOperationCompleted, userState);
+        }
+        
+        private void OngetAllTwitterUsertweetOfUsersByKeywordOperationCompleted(object arg) {
+            if ((this.getAllTwitterUsertweetOfUsersByKeywordCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAllTwitterUsertweetOfUsersByKeywordCompleted(this, new getAllTwitterUsertweetOfUsersByKeywordCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAllTwitterRetweetOfUsersByKeyword", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getAllTwitterRetweetOfUsersByKeyword(string UserId, string ProfileId, string keyword) {
+            object[] results = this.Invoke("getAllTwitterRetweetOfUsersByKeyword", new object[] {
+                        UserId,
+                        ProfileId,
+                        keyword});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAllTwitterRetweetOfUsersByKeywordAsync(string UserId, string ProfileId, string keyword) {
+            this.getAllTwitterRetweetOfUsersByKeywordAsync(UserId, ProfileId, keyword, null);
+        }
+        
+        /// <remarks/>
+        public void getAllTwitterRetweetOfUsersByKeywordAsync(string UserId, string ProfileId, string keyword, object userState) {
+            if ((this.getAllTwitterRetweetOfUsersByKeywordOperationCompleted == null)) {
+                this.getAllTwitterRetweetOfUsersByKeywordOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAllTwitterRetweetOfUsersByKeywordOperationCompleted);
+            }
+            this.InvokeAsync("getAllTwitterRetweetOfUsersByKeyword", new object[] {
+                        UserId,
+                        ProfileId,
+                        keyword}, this.getAllTwitterRetweetOfUsersByKeywordOperationCompleted, userState);
+        }
+        
+        private void OngetAllTwitterRetweetOfUsersByKeywordOperationCompleted(object arg) {
+            if ((this.getAllTwitterRetweetOfUsersByKeywordCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAllTwitterRetweetOfUsersByKeywordCompleted(this, new getAllTwitterRetweetOfUsersByKeywordCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAllTwitterMentionsOfUsersByKeyword", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getAllTwitterMentionsOfUsersByKeyword(string UserId, string ProfileId, string keyword) {
+            object[] results = this.Invoke("getAllTwitterMentionsOfUsersByKeyword", new object[] {
+                        UserId,
+                        ProfileId,
+                        keyword});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAllTwitterMentionsOfUsersByKeywordAsync(string UserId, string ProfileId, string keyword) {
+            this.getAllTwitterMentionsOfUsersByKeywordAsync(UserId, ProfileId, keyword, null);
+        }
+        
+        /// <remarks/>
+        public void getAllTwitterMentionsOfUsersByKeywordAsync(string UserId, string ProfileId, string keyword, object userState) {
+            if ((this.getAllTwitterMentionsOfUsersByKeywordOperationCompleted == null)) {
+                this.getAllTwitterMentionsOfUsersByKeywordOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAllTwitterMentionsOfUsersByKeywordOperationCompleted);
+            }
+            this.InvokeAsync("getAllTwitterMentionsOfUsersByKeyword", new object[] {
+                        UserId,
+                        ProfileId,
+                        keyword}, this.getAllTwitterMentionsOfUsersByKeywordOperationCompleted, userState);
+        }
+        
+        private void OngetAllTwitterMentionsOfUsersByKeywordOperationCompleted(object arg) {
+            if ((this.getAllTwitterMentionsOfUsersByKeywordCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAllTwitterMentionsOfUsersByKeywordCompleted(this, new getAllTwitterMentionsOfUsersByKeywordCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetTwitterMessages1ByKeyword", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetTwitterMessages1ByKeyword(string TwitterId, string Userid, string keyword, int count) {
+            object[] results = this.Invoke("GetTwitterMessages1ByKeyword", new object[] {
+                        TwitterId,
+                        Userid,
+                        keyword,
+                        count});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetTwitterMessages1ByKeywordAsync(string TwitterId, string Userid, string keyword, int count) {
+            this.GetTwitterMessages1ByKeywordAsync(TwitterId, Userid, keyword, count, null);
+        }
+        
+        /// <remarks/>
+        public void GetTwitterMessages1ByKeywordAsync(string TwitterId, string Userid, string keyword, int count, object userState) {
+            if ((this.GetTwitterMessages1ByKeywordOperationCompleted == null)) {
+                this.GetTwitterMessages1ByKeywordOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetTwitterMessages1ByKeywordOperationCompleted);
+            }
+            this.InvokeAsync("GetTwitterMessages1ByKeyword", new object[] {
+                        TwitterId,
+                        Userid,
+                        keyword,
+                        count}, this.GetTwitterMessages1ByKeywordOperationCompleted, userState);
+        }
+        
+        private void OnGetTwitterMessages1ByKeywordOperationCompleted(object arg) {
+            if ((this.GetTwitterMessages1ByKeywordCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetTwitterMessages1ByKeywordCompleted(this, new GetTwitterMessages1ByKeywordCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetFeedCountByProfileIdAndUserId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int GetFeedCountByProfileIdAndUserId(string UserId, string ProfileIds) {
+            object[] results = this.Invoke("GetFeedCountByProfileIdAndUserId", new object[] {
+                        UserId,
+                        ProfileIds});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetFeedCountByProfileIdAndUserIdAsync(string UserId, string ProfileIds) {
+            this.GetFeedCountByProfileIdAndUserIdAsync(UserId, ProfileIds, null);
+        }
+        
+        /// <remarks/>
+        public void GetFeedCountByProfileIdAndUserIdAsync(string UserId, string ProfileIds, object userState) {
+            if ((this.GetFeedCountByProfileIdAndUserIdOperationCompleted == null)) {
+                this.GetFeedCountByProfileIdAndUserIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetFeedCountByProfileIdAndUserIdOperationCompleted);
+            }
+            this.InvokeAsync("GetFeedCountByProfileIdAndUserId", new object[] {
+                        UserId,
+                        ProfileIds}, this.GetFeedCountByProfileIdAndUserIdOperationCompleted, userState);
+        }
+        
+        private void OnGetFeedCountByProfileIdAndUserIdOperationCompleted(object arg) {
+            if ((this.GetFeedCountByProfileIdAndUserIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetFeedCountByProfileIdAndUserIdCompleted(this, new GetFeedCountByProfileIdAndUserIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -698,6 +888,136 @@ namespace Socioboard.Api.TwitterMessage {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void getAllTwitterUsertweetOfUsersByKeywordCompletedEventHandler(object sender, getAllTwitterUsertweetOfUsersByKeywordCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAllTwitterUsertweetOfUsersByKeywordCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAllTwitterUsertweetOfUsersByKeywordCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void getAllTwitterRetweetOfUsersByKeywordCompletedEventHandler(object sender, getAllTwitterRetweetOfUsersByKeywordCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAllTwitterRetweetOfUsersByKeywordCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAllTwitterRetweetOfUsersByKeywordCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void getAllTwitterMentionsOfUsersByKeywordCompletedEventHandler(object sender, getAllTwitterMentionsOfUsersByKeywordCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAllTwitterMentionsOfUsersByKeywordCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAllTwitterMentionsOfUsersByKeywordCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetTwitterMessages1ByKeywordCompletedEventHandler(object sender, GetTwitterMessages1ByKeywordCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetTwitterMessages1ByKeywordCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetTwitterMessages1ByKeywordCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetFeedCountByProfileIdAndUserIdCompletedEventHandler(object sender, GetFeedCountByProfileIdAndUserIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetFeedCountByProfileIdAndUserIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetFeedCountByProfileIdAndUserIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }

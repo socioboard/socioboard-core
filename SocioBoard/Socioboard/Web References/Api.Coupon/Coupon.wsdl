@@ -409,18 +409,6 @@
   </wsdl:binding>
   <wsdl:service name="Coupon">
     <wsdl:port name="CouponSoap" binding="tns:CouponSoap">
-<<<<<<< HEAD
-      <soap:address location="http://api.socioboard.com/Services/Coupon.asmx" />
-    </wsdl:port>
-    <wsdl:port name="CouponSoap12" binding="tns:CouponSoap12">
-      <soap12:address location="http://api.socioboard.com/Services/Coupon.asmx" />
-    </wsdl:port>
-    <wsdl:port name="CouponHttpGet" binding="tns:CouponHttpGet">
-      <http:address location="http://api.socioboard.com/Services/Coupon.asmx" />
-    </wsdl:port>
-    <wsdl:port name="CouponHttpPost" binding="tns:CouponHttpPost">
-      <http:address location="http://api.socioboard.com/Services/Coupon.asmx" />
-=======
       <soap:address location="http://localhost:6361/Services/Coupon.asmx" />
     </wsdl:port>
     <wsdl:port name="CouponSoap12" binding="tns:CouponSoap12">
@@ -431,7 +419,6 @@
     </wsdl:port>
     <wsdl:port name="CouponHttpPost" binding="tns:CouponHttpPost">
       <http:address location="http://localhost:6361/Services/Coupon.asmx" />
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

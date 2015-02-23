@@ -77,6 +77,23 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetAllTwitterFeedsByUserIdAndProfileId1ByKeyword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -109,6 +126,12 @@
   </wsdl:message>
   <wsdl:message name="getTwitterFeedByProfileIdSoapOut">
     <wsdl:part name="parameters" element="tns:getTwitterFeedByProfileIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllTwitterFeedsByUserIdAndProfileId1ByKeyword" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordResponse" />
   </wsdl:message>
   <wsdl:message name="GetAllTwitterFeedsByUserIdAndProfileIdHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
@@ -143,6 +166,15 @@
     <wsdl:part name="MessageId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="getTwitterFeedByProfileIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="keyword" type="s:string" />
+    <wsdl:part name="count" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetAllTwitterFeedsByUserIdAndProfileIdHttpPostIn">
@@ -180,6 +212,15 @@
   <wsdl:message name="getTwitterFeedByProfileIdHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="keyword" type="s:string" />
+    <wsdl:part name="count" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="TwitterFeedSoap">
     <wsdl:operation name="GetAllTwitterFeedsByUserIdAndProfileId">
       <wsdl:input message="tns:GetAllTwitterFeedsByUserIdAndProfileIdSoapIn" />
@@ -200,6 +241,10 @@
     <wsdl:operation name="getTwitterFeedByProfileId">
       <wsdl:input message="tns:getTwitterFeedByProfileIdSoapIn" />
       <wsdl:output message="tns:getTwitterFeedByProfileIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterFeedsByUserIdAndProfileId1ByKeyword">
+      <wsdl:input message="tns:GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordSoapIn" />
+      <wsdl:output message="tns:GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TwitterFeedHttpGet">
@@ -223,6 +268,10 @@
       <wsdl:input message="tns:getTwitterFeedByProfileIdHttpGetIn" />
       <wsdl:output message="tns:getTwitterFeedByProfileIdHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterFeedsByUserIdAndProfileId1ByKeyword">
+      <wsdl:input message="tns:GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordHttpGetIn" />
+      <wsdl:output message="tns:GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TwitterFeedHttpPost">
     <wsdl:operation name="GetAllTwitterFeedsByUserIdAndProfileId">
@@ -244,6 +293,10 @@
     <wsdl:operation name="getTwitterFeedByProfileId">
       <wsdl:input message="tns:getTwitterFeedByProfileIdHttpPostIn" />
       <wsdl:output message="tns:getTwitterFeedByProfileIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterFeedsByUserIdAndProfileId1ByKeyword">
+      <wsdl:input message="tns:GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordHttpPostIn" />
+      <wsdl:output message="tns:GetAllTwitterFeedsByUserIdAndProfileId1ByKeywordHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="TwitterFeedSoap" type="tns:TwitterFeedSoap">
@@ -286,6 +339,15 @@
     </wsdl:operation>
     <wsdl:operation name="getTwitterFeedByProfileId">
       <soap:operation soapAction="http://tempuri.org/getTwitterFeedByProfileId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterFeedsByUserIdAndProfileId1ByKeyword">
+      <soap:operation soapAction="http://tempuri.org/GetAllTwitterFeedsByUserIdAndProfileId1ByKeyword" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -341,6 +403,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterFeedsByUserIdAndProfileId1ByKeyword">
+      <soap12:operation soapAction="http://tempuri.org/GetAllTwitterFeedsByUserIdAndProfileId1ByKeyword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="TwitterFeedHttpGet" type="tns:TwitterFeedHttpGet">
     <http:binding verb="GET" />
@@ -382,6 +453,15 @@
     </wsdl:operation>
     <wsdl:operation name="getTwitterFeedByProfileId">
       <http:operation location="/getTwitterFeedByProfileId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterFeedsByUserIdAndProfileId1ByKeyword">
+      <http:operation location="/GetAllTwitterFeedsByUserIdAndProfileId1ByKeyword" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -437,21 +517,18 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllTwitterFeedsByUserIdAndProfileId1ByKeyword">
+      <http:operation location="/GetAllTwitterFeedsByUserIdAndProfileId1ByKeyword" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="TwitterFeed">
     <wsdl:port name="TwitterFeedSoap" binding="tns:TwitterFeedSoap">
-<<<<<<< HEAD
-      <soap:address location="http://api.socioboard.com/Services/TwitterFeed.asmx" />
-    </wsdl:port>
-    <wsdl:port name="TwitterFeedSoap12" binding="tns:TwitterFeedSoap12">
-      <soap12:address location="http://api.socioboard.com/Services/TwitterFeed.asmx" />
-    </wsdl:port>
-    <wsdl:port name="TwitterFeedHttpGet" binding="tns:TwitterFeedHttpGet">
-      <http:address location="http://api.socioboard.com/Services/TwitterFeed.asmx" />
-    </wsdl:port>
-    <wsdl:port name="TwitterFeedHttpPost" binding="tns:TwitterFeedHttpPost">
-      <http:address location="http://api.socioboard.com/Services/TwitterFeed.asmx" />
-=======
       <soap:address location="http://localhost:6361/Services/TwitterFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterFeedSoap12" binding="tns:TwitterFeedSoap12">
@@ -462,7 +539,6 @@
     </wsdl:port>
     <wsdl:port name="TwitterFeedHttpPost" binding="tns:TwitterFeedHttpPost">
       <http:address location="http://localhost:6361/Services/TwitterFeed.asmx" />
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

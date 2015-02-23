@@ -10,7 +10,7 @@ using System.Web.Script.Serialization;
 
 namespace Socioboard.Controllers
 {
-   [CustomAuthorize]
+    [CustomAuthorize]
     public class FeedsController : BaseController
     {
         public static int facebookwallcount = 0;
@@ -32,7 +32,7 @@ namespace Socioboard.Controllers
             {
                 return View();
             }
-           // return View();
+            // return View();
         }
         public ActionResult loadaccount()
         {
@@ -50,12 +50,12 @@ namespace Socioboard.Controllers
             return PartialView("_FeedMenu", Helper.SBUtils.GetFeedsMenuAccordingToGroup());
         }
 
-        public ActionResult LoadFeedPartialPage(string network,string id)
+        public ActionResult LoadFeedPartialPage(string network, string id)
         {
             ViewBag.id = id;
             return PartialView("_FeedPartial", network);
         }
-       
+
         public ActionResult wallposts(string op, string load, string profileid)
         {
             Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
@@ -81,9 +81,9 @@ namespace Socioboard.Controllers
             dictwallposts.Add("facebook", lstobject);
             return PartialView("_Panel1Partial", dictwallposts);
         }
-      
+
         // Commented By Antima
- 
+
         //public ActionResult AjaxFeeds(string profileid)
         //{
         //    List<object> lstobject = new List<object>();
@@ -206,7 +206,7 @@ namespace Socioboard.Controllers
 
         public ActionResult FacebookComment(string fbcommentid, string profileid, string message)
         {
-            
+
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
             Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
@@ -394,7 +394,7 @@ namespace Socioboard.Controllers
             //return PartialView("_ImagePartial", dictwallposts);
 
 
-            object lstobject = new object();           
+            object lstobject = new object();
             List<object> lstComment = null;
 
             Dictionary<string, Dictionary<object, List<object>>> dictwallposts = new Dictionary<string, Dictionary<object, List<object>>>();
@@ -405,24 +405,24 @@ namespace Socioboard.Controllers
             Api.InstagramComment.InstagramComment ApiobjInstagramFeedComment = new Api.InstagramComment.InstagramComment();
 
             List<Domain.Socioboard.Domain.InstagramFeed> lstInstagramFeed = (List<Domain.Socioboard.Domain.InstagramFeed>)(new JavaScriptSerializer().Deserialize(ApiobjInstagramFeed.GetLinkedInFeeds(objGroups.UserId.ToString(), profileid), typeof(List<Domain.Socioboard.Domain.InstagramFeed>)));
-           
+
             foreach (var item_lstInstagramfeed in lstInstagramFeed)
             {
                 lstComment = new List<object>();
                 List<Domain.Socioboard.Domain.InstagramComment> lstInstagramComment = (List<Domain.Socioboard.Domain.InstagramComment>)(new JavaScriptSerializer().Deserialize(ApiobjInstagramFeedComment.GetInstagramFeedsComment(objGroups.UserId.ToString(), item_lstInstagramfeed.FeedId.ToString()), typeof(List<Domain.Socioboard.Domain.InstagramComment>)));
-               
+
                 foreach (var item in lstInstagramComment)
                 {
                     lstComment.Add(item);
                 }
-                lstobject = (object)item_lstInstagramfeed;              
-                dic_InstgramImg.Add(lstobject, lstComment); 
-            }          
-            dictwallposts.Add("instagram", dic_InstgramImg);         
+                lstobject = (object)item_lstInstagramfeed;
+                dic_InstgramImg.Add(lstobject, lstComment);
+            }
+            dictwallposts.Add("instagram", dic_InstgramImg);
             return PartialView("_ImagePartial", dictwallposts);
 
         }
-     
+
         public ActionResult TumblrImages(string profileid)
         {
             //List<object> lstobject = new List<object>();
@@ -451,7 +451,7 @@ namespace Socioboard.Controllers
                 lstComment = new List<object>();
 
                 lstobject = (object)item_lstTumblrFeed;
-                dic_TumblrImg.Add(lstobject, lstComment); 
+                dic_TumblrImg.Add(lstobject, lstComment);
             }
             dictwallposts.Add("tumblr", dic_TumblrImg);
             return PartialView("_ImagePartial", dictwallposts);
@@ -488,7 +488,7 @@ namespace Socioboard.Controllers
             List<object> lstComment = null;
             Dictionary<string, Dictionary<object, List<object>>> dictwallposts = new Dictionary<string, Dictionary<object, List<object>>>();
             Dictionary<object, List<object>> dic_youtube = new Dictionary<object, List<object>>();
-           
+
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
             Api.Youtube.Youtube ApiobjYoutube = new Api.Youtube.Youtube();
@@ -501,7 +501,7 @@ namespace Socioboard.Controllers
                 try
                 {
                     lstComment = new List<object>();
-                    lstobject=(object)item["snippet"]["thumbnails"]["maxres"]["url"].ToString();
+                    lstobject = (object)item["snippet"]["thumbnails"]["maxres"]["url"].ToString();
                 }
                 catch (Exception ex)
                 {
@@ -534,7 +534,7 @@ namespace Socioboard.Controllers
             }
 
             return Content("success");
-        
+
         }
 
         //------vikash-----------//
@@ -609,7 +609,7 @@ namespace Socioboard.Controllers
             return PartialView("_MailSendingPartial", twtinfo);
             //return PartialView("_TwitterMailSendingPartial", twtfeed);
         }
-        
+
         public ActionResult SendFeedMail(string emailId, string feed, string fromname)
         {
             Api.MailSender.MailSender ApiobjMailSender = new Api.MailSender.MailSender();
@@ -743,7 +743,8 @@ namespace Socioboard.Controllers
             return PartialView("_Panel3Partial", dictUserFeeds);
         }
 
-        public ActionResult FacebookStatus(string ProfileId)
+        public ActionResult FacebookStatus
+            (string ProfileId)
         {
             List<object> lstobject = new List<object>();
             Dictionary<string, List<object>> dictStatus = new Dictionary<string, List<object>>();
@@ -778,5 +779,415 @@ namespace Socioboard.Controllers
         }
 
 
+        public ActionResult SearchFacebookFeeds(string keyword)
+        {
+            List<Domain.Socioboard.Domain.FacebookFeed> lstFacebookFeedsSearch = new List<Domain.Socioboard.Domain.FacebookFeed>();
+            try
+            {
+                Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
+                Api.FacebookFeed.FacebookFeed ApiobjDiscoverySearch = new Api.FacebookFeed.FacebookFeed();
+
+                int noOfDataToSkip = 0;
+
+                lstFacebookFeedsSearch = (List<Domain.Socioboard.Domain.FacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjDiscoverySearch.getAllFacebookFeedsByUserIdWithRange(objUser.Id.ToString(), keyword, noOfDataToSkip.ToString()), typeof(List<Domain.Socioboard.Domain.FacebookFeed>)));
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            return PartialView("_FacebookContactPartial", lstFacebookFeedsSearch);
+        }
+
+
+        public ActionResult SearchTwitterFeeds(string keyword)
+        {
+            Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
+            Api.DiscoverySearch.DiscoverySearch ApiobjDiscoverySearch = new Api.DiscoverySearch.DiscoverySearch();
+            List<Domain.Socioboard.Domain.DiscoverySearch> lstDiscoverySearch = new List<Domain.Socioboard.Domain.DiscoverySearch>();
+            lstDiscoverySearch = (List<Domain.Socioboard.Domain.DiscoverySearch>)(new JavaScriptSerializer().Deserialize(ApiobjDiscoverySearch.contactSearchTwitter(keyword), typeof(List<Domain.Socioboard.Domain.DiscoverySearch>)));
+            return PartialView("_TwitterContactPartial", lstDiscoverySearch);
+        }
+
+
+        public ActionResult wallposts_FeedsSearch(string op, string load, string profileid, string keyword)
+        {
+            Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
+            if (load == "first")
+            {
+                Session["FacebookProfileIdForFeeds"] = profileid;
+                facebookwallcount = 0;
+            }
+            else
+            {
+                profileid = (string)Session["FacebookProfileIdForFeeds"];
+                facebookwallcount = facebookwallcount + 10;
+            }
+            Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
+            Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+            Api.FacebookMessage.FacebookMessage ApiobjFacebookMessage = new Api.FacebookMessage.FacebookMessage();
+            List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookMessage = new List<FacebookMessage>();
+            lstFacebookMessage = (List<Domain.Socioboard.Domain.FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookMessage.GetAllWallpostsOfProfileAccordingtoGroupByUserIdAndProfileId1WithRange(objGroups.UserId.ToString(), keyword, profileid, facebookwallcount.ToString()), typeof(List<Domain.Socioboard.Domain.FacebookMessage>)));
+            if (lstFacebookMessage == null)
+            {
+                lstFacebookMessage = new List<FacebookMessage>();
+            }
+            List<object> lstobject = new List<object>();
+            foreach (var item in lstFacebookMessage)
+            {
+                lstobject.Add(item);
+            }
+            dictwallposts.Add("facebook", lstobject);
+            return PartialView("_Panel1Partial", dictwallposts);
+        }
+
+        public ActionResult AjaxFeeds_FeedsSearch(string profileid, string load, string keyword)
+        {
+            List<object> lstobject = new List<object>();
+            if (load == "first")
+            {
+                Session["FacebookProfileIdForFeeds"] = profileid;
+                facebookfeedcount = 0;
+            }
+            else
+            {
+                profileid = (string)Session["FacebookProfileIdForFeeds"];
+                facebookfeedcount = facebookfeedcount + 10;
+            }
+            Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
+            Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
+            Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+            Api.FacebookFeed.FacebookFeed ApiobjFacebookFeed = new Api.FacebookFeed.FacebookFeed();
+            List<FacebookFeed> lstFacebookFeed = new List<FacebookFeed>();
+            lstFacebookFeed = (List<FacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookFeed.getAllFacebookFeedsByUserIdAndProfileId1WithRange(objGroups.UserId.ToString(), keyword, profileid, facebookfeedcount.ToString()), typeof(List<FacebookFeed>)));
+            if (lstFacebookFeed == null)
+            {
+                lstFacebookFeed = new List<FacebookFeed>();
+            }
+            foreach (var twittermsg in lstFacebookFeed)
+            {
+                lstobject.Add(twittermsg);
+            }
+            dictwallposts.Add("facebook", lstobject);
+            return PartialView("_Panel2Partial", dictwallposts);
+        }
+
+        public ActionResult FacebookUserFeeds_FeedsSearch(string ProfileId, string keyword)
+        {
+            List<object> lstobject = new List<object>();
+            Dictionary<string, List<object>> dictUserFeeds = new Dictionary<string, List<object>>();
+            Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
+            Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+
+            //Data to Skip, hardcoded for now
+            int noOfDataToSkip = 0;
+
+            Api.FacebookMessage.FacebookMessage ApiobjFacebookMessage = new Api.FacebookMessage.FacebookMessage();
+            List<FacebookMessage> lstFacebookUserFeeds = new List<FacebookMessage>();
+            lstFacebookUserFeeds = (List<FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookMessage.getAllFacebookUserFeedOfUsersByUserIdAndProfileId1WithRange(objGroups.UserId.ToString(), keyword, ProfileId, noOfDataToSkip.ToString()), typeof(List<FacebookMessage>)));
+            if (lstFacebookUserFeeds == null)
+            {
+                lstFacebookUserFeeds = new List<FacebookMessage>();
+            }
+            foreach (var FacebookUserFeeds in lstFacebookUserFeeds)
+            {
+                lstobject.Add(FacebookUserFeeds);
+            }
+            dictUserFeeds.Add("facebook", lstobject);
+            return PartialView("_Panel3Partial", dictUserFeeds);
+        }
+
+        public ActionResult wallposts_FeedsSearch_Twitter(string op, string load, string profileid, string keyword)
+        {
+            Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
+            if (load == "first")
+            {
+                Session["FacebookProfileIdForFeeds"] = profileid;
+                facebookwallcount = 0;
+            }
+            else
+            {
+                profileid = (string)Session["FacebookProfileIdForFeeds"];
+                facebookwallcount = facebookwallcount + 10;
+            }
+            Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
+            Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+            Api.FacebookMessage.FacebookMessage ApiobjFacebookMessage = new Api.FacebookMessage.FacebookMessage();
+            List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookMessage = new List<FacebookMessage>();
+            lstFacebookMessage = (List<Domain.Socioboard.Domain.FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookMessage.GetAllWallpostsOfProfileAccordingtoGroupByUserIdAndProfileId1WithRange(objGroups.UserId.ToString(), keyword, profileid, facebookwallcount.ToString()), typeof(List<Domain.Socioboard.Domain.FacebookMessage>)));
+            if (lstFacebookMessage == null)
+            {
+                lstFacebookMessage = new List<FacebookMessage>();
+            }
+            List<object> lstobject = new List<object>();
+            foreach (var item in lstFacebookMessage)
+            {
+                lstobject.Add(item);
+            }
+            dictwallposts.Add("facebook", lstobject);
+            return PartialView("_Panel1Partial", dictwallposts);
+        }
+
+        public ActionResult AjaxFeeds_FeedsSearch_Twitter(string profileid, string load, string keyword)
+        {
+            List<object> lstobject = new List<object>();
+            if (load == "first")
+            {
+                Session["FacebookProfileIdForFeeds"] = profileid;
+                facebookfeedcount = 0;
+            }
+            else
+            {
+                profileid = (string)Session["FacebookProfileIdForFeeds"];
+                facebookfeedcount = facebookfeedcount + 10;
+            }
+            Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
+            Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
+            Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+            Api.FacebookFeed.FacebookFeed ApiobjFacebookFeed = new Api.FacebookFeed.FacebookFeed();
+            List<FacebookFeed> lstFacebookFeed = new List<FacebookFeed>();
+            lstFacebookFeed = (List<FacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookFeed.getAllFacebookFeedsByUserIdAndProfileId1WithRange(objGroups.UserId.ToString(), keyword, profileid, facebookfeedcount.ToString()), typeof(List<FacebookFeed>)));
+            if (lstFacebookFeed == null)
+            {
+                lstFacebookFeed = new List<FacebookFeed>();
+            }
+            foreach (var twittermsg in lstFacebookFeed)
+            {
+                lstobject.Add(twittermsg);
+            }
+            dictwallposts.Add("facebook", lstobject);
+            return PartialView("_Panel2Partial", dictwallposts);
+        }
+
+        public ActionResult UserFeeds_FeedsSearch_Twitter(string ProfileId, string keyword)
+        {
+            List<object> lstobject = new List<object>();
+            Dictionary<string, List<object>> dictUserFeeds = new Dictionary<string, List<object>>();
+            Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
+            Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+
+            //Data to Skip, hardcoded for now
+            int noOfDataToSkip = 0;
+
+            Api.FacebookMessage.FacebookMessage ApiobjFacebookMessage = new Api.FacebookMessage.FacebookMessage();
+            List<FacebookMessage> lstFacebookUserFeeds = new List<FacebookMessage>();
+            lstFacebookUserFeeds = (List<FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookMessage.getAllFacebookUserFeedOfUsersByUserIdAndProfileId1WithRange(objGroups.UserId.ToString(), keyword, ProfileId, noOfDataToSkip.ToString()), typeof(List<FacebookMessage>)));
+            if (lstFacebookUserFeeds == null)
+            {
+                lstFacebookUserFeeds = new List<FacebookMessage>();
+            }
+            foreach (var FacebookUserFeeds in lstFacebookUserFeeds)
+            {
+                lstobject.Add(FacebookUserFeeds);
+            }
+            dictUserFeeds.Add("facebook", lstobject);
+            return PartialView("_Panel3Partial", dictUserFeeds);
+        }
+
+
+
+        public ActionResult TwitterUserTweet_FeedsSearch(string ProfileId, string keyword)
+        {
+            List<object> lstobject = new List<object>();
+            Dictionary<string, List<object>> dictUserTweet = new Dictionary<string, List<object>>();
+            Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
+            Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+
+            Api.TwitterMessage.TwitterMessage ApiobjTwitterMessage = new Api.TwitterMessage.TwitterMessage();
+            List<TwitterMessage> lstTwitterUsertweet = (List<TwitterMessage>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.getAllTwitterUsertweetOfUsersByKeyword(objGroups.UserId.ToString(), ProfileId, keyword), typeof(List<TwitterMessage>)));
+            foreach (var twitterUsertweet in lstTwitterUsertweet)
+            {
+                lstobject.Add(twitterUsertweet);
+            }
+            dictUserTweet.Add("twitter", lstobject);
+            return PartialView("_Panel3Partial", dictUserTweet);
+        }
+
+        public ActionResult TwitterRetweets_FeedsSearch(string ProfileId, string keyword)
+        {
+            List<object> lstobject = new List<object>();
+            Dictionary<string, List<object>> dictRetweets = new Dictionary<string, List<object>>();
+            Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
+            Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+
+            Api.TwitterMessage.TwitterMessage ApiobjTwitterMessage = new Api.TwitterMessage.TwitterMessage();
+            List<TwitterMessage> lstTwitterRetweets = (List<TwitterMessage>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.getAllTwitterRetweetOfUsersByKeyword(objGroups.UserId.ToString(), ProfileId, keyword), typeof(List<TwitterMessage>)));
+            foreach (var twitterRetweets in lstTwitterRetweets)
+            {
+                lstobject.Add(twitterRetweets);
+            }
+            dictRetweets.Add("twitter", lstobject);
+            return PartialView("_Panel3Partial", dictRetweets);
+        }
+
+        public ActionResult TwitterMentions_FeedsSearch(string ProfileId, string keyword)
+        {
+            List<object> lstobject = new List<object>();
+            Dictionary<string, List<object>> dictMentions = new Dictionary<string, List<object>>();
+            Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
+            Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+
+            Api.TwitterMessage.TwitterMessage ApiobjTwitterMessage = new Api.TwitterMessage.TwitterMessage();
+            List<TwitterMessage> lstTwitterMentions = (List<TwitterMessage>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.getAllTwitterMentionsOfUsersByKeyword(objGroups.UserId.ToString(), ProfileId, keyword), typeof(List<TwitterMessage>)));
+            foreach (var twitterMentions in lstTwitterMentions)
+            {
+                lstobject.Add(twitterMentions);
+            }
+            dictMentions.Add("twitter", lstobject);
+            return PartialView("_Panel3Partial", dictMentions);
+        }
+
+        public ActionResult TwitterFeeds_FeedsSearch(string profileid, string load, string keyword)
+        {
+            List<object> lstobject = new List<object>();
+            if (load == "first")
+            {
+                Session["TwitterProfileIdForFeeds"] = profileid;
+                twtfeedcount = 0;
+            }
+            else
+            {
+                profileid = (string)Session["TwitterProfileIdForFeeds"];
+                twtfeedcount = twtfeedcount + 10;
+            }
+
+            Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
+            Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
+            Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+            Api.TwitterMessage.TwitterMessage ApiobjTwitterMessage = new Api.TwitterMessage.TwitterMessage();
+            List<TwitterMessage> lstTwitterMessage = (List<TwitterMessage>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.GetTwitterMessages1ByKeyword(profileid, objGroups.UserId.ToString(), keyword, twtfeedcount), typeof(List<TwitterMessage>)));
+            foreach (var twittermsg in lstTwitterMessage)
+            {
+                lstobject.Add(twittermsg);
+            }
+            dictwallposts.Add("twitter", lstobject);
+            return PartialView("_Panel2Partial", dictwallposts);
+        }
+
+        public ActionResult TwitterNetworkDetails_FeedsSearch(string profileid, string load, string keyword)
+        {
+            List<object> lstobject = new List<object>();
+            Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
+
+            if (load == "first")
+            {
+                Session["TwitterProfileIdForFeeds"] = profileid;
+                twtwallcount = 0;
+            }
+            else
+            {
+                profileid = (string)Session["TwitterProfileIdForFeeds"];
+                twtwallcount = twtwallcount + 10;
+            }
+            Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
+            Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+            Api.TwitterFeed.TwitterFeed ApiobjTwitterFeed = new Api.TwitterFeed.TwitterFeed();
+            List<TwitterFeed> lstTwitterFeed = (List<TwitterFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterFeed.GetAllTwitterFeedsByUserIdAndProfileId1ByKeyword((objGroups.UserId.ToString()), profileid, keyword, twtwallcount), typeof(List<TwitterFeed>)));
+
+            //List<TwitterFeed> lstTwitterFeed = (List<TwitterFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterFeed.GetAllTwitterFeedsByUserIdAndProfileId(objGroups.UserId.ToString(), profileid), typeof(List<TwitterFeed>)));
+            foreach (var twitterfeed in lstTwitterFeed)
+            {
+                lstobject.Add(twitterfeed);
+            }
+            dictwallposts.Add("twitter", lstobject);
+            return PartialView("_Panel1Partial", dictwallposts);
+        }
+
+
+        //Added by Sumit Gupta[15-02-2015]
+        public ActionResult AddLoadNewFacebookNewsFeeds(string profileid)
+        {
+            List<object> lstobject = new List<object>();
+            Dictionary<string, List<object>> dictFeeds = new Dictionary<string, List<object>>();
+
+            Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
+            Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
+            Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+            Api.FacebookFeed.FacebookFeed ApiobjFacebookFeed = new Api.FacebookFeed.FacebookFeed();
+
+            Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
+
+            List<FacebookFeed> lstFacebookFeed = new List<FacebookFeed>();
+
+            lstFacebookFeed = (List<FacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjFacebook.AddNewFacebookFeeds(profileid, objGroups.UserId.ToString()), typeof(List<FacebookFeed>)));
+            if (lstFacebookFeed == null)
+            {
+                lstFacebookFeed = new List<FacebookFeed>();
+            }
+            foreach (var FacebookFeed in lstFacebookFeed)
+            {
+                lstobject.Add(FacebookFeed);
+            }
+            dictwallposts.Add("facebook", lstobject);
+
+            return PartialView("_Panel2Partial", dictwallposts);
+        }
+
+        //Added by Sumit Gupta[15-02-2015]
+        public ActionResult AddLoadNewTwitterFeeds(string profileid)
+        {
+            List<object> lstobject = new List<object>();
+
+            Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
+            Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
+            Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+            Api.TwitterMessage.TwitterMessage ApiobjTwitterMessage = new Api.TwitterMessage.TwitterMessage();
+            List<TwitterMessage> lstTwitterMessage = (List<TwitterMessage>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterMessage.GetTwitterMessages1(profileid, objGroups.UserId.ToString(), twtfeedcount), typeof(List<TwitterMessage>)));
+            foreach (var twittermsg in lstTwitterMessage)
+            {
+                lstobject.Add(twittermsg);
+            }
+            dictwallposts.Add("twitter", lstobject);
+
+            return PartialView("_Panel2Partial", dictwallposts);
+        }
+
+        public ActionResult AddLoadNewFacebookWallPosts(string profileid, string type)
+        {
+            bool isUserFeedsCalled = false;
+
+            if (type!=null)
+            {
+                if (type.Equals("userfeeds") && !string.IsNullOrEmpty(type))
+                {
+                    isUserFeedsCalled = true;
+                } 
+            }
+
+            Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
+            
+            Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
+            Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+            Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
+            List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookMessage = (List<Domain.Socioboard.Domain.FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebook.AddNewFacebookWallPosts(profileid, objGroups.UserId.ToString()), typeof(List<Domain.Socioboard.Domain.FacebookMessage>)));
+
+            List<object> lstobject = new List<object>();
+            foreach (var item in lstFacebookMessage)
+            {
+                if (isUserFeedsCalled)
+                {
+                    if (item.FromId != item.ProfileId)
+                    {
+                        lstobject.Add(item);
+                    }
+                }
+                else
+                {
+                    lstobject.Add(item);
+                }
+            }
+           
+            dictwallposts.Add("facebook", lstobject);
+
+            if (isUserFeedsCalled)
+            {
+                 return PartialView("_Panel3Partial", dictwallposts);
+            }
+            else
+            {
+                return PartialView("_Panel1Partial", dictwallposts);
+            }
+            
+        }
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s2="http://tempuri.org/AbstractTypes" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s2="http://tempuri.org/AbstractTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:import namespace="http://microsoft.com/wsdl/types/" />
@@ -375,7 +375,23 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetSentMessageCountByProfileIdAndUserId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileIds" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSentMessageCountByProfileIdAndUserIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSentMessageCountByProfileIdAndUserIdResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="int" type="s:int" />
     </s:schema>
     <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
       <s:simpleType name="guid">
@@ -540,6 +556,12 @@
   </wsdl:message>
   <wsdl:message name="GetAllScheduledDetailsSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllScheduledDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSentMessageCountByProfileIdAndUserIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSentMessageCountByProfileIdAndUserId" />
+  </wsdl:message>
+  <wsdl:message name="GetSentMessageCountByProfileIdAndUserIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSentMessageCountByProfileIdAndUserIdResponse" />
   </wsdl:message>
   <wsdl:message name="UploadFileHttpGetIn">
     <wsdl:part name="f" type="s2:StringArray" />
@@ -721,6 +743,13 @@
   <wsdl:message name="GetAllScheduledDetailsHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetSentMessageCountByProfileIdAndUserIdHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileIds" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSentMessageCountByProfileIdAndUserIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
   <wsdl:message name="UploadFileHttpPostIn">
     <wsdl:part name="f" type="s2:StringArray" />
     <wsdl:part name="fileName" type="s:string" />
@@ -901,6 +930,13 @@
   <wsdl:message name="GetAllScheduledDetailsHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetSentMessageCountByProfileIdAndUserIdHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileIds" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSentMessageCountByProfileIdAndUserIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
   <wsdl:portType name="ScheduledMessageSoap">
     <wsdl:operation name="UploadFile">
       <wsdl:input message="tns:UploadFileSoapIn" />
@@ -998,6 +1034,10 @@
       <wsdl:input message="tns:GetAllScheduledDetailsSoapIn" />
       <wsdl:output message="tns:GetAllScheduledDetailsSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetSentMessageCountByProfileIdAndUserId">
+      <wsdl:input message="tns:GetSentMessageCountByProfileIdAndUserIdSoapIn" />
+      <wsdl:output message="tns:GetSentMessageCountByProfileIdAndUserIdSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ScheduledMessageHttpGet">
     <wsdl:operation name="UploadFile">
@@ -1092,6 +1132,10 @@
       <wsdl:input message="tns:GetAllScheduledDetailsHttpGetIn" />
       <wsdl:output message="tns:GetAllScheduledDetailsHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetSentMessageCountByProfileIdAndUserId">
+      <wsdl:input message="tns:GetSentMessageCountByProfileIdAndUserIdHttpGetIn" />
+      <wsdl:output message="tns:GetSentMessageCountByProfileIdAndUserIdHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ScheduledMessageHttpPost">
     <wsdl:operation name="UploadFile">
@@ -1185,6 +1229,10 @@
     <wsdl:operation name="GetAllScheduledDetails">
       <wsdl:input message="tns:GetAllScheduledDetailsHttpPostIn" />
       <wsdl:output message="tns:GetAllScheduledDetailsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSentMessageCountByProfileIdAndUserId">
+      <wsdl:input message="tns:GetSentMessageCountByProfileIdAndUserIdHttpPostIn" />
+      <wsdl:output message="tns:GetSentMessageCountByProfileIdAndUserIdHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ScheduledMessageSoap" type="tns:ScheduledMessageSoap">
@@ -1398,6 +1446,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllScheduledDetails">
       <soap:operation soapAction="http://tempuri.org/GetAllScheduledDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSentMessageCountByProfileIdAndUserId">
+      <soap:operation soapAction="http://tempuri.org/GetSentMessageCountByProfileIdAndUserId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1624,6 +1681,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetSentMessageCountByProfileIdAndUserId">
+      <soap12:operation soapAction="http://tempuri.org/GetSentMessageCountByProfileIdAndUserId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ScheduledMessageHttpGet" type="tns:ScheduledMessageHttpGet">
     <http:binding verb="GET" />
@@ -1827,6 +1893,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllScheduledDetails">
       <http:operation location="/GetAllScheduledDetails" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSentMessageCountByProfileIdAndUserId">
+      <http:operation location="/GetSentMessageCountByProfileIdAndUserId" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -2044,21 +2119,18 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetSentMessageCountByProfileIdAndUserId">
+      <http:operation location="/GetSentMessageCountByProfileIdAndUserId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ScheduledMessage">
     <wsdl:port name="ScheduledMessageSoap" binding="tns:ScheduledMessageSoap">
-<<<<<<< HEAD
-      <soap:address location="http://api.socioboard.com/Services/ScheduledMessage.asmx" />
-    </wsdl:port>
-    <wsdl:port name="ScheduledMessageSoap12" binding="tns:ScheduledMessageSoap12">
-      <soap12:address location="http://api.socioboard.com/Services/ScheduledMessage.asmx" />
-    </wsdl:port>
-    <wsdl:port name="ScheduledMessageHttpGet" binding="tns:ScheduledMessageHttpGet">
-      <http:address location="http://api.socioboard.com/Services/ScheduledMessage.asmx" />
-    </wsdl:port>
-    <wsdl:port name="ScheduledMessageHttpPost" binding="tns:ScheduledMessageHttpPost">
-      <http:address location="http://api.socioboard.com/Services/ScheduledMessage.asmx" />
-=======
       <soap:address location="http://localhost:6361/Services/ScheduledMessage.asmx" />
     </wsdl:port>
     <wsdl:port name="ScheduledMessageSoap12" binding="tns:ScheduledMessageSoap12">
@@ -2069,7 +2141,6 @@
     </wsdl:port>
     <wsdl:port name="ScheduledMessageHttpPost" binding="tns:ScheduledMessageHttpPost">
       <http:address location="http://localhost:6361/Services/ScheduledMessage.asmx" />
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

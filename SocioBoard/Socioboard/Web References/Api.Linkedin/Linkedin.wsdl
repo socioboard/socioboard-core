@@ -1561,18 +1561,6 @@
   </wsdl:binding>
   <wsdl:service name="Linkedin">
     <wsdl:port name="LinkedinSoap" binding="tns:LinkedinSoap">
-<<<<<<< HEAD
-      <soap:address location="http://api.socioboard.com/Services/Linkedin.asmx" />
-    </wsdl:port>
-    <wsdl:port name="LinkedinSoap12" binding="tns:LinkedinSoap12">
-      <soap12:address location="http://api.socioboard.com/Services/Linkedin.asmx" />
-    </wsdl:port>
-    <wsdl:port name="LinkedinHttpGet" binding="tns:LinkedinHttpGet">
-      <http:address location="http://api.socioboard.com/Services/Linkedin.asmx" />
-    </wsdl:port>
-    <wsdl:port name="LinkedinHttpPost" binding="tns:LinkedinHttpPost">
-      <http:address location="http://api.socioboard.com/Services/Linkedin.asmx" />
-=======
       <soap:address location="http://localhost:6361/Services/Linkedin.asmx" />
     </wsdl:port>
     <wsdl:port name="LinkedinSoap12" binding="tns:LinkedinSoap12">
@@ -1583,7 +1571,6 @@
     </wsdl:port>
     <wsdl:port name="LinkedinHttpPost" binding="tns:LinkedinHttpPost">
       <http:address location="http://localhost:6361/Services/Linkedin.asmx" />
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -24,6 +24,19 @@ namespace Socioboard.Controllers
         {
             try
             {
+
+                string apiid = ConfigurationManager.AppSettings["AppId"];
+               string user = ConfigurationManager.AppSettings["Username"];
+               string password = ConfigurationManager.AppSettings["Password"];
+               string clikertell = "http://api.clickatell.com/http/sendmsg?api_id="+apiid+"&user="+user+"&password="+password+"&to=7879524863&text=Hello";
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            try
+            {
                 Api.Facebook.Facebook objApiFacebook = new Api.Facebook.Facebook();
                // var sss = objApiFacebook.AddFacebookAccountWithPaginationAsync;
             }
