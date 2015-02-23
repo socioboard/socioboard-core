@@ -7,15 +7,15 @@ namespace Domain.Socioboard.Domain
 {
     public class CompanyProfiles
     {
-        public Guid Id { get; set; }
-        public string CompanyName { get; set; }
-        public string FbProfileId { get; set; }
-        public string TwitterProfileId { get; set; }
-        public string LinkedinProfileId { get; set; }
-        public string InstagramProfileId { get; set; }
-        public string YoutubeProfileId { get; set; }
-        public string GPlusProfileId { get; set; }
-        public string TumblrProfileId { get; set; }
-        public Guid UserId { get; set; }
+        public virtual Guid Id { get; set; }
+        public virtual string Companyname { get; set; }
+        public virtual string Instagramprofileid { get; set; }
+        public virtual string Fbprofileid { get; set; }
+        public virtual string Twitterprofileid { get; set; }
+        public virtual string Linkedinprofileid { get; set; }
+        public virtual string Youtubeprofileid { get; set; }
+        public virtual string Gplusprofileid { get; set; }
+        public virtual string Tumblrprofileid { get; set; }
+        public virtual string Userid { get; set; }
     }
 }

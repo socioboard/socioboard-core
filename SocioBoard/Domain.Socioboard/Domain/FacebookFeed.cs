@@ -21,6 +21,7 @@ namespace Domain.Socioboard.Domain
         public string FbLike { get; set; }
         public string FeedId { get; set; }
         public int ReadStatus { get; set; }
+        public string Picture { get; set; }
 
         public string ProfileType
         {
