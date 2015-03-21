@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -18,7 +19,7 @@ namespace Socioboard.Controllers
             Guid GroupId = Guid.Parse(Session["group"].ToString());
             Socioboard.Api.Groups.Groups ApiobjGroup = new Socioboard.Api.Groups.Groups();
             Domain.Socioboard.Domain.Groups ObjGroup = (Domain.Socioboard.Domain.Groups)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjGroup.GetGroupDetailsByGroupId(GroupId.ToString()), typeof(Domain.Socioboard.Domain.Groups)));
-            if (ObjGroup.GroupName == "Socioboard")
+            if (ObjGroup.GroupName == ConfigurationManager.AppSettings["DefaultGroupName"].ToString())
             {
                 //return Content("Default Group Can't Access");
                 ViewBag.DefaultFroup = "DefaultGroup";

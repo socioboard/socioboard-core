@@ -38,5 +38,28 @@ namespace SocioBoard.Model
                 return "Failure";
             }
         }
+
+        public List<Domain.Socioboard.Domain.PaymentTransaction> GetPaymentDataByUserId(Guid UserId)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        List<Domain.Socioboard.Domain.PaymentTransaction> lst = session.CreateQuery("from PaymentTransaction where UserId=: userid ORDER BY PaymentDate DESC")
+                                       .SetParameter("userid", UserId)
+                                       .List<Domain.Socioboard.Domain.PaymentTransaction>().ToList<Domain.Socioboard.Domain.PaymentTransaction>();
+                        return lst;
+                    }
+                    catch (Exception ex)
+                    {
+                        return null;
+                    }
+                }
+            }
+        }
+
+
     }
 }

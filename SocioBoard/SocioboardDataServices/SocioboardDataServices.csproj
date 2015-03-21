@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Facebook">
-      <HintPath>..\packages\Facebook.6.8.0\lib\net45\Facebook.dll</HintPath>
-    </Reference>
     <Reference Include="log4net">
       <HintPath>..\SocioboardAPI\lib\log4net.dll</HintPath>
     </Reference>
@@ -181,7 +178,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -613,7 +609,6 @@
     <None Include="Web References\Api.FacebookStats\FacebookStats.disco" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <None Include="Web References\Api.Team\Team.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -621,15 +616,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\Api.SentimentalAnalysis\SentimentalAnalysis.disco" />
-=======
-    <None Include="Web References\Api.SentimentalAnalysis\SentimentalAnalysis.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\Api.Team\Team.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\Api.TicketAssigneeStatus\TicketAssigneeStatus.disco" />
->>>>>>> b359b54c5e7811194d1e3c4e7694ccd632caa3ef
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

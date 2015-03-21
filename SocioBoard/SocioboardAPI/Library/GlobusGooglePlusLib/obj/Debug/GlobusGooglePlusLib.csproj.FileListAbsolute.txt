@@ -48,8 +48,7 @@ D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobusGooglePlusLib\
 D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.dll
 D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.pdb
 D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.csprojResolveAssemblyReference.cache
-D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusGooglePlusLib\bin\Debug\GlobusGooglePlusLib.dll
-D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusGooglePlusLib\bin\Debug\GlobusGooglePlusLib.pdb
-D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.csprojResolveAssemblyReference.cache
-D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.dll
-D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.pdb
+C:\Users\GLB-260\Desktop\SB Code_14-02-15\SocioboardAPI\Library\GlobusGooglePlusLib\bin\Debug\GlobusGooglePlusLib.dll
+C:\Users\GLB-260\Desktop\SB Code_14-02-15\SocioboardAPI\Library\GlobusGooglePlusLib\bin\Debug\GlobusGooglePlusLib.pdb
+C:\Users\GLB-260\Desktop\SB Code_14-02-15\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.dll
+C:\Users\GLB-260\Desktop\SB Code_14-02-15\SocioboardAPI\Library\GlobusGooglePlusLib\obj\Debug\GlobusGooglePlusLib.pdb

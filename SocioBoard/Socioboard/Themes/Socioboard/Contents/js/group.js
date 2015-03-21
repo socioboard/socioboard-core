@@ -319,8 +319,80 @@ function Sendgroupmessage() {
         return false;
     }
 
+
+    debugger;
     var curdate = new Date();
-    var now = (curdate.getMonth() + 1) + "/" + curdate.getDate() + "/" + curdate.getFullYear() + " " + curdate.getHours() + ":" + curdate.getMinutes() + ":" + curdate.getSeconds();
+    var dd = curdate.getDate();
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+    else {
+        dd = curdate.getDate();
+    }
+    var mm = curdate.getMonth() + 1;
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+    else {
+        mm = curdate.getMonth() + 1;
+    }
+    var hh = curdate.getHours();
+    if (hh < 10) {
+        hh = '0' + hh;
+    }
+    else {
+        hh = curdate.getHours();
+    }
+    var minm = curdate.getMinutes();
+    if (minm < 10) {
+        minm = '0' + minm;
+    }
+    else {
+        minm = curdate.getMinutes();
+    }
+    var sec = curdate.getSeconds();
+    if (sec < 10) {
+        sec = '0' + sec;
+    }
+    else {
+        sec = curdate.getSeconds();
+    }
+
+    var now = curdate.getFullYear() + "/" + mm + "/" + dd + " " + hh + ":" + minm + ":" + sec;
+
+    //var curdate = new Date();
+    //var now = (curdate.getMonth() + 1) + "/" + curdate.getDate() + "/" + curdate.getFullYear() + " " + curdate.getHours() + ":" + curdate.getMinutes() + ":" + curdate.getSeconds();
+
+   
+    var scheduledtime2 = timeforsch.split(" ");
+    var scheduledtime3 = scheduledtime2[0] + ':00';
+    var schdd = scheduledtime3.split(":");
+
+    var shdd = schdd[0];
+
+    var shmin = schdd[1];
+    var shsec = schdd[2];
+    if (shdd < 10) {
+        shdd = '0' + shdd;
+    }
+    else {
+        shdd = schdd[0];
+    }
+    if (shmin < 10) {
+        //shmin = '0' + shmin;
+        shmin = shmin;
+    }
+    else {
+        shmin = schdd[1];
+    }
+    if (scheduledtime2[1] == "PM") {
+        if (shdd != "12") {
+            shdd = +shdd + +12;
+        }
+    }
+    var timeforsch = shdd + ":" + shmin + ":" + shsec;
+
+
 
     fd1.append('files', fileimage);
     fd1.append('gid', grpIdPost);

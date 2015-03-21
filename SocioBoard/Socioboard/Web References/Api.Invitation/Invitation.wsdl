@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:element name="SendInvitationMail">
@@ -104,6 +104,18 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="AddInvitationInfoBycode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddInvitationInfoBycodeResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
       <s:element name="boolean" type="s:boolean" />
     </s:schema>
@@ -149,6 +161,12 @@
   </wsdl:message>
   <wsdl:message name="GetInvitedDataOfAcceotedUserSoapOut">
     <wsdl:part name="parameters" element="tns:GetInvitedDataOfAcceotedUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddInvitationInfoBycodeSoapIn">
+    <wsdl:part name="parameters" element="tns:AddInvitationInfoBycode" />
+  </wsdl:message>
+  <wsdl:message name="AddInvitationInfoBycodeSoapOut">
+    <wsdl:part name="parameters" element="tns:AddInvitationInfoBycodeResponse" />
   </wsdl:message>
   <wsdl:message name="SendInvitationMailHttpGetIn">
     <wsdl:part name="SenderEmail" type="s:string" />
@@ -196,6 +214,12 @@
   <wsdl:message name="GetInvitedDataOfAcceotedUserHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="AddInvitationInfoBycodeHttpGetIn">
+    <wsdl:part name="code" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddInvitationInfoBycodeHttpGetOut" />
   <wsdl:message name="SendInvitationMailHttpPostIn">
     <wsdl:part name="SenderEmail" type="s:string" />
     <wsdl:part name="SenderName" type="s:string" />
@@ -242,6 +266,12 @@
   <wsdl:message name="GetInvitedDataOfAcceotedUserHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="AddInvitationInfoBycodeHttpPostIn">
+    <wsdl:part name="code" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddInvitationInfoBycodeHttpPostOut" />
   <wsdl:portType name="InvitationSoap">
     <wsdl:operation name="SendInvitationMail">
       <wsdl:input message="tns:SendInvitationMailSoapIn" />
@@ -270,6 +300,10 @@
     <wsdl:operation name="GetInvitedDataOfAcceotedUser">
       <wsdl:input message="tns:GetInvitedDataOfAcceotedUserSoapIn" />
       <wsdl:output message="tns:GetInvitedDataOfAcceotedUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddInvitationInfoBycode">
+      <wsdl:input message="tns:AddInvitationInfoBycodeSoapIn" />
+      <wsdl:output message="tns:AddInvitationInfoBycodeSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="InvitationHttpGet">
@@ -301,6 +335,10 @@
       <wsdl:input message="tns:GetInvitedDataOfAcceotedUserHttpGetIn" />
       <wsdl:output message="tns:GetInvitedDataOfAcceotedUserHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="AddInvitationInfoBycode">
+      <wsdl:input message="tns:AddInvitationInfoBycodeHttpGetIn" />
+      <wsdl:output message="tns:AddInvitationInfoBycodeHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="InvitationHttpPost">
     <wsdl:operation name="SendInvitationMail">
@@ -330,6 +368,10 @@
     <wsdl:operation name="GetInvitedDataOfAcceotedUser">
       <wsdl:input message="tns:GetInvitedDataOfAcceotedUserHttpPostIn" />
       <wsdl:output message="tns:GetInvitedDataOfAcceotedUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddInvitationInfoBycode">
+      <wsdl:input message="tns:AddInvitationInfoBycodeHttpPostIn" />
+      <wsdl:output message="tns:AddInvitationInfoBycodeHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="InvitationSoap" type="tns:InvitationSoap">
@@ -390,6 +432,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetInvitedDataOfAcceotedUser">
       <soap:operation soapAction="http://tempuri.org/GetInvitedDataOfAcceotedUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddInvitationInfoBycode">
+      <soap:operation soapAction="http://tempuri.org/AddInvitationInfoBycode" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -463,6 +514,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddInvitationInfoBycode">
+      <soap12:operation soapAction="http://tempuri.org/AddInvitationInfoBycode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="InvitationHttpGet" type="tns:InvitationHttpGet">
     <http:binding verb="GET" />
@@ -529,6 +589,13 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddInvitationInfoBycode">
+      <http:operation location="/AddInvitationInfoBycode" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="InvitationHttpPost" type="tns:InvitationHttpPost">
     <http:binding verb="POST" />
@@ -594,6 +661,13 @@
       <wsdl:output>
         <mime:mimeXml part="Body" />
       </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddInvitationInfoBycode">
+      <http:operation location="/AddInvitationInfoBycode" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Invitation">

@@ -5,6 +5,8 @@ using System.Web;
 using log4net;
 using Domain.Socioboard.Domain;
 using Api.Socioboard.Helper;
+using NHibernate.Linq;
+
 
 namespace Api.Socioboard.Services
 {
@@ -342,6 +344,37 @@ namespace Api.Socioboard.Services
             return update;
         }
 
+        public List<Domain.Socioboard.Domain.TumblrFeed> GetFeedsOfProfileWithRange(string profileid, Guid id, int noOfDataToSkip)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, open up a Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get all twitter messages of profile by profile id
+                        // And order by Entry date.
+                        //List<Domain.Socioboard.Domain.TumblrFeed> lstmsg = session.CreateQuery("from TumblrFeed where  ProfileId = :profid and UserId=:userid ")
+                        //.SetParameter("profid", profileid)
+                        //.SetParameter("userid", id)
+                        //.List<Domain.Socioboard.Domain.TumblrFeed>()
+                        //.ToList<Domain.Socioboard.Domain.TumblrFeed>();
+
+                        List<Domain.Socioboard.Domain.TumblrFeed> lstmsg = session.Query<Domain.Socioboard.Domain.TumblrFeed>().Where(u => u.UserId == id && u.ProfileId.Equals(profileid)).OrderByDescending(x => x.date).Skip(Convert.ToInt32(noOfDataToSkip)).Take(15).ToList<Domain.Socioboard.Domain.TumblrFeed>();
+                   
+                        return lstmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End Session
+        }
 
     }
 }

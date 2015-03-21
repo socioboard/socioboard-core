@@ -4632,6 +4632,24 @@ namespace GlobusMultiLanguageLib {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open Source social media management at your finger tips.
+        /// </summary>
+        public static string MyStuff_Affiliates_AjaxShow1 {
+            get {
+                return ResourceManager.GetString("MyStuff_Affiliates_AjaxShow1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Join the movement, click below link..
+        /// </summary>
+        public static string MyStuff_Affiliates_AjaxShow2 {
+            get {
+                return ResourceManager.GetString("MyStuff_Affiliates_AjaxShow2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invitation Date.
         /// </summary>
         public static string MyStuff_Affiliates_InvitationDate {
@@ -4659,6 +4677,33 @@ namespace GlobusMultiLanguageLib {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Public Referral URL.
+        /// </summary>
+        public static string MyStuff_Affiliates_ReferralURL {
+            get {
+                return ResourceManager.GetString("MyStuff_Affiliates_ReferralURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invite your acquaintances by using the following link.
+        /// </summary>
+        public static string MyStuff_Affiliates_ReferralURL_Link {
+            get {
+                return ResourceManager.GetString("MyStuff_Affiliates_ReferralURL_Link", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show Public Affiliate Url.
+        /// </summary>
+        public static string MyStuff_Affiliates_ShowReferralURL {
+            get {
+                return ResourceManager.GetString("MyStuff_Affiliates_ShowReferralURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Status.
         /// </summary>
         public static string MyStuff_Affiliates_Status {
@@ -4673,6 +4718,24 @@ namespace GlobusMultiLanguageLib {
         public static string MyStuff_EWallet_AddMoneyToWallet {
             get {
                 return ResourceManager.GetString("MyStuff_EWallet_AddMoneyToWallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Money to Wallet.
+        /// </summary>
+        public static string MyStuff_Ewallet_AjaxEwallet1 {
+            get {
+                return ResourceManager.GetString("MyStuff_Ewallet_AjaxEwallet1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to go back.
+        /// </summary>
+        public static string MyStuff_Ewallet_AjaxEwallet2 {
+            get {
+                return ResourceManager.GetString("MyStuff_Ewallet_AjaxEwallet2", resourceCulture);
             }
         }
         
@@ -4736,6 +4799,42 @@ namespace GlobusMultiLanguageLib {
         public static string MyStuff_EWalletPartial_AddMoneyToWallet {
             get {
                 return ResourceManager.GetString("MyStuff_EWalletPartial_AddMoneyToWallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amount Received.
+        /// </summary>
+        public static string MyStuff_EwalletPartial_AmountReceived {
+            get {
+                return ResourceManager.GetString("MyStuff_EwalletPartial_AmountReceived", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cash Received.
+        /// </summary>
+        public static string MyStuff_EwalletPartial_CashRecived {
+            get {
+                return ResourceManager.GetString("MyStuff_EwalletPartial_CashRecived", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Orders.
+        /// </summary>
+        public static string MyStuff_EwalletPartial_Orders {
+            get {
+                return ResourceManager.GetString("MyStuff_EwalletPartial_Orders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to success.
+        /// </summary>
+        public static string MyStuff_EwalletPartial_Success {
+            get {
+                return ResourceManager.GetString("MyStuff_EwalletPartial_Success", resourceCulture);
             }
         }
         

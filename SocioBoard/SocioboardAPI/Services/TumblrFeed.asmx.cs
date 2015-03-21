@@ -36,5 +36,22 @@ namespace Api.Socioboard.Services
                 return "Something Went Wrong";
             }
         }
+
+        //
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllTumblrFeedOfUsersWithRange(string UserId, string ProfileId, string noOfDataToSkip)
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.TumblrFeed> lstTumblrFeed = objTumblrFeedRepository.GetFeedsOfProfileWithRange(ProfileId, Guid.Parse(UserId), Convert.ToInt32(noOfDataToSkip));
+                return new JavaScriptSerializer().Serialize(lstTumblrFeed);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
     }
 }

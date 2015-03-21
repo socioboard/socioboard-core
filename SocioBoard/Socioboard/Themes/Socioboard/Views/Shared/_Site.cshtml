@@ -265,6 +265,8 @@
             <!-- /.navbar-static-side -->
         </nav>
 
+        
+
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -487,7 +489,8 @@
                     // alert(msg);
                     $('#TicketsNotification').html(msg);
                 },
-                async: false
+                //async: false
+                async: true
             });
 
         };
@@ -700,7 +703,7 @@
 
             $('#btncontactsearch').click(function () {
                 //searchconcact($('#txtsearchcontact').val());
-
+                debugger;
                 var Tosearch = $('#txtsearchcontact').val();
                 if (Tosearch != "") {
                     searchconcact(Tosearch);

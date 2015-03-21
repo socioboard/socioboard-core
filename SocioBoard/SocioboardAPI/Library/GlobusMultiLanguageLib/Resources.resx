@@ -2960,4 +2960,37 @@ Interested in using Socialboard Enterprise version for your business now? Post y
   <data name="SocioBoard_Index_Disclaimer_DisclaimerTex9" xml:space="preserve">
     <value>User agrees to indemnify, defend and hold Socioboard harmless from and against all losses, expenses, damages and costs, including reasonable attorneys’ fees, arising out of or relating to any misuse by the User of the content and services provided on the Site.</value>
   </data>
+  <data name="MyStuff_Affiliates_AjaxShow1" xml:space="preserve">
+    <value>Open Source social media management at your finger tips</value>
+  </data>
+  <data name="MyStuff_Affiliates_AjaxShow2" xml:space="preserve">
+    <value>Join the movement, click below link.</value>
+  </data>
+  <data name="MyStuff_Affiliates_ReferralURL" xml:space="preserve">
+    <value>Public Referral URL</value>
+  </data>
+  <data name="MyStuff_Affiliates_ReferralURL_Link" xml:space="preserve">
+    <value>Invite your acquaintances by using the following link</value>
+  </data>
+  <data name="MyStuff_Affiliates_ShowReferralURL" xml:space="preserve">
+    <value>Show Public Affiliate Url</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_AmountReceived" xml:space="preserve">
+    <value>Amount Received</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_CashRecived" xml:space="preserve">
+    <value>Cash Received</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_Orders" xml:space="preserve">
+    <value>Your Orders</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_Success" xml:space="preserve">
+    <value>success</value>
+  </data>
+  <data name="MyStuff_Ewallet_AjaxEwallet1" xml:space="preserve">
+    <value>Add Money to Wallet</value>
+  </data>
+  <data name="MyStuff_Ewallet_AjaxEwallet2" xml:space="preserve">
+    <value>go back</value>
+  </data>
 </root>

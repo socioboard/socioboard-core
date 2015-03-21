@@ -44,7 +44,14 @@ namespace Api.Socioboard.Services
                 Domain.Socioboard.Domain.User user = userrepo.GetUserInfo(EmailId, Utility.MD5Hash(Password));
                 if (user != null)
                 {
+                    if (user.UserCode == null || user.UserCode == "")
+                    {
+                        string code = Utility.GenerateRandomUniqueString();
+                        int retint = userrepo.UpdateCode(user.Id, code);
+                        user = userrepo.getUsersById(user.Id);
+                    }
                     return new JavaScriptSerializer().Serialize(user);
+
                 }
                 else
                 {
@@ -112,7 +119,7 @@ namespace Api.Socioboard.Services
 
         [WebMethod(MessageName = "Pass Username", Description = "Pass Username")]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string Register(string EmailId, string Password, string AccountType, string Username, string ActivationStatus="0")
+        public string Register(string EmailId, string Password, string AccountType, string Username, string ActivationStatus = "0")
         {
 
             try
@@ -142,20 +149,21 @@ namespace Api.Socioboard.Services
                     user.Ewallet = "0";
                     user.ActivationStatus = ActivationStatus;//"0"; 
                     user.Id = Guid.NewGuid();
+                    user.UserCode = Utility.GenerateRandomUniqueString();
                     UserRepository.Add(user);
 
                     ////add value in UserActivation
                     //UserActivation.AddUserActivation(user);
 
                     //add value in userpackage
-                   // UserPackageRelation.AddUserPackageRelation(user);
+                    // UserPackageRelation.AddUserPackageRelation(user);
 
 
                     try
                     {
                         Domain.Socioboard.Domain.Groups groups = AddGroupByUserId(user.Id);
-                        
-                        
+
+
                         BusinessSettingRepository busnrepo = new BusinessSettingRepository();
                         BusinessSetting.AddBusinessSetting(user.Id, groups.Id, groups.GroupName);
                         Team.AddTeamByGroupIdUserId(user.Id, user.EmailId, groups.Id);
@@ -194,8 +202,8 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string UpdateUser(string UserId, string fname, string lname, string timezone, string picurl)
         {
-           int ret= userrepo.UpdateUserById(Guid.Parse(UserId), fname + " " + lname, timezone, picurl);
-           return ret.ToString();
+            int ret = userrepo.UpdateUserById(Guid.Parse(UserId), fname + " " + lname, timezone, picurl);
+            return ret.ToString();
         }
 
         [WebMethod]
@@ -208,13 +216,13 @@ namespace Api.Socioboard.Services
             {
                 Team objTeam = new Team();
                 objTeam.UpdateTeam(userid, team.Id.ToString(), username);
-                AddTeamMembers(team.GroupId.ToString(),team.Id.ToString());
+                AddTeamMembers(team.GroupId.ToString(), team.Id.ToString());
             }
         }
-        
+
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public void AddTeamMembers(string groupid,string teamid)
+        public void AddTeamMembers(string groupid, string teamid)
         {
             List<Domain.Socioboard.Domain.GroupProfile> lstGroupProfile = objGroupProfileRepository.GetAllGroupProfiles(Guid.Parse(groupid));
             foreach (var GroupProfile in lstGroupProfile)
@@ -589,7 +597,7 @@ namespace Api.Socioboard.Services
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string UpdateAdminUser(string UserId, string fname, string lname, string timezone,string profileurl)
+        public string UpdateAdminUser(string UserId, string fname, string lname, string timezone, string profileurl)
         {
             int ret = userrepo.UpdateAdminUserById(Guid.Parse(UserId), fname + " " + lname, timezone, profileurl);
             return ret.ToString();
@@ -600,14 +608,14 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string CheckEmailId(string NewEmailId)
         {
-         if (!userrepo.IsUserExist(NewEmailId))
-	      {
-           return "NotExist";
-	      } 
-          else
-          {
-           return "EmailId already Exist";
-          }
+            if (!userrepo.IsUserExist(NewEmailId))
+            {
+                return "NotExist";
+            }
+            else
+            {
+                return "EmailId already Exist";
+            }
         }
 
         [WebMethod]
@@ -675,7 +683,7 @@ namespace Api.Socioboard.Services
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string UpdateEmailId(string Id,string GroupId,string NewEmailId)
+        public string UpdateEmailId(string Id, string GroupId, string NewEmailId)
         {
             try
             {
@@ -685,7 +693,7 @@ namespace Api.Socioboard.Services
                 {
                     ret = userrepo.UpdateEmailId(Guid.Parse(Id), NewEmailId);
                     ret1 = objTeamRepository.UpdateEmailIdbyGroupId(Guid.Parse(Id), Guid.Parse(GroupId), NewEmailId);
-                    if (ret ==1 && ret1==1)
+                    if (ret == 1 && ret1 == 1)
                     {
                         return "Updated Successfully";
                     }
@@ -698,7 +706,7 @@ namespace Api.Socioboard.Services
                 {
                     return "Email Id alredy Exist";
                 }
-               
+
             }
             catch (Exception ex)
             {
@@ -719,7 +727,23 @@ namespace Api.Socioboard.Services
             {
                 return "Somthing Went Wrong";
             }
-            
+
+        }
+
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetUserInfoByCode(string code)
+        {
+            try
+            {
+                Domain.Socioboard.Domain.User ret = userrepo.GetUserInfoByCode(code);
+                return new JavaScriptSerializer().Serialize(ret);
+            }
+            catch (Exception ex)
+            {
+                return "";
+            }
         }
 
     }

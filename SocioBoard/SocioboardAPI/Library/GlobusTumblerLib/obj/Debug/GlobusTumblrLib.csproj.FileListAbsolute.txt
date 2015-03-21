@@ -53,9 +53,8 @@ D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobusTumblerLib\bin
 D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.dll
 D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.pdb
 D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblrLib.csprojResolveAssemblyReference.cache
-D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.dll
-D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.pdb
-D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\Newtonsoft.Json.dll
-D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblrLib.csprojResolveAssemblyReference.cache
-D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.dll
-D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.pdb
+C:\Users\GLB-260\Desktop\SB Code_14-02-15\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.dll
+C:\Users\GLB-260\Desktop\SB Code_14-02-15\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\GlobusTumblerLib.pdb
+C:\Users\GLB-260\Desktop\SB Code_14-02-15\SocioboardAPI\Library\GlobusTumblerLib\bin\Debug\Newtonsoft.Json.dll
+C:\Users\GLB-260\Desktop\SB Code_14-02-15\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.dll
+C:\Users\GLB-260\Desktop\SB Code_14-02-15\SocioboardAPI\Library\GlobusTumblerLib\obj\Debug\GlobusTumblerLib.pdb

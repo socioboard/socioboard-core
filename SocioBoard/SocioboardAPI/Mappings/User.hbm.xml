@@ -86,6 +86,10 @@
     <property name="Ewallet">
       <column name="Ewallet"  />
     </property>
+
+    <property name="UserCode">
+      <column name="UserCode"  />
+    </property>
     
   </class>
 </hibernate-mapping>

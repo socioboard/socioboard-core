@@ -2909,4 +2909,37 @@ Le Agenzie possono utilizzare commercialmente la versione Withelabel di SocialBo
   <data name="SocioBoard_Index_Index_LoveSocioboard" xml:space="preserve">
     <value>Perché la gente ama SOCIOBOARD</value>
   </data>
+  <data name="MyStuff_Affiliates_AjaxShow1" xml:space="preserve">
+    <value>Open Source social media management a portata di mano</value>
+  </data>
+  <data name="MyStuff_Affiliates_AjaxShow2" xml:space="preserve">
+    <value>Unisciti al movimento, clicca qui sotto collegamento.</value>
+  </data>
+  <data name="MyStuff_Affiliates_ReferralURL" xml:space="preserve">
+    <value>Public URL Referral</value>
+  </data>
+  <data name="MyStuff_Affiliates_ReferralURL_Link" xml:space="preserve">
+    <value>Invita i tuoi conoscenti utilizzando il seguente link</value>
+  </data>
+  <data name="MyStuff_Affiliates_ShowReferralURL" xml:space="preserve">
+    <value>Pubblico spettacolo Affiliate Url</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_AmountReceived" xml:space="preserve">
+    <value>importo ricevuto</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_CashRecived" xml:space="preserve">
+    <value>Cash Ricevuto</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_Orders" xml:space="preserve">
+    <value>I tuoi ordini</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_Success" xml:space="preserve">
+    <value>successo</value>
+  </data>
+  <data name="MyStuff_Ewallet_AjaxEwallet1" xml:space="preserve">
+    <value>Aggiungere i soldi al Portafoglio</value>
+  </data>
+  <data name="MyStuff_Ewallet_AjaxEwallet2" xml:space="preserve">
+    <value>torna indietro</value>
+  </data>
 </root>

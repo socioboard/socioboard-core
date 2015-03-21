@@ -10,6 +10,7 @@ using System.Web.Script.Services;
 using System.Web.Services;
 using GlobusMailLib;
 using System.IO;
+using log4net;
 
 namespace Api.Socioboard.Services
 {
@@ -25,30 +26,39 @@ namespace Api.Socioboard.Services
     {
         InvitationRepository InvitationRepo = new InvitationRepository();
         UserRepository userRepo = new UserRepository();
+         ILog logger = LogManager.GetLogger(typeof(Invitation));
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string SendInvitationMail(string SenderEmail, string SenderName, string FriendsEmail)
         {
             string ret = string.Empty;
             string mailbody = string.Empty;
-            string code = Utility.GenerateRandomUniqueString();
+            //string code = Utility.GenerateRandomUniqueString();
+            Domain.Socioboard.Domain.User _user = userRepo.getUserInfoByEmail(SenderEmail);
             string mailpath = HttpContext.Current.Server.MapPath("~/Layouts/Mails/Invitationmailer_template.html");
             mailbody = File.ReadAllText(mailpath);
             mailbody = mailbody.Replace("[FriendName]", SenderName);
-            mailbody = mailbody.Replace("[CODE]",code);
+            if (_user.UserCode == null || _user.UserCode == "")
+            {
+                string code = Utility.GenerateRandomUniqueString();
+                int retint = userRepo.UpdateCode(_user.Id,code);
+                _user = userRepo.getUsersById(_user.Id);
+
+            }
+            mailbody = mailbody.Replace("[CODE]", _user.UserCode);
             mailbody = mailbody.Replace("[DomainName]", ConfigurationManager.AppSettings["DomainName"]);
             string pass = ConfigurationManager.AppSettings["Mandrillpassword"];
             GlobusMailLib.MailHelper objMailHelper = new GlobusMailLib.MailHelper();
             ret = objMailHelper.SendInvitationMailByMandrill(SenderEmail, SenderName, FriendsEmail, pass, mailbody);
-            Domain.Socioboard.Domain.Invitation objInvite = new Domain.Socioboard.Domain.Invitation();
-            Domain.Socioboard.Domain.User _user = userRepo.getUserInfoByEmail(SenderEmail);
-            objInvite.Id=Guid.NewGuid();
-            objInvite.SenderEmail=_user.EmailId;
-            objInvite.SenderUserId=_user.Id;
-            objInvite.FriendEmail=FriendsEmail;
-            objInvite.SendInvitationDate = DateTime.Now;
-            objInvite.InvitationCode = code;
-            InvitationRepo.Add(objInvite);
+            //Domain.Socioboard.Domain.Invitation objInvite = new Domain.Socioboard.Domain.Invitation();
+            //Domain.Socioboard.Domain.User _user = userRepo.getUserInfoByEmail(SenderEmail);
+            //objInvite.Id=Guid.NewGuid();
+            //objInvite.SenderEmail=_user.EmailId;
+            //objInvite.SenderUserId=_user.Id;
+            //objInvite.FriendEmail=FriendsEmail;
+            //objInvite.SendInvitationDate = DateTime.Now;
+            //objInvite.InvitationCode = code;
+            //InvitationRepo.Add(objInvite);
             return ret;
         }
 
@@ -124,6 +134,36 @@ namespace Api.Socioboard.Services
                 return "Somthing Went Wrong";
             }
         }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public void AddInvitationInfoBycode(string code, string Email, string UserId)
+        {
+             try
+                {
+                    Domain.Socioboard.Domain.Invitation _Invitation=new Domain.Socioboard.Domain.Invitation();
+                    Domain.Socioboard.Domain.User _User = userRepo.GetUserInfoByCode(code);
+                    if (_User!=null)
+                    {
+                        _Invitation.Id = Guid.NewGuid();
+                        _Invitation.SenderEmail = _User.EmailId;
+                        _Invitation.SenderUserId = _User.Id;
+                        _Invitation.FriendEmail = Email;
+                        _Invitation.FriendUserId = Guid.Parse(UserId);
+                        _Invitation.InvitationCode = code;
+                        _Invitation.AcceptInvitationDate = DateTime.Now;
+                        _Invitation.Status = 1;
+                        InvitationRepo.Add(_Invitation);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    logger.Error("AddInvitationInfoBycode : "+ex.StackTrace);
+                    logger.Error("AddInvitationInfoBycode : "+ex.Message);
+                }
+          
+        }
+
 
     }
 }

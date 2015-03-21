@@ -48,7 +48,10 @@
                 {
                     Domain.Socioboard.Domain.FacebookFeed objFacebookFeeds = (Domain.Socioboard.Domain.FacebookFeed)lstdic[feedcount - 1];
                     days = (DateTime.Now.Date - objFacebookFeeds.FeedDate.Date).Days;
-                    
+                    if (days==0)
+                    {
+                        days = 1;
+                    }
                     avg = (double)feedcount / days;
                     stravg = String.Format("{0:0.00}", avg);
                 }
@@ -111,6 +114,10 @@
                         {
                             Domain.Socioboard.Domain.FbPagePost objFbPagePost = lstFbPagePost[feedcount - 1];
                             days = (DateTime.Now.Date - objFbPagePost.PostDate).Days;
+                            if (days == 0)
+                            {
+                                days = 1;
+                            }
                             avg = (double)feedcount / days;
                             stravg = String.Format("{0:0.00}", avg);
                         }
@@ -178,6 +185,10 @@
                 {
                     Domain.Socioboard.Domain.TwitterFeed objTwtFeed = (Domain.Socioboard.Domain.TwitterFeed)lstdic[feedcount - 1];
                     days=(DateTime.Now.Date-objTwtFeed.FeedDate.Date).Days;
+                    if (days == 0)
+                    {
+                        days = 1;
+                    }
                     avg = (double)feedcount / days;
                     stravg = String.Format("{0:0.00}", avg);
                 }
@@ -245,6 +256,10 @@
                 {
                     Domain.Socioboard.Domain.LinkedInFeed objLDFeed=(Domain.Socioboard.Domain.LinkedInFeed)lstdic[feedcount-1];
                     days = (DateTime.Now.Date - objLDFeed.FeedsDate.Date).Days;
+                    if (days == 0)
+                    {
+                        days = 1;
+                    }
                     avg = (double)feedcount / days;
                     stravg = String.Format("{0:0.00}", avg);
                 }
@@ -478,6 +493,10 @@
                 {
                     Domain.Socioboard.Domain.LinkedinCompanyPagePosts objLdCoPage=(Domain.Socioboard.Domain.LinkedinCompanyPagePosts)lstdic[feedcount-1];
                     days = (DateTime.Now.Date - objLdCoPage.PostDate.Date).Days;
+                    if (days == 0)
+                    {
+                        days = 1;
+                    }
                     avg = (double)feedcount / days;
                     stravg = String.Format("{0:0.00}", avg);
                 }

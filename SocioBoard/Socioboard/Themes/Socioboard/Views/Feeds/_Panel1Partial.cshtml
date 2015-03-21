@@ -32,51 +32,83 @@
                     </small>
                 </div>
                 <div style="margin-top: 2%;">
-                @foreach (string substritem in str)
-                {
-                    try
+                    @if (str != null)
                     {
-                        if (!string.IsNullOrEmpty(substritem))
+                        foreach (string substritem in str)
                         {
-                            if (substritem.Contains("http"))
+                            try
                             {
+                                if (!string.IsNullOrEmpty(substritem))
+                                {
+                                    if (substritem.Contains("http"))
+                                    {
                     <a target="_blank" href="@substritem ">@substritem</a>
-                            }
-                            else
-                            {
-                                string hrefPost = string.Empty;
+                                    }
+                                    else
+                                    {
+                                        string hrefPost = string.Empty;
 
-                                try
-                                {
-                                    hrefPost = "https://www.facebook.com/" + item.FromId + "/posts/" + item.MessageId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
+                                        try
+                                        {
+                                            hrefPost = "https://www.facebook.com/" + item.FromId + "/posts/" + item.MessageId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
 
-                                }
-                                catch (Exception ex)
-                                {
-                                    Console.WriteLine("Error : " + ex.StackTrace);
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            Console.WriteLine("Error : " + ex.StackTrace);
 
-                                }
-                                if (!string.IsNullOrEmpty(hrefPost))
-                                {
+                                        }
+                                        if (!string.IsNullOrEmpty(hrefPost))
+                                        {
                     <a target="_blank" href="@hrefPost">@substritem</a>
-                                }
-                                else
-                                {
+                                        }
+                                        else
+                                        {
                     @substritem;
 
-                                }
-                            }
+                                        }
+                                    }
 
+
+                                }
+
+
+                            }
+                            catch (Exception ex)
+                            {
+                            }
 
                         }
 
-
                     }
-                    catch (Exception ex)
+                    else
                     {
-                    }
+                     
+                        {
+                            string hrefPost = string.Empty;
 
-                }
+                            try
+                            {
+                                hrefPost = "https://www.facebook.com/" + item.FromId + "/posts/" + item.MessageId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
+
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("Error : " + ex.StackTrace);
+
+                            }
+                            if (!string.IsNullOrEmpty(hrefPost))
+                            {
+                    <a target="_blank" href="@hrefPost">@item.Message</a>
+                            }
+                            else
+                            {
+                    @item.Message;
+
+                            }
+                        }
+                    }
+                
                 @*Display image of post*@
                 @if (!string.IsNullOrEmpty(item.Picture) && item.Picture != null)
                 {

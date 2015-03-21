@@ -43,5 +43,26 @@ namespace Api.Socioboard.Services
         }
 
 
+        public List<Domain.Socioboard.Domain.Affiliates> GetAffiliateDataByUserId(Guid UserId)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        List<Domain.Socioboard.Domain.Affiliates> lst = session.CreateQuery("from Affiliates where UserId=: userid ORDER BY AffiliateDate DESC")
+                                       .SetParameter("userid", UserId)
+                                       .List<Domain.Socioboard.Domain.Affiliates>().ToList<Domain.Socioboard.Domain.Affiliates>();
+                        return lst;
+                    }
+                    catch (Exception ex)
+                    {
+                        return null;
+                    }
+                }
+            }
+        }
+
     }
 }

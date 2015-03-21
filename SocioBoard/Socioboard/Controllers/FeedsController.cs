@@ -404,7 +404,8 @@ namespace Socioboard.Controllers
             Api.InstagramFeed.InstagramFeed ApiobjInstagramFeed = new Api.InstagramFeed.InstagramFeed();
             Api.InstagramComment.InstagramComment ApiobjInstagramFeedComment = new Api.InstagramComment.InstagramComment();
 
-            List<Domain.Socioboard.Domain.InstagramFeed> lstInstagramFeed = (List<Domain.Socioboard.Domain.InstagramFeed>)(new JavaScriptSerializer().Deserialize(ApiobjInstagramFeed.GetLinkedInFeeds(objGroups.UserId.ToString(), profileid), typeof(List<Domain.Socioboard.Domain.InstagramFeed>)));
+            //List<Domain.Socioboard.Domain.InstagramFeed> lstInstagramFeed = (List<Domain.Socioboard.Domain.InstagramFeed>)(new JavaScriptSerializer().Deserialize(ApiobjInstagramFeed.GetLinkedInFeeds(objGroups.UserId.ToString(), profileid), typeof(List<Domain.Socioboard.Domain.InstagramFeed>)));
+            List<Domain.Socioboard.Domain.InstagramFeed> lstInstagramFeed = (List<Domain.Socioboard.Domain.InstagramFeed>)(new JavaScriptSerializer().Deserialize(ApiobjInstagramFeed.GetFeedsOfProfileWithRange(objGroups.UserId.ToString(), profileid,"0"), typeof(List<Domain.Socioboard.Domain.InstagramFeed>)));
 
             foreach (var item_lstInstagramfeed in lstInstagramFeed)
             {
@@ -445,7 +446,10 @@ namespace Socioboard.Controllers
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
             Api.TumblrFeed.TumblrFeed ApiobjTumblrFeed = new Api.TumblrFeed.TumblrFeed();
-            List<Domain.Socioboard.Domain.TumblrFeed> lstTumblrFeed = (List<Domain.Socioboard.Domain.TumblrFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTumblrFeed.GetAllTumblrFeedOfUsers(objGroups.UserId.ToString(), profileid), typeof(List<Domain.Socioboard.Domain.TumblrFeed>)));
+            //List<Domain.Socioboard.Domain.TumblrFeed> lstTumblrFeed = (List<Domain.Socioboard.Domain.TumblrFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTumblrFeed.GetAllTumblrFeedOfUsers(objGroups.UserId.ToString(), profileid), typeof(List<Domain.Socioboard.Domain.TumblrFeed>)));
+            //GetFeedsOfProfileWithRange
+            List<Domain.Socioboard.Domain.TumblrFeed> lstTumblrFeed = (List<Domain.Socioboard.Domain.TumblrFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTumblrFeed.GetAllTumblrFeedOfUsersWithRange(objGroups.UserId.ToString(), profileid, "0"), typeof(List<Domain.Socioboard.Domain.TumblrFeed>)));
+            
             foreach (var item_lstTumblrFeed in lstTumblrFeed)
             {
                 lstComment = new List<object>();
@@ -1164,29 +1168,29 @@ namespace Socioboard.Controllers
             List<object> lstobject = new List<object>();
             foreach (var item in lstFacebookMessage)
             {
-                if (isUserFeedsCalled)
-                {
-                    if (item.FromId != item.ProfileId)
-                    {
-                        lstobject.Add(item);
-                    }
-                }
-                else
-                {
+                //if (isUserFeedsCalled)
+                //{
+                //    if (item.FromId != item.ProfileId)
+                //    {
+                //        lstobject.Add(item);
+                //    }
+                //}
+                //else
+                //{
                     lstobject.Add(item);
-                }
+                //}
             }
            
             dictwallposts.Add("facebook", lstobject);
 
-            if (isUserFeedsCalled)
-            {
-                 return PartialView("_Panel3Partial", dictwallposts);
-            }
-            else
-            {
+            //if (isUserFeedsCalled)
+            //{
+            //     return PartialView("_Panel3Partial", dictwallposts);
+            //}
+            //else
+            //{
                 return PartialView("_Panel1Partial", dictwallposts);
-            }
+            //}
             
         }
     }

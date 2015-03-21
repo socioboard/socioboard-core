@@ -242,20 +242,86 @@ namespace Api.Socioboard.Services
                             }
                         }
                         objInstagramFeed.EntryDate = DateTime.Now;
-                        objInstagramFeed.FeedDate = userinf2.data[j].created_time.ToString();
-                        objInstagramFeed.FeedId = userinf2.data[j].id;
-                        objInstagramFeed.FeedImageUrl = userinf2.data[j].images.low_resolution.url.ToString();
-                        objInstagramFeed.InstagramId = objInsAccount.InstagramId;
-                        objInstagramFeed.LikeCount = userinf2.data[j].likes.count;
-                        objInstagramFeed.UserId = objInsAccount.UserId;
-                        objInstagramFeed.CommentCount = userinf2.data[j].comments.count;
-                        string str = userinf2.data[j].user_has_liked.ToString();
-                        if (str == "False")
+                        try
                         {
-                            objInstagramFeed.IsLike = 0;
+                            objInstagramFeed.FeedDate = userinf2.data[j].created_time.ToString();
                         }
-                        else { objInstagramFeed.IsLike = 1; }
-                        objInstagramFeed.AdminUser = userinf2.data[j].caption.from.username;
+                        catch (Exception ex)
+                        {
+                            logger.Error(ex.StackTrace);
+                        }
+                        try
+                        {
+                            objInstagramFeed.FeedId = userinf2.data[j].id;
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error(ex.StackTrace);
+                        }
+                        try
+                        {
+                            objInstagramFeed.FeedImageUrl = userinf2.data[j].images.low_resolution.url.ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error(ex.StackTrace);
+                        }
+                        try
+                        {
+                            objInstagramFeed.InstagramId = objInsAccount.InstagramId;
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error(ex.StackTrace);
+                        }
+                        try
+                        {
+                            objInstagramFeed.LikeCount = userinf2.data[j].likes.count;
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error(ex.StackTrace);
+                        }
+                        try
+                        {
+                            objInstagramFeed.UserId = objInsAccount.UserId;
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error(ex.StackTrace);
+                        }
+                        try
+                        {
+                            objInstagramFeed.CommentCount = userinf2.data[j].comments.count;
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error(ex.StackTrace);
+                        }
+                        try
+                        {
+                            string str = userinf2.data[j].user_has_liked.ToString();
+
+                            if (str == "False")
+                            {
+                                objInstagramFeed.IsLike = 0;
+                            }
+                            else { objInstagramFeed.IsLike = 1; }
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error(ex.StackTrace);
+                        }
+                       
+
+                        try
+                        {
+                            objInstagramFeed.AdminUser = userinf2.data[j].caption.from.username;
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error(ex.StackTrace);
+                        }
 
 
                         if (!objInstagramFeedRepository.checkInstagramFeedExists(userinf2.data[j].id, objInsAccount.UserId))

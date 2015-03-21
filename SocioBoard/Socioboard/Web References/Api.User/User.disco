@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="utf-8"?>
 <discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
   <contractRef ref="http://localhost:6361/Services/User.asmx?wsdl" docRef="http://localhost:6361/Services/User.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />

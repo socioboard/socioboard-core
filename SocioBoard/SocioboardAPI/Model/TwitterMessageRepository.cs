@@ -1576,6 +1576,80 @@ namespace Api.Socioboard.Services
             }// End se
         }
 
+        public List<Domain.Socioboard.Domain.TwitterMessage> getAllTwitterkMessagesOfUserByProfileIdWithRange(Guid UserId, string profileid, string count)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, open up a Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get messages of profile by profile id and user id.
+
+                        List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.Query<Domain.Socioboard.Domain.TwitterMessage>().Where(u => u.UserId == UserId && u.ProfileId.Equals(profileid)).OrderByDescending(x => x.MessageDate).Skip(Convert.ToInt32(count)).Take(15).ToList<Domain.Socioboard.Domain.TwitterMessage>();
+
+                        //List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.CreateQuery("from TwitterMessage where UserId = :userid and ProfileId = :profid")
+                        //.SetParameter("userid", UserId)
+                        //.SetParameter("profid", profileid)
+                        //.SetFirstResult(Int32.Parse(count))
+                        //.SetMaxResults(15)
+                        //.List<Domain.Socioboard.Domain.TwitterMessage>()
+                        //.ToList<Domain.Socioboard.Domain.TwitterMessage>()
+                        //.Where(u => u.UserId == UserId).OrderByDescending(x => x.MessageDate).ToList();
+
+                        return lstmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End Session
+        }
+
+        public List<Domain.Socioboard.Domain.TwitterMessage> GetAllMessageDetailWithRange(Guid UserId, string profileid, string count)
+        {
+
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, open up a Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        string[] arrsrt = profileid.Split(',');
+                        List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.Query<Domain.Socioboard.Domain.TwitterMessage>().Where(u => u.UserId == UserId && arrsrt.Contains(u.ProfileId)).OrderByDescending(x => x.MessageDate).Skip(Convert.ToInt32(count)).Take(15).ToList<Domain.Socioboard.Domain.TwitterMessage>();
+                      //  string str = "from TwitterMessage where UserId=:userid and ProfileId IN(";
+                      //  string[] arrsrt = profileid.Split(',');
+                      //  foreach (string sstr in arrsrt)
+                      //  {
+                      //      str += Convert.ToInt64(sstr) + ",";
+                      //  }
+                      //  str = str.Substring(0, str.Length - 1);
+                      //  str += ")";
+
+                      //  List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.CreateQuery(str).SetParameter("userid", UserId)
+                      //      .SetFirstResult(Convert.ToInt32(count))
+                      //  .SetMaxResults(15)
+
+                      //.List<Domain.Socioboard.Domain.TwitterMessage>()
+                      //.ToList<Domain.Socioboard.Domain.TwitterMessage>().OrderBy(x => x.MessageDate).ToList();
+                        return lstmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }
+            }
+        }
 
     }
 }

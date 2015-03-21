@@ -134,6 +134,56 @@ namespace Socioboard.Controllers
            
         }
 
+        //Modified by sumit gupta [27-02-15]
+        [HttpPost]
+        public ActionResult PostOnselectedGroupModified(FormCollection frmcollection)
+        {
+            string msg = string.Empty;
+            string title = string.Empty;
+            string intrval = string.Empty;
+            string fbuserid = string.Empty;
+            string linuserid = string.Empty;
+            string clienttime = string.Empty;
+            var SelectedGroupId = "";
+
+            SelectedGroupId = frmcollection["gid"].ToString();
+            title = frmcollection["title"].ToString();
+            msg = frmcollection["msg"].ToString();
+            intrval = frmcollection["intervaltime"].ToString();
+
+            clienttime = frmcollection["clienttime"].ToString();
+            string time = frmcollection["timeforsch"];
+            string date = frmcollection["dateforsch"];
+            var files = Request.Files.Count;
+            dynamic fi = Request.Files["files"];
+
+            string filepath = string.Empty;
+            string imagefile = string.Empty;
+            if (Request.Files.Count > 0)
+            {
+                if (fi != null)
+                {
+                    var path = Server.MapPath("~/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/upload");
+
+
+                    filepath = path + "\\" + fi.FileName;
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    fi.SaveAs(filepath);
+                }
+                imagefile = fi.FileName;
+            }
+
+
+            string response = Helper.SBUtils.PostOnSelectedGroups(SelectedGroupId, title, msg, intrval, clienttime, time, date, filepath);
+
+
+            return Content(response);
+
+        }
+
         [HttpPost]
         public ActionResult CommentOnFbGroupPost(string GpPostid, string comment, string Accesstoken)
         {

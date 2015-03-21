@@ -181,7 +181,7 @@
                         url: '../PersonalSetting/CheckEmailIdExist?newEmailId=' + email,
                         success: function (msg) {
                             if (msg == "Mail Send Successfully") {
-                                alertify.success('Mail Send Successfully');
+                                alertify.success('Mail Sent Successfully');
                                 $('#ResetMail').modal('hide');
                             }
                             else if (msg == "Email Id alredy Exist") {
@@ -194,7 +194,7 @@
                                 alertify.error('Error please check');
                             }
                             $('#newemail').val('');
-                            window.location = '../personalSettings/LoadPersonalSetting';
+                            window.location = '../PersonalSetting/LoadPersonalSetting';
                         },
                         async: false
                     });

@@ -64,10 +64,9 @@ D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobussDropboxLib\bi
 D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.exe
 D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.pdb
 D:\D drive\SB_Suresh\SB Code_14-02-15\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.csprojResolveAssemblyReference.cache
-D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\GlobussDropboxLib.exe.config
-D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\GlobussDropboxLib.exe
-D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\GlobussDropboxLib.pdb
-D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\Newtonsoft.Json.dll
-D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.csprojResolveAssemblyReference.cache
-D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.exe
-D:\D drive\SB_Github\socioboard\SocioBoard\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.pdb
+C:\Users\GLB-260\Desktop\SB Code_14-02-15\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\GlobussDropboxLib.exe.config
+C:\Users\GLB-260\Desktop\SB Code_14-02-15\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\GlobussDropboxLib.exe
+C:\Users\GLB-260\Desktop\SB Code_14-02-15\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\GlobussDropboxLib.pdb
+C:\Users\GLB-260\Desktop\SB Code_14-02-15\SocioboardAPI\Library\GlobussDropboxLib\bin\Debug\Newtonsoft.Json.dll
+C:\Users\GLB-260\Desktop\SB Code_14-02-15\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.exe
+C:\Users\GLB-260\Desktop\SB Code_14-02-15\SocioboardAPI\Library\GlobussDropboxLib\obj\x86\Debug\GlobussDropboxLib.pdb

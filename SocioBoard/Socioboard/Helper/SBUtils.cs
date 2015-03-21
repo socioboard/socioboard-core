@@ -619,10 +619,9 @@ namespace Socioboard.Helper
 
         public static string GetFacebookRedirectLink()
         {
-            //return "http://www.facebook.com/v2.0/dialog/oauth/?scope=user_friends,read_friendlists,publish_actions,publish_stream,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,user_groups,offline_access,publish_actions,manage_pages&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
-            return "http://www.facebook.com/v2.0/dialog/oauth/?scope=user_friends,read_friendlists,publish_actions,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,user_groups,offline_access,publish_actions,manage_pages&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
-            //return "http://www.facebook.com/v1.0/dialog/oauth/?scope=public_profile, read_stream, read_mailbox, rsvp_event, email, read_insights, manage_notifications, read_friendlists, manage_pages, publish_actions, user_birthday, user_religion_politics, user_relationships, user_relationship_details, user_hometown, user_location, user_likes, user_activities, user_interests, user_education_history, user_work_history, user_website, user_groups, user_events, user_photos, user_videos, user_friends, user_about_me, user_status, user_games_activity, user_actions.music, user_actions.video, user_actions.news&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
-
+            //return "http://www.facebook.com/v2.0/dialog/oauth/?scope=user_friends,read_friendlists,publish_actions,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,user_groups,offline_access,publish_actions,manage_pages&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
+            //return "http://www.facebook.com/v2.0/dialog/oauth/?scope=user_friends,user_status,read_friendlists,publish_actions,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,user_groups,offline_access,publish_actions,manage_pages&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
+            return "http://www.facebook.com/v2.0/dialog/oauth/?scope=user_friends,user_status,publish_actions,read_insights,manage_pages,user_checkins,manage_notifications,read_page_mailboxes,email,offline_access,publish_actions,manage_pages&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
         }
 
         public static string CommentOnLinkedinPost(string groupid, string GpPostid, string message, string LinkedinUserId)
@@ -702,24 +701,175 @@ namespace Socioboard.Helper
                             string facebookgrouppost = string.Empty;
                             string groupid = networkingwithid[2];
                             string profileid = networkingwithid[0];
-                            if (intervaltime != 0)
+                            //if (intervaltime != 0)
+                            //{
+                            //    if (HttpContext.Current.Session["scheduletime"] == null)
+                            //    {
+                            //        string servertime = CompareDateWithclient(clienttime, date + " " + time);
+                            //        _ScheduledMessage.ScheduleTime = Convert.ToDateTime(servertime);
+                            //        DateTime d1 = _ScheduledMessage.ScheduleTime;
+                            //        DateTime d2 = d1.AddMinutes(intervaltime);
+                            //        HttpContext.Current.Session["scheduletime"] = d2;
+                            //    }
+                            //    else
+                            //    {
+                            //        DateTime d1 = (DateTime)HttpContext.Current.Session["scheduletime"];
+                            //        _ScheduledMessage.ScheduleTime = d1;
+                            //        DateTime d2 = d1.AddMinutes(intervaltime);
+                            //        HttpContext.Current.Session["scheduletime"] = d2;
+                            //    }
+                            //}
+                            _ScheduledMessage.CreateTime = DateTime.Now;
+                            _ScheduledMessage.ProfileType = "facebookgroup";
+                            _ScheduledMessage.ProfileId = profileid;
+                            _ScheduledMessage.Id = Guid.NewGuid();
+                            if (!string.IsNullOrEmpty(imagefile))
                             {
-                                if (HttpContext.Current.Session["scheduletime"] == null)
-                                {
-                                    string servertime = CompareDateWithclient(clienttime, date + " " + time);
-                                    _ScheduledMessage.ScheduleTime = Convert.ToDateTime(servertime);
-                                    DateTime d1 = _ScheduledMessage.ScheduleTime;
-                                    DateTime d2 = d1.AddMinutes(intervaltime);
-                                    HttpContext.Current.Session["scheduletime"] = d2;
-                                }
-                                else
-                                {
-                                    DateTime d1 = (DateTime)HttpContext.Current.Session["scheduletime"];
-                                    _ScheduledMessage.ScheduleTime = d1;
-                                    DateTime d2 = d1.AddMinutes(intervaltime);
-                                    HttpContext.Current.Session["scheduletime"] = d2;
-                                }
+                                //var path = System.Configuration.ConfigurationManager.AppSettings["MailSenderDomain"] + "Contents/img/upload";
+                                //var path = "www.socioboard.com/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/upload";
+                                //string filepath = path + "/" + imagefile;
+                                _ScheduledMessage.PicUrl = imagefile;
                             }
+                            else
+                            {
+                                _ScheduledMessage.PicUrl = "";
+                            }
+
+                            //_ScheduledMessage.ClientTime = Convert.ToDateTime(clienttime);
+                            _ScheduledMessage.ShareMessage = msg;
+                            _ScheduledMessage.UserId = objUser.Id;
+                            _ScheduledMessage.Status = false;
+                            //Domain.Socioboard.Domain.ScheduledMessage _Schedulemessage = (Domain.Socioboard.Domain.ScheduledMessage)new JavaScriptSerializer().Deserialize(ApiobjScheduledMessage.AddGroupScheduleMessages(_ScheduledMessage.ScheduleTime.ToString(), _ScheduledMessage.CreateTime.ToString(), _ScheduledMessage.ProfileType.ToString(), _ScheduledMessage.ProfileId.ToString(), _ScheduledMessage.PicUrl.ToString(), _ScheduledMessage.ClientTime.ToString(), _ScheduledMessage.ShareMessage.ToString(), _ScheduledMessage.UserId.ToString(), _ScheduledMessage.Status.ToString()), typeof(Domain.Socioboard.Domain.ScheduledMessage));
+                            Domain.Socioboard.Domain.ScheduledMessage _Schedulemessage = (Domain.Socioboard.Domain.ScheduledMessage)new JavaScriptSerializer().Deserialize(ApiobjScheduledMessage.AddGroupScheduleMessages(date + " " + time, "it will create at server", _ScheduledMessage.ProfileType.ToString(), _ScheduledMessage.ProfileId.ToString(), _ScheduledMessage.PicUrl.ToString(), clienttime, _ScheduledMessage.ShareMessage.ToString(), _ScheduledMessage.UserId.ToString(), _ScheduledMessage.Status.ToString()), typeof(Domain.Socioboard.Domain.ScheduledMessage));
+
+                            _GroupScheduleMessage.Id = Guid.NewGuid();
+                            _GroupScheduleMessage.ScheduleMessageId = _Schedulemessage.Id;
+                            _GroupScheduleMessage.GroupId = groupid;
+                            ApiObjGrpSchduleMessage.AddGroupScheduleMessage(_GroupScheduleMessage.ScheduleMessageId.ToString(), _GroupScheduleMessage.GroupId.ToString());
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                        }
+                    }
+                    else if (networkingwithid[1] == "lin")
+                    {
+                        try
+                        {
+                            string groupid = networkingwithid[2];
+                            string profileid = networkingwithid[0];
+                            //if (intervaltime != 0)
+                            //{
+                            //    if (HttpContext.Current.Session["scheduletime"] == null)
+                            //    {
+                            //        string servertime = CompareDateWithclient(clienttime, date + " " + time);
+                            //        _ScheduledMessage.ScheduleTime = Convert.ToDateTime(servertime);
+                            //        DateTime d1 = _ScheduledMessage.ScheduleTime;
+                            //        DateTime d2 = d1.AddMinutes(intervaltime);
+                            //        HttpContext.Current.Session["scheduletime"] = d2;
+                            //    }
+                            //    else
+                            //    {
+                            //        DateTime d1 = (DateTime)HttpContext.Current.Session["scheduletime"];
+                            //        _ScheduledMessage.ScheduleTime = d1;
+                            //        DateTime d2 = d1.AddMinutes(intervaltime);
+                            //        HttpContext.Current.Session["scheduletime"] = d2;
+                            //    }
+                            //}
+                            string message = title + "$%^_^%$" + msg;
+                            _ScheduledMessage.CreateTime = DateTime.Now;
+                            _ScheduledMessage.ProfileType = "linkedingroup";
+                            _ScheduledMessage.ProfileId = profileid;
+                            _ScheduledMessage.Id = Guid.NewGuid();
+                            if (!string.IsNullOrEmpty(imagefile))
+                            {
+                               // var path = System.Configuration.ConfigurationManager.AppSettings["MailSenderDomain"] + "Contents/img/upload";
+                                //var path = "www.socioboard.com/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/upload";
+                                //string filepath = path + "/" + imagefile;
+                                _ScheduledMessage.PicUrl = imagefile;
+
+                            }
+                            else
+                            {
+                                _ScheduledMessage.PicUrl = "";
+                            }
+                            _ScheduledMessage.ClientTime = Convert.ToDateTime(clienttime);
+                            _ScheduledMessage.ShareMessage = message; ;
+                            _ScheduledMessage.UserId = objUser.Id;
+                            _ScheduledMessage.Status = false;
+                            //Domain.Socioboard.Domain.ScheduledMessage _Schedulemessage = (Domain.Socioboard.Domain.ScheduledMessage)new JavaScriptSerializer().Deserialize(ApiobjScheduledMessage.AddGroupScheduleMessages(_ScheduledMessage.ScheduleTime.ToString(), _ScheduledMessage.CreateTime.ToString(), _ScheduledMessage.ProfileType.ToString(), _ScheduledMessage.ProfileId.ToString(), _ScheduledMessage.PicUrl.ToString(), _ScheduledMessage.ClientTime.ToString(), _ScheduledMessage.ShareMessage.ToString(), _ScheduledMessage.UserId.ToString(), _ScheduledMessage.Status.ToString()), typeof(Domain.Socioboard.Domain.ScheduledMessage));
+                            Domain.Socioboard.Domain.ScheduledMessage _Schedulemessage = (Domain.Socioboard.Domain.ScheduledMessage)new JavaScriptSerializer().Deserialize(ApiobjScheduledMessage.AddGroupScheduleMessages(date + " " + time, "it will create at server", _ScheduledMessage.ProfileType.ToString(), _ScheduledMessage.ProfileId.ToString(), _ScheduledMessage.PicUrl.ToString(), clienttime, _ScheduledMessage.ShareMessage.ToString(), _ScheduledMessage.UserId.ToString(), _ScheduledMessage.Status.ToString()), typeof(Domain.Socioboard.Domain.ScheduledMessage));
+                            
+                            _GroupScheduleMessage.Id = Guid.NewGuid();
+                            _GroupScheduleMessage.ScheduleMessageId = _Schedulemessage.Id;
+                            _GroupScheduleMessage.GroupId = groupid;
+                            ApiObjGrpSchduleMessage.AddGroupScheduleMessage(_GroupScheduleMessage.ScheduleMessageId.ToString(), _GroupScheduleMessage.GroupId.ToString());
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            return "success";
+        }
+
+        //Modified by sumit gupta [27-02-15]
+        public static string PostOnSelectedGroupsModified(string SelectedGroupId, string title, string msg, string intrval, string clienttime, string time, string date, string imagefile)
+        {
+
+            User objUser = (User)System.Web.HttpContext.Current.Session["User"];
+            try
+            {
+                ScheduledMessage _ScheduledMessage = new ScheduledMessage();
+                GroupScheduleMessage _GroupScheduleMessage = new GroupScheduleMessage();
+
+
+                Api.ScheduledMessage.ScheduledMessage ApiobjScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
+                Api.GroupScheduleMessage.GroupScheduleMessage ApiObjGrpSchduleMessage = new Api.GroupScheduleMessage.GroupScheduleMessage();
+
+
+                int intervaltime = Convert.ToInt32(intrval);
+
+                HttpContext.Current.Session["scheduletime"] = null;
+                var SelctGroupId = SelectedGroupId.ToString().Split(',');
+
+
+                foreach (var item in SelctGroupId)
+                {
+                    string[] networkingwithid = item.Split(new string[] { "*#*" }, StringSplitOptions.None);
+
+
+                    if (networkingwithid[1] == "fb")
+                    {
+                        try
+                        {
+                            string facebookgrouppost = string.Empty;
+                            string groupid = networkingwithid[2];
+                            string profileid = networkingwithid[0];
+                            //if (intervaltime != 0)
+                            //{
+                            //    if (HttpContext.Current.Session["scheduletime"] == null)
+                            //    {
+                            //        string servertime = CompareDateWithclient(clienttime, date + " " + time);
+                            //        _ScheduledMessage.ScheduleTime = Convert.ToDateTime(servertime);
+                            //        DateTime d1 = _ScheduledMessage.ScheduleTime;
+                            //        DateTime d2 = d1.AddMinutes(intervaltime);
+                            //        HttpContext.Current.Session["scheduletime"] = d2;
+                            //    }
+                            //    else
+                            //    {
+                            //        DateTime d1 = (DateTime)HttpContext.Current.Session["scheduletime"];
+                            //        _ScheduledMessage.ScheduleTime = d1;
+                            //        DateTime d2 = d1.AddMinutes(intervaltime);
+                            //        HttpContext.Current.Session["scheduletime"] = d2;
+                            //    }
+                            //}
                             _ScheduledMessage.CreateTime = DateTime.Now;
                             _ScheduledMessage.ProfileType = "facebookgroup";
                             _ScheduledMessage.ProfileId = profileid;
@@ -783,7 +933,7 @@ namespace Socioboard.Helper
                             _ScheduledMessage.Id = Guid.NewGuid();
                             if (!string.IsNullOrEmpty(imagefile))
                             {
-                               // var path = System.Configuration.ConfigurationManager.AppSettings["MailSenderDomain"] + "Contents/img/upload";
+                                // var path = System.Configuration.ConfigurationManager.AppSettings["MailSenderDomain"] + "Contents/img/upload";
                                 //var path = "www.socioboard.com/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/upload";
                                 //string filepath = path + "/" + imagefile;
                                 _ScheduledMessage.PicUrl = imagefile;
@@ -819,30 +969,63 @@ namespace Socioboard.Helper
 
         public static string CompareDateWithclient(string clientdate, string scheduletime)
         {
-            DateTime client = Convert.ToDateTime(clientdate);
-            string strTimeNow = String.Format("{0:s}", client).Replace('T', ' ');
-
-            DateTime server = DateTime.Now;
-            DateTime schedule = Convert.ToDateTime(scheduletime);
-            if (DateTime.Compare(client, server) > 0)
+            try
             {
+                DateTime client = Convert.ToDateTime(clientdate);
 
-                double minutes = (server - client).TotalMinutes;
-                schedule = schedule.AddMinutes(minutes);
-
+                DateTime server = DateTime.Now;
+                DateTime schedule = Convert.ToDateTime(scheduletime);
+                {
+                    var kind = schedule.Kind; // will equal DateTimeKind.Unspecified
+                    if (DateTime.Compare(client, server) > 0)
+                    {
+                        double minutes = (server - client).TotalMinutes;
+                        schedule = schedule.AddMinutes(minutes);
+                    }
+                    else if (DateTime.Compare(client, server) == 0)
+                    {
+                    }
+                    else if (DateTime.Compare(client, server) < 0)
+                    {
+                        double minutes = (server - client).TotalMinutes;
+                        schedule = schedule.AddMinutes(minutes);
+                    }
+                }
+                return schedule.ToString();
             }
-            else if (DateTime.Compare(client, server) == 0)
+            catch (Exception ex)
             {
-
-
+                logger.Error(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+                return "";
             }
-            else if (DateTime.Compare(client, server) < 0)
-            {
-                double minutes = (server - client).TotalMinutes;
-                schedule = schedule.AddMinutes(-minutes);
-            }
-            return schedule.ToString();
         }
+        //public static string CompareDateWithclient(string clientdate, string scheduletime)
+        //{
+        //    DateTime client = Convert.ToDateTime(clientdate);
+        //    string strTimeNow = String.Format("{0:s}", client).Replace('T', ' ');
+
+        //    DateTime server = DateTime.Now;
+        //    DateTime schedule = Convert.ToDateTime(scheduletime);
+        //    if (DateTime.Compare(client, server) > 0)
+        //    {
+
+        //        double minutes = (server - client).TotalMinutes;
+        //        schedule = schedule.AddMinutes(minutes);
+
+        //    }
+        //    else if (DateTime.Compare(client, server) == 0)
+        //    {
+
+
+        //    }
+        //    else if (DateTime.Compare(client, server) < 0)
+        //    {
+        //        double minutes = (server - client).TotalMinutes;
+        //        schedule = schedule.AddMinutes(-minutes);
+        //    }
+        //    return schedule.ToString();
+        //}
 
         public static Domain.Socioboard.Domain.Team GetTeamFromGroupId()
         {

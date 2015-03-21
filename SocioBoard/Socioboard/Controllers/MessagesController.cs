@@ -292,13 +292,13 @@ namespace Socioboard.Controllers
                         {
                             //Updated by SumitGupta [09-02-2015]
                             //ds = clsfeedsandmess.bindMessagesIntoDataTable(team.Id);
-                            ds = clsfeedsandmess.bindMessagesIntoDataTable(team.Id, noOfDataToSkip);
+                            ds = clsfeedsandmess.bindMessagesIntoDataTable(team.Id, noOfDataToSkip, _user.Id);
                         }
                         else
                         {
                             //Updated by SumitGupta [09-02-2015]
                             //ds = clsfeedsandmess.bindFeedMessageIntoDataTable(profid);
-                            ds = clsfeedsandmess.bindFeedMessageIntoDataTable(profid, noOfDataToSkip);
+                            ds = clsfeedsandmess.bindFeedMessageIntoDataTable(profid, noOfDataToSkip, _user.Id);
                         }
                       
                         Session["MessageDataTable"] = ds;
@@ -487,13 +487,15 @@ namespace Socioboard.Controllers
             return PartialView("_TaskPartial", taskdata);
         }
 
+        
+        [ValidateInput(false)]
         public ActionResult savetask()
         {
              string groupid = Session["group"].ToString();
 
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
 
-            string descritption = Request.QueryString["description"];
+            string descritption = Request.Unvalidated.QueryString["description"];
             string MessageDate = Request.QueryString["msgdate"];
 
             string AssignDate = Request.QueryString["now"];

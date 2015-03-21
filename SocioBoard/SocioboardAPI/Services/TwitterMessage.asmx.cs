@@ -395,5 +395,20 @@ namespace Api.Socioboard.Services
             }
         }
 
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string getAllTwitterkMessagesOfUserByProfileIdWithRange(string UserId, string profileid, string noOfDataToSkip)
+        {
+            List<Domain.Socioboard.Domain.TwitterMessage> lsttwtmsg = objTwitterMessageRepository.getAllTwitterkMessagesOfUserByProfileIdWithRange(Guid.Parse(UserId), profileid, noOfDataToSkip);
+            return new JavaScriptSerializer().Serialize(lsttwtmsg);
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllMessageDetailWithRange(string UserId, string profileid, string noOfDataToSkip)
+        {
+            List<Domain.Socioboard.Domain.TwitterMessage> lsttwtmsg = objTwitterMessageRepository.GetAllMessageDetailWithRange(Guid.Parse(UserId), profileid, noOfDataToSkip);
+            return new JavaScriptSerializer().Serialize(lsttwtmsg);
+        }
     }
 }

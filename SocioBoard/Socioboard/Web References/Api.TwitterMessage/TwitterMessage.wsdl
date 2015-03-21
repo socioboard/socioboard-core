@@ -230,6 +230,38 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getAllTwitterkMessagesOfUserByProfileIdWithRange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="noOfDataToSkip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllTwitterkMessagesOfUserByProfileIdWithRangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllTwitterkMessagesOfUserByProfileIdWithRangeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllMessageDetailWithRange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="noOfDataToSkip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllMessageDetailWithRangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllMessageDetailWithRangeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
       <s:element name="int" type="s:int" />
     </s:schema>
@@ -323,6 +355,18 @@
   </wsdl:message>
   <wsdl:message name="GetFeedCountByProfileIdAndUserIdSoapOut">
     <wsdl:part name="parameters" element="tns:GetFeedCountByProfileIdAndUserIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllTwitterkMessagesOfUserByProfileIdWithRangeSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllTwitterkMessagesOfUserByProfileIdWithRange" />
+  </wsdl:message>
+  <wsdl:message name="getAllTwitterkMessagesOfUserByProfileIdWithRangeSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllTwitterkMessagesOfUserByProfileIdWithRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMessageDetailWithRangeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllMessageDetailWithRange" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMessageDetailWithRangeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllMessageDetailWithRangeResponse" />
   </wsdl:message>
   <wsdl:message name="GetTwitterMessagesHttpGetIn">
     <wsdl:part name="TwitterId" type="s:string" />
@@ -432,6 +476,22 @@
   <wsdl:message name="GetFeedCountByProfileIdAndUserIdHttpGetOut">
     <wsdl:part name="Body" element="tns:int" />
   </wsdl:message>
+  <wsdl:message name="getAllTwitterkMessagesOfUserByProfileIdWithRangeHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="noOfDataToSkip" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllTwitterkMessagesOfUserByProfileIdWithRangeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMessageDetailWithRangeHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="noOfDataToSkip" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMessageDetailWithRangeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="GetTwitterMessagesHttpPostIn">
     <wsdl:part name="TwitterId" type="s:string" />
     <wsdl:part name="Userid" type="s:string" />
@@ -540,6 +600,22 @@
   <wsdl:message name="GetFeedCountByProfileIdAndUserIdHttpPostOut">
     <wsdl:part name="Body" element="tns:int" />
   </wsdl:message>
+  <wsdl:message name="getAllTwitterkMessagesOfUserByProfileIdWithRangeHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="noOfDataToSkip" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllTwitterkMessagesOfUserByProfileIdWithRangeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMessageDetailWithRangeHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="noOfDataToSkip" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMessageDetailWithRangeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="TwitterMessageSoap">
     <wsdl:operation name="GetTwitterMessages">
       <wsdl:input message="tns:GetTwitterMessagesSoapIn" />
@@ -600,6 +676,14 @@
     <wsdl:operation name="GetFeedCountByProfileIdAndUserId">
       <wsdl:input message="tns:GetFeedCountByProfileIdAndUserIdSoapIn" />
       <wsdl:output message="tns:GetFeedCountByProfileIdAndUserIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllTwitterkMessagesOfUserByProfileIdWithRange">
+      <wsdl:input message="tns:getAllTwitterkMessagesOfUserByProfileIdWithRangeSoapIn" />
+      <wsdl:output message="tns:getAllTwitterkMessagesOfUserByProfileIdWithRangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMessageDetailWithRange">
+      <wsdl:input message="tns:GetAllMessageDetailWithRangeSoapIn" />
+      <wsdl:output message="tns:GetAllMessageDetailWithRangeSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TwitterMessageHttpGet">
@@ -663,6 +747,14 @@
       <wsdl:input message="tns:GetFeedCountByProfileIdAndUserIdHttpGetIn" />
       <wsdl:output message="tns:GetFeedCountByProfileIdAndUserIdHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="getAllTwitterkMessagesOfUserByProfileIdWithRange">
+      <wsdl:input message="tns:getAllTwitterkMessagesOfUserByProfileIdWithRangeHttpGetIn" />
+      <wsdl:output message="tns:getAllTwitterkMessagesOfUserByProfileIdWithRangeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMessageDetailWithRange">
+      <wsdl:input message="tns:GetAllMessageDetailWithRangeHttpGetIn" />
+      <wsdl:output message="tns:GetAllMessageDetailWithRangeHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TwitterMessageHttpPost">
     <wsdl:operation name="GetTwitterMessages">
@@ -724,6 +816,14 @@
     <wsdl:operation name="GetFeedCountByProfileIdAndUserId">
       <wsdl:input message="tns:GetFeedCountByProfileIdAndUserIdHttpPostIn" />
       <wsdl:output message="tns:GetFeedCountByProfileIdAndUserIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllTwitterkMessagesOfUserByProfileIdWithRange">
+      <wsdl:input message="tns:getAllTwitterkMessagesOfUserByProfileIdWithRangeHttpPostIn" />
+      <wsdl:output message="tns:getAllTwitterkMessagesOfUserByProfileIdWithRangeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMessageDetailWithRange">
+      <wsdl:input message="tns:GetAllMessageDetailWithRangeHttpPostIn" />
+      <wsdl:output message="tns:GetAllMessageDetailWithRangeHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="TwitterMessageSoap" type="tns:TwitterMessageSoap">
@@ -856,6 +956,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetFeedCountByProfileIdAndUserId">
       <soap:operation soapAction="http://tempuri.org/GetFeedCountByProfileIdAndUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTwitterkMessagesOfUserByProfileIdWithRange">
+      <soap:operation soapAction="http://tempuri.org/getAllTwitterkMessagesOfUserByProfileIdWithRange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMessageDetailWithRange">
+      <soap:operation soapAction="http://tempuri.org/GetAllMessageDetailWithRange" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1001,6 +1119,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAllTwitterkMessagesOfUserByProfileIdWithRange">
+      <soap12:operation soapAction="http://tempuri.org/getAllTwitterkMessagesOfUserByProfileIdWithRange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMessageDetailWithRange">
+      <soap12:operation soapAction="http://tempuri.org/GetAllMessageDetailWithRange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="TwitterMessageHttpGet" type="tns:TwitterMessageHttpGet">
     <http:binding verb="GET" />
@@ -1139,6 +1275,24 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAllTwitterkMessagesOfUserByProfileIdWithRange">
+      <http:operation location="/getAllTwitterkMessagesOfUserByProfileIdWithRange" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMessageDetailWithRange">
+      <http:operation location="/GetAllMessageDetailWithRange" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="TwitterMessageHttpPost" type="tns:TwitterMessageHttpPost">
     <http:binding verb="POST" />
@@ -1270,6 +1424,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetFeedCountByProfileIdAndUserId">
       <http:operation location="/GetFeedCountByProfileIdAndUserId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTwitterkMessagesOfUserByProfileIdWithRange">
+      <http:operation location="/getAllTwitterkMessagesOfUserByProfileIdWithRange" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMessageDetailWithRange">
+      <http:operation location="/GetAllMessageDetailWithRange" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

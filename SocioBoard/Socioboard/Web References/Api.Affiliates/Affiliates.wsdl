@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:element name="HelloWorld">
@@ -40,6 +40,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetAffilieteDetailbyUserIdTrans">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAffilieteDetailbyUserIdTransResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAffilieteDetailbyUserIdTransResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -61,6 +75,12 @@
   <wsdl:message name="GetAffilieteDetailbyUserIdSoapOut">
     <wsdl:part name="parameters" element="tns:GetAffilieteDetailbyUserIdResponse" />
   </wsdl:message>
+  <wsdl:message name="GetAffilieteDetailbyUserIdTransSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAffilieteDetailbyUserIdTrans" />
+  </wsdl:message>
+  <wsdl:message name="GetAffilieteDetailbyUserIdTransSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAffilieteDetailbyUserIdTransResponse" />
+  </wsdl:message>
   <wsdl:message name="HelloWorldHttpGetIn" />
   <wsdl:message name="HelloWorldHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -77,6 +97,12 @@
     <wsdl:part name="FriendsUserId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetAffilieteDetailbyUserIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAffilieteDetailbyUserIdTransHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAffilieteDetailbyUserIdTransHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="HelloWorldHttpPostIn" />
@@ -97,6 +123,12 @@
   <wsdl:message name="GetAffilieteDetailbyUserIdHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetAffilieteDetailbyUserIdTransHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAffilieteDetailbyUserIdTransHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="AffiliatesSoap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -109,6 +141,10 @@
     <wsdl:operation name="GetAffilieteDetailbyUserId">
       <wsdl:input message="tns:GetAffilieteDetailbyUserIdSoapIn" />
       <wsdl:output message="tns:GetAffilieteDetailbyUserIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAffilieteDetailbyUserIdTrans">
+      <wsdl:input message="tns:GetAffilieteDetailbyUserIdTransSoapIn" />
+      <wsdl:output message="tns:GetAffilieteDetailbyUserIdTransSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="AffiliatesHttpGet">
@@ -124,6 +160,10 @@
       <wsdl:input message="tns:GetAffilieteDetailbyUserIdHttpGetIn" />
       <wsdl:output message="tns:GetAffilieteDetailbyUserIdHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetAffilieteDetailbyUserIdTrans">
+      <wsdl:input message="tns:GetAffilieteDetailbyUserIdTransHttpGetIn" />
+      <wsdl:output message="tns:GetAffilieteDetailbyUserIdTransHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="AffiliatesHttpPost">
     <wsdl:operation name="HelloWorld">
@@ -137,6 +177,10 @@
     <wsdl:operation name="GetAffilieteDetailbyUserId">
       <wsdl:input message="tns:GetAffilieteDetailbyUserIdHttpPostIn" />
       <wsdl:output message="tns:GetAffilieteDetailbyUserIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAffilieteDetailbyUserIdTrans">
+      <wsdl:input message="tns:GetAffilieteDetailbyUserIdTransHttpPostIn" />
+      <wsdl:output message="tns:GetAffilieteDetailbyUserIdTransHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="AffiliatesSoap" type="tns:AffiliatesSoap">
@@ -161,6 +205,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAffilieteDetailbyUserId">
       <soap:operation soapAction="http://tempuri.org/GetAffilieteDetailbyUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAffilieteDetailbyUserIdTrans">
+      <soap:operation soapAction="http://tempuri.org/GetAffilieteDetailbyUserIdTrans" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -198,6 +251,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAffilieteDetailbyUserIdTrans">
+      <soap12:operation soapAction="http://tempuri.org/GetAffilieteDetailbyUserIdTrans" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="AffiliatesHttpGet" type="tns:AffiliatesHttpGet">
     <http:binding verb="GET" />
@@ -226,6 +288,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAffilieteDetailbyUserIdTrans">
+      <http:operation location="/GetAffilieteDetailbyUserIdTrans" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="AffiliatesHttpPost" type="tns:AffiliatesHttpPost">
     <http:binding verb="POST" />
@@ -247,6 +318,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAffilieteDetailbyUserId">
       <http:operation location="/GetAffilieteDetailbyUserId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAffilieteDetailbyUserIdTrans">
+      <http:operation location="/GetAffilieteDetailbyUserIdTrans" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

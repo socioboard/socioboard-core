@@ -145,21 +145,21 @@ namespace Api.Socioboard.Services
             }
         }
 
-        [WebMethod]
-        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string getAllFacebookMessagesOfUserByProfileIdWithRange(string ProfileId, string noOfDataToSkip)
-        {
-            try
-            {
-                List<Domain.Socioboard.Domain.FacebookMessage> objFacebookMessage = objFacebookMessageRepository.getAllMessageOfProfileWithRange(ProfileId, noOfDataToSkip);
-                return new JavaScriptSerializer().Serialize(objFacebookMessage);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-                return "Something Went Wrong";
-            }
-        }
+        //[WebMethod]
+        //[ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        //public string getAllFacebookMessagesOfUserByProfileIdWithRange(string ProfileId, string noOfDataToSkip)
+        //{
+        //    try
+        //    {
+        //        List<Domain.Socioboard.Domain.FacebookMessage> objFacebookMessage = objFacebookMessageRepository.getAllMessageOfProfileWithRange(ProfileId, noOfDataToSkip);
+        //        return new JavaScriptSerializer().Serialize(objFacebookMessage);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.StackTrace);
+        //        return "Something Went Wrong";
+        //    }
+        //}
 
         // Edited by Antima
 
@@ -232,13 +232,13 @@ namespace Api.Socioboard.Services
             List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookMessage = objFacebookMessageRepository.getAllMessageDetail(profileid);
             return new JavaScriptSerializer().Serialize(lstFacebookMessage);
         }
-        [WebMethod]
-        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string GetAllMessageDetailWithRange(string profileid, string noOfDataToSkip)
-        {
-            List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookMessage = objFacebookMessageRepository.getAllMessageDetail(profileid, noOfDataToSkip);
-            return new JavaScriptSerializer().Serialize(lstFacebookMessage);
-        }
+        //[WebMethod]
+        //[ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        //public string GetAllMessageDetailWithRange(string profileid, string noOfDataToSkip)
+        //{
+        //    List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookMessage = objFacebookMessageRepository.getAllMessageDetail(profileid, noOfDataToSkip);
+        //    return new JavaScriptSerializer().Serialize(lstFacebookMessage);
+        //}
 
         //Added by Sumit Gupta [12-02-15]
         [WebMethod]
@@ -298,5 +298,30 @@ namespace Api.Socioboard.Services
                 return "Something Went Wrong";
             }
         }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string getAllFacebookMessagesOfUserByProfileIdWithRange(string ProfileId, string noOfDataToSkip, string UseId)
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.FacebookMessage> objFacebookMessage = objFacebookMessageRepository.getAllMessageOfProfileWithRange(ProfileId, noOfDataToSkip, Guid.Parse(UseId));
+                return new JavaScriptSerializer().Serialize(objFacebookMessage);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllMessageDetailWithRange(string profileid, string noOfDataToSkip, string UserId)
+        {
+            List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookMessage = objFacebookMessageRepository.getAllMessageDetail(profileid, noOfDataToSkip, Guid.Parse(UserId));
+            return new JavaScriptSerializer().Serialize(lstFacebookMessage);
+        }
+
     }
 }

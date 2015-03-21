@@ -73,7 +73,7 @@ namespace Socioboard.Controllers
                         logger.Error("ex.Message : " + ex.Message);
                         logger.Error("ex.StackTrace : " + ex.StackTrace);
                     }
-                    if (Convert.ToString(group["GroupName"]) == "Socioboard")
+                    if (Convert.ToString(group["GroupName"]) == ConfigurationManager.AppSettings["DefaultGroupName"].ToString())
                     {
                         if (profilecount < totalaccount)
                         {
@@ -121,7 +121,7 @@ namespace Socioboard.Controllers
                     JObject group = JObject.Parse(objApiGroups.GetGroupDetailsByGroupId(Session["group"].ToString().ToString()));
                     int profilecount = (Int16)(Session["ProfileCount"]);
                     int totalaccount = (Int16)Session["TotalAccount"];
-                    if (Convert.ToString(group["GroupName"]) == "Socioboard")
+                    if (Convert.ToString(group["GroupName"]) == ConfigurationManager.AppSettings["DefaultGroupName"].ToString())
                     {
                         if (profilecount < totalaccount)
                         {

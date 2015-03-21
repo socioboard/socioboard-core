@@ -52,9 +52,19 @@
     function opentask(msgdesc,msgdate) {
         debugger;
         //   alert(msgdesc);
-        $('#savetask').attr('msgdesc', msgdesc);
-        //jQuery.noConflict();
-        //$('#task').modal('show');                  
+        //$('#savetask').attr('msgdesc', msgdesc);
+
+        
+
+            var msgTxt = $('#' + msgdesc).text();
+
+            $('#savetask').attr('msgdesc', msgTxt);
+            $('#savetask').attr('msgdate', msgdate);
+            //jQuery.noConflict();
+            //$('#task').modal('show');                  
+      
+
+       
     }
 
     function opnCommentReply(id, network, messageid, ProfileId) {
@@ -125,7 +135,8 @@
 
         //$('#right-sidebar_home').on("click", )
 
-        BindInboxMessages();
+        //commented on [12-03-15] by sumit gupta
+        //BindInboxMessages();
 
         debugger;
         $(".partialContents").each(function (index, item) {

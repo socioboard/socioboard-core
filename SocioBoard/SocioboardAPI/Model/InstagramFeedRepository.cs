@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Domain.Socioboard.Domain;
+using NHibernate.Linq;
 using Api.Socioboard.Helper;
 
 namespace Api.Socioboard.Services
@@ -203,7 +204,37 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+        public List<Domain.Socioboard.Domain.InstagramFeed> GetFeedsOfProfileWithRange(string profileid, Guid id, int noOfDataToSkip)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, open up a Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get all twitter messages of profile by profile id
+                        // And order by Entry date.
+                        //List<Domain.Socioboard.Domain.TumblrFeed> lstmsg = session.CreateQuery("from TumblrFeed where  ProfileId = :profid and UserId=:userid ")
+                        //.SetParameter("profid", profileid)
+                        //.SetParameter("userid", id)
+                        //.List<Domain.Socioboard.Domain.TumblrFeed>()
+                        //.ToList<Domain.Socioboard.Domain.TumblrFeed>();
 
+                        List<Domain.Socioboard.Domain.InstagramFeed> lstmsg = session.Query<Domain.Socioboard.Domain.InstagramFeed>().Where(u => u.UserId == id && u.InstagramId.Equals(profileid)).OrderByDescending(x => x.EntryDate).Skip(Convert.ToInt32(noOfDataToSkip)).Take(15).ToList<Domain.Socioboard.Domain.InstagramFeed>();
+
+                        return lstmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End Session
+        }
          /// <DeleteInstagramCommentByUserid>
         /// Delete Instagram feed by userid.
         /// </summary>

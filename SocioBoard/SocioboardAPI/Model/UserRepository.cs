@@ -1287,5 +1287,51 @@ namespace Api.Socioboard.Model
             }
             return i;
         }
+
+
+        public Domain.Socioboard.Domain.User GetUserInfoByCode(string code)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        NHibernate.IQuery query = session.CreateQuery("from User Where UserCode = : code")
+                            .SetParameter("code", code);
+                        return (Domain.Socioboard.Domain.User)query.UniqueResult();
+                    }
+                    catch (Exception ex)
+                    {
+                        return null;
+                    }
+                }
+            }
+        }
+
+
+        public int UpdateCode(Guid userid, string code)
+        {
+            int i = 0;
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        i = session.CreateQuery("Update User set UserCode=:code where Id = :Id")
+                                  .SetParameter("code", code)
+                                  .SetParameter("Id", userid)
+                                  .ExecuteUpdate();
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        i = 0;
+                    }
+                }
+            }
+            return i;
+        }
     }
 }

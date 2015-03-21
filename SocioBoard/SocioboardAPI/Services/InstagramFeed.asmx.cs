@@ -36,5 +36,22 @@ namespace Api.Socioboard.Services
                 return new JavaScriptSerializer().Serialize("Please Try Again");
             }
         }
+
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetFeedsOfProfileWithRange(string UserId, string LinkedInId, string noOfDataToSkip)
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.InstagramFeed> lstInstagramFeed = objInstagramFeedRepository.getAllInstagramFeedsOfUser(Guid.Parse(UserId), LinkedInId, Convert.ToInt32(noOfDataToSkip));
+                return new JavaScriptSerializer().Serialize(lstInstagramFeed);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return new JavaScriptSerializer().Serialize("Please Try Again");
+            }
+        }
     }
 }

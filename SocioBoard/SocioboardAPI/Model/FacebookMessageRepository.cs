@@ -1209,6 +1209,90 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+        public List<Domain.Socioboard.Domain.FacebookMessage> getAllMessageOfProfileWithRange(string profileid, string noOfDataToSkip, Guid UserId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+
+                        List<Domain.Socioboard.Domain.FacebookMessage> lstmsg = session.Query<Domain.Socioboard.Domain.FacebookMessage>().Where(u => u.UserId == UserId && u.ProfileId.Equals(profileid)).OrderByDescending(x => x.MessageDate).Skip(Convert.ToInt32(noOfDataToSkip)).Take(15).ToList<Domain.Socioboard.Domain.FacebookMessage>();
+
+                        //Proceed action, to Get all Message from FacebookMessage.
+                        //List<Domain.Socioboard.Domain.FacebookMessage> alst = session.CreateQuery("from FacebookMessage where ProfileId = :profileId order by MessageDate DESC")
+                        //.SetParameter("profileId", profileid)
+                        // .SetFirstResult(Convert.ToInt32(noOfDataToSkip))
+                        //.SetMaxResults(15)
+                        //.List<Domain.Socioboard.Domain.FacebookMessage>()
+                        //.ToList<Domain.Socioboard.Domain.FacebookMessage>().Where(u => u.UserId==UserId).ToList();
+
+                        #region oldcode
+                        //List<FacebookMessage> alst = new List<FacebookMessage>();
+                        //foreach (FacebookMessage item in query.Enumerable<FacebookMessage>().OrderByDescending(x => x.MessageDate))
+                        //{
+                        //    alst.Add(item);
+                        //} 
+                        #endregion
+
+                        return lstmsg;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End session
+
+        }
+
+        public List<Domain.Socioboard.Domain.FacebookMessage> getAllMessageDetail(string profileid, string noOfDataToSkip, Guid UserId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        string[] arrsrt = profileid.Split(',');
+                        List<Domain.Socioboard.Domain.FacebookMessage> lstmsg = session.Query<Domain.Socioboard.Domain.FacebookMessage>().Where(u => u.UserId == UserId && arrsrt.Contains(u.ProfileId)).OrderByDescending(x => x.MessageDate).Skip(Convert.ToInt32(noOfDataToSkip)).Take(15).ToList<Domain.Socioboard.Domain.FacebookMessage>();
+
+                        // string str = "from FacebookMessage  where ProfileId IN(";
+                        // string[] arrsrt = profileid.Split(',');
+                        // foreach (string sstr in arrsrt)
+                        // {
+                        //     str += Convert.ToInt64(sstr) + ",";
+                        // }
+                        // str = str.Substring(0, str.Length - 1);
+                        // str += ")";
+                        // List<Domain.Socioboard.Domain.FacebookMessage> alst = session.CreateQuery(str)
+                        //      .SetFirstResult(Convert.ToInt32(noOfDataToSkip))
+                        // .SetMaxResults(15)
+                        //.List<Domain.Socioboard.Domain.FacebookMessage>()
+                        //.ToList<Domain.Socioboard.Domain.FacebookMessage>().OrderByDescending(x => x.MessageDate)
+                        //.Where(u=>u.UserId==UserId).ToList<Domain.Socioboard.Domain.FacebookMessage>();
+                        // alst = alst.GroupBy(m => m.MessageId).Select(a => a.First()).ToList();
+
+                        return lstmsg;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Trasaction
+            }//End session
+        }
 
     }
 }

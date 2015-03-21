@@ -22,41 +22,14 @@ namespace Socioboard.Controllers
        // [OutputCache(Duration = 604800)]
         public ActionResult Index()
         {
-            try
+            if (Session["User"] != null)
             {
-
-                string apiid = ConfigurationManager.AppSettings["AppId"];
-               string user = ConfigurationManager.AppSettings["Username"];
-               string password = ConfigurationManager.AppSettings["Password"];
-               string clikertell = "http://api.clickatell.com/http/sendmsg?api_id="+apiid+"&user="+user+"&password="+password+"&to=7879524863&text=Hello";
+                return RedirectToAction("Index", "Home");
             }
-            catch (Exception)
-            {
-                
-                throw;
-            }
-            try
-            {
-                Api.Facebook.Facebook objApiFacebook = new Api.Facebook.Facebook();
-               // var sss = objApiFacebook.AddFacebookAccountWithPaginationAsync;
-            }
-            catch (Exception)
-            {
-                
-                throw;
-            }
-
-            //if (Session["User"] != null)
-            //{
-            //    return RedirectToAction("Index", "Home");
-            //}
             logger.Error("Abhay");
-            //Session.Abandon();
-            //Session.Clear();
-            //Session.RemoveAll();
+           
             return View();
-            //Response.Cache.SetNoStore();
-            //Response.Cache.SetCacheability(HttpCacheability.NoCache);
+           
         }
 
         public ActionResult Logout() 
@@ -289,15 +262,22 @@ namespace Socioboard.Controllers
                         retmsg = "user";
                     }
 
-                    Domain.Socioboard.Domain.Invitation _Invitation = (Domain.Socioboard.Domain.Invitation)Session["InvitationInfo"];
+                    //Domain.Socioboard.Domain.Invitation _Invitation = (Domain.Socioboard.Domain.Invitation)Session["InvitationInfo"];
                     Api.Invitation.Invitation ApiInvitation = new Api.Invitation.Invitation();
-                    if (_Invitation != null)
-                    {
-                        if (user.EmailId == _Invitation.FriendEmail)
-                        {
-                            string ret = ApiInvitation.UpdateInvitatoinStatus(_Invitation.Id.ToString(), user.Id.ToString());
-                        }
-                    }
+                    //if (Session["InvitationCode"] != null)
+                    //{
+                    //    string invitationcode = Session["InvitationCode"].ToString();
+                    //    ApiInvitation.AddInvitationInfoBycode(invitationcode, user.EmailId, user.Id.ToString());
+
+                    //}
+                    
+                    //if (_Invitation != null)
+                    //{
+                    //    if (user.EmailId == _Invitation.FriendEmail)
+                    //    {
+                    //        string ret = ApiInvitation.UpdateInvitatoinStatus(_Invitation.Id.ToString(), user.Id.ToString());
+                    //    }
+                    //}
 
                 }
                 else
@@ -406,7 +386,7 @@ namespace Socioboard.Controllers
 
         // Edited by Antima[1/11/2014]
 
-        public ActionResult UserActivation1(string email)
+        public ActionResult UserActivationByEmail(string email)
         {
             Api.User.User obj = new Api.User.User();
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(obj.getUserInfoByEmail(email), typeof(Domain.Socioboard.Domain.User)));
@@ -414,7 +394,7 @@ namespace Socioboard.Controllers
             string UserId = objUser.Id.ToString();
             ViewBag.Email = Email;
             ViewBag.UserId = UserId;
-            return View("UserActivation1");
+            return View("UserActivationByEmail");
         }
 
         [HttpPost]

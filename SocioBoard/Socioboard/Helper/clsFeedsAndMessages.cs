@@ -450,7 +450,7 @@ namespace Socioboard.Helper
             return ds;
         }
 
-        public DataSet bindMessagesIntoDataTable(Guid id, int noOfDataToSkip)
+        public DataSet bindMessagesIntoDataTable(Guid id, int noOfDataToSkip, Guid UserId)
         {
             Api.TeamMemberProfile.TeamMemberProfile objTeamMemberProfileRepository = new Api.TeamMemberProfile.TeamMemberProfile();
             List<TeamMemberProfile> alstprofiles = (List<Domain.Socioboard.Domain.TeamMemberProfile>)new JavaScriptSerializer().Deserialize(objTeamMemberProfileRepository.GetTeamMemberProfilesByTeamId(id.ToString()), typeof(List<Domain.Socioboard.Domain.TeamMemberProfile>));
@@ -476,7 +476,7 @@ namespace Socioboard.Helper
 
                         //Updated by SumitGupta [09-02-2015]
                         //List<FacebookMessage> lstfbmsg = (List<FacebookMessage>)new JavaScriptSerializer().Deserialize(objApiFacebookMessage.getAllFacebookMessagesOfUserByProfileId(item.ProfileId), typeof(List<FacebookMessage>));
-                        List<FacebookMessage> lstfbmsg = (List<FacebookMessage>)new JavaScriptSerializer().Deserialize(objApiFacebookMessage.getAllFacebookMessagesOfUserByProfileIdWithRange(item.ProfileId, noOfDataToSkip.ToString()), typeof(List<FacebookMessage>));
+                        List<FacebookMessage> lstfbmsg = (List<FacebookMessage>)new JavaScriptSerializer().Deserialize(objApiFacebookMessage.getAllFacebookMessagesOfUserByProfileIdWithRange(item.ProfileId, noOfDataToSkip.ToString(), UserId.ToString()), typeof(List<FacebookMessage>));
                         foreach (FacebookMessage facebookmsg in lstfbmsg)
                         {
                             try
@@ -493,7 +493,11 @@ namespace Socioboard.Helper
                     }
                     else if (item.ProfileType == "twitter")
                     {
-                        List<Domain.Socioboard.Domain.TwitterMessage> lstmsgtwtuser = (List<TwitterMessage>)new JavaScriptSerializer().Deserialize(objApiTwitterMessage.getUnreadMessages(item.ProfileId), typeof(List<Domain.Socioboard.Domain.TwitterMessage>));
+                        
+                        //List<Domain.Socioboard.Domain.TwitterMessage> lstmsgtwtuser = (List<TwitterMessage>)new JavaScriptSerializer().Deserialize(objApiTwitterMessage.getUnreadMessages(item.ProfileId), typeof(List<Domain.Socioboard.Domain.TwitterMessage>));
+                        //List<Domain.Socioboard.Domain.TwitterMessage> lstmsgtwtuser = (List<TwitterMessage>)new JavaScriptSerializer().Deserialize(objApiTwitterMessage.GetTwitterMessages(item.ProfileId, UserId.ToString()), typeof(List<Domain.Socioboard.Domain.TwitterMessage>));
+                        List<Domain.Socioboard.Domain.TwitterMessage> lstmsgtwtuser = (List<TwitterMessage>)new JavaScriptSerializer().Deserialize(objApiTwitterMessage.getAllTwitterkMessagesOfUserByProfileIdWithRange(UserId.ToString(), item.ProfileId, noOfDataToSkip.ToString()), typeof(List<Domain.Socioboard.Domain.TwitterMessage>));
+
 
                         foreach (TwitterMessage lst in lstmsgtwtuser)
                         {
@@ -646,7 +650,7 @@ namespace Socioboard.Helper
             return ds;
         }
 
-        public DataSet bindFeedMessageIntoDataTable(string[] profid, int noOfDataToSkip)
+        public DataSet bindFeedMessageIntoDataTable(string[] profid, int noOfDataToSkip, Guid UseId)
         {
             string fbProfileid = string.Empty;
             string twtProfileid = string.Empty;
@@ -699,7 +703,7 @@ namespace Socioboard.Helper
 
                 //Updated by SumitGupta [09-02-2015]
                 //List<FacebookMessage> alstfbmsgs = (List<FacebookMessage>)new JavaScriptSerializer().Deserialize(objApiFacebookMessage.GetAllMessageDetail(fbProfileid), typeof(List<FacebookMessage>));
-                List<FacebookMessage> alstfbmsgs = (List<FacebookMessage>)new JavaScriptSerializer().Deserialize(objApiFacebookMessage.GetAllMessageDetailWithRange(fbProfileid, noOfDataToSkip.ToString()), typeof(List<FacebookMessage>));
+                List<FacebookMessage> alstfbmsgs = (List<FacebookMessage>)new JavaScriptSerializer().Deserialize(objApiFacebookMessage.GetAllMessageDetailWithRange(fbProfileid, noOfDataToSkip.ToString(), UseId.ToString()), typeof(List<FacebookMessage>));
                 try
                 {
                     foreach (FacebookMessage facebookmsg in alstfbmsgs)
@@ -719,9 +723,9 @@ namespace Socioboard.Helper
                     Console.WriteLine(ex.StackTrace);
                 }
 
+                //List<TwitterMessage> lstmsgtwt = (List<TwitterMessage>)new JavaScriptSerializer().Deserialize(objApiTwitterMessage.getAlltwtMessages1(twtProfileid, UseId.ToString()), typeof(List<TwitterMessage>));
+                List<TwitterMessage> lstmsgtwt = (List<TwitterMessage>)new JavaScriptSerializer().Deserialize(objApiTwitterMessage.GetAllMessageDetailWithRange(UseId.ToString(),twtProfileid, noOfDataToSkip.ToString()), typeof(List<TwitterMessage>));
 
-
-                List<TwitterMessage> lstmsgtwt = (List<TwitterMessage>)new JavaScriptSerializer().Deserialize(objApiTwitterMessage.getAlltwtMessages(twtProfileid), typeof(List<TwitterMessage>));
                 try
                 {
                     foreach (TwitterMessage lst in lstmsgtwt)

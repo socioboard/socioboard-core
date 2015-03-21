@@ -3159,7 +3159,7 @@ function FacebookLoadNewNewsFeeds() {
                 //does function of thread.sleep
                 setTimeout(function () {
                     FacebookLoadNewNewsFeeds();
-                }, 60000);
+                }, 120000);
 
                 // $("#data_paneltab2").scroll(facebookwallscrolldata);
             } catch (e) {
@@ -3170,7 +3170,13 @@ function FacebookLoadNewNewsFeeds() {
 
             }
 
-        }
+        },
+        error: function(failmsg){
+            //does function of thread.sleep
+            setTimeout(function () {
+                FacebookLoadNewNewsFeeds();
+            }, 120000);
+    }
     });
 }
 
@@ -3223,7 +3229,7 @@ function FacebookLoadNewUserHome() {
                 //does function of thread.sleep
                 setTimeout(function () {
                     FacebookLoadNewUserHome();
-                }, 15000);
+                }, 60000);
 
                 // $("#data_paneltab2").scroll(facebookwallscrolldata);
             } catch (e) {
@@ -3234,6 +3240,13 @@ function FacebookLoadNewUserHome() {
 
             }
 
+        },
+        error: function(failmsg){
+            //does function of thread.sleep
+            //does function of thread.sleep
+            setTimeout(function () {
+                FacebookLoadNewUserHome();
+            }, 60000);
         }
     });
 }
@@ -3249,7 +3262,8 @@ function FacebookLoadNewUserFeeds() {
     }
     $.ajax({
         type: "POST",
-        url: "../Feeds/AddLoadNewFacebookWallPosts?profileid=" + id+"&type=userfeeds",
+        //url: "../Feeds/AddLoadNewFacebookWallPosts?profileid=" + id+"&type=userfeeds",
+        url: "../Feeds/AddLoadNewFacebookWallPosts?profileid=" + id + "&type=",
         data: '',
         contentType: "application/json; charset=utf-8",
         dataType: "html",
@@ -3287,7 +3301,7 @@ function FacebookLoadNewUserFeeds() {
                 //does function of thread.sleep
                 setTimeout(function () {
                     FacebookLoadNewUserFeeds();
-                }, 15000);
+                }, 60000);
 
                 // $("#data_paneltab2").scroll(facebookwallscrolldata);
             } catch (e) {
@@ -3298,7 +3312,13 @@ function FacebookLoadNewUserFeeds() {
 
             }
 
-        }
+        },
+        error: function(failmsg){
+            //does function of thread.sleep
+            setTimeout(function () {
+                FacebookLoadNewUserFeeds();
+            }, 60000);
+    }
     });
 }
 

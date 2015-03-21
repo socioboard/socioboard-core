@@ -10,6 +10,7 @@ using System.Web.Script.Services;
 using System.Web.Services;
 using Domain.Socioboard.Domain;
 using System.Text.RegularExpressions;
+using log4net;
 
 namespace Api.Socioboard.Services
 {
@@ -26,6 +27,7 @@ namespace Api.Socioboard.Services
         ScheduledMessageRepository objScheduledMessageRepository = new ScheduledMessageRepository();
         Domain.Socioboard.Domain.ScheduledMessage objScheduledMessage;
         TeamMemberProfileRepository objTeamMemberProfileRepository = new TeamMemberProfileRepository();
+        ILog logger = LogManager.GetLogger(typeof(ScheduledMessage));
 
         [WebMethod]
         public string UploadFile(byte[] f, string fileName)
@@ -71,6 +73,7 @@ namespace Api.Socioboard.Services
             {
                 // return the error message if the operation fails
                 return ex.Message.ToString();
+                
             }
             return ret;
         }
@@ -114,6 +117,7 @@ namespace Api.Socioboard.Services
                 }
                 catch (Exception ex)
                 {
+                    logger.Error(ex.Message);
                     Console.WriteLine(ex.StackTrace);
                 }
                 ScheduledMessage objScheduledMessages = new ScheduledMessage();
@@ -121,6 +125,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 Console.WriteLine(ex.StackTrace);
                 return new JavaScriptSerializer().Serialize("Please try Again");
             }
@@ -133,14 +138,19 @@ namespace Api.Socioboard.Services
         {
             try
             {
+                DateTime scheduleddatetime = Convert.ToDateTime(CompareDateWithclient(ClientTime, (ScheduleTime).ToString()));
+                
                 Guid userid = Guid.Parse(UserId);
-                objScheduledMessage = new Domain.Socioboard.Domain.ScheduledMessage();
+                Domain.Socioboard.Domain.ScheduledMessage objScheduledMessage = new Domain.Socioboard.Domain.ScheduledMessage();
 
                 objScheduledMessage.Id = Guid.NewGuid();
                 objScheduledMessage.ShareMessage = ShareMessage;
+                logger.Error("ScheduledMessage.asmx >> AddGroupScheduleMessages >> ClientTime = " + ClientTime);
                 objScheduledMessage.ClientTime = Convert.ToDateTime(ClientTime);
-                objScheduledMessage.ScheduleTime = Convert.ToDateTime(ScheduleTime);
-                objScheduledMessage.CreateTime = Convert.ToDateTime(CreateTime);
+                //objScheduledMessage.ScheduleTime = Convert.ToDateTime(ScheduleTime);
+                objScheduledMessage.ScheduleTime = scheduleddatetime.ToLocalTime();
+                //objScheduledMessage.CreateTime = Convert.ToDateTime(CreateTime);
+                objScheduledMessage.CreateTime = DateTime.Now;
                 objScheduledMessage.Status = Convert.ToBoolean(Status);
                 objScheduledMessage.UserId = userid;
                 objScheduledMessage.ProfileType = ProfileType;
@@ -152,6 +162,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error("AddGroupScheduleMessages : " + ex.Message);
                 Console.WriteLine(ex.StackTrace);
                 return new JavaScriptSerializer().Serialize("Please try Again");
             }
@@ -191,6 +202,7 @@ namespace Api.Socioboard.Services
                 }
                 catch (Exception ex)
                 {
+                    logger.Error(ex.Message);
                     Console.WriteLine(ex.StackTrace);
                 }
                 ScheduledMessage objScheduledMessages = new ScheduledMessage();
@@ -198,6 +210,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 Console.WriteLine(ex.StackTrace);
                 return new JavaScriptSerializer().Serialize("Please try Again");
             }
@@ -224,6 +237,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 Console.WriteLine(ex.StackTrace);
                 return new JavaScriptSerializer().Serialize("Please try Again");
             }
@@ -248,6 +262,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 Console.WriteLine(ex.StackTrace);
                 return new JavaScriptSerializer().Serialize("Please try Again");
             }
@@ -273,6 +288,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 Console.WriteLine(ex.StackTrace);
                 return new JavaScriptSerializer().Serialize("Please try Again");
             }
@@ -299,6 +315,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 Console.WriteLine(ex.StackTrace);
                 return new JavaScriptSerializer().Serialize("Please try Again");
             }
@@ -324,6 +341,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 Console.WriteLine(ex.StackTrace);
                 return new JavaScriptSerializer().Serialize("Please try Again");
             }
@@ -350,6 +368,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 Console.WriteLine(ex.StackTrace);
                 return new JavaScriptSerializer().Serialize("Please try Again");
             }
@@ -374,6 +393,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 Console.WriteLine(ex.StackTrace);
                 return new JavaScriptSerializer().Serialize("Please try Again");
             }
@@ -405,6 +425,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 Console.WriteLine(ex.StackTrace);
                 return new JavaScriptSerializer().Serialize("Please try Again");
             }
@@ -423,6 +444,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 Console.WriteLine(ex.StackTrace);
             }
 
@@ -455,6 +477,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 Console.WriteLine(ex.StackTrace);
             }
             return countdetails;
@@ -473,6 +496,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 Console.WriteLine(ex.StackTrace);
                 return new JavaScriptSerializer().Serialize("plese try again");
             }
@@ -517,6 +541,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 Console.WriteLine(ex.StackTrace);
                 return new JavaScriptSerializer().Serialize("Please try Again");
             }
@@ -537,6 +562,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 Console.WriteLine(ex.StackTrace);
                 return new JavaScriptSerializer().Serialize("Please try Again");
             }
@@ -555,6 +581,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 Console.WriteLine(ex.StackTrace);
                 return new JavaScriptSerializer().Serialize("Please try Again");
             }
@@ -629,6 +656,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 Console.WriteLine(ex.StackTrace);
             }
 
@@ -647,6 +675,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 Console.WriteLine(ex.StackTrace);
             }
 
@@ -664,6 +693,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 Console.WriteLine(ex.StackTrace);
             }
 
@@ -682,6 +712,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 Console.WriteLine(ex.StackTrace);
             }
 
@@ -716,6 +747,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 Console.WriteLine(ex.StackTrace);
                 return "";
             }
@@ -733,6 +765,7 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 Console.WriteLine(ex.StackTrace);
             }
             return new JavaScriptSerializer().Serialize(_AllScheduledMessage);

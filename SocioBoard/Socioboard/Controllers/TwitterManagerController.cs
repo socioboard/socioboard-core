@@ -85,7 +85,7 @@ namespace Socioboard.Controllers
                         logger.Error("ex.Message : " + ex.Message);
                         logger.Error("ex.StackTrace : " + ex.StackTrace);
                     }
-                    if (Convert.ToString(group["GroupName"]) == "Socioboard")
+                    if (Convert.ToString(group["GroupName"]) == ConfigurationManager.AppSettings["DefaultGroupName"].ToString())
                     {
                         if (profilecount < totalaccount)
                         {

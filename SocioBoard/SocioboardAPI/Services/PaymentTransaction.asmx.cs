@@ -43,5 +43,20 @@ namespace Api.Socioboard.Services
 
             return new JavaScriptSerializer().Serialize(paymentResponse);
         }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetPaymentDataByUserId(string UserId)
+        {
+            try
+            {
+                return new JavaScriptSerializer().Serialize(objPaymentTransactionRepository.GetPaymentDataByUserId(Guid.Parse(UserId)));
+            }
+            catch (Exception ex)
+            {
+
+                return null; 
+            }
+        }
+
     }
 }

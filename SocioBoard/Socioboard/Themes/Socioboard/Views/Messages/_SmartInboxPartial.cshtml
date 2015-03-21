@@ -110,7 +110,8 @@
                     }
                 }
                  @*<i id="task_@row["FromId"]" class="fa fa-thumb-tack fa-fw" data-toggle="modal" data-target="#task"></i>*@
-                <i id="task_@row["FromId"]" class="fa fa-thumb-tack fa-fw" title="Task" data-target="#task" data-toggle="modal" onclick="opentask('@row["Message"]','@row["MessageDate"]')" style="cursor:pointer"></i>
+                @*<i id="task_@row["FromId"]" class="fa fa-thumb-tack fa-fw" title="Task" data-target="#task" data-toggle="modal" onclick="opentask('@row["Message"].ToString()','@row["MessageDate"]')" style="cursor:pointer"></i>*@
+                <i id="task_@row["FromId"]" class="fa fa-thumb-tack fa-fw" title="Task" data-target="#task" data-toggle="modal" onclick="opentask('msg_@sorteddatacount','@row["MessageDate"]')" style="cursor:pointer"></i>
                 <i id="CommentReply_@row["FromId"]" class="fa fa-reply fa-fw" title="Comment" onclick="opnCommentReply('@sorteddatacount', '@network.ToString()', '@row["MessageId"].ToString()', '@row["ProfileId"].ToString()')" style="cursor:pointer"></i>
                 <i id="archiveMessage_@row["FromId"]" class="fa fa-folder-open fa-fw form-group" title="Archive" onclick="SaveArchive('@sorteddatacount','@network.ToString()','@row["ProfileId"].ToString()','@row["MessageId"].ToString()','@row["MessageDate"].ToString()')" style="cursor:pointer"></i>
                 <i onclick="MailPopUpMsg('@row["MessageId"].ToString()','@row["Network"]');" data-target="#msgmailpopup" data-toggle="modal" id="mailmessage_@sorteddatacount" style="cursor:pointer" class="fa fa-envelope"></i>

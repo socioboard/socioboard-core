@@ -18,16 +18,29 @@ namespace Socioboard.Controllers
 
         public ActionResult Ewallet()
         {
-            
-            return View("Ewallet");
+            if (Session["Paid_User"] != null && Session["Paid_User"].ToString() == "Unpaid")
+            {
+                return RedirectToAction("Billing", "PersonalSetting");
+            }
+            else
+            {
+                return View("Ewallet"); 
+            }
         }
 
         public ActionResult Affiliates()
         {
-            User _User = (User)Session["User"];
-            Api.Invitation.Invitation ApiInvitation = new Api.Invitation.Invitation();
-            List<Domain.Socioboard.Domain.Invitation> lstInvite = (List<Domain.Socioboard.Domain.Invitation>)(new JavaScriptSerializer().Deserialize(ApiInvitation.GetAllInvitedDataOfUser(_User.Id.ToString()), typeof(List<Domain.Socioboard.Domain.Invitation>)));
-            return View("Affiliates", lstInvite);
+            if (Session["Paid_User"] != null && Session["Paid_User"].ToString() == "Unpaid")
+            {
+                return RedirectToAction("Billing", "PersonalSetting");
+            }
+            else
+            {
+                User _User = (User)Session["User"];
+                Api.Invitation.Invitation ApiInvitation = new Api.Invitation.Invitation();
+                List<Domain.Socioboard.Domain.Invitation> lstInvite = (List<Domain.Socioboard.Domain.Invitation>)(new JavaScriptSerializer().Deserialize(ApiInvitation.GetAllInvitedDataOfUser(_User.Id.ToString()), typeof(List<Domain.Socioboard.Domain.Invitation>)));
+                return View("Affiliates", lstInvite); 
+            }
         }
 
         public ActionResult LoadEwalletActivityPartial()
@@ -39,11 +52,19 @@ namespace Socioboard.Controllers
             return PartialView("_EwalletActivityPartial", lstInvite);
         }
 
-        public ActionResult LoadEwalletPartial()
-        {
-            User _User = (User)Session["User"];
-            return PartialView("_EwalletPartial",_User);
-        }
+        //public ActionResult LoadEwalletPartial()
+        //{
+        //    User _User = (User)Session["User"];
+        //    Api.PaymentTransaction.PaymentTransaction ApiPaymentTransaction = new Api.PaymentTransaction.PaymentTransaction();
+        //    Api.Affiliates.Affiliates ApiAffiliates = new Api.Affiliates.Affiliates(); 
+        //    List<Domain.Socioboard.Domain.PaymentTransaction> lsttransactions=(List<Domain.Socioboard.Domain.PaymentTransaction>)(new JavaScriptSerializer().Deserialize(ApiPaymentTransaction.GetPaymentDataByUserId(_User.Id.ToString()),typeof(List<Domain.Socioboard.Domain.PaymentTransaction>)));
+        //    List<Domain.Socioboard.Domain.Affiliates> lstAffiliates=(List<Domain.Socioboard.Domain.Affiliates>)(new JavaScriptSerializer().Deserialize(ApiAffiliates.GetAffilieteDetailbyUserIdTrans(_User.Id.ToString()),typeof(List<Domain.Socioboard.Domain.Affiliates>)));
+
+        //    ViewBag.lsttransactions = lsttransactions;
+        //    ViewBag.lstAffiliates = lstAffiliates;
+
+        //    return PartialView("_EwalletPartial",_User);
+        //}
 
         public ActionResult RechrgeEwalletByPaypal(string amount)
         {
@@ -80,31 +101,32 @@ namespace Socioboard.Controllers
             User _User=(User)Session["User"];
             Api.User.User ApiUser = new Api.User.User();
             Api.Invitation.Invitation ApiInvitation = new Api.Invitation.Invitation();
-            if (ApiUser.CheckEmailId(EmailId) == "NotExist")
-            {
-                if (!ApiInvitation.IsFriendAlreadydInvited(_User.Id.ToString(), EmailId))
-                {
+            //if (ApiUser.CheckEmailId(EmailId) == "NotExist")
+            //{
+                //if (!ApiInvitation.IsFriendAlreadydInvited(_User.Id.ToString(), EmailId))
+                //{
                     ret = ApiInvitation.SendInvitationMail(_User.EmailId, _User.UserName, EmailId);
-                }
-                else
-                {
-                    ret = EmailId + " is already Invited";
-                }
-            }
-            else {
-                ret = EmailId + " is already registered";
-            }
+                //}
+                //else
+                //{
+                //    ret = EmailId + " is already Invited";
+                //}
+            //}
+            //else {
+            //    ret = EmailId + " is already registered";
+            //}
             return Content(ret);
         }
-        public ActionResult InviteFriend(string code)
+        public ActionResult AffiliateSystem(string code)
         {
-            Api.Invitation.Invitation ApiInvitation = new Api.Invitation.Invitation();
-            Domain.Socioboard.Domain.Invitation _Invitation=(Domain.Socioboard.Domain.Invitation)(new JavaScriptSerializer().Deserialize(ApiInvitation.GetInvitationInfoBycode(code),typeof(Domain.Socioboard.Domain.Invitation)));
-            Session["InvitationInfo"] = _Invitation;
-            Domain.Socioboard.Domain.User _User = new User();
-            _User.EmailId = _Invitation.FriendEmail;
-            _User.ActivationStatus = "1";
-            Session["User"] = _User;
+        //    Api.Invitation.Invitation ApiInvitation = new Api.Invitation.Invitation();
+        //    Domain.Socioboard.Domain.Invitation _Invitation=(Domain.Socioboard.Domain.Invitation)(new JavaScriptSerializer().Deserialize(ApiInvitation.GetInvitationInfoBycode(code),typeof(Domain.Socioboard.Domain.Invitation)));
+        //    Session["InvitationInfo"] = _Invitation;
+        //    Domain.Socioboard.Domain.User _User = new User();
+        //    _User.EmailId = _Invitation.FriendEmail;
+        //    _User.ActivationStatus = "1";
+        //    Session["User"] = _User;
+            Session["InvitationCode"] = code;
             return RedirectToAction("Registration", "Index");
         }
 
@@ -131,5 +153,14 @@ namespace Socioboard.Controllers
             List<Domain.Socioboard.Domain.Invitation> lstInvite = (List<Domain.Socioboard.Domain.Invitation>)(new JavaScriptSerializer().Deserialize(ApiInvitation.GetAllInvitedDataOfUser(_User.Id.ToString()), typeof(List<Domain.Socioboard.Domain.Invitation>)));
             return View("Affiliates", lstInvite);
         }
+
+        public ActionResult GetPublicToken()
+        {
+            User _User = (User)Session["User"];
+            string PublicUrl = ConfigurationManager.AppSettings["DomainName"].ToString() + "/MyStuff/AffiliateSystem?code=" + _User.UserCode.ToString();
+            return Content(PublicUrl);
+        }
+
+
     }
 }

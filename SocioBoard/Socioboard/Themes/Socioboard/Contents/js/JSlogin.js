@@ -112,7 +112,7 @@ function signinFunction() {
                             url: '../Index/UserActivation',
                             success: function (msg) {
                                 if (msg == 'Success') {
-                                    window.location = '../Index/UserActivation1?email=' + username;
+                                    window.location = '../Index/UserActivationByEmail?email=' + username;
                                 }
                             }
                         });

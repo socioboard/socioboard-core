@@ -144,7 +144,7 @@
 
                                                          @:<div class="form-group">
                                                           <h3>@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_TaskNotificationEmail</h3>
-                                                          <p> @GlobusMultiLanguageLib.Resources.BusinessSetting_Index_NotificationAlertViaEmail </p>
+                                                          <p> @GlobusMultiLanguageLib.Resources.SocialBoard_BusinessSetting_Index_NotificationAlertViaEmail</p>
                                                 
                 if (ObjBusinessSetting.TaskNotification == true)
                 {
@@ -189,12 +189,12 @@
         }
         else
         {
-            DefaultMessage = "Sorry, The Buisness Page of this Group is Not Created!";
+            DefaultMessage = "Sorry, The Business Page of this Group is Not Created!";
         }
     }
     else
     {
-        DefaultMessage = "Sorry, you are not able to Setting in Default Group";
+        DefaultMessage = "Sorry, you are not able to make Setting in Default Group";
     }
     }
     @if (DefaultMessage != null || DefaultMessage != "")
@@ -251,12 +251,18 @@
 
 <script type="text/javascript">
 
-    var BsnsStng = new FormData();
-    var IsTaskAssigned = null;
-    var IsNotificationEnabled = null;
-    var BuisnessName = $("#txtBuisnessName").val();
+    //var BsnsStng = new FormData();
+    //var IsTaskAssigned = null;
+    //var IsNotificationEnabled = null;
+    //var BuisnessName = $("#txtBuisnessName").val();
     function UpdateBuisnessSetting(id) {
         debugger;
+
+        var BsnsStng = new FormData();
+        var IsTaskAssigned = null;
+        var IsNotificationEnabled = null;
+        var BuisnessName = $("#txtBuisnessName").val();
+
         if ($('#rdTaskDisable').is(':checked')) {
             IsTaskAssigned = false;
         }
@@ -285,10 +291,10 @@
             data: BsnsStng,
             processData: false,
             contentType: false,
-            dataType: "json",
+            //dataType: "json",
             success: function (msg) {
                 if (msg = "Updated Successfully") {
-                    aleryify.success("Business Setting Updated Successfully.");
+                    alertify.success("Business Setting Updated Successfully.");
                 }
             },
             async: false

@@ -229,6 +229,50 @@ function savetask() {
         try {
             var description = $('#savetask').attr('msgdesc');
             var msgdate = $('#savetask').attr('msgdate');
+            var msgdata = msgdate.split("/");
+            var time
+            var mm = msgdata[0];
+            var dd = msgdata[1];
+            var yy=msgdata[2]
+            if (mm < 10) {
+                mm = '0' + msgdata[0]
+            }
+            else {
+                mm = msgdata[0];
+            }
+            if(dd<10) {
+                dd = '0' + dd;
+            }
+            else {
+                dd = msgdata[1];
+            }
+            var yeartime = yy.split(" ");
+            var yy = yeartime[0];
+            var tt = yeartime[1].split(":")
+            var hh = tt[0];
+            var min = tt[1];
+            var sec = tt[2];
+            if (hh < 10)
+            {
+                hh = '0' + hh;
+            }
+            else {
+                hh = tt[0];
+            }
+            if (min<10) {
+                min = '0' + min;
+            }
+            else {
+                min = tt[1];
+            }
+            if (sec<10 && sec!='00') {
+                sec = '0' + sec;
+            }
+            else {
+                sec = tt[2];
+            }
+            msgdate = yy + "/" + mm + "/" + dd + " " + hh + ":" + min + ":" + sec + " " +yeartime[2];
+
         } catch (e) {
             alert(e);
         }
@@ -254,7 +298,7 @@ function savetask() {
             $.ajax
             ({
                 type: "POST",
-                url: "../Messages/savetask?description=" + description + "&memberid=" + dat[1] + "&comment=" + comment + "&msgdate=" + msgdate,
+                url: "../Messages/savetask?description=" +  encodeURIComponent(description) + "&memberid=" + dat[1] + "&comment=" + encodeURIComponent(comment) + "&msgdate=" + msgdate,
                 data: '',
                 contentType: "application/json; charset=utf-8",
                 dataType: "html",
@@ -719,9 +763,45 @@ function addTaskComment(taskid) {
     debugger;
     var comment = $("#txtTaskComment_" + taskid).val();
     var curdate = new Date();
-    var CommentDateTime = (curdate.getMonth() + 1) + "/" + curdate.getDate() + "/" + curdate.getFullYear() + " " + curdate.getHours() + ":" + curdate.getMinutes() + ":" + (curdate.getSeconds() < 10 ? '0' + curdate.getSeconds() : curdate.getSeconds());
+    var dd = curdate.getDate();
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+    else {
+        dd = curdate.getDate();
+    }
+    var mm = curdate.getMonth() + 1;
+    if (mm < 10) {
+        mm = '0' + mm
+    }
+    else {
+        mm = curdate.getMonth() + 1;
+    }
+    var hh = curdate.getHours();
+    if (hh < 10) {
+        hh = '0' + hh;
+    }
+    else {
+        hh = curdate.getHours();
+    }
+    var minm = curdate.getMinutes();
+    if (minm < 10) {
+        minm = '0' + minm;
+    }
+    else {
+        minm = curdate.getMinutes();
+    }
+    var sec = curdate.getSeconds();
+    if (sec < 10) {
+        sec = '0' + sec;
+    }
+    else {
+        sec = curdate.getSeconds();
+    }
+
+    //var CommentDateTime = (curdate.getMonth() + 1) + "/" + curdate.getDate() + "/" + curdate.getFullYear() + " " + curdate.getHours() + ":" + curdate.getMinutes() + ":" + (curdate.getSeconds() < 10 ? '0' + curdate.getSeconds() : curdate.getSeconds());
     //Pad given value to the left with "0"
-   
+    var CommentDateTime = curdate.getFullYear() + "/" + mm + "/" + dd + " " + hh + ":" + minm + ":" + sec;
     $.ajax
           ({
               type: "POST",
@@ -733,18 +813,34 @@ function addTaskComment(taskid) {
                   //$("#popupchk").bPopup().close();
                   //$("#txttaskcomment").val() = "";
                   //$("input[type='radio']:checked").val() = "";
-
+                  //$('#' + taskid).css("display", "none");
                   debugger;
                   //alert(msg);
                   if (msg.indexOf("Success") != -1) {
-
+                      alertify.success("Comment SuccessFully");
                   }
                   else {
                       alertify.error("Some Error");
                   }
                   hideTask(taskid);
+
+                  $('#page-wrapper').load('../Messages/loadtask');
               }
           });
+}
+
+function Show_task(id) {
+    debugger;
+   
+    var menu = document.getElementById(id);
+
+    if (menu.style.display == 'block') {
+        menu.style.display = 'none';
+        $("#" + id).removeClass('in');
+    } else {
+        menu.style.display = 'block';
+        $("#" + id).addClass('in');
+    }
 }
 
 

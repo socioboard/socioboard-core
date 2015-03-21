@@ -68,7 +68,7 @@ namespace Socioboard.Controllers
                         logger.Error("ex.StackTrace : " + ex.StackTrace);
                     }
 
-                    if (Convert.ToString(group["GroupName"]) == "Socioboard")
+                    if (Convert.ToString(group["GroupName"]) == ConfigurationManager.AppSettings["DefaultGroupName"].ToString())
                     {
                         if (profilecount < totalaccount)
                         {
@@ -87,6 +87,10 @@ namespace Socioboard.Controllers
                             //return JavaScript("alert(\"You can't add more than "+ totalaccount +" account!\")");
                             Response.Redirect("../Home/Index");
                         }
+                    }
+                    else
+                    {
+                        Response.Redirect("../Home/Index");
                     }
                 }
                 catch (Exception ex)

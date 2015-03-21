@@ -52,7 +52,7 @@
                                                     try
                                                     {
                                                         string[] profileUrl = objdetails.ProfileUrl.Split(new string[] { "Socioboard" }, StringSplitOptions.None);
-                                                        imgpath = "/Themes/Socioboard" + profileUrl[2];
+                                                        imgpath = "/Themes/Socioboard" + profileUrl[1];
                                                     }
                                                     catch
                                                     {
@@ -78,7 +78,9 @@
                                             @objdetails.UserName</span>
 
                                                  <span class="pull-right"><i class="fa fa-clock-o"></i> @item.TaskMessageDate</span>
-                                                 <p><a class="collapsed" href="#@item.Id" data-parent="#accordion" data-toggle="collapse">@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_AssignedBy @objAssignUserDetails.UserName</a></p>
+                                                 <p>
+                                                     <a class="collapsed" href="#@item.Id" data-parent="#accordion" data-toggle="collapse" @*onclick="Show_task('@item.Id')"*@>@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_AssignedBy @objAssignUserDetails.UserName</a>
+                                                 </p>
                                                                                                 <br>
                                                                                                 <span>@item.TaskMessage</span>
                                                                                                 @*<i data-target="#EditModal" data-toggle="modal" class="fa fa-pencil fa-fw pull-right"></i>*@
@@ -97,7 +99,7 @@
                                                     @:<span>Completed</span>
                                                      if (LoggedUser.Id == objAssignUserDetails.Id)
                                                      {
-                                                    @:<i id="@(item.Id + "_" + item.TaskStatus)"  onclick="PerformClick(this.id)" class="fa fa-pencil fa-fw" style="cursor:pointer"></i>
+                                                    @:<i id="@item.Id+_@item.TaskStatus"  onclick="PerformClick(this.id)" class="fa fa-pencil fa-fw" style="cursor:pointer"></i>
                                                     }
 
                                                  }
@@ -107,7 +109,7 @@
                                                     <span>Pending</span>
                                                      if (LoggedUser.Id == objAssignUserDetails.Id)
                                                      {
-                                                    @:<i id="@(item.Id + "_" + item.TaskStatus)"  onclick="PerformClick(this.id)" class="fa fa-pencil fa-fw" style="cursor:pointer"></i>
+                                                    @:<i id="@item.Id+_@item.TaskStatus"  onclick="PerformClick(this.id)" class="fa fa-pencil fa-fw" style="cursor:pointer"></i>
                                                     }
 
                                                  }

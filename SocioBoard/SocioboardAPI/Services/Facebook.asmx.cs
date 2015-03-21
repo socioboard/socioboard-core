@@ -13,6 +13,8 @@ using log4net;
 using Hammock.Web;
 using Api.Socioboard.Model;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Api.Socioboard.Services
 {
@@ -50,23 +52,6 @@ namespace Api.Socioboard.Services
         FbPageLikerRepository objFbPageLikerRepository = new FbPageLikerRepository();
         Domain.Socioboard.Domain.FbPageLiker objFbPageLiker = new Domain.Socioboard.Domain.FbPageLiker();
 
-
-        [WebMethod]
-        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public string Iski(string code, string UserId, string GroupId)
-        {
-            try
-            {
-                logger.Error("Iski Dai ka....");
-                return "bach gaya";
-            }
-            catch (Exception ex)
-            {
-                return ex.Message + "<:>" + ex.StackTrace;
-                //TODO : write exception list here
-            }
-
-        }
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -608,7 +593,7 @@ namespace Api.Socioboard.Services
 
                 for (int i = 0; i < 50; i++)
                 {
-                    dynamic messages = fb.Get("v2.0/"+nexturl);
+                    dynamic messages = fb.Get(nexturl);
                     if (messages != null)
                     {
                         try
@@ -830,7 +815,7 @@ namespace Api.Socioboard.Services
                 Domain.Socioboard.Domain.FacebookFeed objFacebookFeed = new Domain.Socioboard.Domain.FacebookFeed();
                 System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
 
-                string nexturl = "v2.0/me/posts";
+                string nexturl = "v2.0/me/feed";//"v2.0/me/posts";
 
 
                 //for (int i = 0; i < 10; i++)
@@ -887,40 +872,41 @@ namespace Api.Socioboard.Services
                             objFacebookFeed.FbComment = "http://graph.facebook.com/" + result["id"] + "/comments";
                             objFacebookFeed.FbLike = "http://graph.facebook.com/" + result["id"] + "/likes";
 
+                            //Commented as these cause errors on API
                             //Added by Sumit Gupta [31-01-15] to get post Shares/Likes/Comments
                             #region Added by Sumit Gupta [31-01-15]
-                            try
-                            {
-                                dynamic like = fb.Get("v2.0/"+objFbPagePost.PostId + "/likes?summary=1&limit=0");
+                            //try
+                            //{
+                            //    dynamic like = fb.Get("v2.0/" + objFbPagePost.PostId + "/likes?summary=1&limit=0");
 
-                                objFbPagePost.Likes = Convert.ToInt32(like["summary"]["total_count"]);
+                            //    objFbPagePost.Likes = Convert.ToInt32(like["summary"]["total_count"]);
 
-                            }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine(ex.StackTrace);
-                            }
+                            //}
+                            //catch (Exception ex)
+                            //{
+                            //    Console.WriteLine(ex.StackTrace);
+                            //}
 
-                            try
-                            {
-                                dynamic comment = fb.Get("v2.0/"+objFbPagePost.PostId + "/comments?summary=1&limit=0");
+                            //try
+                            //{
+                            //    dynamic comment = fb.Get("v2.0/" + objFbPagePost.PostId + "/comments?summary=1&limit=0");
 
-                                objFbPagePost.Comments = Convert.ToInt32(comment["summary"]["total_count"]);
-                            }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine(ex.StackTrace);
-                            }
-                            try
-                            {
-                                dynamic shares = fb.Get("v2.0/"+objFbPagePost.PostId);
-                                objFbPagePost.Shares = Convert.ToInt32(shares["shares"]["count"]);
-                            }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine(ex.StackTrace);
-                                logger.Error(ex.StackTrace);
-                            }
+                            //    objFbPagePost.Comments = Convert.ToInt32(comment["summary"]["total_count"]);
+                            //}
+                            //catch (Exception ex)
+                            //{
+                            //    Console.WriteLine(ex.StackTrace);
+                            //}
+                            //try
+                            //{
+                            //    dynamic shares = fb.Get("v2.0/" + objFbPagePost.PostId);
+                            //    objFbPagePost.Shares = Convert.ToInt32(shares["shares"]["count"]);
+                            //}
+                            //catch (Exception ex)
+                            //{
+                            //    Console.WriteLine(ex.StackTrace);
+                            //    logger.Error(ex.StackTrace);
+                            //}
                             #endregion
 
                             //Added by Sumit Gupta [17-02-15]
@@ -931,7 +917,7 @@ namespace Api.Socioboard.Services
                             catch (Exception ex)
                             {
                                 Console.WriteLine(ex.StackTrace);
-                                objFacebookFeed.Picture = null;
+                                objFacebookFeed.Picture = "";
                             }
 
                             string message = string.Empty;
@@ -980,6 +966,10 @@ namespace Api.Socioboard.Services
 
                                 }
                             }
+                            if (message==null)
+                            {
+                                message = "";
+                            }
                             objFacebookFeed.FeedDescription = message;
                             objFacebookFeed.EntryDate = DateTime.Now;
 
@@ -1016,7 +1006,7 @@ namespace Api.Socioboard.Services
                 objFacebookFeed = new Domain.Socioboard.Domain.FacebookFeed();
                 System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
 
-                string nexturl = "v2.0/me/posts";
+                string nexturl = "v2.0/me/feed";//"v2.0/me/posts";
 
 
                 for (int i = 0; i < 50; i++)
@@ -1474,6 +1464,7 @@ namespace Api.Socioboard.Services
             System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
             var args = new Dictionary<string, object>();
             args["message"] = message;
+            args["privacy"] = SetPrivacy("Public", fb);//"{\"description\": \"Public\",\"value\": \"EVERYONE\",\"friends\": \"\",\"networks\": \"\",\"allow\": \"\",\"deny\": \"\"}";
             if (!string.IsNullOrEmpty(imagepath))
             {
                 var media = new FacebookMediaObject
@@ -1796,6 +1787,7 @@ namespace Api.Socioboard.Services
             try
             {
                 FacebookClient fb = new FacebookClient();
+                fb.AccessToken = accessToken;
                 int fancountPage = 0;
                 try
                 {
@@ -1806,8 +1798,10 @@ namespace Api.Socioboard.Services
                     //    fancountPage = Convert.ToInt32(friend.fan_count);
                     //}
 
-                    dynamic friends = fb.Get("v2.0/me/friends");
-                    fancountPage = Convert.ToInt16(friends["summary"]["total_count"].ToString());
+                   // dynamic friends = fb.Get("v2.0/me/friends");
+                    dynamic friends = fb.Get("v2.0/" +profileId);
+                    //fancountPage = Convert.ToInt16(friends["summary"]["total_count"].ToString());
+                    fancountPage = Convert.ToInt16(friends["likes"].ToString());
 
                 }
                 catch (Exception)
@@ -1818,7 +1812,7 @@ namespace Api.Socioboard.Services
                 if (accessToken != null)
                 {
                     System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
-                    fb.AccessToken = accessToken;
+                    
                     dynamic profile = fb.Get("v2.0/me");
 
                     #region Add FacebookAccount
@@ -2163,6 +2157,7 @@ namespace Api.Socioboard.Services
                         objFbPagePost.Comments = Convert.ToInt32(comment["summary"]["total_count"]);
                     }
                     catch (Exception ex)
+
                     {
                         Console.WriteLine(ex.StackTrace);
                     }
@@ -2450,8 +2445,10 @@ namespace Api.Socioboard.Services
                     //    fancountPage = Convert.ToInt32(friend.fan_count);
                     //}
 
-                    dynamic friends = fb.Get("v2.0/me/friends");
-                    fancountPage = Convert.ToInt16(friends["summary"]["total_count"].ToString());
+                    //dynamic friends = fb.Get("v2.0/me/friends");
+                    //fancountPage = Convert.ToInt16(friends["summary"]["total_count"].ToString());
+                    dynamic friends = fb.Get("v2.0/" + profileId);
+                    fancountPage = Convert.ToInt16(friends["likes"].ToString());
 
                 }
                 catch (Exception)
@@ -2466,10 +2463,14 @@ namespace Api.Socioboard.Services
                         //{
                         //    fancountPage = Convert.ToInt32(friend.fan_count);
                         //}
-                        dynamic friends = fb.Get("v2.0/me/friends");
-                        fancountPage = Convert.ToInt16(friends["summary"]["total_count"].ToString());
+                        //dynamic friends = fb.Get("v2.0/me/friends");
+                        //fancountPage = Convert.ToInt16(friends["summary"]["total_count"].ToString());
+                        dynamic friends = fb.Get("v2.0/" + profileId);
+                        fancountPage = Convert.ToInt16(friends["likes"].ToString());
                     }
-                    catch (Exception ex) { }
+                    catch (Exception ex) {
+                        logger.Error("fancount : "+ex.Message);
+                    }
                 }
                 #endregion
 
@@ -2633,7 +2634,7 @@ namespace Api.Socioboard.Services
                 dynamic pageinfo = null;
                 try
                 {
-                    pageinfo = fb.Get("v2.0/"+url);
+                    pageinfo = fb.Get(url);
                     logger.Error("Token 1");
                 }
                 catch (Exception ex1)
@@ -2641,7 +2642,7 @@ namespace Api.Socioboard.Services
                     try
                     {
                         fb.AccessToken = "CAAKYvwDVmnUBAFvCcZCQDL53q82jfR5mvgF2whNsFHgR4NmeSSUeRVpdEUpcVVgK1ERs2GZCNhJAwRHtq6MEWiRtBQnxBmZAML6dnwgpsCbjUmyT7ws6EKZBxuWbxhJqjeNCsxhac00b3L9Bf7LLlYa3PG94Uouj7vXZAZC6djZCme5BuszE3vibNFLKQqaLcgZD";
-                        pageinfo = fb.Get("v2.0/" + url);
+                        pageinfo = fb.Get(url);
                         logger.Error("Token 2");
                     }
                     catch (Exception ex2)
@@ -2649,7 +2650,7 @@ namespace Api.Socioboard.Services
                         try
                         {
                             fb.AccessToken = "CAAKYvwDVmnUBAAR2O9hxFkHzfNG8H6KbQLaiGFMRshJkbttdzhDeprklcb1yaV0rwtC7N8Xz1rsL1cykiRv2ouXtBUFxvOZCNnpFELnQGFV8jGUWjm1GYsZA40IKAORLGoAcSaa2lJkuuSoLBksB8LFPHI4cqW7VVqxgDwZCRwObxqR4Qp9QEDHxa7j1yoZD";
-                            pageinfo = fb.Get("v2.0/"+url);
+                            pageinfo = fb.Get(url);
                             logger.Error("Token 3");
                         }
                         catch (Exception ex3)
@@ -2657,7 +2658,7 @@ namespace Api.Socioboard.Services
                             try
                             {
                                 fb.AccessToken = "CAAKYvwDVmnUBAFtZB8pvVrqYQonmq7MD90oNdoipDc0Te4onP2XlbZAYT4bzOZAKTr8jdhw0P1PclgLOtVxJ9g2qx4vxZAzh2CXqXAZBZAZBwkgWIVjc2B4rcXAp6O5B3gXqd8Ko5ITL9VCZCMOkMZCPc1hBsp0n8zgPt6e3Dd0vaodPBS8nMz7RD";
-                                pageinfo = fb.Get("v2.0/"+url);
+                                pageinfo = fb.Get(url);
                                 logger.Error("Token 4");
                             }
                             catch (Exception ex4)
@@ -2665,7 +2666,7 @@ namespace Api.Socioboard.Services
                                 try
                                 {
                                     fb.AccessToken = "CAAKYvwDVmnUBALvjTAKIrVKnL719aVDB7BmMRn7e08ySJQwHYtLDZBBjx5yBZBaMeJ04lIT8bCzX2A685YLXR9d8PukZCBZA2LiwZAmj6qhMZC8F0od7NBircdMZAOZAD1xukXDhd24RQRvVk9GyJNRmmGTiZAhMJzXBVczH3TlYb37qi8FRXfTGDRTZAyxjyYSt8ZD";
-                                    pageinfo = fb.Get("v2.0/"+url);
+                                    pageinfo = fb.Get(url);
                                     logger.Error("Token 5");
                                 }
                                 catch (Exception ex5)
@@ -3346,62 +3347,54 @@ namespace Api.Socioboard.Services
                         logger.Error(ex.StackTrace);
                         return "Token Expired";
                     }
-                    try
-                    {
-                        friends = fb.Get("v2.0/me/friends");
+                    //try
+                    //{
+                    //    friends = fb.Get("v2.0/me/friends");
 
-                    }
-                    catch (Exception ex)
-                    {
-                        string errormssg = ex.Message;
-                        if (errormssg.Contains("changed the password"))
-                        {
-                            UpdateSocialprofileStatus(UserId, FbId);
-                        }
-                        logger.Error(ex.Message);
-                        logger.Error(ex.StackTrace);
-                        return "Token Expired";
-                    }
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    string errormssg = ex.Message;
+                    //    if (errormssg.Contains("changed the password"))
+                    //    {
+                    //        UpdateSocialprofileStatus(UserId, FbId);
+                    //    }
+                    //    logger.Error(ex.Message);
+                    //    logger.Error(ex.StackTrace);
+                    //    return "Token Expired";
+                    //}
 
-                    try
-                    {
-                        friendscount = Convert.ToInt16(friends["summary"]["total_count"].ToString());
-                    }
-                    catch (Exception ex)
-                    {
-                        //try
-                        //{
-                        //    dynamic frndscount = fb.Get("fql", new { q = "SELECT friend_count FROM user WHERE uid=me()" });
+                    //try
+                    //{
+                    //    friendscount = Convert.ToInt16(friends["summary"]["total_count"].ToString());
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    //try
+                    //    //{
+                    //    //    dynamic frndscount = fb.Get("fql", new { q = "SELECT friend_count FROM user WHERE uid=me()" });
 
-                        //    foreach (var friend in frndscount.data)
-                        //    {
-                        //        frndscount = friend.friend_count;
-                        //    }
-                        //    friendscount = Convert.ToInt16(frndscount);
-                        //}
-                        //catch (Exception exx)
-                        //{
-                        //    friendscount = 0;
-                        //    logger.Error(exx.Message);
-                        //    logger.Error(exx.StackTrace);
-                        //}
-                        friendscount = 0;
-                        logger.Error(ex.Message);
-                        logger.Error(ex.StackTrace);
-                    }
+                    //    //    foreach (var friend in frndscount.data)
+                    //    //    {
+                    //    //        frndscount = friend.friend_count;
+                    //    //    }
+                    //    //    friendscount = Convert.ToInt16(frndscount);
+                    //    //}
+                    //    //catch (Exception exx)
+                    //    //{
+                    //    //    friendscount = 0;
+                    //    //    logger.Error(exx.Message);
+                    //    //    logger.Error(exx.StackTrace);
+                    //    //}
+                    //    friendscount = 0;
+                    //    logger.Error(ex.Message);
+                    //    logger.Error(ex.StackTrace);
+                    //}
                     if (objFacebookAccountRepository.checkFacebookUserExists(Convert.ToString(profile["id"]), Guid.Parse(UserId)))
                     {
                         #region Add Facebook Feeds
                         lstNewFacebookFeeds = AddFacebookFeeds(UserId, fb, profile);
                         #endregion
-
-                        //#region Add Facebook User Home
-                        //AddFacebookUserHome(UserId, fb, profile);
-                        //#endregion
-                        //#region Add Facebook User Inbox Message
-                        //AddFacebookMessageWithPagination(UserId, fb, profile);
-                        //#endregion
-                        //ret = "Facebook info Updated Successfully";
                     }
                     else
                     {
@@ -3704,6 +3697,60 @@ namespace Api.Socioboard.Services
             }
 
             return lstFacebookMessage;
+        }
+
+        private string SetPrivacy(string privacy, FacebookClient fb)
+        {
+            try
+            {
+                JObject Jdata = null;
+                string JValue = string.Empty;
+
+                if (!string.IsNullOrEmpty(privacy))
+                {
+                    if (privacy == "Close Friends")
+                    {
+                        Jdata = JObject.Parse(fb.Get("/" + objFacebookAccount.FbUserId + "/friendlists/close_friends").ToString());
+                        string closefrndid = Jdata["data"][0]["id"].ToString();
+                        JValue = "{ \"description\": \"Close Friends\",\"value\": \"CUSTOM\",\"friends\": \"SOME_FRIENDS\",\"networks\": \"\",\"allow\":\"" + closefrndid + "\",\"deny\": \"\"}";
+                    }
+                    else if (privacy == "Only Me")
+                    {
+                        JValue = "{\"description\": \"Only Me\",\"value\": \"SELF\",\"friends\": \"\",\"networks\": \"\",\"allow\": \"\",\"deny\": \"\"}";
+                    }
+                    else if (privacy == "Friends")
+                    {
+                        JValue = "{\"description\": \"Your friends\",\"value\": \"ALL_FRIENDS\",\"friends\": \"\",\"networks\": \"\",\"allow\": \"\",\"deny\": \"\"}";
+                    }
+                    else if (privacy == "Friends of Friends")
+                    {
+                        JValue = "{\"description\": \"Your friends of friends\",\"value\": \"FRIENDS_OF_FRIENDS\",\"friends\": \"\",\"networks\": \"\",\"allow\": \"\",\"deny\": \"\"}";
+                    }
+                    else if (privacy == "Family")
+                    {
+                        Jdata = JObject.Parse(fb.Get("/" + objFacebookAccount.FbUserId + "/friendlists/family").ToString());
+                        string familyid = Jdata["data"][0]["id"].ToString();
+                        JValue = "{\"description\": \"Family\",\"value\": \"CUSTOM\",\"friends\": \"SOME_FRIENDS\",\"networks\": \"\",\"allow\": \"" + familyid + "\",\"deny\": \"\"}";
+                    }
+                    else if (privacy == "Public")
+                    {
+                        JValue = "{\"description\": \"Public\",\"value\": \"EVERYONE\",\"friends\": \"\",\"networks\": \"\",\"allow\": \"\",\"deny\": \"\"}";
+                    }
+                    else if (privacy == "Acquaintances")
+                    {
+                        Jdata = JObject.Parse(fb.Get("/" + objFacebookAccount.FbUserId + "/friendlists/acquaintances").ToString());
+                        string AcquaintancesId = Jdata["data"][0]["id"].ToString();
+                        JValue = "{\"description\": \"Acquaintances\",\"value\": \"CUSTOM\",\"friends\": \"SOME_FRIENDS\",\"networks\": \"\",\"allow\": \"" + AcquaintancesId + "\",\"deny\": \"\"}";
+                    }
+                    return JValue;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "";
+            }
+            return "";
         }
     }
 }
