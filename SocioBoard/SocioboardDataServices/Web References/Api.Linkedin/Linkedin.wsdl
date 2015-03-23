@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:import namespace="http://microsoft.com/wsdl/types/" />
@@ -203,6 +203,22 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ScheduleLinkedinGroupMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="scheduledmsgguid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ScheduleLinkedinGroupMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ScheduleLinkedinGroupMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="getLinkedInData">
         <s:complexType>
           <s:sequence>
@@ -273,6 +289,35 @@
       </s:element>
       <s:element name="GetLinkedInFeedsResponse">
         <s:complexType />
+      </s:element>
+      <s:element name="LinkedinProfileDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LinkedinProfileDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedinProfileDetailsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateLinkedinAccountByAdmin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObjLinkedin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateLinkedinAccountByAdminResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateLinkedinAccountByAdminResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
@@ -356,6 +401,12 @@
   <wsdl:message name="SheduleLinkedInMessageSoapOut">
     <wsdl:part name="parameters" element="tns:SheduleLinkedInMessageResponse" />
   </wsdl:message>
+  <wsdl:message name="ScheduleLinkedinGroupMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:ScheduleLinkedinGroupMessage" />
+  </wsdl:message>
+  <wsdl:message name="ScheduleLinkedinGroupMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:ScheduleLinkedinGroupMessageResponse" />
+  </wsdl:message>
   <wsdl:message name="getLinkedInDataSoapIn">
     <wsdl:part name="parameters" element="tns:getLinkedInData" />
   </wsdl:message>
@@ -379,6 +430,18 @@
   </wsdl:message>
   <wsdl:message name="GetLinkedInFeedsSoapOut">
     <wsdl:part name="parameters" element="tns:GetLinkedInFeedsResponse" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinProfileDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:LinkedinProfileDetails" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinProfileDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:LinkedinProfileDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLinkedinAccountByAdminSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateLinkedinAccountByAdmin" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLinkedinAccountByAdminSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateLinkedinAccountByAdminResponse" />
   </wsdl:message>
   <wsdl:message name="GetLinkedinRedirectUrlHttpGetIn">
     <wsdl:part name="consumerKey" type="s:string" />
@@ -484,11 +547,32 @@
   <wsdl:message name="SheduleLinkedInMessageHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="ScheduleLinkedinGroupMessageHttpGetIn">
+    <wsdl:part name="scheduledmsgguid" type="s:string" />
+    <wsdl:part name="Userid" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ScheduleLinkedinGroupMessageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="getLinkedInDataHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="LinkedinId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="getLinkedInDataHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinProfileDetailsHttpGetIn">
+    <wsdl:part name="Userid" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinProfileDetailsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLinkedinAccountByAdminHttpGetIn">
+    <wsdl:part name="ObjLinkedin" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLinkedinAccountByAdminHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetLinkedinRedirectUrlHttpPostIn">
@@ -595,11 +679,32 @@
   <wsdl:message name="SheduleLinkedInMessageHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="ScheduleLinkedinGroupMessageHttpPostIn">
+    <wsdl:part name="scheduledmsgguid" type="s:string" />
+    <wsdl:part name="Userid" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ScheduleLinkedinGroupMessageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="getLinkedInDataHttpPostIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="LinkedinId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="getLinkedInDataHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinProfileDetailsHttpPostIn">
+    <wsdl:part name="Userid" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LinkedinProfileDetailsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLinkedinAccountByAdminHttpPostIn">
+    <wsdl:part name="ObjLinkedin" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLinkedinAccountByAdminHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:portType name="LinkedinSoap">
@@ -651,6 +756,10 @@
       <wsdl:input message="tns:SheduleLinkedInMessageSoapIn" />
       <wsdl:output message="tns:SheduleLinkedInMessageSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ScheduleLinkedinGroupMessage">
+      <wsdl:input message="tns:ScheduleLinkedinGroupMessageSoapIn" />
+      <wsdl:output message="tns:ScheduleLinkedinGroupMessageSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="getLinkedInData">
       <wsdl:input message="tns:getLinkedInDataSoapIn" />
       <wsdl:output message="tns:getLinkedInDataSoapOut" />
@@ -666,6 +775,14 @@
     <wsdl:operation name="GetLinkedInFeeds">
       <wsdl:input message="tns:GetLinkedInFeedsSoapIn" />
       <wsdl:output message="tns:GetLinkedInFeedsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinProfileDetails">
+      <wsdl:input message="tns:LinkedinProfileDetailsSoapIn" />
+      <wsdl:output message="tns:LinkedinProfileDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLinkedinAccountByAdmin">
+      <wsdl:input message="tns:UpdateLinkedinAccountByAdminSoapIn" />
+      <wsdl:output message="tns:UpdateLinkedinAccountByAdminSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="LinkedinHttpGet">
@@ -717,9 +834,21 @@
       <wsdl:input message="tns:SheduleLinkedInMessageHttpGetIn" />
       <wsdl:output message="tns:SheduleLinkedInMessageHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="ScheduleLinkedinGroupMessage">
+      <wsdl:input message="tns:ScheduleLinkedinGroupMessageHttpGetIn" />
+      <wsdl:output message="tns:ScheduleLinkedinGroupMessageHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="getLinkedInData">
       <wsdl:input message="tns:getLinkedInDataHttpGetIn" />
       <wsdl:output message="tns:getLinkedInDataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinProfileDetails">
+      <wsdl:input message="tns:LinkedinProfileDetailsHttpGetIn" />
+      <wsdl:output message="tns:LinkedinProfileDetailsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLinkedinAccountByAdmin">
+      <wsdl:input message="tns:UpdateLinkedinAccountByAdminHttpGetIn" />
+      <wsdl:output message="tns:UpdateLinkedinAccountByAdminHttpGetOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="LinkedinHttpPost">
@@ -771,9 +900,21 @@
       <wsdl:input message="tns:SheduleLinkedInMessageHttpPostIn" />
       <wsdl:output message="tns:SheduleLinkedInMessageHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="ScheduleLinkedinGroupMessage">
+      <wsdl:input message="tns:ScheduleLinkedinGroupMessageHttpPostIn" />
+      <wsdl:output message="tns:ScheduleLinkedinGroupMessageHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="getLinkedInData">
       <wsdl:input message="tns:getLinkedInDataHttpPostIn" />
       <wsdl:output message="tns:getLinkedInDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinProfileDetails">
+      <wsdl:input message="tns:LinkedinProfileDetailsHttpPostIn" />
+      <wsdl:output message="tns:LinkedinProfileDetailsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLinkedinAccountByAdmin">
+      <wsdl:input message="tns:UpdateLinkedinAccountByAdminHttpPostIn" />
+      <wsdl:output message="tns:UpdateLinkedinAccountByAdminHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LinkedinSoap" type="tns:LinkedinSoap">
@@ -886,6 +1027,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ScheduleLinkedinGroupMessage">
+      <soap:operation soapAction="http://tempuri.org/ScheduleLinkedinGroupMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getLinkedInData">
       <soap:operation soapAction="http://tempuri.org/getLinkedInData" style="document" />
       <wsdl:input>
@@ -915,6 +1065,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetLinkedInFeeds">
       <soap:operation soapAction="http://tempuri.org/GetLinkedInFeeds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinProfileDetails">
+      <soap:operation soapAction="http://tempuri.org/LinkedinProfileDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLinkedinAccountByAdmin">
+      <soap:operation soapAction="http://tempuri.org/UpdateLinkedinAccountByAdmin" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1033,6 +1201,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ScheduleLinkedinGroupMessage">
+      <soap12:operation soapAction="http://tempuri.org/ScheduleLinkedinGroupMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getLinkedInData">
       <soap12:operation soapAction="http://tempuri.org/getLinkedInData" style="document" />
       <wsdl:input>
@@ -1062,6 +1239,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetLinkedInFeeds">
       <soap12:operation soapAction="http://tempuri.org/GetLinkedInFeeds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinProfileDetails">
+      <soap12:operation soapAction="http://tempuri.org/LinkedinProfileDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLinkedinAccountByAdmin">
+      <soap12:operation soapAction="http://tempuri.org/UpdateLinkedinAccountByAdmin" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1180,8 +1375,35 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ScheduleLinkedinGroupMessage">
+      <http:operation location="/ScheduleLinkedinGroupMessage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getLinkedInData">
       <http:operation location="/getLinkedInData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinProfileDetails">
+      <http:operation location="/LinkedinProfileDetails" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLinkedinAccountByAdmin">
+      <http:operation location="/UpdateLinkedinAccountByAdmin" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -1300,8 +1522,35 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ScheduleLinkedinGroupMessage">
+      <http:operation location="/ScheduleLinkedinGroupMessage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getLinkedInData">
       <http:operation location="/getLinkedInData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkedinProfileDetails">
+      <http:operation location="/LinkedinProfileDetails" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLinkedinAccountByAdmin">
+      <http:operation location="/UpdateLinkedinAccountByAdmin" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -1312,16 +1561,16 @@
   </wsdl:binding>
   <wsdl:service name="Linkedin">
     <wsdl:port name="LinkedinSoap" binding="tns:LinkedinSoap">
-      <soap:address location="http://devapi.socioboard.com/Services/Linkedin.asmx" />
+      <soap:address location="http://localhost:6361/Services/Linkedin.asmx" />
     </wsdl:port>
     <wsdl:port name="LinkedinSoap12" binding="tns:LinkedinSoap12">
-      <soap12:address location="http://devapi.socioboard.com/Services/Linkedin.asmx" />
+      <soap12:address location="http://localhost:6361/Services/Linkedin.asmx" />
     </wsdl:port>
     <wsdl:port name="LinkedinHttpGet" binding="tns:LinkedinHttpGet">
-      <http:address location="http://devapi.socioboard.com/Services/Linkedin.asmx" />
+      <http:address location="http://localhost:6361/Services/Linkedin.asmx" />
     </wsdl:port>
     <wsdl:port name="LinkedinHttpPost" binding="tns:LinkedinHttpPost">
-      <http:address location="http://devapi.socioboard.com/Services/Linkedin.asmx" />
+      <http:address location="http://localhost:6361/Services/Linkedin.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

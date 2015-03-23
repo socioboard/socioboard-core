@@ -35,6 +35,10 @@ namespace SocioboardDataServices.Api.YoutubeAccount {
         
         private System.Threading.SendOrPostCallback DeleteYoutubeAccountOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetAllYoutubeAccountsByUserIdAndGroupIdOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetAllYoutubeAccountsOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -81,6 +85,12 @@ namespace SocioboardDataServices.Api.YoutubeAccount {
         
         /// <remarks/>
         public event DeleteYoutubeAccountCompletedEventHandler DeleteYoutubeAccountCompleted;
+        
+        /// <remarks/>
+        public event GetAllYoutubeAccountsByUserIdAndGroupIdCompletedEventHandler GetAllYoutubeAccountsByUserIdAndGroupIdCompleted;
+        
+        /// <remarks/>
+        public event GetAllYoutubeAccountsCompletedEventHandler GetAllYoutubeAccountsCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetYoutubeAccountDetailsById", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -176,6 +186,64 @@ namespace SocioboardDataServices.Api.YoutubeAccount {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllYoutubeAccountsByUserIdAndGroupId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetAllYoutubeAccountsByUserIdAndGroupId(string userid, string groupid) {
+            object[] results = this.Invoke("GetAllYoutubeAccountsByUserIdAndGroupId", new object[] {
+                        userid,
+                        groupid});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAllYoutubeAccountsByUserIdAndGroupIdAsync(string userid, string groupid) {
+            this.GetAllYoutubeAccountsByUserIdAndGroupIdAsync(userid, groupid, null);
+        }
+        
+        /// <remarks/>
+        public void GetAllYoutubeAccountsByUserIdAndGroupIdAsync(string userid, string groupid, object userState) {
+            if ((this.GetAllYoutubeAccountsByUserIdAndGroupIdOperationCompleted == null)) {
+                this.GetAllYoutubeAccountsByUserIdAndGroupIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllYoutubeAccountsByUserIdAndGroupIdOperationCompleted);
+            }
+            this.InvokeAsync("GetAllYoutubeAccountsByUserIdAndGroupId", new object[] {
+                        userid,
+                        groupid}, this.GetAllYoutubeAccountsByUserIdAndGroupIdOperationCompleted, userState);
+        }
+        
+        private void OnGetAllYoutubeAccountsByUserIdAndGroupIdOperationCompleted(object arg) {
+            if ((this.GetAllYoutubeAccountsByUserIdAndGroupIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAllYoutubeAccountsByUserIdAndGroupIdCompleted(this, new GetAllYoutubeAccountsByUserIdAndGroupIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllYoutubeAccounts", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetAllYoutubeAccounts() {
+            object[] results = this.Invoke("GetAllYoutubeAccounts", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAllYoutubeAccountsAsync() {
+            this.GetAllYoutubeAccountsAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetAllYoutubeAccountsAsync(object userState) {
+            if ((this.GetAllYoutubeAccountsOperationCompleted == null)) {
+                this.GetAllYoutubeAccountsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllYoutubeAccountsOperationCompleted);
+            }
+            this.InvokeAsync("GetAllYoutubeAccounts", new object[0], this.GetAllYoutubeAccountsOperationCompleted, userState);
+        }
+        
+        private void OnGetAllYoutubeAccountsOperationCompleted(object arg) {
+            if ((this.GetAllYoutubeAccountsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAllYoutubeAccountsCompleted(this, new GetAllYoutubeAccountsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -259,6 +327,58 @@ namespace SocioboardDataServices.Api.YoutubeAccount {
         private object[] results;
         
         internal DeleteYoutubeAccountCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetAllYoutubeAccountsByUserIdAndGroupIdCompletedEventHandler(object sender, GetAllYoutubeAccountsByUserIdAndGroupIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAllYoutubeAccountsByUserIdAndGroupIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAllYoutubeAccountsByUserIdAndGroupIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetAllYoutubeAccountsCompletedEventHandler(object sender, GetAllYoutubeAccountsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAllYoutubeAccountsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAllYoutubeAccountsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

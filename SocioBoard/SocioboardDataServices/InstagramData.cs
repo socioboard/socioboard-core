@@ -14,13 +14,28 @@ namespace SocioboardDataServices
         public string GetData(object objUserId, string instagramid)
         {
             string ret = string.Empty;
-            Guid UserId = (Guid)objUserId;
-            Api.InstagramAccount.InstagramAccount ApiObjInstagramAccount = new Api.InstagramAccount.InstagramAccount();
-            List<Domain.Socioboard.Domain.InstagramAccount> lstInstagramAccount = (List<Domain.Socioboard.Domain.InstagramAccount>)(new JavaScriptSerializer().Deserialize(ApiObjInstagramAccount.GetAllInstagramAccounts(UserId.ToString()), typeof(List<Domain.Socioboard.Domain.InstagramAccount>)));
-            foreach (InstagramAccount item in lstInstagramAccount)
+            try
             {
-                Api.Instagram.Instagram apiObjInstagram = new Api.Instagram.Instagram();
-                ret = apiObjInstagram.getInstagramData(item.UserId.ToString(), item.InstagramId);
+                Guid UserId = (Guid)objUserId;
+                Api.InstagramAccount.InstagramAccount ApiObjInstagramAccount = new Api.InstagramAccount.InstagramAccount();
+                List<Domain.Socioboard.Domain.InstagramAccount> lstInstagramAccount = (List<Domain.Socioboard.Domain.InstagramAccount>)(new JavaScriptSerializer().Deserialize(ApiObjInstagramAccount.GetAllInstagramAccounts(UserId.ToString()), typeof(List<Domain.Socioboard.Domain.InstagramAccount>)));
+                foreach (InstagramAccount item in lstInstagramAccount)
+                {
+                    try
+                    {
+                        Api.Instagram.Instagram apiObjInstagram = new Api.Instagram.Instagram();
+                        ret = apiObjInstagram.getInstagramData(item.UserId.ToString(), item.InstagramId);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex.Message);
             }
 
 

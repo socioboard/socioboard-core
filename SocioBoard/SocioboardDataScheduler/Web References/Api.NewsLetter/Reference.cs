@@ -33,6 +33,8 @@ namespace SocioboardDataScheduler.Api.NewsLetter {
         
         private System.Threading.SendOrPostCallback GetAllNewsLettersOperationCompleted;
         
+        private System.Threading.SendOrPostCallback AddNewsLatterOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -76,6 +78,9 @@ namespace SocioboardDataScheduler.Api.NewsLetter {
         
         /// <remarks/>
         public event GetAllNewsLettersCompletedEventHandler GetAllNewsLettersCompleted;
+        
+        /// <remarks/>
+        public event AddNewsLatterCompletedEventHandler AddNewsLatterCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/HelloWorld", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -128,6 +133,35 @@ namespace SocioboardDataScheduler.Api.NewsLetter {
             if ((this.GetAllNewsLettersCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetAllNewsLettersCompleted(this, new GetAllNewsLettersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddNewsLatter", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string AddNewsLatter(string ObjNewsLatter) {
+            object[] results = this.Invoke("AddNewsLatter", new object[] {
+                        ObjNewsLatter});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AddNewsLatterAsync(string ObjNewsLatter) {
+            this.AddNewsLatterAsync(ObjNewsLatter, null);
+        }
+        
+        /// <remarks/>
+        public void AddNewsLatterAsync(string ObjNewsLatter, object userState) {
+            if ((this.AddNewsLatterOperationCompleted == null)) {
+                this.AddNewsLatterOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddNewsLatterOperationCompleted);
+            }
+            this.InvokeAsync("AddNewsLatter", new object[] {
+                        ObjNewsLatter}, this.AddNewsLatterOperationCompleted, userState);
+        }
+        
+        private void OnAddNewsLatterOperationCompleted(object arg) {
+            if ((this.AddNewsLatterCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddNewsLatterCompleted(this, new AddNewsLatterCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -189,6 +223,32 @@ namespace SocioboardDataScheduler.Api.NewsLetter {
         private object[] results;
         
         internal GetAllNewsLettersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void AddNewsLatterCompletedEventHandler(object sender, AddNewsLatterCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AddNewsLatterCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AddNewsLatterCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

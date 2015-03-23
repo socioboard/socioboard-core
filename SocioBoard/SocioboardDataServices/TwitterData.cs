@@ -418,21 +418,26 @@ namespace SocioboardDataServices
                 //string ret = string.Empty;
                 Api.TwitterAccount.TwitterAccount ApiObjTwitterAccount = new Api.TwitterAccount.TwitterAccount();
                 List<Domain.Socioboard.Domain.TwitterAccount> lstTwitterAccount = (List<Domain.Socioboard.Domain.TwitterAccount>)(new JavaScriptSerializer().Deserialize(ApiObjTwitterAccount.getAllTwitterAccountsOfUser(userId.ToString()), typeof(List<Domain.Socioboard.Domain.TwitterAccount>)));
-
                 foreach (TwitterAccount itemTwt in lstTwitterAccount)
                 {
-
-                    Api.Twitter.Twitter ApiObjTwitter = new Api.Twitter.Twitter();
-                    ret = ApiObjTwitter.getTwitterData(itemTwt.UserId.ToString(), itemTwt.TwitterUserId);
-
+                    try
+                    {
+                        Api.Twitter.Twitter ApiObjTwitter = new Api.Twitter.Twitter();
+                        ret = ApiObjTwitter.getTwitterData(itemTwt.UserId.ToString(), itemTwt.TwitterUserId);
+                        //ret = ApiObjTwitter.getTwitterDataWithPagination(itemTwt.UserId.ToString(), itemTwt.TwitterUserId);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                 }
-                return ret;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex.Message);
             }
-            return null;
+            return ret;
         }
 
 

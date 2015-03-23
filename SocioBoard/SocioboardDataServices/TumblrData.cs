@@ -18,21 +18,29 @@ namespace SocioboardDataServices
         public string GetData(object UserId,string TumblrId)
         {
             string ret = string.Empty;
-            Guid userId = (Guid)UserId;
-
-            TumblrFeed objTumblrFeed = new TumblrFeed();
-            Api.TumblrFeed.TumblrFeed ApiObjTumblrFeed = new Api.TumblrFeed.TumblrFeed();
-            Api.TumblrAccount.TumblrAccount ApiObjTumblrAccount = new Api.TumblrAccount.TumblrAccount();
-            //List<TumblrAccount> lstTumblrAccount = new List<TumblrAccount>();
-
-            List<Domain.Socioboard.Domain.TumblrAccount> lstTumblrAccount = (List<Domain.Socioboard.Domain.TumblrAccount>)(new JavaScriptSerializer().Deserialize(ApiObjTumblrAccount.GetAllTumblrAccountsOfUser(userId.ToString()), typeof(List<Domain.Socioboard.Domain.TumblrAccount>)));
-
-
-            foreach (TumblrAccount lstItem in lstTumblrAccount)
+            try
             {
-                Api.Tumblr.Tumblr ApiObjTumblr = new Api.Tumblr.Tumblr();
-                ret = ApiObjTumblr.getTumblrData(lstItem.UserId.ToString(), lstItem.tblrUserName);
-                             
+                Guid userId = (Guid)UserId;
+                TumblrFeed objTumblrFeed = new TumblrFeed();
+                Api.TumblrFeed.TumblrFeed ApiObjTumblrFeed = new Api.TumblrFeed.TumblrFeed();
+                Api.TumblrAccount.TumblrAccount ApiObjTumblrAccount = new Api.TumblrAccount.TumblrAccount();
+                List<Domain.Socioboard.Domain.TumblrAccount> lstTumblrAccount = (List<Domain.Socioboard.Domain.TumblrAccount>)(new JavaScriptSerializer().Deserialize(ApiObjTumblrAccount.GetAllTumblrAccountsOfUser(userId.ToString()), typeof(List<Domain.Socioboard.Domain.TumblrAccount>)));
+                foreach (TumblrAccount lstItem in lstTumblrAccount)
+                {
+                    try
+                    {
+                        Api.Tumblr.Tumblr ApiObjTumblr = new Api.Tumblr.Tumblr();
+                        ret = ApiObjTumblr.getTumblrData(lstItem.UserId.ToString(), lstItem.tblrUserName);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
             return ret;
         }

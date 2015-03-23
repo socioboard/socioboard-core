@@ -54,6 +54,8 @@ namespace SocioboardDataScheduler.Api.Linkedin {
         
         private System.Threading.SendOrPostCallback SheduleLinkedInMessageOperationCompleted;
         
+        private System.Threading.SendOrPostCallback ScheduleLinkedinGroupMessageOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getLinkedInDataOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetUserProfileOperationCompleted;
@@ -61,6 +63,10 @@ namespace SocioboardDataScheduler.Api.Linkedin {
         private System.Threading.SendOrPostCallback GetLinkedInUserProfileOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetLinkedInFeedsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback LinkedinProfileDetailsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdateLinkedinAccountByAdminOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -137,6 +143,9 @@ namespace SocioboardDataScheduler.Api.Linkedin {
         public event SheduleLinkedInMessageCompletedEventHandler SheduleLinkedInMessageCompleted;
         
         /// <remarks/>
+        public event ScheduleLinkedinGroupMessageCompletedEventHandler ScheduleLinkedinGroupMessageCompleted;
+        
+        /// <remarks/>
         public event getLinkedInDataCompletedEventHandler getLinkedInDataCompleted;
         
         /// <remarks/>
@@ -147,6 +156,12 @@ namespace SocioboardDataScheduler.Api.Linkedin {
         
         /// <remarks/>
         public event GetLinkedInFeedsCompletedEventHandler GetLinkedInFeedsCompleted;
+        
+        /// <remarks/>
+        public event LinkedinProfileDetailsCompletedEventHandler LinkedinProfileDetailsCompleted;
+        
+        /// <remarks/>
+        public event UpdateLinkedinAccountByAdminCompletedEventHandler UpdateLinkedinAccountByAdminCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetLinkedinRedirectUrl", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -561,6 +576,39 @@ namespace SocioboardDataScheduler.Api.Linkedin {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ScheduleLinkedinGroupMessage", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string ScheduleLinkedinGroupMessage(string scheduledmsgguid, string Userid, string profileid) {
+            object[] results = this.Invoke("ScheduleLinkedinGroupMessage", new object[] {
+                        scheduledmsgguid,
+                        Userid,
+                        profileid});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ScheduleLinkedinGroupMessageAsync(string scheduledmsgguid, string Userid, string profileid) {
+            this.ScheduleLinkedinGroupMessageAsync(scheduledmsgguid, Userid, profileid, null);
+        }
+        
+        /// <remarks/>
+        public void ScheduleLinkedinGroupMessageAsync(string scheduledmsgguid, string Userid, string profileid, object userState) {
+            if ((this.ScheduleLinkedinGroupMessageOperationCompleted == null)) {
+                this.ScheduleLinkedinGroupMessageOperationCompleted = new System.Threading.SendOrPostCallback(this.OnScheduleLinkedinGroupMessageOperationCompleted);
+            }
+            this.InvokeAsync("ScheduleLinkedinGroupMessage", new object[] {
+                        scheduledmsgguid,
+                        Userid,
+                        profileid}, this.ScheduleLinkedinGroupMessageOperationCompleted, userState);
+        }
+        
+        private void OnScheduleLinkedinGroupMessageOperationCompleted(object arg) {
+            if ((this.ScheduleLinkedinGroupMessageCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ScheduleLinkedinGroupMessageCompleted(this, new ScheduleLinkedinGroupMessageCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getLinkedInData", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string getLinkedInData(string UserId, string LinkedinId) {
             object[] results = this.Invoke("getLinkedInData", new object[] {
@@ -686,6 +734,66 @@ namespace SocioboardDataScheduler.Api.Linkedin {
             if ((this.GetLinkedInFeedsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetLinkedInFeedsCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/LinkedinProfileDetails", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string LinkedinProfileDetails(string Userid, string ProfileId) {
+            object[] results = this.Invoke("LinkedinProfileDetails", new object[] {
+                        Userid,
+                        ProfileId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void LinkedinProfileDetailsAsync(string Userid, string ProfileId) {
+            this.LinkedinProfileDetailsAsync(Userid, ProfileId, null);
+        }
+        
+        /// <remarks/>
+        public void LinkedinProfileDetailsAsync(string Userid, string ProfileId, object userState) {
+            if ((this.LinkedinProfileDetailsOperationCompleted == null)) {
+                this.LinkedinProfileDetailsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLinkedinProfileDetailsOperationCompleted);
+            }
+            this.InvokeAsync("LinkedinProfileDetails", new object[] {
+                        Userid,
+                        ProfileId}, this.LinkedinProfileDetailsOperationCompleted, userState);
+        }
+        
+        private void OnLinkedinProfileDetailsOperationCompleted(object arg) {
+            if ((this.LinkedinProfileDetailsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.LinkedinProfileDetailsCompleted(this, new LinkedinProfileDetailsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateLinkedinAccountByAdmin", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string UpdateLinkedinAccountByAdmin(string ObjLinkedin) {
+            object[] results = this.Invoke("UpdateLinkedinAccountByAdmin", new object[] {
+                        ObjLinkedin});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UpdateLinkedinAccountByAdminAsync(string ObjLinkedin) {
+            this.UpdateLinkedinAccountByAdminAsync(ObjLinkedin, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateLinkedinAccountByAdminAsync(string ObjLinkedin, object userState) {
+            if ((this.UpdateLinkedinAccountByAdminOperationCompleted == null)) {
+                this.UpdateLinkedinAccountByAdminOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateLinkedinAccountByAdminOperationCompleted);
+            }
+            this.InvokeAsync("UpdateLinkedinAccountByAdmin", new object[] {
+                        ObjLinkedin}, this.UpdateLinkedinAccountByAdminOperationCompleted, userState);
+        }
+        
+        private void OnUpdateLinkedinAccountByAdminOperationCompleted(object arg) {
+            if ((this.UpdateLinkedinAccountByAdminCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateLinkedinAccountByAdminCompleted(this, new UpdateLinkedinAccountByAdminCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1125,6 +1233,32 @@ namespace SocioboardDataScheduler.Api.Linkedin {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void ScheduleLinkedinGroupMessageCompletedEventHandler(object sender, ScheduleLinkedinGroupMessageCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ScheduleLinkedinGroupMessageCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ScheduleLinkedinGroupMessageCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
     public delegate void getLinkedInDataCompletedEventHandler(object sender, getLinkedInDataCompletedEventArgs e);
     
     /// <remarks/>
@@ -1160,6 +1294,58 @@ namespace SocioboardDataScheduler.Api.Linkedin {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
     public delegate void GetLinkedInFeedsCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void LinkedinProfileDetailsCompletedEventHandler(object sender, LinkedinProfileDetailsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class LinkedinProfileDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal LinkedinProfileDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void UpdateLinkedinAccountByAdminCompletedEventHandler(object sender, UpdateLinkedinAccountByAdminCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpdateLinkedinAccountByAdminCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpdateLinkedinAccountByAdminCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
 }
 
 #pragma warning restore 1591

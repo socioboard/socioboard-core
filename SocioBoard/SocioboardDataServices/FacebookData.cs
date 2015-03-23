@@ -16,36 +16,49 @@ namespace SocioboardDataServices
         public string GetData(object userId, string profileId)
         {
             string ret = string.Empty;
-            Guid UserId = (Guid)userId;
-            Api.FacebookFeed.FacebookFeed ApiObjFacebookFeed = new Api.FacebookFeed.FacebookFeed();
-            ApiObjFacebookFeed.getAllFacebookFeedsByUserIdAndProfileId(userId.ToString(), profileId);
-            Api.FacebookAccount.FacebookAccount ApiObjFacebookAccount = new Api.FacebookAccount.FacebookAccount();
-            List<Domain.Socioboard.Domain.FacebookAccount> lstFacebookAccounts = (List<Domain.Socioboard.Domain.FacebookAccount>)(new JavaScriptSerializer().Deserialize(ApiObjFacebookAccount.GetFacebookAccountByUserId(UserId.ToString()), typeof(List<Domain.Socioboard.Domain.FacebookAccount>)));
-            //FacebookHelper fbhelper = new FacebookHelper();
-
-            foreach (FacebookAccount itemFb in lstFacebookAccounts)
+            try
             {
-                //FacebookHelper objFbHelper = new FacebookHelper();
-                try
+                Guid UserId = (Guid)userId;
+                Api.FacebookFeed.FacebookFeed ApiObjFacebookFeed = new Api.FacebookFeed.FacebookFeed();
+                ApiObjFacebookFeed.getAllFacebookFeedsByUserIdAndProfileId(userId.ToString(), profileId);
+                Api.FacebookAccount.FacebookAccount ApiObjFacebookAccount = new Api.FacebookAccount.FacebookAccount();
+                List<Domain.Socioboard.Domain.FacebookAccount> lstFacebookAccounts = (List<Domain.Socioboard.Domain.FacebookAccount>)(new JavaScriptSerializer().Deserialize(ApiObjFacebookAccount.GetFacebookAccountByUserId(UserId.ToString()), typeof(List<Domain.Socioboard.Domain.FacebookAccount>)));
+                //FacebookHelper fbhelper = new FacebookHelper();
+
+                foreach (FacebookAccount itemFb in lstFacebookAccounts)
                 {
-                    //Facebook profile data
-                    Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
-                    ret = ApiobjFacebook.GetFacebookData(itemFb.FbUserId, itemFb.UserId.ToString());
+                    //FacebookHelper objFbHelper = new FacebookHelper();
+                    try
+                    {
+                        //Facebook profile data
+                        if (!string.IsNullOrEmpty(itemFb.AccessToken))
+                        {
+                            Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
+                            ret = ApiobjFacebook.GetFacebookData(itemFb.FbUserId, itemFb.UserId.ToString());
 
 
-                    //Add Facebook Stats
-                    Api.FacebookStats.FacebookStats _FacebookStats = new Api.FacebookStats.FacebookStats();
-                    bool abc = _FacebookStats.AddFacebookFriendsGender(itemFb.UserId.ToString(), itemFb.FbUserId);
+                            //Add Facebook Stats
+                            Api.FacebookStats.FacebookStats _FacebookStats = new Api.FacebookStats.FacebookStats();
+                            bool abc = _FacebookStats.AddFacebookFriendsGender(itemFb.UserId.ToString(), itemFb.FbUserId);
+                        }
 
+                    }
+                    catch (Exception Err)
+                    {
+                        Console.Write(Err.Message);
+                    }
                 }
-                catch (Exception Err)
-                {
-                    Console.Write(Err.Message);
-                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
             return ret;
         }
 
+
+            
+        
         public void GetSearchData(object parameters)
         {
             #region Facebook

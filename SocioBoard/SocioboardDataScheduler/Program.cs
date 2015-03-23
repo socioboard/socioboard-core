@@ -14,9 +14,6 @@ namespace SocioboardDataScheduler
     {
         
         static void Main(string[] args)
-        
-        
-        
         {
             Program prog = new Program();
             prog.StartScheduler(args);
@@ -41,7 +38,8 @@ namespace SocioboardDataScheduler
                 Console.WriteLine("3. Linkedin");
                 Console.WriteLine("4. Instagram");
                 Console.WriteLine("5. Tumblr");
-                Console.WriteLine("6. Youtube");
+                Console.WriteLine("6. Facebook_Group");
+                Console.WriteLine("7. Linkedin_Group");
                 string[] str = { Console.ReadLine() };
 
                 string profileType = str[0];
@@ -64,9 +62,11 @@ namespace SocioboardDataScheduler
                         profileType = "tumblr";
                         break;
                     case "6":
-                        profileType = "youtube";
+                        profileType = "facebookgroup";
                         break;
-
+                    case "7":
+                        profileType = "linkedingroup";
+                        break;
                     default:
                         break;
                 }
@@ -125,6 +125,49 @@ namespace SocioboardDataScheduler
                 Thread.Sleep(5*1000);
             }
         }
+
+       private static void RunDataSchedulerSirAccount(string profiletype)
+       {
+           while (true)
+           {
+               Api.ScheduledMessage.ScheduledMessage ApiobjScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
+               List<Domain.Socioboard.Domain.ScheduledMessage> lstScheduledMessage = (List<Domain.Socioboard.Domain.ScheduledMessage>)(new JavaScriptSerializer().Deserialize(ApiobjScheduledMessage.getScheduledMessageByProfileType(profiletype.ToString()), typeof(List<Domain.Socioboard.Domain.ScheduledMessage>)));
+               ThreadPool.SetMaxThreads(10, 4);
+               if (lstScheduledMessage != null)
+               {
+                   if (lstScheduledMessage.Count != 0)
+                   {
+                       foreach (var item in lstScheduledMessage)
+                       {
+                           try
+                           {
+                               clsSocialSiteScheduler objclsSocialSiteScheduler = new clsSocialSiteScheduler(item.ProfileType);
+                               IScheduler objSocialSiteDataScheduler = objclsSocialSiteScheduler.CreateSocialSiteSchedulerInstance();
+                               if (objSocialSiteDataScheduler != null)
+                               {
+                                   Console.WriteLine(objSocialSiteDataScheduler.PostScheduleMessage(item.Id.ToString(), item.UserId.ToString(), item.ProfileId.ToString()));
+                               }
+                           }
+                           catch (Exception ex)
+                           {
+                               Console.WriteLine(ex.Message);
+                           }
+                       }
+                   }
+                   else
+                   {
+
+                       Console.WriteLine("No active record in Database");
+                   }
+               }
+               else
+               {
+                   Console.WriteLine("No active record in Database");
+               }
+
+               Thread.Sleep(5 * 1000);
+           }
+       }
 
        private static void RunNewsLetterScheduler()
        {
