@@ -2091,15 +2091,6 @@
     <None Include="Web References\Api.Facebook\Facebook.disco">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Scripts\_references.js" />
     <None Include="Themes\Socioboard\Contents\js\jquery-1.4.1-vsdoc.js" />
     <Content Include="Themes\Socioboard\Views\Index\_ViewStart.cshtml" />
@@ -2112,6 +2103,13 @@
     <None Include="Web References\Api.YoutubeAccount\YoutubeAccount.wsdl" />
     <None Include="Web References\Api.YoutubeChannel\YoutubeChannel.wsdl" />
     <None Include="Web References\Api.Youtube\Youtube.wsdl" />
+    <Content Include="Web.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
