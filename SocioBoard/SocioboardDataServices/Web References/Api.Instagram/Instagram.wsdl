@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:import namespace="http://microsoft.com/wsdl/types/" />
@@ -82,12 +82,12 @@
           <s:element minOccurs="0" maxOccurs="1" name="InstagramId" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="AccessToken" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="InsUserName" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProfileUrl" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="IsActive" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="Followers" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="FollowedBy" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="ProfileUrl" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="TotalImages" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s1:guid" />
           <s:element minOccurs="0" maxOccurs="1" name="ProfileType" type="s:string" />
         </s:sequence>
       </s:complexType>
@@ -684,16 +684,16 @@
   </wsdl:binding>
   <wsdl:service name="Instagram">
     <wsdl:port name="InstagramSoap" binding="tns:InstagramSoap">
-      <soap:address location="http://localhost:6361/Services/Instagram.asmx" />
+      <soap:address location="http://localhost:6361/services/Instagram.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramSoap12" binding="tns:InstagramSoap12">
-      <soap12:address location="http://localhost:6361/Services/Instagram.asmx" />
+      <soap12:address location="http://localhost:6361/services/Instagram.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramHttpGet" binding="tns:InstagramHttpGet">
-      <http:address location="http://localhost:6361/Services/Instagram.asmx" />
+      <http:address location="http://localhost:6361/services/Instagram.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramHttpPost" binding="tns:InstagramHttpPost">
-      <http:address location="http://localhost:6361/Services/Instagram.asmx" />
+      <http:address location="http://localhost:6361/services/Instagram.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

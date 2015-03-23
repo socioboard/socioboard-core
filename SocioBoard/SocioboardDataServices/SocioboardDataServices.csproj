@@ -33,13 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ChilkatDotNet2, Version=9.2.0.0, Culture=neutral, PublicKeyToken=eb5fc1fc52ef09bd, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\ChilkatDotNet2.dll</HintPath>
-    </Reference>
-    <Reference Include="Domain.Socioboard">
-      <HintPath>lib\Domain.Socioboard.dll</HintPath>
-    </Reference>
     <Reference Include="log4net">
       <HintPath>..\SocioboardAPI\lib\log4net.dll</HintPath>
     </Reference>
@@ -62,10 +55,6 @@
   <ItemGroup>
     <Compile Include="clsSocialSiteDataFeedsFactory.cs" />
     <Compile Include="FacebookData.cs" />
-    <Compile Include="Helper\CustomMultithreadManagerDictionary.cs" />
-    <Compile Include="Helper\CustomMultithreads.cs" />
-    <Compile Include="Helper\CustomMultithreadsManager.cs" />
-    <Compile Include="Helper\Events.cs" />
     <Compile Include="InstagramData.cs" />
     <Compile Include="LinkedInData.cs" />
     <Compile Include="NegativeFeeds.cs" />
@@ -357,10 +346,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/Facebook.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/Facebook.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Facebook\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/Facebook.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/Facebook.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -368,10 +357,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_Facebook_Facebook</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/FacebookAccount.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/FacebookAccount.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.FacebookAccount\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/FacebookAccount.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/FacebookAccount.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -379,10 +368,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_FacebookAccount_FacebookAccount</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/FacebookFeed.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/FacebookFeed.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.FacebookFeed\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/FacebookFeed.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/FacebookFeed.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -390,10 +379,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_FacebookFeed_FacebookFeed</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/FacebookMessage.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/FacebookMessage.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.FacebookMessage\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/FacebookMessage.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/FacebookMessage.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -401,10 +390,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_FacebookMessage_FacebookMessage</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/FacebookStats.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/FacebookStats.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.FacebookStats\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/FacebookStats.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/FacebookStats.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -412,10 +401,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_FacebookStats_FacebookStats</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/FbPageComment.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/FbPageComment.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.FbPageComment\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/FbPageComment.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/FbPageComment.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -423,10 +412,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_FbPageComment_FbPageComment</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/FbPageLiker.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/FbPageLiker.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.FbPageLiker\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/FbPageLiker.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/FbPageLiker.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -434,10 +423,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_FbPageLiker_FbPageLiker</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/FbPagePost.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/FbPagePost.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.FbPagePost\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/FbPagePost.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/FbPagePost.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -445,10 +434,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_FbPagePost_FbPagePost</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/Instagram.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/Instagram.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Instagram\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/Instagram.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/Instagram.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -456,10 +445,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_Instagram_Instagram</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/InstagramAccount.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/InstagramAccount.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.InstagramAccount\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/InstagramAccount.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/InstagramAccount.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -467,10 +456,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_InstagramAccount_InstagramAccount</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/InstagramComment.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/InstagramComment.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.InstagramComment\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/InstagramComment.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/InstagramComment.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -478,10 +467,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_InstagramComment_InstagramComment</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/InstagramFeed.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/InstagramFeed.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.InstagramFeed\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/InstagramFeed.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/InstagramFeed.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -489,10 +478,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_InstagramFeed_InstagramFeed</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/Linkedin.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/Linkedin.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Linkedin\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/Linkedin.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/Linkedin.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -500,10 +489,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_Linkedin_Linkedin</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/LinkedinAccount.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/LinkedinAccount.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.LinkedinAccount\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/LinkedinAccount.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/LinkedinAccount.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -511,10 +500,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_LinkedinAccount_LinkedinAccount</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/SentimentalAnalysis.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/SentimentalAnalysis.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.SentimentalAnalysis\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/SentimentalAnalysis.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/SentimentalAnalysis.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -522,10 +511,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_SentimentalAnalysis_SentimentalAnalysis</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/SocialProfile.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/SocialProfile.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.SocialProfile\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/SocialProfile.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/SocialProfile.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -533,10 +522,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_SocialProfile_SocialProfile</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/Team.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/Team.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Team\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/Team.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/Team.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -544,10 +533,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_Team_Team</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/TicketAssigneeStatus.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/TicketAssigneeStatus.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.TicketAssigneeStatus\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/TicketAssigneeStatus.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/TicketAssigneeStatus.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -555,10 +544,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_TicketAssigneeStatus_TicketAssigneeStatus</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/Tumblr.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/Tumblr.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Tumblr\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/Tumblr.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/Tumblr.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -566,10 +555,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_Tumblr_Tumblr</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/TumblrAccount.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/TumblrAccount.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.TumblrAccount\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/TumblrAccount.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/TumblrAccount.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -577,10 +566,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_TumblrAccount_TumblrAccount</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/TumblrFeed.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/TumblrFeed.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.TumblrFeed\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/TumblrFeed.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/TumblrFeed.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -588,10 +577,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_TumblrFeed_TumblrFeed</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/Twitter.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/Twitter.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Twitter\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/Twitter.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/Twitter.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -599,10 +588,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_Twitter_Twitter</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/TwitterAccount.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/TwitterAccount.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.TwitterAccount\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/TwitterAccount.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/TwitterAccount.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -610,10 +599,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_TwitterAccount_TwitterAccount</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/User.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/User.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.User\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/User.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/User.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -621,10 +610,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_User_User</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/Youtube.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/Youtube.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Youtube\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/Youtube.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/Youtube.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -632,10 +621,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_Youtube_Youtube</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/YoutubeAccount.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/services/YoutubeAccount.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.YoutubeAccount\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/YoutubeAccount.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/services/YoutubeAccount.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -721,6 +710,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\Api.FacebookAccount\FacebookAccount.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain.Socioboard\Domain.Socioboard.csproj">
+      <Project>{96ecfb64-a9ac-45f4-85bf-185e9c6a0f53}</Project>
+      <Name>Domain.Socioboard</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

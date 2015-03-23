@@ -29,8 +29,6 @@ namespace SocioboardDataServices.Api.Facebook {
     [System.Web.Services.WebServiceBindingAttribute(Name="FacebookSoap", Namespace="http://tempuri.org/")]
     public partial class Facebook : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
-        private System.Threading.SendOrPostCallback IskiOperationCompleted;
-        
         private System.Threading.SendOrPostCallback AddFacebookAccountOperationCompleted;
         
         private System.Threading.SendOrPostCallback AddFacebookAccountWithPaginationOperationCompleted;
@@ -124,9 +122,6 @@ namespace SocioboardDataServices.Api.Facebook {
         }
         
         /// <remarks/>
-        public event IskiCompletedEventHandler IskiCompleted;
-        
-        /// <remarks/>
         public event AddFacebookAccountCompletedEventHandler AddFacebookAccountCompleted;
         
         /// <remarks/>
@@ -206,39 +201,6 @@ namespace SocioboardDataServices.Api.Facebook {
         
         /// <remarks/>
         public event AddNewFacebookWallPostsCompletedEventHandler AddNewFacebookWallPostsCompleted;
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Iski", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string Iski(string code, string UserId, string GroupId) {
-            object[] results = this.Invoke("Iski", new object[] {
-                        code,
-                        UserId,
-                        GroupId});
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void IskiAsync(string code, string UserId, string GroupId) {
-            this.IskiAsync(code, UserId, GroupId, null);
-        }
-        
-        /// <remarks/>
-        public void IskiAsync(string code, string UserId, string GroupId, object userState) {
-            if ((this.IskiOperationCompleted == null)) {
-                this.IskiOperationCompleted = new System.Threading.SendOrPostCallback(this.OnIskiOperationCompleted);
-            }
-            this.InvokeAsync("Iski", new object[] {
-                        code,
-                        UserId,
-                        GroupId}, this.IskiOperationCompleted, userState);
-        }
-        
-        private void OnIskiOperationCompleted(object arg) {
-            if ((this.IskiCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.IskiCompleted(this, new IskiCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddFacebookAccount", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -1139,32 +1101,6 @@ namespace SocioboardDataServices.Api.Facebook {
                 return true;
             }
             return false;
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void IskiCompletedEventHandler(object sender, IskiCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class IskiCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal IskiCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
         }
     }
     

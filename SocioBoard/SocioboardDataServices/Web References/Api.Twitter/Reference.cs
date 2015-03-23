@@ -880,9 +880,9 @@ namespace SocioboardDataServices.Api.Twitter {
         
         private System.Guid userIdField;
         
-        private bool isActiveField;
-        
         private int followersCountField;
+        
+        private bool isActiveField;
         
         private int followingCountField;
         
@@ -955,22 +955,22 @@ namespace SocioboardDataServices.Api.Twitter {
         }
         
         /// <remarks/>
-        public bool IsActive {
-            get {
-                return this.isActiveField;
-            }
-            set {
-                this.isActiveField = value;
-            }
-        }
-        
-        /// <remarks/>
         public int FollowersCount {
             get {
                 return this.followersCountField;
             }
             set {
                 this.followersCountField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsActive {
+            get {
+                return this.isActiveField;
+            }
+            set {
+                this.isActiveField = value;
             }
         }
         
