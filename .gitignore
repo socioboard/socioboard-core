@@ -8,3 +8,7 @@
 /SocioBoard/SocialSiteDataService
 /SocioBoard/SocioBoardScheduler
 /SocioBoard/Socioboard/hibernate.cfg.xml
+/SocioBoard/Domain.Socioboard/bin
+/SocioBoard/Domain.Socioboard/obj
+/SocioBoard/Socioboard/bin
+/SocioBoard/Socioboard/obj
