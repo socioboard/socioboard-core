@@ -16,3 +16,17 @@
 /SocioBoard/SocioboardDataScheduler/obj
 /SocioBoard/SocioboardDataServices/bin
 /SocioBoard/SocioboardDataServices/obj
+/SocioBoard/SocioboardAPI/Library/GlobusGooglePlusLib/obj
+/SocioBoard/SocioboardAPI/Library/GlobusGooglePlusLib/bin
+/SocioBoard/SocioboardAPI/Library/GlobusInstagramLib/GlobusInstagramLib/bin
+/SocioBoard/SocioboardAPI/Library/GlobusInstagramLib/GlobusInstagramLib/obj
+/SocioBoard/SocioboardAPI/Library/GlobusLinkedinLib/obj
+/SocioBoard/SocioboardAPI/Library/GlobusLinkedinLib/bin
+/SocioBoard/SocioboardAPI/Library/GlobusMailLib/bin
+/SocioBoard/SocioboardAPI/Library/GlobusMailLib/obj
+/SocioBoard/SocioboardAPI/Library/GlobussDropboxLib/obj
+/SocioBoard/SocioboardAPI/Library/GlobussDropboxLib/bin
+/SocioBoard/SocioboardAPI/Library/GlobusTumblerLib/bin
+/SocioBoard/SocioboardAPI/Library/GlobusTumblerLib/obj
+/SocioBoard/SocioboardAPI/Library/GlobusTwitterLib/bin
+/SocioBoard/SocioboardAPI/Library/GlobusTwitterLib/obj
