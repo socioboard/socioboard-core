@@ -60,20 +60,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\ChilkatHttpHelpr.cs" />
-    <Compile Include="Classes\FacebookUser.cs" />
-    <Compile Include="Classes\Globals.cs" />
-    <Compile Include="Classes\GlobusHttpHelper.cs" />
-    <Compile Include="Classes\GlobusLogHelper.cs" />
-    <Compile Include="Classes\RemoveAllHtmlTag.cs" />
-    <Compile Include="Classes\socioHelper.cs" />
-    <Compile Include="Classes\Utils.cs" />
-    <Compile Include="clsFacebookDataScraper.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="clsSocialSiteDataFeedsFactory.cs" />
     <Compile Include="FacebookData.cs" />
-    <Compile Include="FacebookFanPageData.cs" />
     <Compile Include="Helper\CustomMultithreadManagerDictionary.cs" />
     <Compile Include="Helper\CustomMultithreads.cs" />
     <Compile Include="Helper\CustomMultithreadsManager.cs" />
