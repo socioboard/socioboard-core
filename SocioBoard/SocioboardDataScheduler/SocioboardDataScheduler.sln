@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocioboardDataScheduler", "SocioboardDataScheduler.csproj", "{B692E99E-6826-449F-B2A5-66F90C39C5C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocioboardDataServices", "..\SocioboardDataServices\SocioboardDataServices.csproj", "{F4AA4F9E-2601-44ED-B48A-A4F48F2D8321}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SBDataServices_Live_19-02-15", "..\SBDataServices_Live_02-02-15\SBDataServices_Live_02-02-15.vdproj", "{52D9ECF5-001A-4E7C-8F05-1BB986D4362D}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SBDataSchedular_Live_19_02_2015", "..\SBDataSchedular_Live_19_02_2015\SBDataSchedular_Live_19_02_2015.vdproj", "{A765F340-5676-42B7-9D5D-28193CF07973}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Socioboard", "..\SocioboardAPI\Api.Socioboard.csproj", "{B5C88250-C9CF-47CC-AB17-AAB30CFDBD26}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B692E99E-6826-449F-B2A5-66F90C39C5C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4AA4F9E-2601-44ED-B48A-A4F48F2D8321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4AA4F9E-2601-44ED-B48A-A4F48F2D8321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4AA4F9E-2601-44ED-B48A-A4F48F2D8321}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4AA4F9E-2601-44ED-B48A-A4F48F2D8321}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52D9ECF5-001A-4E7C-8F05-1BB986D4362D}.Debug|Any CPU.ActiveCfg = Debug
+		{52D9ECF5-001A-4E7C-8F05-1BB986D4362D}.Debug|Any CPU.Build.0 = Debug
+		{52D9ECF5-001A-4E7C-8F05-1BB986D4362D}.Release|Any CPU.ActiveCfg = Release
+		{52D9ECF5-001A-4E7C-8F05-1BB986D4362D}.Release|Any CPU.Build.0 = Release
+		{A765F340-5676-42B7-9D5D-28193CF07973}.Debug|Any CPU.ActiveCfg = Debug
+		{A765F340-5676-42B7-9D5D-28193CF07973}.Release|Any CPU.ActiveCfg = Release
+		{B5C88250-C9CF-47CC-AB17-AAB30CFDBD26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5C88250-C9CF-47CC-AB17-AAB30CFDBD26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5C88250-C9CF-47CC-AB17-AAB30CFDBD26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5C88250-C9CF-47CC-AB17-AAB30CFDBD26}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
