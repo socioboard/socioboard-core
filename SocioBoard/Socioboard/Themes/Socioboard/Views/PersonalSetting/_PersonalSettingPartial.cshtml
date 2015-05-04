@@ -12,12 +12,13 @@
     string path = System.Configuration.ConfigurationManager.AppSettings["domain"];
     if (!string.IsNullOrEmpty(objUser.ProfileUrl))
     {
-        try{
-        profileurl = System.Text.RegularExpressions.Regex.Split(objUser.ProfileUrl, "wwwroot")[1]; 
-        }
-        catch{
-            profileurl = objUser.ProfileUrl;
-        }
+        string[] profileUrl1 = objUser.ProfileUrl.Split(new string[] { "Socioboard" }, StringSplitOptions.None);
+        profileurl = "/Themes/Socioboard" + profileUrl1[2];
+                        
+    }
+    else
+    {
+                        
     }
 }
     
@@ -72,7 +73,7 @@
                             </div>*@
 
                             <div class="form-group">
-                               @* <img src="@objUser.ProfileUrl" class="img-circle profilePic" alt="User Avatar">*@
+                              <img src="@objUser.ProfileUrl" class="img-circle profilePic" alt="User Avatar">
                                 <label>@GlobusMultiLanguageLib.Resources.PersonalSetting_PersonalSettingPartial_TeamMemberAvatar</label>
                                 <div><input  id="input-24" type="file" class="btn btn-default col-md-6" onchange="AddImage()"></div>
                             </div>
@@ -200,7 +201,7 @@
         $("#input-24").fileinput({
             showUpload: false,
             showRemove: false,
-            @if(!string.IsNullOrEmpty(objUser.ProfileUrl))
+            @if (!string.IsNullOrEmpty(objUser.ProfileUrl))
             {
                 string[] profileUrl = objUser.ProfileUrl.Split(new string[] { "Socioboard" }, StringSplitOptions.None);
                 string imgurl = "/Themes/Socioboard" + profileUrl[1];

@@ -11,7 +11,8 @@ var fileimage = "";
 
 
 function facebookgroupdetails(gid, fbaccesstoken ,profileid) {
-   
+    $('#gp-' + gid + '-' + profileid).parent().parent().parent().children().children().children().css("color", "");
+    $('#gp-' + gid + '-' + profileid).css("color", "#4169E1");
     grpId = gid;
     accToken = fbaccesstoken;
     //$('#btngrpsend').attr('fbgpid', gid);
@@ -81,7 +82,7 @@ function postFBGroupFeeds() {
 
 
         if (msg == "" || msg == null) {
-            alert("Please enter in Comment Box");
+            alert("Text Field Should Not Be Empty");
             return false;
         }
 
@@ -120,7 +121,7 @@ function postFBGroupFeeds() {
         var AccToken = accToken;
         var msg = $('#txtcmt').val();
         if (msg == "" || msg == null) {
-            alert("Please enter in Comment Box");
+            alert("Text Field Should Not Be Empty");
             return false;
         }
        
@@ -174,7 +175,8 @@ function abc() {
 //=================linkedin group---------------------
 function linkedingroupdetails(groupid, linUserId) {
    // alert(linUserId);
-
+    $('#gp-' + groupid + '-' + linUserId).parent().parent().parent().children().children().children().css("color", "");
+    $('#gp-' + groupid + '-' + linUserId).css("color", "#4169E1");
     grpId = "lin_" + groupid;
     linkedInUserId = linUserId;
     linkeid = linUserId;

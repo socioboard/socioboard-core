@@ -37,12 +37,6 @@ namespace SocioboardDataScheduler.Api.Tumblr {
         
         private System.Threading.SendOrPostCallback SheduleTumblrMessageOperationCompleted;
         
-        private System.Threading.SendOrPostCallback TumblerDataOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback TumblrComposeMessageOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback UpdateTumblrAccountByAdminOperationCompleted;
-        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -92,15 +86,6 @@ namespace SocioboardDataScheduler.Api.Tumblr {
         
         /// <remarks/>
         public event SheduleTumblrMessageCompletedEventHandler SheduleTumblrMessageCompleted;
-        
-        /// <remarks/>
-        public event TumblerDataCompletedEventHandler TumblerDataCompleted;
-        
-        /// <remarks/>
-        public event TumblrComposeMessageCompletedEventHandler TumblrComposeMessageCompleted;
-        
-        /// <remarks/>
-        public event UpdateTumblrAccountByAdminCompletedEventHandler UpdateTumblrAccountByAdminCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetTumblrRedirectUrl", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -176,11 +161,10 @@ namespace SocioboardDataScheduler.Api.Tumblr {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTumblrData", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string getTumblrData(string UserId, string Tumblrid) {
-            object[] results = this.Invoke("getTumblrData", new object[] {
+        public void getTumblrData(string UserId, string Tumblrid) {
+            this.Invoke("getTumblrData", new object[] {
                         UserId,
                         Tumblrid});
-            return ((string)(results[0]));
         }
         
         /// <remarks/>
@@ -201,7 +185,7 @@ namespace SocioboardDataScheduler.Api.Tumblr {
         private void OngetTumblrDataOperationCompleted(object arg) {
             if ((this.getTumblrDataCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.getTumblrDataCompleted(this, new getTumblrDataCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.getTumblrDataCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -235,101 +219,6 @@ namespace SocioboardDataScheduler.Api.Tumblr {
             if ((this.SheduleTumblrMessageCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.SheduleTumblrMessageCompleted(this, new SheduleTumblrMessageCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/TumblerData", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string TumblerData(string tumblrusername) {
-            object[] results = this.Invoke("TumblerData", new object[] {
-                        tumblrusername});
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void TumblerDataAsync(string tumblrusername) {
-            this.TumblerDataAsync(tumblrusername, null);
-        }
-        
-        /// <remarks/>
-        public void TumblerDataAsync(string tumblrusername, object userState) {
-            if ((this.TumblerDataOperationCompleted == null)) {
-                this.TumblerDataOperationCompleted = new System.Threading.SendOrPostCallback(this.OnTumblerDataOperationCompleted);
-            }
-            this.InvokeAsync("TumblerData", new object[] {
-                        tumblrusername}, this.TumblerDataOperationCompleted, userState);
-        }
-        
-        private void OnTumblerDataOperationCompleted(object arg) {
-            if ((this.TumblerDataCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.TumblerDataCompleted(this, new TumblerDataCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/TumblrComposeMessage", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string TumblrComposeMessage(string message, string profileid, string userid, string currentdatetime, string picurl) {
-            object[] results = this.Invoke("TumblrComposeMessage", new object[] {
-                        message,
-                        profileid,
-                        userid,
-                        currentdatetime,
-                        picurl});
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void TumblrComposeMessageAsync(string message, string profileid, string userid, string currentdatetime, string picurl) {
-            this.TumblrComposeMessageAsync(message, profileid, userid, currentdatetime, picurl, null);
-        }
-        
-        /// <remarks/>
-        public void TumblrComposeMessageAsync(string message, string profileid, string userid, string currentdatetime, string picurl, object userState) {
-            if ((this.TumblrComposeMessageOperationCompleted == null)) {
-                this.TumblrComposeMessageOperationCompleted = new System.Threading.SendOrPostCallback(this.OnTumblrComposeMessageOperationCompleted);
-            }
-            this.InvokeAsync("TumblrComposeMessage", new object[] {
-                        message,
-                        profileid,
-                        userid,
-                        currentdatetime,
-                        picurl}, this.TumblrComposeMessageOperationCompleted, userState);
-        }
-        
-        private void OnTumblrComposeMessageOperationCompleted(object arg) {
-            if ((this.TumblrComposeMessageCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.TumblrComposeMessageCompleted(this, new TumblrComposeMessageCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateTumblrAccountByAdmin", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string UpdateTumblrAccountByAdmin(string ObjTumblr) {
-            object[] results = this.Invoke("UpdateTumblrAccountByAdmin", new object[] {
-                        ObjTumblr});
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void UpdateTumblrAccountByAdminAsync(string ObjTumblr) {
-            this.UpdateTumblrAccountByAdminAsync(ObjTumblr, null);
-        }
-        
-        /// <remarks/>
-        public void UpdateTumblrAccountByAdminAsync(string ObjTumblr, object userState) {
-            if ((this.UpdateTumblrAccountByAdminOperationCompleted == null)) {
-                this.UpdateTumblrAccountByAdminOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateTumblrAccountByAdminOperationCompleted);
-            }
-            this.InvokeAsync("UpdateTumblrAccountByAdmin", new object[] {
-                        ObjTumblr}, this.UpdateTumblrAccountByAdminOperationCompleted, userState);
-        }
-        
-        private void OnUpdateTumblrAccountByAdminOperationCompleted(object arg) {
-            if ((this.UpdateTumblrAccountByAdminCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.UpdateTumblrAccountByAdminCompleted(this, new UpdateTumblrAccountByAdminCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -406,29 +295,7 @@ namespace SocioboardDataScheduler.Api.Tumblr {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void getTumblrDataCompletedEventHandler(object sender, getTumblrDataCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class getTumblrDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal getTumblrDataCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
+    public delegate void getTumblrDataCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
@@ -443,84 +310,6 @@ namespace SocioboardDataScheduler.Api.Tumblr {
         private object[] results;
         
         internal SheduleTumblrMessageCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void TumblerDataCompletedEventHandler(object sender, TumblerDataCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class TumblerDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal TumblerDataCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void TumblrComposeMessageCompletedEventHandler(object sender, TumblrComposeMessageCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class TumblrComposeMessageCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal TumblrComposeMessageCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void UpdateTumblrAccountByAdminCompletedEventHandler(object sender, UpdateTumblrAccountByAdminCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class UpdateTumblrAccountByAdminCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal UpdateTumblrAccountByAdminCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

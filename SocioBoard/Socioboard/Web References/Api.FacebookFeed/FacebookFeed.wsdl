@@ -17,6 +17,23 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getAllFacebookFeedsByUserIdAndProfileIdUsingLimit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="noOfDataToSkip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="noOfResultsFromTop" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllFacebookFeedsByUserIdAndProfileIdUsingLimitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllFacebookFeedsByUserIdAndProfileIdUsingLimitResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="getAllFacebookFeedsByUserIdAndProfileId1">
         <s:complexType>
           <s:sequence>
@@ -178,6 +195,12 @@
   <wsdl:message name="getAllFacebookFeedsByUserIdAndProfileIdSoapOut">
     <wsdl:part name="parameters" element="tns:getAllFacebookFeedsByUserIdAndProfileIdResponse" />
   </wsdl:message>
+  <wsdl:message name="getAllFacebookFeedsByUserIdAndProfileIdUsingLimitSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllFacebookFeedsByUserIdAndProfileIdUsingLimit" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookFeedsByUserIdAndProfileIdUsingLimitSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllFacebookFeedsByUserIdAndProfileIdUsingLimitResponse" />
+  </wsdl:message>
   <wsdl:message name="getAllFacebookFeedsByUserIdAndProfileId1SoapIn">
     <wsdl:part name="parameters" element="tns:getAllFacebookFeedsByUserIdAndProfileId1" />
   </wsdl:message>
@@ -243,6 +266,15 @@
     <wsdl:part name="ProfileId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="getAllFacebookFeedsByUserIdAndProfileIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookFeedsByUserIdAndProfileIdUsingLimitHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="noOfDataToSkip" type="s:string" />
+    <wsdl:part name="noOfResultsFromTop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookFeedsByUserIdAndProfileIdUsingLimitHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="getAllFacebookFeedsByUserIdAndProfileId1HttpGetIn">
@@ -323,6 +355,15 @@
   <wsdl:message name="getAllFacebookFeedsByUserIdAndProfileIdHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="getAllFacebookFeedsByUserIdAndProfileIdUsingLimitHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+    <wsdl:part name="noOfDataToSkip" type="s:string" />
+    <wsdl:part name="noOfResultsFromTop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllFacebookFeedsByUserIdAndProfileIdUsingLimitHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="getAllFacebookFeedsByUserIdAndProfileId1HttpPostIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="ProfileId" type="s:string" />
@@ -399,6 +440,10 @@
       <wsdl:input message="tns:getAllFacebookFeedsByUserIdAndProfileIdSoapIn" />
       <wsdl:output message="tns:getAllFacebookFeedsByUserIdAndProfileIdSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileIdUsingLimit">
+      <wsdl:input message="tns:getAllFacebookFeedsByUserIdAndProfileIdUsingLimitSoapIn" />
+      <wsdl:output message="tns:getAllFacebookFeedsByUserIdAndProfileIdUsingLimitSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileId1">
       <wsdl:input message="tns:getAllFacebookFeedsByUserIdAndProfileId1SoapIn" />
       <wsdl:output message="tns:getAllFacebookFeedsByUserIdAndProfileId1SoapOut" />
@@ -444,6 +489,10 @@
     <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileId">
       <wsdl:input message="tns:getAllFacebookFeedsByUserIdAndProfileIdHttpGetIn" />
       <wsdl:output message="tns:getAllFacebookFeedsByUserIdAndProfileIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileIdUsingLimit">
+      <wsdl:input message="tns:getAllFacebookFeedsByUserIdAndProfileIdUsingLimitHttpGetIn" />
+      <wsdl:output message="tns:getAllFacebookFeedsByUserIdAndProfileIdUsingLimitHttpGetOut" />
     </wsdl:operation>
     <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileId1">
       <wsdl:input message="tns:getAllFacebookFeedsByUserIdAndProfileId1HttpGetIn" />
@@ -491,6 +540,10 @@
       <wsdl:input message="tns:getAllFacebookFeedsByUserIdAndProfileIdHttpPostIn" />
       <wsdl:output message="tns:getAllFacebookFeedsByUserIdAndProfileIdHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileIdUsingLimit">
+      <wsdl:input message="tns:getAllFacebookFeedsByUserIdAndProfileIdUsingLimitHttpPostIn" />
+      <wsdl:output message="tns:getAllFacebookFeedsByUserIdAndProfileIdUsingLimitHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileId1">
       <wsdl:input message="tns:getAllFacebookFeedsByUserIdAndProfileId1HttpPostIn" />
       <wsdl:output message="tns:getAllFacebookFeedsByUserIdAndProfileId1HttpPostOut" />
@@ -536,6 +589,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileId">
       <soap:operation soapAction="http://tempuri.org/getAllFacebookFeedsByUserIdAndProfileId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileIdUsingLimit">
+      <soap:operation soapAction="http://tempuri.org/getAllFacebookFeedsByUserIdAndProfileIdUsingLimit" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -645,6 +707,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileIdUsingLimit">
+      <soap12:operation soapAction="http://tempuri.org/getAllFacebookFeedsByUserIdAndProfileIdUsingLimit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileId1">
       <soap12:operation soapAction="http://tempuri.org/getAllFacebookFeedsByUserIdAndProfileId1" style="document" />
       <wsdl:input>
@@ -747,6 +818,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileIdUsingLimit">
+      <http:operation location="/getAllFacebookFeedsByUserIdAndProfileIdUsingLimit" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileId1">
       <http:operation location="/getAllFacebookFeedsByUserIdAndProfileId1" />
       <wsdl:input>
@@ -842,6 +922,15 @@
     <http:binding verb="POST" />
     <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileId">
       <http:operation location="/getAllFacebookFeedsByUserIdAndProfileId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileIdUsingLimit">
+      <http:operation location="/getAllFacebookFeedsByUserIdAndProfileIdUsingLimit" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

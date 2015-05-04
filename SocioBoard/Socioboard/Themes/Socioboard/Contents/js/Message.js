@@ -499,4 +499,42 @@ function hideTask(divId) {
     $("#" + divId).hide(900);
 }
 
-
+function getlocatdatetime() {
+    var curdate = new Date();
+    var dd = curdate.getDate();
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+    else {
+        dd = curdate.getDate();
+    }
+    var mm = curdate.getMonth() + 1;
+    if (mm < 10) {
+        mm = '0' + mm
+    }
+    else {
+        mm = curdate.getMonth() + 1;
+    }
+    var hh = curdate.getHours();
+    if (hh < 10) {
+        hh = '0' + hh;
+    }
+    else {
+        hh = curdate.getHours();
+    }
+    var minm = curdate.getMinutes();
+    if (minm < 10) {
+        minm = '0' + minm;
+    }
+    else {
+        minm = curdate.getMinutes();
+    }
+    var sec = curdate.getSeconds();
+    if (sec < 10) {
+        sec = '0' + sec;
+    }
+    else {
+        sec = curdate.getSeconds();
+    }
+    return now = curdate.getFullYear() + "/" + mm + "/" + dd + " " + hh + ":" + minm + ":" + sec;
+}

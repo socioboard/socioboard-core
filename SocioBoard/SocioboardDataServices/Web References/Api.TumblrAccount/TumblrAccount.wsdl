@@ -47,31 +47,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetAllTumblrAccountsByUserIdAndGroupId">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetAllTumblrAccountsByUserIdAndGroupIdResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetAllTumblrAccountsByUserIdAndGroupIdResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetAllTumblrAccounts">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetAllTumblrAccountsResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetAllTumblrAccountsResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -93,18 +68,6 @@
   <wsdl:message name="DeleteTumblrAccountSoapOut">
     <wsdl:part name="parameters" element="tns:DeleteTumblrAccountResponse" />
   </wsdl:message>
-  <wsdl:message name="GetAllTumblrAccountsByUserIdAndGroupIdSoapIn">
-    <wsdl:part name="parameters" element="tns:GetAllTumblrAccountsByUserIdAndGroupId" />
-  </wsdl:message>
-  <wsdl:message name="GetAllTumblrAccountsByUserIdAndGroupIdSoapOut">
-    <wsdl:part name="parameters" element="tns:GetAllTumblrAccountsByUserIdAndGroupIdResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetAllTumblrAccountsSoapIn">
-    <wsdl:part name="parameters" element="tns:GetAllTumblrAccounts" />
-  </wsdl:message>
-  <wsdl:message name="GetAllTumblrAccountsSoapOut">
-    <wsdl:part name="parameters" element="tns:GetAllTumblrAccountsResponse" />
-  </wsdl:message>
   <wsdl:message name="GetTumblrAccountDetailsByIdHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="ProfileId" type="s:string" />
@@ -124,17 +87,6 @@
     <wsdl:part name="GroupId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="DeleteTumblrAccountHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="GetAllTumblrAccountsByUserIdAndGroupIdHttpGetIn">
-    <wsdl:part name="userid" type="s:string" />
-    <wsdl:part name="groupid" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetAllTumblrAccountsByUserIdAndGroupIdHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="GetAllTumblrAccountsHttpGetIn" />
-  <wsdl:message name="GetAllTumblrAccountsHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetTumblrAccountDetailsByIdHttpPostIn">
@@ -158,17 +110,6 @@
   <wsdl:message name="DeleteTumblrAccountHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="GetAllTumblrAccountsByUserIdAndGroupIdHttpPostIn">
-    <wsdl:part name="userid" type="s:string" />
-    <wsdl:part name="groupid" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetAllTumblrAccountsByUserIdAndGroupIdHttpPostOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="GetAllTumblrAccountsHttpPostIn" />
-  <wsdl:message name="GetAllTumblrAccountsHttpPostOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
   <wsdl:portType name="TumblrAccountSoap">
     <wsdl:operation name="GetTumblrAccountDetailsById">
       <wsdl:input message="tns:GetTumblrAccountDetailsByIdSoapIn" />
@@ -181,14 +122,6 @@
     <wsdl:operation name="DeleteTumblrAccount">
       <wsdl:input message="tns:DeleteTumblrAccountSoapIn" />
       <wsdl:output message="tns:DeleteTumblrAccountSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetAllTumblrAccountsByUserIdAndGroupId">
-      <wsdl:input message="tns:GetAllTumblrAccountsByUserIdAndGroupIdSoapIn" />
-      <wsdl:output message="tns:GetAllTumblrAccountsByUserIdAndGroupIdSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetAllTumblrAccounts">
-      <wsdl:input message="tns:GetAllTumblrAccountsSoapIn" />
-      <wsdl:output message="tns:GetAllTumblrAccountsSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TumblrAccountHttpGet">
@@ -204,14 +137,6 @@
       <wsdl:input message="tns:DeleteTumblrAccountHttpGetIn" />
       <wsdl:output message="tns:DeleteTumblrAccountHttpGetOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllTumblrAccountsByUserIdAndGroupId">
-      <wsdl:input message="tns:GetAllTumblrAccountsByUserIdAndGroupIdHttpGetIn" />
-      <wsdl:output message="tns:GetAllTumblrAccountsByUserIdAndGroupIdHttpGetOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetAllTumblrAccounts">
-      <wsdl:input message="tns:GetAllTumblrAccountsHttpGetIn" />
-      <wsdl:output message="tns:GetAllTumblrAccountsHttpGetOut" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="TumblrAccountHttpPost">
     <wsdl:operation name="GetTumblrAccountDetailsById">
@@ -225,14 +150,6 @@
     <wsdl:operation name="DeleteTumblrAccount">
       <wsdl:input message="tns:DeleteTumblrAccountHttpPostIn" />
       <wsdl:output message="tns:DeleteTumblrAccountHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetAllTumblrAccountsByUserIdAndGroupId">
-      <wsdl:input message="tns:GetAllTumblrAccountsByUserIdAndGroupIdHttpPostIn" />
-      <wsdl:output message="tns:GetAllTumblrAccountsByUserIdAndGroupIdHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetAllTumblrAccounts">
-      <wsdl:input message="tns:GetAllTumblrAccountsHttpPostIn" />
-      <wsdl:output message="tns:GetAllTumblrAccountsHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="TumblrAccountSoap" type="tns:TumblrAccountSoap">
@@ -257,24 +174,6 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteTumblrAccount">
       <soap:operation soapAction="http://tempuri.org/DeleteTumblrAccount" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllTumblrAccountsByUserIdAndGroupId">
-      <soap:operation soapAction="http://tempuri.org/GetAllTumblrAccountsByUserIdAndGroupId" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllTumblrAccounts">
-      <soap:operation soapAction="http://tempuri.org/GetAllTumblrAccounts" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -312,24 +211,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllTumblrAccountsByUserIdAndGroupId">
-      <soap12:operation soapAction="http://tempuri.org/GetAllTumblrAccountsByUserIdAndGroupId" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllTumblrAccounts">
-      <soap12:operation soapAction="http://tempuri.org/GetAllTumblrAccounts" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="TumblrAccountHttpGet" type="tns:TumblrAccountHttpGet">
     <http:binding verb="GET" />
@@ -353,24 +234,6 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteTumblrAccount">
       <http:operation location="/DeleteTumblrAccount" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllTumblrAccountsByUserIdAndGroupId">
-      <http:operation location="/GetAllTumblrAccountsByUserIdAndGroupId" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllTumblrAccounts">
-      <http:operation location="/GetAllTumblrAccounts" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -408,37 +271,19 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllTumblrAccountsByUserIdAndGroupId">
-      <http:operation location="/GetAllTumblrAccountsByUserIdAndGroupId" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllTumblrAccounts">
-      <http:operation location="/GetAllTumblrAccounts" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="TumblrAccount">
     <wsdl:port name="TumblrAccountSoap" binding="tns:TumblrAccountSoap">
-      <soap:address location="http://localhost:6361/services/TumblrAccount.asmx" />
+      <soap:address location="http://devapi.socioboard.com/Services/TumblrAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="TumblrAccountSoap12" binding="tns:TumblrAccountSoap12">
-      <soap12:address location="http://localhost:6361/services/TumblrAccount.asmx" />
+      <soap12:address location="http://devapi.socioboard.com/Services/TumblrAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="TumblrAccountHttpGet" binding="tns:TumblrAccountHttpGet">
-      <http:address location="http://localhost:6361/services/TumblrAccount.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/TumblrAccount.asmx" />
     </wsdl:port>
     <wsdl:port name="TumblrAccountHttpPost" binding="tns:TumblrAccountHttpPost">
-      <http:address location="http://localhost:6361/services/TumblrAccount.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/TumblrAccount.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

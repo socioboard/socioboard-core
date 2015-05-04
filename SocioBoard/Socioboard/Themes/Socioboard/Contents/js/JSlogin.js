@@ -375,7 +375,6 @@ function register() {
                                                                                     }
                                                                                     else {
                                                                                         alertify.error("failure");
-
                                                                                     }
                                                                                 },
                                                                                 error: function () {

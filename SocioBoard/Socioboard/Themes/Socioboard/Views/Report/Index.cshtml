@@ -1,13 +1,14 @@
 ﻿@{
     ViewBag.Title = "Report";
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
 }
 
 
 @section Scripts
     {
-    <script type="text/javascript" src="/Themes/Socioboard/Contents/js/highcharts.js"></script>
+    <script type="text/javascript" src="/Themes/@path/Contents/js/highcharts.js"></script>
 
-<script type="text/javascript">
+    @*<script type="text/javascript">
     function DisplayDefaultReports() {
 
         // var cnt = $('ul#items li').length;
@@ -137,9 +138,287 @@
         loadgroupstat('7');
     });
 
-</script>
-    }
- 
+</script>*@
+
+    <script type="text/javascript">
+        function DisplayDefaultReports() {
+
+            // var cnt = $('ul#items li').length;
+            var x = $('#reports > ul > li');
+            if (x.length > 0) {
+                $('#reports > ul > li > a').click();
+            }
+            //if (!$("ul").has("li").length) {
+            //    alertify.alert("No Data");
+            //}
+
+
+        }
+        function TeamReportDetails(days) {
+            var fd = new FormData();
+
+            fd.append("days", days);
+            $.ajax({
+                type: 'POST',
+                url: '../Report/Teamreportpartial',
+                data: fd,
+                processData: false,
+                contentType: false,
+                success: function (msg) {
+
+                    $('#page-wrapper').html('').append(msg);
+
+                    loadChart();
+                    piechart();
+                },
+                async: false
+            });
+        }
+
+        function loadgroupstat(days) {
+            var fd = new FormData();
+
+            fd.append("days", days);
+            $.ajax({
+                type: 'POST',
+                url: '../Report/GroupStatPartial',
+                data: fd,
+                processData: false,
+                contentType: false,
+                success: function (msg) {
+
+                    $('#page-wrapper').html('').append(msg);
+                    //loadMentionChart();
+                    //loadTweetChart();
+                },
+                async: false
+            });
+        }
+
+        function GetFbPageDetails(FbUserId, UserId) {
+            $.ajax({
+                type: 'POST',
+                url: "../Report/FbPagePostDetails?FbUserId=" + FbUserId + "&UserId=" + UserId,
+                success: function (msg) {
+                    $('#page-wrapper').html('').append(msg);
+                }
+
+            });
+
+        }
+
+        function twitterdetails(twtProfileId, days) {
+            debugger;
+            var fd = new FormData();
+            fd.append("twtProfileId", twtProfileId);
+            fd.append("days", days);
+
+            $.ajax({
+                type: 'POST',
+                url: '../Report/TwitterReportPartial',
+                data: fd,
+                processData: false,
+                contentType: false,
+                success: function (msg) {
+                    $('#page-wrapper').html('').append(msg);
+                    debugger;
+                    // loadChart();
+                    try {
+                        //loadChart();
+                        //piechart();
+                    } catch (e) {
+                        alert(e);
+                    }
+                },
+                async: false
+            });
+            //try {
+            //    loadChart();
+            //    piechart();
+            //} catch (e) {
+            //    alert(e);
+            //}
+        }
+
+        function loadChart() {
+
+            debugger;
+
+            var engage = $('#container').attr('engage');
+            engage = engage.split(",");
+            engage = jQuery.grep(engage, function (n, i) {
+                return (n !== "" && n != null);
+            });
+
+            alert(engage);
+            if (engage.length != 0 && $.isEmptyObject(engage) == false) {
+                var influenc = $('#container').attr('influenc');
+                influenc = influenc.split(",");
+                var dt = $('#container').attr('dt');
+                dt = dt.split(",");
+                $('#container').highcharts({
+                    chart: {
+                        type: 'area'
+                    },
+                    title: {
+                        text: 'Area chart with negative values'
+                    },
+                    xAxis: {
+                        categories: dt
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Engagement'
+                        },
+                        lineWidth: 1,
+                        lineColor: '#F43'
+                    },
+
+                    //series: [{
+                    //    name: 'Temperature',
+                    //    data: [0.1, 1.9, 5.5, 1.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
+                    //    color: '#F33'   
+                    //}],
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Engagement',
+                        //data: [0, 0, 0, 1.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
+                        data: engage,
+                        color: '#F33'
+                        //}
+                        //, {
+                        //    name: 'Influence',
+
+                        //    data: influenc
+                    }]
+                });
+            }
+        }
+
+        function piechart() {
+            debugger;
+            Highcharts.getOptions().plotOptions.pie.colors = (function () {
+                var colors = [],
+                    base = Highcharts.getOptions().colors[0],
+                    i;
+                for (i = 0; i < 10; i += 1) {
+                    colors.push(Highcharts.Color(base).brighten((i - 3) / 7).get());
+                }
+                return colors;
+            }());
+
+            var Age1820 = $('#container1').attr("Age1820");
+            var Age2124 = $('#container1').attr("Age2124");
+            var Age2534 = $('#container1').attr("Age2534");
+            var Age3544 = $('#container1').attr("Age3544");
+            var Age4554 = $('#container1').attr("Age4554");
+            var Age5564 = $('#container1').attr("Age5564");
+            // alert(Age5564);
+
+            try {
+                $('#container1').highcharts({
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false
+                    },
+                    title: {
+                        text: 'Browser market shares at a specific website, 2014'
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                style: {
+                                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                }
+                            }
+                        }
+                    },
+                    series: [{
+                        type: 'pie',
+                        name: 'Browser share',
+                        data: [
+                            ['18-20', Number(Age1820)],
+                            ['21-24', Number(Age2124)],
+                            {
+                                name: '25-34',
+                                y: Number(Age2534),
+                                sliced: true,
+                                selected: true
+                            },
+                            ['35-44', Number(Age3544)],
+                            ['45-54', Number(Age4554)],
+                            ['55-64', Number(Age5564)]
+                        ]
+                    }]
+                });
+            } catch (e) {
+                alert(e);
+            }
+        }
+
+        function loadfeesmenu() {
+
+            // alert('load feeds');
+            //$('#feeds').load('../Feeds/loadmenu');
+            $.ajax({
+                type: 'POST',
+                url: '../Report/loadmenu',
+                success: function (msg) {
+                    //alert(msg);
+                    $('#reports').html('').append(msg);
+                },
+                async: false
+            });
+        }
+
+        function getfacebookpostcomment(id) {
+            $.ajax({
+                type: 'POST',
+                url: '../Report/loadPostDetails?id=' + id,
+                success: function (msg) {
+                    $('#loadpostdetails').html(msg);
+                },
+                async: false
+            });
+
+            $('#CommentDetailsModall').modal('show');
+        }
+
+        function showHideDiv(id) {
+            var obj = document.getElementById(id);
+            if (obj.style.display == "none") {
+                obj.style.display = 'block';
+            } else if (obj.style.display == "block") {
+                obj.style.display = 'none';
+            }
+        }
+
+
+        $(document).ready(function () {
+            // debugger;
+            $('#side-menu a').removeClass('active');
+            $("#reports").addClass('active');
+            $("#reports").children().addClass('active');
+            loadfeesmenu();
+            //DisplayDefaultReports();
+            loadgroupstat('7');
+        });
+
+
+
+    </script>
+}
+
 
 
 <div id="page-wrapper">
@@ -153,7 +432,6 @@
                 <h4 id="myModalLabel" class="modal-title">Post Details</h4>
             </div>
             <div id="loadpostdetails" class="modal-body loadcomment">
-               
             </div>
             <div class="modal-footer">
                 <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>

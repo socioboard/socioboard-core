@@ -131,7 +131,7 @@ namespace Api.Socioboard.Services
                 {
                     try
                     {
-                        string str = "from ScheduledMessage where UserId=:userid and ScheduleTime>=:AssinDate and  Status=1 and ProfileId IN(";
+                        string str = "from ScheduledMessage where UserId=:userid and  Status=1 and ProfileId IN(";
                         string[] arrsrt = profileid.Split(',');
                         foreach (string sstr in arrsrt)
                         {
@@ -139,8 +139,8 @@ namespace Api.Socioboard.Services
                         }
                         str = str.Substring(0, str.Length - 1);
                         str += ")";
-                        List<Domain.Socioboard.Domain.ScheduledMessage> alst = session.CreateQuery(str).SetParameter("userid", userid).SetParameter("AssinDate", AssinDate)
-                       .List<Domain.Socioboard.Domain.ScheduledMessage>()
+                        List<Domain.Socioboard.Domain.ScheduledMessage> alst = session.CreateQuery(str).SetParameter("userid", userid)
+                       .List<Domain.Socioboard.Domain.ScheduledMessage>().Where(d=>d.ScheduleTime.Date>=AssinDate.Date)
                        .ToList<Domain.Socioboard.Domain.ScheduledMessage>();
                         return alst;
 
@@ -692,24 +692,27 @@ namespace Api.Socioboard.Services
                     try
                     {
                         //proceed action, to get all messages by user id and profileid.
-                        List<Domain.Socioboard.Domain.ScheduledMessage> lstschmsg = session.CreateQuery("from ScheduledMessage where  ScheduleTime <= :schtime and ProfileType =:profiletype and Status = 0 order by ScheduleTime desc")
-                       .SetParameter("profiletype", profiletype)
-                        .SetParameter("schtime", DateTime.Now)
-                       .List<Domain.Socioboard.Domain.ScheduledMessage>()
-                       .ToList<Domain.Socioboard.Domain.ScheduledMessage>();
+                        List<Domain.Socioboard.Domain.ScheduledMessage> lstschmsg = session.CreateQuery("from ScheduledMessage where  ProfileType =:profiletype and Status = 0 order by ScheduleTime desc")
+                    .SetParameter("profiletype", profiletype)
+                     //.SetParameter("schtime", DateTime.Now)
+                    .List<Domain.Socioboard.Domain.ScheduledMessage>()
+                    .ToList<Domain.Socioboard.Domain.ScheduledMessage>();
 
 
-                        //List<ScheduledMessage> lstschmsg = new List<ScheduledMessage>();
-                        //foreach (ScheduledMessage item in query.Enumerable())
-                        //{
-                        //    lstschmsg.Add(item);
-                        //}
+                       // List<Domain.Socioboard.Domain.ScheduledMessage> lstschmsg = session.CreateQuery("from ScheduledMessage where  ScheduleTime <= :schtime and ProfileType =:profiletype and Status = 0 order by ScheduleTime desc")
+                       //.SetParameter("profiletype", profiletype)
+                       // .SetParameter("schtime", DateTime.Now)
+                       //.List<Domain.Socioboard.Domain.ScheduledMessage>()
+                       //.ToList<Domain.Socioboard.Domain.ScheduledMessage>();
+
+
+                  
                         return lstschmsg;
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.StackTrace);
-                        return null;
+                        return new List<Domain.Socioboard.Domain.ScheduledMessage>();
                     }
                 }//End Transaction
             }//End Session
@@ -887,7 +890,7 @@ namespace Api.Socioboard.Services
                         }
                         str = str.Substring(0, str.Length - 1);
                         str += ") order by ScheduleTime desc ";
-                        List<Domain.Socioboard.Domain.ScheduledMessage> alst = session.CreateQuery(str).SetParameter("userid", userid)
+                        List<Domain.Socioboard.Domain.ScheduledMessage> alst = session.CreateQuery(str).SetParameter("userid", userid).SetFirstResult(0).SetMaxResults(20)
                        .List<Domain.Socioboard.Domain.ScheduledMessage>()
                        .ToList<Domain.Socioboard.Domain.ScheduledMessage>();
                         return alst;

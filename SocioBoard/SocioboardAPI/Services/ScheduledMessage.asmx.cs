@@ -59,7 +59,7 @@ namespace Api.Socioboard.Services
                     fs.Close();
                     fs.Dispose();
                     //ret = Server.MapPath("~/Contents/img/upload/") + fileName;
-                    ret = "http://api.socioboard.com/Contents/img/upload/" + fileName;
+                    ret = "http://tempuri.org/Contents/img/upload/" + fileName;
                 }
                 else
                 {
@@ -416,18 +416,20 @@ namespace Api.Socioboard.Services
             {
                 //Guid userid = Guid.Parse(UserId);
                 ScheduledMessageRepository objScheduledMessageRepository = new ScheduledMessageRepository();
-                List<Domain.Socioboard.Domain.ScheduledMessage> lstScheduledMessages = new List<Domain.Socioboard.Domain.ScheduledMessage>();
-                lstScheduledMessages = objScheduledMessageRepository.GetUnsentSchdeuledMessageByProfileType(profileType);
+                List<Domain.Socioboard.Domain.ScheduledMessage> lstScheduledMessages = objScheduledMessageRepository.GetUnsentSchdeuledMessageByProfileType(profileType);
 
-                //FacebookAccountRepository facebookAccountRepo = new FacebookAccountRepository();
-                // FacebookAccount facebook = facebookAccountRepo.getFacebookAccountDetailsById(FacebookId, userid);
+                if (lstScheduledMessages == null)
+                {
+                    lstScheduledMessages = new List<Domain.Socioboard.Domain.ScheduledMessage>();
+                }
+
                 return new JavaScriptSerializer().Serialize(lstScheduledMessages);
             }
             catch (Exception ex)
             {
                 logger.Error(ex.Message);
                 Console.WriteLine(ex.StackTrace);
-                return new JavaScriptSerializer().Serialize("Please try Again");
+                return new JavaScriptSerializer().Serialize(new List<Domain.Socioboard.Domain.ScheduledMessage>());
             }
 
         }

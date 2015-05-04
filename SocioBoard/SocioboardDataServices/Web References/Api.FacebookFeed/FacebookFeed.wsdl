@@ -120,56 +120,7 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="getAllFacebookFeedsByUserIdWithRange">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="noOfDataToSkip" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="getAllFacebookFeedsByUserIdWithRangeResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="getAllFacebookFeedsByUserIdWithRangeResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="getAllFacebookFeedsByUserIdAndProfileId1WithRange">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="count" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="getAllFacebookFeedsByUserIdAndProfileId1WithRangeResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="getAllFacebookFeedsByUserIdAndProfileId1WithRangeResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetFeedCountByProfileIdAndUserId">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="ProfileIds" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetFeedCountByProfileIdAndUserIdResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="GetFeedCountByProfileIdAndUserIdResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
-      <s:element name="int" type="s:int" />
     </s:schema>
   </wsdl:types>
   <wsdl:message name="getAllFacebookFeedsByUserIdAndProfileIdSoapIn">
@@ -219,24 +170,6 @@
   </wsdl:message>
   <wsdl:message name="getFacebookFeedByProfileIdSoapOut">
     <wsdl:part name="parameters" element="tns:getFacebookFeedByProfileIdResponse" />
-  </wsdl:message>
-  <wsdl:message name="getAllFacebookFeedsByUserIdWithRangeSoapIn">
-    <wsdl:part name="parameters" element="tns:getAllFacebookFeedsByUserIdWithRange" />
-  </wsdl:message>
-  <wsdl:message name="getAllFacebookFeedsByUserIdWithRangeSoapOut">
-    <wsdl:part name="parameters" element="tns:getAllFacebookFeedsByUserIdWithRangeResponse" />
-  </wsdl:message>
-  <wsdl:message name="getAllFacebookFeedsByUserIdAndProfileId1WithRangeSoapIn">
-    <wsdl:part name="parameters" element="tns:getAllFacebookFeedsByUserIdAndProfileId1WithRange" />
-  </wsdl:message>
-  <wsdl:message name="getAllFacebookFeedsByUserIdAndProfileId1WithRangeSoapOut">
-    <wsdl:part name="parameters" element="tns:getAllFacebookFeedsByUserIdAndProfileId1WithRangeResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetFeedCountByProfileIdAndUserIdSoapIn">
-    <wsdl:part name="parameters" element="tns:GetFeedCountByProfileIdAndUserId" />
-  </wsdl:message>
-  <wsdl:message name="GetFeedCountByProfileIdAndUserIdSoapOut">
-    <wsdl:part name="parameters" element="tns:GetFeedCountByProfileIdAndUserIdResponse" />
   </wsdl:message>
   <wsdl:message name="getAllFacebookFeedsByUserIdAndProfileIdHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
@@ -292,30 +225,6 @@
   <wsdl:message name="getFacebookFeedByProfileIdHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="getAllFacebookFeedsByUserIdWithRangeHttpGetIn">
-    <wsdl:part name="UserId" type="s:string" />
-    <wsdl:part name="keyword" type="s:string" />
-    <wsdl:part name="noOfDataToSkip" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="getAllFacebookFeedsByUserIdWithRangeHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="getAllFacebookFeedsByUserIdAndProfileId1WithRangeHttpGetIn">
-    <wsdl:part name="UserId" type="s:string" />
-    <wsdl:part name="keyword" type="s:string" />
-    <wsdl:part name="ProfileId" type="s:string" />
-    <wsdl:part name="count" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="getAllFacebookFeedsByUserIdAndProfileId1WithRangeHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="GetFeedCountByProfileIdAndUserIdHttpGetIn">
-    <wsdl:part name="UserId" type="s:string" />
-    <wsdl:part name="ProfileIds" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetFeedCountByProfileIdAndUserIdHttpGetOut">
-    <wsdl:part name="Body" element="tns:int" />
-  </wsdl:message>
   <wsdl:message name="getAllFacebookFeedsByUserIdAndProfileIdHttpPostIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="ProfileId" type="s:string" />
@@ -370,30 +279,6 @@
   <wsdl:message name="getFacebookFeedByProfileIdHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="getAllFacebookFeedsByUserIdWithRangeHttpPostIn">
-    <wsdl:part name="UserId" type="s:string" />
-    <wsdl:part name="keyword" type="s:string" />
-    <wsdl:part name="noOfDataToSkip" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="getAllFacebookFeedsByUserIdWithRangeHttpPostOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="getAllFacebookFeedsByUserIdAndProfileId1WithRangeHttpPostIn">
-    <wsdl:part name="UserId" type="s:string" />
-    <wsdl:part name="keyword" type="s:string" />
-    <wsdl:part name="ProfileId" type="s:string" />
-    <wsdl:part name="count" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="getAllFacebookFeedsByUserIdAndProfileId1WithRangeHttpPostOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="GetFeedCountByProfileIdAndUserIdHttpPostIn">
-    <wsdl:part name="UserId" type="s:string" />
-    <wsdl:part name="ProfileIds" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetFeedCountByProfileIdAndUserIdHttpPostOut">
-    <wsdl:part name="Body" element="tns:int" />
-  </wsdl:message>
   <wsdl:portType name="FacebookFeedSoap">
     <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileId">
       <wsdl:input message="tns:getAllFacebookFeedsByUserIdAndProfileIdSoapIn" />
@@ -426,18 +311,6 @@
     <wsdl:operation name="getFacebookFeedByProfileId">
       <wsdl:input message="tns:getFacebookFeedByProfileIdSoapIn" />
       <wsdl:output message="tns:getFacebookFeedByProfileIdSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="getAllFacebookFeedsByUserIdWithRange">
-      <wsdl:input message="tns:getAllFacebookFeedsByUserIdWithRangeSoapIn" />
-      <wsdl:output message="tns:getAllFacebookFeedsByUserIdWithRangeSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileId1WithRange">
-      <wsdl:input message="tns:getAllFacebookFeedsByUserIdAndProfileId1WithRangeSoapIn" />
-      <wsdl:output message="tns:getAllFacebookFeedsByUserIdAndProfileId1WithRangeSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetFeedCountByProfileIdAndUserId">
-      <wsdl:input message="tns:GetFeedCountByProfileIdAndUserIdSoapIn" />
-      <wsdl:output message="tns:GetFeedCountByProfileIdAndUserIdSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookFeedHttpGet">
@@ -473,18 +346,6 @@
       <wsdl:input message="tns:getFacebookFeedByProfileIdHttpGetIn" />
       <wsdl:output message="tns:getFacebookFeedByProfileIdHttpGetOut" />
     </wsdl:operation>
-    <wsdl:operation name="getAllFacebookFeedsByUserIdWithRange">
-      <wsdl:input message="tns:getAllFacebookFeedsByUserIdWithRangeHttpGetIn" />
-      <wsdl:output message="tns:getAllFacebookFeedsByUserIdWithRangeHttpGetOut" />
-    </wsdl:operation>
-    <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileId1WithRange">
-      <wsdl:input message="tns:getAllFacebookFeedsByUserIdAndProfileId1WithRangeHttpGetIn" />
-      <wsdl:output message="tns:getAllFacebookFeedsByUserIdAndProfileId1WithRangeHttpGetOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetFeedCountByProfileIdAndUserId">
-      <wsdl:input message="tns:GetFeedCountByProfileIdAndUserIdHttpGetIn" />
-      <wsdl:output message="tns:GetFeedCountByProfileIdAndUserIdHttpGetOut" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookFeedHttpPost">
     <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileId">
@@ -518,18 +379,6 @@
     <wsdl:operation name="getFacebookFeedByProfileId">
       <wsdl:input message="tns:getFacebookFeedByProfileIdHttpPostIn" />
       <wsdl:output message="tns:getFacebookFeedByProfileIdHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="getAllFacebookFeedsByUserIdWithRange">
-      <wsdl:input message="tns:getAllFacebookFeedsByUserIdWithRangeHttpPostIn" />
-      <wsdl:output message="tns:getAllFacebookFeedsByUserIdWithRangeHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileId1WithRange">
-      <wsdl:input message="tns:getAllFacebookFeedsByUserIdAndProfileId1WithRangeHttpPostIn" />
-      <wsdl:output message="tns:getAllFacebookFeedsByUserIdAndProfileId1WithRangeHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetFeedCountByProfileIdAndUserId">
-      <wsdl:input message="tns:GetFeedCountByProfileIdAndUserIdHttpPostIn" />
-      <wsdl:output message="tns:GetFeedCountByProfileIdAndUserIdHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="FacebookFeedSoap" type="tns:FacebookFeedSoap">
@@ -599,33 +448,6 @@
     </wsdl:operation>
     <wsdl:operation name="getFacebookFeedByProfileId">
       <soap:operation soapAction="http://tempuri.org/getFacebookFeedByProfileId" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getAllFacebookFeedsByUserIdWithRange">
-      <soap:operation soapAction="http://tempuri.org/getAllFacebookFeedsByUserIdWithRange" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileId1WithRange">
-      <soap:operation soapAction="http://tempuri.org/getAllFacebookFeedsByUserIdAndProfileId1WithRange" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetFeedCountByProfileIdAndUserId">
-      <soap:operation soapAction="http://tempuri.org/GetFeedCountByProfileIdAndUserId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -708,33 +530,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getAllFacebookFeedsByUserIdWithRange">
-      <soap12:operation soapAction="http://tempuri.org/getAllFacebookFeedsByUserIdWithRange" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileId1WithRange">
-      <soap12:operation soapAction="http://tempuri.org/getAllFacebookFeedsByUserIdAndProfileId1WithRange" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetFeedCountByProfileIdAndUserId">
-      <soap12:operation soapAction="http://tempuri.org/GetFeedCountByProfileIdAndUserId" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="FacebookFeedHttpGet" type="tns:FacebookFeedHttpGet">
     <http:binding verb="GET" />
@@ -803,33 +598,6 @@
     </wsdl:operation>
     <wsdl:operation name="getFacebookFeedByProfileId">
       <http:operation location="/getFacebookFeedByProfileId" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getAllFacebookFeedsByUserIdWithRange">
-      <http:operation location="/getAllFacebookFeedsByUserIdWithRange" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileId1WithRange">
-      <http:operation location="/getAllFacebookFeedsByUserIdAndProfileId1WithRange" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetFeedCountByProfileIdAndUserId">
-      <http:operation location="/GetFeedCountByProfileIdAndUserId" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -912,46 +680,19 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getAllFacebookFeedsByUserIdWithRange">
-      <http:operation location="/getAllFacebookFeedsByUserIdWithRange" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getAllFacebookFeedsByUserIdAndProfileId1WithRange">
-      <http:operation location="/getAllFacebookFeedsByUserIdAndProfileId1WithRange" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetFeedCountByProfileIdAndUserId">
-      <http:operation location="/GetFeedCountByProfileIdAndUserId" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="FacebookFeed">
     <wsdl:port name="FacebookFeedSoap" binding="tns:FacebookFeedSoap">
-      <soap:address location="http://localhost:6361/services/FacebookFeed.asmx" />
+      <soap:address location="http://localhost:6361/Services/FacebookFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookFeedSoap12" binding="tns:FacebookFeedSoap12">
-      <soap12:address location="http://localhost:6361/services/FacebookFeed.asmx" />
+      <soap12:address location="http://localhost:6361/Services/FacebookFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookFeedHttpGet" binding="tns:FacebookFeedHttpGet">
-      <http:address location="http://localhost:6361/services/FacebookFeed.asmx" />
+      <http:address location="http://localhost:6361/Services/FacebookFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookFeedHttpPost" binding="tns:FacebookFeedHttpPost">
-      <http:address location="http://localhost:6361/services/FacebookFeed.asmx" />
+      <http:address location="http://localhost:6361/Services/FacebookFeed.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -144,12 +144,15 @@
     <Compile Include="Model\LinkedInAccountRepository.cs" />
     <Compile Include="Model\LinkedinCompanyPageRepository.cs" />
     <Compile Include="Model\LinkedInFeedRepository.cs" />
+    <Compile Include="Model\LinkedInMessageRepository.cs" />
     <Compile Include="Model\LinkedinPagePostRepository.cs" />
     <Compile Include="Model\NewsLetterRepository.cs" />
     <Compile Include="Model\NewsRepository.cs" />
     <Compile Include="Model\PackageRepository.cs" />
     <Compile Include="Model\PaymentTransactionRepository.cs" />
     <Compile Include="Model\ReplyMessageRepository.cs" />
+    <Compile Include="Model\RssFeedsRepository.cs" />
+    <Compile Include="Model\RssReaderRepository.cs" />
     <Compile Include="Model\ScheduledMessageRepository.cs" />
     <Compile Include="Model\SocialProfilesRepository.cs" />
     <Compile Include="Model\TaskCommentRepository.cs" />
@@ -166,6 +169,7 @@
     <Compile Include="Model\TwitterAccountFollowersRepository.cs" />
     <Compile Include="Model\TwitterAccountRepository.cs" />
     <Compile Include="Model\TwitterDirectMessageRepository.cs" />
+    <Compile Include="Model\TwitterEngagementRepository.cs" />
     <Compile Include="Model\TwitterFeedRepository.cs" />
     <Compile Include="Model\TwitterMessageRepository.cs" />
     <Compile Include="Model\TwitterStatsRepository.cs" />
@@ -497,84 +501,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Antlr3.Runtime.dll" />
-    <Content Include="bin\bin\MySql.Data.dll" />
-    <Content Include="bin\CodeScales.Http.dll" />
-    <Content Include="bin\Facebook.dll" />
-    <Content Include="bin\Facebook.Silverlight.dll" />
-    <Content Include="bin\Facebook.Web.dll" />
-    <Content Include="bin\Facebook.Web.Mvc.dll" />
-    <Content Include="bin\Facebook.Winforms.dll" />
-    <Content Include="bin\FacebookGraphAPI.dll" />
-    <Content Include="bin\GlobusGooglePlusLib.dll" />
-    <Content Include="bin\GlobusInstagramLib.dll" />
-    <Content Include="bin\GlobusLinkedinLib.dll" />
-    <Content Include="bin\GlobusTwitterLib.dll" />
-    <Content Include="bin\Hammock.dll" />
-    <Content Include="bin\Iesi.Collections.dll" />
-    <Content Include="bin\Iesi.Collections.pdb" />
-    <Content Include="bin\Iesi.Collections.xml" />
-    <Content Include="bin\log4net.dll" />
-    <Content Include="bin\Mappings\Admin.hbm.xml" />
-    <Content Include="bin\Mappings\Ads.hbm.xml" />
-    <Content Include="bin\Mappings\ArchiveMessage.hbm.xml" />
-    <Content Include="bin\Mappings\Blog_Comments.hbm.xml" />
-    <Content Include="bin\Mappings\Blog_Posts.hbm.xml" />
-    <Content Include="bin\Mappings\DiscoverySearch.hbm.xml" />
-    <Content Include="bin\Mappings\Drafts.hbm.xml" />
-    <Content Include="bin\Mappings\FacebookAccount.hbm.xml" />
-    <Content Include="bin\Mappings\FacebookFeed.hbm.xml" />
-    <Content Include="bin\Mappings\FacebookGroup.hbm.xml" />
-    <Content Include="bin\Mappings\FacebookInsightPostStats.hbm.xml" />
-    <Content Include="bin\Mappings\FacebookInsightStats.hbm.xml" />
-    <Content Include="bin\Mappings\FacebookMessage.hbm.xml" />
-    <Content Include="bin\Mappings\FacebookStats.hbm.xml" />
-    <Content Include="bin\Mappings\GoogleAnalyticsAccount.hbm.xml" />
-    <Content Include="bin\Mappings\GooglePlusAccount.hbm.xml" />
-    <Content Include="bin\Mappings\GooglePlusActivities.hbm.xml" />
-    <Content Include="bin\Mappings\GroupProfile.hbm.xml" />
-    <Content Include="bin\Mappings\Groups.hbm.xml" />
-    <Content Include="bin\Mappings\InstagramAccount.hbm.xml" />
-    <Content Include="bin\Mappings\InstagramComment.hbm.xml" />
-    <Content Include="bin\Mappings\InstagramFeed.hbm.xml" />
-    <Content Include="bin\Mappings\LinkedInAccount.hbm.xml" />
-    <Content Include="bin\Mappings\LinkedInFeed.hbm.xml" />
-    <Content Include="bin\Mappings\LinkedinMessage.hbm.xml" />
-    <Content Include="bin\Mappings\Log.hbm.xml" />
-    <Content Include="bin\Mappings\News.hbm.xml" />
-    <Content Include="bin\Mappings\NewsLetter.hbm.xml" />
-    <Content Include="bin\Mappings\Package.hbm.xml" />
-    <Content Include="bin\Mappings\PaymentTransaction.hbm.xml" />
-    <Content Include="bin\Mappings\RssFeeds.hbm.xml" />
-    <Content Include="bin\Mappings\RssReader.hbm.xml" />
-    <Content Include="bin\Mappings\ScheduledMessage.hbm.xml" />
-    <Content Include="bin\Mappings\SocialProfile.hbm.xml" />
-    <Content Include="bin\Mappings\TaskComment.hbm.xml" />
-    <Content Include="bin\Mappings\Tasks.hbm.xml" />
-    <Content Include="bin\Mappings\Team.hbm.xml" />
-    <Content Include="bin\Mappings\TeamMemberProfile.hbm.xml" />
-    <Content Include="bin\Mappings\TwitterAccount.hbm.xml" />
-    <Content Include="bin\Mappings\TwitterDirectMessages.hbm.xml" />
-    <Content Include="bin\Mappings\TwitterFeed.hbm.xml" />
-    <Content Include="bin\Mappings\TwitterMessage.hbm.xml" />
-    <Content Include="bin\Mappings\TwitterStats.hbm.xml" />
-    <Content Include="bin\Mappings\User.hbm.xml" />
-    <Content Include="bin\Mappings\vwTwitterStats.hbm.xml" />
-    <Content Include="bin\MySql.Data.dll" />
-    <Content Include="bin\MySql.Data.Entity.dll" />
-    <Content Include="bin\Newtonsoft.Json.dll" />
-    <Content Include="bin\NHibernate.dll" />
-    <Content Include="bin\NHibernate.Linq.dll" />
-    <Content Include="bin\NHibernate.Linq.xml" />
-    <Content Include="bin\NHibernateHelper.dll" />
-    <Content Include="bin\NHibernateHelper.pdb" />
-    <Content Include="bin\OAuth.dll" />
-    <Content Include="bin\PayPalCoreSDK.dll" />
-    <Content Include="bin\SendGridMail.dll" />
-    <Content Include="bin\SendGridPlus.dll" />
-    <Content Include="bin\SocioBoard.dll" />
-    <Content Include="bin\System.Net.Http.dll" />
-    <Content Include="bin\Winthusiasm.HtmlEditor.dll" />
     <Content Include="Global.asax" />
     <Content Include="hibernate.cfg.xml">
       <SubType>Designer</SubType>
@@ -821,8 +747,11 @@
     <EmbeddedResource Include="Mappings\Affiliates.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Companyprofiles.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Mappings\DropboxAccount.hbm.xml" />
-    <EmbeddedResource Include="Mappings\FacebookFanPage.xml">
+    <EmbeddedResource Include="Mappings\FacebookFanPage.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\LinkedinCompanyPage.hbm.xml">
@@ -840,7 +769,14 @@
     <EmbeddedResource Include="Mappings\TicketAssigneeStatus.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <Content Include="Mappings\TwitterAccountFollowers.hbm.xml" />
+    <EmbeddedResource Include="Mappings\TwitterAccountFollowers.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="Mappings\TwitterEngagement.hbm.xml" />
+    <EmbeddedResource Include="Mappings\TwitterEngagement.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="obj\Debug\Api.Socioboard.dll" />
     <Content Include="obj\Debug\SocialCrowd.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\SocialSuitePro.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\SocialSuitePro.dll" />

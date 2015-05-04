@@ -137,7 +137,10 @@
 
         //commented on [12-03-15] by sumit gupta
         //BindInboxMessages();
-
+        $("#msg-index").addClass('active');
+        $("#msg-task").removeClass('active');
+        $("#msg-sentmsg").removeClass('active');
+        $("#msg-archive").removeClass('active');
         debugger;
         $(".partialContents").each(function (index, item) {
             var url = $(item).data("url");

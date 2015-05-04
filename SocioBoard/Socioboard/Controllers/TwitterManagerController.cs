@@ -34,6 +34,7 @@ namespace Socioboard.Controllers
             Api.Twitter.Twitter apiobjTwitter = new Api.Twitter.Twitter();
             try
             {
+                apiobjTwitter.Timeout = 120 * 1000;
                 AddTwitterAccount = apiobjTwitter.AddTwitterAccount(ConfigurationManager.AppSettings["consumerKey"], ConfigurationManager.AppSettings["consumerSecret"], ConfigurationManager.AppSettings["callbackurl"], objUser.Id.ToString(), Session["group"].ToString(), requestToken, requestSecret, requestVerifier);
                 Session["SocialManagerInfo"] = AddTwitterAccount;
             }

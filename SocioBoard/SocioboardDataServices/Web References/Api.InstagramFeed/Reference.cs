@@ -31,8 +31,6 @@ namespace SocioboardDataServices.Api.InstagramFeed {
         
         private System.Threading.SendOrPostCallback GetLinkedInFeedsOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetFeedsOfProfileWithRangeOperationCompleted;
-        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -75,9 +73,6 @@ namespace SocioboardDataServices.Api.InstagramFeed {
         public event GetLinkedInFeedsCompletedEventHandler GetLinkedInFeedsCompleted;
         
         /// <remarks/>
-        public event GetFeedsOfProfileWithRangeCompletedEventHandler GetFeedsOfProfileWithRangeCompleted;
-        
-        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetLinkedInFeeds", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string GetLinkedInFeeds(string UserId, string LinkedInId) {
             object[] results = this.Invoke("GetLinkedInFeeds", new object[] {
@@ -105,39 +100,6 @@ namespace SocioboardDataServices.Api.InstagramFeed {
             if ((this.GetLinkedInFeedsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetLinkedInFeedsCompleted(this, new GetLinkedInFeedsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetFeedsOfProfileWithRange", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string GetFeedsOfProfileWithRange(string UserId, string LinkedInId, string noOfDataToSkip) {
-            object[] results = this.Invoke("GetFeedsOfProfileWithRange", new object[] {
-                        UserId,
-                        LinkedInId,
-                        noOfDataToSkip});
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetFeedsOfProfileWithRangeAsync(string UserId, string LinkedInId, string noOfDataToSkip) {
-            this.GetFeedsOfProfileWithRangeAsync(UserId, LinkedInId, noOfDataToSkip, null);
-        }
-        
-        /// <remarks/>
-        public void GetFeedsOfProfileWithRangeAsync(string UserId, string LinkedInId, string noOfDataToSkip, object userState) {
-            if ((this.GetFeedsOfProfileWithRangeOperationCompleted == null)) {
-                this.GetFeedsOfProfileWithRangeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetFeedsOfProfileWithRangeOperationCompleted);
-            }
-            this.InvokeAsync("GetFeedsOfProfileWithRange", new object[] {
-                        UserId,
-                        LinkedInId,
-                        noOfDataToSkip}, this.GetFeedsOfProfileWithRangeOperationCompleted, userState);
-        }
-        
-        private void OnGetFeedsOfProfileWithRangeOperationCompleted(object arg) {
-            if ((this.GetFeedsOfProfileWithRangeCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetFeedsOfProfileWithRangeCompleted(this, new GetFeedsOfProfileWithRangeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -173,32 +135,6 @@ namespace SocioboardDataServices.Api.InstagramFeed {
         private object[] results;
         
         internal GetLinkedInFeedsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void GetFeedsOfProfileWithRangeCompletedEventHandler(object sender, GetFeedsOfProfileWithRangeCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetFeedsOfProfileWithRangeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetFeedsOfProfileWithRangeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

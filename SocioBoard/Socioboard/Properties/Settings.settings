@@ -29,14 +29,11 @@
     <Setting Name="Socioboard_Api_LinkedInFeed_LinkedInFeed" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/Services/LinkedInFeed.asmx</Value>
     </Setting>
-    <Setting Name="Socioboard_Api_Instagram_Instagram" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:6361/Services/Instagram.asmx</Value>
-    </Setting>
     <Setting Name="Socioboard_Api_InstagramAccount_InstagramAccount" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/Services/InstagramAccount.asmx</Value>
     </Setting>
     <Setting Name="Socioboard_Api_InstagramFeed_InstagramFeed" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:6361/Services/InstagramFeed.asmx</Value>
+      <Value Profile="(Default)">http://api.socioboard.com/Services/InstagramFeed.asmx</Value>
     </Setting>
     <Setting Name="Socioboard_Api_Linkedin_Linkedin" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/Services/Linkedin.asmx</Value>
@@ -178,6 +175,12 @@
     </Setting>
     <Setting Name="Socioboard_Api_Facebook_Facebook" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/Services/Facebook.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_Instagram_Instagram" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/Instagram.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_LinkedinMessage_LinkedinMessage" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/LinkedinMessage.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>

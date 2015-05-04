@@ -9,6 +9,30 @@ namespace Api.Socioboard.Services
 {
     public class TwitterAccountFollowersRepository
     {
+
+        public void addTwitterAccountFollower(Domain.Socioboard.Domain.TwitterAccountFollowers task)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to save new data.
+                        session.Save(task);
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                }//End Transaction
+            }//End Session
+        }
+
+
         public List<Domain.Socioboard.Domain.TwitterAccountFollowers> getAllFollower(Guid userid, string profileid, int day)
         {
 
@@ -147,6 +171,9 @@ namespace Api.Socioboard.Services
             }//End Session
 
         }
+
+
+
 
     
 

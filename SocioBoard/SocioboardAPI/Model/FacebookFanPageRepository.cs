@@ -9,6 +9,29 @@ namespace Api.Socioboard.Services
 {
     public class FacebookFanPageRepository
     {
+
+        public void addFacebookUser(Domain.Socioboard.Domain.FacebookFanPage fbpage)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    //proceed action, to save data.
+                    try
+                    {
+                        session.Save(fbpage);
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                }//End Transaction
+            }//End session
+        }
+
         public int getAllFancountDetail(Guid UserId, string profileid, int days)
         {
             //Creates a database connection and opens up a session
@@ -19,7 +42,7 @@ namespace Api.Socioboard.Services
                 {
                     try
                     {
-                        NHibernate.IQuery query = session.CreateSQLQuery("Select FanpageCount from FacebookFanPageRepository where UserId=:UserId and  ProfilePageId=:profileid and EntryDate>=DATE_ADD(NOW(),INTERVAL -" + days + " DAY) order by EntryDate desc limit 1");
+                        NHibernate.IQuery query = session.CreateSQLQuery("Select FanpageCount from FacebookFanPage where UserId=:UserId and  ProfilePageId=:profileid and EntryDate>=DATE_ADD(NOW(),INTERVAL -" + days + " DAY) order by EntryDate desc limit 1");
                         query.SetParameter("profileid", profileid);
                         query.SetParameter("UserId", UserId);
                         int i = 0;
@@ -29,7 +52,7 @@ namespace Api.Socioboard.Services
                         }
                         return i;
                     }
-                    catch (Exception ex)
+                    catch (Exception ex) 
                     {
                         Console.WriteLine(ex.StackTrace);
                         return 0;
@@ -50,7 +73,7 @@ namespace Api.Socioboard.Services
                 {
                     try
                     {
-                        NHibernate.IQuery query = session.CreateSQLQuery("Select FanpageCount from FacebookFanPageRepository where UserId=:UserId and  ProfilePageId=:profileid and EntryDate < DATE_ADD(NOW(),INTERVAL -" + days + " DAY) order by EntryDate desc limit 1");
+                        NHibernate.IQuery query = session.CreateSQLQuery("Select FanpageCount from FacebookFanPage where UserId=:UserId and  ProfilePageId=:profileid and EntryDate < DATE_ADD(NOW(),INTERVAL -" + days + " DAY) order by EntryDate desc limit 1");
                         query.SetParameter("profileid", profileid);
                         query.SetParameter("UserId", UserId);
                         int i = 0;

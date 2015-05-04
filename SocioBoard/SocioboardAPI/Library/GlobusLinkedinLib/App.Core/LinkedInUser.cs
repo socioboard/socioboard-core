@@ -46,8 +46,8 @@ namespace GlobusLinkedinLib.App.Core
             List<Domain.Socioboard.Domain.LinkedInUser.User_Updates> UserUpdatesList = new List<Domain.Socioboard.Domain.LinkedInUser.User_Updates>();
             // SocialStream socialStream = new SocialStream();
             ShareAndSocialStream socialStream = new ShareAndSocialStream();
-            xmlResult = socialStream.Get_UserUpdates(OAuth,LinkedInId, Count);
-            
+            xmlResult = socialStream.Get_UserUpdates(OAuth, LinkedInId, Count);
+
             XmlNodeList xmlNodeList = xmlResult.GetElementsByTagName("update");
 
             foreach (XmlNode xn in xmlNodeList)
@@ -198,8 +198,8 @@ namespace GlobusLinkedinLib.App.Core
                         //user_Updates.Message = user_Updates.PersonFirstName + " " + user_Updates.PersonLastName + "Updated their profile picture";
 
                         user_Updates.Message = user_Updates.PersonFirstName + " " + user_Updates.PersonLastName + " " + "Updated as" + " " + user_Updates.Comment;
-                    
-                    
+
+
                     }
                     else if (MessageType == "STAT")
                     {
@@ -269,9 +269,9 @@ namespace GlobusLinkedinLib.App.Core
 
                     UserUpdatesList.Add(user_Updates);
                 }
-                catch 
-                {                    
-                    
+                catch
+                {
+
                 }
             }
             return UserUpdatesList;
@@ -531,6 +531,259 @@ namespace GlobusLinkedinLib.App.Core
             ShareAndSocialStream socialStream = new ShareAndSocialStream();
             string responce = socialStream.SetStatusUpdate(OAuth, message);
             return responce;
+        }
+
+        public List<Domain.Socioboard.Domain.LinkedIn_Update_Messages> GetUserUpdateNew(oAuthLinkedIn OAuth, string LinkedInId, int Count)
+        {
+
+            List<Domain.Socioboard.Domain.LinkedIn_Update_Messages> UserUpdatesList = new List<Domain.Socioboard.Domain.LinkedIn_Update_Messages>();
+            // SocialStream socialStream = new SocialStream();
+            ShareAndSocialStream socialStream = new ShareAndSocialStream();
+            xmlResult = socialStream.Get_UserUpdates(OAuth, LinkedInId, Count);
+
+            XmlNodeList xmlNodeList = xmlResult.GetElementsByTagName("update");
+
+            foreach (XmlNode xn in xmlNodeList)
+            {
+                Domain.Socioboard.Domain.LinkedIn_Update_Messages user_Updates = new Domain.Socioboard.Domain.LinkedIn_Update_Messages();
+                try
+                {
+                    XmlElement Element = (XmlElement)xn;
+                    double timestamp = Convert.ToDouble(Element.GetElementsByTagName("timestamp")[0].InnerText);
+                    user_Updates.CreatedDate = JavaTimeStampToDateTime(timestamp);
+                    try
+                    {
+                        user_Updates.Type = Element.GetElementsByTagName("update-type")[0].InnerText;
+                    }
+                    catch
+                    { }
+                    try
+                    {
+                        user_Updates.ProfileId = Element.GetElementsByTagName("id")[0].InnerText;
+                    }
+                    catch
+                    { }
+                    string PersonFirstName = string.Empty;
+                    string PersonLastName = string.Empty;
+                    try
+                    {
+                        PersonFirstName = Element.GetElementsByTagName("first-name")[0].InnerText;
+                    }
+                    catch
+                    { }
+                    try
+                    {
+                        PersonLastName = Element.GetElementsByTagName("last-name")[0].InnerText;
+                    }
+                    catch
+                    { }
+                    user_Updates.ProfileName = PersonFirstName + " " + PersonLastName;
+                    try
+                    {
+                        //user_Updates.PersonHeadLine = Element.GetElementsByTagName("headline")[0].InnerText;
+                    }
+                    catch
+                    { }
+                    try
+                    {
+                        user_Updates.Message = Element.GetElementsByTagName("comment")[0].InnerText;
+                    }
+                    catch
+                    { }
+
+                    try
+                    {
+                        user_Updates.ImageUrl = Element.GetElementsByTagName("submitted-image-url")[0].InnerText;
+                    }
+                    catch
+                    { }
+
+                    string MessageType = "";
+
+                    try
+                    {
+                        MessageType = Element.GetElementsByTagName("update-type")[0].InnerText;
+                    }
+                    catch
+                    { }
+                    try
+                    {
+                        user_Updates.FeedId = Element.GetElementsByTagName("id")[1].InnerText;
+                    }
+                    catch
+                    { }
+                    try
+                    {
+                        user_Updates.Comments = Element.GetElementsByTagName("update-comments")[0].Attributes["total"].Value;
+                    }
+                    catch
+                    { }
+                    try
+                    {
+                        user_Updates.Likes = Element.GetElementsByTagName("num-likes")[0].InnerText;
+                    }
+                    catch
+                    { }
+                    try
+                    {
+                        user_Updates.ProfileUrl = Element.GetElementsByTagName("url")[1].InnerText;
+                    }
+                    catch
+                    { }
+                    try
+                    {
+                        user_Updates.ProfileImageUrl = Element.GetElementsByTagName("picture-url")[0].InnerText;
+                    }
+                    catch
+                    { }
+                    if (MessageType == "CONN")
+                    {
+
+                        XmlElement innerElement = (XmlElement)xn;
+
+                        string personFirstName = "";
+                        string personLastName = "";
+                        string Personheadline = "";
+
+                        if (innerElement.SelectSingleNode("picture-url") == null)
+                        {
+                            personFirstName = innerElement.GetElementsByTagName("first-name")[1].InnerText;
+                        }
+                        if (innerElement.SelectSingleNode("picture-url") == null)
+                        {
+                            personLastName = innerElement.GetElementsByTagName("last-name")[1].InnerText;
+                        }
+                        if (innerElement.SelectSingleNode("picture-url") == null)
+                        {
+                            Personheadline = innerElement.GetElementsByTagName("headline")[1].InnerText;
+                        }
+
+                        user_Updates.Message = user_Updates.ProfileName + " is now connected to  " + personFirstName + " " + personLastName;
+
+                    }
+                    else if (MessageType == "NCON")
+                    {
+                        XmlElement innerElement = (XmlElement)xn;
+                        string personFirstName = "";
+                        string personLastName = "";
+                        string Personheadline = "";
+
+                        if (innerElement.SelectSingleNode("picture-url") == null)
+                        {
+                            personFirstName = innerElement.GetElementsByTagName("first-name")[1].InnerText;
+                        }
+                        if (innerElement.SelectSingleNode("picture-url") == null)
+                        {
+                            personLastName = innerElement.GetElementsByTagName("last-name")[1].InnerText;
+                        }
+                        if (innerElement.SelectSingleNode("picture-url") == null)
+                        {
+                            Personheadline = innerElement.GetElementsByTagName("headline")[1].InnerText;
+                        }
+                        user_Updates.Message = user_Updates.ProfileName + " is now connected with  " + personFirstName + " " + personLastName;
+                    }
+                    else if (MessageType == "CCEM")
+                    {
+                        XmlElement innerElement = (XmlElement)xn;
+                        string personFirstName = "";
+                        string personLastName = "";
+                        string Personheadline = "";
+
+                        if (innerElement.SelectSingleNode("picture-url") == null)
+                        {
+                            personFirstName = innerElement.GetElementsByTagName("first-name")[1].InnerText;
+                        }
+                        if (innerElement.SelectSingleNode("picture-url") == null)
+                        {
+                            personLastName = innerElement.GetElementsByTagName("last-name")[1].InnerText;
+                        }
+                        if (innerElement.SelectSingleNode("picture-url") == null)
+                        {
+                            Personheadline = innerElement.GetElementsByTagName("headline")[1].InnerText;
+                        }
+                        user_Updates.Message = user_Updates.ProfileName + " is now connected with  " + personFirstName + " " + personLastName;
+                    }
+                    else if (MessageType == "SHAR")
+                    {
+                        //user_Updates.Message = user_Updates.PersonFirstName + " " + user_Updates.PersonLastName + "Updated their profile picture";
+
+                        user_Updates.Message = user_Updates.ProfileName + " " + "Updated as" + " " + user_Updates.Message;
+
+
+                    }
+                    else if (MessageType == "STAT")
+                    {
+                        user_Updates.Message = Element.GetElementsByTagName("current-status")[0].InnerText;
+                    }
+                    else if (MessageType == "VIRL")
+                    {
+                        //user_Updates.Message = user_Updates.PersonFirstName + " " + user_Updates.PersonLastName + "Updated their profile picture";
+                    }
+                    else if (MessageType == "JGRP")
+                    {
+                        //user_Updates.Message = user_Updates.PersonFirstName + " " + user_Updates.PersonLastName + "Updated their profile picture";
+                    }
+                    else if (MessageType == "QSTN")
+                    {
+                        //user_Updates.Message = user_Updates.PersonFirstName + " " + user_Updates.PersonLastName + "Updated their profile picture";
+                    }
+                    else if (MessageType == "ANSW")
+                    {
+                        //user_Updates.Message = user_Updates.PersonFirstName + " " + user_Updates.PersonLastName + "Updated their profile picture";
+                    }
+                    else if (MessageType == "APPM")
+                    {
+                        //user_Updates.Message = user_Updates.PersonFirstName + " " + user_Updates.PersonLastName + "Updated their profile picture";
+                    }
+                    else if (MessageType == "APPS")
+                    {
+                        //user_Updates.Message = user_Updates.PersonFirstName + " " + user_Updates.PersonLastName + "Updated their profile picture";
+                    }
+                    else if (MessageType == "PRFU")
+                    {
+                        //user_Updates.Message = user_Updates.PersonFirstName + " " + user_Updates.PersonLastName + "Updated their profile picture";
+                    }
+                    else if (MessageType == "PRFX")
+                    {
+                        //user_Updates.Message = user_Updates.PersonFirstName + " " + user_Updates.PersonLastName + "Updated their profile picture";
+                    }
+                    else if (MessageType == "PREC")
+                    {
+                        //user_Updates.Message = user_Updates.PersonFirstName + " " + user_Updates.PersonLastName + "Updated their profile picture";
+                    }
+                    else if (MessageType == "SVPR")
+                    {
+                        //user_Updates.Message = user_Updates.PersonFirstName + " " + user_Updates.PersonLastName + "Updated their profile picture";
+                    }
+                    else if (MessageType == "JOBP")
+                    {
+                        //user_Updates.Message = user_Updates.PersonFirstName + " " + user_Updates.PersonLastName + "Updated their profile picture";
+                    }
+                    else if (MessageType == "CMPY")
+                    {
+                        //user_Updates.Message = user_Updates.PersonFirstName + " " + user_Updates.PersonLastName + "Updated their profile picture";
+                    }
+                    else if (MessageType == "MSFC")
+                    {
+                        //user_Updates.Message = user_Updates.PersonFirstName + " " + user_Updates.PersonLastName + "Updated their profile picture";
+                    }
+                    else if (MessageType == "PICU")
+                    {
+                        user_Updates.Message = user_Updates.ProfileName + " Updated their profile picture";
+                    }
+                    else if (MessageType == "PROF")
+                    {
+                        user_Updates.Message = user_Updates.ProfileName + " Updated their profile";
+                    }
+                    UserUpdatesList.Add(user_Updates);
+                }
+                catch
+                {
+
+                }
+            }
+            return UserUpdatesList;
+
         }
     }
 }

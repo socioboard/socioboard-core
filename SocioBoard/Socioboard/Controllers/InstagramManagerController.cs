@@ -74,13 +74,31 @@ namespace Socioboard.Controllers
                         {
                             Api.Instagram.Instagram ApiobjInstagram = new Api.Instagram.Instagram();
                             string redirecturl = ApiobjInstagram.GetInstagramRedirectUrl(ConfigurationManager.AppSettings["InstagramClientKey"], ConfigurationManager.AppSettings["InstagramClientSec"], ConfigurationManager.AppSettings["InstagramCallBackURL"]);
-                            Response.Redirect(redirecturl);
+                            if (redirecturl.Contains("FacebookManager") || redirecturl.Contains("Facebook"))
+                            {
+                                redirecturl = redirecturl.Replace("FacebookManager", "InstagramManager").Replace("Facebook", "Instagram");
+                                Response.Redirect(redirecturl);
+                            }
+                            else
+                            {
+                                Response.Redirect(redirecturl);
+                            }
+                            
                         }
                         else if (profilecount == 0 || totalaccount == 0)
                         {
                             Api.Instagram.Instagram ApiobjInstagram = new Api.Instagram.Instagram();
                             string redirecturl = ApiobjInstagram.GetInstagramRedirectUrl(ConfigurationManager.AppSettings["InstagramClientKey"], ConfigurationManager.AppSettings["InstagramClientSec"], ConfigurationManager.AppSettings["InstagramCallBackURL"]);
-                            Response.Redirect(redirecturl);
+                            if (redirecturl.Contains("FacebookManager") || redirecturl.Contains("Facebook"))
+                            {
+                                redirecturl = redirecturl.Replace("FacebookManager","InstagramManager").Replace("Facebook","Instagram");
+                                Response.Redirect(redirecturl);
+                            }
+                            else
+                            {
+                                Response.Redirect(redirecturl);
+                            }
+                            
                         }
                         else
                         {

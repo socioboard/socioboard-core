@@ -337,13 +337,24 @@ namespace Socioboard.Controllers
             {
                 amount = "0";
                 pay = "success";
+                if (DateTime.Compare(objUser.ExpiryDate, DateTime.Now) > 0)
+                {
+                    objUser.ExpiryDate = objUser.ExpiryDate.AddDays(30);
+                }
+                else
+                {
+                    objUser.ExpiryDate = DateTime.Now.AddDays(30);
+                }
+                int i = ApiobjUser.UpdateUserAccountInfoByUserId(objUser.Id.ToString(), "Free", objUser.ExpiryDate, objUser.PaymentStatus);
+                Session["Paid_User"] = "Paid";
+            
             }
             string UserName = objUser.UserName;
             string EmailId = objUser.EmailId;
 
             string ewallet = objUser.Ewallet;
             Session["Ewallet"] = ewallet;
-            if (float.Parse(ewallet) > 0)
+            if (float.Parse(ewallet) > 0 && amount!="0")
             {
                 if (float.Parse(ewallet) >= float.Parse(amount))
                 {

@@ -340,6 +340,10 @@ footer {
     width: 100%;
 }
 
+.badge.pull-right {
+  margin-right: 5% !important;
+}
+
 #page-wrapper {
     padding: 0 15px;
     min-height: 568px;

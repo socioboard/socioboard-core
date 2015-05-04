@@ -21,5 +21,6 @@ namespace Domain.Socioboard.Domain
         public string Type { get; set; }
         public Guid UserId { get; set; }
         public string Picture { get; set; }
+        public int IsArchived { get; set; }
     }
 }

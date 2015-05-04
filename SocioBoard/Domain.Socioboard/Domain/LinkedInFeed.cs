@@ -18,6 +18,7 @@ namespace Domain.Socioboard.Domain
         public string FromId { get; set; }
         public string FromName { get; set; }
         public string FromPicUrl { get; set; }
-
+        public string ImageUrl { get; set; }
+        public string FromUrl { get; set; }
     }
 }

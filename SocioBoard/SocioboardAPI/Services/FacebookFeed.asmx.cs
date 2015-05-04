@@ -47,6 +47,30 @@ namespace Api.Socioboard.Services
             }
         }
 
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string getAllFacebookFeedsByUserIdAndProfileIdUsingLimit(string UserId, string ProfileId, string noOfDataToSkip, string noOfResultsFromTop)
+        {
+            List<Domain.Socioboard.Domain.FacebookFeed> lstFacebookFeed = new List<Domain.Socioboard.Domain.FacebookFeed>();
+            try
+            {
+                if (objFacebookFeedRepository.checkFacebookUserExists(ProfileId, Guid.Parse(UserId)))
+                {
+                    lstFacebookFeed = objFacebookFeedRepository.getAllFacebookFeedsOfSBUserWithRangeAndProfileId(UserId, ProfileId, noOfDataToSkip, noOfResultsFromTop);
+                }
+                else
+                {
+                    lstFacebookFeed = objFacebookFeedRepository.getAllFacebookFeedsOfSBUserWithRangeByProfileId(ProfileId, noOfDataToSkip, noOfResultsFromTop);
+                }
+                return new JavaScriptSerializer().Serialize(lstFacebookFeed);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+
         // Edited by Antima
 
         [WebMethod]

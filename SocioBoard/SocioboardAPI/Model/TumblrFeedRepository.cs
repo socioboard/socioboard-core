@@ -362,7 +362,7 @@ namespace Api.Socioboard.Services
                         //.List<Domain.Socioboard.Domain.TumblrFeed>()
                         //.ToList<Domain.Socioboard.Domain.TumblrFeed>();
 
-                        List<Domain.Socioboard.Domain.TumblrFeed> lstmsg = session.Query<Domain.Socioboard.Domain.TumblrFeed>().Where(u => u.UserId == id && u.ProfileId.Equals(profileid)).OrderByDescending(x => x.date).Skip(Convert.ToInt32(noOfDataToSkip)).Take(15).ToList<Domain.Socioboard.Domain.TumblrFeed>();
+                        List<Domain.Socioboard.Domain.TumblrFeed> lstmsg = session.Query<Domain.Socioboard.Domain.TumblrFeed>().Where(u => u.UserId == id && u.ProfileId.Equals(profileid)).OrderByDescending(x => x.date).Skip(Convert.ToInt32(noOfDataToSkip)).Take(6).ToList<Domain.Socioboard.Domain.TumblrFeed>();
                    
                         return lstmsg;
                     }

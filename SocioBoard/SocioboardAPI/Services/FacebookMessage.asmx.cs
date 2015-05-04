@@ -114,7 +114,8 @@ namespace Api.Socioboard.Services
 
         public string GetAllInboxMessage(string userid, string profileid, string days)
         {
-            List<Domain.Socioboard.Domain.FacebookMessage> lstmessage = new List<Domain.Socioboard.Domain.FacebookMessage>();
+            //List<Domain.Socioboard.Domain.FacebookMessage> lstmessage = new List<Domain.Socioboard.Domain.FacebookMessage>();
+            int lstmessage = 0;
             try
             {
                 int daycount = Convert.ToInt32(days);
@@ -125,7 +126,7 @@ namespace Api.Socioboard.Services
             {
                 Console.WriteLine(ex.StackTrace);
             }
-            return lstmessage.Count.ToString();
+            return lstmessage.ToString();
         }
 
         //getAllFacebookMessagesOfUser

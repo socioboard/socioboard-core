@@ -37,10 +37,6 @@ namespace SocioboardDataScheduler.Api.LinkedinAccount {
         
         private System.Threading.SendOrPostCallback DeleteLinkedinAccountOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetAllLinkedinAccountsByUserIdAndGroupIdOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetAllLinkedinAccountsOperationCompleted;
-        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -90,12 +86,6 @@ namespace SocioboardDataScheduler.Api.LinkedinAccount {
         
         /// <remarks/>
         public event DeleteLinkedinAccountCompletedEventHandler DeleteLinkedinAccountCompleted;
-        
-        /// <remarks/>
-        public event GetAllLinkedinAccountsByUserIdAndGroupIdCompletedEventHandler GetAllLinkedinAccountsByUserIdAndGroupIdCompleted;
-        
-        /// <remarks/>
-        public event GetAllLinkedinAccountsCompletedEventHandler GetAllLinkedinAccountsCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UserInformation", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -222,64 +212,6 @@ namespace SocioboardDataScheduler.Api.LinkedinAccount {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllLinkedinAccountsByUserIdAndGroupId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string GetAllLinkedinAccountsByUserIdAndGroupId(string userid, string groupid) {
-            object[] results = this.Invoke("GetAllLinkedinAccountsByUserIdAndGroupId", new object[] {
-                        userid,
-                        groupid});
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetAllLinkedinAccountsByUserIdAndGroupIdAsync(string userid, string groupid) {
-            this.GetAllLinkedinAccountsByUserIdAndGroupIdAsync(userid, groupid, null);
-        }
-        
-        /// <remarks/>
-        public void GetAllLinkedinAccountsByUserIdAndGroupIdAsync(string userid, string groupid, object userState) {
-            if ((this.GetAllLinkedinAccountsByUserIdAndGroupIdOperationCompleted == null)) {
-                this.GetAllLinkedinAccountsByUserIdAndGroupIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllLinkedinAccountsByUserIdAndGroupIdOperationCompleted);
-            }
-            this.InvokeAsync("GetAllLinkedinAccountsByUserIdAndGroupId", new object[] {
-                        userid,
-                        groupid}, this.GetAllLinkedinAccountsByUserIdAndGroupIdOperationCompleted, userState);
-        }
-        
-        private void OnGetAllLinkedinAccountsByUserIdAndGroupIdOperationCompleted(object arg) {
-            if ((this.GetAllLinkedinAccountsByUserIdAndGroupIdCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetAllLinkedinAccountsByUserIdAndGroupIdCompleted(this, new GetAllLinkedinAccountsByUserIdAndGroupIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllLinkedinAccounts", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string GetAllLinkedinAccounts() {
-            object[] results = this.Invoke("GetAllLinkedinAccounts", new object[0]);
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetAllLinkedinAccountsAsync() {
-            this.GetAllLinkedinAccountsAsync(null);
-        }
-        
-        /// <remarks/>
-        public void GetAllLinkedinAccountsAsync(object userState) {
-            if ((this.GetAllLinkedinAccountsOperationCompleted == null)) {
-                this.GetAllLinkedinAccountsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllLinkedinAccountsOperationCompleted);
-            }
-            this.InvokeAsync("GetAllLinkedinAccounts", new object[0], this.GetAllLinkedinAccountsOperationCompleted, userState);
-        }
-        
-        private void OnGetAllLinkedinAccountsOperationCompleted(object arg) {
-            if ((this.GetAllLinkedinAccountsCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetAllLinkedinAccountsCompleted(this, new GetAllLinkedinAccountsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -389,58 +321,6 @@ namespace SocioboardDataScheduler.Api.LinkedinAccount {
         private object[] results;
         
         internal DeleteLinkedinAccountCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void GetAllLinkedinAccountsByUserIdAndGroupIdCompletedEventHandler(object sender, GetAllLinkedinAccountsByUserIdAndGroupIdCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetAllLinkedinAccountsByUserIdAndGroupIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetAllLinkedinAccountsByUserIdAndGroupIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void GetAllLinkedinAccountsCompletedEventHandler(object sender, GetAllLinkedinAccountsCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetAllLinkedinAccountsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetAllLinkedinAccountsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

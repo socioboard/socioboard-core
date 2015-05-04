@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Domain.Socioboard.Domain;
 using Api.Socioboard.Helper;
+using NHibernate.Linq;
 
 namespace Api.Socioboard.Services
 {
@@ -118,7 +119,56 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+        public List<Domain.Socioboard.Domain.LinkedInFeed> getAllLinkedInFeedsOfUserOfSBUserWithRangeAndProfileId(Guid UserId, string profileid, string noOfDataToSkip, string noOfResultsFromTop)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction. 
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get linkedin feeds
+                        List<Domain.Socioboard.Domain.LinkedInFeed> alst = session.Query<Domain.Socioboard.Domain.LinkedInFeed>().Where(x => x.ProfileId.Equals(profileid) && x.UserId.Equals(UserId)).OrderByDescending(x => x.FeedsDate).Skip(Convert.ToInt32(noOfDataToSkip)).Take(Convert.ToInt32(noOfResultsFromTop))
+                        .ToList<Domain.Socioboard.Domain.LinkedInFeed>();
+                        return alst;
 
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End Session
+        }
+
+        public List<Domain.Socioboard.Domain.LinkedInFeed> getAllLinkedInFeedsOfUserOfSBUserWithRangeByProfileId(string profileid, string noOfDataToSkip, string noOfResultsFromTop)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction. 
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get linkedin feeds
+                        List<Domain.Socioboard.Domain.LinkedInFeed> alst = session.Query<Domain.Socioboard.Domain.LinkedInFeed>().Where(x => x.ProfileId.Equals(profileid)).OrderByDescending(x => x.FeedsDate).Skip(Convert.ToInt32(noOfDataToSkip)).Take(Convert.ToInt32(noOfResultsFromTop))
+                        .ToList<Domain.Socioboard.Domain.LinkedInFeed>();
+                        return alst;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End Session
+        }
         public List<Domain.Socioboard.Domain.LinkedInFeed> getAllLinkedInUserFeeds(string profileid)
         {
             //Creates a database connection and opens up a session

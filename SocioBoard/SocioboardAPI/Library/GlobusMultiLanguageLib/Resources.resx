@@ -656,7 +656,7 @@
     <value>Company</value>
   </data>
   <data name="Index_Company_Customers" xml:space="preserve">
-    <value>Customers</value>
+    <value>Our Clients</value>
   </data>
   <data name="Index_Company_Fileinput" xml:space="preserve">
     <value>File input</value>
@@ -1219,13 +1219,13 @@ Interested in using Socialboard Enterprise version for your business now? Post y
     <value>Groups</value>
   </data>
   <data name="Group_Index_GroupUsers" xml:space="preserve">
-    <value>Group Users</value>
+    <value>User Groups</value>
   </data>
   <data name="Group_Index_IntervalTime" xml:space="preserve">
     <value>Interval Time:</value>
   </data>
   <data name="Group_Index_NewMessage" xml:space="preserve">
-    <value>New Message</value>
+    <value>Compose Message</value>
   </data>
   <data name="Group_Index_NoFeedFound" xml:space="preserve">
     <value>NO FEED FOUND</value>
@@ -1408,7 +1408,7 @@ Interested in using Socialboard Enterprise version for your business now? Post y
     <value>Save</value>
   </data>
   <data name="Publishing_Draft_SignIn" xml:space="preserve">
-    <value>Sign In</value>
+    <value>Delete</value>
   </data>
   <data name="Publishing_Draft_YouWantToDeleteThisDraft" xml:space="preserve">
     <value>Are you sure,you want to delete this Draft Message ?</value>
@@ -1516,7 +1516,7 @@ Interested in using Socialboard Enterprise version for your business now? Post y
     <value>General stats across your Inter group</value>
   </data>
   <data name="Report_GroupStatPartial_GroupReports" xml:space="preserve">
-    <value>Groups Reports</value>
+    <value>Group Reports</value>
   </data>
   <data name="Report_GroupStatPartial_GroupStats" xml:space="preserve">
     <value>GROUP STATS</value>
@@ -1534,7 +1534,7 @@ Interested in using Socialboard Enterprise version for your business now? Post y
     <value>Mentioned</value>
   </data>
   <data name="Report_GroupStatPartial_MetricsDescription" xml:space="preserve">
-    <value>These metrics are based on replies sent from profiles within the '' group</value>
+    <value>These metrics are based on replies sent from profiles within the group</value>
   </data>
   <data name="Report_GroupStatPartial_NewFacebookFan" xml:space="preserve">
     <value>New Facebook Fans</value>
@@ -1582,7 +1582,7 @@ Interested in using Socialboard Enterprise version for your business now? Post y
     <value>AssignTaskTo</value>
   </data>
   <data name="Report_ReportMenuPartial_CompeteDate" xml:space="preserve">
-    <value>CompeteDate</value>
+    <value>CompleteDate</value>
   </data>
   <data name="Report_ReportMenuPartial_FacebookReports" xml:space="preserve">
     <value>FacebookReport</value>
@@ -1624,7 +1624,7 @@ Interested in using Socialboard Enterprise version for your business now? Post y
     <value>Direct Message (Send)</value>
   </data>
   <data name="Report_TwitterReportPartial_FollowerDemographic" xml:space="preserve">
-    <value>FOLLOWER DEMOGRAPHICS</value>
+    <value>FOLLOWER DEMOGRAPHICS </value>
   </data>
   <data name="Report_TwitterReportPartial_KeyIndicators" xml:space="preserve">
     <value>KEY INDICATORS</value>
@@ -1648,7 +1648,7 @@ Interested in using Socialboard Enterprise version for your business now? Post y
     <value>Retweets</value>
   </data>
   <data name="Report_TwitterReportPartial_ShapeMessagingCampaigns" xml:space="preserve">
-    <value>Learn more about your audience to shape your messaging &amp;amp; campaigns.</value>
+    <value>Learn more about your audience to shape your messaging &amp; campaigns.</value>
   </data>
   <data name="Report_TwitterReportPartial_TwitterAccountReport" xml:space="preserve">
     <value>TWITTER ACCOUNT REPORT</value>
@@ -1741,7 +1741,7 @@ Interested in using Socialboard Enterprise version for your business now? Post y
     <value>Groups are used to categorize social profiles together to help manage and report on your social media efforts efficiently. Learn more about Groups</value>
   </data>
   <data name="UserGroup_UserGroupPartial_GroupsDescription2" xml:space="preserve">
-    <value>Groups help you organize your social profiles and team members. Name your group and you can begin connecting social profiles and adding team members to it. Twitter or Facebook required to create a group.</value>
+    <value>Groups help you organize your social profiles and team members. Name your group and you can begin connecting social profiles and adding team members to it.</value>
   </data>
   <data name="UserGroup_UserGroupPartial_Submit" xml:space="preserve">
     <value>Submit</value>
@@ -2359,7 +2359,7 @@ Interested in using Socialboard Enterprise version for your business now? Post y
     <value>My Task</value>
   </data>
   <data name="Messages_TaskPartial_NoTaskInThisGroup" xml:space="preserve">
-    <value>Sorry, you have no any Task in this Group.</value>
+    <value>There is No Task to Display</value>
   </data>
   <data name="Messages_TaskPartial_OK" xml:space="preserve">
     <value>OK</value>
@@ -2569,7 +2569,7 @@ Interested in using Socialboard Enterprise version for your business now? Post y
     <value>Manage Users</value>
   </data>
   <data name="Shared_AdminSite_NewMessage" xml:space="preserve">
-    <value>New Message</value>
+    <value>Compose Message</value>
   </data>
   <data name="Shared_AdminSite_News" xml:space="preserve">
     <value>News</value>
@@ -2617,7 +2617,7 @@ Interested in using Socialboard Enterprise version for your business now? Post y
     <value>Last Name</value>
   </data>
   <data name="Shared_Site_NewMessages" xml:space="preserve">
-    <value>New Messages</value>
+    <value>Compose Message</value>
   </data>
   <data name="Shared_Site_Profile" xml:space="preserve">
     <value>Profile</value>
@@ -2775,11 +2775,11 @@ Interested in using Socialboard Enterprise version for your business now? Post y
   <data name="SocioBoard_Index_Company_CareersDescription" xml:space="preserve">
     <value>Socioboard offers you opportunities and challenges to help you advance on your career path and achieve personal and professional development. Join our team. We’ll help you develop and accelerate your career by providing you with opportunities to amplify your talents. You can expect us to nurture your strengths and value your unique perspectives, and in return we expect you to share our passion for ‘excellence’ in everything we do.</value>
   </data>
-  <data name="SocioBoard_Index_Company_PartnersDescription" xml:space="preserve">
+  <data name="SocioBoard_Index_Company_PartnersDescription1" xml:space="preserve">
     <value>Socioboard is in course of establishing partnerships with Cloud Services Providers as MS Azure, Amazon AWS etc. We are also in process of hosting plugins and applications from us as well as partners. We will continuously improve features as the feedback comes from our partners.</value>
   </data>
   <data name="SocioBoard_Index_Company_SocioBoardDescription" xml:space="preserve">
-    <value>Socioboard is a next generation social media management application which leverages handling umpteen number of social media platforms through a revolutionary open source lite version and higher end versions which have unmatched world class technical support available round the clock.                                                                                                                                                   We are trying to solve the problem which an average netizen faces while handling many social network profiles on the web. The mass generally has at least three social profiles, and businesses have a more complex social networking structure. The process of managing many social networks at once is very cumbersome and it takes its toll, Socioboard is here to settle all these issues.                                                                                                                                                         Socioboard offers the following values to your business:                                                                                                  Objective of Socioboard is to solve the chaos surrounding social media platform management.                                                                                                                                         Most applications in this domain have a very narrow and limited approach towards end users, people feel caught up in a whirlpool, Socialboard plans to help users out of this vision.</value>
+    <value>Socioboard is the first and ONLY open source software in the world for Social Media Content Management, managing social media accounts, analytics and reporting. It provides a comprehensive dashboard with intelligent analytics and predictive analysis features which collects data points from multiple data sources and classifies them according to more than 1000 categories providing consumer oriented marketing data to businesses and brands.</value>
   </data>
   <data name="SocioBoard_Index_Contact_SocioBoardStoryVideo" xml:space="preserve">
     <value>Socioboard Story video</value>
@@ -2854,7 +2854,7 @@ Interested in using Socialboard Enterprise version for your business now? Post y
     <value>L.V COMPLEX</value>
   </data>
   <data name="SocioBoard_Shared_SocialSuite_Copyright" xml:space="preserve">
-    <value>Copyright © 2013 - 2014 SOCIOBOARD Technologies Pvt. Ltd. All Rights Reserved.</value>
+    <value>Copyright © 2014 - 2015 SOCIOBOARD Technologies Pvt. Ltd. All Rights Reserved.</value>
   </data>
   <data name="SocioBoard_Shared_SocialSuite_PhoneNumber1" xml:space="preserve">
     <value>+91 80 4166 0003</value>
@@ -2992,5 +2992,8 @@ Interested in using Socialboard Enterprise version for your business now? Post y
   </data>
   <data name="MyStuff_Ewallet_AjaxEwallet2" xml:space="preserve">
     <value>go back</value>
+  </data>
+  <data name="SocioBoard_Index_Company_PartnersDescription2" xml:space="preserve">
+    <value>                               Socioboard is a proud member of Nasscom’s 10,000 StartUps and secured 2nd rank in Indian Institute of Management’s start up fest DisruptIt 2014.</value>
   </data>
 </root>

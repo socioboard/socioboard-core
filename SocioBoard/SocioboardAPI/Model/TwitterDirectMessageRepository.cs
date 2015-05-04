@@ -188,7 +188,7 @@ namespace Api.Socioboard.Services
                     try
                     {
                         //Proceed action, to get total count of message for last 7 day's by sender id and profileId.
-                        NHibernate.IQuery query = session.CreateSQLQuery("Select Distinct Count(MessageId) from TwitterDirectMessages where EntryDate >= DATE_ADD(NOW(),INTERVAL -" + days + " DAY) and  RecipientId=: profileId ")
+                        NHibernate.IQuery query = session.CreateSQLQuery("Select Distinct Count(MessageId) from TwitterDirectMessages where EntryDate >= DATE_ADD(NOW(),INTERVAL -" + days + " DAY) and  RecipientId=: profileId")
                             //.SetParameter("days", days)
                          .SetParameter("profileId", profileId);
                         ArrayList alstFBmsgs = new ArrayList();
@@ -275,6 +275,63 @@ namespace Api.Socioboard.Services
                     }
                 }//End Transaction
             }//End Session
+        }
+
+
+
+
+        public int GetDirrectMessageCountByProfileIdAndUserId(Guid UserId, string profileids, int Days)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        string[] arrsrt = profileids.Split(',');
+                        DateTime date = DateTime.Now.AddDays(-Days);
+                        List<Domain.Socioboard.Domain.TwitterDirectMessages> results = session.CreateQuery("from TwitterDirectMessages where UserId=:UserId and CreatedDate >= :Days and SenderId=:SenderId and  Type =:Type")
+                            .SetParameter("UserId", UserId)
+                            .SetParameter("Days", date)
+                            .SetParameter("SenderId", arrsrt[0]).SetParameter("Type", "twt_directmessages_sent").List<Domain.Socioboard.Domain.TwitterDirectMessages>().ToList();
+                        return Int16.Parse(results.Count.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+                }//End Transaction
+            }// End se
+        }
+
+        public int GetDirrectMessageReceiveCountByProfileIdAndUserId(Guid UserId, string profileids, int Days)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        string[] arrsrt = profileids.Split(',');
+                        DateTime date = DateTime.Now.AddDays(-Days);
+                        List<Domain.Socioboard.Domain.TwitterDirectMessages> results = session.CreateQuery("from TwitterDirectMessages where UserId=:UserId and CreatedDate >= :Days and RecipientId=:RecipientId and Type =:Type")
+                            .SetParameter("UserId", UserId)
+                            .SetParameter("Days", date)
+                            .SetParameter("RecipientId", arrsrt[0]).SetParameter("Type", "twt_directmessages_receive").List<Domain.Socioboard.Domain.TwitterDirectMessages>().ToList();
+                        return Int16.Parse(results.Count.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+                }//End Transaction
+            }// End se
         }
 
 

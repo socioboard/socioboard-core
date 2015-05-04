@@ -16,87 +16,62 @@ namespace SocioboardDataServices
         {
             Program prog = new Program();
             prog.StartService(args);
-
+            //NegativeFeeds objNegativeFeeds = new NegativeFeeds();
+            //objNegativeFeeds.getAllNegativeFeeds();
         }
-        private static void RunDataService(string profiletype)
+         private static void RunDataService(string profiletype)
         {
             while (true)
             {
-                try
+             Api.SocialProfile.SocialProfile ApiobjSocialProfile=new Api.SocialProfile.SocialProfile ();
+             List<Domain.Socioboard.Domain.SocialProfile> lstSocialProfile = (List<Domain.Socioboard.Domain.SocialProfile>)(new JavaScriptSerializer().Deserialize(ApiobjSocialProfile.SocialProfileByProfilType(profiletype.ToString()), typeof(List<Domain.Socioboard.Domain.SocialProfile>)));
+            
+                ThreadPool.SetMaxThreads(10, 4);           
+                if (lstSocialProfile != null)
                 {
-
-                    Api.SocialProfile.SocialProfile ApiobjSocialProfile = new Api.SocialProfile.SocialProfile();
-                    List<Domain.Socioboard.Domain.SocialProfile> lstSocialProfile = (List<Domain.Socioboard.Domain.SocialProfile>)(new JavaScriptSerializer().Deserialize(ApiobjSocialProfile.SocialProfileByProfilType(profiletype.ToString()), typeof(List<Domain.Socioboard.Domain.SocialProfile>)));
-
-                    ThreadPool.SetMaxThreads(20, 4);
-                    if (lstSocialProfile != null)
+                    if (lstSocialProfile.Count != 0)
                     {
-                        if (lstSocialProfile.Count != 0)
+                        foreach (var item in lstSocialProfile)
                         {
-                            foreach (var item in lstSocialProfile)
+                            try
                             {
-                                try
+                                if (item.UserId.ToString()!="bbc23ca1-28f1-452c-a3a8-e58c5cc5a0f8")
                                 {
-                                    try
-                                    {
-                                        ThreadPool.SetMaxThreads(20, 4);
-                                        RunDataServiceInThreads(item);
-                                        //ThreadPool.QueueUserWorkItem(new WaitCallback(RunDataServiceInThreads), item);
-                                        //RunDataServiceHardCodedAccountsInThreads(item);
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        Console.WriteLine(ex.Message);
-                                    }
+                                    continue;
                                 }
-                                catch (Exception ex)
+
+                                clsSocialSiteDataFeedsFactory objclsSocialSiteDataFeedsFactory = new clsSocialSiteDataFeedsFactory(item.ProfileType);
+                                ISocialSiteData objSocialSiteDataFeeds = objclsSocialSiteDataFeedsFactory.CreateSocialSiteDataFeedsInstance();
+                                if (objSocialSiteDataFeeds != null)
                                 {
-                                    Console.WriteLine(ex.Message);
+                                Console.WriteLine(objSocialSiteDataFeeds.GetData((object)item.UserId, item.ProfileId));
                                 }
                             }
-                        }
-                        else
-                        {
-                            Console.WriteLine("No active record in Database");
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.Message);
+                            }
                         }
                     }
                     else
                     {
+
                         Console.WriteLine("No active record in Database");
                     }
-
-                    Thread.Sleep(5 * 60 * 1000);
                 }
-                catch (Exception ex)
+                else
                 {
-                    Console.WriteLine(ex.Message);
+                    Console.WriteLine("No active record in Database");
                 }
-            }
-        }
 
-      
-        private static void RunDataServiceInThreads(object objitem)
-        {
-            try
-            {
-                Domain.Socioboard.Domain.SocialProfile item = (Domain.Socioboard.Domain.SocialProfile)objitem;
-                clsSocialSiteDataFeedsFactory objclsSocialSiteDataFeedsFactory = new clsSocialSiteDataFeedsFactory(item.ProfileType);
-                ISocialSiteData objSocialSiteDataFeeds = objclsSocialSiteDataFeedsFactory.CreateSocialSiteDataFeedsInstance();
-                if (objSocialSiteDataFeeds != null)
-                {
-                    Console.WriteLine(objSocialSiteDataFeeds.GetData((object)item.UserId, item.ProfileId));
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                Thread.Sleep(15*1000);
             }
         }
 
         void StartService(string[] args)
         {
             string check = string.Empty;
-            //string[] str = { };
+             //string[] str = { };
             try
             {
                 check = args[0];
@@ -113,9 +88,7 @@ namespace SocioboardDataServices
                 Console.WriteLine("4. Instagram");
                 Console.WriteLine("5. Tumblr");
                 Console.WriteLine("6. Youtube");
-                Console.WriteLine("7. Facebook Page");
-                Console.WriteLine("8. Social Ticketing");
-                string[] str = { Console.ReadLine() };
+                string[] str = {Console.ReadLine()};
 
                 string profileType = str[0];
 
@@ -139,31 +112,16 @@ namespace SocioboardDataServices
                     case "6":
                         profileType = "youtube";
                         break;
-                    case "7":
-                        profileType = "facebook_page";
-                        break;
-                    case "8":
-                        profileType = "Ticketing";
-                        //while (true)
-                        //{
-                        //    NegativeFeeds objNegativeFeeds = new NegativeFeeds();
-                        //    objNegativeFeeds.getAllNegativeFeeds();
-                        //    Thread.Sleep(15 * 1000);
-                        //}
-                        break;
+
                     default:
                         break;
                 }
 
-                if (profileType != "Ticketing")
-                {
-                    new Thread(() =>
-                    {
-                        RunDataService(profileType);
-                    }).Start();
-                      
-                }
+                RunDataService(profileType);
             }
+           
+           
         }
+        
     }
 }

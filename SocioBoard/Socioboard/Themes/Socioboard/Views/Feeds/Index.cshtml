@@ -5,6 +5,11 @@
 <script src="../Themes/Socioboard/Contents/js/Feeds.js"></script>
 <script src="~/Themes/Socioboard/Contents/js/underscore.js"></script>
 
+ <style>
+        .badge.pull-right {
+            margin-right: 5% !important;
+           }
+    </style>
 
 <script type="text/javascript">
     function loadfeesmenu() {
@@ -135,13 +140,17 @@
 </div>
 @*<script src="/Themes/Socioboard/Contents/js/jquery-1.11.0.js"></script>*@
 <script>
+    $(document).ready(function () {
+        $(window).scroll(imagebind);
+    });
     var facebookfeed = _.throttle(facebookfeedscrolldata, 3000);
     var twittertweet = _.throttle(Twitterfeedscrolldata, 3000);
-    //var linkedinfeed = _.throttle(LinkedInfeedscrolldata, 3000);
+    var linkedinfeed = _.throttle(LinkedInfeedscrolldata, 3000);
 
     var facebookwall = _.throttle(facebookwallscrolldata, 3000);
     var twitterfeed = _.throttle(Twitterscrolldata, 3000);
     var linkedinnetworkupdate = _.throttle(LinkedInscrolldata, 3000);
+    var tumblrimages = _.throttle(Tumblrscrolldata, 3000);
     function ccc() {
         // alert("ccc");
         debugger;
@@ -167,10 +176,16 @@
             twittertweet();
         }
         if (network == "linkedin") {
-            //linkedinfeed();
+            linkedinfeed();
         }
     }
-
+    function imagebind() {
+        debugger;
+        var nwt = $("#feedimages").attr("network");
+        if (nwt == "tumblr") {
+            tumblrimages();
+        }
+    }
     //function FacebookUserFeeds() {
     //    debugger;
     //    var nwtid = $('#refreshpanel2').attr('nwtid');

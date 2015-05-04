@@ -172,6 +172,22 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="TwitterComposeMessageRss">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TwitterComposeMessageRssResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TwitterComposeMessageRssResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="TwitterRecentFollower">
         <s:complexType>
           <s:sequence>
@@ -360,6 +376,12 @@
   <wsdl:message name="TwitterComposeMessageSoapOut">
     <wsdl:part name="parameters" element="tns:TwitterComposeMessageResponse" />
   </wsdl:message>
+  <wsdl:message name="TwitterComposeMessageRssSoapIn">
+    <wsdl:part name="parameters" element="tns:TwitterComposeMessageRss" />
+  </wsdl:message>
+  <wsdl:message name="TwitterComposeMessageRssSoapOut">
+    <wsdl:part name="parameters" element="tns:TwitterComposeMessageRssResponse" />
+  </wsdl:message>
   <wsdl:message name="TwitterRecentFollowerSoapIn">
     <wsdl:part name="parameters" element="tns:TwitterRecentFollower" />
   </wsdl:message>
@@ -452,6 +474,14 @@
     <wsdl:part name="picurl" type="s:string" />
   </wsdl:message>
   <wsdl:message name="TwitterComposeMessageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterComposeMessageRssHttpGetIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterComposeMessageRssHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="TwitterRecentFollowerHttpGetIn">
@@ -560,6 +590,14 @@
   <wsdl:message name="TwitterComposeMessageHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="TwitterComposeMessageRssHttpPostIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterComposeMessageRssHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="TwitterRecentFollowerHttpPostIn">
     <wsdl:part name="userid" type="s:string" />
   </wsdl:message>
@@ -657,6 +695,10 @@
       <wsdl:input message="tns:TwitterComposeMessageSoapIn" />
       <wsdl:output message="tns:TwitterComposeMessageSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="TwitterComposeMessageRss">
+      <wsdl:input message="tns:TwitterComposeMessageRssSoapIn" />
+      <wsdl:output message="tns:TwitterComposeMessageRssSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="TwitterRecentFollower">
       <wsdl:input message="tns:TwitterRecentFollowerSoapIn" />
       <wsdl:output message="tns:TwitterRecentFollowerSoapOut" />
@@ -711,6 +753,10 @@
       <wsdl:input message="tns:TwitterComposeMessageHttpGetIn" />
       <wsdl:output message="tns:TwitterComposeMessageHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="TwitterComposeMessageRss">
+      <wsdl:input message="tns:TwitterComposeMessageRssHttpGetIn" />
+      <wsdl:output message="tns:TwitterComposeMessageRssHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="TwitterRecentFollower">
       <wsdl:input message="tns:TwitterRecentFollowerHttpGetIn" />
       <wsdl:output message="tns:TwitterRecentFollowerHttpGetOut" />
@@ -764,6 +810,10 @@
     <wsdl:operation name="TwitterComposeMessage">
       <wsdl:input message="tns:TwitterComposeMessageHttpPostIn" />
       <wsdl:output message="tns:TwitterComposeMessageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterComposeMessageRss">
+      <wsdl:input message="tns:TwitterComposeMessageRssHttpPostIn" />
+      <wsdl:output message="tns:TwitterComposeMessageRssHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="TwitterRecentFollower">
       <wsdl:input message="tns:TwitterRecentFollowerHttpPostIn" />
@@ -874,6 +924,15 @@
     </wsdl:operation>
     <wsdl:operation name="TwitterComposeMessage">
       <soap:operation soapAction="http://tempuri.org/TwitterComposeMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterComposeMessageRss">
+      <soap:operation soapAction="http://tempuri.org/TwitterComposeMessageRss" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1037,6 +1096,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TwitterComposeMessageRss">
+      <soap12:operation soapAction="http://tempuri.org/TwitterComposeMessageRss" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="TwitterRecentFollower">
       <soap12:operation soapAction="http://tempuri.org/TwitterRecentFollower" style="document" />
       <wsdl:input>
@@ -1157,6 +1225,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="TwitterComposeMessageRss">
+      <http:operation location="/TwitterComposeMessageRss" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="TwitterRecentFollower">
       <http:operation location="/TwitterRecentFollower" />
       <wsdl:input>
@@ -1270,6 +1347,15 @@
     </wsdl:operation>
     <wsdl:operation name="TwitterComposeMessage">
       <http:operation location="/TwitterComposeMessage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterComposeMessageRss">
+      <http:operation location="/TwitterComposeMessageRss" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

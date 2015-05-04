@@ -38,9 +38,6 @@ namespace SocioboardDataServices
                 case "youtube":
                     objSocialSiteDataFeeds = new YouTubeData();
                     break;
-                //case "facebook_page":
-                //    objSocialSiteDataFeeds = new FacebookFanPageData();
-                //    break;
                 default:
                     break;
             }

@@ -7,10 +7,12 @@
 @if (networktype == "instagram" || networktype == "tumblr" || networktype == "youtube")
 {
     <div class="container-fluid" style="margin-top: 25px">
-        <div id="feedimages" class="row">
+        <div id="feedimages1" class="row">
             <div style="margin-top: 50px">
-                <img src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" />
-                Loading . . .
+                 <h2 class="page-header">Live Feeds</h2>
+                <div class="col-xs-12" id="feedimages" network="">
+                    <img src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" />
+                </div>
             </div>
         </div>
     </div>

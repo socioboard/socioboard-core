@@ -20,11 +20,22 @@ namespace Api.Socioboard.Services
     [ScriptService]
     public class LinkedinMessage : System.Web.Services.WebService
     {
+        LinkedInMessageRepository objLinkedInMessageRepository = new LinkedInMessageRepository();
 
         [WebMethod]
-        public string HelloWorld()
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetLinkedInMessages(string UserId, string LinkedInId, int count)
         {
-            return "Hello World";
+            try
+            {
+                List<Domain.Socioboard.Domain.LinkedInMessage> lstlinkedinmessages = objLinkedInMessageRepository.getLinkedInMessageDetail(LinkedInId, count.ToString(), Guid.Parse(UserId));
+                return new JavaScriptSerializer().Serialize(lstlinkedinmessages);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return new JavaScriptSerializer().Serialize("Please Try Again");
+            }
         }
     }
 }

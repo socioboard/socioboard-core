@@ -686,7 +686,7 @@ namespace Api.Socioboard.Services
                 {
                     try
                     {
-                        List<Domain.Socioboard.Domain.Team> alstFBAccounts = session.CreateQuery("from Team where GroupId=:groupId and UserId!=:uid and InviteStatus=:status")
+                        List<Domain.Socioboard.Domain.Team> alstFBAccounts = session.CreateQuery("from Team where GroupId=:groupId and UserId=:uid and InviteStatus=:status")
                         .SetParameter("groupId", groupId)
                         .SetParameter("uid", userid)
                           .SetParameter("status", status)

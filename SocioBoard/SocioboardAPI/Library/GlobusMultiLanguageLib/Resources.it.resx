@@ -634,7 +634,7 @@
     <value>Intervallo di tempo:</value>
   </data>
   <data name="Group_Index_NewMessage" xml:space="preserve">
-    <value>Nuovo messaggio</value>
+    <value>Comporre il messaggio</value>
   </data>
   <data name="Group_Index_NoFeedFound" xml:space="preserve">
     <value>FEED NON TROVATO</value>
@@ -1840,7 +1840,7 @@ Le Dashboard visualizza le attività dei tuoi amici, come azioni, nuovi messaggi
     <value>Menzionato</value>
   </data>
   <data name="Report_GroupStatPartial_MetricsDescription" xml:space="preserve">
-    <value>Queste metriche sono basate su risposte inviate dai profili all'interno del gruppo ''</value>
+    <value>Queste metriche sono basate su risposte inviate dai profili all'interno del gruppo </value>
   </data>
   <data name="Report_GroupStatPartial_NewFacebookFan" xml:space="preserve">
     <value>Nuovi Fan di Facebook</value>
@@ -2505,7 +2505,7 @@ Interessati ad utilizzare la versione SocialBoard Enterprise per la tua azienda 
     <value>Gestisci Users</value>
   </data>
   <data name="Shared_AdminSite_NewMessage" xml:space="preserve">
-    <value>Nuovo messaggio</value>
+    <value>Comporre il messaggio</value>
   </data>
   <data name="Shared_AdminSite_News" xml:space="preserve">
     <value>Notizie</value>
@@ -2553,7 +2553,7 @@ Interessati ad utilizzare la versione SocialBoard Enterprise per la tua azienda 
     <value>Cognome</value>
   </data>
   <data name="Shared_Site_NewMessages" xml:space="preserve">
-    <value>Nuovi messaggi</value>
+    <value>Comporre il messaggio</value>
   </data>
   <data name="Shared_Site_Profile" xml:space="preserve">
     <value>profilo</value>
@@ -2807,7 +2807,7 @@ Le Agenzie possono utilizzare commercialmente la versione Withelabel di SocialBo
     <value>L.V COMPLEX</value>
   </data>
   <data name="SocioBoard_Shared_SocialSuite_Copyright" xml:space="preserve">
-    <value>Copyright © 2013 - 2014 SOCIOBOARD Technologies Pvt. Ltd. All Rights Reserved.</value>
+    <value>Copyright © 2014 - 2015 SOCIOBOARD Technologies Pvt. Ltd. All Rights Reserved.</value>
   </data>
   <data name="SocioBoard_Shared_SocialSuite_PhoneNumber1" xml:space="preserve">
     <value>+91 80 4166 0003</value>

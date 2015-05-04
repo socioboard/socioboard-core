@@ -34,7 +34,7 @@
                     <div class="checkbox ">
                        
                             <input class="_isgroupchecked" type="checkbox" value="fb_@FbAccount.AccessToken" id="@FbAccount.FbUserId*#*fb*#*@item_value.GroupId">
-                            <span onclick="facebookgroupdetails('@item_value.GroupId','@FbAccount.AccessToken','@FbAccount.FbUserId');"  id="">@item_value.Name</span>
+                            <span onclick="facebookgroupdetails('@item_value.GroupId','@FbAccount.AccessToken','@FbAccount.FbUserId');"  id="gp-@item_value.GroupId-@FbAccount.FbUserId">@item_value.Name</span>
                        
                     </div>
                     @*<div  style="margin-top: -15px; margin-left: 18px; cursor: pointer;"><span onclick="facebookgroupdetails('@item_value.GroupId','@FbAccount.AccessToken','@FbAccount.FbUserId');"  id="">@item_value.Name</span></div>*@
@@ -76,7 +76,7 @@
                     <div class="checkbox ">
                         
                             <input class="_isgroupchecked" type="checkbox" value="lin_@LinkedInAccount.LinkedinUserId" id="@LinkedInAccount.LinkedinUserId*#*lin*#*@item_value.id">
-                            <span onclick="linkedingroupdetails('@item_value.id','@LinkedInAccount.LinkedinUserId');"  id="">@item_value.GroupName</span>
+                            <span onclick="linkedingroupdetails('@item_value.id','@LinkedInAccount.LinkedinUserId');"  id="gp-@item_value.id-@LinkedInAccount.LinkedinUserId">@item_value.GroupName</span>
 
                     </div>
                     @*<div style="margin-top: -15px; margin-left: 18px; cursor: pointer;"><span onclick="linkedingroupdetails('@item_value.id','@LinkedInAccount.LinkedinUserId');"  id="">@item_value.GroupName</span></div>*@

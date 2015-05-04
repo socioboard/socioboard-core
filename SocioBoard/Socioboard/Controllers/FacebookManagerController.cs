@@ -51,11 +51,24 @@ namespace Socioboard.Controllers
 
                     try
                     {
+                        Response.Write("Facebook Returned email : "+ objUser.EmailId);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        logger.Error(ex.StackTrace);
+                        logger.Error(ex.Message);
+                    }
+
+                    try
+                    {
                         // objUser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(apiobjFacebook.FacebookLogin(code), typeof(Domain.Socioboard.Domain.User)));
                         checkuserexist = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUserInfoByEmail(objUser.EmailId.ToString()), typeof(Domain.Socioboard.Domain.User)));
                         FormsAuthentication.SetAuthCookie(checkuserexist.UserName, false);
                     }
-                    catch (Exception e) { }
+                    catch (Exception e) {
+                        checkuserexist = null;
+                    }
                     if (checkuserexist != null)
                     {
                         Session["User"] = checkuserexist;
@@ -115,6 +128,9 @@ namespace Socioboard.Controllers
                 Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
                 string facebookcode = code;
                 Api.Facebook.Facebook apiobjFacebook = new Api.Facebook.Facebook();
+
+                apiobjFacebook.Timeout = 120 * 1000;
+
                 string AddfacebookAccount = apiobjFacebook.AddFacebookAccount(facebookcode, objUser.Id.ToString(), Session["group"].ToString());
                 //string AddfacebookAccount = apiobjFacebook.AddFacebookAccountAsync(facebookcode, objUser.Id.ToString(), Session["group"].ToString());
 
@@ -272,7 +288,7 @@ namespace Socioboard.Controllers
             Domain.Socioboard.Domain.User objUser = new Domain.Socioboard.Domain.User();
             objUser = (Domain.Socioboard.Domain.User)Session["User"];
             //objApiFacebook.AddFacebookPagesInfo(objUser.Id.ToString(), profileid, accesstoken, Session["group"].ToString(), email);
-            objApiFacebook.AddFacebookPagesInfoAsync(objUser.Id.ToString(), profileid, accesstoken, Session["group"].ToString(), email);
+            //objApiFacebook.AddFacebookPagesInfoAsync(objUser.Id.ToString(), profileid, accesstoken, Session["group"].ToString(), email);
 
             //Api.Facebook.Facebook objApiFacebook1 = new Api.Facebook.Facebook();
             objApiFacebook.AddFacebookPagesInfo(objUser.Id.ToString(), profileid, accesstoken, Session["group"].ToString(), email);

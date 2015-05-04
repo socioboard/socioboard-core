@@ -52,6 +52,7 @@
   {
       try
       {
+          string imageurl = "";
           string icon = "";
           string onClick = "";
           string network = "";
@@ -67,12 +68,19 @@
               onClick = "getFacebookProfiles";
               network = "facebook";
           }
-                                          
+          if (!string.IsNullOrEmpty(row["FromProfileUrl"].ToString()))
+          {
+              imageurl = row["FromProfileUrl"].ToString();
+          }
+          else
+          {
+              imageurl = "../Themes/Socioboard/Contents/img/anonymousUser.jpg";
+          }                           
     <div class="panel panel-primary" id="messagetaskable_@sorteddatacount">
         <div class="panel-heading">
             <div class="row" style="width:750px;">
                 <div class="col-xs-3">
-                    <img @*src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/@icon"*@ title="@row["FromName"]" alt="@row["FromId"]" src="@row["FromProfileUrl"]" id="formprofileurl_@sorteddatacount" onclick=""@onClick"(this.alt)" class="img-circle" data-toggle="modal" data-target="#profileModal">
+                    <img @*src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/@icon"*@ title="@row["FromName"]" alt="@row["FromId"]" src="@imageurl" id="formprofileurl_@sorteddatacount" onclick=""@onClick"(this.alt)" class="img-circle" data-toggle="modal" data-target="#profileModal">
                     <img class="img-responsive img-circle" src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/@icon" style="margin-left: 35px; margin-top: -20px;">
                     <span id="screanName_@sorteddatacount">@row["FromName"]</span>
                     <span style="float: left">@row["MessageDate"]</span>
@@ -122,10 +130,10 @@
     </div>
           sorteddatacount++;
       }
-      catch (Exception)
+      catch (Exception ex)
       {
-
-          throw;
+          Console.WriteLine(ex.Message);
+          Console.WriteLine(ex.StackTrace);
       }
 
 

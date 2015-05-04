@@ -23,6 +23,7 @@ namespace Domain.Socioboard.Domain
         public string SourceUrl { get; set; }
         public string FromScreenName { get; set; }
         public int ReadStatus { get; set; }
+        public int IsArchived { get; set; }
 
         public string ProfileType
         {

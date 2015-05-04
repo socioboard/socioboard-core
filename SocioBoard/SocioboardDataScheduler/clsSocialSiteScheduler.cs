@@ -35,11 +35,8 @@ namespace SocioboardDataScheduler
                 case "tumblr":
                     objDataScheduler = new TumblrScheduler();
                     break;
-                case "facebookgroup":
-                    objDataScheduler = new FacebookGroupScheduler();
-                    break;
-                case "linkedingroup":
-                    objDataScheduler = new LinkedinGroupScheduler();
+                case "youtube":
+                    //objDataScheduler = new YoutubeSchduler();
                     break;
                 default:
                     break;

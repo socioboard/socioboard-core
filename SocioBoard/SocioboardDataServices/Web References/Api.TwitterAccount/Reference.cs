@@ -41,8 +41,6 @@ namespace SocioboardDataServices.Api.TwitterAccount {
         
         private System.Threading.SendOrPostCallback getUserInformationOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetAllTwitterAccountsOperationCompleted;
-        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -98,9 +96,6 @@ namespace SocioboardDataServices.Api.TwitterAccount {
         
         /// <remarks/>
         public event getUserInformationCompletedEventHandler getUserInformationCompleted;
-        
-        /// <remarks/>
-        public event GetAllTwitterAccountsCompletedEventHandler GetAllTwitterAccountsCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetTwitterAccountDetailsById", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -287,33 +282,6 @@ namespace SocioboardDataServices.Api.TwitterAccount {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllTwitterAccounts", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string GetAllTwitterAccounts() {
-            object[] results = this.Invoke("GetAllTwitterAccounts", new object[0]);
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetAllTwitterAccountsAsync() {
-            this.GetAllTwitterAccountsAsync(null);
-        }
-        
-        /// <remarks/>
-        public void GetAllTwitterAccountsAsync(object userState) {
-            if ((this.GetAllTwitterAccountsOperationCompleted == null)) {
-                this.GetAllTwitterAccountsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllTwitterAccountsOperationCompleted);
-            }
-            this.InvokeAsync("GetAllTwitterAccounts", new object[0], this.GetAllTwitterAccountsOperationCompleted, userState);
-        }
-        
-        private void OnGetAllTwitterAccountsOperationCompleted(object arg) {
-            if ((this.GetAllTwitterAccountsCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetAllTwitterAccountsCompleted(this, new GetAllTwitterAccountsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -475,32 +443,6 @@ namespace SocioboardDataServices.Api.TwitterAccount {
         private object[] results;
         
         internal getUserInformationCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void GetAllTwitterAccountsCompletedEventHandler(object sender, GetAllTwitterAccountsCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetAllTwitterAccountsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetAllTwitterAccountsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

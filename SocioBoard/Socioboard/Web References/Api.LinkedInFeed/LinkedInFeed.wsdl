@@ -17,6 +17,23 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetLinkedInFeedsByUserIdAndProfileIdUsingLimit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedInId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="noOfDataToSkip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="noOfResultsFromTop" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLinkedInFeedsByUserIdAndProfileIdUsingLimitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLinkedInFeedsByUserIdAndProfileIdUsingLimitResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetLinkedInFeeds1">
         <s:complexType>
           <s:sequence>
@@ -57,6 +74,12 @@
   <wsdl:message name="GetLinkedInFeedsSoapOut">
     <wsdl:part name="parameters" element="tns:GetLinkedInFeedsResponse" />
   </wsdl:message>
+  <wsdl:message name="GetLinkedInFeedsByUserIdAndProfileIdUsingLimitSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLinkedInFeedsByUserIdAndProfileIdUsingLimit" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedInFeedsByUserIdAndProfileIdUsingLimitSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLinkedInFeedsByUserIdAndProfileIdUsingLimitResponse" />
+  </wsdl:message>
   <wsdl:message name="GetLinkedInFeeds1SoapIn">
     <wsdl:part name="parameters" element="tns:GetLinkedInFeeds1" />
   </wsdl:message>
@@ -74,6 +97,15 @@
     <wsdl:part name="LinkedInId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetLinkedInFeedsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedInFeedsByUserIdAndProfileIdUsingLimitHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="LinkedInId" type="s:string" />
+    <wsdl:part name="noOfDataToSkip" type="s:string" />
+    <wsdl:part name="noOfResultsFromTop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedInFeedsByUserIdAndProfileIdUsingLimitHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetLinkedInFeeds1HttpGetIn">
@@ -98,6 +130,15 @@
   <wsdl:message name="GetLinkedInFeedsHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetLinkedInFeedsByUserIdAndProfileIdUsingLimitHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="LinkedInId" type="s:string" />
+    <wsdl:part name="noOfDataToSkip" type="s:string" />
+    <wsdl:part name="noOfResultsFromTop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedInFeedsByUserIdAndProfileIdUsingLimitHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="GetLinkedInFeeds1HttpPostIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="LinkedInId" type="s:string" />
@@ -118,6 +159,10 @@
       <wsdl:input message="tns:GetLinkedInFeedsSoapIn" />
       <wsdl:output message="tns:GetLinkedInFeedsSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetLinkedInFeedsByUserIdAndProfileIdUsingLimit">
+      <wsdl:input message="tns:GetLinkedInFeedsByUserIdAndProfileIdUsingLimitSoapIn" />
+      <wsdl:output message="tns:GetLinkedInFeedsByUserIdAndProfileIdUsingLimitSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetLinkedInFeeds1">
       <wsdl:input message="tns:GetLinkedInFeeds1SoapIn" />
       <wsdl:output message="tns:GetLinkedInFeeds1SoapOut" />
@@ -131,6 +176,10 @@
     <wsdl:operation name="GetLinkedInFeeds">
       <wsdl:input message="tns:GetLinkedInFeedsHttpGetIn" />
       <wsdl:output message="tns:GetLinkedInFeedsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedInFeedsByUserIdAndProfileIdUsingLimit">
+      <wsdl:input message="tns:GetLinkedInFeedsByUserIdAndProfileIdUsingLimitHttpGetIn" />
+      <wsdl:output message="tns:GetLinkedInFeedsByUserIdAndProfileIdUsingLimitHttpGetOut" />
     </wsdl:operation>
     <wsdl:operation name="GetLinkedInFeeds1">
       <wsdl:input message="tns:GetLinkedInFeeds1HttpGetIn" />
@@ -146,6 +195,10 @@
       <wsdl:input message="tns:GetLinkedInFeedsHttpPostIn" />
       <wsdl:output message="tns:GetLinkedInFeedsHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetLinkedInFeedsByUserIdAndProfileIdUsingLimit">
+      <wsdl:input message="tns:GetLinkedInFeedsByUserIdAndProfileIdUsingLimitHttpPostIn" />
+      <wsdl:output message="tns:GetLinkedInFeedsByUserIdAndProfileIdUsingLimitHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetLinkedInFeeds1">
       <wsdl:input message="tns:GetLinkedInFeeds1HttpPostIn" />
       <wsdl:output message="tns:GetLinkedInFeeds1HttpPostOut" />
@@ -159,6 +212,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetLinkedInFeeds">
       <soap:operation soapAction="http://tempuri.org/GetLinkedInFeeds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedInFeedsByUserIdAndProfileIdUsingLimit">
+      <soap:operation soapAction="http://tempuri.org/GetLinkedInFeedsByUserIdAndProfileIdUsingLimit" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -196,6 +258,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetLinkedInFeedsByUserIdAndProfileIdUsingLimit">
+      <soap12:operation soapAction="http://tempuri.org/GetLinkedInFeedsByUserIdAndProfileIdUsingLimit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetLinkedInFeeds1">
       <soap12:operation soapAction="http://tempuri.org/GetLinkedInFeeds1" style="document" />
       <wsdl:input>
@@ -226,6 +297,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetLinkedInFeedsByUserIdAndProfileIdUsingLimit">
+      <http:operation location="/GetLinkedInFeedsByUserIdAndProfileIdUsingLimit" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetLinkedInFeeds1">
       <http:operation location="/GetLinkedInFeeds1" />
       <wsdl:input>
@@ -249,6 +329,15 @@
     <http:binding verb="POST" />
     <wsdl:operation name="GetLinkedInFeeds">
       <http:operation location="/GetLinkedInFeeds" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedInFeedsByUserIdAndProfileIdUsingLimit">
+      <http:operation location="/GetLinkedInFeedsByUserIdAndProfileIdUsingLimit" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

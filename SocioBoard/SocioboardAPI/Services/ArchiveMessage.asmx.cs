@@ -57,7 +57,7 @@ namespace Api.Socioboard.Services
         }
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public void DeleteArchiveMessage(string UserId, string ProfileId, string SocialGroup, string UserName, string MessageId, string Message, string CreatedDateTime, string ImgUrl)
+        public void DeleteArchiveMessage(string UserId, string MessageId, string SocialGroup)
         {
             Domain.Socioboard.Domain.ArchiveMessage ApiobjArchiveMessage = new Domain.Socioboard.Domain.ArchiveMessage();
             try
@@ -65,13 +65,15 @@ namespace Api.Socioboard.Services
                 if (SocialGroup == "facebook")
                 {
                     FacebookMessageRepository objFacebookMessageRepository = new FacebookMessageRepository();
-                    objFacebookMessageRepository.DeleteFacebookMessagebymessageid(Message, MessageId, Guid.Parse(UserId));
+                    objFacebookMessageRepository.updateFacebookMessageArchiveStatus(MessageId, Guid.Parse(UserId));
+                    //objFacebookMessageRepository.DeleteFacebookMessagebymessageid(Message, MessageId, Guid.Parse(UserId));
 
                 }
                 if (SocialGroup == "twitter")
                 {
                     TwitterMessageRepository objTwitterMessageRepository = new TwitterMessageRepository();
-                    objTwitterMessageRepository.DeleteTwitterMessagebymessageid(Message, MessageId, Guid.Parse(UserId));
+                    objTwitterMessageRepository.updateTwitterMessageArchiveStatus(MessageId, Guid.Parse(UserId));
+                    //objTwitterMessageRepository.DeleteTwitterMessagebymessageid(Message, MessageId, Guid.Parse(UserId));
                 }
             }
             catch (Exception ex)

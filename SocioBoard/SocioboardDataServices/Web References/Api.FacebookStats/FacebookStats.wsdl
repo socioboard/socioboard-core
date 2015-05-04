@@ -108,16 +108,16 @@
   </wsdl:binding>
   <wsdl:service name="FacebookStats">
     <wsdl:port name="FacebookStatsSoap" binding="tns:FacebookStatsSoap">
-      <soap:address location="http://localhost:6361/services/FacebookStats.asmx" />
+      <soap:address location="http://localhost:6361/Services/FacebookStats.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookStatsSoap12" binding="tns:FacebookStatsSoap12">
-      <soap12:address location="http://localhost:6361/services/FacebookStats.asmx" />
+      <soap12:address location="http://localhost:6361/Services/FacebookStats.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookStatsHttpGet" binding="tns:FacebookStatsHttpGet">
-      <http:address location="http://localhost:6361/services/FacebookStats.asmx" />
+      <http:address location="http://localhost:6361/Services/FacebookStats.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookStatsHttpPost" binding="tns:FacebookStatsHttpPost">
-      <http:address location="http://localhost:6361/services/FacebookStats.asmx" />
+      <http:address location="http://localhost:6361/Services/FacebookStats.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

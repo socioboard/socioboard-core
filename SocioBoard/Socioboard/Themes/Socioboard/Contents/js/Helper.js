@@ -940,14 +940,15 @@ function SaveArchive(id, network, ProfileId, MessageId, MessageDate) {
            ({
                type: "POST",
                url: "../Messages/SaveArchiveMessage?ProfileId=" + ProfileId + "&MessageId=" + MessageId + "&network=" + network + "&username=" + username + "&MessageDate=" + MessageDate + "&profileurl=" + profileurl + "&message=" + encodeURIComponent(message),
-               data: '',
-               contentType: "application/json; charset=utf-8",
+               //data: '',
+               data: { "message": message },
+               //contentType: "application/json; charset=utf-8",
                dataType: "html",
                success: function (msg) {
                    debugger;
                    if (msg == "Archived successfully") {
                        $('#' + 'messagetaskable_' + id).fadeOut(900);
-                       deletearchmesage(id, network, ProfileId, MessageId, MessageDate);
+                       //deletearchmesage(id, network, ProfileId, MessageId, MessageDate);
                        alertify.success(msg);
                    }
                    else {

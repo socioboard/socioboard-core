@@ -234,12 +234,12 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetUserProfile">
+      <s:element name="GetLinkedUserUpdatesNew">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="OAuth" type="tns:oAuthLinkedIn" />
-            <s:element minOccurs="0" maxOccurs="1" name="LinkedinUserId" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="user" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="Linkedin_Oauth" type="tns:oAuthLinkedIn" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s1:guid" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -262,6 +262,18 @@
           <s:element minOccurs="0" maxOccurs="1" name="Verifier" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetLinkedUserUpdatesNewResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUserProfile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OAuth" type="tns:oAuthLinkedIn" />
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedinUserId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="user" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetUserProfileResponse">
         <s:complexType />
       </s:element>
@@ -412,6 +424,12 @@
   </wsdl:message>
   <wsdl:message name="getLinkedInDataSoapOut">
     <wsdl:part name="parameters" element="tns:getLinkedInDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedUserUpdatesNewSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLinkedUserUpdatesNew" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedUserUpdatesNewSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLinkedUserUpdatesNewResponse" />
   </wsdl:message>
   <wsdl:message name="GetUserProfileSoapIn">
     <wsdl:part name="parameters" element="tns:GetUserProfile" />
@@ -764,6 +782,10 @@
       <wsdl:input message="tns:getLinkedInDataSoapIn" />
       <wsdl:output message="tns:getLinkedInDataSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetLinkedUserUpdatesNew">
+      <wsdl:input message="tns:GetLinkedUserUpdatesNewSoapIn" />
+      <wsdl:output message="tns:GetLinkedUserUpdatesNewSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetUserProfile">
       <wsdl:input message="tns:GetUserProfileSoapIn" />
       <wsdl:output message="tns:GetUserProfileSoapOut" />
@@ -1045,6 +1067,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetLinkedUserUpdatesNew">
+      <soap:operation soapAction="http://tempuri.org/GetLinkedUserUpdatesNew" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetUserProfile">
       <soap:operation soapAction="http://tempuri.org/GetUserProfile" style="document" />
       <wsdl:input>
@@ -1212,6 +1243,15 @@
     </wsdl:operation>
     <wsdl:operation name="getLinkedInData">
       <soap12:operation soapAction="http://tempuri.org/getLinkedInData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedUserUpdatesNew">
+      <soap12:operation soapAction="http://tempuri.org/GetLinkedUserUpdatesNew" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -116,11 +116,46 @@ namespace Api.Socioboard.Services
             objInstagramAccount = new Domain.Socioboard.Domain.InstagramAccount();
             objInstagramAccount.AccessToken = access.access_token;
             objInstagramAccount.InstagramId = access.user.id;
-            objInstagramAccount.ProfileUrl = access.user.profile_picture;
-            objInstagramAccount.InsUserName = access.user.username;
-            objInstagramAccount.TotalImages = objuser.data.counts.media;
-            objInstagramAccount.FollowedBy = objuser.data.counts.followed_by;
-            objInstagramAccount.Followers = objuser.data.counts.follows;
+            try
+            {
+                objInstagramAccount.ProfileUrl = access.user.profile_picture;
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Instagram.asmx.cs >> AddInstagramAccount >> " + ex.StackTrace);
+            }
+            try
+            {
+                objInstagramAccount.InsUserName = access.user.username;
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Instagram.asmx.cs >> AddInstagramAccount >> " + ex.StackTrace);
+            }
+            try
+            {
+                objInstagramAccount.TotalImages = objuser.data.counts.media;
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Instagram.asmx.cs >> AddInstagramAccount >> " + ex.StackTrace);
+            }
+            try
+            {
+                objInstagramAccount.FollowedBy = objuser.data.counts.followed_by;
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Instagram.asmx.cs >> AddInstagramAccount >> " + ex.StackTrace);
+            }
+            try
+            {
+                objInstagramAccount.Followers = objuser.data.counts.follows;
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Instagram.asmx.cs >> AddInstagramAccount >> " + ex.StackTrace);
+            }
             objInstagramAccount.UserId = Guid.Parse(UserId); 
             #endregion
 

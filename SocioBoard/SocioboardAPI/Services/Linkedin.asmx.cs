@@ -39,6 +39,8 @@ namespace Api.Socioboard.Services
         Domain.Socioboard.Domain.LinkedInFeed objLinkedInFeed;
         ScheduledMessageRepository objScheduledMessageRepository = new ScheduledMessageRepository();
         Domain.Socioboard.Domain.ScheduledMessage objScheduledMessage;
+        LinkedInMessageRepository objLinkedInMessageRepository = new LinkedInMessageRepository();
+        Domain.Socioboard.Domain.LinkedInMessage objLinkedInMessage;
 
 
         [WebMethod]
@@ -256,6 +258,8 @@ namespace Api.Socioboard.Services
                             objLinkedInFeed.Type = item.UpdateType;
                             objLinkedInFeed.UserId = Guid.Parse(UserId);
                             objLinkedInFeed.FromPicUrl = item.PictureUrl;
+                            objLinkedInFeed.ImageUrl = item.ImageUrl;
+                            objLinkedInFeed.FromUrl = item.url;
                         }
                         catch (Exception ex)
                         {
@@ -269,6 +273,40 @@ namespace Api.Socioboard.Services
                     }
                     #endregion
 
+
+                    #region Add LinkedIn UserUpdates
+                    GlobusLinkedinLib.App.Core.LinkedInUser l = new GlobusLinkedinLib.App.Core.LinkedInUser();
+                    List<Domain.Socioboard.Domain.LinkedIn_Update_Messages> lst_Messages = l.GetUserUpdateNew(_oauth, objLinkedInAccount.LinkedinUserId, 10);
+                    foreach (var item_Messages in lst_Messages)
+                    {
+                        try
+                        {
+                            objLinkedInMessage = new Domain.Socioboard.Domain.LinkedInMessage();
+                            objLinkedInMessage.Id = Guid.NewGuid();
+                            objLinkedInMessage.Message = item_Messages.Message;
+                            objLinkedInMessage.ProfileId = item_Messages.ProfileId;
+                            objLinkedInMessage.ProfileName = item_Messages.ProfileName;
+                            objLinkedInMessage.CreatedDate = Convert.ToDateTime(item_Messages.CreatedDate);
+                            objLinkedInMessage.EntryDate = DateTime.Now;
+                            objLinkedInMessage.Type = item_Messages.Type;
+                            objLinkedInMessage.UserId = Guid.Parse(UserId);
+                            objLinkedInMessage.ImageUrl = item_Messages.ImageUrl;
+                            objLinkedInMessage.FeedId = item_Messages.FeedId;
+                            objLinkedInMessage.ProfileUrl = item_Messages.ProfileUrl;
+                            objLinkedInMessage.Comments = item_Messages.Comments;
+                            objLinkedInMessage.Likes = item_Messages.Likes;
+                            objLinkedInMessage.ProfileImageUrl = item_Messages.ProfileImageUrl;
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error(ex.StackTrace);
+                        }
+                        if (!objLinkedInMessageRepository.checkLinkedInMessageExists(objLinkedInAccount.LinkedinUserId, objLinkedInMessage.FeedId, Guid.Parse(UserId)))
+                        {
+                            objLinkedInMessageRepository.addLinkedInMessage(objLinkedInMessage);
+                        }
+                    }
+                    #endregion
                 }
                 catch (Exception ex)
                 {
@@ -804,6 +842,7 @@ namespace Api.Socioboard.Services
                  Linkedin_Oauth.Verifier = LinkedAccount.OAuthVerifier;
                  GetUserProfile(Linkedin_Oauth, LinkedAccount.LinkedinUserId, userId);
                  GetLinkedInFeeds(Linkedin_Oauth, LinkedinId, userId);
+                 GetLinkedUserUpdatesNew(Linkedin_Oauth, LinkedinId, userId);
                  return "linkedin Info Updated";
              }
              catch (Exception ex)
@@ -815,7 +854,42 @@ namespace Api.Socioboard.Services
 
              return ret;
          }
+         [WebMethod]
+         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+         public void GetLinkedUserUpdatesNew(oAuthLinkedIn Linkedin_Oauth, string profileid, Guid UserId)
+         {
+             GlobusLinkedinLib.App.Core.LinkedInUser l = new GlobusLinkedinLib.App.Core.LinkedInUser();
+             List<Domain.Socioboard.Domain.LinkedIn_Update_Messages> lst_Messages = l.GetUserUpdateNew(Linkedin_Oauth, profileid, 10);
+             foreach (var item_Messages in lst_Messages)
+             {
+                 try
+                 {
+                     objLinkedInMessage = new Domain.Socioboard.Domain.LinkedInMessage();
+                     objLinkedInMessage.Id = Guid.NewGuid();
+                     objLinkedInMessage.Message = item_Messages.Message;
+                     objLinkedInMessage.ProfileId = item_Messages.ProfileId;
+                     objLinkedInMessage.ProfileName = item_Messages.ProfileName;
+                     objLinkedInMessage.CreatedDate =Convert.ToDateTime(item_Messages.CreatedDate);
+                     objLinkedInMessage.EntryDate = DateTime.Now;
+                     objLinkedInMessage.Type = item_Messages.Type;
+                     objLinkedInMessage.UserId = UserId;
+                     objLinkedInMessage.ImageUrl = item_Messages.ImageUrl;
+                     objLinkedInMessage.FeedId = item_Messages.FeedId;
+                     objLinkedInMessage.ProfileUrl = item_Messages.ProfileUrl;
+                     objLinkedInMessage.Comments = item_Messages.Comments;
+                     objLinkedInMessage.Likes = item_Messages.Likes;
+                 }
+                 catch (Exception ex)
+                 {
+                     logger.Error(ex.StackTrace);
+                 }
+                 if (!objLinkedInMessageRepository.checkLinkedInMessageExists(profileid, objLinkedInMessage.FeedId, UserId))
+                 {
+                     objLinkedInMessageRepository.addLinkedInMessage(objLinkedInMessage);
+                 }
+             }
 
+         }
 
          [WebMethod]
          [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]

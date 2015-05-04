@@ -32,6 +32,7 @@ namespace Api.Socioboard.Services
             int dayscount = Convert.ToInt32(days);
             Guid Userid=Guid.Parse(userid);
             ArrayList arrTwtStats = new ArrayList();
+            TwitterDirectMessageRepository objTwitterDirectMessageRepository = new TwitterDirectMessageRepository();
             ArrayList arrTwtBeforestats = new ArrayList();
             dynamic _TwitterStatsReport_1 =null;
             dynamic _TwitterStatsReport_2 = null;
@@ -65,8 +66,10 @@ namespace Api.Socioboard.Services
 
                     _TwitterStats.FollowerCount = Math.Abs(_TwitterStatsReport_1[4] - _TwitterStatsReport_2[4]);
                     _TwitterStats.FollowingCount = Math.Abs(_TwitterStatsReport_1[3] - _TwitterStatsReport_2[3]);
-                    _TwitterStats.DMRecievedCount = Math.Abs(_TwitterStatsReport_1[5] - _TwitterStatsReport_2[5]);
-                    _TwitterStats.DMSentCount = Math.Abs(_TwitterStatsReport_1[6] - _TwitterStatsReport_2[6]);
+                    //_TwitterStats.DMRecievedCount = Math.Abs(_TwitterStatsReport_1[5] - _TwitterStatsReport_2[5]);
+                    //_TwitterStats.DMSentCount = Math.Abs(_TwitterStatsReport_1[6] - _TwitterStatsReport_2[6]);
+                    _TwitterStats.DMRecievedCount = objTwitterDirectMessageRepository.GetDirrectMessageReceiveCountByProfileIdAndUserId(Userid, Profileid, dayscount);
+                    _TwitterStats.DMSentCount = objTwitterDirectMessageRepository.GetDirrectMessageCountByProfileIdAndUserId(Userid, Profileid, dayscount);
                     _TwitterStats.Age1820 = _TwitterStatsReport_1[9] - _TwitterStatsReport_2[9];
                     _TwitterStats.Age2124 = _TwitterStatsReport_1[10] - _TwitterStatsReport_2[10];
                     _TwitterStats.Age2534 = _TwitterStatsReport_1[11] - _TwitterStatsReport_2[11];
@@ -80,8 +83,10 @@ namespace Api.Socioboard.Services
                 {
                     _TwitterStats.FollowerCount = _TwitterStatsReport_1[4] ;
                     _TwitterStats.FollowingCount = _TwitterStatsReport_1[3] ;
-                    _TwitterStats.DMRecievedCount =_TwitterStatsReport_1[5];
-                    _TwitterStats.DMSentCount = _TwitterStatsReport_1[6];
+                    //_TwitterStats.DMRecievedCount =_TwitterStatsReport_1[5];
+                    //_TwitterStats.DMSentCount = _TwitterStatsReport_1[6];
+                    _TwitterStats.DMRecievedCount = objTwitterDirectMessageRepository.GetDirrectMessageReceiveCountByProfileIdAndUserId(Userid, Profileid, dayscount);
+                    _TwitterStats.DMSentCount = objTwitterDirectMessageRepository.GetDirrectMessageCountByProfileIdAndUserId(Userid, Profileid, dayscount);
                     _TwitterStats.Age1820 = _TwitterStatsReport_1[9];
                     _TwitterStats.Age2124 = _TwitterStatsReport_1[10];
                     _TwitterStats.Age2534 = _TwitterStatsReport_1[11];
@@ -100,8 +105,11 @@ namespace Api.Socioboard.Services
             string datetime = DateTimereport(Profileid, Userid, dayscount);
 
             TwitterMessage _TwitterMessage = new TwitterMessage();
-            string twtmention = _TwitterMessage.getTwtMention(Profileid, Userid, dayscount);
-            string twtretweet = _TwitterMessage.getRetweets(Profileid, Userid, dayscount);
+           // string twtmention = _TwitterMessage.getTwtMention(Profileid, Userid, dayscount);
+            //string twtretweet = _TwitterMessage.getRetweets(Profileid, Userid, dayscount);
+            string twtmention = _TwitterMessage.GetMentionStatsCountByProfileIdAndUserId(Profileid, Userid, dayscount);
+            string twtretweet = _TwitterMessage.GetRetweetStatsCountByProfileIdAndUserId(Profileid, Userid, dayscount);
+            
 
             TwitterAccount _TwitterAccount = new TwitterAccount();
             Domain.Socioboard.Domain.TwitterAccount obj = _TwitterAccount.AcccountDetails(Profileid,Userid);
@@ -128,8 +136,10 @@ namespace Api.Socioboard.Services
             string strArray = string.Empty;
             try
             {
-                TwitterStatsRepository objtwtstatsRepo = new TwitterStatsRepository();
-                ArrayList alstTwt = objtwtstatsRepo.getTwitterStatsById(profileid,userid ,days);
+                //TwitterStatsRepository objtwtstatsRepo = new TwitterStatsRepository();
+                //ArrayList alstTwt = objtwtstatsRepo.getTwitterStatsById(profileid,userid ,days);
+                TwitterEngagementRepository objTwitterEngagementRepository = new TwitterEngagementRepository();
+                ArrayList alstTwt = objTwitterEngagementRepository.getTwitterStatsById(profileid, userid, days);
                 int increament = 0;
                 if (alstTwt.Count > 5)
                 {
@@ -146,7 +156,7 @@ namespace Api.Socioboard.Services
                         for (int i = 0; i < alstTwt.Count; i = i + increament)
                         {
                             Array temp = (Array)alstTwt[i];
-                            strArray = strArray + temp.GetValue(7).ToString() + ",";
+                            strArray = strArray + temp.GetValue(3).ToString() + ",";
                             cnt++;
                         }
                     }
@@ -155,7 +165,7 @@ namespace Api.Socioboard.Services
                         foreach (var itemTS in alstTwt)
                         {
                             Array temp = (Array)itemTS;
-                            strArray = strArray + temp.GetValue(7).ToString() + ",";
+                            strArray = strArray + temp.GetValue(3).ToString() + ",";
                             cnt++;
                         }
                     }
@@ -188,8 +198,10 @@ namespace Api.Socioboard.Services
             string strArray = string.Empty;
             try
             {
-                TwitterStatsRepository objtwtstatsRepo = new TwitterStatsRepository();
-                ArrayList alstTwt = objtwtstatsRepo.getTwitterStatsById(profileid,userid, days);
+                //TwitterStatsRepository objtwtstatsRepo = new TwitterStatsRepository();
+                //ArrayList alstTwt = objtwtstatsRepo.getTwitterStatsById(profileid,userid, days);
+                TwitterEngagementRepository objTwitterEngagementRepository = new TwitterEngagementRepository();
+                ArrayList alstTwt = objTwitterEngagementRepository.getTwitterStatsById(profileid, userid, days);
                 int increament = 0;
                 if (alstTwt.Count > 5)
                 {
@@ -206,7 +218,7 @@ namespace Api.Socioboard.Services
                         for (int i = 0; i < alstTwt.Count; i = i + increament)
                         {
                             Array temp = (Array)alstTwt[i];
-                            strArray = strArray + temp.GetValue(8).ToString() + ",";
+                            strArray = strArray + temp.GetValue(7).ToString() + ",";
                             cnt++;
                         }
                     }
@@ -215,7 +227,7 @@ namespace Api.Socioboard.Services
                         foreach (var itemTS in alstTwt)
                         {
                             Array temp = (Array)itemTS;
-                            strArray = strArray + temp.GetValue(8).ToString() + ",";
+                            strArray = strArray + temp.GetValue(7).ToString() + ",";
                             cnt++;
                         }
                     }
@@ -249,8 +261,8 @@ namespace Api.Socioboard.Services
            string strArray = string.Empty;
             try
             {
-                TwitterStatsRepository objtwtstatsRepo = new TwitterStatsRepository();
-                ArrayList alstTwt = objtwtstatsRepo.getTwitterStatsById(profileid, userid,days);
+                TwitterEngagementRepository objTwitterEngagementRepository = new TwitterEngagementRepository();
+                ArrayList alstTwt = objTwitterEngagementRepository.getTwitterStatsById(profileid, userid, days);
                 int increament = 0;
                 if (alstTwt.Count > 5)
                 {
@@ -267,7 +279,7 @@ namespace Api.Socioboard.Services
                         for (int i = 0; i < alstTwt.Count; i = i + increament)
                         {
                             Array temp = (Array)alstTwt[i];
-                            strArray = strArray + temp.GetValue(16).ToString() + ",";
+                            strArray = strArray + temp.GetValue(6).ToString() + ",";
                             cnt++;
                         }
                     }
@@ -276,7 +288,7 @@ namespace Api.Socioboard.Services
                         foreach (var itemTS in alstTwt)
                         {
                             Array temp = (Array)itemTS;
-                            strArray = strArray + temp.GetValue(16).ToString() + ",";
+                            strArray = strArray + temp.GetValue(6).ToString() + ",";
                             cnt++;
                         }
                     }

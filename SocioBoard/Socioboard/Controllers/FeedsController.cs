@@ -19,6 +19,7 @@ namespace Socioboard.Controllers
         public static int facebookfeedcount = 0;
         public static int twtfeedcount = 0;
         public static int linkedinfeedcount = 0;
+        public static int tumblerimagecount = 0;
         //
         // GET: /Feeds/
 
@@ -58,6 +59,8 @@ namespace Socioboard.Controllers
 
         public ActionResult wallposts(string op, string load, string profileid)
         {
+            string datetime = Request.Form["localtime"].ToString();
+            ViewBag.datetime = datetime;
             Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
             if (load == "first")
             {
@@ -102,6 +105,8 @@ namespace Socioboard.Controllers
 
         public ActionResult AjaxFeeds(string profileid, string load)
         {
+            string datetime = Request.Form["localtime"].ToString();
+            ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             if (load == "first")
             {
@@ -243,6 +248,8 @@ namespace Socioboard.Controllers
 
         public ActionResult TwitterNetworkDetails(string profileid, string load)
         {
+            string datetime = Request.Form["localtime"].ToString();
+            ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
 
@@ -290,6 +297,8 @@ namespace Socioboard.Controllers
 
         public ActionResult TwitterFeeds(string profileid, string load)
         {
+            string datetime = Request.Form["localtime"].ToString();
+            ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             if (load == "first")
             {
@@ -335,6 +344,8 @@ namespace Socioboard.Controllers
 
         public ActionResult linkedinwallposts(string profileid, string load)
         {
+            string datetime = Request.Form["localtime"].ToString();
+            ViewBag.datetime = datetime;
             Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
             if (load == "first")
             {
@@ -360,16 +371,48 @@ namespace Socioboard.Controllers
             dictwallposts.Add("linkedin", lstobject);
             return PartialView("_Panel1Partial", dictwallposts);
         }
+        //Vikash[03-04-2015]
+        //public ActionResult LinkedinFeeds(string profileid)
+        //{
+        //    List<object> lstobject = new List<object>();
+        //    Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
+        //    Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
+        //    Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+        //    Api.Linkedin.Linkedin ApiobjLinkedin = new Api.Linkedin.Linkedin();
+        //    List<Domain.Socioboard.Domain.LinkedInUser.User_Updates> lstlinkedinFeeds = (List<Domain.Socioboard.Domain.LinkedInUser.User_Updates>)(new JavaScriptSerializer().Deserialize(ApiobjLinkedin.GetLinkedUserUpdates(profileid, objGroups.UserId.ToString()), typeof(List<Domain.Socioboard.Domain.LinkedInUser.User_Updates>)));
+        //    foreach (var linkledinfeed in lstlinkedinFeeds)
+        //    {
+        //        lstobject.Add(linkledinfeed);
+        //    }
+        //    dictwallposts.Add("linkedin", lstobject);
+        //    return PartialView("_Panel2Partial", dictwallposts);
+        //}
 
-        public ActionResult LinkedinFeeds(string profileid)
+        public ActionResult LinkedinFeeds(string profileid, string load)
         {
+            string datetime = Request.Form["localtime"].ToString();
+            ViewBag.datetime = datetime;
+            if (load == "first")
+            {
+                Session["LinkedInProfileIdForFeeds"] = profileid;
+                linkedinfeedcount = 0;
+            }
+            else
+            {
+                profileid = (string)Session["LinkedInProfileIdForFeeds"];
+                linkedinfeedcount = linkedinfeedcount + 10;
+            }
             List<object> lstobject = new List<object>();
             Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
-            Api.Linkedin.Linkedin ApiobjLinkedin = new Api.Linkedin.Linkedin();
-            List<Domain.Socioboard.Domain.LinkedInUser.User_Updates> lstlinkedinFeeds = (List<Domain.Socioboard.Domain.LinkedInUser.User_Updates>)(new JavaScriptSerializer().Deserialize(ApiobjLinkedin.GetLinkedUserUpdates(profileid, objGroups.UserId.ToString()), typeof(List<Domain.Socioboard.Domain.LinkedInUser.User_Updates>)));
-            foreach (var linkledinfeed in lstlinkedinFeeds)
+            //Api.Linkedin.Linkedin ApiobjLinkedin = new Api.Linkedin.Linkedin();
+            //List<Domain.Socioboard.Domain.LinkedInUser.User_Updates> lstlinkedinFeeds = (List<Domain.Socioboard.Domain.LinkedInUser.User_Updates>)(new JavaScriptSerializer().Deserialize(ApiobjLinkedin.GetLinkedUserUpdates(profileid, objGroups.UserId.ToString()), typeof(List<Domain.Socioboard.Domain.LinkedInUser.User_Updates>)));
+
+            Api.LinkedinMessage.LinkedinMessage ApiobjLinkedinMessage = new Api.LinkedinMessage.LinkedinMessage();
+            List<Domain.Socioboard.Domain.LinkedInMessage> lstLinkedInMessage = (List<Domain.Socioboard.Domain.LinkedInMessage>)(new JavaScriptSerializer().Deserialize(ApiobjLinkedinMessage.GetLinkedInMessages(objGroups.UserId.ToString(), profileid, linkedinfeedcount), typeof(List<Domain.Socioboard.Domain.LinkedInMessage>)));
+
+            foreach (var linkledinfeed in lstLinkedInMessage)
             {
                 lstobject.Add(linkledinfeed);
             }
@@ -423,21 +466,58 @@ namespace Socioboard.Controllers
             return PartialView("_ImagePartial", dictwallposts);
 
         }
+        //vikash[03-04-2015]
+        //public ActionResult TumblrImages(string profileid)
+        //{
+        //    //List<object> lstobject = new List<object>();
+        //    //Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
+        //    //Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
+        //    //Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+        //    //Api.TumblrFeed.TumblrFeed ApiobjTumblrFeed = new Api.TumblrFeed.TumblrFeed();
+        //    //List<Domain.Socioboard.Domain.TumblrFeed> lstInstagramFeed = (List<Domain.Socioboard.Domain.TumblrFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTumblrFeed.GetAllTumblrFeedOfUsers(objGroups.UserId.ToString(), profileid), typeof(List<Domain.Socioboard.Domain.TumblrFeed>)));
+        //    //foreach (var lstInstagramfeed in lstInstagramFeed)
+        //    //{
+        //    //    lstobject.Add(lstInstagramfeed);
+        //    //}
+        //    //dictwallposts.Add("tumblr", lstobject);
+        //    //return PartialView("_ImagePartial", dictwallposts);
 
-        public ActionResult TumblrImages(string profileid)
+        //    object lstobject = new object();
+        //    List<object> lstComment = null;
+        //    Dictionary<string, Dictionary<object, List<object>>> dictwallposts = new Dictionary<string, Dictionary<object, List<object>>>();
+        //    Dictionary<object, List<object>> dic_TumblrImg = new Dictionary<object, List<object>>();
+        //    Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
+        //    Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+        //    Api.TumblrFeed.TumblrFeed ApiobjTumblrFeed = new Api.TumblrFeed.TumblrFeed();
+        //    //List<Domain.Socioboard.Domain.TumblrFeed> lstTumblrFeed = (List<Domain.Socioboard.Domain.TumblrFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTumblrFeed.GetAllTumblrFeedOfUsers(objGroups.UserId.ToString(), profileid), typeof(List<Domain.Socioboard.Domain.TumblrFeed>)));
+        //    //GetFeedsOfProfileWithRange
+        //    List<Domain.Socioboard.Domain.TumblrFeed> lstTumblrFeed = (List<Domain.Socioboard.Domain.TumblrFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTumblrFeed.GetAllTumblrFeedOfUsersWithRange(objGroups.UserId.ToString(), profileid, "0"), typeof(List<Domain.Socioboard.Domain.TumblrFeed>)));
+            
+        //    foreach (var item_lstTumblrFeed in lstTumblrFeed)
+        //    {
+        //        lstComment = new List<object>();
+
+        //        lstobject = (object)item_lstTumblrFeed;
+        //        dic_TumblrImg.Add(lstobject, lstComment);
+        //    }
+        //    dictwallposts.Add("tumblr", dic_TumblrImg);
+        //    return PartialView("_ImagePartial", dictwallposts);
+
+
+        //}
+
+        public ActionResult TumblrImages(string profileid, string load)
         {
-            //List<object> lstobject = new List<object>();
-            //Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
-            //Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
-            //Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
-            //Api.TumblrFeed.TumblrFeed ApiobjTumblrFeed = new Api.TumblrFeed.TumblrFeed();
-            //List<Domain.Socioboard.Domain.TumblrFeed> lstInstagramFeed = (List<Domain.Socioboard.Domain.TumblrFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTumblrFeed.GetAllTumblrFeedOfUsers(objGroups.UserId.ToString(), profileid), typeof(List<Domain.Socioboard.Domain.TumblrFeed>)));
-            //foreach (var lstInstagramfeed in lstInstagramFeed)
-            //{
-            //    lstobject.Add(lstInstagramfeed);
-            //}
-            //dictwallposts.Add("tumblr", lstobject);
-            //return PartialView("_ImagePartial", dictwallposts);
+            if (load == "first")
+            {
+                Session["TumblerProfileIdForImages"] = profileid;
+                tumblerimagecount = 0;
+            }
+            else
+            {
+                profileid = (string)Session["TumblerProfileIdForImages"];
+                tumblerimagecount = tumblerimagecount + 6;
+            }
 
             object lstobject = new object();
             List<object> lstComment = null;
@@ -448,8 +528,7 @@ namespace Socioboard.Controllers
             Api.TumblrFeed.TumblrFeed ApiobjTumblrFeed = new Api.TumblrFeed.TumblrFeed();
             //List<Domain.Socioboard.Domain.TumblrFeed> lstTumblrFeed = (List<Domain.Socioboard.Domain.TumblrFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTumblrFeed.GetAllTumblrFeedOfUsers(objGroups.UserId.ToString(), profileid), typeof(List<Domain.Socioboard.Domain.TumblrFeed>)));
             //GetFeedsOfProfileWithRange
-            List<Domain.Socioboard.Domain.TumblrFeed> lstTumblrFeed = (List<Domain.Socioboard.Domain.TumblrFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTumblrFeed.GetAllTumblrFeedOfUsersWithRange(objGroups.UserId.ToString(), profileid, "0"), typeof(List<Domain.Socioboard.Domain.TumblrFeed>)));
-            
+            List<Domain.Socioboard.Domain.TumblrFeed> lstTumblrFeed = (List<Domain.Socioboard.Domain.TumblrFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTumblrFeed.GetAllTumblrFeedOfUsersWithRange(objGroups.UserId.ToString(), profileid, tumblerimagecount.ToString()), typeof(List<Domain.Socioboard.Domain.TumblrFeed>)));
             foreach (var item_lstTumblrFeed in lstTumblrFeed)
             {
                 lstComment = new List<object>();
@@ -816,6 +895,8 @@ namespace Socioboard.Controllers
 
         public ActionResult wallposts_FeedsSearch(string op, string load, string profileid, string keyword)
         {
+            string datetime = Request.Form["localtime"].ToString();
+            ViewBag.datetime = datetime;
             Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
             if (load == "first")
             {
@@ -847,6 +928,8 @@ namespace Socioboard.Controllers
 
         public ActionResult AjaxFeeds_FeedsSearch(string profileid, string load, string keyword)
         {
+            string datetime = Request.Form["localtime"].ToString();
+            ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             if (load == "first")
             {
@@ -878,6 +961,8 @@ namespace Socioboard.Controllers
 
         public ActionResult FacebookUserFeeds_FeedsSearch(string ProfileId, string keyword)
         {
+            string datetime = Request.Form["localtime"].ToString();
+            ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             Dictionary<string, List<object>> dictUserFeeds = new Dictionary<string, List<object>>();
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
@@ -903,6 +988,8 @@ namespace Socioboard.Controllers
 
         public ActionResult wallposts_FeedsSearch_Twitter(string op, string load, string profileid, string keyword)
         {
+            string datetime = Request.Form["localtime"].ToString();
+            ViewBag.datetime = datetime;
             Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
             if (load == "first")
             {
@@ -934,6 +1021,8 @@ namespace Socioboard.Controllers
 
         public ActionResult AjaxFeeds_FeedsSearch_Twitter(string profileid, string load, string keyword)
         {
+            string datetime = Request.Form["localtime"].ToString();
+            ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             if (load == "first")
             {
@@ -965,6 +1054,8 @@ namespace Socioboard.Controllers
 
         public ActionResult UserFeeds_FeedsSearch_Twitter(string ProfileId, string keyword)
         {
+            string datetime = Request.Form["localtime"].ToString();
+            ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             Dictionary<string, List<object>> dictUserFeeds = new Dictionary<string, List<object>>();
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
@@ -992,6 +1083,8 @@ namespace Socioboard.Controllers
 
         public ActionResult TwitterUserTweet_FeedsSearch(string ProfileId, string keyword)
         {
+            string datetime = Request.Form["localtime"].ToString();
+            ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             Dictionary<string, List<object>> dictUserTweet = new Dictionary<string, List<object>>();
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
@@ -1009,6 +1102,8 @@ namespace Socioboard.Controllers
 
         public ActionResult TwitterRetweets_FeedsSearch(string ProfileId, string keyword)
         {
+            string datetime = Request.Form["localtime"].ToString();
+            ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             Dictionary<string, List<object>> dictRetweets = new Dictionary<string, List<object>>();
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
@@ -1026,6 +1121,8 @@ namespace Socioboard.Controllers
 
         public ActionResult TwitterMentions_FeedsSearch(string ProfileId, string keyword)
         {
+            string datetime = Request.Form["localtime"].ToString();
+            ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             Dictionary<string, List<object>> dictMentions = new Dictionary<string, List<object>>();
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
@@ -1043,6 +1140,8 @@ namespace Socioboard.Controllers
 
         public ActionResult TwitterFeeds_FeedsSearch(string profileid, string load, string keyword)
         {
+            string datetime = Request.Form["localtime"].ToString();
+            ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             if (load == "first")
             {
@@ -1070,6 +1169,8 @@ namespace Socioboard.Controllers
 
         public ActionResult TwitterNetworkDetails_FeedsSearch(string profileid, string load, string keyword)
         {
+            string datetime = Request.Form["localtime"].ToString();
+            ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
 
@@ -1101,6 +1202,8 @@ namespace Socioboard.Controllers
         //Added by Sumit Gupta[15-02-2015]
         public ActionResult AddLoadNewFacebookNewsFeeds(string profileid)
         {
+            string datetime = Request.Form["localtime"].ToString();
+            ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             Dictionary<string, List<object>> dictFeeds = new Dictionary<string, List<object>>();
 
@@ -1113,7 +1216,14 @@ namespace Socioboard.Controllers
 
             List<FacebookFeed> lstFacebookFeed = new List<FacebookFeed>();
 
-            lstFacebookFeed = (List<FacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjFacebook.AddNewFacebookFeeds(profileid, objGroups.UserId.ToString()), typeof(List<FacebookFeed>)));
+            try
+            {
+                lstFacebookFeed = (List<FacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjFacebook.AddNewFacebookFeeds(profileid, objGroups.UserId.ToString()), typeof(List<FacebookFeed>)));
+            }
+            catch (Exception ex)
+            {
+                lstFacebookFeed = null;
+            }
             if (lstFacebookFeed == null)
             {
                 lstFacebookFeed = new List<FacebookFeed>();
@@ -1130,6 +1240,8 @@ namespace Socioboard.Controllers
         //Added by Sumit Gupta[15-02-2015]
         public ActionResult AddLoadNewTwitterFeeds(string profileid)
         {
+            string datetime = Request.Form["localtime"].ToString();
+            ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
 
             Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
@@ -1148,8 +1260,9 @@ namespace Socioboard.Controllers
 
         public ActionResult AddLoadNewFacebookWallPosts(string profileid, string type)
         {
+            string datetime = Request.Form["localtime"].ToString();
+            ViewBag.datetime = datetime;
             bool isUserFeedsCalled = false;
-
             if (type!=null)
             {
                 if (type.Equals("userfeeds") && !string.IsNullOrEmpty(type))
@@ -1163,8 +1276,15 @@ namespace Socioboard.Controllers
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
             Domain.Socioboard.Domain.Groups objGroups = (Domain.Socioboard.Domain.Groups)(new JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
             Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
-            List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookMessage = (List<Domain.Socioboard.Domain.FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebook.AddNewFacebookWallPosts(profileid, objGroups.UserId.ToString()), typeof(List<Domain.Socioboard.Domain.FacebookMessage>)));
-
+            List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookMessage;
+            try
+            {
+                lstFacebookMessage = (List<Domain.Socioboard.Domain.FacebookMessage>)(new JavaScriptSerializer().Deserialize(ApiobjFacebook.AddNewFacebookWallPosts(profileid, objGroups.UserId.ToString()), typeof(List<Domain.Socioboard.Domain.FacebookMessage>)));
+            }
+            catch (Exception ex)
+            {
+                lstFacebookMessage = new List<Domain.Socioboard.Domain.FacebookMessage>();
+            }
             List<object> lstobject = new List<object>();
             foreach (var item in lstFacebookMessage)
             {

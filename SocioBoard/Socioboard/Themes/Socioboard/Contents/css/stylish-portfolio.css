@@ -155,19 +155,21 @@ hr.small {
     display: table;
     position: relative;
     width: 100%;
-    height: 100%;
+    height: auto !important;
     background: url(../../Contents/img/banner-1.jpg) no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    padding-top:7% !important;
 }
 
 /* About */
 
 .about {
-    padding: 50px 0;
+    padding: 0 !important;
 }
+
 
 /* Services */
 
@@ -177,6 +179,10 @@ hr.small {
 
 .service-item {
     margin-bottom: 30px;
+}
+
+.service-item > p {
+  font-size: 12px !important;
 }
 
 /* Callout */
@@ -196,7 +202,7 @@ hr.small {
 /* Portfolio */
 
 .portfolio {
-    padding: 50px 0;
+    padding: 0 !important;
 }
 
 .portfolio-item {
@@ -214,7 +220,7 @@ hr.small {
 /* Call to Action */
 
 .call-to-action {
-    padding: 50px 0;
+    padding: 0 !important;
 }
 
 .call-to-action .btn {
@@ -242,7 +248,7 @@ footer {
 #makeMeScrollable
         {
             width:100%;
-            height: 330px;
+            height: auto;
             position: relative;
         }
         
@@ -264,3 +270,6 @@ footer {
             -o-user-select: none;
             user-select: none;
         }
+
+
+

@@ -55,74 +55,74 @@
             $('#myModal').modal('show');
         });
     </script>
-}
+} <link href="~/Themes/Socioboard/Contents/css/custom.css" rel="stylesheet" />
 <header class="header" id="top">
     <div class="text-vertical-center">
         <h1 style="text-shadow: 0px 0px 15px #ffffff; margin-top: 50px;">@GlobusMultiLanguageLib.Resources.Index_Index_beyond<br>
             @GlobusMultiLanguageLib.Resources.Index_Index_Managment</h1>
         <h3 style="background-color: aliceblue; opacity: 0.7;">@GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_SocioDescription</h3>
-        <br>
-        <a target="_blank" class="btn btn-dark" href="../Index/Pricing">
+        <br><br>
+       @* <a target="_blank" class="btn btn-dark" href="../Index/Pricing">
             <img src="@GlobusMultiLanguageLib.Resources.Index_Index_ImgPathTryNow" class="img-responsive">
-        </a>
+        </a>*@
     </div>
 </header>
 <section class="about" id="about">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row text-center">
-            <div class="col-lg-10 col-lg-offset-1">
-                <h2>@GlobusMultiLanguageLib.Resources.Index_Index_OurFeatures</h2>
-                <hr class="small">
+            <div class="col-lg-12">
+                <h2 style="margin: 10px;">@GlobusMultiLanguageLib.Resources.Index_Index_OurFeatures</h2>
+                <hr class="small" style="margin: 5px 0px;">
                 <div class="row">
                     <div class="col-md-3 col-sm-6">
                         <div class="service-item">
-                            <span class="fa-stack fa-4x">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-eye fa-stack-1x text-primary"></i>
+                            <span class="fa-stack fa-3x">
+                                <i class="fa fa-circle fa-stack-1x"></i>
+                                <i class="fa fa-eye fa-stack-1x text-primary" style="font-size:22px;"></i>
                             </span>
                             <h4>
                                 <strong>@GlobusMultiLanguageLib.Resources.Index_Index_Monitor</strong>
                             </h4>
-                            <p>@GlobusMultiLanguageLib.Resources.Index_Index_SubHeadingMonitor</p>
+                            <p style="font-size:12px;">@GlobusMultiLanguageLib.Resources.Index_Index_SubHeadingMonitor</p>
                             <a target="_blank" class="btn btn-dark" href="../Index/Features">@GlobusMultiLanguageLib.Resources.Index_Index_BtnLearnMore</a>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="service-item">
-                            <span class="fa-stack fa-4x">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-spinner fa-stack-1x text-primary"></i>
+                            <span class="fa-stack fa-3x">
+                                <i class="fa fa-circle fa-stack-1x"></i>
+                                <i class="fa fa-spinner fa-stack-1x text-primary" style="font-size:22px;"></i>
                             </span>
                             <h4>
                                 <strong>@GlobusMultiLanguageLib.Resources.Index_Index_Analysis</strong>
                             </h4>
-                            <p>@GlobusMultiLanguageLib.Resources.Index_Index_SubHeadingAnalysis</p>
+                            <p style="font-size:12px;">@GlobusMultiLanguageLib.Resources.Index_Index_SubHeadingAnalysis</p>
                             <a target="_blank" class="btn btn-dark" href="../Index/Features">@GlobusMultiLanguageLib.Resources.Index_Index_BtnLearnMore</a>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="service-item">
-                            <span class="fa-stack fa-4x">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-sign-in fa-stack-1x text-primary"></i>
+                            <span class="fa-stack fa-3x">
+                                <i class="fa fa-circle fa-stack-1x"></i>
+                                <i class="fa fa-sign-in fa-stack-1x text-primary" style="font-size:22px;"></i>
                             </span>
                             <h4>
                                 <strong>@GlobusMultiLanguageLib.Resources.Index_Index_Insight</strong>
                             </h4>
-                            <p>@GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_SubHeadingInsight</p>
+                            <p style="font-size:12px;">@GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_SubHeadingInsight</p>
                             <a target="_blank" class="btn btn-dark" href="../Index/Features">@GlobusMultiLanguageLib.Resources.Index_Index_BtnLearnMore</a>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="service-item">
-                            <span class="fa-stack fa-4x">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-file-pdf-o fa-stack-1x text-primary"></i>
+                            <span class="fa-stack fa-3x">
+                                <i class="fa fa-circle fa-stack-1x"></i>
+                                <i class="fa fa-file-pdf-o fa-stack-1x text-primary" style="font-size:22px;"></i>
                             </span>
                             <h4>
                                 <strong>@GlobusMultiLanguageLib.Resources.Index_Index_Userguide</strong>
                             </h4>
-                            <p>@GlobusMultiLanguageLib.Resources.Index_Index_SubHeadingUserguide</p>
+                            <p style="font-size:12px;">@GlobusMultiLanguageLib.Resources.Index_Index_SubHeadingUserguide</p>
                             <a target="_blank" class="btn btn-dark" href="/Themes/socioboard/Contents/common/Socioboard_User_Guide_1.0.2_Ver 7.pdf">@GlobusMultiLanguageLib.Resources.Index_Index_BtnUserGuide
                                 </a>
                         </div>
@@ -262,7 +262,7 @@
     <!-- /.container -->
 </section>
 
-<div id="makeMeScrollable">
+@*<div id="makeMeScrollable">
     <div class="scrollingHotSpotLeft" style="display: block;"></div>
     <div class="scrollingHotSpotRight"></div>
     <div class="scrollWrapper">
@@ -275,7 +275,49 @@
             <img id="golf" alt="Demo image" src="/Themes/@path/Contents/img/clients/socialscoup_logo.png"><img alt="Image" src="/Themes/@path/Contents/img/clients/blacksheep_logo.png"><img id="field" alt="Demo image" src="/Themes/@path/Contents/img/clients/GRAVITY4_LOGO.png"><img id="gnome" alt="Demo image" src="/Themes/@path/Contents/img/clients/msocial_logo.png"><img id="pencils" alt="Demo image" src="/Themes/@path/Contents/img/clients/socialpour_logo.png">
         </div>
     </div>
-</div>
+</div>*@
+
+<!-- Supported Hosts -->
+<div class="hosts-wrapper">
+            <div class="supported-hosts no-border-bottom text-center">
+                <small>Our Clients</small>
+                <img src="~/Themes/Socioboard/Contents/img/clients/logo/Socialboard_logo.png"  alt="Socialboard"/>
+                <img src="~/Themes/Socioboard/Contents/img/clients/logo/socialpour_logo.png" alt="socialscoup" />
+                <img src="~/Themes/Socioboard/Contents/img/clients/logo/socialscoup_logo.png" alt="socialpour" />
+                <img src="~/Themes/Socioboard/Contents/img/clients/logo/Sonager_Logo.png" alt="Sonager"/>
+                <img src="~/Themes/Socioboard/Contents/img/clients/logo/tribeNautix.png" alt="tribeNautix" />
+                <img src="~/Themes/Socioboard/Contents/img/clients/logo/viptable_logo.png" alt="viptable" />
+            </div>
+        </div>
+<!-- End of Supported Hosts -->
+
+
+              
+              <!-- As Seen On -->
+<div class="hosts-wrapper">
+            <div class="supported-hosts no-border-bottom text-center">
+                <small>As Seen On</small>
+                <a href="http://inc42.com/startups/socioboard-magento-wordpress-social-media-management-making/" target="_blank"><img src="~/Themes/Socioboard/Contents/img/clients/logo/42logo.png" alt="42logo"></a>
+                <a href="http://inc42.com/startups/socioboard-magento-wordpress-social-media-management-making/" target="_blank"><img src="~/Themes/Socioboard/Contents/img/clients/logo/YS_Pages.png" alt="YS_Pages"></a>
+                <a href="http://lighthouseinsights.in/review-socioboard-app-open-source-social-media-management-dashboard.html/" target="_blank"><img src="~/Themes/Socioboard/Contents/img/clients/logo/LI_logo.png" alt="LI"></a>
+                <a href="http://www.nextbigwhat.com/socioboard-social-media-management-297/" target="_blank"><img src="~/Themes/Socioboard/Contents/img/clients/logo/nextbigwhat.png" alt="nextbigwhat"></a>
+                <a href="http://www.socialsamosa.com/2014/04/social-media-platform-feature-socioboard/" target="_blank"><img src="~/Themes/Socioboard/Contents/img/clients/logo/social_samosa_logo.png" alt="social_samosa"></a>
+                
+            </div>
+        </div>
+<!-- End of As Seen On -->
+
+              <!-- Competition Success Snapshots -->
+<div class="hosts-wrapper">
+            <div class="supported-hosts no-border-bottom text-center">
+                <small>Competition Success Snapshots</small>
+                 <a href="http://productconclave.in/?p=1041" target="_blank"><img src="~/Themes/Socioboard/Contents/img/clients/logo/productconclave.png" alt="productconclave"></a>
+                 <a href="http://eximius-iimb.com/2014/competition/disrupt-it/#tab-results" target="_blank"><img src="~/Themes/Socioboard/Contents/img/clients/logo/iimb_logo.jpg" alt="iimb"></a>
+                 <a href="http://10000startups.com/disruptit/" target="_blank"><img src="~/Themes/Socioboard/Contents/img/clients/logo/10000startups.jpg" alt="10000startups"></a>
+                 <a href="http://events.vccircle.com/content/techcircle-startup-2014#tab5" target="_blank"><img src="~/Themes/Socioboard/Contents/img/clients/logo/vccircle_logo.png" alt="vccircle"></a>
+            </div>
+        </div>
+
 
 <aside class="call-to-action bg-primary">
     <div class="container">
@@ -291,10 +333,10 @@
         </div>
     </div>
 </aside>
-<section class="map" id="contact">
+@*<section class="map" id="contact">
     <iframe frameborder="0" width="100%" height="350" marginwidth="0" marginheight="0" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1944.2822179286532!2d77.6154475!3d12.9356925!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae144e41105dbd%3A0x6188a5bb947bfdf4!2sL+V+.+Complex%2C+1st+Main+Rd%2C+Koramangala+7th+Block%2C+Koramangala+Layout%2C+Bengaluru%2C+Karnataka+560030!5e0!3m2!1sen!2sin!4v1407845791034"></iframe>
 
-</section>
+</section>*@
 @*<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>*@
 <script src="/Themes/Socioboard/Contents/js/arrow24.js"></script>
 <script src="/Themes/Socioboard/Contents/js/carhartl-jquery-cookie-92b7715/jquery.cookie.js"></script>

@@ -2,6 +2,22 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Iski">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IskiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IskiResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="AddFacebookAccount">
         <s:complexType>
           <s:sequence>
@@ -400,39 +416,15 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="AddNewFacebookFeeds">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="FbId" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="AddNewFacebookFeedsResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="AddNewFacebookFeedsResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="AddNewFacebookWallPosts">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="FbId" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="AddNewFacebookWallPostsResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="AddNewFacebookWallPostsResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="IskiSoapIn">
+    <wsdl:part name="parameters" element="tns:Iski" />
+  </wsdl:message>
+  <wsdl:message name="IskiSoapOut">
+    <wsdl:part name="parameters" element="tns:IskiResponse" />
+  </wsdl:message>
   <wsdl:message name="AddFacebookAccountSoapIn">
     <wsdl:part name="parameters" element="tns:AddFacebookAccount" />
   </wsdl:message>
@@ -583,17 +575,13 @@
   <wsdl:message name="TicketFacebokReplySoapOut">
     <wsdl:part name="parameters" element="tns:TicketFacebokReplyResponse" />
   </wsdl:message>
-  <wsdl:message name="AddNewFacebookFeedsSoapIn">
-    <wsdl:part name="parameters" element="tns:AddNewFacebookFeeds" />
+  <wsdl:message name="IskiHttpGetIn">
+    <wsdl:part name="code" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="AddNewFacebookFeedsSoapOut">
-    <wsdl:part name="parameters" element="tns:AddNewFacebookFeedsResponse" />
-  </wsdl:message>
-  <wsdl:message name="AddNewFacebookWallPostsSoapIn">
-    <wsdl:part name="parameters" element="tns:AddNewFacebookWallPosts" />
-  </wsdl:message>
-  <wsdl:message name="AddNewFacebookWallPostsSoapOut">
-    <wsdl:part name="parameters" element="tns:AddNewFacebookWallPostsResponse" />
+  <wsdl:message name="IskiHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="AddFacebookAccountHttpGetIn">
     <wsdl:part name="code" type="s:string" />
@@ -793,18 +781,12 @@
   <wsdl:message name="TicketFacebokReplyHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="AddNewFacebookFeedsHttpGetIn">
-    <wsdl:part name="FbId" type="s:string" />
+  <wsdl:message name="IskiHttpPostIn">
+    <wsdl:part name="code" type="s:string" />
     <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="AddNewFacebookFeedsHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="AddNewFacebookWallPostsHttpGetIn">
-    <wsdl:part name="FbId" type="s:string" />
-    <wsdl:part name="UserId" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="AddNewFacebookWallPostsHttpGetOut">
+  <wsdl:message name="IskiHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="AddFacebookAccountHttpPostIn">
@@ -1005,21 +987,11 @@
   <wsdl:message name="TicketFacebokReplyHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="AddNewFacebookFeedsHttpPostIn">
-    <wsdl:part name="FbId" type="s:string" />
-    <wsdl:part name="UserId" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="AddNewFacebookFeedsHttpPostOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="AddNewFacebookWallPostsHttpPostIn">
-    <wsdl:part name="FbId" type="s:string" />
-    <wsdl:part name="UserId" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="AddNewFacebookWallPostsHttpPostOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
   <wsdl:portType name="FacebookSoap">
+    <wsdl:operation name="Iski">
+      <wsdl:input message="tns:IskiSoapIn" />
+      <wsdl:output message="tns:IskiSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="AddFacebookAccount">
       <wsdl:input message="tns:AddFacebookAccountSoapIn" />
       <wsdl:output message="tns:AddFacebookAccountSoapOut" />
@@ -1120,16 +1092,12 @@
       <wsdl:input message="tns:TicketFacebokReplySoapIn" />
       <wsdl:output message="tns:TicketFacebokReplySoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="AddNewFacebookFeeds">
-      <wsdl:input message="tns:AddNewFacebookFeedsSoapIn" />
-      <wsdl:output message="tns:AddNewFacebookFeedsSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="AddNewFacebookWallPosts">
-      <wsdl:input message="tns:AddNewFacebookWallPostsSoapIn" />
-      <wsdl:output message="tns:AddNewFacebookWallPostsSoapOut" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookHttpGet">
+    <wsdl:operation name="Iski">
+      <wsdl:input message="tns:IskiHttpGetIn" />
+      <wsdl:output message="tns:IskiHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="AddFacebookAccount">
       <wsdl:input message="tns:AddFacebookAccountHttpGetIn" />
       <wsdl:output message="tns:AddFacebookAccountHttpGetOut" />
@@ -1230,16 +1198,12 @@
       <wsdl:input message="tns:TicketFacebokReplyHttpGetIn" />
       <wsdl:output message="tns:TicketFacebokReplyHttpGetOut" />
     </wsdl:operation>
-    <wsdl:operation name="AddNewFacebookFeeds">
-      <wsdl:input message="tns:AddNewFacebookFeedsHttpGetIn" />
-      <wsdl:output message="tns:AddNewFacebookFeedsHttpGetOut" />
-    </wsdl:operation>
-    <wsdl:operation name="AddNewFacebookWallPosts">
-      <wsdl:input message="tns:AddNewFacebookWallPostsHttpGetIn" />
-      <wsdl:output message="tns:AddNewFacebookWallPostsHttpGetOut" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookHttpPost">
+    <wsdl:operation name="Iski">
+      <wsdl:input message="tns:IskiHttpPostIn" />
+      <wsdl:output message="tns:IskiHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="AddFacebookAccount">
       <wsdl:input message="tns:AddFacebookAccountHttpPostIn" />
       <wsdl:output message="tns:AddFacebookAccountHttpPostOut" />
@@ -1340,17 +1304,18 @@
       <wsdl:input message="tns:TicketFacebokReplyHttpPostIn" />
       <wsdl:output message="tns:TicketFacebokReplyHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="AddNewFacebookFeeds">
-      <wsdl:input message="tns:AddNewFacebookFeedsHttpPostIn" />
-      <wsdl:output message="tns:AddNewFacebookFeedsHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="AddNewFacebookWallPosts">
-      <wsdl:input message="tns:AddNewFacebookWallPostsHttpPostIn" />
-      <wsdl:output message="tns:AddNewFacebookWallPostsHttpPostOut" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="FacebookSoap" type="tns:FacebookSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Iski">
+      <soap:operation soapAction="http://tempuri.org/Iski" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddFacebookAccount">
       <soap:operation soapAction="http://tempuri.org/AddFacebookAccount" style="document" />
       <wsdl:input>
@@ -1576,27 +1541,18 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddNewFacebookFeeds">
-      <soap:operation soapAction="http://tempuri.org/AddNewFacebookFeeds" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddNewFacebookWallPosts">
-      <soap:operation soapAction="http://tempuri.org/AddNewFacebookWallPosts" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="FacebookSoap12" type="tns:FacebookSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Iski">
+      <soap12:operation soapAction="http://tempuri.org/Iski" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddFacebookAccount">
       <soap12:operation soapAction="http://tempuri.org/AddFacebookAccount" style="document" />
       <wsdl:input>
@@ -1822,27 +1778,18 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddNewFacebookFeeds">
-      <soap12:operation soapAction="http://tempuri.org/AddNewFacebookFeeds" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddNewFacebookWallPosts">
-      <soap12:operation soapAction="http://tempuri.org/AddNewFacebookWallPosts" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="FacebookHttpGet" type="tns:FacebookHttpGet">
     <http:binding verb="GET" />
+    <wsdl:operation name="Iski">
+      <http:operation location="/Iski" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddFacebookAccount">
       <http:operation location="/AddFacebookAccount" />
       <wsdl:input>
@@ -2061,24 +2008,6 @@
     </wsdl:operation>
     <wsdl:operation name="TicketFacebokReply">
       <http:operation location="/TicketFacebokReply" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddNewFacebookFeeds">
-      <http:operation location="/AddNewFacebookFeeds" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddNewFacebookWallPosts">
-      <http:operation location="/AddNewFacebookWallPosts" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -2089,6 +2018,15 @@
   </wsdl:binding>
   <wsdl:binding name="FacebookHttpPost" type="tns:FacebookHttpPost">
     <http:binding verb="POST" />
+    <wsdl:operation name="Iski">
+      <http:operation location="/Iski" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddFacebookAccount">
       <http:operation location="/AddFacebookAccount" />
       <wsdl:input>
@@ -2314,37 +2252,19 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddNewFacebookFeeds">
-      <http:operation location="/AddNewFacebookFeeds" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddNewFacebookWallPosts">
-      <http:operation location="/AddNewFacebookWallPosts" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Facebook">
     <wsdl:port name="FacebookSoap" binding="tns:FacebookSoap">
-      <soap:address location="http://localhost:6361/services/Facebook.asmx" />
+      <soap:address location="http://localhost:6361/Services/Facebook.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookSoap12" binding="tns:FacebookSoap12">
-      <soap12:address location="http://localhost:6361/services/Facebook.asmx" />
+      <soap12:address location="http://localhost:6361/Services/Facebook.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookHttpGet" binding="tns:FacebookHttpGet">
-      <http:address location="http://localhost:6361/services/Facebook.asmx" />
+      <http:address location="http://localhost:6361/Services/Facebook.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookHttpPost" binding="tns:FacebookHttpPost">
-      <http:address location="http://localhost:6361/services/Facebook.asmx" />
+      <http:address location="http://localhost:6361/Services/Facebook.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

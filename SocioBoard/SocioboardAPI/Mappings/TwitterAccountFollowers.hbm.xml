@@ -11,9 +11,9 @@
     <property name="UserId">
       <column name="UserId" />
     </property>
-    <property name="TwitterAccountId">
+    <!--<property name="TwitterAccountId">
       <column name="TwitterAccountId"  />
-    </property>
+    </property>-->
    
     <property name="FollowersCount">
       <column name="FollowersCount"  />

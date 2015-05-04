@@ -44,7 +44,29 @@ namespace Api.Socioboard.Services
             }
         }
 
-        // Edited by Antima
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetLinkedInFeedsByUserIdAndProfileIdUsingLimit(string UserId, string LinkedInId, string noOfDataToSkip, string noOfResultsFromTop)
+        {
+            List<Domain.Socioboard.Domain.LinkedInFeed> lstlinkedinfeeds = new List<Domain.Socioboard.Domain.LinkedInFeed>();
+            try
+            {
+                if (objLinkedInFeedRepository.checkLinkedInUserExists(LinkedInId, Guid.Parse(UserId)))
+                {
+                    lstlinkedinfeeds = objLinkedInFeedRepository.getAllLinkedInFeedsOfUserOfSBUserWithRangeAndProfileId(Guid.Parse(UserId), LinkedInId, noOfDataToSkip, noOfResultsFromTop);
+                }
+                else
+                {
+                    lstlinkedinfeeds = objLinkedInFeedRepository.getAllLinkedInFeedsOfUserOfSBUserWithRangeByProfileId(LinkedInId, noOfDataToSkip, noOfResultsFromTop);
+                }
+                return new JavaScriptSerializer().Serialize(lstlinkedinfeeds);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return new JavaScriptSerializer().Serialize("Please Try Again");
+            }
+        }
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]

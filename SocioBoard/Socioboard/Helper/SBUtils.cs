@@ -144,13 +144,187 @@ namespace Socioboard.Helper
             return null;
         }
 
-        public static Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, Dictionary<object, List<object>>> GetUserProfilesSnapsAccordingToGroup(List<Domain.Socioboard.Domain.TeamMemberProfile> TeamMemberProfile)
+        //public static Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, Dictionary<object, List<object>>> GetUserProfilesSnapsAccordingToGroup(List<Domain.Socioboard.Domain.TeamMemberProfile> TeamMemberProfile)
+        //{
+        //    User objUser = (User)System.Web.HttpContext.Current.Session["User"];
+        //    Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, Dictionary<object, List<object>>> dic_profilessnap = new Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, Dictionary<object, List<object>>>();
+        //    var dicprofilefeeds = new Dictionary<object, List<object>>();
+        //    foreach (Domain.Socioboard.Domain.TeamMemberProfile item in TeamMemberProfile)
+        //    {
+        //        List<object> feeds = null;
+        //        if (item.ProfileType == "facebook" || item.ProfileType == "facebook_page")
+        //        {
+        //            try
+        //            {
+        //                feeds = new List<object>();
+        //                Api.FacebookAccount.FacebookAccount ApiobjFacebookAccount = new Api.FacebookAccount.FacebookAccount();
+        //                FacebookAccount objFacebookAccount = (FacebookAccount)(new JavaScriptSerializer().Deserialize(ApiobjFacebookAccount.getFacebookAccountDetailsById(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(FacebookAccount)));
+        //                Api.FacebookFeed.FacebookFeed ApiobjFacebookFeed = new Api.FacebookFeed.FacebookFeed();
+        //                //List<FacebookFeed> lstFacebookFeed = (List<FacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookFeed.getAllFacebookFeedsByUserIdAndProfileId(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(List<FacebookFeed>)));
+        //                List<FacebookFeed> lstFacebookFeed = (List<FacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookFeed.getAllFacebookFeedsByUserIdAndProfileIdUsingLimit(objUser.Id.ToString(), item.ProfileId.ToString(), "0", "10"), typeof(List<FacebookFeed>)));
+                        
+        //                foreach (var facebookfeed in lstFacebookFeed)
+        //                {
+        //                    feeds.Add(facebookfeed);
+        //                }
+        //                dicprofilefeeds.Add(objFacebookAccount, feeds);
+        //                dic_profilessnap.Add(item, dicprofilefeeds);
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.Message);
+        //            }
+        //        }
+
+        //        if (item.ProfileType == "twitter")
+        //        {
+        //            try
+        //            {
+        //                feeds = new List<object>();
+        //                Api.TwitterAccount.TwitterAccount ApiobjTwitterAccount = new Api.TwitterAccount.TwitterAccount();
+        //                TwitterAccount objTwitterAccount = (TwitterAccount)(new JavaScriptSerializer().Deserialize(ApiobjTwitterAccount.GetTwitterAccountDetailsById(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(TwitterAccount)));
+        //                Api.TwitterFeed.TwitterFeed ApiobjTwitterFeed = new Api.TwitterFeed.TwitterFeed();
+        //                //List<TwitterFeed> lstTwitterFeed = (List<TwitterFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterFeed.GetAllTwitterFeedsByUserIdAndProfileId(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(List<TwitterFeed>)));
+        //                List<TwitterFeed> lstTwitterFeed = (List<TwitterFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterFeed.getAllFeedsByUserIdAndProfileIdUsingLimit(objUser.Id.ToString(), item.ProfileId.ToString(),"0","10"), typeof(List<TwitterFeed>)));
+        //                foreach (var twitterfeed in lstTwitterFeed)
+        //                {
+        //                    feeds.Add(twitterfeed);
+        //                }
+        //                dicprofilefeeds.Add(objTwitterAccount, feeds);
+        //                dic_profilessnap.Add(item, dicprofilefeeds);
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.Message);
+        //            }
+        //        }
+
+        //        if (item.ProfileType == "linkedin")
+        //        {
+        //            try
+        //            {
+        //                feeds = new List<object>();
+        //                Api.LinkedinAccount.LinkedinAccount ApiobjLinkedinAccount = new Api.LinkedinAccount.LinkedinAccount();
+        //                LinkedInAccount objLinkedInAccount = (LinkedInAccount)(new JavaScriptSerializer().Deserialize(ApiobjLinkedinAccount.GetLinkedinAccountDetailsById(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(LinkedInAccount)));
+        //                Api.LinkedInFeed.LinkedInFeed ApiobjLinkedInFeed = new Api.LinkedInFeed.LinkedInFeed();
+        //                //List<LinkedInFeed> lstLinkedInFeed = (List<LinkedInFeed>)(new JavaScriptSerializer().Deserialize(ApiobjLinkedInFeed.GetLinkedInFeeds(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(List<LinkedInFeed>)));
+        //                List<LinkedInFeed> lstLinkedInFeed = (List<LinkedInFeed>)(new JavaScriptSerializer().Deserialize(ApiobjLinkedInFeed.GetLinkedInFeedsByUserIdAndProfileIdUsingLimit(objUser.Id.ToString(), item.ProfileId.ToString(), "0", "10"), typeof(List<LinkedInFeed>)));
+                        
+        //                foreach (var LinkedInFeed in lstLinkedInFeed)
+        //                {
+        //                    feeds.Add(LinkedInFeed);
+        //                }
+        //                dicprofilefeeds.Add(objLinkedInAccount, feeds);
+        //                dic_profilessnap.Add(item, dicprofilefeeds);
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.Message);
+        //            }
+        //        }
+        //        if (item.ProfileType == "instagram")
+        //        {
+        //            try
+        //            {
+        //                feeds = new List<object>();
+        //                Api.InstagramAccount.InstagramAccount ApiobjInstagramAccount = new Api.InstagramAccount.InstagramAccount();
+        //                InstagramAccount objInstagramAccount = (InstagramAccount)(new JavaScriptSerializer().Deserialize(ApiobjInstagramAccount.UserInformation(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(InstagramAccount)));
+        //                dicprofilefeeds.Add(objInstagramAccount, feeds);
+        //                dic_profilessnap.Add(item, dicprofilefeeds);
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.Message);
+        //            }
+        //        }
+
+        //        if (item.ProfileType == "tumblr")
+        //        {
+        //            try
+        //            {
+        //                feeds = new List<object>();
+        //                Api.TumblrAccount.TumblrAccount ApiobjTumblrAccount = new Api.TumblrAccount.TumblrAccount();
+        //                TumblrAccount objTumblrAccount = (TumblrAccount)(new JavaScriptSerializer().Deserialize(ApiobjTumblrAccount.GetTumblrAccountDetailsById(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(TumblrAccount)));
+        //                dicprofilefeeds.Add(objTumblrAccount, feeds);
+        //                dic_profilessnap.Add(item, dicprofilefeeds);
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.Message);
+        //            }
+        //        }
+
+
+        //        if (item.ProfileType == "youtube")
+        //        {
+        //            try
+        //            {
+        //                feeds = new List<object>();
+        //                Api.YoutubeAccount.YoutubeAccount ApiobjYoutubeAccount = new Api.YoutubeAccount.YoutubeAccount();
+        //                YoutubeAccount objYoutubeAccount = (YoutubeAccount)(new JavaScriptSerializer().Deserialize(ApiobjYoutubeAccount.GetYoutubeAccountDetailsById(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(YoutubeAccount)));
+        //                Api.YoutubeChannel.YoutubeChannel ApiobjYoutubeChannel = new Api.YoutubeChannel.YoutubeChannel();
+        //                YoutubeChannel objYoutubeChannel = (YoutubeChannel)(new JavaScriptSerializer().Deserialize(ApiobjYoutubeChannel.GetAllYoutubeChannelByUserIdAndProfileId(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(YoutubeChannel)));
+        //                List<YoutubeChannel> lstYoutubeChannel = new List<YoutubeChannel>();
+        //                lstYoutubeChannel.Add(objYoutubeChannel);
+        //                foreach (var youtubechannel in lstYoutubeChannel)
+        //                {
+        //                    feeds.Add(youtubechannel);
+        //                }
+        //                dicprofilefeeds.Add(objYoutubeAccount, feeds);
+        //                dic_profilessnap.Add(item, dicprofilefeeds);
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.Message);
+        //            }
+        //        }
+
+        //        if (item.ProfileType == "linkedincompanypage")
+        //        {
+        //            try
+        //            {
+        //                feeds = new List<object>();
+        //                Api.LinkedinCompanyPage.LinkedinCompanyPage ApiobjLinkedinCompanyPage = new Api.LinkedinCompanyPage.LinkedinCompanyPage();
+        //                LinkedinCompanyPage objLinkedinCompanypage = (LinkedinCompanyPage)(new JavaScriptSerializer().Deserialize(ApiobjLinkedinCompanyPage.GetLinkedinCompanyPageDetailsByUserIdAndPageId(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(LinkedinCompanyPage)));
+        //                Api.LinkedinCompanyPage.LinkedinCompanyPage ApiobjLinkedinCompanyPagePost = new Api.LinkedinCompanyPage.LinkedinCompanyPage();
+        //                List<LinkedinCompanyPagePosts> lstlipagepost = (List<LinkedinCompanyPagePosts>)(new JavaScriptSerializer().Deserialize(ApiobjLinkedinCompanyPagePost.GetAllLinkedinCompanyPagePostsByUserIdAndProfileId(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(List<LinkedinCompanyPagePosts>)));
+        //                foreach (var lipagepost in lstlipagepost)
+        //                {
+        //                    feeds.Add(lipagepost);
+        //                }
+        //                dicprofilefeeds.Add(objLinkedinCompanypage, feeds);
+        //                dic_profilessnap.Add(item, dicprofilefeeds);
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.Message);
+        //            }
+        //        }
+
+        //    }
+        //    return dic_profilessnap;
+        //}
+        public static Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, Dictionary<object, List<object>>> GetUserProfilesSnapsAccordingToGroup(List<Domain.Socioboard.Domain.TeamMemberProfile> TeamMemberProfile, int CountProfileSnapshot=0)
         {
             User objUser = (User)System.Web.HttpContext.Current.Session["User"];
             Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, Dictionary<object, List<object>>> dic_profilessnap = new Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, Dictionary<object, List<object>>>();
             var dicprofilefeeds = new Dictionary<object, List<object>>();
+
+            int tempCount = 0;
             foreach (Domain.Socioboard.Domain.TeamMemberProfile item in TeamMemberProfile)
             {
+                tempCount++;
+                if (tempCount <= CountProfileSnapshot)
+                {
+                    continue;
+                }
+
+                //to load only 3 profiles on home page load to speed up page loading
+                if (dic_profilessnap.Count>=3)
+                {
+                    break;
+                }
+
                 List<object> feeds = null;
                 if (item.ProfileType == "facebook" || item.ProfileType == "facebook_page")
                 {
@@ -160,7 +334,9 @@ namespace Socioboard.Helper
                         Api.FacebookAccount.FacebookAccount ApiobjFacebookAccount = new Api.FacebookAccount.FacebookAccount();
                         FacebookAccount objFacebookAccount = (FacebookAccount)(new JavaScriptSerializer().Deserialize(ApiobjFacebookAccount.getFacebookAccountDetailsById(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(FacebookAccount)));
                         Api.FacebookFeed.FacebookFeed ApiobjFacebookFeed = new Api.FacebookFeed.FacebookFeed();
-                        List<FacebookFeed> lstFacebookFeed = (List<FacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookFeed.getAllFacebookFeedsByUserIdAndProfileId(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(List<FacebookFeed>)));
+                        //List<FacebookFeed> lstFacebookFeed = (List<FacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookFeed.getAllFacebookFeedsByUserIdAndProfileId(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(List<FacebookFeed>)));
+                        List<FacebookFeed> lstFacebookFeed = (List<FacebookFeed>)(new JavaScriptSerializer().Deserialize(ApiobjFacebookFeed.getAllFacebookFeedsByUserIdAndProfileIdUsingLimit(objUser.Id.ToString(), item.ProfileId.ToString(), "0", "10"), typeof(List<FacebookFeed>)));
+
                         foreach (var facebookfeed in lstFacebookFeed)
                         {
                             feeds.Add(facebookfeed);
@@ -182,7 +358,8 @@ namespace Socioboard.Helper
                         Api.TwitterAccount.TwitterAccount ApiobjTwitterAccount = new Api.TwitterAccount.TwitterAccount();
                         TwitterAccount objTwitterAccount = (TwitterAccount)(new JavaScriptSerializer().Deserialize(ApiobjTwitterAccount.GetTwitterAccountDetailsById(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(TwitterAccount)));
                         Api.TwitterFeed.TwitterFeed ApiobjTwitterFeed = new Api.TwitterFeed.TwitterFeed();
-                        List<TwitterFeed> lstTwitterFeed = (List<TwitterFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterFeed.GetAllTwitterFeedsByUserIdAndProfileId(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(List<TwitterFeed>)));
+                        //List<TwitterFeed> lstTwitterFeed = (List<TwitterFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterFeed.GetAllTwitterFeedsByUserIdAndProfileId(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(List<TwitterFeed>)));
+                        List<TwitterFeed> lstTwitterFeed = (List<TwitterFeed>)(new JavaScriptSerializer().Deserialize(ApiobjTwitterFeed.getAllFeedsByUserIdAndProfileIdUsingLimit(objUser.Id.ToString(), item.ProfileId.ToString(), "0", "10"), typeof(List<TwitterFeed>)));
                         foreach (var twitterfeed in lstTwitterFeed)
                         {
                             feeds.Add(twitterfeed);
@@ -204,7 +381,9 @@ namespace Socioboard.Helper
                         Api.LinkedinAccount.LinkedinAccount ApiobjLinkedinAccount = new Api.LinkedinAccount.LinkedinAccount();
                         LinkedInAccount objLinkedInAccount = (LinkedInAccount)(new JavaScriptSerializer().Deserialize(ApiobjLinkedinAccount.GetLinkedinAccountDetailsById(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(LinkedInAccount)));
                         Api.LinkedInFeed.LinkedInFeed ApiobjLinkedInFeed = new Api.LinkedInFeed.LinkedInFeed();
-                        List<LinkedInFeed> lstLinkedInFeed = (List<LinkedInFeed>)(new JavaScriptSerializer().Deserialize(ApiobjLinkedInFeed.GetLinkedInFeeds(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(List<LinkedInFeed>)));
+                        //List<LinkedInFeed> lstLinkedInFeed = (List<LinkedInFeed>)(new JavaScriptSerializer().Deserialize(ApiobjLinkedInFeed.GetLinkedInFeeds(objUser.Id.ToString(), item.ProfileId.ToString()), typeof(List<LinkedInFeed>)));
+                        List<LinkedInFeed> lstLinkedInFeed = (List<LinkedInFeed>)(new JavaScriptSerializer().Deserialize(ApiobjLinkedInFeed.GetLinkedInFeedsByUserIdAndProfileIdUsingLimit(objUser.Id.ToString(), item.ProfileId.ToString(), "0", "10"), typeof(List<LinkedInFeed>)));
+
                         foreach (var LinkedInFeed in lstLinkedInFeed)
                         {
                             feeds.Add(LinkedInFeed);
@@ -299,7 +478,6 @@ namespace Socioboard.Helper
             }
             return dic_profilessnap;
         }
-
         public static int GetUserPackageProfileCount(string accounttype)
         {
             int tot_acc = 0;
@@ -553,7 +731,7 @@ namespace Socioboard.Helper
                 FacebookClient fb = new FacebookClient();
                 fb.AccessToken = accesstoken;
                 System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
-                dynamic groups = fb.Get("me/groups");
+                dynamic groups = fb.Get("v2.0/me/groups");
 
                 foreach (var item in groups["data"])
                 {
@@ -618,10 +796,11 @@ namespace Socioboard.Helper
         }
 
         public static string GetFacebookRedirectLink()
+
         {
             //return "http://www.facebook.com/v2.0/dialog/oauth/?scope=user_friends,read_friendlists,publish_actions,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,user_groups,offline_access,publish_actions,manage_pages&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
             //return "http://www.facebook.com/v2.0/dialog/oauth/?scope=user_friends,user_status,read_friendlists,publish_actions,read_stream,read_insights,manage_pages,user_checkins,user_photos,read_mailbox,manage_notifications,read_page_mailboxes,email,user_videos,user_groups,offline_access,publish_actions,manage_pages&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
-            return "http://www.facebook.com/v2.0/dialog/oauth/?scope=user_friends,user_status,publish_actions,read_insights,manage_pages,user_checkins,manage_notifications,read_page_mailboxes,email,offline_access,publish_actions,manage_pages&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
+            return "http://www.facebook.com/v2.0/dialog/oauth/?scope=user_groups,read_stream,user_friends,user_status,publish_actions,read_insights,manage_pages,user_checkins,user_posts,manage_notifications,read_page_mailboxes,email,offline_access,publish_actions,manage_pages&client_id=" + ConfigurationManager.AppSettings["ClientId"] + "&redirect_uri=" + ConfigurationManager.AppSettings["RedirectUrl"] + "&response_type=code";
         }
 
         public static string CommentOnLinkedinPost(string groupid, string GpPostid, string message, string LinkedinUserId)
@@ -1000,6 +1179,39 @@ namespace Socioboard.Helper
                 return "";
             }
         }
+        public static string CompareDateWithclientlocal(string clientdate, string scheduletime)
+        {
+            try
+            {
+                DateTime client = Convert.ToDateTime(clientdate);
+                DateTime server = DateTime.Now;
+                DateTime schedule = Convert.ToDateTime(scheduletime);
+                {
+                    var kind = schedule.Kind; // will equal DateTimeKind.Unspecified
+                    if (DateTime.Compare(client, server) > 0)
+                    {
+                        double minutes = (client - server).TotalMinutes;
+                        schedule = schedule.AddMinutes(minutes);
+                    }
+                    else if (DateTime.Compare(client, server) == 0)
+                    {
+                    }
+                    else if (DateTime.Compare(client, server) < 0)
+                    {
+                        double minutes = (client - server).TotalMinutes;
+                        schedule = schedule.AddMinutes(minutes);
+                    }
+                }
+                return schedule.ToString();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+                return "";
+            }
+        }
+
         //public static string CompareDateWithclient(string clientdate, string scheduletime)
         //{
         //    DateTime client = Convert.ToDateTime(clientdate);

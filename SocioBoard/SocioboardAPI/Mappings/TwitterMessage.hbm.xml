@@ -65,7 +65,9 @@
     <property name="FromScreenName">
       <column name="FromScreenName"  />
     </property>
-    
 
+    <property name="IsArchived">
+      <column name="IsArchived"  />
+    </property>
   </class>
 </hibernate-mapping>

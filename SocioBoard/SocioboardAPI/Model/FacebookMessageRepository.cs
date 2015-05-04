@@ -849,7 +849,7 @@ namespace Api.Socioboard.Services
 
 
 
-        public List<Domain.Socioboard.Domain.FacebookMessage> getAllInboxMessagesByProfileid(Guid userid, string profileid, int day)
+        public int getAllInboxMessagesByProfileid(Guid userid, string profileid, int day)
         {
 
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -864,27 +864,28 @@ namespace Api.Socioboard.Services
 
                     try
                     {
-                        string str = "from FacebookMessage where Userid=:userid and MessageDate>=:AssinDate and Type=:msgtype  and ProfileId IN(";
+                        //string str = "from FacebookMessage where Userid=:userid and MessageDate>=:AssinDate and Type=:msgtype  and ProfileId IN(";
                         string[] arrsrt = profileid.Split(',');
-                        foreach (string sstr in arrsrt)
-                        {
-                            str += Convert.ToInt64(sstr) + ",";
-                        }
-                        str = str.Substring(0, str.Length - 1);
-                        str += ")";
+                       // foreach (string sstr in arrsrt)
+                       // {
+                       //     str += Convert.ToInt64(sstr) + ",";
+                       // }
+                       // str = str.Substring(0, str.Length - 1);
+                       // str += ")";
 
 
 
-                        List<Domain.Socioboard.Domain.FacebookMessage> alst = session.CreateQuery(str).SetParameter("userid", userid).SetParameter("AssinDate", AssinDate).SetParameter("msgtype", msgtype)
-                       .List<Domain.Socioboard.Domain.FacebookMessage>()
-                       .ToList<Domain.Socioboard.Domain.FacebookMessage>();
+                       // List<Domain.Socioboard.Domain.FacebookMessage> alst = session.CreateQuery(str).SetParameter("userid", userid).SetParameter("AssinDate", AssinDate).SetParameter("msgtype", msgtype)
+                       //.List<Domain.Socioboard.Domain.FacebookMessage>()
+                       //.ToList<Domain.Socioboard.Domain.FacebookMessage>();
+                       // return alst;
+                        int alst = session.Query<Domain.Socioboard.Domain.FacebookMessage>().Where(x => x.UserId.Equals(userid) && arrsrt.Contains(x.ProfileId) && x.MessageDate.Date >= AssinDate.Date).Count();
                         return alst;
-
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.StackTrace);
-                        return null;
+                        return 0;
                     }
 
                 }//End Trasaction
@@ -1220,7 +1221,7 @@ namespace Api.Socioboard.Services
                     try
                     {
 
-                        List<Domain.Socioboard.Domain.FacebookMessage> lstmsg = session.Query<Domain.Socioboard.Domain.FacebookMessage>().Where(u => u.UserId == UserId && u.ProfileId.Equals(profileid)).OrderByDescending(x => x.MessageDate).Skip(Convert.ToInt32(noOfDataToSkip)).Take(15).ToList<Domain.Socioboard.Domain.FacebookMessage>();
+                        List<Domain.Socioboard.Domain.FacebookMessage> lstmsg = session.Query<Domain.Socioboard.Domain.FacebookMessage>().Where(u => u.UserId == UserId && u.ProfileId.Equals(profileid) && u.IsArchived!=1).OrderByDescending(x => x.MessageDate).Skip(Convert.ToInt32(noOfDataToSkip)).Take(15).ToList<Domain.Socioboard.Domain.FacebookMessage>();
 
                         //Proceed action, to Get all Message from FacebookMessage.
                         //List<Domain.Socioboard.Domain.FacebookMessage> alst = session.CreateQuery("from FacebookMessage where ProfileId = :profileId order by MessageDate DESC")
@@ -1263,7 +1264,7 @@ namespace Api.Socioboard.Services
                     try
                     {
                         string[] arrsrt = profileid.Split(',');
-                        List<Domain.Socioboard.Domain.FacebookMessage> lstmsg = session.Query<Domain.Socioboard.Domain.FacebookMessage>().Where(u => u.UserId == UserId && arrsrt.Contains(u.ProfileId)).OrderByDescending(x => x.MessageDate).Skip(Convert.ToInt32(noOfDataToSkip)).Take(15).ToList<Domain.Socioboard.Domain.FacebookMessage>();
+                        List<Domain.Socioboard.Domain.FacebookMessage> lstmsg = session.Query<Domain.Socioboard.Domain.FacebookMessage>().Where(u => u.UserId == UserId && arrsrt.Contains(u.ProfileId)&& u.IsArchived!=1).OrderByDescending(x => x.MessageDate).Skip(Convert.ToInt32(noOfDataToSkip)).Take(15).ToList<Domain.Socioboard.Domain.FacebookMessage>();
 
                         // string str = "from FacebookMessage  where ProfileId IN(";
                         // string[] arrsrt = profileid.Split(',');
@@ -1293,6 +1294,36 @@ namespace Api.Socioboard.Services
                 }//End Trasaction
             }//End session
         }
+
+        public void updateFacebookMessageArchiveStatus(string fbmessageid, Guid UserId)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+
+                        // Proceed action to Update Data.
+                        // And Set the reuired paremeters to find the specific values.
+                        session.CreateQuery("Update FacebookMessage set IsArchived=1 where MessageId = :msgid and UserId=:userid")
+                            .SetParameter("msgid", fbmessageid)
+                            .SetParameter("userid", UserId)
+                            .ExecuteUpdate();
+                        transaction.Commit();
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        // return 0;
+                    }
+                }//End Transaction
+            }//End session
+        }
+
 
     }
 }

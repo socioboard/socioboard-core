@@ -9,7 +9,7 @@ namespace Domain.Socioboard.Domain
     {
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
-        public Guid TwitterAccountId { get; set; }
+        //public Guid TwitterAccountId { get; set; }
         public string ProfileId { get; set; }       
         public int FollowersCount { get; set; }      
         public int FollowingsCount { get; set; }

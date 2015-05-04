@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using NHibernate.Linq;
+using NHibernate.Criterion;
 
 namespace Api.Socioboard.Services
 {
@@ -186,6 +187,8 @@ namespace Api.Socioboard.Services
                         List<Domain.Socioboard.Domain.TwitterFeed> lstmsg = session.CreateQuery("from TwitterFeed where UserId = :userid and ProfileId = :profid")
                         .SetParameter("userid", UserId)
                         .SetParameter("profid", profileid)
+                        .SetFirstResult(0)
+                        .SetMaxResults(1500)
                         .List<Domain.Socioboard.Domain.TwitterFeed>()
                         .ToList<Domain.Socioboard.Domain.TwitterFeed>();
 
@@ -535,7 +538,7 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
-        public List<Domain.Socioboard.Domain.TwitterFeed> getAllInboxMessagesByProfileid(Guid userid, string profileid, int day)
+        public int getAllInboxMessagesByProfileid(Guid userid, string profileid, int day)
         {
 
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -548,26 +551,31 @@ namespace Api.Socioboard.Services
                     DateTime AssinDate = AssignDate.AddDays(-day);
                     try
                     {
-                        string str = "from TwitterFeed where Userid=:userid and FeedDate>=:AssinDate  and ProfileId IN(";
-                        string[] arrsrt = profileid.Split(',');
-                        foreach (string sstr in arrsrt)
-                        {
-                            str += "'" + (sstr) + "'" + ",";
-                        }
-                        str = str.Substring(0, str.Length - 1);
-                        str += ")";
-                        List<Domain.Socioboard.Domain.TwitterFeed> alst = session.CreateQuery(str)
-                       .SetParameter("AssinDate",AssignDate)
-                       .SetParameter("userid", userid)
-                       .List<Domain.Socioboard.Domain.TwitterFeed>()
-                       .ToList<Domain.Socioboard.Domain.TwitterFeed>();
-                        return alst;
+                       // string str = "count(Id) from TwitterFeed where Userid=:userid and ProfileId IN(";
+                       // string[] arrsrt = profileid.Split(',');
+                       // foreach (string sstr in arrsrt)
+                       // {
+                       //     str += "'" + (sstr) + "'" + ",";
+                       // }
+                       // str = str.Substring(0, str.Length - 1);
+                       // str += ")";
+                       // List<Domain.Socioboard.Domain.TwitterFeed> alst = session.CreateQuery(str)
+                       //.SetParameter("userid", userid)
+                       //.List<Domain.Socioboard.Domain.TwitterFeed>().Where(d=>d.FeedDate.Date>=AssinDate.Date)
+                       //.ToList<Domain.Socioboard.Domain.TwitterFeed>();
+                       // return alst;
 
+                        string[] arrsrt = profileid.Split(',');
+
+                        int alst = session.Query<Domain.Socioboard.Domain.TwitterFeed>().Where(x => x.UserId.Equals(userid) && arrsrt.Contains(x.ProfileId) && x.FeedDate.Date>=AssinDate.Date).Count()//.CreateQuery("from FacebookFeed where  UserId = :UserId and FeedDescription like %' =:keyword '% ORDER BY FeedDate DESC")
+                       ;
+
+                        return alst;
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.StackTrace);
-                        return null;
+                        return 0;
                     }
 
                 }//End Trasaction
@@ -673,6 +681,71 @@ namespace Api.Socioboard.Services
                 }//End Transaction
             }//End Session
         }
+
+        /// <getAllFacebookUserFeeds>
+        /// Get All Facebook User Feeds
+        /// </summary>
+        /// <param name="profileid">Profile id</param>
+        /// <returns>List of Facebbok feeds (List<FacebookFeed>)</returns>
+        public List<Domain.Socioboard.Domain.TwitterFeed> getAllFeedsOfSBUserWithRangeAndProfileId(string UserId, string profileId, string noOfDataToSkip, string noOfResultsFromTop)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get all facebook feeds of profile by facebook profile id  
+                        List<Domain.Socioboard.Domain.TwitterFeed> alst = session.Query<Domain.Socioboard.Domain.TwitterFeed>().Where(x => x.UserId.Equals(Guid.Parse(UserId)) && x.ProfileId.Equals(profileId)).OrderByDescending(x => x.FeedDate).Skip(Convert.ToInt32(noOfDataToSkip)).Take(Convert.ToInt32(noOfResultsFromTop))//.CreateQuery("from FacebookFeed where  UserId = :UserId and FeedDescription like %' =:keyword '% ORDER BY FeedDate DESC")
+                        .ToList<Domain.Socioboard.Domain.TwitterFeed>();
+
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }// End session
+
+        }
+
+        /// <getAllFacebookUserFeeds>
+        /// Get All Facebook User Feeds
+        /// </summary>
+        /// <param name="profileid">Profile id</param>
+        /// <returns>List of Facebbok feeds (List<FacebookFeed>)</returns>
+        public List<Domain.Socioboard.Domain.TwitterFeed> getAllFeedsOfSBUserWithRangeByProfileId(string profileid, string noOfDataToSkip, string noOfResultsFromTop)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get all facebook feeds of profile by facebook profile id  
+                        List<Domain.Socioboard.Domain.TwitterFeed> alst = session.Query<Domain.Socioboard.Domain.TwitterFeed>().Where(x => x.ProfileId.Equals(profileid)).OrderByDescending(x => x.FeedDate).Skip(Convert.ToInt32(noOfDataToSkip)).Take(Convert.ToInt32(noOfResultsFromTop))//.CreateQuery("from FacebookFeed where  UserId = :UserId and FeedDescription like %' =:keyword '% ORDER BY FeedDate DESC")
+                        .ToList<Domain.Socioboard.Domain.TwitterFeed>();
+
+                        return alst;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+                }//End Transaction
+            }// End se
+
+        }
+
 
     }
 }

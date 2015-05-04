@@ -239,5 +239,20 @@ namespace GlobusTwitterLib.Twitter.Core.TimeLineMethods
         }
         #endregion
 
+        #region Get_List_Of_Followers
+
+        public JArray Get_User_Followers(oAuthTwitter oAuth)
+        {
+            string RequestUrl = Globals.GetFollowersListUrl;
+            SortedDictionary<string, string> strdic = new SortedDictionary<string, string>();
+            string response = oAuth.oAuthWebRequest(oAuthTwitter.Method.GET, RequestUrl, strdic);
+            if (!response.StartsWith("["))
+                response = "[" + response + "]";
+            return JArray.Parse(response);
+        }
+
+        #endregion
+
+
     }
 }

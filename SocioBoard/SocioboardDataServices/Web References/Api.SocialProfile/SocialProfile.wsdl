@@ -669,16 +669,16 @@
   </wsdl:binding>
   <wsdl:service name="SocialProfile">
     <wsdl:port name="SocialProfileSoap" binding="tns:SocialProfileSoap">
-      <soap:address location="http://localhost:6361/services/SocialProfile.asmx" />
+      <soap:address location="http://localhost:6361/Services/SocialProfile.asmx" />
     </wsdl:port>
     <wsdl:port name="SocialProfileSoap12" binding="tns:SocialProfileSoap12">
-      <soap12:address location="http://localhost:6361/services/SocialProfile.asmx" />
+      <soap12:address location="http://localhost:6361/Services/SocialProfile.asmx" />
     </wsdl:port>
     <wsdl:port name="SocialProfileHttpGet" binding="tns:SocialProfileHttpGet">
-      <http:address location="http://localhost:6361/services/SocialProfile.asmx" />
+      <http:address location="http://localhost:6361/Services/SocialProfile.asmx" />
     </wsdl:port>
     <wsdl:port name="SocialProfileHttpPost" binding="tns:SocialProfileHttpPost">
-      <http:address location="http://localhost:6361/services/SocialProfile.asmx" />
+      <http:address location="http://localhost:6361/Services/SocialProfile.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

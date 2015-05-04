@@ -57,7 +57,9 @@
     <property name="Picture">
       <column name="Picture"  />
     </property>
-
+    <property name="IsArchived">
+      <column name="IsArchived"  />
+    </property>
 
   </class>
 </hibernate-mapping>

@@ -35,13 +35,9 @@ namespace SocioboardDataServices.Api.Youtube {
         
         private System.Threading.SendOrPostCallback GoogleLoginOperationCompleted;
         
-        private System.Threading.SendOrPostCallback Get_Channel_List_serarchOperationCompleted;
-        
         private System.Threading.SendOrPostCallback getYoutubeDataOperationCompleted;
         
         private System.Threading.SendOrPostCallback SheduleYoutubeMessageOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback UpdateYouTubeAccountByAdminOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -91,16 +87,10 @@ namespace SocioboardDataServices.Api.Youtube {
         public event GoogleLoginCompletedEventHandler GoogleLoginCompleted;
         
         /// <remarks/>
-        public event Get_Channel_List_serarchCompletedEventHandler Get_Channel_List_serarchCompleted;
-        
-        /// <remarks/>
         public event getYoutubeDataCompletedEventHandler getYoutubeDataCompleted;
         
         /// <remarks/>
         public event SheduleYoutubeMessageCompletedEventHandler SheduleYoutubeMessageCompleted;
-        
-        /// <remarks/>
-        public event UpdateYouTubeAccountByAdminCompletedEventHandler UpdateYouTubeAccountByAdminCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddYoutubeAccount", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -202,36 +192,6 @@ namespace SocioboardDataServices.Api.Youtube {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Get_Channel_List_serarch", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void Get_Channel_List_serarch(string token, string search) {
-            this.Invoke("Get_Channel_List_serarch", new object[] {
-                        token,
-                        search});
-        }
-        
-        /// <remarks/>
-        public void Get_Channel_List_serarchAsync(string token, string search) {
-            this.Get_Channel_List_serarchAsync(token, search, null);
-        }
-        
-        /// <remarks/>
-        public void Get_Channel_List_serarchAsync(string token, string search, object userState) {
-            if ((this.Get_Channel_List_serarchOperationCompleted == null)) {
-                this.Get_Channel_List_serarchOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGet_Channel_List_serarchOperationCompleted);
-            }
-            this.InvokeAsync("Get_Channel_List_serarch", new object[] {
-                        token,
-                        search}, this.Get_Channel_List_serarchOperationCompleted, userState);
-        }
-        
-        private void OnGet_Channel_List_serarchOperationCompleted(object arg) {
-            if ((this.Get_Channel_List_serarchCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Get_Channel_List_serarchCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getYoutubeData", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string getYoutubeData(string UserId, string youtubeId) {
             object[] results = this.Invoke("getYoutubeData", new object[] {
@@ -292,35 +252,6 @@ namespace SocioboardDataServices.Api.Youtube {
             if ((this.SheduleYoutubeMessageCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.SheduleYoutubeMessageCompleted(this, new SheduleYoutubeMessageCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateYouTubeAccountByAdmin", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string UpdateYouTubeAccountByAdmin(string ObjYouTube) {
-            object[] results = this.Invoke("UpdateYouTubeAccountByAdmin", new object[] {
-                        ObjYouTube});
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void UpdateYouTubeAccountByAdminAsync(string ObjYouTube) {
-            this.UpdateYouTubeAccountByAdminAsync(ObjYouTube, null);
-        }
-        
-        /// <remarks/>
-        public void UpdateYouTubeAccountByAdminAsync(string ObjYouTube, object userState) {
-            if ((this.UpdateYouTubeAccountByAdminOperationCompleted == null)) {
-                this.UpdateYouTubeAccountByAdminOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateYouTubeAccountByAdminOperationCompleted);
-            }
-            this.InvokeAsync("UpdateYouTubeAccountByAdmin", new object[] {
-                        ObjYouTube}, this.UpdateYouTubeAccountByAdminOperationCompleted, userState);
-        }
-        
-        private void OnUpdateYouTubeAccountByAdminOperationCompleted(object arg) {
-            if ((this.UpdateYouTubeAccountByAdminCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.UpdateYouTubeAccountByAdminCompleted(this, new UpdateYouTubeAccountByAdminCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -423,10 +354,6 @@ namespace SocioboardDataServices.Api.Youtube {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void Get_Channel_List_serarchCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
     public delegate void getYoutubeDataCompletedEventHandler(object sender, getYoutubeDataCompletedEventArgs e);
     
     /// <remarks/>
@@ -464,32 +391,6 @@ namespace SocioboardDataServices.Api.Youtube {
         private object[] results;
         
         internal SheduleYoutubeMessageCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void UpdateYouTubeAccountByAdminCompletedEventHandler(object sender, UpdateYouTubeAccountByAdminCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class UpdateYouTubeAccountByAdminCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal UpdateYouTubeAccountByAdminCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

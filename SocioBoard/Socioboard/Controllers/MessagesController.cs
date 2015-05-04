@@ -712,12 +712,14 @@ namespace Socioboard.Controllers
                 string UserName = Request.QueryString["username"];
                 string MessageDate = Request.QueryString["MessageDate"];
                 string ProfileUrl = Request.QueryString["profileurl"];
-                string Message = Request.QueryString["message"];
+                string Message = Request.Form["message"];
+
                 try
                 {
                     if (!ApiobjArchiveMessage.CheckArchiveMessageExists(objUser.Id.ToString(), MessageId))
                     {
                         ApiobjArchiveMessage.AddArchiveMessage(objUser.Id.ToString(), ProfileId, Network, UserName, MessageId, Message, MessageDate, ProfileUrl);
+                        ApiobjArchiveMessage.DeleteArchiveMessage(objUser.Id.ToString(), MessageId, Network);
                         return Content("Archived successfully");
                     }
                     else
@@ -738,37 +740,38 @@ namespace Socioboard.Controllers
             }
         }
 
-        public ActionResult DeleteArchiveMessage()
-        {
-            try
-            {
-                Api.ArchiveMessage.ArchiveMessage ApiobjArchiveMessage = new Api.ArchiveMessage.ArchiveMessage();
-                Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
-                string ProfileId = Request.QueryString["ProfileId"];
-                string MessageId = Request.QueryString["MessageId"];
-                string Network = Request.QueryString["network"];
-                string UserName = Request.QueryString["username"];
-                string MessageDate = Request.QueryString["MessageDate"];
-                string ProfileUrl = Request.QueryString["profileurl"];
-                string Message = Request.QueryString["message"];
-                try
-                {
-                    ApiobjArchiveMessage.DeleteArchiveMessage(objUser.Id.ToString(), ProfileId, Network, UserName, MessageId, Message, MessageDate, ProfileUrl);
-                    return Content("Archived successfully");
+        //public ActionResult DeleteArchiveMessage()
+        //{
+        //    try
+        //    {
+        //        Api.ArchiveMessage.ArchiveMessage ApiobjArchiveMessage = new Api.ArchiveMessage.ArchiveMessage();
+        //        Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
+        //        string ProfileId = Request.QueryString["ProfileId"];
+        //        string MessageId = Request.QueryString["MessageId"];
+        //        string Network = Request.QueryString["network"];
+        //        string UserName = Request.QueryString["username"];
+        //        string MessageDate = Request.QueryString["MessageDate"];
+        //        string ProfileUrl = Request.QueryString["profileurl"];
+        //        string Message = Request.QueryString["message"];
 
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.StackTrace);
-                    return Content("Somthing went wrong!!");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-                return Content("");
-            }
-        }
+        //        try
+        //        {
+        //            ApiobjArchiveMessage.DeleteArchiveMessage(objUser.Id.ToString(), ProfileId, Network, UserName, MessageId, Message, MessageDate, ProfileUrl);
+        //            return Content("Archived successfully");
+
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            Console.WriteLine(ex.StackTrace);
+        //            return Content("Somthing went wrong!!");
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.StackTrace);
+        //        return Content("");
+        //    }
+        //}
 
         public ActionResult Archive()
         {

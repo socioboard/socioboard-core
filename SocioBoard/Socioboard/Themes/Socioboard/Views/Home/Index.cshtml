@@ -1,8 +1,12 @@
 ﻿@{
-                    //ViewBag.Title = "Home Page";
+                //ViewBag.Title = "Home Page";
 }
 
+<script src="~/Themes/Socioboard/Contents/js/underscore.js"></script>
 
+<script language="javascript" type="text/javascript">
+    
+</script>
 
 <div id="page-wrapper">
     <div id="DisplayCount" class="row" data-url="/Home/DisplayCount">
@@ -11,13 +15,17 @@
     </div>
     <div class="container-fluid">
         <div class="col-md-12">
-            <div class="col-md-9 partialContents" data-url="/Home/ProfileSnapshot">
-                <img src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" />
-                Loading . . .
-   
+            <h2>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_MyRecentProfiles</h2>
+            <div class="col-md-9 partialContents" id="div_Home_ProfileSnapshot" data-url="/Home/ProfileSnapshot">
+                <div id="ldr-home-profile">
+                    <center>
+                        <img class="clsImageLoader" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" />'
+                        Loading . . .
+                    </center>
+                </div>
             </div>
             <div class="col-md-3 partialContents" data-url="/Home/UserProfile">
-                <img src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" />
+                <img src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" />
                 Loading . . .
   
 
@@ -29,7 +37,7 @@
 <div class="modal fade" id="SocialProfileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal fade in" style="height: 1048px;"></div>
     <div class="modal-dialog">
-        <div class="modal-content" style="box-shadow: none ! important; background-color: transparent;  margin-top: 21%; border:none ! important">
+        <div class="modal-content" style="box-shadow: none ! important; background-color: transparent; margin-top: 21%; border: none ! important">
             <div class="modal-body">
                 <div class="container">
                     <div class="row">
@@ -66,7 +74,7 @@
     }
 
     function AddfbPage(fbpagename, fbpageid, fbpagetoken, email) {
-$('#fbpagebind').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />');
+        $('#fbpagebind').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />');
         $.ajax({
             type: 'POST',
             url: '../FacebookManager/AddFbPage?profileid=' + fbpageid + '&accesstoken=' + fbpagetoken + '&email=' + email,
@@ -175,8 +183,27 @@ $('#fbpagebind').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />')
         $("#AttachProfile").attr('href', '../YoutubeManager/AuthenticateYoutube');
     }
 
+
+    function LoadMoreProfileSnapshot() {
+        debugger;
+        $('#div_Home_ProfileSnapshot').append('<div id="ldr-home-profile"><center><img class="clsImageLoader" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" /></center></div>');
+        $.ajax({
+            type: 'GET',
+            url: '../Home/ProfileSnapshot?op=scroll',
+            success: function (msg) {
+                $('#ldr-home-profile').remove();
+                $('#div_Home_ProfileSnapshot').append(msg);
+            }
+        });
+    }
+
     $(document).ready(function (e) {
         debugger
+
+        var throttled = _.throttle(LoadMoreProfileSnapshot, 6000);
+
+        $(window).scroll(throttled);
+
         var hint = getParameterByName("hint");
         if (hint != "" || hint != null) {
             if (hint == "fbpage") {
@@ -189,14 +216,14 @@ $('#fbpagebind').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />')
                         for (var i = 0; i < fbpagearr.length; i++) {
                             var fbpageinfoarr = fbpagearr[i].split('`');
                             try {
-							var imageSrc = "http://graph.facebook.com/" + fbpageinfoarr[1] + "/picture?type=small";
+                                var imageSrc = "http://graph.facebook.com/" + fbpageinfoarr[1] + "/picture?type=small";
                                 $('#fbpagebind').append('<div class="panel-box pull-left"><span class="col-md-2 padding-0"><img src=' + imageSrc + ' width="50"></span><span class="col-md-8 padding_lr">&nbsp&nbsp&nbsp' + fbpageinfoarr[0] + '<br><p>&nbsp&nbsp&nbsp' + fbpageinfoarr[4] + ' likes</p></span><span class="col-md-2 padding-0"><a style="cursor: pointer;" onclick="AddfbPage(\'' + fbpageinfoarr[0] + '\',\'' + fbpageinfoarr[1] + '\',\'' + fbpageinfoarr[2] + '\',\'' + fbpageinfoarr[3] + '\')"><img src="/Themes/Socioboard/Contents/img/plus.png"/></a></span></div>');
                             } catch (e) {
 
                             }
                         }
                         $('#facebookpageinfo').css({ 'display': 'block' });
-                      //  jQuery.noConflict();
+                        //  jQuery.noConflict();
                         $('#facebookpopup').modal('show');
                     },
                     async: false
@@ -219,7 +246,7 @@ $('#fbpagebind').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />')
 
                             }
                         }
-                       // jQuery.noConflict();
+                        // jQuery.noConflict();
                         $('#facebookgroupinfo').css({ 'display': 'block' });
                         //jQuery.noConflict();
                         $('#facebookpopup').modal('show');
@@ -241,9 +268,9 @@ $('#fbpagebind').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />')
                             for (var i = 0; i < lipagearr.length; i++) {
                                 var lipageinfoarr = lipagearr[i].split('`');
                                 try {
-                                
-                                $('#lipagebind').append('<a style="cursor: pointer;margin-left:21px" onclick="AddLinPage(\'' + lipageinfoarr[0] + '\',\'' + lipageinfoarr[1] + '\',\'' + lipageinfoarr[2] + '\')">' + lipageinfoarr[1] + '</a><br />');
-                            } catch (e) {
+
+                                    $('#lipagebind').append('<a style="cursor: pointer;margin-left:21px" onclick="AddLinPage(\'' + lipageinfoarr[0] + '\',\'' + lipageinfoarr[1] + '\',\'' + lipageinfoarr[2] + '\')">' + lipageinfoarr[1] + '</a><br />');
+                                } catch (e) {
 
                                 }
                             }

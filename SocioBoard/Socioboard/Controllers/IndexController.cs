@@ -24,10 +24,15 @@ namespace Socioboard.Controllers
         {
             if (Session["User"] != null)
             {
-                return RedirectToAction("Index", "Home");
+                if (!string.IsNullOrEmpty(((User)Session["User"]).EmailId) && !string.IsNullOrEmpty(((User)Session["User"]).Password))
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    Session["User"] = null;
+                }
             }
-            logger.Error("Abhay");
-           
             return View();
            
         }

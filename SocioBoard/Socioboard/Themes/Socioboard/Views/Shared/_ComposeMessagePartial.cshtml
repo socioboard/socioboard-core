@@ -11,7 +11,7 @@
         FacebookAccount objFacebookAccount = (FacebookAccount)item.Value;
         if(objFacebookAccount.AccessToken!="")
         {
-    <li onclick="bindfrofilesmaster('facebook','@objFacebookAccount.FbUserName','@objFacebookAccount.FbUserId')">
+    <li onclick="bindfrofilesmaster('@item.Key.ProfileType','@objFacebookAccount.FbUserName','@objFacebookAccount.FbUserId')">
         <a href="#">
             @*<i class="fa fa-facebook fa-fw"></i>@objFacebookAccount.FbUserName*@
             <img src="http://graph.facebook.com/@objFacebookAccount.FbUserId/picture?type=small" class="img-circle profilePics" >

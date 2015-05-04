@@ -189,7 +189,7 @@ namespace Api.Socioboard.Services
                     {
                         //Proceed action, to get messages of profile by profile id and user id.
                         
-                        List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.CreateQuery("from TwitterMessage where UserId = :userid and ProfileId = :profid")
+                        List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.CreateQuery("from TwitterMessage where UserId = :userid and ProfileId = :profid ORDER BY MessageDate DESC")
                         .SetParameter("userid", UserId)
                         .SetParameter("profid", profileid)
                         .SetFirstResult(count)
@@ -503,6 +503,78 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+
+
+        public List<Domain.Socioboard.Domain.TwitterMessage> getAllTwitterMessagestweet(Guid userid, string ProfileId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, open up a Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get all twitter account messages of user by user id.
+                        List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.CreateQuery("from TwitterMessage where UserId = :userid and ProfileId =:ProfileId and Type =:Type and InReplyToStatusUserId!=: data")
+                        .SetParameter("userid", userid)
+                        .SetParameter("ProfileId", ProfileId).SetParameter("Type", "twt_usertweets").SetParameter("data", "")
+                        .List<Domain.Socioboard.Domain.TwitterMessage>()
+                        .ToList<Domain.Socioboard.Domain.TwitterMessage>();
+
+
+                        //List<TwitterMessage> lstmsg = new List<TwitterMessage>();
+                        //foreach (TwitterMessage item in query.Enumerable<TwitterMessage>().OrderByDescending(x=>x.MessageDate))
+                        //{
+                        //    lstmsg.Add(item);
+                        //}
+                        return lstmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End Session
+        }
+
+
+        public List<Domain.Socioboard.Domain.TwitterMessage> getAllTwitterMessagesRetweet(Guid userid, string ProfileId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, open up a Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get all twitter account messages of user by user id.
+                        List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.CreateQuery("from TwitterMessage where UserId = :userid and ProfileId =:ProfileId and Type =:Type")
+                        .SetParameter("userid", userid)
+                        .SetParameter("ProfileId", ProfileId).SetParameter("Type", "twt_retweets")
+                        .List<Domain.Socioboard.Domain.TwitterMessage>()
+                        .ToList<Domain.Socioboard.Domain.TwitterMessage>();
+
+
+                        //List<TwitterMessage> lstmsg = new List<TwitterMessage>();
+                        //foreach (TwitterMessage item in query.Enumerable<TwitterMessage>().OrderByDescending(x=>x.MessageDate))
+                        //{
+                        //    lstmsg.Add(item);
+                        //}
+                        return lstmsg;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return null;
+                    }
+
+                }//End Transaction
+            }//End Session
+        }
 
         /// <getAllTwitterMessagesOfProfile>
         /// Get All Twitter Messages Of Profile
@@ -832,6 +904,33 @@ namespace Api.Socioboard.Services
                     }
                 }//End Transaction
             }//End Session
+        }
+
+        public int GetRetweetStatsCountByProfileIdAndUserId(Guid UserId, string profileids, int Days)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //string[] arrsrt = profileids.Split(',');
+                        DateTime date = DateTime.Now.AddDays(-Days);
+                        List<Domain.Socioboard.Domain.TwitterMessage> results = session.CreateQuery("from TwitterMessage where UserId=:UserId and MessageDate >= :Days and ProfileId=:profileids and  Type =:Type")
+                            .SetParameter("UserId", UserId)
+                            .SetParameter("Days", date)
+                            .SetParameter("profileids", profileids).SetParameter("Type", "twt_retweets").List<Domain.Socioboard.Domain.TwitterMessage>().ToList();
+                        return Int16.Parse(results.Count.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+                }//End Transaction
+            }// End se
         }
 
         public int getRepliesCount(Guid UserId, string profileId)
@@ -1174,7 +1273,32 @@ namespace Api.Socioboard.Services
 
         }
 
-
+        public int GetMentionStatsCountByProfileIdAndUserId(Guid UserId, string profileids, int Days)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //string[] arrsrt = profileids.Split(',');
+                        DateTime date = DateTime.Now.AddDays(-Days);
+                        List<Domain.Socioboard.Domain.TwitterMessage> results = session.CreateQuery("from TwitterMessage where UserId=:UserId and MessageDate >= :Days and ProfileId=:profileids and  Type =:Type")
+                            .SetParameter("UserId", UserId)
+                            .SetParameter("Days", date)
+                            .SetParameter("profileids", profileids).SetParameter("Type", "twt_mentions").List<Domain.Socioboard.Domain.TwitterMessage>().ToList();
+                        return Int16.Parse(results.Count.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+                    }
+                }//End Transaction
+            }// End se
+        }
         public int getTotalMentionBydays(Guid userid,string profileid,int days )
         {     
             DateTime AssignDate = DateTime.Now;
@@ -1190,7 +1314,7 @@ namespace Api.Socioboard.Services
                 {
                     try
                     {
-                        string str = "select count(Id)  from TwitterMessage where Type='twt_mentions' and UserId=:userid and MessageDate>=:AssinDate and ProfileId IN(";
+                        string str = "from TwitterMessage where Type='twt_mentions' and UserId=:userid and MessageDate>=:AssinDate and ProfileId IN(";
                         string[] arrsrt = profileid.Split(',');
                         foreach (string sstr in arrsrt)
                         {
@@ -1199,12 +1323,13 @@ namespace Api.Socioboard.Services
                         str = str.Substring(0, str.Length - 1);
                         str += ")";
 
-                        var lstmsg1 = session.CreateSQLQuery(str).SetParameter("userid", userid).SetParameter("AssinDate", AssinDate);
-                        var ListofArr = lstmsg1.List();
+                        var lstmsg1 = session.CreateQuery(str).SetParameter("userid", userid).SetParameter("AssinDate", AssinDate)
+                            .List<Domain.Socioboard.Domain.TwitterMessage>().ToList();
+                        //var ListofArr = lstmsg1.List();
                        // List<TwitterMessage> lst = (List<TwitterMessage>)ListofArr;
 
-                        count = Convert.ToInt32(ListofArr[0]);
-                        return count;
+                        //count = Convert.ToInt32(ListofArr[0]);
+                        return count = lstmsg1.Count;
                     }
                     catch (Exception ex)
                     {
@@ -1588,7 +1713,7 @@ namespace Api.Socioboard.Services
                     {
                         //Proceed action, to get messages of profile by profile id and user id.
 
-                        List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.Query<Domain.Socioboard.Domain.TwitterMessage>().Where(u => u.UserId == UserId && u.ProfileId.Equals(profileid)).OrderByDescending(x => x.MessageDate).Skip(Convert.ToInt32(count)).Take(15).ToList<Domain.Socioboard.Domain.TwitterMessage>();
+                        List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.Query<Domain.Socioboard.Domain.TwitterMessage>().Where(u => u.UserId == UserId && u.ProfileId.Equals(profileid) && u.IsArchived!=1).OrderByDescending(x => x.MessageDate).Skip(Convert.ToInt32(count)).Take(15).ToList<Domain.Socioboard.Domain.TwitterMessage>();
 
                         //List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.CreateQuery("from TwitterMessage where UserId = :userid and ProfileId = :profid")
                         //.SetParameter("userid", UserId)
@@ -1623,7 +1748,7 @@ namespace Api.Socioboard.Services
                     try
                     {
                         string[] arrsrt = profileid.Split(',');
-                        List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.Query<Domain.Socioboard.Domain.TwitterMessage>().Where(u => u.UserId == UserId && arrsrt.Contains(u.ProfileId)).OrderByDescending(x => x.MessageDate).Skip(Convert.ToInt32(count)).Take(15).ToList<Domain.Socioboard.Domain.TwitterMessage>();
+                        List<Domain.Socioboard.Domain.TwitterMessage> lstmsg = session.Query<Domain.Socioboard.Domain.TwitterMessage>().Where(u => u.UserId == UserId && arrsrt.Contains(u.ProfileId) && u.IsArchived!=1).OrderByDescending(x => x.MessageDate).Skip(Convert.ToInt32(count)).Take(15).ToList<Domain.Socioboard.Domain.TwitterMessage>();
                       //  string str = "from TwitterMessage where UserId=:userid and ProfileId IN(";
                       //  string[] arrsrt = profileid.Split(',');
                       //  foreach (string sstr in arrsrt)
@@ -1650,6 +1775,64 @@ namespace Api.Socioboard.Services
                 }
             }
         }
+
+        public int getReplyCountbyProfileId(string ProfileId, Guid UserId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, open up a Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        // DateTime date = DateTime.Now;
+                        List<Domain.Socioboard.Domain.TwitterMessage> results = session.CreateQuery("from TwitterMessage where UserId=:UserId and ProfileId=:ProfileId and  Type =:Type and InReplyToStatusUserId!=:data order by MessageDate desc")
+                            .SetParameter("UserId", UserId)
+                             .SetParameter("ProfileId", ProfileId)
+                            .SetParameter("Type", "twt_mentions")
+                            .SetParameter("data", "").List<Domain.Socioboard.Domain.TwitterMessage>().ToList();
+                        return Int16.Parse(results.Count.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return 0;
+
+                    }
+                }//End Transaction
+            }//End Sess
+        }
+
+        public void updateTwitterMessageArchiveStatus(string twtmessageid, Guid UserId)
+        {
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+
+                        // Proceed action to Update Data.
+                        // And Set the reuired paremeters to find the specific values.
+                        session.CreateQuery("Update TwitterMessage set IsArchived=1 where MessageId = :msgid and UserId=:userid")
+                            .SetParameter("msgid", twtmessageid)
+                            .SetParameter("userid", UserId)
+                            .ExecuteUpdate();
+                        transaction.Commit();
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        // return 0;
+                    }
+                }//End Transaction
+            }//End session
+        }
+
 
     }
 }

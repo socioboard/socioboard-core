@@ -6,8 +6,20 @@
     int LikesCount = 0;
 }
 
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        debugger;
+        //var loadMoreId = $('#scroll_ProfileSnapshot');
+        //if (loadMoreId!=null) {
+        //    $(document).remove(
+        //}
+        
+    });
+
+</script>
+
 <div class="row" style="margin-left: -46px">
-    <h2>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_MyRecentProfiles</h2>
+    @*<h2>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_MyRecentProfiles</h2>*@
     @{
         int counter = 0;
         int divcounter = 0;
@@ -75,7 +87,7 @@
                         <span class="col-md-12">@objFacebookAccount.FbUserName</span>   
                     </div>
                 </div>
-                <div class="panel-body">
+                        <div class="panel-body">
                     <p>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_RecentMessages</p>
                    <ul class="list-group recent_height">
                         @for (int i = 0; i < lstdic.Count; i++)
@@ -137,7 +149,7 @@
                         <span class="col-md-12">@objFacebookAccount.FbUserName</span>   
                     </div>
                 </div>
-                <div class="panel-body">
+                        <div class="panel-body">
                     <p>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_RecentMessages</p>
                          <ul class="list-group recent_height">
                         
@@ -574,3 +586,6 @@
 </div>
 
 
+@*<div id="scroll_ProfileSnapshot" onclick="LoadMoreProfileSnapshot()">Load More
+    
+</div>*@

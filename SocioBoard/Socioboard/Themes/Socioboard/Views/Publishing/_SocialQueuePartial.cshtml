@@ -15,7 +15,7 @@
     InstagramAccount objInstagramAccount = new InstagramAccount();
     TumblrAccount objTumblrAccount = new TumblrAccount();
 
-    }
+}
 @if (!string.IsNullOrEmpty(objuser.ProfileUrl))
 {
     try
@@ -25,111 +25,120 @@
         //ProfileUrl = System.Text.RegularExpressions.Regex.Split(objuser.ProfileUrl, "wwwroot")[1];
         ProfileUrl = imgurl;
     }
-    catch {
+    catch
+    {
         ProfileUrl = objuser.ProfileUrl;
     }
 }
 
 
 
-    <thead>
-        <tr>
-            <th>Sent From</th>
-            <th>Message</th>
-            <th>Network</th>
-            <th>Status</th>
-            <th>Delete</th>
-            <th>Edit</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in (List<Domain.Socioboard.Domain.ScheduledMessage>)Model)
+<thead>
+    <tr>
+        <th>Sent From</th>
+        <th>Message</th>
+        <th>Network</th>
+        <th>Status</th>
+        <th>Delete</th>
+        <th>Edit</th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var item in (List<Domain.Socioboard.Domain.ScheduledMessage>)Model)
+    {
+        objGroups = (Domain.Socioboard.Domain.Groups)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
+        if (item.ProfileType == "facebook")
         {
-            objGroups = (Domain.Socioboard.Domain.Groups)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjGroups.GetGroupDetailsByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Groups)));
-            if (item.ProfileType == "facebook")
+            Socioboard.Api.FacebookAccount.FacebookAccount ApiobjFacebookAccount = new Socioboard.Api.FacebookAccount.FacebookAccount();
+            objFacebookAccount = (FacebookAccount)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjFacebookAccount.getFacebookAccountDetailsById(objGroups.UserId.ToString(), item.ProfileId.ToString()), typeof(FacebookAccount)));
+            senttoname = objFacebookAccount.FbUserName;
+            sendtoprofileimage = "http://graph.facebook.com/" + objFacebookAccount.FbUserId + "/picture?type=small";
+            if (string.IsNullOrEmpty(sendtoprofileimage))
             {
-                Socioboard.Api.FacebookAccount.FacebookAccount ApiobjFacebookAccount = new Socioboard.Api.FacebookAccount.FacebookAccount();
-                objFacebookAccount = (FacebookAccount)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjFacebookAccount.getFacebookAccountDetailsById(objGroups.UserId.ToString(), item.ProfileId.ToString()), typeof(FacebookAccount)));
-                senttoname = objFacebookAccount.FbUserName;
-                sendtoprofileimage = "http://graph.facebook.com/" + objFacebookAccount.FbUserId + "/picture?type=small";
-                if (string.IsNullOrEmpty(sendtoprofileimage))
-                {
-                    sendtoprofileimage = "/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/blank_img.png";
-                }
-           
+                sendtoprofileimage = "/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/blank_img.png";
             }
-            else if (item.ProfileType == "twitter")
-            {
-                Socioboard.Api.TwitterAccount.TwitterAccount ApiobjTwitterAccount = new Socioboard.Api.TwitterAccount.TwitterAccount();
-                objTwitterAccount = (TwitterAccount)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjTwitterAccount.GetTwitterAccountDetailsById(objGroups.UserId.ToString(), item.ProfileId.ToString()), typeof(TwitterAccount)));
-                senttoname = objTwitterAccount.TwitterScreenName;
-                sendtoprofileimage = objTwitterAccount.ProfileImageUrl;
-                if (string.IsNullOrEmpty(sendtoprofileimage))
-                {
-                    sendtoprofileimage = "/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/blank_img.png";
-                }
-            }
-            else if (item.ProfileType == "linkedin")
-            {
-                Socioboard.Api.LinkedinAccount.LinkedinAccount ApiobjLinkedinAccount = new Socioboard.Api.LinkedinAccount.LinkedinAccount();
-                objLinkedInAccount = (LinkedInAccount)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjLinkedinAccount.GetLinkedinAccountDetailsById(objGroups.UserId.ToString(), item.ProfileId.ToString()), typeof(LinkedInAccount)));
-                senttoname = objLinkedInAccount.LinkedinUserName;
-                sendtoprofileimage = objLinkedInAccount.ProfileImageUrl;
-                if (string.IsNullOrEmpty(sendtoprofileimage))
-                {
-                    sendtoprofileimage = "/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/blank_img.png";
-                }
-            }
-            else if (item.ProfileType == "instagram")
-            {
 
-            }
-            else if (item.ProfileType == "tumblr")
-            {
-                Socioboard.Api.TumblrAccount.TumblrAccount ApiobjTumblrAccount = new Socioboard.Api.TumblrAccount.TumblrAccount();
-                objTumblrAccount = (TumblrAccount)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjTumblrAccount.GetTumblrAccountDetailsById(objGroups.UserId.ToString(), item.ProfileId.ToString()), typeof(TumblrAccount)));
-                senttoname = objTumblrAccount.tblrUserName;
-                sendtoprofileimage = "http://api.tumblr.com/v2/blog/" + objTumblrAccount.tblrUserName + ".tumblr.com/avatar";
-                if (string.IsNullOrEmpty(sendtoprofileimage))
-                {
-                    sendtoprofileimage = "/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/blank_img.png";
-                }
-            }
-            else if (item.ProfileType == "youtube")
-            {
-
-            }
-            <tr class="odd gradeX" id="@item.Id">
-                <td>
-                    <div class="col-xs-6">
-                        <img src="@ProfileUrl" class="img-circle profilePic" onclick="DetailsofProfile('@item.ProfileId','@item.ProfileType')">
-                    </div>
-                    <div class="col-xs-6">
-                        <span>@objuser.UserName<br>
-                            @*@item.ScheduleTime</span>*@
-                            @ScheduleTime(item.ClientTime,@item.CreateTime,@item.ScheduleTime)</span>
-                    </div>
-                </td>
-                <td>@item.ShareMessage</td>
-                <td>
-                    <img src="@sendtoprofileimage" class="img-circle profilePic" onclick="DetailsofProfile('@item.ProfileId','@item.ProfileType')">
-
-                    @if (item.Status == true)
-                    {
-                        status = "Completed";
-                    }
-                    <span>@senttoname</span></td>
-                <td class="center">@status</td>
-                <td class="center">
-                    <button type="button" class="btn btn-danger btn-circle" onclick="deletesocialqueuemsg('@item.Id')" ><i class="fa fa-times"></i></button>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-warning btn-circle" onclick="editsocialqueuemsg('@item.Id','@item.ShareMessage')"><i class="fa fa-pencil"></i></button>
-                </td>
-            </tr>
         }
+        else if (item.ProfileType == "twitter")
+        {
+            Socioboard.Api.TwitterAccount.TwitterAccount ApiobjTwitterAccount = new Socioboard.Api.TwitterAccount.TwitterAccount();
+            objTwitterAccount = (TwitterAccount)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjTwitterAccount.GetTwitterAccountDetailsById(objGroups.UserId.ToString(), item.ProfileId.ToString()), typeof(TwitterAccount)));
+            senttoname = objTwitterAccount.TwitterScreenName;
+            sendtoprofileimage = objTwitterAccount.ProfileImageUrl;
+            if (string.IsNullOrEmpty(sendtoprofileimage))
+            {
+                sendtoprofileimage = "/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/blank_img.png";
+            }
+        }
+        else if (item.ProfileType == "linkedin")
+        {
+            Socioboard.Api.LinkedinAccount.LinkedinAccount ApiobjLinkedinAccount = new Socioboard.Api.LinkedinAccount.LinkedinAccount();
+            objLinkedInAccount = (LinkedInAccount)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjLinkedinAccount.GetLinkedinAccountDetailsById(objGroups.UserId.ToString(), item.ProfileId.ToString()), typeof(LinkedInAccount)));
+            senttoname = objLinkedInAccount.LinkedinUserName;
+            sendtoprofileimage = objLinkedInAccount.ProfileImageUrl;
+            if (string.IsNullOrEmpty(sendtoprofileimage))
+            {
+                sendtoprofileimage = "/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/blank_img.png";
+            }
+        }
+        else if (item.ProfileType == "instagram")
+        {
 
-    </tbody>
+        }
+        else if (item.ProfileType == "tumblr")
+        {
+            Socioboard.Api.TumblrAccount.TumblrAccount ApiobjTumblrAccount = new Socioboard.Api.TumblrAccount.TumblrAccount();
+            objTumblrAccount = (TumblrAccount)(new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiobjTumblrAccount.GetTumblrAccountDetailsById(objGroups.UserId.ToString(), item.ProfileId.ToString()), typeof(TumblrAccount)));
+            senttoname = objTumblrAccount.tblrUserName;
+            sendtoprofileimage = "http://api.tumblr.com/v2/blog/" + objTumblrAccount.tblrUserName + ".tumblr.com/avatar";
+            if (string.IsNullOrEmpty(sendtoprofileimage))
+            {
+                sendtoprofileimage = "/Themes/" + System.Configuration.ConfigurationManager.AppSettings["domain"] + "/Contents/img/blank_img.png";
+            }
+        }
+        else if (item.ProfileType == "youtube")
+        {
+
+        }
+        <tr class="odd gradeX" id="@item.Id">
+            <td>
+                <div class="col-xs-6">
+                    <img src="@ProfileUrl" class="img-circle profilePic" onclick="DetailsofProfile('@item.ProfileId','@item.ProfileType')">
+                </div>
+                <div class="col-xs-6">
+                    <span>@objuser.UserName<br>
+                        @*@item.ScheduleTime</span>*@
+                        @ScheduleTime(item.ClientTime, @item.CreateTime, @item.ScheduleTime)</span>
+                </div>
+            </td>
+            @if ((item.ShareMessage).Contains("$%^_^%$"))
+            { 
+                <td>@item.ShareMessage.Replace("$%^_^%$","  ")</td>
+            }
+            else
+            {
+                <td>@item.ShareMessage</td>
+            }
+
+            <td>
+                <img src="@sendtoprofileimage" class="img-circle profilePic" onclick="DetailsofProfile('@item.ProfileId','@item.ProfileType')">
+
+                @if (item.Status == true)
+                {
+                    status = "Completed";
+                }
+                <span>@senttoname</span></td>
+            <td class="center">@status</td>
+            <td class="center">
+                <button type="button" class="btn btn-danger btn-circle" onclick="deletesocialqueuemsg('@item.Id')" ><i class="fa fa-times"></i></button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-warning btn-circle" onclick="editsocialqueuemsg('@item.Id','@item.ShareMessage')"><i class="fa fa-pencil"></i></button>
+            </td>
+        </tr>
+    }
+
+</tbody>
 
 @helper  ScheduleTime(DateTime clientdate, DateTime server, DateTime scheduletime)
 {
@@ -142,18 +151,18 @@
         //double minutes = (server - client).TotalMinutes;
         double minutes = (client - server).TotalMinutes;
         schedule = schedule.AddMinutes(minutes);
-        @String.Format(schedule.ToString());
+    @String.Format(schedule.ToString());
 
     }
     else if (DateTime.Compare(client, server) == 0)
     {
-        @String.Format(schedule.ToString());
+    @String.Format(schedule.ToString());
     }
     else if (DateTime.Compare(client, server) < 0)
     {
         //double minutes = (server - client).TotalMinutes;
         double minutes = (client - server).TotalMinutes;
         schedule = schedule.AddMinutes(minutes);
-        @String.Format(schedule.ToString());
+    @String.Format(schedule.ToString());
     }
 }

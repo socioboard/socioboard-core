@@ -9,9 +9,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SocioboardDataScheduler</RootNamespace>
     <AssemblyName>SocioboardDataScheduler</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,12 +32,28 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Domain.Socioboard, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Domain.Socioboard.dll</HintPath>
-    </Reference>
     <Reference Include="Facebook">
       <HintPath>..\SocioboardAPI\lib\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.7.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SocioboardAPI\lib\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SocioboardAPI\lib\MySql.Data.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SocioboardAPI\lib\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Linq, Version=1.0.0.4000, Culture=neutral, PublicKeyToken=444cf6a87fdab271, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SocioboardAPI\bin\NHibernate.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernateHelper, Version=1.1.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SocioboardAPI\lib\NHibernateHelper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -53,16 +68,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsSocialSiteScheduler.cs" />
-    <Compile Include="FacebookGroupScheduler.cs" />
     <Compile Include="FacebookScheduler.cs" />
     <Compile Include="InstagramScheduler.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="LinkedinGroupScheduler.cs" />
     <Compile Include="LinkedInScheduler.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="NewsLetterScheduler.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -158,14 +174,23 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="bin\Debug\SocioboardDataScheduler.exe.config" />
+    <None Include="bin\Debug\SocioboardDataScheduler.vshost.exe.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="obj\Debug\build.force" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\SocioboardDataScheduler.csprojResolveAssemblyReference.cache" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Web References\Api.FacebookAccount\FacebookAccount.wsdl" />
     <None Include="Web References\Api.FacebookAccount\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Web References\Api.Facebook\Facebook.wsdl" />
     <None Include="Web References\Api.Facebook\Reference.map">
@@ -245,109 +270,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/Instagram.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Instagram\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/Instagram.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>SocioboardDataScheduler_Api_Instagram_Instagram</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/InstagramAccount.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.InstagramAccount\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/InstagramAccount.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>SocioboardDataScheduler_Api_InstagramAccount_InstagramAccount</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/NewsLetter.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.NewsLetter\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/NewsLetter.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>SocioboardDataScheduler_Api_NewsLetter_NewsLetter</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/Tumblr.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Tumblr\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/Tumblr.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>SocioboardDataScheduler_Api_Tumblr_Tumblr</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/TumblrAccount.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.TumblrAccount\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/TumblrAccount.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>SocioboardDataScheduler_Api_TumblrAccount_TumblrAccount</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/Twitter.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Twitter\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/Twitter.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>SocioboardDataScheduler_Api_Twitter_Twitter</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/TwitterAccount.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.TwitterAccount\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/TwitterAccount.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>SocioboardDataScheduler_Api_TwitterAccount_TwitterAccount</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/Youtube.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Youtube\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/Youtube.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>SocioboardDataScheduler_Api_Youtube_Youtube</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/services/YoutubeAccount.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.YoutubeAccount\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/services/YoutubeAccount.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>SocioboardDataScheduler_Api_YoutubeAccount_YoutubeAccount</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/Services/Facebook.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/Facebook.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Facebook\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/Services/Facebook.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/Facebook.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -355,10 +281,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataScheduler_Api_Facebook_Facebook</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/Services/FacebookAccount.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/FacebookAccount.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.FacebookAccount\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/Services/FacebookAccount.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/FacebookAccount.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -366,10 +292,32 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataScheduler_Api_FacebookAccount_FacebookAccount</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/Services/Linkedin.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/Instagram.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Instagram\</RelPath>
+      <UpdateFromURL>http://localhost:6361/Services/Instagram.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SocioboardDataScheduler_Api_Instagram_Instagram</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/Services/InstagramAccount.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.InstagramAccount\</RelPath>
+      <UpdateFromURL>http://localhost:6361/Services/InstagramAccount.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SocioboardDataScheduler_Api_InstagramAccount_InstagramAccount</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/Services/Linkedin.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Linkedin\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/Services/Linkedin.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/Linkedin.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -377,10 +325,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataScheduler_Api_Linkedin_Linkedin</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/Services/LinkedinAccount.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/LinkedinAccount.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.LinkedinAccount\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/Services/LinkedinAccount.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/LinkedinAccount.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -388,10 +336,21 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataScheduler_Api_LinkedinAccount_LinkedinAccount</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/Services/ScheduledMessage.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/NewsLetter.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.NewsLetter\</RelPath>
+      <UpdateFromURL>http://localhost:6361/Services/NewsLetter.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SocioboardDataScheduler_Api_NewsLetter_NewsLetter</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/Services/ScheduledMessage.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.ScheduledMessage\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/Services/ScheduledMessage.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/ScheduledMessage.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -399,10 +358,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataScheduler_Api_ScheduledMessage_ScheduledMessage</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/Services/SocialProfile.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/SocialProfile.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.SocialProfile\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/Services/SocialProfile.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/SocialProfile.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -410,9 +369,116 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataScheduler_Api_SocialProfile_SocialProfile</CachedSettingsPropName>
     </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/Services/Tumblr.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Tumblr\</RelPath>
+      <UpdateFromURL>http://localhost:6361/Services/Tumblr.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SocioboardDataScheduler_Api_Tumblr_Tumblr</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/Services/TumblrAccount.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.TumblrAccount\</RelPath>
+      <UpdateFromURL>http://localhost:6361/Services/TumblrAccount.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SocioboardDataScheduler_Api_TumblrAccount_TumblrAccount</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/Services/Twitter.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Twitter\</RelPath>
+      <UpdateFromURL>http://localhost:6361/Services/Twitter.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SocioboardDataScheduler_Api_Twitter_Twitter</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/Services/TwitterAccount.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.TwitterAccount\</RelPath>
+      <UpdateFromURL>http://localhost:6361/Services/TwitterAccount.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SocioboardDataScheduler_Api_TwitterAccount_TwitterAccount</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/Services/Youtube.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Youtube\</RelPath>
+      <UpdateFromURL>http://localhost:6361/Services/Youtube.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SocioboardDataScheduler_Api_Youtube_Youtube</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/Services/YoutubeAccount.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.YoutubeAccount\</RelPath>
+      <UpdateFromURL>http://localhost:6361/Services/YoutubeAccount.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SocioboardDataScheduler_Api_YoutubeAccount_YoutubeAccount</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\Api.Instagram\Instagram.disco" />
+    <None Include="Web References\Api.ScheduledMessage\ScheduledMessage.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain.Socioboard\Domain.Socioboard.csproj">
+      <Project>{96ecfb64-a9ac-45f4-85bf-185e9c6a0f53}</Project>
+      <Name>Domain.Socioboard</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.FacebookAccount\FacebookAccount.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.SocialProfile\SocialProfile.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.TwitterAccount\TwitterAccount.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.Facebook\Facebook.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.Youtube\Youtube.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.LinkedinAccount\LinkedinAccount.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.YoutubeAccount\YoutubeAccount.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.Twitter\Twitter.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.TumblrAccount\TumblrAccount.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.Tumblr\Tumblr.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.Instagram\Instagram.disco">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\Api.InstagramAccount\InstagramAccount.disco" />
@@ -421,40 +487,36 @@
     <None Include="Web References\Api.NewsLetter\NewsLetter.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\Api.Tumblr\Tumblr.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\Api.TumblrAccount\TumblrAccount.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\Api.Twitter\Twitter.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\Api.TwitterAccount\TwitterAccount.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\Api.Youtube\Youtube.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\Api.YoutubeAccount\YoutubeAccount.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\Api.Facebook\Facebook.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\Api.FacebookAccount\FacebookAccount.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Web References\Api.Linkedin\Linkedin.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\Api.LinkedinAccount\LinkedinAccount.disco" />
+    <Content Include="bin\Debug\Domain.Socioboard.dll" />
+    <Content Include="bin\Debug\Domain.Socioboard.pdb" />
+    <Content Include="bin\Debug\Facebook.dll" />
+    <Content Include="bin\Debug\Iesi.Collections.dll" />
+    <Content Include="bin\Debug\Iesi.Collections.pdb" />
+    <Content Include="bin\Debug\Iesi.Collections.xml" />
+    <Content Include="bin\Debug\MySql.Data.dll" />
+    <Content Include="bin\Debug\MySql.Data.Entity.dll" />
+    <Content Include="bin\Debug\Newtonsoft.Json.dll" />
+    <Content Include="bin\Debug\NHibernate.dll" />
+    <Content Include="bin\Debug\NHibernate.Linq.dll" />
+    <Content Include="bin\Debug\NHibernate.pdb" />
+    <Content Include="bin\Debug\NHibernate.xml" />
+    <Content Include="bin\Debug\NHibernateHelper.dll" />
+    <Content Include="bin\Debug\NHibernateHelper.pdb" />
+    <Content Include="bin\Debug\SocioboardDataScheduler.exe" />
+    <Content Include="bin\Debug\SocioboardDataScheduler.pdb" />
+    <Content Include="bin\Debug\SocioboardDataScheduler.vshost.exe" />
+    <Content Include="bin\MySql.Data.dll" />
+    <Content Include="bin\MySql.Data.Entity.dll" />
+    <Content Include="obj\Debug\SocioboardDataScheduler.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\SocioboardDataScheduler.exe" />
+    <Content Include="obj\Debug\SocioboardDataScheduler.pdb" />
+    <Content Include="obj\Debug\TempPE\Web References.Api.Facebook.Reference.cs.dll" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\Api.ScheduledMessage\ScheduledMessage.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\Api.SocialProfile\SocialProfile.disco" />
+    <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

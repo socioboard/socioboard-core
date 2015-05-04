@@ -21,13 +21,10 @@ namespace SocioboardDataServices
                 List<Domain.Socioboard.Domain.Team> lstGroupMember = new List<Domain.Socioboard.Domain.Team>();
                 List<Domain.Socioboard.Domain.TicketAssigneeStatus> lstAllAssignedMembers = new List<Domain.Socioboard.Domain.TicketAssigneeStatus>();
 
-                //Get All Negative Feeds of FeedSentimentalAnalysis
                 lstNegativeFeed = (List<Domain.Socioboard.Domain.FeedSentimentalAnalysis>)(new JavaScriptSerializer().Deserialize(Apiobjsentimentalanalysis.getAllNegativeFeedsOfProfile(), typeof(List<Domain.Socioboard.Domain.FeedSentimentalAnalysis>)));
-                
                 int FeedNumber = lstNegativeFeed.Count;
                 if (FeedNumber > 0)
                 {
-                    //get all Teams with profiles having negative feeds
                     lstGroupMember = (List<Domain.Socioboard.Domain.Team>)(new JavaScriptSerializer().Deserialize(ApiobjTeam.getAllGroupMembersofTeam(), typeof(List<Domain.Socioboard.Domain.Team>)));
                 }
                 foreach (var lstGroupMember_item in lstGroupMember)
@@ -63,7 +60,30 @@ namespace SocioboardDataServices
                         ApiobjTicketAssigneeStatus.updateAssigneeCount(objTicketAssigneeStatus.AssigneeUserId.ToString(), Count);
                     }
                 }
-                return "Successfully Updated";
+
+                //#region Old Code
+                //if (MemberNumber > 0)
+                //{
+                //    Domain.Socioboard.Domain.Team Member = new Domain.Socioboard.Domain.Team();
+                //    int j = 0;
+                //    for (int i = 0; i < FeedNumber; i++)
+                //    {
+                //        Domain.Socioboard.Domain.FeedSentimentalAnalysis Feed = lstNegativeFeed[i];
+                //        if (j == MemberNumber)
+                //        {
+                //            j = 0;
+                //        }
+                //        Member = lstGroupMember[j];
+                //        j++;
+
+                //        Guid Id = Feed.Id;
+                //        Guid ToAssignUserId = Member.UserId;
+                //        Apiobjsentimentalanalysis.updateAssignedStatus(Id.ToString(), ToAssignUserId.ToString());
+                //    }
+                //} 
+                //#endregion
+
+                return "";
             }
             catch (Exception ex)
             {

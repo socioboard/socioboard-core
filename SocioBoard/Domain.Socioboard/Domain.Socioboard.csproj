@@ -140,6 +140,7 @@
     <Compile Include="Domain\LinkedInMessage.cs" />
     <Compile Include="Domain\LinkedinPageComment.cs" />
     <Compile Include="Domain\LinkedInUser.cs" />
+    <Compile Include="Domain\LinkedIn_Update_Messages.cs" />
     <Compile Include="Domain\Log.cs" />
     <Compile Include="Domain\LoginLogs.cs" />
     <Compile Include="Domain\MandrillAccount.cs" />
@@ -165,6 +166,7 @@
     <Compile Include="Domain\TwitterAccount.cs" />
     <Compile Include="Domain\TwitterAccountFollowers.cs" />
     <Compile Include="Domain\TwitterDirectMessages.cs" />
+    <Compile Include="Domain\TwitterEngagement.cs" />
     <Compile Include="Domain\TwitterFeed.cs" />
     <Compile Include="Domain\TwitterMessage.cs" />
     <Compile Include="Domain\TwitterStats.cs" />

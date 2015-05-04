@@ -10,7 +10,7 @@ namespace Domain.Socioboard.Domain
     {
         public Guid Id { get; set; }
         public string ProfilePageId { get; set; }
-        public string FacebookAccountId { get; set; }
+        //public string FacebookAccountId { get; set; }
         public string FanpageCount { get; set; }
         public DateTime EntryDate { get; set; }
         public Guid UserId { get; set; }

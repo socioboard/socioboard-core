@@ -134,6 +134,24 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="FacebookComposeMessageForPage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profileid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="currentdatetime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="imagepath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FacebookComposeMessageForPageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FacebookComposeMessageForPageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="FacebookLogin">
         <s:complexType>
           <s:sequence>
@@ -481,6 +499,12 @@
   <wsdl:message name="FacebookComposeMessageSoapOut">
     <wsdl:part name="parameters" element="tns:FacebookComposeMessageResponse" />
   </wsdl:message>
+  <wsdl:message name="FacebookComposeMessageForPageSoapIn">
+    <wsdl:part name="parameters" element="tns:FacebookComposeMessageForPage" />
+  </wsdl:message>
+  <wsdl:message name="FacebookComposeMessageForPageSoapOut">
+    <wsdl:part name="parameters" element="tns:FacebookComposeMessageForPageResponse" />
+  </wsdl:message>
   <wsdl:message name="FacebookLoginSoapIn">
     <wsdl:part name="parameters" element="tns:FacebookLogin" />
   </wsdl:message>
@@ -661,6 +685,16 @@
     <wsdl:part name="imagepath" type="s:string" />
   </wsdl:message>
   <wsdl:message name="FacebookComposeMessageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="FacebookComposeMessageForPageHttpGetIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="currentdatetime" type="s:string" />
+    <wsdl:part name="imagepath" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FacebookComposeMessageForPageHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="FacebookLoginHttpGetIn">
@@ -875,6 +909,16 @@
   <wsdl:message name="FacebookComposeMessageHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="FacebookComposeMessageForPageHttpPostIn">
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="profileid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="currentdatetime" type="s:string" />
+    <wsdl:part name="imagepath" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FacebookComposeMessageForPageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="FacebookLoginHttpPostIn">
     <wsdl:part name="code" type="s:string" />
   </wsdl:message>
@@ -1052,6 +1096,10 @@
       <wsdl:input message="tns:FacebookComposeMessageSoapIn" />
       <wsdl:output message="tns:FacebookComposeMessageSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="FacebookComposeMessageForPage">
+      <wsdl:input message="tns:FacebookComposeMessageForPageSoapIn" />
+      <wsdl:output message="tns:FacebookComposeMessageForPageSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="FacebookLogin">
       <wsdl:input message="tns:FacebookLoginSoapIn" />
       <wsdl:output message="tns:FacebookLoginSoapOut" />
@@ -1162,6 +1210,10 @@
       <wsdl:input message="tns:FacebookComposeMessageHttpGetIn" />
       <wsdl:output message="tns:FacebookComposeMessageHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="FacebookComposeMessageForPage">
+      <wsdl:input message="tns:FacebookComposeMessageForPageHttpGetIn" />
+      <wsdl:output message="tns:FacebookComposeMessageForPageHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="FacebookLogin">
       <wsdl:input message="tns:FacebookLoginHttpGetIn" />
       <wsdl:output message="tns:FacebookLoginHttpGetOut" />
@@ -1271,6 +1323,10 @@
     <wsdl:operation name="FacebookComposeMessage">
       <wsdl:input message="tns:FacebookComposeMessageHttpPostIn" />
       <wsdl:output message="tns:FacebookComposeMessageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FacebookComposeMessageForPage">
+      <wsdl:input message="tns:FacebookComposeMessageForPageHttpPostIn" />
+      <wsdl:output message="tns:FacebookComposeMessageForPageHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="FacebookLogin">
       <wsdl:input message="tns:FacebookLoginHttpPostIn" />
@@ -1416,6 +1472,15 @@
     </wsdl:operation>
     <wsdl:operation name="FacebookComposeMessage">
       <soap:operation soapAction="http://tempuri.org/FacebookComposeMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FacebookComposeMessageForPage">
+      <soap:operation soapAction="http://tempuri.org/FacebookComposeMessageForPage" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1669,6 +1734,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="FacebookComposeMessageForPage">
+      <soap12:operation soapAction="http://tempuri.org/FacebookComposeMessageForPage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="FacebookLogin">
       <soap12:operation soapAction="http://tempuri.org/FacebookLogin" style="document" />
       <wsdl:input>
@@ -1915,6 +1989,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="FacebookComposeMessageForPage">
+      <http:operation location="/FacebookComposeMessageForPage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="FacebookLogin">
       <http:operation location="/FacebookLogin" />
       <wsdl:input>
@@ -2154,6 +2237,15 @@
     </wsdl:operation>
     <wsdl:operation name="FacebookComposeMessage">
       <http:operation location="/FacebookComposeMessage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FacebookComposeMessageForPage">
+      <http:operation location="/FacebookComposeMessageForPage" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

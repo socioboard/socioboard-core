@@ -174,6 +174,7 @@ namespace Api.Socioboard.Services
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.StackTrace);
+                    FacebookFanPageId = null;
                 }
                 try
                 {
@@ -182,6 +183,7 @@ namespace Api.Socioboard.Services
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.StackTrace);
+                    TwitterprofileId = null;
                 }
                 try
                 {
@@ -190,6 +192,7 @@ namespace Api.Socioboard.Services
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.StackTrace);
+                    FacebookprofileId = null;
                 }
                 #endregion
 
@@ -207,6 +210,10 @@ namespace Api.Socioboard.Services
                         Console.WriteLine(ex.StackTrace);
                     }
                 }
+                else
+                {
+                    FacebookInboxMessagecount = (0).ToString();
+                }
                
                 if (!string.IsNullOrEmpty(TwitterprofileId))
                 {
@@ -221,8 +228,11 @@ namespace Api.Socioboard.Services
                         Console.WriteLine(ex.StackTrace);
                     }
                 }
-               
-                   
+
+                else
+                {
+                    TwitterInboxMessagecount = (0).ToString();
+                }
                
                 _GroupStatDetails.IncommingMessage = (Convert.ToInt32(FacebookInboxMessagecount) + Convert.ToInt32(TwitterInboxMessagecount));
                 #endregion

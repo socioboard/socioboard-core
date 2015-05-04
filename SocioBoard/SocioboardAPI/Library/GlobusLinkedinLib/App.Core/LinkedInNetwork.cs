@@ -35,7 +35,7 @@ namespace GlobusLinkedinLib.App.Core
             public string Title { get; set; }
             public string ShortenUrl { get; set; }
             public string url { get; set; }
-            
+            public string ImageUrl { get; set; }
 
         }
 
@@ -48,7 +48,7 @@ namespace GlobusLinkedinLib.App.Core
         /// <returns></returns>
         public List<Network_Updates> GetNetworkUpdates(oAuthLinkedIn OAuth, int Count)
         {
-            Network_Updates network_Updates = new Network_Updates();
+            Network_Updates network_Updates;
 
             //SocialStream socialStream = new SocialStream();
             ShareAndSocialStream socialStream = new ShareAndSocialStream();
@@ -58,7 +58,7 @@ namespace GlobusLinkedinLib.App.Core
 
             foreach (XmlNode xn in xmlNodeList)
             {
-
+                network_Updates = new Network_Updates();
                 try
                 {
                     XmlElement Element = (XmlElement)xn;
@@ -79,8 +79,6 @@ namespace GlobusLinkedinLib.App.Core
                     }
                     catch
                     { }
-
-
                     try
                     {
                         network_Updates.Description = Element.GetElementsByTagName("description")[0].InnerText;
@@ -108,14 +106,18 @@ namespace GlobusLinkedinLib.App.Core
                         network_Updates.PersonFirstName = Element.GetElementsByTagName("first-name")[0].InnerText;
                     }
                     catch
-                    { }
+                    {
+                        network_Updates.PersonFirstName = Element.GetElementsByTagName("name")[0].InnerText;
+                    }
 
                     try
                     {
                         network_Updates.PersonLastName = Element.GetElementsByTagName("last-name")[0].InnerText;
                     }
                     catch
-                    { }
+                    {
+                        network_Updates.PersonLastName = null;
+                    }
 
                     try
                     {
@@ -133,12 +135,34 @@ namespace GlobusLinkedinLib.App.Core
 
                     try
                     {
-                        network_Updates.url = Element.GetElementsByTagName("url")[0].InnerText;
+                        if (network_Updates.UpdateType == "CMPY")
+                        {
+                            if (!(Element.GetElementsByTagName("url")[0].InnerText).Contains("api.linkedin.com"))
+                            {
+                                network_Updates.url = Element.GetElementsByTagName("url")[0].InnerText;
+                            }
+                            else {
+                                network_Updates.url = Element.GetElementsByTagName("url")[1].InnerText;
+                            }
+                        }
+                        else {
+                            network_Updates.url = Element.GetElementsByTagName("url")[1].InnerText;
+                        }
                     }
                     catch
                     { }
-
-
+                    try
+                    {
+                        network_Updates.ImageUrl = Element.GetElementsByTagName("submitted-image-url")[0].InnerText;
+                    }
+                    catch
+                    { }
+                    try
+                    {
+                        network_Updates.id = Element.GetElementsByTagName("id")[1].InnerText;
+                    }
+                    catch
+                    { }
 
                     string MessageType = Element.GetElementsByTagName("update-type")[0].InnerText;
 

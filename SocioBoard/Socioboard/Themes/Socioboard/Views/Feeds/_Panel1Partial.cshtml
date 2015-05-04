@@ -1,10 +1,10 @@
 ﻿@using Domain.Socioboard.Domain;
+@using Socioboard.Helper;
 @{
     Layout = null;
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
     bool check = true;
 }
-
 
 <ul class="chat">
     @foreach (var dicitem in (Dictionary<string, List<object>>)Model)
@@ -28,7 +28,10 @@
                 <div>
                     <a target="_blank" href="http://www.facebook.com/@item.FromId"><strong class="primary-font">@item.FromName</strong></a>
                     <small class="pull-right text-muted">
-                        <i class="fa fa-clock-o fa-fw"></i>@item.MessageDate
+                        @{
+                        string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.MessageDate.ToLocalTime().ToString());
+                        }
+                        <i class="fa fa-clock-o fa-fw"></i>@messagedate
                     </small>
                 </div>
                 <div style="margin-top: 2%;">
@@ -42,7 +45,7 @@
                                 {
                                     if (substritem.Contains("http"))
                                     {
-                    <a target="_blank" href="@substritem ">@substritem</a>
+                        <a target="_blank" href="@substritem ">@substritem</a>
                                     }
                                     else
                                     {
@@ -60,11 +63,11 @@
                                         }
                                         if (!string.IsNullOrEmpty(hrefPost))
                                         {
-                    <a target="_blank" href="@hrefPost">@substritem</a>
+                        <a target="_blank" href="@hrefPost">@substritem</a>
                                         }
                                         else
                                         {
-                    @substritem;
+                        @substritem;
 
                                         }
                                     }
@@ -83,7 +86,7 @@
                     }
                     else
                     {
-                     
+
                         {
                             string hrefPost = string.Empty;
 
@@ -99,23 +102,23 @@
                             }
                             if (!string.IsNullOrEmpty(hrefPost))
                             {
-                    <a target="_blank" href="@hrefPost">@item.Message</a>
+                        <a target="_blank" href="@hrefPost">@item.Message</a>
                             }
                             else
                             {
-                    @item.Message;
+                        @item.Message;
 
                             }
                         }
                     }
-                
-                @*Display image of post*@
-                @if (!string.IsNullOrEmpty(item.Picture) && item.Picture != null)
-                {
-                    <br />
-                    <img src="@item.Picture" style="width: 180px; height: 90px; margin-top: 5%;"> </img>
-                }
-                    </div>
+
+                    @*Display image of post*@
+                    @if (!string.IsNullOrEmpty(item.Picture) && item.Picture != null)
+                    {
+                        <br />
+                        <img src="@item.Picture" style="margin-top: 3%;"> </img>
+                    }
+                </div>
             </div>
             <br />
             <div class="input-group">
@@ -155,61 +158,64 @@
                 <div>
                     <a target="_blank" href="http://www.facebook.com/@item.FromId"><strong class="pull-right primary-font">@item.FromName</strong></a>
                     <small class="text-muted">
-                        <i class="fa fa-clock-o fa-fw"></i>@item.MessageDate
+                        @{
+                        string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.MessageDate.ToLocalTime().ToString());
+                        }
+                        <i class="fa fa-clock-o fa-fw"></i>@messagedate
                     </small>
                 </div>
                 <div style="margin-top: 2%;">
-                @foreach (string substritem in str)
-                {
-                    try
+                    @foreach (string substritem in str)
                     {
-                        if (!string.IsNullOrEmpty(substritem))
+                        try
                         {
-                            if (substritem.Contains("http"))
+                            if (!string.IsNullOrEmpty(substritem))
                             {
-                    <a target="_blank" href="@substritem ">@substritem</a>
-                            }
-                            else
-                            {
-                                string hrefPost = string.Empty;
-
-                                try
+                                if (substritem.Contains("http"))
                                 {
-                                    hrefPost = "https://www.facebook.com/" + item.FromId + "/posts/" + item.MessageId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
-
-                                }
-                                catch (Exception ex)
-                                {
-                                    Console.WriteLine("Error : " + ex.StackTrace);
-
-                                }
-                                if (!string.IsNullOrEmpty(hrefPost))
-                                {
-                    <a target="_blank" href="@hrefPost">@substritem</a>
+                        <a target="_blank" href="@substritem ">@substritem</a>
                                 }
                                 else
                                 {
-                    @substritem;
+                                    string hrefPost = string.Empty;
 
+                                    try
+                                    {
+                                        hrefPost = "https://www.facebook.com/" + item.FromId + "/posts/" + item.MessageId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
+
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Console.WriteLine("Error : " + ex.StackTrace);
+
+                                    }
+                                    if (!string.IsNullOrEmpty(hrefPost))
+                                    {
+                        <a target="_blank" href="@hrefPost">@substritem</a>
+                                    }
+                                    else
+                                    {
+                        @substritem;
+
+                                    }
                                 }
+
+
                             }
-
-
                         }
+                        catch (Exception ex)
+                        {
+                        }
+
                     }
-                    catch (Exception ex)
+
+                    @*Display image of post*@
+                    @if (!string.IsNullOrEmpty(item.Picture) && item.Picture != null)
                     {
+                        <br />
+                        <img src="@item.Picture" style="margin-top: 3%;"> </img>
                     }
-
-                }
-
-                  @*Display image of post*@
-                @if (!string.IsNullOrEmpty(item.Picture) && item.Picture != null)
-                {
-                    <br />
-                    <img src="@item.Picture" style="width: 180px; height: 90px; margin-top: 5%;"> </img>
-                }
-                 </div>
+                </div>
             </div>
             <br />
             <div class="input-group">
@@ -265,7 +271,7 @@
             </span>
             <div class="chat-body clearfix">
                 <div>
-                    <a target="_blank" href="http://www.facebook.com/@item.FromId"><strong class="primary-font">@item.FromName</strong></a>
+                    <a target="_blank" href="http://www.twitter.com/@item.ScreenName"><strong class="primary-font">@item.FromName</strong></a>
                     <div class="btn-group pull-right open">
                         <div id="feed_action_@i.ToString()" class="menu_button" title = "Option" style="height: auto;cursor:pointer" onClick="Show_twt_menu('@i.ToString()')">
                             <i class="fa fa-cog"></i>
@@ -280,8 +286,11 @@
                             </ul>
                         </div>
                     </div>
-                    <small class="pull-left text-muted">
-                        <i class="fa fa-clock-o fa-fw"></i>@item.FeedDate
+                    <small class="pull-right text-muted">
+                        @{
+                        string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.FeedDate.ToLocalTime().ToString());
+                        }
+                        <i class="fa fa-clock-o fa-fw"></i>@messagedate
                     </small>
 
 
@@ -350,7 +359,7 @@
             </span>
             <div class="chat-body clearfix">
                 <div>
-                    <a target="_blank" href="http://www.facebook.com/@item.FromId"><strong class="pull-right primary-font">@item.FromName</strong></a>
+                    <a target="_blank" href="http://www.twitter.com/@item.ScreenName"><strong class="pull-right primary-font">@item.FromName</strong></a>
                     <div class="btn-group open">
                         <div id="feed_action_@i.ToString()" class="menu_button" title = "Option" style="height: auto;cursor:pointer" onClick="Show_twt_menu('@i.ToString()')">
                             <i class="fa fa-cog"></i>
@@ -365,8 +374,11 @@
                             </ul>
                         </div>
                     </div>
-                    <small class="text-muted pull-right">
-                        @item.FeedDate<i class="fa fa-clock-o fa-fw"></i>
+                    <small class="text-muted">
+                        @{
+                        string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.FeedDate.ToLocalTime().ToString());
+                        }
+                        @messagedate<i class="fa fa-clock-o fa-fw"></i>
                     </small>
 
 
@@ -450,7 +462,7 @@
                     string PicUrl = string.Empty;
                     if (string.IsNullOrEmpty(item.FromPicUrl))
                     {
-                        PicUrl = "../Contents/img/blank_img.png";
+                        PicUrl = "../Themes/Socioboard/Contents/img/anonymousUser.jpg";
                     }
                     else
                     {
@@ -464,15 +476,26 @@
             </span>
             <div class="chat-body clearfix">
                 <div>
-                    <a target="_blank" href="#"><strong class="primary-font">@item.FromName</strong></a>
+                    <a target="_blank" href="@item.FromUrl"><strong class="primary-font">@item.FromName</strong></a>
                     <small class="pull-right text-muted">
-                        <i class="fa fa-clock-o fa-fw"></i>@item.FeedsDate
+                        @{
+                        string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.FeedsDate.ToLocalTime().ToString());
+                        }
+                        <i class="fa fa-clock-o fa-fw"></i>@messagedate
                     </small>
-                    <div id="sendMailleft"><span class="mail_icon" onclick="mail('@item.ProfileId','@item.Id')" data-target="#mailpopup" data-toggle="modal">
-                        <img alt="" src="/Themes/@path/Contents/img/download.jpg" title="Mail"></span></div>
+                    <div id="sendMailleft">
+                        <span class="mail_icon" onclick="mail('@item.ProfileId','@item.Id')" data-target="#mailpopup" data-toggle="modal">
+                            <img alt="" src="/Themes/@path/Contents/img/download.jpg" title="Mail"></span>
+                    </div>
                 </div>
-
-                <a target="_blank" href="#">@item.Feeds</a>
+                @if (!string.IsNullOrEmpty(item.ImageUrl))
+                {
+                    <br />
+                    <img src="@item.ImageUrl" style="margin-top: 3%; height:100px;" /> 
+                }
+                <p>
+                <a>@item.Feeds</a>
+                    </p>
             </div>
 
 
@@ -487,20 +510,30 @@
             </span>
             <div class="chat-body clearfix">
                 <div>
-                    <a target="_blank" href="#"><strong class="pull-right primary-font">@item.FromName</strong></a>
+                    <a target="_blank" href="@item.FromUrl"><strong class="pull-right primary-font">@item.FromName</strong></a>
                     <small class="text-muted">
-                        <i class="fa fa-clock-o fa-fw"></i>@item.FeedsDate
+                        @{
+                        string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.FeedsDate.ToLocalTime().ToString());
+                        }
+                        <i class="fa fa-clock-o fa-fw"></i>@messagedate
                     </small>
-                    <div id="sendMailright" onclick="#mail"><span class="mail_icon" onclick="mail('@item.ProfileId','@item.Id')" data-target="#mailpopup" data-toggle="modal">
-                        <img alt="" src="/Themes/@path/Contents/img/download.jpg" title="Mail"></span></div>
+                    <div id="sendMailright" onclick="#mail">
+                        <span class="mail_icon" onclick="mail('@item.ProfileId','@item.Id')" data-target="#mailpopup" data-toggle="modal">
+                            <img alt="" src="/Themes/@path/Contents/img/download.jpg" title="Mail"></span>
+                    </div>
                 </div>
-
-                <a target="_blank" href="#">@item.Feeds</a>
-
+                @if (!string.IsNullOrEmpty(item.ImageUrl))
+                {
+                    <br />
+                    <img src="@item.ImageUrl" style="margin-top: 5%; height:100px;" /> 
+                }
+                <p>
+                    <a>@item.Feeds</a>
+                </p>
             </div>
 
         </li>  
-                        check = true;
+                check = true;
                     }
                 }
                 catch (Exception ex)

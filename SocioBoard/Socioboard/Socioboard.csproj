@@ -42,6 +42,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataStreams">
+      <HintPath>lib\DataStreams.dll</HintPath>
+    </Reference>
     <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Facebook.6.8.0\lib\net45\Facebook.dll</HintPath>
@@ -50,6 +53,12 @@
       <HintPath>..\SocioboardAPI\lib\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Access, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Recaptcha">
       <HintPath>..\SocioboardAPI\lib\Recaptcha.dll</HintPath>
     </Reference>
@@ -414,6 +423,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\Api.LinkedinMessage\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\Api.Linkedin\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -542,6 +556,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="log.txt" />
     <Content Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -1923,7 +1938,6 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.Instagram\Instagram.disco" />
     <None Include="Web References\Api.InstagramAccount\InstagramAccount.disco" />
     <None Include="Web References\Api.InstagramFeed\InstagramFeed.disco" />
     <None Include="Web References\Api.Invitation\Invitation.disco" />
@@ -1940,6 +1954,11 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Web References\Api.LinkedinMessage\LinkedinMessage.wsdl" />
+    <Content Include="Web References\Api.LinkedinMessage\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <None Include="Web References\Api.Linkedin\Linkedin.wsdl" />
     <None Include="Web References\Api.Linkedin\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -2091,6 +2110,17 @@
     <None Include="Web References\Api.Facebook\Facebook.disco">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Web References\Api.Instagram\Instagram.disco" />
+    <Content Include="Web References\Api.LinkedinMessage\LinkedinMessage.disco" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
     <Content Include="Scripts\_references.js" />
     <None Include="Themes\Socioboard\Contents\js\jquery-1.4.1-vsdoc.js" />
     <Content Include="Themes\Socioboard\Views\Index\_ViewStart.cshtml" />
@@ -2103,13 +2133,6 @@
     <None Include="Web References\Api.YoutubeAccount\YoutubeAccount.wsdl" />
     <None Include="Web References\Api.YoutubeChannel\YoutubeChannel.wsdl" />
     <None Include="Web References\Api.Youtube\Youtube.wsdl" />
-    <Content Include="Web.config" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2235,6 +2258,28 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_FacebookAccount_FacebookAccount</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/Services/Instagram.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Instagram\</RelPath>
+      <UpdateFromURL>http://localhost:6361/Services/Instagram.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_Instagram_Instagram</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/Services/LinkedinMessage.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.LinkedinMessage\</RelPath>
+      <UpdateFromURL>http://localhost:6361/Services/LinkedinMessage.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_LinkedinMessage_LinkedinMessage</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost:6361/Services/ScheduledMessage.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
@@ -2445,17 +2490,6 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_GroupScheduleMessage_GroupScheduleMessage</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Instagram.asmx%3fop=GetTwitterRedirectUrl">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Instagram\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Instagram.asmx%3fop=GetTwitterRedirectUrl</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_Instagram_Instagram</CachedSettingsPropName>
-    </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost:6361/Services/InstagramAccount.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.InstagramAccount\</RelPath>
@@ -2478,10 +2512,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_InstagramComment_InstagramComment</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/InstagramFeed.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/InstagramFeed.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.InstagramFeed\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/InstagramFeed.asmx</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/Services/InstagramFeed.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

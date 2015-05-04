@@ -51,8 +51,8 @@
                 @foreach (var facebook in lstFacebookAccount)
                 {
                     FacebookAccount objFacebookAccount = (FacebookAccount)facebook;
-                    <li onclick="facebookdetails('@objFacebookAccount.FbUserId');" id="first-profile-load_@pcount">
-                        <a href="#"><img src="http://graph.facebook.com/@objFacebookAccount.FbUserId/picture?type=small" width="20" height="20"></img>&nbsp;@objFacebookAccount.FbUserName</a>
+                    <li onclick="facebookdetails('@objFacebookAccount.FbUserId','@pcount');" id="first-profile-load_@pcount">
+                        <a href="#" id="first-profile-load_Id_@pcount"><img src="http://graph.facebook.com/@objFacebookAccount.FbUserId/picture?type=small" width="20" height="20"></img>&nbsp;@objFacebookAccount.FbUserName</a>
                     </li> 
                     pcount++;
                 }
@@ -73,8 +73,8 @@
                 @foreach (var twitterAccount in lstTwitterAccount)
                 {
                     TwitterAccount objTwitterAccount = (TwitterAccount)twitterAccount;
-                    <li onclick="twitterdetails('@objTwitterAccount.TwitterUserId');" id="first-profile-load_@pcount">
-                        <a href="#"><img src="@objTwitterAccount.ProfileImageUrl" width="20" height="20"></img>&nbsp;@objTwitterAccount.TwitterScreenName</a>
+                    <li onclick="twitterdetails('@objTwitterAccount.TwitterUserId','@pcount');" id="first-profile-load_@pcount">
+                        <a href="#" id="first-profile-load_Id_@pcount"><img src="@objTwitterAccount.ProfileImageUrl" width="20" height="20"></img>&nbsp;@objTwitterAccount.TwitterScreenName</a>
                     </li> 
                     pcount++;
                 }
@@ -111,8 +111,8 @@
                           if (linkedin != null)
                           {
                               LinkedInAccount objFacebookAccount = (LinkedInAccount)linkedin;
-                               <li onclick="linkedindetails('@objFacebookAccount.LinkedinUserId');" id="first-profile-load_@pcount">
-                                    <a href="#"><img src="@objFacebookAccount.ProfileImageUrl" width="20" height="20"></img>&nbsp;@objFacebookAccount.LinkedinUserName</a>
+                               <li onclick="linkedindetails('@objFacebookAccount.LinkedinUserId','@pcount');" id="first-profile-load_@pcount">
+                                    <a href="#" id="first-profile-load_Id_@pcount"><img src="@objFacebookAccount.ProfileImageUrl" width="20" height="20"></img>&nbsp;@objFacebookAccount.LinkedinUserName</a>
                                 </li> 
                               pcount++;
                           }
@@ -143,8 +143,8 @@
                             if (linkedin != null)
                             {
                                 LinkedinCompanyPage objLiCompanyPage = (LinkedinCompanyPage)linkedin;
-                               <li onclick="linkedinpagedetails('@objLiCompanyPage.LinkedinPageId');" id="first-profile-load_@pcount">
-                                    <a href="#"><img src="@objLiCompanyPage.LogoUrl" width="20" height="20"></img>&nbsp;@objLiCompanyPage.LinkedinPageName</a>
+                               <li onclick="linkedinpagedetails('@objLiCompanyPage.LinkedinPageId','@pcount');" id="first-profile-load_@pcount">
+                                    <a href="#" id="first-profile-load_Id_@pcount"><img src="@objLiCompanyPage.LogoUrl" width="20" height="20"></img>&nbsp;@objLiCompanyPage.LinkedinPageName</a>
                                </li>
                                 pcount++;
                             }
@@ -166,13 +166,15 @@
             if (lstInstagramAccount.Count > 0)
             {
         <li>
-            <a href="#">Instagram <span class="fa arrow"></span></a>
+            <a href="#">Instagram <span class="fa arrow"></span>
+                <span class="badge pull-right">Beta</span>
+            </a>
             <ul class="nav nav-third-level">
                 @foreach (var Instagram in lstInstagramAccount)
                 {
                     InstagramAccount objInstagramAccount = (InstagramAccount)Instagram;
-                    <li onclick="Instagramdetails('@objInstagramAccount.InstagramId');" id="first-profile-load_@pcount">
-                        <a href="#"><img src="@objInstagramAccount.ProfileUrl" width="20" height="20"></img>&nbsp;@objInstagramAccount.InsUserName</a>
+                    <li onclick="Instagramdetails('@objInstagramAccount.InstagramId','@pcount');" id="first-profile-load_@pcount">
+                        <a href="#" id="first-profile-load_Id_@pcount"><img src="@objInstagramAccount.ProfileUrl" width="20" height="20"></img>&nbsp;@objInstagramAccount.InsUserName</a>
                     </li> 
                     pcount++;
                 }
@@ -188,14 +190,16 @@
             if (lstFacebookAccount.Count > 0)
             {
         <li>
-            <a href="#">Tumblr <span class="fa arrow"></span></a>
+            <a href="#">Tumblr <span class="fa arrow"></span>
+                <span class="badge pull-right">Beta</span>
+            </a>
             <ul class="nav nav-third-level">
                 @foreach (var facebook in lstFacebookAccount)
                 {
                     TumblrAccount objTumblrAccount = (TumblrAccount)facebook;
                     string tumblruserimage = "http://api.tumblr.com/v2/blog/" + objTumblrAccount.tblrUserName + ".tumblr.com/avatar";
-                    <li onclick="tumblrdetails('@objTumblrAccount.tblrUserName');" id="first-profile-load_@pcount">
-                        <a href="#"><img src="@tumblruserimage" width="20" height="20"></img>&nbsp;@objTumblrAccount.tblrUserName</a>
+                    <li onclick="tumblrdetails('@objTumblrAccount.tblrUserName','@pcount');" id="first-profile-load_@pcount">
+                        <a href="#" id="first-profile-load_Id_@pcount"><img src="@tumblruserimage" width="20" height="20"></img>&nbsp;@objTumblrAccount.tblrUserName</a>
                     </li> 
                     pcount++;
                 }
@@ -211,13 +215,15 @@
             if (lstYoutubeAccount.Count > 0)
             {
         <li>
-            <a href="#">Youtube <span class="fa arrow"></span></a>
+            <a href="#">Youtube <span class="fa arrow"></span>
+                <span class="badge pull-right">Beta</span>
+            </a>
             <ul class="nav nav-third-level">
                 @foreach (var YoutubeAccount in lstYoutubeAccount)
                 {
                     YoutubeAccount objYoutubeAccount = (YoutubeAccount)YoutubeAccount;
-                    <li onclick="youtubedetails('@objYoutubeAccount.Ytuserid');" id="first-profile-load_@pcount">
-                        <a href="#"><img src="@objYoutubeAccount.Ytprofileimage" width="20" height="20"></img>&nbsp;@objYoutubeAccount.Ytusername</a>
+                    <li onclick="youtubedetails('@objYoutubeAccount.Ytuserid','@pcount');" id="first-profile-load_@pcount">
+                        <a href="#" id="first-profile-load_Id_@pcount"><img src="@objYoutubeAccount.Ytprofileimage" width="20" height="20"></img>&nbsp;@objYoutubeAccount.Ytusername</a>
                     </li> 
                     pcount++;
                 }

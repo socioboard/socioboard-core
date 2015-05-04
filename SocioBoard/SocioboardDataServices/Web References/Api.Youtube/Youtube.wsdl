@@ -50,17 +50,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="Get_Channel_List_serarch">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="search" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Get_Channel_List_serarchResponse">
-        <s:complexType />
-      </s:element>
       <s:element name="getYoutubeData">
         <s:complexType>
           <s:sequence>
@@ -92,20 +81,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="UpdateYouTubeAccountByAdmin">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="ObjYouTube" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="UpdateYouTubeAccountByAdminResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="UpdateYouTubeAccountByAdminResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -127,12 +102,6 @@
   <wsdl:message name="GoogleLoginSoapOut">
     <wsdl:part name="parameters" element="tns:GoogleLoginResponse" />
   </wsdl:message>
-  <wsdl:message name="Get_Channel_List_serarchSoapIn">
-    <wsdl:part name="parameters" element="tns:Get_Channel_List_serarch" />
-  </wsdl:message>
-  <wsdl:message name="Get_Channel_List_serarchSoapOut">
-    <wsdl:part name="parameters" element="tns:Get_Channel_List_serarchResponse" />
-  </wsdl:message>
   <wsdl:message name="getYoutubeDataSoapIn">
     <wsdl:part name="parameters" element="tns:getYoutubeData" />
   </wsdl:message>
@@ -144,12 +113,6 @@
   </wsdl:message>
   <wsdl:message name="SheduleYoutubeMessageSoapOut">
     <wsdl:part name="parameters" element="tns:SheduleYoutubeMessageResponse" />
-  </wsdl:message>
-  <wsdl:message name="UpdateYouTubeAccountByAdminSoapIn">
-    <wsdl:part name="parameters" element="tns:UpdateYouTubeAccountByAdmin" />
-  </wsdl:message>
-  <wsdl:message name="UpdateYouTubeAccountByAdminSoapOut">
-    <wsdl:part name="parameters" element="tns:UpdateYouTubeAccountByAdminResponse" />
   </wsdl:message>
   <wsdl:message name="AddYoutubeAccountHttpGetIn">
     <wsdl:part name="client_id" type="s:string" />
@@ -175,11 +138,6 @@
   <wsdl:message name="GoogleLoginHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="Get_Channel_List_serarchHttpGetIn">
-    <wsdl:part name="token" type="s:string" />
-    <wsdl:part name="search" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="Get_Channel_List_serarchHttpGetOut" />
   <wsdl:message name="getYoutubeDataHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="youtubeId" type="s:string" />
@@ -193,12 +151,6 @@
     <wsdl:part name="sscheduledmsgguid" type="s:string" />
   </wsdl:message>
   <wsdl:message name="SheduleYoutubeMessageHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="UpdateYouTubeAccountByAdminHttpGetIn">
-    <wsdl:part name="ObjYouTube" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="UpdateYouTubeAccountByAdminHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="AddYoutubeAccountHttpPostIn">
@@ -225,11 +177,6 @@
   <wsdl:message name="GoogleLoginHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="Get_Channel_List_serarchHttpPostIn">
-    <wsdl:part name="token" type="s:string" />
-    <wsdl:part name="search" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="Get_Channel_List_serarchHttpPostOut" />
   <wsdl:message name="getYoutubeDataHttpPostIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="youtubeId" type="s:string" />
@@ -245,12 +192,6 @@
   <wsdl:message name="SheduleYoutubeMessageHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="UpdateYouTubeAccountByAdminHttpPostIn">
-    <wsdl:part name="ObjYouTube" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="UpdateYouTubeAccountByAdminHttpPostOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
   <wsdl:portType name="YoutubeSoap">
     <wsdl:operation name="AddYoutubeAccount">
       <wsdl:input message="tns:AddYoutubeAccountSoapIn" />
@@ -264,10 +205,6 @@
       <wsdl:input message="tns:GoogleLoginSoapIn" />
       <wsdl:output message="tns:GoogleLoginSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="Get_Channel_List_serarch">
-      <wsdl:input message="tns:Get_Channel_List_serarchSoapIn" />
-      <wsdl:output message="tns:Get_Channel_List_serarchSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="getYoutubeData">
       <wsdl:input message="tns:getYoutubeDataSoapIn" />
       <wsdl:output message="tns:getYoutubeDataSoapOut" />
@@ -275,10 +212,6 @@
     <wsdl:operation name="SheduleYoutubeMessage">
       <wsdl:input message="tns:SheduleYoutubeMessageSoapIn" />
       <wsdl:output message="tns:SheduleYoutubeMessageSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="UpdateYouTubeAccountByAdmin">
-      <wsdl:input message="tns:UpdateYouTubeAccountByAdminSoapIn" />
-      <wsdl:output message="tns:UpdateYouTubeAccountByAdminSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="YoutubeHttpGet">
@@ -294,10 +227,6 @@
       <wsdl:input message="tns:GoogleLoginHttpGetIn" />
       <wsdl:output message="tns:GoogleLoginHttpGetOut" />
     </wsdl:operation>
-    <wsdl:operation name="Get_Channel_List_serarch">
-      <wsdl:input message="tns:Get_Channel_List_serarchHttpGetIn" />
-      <wsdl:output message="tns:Get_Channel_List_serarchHttpGetOut" />
-    </wsdl:operation>
     <wsdl:operation name="getYoutubeData">
       <wsdl:input message="tns:getYoutubeDataHttpGetIn" />
       <wsdl:output message="tns:getYoutubeDataHttpGetOut" />
@@ -305,10 +234,6 @@
     <wsdl:operation name="SheduleYoutubeMessage">
       <wsdl:input message="tns:SheduleYoutubeMessageHttpGetIn" />
       <wsdl:output message="tns:SheduleYoutubeMessageHttpGetOut" />
-    </wsdl:operation>
-    <wsdl:operation name="UpdateYouTubeAccountByAdmin">
-      <wsdl:input message="tns:UpdateYouTubeAccountByAdminHttpGetIn" />
-      <wsdl:output message="tns:UpdateYouTubeAccountByAdminHttpGetOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="YoutubeHttpPost">
@@ -324,10 +249,6 @@
       <wsdl:input message="tns:GoogleLoginHttpPostIn" />
       <wsdl:output message="tns:GoogleLoginHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="Get_Channel_List_serarch">
-      <wsdl:input message="tns:Get_Channel_List_serarchHttpPostIn" />
-      <wsdl:output message="tns:Get_Channel_List_serarchHttpPostOut" />
-    </wsdl:operation>
     <wsdl:operation name="getYoutubeData">
       <wsdl:input message="tns:getYoutubeDataHttpPostIn" />
       <wsdl:output message="tns:getYoutubeDataHttpPostOut" />
@@ -335,10 +256,6 @@
     <wsdl:operation name="SheduleYoutubeMessage">
       <wsdl:input message="tns:SheduleYoutubeMessageHttpPostIn" />
       <wsdl:output message="tns:SheduleYoutubeMessageHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="UpdateYouTubeAccountByAdmin">
-      <wsdl:input message="tns:UpdateYouTubeAccountByAdminHttpPostIn" />
-      <wsdl:output message="tns:UpdateYouTubeAccountByAdminHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="YoutubeSoap" type="tns:YoutubeSoap">
@@ -370,15 +287,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Get_Channel_List_serarch">
-      <soap:operation soapAction="http://tempuri.org/Get_Channel_List_serarch" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getYoutubeData">
       <soap:operation soapAction="http://tempuri.org/getYoutubeData" style="document" />
       <wsdl:input>
@@ -390,15 +298,6 @@
     </wsdl:operation>
     <wsdl:operation name="SheduleYoutubeMessage">
       <soap:operation soapAction="http://tempuri.org/SheduleYoutubeMessage" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateYouTubeAccountByAdmin">
-      <soap:operation soapAction="http://tempuri.org/UpdateYouTubeAccountByAdmin" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -436,15 +335,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Get_Channel_List_serarch">
-      <soap12:operation soapAction="http://tempuri.org/Get_Channel_List_serarch" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getYoutubeData">
       <soap12:operation soapAction="http://tempuri.org/getYoutubeData" style="document" />
       <wsdl:input>
@@ -456,15 +346,6 @@
     </wsdl:operation>
     <wsdl:operation name="SheduleYoutubeMessage">
       <soap12:operation soapAction="http://tempuri.org/SheduleYoutubeMessage" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateYouTubeAccountByAdmin">
-      <soap12:operation soapAction="http://tempuri.org/UpdateYouTubeAccountByAdmin" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -502,13 +383,6 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Get_Channel_List_serarch">
-      <http:operation location="/Get_Channel_List_serarch" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output />
-    </wsdl:operation>
     <wsdl:operation name="getYoutubeData">
       <http:operation location="/getYoutubeData" />
       <wsdl:input>
@@ -520,15 +394,6 @@
     </wsdl:operation>
     <wsdl:operation name="SheduleYoutubeMessage">
       <http:operation location="/SheduleYoutubeMessage" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateYouTubeAccountByAdmin">
-      <http:operation location="/UpdateYouTubeAccountByAdmin" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -566,13 +431,6 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Get_Channel_List_serarch">
-      <http:operation location="/Get_Channel_List_serarch" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output />
-    </wsdl:operation>
     <wsdl:operation name="getYoutubeData">
       <http:operation location="/getYoutubeData" />
       <wsdl:input>
@@ -591,28 +449,19 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="UpdateYouTubeAccountByAdmin">
-      <http:operation location="/UpdateYouTubeAccountByAdmin" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Youtube">
     <wsdl:port name="YoutubeSoap" binding="tns:YoutubeSoap">
-      <soap:address location="http://localhost:6361/services/Youtube.asmx" />
+      <soap:address location="http://devapi.socioboard.com/Services/Youtube.asmx" />
     </wsdl:port>
     <wsdl:port name="YoutubeSoap12" binding="tns:YoutubeSoap12">
-      <soap12:address location="http://localhost:6361/services/Youtube.asmx" />
+      <soap12:address location="http://devapi.socioboard.com/Services/Youtube.asmx" />
     </wsdl:port>
     <wsdl:port name="YoutubeHttpGet" binding="tns:YoutubeHttpGet">
-      <http:address location="http://localhost:6361/services/Youtube.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/Youtube.asmx" />
     </wsdl:port>
     <wsdl:port name="YoutubeHttpPost" binding="tns:YoutubeHttpPost">
-      <http:address location="http://localhost:6361/services/Youtube.asmx" />
+      <http:address location="http://devapi.socioboard.com/Services/Youtube.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

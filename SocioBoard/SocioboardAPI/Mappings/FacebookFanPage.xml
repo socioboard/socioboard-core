@@ -11,8 +11,8 @@
     <property name="ProfilePageId">
       <column name="ProfilePageId" />
     </property>
-    <property name="FacebookAccountId">
-      <column name="FacebookAccountId"  />
+    <!--<property name="FacebookAccountId">
+      <column name="FacebookAccountId"  />-->
     </property>
     <property name="FanpageCount">
       <column name="FanpageCount"  />

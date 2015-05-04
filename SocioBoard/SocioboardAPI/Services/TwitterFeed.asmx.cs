@@ -46,6 +46,30 @@ namespace Api.Socioboard.Services
             }
         }
 
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string getAllFeedsByUserIdAndProfileIdUsingLimit(string UserId, string ProfileId, string noOfDataToSkip, string noOfResultsFromTop)
+        {
+            List<Domain.Socioboard.Domain.TwitterFeed> lstFeed = new List<Domain.Socioboard.Domain.TwitterFeed>();
+            try
+            {
+                if (objTwitterFeedRepository.checkTwitteUserExists(ProfileId, Guid.Parse(UserId)))
+                {
+                    lstFeed = objTwitterFeedRepository.getAllFeedsOfSBUserWithRangeAndProfileId(UserId, ProfileId, noOfDataToSkip, noOfResultsFromTop);
+                }
+                else
+                {
+                    lstFeed = objTwitterFeedRepository.getAllFeedsOfSBUserWithRangeByProfileId(ProfileId, noOfDataToSkip, noOfResultsFromTop);
+                }
+                return new JavaScriptSerializer().Serialize(lstFeed);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+
         // Edited by Antima
 
         [WebMethod]
@@ -85,8 +109,8 @@ namespace Api.Socioboard.Services
         public string TwitterInboxMessagecount(string userid, string profileid, string days)
         {
             int daycount = Convert.ToInt32(days);
-            List<Domain.Socioboard.Domain.TwitterFeed> lstfeed = new List<Domain.Socioboard.Domain.TwitterFeed>();
-
+            //List<Domain.Socioboard.Domain.TwitterFeed> lstfeed = new List<Domain.Socioboard.Domain.TwitterFeed>();
+            int lstfeed=0;
             try
             {
 
@@ -98,7 +122,7 @@ namespace Api.Socioboard.Services
                 Console.WriteLine(ex.StackTrace);
             }
 
-            return lstfeed.Count.ToString();
+            return lstfeed.ToString();
 
         }
 

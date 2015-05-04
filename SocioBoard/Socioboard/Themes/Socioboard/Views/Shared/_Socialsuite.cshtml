@@ -43,7 +43,7 @@
     <script src="/Themes/@path/Contents/js/alertify.min.js" type="text/javascript"></script>
     <link href="/Themes/@path/Contents/css/alertify.core.css" rel="stylesheet" type="text/css" />
     <link href="/Themes/@path/Contents/css/alertify.default.css" rel="stylesheet" type="text/css" id="toggleCSS" />
-
+    <link href="~/Themes/@path/Contents/css/custom.css" rel="stylesheet" />
     <script src="/Themes/@path/Contents/js/ads.js" type="text/javascript"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -56,7 +56,7 @@
     </asp:contentplaceholder>
 </head>
 <body>
-    @*@helper selected(string c, string culture)
+    @helper selected(string c, string culture)
 {
     if (c == culture)
     {
@@ -73,7 +73,7 @@
         {
         @:English
     }
-    }*@
+    }
     <!--start header-->
     <div class="container">
 
@@ -102,7 +102,7 @@
                             <a data-toggle="modal" data-target="#helpModal" style="cursor:pointer">Help</a>
                         </li>*@
                        
-                      @*  <li class="dropdown">
+                       @* <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">@SelcetedLanguage(culture)<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="/Home/SetCulture?culture=en-us" class="link @selected("en-us", culture)"><img src="/Themes/Socioboard/Contents/img/eng.png" class="img-responsive" style="display:inline;" alt=""/> English</a></li>

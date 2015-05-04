@@ -325,8 +325,11 @@ function getFollowers(id) {
 
 /*bind facebook feeds on homepage*/
 
-function facebookdetails(id) {
+function facebookdetails(id, li_id) {
+    $("#first-profile-load_Id_" + li_id).parent().parent().children().children().removeClass("active");
+    $("#first-profile-load_Id_" + li_id).addClass("active");
     debugger;
+    var local = getlocatdatetime();
     try {
         loadfeedpartialpage = $.ajax({
             type: "POST",
@@ -364,9 +367,9 @@ function facebookdetails(id) {
         facebookwallposts = $.ajax({
             type: "POST",
             url: "../Feeds/wallposts?op=facebookwallposts&load=first&profileid=" + id,
-            data: '',
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
+            data:{"localtime":local},
+            //contentType: "application/json; charset=utf-8",
+            //dataType: "html",
             success: function (msg) {
                 try {
                     $("#loader_tabpanel1").bind("click", function () {
@@ -457,9 +460,9 @@ function facebookdetails(id) {
 
             type: "POST",
             url: "../Feeds/AjaxFeeds?op=facebookfeeds&load=first&profileid=" + id,
-            data: '',
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
+            data:{"localtime":local},
+            //contentType: "application/json; charset=utf-8",
+            //dataType: "html",
             success: function (msg) {
                 try {
                     debugger;
@@ -502,7 +505,7 @@ function facebookdetails(id) {
         });
 
         try {
-            FacebookUserFeeds(id);
+           //FacebookUserFeeds(id);
         } catch (e) {
 
         }
@@ -574,6 +577,7 @@ function facebookdetails(id) {
 
 function facebookwallscrolldata() {
     debugger;
+    var local = getlocatdatetime();
     //alert("facebookwallscrolldata");
     try {
         // $("#data_paneltab1").off('scroll', facebookwallscrolldata);
@@ -585,9 +589,9 @@ function facebookwallscrolldata() {
         $.ajax({
             type: "POST",
             url: "../Feeds/wallposts?op=facebookwallposts&load=scroll",
-            data: '',
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
+            data: { "localtime": local },
+            //contentType: "application/json; charset=utf-8",
+            //dataType: "html",
             success: function (facemsg) {
                 debugger;
                 //$("#data_paneltab1").on('scroll', facebookwallscrolldata);
@@ -607,14 +611,15 @@ function facebookwallscrolldata() {
 
 function facebookfeedscrolldata() {
     debugger;
+    var local = getlocatdatetime();
     try {
         var $container = $("#data_paneltab2");
         $.ajax({
             type: "POST",
             url: "../Feeds/AjaxFeeds?load=scroll",
-            data: '',
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
+            data: { "localtime": local },
+            //contentType: "application/json; charset=utf-8",
+            //dataType: "html",
             success: function (facemsg) {
                 debugger;
                 $("#data_paneltab2").append(facemsg);
@@ -724,14 +729,17 @@ function FacebookUserFeeds(id) {
 /*************Twitter****************/
 
 
-function twitterdetails(id) {
+function twitterdetails(id, li_id) {
+    $("#first-profile-load_Id_" + li_id).parent().parent().children().children().removeClass("active");
+    $("#first-profile-load_Id_" + li_id).addClass("active"); 
+    var local = getlocatdatetime();
     try {
         loadfeedpartialpage = $.ajax({
             type: "POST",
             url: "../Feeds/LoadFeedPartialPage?network=twitter&id=" + id,
             data: '',
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
+            //contentType: "application/json; charset=utf-8",
+            //dataType: "html",
             success: function (msg) {
                 try {
                     $("#page-wrapper").html(msg);
@@ -792,9 +800,9 @@ function twitterdetails(id) {
         $.ajax({
             type: "POST",
             url: "../Feeds/TwitterNetworkDetails?&load=first&profileid=" + id,
-            data: '',
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
+            data: { "localtime": local },
+            //contentType: "application/json; charset=utf-8",
+            //dataType: "html",
             success: function (msg) {
                 try {
                     $("#loader_tabpanel1").bind("click", function () {
@@ -858,9 +866,9 @@ function twitterdetails(id) {
         twitterfeeds = $.ajax({
             type: "POST",
             url: "../Feeds/TwitterFeeds?&load=first&profileid=" + id,
-            data: '',
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
+            data: { "localtime": local },
+            //contentType: "application/json; charset=utf-8",
+            //dataType: "html",
             success: function (msg) {
                 try {
                     $("#loader_tabpanel2").bind("click", function () {
@@ -914,7 +922,7 @@ function twitterdetails(id) {
         //    }
         //});
 
-        TwitterUserTweet(id);
+        //TwitterUserTweet(id);
 
     } catch (e) {
 
@@ -923,6 +931,7 @@ function twitterdetails(id) {
 }
 
 function Twitterscrolldata() {
+    var local = getlocatdatetime();
     debugger;
     try {
 
@@ -931,9 +940,9 @@ function Twitterscrolldata() {
         $.ajax({
             type: "POST",
             url: "../Feeds/TwitterNetworkDetails?load=scroll",
-            data: '',
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
+            data: { "localtime": local },
+            //contentType: "application/json; charset=utf-8",
+            //dataType: "html",
             success: function (twtmsg) {
                 debugger;
                 //$("#data_paneltab1").on('scroll', facebookwallscrolldata);
@@ -949,6 +958,7 @@ function Twitterscrolldata() {
 
 function Twitterfeedscrolldata() {
     debugger;
+    var local = getlocatdatetime();
     try {
 
         var $container = $("#data_paneltab2");
@@ -956,9 +966,9 @@ function Twitterfeedscrolldata() {
         $.ajax({
             type: "POST",
             url: "../Feeds/TwitterFeeds?load=scroll",
-            data: '',
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
+            data: { "localtime": local },
+            //contentType: "application/json; charset=utf-8",
+            //dataType: "html",
             success: function (twtmsg) {
                 debugger;
                 //$("#data_paneltab1").on('scroll', facebookwallscrolldata);
@@ -1045,8 +1055,10 @@ function TwitterMentions(id) {
     }
 }
 
-function linkedindetails(id) {
-
+function linkedindetails(id, li_id) {
+    $("#first-profile-load_Id_" + li_id).parent().parent().children().children().removeClass("active");
+    $("#first-profile-load_Id_" + li_id).addClass("active");
+    var local = getlocatdatetime();
     try {
 
         debugger;
@@ -1055,8 +1067,8 @@ function linkedindetails(id) {
             type: "POST",
             url: "../Feeds/LoadFeedPartialPage?network=linkedin",
             data: '',
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
+            //contentType: "application/json; charset=utf-8",
+            //dataType: "html",
             success: function (msg) {
                 try {
                     $("#page-wrapper").html(msg);
@@ -1074,6 +1086,7 @@ function linkedindetails(id) {
                     $("#title_paneltab2").html("User Updates");
                     $("#img_paneltab3").attr('src', "/Themes/Socioboard/Contents/img/admin/5.png");
                     $("#title_paneltab3").html("Scheduled Messages");
+                    $("#data_paneltab2").attr('network', 'linkedin');
                 } catch (e) {
                 }
             },
@@ -1112,9 +1125,9 @@ function linkedindetails(id) {
             type: "POST",
             //  url: "../Feeds/TwitterNetworkDetails?&load=first&profileid=" + id,
             url: "../Feeds/linkedinwallposts?&load=first&profileid=" + id,
-            data: '',
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
+            data: { "localtime": local },
+            //contentType: "application/json; charset=utf-8",
+            //dataType: "html",
             success: function (msg) {
                 try {
                     $("#loader_tabpanel1").bind("click", function () {
@@ -1136,10 +1149,11 @@ function linkedindetails(id) {
 
         linkedinfeeds = $.ajax({
             type: "POST",
-            url: "../Feeds/LinkedinFeeds?profileid=" + id,
-            data: '',
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
+            //url: "../Feeds/LinkedinFeeds?profileid=" + id,
+            url: "../Feeds/LinkedinFeeds?&load=first&profileid=" + id,
+            data: { "localtime": local },
+            //contentType: "application/json; charset=utf-8",
+            //dataType: "html",
             success: function (msg) {
 
                 try {
@@ -1183,50 +1197,50 @@ function linkedindetails(id) {
 
 
 
-        linkedinscheduler = $.ajax({
-            type: "POST",
-            url: "../Feeds/scheduler?network=linkedin&profileid=" + id,
-            data: '',
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
-            success: function (msg) {
+        //linkedinscheduler = $.ajax({
+        //    type: "POST",
+        //    url: "../Feeds/scheduler?network=linkedin&profileid=" + id,
+        //    data: '',
+        //    contentType: "application/json; charset=utf-8",
+        //    dataType: "html",
+        //    success: function (msg) {
 
 
-                try {
-                    $("#loader_tabpanel3").bind("click", function () {
-                        // alert("refreshSchedularMessageLinkedin");
-                        refreshSchedularMessageLinkedin(id);
+        //        try {
+        //            $("#loader_tabpanel3").bind("click", function () {
+        //                // alert("refreshSchedularMessageLinkedin");
+        //                refreshSchedularMessageLinkedin(id);
 
-                    });
-                    //$("#img_paneltab1").attr('src', "../Contents/img/admin/5.png");
-                } catch (e) {
-                }
-
-
-
-                try {
-                    //$("#img_paneltab3").attr('src', "../Contents/img/admin/5.png");
-                } catch (e) {
-                }
-                try {
-                    // $("#loader_tabpanel3").attr('src', "../Contents/img/admin/9.png");
-                } catch (e) {
-
-                }
-                try {
-                    //$("#title_paneltab3").html("Scheduled Messages");
-                } catch (e) {
-
-                }
-                try {
-                    $("#data_paneltab3").html(msg);
-                } catch (e) {
-
-                }
+        //            });
+        //            //$("#img_paneltab1").attr('src', "../Contents/img/admin/5.png");
+        //        } catch (e) {
+        //        }
 
 
-            }
-        });
+
+        //        try {
+        //            //$("#img_paneltab3").attr('src', "../Contents/img/admin/5.png");
+        //        } catch (e) {
+        //        }
+        //        try {
+        //            // $("#loader_tabpanel3").attr('src', "../Contents/img/admin/9.png");
+        //        } catch (e) {
+
+        //        }
+        //        try {
+        //            //$("#title_paneltab3").html("Scheduled Messages");
+        //        } catch (e) {
+
+        //        }
+        //        try {
+        //            $("#data_paneltab3").html(msg);
+        //        } catch (e) {
+
+        //        }
+
+
+        //    }
+        //});
 
     } catch (e) {
 
@@ -1234,6 +1248,7 @@ function linkedindetails(id) {
 }
 
 function LinkedInscrolldata() {
+    var local = getlocatdatetime();
     debugger;
     try {
         var $container = $("#data_paneltab1");
@@ -1241,9 +1256,9 @@ function LinkedInscrolldata() {
         $.ajax({
             type: "POST",
             url: "../Feeds/linkedinwallposts?load=scroll",
-            data: '',
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
+            data: { "localtime": local },
+            //contentType: "application/json; charset=utf-8",
+            //dataType: "html",
             success: function (linkedinmsg) {
                 debugger;
                 //$("#data_paneltab1").on('scroll', facebookwallscrolldata);
@@ -1256,7 +1271,31 @@ function LinkedInscrolldata() {
     } catch (e) {
     }
 }
+function LinkedInfeedscrolldata() {
+    debugger;
+    var local = getlocatdatetime();
+    try {
 
+        var $container = $("#data_paneltab2");
+
+        $.ajax({
+            type: "POST",
+            url: "../Feeds/LinkedinFeeds?load=scroll",
+            data: { "localtime": local },
+            //contentType: "application/json; charset=utf-8",
+            //dataType: "html",
+            success: function (twtmsg) {
+                debugger;
+                //$("#data_paneltab1").on('scroll', facebookwallscrolldata);
+                $("#data_paneltab2").append(twtmsg);
+            }
+        });
+        // }
+        //  });
+
+    } catch (e) {
+    }
+}
 
 //******************* Linkedin Page******************
 
@@ -1397,7 +1436,9 @@ function SendPostOnLiCompanyPage(id) {
 //***************tumblr data**********
 
 
-function tumblrdetails(id) {
+function tumblrdetails(id, li_id) {
+    $("#first-profile-load_Id_" + li_id).parent().parent().children().children().removeClass("active");
+    $("#first-profile-load_Id_" + li_id).addClass("active");
 
 
     tumblridforlazyload = id;
@@ -1413,6 +1454,7 @@ function tumblrdetails(id) {
         success: function (msg) {
             try {
                 $("#page-wrapper").html(msg);
+                $("#feedimages").attr("network", "tumblr");
             } catch (e) {
             }
         }
@@ -1420,7 +1462,8 @@ function tumblrdetails(id) {
 
     $.ajax({
         type: "POST",
-        url: "../Feeds/TumblrImages?profileid=" + id,
+        //url: "../Feeds/TumblrImages?profileid=" + id,
+        url: "../Feeds/TumblrImages?&load=first&profileid=" + id,
         data: '',
         contentType: "application/json; charset=utf-8",
         dataType: "html",
@@ -1434,6 +1477,21 @@ function tumblrdetails(id) {
         }
     });
 
+}
+
+
+function Tumblrscrolldata() {
+    debugger;
+    $.ajax({
+        type: "POST",
+        url: "../Feeds/TumblrImages?&load=scroll",
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (msg) {
+            $("#feedimages").append(msg);
+        }
+    });
 }
 
 
@@ -1823,7 +1881,9 @@ function postVideoOnTumblr() {
 //***************youtube data**********
 
 
-function youtubedetails(id) {
+function youtubedetails(id, li_id) {
+    $("#first-profile-load_Id_" + li_id).parent().parent().children().children().removeClass("active");
+    $("#first-profile-load_Id_" + li_id).addClass("active");
 
 
     loadfeedpartialpage = $.ajax({
@@ -2153,6 +2213,7 @@ function refreshSchedularMessageFacebook(id) {
 
 function refreshWallpostTwitter(id) {
     debugger;
+    var local = getlocatdatetime();
     try {
         $("#refreshpanel1").attr('src', '../Themes/Socioboard/Contents/img/891.png');
     } catch (e) {
@@ -2160,9 +2221,9 @@ function refreshWallpostTwitter(id) {
     }
     $.ajax({
         type: "POST",
-        url: "../Feeds/TwitterNetworkDetails?profileid=" + id,
-        data: '',
-        contentType: "application/json; charset=utf-8",
+        url: "../Feeds/TwitterNetworkDetails?load=first&profileid=" + id,
+        data: { "localtime": local },
+        //contentType: "application/json; charset=utf-8",
         dataType: "html",
         success: function (msg) {
             try {
@@ -2195,6 +2256,7 @@ function refreshWallpostTwitter(id) {
 
 function refreshFeedsTwitter(id) {
     debugger;
+    var local = getlocatdatetime();
     try {
         $("#refreshpanel2").attr('src', '../Themes/Socioboard/Contents/img/891.png');
     } catch (e) {
@@ -2202,9 +2264,9 @@ function refreshFeedsTwitter(id) {
     }
     $.ajax({
         type: "POST",
-        url: "../Feeds/TwitterFeeds?profileid=" + id,
-        data: '',
-        contentType: "application/json; charset=utf-8",
+        url: "../Feeds/TwitterFeeds?load=first&profileid=" + id,
+        data: { "localtime": local },
+        //contentType: "application/json; charset=utf-8",
         dataType: "html",
         success: function (msg) {
             try {
@@ -2282,6 +2344,7 @@ function refreshSchedularMessageTwitter(id) {
 
 function refreshWallpostLinkedin(id) {
     debugger;
+    var local = getlocatdatetime();
     try {
         $("#refreshpanel1").attr('src', '../Themes/Socioboard/Contents/img/891.png');
     } catch (e) {
@@ -2289,9 +2352,9 @@ function refreshWallpostLinkedin(id) {
     }
     $.ajax({
         type: "POST",
-        url: "../Feeds/linkedinwallposts?profileid=" + id,
-        data: '',
-        contentType: "application/json; charset=utf-8",
+        url: "../Feeds/linkedinwallposts?load=first&profileid=" + id,
+        data: { "localtime": local },
+        //contentType: "application/json; charset=utf-8",
         dataType: "html",
         success: function (msg) {
             try {
@@ -2321,6 +2384,7 @@ function refreshWallpostLinkedin(id) {
 
 function refreshFeedsLinkedin(id) {
     debugger;
+    var local = getlocatdatetime();
     try {
         $("#refreshpanel2").attr('src', '../Themes/Socioboard/Contents/img/891.png');
     } catch (e) {
@@ -2328,9 +2392,9 @@ function refreshFeedsLinkedin(id) {
     }
     $.ajax({
         type: "POST",
-        url: "../Feeds/LinkedinFeeds?profileid=" + id,
-        data: '',
-        contentType: "application/json; charset=utf-8",
+        url: "../Feeds/LinkedinFeeds?load=first&profileid=" + id,
+        data: { "localtime": local },
+        //contentType: "application/json; charset=utf-8",
         dataType: "html",
         success: function (msg) {
             try {
@@ -3112,6 +3176,7 @@ function TwitterNetworkDetails_FeedsSearch(keyword) {
 //modified by sumit gupta [15-02-2015]
 function FacebookLoadNewNewsFeeds() {
     debugger;
+    var local = getlocatdatetime();
     var id = $('#refreshpanel2').attr('nwtid');
     try {
 
@@ -3122,8 +3187,8 @@ function FacebookLoadNewNewsFeeds() {
     $.ajax({
         type: "POST",
         url: "../Feeds/AddLoadNewFacebookNewsFeeds?profileid=" + id,
-        data: '',
-        contentType: "application/json; charset=utf-8",
+        data: { "localtime": local },
+        //contentType: "application/json; charset=utf-8",
         dataType: "html",
         success: function (msg) {
 
@@ -3182,6 +3247,7 @@ function FacebookLoadNewNewsFeeds() {
 
 function FacebookLoadNewUserHome() {
     debugger;
+    var local = getlocatdatetime();
     var id = $('#refreshpanel1').attr('nwtid');
     try {
 
@@ -3192,8 +3258,8 @@ function FacebookLoadNewUserHome() {
     $.ajax({
         type: "POST",
         url: "../Feeds/AddLoadNewFacebookWallPosts?profileid=" + id,
-        data: '',
-        contentType: "application/json; charset=utf-8",
+        data: { "localtime": local },
+        //contentType: "application/json; charset=utf-8",
         dataType: "html",
         success: function (msg) {
 
@@ -3253,6 +3319,7 @@ function FacebookLoadNewUserHome() {
 
 function FacebookLoadNewUserFeeds() {
     debugger;
+    var local = getlocatdatetime();
     var id = $('#refreshpanel1').attr('nwtid');
     try {
 
@@ -3264,8 +3331,8 @@ function FacebookLoadNewUserFeeds() {
         type: "POST",
         //url: "../Feeds/AddLoadNewFacebookWallPosts?profileid=" + id+"&type=userfeeds",
         url: "../Feeds/AddLoadNewFacebookWallPosts?profileid=" + id + "&type=",
-        data: '',
-        contentType: "application/json; charset=utf-8",
+        data: { "localtime": local },
+        //contentType: "application/json; charset=utf-8",
         dataType: "html",
         success: function (msg) {
 

@@ -87,7 +87,7 @@ namespace Socioboard.Controllers
                     User objUser = (User)Session["User"];
                     Api.SocialProfile.SocialProfile apiobjSocialProfile = new Api.SocialProfile.SocialProfile();
 
-                    apiobjSocialProfile.GetAllSocialProfiles();
+                    //apiobjSocialProfile.GetAllSocialProfiles();
 
                     Session["ProfileCount"] = Convert.ToInt16(apiobjSocialProfile.GetAllSocialProfilesOfUserCount(objUser.Id.ToString()).ToString());
                     Session["TotalAccount"] = Convert.ToInt16(SBUtils.GetUserPackageProfileCount(objUser.AccountType));
@@ -138,10 +138,40 @@ namespace Socioboard.Controllers
             return View();
         }
 
-        public ActionResult ProfileSnapshot()
+        public ActionResult ProfileSnapshot(string op)
         {
+            int CountProfileSnapshot = 0;
+
+            try
+            {
+                if (op==null)
+                {
+                    Session["CountProfileSnapshot"] = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            if (Session["CountProfileSnapshot"] != null)
+            {
+                CountProfileSnapshot = (int)Session["CountProfileSnapshot"];
+            }
+            else
+            {
+                Session["CountProfileSnapshot"] = 0;
+            }
+           
+
             List<TeamMemberProfile> lstTeamMemberProfile = SBUtils.GetUserTeamMemberProfiles();
-            Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, Dictionary<object, List<object>>> diclist = SBUtils.GetUserProfilesSnapsAccordingToGroup(lstTeamMemberProfile);
+            Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, Dictionary<object, List<object>>> diclist = SBUtils.GetUserProfilesSnapsAccordingToGroup(lstTeamMemberProfile, CountProfileSnapshot);
+
+            if (diclist.Count > 0 && diclist != null)
+            {
+                Session["CountProfileSnapshot"] = (int)Session["CountProfileSnapshot"] + diclist.Count;
+            }
+
             return PartialView("_HomeProfileSnapshotPartial", diclist);
         }
 
@@ -332,7 +362,14 @@ namespace Socioboard.Controllers
                     {
                         Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
                         ApiobjFacebook.FacebookComposeMessage(message, profileid, objGroups.UserId.ToString(), curdaatetimetime, file);
+
                     }
+                    if (profiletype == "facebook_page")
+                    {
+                        Api.Facebook.Facebook ApiobjFacebook = new Api.Facebook.Facebook();
+                        ApiobjFacebook.FacebookComposeMessageForPage(message, profileid, objGroups.UserId.ToString(), curdaatetimetime, file);
+                    }
+
                     if (profiletype == "twitter")
                     {
                         Api.Twitter.Twitter ApiobjTwitter = new Api.Twitter.Twitter();
@@ -355,7 +392,7 @@ namespace Socioboard.Controllers
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);   
+                    Console.WriteLine(ex.Message);
                 }
 
                 //if (!string.IsNullOrEmpty(DropboxImg[0]))
@@ -436,7 +473,7 @@ namespace Socioboard.Controllers
             {
                 Api.FacebookFeed.FacebookFeed objFacebookFeed = new Api.FacebookFeed.FacebookFeed();
                 //fbmsgcount = ((List<FacebookFeed>)(new JavaScriptSerializer().Deserialize(objFacebookFeed.getAllFeedDetail1(FbProfileId, objUser.Id.ToString()), typeof(List<FacebookFeed>)))).Count;
-                fbmsgcount = objFacebookFeed.GetFeedCountByProfileIdAndUserId( objUser.Id.ToString(), FbProfileId);
+                fbmsgcount = objFacebookFeed.GetFeedCountByProfileIdAndUserId(objUser.Id.ToString(), FbProfileId);
             }
             catch (Exception ex)
             {
@@ -634,7 +671,7 @@ namespace Socioboard.Controllers
         }
 
 
-        public ActionResult test() 
+        public ActionResult test()
         {
             return View();
         }

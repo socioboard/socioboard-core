@@ -90,6 +90,22 @@ namespace Api.Socioboard.Services
             return count;
         }
 
+        public string GetMentionStatsCountByProfileIdAndUserId(string profileId, Guid userid, int days)
+        {
+            TwitterMessageRepository objretwt = new TwitterMessageRepository();
+            int count = 0;
+            try
+            {
+                count = objretwt.GetMentionStatsCountByProfileIdAndUserId(userid, profileId, days);
+            }
+            catch (Exception Err)
+            {
+                count = 0;
+                Console.Write(Err.StackTrace);
+            }
+            return count.ToString();
+        }
+
         public string getRetweets(string profileId, Guid userid, int days)
         {
             TwitterMessageRepository objretwt = new TwitterMessageRepository();
@@ -108,7 +124,24 @@ namespace Api.Socioboard.Services
             return strcount;
 
         }
+        public string GetRetweetStatsCountByProfileIdAndUserId(string profileId, Guid userid, int days)
+        {
+            TwitterMessageRepository objretwt = new TwitterMessageRepository();
 
+            int strcount = 0;
+            try
+            {
+
+                strcount = objretwt.GetRetweetStatsCountByProfileIdAndUserId(userid, profileId, days);
+               
+            }
+            catch (Exception Err)
+            {
+                strcount = 0;
+                Console.Write(Err.StackTrace);
+            }
+            return strcount.ToString();
+        }
      
 
         public string GetAllRetweetMentionBydays(string userid, string profileId, string days)
@@ -128,7 +161,8 @@ namespace Api.Socioboard.Services
 
                  int _TwitterMention = objTwitterMessageRepository.getTotalMentionBydays(UserId, profileId, Convert.ToInt32(days));
                  int _TwitterRetweet = objTwitterMessageRepository.getTotalRetweetBydays(UserId, profileId, Convert.ToInt32(days));
-
+                 //int _TwitterMention = objTwitterMessageRepository.GetMentionStatsCountByProfileIdAndUserId(UserId, profileId, Convert.ToInt32(days));
+                 //int _TwitterRetweet = objTwitterMessageRepository.GetRetweetStatsCountByProfileIdAndUserId(UserId, profileId, Convert.ToInt32(days));
 
                  dynamic _TwitterMessage = objTwitterMessageRepository.getAllRetweetMentionBydays(UserId, profileId, Convert.ToInt32(days));
 
@@ -182,7 +216,7 @@ namespace Api.Socioboard.Services
                          {
                              usertweets += "0" + ',';
                              usertweetsDates += item.ToString() + ',';
-                             usertweets = "mention^" + usertweets + "^" + usertweetsDates;
+                             usertweets = "usrtwet^" + usertweets + "^" + usertweetsDates;
                          }
                      }
                      try
@@ -234,13 +268,20 @@ namespace Api.Socioboard.Services
                          {
                              retweets += "0" + ',';
                              retweetsDates += item.ToString() + ',';
-                             retweets = "mention^" + retweets + "^" + retweetsDates;
+                             retweets = "retwet^" + retweets + "^" + retweetsDates;
                          }
                      }
 
                  }
-                 
-                 
+
+                 else
+                 {
+                     usertweets = (0).ToString();
+                     mentions = (0).ToString();
+                     retweets = (0).ToString();
+                     _TwitterMention = 0;
+                     _TwitterRetweet = 0;
+                 }
 
                  String totalmention = "metion"+_TwitterMention;
                  string totalretweet = "retwet" + _TwitterRetweet;

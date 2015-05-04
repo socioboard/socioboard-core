@@ -9,9 +9,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SocioboardDataServices</RootNamespace>
     <AssemblyName>SocioboardDataServices</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,19 +32,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Facebook">
+      <HintPath>..\packages\Facebook.6.8.0\lib\net45\Facebook.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\SocioboardAPI\lib\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SocioboardAPI\lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Services" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,6 +67,11 @@
     <Compile Include="TwitterData.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Web References\Api.DiscoverySearch\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\Api.FacebookAccount\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -80,32 +82,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <Compile Include="Web References\Api.FacebookMessage\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
     <Compile Include="Web References\Api.FacebookStats\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="Web References\Api.Facebook\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
-    <Compile Include="Web References\Api.FbPageComment\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
-    <Compile Include="Web References\Api.FbPageLiker\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
-    <Compile Include="Web References\Api.FbPagePost\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -185,11 +167,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <Compile Include="Web References\Api.User\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
     <Compile Include="Web References\Api.YoutubeAccount\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -204,9 +181,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\Api.DiscoverySearch\DiscoverySearch.wsdl" />
+    <None Include="Web References\Api.DiscoverySearch\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\Api.FacebookAccount\FacebookAccount.wsdl" />
     <None Include="Web References\Api.FacebookAccount\Reference.map">
@@ -218,11 +201,6 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.FacebookMessage\FacebookMessage.wsdl" />
-    <None Include="Web References\Api.FacebookMessage\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <None Include="Web References\Api.FacebookStats\FacebookStats.wsdl" />
     <None Include="Web References\Api.FacebookStats\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -230,21 +208,6 @@
     </None>
     <None Include="Web References\Api.Facebook\Facebook.wsdl" />
     <None Include="Web References\Api.Facebook\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\Api.FbPageComment\FbPageComment.wsdl" />
-    <None Include="Web References\Api.FbPageComment\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\Api.FbPageLiker\FbPageLiker.wsdl" />
-    <None Include="Web References\Api.FbPageLiker\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\Api.FbPagePost\FbPagePost.wsdl" />
-    <None Include="Web References\Api.FbPagePost\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -323,11 +286,6 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\Api.Twitter\Twitter.wsdl" />
-    <None Include="Web References\Api.User\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\Api.User\User.wsdl" />
     <None Include="Web References\Api.YoutubeAccount\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -340,16 +298,33 @@
     <None Include="Web References\Api.Youtube\Youtube.wsdl" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Domain.Socioboard\Domain.Socioboard.csproj">
+      <Project>{96ecfb64-a9ac-45f4-85bf-185e9c6a0f53}</Project>
+      <Name>Domain.Socioboard</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:6361/services/Facebook.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/DiscoverySearch.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.DiscoverySearch\</RelPath>
+      <UpdateFromURL>http://localhost:6361/Services/DiscoverySearch.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SocioboardDataServices_Api_DiscoverySearch_DiscoverySearch</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/Services/Facebook.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Facebook\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/Facebook.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/Facebook.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -357,10 +332,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_Facebook_Facebook</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/FacebookAccount.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/FacebookAccount.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.FacebookAccount\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/FacebookAccount.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/FacebookAccount.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -368,10 +343,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_FacebookAccount_FacebookAccount</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/FacebookFeed.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/FacebookFeed.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.FacebookFeed\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/FacebookFeed.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/FacebookFeed.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -379,21 +354,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_FacebookFeed_FacebookFeed</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/FacebookMessage.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.FacebookMessage\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/FacebookMessage.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>SocioboardDataServices_Api_FacebookMessage_FacebookMessage</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/FacebookStats.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/FacebookStats.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.FacebookStats\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/FacebookStats.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/FacebookStats.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -401,43 +365,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_FacebookStats_FacebookStats</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/FbPageComment.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.FbPageComment\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/FbPageComment.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>SocioboardDataServices_Api_FbPageComment_FbPageComment</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/FbPageLiker.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.FbPageLiker\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/FbPageLiker.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>SocioboardDataServices_Api_FbPageLiker_FbPageLiker</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/FbPagePost.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.FbPagePost\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/FbPagePost.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>SocioboardDataServices_Api_FbPagePost_FbPagePost</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/Instagram.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/Instagram.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Instagram\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/Instagram.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/Instagram.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -445,10 +376,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_Instagram_Instagram</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/InstagramAccount.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/InstagramAccount.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.InstagramAccount\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/InstagramAccount.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/InstagramAccount.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -456,10 +387,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_InstagramAccount_InstagramAccount</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/InstagramComment.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/InstagramComment.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.InstagramComment\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/InstagramComment.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/InstagramComment.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -467,10 +398,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_InstagramComment_InstagramComment</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/InstagramFeed.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/InstagramFeed.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.InstagramFeed\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/InstagramFeed.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/InstagramFeed.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -478,10 +409,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_InstagramFeed_InstagramFeed</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/Linkedin.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/Linkedin.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Linkedin\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/Linkedin.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/Linkedin.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -489,10 +420,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_Linkedin_Linkedin</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/LinkedinAccount.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/LinkedinAccount.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.LinkedinAccount\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/LinkedinAccount.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/LinkedinAccount.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -500,10 +431,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_LinkedinAccount_LinkedinAccount</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/SentimentalAnalysis.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/SentimentalAnalysis.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.SentimentalAnalysis\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/SentimentalAnalysis.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/SentimentalAnalysis.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -511,10 +442,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_SentimentalAnalysis_SentimentalAnalysis</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/SocialProfile.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/SocialProfile.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.SocialProfile\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/SocialProfile.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/SocialProfile.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -522,10 +453,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_SocialProfile_SocialProfile</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/Team.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/Team.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Team\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/Team.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/Team.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -533,10 +464,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_Team_Team</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/TicketAssigneeStatus.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/TicketAssigneeStatus.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.TicketAssigneeStatus\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/TicketAssigneeStatus.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/TicketAssigneeStatus.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -544,10 +475,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_TicketAssigneeStatus_TicketAssigneeStatus</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/Tumblr.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/Tumblr.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Tumblr\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/Tumblr.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/Tumblr.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -555,10 +486,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_Tumblr_Tumblr</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/TumblrAccount.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/TumblrAccount.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.TumblrAccount\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/TumblrAccount.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/TumblrAccount.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -566,10 +497,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_TumblrAccount_TumblrAccount</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/TumblrFeed.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/TumblrFeed.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.TumblrFeed\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/TumblrFeed.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/TumblrFeed.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -577,10 +508,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_TumblrFeed_TumblrFeed</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/Twitter.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/Twitter.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Twitter\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/Twitter.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/Twitter.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -588,10 +519,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_Twitter_Twitter</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/TwitterAccount.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/TwitterAccount.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.TwitterAccount\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/TwitterAccount.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/TwitterAccount.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -599,21 +530,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_TwitterAccount_TwitterAccount</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/User.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.User\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/User.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>SocioboardDataServices_Api_User_User</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/Youtube.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/Youtube.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Youtube\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/Youtube.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/Youtube.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -621,10 +541,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SocioboardDataServices_Api_Youtube_Youtube</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/YoutubeAccount.asmx">
+    <WebReferenceUrl Include="http://localhost:6361/Services/YoutubeAccount.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.YoutubeAccount\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/YoutubeAccount.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:6361/Services/YoutubeAccount.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -634,46 +554,18 @@
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\Api.FbPageComment\FbPageComment.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\Api.FbPageLiker\FbPageLiker.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\Api.FbPagePost\FbPagePost.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\Api.Instagram\Instagram.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\Api.InstagramAccount\InstagramAccount.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\Api.InstagramComment\InstagramComment.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\Api.InstagramFeed\InstagramFeed.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\Api.Linkedin\Linkedin.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\Api.LinkedinAccount\LinkedinAccount.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\Api.SentimentalAnalysis\SentimentalAnalysis.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Web References\Api.SocialProfile\SocialProfile.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\Api.Team\Team.disco" />
+    <None Include="Web References\Api.FacebookAccount\FacebookAccount.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\Api.TicketAssigneeStatus\TicketAssigneeStatus.disco" />
+    <None Include="Web References\Api.FacebookFeed\FacebookFeed.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\Api.Tumblr\Tumblr.disco" />
+    <None Include="Web References\Api.DiscoverySearch\DiscoverySearch.disco">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\Api.TumblrAccount\TumblrAccount.disco" />
@@ -682,40 +574,52 @@
     <None Include="Web References\Api.TumblrFeed\TumblrFeed.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\Api.Twitter\Twitter.disco" />
+    <None Include="Web References\Api.LinkedinAccount\LinkedinAccount.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\Api.TwitterAccount\TwitterAccount.disco" />
+    <None Include="Web References\Api.InstagramAccount\InstagramAccount.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\Api.User\User.disco" />
+    <None Include="Web References\Api.InstagramFeed\InstagramFeed.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\Api.Youtube\Youtube.disco" />
+    <None Include="Web References\Api.InstagramComment\InstagramComment.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\Api.YoutubeAccount\YoutubeAccount.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\Api.FacebookFeed\FacebookFeed.disco" />
+    <None Include="Web References\Api.Facebook\Facebook.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\Api.FacebookMessage\FacebookMessage.disco" />
+    <None Include="Web References\Api.Instagram\Instagram.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.Tumblr\Tumblr.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.Youtube\Youtube.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.Linkedin\Linkedin.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.TwitterAccount\TwitterAccount.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.Twitter\Twitter.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\Api.FacebookStats\FacebookStats.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\Api.Facebook\Facebook.disco" />
+    <None Include="Web References\Api.Team\Team.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\Api.FacebookAccount\FacebookAccount.disco" />
+    <None Include="Web References\Api.TicketAssigneeStatus\TicketAssigneeStatus.disco" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Domain.Socioboard\Domain.Socioboard.csproj">
-      <Project>{96ecfb64-a9ac-45f4-85bf-185e9c6a0f53}</Project>
-      <Name>Domain.Socioboard</Name>
-    </ProjectReference>
+    <None Include="Web References\Api.SentimentalAnalysis\SentimentalAnalysis.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

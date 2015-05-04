@@ -1,4 +1,5 @@
 ﻿@using Domain.Socioboard.Domain;
+@using Socioboard.Helper;
 @{
     Layout = null;
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
@@ -10,7 +11,6 @@
     {
         if (dicitem.Key == "facebook")
         {
-
             List<object> lstdic = (List<object>)dicitem.Value;
             foreach (var facebookmsg in lstdic)
             {
@@ -23,7 +23,11 @@
                 <div>
                     <strong class="primary-font">@item.FromName</strong>
                     <small class="pull-right text-muted">
-                        <i class="fa fa-clock-o fa-fw"></i>@item.FeedDate
+                        <i class="fa fa-clock-o fa-fw"></i>
+                         @{
+                string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.FeedDate.ToLocalTime().ToString());
+                        }
+                        @messagedate
                     </small>
                 </div>
 
@@ -107,7 +111,11 @@
                 <div>
                     <strong class="primary-font">@item.FromName</strong>
                     <small class="pull-right text-muted">
-                        <i class="fa fa-clock-o fa-fw"></i>@item.MessageDate
+                        <i class="fa fa-clock-o fa-fw"></i>
+                        @{
+                string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.MessageDate.ToLocalTime().ToString());
+                        }
+                        @messagedate
                     </small>
                 </div>
 
@@ -134,7 +142,7 @@
         }
 
 
-        if (dicitem.Key == "linkedin")
+        @*if (dicitem.Key == "linkedin")
         {
 
             List<object> lstdic = (List<object>)dicitem.Value;
@@ -184,9 +192,65 @@
         </li>
                 
             }
+        }*@
+
+        if (dicitem.Key == "linkedin")
+        {
+
+            List<object> lstdic = (List<object>)dicitem.Value;
+            foreach (var linkedinmsg in lstdic)
+            {
+                LinkedInMessage item = (LinkedInMessage)linkedinmsg;
+
+                string picurl = string.Empty;
+                if (string.IsNullOrEmpty(item.ProfileImageUrl))
+                {
+                    picurl = "../Themes/Socioboard/Contents/img/anonymousUser.jpg";
+                }
+                else
+                {
+                    picurl = item.ProfileImageUrl;
+                }
+        <li class="left clearfix">
+            <span class="chat-img pull-left">
+                <img alt="User Avatar" class="img-circle profilePic" src="@picurl"/>
+            </span>
+            <div class="chat-body clearfix">
+                <div>
+                     <a target="_blank" href="@item.ProfileUrl"><strong class="pull-right primary-font">@item.ProfileName</strong></a>
+                    <small class="pull-right text-muted">
+                        <i class="fa fa-clock-o fa-fw"></i>
+                       @{
+                string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.CreatedDate.ToLocalTime().ToString());
+                        }
+                        @messagedate
+                    </small>
+                </div>
+                @if (!string.IsNullOrEmpty(item.ImageUrl))
+                {
+                    <br />
+                    <img src="@item.ImageUrl" style="margin-top: 5%; height:100px;" /> 
+                }
+                @try
+                {
+                    ///hrefPost = "https://www.twitter.com/" + item.FromId + "/status/" + item.MessageId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error : " + ex.StackTrace);
+
+                }
+                <p>
+                    <a>
+                        @item.Message
+                    </a>
+                </p>
+            </div>
+        </li>
+                
+            }
         }
-
-
 
     }
 </ul>

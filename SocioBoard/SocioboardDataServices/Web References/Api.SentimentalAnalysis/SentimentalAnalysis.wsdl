@@ -397,16 +397,16 @@
   </wsdl:binding>
   <wsdl:service name="SentimentalAnalysis">
     <wsdl:port name="SentimentalAnalysisSoap" binding="tns:SentimentalAnalysisSoap">
-      <soap:address location="http://localhost:6361/services/SentimentalAnalysis.asmx" />
+      <soap:address location="http://localhost:6361/Services/SentimentalAnalysis.asmx" />
     </wsdl:port>
     <wsdl:port name="SentimentalAnalysisSoap12" binding="tns:SentimentalAnalysisSoap12">
-      <soap12:address location="http://localhost:6361/services/SentimentalAnalysis.asmx" />
+      <soap12:address location="http://localhost:6361/Services/SentimentalAnalysis.asmx" />
     </wsdl:port>
     <wsdl:port name="SentimentalAnalysisHttpGet" binding="tns:SentimentalAnalysisHttpGet">
-      <http:address location="http://localhost:6361/services/SentimentalAnalysis.asmx" />
+      <http:address location="http://localhost:6361/Services/SentimentalAnalysis.asmx" />
     </wsdl:port>
     <wsdl:port name="SentimentalAnalysisHttpPost" binding="tns:SentimentalAnalysisHttpPost">
-      <http:address location="http://localhost:6361/services/SentimentalAnalysis.asmx" />
+      <http:address location="http://localhost:6361/Services/SentimentalAnalysis.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
