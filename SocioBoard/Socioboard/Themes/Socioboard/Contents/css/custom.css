@@ -1,0 +1,338 @@
+
+.header_training {
+    background: url("../../Contents/img/corporate-training.jpg") no-repeat scroll center center / cover rgba(0, 0, 0, 0);
+    display: table;
+    height: 100%;
+    margin-top: 40px;
+    position: relative;
+    width: 100%;
+}
+.header_underconst {
+    background: url("http://everythingidevice.com/wp-content/uploads/2014/05/2048.jpg") no-repeat scroll center center / cover rgba(0, 0, 0, 0);
+    display: table;
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+.box_training {
+    background-color: #ffffff;
+    background-size: cover;
+    border-radius: 6px;
+    box-shadow: 0 -5px 8px rgba(0, 0, 0, 0.3);
+    left: 50%;
+    margin-left: -358px;
+    margin-top: -292px;
+    max-height: 445px;
+    min-height: 445px;
+    padding-bottom: 10px;
+    position: absolute;
+    top: 440px;
+    width: 716px;
+    z-index: 1;
+}
+.breadcrumbs {
+    background: none repeat scroll 0 0 currentcolor;
+    border-bottom: 1px solid #eee;
+    overflow: hidden;
+    padding: 5px 0 0;
+}
+.breadcrumb {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    padding-right: 0;
+    position: relative;
+    top: 10px;
+}
+.breadcrumbs h1 {
+    color: white;
+}
+.thankyou {
+    font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+#video-container {
+    background: none repeat scroll 0 0 white;
+    box-shadow: 0 1px 10px #d9d9d9;
+    margin: 2em auto 0;
+    padding: 2em;
+    width: 500px;
+}
+.webinar_profile {
+    width: 100px;
+}
+.schedule-headline {
+    border-top: 1px solid #f0f0f0;
+    margin-top: 44px;
+    padding-top: 44px;
+}
+.schedule-headline small {
+    color: #ccc;
+    font-weight: normal;
+}
+.schedule-headline a {
+    font-weight: normal;
+}
+.schedule {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #428bca;
+    border-color: #f0f0f0 #e6e6e6 #e6e6e6;
+    border-image: none;
+    border-right: 1px solid #e6e6e6;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 5px 1px 1px;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.05);
+    margin-bottom: 66px;
+    width: 100%;
+}
+.schedule th, .schedule td {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 44px 0;
+    vertical-align: top;
+}
+.schedule th {
+    font-weight: normal;
+    padding: 44px 22px;
+    text-align: left;
+    width: 5%;
+}
+.schedule td {
+    width: 95%;
+}
+.schedule tr.text td, .schedule tr.text th {
+    font-weight: 900;
+    padding: 22px;
+}
+.schedule tr.text td {
+    font-weight: 900;
+    padding: 22px 0;
+}
+.schedule .talk-info {
+    float: left;
+    margin-right: 5%;
+    width: 62%;
+}
+.schedule .speaker-info {
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 33%;
+}
+.schedule .speaker-info img {
+    height: auto;
+    max-height: 200px;
+    max-width: 200px;
+    width: 100%;
+}
+.schedule .image {
+    display: block;
+    margin: 0 0 20px;
+}
+.schedule .speaker-info h3 {
+    margin-bottom: 22px;
+    white-space: nowrap;
+}
+.schedule .speaker-info h3 a {
+    color: white;
+    margin-bottom: 22px;
+    white-space: nowrap;
+}
+.CricketSchedule-teamLogo {
+    height: 33px;
+}
+.header_cricket {
+    background: url("../../Contents/img/world_cup.jpg") no-repeat scroll center center / cover rgba(0, 0, 0, 0);
+    display: table;
+    height: 70%;
+    margin-top: 50px;
+    position: relative;
+    width: 100%;
+}
+.sharrre-container {
+    border-radius: 4px;
+    float: right;
+    margin-right: -100px;
+    padding: 0 10px;
+    width: 50px;
+}
+.sidebarSmall-share {
+    animation: 0.5s ease 0s normal none 0 running slideDown;
+    background: none repeat scroll 0 0 white;
+    margin: 0 0 0 -603px;
+    padding: 5px;
+    position: fixed;
+    right: 0;
+    top: 200px;
+    width: 45px;
+    z-index: 30;
+}
+.webinar {
+    background: none repeat scroll 0 0 #4d4f51;
+    font-family: Arial,sans-serif;
+    font-weight: 700;
+    text-align: center;
+}
+.webinar_header {
+    background: url("../../Contents/img/webinar_bg.png") no-repeat scroll center center / cover rgba(0, 0, 0, 0);
+    display: table;
+    height: 70%;
+    margin-top: 50px;
+    position: relative;
+    width: 100%;
+}
+.webinar.nav-pills > li.active > a, .webinar.nav-pills > li > a:hover, .webinar.nav-pills > li > a:focus {
+    background-color: #0571ff;
+    border-radius: 0;
+    color: #fff;
+}
+i.style-switcher-btn {
+    background: none repeat scroll 0 0 #585f69;
+    border-radius: 6px 0 0 6px !important;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 7px 9px;
+    position: fixed;
+    right: 0;
+    top: 37px;
+    z-index: 555555;
+}
+i.style-switcher-btn:hover {
+    background: none repeat scroll 0 0 #707985;
+}
+i.style-switcher-btn-option {
+    background: none repeat scroll 0 0 #9097a0;
+    top: 38px;
+}
+i.style-switcher-btn-option:hover {
+    background: none repeat scroll 0 0 #707985;
+}
+.style-switcher {
+    background: none repeat scroll 0 0 #585f69;
+    border: 1px solid #666d76;
+    border-radius: 6px 0 0 6px !important;
+    display: none;
+    padding: 15px 15px 15px 20px;
+    position: fixed;
+    right: 0;
+    top: 37px;
+    width: 205px;
+    z-index: 555555;
+}
+.style-switcher-inner {
+    background: none repeat scroll 0 0 #9097a0;
+}
+.style-switcher .theme-close {
+    position: absolute;
+    right: 6px;
+    top: 10px;
+}
+.style-switcher .theme-close i {
+    color: #fff;
+    cursor: pointer;
+    font-size: 22px;
+    padding: 5px;
+}
+.style-switcher .theme-close i:hover {
+    background: none repeat scroll 0 0 #fff;
+    color: #464e5b;
+}
+.style-switcher .theme-heading {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+.style-switcher-logo {
+    border-top: 1px solid #4c5159;
+    margin-top: 10px;
+    padding-top: 15px;
+}
+.style-switcher-logo a {
+    display: block;
+    text-align: center;
+}
+.style-switcher ul {
+    margin-bottom: 0;
+}
+.style-switcher li {
+    background: none repeat scroll 0 0 #c00;
+    border-radius: 10% !important;
+    cursor: pointer;
+    display: inline-block;
+    height: 26px;
+    margin: 0 5px 5px 0;
+    width: 26px;
+}
+.style-switcher li.last {
+    margin-right: 0;
+}
+.style-switcher li:hover, .style-switcher li.theme-active {
+    border: 2px solid #fff;
+}
+.style-switcher a.btn-u {
+    border: 1px solid transparent;
+}
+.style-switcher a.btn-u-sea.active-switcher-btn, .style-switcher a.btn-u-green.active-switcher-btn {
+    border: 1px solid #eee;
+}
+.style-switcher a.btn-u-sea.active-switcher-btn {
+    background: none repeat scroll 0 0 #1abc9c !important;
+}
+.style-switcher a.btn-u-green.active-switcher-btn {
+    background: none repeat scroll 0 0 #2ecc71 !important;
+}
+.style-switcher li.theme-default {
+    background: none repeat scroll 0 0 #72c02c;
+}
+.style-switcher li.theme-blue {
+    background: none repeat scroll 0 0 #3498db;
+}
+.style-switcher li.theme-orange {
+    background: none repeat scroll 0 0 #e67e22;
+}
+.style-switcher li.theme-red {
+    background: none repeat scroll 0 0 #e74c3c;
+}
+.style-switcher li.theme-light {
+    background: none repeat scroll 0 0 #ecf0f1;
+}
+.style-switcher li.theme-purple {
+    background: none repeat scroll 0 0 #9b6bcc;
+}
+.style-switcher li.theme-aqua {
+    background: none repeat scroll 0 0 #27d7e7;
+}
+.style-switcher li.theme-brown {
+    background: none repeat scroll 0 0 #9c8061;
+}
+.style-switcher li.theme-dark-blue {
+    background: none repeat scroll 0 0 #4765a0;
+}
+.style-switcher li.theme-light-green {
+    background: none repeat scroll 0 0 #79d5b3;
+}
+.hosts-wrapper {
+    padding: 0 50px;
+}
+.supported-hosts img {
+    margin: 25px 25px 0 0;
+    vertical-align: middle;
+}
+.supported-hosts {
+    border-top: 1px solid #d7d7d7;
+    display: table;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+.supported-hosts small {
+    color: gray;
+    display: block;
+    font-size: 35px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-top: 17px;
+    text-align: center;
+}

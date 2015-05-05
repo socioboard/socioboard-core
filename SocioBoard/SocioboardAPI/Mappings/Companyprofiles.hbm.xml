@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+  <class name="CompanyProfiles" table="CompanyProfiles" lazy="true" >
+    <id name="Id" column="Id" />
+    <property name="Companyname">
+      <column name="Companyname" sql-type="varchar(500)" not-null="true" />
+    </property>
+    <property name="Instagramprofileid">
+      <column name="Instagramprofileid" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Fbprofileid">
+      <column name="Fbprofileid" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Twitterprofileid">
+      <column name="Twitterprofileid" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Linkedinprofileid">
+      <column name="Linkedinprofileid" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Youtubeprofileid">
+      <column name="Youtubeprofileid" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Gplusprofileid">
+      <column name="Gplusprofileid" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Tumblrprofileid">
+      <column name="Tumblrprofileid" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Userid">
+      <column name="Userid" sql-type="varchar(500)" not-null="false" />
+    </property>
+  </class>
+</hibernate-mapping>
