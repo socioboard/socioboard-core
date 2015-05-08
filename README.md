@@ -115,8 +115,8 @@ All libraries are placed here
 
 Some application screenshots
 
-![](http://imgur.com/VXxWeuz)
-![](http://imgur.com/NMnn7fD)
+![](http://i.imgur.com/VXxWeuz)
+![](http://i.imgur.com/NMnn7fD)
 ![](http://imgur.com/aslpN2f)
 ![](http://imgur.com/zR18CNM)
 ![](http://imgur.com/RKgG9v0)
