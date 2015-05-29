@@ -126,16 +126,6 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://api.socioboard.com/Services/InstagramFeed.asmx")]
-        public string Socioboard_Api_InstagramFeed_InstagramFeed {
-            get {
-                return ((string)(this["Socioboard_Api_InstagramFeed_InstagramFeed"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/Linkedin.asmx")]
         public string Socioboard_Api_Linkedin_Linkedin {
             get {
@@ -456,16 +446,6 @@ namespace Socioboard.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/services/FacebookAccount.asmx")]
-        public string Socioboard_Api_FacebookAccount_FacebookAccount {
-            get {
-                return ((string)(this["Socioboard_Api_FacebookAccount_FacebookAccount"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/FbPagePost.asmx")]
         public string Socioboard_Api_FbPagePost_FbPagePost {
             get {
@@ -610,6 +590,26 @@ namespace Socioboard.Properties {
         public string Socioboard_Api_Instagram_Instagram {
             get {
                 return ((string)(this["Socioboard_Api_Instagram_Instagram"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/InstagramFeed.asmx")]
+        public string Socioboard_Api_InstagramFeed_InstagramFeed {
+            get {
+                return ((string)(this["Socioboard_Api_InstagramFeed_InstagramFeed"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/FacebookAccount.asmx")]
+        public string Socioboard_Api_FacebookAccount_FacebookAccount {
+            get {
+                return ((string)(this["Socioboard_Api_FacebookAccount_FacebookAccount"]));
             }
         }
         

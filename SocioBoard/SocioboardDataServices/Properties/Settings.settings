@@ -11,9 +11,6 @@
     <Setting Name="SocioboardDataServices_Api_FacebookFeed_FacebookFeed" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/Services/FacebookFeed.asmx</Value>
     </Setting>
-    <Setting Name="SocioboardDataServices_Api_DiscoverySearch_DiscoverySearch" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://devapi.socioboard.com/Services/DiscoverySearch.asmx</Value>
-    </Setting>
     <Setting Name="SocioboardDataServices_Api_TumblrAccount_TumblrAccount" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://devapi.socioboard.com/Services/TumblrAccount.asmx</Value>
     </Setting>
@@ -67,6 +64,9 @@
     </Setting>
     <Setting Name="SocioboardDataServices_Api_SentimentalAnalysis_SentimentalAnalysis" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/Services/SentimentalAnalysis.asmx</Value>
+    </Setting>
+    <Setting Name="SocioboardDataServices_Api_DiscoverySearch_DiscoverySearch" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/DiscoverySearch.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>

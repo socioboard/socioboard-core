@@ -563,11 +563,6 @@
     <None Include="Web References\Api.FacebookFeed\FacebookFeed.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\Api.DiscoverySearch\DiscoverySearch.disco">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Web References\Api.TumblrAccount\TumblrAccount.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -620,6 +615,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\Api.SentimentalAnalysis\SentimentalAnalysis.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Api.DiscoverySearch\DiscoverySearch.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

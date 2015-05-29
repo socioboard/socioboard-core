@@ -56,16 +56,6 @@ namespace SocioboardDataServices.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://devapi.socioboard.com/Services/DiscoverySearch.asmx")]
-        public string SocioboardDataServices_Api_DiscoverySearch_DiscoverySearch {
-            get {
-                return ((string)(this["SocioboardDataServices_Api_DiscoverySearch_DiscoverySearch"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://devapi.socioboard.com/Services/TumblrAccount.asmx")]
         public string SocioboardDataServices_Api_TumblrAccount_TumblrAccount {
             get {
@@ -240,6 +230,16 @@ namespace SocioboardDataServices.Properties {
         public string SocioboardDataServices_Api_SentimentalAnalysis_SentimentalAnalysis {
             get {
                 return ((string)(this["SocioboardDataServices_Api_SentimentalAnalysis_SentimentalAnalysis"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6361/Services/DiscoverySearch.asmx")]
+        public string SocioboardDataServices_Api_DiscoverySearch_DiscoverySearch {
+            get {
+                return ((string)(this["SocioboardDataServices_Api_DiscoverySearch_DiscoverySearch"]));
             }
         }
     }

@@ -32,9 +32,6 @@
     <Setting Name="Socioboard_Api_InstagramAccount_InstagramAccount" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/Services/InstagramAccount.asmx</Value>
     </Setting>
-    <Setting Name="Socioboard_Api_InstagramFeed_InstagramFeed" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://api.socioboard.com/Services/InstagramFeed.asmx</Value>
-    </Setting>
     <Setting Name="Socioboard_Api_Linkedin_Linkedin" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/Services/Linkedin.asmx</Value>
     </Setting>
@@ -131,9 +128,6 @@
     <Setting Name="Socioboard_Api_FbPageComment_FbPageComment" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/Services/FbPageComment.asmx</Value>
     </Setting>
-    <Setting Name="Socioboard_Api_FacebookAccount_FacebookAccount" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:6361/services/FacebookAccount.asmx</Value>
-    </Setting>
     <Setting Name="Socioboard_Api_FbPagePost_FbPagePost" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/Services/FbPagePost.asmx</Value>
     </Setting>
@@ -178,6 +172,12 @@
     </Setting>
     <Setting Name="Socioboard_Api_Instagram_Instagram" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/Services/Instagram.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_InstagramFeed_InstagramFeed" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/InstagramFeed.asmx</Value>
+    </Setting>
+    <Setting Name="Socioboard_Api_FacebookAccount_FacebookAccount" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:6361/Services/FacebookAccount.asmx</Value>
     </Setting>
     <Setting Name="Socioboard_Api_LinkedinMessage_LinkedinMessage" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:6361/Services/LinkedinMessage.asmx</Value>
