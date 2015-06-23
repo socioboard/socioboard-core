@@ -1,0 +1,2815 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Admin_AddNewsLatter_LoadAddNewsLatter_AddNewslatter" xml:space="preserve">
+    <value>뉴스레터 추가</value>
+  </data>
+  <data name="Admin_AddNewsLatter_LoadAddNewsLatter_SendDate" xml:space="preserve">
+    <value>발송일</value>
+  </data>
+  <data name="Admin_AddNewsLatter_LoadAddNewsLatter_Subject" xml:space="preserve">
+    <value>제목</value>
+  </data>
+  <data name="Admin_AdminLogin_Index_RememberMe" xml:space="preserve">
+    <value>로그인 상태 유지</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_ChangePassword" xml:space="preserve">
+    <value>비밀번호 변경</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_ChangeProfileImage" xml:space="preserve">
+    <value>프로필 이미지 변경</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_Close" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_FirstName" xml:space="preserve">
+    <value>이름</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_LastName" xml:space="preserve">
+    <value>성</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_Save" xml:space="preserve">
+    <value>저장</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_SaveChanges" xml:space="preserve">
+    <value>변경사항 저장</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_Settings" xml:space="preserve">
+    <value>설정</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_TimeZone" xml:space="preserve">
+    <value>시간대</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Advertisement" xml:space="preserve">
+    <value>광고</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_AdvertisementDetails" xml:space="preserve">
+    <value>광고 정보</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Disable" xml:space="preserve">
+    <value>미사용</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Enable" xml:space="preserve">
+    <value>사용</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Expirydate" xml:space="preserve">
+    <value>만료일</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Image" xml:space="preserve">
+    <value>이미지</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_ImageURL" xml:space="preserve">
+    <value>이미지 경로</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Or" xml:space="preserve">
+    <value>또는</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Save" xml:space="preserve">
+    <value>저장</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Status" xml:space="preserve">
+    <value>상태</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Advertisement" xml:space="preserve">
+    <value>광고</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Disable" xml:space="preserve">
+    <value>미사용</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_EditAdvertDetails" xml:space="preserve">
+    <value>광고정보 수정</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Enable" xml:space="preserve">
+    <value>사용</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_ExpiryDate" xml:space="preserve">
+    <value>만료일</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Image" xml:space="preserve">
+    <value>이미지</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_ImageURL" xml:space="preserve">
+    <value>이미지 경로</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Or" xml:space="preserve">
+    <value>또는</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Status" xml:space="preserve">
+    <value>상태</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Update" xml:space="preserve">
+    <value>업데이트</value>
+  </data>
+  <data name="Admin_Advertisement_ManageAdvertisement_Manage" xml:space="preserve">
+    <value>광고 관리</value>
+  </data>
+  <data name="Admin_Advertisement_ManageAdvertisement_ManageAdvertTable" xml:space="preserve">
+    <value>광고테이블 관리</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_AddNewCoupon" xml:space="preserve">
+    <value>새 쿠폰 추가</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_CouponCode" xml:space="preserve">
+    <value>쿠폰 코드</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_Disable" xml:space="preserve">
+    <value>미사용</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_Discount" xml:space="preserve">
+    <value>할인율(%)</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_Enable" xml:space="preserve">
+    <value>사용</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_EntryDate" xml:space="preserve">
+    <value>입력일</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_ExpiryDate" xml:space="preserve">
+    <value>만료일</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_Save" xml:space="preserve">
+    <value>저장</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_Status" xml:space="preserve">
+    <value>상태</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_CouponCode" xml:space="preserve">
+    <value>쿠폰 코드</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_Disable" xml:space="preserve">
+    <value>미사용</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_EditCoupon" xml:space="preserve">
+    <value>쿠폰정보 수정</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_Enable" xml:space="preserve">
+    <value>사용</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_EntryDate" xml:space="preserve">
+    <value>입력일</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_ExpiryDate" xml:space="preserve">
+    <value>만료일</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_Status" xml:space="preserve">
+    <value>상태</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_Update" xml:space="preserve">
+    <value>업데이트</value>
+  </data>
+  <data name="Admin_Coupons_ManageCoupons_ManageCoupon" xml:space="preserve">
+    <value>쿠폰 관리</value>
+  </data>
+  <data name="Admin_Coupons_ManageCoupons_ManageCouponTable" xml:space="preserve">
+    <value>쿠폰테이블 관리</value>
+  </data>
+  <data name="Admin_News_CreateNews_Disable" xml:space="preserve">
+    <value>미사용</value>
+  </data>
+  <data name="Admin_News_CreateNews_EditUserDetails" xml:space="preserve">
+    <value>회원정보 수정</value>
+  </data>
+  <data name="Admin_News_CreateNews_Enable" xml:space="preserve">
+    <value>사용</value>
+  </data>
+  <data name="Admin_News_CreateNews_ExpiryDate" xml:space="preserve">
+    <value>만료일</value>
+  </data>
+  <data name="Admin_News_CreateNews_News" xml:space="preserve">
+    <value>뉴스</value>
+  </data>
+  <data name="Admin_News_CreateNews_Save" xml:space="preserve">
+    <value>저장</value>
+  </data>
+  <data name="Admin_News_CreateNews_Status" xml:space="preserve">
+    <value>상태</value>
+  </data>
+  <data name="Admin_News_EditNews_Disable" xml:space="preserve">
+    <value>미사용</value>
+  </data>
+  <data name="Admin_News_EditNews_EditUserdetails" xml:space="preserve">
+    <value>회원정보 수정</value>
+  </data>
+  <data name="Admin_News_EditNews_Enable" xml:space="preserve">
+    <value>사용</value>
+  </data>
+  <data name="Admin_News_EditNews_ExpiryDate" xml:space="preserve">
+    <value>만료일</value>
+  </data>
+  <data name="Admin_News_EditNews_News" xml:space="preserve">
+    <value>뉴스</value>
+  </data>
+  <data name="Admin_News_EditNews_Status" xml:space="preserve">
+    <value>상태</value>
+  </data>
+  <data name="Admin_News_EditNews_Update" xml:space="preserve">
+    <value>업데이트</value>
+  </data>
+  <data name="Admin_News_ManageNews_ManageNews" xml:space="preserve">
+    <value>뉴스 관리</value>
+  </data>
+  <data name="Admin_News_ManageNews_ManageNewstable" xml:space="preserve">
+    <value>뉴스테이블 관리</value>
+  </data>
+  <data name="Admin_Package_EditPackage_EditDetails" xml:space="preserve">
+    <value>패키지정보 수정</value>
+  </data>
+  <data name="Admin_Package_EditPackage_Name" xml:space="preserve">
+    <value>패키지명</value>
+  </data>
+  <data name="Admin_Package_EditPackage_Pricing" xml:space="preserve">
+    <value>가격</value>
+  </data>
+  <data name="Admin_Package_EditPackage_Update" xml:space="preserve">
+    <value>업데이트</value>
+  </data>
+  <data name="Admin_Package_ManagePackage_ManagePackage" xml:space="preserve">
+    <value>패키지 관리</value>
+  </data>
+  <data name="Admin_Package_ManagePackage_ManagePackageTable" xml:space="preserve">
+    <value>패키지테이블 관리</value>
+  </data>
+  <data name="Admin_Services_SchedulingDetails_UsersSchedulingDetails" xml:space="preserve">
+    <value>회원 일정정보</value>
+  </data>
+  <data name="Admin_Services_SchedulingDetails_UsersSchedulingDetailsTable" xml:space="preserve">
+    <value>회원 일정정보 테이블</value>
+  </data>
+  <data name="Admin_Services_Scheduling_Scheduling" xml:space="preserve">
+    <value>일정</value>
+  </data>
+  <data name="Admin_Services_Scheduling_SchedulingTable" xml:space="preserve">
+    <value>일정테이블</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Disable" xml:space="preserve">
+    <value>미사용</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_EditDetails" xml:space="preserve">
+    <value>회원정보 수정</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Email" xml:space="preserve">
+    <value>이메일 주소</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Enable" xml:space="preserve">
+    <value>사용</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Name" xml:space="preserve">
+    <value>이름</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Package" xml:space="preserve">
+    <value>패키지</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Status" xml:space="preserve">
+    <value>상태</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Update" xml:space="preserve">
+    <value>업데이트</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_AccountType" xml:space="preserve">
+    <value>계정 종류</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_CreateDate" xml:space="preserve">
+    <value>생성일</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_Deleted" xml:space="preserve">
+    <value>삭제된</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_DeleteUsers" xml:space="preserve">
+    <value>삭제된 회원</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_DeleteUsersTable" xml:space="preserve">
+    <value>삭제된 회원테이블</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_EmailId" xml:space="preserve">
+    <value>이메일 아이디</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_Name" xml:space="preserve">
+    <value>이름</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_UsersStatus" xml:space="preserve">
+    <value>회원 상태</value>
+  </data>
+  <data name="Admin_UserDetails_ManageProfile_ManageProfiles" xml:space="preserve">
+    <value>프로필 관리</value>
+  </data>
+  <data name="Admin_UserDetails_ManageProfile_ManageProfilesTable" xml:space="preserve">
+    <value>프로필테이블 관리</value>
+  </data>
+  <data name="Admin_UserDetails_ManageUsers_ManageUsers" xml:space="preserve">
+    <value>회원 관리</value>
+  </data>
+  <data name="Admin_UserDetails_ManageUsers_ManageUsersTable" xml:space="preserve">
+    <value>회원테이블 관리</value>
+  </data>
+  <data name="BusinessSetting_Index_AssigningTasks" xml:space="preserve">
+    <value>할일 배정</value>
+  </data>
+  <data name="BusinessSetting_Index_AssigningTasksDescription" xml:space="preserve">
+    <value>이 설정은 회원이 그룹에게 할일을 배정하고 다른 그룹 멤버들도 볼 수 있게 합니다. 만약 이 설정을 원하지 않으면 "미사용"으로 설정하세요.</value>
+  </data>
+  <data name="BusinessSetting_Index_AssigningTasksDisable" xml:space="preserve">
+    <value>미사용</value>
+  </data>
+  <data name="BusinessSetting_Index_AssigningTasksEnable" xml:space="preserve">
+    <value>그룹과제 사용</value>
+  </data>
+  <data name="BusinessSetting_Index_BuisnessName" xml:space="preserve">
+    <value>상호</value>
+  </data>
+  <data name="BusinessSetting_Index_NotifcationTaskDisable" xml:space="preserve">
+    <value>미사용</value>
+  </data>
+  <data name="BusinessSetting_Index_NotifcationTaskEnable" xml:space="preserve">
+    <value>할일 공지 사용</value>
+  </data>
+  <data name="BusinessSetting_Index_TaskNotificationEmail" xml:space="preserve">
+    <value>할일 공지 이메일</value>
+  </data>
+  <data name="BusinessSetting_Index_UpdateSettings" xml:space="preserve">
+    <value>설정 업데이트</value>
+  </data>
+  <data name="Discovery_DiscoveryPartial_FacebookPosts" xml:space="preserve">
+    <value>페이스북 포스트</value>
+  </data>
+  <data name="Discovery_DiscoveryPartial_Heading" xml:space="preserve">
+    <value>비즈니스와 관련된 검색어로 새로운 고객을 찾을 수 있습니다.</value>
+  </data>
+  <data name="Discovery_DiscoveryPartial_SearchHistory" xml:space="preserve">
+    <value>검색 내역</value>
+  </data>
+  <data name="Discovery_DiscoveryPartial_TBTextSearchPlaceholder" xml:space="preserve">
+    <value>키워드를 입력하세요</value>
+  </data>
+  <data name="Discovery_DiscoveryPartial_TwitterPosts" xml:space="preserve">
+    <value>트위터 포스트</value>
+  </data>
+  <data name="Feeds_FeedMenu_Facebook" xml:space="preserve">
+    <value>페이스북</value>
+  </data>
+  <data name="Feeds_FeedMenu_Feeds" xml:space="preserve">
+    <value>피드</value>
+  </data>
+  <data name="Feeds_FeedMenu_Instragram" xml:space="preserve">
+    <value>인스타그램</value>
+  </data>
+  <data name="Feeds_FeedMenu_Linkedin" xml:space="preserve">
+    <value>링크드인</value>
+  </data>
+  <data name="Feeds_FeedMenu_LinkedinAccount" xml:space="preserve">
+    <value>링크드인 계정</value>
+  </data>
+  <data name="Feeds_FeedMenu_LinkedinCompanyPage" xml:space="preserve">
+    <value>링크드인 회사 페이지</value>
+  </data>
+  <data name="Feeds_FeedMenu_Tumblr" xml:space="preserve">
+    <value>텀블러</value>
+  </data>
+  <data name="Feeds_FeedMenu_Twitter" xml:space="preserve">
+    <value>트위터</value>
+  </data>
+  <data name="Feeds_FeedMenu_Youtube" xml:space="preserve">
+    <value>유튜브</value>
+  </data>
+  <data name="Feeds_FeedPartial_Mention" xml:space="preserve">
+    <value>멘션</value>
+  </data>
+  <data name="Feeds_FeedPartial_Retweets" xml:space="preserve">
+    <value>리트윗</value>
+  </data>
+  <data name="Feeds_FeedPartial_Status" xml:space="preserve">
+    <value>상태</value>
+  </data>
+  <data name="Feeds_FeedPartial_Tag" xml:space="preserve">
+    <value>태그</value>
+  </data>
+  <data name="Feeds_FeedPartial_Userfeeds" xml:space="preserve">
+    <value>회원 피드</value>
+  </data>
+  <data name="Feeds_FeedPartial_UserTweet" xml:space="preserve">
+    <value>회원 트윗</value>
+  </data>
+  <data name="Feeds_FeedsPartial_LiveFeeds" xml:space="preserve">
+    <value>라이브 피드</value>
+  </data>
+  <data name="Feeds_Panel1Partial_Close" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="Feeds_Panel1Partial_Comment" xml:space="preserve">
+    <value>댓글</value>
+  </data>
+  <data name="Feeds_Panel1Partial_EmailMessage" xml:space="preserve">
+    <value>이메일 메시지</value>
+  </data>
+  <data name="Feeds_Panel1Partial_Favourite" xml:space="preserve">
+    <value>즐겨찾기</value>
+  </data>
+  <data name="Feeds_Panel1Partial_Post" xml:space="preserve">
+    <value>포스트</value>
+  </data>
+  <data name="Feeds_Panel1Partial_QuoteMessage" xml:space="preserve">
+    <value>메시지 인용</value>
+  </data>
+  <data name="Feeds_Panel1Partial_ReportAsSpam" xml:space="preserve">
+    <value>스팸 보고서</value>
+  </data>
+  <data name="Feeds_Panel1Partial_Retweet" xml:space="preserve">
+    <value>리트윗</value>
+  </data>
+  <data name="Feeds_Panel1Partial_TBtextfbPlaceholder" xml:space="preserve">
+    <value>댓글을 입력하세요</value>
+  </data>
+  <data name="Feed_Index_Reply" xml:space="preserve">
+    <value>대답</value>
+  </data>
+  <data name="Feed_Index_Tweet" xml:space="preserve">
+    <value>짹짹</value>
+  </data>
+  <data name="ForgotPassword_ForgetPasswordPartial_ForgotPassword" xml:space="preserve">
+    <value>비밀번호를 잊으셨나요?</value>
+  </data>
+  <data name="ForgotPassword_ForgetPasswordPartial_Login" xml:space="preserve">
+    <value>로그인</value>
+  </data>
+  <data name="ForgotPassword_ForgetPasswordPartial_Submit" xml:space="preserve">
+    <value>전송하기</value>
+  </data>
+  <data name="ForgotPasword_ForgotPasswordMailBodyPartial_FollowTwitter" xml:space="preserve">
+    <value>트위터에서 팔로우하기:</value>
+  </data>
+  <data name="ForgotPasword_ForgotPasswordMailBodyPartial_Here" xml:space="preserve">
+    <value>여기</value>
+  </data>
+  <data name="ForgotPasword_ForgotPasswordMailBodyPartial_NewUsernamePassword" xml:space="preserve">
+    <value>클릭하세요</value>
+  </data>
+  <data name="ForgotPasword_ForgotPasswordMailBodyPartial_RequestRecieved" xml:space="preserve">
+    <value>로그인하는데 장애가 있는 것 같습니다. 비밀번호를 재설정하도록 링크를 보내드리겠습니다.</value>
+  </data>
+  <data name="ForgotPasword_ForgotPasswordMailBodyPartial_ThanksRegards" xml:space="preserve">
+    <value>감사합니다.</value>
+  </data>
+  <data name="ForgotPasword_ForgotPasswordMailBodyPartial_ToProceed" xml:space="preserve">
+    <value>비밀번호 재설정 진행중</value>
+  </data>
+  <data name="ForgotPasword_ForgotPassworMailBodydPartial_FollowFacebook" xml:space="preserve">
+    <value>페이스북에서 팔로우하기:</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordMailBodyPartial_FollowTwitter" xml:space="preserve">
+    <value>트위터에서 팔로우하기:</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordMailBodyPartial_NewUsernamePassword" xml:space="preserve">
+    <value>아래에서 사용자명과 비밀번호를 확인하세요.</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordMailBodyPartial_RequestRecieved" xml:space="preserve">
+    <value>비밀번호 변경 요청을 받았습니다.</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordMailBodyPartial_ThanksRegards" xml:space="preserve">
+    <value>감사합니다.</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordPartial_InvalidLink" xml:space="preserve">
+    <value>잘못된 링크</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordPartial_ResetPassword" xml:space="preserve">
+    <value>비밀번호 재설정</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordPartial_Submit" xml:space="preserve">
+    <value>전송하기</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordPartial_TryAgain" xml:space="preserve">
+    <value>재시도</value>
+  </data>
+  <data name="ForgotPasword_ResetPassworMailBodydPartial_FollowFacebook" xml:space="preserve">
+    <value>페이스북에서 팔로우하기:</value>
+  </data>
+  <data name="Group_Index_1Min" xml:space="preserve">
+    <value>1분</value>
+  </data>
+  <data name="Group_Index_2Min" xml:space="preserve">
+    <value>2분</value>
+  </data>
+  <data name="Group_Index_3Min" xml:space="preserve">
+    <value>3분</value>
+  </data>
+  <data name="Group_Index_4Min" xml:space="preserve">
+    <value>4분</value>
+  </data>
+  <data name="Group_Index_5Min" xml:space="preserve">
+    <value>5분</value>
+  </data>
+  <data name="Group_Index_Chat" xml:space="preserve">
+    <value>채팅</value>
+  </data>
+  <data name="Group_Index_Close" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="Group_Index_Groups" xml:space="preserve">
+    <value>그룹</value>
+  </data>
+  <data name="Group_Index_GroupUsers" xml:space="preserve">
+    <value>그룹 멤버</value>
+  </data>
+  <data name="Group_Index_IntervalTime" xml:space="preserve">
+    <value>시간 간격</value>
+  </data>
+  <data name="Group_Index_NewMessage" xml:space="preserve">
+    <value>새 메시지</value>
+  </data>
+  <data name="Group_Index_NoFeedFound" xml:space="preserve">
+    <value>피드가 없습니다</value>
+  </data>
+  <data name="Group_Index_Post" xml:space="preserve">
+    <value>포스트</value>
+  </data>
+  <data name="Group_Index_PostOnSelectedGroup" xml:space="preserve">
+    <value>선택한 그룹에게 포스트</value>
+  </data>
+  <data name="Group_Index_SelectGroupDisplayFeeds" xml:space="preserve">
+    <value>피드가 보이길 원하는 그룹을 선택하세요.</value>
+  </data>
+  <data name="Group_Index_Send" xml:space="preserve">
+    <value>보내기</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Activities" xml:space="preserve">
+    <value>활동</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Connections" xml:space="preserve">
+    <value>연결</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Fans" xml:space="preserve">
+    <value>팬</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Follower" xml:space="preserve">
+    <value>팔로워</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Following" xml:space="preserve">
+    <value>파로잉</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Friends" xml:space="preserve">
+    <value>친구</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_HaveYouInCircles" xml:space="preserve">
+    <value>당신은 원형에있는</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_InYourCircles" xml:space="preserve">
+    <value>서클</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Likes" xml:space="preserve">
+    <value>Likes</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_MyRecentProfiles" xml:space="preserve">
+    <value>내 최신 프로필</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Photos" xml:space="preserve">
+    <value>사진</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Post" xml:space="preserve">
+    <value>포스트</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_PostsPerDay" xml:space="preserve">
+    <value>일일 포스트</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_RecentMessages" xml:space="preserve">
+    <value>최신 메시지</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_TotalSubscriber" xml:space="preserve">
+    <value>가입자 수</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_TotalVideo" xml:space="preserve">
+    <value>비디오 수</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_TotalView" xml:space="preserve">
+    <value>뷰 수</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_youhavenogroup" xml:space="preserve">
+    <value>당신은 어떤 그룹이 없습니다</value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_IncomingMessages" xml:space="preserve">
+    <value>수신 메시지</value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_NewFacebookFans" xml:space="preserve">
+    <value>새로운 페이스북 팬</value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_SentMessages" xml:space="preserve">
+    <value>보낸 메시지</value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_TwitterFollowers" xml:space="preserve">
+    <value>트위터 팔로워</value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_Updates" xml:space="preserve">
+    <value>업데이트</value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_ViewDetails" xml:space="preserve">
+    <value>상세 보기</value>
+  </data>
+  <data name="Home_HomeUserProfilePartial_Loading" xml:space="preserve">
+    <value>로딩중 . . .</value>
+  </data>
+  <data name="Home_HomeUserProfilePartial_RecentFollowers" xml:space="preserve">
+    <value>최신 팔로워</value>
+  </data>
+  <data name="Home_HomeUserProfilePartial_SocialProfiles" xml:space="preserve">
+    <value>소셜 프로필</value>
+  </data>
+  <data name="Home_HomeUserProfilePartial_TeamMembers" xml:space="preserve">
+    <value>팀 멤버</value>
+  </data>
+  <data name="Home_Index_Attach" xml:space="preserve">
+    <value>프로필 첨부</value>
+  </data>
+  <data name="Home_MyTickets_MyRecentTickets" xml:space="preserve">
+    <value>내 최신 티켓</value>
+  </data>
+  <data name="Home_PageNotFound_404NotFound" xml:space="preserve">
+    <value>이 페이지는 없는 페이지 입니다.</value>
+  </data>
+  <data name="Home_PageNotFound_ContactSupport" xml:space="preserve">
+    <value>관리자에게 도움 요청하기</value>
+  </data>
+  <data name="Home_PageNotFound_Oops" xml:space="preserve">
+    <value>아뿔싸!</value>
+  </data>
+  <data name="Home_PageNotFound_Search" xml:space="preserve">
+    <value>검색</value>
+  </data>
+  <data name="Home_PageNotFound_SorryErrorOccured" xml:space="preserve">
+    <value>죄송합니다. 에러가 발생하여 페이지를 정상적으로 불러오지 못했습니다.</value>
+  </data>
+  <data name="Home_PageNotFound_TakeMeHome" xml:space="preserve">
+    <value>홈으로 이동하기</value>
+  </data>
+  <data name="Home_PofilePartial_Facebook" xml:space="preserve">
+    <value>페이스북</value>
+  </data>
+  <data name="Home_PofilePartial_GooglePlus" xml:space="preserve">
+    <value>GooglePlus</value>
+  </data>
+  <data name="Home_PofilePartial_Instagram" xml:space="preserve">
+    <value>인스타그램</value>
+  </data>
+  <data name="Home_PofilePartial_Linkedin" xml:space="preserve">
+    <value>링크드인</value>
+  </data>
+  <data name="Home_PofilePartial_Tumblr" xml:space="preserve">
+    <value>텀블러</value>
+  </data>
+  <data name="Home_PofilePartial_Twitter" xml:space="preserve">
+    <value>트위터</value>
+  </data>
+  <data name="Home_PofilePartial_Youtube" xml:space="preserve">
+    <value>유튜브</value>
+  </data>
+  <data name="Index_Contact_Contact" xml:space="preserve">
+    <value>연락하기</value>
+  </data>
+  <data name="Index_Contact_EnterEmail" xml:space="preserve">
+    <value>아래에 이메일을 입력하세요.</value>
+  </data>
+  <data name="Index_Contact_Reset" xml:space="preserve">
+    <value>재설정 버튼</value>
+  </data>
+  <data name="Index_Contact_Submit" xml:space="preserve">
+    <value>전송 버튼</value>
+  </data>
+  <data name="Index_Contact_WeCanHelpYou" xml:space="preserve">
+    <value>우리가 도와드리겠습니다.</value>
+  </data>
+  <data name="Index_Disclaimer_Disclaimer" xml:space="preserve">
+    <value>면책</value>
+  </data>
+  <data name="Index_Download_ClickBelow" xml:space="preserve">
+    <value>아래 버튼을 클릭:</value>
+  </data>
+  <data name="Index_Download_DirectDownload" xml:space="preserve">
+    <value>직접 다운로드</value>
+  </data>
+  <data name="Index_Download_FooterMessage" xml:space="preserve">
+    <value>거의 비용없이 전문가의 도움으로 설치 지원을 받으시려면 아래 버튼을 클릭하세요.</value>
+  </data>
+  <data name="Index_Features_Analysis" xml:space="preserve">
+    <value>분석</value>
+  </data>
+  <data name="Index_Features_Analytics" xml:space="preserve">
+    <value>데이터 분석 및 보고서 도구</value>
+  </data>
+  <data name="Index_Features_AnalyticsDescription" xml:space="preserve">
+    <value>소셜플렉스는 안정된 엔진을 사용하여 여러 소셜 계정의 활동들을 분석합니다. 그룹 상태, 페이스북 데이터는 물론 트위터의 상태와 할일 등을 포함합니다. 이런 분석을 통해 보다 고객 중심적인 업무를 할 수 있도록 지원합니다.</value>
+  </data>
+  <data name="Index_Features_Discovery" xml:space="preserve">
+    <value>뛰어난 소셜 검색과 관리</value>
+  </data>
+  <data name="Index_Features_DiscoveryDescription" xml:space="preserve">
+    <value>소셜 검색은 사용자가 효율적으로 소셜 데이터를 검색할 수 있도록 소셜플렉스가 제공하는 탁월한 기능입니다.</value>
+  </data>
+  <data name="Index_Features_Engagement" xml:space="preserve">
+    <value>효과적이고 효율적인 관리도구</value>
+  </data>
+  <data name="Index_Features_EngagementDescription" xml:space="preserve">
+    <value>소셜플렉스는 다양한 디바이스와 플렛폼을 지원합니다. 그리고 플렛폼과 소셜 네트워크를 각각 최적화 할 수 있도록 지원합니다.</value>
+  </data>
+  <data name="Index_Features_Features" xml:space="preserve">
+    <value>장점</value>
+  </data>
+  <data name="Index_Features_FeaturesDescription" xml:space="preserve">
+    <value>소셜 미디어 마케팅 담당자들은 업무흐름이나 규정 준수, 자산관리 등 다양한 요구를 충족시키는 서비스를 요구합니다. 소셜플렉스는 마케터들이 업무를 효율적으로 수행할 수 있도록 뛰어난 일정관리, 배포 도구, 뉴스피드, 소셜검색, 분석 도구, 소셜 CRM, 협업 도구, 각종 보고서 등을 제공합니다.
+대쉬보드에는 친구, 공유된 내용, 메시지, 이벤트, 방문자 등 다양한 활동 내역을 보여 줍니다. 이 내용은 날짜와 이벤트의 종류 등 여러 섹션으로 나눠 볼 수 있습니다. 그리고 친구들의 활동이나 포스트, 댓글 그리고 공유된 내용을 관리할 수 있습니다. 소셜플렉스는 친구들의 업데이트된 내용들을 잊지 않도록 알려줍니다. 이런 기능들은 날짜와 그룹 등으로 구분하여 볼 수 있도록 지원합니다.</value>
+  </data>
+  <data name="Index_Features_Feeds" xml:space="preserve">
+    <value>신속한 피드</value>
+  </data>
+  <data name="Index_Features_FeedsDescription" xml:space="preserve">
+    <value>페이스북, 트위터, 링크드인 프로필을 소셜플렉스 계정과 연결함으로써 피드는 친구의 업데이트 상황을 체크하도록 도와 줍니다. 소셜 미디어의 게시된 글이나 업데이트 상태는 물론 메시지를 예약하여 게시할 수 있고 미처 읽지 못한 메시지나 공지는 물론 글까지 빠뜨리지 않고 체크할 수 있습니다.</value>
+  </data>
+  <data name="Index_Features_HelpDesk" xml:space="preserve">
+    <value>헬프데스크 지원</value>
+  </data>
+  <data name="Index_Features_HelpDeskDescription" xml:space="preserve">
+    <value>소셜플렉스는 높은 수준의 지원 메커니즘을 이용하고 소셜플렉스 계정에서 고객을 지원할 수 있도록 합니다.</value>
+  </data>
+  <data name="Index_Features_Insights" xml:space="preserve">
+    <value>인사이트</value>
+  </data>
+  <data name="Index_Features_MobileApps" xml:space="preserve">
+    <value>모바일 앱</value>
+  </data>
+  <data name="Index_Features_MobileAppsDescription" xml:space="preserve">
+    <value>소셜플렉스의 모든 기능을 웹에서 이용할 수 있습니다. 그리고 안드로이드와 IOS 앱을 통해 웹과 함께 편리하게 이용할 수 있습니다.</value>
+  </data>
+  <data name="Index_Features_Monitor" xml:space="preserve">
+    <value>모니터링</value>
+  </data>
+  <data name="Index_Features_Monitoring" xml:space="preserve">
+    <value>실시간 모니터링</value>
+  </data>
+  <data name="Index_Features_MonitoringDescription" xml:space="preserve">
+    <value>소셜플렉스는 여러 플랫폼 데이터를 지속적으로 모니터링 합니다. 이 모니터링 데이터를 사용자가 볼 수 있도록 지원합니다. 이를 통해 게시된 글이나 업데이트 상태는 물론 미처 읽지 못한 메시지나 공지까지 체크할 수 있습니다. 그리고 소셜 미디어에서 스팸성 글을 게시하는 사람을 차단할 수도 있습니다. 물론 소셜플렉스는 사용자의 프라이버시를 존중합니다.</value>
+  </data>
+  <data name="Index_Features_Ourfeatures" xml:space="preserve">
+    <value>서비스의 장점</value>
+  </data>
+  <data name="Index_Features_Scheduling" xml:space="preserve">
+    <value>편리한 일정관리와 포스팅 도구</value>
+  </data>
+  <data name="Index_Features_SchedulingDescription" xml:space="preserve">
+    <value>소셜 미디어 플렛폼에 게시된 글이나 데이터는 방문자를 관리하는데 중요합니다. 소셜플렉스의 일정관리와 포스팅 도구는 메시지를 효율적으로 게시하고 예약된 글이나 임시글을 관리할 수 있도록 합니다. 또한 친구들과 팔로워들에게 빠뜨리지 않고 알릴 수 있습니다.</value>
+  </data>
+  <data name="Index_Features_SmartInbox" xml:space="preserve">
+    <value>수신함</value>
+  </data>
+  <data name="Index_Features_SmartInboxDescription" xml:space="preserve">
+    <value>공개된 모든 글들은 메시지 페이지에서 사진과 함께 더 잘 보여집니다. 이를 통해 할일과 저장된 메시지들을 더 쉽게 열람할 수 있습니다.</value>
+  </data>
+  <data name="Index_Features_SocialCRM" xml:space="preserve">
+    <value>소셜 CRM</value>
+  </data>
+  <data name="Index_Features_SocialCRMDescription" xml:space="preserve">
+    <value>협업은 소셜 미디어 마케팅에서 매우 중요합니다. 서로 협업함으로써 상호간에 시너지를 낼 수 있고 업무를 더 성과 있게 진행할 수 있습니다. 소셜플렉스는 수준 높은 협업 기능을 제공하여 매우 효율적으로 협업 업무를 할 수 있도록 지원합니다. 서로 정보를 나눌 수 있고 팀 멤버들의 업무 능력을 향상시키고 팀의 업무를 효과적으로 진행할 수 있도록 합니다.</value>
+  </data>
+  <data name="Index_Features_SubHeadingAnalysis" xml:space="preserve">
+    <value>데이터마이닝, 웨어하우징, 데이터분석</value>
+  </data>
+  <data name="Index_Features_SubHeadingInsights" xml:space="preserve">
+    <value>소셜플렉스는 고객들의 자세한 인사이트를 제공합니다.</value>
+  </data>
+  <data name="Index_Features_SubHeadingMonitor" xml:space="preserve">
+    <value>소셜미디어의 실시간 트랙킹</value>
+  </data>
+  <data name="Index_Features_SubHeadingUserguide" xml:space="preserve">
+    <value>더 자세히 알아보기 위한 가이드북 다운로드</value>
+  </data>
+  <data name="Index_Features_TeamCollaboration" xml:space="preserve">
+    <value>팀 협업 도구</value>
+  </data>
+  <data name="Index_Features_TeamCollaborationDescription" xml:space="preserve">
+    <value>협업은 소셜 미디어 마케팅 부서 뿐만 아니라 서로 다른 부서간에도 매우 중요합니다. 서로 협업함으로써 마케팅 경험을 공유하고 상호간에 시너지를 낼 수 있고 업무를 더 성과 있게 진행할 수 있습니다. 소셜플렉스는 수준 높은 협업 기능을 제공하여 매우 효율적으로 협업 업무를 할 수 있도록 지원합니다. 서로 정보를 나눌 수 있고 팀 멤버들의 업무 능력을 향상시키고 팀의 업무를 효과적으로 진행할 수 있도록 합니다.</value>
+  </data>
+  <data name="Index_Features_UserGuide" xml:space="preserve">
+    <value>사용자 가이드 보기</value>
+  </data>
+  <data name="Index_Index_Analysis" xml:space="preserve">
+    <value>분석</value>
+  </data>
+  <data name="Index_Index_beyond" xml:space="preserve">
+    <value>BEYOND</value>
+  </data>
+  <data name="Index_Index_BtnLearnMore" xml:space="preserve">
+    <value>자세히 보기</value>
+  </data>
+  <data name="Index_Index_BtnUserGuide" xml:space="preserve">
+    <value>가이드북 다운로드</value>
+  </data>
+  <data name="Index_Index_engage" xml:space="preserve">
+    <value>팔로워를 효과적으로 사로잡기</value>
+  </data>
+  <data name="Index_Index_feature_pt1" xml:space="preserve">
+    <value>똑똑한 수신함과 신속한 피드</value>
+  </data>
+  <data name="Index_Index_feature_pt2" xml:space="preserve">
+    <value>편리한 일정관리와 포스팅 도구</value>
+  </data>
+  <data name="Index_Index_feature_pt3" xml:space="preserve">
+    <value>뛰어난 소셜 검색과 관리</value>
+  </data>
+  <data name="Index_Index_feature_pt4" xml:space="preserve">
+    <value>데이터 분석 및 보고서 도구</value>
+  </data>
+  <data name="Index_Index_feature_pt5" xml:space="preserve">
+    <value>실시간 모니터링</value>
+  </data>
+  <data name="Index_Index_feature_pt6" xml:space="preserve">
+    <value>팀 협업 도구</value>
+  </data>
+  <data name="Index_Index_feature_pt7" xml:space="preserve">
+    <value>소셜 CRM과 헬프데스크</value>
+  </data>
+  <data name="Index_Index_feature_pt8" xml:space="preserve">
+    <value>모바일 앱</value>
+  </data>
+  <data name="Index_Index_ImgPathTryNow" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_Index_ImgSignupforFree" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_Index_Insight" xml:space="preserve">
+    <value>인사이트</value>
+  </data>
+  <data name="Index_Index_leverage" xml:space="preserve">
+    <value>사람들이 당신의 제품과 서비스에 대해 얘기하지만 왜 비즈니스 효과가 떨어질까요?</value>
+  </data>
+  <data name="Index_Index_LovePt1" xml:space="preserve">
+    <value>사용자의 상황에 맞는 차별화된 서비스와 다양한 옵션</value>
+  </data>
+  <data name="Index_Index_LovePt2" xml:space="preserve">
+    <value>편리한 일정관리와 포스팅 도구</value>
+  </data>
+  <data name="Index_Index_LovePt3" xml:space="preserve">
+    <value>신속한 피드와 소셜 검색 도구</value>
+  </data>
+  <data name="Index_Index_LovePt4" xml:space="preserve">
+    <value>다양한 조건별 현명한 분석</value>
+  </data>
+  <data name="Index_Index_LovePt5" xml:space="preserve">
+    <value>고객 데이터에 기반한 소셜 CRM 도구</value>
+  </data>
+  <data name="Index_Index_LovePt6" xml:space="preserve">
+    <value>고객지원을 위한 헬프데스크 서비스</value>
+  </data>
+  <data name="Index_Index_LovePt7" xml:space="preserve">
+    <value>고성과를 위한 팀 협업 도구</value>
+  </data>
+  <data name="Index_Index_LovePt8" xml:space="preserve">
+    <value>신속한 기술지원</value>
+  </data>
+  <data name="Index_Index_LovePt9" xml:space="preserve">
+    <value>다양한 디바이스를 지원하는 플랫폼</value>
+  </data>
+  <data name="Index_Index_Managment" xml:space="preserve">
+    <value>소셜 미디어 관리</value>
+  </data>
+  <data name="Index_Index_Monitor" xml:space="preserve">
+    <value>모니터링</value>
+  </data>
+  <data name="Index_Index_OurFeatures" xml:space="preserve">
+    <value>서비스 장점</value>
+  </data>
+  <data name="Index_Index_socialchannels" xml:space="preserve">
+    <value>다양한 소셜 서비스를 지원</value>
+  </data>
+  <data name="Index_Index_Somereason" xml:space="preserve">
+    <value>몇 가지 이유</value>
+  </data>
+  <data name="Index_Index_SubHeadingAnalysis" xml:space="preserve">
+    <value>데이터마이닝, 웨어하우징, 데이터분석</value>
+  </data>
+  <data name="Index_Index_SubHeadingMonitor" xml:space="preserve">
+    <value>소셜미디어의 실시간 트랙킹</value>
+  </data>
+  <data name="Index_Index_SubHeadingUserguide" xml:space="preserve">
+    <value>더 자세히 알아보기 위한 가이드북 다운로드</value>
+  </data>
+  <data name="Index_Index_Userguide" xml:space="preserve">
+    <value>사용자 가이드 보기</value>
+  </data>
+  <data name="Index_PaymentSuccessful_Continue" xml:space="preserve">
+    <value>계속</value>
+  </data>
+  <data name="Index_PaymentSuccessful_ThankYou" xml:space="preserve">
+    <value>감사합니다.</value>
+  </data>
+  <data name="Index_Privacy_ConfidentialityandSecurity" xml:space="preserve">
+    <value>개인정보보호정책</value>
+  </data>
+  <data name="Index_Privacy_ConfidentialityandSecurityDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_Privacy_EmploymentInfoCollected" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_Privacy_EmploymentInfoCollectedDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_Privacy_OtherlimitsinPrivacy" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_Privacy_OtherlimitsinPrivacyDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_Privacy_PersonalInfoCollected" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_Privacy_PersonalInfoCollectedDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_Privacy_PrivacyPolicyHeading" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_Privacy_SocioBoardtechPVTLtdDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_Privacy_TafficDataType" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_Privacy_TafficDataTypeDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_Privacy_TypesOfInfoCollected" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_Privacy_UpdatesandChangestoPrivacy" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_Privacy_UpdatesandChangestoPrivacyDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_Privacy_UserChoice" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_Privacy_UserChoiceDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_Privacy_UsesOfInformation" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_Privacy_UsesOfInformationDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_RegistrationMailPartial_ClickTheLinkBelowToActivate" xml:space="preserve">
+    <value>다음 링크를 클릭하여 계정을 활성화 시키기 바랍니다.</value>
+  </data>
+  <data name="Index_RegistrationMailPartial_CongratsRecievedRequest" xml:space="preserve">
+    <value>소셜플렉스는 요청하신 내용을 잘 받았습니다.</value>
+  </data>
+  <data name="Index_RegistrationMailPartial_Hi" xml:space="preserve">
+    <value>안녕하세요?</value>
+  </data>
+  <data name="Index_RegistrationMailPartial_KeepsocioBoarding" xml:space="preserve">
+    <value>소셜플렉스에서 소셜서비스를 효율적으로 관리하시기 바랍니다. 좋은 서비스로 보답하겠습니다.</value>
+  </data>
+  <data name="Index_RegistrationMailPartial_Plan" xml:space="preserve">
+    <value>유료서비스</value>
+  </data>
+  <data name="Index_RegistrationMailPartial_WarmRegards" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_RegistrationPartial_BasicFree" xml:space="preserve">
+    <value>Basic(Free)</value>
+  </data>
+  <data name="Index_RegistrationPartial_ClickToVerify" xml:space="preserve">
+    <value>확인을 클릭</value>
+  </data>
+  <data name="Index_RegistrationPartial_CreateAccount" xml:space="preserve">
+    <value>계정 만들기</value>
+  </data>
+  <data name="Index_RegistrationPartial_CreateYourAccount" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_RegistrationPartial_Deluxe" xml:space="preserve">
+    <value>Deluxe</value>
+  </data>
+  <data name="Index_RegistrationPartial_Premium" xml:space="preserve">
+    <value>Premium</value>
+  </data>
+  <data name="Index_RegistrationPartial_Reset" xml:space="preserve">
+    <value>재설정</value>
+  </data>
+  <data name="Index_RegistrationPartial_SelectAccountType" xml:space="preserve">
+    <value>계정 종류 선택</value>
+  </data>
+  <data name="Index_RegistrationPartial_SocioBasic" xml:space="preserve">
+    <value>SocioBasic</value>
+  </data>
+  <data name="Index_RegistrationPartial_SocioDeluxe" xml:space="preserve">
+    <value>SocioDeluxe</value>
+  </data>
+  <data name="Index_RegistrationPartial_SocioPremium" xml:space="preserve">
+    <value>SocioPremium</value>
+  </data>
+  <data name="Index_RegistrationPartial_SocioStandard" xml:space="preserve">
+    <value>SocioStandard</value>
+  </data>
+  <data name="Index_RegistrationPartial_Standard" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="Index_UserActivationPartial_CheckOrResendMail" xml:space="preserve">
+    <value>계정 활성화 하기
+회원님의 이메일을 확인하시거나
+계정 활성화를 위한 메일발송 요청을 위해
+여기를 클릭해 주세요.</value>
+  </data>
+  <data name="Index_UserActivationPartial_SendMail" xml:space="preserve">
+    <value>메일 보내기</value>
+  </data>
+  <data name="Index_UserActivationPartial_UserInfo" xml:space="preserve">
+    <value>회원 정보</value>
+  </data>
+  <data name="Messages_ArchivePartial_ArchivedMessages" xml:space="preserve">
+    <value>저장된 메시지</value>
+  </data>
+  <data name="Messages_ArchivePartial_Close" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="Messages_ArchivePartial_Comment" xml:space="preserve">
+    <value>댓글</value>
+  </data>
+  <data name="Messages_ArchivePartial_LeaveAComment" xml:space="preserve">
+    <value>댓글 나가기</value>
+  </data>
+  <data name="Messages_MessagesLeftSideBarPartial_ArchiveMessage" xml:space="preserve">
+    <value>메시지 저장하기</value>
+  </data>
+  <data name="Messages_MessagesLeftSideBarPartial_MyTask" xml:space="preserve">
+    <value>내 할일</value>
+  </data>
+  <data name="Messages_MessagesLeftSideBarPartial_SentMessage" xml:space="preserve">
+    <value>보낸 메시지</value>
+  </data>
+  <data name="Messages_MessagesLeftSideBarPartial_SmartInbox" xml:space="preserve">
+    <value>수신함</value>
+  </data>
+  <data name="Messages_MessagesMidPartialNew_Close" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="Messages_MessagesMidPartialNew_MyRecentPosts" xml:space="preserve">
+    <value>내 최신 포스트</value>
+  </data>
+  <data name="Messages_MessagesMidPartialNew_ProfileSummary" xml:space="preserve">
+    <value>프로필 요약</value>
+  </data>
+  <data name="Messages_MessagesRightPartial_PROFILES" xml:space="preserve">
+    <value>프로필</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Cancel" xml:space="preserve">
+    <value>취소</value>
+  </data>
+  <data name="Messages_sentmsgPartial_ChooseDataRange" xml:space="preserve">
+    <value>날짜 범위 지정</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Clear" xml:space="preserve">
+    <value>지우기</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Close" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Comment" xml:space="preserve">
+    <value>댓글</value>
+  </data>
+  <data name="Messages_sentmsgPartial_CSVDescription" xml:space="preserve">
+    <value>메시지는 CSV 포맷(콤마로 구분됨)으로 내보내기 됩니다. 이 파일은 MS 엑셀, 애플 Numbers, 구글 Docs에서 볼 수 있습니다.</value>
+  </data>
+  <data name="Messages_sentmsgPartial_CustomRange" xml:space="preserve">
+    <value>사용자 지정 범위</value>
+  </data>
+  <data name="Messages_sentmsgPartial_ExportSentMessageData" xml:space="preserve">
+    <value>보낸 메시지 내보내기</value>
+  </data>
+  <data name="Messages_sentmsgPartial_ExportToCSV" xml:space="preserve">
+    <value>CSV로 내보내기</value>
+  </data>
+  <data name="Messages_sentmsgPartial_From" xml:space="preserve">
+    <value>로부터</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Last30Days" xml:space="preserve">
+    <value>지난 30일</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Last7Days" xml:space="preserve">
+    <value>지난 7일</value>
+  </data>
+  <data name="Messages_sentmsgPartial_LastMonth" xml:space="preserve">
+    <value>지난 달</value>
+  </data>
+  <data name="Messages_sentmsgPartial_LeaveAComment" xml:space="preserve">
+    <value>댓글 나가기</value>
+  </data>
+  <data name="Messages_sentmsgPartial_SentMessages" xml:space="preserve">
+    <value>보낸 메시지</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Submit" xml:space="preserve">
+    <value>전송</value>
+  </data>
+  <data name="Messages_sentmsgPartial_ThisMonth" xml:space="preserve">
+    <value>이번 달</value>
+  </data>
+  <data name="Messages_sentmsgPartial_To" xml:space="preserve">
+    <value>에게</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Today" xml:space="preserve">
+    <value>오늘</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Yesterday" xml:space="preserve">
+    <value>어제</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_AssignTaskTo" xml:space="preserve">
+    <value>할일 배정</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_Close" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_LeaveAComment" xml:space="preserve">
+    <value>댓글 나가기</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_Like" xml:space="preserve">
+    <value>같은</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_Save" xml:space="preserve">
+    <value>저장된 메시지</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_UnLike" xml:space="preserve">
+    <value>달리</value>
+  </data>
+  <data name="Messages_SocialProfileDetail_Connection" xml:space="preserve">
+    <value>연결</value>
+  </data>
+  <data name="Messages_SocialProfileDetail_Follower" xml:space="preserve">
+    <value>팔로워</value>
+  </data>
+  <data name="Messages_SocialProfileDetail_Following" xml:space="preserve">
+    <value>팔로잉</value>
+  </data>
+  <data name="Messages_SocialProfileDetail_Freinds" xml:space="preserve">
+    <value>친구</value>
+  </data>
+  <data name="Messages_SocialProfileDetail_GoToFullprofile" xml:space="preserve">
+    <value>전체 프로필  →</value>
+  </data>
+  <data name="Messages_TaskPartial_AreYouSureValidationStatus" xml:space="preserve">
+    <value>정말로 상태를 변경하시겠습니까?</value>
+  </data>
+  <data name="Messages_TaskPartial_AssignedBy" xml:space="preserve">
+    <value>배정된</value>
+  </data>
+  <data name="Messages_TaskPartial_Close" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="Messages_TaskPartial_ClosedBy" xml:space="preserve">
+    <value>닫혔음</value>
+  </data>
+  <data name="Messages_TaskPartial_ClosedByYou" xml:space="preserve">
+    <value>회원에 의해 닫혔음</value>
+  </data>
+  <data name="Messages_TaskPartial_CompleteTask" xml:space="preserve">
+    <value>완료된 할일</value>
+  </data>
+  <data name="Messages_TaskPartial_DeleteTask" xml:space="preserve">
+    <value>삭제된 할일</value>
+  </data>
+  <data name="Messages_TaskPartial_EditStatus" xml:space="preserve">
+    <value>상태 수정하기</value>
+  </data>
+  <data name="Messages_TaskPartial_ManageTasks" xml:space="preserve">
+    <value>할일 관리</value>
+  </data>
+  <data name="Messages_TaskPartial_MyTask" xml:space="preserve">
+    <value>내 할일</value>
+  </data>
+  <data name="Messages_TaskPartial_MyTaskHeading" xml:space="preserve">
+    <value>내 할일</value>
+  </data>
+  <data name="Messages_TaskPartial_NoTaskInThisGroup" xml:space="preserve">
+    <value>죄송합니다. 이 그룹에는 할일이 없습니다.</value>
+  </data>
+  <data name="Messages_TaskPartial_OK" xml:space="preserve">
+    <value>확인</value>
+  </data>
+  <data name="Messages_TaskPartial_PendingTask" xml:space="preserve">
+    <value>대기중인 할일</value>
+  </data>
+  <data name="Messages_TaskPartial_Save" xml:space="preserve">
+    <value>저장된 메시지</value>
+  </data>
+  <data name="Messages_TaskPartial_TaskActivity" xml:space="preserve">
+    <value>할일 활동</value>
+  </data>
+  <data name="Messages_TaskPartial_Tasks" xml:space="preserve">
+    <value>할일</value>
+  </data>
+  <data name="Messages_TaskPartial_TeamTask" xml:space="preserve">
+    <value>팀 할일</value>
+  </data>
+  <data name="Message_Index_Chat" xml:space="preserve">
+    <value>잡담</value>
+  </data>
+  <data name="Message_Index_ConnectProfile" xml:space="preserve">
+    <value>프로필 연결</value>
+  </data>
+  <data name="Message_Index_CreateTask" xml:space="preserve">
+    <value>작업 만들기</value>
+  </data>
+  <data name="Message_Index_Filter" xml:space="preserve">
+    <value>필터</value>
+  </data>
+  <data name="Message_Index_PROFILES" xml:space="preserve">
+    <value>프로파일</value>
+  </data>
+  <data name="Message_sentMessagePartial" xml:space="preserve">
+    <value>보낸 메시지</value>
+  </data>
+  <data name="Message_sentMessagePartial_Custom" xml:space="preserve">
+    <value>관습</value>
+  </data>
+  <data name="Message__InboxMessageTypePartial_Mentions" xml:space="preserve">
+    <value>언급</value>
+  </data>
+  <data name="Message__InboxMessageTypePartial_NewFollowers" xml:space="preserve">
+    <value>새로운 관심</value>
+  </data>
+  <data name="Message__InboxMessageTypePartial_Notifications" xml:space="preserve">
+    <value>알림</value>
+  </data>
+  <data name="Message__InboxMessageTypePartial_Retweets" xml:space="preserve">
+    <value>리트 윗</value>
+  </data>
+  <data name="Message__MessagesRightSideBarPartial_Mentions" xml:space="preserve">
+    <value>멘션</value>
+  </data>
+  <data name="Message__MessagesRightSideBarPartial_MessageType" xml:space="preserve">
+    <value>메시지 종류</value>
+  </data>
+  <data name="Message__MessagesRightSideBarPartial_Profiles" xml:space="preserve">
+    <value>프로필 첨부</value>
+  </data>
+  <data name="Message__MessagesRightSideBarPartial_UserFeeds" xml:space="preserve">
+    <value>회원 피드</value>
+  </data>
+  <data name="Message__MessagesRightSideBarPartial_UserTweets" xml:space="preserve">
+    <value>회원 트윗</value>
+  </data>
+  <data name="MyStuff_Affiliates_Affiliates" xml:space="preserve">
+    <value>제휴</value>
+  </data>
+  <data name="MyStuff_Affiliates_AjaxShow1" xml:space="preserve">
+    <value>손쉽게 이용하는 소셜미디어 관리 도구</value>
+  </data>
+  <data name="MyStuff_Affiliates_AjaxShow2" xml:space="preserve">
+    <value>아래 링크를 클릭하여 지금 가입하세요.</value>
+  </data>
+  <data name="MyStuff_Affiliates_InvitationDate" xml:space="preserve">
+    <value>초대일</value>
+  </data>
+  <data name="MyStuff_Affiliates_InviteYourAcquitance" xml:space="preserve">
+    <value>지인 초대하기</value>
+  </data>
+  <data name="MyStuff_Affiliates_PersonInvited" xml:space="preserve">
+    <value>초대했습니다</value>
+  </data>
+  <data name="MyStuff_Affiliates_ReferralURL" xml:space="preserve">
+    <value>접속 이전 URL</value>
+  </data>
+  <data name="MyStuff_Affiliates_ReferralURL_Link" xml:space="preserve">
+    <value>팔로잉 링크를 이용한 지인 초대하기</value>
+  </data>
+  <data name="MyStuff_Affiliates_ShowReferralURL" xml:space="preserve">
+    <value>제휴 URL 보기</value>
+  </data>
+  <data name="MyStuff_Affiliates_Status" xml:space="preserve">
+    <value>상태</value>
+  </data>
+  <data name="MyStuff_EWalletActivityPartial_AffiliateFeeGenerate" xml:space="preserve">
+    <value>제휴 수수료($)</value>
+  </data>
+  <data name="MyStuff_EWalletActivityPartial_DurationInMonths" xml:space="preserve">
+    <value>기간(월)</value>
+  </data>
+  <data name="MyStuff_EWalletActivityPartial_JoiningDate" xml:space="preserve">
+    <value>가입일</value>
+  </data>
+  <data name="MyStuff_EWalletActivityPartial_PersonInvited" xml:space="preserve">
+    <value>초대하기</value>
+  </data>
+  <data name="MyStuff_EWalletActivityPartial_Summary" xml:space="preserve">
+    <value>요약</value>
+  </data>
+  <data name="MyStuff_EWalletPartial_AddMoneyToWallet" xml:space="preserve">
+    <value>전자지갑에 충전하기</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_AmountReceived" xml:space="preserve">
+    <value>받은 금액</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_CashRecived" xml:space="preserve">
+    <value>받은 현금</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_Orders" xml:space="preserve">
+    <value>요청사항</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_Success" xml:space="preserve">
+    <value>성공</value>
+  </data>
+  <data name="MyStuff_EWalletPartial_YourWalletBalance" xml:space="preserve">
+    <value>전자지갑 현황</value>
+  </data>
+  <data name="MyStuff_EWallet_AddMoneyToWallet" xml:space="preserve">
+    <value>전자지갑에 충전하기</value>
+  </data>
+  <data name="MyStuff_Ewallet_AjaxEwallet1" xml:space="preserve">
+    <value>전자지갑에 충전하기</value>
+  </data>
+  <data name="MyStuff_Ewallet_AjaxEwallet2" xml:space="preserve">
+    <value>뒤로가기</value>
+  </data>
+  <data name="MyStuff_EWallet_EWallet" xml:space="preserve">
+    <value>전자지갑</value>
+  </data>
+  <data name="MyStuff_SummaryPartial_AffiliateFee" xml:space="preserve">
+    <value>제휴 수수료</value>
+  </data>
+  <data name="MyStuff_SummaryPartial_Close" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="MyStuff_SummaryPartial_Date" xml:space="preserve">
+    <value>날짜</value>
+  </data>
+  <data name="MyStuff_SummaryPartial_Total" xml:space="preserve">
+    <value>합계</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_ChangePassword" xml:space="preserve">
+    <value>비밀번호 변경</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Close" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Email" xml:space="preserve">
+    <value>이메일 주소</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_FirstName" xml:space="preserve">
+    <value>이름</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_LastName" xml:space="preserve">
+    <value>성</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Password" xml:space="preserve">
+    <value>비밀번호</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_ReEnterPassword" xml:space="preserve">
+    <value>비밀번호 재입력</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_ResetEmail" xml:space="preserve">
+    <value>이메일 재설정</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Save" xml:space="preserve">
+    <value>저장</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_SaveChanges" xml:space="preserve">
+    <value>변경내용 저장</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_SecurityReEnterPassword" xml:space="preserve">
+    <value>보안을 위해 비밀번호를 다시 입력해 주세요.</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Settings" xml:space="preserve">
+    <value>설정</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Submit" xml:space="preserve">
+    <value>전송</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_TeamMemberAvatar" xml:space="preserve">
+    <value>팀 멤버는 설정된 아바타를 볼 수 있습니다.</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_TimeZone" xml:space="preserve">
+    <value>시간대</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_UpgradeMonthly" xml:space="preserve">
+    <value>유료서비스(월) 업그레이드</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_UpgradeYearly" xml:space="preserve">
+    <value>유료서비스(년) 업그레이드</value>
+  </data>
+  <data name="Publishing_DraftPartial_Delete" xml:space="preserve">
+    <value>삭제</value>
+  </data>
+  <data name="Publishing_DraftPartial_Edit" xml:space="preserve">
+    <value>수정</value>
+  </data>
+  <data name="Publishing_DraftPartial_Message" xml:space="preserve">
+    <value>메시지</value>
+  </data>
+  <data name="Publishing_DraftPartial_Schedule" xml:space="preserve">
+    <value>일정</value>
+  </data>
+  <data name="Publishing_DraftPartial_User" xml:space="preserve">
+    <value>회원</value>
+  </data>
+  <data name="Publishing_Draft_Close" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="Publishing_Draft_DraftMessages" xml:space="preserve">
+    <value>임시 메시지</value>
+  </data>
+  <data name="Publishing_Draft_DraftTable" xml:space="preserve">
+    <value>임시테이블</value>
+  </data>
+  <data name="Publishing_Draft_EDITDRAFTMESSAGE" xml:space="preserve">
+    <value>임시 메시지 수정하기</value>
+  </data>
+  <data name="Publishing_Draft_OK" xml:space="preserve">
+    <value>확인</value>
+  </data>
+  <data name="Publishing_Draft_Save" xml:space="preserve">
+    <value>저장</value>
+  </data>
+  <data name="Publishing_Draft_SignIn" xml:space="preserve">
+    <value>로그인</value>
+  </data>
+  <data name="Publishing_Draft_YouWantToDeleteThisDraft" xml:space="preserve">
+    <value>임시 메시지를 삭제하겠습니까?</value>
+  </data>
+  <data name="Publishing_Index_SaveToDraft" xml:space="preserve">
+    <value>임시로 저장하기</value>
+  </data>
+  <data name="Publishing_Index_Schedule" xml:space="preserve">
+    <value>일정</value>
+  </data>
+  <data name="Publishing_Index_ScheduleMessage" xml:space="preserve">
+    <value>일정 메시지</value>
+  </data>
+  <data name="Publishing_Index_SelectProfile" xml:space="preserve">
+    <value>프로필 선택</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_Delete" xml:space="preserve">
+    <value>삭제</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_Edit" xml:space="preserve">
+    <value>수정</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_Message" xml:space="preserve">
+    <value>메시지</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_Nework" xml:space="preserve">
+    <value>네트워크</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_SentFrom" xml:space="preserve">
+    <value>발송됨</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_Status" xml:space="preserve">
+    <value>상태</value>
+  </data>
+  <data name="Publishing_SocioQueue_Close" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="Publishing_SocioQueue_EditMessage" xml:space="preserve">
+    <value>메시지 수정</value>
+  </data>
+  <data name="Publishing_SocioQueue_OK" xml:space="preserve">
+    <value>확인</value>
+  </data>
+  <data name="Publishing_SocioQueue_QueuedMessage" xml:space="preserve">
+    <value>대기중인 메시지</value>
+  </data>
+  <data name="Publishing_SocioQueue_Save" xml:space="preserve">
+    <value>저장</value>
+  </data>
+  <data name="Publishing_SocioQueue_SocioQueue" xml:space="preserve">
+    <value>소셜플렉스큐</value>
+  </data>
+  <data name="Publishing_SocioQueue_SureDeleteMessage" xml:space="preserve">
+    <value>이 메시지를 정말 삭제하겠습니까?</value>
+  </data>
+  <data name="Report_FbPageReport_Comment" xml:space="preserve">
+    <value>댓글</value>
+  </data>
+  <data name="Report_FbPageReport_ExportToExcel" xml:space="preserve">
+    <value>엑셀 내보내기</value>
+  </data>
+  <data name="Report_FbPageReport_FacebookPagePosts" xml:space="preserve">
+    <value>페이스북 페이지 포스트</value>
+  </data>
+  <data name="Report_FbPageReport_FbPageReports" xml:space="preserve">
+    <value>페이스북 페이지 보고서</value>
+  </data>
+  <data name="Report_FbPageReport_InterReport" xml:space="preserve">
+    <value>내부 보고서</value>
+  </data>
+  <data name="Report_FbPageReport_Like" xml:space="preserve">
+    <value>Like</value>
+  </data>
+  <data name="Report_FbPageReport_Post" xml:space="preserve">
+    <value>포스트</value>
+  </data>
+  <data name="Report_FbPageReport_PostDetails" xml:space="preserve">
+    <value>포스트 상세내용</value>
+  </data>
+  <data name="Report_FbPageReport_Published" xml:space="preserve">
+    <value>게시된</value>
+  </data>
+  <data name="Report_FbPageReport_Share" xml:space="preserve">
+    <value>공유</value>
+  </data>
+  <data name="Report_FbPageReport_type" xml:space="preserve">
+    <value>종류</value>
+  </data>
+  <data name="Report_FbPostDetails_Comments" xml:space="preserve">
+    <value>댓글</value>
+  </data>
+  <data name="Report_FbPostDetails_Like" xml:space="preserve">
+    <value>Like</value>
+  </data>
+  <data name="Report_FbPostDetails_Likes" xml:space="preserve">
+    <value>Likes</value>
+  </data>
+  <data name="Report_FbPostDetails_Shares" xml:space="preserve">
+    <value>공유</value>
+  </data>
+  <data name="Report_GroupStatPartial_EngagementReport" xml:space="preserve">
+    <value>보고서</value>
+  </data>
+  <data name="Report_GroupStatPartial_GeneralStatsInterGroup" xml:space="preserve">
+    <value>그룹 일반 현황</value>
+  </data>
+  <data name="Report_GroupStatPartial_GroupReports" xml:space="preserve">
+    <value>그룹 보고서</value>
+  </data>
+  <data name="Report_GroupStatPartial_GroupStats" xml:space="preserve">
+    <value>그룹 상태</value>
+  </data>
+  <data name="Report_GroupStatPartial_Impressions" xml:space="preserve">
+    <value>임프레션</value>
+  </data>
+  <data name="Report_GroupStatPartial_Incomingmessages" xml:space="preserve">
+    <value>수신 메시지</value>
+  </data>
+  <data name="Report_GroupStatPartial_Interactions" xml:space="preserve">
+    <value>인터렉션</value>
+  </data>
+  <data name="Report_GroupStatPartial_Mentioned" xml:space="preserve">
+    <value>멘션됨</value>
+  </data>
+  <data name="Report_GroupStatPartial_MetricsDescription" xml:space="preserve">
+    <value>이 메트릭스는 그룹 내에서 프로필에 의해 보내진 답변을 기반으로 합니다.</value>
+  </data>
+  <data name="Report_GroupStatPartial_NewFacebookFan" xml:space="preserve">
+    <value>새로운 페이스북 팬</value>
+  </data>
+  <data name="Report_GroupStatPartial_NewFollowerTimePeriod" xml:space="preserve">
+    <value>이 기간내의 팔로워</value>
+  </data>
+  <data name="Report_GroupStatPartial_NewTwitterFollower" xml:space="preserve">
+    <value>새로운 트위터 팔로워</value>
+  </data>
+  <data name="Report_GroupStatPartial_PhotoLink" xml:space="preserve">
+    <value>사진 링크</value>
+  </data>
+  <data name="Report_GroupStatPartial_PlainText" xml:space="preserve">
+    <value>일반 텍스트</value>
+  </data>
+  <data name="Report_GroupStatPartial_ProfilesByUser" xml:space="preserve">
+    <value>회원 프로필</value>
+  </data>
+  <data name="Report_GroupStatPartial_ReTweets" xml:space="preserve">
+    <value>리트윗</value>
+  </data>
+  <data name="Report_GroupStatPartial_SentMessages" xml:space="preserve">
+    <value>보낸 메시지</value>
+  </data>
+  <data name="Report_GroupStatPartial_Statsfor2Twitteraccount" xml:space="preserve">
+    <value>내부 그룹의 2개의 트위터 계정 상태</value>
+  </data>
+  <data name="Report_GroupStatPartial_TwitterStats" xml:space="preserve">
+    <value>트위터 상태</value>
+  </data>
+  <data name="Report_Index_Close" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="Report_Index_Postdetails" xml:space="preserve">
+    <value>포스트 상세내용</value>
+  </data>
+  <data name="Report_Index_SaveChanges" xml:space="preserve">
+    <value>변경내용 저장</value>
+  </data>
+  <data name="Report_ReportMenuPartial_AssignDate" xml:space="preserve">
+    <value>배정일</value>
+  </data>
+  <data name="Report_ReportMenuPartial_AssignTaskTo" xml:space="preserve">
+    <value>배정된 할일</value>
+  </data>
+  <data name="Report_ReportMenuPartial_CompeteDate" xml:space="preserve">
+    <value>완료일</value>
+  </data>
+  <data name="Report_ReportMenuPartial_FacebookReports" xml:space="preserve">
+    <value>페이스북 보고서</value>
+  </data>
+  <data name="Report_ReportMenuPartial_From" xml:space="preserve">
+    <value>로부터</value>
+  </data>
+  <data name="Report_ReportMenuPartial_InterReport" xml:space="preserve">
+    <value>내부 보고서</value>
+  </data>
+  <data name="Report_ReportMenuPartial_NoDataAvailable" xml:space="preserve">
+    <value>이용할 수 있는 데이터가 없습니다.</value>
+  </data>
+  <data name="Report_ReportMenuPartial_Reports" xml:space="preserve">
+    <value>보고서</value>
+  </data>
+  <data name="Report_ReportMenuPartial_Status" xml:space="preserve">
+    <value>상태</value>
+  </data>
+  <data name="Report_ReportMenuPartial_TaskMessage" xml:space="preserve">
+    <value>할일 메시지</value>
+  </data>
+  <data name="Report_ReportMenuPartial_TaskOwner" xml:space="preserve">
+    <value>할일 책임자</value>
+  </data>
+  <data name="Report_ReportMenuPartial_Tasks" xml:space="preserve">
+    <value>할일</value>
+  </data>
+  <data name="Report_ReportMenuPartial_TwitterReports" xml:space="preserve">
+    <value>트위터 보고서</value>
+  </data>
+  <data name="Report_TeamReportPartial_AssignDate" xml:space="preserve">
+    <value>배정일</value>
+  </data>
+  <data name="Report_TeamReportPartial_CompeteDate" xml:space="preserve">
+    <value>완료일</value>
+  </data>
+  <data name="Report_TeamReportPartial_InterReport" xml:space="preserve">
+    <value>내부 보고서</value>
+  </data>
+  <data name="Report_TeamReportPartial_NoDataAvailable" xml:space="preserve">
+    <value>이용할 수 있는 데이터가 없습니다.</value>
+  </data>
+  <data name="Report_TeamReportPartial_status" xml:space="preserve">
+    <value>상태</value>
+  </data>
+  <data name="Report_TeamReportPartial_TaskAssigned" xml:space="preserve">
+    <value>배정된 할일</value>
+  </data>
+  <data name="Report_TeamReportPartial_TaskMessage" xml:space="preserve">
+    <value>할일 메시지</value>
+  </data>
+  <data name="Report_TeamReportPartial_TaskOwner" xml:space="preserve">
+    <value>할일 책임자</value>
+  </data>
+  <data name="Report_TeamReportPartial_Tasks" xml:space="preserve">
+    <value>할일</value>
+  </data>
+  <data name="Report_TeamReportPartial_TeamReports" xml:space="preserve">
+    <value>팀 보고서</value>
+  </data>
+  <data name="Report_TwitterReportPartial_DirectMessageRecieved" xml:space="preserve">
+    <value>수신된 메시지</value>
+  </data>
+  <data name="Report_TwitterReportPartial_DirectMessageSend" xml:space="preserve">
+    <value>발신된 메시지</value>
+  </data>
+  <data name="Report_TwitterReportPartial_FollowerDemographic" xml:space="preserve">
+    <value>인구통계적 팔로워</value>
+  </data>
+  <data name="Report_TwitterReportPartial_KeyIndicators" xml:space="preserve">
+    <value>핵심지표</value>
+  </data>
+  <data name="Report_TwitterReportPartial_MeasuresConversingAudiences" xml:space="preserve">
+    <value>독자와의 소통 지수</value>
+  </data>
+  <data name="Report_TwitterReportPartial_Mentioned" xml:space="preserve">
+    <value>멘션</value>
+  </data>
+  <data name="Report_TwitterReportPartial_MessageRecieved" xml:space="preserve">
+    <value>수신된 메시지</value>
+  </data>
+  <data name="Report_TwitterReportPartial_MessageSent" xml:space="preserve">
+    <value>발신된 메시지</value>
+  </data>
+  <data name="Report_TwitterReportPartial_NewFollower" xml:space="preserve">
+    <value>새로운 팔로워</value>
+  </data>
+  <data name="Report_TwitterReportPartial_Retweets" xml:space="preserve">
+    <value>리트윗</value>
+  </data>
+  <data name="Report_TwitterReportPartial_ShapeMessagingCampaigns" xml:space="preserve">
+    <value>메시지와 캠페인이 공유된 내용 자세히 보기</value>
+  </data>
+  <data name="Report_TwitterReportPartial_TwitterAccountReport" xml:space="preserve">
+    <value>트위터 계정 보고서</value>
+  </data>
+  <data name="Report_TwitterReportPartial_TwitterReports" xml:space="preserve">
+    <value>트위터 보고서</value>
+  </data>
+  <data name="Report_TwitterReportPartial_YouFollowed" xml:space="preserve">
+    <value>팔로우 되었음</value>
+  </data>
+  <data name="Shared_AdminSite_Action" xml:space="preserve">
+    <value>액션</value>
+  </data>
+  <data name="Shared_AdminSite_AddAdvertisement" xml:space="preserve">
+    <value>광고 추가하기</value>
+  </data>
+  <data name="Shared_AdminSite_AddCoupon" xml:space="preserve">
+    <value>쿠폰 추가하기</value>
+  </data>
+  <data name="Shared_AdminSite_AddNews" xml:space="preserve">
+    <value>뉴스 추가하기</value>
+  </data>
+  <data name="Shared_AdminSite_AddNewsLetter" xml:space="preserve">
+    <value>뉴스레터 추가하기</value>
+  </data>
+  <data name="Shared_AdminSite_Advertisements" xml:space="preserve">
+    <value>광고</value>
+  </data>
+  <data name="Shared_AdminSite_Close" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="Shared_AdminSite_ContactSearch" xml:space="preserve">
+    <value>연락처 검색</value>
+  </data>
+  <data name="Shared_AdminSite_Coupon" xml:space="preserve">
+    <value>쿠폰</value>
+  </data>
+  <data name="Shared_AdminSite_DashBoard" xml:space="preserve">
+    <value>대쉬보드</value>
+  </data>
+  <data name="Shared_AdminSite_DeleteUsers" xml:space="preserve">
+    <value>삭제된 회원</value>
+  </data>
+  <data name="Shared_AdminSite_IntervalTime" xml:space="preserve">
+    <value>시간 간격</value>
+  </data>
+  <data name="Shared_AdminSite_LogOut" xml:space="preserve">
+    <value>로그아웃</value>
+  </data>
+  <data name="Shared_AdminSite_ManageAdvertisement" xml:space="preserve">
+    <value>광고 관리</value>
+  </data>
+  <data name="Shared_AdminSite_ManageCoupon" xml:space="preserve">
+    <value>쿠폰 관리</value>
+  </data>
+  <data name="Shared_AdminSite_ManageNews" xml:space="preserve">
+    <value>뉴스 관리</value>
+  </data>
+  <data name="Shared_AdminSite_ManagePackages" xml:space="preserve">
+    <value>유료서비스 관리</value>
+  </data>
+  <data name="Shared_AdminSite_ManageProfile" xml:space="preserve">
+    <value>프로필 관리</value>
+  </data>
+  <data name="Shared_AdminSite_ManageUsers" xml:space="preserve">
+    <value>회원 관리</value>
+  </data>
+  <data name="Shared_AdminSite_NewMessage" xml:space="preserve">
+    <value>새 메시지</value>
+  </data>
+  <data name="Shared_AdminSite_News" xml:space="preserve">
+    <value>뉴스</value>
+  </data>
+  <data name="Shared_AdminSite_NewsLetter" xml:space="preserve">
+    <value>뉴스레터</value>
+  </data>
+  <data name="Shared_AdminSite_Packages" xml:space="preserve">
+    <value>유료서비스</value>
+  </data>
+  <data name="Shared_AdminSite_SchedulingDetails" xml:space="preserve">
+    <value>일정 정보</value>
+  </data>
+  <data name="Shared_AdminSite_SearchResult" xml:space="preserve">
+    <value>검색 결과</value>
+  </data>
+  <data name="Shared_AdminSite_Send" xml:space="preserve">
+    <value>보내기</value>
+  </data>
+  <data name="Shared_AdminSite_Service" xml:space="preserve">
+    <value>서비스</value>
+  </data>
+  <data name="Shared_AdminSite_Settings" xml:space="preserve">
+    <value>설정</value>
+  </data>
+  <data name="Shared_AdminSite_Users" xml:space="preserve">
+    <value>회원</value>
+  </data>
+  <data name="Shared_Error_AVGPost" xml:space="preserve">
+    <value>포스팅 평균</value>
+  </data>
+  <data name="Shared_Error_AvgTweets" xml:space="preserve">
+    <value>트윗 평균</value>
+  </data>
+  <data name="Shared_Error_Connections" xml:space="preserve">
+    <value>연결</value>
+  </data>
+  <data name="Shared_Error_Follower" xml:space="preserve">
+    <value>팔로워</value>
+  </data>
+  <data name="Shared_Error_Followers" xml:space="preserve">
+    <value>팔로워</value>
+  </data>
+  <data name="Shared_Error_Following" xml:space="preserve">
+    <value>팔로잉</value>
+  </data>
+  <data name="Shared_Error_Friends" xml:space="preserve">
+    <value>친구</value>
+  </data>
+  <data name="Shared_Error_Likes" xml:space="preserve">
+    <value>Likes</value>
+  </data>
+  <data name="Shared_Error_MyRecentProfile" xml:space="preserve">
+    <value>내 최신 프로필</value>
+  </data>
+  <data name="Shared_Error_Perday" xml:space="preserve">
+    <value>일일</value>
+  </data>
+  <data name="Shared_Error_Photos" xml:space="preserve">
+    <value>사진</value>
+  </data>
+  <data name="Shared_Error_Post" xml:space="preserve">
+    <value>포스트</value>
+  </data>
+  <data name="Shared_Error_RecentMessages" xml:space="preserve">
+    <value>최신 메시지</value>
+  </data>
+  <data name="Shared_Error_SnapShotsConnectedAccounts" xml:space="preserve">
+    <value>연결된 계정의 스냅샷</value>
+  </data>
+  <data name="Shared_Error_TotalSubscriber" xml:space="preserve">
+    <value>가입자 수</value>
+  </data>
+  <data name="Shared_Error_TotalVideo" xml:space="preserve">
+    <value>비디오 수</value>
+  </data>
+  <data name="Shared_Error_TotalView" xml:space="preserve">
+    <value>뷰 수</value>
+  </data>
+  <data name="Shared_LoadGroupPartial_Groups" xml:space="preserve">
+    <value>그룹</value>
+  </data>
+  <data name="Shared_Site_AddFacebookClose" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="Shared_Site_AddFacebookGroup" xml:space="preserve">
+    <value>페이스북 그룹 추가하기</value>
+  </data>
+  <data name="Shared_Site_AddFacebookPage" xml:space="preserve">
+    <value>페이스북 팬페이지 추가하기</value>
+  </data>
+  <data name="Shared_Site_AddFacebookProfile" xml:space="preserve">
+    <value>페이스북 프로필 추가하기</value>
+  </data>
+  <data name="Shared_Site_AddFacebookSubmit" xml:space="preserve">
+    <value>전송</value>
+  </data>
+  <data name="Shared_Site_AddLinkedinClose" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="Shared_Site_AddLinkedinCompanyPage" xml:space="preserve">
+    <value>링크드인 회사 페이지 추가하기</value>
+  </data>
+  <data name="Shared_Site_AddLinkedinProfile" xml:space="preserve">
+    <value>링크드인 프로필 추가하기</value>
+  </data>
+  <data name="Shared_Site_Affiliates" xml:space="preserve">
+    <value>제휴</value>
+  </data>
+  <data name="Shared_Site_ArchivedMessages" xml:space="preserve">
+    <value>저장된 메시지</value>
+  </data>
+  <data name="Shared_Site_BusinessSettings" xml:space="preserve">
+    <value>비즈니스 설정</value>
+  </data>
+  <data name="Shared_Site_Close" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="Shared_Site_ComposeMessagesClose" xml:space="preserve">
+    <value>닫</value>
+  </data>
+  <data name="Shared_Site_ComposeMessagesDropBox" xml:space="preserve">
+    <value>Dropbox</value>
+  </data>
+  <data name="Shared_Site_ComposeMessagesProfile" xml:space="preserve">
+    <value>프로필</value>
+  </data>
+  <data name="Shared_Site_ComposeMessagesSend" xml:space="preserve">
+    <value>보내기</value>
+  </data>
+  <data name="Shared_Site_ComposeMessagesURLShrink" xml:space="preserve">
+    <value>URL 줄이기</value>
+  </data>
+  <data name="Shared_Site_ContactSearch" xml:space="preserve">
+    <value>연락처 검색</value>
+  </data>
+  <data name="Shared_Site_DashBoard" xml:space="preserve">
+    <value>대쉬보드</value>
+  </data>
+  <data name="Shared_Site_Discovery" xml:space="preserve">
+    <value>찾기</value>
+  </data>
+  <data name="Shared_Site_Drafts" xml:space="preserve">
+    <value>임시</value>
+  </data>
+  <data name="Shared_Site_DropBox" xml:space="preserve">
+    <value>Dropbox</value>
+  </data>
+  <data name="Shared_Site_Email" xml:space="preserve">
+    <value>이메일</value>
+  </data>
+  <data name="Shared_Site_Ewallet" xml:space="preserve">
+    <value>전자지갑</value>
+  </data>
+  <data name="Shared_Site_Feeds" xml:space="preserve">
+    <value>피드</value>
+  </data>
+  <data name="Shared_Site_FirstName" xml:space="preserve">
+    <value>이름</value>
+  </data>
+  <data name="Shared_Site_GetFacebookPageAnalytics" xml:space="preserve">
+    <value>페이스북 팬페이지 분석하기</value>
+  </data>
+  <data name="Shared_Site_InboxMessage" xml:space="preserve">
+    <value>받은 편지함 메시지</value>
+  </data>
+  <data name="Shared_Site_InviteFreinds" xml:space="preserve">
+    <value>친구 초대하기</value>
+  </data>
+  <data name="Shared_Site_InviteFreindsClose" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="Shared_Site_InviteFreindsEmail" xml:space="preserve">
+    <value>이메일</value>
+  </data>
+  <data name="Shared_Site_InviteFreindsFirstName" xml:space="preserve">
+    <value>이름</value>
+  </data>
+  <data name="Shared_Site_InviteFreindsLastName" xml:space="preserve">
+    <value>성</value>
+  </data>
+  <data name="Shared_Site_InviteFreindsSubmit" xml:space="preserve">
+    <value>전송</value>
+  </data>
+  <data name="Shared_Site_LastName" xml:space="preserve">
+    <value>성</value>
+  </data>
+  <data name="Shared_Site_LogOut" xml:space="preserve">
+    <value>로그아웃</value>
+  </data>
+  <data name="Shared_Site_Messages" xml:space="preserve">
+    <value>메시지</value>
+  </data>
+  <data name="Shared_Site_MyStuff" xml:space="preserve">
+    <value>내 Stuff</value>
+  </data>
+  <data name="Shared_Site_MyTasks" xml:space="preserve">
+    <value>내 할일</value>
+  </data>
+  <data name="Shared_Site_NewMessages" xml:space="preserve">
+    <value>새 메시지</value>
+  </data>
+  <data name="Shared_Site_Profile" xml:space="preserve">
+    <value>프로필</value>
+  </data>
+  <data name="Shared_Site_ProfileSummary" xml:space="preserve">
+    <value>프로필 요약</value>
+  </data>
+  <data name="Shared_Site_ProfileSummaryClose" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="Shared_Site_Publishing" xml:space="preserve">
+    <value>배포</value>
+  </data>
+  <data name="Shared_Site_RemoveImage" xml:space="preserve">
+    <value>이미지를 제거</value>
+  </data>
+  <data name="Shared_Site_Reports" xml:space="preserve">
+    <value>보고서</value>
+  </data>
+  <data name="Shared_Site_SearchContact" xml:space="preserve">
+    <value>연락처 검색</value>
+  </data>
+  <data name="Shared_Site_SearchContactClose" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="Shared_Site_SecheduleMessages" xml:space="preserve">
+    <value>메시지 일정</value>
+  </data>
+  <data name="Shared_Site_Send" xml:space="preserve">
+    <value>보내기</value>
+  </data>
+  <data name="Shared_Site_SentMessages" xml:space="preserve">
+    <value>보낸</value>
+  </data>
+  <data name="Shared_Site_Settings" xml:space="preserve">
+    <value>설정</value>
+  </data>
+  <data name="Shared_Site_SmartInbox" xml:space="preserve">
+    <value>수신함</value>
+  </data>
+  <data name="Shared_Site_SocialGroups" xml:space="preserve">
+    <value>소셜 그룹</value>
+  </data>
+  <data name="Shared_Site_SocialTickets" xml:space="preserve">
+    <value>소셜 티켓</value>
+  </data>
+  <data name="Shared_Site_SocioQueue" xml:space="preserve">
+    <value>소셜플렉스큐</value>
+  </data>
+  <data name="Shared_Site_Submit" xml:space="preserve">
+    <value>전송</value>
+  </data>
+  <data name="Shared_Site_URLShrink" xml:space="preserve">
+    <value>URL 줄이기</value>
+  </data>
+  <data name="Shared_Site_UsersandGroups" xml:space="preserve">
+    <value>회원과 그룹</value>
+  </data>
+  <data name="Shared_Socialsuite_Agency" xml:space="preserve">
+    <value>Agency</value>
+  </data>
+  <data name="Shared_Socialsuite_Blogs" xml:space="preserve">
+    <value>블로그</value>
+  </data>
+  <data name="Shared_Socialsuite_Cases" xml:space="preserve">
+    <value>Cases</value>
+  </data>
+  <data name="Shared_Socialsuite_Close" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="Shared_Socialsuite_Community" xml:space="preserve">
+    <value>커뮤니티</value>
+  </data>
+  <data name="Shared_Socialsuite_Company" xml:space="preserve">
+    <value>회사</value>
+  </data>
+  <data name="Shared_Socialsuite_Contact" xml:space="preserve">
+    <value>문의</value>
+  </data>
+  <data name="Shared_Socialsuite_Download" xml:space="preserve">
+    <value>다운로드</value>
+  </data>
+  <data name="Shared_Socialsuite_EnterEmailForVideo" xml:space="preserve">
+    <value>이메일 주소를 입력하시면 비디오 이메일을 보내드리겠습니다.</value>
+  </data>
+  <data name="Shared_Socialsuite_Enterprise" xml:space="preserve">
+    <value>Enterprise</value>
+  </data>
+  <data name="Shared_Socialsuite_Features" xml:space="preserve">
+    <value>서비스 장점</value>
+  </data>
+  <data name="Shared_Socialsuite_ForgotPassword" xml:space="preserve">
+    <value>비밀번호를 잊으셨나요?</value>
+  </data>
+  <data name="Shared_Socialsuite_GetInTouch" xml:space="preserve">
+    <value>연락주세요.</value>
+  </data>
+  <data name="Shared_SocialSuite_GetInTouchWithUs" xml:space="preserve">
+    <value>연락주세요.</value>
+  </data>
+  <data name="Shared_Socialsuite_HelpYourCustomer" xml:space="preserve">
+    <value>고객 도와주기</value>
+  </data>
+  <data name="Shared_Socialsuite_Insights" xml:space="preserve">
+    <value>인사이트</value>
+  </data>
+  <data name="Shared_Socialsuite_LoginInsidePage" xml:space="preserve">
+    <value>로그인</value>
+  </data>
+  <data name="Shared_Socialsuite_LoginMainPage" xml:space="preserve">
+    <value>로그인</value>
+  </data>
+  <data name="Shared_Socialsuite_MakeADecision" xml:space="preserve">
+    <value>의사결정</value>
+  </data>
+  <data name="Shared_Socialsuite_NotYetRegistered" xml:space="preserve">
+    <value>아직 가입하지 않으셨나요?</value>
+  </data>
+  <data name="Shared_Socialsuite_Pricing" xml:space="preserve">
+    <value>가격</value>
+  </data>
+  <data name="Shared_Socialsuite_RegisterNow" xml:space="preserve">
+    <value>지금 가입하기</value>
+  </data>
+  <data name="Shared_Socialsuite_RegisterWithSocialaccounts" xml:space="preserve">
+    <value>소셜 계정을 등록할 수 있습니다.</value>
+  </data>
+  <data name="Shared_Socialsuite_RememberMe" xml:space="preserve">
+    <value>로그인 상태 유지</value>
+  </data>
+  <data name="Shared_Socialsuite_Restore" xml:space="preserve">
+    <value>저장하려면 여기를 클릭하세요</value>
+  </data>
+  <data name="Shared_SocialSuite_SendMail" xml:space="preserve">
+    <value>메일 보내기</value>
+  </data>
+  <data name="Shared_Socialsuite_SendVideoInEmail" xml:space="preserve">
+    <value>메일로 비디오 보내기</value>
+  </data>
+  <data name="Shared_Socialsuite_SignIn" xml:space="preserve">
+    <value>로그인</value>
+  </data>
+  <data name="Shared_Socialsuite_Training" xml:space="preserve">
+    <value>교육</value>
+  </data>
+  <data name="Shared_Socialsuite_TryitforFree" xml:space="preserve">
+    <value>또는 무료로 이용해 보세요!</value>
+  </data>
+  <data name="Shared_Socialsuite_Versions" xml:space="preserve">
+    <value>버전</value>
+  </data>
+  <data name="Shared_Socialsuite_Wiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
+  <data name="SocialBoard_BusinessSetting_Index_Sorry" xml:space="preserve">
+    <value>죄송합니다,이 그룹의 사업입니다 페이지가 만들어지지 않습니다!</value>
+  </data>
+  <data name="SocialBoard_BusinessSetting_Index_SorryDefault" xml:space="preserve">
+    <value>죄송합니다, 당신은 기본 그룹에 설정 할 수 없습니다</value>
+  </data>
+  <data name="Socialplex_Home_Index_AttachProfile" xml:space="preserve">
+    <value>(주)소셜플렉스 로 시작을위한 당신의 소셜 네트워크 프로필을 첨부</value>
+  </data>
+  <data name="Socialplex_Home_Index_AttachYourProfile" xml:space="preserve">
+    <value>프로필에 연결</value>
+  </data>
+  <data name="SocioBoard_Admin_AdminLogin_Index_SocioBoardAdmin" xml:space="preserve">
+    <value>소셜플렉스 관리자</value>
+  </data>
+  <data name="SocioBoard_Admin_AdminLogin_Index_SocioBoardAdminLogin" xml:space="preserve">
+    <value>소셜플렉스 | 관리자 로그인</value>
+  </data>
+  <data name="SocioBoard_BusinessSetting_Index_NotificationAlertViaEmail" xml:space="preserve">
+    <value>소셜플렉스는 회원과 팀 멤버들에게 이메일로 다양한 활동내역을 알려줍니다.</value>
+  </data>
+  <data name="SocioBoard_ForgotPasword_ForgotPasswordMailBodyPartial_HappySocioBoarding" xml:space="preserve">
+    <value>소셜플렉스에서 소셜미디어를 효율적으로 관리하세요!</value>
+  </data>
+  <data name="SocioBoard_ForgotPasword_ForgotPasswordMailBodyPartial_SocioBoardSupportTeam" xml:space="preserve">
+    <value>소셜플렉스 지원팀</value>
+  </data>
+  <data name="SocioBoard_ForgotPasword_ForgotPasswordMailBodyPartial_SupportTeamIntro" xml:space="preserve">
+    <value>소셜플렉스 지원팀 입니다.</value>
+  </data>
+  <data name="SocioBoard_ForgotPasword_ResetPasswordMailBodyPartial_HappySocioBoarding" xml:space="preserve">
+    <value>소셜플렉스에서 소셜미디어를 효율적으로 관리하세요!</value>
+  </data>
+  <data name="SocioBoard_ForgotPasword_ResetPasswordMailBodyPartial_SocioBoardSupportTeam" xml:space="preserve">
+    <value>소셜플렉스 지원팀</value>
+  </data>
+  <data name="SocioBoard_Home_Index_AttachProfileToBeginWithSocioBoard" xml:space="preserve">
+    <value>소셜네트워크 프로필을 소셜플렉스에서 첨부하세요.</value>
+  </data>
+  <data name="SocioBoard_Home_PageNotFound_404PageSocioBoard" xml:space="preserve">
+    <value>소셜플렉스를 찾을 수 없습니다.</value>
+  </data>
+  <data name="SocioBoard_Index_Contact_SendYourSelfAnAwesomeVideo" xml:space="preserve">
+    <value>소셜플렉스 비디오 보내기</value>
+  </data>
+  <data name="SocioBoard_Index_Contact_SocioBoardStoryVideo" xml:space="preserve">
+    <value>소셜플렉스 스토리 비디오</value>
+  </data>
+  <data name="SocioBoard_Index_Contact_UnderstandSocioboardBetter" xml:space="preserve">
+    <value>소셜플렉스 자세히 알아보기</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex10" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex11" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex12" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex13" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex2" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex3" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex4" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex5" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex6" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex7" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex8" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex9" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SocioBoard_Index_Download_SourceCodeHeading" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SocioBoard_Index_Index_EndHeading" xml:space="preserve">
+    <value>소셜플렉스에서 팔로워들을 쉽고, 재미있고, 효율적으로 관리하세요. 지금 시작하세요!</value>
+  </data>
+  <data name="SocioBoard_Index_Index_featureHeading" xml:space="preserve">
+    <value>소셜플렉스는 소셜미디어에서 편리하게 커뮤니케이션 할 수 있도록 지원하고 구독자와 팔로워들을 효율적으로 관리할 수 있도록 서비스 합니다.</value>
+  </data>
+  <data name="SocioBoard_Index_Index_freeSubscirption" xml:space="preserve">
+    <value>30일간 무료로 소셜플렉스를 체험해 보세요!</value>
+  </data>
+  <data name="SocioBoard_Index_Index_LoveSocioboard" xml:space="preserve">
+    <value>왜 많은 사람들이 소셜플렉스를 좋아할까요?</value>
+  </data>
+  <data name="SocioBoard_Index_Index_OnBoard" xml:space="preserve">
+    <value>소셜미디어 마케팅 도구인 소셜플렉스가 당신을 지원하기 위해 어떤 것을 할 수 있는지 알아보세요.</value>
+  </data>
+  <data name="SocioBoard_Index_Index_SocioDescription" xml:space="preserve">
+    <value>소셜플렉스는 쉽고 다양하고 최적화된 소셜미디어 관리 및 마케팅 서비스 입니다. 여러분의 회사와 브랜드를 한층 더 성장시키는도 큰 도움이 될 것입니다.</value>
+  </data>
+  <data name="SocioBoard_Index_Index_Sociodescription2" xml:space="preserve">
+    <value>소셜플렉스는 여러분의 여러 다양한 소셜미디어 팔로워들과 쉽게 소통하고 분석하며 효율적으로 관리할 수 있도록 지원합니다.</value>
+  </data>
+  <data name="SocioBoard_Index_Index_SubHeadingInsight" xml:space="preserve">
+    <value>소셜플렉스는 고객들의 자세한 인사이트를 제공합니다.</value>
+  </data>
+  <data name="SocioBoard_Index_PartialPricing_EnterpriseandAgencyDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SocioBoard_Index_Privacy_SocioBoardtechPVTLtd" xml:space="preserve">
+    <value>주식회사 소셜플렉스</value>
+  </data>
+  <data name="SocioBoard_Index_RegistrationMailPartial_KeepsocioBoarding" xml:space="preserve">
+    <value>소셜플렉스에서 소셜서비스를 효율적으로 관리하시기 바랍니다. 좋은 서비스로 보답하겠습니다.</value>
+  </data>
+  <data name="SocioBoard_Index_RegistrationMailPartial_SocioBoardTeam" xml:space="preserve">
+    <value>소셜플렉스팀</value>
+  </data>
+  <data name="SocioBoard_MyStuff_EWalletPartial_AddMoneyToSocioBoardWallet" xml:space="preserve">
+    <value>소셜플렉스 전자지갑에 충전하기</value>
+  </data>
+  <data name="SocioBoard_Shared_Site_InvideFreindsDescription" xml:space="preserve">
+    <value>소셜플렉스는 그룹 멤버들이 효율적으로 협업 업무를 진행하도록 협업 도구를 제공합니다. 팀원들간에 정보를 공유하고 좀 더 생산적으로 업무를 할 수 있도록 지원합니다. </value>
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_AddressHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_Copyright" xml:space="preserve">
+    <value>Copyright © 2014 - 2015 ㈜소셜플렉스 All Rights Reserved.</value>
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_PhoneNumber1" xml:space="preserve">
+    <value>02-333-7660</value>
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_PhoneNumber2" xml:space="preserve">
+    <value>help@socialplex.kr</value>
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_ProperAddress" xml:space="preserve">
+    <value>서울시 강남구 도곡로1길 14, 1506호</value>
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_SkypeSupport" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SocioBoard_Shared_Socialsuite_Title" xml:space="preserve">
+    <value>소셜플렉스 - 소셜미디어 관리, 소셜CRM, 소셜미디어 CMS를 위한 효율적인 도구 입니다.</value>
+  </data>
+  <data name="UserGroup_AcceptedUserPartial_AcceptedTeamMember" xml:space="preserve">
+    <value>승인된 팀 멤버</value>
+  </data>
+  <data name="UserGroup_PendingUserPartial_InviteANewMember" xml:space="preserve">
+    <value>팀 멤버 초대하기</value>
+  </data>
+  <data name="UserGroup_PendingUserPartial_PendingTeamMembers" xml:space="preserve">
+    <value>대기중인 팀 멤버</value>
+  </data>
+  <data name="UserGroup_ProfilesConnectedToGroupPartial_ProfilerLinkedTo" xml:space="preserve">
+    <value>링크된 프로파일</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_Close" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_CreateGroup" xml:space="preserve">
+    <value>그룹 생성하기</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_GroupName" xml:space="preserve">
+    <value>그룹 이름</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_Groups" xml:space="preserve">
+    <value>그룹</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_GroupsDescription" xml:space="preserve">
+    <value>그룹은 여러 소셜 프로필을 분류하여 관리하고 소셜미디어의 효과를 분석한 보고서를 만들 수 있습니다. 그룹에 대해 자세히 알아보기</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_GroupsDescription2" xml:space="preserve">
+    <value>그룹은 소셜 프로필과 팀 멤버를 조직화하여 관리하도록 합니다. 지금 그룹을 만들고 소셜 프로필을 연결시키고 팀 멤버들과 협업할 수 있습니다. 페이스북과 트위터도 그룹을 만들도록 요구합니다.</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_Submit" xml:space="preserve">
+    <value>전송</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_UserAndGroup" xml:space="preserve">
+    <value>회원과 그룹</value>
+  </data>
+  <data name="UserGroup_UserProfilePartial_ProfilesAvailable" xml:space="preserve">
+    <value>연결할 수 있는 프로필</value>
+  </data>
+  <data name="UserGroup_UserProfilesPartial_ProfilesAvailable" xml:space="preserve">
+    <value>연결할 수 있는 프로필</value>
+  </data>
+  <data name="Versions_EnterPrise_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Message__InboxPartial_Following" xml:space="preserve">
+    <value>다음의</value>
+  </data>
+  <data name="Message__InboxPartial_mention" xml:space="preserve">
+    <value>언급</value>
+  </data>
+  <data name="Message__InboxPartial_NewFollowerAlert" xml:space="preserve">
+    <value>새로운 추종자 경고</value>
+  </data>
+  <data name="Message__InboxPartial_retweetedby" xml:space="preserve">
+    <value>에 의해 입소문</value>
+  </data>
+  <data name="Publishing_DraftPartial_Completed" xml:space="preserve">
+    <value>완료</value>
+  </data>
+  <data name="Publishing_DraftPartial_Pending" xml:space="preserve">
+    <value>보류</value>
+  </data>
+  <data name="Report_FBPageReports_Actions" xml:space="preserve">
+    <value>행위</value>
+  </data>
+  <data name="Report_FBPageReports_days" xml:space="preserve">
+    <value>일</value>
+  </data>
+  <data name="Report_FBPageReports_FACEBOOKSTATS" xml:space="preserve">
+    <value>페이스 북 통계</value>
+  </data>
+  <data name="Report_FBPageReports_IMPRESSIONSBYLOCATION" xml:space="preserve">
+    <value>위치 별 노출</value>
+  </data>
+  <data name="Report_FBPageReports_PAGEIMPRESSIONS" xml:space="preserve">
+    <value>페이지 노출</value>
+  </data>
+  <data name="Report_ReportMenuPartial_GroupReport" xml:space="preserve">
+    <value>그룹 보고서</value>
+  </data>
+  <data name="Index_Index_OurApps" xml:space="preserve">
+    <value>우리의 애플 리케이션</value>
+  </data>
+  <data name="Index_Index_WorldNo1" xml:space="preserve">
+    <value>세계의 # 1 오픈 소스 사회 기술 블러!</value>
+  </data>
+  <data name="Index_Index_WorldNo1H3" xml:space="preserve">
+    <value>우리는 기업과 더 나은 소셜 미디어를 이해하고 그것의 진정한 힘을 활용하는 브랜드를하는 데 도움이 사회적 기술을 구축 할 수 있습니다.</value>
+  </data>
+  <data name="Index_PartialPricing_30DaysFreeTrial" xml:space="preserve">
+    <value>모든 계획은 30 일 무료 평가판을 포함</value>
+  </data>
+  <data name="Index_PartialPricing_Basic" xml:space="preserve">
+    <value>기본</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature1" xml:space="preserve">
+    <value>종합 대시 보드</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature2" xml:space="preserve">
+    <value>여러 사회 프로필받은 편지함</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature3" xml:space="preserve">
+    <value>소셜 미디어 업데이트</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature4" xml:space="preserve">
+    <value>예약 기능</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature5" xml:space="preserve">
+    <value>소셜 미디어 기반의 CRM</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature6" xml:space="preserve">
+    <value>도구를보고 소셜 플랫폼</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature7" xml:space="preserve">
+    <value>세계 수준의 24 * 7 교육 &amp;amp; 지원</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature8" xml:space="preserve">
+    <value>5 프로파일을 관리</value>
+  </data>
+  <data name="Index_PartialPricing_BASICPLANS" xml:space="preserve">
+    <value>기본 계획</value>
+  </data>
+  <data name="Index_PartialPricing_BasicSubHeading" xml:space="preserve">
+    <value>모든 계획은 고유 한 패키지입니다. 이 사람은 개인을 위해 적합합니다.</value>
+  </data>
+  <data name="Index_PartialPricing_BtnBuyNow" xml:space="preserve">
+    <value>지금 주문</value>
+  </data>
+  <data name="Index_PartialPricing_BTNRequestADemo" xml:space="preserve">
+    <value>데모를 요청할</value>
+  </data>
+  <data name="Index_PartialPricing_BTNTryNow" xml:space="preserve">
+    <value>지금 시도</value>
+  </data>
+  <data name="Index_PartialPricing_Change" xml:space="preserve">
+    <value>업그레이드, 변경 또는 언제든지 취소</value>
+  </data>
+  <data name="Index_PartialPricing_Deluxe" xml:space="preserve">
+    <value>Deluxe</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature1" xml:space="preserve">
+    <value>모든 기본, 표준 &amp;amp; 디럭스 특징</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature2" xml:space="preserve">
+    <value>프롬프트 피드</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature3" xml:space="preserve">
+    <value>상수 실시간 모니터링</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature4" xml:space="preserve">
+    <value>팀 공동 작업 도구</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature5" xml:space="preserve">
+    <value>소셜 CRM</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature6" xml:space="preserve">
+    <value>세계 수준의 24 * 7 교육 &amp;amp; 지원</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature7" xml:space="preserve">
+    <value>50 프로파일을 관리</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeSubHeading" xml:space="preserve">
+    <value>복잡한 목표에 대한 정교한 도구가 포함되어 있습니다</value>
+  </data>
+  <data name="Index_PartialPricing_ENTERPRISEANDAGENCY" xml:space="preserve">
+    <value>기업 및 기관</value>
+  </data>
+  <data name="Index_PartialPricing_EXPERTPLANS" xml:space="preserve">
+    <value>전문가 계획</value>
+  </data>
+  <data name="Index_PartialPricing_Premium" xml:space="preserve">
+    <value>Premuim</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature1" xml:space="preserve">
+    <value>모든 기본 계획의 특징</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature2" xml:space="preserve">
+    <value>사회 발견</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature3" xml:space="preserve">
+    <value>헬프 데스크 통합</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature4" xml:space="preserve">
+    <value>강력한 통계 엔진</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature5" xml:space="preserve">
+    <value>사용자 정의 가시 분석</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature6" xml:space="preserve">
+    <value>세계 수준의 24 * 7 교육 &amp; A; 지원</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature7" xml:space="preserve">
+    <value>RSS 피드</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature8" xml:space="preserve">
+    <value>20 프로파일을 관리</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimSubHeading" xml:space="preserve">
+    <value>패키지 당신은 효율적으로 확장 소셜 미디어 네트워크를 관리 할 필요가있다.</value>
+  </data>
+  <data name="Index_PartialPricing_PricingBasic1" xml:space="preserve">
+    <value>무료</value>
+  </data>
+  <data name="Index_PartialPricing_PricingDeluxe" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_PartialPricing_PricingPremium" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_PartialPricing_PricingSocioBasic" xml:space="preserve">
+    <value>SocioBasic</value>
+  </data>
+  <data name="Index_PartialPricing_PricingSocioDeluxe" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_PartialPricing_PricingSocioPremium" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_PartialPricing_PricingSocioStandard" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_PartialPricing_PricingStandard" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_PartialPricing_RequestDemoBtnReset" xml:space="preserve">
+    <value>RESET</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoBtnSend" xml:space="preserve">
+    <value>요청을 보낼</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoCompanyName" xml:space="preserve">
+    <value>회사 명</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoEmail" xml:space="preserve">
+    <value>이메일 ID</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoFName" xml:space="preserve">
+    <value>이름</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoInfoPage" xml:space="preserve">
+    <value>데모 또는 더 많은 정보 요청</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoNotes" xml:space="preserve">
+    <value>노트</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoPhNO" xml:space="preserve">
+    <value>전화 번호</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoSkypeID" xml:space="preserve">
+    <value>스카이프 ID</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoSName" xml:space="preserve">
+    <value>성</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasic" xml:space="preserve">
+    <value>사회기본</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature1" xml:space="preserve">
+    <value>모든 기본, 표준 및 디럭스 특징</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature2" xml:space="preserve">
+    <value>프롬프트 피드</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature3" xml:space="preserve">
+    <value>상수 실시간 모니터링</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature4" xml:space="preserve">
+    <value>팀 공동 작업 도구</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature5" xml:space="preserve">
+    <value>소셜 CRM</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature6" xml:space="preserve">
+    <value>세계 수준의 24 * 7 교육 &amp;amp; 지원</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature7" xml:space="preserve">
+    <value>100 프로파일을 관리</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicSubHeading" xml:space="preserve">
+    <value>복잡한 목표에 대한 정교한 도구가 포함되어 있습니다</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxe" xml:space="preserve">
+    <value>SocioDeluxe</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature1" xml:space="preserve">
+    <value>모든 기본, 표준 &amp;amp; 디럭스 특징</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature2" xml:space="preserve">
+    <value>프롬프트 피드</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature3" xml:space="preserve">
+    <value>상수 실시간 모니터링</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature4" xml:space="preserve">
+    <value>팀 공동 작업 도구</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature5" xml:space="preserve">
+    <value>소셜 CRM</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature6" xml:space="preserve">
+    <value>세계 수준의 24 * 7 교육 &amp;amp; 지원</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature7" xml:space="preserve">
+    <value>1000 프로파일을 관리</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeSubHeading" xml:space="preserve">
+    <value>복잡한 목표에 대한 정교한 도구가 포함되어 있습니다</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature1" xml:space="preserve">
+    <value>모든 기본, 표준 &amp;amp; 디럭스 특징</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature2" xml:space="preserve">
+    <value>프롬프트 피드</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature3" xml:space="preserve">
+    <value>상수 실시간 모니터링</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature4" xml:space="preserve">
+    <value>팀 공동 작업 도구</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature5" xml:space="preserve">
+    <value>소셜 CRM</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature6" xml:space="preserve">
+    <value>세계 수준의 24 * 7 교육 &amp;amp; 지원</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature7" xml:space="preserve">
+    <value>500 프로파일을 관리</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumSubHeading" xml:space="preserve">
+    <value>복잡한 목표에 대한 정교한 도구가 포함되어 있습니다</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremuim" xml:space="preserve">
+    <value>SocioPremium</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandard" xml:space="preserve">
+    <value>SocioStandard</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature1" xml:space="preserve">
+    <value>모든 기본, 표준 &amp;amp; 디럭스 특징</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature2" xml:space="preserve">
+    <value>프롬프트 피드</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature3" xml:space="preserve">
+    <value>상수 실시간 모니터링</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature4" xml:space="preserve">
+    <value>팀 공동 작업 도구</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature5" xml:space="preserve">
+    <value>소셜 CRM</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature6" xml:space="preserve">
+    <value>세계 수준의 24 * 7 교육 &amp;amp; 지원</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature7" xml:space="preserve">
+    <value>200 프로파일을 관리</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardSubHeading" xml:space="preserve">
+    <value>복잡한 목표에 대한 정교한 도구가 포함되어 있습니다</value>
+  </data>
+  <data name="Index_PartialPricing_Standard1" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature1" xml:space="preserve">
+    <value>스마트받은 편지함</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature2" xml:space="preserve">
+    <value>실시간 소셜 미디어 플랫폼에서 피드</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature3" xml:space="preserve">
+    <value>고급 출판 특징</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature4" xml:space="preserve">
+    <value>소셜 미디어 기반의 CRM에 대한 정교한 도구</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature5" xml:space="preserve">
+    <value>심층보고 도구</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature6" xml:space="preserve">
+    <value>세계 수준의 24 * 7 교육 &amp;amp; 지원</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature7" xml:space="preserve">
+    <value>10 프로파일을 관리</value>
+  </data>
+  <data name="Index_PartialPricing_StandardSubHeading" xml:space="preserve">
+    <value>소규모 팀에 적합한 훌륭한 도구로 구성되어 있습니다.</value>
+  </data>
+  <data name="Message_Index_MESSAGETYPES" xml:space="preserve">
+    <value>메시지 유형</value>
+  </data>
+  <data name="Socialplex_Index_Index_EndHeading" xml:space="preserve">
+    <value>(주)소셜플렉스 으로, 당신의 추종자 참여하는 것은 지금, 쉽고 재미, 통찰력이다. 오늘 시작하세요!</value>
+  </data>
+  <data name="Socialplex_Index_Index_featureHeading" xml:space="preserve">
+    <value>(주)소셜플렉스 쉽게 사회적 대화에 탭을 유지하게하고 효율적으로 청중을 참여하는 데 필요한 모든 것을 제공합니다.</value>
+  </data>
+  <data name="Socialplex_Index_Index_freeSubscirption" xml:space="preserve">
+    <value>(주)소셜플렉스 위험이없는 30 일을 즐기십시오!</value>
+  </data>
+  <data name="Socialplex_Index_Index_LoveSocialplex" xml:space="preserve">
+    <value>사람들은 왜 (주)소셜플렉스 사랑</value>
+  </data>
+  <data name="Socialplex_Index_Index_Sociodescription2" xml:space="preserve">
+    <value>(주)소셜플렉스 당신이 듣고 분석하고 다수의 소셜 미디어 계정을 통해 비정상적인 방법으로 당신의 추종자를 참여 할 수 있습니다</value>
+  </data>
+  <data name="Socialplex_Shared_SocialSuite_Copyright" xml:space="preserve">
+    <value>Copyright © 2014 - 2015 (주)소셜플렉스 All Rights Reserved.</value>
+  </data>
+  <data name="Socialplex_Shared_SocialSuite_PhoneNumber2" xml:space="preserve">
+    <value>help@socialplex.kr</value>
+  </data>
+  <data name="Socialplex_Shared_SocialSuite_ProperAddress" xml:space="preserve">
+    <value>서울시 강남구 도곡로 1 길 14, 1506 호</value>
+  </data>
+  <data name="Socialplex_Shared_Socialsuite_Title" xml:space="preserve">
+    <value>소셜플렉스 - 소셜미디어 관리, 소셜CRM, 소셜미디어 CMS를 위한 효율적인 도구 입니다.</value>
+  </data>
+  <data name="Socioplex_Shared_SocialSuite_PhoneNumber1" xml:space="preserve">
+    <value>02-333-7660</value>
+  </data>
+</root>

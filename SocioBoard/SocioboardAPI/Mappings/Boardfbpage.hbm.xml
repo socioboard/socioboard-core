@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="Domain.Socioboard" namespace="Domain.Socioboard.Domain" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Boardfbpage" table="Boardfbpage" lazy="false" >
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="FbPageId">
+      <column name="FbPageId" sql-type="varchar(500)" not-null="true" />
+    </property>
+    <property name="TalkingAboutCount">
+      <column name="TalkingAboutCount" sql-type="varchar(50)" not-null="false" />
+    </property>
+    <property name="Likes">
+      <column name="Likes" sql-type="varchar(50)" not-null="false" />
+    </property>
+    <property name="Checkins">
+      <column name="Checkins" sql-type="varchar(50)" not-null="false" />
+    </property>
+    <property name="fbPageName">
+      <column name="fbPageName" sql-type="varchar(500)" not-null="true" />
+    </property>
+    <property name="ProfileImageUrl">
+      <column name="ProfileImageUrl" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="BoardId">
+      <column name="BoardId" sql-type="binary(16)" not-null="true" />
+    </property>
+    <property name="PageUrl">
+      <column name="PageUrl" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Country">
+      <column name="Country" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="City">
+      <column name="City" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Phone">
+      <column name="Phone" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Website">
+      <column name="Website" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Founded">
+      <column name="Founded" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Mission">
+      <column name="Mission" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Description">
+      <column name="Description" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="About">
+      <column name="About" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Companyname">
+      <column name="Companyname" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Entrydate">
+      <column name="Entrydate" sql-type="datetime" not-null="false" />
+    </property>
+  </class>
+</hibernate-mapping>

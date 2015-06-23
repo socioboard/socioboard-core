@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="Domain.Socioboard" namespace="Domain.Socioboard.Domain" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Boardtwitterfeeds" table="boardtwitterfeeds" lazy="true" >
+    <id name="Id" column="Id" />
+    <property name="Createdat">
+      <column name="CreatedAt" sql-type="datetime" not-null="false" />
+    </property>
+    <property name="Feedid">
+      <column name="FeedId" sql-type="varchar(500)" not-null="true" />
+    </property>
+    <property name="Feedurl">
+      <column name="FeedUrl" sql-type="varchar(5000)" not-null="false" />
+    </property>
+    <property name="Imageurl">
+      <column name="ImageUrl" sql-type="varchar(5000)" not-null="false" />
+    </property>
+    <property name="Text">
+      <column name="Text" sql-type="varchar(5000)" not-null="false" />
+    </property>
+    <property name="Hashtags">
+      <column name="HashTags" sql-type="varchar(5000)" not-null="false" />
+    </property>
+    <property name="Twitterprofileid">
+      <column name="TwitterProfileId" sql-type="binary(16)" not-null="true" />
+    </property>
+    <property name="Isvisible">
+      <column name="IsVisible" sql-type="bit(1)" not-null="true" />
+    </property>
+    <property name="FromName">
+      <column name="FromName" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="FromId">
+      <column name="FromId" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Retweetcount">
+      <column name="RetweetCount" sql-type="int(10) unsigned zerofill" not-null="true" />
+    </property>
+    <property name="Favoritedcount">
+      <column name="FavoritedCount" sql-type="int(10) unsigned zerofill" not-null="true" />
+    </property>
+    <property name="FromPicUrl">
+      <column name="FromPicUrl" sql-type="varchar(500)" not-null="false" />
+    </property>
+  </class>
+</hibernate-mapping>

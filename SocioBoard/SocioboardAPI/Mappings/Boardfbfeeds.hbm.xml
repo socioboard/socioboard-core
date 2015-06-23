@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="Domain.Socioboard" namespace="Domain.Socioboard.Domain" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Boardfbfeeds" table="boardfbfeeds" lazy="true" >
+    <id name="Id" column="Id" />
+    <property name="Type">
+      <column name="Type" sql-type="varchar(50)" not-null="true" />
+    </property>
+    <property name="Link">
+      <column name="Link" sql-type="varchar(5000)" not-null="false" />
+    </property>
+    <property name="Message">
+      <column name="Message" sql-type="varchar(5000)" not-null="false" />
+    </property>
+    <property name="Createddate">
+      <column name="CreatedDate" sql-type="datetime" not-null="false" />
+    </property>
+    <property name="Description">
+      <column name="Description" sql-type="varchar(5000)" not-null="false" />
+    </property>
+    <property name="Feedid">
+      <column name="FeedId" sql-type="varchar(500)" not-null="true" />
+    </property>
+    <property name="Isvisible">
+      <column name="IsVisible" sql-type="bit(1)" not-null="true" />
+    </property>
+    <property name="Videolink">
+      <column name="VideoLink" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Story">
+      <column name="Story" sql-type="varchar(5000)" not-null="false" />
+    </property>
+    <property name="Fbpageprofileid">
+      <column name="FbPageProfileId" sql-type="binary(16)" not-null="true" />
+    </property>
+    <property name="Coverphoto">
+      <column name="CoverPhoto" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Image">
+      <column name="Image" sql-type="varchar(500)" not-null="false" />
+    </property>
+  <property name="Likes">
+      <column name="Likes" sql-type="varchar(500)" not-null="false" />
+    </property>
+      <property name="FromName">
+      <column name="FromName" sql-type="varchar(500)" not-null="false" />
+    </property>
+  <property name="FromId">
+      <column name="FromId" sql-type="varchar(500)" not-null="false" />
+    </property>
+  </class>
+</hibernate-mapping>
