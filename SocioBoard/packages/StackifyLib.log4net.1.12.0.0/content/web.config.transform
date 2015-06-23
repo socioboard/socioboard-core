@@ -1,0 +1,26 @@
+<configuration>
+   <configSections>
+      <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net" />
+   </configSections>
+
+   <log4net>
+      <root>
+         <level value="ALL" />
+         <appender-ref ref="StackifyAppender" />
+     </root>
+     <appender name="StackifyAppender" type="StackifyLib.log4net.StackifyAppender, StackifyLib.log4net">
+          <globalContextKeys></globalContextKeys>
+          <threadContextKeys></threadContextKeys>
+          <logicalThreadContextKeys></logicalThreadContextKeys>
+          <callContextKeys></callContextKeys>
+          <!-- If logging a very high rate of messages, disable logging method names for performance -->
+          <logMethodNames>true</logMethodNames>
+          <!-- Only log errors and fatals by using filters and setting levelMin and levelMax appropriately -->
+          <!-- http://logging.apache.org/log4net/release/manual/configuration.html -->
+          <filter type="log4net.Filter.LevelRangeFilter">
+            <levelMin value="DEBUG" />
+            <levelMax value="FATAL" />
+          </filter>
+     </appender>
+   </log4net>
+</configuration>

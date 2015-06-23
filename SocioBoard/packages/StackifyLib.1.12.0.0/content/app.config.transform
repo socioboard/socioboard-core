@@ -1,0 +1,11 @@
+﻿<configuration>
+   <configSections>
+      <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net" />
+   </configSections>
+   <appSettings>
+        <add key="Stackify.AppName" value="" />
+        <add key="Stackify.Environment" value="" />
+        <add key="Stackify.ProxyServer" value="" />
+   </appSettings>
+   
+</configuration>
