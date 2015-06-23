@@ -113,6 +113,15 @@ All libraries are placed here
 
 ![](http://i.imgur.com/GZY0Y9B.png)
 
+3. For build errors like - 
+Source file 'Web References\Api.LinkedinMessage\Reference.cs' could not be found
+![](http://i.imgur.com/HJjOXKZ.png?1)
+follow these steps
+![](http://i.imgur.com/03bdqmt.png?1)
+![](http://i.imgur.com/dDaf9QG.png?1)
+
+
+
 Some application screenshots
 
 ![](http://i.imgur.com/VXxWeuz.jpg)
