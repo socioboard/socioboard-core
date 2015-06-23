@@ -274,16 +274,16 @@
   </wsdl:binding>
   <wsdl:service name="Admin">
     <wsdl:port name="AdminSoap" binding="tns:AdminSoap">
-      <soap:address location="http://localhost:6361/Services/Admin.asmx" />
+      <soap:address location="http://localhost:6361/services/Admin.asmx" />
     </wsdl:port>
     <wsdl:port name="AdminSoap12" binding="tns:AdminSoap12">
-      <soap12:address location="http://localhost:6361/Services/Admin.asmx" />
+      <soap12:address location="http://localhost:6361/services/Admin.asmx" />
     </wsdl:port>
     <wsdl:port name="AdminHttpGet" binding="tns:AdminHttpGet">
-      <http:address location="http://localhost:6361/Services/Admin.asmx" />
+      <http:address location="http://localhost:6361/services/Admin.asmx" />
     </wsdl:port>
     <wsdl:port name="AdminHttpPost" binding="tns:AdminHttpPost">
-      <http:address location="http://localhost:6361/Services/Admin.asmx" />
+      <http:address location="http://localhost:6361/services/Admin.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

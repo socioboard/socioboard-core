@@ -25,12 +25,6 @@ namespace Api.Socioboard.Services
         PaymentTransactionRepository objPaymentTransactionRepository = new PaymentTransactionRepository();
 
         [WebMethod]
-        public string HelloWorld()
-        {
-            return "Hello World";
-        }
-
-        [WebMethod]
         public string SavePayPalTransaction(string userID, string amountPaid)
         {
             Domain.Socioboard.Domain.PaymentTransaction objPaymentTransaction = new Domain.Socioboard.Domain.PaymentTransaction();
@@ -43,6 +37,22 @@ namespace Api.Socioboard.Services
 
             return new JavaScriptSerializer().Serialize(paymentResponse);
         }
+
+        [WebMethod]
+        public string SavePayPalTransactionDetail(string UserID, string AmountPaid, string TransactionId)
+        {
+            Domain.Socioboard.Domain.PaymentTransaction objPaymentTransaction = new Domain.Socioboard.Domain.PaymentTransaction();
+            objPaymentTransaction.AmountPaid = AmountPaid;
+            objPaymentTransaction.PayPalTransactionId=TransactionId;
+            objPaymentTransaction.PaymentDate = DateTime.Now;
+            objPaymentTransaction.PaymentStatus = "paid";
+            objPaymentTransaction.UserId = Guid.Parse(UserID);
+
+            string paymentResponse = objPaymentTransactionRepository.SavePayPalTransaction(objPaymentTransaction);
+
+            return new JavaScriptSerializer().Serialize(paymentResponse);
+        }
+
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetPaymentDataByUserId(string UserId)
@@ -53,7 +63,6 @@ namespace Api.Socioboard.Services
             }
             catch (Exception ex)
             {
-
                 return null; 
             }
         }

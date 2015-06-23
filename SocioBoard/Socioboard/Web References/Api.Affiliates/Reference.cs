@@ -29,13 +29,19 @@ namespace Socioboard.Api.Affiliates {
     [System.Web.Services.WebServiceBindingAttribute(Name="AffiliatesSoap", Namespace="http://tempuri.org/")]
     public partial class Affiliates : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
-        private System.Threading.SendOrPostCallback HelloWorldOperationCompleted;
-        
         private System.Threading.SendOrPostCallback AddAffiliateDetailOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetAffilieteDetailbyUserIdOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetAffilieteDetailbyUserIdTransOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AddRequestToWithdrawOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetEwalletWithdrawOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetAllEwalletWithdrawOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdatePaymentStatusOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -76,9 +82,6 @@ namespace Socioboard.Api.Affiliates {
         }
         
         /// <remarks/>
-        public event HelloWorldCompletedEventHandler HelloWorldCompleted;
-        
-        /// <remarks/>
         public event AddAffiliateDetailCompletedEventHandler AddAffiliateDetailCompleted;
         
         /// <remarks/>
@@ -88,31 +91,16 @@ namespace Socioboard.Api.Affiliates {
         public event GetAffilieteDetailbyUserIdTransCompletedEventHandler GetAffilieteDetailbyUserIdTransCompleted;
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/HelloWorld", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string HelloWorld() {
-            object[] results = this.Invoke("HelloWorld", new object[0]);
-            return ((string)(results[0]));
-        }
+        public event AddRequestToWithdrawCompletedEventHandler AddRequestToWithdrawCompleted;
         
         /// <remarks/>
-        public void HelloWorldAsync() {
-            this.HelloWorldAsync(null);
-        }
+        public event GetEwalletWithdrawCompletedEventHandler GetEwalletWithdrawCompleted;
         
         /// <remarks/>
-        public void HelloWorldAsync(object userState) {
-            if ((this.HelloWorldOperationCompleted == null)) {
-                this.HelloWorldOperationCompleted = new System.Threading.SendOrPostCallback(this.OnHelloWorldOperationCompleted);
-            }
-            this.InvokeAsync("HelloWorld", new object[0], this.HelloWorldOperationCompleted, userState);
-        }
+        public event GetAllEwalletWithdrawCompletedEventHandler GetAllEwalletWithdrawCompleted;
         
-        private void OnHelloWorldOperationCompleted(object arg) {
-            if ((this.HelloWorldCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.HelloWorldCompleted(this, new HelloWorldCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
+        /// <remarks/>
+        public event UpdatePaymentStatusCompletedEventHandler UpdatePaymentStatusCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddAffiliateDetail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -209,6 +197,134 @@ namespace Socioboard.Api.Affiliates {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddRequestToWithdraw", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string AddRequestToWithdraw(string WithdrawAmount, string PaymentMethod, string PaypalEmail, string IbanCode, string SwiftCode, string Other, string UserID) {
+            object[] results = this.Invoke("AddRequestToWithdraw", new object[] {
+                        WithdrawAmount,
+                        PaymentMethod,
+                        PaypalEmail,
+                        IbanCode,
+                        SwiftCode,
+                        Other,
+                        UserID});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AddRequestToWithdrawAsync(string WithdrawAmount, string PaymentMethod, string PaypalEmail, string IbanCode, string SwiftCode, string Other, string UserID) {
+            this.AddRequestToWithdrawAsync(WithdrawAmount, PaymentMethod, PaypalEmail, IbanCode, SwiftCode, Other, UserID, null);
+        }
+        
+        /// <remarks/>
+        public void AddRequestToWithdrawAsync(string WithdrawAmount, string PaymentMethod, string PaypalEmail, string IbanCode, string SwiftCode, string Other, string UserID, object userState) {
+            if ((this.AddRequestToWithdrawOperationCompleted == null)) {
+                this.AddRequestToWithdrawOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddRequestToWithdrawOperationCompleted);
+            }
+            this.InvokeAsync("AddRequestToWithdraw", new object[] {
+                        WithdrawAmount,
+                        PaymentMethod,
+                        PaypalEmail,
+                        IbanCode,
+                        SwiftCode,
+                        Other,
+                        UserID}, this.AddRequestToWithdrawOperationCompleted, userState);
+        }
+        
+        private void OnAddRequestToWithdrawOperationCompleted(object arg) {
+            if ((this.AddRequestToWithdrawCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddRequestToWithdrawCompleted(this, new AddRequestToWithdrawCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetEwalletWithdraw", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetEwalletWithdraw(string UserId) {
+            object[] results = this.Invoke("GetEwalletWithdraw", new object[] {
+                        UserId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetEwalletWithdrawAsync(string UserId) {
+            this.GetEwalletWithdrawAsync(UserId, null);
+        }
+        
+        /// <remarks/>
+        public void GetEwalletWithdrawAsync(string UserId, object userState) {
+            if ((this.GetEwalletWithdrawOperationCompleted == null)) {
+                this.GetEwalletWithdrawOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetEwalletWithdrawOperationCompleted);
+            }
+            this.InvokeAsync("GetEwalletWithdraw", new object[] {
+                        UserId}, this.GetEwalletWithdrawOperationCompleted, userState);
+        }
+        
+        private void OnGetEwalletWithdrawOperationCompleted(object arg) {
+            if ((this.GetEwalletWithdrawCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetEwalletWithdrawCompleted(this, new GetEwalletWithdrawCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllEwalletWithdraw", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetAllEwalletWithdraw() {
+            object[] results = this.Invoke("GetAllEwalletWithdraw", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAllEwalletWithdrawAsync() {
+            this.GetAllEwalletWithdrawAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetAllEwalletWithdrawAsync(object userState) {
+            if ((this.GetAllEwalletWithdrawOperationCompleted == null)) {
+                this.GetAllEwalletWithdrawOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllEwalletWithdrawOperationCompleted);
+            }
+            this.InvokeAsync("GetAllEwalletWithdraw", new object[0], this.GetAllEwalletWithdrawOperationCompleted, userState);
+        }
+        
+        private void OnGetAllEwalletWithdrawOperationCompleted(object arg) {
+            if ((this.GetAllEwalletWithdrawCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAllEwalletWithdrawCompleted(this, new GetAllEwalletWithdrawCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdatePaymentStatus", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int UpdatePaymentStatus(string id, int status) {
+            object[] results = this.Invoke("UpdatePaymentStatus", new object[] {
+                        id,
+                        status});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UpdatePaymentStatusAsync(string id, int status) {
+            this.UpdatePaymentStatusAsync(id, status, null);
+        }
+        
+        /// <remarks/>
+        public void UpdatePaymentStatusAsync(string id, int status, object userState) {
+            if ((this.UpdatePaymentStatusOperationCompleted == null)) {
+                this.UpdatePaymentStatusOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdatePaymentStatusOperationCompleted);
+            }
+            this.InvokeAsync("UpdatePaymentStatus", new object[] {
+                        id,
+                        status}, this.UpdatePaymentStatusOperationCompleted, userState);
+        }
+        
+        private void OnUpdatePaymentStatusOperationCompleted(object arg) {
+            if ((this.UpdatePaymentStatusCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdatePaymentStatusCompleted(this, new UpdatePaymentStatusCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -224,32 +340,6 @@ namespace Socioboard.Api.Affiliates {
                 return true;
             }
             return false;
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void HelloWorldCompletedEventHandler(object sender, HelloWorldCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class HelloWorldCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal HelloWorldCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
         }
     }
     
@@ -305,6 +395,110 @@ namespace Socioboard.Api.Affiliates {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void AddRequestToWithdrawCompletedEventHandler(object sender, AddRequestToWithdrawCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AddRequestToWithdrawCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AddRequestToWithdrawCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetEwalletWithdrawCompletedEventHandler(object sender, GetEwalletWithdrawCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetEwalletWithdrawCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetEwalletWithdrawCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetAllEwalletWithdrawCompletedEventHandler(object sender, GetAllEwalletWithdrawCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAllEwalletWithdrawCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAllEwalletWithdrawCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void UpdatePaymentStatusCompletedEventHandler(object sender, UpdatePaymentStatusCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpdatePaymentStatusCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpdatePaymentStatusCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }

@@ -9,17 +9,24 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
-    <title>@GlobusMultiLanguageLib.Resources.SocioBoard_Shared_Socialsuite_Title
+   <title>@GlobusMultiLanguageLib.Resources.SocioBoard_Shared_Socialsuite_Title
     </title>
+	<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="google-site-verification" content="suNXfJWYY3E7tilc3XsF5M2qZgSml8fGZVb5RfDOWaA" />
-    <meta name="description" content="A new fast growing, advanced, easy, open-source social media marketing tool to engage your audience with great features such as live chat, news feed, timeline, profiles, events, notifications, likes, analytics, insights and much more hit the digital media marketing lately.Most applications in this domain have a very narrow and limited approach towards end users, people feel caught up in a whirlpool of using the same features without customization and scaling up. Socioboard plans to help users out of this narrow limiting vision of the current social media dashboards today." />
+    <meta name="description" content="Be it marketing(finding leads/customers) on Social media, or listening to customer complaints, replying to them, managing multiple social media accounts from one single dashboard, finding influencers in a particular category and reaching out to them and many more things, Socioboard products can do it." />
     <meta name="keywords" content="Social Media Management Software, Social Media Management tool, Open Source Social Media Management, Social Media Management" />
-    <meta name="author" content="Chanchal Santra">
-    <meta property="og:image" content="http://socioboard.com/Contents/img/ssp/slidegraph.png" />
-    <meta property="og:title" content="Socioboard - Generate More leads on Social Media|  Social CRM | Social Media CMS" />
-    <meta property="og:url" content="http://socioboard.com" />
+    <meta name="author" content="Socioboard Technologies">
+    <meta property="og:title" content="Socioboard - Open Source Social Technology Enabler | Find More Customers on Social Media" />
     <meta property="og:site_name" content="Socioboard" />
+    <meta property="og:url" content="http://socioboard.com" />
+    <meta property="og:description" content="Be it marketing(finding leads/customers) on Social media, or listening to customer complaints, replying to them, managing multiple social media accounts from one single dashboard, finding influencers in a particular category and reaching out to them and many more things, Socioboard products can do it." />
+    <meta property="fb:app_id" content="730896073595509" />
     <meta property="og:type" content="Website" />
+    <meta property="og:image" content="http://i.imgur.com/1B8wv5m.png" />
+    <meta property="article:author" content="https://www.facebook.com/SocioBoard" />
+	
     <link rel="shortcut icon" href="/Themes/@path/Contents/img/ivon.ico" type="image/x-icon" />
     <!--<link href="../Contents/css/socialsuite.css" rel="stylesheet" type="text/css" />-->
     <link href="~/Themes/@path/Contents/css/fonts.css" rel="stylesheet" type="text/css" />
@@ -33,6 +40,8 @@
     <!-- Bootstrap Core CSS -->
     <link href="~/Themes/@path/Contents/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Themes/@path/Contents/css/sb-admin-2.css" rel="stylesheet" />
+	 <link href="/Themes/@path/Contents/css/custom.css" rel="stylesheet" />
+	 
     <!-- Custom CSS -->
     <link href="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/css/stylish-portfolio.css" rel="stylesheet" />
 
@@ -43,7 +52,7 @@
     <script src="/Themes/@path/Contents/js/alertify.min.js" type="text/javascript"></script>
     <link href="/Themes/@path/Contents/css/alertify.core.css" rel="stylesheet" type="text/css" />
     <link href="/Themes/@path/Contents/css/alertify.default.css" rel="stylesheet" type="text/css" id="toggleCSS" />
-    <link href="~/Themes/@path/Contents/css/custom.css" rel="stylesheet" />
+
     <script src="/Themes/@path/Contents/js/ads.js" type="text/javascript"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -87,7 +96,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../Index/Index"><img src="/Themes/@path/Contents/img/logo.png" class="img-responsive" style="margin-top: -15px;"/></a>
+                    <a class="navbar-brand" href="../Index/Index"><img src="/Themes/@path/Contents/img/logo.png" class="img-responsive" style="margin-top: -10px; max-width:200px;"/></a>
                 </div>
                  <style>
                      a.link.active {
@@ -113,8 +122,11 @@
                         <li>
                             <a href="../Index/Company" target="">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Company</a>
                         </li>
-                        <li>
+                        @*<li>
                             <a href="../Index/Features" target="">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Features</a>
+                        </li>*@
+						<li>
+                            <a href="../Index/Index?op=products" target="">Products</a>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Versions <span class="caret"></span></a>
@@ -133,14 +145,26 @@
                                 <li><a href="http://wiki.socioboard.com/index.php/Main_Page" target="_blank">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Wiki</a></li>
                                 <li><a href="http://blog.socioboard.com/category/cases" target="_blank">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Cases</a></li>
                                 <li><a href="http://blog.socioboard.com/" target="_blank">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Blogs</a></li>
-                            </ul>
-                        </li>
-                        <li>
+                            <li>
                             <a href="../Index/Download" target="">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Download</a>
+                             @*<iframe src="https://recruit.zoho.com/ats/Portal.na?iframe=false&digest=ffbl@cv91uUpRzY5bTrI3yd0mfykuojV.rm1ez9ejTY-" ></iframe>*@
+                        </li>
+							</ul>
+							
+                        </li>
+                       @* <li>
+                            <a href="../Index/Download" target="">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Download</a>
+                        </li>*@
+                         <li>
+                            <a href="../Index/Download?op=Careers" target="">Careers</a>
+                             @*<iframe src="https://recruit.zoho.com/ats/Portal.na?iframe=false&digest=ffbl@cv91uUpRzY5bTrI3yd0mfykuojV.rm1ez9ejTY-" ></iframe>*@
                         </li>
                          <li>
                             <a href="../Home/Training" target="">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_Training</a>
                         </li>
+						<li>
+                            <a href="../Index/Index?op=faq" target="">FAQs</a>
+                        </li> 
                        @* <li>
                             <a href="../Index/contact" target="">Contact Us</a>
                         </li>*@
@@ -149,10 +173,10 @@
                         </li>
                         <li>
                             <form action="/Company" id="Companydashboard" class="navbar-form navbar-left" role="search">
-  <div class="form-group">
+  @* <div class="form-group">
     <input type="text" name="q" class="form-control" placeholder="Search your company here... " style="border-radius: 15px; width: 225px; padding: 0px 5px;" />
     <button class="global-nav__search-button" type="submit"><div  class="icon fa fa-search fa-fw global-nav__search-icon"></div></button>
-  </div>
+  </div> *@
 </form>
                         </li>
                     </ul>
@@ -160,14 +184,14 @@
             </div><!-- /.container-fluid -->
             
 <div class="container-fluid" style="padding: 0px;">
-        <div id='cssmenu' class="text-center">
+        @*<div id='cssmenu' class="text-center">
             <ul>
                <li><a href='#'><span>IN: +91 9713317771, +91 8041660003</span></a></li>
                <li><a href='#'><span>US: +1 408 5209502</span></a></li>
                <li><a href='#'><span>UK: + 442032395414</span></a></li>
                <li class='last'><a href='#'><span>Skype : socioboard.support</span></a></li>
             </ul>
-        </div>
+        </div>*@
     </div>
         </nav>
         <!-- Button trigger modal -->
@@ -240,9 +264,9 @@
                         <h2 class="text-center" style="padding-left: 250px">@GlobusMultiLanguageLib.Resources.Shared_Socialsuite_MakeADecision</h2>
                         <div class="col-md-6">
                             <!-- 4:3 aspect ratio -->
-                            <div class="embed-responsive embed-responsive-4by3">
+                       @*     <div class="embed-responsive embed-responsive-4by3">
                                 <iframe width="640" height="360" src="//www.youtube.com/embed/zpOULjyy-n8?feature=player_embedded" frameborder="0" allowfullscreen></iframe>
-                            </div>
+                            </div>*@
 
                         </div>
                         <div class="col-md-6">
@@ -286,7 +310,7 @@
                 <div class="col-lg-10 col-lg-offset-1 text-center">
                     <h4><strong>@GlobusMultiLanguageLib.Resources.Shared_SocialSuite_GetInTouchWithUs</strong>
                     </h4>
-                    <p>@GlobusMultiLanguageLib.Resources.SocioBoard_Shared_SocialSuite_AddressHeader<br>@GlobusMultiLanguageLib.Resources.SocioBoard_Shared_SocialSuite_ProperAddress</p>
+                    <p>#58 L V Complex, 2nd Floor<br>@GlobusMultiLanguageLib.Resources.SocioBoard_Shared_SocialSuite_ProperAddress</p>
                     <ul class="list-unstyled">
                         <li><i class="fa fa-phone fa-fw"></i> @GlobusMultiLanguageLib.Resources.SocioBoard_Shared_SocialSuite_PhoneNumber1</li>
                         <li><i class="fa fa-phone fa-fw"></i> @GlobusMultiLanguageLib.Resources.SocioBoard_Shared_SocialSuite_PhoneNumber2</li>
@@ -309,7 +333,17 @@
                         </li>
                     </ul>
                     <hr class="small">
-                    <p class="text-muted">@GlobusMultiLanguageLib.Resources.SocioBoard_Shared_SocialSuite_Copyright</p>
+					<div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                             <ul class="footer-align">
+                              <li class="footer1"><a href="../Index/contact">Contact Us</a></li><li class="footer1">|</li>
+                              <li class="footer1"><a href="../Index/Disclaimer">Disclaimer</a></li><li class="footer1">|</li>
+                              @*<li class="footer1"><a href="#">License/GPL v2</a></li><li class="footer1">|</li>*@
+                              <li class="footer1"><a href="../Index/Privacy">Privacy Policy</a></li>
+                            </ul>
+                      </div>
+                   </div>
+                    <p class="text-muted">Copyright © 2014 - 2015 Socioboard Technologies Pvt. Ltd. All Rights Reserved.</p>
                 </div>
             </div>
         </div>
@@ -317,9 +351,25 @@
 
     <script type="text/javascript" language="javascript">        !window.jQuery && document.write(unescape('%3Cscript src="../lib/jquery/jquery.js"%3E%3C/script%3E'));</script>
     <script src="~/Themes/@path/Contents/js/jquery.smooth-scroll.js" type="text/javascript"></script>
+	<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=9930597; 
+var sc_invisible=1; 
+var sc_security="3850c63d"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="shopify site
+analytics" href="http://statcounter.com/shopify/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/9930597/0/3850c63d/1/"
+alt="shopify site analytics"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
     <script type="text/javascript">
-        $(document).ready(function () {
-            $("#txtPassword").bind("keydown", function (event) {
+	 $("#txtPassword").bind("keydown", function (event) {
                 var keycode = (event.keyCode ? event.keyCode : (event.which ? event.which : event.charCode));
                 if (keycode == 13) {
                     signinFunction();
@@ -328,6 +378,8 @@
                     return true;
                 }
             });
+        $(document).ready(function () {
+           
             $('ul.mainnav a').smoothScroll();
 
             $('p.subnav a').click(function (event) {

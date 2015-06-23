@@ -82,12 +82,12 @@
           <s:element minOccurs="0" maxOccurs="1" name="InstagramId" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="AccessToken" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="InsUserName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="ProfileUrl" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s1:guid" />
           <s:element minOccurs="1" maxOccurs="1" name="IsActive" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="Followers" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="FollowedBy" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProfileUrl" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="TotalImages" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s1:guid" />
           <s:element minOccurs="0" maxOccurs="1" name="ProfileType" type="s:string" />
         </s:sequence>
       </s:complexType>
@@ -684,16 +684,16 @@
   </wsdl:binding>
   <wsdl:service name="Instagram">
     <wsdl:port name="InstagramSoap" binding="tns:InstagramSoap">
-      <soap:address location="http://localhost:6361/Services/Instagram.asmx" />
+      <soap:address location="http://localhost:6361/services/Instagram.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramSoap12" binding="tns:InstagramSoap12">
-      <soap12:address location="http://localhost:6361/Services/Instagram.asmx" />
+      <soap12:address location="http://localhost:6361/services/Instagram.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramHttpGet" binding="tns:InstagramHttpGet">
-      <http:address location="http://localhost:6361/Services/Instagram.asmx" />
+      <http:address location="http://localhost:6361/services/Instagram.asmx" />
     </wsdl:port>
     <wsdl:port name="InstagramHttpPost" binding="tns:InstagramHttpPost">
-      <http:address location="http://localhost:6361/Services/Instagram.asmx" />
+      <http:address location="http://localhost:6361/services/Instagram.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

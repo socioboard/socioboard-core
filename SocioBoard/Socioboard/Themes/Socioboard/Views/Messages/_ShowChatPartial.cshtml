@@ -1,0 +1,41 @@
+﻿@{
+    List<Domain.Socioboard.Domain.TwitterDirectMessages> _TwitterDirectMessages = (List<Domain.Socioboard.Domain.TwitterDirectMessages>)Model;
+    
+}
+@foreach (Domain.Socioboard.Domain.TwitterDirectMessages msg in _TwitterDirectMessages)
+{
+    if (ViewBag.ProfileId == msg.SenderId)
+    {
+    <li class="msg col-md-9" title="@msg.CreatedDate">@msg.Message
+        @if (!string.IsNullOrEmpty(msg.Image))
+        { 
+            <img src="@msg.Image" />
+        }
+    </li>
+    <style>
+       .chat-thread .msg:before {
+        background-image:url(@msg.SenderProfileUrl);
+       }
+         </style>
+     
+    }
+    else
+    {
+    <li class="reply col-md-9" title="@msg.CreatedDate">@msg.Message
+        @if (!string.IsNullOrEmpty(msg.Image))
+        { 
+            <img src="@msg.Image" />
+        }
+    </li>
+    <style>
+       .chat-thread .reply:before {
+        background-image:url(@msg.SenderProfileUrl);
+       }
+         </style>
+    
+    }
+
+
+
+}
+

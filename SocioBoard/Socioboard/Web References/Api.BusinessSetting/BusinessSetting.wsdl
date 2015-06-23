@@ -3,16 +3,6 @@
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:import namespace="http://microsoft.com/wsdl/types/" />
-      <s:element name="HelloWorld">
-        <s:complexType />
-      </s:element>
-      <s:element name="HelloWorldResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="IsNotificationTaskEnable">
         <s:complexType>
           <s:sequence>
@@ -79,12 +69,6 @@
       </s:simpleType>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="HelloWorldSoapIn">
-    <wsdl:part name="parameters" element="tns:HelloWorld" />
-  </wsdl:message>
-  <wsdl:message name="HelloWorldSoapOut">
-    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
-  </wsdl:message>
   <wsdl:message name="IsNotificationTaskEnableSoapIn">
     <wsdl:part name="parameters" element="tns:IsNotificationTaskEnable" />
   </wsdl:message>
@@ -109,10 +93,6 @@
   <wsdl:message name="UpdateBuisnessSettingSoapOut">
     <wsdl:part name="parameters" element="tns:UpdateBuisnessSettingResponse" />
   </wsdl:message>
-  <wsdl:message name="HelloWorldHttpGetIn" />
-  <wsdl:message name="HelloWorldHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
   <wsdl:message name="AddBusinessByUserHttpGetIn">
     <wsdl:part name="ObjBusinessSetting" type="s:string" />
   </wsdl:message>
@@ -129,10 +109,6 @@
     <wsdl:part name="ObjBusiNessSetting" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdateBuisnessSettingHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="HelloWorldHttpPostIn" />
-  <wsdl:message name="HelloWorldHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="AddBusinessByUserHttpPostIn">
@@ -154,10 +130,6 @@
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:portType name="BusinessSettingSoap">
-    <wsdl:operation name="HelloWorld">
-      <wsdl:input message="tns:HelloWorldSoapIn" />
-      <wsdl:output message="tns:HelloWorldSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="IsNotificationTaskEnable">
       <wsdl:input message="tns:IsNotificationTaskEnableSoapIn" />
       <wsdl:output message="tns:IsNotificationTaskEnableSoapOut" />
@@ -176,10 +148,6 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="BusinessSettingHttpGet">
-    <wsdl:operation name="HelloWorld">
-      <wsdl:input message="tns:HelloWorldHttpGetIn" />
-      <wsdl:output message="tns:HelloWorldHttpGetOut" />
-    </wsdl:operation>
     <wsdl:operation name="AddBusinessByUser">
       <wsdl:input message="tns:AddBusinessByUserHttpGetIn" />
       <wsdl:output message="tns:AddBusinessByUserHttpGetOut" />
@@ -194,10 +162,6 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="BusinessSettingHttpPost">
-    <wsdl:operation name="HelloWorld">
-      <wsdl:input message="tns:HelloWorldHttpPostIn" />
-      <wsdl:output message="tns:HelloWorldHttpPostOut" />
-    </wsdl:operation>
     <wsdl:operation name="AddBusinessByUser">
       <wsdl:input message="tns:AddBusinessByUserHttpPostIn" />
       <wsdl:output message="tns:AddBusinessByUserHttpPostOut" />
@@ -213,15 +177,6 @@
   </wsdl:portType>
   <wsdl:binding name="BusinessSettingSoap" type="tns:BusinessSettingSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="HelloWorld">
-      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="IsNotificationTaskEnable">
       <soap:operation soapAction="http://tempuri.org/IsNotificationTaskEnable" style="document" />
       <wsdl:input>
@@ -261,15 +216,6 @@
   </wsdl:binding>
   <wsdl:binding name="BusinessSettingSoap12" type="tns:BusinessSettingSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="HelloWorld">
-      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="IsNotificationTaskEnable">
       <soap12:operation soapAction="http://tempuri.org/IsNotificationTaskEnable" style="document" />
       <wsdl:input>
@@ -309,15 +255,6 @@
   </wsdl:binding>
   <wsdl:binding name="BusinessSettingHttpGet" type="tns:BusinessSettingHttpGet">
     <http:binding verb="GET" />
-    <wsdl:operation name="HelloWorld">
-      <http:operation location="/HelloWorld" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="AddBusinessByUser">
       <http:operation location="/AddBusinessByUser" />
       <wsdl:input>
@@ -348,15 +285,6 @@
   </wsdl:binding>
   <wsdl:binding name="BusinessSettingHttpPost" type="tns:BusinessSettingHttpPost">
     <http:binding verb="POST" />
-    <wsdl:operation name="HelloWorld">
-      <http:operation location="/HelloWorld" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="AddBusinessByUser">
       <http:operation location="/AddBusinessByUser" />
       <wsdl:input>
@@ -387,16 +315,16 @@
   </wsdl:binding>
   <wsdl:service name="BusinessSetting">
     <wsdl:port name="BusinessSettingSoap" binding="tns:BusinessSettingSoap">
-      <soap:address location="http://localhost:6361/Services/BusinessSetting.asmx" />
+      <soap:address location="http://localhost:6361/services/BusinessSetting.asmx" />
     </wsdl:port>
     <wsdl:port name="BusinessSettingSoap12" binding="tns:BusinessSettingSoap12">
-      <soap12:address location="http://localhost:6361/Services/BusinessSetting.asmx" />
+      <soap12:address location="http://localhost:6361/services/BusinessSetting.asmx" />
     </wsdl:port>
     <wsdl:port name="BusinessSettingHttpGet" binding="tns:BusinessSettingHttpGet">
-      <http:address location="http://localhost:6361/Services/BusinessSetting.asmx" />
+      <http:address location="http://localhost:6361/services/BusinessSetting.asmx" />
     </wsdl:port>
     <wsdl:port name="BusinessSettingHttpPost" binding="tns:BusinessSettingHttpPost">
-      <http:address location="http://localhost:6361/Services/BusinessSetting.asmx" />
+      <http:address location="http://localhost:6361/services/BusinessSetting.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -33,6 +33,10 @@ namespace Socioboard.Api.TwitterDirectMessages {
         
         private System.Threading.SendOrPostCallback getAllDirectMessagesByIdOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetDistinctTwitterDirectMessagesByProfilesAndUserIdOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetConversationOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -76,6 +80,12 @@ namespace Socioboard.Api.TwitterDirectMessages {
         
         /// <remarks/>
         public event getAllDirectMessagesByIdCompletedEventHandler getAllDirectMessagesByIdCompleted;
+        
+        /// <remarks/>
+        public event GetDistinctTwitterDirectMessagesByProfilesAndUserIdCompletedEventHandler GetDistinctTwitterDirectMessagesByProfilesAndUserIdCompleted;
+        
+        /// <remarks/>
+        public event GetConversationCompletedEventHandler GetConversationCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/HelloWorld", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -130,6 +140,70 @@ namespace Socioboard.Api.TwitterDirectMessages {
             if ((this.getAllDirectMessagesByIdCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getAllDirectMessagesByIdCompleted(this, new getAllDirectMessagesByIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetDistinctTwitterDirectMessagesByProfilesAndUserId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetDistinctTwitterDirectMessagesByProfilesAndUserId(string UserId, string Profiles) {
+            object[] results = this.Invoke("GetDistinctTwitterDirectMessagesByProfilesAndUserId", new object[] {
+                        UserId,
+                        Profiles});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetDistinctTwitterDirectMessagesByProfilesAndUserIdAsync(string UserId, string Profiles) {
+            this.GetDistinctTwitterDirectMessagesByProfilesAndUserIdAsync(UserId, Profiles, null);
+        }
+        
+        /// <remarks/>
+        public void GetDistinctTwitterDirectMessagesByProfilesAndUserIdAsync(string UserId, string Profiles, object userState) {
+            if ((this.GetDistinctTwitterDirectMessagesByProfilesAndUserIdOperationCompleted == null)) {
+                this.GetDistinctTwitterDirectMessagesByProfilesAndUserIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetDistinctTwitterDirectMessagesByProfilesAndUserIdOperationCompleted);
+            }
+            this.InvokeAsync("GetDistinctTwitterDirectMessagesByProfilesAndUserId", new object[] {
+                        UserId,
+                        Profiles}, this.GetDistinctTwitterDirectMessagesByProfilesAndUserIdOperationCompleted, userState);
+        }
+        
+        private void OnGetDistinctTwitterDirectMessagesByProfilesAndUserIdOperationCompleted(object arg) {
+            if ((this.GetDistinctTwitterDirectMessagesByProfilesAndUserIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetDistinctTwitterDirectMessagesByProfilesAndUserIdCompleted(this, new GetDistinctTwitterDirectMessagesByProfilesAndUserIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetConversation", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetConversation(string UserId, string SenderId, string RecipientId) {
+            object[] results = this.Invoke("GetConversation", new object[] {
+                        UserId,
+                        SenderId,
+                        RecipientId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetConversationAsync(string UserId, string SenderId, string RecipientId) {
+            this.GetConversationAsync(UserId, SenderId, RecipientId, null);
+        }
+        
+        /// <remarks/>
+        public void GetConversationAsync(string UserId, string SenderId, string RecipientId, object userState) {
+            if ((this.GetConversationOperationCompleted == null)) {
+                this.GetConversationOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetConversationOperationCompleted);
+            }
+            this.InvokeAsync("GetConversation", new object[] {
+                        UserId,
+                        SenderId,
+                        RecipientId}, this.GetConversationOperationCompleted, userState);
+        }
+        
+        private void OnGetConversationOperationCompleted(object arg) {
+            if ((this.GetConversationCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetConversationCompleted(this, new GetConversationCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -191,6 +265,58 @@ namespace Socioboard.Api.TwitterDirectMessages {
         private object[] results;
         
         internal getAllDirectMessagesByIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetDistinctTwitterDirectMessagesByProfilesAndUserIdCompletedEventHandler(object sender, GetDistinctTwitterDirectMessagesByProfilesAndUserIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetDistinctTwitterDirectMessagesByProfilesAndUserIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetDistinctTwitterDirectMessagesByProfilesAndUserIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetConversationCompletedEventHandler(object sender, GetConversationCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetConversationCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetConversationCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

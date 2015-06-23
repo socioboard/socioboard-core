@@ -23,14 +23,21 @@ namespace Socioboard.Controllers
 
         public ActionResult Index()
         {
-            @ViewBag.Message = Request.QueryString["Message"];
-            if (Session["Paid_User"].ToString() == "Unpaid")
+            if (Session["User"] != null)
             {
-                return RedirectToAction("Billing", "PersonalSetting");
+                @ViewBag.Message = Request.QueryString["Message"];
+                if (Session["Paid_User"].ToString() == "Unpaid")
+                {
+                    return RedirectToAction("Billing", "PersonalSetting");
+                }
+                else
+                {
+                    return View();
+                }
             }
             else
             {
-                return View();
+                return RedirectToAction("Index", "Index");
             }
             //return View();
         }

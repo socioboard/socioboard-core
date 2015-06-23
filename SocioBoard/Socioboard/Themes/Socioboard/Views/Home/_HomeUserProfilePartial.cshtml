@@ -14,28 +14,30 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <i class="fa fa-bell fa-fw"></i> @GlobusMultiLanguageLib.Resources.Home_HomeUserProfilePartial_SocialProfiles
+        <i class="fa fa-bell fa-fw"></i> Social Profiles
                        
     </div>
     <!-- /.panel-heading -->
     <div class="row panel-body profilepartial" data-url="/Home/loadprofiles">
-        <img src="/Themes/@path/Contents/img/loader.gif" />
-       @GlobusMultiLanguageLib.Resources.Home_HomeUserProfilePartial_Loading
+       <center>
+                        <img class="" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/43px_on_transparent.gif" />
+                    </center>
     </div>
     <!-- /.panel-body -->
 </div>
 <!-- /.panel -->
 <div class="panel panel-default">
     <div class="panel-heading">
-        <i class="fa fa-bar-chart-o fa-fw"></i> @GlobusMultiLanguageLib.Resources.Home_HomeUserProfilePartial_TeamMembers
+        <i class="fa fa-bar-chart-o fa-fw"></i> Team Members
                        
     </div>
     <div class="panel-body">
         <div class="btn-group">
             <img class="img-responsive btn btn-default btn-block dropdown-toggle" src="/Themes/@path/Contents/img/invite.png" data-toggle="dropdown" />
-            <ul class="dropdown-menu slidedown">
-
-                @foreach (var item in lstgroup)
+           <ul class="dropdown-menu slidedown">
+               @if(lstgroup.Count>1)
+               {
+                foreach (var item in lstgroup)
                 {
                     if (item.GroupName != path)
                     { 
@@ -48,6 +50,13 @@
                     }
 
                 }
+                }
+               else
+               {
+                   <li><i class="fa fa-plus fa-fw"></i>
+                       you have no group</li>
+               }
+
             </ul>
         </div>
     </div>
@@ -56,11 +65,12 @@
 <!-- /.panel -->
 <div class="panel panel-default">
     <div class="panel-heading">
-        <i class="fa fa-bar-chart-o fa-fw"></i> @GlobusMultiLanguageLib.Resources.Home_HomeUserProfilePartial_RecentFollowers
+        <i class="fa fa-bar-chart-o fa-fw"></i> Recent Followers
     </div>
     <div class="row panel-body profilepartial" data-url="/Home/RecentProfiles">
-        <img src="/Themes/@path//Contents/img/loader.gif" />
-        Loading . . .
+       <center>
+                        <img class="" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/43px_on_transparent.gif" />
+                    </center>
     </div>
     <!-- /.panel-body -->
 </div>

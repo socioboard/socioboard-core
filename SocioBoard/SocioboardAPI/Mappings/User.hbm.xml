@@ -41,8 +41,6 @@
       <column name="TimeZone"  />
     </property>
 
-
-
     <property name="PaymentStatus">
       <column name="PaymentStatus"  />
     </property>
@@ -89,6 +87,10 @@
 
     <property name="UserCode">
       <column name="UserCode"  />
+    </property>
+
+    <property name="SocialLogin">
+      <column name="SocialLogin"  />
     </property>
     
   </class>

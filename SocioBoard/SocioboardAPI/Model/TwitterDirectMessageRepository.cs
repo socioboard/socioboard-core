@@ -5,7 +5,8 @@ using System.Web;
 using System.Collections;
 using Domain.Socioboard.Domain;
 using Api.Socioboard.Helper;
-
+using NHibernate.Linq;
+using NHibernate.Criterion;
 namespace Api.Socioboard.Services
 {
     public class TwitterDirectMessageRepository : ITwitterDirectMessagesRepository
@@ -138,6 +139,37 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+        public bool checkExistsDirectMessages(Guid UserId, string MessageId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        //Proceed action, to get message by message id.
+                        NHibernate.IQuery query = session.CreateQuery("from TwitterDirectMessages where UserId =: userid and MessageId = :MessageId ");
+                        query.SetParameter("MessageId", MessageId);
+                        query.SetParameter("userid", UserId);
+                        var result = query.UniqueResult();
+
+                        if (result == null)
+                            return false;
+                        else
+                            return true;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        return true;
+                    }
+
+                }//End Transaction
+            }//End Session
+        }
 
         /// <getAllDirectMessagesById>
         /// Get All Direct Messages By Id.
@@ -335,5 +367,80 @@ namespace Api.Socioboard.Services
         }
 
 
+        public List<Domain.Socioboard.Domain.TwitterDirectMessages> GetDistinctTwitterDirectMessagesByProfilesAndUserId(Guid UserId, string profiles)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        string[] arrsrt = profiles.Split(',');
+                        string[] type = { "twt_directmessages_received", "fb_received" };
+                        List<Domain.Socioboard.Domain.TwitterDirectMessages> lstTDM = session.Query<Domain.Socioboard.Domain.TwitterDirectMessages>().Where(U => U.UserId == UserId && arrsrt.Contains(U.RecipientId) && type.Contains(U.Type)).OrderByDescending(x => x.CreatedDate).ToList<Domain.Socioboard.Domain.TwitterDirectMessages>();
+                        lstTDM = lstTDM.GroupBy(y => y.SenderId, (key, g) => g.OrderByDescending(t => t.CreatedDate).First()).OrderByDescending(p => p.CreatedDate).ToList<Domain.Socioboard.Domain.TwitterDirectMessages>();
+                        return lstTDM;
+                    }
+                    catch (Exception ex)
+                    {
+                        return new List<Domain.Socioboard.Domain.TwitterDirectMessages>();
+                    }
+                }//End Transaction
+            }// End session
+        }
+
+        public List<Domain.Socioboard.Domain.TwitterDirectMessages> GetConversation(Guid UserId, string SenderId, string RecipientId)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        List<Domain.Socioboard.Domain.TwitterDirectMessages> lstTDM = session.Query<Domain.Socioboard.Domain.TwitterDirectMessages>().Where(U => U.UserId == UserId && ((U.SenderId == SenderId && U.RecipientId == RecipientId) || (U.SenderId == RecipientId && U.RecipientId == SenderId))).OrderBy(x => x.CreatedDate).ToList<Domain.Socioboard.Domain.TwitterDirectMessages>();
+                        return lstTDM;
+                    }
+                    catch (Exception ex)
+                    {
+                        return new List<Domain.Socioboard.Domain.TwitterDirectMessages>();
+                    }
+                }//End Transaction
+            }// End session
+        }
+
+        public void updateImage(Domain.Socioboard.Domain.TwitterDirectMessages _TwitterDirectMessages)
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+
+                        // Proceed action to Update Data.
+                        // And Set the reuired paremeters to find the specific values.
+                        session.CreateQuery("Update TwitterDirectMessages set Image =:Image where MessageId = :MessageId and UserId = :userid")
+                            .SetParameter("Image", _TwitterDirectMessages.Image)
+                            .SetParameter("MessageId", _TwitterDirectMessages.MessageId)
+                            .SetParameter("userid",_TwitterDirectMessages.UserId)
+                            .ExecuteUpdate();
+                        transaction.Commit();
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        // return 0;
+                    }
+                }//End Transaction
+            }//End session
+        }
     }
 }

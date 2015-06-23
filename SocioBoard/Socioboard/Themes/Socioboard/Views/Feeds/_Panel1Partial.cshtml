@@ -26,12 +26,12 @@
             </span>
             <div class="chat-body clearfix">
                 <div>
-                    <a target="_blank" href="http://www.facebook.com/@item.FromId"><strong class="primary-font">@item.FromName</strong></a>
-                    <small class="pull-right text-muted">
+                    <a target="_blank" href="http://www.facebook.com/@item.FromId"><strong class="primary-font">@item.FromName</strong></a><br />
+                    <small class="text-muted">
                         @{
                         string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.MessageDate.ToLocalTime().ToString());
                         }
-                        <i class="fa fa-clock-o fa-fw"></i>@messagedate
+                        @messagedate
                     </small>
                 </div>
                 <div style="margin-top: 2%;">
@@ -50,68 +50,52 @@
                                     else
                                     {
                                         string hrefPost = string.Empty;
-
                                         try
                                         {
                                             hrefPost = "https://www.facebook.com/" + item.FromId + "/posts/" + item.MessageId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
-
                                         }
                                         catch (Exception ex)
                                         {
                                             Console.WriteLine("Error : " + ex.StackTrace);
-
                                         }
                                         if (!string.IsNullOrEmpty(hrefPost))
                                         {
-                        <a target="_blank" href="@hrefPost">@substritem</a>
+                        <a target="_blank" href="@hrefPost" style="color:#333">@substritem</a>
                                         }
                                         else
                                         {
                         @substritem;
-
                                         }
                                     }
-
-
                                 }
-
-
                             }
                             catch (Exception ex)
                             {
                             }
-
                         }
-
                     }
                     else
                     {
-
                         {
                             string hrefPost = string.Empty;
-
                             try
                             {
                                 hrefPost = "https://www.facebook.com/" + item.FromId + "/posts/" + item.MessageId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
-
                             }
                             catch (Exception ex)
                             {
                                 Console.WriteLine("Error : " + ex.StackTrace);
-
                             }
                             if (!string.IsNullOrEmpty(hrefPost))
                             {
-                        <a target="_blank" href="@hrefPost">@item.Message</a>
+                        <a target="_blank" href="@hrefPost" style="color:#333">@item.Message</a>
                             }
                             else
                             {
                         @item.Message;
-
                             }
                         }
                     }
-
                     @*Display image of post*@
                     @if (!string.IsNullOrEmpty(item.Picture) && item.Picture != null)
                     {
@@ -126,10 +110,7 @@
                 <span class="input-group-btn">
                     <button class="btn btn-warning btn-sm" id="okfb_@item.MessageId" onclick="commentFB('@item.MessageId','@item.ProfileId')">
                         @GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Comment
-
-
                     </button>
-
                     @if (item.FbLike == "likes")
                     {
                         <button status="@item.FbLike" id="likefb_@item.MessageId" onclick="facebookLike('@item.Id','@item.ProfileId','@item.MessageId')" type="button" class="btn btn-info btn-circle">
@@ -141,12 +122,11 @@
                         <button status="@item.FbLike" id="likefb_@item.MessageId" onclick="facebookLike('@item.Id','@item.ProfileId','@item.MessageId')" type="button" class="btn btn-info btn-circle">
                             <i class="fa fa-thumbs-o-down"></i>
                         </button>
-                    
                     }
                 </span>
             </div>
         </li>
-                    check = false;
+                        //check = false;
                     }
                     else
                     {
@@ -178,16 +158,13 @@
                                 else
                                 {
                                     string hrefPost = string.Empty;
-
                                     try
                                     {
                                         hrefPost = "https://www.facebook.com/" + item.FromId + "/posts/" + item.MessageId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
-
                                     }
                                     catch (Exception ex)
                                     {
                                         Console.WriteLine("Error : " + ex.StackTrace);
-
                                     }
                                     if (!string.IsNullOrEmpty(hrefPost))
                                     {
@@ -196,19 +173,14 @@
                                     else
                                     {
                         @substritem;
-
                                     }
                                 }
-
-
                             }
                         }
                         catch (Exception ex)
                         {
                         }
-
                     }
-
                     @*Display image of post*@
                     @if (!string.IsNullOrEmpty(item.Picture) && item.Picture != null)
                     {
@@ -223,8 +195,6 @@
                 <span class="input-group-btn">
                     <button class="btn btn-warning btn-sm" id="okfb_@item.MessageId" onclick="commentFB('@item.MessageId','@item.ProfileId')">
                         @GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Comment
-
-
                     </button>
                     @if (item.FbLike == "likes")
                     {
@@ -237,7 +207,6 @@
                         <button status="@item.FbLike" id="likefb_@item.MessageId" onclick="facebookLike('@item.Id','@item.ProfileId','@item.MessageId')" type="button" class="btn btn-info btn-circle">
                             <i class="fa fa-thumbs-o-down"></i>
                         </button>
-                    
                     }
 
                 </span>
@@ -251,7 +220,6 @@
                 }
             }
         }
-
 
         if (dicitem.Key == "twitter")
         {
@@ -271,30 +239,28 @@
             </span>
             <div class="chat-body clearfix">
                 <div>
-                    <a target="_blank" href="http://www.twitter.com/@item.ScreenName"><strong class="primary-font">@item.FromName</strong></a>
+                    <a target="_blank" href="http://www.twitter.com/@item.FromScreenName"><strong class="primary-font">@item.FromName</strong></a>
                     <div class="btn-group pull-right open">
-                        <div id="feed_action_@i.ToString()" class="menu_button" title = "Option" style="height: auto;cursor:pointer" onClick="Show_twt_menu('@i.ToString()')">
-                            <i class="fa fa-cog"></i>
+                        <div id="feed_action_@i.ToString()" class="menu_button" title = "Option" style="height: auto;cursor:pointer" onClick="Show_twt_menu('@item.MessageId')">
+                            <i class="fa fa-bars"></i>
                         </div>
-                        <div id="dropdownmenu_@i.ToString()" class="hidden_menu" style="margin-left: -11px; display: none;">
+                        <div id="dropdownmenu_@item.MessageId" class="hidden_menu" style="margin-left: -11px; display: none;">
                             <ul class="dropdown-menu slidedown" style="display: block; margin-left: -140px">
-                                <li><a onClick="RetweetPopup('@item.ScreenName','@item.ProfileId','@item.MessageId');"><i class="fa fa-retweet-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Retweet</a></li>
-                                <li><a onClick="FavoritePopup('@item.ScreenName','@item.ProfileId','@item.MessageId');"><i class="fa fa-favorite-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Favourite</a></li>
-                                <li><a onClick="QuoteMessagePopup('@item.ProfileId','@item.Feed.Replace("'", "")');" data-target="#QuoteCompose" data-toggle="modal"><i class="fa fa-quote-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_QuoteMessage</a></li>
-                                <li><a onClick="MailPopUpTwt('@item.Id');" data-target="#twtmailpopup" data-toggle="modal"><i class="fa fa-mail-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_EmailMessage</a></li>
-                                <li><a onClick="SpamUserPopup('@item.FromScreenName','@item.ProfileId');"><i class="fa fa-spam-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_ReportAsSpam</a></li>
+                                @*<li><a onClick="RetweetPopup('@item.ScreenName','@item.ProfileId','@item.MessageId');"><i class="fa fa-retweet fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Retweet</a></li>*@
+                                @*<li><a onClick="FavoritePopup('@item.ScreenName','@item.ProfileId','@item.MessageId');"><i class="fa fa-star fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Favourite</a></li>*@
+                                <li><a onClick="QuoteMessagePopup('@item.ProfileId','@item.Feed.Replace("'", "")');" data-target="#QuoteCompose" data-toggle="modal"><i class="fa fa-comment fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_QuoteMessage</a></li>
+                                <li><a onClick="MailPopUpTwt('@item.Id');" data-target="#twtmailpopup" data-toggle="modal"><i class="fa fa-envelope fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_EmailMessage</a></li>
+                                <li><a onClick="SpamUserPopup('@item.FromScreenName','@item.ProfileId');"><i class="fa fa-ban fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_ReportAsSpam</a></li>
                             </ul>
                         </div>
                     </div>
-                    <small class="pull-right text-muted">
+                    <br />
+                    <small class="text-muted">
                         @{
                         string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.FeedDate.ToLocalTime().ToString());
                         }
-                        <i class="fa fa-clock-o fa-fw"></i>@messagedate
+                        @messagedate
                     </small>
-
-
-
                 </div>
                 @foreach (string substritem in str)
                 {
@@ -304,52 +270,55 @@
                         {
                             if (substritem.Contains("http"))
                             {
-                    <div class="pull-left" @*style="text-align:justify;"*@>
-                        <a target="_blank" href="@substritem " style="text-decoration:none">@substritem</a>
+                    <div class="" @*style="text-align:justify;"*@>
+                        <a target="_blank" href="@substritem ">@substritem</a>
                     </div>
                             }
                             else
                             {
                                 string hrefPost = string.Empty;
-
                                 try
                                 {
                                     hrefPost = "https://www.twitter.com/" + item.FromId + "/status/" + item.MessageId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
-
                                 }
                                 catch (Exception ex)
                                 {
                                     Console.WriteLine("Error : " + ex.StackTrace);
-
                                 }
                                 if (!string.IsNullOrEmpty(hrefPost))
                                 {
-                    <div class="pull-left" style="text-align: justify;">
-                        <a target="_blank" href="@hrefPost" style="text-decoration:none">@substritem</a>
+                    <div class="" style="text-align: justify;">
+                        <a target="_blank" href="@hrefPost" style="color:#333">@substritem</a>
                     </div>
                                 }
                                 else
                                 {
                     @substritem;
-
                                 }
                             }
-
-
                         }
                     }
                     catch (Exception ex)
                     {
-
-
                     }
-
                 }
+              
+                <div>
+                <a title="" data-placement="top" data-toggle="modal" data-target="#Reply" href="#" onclick="opnReply('@item.MessageId','@item.ProfileId')" data-original-title="Reply">
+                    <i class="fa fa-share fa-fw"></i>
+                </a>
+                <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Retweet" onClick="RetweetPopup('@item.ScreenName','@item.ProfileId','@item.MessageId')">
+                    <i class="fa fa-retweet fa-fw"></i>
+                </a>
+                <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Favorite" onClick="FavoritePopup('@item.ScreenName','@item.ProfileId','@item.MessageId')">
+                    <i class="fa fa-star fa-fw"></i>
+                </a>
+
             </div>
-
-
+            </div>
+            
         </li>
-                check = false;
+                        //check = false;
                     }
                     else
                     {
@@ -359,12 +328,12 @@
             </span>
             <div class="chat-body clearfix">
                 <div>
-                    <a target="_blank" href="http://www.twitter.com/@item.ScreenName"><strong class="pull-right primary-font">@item.FromName</strong></a>
+                    <a target="_blank" href="http://www.twitter.com/@item.FromScreenName"><strong class="pull-right primary-font">@item.FromName</strong></a>
                     <div class="btn-group open">
-                        <div id="feed_action_@i.ToString()" class="menu_button" title = "Option" style="height: auto;cursor:pointer" onClick="Show_twt_menu('@i.ToString()')">
+                        <div id="feed_action_@i.ToString()" class="menu_button" title = "Option" style="height: auto;cursor:pointer" onClick="Show_twt_menu('@item.MessageId')">
                             <i class="fa fa-cog"></i>
                         </div>
-                        <div id="dropdownmenu_@i.ToString()" class="hidden_menu" style="margin-left: -11px; display: none;">
+                        <div id="dropdownmenu_@item.MessageId" class="hidden_menu" style="margin-left: -11px; display: none;">
                             <ul class="dropdown-menu slidedown" style="display: block; margin-left: -12px">
                                 <li><a onClick="RetweetPopup('@item.ScreenName','@item.ProfileId','@item.MessageId');"><i class="fa fa-retweet-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Retweet</a></li>
                                 <li><a onClick="FavoritePopup('@item.ScreenName','@item.ProfileId','@item.MessageId');"><i class="fa fa-favorite-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Feeds_Panel1Partial_Favourite</a></li>
@@ -440,13 +409,7 @@
                 catch (Exception ex)
                 {
                 }
-
                 i++;
-
-
-                //Twitter Finished
-
-
             }
         }
 
@@ -476,31 +439,62 @@
             </span>
             <div class="chat-body clearfix">
                 <div>
-                    <a target="_blank" href="@item.FromUrl"><strong class="primary-font">@item.FromName</strong></a>
-                    <small class="pull-right text-muted">
+                    <a href="@item.FromUrl" target="_blank" style="text-decoration:none;cursor:pointer;"><strong class="primary-font">@item.FromName</strong></a><br />
+
+                    <small class="text-muted">
                         @{
                         string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.FeedsDate.ToLocalTime().ToString());
                         }
-                        <i class="fa fa-clock-o fa-fw"></i>@messagedate
+                        @*<i class="fa fa-clock-o fa-fw"></i>*@@messagedate
                     </small>
-                    <div id="sendMailleft">
-                        <span class="mail_icon" onclick="mail('@item.ProfileId','@item.Id')" data-target="#mailpopup" data-toggle="modal">
-                            <img alt="" src="/Themes/@path/Contents/img/download.jpg" title="Mail"></span>
+                    <div id="sendMailleft" class="pull-right">
+                        <a class="mail_icon" onclick="mail('@item.ProfileId','@item.Id')" data-target="#mailpopup" data-toggle="modal">
+                            <i class="fa fa-envelope fa-fw"></i></a>
                     </div>
                 </div>
+                @foreach (string substritem in str)
+                {
+                    try
+                    {
+                        if (!string.IsNullOrEmpty(substritem))
+                        {
+                            if (substritem.Contains("http"))
+                            {
+                    <div class="pull-left" @*style="text-align:justify;"*@>
+                        <a target="_blank" href="@substritem ">@substritem &nbsp;</a>
+                    </div>
+                            }
+                            else
+                            {
+                                string hrefPost = string.Empty;
+                                if (!string.IsNullOrEmpty(hrefPost))
+                                {
+                    <div class="pull-left" style="text-align: justify;">
+                        <a target="_blank" href="@hrefPost" style="color:#333">@substritem</a>
+                    </div>
+                                }
+                                else
+                                {
+                    @substritem;
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                }
                 @if (!string.IsNullOrEmpty(item.ImageUrl))
                 {
                     <br />
                     <img src="@item.ImageUrl" style="margin-top: 3%; height:100px;" /> 
                 }
-                <p>
-                <a>@item.Feeds</a>
-                    </p>
+@* <div>
+                    <a href="@item.FromUrl" target="_blank">@item.Feeds</a>
+                </div>*@
             </div>
-
-
         </li>
-                        check = false;
+                        // check = false;
                     }
                     else
                     {
@@ -510,7 +504,7 @@
             </span>
             <div class="chat-body clearfix">
                 <div>
-                    <a target="_blank" href="@item.FromUrl"><strong class="pull-right primary-font">@item.FromName</strong></a>
+                    <a target="_blank" href="@item.FromUrl" style="text-decoration:none;cursor:pointer;" ><strong class="pull-right primary-font">@item.FromName</strong></a>
                     <small class="text-muted">
                         @{
                         string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.FeedsDate.ToLocalTime().ToString());
@@ -527,11 +521,10 @@
                     <br />
                     <img src="@item.ImageUrl" style="margin-top: 5%; height:100px;" /> 
                 }
-                <p>
-                    <a>@item.Feeds</a>
-                </p>
+                <div>
+                    <a style="text-decoration:none" href="@item.FromUrl">@item.Feeds</a>
+                </div>
             </div>
-
         </li>  
                 check = true;
                     }
@@ -539,19 +532,8 @@
                 catch (Exception ex)
                 {
                 }
-
-
-
-
-                //Twitter Finished
-
-
             }
         }
-
-
-
-
     }
 
 </ul>

@@ -53,6 +53,8 @@
     <property name="MessageId">
       <column name="MessageId"  />
     </property>
-
+    <property name="Image">
+      <column name="Image"  />
+    </property>
   </class>
 </hibernate-mapping>

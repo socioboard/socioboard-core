@@ -7,6 +7,11 @@
 @section Scripts
     {
     <script type="text/javascript" src="/Themes/@path/Contents/js/highcharts.js"></script>
+      <script src="/Themes/@path/Contents/plugins/amcharts/amcharts/amcharts.js" type="text/javascript"></script>
+<script src="/Themes/@path/Contents/plugins/amcharts/amcharts/serial.js" type="text/javascript"></script>
+<script src="/Themes/@path/Contents/plugins/amcharts/amcharts/pie.js" type="text/javascript"></script>
+    <script src="/Themes/@path/Contents/plugins/metronic.js" type="text/javascript"></script>
+<script src="/Themes/@path/Contents/plugins/charts-amcharts.js"></script>
 
     @*<script type="text/javascript">
     function DisplayDefaultReports() {
@@ -36,7 +41,7 @@
 
                 $('#page-wrapper').html('').append(msg);
             },
-            async: false
+            async: true,
         });
     }
 
@@ -54,7 +59,7 @@
 
                 $('#page-wrapper').html(msg);
             },
-            async: false
+            async: true,
         });
     }
 
@@ -64,7 +69,8 @@
             url: "../Report/FbPagePostDetails?FbUserId=" + FbUserId + "&UserId=" + UserId,
             success: function (msg) {
                 $('#page-wrapper').html('').append(msg);
-            }
+            },
+			 async: true,
 
         });
 
@@ -86,7 +92,7 @@
                 $('#page-wrapper').html('').append(msg);
                 // loadChart();
             },
-            async: false
+             async: true,
         });
     }
 
@@ -101,7 +107,7 @@
                 //alert(msg);
                 $('#reports').html('').append(msg);
             },
-            async: false
+             async: true,
         });
     }
 
@@ -112,7 +118,7 @@
             success: function (msg) {
                 $('#loadpostdetails').html(msg);
             },
-            async: false
+             async: true,
         });
         // jQuery.noConflict();
         $('#CommentDetailsModall').modal('show');
@@ -171,7 +177,7 @@
                     loadChart();
                     piechart();
                 },
-                async: false
+                 async: true,
             });
         }
 
@@ -191,7 +197,7 @@
                     //loadMentionChart();
                     //loadTweetChart();
                 },
-                async: false
+                 async: true,
             });
         }
 
@@ -206,6 +212,22 @@
             });
 
         }
+
+        function GetFbPageReportDetails(FbUserId, UserId, Accesstoken, days) {
+            debugger;
+            $('#page-wrapper').html('').append('<center><img class="" style="margin-top:50px" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/43px_on_transparent.gif" /></center>');
+            $.ajax({
+                type: 'POST',
+                url: "../Report/FbPageReports?AccessToken=" + Accesstoken + "&FbUserId=" + FbUserId + "&days=" + days,
+                success: function (msg) {
+                    $('#page-wrapper').html('').append(msg);
+                }
+
+            });
+
+        }
+
+
 
         function twitterdetails(twtProfileId, days) {
             debugger;
@@ -230,7 +252,7 @@
                         alert(e);
                     }
                 },
-                async: false
+                 async: true,
             });
             //try {
             //    loadChart();
@@ -376,8 +398,9 @@
                 success: function (msg) {
                     //alert(msg);
                     $('#reports').html('').append(msg);
+                    $("#reports").metisMenu();
                 },
-                async: false
+                async: true,
             });
         }
 
@@ -388,7 +411,7 @@
                 success: function (msg) {
                     $('#loadpostdetails').html(msg);
                 },
-                async: false
+                 async: true,
             });
 
             $('#CommentDetailsModall').modal('show');

@@ -14,7 +14,9 @@ namespace Socioboard.Helper
         private static readonly List<string> _cultures = new List<string> {
         "en-US",  // first culture is the DEFAULT
         "it", // Italic culture
-        "hi" // Hindi culture
+        "hi", // Hindi culture
+        "ko" ,// korean culture 
+        "ar"//arabic cultures
       
         
     };

@@ -49,6 +49,8 @@ namespace Socioboard.Api.Tasks {
         
         private System.Threading.SendOrPostCallback AddNewTaskWithGroupOperationCompleted;
         
+        private System.Threading.SendOrPostCallback AddNewTaskWithGroupForAppsOperationCompleted;
+        
         private System.Threading.SendOrPostCallback ChangeTaskStatusOperationCompleted;
         
         private System.Threading.SendOrPostCallback DeleteTaskOperationCompleted;
@@ -128,6 +130,9 @@ namespace Socioboard.Api.Tasks {
         
         /// <remarks/>
         public event AddNewTaskWithGroupCompletedEventHandler AddNewTaskWithGroupCompleted;
+        
+        /// <remarks/>
+        public event AddNewTaskWithGroupForAppsCompletedEventHandler AddNewTaskWithGroupForAppsCompleted;
         
         /// <remarks/>
         public event ChangeTaskStatusCompletedEventHandler ChangeTaskStatusCompleted;
@@ -488,6 +493,44 @@ namespace Socioboard.Api.Tasks {
             if ((this.AddNewTaskWithGroupCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.AddNewTaskWithGroupCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddNewTaskWithGroupForApps", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void AddNewTaskWithGroupForApps(string description, string messagedate, string userid, string assigntoId, string comment, string groupid) {
+            this.Invoke("AddNewTaskWithGroupForApps", new object[] {
+                        description,
+                        messagedate,
+                        userid,
+                        assigntoId,
+                        comment,
+                        groupid});
+        }
+        
+        /// <remarks/>
+        public void AddNewTaskWithGroupForAppsAsync(string description, string messagedate, string userid, string assigntoId, string comment, string groupid) {
+            this.AddNewTaskWithGroupForAppsAsync(description, messagedate, userid, assigntoId, comment, groupid, null);
+        }
+        
+        /// <remarks/>
+        public void AddNewTaskWithGroupForAppsAsync(string description, string messagedate, string userid, string assigntoId, string comment, string groupid, object userState) {
+            if ((this.AddNewTaskWithGroupForAppsOperationCompleted == null)) {
+                this.AddNewTaskWithGroupForAppsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddNewTaskWithGroupForAppsOperationCompleted);
+            }
+            this.InvokeAsync("AddNewTaskWithGroupForApps", new object[] {
+                        description,
+                        messagedate,
+                        userid,
+                        assigntoId,
+                        comment,
+                        groupid}, this.AddNewTaskWithGroupForAppsOperationCompleted, userState);
+        }
+        
+        private void OnAddNewTaskWithGroupForAppsOperationCompleted(object arg) {
+            if ((this.AddNewTaskWithGroupForAppsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddNewTaskWithGroupForAppsCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -998,6 +1041,10 @@ namespace Socioboard.Api.Tasks {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
     public delegate void AddNewTaskWithGroupCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void AddNewTaskWithGroupForAppsCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]

@@ -4,6 +4,7 @@ var bindSentmessagesajax = '';
 
 var arrid = new Array();
 
+var arrmsgtype = new Array();
 
 //function BindMessages() {
 
@@ -413,6 +414,9 @@ function BindProfilesInMessageTab() {
         });
 }
 
+
+
+
 function chkProfilemessage(id) {
     try {
         debugger;
@@ -537,4 +541,199 @@ function getlocatdatetime() {
         sec = curdate.getSeconds();
     }
     return now = curdate.getFullYear() + "/" + mm + "/" + dd + " " + hh + ":" + minm + ":" + sec;
+}
+
+
+
+function bindInboxMessages()
+{
+    debugger;
+    $.ajax({
+        type: "GET",
+        url: "../Messages/BindUserProfileByGroup",
+        datatype: "html",
+        success: function (msg) {
+
+            $("#div-user-profiles").html(msg);
+        }
+    });
+
+    $.ajax({
+        type: "GET",
+        url: "../Messages/BindUserMessageType",
+        datatype: "html",
+        success: function (msg) {
+
+            $("#div-user-message").html(msg);
+        }
+    });
+
+    $.ajax({
+        type: "GET",
+        url: "../Messages/BindInboxMessage?load=first",
+        datatype: "html",
+        success: function (msg) {
+            if (msg == "no_data") {
+                $("#ul-inbox-message").html("<div><center><h3>No Messages Found.</h3></center></div>");
+            }
+            else {
+                $("#ul-inbox-message").html(msg);
+            }
+        }
+    });
+
+}
+
+function filterinboxmessages(id) {
+    debugger;
+    arrid = new Array();
+    arrmsgtype = new Array();
+    try {
+        $("#div-user-message .cls-user-message").each(function () {
+            debugger;
+            var attrId = $($($(this).children()[2]).children()[0]).attr("id");
+            if (document.getElementById(attrId).checked == false) {
+                var index = arrmsgtype.indexOf(attrId);
+                if (index > -1) {
+                    arrmsgtype.splice(index, 1);
+                }
+            } else {
+                arrmsgtype.push(attrId);
+            }
+        });
+    } catch (e) {
+
+    }
+    debugger;
+    try {
+        $("#div-user-profiles .cls-user-profile").each(function () {
+            debugger;
+            var attrId = $($($(this).children()[2]).children()[0]).attr("id");
+            if (document.getElementById(attrId).checked == false) {
+                var index = arrmsgtype.indexOf(attrId);
+                if (index > -1) {
+                    arrid.splice(index, 1);
+                }
+            } else {
+                arrid.push(attrId);
+            }
+        });
+    } catch (e) {
+
+    }
+
+    $.ajax({
+        type: "GET",
+        url: "../Messages/BindInboxMessage?load=filter&arrmsgtype=" + arrmsgtype + "&arrid=" + arrid,
+        datatype: "html",
+        success: function (msg) {
+            if (msg == "no_data") {
+                $("#ul-inbox-message").html("<div><center><h3>No Messages Found.</h3></center></div>");
+            }
+            else {
+                $("#ul-inbox-message").html(msg);
+            }
+        },
+        async: false
+    });
+}
+
+function bindInboxChatMessages() {
+    debugger;
+    $.ajax({
+        type: "GET",
+        url: "../Messages/BindUserProfileByGroupChat",
+        datatype: "html",
+        success: function (msg) {
+
+            $("#div-user-profiles").html(msg);
+        }
+    });
+     
+
+    $.ajax({
+        type: "GET",
+        url: "../Messages/BindInboxChatMessage?load=first",
+        datatype: "html",
+        success: function (msg) {
+            if (msg == "no_data") {
+                $("#ul-inbox-chat").html("<div><center><h3>No Messages Found.</h3></center></div>");
+            }
+            else {
+                $("#ul-inbox-chat").html(msg);
+            }
+        }
+    });
+
+}
+function filterinboxchatmessages(id)
+{
+    debugger;
+    arrid = new Array();
+    try {
+        $("#div-user-profiles .cls-user-profile").each(function () {
+            debugger;
+            var attrId = $($($(this).children()[2]).children()[0]).attr("id");
+            if (document.getElementById(attrId).checked == false) {
+                var index = arrmsgtype.indexOf(attrId);
+                if (index > -1) {
+                    arrid.splice(index, 1);
+                }
+            } else {
+                arrid.push(attrId);
+            }
+        });
+    } catch (e) {
+
+    }
+
+    $.ajax({
+        type: "GET",
+        url: "../Messages/BindInboxChatMessage?load=filter&&arrid=" + arrid,
+        datatype: "html",
+        success: function (msg) {
+            if (msg == "no_data") {
+                $("#ul-inbox-chat").html("<div><center><h3>No Messages Found.</h3></center></div>");
+            }
+            else {
+                $("#ul-inbox-chat").html(msg);
+            }
+        },
+        async: false
+    });
+}
+
+
+function MailPopUpMsg(msgid) {
+    debugger;
+    $.ajax({
+        type: 'POST',
+        url: '../Messages/ShowInboxMsgMailPopUp?MsgId=' + msgid,
+        dataType: "html",
+        success: function (data) {
+            $('#msgmailpopup').html(data);
+            $("#msgmailpopup").modal('show');
+        }
+    });
+}
+
+function opentask(msgdesc, msgdate) {
+    debugger;
+    var msgTxt = $('#' + msgdesc).text();
+    $('#savetask').attr('msgdesc', msgTxt);
+    $('#savetask').attr('msgdate', msgdate);
+}
+
+function opnchatmsg(SenderId, RecipientId) {
+
+    $.ajax({
+        type:"POST",
+        url: "../Messages/ShowChat?SenderId=" + SenderId + "&RecipientId=" + RecipientId,
+        dataType: "html",
+        success: function (msg) {
+            $("#chat-conversation").html(msg);
+        }
+
+    });
+
 }

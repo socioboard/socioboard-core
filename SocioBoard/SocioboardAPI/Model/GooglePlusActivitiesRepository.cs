@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using SocioBoard.Domain;
-using SocioBoard.Helper;
+using Domain.Socioboard.Domain;
+using Api.Socioboard.Helper;
 
-namespace SocioBoard.Model
+namespace Api.Socioboard.Services
 {
-    public class GooglePlusActivitiesRepository : IGooglePlusActivitiesRepository
+    public class GooglePlusActivitiesRepository 
     {
 
         /// <addgoogleplusActivity>
         /// Add a new googleplus Activity
         /// </summary>
         /// <param name="gpmsg">Set Values in a GooglePlusActivities Class Property and Pass the same Object of GooglePlusActivities Class.(Domain.GooglePlusActivities)</param>
-        public void addgoogleplusActivity(GooglePlusActivities gpmsg)
+        public void addgoogleplusActivity(Domain.Socioboard.Domain.GooglePlusActivities gpmsg)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -54,7 +54,7 @@ namespace SocioBoard.Model
         /// <param name="UserId">User id (Guid).</param>
         /// <param name="profileId">Profile id.(string)</param>
         /// <returns>List of Google plus activities. (List<Domain.GooglePlusActivities>)</returns>
-        public List<GooglePlusActivities> getAllgoogleplusActivityOfUser(Guid UserId, string profileId)
+        public List<Domain.Socioboard.Domain.GooglePlusActivities> getAllgoogleplusActivityOfUser(Guid UserId, string profileId)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -65,11 +65,11 @@ namespace SocioBoard.Model
                     try
                     {
                         //Proceed action, to get all google plus activities.
-                        List<GooglePlusActivities> alst = session.CreateQuery("from GooglePlusActivities where UserId = :userid and GpUserId = :profileId")
+                        List<Domain.Socioboard.Domain.GooglePlusActivities> alst = session.CreateQuery("from GooglePlusActivities where UserId = :userid and GpUserId = :profileId")
                         .SetParameter("userid", UserId)
                         .SetParameter("profileId", profileId)
-                        .List<GooglePlusActivities>()
-                        .ToList<GooglePlusActivities>();
+                        .List<Domain.Socioboard.Domain.GooglePlusActivities>()
+                        .ToList<Domain.Socioboard.Domain.GooglePlusActivities>();
 
 
 
@@ -95,7 +95,7 @@ namespace SocioBoard.Model
         }
 
 
-        public List<GooglePlusActivities> getAllgplusOfUser(string profileId)
+        public List<Domain.Socioboard.Domain.GooglePlusActivities> getAllgplusOfUser(string profileId)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -119,11 +119,11 @@ namespace SocioBoard.Model
                         str += ") ORDER BY EntryDate DESC";
 
                        // List<GooglePlusActivities> alst = session.CreateQuery("from GooglePlusActivities where UserId = :userid and GpUserId = :profileId")
-                        List<GooglePlusActivities> alst = session.CreateQuery(str)
+                        List<Domain.Socioboard.Domain.GooglePlusActivities> alst = session.CreateQuery(str)
                       //  .SetParameter("userid", UserId)
                        // .SetParameter("profileId", profileId)
-                        .List<GooglePlusActivities>()
-                        .ToList<GooglePlusActivities>();
+                        .List<Domain.Socioboard.Domain.GooglePlusActivities>()
+                        .ToList<Domain.Socioboard.Domain.GooglePlusActivities>();
 
 
 
@@ -154,7 +154,7 @@ namespace SocioBoard.Model
         /// </summary>
         /// <param name="profileId">Google plus profile id (String)</param>
         /// <returns>List of Google plus activities class objects. (List<Domain.GooglePlusActivities>)</returns>
-        public List<GooglePlusActivities> getAllgoogleplusActivityOfUser(string profileId)
+        public List<Domain.Socioboard.Domain.GooglePlusActivities> getAllgoogleplusActivityOfUser(string profileId)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -165,11 +165,11 @@ namespace SocioBoard.Model
                     try
                     {
                         //Proceed action, to get all active
-                        List<GooglePlusActivities> alst = session.CreateQuery("from GooglePlusActivities where  GpUserId = :profileId")
+                        List<Domain.Socioboard.Domain.GooglePlusActivities> alst = session.CreateQuery("from GooglePlusActivities where  GpUserId = :profileId")
 
                         .SetParameter("profileId", profileId)
-                        .List<GooglePlusActivities>()
-                        .ToList<GooglePlusActivities>();
+                        .List<Domain.Socioboard.Domain.GooglePlusActivities>()
+                        .ToList<Domain.Socioboard.Domain.GooglePlusActivities>();
 
 
 
@@ -302,7 +302,7 @@ namespace SocioBoard.Model
         /// <param name="userid">User id. (Guid)</param>
         /// <param name="profileid">Google plus profile id.(String)</param>
         /// <returns>List of google plus activities class (List<GooglePlusActivities>)</returns>
-        public List<GooglePlusActivities> getgoogleplusActivity(Guid userid, string profileid)
+        public List<Domain.Socioboard.Domain.GooglePlusActivities> getgoogleplusActivity(Guid userid, string profileid)
         {
             //Creates a database connection and opens up a session
             using (NHibernate.ISession session = SessionFactory.GetNewSession())
@@ -313,11 +313,11 @@ namespace SocioBoard.Model
                     try
                     {
                         //Proceed action to get all google plus activies by user id and Profile id.
-                        List<GooglePlusActivities> alst = session.CreateQuery("from GooglePlusActivities where UserId = :userid and GpUserId = :profileId")
+                        List<Domain.Socioboard.Domain.GooglePlusActivities> alst = session.CreateQuery("from GooglePlusActivities where UserId = :userid and GpUserId = :profileId order by PublishedDate desc")
                         .SetParameter("userid", userid)
                         .SetParameter("profileId", profileid)
-                        .List<GooglePlusActivities>()
-                        .ToList<GooglePlusActivities>();
+                        .List<Domain.Socioboard.Domain.GooglePlusActivities>()
+                        .ToList<Domain.Socioboard.Domain.GooglePlusActivities>();
 
                         #region oldcode
                         //List<GooglePlusActivities> alst = new List<GooglePlusActivities>();

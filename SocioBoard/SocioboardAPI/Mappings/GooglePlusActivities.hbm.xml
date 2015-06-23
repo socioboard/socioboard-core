@@ -49,5 +49,11 @@
     <property name="EntryDate">
       <column name="EntryDate"/>
     </property>
+    <property name="Attachment">
+      <column name="Attachment"  />
+    </property>
+    <property name="AttachmentType">
+      <column name="AttachmentType"  />
+    </property>
   </class>
 </hibernate-mapping>

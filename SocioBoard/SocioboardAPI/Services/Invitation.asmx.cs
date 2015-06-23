@@ -47,9 +47,12 @@ namespace Api.Socioboard.Services
             }
             mailbody = mailbody.Replace("[CODE]", _user.UserCode);
             mailbody = mailbody.Replace("[DomainName]", ConfigurationManager.AppSettings["DomainName"]);
-            string pass = ConfigurationManager.AppSettings["Mandrillpassword"];
-            GlobusMailLib.MailHelper objMailHelper = new GlobusMailLib.MailHelper();
-            ret = objMailHelper.SendInvitationMailByMandrill(SenderEmail, SenderName, FriendsEmail, pass, mailbody);
+            //string pass = ConfigurationManager.AppSettings["Mandrillpassword"];
+            //GlobusMailLib.MailHelper objMailHelper = new GlobusMailLib.MailHelper();
+            //ret = objMailHelper.SendInvitationMailByMandrill(SenderEmail, SenderName, FriendsEmail, pass, mailbody);
+            string subject = "Your friend " + SenderName + "has invited you to join " + ConfigurationManager.AppSettings["DefaultGroupName"];
+            MailSender apimailsender=new MailSender();
+            ret = apimailsender.SendChangePasswordMail(FriendsEmail, mailbody, subject);
             //Domain.Socioboard.Domain.Invitation objInvite = new Domain.Socioboard.Domain.Invitation();
             //Domain.Socioboard.Domain.User _user = userRepo.getUserInfoByEmail(SenderEmail);
             //objInvite.Id=Guid.NewGuid();

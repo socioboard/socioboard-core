@@ -1,0 +1,69 @@
+﻿@using System.Web.Script.Serialization;
+@{
+    List<Domain.Socioboard.Domain.TeamMemberProfile> allprofileofuser = (List<Domain.Socioboard.Domain.TeamMemberProfile>)Model;
+    Domain.Socioboard.Domain.User _User=(Domain.Socioboard.Domain.User)Session["User"];
+    }
+
+@foreach (var item in allprofileofuser)
+            {
+                try
+                {
+                    //Domain.Socioboard.Domain.TeamMemberProfile item = (Domain.Socioboard.Domain.TeamMemberProfile)(profile.Value);
+                    Socioboard.Api.FacebookAccount.FacebookAccount apiFacebookAccount=new Socioboard.Api.FacebookAccount.FacebookAccount();
+                    Domain.Socioboard.Domain.FacebookAccount _FacebookAccount= (Domain.Socioboard.Domain.FacebookAccount)new JavaScriptSerializer().Deserialize(apiFacebookAccount.GetAllFacebookAccountDetails(item.ProfileId,_User.Id.ToString()),typeof(Domain.Socioboard.Domain.FacebookAccount));
+                    if (item.ProfileType == "facebook_page" && !string.IsNullOrEmpty(_FacebookAccount.AccessToken))
+                    {
+                        <div class="row cls-user-profile">
+                                <div class="col-md-2">
+                                    <i class="fa fa-facebook" style="color: #4e69a2;"></i>
+                                </div>
+                                <div class="col-md-8">
+                                    <a href="#">@item.ProfileName </a>
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="checkbox" name="fb_@item.ProfileId" id="@item.ProfileId" class="css-checkbox" title="checked" onclick="filterinboxchatmessages(this.id)" checked/>
+                                    <label for="@item.ProfileId" class="css-label"></label>
+                                </div>
+                            </div>
+                    }
+                 
+                   
+                }
+                catch (Exception Err)
+                {
+                    Console.Write(Err.StackTrace);
+                }
+            }
+           
+@foreach (var item in allprofileofuser)
+            {
+                try
+                {
+                    //Domain.Socioboard.Domain.TeamMemberProfile item = (Domain.Socioboard.Domain.TeamMemberProfile)(profile.Value);
+                    if (item.ProfileType == "twitter")
+                    {
+                        <div class="row cls-user-profile">
+                                <div class="col-md-2">
+                                    <i class="fa fa-twitter" style="color: #4099FF;"></i>
+                                </div>
+                                <div class="col-md-8">
+                                    <a href="#">&#64;@item.ProfileName </a>
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="checkbox" name="twt_@item.ProfileId" id="@item.ProfileId" class="css-checkbox" title="checked" onclick="filterinboxchatmessages(this.id)" checked/>
+                                    <label for="@item.ProfileId" class="css-label"></label>
+                                </div>
+                            </div>
+                    }
+                 
+                   
+                }
+                catch (Exception Err)
+                {
+                    Console.Write(Err.StackTrace);
+                }
+            }
+
+
+                            
+                       

@@ -45,7 +45,7 @@
     <div class="modal-content">
         <div class="modal-header model_head">
             <button type="button" class="close" id="CloseLinkedInPopUp" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <h4 class="modal-title" id="myModalLabel">Email Message</h4>
+            <h4 class="modal-title" id="myModalLabel">Compose Message</h4>
         </div>
         <div class="modal-body col-md-12">
             <div class="col-md-12">
@@ -108,7 +108,7 @@
                 data: '',
                 success: function (msg) {
                     if (msg == "Success") {
-                        alertify.success('Mail has been send Successfully!!');
+                        alertify.success('Mail has been sent Successfully!!');
                     }
                     else {
                         alertify.error("failure");

@@ -43,15 +43,19 @@ namespace Api.Socioboard.Services
                     {
                         //Proceed action, to Check if FacebookUser is Exist in database or not by UserId and FbuserId.
                         // And Set the reuired paremeters to find the specific values.
-                        List<Domain.Socioboard.Domain.LinkedInFeed> alst = session.CreateQuery("from LinkedInFeed where UserId = :userid and ProfileId = :fbuserid")
-                        .SetParameter("userid", Userid)
-                        .SetParameter("fbuserid", ProfileId)
-                        .List<Domain.Socioboard.Domain.LinkedInFeed>()
-                       .ToList<Domain.Socioboard.Domain.LinkedInFeed>();
-                        if (alst.Count == 0 || alst == null)
-                            return false;
-                        else
-                            return true;
+                       // List<Domain.Socioboard.Domain.LinkedInFeed> alst = session.CreateQuery("from LinkedInFeed where UserId = :userid and ProfileId = :fbuserid")
+                       // .SetParameter("userid", Userid)
+                       // .SetParameter("fbuserid", ProfileId)
+                       // .List<Domain.Socioboard.Domain.LinkedInFeed>()
+                       //.ToList<Domain.Socioboard.Domain.LinkedInFeed>();
+                       // if (alst.Count == 0 || alst == null)
+                       //     return false;
+                       // else
+                       //     return true;
+
+                        bool exist = session.Query<Domain.Socioboard.Domain.LinkedInFeed>()
+                              .Any(x => x.ProfileId == ProfileId && x.UserId == Userid);
+                        return exist;
 
                     }
                     catch (Exception ex)

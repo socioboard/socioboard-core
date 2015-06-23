@@ -24,14 +24,6 @@ namespace Api.Socioboard.Services
     {
 
         [WebMethod]
-        public string HelloWorld()
-        {
-            return "Hello World";
-        }
-
-
-
-        [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetDropboxAccountDetailsByUserId(string UserId)
         {

@@ -692,21 +692,18 @@ namespace Api.Socioboard.Services
                     try
                     {
                         //proceed action, to get all messages by user id and profileid.
-                        List<Domain.Socioboard.Domain.ScheduledMessage> lstschmsg = session.CreateQuery("from ScheduledMessage where  ProfileType =:profiletype and Status = 0 order by ScheduleTime desc")
-                    .SetParameter("profiletype", profiletype)
-                     //.SetParameter("schtime", DateTime.Now)
-                    .List<Domain.Socioboard.Domain.ScheduledMessage>()
-                    .ToList<Domain.Socioboard.Domain.ScheduledMessage>();
+                        List<Domain.Socioboard.Domain.ScheduledMessage> lstschmsg = session.CreateQuery("from ScheduledMessage where  ScheduleTime <= :schtime and ProfileType =:profiletype and Status = 0 order by ScheduleTime desc")
+                       .SetParameter("profiletype", profiletype)
+                        .SetParameter("schtime", DateTime.Now)
+                       .List<Domain.Socioboard.Domain.ScheduledMessage>()
+                       .ToList<Domain.Socioboard.Domain.ScheduledMessage>();
 
 
-                       // List<Domain.Socioboard.Domain.ScheduledMessage> lstschmsg = session.CreateQuery("from ScheduledMessage where  ScheduleTime <= :schtime and ProfileType =:profiletype and Status = 0 order by ScheduleTime desc")
-                       //.SetParameter("profiletype", profiletype)
-                       // .SetParameter("schtime", DateTime.Now)
-                       //.List<Domain.Socioboard.Domain.ScheduledMessage>()
-                       //.ToList<Domain.Socioboard.Domain.ScheduledMessage>();
-
-
-                  
+                        //List<ScheduledMessage> lstschmsg = new List<ScheduledMessage>();
+                        //foreach (ScheduledMessage item in query.Enumerable())
+                        //{
+                        //    lstschmsg.Add(item);
+                        //}
                         return lstschmsg;
                     }
                     catch (Exception ex)

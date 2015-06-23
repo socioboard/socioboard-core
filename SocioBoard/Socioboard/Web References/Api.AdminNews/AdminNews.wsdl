@@ -340,16 +340,16 @@
   </wsdl:binding>
   <wsdl:service name="AdminNews">
     <wsdl:port name="AdminNewsSoap" binding="tns:AdminNewsSoap">
-      <soap:address location="http://localhost:6361/Services/AdminNews.asmx" />
+      <soap:address location="http://localhost:6361/services/AdminNews.asmx" />
     </wsdl:port>
     <wsdl:port name="AdminNewsSoap12" binding="tns:AdminNewsSoap12">
-      <soap12:address location="http://localhost:6361/Services/AdminNews.asmx" />
+      <soap12:address location="http://localhost:6361/services/AdminNews.asmx" />
     </wsdl:port>
     <wsdl:port name="AdminNewsHttpGet" binding="tns:AdminNewsHttpGet">
-      <http:address location="http://localhost:6361/Services/AdminNews.asmx" />
+      <http:address location="http://localhost:6361/services/AdminNews.asmx" />
     </wsdl:port>
     <wsdl:port name="AdminNewsHttpPost" binding="tns:AdminNewsHttpPost">
-      <http:address location="http://localhost:6361/Services/AdminNews.asmx" />
+      <http:address location="http://localhost:6361/services/AdminNews.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

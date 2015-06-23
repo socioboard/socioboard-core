@@ -554,14 +554,18 @@ namespace Api.Socioboard.Services
                     try
                     {
                         //Proceed action to Check Message is Exist or not.
-                        NHibernate.IQuery query = session.CreateQuery("from FacebookMessage where MessageId = :msgid");
-                        query.SetParameter("msgid", Id);
-                        var result = query.UniqueResult();
+                        //NHibernate.IQuery query = session.CreateQuery("from FacebookMessage where MessageId = :msgid");
+                        //query.SetParameter("msgid", Id);
+                        //var result = query.UniqueResult();
 
-                        if (result == null)
-                            return false;
-                        else
-                            return true;
+                        //if (result == null)
+                        //    return false;
+                        //else
+                        //    return true;
+
+                        bool exist = session.Query<Domain.Socioboard.Domain.FacebookMessage>()
+                        .Any(x => x.MessageId == Id);
+                        return exist;
 
                     }
                     catch (Exception ex)
@@ -824,18 +828,54 @@ namespace Api.Socioboard.Services
                 {
                     try
                     {
+                        List<Domain.Socioboard.Domain.FacebookMessage> lstFacebookMessage = new List<Domain.Socioboard.Domain.FacebookMessage>();
+
                         //Proceed action to get all Wallpost of User from FacebookMessage.
-                        List<Domain.Socioboard.Domain.FacebookMessage> lst = session.CreateQuery("from FacebookMessage where ProfileId = :profileId and UserId=:userid and Type='fb_home' order by MessageDate Desc")
+                        string query = "SELECT * from FacebookMessage use index (MessageDate_ProfileId_UserId) where UserId=:userid and ProfileId = :profileId and Type='fb_home' order by MessageDate Desc";
+                        IList lst = session.CreateSQLQuery(query)
                         .SetParameter("profileId", profileid)
                         .SetParameter("userid", UserId)
                         .SetFirstResult(count)
-                        .SetMaxResults(10)
-                        .List<Domain.Socioboard.Domain.FacebookMessage>()
-                        .ToList<Domain.Socioboard.Domain.FacebookMessage>();
+                        .SetMaxResults(10).List();
+
+                        foreach (var item in lst)
+                        {
+                            try
+                            {
+                                Domain.Socioboard.Domain.FacebookMessage fbmsg = new Domain.Socioboard.Domain.FacebookMessage();
+                                Array arr = new object[] { };
+                                arr = (Array)item;
+                                fbmsg.Id = (Guid)arr.GetValue(0);
+                                fbmsg.Message = (string)arr.GetValue(1);
+                                fbmsg.MessageDate = (DateTime)arr.GetValue(2);
+                                fbmsg.EntryDate = (DateTime)arr.GetValue(3);
+                                fbmsg.ProfileId = (string)arr.GetValue(4);
+                                fbmsg.FromId = (string)arr.GetValue(5);
+                                fbmsg.FromName = (string)arr.GetValue(6);
+                                fbmsg.FromProfileUrl = (string)arr.GetValue(7);
+                                fbmsg.FbComment = (string)arr.GetValue(8);
+                                fbmsg.FbLike = (string)arr.GetValue(9);
+                                fbmsg.MessageId = (string)arr.GetValue(10);
+                                fbmsg.Type = (string)arr.GetValue(11);
+                                fbmsg.UserId = (Guid)arr.GetValue(12);
+                                fbmsg.Picture = (string)arr.GetValue(13);
+                                fbmsg.IsArchived = (int)arr.GetValue(14);
+
+                                lstFacebookMessage.Add(fbmsg);
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.StackTrace);
+                            }
+                        }
+                        //.List<Domain.Socioboard.Domain.FacebookMessage>();
+                        //.ToList<Domain.Socioboard.Domain.FacebookMessage>();
+                        // List<Domain.Socioboard.Domain.FacebookMessage> lst = session.Query<Domain.Socioboard.Domain.FacebookMessage>().Where(x => x.UserId.Equals(UserId) && x.ProfileId.Equals(profileid) && x.Type.Equals("fb_home")).OrderByDescending(x => x.MessageDate).Take(10)//.CreateQuery("from FacebookFeed where  UserId = :UserId and FeedDescription like %' =:keyword '% ORDER BY FeedDate DESC")
+                        //     //.List<Domain.Socioboard.Domain.FacebookFeed>()
+                        //.ToList<Domain.Socioboard.Domain.FacebookMessage>();
 
 
-
-                        return lst;
+                        return lstFacebookMessage;
                     }
                     catch (Exception ex)
                     {
@@ -866,19 +906,19 @@ namespace Api.Socioboard.Services
                     {
                         //string str = "from FacebookMessage where Userid=:userid and MessageDate>=:AssinDate and Type=:msgtype  and ProfileId IN(";
                         string[] arrsrt = profileid.Split(',');
-                       // foreach (string sstr in arrsrt)
-                       // {
-                       //     str += Convert.ToInt64(sstr) + ",";
-                       // }
-                       // str = str.Substring(0, str.Length - 1);
-                       // str += ")";
+                        // foreach (string sstr in arrsrt)
+                        // {
+                        //     str += Convert.ToInt64(sstr) + ",";
+                        // }
+                        // str = str.Substring(0, str.Length - 1);
+                        // str += ")";
 
 
 
-                       // List<Domain.Socioboard.Domain.FacebookMessage> alst = session.CreateQuery(str).SetParameter("userid", userid).SetParameter("AssinDate", AssinDate).SetParameter("msgtype", msgtype)
-                       //.List<Domain.Socioboard.Domain.FacebookMessage>()
-                       //.ToList<Domain.Socioboard.Domain.FacebookMessage>();
-                       // return alst;
+                        // List<Domain.Socioboard.Domain.FacebookMessage> alst = session.CreateQuery(str).SetParameter("userid", userid).SetParameter("AssinDate", AssinDate).SetParameter("msgtype", msgtype)
+                        //.List<Domain.Socioboard.Domain.FacebookMessage>()
+                        //.ToList<Domain.Socioboard.Domain.FacebookMessage>();
+                        // return alst;
                         int alst = session.Query<Domain.Socioboard.Domain.FacebookMessage>().Where(x => x.UserId.Equals(userid) && arrsrt.Contains(x.ProfileId) && x.MessageDate.Date >= AssinDate.Date).Count();
                         return alst;
                     }
@@ -1221,7 +1261,7 @@ namespace Api.Socioboard.Services
                     try
                     {
 
-                        List<Domain.Socioboard.Domain.FacebookMessage> lstmsg = session.Query<Domain.Socioboard.Domain.FacebookMessage>().Where(u => u.UserId == UserId && u.ProfileId.Equals(profileid) && u.IsArchived!=1).OrderByDescending(x => x.MessageDate).Skip(Convert.ToInt32(noOfDataToSkip)).Take(15).ToList<Domain.Socioboard.Domain.FacebookMessage>();
+                        List<Domain.Socioboard.Domain.FacebookMessage> lstmsg = session.Query<Domain.Socioboard.Domain.FacebookMessage>().Where(u => u.UserId == UserId && u.ProfileId.Equals(profileid) && u.IsArchived != 1).OrderByDescending(x => x.MessageDate).Skip(Convert.ToInt32(noOfDataToSkip)).Take(15).ToList<Domain.Socioboard.Domain.FacebookMessage>();
 
                         //Proceed action, to Get all Message from FacebookMessage.
                         //List<Domain.Socioboard.Domain.FacebookMessage> alst = session.CreateQuery("from FacebookMessage where ProfileId = :profileId order by MessageDate DESC")
@@ -1264,7 +1304,7 @@ namespace Api.Socioboard.Services
                     try
                     {
                         string[] arrsrt = profileid.Split(',');
-                        List<Domain.Socioboard.Domain.FacebookMessage> lstmsg = session.Query<Domain.Socioboard.Domain.FacebookMessage>().Where(u => u.UserId == UserId && arrsrt.Contains(u.ProfileId)&& u.IsArchived!=1).OrderByDescending(x => x.MessageDate).Skip(Convert.ToInt32(noOfDataToSkip)).Take(15).ToList<Domain.Socioboard.Domain.FacebookMessage>();
+                        List<Domain.Socioboard.Domain.FacebookMessage> lstmsg = session.Query<Domain.Socioboard.Domain.FacebookMessage>().Where(u => u.UserId == UserId && arrsrt.Contains(u.ProfileId) && u.IsArchived != 1).OrderByDescending(x => x.MessageDate).Skip(Convert.ToInt32(noOfDataToSkip)).Take(15).ToList<Domain.Socioboard.Domain.FacebookMessage>();
 
                         // string str = "from FacebookMessage  where ProfileId IN(";
                         // string[] arrsrt = profileid.Split(',');

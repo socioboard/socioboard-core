@@ -1,0 +1,45 @@
+/*real*/
+.thum_img_size{
+    width: 100%;
+  height: 100%;
+}
+
+.list-group-item{
+overflow: hidden;
+  margin-bottom: 10px;
+  background: #F2F2F2;
+  border-radius: 4px;
+  border: 0;
+  padding: 1px 1px;
+}
+.list-group-item .avatar {
+    height: 50px;
+  width: 50px;
+  float: left;
+}
+.list-group-item .name {
+  margin: 0 0 5px 0;
+  font-size: 13px;
+  font-weight: 600;
+}
+.list-group-item p {
+  margin: 0;
+  line-height: 12px;
+}
+.list-group-item .date {
+  font-size: 11px;
+  color: #999;
+}
+
+.header_li {
+    display: table;
+    position: relative;
+    width: 100%;
+    height: 50%;
+    background: url(../../Contents/img/search_comp/Posting-Too-Much-on-Social-Media-Contractor.jpg) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    margin-top: 50px;
+}

@@ -672,16 +672,16 @@
   </wsdl:binding>
   <wsdl:service name="Invitation">
     <wsdl:port name="InvitationSoap" binding="tns:InvitationSoap">
-      <soap:address location="http://localhost:6361/Services/Invitation.asmx" />
+      <soap:address location="http://localhost:6361/services/Invitation.asmx" />
     </wsdl:port>
     <wsdl:port name="InvitationSoap12" binding="tns:InvitationSoap12">
-      <soap12:address location="http://localhost:6361/Services/Invitation.asmx" />
+      <soap12:address location="http://localhost:6361/services/Invitation.asmx" />
     </wsdl:port>
     <wsdl:port name="InvitationHttpGet" binding="tns:InvitationHttpGet">
-      <http:address location="http://localhost:6361/Services/Invitation.asmx" />
+      <http:address location="http://localhost:6361/services/Invitation.asmx" />
     </wsdl:port>
     <wsdl:port name="InvitationHttpPost" binding="tns:InvitationHttpPost">
-      <http:address location="http://localhost:6361/Services/Invitation.asmx" />
+      <http:address location="http://localhost:6361/services/Invitation.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

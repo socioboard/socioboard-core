@@ -5,6 +5,7 @@ using System.Web;
 using Api.Socioboard.Helper;
 using Domain.Socioboard.Domain;
 using NHibernate.Criterion;
+using NHibernate.Linq;
 
 namespace Api.Socioboard.Model
 {
@@ -195,14 +196,17 @@ namespace Api.Socioboard.Model
                     try
                     {
                         //Proceed action, to get details of news.
-                        NHibernate.IQuery query = session.CreateQuery("from News where NewsDetail =:newsdetail");
-                        query.SetParameter("newsdetail", newsdetail);
-                        var result = query.UniqueResult();
-                        if (result == null)
-                            return false;
-                        else
-                            return true;
+                        //NHibernate.IQuery query = session.CreateQuery("from News where NewsDetail =:newsdetail");
+                        //query.SetParameter("newsdetail", newsdetail);
+                        //var result = query.UniqueResult();
+                        //if (result == null)
+                        //    return false;
+                        //else
+                        //    return true;
 
+                        bool exist = session.Query<Domain.Socioboard.Domain.News>()
+                            .Any(x => x.NewsDetail == newsdetail);
+                        return exist;
                     }
                     catch (Exception ex)
                     {
@@ -232,13 +236,17 @@ namespace Api.Socioboard.Model
                     try
                     {
                         //Proceed action, to find news by id.
-                        NHibernate.IQuery query = session.CreateQuery("from News where Id =:newsid");
-                        query.SetParameter("newsid", newsid);
-                        var result = query.UniqueResult();
-                        if (result == null)
-                            return false;
-                        else
-                            return true;
+                        //NHibernate.IQuery query = session.CreateQuery("from News where Id =:newsid");
+                        //query.SetParameter("newsid", newsid);
+                        //var result = query.UniqueResult();
+                        //if (result == null)
+                        //    return false;
+                        //else
+                        //    return true;
+
+                        bool exist = session.Query<Domain.Socioboard.Domain.News>()
+                                     .Any(x => x.Id == newsid);
+                        return exist;
 
                     }
                     catch (Exception ex)

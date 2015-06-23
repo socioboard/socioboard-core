@@ -33,7 +33,6 @@ namespace Api.Socioboard.Services
         {
             try
             {
-               
                 Guid userid = Guid.Parse(UserId);
                 List<Domain.Socioboard.Domain.Drafts> LstDraft = objDraftsRepository.getAllDrafts(userid);
 

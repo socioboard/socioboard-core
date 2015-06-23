@@ -36,6 +36,18 @@ namespace Api.Socioboard.Services
             List<Domain.Socioboard.Domain.TwitterDirectMessages> lsttwtmsg = objTwitterDirectMessageRepository.getAllDirectMessagesById(Profileid);
             return new JavaScriptSerializer().Serialize(lsttwtmsg);
         }
+        [WebMethod]
+        public string GetDistinctTwitterDirectMessagesByProfilesAndUserId(string UserId, string Profiles)
+        {
+            List<Domain.Socioboard.Domain.TwitterDirectMessages> lstTDM = objTwitterDirectMessageRepository.GetDistinctTwitterDirectMessagesByProfilesAndUserId(Guid.Parse(UserId), Profiles);
+            return new JavaScriptSerializer().Serialize(lstTDM);
+        }
+        [WebMethod]
+        public string GetConversation(string UserId, string SenderId, string RecipientId)
+        {
+            List<Domain.Socioboard.Domain.TwitterDirectMessages> lstTDM = objTwitterDirectMessageRepository.GetConversation(Guid.Parse(UserId), SenderId, RecipientId);
+            return new JavaScriptSerializer().Serialize(lstTDM);
+        }
 
     }
 }

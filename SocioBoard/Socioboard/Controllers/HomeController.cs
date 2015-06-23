@@ -13,6 +13,8 @@ using System.IO;
 using Socioboard.App_Start;
 using log4net;
 using System.Data;
+using System.Web.UI.WebControls;
+using System.Web.UI;
 
 namespace Socioboard.Controllers
 {
@@ -61,66 +63,78 @@ namespace Socioboard.Controllers
         private ILog logger = LogManager.GetLogger(typeof(HomeController));
 
         [MyExpirePageActionFilter]
-        // [Authorize]
+        //[Authorize]
         [CustomAuthorize]
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult Index()
         {
-
-            if (Request.QueryString["teamid"] != null)
+            if (Session["User"] != null)
             {
-                string teamid = Request.QueryString["teamid"].ToString();
-                Api.Team.Team _apiteam = new Api.Team.Team();
-                _apiteam.UpdateTeambyteamid(teamid);
+                User objUser = (User)Session["User"];
+                if (TempData["IsTwitterAccountAdded"] != null && TempData["TwitterAccount"] != null)
+                {   
+                    //To enable the Tweet Pop up
+                    ViewBag.IsTwitterAccountAdded = TempData["IsTwitterAccountAdded"];
+                    ViewBag.TwitterAccount = TempData["TwitterAccount"];
+                }
+                if (TempData["IsFacebookAccountAdded"] != null && TempData["FacebookAccount"] != null)
+                {
+                    //To enable the Tweet Pop up
+                    ViewBag.IsFacebookAccountAdded = TempData["IsFacebookAccountAdded"];
+                    ViewBag.FacebookAccount = TempData["FacebookAccount"];
+                }
 
-            }
-            if (Session["Paid_User"] != null && Session["Paid_User"].ToString() == "Unpaid")
-            {
-                return RedirectToAction("Billing", "PersonalSetting");
-            }
+                if (Request.QueryString["teamid"] != null)
+                {
+                    string teamid = Request.QueryString["teamid"].ToString();
+                    Api.Team.Team _apiteam = new Api.Team.Team();
+                    _apiteam.Timeout = 300000;
+                    _apiteam.UpdateTeambyteamid(teamid);
 
+                }
+                if (Session["Paid_User"] != null && Session["Paid_User"].ToString() == "Unpaid")
+                {
+                    return RedirectToAction("Billing", "PersonalSetting");
+                }
+
+                else
+                {
+                    ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+                    #region Count Used Accounts
+                    try
+                    {
+                        objUser = (User)Session["User"];
+                        Api.SocialProfile.SocialProfile apiobjSocialProfile = new Api.SocialProfile.SocialProfile();
+                        apiobjSocialProfile.Timeout = 300000;
+                        //apiobjSocialProfile.GetAllSocialProfiles();
+
+                        Session["ProfileCount"] = Convert.ToInt16(apiobjSocialProfile.GetAllSocialProfilesOfUserCount(objUser.Id.ToString()).ToString());
+                        Session["TotalAccount"] = Convert.ToInt16(SBUtils.GetUserPackageProfileCount(objUser.AccountType));
+                        ViewBag.AccountType = objUser.AccountType;
+                       
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    #endregion
+                    if (Session["SocialManagerInfo"] != null)
+                    {
+
+                    }
+                    int ProfileCount = int.Parse(Session["ProfileCount"].ToString());
+                    if (objUser.ActivationStatus=="1")
+                    {
+                        return View(User);
+                    }
+                    else {
+                        return RedirectToAction("Index", "Index");
+                    }
+                }
+            }
             else
             {
-                ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-                #region Count Used Accounts
-                try
-                {
-                    User objUser = (User)Session["User"];
-                    Api.SocialProfile.SocialProfile apiobjSocialProfile = new Api.SocialProfile.SocialProfile();
-
-                    //apiobjSocialProfile.GetAllSocialProfiles();
-
-                    Session["ProfileCount"] = Convert.ToInt16(apiobjSocialProfile.GetAllSocialProfilesOfUserCount(objUser.Id.ToString()).ToString());
-                    Session["TotalAccount"] = Convert.ToInt16(SBUtils.GetUserPackageProfileCount(objUser.AccountType));
-                    ViewBag.AccountType = objUser.AccountType;
-                    //if (Session["GroupName"] == null)
-                    //{
-                    //    Groups objGroupDetails = objGroupRepository.getGroupDetail(user.Id);
-                    //    team = objTeamRepo.getAllDetails(objGroupDetails.Id, user.EmailId);
-                    //    Session["GroupName"] = team;
-                    //}
-
-                    //else
-                    //{
-                    //    team = (SocioBoard.Domain.Team)Session["GroupName"];
-                    //}    
-
-
-
-
-
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                #endregion
-                if (Session["SocialManagerInfo"] != null)
-                {
-
-                }
-                int ProfileCount = int.Parse(Session["ProfileCount"].ToString());
-                return View(User);
-                // return PartialView("_HomePartial");
+                return RedirectToAction("Index", "Index");
             }
         }
 
@@ -138,13 +152,15 @@ namespace Socioboard.Controllers
             return View();
         }
 
+
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult ProfileSnapshot(string op)
         {
             int CountProfileSnapshot = 0;
 
             try
             {
-                if (op==null)
+                if (op == null)
                 {
                     Session["CountProfileSnapshot"] = 0;
                 }
@@ -162,7 +178,7 @@ namespace Socioboard.Controllers
             {
                 Session["CountProfileSnapshot"] = 0;
             }
-           
+
 
             List<TeamMemberProfile> lstTeamMemberProfile = SBUtils.GetUserTeamMemberProfiles();
             Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, Dictionary<object, List<object>>> diclist = SBUtils.GetUserProfilesSnapsAccordingToGroup(lstTeamMemberProfile, CountProfileSnapshot);
@@ -175,16 +191,21 @@ namespace Socioboard.Controllers
             return PartialView("_HomeProfileSnapshotPartial", diclist);
         }
 
+
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult UserProfile()
         {
             // Thread.Sleep(3 * 1000);
             return PartialView("_HomeUserProfilePartial");
         }
 
+
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult LoadGroup()
         {
             User objUser = (User)Session["User"];
             Api.Groups.Groups objApiGroups = new Api.Groups.Groups();
+            objApiGroups.Timeout = 300000;
             JArray profile = JArray.Parse(objApiGroups.GetGroupDetailsByUserId(objUser.Id.ToString()));
 
             List<Groups> lstgroup = new List<Groups>();
@@ -202,6 +223,7 @@ namespace Socioboard.Controllers
 
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult ChangeGroup()
         {
             string groupid = Request.QueryString["groupid"].ToString();
@@ -210,6 +232,7 @@ namespace Socioboard.Controllers
             return Content("success");
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult loadprofiles()
         {
             User objUser = (User)Session["User"];
@@ -234,6 +257,7 @@ namespace Socioboard.Controllers
             // Edited By Antima[15/12/2014]
             string GroupId = Session["group"].ToString();
             Api.Team.Team objApiTeam = new Api.Team.Team();
+            objApiTeam.Timeout = 300000;
             Domain.Socioboard.Domain.Team team = (Domain.Socioboard.Domain.Team)new JavaScriptSerializer().Deserialize(objApiTeam.GetTeamByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Team));
             Guid AdminUserId = team.UserId;
             try
@@ -274,6 +298,12 @@ namespace Socioboard.Controllers
                     {
                         Api.LinkedinCompanyPage.LinkedinCompanyPage apiobjLinkedinCompanyPage = new Api.LinkedinCompanyPage.LinkedinCompanyPage();
                         apiobjLinkedinCompanyPage.DeleteLinkedinCompanyPage(objUser.Id.ToString(), profileid, Session["group"].ToString());
+                    }
+                    else if (type == "gplus")
+                    {
+                        Api.GooglePlusAccount.GooglePlusAccount objGooglePlusAccount = new Api.GooglePlusAccount.GooglePlusAccount();
+                        objGooglePlusAccount.DeleteGplusAccount(objUser.Id.ToString(), profileid, Session["group"].ToString());
+                        
                     }
                     return Content("Deleted");
                 }
@@ -406,14 +436,17 @@ namespace Socioboard.Controllers
             return Content("");
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult RecentProfiles()
         {
             User objUser = (User)Session["User"];
             Api.Twitter.Twitter ApiobjTwitter = new Api.Twitter.Twitter();
+            ApiobjTwitter.Timeout = 300000;
             List<Domain.Socioboard.Helper.TwitterRecentFollower> lstTwitterRecentFollower = (List<Domain.Socioboard.Helper.TwitterRecentFollower>)(new JavaScriptSerializer().Deserialize(ApiobjTwitter.TwitterRecentFollower(objUser.Id.ToString()), typeof(List<Domain.Socioboard.Helper.TwitterRecentFollower>)));
             return PartialView("_RecentFollowerPartial", lstTwitterRecentFollower);
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult DisplayCount()
         {
             string AllProfileId = string.Empty;
@@ -472,6 +505,7 @@ namespace Socioboard.Controllers
             try
             {
                 Api.FacebookFeed.FacebookFeed objFacebookFeed = new Api.FacebookFeed.FacebookFeed();
+                objFacebookFeed.Timeout = 300000;
                 //fbmsgcount = ((List<FacebookFeed>)(new JavaScriptSerializer().Deserialize(objFacebookFeed.getAllFeedDetail1(FbProfileId, objUser.Id.ToString()), typeof(List<FacebookFeed>)))).Count;
                 fbmsgcount = objFacebookFeed.GetFeedCountByProfileIdAndUserId(objUser.Id.ToString(), FbProfileId);
             }
@@ -482,6 +516,7 @@ namespace Socioboard.Controllers
             try
             {
                 Api.TwitterMessage.TwitterMessage objTwitterMessage = new Api.TwitterMessage.TwitterMessage();
+                objTwitterMessage.Timeout = 300000;
                 //twtmsgcount = ((List<TwitterMessage>)(new JavaScriptSerializer().Deserialize(objTwitterMessage.getAlltwtMessages1(TwtProfileId, objUser.Id.ToString()), typeof(List<TwitterMessage>)))).Count;
                 twtmsgcount = objTwitterMessage.GetFeedCountByProfileIdAndUserId(objUser.Id.ToString(), FbProfileId);
             }
@@ -492,6 +527,7 @@ namespace Socioboard.Controllers
             try
             {
                 Api.ScheduledMessage.ScheduledMessage objScheduledMessage = new Api.ScheduledMessage.ScheduledMessage();
+                objScheduledMessage.Timeout = 300000;
                 //allsentmsgcount = ((List<ScheduledMessage>)(new JavaScriptSerializer().Deserialize(objScheduledMessage.getAllSentMessageDetails(AllProfileId, objUser.Id.ToString()), typeof(List<ScheduledMessage>)))).Count;
                 allsentmsgcount = objScheduledMessage.GetSentMessageCountByProfileIdAndUserId(objUser.Id.ToString(), FbProfileId);
 
@@ -500,10 +536,42 @@ namespace Socioboard.Controllers
             {
                 Console.WriteLine(ex.StackTrace);
             }
-            string _totalIncomingMessage = (fbmsgcount + twtmsgcount).ToString();
-            string _totalSentMessage = allsentmsgcount.ToString();
-            string _totalTwitterFollowers = SBUtils.GetAllTwitterFollowersCountofUser(TwtProfileId, objUser.Id.ToString());
-            string _totalFacebookFan = SBUtils.GetAllFacebookFancountofUser(FbProfileId, objUser.Id.ToString());
+            string _totalIncomingMessage = "0";
+            string _totalSentMessage = "0";
+            string _totalTwitterFollowers = "0";
+            string _totalFacebookFan = "0";
+            try
+            {
+                _totalIncomingMessage = (fbmsgcount + twtmsgcount).ToString();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            try
+            {
+                _totalSentMessage = allsentmsgcount.ToString();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            try
+            {
+                _totalTwitterFollowers = SBUtils.GetAllTwitterFollowersCountofUser(TwtProfileId, objUser.Id.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            try
+            {
+                _totalFacebookFan = SBUtils.GetAllFacebookFancountofUser(FbProfileId, objUser.Id.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
 
             ViewBag._totalIncomingMessage = _totalIncomingMessage;
             ViewBag._totalSentMessage = _totalSentMessage;
@@ -513,6 +581,7 @@ namespace Socioboard.Controllers
         }
 
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult ContactSearchFacebook(string keyword)
         {
             List<Domain.Socioboard.Domain.DiscoverySearch> lstDiscoverySearch = new List<Domain.Socioboard.Domain.DiscoverySearch>();
@@ -532,6 +601,7 @@ namespace Socioboard.Controllers
         }
 
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult ContactSearchTwitter(string keyword)
         {
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
@@ -551,6 +621,7 @@ namespace Socioboard.Controllers
             return View();
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult AddFirstProfile()
         {
             int ProfileCount = int.Parse(Session["ProfileCount"].ToString());
@@ -566,6 +637,7 @@ namespace Socioboard.Controllers
 
         // Edited by Antima[20/12/2014]
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult Tickets()
         {
             try
@@ -588,6 +660,7 @@ namespace Socioboard.Controllers
             }
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult NotificationTickets()
         {
             try
@@ -614,6 +687,7 @@ namespace Socioboard.Controllers
             }
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult TicketTwitterReply()
         {
             try
@@ -633,6 +707,7 @@ namespace Socioboard.Controllers
             }
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult TicketFacebokReply()
         {
             try
@@ -675,5 +750,7 @@ namespace Socioboard.Controllers
         {
             return View();
         }
+
+
     }
 }

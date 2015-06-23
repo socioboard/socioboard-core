@@ -83,6 +83,14 @@ namespace Socioboard.Api.User {
         
         private System.Threading.SendOrPostCallback GetUserInfoByCodeOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetAllExpiredUserOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetAllUsersOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getUserInfoForSocialLoginOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RegisterbyTwitterOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -201,6 +209,18 @@ namespace Socioboard.Api.User {
         
         /// <remarks/>
         public event GetUserInfoByCodeCompletedEventHandler GetUserInfoByCodeCompleted;
+        
+        /// <remarks/>
+        public event GetAllExpiredUserCompletedEventHandler GetAllExpiredUserCompleted;
+        
+        /// <remarks/>
+        public event GetAllUsersCompletedEventHandler GetAllUsersCompleted;
+        
+        /// <remarks/>
+        public event getUserInfoForSocialLoginCompletedEventHandler getUserInfoForSocialLoginCompleted;
+        
+        /// <remarks/>
+        public event RegisterbyTwitterCompletedEventHandler RegisterbyTwitterCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Login", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -1044,6 +1064,130 @@ namespace Socioboard.Api.User {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllExpiredUser", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetAllExpiredUser() {
+            object[] results = this.Invoke("GetAllExpiredUser", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAllExpiredUserAsync() {
+            this.GetAllExpiredUserAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetAllExpiredUserAsync(object userState) {
+            if ((this.GetAllExpiredUserOperationCompleted == null)) {
+                this.GetAllExpiredUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllExpiredUserOperationCompleted);
+            }
+            this.InvokeAsync("GetAllExpiredUser", new object[0], this.GetAllExpiredUserOperationCompleted, userState);
+        }
+        
+        private void OnGetAllExpiredUserOperationCompleted(object arg) {
+            if ((this.GetAllExpiredUserCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAllExpiredUserCompleted(this, new GetAllExpiredUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllUsers", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetAllUsers() {
+            object[] results = this.Invoke("GetAllUsers", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAllUsersAsync() {
+            this.GetAllUsersAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetAllUsersAsync(object userState) {
+            if ((this.GetAllUsersOperationCompleted == null)) {
+                this.GetAllUsersOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllUsersOperationCompleted);
+            }
+            this.InvokeAsync("GetAllUsers", new object[0], this.GetAllUsersOperationCompleted, userState);
+        }
+        
+        private void OnGetAllUsersOperationCompleted(object arg) {
+            if ((this.GetAllUsersCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAllUsersCompleted(this, new GetAllUsersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getUserInfoForSocialLogin", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getUserInfoForSocialLogin(string logintype) {
+            object[] results = this.Invoke("getUserInfoForSocialLogin", new object[] {
+                        logintype});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getUserInfoForSocialLoginAsync(string logintype) {
+            this.getUserInfoForSocialLoginAsync(logintype, null);
+        }
+        
+        /// <remarks/>
+        public void getUserInfoForSocialLoginAsync(string logintype, object userState) {
+            if ((this.getUserInfoForSocialLoginOperationCompleted == null)) {
+                this.getUserInfoForSocialLoginOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetUserInfoForSocialLoginOperationCompleted);
+            }
+            this.InvokeAsync("getUserInfoForSocialLogin", new object[] {
+                        logintype}, this.getUserInfoForSocialLoginOperationCompleted, userState);
+        }
+        
+        private void OngetUserInfoForSocialLoginOperationCompleted(object arg) {
+            if ((this.getUserInfoForSocialLoginCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getUserInfoForSocialLoginCompleted(this, new getUserInfoForSocialLoginCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RegisterbyTwitter", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string RegisterbyTwitter(string EmailId, string Password, string AccountType, string Username, string SocioLogin, string PictureUrl, string ActivationStatus) {
+            object[] results = this.Invoke("RegisterbyTwitter", new object[] {
+                        EmailId,
+                        Password,
+                        AccountType,
+                        Username,
+                        SocioLogin,
+                        PictureUrl,
+                        ActivationStatus});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RegisterbyTwitterAsync(string EmailId, string Password, string AccountType, string Username, string SocioLogin, string PictureUrl, string ActivationStatus) {
+            this.RegisterbyTwitterAsync(EmailId, Password, AccountType, Username, SocioLogin, PictureUrl, ActivationStatus, null);
+        }
+        
+        /// <remarks/>
+        public void RegisterbyTwitterAsync(string EmailId, string Password, string AccountType, string Username, string SocioLogin, string PictureUrl, string ActivationStatus, object userState) {
+            if ((this.RegisterbyTwitterOperationCompleted == null)) {
+                this.RegisterbyTwitterOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRegisterbyTwitterOperationCompleted);
+            }
+            this.InvokeAsync("RegisterbyTwitter", new object[] {
+                        EmailId,
+                        Password,
+                        AccountType,
+                        Username,
+                        SocioLogin,
+                        PictureUrl,
+                        ActivationStatus}, this.RegisterbyTwitterOperationCompleted, userState);
+        }
+        
+        private void OnRegisterbyTwitterOperationCompleted(object arg) {
+            if ((this.RegisterbyTwitterCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RegisterbyTwitterCompleted(this, new RegisterbyTwitterCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -1729,6 +1873,110 @@ namespace Socioboard.Api.User {
         private object[] results;
         
         internal GetUserInfoByCodeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetAllExpiredUserCompletedEventHandler(object sender, GetAllExpiredUserCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAllExpiredUserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAllExpiredUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetAllUsersCompletedEventHandler(object sender, GetAllUsersCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAllUsersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAllUsersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void getUserInfoForSocialLoginCompletedEventHandler(object sender, getUserInfoForSocialLoginCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getUserInfoForSocialLoginCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getUserInfoForSocialLoginCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void RegisterbyTwitterCompletedEventHandler(object sender, RegisterbyTwitterCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RegisterbyTwitterCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RegisterbyTwitterCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

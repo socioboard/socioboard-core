@@ -170,6 +170,21 @@
       <s:element name="AddNewTaskWithGroupResponse">
         <s:complexType />
       </s:element>
+      <s:element name="AddNewTaskWithGroupForApps">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="messagedate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="assigntoId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comment" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="groupid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddNewTaskWithGroupForAppsResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="ChangeTaskStatus">
         <s:complexType>
           <s:sequence>
@@ -331,6 +346,12 @@
   <wsdl:message name="AddNewTaskWithGroupSoapOut">
     <wsdl:part name="parameters" element="tns:AddNewTaskWithGroupResponse" />
   </wsdl:message>
+  <wsdl:message name="AddNewTaskWithGroupForAppsSoapIn">
+    <wsdl:part name="parameters" element="tns:AddNewTaskWithGroupForApps" />
+  </wsdl:message>
+  <wsdl:message name="AddNewTaskWithGroupForAppsSoapOut">
+    <wsdl:part name="parameters" element="tns:AddNewTaskWithGroupForAppsResponse" />
+  </wsdl:message>
   <wsdl:message name="ChangeTaskStatusSoapIn">
     <wsdl:part name="parameters" element="tns:ChangeTaskStatus" />
   </wsdl:message>
@@ -420,6 +441,15 @@
   <wsdl:message name="getAllTasksCommentOfUserListHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="AddNewTaskWithGroupForAppsHttpGetIn">
+    <wsdl:part name="description" type="s:string" />
+    <wsdl:part name="messagedate" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="assigntoId" type="s:string" />
+    <wsdl:part name="comment" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddNewTaskWithGroupForAppsHttpGetOut" />
   <wsdl:message name="ChangeTaskStatusHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="TaskId" type="s:string" />
@@ -516,6 +546,15 @@
   <wsdl:message name="getAllTasksCommentOfUserListHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="AddNewTaskWithGroupForAppsHttpPostIn">
+    <wsdl:part name="description" type="s:string" />
+    <wsdl:part name="messagedate" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="assigntoId" type="s:string" />
+    <wsdl:part name="comment" type="s:string" />
+    <wsdl:part name="groupid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddNewTaskWithGroupForAppsHttpPostOut" />
   <wsdl:message name="ChangeTaskStatusHttpPostIn">
     <wsdl:part name="UserId" type="s:string" />
     <wsdl:part name="TaskId" type="s:string" />
@@ -600,6 +639,10 @@
       <wsdl:input message="tns:AddNewTaskWithGroupSoapIn" />
       <wsdl:output message="tns:AddNewTaskWithGroupSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="AddNewTaskWithGroupForApps">
+      <wsdl:input message="tns:AddNewTaskWithGroupForAppsSoapIn" />
+      <wsdl:output message="tns:AddNewTaskWithGroupForAppsSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="ChangeTaskStatus">
       <wsdl:input message="tns:ChangeTaskStatusSoapIn" />
       <wsdl:output message="tns:ChangeTaskStatusSoapOut" />
@@ -654,6 +697,10 @@
       <wsdl:input message="tns:getAllTasksCommentOfUserListHttpGetIn" />
       <wsdl:output message="tns:getAllTasksCommentOfUserListHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="AddNewTaskWithGroupForApps">
+      <wsdl:input message="tns:AddNewTaskWithGroupForAppsHttpGetIn" />
+      <wsdl:output message="tns:AddNewTaskWithGroupForAppsHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="ChangeTaskStatus">
       <wsdl:input message="tns:ChangeTaskStatusHttpGetIn" />
       <wsdl:output message="tns:ChangeTaskStatusHttpGetOut" />
@@ -707,6 +754,10 @@
     <wsdl:operation name="getAllTasksCommentOfUserList">
       <wsdl:input message="tns:getAllTasksCommentOfUserListHttpPostIn" />
       <wsdl:output message="tns:getAllTasksCommentOfUserListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNewTaskWithGroupForApps">
+      <wsdl:input message="tns:AddNewTaskWithGroupForAppsHttpPostIn" />
+      <wsdl:output message="tns:AddNewTaskWithGroupForAppsHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="ChangeTaskStatus">
       <wsdl:input message="tns:ChangeTaskStatusHttpPostIn" />
@@ -818,6 +869,15 @@
     </wsdl:operation>
     <wsdl:operation name="AddNewTaskWithGroup">
       <soap:operation soapAction="http://tempuri.org/AddNewTaskWithGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewTaskWithGroupForApps">
+      <soap:operation soapAction="http://tempuri.org/AddNewTaskWithGroupForApps" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -972,6 +1032,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddNewTaskWithGroupForApps">
+      <soap12:operation soapAction="http://tempuri.org/AddNewTaskWithGroupForApps" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ChangeTaskStatus">
       <soap12:operation soapAction="http://tempuri.org/ChangeTaskStatus" style="document" />
       <wsdl:input>
@@ -1089,6 +1158,13 @@
       <wsdl:output>
         <mime:mimeXml part="Body" />
       </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewTaskWithGroupForApps">
+      <http:operation location="/AddNewTaskWithGroupForApps" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
     </wsdl:operation>
     <wsdl:operation name="ChangeTaskStatus">
       <http:operation location="/ChangeTaskStatus" />
@@ -1208,6 +1284,13 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddNewTaskWithGroupForApps">
+      <http:operation location="/AddNewTaskWithGroupForApps" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
     <wsdl:operation name="ChangeTaskStatus">
       <http:operation location="/ChangeTaskStatus" />
       <wsdl:input>
@@ -1265,16 +1348,16 @@
   </wsdl:binding>
   <wsdl:service name="Tasks">
     <wsdl:port name="TasksSoap" binding="tns:TasksSoap">
-      <soap:address location="http://localhost:6361/Services/Tasks.asmx" />
+      <soap:address location="http://localhost:6361/services/Tasks.asmx" />
     </wsdl:port>
     <wsdl:port name="TasksSoap12" binding="tns:TasksSoap12">
-      <soap12:address location="http://localhost:6361/Services/Tasks.asmx" />
+      <soap12:address location="http://localhost:6361/services/Tasks.asmx" />
     </wsdl:port>
     <wsdl:port name="TasksHttpGet" binding="tns:TasksHttpGet">
-      <http:address location="http://localhost:6361/Services/Tasks.asmx" />
+      <http:address location="http://localhost:6361/services/Tasks.asmx" />
     </wsdl:port>
     <wsdl:port name="TasksHttpPost" binding="tns:TasksHttpPost">
-      <http:address location="http://localhost:6361/Services/Tasks.asmx" />
+      <http:address location="http://localhost:6361/services/Tasks.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

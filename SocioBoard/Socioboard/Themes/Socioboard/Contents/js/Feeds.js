@@ -367,7 +367,7 @@ function facebookdetails(id, li_id) {
         facebookwallposts = $.ajax({
             type: "POST",
             url: "../Feeds/wallposts?op=facebookwallposts&load=first&profileid=" + id,
-            data:{"localtime":local},
+            data: { "localtime": local },
             //contentType: "application/json; charset=utf-8",
             //dataType: "html",
             success: function (msg) {
@@ -460,7 +460,7 @@ function facebookdetails(id, li_id) {
 
             type: "POST",
             url: "../Feeds/AjaxFeeds?op=facebookfeeds&load=first&profileid=" + id,
-            data:{"localtime":local},
+            data: { "localtime": local },
             //contentType: "application/json; charset=utf-8",
             //dataType: "html",
             success: function (msg) {
@@ -505,7 +505,7 @@ function facebookdetails(id, li_id) {
         });
 
         try {
-           //FacebookUserFeeds(id);
+            //FacebookUserFeeds(id);
         } catch (e) {
 
         }
@@ -578,14 +578,9 @@ function facebookdetails(id, li_id) {
 function facebookwallscrolldata() {
     debugger;
     var local = getlocatdatetime();
-    //alert("facebookwallscrolldata");
+    $("#img-loader-feed-panel1").css("display", "block");
     try {
-        // $("#data_paneltab1").off('scroll', facebookwallscrolldata);
-
         var $container = $("#data_paneltab1");
-        //                    $("#data_paneltab1").lazyScrollLoading({
-        //                        onScrollToBottom: function (e, $lazyItems) {
-        //                            debugger;
         $.ajax({
             type: "POST",
             url: "../Feeds/wallposts?op=facebookwallposts&load=scroll",
@@ -594,12 +589,10 @@ function facebookwallscrolldata() {
             //dataType: "html",
             success: function (facemsg) {
                 debugger;
-                //$("#data_paneltab1").on('scroll', facebookwallscrolldata);
+                $("#img-loader-feed-panel1").css("display", "none");
                 $("#data_paneltab1").append(facemsg);
             }
         });
-        //                        }
-        //                    });
 
     } catch (e) {
 
@@ -611,6 +604,7 @@ function facebookwallscrolldata() {
 
 function facebookfeedscrolldata() {
     debugger;
+    $("#img-loader-feed-panel2").css("display", "block");
     var local = getlocatdatetime();
     try {
         var $container = $("#data_paneltab2");
@@ -622,6 +616,7 @@ function facebookfeedscrolldata() {
             //dataType: "html",
             success: function (facemsg) {
                 debugger;
+                $("#img-loader-feed-panel2").css("display", "none");
                 $("#data_paneltab2").append(facemsg);
             }
         });
@@ -731,7 +726,7 @@ function FacebookUserFeeds(id) {
 
 function twitterdetails(id, li_id) {
     $("#first-profile-load_Id_" + li_id).parent().parent().children().children().removeClass("active");
-    $("#first-profile-load_Id_" + li_id).addClass("active"); 
+    $("#first-profile-load_Id_" + li_id).addClass("active");
     var local = getlocatdatetime();
     try {
         loadfeedpartialpage = $.ajax({
@@ -932,6 +927,7 @@ function twitterdetails(id, li_id) {
 
 function Twitterscrolldata() {
     var local = getlocatdatetime();
+    $("#img-loader-feed-panel1").css("display", "block");
     debugger;
     try {
 
@@ -945,7 +941,7 @@ function Twitterscrolldata() {
             //dataType: "html",
             success: function (twtmsg) {
                 debugger;
-                //$("#data_paneltab1").on('scroll', facebookwallscrolldata);
+                $("#img-loader-feed-panel1").css("display", "none");
                 $("#data_paneltab1").append(twtmsg);
             }
         });
@@ -958,6 +954,7 @@ function Twitterscrolldata() {
 
 function Twitterfeedscrolldata() {
     debugger;
+    $("#img-loader-feed-panel2").css("display", "block");
     var local = getlocatdatetime();
     try {
 
@@ -971,7 +968,7 @@ function Twitterfeedscrolldata() {
             //dataType: "html",
             success: function (twtmsg) {
                 debugger;
-                //$("#data_paneltab1").on('scroll', facebookwallscrolldata);
+                $("#img-loader-feed-panel2").css("display", "none");
                 $("#data_paneltab2").append(twtmsg);
             }
         });
@@ -1249,6 +1246,7 @@ function linkedindetails(id, li_id) {
 
 function LinkedInscrolldata() {
     var local = getlocatdatetime();
+    $("#img-loader-feed-panel1").css("display", "block");
     debugger;
     try {
         var $container = $("#data_paneltab1");
@@ -1261,7 +1259,7 @@ function LinkedInscrolldata() {
             //dataType: "html",
             success: function (linkedinmsg) {
                 debugger;
-                //$("#data_paneltab1").on('scroll', facebookwallscrolldata);
+                $("#img-loader-feed-panel1").css("display", "none");
                 $("#data_paneltab1").append(linkedinmsg);
             }
         });
@@ -1273,6 +1271,7 @@ function LinkedInscrolldata() {
 }
 function LinkedInfeedscrolldata() {
     debugger;
+    $("#img-loader-feed-panel2").css("display", "block");
     var local = getlocatdatetime();
     try {
 
@@ -1286,7 +1285,7 @@ function LinkedInfeedscrolldata() {
             //dataType: "html",
             success: function (twtmsg) {
                 debugger;
-                //$("#data_paneltab1").on('scroll', facebookwallscrolldata);
+                $("#img-loader-feed-panel2").css("display", "none");
                 $("#data_paneltab2").append(twtmsg);
             }
         });
@@ -2091,7 +2090,7 @@ function refreshWallpostFacebook(id) {
 
                 //$("#data_paneltab1").on('scroll', facebookwallscrolldata);
                 //$("#data_paneltab1").scroll(throttled);
-                $("#data_paneltab1").scroll(facebookwallscrolldata);
+                //$("#data_paneltab1").scroll(facebookwallscrolldata);
             } catch (e) {
             }
             try {
@@ -2144,7 +2143,7 @@ function refreshFeedsFacebook(id) {
                 //$("#data_paneltab2").on('scroll', facebookwallscrolldata);
 
                 //$("#data_paneltab2").on('scroll', facebookfeedscrolldata);
-                $("#data_paneltab2").on('scroll', facebookfeed);
+                //$("#data_paneltab2").on('scroll', facebookfeed);
             } catch (e) {
             }
             try {
@@ -2944,6 +2943,7 @@ function PostBlogOnWordpress(siteid, wpuserid) {
 //modified by sumit gupta [13-02-2015]
 function refreshWallpostFacebook_FeedsSearch(keyword) {
     debugger;
+    var local = getlocatdatetime();
     var id = $('#refreshpanel2').attr('nwtid');
     try {
 
@@ -2954,8 +2954,8 @@ function refreshWallpostFacebook_FeedsSearch(keyword) {
     $.ajax({
         type: "POST",
         url: "../Feeds/wallposts_FeedsSearch?op=facebookwallposts&load=first&profileid=" + id + "&keyword=" + keyword,
-        data: '',
-        contentType: "application/json; charset=utf-8",
+        data: { "localtime": local },
+        //contentType: "application/json; charset=utf-8",
         dataType: "html",
         success: function (msg) {
 
@@ -3000,6 +3000,7 @@ function refreshWallpostFacebook_FeedsSearch(keyword) {
 
 function refreshFeedsFacebook_FeedsSearch(keyword) {
     debugger;
+    var local = getlocatdatetime();
     var id = $('#refreshpanel2').attr('nwtid');
     try {
         //$("#refreshpanel2").attr('src', '../Themes/Socioboard/Contents/img/891.png');
@@ -3009,8 +3010,8 @@ function refreshFeedsFacebook_FeedsSearch(keyword) {
     $.ajax({
         type: "POST",
         url: "../Feeds/AjaxFeeds_FeedsSearch?op=facebookfeeds&profileid=" + id + "&keyword=" + keyword,
-        data: '',
-        contentType: "application/json; charset=utf-8",
+        data: { "localtime": local },
+        //contentType: "application/json; charset=utf-8",
         dataType: "html",
         success: function (msg) {
 
@@ -3039,7 +3040,7 @@ function refreshFeedsFacebook_FeedsSearch(keyword) {
                 //$("#data_paneltab2").on('scroll', facebookwallscrolldata);
 
                 //$("#data_paneltab2").on('scroll', facebookfeedscrolldata);
-                $("#data_paneltab2").on('scroll', facebookfeed);
+                //$("#data_paneltab2").on('scroll', facebookfeed);
             } catch (e) {
             }
             try {
@@ -3054,6 +3055,7 @@ function refreshFeedsFacebook_FeedsSearch(keyword) {
 
 function FacebookUserFeeds_FeedsSearch(keyword) {
     debugger;
+    var local = getlocatdatetime();
     var id = $('#refreshpanel2').attr('nwtid');
     //alert("antima");
     $("#title_paneltab3").html("User Feeds");
@@ -3061,8 +3063,8 @@ function FacebookUserFeeds_FeedsSearch(keyword) {
     $.ajax({
         type: "GET",
         url: "/Feeds/FacebookUserFeeds_FeedsSearch",
-        data: { "profileid": id, "keyword": keyword },
-        contentType: "application/json; charset=utf-8",
+        data: { "profileid": id, "keyword": keyword, "localtime": local },
+        //contentType: "application/json; charset=utf-8",
         dataType: "html",
         beforeSend: function () {
             console.log("test");
@@ -3087,14 +3089,15 @@ function FacebookUserFeeds_FeedsSearch(keyword) {
 function TwitterUserTweet_FeedsSearch(keyword) {
     try {
         debugger;
+        var local = getlocatdatetime();
         var id = $('#refreshpanel2').attr('nwtid');
         $("#title_paneltab3").html("User Tweet");
 
         $.ajax({
             type: "POST",
             url: "/Feeds/TwitterUserTweet_FeedsSearch?profileid=" + id + "&keyword=" + keyword,
-            data: '',
-            contentType: "application/json; charset=utf-8",
+            data: { "localtime": local },
+            //contentType: "application/json; charset=utf-8",
             dataType: "html",
             success: function (msg) {
                 try {
@@ -3111,12 +3114,13 @@ function TwitterUserTweet_FeedsSearch(keyword) {
 }
 
 function TwitterFeeds_FeedsSearch(keyword) {
+    var local = getlocatdatetime();
     var id = $('#refreshpanel2').attr('nwtid');
     twitterfeeds = $.ajax({
         type: "POST",
         url: "../Feeds/TwitterFeeds_FeedsSearch?&load=first&profileid=" + id + "&keyword=" + keyword,
-        data: '',
-        contentType: "application/json; charset=utf-8",
+        data: { "localtime": local },
+        //contentType: "application/json; charset=utf-8",
         dataType: "html",
         success: function (msg) {
             try {
@@ -3143,11 +3147,12 @@ function TwitterFeeds_FeedsSearch(keyword) {
 }
 
 function TwitterNetworkDetails_FeedsSearch(keyword) {
+    var local = getlocatdatetime();
     var id = $('#refreshpanel2').attr('nwtid');
     $.ajax({
         type: "POST",
         url: "../Feeds/TwitterNetworkDetails_FeedsSearch?&load=first&profileid=" + id + "&keyword=" + keyword,
-        data: '',
+        data: { "localtime": local },
         contentType: "application/json; charset=utf-8",
         dataType: "html",
         success: function (msg) {
@@ -3179,7 +3184,9 @@ function FacebookLoadNewNewsFeeds() {
     var local = getlocatdatetime();
     var id = $('#refreshpanel2').attr('nwtid');
     try {
-
+if(id==undefined || id==null){
+	return;
+}
         //$("#refreshpanel1").attr('src', '../Themes/Socioboard/Contents/img/891.png');
     } catch (e) {
 
@@ -3236,12 +3243,12 @@ function FacebookLoadNewNewsFeeds() {
             }
 
         },
-        error: function(failmsg){
+        error: function (failmsg) {
             //does function of thread.sleep
             setTimeout(function () {
                 FacebookLoadNewNewsFeeds();
             }, 120000);
-    }
+        }
     });
 }
 
@@ -3250,7 +3257,9 @@ function FacebookLoadNewUserHome() {
     var local = getlocatdatetime();
     var id = $('#refreshpanel1').attr('nwtid');
     try {
-
+if(id==undefined || id==null){
+	return;
+}
         //$("#refreshpanel1").attr('src', '../Themes/Socioboard/Contents/img/891.png');
     } catch (e) {
 
@@ -3285,10 +3294,11 @@ function FacebookLoadNewUserHome() {
 
                 if (msg.indexOf("img-circle profilePic") != -1) {
                     //$("#data_paneltab1").html(msg);
+                    $('#data_paneltab1 img').remove('.clsImageLoader');
                     var existingHtml = $("#data_paneltab1").html();
                     $("#data_paneltab1").html('');
                     $("#data_paneltab1").html(msg + existingHtml);
-
+                    $('#data_paneltab1').append('<img class="clsImageLoader" src="/Themes/Socioboard/Contents/img/loader.gif" />');
 
                 }
 
@@ -3307,7 +3317,7 @@ function FacebookLoadNewUserHome() {
             }
 
         },
-        error: function(failmsg){
+        error: function (failmsg) {
             //does function of thread.sleep
             //does function of thread.sleep
             setTimeout(function () {
@@ -3380,12 +3390,12 @@ function FacebookLoadNewUserFeeds() {
             }
 
         },
-        error: function(failmsg){
+        error: function (failmsg) {
             //does function of thread.sleep
             setTimeout(function () {
                 FacebookLoadNewUserFeeds();
             }, 60000);
-    }
+        }
     });
 }
 

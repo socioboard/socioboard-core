@@ -39,7 +39,7 @@ namespace Socioboard.Api.Admin {
         
         /// <remarks/>
         public Admin() {
-            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_Admin1_Admin;
+            this.Url = global::Socioboard.Properties.Settings.Default.Socioboard_Api_Admin_Admin;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

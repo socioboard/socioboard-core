@@ -52,7 +52,7 @@
   {
       try
       {
-          string imageurl = "";
+	  string imageurl="";
           string icon = "";
           string onClick = "";
           string network = "";
@@ -68,14 +68,12 @@
               onClick = "getFacebookProfiles";
               network = "facebook";
           }
-          if (!string.IsNullOrEmpty(row["FromProfileUrl"].ToString()))
-          {
-              imageurl = row["FromProfileUrl"].ToString();
-          }
-          else
-          {
-              imageurl = "../Themes/Socioboard/Contents/img/anonymousUser.jpg";
-          }                           
+              if(!string.IsNullOrEmpty(row["FromProfileUrl"].ToString()))
+               {
+                    imageurl=row["FromProfileUrl"].ToString();
+               }else{
+                    imageurl="../Themes/Socioboard/Contents/img/anonymousUser.jpg";
+               }                             
     <div class="panel panel-primary" id="messagetaskable_@sorteddatacount">
         <div class="panel-heading">
             <div class="row" style="width:750px;">
@@ -130,10 +128,10 @@
     </div>
           sorteddatacount++;
       }
-      catch (Exception ex)
+      catch (Exception)
       {
-          Console.WriteLine(ex.Message);
-          Console.WriteLine(ex.StackTrace);
+
+          throw;
       }
 
 

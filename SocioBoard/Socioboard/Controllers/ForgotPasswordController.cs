@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using Socioboard.Helper;
+using System.Configuration;
 
 namespace Socioboard.Controllers
 {
@@ -54,7 +55,7 @@ namespace Socioboard.Controllers
                 objuser.ChangePasswordKey = strRandomUnique;
 
                 var mailBody = Helper.SBUtils.RenderViewToString(this.ControllerContext, "_ForgotPasswordMailBodyPartial", objuser);
-                string Subject = "You requested a password reset for your Socioboard Account";//"Forget password Socioboard Account";
+                string Subject = "You requested a password reset for your " + ConfigurationManager.AppSettings["DefaultGroupName"].ToString() + " Account";//"Forget password Socioboard Account";
 
                 mailsender = ApiobjMailSender.SendChangePasswordMail(emailId, mailBody, Subject);
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Socioboard.Domain;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -8,13 +9,17 @@ using System.Web.Script.Serialization;
 
 namespace Socioboard.Controllers
 {
-    public class BusinessSettingController : Controller
+    public class BusinessSettingController : BaseController
     {
         //
         // GET: /BusinessSetting/
 
         public ActionResult Index()
         {
+            if (Session["User"] != null)
+            {
+                
+            
 
             Guid GroupId = Guid.Parse(Session["group"].ToString());
             Socioboard.Api.Groups.Groups ApiobjGroup = new Socioboard.Api.Groups.Groups();
@@ -27,6 +32,11 @@ namespace Socioboard.Controllers
             }
             else{
                 return View();
+            }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Index");
             }
         }
 

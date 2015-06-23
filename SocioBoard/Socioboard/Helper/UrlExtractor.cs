@@ -44,28 +44,35 @@ namespace Socioboard.Helper
                  {
                      foreach (Match item in mss)
                      {
-                         aslt.Add(item.Value.ToString());
-                         string[] stringseprators = new string[] { item.Value };
+                         try
+                         {
+                             aslt.Add(item.Value.ToString());
+                             string[] stringseprators = new string[] { item.Value };
 
-                         if (i == 0)
-                         {
-                             string[] sstr = text.Split(stringseprators, StringSplitOptions.None);
-                             st[0] = sstr[0];
-                             st[i + 1] = item.Value;
-                             fortesting = sstr[1];
-                         }
-                         else
-                         {
-                             if (string.IsNullOrEmpty(st[i]))
+                             if (i == 0)
                              {
-                                 string[] ssstr = fortesting.Split(stringseprators, StringSplitOptions.None);
-                                 st[i] = ssstr[0];
+                                 string[] sstr = text.Split(stringseprators, StringSplitOptions.None);
+                                 st[0] = sstr[0];
                                  st[i + 1] = item.Value;
-                                 fortesting = ssstr[1];
+                                 fortesting = sstr[1];
                              }
-                         }
+                             else
+                             {
+                                 if (string.IsNullOrEmpty(st[i]))
+                                 {
+                                     string[] ssstr = fortesting.Split(stringseprators, StringSplitOptions.None);
+                                     st[i] = ssstr[0];
+                                     st[i + 1] = item.Value;
+                                     fortesting = ssstr[1];
+                                 }
+                             }
 
-                         i = i + 2;
+                             i = i + 2;
+                         }
+                         catch (Exception ex)
+                         {
+                             Console.Write(ex.Message);
+                         }
                      }
                      st[i] = fortesting;
                  }

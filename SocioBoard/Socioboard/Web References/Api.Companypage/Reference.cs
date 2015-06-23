@@ -29,8 +29,6 @@ namespace Socioboard.Api.Companypage {
     [System.Web.Services.WebServiceBindingAttribute(Name="CompanypageSoap", Namespace="http://tempuri.org/")]
     public partial class Companypage : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
-        private System.Threading.SendOrPostCallback getfacebookActiveAceessTokenFromDbOperationCompleted;
-        
         private System.Threading.SendOrPostCallback SearchFacebookPageOperationCompleted;
         
         private System.Threading.SendOrPostCallback getFacebookkPageListOperationCompleted;
@@ -120,9 +118,6 @@ namespace Socioboard.Api.Companypage {
         }
         
         /// <remarks/>
-        public event getfacebookActiveAceessTokenFromDbCompletedEventHandler getfacebookActiveAceessTokenFromDbCompleted;
-        
-        /// <remarks/>
         public event SearchFacebookPageCompletedEventHandler SearchFacebookPageCompleted;
         
         /// <remarks/>
@@ -196,33 +191,6 @@ namespace Socioboard.Api.Companypage {
         
         /// <remarks/>
         public event GooglePlusgetUserRecentActivitiesCompletedEventHandler GooglePlusgetUserRecentActivitiesCompleted;
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getfacebookActiveAceessTokenFromDb", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string getfacebookActiveAceessTokenFromDb() {
-            object[] results = this.Invoke("getfacebookActiveAceessTokenFromDb", new object[0]);
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void getfacebookActiveAceessTokenFromDbAsync() {
-            this.getfacebookActiveAceessTokenFromDbAsync(null);
-        }
-        
-        /// <remarks/>
-        public void getfacebookActiveAceessTokenFromDbAsync(object userState) {
-            if ((this.getfacebookActiveAceessTokenFromDbOperationCompleted == null)) {
-                this.getfacebookActiveAceessTokenFromDbOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetfacebookActiveAceessTokenFromDbOperationCompleted);
-            }
-            this.InvokeAsync("getfacebookActiveAceessTokenFromDb", new object[0], this.getfacebookActiveAceessTokenFromDbOperationCompleted, userState);
-        }
-        
-        private void OngetfacebookActiveAceessTokenFromDbOperationCompleted(object arg) {
-            if ((this.getfacebookActiveAceessTokenFromDbCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.getfacebookActiveAceessTokenFromDbCompleted(this, new getfacebookActiveAceessTokenFromDbCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SearchFacebookPage", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -431,24 +399,26 @@ namespace Socioboard.Api.Companypage {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/TwitterUserTimeLine", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string TwitterUserTimeLine(string ScreenName) {
+        public string TwitterUserTimeLine(string ScreenName, string LastTweetId) {
             object[] results = this.Invoke("TwitterUserTimeLine", new object[] {
-                        ScreenName});
+                        ScreenName,
+                        LastTweetId});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void TwitterUserTimeLineAsync(string ScreenName) {
-            this.TwitterUserTimeLineAsync(ScreenName, null);
+        public void TwitterUserTimeLineAsync(string ScreenName, string LastTweetId) {
+            this.TwitterUserTimeLineAsync(ScreenName, LastTweetId, null);
         }
         
         /// <remarks/>
-        public void TwitterUserTimeLineAsync(string ScreenName, object userState) {
+        public void TwitterUserTimeLineAsync(string ScreenName, string LastTweetId, object userState) {
             if ((this.TwitterUserTimeLineOperationCompleted == null)) {
                 this.TwitterUserTimeLineOperationCompleted = new System.Threading.SendOrPostCallback(this.OnTwitterUserTimeLineOperationCompleted);
             }
             this.InvokeAsync("TwitterUserTimeLine", new object[] {
-                        ScreenName}, this.TwitterUserTimeLineOperationCompleted, userState);
+                        ScreenName,
+                        LastTweetId}, this.TwitterUserTimeLineOperationCompleted, userState);
         }
         
         private void OnTwitterUserTimeLineOperationCompleted(object arg) {
@@ -969,32 +939,6 @@ namespace Socioboard.Api.Companypage {
                 return true;
             }
             return false;
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void getfacebookActiveAceessTokenFromDbCompletedEventHandler(object sender, getfacebookActiveAceessTokenFromDbCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class getfacebookActiveAceessTokenFromDbCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal getfacebookActiveAceessTokenFromDbCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
         }
     }
     

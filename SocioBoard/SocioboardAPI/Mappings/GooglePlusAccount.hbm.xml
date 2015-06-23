@@ -28,9 +28,12 @@
     </property>
     <property name="EmailId">
       <column name="EmailId"  />
-    </property>   
-    <property name="PeopleCount">
-      <column name="PeopleCount" />
+    </property>
+    <property name="InYourCircles">
+      <column name="InYourCircles" />
+    </property>
+    <property name="HaveYouInCircles">
+      <column name="HaveYouInCircles" />
     </property>
     <property name="IsActive">
       <column name="IsActive"  />

@@ -57,7 +57,7 @@
                                     <div class="col-md-10 pull-left">
                                        <div class="spacetop">
                                             <a href="#">@item_value.FromName </a>
-                                            <span class="mar_img">@item_value.Comment</span>
+                                            <span class="mar_img">@HttpUtility.UrlDecode(item_value.Comment)</span>
                                                  <span class="mar_img">@Socioboard.Helper.DateExtension.ToDateTime(DateTime.Now, (long)Convert.ToDouble(item_value.CommentDate))</span>
                                           
                                        </div>

@@ -22,6 +22,9 @@ namespace Api.Socioboard.Services
     public class GooglePlusAccount : System.Web.Services.WebService
     {
         GooglePlusAccountRepository ObjGooglePlusAccountsRepo = new GooglePlusAccountRepository();
+        TeamRepository objTeamRepository = new TeamRepository();
+        TeamMemberProfileRepository objTeamMemberProfileRepository = new TeamMemberProfileRepository();
+        SocialProfilesRepository objSocialProfilesRepository = new SocialProfilesRepository();
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -71,5 +74,52 @@ namespace Api.Socioboard.Services
                 return new JavaScriptSerializer().Serialize("Something went Wrong");
             }
         }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllBloggerAccountByUserIdAndGroupId(string userid, string groupid)
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.GooglePlusAccount> lstGooglePlusAccount = new List<Domain.Socioboard.Domain.GooglePlusAccount>();
+                Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(groupid));
+                List<Domain.Socioboard.Domain.TeamMemberProfile> lstTeamMemberProfile = objTeamMemberProfileRepository.GetTeamMemberProfileByTeamIdAndProfileType(objTeam.Id, "gplus");
+                foreach (var item in lstTeamMemberProfile)
+                {
+                    try
+                    {
+                        lstGooglePlusAccount.Add(ObjGooglePlusAccountsRepo.getGooglePlusAccountDetailsById(item.ProfileId,Guid.Parse(userid)));
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+                return new JavaScriptSerializer().Serialize(lstGooglePlusAccount);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public void DeleteGplusAccount(string UserId, string ProfileId, string GroupId)
+        {
+            try
+            {
+                ObjGooglePlusAccountsRepo.deleteGooglePlusUser(ProfileId, Guid.Parse(UserId));
+                Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
+                objTeamMemberProfileRepository.DeleteTeamMemberProfileByTeamIdProfileId(ProfileId, objTeam.Id);
+                objSocialProfilesRepository.deleteProfile(Guid.Parse(UserId), ProfileId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("DeleteGplusAccount => " + ex.Message);
+            }
+        }
+
     }
 }

@@ -10,6 +10,7 @@ using Socioboard.App_Start;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Web.Script.Serialization;
+using System.Globalization;
 
 namespace Socioboard.Controllers
 {
@@ -93,8 +94,8 @@ namespace Socioboard.Controllers
             if (newpass.Equals(confirmpass))
             {
                 //Modified by Sumit Gupta [31-01-15]
-                ret = ApiobjUser.ChangePassword(id, oldpass, newpass);
-                //ret = ApiobjUser.ChangePasswordWithoutOldPassword(id, "", newpass);
+                //ret = ApiobjUser.ChangePassword(id, oldpass, newpass);
+                ret = ApiobjUser.ChangePasswordWithoutOldPassword(id, "", newpass);
             }
             else
             {
@@ -329,6 +330,7 @@ namespace Socioboard.Controllers
             string pay = string.Empty;
             Api.User.User ApiobjUser = new Api.User.User();
             User objUser = (User)Session["User"];
+            objUser = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUsersById(objUser.Id.ToString()), typeof(User)));
             Helper.Payment payme = new Payment();
             string amount = price.Replace("$", "").Trim();
             Session["PaymentAmount"] = amount;
@@ -337,6 +339,7 @@ namespace Socioboard.Controllers
             {
                 amount = "0";
                 pay = "success";
+
                 if (DateTime.Compare(objUser.ExpiryDate, DateTime.Now) > 0)
                 {
                     objUser.ExpiryDate = objUser.ExpiryDate.AddDays(30);
@@ -347,18 +350,17 @@ namespace Socioboard.Controllers
                 }
                 int i = ApiobjUser.UpdateUserAccountInfoByUserId(objUser.Id.ToString(), "Free", objUser.ExpiryDate, objUser.PaymentStatus);
                 Session["Paid_User"] = "Paid";
-            
             }
             string UserName = objUser.UserName;
             string EmailId = objUser.EmailId;
 
             string ewallet = objUser.Ewallet;
             Session["Ewallet"] = ewallet;
-            if (float.Parse(ewallet) > 0 && amount!="0")
+            if (decimal.Parse(ewallet) > 0 && amount != "0")
             {
-                if (float.Parse(ewallet) >= float.Parse(amount))
+                if (decimal.Parse(ewallet, CultureInfo.InvariantCulture.NumberFormat) >= decimal.Parse(amount, CultureInfo.InvariantCulture.NumberFormat))
                 {
-                    ewallet = (float.Parse(ewallet) - float.Parse(amount)).ToString();
+                    ewallet = (decimal.Parse(ewallet, CultureInfo.InvariantCulture.NumberFormat) - decimal.Parse(amount, CultureInfo.InvariantCulture.NumberFormat)).ToString(CultureInfo.InvariantCulture.NumberFormat);
                     Session["Ewallet"] = ewallet;
                     //int ret = ApiobjUser.UpdatePaymentandEwalletStatusByUserId(objUser.Id.ToString(), ewallet, plan, "paid");
                     UpgradeAccountSuccessful();
@@ -368,7 +370,8 @@ namespace Socioboard.Controllers
                 }
                 else
                 {
-                    amount = (float.Parse(amount) - float.Parse(ewallet)).ToString();
+                    decimal _amount = (decimal.Parse(amount, CultureInfo.InvariantCulture.NumberFormat) - decimal.Parse(ewallet, CultureInfo.InvariantCulture.NumberFormat));
+                    amount = _amount.ToString(CultureInfo.InvariantCulture.NumberFormat);
                     Session["Ewallet"] = "0";
                 }
             }
@@ -415,8 +418,8 @@ namespace Socioboard.Controllers
                 if (_Invitation != null)
                 {
                     User newUser = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUsersById(_Invitation.SenderUserId.ToString()), typeof(User)));
-                    float bonus = (float.Parse(paidamount) * Payment.ReferedAmountDetails(accountType)) / 100;
-                    newUser.Ewallet = (float.Parse(newUser.Ewallet) + bonus).ToString();
+                    decimal bonus = (decimal.Parse(paidamount, CultureInfo.InvariantCulture.NumberFormat) * Payment.ReferedAmountDetails(accountType)) / 100;
+                    newUser.Ewallet = (decimal.Parse(newUser.Ewallet, CultureInfo.InvariantCulture.NumberFormat) + bonus).ToString();
                     int ret1 = ApiobjUser.UpdatePaymentandEwalletStatusByUserId(newUser.Id.ToString(), newUser.Ewallet, newUser.AccountType, newUser.PaymentStatus);
                     Api.Affiliates.Affiliates ApiAffiliates = new Api.Affiliates.Affiliates();
                     ApiAffiliates.AddAffiliateDetail(newUser.Id.ToString(), objUser.Id.ToString(), DateTime.Now, bonus.ToString());

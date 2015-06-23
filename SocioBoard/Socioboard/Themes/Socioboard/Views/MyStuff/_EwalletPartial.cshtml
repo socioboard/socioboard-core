@@ -1,54 +1,59 @@
 ﻿@using Domain.Socioboard.Domain;
+@using Socioboard.Helper;
 @{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
     User objuser = (User)Model;
     string ProfileUrl = string.Empty;
-    }
+}
 @if (!string.IsNullOrEmpty(objuser.ProfileUrl))
 {
     try
     {
         string[] profileUrl = objuser.ProfileUrl.Split(new string[] { "Socioboard" }, StringSplitOptions.None);
-        string imgurl = "/Themes/Socioboard" + profileUrl[1];
+        string imgurl = "/Themes/" + path + profileUrl[1];
         //ProfileUrl = System.Text.RegularExpressions.Regex.Split(objuser.ProfileUrl, "wwwroot")[1];
         ProfileUrl = imgurl;
     }
-    catch {
+    catch
+    {
         ProfileUrl = objuser.ProfileUrl;
     }
 }
 @*<div class="panel-body">*@
+<div class="row">
+    <div class="col-lg-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <img style="height: 45px;width:45px" data-target="#" data-toggle="modal" class="img-circle" src="@ProfileUrl">
+                <span>@objuser.UserName</span>
+            </div>
+            <div class="panel-body">
                 <div class="row">
-                <div class="col-lg-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                    <img style="height: 45px;width:45px" data-target="#" data-toggle="modal" class="img-circle" src="@ProfileUrl">
-                    <span>@objuser.UserName</span>
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-sm-2"> <i class="fa fa-suitcase fa-3x fa-fw"></i></div>
-                                <div class="col-sm-10"> <strong>$ @objuser.Ewallet</strong><p>@GlobusMultiLanguageLib.Resources.MyStuff_EWalletPartial_YourWalletBalance</p></div>
-                            </div>
-                          
-                        </div>
+                    <div class="col-sm-2"><i class="fa fa-suitcase fa-3x fa-fw"></i></div>
+                    <div class="col-sm-10">
+                        <strong>$ @objuser.Ewallet</strong><p>@GlobusMultiLanguageLib.Resources.MyStuff_EWalletPartial_YourWalletBalance</p>
                     </div>
                 </div>
-                <!-- /.col-lg-8 -->
-                <div class="col-lg-8">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            @GlobusMultiLanguageLib.Resources.SocioBoard_MyStuff_EWalletPartial_AddMoneyToSocioBoardWallet
+
+            </div>
+        </div>
+    </div>
+    <!-- /.col-lg-8 -->
+    <div class="col-lg-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @GlobusMultiLanguageLib.Resources.SocialBoard_MyStuff_EWalletPartial_AddMoneyToSocioBoardWallet
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input placeholder="Enter Amount" class="form-control" id="input-add-money">
                         </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-4">
-                                <div class="form-group">
-                                            <input placeholder="Enter Amount" class="form-control" id="input-add-money">
-                                        </div>
-                                    </div>
+                    </div>
 
 
-                            @*<div class="col-md-4">
+                    @*<div class="col-md-4">
 
                                 <div class="form-group"> <input placeholder="Enter Promocode" class="form-control"> </div>
                                
@@ -60,18 +65,18 @@
 
 
 
-                        <div class="col-md-4">
+                    <div class="col-md-4">
                         <button class="btn btn-primary" type="button" id="btn-input-add-money">@GlobusMultiLanguageLib.Resources.MyStuff_EWalletPartial_AddMoneyToWallet</button>
                     </div>
-                    </div>
-                        </div>
-                    </div>
                 </div>
-                <!-- /.col-lg-8 -->
             </div>
-                    <hr>
+        </div>
+    </div>
+    <!-- /.col-lg-8 -->
+</div>
+<hr>
 
-                @*<div class="row">
+@*<div class="row">
                     <div class="col-lg-4">
                          <label>MY ACCOUNT</label>
                     </div>
@@ -85,159 +90,324 @@
                         </form>
                     </div>
                     <!-- /.col-lg-8 -->
-                </div>*@                   
-                       <!-- Tab v3 -->                
-                @*<div class="row tab-v3">
-                    <div class="col-sm-3">
-                        <ul class="nav nav-pills nav-stacked"> 
-                            <li class=""><a data-toggle="tab" href="#Profile"><i class="fa fa-user"></i> Profile</a></li>
-                            <li class="active"><a data-toggle="tab" href="#wallet"><i class="fa fa-suitcase"></i> Paytm wallet</a></li>
-                            <li class=""><a data-toggle="tab" href="#Orders"><i class="fa fa-shopping-cart"></i> Your Orders</a></li>
-                            <li><a data-toggle="tab" href="#Center"><i class="fa fa-info"></i> Help Center</a></li>                        
-                        </ul>                    
-                    </div>
-                    <div class="col-sm-9">
-                        <div class="tab-content">
-                            <div id="Profile" class="tab-pane fade">
+                </div>*@
+<!-- Tab v3 -->
+<div class="row tab-v3">
+    <div class="col-sm-3">
+        <ul class="nav nav-pills nav-stacked">
+            @*   <li class=""><a data-toggle="tab" href="#Profile"><i class="fa fa-user"></i> Profile</a></li>*@
+            <li class="active"><a data-toggle="tab" href="#wallet"><i class="fa fa-suitcase"></i>@GlobusMultiLanguageLib.Resources.MyStuff_EwalletPartial_AmountReceived</a></li>
+            <li class=""><a data-toggle="tab" href="#Orders"><i class="fa fa-shopping-cart"></i>@GlobusMultiLanguageLib.Resources.MyStuff_EwalletPartial_Orders</a></li>
+            @*<li class=""><a data-toggle="tab" href="#Transfer"><i class="fa fa-info"></i>Transfer to Bank</a></li>  *@
+            <li class="" onclick="checkfortransfer('@objuser.Ewallet',this)"><a data-toggle="tab" href="#bank"><i class="fa fa-university"></i>@GlobusMultiLanguageLib.Resources.MyStuff_EwalletPartial_TransfterToBanks</a></li>
+            <li class=""><a data-toggle="tab" href="#payouts"><i class="fa fa-cc-paypal "></i>@GlobusMultiLanguageLib.Resources.MyStuff_EwalletPartial_YourPayout</a></li>
+        </ul>
+    </div>
+    <div class="col-sm-9">
+        <div class="tab-content">
+            @* <div id="Profile" class="tab-pane fade">
                                 <h4>Profile</h4>
-                            </div>
-                            <div id="wallet" class="tab-pane fade active in">
-                                <h4>Paytm wallet</h4>
-                            </div>
-                            <div id="Orders" class="tab-pane fade">
-                                <div class="panel panel-info">
-                                    <div class="panel-heading">
-                                        <p class="pull-right"><i class="fa fa-clock-o fa-fw"></i> 05 JAN '15 10:39 AM</p>
-                                        <strong>ORDER NO. #1 </strong><p>Rs. 100</p>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                            <label>Recharge of BSNL 999999999</label><br>
-                                            <span>Qty : 1</span>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <label>Rs. 120</label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <button class="btn btn-success" type="button">Your order is successful</button>
-                                            </div>                                            
-                                             </div>
-                                             <hr>
-                                             <div class="row">
-                                            <div class="col-md-6">
-                                            <label>Recharge of BSNL 999999999</label><br>
-                                            <span>Qty : 1</span>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <label>Rs. 120</label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <button class="btn btn-success" type="button">Sent Successful</button>
-                                            </div>
-                                        </div>
-                                       
-                                    </div>
-                                </div>
+                            </div>*@
+            <div id="wallet" class="tab-pane fade active in">
+                @*<h4>Paytm wallet</h4>*@
 
-                                 <div class="panel panel-info">
-                                    <div class="panel-heading">
-                                        <p class="pull-right"><i class="fa fa-clock-o fa-fw"></i> 05 JAN '15 10:39 AM</p>
-                                        <strong>ORDER NO. #2 </strong><p>Rs. 100</p>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                            <label>Recharge of BSNL 999999999</label><br>
-                                            <span>Qty : 1</span>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <label>Rs. 120</label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <button class="btn btn-success" type="button">Your order is successful</button>
-                                            </div>                                            
-                                             </div>
-                                             <hr>
-                                             <div class="row">
-                                            <div class="col-md-6">
-                                            <label>Recharge of BSNL 999999999</label><br>
-                                            <span>Qty : 1</span>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <label>Rs. 120</label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <button class="btn btn-success" type="button">Sent Successful</button>
-                                            </div>
-                                        </div>
-                                       
-                                    </div>
-                                </div>
+                @if (((List<Domain.Socioboard.Domain.Affiliates>)ViewBag.lstAffiliates).Count != 0)
+                {
+                    foreach (var item_lstAffiliates in (List<Domain.Socioboard.Domain.Affiliates>)ViewBag.lstAffiliates)
+                    {
+                    <div class="panel panel-info">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    @{
+                        string paymentdate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item_lstAffiliates.AffiliateDate.ToLocalTime().ToString());
+                                        <span>
+                                            @paymentdate
+                                        </span>
+                                    }
 
-                                 <div class="panel panel-info">
-                                   <div class="panel-heading">
-                                        <p class="pull-right"><i class="fa fa-clock-o fa-fw"></i> 05 JAN '15 10:39 AM</p>
-                                        <strong>ORDER NO. #3 </strong><p>Rs. 100</p>                                  
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                            <label>Recharge of BSNL 999999999</label><br>
-                                            <span>Qty : 1</span>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <label>Rs. 120</label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <button class="btn btn-danger" type="button">Payment Failed</button>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                         <div class="row">
-                                            <div class="col-md-6">
-                                            <label>Recharge of BSNL 999999999</label><br>
-                                            <span>Qty : 1</span>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <label>Rs. 120</label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <button class="btn btn-success" type="button">Your order is successful</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <br>
+                                    <label>@GlobusMultiLanguageLib.Resources.MyStuff_EwalletPartial_AmountReceived</label>
+                                </div>
+                                <div class="col-md-4 col-lg-3 pull-right">
+                                    <span>$ @item_lstAffiliates.Amount</span>
+                                    <br>
+                                    <span class="label label-success">@GlobusMultiLanguageLib.Resources.MyStuff_EwalletPartial_Success</span>
                                 </div>
                             </div>
-                            <div id="Center" class="tab-pane fade in">
-                                <h4>Help Center</h4>
-                            </div>
-                        </div>                                    
+                        </div>
                     </div>
-                </div>*@            
-                <!-- Tab v3 -->  
-                        @*</div>*@
+                    }
+                }
+                else
+                {
+                    <center>@GlobusMultiLanguageLib.Resources.MyStuff_EwalletPartial_NoRecordFound</center>
+                }
+            </div>
+            <div id="Orders" class="tab-pane fade">
+                @if (((List<Domain.Socioboard.Domain.PaymentTransaction>)ViewBag.lsttransactions).Count != 0)
+                {
+                    foreach (var item_lsttransactions in (List<Domain.Socioboard.Domain.PaymentTransaction>)ViewBag.lsttransactions)
+                    {
+                    <div class="panel panel-info">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    @{
+                        string paymentdate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item_lsttransactions.PaymentDate.ToLocalTime().ToString());
+                                        <span>
+                                            @paymentdate
+                                        </span>                    
+                                    }
+
+                                    <br>
+                                    <label>@GlobusMultiLanguageLib.Resources.MyStuff_EwalletPartial_CashRecived</label>
+                                </div>
+                                <div class="col-md-4 col-lg-3 pull-right">
+                                    <span>$ @item_lsttransactions.AmountPaid</span>
+                                    <br />
+                                    <span class="label label-success">@GlobusMultiLanguageLib.Resources.MyStuff_EwalletPartial_Success</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                }
+                else
+                {
+                    <center>@GlobusMultiLanguageLib.Resources.MyStuff_EwalletPartial_NoRecordFound</center>
+                }
+            </div>
+            <div id="bank" class="tab-pane fade">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @GlobusMultiLanguageLib.Resources.MyStuff_EwalletPartial_AccountDetails
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form role="form">
+                                    <div class="col-md-6">
+                                        <input id="rd-paypal" type="radio" value="PayPal" name="transaction" checked>&nbsp;&nbsp;@GlobusMultiLanguageLib.Resources.MyStuff_EwalletPartial_PayPalTransaction
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input id="rd-bank" type="radio" value="Bank" name="transaction">&nbsp;&nbsp;@GlobusMultiLanguageLib.Resources.MyStuff_EwalletPartial_BankTransaction
+                                    </div>
+                                    <br />
+                                    <br />
+                                    <div class="col-md-12 form-group hide-show">
+                                        <input id="email-pay-pal" placeholder="PayPal Email" class="form-control transfer-amount">
+                                    </div>
+                                    <div class="col-md-12 form-group show-hide">
+                                        <input id="iban-code" placeholder="IBAN Code" class="form-control transfer-amount">
+                                    </div>
+                                    <div class="col-md-12 form-group show-hide">
+                                        <input id="swift-code" placeholder="Swift Code" class="form-control transfer-amount">
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <input id="amount" placeholder="Amount" class="form-control transfer-amount">
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <input id="other" placeholder="Other Details" class="form-control transfer-amount">
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="pull-right">
+                                <button class="btn btn-info transfer-amount" type="submit" onclick="submitrequestwithdraw('@objuser.Ewallet')">@GlobusMultiLanguageLib.Resources.MyStuff_EwalletPartial_SubmitRequest</button>
+                                <button class="btn btn-default transfer-amount" type="reset" onclick="clearrequestfor()">@GlobusMultiLanguageLib.Resources.MyStuff_EwalletPartial_Reset</button>
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+            </div>
+            <div id="payouts" class="tab-pane fade in">
+
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>@GlobusMultiLanguageLib.Resources.MyStuff_EwalletPartial_YourPayout</h4>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>@GlobusMultiLanguageLib.Resources.MyStuff_EwalletPartial_Amount (<i class="fa fa-usd fa-fw"></i>)</th>
+                                            <th>@GlobusMultiLanguageLib.Resources.MyStuff_EwalletPartial_Comment</th>
+                                            <th>@GlobusMultiLanguageLib.Resources.MyStuff_EwalletPartial_RequestDate</th>
+                                            <th>@GlobusMultiLanguageLib.Resources.MyStuff_EwalletPartial_Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item_EwalletWithdrawRequest in (List<Domain.Socioboard.Domain.EwalletWithdrawRequest>)ViewBag.lstEwalletWithdrawRequest)
+                                        {
+                                            <tr class="odd gradeX">
+                                                <td>@item_EwalletWithdrawRequest.WithdrawAmount</td>
+                                                @{
+                                            string comment = string.Empty;
+                                            if (item_EwalletWithdrawRequest.Other == null || item_EwalletWithdrawRequest.Other == "")
+                                            {
+                                                comment = "Not Interested";
+                                            }
+                                            else
+                                            {
+                                                comment = item_EwalletWithdrawRequest.Other;
+                                            }
+                                                    <td>
+                                                        @comment
+                                                    </td>
+                                                }
+                                                @{
+                                            string requestdate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item_EwalletWithdrawRequest.RequestDate.ToLocalTime().ToString());
+                                                    <td class="center">
+                                                        @requestdate
+                                                    </td>
+                                                }
+                                                @{
+                                            string status = string.Empty;
+                                            if (item_EwalletWithdrawRequest.Status == 0) { status = "Received"; }
+                                            else if (item_EwalletWithdrawRequest.Status == 1) { status = "Processing"; }
+                                            else if (item_EwalletWithdrawRequest.Status == 2) { status = "Paid"; }
+                                            else if (item_EwalletWithdrawRequest.Status == 3) { status = "Cancled"; }
+                                                
+                                                    <td>
+                                                        @status
+                                                    </td>}
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Tab v3 -->
+@*</div>*@
 
 <script>
+    $(document).ready(function () {
+        $(".show-hide").hide();
+        $("#rd-bank").click(function () {
+            $(".show-hide").show();
+            $(".hide-show").hide();
+            $("#swift-code").val('');
+        });
+        $("#rd-paypal").click(function () {
+            $(".show-hide").hide();
+            $(".hide-show").show();
+            $("#email-pay-pal").val('');
+            $("#iban-code").val('');
+        });
+        $("#btn-input-add-money").click(function () {
+            debugger;
+            var amount = $("#input-add-money").val();
 
-    $("#btn-input-add-money").click(function () {
-        debugger;
-        var amount = $("#input-add-money").val();
-        if (amount != null) {
-            if (amount >= '0') {
-                $.ajax({
-                    type: "POST",
-                    url: "../MyStuff/RechrgeEwalletByPaypal?amount=" + amount,
-                    //success: function (msg) { window.open(msg); },
-                    success: function (msg) { window.location = msg; },
-                    error: function () {
-                        alert("Somthing Went Wrong!!");
-                        window.location = "../MyStuff/Ewallet";
-                    }
-                });
+            if (amount != "") {
+                if (amount >= '0') {
+                    $.ajax({
+                        type: "POST",
+                        url: "../MyStuff/RechrgeEwalletByPaypal?amount=" + amount,
+                        //success: function (msg) { window.open(msg); },
+                        success: function (msg) { window.location = msg; },
+                        error: function () {
+                            alert("Somthing Went Wrong!!");
+                            window.location = "../MyStuff/Ewallet";
+                        }
+                    });
+                }
+                else { alert("Please enter amount greater then 0"); }
             }
-            else { alert("Please enter amount greater then 0"); }
-        }
+        });
     });
+   
+    function submitrequestwithdraw(ewallet) {
+        debugger;
+        var local = getlocatdatetime();
+        var paymentmethod = $("input[name=transaction]:checked").val();
+        var amount = $("#amount").val();
+        var paypalemail = $("#email-pay-pal").val();
+        var ibancode = $("#iban-code").val();
 
+        if (!IBAN.isValid(ibancode)) {
+            alertify.alert("Iban Code is not valid");
+            return;
+        }
+        var swiftcode = $("#swift-code").val();
+        if (!swift_validate(swiftcode)) {
+            alertify.alert("Swift Code is not valid");
+            return;
+        }
+        var other = $("#other").val();
+        if (amount != "" && (paypalemail != "" || (ibancode != "" && swiftcode != ""))) {
+            if (+amount >= 20) {
+                if (+amount <= +ewallet) {
+                    $.ajax({
+                        type: "POST",
+                        url: "../MyStuff/RequestToWithdraw?localtime=" + local,
+                        data: { "Amount": amount, "PayPalEmail": paypalemail, "IbnaCode": ibancode, "SwiftCode": swiftcode, "Other": other, "Method": paymentmethod },
+                        success: function (msg) {
+                            if (msg == "Amount_Exceeded") {
+                                alertify.alert("Amount Exceeded");
+                                loadewallet();
+                            } else {
+                                alertify.success("Your request has been successfully submitted");
+                                $('#Ewallet-Detail').html(msg);
+                                $("#btn-input-goto-money-wallet").html("@GlobusMultiLanguageLib.Resources.MyStuff_Ewallet_AjaxEwallet1");
+                                clearrequestfor();
+                            }
+                        }
+                    });
+                } else {
+                    alertify.alert("Amount Exceeded");
+                }
+            }
+            else { alertify.alert("Minimum amount you can transfer more the $20"); }
+        } else {
+            alertify.alert("please fill all the requered fields");
+        }
+    }
+    function clearrequestfor() {
+        $("#amount").val('');
+        $("#email-pay-pal").val('');
+        $("#iban-code").val('');
+        $("#swift-code").val('');
+        $("#other").val('');
+    }
+    function checkfortransfer(ewalet, e) {
+        debugger;
+        if (ewalet < 10) {
+            var e1 = $(e).attr('class');
+            if (e1 != "active") {
+                var msg = "You need to have atleast a balance of $ 20 in your wallet to be able to transfer money to a bank account";
+                alertify.alert(msg);
+                $('.transfer-amount').attr('disabled', true);
+                $('.transfer-amount').css('cursor', 'auto');
+            }
+        }
+    }
+    function swift_validate(swift) {
+
+        var regSWIFT = /^([a-zA-Z]){4}([a-zA-Z]){2}([0-9a-zA-Z]){2}([0-9a-zA-Z]{3})?$/;
+
+        if (!regSWIFT.test(swift)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 </script>

@@ -1,4 +1,5 @@
-﻿using Socioboard.App_Start;
+﻿using Domain.Socioboard.Domain;
+using Socioboard.App_Start;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,13 +18,21 @@ namespace Socioboard.Controllers
 
         public ActionResult Index()
         {
-            if (Session["Paid_User"].ToString() == "Unpaid")
+            if (Session["User"] != null)
             {
-                return RedirectToAction("Billing", "PersonalSetting");
+               
+                if (Session["Paid_User"].ToString() == "Unpaid")
+                {
+                    return RedirectToAction("Billing", "PersonalSetting");
+                }
+                else
+                {
+                    return View();
+                }
             }
             else
             {
-                return View();
+                return RedirectToAction("Index", "Index");
             }
             //return View();
         }        

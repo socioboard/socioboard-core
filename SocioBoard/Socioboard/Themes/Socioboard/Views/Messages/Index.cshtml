@@ -1,38 +1,171 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using Domain.Socioboard.Domain;
+@using Socioboard.Api;
+@using System.Web.Script.Serialization;
+@{
+    Domain.Socioboard.Domain.User user = (Domain.Socioboard.Domain.User)Session["User"];
 }
- @*<script src="/Themes/socioboard/Contents/js/jquery-1.11.0.js"></script>*@
+@*<script src="/Themes/socioboard/Contents/js/jquery-1.11.0.js"></script>*@
+<link href="~/Themes/Socioboard/Contents/css/smartinbox.css" rel="stylesheet" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+ <link href="~/Themes/Socioboard/Contents/css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+    
+
+
 <div id="page-wrapper">
-    <div class="container-fluid" style="margin-top: 25px">
-        <div class="col-md-12">
+    <div class="container-fluid" style="margin-top: 6%;">
+        <div class="col-md-9">
+            <section class="sectionClass" style="margin-left: -5%; margin-top: -5%;height:600px" onscroll="MessageonScroll()">
+                <div class="chat">
+                    <ul id="ul-inbox-message">
+                        <div>
+                            <center>
+                                <img src="~/Themes/Socioboard/Contents/img/43px_on_transparent.gif" />
+                            </center>
+                        </div>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-3">
+            <section>
+                <div class="">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3>Filter</h3>
+                        </div>
+                        <div class="panel-body">
+                            <h5>PROFILES</h5>
+                            <div id="div-user-profiles">
+                                <div>
+                                    <center>
+                                        <img src="~/Themes/Socioboard/Contents/img/sb-loader-profiles.gif"/>
+                                    </center>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <i class="fa fa-user-plus"></i>
+                                </div>
+                                <div class="col-md-8">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Connect a Profile </a>
+                                    <ul class="dropdown-menu slidedown">
+                                        <li data-target="#facebookpopup" data-toggle="modal">
+                                            <a href="#">
+                                                <i class="fa fa-facebook-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Facebook
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="../TwitterManager/AuthenticateTwitter">
+                                                <i class="fa fa-twitter-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Twitter
+                                            </a>
+                                        </li>
+                                        <li onclick="linkedinpopup()">
+                                            <a href="#">
+                                                <i class="fa fa-linkedin-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Linkedin
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="../InstagramManager/AuthenticateInstagram">
+                                                <i class="fa fa-instagram fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Instagram
+                                            </a>
+                                        </li>
 
-            @* @Html.Partial("_MessagesLeftSideBarPartial")
-
-    @Html.Partial("_MessagesMidPartial")
-   
-    @Html.Partial("_MessagesRightSideBarPartial")*@
-
-            <div style="margin-top: 20px" id="right-sidebar_home" class="partialContents" data-url="/Messages/MessagesMidPartialNew">
-                <img src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" />
-                Loading . . .
-            </div>
-
-            <div id="contentcontainer2" class="partialContents" data-url="/Messages/accordianprofiles">
-                @*<img src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" />*@
-                @*Loading . . .*@
-            </div>
-
-            @* <div id="right-sidebar_home" class="partialContents" data-url="/Home/UserProfile">
-        <img src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" />
-        Loading . . .
-     
-
-       
-    </div>*@
-
+                                        <li>
+                                            <a href="../TumblrManager/AuthenticateTumblr">
+                                                <i class="fa fa-tumblr-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Tumblr
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="../YoutubeManager/AuthenticateYoutube">
+                                                <i class="fa fa-youtube-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Youtube
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <h5>MESSAGE TYPES</h5>
+                            <div id="div-user-message">
+                                <div>
+                                    <center>
+                                        <img src="~/Themes/Socioboard/Contents/img/sb-loader-profiles.gif"/>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="panel-body">
+                                	<h5>BRAND KEYWORDS</h5>
+                                    <div class="row">
+                                    	<div class="col-md-2">
+                                        	<i class="fa fa-user-plus"></i>
+                                        </div>
+                                        <div class="col-md-8">
+                                        	<a href="#"> Add Keywords </a>
+                                        </div>
+                                    </div>
+                                </div>*@
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 
+</div>
+<div class="modal fade" id="task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header model_head" style="height: 48px">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Messages_SmartInboxPartial_Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Create Task</h4>
+            </div>
+            <div class="modal-body col-md-12">
+                <div class="col-md-8">
+                    <h5><strong>@GlobusMultiLanguageLib.Resources.Messages_SmartInboxPartial_LeaveAComment</strong></h5>
+                    <textarea id="txtsavetask" class="form-control" rows="3" placeholder="Your comment (viewable only to team members)"></textarea>
+                </div>
+                <div class="col-md-4">
+                    <h5><strong>@GlobusMultiLanguageLib.Resources.Messages_SmartInboxPartial_AssignTaskTo</strong></h5>
+                    @{
+                        try
+                        {
+                            Socioboard.Api.Twitter.Twitter objApiTwitter = new Socioboard.Api.Twitter.Twitter();
+                            Domain.Socioboard.Domain.Team team = Socioboard.Helper.SBUtils.GetTeamFromGroupId();
+                            Socioboard.Api.BusinessSetting.BusinessSetting objApiBusinessSetting = new Socioboard.Api.BusinessSetting.BusinessSetting();
+                            BusinessSetting objbsns = (BusinessSetting)new JavaScriptSerializer().Deserialize(objApiBusinessSetting.IsNotificationTaskEnable(team.GroupId), typeof(BusinessSetting));
+                            if (objbsns.AssigningTasks == true || team.UserId == user.Id)
+                            {
+                                Socioboard.Api.Team.Team objApiTeam = new Socioboard.Api.Team.Team();
+                                List<Domain.Socioboard.Domain.Team> result = (List<Domain.Socioboard.Domain.Team>)new JavaScriptSerializer().Deserialize(objApiTeam.getAllTeamsOfUser(user.Id.ToString(), team.GroupId.ToString(), user.EmailId), typeof(List<Domain.Socioboard.Domain.Team>));
+                                foreach (Team item in result)
+                                {
+                                    try
+                                    {
+                                        Socioboard.Api.User.User objApiUser = new Socioboard.Api.User.User();
+                                        User objdetails = (User)new JavaScriptSerializer().Deserialize(objApiUser.getUserInfoByEmail(item.EmailId), typeof(User));
+                        @:<div class="radio">
+@:<label>
+                                            @:<input type="radio" name="optionsRadios" id="customerid_@objdetails.Id + "" value="customerid_@objdetails.Id" @*checked*@>
+                                            @objdetails.UserName
+                                        @:</label>
+                                    @:</div>
+                                                                                }
+                                    catch { }
+                                }
+                            }
+                        }
+                        catch { }
+                    }
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="savetask" type="button" class="btn btn-primary" onclick="savetask()">@GlobusMultiLanguageLib.Resources.Messages_SmartInboxPartial_Save</button>
+                <button id="closeTaskModal" data-dismiss="modal" class="btn btn-default" type="button">@GlobusMultiLanguageLib.Resources.Shared_Site_AddFacebookClose</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>
 <div class="modal fade" id="msgmailpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 </div>
@@ -41,204 +174,110 @@
 <script src="~/Themes/Socioboard/Contents/js/Helper.js"></script>
 <script src="~/Themes/Socioboard/Contents/js/underscore.js"></script>
 
+<script src="/Themes/Socioboard/Contents/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="/Themes/Socioboard/Contents/js/jquD97C.js"></script>
+
+
 @*<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>*@
 
 
 <script language="javascript" type="text/javascript">
 
-    var throttled = _.throttle(onScroll, 3000);
-
-
-    function opentask(msgdesc,msgdate) {
-        debugger;
-        //   alert(msgdesc);
-        //$('#savetask').attr('msgdesc', msgdesc);
-
-        
-
-            var msgTxt = $('#' + msgdesc).text();
-
-            $('#savetask').attr('msgdesc', msgTxt);
-            $('#savetask').attr('msgdate', msgdate);
-            //jQuery.noConflict();
-            //$('#task').modal('show');                  
-      
-
-       
-    }
-
+    var throttled = _.throttle(scrollInboxMessages, 3000);
+   
     function opnCommentReply(id, network, messageid, ProfileId) {
         debugger;
         var buttonhtm = "<button type=\"button\" class=\"btn btn-default\" onclick=\"saveCommentReply('" + network + "','" + messageid + "','" + ProfileId + "')\">Comment</button>";
         $("#leaveCommentReply").html(buttonhtm);
-        //jQuery.noConflict();
         $("#CommentReply").modal('show');
-
     }
-    //function openaddTaskComment(msgdesc) {
-    //    //  alert(msgdesc);
-    //    $('#savetask').attr('msgdesc', msgdesc);
-    //    $('#task').modal('show');
-    //}
-
-    function BindInboxMessages() {
-
-        $.ajax
-       ({
-           type: "GET",
-           url: "../Messages/MessagesMidPartialNew",
-           data: '',
-           contentType: "application/json; charset=utf-8",
-           dataType: "html",
-           success: function (msg) {
-               if (msg.indexOf("nodata") > -1) {
-                   //No data Found...!!
-               }
-               else {
-                   $("#divBindMessage").html(msg);
-                   $(".loaderwrapper").css("display", "none");
-               }
-
-           }
-       });
-
-    }
-
-    function onScroll() {
-        debugger;
-        var closeToBottom = ($(window).scrollTop() + $(window).height() > $(document).height() - 100);
-        if (closeToBottom) {
-            $.ajax
-        ({
-            type: "GET",
-            url: "../Messages/BindInboxOnScroll",
-            data: '',
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
-            success: function (msg) {
-                if (msg.indexOf("nodata") > -1) {
-                    //No data Found...!!
-                }
-                else {
-                    $("#divBindMessage").append(msg);
-                    $(".loaderwrapper").css("display", "none");
-                }
-
-            }
-        });
-        }
-    }
-
     $(document).ready(function () {
         debugger;
-        //alert('singham');
-
-        //$('#right-sidebar_home').on("click", )
-
-        //commented on [12-03-15] by sumit gupta
-        //BindInboxMessages();
+        
+        bindInboxMessages();
+        //$(window).scroll(throttled);
+        $('#side-menu a').removeClass('active');
+        $("#message").addClass('active');
+        $("#message").children().addClass('active');
         $("#msg-index").addClass('active');
         $("#msg-task").removeClass('active');
         $("#msg-sentmsg").removeClass('active');
         $("#msg-archive").removeClass('active');
-        debugger;
-        $(".partialContents").each(function (index, item) {
-            var url = $(item).data("url");
-            if (url && url.length > 0) {
-                $(item).load(url);
-            }
-
-            //$(window).on('scroll', function (event) {
-            //    onScroll();
-            //});
-            $(window).scroll(throttled);
-        });
-
-        //set initial state.
-        //$('#textbox1').val($(this).is(':checked'));
-
-        $('.checkbox  input[type=checkbox] input').change(function () {
-            alert($(this).is(':checked'));
-        });
-
-        $('.checkbox  input[type=checkbox] input').click(function () {
-            if (!$(this).is(':checked')) {
-                return confirm("Are you sure?");
-            }
-        });
-
-        //$.noConflict();
-        $('#side-menu a').removeClass('active');
-        $("#message").addClass('active');
-        $("#message").children().addClass('active');
-
-        $("#aad").data();
-
-        if (document.URL.indexOf('q=sent') == -1) {
-            BindSmartInbox();
-
-        } else {
-            BindSent();
-        }
-
-
-
-        function BindSmartInbox() {
-            debugger;
-            //BindMessages('abc');
-            BindProfilesInMessageTab();
-
-        }
-
-        function BindSent() {
-            BindInboxMessageonMessageTab();
-            BindProfilesInMessageTab();
-
-        }
-
-
-        function Updatemessages() {
-            debugger;
-
-
-
-        }
-
         $("#messagetype").click(function () {
             $('#profile').addClass('collapsed');
         });
-
         $("#profile").click(function () {
             $('#messagetype').addClass('collapsed');
         });
 
-
+        (function ($) {
+            $(window).load(function () {
+                debugger;
+                $(".sectionClass").mCustomScrollbar({ theme: "minimal" });
+            });
+        })(jQuery);
 
     });
-
-    //jQuery.noConflict();
-    function MailPopUpMsg(msgid, ntk) {
+    
+    function MessageonScroll() {
+        throttled();
+    }
+	
+    function scrollInboxMessages() {
         debugger;
+        arrid = new Array();
+        arrmsgtype = new Array();
+        try {
+            $("#div-user-message .cls-user-message").each(function () {
+                debugger;
+                var attrId = $($($(this).children()[2]).children()[0]).attr("id");
+                if (document.getElementById(attrId).checked == false) {
+                    var index = arrmsgtype.indexOf(attrId);
+                    if (index > -1) {
+                        arrmsgtype.splice(index, 1);
+                    }
+                } else {
+                    arrmsgtype.push(attrId);
+                }
+            });
+        } catch (e) {
+
+        }
+        debugger;
+        try {
+            $("#div-user-profiles .cls-user-profile").each(function () {
+                debugger;
+                var attrId = $($($(this).children()[2]).children()[0]).attr("id");
+                if (document.getElementById(attrId).checked == false) {
+                    var index = arrmsgtype.indexOf(attrId);
+                    if (index > -1) {
+                        arrid.splice(index, 1);
+                    }
+                } else {
+                    arrid.push(attrId);
+                }
+            });
+        } catch (e) {
+
+        }
         $.ajax({
-            type: 'POST',
-            url: '../Messages/ShowMsgMailPopUp?MsgId=' + msgid + '&Network=' + ntk,
-            dataType: "html",
-            processData: false,
-            contentType: false,
-            success: function (data) {
-                $('#msgmailpopup').html(data);
-                $("#msgmailpopup").modal('show');
-            }
+            type: "GET",
+            url: "../Messages/BindInboxMessage?load=scroll&arrmsgtype=" + arrmsgtype + "&arrid=" + arrid,
+            datatype: "html",
+            success: function (msg) {
+                if (msg != "no_data") {
+                    $("#ul-inbox-message").append(msg);
+                }
+            },
+            async: false
         });
     }
 
-    //jQuery.noConflict();
+   
     function facebookLikeUnlike(msgguid, profileid, fbmsgid) {
         debugger;
         try {
-
             var status = $("#fblike_" + fbmsgid).attr('status');
-
             $.ajax({
                 type: "POST",
                 url: "../Feeds/FacebookLike?fbid=" + fbmsgid + "&profileid=" + profileid + "&msgid=" + msgguid,
@@ -257,15 +296,32 @@
                         $("#fblike_" + fbmsgid).html('Like');
                         alertify.success("Unliked Successfully");
                     }
-
                 }
             });
         } catch (e) { }
     }
-
 </script>
 
 
+
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+<script>
+    $('.chatLinks').hide();
+    $('.chatLinks1').hide();
+
+    $('.message1').mouseover(function () {
+        $('.chatLinks').show();
+        $('.chatLinks1').show();
+    });
+    $('.message1').mouseout(function () {
+        $('.chatLinks').hide();
+        $('.chatLinks1').hide();
+    });
+</script>
 
 
 

@@ -448,6 +448,55 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getUserNotifications">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fb" type="tns:FacebookClient" />
+            <s:element minOccurs="0" maxOccurs="1" name="profile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FacebookClient">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AccessToken" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AppId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AppSecret" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsSecureConnection" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UseFacebookBeta" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubscriptionVerifyToken" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getUserNotificationsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getPageConversations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fb" type="tns:FacebookClient" />
+            <s:element minOccurs="0" maxOccurs="1" name="profile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPageConversationsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetFacebookPageData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FbId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFacebookPageDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFacebookPageDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -618,6 +667,24 @@
   </wsdl:message>
   <wsdl:message name="AddNewFacebookWallPostsSoapOut">
     <wsdl:part name="parameters" element="tns:AddNewFacebookWallPostsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserNotificationsSoapIn">
+    <wsdl:part name="parameters" element="tns:getUserNotifications" />
+  </wsdl:message>
+  <wsdl:message name="getUserNotificationsSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserNotificationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPageConversationsSoapIn">
+    <wsdl:part name="parameters" element="tns:getPageConversations" />
+  </wsdl:message>
+  <wsdl:message name="getPageConversationsSoapOut">
+    <wsdl:part name="parameters" element="tns:getPageConversationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookPageDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFacebookPageData" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookPageDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFacebookPageDataResponse" />
   </wsdl:message>
   <wsdl:message name="AddFacebookAccountHttpGetIn">
     <wsdl:part name="code" type="s:string" />
@@ -839,6 +906,13 @@
     <wsdl:part name="UserId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="AddNewFacebookWallPostsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookPageDataHttpGetIn">
+    <wsdl:part name="FbId" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookPageDataHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="AddFacebookAccountHttpPostIn">
@@ -1063,6 +1137,13 @@
   <wsdl:message name="AddNewFacebookWallPostsHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetFacebookPageDataHttpPostIn">
+    <wsdl:part name="FbId" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFacebookPageDataHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="FacebookSoap">
     <wsdl:operation name="AddFacebookAccount">
       <wsdl:input message="tns:AddFacebookAccountSoapIn" />
@@ -1175,6 +1256,18 @@
     <wsdl:operation name="AddNewFacebookWallPosts">
       <wsdl:input message="tns:AddNewFacebookWallPostsSoapIn" />
       <wsdl:output message="tns:AddNewFacebookWallPostsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserNotifications">
+      <wsdl:input message="tns:getUserNotificationsSoapIn" />
+      <wsdl:output message="tns:getUserNotificationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPageConversations">
+      <wsdl:input message="tns:getPageConversationsSoapIn" />
+      <wsdl:output message="tns:getPageConversationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookPageData">
+      <wsdl:input message="tns:GetFacebookPageDataSoapIn" />
+      <wsdl:output message="tns:GetFacebookPageDataSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookHttpGet">
@@ -1290,6 +1383,10 @@
       <wsdl:input message="tns:AddNewFacebookWallPostsHttpGetIn" />
       <wsdl:output message="tns:AddNewFacebookWallPostsHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetFacebookPageData">
+      <wsdl:input message="tns:GetFacebookPageDataHttpGetIn" />
+      <wsdl:output message="tns:GetFacebookPageDataHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="FacebookHttpPost">
     <wsdl:operation name="AddFacebookAccount">
@@ -1403,6 +1500,10 @@
     <wsdl:operation name="AddNewFacebookWallPosts">
       <wsdl:input message="tns:AddNewFacebookWallPostsHttpPostIn" />
       <wsdl:output message="tns:AddNewFacebookWallPostsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookPageData">
+      <wsdl:input message="tns:GetFacebookPageDataHttpPostIn" />
+      <wsdl:output message="tns:GetFacebookPageDataHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="FacebookSoap" type="tns:FacebookSoap">
@@ -1652,6 +1753,33 @@
     </wsdl:operation>
     <wsdl:operation name="AddNewFacebookWallPosts">
       <soap:operation soapAction="http://tempuri.org/AddNewFacebookWallPosts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserNotifications">
+      <soap:operation soapAction="http://tempuri.org/getUserNotifications" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPageConversations">
+      <soap:operation soapAction="http://tempuri.org/getPageConversations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookPageData">
+      <soap:operation soapAction="http://tempuri.org/GetFacebookPageData" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1914,6 +2042,33 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getUserNotifications">
+      <soap12:operation soapAction="http://tempuri.org/getUserNotifications" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPageConversations">
+      <soap12:operation soapAction="http://tempuri.org/getPageConversations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookPageData">
+      <soap12:operation soapAction="http://tempuri.org/GetFacebookPageData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="FacebookHttpGet" type="tns:FacebookHttpGet">
     <http:binding verb="GET" />
@@ -2162,6 +2317,15 @@
     </wsdl:operation>
     <wsdl:operation name="AddNewFacebookWallPosts">
       <http:operation location="/AddNewFacebookWallPosts" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacebookPageData">
+      <http:operation location="/GetFacebookPageData" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -2424,19 +2588,28 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetFacebookPageData">
+      <http:operation location="/GetFacebookPageData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Facebook">
     <wsdl:port name="FacebookSoap" binding="tns:FacebookSoap">
-      <soap:address location="http://localhost:6361/Services/Facebook.asmx" />
+      <soap:address location="http://localhost:6361/services/Facebook.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookSoap12" binding="tns:FacebookSoap12">
-      <soap12:address location="http://localhost:6361/Services/Facebook.asmx" />
+      <soap12:address location="http://localhost:6361/services/Facebook.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookHttpGet" binding="tns:FacebookHttpGet">
-      <http:address location="http://localhost:6361/Services/Facebook.asmx" />
+      <http:address location="http://localhost:6361/services/Facebook.asmx" />
     </wsdl:port>
     <wsdl:port name="FacebookHttpPost" binding="tns:FacebookHttpPost">
-      <http:address location="http://localhost:6361/Services/Facebook.asmx" />
+      <http:address location="http://localhost:6361/services/Facebook.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

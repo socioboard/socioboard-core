@@ -366,16 +366,16 @@
   </wsdl:binding>
   <wsdl:service name="LinkedInFeed">
     <wsdl:port name="LinkedInFeedSoap" binding="tns:LinkedInFeedSoap">
-      <soap:address location="http://localhost:6361/Services/LinkedInFeed.asmx" />
+      <soap:address location="http://localhost:6361/services/LinkedInFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="LinkedInFeedSoap12" binding="tns:LinkedInFeedSoap12">
-      <soap12:address location="http://localhost:6361/Services/LinkedInFeed.asmx" />
+      <soap12:address location="http://localhost:6361/services/LinkedInFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="LinkedInFeedHttpGet" binding="tns:LinkedInFeedHttpGet">
-      <http:address location="http://localhost:6361/Services/LinkedInFeed.asmx" />
+      <http:address location="http://localhost:6361/services/LinkedInFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="LinkedInFeedHttpPost" binding="tns:LinkedInFeedHttpPost">
-      <http:address location="http://localhost:6361/Services/LinkedInFeed.asmx" />
+      <http:address location="http://localhost:6361/services/LinkedInFeed.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

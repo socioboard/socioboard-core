@@ -16,11 +16,11 @@ namespace GlobusGooglePlusLib.App.Core
         public static string strGetPeopleProfile = "https://www.googleapis.com/plus/v1/people/";
         public static string strGetSearchPeople = "https://www.googleapis.com/plus/v1/people?query=";
         public static string strGetPeopleListByActivity = "https://www.googleapis.com/plus/v1/activities/";
-        public static string strGetPeopleList = "https://www.googleapis.com/plus/v1/people/"; 
+        public static string strGetPeopleList = "https://www.googleapis.com/plus/v1/people/[userId]/people/[collection]"; 
         #endregion
 
         #region Activities
-        public static string strGetActivitiesList = "https://www.googleapis.com/plus/v1/people/";
+        public static string strGetActivitiesList = "https://www.googleapis.com/plus/v1/people/[ProfileId]/activities/public";
         public static string strGetActivityById = "https://www.googleapis.com/plus/v1/activities/";
         public static string strGetSearchActivity = "https://www.googleapis.com/plus/v1/activities/"; 
         #endregion
@@ -39,6 +39,25 @@ namespace GlobusGooglePlusLib.App.Core
         #region Google Analytics
         public static string strgetGaAccounts = "https://www.googleapis.com/analytics/v2.4/management/accounts/";
         public static string strGetGaAnalytics = "https://www.googleapis.com/analytics/v2.4/data?ids=ga:";
+        #endregion
+
+
+        #region Blogger
+        public static string strUserInfoBlogger = "https://www.googleapis.com/oauth2/v3/userinfo?alt=json";
+
+        public static string strBlogInfo= "https://www.googleapis.com/blogger/v3/users/self";
+        public static string strBlogInfoByUserid = "https://www.googleapis.com/blogger/v3/users/[userId]/blogs";
+        public static string strGetUserBlogs = "https://www.googleapis.com/blogger/v3/users/self/blogs";
+        public static string strGetBlogInfoByBlogId = "https://www.googleapis.com/blogger/v3/blogs/[blogId]";
+        public static string strGetBlogsByUrl = "https://www.googleapis.com/blogger/v3/blogs/byurl";
+        public static string strGetBlogPosts = "https://www.googleapis.com/blogger/v3/blogs/[blogId]/posts";
+        public static string strGetBlogsByPath = "https://www.googleapis.com/blogger/v3/blogs/[blogId]/posts/bypath";
+        public static string strGetPostDetailsByPostId = "https://www.googleapis.com/blogger/v3/blogs/blogId/posts/postId";
+        public static string strGetComments = "https://www.googleapis.com/blogger/v3/blogs/blogId/posts/postId/comments";
+        public static string strGetCommentsByCommentId = "https://www.googleapis.com/blogger/v3/blogs/blogId/posts/postId/comments/commentId";
+
+        //public static string strPostBlog = "https://www.blogger.com/feeds/[blogID]/posts/default";
+        public static string strPostBlog = "https://www.googleapis.com/blogger/v3/blogs/[blogID]/posts/";
         #endregion
 
     }

@@ -1,0 +1,189 @@
+﻿    
+@using Domain.Socioboard.Domain;
+@using Socioboard.Api;
+@using System.Web.Script.Serialization;
+@{
+    Domain.Socioboard.Domain.User user = (Domain.Socioboard.Domain.User)Session["User"];
+}    
+
+<link href="~/Themes/Socioboard/Contents/css/smartinbox.css" rel="stylesheet" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
+<div id="page-wrapper">
+    <div class="container-fluid" style="margin-top: 6%;">
+        <div class="col-md-9">
+            <section class="sectionClass" style="margin-left: -5%; margin-top: -5%">
+                <div class="chat">
+                    <ul id="ul-inbox-chat">
+                        <div>
+                            <center>
+                                <img src="~/Themes/Socioboard/Contents/img/43px_on_transparent.gif" />
+                            </center>
+                        </div>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-3">
+            <section>
+                <div class="">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3>Filter</h3>
+                        </div>
+                        <div class="panel-body">
+                            <h5>PROFILES</h5>
+                            <div id="div-user-profiles">
+                                <div>
+                                    <center>
+                                        <img src="~/Themes/Socioboard/Contents/img/sb-loader-profiles.gif"/>
+                                    </center>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <i class="fa fa-user-plus"></i>
+                                </div>
+                                <div class="col-md-8">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Connect a Profile </a>
+                                    <ul class="dropdown-menu slidedown">
+                                        <li data-target="#facebookpopup" data-toggle="modal">
+                                            <a href="#">
+                                                <i class="fa fa-facebook-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Facebook
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="../TwitterManager/AuthenticateTwitter">
+                                                <i class="fa fa-twitter-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Twitter
+                                            </a>
+                                        </li>
+                                        <li onclick="linkedinpopup()">
+                                            <a href="#">
+                                                <i class="fa fa-linkedin-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Linkedin
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="../InstagramManager/AuthenticateInstagram">
+                                                <i class="fa fa-instagram fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Instagram
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="../TumblrManager/AuthenticateTumblr">
+                                                <i class="fa fa-tumblr-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Tumblr
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="../YoutubeManager/AuthenticateYoutube">
+                                                <i class="fa fa-youtube-square fa-fw"></i>@GlobusMultiLanguageLib.Resources.Home_PofilePartial_Youtube
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                                            
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+</div>
+<div class="modal fade" id="task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header model_head" style="height: 48px">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Messages_SmartInboxPartial_Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Create Task</h4>
+            </div>
+            <div class="modal-body col-md-12">
+                <div class="col-md-8">
+                    <h5><strong>@GlobusMultiLanguageLib.Resources.Messages_SmartInboxPartial_LeaveAComment</strong></h5>
+                    <textarea id="txtsavetask" class="form-control" rows="3" placeholder="Your comment (viewable only to team members)"></textarea>
+                </div>
+                <div class="col-md-4">
+                    <h5><strong>@GlobusMultiLanguageLib.Resources.Messages_SmartInboxPartial_AssignTaskTo</strong></h5>
+                    @{
+                        try
+                        {
+                            Socioboard.Api.Twitter.Twitter objApiTwitter = new Socioboard.Api.Twitter.Twitter();
+                            Domain.Socioboard.Domain.Team team = Socioboard.Helper.SBUtils.GetTeamFromGroupId();
+                            Socioboard.Api.BusinessSetting.BusinessSetting objApiBusinessSetting = new Socioboard.Api.BusinessSetting.BusinessSetting();
+                            BusinessSetting objbsns = (BusinessSetting)new JavaScriptSerializer().Deserialize(objApiBusinessSetting.IsNotificationTaskEnable(team.GroupId), typeof(BusinessSetting));
+                            if (objbsns.AssigningTasks == true || team.UserId == user.Id)
+                            {
+                                Socioboard.Api.Team.Team objApiTeam = new Socioboard.Api.Team.Team();
+                                List<Domain.Socioboard.Domain.Team> result = (List<Domain.Socioboard.Domain.Team>)new JavaScriptSerializer().Deserialize(objApiTeam.getAllTeamsOfUser(user.Id.ToString(), team.GroupId.ToString(), user.EmailId), typeof(List<Domain.Socioboard.Domain.Team>));
+                                foreach (Team item in result)
+                                {
+                                    try
+                                    {
+                                        Socioboard.Api.User.User objApiUser = new Socioboard.Api.User.User();
+                                        User objdetails = (User)new JavaScriptSerializer().Deserialize(objApiUser.getUserInfoByEmail(item.EmailId), typeof(User));
+                        @:<div class="radio">
+@:<label>
+                                            @:<input type="radio" name="optionsRadios" id="customerid_@objdetails.Id + "" value="customerid_@objdetails.Id" @*checked*@>
+                                            @objdetails.UserName
+                                        @:</label>
+                                    @:</div>
+                                                                                }
+                                    catch { }
+                                }
+                            }
+                        }
+                        catch { }
+                    }
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="savetask" type="button" class="btn btn-primary" onclick="savetask()">@GlobusMultiLanguageLib.Resources.Messages_SmartInboxPartial_Save</button>
+                <button id="closeTaskModal" data-dismiss="modal" class="btn btn-default" type="button">@GlobusMultiLanguageLib.Resources.Shared_Site_AddFacebookClose</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="chatModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                	<div class="modal-header model_head">
+        				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       					<h4 class="modal-title" id="chatModalLabel">Chat</h4>
+      				</div>
+                	<div class="modal-body">
+                    	<div class="row" style="margin-top:-40px">
+                        	<div class="col-md-12">
+                            	<ul class="chat-thread" id="chat-conversation">
+                                  
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+              	</div>
+         	</div>
+     	</div>
+
+
+<script src="~/Themes/Socioboard/Contents/js/Helper.js"></script>
+<script src="~/Themes/Socioboard/Contents/js/underscore.js"></script>
+<script>
+
+    $(document).ready(function () {
+        debugger;
+        bindInboxChatMessages();
+        //$(window).scroll(throttled);
+        $('#side-menu a').removeClass('active');
+        $("#message").addClass('active');
+        $("#message").children().addClass('active');
+        $("#msg-inbox").addClass('active')
+        $("#msg-index").removeClass('active');
+        $("#msg-task").removeClass('active');
+        $("#msg-sentmsg").removeClass('active');
+        $("#msg-archive").removeClass('active');
+    });
+
+</script>

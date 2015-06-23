@@ -39,6 +39,10 @@ namespace Socioboard.Api.DiscoverySearch {
         
         private System.Threading.SendOrPostCallback getAllSearchKeywordsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback TwitterLinkBuilderOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GPlusLinkBuilderOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -91,6 +95,12 @@ namespace Socioboard.Api.DiscoverySearch {
         
         /// <remarks/>
         public event getAllSearchKeywordsCompletedEventHandler getAllSearchKeywordsCompleted;
+        
+        /// <remarks/>
+        public event TwitterLinkBuilderCompletedEventHandler TwitterLinkBuilderCompleted;
+        
+        /// <remarks/>
+        public event GPlusLinkBuilderCompletedEventHandler GPlusLinkBuilderCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DiscoverySearchFacebook", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -242,6 +252,64 @@ namespace Socioboard.Api.DiscoverySearch {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/TwitterLinkBuilder", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string TwitterLinkBuilder(string q) {
+            object[] results = this.Invoke("TwitterLinkBuilder", new object[] {
+                        q});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void TwitterLinkBuilderAsync(string q) {
+            this.TwitterLinkBuilderAsync(q, null);
+        }
+        
+        /// <remarks/>
+        public void TwitterLinkBuilderAsync(string q, object userState) {
+            if ((this.TwitterLinkBuilderOperationCompleted == null)) {
+                this.TwitterLinkBuilderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnTwitterLinkBuilderOperationCompleted);
+            }
+            this.InvokeAsync("TwitterLinkBuilder", new object[] {
+                        q}, this.TwitterLinkBuilderOperationCompleted, userState);
+        }
+        
+        private void OnTwitterLinkBuilderOperationCompleted(object arg) {
+            if ((this.TwitterLinkBuilderCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.TwitterLinkBuilderCompleted(this, new TwitterLinkBuilderCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GPlusLinkBuilder", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GPlusLinkBuilder(string q) {
+            object[] results = this.Invoke("GPlusLinkBuilder", new object[] {
+                        q});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GPlusLinkBuilderAsync(string q) {
+            this.GPlusLinkBuilderAsync(q, null);
+        }
+        
+        /// <remarks/>
+        public void GPlusLinkBuilderAsync(string q, object userState) {
+            if ((this.GPlusLinkBuilderOperationCompleted == null)) {
+                this.GPlusLinkBuilderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGPlusLinkBuilderOperationCompleted);
+            }
+            this.InvokeAsync("GPlusLinkBuilder", new object[] {
+                        q}, this.GPlusLinkBuilderOperationCompleted, userState);
+        }
+        
+        private void OnGPlusLinkBuilderOperationCompleted(object arg) {
+            if ((this.GPlusLinkBuilderCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GPlusLinkBuilderCompleted(this, new GPlusLinkBuilderCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -377,6 +445,58 @@ namespace Socioboard.Api.DiscoverySearch {
         private object[] results;
         
         internal getAllSearchKeywordsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void TwitterLinkBuilderCompletedEventHandler(object sender, TwitterLinkBuilderCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class TwitterLinkBuilderCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal TwitterLinkBuilderCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GPlusLinkBuilderCompletedEventHandler(object sender, GPlusLinkBuilderCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GPlusLinkBuilderCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GPlusLinkBuilderCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

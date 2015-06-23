@@ -4,7 +4,7 @@
     User objUser = (User)Session["User"];
 }
 
-<h4>@GlobusMultiLanguageLib.Resources.UserGroup_UserProfilesPartial_ProfilesAvailable</h4>
+<h4>Profiles available for connection</h4>
 @foreach (var item in (Dictionary<SocialProfile, object>)Model)
 {
     if (item.Key.ProfileType == "facebook")

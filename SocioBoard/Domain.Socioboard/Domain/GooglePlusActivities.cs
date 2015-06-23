@@ -20,7 +20,9 @@ namespace Domain.Socioboard.Domain
 	    public int RepliesCount { get; set; }
 	    public int PlusonersCount { get; set; }
 	    public int ResharersCount { get; set; }
-        public string PublishedDate { get; set; }
+        public DateTime PublishedDate { get; set; }
 	    public DateTime EntryDate { get; set; }
+        public string Attachment { get; set; }
+        public string AttachmentType { get; set; }
     }
 }

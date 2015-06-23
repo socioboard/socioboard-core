@@ -2,16 +2,6 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="HelloWorld">
-        <s:complexType />
-      </s:element>
-      <s:element name="HelloWorldResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="SavePayPalTransaction">
         <s:complexType>
           <s:sequence>
@@ -24,6 +14,22 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="SavePayPalTransactionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SavePayPalTransactionDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AmountPaid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SavePayPalTransactionDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SavePayPalTransactionDetailResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -44,27 +50,23 @@
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="HelloWorldSoapIn">
-    <wsdl:part name="parameters" element="tns:HelloWorld" />
-  </wsdl:message>
-  <wsdl:message name="HelloWorldSoapOut">
-    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
-  </wsdl:message>
   <wsdl:message name="SavePayPalTransactionSoapIn">
     <wsdl:part name="parameters" element="tns:SavePayPalTransaction" />
   </wsdl:message>
   <wsdl:message name="SavePayPalTransactionSoapOut">
     <wsdl:part name="parameters" element="tns:SavePayPalTransactionResponse" />
   </wsdl:message>
+  <wsdl:message name="SavePayPalTransactionDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:SavePayPalTransactionDetail" />
+  </wsdl:message>
+  <wsdl:message name="SavePayPalTransactionDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:SavePayPalTransactionDetailResponse" />
+  </wsdl:message>
   <wsdl:message name="GetPaymentDataByUserIdSoapIn">
     <wsdl:part name="parameters" element="tns:GetPaymentDataByUserId" />
   </wsdl:message>
   <wsdl:message name="GetPaymentDataByUserIdSoapOut">
     <wsdl:part name="parameters" element="tns:GetPaymentDataByUserIdResponse" />
-  </wsdl:message>
-  <wsdl:message name="HelloWorldHttpGetIn" />
-  <wsdl:message name="HelloWorldHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="SavePayPalTransactionHttpGetIn">
     <wsdl:part name="userID" type="s:string" />
@@ -73,14 +75,18 @@
   <wsdl:message name="SavePayPalTransactionHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="SavePayPalTransactionDetailHttpGetIn">
+    <wsdl:part name="UserID" type="s:string" />
+    <wsdl:part name="AmountPaid" type="s:string" />
+    <wsdl:part name="TransactionId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SavePayPalTransactionDetailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="GetPaymentDataByUserIdHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetPaymentDataByUserIdHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="HelloWorldHttpPostIn" />
-  <wsdl:message name="HelloWorldHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="SavePayPalTransactionHttpPostIn">
@@ -90,6 +96,14 @@
   <wsdl:message name="SavePayPalTransactionHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="SavePayPalTransactionDetailHttpPostIn">
+    <wsdl:part name="UserID" type="s:string" />
+    <wsdl:part name="AmountPaid" type="s:string" />
+    <wsdl:part name="TransactionId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SavePayPalTransactionDetailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="GetPaymentDataByUserIdHttpPostIn">
     <wsdl:part name="UserId" type="s:string" />
   </wsdl:message>
@@ -97,13 +111,13 @@
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:portType name="PaymentTransactionSoap">
-    <wsdl:operation name="HelloWorld">
-      <wsdl:input message="tns:HelloWorldSoapIn" />
-      <wsdl:output message="tns:HelloWorldSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="SavePayPalTransaction">
       <wsdl:input message="tns:SavePayPalTransactionSoapIn" />
       <wsdl:output message="tns:SavePayPalTransactionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePayPalTransactionDetail">
+      <wsdl:input message="tns:SavePayPalTransactionDetailSoapIn" />
+      <wsdl:output message="tns:SavePayPalTransactionDetailSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetPaymentDataByUserId">
       <wsdl:input message="tns:GetPaymentDataByUserIdSoapIn" />
@@ -111,13 +125,13 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="PaymentTransactionHttpGet">
-    <wsdl:operation name="HelloWorld">
-      <wsdl:input message="tns:HelloWorldHttpGetIn" />
-      <wsdl:output message="tns:HelloWorldHttpGetOut" />
-    </wsdl:operation>
     <wsdl:operation name="SavePayPalTransaction">
       <wsdl:input message="tns:SavePayPalTransactionHttpGetIn" />
       <wsdl:output message="tns:SavePayPalTransactionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePayPalTransactionDetail">
+      <wsdl:input message="tns:SavePayPalTransactionDetailHttpGetIn" />
+      <wsdl:output message="tns:SavePayPalTransactionDetailHttpGetOut" />
     </wsdl:operation>
     <wsdl:operation name="GetPaymentDataByUserId">
       <wsdl:input message="tns:GetPaymentDataByUserIdHttpGetIn" />
@@ -125,13 +139,13 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="PaymentTransactionHttpPost">
-    <wsdl:operation name="HelloWorld">
-      <wsdl:input message="tns:HelloWorldHttpPostIn" />
-      <wsdl:output message="tns:HelloWorldHttpPostOut" />
-    </wsdl:operation>
     <wsdl:operation name="SavePayPalTransaction">
       <wsdl:input message="tns:SavePayPalTransactionHttpPostIn" />
       <wsdl:output message="tns:SavePayPalTransactionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePayPalTransactionDetail">
+      <wsdl:input message="tns:SavePayPalTransactionDetailHttpPostIn" />
+      <wsdl:output message="tns:SavePayPalTransactionDetailHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetPaymentDataByUserId">
       <wsdl:input message="tns:GetPaymentDataByUserIdHttpPostIn" />
@@ -140,8 +154,8 @@
   </wsdl:portType>
   <wsdl:binding name="PaymentTransactionSoap" type="tns:PaymentTransactionSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="HelloWorld">
-      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+    <wsdl:operation name="SavePayPalTransaction">
+      <soap:operation soapAction="http://tempuri.org/SavePayPalTransaction" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -149,8 +163,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SavePayPalTransaction">
-      <soap:operation soapAction="http://tempuri.org/SavePayPalTransaction" style="document" />
+    <wsdl:operation name="SavePayPalTransactionDetail">
+      <soap:operation soapAction="http://tempuri.org/SavePayPalTransactionDetail" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -170,8 +184,8 @@
   </wsdl:binding>
   <wsdl:binding name="PaymentTransactionSoap12" type="tns:PaymentTransactionSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="HelloWorld">
-      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+    <wsdl:operation name="SavePayPalTransaction">
+      <soap12:operation soapAction="http://tempuri.org/SavePayPalTransaction" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -179,8 +193,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SavePayPalTransaction">
-      <soap12:operation soapAction="http://tempuri.org/SavePayPalTransaction" style="document" />
+    <wsdl:operation name="SavePayPalTransactionDetail">
+      <soap12:operation soapAction="http://tempuri.org/SavePayPalTransactionDetail" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -200,8 +214,8 @@
   </wsdl:binding>
   <wsdl:binding name="PaymentTransactionHttpGet" type="tns:PaymentTransactionHttpGet">
     <http:binding verb="GET" />
-    <wsdl:operation name="HelloWorld">
-      <http:operation location="/HelloWorld" />
+    <wsdl:operation name="SavePayPalTransaction">
+      <http:operation location="/SavePayPalTransaction" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -209,8 +223,8 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SavePayPalTransaction">
-      <http:operation location="/SavePayPalTransaction" />
+    <wsdl:operation name="SavePayPalTransactionDetail">
+      <http:operation location="/SavePayPalTransactionDetail" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -230,8 +244,8 @@
   </wsdl:binding>
   <wsdl:binding name="PaymentTransactionHttpPost" type="tns:PaymentTransactionHttpPost">
     <http:binding verb="POST" />
-    <wsdl:operation name="HelloWorld">
-      <http:operation location="/HelloWorld" />
+    <wsdl:operation name="SavePayPalTransaction">
+      <http:operation location="/SavePayPalTransaction" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -239,8 +253,8 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SavePayPalTransaction">
-      <http:operation location="/SavePayPalTransaction" />
+    <wsdl:operation name="SavePayPalTransactionDetail">
+      <http:operation location="/SavePayPalTransactionDetail" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -260,16 +274,16 @@
   </wsdl:binding>
   <wsdl:service name="PaymentTransaction">
     <wsdl:port name="PaymentTransactionSoap" binding="tns:PaymentTransactionSoap">
-      <soap:address location="http://localhost:6361/Services/PaymentTransaction.asmx" />
+      <soap:address location="http://localhost:6361/services/PaymentTransaction.asmx" />
     </wsdl:port>
     <wsdl:port name="PaymentTransactionSoap12" binding="tns:PaymentTransactionSoap12">
-      <soap12:address location="http://localhost:6361/Services/PaymentTransaction.asmx" />
+      <soap12:address location="http://localhost:6361/services/PaymentTransaction.asmx" />
     </wsdl:port>
     <wsdl:port name="PaymentTransactionHttpGet" binding="tns:PaymentTransactionHttpGet">
-      <http:address location="http://localhost:6361/Services/PaymentTransaction.asmx" />
+      <http:address location="http://localhost:6361/services/PaymentTransaction.asmx" />
     </wsdl:port>
     <wsdl:port name="PaymentTransactionHttpPost" binding="tns:PaymentTransactionHttpPost">
-      <http:address location="http://localhost:6361/Services/PaymentTransaction.asmx" />
+      <http:address location="http://localhost:6361/services/PaymentTransaction.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

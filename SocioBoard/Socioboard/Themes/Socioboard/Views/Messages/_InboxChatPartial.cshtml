@@ -1,0 +1,32 @@
+﻿@using Domain.Socioboard.Domain;
+@using Socioboard.Api;
+@using System.Web.Script.Serialization;
+@{
+    Domain.Socioboard.Domain.User user = (Domain.Socioboard.Domain.User)Session["User"];
+    List<Domain.Socioboard.Domain.TwitterDirectMessages> lstTwitterDirectMessages = (List<Domain.Socioboard.Domain.TwitterDirectMessages>)Model;
+    
+    }
+
+@foreach(Domain.Socioboard.Domain.TwitterDirectMessages msg in lstTwitterDirectMessages)
+{
+<li class="you">
+        <a href="#" class="user">
+            <img src="@msg.SenderProfileUrl" alt="">
+        </a>
+        <div class="date"><a data-toggle="tooltip" title="">@msg.SenderScreenName</a> @msg.CreatedDate</div>
+        <div class="message">
+            <p id="msg_@msg.Id" onclick="opnchatmsg('@msg.SenderId','@msg.RecipientId')" data-target="#chatModal" data-toggle="modal">@msg.Message
+           @if (!string.IsNullOrEmpty(msg.Image))
+            {
+            <img src="@msg.Image" />
+            }
+                </p>
+            <div class="pull-right chatLinks col-md-2">
+                <a title="Task" data-target="#task" data-toggle="modal" onclick="opentask('msg_@msg.Id','@msg.CreatedDate')" style="cursor:pointer"><i class="fa fa-thumb-tack"></i></a>
+                @*<a title="Email Message" data-target="#msgmailpopup" data-toggle="modal" onclick="MailPopUpMsg('@msg.Id');" style="cursor:pointer"><i class="fa fa-envelope"></i></a>*@
+            </div>
+        </div>
+    </li>
+}
+
+

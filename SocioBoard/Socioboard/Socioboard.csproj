@@ -42,21 +42,23 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DataStreams">
+    <Reference Include="DataStreams, Version=5.14.0.0, Culture=neutral, PublicKeyToken=9c9b03c227e1bea6, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\DataStreams.dll</HintPath>
     </Reference>
     <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Facebook.6.8.0\lib\net45\Facebook.dll</HintPath>
     </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\SocioboardAPI\lib\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Office.Interop.Access, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+    <Reference Include="Microsoft.Office.Interop.Access, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Recaptcha">
@@ -64,6 +66,14 @@
     </Reference>
     <Reference Include="Recaptcha.Web">
       <HintPath>..\SocioboardAPI\lib\Recaptcha.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="StackifyLib, Version=1.12.5589.24146, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackifyLib.1.12.0.0\lib\StackifyLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StackifyLib.log4net, Version=1.12.5589.24146, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackifyLib.log4net.1.12.0.0\lib\StackifyLib.log4net.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -185,6 +195,7 @@
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\CustomAuthorize.cs" />
+    <Compile Include="App_Start\CustomExceptionAttribute.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\MyExpirePageActionFilterAttribute.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -197,12 +208,13 @@
     <Compile Include="Controllers\Admin\AdminSettingController.cs" />
     <Compile Include="Controllers\Admin\AdvertisementController.cs" />
     <Compile Include="Controllers\Admin\CouponsController.cs" />
+    <Compile Include="Controllers\Admin\EwalletWithdrawController.cs" />
     <Compile Include="Controllers\Admin\NewsController.cs" />
     <Compile Include="Controllers\Admin\PackageController.cs" />
     <Compile Include="Controllers\Admin\ServicesController.cs" />
     <Compile Include="Controllers\Admin\UserDetailsController.cs" />
+    <Compile Include="Controllers\Boards‏Controller.cs" />
     <Compile Include="Controllers\BusinessSettingController.cs" />
-    <Compile Include="Controllers\CompanyDashboardController.cs" />
     <Compile Include="Controllers\DropboxManagerController.cs" />
     <Compile Include="Controllers\MyStuffController.cs" />
     <Compile Include="Controllers\ForgotPasswordController.cs" />
@@ -231,6 +243,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Helper\AccountType.cs" />
     <Compile Include="Helper\AddliPage.cs" />
     <Compile Include="Helper\Agency.cs" />
@@ -248,10 +261,10 @@
     <Compile Include="Helper\SocialAccountsAPIHelper.cs" />
     <Compile Include="Helper\UrlExtractor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Settings.Designer.cs">
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    <Compile Include="Properties\Settings1.Designer.cs">
       <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Web References\Api.AdminNews\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -284,6 +297,11 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="Web References\Api.ArchiveMessage\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Api.BoardServices\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -328,6 +346,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\Api.EwalletWithdrawRequest\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\Api.FacebookAccount\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -368,6 +391,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\Api.GooglePlusActivities\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Api.GooglePlus\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\Api.GroupProfile\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -379,6 +412,11 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="Web References\Api.Groups\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Api.InboxMessages\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -559,12 +597,15 @@
     <Content Include="log.txt" />
     <Content Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
     </Content>
+    <Content Include="Themes\Socioboard\Contents\css\boardstyle.css" />
     <Content Include="Themes\Socioboard\Contents\css\bootstrap-responsive.css" />
     <Content Include="Themes\Socioboard\Contents\css\bootstrap-timepicker.css" />
     <Content Include="Themes\Socioboard\Contents\css\bootstrap-timepicker.min.css" />
     <Content Include="Themes\Socioboard\Contents\css\bootstrap.css" />
+    <Content Include="Themes\Socioboard\Contents\css\company_dashboard.css" />
+    <Content Include="Themes\Socioboard\Contents\css\custom.css" />
     <Content Include="Themes\Socioboard\Contents\css\datepicker.css" />
     <Content Include="Themes\Socioboard\Contents\css\datepicker3.css" />
     <Content Include="Themes\Socioboard\Contents\css\font-awesome.css" />
@@ -578,6 +619,7 @@
     <Content Include="Themes\Socioboard\Contents\css\plugins\social-buttons.css" />
     <Content Include="Themes\Socioboard\Contents\css\plugins\timeline.css" />
     <Content Include="Themes\Socioboard\Contents\css\sb-admin-2.css" />
+    <Content Include="Themes\Socioboard\Contents\css\smartinbox.css" />
     <Content Include="Themes\Socioboard\Contents\css\smoothDivScroll.css" />
     <Content Include="Themes\Socioboard\Contents\css\stylish-portfolio.css" />
     <Content Include="Themes\Socioboard\Contents\img\addprofile.png" />
@@ -593,6 +635,44 @@
     <Content Include="Themes\Socioboard\Contents\img\big_transparent.gif" />
     <Content Include="Themes\Socioboard\Contents\img\blankimg.png" />
     <Content Include="Themes\Socioboard\Contents\img\callout.jpg" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\10000startups.jpg" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\42logo-300x150.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\amazonaws.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\azure.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\blacksheep_logo.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\GRAVITY4_LOGO.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\iimb_logo.jpg" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\LI2014.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\logo\10000startups.jpg" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\logo\42logo.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\logo\iimb_logo.jpg" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\logo\LI_logo.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\logo\nextbigwhat.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\logo\productconclave.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\logo\Socialboard_logo.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\logo\socialpour_logo.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\logo\socialscoup_logo.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\logo\social_samosa_logo.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\logo\Sonager_Logo.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\logo\tribeNautix.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\logo\vccircle_logo.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\logo\viptable_logo.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\logo\vip_logo.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\logo\YS_Pages.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\msocial_logo.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\NBW_black.jpg" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\NBW_white-e1426934866653.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\nextbigwhat-logo.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\productconclave.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\Socialboard_logo.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\socialpour_logo.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\socialscoup_logo.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\social_samosa_logo.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\Sonager_Logo.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\tribeNautix.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\vccircle_logo.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\viptable_logo.png" />
+    <Content Include="Themes\Socioboard\Contents\img\clients\YS_Pages.png" />
     <Content Include="Themes\Socioboard\Contents\img\CompanydashboardDefaultcoverpic.jpg" />
     <Content Include="Themes\Socioboard\Contents\img\cursors\cursor_arrow_left.cur" />
     <Content Include="Themes\Socioboard\Contents\img\cursors\cursor_arrow_left.gif" />
@@ -949,6 +1029,7 @@
     <Content Include="Themes\Socioboard\Contents\img\facebook.png" />
     <Content Include="Themes\Socioboard\Contents\img\fancybox-close.png" />
     <Content Include="Themes\Socioboard\Contents\img\favicon%281%29.ico" />
+    <Content Include="Themes\Socioboard\Contents\img\favicon.ico" />
     <Content Include="Themes\Socioboard\Contents\img\icon_loading-Recovered.gif" />
     <Content Include="Themes\Socioboard\Contents\img\italiano\it-trynow.png" />
     <Content Include="Themes\Socioboard\Contents\img\italiano\signup-italiano.png" />
@@ -1060,6 +1141,7 @@
     <Content Include="Themes\Socioboard\Contents\img\paypal-butn.jpg" />
     <Content Include="Themes\Socioboard\Contents\img\personal-icon.png" />
     <Content Include="Themes\Socioboard\Contents\img\phone-banner.png" />
+    <Content Include="Themes\Socioboard\Contents\img\phone-banner1.png" />
     <Content Include="Themes\Socioboard\Contents\img\photo.png" />
     <Content Include="Themes\Socioboard\Contents\img\picture.jpg" />
     <Content Include="Themes\Socioboard\Contents\img\pin.png" />
@@ -1308,6 +1390,7 @@
     <Content Include="Themes\Socioboard\Contents\js\alertify.min.js" />
     <Content Include="Themes\Socioboard\Contents\js\arrow24.js" />
     <Content Include="Themes\Socioboard\Contents\js\blocksit.min.js" />
+    <Content Include="Themes\Socioboard\Contents\js\boardcustom.js" />
     <Content Include="Themes\Socioboard\Contents\js\bootstrap-collapse.js" />
     <Content Include="Themes\Socioboard\Contents\js\bootstrap-datepicker.js" />
     <Content Include="Themes\Socioboard\Contents\js\bootstrap-datetimepicker.min.js" />
@@ -1517,6 +1600,680 @@
     <Content Include="Themes\Socioboard\Contents\js\uploadify.swf" />
     <Content Include="Themes\Socioboard\Contents\js\UsersAndGroups.js" />
     <Content Include="Themes\Socioboard\Contents\js\zoom.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\amcharts.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\exporting\amexport.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\exporting\canvg.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\exporting\filesaver.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\exporting\jspdf.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\exporting\jspdf.plugin.addimage.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\exporting\rgbcolor.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\funnel.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\gauge.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\images\dragIcon.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\images\dragIconBlack.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\images\dragIconH.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\images\dragIconHBlack.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\images\export.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\images\exportWhite.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\images\lens.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\images\lensWhite.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\images\_dragIcon.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\images\_dragIconBlack.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\images\_dragIconH.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\images\_dragIconHBlack.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\az.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\bg.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\de.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\es.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\fi.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\fo.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\fr.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\hr.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\hu.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\id.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\is.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\it.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\lt.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\lv.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\mk.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\mn.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\mt.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\nl.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\no.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\pl.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\pt.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\ro.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\ru.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\rw.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\sk.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\so.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\th.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\lang\tr.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\black\pattern1.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\black\pattern10.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\black\pattern11.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\black\pattern12.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\black\pattern13.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\black\pattern14.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\black\pattern15.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\black\pattern16.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\black\pattern17.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\black\pattern18.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\black\pattern19.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\black\pattern2.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\black\pattern20.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\black\pattern21.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\black\pattern3.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\black\pattern4.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\black\pattern5.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\black\pattern6.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\black\pattern7.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\black\pattern8.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\black\pattern9.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\chalk\pattern1.jpg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\chalk\pattern1r.jpg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\chalk\pattern2.jpg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\chalk\pattern3.jpg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\chalk\pattern4.jpg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\chalk\pattern5.jpg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\chalk\pattern6.jpg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\white\pattern1.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\white\pattern10.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\white\pattern11.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\white\pattern12.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\white\pattern13.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\white\pattern14.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\white\pattern15.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\white\pattern16.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\white\pattern17.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\white\pattern18.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\white\pattern19.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\white\pattern2.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\white\pattern20.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\white\pattern21.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\white\pattern3.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\white\pattern4.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\white\pattern5.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\white\pattern6.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\white\pattern7.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\white\pattern8.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\patterns\white\pattern9.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\pie.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\radar.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\serial.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\themes\black.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\themes\chalk.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\themes\dark.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\themes\light.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\themes\patterns.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amcharts\xy.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\ammap.css" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\ammap.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\ammap_amcharts_extension.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\exporting\amexport.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\exporting\canvg.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\exporting\filesaver.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\exporting\jspdf.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\exporting\jspdf.plugin.addimage.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\exporting\rgbcolor.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\images\arrowDown.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\images\arrowUp.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\images\export.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\images\homeIcon.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\images\homeIconWhite.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\images\minus.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\images\panDown.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\images\panLeft.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\images\panRight.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\images\panUp.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\images\plus.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\images\xIcon.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\images\xIconH.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\af.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\am.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\ar.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\as.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\az.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\be.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\bg.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\bn.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\bo.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\bs.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\byn.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\ca.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\cs.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\cy.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\da.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\de.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\dv.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\dz.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\el.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\eo.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\es.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\et.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\eu.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\fa.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\fi.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\fil.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\fo.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\fr.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\fur.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\ga.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\gez.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\gl.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\gsw.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\gu.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\gv.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\ha.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\haw.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\he.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\hi.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\hr.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\hu.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\hy.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\ia.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\id.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\ii.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\is.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\it.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\ja.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\ka.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\kk.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\kl.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\km.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\kn.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\ko.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\kok.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\ku.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\kw.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\ky.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\ln.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\lo.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\lt.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\lv.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\mk.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\ml.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\mn.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\mr.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\ms.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\mt.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\my.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\nb.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\nds.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\ne.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\nl.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\nn.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\oc.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\om.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\or.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\pa.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\pl.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\ps.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\pt.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\ro.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\ru.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\rw.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\sa.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\se.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\si.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\sid.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\sk.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\sl.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\so.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\sq.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\sr.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\sv.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\sw.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\syr.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\ta.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\te.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\tg.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\th.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\tig.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\to.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\tr.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\trv.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\tt.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\uk.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\ur.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\uz.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\vi.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\wal.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\yo.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\zh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\lang\zu.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\albaniaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\albaniaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\andorraHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\andorraLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\angolaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\angolaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\argentinaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\argentinaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\armeniaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\armeniaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\australiaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\australiaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\austriaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\austriaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\azerbaijanHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\azerbaijanLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\bahrainHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\bahrainLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\bangladeshHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\bangladeshLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\belarusHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\belarusLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\belgiumHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\belgiumLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\belizeHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\belizeLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\bhutanHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\bhutanLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\boliviaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\boliviaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\bosniaHerzegovinaCantonsHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\bosniaHerzegovinaCantonsLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\bosniaHerzegovinaRegionsHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\bosniaHerzegovinaRegionsLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\botswanaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\botswanaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\brazilHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\brazilLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\bulgariaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\bulgariaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\canadaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\canadaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\chileHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\chileLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\chinaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\chinaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\colombiaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\colombiaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\continentsHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\continentsLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\costaRicaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\costaRicaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\croatiaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\croatiaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\cyprusHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\cyprusLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\cyprusNorthernCyprusHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\cyprusNorthernCyprusLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\czechRepublicHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\czechRepublicLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\denmarkHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\denmarkLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\ecuadorHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\ecuadorLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\egyptHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\egyptLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\estoniaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\estoniaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\faroeIslandsHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\finlandHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\finlandLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\franceDepartmentsHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\franceDepartmentsLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\franceHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\franceLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\georgiaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\georgiaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\georgiaSouthOssetiaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\georgiaSouthOssetiaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\germanyHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\germanyLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\greeceHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\greeceLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\hongKongHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\hongKongLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\hungaryHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\hungaryLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\icelandHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\icelandLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\indiaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\indiaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\indonesiaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\indonesiaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\irelandHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\irelandLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\israelHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\israelLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\israelPalestineHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\israelPalestineLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\italyHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\italyLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\japanHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\japanLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\kazakhstanHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\kazakhstanLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\kosovoHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\kosovoLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\kyrgyzstanHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\kyrgyzstanLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\latviaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\latviaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\liechtensteinHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\lithuaniaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\lithuaniaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\luxembourgHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\luxembourgLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\macedoniaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\macedoniaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\malaysiaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\malaysiaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\maliHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\maliLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\maltaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\mexicoHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\mexicoLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\moldovaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\moldovaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\montenegroHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\montenegroLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\moroccoHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\moroccoLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\moroccoWesternSaharaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\moroccoWesternSaharaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\nepalHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\nepalLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\netherlandsHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\netherlandsLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\newZealandHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\newZealandLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\norwayHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\norwayLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\omanHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\omanLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\pakistanHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\pakistanLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\palestineHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\palestineLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\philippinesHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\philippinesLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\polandHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\polandLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\portugalHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\portugalLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\portugalRegionsHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\portugalRegionsLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\qatarHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\qatarLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\romaniaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\romaniaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\russiaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\russiaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\saudiArabiaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\saudiArabiaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\serbiaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\serbiaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\serbiaNoKosovoHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\serbiaNoKosovoLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\singaporeHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\singaporeLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\slovakiaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\slovakiaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\sloveniaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\sloveniaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\southAfricaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\southAfricaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\southKoreaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\southKoreaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\spain2High.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\spain2Low.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\spainHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\spainLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\spainProvincesHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\spainProvincesLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\sriLankaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\sriLankaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\swedenHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\swedenLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\switzerlandHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\switzerlandLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\syriaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\syriaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\taiwanHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\taiwanLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\tajikistanHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\tajikistanLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\thailandHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\thailandLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\turkeyHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\turkeyLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\ukraineHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\ukraineLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\unitedArabEmiratesHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\unitedArabEmiratesLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\unitedKingdomHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\unitedKingdomLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\usa2High.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\usa2Low.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\usaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\usaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\usaMercatorHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\usaMercatorLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\usaTerritoriesHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\uzbekistanHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\uzbekistanLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\venezuelaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\venezuelaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\worldHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\worldKashmir2Low.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\worldKashmir2WithAntarcticaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\worldLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\worldRussiaSplitHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\worldRussiaSplitLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\worldRussiaSplitWithAntarcticaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\worldRussiaSplitWithAntarcticaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\worldWithAntarcticaHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\worldWithAntarcticaLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\yemenHigh.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\js\yemenLow.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\black\pattern1.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\black\pattern10.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\black\pattern11.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\black\pattern12.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\black\pattern13.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\black\pattern14.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\black\pattern15.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\black\pattern16.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\black\pattern17.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\black\pattern18.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\black\pattern19.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\black\pattern2.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\black\pattern20.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\black\pattern21.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\black\pattern3.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\black\pattern4.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\black\pattern5.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\black\pattern6.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\black\pattern7.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\black\pattern8.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\black\pattern9.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\chalk\pattern1.jpg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\chalk\pattern1r.jpg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\chalk\pattern2.jpg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\chalk\pattern3.jpg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\chalk\pattern4.jpg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\chalk\pattern5.jpg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\chalk\pattern6.jpg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\white\pattern1.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\white\pattern10.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\white\pattern11.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\white\pattern12.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\white\pattern13.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\white\pattern14.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\white\pattern15.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\white\pattern16.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\white\pattern17.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\white\pattern18.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\white\pattern19.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\white\pattern2.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\white\pattern20.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\white\pattern21.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\white\pattern3.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\white\pattern4.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\white\pattern5.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\white\pattern6.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\white\pattern7.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\white\pattern8.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\patterns\white\pattern9.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\themes\black.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\themes\chalk.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\themes\dark.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\themes\light.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\amcharts.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\amstock.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\exporting\amexport.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\exporting\canvg.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\exporting\filesaver.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\exporting\jspdf.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\exporting\jspdf.plugin.addimage.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\exporting\rgbcolor.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\images\dragIcon.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\images\dragIconH.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\images\eraserIcon.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\images\eraserIconH.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\images\export.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\images\lens.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\images\pencilIcon.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\images\pencilIconH.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\images\xIcon.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\images\xIconH.gif" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\az.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\bg.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\de.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\es.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\fi.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\fo.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\fr.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\hr.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\hu.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\id.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\is.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\it.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\lt.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\lv.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\mk.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\mn.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\mt.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\nl.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\no.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\pl.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\pt.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\ro.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\ru.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\rw.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\sk.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\so.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\th.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\lang\tr.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\black\pattern1.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\black\pattern10.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\black\pattern11.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\black\pattern12.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\black\pattern13.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\black\pattern14.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\black\pattern15.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\black\pattern16.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\black\pattern17.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\black\pattern18.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\black\pattern19.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\black\pattern2.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\black\pattern20.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\black\pattern21.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\black\pattern3.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\black\pattern4.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\black\pattern5.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\black\pattern6.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\black\pattern7.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\black\pattern8.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\black\pattern9.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\chalk\pattern1.jpg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\chalk\pattern1r.jpg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\chalk\pattern2.jpg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\chalk\pattern3.jpg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\chalk\pattern4.jpg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\chalk\pattern5.jpg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\chalk\pattern6.jpg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\white\pattern1.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\white\pattern10.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\white\pattern11.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\white\pattern12.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\white\pattern13.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\white\pattern14.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\white\pattern15.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\white\pattern16.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\white\pattern17.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\white\pattern18.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\white\pattern19.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\white\pattern2.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\white\pattern20.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\white\pattern21.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\white\pattern3.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\white\pattern4.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\white\pattern5.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\white\pattern6.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\white\pattern7.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\white\pattern8.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\patterns\white\pattern9.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\serial.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\style.css" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\themes\black.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\themes\chalk.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\themes\dark.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\themes\light.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\amstockcharts\themes\patterns.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\bootstrap-toastr\toastr.css" />
+    <Content Include="Themes\Socioboard\Contents\plugins\bootstrap-toastr\toastr.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\bootstrap-toastr\toastr.min.css" />
+    <Content Include="Themes\Socioboard\Contents\plugins\bootstrap-toastr\toastr.min.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\charts-amcharts.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\components-rounded.css" />
+    <Content Include="Themes\Socioboard\Contents\plugins\metronic.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\area-as-line.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\area.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\bar-colors.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\bar-no-axes.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\bar.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\days.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\decimal-custom-hover.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\diagonal-xlabels-bar.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\diagonal-xlabels.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\donut-colors.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\donut-formatter.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\donut.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\dst.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\events.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\goals.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\lib\example.css" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\lib\example.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\months-no-smooth.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\negative.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\no-grid.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\non-continuous.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\non-date.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\quarters.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\resize.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\stacked_bars.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\timestamps.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\updating.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\weeks.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\years.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\examples\_template.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\morris.css" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\morris.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\morris.min.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\raphael-min.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\specs.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\viz\examples.js" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\viz\exemplary\area0.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\viz\exemplary\bar0.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\viz\exemplary\line0.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\viz\exemplary\stacked_bar0.png" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\viz\test.html" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\viz\visual_specs.js" />
     <Content Include="Themes\Socioboard\Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Themes\Socioboard\Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Themes\Socioboard\Views\Account\Login.cshtml" />
@@ -1561,9 +2318,6 @@
     <Content Include="Themes\Socioboard\Views\Feeds\Index.cshtml" />
     <Content Include="Themes\Socioboard\Views\Feeds\_ViewStart.cshtml" />
     <Content Include="Themes\Socioboard\Views\Feeds\_FeedMenu.cshtml" />
-    <Content Include="Themes\Socioboard\Views\Feeds\_FeedPartial.cshtml">
-      <SubType>Code</SubType>
-    </Content>
     <Content Include="Themes\Socioboard\Views\Feeds\_ImagePartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Group\Index.cshtml" />
     <Content Include="Themes\Socioboard\Views\Group\_ViewStart.cshtml" />
@@ -1625,14 +2379,6 @@
     <Content Include="Themes\Socioboard\Views\Feeds\_BlogPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Feeds\_BlogPostPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Home\_FacebookContactPartial.cshtml" />
-    <Content Include="Themes\Socioboard\Views\CompanyDashboard\Company.cshtml" />
-    <Content Include="Themes\Socioboard\Views\CompanyDashboard\_CompanyFacebookPageInfoPartial.cshtml" />
-    <Content Include="Themes\Socioboard\Views\CompanyDashboard\_CompanyGplusPageInfoPartial.cshtml" />
-    <Content Include="Themes\Socioboard\Views\CompanyDashboard\_CompanyInstagramPageInfoPartial.cshtml" />
-    <Content Include="Themes\Socioboard\Views\CompanyDashboard\_CompanyLinkedinPageInfoPartial.cshtml" />
-    <Content Include="Themes\Socioboard\Views\CompanyDashboard\_CompanyTumblrPageInfoPartial.cshtml" />
-    <Content Include="Themes\Socioboard\Views\CompanyDashboard\_CompanyTwitterPageInfoPartial.cshtml" />
-    <Content Include="Themes\Socioboard\Views\CompanyDashboard\_CompanyYoutubePageInfoPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Home\test.cshtml" />
     <Content Include="Themes\Socioboard\Views\Shared\Socialsuite_25_02.cshtml" />
     <Content Include="Themes\Socioboard\Views\BusinessSetting\Index.cshtml" />
@@ -1641,14 +2387,296 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Themes\Socioboard\Views\Index\_VideoMailPartial.cshtml" />
-    <None Include="Web References\Api.AdminNews\AdminNews.disco" />
-    <None Include="Web References\Api.AdminPackageDetails\AdminPackageDetails.disco" />
-    <None Include="Web References\Api.AdminUserDetails\AdminUserDetails.disco" />
-    <None Include="Web References\Api.Admin\Admin.wsdl" />
-    <None Include="Web References\Api.Admin\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    <Content Include="Themes\Socioboard\Contents\img\clients\logo\all_icon.psd" />
+    <Content Include="Themes\Socioboard\Views\Boards\boardfbpage.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Boards\boardgpluspage.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Boards\boardinstagrampage.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Boards\BoardPage.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Boards\boardtwitterpage.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Boards\Company.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Boards\Create.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Boards\Update.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Boards\_CompanyFacebookPageInfoPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Boards\_CompanyGplusPageInfoPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Boards\_CompanyInstagramPageInfoPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Boards\_CompanyLinkedinPageInfoPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Boards\_CompanyTumblrPageInfoPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Boards\_CompanyTwitterPageInfoPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Boards\_CompanyYoutubePageInfoPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Boards\_boardpagePartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Boards\_ViewStart.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Feeds\_FeedPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Messages\Inbox.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Messages\_InboxChatPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Messages\_InboxChatProfilePartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Messages\_InboxMessageTypePartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Messages\_InboxPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Messages\_InboxProfilePartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Messages\_ShowChatPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Messages\_TaskNotificationMailPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Boards\Copy of boardfbpage.cshtml" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\albaniaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\albaniaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\andorraHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\andorraLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\angolaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\angolaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\argentinaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\argentinaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\armeniaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\armeniaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\australiaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\australiaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\austriaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\austriaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\azerbaijanHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\azerbaijanLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\bahrainHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\bahrainLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\bangladeshHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\bangladeshLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\belarusHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\belarusLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\belgiumHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\belgiumLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\belizeHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\belizeLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\bhutanHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\bhutanLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\boliviaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\boliviaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\bosniaHerzegovinaCantonsHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\bosniaHerzegovinaCantonsLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\bosniaHerzegovinaRegionsHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\bosniaHerzegovinaRegionsLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\botswanaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\botswanaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\brazilHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\brazilLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\bulgariaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\bulgariaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\canadaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\canadaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\chileHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\chileLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\chinaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\chinaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\colombiaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\colombiaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\continentsHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\continentsLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\costaRicaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\costaRicaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\croatiaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\croatiaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\cyprusHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\cyprusLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\cyprusNorthernCyprusHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\cyprusNorthernCyprusLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\czechRepublicHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\czechRepublicLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\denmarkHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\denmarkLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\ecuadorHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\ecuadorLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\egyptHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\egyptLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\estoniaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\estoniaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\faroeIslandsHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\finlandHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\finlandLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\franceDepartmentsHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\franceDepartmentsLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\franceHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\franceLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\georgiaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\georgiaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\georgiaSouthOssetiaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\georgiaSouthOssetiaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\germanyHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\germanyLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\greeceHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\greeceLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\hongKongHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\hongKongLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\hungaryHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\hungaryLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\icelandHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\icelandLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\indiaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\indiaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\indonesiaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\indonesiaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\irelandHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\irelandLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\israelHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\israelLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\israelPalestineHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\israelPalestineLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\italyHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\italyLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\japanHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\japanLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\kazakhstanHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\kazakhstanLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\kosovoHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\kosovoLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\kyrgyzstanHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\kyrgyzstanLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\latviaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\latviaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\liechtensteinHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\lithuaniaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\lithuaniaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\luxembourgHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\luxembourgLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\macedoniaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\macedoniaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\malaysiaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\malaysiaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\maliHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\maliLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\maltaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\mexicoHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\mexicoLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\moldovaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\moldovaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\montenegroHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\montenegroLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\moroccoHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\moroccoLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\moroccoWesternSaharaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\moroccoWesternSaharaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\nepalHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\nepalLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\netherlandsHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\netherlandsLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\newZealandHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\newZealandLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\norwayHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\norwayLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\omanHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\omanLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\pakistanHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\pakistanLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\palestineHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\palestineLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\philippinesHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\philippinesLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\polandHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\polandLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\portugalHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\portugalLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\portugalRegionsHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\portugalRegionsLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\qatarHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\qatarLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\romaniaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\romaniaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\russiaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\russiaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\saudiArabiaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\saudiArabiaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\serbiaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\serbiaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\serbiaNoKosovoHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\serbiaNoKosovoLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\singaporeHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\singaporeLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\slovakiaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\slovakiaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\sloveniaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\sloveniaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\southAfricaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\southAfricaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\southKoreaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\southKoreaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\spain2High.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\spain2Low.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\spainHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\spainLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\spainProvincesHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\spainProvincesLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\sriLankaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\sriLankaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\swedenHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\swedenLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\switzerlandHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\switzerlandLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\syriaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\syriaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\taiwanHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\taiwanLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\tajikistanHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\tajikistanLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\thailandHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\thailandLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\turkeyHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\turkeyLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\ukraineHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\ukraineLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\unitedArabEmiratesHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\unitedArabEmiratesLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\unitedKingdomHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\unitedKingdomLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\usa2High.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\usa2Low.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\usaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\usaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\usaMercatorHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\usaMercatorLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\usaTerritoriesHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\uzbekistanHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\uzbekistanLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\venezuelaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\venezuelaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\worldHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\worldKashmir2Low.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\worldKashmir2WithAntarcticaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\worldLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\worldRussiaSplitHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\worldRussiaSplitLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\worldRussiaSplitWithAntarcticaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\worldRussiaSplitWithAntarcticaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\worldWithAntarcticaHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\worldWithAntarcticaLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\yemenHigh.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\amcharts\ammap\maps\svg\yemenLow.svg" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\less\morris.core.less" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\lib\morris.area.coffee" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\lib\morris.bar.coffee" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\lib\morris.coffee" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\lib\morris.donut.coffee" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\lib\morris.grid.coffee" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\lib\morris.hover.coffee" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\lib\morris.line.coffee" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\README.md" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\lib\area\area_spec.coffee" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\lib\bar\bar_spec.coffee" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\lib\bar\colours.coffee" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\lib\commas_spec.coffee" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\lib\donut\donut_spec.coffee" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\lib\grid\auto_grid_lines_spec.coffee" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\lib\grid\set_data_spec.coffee" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\lib\grid\y_label_format_spec.coffee" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\lib\hover_spec.coffee" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\lib\label_series_spec.coffee" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\lib\line\line_spec.coffee" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\lib\pad_spec.coffee" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\lib\parse_time_spec.coffee" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\support\placeholder.coffee" />
+    <Content Include="Themes\Socioboard\Contents\plugins\morris\spec\viz\run.sh" />
+    <Content Include="Themes\Socioboard\Views\Boards\analytics.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Boards\boardsList.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Shared\_SocialSuiteBoardMe.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Feeds\_GplusActivityPartial.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Report\_FbPageReports.cshtml" />
+    <Content Include="Themes\Socioboard\Contents\plugins\bootstrap-toastr\README.md" />
+    <Content Include="Themes\Socioboard\Contents\plugins\bootstrap-toastr\toastr.min.js.map" />
+    <Content Include="Themes\Socioboard\Views\Admin\EwalletWithdraw\Index.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\EwalletWithdraw\_ViewStart.cshtml" />
+    <Content Include="Themes\Socioboard\Views\Admin\EwalletWithdraw\_WithdrawRequestPartial.cshtml" />
     <None Include="Web References\Api.AdminNews\AdminNews.wsdl" />
     <None Include="Web References\Api.AdminNews\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -1664,18 +2692,25 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Web References\Api.Admin\Admin.wsdl" />
+    <None Include="Web References\Api.Admin\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <None Include="Web References\Api.Ads\Ads.wsdl" />
     <None Include="Web References\Api.Ads\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.Admin\Admin.disco" />
-    <None Include="Web References\Api.Ads\Ads.disco" />
-    <None Include="Web References\Api.Affiliates\Affiliates.disco" />
     <Content Include="Themes\Socioboard\Views\Index\privacy.cshtml" />
     <Content Include="Themes\Socioboard\Views\Index\Disclaimer.cshtml" />
     <Content Include="Themes\Socioboard\Views\Admin\AdminLogin\Index.cshtml" />
     <Content Include="Themes\Socioboard\Views\Shared\_AdminSite.cshtml" />
+    <None Include="Web References\Api.Affiliates\Affiliates.wsdl" />
+    <None Include="Web References\Api.Affiliates\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <None Include="Web References\Api.ArchiveMessage\ArchiveMessage.wsdl" />
     <None Include="Web References\Api.ArchiveMessage\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -1733,12 +2768,6 @@
     <Content Include="Themes\Socioboard\Views\Feeds\_MailBodyPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Feeds\_MailSendingPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Index\OpenSource.cshtml" />
-    <None Include="Web References\Api.Affiliates\Affiliates.wsdl" />
-    <None Include="Web References\Api.Affiliates\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\Api.BusinessSetting\BusinessSetting.disco" />
     <Content Include="Themes\Socioboard\Views\Feeds\_FeedRightPartial.cshtml">
       <SubType>Code</SubType>
     </Content>
@@ -1753,22 +2782,21 @@
     <Content Include="Themes\Socioboard\Views\Messages\Task.cshtml" />
     <Content Include="Themes\Socioboard\Views\Messages\_MessagesaccordianprofilesPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Messages\_MessagesBindInbox_msgsPartial.cshtml" />
-    <Content Include="Themes\Socioboard\Views\Messages\_MessagesLeftSideBarPartial - Copy.cshtml" />
-    <Content Include="Themes\Socioboard\Views\Messages\_MessagesLeftSideBarPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Messages\_MessagesMidPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Messages\_MessagesMidPartialNew.cshtml" />
-    <Content Include="Themes\Socioboard\Views\Messages\_MessagesPartial - Copy %282%29.cshtml" />
-    <Content Include="Themes\Socioboard\Views\Messages\_MessagesPartial - Copy - Copy.cshtml" />
-    <Content Include="Themes\Socioboard\Views\Messages\_MessagesPartial - Copy.cshtml" />
     <Content Include="Themes\Socioboard\Views\Messages\_MessagesPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Messages\_MessagesRightPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Messages\_MessagesRightSideBarPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Messages\_MessagesRightSideBarPartialNew.cshtml" />
     <Content Include="Themes\Socioboard\Views\Messages\_sentmsgPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Messages\_TaskMember.cshtml" />
-    <Content Include="Themes\Socioboard\Views\Messages\_TaskPartial - Copy.cshtml" />
     <Content Include="Themes\Socioboard\Views\Messages\_TaskPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Messages\_ViewStart.cshtml" />
+    <None Include="Web References\Api.BoardServices\BoardServices.wsdl" />
+    <None Include="Web References\Api.BoardServices\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <None Include="Web References\Api.BusinessSetting\BusinessSetting.wsdl" />
     <None Include="Web References\Api.BusinessSetting\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -1795,7 +2823,6 @@
     <Content Include="Themes\Socioboard\Views\Versions\Enterprise.cshtml" />
     <Content Include="Themes\Socioboard\Views\Publishing\_DraftPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Index\_RegistrationPartial.cshtml" />
-    <None Include="Web References\Api.ArchiveMessage\ArchiveMessage.disco" />
     <None Include="Web References\Api.CompanyDashboard\CompanyDashboard.wsdl" />
     <None Include="Web References\Api.CompanyDashboard\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -1821,47 +2848,36 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.Drafts\Drafts.disco">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Web References\Api.DiscoverySearch\DiscoverySearch.disco">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Web References\Api.Coupon\Coupon.disco" />
-    <None Include="Web References\Api.CompanyDashboard\CompanyDashboard.disco" />
-    <None Include="Web References\Api.Companypage\Companypage.disco" />
     <None Include="Web References\Api.DropboxAccount\DropboxAccount.wsdl" />
     <None Include="Web References\Api.DropboxAccount\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.Dropbox\Dropbox.disco" />
+    <None Include="Web References\Api.EwalletWithdrawRequest\EwalletWithdrawRequest.wsdl" />
+    <None Include="Web References\Api.EwalletWithdrawRequest\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <None Include="Web References\Api.FacebookAccount\FacebookAccount.wsdl" />
     <None Include="Web References\Api.FacebookAccount\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.FacebookAccount\FacebookAccount.disco" />
     <None Include="Web References\Api.FacebookFeed\FacebookFeed.wsdl" />
     <None Include="Web References\Api.FacebookFeed\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.FacebookFeed\FacebookFeed.disco" />
-    <None Include="Web References\Api.FacebookMessage\FacebookMessage.disco" />
     <None Include="Web References\Api.Facebook\Facebook.wsdl" />
     <None Include="Web References\Api.Facebook\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.FbPageComment\FbPageComment.disco" />
-    <None Include="Web References\Api.FbPageLiker\FbPageLiker.disco" />
     <None Include="Web References\Api.Dropbox\Dropbox.wsdl" />
     <None Include="Web References\Api.Dropbox\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.FbPagePost\FbPagePost.disco" />
     <None Include="Web References\Api.FacebookMessage\FacebookMessage.wsdl" />
     <None Include="Web References\Api.FacebookMessage\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -1869,6 +2885,16 @@
     </None>
     <None Include="Web References\Api.GooglePlusAccount\GooglePlusAccount.wsdl" />
     <None Include="Web References\Api.GooglePlusAccount\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\Api.GooglePlusActivities\GooglePlusActivities.wsdl" />
+    <None Include="Web References\Api.GooglePlusActivities\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\Api.GooglePlus\GooglePlus.wsdl" />
+    <None Include="Web References\Api.GooglePlus\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -1892,7 +2918,6 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.GroupScheduleMessage\GroupScheduleMessage.disco" />
     <None Include="Web References\Api.Groups\Groups.wsdl" />
     <None Include="Web References\Api.Groups\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -1903,16 +2928,16 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Web References\Api.InboxMessages\InboxMessages.wsdl" />
+    <None Include="Web References\Api.InboxMessages\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <None Include="Web References\Api.InstagramAccount\InstagramAccount.wsdl" />
     <None Include="Web References\Api.InstagramAccount\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.GroupProfile\GroupProfile.disco">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Web References\Api.Groups\Groups.disco" />
-    <None Include="Web References\Api.InstagramComment\InstagramComment.disco" />
     <None Include="Web References\Api.InstagramFeed\InstagramFeed.wsdl" />
     <None Include="Web References\Api.InstagramFeed\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -1938,42 +2963,33 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.InstagramAccount\InstagramAccount.disco" />
-    <None Include="Web References\Api.InstagramFeed\InstagramFeed.disco" />
-    <None Include="Web References\Api.Invitation\Invitation.disco" />
-    <None Include="Web References\Api.LinkedinCompanyPage\LinkedinCompanyPage.disco" />
     <None Include="Web References\Api.LinkedInFeed\LinkedInFeed.wsdl" />
     <None Include="Web References\Api.LinkedInFeed\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.LinkedinAccount\LinkedinAccount.disco" />
-    <None Include="Web References\Api.LinkedInFeed\LinkedInFeed.disco" />
     <None Include="Web References\Api.LinkedinCompanyPage\LinkedinCompanyPage.wsdl" />
     <None Include="Web References\Api.LinkedinCompanyPage\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Web References\Api.LinkedinMessage\LinkedinMessage.wsdl" />
-    <Content Include="Web References\Api.LinkedinMessage\Reference.map">
+    <None Include="Web References\Api.LinkedinMessage\LinkedinMessage.wsdl" />
+    <None Include="Web References\Api.LinkedinMessage\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <None Include="Web References\Api.Linkedin\Linkedin.wsdl" />
     <None Include="Web References\Api.Linkedin\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.MailSender\MailSender.disco" />
-    <None Include="Web References\Api.GooglePlusAccount\GooglePlusAccount.disco" />
-    <None Include="Web References\Api.NewsLetter\NewsLetter.wsdl" />
-    <None Include="Web References\Api.NewsLetter\Reference.map">
+    <None Include="Web References\Api.MailSender\MailSender.wsdl" />
+    <None Include="Web References\Api.MailSender\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.PaymentTransaction\PaymentTransaction.disco" />
-    <None Include="Web References\Api.MailSender\MailSender.wsdl" />
-    <None Include="Web References\Api.MailSender\Reference.map">
+    <None Include="Web References\Api.NewsLetter\NewsLetter.wsdl" />
+    <None Include="Web References\Api.NewsLetter\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -1997,12 +3013,10 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\Api.SocialProfile\SocialProfile.wsdl" />
-    <None Include="Web References\Api.SentimentalAnalysis\SentimentalAnalysis.disco" />
     <None Include="Web References\Api.TaskComment\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.TaskComment\TaskComment.disco" />
     <None Include="Web References\Api.Tasks\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -2013,8 +3027,6 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.TeamMemberProfile\TeamMemberProfile.disco" />
-    <None Include="Web References\Api.Tasks\Tasks.disco" />
     <None Include="Web References\Api.Team\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -2030,9 +3042,6 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\Api.TumblrAccount\TumblrAccount.wsdl" />
-    <None Include="Web References\Api.Linkedin\Linkedin.disco" />
-    <None Include="Web References\Api.Team\Team.disco" />
-    <None Include="Web References\Api.TicketAssigneeStatus\TicketAssigneeStatus.disco" />
     <None Include="Web References\Api.TumblrFeed\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -2043,30 +3052,23 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\Api.Tumblr\Tumblr.wsdl" />
-    <None Include="Web References\Api.NewsLetter\NewsLetter.disco" />
     <None Include="Web References\Api.TwitterAccount\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.TwitterAccount\TwitterAccount.disco" />
     <None Include="Web References\Api.TwitterDirectMessages\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\Api.TwitterDirectMessages\TwitterDirectMessages.wsdl" />
-    <None Include="Web References\Api.SocialProfile\SocialProfile.disco" />
-    <None Include="Web References\Api.TumblrFeed\TumblrFeed.disco" />
-    <None Include="Web References\Api.TwitterDirectMessages\TwitterDirectMessages.disco" />
     <None Include="Web References\Api.TwitterFeed\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.TwitterFeed\TwitterFeed.disco" />
     <None Include="Web References\Api.TwitterMessage\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.TwitterMessage\TwitterMessage.disco" />
     <None Include="Web References\Api.TwitterAccount\TwitterAccount.wsdl" />
     <None Include="Web References\Api.TwitterStats\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -2074,14 +3076,12 @@
     </None>
     <None Include="Web References\Api.TwitterStats\TwitterStats.wsdl" />
     <None Include="Web References\Api.TwitterMessage\TwitterMessage.wsdl" />
-    <None Include="Web References\Api.Tumblr\Tumblr.disco" />
-    <None Include="Web References\Api.TumblrAccount\TumblrAccount.disco" />
+    <None Include="Web References\Api.TwitterFeed\TwitterFeed.wsdl" />
     <None Include="Web References\Api.Twitter\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\Api.Twitter\Twitter.wsdl" />
-    <None Include="Web References\Api.TwitterFeed\TwitterFeed.wsdl" />
     <None Include="Web References\Api.User\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -2091,27 +3091,16 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.YoutubeAccount\YoutubeAccount.disco" />
-    <None Include="Web References\Api.TwitterStats\TwitterStats.disco" />
-    <None Include="Web References\Api.User\User.disco" />
-    <None Include="Web References\Api.Twitter\Twitter.disco" />
     <None Include="Web References\Api.YoutubeChannel\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.YoutubeChannel\YoutubeChannel.disco" />
     <None Include="Web References\Api.Youtube\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.Youtube\Youtube.disco" />
     <None Include="Web References\Api.DropboxAccount\DropboxAccount.disco" />
-    <None Include="Web References\Api.ScheduledMessage\ScheduledMessage.disco" />
-    <None Include="Web References\Api.Facebook\Facebook.disco">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Web References\Api.Instagram\Instagram.disco" />
-    <Content Include="Web References\Api.LinkedinMessage\LinkedinMessage.disco" />
+    <None Include="Web References\Api.LinkedinCompanyPage\LinkedinCompanyPage.disco" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -2131,7 +3120,9 @@
     <Content Include="Themes\Socioboard\Views\Home\_HomeUserProfilePartial.cshtml" />
     <None Include="Web References\Api.TeamMemberProfile\TeamMemberProfile.wsdl" />
     <None Include="Web References\Api.YoutubeAccount\YoutubeAccount.wsdl" />
-    <None Include="Web References\Api.YoutubeChannel\YoutubeChannel.wsdl" />
+    <None Include="Web References\Api.YoutubeChannel\YoutubeChannel.wsdl">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web References\Api.Youtube\Youtube.wsdl" />
   </ItemGroup>
   <ItemGroup>
@@ -2149,21 +3140,21 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Admin.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/services/Admin.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Admin\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Admin.asmx</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/services/Admin.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_Admin1_Admin</CachedSettingsPropName>
+      <CachedSettingsPropName>Socioboard_Api_Admin_Admin</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/AdminNews.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/services/AdminNews.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.AdminNews\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/AdminNews.asmx</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/services/AdminNews.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -2171,10 +3162,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_AdminNews_AdminNews</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/AdminPackageDetails.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/AdminPackageDetails.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.AdminPackageDetails\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/AdminPackageDetails.asmx</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/Services/AdminPackageDetails.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -2182,10 +3173,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_AdminPackageDetails_AdminPackageDetails</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/AdminUserDetails.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/AdminUserDetails.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.AdminUserDetails\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/AdminUserDetails.asmx</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/Services/AdminUserDetails.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -2193,10 +3184,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_AdminUserDetails_AdminUserDetails</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Ads.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/Ads.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Ads\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Ads.asmx</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/Services/Ads.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -2204,10 +3195,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_Ads_Ads</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Affiliates.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/Affiliates.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Affiliates\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Affiliates.asmx</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/Services/Affiliates.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -2215,10 +3206,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_Affiliates_Affiliates</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Coupon.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/Coupon.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Coupon\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Coupon.asmx</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/Services/Coupon.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -2226,10 +3217,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_Coupon_Coupon</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/CompanyDashboard.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/CompanyDashboard.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.CompanyDashboard\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/CompanyDashboard.asmx</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/Services/CompanyDashboard.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -2237,21 +3228,21 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_CompanyDashboard_CompanyDashboard</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Companypage.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/EwalletWithdrawRequest.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Companypage\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Companypage.asmx</UpdateFromURL>
+      <RelPath>Web References\Api.EwalletWithdrawRequest\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/EwalletWithdrawRequest.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_Companypage_Companypage</CachedSettingsPropName>
+      <CachedSettingsPropName>Socioboard_Api_EwalletWithdrawRequest_EwalletWithdrawRequest</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/services/FacebookAccount.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/FacebookAccount.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.FacebookAccount\</RelPath>
-      <UpdateFromURL>http://localhost:6361/services/FacebookAccount.asmx</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/Services/FacebookAccount.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -2259,10 +3250,43 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_FacebookAccount_FacebookAccount</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Instagram.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/GooglePlus.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.GooglePlus\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/GooglePlus.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_GooglePlus_GooglePlus</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/GooglePlusActivities.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.GooglePlusActivities\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/GooglePlusActivities.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_GooglePlusActivities_GooglePlusActivities</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/InboxMessages.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.InboxMessages\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/InboxMessages.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_InboxMessages_InboxMessages</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/Instagram.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Instagram\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Instagram.asmx</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/Services/Instagram.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -2270,318 +3294,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_Instagram_Instagram</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/LinkedinMessage.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.LinkedinMessage\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/LinkedinMessage.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_LinkedinMessage_LinkedinMessage</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/ScheduledMessage.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.ScheduledMessage\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/ScheduledMessage.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_ScheduledMessage_ScheduledMessage</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/DropboxAccount.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.DropboxAccount\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/DropboxAccount.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_DropboxAccount_DropboxAccount</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/FbPageComment.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.FbPageComment\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/FbPageComment.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_FbPageComment_FbPageComment</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/FbPageLiker.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.FbPageLiker\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/FbPageLiker.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_FbPageLiker_FbPageLiker</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/FbPagePost.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.FbPagePost\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/FbPagePost.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_FbPagePost_FbPagePost</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/GooglePlusAccount.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.GooglePlusAccount\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/GooglePlusAccount.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_GooglePlusAccount_GooglePlusAccount</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Groups.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Groups\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Groups.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_Groups_Groups</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/NewsLetter.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.NewsLetter\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/NewsLetter.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_NewsLetter_NewsLetter</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/PaymentTransaction.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.PaymentTransaction\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/PaymentTransaction.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_PaymentTransaction_PaymentTransaction</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/ArchiveMessage.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.ArchiveMessage\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/ArchiveMessage.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_ArchiveMessage_ArchiveMessage</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/BusinessSetting.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.BusinessSetting\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/BusinessSetting.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_BusinessSetting_BusinessSetting</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/DiscoverySearch.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.DiscoverySearch\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/DiscoverySearch.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_DiscoverySearch_DiscoverySearch</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Drafts.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Drafts\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Drafts.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_Drafts_Drafts</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Dropbox.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Dropbox\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Dropbox.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_Dropbox_Dropbox</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/TwitterAccount.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.TwitterAccount\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/TwitterAccount.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_TwitterAccount_TwitterAccount</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/FacebookFeed.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.FacebookFeed\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/FacebookFeed.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_FacebookFeed_FacebookFeed</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/FacebookMessage.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.FacebookMessage\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/FacebookMessage.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_FacebookMessage_FacebookMessage</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/GroupProfile.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.GroupProfile\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/GroupProfile.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_GroupProfile_GroupProfile</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/GroupScheduleMessage.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.GroupScheduleMessage\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/GroupScheduleMessage.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_GroupScheduleMessage_GroupScheduleMessage</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/InstagramAccount.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.InstagramAccount\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/InstagramAccount.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_InstagramAccount_InstagramAccount</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/InstagramComment.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.InstagramComment\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/InstagramComment.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_InstagramComment_InstagramComment</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/Services/InstagramFeed.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.InstagramFeed\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/Services/InstagramFeed.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_InstagramFeed_InstagramFeed</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Invitation.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Invitation\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Invitation.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_Invitation_Invitation</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Linkedin.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Linkedin\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Linkedin.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_Linkedin_Linkedin</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/LinkedinAccount.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.LinkedinAccount\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/LinkedinAccount.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_LinkedinAccount_LinkedinAccount</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/LinkedinCompanyPage.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.LinkedinCompanyPage\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/LinkedinCompanyPage.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_LinkedinCompanyPage_LinkedinCompanyPage</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/LinkedInFeed.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.LinkedInFeed\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/LinkedInFeed.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_LinkedInFeed_LinkedInFeed</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/MailSender.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/MailSender.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.MailSender\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/MailSender.asmx</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/Services/MailSender.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -2589,120 +3305,21 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_MailSender_MailSender</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/SentimentalAnalysis.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/ScheduledMessage.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.SentimentalAnalysis\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/SentimentalAnalysis.asmx</UpdateFromURL>
+      <RelPath>Web References\Api.ScheduledMessage\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/ScheduledMessage.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_SentimentalAnalysis_SentimentalAnalysis</CachedSettingsPropName>
+      <CachedSettingsPropName>Socioboard_Api_ScheduledMessage_ScheduledMessage</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/SocialProfile.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.SocialProfile\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/SocialProfile.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_SocialProfile_SocialProfile</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/TaskComment.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.TaskComment\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/TaskComment.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_TaskComment_TaskComment</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Tasks.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Tasks\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Tasks.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_Tasks_Tasks</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Team.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Team\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Team.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_Team_Team</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/TeamMemberProfile.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.TeamMemberProfile\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/TeamMemberProfile.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_TeamMemberProfile_TeamMemberProfile</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/TicketAssigneeStatus.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.TicketAssigneeStatus\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/TicketAssigneeStatus.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_TicketAssigneeStatus_TicketAssigneeStatus</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Tumblr.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.Tumblr\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Tumblr.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_Tumblr_Tumblr</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/TumblrAccount.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.TumblrAccount\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/TumblrAccount.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_TumblrAccount_TumblrAccount</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/TumblrFeed.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.TumblrFeed\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/TumblrFeed.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_TumblrFeed_TumblrFeed</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Twitter.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/Twitter.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Twitter\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Twitter.asmx</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/Services/Twitter.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -2710,10 +3327,406 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_Twitter_Twitter</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/TwitterDirectMessages.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/BoardServices.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.BoardServices\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/BoardServices.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_BoardServices_BoardServices</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/Companypage.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Companypage\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/Companypage.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_Companypage_Companypage</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/DropboxAccount.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.DropboxAccount\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/DropboxAccount.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_DropboxAccount_DropboxAccount</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/FbPageComment.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.FbPageComment\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/FbPageComment.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_FbPageComment_FbPageComment</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/FbPageLiker.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.FbPageLiker\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/FbPageLiker.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_FbPageLiker_FbPageLiker</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/FbPagePost.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.FbPagePost\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/FbPagePost.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_FbPagePost_FbPagePost</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/GooglePlusAccount.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.GooglePlusAccount\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/GooglePlusAccount.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_GooglePlusAccount_GooglePlusAccount</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/Groups.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Groups\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/Groups.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_Groups_Groups</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/NewsLetter.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.NewsLetter\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/NewsLetter.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_NewsLetter_NewsLetter</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/PaymentTransaction.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.PaymentTransaction\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/PaymentTransaction.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_PaymentTransaction_PaymentTransaction</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/ArchiveMessage.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.ArchiveMessage\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/ArchiveMessage.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_ArchiveMessage_ArchiveMessage</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/BusinessSetting.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.BusinessSetting\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/BusinessSetting.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_BusinessSetting_BusinessSetting</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:6361/Services/DiscoverySearch.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.DiscoverySearch\</RelPath>
+      <UpdateFromURL>http://localhost:6361/Services/DiscoverySearch.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_DiscoverySearch_DiscoverySearch</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/Drafts.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Drafts\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/Drafts.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_Drafts_Drafts</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/Dropbox.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Dropbox\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/Dropbox.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_Dropbox_Dropbox</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/TwitterAccount.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.TwitterAccount\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/TwitterAccount.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_TwitterAccount_TwitterAccount</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/FacebookFeed.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.FacebookFeed\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/FacebookFeed.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_FacebookFeed_FacebookFeed</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/FacebookMessage.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.FacebookMessage\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/FacebookMessage.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_FacebookMessage_FacebookMessage</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/GroupProfile.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.GroupProfile\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/GroupProfile.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_GroupProfile_GroupProfile</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/GroupScheduleMessage.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.GroupScheduleMessage\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/GroupScheduleMessage.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_GroupScheduleMessage_GroupScheduleMessage</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/InstagramAccount.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.InstagramAccount\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/InstagramAccount.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_InstagramAccount_InstagramAccount</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/InstagramComment.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.InstagramComment\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/InstagramComment.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_InstagramComment_InstagramComment</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/InstagramFeed.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.InstagramFeed\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/InstagramFeed.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_InstagramFeed_InstagramFeed</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/Invitation.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Invitation\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/Invitation.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_Invitation_Invitation</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/LinkedinAccount.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.LinkedinAccount\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/LinkedinAccount.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_LinkedinAccount_LinkedinAccount</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/LinkedinCompanyPage.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.LinkedinCompanyPage\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/LinkedinCompanyPage.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_LinkedinCompanyPage_LinkedinCompanyPage</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/LinkedInFeed.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.LinkedInFeed\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/LinkedInFeed.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_LinkedInFeed_LinkedInFeed</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/SentimentalAnalysis.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.SentimentalAnalysis\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/SentimentalAnalysis.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_SentimentalAnalysis_SentimentalAnalysis</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/SocialProfile.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.SocialProfile\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/SocialProfile.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_SocialProfile_SocialProfile</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/TaskComment.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.TaskComment\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/TaskComment.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_TaskComment_TaskComment</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/Tasks.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Tasks\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/Tasks.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_Tasks_Tasks</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/TeamMemberProfile.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.TeamMemberProfile\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/TeamMemberProfile.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_TeamMemberProfile_TeamMemberProfile</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/TicketAssigneeStatus.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.TicketAssigneeStatus\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/TicketAssigneeStatus.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_TicketAssigneeStatus_TicketAssigneeStatus</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/Tumblr.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Tumblr\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/Tumblr.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_Tumblr_Tumblr</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/TumblrAccount.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.TumblrAccount\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/TumblrAccount.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_TumblrAccount_TumblrAccount</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/TumblrFeed.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.TumblrFeed\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/TumblrFeed.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_TumblrFeed_TumblrFeed</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/TwitterDirectMessages.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.TwitterDirectMessages\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/TwitterDirectMessages.asmx</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/Services/TwitterDirectMessages.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -2721,10 +3734,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_TwitterDirectMessages_TwitterDirectMessages</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/TwitterFeed.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/TwitterFeed.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.TwitterFeed\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/TwitterFeed.asmx</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/Services/TwitterFeed.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -2732,10 +3745,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_TwitterFeed_TwitterFeed</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/TwitterMessage.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/TwitterMessage.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.TwitterMessage\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/TwitterMessage.asmx</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/Services/TwitterMessage.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -2743,10 +3756,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_TwitterMessage_TwitterMessage</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/TwitterStats.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/TwitterStats.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.TwitterStats\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/TwitterStats.asmx</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/Services/TwitterStats.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -2754,10 +3767,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_TwitterStats_TwitterStats</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/User.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/User.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.User\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/User.asmx</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/Services/User.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -2765,10 +3778,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_User_User</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Youtube.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/Youtube.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Youtube\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Youtube.asmx</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/Services/Youtube.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -2776,10 +3789,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_Youtube_Youtube</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/YoutubeAccount.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/YoutubeAccount.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.YoutubeAccount\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/YoutubeAccount.asmx</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/Services/YoutubeAccount.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -2787,10 +3800,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_YoutubeAccount_YoutubeAccount</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/YoutubeChannel.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/YoutubeChannel.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.YoutubeChannel\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/YoutubeChannel.asmx</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/Services/YoutubeChannel.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -2798,16 +3811,49 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_YoutubeChannel_YoutubeChannel</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:6361/Services/Facebook.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/Facebook.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.Facebook\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/Facebook.asmx</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/Services/Facebook.asmx%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_Facebook_Facebook</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/Linkedin.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Linkedin\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/Linkedin.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_Linkedin_Linkedin</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/LinkedinMessage.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.LinkedinMessage\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/LinkedinMessage.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_LinkedinMessage_LinkedinMessage</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/Services/Team.asmx%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.Team\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/Services/Team.asmx%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_Team_Team</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>

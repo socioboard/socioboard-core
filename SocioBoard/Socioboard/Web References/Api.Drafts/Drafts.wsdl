@@ -529,16 +529,16 @@
   </wsdl:binding>
   <wsdl:service name="Drafts">
     <wsdl:port name="DraftsSoap" binding="tns:DraftsSoap">
-      <soap:address location="http://localhost:6361/Services/Drafts.asmx" />
+      <soap:address location="http://localhost:6361/services/Drafts.asmx" />
     </wsdl:port>
     <wsdl:port name="DraftsSoap12" binding="tns:DraftsSoap12">
-      <soap12:address location="http://localhost:6361/Services/Drafts.asmx" />
+      <soap12:address location="http://localhost:6361/services/Drafts.asmx" />
     </wsdl:port>
     <wsdl:port name="DraftsHttpGet" binding="tns:DraftsHttpGet">
-      <http:address location="http://localhost:6361/Services/Drafts.asmx" />
+      <http:address location="http://localhost:6361/services/Drafts.asmx" />
     </wsdl:port>
     <wsdl:port name="DraftsHttpPost" binding="tns:DraftsHttpPost">
-      <http:address location="http://localhost:6361/Services/Drafts.asmx" />
+      <http:address location="http://localhost:6361/services/Drafts.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

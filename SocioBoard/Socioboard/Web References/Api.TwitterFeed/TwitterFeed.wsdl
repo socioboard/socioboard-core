@@ -618,16 +618,16 @@
   </wsdl:binding>
   <wsdl:service name="TwitterFeed">
     <wsdl:port name="TwitterFeedSoap" binding="tns:TwitterFeedSoap">
-      <soap:address location="http://localhost:6361/Services/TwitterFeed.asmx" />
+      <soap:address location="http://localhost:6361/services/TwitterFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterFeedSoap12" binding="tns:TwitterFeedSoap12">
-      <soap12:address location="http://localhost:6361/Services/TwitterFeed.asmx" />
+      <soap12:address location="http://localhost:6361/services/TwitterFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterFeedHttpGet" binding="tns:TwitterFeedHttpGet">
-      <http:address location="http://localhost:6361/Services/TwitterFeed.asmx" />
+      <http:address location="http://localhost:6361/services/TwitterFeed.asmx" />
     </wsdl:port>
     <wsdl:port name="TwitterFeedHttpPost" binding="tns:TwitterFeedHttpPost">
-      <http:address location="http://localhost:6361/Services/TwitterFeed.asmx" />
+      <http:address location="http://localhost:6361/services/TwitterFeed.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

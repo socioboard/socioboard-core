@@ -11,6 +11,7 @@ using Domain.Socioboard.Domain;
 using System.Configuration;
 using log4net;
 using System.Collections;
+using System.Globalization;
 
 
 namespace Api.Socioboard.Services
@@ -743,6 +744,211 @@ namespace Api.Socioboard.Services
             catch (Exception ex)
             {
                 return "";
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllExpiredUser()
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.User> lstUser = userrepo.GetAllExpiredUser();
+                return new JavaScriptSerializer().Serialize(lstUser);
+            }
+            catch (Exception ex)
+            {
+                return "";
+            }
+        }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string GetAllUsers() 
+        {
+            try
+            {
+                List<Domain.Socioboard.Domain.User> lstUser = userrepo.getAllUsers();
+                return new JavaScriptSerializer().Serialize(lstUser);
+            }
+            catch (Exception ex)
+            {
+                return "";
+            }
+        }
+
+        //vikash [06/04/2015]
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string getUserInfoForSocialLogin(string logintype)
+        {
+            Domain.Socioboard.Domain.User objUser = new Domain.Socioboard.Domain.User();
+            objUser = userrepo.getUserInfoForSocialLogin(logintype);
+
+            return new JavaScriptSerializer().Serialize(objUser);
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string RegisterbyTwitter(string EmailId, string Password, string AccountType, string Username, string SocioLogin, string PictureUrl, string ActivationStatus = "0")
+        {
+            try
+            {
+                logger.Error("RegisterbyTwitter");
+
+                if (!userrepo.IsUserExist(EmailId))
+                {
+                    Domain.Socioboard.Domain.User user = new Domain.Socioboard.Domain.User();
+                    user.AccountType = AccountType;
+                    user.EmailId = EmailId;
+                    user.CreateDate = DateTime.Now;
+                    user.ExpiryDate = DateTime.Now.AddMonths(1);
+                    user.Password = Utility.MD5Hash(Password);
+                    user.PaymentStatus = "unpaid";
+                    user.ProfileUrl = string.Empty;
+                    user.TimeZone = string.Empty;
+                    user.UserName = Username;//FirstName + " " + LastName;
+                    user.UserStatus = 1;
+                    user.Ewallet = "0";
+                    user.ActivationStatus = ActivationStatus;//"0"; 
+                    user.Id = Guid.NewGuid();
+                    user.UserCode = Utility.GenerateRandomUniqueString();
+                    user.SocialLogin = SocioLogin;
+                    user.ProfileUrl = PictureUrl;
+                    UserRepository.Add(user);
+
+                    ////add value in UserActivation
+                    //UserActivation.AddUserActivation(user);
+
+                    //add value in userpackage
+                    // UserPackageRelation.AddUserPackageRelation(user);
+
+
+                    try
+                    {
+                        Domain.Socioboard.Domain.Groups groups = AddGroupByUserId(user.Id);
+
+
+                        BusinessSettingRepository busnrepo = new BusinessSettingRepository();
+                        BusinessSetting.AddBusinessSetting(user.Id, groups.Id, groups.GroupName);
+                        Team.AddTeamByGroupIdUserId(user.Id, user.EmailId, groups.Id);
+
+                        UpdateTeam(EmailId, user.Id.ToString(), user.UserName);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        logger.Error("Error : " + ex.Message);
+                        logger.Error("Error : " + ex.StackTrace);
+                    }
+                    //MailSender.SendEMail(user.UserName, Password, EmailId);
+                    return new JavaScriptSerializer().Serialize(user);
+                }
+                else
+                {
+                    return "Email Already Exists";
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return "Something Went Wrong";
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string CompareDateWithclientlocal(string clientdate, string datetime)
+        {
+            try
+            {
+                DateTime client = Convert.ToDateTime(clientdate);
+
+                DateTime server = DateTime.Now;
+                DateTime schedule = Convert.ToDateTime(datetime);
+                {
+                    var kind = schedule.Kind; // will equal DateTimeKind.Unspecified
+                    if (DateTime.Compare(client, server) > 0)
+                    {
+                        double minutes = (client - server).TotalMinutes;
+                        schedule = schedule.AddMinutes(minutes);
+                    }
+                    else if (DateTime.Compare(client, server) == 0)
+                    {
+                    }
+                    else if (DateTime.Compare(client, server) < 0)
+                    {
+                        double minutes = (client - server).TotalMinutes;
+                        schedule = schedule.AddMinutes(minutes);
+                    }
+                }
+                return schedule.ToString();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+                return "";
+            }
+        }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string DifferenceBetweenServerandLocalTime(string clientdate)
+        {
+            try
+            {
+                double minutes = 0;
+                DateTime client = Convert.ToDateTime(clientdate);
+                DateTime server = DateTime.Now;
+                if (DateTime.Compare(client, server) > 0)
+                {
+                    minutes = (client - server).TotalMinutes;
+                }
+                else if (DateTime.Compare(client, server) == 0)
+                {
+                }
+                else if (DateTime.Compare(client, server) < 0)
+                {
+                    minutes = (client - server).TotalMinutes;
+                }
+                return minutes.ToString(CultureInfo.InvariantCulture.NumberFormat);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+                return "something went wrong";
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string DifferenceBetweenServerandUtc()
+        {
+            try
+            {
+                double minutes = 0;
+
+                DateTime server = DateTime.Now;
+                DateTime utc = server.ToUniversalTime();
+                if (DateTime.Compare(server, utc) > 0)
+                {
+                    minutes = (server - utc).TotalMinutes;
+                }
+                else if (DateTime.Compare(server, utc) == 0)
+                {
+                }
+                else if (DateTime.Compare(server, utc) < 0)
+                {
+                    minutes = (server - utc).TotalMinutes;
+                }
+                return minutes.ToString(CultureInfo.InvariantCulture.NumberFormat);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+                return "something went wrong";
             }
         }
 

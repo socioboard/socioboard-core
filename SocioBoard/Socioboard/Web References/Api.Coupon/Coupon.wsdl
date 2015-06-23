@@ -2,16 +2,6 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="HelloWorld">
-        <s:complexType />
-      </s:element>
-      <s:element name="HelloWorldResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="GetAllCoupons">
         <s:complexType />
       </s:element>
@@ -67,12 +57,6 @@
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="HelloWorldSoapIn">
-    <wsdl:part name="parameters" element="tns:HelloWorld" />
-  </wsdl:message>
-  <wsdl:message name="HelloWorldSoapOut">
-    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
-  </wsdl:message>
   <wsdl:message name="GetAllCouponsSoapIn">
     <wsdl:part name="parameters" element="tns:GetAllCoupons" />
   </wsdl:message>
@@ -97,10 +81,6 @@
   <wsdl:message name="AddCouponsSoapOut">
     <wsdl:part name="parameters" element="tns:AddCouponsResponse" />
   </wsdl:message>
-  <wsdl:message name="HelloWorldHttpGetIn" />
-  <wsdl:message name="HelloWorldHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
   <wsdl:message name="GetAllCouponsHttpGetIn" />
   <wsdl:message name="GetAllCouponsHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -121,10 +101,6 @@
     <wsdl:part name="ObjCoupons" type="s:string" />
   </wsdl:message>
   <wsdl:message name="AddCouponsHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="HelloWorldHttpPostIn" />
-  <wsdl:message name="HelloWorldHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetAllCouponsHttpPostIn" />
@@ -150,10 +126,6 @@
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:portType name="CouponSoap">
-    <wsdl:operation name="HelloWorld">
-      <wsdl:input message="tns:HelloWorldSoapIn" />
-      <wsdl:output message="tns:HelloWorldSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="GetAllCoupons">
       <wsdl:input message="tns:GetAllCouponsSoapIn" />
       <wsdl:output message="tns:GetAllCouponsSoapOut" />
@@ -172,10 +144,6 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="CouponHttpGet">
-    <wsdl:operation name="HelloWorld">
-      <wsdl:input message="tns:HelloWorldHttpGetIn" />
-      <wsdl:output message="tns:HelloWorldHttpGetOut" />
-    </wsdl:operation>
     <wsdl:operation name="GetAllCoupons">
       <wsdl:input message="tns:GetAllCouponsHttpGetIn" />
       <wsdl:output message="tns:GetAllCouponsHttpGetOut" />
@@ -194,10 +162,6 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="CouponHttpPost">
-    <wsdl:operation name="HelloWorld">
-      <wsdl:input message="tns:HelloWorldHttpPostIn" />
-      <wsdl:output message="tns:HelloWorldHttpPostOut" />
-    </wsdl:operation>
     <wsdl:operation name="GetAllCoupons">
       <wsdl:input message="tns:GetAllCouponsHttpPostIn" />
       <wsdl:output message="tns:GetAllCouponsHttpPostOut" />
@@ -217,15 +181,6 @@
   </wsdl:portType>
   <wsdl:binding name="CouponSoap" type="tns:CouponSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="HelloWorld">
-      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetAllCoupons">
       <soap:operation soapAction="http://tempuri.org/GetAllCoupons" style="document" />
       <wsdl:input>
@@ -265,15 +220,6 @@
   </wsdl:binding>
   <wsdl:binding name="CouponSoap12" type="tns:CouponSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="HelloWorld">
-      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetAllCoupons">
       <soap12:operation soapAction="http://tempuri.org/GetAllCoupons" style="document" />
       <wsdl:input>
@@ -313,15 +259,6 @@
   </wsdl:binding>
   <wsdl:binding name="CouponHttpGet" type="tns:CouponHttpGet">
     <http:binding verb="GET" />
-    <wsdl:operation name="HelloWorld">
-      <http:operation location="/HelloWorld" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetAllCoupons">
       <http:operation location="/GetAllCoupons" />
       <wsdl:input>
@@ -361,15 +298,6 @@
   </wsdl:binding>
   <wsdl:binding name="CouponHttpPost" type="tns:CouponHttpPost">
     <http:binding verb="POST" />
-    <wsdl:operation name="HelloWorld">
-      <http:operation location="/HelloWorld" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetAllCoupons">
       <http:operation location="/GetAllCoupons" />
       <wsdl:input>
@@ -409,16 +337,16 @@
   </wsdl:binding>
   <wsdl:service name="Coupon">
     <wsdl:port name="CouponSoap" binding="tns:CouponSoap">
-      <soap:address location="http://localhost:6361/Services/Coupon.asmx" />
+      <soap:address location="http://localhost:6361/services/Coupon.asmx" />
     </wsdl:port>
     <wsdl:port name="CouponSoap12" binding="tns:CouponSoap12">
-      <soap12:address location="http://localhost:6361/Services/Coupon.asmx" />
+      <soap12:address location="http://localhost:6361/services/Coupon.asmx" />
     </wsdl:port>
     <wsdl:port name="CouponHttpGet" binding="tns:CouponHttpGet">
-      <http:address location="http://localhost:6361/Services/Coupon.asmx" />
+      <http:address location="http://localhost:6361/services/Coupon.asmx" />
     </wsdl:port>
     <wsdl:port name="CouponHttpPost" binding="tns:CouponHttpPost">
-      <http:address location="http://localhost:6361/Services/Coupon.asmx" />
+      <http:address location="http://localhost:6361/services/Coupon.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

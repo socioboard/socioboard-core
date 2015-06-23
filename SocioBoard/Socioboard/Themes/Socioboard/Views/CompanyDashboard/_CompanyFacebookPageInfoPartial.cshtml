@@ -7,8 +7,7 @@
     <section id="facebook" class="facebook">
         <div class="container-fluid">
             <a href="http://www.facebook.com/@ViewBag.facebookPageDetailsObj["id"]" target="_blank">
-                <div class="text-center orange"><i class="fa fa-facebook-square fa-5x"></i></div>
-            </a>
+            <div class="text-center orange"><i class="fa fa-facebook-square fa-5x"></i></div></a>
             <div class="row clearfix">
                 <div class="col-lg-12">
                     <!-- <div class="panel panel-default">
@@ -62,7 +61,7 @@
                                 </div>
                             </div>
                         </div>
-                        @* <div class="col-lg-2 col-md-6">
+                       @* <div class="col-lg-2 col-md-6">
                             <div class="panel panel-red">
                                 <div class="panel-heading">
                                     <div class="row">
@@ -118,110 +117,61 @@
                     <div class="col-lg-12">
                         <div class="chat-panel panel panel-default">
                             <div class="panel-heading">
-                                Feeds
+                                Notes
                             </div>
                             <!-- .panel-heading -->
                             <div class="panel-body">
-                                <ul class="chat">
-
-                                    @foreach (JObject obj in JArray.Parse(ViewBag.facebookPageNotes["data"].ToString()))
+                                <div class="panel-group" id="accordion">
+                                    @{int i = 0;}
+                                    @foreach (var item in ViewBag.facebookPageNotes)
                                     {
-                                        try
+                                        var data = item["data"];
+
+                                        foreach (var chile in data)
                                         {
-                                            if (obj["type"].ToString().Equals("status"))
-                                            {
-                                        <li class="left clearfix">
-                                            @* <span class="chat-img pull-left">
-                                                <img src="@obj["user"]["profile_image_url"]" class="img-circle profilePic" alt="User Avatar" >
-                                            </span>*@
-                                            <div class="chat-body clearfix">
-                                                <div>
-                                                    @* <strong class="primary-font">@obj["user"]["name"]</strong>*@
-                                                    <small class="pull-right text-muted">
-                                                        <i class="fa fa-clock-o fa-fw">@try
-                                                                                       { @DateTime.Parse(obj["created_time"].ToString()).ToString()}
-                                                                                       catch { }</i>
-                                                    </small>
-                                                </div>
-                                                <p>
-
-                                                    @try
-                                                    {
-                                                        if (obj["message"] != null)
-                                                        {
-                                                        @Html.Raw(obj["message"])
-                                                        }
-                                                        else
-                                                        {@Html.Raw(obj["story"])
-
-                                                        }
-                                                    }
-                                                    catch
-                                                    {
-                                                        try
-                                                        {
-                                                        @Html.Raw(obj["story"])}
-                                                        catch { }
-                                                    }
-                                                </p>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse_@i">@Html.Raw(chile["subject"])</a>
+                                                </h4>
                                             </div>
-                                        </li>
-                                            }
-                                            else if (obj["type"].ToString().Equals("link"))
-                                            {
-                                        <li class="left clearfix">
-                                            <span class="chat-img pull-left">
-                                                <img src="@obj["icon"]" class="img-circle profilePic" alt="User Avatar" >
-                                            </span>
-                                            <div class="chat-body clearfix">
-                                                <div>
-                                                    <strong class="primary-font">@obj["caption"]</strong>
-                                                    <small class="pull-right text-muted">
-                                                        <i class="fa fa-clock-o fa-fw">@try
-                                                                                       { @DateTime.Parse(obj["created_time"].ToString())}
-                                                                                       catch { }</i>
-                                                    </small>
+                                            <div id="collapse_@i" class="panel-collapse collapse in">
+                                                @{i++;}
+                                                <div class="panel-body">
+                                                    @Html.Raw(chile["message"])
                                                 </div>
-                                                <p>
-                                                    @Html.Raw(obj["description"])
-                                                </p>
-                                                <p>@Html.Raw(obj["link"])</p>
                                             </div>
-                                        </li>
-                                            }
-                                            else if (obj["type"].ToString().Equals("photo"))
-                                            {
-                                        <li class="left clearfix">
-                                            <span class="chat-img pull-left">
-                                                <img src="@obj["icon"]" class="img-circle profilePic" alt="User Avatar" >
-                                            </span>
-                                            <div class="chat-body clearfix">
-                                                <div>
-                                                    <strong class="primary-font">@obj["story"]</strong>
-                                                    <small class="pull-right text-muted">
-                                                        <i class="fa fa-clock-o fa-fw">@try
-                                                                                       { @DateTime.Parse(obj["created_time"].ToString())}
-                                                                                       catch { }</i>
-                                                    </small>
-                                                </div>
-                                                <p>
-                                                    <img src="@obj["picture"]" class="img">
-                                                </p>
-                                            </div>
-                                        </li>
-                                            }
-
-
+                                        </div>
                                         }
-                                        catch (Exception e)
-                                        {
-
-                                        }
-
-
                                     }
 
-                                </ul>
+
+
+                                    @* <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseEight">Note #2</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseEight" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt utulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">Note #3</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseSeven" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostruugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        </div>
+                                    </div>
+                                </div>*@
+                                </div>
                             </div>
                             <!-- .panel-body -->
                         </div>
@@ -257,50 +207,25 @@
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="description">
                                     <div class="chat-panel panel panel-default">
-                                        <div class="panel-body">
-                                            <p>@Html.Raw(ViewBag.facebookPageDetailsObj["description"])</p>
+                        <div class="panel-body">
+                                    <p>@Html.Raw(ViewBag.facebookPageDetailsObj["description"])</p>
+                            </div>
                                         </div>
-                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="Founded">
-                                    @if (ViewBag.facebookPageDetailsObj["founded"] != null)
-                                    {
-                                        <p>@ViewBag.facebookPageDetailsObj["founded"]</p>                                        
-                                    }
-                                    else
-                                    {
-                                        <p>No Data Found</p>
-                                    }
+                                    <p>@ViewBag.facebookPageDetailsObj["founded"]</p>
                                 </div>
                                 <div class="tab-pane fade" id="Mission">
-                                    @if (ViewBag.facebookPageDetailsObj["mission"] != null)
-                                    {
-                                        <p>@ViewBag.facebookPageDetailsObj["mission"]</p>                                        
-                                    }
-                                    else
-                                    {
-                                        <p>No Data Found</p>
-                                    }
+                                   
+                                    <p>@ViewBag.facebookPageDetailsObj["mission"]</p>
                                 </div>
                                 <div class="tab-pane fade" id="About">
-                                    @if (ViewBag.facebookPageDetailsObj["about"] != null)
-                                    {
-                                        <p>@ViewBag.facebookPageDetailsObj["about"]</p>                                        
-                                    }
-                                    else
-                                    {
-                                        <p>No Data Found</p>
-                                    }
+                                   
+                                    <p>@Html.Raw(ViewBag.facebookPageDetailsObj["about"])</p>
                                 </div>
                                 <div class="tab-pane fade" id="contact">
-                                    @if (ViewBag.facebookPageDetailsObj["phone"] != null)
-                                    {
-                                        <p>@ViewBag.facebookPageDetailsObj["phone"]</p>                                        
-                                    }
-                                    else
-                                    {
-                                        <p>No Data Found</p>
-                                    }
+                                    
+                                    @ViewBag.facebookPageDetailsObj["phone"]
                                 </div>
                             </div>
                         </div>
@@ -313,7 +238,7 @@
                 <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Information
+                           Information
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -321,7 +246,7 @@
                             <ul class="nav nav-pills pull-right">
                                 <li class="active"><a href="#website-pills" data-toggle="tab">Website</a>
                                 </li>
-                                @* <li><a href="#events-pills" data-toggle="tab">events</a>
+                               @* <li><a href="#events-pills" data-toggle="tab">events</a>
                                 </li>*@
                                 <li><a href="#username-pills" data-toggle="tab">Username</a>
                                 </li>
@@ -339,16 +264,16 @@
                             <div class="tab-content pull-left">
                                 <div class="tab-pane fade  in active" id="website-pills">
                                     <h4>Website URL</h4>
-                                    @if (ViewBag.facebookPageDetailsObj["website"] != null)
+                                    @if (ViewBag.facebookPageDetailsObj["website"] != null) 
                                     {
-                                        <a href="@ViewBag.facebookPageDetailsObj["website"]">@ViewBag.facebookPageDetailsObj["website"]</a>                                        
+                                    <a href="@ViewBag.facebookPageDetailsObj["website"]">@ViewBag.facebookPageDetailsObj["website"]</a>                                        
                                     }
                                     else
                                     {
-                                        <p>Website URL not found</p>
+                                        <p> Website URL not found</p>
                                     }
                                 </div>
-                                @* <div class="tab-pane fade" id="events-pills">
+                               @* <div class="tab-pane fade" id="events-pills">
                                     <h4>events Tab</h4>
                                     <p>Lorem ipsum co laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                                 </div>*@
@@ -358,9 +283,9 @@
                                 </div>
                                 <div class="tab-pane fade" id="products-pills">
                                     <h4>Products </h4>
-                                    @if (ViewBag.facebookPageDetailsObj["products"] != null)
+                                    @if (ViewBag.facebookPageDetailsObj["products"] != null) 
                                     {
-                                        <p>@ViewBag.facebookPageDetailsObj["products"]</p>                                        
+                                    <p>@ViewBag.facebookPageDetailsObj["products"]</p>                                        
                                     }
                                     else
                                     {
@@ -373,7 +298,7 @@
                                     {
                                         <p>@ViewBag.facebookPageDetailsObj["location"]["city"] </p>
                                     }
-                                    else
+                                     else
                                     {
                                         <p>No Data Found </p>
                                     }
@@ -391,9 +316,9 @@
                                 </div>
                                 <div class="tab-pane fade" id="links-pills">
                                     <h4>Links</h4>
-                                    @if (ViewBag.facebookPageDetailsObj["link"] != null)
+                                    @if (ViewBag.facebookPageDetailsObj["link"] != null) 
                                     {
-                                        <p>@Html.Raw(ViewBag.facebookPageDetailsObj["link"])</p>                                        
+                                    <p>@Html.Raw(ViewBag.facebookPageDetailsObj["link"])</p>                                        
                                     }
                                     else
                                     {
@@ -425,7 +350,7 @@
             $('.header_li').css("background-size", "cover");
             $('.header_li').css("-o-background-size", "cover");
             //$('#CompanyProfilePic').attr("src", "");
-            @*   //$('#CompanyName').html("@ViewBag.facebookPageDetailsObj["name"]");*@
+         @*   //$('#CompanyName').html("@ViewBag.facebookPageDetailsObj["name"]");*@
         });
     </script>
                                     }
@@ -435,7 +360,7 @@
 }
 else
 {
-    <script src="~/Themes/Socioboard/Contents/js/jquery-2.0.1.min.js"></script>
+     <script src="~/Themes/Socioboard/Contents/js/jquery-2.0.1.min.js"></script>
     <script>
         $(document).ready(function () {
             $('#facebookicon').hide();

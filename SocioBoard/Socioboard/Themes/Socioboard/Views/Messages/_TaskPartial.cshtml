@@ -30,14 +30,9 @@
                             <!-- .panel-heading -->
                             <div class="panel-body">
                                 <div id="accordion" class="panel-group">
-
                                     @{
                                         if (lstTasks.Count > 0)
-                                            
                                         {
-
-
-
                                             foreach (var item in lstTasks)
                                             {
                                                 Domain.Socioboard.Domain.User objdetails = (Domain.Socioboard.Domain.User)new JavaScriptSerializer().Deserialize(objApiUser.getUsersById(item.AssignTaskTo.ToString()), typeof(Domain.Socioboard.Domain.User));
@@ -82,7 +77,7 @@
                                                      <a class="collapsed" href="#@item.Id" data-parent="#accordion" data-toggle="collapse" @*onclick="Show_task('@item.Id')"*@>@GlobusMultiLanguageLib.Resources.Messages_TaskPartial_AssignedBy @objAssignUserDetails.UserName</a>
                                                  </p>
                                                                                                 <br>
-                                                                                                <span>@item.TaskMessage</span>
+                                                                                                <span>@Html.Raw(item.TaskMessage)</span>
                                                                                                 @*<i data-target="#EditModal" data-toggle="modal" class="fa fa-pencil fa-fw pull-right"></i>*@
                                                  @if (item.TaskStatus==true)
                                                  {

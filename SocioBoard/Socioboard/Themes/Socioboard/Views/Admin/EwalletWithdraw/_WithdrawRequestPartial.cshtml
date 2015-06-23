@@ -1,0 +1,110 @@
+﻿@using Socioboard.Helper;
+<thead>
+    <tr>
+        <th>Users</th>
+        <th>Money</th>
+        <th>Comments</th>
+        <th>User Email</th>
+        <th>Paypal Email</th>
+        <th>Swift Code</th>
+        <th>IBAN</th>
+        <th>Entry Date</th>
+        <th>Action</th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var item in (List<Domain.Socioboard.Domain.EwalletWithdrawRequest>)Model)
+    {
+        <tr class="odd gradeX">
+            <td>@item.UserName</td>
+            <td><i class="fa fa-usd fa-fw"></i>@item.WithdrawAmount</td>
+            @{
+                string comment = string.Empty;
+                if (item.Other == null || item.Other == "")
+                {
+                    comment = "Not Interested";
+                }
+                else
+                {
+                    comment = item.Other;
+                }
+                <td>
+                    @comment
+                </td>
+            }
+          
+            <td class="center">@item.UserEmail</td>
+            @{
+                string paypalemail = string.Empty;
+                if (item.PaypalEmail == "" || item.PaypalEmail == null)
+                {
+                    paypalemail = "- - - - -";
+                }
+                else
+                {
+
+                    paypalemail = item.PaypalEmail;
+                }
+                <td class="center">@paypalemail</td>}
+            @{
+                string swiftcode = string.Empty;
+                if (item.SwiftCode == "" || item.SwiftCode == null)
+                {
+                    swiftcode = "- - - - -";
+                }
+                else
+                {
+                    swiftcode = item.SwiftCode;
+                }
+                <td class="center">@swiftcode</td>
+            }
+            @{
+                string iban = string.Empty;
+                if (item.IbanCode == "" || item.IbanCode == null)
+                {
+                    iban = "- - - - -";
+                }
+                else
+                {
+                    iban = item.IbanCode;
+                }
+                <td class="center">@iban</td>
+            }
+            @{
+        string datetime = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.RequestDate.ToLocalTime().ToString());
+              <td class="center">@datetime</td>
+            }
+            <td>
+                @{
+                    string status = string.Empty;
+                    if (item.Status == 0) { status = "Received"; }
+                    else if (item.Status == 1) { status = "Processing"; }
+                    else if (item.Status == 2) { status = "Paid"; }
+                    else if (item.Status == 3) { status = "Cancled"; }
+                    <div class="pull-left">
+                        @status
+                    </div>    
+                }
+                <div class="btn-group pull-right">
+                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-chevron-down"></i>
+                    </button>
+                    <ul class="dropdown-menu slidedown">
+                        <li>
+                            <a href="#" onclick="changestatus('0','@item.Id')">Received
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="changestatus('1','@item.Id')">Processing 
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="changestatus('2','@item.Id')">Paid
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    }
+</tbody>

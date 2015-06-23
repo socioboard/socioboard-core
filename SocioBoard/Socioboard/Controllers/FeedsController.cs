@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using System.Web.UI;
 
 namespace Socioboard.Controllers
 {
@@ -23,43 +24,60 @@ namespace Socioboard.Controllers
         //
         // GET: /Feeds/
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult Index()
         {
-            if (Session["Paid_User"].ToString() == "Unpaid")
+            if (Session["User"] != null)
             {
-                return RedirectToAction("Billing", "PersonalSetting");
+                
+                if (Session["Paid_User"].ToString() == "Unpaid")
+                {
+                    return RedirectToAction("Billing", "PersonalSetting");
+                }
+                else
+                {
+                    return View();
+                }
             }
             else
             {
-                return View();
+                return RedirectToAction("Index", "Index");
             }
             // return View();
         }
+
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore=true)]
         public ActionResult loadaccount()
         {
 
             return PartialView("_FeedLeftPartial");
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult loadfeeds()
         {
 
             return PartialView("_FeedRightPartial");
         }
+
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult loadmenu()
         {
             return PartialView("_FeedMenu", Helper.SBUtils.GetFeedsMenuAccordingToGroup());
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult LoadFeedPartialPage(string network, string id)
         {
             ViewBag.id = id;
             return PartialView("_FeedPartial", network);
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult wallposts(string op, string load, string profileid)
         {
-            string datetime = Request.Form["localtime"].ToString();
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            //string datetime = Request.Form["localtime"].ToString();
             ViewBag.datetime = datetime;
             Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
             if (load == "first")
@@ -103,9 +121,11 @@ namespace Socioboard.Controllers
         //    return PartialView("_Panel2Partial", dictwallposts);
         //}
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult AjaxFeeds(string profileid, string load)
         {
-            string datetime = Request.Form["localtime"].ToString();
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            //string datetime = Request.Form["localtime"].ToString();
             ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             if (load == "first")
@@ -209,6 +229,7 @@ namespace Socioboard.Controllers
         //    return PartialView("_Panel3Partial", dictscheduler);
         //}
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult FacebookComment(string fbcommentid, string profileid, string message)
         {
 
@@ -219,6 +240,7 @@ namespace Socioboard.Controllers
             return Content(ret);
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult FacebookLike(string fbid, string profileid, string msgid)
         {
             Api.Groups.Groups ApiobjGroups = new Api.Groups.Groups();
@@ -246,9 +268,11 @@ namespace Socioboard.Controllers
         //    return PartialView("_Panel1Partial", dictwallposts);
         //}
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult TwitterNetworkDetails(string profileid, string load)
         {
-            string datetime = Request.Form["localtime"].ToString();
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            //string datetime = Request.Form["localtime"].ToString();
             ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
@@ -295,9 +319,11 @@ namespace Socioboard.Controllers
         //    return PartialView("_Panel2Partial", dictwallposts);
         //}
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult TwitterFeeds(string profileid, string load)
         {
-            string datetime = Request.Form["localtime"].ToString();
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            //string datetime = Request.Form["localtime"].ToString();
             ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             if (load == "first")
@@ -342,9 +368,11 @@ namespace Socioboard.Controllers
         //    return PartialView("_Panel1Partial", dictwallposts);
         //}
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult linkedinwallposts(string profileid, string load)
         {
-            string datetime = Request.Form["localtime"].ToString();
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            //string datetime = Request.Form["localtime"].ToString();
             ViewBag.datetime = datetime;
             Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
             if (load == "first")
@@ -388,9 +416,11 @@ namespace Socioboard.Controllers
         //    return PartialView("_Panel2Partial", dictwallposts);
         //}
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult LinkedinFeeds(string profileid, string load)
         {
-            string datetime = Request.Form["localtime"].ToString();
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            //string datetime = Request.Form["localtime"].ToString();
             ViewBag.datetime = datetime;
             if (load == "first")
             {
@@ -421,6 +451,7 @@ namespace Socioboard.Controllers
         }
 
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult InstagramImages(string profileid)
         {
             //List<object> lstobject = new List<object>();
@@ -506,6 +537,7 @@ namespace Socioboard.Controllers
 
         //}
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult TumblrImages(string profileid, string load)
         {
             if (load == "first")
@@ -542,6 +574,7 @@ namespace Socioboard.Controllers
 
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult YoutubeChannelVideos(string profileid)
         {
             //List<object> lstobject = new List<object>();
@@ -596,6 +629,7 @@ namespace Socioboard.Controllers
             return PartialView("_ImagePartial", dictwallposts);
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult LikeUnlikeInstagramPost(FormCollection _FormCollection)
         {
             string LikeCount = _FormCollection["LikeCount"];
@@ -622,6 +656,7 @@ namespace Socioboard.Controllers
 
         //------vikash-----------//
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult retweetmessage(string MessageId, string ProfileId)
         {
             try
@@ -637,6 +672,7 @@ namespace Socioboard.Controllers
             }
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult favoritemessage(string MessageId, string ProfileId)
         {
             try
@@ -652,6 +688,7 @@ namespace Socioboard.Controllers
             }
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult spamuser(string SpammerScreanName, string UserProfileId)
         {
             try
@@ -669,6 +706,7 @@ namespace Socioboard.Controllers
 
         // Edited by Antima
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult ShowPopUp(string profileId, string Id)
         {
 
@@ -682,6 +720,7 @@ namespace Socioboard.Controllers
             return PartialView("_MailSendingPartial", linkinfo);
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult ShowTwtMailPopUp(string Id)
         {
 
@@ -693,6 +732,7 @@ namespace Socioboard.Controllers
             //return PartialView("_TwitterMailSendingPartial", twtfeed);
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult SendFeedMail(string emailId, string feed, string fromname)
         {
             Api.MailSender.MailSender ApiobjMailSender = new Api.MailSender.MailSender();
@@ -705,6 +745,7 @@ namespace Socioboard.Controllers
             return Content(mailsender);
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult linkedinPageWallPost(string profileid)
         {
             User objUser = (User)System.Web.HttpContext.Current.Session["User"];
@@ -717,6 +758,8 @@ namespace Socioboard.Controllers
 
             return PartialView("_LinkedinCompanyPagePartial");
         }
+
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult linkedinpagecomentonpost(string pageid, string updatekey, string comment)
         {
             string returnContent = string.Empty;
@@ -730,6 +773,7 @@ namespace Socioboard.Controllers
             return Content(returnContent);
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult LikeCompanyPagePost(string pageid, string updatekey, string isLike)
         {
             string returnContent = string.Empty;
@@ -743,6 +787,7 @@ namespace Socioboard.Controllers
             return Content(returnContent);
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult CreatePostOnPage(string Pageid, string Post)
         {
             string returnContent = string.Empty;
@@ -758,6 +803,7 @@ namespace Socioboard.Controllers
 
         // Edited by Antima
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult TwitterUserTweet(string ProfileId)
         {
             List<object> lstobject = new List<object>();
@@ -775,6 +821,7 @@ namespace Socioboard.Controllers
             return PartialView("_Panel3Partial", dictUserTweet);
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult TwitterRetweets(string ProfileId)
         {
             List<object> lstobject = new List<object>();
@@ -792,6 +839,7 @@ namespace Socioboard.Controllers
             return PartialView("_Panel3Partial", dictRetweets);
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult TwitterMentions(string ProfileId)
         {
             List<object> lstobject = new List<object>();
@@ -809,6 +857,7 @@ namespace Socioboard.Controllers
             return PartialView("_Panel3Partial", dictMentions);
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult FacebookUserFeeds(string ProfileId)
         {
             List<object> lstobject = new List<object>();
@@ -826,8 +875,8 @@ namespace Socioboard.Controllers
             return PartialView("_Panel3Partial", dictUserFeeds);
         }
 
-        public ActionResult FacebookStatus
-            (string ProfileId)
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
+        public ActionResult FacebookStatus(string ProfileId)
         {
             List<object> lstobject = new List<object>();
             Dictionary<string, List<object>> dictStatus = new Dictionary<string, List<object>>();
@@ -844,6 +893,7 @@ namespace Socioboard.Controllers
             return PartialView("_Panel3Partial", dictStatus);
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult FacebookTag(string ProfileId)
         {
             List<object> lstobject = new List<object>();
@@ -862,6 +912,7 @@ namespace Socioboard.Controllers
         }
 
 
+        //[OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult SearchFacebookFeeds(string keyword)
         {
             List<Domain.Socioboard.Domain.FacebookFeed> lstFacebookFeedsSearch = new List<Domain.Socioboard.Domain.FacebookFeed>();
@@ -883,6 +934,7 @@ namespace Socioboard.Controllers
         }
 
 
+        //[OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult SearchTwitterFeeds(string keyword)
         {
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
@@ -893,9 +945,11 @@ namespace Socioboard.Controllers
         }
 
 
+        //[OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult wallposts_FeedsSearch(string op, string load, string profileid, string keyword)
         {
-            string datetime = Request.Form["localtime"].ToString();
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            //string datetime = Request.Form["localtime"].ToString();
             ViewBag.datetime = datetime;
             Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
             if (load == "first")
@@ -926,9 +980,11 @@ namespace Socioboard.Controllers
             return PartialView("_Panel1Partial", dictwallposts);
         }
 
+        //[OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult AjaxFeeds_FeedsSearch(string profileid, string load, string keyword)
         {
-            string datetime = Request.Form["localtime"].ToString();
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            //string datetime = Request.Form["localtime"].ToString();
             ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             if (load == "first")
@@ -959,9 +1015,11 @@ namespace Socioboard.Controllers
             return PartialView("_Panel2Partial", dictwallposts);
         }
 
+        //[OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult FacebookUserFeeds_FeedsSearch(string ProfileId, string keyword)
         {
-            string datetime = Request.Form["localtime"].ToString();
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            //string datetime = Request.Form["localtime"].ToString();
             ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             Dictionary<string, List<object>> dictUserFeeds = new Dictionary<string, List<object>>();
@@ -986,9 +1044,11 @@ namespace Socioboard.Controllers
             return PartialView("_Panel3Partial", dictUserFeeds);
         }
 
+        //[OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult wallposts_FeedsSearch_Twitter(string op, string load, string profileid, string keyword)
         {
-            string datetime = Request.Form["localtime"].ToString();
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            //string datetime = Request.Form["localtime"].ToString();
             ViewBag.datetime = datetime;
             Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
             if (load == "first")
@@ -1019,9 +1079,11 @@ namespace Socioboard.Controllers
             return PartialView("_Panel1Partial", dictwallposts);
         }
 
+        //[OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult AjaxFeeds_FeedsSearch_Twitter(string profileid, string load, string keyword)
         {
-            string datetime = Request.Form["localtime"].ToString();
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            //string datetime = Request.Form["localtime"].ToString();
             ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             if (load == "first")
@@ -1052,9 +1114,11 @@ namespace Socioboard.Controllers
             return PartialView("_Panel2Partial", dictwallposts);
         }
 
+        //[OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult UserFeeds_FeedsSearch_Twitter(string ProfileId, string keyword)
         {
-            string datetime = Request.Form["localtime"].ToString();
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            //string datetime = Request.Form["localtime"].ToString();
             ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             Dictionary<string, List<object>> dictUserFeeds = new Dictionary<string, List<object>>();
@@ -1081,9 +1145,11 @@ namespace Socioboard.Controllers
 
 
 
+        //[OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult TwitterUserTweet_FeedsSearch(string ProfileId, string keyword)
         {
-            string datetime = Request.Form["localtime"].ToString();
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            //string datetime = Request.Form["localtime"].ToString();
             ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             Dictionary<string, List<object>> dictUserTweet = new Dictionary<string, List<object>>();
@@ -1100,9 +1166,11 @@ namespace Socioboard.Controllers
             return PartialView("_Panel3Partial", dictUserTweet);
         }
 
+        //[OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult TwitterRetweets_FeedsSearch(string ProfileId, string keyword)
         {
-            string datetime = Request.Form["localtime"].ToString();
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            //string datetime = Request.Form["localtime"].ToString();
             ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             Dictionary<string, List<object>> dictRetweets = new Dictionary<string, List<object>>();
@@ -1119,9 +1187,11 @@ namespace Socioboard.Controllers
             return PartialView("_Panel3Partial", dictRetweets);
         }
 
+        //[OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult TwitterMentions_FeedsSearch(string ProfileId, string keyword)
         {
-            string datetime = Request.Form["localtime"].ToString();
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            //string datetime = Request.Form["localtime"].ToString();
             ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             Dictionary<string, List<object>> dictMentions = new Dictionary<string, List<object>>();
@@ -1138,9 +1208,11 @@ namespace Socioboard.Controllers
             return PartialView("_Panel3Partial", dictMentions);
         }
 
+        //[OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult TwitterFeeds_FeedsSearch(string profileid, string load, string keyword)
         {
-            string datetime = Request.Form["localtime"].ToString();
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            //string datetime = Request.Form["localtime"].ToString();
             ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             if (load == "first")
@@ -1167,9 +1239,11 @@ namespace Socioboard.Controllers
             return PartialView("_Panel2Partial", dictwallposts);
         }
 
+        //[OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult TwitterNetworkDetails_FeedsSearch(string profileid, string load, string keyword)
         {
-            string datetime = Request.Form["localtime"].ToString();
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            //string datetime = Request.Form["localtime"].ToString();
             ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             Dictionary<string, List<object>> dictwallposts = new Dictionary<string, List<object>>();
@@ -1200,9 +1274,11 @@ namespace Socioboard.Controllers
 
 
         //Added by Sumit Gupta[15-02-2015]
+        //[OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult AddLoadNewFacebookNewsFeeds(string profileid)
         {
-            string datetime = Request.Form["localtime"].ToString();
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            //string datetime = Request.Form["localtime"].ToString();
             ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
             Dictionary<string, List<object>> dictFeeds = new Dictionary<string, List<object>>();
@@ -1238,9 +1314,11 @@ namespace Socioboard.Controllers
         }
 
         //Added by Sumit Gupta[15-02-2015]
+        //[OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult AddLoadNewTwitterFeeds(string profileid)
         {
-            string datetime = Request.Form["localtime"].ToString();
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            //string datetime = Request.Form["localtime"].ToString();
             ViewBag.datetime = datetime;
             List<object> lstobject = new List<object>();
 
@@ -1258,9 +1336,11 @@ namespace Socioboard.Controllers
             return PartialView("_Panel2Partial", dictwallposts);
         }
 
+        //[OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult AddLoadNewFacebookWallPosts(string profileid, string type)
         {
-            string datetime = Request.Form["localtime"].ToString();
+            string datetime = Helper.Extensions.ToClientTime(DateTime.UtcNow);
+            //string datetime = Request.Form["localtime"].ToString();
             ViewBag.datetime = datetime;
             bool isUserFeedsCalled = false;
             if (type!=null)
@@ -1312,6 +1392,21 @@ namespace Socioboard.Controllers
                 return PartialView("_Panel1Partial", dictwallposts);
             //}
             
+        }
+
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
+        public ActionResult GooglePlusFeeds(string Id)
+        {
+            Api.GooglePlusActivities.GooglePlusActivities ApiGooglePlusActivities = new Api.GooglePlusActivities.GooglePlusActivities();
+            Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+            List<Domain.Socioboard.Domain.GooglePlusActivities> lstGooglePlusActivities = (List<Domain.Socioboard.Domain.GooglePlusActivities>)new JavaScriptSerializer().Deserialize(ApiGooglePlusActivities.getgoogleplusActivity(_User.Id.ToString(), Id), typeof(List<Domain.Socioboard.Domain.GooglePlusActivities>));
+            if (lstGooglePlusActivities.Count > 0)
+            {
+                return PartialView("_GplusActivityPartial", lstGooglePlusActivities);
+            }
+            else {
+                return Content("no_data");
+            }
         }
     }
 }

@@ -337,16 +337,16 @@
   </wsdl:binding>
   <wsdl:service name="CompanyDashboard">
     <wsdl:port name="CompanyDashboardSoap" binding="tns:CompanyDashboardSoap">
-      <soap:address location="http://localhost:6361/Services/CompanyDashboard.asmx" />
+      <soap:address location="http://localhost:6361/services/CompanyDashboard.asmx" />
     </wsdl:port>
     <wsdl:port name="CompanyDashboardSoap12" binding="tns:CompanyDashboardSoap12">
-      <soap12:address location="http://localhost:6361/Services/CompanyDashboard.asmx" />
+      <soap12:address location="http://localhost:6361/services/CompanyDashboard.asmx" />
     </wsdl:port>
     <wsdl:port name="CompanyDashboardHttpGet" binding="tns:CompanyDashboardHttpGet">
-      <http:address location="http://localhost:6361/Services/CompanyDashboard.asmx" />
+      <http:address location="http://localhost:6361/services/CompanyDashboard.asmx" />
     </wsdl:port>
     <wsdl:port name="CompanyDashboardHttpPost" binding="tns:CompanyDashboardHttpPost">
-      <http:address location="http://localhost:6361/Services/CompanyDashboard.asmx" />
+      <http:address location="http://localhost:6361/services/CompanyDashboard.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

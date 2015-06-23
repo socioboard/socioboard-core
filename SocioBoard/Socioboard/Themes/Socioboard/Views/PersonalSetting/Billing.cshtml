@@ -29,12 +29,11 @@
             contentType: "application/json; charset=utf-8",
             dataType: "html",
             success: function (msg) {
-                if (msg == "success") {
-                    window.location = "../Home/Index";
-                } else {
-                    window.location = msg;
-                }
-
+			if(msg=="success"){
+			window.location="../Home/Index";
+			}else{
+                window.open(msg);
+				}
             }
         });
 

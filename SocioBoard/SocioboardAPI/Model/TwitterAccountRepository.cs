@@ -7,7 +7,7 @@ using System.Collections;
 using NHibernate.Criterion;
 using Domain.Socioboard.Domain;
 using Api.Socioboard.Helper;
-
+using NHibernate.Linq;
 
 namespace Api.Socioboard.Services
 {
@@ -456,6 +456,27 @@ namespace Api.Socioboard.Services
             }//End Session
         }
 
+        public List<Domain.Socioboard.Domain.TwitterAccount> getTwtAccount()
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        List<Domain.Socioboard.Domain.TwitterAccount> lstTwtAcc = session.Query<Domain.Socioboard.Domain.TwitterAccount>().Take(20).ToList();
+                        return lstTwtAcc;
+                    }
+                    catch (Exception ex)
+                    {
+                        return new List<Domain.Socioboard.Domain.TwitterAccount>();
+                    }
+                }
+            }
+        }
+
 
 
 
@@ -463,5 +484,7 @@ namespace Api.Socioboard.Services
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

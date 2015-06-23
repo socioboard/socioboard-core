@@ -84,7 +84,7 @@
         </li>
             }
         }
-        if (item.Key == "linkedin" || item.Key == "linkedincompanypage")
+        @*if (item.Key == "linkedin" || item.Key == "linkedincompanypage")
         {
 
             if (Cnt == 0)
@@ -93,15 +93,15 @@
                     @:<a href="#">LinkedIn <span class="fa arrow"></span></a>
                     @:<ul class="nav nav-third-level">   
                  Cnt++;
-            }
+            }*@
 
 
-            if (item.Key == "linkedin")
+        if (item.Key == "linkedin")
+        {
+            List<object> lstLinkedinAccount = (List<object>)item.Value;
+            string profileimage = string.Empty;
+            if (lstLinkedinAccount.Count > 0)
             {
-                List<object> lstLinkedinAccount = (List<object>)item.Value;
-                string profileimage = string.Empty;
-                if (lstLinkedinAccount.Count > 0)
-                {
 
                       <li>
                       <a href="#">LinkedIn Account<span class="fa arrow"></span></a>
@@ -124,16 +124,16 @@
              
                
            
-                }
             }
+        }
 
 
-            if (item.Key == "linkedincompanypage")
+        if (item.Key == "linkedincompanypage")
+        {
+            List<object> lstLinkedInCompanyPage = (List<object>)item.Value;
+            string profileimage = string.Empty;
+            if (lstLinkedInCompanyPage.Count > 0)
             {
-                List<object> lstLinkedInCompanyPage = (List<object>)item.Value;
-                string profileimage = string.Empty;
-                if (lstLinkedInCompanyPage.Count > 0)
-                {
 
                         <li>
                         <a href="#">LinkedIn Company Page<span class="fa arrow"></span></a>
@@ -152,13 +152,13 @@
                         }
                           </ul>
                                 </li>
-                }
-                @:</ul>
-                    <!-- /.nav-third-level -->
-                @:</li>
-                                             
             }
+               @* @:</ul>
+                    <!-- /.nav-third-level -->
+                @:</li>*@
+                                             
         }
+        @*}*@
         if (item.Key == "instagram")
         {
             List<object> lstInstagramAccount = (List<object>)item.Value;
@@ -231,6 +231,26 @@
             </ul>
             <!-- /.nav-third-level -->
         </li>
+            }
+        }
+        if (item.Key == "gplus")
+        {
+            List<object> lstGooglePlusAccount = (List<object>)item.Value;
+            if (lstGooglePlusAccount.Count > 0)
+            {
+             <li>
+                <a href="#">GooglePlus <span class="fa arrow"></span></a>
+                <ul class="nav nav-third-level">
+                @foreach (var _GPlusAccount in lstGooglePlusAccount)
+                {
+                    GooglePlusAccount objYoutubeAccount = (GooglePlusAccount)_GPlusAccount;
+                    <li onclick="gplusdetails('@objYoutubeAccount.GpUserId');" id="first-profile-load_@pcount">
+                        <a href="#"><img src="@objYoutubeAccount.GpProfileImage" width="20" height="20"></img>&nbsp;@objYoutubeAccount.GpUserName</a>
+                    </li> 
+                    pcount++;
+                }
+                </ul>
+            </li>
             }
         }
         @*if (item.Key == "wordpress")

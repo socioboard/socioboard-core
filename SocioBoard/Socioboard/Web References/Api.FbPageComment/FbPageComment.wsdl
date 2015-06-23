@@ -347,16 +347,16 @@
   </wsdl:binding>
   <wsdl:service name="FbPageComment">
     <wsdl:port name="FbPageCommentSoap" binding="tns:FbPageCommentSoap">
-      <soap:address location="http://localhost:6361/Services/FbPageComment.asmx" />
+      <soap:address location="http://localhost:6361/services/FbPageComment.asmx" />
     </wsdl:port>
     <wsdl:port name="FbPageCommentSoap12" binding="tns:FbPageCommentSoap12">
-      <soap12:address location="http://localhost:6361/Services/FbPageComment.asmx" />
+      <soap12:address location="http://localhost:6361/services/FbPageComment.asmx" />
     </wsdl:port>
     <wsdl:port name="FbPageCommentHttpGet" binding="tns:FbPageCommentHttpGet">
-      <http:address location="http://localhost:6361/Services/FbPageComment.asmx" />
+      <http:address location="http://localhost:6361/services/FbPageComment.asmx" />
     </wsdl:port>
     <wsdl:port name="FbPageCommentHttpPost" binding="tns:FbPageCommentHttpPost">
-      <http:address location="http://localhost:6361/Services/FbPageComment.asmx" />
+      <http:address location="http://localhost:6361/services/FbPageComment.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

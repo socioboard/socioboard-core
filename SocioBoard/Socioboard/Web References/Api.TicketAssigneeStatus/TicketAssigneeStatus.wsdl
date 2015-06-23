@@ -310,16 +310,16 @@
   </wsdl:binding>
   <wsdl:service name="TicketAssigneeStatus">
     <wsdl:port name="TicketAssigneeStatusSoap" binding="tns:TicketAssigneeStatusSoap">
-      <soap:address location="http://localhost:6361/Services/TicketAssigneeStatus.asmx" />
+      <soap:address location="http://localhost:6361/services/TicketAssigneeStatus.asmx" />
     </wsdl:port>
     <wsdl:port name="TicketAssigneeStatusSoap12" binding="tns:TicketAssigneeStatusSoap12">
-      <soap12:address location="http://localhost:6361/Services/TicketAssigneeStatus.asmx" />
+      <soap12:address location="http://localhost:6361/services/TicketAssigneeStatus.asmx" />
     </wsdl:port>
     <wsdl:port name="TicketAssigneeStatusHttpGet" binding="tns:TicketAssigneeStatusHttpGet">
-      <http:address location="http://localhost:6361/Services/TicketAssigneeStatus.asmx" />
+      <http:address location="http://localhost:6361/services/TicketAssigneeStatus.asmx" />
     </wsdl:port>
     <wsdl:port name="TicketAssigneeStatusHttpPost" binding="tns:TicketAssigneeStatusHttpPost">
-      <http:address location="http://localhost:6361/Services/TicketAssigneeStatus.asmx" />
+      <http:address location="http://localhost:6361/services/TicketAssigneeStatus.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -286,7 +286,7 @@ namespace Api.Socioboard.Services
             objTask.AssignTaskTo = idtoassign;
             objTask.TaskStatus = false;
             objTask.TaskMessage = descritption;
-            objTask.TaskMessageDate = DateTime.Parse(messagedate);
+            objTask.TaskMessageDate = DateTime.Parse(messagedate).ToLocalTime();
             objTask.UserId = Guid.Parse(userid);
             Guid taskid = Guid.NewGuid();
             objTask.Id = taskid;
@@ -309,7 +309,45 @@ namespace Api.Socioboard.Services
                 objcmtRepo.addTaskComment(objcmt);
             }
         }
-        
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public void AddNewTaskWithGroupForApps(string description, string messagedate, string userid, string assigntoId, string comment, string groupid)
+        {
+            string descritption = description;
+            Guid idtoassign = Guid.Empty;
+            idtoassign = Guid.Parse(assigntoId);
+
+            Domain.Socioboard.Domain.Tasks objTask = new Domain.Socioboard.Domain.Tasks();
+            TaskRepository objTaskRepo = new TaskRepository();
+            objTask.AssignDate = DateTime.Now.ToString("yyyy-MM-dd H:mm:ss").ToString();
+            objTask.AssignTaskTo = idtoassign;
+            objTask.TaskStatus = false;
+            objTask.TaskMessage = descritption;
+            objTask.TaskMessageDate = DateTime.Parse(messagedate).ToLocalTime();
+            objTask.UserId = Guid.Parse(userid);
+            Guid taskid = Guid.NewGuid();
+            objTask.Id = taskid;
+            objTask.GroupId = Guid.Parse(groupid);
+            objTaskRepo.addTask(objTask);
+
+            /////////////////       
+            string Comment = comment;
+            if (!string.IsNullOrEmpty(comment))
+            {
+                string curdate = DateTime.Now.ToString("yyyy-MM-dd H:mm:ss").ToString();
+                Domain.Socioboard.Domain.TaskComment objcmt = new Domain.Socioboard.Domain.TaskComment();
+                TaskCommentRepository objcmtRepo = new TaskCommentRepository();
+                objcmt.Comment = comment;
+                objcmt.CommentDate = DateTime.Now;
+                objcmt.EntryDate = DateTime.Now;
+                objcmt.Id = Guid.NewGuid();
+                objcmt.TaskId = objTask.Id;
+                objcmt.UserId = Guid.Parse(userid);
+                objcmtRepo.addTaskComment(objcmt);
+            }
+        }
+
         //ChangeTaskStatus
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]

@@ -360,16 +360,16 @@
   </wsdl:binding>
   <wsdl:service name="TeamMemberProfile">
     <wsdl:port name="TeamMemberProfileSoap" binding="tns:TeamMemberProfileSoap">
-      <soap:address location="http://localhost:6361/Services/TeamMemberProfile.asmx" />
+      <soap:address location="http://localhost:6361/services/TeamMemberProfile.asmx" />
     </wsdl:port>
     <wsdl:port name="TeamMemberProfileSoap12" binding="tns:TeamMemberProfileSoap12">
-      <soap12:address location="http://localhost:6361/Services/TeamMemberProfile.asmx" />
+      <soap12:address location="http://localhost:6361/services/TeamMemberProfile.asmx" />
     </wsdl:port>
     <wsdl:port name="TeamMemberProfileHttpGet" binding="tns:TeamMemberProfileHttpGet">
-      <http:address location="http://localhost:6361/Services/TeamMemberProfile.asmx" />
+      <http:address location="http://localhost:6361/services/TeamMemberProfile.asmx" />
     </wsdl:port>
     <wsdl:port name="TeamMemberProfileHttpPost" binding="tns:TeamMemberProfileHttpPost">
-      <http:address location="http://localhost:6361/Services/TeamMemberProfile.asmx" />
+      <http:address location="http://localhost:6361/services/TeamMemberProfile.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -641,10 +641,10 @@
     <value>About</value>
   </data>
   <data name="Index_Company_BtnReset" xml:space="preserve">
-    <value>Reset Button</value>
+    <value>Reset</value>
   </data>
   <data name="Index_Company_BtnSubmit" xml:space="preserve">
-    <value>Submit Button</value>
+    <value>Submit</value>
   </data>
   <data name="Index_Company_Careers" xml:space="preserve">
     <value>Careers</value>
@@ -2410,7 +2410,7 @@ Interested in using Socialboard Enterprise version for your business now? Post y
     <value>Enter your email below and see for yourself.</value>
   </data>
   <data name="Index_Contact_Reset" xml:space="preserve">
-    <value>Reset Button</value>
+    <value>Reset</value>
   </data>
   <data name="SocialBoardIndex_Contact_SendYourSelfAnAwesomeVideo" xml:space="preserve">
     <value>Send yourself an awesome Socialboard explainer video</value>
@@ -2419,7 +2419,7 @@ Interested in using Socialboard Enterprise version for your business now? Post y
     <value>Socialboard Story video</value>
   </data>
   <data name="Index_Contact_Submit" xml:space="preserve">
-    <value>Submit Button</value>
+    <value>Submit</value>
   </data>
   <data name="SocialBoard_Index_Contact_UnderstandSocioboardBetter" xml:space="preserve">
     <value>understand Socialboard better!</value>
@@ -2656,7 +2656,7 @@ Interested in using Socialboard Enterprise version for your business now? Post y
     <value>Twinba srl</value>
   </data>
   <data name="Index_Index_ImgPathTryNow" xml:space="preserve">
-    <value>/Themes/Socioboard/Contents/img/trail-butn.jpg</value>
+    <value>/Themes/Socialboard/Contents/img/trail-butn.jpg</value>
   </data>
   <data name="Discovery_DiscoveryPartial_TBTextSearchPlaceholder" xml:space="preserve">
     <value>Type your Keyword here...</value>
@@ -2716,7 +2716,7 @@ Interested in using Socialboard Enterprise version for your business now? Post y
     <value>E - Wallet</value>
   </data>
   <data name="Index_Index_ImgSignupforFree" xml:space="preserve">
-    <value>/Themes/Socioboard/Contents/img/signup-butn.png</value>
+    <value>/Themes/Socialboard/Contents/img/signup-butn.png</value>
   </data>
   <data name="MyStuff_SummaryPartial_AffiliateFee" xml:space="preserve">
     <value>Affiliate Fee</value>
@@ -2964,7 +2964,7 @@ Interested in using Socialboard Enterprise version for your business now? Post y
     <value>Open Source social media management at your finger tips</value>
   </data>
   <data name="MyStuff_Affiliates_AjaxShow2" xml:space="preserve">
-    <value>Join the movement, click below link.</value>
+    <value>Share the movement, click below link.</value>
   </data>
   <data name="MyStuff_Affiliates_ReferralURL" xml:space="preserve">
     <value>Public Referral URL</value>
@@ -2995,5 +2995,194 @@ Interested in using Socialboard Enterprise version for your business now? Post y
   </data>
   <data name="SocioBoard_Index_Company_PartnersDescription2" xml:space="preserve">
     <value>                               Socioboard is a proud member of Nasscom’s 10,000 StartUps and secured 2nd rank in Indian Institute of Management’s start up fest DisruptIt 2014.</value>
+  </data>
+  <data name="Feed_Index_Reply" xml:space="preserve">
+    <value>Reply</value>
+  </data>
+  <data name="Feed_Index_Tweet" xml:space="preserve">
+    <value>Tweet</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Friends" xml:space="preserve">
+    <value>Friends</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_HaveYouInCircles" xml:space="preserve">
+    <value>Have You In Circles</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_InYourCircles" xml:space="preserve">
+    <value>In Your Circles</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_youhavenogroup" xml:space="preserve">
+    <value>you have no group</value>
+  </data>
+  <data name="Home_PofilePartial_GooglePlus" xml:space="preserve">
+    <value>GooglePlus</value>
+  </data>
+  <data name="Message_Index_Chat" xml:space="preserve">
+    <value>Chat</value>
+  </data>
+  <data name="Message_Index_ConnectProfile" xml:space="preserve">
+    <value>Connect a Profile</value>
+  </data>
+  <data name="Message_Index_CreateTask" xml:space="preserve">
+    <value>Create Task</value>
+  </data>
+  <data name="Message_Index_Filter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="Message_Index_PROFILES" xml:space="preserve">
+    <value>PROFILES</value>
+  </data>
+  <data name="Shared_Site_InboxMessage" xml:space="preserve">
+    <value>Inbox Message</value>
+  </data>
+  <data name="Shared_Site_RemoveImage" xml:space="preserve">
+    <value>Remove Image</value>
+  </data>
+  <data name="SocialBoard_BusinessSetting_Index_Sorry" xml:space="preserve">
+    <value>Sorry, The Buisness Page of this Group is Not Created!</value>
+  </data>
+  <data name="SocialBoard_BusinessSetting_Index_SorryDefault" xml:space="preserve">
+    <value>Sorry, you are not able to Setting in Default Group</value>
+  </data>
+  <data name="Socialplex_Home_Index_AttachProfile" xml:space="preserve">
+    <value>Attach Your Social Network Profile for Beginning With Socialplex</value>
+  </data>
+  <data name="Socialplex_Home_Index_AttachYourProfile" xml:space="preserve">
+    <value>Attach Your Profile</value>
+  </data>
+  <data name="Message_sentMessagePartial" xml:space="preserve">
+    <value>Sent Messages</value>
+  </data>
+  <data name="Message_sentMessagePartial_Custom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="Message__InboxMessageTypePartial_Mentions" xml:space="preserve">
+    <value>Mentions</value>
+  </data>
+  <data name="Message__InboxMessageTypePartial_NewFollowers" xml:space="preserve">
+    <value>New Followers</value>
+  </data>
+  <data name="Message__InboxMessageTypePartial_Notifications" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="Message__InboxMessageTypePartial_Retweets" xml:space="preserve">
+    <value>Retweets</value>
+  </data>
+  <data name="Message__InboxPartial_Following" xml:space="preserve">
+    <value>Following</value>
+  </data>
+  <data name="Message__InboxPartial_mention" xml:space="preserve">
+    <value>mention</value>
+  </data>
+  <data name="Message__InboxPartial_NewFollowerAlert" xml:space="preserve">
+    <value>New Follower Alert</value>
+  </data>
+  <data name="Message__InboxPartial_retweetedby" xml:space="preserve">
+    <value>retweeted by</value>
+  </data>
+  <data name="Publishing_DraftPartial_Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="Publishing_DraftPartial_Pending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="Report_FBPageReports_Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="Report_FBPageReports_days" xml:space="preserve">
+    <value>days</value>
+  </data>
+  <data name="Report_FBPageReports_FACEBOOKSTATS" xml:space="preserve">
+    <value>FACEBOOK STATS</value>
+  </data>
+  <data name="Report_FBPageReports_IMPRESSIONSBYLOCATION" xml:space="preserve">
+    <value>IMPRESSIONS BY LOCATION</value>
+  </data>
+  <data name="Report_FBPageReports_PAGEIMPRESSIONS" xml:space="preserve">
+    <value>PAGE IMPRESSIONS</value>
+  </data>
+  <data name="Report_ReportMenuPartial_GroupReport" xml:space="preserve">
+    <value>Group Report</value>
+  </data>
+  <data name="Index_Index_OurApps" xml:space="preserve">
+    <value>Our Apps</value>
+  </data>
+  <data name="Index_Index_WorldNo1" xml:space="preserve">
+    <value>World’s #1 Open Source Social Technology Enabler!</value>
+  </data>
+  <data name="Index_Index_WorldNo1H3" xml:space="preserve">
+    <value>We build social technology which helps businesses and brands to better understand social media and harness its real power.</value>
+  </data>
+  <data name="Message_Index_MESSAGETYPES" xml:space="preserve">
+    <value>MESSAGE TYPES</value>
+  </data>
+  <data name="Socialplex_Index_Index_EndHeading" xml:space="preserve">
+    <value>With Socialplex, engaging your followers is so easy, fun, and insightful now. Get started today!</value>
+  </data>
+  <data name="Socialplex_Index_Index_featureHeading" xml:space="preserve">
+    <value>Socialplex makes it easy to keep tabs on social conversations and provides everything you need to efficiently engage your audience.</value>
+  </data>
+  <data name="Socialplex_Index_Index_freeSubscirption" xml:space="preserve">
+    <value>Enjoy Socialplex risk-free for 30 days!</value>
+  </data>
+  <data name="Socialplex_Index_Index_LoveSocialplex" xml:space="preserve">
+    <value>WHY PEOPLE LOVE SOCIALPLEX</value>
+  </data>
+  <data name="Socialplex_Index_Index_Sociodescription2" xml:space="preserve">
+    <value>Socialplex allows you to listen to, analyze and engage your followers in unusual ways across   numerous social media accounts</value>
+  </data>
+  <data name="Socialplex_Shared_SocialSuite_Copyright" xml:space="preserve">
+    <value>Copyright © 2014 - 2015 SOCIALPLEX  Ltd. All Rights Reserved.</value>
+  </data>
+  <data name="Socialplex_Shared_SocialSuite_PhoneNumber2" xml:space="preserve">
+    <value>help@socialplex.kr</value>
+  </data>
+  <data name="Socialplex_Shared_SocialSuite_ProperAddress" xml:space="preserve">
+    <value>Gangnam-gu, Seoul, one way to Dogok 14, 1506 Issue</value>
+  </data>
+  <data name="Socialplex_Shared_Socialsuite_Title" xml:space="preserve">
+    <value>Socialplex - Generate More leads on Social Media| Social CRM | Social Media CMS</value>
+  </data>
+  <data name="Socioplex_Shared_SocialSuite_PhoneNumber1" xml:space="preserve">
+    <value>02-333-7660</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_AccountDetails" xml:space="preserve">
+    <value>ACCOUNT DETAILS</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_BankTransaction" xml:space="preserve">
+    <value>Bank Transaction</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_Comment" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_NoRecordFound" xml:space="preserve">
+    <value>No record found</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_PayPalTransaction" xml:space="preserve">
+    <value>PayPal Transaction</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_RequestDate" xml:space="preserve">
+    <value>Request Date</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_SubmitRequest" xml:space="preserve">
+    <value>Submit Request</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_TransfterToBanks" xml:space="preserve">
+    <value>Transfer to Bank</value>
+  </data>
+  <data name="MyStuff_EwalletPartial_YourPayout" xml:space="preserve">
+    <value>Your Payouts</value>
+  </data>
+  <data name="Socioboard_MyStuff_Affiliates_AjaxShow1" xml:space="preserve">
+    <value>World’s #1 Open Source Social Technology Enabler!</value>
   </data>
 </root>

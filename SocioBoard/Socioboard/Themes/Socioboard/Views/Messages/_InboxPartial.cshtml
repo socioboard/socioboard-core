@@ -1,0 +1,99 @@
+﻿@using Domain.Socioboard.Domain;
+@using Socioboard.Api;
+@using System.Web.Script.Serialization;
+@{
+    Domain.Socioboard.Domain.User user = (Domain.Socioboard.Domain.User)Session["User"];
+    List<Domain.Socioboard.Domain.InboxMessages> lstmsg = (List<Domain.Socioboard.Domain.InboxMessages>)Model;
+}
+
+@foreach (Domain.Socioboard.Domain.InboxMessages msg in lstmsg)
+{
+    if (msg.MessageType == "twt_followers")
+    {
+    <li class="you">
+        <a href="#" class="user">
+            <img src="@msg.FromImageUrl" alt="">
+        </a>
+        @{string date="";
+            try{
+                date = (msg.CreatedTime.Date.ToString()).Split(new char[] { ' ' })[0];
+                                              }
+                                              catch{}
+        <div class="date"><a href="#">New Follower Alert @date </a></div>
+            }
+         
+        <div class="message1">
+            <p id="msg_@msg.Id"><a href="#">@msg.FromName</a> is now following <a href="#">@msg.RecipientName</a> on Twitter.</p>
+           
+            <p>Followers @msg.FollowerCount / Following @msg.FollowingCount</p>
+            <small>Bio: @msg.Message
+
+            </small>
+            <div class="pull-right chatLinks col-md-2">
+               @* <a href="#"><i class="fa fa-user-plus"></i></a>
+                <a href="#"><i class="fa fa-check-circle-o"></i></a>*@
+                <a title="Task" data-target="#task" data-toggle="modal" onclick="opentask('msg_@msg.Id','@msg.CreatedTime')" style="cursor:pointer"><i class="fa fa-thumb-tack"></i></a>
+                <a title="Email Message" @*data-target="#msgmailpopup" data-toggle="modal"*@ onclick="MailPopUpMsg('@msg.Id');" style="cursor:pointer"><i class="fa fa-envelope"></i></a>
+            </div>
+        </div>
+    </li>}
+    else if (msg.MessageType == "twt_retweet")
+    {
+    <li class="you">
+        <a href="#" class="user">
+            <img src="@msg.RecipientImageUrl" alt="">
+        </a>
+        <div class="date"><a href="#" data-toggle="tooltip" title="">@msg.RecipientName</a> @msg.CreatedTime, retweeted by <a href="#" data-toggle="tooltip" title="">@msg.FromName</a></div>
+        <div class="message">
+            <p id="msg_@msg.Id">@msg.Message</p>
+            <div class="pull-right chatLinks col-md-2">
+                @*<a href="#"><i class="fa fa-user-plus"></i></a>
+                <a href="#"><i class="fa fa-check-circle-o"></i></a>*@
+                <a title="Task" data-target="#task" data-toggle="modal" onclick="opentask('msg_@msg.Id','@msg.CreatedTime')" style="cursor:pointer"><i class="fa fa-thumb-tack"></i></a>
+                <a title="Email Message" @*data-target="#msgmailpopup" data-toggle="modal"*@ onclick="MailPopUpMsg('@msg.Id');" style="cursor:pointer"><i class="fa fa-envelope"></i></a>
+            </div>
+        </div>
+
+
+
+    </li>}
+    else if (msg.MessageType == "fb_notification")
+    {
+    <li class="you">
+        <a href="#" class="user">
+            <img src="@msg.FromImageUrl" alt="">
+        </a>
+        <div class="date">@msg.CreatedTime</div>
+        <div class="message">
+            <p id="msg_@msg.Id">@msg.Message</p>
+            <div class="pull-right chatLinks col-md-2">
+               @* <a href="#"><i class="fa fa-user-plus"></i></a>
+                <a href="#"><i class="fa fa-check-circle-o"></i></a>*@
+                <a title="Task" data-target="#task" data-toggle="modal" onclick="opentask('msg_@msg.Id','@msg.CreatedTime')" style="cursor:pointer"><i class="fa fa-thumb-tack"></i></a>
+                <a title="Email Message" @*data-target="#msgmailpopup" data-toggle="modal"*@ onclick="MailPopUpMsg('@msg.Id');" style="cursor:pointer"><i class="fa fa-envelope"></i></a>
+            </div>
+        </div>
+
+
+
+    </li>}
+    else if (msg.MessageType == "twt_mention")
+    {
+    <li class="you">
+        <a href="#" class="user">
+            <img src="@msg.FromImageUrl" alt="">
+        </a>
+        <div class="date"><a href="#" data-toggle="tooltip" title="">@msg.FromName</a> @msg.CreatedTime, mention <a href="#" data-toggle="tooltip" title="">@msg.RecipientName</a></div>
+        <div class="message">
+            <p id="msg_@msg.Id">@msg.Message</p>
+            <div class="pull-right chatLinks col-md-2">
+                @*<a href="#"><i class="fa fa-user-plus"></i></a>
+                <a href="#"><i class="fa fa-check-circle-o"></i></a>*@
+                <a title="Task" data-target="#task" data-toggle="modal" onclick="opentask('msg_@msg.Id','@msg.CreatedTime')" style="cursor:pointer"><i class="fa fa-thumb-tack"></i></a>
+                <a title="Email Message" @*data-target="#msgmailpopup" data-toggle="modal"*@ onclick="MailPopUpMsg('@msg.Id');" style="cursor:pointer"><i class="fa fa-envelope"></i></a>
+            </div>
+        </div>
+    </li>}
+
+}
+

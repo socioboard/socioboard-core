@@ -8,23 +8,16 @@
 
 @if(objuser!=null)
 {
-    string fname = string.Empty;
-    string lname = string.Empty;
-    try{
      string[] name = objuser.UserName.Split(' ');
-         fname = name[0];
+         string fname = name[0];
+         string lname = string.Empty;
     for (int i = 1; i < name.Length; i++)
     {
         lname += name[i];
     }
-    }catch(Exception ex){
-        fname = string.Empty;
-        lname = string.Empty;
-    }
 
     <div class="container">
         <div class="col-md-offset-3 col-md-6">
-             <h2>Facebook Returned Email >> @objuser.EmailId</h2>
             <h2>Create Your Account</h2>
             <form role="form">
                 <div class="form-group input-group">
@@ -51,7 +44,7 @@
                 </div>
                 <div class="form-group input-group">
                     <span class="input-group-addon">E</span>
-                    <input value="@objuser.EmailId" id="txtrEmail" type="email" placeholder="Email id" class="form-control" readonly="true">
+                    <input value="@objuser.EmailId" id="txtrEmail" type="email" placeholder="Email id" class="form-control">
                 </div>
                 <div class="form-group input-group">
                     <span class="input-group-addon">*</span>
@@ -86,7 +79,6 @@ else
 
     <div class="container">
         <div class="col-md-offset-3 col-md-6">
-             <h2>Facebook Returned Email >> @objuser.EmailId</h2>
             <h2>Create Your Account</h2>
             <form role="form">
                 <div class="form-group input-group">

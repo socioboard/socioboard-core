@@ -1,0 +1,279 @@
+﻿
+<link href="../Themes/SocioboardContents/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+<script src="../Themes/Socioboard/Contents/js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript"></script>
+<script src="../Themes/Socioboard/Contents/js/jquery.lazyscrollloading-src.js" type="text/javascript"></script>
+<script src="../Themes/Socioboard/Contents/js/jquery.easing.1.3.js" type="text/javascript"></script>
+<script src="../Themes/Socioboard/Contents/js/Feeds.js"></script>
+<script src="~/Themes/Socioboard/Contents/js/underscore.js"></script>
+
+<script src="../Themes/Socioboard/Contents/js/group.js"></script>
+<script src="../Themes/Socioboard/Contents/js/jquery-1.11.0.js"></script>
+
+@*<script src="../Themes/Socioboard/Contents/js/jquery.datetimepicker.js"></script>
+<script src="../Themes/Socioboard/Contents/js/jquery.js"></script>*@
+
+<script type="text/javascript">
+    function loadgroupmenu() {
+       
+        $.ajax({
+            type: 'POST',
+            url: '../Group/LoadGroups',
+            success: function (msg) {
+                //alert(msg);
+                $('#loadgroup').html('').append(msg);
+
+            }
+
+        });
+    }
+
+    function callgroup()
+    {
+        $('#groupinfo').load('../Group/GroupInfo');
+    }
+   
+    function userdetails12()
+    {
+
+        var gid = $('#grpids').attr("gid");
+        debugger;
+        if (gid === "" || gid === null) {
+            alert('Please add group first');
+        }
+        else {
+            $('#postongroup').modal('show');
+            if (gid.indexOf("lin_") == -1) {
+                $('#assign_task_to > #asd').css({ display: 'none' });
+            }
+            else {              
+                $('#assign_task_to > #asd').css({ display: 'block' });
+            }
+        }
+    }
+
+    $(document).ready(function () {
+        debugger;
+
+        $('#side-menu a').removeClass('active');
+        $("#group a").attr('href', '#');
+        $("#group").addClass('active');
+        $("#group").children().addClass('active');
+        loadgroupmenu();
+    });
+
+    function CommentOnFbGroupPost(GrpPostId, Accesstoken)
+    {
+        var comment = $("#txt_" + GrpPostId).val();
+        if (comment == "") {
+            alertify.alert("Please write in CommentBox!");
+            return false;
+        }
+        $.ajax({
+            type: 'POST',
+            url: "../Group/CommentOnFbGroupPost?GpPostid=" + GrpPostId + "&comment=" + comment + "&Accesstoken=" + Accesstoken,
+            success: function (msg) {
+                $("#txt_" + GrpPostId).val('');
+                alertify.success("Commented Successfully");
+              
+            }
+
+        });
+
+
+
+    }
+
+   
+
+
+
+
+
+</script>
+
+
+<div id="page-wrapper" style="min-height: 278px;">
+    <div class="container-fluid">
+                <h1 class="page-header">Groups</h1>
+                <div class="row">
+                    <div class="col-md-3" >
+                        <div class="chat-panel panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-users fa-fw"></i> Group Users
+                        </div>
+                        <!-- .panel-heading -->
+                        <div id="loadgroup" class="panel-body">
+                          
+                        </div>
+                        <!-- .panel-body -->
+                    </div>
+            
+                    </div>
+                    <div class="col-md-9">
+                        <div class="chat-panel panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-comments fa-fw"></i>
+                            Chat
+                            <div class="btn-group pull-right">
+                                <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle" type="button">
+                                    <i class="fa fa-chevron-down"></i>
+                                </button>
+                                <ul class="dropdown-menu slidedown">
+                                    <li>
+                                        <a href="#" onclick="postmessage();">
+                                            <i class="fa fa-reply-all fa-fw"></i>  Post On Selected Group
+                                        </a>
+                                    </li>
+                                    <li  id="postongp">
+                                        <a id="grpids" gid="" href="#" onclick="userdetails12()">
+                                            <i class="fa fa-reply fa-fw"></i> Post
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id="groupinfo">
+                         
+                        </div>
+                        <!-- /.panel-body -->
+                       
+            <!-- RplyToAllModal -->
+        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="RplyAllModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                        <h4 id="myModalLabel" class="modal-title">POST ON SELECTED GROUP</h4>
+                    </div>
+                    <div class="modal-body col-md-12">
+                        <div class="col-md-3">
+                            <img style="height: 80px; width: 80px;" class="img-circle" alt="" src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-xap1/t31.0-8/s960x960/1523017_786750101350785_664146563_o.jpg">
+                            <hr class="small">
+                            
+                        </div>
+                        <div class="col-md-9">
+                            <div class="input-group col-md-12">
+                                <input type="text" placeholder="Enter your title here" id="txtTitle" class="form-control">
+                                <textarea id="txtmessage" placeholder="Your comment(view table only for team members" rows="3" class="form-control"></textarea>
+                            </div>
+                            <div class="hero-unit">
+                                  <input type="text" id="datepic" placeholder="click to show datepicker">
+                                 
+
+
+                           @*   <input type="text" ID="txtStart" />*@
+   
+                                </div>
+                            <div class="input-append bootstrap-timepicker">
+                        <input id="grouptimepicker" type="text" class="input-small" readonly="">
+                        <span class="add-on"><i class="icon-time"></i></span>
+
+                    </div>
+
+                            <div class="form-group">
+                                <input type="file" id="fileuploadImage"  accept="image/*">
+                                <p class="help-block">Interval Time:</p>
+                                <select class="form-control">
+                                  <option>1</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-primary" onclick="Sendgroupmessage();" type="button">Post</button>
+                        <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end of model-->
+
+                              <!-- Modal -->
+        <div class="modal fade" id="postongroup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">New Message</h4>
+                    </div>
+                    <div class="modal-body col-md-12">
+                        <div class="col-md-3">
+                            <img src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-xap1/t31.0-8/s960x960/1523017_786750101350785_664146563_o.jpg" alt="" class="img-circle" style="height: 80px; width: 80px;">
+                            <hr class="small">
+                            <!-- Split button -->
+                            @*<div class="btn-group">
+                                <button type="button" class="btn btn-warning">Action</button>
+                                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                             <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">fb</a></li>
+                                    <li><a href="#">tweeter</a></li>
+                                    <li><a href="#">gplus</a></li>
+                                </ul>
+                            </div>*@
+                        </div>
+                        @*div class="col-md-9">
+                            <div class="input-group col-md-12">
+                                <textarea class="form-contrttonnol" rows="3"></textarea>
+                            </div>*@
+                             <div class="col-md-9">
+                            <div class="input-group col-md-12" id="assign_task_to">
+                                <div id="asd"><input type="text" placeholder="Enter your title here" id="txttitle" class="form-control"></div>
+                                <textarea id="txtcmt" placeholder="Your comment(view table only for team members" rows="3" class="form-control"></textarea>
+                            </div>
+
+                          @*  <div class="form-group">
+                                <input type="file" id="exampleInputFile">
+                                <input type="file" id="exampleInputFile">
+                                <p class="help-block">Interval Time:</p>
+                                <select class="form-control">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>*@
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btngrpsend" type="button" class="btn btn-primary" data-dismiss="modal"  onclick="postFBGroupFeeds()" >Send</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end of model-->
+
+
+                    </div>
+            
+                    </div>
+                </div>
+            </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $('#datepic').datepicker({
+            multidate: false,
+            todayHighlight: true,
+            startDate: 'd',
+            clearBtn: true
+        });
+        $('#grouptimepicker').timepicker();
+        
+
+    });
+    </script>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Api.Socioboard.Helper;
 using Domain.Socioboard.Domain;
+using NHibernate.Linq;
 
 namespace Api.Socioboard.Services
 {
@@ -222,15 +223,19 @@ namespace Api.Socioboard.Services
                     try
                     {
                         //Proceed action, to find group by and and group name
-                        NHibernate.IQuery query = session.CreateQuery("from BusinessSetting where UserId = :userid and BusinessName =:groupname");
-                        //  query.SetParameter("userid", group.UserId);  UserId =:userid and
-                        query.SetParameter("userid", userid);
-                        query.SetParameter("groupname", groupname);
-                        var result = query.UniqueResult();
-                        if (result == null)
-                            return false;
-                        else
-                            return true;
+                        //NHibernate.IQuery query = session.CreateQuery("from BusinessSetting where UserId = :userid and BusinessName =:groupname");
+                        ////  query.SetParameter("userid", group.UserId);  UserId =:userid and
+                        //query.SetParameter("userid", userid);
+                        //query.SetParameter("groupname", groupname);
+                        //var result = query.UniqueResult();
+                        //if (result == null)
+                        //    return false;
+                        //else
+                        //    return true;
+
+                        bool exist = session.Query<Domain.Socioboard.Domain.BusinessSetting>()
+                            .Any(x => x.UserId == userid && x.BusinessName==groupname);
+                        return exist;
 
                     }
                     catch (Exception ex)

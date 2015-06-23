@@ -43,7 +43,7 @@
     function removeprofilefromgroup(profileid) {
         //alert(profileid);
         var group = $('#groupname').html();
-        alertify.confirm("Are you sure, You Want to remove this account from " + group, function (e) {
+        alertify.confirm("Are you sure, You want to remove this account from " + group, function (e) {
             if (e) {
                 $('#' + profileid).hide(250, function () {
                     $('#' + profileid).remove();

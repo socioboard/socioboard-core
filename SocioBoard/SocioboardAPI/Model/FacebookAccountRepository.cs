@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using Domain.Socioboard.Domain;
 using Api.Socioboard.Helper;
-
+using NHibernate.Linq;
 
 namespace Api.Socioboard.Services
 {
@@ -600,15 +600,18 @@ namespace Api.Socioboard.Services
                     {
                         //Proceed action, to Check if FacebookUser is Exist in database or not by UserId and FbuserId.
                         // And Set the reuired paremeters to find the specific values.
-                        List<Domain.Socioboard.Domain.FacebookAccount> alst = session.CreateQuery("from FacebookAccount where UserId = :userid and FbUserId = :fbuserid")
-                        .SetParameter("userid", Userid)
-                        .SetParameter("fbuserid", FbUserId)
-                        .List<Domain.Socioboard.Domain.FacebookAccount>()
-                       .ToList<Domain.Socioboard.Domain.FacebookAccount>();
-                        if (alst.Count==0 || alst == null)
-                            return false;
-                        else
-                            return true;
+                       // List<Domain.Socioboard.Domain.FacebookAccount> alst = session.CreateQuery("from FacebookAccount where UserId = :userid and FbUserId = :fbuserid")
+                       // .SetParameter("userid", Userid)
+                       // .SetParameter("fbuserid", FbUserId)
+                       // .List<Domain.Socioboard.Domain.FacebookAccount>()
+                       //.ToList<Domain.Socioboard.Domain.FacebookAccount>();
+                       // if (alst.Count==0 || alst == null)
+                       //     return false;
+                       // else
+                       //     return true;
+                        bool exist = session.Query<Domain.Socioboard.Domain.FacebookAccount>()
+                                .Any(x => x.UserId == Userid && x.FbUserId==FbUserId);
+                        return exist;
 
                     }
                     catch (Exception ex)
@@ -999,8 +1002,26 @@ namespace Api.Socioboard.Services
         
         
         }
-
-
+        public List<Domain.Socioboard.Domain.FacebookAccount> getFbAccounts()
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //Begin session trasaction and opens up.
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        List<Domain.Socioboard.Domain.FacebookAccount> alst = session.Query<Domain.Socioboard.Domain.FacebookAccount>().Where(x => x.IsActive == 1 && x.AccessToken!="").Take(20).ToList();
+                        return alst;
+                    }
+                    catch (Exception ex)
+                    {
+                        return new List<Domain.Socioboard.Domain.FacebookAccount>();
+                    }
+                }
+            }
+        }
 
 
     }

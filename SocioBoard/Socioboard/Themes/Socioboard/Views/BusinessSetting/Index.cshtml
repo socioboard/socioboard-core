@@ -38,7 +38,7 @@
 
                                 <div class="col-md-6">
                                     <form role="form" class="form-horizontal">
-                                            <label for="username-email">@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_BuisnessName</label><span class="pull-right text-danger">*</span>
+                                            <label for="username-email">Buisness Name</label><span class="pull-right text-danger">*</span>
                                              <div class="form-group">
                                             @{
             if (ObjGroup.UserId == ObjUser.Id)
@@ -49,25 +49,25 @@
                                             
                                                          @:</div>
                                                          @:<div class="form-group">
-                                                    <h3>@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_AssigningTasks</h3>
-                                                    <p> @GlobusMultiLanguageLib.Resources.BusinessSetting_Index_AssigningTasksDescription</p>
+                                                    <h3>Assigning Tasks</h3>
+                                                    <p> This setting will enable your users to assign tasks across groups and will make other group members visible. If you do not want users to assign tasks across groups, leave this setting "disabled". </p>
 
                 if (ObjBusinessSetting.AssigningTasks == true)
                 {
                                                          <div class="col-md-5 pull-left">
-                                                        <input id="rdTaskDisable" name="chkasgntask"  value="" type="radio" class="">&nbsp;&nbsp;<label>@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_AssigningTasksDisable</label>
+                                                        <input id="rdTaskDisable" name="chkasgntask"  value="" type="radio" class="">&nbsp;&nbsp;<label>Disabled</label>
                                                         </div>
                                                         <div class="pull-left">
-                                                        <input id="rdTaskEnable" name="chkasgntask" checked="checked" value="" type="radio" class="">&nbsp;&nbsp;<label>@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_AssigningTasksEnable</label>
+                                                        <input id="rdTaskEnable" name="chkasgntask" checked="checked" value="" type="radio" class="">&nbsp;&nbsp;<label>Enable cross-group assignments</label>
                                                         </div>
                 }
                 else
                 {
                                                         <div class="col-md-5 pull-left">
-                                                        <input id="rdTaskDisable" name="chkasgntask" checked="checked" value="" type="radio" class="">&nbsp;&nbsp;<label>@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_AssigningTasksDisable</label>
+                                                        <input id="rdTaskDisable" name="chkasgntask" checked="checked" value="" type="radio" class="">&nbsp;&nbsp;<label>Disabled</label>
                                                         </div>
                                                         <div class="pull-left">
-                                                        <input id="rdTaskEnable" name="chkasgntask"  value="" type="radio" class="">&nbsp;&nbsp;<label>@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_AssigningTasksEnable</label>
+                                                        <input id="rdTaskEnable" name="chkasgntask"  value="" type="radio" class="">&nbsp;&nbsp;<label>Enable cross-group assignments</label>
                                                             </div>
                                                 
                 }
@@ -77,31 +77,31 @@
 
 
                                                         @:<div class="form-group">
-                                                          <h3>@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_TaskNotificationEmail</h3>
-                                                          <p> @GlobusMultiLanguageLib.Resources.SocioBoard_BusinessSetting_Index_NotificationAlertViaEmail </p>
+                                                          <h3>Task Notification Emails</h3>
+                                                          <p> Socioboard alerts you & your team members via email on various activities.  </p>
                                                 
                 if (ObjBusinessSetting.TaskNotification == true)
                 {
                                                         <div class="col-md-5 pull-left">
-                                                            <input id="rdTaskNotificationDisable" name="chknotify"  value="" type="radio" class="">&nbsp;&nbsp;<label>@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_NotifcationTaskDisable</label>
+                                                            <input id="rdTaskNotificationDisable" name="chknotify"  value="" type="radio" class="">&nbsp;&nbsp;<label>Disabled</label>
                                                         </div>
                                                         <div class="pull-left">
-                                                            <input id="rdTaskNotificationEnable" name="chknotify" checked="checked"  value="" type="radio" class="">&nbsp;&nbsp;<label>@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_NotifcationTaskEnable</label>
+                                                            <input id="rdTaskNotificationEnable" name="chknotify" checked="checked"  value="" type="radio" class="">&nbsp;&nbsp;<label>Enable Task Notifications</label>
                                                         </div>
                 }
                 else
                 {
                                                         <div class="col-md-5 pull-left">
-                                                            <input id="rdTaskNotificationDisable" name="chknotify" checked="checked"  value="" type="radio" class="">&nbsp;&nbsp;<lable>@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_NotifcationTaskDisable</lable>
+                                                            <input id="rdTaskNotificationDisable" name="chknotify" checked="checked"  value="" type="radio" class="">&nbsp;&nbsp;<lable>Disabled</lable>
                                                         </div>
                                                         <div class="pull-left">
-                                                            <input id="rdTaskNotificationEnable" name="chknotify"   value="" type="radio" class="">&nbsp;&nbsp;<label>@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_NotifcationTaskEnable</label>
+                                                            <input id="rdTaskNotificationEnable" name="chknotify"   value="" type="radio" class="">&nbsp;&nbsp;<label>Enable Task Notifications</label>
                                                         </div>
                 }
                                                     @:</div>
 
                                         
-                                                <button onclick="UpdateBuisnessSetting('@ObjBusinessSetting.Id')"; id="UpdateBsnsSetng" type="button" class="btn btn-warning">@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_UpdateSettings</button>
+                                                <button onclick="UpdateBuisnessSetting('@ObjBusinessSetting.Id')"; id="UpdateBsnsSetng" type="button" class="btn btn-warning">Update Setting</button>
 
             }
             else
@@ -116,25 +116,25 @@
 
                                                 
                                                 
-                                                    <h3>@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_AssigningTasks</h3>
-                                                    <p> @GlobusMultiLanguageLib.Resources.BusinessSetting_Index_AssigningTasksDescription </p>
+                                                    <h3>Assigning Tasks</h3>
+                                                    <p> This setting will enable your users to assign tasks across groups and will make other group members visible. If you do not want users to assign tasks across groups, leave this setting "disabled". </p>
 
                 if (ObjBusinessSetting.AssigningTasks == true)
                 {
                                                          <div class="col-md-5 pull-left">
-                                                        <input id="rdTaskDisable"  name="chkasgntask" value="" type="radio" class="" disabled>&nbsp;&nbsp;<label>@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_AssigningTasksDisable</label>
+                                                        <input id="rdTaskDisable"  name="chkasgntask" value="" type="radio" class="" disabled>&nbsp;&nbsp;<label>Disabled</label>
                                                         </div>
                                                         <div class="pull-left">
-                                                        <input id="rdTaskEnable" name="chkasgntask" checked="checked" value="" type="radio" class="" disabled>&nbsp;&nbsp;<label>@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_AssigningTasksEnable</label>
+                                                        <input id="rdTaskEnable" name="chkasgntask" checked="checked" value="" type="radio" class="" disabled>&nbsp;&nbsp;<label>Enable cross-group assignments</label>
                                                         </div>
                 }
                 else
                 {
                                                         <div class="col-md-5 pull-left">
-                                                        <input id="rdTaskDisable" name="chkasgntask" checked="checked" value="" type="radio" class="" disabled>&nbsp;&nbsp;<label>@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_AssigningTasksDisable</label>
+                                                        <input id="rdTaskDisable" name="chkasgntask" checked="checked" value="" type="radio" class="" disabled>&nbsp;&nbsp;<label>Disabled</label>
                                                         </div>
                                                         <div class="pull-left">
-                                                        <input id="rdTaskEnable"  name="chkasgntask" value="" type="radio" class="" disabled>&nbsp;&nbsp;<label>@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_AssigningTasksEnable</label>
+                                                        <input id="rdTaskEnable"  name="chkasgntask" value="" type="radio" class="" disabled>&nbsp;&nbsp;<label>Enable cross-group assignments</label>
                                                             </div>
                                                 
                 }
@@ -143,31 +143,31 @@
                                                          @:</div>
 
                                                          @:<div class="form-group">
-                                                          <h3>@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_TaskNotificationEmail</h3>
-                                                          <p> @GlobusMultiLanguageLib.Resources.SocialBoard_BusinessSetting_Index_NotificationAlertViaEmail</p>
+                                                          <h3>Task Notification Emails</h3>
+                                                          <p> Socioboard alerts you & your team members via email on various activities.  </p>
                                                 
                 if (ObjBusinessSetting.TaskNotification == true)
                 {
                                                         <div class="col-md-5 pull-left">
-                                                            <input id="rdTaskNotificationDisable" name="chknotify"  value="" type="radio" class="" disabled>&nbsp;&nbsp;<label>@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_NotifcationTaskDisable</label>
+                                                            <input id="rdTaskNotificationDisable" name="chknotify"  value="" type="radio" class="" disabled>&nbsp;&nbsp;<label>Disabled</label>
                                                         </div>
                                                         <div class="pull-left">
-                                                            <input id="rdTaskNotificationEnable" name="chknotify" checked="checked"  value="" type="radio" class="" disabled>&nbsp;&nbsp;<label>@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_NotifcationTaskEnable</label>
+                                                            <input id="rdTaskNotificationEnable" name="chknotify" checked="checked"  value="" type="radio" class="" disabled>&nbsp;&nbsp;<label>Enable Task Notifications</label>
                                                         </div>
                 }
                 else
                 {
                                                         <div class="col-md-5 pull-left">
-                                                            <input id="rdTaskNotificationDisable" name="chknotify" checked="checked"  value="" type="radio" class="" disabled>&nbsp;&nbsp;<lable>@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_NotifcationTaskDisable</lable>
+                                                            <input id="rdTaskNotificationDisable" name="chknotify" checked="checked"  value="" type="radio" class="" disabled>&nbsp;&nbsp;<lable>Disabled</lable>
                                                         </div>
                                                         <div class="pull-left">
-                                                            <input id="rdTaskNotificationEnable" name="chknotify"   value="" type="radio" class="" disabled>&nbsp;&nbsp;<label>@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_NotifcationTaskEnable</label>
+                                                            <input id="rdTaskNotificationEnable" name="chknotify"   value="" type="radio" class="" disabled>&nbsp;&nbsp;<label>Enable Task Notifications</label>
                                                         </div>
                 }
                                                          @:</div>
 
                                         
-                                                    <button onclick="UpdateBuisnessSetting('@ObjBusinessSetting.Id')"; id="UpdateBsnsSetng" type="button" disabled class="btn btn-warning">@GlobusMultiLanguageLib.Resources.BusinessSetting_Index_UpdateSettings</button>
+                                                    <button onclick="UpdateBuisnessSetting('@ObjBusinessSetting.Id')"; id="UpdateBsnsSetng" type="button" disabled class="btn btn-warning">Update Setting</button>
             }
                                         }
                                     </form>
@@ -189,15 +189,15 @@
         }
         else
         {
-            DefaultMessage = "Sorry, The Business Page of this Group is Not Created!";
+            DefaultMessage = "Sorry, The Buisness Page of this Group is Not Created!";
         }
     }
     else
     {
-        DefaultMessage = "Sorry, you are not able to make Setting in Default Group";
+        DefaultMessage = "Sorry, you are not able to Setting in Default Group";
     }
     }
-    @*@if (DefaultMessage != null || DefaultMessage != "")
+    @if (DefaultMessage != null || DefaultMessage != "")
     {
         
     @:<div style="min-height: 382px;" id="page-wrapper">
@@ -244,25 +244,19 @@
 
     @:  </div>
     
-    }*@
+    }
     
 
 
 
 <script type="text/javascript">
 
-    //var BsnsStng = new FormData();
-    //var IsTaskAssigned = null;
-    //var IsNotificationEnabled = null;
-    //var BuisnessName = $("#txtBuisnessName").val();
+    var BsnsStng = new FormData();
+    var IsTaskAssigned = null;
+    var IsNotificationEnabled = null;
+    var BuisnessName = $("#txtBuisnessName").val();
     function UpdateBuisnessSetting(id) {
         debugger;
-
-        var BsnsStng = new FormData();
-        var IsTaskAssigned = null;
-        var IsNotificationEnabled = null;
-        var BuisnessName = $("#txtBuisnessName").val();
-
         if ($('#rdTaskDisable').is(':checked')) {
             IsTaskAssigned = false;
         }
@@ -291,10 +285,10 @@
             data: BsnsStng,
             processData: false,
             contentType: false,
-            //dataType: "json",
+            dataType: "json",
             success: function (msg) {
                 if (msg = "Updated Successfully") {
-                    alertify.success("Business Setting Updated Successfully.");
+                    aleryify.success("Business Setting Updated Successfully.");
                 }
             },
             async: false

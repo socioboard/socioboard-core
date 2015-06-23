@@ -6,20 +6,8 @@
     int LikesCount = 0;
 }
 
-<script type="text/javascript">
-    $(document).ready(function (e) {
-        debugger;
-        //var loadMoreId = $('#scroll_ProfileSnapshot');
-        //if (loadMoreId!=null) {
-        //    $(document).remove(
-        //}
-        
-    });
-
-</script>
-
-<div class="row" style="margin-left: -46px">
-    @*<h2>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_MyRecentProfiles</h2>*@
+<div class="row">
+    @*<h2>My Recent Profiles</h2>*@
     @{
         int counter = 0;
         int divcounter = 0;
@@ -27,26 +15,36 @@
         {
 
         }
-
+        Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, Dictionary<object, List<object>>> dict = (Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, Dictionary<object, List<object>>>)Model;
+        if (dict.Count == 0)
+        {
+        @:<script >
+        @:$('#div_Home_ProfileSnapshot img').remove('.clsImageLoader');
+                  
+              @:</script>
+                }
         foreach (var item in (Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, Dictionary<object, List<object>>>)Model)
         {
             int feedcount = 0;
             int days = 0;
             double avg = 0;
-            string stravg="0";
+            string stravg = "0";
             if (divcounter == 0)
             {
-        @:<div class="col-xs-13">
-        @:<div class="row">
+        @:<div class="col-xs-12" style="padding-left:0px">
+@:<div class="row">
             }
 
             Random rNum = new Random();
             if (item.Key.ProfileType == "facebook" || item.Key.ProfileType == "facebook_page")
             {
                 string fan = string.Empty;
-                if (item.Key.ProfileType == "facebook"){
+                if (item.Key.ProfileType == "facebook")
+                {
                     fan = "Friends";
-                }else{
+                }
+                else
+                {
                     fan = "Fans";
                 }
                 divcounter++;
@@ -60,7 +58,7 @@
                 {
                     Domain.Socioboard.Domain.FacebookFeed objFacebookFeeds = (Domain.Socioboard.Domain.FacebookFeed)lstdic[feedcount - 1];
                     days = (DateTime.Now.Date - objFacebookFeeds.FeedDate.Date).Days;
-                    if (days==0)
+                    if (days == 0)
                     {
                         days = 1;
                     }
@@ -83,12 +81,12 @@
                             @fan</h4></div>
                         </div>
                         <span class="col-xs-9 text-right">@stravg Avg.<br>
-                           @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_PostsPerDay</span>
+                            Post Per Day</span>
                         <span class="col-md-12">@objFacebookAccount.FbUserName</span>   
                     </div>
                 </div>
-                        <div class="panel-body">
-                    <p>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_RecentMessages</p>
+                <div class="panel-body">
+                    <p>Recent Messages</p>
                    <ul class="list-group recent_height">
                         @for (int i = 0; i < lstdic.Count; i++)
                         {
@@ -145,12 +143,12 @@
                             @fan</h4></div>
                         </div>
                         <span class="col-xs-9 text-right">@stravg Avg.<br>
-                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_PostsPerDay</span>
+                            Post Per Day</span>
                         <span class="col-md-12">@objFacebookAccount.FbUserName</span>   
                     </div>
                 </div>
-                        <div class="panel-body">
-                    <p>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_RecentMessages</p>
+                <div class="panel-body">
+                    <p>Recent Messages</p>
                          <ul class="list-group recent_height">
                         
                         @foreach (Domain.Socioboard.Domain.FbPagePost item_FbPagePost in lstFbPagePost)
@@ -193,10 +191,10 @@
                 Domain.Socioboard.Domain.TwitterAccount objTwitterAccount = (Domain.Socioboard.Domain.TwitterAccount)dic_profileinfo.Key;
                 List<object> lstdic = (List<object>)dic_profileinfo.Value;
                 feedcount = lstdic.Count;
-                if(feedcount!=0)
+                if (feedcount != 0)
                 {
                     Domain.Socioboard.Domain.TwitterFeed objTwtFeed = (Domain.Socioboard.Domain.TwitterFeed)lstdic[feedcount - 1];
-                    days=(DateTime.Now.Date-objTwtFeed.FeedDate.Date).Days;
+                    days = (DateTime.Now.Date - objTwtFeed.FeedDate.Date).Days;
                     if (days == 0)
                     {
                         days = 1;
@@ -216,15 +214,15 @@
                         </div>
                         <div class="col-xs-9 text-right" style="margin-top:-15px;margin-bottom:-8px">
                             <div><h4><strong>@objTwitterAccount.FollowersCount</strong>
-                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Fans</h4></div>
+                            Follower</h4></div>
                         </div>
                         <span class="col-xs-9 text-right">@stravg Avg.<br>
-                           @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_PostsPerDay</span>
+                            Post Per Day</span>
                         <span class="col-md-12">@objTwitterAccount.TwitterScreenName</span>
                     </div>
                 </div>
                 <div class="panel-body">
-                    <p>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_PostsPerDay</p>
+                    <p>Recent Messages</p>
                     <ul class="list-group recent_height">
                         @for (int i = 0; i < lstdic.Count; i++)
                         {
@@ -264,9 +262,9 @@
                 Domain.Socioboard.Domain.LinkedInAccount objLinkedInAccount = (Domain.Socioboard.Domain.LinkedInAccount)dic_profileinfo.Key;
                 List<object> lstdic = (List<object>)dic_profileinfo.Value;
                 feedcount = lstdic.Count;
-                if(feedcount!=0)
+                if (feedcount != 0)
                 {
-                    Domain.Socioboard.Domain.LinkedInFeed objLDFeed=(Domain.Socioboard.Domain.LinkedInFeed)lstdic[feedcount-1];
+                    Domain.Socioboard.Domain.LinkedInFeed objLDFeed = (Domain.Socioboard.Domain.LinkedInFeed)lstdic[feedcount - 1];
                     days = (DateTime.Now.Date - objLDFeed.FeedsDate.Date).Days;
                     if (days == 0)
                     {
@@ -301,15 +299,15 @@
                         </div>
                         <div class="col-xs-9 text-right" style="margin-top:-15px;margin-bottom:-8px">
                             <div><h4><strong>@linkedinConcount</strong>
-                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Connections</h4></div>
+                            Connections</h4></div>
                         </div>
                         <span class="col-xs-9 text-right">@stravg Avg.<br>
-                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_PostsPerDay</span>
+                            Post Per Day</span>
                         <span class="col-md-12">@objLinkedInAccount.LinkedinUserName</span>
                     </div>
                 </div>
                 <div class="panel-body">
-                    <p>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_RecentMessages</p>
+                    <p>Recent Messages</p>
                     <ul class="list-group recent_height">
                         @for (int i = 0; i < lstdic.Count; i++)
                         {
@@ -366,19 +364,19 @@
                     </div>
                 </div>
                <div class="panel-body">
-                    <p>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Activities</p>
+                    <p>Activities</p>
                                         <ul class="list-group recent_height">
                                           <li class="list-group-item">
                                             <span class="badge">@objInstagramAccount.TotalImages</span>
-                                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Photos
+                                            Photos
                                           </li>
                                           <li class="list-group-item">
                                             <span class="badge">@objInstagramAccount.FollowedBy</span>
-                                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Follower
+                                            Follower
                                           </li>
                                           <li class="list-group-item">
                                             <span class="badge">@objInstagramAccount.Followers</span>
-                                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Following
+                                            Following
                                           </li>
                                         </ul>
                                     </div>
@@ -424,15 +422,15 @@
                     </div>
                 </div>
                <div class="panel-body">
-                    <p>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Activities</p>
+                    <p>Activities</p>
                                         <ul class="list-group recent_height">
                                           <li class="list-group-item">
                                             <span class="badge">@PostCount</span>
-                                          @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Post
+                                            Post
                                           </li>
                                           <li class="list-group-item">
                                             <span class="badge">@LikesCount</span>
-                                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Likes
+                                            Likes
                                           </li>
                                           
                                         </ul>
@@ -472,19 +470,19 @@
                     </div>
                 </div>
                <div class="panel-body">
-                    <p>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Activities</p>
+                    <p>Activities</p>
                                         <ul class="list-group recent_height">
                                           <li class="list-group-item">
                                             <span class="badge">@objYoutubeChannel.ViewCount</span>
-                                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_TotalView
+                                            Total View
                                           </li>
                                           <li class="list-group-item">
                                             <span class="badge">@objYoutubeChannel.SubscriberCount</span>
-                                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_TotalSubscriber
+                                            Total Subcriber
                                           </li>
                                           <li class="list-group-item">
                                             <span class="badge">@objYoutubeChannel.VideoCount</span>
-                                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_TotalVideo
+                                            Total Video
                                           </li>
                                         </ul>
                                     </div>
@@ -501,9 +499,9 @@
                 Domain.Socioboard.Domain.LinkedinCompanyPage objLinkedCoPage = (Domain.Socioboard.Domain.LinkedinCompanyPage)dic_profileinfo.Key;
                 List<object> lstdic = (List<object>)dic_profileinfo.Value;
                 feedcount = lstdic.Count;
-                if(feedcount!=0)
+                if (feedcount != 0)
                 {
-                    Domain.Socioboard.Domain.LinkedinCompanyPagePosts objLdCoPage=(Domain.Socioboard.Domain.LinkedinCompanyPagePosts)lstdic[feedcount-1];
+                    Domain.Socioboard.Domain.LinkedinCompanyPagePosts objLdCoPage = (Domain.Socioboard.Domain.LinkedinCompanyPagePosts)lstdic[feedcount - 1];
                     days = (DateTime.Now.Date - objLdCoPage.PostDate.Date).Days;
                     if (days == 0)
                     {
@@ -533,14 +531,14 @@
                         </div>
                         <div class="col-xs-9 text-right">
                             <div><strong>@linkedinFolwrcount</strong>
-                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Connections</div>
+                            Connections</div>
                         </div>
                         <span class="pull-right">@stravg Avg.<br>
-                            @GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_PostsPerDay</span>
+                            Post Per Day</span>
                     </div>
                 </div>
                 <div class="panel-body">
-                    <p>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_RecentMessages</p>
+                    <p>Recent Messages</p>
                     <ul class="list-group">
                         @for (int i = 0; i < lstdic.Count; i++)
                         {
@@ -572,20 +570,60 @@
         </div>
 
             }
+            if (item.Key.ProfileType == "gplus")
+            {
+                try
+                {
+                    divcounter++;
+                    var dic_profileinfo = item.Value.ElementAt(counter);
+                    //  var item = dictionary.ElementAt(index);
+                    Domain.Socioboard.Domain.GooglePlusAccount objGooglePlusAccount = (Domain.Socioboard.Domain.GooglePlusAccount)dic_profileinfo.Key;
+              
+                    <div id="mid_@objGooglePlusAccount.GpUserName" class="col-lg-4 col-md-9">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img title="@objGooglePlusAccount.GpUserName" src="@objGooglePlusAccount.GpProfileImage" class="img-circle profilePic" >
+                            <img src="/Themes/@path/Contents/img/gplus-icon.png" class="iconPoss">
+                         @*   <span>@objTumblrAccount.tblrUserName</span>*@
+                        </div>
+                        <span class="col-md-12">@objGooglePlusAccount.GpUserName</span>
+                    </div>
+                </div>
+               <div class="panel-body">
+                    <p>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_Activities</p>
+                                        <ul class="list-group recent_height">
+                                          <li class="list-group-item">
+                                            <span class="badge">@objGooglePlusAccount.HaveYouInCircles</span>
+                                          Have You In Circles
+                                          </li>
+                                          <li class="list-group-item">
+                                            <span class="badge">@objGooglePlusAccount.InYourCircles</span>
+                                            In Your Circles
+                                          </li>
+                                          
+                                        </ul>
+                                    </div>
+               
+            </div>
+        </div>
+                }
+                catch (Exception ex)
+                {
+                    divcounter = divcounter - 1;
+                }
+            }
             counter++;
             if (divcounter == 3)
             {
                 divcounter = 0;
              @:</div>
             @:</div>
-                            
+                                    
             }
         }
     }
 
 </div>
 
-
-@*<div id="scroll_ProfileSnapshot" onclick="LoadMoreProfileSnapshot()">Load More
-    
-</div>*@

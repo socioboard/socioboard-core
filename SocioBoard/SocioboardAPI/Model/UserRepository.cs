@@ -874,14 +874,6 @@ namespace Api.Socioboard.Model
                     {
                         List<User> s = session.CreateQuery("from User").List<User>().ToList<User>();
                         return s;
-                        //List<User> alstUser = new List<User>();
-                        //foreach (User item in query.Enumerable())
-                        //{
-                        //    alstUser.Add(item);
-                        //}
-
-                        //return alstUser;
-
                     }
                     catch (Exception ex)
                     {
@@ -1333,5 +1325,62 @@ namespace Api.Socioboard.Model
             }
             return i;
         }
+
+        public List<User> GetAllExpiredUser()
+        {
+            //Creates a database connection and opens up a session
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                //After Session creation, start Transaction. 
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    //Proceed action to get Archive messages
+                    // And return list of archive messages.
+                    try
+                    {
+                        List<User> alsdata = session.CreateQuery("from User")
+                                        .List<User>()
+                                        .ToList<User>()
+                                        .Where(e => e.ExpiryDate.Date == DateTime.Now.Date)
+                                        .ToList<User>();
+                        return alsdata;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.Write(ex.StackTrace);
+                        return null;
+                    }
+                }//End using transaction  
+            }//Using using session
+        }
+
+
+        //vikash [06/04/2015]
+        public User getUserInfoForSocialLogin(string logintype)
+        {
+            List<User> lstUser = new List<User>();
+            User user = new User();
+            using (NHibernate.ISession session = SessionFactory.GetNewSession())
+            {
+                using (NHibernate.ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        lstUser = session.CreateQuery("from  User u where u.SocialLogin = : SocialLogin")
+                        .SetParameter("SocialLogin", logintype).List<User>().ToList<User>();
+                        user = lstUser[0];
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                        user = null;
+                    }
+                }
+            }
+
+            return user;
+        }
+
     }
 }

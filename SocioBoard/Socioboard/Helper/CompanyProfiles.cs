@@ -15,6 +15,7 @@ using GlobusLinkedinLib.Authentication;
 using GlobusTwitterLib.Authentication;
 using log4net;
 using Newtonsoft.Json.Linq;
+using Facebook;
 
 namespace Socioboard.Helper
 {
@@ -22,9 +23,808 @@ namespace Socioboard.Helper
     {
         ILog logger = LogManager.GetLogger(typeof(CompanyProfiles));
 
+        public string getFacebookPageStoryTellers(string PageId, string Accesstoken)
+        {
+
+            string accesstoken = "CAACEdEose0cBAED7aeZC5ROwXep8DhBwHFokyGCep41TxdZCw8ku2DnwN3itcpXbq9UT5huGuFI33CAX1cPQz8dyklchY3RK3XkOmkIUjSjSqnnetFeqOZCipjU607EU2yYfyZBH6okf2IxxvlMMWelykjVbe2vcofG65ZBMS8zI1Stj8NsGFZATZCUhZCVtsh3ZCLsl0wOXeBsoBsxml8kDFF2jtyZAceBDkZD";
+            string facebookSearchUrl = "https://graph.facebook.com/v2.3/972279612784220/insights?&access_token=" + accesstoken;
+            var facebooklistpagerequest = (HttpWebRequest)WebRequest.Create(facebookSearchUrl);
+            facebooklistpagerequest.Method = "GET";
+            facebooklistpagerequest.Credentials = CredentialCache.DefaultCredentials;
+            facebooklistpagerequest.AllowWriteStreamBuffering = true;
+            facebooklistpagerequest.ServicePoint.Expect100Continue = false;
+            facebooklistpagerequest.PreAuthenticate = false;
+            string outputface = string.Empty;
+            try
+            {
+                using (var response = facebooklistpagerequest.GetResponse())
+                {
+                    using (var stream = new StreamReader(response.GetResponseStream(), Encoding.GetEncoding(1252)))
+                    {
+                        outputface = stream.ReadToEnd();
+                    }
+                }
+            }
+            catch (Exception e) { }
+            return outputface;
+
+        }
+        public static string getFacebookResponse(string Url)
+        {
+            var facebooklistpagerequest = (HttpWebRequest)WebRequest.Create(Url);
+            facebooklistpagerequest.Method = "GET";
+            facebooklistpagerequest.Credentials = CredentialCache.DefaultCredentials;
+            facebooklistpagerequest.AllowWriteStreamBuffering = true;
+            facebooklistpagerequest.ServicePoint.Expect100Continue = false;
+            facebooklistpagerequest.PreAuthenticate = false;
+            string outputface = string.Empty;
+            try
+            {
+                using (var response = facebooklistpagerequest.GetResponse())
+                {
+                    using (var stream = new StreamReader(response.GetResponseStream(), Encoding.GetEncoding(1252)))
+                    {
+                        outputface = stream.ReadToEnd();
+                    }
+                }
+            }
+            catch (Exception e) { }
+            return outputface;
+        }
+        public Dictionary<DateTime, int> getFacebookPageLikes(string PageId, string Accesstoken, int days)
+        {
 
 
-       
+            //string accesstoken = "CAACEdEose0cBAMQVEgKsHtUogOZCQ9vtBZB6FjsUWuZCVEzVUU01yecHqo1fVpTfQq65tmMUfmlafhmGtzmUY6ZCmZBrEXWMp1sfBLMvtdB7c1HBkSBGxbqT0q0nQY6ZBmtPBhg84IrXy4jBjRdMmP1Mh8hlOC9TRuy86jabDi2ccOyeRXYVZA7vuj4HDYgLhrwlNubCYvkENa6nPuY1PCgkuCv1cS8rXMZD";
+            try
+            {
+                long since = DateTime.Now.AddDays(-days).ToUnixTimestamp();
+                long until = DateTime.Now.ToUnixTimestamp();
+                FacebookClient fb = new FacebookClient();
+                fb.AccessToken = Accesstoken;
+                //dynamic kasdfj = fb.Get("v2.3/me/permissions");
+                dynamic kajlsfdj = fb.Get("v2.0/" + PageId + "/insights/page_fans?pretty=0&since=" + since.ToString() + "&suppress_http_code=1&until=" + until.ToString());
+                string facebookSearchUrl = "https://graph.facebook.com/v2.3/" + PageId + "/insights/page_fans?pretty=0&since=" + since.ToString() + "&suppress_http_code=1&until=" + until.ToString() + "&access_token=" + Accesstoken;
+                string outputface = getFacebookResponse(facebookSearchUrl);
+                Dictionary<DateTime, int> LikesByDay = new Dictionary<DateTime, int>();
+                LikesByDay = getFacebookLikesDictonary(outputface);
+
+                return LikesByDay;
+            }
+            catch (Exception ex)
+            {
+                return new Dictionary<DateTime, int>();
+            }
+
+        }
+
+        public Dictionary<DateTime, int> getFacebookLikesDictonary(string Jobject)
+        {
+            string outputface = Jobject;
+            // Dictionary<DateTime, int> LikesByDay = new Dictionary<DateTime, int>();
+            Dictionary<DateTime, int> NewLikesByDay = new Dictionary<DateTime, int>();
+            int count = 0;
+            bool Isfirst = true;
+            try
+            {
+                JArray likesobj = JArray.Parse(JArray.Parse(JObject.Parse(outputface)["data"].ToString())[0]["values"].ToString());
+                foreach (JObject obj in likesobj)
+                {
+                    try
+                    {
+                        DateTime date = DateTime.Parse(obj["end_time"].ToString());
+                        int likescount = 0;
+                        //int likescountNew = 0;
+                        try
+                        {
+                            likescount = Convert.ToInt32(obj["value"].ToString());
+                        }
+                        catch { }
+
+                        if (Isfirst)
+                        {
+                            count = likescount;
+                            Isfirst = false;
+                        }
+                        else
+                        {
+                            int val = likescount - count;
+                            count = likescount;
+                            NewLikesByDay.Add(date, val);
+                        }
+
+                        //LikesByDay.Add(date, likescount);
+
+                    }
+                    catch { }
+                }
+            }
+            catch { }
+
+
+
+
+
+
+            return NewLikesByDay;
+
+        }
+
+
+        public Dictionary<DateTime, int> getFacebookPageImpressions(string PageId, string Accesstoken, int days)
+        {
+            //string accesstoken = "CAACEdEose0cBAMQVEgKsHtUogOZCQ9vtBZB6FjsUWuZCVEzVUU01yecHqo1fVpTfQq65tmMUfmlafhmGtzmUY6ZCmZBrEXWMp1sfBLMvtdB7c1HBkSBGxbqT0q0nQY6ZBmtPBhg84IrXy4jBjRdMmP1Mh8hlOC9TRuy86jabDi2ccOyeRXYVZA7vuj4HDYgLhrwlNubCYvkENa6nPuY1PCgkuCv1cS8rXMZD";
+            long since = DateTime.Now.AddDays(-days).ToUnixTimestamp();
+            long until = DateTime.Now.ToUnixTimestamp();
+            string facebookSearchUrl = "https://graph.facebook.com/v2.3/" + PageId + "/insights/page_impressions?pretty=0&since=" + since.ToString() + "&suppress_http_code=1&until=" + until.ToString() + "&period=day&access_token=" + Accesstoken;
+            string outputface = getFacebookResponse(facebookSearchUrl);
+            Dictionary<DateTime, int> LikesByDay = new Dictionary<DateTime, int>();
+            LikesByDay = getFacebookImpressionsDictonary(outputface);
+            //try
+            //{
+            //    string previous1 = JObject.Parse(outputface)["paging"]["previous"].ToString();
+            //    outputface = getFacebookResponse(previous1);
+            //    LikesByDay = LikesByDay.Concat(getFacebookImpressionsDictonary(outputface)).ToDictionary(x => x.Key, x => x.Value);
+            //    try
+            //    {
+            //        string previous2 = JObject.Parse(outputface)["paging"]["previous"].ToString();
+            //        LikesByDay = LikesByDay.Concat(getFacebookImpressionsDictonary(getFacebookResponse(previous2))).ToDictionary(x => x.Key, x => x.Value);
+            //    }
+            //    catch { }
+            //}
+            //catch { }
+            return LikesByDay;
+
+        }
+
+        public Dictionary<DateTime, int> getFacebookImpressionsDictonary(string Jobject)
+        {
+            string outputface = Jobject;
+            Dictionary<DateTime, int> ImpressionsByDay = new Dictionary<DateTime, int>();
+            try
+            {
+                JArray likesobj = JArray.Parse(JArray.Parse(JObject.Parse(outputface)["data"].ToString())[0]["values"].ToString());
+                foreach (JObject obj in likesobj)
+                {
+                    try
+                    {
+                        DateTime date = DateTime.Parse(obj["end_time"].ToString());
+                        int likescount = Convert.ToInt32(obj["value"].ToString());
+                        ImpressionsByDay.Add(date, likescount);
+                    }
+                    catch { }
+                }
+            }
+            catch { }
+            return ImpressionsByDay;
+
+        }
+
+
+
+
+        public Dictionary<DateTime, int> getFacebookPageUnLikes(string PageId, string Accesstoken, int days)
+        {
+            //string accesstoken = "CAACEdEose0cBAMQVEgKsHtUogOZCQ9vtBZB6FjsUWuZCVEzVUU01yecHqo1fVpTfQq65tmMUfmlafhmGtzmUY6ZCmZBrEXWMp1sfBLMvtdB7c1HBkSBGxbqT0q0nQY6ZBmtPBhg84IrXy4jBjRdMmP1Mh8hlOC9TRuy86jabDi2ccOyeRXYVZA7vuj4HDYgLhrwlNubCYvkENa6nPuY1PCgkuCv1cS8rXMZD";
+            long since = DateTime.Now.AddDays(-days).ToUnixTimestamp();
+            long until = DateTime.Now.ToUnixTimestamp();
+            string facebookSearchUrl = "https://graph.facebook.com/v2.3/" + PageId + "/insights/page_fan_removes_unique?pretty=0&since=" + since.ToString() + "&suppress_http_code=1&until=" + until.ToString() + "&access_token=" + Accesstoken;
+            string outputface = getFacebookResponse(facebookSearchUrl);
+            Dictionary<DateTime, int> LikesByDay = new Dictionary<DateTime, int>();
+            LikesByDay = getFacebookUnLikeDictonary(outputface);
+
+            return LikesByDay;
+
+        }
+
+        public Dictionary<DateTime, int> getFacebookUnLikeDictonary(string Jobject)
+        {
+            string outputface = Jobject;
+            Dictionary<DateTime, int> UnLikeByDay = new Dictionary<DateTime, int>();
+            try
+            {
+                JArray likesobj = JArray.Parse(JArray.Parse(JObject.Parse(outputface)["data"].ToString())[0]["values"].ToString());
+                foreach (JObject obj in likesobj)
+                {
+                    try
+                    {
+                        DateTime date = DateTime.Parse(obj["end_time"].ToString());
+                        int likescount = Convert.ToInt32(obj["value"].ToString());
+                        UnLikeByDay.Add(date, likescount);
+                    }
+                    catch { }
+                }
+            }
+            catch { }
+            return UnLikeByDay;
+
+        }
+
+
+
+        public Dictionary<string, int> getFacebookPageImpressionsByAgenGender(string PageId, string Accesstoken, int days)
+        {
+            //string accesstoken = "CAACEdEose0cBAMQVEgKsHtUogOZCQ9vtBZB6FjsUWuZCVEzVUU01yecHqo1fVpTfQq65tmMUfmlafhmGtzmUY6ZCmZBrEXWMp1sfBLMvtdB7c1HBkSBGxbqT0q0nQY6ZBmtPBhg84IrXy4jBjRdMmP1Mh8hlOC9TRuy86jabDi2ccOyeRXYVZA7vuj4HDYgLhrwlNubCYvkENa6nPuY1PCgkuCv1cS8rXMZD";
+            long since = DateTime.Now.AddDays(-days).ToUnixTimestamp();
+            long until = DateTime.Now.ToUnixTimestamp();
+            string facebookSearchUrl = "https://graph.facebook.com/v2.3/" + PageId + "/insights/page_impressions_by_age_gender_unique?pretty=0&since=" + since.ToString() + "&suppress_http_code=1&until=" + until.ToString() + "&period=day&access_token=" + Accesstoken;
+            string outputface = getFacebookResponse(facebookSearchUrl);
+            Dictionary<string, int> LikesByDay = new Dictionary<string, int>();
+            LikesByDay = getFacebookImpressionsDictonaryByAgenGender(outputface);
+
+            return LikesByDay;
+
+        }
+
+        public Dictionary<string, int> getFacebookImpressionsDictonaryByAgenGender(string Jobject)
+        {
+            string outputface = Jobject;
+            int M1824 = 0;
+            int F1824 = 0;
+            int M2534 = 0;
+            int F2534 = 0;
+            int M3544 = 0;
+            int F3544 = 0;
+            int M4554 = 0;
+            int F4554 = 0;
+            int M5564 = 0;
+            int F5564 = 0;
+            int M65plus = 0;
+            int F65plus = 0;
+            Dictionary<string, int> LikesByGender = new Dictionary<string, int>();
+            try
+            {
+                JArray likesobj = JArray.Parse(JArray.Parse(JObject.Parse(outputface)["data"].ToString())[0]["values"].ToString());
+                foreach (JObject obj in likesobj)
+                {
+                    try
+                    {
+                        M1824 = M1824 + Convert.ToInt32(obj["value"]["M.18-24"].ToString());
+                    }
+                    catch { }
+                    try
+                    {
+                        F1824 = F1824 + Convert.ToInt32(obj["value"]["F.18-24"].ToString());
+                    }
+                    catch { }
+                    try
+                    {
+                        M2534 = M2534 + Convert.ToInt32(obj["value"]["M.25-34"].ToString());
+                    }
+                    catch { }
+                    try
+                    {
+                        F2534 = F1824 + Convert.ToInt32(obj["value"]["F.25-34"].ToString());
+                    }
+                    catch { }
+                    try
+                    {
+                        M3544 = M3544 + Convert.ToInt32(obj["value"]["M.35-44"].ToString());
+                    }
+                    catch { }
+                    try
+                    {
+                        F3544 = F3544 + Convert.ToInt32(obj["value"]["F.35-44"].ToString());
+                    }
+                    catch { }
+                    try
+                    {
+                        M4554 = M4554 + Convert.ToInt32(obj["value"]["M.45-54"].ToString());
+                    }
+                    catch { }
+                    try
+                    {
+                        F4554 = F4554 + Convert.ToInt32(obj["value"]["F.45-54"].ToString());
+                    }
+                    catch { }
+                    try
+                    {
+                        M5564 = M5564 + Convert.ToInt32(obj["value"]["M.55-64"].ToString());
+                    }
+                    catch { }
+                    try
+                    {
+                        F5564 = F5564 + Convert.ToInt32(obj["value"]["F.55-64"].ToString());
+                    }
+                    catch { }
+                    try
+                    {
+                        M65plus = M65plus + Convert.ToInt32(obj["value"]["M.65+"].ToString());
+                    }
+                    catch { }
+                    try
+                    {
+                        F65plus = F65plus + Convert.ToInt32(obj["value"]["F.65+"].ToString());
+                    }
+                    catch { }
+                }
+            }
+            catch { }
+            LikesByGender.Add("M1824", M1824);
+            LikesByGender.Add("F1824", F1824);
+            LikesByGender.Add("M2534", M2534);
+            LikesByGender.Add("F2534", F2534);
+            LikesByGender.Add("M3544", M3544);
+            LikesByGender.Add("F3544", F3544);
+            LikesByGender.Add("M4554", M4554);
+            LikesByGender.Add("F4554", F4554);
+            LikesByGender.Add("M5564", M5564);
+            LikesByGender.Add("F5564", F5564);
+            LikesByGender.Add("M65plus", M65plus);
+            LikesByGender.Add("F65plus", F65plus);
+            return LikesByGender;
+
+        }
+
+
+
+        public int getFacebookpageImpressionsOrganic(string PageId, string Accesstoken, int days)
+        {
+            //string accesstoken = "CAACEdEose0cBAMQVEgKsHtUogOZCQ9vtBZB6FjsUWuZCVEzVUU01yecHqo1fVpTfQq65tmMUfmlafhmGtzmUY6ZCmZBrEXWMp1sfBLMvtdB7c1HBkSBGxbqT0q0nQY6ZBmtPBhg84IrXy4jBjRdMmP1Mh8hlOC9TRuy86jabDi2ccOyeRXYVZA7vuj4HDYgLhrwlNubCYvkENa6nPuY1PCgkuCv1cS8rXMZD";
+            long since = DateTime.Now.AddDays(-days).ToUnixTimestamp();
+            long until = DateTime.Now.ToUnixTimestamp();
+            string facebookSearchUrl = "https://graph.facebook.com/v2.3/" + PageId + "/insights/page_impressions_organic?pretty=0&since=" + since.ToString() + "&suppress_http_code=1&until=" + until.ToString() + "&period=day&access_token=" + Accesstoken;
+            string outputface = getFacebookResponse(facebookSearchUrl);
+            int count = 0;
+            count = getFacebookImpressionsOrganicCount(outputface);
+
+            return count;
+
+        }
+
+        public int getFacebookImpressionsOrganicCount(string Jobject)
+        {
+            string outputface = Jobject;
+            int count = 0;
+            try
+            {
+                JArray likesobj = JArray.Parse(JArray.Parse(JObject.Parse(outputface)["data"].ToString())[0]["values"].ToString());
+                foreach (JObject obj in likesobj)
+                {
+                    count = count + Convert.ToInt32(obj["value"].ToString());
+                }
+            }
+            catch { }
+            return count;
+
+        }
+
+
+
+
+        public int getFacebookpageImpressionsviral(string PageId, string Accesstoken, int days)
+        {
+            //string accesstoken = "CAACEdEose0cBAMQVEgKsHtUogOZCQ9vtBZB6FjsUWuZCVEzVUU01yecHqo1fVpTfQq65tmMUfmlafhmGtzmUY6ZCmZBrEXWMp1sfBLMvtdB7c1HBkSBGxbqT0q0nQY6ZBmtPBhg84IrXy4jBjRdMmP1Mh8hlOC9TRuy86jabDi2ccOyeRXYVZA7vuj4HDYgLhrwlNubCYvkENa6nPuY1PCgkuCv1cS8rXMZD";
+            long since = DateTime.Now.AddDays(-days).ToUnixTimestamp();
+            long until = DateTime.Now.ToUnixTimestamp();
+            string facebookSearchUrl = "https://graph.facebook.com/v2.3/" + PageId + "/insights/page_impressions_viral?pretty=0&since=" + since.ToString() + "&suppress_http_code=1&until=" + until.ToString() + "&period=day&access_token=" + Accesstoken;
+            string outputface = getFacebookResponse(facebookSearchUrl);
+            int count = 0;
+            count = getFacebookImpressionsViralCount(outputface);
+
+            return count;
+
+        }
+
+        public int getFacebookImpressionsViralCount(string Jobject)
+        {
+            string outputface = Jobject;
+            int count = 0;
+            try
+            {
+                JArray likesobj = JArray.Parse(JArray.Parse(JObject.Parse(outputface)["data"].ToString())[0]["values"].ToString());
+                foreach (JObject obj in likesobj)
+                {
+                    count = count + Convert.ToInt32(obj["value"].ToString());
+                }
+            }
+            catch { }
+            return count;
+
+        }
+
+
+        public int getFacebookpageImpressionsPaid(string PageId, string Accesstoken, int days)
+        {
+            //string accesstoken = "CAACEdEose0cBAMQVEgKsHtUogOZCQ9vtBZB6FjsUWuZCVEzVUU01yecHqo1fVpTfQq65tmMUfmlafhmGtzmUY6ZCmZBrEXWMp1sfBLMvtdB7c1HBkSBGxbqT0q0nQY6ZBmtPBhg84IrXy4jBjRdMmP1Mh8hlOC9TRuy86jabDi2ccOyeRXYVZA7vuj4HDYgLhrwlNubCYvkENa6nPuY1PCgkuCv1cS8rXMZD";
+            long since = DateTime.Now.AddDays(-days).ToUnixTimestamp();
+            long until = DateTime.Now.ToUnixTimestamp();
+            string facebookSearchUrl = "https://graph.facebook.com/v2.3/" + PageId + "/insights/page_impressions_paid?pretty=0&since=" + since.ToString() + "&suppress_http_code=1&until=" + until.ToString() + "&period=day&access_token=" + Accesstoken;
+            string outputface = getFacebookResponse(facebookSearchUrl);
+            int count = 0;
+            count = getFacebookImpressionsPaidCount(outputface);
+            return count;
+
+        }
+
+        public int getFacebookImpressionsPaidCount(string Jobject)
+        {
+            string outputface = Jobject;
+            int count = 0;
+            try
+            {
+                JArray likesobj = JArray.Parse(JArray.Parse(JObject.Parse(outputface)["data"].ToString())[0]["values"].ToString());
+                foreach (JObject obj in likesobj)
+                {
+                    count = count + Convert.ToInt32(obj["value"].ToString());
+                }
+            }
+            catch { }
+            return count;
+
+        }
+
+
+
+
+        public Dictionary<string, int> getFacebookPageImpressionsByCountry(string PageId, string Accesstoken, int days)
+        {
+            //string accesstoken = "CAACEdEose0cBAMQVEgKsHtUogOZCQ9vtBZB6FjsUWuZCVEzVUU01yecHqo1fVpTfQq65tmMUfmlafhmGtzmUY6ZCmZBrEXWMp1sfBLMvtdB7c1HBkSBGxbqT0q0nQY6ZBmtPBhg84IrXy4jBjRdMmP1Mh8hlOC9TRuy86jabDi2ccOyeRXYVZA7vuj4HDYgLhrwlNubCYvkENa6nPuY1PCgkuCv1cS8rXMZD";
+            long since = DateTime.Now.AddDays(-days).ToUnixTimestamp();
+            long until = DateTime.Now.ToUnixTimestamp();
+            string facebookSearchUrl = "https://graph.facebook.com/v2.3/" + PageId + "/insights/page_impressions_by_country_unique?pretty=0&since=" + since.ToString() + "&suppress_http_code=1&until=" + until.ToString() + "&period=day&access_token=" + Accesstoken;
+            string outputface = getFacebookResponse(facebookSearchUrl);
+            Dictionary<string, int> LikesByDay = new Dictionary<string, int>();
+            LikesByDay = getFacebookImpressionsDictonaryByCountry(outputface);
+
+            return LikesByDay;
+
+        }
+
+        public Dictionary<string, int> getFacebookImpressionsDictonaryByCountry(string Jobject)
+        {
+            string outputface = Jobject;
+            Dictionary<string, int> ImpressionsByCity = new Dictionary<string, int>();
+            try
+            {
+                JArray likesobj = JArray.Parse(JArray.Parse(JObject.Parse(outputface)["data"].ToString())[0]["values"].ToString());
+                foreach (JObject obj in likesobj)
+                {
+                    foreach (var item in obj["value"])
+                    {
+                        string city = item.ToString().Split(':')[0].Replace("\"", string.Empty).Trim();
+                        if (ImpressionsByCity.ContainsKey(city))
+                        {
+                            ImpressionsByCity[city] = ImpressionsByCity[city] + Convert.ToInt32(item.First.ToString());
+                        }
+                        else
+                        {
+                            ImpressionsByCity.Add(city, Convert.ToInt32(item.First.ToString()));
+                        }
+                    }
+
+                }
+            }
+            catch { }
+
+            return ImpressionsByCity;
+
+        }
+
+
+
+        public Dictionary<string, int> getFacebookPageImpressionsByCity(string PageId, string Accesstoken, int days)
+        {
+            //string accesstoken = "CAACEdEose0cBAMQVEgKsHtUogOZCQ9vtBZB6FjsUWuZCVEzVUU01yecHqo1fVpTfQq65tmMUfmlafhmGtzmUY6ZCmZBrEXWMp1sfBLMvtdB7c1HBkSBGxbqT0q0nQY6ZBmtPBhg84IrXy4jBjRdMmP1Mh8hlOC9TRuy86jabDi2ccOyeRXYVZA7vuj4HDYgLhrwlNubCYvkENa6nPuY1PCgkuCv1cS8rXMZD";
+            long since = DateTime.Now.AddDays(-days).ToUnixTimestamp();
+            long until = DateTime.Now.ToUnixTimestamp();
+            string facebookSearchUrl = "https://graph.facebook.com/v2.3/" + PageId + "/insights/page_impressions_by_city_unique?pretty=0&since=" + since.ToString() + "&suppress_http_code=1&until=" + until.ToString() + "&period=day&access_token=" + Accesstoken;
+            string outputface = getFacebookResponse(facebookSearchUrl);
+            Dictionary<string, int> LikesByDay = new Dictionary<string, int>();
+            LikesByDay = getFacebookImpressionsDictonaryByCity(outputface);
+
+            return LikesByDay;
+
+        }
+
+        public Dictionary<string, int> getFacebookImpressionsDictonaryByCity(string Jobject)
+        {
+            string outputface = Jobject;
+            Dictionary<string, int> ImpressionsByCity = new Dictionary<string, int>();
+            try
+            {
+                JArray likesobj = JArray.Parse(JArray.Parse(JObject.Parse(outputface)["data"].ToString())[0]["values"].ToString());
+                foreach (JObject obj in likesobj)
+                {
+                    foreach (var item in obj["value"])
+                    {
+                        string city = item.ToString().Split(':')[0].Replace("\"", string.Empty).Trim();
+                        if (ImpressionsByCity.ContainsKey(city))
+                        {
+                            ImpressionsByCity[city] = ImpressionsByCity[city] + Convert.ToInt32(item.First.ToString());
+                        }
+                        else
+                        {
+                            ImpressionsByCity.Add(city, Convert.ToInt32(item.First.ToString()));
+                        }
+                    }
+
+                }
+            }
+            catch { }
+
+            return ImpressionsByCity;
+
+        }
+
+
+        public Dictionary<string, int> getTwitterFollowersList(string ScreenName, string Accesstoken, int days)
+        {
+            JObject output = new JObject();
+            try
+            {
+                SortedDictionary<string, string> requestParameters = new SortedDictionary<string, string>();
+                requestParameters.Add("count", "5000");
+                requestParameters.Add("screen_name", ScreenName);
+                requestParameters.Add("cursor", "-1");
+                //Token URL
+                var oauth_url = "https://api.twitter.com/1.1/followers/list.json?";
+                var headerFormat = "Bearer {0}";
+                var authHeader = string.Format(headerFormat, "AAAAAAAAAAAAAAAAAAAAAOZyVwAAAAAAgI0VcykgJ600le2YdR4uhKgjaMs%3D0MYOt4LpwCTAIi46HYWa85ZcJ81qi0D9sh8avr1Zwf7BDzgdHT");
+
+                var postBody = requestParameters.ToWebString();
+                ServicePointManager.Expect100Continue = false;
+
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(oauth_url + "?"
+                       + requestParameters.ToWebString());
+
+                request.Headers.Add("Authorization", authHeader);
+                request.Method = "GET";
+                request.Headers.Add("Accept-Encoding", "gzip");
+                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                Stream responseStream = new GZipStream(response.GetResponseStream(), CompressionMode.Decompress);
+                using (var reader = new StreamReader(responseStream))
+                {
+
+                    JavaScriptSerializer js = new JavaScriptSerializer();
+                    var objText = reader.ReadToEnd();
+                    output = JObject.Parse(objText);
+
+
+                }
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message);
+            }
+
+            // return output.ToString();
+
+
+
+            Dictionary<string, int> LikesByDay = new Dictionary<string, int>();
+            // LikesByDay = getTwitterFollowers(outputface);
+
+            return LikesByDay;
+        }
+
+        public Dictionary<string, int> getTwitterFollowers(string Jobject)
+        {
+            string outputface = Jobject;
+            Dictionary<string, int> ImpressionsByCity = new Dictionary<string, int>();
+            try
+            {
+                JArray likesobj = JArray.Parse(JArray.Parse(JObject.Parse(outputface)["data"].ToString())[0]["values"].ToString());
+                foreach (JObject obj in likesobj)
+                {
+                    foreach (var item in obj["value"])
+                    {
+                        string city = item.ToString().Split(':')[0].Replace("\"", string.Empty).Trim();
+                        if (ImpressionsByCity.ContainsKey(city))
+                        {
+                            ImpressionsByCity[city] = ImpressionsByCity[city] + Convert.ToInt32(item.First.ToString());
+                        }
+                        else
+                        {
+                            ImpressionsByCity.Add(city, Convert.ToInt32(item.First.ToString()));
+                        }
+                    }
+
+                }
+            }
+            catch { }
+
+            return ImpressionsByCity;
+
+        }
+
+
+        //public Dictionary<string, int> getTwitterRetweetsList(string Id, string Accesstoken, int days)
+        //{
+        //    JObject output = new JObject();
+        //    try
+        //    {
+        //        SortedDictionary<string, string> requestParameters = new SortedDictionary<string, string>();
+        //        requestParameters.Add("count", "100");
+        //        //requestParameters.Add("screen_name", ScreenName);
+        //        //requestParameters.Add("cursor", "-1");
+        //        //Token URL
+        //        var oauth_url = "https://api.twitter.com/1.1/statuses/retweets/" + Id + ".json";
+        //        var headerFormat = "Bearer {0}";
+        //        //var authHeader = string.Format(headerFormat, "AAAAAAAAAAAAAAAAAAAAAOZyVwAAAAAAgI0VcykgJ600le2YdR4uhKgjaMs%3D0MYOt4LpwCTAIi46HYWa85ZcJ81qi0D9sh8avr1Zwf7BDzgdHT");
+        //        var authHeader = string.Format(headerFormat, "AAAAAAAAAAAAAAAAAAAAAOZyVwAAAAAAgI0VcykgJ600le2YdR4uhKgjaMs%3D0MYOt4LpwCTAIi46HYWa85ZcJ81qi0D9sh8avr1Zwf7BDzgdHT");
+
+        //        var postBody = requestParameters.ToWebString();
+        //        ServicePointManager.Expect100Continue = false;
+
+        //        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(oauth_url + "?"
+        //               + requestParameters.ToWebString());
+
+        //        request.Headers.Add("Authorization", authHeader);
+        //        request.Method = "GET";
+        //        request.Headers.Add("Accept-Encoding", "gzip");
+
+        //        HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+        //        Stream responseStream = new GZipStream(response.GetResponseStream(), CompressionMode.Decompress);
+        //        using (var reader = new StreamReader(responseStream))
+        //        {
+
+        //            JavaScriptSerializer js = new JavaScriptSerializer();
+        //            var objText = reader.ReadToEnd();
+        //            output = JObject.Parse(objText);
+
+
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        logger.Error(e.Message);
+        //    }
+
+        //    // return output.ToString();
+
+
+
+        //    Dictionary<string, int> LikesByDay = new Dictionary<string, int>();
+        //    // LikesByDay = getTwitterFollowers(outputface);
+
+        //    return LikesByDay;
+        //}
+
+        public string getTwitterRetweets(string Accesstoken, string AccesstokenSecret, int days, string LastId)
+        {
+            oAuthTwitter oauth = new oAuthTwitter();
+
+            oauth.AccessToken = Accesstoken;
+            oauth.AccessTokenSecret = AccesstokenSecret;
+            oauth.ConsumerKey = ConfigurationManager.AppSettings["consumerKey"];
+            oauth.ConsumerKeySecret = ConfigurationManager.AppSettings["consumerSecret"];
+            string RequestUrl = "https://api.twitter.com/1.1/statuses/retweets_of_me.json";
+            SortedDictionary<string, string> strdic = new SortedDictionary<string, string>();
+            strdic.Add("count", "100");
+            if (!string.IsNullOrEmpty(LastId))
+            {
+                strdic.Add("max_id", LastId);
+            }
+            //strdic.Add("screen_name", ScreenName);
+            string response = oauth.oAuthWebRequest(oAuthTwitter.Method.GET, RequestUrl, strdic);
+
+            return response;
+
+        }
+
+        public Dictionary<DateTime, int> getTwitterRetweetsList(string Id, string Accesstoken, string AccesstokenSecret, int days)
+        {
+            Accesstoken = "2787373862-Quo4aeQX1Mcw5AJhJlFS1IWzA1M5P9X9lYRV7n1";
+            AccesstokenSecret = "3lpIu1qPdEreiQQADpo5AywQWOjW27wpY8jPe2PkXveHK";
+            //days = 9;
+            Id = "3170677652";
+            string response = getTwitterRetweets(Accesstoken, AccesstokenSecret, days, "");
+
+            JArray resarray = JArray.Parse(response);
+
+            DateTime date = DateTime.Now;
+            bool Istrue = true; int count = 0;
+            Dictionary<DateTime, int> LikesByDay = new Dictionary<DateTime, int>(); List<DateTime> datetimeLIst = new List<DateTime>();
+            while (Istrue)
+            {
+
+
+                DateTime Createdat = DateTime.Now;
+                string maxId = string.Empty;
+                foreach (var resobj in resarray)
+                {
+                    string Const_TwitterDateTemplate = "ddd MMM dd HH:mm:ss +ffff yyyy";
+                    Createdat = DateTime.ParseExact((string)resobj["created_at"], Const_TwitterDateTemplate, new System.Globalization.CultureInfo("en-US"));
+                    maxId = resobj["id"].ToString();
+                    datetimeLIst.Add(Createdat.Date);
+                }
+                if (Createdat.Date > DateTime.Now.AddDays(-days).Date && !string.IsNullOrEmpty(maxId))
+                {
+                    response = getTwitterRetweets(Accesstoken, AccesstokenSecret, days, maxId);
+                    resarray = JArray.Parse(response);
+                    if (resarray.Count == 0)
+                    {
+                        Istrue = false;
+                    }
+                }
+                else
+                {
+                    Istrue = false;
+                }
+            }
+
+
+            while (date.Date >= DateTime.Now.AddDays(-days).Date)
+            {
+                count = 0;
+                foreach (DateTime dt in datetimeLIst)
+                {
+                    if (dt.Date == date.Date)
+                    {
+                        count++;
+                    }
+
+                }
+                LikesByDay.Add(date, count);
+                date = date.AddDays(-1);
+            }
+
+
+
+            // LikesByDay = getTwitterFollowers(outputface);
+
+            return LikesByDay;
+        }
+
+
+
+
+        public Dictionary<DateTime, int> getTwittermentionsList(string Id, string Accesstoken, string AccesstokenSecret, int days)
+        {
+            Accesstoken = "2787373862-Quo4aeQX1Mcw5AJhJlFS1IWzA1M5P9X9lYRV7n1";
+            AccesstokenSecret = "3lpIu1qPdEreiQQADpo5AywQWOjW27wpY8jPe2PkXveHK";
+            //days = 9;
+            Id = "3170677652";
+            oAuthTwitter oauth = new oAuthTwitter();
+
+            oauth.AccessToken = Accesstoken;
+            oauth.AccessTokenSecret = AccesstokenSecret;
+            oauth.ConsumerKey = ConfigurationManager.AppSettings["consumerKey"];
+            oauth.ConsumerKeySecret = ConfigurationManager.AppSettings["consumerSecret"];
+            string RequestUrl = "https://api.twitter.com/1.1/statuses/mentions_timeline.json";
+            SortedDictionary<string, string> strdic = new SortedDictionary<string, string>();
+            strdic.Add("count", "100");
+            //strdic.Add("screen_name", ScreenName);
+            string response = oauth.oAuthWebRequest(oAuthTwitter.Method.GET, RequestUrl, strdic);
+
+            JArray resarray = JArray.Parse(response);
+
+            DateTime date = DateTime.Now;
+            int count = 0;
+            Dictionary<DateTime, int> LikesByDay = new Dictionary<DateTime, int>();
+            List<DateTime> datetimeLIst = new List<DateTime>();
+            foreach (var resobj in resarray)
+            {
+                string Const_TwitterDateTemplate = "ddd MMM dd HH:mm:ss +ffff yyyy";
+                DateTime Createdat = DateTime.ParseExact((string)resobj["created_at"], Const_TwitterDateTemplate, new System.Globalization.CultureInfo("en-US"));
+                datetimeLIst.Add(Createdat.Date);
+            }
+
+            while (date.Date >= DateTime.Now.AddDays(-days).Date)
+            {
+                count = 0;
+                foreach (DateTime dt in datetimeLIst)
+                {
+                    if (dt.Date == date.Date)
+                    {
+                        count++;
+                    }
+
+                }
+                LikesByDay.Add(date, count);
+                date = date.AddDays(-1);
+            }
+
+
+
+            // LikesByDay = getTwitterFollowers(outputface);
+
+            return LikesByDay;
+        }
+
+
+
         #region FacebookLogic
         public bool CheckFacebookToken(string fbtoken, string txtvalue)
         {
@@ -278,7 +1078,7 @@ namespace Socioboard.Helper
                     }
                 }
             }
-            catch (Exception e) 
+            catch (Exception e)
             {
                 logger.Error(e.Message);
 
@@ -388,7 +1188,7 @@ namespace Socioboard.Helper
                     Isverified = true;
                 }
             }
-            catch (Exception e) 
+            catch (Exception e)
             {
                 logger.Error(e.Message);
 
@@ -411,7 +1211,7 @@ namespace Socioboard.Helper
                     return SingleTwitterPageResult;
                 }
             }
-            catch (Exception eee) 
+            catch (Exception eee)
             {
                 logger.Error(eee.Message);
 
@@ -960,15 +1760,15 @@ namespace Socioboard.Helper
                 string TumblrSearchUrl = string.Empty;
                 if (keyword.Contains(".tumblr.com"))
                 {
-                    if (keyword.Contains("http://")) 
+                    if (keyword.Contains("http://"))
                     {
                         keyword = keyword.Remove(0, 7);
                     }
-                     TumblrSearchUrl = "http://api.tumblr.com/v2/blog/" + keyword.Replace(" ", string.Empty) + "posts/text?api_key=" + key + "&limit=10";
+                    TumblrSearchUrl = "http://api.tumblr.com/v2/blog/" + keyword.Replace(" ", string.Empty) + "posts/text?api_key=" + key + "&limit=10";
                 }
-                else 
+                else
                 {
-                    TumblrSearchUrl = "http://api.tumblr.com/v2/blog/" + keyword.Replace(" ", string.Empty) + ".tumblr.com/posts/text?api_key=" + key + "&limit=10";                
+                    TumblrSearchUrl = "http://api.tumblr.com/v2/blog/" + keyword.Replace(" ", string.Empty) + ".tumblr.com/posts/text?api_key=" + key + "&limit=10";
                 }
                 var TumblrBlogpagerequest = (HttpWebRequest)WebRequest.Create(TumblrSearchUrl);
                 TumblrBlogpagerequest.Method = "GET";
@@ -1186,7 +1986,7 @@ namespace Socioboard.Helper
                 try
                 {
                     ResultPage = GooglePlusgetUser(keyword);
-                    if (!string.IsNullOrEmpty(ResultPage)) 
+                    if (!string.IsNullOrEmpty(ResultPage))
                     {
                         return ResultPage;
                     }

@@ -4,7 +4,7 @@
     Layout = null;
     string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
     bool check = true;
-    string hrefPost = string.Empty;
+    //string hrefPost = string.Empty;
 }
 <ul class="chat">
     @foreach (var dicitem in (Dictionary<string, List<object>>)Model)
@@ -15,15 +15,15 @@
             foreach (var facebookmsg in lstdic)
             {
                 FacebookFeed item = (FacebookFeed)facebookmsg;
+                string[] str = Socioboard.Helper.UrlExtractor.splitUrlFromString(item.FeedDescription);
         <li class="left clearfix">
             <span class="chat-img pull-left">
                 <img alt="User Avatar" class="img-circle profilePic" src="https://graph.facebook.com/@item.FromId/picture?type=small"/>
             </span>
             <div class="chat-body clearfix">
                 <div>
-                    <strong class="primary-font">@item.FromName</strong>
-                    <small class="pull-right text-muted">
-                        <i class="fa fa-clock-o fa-fw"></i>
+                     <a target="_blank" href="http://www.facebook.com/@item.FromId"><strong class="primary-font">@item.FromName</strong></a><br />
+                    <small class="text-muted">
                          @{
                 string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.FeedDate.ToLocalTime().ToString());
                         }
@@ -32,7 +32,68 @@
                 </div>
 
                  <div style="margin-top: 2%;">
-                @try
+                       @if (str != null)
+                    {
+                        foreach (string substritem in str)
+                        {
+                            try
+                            {
+                                if (!string.IsNullOrEmpty(substritem))
+                                {
+                                    if (substritem.Contains("http"))
+                                    {
+                        <a target="_blank" href="@substritem ">@substritem</a>
+                                    }
+                                    else
+                                    {
+                                        string hrefPost = string.Empty;
+                                        try
+                                        {
+                                            hrefPost = "https://www.facebook.com/" + item.FromId + "/posts/" + item.FeedId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            Console.WriteLine("Error : " + ex.StackTrace);
+                                        }
+                                        if (!string.IsNullOrEmpty(hrefPost))
+                                        {
+                        <a target="_blank" href="@hrefPost" style="color:#333">@substritem</a>
+                                        }
+                                        else
+                                        {
+                        @substritem;
+                                        }
+                                    }
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                            }
+                        }
+                    }
+                    else
+                    {
+                        {
+                            string hrefPost = string.Empty;
+                            try
+                            {
+                                hrefPost = "https://www.facebook.com/" + item.FromId + "/posts/" + item.FeedId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("Error : " + ex.StackTrace);
+                            }
+                            if (!string.IsNullOrEmpty(hrefPost))
+                            {
+                        <a target="_blank" href="@hrefPost" style="color:#333">@item.FeedDescription</a>
+                            }
+                            else
+                            {
+                        @item.FeedDescription;
+                            }
+                        }
+                    }
+                @*@try
                 {
                     hrefPost = "https://www.facebook.com/" + item.FromId + "/posts/" + item.FeedId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
 
@@ -43,7 +104,7 @@
 
                 }
                @* <p>*@
-                    <a target="_blank" href="@hrefPost">
+                    @*<a target="_blank" href="@hrefPost">
                         @item.FeedDescription
                     </a>
                 @*</p>*@
@@ -54,7 +115,7 @@
                     if (!string.IsNullOrEmpty(item.Picture) && item.Picture != null)
                     {
                         <br />
-                    <img src="@item.Picture" style="width: 180px; height: 90px; margin-top: 5%;"> </img>
+                    <img src="@item.Picture" style="margin-top: 3%;"> </img>
                     }
                 }
                 catch (Exception ex)
@@ -103,24 +164,65 @@
             foreach (var twittermsg in lstdic)
             {
                 TwitterMessage item = (TwitterMessage)twittermsg;
+                string[] str = Socioboard.Helper.UrlExtractor.splitUrlFromString(item.TwitterMsg);
         <li class="left clearfix">
             <span class="chat-img pull-left">
                 <img id="user_avtar" alt="User Avatar" class="img-circle profilePic" src="@item.FromProfileUrl"/>
             </span>
             <div class="chat-body clearfix">
                 <div>
-                    <strong class="primary-font">@item.FromName</strong>
-                    <small class="pull-right text-muted">
-                        <i class="fa fa-clock-o fa-fw"></i>
+                    <a target="_blank" href="http://www.twitter.com/@item.FromScreenName"><strong class="primary-font">@item.FromName</strong></a><br />
+                    <small class="text-muted">
+                       
                         @{
                 string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.MessageDate.ToLocalTime().ToString());
                         }
                         @messagedate
                     </small>
                 </div>
+                   @if(str!=null){ 
+                foreach (string substritem in str)
+                {
+                    try
+                    {
+                        if (!string.IsNullOrEmpty(substritem))
+                        {
+                            if (substritem.Contains("http"))
+                            {
+                    <div class="pull-left" @*style="text-align:justify;"*@>
+                        <a target="_blank" href="@substritem ">@substritem</a>
+                    </div>
+                            }
+                            else
+                            {
+                                string hrefPost = string.Empty;
+                                try
+                                {
+                                    hrefPost = "https://www.twitter.com/" + item.FromId + "/status/" + item.MessageId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine("Error : " + ex.StackTrace);
+                                }
+                                if (!string.IsNullOrEmpty(hrefPost))
+                                {
+                    <div class="pull-left" style="text-align: justify;">
+                        <a target="_blank" href="@hrefPost" style="color:#333">@substritem</a>
+                    </div>
+                                }
+                                else
+                                {
+                    @substritem;
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                }}
 
-
-                @try
+                @*@try
                 {
                     hrefPost = "https://www.twitter.com/" + item.FromId + "/status/" + item.MessageId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
 
@@ -134,7 +236,7 @@
                     <a target="_blank" href="@hrefPost">
                         @item.TwitterMsg
                     </a>
-                </p>
+                </p>*@
             </div>
         </li>
                 
@@ -196,20 +298,21 @@
 
         if (dicitem.Key == "linkedin")
         {
-
+            Socioboard.Api.LinkedinAccount.LinkedinAccount ApiLinkedinAccount = new Socioboard.Api.LinkedinAccount.LinkedinAccount();
             List<object> lstdic = (List<object>)dicitem.Value;
             foreach (var linkedinmsg in lstdic)
             {
                 LinkedInMessage item = (LinkedInMessage)linkedinmsg;
-
+                string[] str = Socioboard.Helper.UrlExtractor.splitUrlFromString(item.Message);
+                Domain.Socioboard.Domain.LinkedInAccount _LinkedInAccount = (Domain.Socioboard.Domain.LinkedInAccount)new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize(ApiLinkedinAccount.UserInformation(item.UserId.ToString(),item.ProfileId),typeof(Domain.Socioboard.Domain.LinkedInAccount));
                 string picurl = string.Empty;
-                if (string.IsNullOrEmpty(item.ProfileImageUrl))
+                if (string.IsNullOrEmpty(_LinkedInAccount.ProfileImageUrl))
                 {
                     picurl = "../Themes/Socioboard/Contents/img/anonymousUser.jpg";
                 }
                 else
                 {
-                    picurl = item.ProfileImageUrl;
+                    picurl = _LinkedInAccount.ProfileImageUrl;
                 }
         <li class="left clearfix">
             <span class="chat-img pull-left">
@@ -217,35 +320,59 @@
             </span>
             <div class="chat-body clearfix">
                 <div>
-                     <a target="_blank" href="@item.ProfileUrl"><strong class="pull-right primary-font">@item.ProfileName</strong></a>
-                    <small class="pull-right text-muted">
-                        <i class="fa fa-clock-o fa-fw"></i>
+                     <a href="@_LinkedInAccount.ProfileUrl" target="_blank"><strong class="primary-font">@item.ProfileName</strong></a><br />
+                    <small class="text-muted">
+                        @*<i class="fa fa-clock-o fa-fw"></i>*@
                        @{
                 string messagedate = SBUtils.CompareDateWithclientlocal(ViewBag.datetime, item.CreatedDate.ToLocalTime().ToString());
                         }
                         @messagedate
                     </small>
                 </div>
+               @if(str!=null){
+			   foreach (string substritem in str)
+                {
+                    try
+                    {
+                        if (!string.IsNullOrEmpty(substritem))
+                        {
+                            if (substritem.Contains("http"))
+                            {
+                    <div class="pull-left" @*style="text-align:justify;"*@>
+                        <a target="_blank" href="@substritem ">@substritem</a>
+                    </div>
+                            }
+                            else
+                            {
+                                string hrefPost = string.Empty;
+                                if (!string.IsNullOrEmpty(hrefPost))
+                                {
+                    <div class="pull-left" style="text-align: justify;">
+                        <a target="_blank" href="@hrefPost" style="color:#333">@substritem</a>
+                    </div>
+                                }
+                                else
+                                {
+                    @substritem;
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                }
+				}
                 @if (!string.IsNullOrEmpty(item.ImageUrl))
                 {
                     <br />
-                    <img src="@item.ImageUrl" style="margin-top: 5%; height:100px;" /> 
+                    <img src="@item.ImageUrl" style="margin-top: 3%; height:100px;" /> 
                 }
-                @try
-                {
-                    ///hrefPost = "https://www.twitter.com/" + item.FromId + "/status/" + item.MessageId.Replace(item.FromId, string.Empty).Replace("_", string.Empty).Trim();
-
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error : " + ex.StackTrace);
-
-                }
-                <p>
+              @*  <p>
                     <a>
                         @item.Message
                     </a>
-                </p>
+                </p>*@
             </div>
         </li>
                 

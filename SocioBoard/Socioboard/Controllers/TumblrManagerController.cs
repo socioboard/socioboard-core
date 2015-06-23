@@ -70,18 +70,26 @@ namespace Socioboard.Controllers
                         }
                         else
                         {
-                            Response.Redirect("../Home/Index");
+                            return RedirectToAction("Index", "Home");
                         }
+                    }
+                    else 
+                    {
+                        logger.Error("AuthenticateTumblr =>" + Convert.ToString(group["GroupName"]) + "!=" + ConfigurationManager.AppSettings["DefaultGroupName"].ToString());
+                        return RedirectToAction("Index", "Home");
                     }
                 }
                 catch (Exception ex)
                 {
+                    logger.Error("AuthenticateTumblr => "+ex.Message);
+                    logger.Error("AuthenticateTumblr => "+ex.StackTrace);
+                    return RedirectToAction("Index", "Home");
                 }
             }
             catch (Exception ex)
             {
             }
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
     }

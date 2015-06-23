@@ -43,9 +43,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ChilkatDotNet2">
+      <HintPath>lib\ChilkatDotNet2.dll</HintPath>
+    </Reference>
     <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Facebook.6.8.0\lib\net40-client\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis">
+      <HintPath>..\packages\Google.Apis.1.9.0\lib\net40\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Analytics.v3">
+      <HintPath>..\packages\Google.Apis.Analytics.v3.1.9.0.1150\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Analytics.v3.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth">
+      <HintPath>..\packages\Google.Apis.Auth.1.9.0\lib\net40\Google.Apis.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices">
+      <HintPath>..\packages\Google.Apis.Auth.1.9.0\lib\net40\Google.Apis.Auth.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Core">
+      <HintPath>..\packages\Google.Apis.Core.1.9.0\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices">
+      <HintPath>..\packages\Google.Apis.1.9.0\lib\net40\Google.Apis.PlatformServices.dll</HintPath>
     </Reference>
     <Reference Include="Hammock, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -55,17 +76,26 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
     </Reference>
-    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\log4net.dll</HintPath>
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Mandrill">
       <HintPath>lib\Mandrill.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <HintPath>..\packages\NHibernate.3.3.4.4000\lib\Net35\NHibernate.dll</HintPath>
@@ -85,12 +115,45 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\SendGridMail.dll</HintPath>
     </Reference>
+    <Reference Include="StackifyLib, Version=1.12.5589.24146, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackifyLib.1.12.0.0\lib\StackifyLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StackifyLib.log4net, Version=1.12.5589.24146, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackifyLib.log4net.1.12.0.0\lib\StackifyLib.log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.IO">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.9\lib\net40\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=2.2.22.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\net40\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\net40\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.2.22.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.9\lib\net40\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.9\lib\net40\System.Threading.Tasks.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -101,20 +164,31 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Zlib.Portable">
+      <HintPath>..\packages\Zlib.Portable.1.10.0\lib\portable-net4+sl5+wp8+win8+wpa81+MonoTouch+MonoAndroid\Zlib.Portable.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\AddlinkedinCompanyPage.cs" />
+    <Compile Include="Helper\ChilkatHttpHelpr.cs" />
+    <Compile Include="Helper\FacebookUser.cs" />
+    <Compile Include="Helper\GlobusHttpHelper.cs" />
+    <Compile Include="Helper\GoogleAnaltyicsReportingHelper.cs" />
+    <Compile Include="Helper\GoogleAnalyticsAuthenticationHelper.cs" />
+    <Compile Include="Helper\GoogleAnalyticsRealTimeHelper.cs" />
     <Compile Include="Helper\MailHelper.cs" />
     <Compile Include="Helper\MailSender.cs" />
     <Compile Include="Helper\SessionFactory.cs" />
     <Compile Include="Helper\Utility.cs" />
+    <Compile Include="Helper\Utils.cs" />
     <Compile Include="Model\AdminRepository.cs" />
     <Compile Include="Model\AdsRepository.cs" />
     <Compile Include="Model\AffiliatesRepository.cs" />
     <Compile Include="Model\ArchiveMessageRepository.cs" />
+    <Compile Include="Model\BoardRepository.cs" />
     <Compile Include="Model\BusinessSettingRepository.cs" />
     <Compile Include="Model\CompanyProfilesRepository.cs" />
     <Compile Include="Model\CompanySocialProfilesRepository.cs" />
@@ -122,6 +196,7 @@
     <Compile Include="Model\DiscoverySearchRepository.cs" />
     <Compile Include="Model\DraftsRepository.cs" />
     <Compile Include="Model\DropboxAccountRepository.cs" />
+    <Compile Include="Model\EwalletWithdrawRequestRepository.cs" />
     <Compile Include="Model\FacebookAccountRepository.cs" />
     <Compile Include="Model\FacebookFanPageRepository.cs" />
     <Compile Include="Model\FacebookFeedRepository.cs" />
@@ -134,9 +209,11 @@
     <Compile Include="Model\FbPagePostRepository.cs" />
     <Compile Include="Model\FeedSentimentalAnalysisRepository.cs" />
     <Compile Include="Model\GooglePlusAccountRepository.cs" />
+    <Compile Include="Model\GooglePlusActivitiesRepository.cs" />
     <Compile Include="Model\GroupProfileRepository.cs" />
     <Compile Include="Model\GroupScheduleMessageRepository.cs" />
     <Compile Include="Model\GroupsRepository.cs" />
+    <Compile Include="Model\InboxMessagesRepository.cs" />
     <Compile Include="Model\InstagramAccountRepository.cs" />
     <Compile Include="Model\InstagramCommentRepository.cs" />
     <Compile Include="Model\InstagramFeedRepository.cs" />
@@ -215,6 +292,10 @@
       <DependentUpon>Blog_Posts.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Services\BoardServices.asmx.cs">
+      <DependentUpon>BoardServices.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Services\BusinessSetting.asmx.cs">
       <DependentUpon>BusinessSetting.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -245,6 +326,10 @@
     </Compile>
     <Compile Include="Services\DropboxAccount.asmx.cs">
       <DependentUpon>DropboxAccount.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\EwalletWithdrawRequest.asmx.cs">
+      <DependentUpon>EwalletWithdrawRequest.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Services\Facebook.asmx.cs">
@@ -299,6 +384,10 @@
       <DependentUpon>GoogleAnalyticsStats.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Services\GooglePlus.asmx.cs">
+      <DependentUpon>GooglePlus.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Services\GooglePlusAccount.asmx.cs">
       <DependentUpon>GooglePlusAccount.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -319,6 +408,10 @@
       <DependentUpon>GroupScheduleMessage.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Services\InboxMessages.asmx.cs">
+      <DependentUpon>InboxMessages.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Services\Instagram.asmx.cs">
       <DependentUpon>Instagram.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -337,6 +430,10 @@
     </Compile>
     <Compile Include="Services\Invitation.asmx.cs">
       <DependentUpon>Invitation.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\LinkBuilder.asmx.cs">
+      <DependentUpon>LinkBuilder.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Services\Linkedin.asmx.cs">
@@ -501,6 +598,84 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\bin\MySql.Data.dll" />
+    <Content Include="bin\CodeScales.Http.dll" />
+    <Content Include="bin\Facebook.dll" />
+    <Content Include="bin\Facebook.Silverlight.dll" />
+    <Content Include="bin\Facebook.Web.dll" />
+    <Content Include="bin\Facebook.Web.Mvc.dll" />
+    <Content Include="bin\Facebook.Winforms.dll" />
+    <Content Include="bin\FacebookGraphAPI.dll" />
+    <Content Include="bin\GlobusGooglePlusLib.dll" />
+    <Content Include="bin\GlobusInstagramLib.dll" />
+    <Content Include="bin\GlobusLinkedinLib.dll" />
+    <Content Include="bin\GlobusTwitterLib.dll" />
+    <Content Include="bin\Hammock.dll" />
+    <Content Include="bin\Iesi.Collections.dll" />
+    <Content Include="bin\Iesi.Collections.pdb" />
+    <Content Include="bin\Iesi.Collections.xml" />
+    <Content Include="bin\log4net.dll" />
+    <Content Include="bin\Mappings\Admin.hbm.xml" />
+    <Content Include="bin\Mappings\Ads.hbm.xml" />
+    <Content Include="bin\Mappings\ArchiveMessage.hbm.xml" />
+    <Content Include="bin\Mappings\Blog_Comments.hbm.xml" />
+    <Content Include="bin\Mappings\Blog_Posts.hbm.xml" />
+    <Content Include="bin\Mappings\DiscoverySearch.hbm.xml" />
+    <Content Include="bin\Mappings\Drafts.hbm.xml" />
+    <Content Include="bin\Mappings\FacebookAccount.hbm.xml" />
+    <Content Include="bin\Mappings\FacebookFeed.hbm.xml" />
+    <Content Include="bin\Mappings\FacebookGroup.hbm.xml" />
+    <Content Include="bin\Mappings\FacebookInsightPostStats.hbm.xml" />
+    <Content Include="bin\Mappings\FacebookInsightStats.hbm.xml" />
+    <Content Include="bin\Mappings\FacebookMessage.hbm.xml" />
+    <Content Include="bin\Mappings\FacebookStats.hbm.xml" />
+    <Content Include="bin\Mappings\GoogleAnalyticsAccount.hbm.xml" />
+    <Content Include="bin\Mappings\GooglePlusAccount.hbm.xml" />
+    <Content Include="bin\Mappings\GooglePlusActivities.hbm.xml" />
+    <Content Include="bin\Mappings\GroupProfile.hbm.xml" />
+    <Content Include="bin\Mappings\Groups.hbm.xml" />
+    <Content Include="bin\Mappings\InstagramAccount.hbm.xml" />
+    <Content Include="bin\Mappings\InstagramComment.hbm.xml" />
+    <Content Include="bin\Mappings\InstagramFeed.hbm.xml" />
+    <Content Include="bin\Mappings\LinkedInAccount.hbm.xml" />
+    <Content Include="bin\Mappings\LinkedInFeed.hbm.xml" />
+    <Content Include="bin\Mappings\LinkedinMessage.hbm.xml" />
+    <Content Include="bin\Mappings\Log.hbm.xml" />
+    <Content Include="bin\Mappings\News.hbm.xml" />
+    <Content Include="bin\Mappings\NewsLetter.hbm.xml" />
+    <Content Include="bin\Mappings\Package.hbm.xml" />
+    <Content Include="bin\Mappings\PaymentTransaction.hbm.xml" />
+    <Content Include="bin\Mappings\RssFeeds.hbm.xml" />
+    <Content Include="bin\Mappings\RssReader.hbm.xml" />
+    <Content Include="bin\Mappings\ScheduledMessage.hbm.xml" />
+    <Content Include="bin\Mappings\SocialProfile.hbm.xml" />
+    <Content Include="bin\Mappings\TaskComment.hbm.xml" />
+    <Content Include="bin\Mappings\Tasks.hbm.xml" />
+    <Content Include="bin\Mappings\Team.hbm.xml" />
+    <Content Include="bin\Mappings\TeamMemberProfile.hbm.xml" />
+    <Content Include="bin\Mappings\TwitterAccount.hbm.xml" />
+    <Content Include="bin\Mappings\TwitterDirectMessages.hbm.xml" />
+    <Content Include="bin\Mappings\TwitterFeed.hbm.xml" />
+    <Content Include="bin\Mappings\TwitterMessage.hbm.xml" />
+    <Content Include="bin\Mappings\TwitterStats.hbm.xml" />
+    <Content Include="bin\Mappings\User.hbm.xml" />
+    <Content Include="bin\Mappings\vwTwitterStats.hbm.xml" />
+    <Content Include="bin\MySql.Data.dll" />
+    <Content Include="bin\MySql.Data.Entity.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\NHibernate.dll" />
+    <Content Include="bin\NHibernate.Linq.dll" />
+    <Content Include="bin\NHibernate.Linq.xml" />
+    <Content Include="bin\NHibernateHelper.dll" />
+    <Content Include="bin\NHibernateHelper.pdb" />
+    <Content Include="bin\OAuth.dll" />
+    <Content Include="bin\PayPalCoreSDK.dll" />
+    <Content Include="bin\SendGridMail.dll" />
+    <Content Include="bin\SendGridPlus.dll" />
+    <Content Include="bin\SocioBoard.dll" />
+    <Content Include="bin\System.Net.Http.dll" />
+    <Content Include="bin\Winthusiasm.HtmlEditor.dll" />
     <Content Include="Global.asax" />
     <Content Include="hibernate.cfg.xml">
       <SubType>Designer</SubType>
@@ -508,7 +683,6 @@
     <Content Include="index.html" />
     <Content Include="Layouts\Mails\FriendInvitation.html" />
     <Content Include="Layouts\Mails\GroupInvitation.html" />
-    <Content Include="Layouts\Mails\GroupInvitation1.html" />
     <Content Include="Layouts\Mails\Invitationmailer_template.html" />
     <Content Include="lib\Antlr3.Runtime.dll" />
     <Content Include="lib\CodeScales.Http.dll" />
@@ -599,6 +773,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Ads.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\ArchiveMessage.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -671,6 +846,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\LinkedinMessage.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Log.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -750,7 +926,36 @@
     <EmbeddedResource Include="Mappings\Companyprofiles.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <Content Include="Mappings\DropboxAccount.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Boardfbfeeds.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Boardfbpage.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Boardgplusaccount.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Boardgplusfeeds.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Boardinstagramaccount.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Boardinstagramfeeds.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Boards.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Boardtwitteraccount.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Boardtwitterfeeds.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\DropboxAccount.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\FacebookFanPage.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -772,11 +977,18 @@
     <EmbeddedResource Include="Mappings\TwitterAccountFollowers.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <Content Include="Mappings\TwitterEngagement.hbm.xml" />
     <EmbeddedResource Include="Mappings\TwitterEngagement.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <Content Include="obj\Debug\Api.Socioboard.dll" />
+    <EmbeddedResource Include="Mappings\InboxMessages.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\EwalletWithdrawRequest.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\FacebookFanPage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="obj\Debug\SocialCrowd.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\SocialSuitePro.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\SocialSuitePro.dll" />
@@ -800,6 +1012,7 @@
     <Content Include="Services\ArchiveMessage.asmx" />
     <Content Include="Services\Blog_Comments.asmx" />
     <Content Include="Services\Blog_Posts.asmx" />
+    <Content Include="Services\BoardServices.asmx" />
     <Content Include="Services\BusinessSetting.asmx" />
     <Content Include="Services\CompanyDashboard.asmx" />
     <Content Include="Services\Companypage.asmx" />
@@ -808,6 +1021,7 @@
     <Content Include="Services\Drafts.asmx" />
     <Content Include="Services\Dropbox.asmx" />
     <Content Include="Services\DropboxAccount.asmx" />
+    <Content Include="Services\EwalletWithdrawRequest.asmx" />
     <Content Include="Services\Facebook.asmx" />
     <Content Include="Services\FacebookAccount.asmx" />
     <Content Include="Services\FacebookFanPage.asmx" />
@@ -821,16 +1035,19 @@
     <Content Include="Services\FbPagePost.asmx" />
     <Content Include="Services\GoogleAnalyticsAccount.asmx" />
     <Content Include="Services\GoogleAnalyticsStats.asmx" />
+    <Content Include="Services\GooglePlus.asmx" />
     <Content Include="Services\GooglePlusAccount.asmx" />
     <Content Include="Services\GooglePlusActivities.asmx" />
     <Content Include="Services\GroupProfile.asmx" />
     <Content Include="Services\Groups.asmx" />
     <Content Include="Services\GroupScheduleMessage.asmx" />
+    <Content Include="Services\InboxMessages.asmx" />
     <Content Include="Services\Instagram.asmx" />
     <Content Include="Services\InstagramAccount.asmx" />
     <Content Include="Services\InstagramComment.asmx" />
     <Content Include="Services\InstagramFeed.asmx" />
     <Content Include="Services\Invitation.asmx" />
+    <Content Include="Services\LinkBuilder.asmx" />
     <Content Include="Services\Linkedin.asmx" />
     <Content Include="Services\LinkedinAccount.asmx" />
     <Content Include="Services\LinkedinCompanyPage.asmx" />
@@ -881,6 +1098,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="packages.config" />
+    <Content Include="SocioboardBoardMe-1b20a17f8879.p12" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -952,6 +1170,11 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -14,21 +14,30 @@ namespace Socioboard.Controllers
     [CustomAuthorize]
     public class UserGroupController : BaseController
     {
-       
+
         //
         // GET: /UserGroup/
 
         public ActionResult Index()
         {
-            if (Session["Paid_User"].ToString() == "Unpaid")
+
+            if (Session["User"] != null)
             {
-                return RedirectToAction("Billing", "PersonalSetting");
+
+                if (Session["Paid_User"].ToString() == "Unpaid")
+                {
+                    return RedirectToAction("Billing", "PersonalSetting");
+                }
+                else
+                {
+                    return View();
+                }
             }
             else
             {
-                return View();
+                return RedirectToAction("Index", "Index");
             }
-           // return View();
+            // return View();
         }
         public ActionResult LoadUserGroup()
         {
@@ -140,84 +149,88 @@ namespace Socioboard.Controllers
         public ActionResult AddTeamMember(string email)
         {
             //string[] arr = new string[]{};
-            List<string> arr = new List<string>();
-            string[] arr1 = new string[]{};
             string SentMails = string.Empty;
-            string NotSentMails = string.Empty;
-            User objUser = (User)Session["User"];
-            string selectedgroupid = string.Empty;
-            if (Session["selectedgroupid"] == null || Session["selectedgroupid"] == "")
+            try
             {
-                selectedgroupid = Request.QueryString["groupid"];
-            }
-            else
-            {
-                selectedgroupid = Session["selectedgroupid"].ToString();
-            }
-            Api.Team.Team ApiobjTeam = new Api.Team.Team();
-            Api.User.User ApiobjUser = new Api.User.User();
-            if (email.Contains(','))
-            {
-                arr = email.Split(',').ToList();
-            }
-            else
-            {
-               //arr[0] = email;
-                arr.Add(email);
-            }
-
-            foreach (var item in arr)
-            {
-                if (item.Contains(':'))
+                List<string> arr = new List<string>();
+                string[] arr1 = new string[] { };
+                string NotSentMails = string.Empty;
+                User objUser = (User)Session["User"];
+                string selectedgroupid = string.Empty;
+                if (Session["selectedgroupid"] == null || Session["selectedgroupid"] == "")
                 {
-                    arr1 = item.Split(':');
-                }
-
-                string res = "";
-                User objuserinfo = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUserInfoByEmail(arr1[0]), typeof(User)));
-
-                if (objuserinfo != null)
-                {
-                    string[] name = objuserinfo.UserName.Split(' ');
-                    string fname = name[0];
-                    string lname = string.Empty;
-                    for (int i = 1; i < name.Length; i++)
-                    {
-                        lname += name[i];
-                    }
-
-                    res = ApiobjTeam.AddTeam(objuserinfo.Id.ToString(), "0", fname, lname, arr1[0], "", selectedgroupid, objUser.EmailId, objUser.UserName);
+                    selectedgroupid = Request.QueryString["groupid"];
                 }
                 else
                 {
-                    res = ApiobjTeam.AddTeam(objUser.Id.ToString(), "0", arr1[1], arr1[2], arr1[0], "", selectedgroupid, objUser.EmailId, objUser.UserName);
+                    selectedgroupid = Session["selectedgroupid"].ToString();
                 }
-                //SentMails += res + ',';
-
-                if (!string.IsNullOrEmpty(res) && SentMails != "Something Went Wrong")
+                Api.Team.Team ApiobjTeam = new Api.Team.Team();
+                Api.User.User ApiobjUser = new Api.User.User();
+                if (email.Contains(','))
                 {
-                    Domain.Socioboard.Domain.Team objDomainTeam = (Domain.Socioboard.Domain.Team)new JavaScriptSerializer().Deserialize(res, typeof(Domain.Socioboard.Domain.Team));
-                    if (objDomainTeam != null)
-                    {
-                        SentMails += objDomainTeam.EmailId + ',';
-                    }
+                    arr = email.Split(',').ToList();
                 }
                 else
                 {
-                    NotSentMails += arr1[0] + ',';
+                    //arr[0] = email;
+                    arr.Add(email);
                 }
+
+                foreach (var item in arr)
+                {
+                    if (item.Contains(':'))
+                    {
+                        arr1 = item.Split(':');
+                    }
+
+                    string res = "";
+                    User objuserinfo = (User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUserInfoByEmail(arr1[0]), typeof(User)));
+
+                    if (objuserinfo != null)
+                    {
+                        string[] name = objuserinfo.UserName.Split(' ');
+                        string fname = name[0];
+                        string lname = string.Empty;
+                        for (int i = 1; i < name.Length; i++)
+                        {
+                            lname += name[i];
+                        }
+
+                        res = ApiobjTeam.AddTeam(objuserinfo.Id.ToString(), "0", fname, lname, arr1[0], "", selectedgroupid, objUser.EmailId, objUser.UserName);
+                    }
+                    else
+                    {
+                        res = ApiobjTeam.AddTeam(objUser.Id.ToString(), "0", arr1[1], arr1[2], arr1[0], "", selectedgroupid, objUser.EmailId, objUser.UserName);
+                    }
+                    //SentMails += res + ',';
+
+                    if (!string.IsNullOrEmpty(res) && SentMails != "Something Went Wrong")
+                    {
+                        Domain.Socioboard.Domain.Team objDomainTeam = (Domain.Socioboard.Domain.Team)new JavaScriptSerializer().Deserialize(res, typeof(Domain.Socioboard.Domain.Team));
+                        if (objDomainTeam != null)
+                        {
+                            SentMails += objDomainTeam.EmailId + ',';
+                        }
+                    }
+                    else
+                    {
+                        NotSentMails += arr1[0] + ',';
+                    }
+                }
+                SentMails = "{\"SentMails\":" + "\"" + SentMails + "\",\"NotSentMails\":" + "\"" + NotSentMails + "\"}";
             }
-           // return Content("_AcceptedUserPartial");
+            catch (Exception ex)
+            {
+            }
 
-            SentMails = "{\"SentMails\":" + "\"" + SentMails + "\",\"NotSentMails\":" + "\"" + NotSentMails + "\"}";
-
-                return Content(SentMails);
+            return Content(SentMails);
         }
 
-        public ActionResult CheckprofileToCurrentGroup(Guid UserId,string GroupId)
+        public ActionResult CheckprofileToCurrentGroup(Guid UserId, string GroupId)
         {
             Api.GroupProfile.GroupProfile ApiobjGroupProfile = new Api.GroupProfile.GroupProfile();
-            List<Domain.Socioboard.Domain.GroupProfile> lstGroupProfile = (List<Domain.Socioboard.Domain.GroupProfile>)(new JavaScriptSerializer().Deserialize(ApiobjGroupProfile.GetAllProfilesConnectedWithGroup(UserId.ToString(),GroupId),typeof(List<Domain.Socioboard.Domain.GroupProfile>)));
+            List<Domain.Socioboard.Domain.GroupProfile> lstGroupProfile = (List<Domain.Socioboard.Domain.GroupProfile>)(new JavaScriptSerializer().Deserialize(ApiobjGroupProfile.GetAllProfilesConnectedWithGroup(UserId.ToString(), GroupId), typeof(List<Domain.Socioboard.Domain.GroupProfile>)));
             if (lstGroupProfile.Count != 0)
             {
                 return Content("Success");
@@ -226,7 +239,7 @@ namespace Socioboard.Controllers
             {
                 return Content("Failure");
             }
-           
+
         }
 
     }

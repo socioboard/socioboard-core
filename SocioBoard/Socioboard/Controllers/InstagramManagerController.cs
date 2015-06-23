@@ -103,12 +103,12 @@ namespace Socioboard.Controllers
                         else
                         {
                             //return JavaScript("alert(\"You can't add more than "+ totalaccount +" account!\")");
-                            Response.Redirect("../Home/Index");
+                            return RedirectToAction("Index", "Home");
                         }
                     }
                     else
                     {
-                        Response.Redirect("../Home/Index");
+                        return RedirectToAction("Index", "Home");
                     }
                 }
                 catch (Exception ex)
@@ -118,7 +118,7 @@ namespace Socioboard.Controllers
             catch (Exception ex)
             {
             }
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
 

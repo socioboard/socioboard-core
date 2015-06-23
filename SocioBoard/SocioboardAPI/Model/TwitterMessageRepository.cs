@@ -1404,7 +1404,7 @@ namespace Api.Socioboard.Services
                             str += Convert.ToInt64(sstr) + ",";
                         }
                         str = str.Substring(0, str.Length - 1);
-                        str += ")group by (Year(MessageDate)-Month(MessageDate)-Day(MessageDate)),Type";
+                        str += ")group by (Year(MessageDate)-Month(MessageDate)-Day(MessageDate)),Type ORDER BY MessageDate";
 
                         var lstmsg1 = session.CreateSQLQuery(str).SetParameter("userid", userid).SetParameter("AssinDate", AssinDate);
                         var ListofArr = lstmsg1.List();

@@ -2,16 +2,6 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="HelloWorld">
-        <s:complexType />
-      </s:element>
-      <s:element name="HelloWorldResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="AddAffiliateDetail">
         <s:complexType>
           <s:sequence>
@@ -54,15 +44,69 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="AddRequestToWithdraw">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WithdrawAmount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PaymentMethod" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PaypalEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IbanCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SwiftCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Other" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddRequestToWithdrawResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddRequestToWithdrawResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEwalletWithdraw">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEwalletWithdrawResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEwalletWithdrawResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllEwalletWithdraw">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllEwalletWithdrawResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllEwalletWithdrawResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePaymentStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="status" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePaymentStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdatePaymentStatusResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="int" type="s:int" />
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="HelloWorldSoapIn">
-    <wsdl:part name="parameters" element="tns:HelloWorld" />
-  </wsdl:message>
-  <wsdl:message name="HelloWorldSoapOut">
-    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
-  </wsdl:message>
   <wsdl:message name="AddAffiliateDetailSoapIn">
     <wsdl:part name="parameters" element="tns:AddAffiliateDetail" />
   </wsdl:message>
@@ -81,9 +125,29 @@
   <wsdl:message name="GetAffilieteDetailbyUserIdTransSoapOut">
     <wsdl:part name="parameters" element="tns:GetAffilieteDetailbyUserIdTransResponse" />
   </wsdl:message>
-  <wsdl:message name="HelloWorldHttpGetIn" />
-  <wsdl:message name="HelloWorldHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
+  <wsdl:message name="AddRequestToWithdrawSoapIn">
+    <wsdl:part name="parameters" element="tns:AddRequestToWithdraw" />
+  </wsdl:message>
+  <wsdl:message name="AddRequestToWithdrawSoapOut">
+    <wsdl:part name="parameters" element="tns:AddRequestToWithdrawResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEwalletWithdrawSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEwalletWithdraw" />
+  </wsdl:message>
+  <wsdl:message name="GetEwalletWithdrawSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEwalletWithdrawResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEwalletWithdrawSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllEwalletWithdraw" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEwalletWithdrawSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllEwalletWithdrawResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePaymentStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdatePaymentStatus" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePaymentStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdatePaymentStatusResponse" />
   </wsdl:message>
   <wsdl:message name="AddAffiliateDetailHttpGetIn">
     <wsdl:part name="UserId" type="s:string" />
@@ -105,9 +169,34 @@
   <wsdl:message name="GetAffilieteDetailbyUserIdTransHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="HelloWorldHttpPostIn" />
-  <wsdl:message name="HelloWorldHttpPostOut">
+  <wsdl:message name="AddRequestToWithdrawHttpGetIn">
+    <wsdl:part name="WithdrawAmount" type="s:string" />
+    <wsdl:part name="PaymentMethod" type="s:string" />
+    <wsdl:part name="PaypalEmail" type="s:string" />
+    <wsdl:part name="IbanCode" type="s:string" />
+    <wsdl:part name="SwiftCode" type="s:string" />
+    <wsdl:part name="Other" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddRequestToWithdrawHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetEwalletWithdrawHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetEwalletWithdrawHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEwalletWithdrawHttpGetIn" />
+  <wsdl:message name="GetAllEwalletWithdrawHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePaymentStatusHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="status" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePaymentStatusHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
   </wsdl:message>
   <wsdl:message name="AddAffiliateDetailHttpPostIn">
     <wsdl:part name="UserId" type="s:string" />
@@ -129,11 +218,36 @@
   <wsdl:message name="GetAffilieteDetailbyUserIdTransHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="AddRequestToWithdrawHttpPostIn">
+    <wsdl:part name="WithdrawAmount" type="s:string" />
+    <wsdl:part name="PaymentMethod" type="s:string" />
+    <wsdl:part name="PaypalEmail" type="s:string" />
+    <wsdl:part name="IbanCode" type="s:string" />
+    <wsdl:part name="SwiftCode" type="s:string" />
+    <wsdl:part name="Other" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddRequestToWithdrawHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetEwalletWithdrawHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetEwalletWithdrawHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEwalletWithdrawHttpPostIn" />
+  <wsdl:message name="GetAllEwalletWithdrawHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePaymentStatusHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="status" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePaymentStatusHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
   <wsdl:portType name="AffiliatesSoap">
-    <wsdl:operation name="HelloWorld">
-      <wsdl:input message="tns:HelloWorldSoapIn" />
-      <wsdl:output message="tns:HelloWorldSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="AddAffiliateDetail">
       <wsdl:input message="tns:AddAffiliateDetailSoapIn" />
       <wsdl:output message="tns:AddAffiliateDetailSoapOut" />
@@ -146,12 +260,24 @@
       <wsdl:input message="tns:GetAffilieteDetailbyUserIdTransSoapIn" />
       <wsdl:output message="tns:GetAffilieteDetailbyUserIdTransSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="AddRequestToWithdraw">
+      <wsdl:input message="tns:AddRequestToWithdrawSoapIn" />
+      <wsdl:output message="tns:AddRequestToWithdrawSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEwalletWithdraw">
+      <wsdl:input message="tns:GetEwalletWithdrawSoapIn" />
+      <wsdl:output message="tns:GetEwalletWithdrawSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEwalletWithdraw">
+      <wsdl:input message="tns:GetAllEwalletWithdrawSoapIn" />
+      <wsdl:output message="tns:GetAllEwalletWithdrawSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaymentStatus">
+      <wsdl:input message="tns:UpdatePaymentStatusSoapIn" />
+      <wsdl:output message="tns:UpdatePaymentStatusSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="AffiliatesHttpGet">
-    <wsdl:operation name="HelloWorld">
-      <wsdl:input message="tns:HelloWorldHttpGetIn" />
-      <wsdl:output message="tns:HelloWorldHttpGetOut" />
-    </wsdl:operation>
     <wsdl:operation name="AddAffiliateDetail">
       <wsdl:input message="tns:AddAffiliateDetailHttpGetIn" />
       <wsdl:output message="tns:AddAffiliateDetailHttpGetOut" />
@@ -164,12 +290,24 @@
       <wsdl:input message="tns:GetAffilieteDetailbyUserIdTransHttpGetIn" />
       <wsdl:output message="tns:GetAffilieteDetailbyUserIdTransHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="AddRequestToWithdraw">
+      <wsdl:input message="tns:AddRequestToWithdrawHttpGetIn" />
+      <wsdl:output message="tns:AddRequestToWithdrawHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEwalletWithdraw">
+      <wsdl:input message="tns:GetEwalletWithdrawHttpGetIn" />
+      <wsdl:output message="tns:GetEwalletWithdrawHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEwalletWithdraw">
+      <wsdl:input message="tns:GetAllEwalletWithdrawHttpGetIn" />
+      <wsdl:output message="tns:GetAllEwalletWithdrawHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaymentStatus">
+      <wsdl:input message="tns:UpdatePaymentStatusHttpGetIn" />
+      <wsdl:output message="tns:UpdatePaymentStatusHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="AffiliatesHttpPost">
-    <wsdl:operation name="HelloWorld">
-      <wsdl:input message="tns:HelloWorldHttpPostIn" />
-      <wsdl:output message="tns:HelloWorldHttpPostOut" />
-    </wsdl:operation>
     <wsdl:operation name="AddAffiliateDetail">
       <wsdl:input message="tns:AddAffiliateDetailHttpPostIn" />
       <wsdl:output message="tns:AddAffiliateDetailHttpPostOut" />
@@ -182,18 +320,25 @@
       <wsdl:input message="tns:GetAffilieteDetailbyUserIdTransHttpPostIn" />
       <wsdl:output message="tns:GetAffilieteDetailbyUserIdTransHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="AddRequestToWithdraw">
+      <wsdl:input message="tns:AddRequestToWithdrawHttpPostIn" />
+      <wsdl:output message="tns:AddRequestToWithdrawHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEwalletWithdraw">
+      <wsdl:input message="tns:GetEwalletWithdrawHttpPostIn" />
+      <wsdl:output message="tns:GetEwalletWithdrawHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEwalletWithdraw">
+      <wsdl:input message="tns:GetAllEwalletWithdrawHttpPostIn" />
+      <wsdl:output message="tns:GetAllEwalletWithdrawHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaymentStatus">
+      <wsdl:input message="tns:UpdatePaymentStatusHttpPostIn" />
+      <wsdl:output message="tns:UpdatePaymentStatusHttpPostOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="AffiliatesSoap" type="tns:AffiliatesSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="HelloWorld">
-      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="AddAffiliateDetail">
       <soap:operation soapAction="http://tempuri.org/AddAffiliateDetail" style="document" />
       <wsdl:input>
@@ -221,18 +366,45 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddRequestToWithdraw">
+      <soap:operation soapAction="http://tempuri.org/AddRequestToWithdraw" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEwalletWithdraw">
+      <soap:operation soapAction="http://tempuri.org/GetEwalletWithdraw" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEwalletWithdraw">
+      <soap:operation soapAction="http://tempuri.org/GetAllEwalletWithdraw" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaymentStatus">
+      <soap:operation soapAction="http://tempuri.org/UpdatePaymentStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="AffiliatesSoap12" type="tns:AffiliatesSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="HelloWorld">
-      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="AddAffiliateDetail">
       <soap12:operation soapAction="http://tempuri.org/AddAffiliateDetail" style="document" />
       <wsdl:input>
@@ -260,18 +432,45 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddRequestToWithdraw">
+      <soap12:operation soapAction="http://tempuri.org/AddRequestToWithdraw" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEwalletWithdraw">
+      <soap12:operation soapAction="http://tempuri.org/GetEwalletWithdraw" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEwalletWithdraw">
+      <soap12:operation soapAction="http://tempuri.org/GetAllEwalletWithdraw" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaymentStatus">
+      <soap12:operation soapAction="http://tempuri.org/UpdatePaymentStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="AffiliatesHttpGet" type="tns:AffiliatesHttpGet">
     <http:binding verb="GET" />
-    <wsdl:operation name="HelloWorld">
-      <http:operation location="/HelloWorld" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="AddAffiliateDetail">
       <http:operation location="/AddAffiliateDetail" />
       <wsdl:input>
@@ -290,6 +489,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetAffilieteDetailbyUserIdTrans">
       <http:operation location="/GetAffilieteDetailbyUserIdTrans" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRequestToWithdraw">
+      <http:operation location="/AddRequestToWithdraw" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEwalletWithdraw">
+      <http:operation location="/GetEwalletWithdraw" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEwalletWithdraw">
+      <http:operation location="/GetAllEwalletWithdraw" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaymentStatus">
+      <http:operation location="/UpdatePaymentStatus" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -300,15 +535,6 @@
   </wsdl:binding>
   <wsdl:binding name="AffiliatesHttpPost" type="tns:AffiliatesHttpPost">
     <http:binding verb="POST" />
-    <wsdl:operation name="HelloWorld">
-      <http:operation location="/HelloWorld" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="AddAffiliateDetail">
       <http:operation location="/AddAffiliateDetail" />
       <wsdl:input>
@@ -334,19 +560,55 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddRequestToWithdraw">
+      <http:operation location="/AddRequestToWithdraw" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEwalletWithdraw">
+      <http:operation location="/GetEwalletWithdraw" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEwalletWithdraw">
+      <http:operation location="/GetAllEwalletWithdraw" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaymentStatus">
+      <http:operation location="/UpdatePaymentStatus" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Affiliates">
     <wsdl:port name="AffiliatesSoap" binding="tns:AffiliatesSoap">
-      <soap:address location="http://localhost:6361/Services/Affiliates.asmx" />
+      <soap:address location="http://localhost:6361/services/Affiliates.asmx" />
     </wsdl:port>
     <wsdl:port name="AffiliatesSoap12" binding="tns:AffiliatesSoap12">
-      <soap12:address location="http://localhost:6361/Services/Affiliates.asmx" />
+      <soap12:address location="http://localhost:6361/services/Affiliates.asmx" />
     </wsdl:port>
     <wsdl:port name="AffiliatesHttpGet" binding="tns:AffiliatesHttpGet">
-      <http:address location="http://localhost:6361/Services/Affiliates.asmx" />
+      <http:address location="http://localhost:6361/services/Affiliates.asmx" />
     </wsdl:port>
     <wsdl:port name="AffiliatesHttpPost" binding="tns:AffiliatesHttpPost">
-      <http:address location="http://localhost:6361/Services/Affiliates.asmx" />
+      <http:address location="http://localhost:6361/services/Affiliates.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

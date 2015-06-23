@@ -95,7 +95,7 @@
                         window.location = "../Home/Index";
                     }
                     else {
-                        window.open(msg);
+                        window.location=msg;
                     }
                 },
                 async: false
@@ -109,16 +109,73 @@
             });
         });
 
+        //Commented by Sumit Gupta [30-01-15]
+        //function changePassword(EmailId) {
+
+        //    var op = $('#oldpass').val();
+        //    var np = $('#newpass').val();
+        //    var cp = $('#confirmpass').val();
+        //    var dt = $('#ContentPlaceHolder1_ddlTimeZone :selected').text();
+        //    if (op == "") {
+        //        alertify.error('Please enter Old Password');
+        //        return false;
+        //    }
+        //    if (np == "") {
+        //        alertify.error('Please enter New Password');
+        //        return false;
+        //    }
+        //    if (cp == "") {
+        //        alertify.error('Please confirm Password');
+        //        return false;
+        //    }
+
+        //    if (op == np) {
+        //        alertify.success('Old and New Password should not be same');
+        //    }
+        //    else {
+        //        $.ajax({
+        //            type: 'POST',
+        //            url: '../PersonalSetting/ChangePassword?id=' + EmailId + '&oldpass=' + op + '&newpass=' + np + '&confirmpass=' + cp,
+        //            //alert('yes');
+        //            success: function (msg) {
+        //                if (msg == "Password Changed Successfully") {
+        //                    alertify.success('Password Changed Successfully');
+        //                    $('#ResetModal').modal('hide');
+        //                }
+        //                else if (msg == "Invalid EmailId or Password") {
+        //                    alertify.success('Invalid EmailId or Password');
+        //                }
+        //                else if (msg == "New Password and Confirm Password mismatch") {
+        //                    alertify.success("New Password and Confirm Password mismatch");
+
+        //                }
+        //                else {
+        //                    alertify.error('Error please check');
+
+        //                }
+        //                $('#oldpass').val('');
+        //                $('#newpass').val('');
+        //                $('#confirmpass').val('');
+        //                // $('#feeds').html('').append(msg);
+        //                // window.location = self.location;
+        //            },
+        //            async: false
+        //        });
+        //    }
+
+        //}
+
+        //Added by Sumit Gupta [30-01-15]
         function changePassword(EmailId) {
 
-            var op = $('#oldpass').val();
+            //var op = $('#oldpass').val();
             var np = $('#newpass').val();
             var cp = $('#confirmpass').val();
             var dt = $('#ContentPlaceHolder1_ddlTimeZone :selected').text();
-            if (op == "") {
-                alertify.error('Please enter Old Password');
-                return false;
-            }
+           // if (op == "") {
+           //     alertify.error('Please enter Old Password');
+           //     return false;
+           // }
             if (np == "") {
                 alertify.error('Please enter New Password');
                 return false;
@@ -128,13 +185,13 @@
                 return false;
             }
 
-            if (op == np) {
-                alertify.success('Old and New Password should not be same');
-            }
+            //if (op == np) {
+            //    alertify.success('Old and New Password should not be same');
+            //}
             else {
                 $.ajax({
                     type: 'POST',
-                    url: '../PersonalSetting/ChangePassword?id=' + EmailId + '&oldpass=' + op + '&newpass=' + np + '&confirmpass=' + cp,
+                    url: '../PersonalSetting/ChangePassword?id=' + EmailId + '&newpass=' + np + '&confirmpass=' + cp,
                     //alert('yes');
                     success: function (msg) {
                         if (msg == "Password Changed Successfully") {
@@ -152,7 +209,7 @@
                             alertify.error('Error please check');
 
                         }
-                        $('#oldpass').val('');
+                        //$('#oldpass').val('');
                         $('#newpass').val('');
                         $('#confirmpass').val('');
                         // $('#feeds').html('').append(msg);
@@ -181,7 +238,7 @@
                         url: '../PersonalSetting/CheckEmailIdExist?newEmailId=' + email,
                         success: function (msg) {
                             if (msg == "Mail Send Successfully") {
-                                alertify.success('Mail Sent Successfully');
+                                alertify.success('Mail Send Successfully');
                                 $('#ResetMail').modal('hide');
                             }
                             else if (msg == "Email Id alredy Exist") {
@@ -194,7 +251,7 @@
                                 alertify.error('Error please check');
                             }
                             $('#newemail').val('');
-                            window.location = '../PersonalSetting/LoadPersonalSetting';
+                            window.location = '../personalSettings/LoadPersonalSetting';
                         },
                         async: false
                     });

@@ -5,6 +5,7 @@ using System.Web;
 using Domain.Socioboard.Domain;
 using Api.Socioboard.Helper;
 using System.Collections;
+using NHibernate.Linq;
 
 namespace Api.Socioboard.Services
 {
@@ -148,14 +149,17 @@ namespace Api.Socioboard.Services
                     {
                         //Proceed to Check for Ads is Exist or Not.
                         // And Set the reuired paremeters to find the specific values.
-                        NHibernate.IQuery query = session.CreateQuery("from Ads where Advertisment =:adsdetail");
-                        query.SetParameter("adsdetail", adsdetail);
-                        var result = query.UniqueResult();
-                        if (result == null)
-                            return false;
-                        else
-                            return true;
+                        //NHibernate.IQuery query = session.CreateQuery("from Ads where Advertisment =:adsdetail");
+                        //query.SetParameter("adsdetail", adsdetail);
+                        //var result = query.UniqueResult();
+                        //if (result == null)
+                        //    return false;
+                        //else
+                        //    return true;
 
+                        bool exist = session.Query<Domain.Socioboard.Domain.Ads>()
+                            .Any(x => x.Advertisment == adsdetail);
+                        return exist;
                     }
                     catch (Exception ex)
                     {
@@ -186,13 +190,17 @@ namespace Api.Socioboard.Services
                         //Proceed to Check, Ads is Exist or Not.
                         //And Set the reuired paremeters to find the specific values.
                         // Returns True and false.
-                        NHibernate.IQuery query = session.CreateQuery("from Ads where Id =:adsid");
-                        query.SetParameter("adsid", adsid);
-                        var result = query.UniqueResult();
-                        if (result == null)
-                            return false;
-                        else
-                            return true;
+                        //NHibernate.IQuery query = session.CreateQuery("from Ads where Id =:adsid");
+                        //query.SetParameter("adsid", adsid);
+                        //var result = query.UniqueResult();
+                        //if (result == null)
+                        //    return false;
+                        //else
+                        //    return true;
+
+                        bool exist = session.Query<Domain.Socioboard.Domain.Ads>()
+                             .Any(x => x.Id == adsid);
+                        return exist;
                     }
                     catch (Exception ex)
                     {

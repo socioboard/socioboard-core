@@ -26,49 +26,66 @@ namespace Socioboard.Controllers
         public ActionResult Youtube()
         {
             string AddYoutubeAccount = string.Empty;
+            string AddGPlusAccount = string.Empty;
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
             Domain.Socioboard.Domain.User checkuserexist = (Domain.Socioboard.Domain.User)Session["User"];
             string code = (String)Request.QueryString["code"];
             Api.Youtube.Youtube apiobjYoutube = new Api.Youtube.Youtube();
+            Api.GooglePlus.GooglePlus ApiobjGooglePlus = new Api.GooglePlus.GooglePlus();
             Api.User.User ApiobjUser = new Api.User.User();
             if (Session["googlepluslogin"] != null)
             {
                 if (!string.IsNullOrEmpty(code))
                 {
-                    objUser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(apiobjYoutube.GoogleLogin(code), typeof(Domain.Socioboard.Domain.User)));
-                    checkuserexist = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUserInfoByEmail(objUser.EmailId.ToString()), typeof(Domain.Socioboard.Domain.User)));
-                    if (checkuserexist != null)
+                    if (Session["googlepluslogin"].ToString() == "googlepluslogin")
                     {
-                        Session["User"] = checkuserexist;
-                        int daysremaining = 0;
-
-                        daysremaining = (checkuserexist.ExpiryDate.Date - DateTime.Now.Date).Days;
-                        if (daysremaining > 0)
+                        objUser = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(apiobjYoutube.GoogleLogin(code), typeof(Domain.Socioboard.Domain.User)));
+                        checkuserexist = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUserInfoByEmail(objUser.EmailId.ToString()), typeof(Domain.Socioboard.Domain.User)));
+                        if (checkuserexist != null)
                         {
-                            #region Count Used Accounts
-                            try
+                            Session["User"] = checkuserexist;
+                            int daysremaining = 0;
+
+                            daysremaining = (checkuserexist.ExpiryDate.Date - DateTime.Now.Date).Days;
+                            if (daysremaining > 0)
                             {
-                                Session["Paid_User"] = "Paid";
-                                Api.SocialProfile.SocialProfile apiobjSocialProfile = new Api.SocialProfile.SocialProfile();
-                                Session["ProfileCount"] = Convert.ToInt32(apiobjSocialProfile.GetAllSocialProfilesOfUserCount(objUser.Id.ToString()).ToString());
+                                #region Count Used Accounts
+                                try
+                                {
+                                    Session["Paid_User"] = "Paid";
+                                    Api.SocialProfile.SocialProfile apiobjSocialProfile = new Api.SocialProfile.SocialProfile();
+                                    Session["ProfileCount"] = Convert.ToInt32(apiobjSocialProfile.GetAllSocialProfilesOfUserCount(objUser.Id.ToString()).ToString());
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine(ex.Message);
+                                }
+                                #endregion
                             }
-                            catch (Exception ex)
+                            else
                             {
-                                Console.WriteLine(ex.Message);
+                                Session["Paid_User"] = "Unpaid";
                             }
-                            #endregion
+                            FormsAuthentication.SetAuthCookie(objUser.UserName, false);
+                            return RedirectToAction("Index", "Home");
                         }
                         else
                         {
-                            Session["Paid_User"] = "Unpaid";
+                            Session["User"] = objUser;
+                            return RedirectToAction("Registration", "Index");
                         }
-                        FormsAuthentication.SetAuthCookie(objUser.UserName, false);
-                        return RedirectToAction("Index", "Home");
                     }
-                    else
+                    else if (Session["googlepluslogin"].ToString() == "gplus")
                     {
-                        Session["User"] = objUser;
-                        return RedirectToAction("Registration", "Index");
+                        AddGPlusAccount = ApiobjGooglePlus.AddGPlusAccount(ConfigurationManager.AppSettings["YtconsumerKey"], ConfigurationManager.AppSettings["YtconsumerSecret"], ConfigurationManager.AppSettings["Ytredirect_uri"], objUser.Id.ToString(), Session["group"].ToString(), code);
+                        if (AddGPlusAccount == "Refresh Token Not Found")
+                        {
+                            AuthenticateYoutube(Session["googlepluslogin"].ToString());
+                        }
+                        else
+                        {
+                            Session["SocialManagerInfo"] = AddGPlusAccount;
+                        }
                     }
                 }
                 else
@@ -102,9 +119,56 @@ namespace Socioboard.Controllers
             string googleurl = string.Empty;
             if (!string.IsNullOrEmpty(op))
             {
-                Session["googlepluslogin"] = op;
-                googleurl = "https://accounts.google.com/o/oauth2/auth?client_id=" + ConfigurationManager.AppSettings["YtconsumerKey"] + "&redirect_uri=" + ConfigurationManager.AppSettings["Ytredirect_uri"] + "&scope=https://www.googleapis.com/auth/youtube+https://www.googleapis.com/auth/youtube.readonly+https://www.googleapis.com/auth/youtubepartner+https://www.googleapis.com/auth/youtubepartner-channel-audit+https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/plus.me&response_type=code&access_type=offline";
+                if (op == "googlepluslogin")
+                {
+                    Session["googlepluslogin"] = op;
+                    googleurl = "https://accounts.google.com/o/oauth2/auth?client_id=" + ConfigurationManager.AppSettings["YtconsumerKey"] + "&redirect_uri=" + ConfigurationManager.AppSettings["Ytredirect_uri"] + "&scope=https://www.googleapis.com/auth/youtube+https://www.googleapis.com/auth/youtube.readonly+https://www.googleapis.com/auth/youtubepartner+https://www.googleapis.com/auth/youtubepartner-channel-audit+https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/plus.me&response_type=code&access_type=offline";
+                }
+                else if (op == "gplus")
+                {
+                    Session["googlepluslogin"] = op;
+                    try
+                    {
+                        try
+                        {
+                            Api.Groups.Groups objApiGroups = new Api.Groups.Groups();
+                            JObject group = JObject.Parse(objApiGroups.GetGroupDetailsByGroupId(Session["group"].ToString().ToString()));
+                            int profilecount = 0;
+                            int totalaccount = 0;
+                            try
+                            {
+                                profilecount = (Int16)(Session["ProfileCount"]);
+                                totalaccount = (Int16)Session["TotalAccount"];
+                            }
+                            catch (Exception ex)
+                            {
+                                logger.Error("ex.Message : " + ex.Message);
+                                logger.Error("ex.StackTrace : " + ex.StackTrace);
+                            }
+                            {
+                                if (profilecount < totalaccount)
+                                {
+                                    Response.Redirect("https://accounts.google.com/o/oauth2/auth?client_id=" + ConfigurationManager.AppSettings["YtconsumerKey"] + "&redirect_uri=" + ConfigurationManager.AppSettings["Ytredirect_uri"] + "&scope=https://www.googleapis.com/auth/plus.login+https://www.googleapis.com/auth/plus.profile.emails.read+https://www.googleapis.com/auth/plus.stream.write+https://www.googleapis.com/auth/plus.stream.read+https://www.googleapis.com/auth/plus.circles.read+https://www.googleapis.com/auth/plus.circles.write+https://www.googleapis.com/auth/plus.profiles.read+https://www.googleapis.com/auth/plus.media.upload+https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/plus.me&response_type=code&access_type=offline");
+                                }
+                                else if (profilecount == 0 || totalaccount == 0)
+                                {
+                                    Response.Redirect("https://accounts.google.com/o/oauth2/auth?client_id=" + ConfigurationManager.AppSettings["YtconsumerKey"] + "&redirect_uri=" + ConfigurationManager.AppSettings["Ytredirect_uri"] + "&scope=https://www.googleapis.com/auth/plus.login+https://www.googleapis.com/auth/plus.profile.emails.read+https://www.googleapis.com/auth/plus.stream.write+https://www.googleapis.com/auth/plus.stream.read+https://www.googleapis.com/auth/plus.circles.read+https://www.googleapis.com/auth/plus.circles.write+https://www.googleapis.com/auth/plus.profiles.read+https://www.googleapis.com/auth/plus.media.upload+https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/plus.me&response_type=code&access_type=offline");
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+
             }
+
             else
             {
                 try

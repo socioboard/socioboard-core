@@ -31,8 +31,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\SocioboardAPI\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="StackifyLib, Version=1.12.5589.24146, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackifyLib.1.12.0.0\lib\StackifyLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StackifyLib.log4net, Version=1.12.5589.24146, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackifyLib.log4net.1.12.0.0\lib\StackifyLib.log4net.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -48,9 +60,19 @@
     <Compile Include="Domain\Admin.cs" />
     <Compile Include="Domain\Ads.cs" />
     <Compile Include="Domain\Affiliates.cs" />
+    <Compile Include="Domain\AnalyticsGraphViewModel.cs" />
     <Compile Include="Domain\ArchiveMessage.cs" />
     <Compile Include="Domain\Blog_Comments.cs" />
     <Compile Include="Domain\Blog_Posts.cs" />
+    <Compile Include="Domain\Boardfbfeeds.cs" />
+    <Compile Include="Domain\Boardfbpage.cs" />
+    <Compile Include="Domain\Boardgplusaccount.cs" />
+    <Compile Include="Domain\Boardgplusfeeds.cs" />
+    <Compile Include="Domain\Boardinstagramaccount.cs" />
+    <Compile Include="Domain\Boardinstagramfeeds.cs" />
+    <Compile Include="Domain\Boards.cs" />
+    <Compile Include="Domain\Boardtwitteraccount.cs" />
+    <Compile Include="Domain\Boardtwitterfeeds.cs" />
     <Compile Include="Domain\BusinessSetting.cs" />
     <Compile Include="Domain\CompanyProfiles.cs" />
     <Compile Include="Domain\CompanySocialProfiles.cs" />
@@ -58,6 +80,7 @@
     <Compile Include="Domain\DiscoverySearch.cs" />
     <Compile Include="Domain\Drafts.cs" />
     <Compile Include="Domain\DropboxAccount.cs" />
+    <Compile Include="Domain\EwalletWithdrawRequest.cs" />
     <Compile Include="Domain\FacebookAccount.cs" />
     <Compile Include="Domain\FacebookFanPage.cs" />
     <Compile Include="Domain\FacebookFeed.cs" />
@@ -75,7 +98,9 @@
     <Compile Include="Domain\FBTwitterFeeds.cs" />
     <Compile Include="Domain\FeedSentimentalAnalysis.cs" />
     <Compile Include="Domain\GoogleAnalyticsAccount.cs" />
+    <Compile Include="Domain\GoogleAnalyticsCityPageViews.cs" />
     <Compile Include="Domain\GoogleAnalyticsStats.cs" />
+    <Compile Include="Domain\GoogleAnalyticsViewModel.cs" />
     <Compile Include="Domain\GooglePlusAccount.cs" />
     <Compile Include="Domain\GooglePlusActivities.cs" />
     <Compile Include="Domain\GroupProfile.cs" />
@@ -107,6 +132,7 @@
     <Compile Include="Domain\ILinkedInAccountRepository.cs" />
     <Compile Include="Domain\ILinkedInFeedRepository.cs" />
     <Compile Include="Domain\ILogException.cs" />
+    <Compile Include="Domain\InboxMessages.cs" />
     <Compile Include="Domain\INewsLetterRepository.cs" />
     <Compile Include="Domain\INewsRepository.cs" />
     <Compile Include="Domain\InstagramAccount.cs" />
@@ -186,7 +212,10 @@
     <Compile Include="Helper\TwitterRecentFollower.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

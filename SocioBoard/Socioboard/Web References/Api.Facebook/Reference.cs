@@ -85,6 +85,12 @@ namespace Socioboard.Api.Facebook {
         
         private System.Threading.SendOrPostCallback AddNewFacebookWallPostsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getUserNotificationsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getPageConversationsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetFacebookPageDataOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -206,6 +212,15 @@ namespace Socioboard.Api.Facebook {
         
         /// <remarks/>
         public event AddNewFacebookWallPostsCompletedEventHandler AddNewFacebookWallPostsCompleted;
+        
+        /// <remarks/>
+        public event getUserNotificationsCompletedEventHandler getUserNotificationsCompleted;
+        
+        /// <remarks/>
+        public event getPageConversationsCompletedEventHandler getPageConversationsCompleted;
+        
+        /// <remarks/>
+        public event GetFacebookPageDataCompletedEventHandler GetFacebookPageDataCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddFacebookAccount", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -1128,6 +1143,101 @@ namespace Socioboard.Api.Facebook {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getUserNotifications", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void getUserNotifications(string UserId, FacebookClient fb, object profile) {
+            this.Invoke("getUserNotifications", new object[] {
+                        UserId,
+                        fb,
+                        profile});
+        }
+        
+        /// <remarks/>
+        public void getUserNotificationsAsync(string UserId, FacebookClient fb, object profile) {
+            this.getUserNotificationsAsync(UserId, fb, profile, null);
+        }
+        
+        /// <remarks/>
+        public void getUserNotificationsAsync(string UserId, FacebookClient fb, object profile, object userState) {
+            if ((this.getUserNotificationsOperationCompleted == null)) {
+                this.getUserNotificationsOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetUserNotificationsOperationCompleted);
+            }
+            this.InvokeAsync("getUserNotifications", new object[] {
+                        UserId,
+                        fb,
+                        profile}, this.getUserNotificationsOperationCompleted, userState);
+        }
+        
+        private void OngetUserNotificationsOperationCompleted(object arg) {
+            if ((this.getUserNotificationsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getUserNotificationsCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getPageConversations", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void getPageConversations(string UserId, FacebookClient fb, object profile) {
+            this.Invoke("getPageConversations", new object[] {
+                        UserId,
+                        fb,
+                        profile});
+        }
+        
+        /// <remarks/>
+        public void getPageConversationsAsync(string UserId, FacebookClient fb, object profile) {
+            this.getPageConversationsAsync(UserId, fb, profile, null);
+        }
+        
+        /// <remarks/>
+        public void getPageConversationsAsync(string UserId, FacebookClient fb, object profile, object userState) {
+            if ((this.getPageConversationsOperationCompleted == null)) {
+                this.getPageConversationsOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetPageConversationsOperationCompleted);
+            }
+            this.InvokeAsync("getPageConversations", new object[] {
+                        UserId,
+                        fb,
+                        profile}, this.getPageConversationsOperationCompleted, userState);
+        }
+        
+        private void OngetPageConversationsOperationCompleted(object arg) {
+            if ((this.getPageConversationsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getPageConversationsCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetFacebookPageData", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetFacebookPageData(string FbId, string UserId) {
+            object[] results = this.Invoke("GetFacebookPageData", new object[] {
+                        FbId,
+                        UserId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetFacebookPageDataAsync(string FbId, string UserId) {
+            this.GetFacebookPageDataAsync(FbId, UserId, null);
+        }
+        
+        /// <remarks/>
+        public void GetFacebookPageDataAsync(string FbId, string UserId, object userState) {
+            if ((this.GetFacebookPageDataOperationCompleted == null)) {
+                this.GetFacebookPageDataOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetFacebookPageDataOperationCompleted);
+            }
+            this.InvokeAsync("GetFacebookPageData", new object[] {
+                        FbId,
+                        UserId}, this.GetFacebookPageDataOperationCompleted, userState);
+        }
+        
+        private void OnGetFacebookPageDataOperationCompleted(object arg) {
+            if ((this.GetFacebookPageDataCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetFacebookPageDataCompleted(this, new GetFacebookPageDataCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -1143,6 +1253,87 @@ namespace Socioboard.Api.Facebook {
                 return true;
             }
             return false;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class FacebookClient {
+        
+        private string accessTokenField;
+        
+        private string appIdField;
+        
+        private string appSecretField;
+        
+        private bool isSecureConnectionField;
+        
+        private bool useFacebookBetaField;
+        
+        private string subscriptionVerifyTokenField;
+        
+        /// <remarks/>
+        public string AccessToken {
+            get {
+                return this.accessTokenField;
+            }
+            set {
+                this.accessTokenField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string AppId {
+            get {
+                return this.appIdField;
+            }
+            set {
+                this.appIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string AppSecret {
+            get {
+                return this.appSecretField;
+            }
+            set {
+                this.appSecretField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsSecureConnection {
+            get {
+                return this.isSecureConnectionField;
+            }
+            set {
+                this.isSecureConnectionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool UseFacebookBeta {
+            get {
+                return this.useFacebookBetaField;
+            }
+            set {
+                this.useFacebookBetaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string SubscriptionVerifyToken {
+            get {
+                return this.subscriptionVerifyTokenField;
+            }
+            set {
+                this.subscriptionVerifyTokenField = value;
+            }
         }
     }
     
@@ -1861,6 +2052,40 @@ namespace Socioboard.Api.Facebook {
         private object[] results;
         
         internal AddNewFacebookWallPostsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void getUserNotificationsCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void getPageConversationsCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetFacebookPageDataCompletedEventHandler(object sender, GetFacebookPageDataCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetFacebookPageDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetFacebookPageDataCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

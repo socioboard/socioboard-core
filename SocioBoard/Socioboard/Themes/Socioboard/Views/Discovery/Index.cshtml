@@ -29,14 +29,7 @@
             }
             $('#facebookdiscovery').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />');
             $('#twitterdiscovery').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />');
-            $.ajax({
-                type: 'GET',
-                url: '../Discovery/SearchFacebook?keyword=' + keyword,
-                success: function (msg) {
-                    //alert(msg);
-                    $('#facebookdiscovery').html(msg);
-                }
-            });
+            
             $.ajax({
                 type: 'GET',
                 url: '../Discovery/SearchTwitter?keyword=' + keyword,

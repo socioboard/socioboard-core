@@ -28,6 +28,7 @@ namespace Socioboard.Controllers.Admin
             return View(lstUser);
         }
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult SendAddNewsLatter(string Subject, string NewsBody, string SendDate, string UserIds) 
         {
 

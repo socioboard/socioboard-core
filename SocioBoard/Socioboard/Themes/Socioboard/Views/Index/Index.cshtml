@@ -3,377 +3,842 @@
     string path = System.Configuration.ConfigurationManager.AppSettings["domain"];
     //var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
 }
-@*@helper selected(string c, string culture)
+
+@if (Request.QueryString["op"] == "faq")
 {
-    if (c == culture)
-    {
-        @:checked="checked"
-    }
+    <section class="services bg-primary">
+        <div class="container">
+            <div class="post" id="post-75">
+                <h1 id="page-title">FAQs</h1>
+                <p>
+                    <strong>
+                        Is Socioboard Multilinhgual?<br>
+                    </strong>Yes
+                </p>
+                <p>
+                    <strong>
+                        can it run on linux?<br>
+                    </strong>Yes, using Mono
+                </p>
+                <p>
+                    <strong>
+                        Is it customizable?<br>
+                    </strong>Yes, it is very flexible and can be customized easily
+                </p>
+                <p>
+                    <strong>
+                        Can I get a refund if I change my mind?<br>
+                    </strong>Refunds are not available following purchase
+                </p>
+
+
+                <p>
+                    <strong>What social media sites do you work with?</strong><br>
+                    Facebook, Twitter, YouTube, Linkedin, Instagram, and more.
+                </p>
+                <p><strong>Will social media work for my business?</strong>Yes. Social media can work for any company. Social media allows end consumer connections to be made and maintained like no other advertising outlet. It enhances customer relations and creates a portal to reach out to new potential clientele and disseminate information while promoting positive feedback and combating the negative.</p>
+                <p>
+                    <strong>How many more Facebook Likes will I get?</strong><br>
+                    The Facebook Like component is an important aspect of the Facebook Page, but engaging the target audience is our main focus. It does not benefit a company to have 1,000,000 fans if they are unable to stimulate those fans. Even worse, if the fans are hiding posts from their News Feeds, then no one is seeing any of your content. We do not promise any specific number of fans, as we are interested in the quality of fans over the quantity. We strive to build our Pages through organic means, creating a strong brand and loyal fan base. This in turn will expand the reach of the word of mouth, or in the case of Facebook, word of News Feed.
+                </p>
+                <p>
+                    <strong>What makes Socioboard’s Social Media Management different?</strong><br>
+                    We pride ourselves on our knowledge of the social networks and keeping up with their ever-changing layouts, rules, engagement tactics, and more. We rely on our marketing experience to deliver fresh engagements that truly connect with fans.
+                </p>
+            </div>
+        </div>
+    </section>
 }
-<h2></h2>*@
-@*@using(Html.BeginForm("SetCulture", "Home"))
+else if (Request.QueryString["op"] == "products")
 {
-    <fieldset>
-        <legend>Choose Your Language</legend>
-        <div class="control-group">
-            <div class="controls">
-                <label for="en-us">
-                    <input name="culture" id="en-us" value="en-us" type="radio" @selected("en-us", culture) /> English
-                </label>
+    <!-- About -->
+    <section class="margin-top-50 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 margin-top-30">
+                    <div class="panel panel-default" style="padding: 16px 20px 20px 15px; box-shadow: 1px 2px 10px gray;">
+                        <div class="panel-body">
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-md-12 text-left">
+                                                    <blockquote>
+                                                        <h1>
+                                                            <img src="http://i.imgur.com/rgYcpDH.png" class="img-responsive company_img_size">
+                                                            Socioboard Core <br>
+                                                            <small>(Commercial and Open Source)</small>
+                                                        </h1>
+                                                        <p>
+                                                            Socioboard Core is an open source social media management, analytics and reporting platform. It supports nine social media networks. Using Socioboard Core you can monitor and manage multiple social media accounts and create useful reports and take business decisions based on them.<br>
+                                                            Socioboard Core is available as a web app and mobile apps on iOS and Android. Its completely open source and fully customizable and extensible in the form of plugins. It has a commercial SAAS version at - www.socioboard.com and open source version at - <a href="http://www.socioboard.org" target="_blank">www.socioboard.org</a>
+                                                        </p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <img src="http://i.imgur.com/Al3G7fo.png" class="img-responsive company_img_size">
+                                                    <h1 class="text-center" style="font-size: x-large;">Socioboard BoardMe</h1>
+                                                    <p>
+                                                        BoardMe is a self service platform which helps you to create Social Boards and stream them everywhere like web, desktop, mobile or any other screen.<br>
+                                                        Using Boardme, you can connect Social Feeds or Hastags into 1 place from all your social networks.
+                                                    </p>
+                                                    <div class="text-center">
+                                                        <a onclick="OpenDialog()" class="btn btn-info btn-product btn-xs"><span class="fa fa-thumbs-up"></span> Request Demo</a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <img src="http://i.imgur.com/6zQYkYc.png" class="img-responsive company_img_size">
+                                                    <h1 class="text-center" style="font-size: x-large;">BrandBuzzPro</h1>
+                                                    <p>BrandBuzzpro is a SAAS based Socioboard product which helps brands to recruits its employees and customers as its marketing crew. The best form of marketing is word of mouth marketing and those brands which can get their customers to as their brand ambassadors are the best brands out there.</p>
+                                                    <div class="text-center">
+                                                        <a onclick="OpenDialog()" class="btn btn-info btn-product btn-xs"><span class="fa fa-thumbs-up"></span> Request Demo</a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <img src="http://i.imgur.com/Kl4WJl3.png" class="img-responsive company_img_size">
+                                                    <h1 class="text-center" style="font-size: x-large;">BrandHit</h1>
+                                                    <p>BrandHit is a SAAS based influencer marketing product to reach influencers in your niche and get them to tweet or share on facebook, instagram or linkedin about your brand on your product. Influencers come to the platform, sign up and post a price per tweet or post on various networks</p>
+                                                    <div class="text-center">
+                                                        <a onclick="OpenDialog()" class="btn btn-info btn-product btn-xs"><span class="fa fa-thumbs-up"></span> Request Demo</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h1>Socioboard Desktop Applications for Social Media Marketers</h1>
+                                                    <blockquote>
+                                                        <p>
+                                                            Socioboard desktop apps are the swiss knife of Social Media Marketing Industry.<br>
+                                                            Socioboard desktop applications are not completely restricted by the various APIs of the social networks like Socioboard Web and Mobile apps. Rather they give you a complete competeting user experience with the original network but as a desktop application. The Desktop apps are a collective effort of the socioboard community spread globally.<br>
+                                                            Socioboard desktop apps must be used with utmost care to make sure you remain within the social network usage limits and don’t over do something. It’s best to use them under trained guidance from experts.
+                                                        </p>
+                                                    </blockquote>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <img src="http://i.imgur.com/U8fuYhk.png" class="img-responsive company_img_size">
+                                                    <h1 class="text-center" style="font-size: x-large;">
+                                                        inBoardPro<br>
+                                                        <small>
+                                                            <a href="http://www.inboardpro.com" target="_blank">http://www.inboardpro.com</a>
+                                                        </small>
+                                                    </h1>
+                                                    <p>
+                                                        inBoardPro is linkedin marketing on Steroids. Its a desktop application which helps you to automate everything you can
+                                                        <button type="button" class="btn btn-info btn-xs pull-right" data-toggle="modal" data-target="#inBoardPro">Read More +</button>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <img src="http://i.imgur.com/mR7o8pT.png" class="img-responsive company_img_size">
+                                                    <h1 class="text-center" style="font-size: x-large;">
+                                                        faceboardPro<br>
+                                                        <small>
+                                                            <a href="http://faceboardpro.com" target="_blank">http://faceboardpro.com</a>
+                                                        </small>
+                                                    </h1>
+                                                    <p>
+                                                        faceBoardPro is an automated facebook marketing software. It helps you to automate your regular facebook tasks with
+                                                        <button type="button" class="btn btn-info btn-xs pull-right" data-toggle="modal" data-target="#faceboardPro">Read More +</button>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <img src="http://i.imgur.com/ROLgDCv.png" class="img-responsive company_img_size">
+                                                    <h1 class="text-center" style="font-size: x-large;">
+                                                        gramBoardPro<br>
+                                                        <small>
+                                                            <a href="http://gramboardpro.com/" target="_blank">http://gramboardpro.com</a>
+                                                        </small>
+                                                    </h1>
+                                                    <p>
+                                                        gramBoardPro is an instagram automation power-house. It can manage all your instagram tasks , likes, comments
+                                                        <button type="button" class="btn btn-info btn-xs pull-right" data-toggle="modal" data-target="#gramBoardPro">Read More +</button>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <img src="http://i.imgur.com/0Y3tfqk.png" class="img-responsive company_img_size">
+                                                    <h1 class="text-center" style="font-size: x-large;">
+                                                        twtBoardPro<br>
+                                                        <small>
+                                                            <a href="http://twtboardpro.com" target="_blank">http://twtboardpro.com</a>
+                                                        </small>
+                                                    </h1>
+                                                    <p>
+                                                        twtBoardPro is an twitter marketing platform. It helps you manage multiple twitter accounts and automate your tweets,
+                                                        <button type="button" class="btn btn-info btn-xs pull-right" data-toggle="modal" data-target="#twtBoardPro">Read More +</button>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h1>Socioboard Mobile Apps for Social Media Marketers</h1>
+                                                    <blockquote>
+                                                        <p>
+                                                            <strong>Socioboard Official App</strong><br>
+                                                            The official app is an extension of Socioboard Core app on iOS and Android. It helps you manage all your social media accounts you have connected to Socioboard Web Core via mobile apps.
+                                                        </p>
+                                                    </blockquote>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <img src="http://i.imgur.com/J79ZeBr.png" class="img-responsive company_img_size">
+                                                    <h1 class="text-center" style="font-size: x-large;">
+                                                        t-boardpro
+                                                    </h1>
+                                                    <p>t-boardpro is a multiple twitter account management app, it helps you to login to multiple twitter accounts from your iOS or Android device and do various twitter activities like tweeting, re-tweeting, favorites, follow, unfollow, scheduling tweets etc. Its a a very powerful twitter marketing automation app. The open source version is called t-board is available on github - <a href="#">https://github.com/socioboard/t-board</a></p>
+                                                    <div class="text-center">
+                                                        <a onclick="OpenDialog()" class="btn btn-info btn-product btn-xs"><span class="fa fa-thumbs-up"></span> Request Demo</a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <img src="http://i.imgur.com/j138jlV.png" class="img-responsive company_img_size">
+                                                    <h1 class="text-center" style="font-size: x-large;">
+                                                        f-boardpro
+                                                    </h1>
+                                                    <p>f-boardpro is a multiple facebook account management app, it helps you to login to multiple facebook accounts from your iOS or Android device and do various facebook activities like post, like, comment, managing pages, groups and much more. The open source version is called f-board is hosted here - <a href="#">https://github.com/socioboard/f-board</a></p>
+                                                    <div class="text-center">
+                                                        <a onclick="OpenDialog()" class="btn btn-info btn-product btn-xs"><span class="fa fa-thumbs-up"></span> Request Demo</a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <img src="http://i.imgur.com/QLgWDPa.png" class="img-responsive company_img_size">
+                                                    <h1 class="text-center" style="font-size: x-large;">
+                                                        l-boardpro<br>
+                                                    </h1>
+                                                    <p>l-boardpro is a multiple LinkedIn account management app. It helps you to login multiple LinkedIn accounts from you iOS or Android device and do LinkedIn activities like share comments, see user following companies details and user can see latest jobs in following company. The open source version of l-boardpro is hosted here - <a href="#">https://github.com/socioboard/l-board</a></p>
+                                                    <div class="text-center">
+                                                        <a onclick="OpenDialog()" class="btn btn-info btn-product btn-xs"><span class="fa fa-thumbs-up"></span> Request Demo</a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <img src="http://i.imgur.com/xUr1F8B.png" class="img-responsive company_img_size">
+                                                    <h1 class="text-center" style="font-size: x-large;">
+                                                        i-boardpro
+                                                    </h1>
+                                                    <p>i-boardpro is a multiple instagram account management app, it helps you to login to multiple instagram accounts from your iOS or Android device and do various instagram activities like follow, unfollow, comment, like, scheduling posts etc. Its a a very powerful instagram marketing automation app. The opensource version of i-boardpro is hosted here - <a href="#">https://github.com/socioboard/i-board</a></p>
+                                                    <div class="text-center">
+                                                        <a onclick="OpenDialog()" class="btn btn-info btn-product btn-xs"><span class="fa fa-thumbs-up"></span> Request Demo</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    //Product modals start
+
+    <!-- inBoardPro Modal -->
+    <div class="modal fade" id="inBoardPro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">inBoardPro</h4>
+                </div>
+                <div class="modal-body">
+                    <img src="http://i.imgur.com/U8fuYhk.png" class="img-responsive company_img_size">
+                    <h1 class="text-center">
+                        inBoardPro<br>
+                        <small>
+                            <a href="http://www.inboardpro.com" target="_blank">http://www.inboardpro.com</a>
+                        </small>
+                    </h1>
+                    <p class="text-justify">inBoardPro is linkedin marketing on Steroids. Its a desktop application which helps you to automate everything you can do on linkedin. It helps you to manage multiple linkedin accounts, connect with new members in the linked community, post automated updates , manage all your linkedin groups and do a whole lot of things on linkedin. The open source version of inboardpro is hosted here -<a href="https://github.com/socioboard/inboard" target="_blank">https://github.com/socioboard/inboard</a></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-        <div class="control-group">
-            <div class="controls">
-                <label for="es">
-                    <input name="culture" id="es" value="it" type="radio" @selected("it", culture)  /> Italic
-                </label>
+    </div>
+
+    <!-- faceboardPro Modal -->
+    <div class="modal fade" id="faceboardPro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">faceboardPro</h4>
+                </div>
+                <div class="modal-body">
+                    <img src="http://i.imgur.com/mR7o8pT.png" class="img-responsive company_img_size">
+                    <h1 class="text-center">
+                        faceboardPro<br>
+                        <small>
+                            <a href="http://faceboardpro.com" target="_blank">http://faceboardpro.com</a>
+                        </small>
+                    </h1>
+                    <p class="text-justify">faceBoardPro is an automated facebook marketing software. It helps you to automate your regular facebook tasks with few clicks. It helps to you manage multiple facebook accounts, manage your friends, groups, pages, apps etc. Basically it can automate all your day to day facebook management tasks and save a lot of your time. The open source version of faceboardpro is hosted here -<a href="https://github.com/socioboard/faceboard" target="_blank">https://github.com/socioboard/faceboard</a></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-          <div class="control-group">
-            <div class="controls">
-                <label for="hi">
-                    <input name="culture" id="hi" value="hi" type="radio" @selected("hi", culture)  /> Hindi
-                </label>
+    </div>
+
+    <!-- gramBoardPro Modal -->
+    <div class="modal fade" id="gramBoardPro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">gramBoardPro</h4>
+                </div>
+                <div class="modal-body">
+                    <img src="http://i.imgur.com/ROLgDCv.png" class="img-responsive company_img_size">
+                    <h1 class="text-center">
+                        gramBoardPro<br>
+                        <small>
+                            <a href="http://gramboardpro.com/" target="_blank">http://gramboardpro.com</a>
+                        </small>
+                    </h1>
+                    <p class="text-justify">gramBoardPro is an instagram automation power-house. It can manage all your instagram tasks , likes, comments etc. Very useful software for instagram marketers. The open source version is hosted here -<a href="https://github.com/socioboard/gramboard" target="_blank">https://github.com/socioboard/gramboard</a></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-       <div class="control-group">
-            <div class="controls">
-                <label for="es">
-                    <input type="submit" value="change" />
-                </label>
+    </div>
+
+    <!-- twtBoardPro Modal -->
+    <div class="modal fade" id="twtBoardPro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">twtBoardPro</h4>
+                </div>
+                <div class="modal-body">
+                    <img src="http://i.imgur.com/0Y3tfqk.png" class="img-responsive company_img_size">
+                    <h1 class="text-center">
+                        twtBoardPro<br>
+                        <small>
+                            <a href="http://twtboardpro.com" target="_blank">http://twtboardpro.com</a>
+                        </small>
+                    </h1>
+                    <p class="text-justify">twtBoardPro is an twitter marketing platform. It helps you manage multiple twitter accounts and automate your tweets, re-tweets, favorites etc. You can do a whole lot of stuff on twitter and get ultra productive on twitter by using this software. The open source version of twtboardpro is hosted here -<a href="https://github.com/socioboard/twtboard" target="_blank"> https://github.com/socioboard/twtboard</a></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-    </fieldset>
-        
-     
-     
-}*@
-@if (ViewBag.Isaccountactivatedfirsttime == "true" || Request["ReturnUrl"]!=null) 
-{
+    </div>
+
+    //product modals end
+
+    <!--pricing-->
+    
+
+    <!-- Modal -->
+    <div class="modal fade" id="DemoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content col-md-10">
+                <div class="modal-header">
+                    <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <img src="http://wiki.socioboard.com/skins/common/images/logo.png" style="height: 40px; float: left; margin-top: -6px">
+                    <h4 style="margin-left: 60px" id="DemoModalLabel" class="modal-title">Request a Demo </h4>
+                </div>
+                <div class="modal-body col-md-11">
+
+                    <div style="margin-left: 4%; padding-bottom: 4%;" class="input-group col-md-12">
+                        <label for="username-email">First Name</label><span class="pull-right text-danger">*</span>
+                        <input type="text" class="form-control" id="FName">
+                    </div>
+                    <div style="margin-left: 4%; padding-bottom: 4%;" class="input-group col-md-12">
+                        <label for="username-email">Last Name</label><span class="pull-right text-danger"></span>
+                        <input type="text" class="form-control" id="LName">
+                    </div>
+                    <div style="margin-left: 4%; padding-bottom: 4%;" class="input-group col-md-12">
+                        <label for="username-email">Email ID</label><span class="pull-right text-danger">*</span>
+                        <input type="text" class="form-control" id="Email">
+                    </div>
+
+
+                    <div style="margin-left: 4%; padding-bottom: 4%;" class="input-group col-md-12">
+                        <label for="username-email">Phone Number</label><span class="pull-right text-danger"></span>
+                        <input type="text" class="form-control" id="PhoneNo">
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button onclick="Reset()" class="btn btn-default" type="button">RESET</button>
+                    <button id="id_btnSendDemoRequest" url="" onclick="SendDemoRequest(this)" class="btn btn-primary" type="button">SEND REQUEST</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End of Modal -->
+
     <script>
+
+        function OpenDialog(url) {
+
+            $('#id_btnSendDemoRequest').attr('url', url);
+            $('#DemoModal').modal('show');
+
+        }
+
+        function SendDemoRequest(element) {
+            debugger;
+            var attr_href = $(element).attr('url');
+            var fname = $('#FName').val();
+            var lname = $('#LName').val();
+            var email = $('#Email').val();
+            //var company = $('#CName').val();
+            var phone = $('#PhoneNo').val();
+            var Subject = 'Get Started';
+            //var notes = $('#Notes').val();
+            //var SkypeId = $('#SkypeId').val();
+            debugger;
+            if (fname == "" || email == "") {
+                alert('Please fill all requered fields')
+                return false;
+            }
+            {
+                if (!validateFName(fname)) {
+                    alert('Please enter valid First Name');
+                    return false;
+                }
+                else if (!validateLName(lname)) {
+                    alert('Please enter valid Last Name');
+                    return false;
+                }
+                else if (!validateEmail(email)) {
+                    alert('not valid email');
+                    return false;
+                }
+                    //else if (!validatePhone(phone)) {
+                    //    alert('not valid phone number');
+                    //    return false;
+                    //}
+                else {
+                    $.ajax({
+                        url: "../Index/SendRequestForDemo?fname=" + fname + "&lname=" + lname + "&email=" + email + "&Subject=" + Subject + "&phone=" + phone,
+                        type: "post",
+                        data: '',
+                        processData: false,
+                        contentType: false,
+                        success: function (msg) {
+                            debugger;
+                            if (msg == "Success") {
+                                alertify.success('Mail has been sent successfully!');
+                                $('#FName').val('');
+                                $('#LName').val('');
+                                $('#Email').val('');
+                                $('#PhoneNo').val('');
+                                $('.close').click();
+
+                                if (attr_href != '' || attr_href != null) {
+                                    window.document.location = attr_href;
+                                }
+
+
+                            }
+                            else {
+                                alertify.error("Email Sending Failed! Please try again");
+                                return false;
+                            }
+                        },
+                        error: function () {
+                            alert("failure");
+                        }
+                    });
+                }
+            }
+        }
+    </script>
+
+}
+else
+{
+    if (ViewBag.Isaccountactivatedfirsttime == "true" || Request["ReturnUrl"] != null)
+    {
+        <script>
         $(document).ready(function () {
             $('#myModal').modal('show');
         });
-    </script>
-} <link href="~/Themes/Socioboard/Contents/css/custom.css" rel="stylesheet" />
-<header class="header" id="top">
-    <div class="text-vertical-center">
-        <h1 style="text-shadow: 0px 0px 15px #ffffff; margin-top: 50px;">@GlobusMultiLanguageLib.Resources.Index_Index_beyond<br>
-            @GlobusMultiLanguageLib.Resources.Index_Index_Managment</h1>
-        <h3 style="background-color: aliceblue; opacity: 0.7;">@GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_SocioDescription</h3>
-        <br><br>
-       @* <a target="_blank" class="btn btn-dark" href="../Index/Pricing">
-            <img src="@GlobusMultiLanguageLib.Resources.Index_Index_ImgPathTryNow" class="img-responsive">
-        </a>*@
-    </div>
-</header>
-<section class="about" id="about">
-    <div class="container-fluid">
-        <div class="row text-center">
-            <div class="col-lg-12">
-                <h2 style="margin: 10px;">@GlobusMultiLanguageLib.Resources.Index_Index_OurFeatures</h2>
-                <hr class="small" style="margin: 5px 0px;">
-                <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="service-item">
-                            <span class="fa-stack fa-3x">
-                                <i class="fa fa-circle fa-stack-1x"></i>
-                                <i class="fa fa-eye fa-stack-1x text-primary" style="font-size:22px;"></i>
-                            </span>
-                            <h4>
-                                <strong>@GlobusMultiLanguageLib.Resources.Index_Index_Monitor</strong>
-                            </h4>
-                            <p style="font-size:12px;">@GlobusMultiLanguageLib.Resources.Index_Index_SubHeadingMonitor</p>
-                            <a target="_blank" class="btn btn-dark" href="../Index/Features">@GlobusMultiLanguageLib.Resources.Index_Index_BtnLearnMore</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="service-item">
-                            <span class="fa-stack fa-3x">
-                                <i class="fa fa-circle fa-stack-1x"></i>
-                                <i class="fa fa-spinner fa-stack-1x text-primary" style="font-size:22px;"></i>
-                            </span>
-                            <h4>
-                                <strong>@GlobusMultiLanguageLib.Resources.Index_Index_Analysis</strong>
-                            </h4>
-                            <p style="font-size:12px;">@GlobusMultiLanguageLib.Resources.Index_Index_SubHeadingAnalysis</p>
-                            <a target="_blank" class="btn btn-dark" href="../Index/Features">@GlobusMultiLanguageLib.Resources.Index_Index_BtnLearnMore</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="service-item">
-                            <span class="fa-stack fa-3x">
-                                <i class="fa fa-circle fa-stack-1x"></i>
-                                <i class="fa fa-sign-in fa-stack-1x text-primary" style="font-size:22px;"></i>
-                            </span>
-                            <h4>
-                                <strong>@GlobusMultiLanguageLib.Resources.Index_Index_Insight</strong>
-                            </h4>
-                            <p style="font-size:12px;">@GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_SubHeadingInsight</p>
-                            <a target="_blank" class="btn btn-dark" href="../Index/Features">@GlobusMultiLanguageLib.Resources.Index_Index_BtnLearnMore</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="service-item">
-                            <span class="fa-stack fa-3x">
-                                <i class="fa fa-circle fa-stack-1x"></i>
-                                <i class="fa fa-file-pdf-o fa-stack-1x text-primary" style="font-size:22px;"></i>
-                            </span>
-                            <h4>
-                                <strong>@GlobusMultiLanguageLib.Resources.Index_Index_Userguide</strong>
-                            </h4>
-                            <p style="font-size:12px;">@GlobusMultiLanguageLib.Resources.Index_Index_SubHeadingUserguide</p>
-                            <a target="_blank" class="btn btn-dark" href="/Themes/socioboard/Contents/common/Socioboard_User_Guide_1.0.2_Ver 7.pdf">@GlobusMultiLanguageLib.Resources.Index_Index_BtnUserGuide
-                                </a>
-                        </div>
+        </script>
+    }<link href="~/Themes/Socioboard/Contents/css/custom.css" rel="stylesheet" />
+        <header id="top" class=" container-fluid">
+            <video autoplay muted poster="http://i.imgur.com/bkHuEnc.jpg" id="bgvid" loop>
+                <source src="https://secure-c.vimeocdn.com/p/video/yosemite_hd_ii_hd.mp4" type="video/mp4">
+            </video>
+            <div class="row margin-top-50">
+                <div class="col-md-offset-2 col-md-8">
+                    <div class="text-vertical-center">
+                        <h1 style="text-shadow: 0px 0px 15px #000; color: #fff; font-size: 44px; margin-top: 50px;">World’s #1 Open Source Social Technology Enabler!</h1>
+                        <h3 style="color: #fff;">
+                            We build social media technology which helps businesses and brands
+                            with a 360<sup>o</sup> social media marketing, customer support and engagement automation platform.
+                        </h3>
                     </div>
                 </div>
-                <!-- /.row (nested) -->
-
-
+                <div class="col-md-12">
+                    <section class="animated fadeInUp">
+                        <img src="http://i.imgur.com/Uy1YCtw.png" class="img-responsive" style="margin-left: auto; margin-right: auto;">
+                    </section>
+                </div>
             </div>
-            <!-- /.col-lg-10 -->
-        </div>
-        <!-- /.row -->
-    </div>
-    <!-- /.container -->
+        </header>
+        <section class="about" id="about">
+            <div class="container-fluid">
+                <div class="row text-center">
 
-</section>
+                    <div class="col-lg-12">
+                        <h2 style="margin: 22px;" class="hr_shadow">Our Products</h2>
+                        <div class="row">
 
-<section class="bg-primary" id="services">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10 col-lg-offset-1 text-center">
-                <h2>@GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_OnBoard</h2>
-                <hr class="small">
-                <h4>@GlobusMultiLanguageLib.Resources.Index_Index_leverage
-                    <br>
-                   @GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_Sociodescription2
+                            @* <div class="col-md-3 col-sm-6 col-lg-offset-1">*@
+                            <div class="col-md-3 col-sm-6">
+                                <div class="service-item">
+                                    <span class="fa-stack fa-3x">
+                                        @* <i class="fa fa-circle fa-stack-1x"></i>
+                                            <i style="font-size:22px;" class="fa fa-file-pdf-o fa-stack-1x text-primary"></i>*@
+                                        <img src="~/Themes/Socioboard/Contents/img/products%20n%20clients/logo.png" style="height: 64px; width: 64px;" />
+                                    </span>
+                                    <h4>
+                                        <strong>Socioboard Core</strong>
+                                    </h4>
+                                    <p style="font-size: 15px;">World's #1 Open source social media management, analytics & reporting platform. Manage multiple social media accounts, create useful reports & take business decisions based on them. It's fully customizable & extensible in the form of plugins.</p>
+                                    @*<a href="/Themes/socioboard/Contents/common/Socioboard_User_Guide_2.0.pdf" class="btn btn-dark" target="_blank">Download Guide Book
+                                        </a>*@
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="service-item">
+                                    <span class="fa-stack fa-3x">
+                                        @*<i class="fa fa-circle fa-stack-1x"></i>
+                                            <i style="font-size:22px;" class="fa fa-eye fa-stack-1x text-primary"></i>*@
+                                        <img src="~/Themes/Socioboard/Contents/img/boardme_icon.png" />
+                                    </span>
+                                    <h4>
+                                        <strong>BoardMe</strong>
+                                    </h4>
+                                    <p style="font-size: 15px;">Self service platform which helps you to create Social Boards & stream them everywhere like web, desktop, mobile or any other screen. Connect Social Feeds or Hastags into 1 place from all your social networks & create social tiles in minutes.</p>
+                                    @*<a href="../Index/Features" class="btn btn-dark" target="_blank">Learn More</a>*@
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="service-item">
+                                    <span class="fa-stack fa-3x">
+                                        @* <i class="fa fa-circle fa-stack-1x"></i>
+                                            <i style="font-size:22px;" class="fa fa-spinner fa-stack-1x text-primary"></i>*@
+                                        <img src="~/Themes/Socioboard/Contents/img/products%20n%20clients/brandbuzz_icon.png" />
+                                    </span>
+                                    <h4>
+                                        <strong>BrandBuzz</strong>
+                                    </h4>
+                                    <p style="font-size: 15px;">Engage with your employees and loyal customers and engage with them in a unique way to make them your social brand ambassadors. Leverage the power of Word of Mouth marketing to recruit employees and customers as your marketing crew.</p>
+                                    @*<a href="../Index/Features" class="btn btn-dark" target="_blank">Learn More</a>*@
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="service-item">
+                                    <span class="fa-stack fa-3x">
+                                        @*  <i class="fa fa-circle fa-stack-1x"></i>
+                                            <i style="font-size:22px;" class="fa fa-sign-in fa-stack-1x text-primary"></i>*@
+                                        <img src="~/Themes/Socioboard/Contents/img/products%20n%20clients/brandhit_icon.png" />
+                                    </span>
+                                    <h4>
+                                        <strong>BrandHit</strong>
+                                    </h4>
+                                    <p style="font-size: 15px;">Reach influencers in your niche and get them to tweet or share on facebook, instagram or linkedin about your brand or your product. Get personalized recommendation from top influencers in the industry and build up a successful brand.</p>
+                                    @*<a href="../Index/Features" class="btn btn-dark" target="_blank">Learn More</a>*@
+                                </div>
+                            </div>
+                            @*
+                                <div class="col-md-2 col-sm-6">
+                                    <div class="service-item">
+                                        <span class="fa-stack fa-3x">
+                                            <i class="fa fa-circle fa-stack-1x"></i>
+                                            <i style="font-size:22px;" class="fa fa-file-pdf-o fa-stack-1x text-primary"></i>
+                                        </span>
+                                        <h4>
+                                            <strong>Get Kickoff Manual</strong>
+                                        </h4>
+                                        <p style="font-size:12px;">To learn about white labeling,download Kickoff Manual</p>
+                                        <a href="/Themes/socioboard/Contents/common/Socioboard_Kickoff_Manual.pdf" class="btn btn-dark" target="_blank">Download Guide Book
+                                            </a>
+                                    </div>
+                                </div>*@
+                        </div>
+                        <!-- /.row (nested) -->
+
+
+                    </div>
+                    <!-- /.col-lg-10 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+
+        </section>
+
+        <section class="bg-primary" id="services">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 col-lg-offset-1 text-center">
+                        <h2>@GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_OnBoard</h2>
+                        <hr class="small">
+                        <h4>
+                            @GlobusMultiLanguageLib.Resources.Index_Index_leverage
+                        <br>
+                        @GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_Sociodescription2
                     </h4>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="portfolio-item">
+                        <div class="row margin-bottom-50">
+                            <div class="col-md-6">
+                                <div class="portfolio-item">
 
-                            <img src="/Themes/@path/Contents/img/slidegraph.png" class="img-portfolio img-responsive">
+                                    <img src="/Themes/@path/Contents/img/slidegraph.png" class="img-portfolio img-responsive">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="embed-responsive embed-responsive-4by3">
+                                    @*<iframe src="https://player.vimeo.com/video/128111650" class="embed-responsive-item" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>*@
+                                    <iframe src="https://player.vimeo.com/video/128111650?title=0&byline=0&portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="embed-responsive embed-responsive-4by3">
-                            <iframe src="https://docs.google.com/file/d/0B9xugMIiRUj5cEZseDFqRUphdGs/preview" class="embed-responsive-item"></iframe>
-                        </div>
-                    </div>
+                    <!-- /.row (nested) -->
                 </div>
-                <!-- /.row (nested) -->
+                <!-- /.col-lg-10 -->
             </div>
-            <!-- /.col-lg-10 -->
+            <!-- /.row -->
         </div>
-        <!-- /.row -->
-    </div>
-    <!-- /.container -->
+        <!-- /.container -->
 
-</section>
+    </section>
 
-<section class="callout portfolio">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10 col-lg-offset-1 text-center">
-                <h2>@GlobusMultiLanguageLib.Resources.Index_Index_engage</h2>
-                <h1>@GlobusMultiLanguageLib.Resources.Index_Index_socialchannels</h1>
-                <hr class="small">
-                <div class="row">
+    <section class="callout portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h2>@GlobusMultiLanguageLib.Resources.Index_Index_engage</h2>
+                    <h1>@GlobusMultiLanguageLib.Resources.Index_Index_socialchannels</h1>
+                    <hr class="small">
+                    <div class="row">
 
-                    <div class="col-md-6">
-                        <div class="content-left">
-                            <h3 style="text-align:left">@GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_featureHeading</h3>
-                            <ul style="text-align:left">
-                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt1</li>
-                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt2</li>
-                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt3</li>
-                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt4</li>
-                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt5</li>
-                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt6</li>
-                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt7</li>
-                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt8</li>
+                        <div class="col-md-6">
+                            <div class="content-left">
+                                <h3 style="text-align: left">@GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_featureHeading</h3>
+                                <ul style="text-align: left">
+                                    <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt1</li>
+                                    <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt2</li>
+                                    <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt3</li>
+                                    <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt4</li>
+                                    <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt5</li>
+                                    <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt6</li>
+                                    <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt7</li>
+                                    <li>@GlobusMultiLanguageLib.Resources.Index_Index_feature_pt8</li>
 
-                            </ul>
-                            <a target="_blank" class="btn btn-dark" href="../Index/Pricing">
-                                <img alt="" src="@GlobusMultiLanguageLib.Resources.Index_Index_ImgPathTryNow" class="img-responsive">
-                            </a>
+                                </ul>
+                                @*<a target="_blank" class="btn btn-dark" href="../Index/Pricing">
+                                        <img alt="" src="@GlobusMultiLanguageLib.Resources.Index_Index_ImgPathTryNow" class="img-responsive">
+                                    </a>*@
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="portfolio-item">
+                                <a href="#">
+                                    <img src="/Themes/@path/Contents/img/phone-banner.png" class="img-portfolio img-responsive">
+                                </a>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="portfolio-item">
-                            <a href="#">
-                                <img src="/Themes/@path/Contents/img/phone-banner.png" class="img-portfolio img-responsive">
-                            </a>
-                        </div>
 
-                    </div>
+                    <!-- /.row (nested) -->
                 </div>
-
-                <!-- /.row (nested) -->
+                <!-- /.col-lg-10 -->
             </div>
-            <!-- /.col-lg-10 -->
+            <!-- /.row -->
         </div>
-        <!-- /.row -->
-    </div>
-    <!-- /.container -->
-</section>
+        <!-- /.container -->
+    </section>
 
-<section class="portfolio" id="portfolio">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10 col-lg-offset-1 text-center">
-                <h2>@GlobusMultiLanguageLib.Resources.Index_Index_Somereason</h2>
-                <h1>@GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_LoveSocioboard</h1>
-                <hr class="small">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="portfolio-item">
-                            <a href="#">
-                                <img src="/Themes/@path/Contents/img/img-1.png" class="img-portfolio img-responsive">
-                            </a>
-                        </div>
+    <section class="portfolio" id="responsive">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h2>@GlobusMultiLanguageLib.Resources.Index_Index_Somereason</h2>
+                    <h1>@GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_LoveSocioboard</h1>
+                    <hr class="small">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="portfolio-item">
+                                <a href="#">
+                                    <img src="/Themes/@path/Contents/img/img-1.png" class="img-portfolio img-responsive">
+                                </a>
+                            </div>
 
-                    </div>
-                    <div class="col-md-6">
-                        <div class="content-left">
-                            <ul style="text-align: left; font-weight: bold; font-family: times new roman;">
-                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt1</li>
-                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt2</li>
-                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt3</li>
-                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt4</li>
-                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt5</li>
-                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt6</li>
-                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt7 </li>
-                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt8</li>
-                                <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt9</li>
-                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="content-left">
+                                <ul style="text-align: left;">
+                                    <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt1</li>
+                                    <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt2</li>
+                                    <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt3</li>
+                                    <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt4</li>
+                                    <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt5</li>
+                                    <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt6</li>
+                                    <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt7 </li>
+                                    <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt8</li>
+                                    <li>@GlobusMultiLanguageLib.Resources.Index_Index_LovePt9</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
+                    <h1>@GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_EndHeading</h1>
+                    <!-- /.row (nested) -->
                 </div>
-                <h1>@GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_EndHeading</h1>
-                <!-- /.row (nested) -->
+                <!-- /.col-lg-10 -->
             </div>
-            <!-- /.col-lg-10 -->
+            <!-- /.row -->
         </div>
-        <!-- /.row -->
-    </div>
-    <!-- /.container -->
-</section>
-
-@*<div id="makeMeScrollable">
-    <div class="scrollingHotSpotLeft" style="display: block;"></div>
-    <div class="scrollingHotSpotRight"></div>
-    <div class="scrollWrapper">
-        <div class="scrollableArea" style="width: 2250px;">
-
-
-
-
-
-            <img id="golf" alt="Demo image" src="/Themes/@path/Contents/img/clients/socialscoup_logo.png"><img alt="Image" src="/Themes/@path/Contents/img/clients/blacksheep_logo.png"><img id="field" alt="Demo image" src="/Themes/@path/Contents/img/clients/GRAVITY4_LOGO.png"><img id="gnome" alt="Demo image" src="/Themes/@path/Contents/img/clients/msocial_logo.png"><img id="pencils" alt="Demo image" src="/Themes/@path/Contents/img/clients/socialpour_logo.png">
+        <!-- /.container -->
+    </section>
+    <!-- Supported Apps -->
+    <div class="hosts-wrapper">
+        <div class="supported-hosts no-border-bottom text-center">
+            <small class="hr_shadow">Our Apps</small>
+            <a href="https://play.google.com/store/apps/details?id=com.socioboard" target="_blank">
+                <img src="~/Themes/Socioboard/Contents/img/google_app.png" alt="Socioboard_google" style="width: 300px; height: 75px" />
+            </a>
+            <a href="https://itunes.apple.com/us/app/socioboard/id923398550?mt=8" target="_blank">
+                <img src="~/Themes/Socioboard/Contents/img/app_store.png" alt="Socioboard_apple" style="width: 300px" />
+            </a>
         </div>
     </div>
-</div>*@
-
-<!-- Supported Hosts -->
-<div class="hosts-wrapper">
-            <div class="supported-hosts no-border-bottom text-center">
-                <small>Our Clients</small>
-                <img src="~/Themes/Socioboard/Contents/img/clients/logo/Socialboard_logo.png"  alt="Socialboard"/>
-                <img src="~/Themes/Socioboard/Contents/img/clients/logo/socialpour_logo.png" alt="socialscoup" />
-                <img src="~/Themes/Socioboard/Contents/img/clients/logo/socialscoup_logo.png" alt="socialpour" />
-                <img src="~/Themes/Socioboard/Contents/img/clients/logo/Sonager_Logo.png" alt="Sonager"/>
-                <img src="~/Themes/Socioboard/Contents/img/clients/logo/tribeNautix.png" alt="tribeNautix" />
-                <img src="~/Themes/Socioboard/Contents/img/clients/logo/viptable_logo.png" alt="viptable" />
-            </div>
-        </div>
-<!-- End of Supported Hosts -->
-
-
-              
-              <!-- As Seen On -->
-<div class="hosts-wrapper">
-            <div class="supported-hosts no-border-bottom text-center">
-                <small>As Seen On</small>
-                <a href="http://inc42.com/startups/socioboard-magento-wordpress-social-media-management-making/" target="_blank"><img src="~/Themes/Socioboard/Contents/img/clients/logo/42logo.png" alt="42logo"></a>
-                <a href="http://inc42.com/startups/socioboard-magento-wordpress-social-media-management-making/" target="_blank"><img src="~/Themes/Socioboard/Contents/img/clients/logo/YS_Pages.png" alt="YS_Pages"></a>
-                <a href="http://lighthouseinsights.in/review-socioboard-app-open-source-social-media-management-dashboard.html/" target="_blank"><img src="~/Themes/Socioboard/Contents/img/clients/logo/LI_logo.png" alt="LI"></a>
-                <a href="http://www.nextbigwhat.com/socioboard-social-media-management-297/" target="_blank"><img src="~/Themes/Socioboard/Contents/img/clients/logo/nextbigwhat.png" alt="nextbigwhat"></a>
-                <a href="http://www.socialsamosa.com/2014/04/social-media-platform-feature-socioboard/" target="_blank"><img src="~/Themes/Socioboard/Contents/img/clients/logo/social_samosa_logo.png" alt="social_samosa"></a>
-                
-            </div>
-        </div>
-<!-- End of As Seen On -->
-
-              <!-- Competition Success Snapshots -->
-<div class="hosts-wrapper">
-            <div class="supported-hosts no-border-bottom text-center">
-                <small>Competition Success Snapshots</small>
-                 <a href="http://productconclave.in/?p=1041" target="_blank"><img src="~/Themes/Socioboard/Contents/img/clients/logo/productconclave.png" alt="productconclave"></a>
-                 <a href="http://eximius-iimb.com/2014/competition/disrupt-it/#tab-results" target="_blank"><img src="~/Themes/Socioboard/Contents/img/clients/logo/iimb_logo.jpg" alt="iimb"></a>
-                 <a href="http://10000startups.com/disruptit/" target="_blank"><img src="~/Themes/Socioboard/Contents/img/clients/logo/10000startups.jpg" alt="10000startups"></a>
-                 <a href="http://events.vccircle.com/content/techcircle-startup-2014#tab5" target="_blank"><img src="~/Themes/Socioboard/Contents/img/clients/logo/vccircle_logo.png" alt="vccircle"></a>
-            </div>
-        </div>
-
-
-<aside class="call-to-action bg-primary">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h3>@GlobusMultiLanguageLib.Resources.SocioBoard_Index_Index_freeSubscirption
-                       
-                    <a target="_blank" class="btn btn-lg btn-dark" href="../Index/Pricing">
-                        <img src="@GlobusMultiLanguageLib.Resources.Index_Index_ImgSignupforFree"></a>
-                </h3>
-                
-            </div>
+    <!-- End of Supported Apps -->
+    <div class="hosts-wrapper">
+        <div class="supported-hosts no-border-bottom text-center">
+            <small class="hr_shadow">Agencies that use our Product</small>
+            <img src="~/Themes/Socioboard/Contents/img/clients/logo/Socialboard_logo.png" alt="Socialboard" />
+            <img src="~/Themes/Socioboard/Contents/img/clients/logo/socialpour_logo.png" alt="socialscoup" />
+            <img src="~/Themes/Socioboard/Contents/img/clients/logo/socialscoup_logo.png" alt="socialpour" />
+            <img src="~/Themes/Socioboard/Contents/img/clients/logo/Sonager_Logo.png" alt="Sonager" />
+            <img src="~/Themes/Socioboard/Contents/img/clients/logo/tribeNautix.png" alt="tribeNautix" />
+            <img src="~/Themes/Socioboard/Contents/img/clients/logo/viptable_logo.png" alt="viptable" />
         </div>
     </div>
-</aside>
-@*<section class="map" id="contact">
-    <iframe frameborder="0" width="100%" height="350" marginwidth="0" marginheight="0" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1944.2822179286532!2d77.6154475!3d12.9356925!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae144e41105dbd%3A0x6188a5bb947bfdf4!2sL+V+.+Complex%2C+1st+Main+Rd%2C+Koramangala+7th+Block%2C+Koramangala+Layout%2C+Bengaluru%2C+Karnataka+560030!5e0!3m2!1sen!2sin!4v1407845791034"></iframe>
+    <!-- End of Supported Hosts -->
 
-</section>*@
-@*<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>*@
-<script src="/Themes/Socioboard/Contents/js/arrow24.js"></script>
-<script src="/Themes/Socioboard/Contents/js/carhartl-jquery-cookie-92b7715/jquery.cookie.js"></script>
 
-<script type="text/javascript">
-    $(function () {
 
-        var timezone_cookie = "timezoneoffset";
-       // jQuery.noConflict();
-        if (!$.cookie(timezone_cookie)) { // if the timezone cookie not exists create one.
+    <!-- As Seen On -->
+    <div class="hosts-wrapper">
+        <div class="supported-hosts no-border-bottom text-center">
+            <small class="hr_shadow">As Seen On</small>
+            <a href="http://inc42.com/startups/socioboard-magento-wordpress-social-media-management-making/" target="_blank">
+                <img src="~/Themes/Socioboard/Contents/img/clients/logo/42logo.png" alt="42logo">
+            </a>
+            <a href="http://inc42.com/startups/socioboard-magento-wordpress-social-media-management-making/" target="_blank">
+                <img src="~/Themes/Socioboard/Contents/img/clients/logo/YS_Pages.png" alt="YS_Pages">
+            </a>
+            <a href="http://lighthouseinsights.in/review-socioboard-app-open-source-social-media-management-dashboard.html/" target="_blank">
+                <img src="~/Themes/Socioboard/Contents/img/clients/logo/LI_logo.png" alt="LI">
+            </a>
+            <a href="http://www.nextbigwhat.com/socioboard-social-media-management-297/" target="_blank">
+                <img src="http://i.imgur.com/RQx90t5.png" alt="nextbigwhat">
+            </a>
+            <a href="http://www.socialsamosa.com/2014/04/social-media-platform-feature-socioboard/" target="_blank">
+                <img src="~/Themes/Socioboard/Contents/img/clients/logo/social_samosa_logo.png" alt="social_samosa">
+            </a>
 
-            // check if the browser supports cookie
-            var test_cookie = 'test cookie';
-            $.cookie(test_cookie, true);
+        </div>
+    </div>
+    <!-- End of As Seen On -->
 
-            if ($.cookie(test_cookie)) { // browser supports cookie
+    <!-- Competition Success Snapshots -->
+    <div class="hosts-wrapper">
+        <div class="supported-hosts no-border-bottom text-center">
+            <small class="hr_shadow">Competition Success Snapshots</small>
+            <a href="http://productconclave.in/?p=1041" target="_blank">
+                <img src="~/Themes/Socioboard/Contents/img/clients/logo/productconclave.png" alt="productconclave">
+            </a>
+            <a href="http://eximius-iimb.com/2014/competition/disrupt-it/#tab-results" target="_blank">
+                <img src="~/Themes/Socioboard/Contents/img/clients/logo/iimb_logo.jpg" alt="iimb">
+            </a>
+            <a href="http://10000startups.com/disruptit/" target="_blank">
+                <img src="~/Themes/Socioboard/Contents/img/clients/logo/10000startups.jpg" alt="10000startups">
+            </a>
+            <a href="http://events.vccircle.com/content/techcircle-startup-2014#tab5" target="_blank">
+                <img src="~/Themes/Socioboard/Contents/img/clients/logo/vccircle_logo.png" alt="vccircle">
+            </a>
+        </div>
+    </div>
 
-                // delete the test cookie.
-                $.cookie(test_cookie, null);
+    <aside class="call-to-action bg-primary">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h3>
+                        Enjoy Socioboard risk-free for 30 days!
+                        <a href="#" class="btn btn-lg btn-dark " target="_blank">Sign Up For FREE</a>
+                    </h3>
+                    <i class="fa fa-caret-down fa-4x caret_down_color"></i>
+                </div>
+            </div>
+        </div>
+    </aside>
+    @*<section class="map" id="contact">
+            <iframe frameborder="0" width="100%" height="350" marginwidth="0" marginheight="0" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1944.2822179286532!2d77.6154475!3d12.9356925!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae144e41105dbd%3A0x6188a5bb947bfdf4!2sL+V+.+Complex%2C+1st+Main+Rd%2C+Koramangala+7th+Block%2C+Koramangala+Layout%2C+Bengaluru%2C+Karnataka+560030!5e0!3m2!1sen!2sin!4v1407845791034"></iframe>
 
-                // create a new cookie 
-                $.cookie(timezone_cookie, new Date().getTimezoneOffset());
+        </section>*@
+    @*<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>*@
+    <script src="/Themes/Socioboard/Contents/js/arrow24.js"></script>
+    <script src="/Themes/Socioboard/Contents/js/carhartl-jquery-cookie-92b7715/jquery.cookie.js"></script>
 
-                location.reload(); // re-load the page
+    <script type="text/javascript">
+        $(function () {
+
+            var timezone_cookie = "timezoneoffset";
+            // jQuery.noConflict();
+            if (!$.cookie(timezone_cookie)) { // if the timezone cookie not exists create one.
+
+                // check if the browser supports cookie
+                var test_cookie = 'test cookie';
+                $.cookie(test_cookie, true);
+
+                if ($.cookie(test_cookie)) { // browser supports cookie
+
+                    // delete the test cookie.
+                    $.cookie(test_cookie, null);
+
+                    // create a new cookie
+                    $.cookie(timezone_cookie, new Date().getTimezoneOffset());
+
+                    location.reload(); // re-load the page
+                }
             }
-        }
-        else { // if the current timezone and the one stored in cookie are different then
-            // store the new timezone in the cookie and refresh the page.
+            else { // if the current timezone and the one stored in cookie are different then
+                // store the new timezone in the cookie and refresh the page.
 
-            var storedOffset = parseInt($.cookie(timezone_cookie));
-            var currentOffset = new Date().getTimezoneOffset();
+                var storedOffset = parseInt($.cookie(timezone_cookie));
+                var currentOffset = new Date().getTimezoneOffset();
 
-            if (storedOffset !== currentOffset) { // user may have changed the timezone
-                $.cookie(timezone_cookie, new Date().getTimezoneOffset());
-                location.reload();
+                if (storedOffset !== currentOffset) { // user may have changed the timezone
+                    $.cookie(timezone_cookie, new Date().getTimezoneOffset());
+                    location.reload();
+                }
             }
-        }
-    });
+        });
+
+
+
     </script>
-<noscript>Not seeing a <a href="http://www.scrolltotop.com/">Scroll to Top Button</a>? Go to our FAQ page for more info.</noscript>
+    <noscript>Not seeing a <a href="http://www.scrolltotop.com/">Scroll to Top Button</a>? Go to our FAQ page for more info.</noscript>
+}

@@ -1,5 +1,6 @@
 ﻿using Api.Socioboard.Helper;
 using Api.Socioboard.Model;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,8 @@ namespace Api.Socioboard.Services
     [ScriptService]
     public class FacebookMessage : System.Web.Services.WebService
     {
+        ILog logger = LogManager.GetLogger(typeof(FacebookMessage));
+
         FacebookMessageRepository objFacebookMessageRepository = new FacebookMessageRepository();
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -101,6 +104,7 @@ namespace Api.Socioboard.Services
         {
             try
             {
+                logger.Error("USING index (MessageDate_ProfileId_UserId) >> FacebookMessage.asmx");
                 List<Domain.Socioboard.Domain.FacebookMessage> objFacebookMessage = objFacebookMessageRepository.GetAllWallpostsOfProfileAccordingtoGroup(profileid, count, Guid.Parse(UserId));
                 return new JavaScriptSerializer().Serialize(objFacebookMessage);
             }

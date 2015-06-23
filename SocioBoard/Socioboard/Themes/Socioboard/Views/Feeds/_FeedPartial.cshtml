@@ -9,15 +9,35 @@
     <div class="container-fluid" style="margin-top: 25px">
         <div id="feedimages1" class="row">
             <div style="margin-top: 50px">
-                 <h2 class="page-header">Live Feeds</h2>
+			<h2 class="page-header">Live Feeds</h2>
                 <div class="col-xs-12" id="feedimages" network="">
-                    <img src="~/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" />
+                    <center>
+                                <img class="" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/43px_on_transparent.gif" />
+                            </center>
                 </div>
             </div>
         </div>
     </div>
 }
-
+else if (networktype == "gplus")
+{
+    <div class="container-fluid" style="margin-top: 25px">
+        <div class="row">
+             <div class="col-md-12">
+                <h1 class="page-header">User Feeds</h1>
+            </div>
+                <div class="chat">
+                    <div id="glusfeed" onscroll="" class="panel-body">
+                        <div style="margin-top: 50px">
+                             <center>
+                                <img class="" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/43px_on_transparent.gif" />
+                            </center>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+}
 else
 { 
     <div class="container-fluid" style="margin-top: 25px">
@@ -45,14 +65,14 @@ else
                         <img src="../Themes/@path/Contents/img/admin/1.png"></i>@GlobusMultiLanguageLib.Resources.Feeds_FeedPartial_Tag </h3>*@
                 </div>
 
-                <div class="twtfeedsfilter" id="twtfeedsfilter" style="display: none">
+                @*<div class="twtfeedsfilter" id="twtfeedsfilter" style="display: none">
                     <h3 class="btn btn-default btn-lg col-md-3" id="btnUserTweet" onclick="TwitterUserTweet('@ViewBag.id')" style="background-color: #428bca;color:white;"><i style="margin-left: -22px">
                         <img src="../Themes/@path/Contents/img/admin/2.png"></i>@GlobusMultiLanguageLib.Resources.Feeds_FeedPartial_UserTweet </h3>
                     <h3 class="btn btn-default btn-lg col-md-3" id="btnRetweets" onclick="TwitterRetweets('@ViewBag.id')" style="background-color: #428bca;color:white; margin:20px"><i style="margin-left: -22px">
                         <img src="../Themes/@path/Contents/img/admin/2.png"></i>@GlobusMultiLanguageLib.Resources.Feeds_FeedPartial_Retweets</h3>
                     <h3 class="btn btn-default btn-lg col-md-3" id="btnMentions" onclick="TwitterMentions('@ViewBag.id')" style="background-color: #428bca;color:white;"><i style="margin-left: -22px">
                         <img src="../Themes/@path/Contents/img/admin/2.png"></i>@GlobusMultiLanguageLib.Resources.Feeds_FeedPartial_Mention </h3>
-                </div>
+                </div>*@
 
                <div class="pull-right" style="margin-top:25px;cursor:pointer;margin-right:70px"> 
                     <a id="search_Feeds" style="display: block;" data-target="#FeedsSearchModal" data-toggle="modal" title="Search Feeds"><i class="fa fa-search fa-2x"></i></a>
@@ -70,7 +90,17 @@ else
                         @*<img src="" id="img_paneltab1" /></i><span id="title_paneltab1"></span><a href="#"><i id="refreshpanel1" class="fa fa-refresh pull-right"></i></a></h3>*@
 
                     </div>
-                    <div id="data_paneltab1" onscroll="ccc()" class="panel-body">
+                  <div @*id="data_paneltab1"*@ onscroll="ccc()" class="panel-body">
+                        <div id="data_paneltab1">
+                            <div id="ldr-data_paneltab1">
+                                <center><img class="clsImageLoader" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/43px_on_transparent.gif" /></center>
+                            </div>
+                        </div>
+                        <div id="img-loader-feed-panel1" style="display: none">
+                            <center>
+                                <img class="" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/43px_on_transparent.gif" />
+                            </center>
+                        </div>
                     </div>
 
                 </div>
@@ -84,7 +114,17 @@ else
                                 <img id="img_paneltab2" /></span>&nbsp;&nbsp;<span id="title_paneltab2"></span><a href="#"><img src="~/Themes/Socioboard/Contents/img/admin/9.png" id="refreshpanel2" class="pull-right" /></a></h3>
                         @*<img src="" id="img_paneltab2" /></i><span id="title_paneltab2"></span><a href="#"><i id="refreshpanel2" class="fa fa-refresh pull-right"></i></a></h3>*@
                     </div>
-                    <div id="data_paneltab2" onscroll="feedbind()" class="panel-body">
+                    <div @*id="data_paneltab2"*@ onscroll="feedbind()" class="panel-body">
+                        <div id="data_paneltab2">
+                            <div id="ldr-data_paneltab2">
+                                <center><img class="clsImageLoader" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/43px_on_transparent.gif" /></center>
+                            </div>
+                        </div>
+                        <div id="img-loader-feed-panel2" style="display: none">
+                            <center>
+                                <img class="" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/43px_on_transparent.gif" />
+                            </center>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -108,7 +148,7 @@ else
     </div>
     
     
-    <script src="/Themes/Socioboard/Contents/js/jquery-1.11.0.js"></script>
+    @*<script src="/Themes/Socioboard/Contents/js/jquery-1.11.0.js"></script>*@
     
     <script type="text/javascript">
         $(document).ready(function () {

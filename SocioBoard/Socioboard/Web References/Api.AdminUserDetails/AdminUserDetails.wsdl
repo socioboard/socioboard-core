@@ -437,16 +437,16 @@
   </wsdl:binding>
   <wsdl:service name="AdminUserDetails">
     <wsdl:port name="AdminUserDetailsSoap" binding="tns:AdminUserDetailsSoap">
-      <soap:address location="http://localhost:6361/Services/AdminUserDetails.asmx" />
+      <soap:address location="http://localhost:6361/services/AdminUserDetails.asmx" />
     </wsdl:port>
     <wsdl:port name="AdminUserDetailsSoap12" binding="tns:AdminUserDetailsSoap12">
-      <soap12:address location="http://localhost:6361/Services/AdminUserDetails.asmx" />
+      <soap12:address location="http://localhost:6361/services/AdminUserDetails.asmx" />
     </wsdl:port>
     <wsdl:port name="AdminUserDetailsHttpGet" binding="tns:AdminUserDetailsHttpGet">
-      <http:address location="http://localhost:6361/Services/AdminUserDetails.asmx" />
+      <http:address location="http://localhost:6361/services/AdminUserDetails.asmx" />
     </wsdl:port>
     <wsdl:port name="AdminUserDetailsHttpPost" binding="tns:AdminUserDetailsHttpPost">
-      <http:address location="http://localhost:6361/Services/AdminUserDetails.asmx" />
+      <http:address location="http://localhost:6361/services/AdminUserDetails.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

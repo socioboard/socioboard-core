@@ -137,13 +137,7 @@ namespace GlobusLinkedinLib.App.Core
                     {
                         if (network_Updates.UpdateType == "CMPY")
                         {
-                            if (!(Element.GetElementsByTagName("url")[0].InnerText).Contains("api.linkedin.com"))
-                            {
-                                network_Updates.url = Element.GetElementsByTagName("url")[0].InnerText;
-                            }
-                            else {
-                                network_Updates.url = Element.GetElementsByTagName("url")[1].InnerText;
-                            }
+                            network_Updates.url = Element.GetElementsByTagName("url")[0].InnerText;
                         }
                         else {
                             network_Updates.url = Element.GetElementsByTagName("url")[1].InnerText;
@@ -157,12 +151,7 @@ namespace GlobusLinkedinLib.App.Core
                     }
                     catch
                     { }
-                    try
-                    {
-                        network_Updates.id = Element.GetElementsByTagName("id")[1].InnerText;
-                    }
-                    catch
-                    { }
+
 
                     string MessageType = Element.GetElementsByTagName("update-type")[0].InnerText;
 

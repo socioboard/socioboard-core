@@ -22,11 +22,7 @@ namespace Api.Socioboard.Services
     {
 
         [WebMethod]
-        public string HelloWorld()
-        {
-            return "Hello World";
-        }
-
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public static string AddBusinessSetting(Guid userId, Guid groupsId, string groupsGroupName)
         {
             Domain.Socioboard.Domain.BusinessSetting objbsnssetting = new Domain.Socioboard.Domain.BusinessSetting();

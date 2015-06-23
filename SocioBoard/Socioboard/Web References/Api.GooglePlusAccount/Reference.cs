@@ -35,6 +35,10 @@ namespace Socioboard.Api.GooglePlusAccount {
         
         private System.Threading.SendOrPostCallback UpdateGooglePlusAccountByAdminOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetAllBloggerAccountByUserIdAndGroupIdOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback DeleteGplusAccountOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -81,6 +85,12 @@ namespace Socioboard.Api.GooglePlusAccount {
         
         /// <remarks/>
         public event UpdateGooglePlusAccountByAdminCompletedEventHandler UpdateGooglePlusAccountByAdminCompleted;
+        
+        /// <remarks/>
+        public event GetAllBloggerAccountByUserIdAndGroupIdCompletedEventHandler GetAllBloggerAccountByUserIdAndGroupIdCompleted;
+        
+        /// <remarks/>
+        public event DeleteGplusAccountCompletedEventHandler DeleteGplusAccountCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllGooglePlusAccounts", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -166,6 +176,69 @@ namespace Socioboard.Api.GooglePlusAccount {
             if ((this.UpdateGooglePlusAccountByAdminCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.UpdateGooglePlusAccountByAdminCompleted(this, new UpdateGooglePlusAccountByAdminCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllBloggerAccountByUserIdAndGroupId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetAllBloggerAccountByUserIdAndGroupId(string userid, string groupid) {
+            object[] results = this.Invoke("GetAllBloggerAccountByUserIdAndGroupId", new object[] {
+                        userid,
+                        groupid});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAllBloggerAccountByUserIdAndGroupIdAsync(string userid, string groupid) {
+            this.GetAllBloggerAccountByUserIdAndGroupIdAsync(userid, groupid, null);
+        }
+        
+        /// <remarks/>
+        public void GetAllBloggerAccountByUserIdAndGroupIdAsync(string userid, string groupid, object userState) {
+            if ((this.GetAllBloggerAccountByUserIdAndGroupIdOperationCompleted == null)) {
+                this.GetAllBloggerAccountByUserIdAndGroupIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllBloggerAccountByUserIdAndGroupIdOperationCompleted);
+            }
+            this.InvokeAsync("GetAllBloggerAccountByUserIdAndGroupId", new object[] {
+                        userid,
+                        groupid}, this.GetAllBloggerAccountByUserIdAndGroupIdOperationCompleted, userState);
+        }
+        
+        private void OnGetAllBloggerAccountByUserIdAndGroupIdOperationCompleted(object arg) {
+            if ((this.GetAllBloggerAccountByUserIdAndGroupIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAllBloggerAccountByUserIdAndGroupIdCompleted(this, new GetAllBloggerAccountByUserIdAndGroupIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DeleteGplusAccount", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void DeleteGplusAccount(string UserId, string ProfileId, string GroupId) {
+            this.Invoke("DeleteGplusAccount", new object[] {
+                        UserId,
+                        ProfileId,
+                        GroupId});
+        }
+        
+        /// <remarks/>
+        public void DeleteGplusAccountAsync(string UserId, string ProfileId, string GroupId) {
+            this.DeleteGplusAccountAsync(UserId, ProfileId, GroupId, null);
+        }
+        
+        /// <remarks/>
+        public void DeleteGplusAccountAsync(string UserId, string ProfileId, string GroupId, object userState) {
+            if ((this.DeleteGplusAccountOperationCompleted == null)) {
+                this.DeleteGplusAccountOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteGplusAccountOperationCompleted);
+            }
+            this.InvokeAsync("DeleteGplusAccount", new object[] {
+                        UserId,
+                        ProfileId,
+                        GroupId}, this.DeleteGplusAccountOperationCompleted, userState);
+        }
+        
+        private void OnDeleteGplusAccountOperationCompleted(object arg) {
+            if ((this.DeleteGplusAccountCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DeleteGplusAccountCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -265,6 +338,36 @@ namespace Socioboard.Api.GooglePlusAccount {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void GetAllBloggerAccountByUserIdAndGroupIdCompletedEventHandler(object sender, GetAllBloggerAccountByUserIdAndGroupIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAllBloggerAccountByUserIdAndGroupIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAllBloggerAccountByUserIdAndGroupIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
+    public delegate void DeleteGplusAccountCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

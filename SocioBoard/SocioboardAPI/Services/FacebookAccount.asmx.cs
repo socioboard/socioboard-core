@@ -152,8 +152,8 @@ namespace Api.Socioboard.Services
             try
             {
                 objFacebookAccountRepository.deleteFacebookUser(ProfileId, Guid.Parse(UserId));
-                objFacebookFeedRepository.deleteAllFeedsOfUser(ProfileId, Guid.Parse(UserId));
-                objFacebookMessageRepository.deleteAllMessagesOfUser(ProfileId, Guid.Parse(UserId));
+                //objFacebookFeedRepository.deleteAllFeedsOfUser(ProfileId, Guid.Parse(UserId));
+                //objFacebookMessageRepository.deleteAllMessagesOfUser(ProfileId, Guid.Parse(UserId));
                 Domain.Socioboard.Domain.Team objTeam=objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
                 objTeamMemberProfileRepository.DeleteTeamMemberProfileByTeamIdProfileId(ProfileId, objTeam.Id);
                 objGroupProfileRepository.DeleteGroupProfile(Guid.Parse(UserId), ProfileId, Guid.Parse(GroupId));

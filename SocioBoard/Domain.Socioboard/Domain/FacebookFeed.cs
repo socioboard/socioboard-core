@@ -74,18 +74,7 @@ namespace Domain.Socioboard.Domain
             }
         }
 
-        public string MessageId
-        {
-            get
-            {
-                return "";
-            }
-            set
-            {
-                value = "";
-            }
-        }
-
+      
         public string InReplyToStatusUserId
         {
             get

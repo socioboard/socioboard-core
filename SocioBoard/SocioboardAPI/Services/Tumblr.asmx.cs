@@ -51,11 +51,18 @@ namespace Api.Socioboard.Services
         public string GetTumblrRedirectUrl(string consumerKey, string consumerSecret, string CallBackUrl)
         {
             string ret = string.Empty;
-            oAuthTumbler requestHelper = new oAuthTumbler();
-            oAuthTumbler.TumblrConsumerKey = consumerKey;
-            oAuthTumbler.TumblrConsumerSecret = consumerSecret;
-            requestHelper.CallBackUrl = CallBackUrl;
-            ret = requestHelper.GetAuthorizationLink();
+            try
+            {
+                oAuthTumbler requestHelper = new oAuthTumbler();
+                oAuthTumbler.TumblrConsumerKey = consumerKey;
+                oAuthTumbler.TumblrConsumerSecret = consumerSecret;
+                requestHelper.CallBackUrl = CallBackUrl;
+                ret = requestHelper.GetAuthorizationLink();
+            }
+            catch (Exception ex)
+            {
+                logger.Error("GetTumblrRedirectUrl => "+ex.StackTrace);
+            }
             return ret;
         }
 
@@ -65,88 +72,95 @@ namespace Api.Socioboard.Services
         {
             string ret = string.Empty;
             string AccessTokenResponse = string.Empty;
-            oAuthTumbler requestHelper = new oAuthTumbler();
-            oAuthTumbler.TumblrConsumerKey = client_id;
-            oAuthTumbler.TumblrConsumerSecret = client_secret;
-            requestHelper.TumblrCallBackUrl = redirect_uri;
-            AccessTokenResponse = requestHelper.GetAccessToken(oAuthTumbler.TumblrToken, code);
-            logger.Error(AccessTokenResponse);
-
-            string[] tokens = AccessTokenResponse.Split('&'); //extract access token & secret from response
-            logger.Error(tokens);
-            string accessToken = tokens[0].Split('=')[1];
-            logger.Error(accessToken);
-            string accessTokenSecret = tokens[1].Split('=')[1];
-            logger.Error(accessTokenSecret);
-
-            KeyValuePair<string, string> LoginDetails = new KeyValuePair<string, string>(accessToken, accessTokenSecret);
-
-            JObject profile = new JObject();
             try
             {
-                profile = JObject.Parse(oAuthTumbler.OAuthData(Globals.UsersInfoUrl, "GET", LoginDetails.Key, LoginDetails.Value, null));
+                oAuthTumbler requestHelper = new oAuthTumbler();
+                oAuthTumbler.TumblrConsumerKey = client_id;
+                oAuthTumbler.TumblrConsumerSecret = client_secret;
+                requestHelper.TumblrCallBackUrl = redirect_uri;
+                AccessTokenResponse = requestHelper.GetAccessToken(oAuthTumbler.TumblrToken, code);
+                logger.Error(AccessTokenResponse);
+
+                string[] tokens = AccessTokenResponse.Split('&'); //extract access token & secret from response
+                logger.Error(tokens);
+                string accessToken = tokens[0].Split('=')[1];
+                logger.Error(accessToken);
+                string accessTokenSecret = tokens[1].Split('=')[1];
+                logger.Error(accessTokenSecret);
+
+                KeyValuePair<string, string> LoginDetails = new KeyValuePair<string, string>(accessToken, accessTokenSecret);
+
+                JObject profile = new JObject();
+                try
+                {
+                    profile = JObject.Parse(oAuthTumbler.OAuthData(Globals.UsersInfoUrl, "GET", LoginDetails.Key, LoginDetails.Value, null));
+                }
+                catch (Exception ex)
+                {
+                }
+
+
+                #region Add Tumblr Account
+                objTumblrAccount = new Domain.Socioboard.Domain.TumblrAccount();
+                objTumblrAccount.Id = Guid.NewGuid();
+                objTumblrAccount.tblrUserName = profile["response"]["user"]["name"].ToString();
+                objTumblrAccount.UserId = Guid.Parse(UserId);
+                objTumblrAccount.tblrAccessToken = accessToken;
+                objTumblrAccount.tblrAccessTokenSecret = accessTokenSecret;
+                objTumblrAccount.tblrProfilePicUrl = "http://api.tumblr.com/v2/blog/" + objTumblrAccount.tblrUserName + ".tumblr.com/avatar";//profile["response"]["user"]["name"].ToString();
+                objTumblrAccount.IsActive = 1;
+                if (!objTumblrAccountRepository.checkTubmlrUserExists(objTumblrAccount))
+                {
+                    TumblrAccountRepository.Add(objTumblrAccount);
+
+                    #region Add Socialprofiles
+                    objSocialProfile = new Domain.Socioboard.Domain.SocialProfile();
+                    objSocialProfile.Id = Guid.NewGuid();
+                    objSocialProfile.UserId = Guid.Parse(UserId);
+                    objSocialProfile.ProfileId = profile["response"]["user"]["name"].ToString();
+                    objSocialProfile.ProfileType = "tumblr";
+                    objSocialProfile.ProfileDate = DateTime.Now;
+                    objSocialProfile.ProfileStatus = 1;
+                    if (!objSocialProfilesRepository.checkUserProfileExist(objSocialProfile))
+                    {
+                        objSocialProfilesRepository.addNewProfileForUser(objSocialProfile);
+                    }
+                    #endregion
+
+                    #region Add TeamMemeberProfile
+                    Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
+                    Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
+                    objTeamMemberProfile.Id = Guid.NewGuid();
+                    objTeamMemberProfile.TeamId = objTeam.Id;
+                    objTeamMemberProfile.Status = 1;
+                    objTeamMemberProfile.ProfileType = "tumblr";
+                    objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
+                    objTeamMemberProfile.ProfileId = objTumblrAccount.tblrUserName;
+
+                    //Modified [13-02-15]
+                    objTeamMemberProfile.ProfilePicUrl = objTumblrAccount.tblrProfilePicUrl;
+                    objTeamMemberProfile.ProfileName = objTumblrAccount.tblrUserName;
+
+                    objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
+                    #endregion
+                }
+                #endregion
+
+              
+                //if (!objTeamMemberProfileRepository.checkTeamMemberProfile(objTeam.Id, objTumblrAccount.tblrUserName))
+                //{
+                //    objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
+                //}
+
+                #region Add Tumblr Feeds
+                AddTunblrFeeds(UserId, LoginDetails, profile["response"]["user"]["name"].ToString());
+                #endregion
+
             }
             catch (Exception ex)
             {
+                logger.Error("AddTumblrAccount => "+ex.StackTrace);
             }
-
-
-            #region Add Tumblr Account
-            objTumblrAccount = new Domain.Socioboard.Domain.TumblrAccount();
-            objTumblrAccount.Id = Guid.NewGuid();
-            objTumblrAccount.tblrUserName = profile["response"]["user"]["name"].ToString();
-            objTumblrAccount.UserId = Guid.Parse(UserId);
-            objTumblrAccount.tblrAccessToken = accessToken;
-            objTumblrAccount.tblrAccessTokenSecret = accessTokenSecret;
-            objTumblrAccount.tblrProfilePicUrl = "http://api.tumblr.com/v2/blog/" + objTumblrAccount.tblrUserName + ".tumblr.com/avatar";//profile["response"]["user"]["name"].ToString();
-            objTumblrAccount.IsActive = 1;
-            if (!objTumblrAccountRepository.checkTubmlrUserExists(objTumblrAccount))
-            {
-                TumblrAccountRepository.Add(objTumblrAccount);
-            }
-            #endregion
-
-            #region Add Socialprofiles
-            objSocialProfile = new Domain.Socioboard.Domain.SocialProfile();
-            objSocialProfile.Id = Guid.NewGuid();
-            objSocialProfile.UserId = Guid.Parse(UserId);
-            objSocialProfile.ProfileId = profile["response"]["user"]["name"].ToString();
-            objSocialProfile.ProfileType = "tumblr";
-            objSocialProfile.ProfileDate = DateTime.Now;
-            objSocialProfile.ProfileStatus = 1;
-            if (!objSocialProfilesRepository.checkUserProfileExist(objSocialProfile))
-            {
-                objSocialProfilesRepository.addNewProfileForUser(objSocialProfile);
-            }
-            #endregion
-
-            #region Add TeamMemeberProfile
-            Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
-            Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
-            objTeamMemberProfile.Id = Guid.NewGuid();
-            objTeamMemberProfile.TeamId = objTeam.Id;
-            objTeamMemberProfile.Status = 1;
-            objTeamMemberProfile.ProfileType = "tumblr";
-            objTeamMemberProfile.StatusUpdateDate = DateTime.Now;
-            objTeamMemberProfile.ProfileId = objTumblrAccount.tblrUserName;
-
-            //Modified [13-02-15]
-            objTeamMemberProfile.ProfilePicUrl = objTumblrAccount.tblrProfilePicUrl;
-            objTeamMemberProfile.ProfileName = objTumblrAccount.tblrUserName;
-
-            objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
-            if (!objTeamMemberProfileRepository.checkTeamMemberProfile(objTeam.Id, objTumblrAccount.tblrUserName))
-            {
-                objTeamMemberProfileRepository.addNewTeamMember(objTeamMemberProfile);
-            }
-
-            #endregion
-
-            #region Add Tumblr Feeds
-            AddTunblrFeeds(UserId, LoginDetails, profile["response"]["user"]["name"].ToString());
-            #endregion
-
-
             return ret;
         }
 

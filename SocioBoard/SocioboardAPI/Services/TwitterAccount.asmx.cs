@@ -62,10 +62,10 @@ namespace Api.Socioboard.Services
             try
             {
                 objTwitterAccountRepository.deleteTwitterUser(Guid.Parse(UserId), ProfileId);
-                objTwitterFeedRepository.deleteTwitterFeed(ProfileId, Guid.Parse(UserId));
-                objTwtstats.deleteTwitterStats(Guid.Parse(UserId), ProfileId);
-                objTwitterMessageRepository.deleteTwitterMessage(ProfileId, Guid.Parse(UserId));
-                objTwitterDirectMessageRepository.deleteDirectMessage(Guid.Parse(UserId), ProfileId);
+                //objTwitterFeedRepository.deleteTwitterFeed(ProfileId, Guid.Parse(UserId));
+                //objTwtstats.deleteTwitterStats(Guid.Parse(UserId), ProfileId);
+                //objTwitterMessageRepository.deleteTwitterMessage(ProfileId, Guid.Parse(UserId));
+                //objTwitterDirectMessageRepository.deleteDirectMessage(Guid.Parse(UserId), ProfileId);
                 Domain.Socioboard.Domain.Team objTeam = objTeamRepository.GetTeamByGroupId(Guid.Parse(GroupId));
                 objTeamMemberProfileRepository.DeleteTeamMemberProfileByTeamIdProfileId(ProfileId, objTeam.Id);
                 objSocialProfilesRepository.deleteProfile(Guid.Parse(UserId), ProfileId);

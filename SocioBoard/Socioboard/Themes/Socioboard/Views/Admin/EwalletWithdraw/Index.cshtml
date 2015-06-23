@@ -1,0 +1,60 @@
+﻿<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">@GlobusMultiLanguageLib.Resources.Admin_EwalletWithdraw_Index_PayoutRequestsFromUser</h1>
+        </div>
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                   @GlobusMultiLanguageLib.Resources.Admin_EwalletWithdraw_Index_PayoutRequestTable
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-ewallet-details">
+
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+
+
+
+    </div>
+</div>
+<script>
+
+    $(document).ready(function () {
+        LoadWithdrawdetails();
+    });
+    function LoadWithdrawdetails() {
+        debugger;
+        var local = getlocatdatetimeadmin();
+        $('#dataTables-ewallet-details').html('<center><img src="../Themes/Socioboard/Contents/img/admin/loading.gif" /></center>');
+        $.ajax({
+            type: 'POST',
+            url: '../EwalletWithdraw/Details',
+            data: { "localtime": local },
+            success: function (msg) {
+                //alert(msg);
+                $('#dataTables-ewallet-details').html(msg);
+                $('#dataTables-ewallet-details').dataTable();
+            },
+        });
+    }
+
+    function changestatus(status, id) {
+        $.ajax({
+            type: "POST",
+            url: "../EwalletWithdraw/Updatepaymentstatus",
+            data:{"Status":status,"Id":id},
+            success: function (msg) {
+                LoadWithdrawdetails();
+            }
+        });
+    }
+</script>

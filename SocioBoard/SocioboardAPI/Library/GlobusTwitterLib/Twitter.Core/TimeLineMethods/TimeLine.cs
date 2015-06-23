@@ -252,7 +252,5 @@ namespace GlobusTwitterLib.Twitter.Core.TimeLineMethods
         }
 
         #endregion
-
-
     }
 }

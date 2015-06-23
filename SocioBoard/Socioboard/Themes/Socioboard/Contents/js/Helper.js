@@ -100,7 +100,7 @@ function checkprofile(tagid, id, page, network) {
 
     }
     catch (e)
-        { }
+    { }
 }
 
 
@@ -165,7 +165,7 @@ function createtask(id) {
             modalColor: 'black'
         });
     } catch (e)
-        { }
+    { }
 }
 
 /*save task into database*/
@@ -222,113 +222,103 @@ function createtask(id) {
 //        }
 function savetask() {
     debugger;
-    try {
-
-        var divTask = document.getElementById('savetask');
-
-        try {
-            var description = $('#savetask').attr('msgdesc');
-            var msgdate = $('#savetask').attr('msgdate');
-            var msgdata = msgdate.split("/");
-            var time
-            var mm = msgdata[0];
-            var dd = msgdata[1];
-            var yy=msgdata[2]
-            if (mm < 10) {
-                mm = '0' + msgdata[0]
-            }
-            else {
-                mm = msgdata[0];
-            }
-            if(dd<10) {
-                dd = '0' + dd;
-            }
-            else {
-                dd = msgdata[1];
-            }
-            var yeartime = yy.split(" ");
-            var yy = yeartime[0];
-            var tt = yeartime[1].split(":")
-            var hh = tt[0];
-            var min = tt[1];
-            var sec = tt[2];
-            if (hh < 10)
-            {
-                hh = '0' + hh;
-            }
-            else {
-                hh = tt[0];
-            }
-            if (min<10) {
-                min = '0' + min;
-            }
-            else {
-                min = tt[1];
-            }
-            if (sec<10 && sec!='00') {
-                sec = '0' + sec;
-            }
-            else {
-                sec = tt[2];
-            }
-            msgdate = yy + "/" + mm + "/" + dd + " " + hh + ":" + min + ":" + sec + " " +yeartime[2];
-
-        } catch (e) {
-            alert(e);
-        }
-        var comment = $("#txtsavetask").val();
-
-        var chk = beforeDelete();
-        var dat = '';
-        if (chk) {
-
-            var chkboxid = $("input[type='radio']:checked").val();
-            if (chkboxid.indexOf('customerid') != -1) {
-                dat = chkboxid.split('_');
-                chkboxid = '';
-            }
-
-            if (comment == "" || comment == null) {
-                alert("Please write comment then click save!")
-                return false;
-            }
-
-
-            //  var memId = $("#<%=hdnMemberId.ClientID %>").val();
-            $.ajax
-            ({
-                type: "POST",
-                url: "../Messages/savetask?description=" +  encodeURIComponent(description) + "&memberid=" + dat[1] + "&comment=" + encodeURIComponent(comment) + "&msgdate=" + msgdate,
-                data: '',
-                contentType: "application/json; charset=utf-8",
-                dataType: "html",
-                success: function (msg) {
-                    //jQuery.noConflict();
-                    $("#popupchk").bPopup().close();
-                    $("#txttaskcomment").val() = "";
-                    $("input[type='radio']:checked").val() = "";
-                }
-            });
+    var divTask = document.getElementById('savetask');
+    var description = $('#savetask').attr('msgdesc');
+    var msgdate = $('#savetask').attr('msgdate');
+    var msgdata = msgdate.split("/");
+    var time
+    var mm = msgdata[0];
+    var dd = msgdata[1];
+    var yy=msgdata[2]
+    if (mm < 10) {
+        if (mm.indexOf('0') == -1) {
+            mm = '0' + msgdata[0]
         } else {
-            alert('Please select the user to assign task');
+            mm=msgdata[0];
         }
-
-
-
-
-    } catch (e) {
-        //  alert(e);
     }
+    else {
+        mm = msgdata[0];
+    }
+    if (dd < 10) {
+        if (dd.indexOf('0') == -1) {
+            dd = '0' + dd;
+        } else {
+            dd = msgdata[1];
+        }
+    }
+    else {
+        dd = msgdata[1];
+    }
+    var yeartime = yy.split(" ");
+    var yy = yeartime[0];
+    var tt = yeartime[1].split(":")
+    var hh = tt[0];
+    var min = tt[1];
+    var sec = tt[2];
+    if (hh < 10)
+    {
+        if (hh.indexOf('0') == -1) {
+            hh = '0' + hh;
+        } else {
+            hh = tt[0];
+        }
+    }
+    else {
+        hh = tt[0];
+    }
+    if (min < 10) {
+        if (min.indexOf('0') == -1) {
+            min = '0' + min;
+        } else {
+            min=tt[1];
+        }
+    }
+    else {
+        min = tt[1];
+    }
+    if (sec<10 && sec!='00') {
+        if (sec.indexOf('0') == -1) {
+            sec = '0' + sec;
+        } else {
+            sec = tt[2];
+        }
+    }
+    else {
+        sec = tt[2];
+    }
+    msgdate = yy + "/" + mm + "/" + dd + " " + hh + ":" + min + ":" + sec + " " + yeartime[2];
+    var comment = $("#txtsavetask").val();
+    if (comment == "" || comment == null) {
+        alert("Please write comment then click save!")
+        return;
+    }
+    var chk = beforeDelete();
+    var dat = '';
+    var chkboxid = $("input[type='radio']:checked").val();
+    if (chkboxid != undefined) {
+        if (chkboxid.indexOf('customerid') != -1) {
+            dat = chkboxid.split('_');
+            chkboxid = '';
+        }
+        $.ajax
+               ({
+                   type: "POST",
+                   url: "../Messages/savetask?description=" + encodeURIComponent(description) + "&memberid=" + dat[1] + "&comment=" + encodeURIComponent(comment) + "&msgdate=" + msgdate,
+                   data: '',
+                   contentType: "application/json; charset=utf-8",
+                   dataType: "html",
+                   success: function (msg) {
+                       $("#task").modal("hide");
+                       $("#txtsavetask").val("");
+                       $("input[type='radio']:checked").prop('checked', false);
+                   }
+               });
 
+    } else {
+        alert('Please select the user to assign task');
+    }
 }
-
-
-
-//    } catch (e) {
-//        //  alert(e);
-//    }
-
-//}
 
 /*check whether any of input is checked or not*/
 function beforeDelete() {
@@ -831,7 +821,7 @@ function addTaskComment(taskid) {
 
 function Show_task(id) {
     debugger;
-   
+
     var menu = document.getElementById(id);
 
     if (menu.style.display == 'block') {
@@ -983,7 +973,6 @@ function deletearchmesage(id, network, ProfileId, MessageId, MessageDate) {
 
 
 }
-
 
 
 

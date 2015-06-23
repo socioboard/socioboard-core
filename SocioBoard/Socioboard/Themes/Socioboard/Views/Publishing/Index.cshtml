@@ -37,21 +37,17 @@
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="col-md-12">
-            <h1 class="page-header">@GlobusMultiLanguageLib.Resources.Publishing_Index_ScheduleMessage</h1>
+            <h1 class="page-header">Schedule Message</h1>
 
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <div class="row">
-                        <div class="pull-left" style="margin-left:18px">
-  @*<div style="cursor:pointer" data-target="#upload_Bulk_message" data-toggle="modal">upload a file with lots of posts all at once!</div>*@
-                            <div data-toggle="modal" data-target="#upload_Bulk_message" style="cursor:pointer;color:yellow" ><h4><u>Upload a File with Lots of Posts all at once !</u></h4></div>
-  </div>
-                        <div class="col-xs-6 pull-right">
-                            <span style="margin-left:370px">@GlobusMultiLanguageLib.Resources.Publishing_Index_SelectProfile</span> 
+                        <div class="col-xs-12">
+						 <span style="margin-left:85%">Select Profile</span> 
                             @* <span>Add Accounts to Schedule Message</span>*@
-                           <a href="#" title="Please Select Profile From Here"><div class="btn-group pull-right" >
-                              
-                                 <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle" type="button">
+                              <a href="#" title="Please Select Profile From Here"><div class="btn-group pull-right" >
+							 
+                                <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle" type="button" >
                                     <i class="fa fa-chevron-down fa-2x"></i>
                                 </button>
                                 <ul class="dropdown-menu slidedown" id="binduserforcompose">
@@ -89,7 +85,7 @@
                         </div>
                     </div>
                     <div class="hero-unit">
-                        <input type="text" id="scheduleddate" placeholder="Click to show datepicker">
+                        <input type="text" id="scheduleddate" placeholder="Pick Date">
                     </div>
 
                     <div class="input-append bootstrap-timepicker">
@@ -101,8 +97,8 @@
 
                     <div class="panel-footer">
 
-                        <button id="scheduled" class="btn btn-outline btn-default" type="button">@GlobusMultiLanguageLib.Resources.Publishing_Index_Schedule</button>
-                        <button type="button" class="btn btn-outline btn-default" id="savedraft">@GlobusMultiLanguageLib.Resources.Publishing_Index_SaveToDraft</button>
+                        <button id="scheduled" class="btn btn-outline btn-default" type="button">Schedule</button>
+                        <button type="button" class="btn btn-outline btn-default" id="savedraft">Save To Drafts</button>
 
                     </div>
                 </div>
@@ -110,74 +106,6 @@
         </div>
     </div>
 
-</div>
-<div class="modal fade" id="upload_Bulk_message" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 style="line-height: 0;">Upload multiple posts from a single file</h4>
-            </div>
-            <div class="modal-body" style="max-height:400px;overflow-y:auto">
-                <p>Hi there! This feature allows you to upload just one file with multiple posts. Click on the button below to find a sample file where you'll be able see the required format. It's the easiest way to get started!</p>
-                <a href="http://bit.ly/1OijZQM" target="_blank">
-                    <button class="btn btn-info">Open an example in Google Docs</button></a>
-                <h2>Steps you have to follow in order to upload your Posts</h2>
-                <ul>
-                    
-                    <li>Now you have to upload a <strong>CSV file with 7 columns</strong>. Each row in the file is a post, and <strong>the columns should contain, from left to right</strong>, the following information: the first column should have the <strong>message</strong>, your post (text only) along with the Link(if any); the second column should have the <strong>Year</strong> in which you want publish your post; the third, the <strong>Month</strong> you want to publish in; the fourth, fifth and sixth: <strong>Day</strong>, <strong>Hour</strong>, and <strong>Minute</strong> that you want to publish in; the seventh column should have <strong>the URL of the photo</strong> you want to accompany your post;<br>
-                        Once you've finished setting up your file and have saved it as XLSX, you have to click on the "Browse" button.</li>
-                    <li>Don't worry, we won't publish anything yet! We're just going to upload the data from your file, so that you can review it and confirm the scheduling of the posts or not.</li>
-                    <li>To confirm the scheduling of your posts, you must click on the "Confirm and schedule" button and your posts will automatically be scheduled for the accounts you've selected above.</li>
-                </ul>
-                <h2>Don't want some post(s) to have a photo(s) and/or link(s)?</h2>
-                <ul>
-                    <li>If you want some or all of your posts to be status updates (text only), then just leave PhotoURL field empty.</li>
-                    
-                    <li>The URL for photos and links are optional, meaning that in any row of your file, columns 7  can be empty. But the other columns, ie 1 to 6, need to have data so that no errors occur when loading it.</li>
-                </ul>
-                <h2>Check out this example</h2>
-                <p>Let's suppose you want to schedule a message that says "Happy New Year" for January 1st, 2016, with a photo and a link to your website.</p>
-                <ul>
-                    <li>The easiest way to create and edit multiple posts is using Google Docs or Excel. In our example, we're going to use Google Docs.</li>
-                    <li>Open this <a href="http://bit.ly/1OijZQM" target="_blank">sample file</a>.</li>
-                    <li>You'll see some examples there. To create your own file you can make a copy of it. To do this, go to the File menu -&gt; Make a Copy.</li>
-                    <li>Let's continue. Now, add a row and in the first column, write the message: "Happy New Year".</li>
-                    <li>In the second and third columns, write the Year and Month you want to publish your post in. (2015, 1)</li>
-                    <li>In the fourth, fifth, and sixth columns, write the Day, Hour, and Minute. In our example: 1, 0, 01.</li>
-                    <li>In the seventh column, paste a link to an image. For example: http://goo.gl/FKaOV</li>
-                    
-                    <li>Almost ready! Now simply save the file in XLSX format. To do this, go to the File menu -&gt; Download as -&gt; Microsoft Excel</li>
-                    @*<li>Go back to the Postcron Dashboard, select the accounts you want to schedule the posts in and click on "..or upload a file with lots of posts all at once!". After that, click the "Select file and review" button and select the file you've just created. When Postcron finishes uploading the file (the amount of time depends on the number of posts you want to schedule), check the info over and click the "Confirm" button to schedule your posts.</li>*@
-                    <li>and ... You're Done!</li>
-                </ul>
-                <p>Take a look at this sample file, it's the easiest way to get started!</p>
-                <a href="http://bit.ly/1OijZQM" target="_blank">
-                    <button class="btn btn-info">Open an example in Google Docs</button></a>
-                <h2>Some important rules!!!</h2>
-                <ul>
-                    <li>The file extension must be .XLXS</li>
-                    <li>You can't repeat the same message on the same day.</li>
-                   @* <li>The URLs will be shortened automatically.</li>*@
-                    <li>You can upload more than 300 posts simultaneously.</li>
-                    <li>If you want some or all of your posts to be status updates (text only), then just leave PhotoURL field empty.</li>
-                    @*<li>If you want to post a message (text) with pictures, let's say, with no link, then you just leave the LinkURL field empty (in the row for that post).</li>*@
-                    <li>The URL for photos and links are optional, meaning that in any row of your file, columns 7 can be empty. But the other columns, ie 1 to 6, need to have data so that no errors occur when loading it.</li>
-                    <li>If you choose to create a CSV file in a text editor, leave the empty fields blank.</li>
-                    <li><b><u>Note that the Years should be written in the 20xx format (eg 2015), Months 1 to 12, Days 1 to 31, Hours 0-23 and the Minutes 0-59.</u></b></li>
-                </ul>
-                <p>If you aren't sure about something you can write me by using the support option!</p>
-            </div>
-            <div class="modal-footer">
-                <div class="row">
-                <button class="btn btn-warning col-md-2" onclick="ClearschedulebulkuploadID()" data-dismiss="modal" >Cancel</button>
-                <input type="file" id="schedulebulkupload" onchange="AddCsvScheduleMessage()" class="col-md-5">
-                <button class="btn btn-success col-md-4 " data-dismiss="modal" onclick="  ScheduleCSVSFileMessage()" >Confirm & Schedule</button>
-               @* <input type="file" onchange=" ()" id="schedulebulkupload">*@
-                    </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <script type="text/javascript">
@@ -276,7 +204,7 @@
         }
         else {
             alertify.set({ delay: 1000 });
-            alertify.error('This Account Already Added')
+            alertify.error('This Profile Already Added')
         }
 
     };
@@ -345,7 +273,7 @@
         //    }
         //    if (arrbinduser.length < 1) {
         //        alertify.set({ delay: 1000 });
-        //        alertify.error('Please Select Profiles to Scheduled a message');
+        //        alertify.error('Please Select Atleast One Profile to Schedule a Message');
         //        return false;
         //    }
         //    for (var i = 0; i < arrbinduser.length; i++) {
@@ -464,12 +392,18 @@
            
             var shmin = schdd[1];
             var shsec = schdd[2];
+			
+			var intScheduleDate=parseInt(shdd,10);
+			--intScheduleDate;
+			shdd=intScheduleDate.toString();
+			
             if (shdd < 10) {
                 shdd = '0' + shdd;
             }
             else {
                 shdd = schdd[0];
             }
+			
             if (shmin < 10) {
                 //shmin = '0' + shmin;
                 shmin = shmin;
@@ -530,6 +464,9 @@
                     }
                 }
             }
+			
+			
+			
             allprofiles = allprofiles.substr(0, allprofiles.length - 3);
             $.ajax({
                 type: 'POST',
@@ -568,7 +505,7 @@
                         $('#scheduleddate').val('');
                         $('#scheduledtime').val('');
                         alertify.set({ delay: 1000 });
-                        alertify.success('Draft Save Successfully');
+                        alertify.success('Message Saved to Draft');
                         arrbinduser = [];
 
                         $('.bindprof').hide(1000, function () {
@@ -601,109 +538,6 @@
             }
         }
     }
-    function AddCsvScheduleMessage() {
-        debugger;
-        var filesinput = $('#schedulebulkupload');
-        var fileExtension = ['xlsx'];
-        if (filesinput != undefined && filesinput[0].files[0] != null) {
-            if (hasExtension('schedulebulkupload', fileExtension)) {
-
-            }
-            else {
-                alertify.set({ delay: 3000 });
-                alertify.error("File Extention is not current. Please upload any xlsx file");
-                $('#schedulebulkupload').val('');
-                return;
-            }
-        }
-
-    }
-    function ClearschedulebulkuploadID() {
-        $('#schedulebulkupload').val('');
-        $('#bindcomposescheduledprofiles').val('');
-    }
-
-    function ScheduleCSVSFileMessage() {
-        debugger;
-        if (arrbinduser.length < 1) {
-            alertify.set({ delay: 1000 });
-            alertify.error('Please Select Profile to Scheduled Messages');
-            $('#schedulebulkupload').val('');
-            return false;
-        }
-        var curdate = new Date();
-        var dd = curdate.getDate();
-        if (dd < 10) {
-            dd = '0' + dd
-        }
-        else {
-            dd = curdate.getDate();
-        }
-        var mm = curdate.getMonth() + 1;
-        if (mm < 10) {
-            mm = '0' + mm
-        }
-        else {
-            mm = curdate.getMonth() + 1;
-        }
-        var hh = curdate.getHours();
-        if (hh < 10) {
-            hh = '0' + hh;
-        }
-        else {
-            hh = curdate.getHours();
-        }
-        var minm = curdate.getMinutes();
-        if (minm < 10) {
-            minm = '0' + minm;
-        }
-        else {
-            minm = curdate.getMinutes();
-        }
-        var sec = curdate.getSeconds();
-        if (sec < 10) {
-            sec = '0' + sec;
-        }
-        else {
-            sec = curdate.getSeconds();
-        }
-        var allprofiles = '';
-        var now = curdate.getFullYear() + "/" + mm + "/" + dd + " " + hh + ":" + minm + ":" + sec;
-        var fd = new FormData();
-        var filesinput = document.getElementById('schedulebulkupload').files[0];
-
-        //filename = document.getElementById('schedulebulkupload');
-
-
-        for (var i = 0; i < arrbinduser.length; i++) {
-            allprofiles += arrbinduser[i] + "<:>";
-        }
-        allprofiles = allprofiles.substr(0, allprofiles.length - 3);
-        fd.append("filesinput", filesinput);
-        $.ajax({
-            type: 'POST',
-            url: '../Publishing/InputCSVForBulkImport?profiles=' + allprofiles + '&clienttime=' + now,
-            data: fd,
-            processData: false,
-            contentType: false,
-            success: function (msg) {
-                debugger;
-                alert(msg);
-                $('.bindprof').hide(1000, function () {
-                    $('#bindcomposescheduledprofiles').html('');
-                    $('#bindcomposescheduledprofiles').val('');
-                    $('#schedulebulkupload').val('');
-                });
-
-            },
-            async: false
-        });
-
-
-
-
-    }
-
 
 </script>
 <script>

@@ -5,7 +5,7 @@ using System.Web;
 using Domain.Socioboard.Domain;
 using System.Collections;
 using Api.Socioboard.Helper;
-
+using NHibernate.Linq;
 namespace Api.Socioboard.Services
 {
     public class InstagramAccountRepository : IInstagramAccountRepository
@@ -264,15 +264,19 @@ namespace Api.Socioboard.Services
                     {
 
                         //Proceed action to Check if instagram user is Exist or not in Database.
-                        NHibernate.IQuery query = session.CreateQuery("from InstagramAccount where  InstagramId = :InstagramId and UserId = :UserId");
-                        query.SetParameter("InstagramId", InsUserId);
-                        query.SetParameter("UserId", Userid);
-                        var result = query.UniqueResult();
+                        //NHibernate.IQuery query = session.CreateQuery("from InstagramAccount where  InstagramId = :InstagramId and UserId = :UserId");
+                        //query.SetParameter("InstagramId", InsUserId);
+                        //query.SetParameter("UserId", Userid);
+                        //var result = query.UniqueResult();
 
-                        if (result == null)
-                            return false;
-                        else
-                            return true;
+                        //if (result == null)
+                        //    return false;
+                        //else
+                        //    return true;
+
+                        bool exist = session.Query<Domain.Socioboard.Domain.InstagramAccount>()
+                                .Any(x => x.InstagramId == InsUserId && x.UserId==Userid);
+                                return exist;
 
                     }
                     catch (Exception ex)

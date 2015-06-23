@@ -29,9 +29,9 @@ namespace Socioboard.Api.PaymentTransaction {
     [System.Web.Services.WebServiceBindingAttribute(Name="PaymentTransactionSoap", Namespace="http://tempuri.org/")]
     public partial class PaymentTransaction : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
-        private System.Threading.SendOrPostCallback HelloWorldOperationCompleted;
-        
         private System.Threading.SendOrPostCallback SavePayPalTransactionOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SavePayPalTransactionDetailOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetPaymentDataByUserIdOperationCompleted;
         
@@ -74,40 +74,13 @@ namespace Socioboard.Api.PaymentTransaction {
         }
         
         /// <remarks/>
-        public event HelloWorldCompletedEventHandler HelloWorldCompleted;
-        
-        /// <remarks/>
         public event SavePayPalTransactionCompletedEventHandler SavePayPalTransactionCompleted;
         
         /// <remarks/>
+        public event SavePayPalTransactionDetailCompletedEventHandler SavePayPalTransactionDetailCompleted;
+        
+        /// <remarks/>
         public event GetPaymentDataByUserIdCompletedEventHandler GetPaymentDataByUserIdCompleted;
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/HelloWorld", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string HelloWorld() {
-            object[] results = this.Invoke("HelloWorld", new object[0]);
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void HelloWorldAsync() {
-            this.HelloWorldAsync(null);
-        }
-        
-        /// <remarks/>
-        public void HelloWorldAsync(object userState) {
-            if ((this.HelloWorldOperationCompleted == null)) {
-                this.HelloWorldOperationCompleted = new System.Threading.SendOrPostCallback(this.OnHelloWorldOperationCompleted);
-            }
-            this.InvokeAsync("HelloWorld", new object[0], this.HelloWorldOperationCompleted, userState);
-        }
-        
-        private void OnHelloWorldOperationCompleted(object arg) {
-            if ((this.HelloWorldCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.HelloWorldCompleted(this, new HelloWorldCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SavePayPalTransaction", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -137,6 +110,39 @@ namespace Socioboard.Api.PaymentTransaction {
             if ((this.SavePayPalTransactionCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.SavePayPalTransactionCompleted(this, new SavePayPalTransactionCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SavePayPalTransactionDetail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string SavePayPalTransactionDetail(string UserID, string AmountPaid, string TransactionId) {
+            object[] results = this.Invoke("SavePayPalTransactionDetail", new object[] {
+                        UserID,
+                        AmountPaid,
+                        TransactionId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SavePayPalTransactionDetailAsync(string UserID, string AmountPaid, string TransactionId) {
+            this.SavePayPalTransactionDetailAsync(UserID, AmountPaid, TransactionId, null);
+        }
+        
+        /// <remarks/>
+        public void SavePayPalTransactionDetailAsync(string UserID, string AmountPaid, string TransactionId, object userState) {
+            if ((this.SavePayPalTransactionDetailOperationCompleted == null)) {
+                this.SavePayPalTransactionDetailOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSavePayPalTransactionDetailOperationCompleted);
+            }
+            this.InvokeAsync("SavePayPalTransactionDetail", new object[] {
+                        UserID,
+                        AmountPaid,
+                        TransactionId}, this.SavePayPalTransactionDetailOperationCompleted, userState);
+        }
+        
+        private void OnSavePayPalTransactionDetailOperationCompleted(object arg) {
+            if ((this.SavePayPalTransactionDetailCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SavePayPalTransactionDetailCompleted(this, new SavePayPalTransactionDetailCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -190,17 +196,17 @@ namespace Socioboard.Api.PaymentTransaction {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void HelloWorldCompletedEventHandler(object sender, HelloWorldCompletedEventArgs e);
+    public delegate void SavePayPalTransactionCompletedEventHandler(object sender, SavePayPalTransactionCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class HelloWorldCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class SavePayPalTransactionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal HelloWorldCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal SavePayPalTransactionCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -216,17 +222,17 @@ namespace Socioboard.Api.PaymentTransaction {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
-    public delegate void SavePayPalTransactionCompletedEventHandler(object sender, SavePayPalTransactionCompletedEventArgs e);
+    public delegate void SavePayPalTransactionDetailCompletedEventHandler(object sender, SavePayPalTransactionDetailCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.17929")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class SavePayPalTransactionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class SavePayPalTransactionDetailCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal SavePayPalTransactionCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal SavePayPalTransactionDetailCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

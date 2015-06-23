@@ -7,10 +7,12 @@
     if (item.Key.ProfileType == "facebook" || item.Key.ProfileType=="facebook_page")
     {
         FacebookAccount objFacebookAccount = (FacebookAccount)item.Value;
+        string src = "http://graph.facebook.com/" +objFacebookAccount.FbUserId + "/picture?type=small" ;
         if(objFacebookAccount.AccessToken!="")
         {
+            
     <li onclick="bindfrofiles('facebook','@objFacebookAccount.FbUserName','@objFacebookAccount.FbUserId')">
-        <a href="#">
+        <a href="#"> <img  src="@src" class=" headerProfilePic" title="@objFacebookAccount.FbUserName" />
             <i class="fa fa-facebook fa-fw"></i>@objFacebookAccount.FbUserName
                                                     </a>
     </li>
@@ -20,7 +22,7 @@
     {
         TwitterAccount objTwitterAccount = (TwitterAccount)item.Value;
     <li onclick="bindfrofiles('twitter','@objTwitterAccount.TwitterScreenName','@objTwitterAccount.TwitterUserId')">
-        <a href="#">
+        <a href="#"> <img src="@objTwitterAccount.ProfileImageUrl" class=" headerProfilePic" title="@objTwitterAccount.TwitterScreenName">
             <i class="fa fa-twitter  fa-fw"></i>@objTwitterAccount.TwitterScreenName
                                                     </a>
     </li>
@@ -29,7 +31,7 @@
     {
         LinkedInAccount objLinkedInAccount = (LinkedInAccount)item.Value;
     <li onclick="bindfrofiles('linkedin','@objLinkedInAccount.LinkedinUserName','@objLinkedInAccount.LinkedinUserId')">
-        <a href="#">
+        <a href="#"> <img src="@objLinkedInAccount.ProfileImageUrl" class=" headerProfilePic" title="@objLinkedInAccount.LinkedinUserName">
             <i class="fa fa-linkedin fa-fw"></i>@objLinkedInAccount.LinkedinUserName
                                                     </a>
     </li>
@@ -44,7 +46,7 @@
         TumblrAccount objTumblrAccount = (TumblrAccount)item.Value;
         string tumblruserimage = "http://api.tumblr.com/v2/blog/" + objTumblrAccount.tblrUserName + ".tumblr.com/avatar";
     <li onclick="bindfrofiles('tumblr','@objTumblrAccount.tblrUserName','@objTumblrAccount.tblrUserName')">
-        <a href="#">
+        <a href="#"> <img src="@tumblruserimage" title="@objTumblrAccount.tblrUserName" class="headerProfilePic">
             <i class="fa fa-tumblr fa-fw"></i>@objTumblrAccount.tblrUserName
                                                     </a>
     </li>

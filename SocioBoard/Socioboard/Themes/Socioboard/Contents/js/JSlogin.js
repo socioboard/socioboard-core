@@ -103,7 +103,7 @@ function signinFunction() {
                         }
                     }
                     if (msg == "user") {
-                        window.top.location = "../Home/Index";
+                        window.top.location = "../Home";
                     }
                        // Edited by Antima[1/11/2014]
                     else if (msg == "notactivated") {
@@ -360,7 +360,7 @@ function register() {
                                                                                 data: '',
                                                                                 success: function (msg) {
                                                                                     if (msg.indexOf("Success") != -1) {
-                                                                                        alertify.success('Mail has been send Successfully!!');
+                                                                                        alertify.success('Mail has been sent Successfully!!');
                                                                                         if (msg.indexOf("Facebook Registration") != -1 && msg_Signup != null) {
                                                                                             //Dont alert to activate account
                                                                                         }
@@ -372,9 +372,14 @@ function register() {
                                                                                         $('#txtrFirstName').val('');
                                                                                         $('#txtrLastName').val('');
                                                                                         $('#txtrConfirmPassword').val('');
+																						$('#password_strength').css('display', 'none');
+                                                                                           $('#_password_strength').css('display', 'none');
+																						
+																																												
                                                                                     }
                                                                                     else {
                                                                                         alertify.error("failure");
+
                                                                                     }
                                                                                 },
                                                                                 error: function () {

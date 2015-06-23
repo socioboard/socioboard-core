@@ -22,13 +22,21 @@ namespace Socioboard.Controllers
 
         public ActionResult Index()
         {
-            if (Session["Paid_User"].ToString() == "Unpaid")
+
+            if (Session["User"] != null)
             {
-                return RedirectToAction("Billing", "PersonalSetting");
+                if (Session["Paid_User"].ToString() == "Unpaid")
+                {
+                    return RedirectToAction("Billing", "PersonalSetting");
+                }
+                else
+                {
+                    return View();
+                }
             }
             else
             {
-                return View();
+                return RedirectToAction("Index", "Index");
             }
             //return View();
         }
@@ -68,6 +76,28 @@ namespace Socioboard.Controllers
                 return PartialView("_FbPageReport", _FbPagePost);
             else
                 return Content("");
+        }
+
+
+
+        public ActionResult FbPageReports(string AccessToken, string FbUserId, int days)
+        {
+            // AccessToken = "CAACEdEose0cBAGAedAd7bVYNydZCCWkpId9v4MLtZBXv9VjF7nHszkAhqonnoKfKwzxnMzvqOhc75P3TMugZBAnVGShE7b3ZBhjVSpzHeDRZCxiliZBLRC7jSi538SKh69nZCL3W5czZAgw5weWub4ZBEcKhZCMFS8toWm3PJA8ZBol3XaStd3v6NPXt5QXTZCS2Md1hPrGmkMOZCccrUZBcQfmT4BLxZBViPGSRaoZD";
+            //FbUserId = "370359689834664";
+            ViewBag.AccessToken = AccessToken;
+            ViewBag.FbUserId = FbUserId;
+            ViewBag.days = days;
+            Helper.CompanyProfiles cp = new Helper.CompanyProfiles();
+            ViewBag.Likes = cp.getFacebookPageLikes(FbUserId, AccessToken, days);
+            ViewBag.Unlikes = cp.getFacebookPageUnLikes(FbUserId, AccessToken, days);
+            ViewBag.Impressions = cp.getFacebookPageImpressions(FbUserId, AccessToken, days);
+            ViewBag.ImpressionsOrganic = cp.getFacebookpageImpressionsOrganic(FbUserId, AccessToken, days);
+            ViewBag.ImpressionsPaid = cp.getFacebookpageImpressionsPaid(FbUserId, AccessToken, days);
+            ViewBag.ImpressionsViral = cp.getFacebookpageImpressionsviral(FbUserId, AccessToken, days);
+            // ViewBag.PageImpressionByGender = cp.getFacebookPageImpressionsByAgenGender(FbUserId, AccessToken, days);
+            ViewBag.ImpressionsByCountry = cp.getFacebookPageImpressionsByCountry(FbUserId, AccessToken, days);
+            ViewBag.ImpressionsByCity = cp.getFacebookPageImpressionsByCity(FbUserId, AccessToken, days);
+            return PartialView("_FbPageReports");
         }
 
         public ActionResult loadPostDetails(string id)

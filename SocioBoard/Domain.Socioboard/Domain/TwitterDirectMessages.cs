@@ -20,6 +20,6 @@ namespace Domain.Socioboard.Domain
         public string SenderProfileUrl { get; set; }
         public string Type { get; set; }
         public string MessageId { get; set; }
-
+        public string Image { get; set; }
     }
 }

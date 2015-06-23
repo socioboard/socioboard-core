@@ -20,16 +20,26 @@ namespace Socioboard.Controllers
     {
         //
         // GET: /Message/
+        public static int inboxmessagecount = 0;
+        public static int inboxchatmessagecount = 0;
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult Index()
         {
-            if (Session["Paid_User"].ToString() == "Unpaid")
+            if (Session["User"] != null)
             {
-                return RedirectToAction("Billing", "PersonalSetting");
+                if (Session["Paid_User"].ToString() == "Unpaid")
+                {
+                    return RedirectToAction("Billing", "PersonalSetting");
+                }
+                else
+                {
+                    return View("Index");
+                }
             }
             else
             {
-                return View("Index");
+                return RedirectToAction("Index", "Index");
             }
             //DataSet ds = bindMessages();
             //return View("_MessagesMidPartial", ds.Tables[0]);
@@ -41,16 +51,17 @@ namespace Socioboard.Controllers
             //return View("Index"); //View("_MessagesMidPartialNew", ds); //View("Index");
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult accordianprofiles()
         {
             Api.Team.Team objApiTeam = new Api.Team.Team();
             string groupid = Session["group"].ToString();
             Domain.Socioboard.Domain.Team team = (Domain.Socioboard.Domain.Team)new JavaScriptSerializer().Deserialize(objApiTeam.GetTeamByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Team));
 
-    
+
             Api.TeamMemberProfile.TeamMemberProfile objApiTeamMemberProfile = new Api.TeamMemberProfile.TeamMemberProfile();
             List<Domain.Socioboard.Domain.TeamMemberProfile> alstprofiles = (List<Domain.Socioboard.Domain.TeamMemberProfile>)new JavaScriptSerializer().Deserialize(objApiTeamMemberProfile.GetTeamMemberProfilesByTeamId(team.Id.ToString()), typeof(List<Domain.Socioboard.Domain.TeamMemberProfile>));
-        
+
             return PartialView("_MessagesRightPartial", alstprofiles);//Content(view_MessagesaccordianprofilesPartial);
         }
 
@@ -75,7 +86,7 @@ namespace Socioboard.Controllers
         //    Domain.Socioboard.Domain.User _user = (Domain.Socioboard.Domain.User)Session["User"];
         //    DataSet ds = null;
         //    DataSet dataset = new DataSet();
-            
+
         //    clsFeedsAndMessages clsfeedsandmess = new clsFeedsAndMessages();
 
         //    //string[] profid = new string[] { };
@@ -156,7 +167,7 @@ namespace Socioboard.Controllers
 
         //                dataset.Tables.Add(records);
         //                return dataset;
-                        
+
         //            }
         //            catch (Exception ex)
         //            {
@@ -213,6 +224,7 @@ namespace Socioboard.Controllers
         //}
 
         //Updated by SumitGupta [09-02-2015]
+
         public DataSet bindMessages()
         {
             Domain.Socioboard.Domain.User _user = (Domain.Socioboard.Domain.User)Session["User"];
@@ -300,7 +312,7 @@ namespace Socioboard.Controllers
                             //ds = clsfeedsandmess.bindFeedMessageIntoDataTable(profid);
                             ds = clsfeedsandmess.bindFeedMessageIntoDataTable(profid, noOfDataToSkip, _user.Id);
                         }
-                      
+
                         Session["MessageDataTable"] = ds;
 
                         ds = (DataSet)Session["MessageDataTable"];
@@ -370,6 +382,7 @@ namespace Socioboard.Controllers
             return dataset;
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult MessagesMidPartialNew()
         {
             Session["countMessageDataTable"] = 0;
@@ -386,8 +399,9 @@ namespace Socioboard.Controllers
 
         }
 
-      
 
+
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult BindInboxOnScroll()
         {
             DataSet dataset = bindMessages();
@@ -403,6 +417,7 @@ namespace Socioboard.Controllers
         }
 
         //LoadMessagesByProfile
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult LoadMessagesByProfile()
         {
             Session["countMessageDataTable"] = 0;
@@ -427,6 +442,7 @@ namespace Socioboard.Controllers
 
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult Task()
         {
             if (Session["Paid_User"].ToString() == "Unpaid")
@@ -437,8 +453,10 @@ namespace Socioboard.Controllers
             {
                 return View();
             }
-           // return View();
+            // return View();
         }
+
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult loadtask()
         {
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
@@ -452,6 +470,7 @@ namespace Socioboard.Controllers
 
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public PartialViewResult LoadIncompleteTask()
         {
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
@@ -464,6 +483,7 @@ namespace Socioboard.Controllers
             return PartialView("_TaskPartial", taskdata);
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public PartialViewResult LoadCompleteTask()
         {
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
@@ -475,6 +495,8 @@ namespace Socioboard.Controllers
             ViewBag.Task = "CompleteTask";
             return PartialView("_TaskPartial", taskdata);
         }
+
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public PartialViewResult LoadTeamTask()
         {
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
@@ -487,11 +509,12 @@ namespace Socioboard.Controllers
             return PartialView("_TaskPartial", taskdata);
         }
 
-        
+
         [ValidateInput(false)]
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult savetask()
         {
-             string groupid = Session["group"].ToString();
+            string groupid = Session["group"].ToString();
 
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
 
@@ -518,30 +541,30 @@ namespace Socioboard.Controllers
             Api.Tasks.Tasks1 objTasks = new Api.Tasks.Tasks1();
 
             Api.Tasks.Tasks objApiTasks = new Api.Tasks.Tasks();
-            objApiTasks.AddNewTaskWithGroup(descritption,MessageDate,objUser.Id.ToString(), objTasks, idtoassign.ToString(), comment, AssignDate, groupid);
+            objApiTasks.AddNewTaskWithGroup(descritption, MessageDate, objUser.Id.ToString(), objTasks, idtoassign.ToString(), comment, AssignDate, groupid);
 
             string Groupid = Session["group"].ToString();
 
             Api.BusinessSetting.BusinessSetting objApiBusinessSetting = new Api.BusinessSetting.BusinessSetting();
             Domain.Socioboard.Domain.BusinessSetting objbsns = (Domain.Socioboard.Domain.BusinessSetting)new JavaScriptSerializer().Deserialize(objApiBusinessSetting.GetDetailsofBusinessOwner(Groupid), typeof(Domain.Socioboard.Domain.BusinessSetting));
-            if (objbsns.TaskNotification==true)
+            if (objbsns.TaskNotification == true)
             {
-                Api.User.User ObjApiUser=new Api.User.User();
-                Domain.Socioboard.Domain.User UsertoSendMail=(Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(ObjApiUser.getUsersById(idtoassign.ToString()),typeof(Domain.Socioboard.Domain.User)));
-                Api.MailSender.MailSender ApiobjMailSender = new Api.MailSender.MailSender(); 
+                Api.User.User ObjApiUser = new Api.User.User();
+                Domain.Socioboard.Domain.User UsertoSendMail = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(ObjApiUser.getUsersById(idtoassign.ToString()), typeof(Domain.Socioboard.Domain.User)));
+                Api.MailSender.MailSender ApiobjMailSender = new Api.MailSender.MailSender();
                 string mailsender = "";
-                try 
-	            {
+                try
+                {
                     var mailBody = Helper.SBUtils.RenderViewToString(this.ControllerContext, "_TaskNotificationMailPartial", UsertoSendMail);
                     string Subject = "TASK ASSIGNMENT on Socioboard";
 
                     mailsender = ApiobjMailSender.SendTaskNotificationMail(UsertoSendMail.EmailId, mailBody, Subject);
-	            }
-	            catch (Exception)
-	            {
-		
-		            throw;
-	            } 
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
             }
 
             return Content("");
@@ -600,6 +623,7 @@ namespace Socioboard.Controllers
             //}
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult sentmsg()
         {
             if (Session["Paid_User"].ToString() == "Unpaid")
@@ -617,6 +641,7 @@ namespace Socioboard.Controllers
         //    return PartialView("Index - Copy");
         //}
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult loadsentmsg()
         {
             string AllProfileId = string.Empty;
@@ -646,13 +671,14 @@ namespace Socioboard.Controllers
             return PartialView("_sentmsgPartial", lstSchedulemsg);
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult addTaskComment()
         {
             string comment = Request.QueryString["comment"];
-              string taskid = Request.QueryString["taskid"];
-              string CommentDateTime = Request.QueryString["CommentDateTime"];
+            string taskid = Request.QueryString["taskid"];
+            string CommentDateTime = Request.QueryString["CommentDateTime"];
 
-            Domain.Socioboard.Domain.User objDomainUser=(Domain.Socioboard.Domain.User)Session["User"];
+            Domain.Socioboard.Domain.User objDomainUser = (Domain.Socioboard.Domain.User)Session["User"];
 
             Api.TaskComment.TaskComment objApiTaskComment = new Api.TaskComment.TaskComment();
             string res = objApiTaskComment.AddTaskComment(comment, objDomainUser.Id.ToString(), taskid, CommentDateTime, DateTime.Now);
@@ -662,6 +688,7 @@ namespace Socioboard.Controllers
 
 
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult TwitterReply()
         {
             try
@@ -682,6 +709,7 @@ namespace Socioboard.Controllers
             }
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult FacebokReply()
         {
             try
@@ -700,6 +728,8 @@ namespace Socioboard.Controllers
                 return Content("");
             }
         }
+
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult SaveArchiveMessage()
         {
             try
@@ -773,6 +803,7 @@ namespace Socioboard.Controllers
         //    }
         //}
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult Archive()
         {
             if (Session["Paid_User"].ToString() == "Unpaid")
@@ -783,12 +814,13 @@ namespace Socioboard.Controllers
             {
                 return View();
             }
-           // return View();
+            // return View();
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult loadarchive()
         {
-           
+
             string AllProfileId = string.Empty;
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
             Api.ArchiveMessage.ArchiveMessage ApiobjArchiveMessage = new Api.ArchiveMessage.ArchiveMessage();
@@ -816,6 +848,7 @@ namespace Socioboard.Controllers
             return PartialView("_ArchivePartial", lstAllArchive);
         }
 
+        //[OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult ChangeTaskStatus(string Taskid, string Status)
         {
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
@@ -824,6 +857,7 @@ namespace Socioboard.Controllers
             return Content("Success");
         }
 
+        //[OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult DeleteTask(string Taskid)
         {
             Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
@@ -832,6 +866,7 @@ namespace Socioboard.Controllers
             return Content("Success");
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult getProfileDetails(string ProfileId, string Network)
         {
 
@@ -841,7 +876,7 @@ namespace Socioboard.Controllers
                 Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
                 Api.Twitter.Twitter ApiobjTwitter = new Api.Twitter.Twitter();
                 string ProfileDescription = ApiobjTwitter.TwitterProfileDetails(objUser.Id.ToString(), ProfileId);
-               // Domain.Socioboard.Helper.TwitterProfileDetails ProfileDetails = (Domain.Socioboard.Helper.TwitterProfileDetails)(new JavaScriptSerializer().Deserialize(ProfileDescription, typeof(Domain.Socioboard.Helper.TwitterProfileDetails)));
+                // Domain.Socioboard.Helper.TwitterProfileDetails ProfileDetails = (Domain.Socioboard.Helper.TwitterProfileDetails)(new JavaScriptSerializer().Deserialize(ProfileDescription, typeof(Domain.Socioboard.Helper.TwitterProfileDetails)));
                 Domain.Socioboard.Domain.TwitterAccount ProfileDetails = (Domain.Socioboard.Domain.TwitterAccount)(new JavaScriptSerializer().Deserialize(ProfileDescription, typeof(Domain.Socioboard.Domain.TwitterAccount)));
                 _dicProfileDetails.Add("Twitter", ProfileDetails);
             }
@@ -865,6 +900,7 @@ namespace Socioboard.Controllers
             return PartialView("_SocialProfileDetail", _dicProfileDetails);
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult LoadSentmsgByDay(string day)
         {
             string AllProfileId = string.Empty;
@@ -894,6 +930,7 @@ namespace Socioboard.Controllers
             return PartialView("_sentmsgPartial", lstSchedulemsg);
         }
 
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult LoadSentmsgByDays(string days)
         {
             string AllProfileId = string.Empty;
@@ -922,6 +959,8 @@ namespace Socioboard.Controllers
             List<Domain.Socioboard.Domain.ScheduledMessage> lstSchedulemsg = (List<Domain.Socioboard.Domain.ScheduledMessage>)(new JavaScriptSerializer().Deserialize(ApiobjScheduledMessage.GetAllScheduledMessageByDays(objUser.Id.ToString(), AllProfileId, days), typeof(List<Domain.Socioboard.Domain.ScheduledMessage>)));
             return PartialView("_sentmsgPartial", lstSchedulemsg);
         }
+
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult LoadSentmsgByMonth(string month)
         {
             string AllProfileId = string.Empty;
@@ -950,6 +989,8 @@ namespace Socioboard.Controllers
             List<Domain.Socioboard.Domain.ScheduledMessage> lstSchedulemsg = (List<Domain.Socioboard.Domain.ScheduledMessage>)(new JavaScriptSerializer().Deserialize(ApiobjScheduledMessage.GetAllScheduledMessageByMonth(objUser.Id.ToString(), AllProfileId, month), typeof(List<Domain.Socioboard.Domain.ScheduledMessage>)));
             return PartialView("_sentmsgPartial", lstSchedulemsg);
         }
+
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
         public ActionResult LoadSentmsgForCustomrange(string sdate, string ldate)
         {
             string AllProfileId = string.Empty;
@@ -997,6 +1038,14 @@ namespace Socioboard.Controllers
             }
             return PartialView("_MailMsgSendingPartial", twtinfo);
             //return PartialView("_TwitterMailSendingPartial", twtfeed);
+        }
+
+        public ActionResult ShowInboxMsgMailPopUp(string MsgId)
+        {
+            Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+            Api.InboxMessages.InboxMessages ApiInboxMessages = new Api.InboxMessages.InboxMessages();
+            Domain.Socioboard.Domain.InboxMessages _InboxMessages = (Domain.Socioboard.Domain.InboxMessages)new JavaScriptSerializer().Deserialize(ApiInboxMessages.getInboxMessageByMessageId(_User.Id.ToString(), MsgId), typeof(Domain.Socioboard.Domain.InboxMessages));
+            return PartialView("_MailMsgSendingPartial", _InboxMessages);
         }
 
         //Vikash [04/12/2014]
@@ -1145,7 +1194,169 @@ namespace Socioboard.Controllers
             return RedirectToAction("sentmsg");
         }
 
-        
+
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
+        public ActionResult BindUserProfileByGroup()
+        {
+            Api.Team.Team objApiTeam = new Api.Team.Team();
+            string groupid = Session["group"].ToString();
+            Domain.Socioboard.Domain.Team team = (Domain.Socioboard.Domain.Team)new JavaScriptSerializer().Deserialize(objApiTeam.GetTeamByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Team));
+            Api.TeamMemberProfile.TeamMemberProfile objApiTeamMemberProfile = new Api.TeamMemberProfile.TeamMemberProfile();
+            List<Domain.Socioboard.Domain.TeamMemberProfile> alstprofiles = (List<Domain.Socioboard.Domain.TeamMemberProfile>)new JavaScriptSerializer().Deserialize(objApiTeamMemberProfile.GetTeamMemberProfilesByTeamId(team.Id.ToString()), typeof(List<Domain.Socioboard.Domain.TeamMemberProfile>));
+            return PartialView("_InboxProfilePartial", alstprofiles);
+        }
+
+
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
+        public ActionResult BindUserMessageType()
+        {
+            return PartialView("_InboxMessageTypePartial");
+        }
+
+        [CustomException]
+        public ActionResult BindInboxMessage(string load, string arrmsgtype, string arrid)
+        {
+            string AllProfileId = string.Empty;
+            string MessageType = string.Empty;
+            List<Domain.Socioboard.Domain.InboxMessages> lstmsg = new List<Domain.Socioboard.Domain.InboxMessages>();
+            Api.InboxMessages.InboxMessages ApiInboxMessages = new Api.InboxMessages.InboxMessages();
+            Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
+            if (load == "first")
+            {
+                Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = new Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object>();
+                try
+                {
+                    allprofileofuser = SBUtils.GetUserProfilesccordingToGroup();
+                }
+                catch (Exception Err)
+                {
+                    Console.Write(Err.StackTrace);
+                }
+                foreach (var item in allprofileofuser)
+                {
+                    try
+                    {
+                        AllProfileId += item.Key.ProfileId + ',';
+                    }
+                    catch (Exception Err)
+                    {
+                        Console.Write(Err.StackTrace);
+                    }
+                }
+                try
+                {
+                    AllProfileId = AllProfileId.Substring(0, (AllProfileId.Length - 1));
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                }
+                inboxmessagecount = 0;
+                MessageType = "twt_followers,twt_mention,twt_retweet,fb_notification";
+                //lstmsg = (List<Domain.Socioboard.Domain.InboxMessages>)new JavaScriptSerializer().Deserialize(ApiInboxMessages.GetInboxMessage(objUser.Id.ToString(), AllProfileId, MessageType, "0", "10"), typeof(List<Domain.Socioboard.Domain.InboxMessages>));
+            }
+            else if (load == "filter")
+            {
+                inboxmessagecount = 0;
+                AllProfileId = arrid;
+                MessageType = arrmsgtype;
+                //lstmsg = (List<Domain.Socioboard.Domain.InboxMessages>)new JavaScriptSerializer().Deserialize(ApiInboxMessages.GetInboxMessage(objUser.Id.ToString(), AllProfileId, MessageType, "0", "10"), typeof(List<Domain.Socioboard.Domain.InboxMessages>));
+            }
+            else if (load == "scroll")
+            {
+                inboxmessagecount = inboxmessagecount + 10;
+                AllProfileId = arrid;
+                MessageType = arrmsgtype;
+
+            }
+            lstmsg = (List<Domain.Socioboard.Domain.InboxMessages>)new JavaScriptSerializer().Deserialize(ApiInboxMessages.GetInboxMessage(objUser.Id.ToString(), AllProfileId, MessageType, inboxmessagecount.ToString(), "10"), typeof(List<Domain.Socioboard.Domain.InboxMessages>));
+            if (lstmsg.Count > 0)
+            {
+                return PartialView("_InboxPartial", lstmsg);
+            }
+            else
+            {
+                return Content("no_data");
+            }
+        }
+
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
+        public ActionResult Inbox()
+        {
+            return View();
+        }
+
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
+        public ActionResult BindUserProfileByGroupChat()
+        {
+            Api.Team.Team objApiTeam = new Api.Team.Team();
+            string groupid = Session["group"].ToString();
+            Domain.Socioboard.Domain.Team team = (Domain.Socioboard.Domain.Team)new JavaScriptSerializer().Deserialize(objApiTeam.GetTeamByGroupId(Session["group"].ToString()), typeof(Domain.Socioboard.Domain.Team));
+            Api.TeamMemberProfile.TeamMemberProfile objApiTeamMemberProfile = new Api.TeamMemberProfile.TeamMemberProfile();
+            List<Domain.Socioboard.Domain.TeamMemberProfile> alstprofiles = (List<Domain.Socioboard.Domain.TeamMemberProfile>)new JavaScriptSerializer().Deserialize(objApiTeamMemberProfile.GetTeamMemberProfilesByTeamId(team.Id.ToString()), typeof(List<Domain.Socioboard.Domain.TeamMemberProfile>));
+            return PartialView("_InboxChatProfilePartial", alstprofiles);
+        }
+
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
+        public ActionResult BindInboxChatMessage(string load, string arrid)
+        {
+            string TwitterProfiles = string.Empty;
+            Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
+
+            if (load == "first")
+            {
+                Dictionary<Domain.Socioboard.Domain.TeamMemberProfile, object> allprofileofuser = SBUtils.GetUserProfilesccordingToGroup();
+                foreach (var item in allprofileofuser)
+                {
+                    try
+                    {
+                        if (item.Key.ProfileType == "twitter" || item.Key.ProfileType == "facebook_page")
+                        {
+                            TwitterProfiles += item.Key.ProfileId + ',';
+                        }
+                    }
+                    catch (Exception Err)
+                    {
+                        Console.Write(Err.StackTrace);
+                    }
+                }
+                try
+                {
+                    TwitterProfiles = TwitterProfiles.Substring(0, (TwitterProfiles.Length - 1));
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                }
+                inboxchatmessagecount = 0;
+            }
+            else if (load == "filter")
+            {
+                inboxchatmessagecount = 0;
+                TwitterProfiles = arrid;
+            }
+            Api.TwitterDirectMessages.TwitterDirectMessages ApiTwitterDirectMessages = new Api.TwitterDirectMessages.TwitterDirectMessages();
+
+            List<Domain.Socioboard.Domain.TwitterDirectMessages> _TwitterDirectMessages = (List<Domain.Socioboard.Domain.TwitterDirectMessages>)new JavaScriptSerializer().Deserialize(ApiTwitterDirectMessages.GetDistinctTwitterDirectMessagesByProfilesAndUserId(objUser.Id.ToString(), TwitterProfiles), typeof(List<Domain.Socioboard.Domain.TwitterDirectMessages>));
+            if (_TwitterDirectMessages.Count > 0)
+            {
+                return PartialView("_InboxChatPartial", _TwitterDirectMessages);
+            }
+            else
+            {
+                return Content("no_data");
+            }
+        }
+
+        [OutputCache(Duration = 45, Location = OutputCacheLocation.Client, NoStore = true)]
+        public ActionResult ShowChat(string SenderId, string RecipientId)
+        {
+            ViewBag.ProfileId = RecipientId;
+            Domain.Socioboard.Domain.User objUser = (Domain.Socioboard.Domain.User)Session["User"];
+            Api.TwitterDirectMessages.TwitterDirectMessages ApiTwitterDirectMessages = new Api.TwitterDirectMessages.TwitterDirectMessages();
+            List<Domain.Socioboard.Domain.TwitterDirectMessages> _TwitterDirectMessages = (List<Domain.Socioboard.Domain.TwitterDirectMessages>)new JavaScriptSerializer().Deserialize(ApiTwitterDirectMessages.GetConversation(objUser.Id.ToString(), SenderId, RecipientId), typeof(List<Domain.Socioboard.Domain.TwitterDirectMessages>));
+            return PartialView("_ShowChatPartial", _TwitterDirectMessages);
+        }
 
     }
 }

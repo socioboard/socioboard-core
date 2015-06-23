@@ -5,11 +5,11 @@
 }
 <thead>
     <tr>
-        <th>@GlobusMultiLanguageLib.Resources.Publishing_DraftPartial_User</th>
-        <th>@GlobusMultiLanguageLib.Resources.Publishing_DraftPartial_Message</th>
-        <th>@GlobusMultiLanguageLib.Resources.Publishing_DraftPartial_Edit</th>
-        <th>@GlobusMultiLanguageLib.Resources.Publishing_DraftPartial_Delete</th>
-        <th>@GlobusMultiLanguageLib.Resources.Publishing_DraftPartial_Schedule</th>
+        <th>User</th>
+        <th>Message</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Schedule</th>
     </tr>
 </thead>
 <tbody>
@@ -24,7 +24,7 @@ TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"));
                 @if (!string.IsNullOrEmpty(imgurl))
                 {
                     string[] profileUrl = objuser.ProfileUrl.Split(new string[] { "Socioboard" }, StringSplitOptions.None);
-                     imgurl = "/Themes/Socioboard" + profileUrl[2];
+                     imgurl = "/Themes/Socioboard" + profileUrl[1];
                     <img src="@imgurl" class="img-circle profilePic" data-toggle="modal" data-target="#profileModal">
                 }
                 else 

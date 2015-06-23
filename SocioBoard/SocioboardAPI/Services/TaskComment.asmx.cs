@@ -74,7 +74,8 @@ namespace Api.Socioboard.Services
                 objTask.UserId = Guid.Parse(userId);
                 objTask.Comment = comment;
                 objTask.TaskId = Guid.Parse(taskId);
-                objTask.CommentDate = Convert.ToDateTime(commentDate);
+                //objTask.CommentDate = Convert.ToDateTime(commentDate);
+                objTask.CommentDate = entryDate;
                 objTask.EntryDate = DateTime.Now;
 
                 taskrepo.addTaskComment(objTask);

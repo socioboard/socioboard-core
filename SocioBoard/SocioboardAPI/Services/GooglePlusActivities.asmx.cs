@@ -20,11 +20,12 @@ namespace Api.Socioboard.Services
     [ScriptService]
     public class GooglePlusActivities : System.Web.Services.WebService
     {
-
+        GooglePlusActivitiesRepository objGooglePlusActivitiesRepository = new GooglePlusActivitiesRepository(); 
         [WebMethod]
-        public string HelloWorld()
+        public string getgoogleplusActivity(string UserId, string ProfileId)
         {
-            return "Hello World";
+            List<Domain.Socioboard.Domain.GooglePlusActivities> lstGooglePlusActivities = objGooglePlusActivitiesRepository.getgoogleplusActivity(Guid.Parse(UserId),ProfileId);
+            return new JavaScriptSerializer().Serialize(lstGooglePlusActivities);
         }
     }
 }

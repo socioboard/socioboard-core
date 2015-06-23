@@ -148,7 +148,7 @@ namespace Api.Socioboard.Services
                 "<td><a href=\"https://twitter.com/Socioboard\" target=\"_blank\"><img src=\"http://i739.photobucket.com/albums/xx33/Alan_Wilson3526/twitter-48_zps57c64c90.png\" alt=”Twitter” width=”35? height=”35? border=0></a></td>" +
                 "</tr></table>";
             }
-
+            ret = objMailSenderFactory.GetMailSenderInstance().SendMail(tomail, "", email, "", "", replysubject, replybody, usernameSend, pass);
             return ret;
 
         }
@@ -221,7 +221,7 @@ namespace Api.Socioboard.Services
             string Subject = "Reported by " + fromname + " through " + ConfigurationManager.AppSettings["DefaultGroupName"];
             //MailHelper objMailHelper = new MailHelper();
             //ret = objMailHelper.SendFeedMailByMandrill(host, Convert.ToInt32(port), from, pass, emailId, Subject, mailBody);
-            ret = objMailSenderFactory.GetMailSenderInstance().SendMail(from, "", emailId, "", "", Subject, mailBody);
+            ret = objMailSenderFactory.GetMailSenderInstance().SendMail(from, "", emailId, "", "", Subject, mailBody,usernameSend,pass);
             return ret;
         }
         [WebMethod]
@@ -233,7 +233,7 @@ namespace Api.Socioboard.Services
             string from = ConfigurationManager.AppSettings["tomail"];
             //MailHelper objMailHelper = new MailHelper();
             //ret = objMailHelper.SendAddNewsLatterMail(host, Convert.ToInt32(port), from, pass, emailId, Subject, mailBody);
-            ret = objMailSenderFactory.GetMailSenderInstance().SendMail(from, "", emailId, "", "", Subject, mailBody);
+            ret = objMailSenderFactory.GetMailSenderInstance().SendMail(from, "", emailId, "", "", Subject, mailBody, usernameSend, pass);
             return ret;
         }
 
@@ -246,7 +246,7 @@ namespace Api.Socioboard.Services
             string from = ConfigurationManager.AppSettings["tomail"];
             //MailHelper objMailHelper = new MailHelper();
             //ret = objMailHelper.SendFeedMailByMandrill(host, Convert.ToInt32(port), from, pass, emailId, Subject, mailBody);
-            ret = objMailSenderFactory.GetMailSenderInstance().SendMail(from, "", emailId, "", "", Subject, mailBody);
+            ret = objMailSenderFactory.GetMailSenderInstance().SendMail(from, "", emailId, "", "", Subject, mailBody, usernameSend, pass);
             return ret;
         }
            

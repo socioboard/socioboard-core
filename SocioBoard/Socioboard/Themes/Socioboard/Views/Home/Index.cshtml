@@ -1,34 +1,195 @@
 ﻿@{
-                //ViewBag.Title = "Home Page";
+                    //ViewBag.Title = "Home Page";
 }
 
 <script src="~/Themes/Socioboard/Contents/js/underscore.js"></script>
 
-<script language="javascript" type="text/javascript">
-    
-</script>
+@* Modal Fb/Tweet Popup *@
+@*<script src="~/Themes/Socioboard/Contents/js/jquery-1.9.1.min.js"></script>
+<script src="~/Themes/Socioboard/Contents/js/bootstrap.min.js"></script>*@
+
+<!-- Modal -->
+<div class="modal fade" id="twtModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <img style="height: 40px; float: left; margin-top: -6px" src="http://wiki.socioboard.com/skins/common/images/logo.png">
+                <h4 class="modal-title" id="DemoModalLabel" style="margin-left: 60px">Tweet</h4>
+            </div>
+            <div class="modal-body col-md-12">
+                <div class="input-group col-md-11 pull-left" style="margin-left: 4%; padding-bottom: 4%;">
+                    @*<label for="username-email">Notes</label>*@<span class="pull-right text-danger"></span>
+                    <textarea id="twtNotes" class="form-control" rows="4" style="resize: none">hey guys am using this amazing software &#64;socioboard for managing my twitter account</textarea>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="Reset()">RESET</button>
+                <button type="button" class="btn btn-primary" onclick="SendTweet()">Tweet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End of Modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="fbModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <img style="height: 40px; float: left; margin-top: -6px" src="http://wiki.socioboard.com/skins/common/images/logo.png">
+                <h4 class="modal-title" id="DemoModalLabel" style="margin-left: 60px">Post</h4>
+            </div>
+            <div class="modal-body col-md-12">
+                <div class="input-group col-md-11 pull-left" style="margin-left: 4%; padding-bottom: 4%;">
+                    @*<label for="username-email">Notes</label>*@<span class="pull-right text-danger"></span>
+                    <textarea id="fbNotes" class="form-control" rows="4" style="resize: none">hey guys am using this amazing software #socioboard for managing my facebook account</textarea>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="Reset()">RESET</button>
+                <button type="button" class="btn btn-primary" onclick="SendFacebookMessage()">Post on Wall</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End of Modal -->
+
+
+
+@*@if (@ViewBag.IsFacebookAccountAdded == 1)
+{
+    <script>
+        alert('added');
+        $('#twtModal').modal('show');
+        function OpenTweetPopup() {
+            debugger;
+
+        }
+        </script>
+}*@
+
 
 <div id="page-wrapper">
     <div id="DisplayCount" class="row" data-url="/Home/DisplayCount">
-        @*@Html.Partial("_HomeUserActivityPartial")*@
-        @*@Html.Action("DisplayCount","Home")*@
+        <div class="col-lg-12">
+        <h1 class="page-header">@GlobusMultiLanguageLib.Resources.Home_HomeUserActivityPartial_Updates</h1>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-comments fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge" style="min-height: 50px;"><img src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/button-loader.gif" style="margin-top: 11%; width: 18%;" /></div>
+                        <div>@GlobusMultiLanguageLib.Resources.Home_HomeUserActivityPartial_IncomingMessages</div>
+                    </div>
+                </div>
+            </div>
+            <a href="../Messages/Index">
+                <div class="panel-footer">
+                    <span class="pull-left">@GlobusMultiLanguageLib.Resources.Home_HomeUserActivityPartial_ViewDetails</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-mail-reply-all fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge" style="min-height: 50px;"><img src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/button-loader.gif" style="margin-top: 11%; width: 18%;" /></div>
+                        <div>@GlobusMultiLanguageLib.Resources.Home_HomeUserActivityPartial_SentMessages</div>
+                    </div>
+                </div>
+            </div>
+            <a href="../Messages/sentmsg">
+                <div class="panel-footer">
+                    <span class="pull-left">@GlobusMultiLanguageLib.Resources.Home_HomeUserActivityPartial_ViewDetails</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-sky">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-twitter fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge" style="min-height: 50px;"><img src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/button-loader.gif" style="margin-top: 11%; width: 18%;" /></div>
+                        <div>@GlobusMultiLanguageLib.Resources.Home_HomeUserActivityPartial_TwitterFollowers</div>
+                    </div>
+                </div>
+            </div>
+       
+                <div class="panel-footer">
+                    <span class="pull-left">@GlobusMultiLanguageLib.Resources.Home_HomeUserActivityPartial_ViewDetails</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+          
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-blue">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-facebook fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge" style="min-height: 50px;"><img src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/button-loader.gif" style="margin-top: 11%; width: 18%;" /></div>
+                        <div>@GlobusMultiLanguageLib.Resources.Home_HomeUserActivityPartial_NewFacebookFans</div>
+                    </div>
+                </div>
+            </div>
+       
+                <div class="panel-footer">
+                    <span class="pull-left">@GlobusMultiLanguageLib.Resources.Home_HomeUserActivityPartial_ViewDetails</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+          
+        </div>
+    </div>
     </div>
     <div class="container-fluid">
-        <div class="col-md-12">
-            <h2>@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_MyRecentProfiles</h2>
-            <div class="col-md-9 partialContents" id="div_Home_ProfileSnapshot" data-url="/Home/ProfileSnapshot">
-                <div id="ldr-home-profile">
+        <div class="row">
+            <div class="col-md-9">
+                <h2 style="margin-left: -2%;">@GlobusMultiLanguageLib.Resources.Home_HomeProfileSnapshotPartial_MyRecentProfiles</h2>
+                <div class="partialContents" id="div_Home_ProfileSnapshot" data-url="/Home/ProfileSnapshot">
+                    <div id="ldr-home-profile">
+                        <center>
+                        <img class="clsImageLoader" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/43px_on_transparent.gif" />
+                    </center>
+                    </div>
+                </div>
+                <div id="img-loader-profile" style="display: none">
                     <center>
-                        <img class="clsImageLoader" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" />'
-                        Loading . . .
+                        <img class="" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/43px_on_transparent.gif" />
                     </center>
                 </div>
             </div>
             <div class="col-md-3 partialContents" data-url="/Home/UserProfile">
-                <img src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" />
-                Loading . . .
-  
-
+                <center>
+                    <img src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/43px_on_transparent.gif" />
+                </center>
             </div>
         </div>
     </div>
@@ -37,7 +198,7 @@
 <div class="modal fade" id="SocialProfileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal fade in" style="height: 1048px;"></div>
     <div class="modal-dialog">
-        <div class="modal-content" style="box-shadow: none ! important; background-color: transparent; margin-top: 21%; border: none ! important">
+        <div class="modal-content" style="box-shadow: none ! important; background-color: transparent;  margin-top: 21%; border:none ! important">
             <div class="modal-body">
                 <div class="container">
                     <div class="row">
@@ -46,7 +207,7 @@
                             <a onclick="AddFacebookProfile()" class="btn btn-social-icon btn-facebook">
                                 <i class="fa fa-facebook"></i></a>
 
-                            <a onclick="AddYouTubeProfile()" class="btn btn-social-icon btn-dropbox"><i class="fa fa-dropbox"></i></a>
+                            <a onclick="AddYouTubeProfile()" class="btn btn-social-icon btn-dropbox"><i class="fa fa-youtube"></i></a>
                             <a onclick="AddInstagramProfile()" class="btn btn-social-icon btn-instagram"><i class="fa fa-instagram"></i></a>
                             <a onclick="AddLinkedInProfile()" class="btn btn-social-icon btn-linkedin"><i class="fa fa-linkedin"></i></a>
                             <a onclick="AddTumblerProfile()" class="btn btn-social-icon btn-tumblr"><i class="fa fa-tumblr"></i></a>
@@ -67,6 +228,9 @@
 
 <script type="text/javascript">
 
+    var isShowFBModal = false;
+    var isShowTwtModal = false;
+
     function getParameterByName(name) {
         debugger;
         var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
@@ -74,7 +238,7 @@
     }
 
     function AddfbPage(fbpagename, fbpageid, fbpagetoken, email) {
-        $('#fbpagebind').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />');
+$('#fbpagebind').html('<img src="../Themes/Socioboard/Contents/img/360.gif" />').append('       plaese wait while we are fetching page data');
         $.ajax({
             type: 'POST',
             url: '../FacebookManager/AddFbPage?profileid=' + fbpageid + '&accesstoken=' + fbpagetoken + '&email=' + email,
@@ -182,28 +346,58 @@
         $("#AttachProfile").html('Attach YouTube Profile');
         $("#AttachProfile").attr('href', '../YoutubeManager/AuthenticateYoutube');
     }
-
-
-    function LoadMoreProfileSnapshot() {
+	
+	@*function LoadMoreProfileSnapshot() {
         debugger;
-        $('#div_Home_ProfileSnapshot').append('<div id="ldr-home-profile"><center><img class="clsImageLoader" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" /></center></div>');
-        $.ajax({
+        //$('#div_Home_ProfileSnapshot').append('<div id="ldr-home-profile"><center><img class="clsImageLoader" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" /></center></div>');
+        $('#img-loader-profile').css("display", "block");
+		$.ajax({
             type: 'GET',
             url: '../Home/ProfileSnapshot?op=scroll',
             success: function (msg) {
-                $('#ldr-home-profile').remove();
+                //$('#ldr-home-profile').remove();
+				$('#img-loader-profile').css("display", "none");
                 $('#div_Home_ProfileSnapshot').append(msg);
-            }
+            },
+			//async: false
         });
+    }*@
+	var isProcessing = false;
+    function LoadMoreProfileSnapshot() {
+        debugger;
+        //$('#div_Home_ProfileSnapshot').append('<div id="ldr-home-profile"><center><img class="clsImageLoader" src="/Themes/@System.Configuration.ConfigurationManager.AppSettings["domain"]/Contents/img/loader.gif" /></center></div>');
+        if (!isProcessing) {
+            isProcessing = true;
+            $('#img-loader-profile').css("display", "block");
+            $.ajax({
+                type: 'GET',
+                url: '../Home/ProfileSnapshot?op=scroll',
+                success: function (msg) {
+                    isProcessing = false;
+                    //$('#ldr-home-profile').remove();
+                    $('#img-loader-profile').css("display", "none");
+                    $('#div_Home_ProfileSnapshot').append(msg);
+                },
+				error:function (msg) {
+                    isProcessing = false;
+                    //$('#ldr-home-profile').remove();
+                    $('#img-loader-profile').css("display", "none");
+                    $('#div_Home_ProfileSnapshot').append(msg);
+                },
+				timeout: 10000
+                //async: false
+            });
+        }
+       
     }
 
     $(document).ready(function (e) {
         debugger
-
-        var throttled = _.throttle(LoadMoreProfileSnapshot, 6000);
+		
+		 var throttled = _.throttle(LoadMoreProfileSnapshot, 3000);
 
         $(window).scroll(throttled);
-
+		
         var hint = getParameterByName("hint");
         if (hint != "" || hint != null) {
             if (hint == "fbpage") {
@@ -216,14 +410,14 @@
                         for (var i = 0; i < fbpagearr.length; i++) {
                             var fbpageinfoarr = fbpagearr[i].split('`');
                             try {
-                                var imageSrc = "http://graph.facebook.com/" + fbpageinfoarr[1] + "/picture?type=small";
+							var imageSrc = "http://graph.facebook.com/" + fbpageinfoarr[1] + "/picture?type=small";
                                 $('#fbpagebind').append('<div class="panel-box pull-left"><span class="col-md-2 padding-0"><img src=' + imageSrc + ' width="50"></span><span class="col-md-8 padding_lr">&nbsp&nbsp&nbsp' + fbpageinfoarr[0] + '<br><p>&nbsp&nbsp&nbsp' + fbpageinfoarr[4] + ' likes</p></span><span class="col-md-2 padding-0"><a style="cursor: pointer;" onclick="AddfbPage(\'' + fbpageinfoarr[0] + '\',\'' + fbpageinfoarr[1] + '\',\'' + fbpageinfoarr[2] + '\',\'' + fbpageinfoarr[3] + '\')"><img src="/Themes/Socioboard/Contents/img/plus.png"/></a></span></div>');
                             } catch (e) {
 
                             }
                         }
                         $('#facebookpageinfo').css({ 'display': 'block' });
-                        //  jQuery.noConflict();
+                      //  jQuery.noConflict();
                         $('#facebookpopup').modal('show');
                     },
                     async: false
@@ -246,7 +440,7 @@
 
                             }
                         }
-                        // jQuery.noConflict();
+                       // jQuery.noConflict();
                         $('#facebookgroupinfo').css({ 'display': 'block' });
                         //jQuery.noConflict();
                         $('#facebookpopup').modal('show');
@@ -268,9 +462,9 @@
                             for (var i = 0; i < lipagearr.length; i++) {
                                 var lipageinfoarr = lipagearr[i].split('`');
                                 try {
-
-                                    $('#lipagebind').append('<a style="cursor: pointer;margin-left:21px" onclick="AddLinPage(\'' + lipageinfoarr[0] + '\',\'' + lipageinfoarr[1] + '\',\'' + lipageinfoarr[2] + '\')">' + lipageinfoarr[1] + '</a><br />');
-                                } catch (e) {
+                                
+                                $('#lipagebind').append('<a style="cursor: pointer;margin-left:21px" onclick="AddLinPage(\'' + lipageinfoarr[0] + '\',\'' + lipageinfoarr[1] + '\',\'' + lipageinfoarr[2] + '\')">' + lipageinfoarr[1] + '</a><br />');
+                            } catch (e) {
 
                                 }
                             }
@@ -345,12 +539,148 @@
 <input type="hidden" id="acctype" value="@ViewBag.AccountType" />
 
 <script>
+
+    function SendTweet() {
+        debugger;
+
+        var message = $('#twtNotes').val();
+        //var allprofiles = '';
+        var curdate = new Date();
+        var curdaatetimetime = (curdate.getMonth() + 1) + "/" + curdate.getDate() + "/" + curdate.getFullYear() + " " + curdate.getHours() + ":" + curdate.getMinutes() + ":" + curdate.getSeconds();
+
+        $.ajax({
+            type: 'POST',
+            url: '../Home/ComposeMessageSend?message=' + encodeURIComponent(message) + '&allprofiles=' + allprofiles + '~twitter' + '&curdaatetimetime=' + curdaatetimetime,
+            //data: fd,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                debugger;
+                //alertify.set({ delay: 3000 });
+                //alertify.success("Tweeted Successfully");
+                try {
+                    //$('#twtModal').hide();
+                    $('#twtModal').modal('hide');
+                    //$('.modal-backdrop').hide();
+                } catch (e) {
+                    alert(e);
+                }
+
+            }
+
+        });
+    }
+    function SendFacebookMessage() {
+        debugger;
+
+        var message = $('#fbNotes').val();
+        //var allprofiles = '';
+        var curdate = new Date();
+        var curdaatetimetime = (curdate.getMonth() + 1) + "/" + curdate.getDate() + "/" + curdate.getFullYear() + " " + curdate.getHours() + ":" + curdate.getMinutes() + ":" + curdate.getSeconds();
+
+        $.ajax({
+            type: 'POST',
+            url: '../Home/ComposeMessageSend?message=' + encodeURIComponent(message) + '&allprofiles=' + allprofiles + '~facebook' + '&curdaatetimetime=' + curdaatetimetime,
+            //data: fd,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                debugger;
+                //alertify.set({ delay: 3000 });
+                //alertify.success("Tweeted Successfully");
+                try {
+                    //$('#fbModal').hide();
+                    $('#fbModal').modal('hide');
+                    //$('.modal-backdrop').hide();
+                } catch (e) {
+                    alert(e);
+                }
+
+            }
+
+        });
+    }
+
     $(document).ready(function () {
         if ($('#acctype').val() == "Premium") {
             $('#PremiumAccount').hide();
         }
+        //alert('(document).ready executed');
+
+        if (isShowFBModal == true) {
+            $('#fbModal').modal('show');
+        }
+        if (isShowTwtModal == true) {
+            debugger;
+            $('#twtModal').modal('show');
+        }
+       
+
     });
+
+
+
+    var allprofiles = '';
+  
+    //*****************************Twitter Start***********************************//
+       @if (ViewBag.TwitterAccount != null)
+       {
+            <text>
+    allprofiles = @ViewBag.TwitterAccount.TwitterUserId
+        //alert('allprofiles = ' + allprofiles);
+     </text>
+       }
+   
+
+   
+    //*****************************Twitter End***********************************//
+
+
+    //*****************************Facebook Start***********************************//
+
+      @if (ViewBag.FacebookAccount != null)
+       {
+            <text>
+    allprofiles = @ViewBag.FacebookAccount.FbUserId
+        //alert('allprofiles = ' + allprofiles);
+     </text>
+       }
+
+
+    
+
+    //*****************************Facebook End***********************************//
+
 </script>
+
+@if (@ViewBag.IsFacebookAccountAdded == 1)
+{
+    @*<script src="~/Themes/Socioboard/Contents/js/jquery-1.9.1.min.js"></script>
+<script src="~/Themes/Socioboard/Contents/js/bootstrap.min.js"></script>*@
+    <script>
+
+       
+        isShowFBModal = true;
+        //alert('FbAccountadded');
+        //$('#fbModal').modal('show');
+
+
+        </script>
+}
+@if (@ViewBag.IsTwitterAccountAdded == 1)
+{
+    @*<script src="~/Themes/Socioboard/Contents/js/jquery-1.9.1.min.js"></script>
+<script src="~/Themes/Socioboard/Contents/js/bootstrap.min.js"></script>*@
+    <script>
+
+
+        isShowTwtModal = true;
+        //alert('twitterAccountadded');
+        //$('#fbModal').modal('show');
+
+
+        </script>
+}
 
 
 

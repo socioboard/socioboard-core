@@ -59,7 +59,7 @@ namespace Api.Socioboard.Services
                     fs.Close();
                     fs.Dispose();
                     //ret = Server.MapPath("~/Contents/img/upload/") + fileName;
-                    ret = "http://tempuri.org/Contents/img/upload/" + fileName;
+                    ret = "http://api.socioboard.com/Contents/img/upload/" + fileName;
                 }
                 else
                 {
@@ -623,7 +623,7 @@ namespace Api.Socioboard.Services
                     }
                 }
             }
-            return "";
+            return new JavaScriptSerializer().Serialize("Scheduled"); ;
         }
 
 

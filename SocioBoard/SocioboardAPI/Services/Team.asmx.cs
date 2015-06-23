@@ -33,6 +33,7 @@ namespace Api.Socioboard.Services
             {
                 if (!teamrepo.checkTeamExists(EmailId, Guid.Parse(UserId), Guid.Parse(GroupId)))
                 {
+                    Domain.Socioboard.Domain.Groups _Groups = objGroupsRepository.getGroupDetailsbyId(Guid.Parse(UserId), Guid.Parse(GroupId));
                     team.Id = Guid.NewGuid();
                     team.UserId = Guid.Parse(UserId);
                     team.InviteStatus = Convert.ToInt32(InviteStatus);
@@ -49,14 +50,16 @@ namespace Api.Socioboard.Services
 
                     string mailpath = HttpContext.Current.Server.MapPath("~/Layouts/Mails/GroupInvitation.html");
                     string html = File.ReadAllText(mailpath);
-                    html = html.Replace("[join link]", ConfigurationManager.AppSettings["MailSenderDomain"] + "Home/Index?teamid=" + team.Id.ToString());
-                    string usernameSend = ConfigurationManager.AppSettings["Mandrillusername"];
-                    string host = ConfigurationManager.AppSettings["Mandrillhost"];
-                    string port = ConfigurationManager.AppSettings["Mandrillport"];
-                    string pass = ConfigurationManager.AppSettings["Mandrillpassword"];
-                    GlobusMailLib.MailHelper objMailHelper = new GlobusMailLib.MailHelper();
-                    objMailHelper.SendMailByMandrill(host, Convert.ToInt32(port), useremail, username, "", EmailId, "", "", "Group Invitation", html, usernameSend, pass);
-
+                    html = html.Replace("[group_name]",_Groups.GroupName);
+                    html = html.Replace("[join link]", "Home/Index?teamid=" + team.Id.ToString());
+                    //string usernameSend = ConfigurationManager.AppSettings["Mandrillusername"];
+                    //string host = ConfigurationManager.AppSettings["Mandrillhost"];
+                    //string port = ConfigurationManager.AppSettings["Mandrillport"];
+                    //string pass = ConfigurationManager.AppSettings["Mandrillpassword"];
+                    //GlobusMailLib.MailHelper objMailHelper = new GlobusMailLib.MailHelper();
+                    //objMailHelper.SendMailByMandrill(host, Convert.ToInt32(port), useremail, username, "", EmailId, "", "", "Group Invitation", html, usernameSend, pass);
+                    MailSender objMailSender = new MailSender();
+                    string ret = objMailSender.SendChangePasswordMail(EmailId, html, "Group Invitation");
                     return new JavaScriptSerializer().Serialize(team);
                 }
                 else

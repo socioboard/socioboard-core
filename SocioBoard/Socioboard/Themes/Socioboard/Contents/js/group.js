@@ -299,6 +299,143 @@ function postmessage() {
    
 }
 
+/*function Sendgroupmessage() {
+    debugger;
+    var fileimage = document.getElementById('MltigroupfileuploadImage').files[0];
+
+    debugger;
+    var fd1 = new FormData();
+    var title = $("#txtTitle").val();
+    var msg = $("#txtmessage").val();
+    var timeforsch = $("#grouptimepicker").val();
+    var dateforsch = $("#datepic").val();
+    //var e = document.getElementById("ddlIntervalTime");
+    //var intervaltime = e.options[e.selectedIndex].value;
+    var intervaltime = $("#ddlIntervalTime").val();
+    if (msg == "" || msg == null) {
+        alert("Text Field Should Not Be Empty");
+        return false;
+    }
+    if (dateforsch == "" || dateforsch == null) {
+        alert("Please Select date!");
+        return false;
+    }
+
+
+    debugger;
+    var curdate = new Date();
+    var dd = curdate.getDate();
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+    else {
+        dd = curdate.getDate();
+    }
+    var mm = curdate.getMonth() + 1;
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+    else {
+        mm = curdate.getMonth() + 1;
+    }
+    var hh = curdate.getHours();
+    if (hh < 10) {
+        hh = '0' + hh;
+    }
+    else {
+        hh = curdate.getHours();
+    }
+    var minm = curdate.getMinutes();
+    if (minm < 10) {
+        minm = '0' + minm;
+    }
+    else {
+        minm = curdate.getMinutes();
+    }
+    var sec = curdate.getSeconds();
+    if (sec < 10) {
+        sec = '0' + sec;
+    }
+    else {
+        sec = curdate.getSeconds();
+    }
+
+    var now = curdate.getFullYear() + "/" + mm + "/" + dd + " " + hh + ":" + minm + ":" + sec;
+
+    //var curdate = new Date();
+    //var now = (curdate.getMonth() + 1) + "/" + curdate.getDate() + "/" + curdate.getFullYear() + " " + curdate.getHours() + ":" + curdate.getMinutes() + ":" + curdate.getSeconds();
+
+   
+    var scheduledtime2 = timeforsch.split(" ");
+    var scheduledtime3 = scheduledtime2[0] + ':00';
+    var schdd = scheduledtime3.split(":");
+
+    var shdd = schdd[0];
+
+    var shmin = schdd[1];
+    var shsec = schdd[2];
+    if (shdd < 10) {
+        shdd = '0' + shdd;
+    }
+    else {
+        shdd = schdd[0];
+    }
+    if (shmin < 10) {
+        //shmin = '0' + shmin;
+        shmin = shmin;
+    }
+    else {
+        shmin = schdd[1];
+    }
+    if (scheduledtime2[1] == "PM") {
+        if (shdd != "12") {
+            shdd = +shdd + +12;
+        }
+    }
+    var timeforsch = shdd + ":" + shmin + ":" + shsec;
+
+
+
+    fd1.append('files', fileimage);
+    fd1.append('gid', grpIdPost);
+    fd1.append('msg', msg);
+    fd1.append('title', title);
+    fd1.append('intervaltime', intervaltime);
+    fd1.append('fbuserid', fbuserid);
+    fd1.append('linuserid', linuserid);
+    fd1.append('clienttime', now);
+    fd1.append('timeforsch', timeforsch);
+    fd1.append('dateforsch', dateforsch);
+
+
+
+    $.ajax({
+        url: "../Group/PostOnselectedGroup",
+        type: "post",
+        data: fd1,
+        processData: false,
+        contentType: false,
+        dataType: "json",
+        success: function (ret) {
+            debugger;
+            if (ret == "success") {
+                alert("Success !!");
+                document.getElementById('txtmessage').value = "";
+                document.getElementById('txtTitle').value = "";
+                document.getElementById('fileuploadImages').value = "";
+                $('#postmessagepopup').bPopup().close();
+            }
+        }
+    });
+    $('._isgroupchecked').prop('checked', false);
+    alertify.success("Posted Successfully!");
+    document.getElementById('txtmessage').value = "";
+    document.getElementById('txtTitle').value = "";
+    document.getElementById('fileuploadImages').value = "";
+    //$('#postmessagepopup').bPopup().close();
+    //$('input:checkbox').removeAttr('checked');
+    grpIdPost = [];
+}*/
 function Sendgroupmessage() {
     debugger;
     var fileimage = document.getElementById('MltigroupfileuploadImage').files[0];
@@ -374,6 +511,11 @@ function Sendgroupmessage() {
 
     var shmin = schdd[1];
     var shsec = schdd[2];
+	
+		var intScheduleDate=parseInt(shdd,10);
+			--intScheduleDate;
+			shdd=intScheduleDate.toString();
+	
     if (shdd < 10) {
         shdd = '0' + shdd;
     }

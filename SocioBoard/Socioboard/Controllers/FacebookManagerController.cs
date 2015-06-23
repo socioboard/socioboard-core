@@ -26,6 +26,7 @@ namespace Socioboard.Controllers
         //[CustomAuthorize]
         public ActionResult Index()
         {
+
             return View();
         }
         [CustomAuthorize]
@@ -51,7 +52,7 @@ namespace Socioboard.Controllers
 
                     try
                     {
-                        Response.Write("Facebook Returned email : "+ objUser.EmailId);
+                        Response.Write("Facebook Returned email : " + objUser.EmailId);
                     }
                     catch (Exception ex)
                     {
@@ -66,7 +67,8 @@ namespace Socioboard.Controllers
                         checkuserexist = (Domain.Socioboard.Domain.User)(new JavaScriptSerializer().Deserialize(ApiobjUser.getUserInfoByEmail(objUser.EmailId.ToString()), typeof(Domain.Socioboard.Domain.User)));
                         FormsAuthentication.SetAuthCookie(checkuserexist.UserName, false);
                     }
-                    catch (Exception e) {
+                    catch (Exception e)
+                    {
                         checkuserexist = null;
                     }
                     if (checkuserexist != null)
@@ -131,25 +133,43 @@ namespace Socioboard.Controllers
 
                 apiobjFacebook.Timeout = 120 * 1000;
 
-                string AddfacebookAccount = apiobjFacebook.AddFacebookAccount(facebookcode, objUser.Id.ToString(), Session["group"].ToString());
-                //string AddfacebookAccount = apiobjFacebook.AddFacebookAccountAsync(facebookcode, objUser.Id.ToString(), Session["group"].ToString());
+                //string AddfacebookAccount = apiobjFacebook.AddFacebookAccount(facebookcode, objUser.Id.ToString(), Session["group"].ToString());
+                string AddfacebookAccount = "";
+                Domain.Socioboard.Domain.FacebookAccount objfacebookAccount = new Domain.Socioboard.Domain.FacebookAccount();
+                try
+                {
+                    var res_addFacebook = apiobjFacebook.AddFacebookAccount(facebookcode, objUser.Id.ToString(), Session["group"].ToString());
+                    AddfacebookAccount = res_addFacebook;
+                    try
+                    {
+                        objfacebookAccount = (Domain.Socioboard.Domain.FacebookAccount)new JavaScriptSerializer().Deserialize(res_addFacebook, typeof(Domain.Socioboard.Domain.FacebookAccount));
+                        AddfacebookAccount = objfacebookAccount.FbUserId;
+                    }
+                    catch (Exception)
+                    {
+                        
+                    }
+                    
+                }
+                catch (Exception)
+                {
+                    AddfacebookAccount = "issue_access_token";
+                }
 
                 if (AddfacebookAccount == "issue_access_token")
                 {
                     Response.Redirect(Helper.SBUtils.GetFacebookRedirectLink());
                 }
+                else if (AddfacebookAccount == "Account already Exist !")
+                {
+                }
                 else
                 {
                     Session["SocialManagerInfo"] = AddfacebookAccount;
-                    //try
-                    //{
-                    //    apiobjFacebook.AddFacebookAccountWithPaginationAsync(facebookcode, objUser.Id.ToString(), Session["group"].ToString());
-                    //}
-                    //catch (Exception ex)
-                    //{
-                    //    logger.Error(ex.StackTrace);
-                    //    logger.Error(ex.Message);
-                    //}
+
+                    //To enable the Facebook Message Pop up
+                    TempData["IsFacebookAccountAdded"] = 1;
+                    TempData["FacebookAccount"] = objfacebookAccount;
                 }
             }
             return RedirectToAction("Index", "Home");
@@ -225,7 +245,7 @@ namespace Socioboard.Controllers
                             logger.Error("ex.StackTrace : " + ex.StackTrace);
                         }
 
-                        if (Convert.ToString(group["GroupName"]) == "Socioboard")
+                        if (Convert.ToString(group["GroupName"]) == ConfigurationManager.AppSettings["DefaultGroupName"].ToString())
                         {
                             if (profilecount < totalaccount)
                             {
@@ -233,9 +253,9 @@ namespace Socioboard.Controllers
                                 facebookurl = Helper.SBUtils.GetFacebookRedirectLink();
                                 Response.Redirect(facebookurl);
                             }
-                            else if (profilecount == 0 || totalaccount==0)
+                            else if (profilecount == 0 || totalaccount == 0)
                             {
-                                 Session["fbSocial"] = "a";
+                                Session["fbSocial"] = "a";
                                 facebookurl = Helper.SBUtils.GetFacebookRedirectLink();
                                 Response.Redirect(facebookurl);
                             }

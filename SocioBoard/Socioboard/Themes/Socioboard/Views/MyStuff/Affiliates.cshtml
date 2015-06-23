@@ -21,7 +21,16 @@
         <input type="text" placeholder="Email" class="form-control input-sm" id="btn-input-friend-email">
     </div>
     <hr>
-    <div class="table-responsive">
+    <div class="input-group" style="text-align:center">
+        
+        <span class="input-group-btn">
+            <button id="btn-affiliate-friend" class="btn btn-info btn-sm" data-toggle="modal" data-target="#AffiliatesModal" >
+                @GlobusMultiLanguageLib.Resources.MyStuff_Affiliates_ShowReferralURL
+            </button>
+        </span>
+            
+    </div>
+    @*<div class="table-responsive">
         <table class="table table-striped table-bordered table-hover extable" id="dataTables-example">
             <thead>
                 <tr>
@@ -48,10 +57,28 @@
           
             </tbody>
         </table>
-    </div>
+    </div>*@
     <!-- /.table-responsive -->
 </div>
 </div>
+
+ <!-- Modal Affiliate Modal-->
+        <div class="modal fade" id="AffiliatesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">@GlobusMultiLanguageLib.Resources.Shared_Site_Close</span></button>
+                        <h4 class="modal-title" id="myFeedsSearchModalLabel">@Html.Raw(@GlobusMultiLanguageLib.Resources.MyStuff_Affiliates_ReferralURL+"<br />"+@GlobusMultiLanguageLib.Resources.MyStuff_Affiliates_ReferralURL_Link)</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group col-md-12">
+                        @*<textarea rows="3" style="width: 100%; line-height: 30px; resize: none; border: 0px none; outline: 0px none;" id="txtarea-public-key" class="form-group colmd-12">                        </textarea>  *@
+                            <div id="txtarea-public-key" class="form-group colmd-12"></div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 <script>
 
@@ -98,10 +125,22 @@
         }
     }
 
-    $(document).ready(function () {
-        $("#Mystuff-Affiliates").addClass('active');
-        $("#Mystuff-Ewallet").removeClass('active');
-        $("#Mystuff-SMSServices").removeClass('active');
+    $("#btn-affiliate-friend").click(function () {
+        $.ajax({
+            url: "../MyStuff/GetPublicToken",
+            type: "GET",
+            success: function (data) {
+                if (data == null || data == "")
+                { }
+                else {
+                   
+                    $("#txtarea-public-key").html("@GlobusMultiLanguageLib.Resources.Socioboard_MyStuff_Affiliates_AjaxShow1<br />"+"@GlobusMultiLanguageLib.Resources.MyStuff_Affiliates_AjaxShow2<br /><a>" + data+"</a>");
+                }
+            },
+            error: function () {
+                alert("Invitation failed, Please try again!!");
+            }
+        });
     });
 
 </script>

@@ -13,32 +13,64 @@
     string FeedDate = string.Empty;
     string MessageId = string.Empty;
     string Link = string.Empty;
-    Dictionary<string, object> feed = (Dictionary<string, object>)Model;
-    foreach(var item in feed)
-    {
-       if(item.Key=="twt_msg"&& item.Value!=null){
-            Domain.Socioboard.Domain.TwitterMessage twtmessage = (Domain.Socioboard.Domain.TwitterMessage)item.Value;
+    string Subject = string.Empty;
+    Domain.Socioboard.Domain.User _User = (Domain.Socioboard.Domain.User)Session["User"];
+    
+    Domain.Socioboard.Domain.InboxMessages _InboxMessages = (Domain.Socioboard.Domain.InboxMessages)Model;
+   
+    //foreach(var item in feed)
+    //{
+    //   if(item.Key=="twt_msg"&& item.Value!=null){
+    //        Domain.Socioboard.Domain.TwitterMessage twtmessage = (Domain.Socioboard.Domain.TwitterMessage)item.Value;
           
-            ScreenName = twtmessage.ScreenName;
-            FromScreenName = twtmessage.FromScreenName;
-            Feed = twtmessage.TwitterMsg;
-            FeedDate = twtmessage.MessageDate.ToString();
-            MessageId = twtmessage.MessageId;
-            Link = "https://twitter.com/"+FromScreenName+"/status/"+MessageId;
+    //        ScreenName = twtmessage.ScreenName;
+    //        FromScreenName = twtmessage.FromScreenName;
+    //        Feed = twtmessage.TwitterMsg;
+    //        FeedDate = twtmessage.MessageDate.ToString();
+    //        MessageId = twtmessage.MessageId;
+    //        Link = "https://twitter.com/"+FromScreenName+"/status/"+MessageId;
            
-        }
-        else if(item.Key=="fb_msg"){
-            Domain.Socioboard.Domain.FacebookMessage fbmessage = (Domain.Socioboard.Domain.FacebookMessage)item.Value;
-            Socioboard.Api.FacebookAccount.FacebookAccount fbaccount = new Socioboard.Api.FacebookAccount.FacebookAccount();
-            Domain.Socioboard.Domain.FacebookAccount _FacebookAccount = (Domain.Socioboard.Domain.FacebookAccount)(new JavaScriptSerializer().Deserialize(fbaccount.getFacebookAccountDetailsById(fbmessage.UserId.ToString(), fbmessage.ProfileId), typeof(Domain.Socioboard.Domain.FacebookAccount)));
-            ScreenName = _FacebookAccount.FbUserName;
-            FromScreenName = fbmessage.FromName;
-            Feed = fbmessage.Message;
-            FeedDate = fbmessage.MessageDate.ToString();
-            MessageId = fbmessage.MessageId;
-            Link = "https://www.facebook.com/" + MessageId;
-        }
-    }  
+    //    }
+    //    else if(item.Key=="fb_msg"){
+    //        Domain.Socioboard.Domain.FacebookMessage fbmessage = (Domain.Socioboard.Domain.FacebookMessage)item.Value;
+    //        Socioboard.Api.FacebookAccount.FacebookAccount fbaccount = new Socioboard.Api.FacebookAccount.FacebookAccount();
+    //        Domain.Socioboard.Domain.FacebookAccount _FacebookAccount = (Domain.Socioboard.Domain.FacebookAccount)(new JavaScriptSerializer().Deserialize(fbaccount.getFacebookAccountDetailsById(fbmessage.UserId.ToString(), fbmessage.ProfileId), typeof(Domain.Socioboard.Domain.FacebookAccount)));
+    //        ScreenName = _FacebookAccount.FbUserName;
+    //        FromScreenName = fbmessage.FromName;
+    //        Feed = fbmessage.Message;
+    //        FeedDate = fbmessage.MessageDate.ToString();
+    //        MessageId = fbmessage.MessageId;
+    //        Link = "https://www.facebook.com/" + MessageId;
+    //    }
+    //}  
+    
+    if(_InboxMessages.MessageType=="twt_followers")
+    {
+        Feed ="@" + _InboxMessages.FromName + " is now following @" + _InboxMessages.RecipientName + " on Twitter.";
+        Link = "Followers "+_InboxMessages.FollowerCount+" / Following "+_InboxMessages.FollowingCount;
+        Subject = "New Follower Alert forwarded by "+_User.UserName;
+    }
+    else if (_InboxMessages.MessageType == "fb_notification")
+    {
+        Feed = _InboxMessages.Message;
+        Link = "";
+        Subject = "Facebook Notification Alert forwarded by "+_User.UserName;
+    }
+    else if (_InboxMessages.MessageType == "twt_mention")
+    {
+        Feed = _InboxMessages.Message;
+        Link = "https://twitter.com/"+_InboxMessages.FromName+"/status/"+_InboxMessages.MessageId;
+        Subject = "Tweet forwarded by "+_User.UserName;
+    }
+    else if (_InboxMessages.MessageType == "twt_retweet")
+    {
+        Feed = _InboxMessages.Message;
+        Link = "https://twitter.com/" + _InboxMessages.RecipientName + "/status/" + _InboxMessages.MessageId;
+        Subject = "Tweet forwarded by "+_User.UserName;
+    }
+
+    ScreenName = _InboxMessages.RecipientName;
+    
     }
 <div class="modal-dialog">
     <div class="modal-content">
@@ -49,7 +81,7 @@
         <div class="modal-body col-md-12">
             <div class="col-md-12">
                 <div class="col-md-2 textb" style="font-weight: 700;">From</div>
-                <div class="small_heading col-md-10" id="from_name">@ScreenName</div>
+                <div class="small_heading col-md-10" id="from_name">@_User.UserName</div>
             </div>
             <div class="col-md-12 tpspace">
                 <div class="col-md-2 textb" style="font-weight: 700;">To</div>
@@ -61,13 +93,13 @@
             <div class="col-md-12 tpspace">
                 <div class="col-md-2 textb" style="font-weight: 700;">Subject</div>
                 <div class="small_heading col-md-10">
-                    <label>Mail forwarded by @ScreenName</label>
+                    <label>@Subject</label>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="col-md-2 textb"></div>
                 <div class="col-md-10">
-                    <textarea class="col-md-12" id="mail_body" name="" placeholder="" rows="5" style="margin-top: 2px;">&#64;@FromScreenName said: @Feed &#10;&#10;@FeedDate&#10;&#10;@Link &#10;&#10;Sent from Socioboard (http://www.socioboard.com/)</textarea>
+                    <textarea class="col-md-12" id="mail_body" name="" placeholder="" rows="5" style="margin-top: 2px;">@Feed &#10;&#10;@Link &#10;&#10;@_InboxMessages.CreatedTime&#10;&#10;Sent from Socioboard (http://www.socioboard.com/)</textarea>
                 </div>
             </div>
         </div>

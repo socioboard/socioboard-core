@@ -49,6 +49,7 @@ namespace Api.Socioboard.Services
         Domain.Socioboard.Domain.TwitterDirectMessages objTwitterDirectMessages;
         ScheduledMessageRepository objScheduledMessageRepository = new ScheduledMessageRepository();
         Domain.Socioboard.Domain.ScheduledMessage objScheduledMessage;
+        InboxMessagesRepository objInboxMessagesRepository = new InboxMessagesRepository();
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
@@ -241,7 +242,7 @@ namespace Api.Socioboard.Services
                         }
                         #endregion
 
-                            #region AddTwitterFollowerCount
+                        #region AddTwitterFollowerCount
                         Domain.Socioboard.Domain.TwitterAccountFollowers objTwitterAccountFollowers = new Domain.Socioboard.Domain.TwitterAccountFollowers();
                         TwitterAccountFollowersRepository objTwitterAccountFollowersRepository = new TwitterAccountFollowersRepository();
                         objTwitterAccountFollowers.Id = Guid.NewGuid();
@@ -267,7 +268,7 @@ namespace Api.Socioboard.Services
 
                         }
                         objTwitterAccountFollowersRepository.addTwitterAccountFollower(objTwitterAccountFollowers);
-                            #endregion
+                        #endregion
 
                         ret = "Account Added Successfully";
                     }
@@ -276,707 +277,27 @@ namespace Api.Socioboard.Services
                         ret = "Account already Exist !";
                     }
                 }
+                getTwitterMessages(UserId, OAuth);
 
-                #region Add Twitter Messages
-                twtuser = new TwitterUser();
-                try
-                {
-                    TimeLine tl = new TimeLine();
-                    JArray data = null;
-                    try
-                    {
-                        data = tl.Get_Statuses_Mentions_Timeline(OAuth);
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
-                        logger.Error("tl.Get_Statuses_Mentions_Timeline ex.StackTrace >> " + ex.StackTrace);
-                        logger.Error("tl.Get_Statuses_Mentions_Timeline ex.Message >> " + ex.Message);
-                    }
-                    objTwitterMessage = new Domain.Socioboard.Domain.TwitterMessage();
-                    foreach (var item in data)
-                    {
-                        objTwitterMessage.UserId = Guid.Parse(UserId);
-                        objTwitterMessage.Type = "twt_mentions";
-                        objTwitterMessage.Id = Guid.NewGuid();
-
-                        try
-                        {
-                            objTwitterMessage.MessageId = item["id_str"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterMessage.MessageDate = Utility.ParseTwitterTime(item["created_at"].ToString().TrimStart('"').TrimEnd('"'));
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterMessage.TwitterMsg = item["text"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-
-                        try
-                        {
-                            objTwitterMessage.FromId = item["user"]["id_str"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-
-                        try
-                        {
-                            objTwitterMessage.FromScreenName = item["user"]["screen_name"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-
-                        try
-                        {
-                            objTwitterMessage.FromProfileUrl = item["user"]["profile_image_url"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-
-                        try
-                        {
-                            objTwitterMessage.InReplyToStatusUserId = item["in_reply_to_status_id_str"].ToString().TrimStart('"').TrimEnd('"');
-
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-
-                        try
-                        {
-                            objTwitterMessage.SourceUrl = item["source"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        } try
-                        {
-                            objTwitterMessage.ProfileId = objTwitterAccount.TwitterUserId;
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterMessage.ScreenName = item["user"]["screen_name"].ToString();
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-
-                        try
-                        {
-                            objTwitterMessage.EntryDate = DateTime.Now;
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        if (!objTwitterMessageRepository.checkTwitterMessageExists(objTwitterMessage.MessageId))
-                        {
-                            objTwitterMessageRepository.addTwitterMessage(objTwitterMessage);
-                        }
-
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.StackTrace);
-                    logger.Error("tl.Get_Statuses_Mentions_Timeline ex.StackTrace >> " + ex.StackTrace);
-                    logger.Error("tl.Get_Statuses_Mentions_Timeline ex.Message >> " + ex.Message);
-                }
-                #endregion
-                #region Add User Retweet
-                twtuser = new TwitterUser();
-                try
-                {
-                    JArray Retweet = null;
-                    try
-                    {
-                        Retweet = twtuser.GetStatuses_Retweet_Of_Me(OAuth);
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
-                        logger.Error("twtuser.GetStatuses_Retweet_Of_Me ex.StackTrace >> " + ex.StackTrace);
-                        logger.Error("twtuser.GetStatuses_Retweet_Of_Me ex.Message >> " + ex.Message);
-                    }
-                    objTwitterMessage = new Domain.Socioboard.Domain.TwitterMessage();
-                    foreach (var item in Retweet)
-                    {
-                        objTwitterMessage.UserId = Guid.Parse(UserId);
-                        objTwitterMessage.Type = "twt_retweets";
-                        objTwitterMessage.Id = Guid.NewGuid();
-
-                        try
-                        {
-                            objTwitterMessage.MessageId = item["id_str"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterMessage.MessageDate = Utility.ParseTwitterTime(item["created_at"].ToString().TrimStart('"').TrimEnd('"'));
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterMessage.TwitterMsg = item["text"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-
-                        try
-                        {
-                            objTwitterMessage.FromId = item["user"]["id_str"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-
-                        try
-                        {
-                            objTwitterMessage.FromScreenName = item["user"]["screen_name"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-
-                        try
-                        {
-                            objTwitterMessage.FromProfileUrl = item["user"]["profile_image_url"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-
-                        try
-                        {
-                            objTwitterMessage.InReplyToStatusUserId = item["in_reply_to_status_id_str"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-
-                        try
-                        {
-                            objTwitterMessage.SourceUrl = item["source"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        } try
-                        {
-                            objTwitterMessage.ProfileId = objTwitterAccount.TwitterUserId;
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        } try
-                        {
-                            objTwitterMessage.EntryDate = DateTime.Now;
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        if (!objTwitterMessageRepository.checkTwitterMessageExists(objTwitterMessage.MessageId))
-                        {
-                            objTwitterMessageRepository.addTwitterMessage(objTwitterMessage);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.StackTrace);
-                    logger.Error("twtuser.GetStatuses_Retweet_Of_Me ex.StackTrace >> " + ex.StackTrace);
-                    logger.Error("twtuser.GetStatuses_Retweet_Of_Me ex.Message >> " + ex.Message);
-                }
-                #endregion
+                getUserRetweets(UserId, OAuth);
 
 
                 //edited by avinash[24-03-15]
 
-                #region Add Twitter Engagement
-                Tweet objTweet = new Tweet();
-                TwitterEngagement objTwitterEngagement = new TwitterEngagement();
-                TwitterEngagementRepository objTwitterEngagementRepository = new TwitterEngagementRepository();
+                getTwitterEngagement(UserId, OAuth);
 
-                //TwitterMessageRepository objTwitterMessageRepository=new TwitterMessageRepository ();
-                List<Domain.Socioboard.Domain.TwitterMessage> lsttwtmessage = objTwitterMessageRepository.getAllTwitterMessagesRetweet(Guid.Parse(UserId), objTwitterAccount.TwitterUserId);
-                List<Domain.Socioboard.Domain.TwitterMessage> tsttwtwmessagetweet = objTwitterMessageRepository.getAllTwitterMessagestweet(Guid.Parse(UserId), objTwitterAccount.TwitterUserId);
-                foreach (var itemmsg in lsttwtmessage)
-                {
+                getUserTweets(UserId, OAuth);
 
-                    JArray EngagementData = objTweet.Get_Statuses_RetweetsById(OAuth, itemmsg.MessageId);
-                    foreach (var item in EngagementData)
-                    {
-                        objTwitterEngagement.Id = Guid.NewGuid();
-                        objTwitterEngagement.UserId = Guid.Parse(UserId);
-                        objTwitterEngagement.EntryDate = DateTime.Now;
-                        objTwitterEngagement.ProfileId = objTwitterAccount.TwitterUserId;
-                        try
-                        {
-                            objTwitterEngagement.RetweetCount = item["retweet_count"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterEngagement.ReplyCount = objTwitterMessageRepository.getReplyCountbyProfileId(objTwitterAccount.TwitterUserId, Guid.Parse(UserId)).ToString();
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterEngagement.Engagement = ((Int32.Parse(objTwitterEngagement.ReplyCount) + Int32.Parse(objTwitterEngagement.RetweetCount)) * 100 / (objTwitterAccount.FollowersCount)).ToString();
-                        }
-                        catch (Exception ex)
-                        {
-                            objTwitterEngagement.Engagement = "0".ToString();
-                            Console.WriteLine(ex.StackTrace);
-                        } try
-                        {
-                            objTwitterEngagement.Influence = (((tsttwtwmessagetweet.Count)) * 100 / (objTwitterAccount.FollowersCount)).ToString();
-                        }
-                        catch (Exception ex)
-                        {
-                            objTwitterEngagement.Influence = "0".ToString();
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        objTwitterEngagementRepository.Add(objTwitterEngagement);
+                getTwitterFeeds(UserId, OAuth);
 
-                    }
-                }
-                #endregion
+                getTwitterDirectMessageSent(UserId, OAuth);
+                getTwittwrDirectMessageRecieved(OAuth,UserId);
+                getUserMentions(OAuth, objTwitterAccount.TwitterUserId, Guid.Parse(UserId));
+                getUserFollowers(OAuth, objTwitterAccount.TwitterScreenName, objTwitterAccount.TwitterUserId, Guid.Parse(UserId));
+                getUserRetweet(OAuth, objTwitterAccount.TwitterUserId, Guid.Parse(UserId));
 
-                #region Add User Tweets
-                try
-                {
-
-                    JArray Timeline = twtuser.GetStatuses_User_Timeline(OAuth);
-                    TwitterMessageRepository twtmsgrepo = new TwitterMessageRepository();
-                    TwitterMessage twtmsg = new TwitterMessage();
-                    foreach (var item in Timeline)
-                    {
-                        objTwitterMessage.UserId = Guid.Parse(UserId);
-                        objTwitterMessage.Type = "twt_usertweets";
-                        try
-                        {
-                            objTwitterMessage.TwitterMsg = item["text"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterMessage.SourceUrl = item["source"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterMessage.ScreenName = objTwitterAccount.TwitterScreenName;
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterMessage.ProfileId = objTwitterAccount.TwitterUserId;
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterMessage.MessageId = item["id_str"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterMessage.MessageDate = Utility.ParseTwitterTime(item["created_at"].ToString().TrimStart('"').TrimEnd('"'));
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterMessage.InReplyToStatusUserId = item["in_reply_to_status_id_str"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterMessage.Id = Guid.NewGuid();
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterMessage.FromProfileUrl = item["user"]["profile_image_url"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterMessage.FromName = item["user"]["name"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterMessage.FromId = item["user"]["id_str"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        objTwitterMessage.EntryDate = DateTime.Now;
-                        try
-                        {
-                            objTwitterMessage.FromScreenName = item["user"]["screen_name"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        if (!objTwitterMessageRepository.checkTwitterMessageExists(objTwitterMessage.MessageId))
-                        {
-                            objTwitterMessageRepository.addTwitterMessage(objTwitterMessage);
-                        }
-
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.StackTrace);
-                    logger.Error("twtuser.GetStatuses_User_Timeline ex.StackTrace >> " + ex.StackTrace);
-                    logger.Error("twtuser.GetStatuses_User_Timeline ex.Message >> " + ex.Message);
-                }
-                #endregion
-                #region Add Twitter User Feed
-
-                twtuser = new TwitterUser();
-                try
-                {
-                    JArray Home_Timeline = twtuser.GetStatuses_Home_Timeline(OAuth);
-                    objTwitterFeed = new Domain.Socioboard.Domain.TwitterFeed();
-                    foreach (var item in Home_Timeline)
-                    {
-                        objTwitterFeed.UserId = Guid.Parse(UserId);
-                        objTwitterFeed.Type = "twt_feeds";
-                        try
-                        {
-                            objTwitterFeed.Feed = item["text"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterFeed.SourceUrl = item["source"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterFeed.ScreenName = objTwitterAccount.TwitterScreenName;
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterFeed.ProfileId = objTwitterAccount.TwitterUserId;
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterFeed.MessageId = item["id_str"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterFeed.FeedDate = Utility.ParseTwitterTime(item["created_at"].ToString().TrimStart('"').TrimEnd('"'));
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterFeed.InReplyToStatusUserId = item["in_reply_to_status_id_str"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterFeed.Id = Guid.NewGuid();
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterFeed.FromProfileUrl = item["user"]["profile_image_url"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterFeed.FromName = item["user"]["name"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterFeed.FromId = item["user"]["id_str"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        objTwitterFeed.EntryDate = DateTime.Now;
-                        try
-                        {
-                            objTwitterFeed.FromScreenName = item["user"]["screen_name"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        if (!objTwitterFeedRepository.checkTwitterFeedExists(objTwitterFeed.MessageId))
-                        {
-                            try
-                            {
-                                objTwitterFeedRepository.addTwitterFeed(objTwitterFeed);
-                            }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine(ex.Message);
-                                Console.WriteLine(ex.StackTrace);
-                            }
-                        }
-                        // Edited by Antima[20/12/2014]
-
-                        SentimentalAnalysis _SentimentalAnalysis = new SentimentalAnalysis();
-                        FeedSentimentalAnalysisRepository _FeedSentimentalAnalysisRepository = new FeedSentimentalAnalysisRepository();
-                        try
-                        {
-                            if (_FeedSentimentalAnalysisRepository.checkFeedExists(objTwitterFeed.ProfileId.ToString(), Guid.Parse(UserId), objTwitterFeed.Id.ToString()))
-                            {
-                                if (!string.IsNullOrEmpty(objTwitterFeed.Feed))
-                                {
-                                    string Network = "twitter";
-                                    _SentimentalAnalysis.GetPostSentimentsFromUclassify(Guid.Parse(UserId), objTwitterFeed.ProfileId, objTwitterFeed.MessageId, objTwitterFeed.Feed, Network);
-                                }
-                            }
-                        }
-                        catch (Exception)
-                        {
-
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.StackTrace);
-                    logger.Error("twtuser.GetStatuses_Home_Timeline ex.StackTrace >> " + ex.StackTrace);
-                    logger.Error("twtuser.GetStatuses_Home_Timeline ex.Message >> " + ex.Message);
-                }
-                #endregion
-                #region Add Twitter Direct Message
-                twtuser = new TwitterUser();
-                try
-                {
-                    JArray Messages_Sent = twtuser.GetDirect_Messages_Sent(OAuth, 20);
-
-                    objTwitterDirectMessages = new Domain.Socioboard.Domain.TwitterDirectMessages();
-                    foreach (var item in Messages_Sent)
-                    {
-                        objTwitterDirectMessages.UserId = Guid.Parse(UserId);
-                        objTwitterDirectMessages.Type = "twt_directmessages_sent";
-                        objTwitterDirectMessages.Id = Guid.NewGuid();
-
-                        try
-                        {
-                            objTwitterDirectMessages.MessageId = item["id_str"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterDirectMessages.CreatedDate = Utility.ParseTwitterTime(item["created_at"].ToString().TrimStart('"').TrimEnd('"'));
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            objTwitterDirectMessages.Message = item["text"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-
-                        try
-                        {
-                            objTwitterDirectMessages.RecipientId = item["recipient"]["id_str"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-
-                        try
-                        {
-                            objTwitterDirectMessages.RecipientScreenName = item["recipient"]["screen_name"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-
-                        try
-                        {
-                            objTwitterDirectMessages.RecipientProfileUrl = item["recipient"]["profile_image_url"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-
-                        try
-                        {
-                            objTwitterDirectMessages.SenderId = item["sender"]["id_str"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-
-                        try
-                        {
-                            objTwitterDirectMessages.SenderScreenName = item["sender"]["screen_name"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        } try
-                        {
-                            objTwitterDirectMessages.SenderProfileUrl = item["sender"]["profile_image_url"].ToString().TrimStart('"').TrimEnd('"');
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        } try
-                        {
-                            objTwitterDirectMessages.EntryDate = DateTime.Now;
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        if (!objTwitterDirectMessageRepository.checkExistsDirectMessages(objTwitterDirectMessages.MessageId))
-                        {
-                            try
-                            {
-                                objTwitterDirectMessageRepository.addNewDirectMessage(objTwitterDirectMessages);
-                            }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine(ex.Message);
-                                Console.WriteLine(ex.StackTrace);
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.StackTrace);
-                    logger.Error("twtuser.GetDirect_Messages_Sent ex.StackTrace >> " + ex.StackTrace);
-                    logger.Error("twtuser.GetDirect_Messages_Sent ex.Message >> " + ex.Message);
-                }
-                #endregion
-               
-
-                return ret;
+                //return ret;
+                return new JavaScriptSerializer().Serialize(objTwitterAccount);
             }
             catch (Exception ex)
             {
@@ -985,14 +306,686 @@ namespace Api.Socioboard.Services
             }
         }
 
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string TwitterLogIn(string client_id, string client_secret, string redirect_uri, string requestToken, string requestSecret, string requestVerifier)
+        {
+            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
+            string ret = string.Empty;
+            Users userinfo = new Users();
+            oAuthTwitter OAuth = new oAuthTwitter(client_id, client_secret, redirect_uri);
+            OAuth.AccessToken = requestToken;
+            OAuth.AccessTokenSecret = requestVerifier;
+            OAuth.AccessTokenGet(requestToken, requestVerifier);
+            JArray profile = userinfo.Get_Users_LookUp_ByScreenName(OAuth, OAuth.TwitterScreenName);
+
+            if (profile != null)
+            {
+                logger.Error("Twitter.asmx >> TwitterLogIn >> Twitter profile : " + profile);
+            }
+            else
+            {
+                logger.Error("Twitter.asmx >> TwitterLogIn >> NULL Twitter profile : " + profile);
+            }
+            string TwitterUserId = string.Empty;
+            objTwitterAccount = new Domain.Socioboard.Domain.TwitterAccount();
+            Domain.Socioboard.Domain.User objUser = new Domain.Socioboard.Domain.User();
+            foreach (var item in profile)
+            {
+                #region Login Twitter Account
+                try
+                {
+                    objUser.ProfileUrl = item["profile_image_url"].ToString().TrimStart('"').TrimEnd('"');
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                }
+                try
+                {
+                    TwitterUserId = item["id_str"].ToString().TrimStart('"').TrimEnd('"');
+                }
+                catch (Exception er)
+                {
+                    try
+                    {
+                        TwitterUserId = item["id"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex.StackTrace);
+                    }
+                    Console.WriteLine(er.StackTrace);
+                }
+                objUser.SocialLogin = "twitter_" + TwitterUserId;
+                try
+                {
+                    objUser.UserName = item["name"].ToString().TrimStart('"').TrimEnd('"');
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex.StackTrace);
+                }
+
+                #endregion
+            }
+            return new JavaScriptSerializer().Serialize(objUser);
+        }
+        
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public void getTwitterFeeds(string UserId, oAuthTwitter OAuth)
+        {
+            TwitterUser twtuser;
+            #region Add Twitter User Feed
+
+            twtuser = new TwitterUser();
+            try
+            {
+                JArray Home_Timeline = twtuser.GetStatuses_Home_Timeline(OAuth);
+                objTwitterFeed = new Domain.Socioboard.Domain.TwitterFeed();
+                foreach (var item in Home_Timeline)
+                {
+                    objTwitterFeed.UserId = Guid.Parse(UserId);
+                    objTwitterFeed.Type = "twt_feeds";
+                    try
+                    {
+                        objTwitterFeed.Feed = item["text"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterFeed.SourceUrl = item["source"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterFeed.ScreenName = objTwitterAccount.TwitterScreenName;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterFeed.ProfileId = objTwitterAccount.TwitterUserId;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterFeed.MessageId = item["id_str"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterFeed.FeedDate = Utility.ParseTwitterTime(item["created_at"].ToString().TrimStart('"').TrimEnd('"'));
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterFeed.InReplyToStatusUserId = item["in_reply_to_status_id_str"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterFeed.Id = Guid.NewGuid();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterFeed.FromProfileUrl = item["user"]["profile_image_url"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterFeed.FromName = item["user"]["name"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterFeed.FromId = item["user"]["id_str"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    objTwitterFeed.EntryDate = DateTime.Now;
+                    try
+                    {
+                        objTwitterFeed.FromScreenName = item["user"]["screen_name"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    if (!objTwitterFeedRepository.checkTwitterFeedExists(objTwitterFeed.MessageId))
+                    {
+                        try
+                        {
+                            objTwitterFeedRepository.addTwitterFeed(objTwitterFeed);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                            Console.WriteLine(ex.StackTrace);
+                        }
+                    }
+                    // Edited by Antima[20/12/2014]
+
+                    SentimentalAnalysis _SentimentalAnalysis = new SentimentalAnalysis();
+                    FeedSentimentalAnalysisRepository _FeedSentimentalAnalysisRepository = new FeedSentimentalAnalysisRepository();
+                    try
+                    {
+                        if (_FeedSentimentalAnalysisRepository.checkFeedExists(objTwitterFeed.ProfileId.ToString(), Guid.Parse(UserId), objTwitterFeed.Id.ToString()))
+                        {
+                            if (!string.IsNullOrEmpty(objTwitterFeed.Feed))
+                            {
+                                string Network = "twitter";
+                                _SentimentalAnalysis.GetPostSentimentsFromUclassify(Guid.Parse(UserId), objTwitterFeed.ProfileId, objTwitterFeed.MessageId, objTwitterFeed.Feed, Network);
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                logger.Error("twtuser.GetStatuses_Home_Timeline ex.StackTrace >> " + ex.StackTrace);
+                logger.Error("twtuser.GetStatuses_Home_Timeline ex.Message >> " + ex.Message);
+            }
+            #endregion
+        }
 
 
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        private void getUserTweets(string UserId, oAuthTwitter OAuth)
+        {
+            #region Add User Tweets
+            try
+            {
+                TwitterUser twtuser =new TwitterUser();
+                JArray Timeline = twtuser.GetStatuses_User_Timeline(OAuth);
+                TwitterMessageRepository twtmsgrepo = new TwitterMessageRepository();
+                TwitterMessage twtmsg = new TwitterMessage();
+                foreach (var item in Timeline)
+                {
+                    objTwitterMessage.UserId = Guid.Parse(UserId);
+                    objTwitterMessage.Type = "twt_usertweets";
+                    try
+                    {
+                        objTwitterMessage.TwitterMsg = item["text"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterMessage.SourceUrl = item["source"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterMessage.ScreenName = objTwitterAccount.TwitterScreenName;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterMessage.ProfileId = objTwitterAccount.TwitterUserId;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterMessage.MessageId = item["id_str"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterMessage.MessageDate = Utility.ParseTwitterTime(item["created_at"].ToString().TrimStart('"').TrimEnd('"'));
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterMessage.InReplyToStatusUserId = item["in_reply_to_status_id_str"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterMessage.Id = Guid.NewGuid();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterMessage.FromProfileUrl = item["user"]["profile_image_url"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterMessage.FromName = item["user"]["name"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterMessage.FromId = item["user"]["id_str"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    objTwitterMessage.EntryDate = DateTime.Now;
+                    try
+                    {
+                        objTwitterMessage.FromScreenName = item["user"]["screen_name"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    if (!objTwitterMessageRepository.checkTwitterMessageExists(objTwitterMessage.MessageId))
+                    {
+                        objTwitterMessageRepository.addTwitterMessage(objTwitterMessage);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                logger.Error("twtuser.GetStatuses_User_Timeline ex.StackTrace >> " + ex.StackTrace);
+                logger.Error("twtuser.GetStatuses_User_Timeline ex.Message >> " + ex.Message);
+            }
+            #endregion
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public void getTwitterEngagement(string UserId, oAuthTwitter OAuth)
+        {
+            #region Add Twitter Engagement
+            Tweet objTweet = new Tweet();
+            TwitterEngagement objTwitterEngagement = new TwitterEngagement();
+            TwitterEngagementRepository objTwitterEngagementRepository = new TwitterEngagementRepository();
+
+            //TwitterMessageRepository objTwitterMessageRepository=new TwitterMessageRepository ();
+            List<Domain.Socioboard.Domain.TwitterMessage> lsttwtmessage = objTwitterMessageRepository.getAllTwitterMessagesRetweet(Guid.Parse(UserId), objTwitterAccount.TwitterUserId);
+            List<Domain.Socioboard.Domain.TwitterMessage> tsttwtwmessagetweet = objTwitterMessageRepository.getAllTwitterMessagestweet(Guid.Parse(UserId), objTwitterAccount.TwitterUserId);
+            foreach (var itemmsg in lsttwtmessage)
+            {
+
+                JArray EngagementData = objTweet.Get_Statuses_RetweetsById(OAuth, itemmsg.MessageId);
+                foreach (var item in EngagementData)
+                {
+                    objTwitterEngagement.Id = Guid.NewGuid();
+                    objTwitterEngagement.UserId = Guid.Parse(UserId);
+                    objTwitterEngagement.EntryDate = DateTime.Now;
+                    objTwitterEngagement.ProfileId = objTwitterAccount.TwitterUserId;
+                    try
+                    {
+                        objTwitterEngagement.RetweetCount = item["retweet_count"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterEngagement.ReplyCount = objTwitterMessageRepository.getReplyCountbyProfileId(objTwitterAccount.TwitterUserId, Guid.Parse(UserId)).ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterEngagement.Engagement = ((Int32.Parse(objTwitterEngagement.ReplyCount) + Int32.Parse(objTwitterEngagement.RetweetCount)) * 100 / (objTwitterAccount.FollowersCount)).ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        objTwitterEngagement.Engagement = "0".ToString();
+                        Console.WriteLine(ex.StackTrace);
+                    } try
+                    {
+                        objTwitterEngagement.Influence = (((tsttwtwmessagetweet.Count)) * 100 / (objTwitterAccount.FollowersCount)).ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        objTwitterEngagement.Influence = "0".ToString();
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    objTwitterEngagementRepository.Add(objTwitterEngagement);
+
+                }
+            }
+            #endregion
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public void getUserRetweets(string UserId, oAuthTwitter OAuth)
+        {
+            TwitterUser twtuser;
+            #region Add User Retweet
+            twtuser = new TwitterUser();
+            try
+            {
+                JArray Retweet = null;
+                try
+                {
+                    Retweet = twtuser.GetStatuses_Retweet_Of_Me(OAuth);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                    logger.Error("twtuser.GetStatuses_Retweet_Of_Me ex.StackTrace >> " + ex.StackTrace);
+                    logger.Error("twtuser.GetStatuses_Retweet_Of_Me ex.Message >> " + ex.Message);
+                }
+                objTwitterMessage = new Domain.Socioboard.Domain.TwitterMessage();
+                foreach (var item in Retweet)
+                {
+                    objTwitterMessage.UserId = Guid.Parse(UserId);
+                    objTwitterMessage.Type = "twt_retweets";
+                    objTwitterMessage.Id = Guid.NewGuid();
+
+                    try
+                    {
+                        objTwitterMessage.MessageId = item["id_str"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterMessage.MessageDate = Utility.ParseTwitterTime(item["created_at"].ToString().TrimStart('"').TrimEnd('"'));
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterMessage.TwitterMsg = item["text"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                    try
+                    {
+                        objTwitterMessage.FromId = item["user"]["id_str"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                    try
+                    {
+                        objTwitterMessage.FromScreenName = item["user"]["screen_name"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                    try
+                    {
+                        objTwitterMessage.FromProfileUrl = item["user"]["profile_image_url"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                    try
+                    {
+                        objTwitterMessage.InReplyToStatusUserId = item["in_reply_to_status_id_str"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                    try
+                    {
+                        objTwitterMessage.SourceUrl = item["source"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    } try
+                    {
+                        objTwitterMessage.ProfileId = objTwitterAccount.TwitterUserId;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    } try
+                    {
+                        objTwitterMessage.EntryDate = DateTime.Now;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    if (!objTwitterMessageRepository.checkTwitterMessageExists(objTwitterMessage.MessageId))
+                    {
+                        objTwitterMessageRepository.addTwitterMessage(objTwitterMessage);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                logger.Error("twtuser.GetStatuses_Retweet_Of_Me ex.StackTrace >> " + ex.StackTrace);
+                logger.Error("twtuser.GetStatuses_Retweet_Of_Me ex.Message >> " + ex.Message);
+            }
+            #endregion
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public void  getTwitterMessages(string UserId, oAuthTwitter OAuth)
+        {
+            TwitterUser twtuser;
+
+            #region Add Twitter Messages
+            twtuser = new TwitterUser();
+            try
+            {
+                TimeLine tl = new TimeLine();
+                JArray data = null;
+                try
+                {
+                    data = tl.Get_Statuses_Mentions_Timeline(OAuth);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                    logger.Error("tl.Get_Statuses_Mentions_Timeline ex.StackTrace >> " + ex.StackTrace);
+                    logger.Error("tl.Get_Statuses_Mentions_Timeline ex.Message >> " + ex.Message);
+                }
+                objTwitterMessage = new Domain.Socioboard.Domain.TwitterMessage();
+                foreach (var item in data)
+                {
+                    objTwitterMessage.UserId = Guid.Parse(UserId);
+                    objTwitterMessage.Type = "twt_mentions";
+                    objTwitterMessage.Id = Guid.NewGuid();
+
+                    try
+                    {
+                        objTwitterMessage.MessageId = item["id_str"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterMessage.MessageDate = Utility.ParseTwitterTime(item["created_at"].ToString().TrimStart('"').TrimEnd('"'));
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterMessage.TwitterMsg = item["text"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                    try
+                    {
+                        objTwitterMessage.FromId = item["user"]["id_str"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                    try
+                    {
+                        objTwitterMessage.FromScreenName = item["user"]["screen_name"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                    try
+                    {
+                        objTwitterMessage.FromProfileUrl = item["user"]["profile_image_url"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                    try
+                    {
+                        objTwitterMessage.InReplyToStatusUserId = item["in_reply_to_status_id_str"].ToString().TrimStart('"').TrimEnd('"');
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                    try
+                    {
+                        objTwitterMessage.SourceUrl = item["source"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    } try
+                    {
+                        objTwitterMessage.ProfileId = objTwitterAccount.TwitterUserId;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterMessage.ScreenName = item["user"]["screen_name"].ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                    try
+                    {
+                        objTwitterMessage.EntryDate = DateTime.Now;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    if (!objTwitterMessageRepository.checkTwitterMessageExists(objTwitterMessage.MessageId))
+                    {
+                        objTwitterMessageRepository.addTwitterMessage(objTwitterMessage);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                logger.Error("tl.Get_Statuses_Mentions_Timeline ex.StackTrace >> " + ex.StackTrace);
+                logger.Error("tl.Get_Statuses_Mentions_Timeline ex.Message >> " + ex.Message);
+            }
+            #endregion
+        }
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public String getTwitterData(string UserId, string twitterid)
         {
-            
             string ret = string.Empty;
             try
             {
@@ -1006,7 +999,6 @@ namespace Api.Socioboard.Services
                 List<Domain.Socioboard.Domain.TwitterAccount> lstTwitterAccount = objTwtRepo.getAllTwitterAccountsOfUser(userId);
                 foreach (Domain.Socioboard.Domain.TwitterAccount itemTwt in lstTwitterAccount)
                 {
-
                     string profileId = string.Empty;
 
                     OAuth.AccessToken = itemTwt.OAuthToken;
@@ -1017,6 +1009,13 @@ namespace Api.Socioboard.Services
                     getUserTweets(OAuth, itemTwt.TwitterScreenName, itemTwt.TwitterUserId, userId, itemTwt);
                     gettwitterengagement(OAuth, userId, itemTwt);
                     getUserFeed(OAuth, itemTwt.TwitterScreenName, itemTwt.TwitterUserId, userId);
+
+                    getTwitterDirectMessageSent(UserId, OAuth);
+                    getTwittwrDirectMessageRecieved(OAuth, UserId);
+                    getUserMentions(OAuth, itemTwt.TwitterUserId, Guid.Parse(UserId));
+                    getUserFollowersData(OAuth, itemTwt.TwitterScreenName, itemTwt.TwitterUserId, Guid.Parse(UserId));
+                    getUserRetweet(OAuth, itemTwt.TwitterUserId, Guid.Parse(UserId));
+
                     #region UpdateTeammemberprofile
                     Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = new Domain.Socioboard.Domain.TeamMemberProfile();
                     objTeamMemberProfile.ProfileName = itemTwt.TwitterScreenName;
@@ -1042,7 +1041,7 @@ namespace Api.Socioboard.Services
         //[ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         //public string SheduleTwitterMessage(string TwitterId, string UserId, string sscheduledmsgguid)
         //{
-           
+
 
         //    string str = string.Empty;
         //    string ret = string.Empty;
@@ -1149,7 +1148,7 @@ namespace Api.Socioboard.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string SheduleTwitterMessage(string TwitterId, string UserId, string sscheduledmsgguid)
         {
-            
+
 
             string str = string.Empty;
             string ret = string.Empty;
@@ -1166,7 +1165,7 @@ namespace Api.Socioboard.Services
                 //OAuthTwt.TwitterScreenName = objTwitterAccount.TwitterScreenName;
                 //OAuthTwt.TwitterUserId = objTwitterAccount.TwitterUserId;
 
-              str= PostTwitterMessage(objScheduledMessage.ShareMessage, objTwitterAccount.TwitterUserId, UserId, objScheduledMessage.PicUrl, true, sscheduledmsgguid);
+                str = PostTwitterMessage(objScheduledMessage.ShareMessage, objTwitterAccount.TwitterUserId, UserId, objScheduledMessage.PicUrl, true, sscheduledmsgguid);
 
                 #region Commented
 
@@ -1344,177 +1343,180 @@ namespace Api.Socioboard.Services
             }
         }
 
+        //[WebMethod]
+        //[ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        //public void getUserTweets(oAuthTwitter OAuth, string TwitterScreenName, string TwitterUserId, Guid userId)
+        //{
+
+        //    try
+        //    {
+        //        TwitterUser twtuser = new TwitterUser();
+        //        JArray data = twtuser.GetStatuses_User_Timeline(OAuth);
+        //        TwitterMessageRepository twtmsgrepo = new TwitterMessageRepository();
+        //        // TwitterMessage twtmsg = new TwitterMessage();
+        //        Domain.Socioboard.Domain.TwitterMessage ObjTwitterMessage = new Domain.Socioboard.Domain.TwitterMessage();
+        //        foreach (var item in data)
+        //        {
+        //            ObjTwitterMessage.UserId = userId;
+        //            ObjTwitterMessage.Type = "twt_usertweets";
+        //            try
+        //            {
+        //                ObjTwitterMessage.TwitterMsg = item["text"].ToString().TrimStart('"').TrimEnd('"');
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.StackTrace);
+        //            }
+        //            try
+        //            {
+        //                ObjTwitterMessage.SourceUrl = item["source"].ToString().TrimStart('"').TrimEnd('"');
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.StackTrace);
+        //            }
+        //            try
+        //            {
+        //                ObjTwitterMessage.ScreenName = TwitterScreenName;
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.StackTrace);
+        //            }
+        //            try
+        //            {
+        //                ObjTwitterMessage.ProfileId = TwitterUserId;
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.StackTrace);
+        //            }
+        //            try
+        //            {
+        //                ObjTwitterMessage.MessageId = item["id_str"].ToString().TrimStart('"').TrimEnd('"');
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.StackTrace);
+        //            }
+        //            try
+        //            {
+        //                ObjTwitterMessage.MessageDate = Utility.ParseTwitterTime(item["created_at"].ToString().TrimStart('"').TrimEnd('"'));
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.StackTrace);
+        //            }
+        //            try
+        //            {
+        //                ObjTwitterMessage.InReplyToStatusUserId = item["in_reply_to_status_id_str"].ToString().TrimStart('"').TrimEnd('"');
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.StackTrace);
+        //            }
+        //            try
+        //            {
+        //                ObjTwitterMessage.Id = Guid.NewGuid();
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.StackTrace);
+        //            }
+        //            try
+        //            {
+        //                ObjTwitterMessage.FromProfileUrl = item["user"]["profile_image_url"].ToString().TrimStart('"').TrimEnd('"');
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.StackTrace);
+        //            }
+        //            try
+        //            {
+        //                ObjTwitterMessage.FromName = item["user"]["name"].ToString().TrimStart('"').TrimEnd('"');
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.StackTrace);
+        //            }
+        //            try
+        //            {
+        //                ObjTwitterMessage.FromId = item["user"]["id_str"].ToString().TrimStart('"').TrimEnd('"');
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.StackTrace);
+        //            }
+        //            ObjTwitterMessage.EntryDate = DateTime.Now;
+        //            try
+        //            {
+        //                ObjTwitterMessage.FromScreenName = item["user"]["screen_name"].ToString().TrimStart('"').TrimEnd('"');
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine(ex.StackTrace);
+        //            }
+        //            if (!twtmsgrepo.checkTwitterMessageExists(ObjTwitterMessage.ProfileId, ObjTwitterMessage.UserId, ObjTwitterMessage.MessageId))
+        //            {
+        //                twtmsgrepo.addTwitterMessage(ObjTwitterMessage);
+        //            }
+        //            #region Add Twitter Engagement
+        //            Tweet objTweet = new Tweet();
+        //            TwitterEngagement objTwitterEngagement = new TwitterEngagement();
+        //            TwitterEngagementRepository objTwitterEngagementRepository = new TwitterEngagementRepository();
+        //            //TwitterMessageRepository objTwitterMessageRepository=new TwitterMessageRepository ();
+        //            List<Domain.Socioboard.Domain.TwitterMessage> lsttwtmessage = objTwitterMessageRepository.getAllTwitterMessagesRetweet(userId, objTwitterAccount.TwitterUserId);
+        //            foreach (var itemmsg in lsttwtmessage)
+        //            {
+
+        //                JArray EngagementData = objTweet.Get_Statuses_RetweetsById(OAuth, itemmsg.MessageId);
+        //                foreach (var itemEngagementData in EngagementData)
+        //                {
+        //                    objTwitterEngagement.Id = Guid.NewGuid();
+        //                    objTwitterEngagement.UserId = userId;
+        //                    objTwitterEngagement.EntryDate = DateTime.Now;
+        //                    objTwitterEngagement.ProfileId = objTwitterAccount.TwitterUserId;
+        //                    try
+        //                    {
+        //                        objTwitterEngagement.RetweetCount = item["retweet_count"].ToString().TrimStart('"').TrimEnd('"');
+        //                    }
+        //                    catch (Exception ex)
+        //                    {
+        //                        Console.WriteLine(ex.StackTrace);
+        //                    }
+        //                    try
+        //                    {
+        //                        objTwitterEngagement.ReplyCount = objTwitterMessageRepository.getReplyCountbyProfileId(objTwitterAccount.TwitterUserId, userId).ToString();
+        //                    }
+        //                    catch (Exception ex)
+        //                    {
+        //                        Console.WriteLine(ex.StackTrace);
+        //                    }
+        //                    try
+        //                    {
+        //                        objTwitterEngagement.Engagement = ((Int32.Parse(objTwitterEngagement.ReplyCount) + Int32.Parse(objTwitterEngagement.RetweetCount)) * 100 / (objTwitterAccount.FollowersCount)).ToString();
+        //                    }
+        //                    catch (Exception ex)
+        //                    {
+        //                        Console.WriteLine(ex.StackTrace);
+        //                    }
+        //                    objTwitterEngagementRepository.Add(objTwitterEngagement);
+
+        //                }
+        //            }
+        //            #endregion
+
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.StackTrace);
+        //    }
+        //}
+
+
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public void getUserTweets(oAuthTwitter OAuth, string TwitterScreenName, string TwitterUserId, Guid userId)
-        {
-
-            try
-            {
-                TwitterUser twtuser = new TwitterUser();
-                JArray data = twtuser.GetStatuses_User_Timeline(OAuth);
-                TwitterMessageRepository twtmsgrepo = new TwitterMessageRepository();
-                // TwitterMessage twtmsg = new TwitterMessage();
-                Domain.Socioboard.Domain.TwitterMessage ObjTwitterMessage = new Domain.Socioboard.Domain.TwitterMessage();
-                foreach (var item in data)
-                {
-                    ObjTwitterMessage.UserId = userId;
-                    ObjTwitterMessage.Type = "twt_usertweets";
-                    try
-                    {
-                        ObjTwitterMessage.TwitterMsg = item["text"].ToString().TrimStart('"').TrimEnd('"');
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
-                    }
-                    try
-                    {
-                        ObjTwitterMessage.SourceUrl = item["source"].ToString().TrimStart('"').TrimEnd('"');
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
-                    }
-                    try
-                    {
-                        ObjTwitterMessage.ScreenName = TwitterScreenName;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
-                    }
-                    try
-                    {
-                        ObjTwitterMessage.ProfileId = TwitterUserId;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
-                    }
-                    try
-                    {
-                        ObjTwitterMessage.MessageId = item["id_str"].ToString().TrimStart('"').TrimEnd('"');
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
-                    }
-                    try
-                    {
-                        ObjTwitterMessage.MessageDate = Utility.ParseTwitterTime(item["created_at"].ToString().TrimStart('"').TrimEnd('"'));
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
-                    }
-                    try
-                    {
-                        ObjTwitterMessage.InReplyToStatusUserId = item["in_reply_to_status_id_str"].ToString().TrimStart('"').TrimEnd('"');
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
-                    }
-                    try
-                    {
-                        ObjTwitterMessage.Id = Guid.NewGuid();
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
-                    }
-                    try
-                    {
-                        ObjTwitterMessage.FromProfileUrl = item["user"]["profile_image_url"].ToString().TrimStart('"').TrimEnd('"');
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
-                    }
-                    try
-                    {
-                        ObjTwitterMessage.FromName = item["user"]["name"].ToString().TrimStart('"').TrimEnd('"');
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
-                    }
-                    try
-                    {
-                        ObjTwitterMessage.FromId = item["user"]["id_str"].ToString().TrimStart('"').TrimEnd('"');
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
-                    }
-                    ObjTwitterMessage.EntryDate = DateTime.Now;
-                    try
-                    {
-                        ObjTwitterMessage.FromScreenName = item["user"]["screen_name"].ToString().TrimStart('"').TrimEnd('"');
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.StackTrace);
-                    }
-                    if (!twtmsgrepo.checkTwitterMessageExists(ObjTwitterMessage.ProfileId, ObjTwitterMessage.UserId, ObjTwitterMessage.MessageId))
-                    {
-                        twtmsgrepo.addTwitterMessage(ObjTwitterMessage);
-                    }
-                    #region Add Twitter Engagement
-                    Tweet objTweet = new Tweet();
-                    TwitterEngagement objTwitterEngagement = new TwitterEngagement();
-                    TwitterEngagementRepository objTwitterEngagementRepository = new TwitterEngagementRepository();
-                    //TwitterMessageRepository objTwitterMessageRepository=new TwitterMessageRepository ();
-                    List<Domain.Socioboard.Domain.TwitterMessage> lsttwtmessage = objTwitterMessageRepository.getAllTwitterMessagesRetweet(userId, objTwitterAccount.TwitterUserId);
-                    foreach (var itemmsg in lsttwtmessage)
-                    {
-
-                        JArray EngagementData = objTweet.Get_Statuses_RetweetsById(OAuth, itemmsg.MessageId);
-                        foreach (var itemEngagementData in EngagementData)
-                        {
-                            objTwitterEngagement.Id = Guid.NewGuid();
-                            objTwitterEngagement.UserId = userId;
-                            objTwitterEngagement.EntryDate = DateTime.Now;
-                            objTwitterEngagement.ProfileId = objTwitterAccount.TwitterUserId;
-                            try
-                            {
-                                objTwitterEngagement.RetweetCount = item["retweet_count"].ToString().TrimStart('"').TrimEnd('"');
-                            }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine(ex.StackTrace);
-                            }
-                            try
-                            {
-                                objTwitterEngagement.ReplyCount = objTwitterMessageRepository.getReplyCountbyProfileId(objTwitterAccount.TwitterUserId, userId).ToString();
-                            }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine(ex.StackTrace);
-                            }
-                            try
-                            {
-                                objTwitterEngagement.Engagement = ((Int32.Parse(objTwitterEngagement.ReplyCount) + Int32.Parse(objTwitterEngagement.RetweetCount)) * 100 / (objTwitterAccount.FollowersCount)).ToString();
-                            }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine(ex.StackTrace);
-                            }
-                            objTwitterEngagementRepository.Add(objTwitterEngagement);
-
-                        }
-                    }
-                    #endregion
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-            }
-        }
-
         public void getUserTweets(oAuthTwitter OAuth, string TwitterScreenName, string TwitterUserId, Guid userId, Domain.Socioboard.Domain.TwitterAccount objTwitterAccount)
         {
 
@@ -1631,7 +1633,7 @@ namespace Api.Socioboard.Services
                     {
                         twtmsgrepo.addTwitterMessage(ObjTwitterMessage);
                     }
-                    
+
                     #region Add TwitterFollowerCount
                     TwitterAccountFollowersRepository objTwitterAccountFollowersRepository = new TwitterAccountFollowersRepository();
                     Domain.Socioboard.Domain.TwitterAccountFollowers objTwitterAccountFollowers = new Domain.Socioboard.Domain.TwitterAccountFollowers();
@@ -1642,7 +1644,7 @@ namespace Api.Socioboard.Services
                     JArray profile = userinfo.Get_Users_LookUp_ByScreenName(OAuth, TwitterScreenName);
                     foreach (var item_followerdata in profile)
                     {
-                       
+
                         try
                         {
                             objTwitterAccountFollowers.FollowingsCount = Convert.ToInt32(item_followerdata["friends_count"].ToString());
@@ -1662,7 +1664,7 @@ namespace Api.Socioboard.Services
                     }
                     objTwitterAccountFollowersRepository.addTwitterAccountFollower(objTwitterAccountFollowers);
 
-                        #endregion
+                    #endregion
                 }
             }
             catch (Exception ex)
@@ -1670,6 +1672,9 @@ namespace Api.Socioboard.Services
                 Console.WriteLine(ex.StackTrace);
             }
         }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public void gettwitterengagement(oAuthTwitter OAuth, Guid userId, Domain.Socioboard.Domain.TwitterAccount objTwitterAccount)
         {
             #region Add Twitter Engagement
@@ -1731,9 +1736,7 @@ namespace Api.Socioboard.Services
             }
             #endregion
         }
-        
-        
-        
+
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public void getUserFeed(oAuthTwitter OAuth, string TwitterScreenName, string TwitterUserId, Guid userId)
@@ -1743,12 +1746,13 @@ namespace Api.Socioboard.Services
                 //User user = (User)Session["LoggedUser"];
                 TwitterUser twtuser = new TwitterUser();
                 JArray data = twtuser.GetStatuses_Home_Timeline(OAuth);
-                Domain.Socioboard.Domain.TwitterFeed objTwitterFeed = new Domain.Socioboard.Domain.TwitterFeed();
+                Domain.Socioboard.Domain.TwitterFeed objTwitterFeed;
                 TwitterFeedRepository twtmsgrepo = new TwitterFeedRepository();
                 //TwitterFeed twtmsg = new TwitterFeed();
 
                 foreach (var item in data)
                 {
+                    objTwitterFeed = new Domain.Socioboard.Domain.TwitterFeed();
                     objTwitterFeed.UserId = userId;
                     objTwitterFeed.Type = "twt_feeds";
                     try
@@ -1918,9 +1922,6 @@ namespace Api.Socioboard.Services
                 objTwtstats.addTwitterStats(objStats);
         }
 
-
-
-
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string TwitterComposeMessage(String message, String profileid, string userid, string currentdatetime, string picurl)
@@ -1928,7 +1929,7 @@ namespace Api.Socioboard.Services
             return PostTwitterMessage(message, profileid, userid, picurl, false);
         }
 
-        private string PostTwitterMessage(String message, String profileid, string userid, string picurl, bool isScheduled, string sscheduledmsgguid="")
+        private string PostTwitterMessage(String message, String profileid, string userid, string picurl, bool isScheduled, string sscheduledmsgguid = "")
         {
             bool rt = false;
             string ret = "";
@@ -1951,8 +1952,12 @@ namespace Api.Socioboard.Services
             }
             else
             {
-                JArray post = twt.Post_Statuses_Update(OAuthTwt, message);
-                ret = post[0]["id_str"].ToString();
+                try
+                {
+                    JArray post = twt.Post_Statuses_Update(OAuthTwt, message);
+                    ret = post[0]["id_str"].ToString();
+                }
+                catch { }
             }
 
             if (!string.IsNullOrEmpty(ret) || rt == true)
@@ -1961,7 +1966,7 @@ namespace Api.Socioboard.Services
                 {
                     str = "Message post on twitter for Id :" + objTwitterAccount.TwitterUserId + " and Message: " + objScheduledMessage.ShareMessage;
                     ScheduledMessage schmsg = new ScheduledMessage();
-                    schmsg.UpdateScheduledMessageByMsgId(Guid.Parse(sscheduledmsgguid)); 
+                    schmsg.UpdateScheduledMessageByMsgId(Guid.Parse(sscheduledmsgguid));
                 }
             }
             else
@@ -2273,7 +2278,673 @@ namespace Api.Socioboard.Services
             return new JavaScriptSerializer().Serialize(replypost);
         }
 
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public void getUserMentions(oAuthTwitter OAuth, string TwitterUserId, Guid userId)
+        {
+            try
+            {
+                TimeLine _TimeLine = new TimeLine();
+                JArray jdata = _TimeLine.Get_Statuses_Mentions_Timeline(OAuth);
+                Domain.Socioboard.Domain.InboxMessages _InboxMessages;
 
-       
+                foreach (var item in jdata)
+                {
+                    try
+                    {
+                        _InboxMessages = new Domain.Socioboard.Domain.InboxMessages();
+                        _InboxMessages.Id = Guid.NewGuid();
+                        _InboxMessages.UserId = userId;
+                        _InboxMessages.ProfileId = TwitterUserId;
+                        _InboxMessages.ProfileType = "twt";
+                        _InboxMessages.MessageType = "twt_mention";
+                        _InboxMessages.EntryTime = DateTime.Now;
+                        try
+                        {
+                            _InboxMessages.Message = item["text"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error("Twitter.asmx => getUserMentions => " + ex.Message);
+                        }
+                        try
+                        {
+                            _InboxMessages.MessageId = item["id_str"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error("Twitter.asmx => getUserMentions => " + ex.Message);
+                        }
+                        try
+                        {
+                            _InboxMessages.FromId = item["user"]["id_str"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            _InboxMessages.FromId = item["user"]["id"].ToString();
+                        }
+                        try
+                        {
+                            _InboxMessages.FromName = item["user"]["screen_name"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error("Twitter.asmx => getUserMentions => " + ex.Message);
+                        }
+                        try
+                        {
+                            _InboxMessages.FromImageUrl = item["user"]["profile_image_url"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            _InboxMessages.FromImageUrl = item["user"]["profile_background_image_url_https"].ToString();
+                        }
+                        try
+                        {
+                            _InboxMessages.CreatedTime = Utility.ParseTwitterTime(item["created_at"].ToString());
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error("Twitter.asmx => getUserMentions => " + ex.Message);
+                        }
+                        try
+                        {
+                            _InboxMessages.RecipientId = item["entities"]["user_mentions"][0]["id_str"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            _InboxMessages.RecipientId = item["entities"]["user_mentions"][0]["id"].ToString();
+                        }
+                        try
+                        {
+                            _InboxMessages.RecipientName = item["entities"]["user_mentions"][0]["screen_name"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error("Twitter.asmx => getUserMentions => " + ex.Message);
+                        }
+
+                        if (!objInboxMessagesRepository.checkInboxMessageExists(userId, _InboxMessages.MessageId, _InboxMessages.MessageType))
+                        {
+                            objInboxMessagesRepository.AddInboxMessages(_InboxMessages);
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error("Twitter.asmx => getUserMentions => " + ex.Message);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Twitter.asmx => getUserMentions => " + ex.Message);
+            }
+
+
+
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public void getUserFollowers(oAuthTwitter OAuth, string screeenName, string TwitterUserId, Guid userId)
+        {
+            try
+            {
+                TimeLine _TimeLine = new TimeLine();
+                JArray jdata = _TimeLine.Get_User_Followers(OAuth);
+                JArray user_data = JArray.Parse(jdata[0]["users"].ToString());
+                Domain.Socioboard.Domain.InboxMessages _InboxMessages;
+                foreach (var item in user_data)
+                {
+                    try
+                    {
+                        _InboxMessages = new Domain.Socioboard.Domain.InboxMessages();
+                        _InboxMessages.Id = Guid.NewGuid();
+                        _InboxMessages.UserId = userId;
+                        _InboxMessages.ProfileId = TwitterUserId;
+                        _InboxMessages.ProfileType = "twt";
+                        _InboxMessages.MessageType = "twt_followers";
+                        _InboxMessages.EntryTime = DateTime.Now;
+                        _InboxMessages.MessageId = "";
+                        _InboxMessages.Status = 1;
+                        try
+                        {
+                            _InboxMessages.Message = item["description"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error("Twitter.asmx => getUserFollowers => " + ex.Message);
+                        }
+                        try
+                        {
+                            _InboxMessages.FromId = item["id_str"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            _InboxMessages.FromId = item["id"].ToString();
+                        }
+                        try
+                        {
+                            _InboxMessages.FromName = item["screen_name"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error("Twitter.asmx => getUserFollowers => " + ex.Message);
+                        }
+                        try
+                        {
+                            _InboxMessages.FollowerCount = item["followers_count"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error("Twitter.asmx => getUserFollowers => " + ex.Message);
+                        }
+                         try
+                        {
+                            _InboxMessages.FollowingCount = item["friends_count"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error("Twitter.asmx => getUserFollowers => " + ex.Message);
+                        }
+                        try
+                        {
+                            _InboxMessages.FromImageUrl = item["profile_image_url"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            _InboxMessages.FromImageUrl = item["profile_image_url_https"].ToString();
+                        }
+                        try
+                        {
+                            _InboxMessages.CreatedTime = DateTime.Now;
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error("Twitter.asmx => getUserFollowers => " + ex.Message);
+                        }
+                        _InboxMessages.RecipientId = TwitterUserId;
+                        _InboxMessages.RecipientName = screeenName;
+                        if (!objInboxMessagesRepository.checkInboxMessageFriendExists(userId, _InboxMessages.FromId, _InboxMessages.RecipientId, _InboxMessages.MessageType))
+                        {
+                            objInboxMessagesRepository.AddInboxMessages(_InboxMessages);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error("Twitter.asmx => getUserFollowers => " + ex.Message);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Twitter.asmx => getUserFollowers => " + ex.Message);
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public void getUserRetweet(oAuthTwitter OAuth, string TwitterUserId, Guid userId)
+        {
+            try
+            {
+                TimeLine _TimeLine = new TimeLine();
+                JArray jdata = _TimeLine.Get_Statuses_Retweet_Of_Me(OAuth);
+                Domain.Socioboard.Domain.InboxMessages _InboxMessages;
+                foreach (var item in jdata)
+                {
+                    try
+                    {
+                        _InboxMessages = new Domain.Socioboard.Domain.InboxMessages();
+                    
+                        _InboxMessages.UserId = userId;
+                        _InboxMessages.ProfileId = TwitterUserId;
+                        _InboxMessages.ProfileType = "twt";
+                        _InboxMessages.MessageType = "twt_retweet";
+                        _InboxMessages.EntryTime = DateTime.Now;
+                        try
+                        {
+                            _InboxMessages.MessageId = item["id_str"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            _InboxMessages.MessageId = item["id"].ToString();
+                        }
+                        try
+                        {
+                            _InboxMessages.Message = item["text"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error("Twitter.asmx => getUserRetweets => " + ex.Message);
+                        }
+                        try
+                        {
+                            _InboxMessages.RecipientId = item["user"]["id_str"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error("Twitter.asmx => getUserRetweets => " + ex.Message);
+                        }
+                        try
+                        {
+                            _InboxMessages.RecipientName = item["user"]["screen_name"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error("Twitter.asmx => getUserRetweets => " + ex.Message);
+                        }
+                        try
+                        {
+                            _InboxMessages.RecipientImageUrl = item["user"]["profile_image_url"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            _InboxMessages.RecipientImageUrl = item["user"]["profile_image_url_https"].ToString();
+                        }
+                        Tweet _tweet = new Tweet();
+                        JArray retweet_data = _tweet.Get_Statuses_RetweetsById(OAuth, _InboxMessages.MessageId);
+                        foreach (var item_retweet in retweet_data)
+                        {
+                            _InboxMessages.Id = Guid.NewGuid();
+                            try
+                            {
+                                _InboxMessages.CreatedTime = Utility.ParseTwitterTime(item_retweet["created_at"].ToString());
+                            }
+                            catch (Exception ex)
+                            {
+                                logger.Error("Twitter.asmx => getUserRetweets => " + ex.Message);
+                            }
+                            try
+                            {
+                                _InboxMessages.FromId = item_retweet["user"]["id_str"].ToString();
+                            }
+                            catch (Exception ex)
+                            {
+                                _InboxMessages.FromId = item_retweet["user"]["id"].ToString();
+                            }
+                            try
+                            {
+                                _InboxMessages.FromName = item_retweet["user"]["screen_name"].ToString();
+                            }
+                            catch (Exception ex)
+                            {
+                                logger.Error("Twitter.asmx => getUserRetweets => " + ex.Message);
+                            }
+                            try
+                            {
+                                _InboxMessages.FromImageUrl = item_retweet["user"]["profile_image_url"].ToString();
+                            }
+                            catch (Exception ex)
+                            {
+                                _InboxMessages.FromImageUrl = item_retweet["user"]["profile_image_url_https"].ToString();
+                            }
+
+                            if (!objInboxMessagesRepository.checkInboxMessageRetweetExists(userId, _InboxMessages.MessageId, _InboxMessages.FromId, _InboxMessages.RecipientId, _InboxMessages.MessageType))
+                            {
+                                objInboxMessagesRepository.AddInboxMessages(_InboxMessages);
+                            }
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error("Twitter.asmx => getUserRetweets => " + ex.Message);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Twitter.asmx => getUserRetweets => " + ex.Message);
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public void getUserFollowersData(oAuthTwitter OAuth, string screeenName, string TwitterUserId, Guid userId)
+        {
+            try
+            {
+                TimeLine _TimeLine = new TimeLine();
+                JArray jdata = _TimeLine.Get_User_Followers(OAuth);
+                JArray user_data = JArray.Parse(jdata[0]["users"].ToString());
+                Domain.Socioboard.Domain.InboxMessages _InboxMessages;
+                foreach (var item in user_data)
+                {
+                    try
+                    {
+                        _InboxMessages = new Domain.Socioboard.Domain.InboxMessages();
+                        _InboxMessages.Id = Guid.NewGuid();
+                        _InboxMessages.UserId = userId;
+                        _InboxMessages.ProfileId = TwitterUserId;
+                        _InboxMessages.ProfileType = "twt";
+                        _InboxMessages.MessageType = "twt_followers";
+                        _InboxMessages.EntryTime = DateTime.Now;
+                        _InboxMessages.MessageId = "";
+                        _InboxMessages.Status = 0;
+                        try
+                        {
+                            _InboxMessages.Message = item["description"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error("Twitter.asmx => getUserFollowers => " + ex.Message);
+                        }
+                        try
+                        {
+                            _InboxMessages.FromId = item["id_str"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            _InboxMessages.FromId = item["id"].ToString();
+                        }
+                        try
+                        {
+                            _InboxMessages.FromName = item["screen_name"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error("Twitter.asmx => getUserFollowers => " + ex.Message);
+                        }
+                        try
+                        {
+                            _InboxMessages.FollowerCount = item["followers_count"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error("Twitter.asmx => getUserFollowers => " + ex.Message);
+                        }
+                        try
+                        {
+                            _InboxMessages.FollowingCount = item["friends_count"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error("Twitter.asmx => getUserFollowers => " + ex.Message);
+                        }
+                        try
+                        {
+                            _InboxMessages.FromImageUrl = item["profile_image_url"].ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            _InboxMessages.FromImageUrl = item["profile_image_url_https"].ToString();
+                        }
+                        try
+                        {
+                            _InboxMessages.CreatedTime = DateTime.Now;
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error("Twitter.asmx => getUserFollowers => " + ex.Message);
+                        }
+                        _InboxMessages.RecipientId = TwitterUserId;
+                        _InboxMessages.RecipientName = screeenName;
+                        if (!objInboxMessagesRepository.checkInboxMessageFriendExists(userId, _InboxMessages.FromId, _InboxMessages.RecipientId, _InboxMessages.MessageType))
+                        {
+                            objInboxMessagesRepository.AddInboxMessages(_InboxMessages);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error("Twitter.asmx => getUserFollowers => " + ex.Message);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Twitter.asmx => getUserFollowers => " + ex.Message);
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public void getTwitterDirectMessageSent(string UserId, oAuthTwitter OAuth)
+        {
+            #region Add Twitter Direct Message
+            TwitterUser twtuser = new TwitterUser();
+            try
+            {
+                JArray Messages_Sent = twtuser.GetDirect_Messages_Sent(OAuth, 20);
+
+                objTwitterDirectMessages = new Domain.Socioboard.Domain.TwitterDirectMessages();
+                foreach (var item in Messages_Sent)
+                {
+                    objTwitterDirectMessages.UserId = Guid.Parse(UserId);
+                    objTwitterDirectMessages.Type = "twt_directmessages_sent";
+                    objTwitterDirectMessages.Id = Guid.NewGuid();
+
+                    try
+                    {
+                        objTwitterDirectMessages.MessageId = item["id_str"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterDirectMessages.CreatedDate = Utility.ParseTwitterTime(item["created_at"].ToString().TrimStart('"').TrimEnd('"'));
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterDirectMessages.Message = item["text"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                    try
+                    {
+                        objTwitterDirectMessages.RecipientId = item["recipient"]["id_str"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                    try
+                    {
+                        objTwitterDirectMessages.RecipientScreenName = item["recipient"]["screen_name"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                    try
+                    {
+                        objTwitterDirectMessages.RecipientProfileUrl = item["recipient"]["profile_image_url"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                    try
+                    {
+                        objTwitterDirectMessages.SenderId = item["sender"]["id_str"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                    try
+                    {
+                        objTwitterDirectMessages.SenderScreenName = item["sender"]["screen_name"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    } try
+                    {
+                        objTwitterDirectMessages.SenderProfileUrl = item["sender"]["profile_image_url"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    } try
+                    {
+                        objTwitterDirectMessages.EntryDate = DateTime.Now;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    if (!objTwitterDirectMessageRepository.checkExistsDirectMessages(objTwitterDirectMessages.MessageId))
+                    {
+                        try
+                        {
+                            objTwitterDirectMessageRepository.addNewDirectMessage(objTwitterDirectMessages);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                            Console.WriteLine(ex.StackTrace);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                logger.Error("twtuser.GetDirect_Messages_Sent ex.StackTrace >> " + ex.StackTrace);
+                logger.Error("twtuser.GetDirect_Messages_Sent ex.Message >> " + ex.Message);
+            }
+            #endregion
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public void getTwittwrDirectMessageRecieved(oAuthTwitter OAuth, string UserId)
+        {
+            #region Add Twitter Direct Message
+            TwitterUser twtuser = new TwitterUser();
+            try
+            {
+                JArray Messages_Sent = twtuser.GetDirect_Messages(OAuth, 20);
+
+                objTwitterDirectMessages = new Domain.Socioboard.Domain.TwitterDirectMessages();
+                foreach (var item in Messages_Sent)
+                {
+                    objTwitterDirectMessages.UserId = Guid.Parse(UserId);
+                    objTwitterDirectMessages.Type = "twt_directmessages_received";
+                    objTwitterDirectMessages.Id = Guid.NewGuid();
+
+                    try
+                    {
+                        objTwitterDirectMessages.MessageId = item["id_str"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterDirectMessages.CreatedDate = Utility.ParseTwitterTime(item["created_at"].ToString().TrimStart('"').TrimEnd('"'));
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    try
+                    {
+                        objTwitterDirectMessages.Message = item["text"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                    try
+                    {
+                        objTwitterDirectMessages.RecipientId = item["recipient"]["id_str"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                    try
+                    {
+                        objTwitterDirectMessages.RecipientScreenName = item["recipient"]["screen_name"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                    try
+                    {
+                        objTwitterDirectMessages.RecipientProfileUrl = item["recipient"]["profile_image_url"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                    try
+                    {
+                        objTwitterDirectMessages.SenderId = item["sender"]["id_str"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
+                    try
+                    {
+                        objTwitterDirectMessages.SenderScreenName = item["sender"]["screen_name"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    } try
+                    {
+                        objTwitterDirectMessages.SenderProfileUrl = item["sender"]["profile_image_url"].ToString().TrimStart('"').TrimEnd('"');
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    } try
+                    {
+                        objTwitterDirectMessages.EntryDate = DateTime.Now;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                    if (!objTwitterDirectMessageRepository.checkExistsDirectMessages(objTwitterDirectMessages.MessageId))
+                    {
+                        try
+                        {
+                            objTwitterDirectMessageRepository.addNewDirectMessage(objTwitterDirectMessages);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                            Console.WriteLine(ex.StackTrace);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                logger.Error("twtuser.GetDirect_Messages_Sent ex.StackTrace >> " + ex.StackTrace);
+                logger.Error("twtuser.GetDirect_Messages_Sent ex.Message >> " + ex.Message);
+            }
+            #endregion
+        }
+
+
     }
 }

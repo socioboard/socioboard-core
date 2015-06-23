@@ -173,7 +173,7 @@ namespace GlobusGooglePlusLib.Authentication
         {
             HttpWebRequest gRequest;
               HttpWebResponse gResponse;
-            gRequest = (HttpWebRequest)System.Net.WebRequest.Create(url);
+            gRequest = (HttpWebRequest)System.Net.WebRequest.Create(url.ToString());
             gRequest.UserAgent = "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.4) Gecko/2008102920 Firefox/3.0.4";
             gRequest.CookieContainer = new CookieContainer();
             gRequest.Method = "GET";

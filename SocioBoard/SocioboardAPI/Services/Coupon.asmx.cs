@@ -23,12 +23,7 @@ namespace Api.Socioboard.Services
 
         CouponRepository ObjCouponRepo = new CouponRepository();
 
-        [WebMethod]
-        public string HelloWorld()
-        {
-            return "Hello World";
-        }
-
+   
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetAllCoupons()

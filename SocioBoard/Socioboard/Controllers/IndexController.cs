@@ -242,6 +242,8 @@ namespace Socioboard.Controllers
                     if (_user.ActivationStatus == "1") //If Login from Facebook, then ActivationStatus would be 1, refer to FacebookManager Controller
                     {
                         user.ActivationStatus = "1";
+                        user.SocialLogin = _user.SocialLogin;
+                        user.ProfileUrl = _user.ProfileUrl;
                     }
                     else
                     {
@@ -255,8 +257,24 @@ namespace Socioboard.Controllers
                 string firstName = Server.UrlDecode((string)jo["firstname"]);
                 string lastName = Server.UrlDecode((string)jo["lastname"]);
                 Api.User.User objApiUser = new Api.User.User();
-                string res_Registration = objApiUser.Register(user.EmailId, user.Password, user.AccountType, user.UserName, user.ActivationStatus);
-                logger.Error("res_Registration: "+res_Registration);
+                //string res_Registration = objApiUser.Register(user.EmailId, user.Password, user.AccountType, user.UserName, user.ActivationStatus);
+                string res_Registration = string.Empty;
+                if (Session["twitterlogin"] != null)
+                {
+                    if ((string)Session["twitterlogin"] == "twitterlogin")
+                    {
+                        res_Registration = objApiUser.RegisterbyTwitter(user.EmailId, user.Password, user.AccountType, user.UserName, user.SocialLogin, user.ProfileUrl, user.ActivationStatus);
+                    }
+                    else
+                    {
+                        res_Registration = objApiUser.Register(user.EmailId, user.Password, user.AccountType, user.UserName, user.ActivationStatus);
+                    }
+                }
+                else
+                {
+                    res_Registration = objApiUser.Register(user.EmailId, user.Password, user.AccountType, user.UserName, user.ActivationStatus);
+                }
+                logger.Error("res_Registration: " + res_Registration);
                 if (res_Registration != "Email Already Exists")
                 {
                     if (user != null)
@@ -269,12 +287,11 @@ namespace Socioboard.Controllers
 
                     //Domain.Socioboard.Domain.Invitation _Invitation = (Domain.Socioboard.Domain.Invitation)Session["InvitationInfo"];
                     Api.Invitation.Invitation ApiInvitation = new Api.Invitation.Invitation();
-                    //if (Session["InvitationCode"] != null)
-                    //{
-                    //    string invitationcode = Session["InvitationCode"].ToString();
-                    //    ApiInvitation.AddInvitationInfoBycode(invitationcode, user.EmailId, user.Id.ToString());
-
-                    //}
+                    if (Session["InvitationCode"] != null)
+                    {
+                        string invitationcode = Session["InvitationCode"].ToString();
+                        ApiInvitation.AddInvitationInfoBycode(invitationcode, user.EmailId, user.Id.ToString());
+                    }
                     
                     //if (_Invitation != null)
                     //{
@@ -425,7 +442,7 @@ namespace Socioboard.Controllers
             try
             {
                 var mailBody = Helper.SBUtils.RenderViewToString(this.ControllerContext, "_RegistrationMailPartial", objuser);
-                string Subject = "Thanks for creating your Socioboard Account";
+                string Subject = "Thanks for creating your " + ConfigurationManager.AppSettings["DefaultGroupName"].ToString() + " Account";
 
                 mailsender = ApiobjMailSender.SendChangePasswordMail(emailId, mailBody, Subject);
             }
@@ -530,7 +547,7 @@ namespace Socioboard.Controllers
             try
             {
                 var mailBody = Helper.SBUtils.RenderViewToString(this.ControllerContext, "_VideoMailPartial", objuser);
-                string Subject = "Enjoy Video Mailing through Socioboard";
+                string Subject = "Enjoy Video Mailing through " + ConfigurationManager.AppSettings["DefaultGroupName"].ToString();
 
                 mailsender = ApiobjMailSender.SendChangePasswordMail(EmailId, mailBody, Subject);
             }

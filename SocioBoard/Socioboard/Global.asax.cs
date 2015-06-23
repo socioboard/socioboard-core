@@ -34,7 +34,7 @@ namespace Socioboard
         protected void Session_Start()
         {
             // Code that runs when a new session is started
-            Session.Timeout = 60;
+            Session.Timeout = 120;
         }
         
     }

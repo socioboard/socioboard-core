@@ -1,0 +1,99 @@
+﻿@using Domain.Socioboard.Domain;
+@{
+    string path = @System.Configuration.ConfigurationManager.AppSettings["domain"];
+}
+
+
+<div id="accordion" class="panel-group">
+
+@foreach (var item in (Dictionary<string, Dictionary<object, List<object>>>)Model)
+    {
+    
+    if(item.Key=="facebook")
+    {
+        foreach (var items in (Dictionary<object, List<object>>)item.Value)
+
+        {
+            object obj= (object)items.Key;
+
+            var FbAccount = (Domain.Socioboard.Domain.FacebookAccount)obj;
+                <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                 <span class="fa fa-facebook-square" style="font-size: 20px;color:#6d8bc9;"></span>
+                <a class="collapsed" href="#@FbAccount.FbUserId" data-parent="#accordion" data-toggle="collapse">@FbAccount.FbUserName</a>
+               
+            </h4>
+        </div>
+        <div style="height: 0px;" class="panel-collapse collapse" id="@FbAccount.FbUserId">
+            <div class="panel-body">
+                
+              @foreach (Domain.Socioboard.Domain.FacebookGroup item_value in  (List<object>)items.Value)
+              {
+                  
+                  
+                  <div style="cursor:pointer" class="form-group">
+
+                    <div class="checkbox ">
+                        <label>
+                            <input type="checkbox" value="fb_@FbAccount.AccessToken" id="@FbAccount.FbUserId _fb_ @item_value.GroupId">
+                        </label>
+                    </div>
+                    <div  style="margin-top: -15px; margin-left: 18px; cursor: pointer;"><span onclick="facebookgroupdetails('@item_value.GroupId','@FbAccount.AccessToken');"  id="">@item_value.Name</span></div>
+                </div>
+                  
+              }                                        
+            </div>
+        </div>
+    </div>
+    
+           
+             
+        }
+    }
+    else if(item.Key=="linkedin")
+    {
+        foreach (var items in (Dictionary<object, List<object>>)item.Value)
+
+        {
+            object obj= (object)items.Key;
+
+            var LinkedInAccount = (Domain.Socioboard.Domain.LinkedInAccount)obj;
+                <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                 <span class="fa fa-linkedin-square" style="font-size: 20px; color:#007bb6;"></span>
+                <a class="collapsed" href="#@LinkedInAccount.LinkedinUserId" data-parent="#accordion" data-toggle="collapse">@LinkedInAccount.LinkedinUserName</a>
+              
+            </h4>
+        </div>
+        <div style="height: 0px;" class="panel-collapse collapse" id="@LinkedInAccount.LinkedinUserId">
+            <div class="panel-body">
+                
+              @foreach (Domain.Socioboard.Domain.LinkedInGroup.Group_Updates item_value in  (List<object>)items.Value)
+              {
+                  <div style="cursor:pointer" class="form-group">
+
+                    <div class="checkbox ">
+                        <label>
+                            
+                            <input type="checkbox" value="lin_@LinkedInAccount.LinkedinUserId" id="@LinkedInAccount.LinkedinUserId  _lin_ @item_value.id;">
+                        </label>
+                    </div>
+                    <div style="margin-top: -15px; margin-left: 18px; cursor: pointer;"><span onclick="linkedingroupdetails('@item_value.id','@LinkedInAccount.LinkedinUserId');"  id="">@item_value.GroupName</span></div>
+                </div>
+                  
+              }                                        
+            </div>
+        </div>
+    </div>
+    
+          
+             
+        }
+        
+    }      
+   
+}
+  
+</div>

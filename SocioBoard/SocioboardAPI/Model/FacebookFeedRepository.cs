@@ -43,15 +43,19 @@ namespace Api.Socioboard.Services
                     {
                         //Proceed action, to Check if FacebookUser is Exist in database or not by UserId and FbuserId.
                         // And Set the reuired paremeters to find the specific values.
-                        List<Domain.Socioboard.Domain.FacebookFeed> alst = session.CreateQuery("from FacebookFeed where UserId = :userid and ProfileId = :fbuserid")
-                        .SetParameter("userid", Userid)
-                        .SetParameter("fbuserid", ProfileId)
-                        .List<Domain.Socioboard.Domain.FacebookFeed>()
-                       .ToList<Domain.Socioboard.Domain.FacebookFeed>();
-                        if (alst.Count == 0 || alst == null)
-                            return false;
-                        else
-                            return true;
+                       // List<Domain.Socioboard.Domain.FacebookFeed> alst = session.CreateQuery("from FacebookFeed where UserId = :userid and ProfileId = :fbuserid")
+                       // .SetParameter("userid", Userid)
+                       // .SetParameter("fbuserid", ProfileId)
+                       // .List<Domain.Socioboard.Domain.FacebookFeed>()
+                       //.ToList<Domain.Socioboard.Domain.FacebookFeed>();
+                       // if (alst.Count == 0 || alst == null)
+                       //     return false;
+                       // else
+                       //     return true;
+
+                        bool exist = session.Query<Domain.Socioboard.Domain.FacebookFeed>()
+                            .Any(x => x.UserId == Userid && x.ProfileId == ProfileId);
+                        return exist;
 
                     }
                     catch (Exception ex)
