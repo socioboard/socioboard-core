@@ -1983,7 +1983,8 @@ function Instagramdetails(id) {
                 $("#page-wrapper").html(msg);
             } catch (e) {
             }
-        }
+        },
+        async:false
     });
     //instagramidforlazyload = id;
     $.ajax({
@@ -3184,9 +3185,7 @@ function FacebookLoadNewNewsFeeds() {
     var local = getlocatdatetime();
     var id = $('#refreshpanel2').attr('nwtid');
     try {
-if(id==undefined || id==null){
-	return;
-}
+
         //$("#refreshpanel1").attr('src', '../Themes/Socioboard/Contents/img/891.png');
     } catch (e) {
 
@@ -3257,9 +3256,7 @@ function FacebookLoadNewUserHome() {
     var local = getlocatdatetime();
     var id = $('#refreshpanel1').attr('nwtid');
     try {
-if(id==undefined || id==null){
-	return;
-}
+
         //$("#refreshpanel1").attr('src', '../Themes/Socioboard/Contents/img/891.png');
     } catch (e) {
 
@@ -3399,3 +3396,40 @@ function FacebookLoadNewUserFeeds() {
     });
 }
 
+function gplusdetails(gplusrid) {
+    debugger;
+    $.ajax({
+        type: "POST",
+        url: "../Feeds/LoadFeedPartialPage?network=gplus",
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (msg) {
+            try {
+                $("#page-wrapper").html(msg);
+            } catch (e) {
+            }
+        },
+        async:false
+    });
+
+
+    $.ajax({
+        type: "POST",
+        url: "../Feeds/GooglePlusFeeds?Id=" + gplusrid,
+        data: '',
+        contentType: "application/json; charset=utf-8",
+        dataType: "html",
+        success: function (msg) {
+            try {
+                if (msg == "no_data") {
+                    $("#glusfeed").html("<div><center><h3>No Messages Found.</h3></center></div>");
+                }
+                else {
+                    $("#glusfeed").html(msg);
+                }
+            } catch (e) {
+            }
+        }
+    });
+}

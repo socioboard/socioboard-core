@@ -11,6 +11,7 @@ using System.Configuration;
 using System.Net;
 using System.Text;
 using System.Web.Security;
+using System.Collections.Generic;
 
 namespace Socioboard.Controllers
 {
@@ -46,7 +47,7 @@ namespace Socioboard.Controllers
             return RedirectToAction("Index");
         }
         //[HttpPost]
-        public ActionResult AjaxLogin(string username, string password)
+        public async System.Threading.Tasks.Task<ActionResult> AjaxLogin(string username, string password)
         {
             Session.Clear();
             Session.RemoveAll();
@@ -57,10 +58,34 @@ namespace Socioboard.Controllers
             Api.User.User obj = new Api.User.User();
             string logindata = obj.Login(uname, pass);
             string str = logindata.Replace("\"", string.Empty).Trim();
-            if (str != "Not Exist")
+            if (str != "Not Exist" && !str.Equals("Email Not Exist"))
             {
                  objUser = (User)(new JavaScriptSerializer().Deserialize(logindata, typeof(User)));
                 FormsAuthentication.SetAuthCookie(objUser.UserName, false);
+                Socioboard.Helper.apiClientProvider ac = new Socioboard.Helper.apiClientProvider(System.Configuration.ConfigurationManager.AppSettings["ApiDomainName"] + "/token");
+                try
+                {
+                    Dictionary<string, string> re = await ac.GetTokenDictionary(username, password);
+                    Session["access_token"] = re["access_token"];
+                }
+                catch (Exception e)
+                {
+                    objUser = null;
+
+                    // Edited by Antima 
+
+                    HttpCookie myCookie = new HttpCookie("logininfo" + uname.Trim());
+                    myCookie.Expires = DateTime.Now.AddDays(-1);
+                    Response.Cookies.Add(myCookie);
+
+                    returnmsg = "Invalid Email or Password";
+                    return Content(returnmsg);
+                }
+            }
+            else if (str.Equals("Email Not Exist")) 
+            {
+                returnmsg = "Sorry, Socioboard doesn't recognize that username.";
+                return Content(returnmsg);
             }
             else
             {
@@ -147,21 +172,25 @@ namespace Socioboard.Controllers
             return Content(returnmsg);
         }
 
+        
         public ActionResult Download()
         {
             return View();
         }
 
+       
         public ActionResult Contact()
         {
             return View();
         }
 
+       
         public ActionResult About()
         {
             return View();
         }
 
+        
         public ActionResult Pricing()
         {
             PricingModelHelper objPricingModelHelper_Basic = new PricingModelHelper("Basic", "FREE", "Every plan is a unique package. This one fits for individuals.", "Comprehensive Dashboard", null);
@@ -199,7 +228,7 @@ namespace Socioboard.Controllers
             return View("_PricingPartial", new PricingModelHelper[] { objPricingModelHelper_Basic, objPricingModelHelper_Standard, objPricingModelHelper_Premium, objPricingModelHelper_Deluxe, objPricingModelHelper_SocioBasic, objPricingModelHelper_SocioStandard, objPricingModelHelper_SocioPremium, objPricingModelHelper_SocioDeluxe });
             
         }
-       
+        
         public ActionResult Registration()
         {
             return View();

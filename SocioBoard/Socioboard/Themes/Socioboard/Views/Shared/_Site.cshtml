@@ -76,7 +76,7 @@
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
    
-    <script type="text/javascript" src="/Themes/Socioboard/Contents/js/exporting.js"></script>
+    @*<script type="text/javascript" src="/Themes/Socioboard/Contents/js/exporting.js"></script>*@
 </head>
 
 <body>
@@ -290,11 +290,22 @@
                             @*  <img src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-xap1/t31.0-8/s960x960/1523017_786750101350785_664146563_o.jpg" alt="" class="img-circle" style="height: 80px; width: 80px;">
                             <hr class="small">*@
                             <!-- Split button -->
-                            <div class="btn-group">
+                            @*<div class="btn-group">
                                 <button type="button" class="btn btn-warning">@GlobusMultiLanguageLib.Resources.Shared_Site_Profile</button>
-                                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+                                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="caret"></span>
                                     <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" id="binduserinul">
+                                    <li><a href="#">fb</a></li>
+                                    <li><a href="#">tweeter</a></li>
+                                    <li><a href="#">gplus</a></li>
+                                </ul>
+                            </div>*@
+                            <!-- Single button -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    @GlobusMultiLanguageLib.Resources.Shared_Site_Profile <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu" id="binduserinul">
                                     <li><a href="#">fb</a></li>
@@ -330,13 +341,13 @@
 
                             <div class="form-group">
                                 <br />
-                                <div id="showRemoveImage" class="upload_data btn btn-default btn-sm" style="background-color: rgb(34, 34, 34); border: 1px solid rgb(0, 0, 0); color: rgb(255, 255, 255); float: left; border-radius: 5px; margin-right: 6px; display: none;" onclick="RemoveImage()">
+                                <div id="showRemoveImage" class="upload_data btn btn-info btn-sm" style=" border: 1px solid rgb(0, 0, 0); color: rgb(255, 255, 255); float: left; border-radius: 5px; margin-right: 6px; display: none;" onclick="RemoveImage()">
                                     <span style="float: right; margin-left: 5px"></span>
                                     <label style="float: right; font-size: small; display: block;">Remove Image x </label>
                                 </div>
-                                <div class="col-md-7 pull-right">
+                                <div>
                                     <input type="file" id="fileuploadImage" name="" onchange="AddImageComposeMessage()" class="btn btn-default col-md-6" accept="image/*">
-                                    <button class="btn btn-default col-md-5" id="btn_dropbox" style="margin-left: 10px;">@GlobusMultiLanguageLib.Resources.Shared_Site_DropBox</button>
+                                    @*<button class="btn btn-default col-md-5" id="btn_dropbox" style="margin-left: 10px;">@GlobusMultiLanguageLib.Resources.Shared_Site_DropBox</button>*@
                                 </div>
                             </div>
                         </div>

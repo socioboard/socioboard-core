@@ -37,22 +37,39 @@ namespace Socioboard.Helper
             JObject team = JObject.Parse(objApiTeam.GetTeamByGroupId(System.Web.HttpContext.Current.Session["group"].ToString()));
             Api.TeamMemberProfile.TeamMemberProfile objApiTeamMemberProfile = new Api.TeamMemberProfile.TeamMemberProfile();
             objApiTeamMemberProfile.Timeout = 300000;
-            JArray TeamMemberProfiles = JArray.Parse(objApiTeamMemberProfile.GetTeamMemberProfilesByTeamId(Convert.ToString(team["Id"])));
-            foreach (var item in TeamMemberProfiles)
+            //JArray TeamMemberProfiles = JArray.Parse(objApiTeamMemberProfile.GetTeamMemberProfilesByTeamId(Convert.ToString(team["Id"])));
+
+            List<Domain.Socioboard.Domain.TeamMemberProfile> lstTeamMemberProfiles = (List<Domain.Socioboard.Domain.TeamMemberProfile>)new JavaScriptSerializer().Deserialize(objApiTeamMemberProfile.GetTeamMemberProfilesByTeamId(Convert.ToString(team["Id"])), typeof(List<Domain.Socioboard.Domain.TeamMemberProfile>));
+
+            //foreach (var item in TeamMemberProfiles)
+            //{
+            //    try
+            //    {
+            //        Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = GetTeamMemberProfileFromJObject(item);
+
+            //        ISocialSiteAccount objISocialSiteAccount = GetSocialAccountFromTeamMemberProfile(objGroups.UserId, objTeamMemberProfile);
+            //        SocialSiteAccountFactory objSocialSiteAccountFactory = new SocialSiteAccountFactory(objTeamMemberProfile.ProfileType);
+            //        dict_TeamMember.Add(objTeamMemberProfile, objISocialSiteAccount);
+            //    }
+            //    catch (Exception ex)
+            //    {
+
+            //        Console.WriteLine(ex.Message);
+            //        //return null;
+            //    }
+            //}
+
+            foreach (Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile in lstTeamMemberProfiles)
             {
                 try
                 {
-                    Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = GetTeamMemberProfileFromJObject(item);
-
                     ISocialSiteAccount objISocialSiteAccount = GetSocialAccountFromTeamMemberProfile(objGroups.UserId, objTeamMemberProfile);
                     SocialSiteAccountFactory objSocialSiteAccountFactory = new SocialSiteAccountFactory(objTeamMemberProfile.ProfileType);
                     dict_TeamMember.Add(objTeamMemberProfile, objISocialSiteAccount);
                 }
                 catch (Exception ex)
                 {
-
-                    Console.WriteLine(ex.Message);
-                    //return null;
+                    logger.Error(ex.Message);
                 }
             }
             return dict_TeamMember;
@@ -173,22 +190,22 @@ namespace Socioboard.Helper
 
             Api.TeamMemberProfile.TeamMemberProfile objApiTeamMemberProfile = new Api.TeamMemberProfile.TeamMemberProfile();
             objApiTeamMemberProfile.Timeout = 300000;
-            JArray TeamMemberProfiles = JArray.Parse(objApiTeamMemberProfile.GetTeamMemberProfilesByTeamId(Convert.ToString(team["Id"])));
+            //JArray TeamMemberProfiles = JArray.Parse(objApiTeamMemberProfile.GetTeamMemberProfilesByTeamId(Convert.ToString(team["Id"])));
+            lstTeamMemberProfile = (List<Domain.Socioboard.Domain.TeamMemberProfile>)new JavaScriptSerializer().Deserialize(objApiTeamMemberProfile.GetTeamMemberProfilesByTeamId(Convert.ToString(team["Id"])), typeof(List<Domain.Socioboard.Domain.TeamMemberProfile>));
+            //foreach (var item in TeamMemberProfiles)
+            //{
+            //    try
+            //    {
+            //        Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = GetTeamMemberProfileFromJObject(item);
+            //        lstTeamMemberProfile.Add(objTeamMemberProfile);
+            //    }
+            //    catch (Exception ex)
+            //    {
 
-            foreach (var item in TeamMemberProfiles)
-            {
-                try
-                {
-                    Domain.Socioboard.Domain.TeamMemberProfile objTeamMemberProfile = GetTeamMemberProfileFromJObject(item);
-                    lstTeamMemberProfile.Add(objTeamMemberProfile);
-                }
-                catch (Exception ex)
-                {
-
-                    Console.WriteLine(ex.Message);
-                    //return null;
-                }
-            }
+            //        Console.WriteLine(ex.Message);
+            //        //return null;
+            //    }
+            //}
             return lstTeamMemberProfile;
 
 
