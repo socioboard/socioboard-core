@@ -69,9 +69,8 @@
       <Private>True</Private>
       <HintPath>..\SocioBoard\packages\FSharp.Core.4.0.0\lib\FSharp.Core.dll</HintPath>
     </Reference>
-    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="log4net">
+      <HintPath>..\..\lib\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Mandrill">
       <HintPath>..\..\lib\Mandrill.dll</HintPath>
@@ -83,18 +82,10 @@
       <HintPath>Lib\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="SendGridMail">
-      <HintPath>..\..\..\..\..\..\SB 2.0 05-03-2015 Twinba\SB Code\SocioboardAPI\Library\GlobusMailLib\bin\Debug\SendGridMail.dll</HintPath>
+      <HintPath>..\..\..\..\..\SB_30_05_15\trunk\SocioboardAPI\Library\GlobusMailLib\bin\Debug\SendGridMail.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Text">
       <HintPath>Lib\ServiceStack.Text.dll</HintPath>
-    </Reference>
-    <Reference Include="StackifyLib, Version=1.12.5589.24146, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\StackifyLib.1.12.0.0\lib\StackifyLib.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="StackifyLib.log4net, Version=1.12.5589.24146, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\StackifyLib.log4net.1.12.0.0\lib\StackifyLib.log4net.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -116,7 +107,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

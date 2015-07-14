@@ -151,8 +151,14 @@ namespace Api.Socioboard.Services
                     try
                     {
                         string[] arrsrt = profileids.Split(',');
-                        string[] arrstrtype=MessageType.Split(',');
-                        List<Domain.Socioboard.Domain.InboxMessages> results = session.Query<Domain.Socioboard.Domain.InboxMessages>().Where(U => U.UserId.Equals(UserId) && arrsrt.Contains(U.ProfileId) && arrstrtype.Contains(U.MessageType) && U.Status==0).OrderByDescending(x => x.CreatedTime).Skip(Convert.ToInt32(noOfDataToSkip)).Take(Convert.ToInt32(noOfResultsFromTop)).ToList<Domain.Socioboard.Domain.InboxMessages>();
+                        string[] arrstrtype = MessageType.Split(',');
+                        List<Domain.Socioboard.Domain.InboxMessages> results = session.Query<Domain.Socioboard.Domain.InboxMessages>().Where(U => U.UserId.Equals(UserId) && arrsrt.Contains(U.ProfileId) && arrstrtype.Contains(U.MessageType) && U.Status == 0).OrderByDescending(x => x.CreatedTime).Skip(Convert.ToInt32(noOfDataToSkip)).Take(Convert.ToInt32(noOfResultsFromTop)).ToList<Domain.Socioboard.Domain.InboxMessages>();
+                        //string query = "from InboxMessages Where ProfileId In(" + profileids + ") and MessageType In(" + MessageType + ") and UserId =: UserId and Status=0 Order By CreatedTime DESC";
+                        //List<Domain.Socioboard.Domain.InboxMessages> results = session.CreateQuery(query)
+                        //    .SetParameter("UserId", UserId)
+                        //    .SetFirstResult(Convert.ToInt32(noOfDataToSkip))
+                        //    .SetMaxResults(Convert.ToInt32(noOfResultsFromTop)).List<Domain.Socioboard.Domain.InboxMessages>().ToList();
+
                         return results;
                     }
                     catch (Exception ex)

@@ -8,7 +8,7 @@
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{09C0D321-7AFA-4EB3-8423-3FAE7D4DA720}</ProjectGuid>
-    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Socioboard</RootNamespace>
@@ -61,6 +61,10 @@
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Recaptcha">
       <HintPath>..\SocioboardAPI\lib\Recaptcha.dll</HintPath>
     </Reference>
@@ -80,6 +84,10 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
@@ -89,6 +97,14 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -102,25 +118,13 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http">
-    </Reference>
-    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
     </Reference>
     <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -213,7 +217,6 @@
     <Compile Include="Controllers\Admin\PackageController.cs" />
     <Compile Include="Controllers\Admin\ServicesController.cs" />
     <Compile Include="Controllers\Admin\UserDetailsController.cs" />
-    <Compile Include="Controllers\Boards‏Controller.cs" />
     <Compile Include="Controllers\BusinessSettingController.cs" />
     <Compile Include="Controllers\DropboxManagerController.cs" />
     <Compile Include="Controllers\MyStuffController.cs" />
@@ -247,6 +250,7 @@
     <Compile Include="Helper\AccountType.cs" />
     <Compile Include="Helper\AddliPage.cs" />
     <Compile Include="Helper\Agency.cs" />
+    <Compile Include="Helper\apiClientProvider.cs" />
     <Compile Include="Helper\clsFeedsAndMessages.cs" />
     <Compile Include="Helper\CompanyProfiles.cs" />
     <Compile Include="Helper\CultureHelper.cs" />
@@ -297,11 +301,6 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="Web References\Api.ArchiveMessage\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
-    <Compile Include="Web References\Api.BoardServices\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -2792,11 +2791,6 @@
     <Content Include="Themes\Socioboard\Views\Messages\_TaskMember.cshtml" />
     <Content Include="Themes\Socioboard\Views\Messages\_TaskPartial.cshtml" />
     <Content Include="Themes\Socioboard\Views\Messages\_ViewStart.cshtml" />
-    <None Include="Web References\Api.BoardServices\BoardServices.wsdl" />
-    <None Include="Web References\Api.BoardServices\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <None Include="Web References\Api.BusinessSetting\BusinessSetting.wsdl" />
     <None Include="Web References\Api.BusinessSetting\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -2854,10 +2848,10 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\Api.EwalletWithdrawRequest\EwalletWithdrawRequest.wsdl" />
-    <None Include="Web References\Api.EwalletWithdrawRequest\Reference.map">
+    <Content Include="Web References\Api.EwalletWithdrawRequest\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    </Content>
     <None Include="Web References\Api.FacebookAccount\FacebookAccount.wsdl" />
     <None Include="Web References\Api.FacebookAccount\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -2889,15 +2883,15 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\Api.GooglePlusActivities\GooglePlusActivities.wsdl" />
-    <None Include="Web References\Api.GooglePlusActivities\Reference.map">
+    <Content Include="Web References\Api.GooglePlusActivities\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    </Content>
     <None Include="Web References\Api.GooglePlus\GooglePlus.wsdl" />
-    <None Include="Web References\Api.GooglePlus\Reference.map">
+    <Content Include="Web References\Api.GooglePlus\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    </Content>
     <None Include="Web References\Api.GroupProfile\GroupProfile.wsdl" />
     <None Include="Web References\Api.GroupProfile\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -2929,10 +2923,10 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\Api.InboxMessages\InboxMessages.wsdl" />
-    <None Include="Web References\Api.InboxMessages\Reference.map">
+    <Content Include="Web References\Api.InboxMessages\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    </Content>
     <None Include="Web References\Api.InstagramAccount\InstagramAccount.wsdl" />
     <None Include="Web References\Api.InstagramAccount\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -2974,10 +2968,10 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\Api.LinkedinMessage\LinkedinMessage.wsdl" />
-    <None Include="Web References\Api.LinkedinMessage\Reference.map">
+    <Content Include="Web References\Api.LinkedinMessage\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    </Content>
     <None Include="Web References\Api.Linkedin\Linkedin.wsdl" />
     <None Include="Web References\Api.Linkedin\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -3101,6 +3095,11 @@
     </None>
     <None Include="Web References\Api.DropboxAccount\DropboxAccount.disco" />
     <None Include="Web References\Api.LinkedinCompanyPage\LinkedinCompanyPage.disco" />
+    <None Include="Web References\Api.EwalletWithdrawRequest\EwalletWithdrawRequest.disco" />
+    <None Include="Web References\Api.GooglePlusActivities\GooglePlusActivities.disco" />
+    <None Include="Web References\Api.GooglePlus\GooglePlus.disco" />
+    <None Include="Web References\Api.InboxMessages\InboxMessages.disco" />
+    <None Include="Web References\Api.LinkedinMessage\LinkedinMessage.disco" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -3228,10 +3227,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_CompanyDashboard_CompanyDashboard</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/Services/EwalletWithdrawRequest.asmx%3fwsdl">
+    <WebReferenceUrl Include="http://api.socioboard.com/services/EwalletWithdrawRequest.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.EwalletWithdrawRequest\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/Services/EwalletWithdrawRequest.asmx%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/services/EwalletWithdrawRequest.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -3250,10 +3249,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_FacebookAccount_FacebookAccount</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/Services/GooglePlus.asmx%3fwsdl">
+    <WebReferenceUrl Include="http://api.socioboard.com/services/GooglePlus.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.GooglePlus\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/Services/GooglePlus.asmx%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/services/GooglePlus.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -3261,10 +3260,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_GooglePlus_GooglePlus</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/Services/GooglePlusActivities.asmx%3fwsdl">
+    <WebReferenceUrl Include="http://api.socioboard.com/services/GooglePlusActivities.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.GooglePlusActivities\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/Services/GooglePlusActivities.asmx%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/services/GooglePlusActivities.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -3272,10 +3271,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_GooglePlusActivities_GooglePlusActivities</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/Services/InboxMessages.asmx%3fwsdl">
+    <WebReferenceUrl Include="http://api.socioboard.com/services/InboxMessages.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.InboxMessages\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/Services/InboxMessages.asmx%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/services/InboxMessages.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -3293,6 +3292,17 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_Instagram_Instagram</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://api.socioboard.com/services/LinkedinMessage.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Api.LinkedinMessage\</RelPath>
+      <UpdateFromURL>http://api.socioboard.com/services/LinkedinMessage.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Socioboard_Api_LinkedinMessage_LinkedinMessage</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://api.socioboard.com/Services/MailSender.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
@@ -3326,17 +3336,6 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_Twitter_Twitter</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/Services/BoardServices.asmx%3fwsdl">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.BoardServices\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/Services/BoardServices.asmx%3fwsdl</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_BoardServices_BoardServices</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://api.socioboard.com/Services/Companypage.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
@@ -3832,17 +3831,6 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Socioboard_Api_Linkedin_Linkedin</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://api.socioboard.com/Services/LinkedinMessage.asmx%3fwsdl">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Api.LinkedinMessage\</RelPath>
-      <UpdateFromURL>http://api.socioboard.com/Services/LinkedinMessage.asmx%3fwsdl</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Socioboard_Api_LinkedinMessage_LinkedinMessage</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://api.socioboard.com/Services/Team.asmx%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>

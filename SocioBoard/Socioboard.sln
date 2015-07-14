@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Socioboard", "Socioboard\Socioboard.csproj", "{09C0D321-7AFA-4EB3-8423-3FAE7D4DA720}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobusGooglePlusLib", "SocioboardAPI\Library\GlobusGooglePlusLib\GlobusGooglePlusLib.csproj", "{910F101C-C7E0-47F9-BCB6-CD793362E818}"
@@ -26,8 +28,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Socioboard", "SocioboardAPI\Api.Socioboard.csproj", "{B5C88250-C9CF-47CC-AB17-AAB30CFDBD26}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Socioboard", "Domain.Socioboard\Domain.Socioboard.csproj", "{96ECFB64-A9AC-45F4-85BF-185E9C6A0F53}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoardMeDataServices", "SocioboardAPI\Library\BoardMeDataServices\BoardMeDataServices.csproj", "{137CFF47-12DE-4DE1-99FC-91C62298582A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -199,18 +199,6 @@ Global
 		{96ECFB64-A9AC-45F4-85BF-185E9C6A0F53}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{96ECFB64-A9AC-45F4-85BF-185E9C6A0F53}.Release|x64.ActiveCfg = Release|Any CPU
 		{96ECFB64-A9AC-45F4-85BF-185E9C6A0F53}.Release|x86.ActiveCfg = Release|Any CPU
-		{137CFF47-12DE-4DE1-99FC-91C62298582A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{137CFF47-12DE-4DE1-99FC-91C62298582A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{137CFF47-12DE-4DE1-99FC-91C62298582A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{137CFF47-12DE-4DE1-99FC-91C62298582A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{137CFF47-12DE-4DE1-99FC-91C62298582A}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{137CFF47-12DE-4DE1-99FC-91C62298582A}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{137CFF47-12DE-4DE1-99FC-91C62298582A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{137CFF47-12DE-4DE1-99FC-91C62298582A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{137CFF47-12DE-4DE1-99FC-91C62298582A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{137CFF47-12DE-4DE1-99FC-91C62298582A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{137CFF47-12DE-4DE1-99FC-91C62298582A}.Release|x64.ActiveCfg = Release|Any CPU
-		{137CFF47-12DE-4DE1-99FC-91C62298582A}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+
+  <class name="FacebookFanPage" table="FacebookFanPage" lazy="false">
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="ProfilePageId">
+      <column name="ProfilePageId" />
+    </property>
+    <!--<property name="FacebookAccountId">
+      <column name="FacebookAccountId"  />-->
+    </property>
+    <property name="FanpageCount">
+      <column name="FanpageCount"  />
+    </property>
+   
+    <property name="EntryDate">
+      <column name="EntryDate"  />
+    </property>
+
+    <property name="UserId">
+      <column name="UserId"  />
+    </property>
+
+   
+  </class>
+</hibernate-mapping>

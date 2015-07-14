@@ -73,7 +73,7 @@ namespace Api.Socioboard.App_Start
 
                         ClaimsIdentity identity = new ClaimsIdentity("User");
 
-                        identity.AddClaim(new Claim(ClaimTypes.Name, apiUser.EmailId));
+                        identity.AddClaim(new Claim(ClaimTypes.Name, apiUser.Id.ToString()));
                         
                         //foreach (string claim in user.Claims)
                         //{

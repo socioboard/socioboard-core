@@ -2812,4 +2812,262 @@
   <data name="Socioplex_Shared_SocialSuite_PhoneNumber1" xml:space="preserve">
     <value>02-333-7660</value>
   </data>
+  <data name="JS_Shared_Site_FacebookNotSupportmorethan5000characters" xml:space="preserve">
+    <value>페이스 북 없음 5000 개 이상의 문자를 지원</value>
+  </data>
+  <data name="JS_Shared_Site_LinkedinNotSupportmorethan600characters" xml:space="preserve">
+    <value>링크드 인 600 개 이상의 문자를 지원하지</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseAddaprofiletoInviteaMember" xml:space="preserve">
+    <value>회원을 초대하기 위해 프로파일을 추가하십시오!</value>
+  </data>
+  <data name="JS_Shared_Site_pleaseChecktheURLyouenterediscorrect" xml:space="preserve">
+    <value>사용자가 입력 한 URL이 정확한지 확인하십시오</value>
+  </data>
+  <data name="JS_Shared_Site_Pleaseenteracontacttosearch" xml:space="preserve">
+    <value>검색 할 연락처를 입력 해주세요</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseEnteravalidurl" xml:space="preserve">
+    <value>유효한 URL을 입력하세요</value>
+  </data>
+  <data name="JS_Shared_Site_SelectAProfile" xml:space="preserve">
+    <value>이어야 프로파일을 선택하세요</value>
+  </data>
+  <data name="JS_Shared_Site_TwitterNotSupportmorethan140characters" xml:space="preserve">
+    <value>140 개 이상의 문자를 지원하지 트위터</value>
+  </data>
+  <data name="JS_Shared_Site_UploadImage" xml:space="preserve">
+    <value>파일 확장자는 현재 없습니다. 모든 이미지 파일을 업로드하십시오</value>
+  </data>
+  <data name="Placeholder_Shared_Site_EnterKeywordcontacttosearch" xml:space="preserve">
+    <value>키워드를 입력하거나 검색 연락 ...</value>
+  </data>
+  <data name="Shared_Site_Feeds_Search" xml:space="preserve">
+    <value>검색 피드</value>
+  </data>
+  <data name="Shared_Site_News_Feeds" xml:space="preserve">
+    <value>뉴스 피드</value>
+  </data>
+  <data name="Shared_Site_Posts" xml:space="preserve">
+    <value>게시물</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_EmailalreadyExist" xml:space="preserve">
+    <value>이메일 이미 존재</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_Errorpleasecheck" xml:space="preserve">
+    <value>오류 확인하시기 바랍니다</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_Failed" xml:space="preserve">
+    <value>실패한</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_FileExtentionisnotcurrentPleaseuploadanyimagefile" xml:space="preserve">
+    <value>파일 확장자는 현재 없습니다. 모든 이미지 파일을 업로드하십시오</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_Invalidemail" xml:space="preserve">
+    <value>잘못된 이메일</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_InvalidEmailIdorPassword" xml:space="preserve">
+    <value>잘못된 이메일 또는 비밀번호</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_MailtoresetpasswordhasbeensentSuccessfully" xml:space="preserve">
+    <value>암호를 재설정 메일이 성공적으로 발송되었습니다!</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_NewPasswordandConfirmPasswordmismatch" xml:space="preserve">
+    <value>새 암호와 암호 확인 불일치</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PasswordChangedSuccessfully" xml:space="preserve">
+    <value>비밀번호 성공적으로 변경</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PasswordNotMatch" xml:space="preserve">
+    <value>비밀번호가 일치하지</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseconfirmPassword" xml:space="preserve">
+    <value>암호를 확인하십시오</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenteraProperFirstNamewhichcontainCharacter" xml:space="preserve">
+    <value>문자를 포함하는 적절한 이름을 입력하십시오</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenteraProperLastNamewhichcontainCharacter" xml:space="preserve">
+    <value>문자를 포함하는 적절한 성 (姓)을 입력 해주세요</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenterFirstName" xml:space="preserve">
+    <value>이름을 입력하세요</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenterLastName" xml:space="preserve">
+    <value>성 (姓)을 입력 해주세요</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenterNewEmailId" xml:space="preserve">
+    <value>새로운 이메일을 입력하세요</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenterNewPassword" xml:space="preserve">
+    <value>새 암호를 입력하십시오</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_UpdateSuccessfully" xml:space="preserve">
+    <value>성공적으로 업데이트</value>
+  </data>
+  <data name="JS_Publishing_draft_MessageDeletedsuccessfully" xml:space="preserve">
+    <value>메시지가 성공적으로 삭제</value>
+  </data>
+  <data name="JS_Publishing_draft_Pleaseenteramessagetosave" xml:space="preserve">
+    <value>저장 메시지를 입력하세요</value>
+  </data>
+  <data name="JS_Publishing_Index_PleaseEnteramessage" xml:space="preserve">
+    <value>메시지를 입력하세요</value>
+  </data>
+  <data name="JS_Publishing_Index_PleaseSelectaDate" xml:space="preserve">
+    <value>날짜를 선택하세요</value>
+  </data>
+  <data name="JS_Publishing_Index_PleaseSelectaTime" xml:space="preserve">
+    <value>시간을 선택하세요</value>
+  </data>
+  <data name="JS_Publishing_Index_ThisProfileAlreadyAdded" xml:space="preserve">
+    <value>이 프로필은 이미 추가</value>
+  </data>
+  <data name="JS_Shared_Site_FanPageAddedSuccessfully" xml:space="preserve">
+    <value>팬 페이지 추가 성공</value>
+  </data>
+  <data name="JS_Shared_Site_GroupAddedSuccessfully" xml:space="preserve">
+    <value>그룹이 성공적으로 추가</value>
+  </data>
+  <data name="JS_Shared_Site_Mailalreadysent" xml:space="preserve">
+    <value>메일 이미 전송</value>
+  </data>
+  <data name="JS_Shared_Site_Mailsendsuccessfully" xml:space="preserve">
+    <value>메일이 성공적으로 보내</value>
+  </data>
+  <data name="JS_Shared_Site_plaesewaitwhilewearefetchingpagedata" xml:space="preserve">
+    <value>우리는 페이지 데이터를 가져 오는 동안 기다려주십시오</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseentervalidEmailId" xml:space="preserve">
+    <value>유효한 이메일을 입력하세요</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseentervalidFirstName" xml:space="preserve">
+    <value>유효한 이름을 입력 해주세요</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseentervalidLastName" xml:space="preserve">
+    <value>올바른 성 (姓)을 입력 해주세요</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseSelectaprofile" xml:space="preserve">
+    <value>프로파일을 선택하십시오!</value>
+  </data>
+  <data name="JS_Publishing_Index_PleaseSelectProfilestoScheduledamessage" xml:space="preserve">
+    <value>메시지를 예약에 프로필을 선택하세요</value>
+  </data>
+  <data name="JS_Report_TwitterReportPartial_MySocialScores" xml:space="preserve">
+    <value>내 사회 점수</value>
+  </data>
+  <data name="JS_Report_TwitterReportPartial_NumofEngageandInfluence" xml:space="preserve">
+    <value>민. 의 참여와 영향</value>
+  </data>
+  <data name="JS_UserGroup_Index_ProfileAlreadyExist" xml:space="preserve">
+    <value>당신은 물론이 그룹을 삭제하겠습니까?</value>
+  </data>
+  <data name="JS_UserGroup_PleasechangegroupName" xml:space="preserve">
+    <value>그룹 이름을 변경하십시오</value>
+  </data>
+  <data name="JS_UserGroup_ProfileAlreadyExist" xml:space="preserve">
+    <value>이미 존재 프로필</value>
+  </data>
+  <data name="JS_UserGroup_UserGroupPartial" xml:space="preserve">
+    <value>그룹 이름을 입력하세요</value>
+  </data>
+  <data name="javascript" xml:space="preserve">
+    <value>js/ko</value>
+  </data>
+  <data name="JS_BussinessSetting_Index_BusinessSettingUpdatedSuccessfully" xml:space="preserve">
+    <value>비즈니스 설정이 성공적으로 업데이트되었습니다.</value>
+  </data>
+  <data name="JS_ForgotPassword_ForgotPasswordPartial_PleaseenterEmailId" xml:space="preserve">
+    <value>이메일을 입력하세요</value>
+  </data>
+  <data name="JS_ForgotPassword_ForgotPasswordPartial_PleaseResetyourPasswordbyclickingonResetPasswordLinksenttoyourmail" xml:space="preserve">
+    <value>메일로 전송 암호 재설정 링크를 클릭하여 비밀번호를 재설정하세요</value>
+  </data>
+  <data name="JS_Group_Index_CommentedSuccessfully" xml:space="preserve">
+    <value>성공적으로 댓글</value>
+  </data>
+  <data name="JS_Group_Index_LikedSuccessfully" xml:space="preserve">
+    <value>성공적으로 좋아</value>
+  </data>
+  <data name="JS_Group_Index_PleasewriteinCommentBox" xml:space="preserve">
+    <value>설명 상자에 작성 해주세요</value>
+  </data>
+  <data name="JS_Groups_Index_Pleaseaddgroupfirst" xml:space="preserve">
+    <value>먼저 그룹을 추가하세요</value>
+  </data>
+  <data name="JS_Groups_Index_PleasewriteinComentBox" xml:space="preserve">
+    <value>설명 상자에 작성 해주세요!</value>
+  </data>
+  <data name="JS_Group_Index_UnlikedSuccessfully" xml:space="preserve">
+    <value>유엔은 성공적으로 좋아</value>
+  </data>
+  <data name="JS_site_MessageSentSuccessfully" xml:space="preserve">
+    <value>메시지가 성공적으로 전송</value>
+  </data>
+  <data name="JS_site_ThisAccountAlreadyAdded" xml:space="preserve">
+    <value>이 계정은 이미 추가</value>
+  </data>
+  <data name="Message_InboxPartial_Bio" xml:space="preserve">
+    <value>바이오</value>
+  </data>
+  <data name="Message_InboxPartial_isnowfollowing" xml:space="preserve">
+    <value>지금은 다음과 같다</value>
+  </data>
+  <data name="JS_Discovery_Index_PleaseEnterAKeyword" xml:space="preserve">
+    <value>키워드를 입력하세요</value>
+  </data>
+  <data name="JS_Index_Contact_failure" xml:space="preserve">
+    <value>실패</value>
+  </data>
+  <data name="JS_Index_Contact_Mailhasbeensentsuccessfully" xml:space="preserve">
+    <value>메일이 성공적으로 발송되었습니다</value>
+  </data>
+  <data name="JS_Index_Contact_PleaseentervalidEmailID" xml:space="preserve">
+    <value>유효한 이메일을 입력하세요</value>
+  </data>
+  <data name="JS_Index_Contact_PleaseentervalidFirstName" xml:space="preserve">
+    <value>유효한 이름을 입력 해주세요</value>
+  </data>
+  <data name="JS_Index_Contact_PleaseentervalidLastName" xml:space="preserve">
+    <value>올바른 성 (姓)을 입력 해주세요</value>
+  </data>
+  <data name="JS_Index_Contact_Pleasefillallthefields" xml:space="preserve">
+    <value>모든 필드를 입력하세요</value>
+  </data>
+  <data name="Placeholder_Publishing_Index_PickDate" xml:space="preserve">
+    <value>날짜 선택</value>
+  </data>
+  <data name="Placeholder_Publishing_Index_Typeyourmessagehere" xml:space="preserve">
+    <value>여기에 메시지를 입력</value>
+  </data>
+  <data name="Placeholder_Site_WriteURLtoshrink" xml:space="preserve">
+    <value>축소 URL을 쓰기</value>
+  </data>
+  <data name="ForgotPassword_Placeholder_EnterYourEmail" xml:space="preserve">
+    <value>이메일을 입력</value>
+  </data>
+  <data name="RegistrationPartial_Placeholder_ConfirmPassword" xml:space="preserve">
+    <value>비밀번호 확인</value>
+  </data>
+  <data name="RegistrationPartial_Placeholder_CouponCode" xml:space="preserve">
+    <value>쿠폰 코드 (선택 사항)</value>
+  </data>
+  <data name="Site_Title_Home" xml:space="preserve">
+    <value>집</value>
+  </data>
+  <data name="Site_Title_SearchContact" xml:space="preserve">
+    <value>검색 연락</value>
+  </data>
+  <data name="IndexController_RemainingDays_accountwillexpirein" xml:space="preserve">
+    <value>계정이 만료됩니다</value>
+  </data>
+  <data name="IndexController_RemainingDays_alaccountwillexpireTodaypleaseupgradetopaidplan" xml:space="preserve">
+    <value>계정이 오늘은 지불 계획으로 업그레이드하시기 바랍니다 만료됩니다.</value>
+  </data>
+  <data name="IndexController_RemainingDays_dayspleaseupgradetopaidplan" xml:space="preserve">
+    <value>일, 지불 계획으로 업그레이드하시기 바랍니다.</value>
+  </data>
+  <data name="IndexController_RemainingDays_Yourtrial" xml:space="preserve">
+    <value>평가판</value>
+  </data>
 </root>

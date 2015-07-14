@@ -18,6 +18,7 @@ using GlobusTwitterLib.Twitter.Core.UserMethods;
 using log4net;
 using Ionic.Zlib;
 using Facebook;
+//using System.IO.Compression;
 
 namespace Api.Socioboard.Services
 {
@@ -42,109 +43,111 @@ namespace Api.Socioboard.Services
             string profileid = string.Empty;
             try
             {
-                //  lstDiscoverySearch = dissearchrepo.GetAllSearchKeywordsByUserId(Guid.Parse(UserId), keyword, "facebook");
+                ////  lstDiscoverySearch = dissearchrepo.GetAllSearchKeywordsByUserId(Guid.Parse(UserId), keyword, "facebook");
 
-                FacebookAccountRepository fbAccRepo = new FacebookAccountRepository();
-                List<Domain.Socioboard.Domain.FacebookAccount> asltFbAccount = fbAccRepo.getFbAccounts();
+                //FacebookAccountRepository fbAccRepo = new FacebookAccountRepository();
+                //List<Domain.Socioboard.Domain.FacebookAccount> asltFbAccount = fbAccRepo.getFbAccounts();
               
-                #region Added Sumit Gupta [27/01/15]
-                string accesstoken = string.Empty;
-                foreach (Domain.Socioboard.Domain.FacebookAccount item in asltFbAccount)
-                {
-                    try
-                    {
-                        FacebookClient fb = new FacebookClient();
-                        fb.AccessToken = item.AccessToken;
+                //#region Added Sumit Gupta [27/01/15]
+                //string accesstoken = string.Empty;
+                //foreach (Domain.Socioboard.Domain.FacebookAccount item in asltFbAccount)
+                //{
+                //    try
+                //    {
+                //        FacebookClient fb = new FacebookClient();
+                //        fb.AccessToken = item.AccessToken;
 
-                        dynamic me = fb.Get("v2.0/me");
-                        string id = me["id"].ToString();
-                        accesstoken = item.AccessToken;
-                        break;
-                    }
-                    catch (Exception ex)
-                    {
+                //        dynamic me = fb.Get("v2.0/me");
+                //        string id = me["id"].ToString();
+                //        accesstoken = item.AccessToken;
+                //        break;
+                //    }
+                //    catch (Exception ex)
+                //    {
 
-                    }
+                //    }
 
-                }
-                #endregion
+                //}
+                //#endregion
 
-                ////Access Token HARD CODED temporarily
-                //accesstoken = "CAAKMrAl97iIBAD9MqfWtfjIxwFVteGCLVZBsoHpc1TZCH8Kf3KQuMebkbNYLb282cUTisu6iGZBiZAzzwxWvDhh20vCzs5mZCFZBblZBXu40BQisUjoOCZARUQklHBiK3Cx7DOgdXtbvupC4xJ1VpPjKspwiZBRzNYncjgQAyUqd5sGsXUDHcqKy0UBYkmbfq7QZCFgpyG5icOPeMhRb4TXJaic7UF7B1WHLhw2A5EW0kb3AZDZD";
+                //////Access Token HARD CODED temporarily
+                ////accesstoken = "CAAKMrAl97iIBAD9MqfWtfjIxwFVteGCLVZBsoHpc1TZCH8Kf3KQuMebkbNYLb282cUTisu6iGZBiZAzzwxWvDhh20vCzs5mZCFZBblZBXu40BQisUjoOCZARUQklHBiK3Cx7DOgdXtbvupC4xJ1VpPjKspwiZBRzNYncjgQAyUqd5sGsXUDHcqKy0UBYkmbfq7QZCFgpyG5icOPeMhRb4TXJaic7UF7B1WHLhw2A5EW0kb3AZDZD";
 
-                string facebookSearchUrl = "https://graph.facebook.com/search?q=" + keyword + " &type=post&access_token=" + accesstoken + "&limit=100";
-                var facerequest = (HttpWebRequest)WebRequest.Create(facebookSearchUrl);
-                facerequest.Method = "GET";
-                string outputface = string.Empty;
-                using (var response = facerequest.GetResponse())
-                {
-                    using (var stream = new StreamReader(response.GetResponseStream(), Encoding.GetEncoding(1252)))
-                    {
-                        outputface = stream.ReadToEnd();
-                    }
-                }
-                if (!outputface.StartsWith("["))
-                    outputface = "[" + outputface + "]";
-                JArray facebookSearchResult = JArray.Parse(outputface);
-                foreach (var item in facebookSearchResult)
-                {
-                    var data = item["data"];
+                //string facebookSearchUrl = "https://graph.facebook.com/search?q=" + keyword + " &type=post&access_token=" + accesstoken + "&limit=100";
+                //var facerequest = (HttpWebRequest)WebRequest.Create(facebookSearchUrl);
+                //facerequest.Method = "GET";
+                //string outputface = string.Empty;
+                //using (var response = facerequest.GetResponse())
+                //{
+                //    using (var stream = new StreamReader(response.GetResponseStream(), Encoding.GetEncoding(1252)))
+                //    {
+                //        outputface = stream.ReadToEnd();
+                //    }
+                //}
+                //if (!outputface.StartsWith("["))
+                //    outputface = "[" + outputface + "]";
+                //JArray facebookSearchResult = JArray.Parse(outputface);
+                //foreach (var item in facebookSearchResult)
+                //{
+                //    var data = item["data"];
 
-                    foreach (var chile in data)
-                    {
-                        try
-                        {
-                            objDiscoverySearch = new Domain.Socioboard.Domain.DiscoverySearch();
-                            objDiscoverySearch.SearchKeyword = keyword;
-                            objDiscoverySearch.Network = "facebook";
-                            objDiscoverySearch.Id = Guid.NewGuid();
-                            objDiscoverySearch.UserId = Guid.Parse(UserId);
+                //    foreach (var chile in data)
+                //    {
+                //        try
+                //        {
+                //            objDiscoverySearch = new Domain.Socioboard.Domain.DiscoverySearch();
+                //            objDiscoverySearch.SearchKeyword = keyword;
+                //            objDiscoverySearch.Network = "facebook";
+                //            objDiscoverySearch.Id = Guid.NewGuid();
+                //            objDiscoverySearch.UserId = Guid.Parse(UserId);
 
-                            if (!dissearchrepo.isKeywordPresentforNetwork(objDiscoverySearch.SearchKeyword, objDiscoverySearch.Network))
-                            {
-                                dissearchrepo.addNewSearchResult(objDiscoverySearch);
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-                        try
-                        {
-                            Domain.Socioboard.Domain.DiscoverySearch objSearchHistory = new Domain.Socioboard.Domain.DiscoverySearch();
-                            objSearchHistory.CreatedTime = DateTime.Parse(chile["created_time"].ToString());
-                            objSearchHistory.EntryDate = DateTime.Now;
-                            objSearchHistory.FromId = chile["from"]["id"].ToString();
-                            try
-                            {
-                                objSearchHistory.FromName = chile["from"]["name"].ToString();
-                            }
-                            catch { }
-                            try
-                            {
-                                objSearchHistory.ProfileImageUrl = "http://graph.facebook.com/" + chile["from"]["id"] + "/picture?type=small";
-                            }
-                            catch { }
-                            objSearchHistory.SearchKeyword = keyword;
-                            objSearchHistory.Network = "facebook";
-                            try
-                            {
-                                objSearchHistory.Message = chile["message"].ToString();
-                            }
-                            catch { }
-                            try
-                            {
-                                objSearchHistory.MessageId = chile["id"].ToString();
-                            }
-                            catch { }
-                            objSearchHistory.Id = Guid.NewGuid();
-                            objSearchHistory.UserId = Guid.Parse(UserId);
-                            lstDiscoverySearch.Add(objSearchHistory);
-                        }
-                        catch { }
-                    }
-                }
-                return new JavaScriptSerializer().Serialize(lstDiscoverySearch);
+                //            if (!dissearchrepo.isKeywordPresentforNetwork(objDiscoverySearch.SearchKeyword, objDiscoverySearch.Network))
+                //            {
+                //                dissearchrepo.addNewSearchResult(objDiscoverySearch);
+                //            }
+                //        }
+                //        catch (Exception ex)
+                //        {
+                //            Console.WriteLine(ex.StackTrace);
+                //        }
+                //        try
+                //        {
+                //            Domain.Socioboard.Domain.DiscoverySearch objSearchHistory = new Domain.Socioboard.Domain.DiscoverySearch();
+                //            objSearchHistory.CreatedTime = DateTime.Parse(chile["created_time"].ToString());
+                //            objSearchHistory.EntryDate = DateTime.Now;
+                //            objSearchHistory.FromId = chile["from"]["id"].ToString();
+                //            try
+                //            {
+                //                objSearchHistory.FromName = chile["from"]["name"].ToString();
+                //            }
+                //            catch { }
+                //            try
+                //            {
+                //                objSearchHistory.ProfileImageUrl = "http://graph.facebook.com/" + chile["from"]["id"] + "/picture?type=small";
+                //            }
+                //            catch { }
+                //            objSearchHistory.SearchKeyword = keyword;
+                //            objSearchHistory.Network = "facebook";
+                //            try
+                //            {
+                //                objSearchHistory.Message = chile["message"].ToString();
+                //            }
+                //            catch { }
+                //            try
+                //            {
+                //                objSearchHistory.MessageId = chile["id"].ToString();
+                //            }
+                //            catch { }
+                //            objSearchHistory.Id = Guid.NewGuid();
+                //            objSearchHistory.UserId = Guid.Parse(UserId);
+                //            lstDiscoverySearch.Add(objSearchHistory);
+                //        }
+                //        catch { }
+                //    }
+                //}
+                List<Domain.Socioboard.Domain.DiscoverySearch> fb_data = FbDiscoverySearchHelper.ScraperHasTage(keyword);
+
+                return new JavaScriptSerializer().Serialize(fb_data);
             }
             catch (Exception ex)
             {
@@ -380,6 +383,47 @@ namespace Api.Socioboard.Services
                 Console.WriteLine(ex.StackTrace);
                 return new JavaScriptSerializer().Serialize("Please try Again");
             }
+        }
+
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+        public string DiscoverySearchGplus(string UserId, string keyword)
+        {
+            List<Domain.Socioboard.Domain.DiscoverySearch> GplusDiscoverySearch = new List<Domain.Socioboard.Domain.DiscoverySearch>();
+            string profileid = string.Empty;
+            try
+            {
+                string searchResultObj = GplusDiscoverySearchHelper.GooglePlus(keyword);
+                GooglePlusAccountRepository gplusAccRepo = new GooglePlusAccountRepository();
+                ArrayList alst = gplusAccRepo.getAllGooglePlusAccounts();
+
+                GlobusGooglePlusLib.Authentication.oAuthToken oauth = new GlobusGooglePlusLib.Authentication.oAuthToken();
+                GooglePlusActivities obj = new GooglePlusActivities();
+
+                JObject GplusActivities = JObject.Parse(GplusDiscoverySearchHelper.GooglePlus(keyword));
+
+                foreach (JObject gobj in JArray.Parse(GplusActivities["items"].ToString()))
+                {
+                    Domain.Socioboard.Domain.DiscoverySearch gpfeed = new Domain.Socioboard.Domain.DiscoverySearch();
+                    gpfeed.Id = Guid.NewGuid();
+
+                    try
+                    {
+                        gpfeed.MessageId = gobj["url"].ToString();
+                        gpfeed.CreatedTime = DateTime.Parse(gobj["published"].ToString());
+                        gpfeed.Message = gobj["title"].ToString();
+                        gpfeed.FromId = gobj["actor"]["id"].ToString();
+                        gpfeed.FromName = gobj["actor"]["displayName"].ToString();
+                        gpfeed.ProfileImageUrl = gobj["actor"]["image"]["url"].ToString();
+                    }
+                    catch { }
+
+                    GplusDiscoverySearch.Add(gpfeed);
+                }
+            }
+            catch { }
+            return new JavaScriptSerializer().Serialize(GplusDiscoverySearch);
         }
 
         #region Commented by Antima

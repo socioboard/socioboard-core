@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AddRequestToWithdraw">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WithdrawAmount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PaymentMethod" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PaypalEmail" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddRequestToWithdrawResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddRequestToWithdrawSoapIn">
+    <wsdl:part name="parameters" element="tns:AddRequestToWithdraw" />
+  </wsdl:message>
+  <wsdl:message name="AddRequestToWithdrawSoapOut">
+    <wsdl:part name="parameters" element="tns:AddRequestToWithdrawResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddRequestToWithdrawHttpGetIn">
+    <wsdl:part name="WithdrawAmount" type="s:string" />
+    <wsdl:part name="PaymentMethod" type="s:string" />
+    <wsdl:part name="PaypalEmail" type="s:string" />
+    <wsdl:part name="Status" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddRequestToWithdrawHttpGetOut" />
+  <wsdl:message name="AddRequestToWithdrawHttpPostIn">
+    <wsdl:part name="WithdrawAmount" type="s:string" />
+    <wsdl:part name="PaymentMethod" type="s:string" />
+    <wsdl:part name="PaypalEmail" type="s:string" />
+    <wsdl:part name="Status" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddRequestToWithdrawHttpPostOut" />
+  <wsdl:portType name="EwalletWithdrawRequestSoap">
+    <wsdl:operation name="AddRequestToWithdraw">
+      <wsdl:input message="tns:AddRequestToWithdrawSoapIn" />
+      <wsdl:output message="tns:AddRequestToWithdrawSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="EwalletWithdrawRequestHttpGet">
+    <wsdl:operation name="AddRequestToWithdraw">
+      <wsdl:input message="tns:AddRequestToWithdrawHttpGetIn" />
+      <wsdl:output message="tns:AddRequestToWithdrawHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="EwalletWithdrawRequestHttpPost">
+    <wsdl:operation name="AddRequestToWithdraw">
+      <wsdl:input message="tns:AddRequestToWithdrawHttpPostIn" />
+      <wsdl:output message="tns:AddRequestToWithdrawHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EwalletWithdrawRequestSoap" type="tns:EwalletWithdrawRequestSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddRequestToWithdraw">
+      <soap:operation soapAction="http://tempuri.org/AddRequestToWithdraw" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EwalletWithdrawRequestSoap12" type="tns:EwalletWithdrawRequestSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddRequestToWithdraw">
+      <soap12:operation soapAction="http://tempuri.org/AddRequestToWithdraw" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EwalletWithdrawRequestHttpGet" type="tns:EwalletWithdrawRequestHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="AddRequestToWithdraw">
+      <http:operation location="/AddRequestToWithdraw" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EwalletWithdrawRequestHttpPost" type="tns:EwalletWithdrawRequestHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="AddRequestToWithdraw">
+      <http:operation location="/AddRequestToWithdraw" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EwalletWithdrawRequest">
+    <wsdl:port name="EwalletWithdrawRequestSoap" binding="tns:EwalletWithdrawRequestSoap">
+      <soap:address location="http://api.socioboard.com/services/EwalletWithdrawRequest.asmx" />
+    </wsdl:port>
+    <wsdl:port name="EwalletWithdrawRequestSoap12" binding="tns:EwalletWithdrawRequestSoap12">
+      <soap12:address location="http://api.socioboard.com/services/EwalletWithdrawRequest.asmx" />
+    </wsdl:port>
+    <wsdl:port name="EwalletWithdrawRequestHttpGet" binding="tns:EwalletWithdrawRequestHttpGet">
+      <http:address location="http://api.socioboard.com/services/EwalletWithdrawRequest.asmx" />
+    </wsdl:port>
+    <wsdl:port name="EwalletWithdrawRequestHttpPost" binding="tns:EwalletWithdrawRequestHttpPost">
+      <http:address location="http://api.socioboard.com/services/EwalletWithdrawRequest.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

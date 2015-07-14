@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="getgoogleplusActivity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getgoogleplusActivityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getgoogleplusActivityResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getgoogleplusActivitySoapIn">
+    <wsdl:part name="parameters" element="tns:getgoogleplusActivity" />
+  </wsdl:message>
+  <wsdl:message name="getgoogleplusActivitySoapOut">
+    <wsdl:part name="parameters" element="tns:getgoogleplusActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="getgoogleplusActivityHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getgoogleplusActivityHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getgoogleplusActivityHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getgoogleplusActivityHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="GooglePlusActivitiesSoap">
+    <wsdl:operation name="getgoogleplusActivity">
+      <wsdl:input message="tns:getgoogleplusActivitySoapIn" />
+      <wsdl:output message="tns:getgoogleplusActivitySoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="GooglePlusActivitiesHttpGet">
+    <wsdl:operation name="getgoogleplusActivity">
+      <wsdl:input message="tns:getgoogleplusActivityHttpGetIn" />
+      <wsdl:output message="tns:getgoogleplusActivityHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="GooglePlusActivitiesHttpPost">
+    <wsdl:operation name="getgoogleplusActivity">
+      <wsdl:input message="tns:getgoogleplusActivityHttpPostIn" />
+      <wsdl:output message="tns:getgoogleplusActivityHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GooglePlusActivitiesSoap" type="tns:GooglePlusActivitiesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getgoogleplusActivity">
+      <soap:operation soapAction="http://tempuri.org/getgoogleplusActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GooglePlusActivitiesSoap12" type="tns:GooglePlusActivitiesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getgoogleplusActivity">
+      <soap12:operation soapAction="http://tempuri.org/getgoogleplusActivity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GooglePlusActivitiesHttpGet" type="tns:GooglePlusActivitiesHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="getgoogleplusActivity">
+      <http:operation location="/getgoogleplusActivity" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GooglePlusActivitiesHttpPost" type="tns:GooglePlusActivitiesHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="getgoogleplusActivity">
+      <http:operation location="/getgoogleplusActivity" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GooglePlusActivities">
+    <wsdl:port name="GooglePlusActivitiesSoap" binding="tns:GooglePlusActivitiesSoap">
+      <soap:address location="http://api.socioboard.com/services/GooglePlusActivities.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GooglePlusActivitiesSoap12" binding="tns:GooglePlusActivitiesSoap12">
+      <soap12:address location="http://api.socioboard.com/services/GooglePlusActivities.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GooglePlusActivitiesHttpGet" binding="tns:GooglePlusActivitiesHttpGet">
+      <http:address location="http://api.socioboard.com/services/GooglePlusActivities.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GooglePlusActivitiesHttpPost" binding="tns:GooglePlusActivitiesHttpPost">
+      <http:address location="http://api.socioboard.com/services/GooglePlusActivities.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

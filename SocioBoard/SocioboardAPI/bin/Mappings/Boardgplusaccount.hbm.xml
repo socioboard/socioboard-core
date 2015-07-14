@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="Domain.Socioboard" namespace="Domain.Socioboard.Domain" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Boardgplusaccount" table="boardgplusaccount" lazy="true" >
+    <id name="Id" column="Id" />
+    <property name="Pageid">
+      <column name="PageId" sql-type="varchar(500)" not-null="true" />
+    </property>
+    <property name="Circledbycount">
+      <column name="CircledByCount" sql-type="varchar(50)" not-null="false" />
+    </property>
+    <property name="Plusonecount">
+      <column name="PlusOneCount" sql-type="varchar(50)" not-null="false" />
+    </property>
+    <property name="Displayname">
+      <column name="DisplayName" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Boardid">
+      <column name="BoardId" sql-type="binary(16)" not-null="true" />
+    </property>
+    <property name="Nickname">
+      <column name="Nickname" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Aboutme">
+      <column name="AboutMe" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Pageurl">
+      <column name="PageUrl" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Profileimageurl">
+      <column name="ProfileImageUrl" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Tagline">
+      <column name="Tagline" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Coverphotourl">
+      <column name="CoverPhotoUrl" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Entrydate">
+      <column name="EntryDate" sql-type="datetime" not-null="false" />
+    </property>
+  </class>
+</hibernate-mapping>

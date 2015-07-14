@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+
+  <class name="TwitterAccountFollowers" table="TwitterAccountFollowers" lazy="false">
+    <id name="Id" column="Id" >
+      <generator class="guid"/>
+    </id>
+    <property name="UserId">
+      <column name="UserId" />
+    </property>
+    <!--<property name="TwitterAccountId">
+      <column name="TwitterAccountId"  />
+    </property>-->
+   
+    <property name="FollowersCount">
+      <column name="FollowersCount"  />
+    </property>
+
+    <property name="FollowingsCount">
+      <column name="FollowingsCount"  />
+    </property>
+
+    <property name="ProfileId">
+      <column name="ProfileId"  />
+    </property>
+  
+    <property name="EntryDate">
+      <column name="EntryDate"  />
+    </property>
+
+
+
+  </class>
+</hibernate-mapping>

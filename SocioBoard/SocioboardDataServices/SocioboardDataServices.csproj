@@ -186,7 +186,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Web References\Api.DiscoverySearch\DiscoverySearch.wsdl" />
+    <None Include="Web References\Api.DiscoverySearch\discoverySearch.wsdl" />
     <None Include="Web References\Api.DiscoverySearch\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -310,10 +310,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:6361/Services/DiscoverySearch.asmx">
+    <WebReferenceUrl Include="http://api.socioboard.com/services/discoverySearch.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Api.DiscoverySearch\</RelPath>
-      <UpdateFromURL>http://localhost:6361/Services/DiscoverySearch.asmx</UpdateFromURL>
+      <UpdateFromURL>http://api.socioboard.com/services/discoverySearch.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -617,7 +617,7 @@
     <None Include="Web References\Api.SentimentalAnalysis\SentimentalAnalysis.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\Api.DiscoverySearch\DiscoverySearch.disco" />
+    <None Include="Web References\Api.DiscoverySearch\discoverySearch.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

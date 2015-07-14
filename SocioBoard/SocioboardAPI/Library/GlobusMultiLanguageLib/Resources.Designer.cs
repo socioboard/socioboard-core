@@ -1087,6 +1087,123 @@ namespace GlobusMultiLanguageLib {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to With Documantal SM, engaging your followers is so easy, fun, and insightful now. Get started today!.
+        /// </summary>
+        public static string Documantal_Index_Index_EndHeading {
+            get {
+                return ResourceManager.GetString("Documantal_Index_Index_EndHeading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Documantal SM makes it easy to keep tabs on social conversations and provides everything you need to efficiently engage your audience..
+        /// </summary>
+        public static string Documantal_Index_Index_featureHeading {
+            get {
+                return ResourceManager.GetString("Documantal_Index_Index_featureHeading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enjoy Documantal SM risk-free for 30 days!.
+        /// </summary>
+        public static string Documantal_Index_Index_freeSubscirption {
+            get {
+                return ResourceManager.GetString("Documantal_Index_Index_freeSubscirption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /Themes/Documantal/Contents/img/signup-butn.png.
+        /// </summary>
+        public static string Documantal_Index_Index_ImgSignupforFree {
+            get {
+                return ResourceManager.GetString("Documantal_Index_Index_ImgSignupforFree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WHY PEOPLE LOVE DOCUMANTAL SM.
+        /// </summary>
+        public static string Documantal_Index_Index_LoveSocioboard {
+            get {
+                return ResourceManager.GetString("Documantal_Index_Index_LoveSocioboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get On Board to See What Our Social Media Marketing Suite Can Do for You.
+        /// </summary>
+        public static string Documantal_Index_Index_OnBoard1 {
+            get {
+                return ResourceManager.GetString("Documantal_Index_Index_OnBoard1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Documantal SM offers you an advanced, easy, versatile, customizable and scalable open-source social media marketing tool to drive your brand to newer heights.
+        /// </summary>
+        public static string Documantal_Index_Index_SocioDescription1 {
+            get {
+                return ResourceManager.GetString("Documantal_Index_Index_SocioDescription1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Documantal SM allows you to listen to, analyze and engage your followers in unusual ways across   numerous social media accounts.
+        /// </summary>
+        public static string Documantal_Index_Index_Sociodescription21 {
+            get {
+                return ResourceManager.GetString("Documantal_Index_Index_Sociodescription21", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Documantal SM offers detailed insights for customers.
+        /// </summary>
+        public static string Documantal_Index_Index_SubHeadingInsight1 {
+            get {
+                return ResourceManager.GetString("Documantal_Index_Index_SubHeadingInsight1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We build social technology which helps businesses and brands to better understand social media and harness its real power..
+        /// </summary>
+        public static string Documantal_Index_Index_WeBuilt {
+            get {
+                return ResourceManager.GetString("Documantal_Index_Index_WeBuilt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to World&apos;s #1 Open Source Social Technology Enabler!.
+        /// </summary>
+        public static string Documantal_Index_Index_WorldsNoOne {
+            get {
+                return ResourceManager.GetString("Documantal_Index_Index_WorldsNoOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Documantal SM offers to make group by virtue of which users can reach out to each other using a highly efficient collaboration mechanism.Groups serve as a platform to share information with other team members and increase workability and efficiency..
+        /// </summary>
+        public static string Documantal_Shared_Site_InvideFreindsDescription {
+            get {
+                return ResourceManager.GetString("Documantal_Shared_Site_InvideFreindsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Documantal SM- Generate More leads on Social Media| Social CRM | Social Media CMS.
+        /// </summary>
+        public static string Documantal_Shared_Socialsuite_Title {
+            get {
+                return ResourceManager.GetString("Documantal_Shared_Socialsuite_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reply.
         /// </summary>
         public static string Feed_Index_Reply {
@@ -1353,6 +1470,15 @@ namespace GlobusMultiLanguageLib {
         public static string ForgotPassword_ForgetPasswordPartial_Submit {
             get {
                 return ResourceManager.GetString("ForgotPassword_ForgetPasswordPartial_Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Your Email.
+        /// </summary>
+        public static string ForgotPassword_Placeholder_EnterYourEmail {
+            get {
+                return ResourceManager.GetString("ForgotPassword_Placeholder_EnterYourEmail", resourceCulture);
             }
         }
         
@@ -4119,6 +4245,655 @@ namespace GlobusMultiLanguageLib {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to account will expire in.
+        /// </summary>
+        public static string IndexController_RemainingDays_accountwillexpirein {
+            get {
+                return ResourceManager.GetString("IndexController_RemainingDays_accountwillexpirein", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to account will expire Today please upgrade to paid plan..
+        /// </summary>
+        public static string IndexController_RemainingDays_alaccountwillexpireTodaypleaseupgradetopaidplan {
+            get {
+                return ResourceManager.GetString("IndexController_RemainingDays_alaccountwillexpireTodaypleaseupgradetopaidplan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to days, please upgrade to paid plan..
+        /// </summary>
+        public static string IndexController_RemainingDays_dayspleaseupgradetopaidplan {
+            get {
+                return ResourceManager.GetString("IndexController_RemainingDays_dayspleaseupgradetopaidplan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your trial.
+        /// </summary>
+        public static string IndexController_RemainingDays_Yourtrial {
+            get {
+                return ResourceManager.GetString("IndexController_RemainingDays_Yourtrial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to js.
+        /// </summary>
+        public static string javascript {
+            get {
+                return ResourceManager.GetString("javascript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Business Setting Updated Successfully..
+        /// </summary>
+        public static string JS_BussinessSetting_Index_BusinessSettingUpdatedSuccessfully {
+            get {
+                return ResourceManager.GetString("JS_BussinessSetting_Index_BusinessSettingUpdatedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Enter A Keyword.
+        /// </summary>
+        public static string JS_Discovery_Index_PleaseEnterAKeyword {
+            get {
+                return ResourceManager.GetString("JS_Discovery_Index_PleaseEnterAKeyword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter EmailId.
+        /// </summary>
+        public static string JS_ForgotPassword_ForgotPasswordPartial_PleaseenterEmailId {
+            get {
+                return ResourceManager.GetString("JS_ForgotPassword_ForgotPasswordPartial_PleaseenterEmailId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Reset your Password by clicking on Reset Password Link sent to your mail.
+        /// </summary>
+        public static string JS_ForgotPassword_ForgotPasswordPartial_PleaseResetyourPasswordbyclickingonResetPasswordLinksenttoyourmail {
+            get {
+                return ResourceManager.GetString("JS_ForgotPassword_ForgotPasswordPartial_PleaseResetyourPasswordbyclickingonResetP" +
+                        "asswordLinksenttoyourmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commented Successfully.
+        /// </summary>
+        public static string JS_Group_Index_CommentedSuccessfully {
+            get {
+                return ResourceManager.GetString("JS_Group_Index_CommentedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Liked Successfully.
+        /// </summary>
+        public static string JS_Group_Index_LikedSuccessfully {
+            get {
+                return ResourceManager.GetString("JS_Group_Index_LikedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please write in CommentBox!.
+        /// </summary>
+        public static string JS_Group_Index_PleasewriteinCommentBox {
+            get {
+                return ResourceManager.GetString("JS_Group_Index_PleasewriteinCommentBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unliked Successfully.
+        /// </summary>
+        public static string JS_Group_Index_UnlikedSuccessfully {
+            get {
+                return ResourceManager.GetString("JS_Group_Index_UnlikedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please add group first.
+        /// </summary>
+        public static string JS_Groups_Index_Pleaseaddgroupfirst {
+            get {
+                return ResourceManager.GetString("JS_Groups_Index_Pleaseaddgroupfirst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please write in CommentBox!.
+        /// </summary>
+        public static string JS_Groups_Index_PleasewriteinComentBox {
+            get {
+                return ResourceManager.GetString("JS_Groups_Index_PleasewriteinComentBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to failure.
+        /// </summary>
+        public static string JS_Index_Contact_failure {
+            get {
+                return ResourceManager.GetString("JS_Index_Contact_failure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mail has been sent successfully.
+        /// </summary>
+        public static string JS_Index_Contact_Mailhasbeensentsuccessfully {
+            get {
+                return ResourceManager.GetString("JS_Index_Contact_Mailhasbeensentsuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter valid Email ID.
+        /// </summary>
+        public static string JS_Index_Contact_PleaseentervalidEmailID {
+            get {
+                return ResourceManager.GetString("JS_Index_Contact_PleaseentervalidEmailID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter valid First Name.
+        /// </summary>
+        public static string JS_Index_Contact_PleaseentervalidFirstName {
+            get {
+                return ResourceManager.GetString("JS_Index_Contact_PleaseentervalidFirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter valid Last Name.
+        /// </summary>
+        public static string JS_Index_Contact_PleaseentervalidLastName {
+            get {
+                return ResourceManager.GetString("JS_Index_Contact_PleaseentervalidLastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please fill all the fields.
+        /// </summary>
+        public static string JS_Index_Contact_Pleasefillallthefields {
+            get {
+                return ResourceManager.GetString("JS_Index_Contact_Pleasefillallthefields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email already Exist.
+        /// </summary>
+        public static string JS_PersonalSetting_Index_EmailalreadyExist {
+            get {
+                return ResourceManager.GetString("JS_PersonalSetting_Index_EmailalreadyExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error please check.
+        /// </summary>
+        public static string JS_PersonalSetting_Index_Errorpleasecheck {
+            get {
+                return ResourceManager.GetString("JS_PersonalSetting_Index_Errorpleasecheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed.
+        /// </summary>
+        public static string JS_PersonalSetting_Index_Failed {
+            get {
+                return ResourceManager.GetString("JS_PersonalSetting_Index_Failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File Extention is not current. Please upload any image file.
+        /// </summary>
+        public static string JS_PersonalSetting_Index_FileExtentionisnotcurrentPleaseuploadanyimagefile {
+            get {
+                return ResourceManager.GetString("JS_PersonalSetting_Index_FileExtentionisnotcurrentPleaseuploadanyimagefile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid email.
+        /// </summary>
+        public static string JS_PersonalSetting_Index_Invalidemail {
+            get {
+                return ResourceManager.GetString("JS_PersonalSetting_Index_Invalidemail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid EmailId or Password.
+        /// </summary>
+        public static string JS_PersonalSetting_Index_InvalidEmailIdorPassword {
+            get {
+                return ResourceManager.GetString("JS_PersonalSetting_Index_InvalidEmailIdorPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mail to reset password has been sent Successfully!!.
+        /// </summary>
+        public static string JS_PersonalSetting_Index_MailtoresetpasswordhasbeensentSuccessfully {
+            get {
+                return ResourceManager.GetString("JS_PersonalSetting_Index_MailtoresetpasswordhasbeensentSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Password and Confirm Password mismatch.
+        /// </summary>
+        public static string JS_PersonalSetting_Index_NewPasswordandConfirmPasswordmismatch {
+            get {
+                return ResourceManager.GetString("JS_PersonalSetting_Index_NewPasswordandConfirmPasswordmismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password Changed Successfully.
+        /// </summary>
+        public static string JS_PersonalSetting_Index_PasswordChangedSuccessfully {
+            get {
+                return ResourceManager.GetString("JS_PersonalSetting_Index_PasswordChangedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password Not Match.
+        /// </summary>
+        public static string JS_PersonalSetting_Index_PasswordNotMatch {
+            get {
+                return ResourceManager.GetString("JS_PersonalSetting_Index_PasswordNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please confirm Password.
+        /// </summary>
+        public static string JS_PersonalSetting_Index_PleaseconfirmPassword {
+            get {
+                return ResourceManager.GetString("JS_PersonalSetting_Index_PleaseconfirmPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a Proper First Name which contain Character.
+        /// </summary>
+        public static string JS_PersonalSetting_Index_PleaseenteraProperFirstNamewhichcontainCharacter {
+            get {
+                return ResourceManager.GetString("JS_PersonalSetting_Index_PleaseenteraProperFirstNamewhichcontainCharacter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a Proper Last Name which contain Character.
+        /// </summary>
+        public static string JS_PersonalSetting_Index_PleaseenteraProperLastNamewhichcontainCharacter {
+            get {
+                return ResourceManager.GetString("JS_PersonalSetting_Index_PleaseenteraProperLastNamewhichcontainCharacter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter First Name.
+        /// </summary>
+        public static string JS_PersonalSetting_Index_PleaseenterFirstName {
+            get {
+                return ResourceManager.GetString("JS_PersonalSetting_Index_PleaseenterFirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter Last Name.
+        /// </summary>
+        public static string JS_PersonalSetting_Index_PleaseenterLastName {
+            get {
+                return ResourceManager.GetString("JS_PersonalSetting_Index_PleaseenterLastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter New EmailId.
+        /// </summary>
+        public static string JS_PersonalSetting_Index_PleaseenterNewEmailId {
+            get {
+                return ResourceManager.GetString("JS_PersonalSetting_Index_PleaseenterNewEmailId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter New Password.
+        /// </summary>
+        public static string JS_PersonalSetting_Index_PleaseenterNewPassword {
+            get {
+                return ResourceManager.GetString("JS_PersonalSetting_Index_PleaseenterNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Successfully.
+        /// </summary>
+        public static string JS_PersonalSetting_Index_UpdateSuccessfully {
+            get {
+                return ResourceManager.GetString("JS_PersonalSetting_Index_UpdateSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message Deleted successfully.
+        /// </summary>
+        public static string JS_Publishing_draft_MessageDeletedsuccessfully {
+            get {
+                return ResourceManager.GetString("JS_Publishing_draft_MessageDeletedsuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a message to save.
+        /// </summary>
+        public static string JS_Publishing_draft_Pleaseenteramessagetosave {
+            get {
+                return ResourceManager.GetString("JS_Publishing_draft_Pleaseenteramessagetosave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Enter a message.
+        /// </summary>
+        public static string JS_Publishing_Index_PleaseEnteramessage {
+            get {
+                return ResourceManager.GetString("JS_Publishing_Index_PleaseEnteramessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Select a Date.
+        /// </summary>
+        public static string JS_Publishing_Index_PleaseSelectaDate {
+            get {
+                return ResourceManager.GetString("JS_Publishing_Index_PleaseSelectaDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Select a Time.
+        /// </summary>
+        public static string JS_Publishing_Index_PleaseSelectaTime {
+            get {
+                return ResourceManager.GetString("JS_Publishing_Index_PleaseSelectaTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Select Profiles to Scheduled a message.
+        /// </summary>
+        public static string JS_Publishing_Index_PleaseSelectProfilestoScheduledamessage {
+            get {
+                return ResourceManager.GetString("JS_Publishing_Index_PleaseSelectProfilestoScheduledamessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This Profile Already Added.
+        /// </summary>
+        public static string JS_Publishing_Index_ThisProfileAlreadyAdded {
+            get {
+                return ResourceManager.GetString("JS_Publishing_Index_ThisProfileAlreadyAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Social Scores.
+        /// </summary>
+        public static string JS_Report_TwitterReportPartial_MySocialScores {
+            get {
+                return ResourceManager.GetString("JS_Report_TwitterReportPartial_MySocialScores", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Num. of Engage and Influence.
+        /// </summary>
+        public static string JS_Report_TwitterReportPartial_NumofEngageandInfluence {
+            get {
+                return ResourceManager.GetString("JS_Report_TwitterReportPartial_NumofEngageandInfluence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Facebook Not Support more than 5000 characters.
+        /// </summary>
+        public static string JS_Shared_Site_FacebookNotSupportmorethan5000characters {
+            get {
+                return ResourceManager.GetString("JS_Shared_Site_FacebookNotSupportmorethan5000characters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fan Page Added Successfully.
+        /// </summary>
+        public static string JS_Shared_Site_FanPageAddedSuccessfully {
+            get {
+                return ResourceManager.GetString("JS_Shared_Site_FanPageAddedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group Added Successfully.
+        /// </summary>
+        public static string JS_Shared_Site_GroupAddedSuccessfully {
+            get {
+                return ResourceManager.GetString("JS_Shared_Site_GroupAddedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Linkedin Not Support more than 600 characters.
+        /// </summary>
+        public static string JS_Shared_Site_LinkedinNotSupportmorethan600characters {
+            get {
+                return ResourceManager.GetString("JS_Shared_Site_LinkedinNotSupportmorethan600characters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mail already sent.
+        /// </summary>
+        public static string JS_Shared_Site_Mailalreadysent {
+            get {
+                return ResourceManager.GetString("JS_Shared_Site_Mailalreadysent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mail send successfully.
+        /// </summary>
+        public static string JS_Shared_Site_Mailsendsuccessfully {
+            get {
+                return ResourceManager.GetString("JS_Shared_Site_Mailsendsuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please wait while we are fetching page data.
+        /// </summary>
+        public static string JS_Shared_Site_plaesewaitwhilewearefetchingpagedata {
+            get {
+                return ResourceManager.GetString("JS_Shared_Site_plaesewaitwhilewearefetchingpagedata", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Add a profile to Invite a Member !!.
+        /// </summary>
+        public static string JS_Shared_Site_PleaseAddaprofiletoInviteaMember {
+            get {
+                return ResourceManager.GetString("JS_Shared_Site_PleaseAddaprofiletoInviteaMember", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Check the URL you entered is correct.
+        /// </summary>
+        public static string JS_Shared_Site_pleaseChecktheURLyouenterediscorrect {
+            get {
+                return ResourceManager.GetString("JS_Shared_Site_pleaseChecktheURLyouenterediscorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a contact to search.
+        /// </summary>
+        public static string JS_Shared_Site_Pleaseenteracontacttosearch {
+            get {
+                return ResourceManager.GetString("JS_Shared_Site_Pleaseenteracontacttosearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Enter a valid url.
+        /// </summary>
+        public static string JS_Shared_Site_PleaseEnteravalidurl {
+            get {
+                return ResourceManager.GetString("JS_Shared_Site_PleaseEnteravalidurl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter valid EmailId.
+        /// </summary>
+        public static string JS_Shared_Site_PleaseentervalidEmailId {
+            get {
+                return ResourceManager.GetString("JS_Shared_Site_PleaseentervalidEmailId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter valid First Name.
+        /// </summary>
+        public static string JS_Shared_Site_PleaseentervalidFirstName {
+            get {
+                return ResourceManager.GetString("JS_Shared_Site_PleaseentervalidFirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter valid Last Name.
+        /// </summary>
+        public static string JS_Shared_Site_PleaseentervalidLastName {
+            get {
+                return ResourceManager.GetString("JS_Shared_Site_PleaseentervalidLastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Select a profile !!.
+        /// </summary>
+        public static string JS_Shared_Site_PleaseSelectaprofile {
+            get {
+                return ResourceManager.GetString("JS_Shared_Site_PleaseSelectaprofile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Select atleast a Profile.
+        /// </summary>
+        public static string JS_Shared_Site_SelectAProfile {
+            get {
+                return ResourceManager.GetString("JS_Shared_Site_SelectAProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Twitter Not Support more than 140 characters.
+        /// </summary>
+        public static string JS_Shared_Site_TwitterNotSupportmorethan140characters {
+            get {
+                return ResourceManager.GetString("JS_Shared_Site_TwitterNotSupportmorethan140characters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File Extention is not current. Please upload any image file.
+        /// </summary>
+        public static string JS_Shared_Site_UploadImage {
+            get {
+                return ResourceManager.GetString("JS_Shared_Site_UploadImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message Sent Successfully.
+        /// </summary>
+        public static string JS_site_MessageSentSuccessfully {
+            get {
+                return ResourceManager.GetString("JS_site_MessageSentSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This Account Already Added.
+        /// </summary>
+        public static string JS_site_ThisAccountAlreadyAdded {
+            get {
+                return ResourceManager.GetString("JS_site_ThisAccountAlreadyAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you Sure want to delete this Group ?.
+        /// </summary>
+        public static string JS_UserGroup_Index_ProfileAlreadyExist {
+            get {
+                return ResourceManager.GetString("JS_UserGroup_Index_ProfileAlreadyExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please change group Name.
+        /// </summary>
+        public static string JS_UserGroup_PleasechangegroupName {
+            get {
+                return ResourceManager.GetString("JS_UserGroup_PleasechangegroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile Already Exist.
+        /// </summary>
+        public static string JS_UserGroup_ProfileAlreadyExist {
+            get {
+                return ResourceManager.GetString("JS_UserGroup_ProfileAlreadyExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Enter a group Name.
+        /// </summary>
+        public static string JS_UserGroup_UserGroupPartial {
+            get {
+                return ResourceManager.GetString("JS_UserGroup_UserGroupPartial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mentions.
         /// </summary>
         public static string Message__InboxMessageTypePartial_Mentions {
@@ -4232,6 +5007,24 @@ namespace GlobusMultiLanguageLib {
         public static string Message__MessagesRightSideBarPartial_UserTweets {
             get {
                 return ResourceManager.GetString("Message__MessagesRightSideBarPartial_UserTweets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bio.
+        /// </summary>
+        public static string Message_InboxPartial_Bio {
+            get {
+                return ResourceManager.GetString("Message_InboxPartial_Bio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to is now following.
+        /// </summary>
+        public static string Message_InboxPartial_isnowfollowing {
+            get {
+                return ResourceManager.GetString("Message_InboxPartial_isnowfollowing", resourceCulture);
             }
         }
         
@@ -4821,7 +5614,7 @@ namespace GlobusMultiLanguageLib {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sav.
+        ///   Looks up a localized string similar to Save.
         /// </summary>
         public static string Messages_TaskPartial_Save {
             get {
@@ -5271,7 +6064,7 @@ namespace GlobusMultiLanguageLib {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PassWord.
+        ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string PersonalSetting_PersonalSettingPartial_Password {
             get {
@@ -5375,6 +6168,42 @@ namespace GlobusMultiLanguageLib {
         public static string PersonalSetting_PersonalSettingPartial_UpgradeYearly {
             get {
                 return ResourceManager.GetString("PersonalSetting_PersonalSettingPartial_UpgradeYearly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pick Date.
+        /// </summary>
+        public static string Placeholder_Publishing_Index_PickDate {
+            get {
+                return ResourceManager.GetString("Placeholder_Publishing_Index_PickDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type your message here.
+        /// </summary>
+        public static string Placeholder_Publishing_Index_Typeyourmessagehere {
+            get {
+                return ResourceManager.GetString("Placeholder_Publishing_Index_Typeyourmessagehere", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Keyword or contact to search....
+        /// </summary>
+        public static string Placeholder_Shared_Site_EnterKeywordcontacttosearch {
+            get {
+                return ResourceManager.GetString("Placeholder_Shared_Site_EnterKeywordcontacttosearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Write URL to shrink.
+        /// </summary>
+        public static string Placeholder_Site_WriteURLtoshrink {
+            get {
+                return ResourceManager.GetString("Placeholder_Site_WriteURLtoshrink", resourceCulture);
             }
         }
         
@@ -5663,6 +6492,24 @@ namespace GlobusMultiLanguageLib {
         public static string Publishing_SocioQueue_SureDeleteMessage {
             get {
                 return ResourceManager.GetString("Publishing_SocioQueue_SureDeleteMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm Password.
+        /// </summary>
+        public static string RegistrationPartial_Placeholder_ConfirmPassword {
+            get {
+                return ResourceManager.GetString("RegistrationPartial_Placeholder_ConfirmPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Coupon Code(Optional).
+        /// </summary>
+        public static string RegistrationPartial_Placeholder_CouponCode {
+            get {
+                return ResourceManager.GetString("RegistrationPartial_Placeholder_CouponCode", resourceCulture);
             }
         }
         
@@ -7035,6 +7882,15 @@ namespace GlobusMultiLanguageLib {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Feeds Search.
+        /// </summary>
+        public static string Shared_Site_Feeds_Search {
+            get {
+                return ResourceManager.GetString("Shared_Site_Feeds_Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First Name.
         /// </summary>
         public static string Shared_Site_FirstName {
@@ -7166,6 +8022,24 @@ namespace GlobusMultiLanguageLib {
         public static string Shared_Site_NewMessages {
             get {
                 return ResourceManager.GetString("Shared_Site_NewMessages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to News Feeds.
+        /// </summary>
+        public static string Shared_Site_News_Feeds {
+            get {
+                return ResourceManager.GetString("Shared_Site_News_Feeds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posts.
+        /// </summary>
+        public static string Shared_Site_Posts {
+            get {
+                return ResourceManager.GetString("Shared_Site_Posts", resourceCulture);
             }
         }
         
@@ -7625,6 +8499,24 @@ namespace GlobusMultiLanguageLib {
         public static string Shared_Socialsuite_Wiki {
             get {
                 return ResourceManager.GetString("Shared_Socialsuite_Wiki", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string Site_Title_Home {
+            get {
+                return ResourceManager.GetString("Site_Title_Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search Contact.
+        /// </summary>
+        public static string Site_Title_SearchContact {
+            get {
+                return ResourceManager.GetString("Site_Title_SearchContact", resourceCulture);
             }
         }
         

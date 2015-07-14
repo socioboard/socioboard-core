@@ -75,6 +75,7 @@ namespace Api.Socioboard.Services
                 {
                     System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls;
                     fbaccess_token = (JsonObject)fb.Get("/oauth/access_token", parameters);
+
                 }
                 catch (Exception ex)
                 {

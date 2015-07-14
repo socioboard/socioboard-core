@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="Domain.Socioboard" namespace="Domain.Socioboard.Domain" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Boardtwitteraccount" table="boardtwitteraccount" lazy="true" >
+    <id name="Id" column="Id" />
+    <property name="Screenname">
+      <column name="ScreenName" sql-type="varchar(500)" not-null="true" />
+    </property>
+    <property name="Statuscount">
+      <column name="StatusCount" sql-type="varchar(50)" not-null="true" />
+    </property>
+    <property name="Friendscount">
+      <column name="FriendsCount" sql-type="varchar(50)" not-null="true" />
+    </property>
+    <property name="Followerscount">
+      <column name="FollowersCount" sql-type="varchar(50)" not-null="true" />
+    </property>
+    <property name="Favouritescount">
+      <column name="FavouritesCount" sql-type="varchar(50)" not-null="true" />
+    </property>
+    <property name="Boardid">
+      <column name="BoardId" sql-type="binary(16)" not-null="true" />
+    </property>
+    <property name="Twitterprofileid">
+      <column name="TwitterProfileId" sql-type="varchar(500)" not-null="true" />
+    </property>
+    <property name="Profileimageurl">
+      <column name="ProfileImageUrl" sql-type="varchar(5000)" not-null="true" />
+    </property>
+    <property name="Url">
+      <column name="Url" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Tweet">
+      <column name="Tweet" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Photosvideos">
+      <column name="PhotosVideos" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Followingscount">
+      <column name="FollowingsCount" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Entrydate">
+      <column name="EntryDate" sql-type="datetime" not-null="false" />
+    </property>
+  </class>
+</hibernate-mapping>

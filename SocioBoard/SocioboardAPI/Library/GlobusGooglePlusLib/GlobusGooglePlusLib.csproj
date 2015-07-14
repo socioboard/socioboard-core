@@ -31,21 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="StackifyLib, Version=1.12.5589.24146, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\StackifyLib.1.12.0.0\lib\StackifyLib.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="StackifyLib.log4net, Version=1.12.5589.24146, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\StackifyLib.log4net.1.12.0.0\lib\StackifyLib.log4net.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -63,11 +51,9 @@
     <Compile Include="App.Core\MomentsController.cs" />
     <Compile Include="App.Core\PeopleController.cs" />
     <Compile Include="Authentication\oAuthToken.cs" />
-    <Compile Include="Authentication\oAuthTokenBlogger.cs" />
     <Compile Include="Authentication\oAuthTokenGa.cs" />
     <Compile Include="Authentication\oAuthTokenGPlus.cs" />
     <Compile Include="Authentication\oAuthTokenYoutube.cs" />
-    <Compile Include="Blogger.Core\BloggerPost.cs" />
     <Compile Include="GAnalytics.Core\AccountsMethod\Accounts.cs" />
     <Compile Include="GAnalytics.Core\AnalyticsMethod\Analytics.cs" />
     <Compile Include="Gplus.Core\ActivitiesMethod\Activities.cs" />
@@ -85,10 +71,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Debug\Newtonsoft.Json.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

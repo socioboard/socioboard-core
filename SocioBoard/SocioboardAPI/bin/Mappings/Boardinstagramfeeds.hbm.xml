@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="Domain.Socioboard" namespace="Domain.Socioboard.Domain" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Boardinstagramfeeds" table="boardinstagramfeeds" lazy="true" >
+    <id name="Id" column="Id" />
+    <property name="Link">
+      <column name="Link" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Imageurl">
+      <column name="ImageUrl" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Tags">
+      <column name="tags" sql-type="varchar(5000)" not-null="false" />
+    </property>
+    <property name="Createdtime">
+      <column name="CreatedTime" sql-type="datetime" not-null="false" />
+    </property>
+    <property name="Instagramaccountid">
+      <column name="InstagramAccountId" sql-type="binary(16)" not-null="true" />
+    </property>
+    <property name="Feedid">
+      <column name="FeedId" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="Isvisible">
+      <column name="IsVisible" sql-type="bit(1)" not-null="true" />
+    </property>
+    <property name="FromName">
+      <column name="FromName" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="FromId">
+      <column name="FromId" sql-type="varchar(500)" not-null="false" />
+    </property>
+    <property name="FromPicUrl">
+      <column name="FromPicUrl" sql-type="varchar(500)" not-null="false" />
+    </property>
+  </class>
+</hibernate-mapping>

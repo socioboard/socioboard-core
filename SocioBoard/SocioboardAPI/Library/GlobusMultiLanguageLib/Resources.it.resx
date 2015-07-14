@@ -523,7 +523,7 @@
     <value>Favoriti</value>
   </data>
   <data name="Feeds_Panel1Partial_Post" xml:space="preserve">
-    <value>Post</value>
+    <value>posta</value>
   </data>
   <data name="Feeds_Panel1Partial_QuoteMessage" xml:space="preserve">
     <value>Quota Messaggio</value>
@@ -703,7 +703,7 @@
     <value>Messaggi inviati</value>
   </data>
   <data name="Home_HomeUserActivityPartial_TwitterFollowers" xml:space="preserve">
-    <value>Followers Twitter </value>
+    <value>seguaci Twitter</value>
   </data>
   <data name="Home_HomeUserActivityPartial_Updates" xml:space="preserve">
     <value>Aggiornamenti</value>
@@ -715,7 +715,7 @@
     <value>Caricamento. . .</value>
   </data>
   <data name="Home_HomeUserProfilePartial_RecentFollowers" xml:space="preserve">
-    <value>Followers</value>
+    <value>seguaci</value>
   </data>
   <data name="Home_HomeUserProfilePartial_SocialProfiles" xml:space="preserve">
     <value>Profili sociali</value>
@@ -888,7 +888,7 @@ Le Dashboard visualizza le attività dei tuoi amici, come azioni, nuovi messaggi
     <value>Le caratteristiche globali di SocialBoard sono disponibile via web. Le nostre applicazioni Android e IOS lavorano in tandem con l'applicazione web.</value>
   </data>
   <data name="Index_Features_Monitor" xml:space="preserve">
-    <value>Monitor</value>
+    <value>monitore</value>
   </data>
   <data name="Index_Features_Monitoring" xml:space="preserve">
     <value>Monitoraggio costante in tempo reale</value>
@@ -1501,7 +1501,7 @@ Le Dashboard visualizza le attività dei tuoi amici, come azioni, nuovi messaggi
     <value>Archivio Message</value>
   </data>
   <data name="Messages_MessagesLeftSideBarPartial_MyTask" xml:space="preserve">
-    <value>My Task</value>
+    <value>Il mio compito</value>
   </data>
   <data name="Messages_MessagesLeftSideBarPartial_SentMessage" xml:space="preserve">
     <value>Messaggio inviato</value>
@@ -1597,16 +1597,16 @@ Le Dashboard visualizza le attività dei tuoi amici, come azioni, nuovi messaggi
     <value>Salva</value>
   </data>
   <data name="Messages_SmartInboxPartial_UnLike" xml:space="preserve">
-    <value>Unlike</value>
+    <value>a differenza di</value>
   </data>
   <data name="Messages_SocialProfileDetail_Connection" xml:space="preserve">
     <value>Collegamento</value>
   </data>
   <data name="Messages_SocialProfileDetail_Follower" xml:space="preserve">
-    <value>Followers</value>
+    <value>seguaci</value>
   </data>
   <data name="Messages_SocialProfileDetail_Following" xml:space="preserve">
-    <value>Following</value>
+    <value>seguente</value>
   </data>
   <data name="Messages_SocialProfileDetail_Freinds" xml:space="preserve">
     <value>Amici</value>
@@ -1657,13 +1657,13 @@ Le Dashboard visualizza le attività dei tuoi amici, come azioni, nuovi messaggi
     <value>Salva</value>
   </data>
   <data name="Messages_TaskPartial_TaskActivity" xml:space="preserve">
-    <value>ATTIVITÀ TASK </value>
+    <value>task Activity</value>
   </data>
   <data name="Messages_TaskPartial_Tasks" xml:space="preserve">
-    <value>Tasks</value>
+    <value>Compiti</value>
   </data>
   <data name="Messages_TaskPartial_TeamTask" xml:space="preserve">
-    <value>Team Task</value>
+    <value>compito della squadra</value>
   </data>
   <data name="Message__MessagesRightSideBarPartial_Mentions" xml:space="preserve">
     <value>Menzioni</value>
@@ -1906,7 +1906,7 @@ Le Dashboard visualizza le attività dei tuoi amici, come azioni, nuovi messaggi
     <value>Rapporti</value>
   </data>
   <data name="Report_ReportMenuPartial_Status" xml:space="preserve">
-    <value>Status</value>
+    <value>stato</value>
   </data>
   <data name="Report_ReportMenuPartial_TaskMessage" xml:space="preserve">
     <value>Messaggi Task</value>
@@ -1975,19 +1975,19 @@ Le Dashboard visualizza le attività dei tuoi amici, come azioni, nuovi messaggi
     <value>Connessioni</value>
   </data>
   <data name="Shared_Error_Follower" xml:space="preserve">
-    <value>Followers</value>
+    <value>seguaci</value>
   </data>
   <data name="Shared_Error_Followers" xml:space="preserve">
-    <value>Followers</value>
+    <value>seguaci</value>
   </data>
   <data name="Shared_Error_Following" xml:space="preserve">
-    <value>Following</value>
+    <value>seguente</value>
   </data>
   <data name="Shared_Error_Friends" xml:space="preserve">
     <value>Amici</value>
   </data>
   <data name="Shared_Error_Likes" xml:space="preserve">
-    <value>likes</value>
+    <value>piace</value>
   </data>
   <data name="Shared_Error_MyRecentProfile" xml:space="preserve">
     <value>Il mio profilo recente</value>
@@ -1999,7 +1999,7 @@ Le Dashboard visualizza le attività dei tuoi amici, come azioni, nuovi messaggi
     <value>foto</value>
   </data>
   <data name="Shared_Error_Post" xml:space="preserve">
-    <value>post</value>
+    <value>posta</value>
   </data>
   <data name="Shared_Error_RecentMessages" xml:space="preserve">
     <value>messaggio recente</value>
@@ -2068,10 +2068,10 @@ Le Dashboard visualizza le attività dei tuoi amici, come azioni, nuovi messaggi
     <value>Accorciatore URL</value>
   </data>
   <data name="Shared_Site_DashBoard" xml:space="preserve">
-    <value>Dashboard</value>
+    <value>cruscotto</value>
   </data>
   <data name="Shared_Site_Discovery" xml:space="preserve">
-    <value>Discovery</value>
+    <value>scoperta</value>
   </data>
   <data name="Shared_Site_Drafts" xml:space="preserve">
     <value>Bozze</value>
@@ -2107,7 +2107,7 @@ Le Dashboard visualizza le attività dei tuoi amici, come azioni, nuovi messaggi
     <value>Invio</value>
   </data>
   <data name="Shared_Site_LogOut" xml:space="preserve">
-    <value>Log out</value>
+    <value>Uscire</value>
   </data>
   <data name="Shared_Site_Messages" xml:space="preserve">
     <value>Messaggi</value>
@@ -2128,7 +2128,7 @@ Le Dashboard visualizza le attività dei tuoi amici, come azioni, nuovi messaggi
     <value>Pubblicazione</value>
   </data>
   <data name="Shared_Site_Reports" xml:space="preserve">
-    <value>Reports</value>
+    <value>Rapporti</value>
   </data>
   <data name="Shared_Site_SearchContact" xml:space="preserve">
     <value>Ricerca Contato</value>
@@ -2179,7 +2179,7 @@ Le Dashboard visualizza le attività dei tuoi amici, come azioni, nuovi messaggi
     <value>Azienda</value>
   </data>
   <data name="Shared_Socialsuite_Download" xml:space="preserve">
-    <value>Download</value>
+    <value>Scarica</value>
   </data>
   <data name="Shared_Socialsuite_EnterEmailForVideo" xml:space="preserve">
     <value>Inserisci il tuo indirizzo email e ti invieremo un'email video impressionante</value>
@@ -2412,7 +2412,7 @@ Interessati ad utilizzare la versione SocialBoard Enterprise per la tua azienda 
     <value>Cognome</value>
   </data>
   <data name="PersonalSetting_PersonalSettingPartial_Password" xml:space="preserve">
-    <value>PassWord</value>
+    <value>Password</value>
   </data>
   <data name="PersonalSetting_PersonalSettingPartial_ReEnterPassword" xml:space="preserve">
     <value>Immettere nuovamente la password</value>
@@ -2439,7 +2439,7 @@ Interessati ad utilizzare la versione SocialBoard Enterprise per la tua azienda 
     <value>I membri del team vedranno l'avatar è stata impostata.</value>
   </data>
   <data name="PersonalSetting_PersonalSettingPartial_TimeZone" xml:space="preserve">
-    <value>Time Zone</value>
+    <value>Fuso Orario</value>
   </data>
   <data name="PersonalSetting_PersonalSettingPartial_UpgradeMonthly" xml:space="preserve">
     <value>Aggiornamento a piano mensile</value>
@@ -2472,10 +2472,10 @@ Interessati ad utilizzare la versione SocialBoard Enterprise per la tua azienda 
     <value>Contatto Ricerca</value>
   </data>
   <data name="Shared_AdminSite_Coupon" xml:space="preserve">
-    <value>Coupon</value>
+    <value>buono</value>
   </data>
   <data name="Shared_AdminSite_DashBoard" xml:space="preserve">
-    <value>Dashboard</value>
+    <value>cruscotto</value>
   </data>
   <data name="Shared_AdminSite_DeleteUsers" xml:space="preserve">
     <value>Utenti eliminati</value>
@@ -2484,7 +2484,7 @@ Interessati ad utilizzare la versione SocialBoard Enterprise per la tua azienda 
     <value>Intervallo di tempo</value>
   </data>
   <data name="Shared_AdminSite_LogOut" xml:space="preserve">
-    <value>Logout</value>
+    <value>Uscire</value>
   </data>
   <data name="Shared_AdminSite_ManageAdvertisement" xml:space="preserve">
     <value>Gestisci Pubblicità</value>
@@ -2514,7 +2514,7 @@ Interessati ad utilizzare la versione SocialBoard Enterprise per la tua azienda 
     <value>notiziario</value>
   </data>
   <data name="Shared_AdminSite_Packages" xml:space="preserve">
-    <value>Packages</value>
+    <value>Pacchetti</value>
   </data>
   <data name="Shared_AdminSite_SchedulingDetails" xml:space="preserve">
     <value>Pianificazione Dettagli</value>
@@ -3114,7 +3114,7 @@ Le Agenzie possono utilizzare commercialmente la versione Withelabel di SocialBo
     <value>Richiesta Data</value>
   </data>
   <data name="MyStuff_EwalletPartial_Reset" xml:space="preserve">
-    <value>reset</value>
+    <value>Reset</value>
   </data>
   <data name="MyStuff_EwalletPartial_Status" xml:space="preserve">
     <value>stato</value>
@@ -3127,5 +3127,263 @@ Le Agenzie possono utilizzare commercialmente la versione Withelabel di SocialBo
   </data>
   <data name="MyStuff_EwalletPartial_YourPayout" xml:space="preserve">
     <value>i tuoi pagamenti</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_EmailalreadyExist" xml:space="preserve">
+    <value>Email già Exist</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_Errorpleasecheck" xml:space="preserve">
+    <value>Errore prega di controllare</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_Failed" xml:space="preserve">
+    <value>mancato</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_FileExtentionisnotcurrentPleaseuploadanyimagefile" xml:space="preserve">
+    <value>Extention file non è aggiornato. Si prega di caricare qualsiasi file di immagine</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_Invalidemail" xml:space="preserve">
+    <value>e-mail non valido</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_InvalidEmailIdorPassword" xml:space="preserve">
+    <value>EmailID non valido o password</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_MailtoresetpasswordhasbeensentSuccessfully" xml:space="preserve">
+    <value>Mail a reimpostare la password è stata inviata con successo !!</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_NewPasswordandConfirmPasswordmismatch" xml:space="preserve">
+    <value>Nuova password e Conferma password non corrispondente</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PasswordChangedSuccessfully" xml:space="preserve">
+    <value>Password modificata</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PasswordNotMatch" xml:space="preserve">
+    <value>Password Non Trovatutto</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseconfirmPassword" xml:space="preserve">
+    <value>Si prega di confermare la password</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenteraProperFirstNamewhichcontainCharacter" xml:space="preserve">
+    <value>Inserisci il primo nome proprio che contengono caratteri</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenteraProperLastNamewhichcontainCharacter" xml:space="preserve">
+    <value>Inserisci un corretto cognome che contengono caratteri</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenterFirstName" xml:space="preserve">
+    <value>Inserisci il Nome</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenterLastName" xml:space="preserve">
+    <value>Inserisci il cognome</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenterNewEmailId" xml:space="preserve">
+    <value>Inserisci Nuova e-mail</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenterNewPassword" xml:space="preserve">
+    <value>Inserisci nuova password</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_UpdateSuccessfully" xml:space="preserve">
+    <value>Aggiornare con successo</value>
+  </data>
+  <data name="JS_Publishing_draft_MessageDeletedsuccessfully" xml:space="preserve">
+    <value>Messaggio eliminato con successo</value>
+  </data>
+  <data name="JS_Publishing_draft_Pleaseenteramessagetosave" xml:space="preserve">
+    <value>Si prega di inserire un messaggio per salvare</value>
+  </data>
+  <data name="JS_Publishing_Index_PleaseEnteramessage" xml:space="preserve">
+    <value>Immettere un messaggio</value>
+  </data>
+  <data name="JS_Publishing_Index_PleaseSelectaDate" xml:space="preserve">
+    <value>Scegli una data</value>
+  </data>
+  <data name="JS_Publishing_Index_PleaseSelectaTime" xml:space="preserve">
+    <value>Selezionare un tempo</value>
+  </data>
+  <data name="JS_Publishing_Index_ThisProfileAlreadyAdded" xml:space="preserve">
+    <value>Questo Profilo Già Aggiunto</value>
+  </data>
+  <data name="JS_Shared_Site_FacebookNotSupportmorethan5000characters" xml:space="preserve">
+    <value>Facebook non supporta più di 5000 caratteri</value>
+  </data>
+  <data name="JS_Shared_Site_FanPageAddedSuccessfully" xml:space="preserve">
+    <value>Fan Page Aggiunto con successo</value>
+  </data>
+  <data name="JS_Shared_Site_GroupAddedSuccessfully" xml:space="preserve">
+    <value>Gruppo Aggiunto con successo</value>
+  </data>
+  <data name="JS_Shared_Site_LinkedinNotSupportmorethan600characters" xml:space="preserve">
+    <value>Linkedin non supporta più di 600 caratteri</value>
+  </data>
+  <data name="JS_Shared_Site_Mailalreadysent" xml:space="preserve">
+    <value>Posta già spedito</value>
+  </data>
+  <data name="JS_Shared_Site_Mailsendsuccessfully" xml:space="preserve">
+    <value>Mail inviare con successo</value>
+  </data>
+  <data name="JS_Shared_Site_plaesewaitwhilewearefetchingpagedata" xml:space="preserve">
+    <value>Per favore attendi che stiamo recupero dei dati Pagina</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseAddaprofiletoInviteaMember" xml:space="preserve">
+    <value>Si prega di aggiungere un profilo a Invita un membro !!</value>
+  </data>
+  <data name="JS_Shared_Site_pleaseChecktheURLyouenterediscorrect" xml:space="preserve">
+    <value>Controlli prego il URL inserito sia corretto</value>
+  </data>
+  <data name="JS_Shared_Site_Pleaseenteracontacttosearch" xml:space="preserve">
+    <value>Inserisci un contatto per la ricerca</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseEnteravalidurl" xml:space="preserve">
+    <value>Inserisci un URL valido</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseentervalidEmailId" xml:space="preserve">
+    <value>Inserisci e-mail valido</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseentervalidFirstName" xml:space="preserve">
+    <value>Inserisci valido Nome</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseentervalidLastName" xml:space="preserve">
+    <value>Inserisci valido Cognome</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseSelectaprofile" xml:space="preserve">
+    <value>Selezionare un profilo !!</value>
+  </data>
+  <data name="JS_Shared_Site_SelectAProfile" xml:space="preserve">
+    <value>Selezionare atleast un profilo</value>
+  </data>
+  <data name="JS_Shared_Site_TwitterNotSupportmorethan140characters" xml:space="preserve">
+    <value>Twitter non supporta più di 140 caratteri</value>
+  </data>
+  <data name="JS_Shared_Site_UploadImage" xml:space="preserve">
+    <value>Extention file non è aggiornato. Si prega di caricare qualsiasi file di immagine</value>
+  </data>
+  <data name="Placeholder_Shared_Site_EnterKeywordcontacttosearch" xml:space="preserve">
+    <value>Inserisci parola chiave o contattare per la ricerca ...</value>
+  </data>
+  <data name="Shared_Site_Feeds_Search" xml:space="preserve">
+    <value>Feeds Cerca</value>
+  </data>
+  <data name="Shared_Site_News_Feeds" xml:space="preserve">
+    <value>Notizie Feeds</value>
+  </data>
+  <data name="Shared_Site_Posts" xml:space="preserve">
+    <value>Messaggi</value>
+  </data>
+  <data name="JS_Publishing_Index_PleaseSelectProfilestoScheduledamessage" xml:space="preserve">
+    <value>Selezionare Profili per pianificata un messaggio</value>
+  </data>
+  <data name="JS_Report_TwitterReportPartial_MySocialScores" xml:space="preserve">
+    <value>I miei punteggi sociali</value>
+  </data>
+  <data name="JS_Report_TwitterReportPartial_NumofEngageandInfluence" xml:space="preserve">
+    <value>Num. di Engage e influenza</value>
+  </data>
+  <data name="JS_UserGroup_Index_ProfileAlreadyExist" xml:space="preserve">
+    <value>Sei sicuro di voler cancellare questo Gruppo?</value>
+  </data>
+  <data name="JS_UserGroup_PleasechangegroupName" xml:space="preserve">
+    <value>Si prega di cambiare il gruppo Nome</value>
+  </data>
+  <data name="JS_UserGroup_ProfileAlreadyExist" xml:space="preserve">
+    <value>Profilo esiste già</value>
+  </data>
+  <data name="JS_UserGroup_UserGroupPartial" xml:space="preserve">
+    <value>Immettere un gruppo Nome</value>
+  </data>
+  <data name="javascript" xml:space="preserve">
+    <value>js/it</value>
+  </data>
+  <data name="JS_BussinessSetting_Index_BusinessSettingUpdatedSuccessfully" xml:space="preserve">
+    <value>Affari Impostazione Aggiornato con successo.</value>
+  </data>
+  <data name="JS_ForgotPassword_ForgotPasswordPartial_PleaseenterEmailId" xml:space="preserve">
+    <value>Inserisci e-mail</value>
+  </data>
+  <data name="JS_ForgotPassword_ForgotPasswordPartial_PleaseResetyourPasswordbyclickingonResetPasswordLinksenttoyourmail" xml:space="preserve">
+    <value>Si prega di Cambia la tua password cliccando su Reimposta password link inviato alla vostra posta</value>
+  </data>
+  <data name="JS_Group_Index_CommentedSuccessfully" xml:space="preserve">
+    <value>Commentate con successo</value>
+  </data>
+  <data name="JS_Group_Index_LikedSuccessfully" xml:space="preserve">
+    <value>piaciuto con successo</value>
+  </data>
+  <data name="JS_Group_Index_PleasewriteinCommentBox" xml:space="preserve">
+    <value>Si prega di scrivere in un commento Box</value>
+  </data>
+  <data name="JS_Groups_Index_Pleaseaddgroupfirst" xml:space="preserve">
+    <value>Si prega di aggiungere gruppo prima</value>
+  </data>
+  <data name="JS_Groups_Index_PleasewriteinComentBox" xml:space="preserve">
+    <value>Si prega di scrivere in CommentBox!</value>
+  </data>
+  <data name="JS_Group_Index_UnlikedSuccessfully" xml:space="preserve">
+    <value>Diversamente da come accade con successo</value>
+  </data>
+  <data name="JS_site_MessageSentSuccessfully" xml:space="preserve">
+    <value>Messaggio inviato con successo</value>
+  </data>
+  <data name="JS_site_ThisAccountAlreadyAdded" xml:space="preserve">
+    <value>Account Già Aggiunto</value>
+  </data>
+  <data name="Message_InboxPartial_Bio" xml:space="preserve">
+    <value>Bio</value>
+  </data>
+  <data name="Message_InboxPartial_isnowfollowing" xml:space="preserve">
+    <value>sta seguendo</value>
+  </data>
+  <data name="JS_Discovery_Index_PleaseEnterAKeyword" xml:space="preserve">
+    <value>Si prega di inserire una parola chiave</value>
+  </data>
+  <data name="JS_Index_Contact_failure" xml:space="preserve">
+    <value>fallimento</value>
+  </data>
+  <data name="JS_Index_Contact_Mailhasbeensentsuccessfully" xml:space="preserve">
+    <value>Mail è stata inviata con successo</value>
+  </data>
+  <data name="JS_Index_Contact_PleaseentervalidEmailID" xml:space="preserve">
+    <value>Inserisci il documento d'identità valido e-mail</value>
+  </data>
+  <data name="JS_Index_Contact_PleaseentervalidFirstName" xml:space="preserve">
+    <value>Inserisci valido Nome</value>
+  </data>
+  <data name="JS_Index_Contact_PleaseentervalidLastName" xml:space="preserve">
+    <value>Inserisci valido Cognome</value>
+  </data>
+  <data name="JS_Index_Contact_Pleasefillallthefields" xml:space="preserve">
+    <value>Vi preghiamo di compilare tutti i campi</value>
+  </data>
+  <data name="Placeholder_Publishing_Index_PickDate" xml:space="preserve">
+    <value>Data Scegli</value>
+  </data>
+  <data name="Placeholder_Publishing_Index_Typeyourmessagehere" xml:space="preserve">
+    <value>Scrivi qui il tuo messaggio</value>
+  </data>
+  <data name="Placeholder_Site_WriteURLtoshrink" xml:space="preserve">
+    <value>Scrivi URL a ridursi</value>
+  </data>
+  <data name="ForgotPassword_Placeholder_EnterYourEmail" xml:space="preserve">
+    <value>Inserisci La Tua Email</value>
+  </data>
+  <data name="RegistrationPartial_Placeholder_ConfirmPassword" xml:space="preserve">
+    <value>Conferma Password</value>
+  </data>
+  <data name="RegistrationPartial_Placeholder_CouponCode" xml:space="preserve">
+    <value>Coupon Code (Opzionale)</value>
+  </data>
+  <data name="Site_Title_Home" xml:space="preserve">
+    <value>casa</value>
+  </data>
+  <data name="Site_Title_SearchContact" xml:space="preserve">
+    <value>Ricerca Contatto</value>
+  </data>
+  <data name="IndexController_RemainingDays_accountwillexpirein" xml:space="preserve">
+    <value>conto scadrà tra</value>
+  </data>
+  <data name="IndexController_RemainingDays_alaccountwillexpireTodaypleaseupgradetopaidplan" xml:space="preserve">
+    <value>conto scadrà Oggi aggiornare a piano a pagamento.</value>
+  </data>
+  <data name="IndexController_RemainingDays_dayspleaseupgradetopaidplan" xml:space="preserve">
+    <value>giorni, si prega di aggiornamento a piano a pagamento.</value>
+  </data>
+  <data name="IndexController_RemainingDays_Yourtrial" xml:space="preserve">
+    <value>Il periodo di prova</value>
   </data>
 </root>

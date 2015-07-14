@@ -1,0 +1,2928 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Admin_AddNewsLatter_LoadAddNewsLatter_AddNewslatter" xml:space="preserve">
+    <value>إضافة نشرة إخبارية</value>
+  </data>
+  <data name="Admin_AddNewsLatter_LoadAddNewsLatter_SendDate" xml:space="preserve">
+    <value>تاريخ الإرسال</value>
+  </data>
+  <data name="Admin_AddNewsLatter_LoadAddNewsLatter_Subject" xml:space="preserve">
+    <value>الموضوع</value>
+  </data>
+  <data name="Admin_AdminLogin_Index_RememberMe" xml:space="preserve">
+    <value>حفظ معلومات الدخول</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_ChangePassword" xml:space="preserve">
+    <value>تغيير كلمة المرور</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_ChangeProfileImage" xml:space="preserve">
+    <value>تغيير صورة الملف الشخصي</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_Close" xml:space="preserve">
+    <value>إغلاق</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_FirstName" xml:space="preserve">
+    <value>الإسم الأول</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_LastName" xml:space="preserve">
+    <value>اسم العائلة</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_SaveChanges" xml:space="preserve">
+    <value>حفظ التغييرات</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_Settings" xml:space="preserve">
+    <value>إعدادات</value>
+  </data>
+  <data name="Admin_AdminSetting_AdminSettingPartial_TimeZone" xml:space="preserve">
+    <value>المنطقة الزمنية</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Advertisement" xml:space="preserve">
+    <value>إعلان</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_AdvertisementDetails" xml:space="preserve">
+    <value>تفاصيل الإعلان</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Disable" xml:space="preserve">
+    <value>تعطيل</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Enable" xml:space="preserve">
+    <value>تفعيل</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Expirydate" xml:space="preserve">
+    <value>تاريخ انتهاء الصلاحية</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Image" xml:space="preserve">
+    <value>صورة</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_ImageURL" xml:space="preserve">
+    <value>رابط الصورة</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Or" xml:space="preserve">
+    <value>أو</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="Admin_Advertisement_Createadvertisement_Status" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Advertisement" xml:space="preserve">
+    <value>الإعلان</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Disable" xml:space="preserve">
+    <value>تعطيل</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_EditAdvertDetails" xml:space="preserve">
+    <value>تعديل تفاصيل الإعلان</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Enable" xml:space="preserve">
+    <value>تفعيل</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_ExpiryDate" xml:space="preserve">
+    <value>تاريخ الانتهاء</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Image" xml:space="preserve">
+    <value>الصورة</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_ImageURL" xml:space="preserve">
+    <value>رابط الصورة</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Or" xml:space="preserve">
+    <value>أو</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Status" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="Admin_Advertisement_EditAdvertisement_Update" xml:space="preserve">
+    <value>تحديث</value>
+  </data>
+  <data name="Admin_Advertisement_ManageAdvertisement_Manage" xml:space="preserve">
+    <value>إداراة الإعلانات</value>
+  </data>
+  <data name="Admin_Advertisement_ManageAdvertisement_ManageAdvertTable" xml:space="preserve">
+    <value>إداراة جدول الإعلانات</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_AddNewCoupon" xml:space="preserve">
+    <value>إضافة كوبون جديد</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_CouponCode" xml:space="preserve">
+    <value>كود الكوبون</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_Disable" xml:space="preserve">
+    <value>تعطيل</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_Discount" xml:space="preserve">
+    <value>نسبة الخصم</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_Enable" xml:space="preserve">
+    <value>تفعيل</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_EntryDate" xml:space="preserve">
+    <value>تاريخ الإدخال</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_ExpiryDate" xml:space="preserve">
+    <value>تاريخ انتهاء الصلاحية</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="Admin_Coupons_CreateCoupons_Status" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_CouponCode" xml:space="preserve">
+    <value>كود الكوبون</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_Disable" xml:space="preserve">
+    <value>تعطيل</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_EditCoupon" xml:space="preserve">
+    <value>تعديل تفاصيل الكوبون</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_Enable" xml:space="preserve">
+    <value>تفعيل</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_EntryDate" xml:space="preserve">
+    <value>تاريخ الإدخال</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_ExpiryDate" xml:space="preserve">
+    <value>تاريخ الإنتهاء</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_Status" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="Admin_Coupons_EditCoupons_Update" xml:space="preserve">
+    <value>تحديث</value>
+  </data>
+  <data name="Admin_Coupons_ManageCoupons_ManageCoupon" xml:space="preserve">
+    <value>إدارة الكوبونات</value>
+  </data>
+  <data name="Admin_Coupons_ManageCoupons_ManageCouponTable" xml:space="preserve">
+    <value>إدارة جدول الكوبونات</value>
+  </data>
+  <data name="Admin_News_CreateNews_Disable" xml:space="preserve">
+    <value>تعطيل</value>
+  </data>
+  <data name="Admin_News_CreateNews_EditUserDetails" xml:space="preserve">
+    <value>تعديل بيانات المستخدم</value>
+  </data>
+  <data name="Admin_News_CreateNews_Enable" xml:space="preserve">
+    <value>تفعيل</value>
+  </data>
+  <data name="Admin_News_CreateNews_ExpiryDate" xml:space="preserve">
+    <value>تاريخ الانتهاء</value>
+  </data>
+  <data name="Admin_News_CreateNews_News" xml:space="preserve">
+    <value>أخبار</value>
+  </data>
+  <data name="Admin_News_CreateNews_Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="Admin_News_CreateNews_Status" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="Admin_News_EditNews_Disable" xml:space="preserve">
+    <value>تعطيل</value>
+  </data>
+  <data name="Admin_News_EditNews_EditUserdetails" xml:space="preserve">
+    <value>تعديل بيانات المستخدم</value>
+  </data>
+  <data name="Admin_News_EditNews_Enable" xml:space="preserve">
+    <value>تفعيل</value>
+  </data>
+  <data name="Admin_News_EditNews_ExpiryDate" xml:space="preserve">
+    <value>تاريخ الإنتهاء</value>
+  </data>
+  <data name="Admin_News_EditNews_News" xml:space="preserve">
+    <value>الأخبار</value>
+  </data>
+  <data name="Admin_News_EditNews_Status" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="Admin_News_EditNews_Update" xml:space="preserve">
+    <value>تحديث</value>
+  </data>
+  <data name="Admin_News_ManageNews_ManageNews" xml:space="preserve">
+    <value>إدارة الأخبار</value>
+  </data>
+  <data name="Admin_News_ManageNews_ManageNewstable" xml:space="preserve">
+    <value>إدارة جدول الأخبار</value>
+  </data>
+  <data name="Admin_Package_EditPackage_EditDetails" xml:space="preserve">
+    <value>تعديل بيانات الباقة</value>
+  </data>
+  <data name="Admin_Package_EditPackage_Name" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+  <data name="Admin_Package_EditPackage_Pricing" xml:space="preserve">
+    <value>التسعيرة</value>
+  </data>
+  <data name="Admin_Package_EditPackage_Update" xml:space="preserve">
+    <value>تحديث</value>
+  </data>
+  <data name="Admin_Package_ManagePackage_ManagePackage" xml:space="preserve">
+    <value>إدارة الباقات</value>
+  </data>
+  <data name="Admin_Package_ManagePackage_ManagePackageTable" xml:space="preserve">
+    <value>إدارة جدول الباقات</value>
+  </data>
+  <data name="Admin_Services_SchedulingDetails_UsersSchedulingDetails" xml:space="preserve">
+    <value>بيانات مستخدمي الجدولة</value>
+  </data>
+  <data name="Admin_Services_SchedulingDetails_UsersSchedulingDetailsTable" xml:space="preserve">
+    <value>جدول بيانات مستخدمي الجدولة</value>
+  </data>
+  <data name="Admin_Services_Scheduling_Scheduling" xml:space="preserve">
+    <value>الجدولة</value>
+  </data>
+  <data name="Admin_Services_Scheduling_SchedulingTable" xml:space="preserve">
+    <value>جدول المواعيد</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Disable" xml:space="preserve">
+    <value>تعطيل</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_EditDetails" xml:space="preserve">
+    <value>تعديل بيانات المستخدم</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Email" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Enable" xml:space="preserve">
+    <value>تفعيل</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Name" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Package" xml:space="preserve">
+    <value>الباقة</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Status" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="Admin_UserDetails_EditUserDetails_Update" xml:space="preserve">
+    <value>تحديث</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_AccountType" xml:space="preserve">
+    <value>نوع الحساب</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_CreateDate" xml:space="preserve">
+    <value>تاريخ الانشاء</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_Deleted" xml:space="preserve">
+    <value>محذوف</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_DeleteUsers" xml:space="preserve">
+    <value>المستخدمين المحذوفين</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_DeleteUsersTable" xml:space="preserve">
+    <value>جدول المستخدمين المحذوفين</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_EmailId" xml:space="preserve">
+    <value>معرف البريد الإلكتروني</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_Name" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+  <data name="Admin_UserDetails_LoadDeletedUsers_UsersStatus" xml:space="preserve">
+    <value>حالة المستحدم</value>
+  </data>
+  <data name="Admin_UserDetails_ManageProfile_ManageProfiles" xml:space="preserve">
+    <value>إدارة الملفات الشخصية</value>
+  </data>
+  <data name="Admin_UserDetails_ManageProfile_ManageProfilesTable" xml:space="preserve">
+    <value>جدول إدارة الملفات الشخصية</value>
+  </data>
+  <data name="Admin_UserDetails_ManageUsers_ManageUsers" xml:space="preserve">
+    <value>إدارة المستخدمين</value>
+  </data>
+  <data name="Admin_UserDetails_ManageUsers_ManageUsersTable" xml:space="preserve">
+    <value>جدول إدارة المستخدمين</value>
+  </data>
+  <data name="BusinessSetting_Index_AssigningTasks" xml:space="preserve">
+    <value>تعيين المهام</value>
+  </data>
+  <data name="BusinessSetting_Index_AssigningTasksDescription" xml:space="preserve">
+    <value>تفعيل هذه الخاصية سيمكن المستخدمين من تعيين المهام بين اعضاء المجموعة وسيقوم بإضهار اعضاء المجموعات الأخرى, في حال عدم رغبتك بتمكين المستخدمين من تعيين المهام لأعشاء المجموعات الاخرى, قم بترك هذه الخاصية " معطلة "</value>
+  </data>
+  <data name="BusinessSetting_Index_AssigningTasksDisable" xml:space="preserve">
+    <value>تعطيل</value>
+  </data>
+  <data name="BusinessSetting_Index_AssigningTasksEnable" xml:space="preserve">
+    <value>تفعيل تعيين المهام بين اعضاء المجموعات</value>
+  </data>
+  <data name="BusinessSetting_Index_BuisnessName" xml:space="preserve">
+    <value>اسم الشركة</value>
+  </data>
+  <data name="BusinessSetting_Index_NotifcationTaskDisable" xml:space="preserve">
+    <value>تعطيل</value>
+  </data>
+  <data name="BusinessSetting_Index_NotifcationTaskEnable" xml:space="preserve">
+    <value>تفعيل تنبيهات المهام</value>
+  </data>
+  <data name="BusinessSetting_Index_TaskNotificationEmail" xml:space="preserve">
+    <value>تنبيهات المهام بواسطة البريد الإلكتروني</value>
+  </data>
+  <data name="BusinessSetting_Index_UpdateSettings" xml:space="preserve">
+    <value>تحديث الإعدادات</value>
+  </data>
+  <data name="Discovery_DiscoveryPartial_FacebookPosts" xml:space="preserve">
+    <value>مشاركات الفيسبوك</value>
+  </data>
+  <data name="Discovery_DiscoveryPartial_Heading" xml:space="preserve">
+    <value>يسمح لك بإيجاد مستخدمين جدد عن طريق البحث باستخدام الكلمات الدلالية </value>
+  </data>
+  <data name="Discovery_DiscoveryPartial_SearchHistory" xml:space="preserve">
+    <value>البحث في السجل</value>
+  </data>
+  <data name="Discovery_DiscoveryPartial_TBTextSearchPlaceholder" xml:space="preserve">
+    <value>الرجاء كتابة الكلمة الدلالية هنا</value>
+  </data>
+  <data name="Discovery_DiscoveryPartial_TwitterPosts" xml:space="preserve">
+    <value>مشاركات تويتر</value>
+  </data>
+  <data name="Feeds_FeedMenu_Facebook" xml:space="preserve">
+    <value>الفيسبوك</value>
+  </data>
+  <data name="Feeds_FeedMenu_Feeds" xml:space="preserve">
+    <value>التغذية الراجعة</value>
+  </data>
+  <data name="Feeds_FeedMenu_Instragram" xml:space="preserve">
+    <value>إنستجرام</value>
+  </data>
+  <data name="Feeds_FeedMenu_Linkedin" xml:space="preserve">
+    <value>لينكدن</value>
+  </data>
+  <data name="Feeds_FeedMenu_LinkedinAccount" xml:space="preserve">
+    <value>حساب اللينكدن</value>
+  </data>
+  <data name="Feeds_FeedMenu_LinkedinCompanyPage" xml:space="preserve">
+    <value>صفحة الشركة على لينكدن</value>
+  </data>
+  <data name="Feeds_FeedMenu_Tumblr" xml:space="preserve">
+    <value>تمبلر</value>
+  </data>
+  <data name="Feeds_FeedMenu_Twitter" xml:space="preserve">
+    <value>تويتر</value>
+  </data>
+  <data name="Feeds_FeedMenu_Youtube" xml:space="preserve">
+    <value>يوتيوب</value>
+  </data>
+  <data name="Feeds_FeedPartial_Mention" xml:space="preserve">
+    <value>ذكر</value>
+  </data>
+  <data name="Feeds_FeedPartial_Retweets" xml:space="preserve">
+    <value>التغريدات</value>
+  </data>
+  <data name="Feeds_FeedPartial_Status" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="Feeds_FeedPartial_Tag" xml:space="preserve">
+    <value>علامة</value>
+  </data>
+  <data name="Feeds_FeedPartial_Userfeeds" xml:space="preserve">
+    <value>مشاركات المستخدم</value>
+  </data>
+  <data name="Feeds_FeedPartial_UserTweet" xml:space="preserve">
+    <value>تغريدات المستحدم</value>
+  </data>
+  <data name="Feeds_FeedsPartial_LiveFeeds" xml:space="preserve">
+    <value>مشاركات حية</value>
+  </data>
+  <data name="Feeds_Panel1Partial_Close" xml:space="preserve">
+    <value>إغلاق</value>
+  </data>
+  <data name="Feeds_Panel1Partial_Comment" xml:space="preserve">
+    <value>تعليق</value>
+  </data>
+  <data name="Feeds_Panel1Partial_EmailMessage" xml:space="preserve">
+    <value>رسالة بريد الكتروني</value>
+  </data>
+  <data name="Feeds_Panel1Partial_Favourite" xml:space="preserve">
+    <value>مفضلة</value>
+  </data>
+  <data name="Feeds_Panel1Partial_Post" xml:space="preserve">
+    <value>مشاركة</value>
+  </data>
+  <data name="Feeds_Panel1Partial_QuoteMessage" xml:space="preserve">
+    <value>اقتباس رسالة</value>
+  </data>
+  <data name="Feeds_Panel1Partial_ReportAsSpam" xml:space="preserve">
+    <value>تبليغ محتوى غير مرغوب فيه " سبام "</value>
+  </data>
+  <data name="Feeds_Panel1Partial_Retweet" xml:space="preserve">
+    <value>اعادة تغريد</value>
+  </data>
+  <data name="Feeds_Panel1Partial_TBtextfbPlaceholder" xml:space="preserve">
+    <value>اكتب تعليقك هنا...</value>
+  </data>
+  <data name="ForgotPassword_ForgetPasswordPartial_ForgotPassword" xml:space="preserve">
+    <value>نسيت كلمة المرور</value>
+  </data>
+  <data name="ForgotPassword_ForgetPasswordPartial_Login" xml:space="preserve">
+    <value>تسجيل الدخول</value>
+  </data>
+  <data name="ForgotPassword_ForgetPasswordPartial_Submit" xml:space="preserve">
+    <value>استمرار</value>
+  </data>
+  <data name="ForgotPasword_ForgotPasswordMailBodyPartial_FollowTwitter" xml:space="preserve">
+    <value>تابعنا على تويتر</value>
+  </data>
+  <data name="ForgotPasword_ForgotPasswordMailBodyPartial_Here" xml:space="preserve">
+    <value>هنا</value>
+  </data>
+  <data name="ForgotPasword_ForgotPasswordMailBodyPartial_NewUsernamePassword" xml:space="preserve">
+    <value>الرجاء الضغط هنا</value>
+  </data>
+  <data name="ForgotPasword_ForgotPasswordMailBodyPartial_RequestRecieved" xml:space="preserve">
+    <value>يبدو أن لديك مشكلة في تسجيل الدخول إلى Documantal SM. لدينا خاصية إعادة تعيين كلمة المرور link على استعداد للكم</value>
+  </data>
+  <data name="ForgotPasword_ForgotPasswordMailBodyPartial_ThanksRegards" xml:space="preserve">
+    <value>شكرا لكم وتقبلوا تحياتنا</value>
+  </data>
+  <data name="ForgotPasword_ForgotPasswordMailBodyPartial_ToProceed" xml:space="preserve">
+    <value>للإستمرار في إعادة تعيين كلمة المرور</value>
+  </data>
+  <data name="ForgotPasword_ForgotPassworMailBodydPartial_FollowFacebook" xml:space="preserve">
+    <value>تابعنا على فيسبوك</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordMailBodyPartial_FollowTwitter" xml:space="preserve">
+    <value>تابعنا على تويتر</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordMailBodyPartial_NewUsernamePassword" xml:space="preserve">
+    <value>تجدون أدناه اسم المستخدم وكلمة المرور الجديدة</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordMailBodyPartial_RequestRecieved" xml:space="preserve">
+    <value>وصلنا طلب من حضرتكم متعلق باعادة تعيين كلمة المرور</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordMailBodyPartial_ThanksRegards" xml:space="preserve">
+    <value>شكرا لكم وتقبلوا تحياتنا</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordPartial_InvalidLink" xml:space="preserve">
+    <value>رابط غير صحيح</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordPartial_ResetPassword" xml:space="preserve">
+    <value>اعادة تعيين كلمة المرور</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordPartial_Submit" xml:space="preserve">
+    <value>استمرار</value>
+  </data>
+  <data name="ForgotPasword_ResetPasswordPartial_TryAgain" xml:space="preserve">
+    <value>حاول مرة أخرى</value>
+  </data>
+  <data name="ForgotPasword_ResetPassworMailBodydPartial_FollowFacebook" xml:space="preserve">
+    <value>تابعنا على فيسبوك</value>
+  </data>
+  <data name="Group_Index_1Min" xml:space="preserve">
+    <value>دقيقة</value>
+  </data>
+  <data name="Group_Index_2Min" xml:space="preserve">
+    <value>دقيقتان</value>
+  </data>
+  <data name="Group_Index_3Min" xml:space="preserve">
+    <value>3 دقائق</value>
+  </data>
+  <data name="Group_Index_4Min" xml:space="preserve">
+    <value>4 دقائق</value>
+  </data>
+  <data name="Group_Index_5Min" xml:space="preserve">
+    <value>5 دقائق</value>
+  </data>
+  <data name="Group_Index_Chat" xml:space="preserve">
+    <value>محادثة</value>
+  </data>
+  <data name="Group_Index_Close" xml:space="preserve">
+    <value>إغلاق</value>
+  </data>
+  <data name="Group_Index_Groups" xml:space="preserve">
+    <value>مجموعات</value>
+  </data>
+  <data name="Group_Index_GroupUsers" xml:space="preserve">
+    <value>مجموعات المستخدمين</value>
+  </data>
+  <data name="Group_Index_IntervalTime" xml:space="preserve">
+    <value>الفاصل الزمني</value>
+  </data>
+  <data name="Group_Index_NewMessage" xml:space="preserve">
+    <value>رسالة جديدة</value>
+  </data>
+  <data name="Group_Index_NoFeedFound" xml:space="preserve">
+    <value>لا يوجد مشاركات</value>
+  </data>
+  <data name="Group_Index_Post" xml:space="preserve">
+    <value>مشاركة</value>
+  </data>
+  <data name="Group_Index_PostOnSelectedGroup" xml:space="preserve">
+    <value>مشاركة في مجموعات مختارة</value>
+  </data>
+  <data name="Group_Index_SelectGroupDisplayFeeds" xml:space="preserve">
+    <value>الرجاء نحديد المجموعة لإظهار المشاركة</value>
+  </data>
+  <data name="Group_Index_Send" xml:space="preserve">
+    <value>إرسال</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Activities" xml:space="preserve">
+    <value>النشاطات</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Connections" xml:space="preserve">
+    <value>علاقات</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Fans" xml:space="preserve">
+    <value>معجبين</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Follower" xml:space="preserve">
+    <value>متابع</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Following" xml:space="preserve">
+    <value>متابعة</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Likes" xml:space="preserve">
+    <value>إعجاب</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_MyRecentProfiles" xml:space="preserve">
+    <value>الملفات الشخصية الأخيرة</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Photos" xml:space="preserve">
+    <value>الصور</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Post" xml:space="preserve">
+    <value>مشاركة</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_PostsPerDay" xml:space="preserve">
+    <value>مشاركة كل يوم</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_RecentMessages" xml:space="preserve">
+    <value>الرسائل الجديدة</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_TotalSubscriber" xml:space="preserve">
+    <value>مجموع المشتركين</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_TotalVideo" xml:space="preserve">
+    <value>مجموع ملفات الفيديو</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_TotalView" xml:space="preserve">
+    <value>مجموع المشاهدات</value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_IncomingMessages" xml:space="preserve">
+    <value>الرسائل الواردة</value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_NewFacebookFans" xml:space="preserve">
+    <value>معجبي الفيسبوك الجدد</value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_SentMessages" xml:space="preserve">
+    <value>الرسائل المرسلة</value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_TwitterFollowers" xml:space="preserve">
+    <value>متابعي تويتر</value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_Updates" xml:space="preserve">
+    <value>التحديثات</value>
+  </data>
+  <data name="Home_HomeUserActivityPartial_ViewDetails" xml:space="preserve">
+    <value>إظهار التحديثات</value>
+  </data>
+  <data name="Home_HomeUserProfilePartial_Loading" xml:space="preserve">
+    <value>تحميل...</value>
+  </data>
+  <data name="Home_HomeUserProfilePartial_RecentFollowers" xml:space="preserve">
+    <value>المتابعين الجدد</value>
+  </data>
+  <data name="Home_HomeUserProfilePartial_SocialProfiles" xml:space="preserve">
+    <value>الملفات الشخصية لصفحات التواصل الإجتماعي</value>
+  </data>
+  <data name="Home_HomeUserProfilePartial_TeamMembers" xml:space="preserve">
+    <value>أعضاء الفريق</value>
+  </data>
+  <data name="Home_Index_Attach" xml:space="preserve">
+    <value>إرفاق الملف</value>
+  </data>
+  <data name="Home_MyTickets_MyRecentTickets" xml:space="preserve">
+    <value>التذاكر الجديدة</value>
+  </data>
+  <data name="Home_PageNotFound_404NotFound" xml:space="preserve">
+    <value>404 Not Found</value>
+  </data>
+  <data name="Home_PageNotFound_ContactSupport" xml:space="preserve">
+    <value>التواصل مع الدعم الفني</value>
+  </data>
+  <data name="Home_PageNotFound_Oops" xml:space="preserve">
+    <value>عذرا!</value>
+  </data>
+  <data name="Home_PageNotFound_Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="Home_PageNotFound_SorryErrorOccured" xml:space="preserve">
+    <value>نأسف, تم حدوث خطأ, لم نتمكن من إيجاد الصفحة المطلوبة</value>
+  </data>
+  <data name="Home_PageNotFound_TakeMeHome" xml:space="preserve">
+    <value>الرجوع الى الصفحة الرئيسية</value>
+  </data>
+  <data name="Home_PofilePartial_Facebook" xml:space="preserve">
+    <value>فيسبوك</value>
+  </data>
+  <data name="Home_PofilePartial_Instagram" xml:space="preserve">
+    <value>انستجرام</value>
+  </data>
+  <data name="Home_PofilePartial_Linkedin" xml:space="preserve">
+    <value>لينكدن</value>
+  </data>
+  <data name="Home_PofilePartial_Tumblr" xml:space="preserve">
+    <value>تمبلر</value>
+  </data>
+  <data name="Home_PofilePartial_Twitter" xml:space="preserve">
+    <value>تويتر</value>
+  </data>
+  <data name="Home_PofilePartial_Youtube" xml:space="preserve">
+    <value>يوتيوب</value>
+  </data>
+  <data name="Index_Contact_Contact" xml:space="preserve">
+    <value>جهة اتصال</value>
+  </data>
+  <data name="Index_Contact_EnterEmail" xml:space="preserve">
+    <value>قم بادخال البريد الإلكتروني وشاهد بنفسك</value>
+  </data>
+  <data name="Index_Contact_Reset" xml:space="preserve">
+    <value>زر إعادة التعيين</value>
+  </data>
+  <data name="Index_Contact_Submit" xml:space="preserve">
+    <value>زر الاستمرار</value>
+  </data>
+  <data name="Index_Contact_WeCanHelpYou" xml:space="preserve">
+    <value>نستطيع مساعدتك</value>
+  </data>
+  <data name="Index_Disclaimer_Disclaimer" xml:space="preserve">
+    <value>إخلاء مسؤولية</value>
+  </data>
+  <data name="Index_Download_ClickBelow" xml:space="preserve">
+    <value>اضغط على الزر ادناه:</value>
+  </data>
+  <data name="Index_Download_DirectDownload" xml:space="preserve">
+    <value>تحميل مباشر</value>
+  </data>
+  <data name="Index_Download_FooterMessage" xml:space="preserve">
+    <value>ترغب بالحصول على مساعدة محترفة في تنصيب البرنامج من قبل فريقنا المختص بسعر التكلفة,؟ اضغط على الزر أدناه</value>
+  </data>
+  <data name="Index_Features_Analysis" xml:space="preserve">
+    <value>تحليل واحصاءات</value>
+  </data>
+  <data name="Index_Features_Analytics" xml:space="preserve">
+    <value>تقارير متقدمة</value>
+  </data>
+  <data name="Index_Features_AnalyticsDescription" xml:space="preserve">
+    <value>Documantl SM يستخدم محرك الإحصاءات ويولد تحليلات حول مختلف الأنشطة المتصلة حسابك. وهو يتضمن مجموعة احصائيات وبيانات الفيسبوك، إحصائيات تويتر واحصائيات ذات الصلة. كل هذه التحليلات يمكن مراجعتها واستخراجها وفقا لمواعيد معينة، </value>
+  </data>
+  <data name="Index_Features_Discovery" xml:space="preserve">
+    <value>اكتشافات فريدة من نوعها</value>
+  </data>
+  <data name="Index_Features_DiscoveryDescription" xml:space="preserve">
+    <value>Discovery is a marvelous function which socioboard offers by virtue of which users can avail a highly efficient search mechanism.</value>
+  </data>
+  <data name="Index_Features_Engagement" xml:space="preserve">
+    <value>مشاركة فعالة وذات كفائة عالية</value>
+  </data>
+  <data name="Index_Features_EngagementDescription" xml:space="preserve">
+    <value>Socioboard has capabilities to engage audiences across various platforms.It gives every platform its due importance. The degree of engagement is customized as per the platform’s importance and number of connections in it.</value>
+  </data>
+  <data name="Index_Features_Features" xml:space="preserve">
+    <value>مميزات</value>
+  </data>
+  <data name="Index_Features_FeaturesDescription" xml:space="preserve">
+    <value>Social media marketers face great difficulty in accessing technology that is flexible enough to meet their needs for approval workflow, compliance, asset management, moderation, etc. Socioboard helps you leverage your social media marketing with great features such as advanced scheduling and publishing tools, prompt news feeds, interactive social discovery, sophisticated analytics, social CRM, help desk integration, collaboration tools, customizable reports and much more.
+            The dashboard displays activities of your friends such as shares, new messages, events, visited locations to name a few. Content can be put into sections as per date or by events.You can engage your friends on their activities, like posts, comment and even share them. Socioboard can help you set reminders about tasks related to friends’ updates shared.You can customize stats to view according to days, groups etc.</value>
+  </data>
+  <data name="Index_Features_Feeds" xml:space="preserve">
+    <value>تغذية سريعة</value>
+  </data>
+  <data name="Index_Features_FeedsDescription" xml:space="preserve">
+    <value>Feeds allow you to get latest status updates from friends. As of now facebook, twitter and linkedin profile can be connected to socioboard account. Users can get wallposts, status updates and scheduled messages Users can engage each other using the platform, get notifications on missed messages and much more.</value>
+  </data>
+  <data name="Index_Features_HelpDesk" xml:space="preserve">
+    <value>الربط مع نظام الدعم الفني</value>
+  </data>
+  <data name="Index_Features_HelpDeskDescription" xml:space="preserve">
+    <value>تقدم Documantal SM نظام دعم فني مرتبط بحسابك يساعدك على متابعة طلبات متابعيك بطريقة سهلة وفعالة</value>
+  </data>
+  <data name="Index_Features_Insights" xml:space="preserve">
+    <value>أفكار</value>
+  </data>
+  <data name="Index_Features_MobileApps" xml:space="preserve">
+    <value>تطبيقات الجوال</value>
+  </data>
+  <data name="Index_Features_MobileAppsDescription" xml:space="preserve">
+    <value>يتوفر لدينا نسخ كاملة وجاهزة للعمل عليها وتعمل على الاندرويد واجهزة الاي فون والاي باد وهي تعمل بكفاءة عالية مماثلة للنسخة المتواجدة على الموقع الالكتروني</value>
+  </data>
+  <data name="Index_Features_Monitor" xml:space="preserve">
+    <value>متابعة حية</value>
+  </data>
+  <data name="Index_Features_Monitoring" xml:space="preserve">
+    <value>متابعة حية وفورية</value>
+  </data>
+  <data name="Index_Features_MonitoringDescription" xml:space="preserve">
+    <value>Socioboard monitors data continuously across various platforms, and gives regular feeds to the end users. Feeds allow you to be in touch with family and friends. Users can engage each other using the platform, get notifications on missed messages and even more.You can also stop someone from bothering you on this platform. We respect your privacy.</value>
+  </data>
+  <data name="Index_Features_Ourfeatures" xml:space="preserve">
+    <value>مميزاتنا</value>
+  </data>
+  <data name="Index_Features_Scheduling" xml:space="preserve">
+    <value>عمليات جدولة ونشر متقدمة!</value>
+  </data>
+  <data name="Index_Features_SchedulingDescription" xml:space="preserve">
+    <value>Publishing data is important part of engaging audience through social media platforms, through socioboard’s publishing tool users can schedule messages, maintain a queue and save drafted messages. You can’t miss any news about what your friends are doing having a dedicated page for notifications.</value>
+  </data>
+  <data name="Index_Features_SmartInbox" xml:space="preserve">
+    <value>البريد الذكي</value>
+  </data>
+  <data name="Index_Features_SmartInboxDescription" xml:space="preserve">
+    <value>All the public posts by a user and much more would be featured on the message page along with the message picture.User can views task and archived messages easily.</value>
+  </data>
+  <data name="Index_Features_SocialCRM" xml:space="preserve">
+    <value>سي آر ام متخصص</value>
+  </data>
+  <data name="Index_Features_SocialCRMDescription" xml:space="preserve">
+    <value>Collaboration is a very important term in social media marketing, people can collaborate with each other to make things a mutually beneficial win-win, socioboard comes up with a marvelous functionality by virtue of which users can reach out to each other using a highly efficient collaborative mechanism. It can serve as a platform to share information with other team members and increase workability and efficiency of all teams.</value>
+  </data>
+  <data name="Index_Features_SubHeadingAnalysis" xml:space="preserve">
+    <value>استخراج وحفظ ذكي ومتقدم للبيانات</value>
+  </data>
+  <data name="Index_Features_SubHeadingInsights" xml:space="preserve">
+    <value>تقدم Documantal SM أفكار رائعة لعملائها</value>
+  </data>
+  <data name="Index_Features_SubHeadingMonitor" xml:space="preserve">
+    <value>متابعة حية لجميع المنشورات والأحداث</value>
+  </data>
+  <data name="Index_Features_SubHeadingUserguide" xml:space="preserve">
+    <value>لمعرفة المزيد, الرجاء تحميل دليل المستخدم</value>
+  </data>
+  <data name="Index_Features_TeamCollaboration" xml:space="preserve">
+    <value>أدوات متميزة مساعدة لفريق العمل</value>
+  </data>
+  <data name="Index_Features_TeamCollaborationDescription" xml:space="preserve">
+    <value>Collaboration is a very important term in social media marketing, cross-functional departments can collaborate with each other to make the marketing experience more fruitful and synergistic. Socioboard comes up with a marvelous functionality by virtue of which users can reach out to each other using a highly efficient collaboration mechanism. It can serve as a platform to share information with other team members and increase workability and efficiency of all teams.</value>
+  </data>
+  <data name="Index_Features_UserGuide" xml:space="preserve">
+    <value>احصل على دليل المستخدم</value>
+  </data>
+  <data name="Index_Index_Analysis" xml:space="preserve">
+    <value>تحليل</value>
+  </data>
+  <data name="Index_Index_beyond" xml:space="preserve">
+    <value>ما وراء</value>
+  </data>
+  <data name="Index_Index_BtnLearnMore" xml:space="preserve">
+    <value>إعرف أكثر</value>
+  </data>
+  <data name="Index_Index_BtnUserGuide" xml:space="preserve">
+    <value>تحميل الدليل</value>
+  </data>
+  <data name="Index_Index_engage" xml:space="preserve">
+    <value>التفاعل مع المتابعين بشكل فعال</value>
+  </data>
+  <data name="Index_Index_feature_pt1" xml:space="preserve">
+    <value>الصندوق الذكي والحقول الفورية</value>
+  </data>
+  <data name="Index_Index_feature_pt2" xml:space="preserve">
+    <value>إعدادات الجدولة والنشر والمتقدمة</value>
+  </data>
+  <data name="Index_Index_feature_pt3" xml:space="preserve">
+    <value>اكتشاف الاجتماعية الفريدة من نوعها</value>
+  </data>
+  <data name="Index_Index_feature_pt4" xml:space="preserve">
+    <value>في عمق التحليلات والتقارير</value>
+  </data>
+  <data name="Index_Index_feature_pt5" xml:space="preserve">
+    <value>مراقبة دائمة للوقت الحقيقي</value>
+  </data>
+  <data name="Index_Index_feature_pt6" xml:space="preserve">
+    <value>أدوات تعاون فريق العمل</value>
+  </data>
+  <data name="Index_Index_feature_pt7" xml:space="preserve">
+    <value>إضافة الدعم الفني والسي ار ام</value>
+  </data>
+  <data name="Index_Index_feature_pt8" xml:space="preserve">
+    <value>تطبيقات المحمول</value>
+  </data>
+  <data name="Index_Index_ImgPathTryNow" xml:space="preserve">
+    <value>/Themes/Socioboard/Contents/img/trail-butn.jpg</value>
+  </data>
+  <data name="Index_Index_ImgSignupforFree" xml:space="preserve">
+    <value>/Themes/Socioboard/Contents/img/signup-butn.png</value>
+  </data>
+  <data name="Index_Index_Insight" xml:space="preserve">
+    <value>الرؤى</value>
+  </data>
+  <data name="Index_Index_leverage" xml:space="preserve">
+    <value>الناس يتحدثون عن العلامة التجارية الخاصة بك. لماذا لا تستفيد من ذلك؟</value>
+  </data>
+  <data name="Index_Index_LovePt1" xml:space="preserve">
+    <value>أداة مفتوحة المصدر عالية للتخصيص وقابلة للتطوير في إصدارات مختلفة</value>
+  </data>
+  <data name="Index_Index_LovePt2" xml:space="preserve">
+    <value>جدولة متقدمة وأدوات النشر</value>
+  </data>
+  <data name="Index_Index_LovePt3" xml:space="preserve">
+    <value>أدوات الحقول الفورية واكتشاف التفاعل الاجتماعي</value>
+  </data>
+  <data name="Index_Index_LovePt4" xml:space="preserve">
+    <value>تحليلات متطورة على مختلف المعايير</value>
+  </data>
+  <data name="Index_Index_LovePt5" xml:space="preserve">
+    <value>أدوات السي ار ام الاجتماعية بما في ذلك العملاء المشتركة</value>
+  </data>
+  <data name="Index_Index_LovePt6" xml:space="preserve">
+    <value>ميزات دعم العملاء مثل دمج المهام والدعم الفني</value>
+  </data>
+  <data name="Index_Index_LovePt7" xml:space="preserve">
+    <value>درجة عالية من أدوات فريق التعاون الفعال</value>
+  </data>
+  <data name="Index_Index_LovePt8" xml:space="preserve">
+    <value>دعم فني 24\7</value>
+  </data>
+  <data name="Index_Index_LovePt9" xml:space="preserve">
+    <value>تنفيذ في مختلف الأجهزة والمنصات</value>
+  </data>
+  <data name="Index_Index_Managment" xml:space="preserve">
+    <value>إدارة وسائل الإعلام الاجتماعية</value>
+  </data>
+  <data name="Index_Index_Monitor" xml:space="preserve">
+    <value>مراقب</value>
+  </data>
+  <data name="Index_Index_OurFeatures" xml:space="preserve">
+    <value>ميزاتنا</value>
+  </data>
+  <data name="Index_Index_socialchannels" xml:space="preserve">
+    <value>عبر جميع القنوات الاجتماعية</value>
+  </data>
+  <data name="Index_Index_Somereason" xml:space="preserve">
+    <value>بعض الأسباب</value>
+  </data>
+  <data name="Index_Index_SubHeadingAnalysis" xml:space="preserve">
+    <value>استخراج البيانات والتخزين والتحليلات الذكية</value>
+  </data>
+  <data name="Index_Index_SubHeadingMonitor" xml:space="preserve">
+    <value>تتبع الوقت الحقيقي من منصات وسائل الإعلام الاجتماعية</value>
+  </data>
+  <data name="Index_Index_SubHeadingUserguide" xml:space="preserve">
+    <value>لمعرفة المزيد قم بتحميل الدليل</value>
+  </data>
+  <data name="Index_Index_Userguide" xml:space="preserve">
+    <value>الحصول على دليل المستخدم</value>
+  </data>
+  <data name="Index_PartialPricing_30DaysFreeTrial" xml:space="preserve">
+    <value>جميع الباقات تتضمن تجربة مجانية لمدة 30 يوم</value>
+  </data>
+  <data name="Index_PartialPricing_Basic" xml:space="preserve">
+    <value>أساسية</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature1" xml:space="preserve">
+    <value>لوحة المعلومات الشاملة</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature2" xml:space="preserve">
+    <value>صندوق البريد لأكثر من صفحة تواصل الاجتماعي</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature3" xml:space="preserve">
+    <value>تحديثات الوسائط الاجتماعية</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature4" xml:space="preserve">
+    <value>جدولة الميزات</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature5" xml:space="preserve">
+    <value>وسائل الإعلام الاجتماعية تستند على السي ار ام</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature6" xml:space="preserve">
+    <value>أدوات منصة إعداد التقارير الاجتماعية</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature7" xml:space="preserve">
+    <value>تدريب ودعم فني لأربعة وعشرين ساعة في سبعة ايام في الأسبوع</value>
+  </data>
+  <data name="Index_PartialPricing_BasicFeature8" xml:space="preserve">
+    <value>إدارة ما يصل إلى 5 ملفات تعريف</value>
+  </data>
+  <data name="Index_PartialPricing_BASICPLANS" xml:space="preserve">
+    <value>الخطط الأساسية</value>
+  </data>
+  <data name="Index_PartialPricing_BasicSubHeading" xml:space="preserve">
+    <value>كل خطة هي حزمة فريدة من نوعها. هذه واحده مناسبة للأفراد.</value>
+  </data>
+  <data name="Index_PartialPricing_BtnBuyNow" xml:space="preserve">
+    <value>اشتر الآن</value>
+  </data>
+  <data name="Index_PartialPricing_BTNRequestADemo" xml:space="preserve">
+    <value>طلب العرض التجريبي</value>
+  </data>
+  <data name="Index_PartialPricing_BTNTryNow" xml:space="preserve">
+    <value>حاول الان</value>
+  </data>
+  <data name="Index_PartialPricing_Change" xml:space="preserve">
+    <value>تطوير، وتغيير أو إلغاء في أي وقت</value>
+  </data>
+  <data name="Index_PartialPricing_Deluxe" xml:space="preserve">
+    <value>فاخر</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature1" xml:space="preserve">
+    <value>جميع الأساسيات الاعتيادية والميزات الفاخرة</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature2" xml:space="preserve">
+    <value>الحقول الفورية</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature3" xml:space="preserve">
+    <value>مراقبة دائمة ومباشرة</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature4" xml:space="preserve">
+    <value>أدوات فريق التعاون</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature5" xml:space="preserve">
+    <value>Social CRM</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature6" xml:space="preserve">
+    <value>تدريب ودعم فني لأربعة وعشرين ساعة في سبعة ايام في الأسبوع</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeFeature7" xml:space="preserve">
+    <value>إدارة ما يصل إلى 50 ملفات تعريف</value>
+  </data>
+  <data name="Index_PartialPricing_DeluxeSubHeading" xml:space="preserve">
+    <value>تشمل أدوات متطورة لأهداف معقدة</value>
+  </data>
+  <data name="Index_PartialPricing_ENTERPRISEANDAGENCY" xml:space="preserve">
+    <value>وكالة المشاريع</value>
+  </data>
+  <data name="Index_PartialPricing_EXPERTPLANS" xml:space="preserve">
+    <value>الباقات المتطورة</value>
+  </data>
+  <data name="Index_PartialPricing_Premium" xml:space="preserve">
+    <value>متميزة</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature1" xml:space="preserve">
+    <value>جميع ميزات الباقات الموحدة</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature2" xml:space="preserve">
+    <value>اكتشاف الاجتماعية</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature3" xml:space="preserve">
+    <value>دمج الدعم الفني</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature4" xml:space="preserve">
+    <value>إحصائيات قوة المحرك</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature5" xml:space="preserve">
+    <value>عرض التحليلات المخصصة</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature6" xml:space="preserve">
+    <value>تدريب ودعم فني لأربعة وعشرين ساعة في سبعة ايام في الأسبوع</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature7" xml:space="preserve">
+    <value>آر إس إس</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimFeature8" xml:space="preserve">
+    <value>إدارة ما يصل إلى 20 ملفات تعريف</value>
+  </data>
+  <data name="Index_PartialPricing_PremuimSubHeading" xml:space="preserve">
+    <value>حزمة تحتاج إلى توسيع إدارة شبكة وسائل الاعلام الاجتماعية بكفاءة.</value>
+  </data>
+  <data name="Index_PartialPricing_PricingBasic" xml:space="preserve">
+    <value>مجانا</value>
+  </data>
+  <data name="Index_PartialPricing_PricingDeluxe" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_PartialPricing_PricingPremium" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_PartialPricing_PricingSocioBasic" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_PartialPricing_PricingSocioDeluxe" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_PartialPricing_PricingSocioPremium" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_PartialPricing_PricingSocioStandard" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_PartialPricing_PricingStandard" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Index_PartialPricing_RequestDemoBtnReset" xml:space="preserve">
+    <value>إعادة تعيين</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoBtnSend" xml:space="preserve">
+    <value>ارسل طلب</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoCompanyName" xml:space="preserve">
+    <value>اسم الشركة</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoEmail" xml:space="preserve">
+    <value>عنوان البريد الالكتروني</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoFName" xml:space="preserve">
+    <value>الاسم الأول</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoInfoPage" xml:space="preserve">
+    <value>طلب عرض توضيحي أو مزيد من المعلومات</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoNotes" xml:space="preserve">
+    <value>مذكرات</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoPhNO" xml:space="preserve">
+    <value>رقم التليفون</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoSkypeID" xml:space="preserve">
+    <value>Skype ID</value>
+  </data>
+  <data name="Index_PartialPricing_RequestDemoSName" xml:space="preserve">
+    <value>الاسم الأخير</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasic" xml:space="preserve">
+    <value>DocumantalBasic</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature1" xml:space="preserve">
+    <value>جميع الأساسيات الاعتيادية والميزات الفاخرة</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature2" xml:space="preserve">
+    <value>الحقول الفورية</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature3" xml:space="preserve">
+    <value>مراقبة دائمة ومباشرة</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature4" xml:space="preserve">
+    <value>أدوات فريق التعاون</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature5" xml:space="preserve">
+    <value>CRM الاجتماعي</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature6" xml:space="preserve">
+    <value>تدريب ودعم فني لأربعة وعشرين ساعة في سبعة ايام في الأسبوع</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicFeature7" xml:space="preserve">
+    <value>إدارة ما يصل إلى 100 ملفات تعريف</value>
+  </data>
+  <data name="Index_PartialPricing_SocioBasicSubHeading" xml:space="preserve">
+    <value>تشمل أدوات متطورة لأهداف معقدة</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxe" xml:space="preserve">
+    <value>DocumantalDeluxe</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature1" xml:space="preserve">
+    <value>جميع الأساسيات الاعتيادية والميزات الفاخرة</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature2" xml:space="preserve">
+    <value>الحقول الفورية</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature3" xml:space="preserve">
+    <value>مراقبة دائمة ومباشرة</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature4" xml:space="preserve">
+    <value>أدوات فريق التعاون</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature5" xml:space="preserve">
+    <value>CRM الاجتماعي</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature6" xml:space="preserve">
+    <value>تدريب ودعم فني لأربعة وعشرين ساعة في سبعة ايام في الأسبوع</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeFeature7" xml:space="preserve">
+    <value>إدارة ما يصل إلى 1000 ملفات تعريف</value>
+  </data>
+  <data name="Index_PartialPricing_SocioDeluxeSubHeading" xml:space="preserve">
+    <value>تشمل أدوات متطورة لأهداف معقدة</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature1" xml:space="preserve">
+    <value>جميع الأساسيات الاعتيادية والميزات الفاخرة</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature2" xml:space="preserve">
+    <value>الحقول الفورية</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature3" xml:space="preserve">
+    <value>مراقبة دائمة ومباشرة</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature4" xml:space="preserve">
+    <value>أدوات فريق التعاون</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature5" xml:space="preserve">
+    <value>CRM الاجتماعي</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature6" xml:space="preserve">
+    <value>تدريب ودعم فني لأربعة وعشرين ساعة في سبعة ايام في الأسبوع</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumFeature7" xml:space="preserve">
+    <value>إدارة ما يصل إلى 500 ملفات تعريف</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremiumSubHeading" xml:space="preserve">
+    <value>تشمل أدوات متطورة لأهداف معقدة</value>
+  </data>
+  <data name="Index_PartialPricing_SocioPremuim" xml:space="preserve">
+    <value>DocumantalPremium</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandard" xml:space="preserve">
+    <value>DocumantalStandard</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature1" xml:space="preserve">
+    <value>جميع الأساسيات الاعتيادية والميزات الفاخرة</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature2" xml:space="preserve">
+    <value>الحقول الفورية</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature3" xml:space="preserve">
+    <value>مراقبة دائمة ومباشرة</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature4" xml:space="preserve">
+    <value>أدوات فريق التعاون</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature5" xml:space="preserve">
+    <value>CRM الاجتماعي</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature6" xml:space="preserve">
+    <value>تدريب ودعم فني لأربعة وعشرين ساعة في سبعة ايام في الأسبوع</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardFeature7" xml:space="preserve">
+    <value>إدارة ما يصل إلى 200 ملفات تعريف</value>
+  </data>
+  <data name="Index_PartialPricing_SocioStandardSubHeading" xml:space="preserve">
+    <value>تشمل أدوات متطورة لأهداف معقدة</value>
+  </data>
+  <data name="Index_PartialPricing_Standard" xml:space="preserve">
+    <value>معيار</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature1" xml:space="preserve">
+    <value>صندوق وارد ذكي</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature2" xml:space="preserve">
+    <value>بيانات حية ومباشرة من صفحات التواصل الاجتماعي</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature3" xml:space="preserve">
+    <value>نشر ميزات متقدمة</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature4" xml:space="preserve">
+    <value>وسائل الإعلام الاجتماعية تستند على السي ار ام</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature5" xml:space="preserve">
+    <value>أدوات إعداد التقارير</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature6" xml:space="preserve">
+    <value>تدريب ودعم فني لأربعة وعشرين ساعة في سبعة ايام في الأسبوع</value>
+  </data>
+  <data name="Index_PartialPricing_StandardFeature7" xml:space="preserve">
+    <value>إدارة ما يصل إلى 10 ملفات تعريف</value>
+  </data>
+  <data name="Index_PartialPricing_StandardSubHeading" xml:space="preserve">
+    <value>يتألف من أدوات عظيمة مناسبة لفرق صغيرة.</value>
+  </data>
+  <data name="Index_PaymentSuccessful_Continue" xml:space="preserve">
+    <value>أكمل</value>
+  </data>
+  <data name="Index_PaymentSuccessful_ThankYou" xml:space="preserve">
+    <value>شكرا لك</value>
+  </data>
+  <data name="Index_Privacy_ConfidentialityandSecurity" xml:space="preserve">
+    <value>سرية وأمن المعلومات الشخصية:</value>
+  </data>
+  <data name="Index_Privacy_ConfidentialityandSecurityDescription" xml:space="preserve">
+    <value>Except as otherwise provided in this Privacy Policy we will keep your Personal Information private and will not share it with third parties, unless such disclosure is necessary to: (a) comply with a court order or other legal process; or (b) protect our rights or property. We provide you with the capability to transmit your Personal Information via secured and encrypted channels if you use a similarly equipped web browser.</value>
+  </data>
+  <data name="Index_Privacy_EmploymentInfoCollected" xml:space="preserve">
+    <value>معلومات التوظيف:</value>
+  </data>
+  <data name="Index_Privacy_EmploymentInfoCollectedDescription" xml:space="preserve">
+    <value>Through our Site we provide access to open positions under the title “Careers.” When you submit a resume via Email or through our Site, we will treat your resume with the same degree of confidentiality as if you had submitted it to us via regular mail.</value>
+  </data>
+  <data name="Index_Privacy_OtherlimitsinPrivacy" xml:space="preserve">
+    <value>حدود أخرى لخصوصيتك:</value>
+  </data>
+  <data name="Index_Privacy_OtherlimitsinPrivacyDescription" xml:space="preserve">
+    <value>The Site contains links to other Web sites. We are not responsible for the privacy practices or the content of such Web sites. Please understand that any information that is disclosed in these areas becomes subject to the privacy policies and practices of those site. We have no control over its use and you should exercise caution when deciding to disclose your Personal Information.</value>
+  </data>
+  <data name="Index_Privacy_PersonalInfoCollected" xml:space="preserve">
+    <value>المعلومات الشخصية التي تم جمعها:</value>
+  </data>
+  <data name="Index_Privacy_PersonalInfoCollectedDescription" xml:space="preserve">
+    <value>In order for you to access certain specialized services and or to purchase products offered at the Site, we may require you to provide us with information that personally identifies you (“Personal Information”). Personal Information may include: (i) Contact Data (such as your name, mailing and e-mail addresses); (ii) Demographic Data (such as your zip code, state, or industry). If you communicate with us by Email, or complete survey forms online, any information you provide may be collected as Personal Information.</value>
+  </data>
+  <data name="Index_Privacy_PrivacyPolicyHeading" xml:space="preserve">
+    <value>سياسة الخصوصية</value>
+  </data>
+  <data name="Index_Privacy_SocioBoardtechPVTLtdDescription" xml:space="preserve">
+    <value>(“us,” “we” or “our”) created this Web Site Privacy Policy (“Privacy Policy”) to ensure the confidence of our visitors and clients (“you” or “your”) with our Web site (the “Site”), and to demonstrate our commitment to fair information practices and to protect your privacy.</value>
+  </data>
+  <data name="Index_Privacy_TafficDataType" xml:space="preserve">
+    <value>بيانات الحركة التي تم جمعها:</value>
+  </data>
+  <data name="Index_Privacy_TafficDataTypeDescription" xml:space="preserve">
+    <value>We automatically track and collect the following information when you visit our Site, including your: (i) IP address; (ii) domain server; (iii) type of computer; and (iv) type of web browser (collectively “Traffic Data”). Traffic Data is anonymous information that does not personally identify you but is helpful to improve your experience on the Site and to track site usage. We may also use “cookies” to customize content specific to your interests, to ensure that you do not see the same promotional content repeatedly and to store your password (if one is required to be issued) so you do not have to re-enter it each time you visit the Site.</value>
+  </data>
+  <data name="Index_Privacy_TypesOfInfoCollected" xml:space="preserve">
+    <value>أنواع المعلومات التي تم جمعها:</value>
+  </data>
+  <data name="Index_Privacy_UpdatesandChangestoPrivacy" xml:space="preserve">
+    <value>تحديثات وتغييرات على سياسة الخصوصية:</value>
+  </data>
+  <data name="Index_Privacy_UpdatesandChangestoPrivacyDescription" xml:space="preserve">
+    <value>We reserve the right, at any time and without notice, to add to, change, update or modify this Privacy Policy, simply by posting such change, update or modification on the Site. Any such change, update or modification will be effective immediately upon posting on the Site</value>
+  </data>
+  <data name="Index_Privacy_UserChoice" xml:space="preserve">
+    <value>اختيار المستخدم فيما يتعلق بجمع واستخدام وتوزيع المعلومات الشخصية:</value>
+  </data>
+  <data name="Index_Privacy_UserChoiceDescription" xml:space="preserve">
+    <value>You may choose not to provide us with any Personal Information. In that case you can still access and use much of the Site; however you will not be able to access and use portions of the Site that require your Personal Information.</value>
+  </data>
+  <data name="Index_Privacy_UsesOfInformation" xml:space="preserve">
+    <value>الأغراض من المعلومات التي تم جمعها:</value>
+  </data>
+  <data name="Index_Privacy_UsesOfInformationDescription" xml:space="preserve">
+    <value>We may use Contact Data to send you information about our products or services, or promotional material, or to contact you when necessary. We may use your Demographic Data to customize and tailor your experience on the Site, displaying content that may interest you according to your preferences.</value>
+  </data>
+  <data name="Index_RegistrationMailPartial_ClickTheLinkBelowToActivate" xml:space="preserve">
+    <value>يرجى الضغط على الرابط أدناه لتفعيل حسابك.</value>
+  </data>
+  <data name="Index_RegistrationMailPartial_CongratsRecievedRequest" xml:space="preserve">
+    <value>تهانينا! تلقينا طلبك ل</value>
+  </data>
+  <data name="Index_RegistrationMailPartial_Hi" xml:space="preserve">
+    <value>مرحبا</value>
+  </data>
+  <data name="Index_RegistrationMailPartial_KeepsocioBoarding" xml:space="preserve">
+    <value>نتمنى لك وقت سعيد في دوكيومنتال</value>
+  </data>
+  <data name="Index_RegistrationMailPartial_Plan" xml:space="preserve">
+    <value>باقة</value>
+  </data>
+  <data name="Index_RegistrationMailPartial_WarmRegards" xml:space="preserve">
+    <value>تحياتي الحارة</value>
+  </data>
+  <data name="Index_RegistrationPartial_BasicFree" xml:space="preserve">
+    <value>Basic(Free)</value>
+  </data>
+  <data name="Index_RegistrationPartial_ClickToVerify" xml:space="preserve">
+    <value>إضغط للتحقق</value>
+  </data>
+  <data name="Index_RegistrationPartial_CreateAccount" xml:space="preserve">
+    <value>إنشاء حساب </value>
+  </data>
+  <data name="Index_RegistrationPartial_CreateYourAccount" xml:space="preserve">
+    <value>أنشئ حسابك</value>
+  </data>
+  <data name="Index_RegistrationPartial_Deluxe" xml:space="preserve">
+    <value>Deluxe</value>
+  </data>
+  <data name="Index_RegistrationPartial_Premium" xml:space="preserve">
+    <value>Premium</value>
+  </data>
+  <data name="Index_RegistrationPartial_Reset" xml:space="preserve">
+    <value>إعادة تعيين</value>
+  </data>
+  <data name="Index_RegistrationPartial_SelectAccountType" xml:space="preserve">
+    <value>حدد نوع الحساب</value>
+  </data>
+  <data name="Index_RegistrationPartial_SocioBasic" xml:space="preserve">
+    <value>DocumantalBasic</value>
+  </data>
+  <data name="Index_RegistrationPartial_SocioDeluxe" xml:space="preserve">
+    <value>DocumantalDeluxe</value>
+  </data>
+  <data name="Index_RegistrationPartial_SocioPremium" xml:space="preserve">
+    <value>DocumantalPremium</value>
+  </data>
+  <data name="Index_RegistrationPartial_SocioStandard" xml:space="preserve">
+    <value>DocumantalStandard</value>
+  </data>
+  <data name="Index_RegistrationPartial_Standard" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="Index_UserActivationPartial_CheckOrResendMail" xml:space="preserve">
+    <value>First Activate your Account.
+                    For this please check your mail.
+                    OR 
+                    For again sending Mail 
+                    Please click here....</value>
+  </data>
+  <data name="Index_UserActivationPartial_SendMail" xml:space="preserve">
+    <value>إرسال بريد الكتروني</value>
+  </data>
+  <data name="Index_UserActivationPartial_UserInfo" xml:space="preserve">
+    <value>معلومات عن المستخدم</value>
+  </data>
+  <data name="Messages_ArchivePartial_ArchivedMessages" xml:space="preserve">
+    <value>الرسائل المؤرشفة</value>
+  </data>
+  <data name="Messages_ArchivePartial_Close" xml:space="preserve">
+    <value>إغلاق</value>
+  </data>
+  <data name="Messages_ArchivePartial_Comment" xml:space="preserve">
+    <value>تعليق</value>
+  </data>
+  <data name="Messages_ArchivePartial_LeaveAComment" xml:space="preserve">
+    <value>اترك تعليق</value>
+  </data>
+  <data name="Messages_MessagesLeftSideBarPartial_ArchiveMessage" xml:space="preserve">
+    <value>أرشفة الرسالة</value>
+  </data>
+  <data name="Messages_MessagesLeftSideBarPartial_MyTask" xml:space="preserve">
+    <value>قائمة المهام</value>
+  </data>
+  <data name="Messages_MessagesLeftSideBarPartial_SentMessage" xml:space="preserve">
+    <value>الرسائل المرسلة</value>
+  </data>
+  <data name="Messages_MessagesLeftSideBarPartial_SmartInbox" xml:space="preserve">
+    <value>الصندوق الذكي</value>
+  </data>
+  <data name="Messages_MessagesMidPartialNew_Close" xml:space="preserve">
+    <value>إغلاق</value>
+  </data>
+  <data name="Messages_MessagesMidPartialNew_MyRecentPosts" xml:space="preserve">
+    <value>مشاركاتي الجديدة</value>
+  </data>
+  <data name="Messages_MessagesMidPartialNew_ProfileSummary" xml:space="preserve">
+    <value>ملخص الملف الشخصي</value>
+  </data>
+  <data name="Messages_MessagesRightPartial_PROFILES" xml:space="preserve">
+    <value>الملفات الشخصية</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Cancel" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="Messages_sentmsgPartial_ChooseDataRange" xml:space="preserve">
+    <value>تحديد نطاق التاريخ</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Clear" xml:space="preserve">
+    <value>تفريغ الحقول</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Close" xml:space="preserve">
+    <value>إغلاق</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Comment" xml:space="preserve">
+    <value>تعليق</value>
+  </data>
+  <data name="Messages_sentmsgPartial_CSVDescription" xml:space="preserve">
+    <value>يتم تصدير الرسائل بصيغة CSV ويمكن فتح هذا النوع باستخدام مايكروسوفت اكسل او جووجل دوكس</value>
+  </data>
+  <data name="Messages_sentmsgPartial_CustomRange" xml:space="preserve">
+    <value>فترة زمنية مخصصة</value>
+  </data>
+  <data name="Messages_sentmsgPartial_ExportSentMessageData" xml:space="preserve">
+    <value>تصدير الرسائل المرسلة</value>
+  </data>
+  <data name="Messages_sentmsgPartial_ExportToCSV" xml:space="preserve">
+    <value>تصدير الى CSV</value>
+  </data>
+  <data name="Messages_sentmsgPartial_From" xml:space="preserve">
+    <value>من</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Last30Days" xml:space="preserve">
+    <value>اخر 30 يوم</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Last7Days" xml:space="preserve">
+    <value>اخر 70 يوم</value>
+  </data>
+  <data name="Messages_sentmsgPartial_LastMonth" xml:space="preserve">
+    <value>اخر شهر</value>
+  </data>
+  <data name="Messages_sentmsgPartial_LeaveAComment" xml:space="preserve">
+    <value>اترك تعليق</value>
+  </data>
+  <data name="Messages_sentmsgPartial_SentMessages" xml:space="preserve">
+    <value>الرسائل المرسلة</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Submit" xml:space="preserve">
+    <value>استمرار</value>
+  </data>
+  <data name="Messages_sentmsgPartial_ThisMonth" xml:space="preserve">
+    <value>الشهر الحالي</value>
+  </data>
+  <data name="Messages_sentmsgPartial_To" xml:space="preserve">
+    <value>لغاية</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Today" xml:space="preserve">
+    <value>اليوم</value>
+  </data>
+  <data name="Messages_sentmsgPartial_Yesterday" xml:space="preserve">
+    <value>أمس</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_AssignTaskTo" xml:space="preserve">
+    <value>تعيين المهمه لـ</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_Close" xml:space="preserve">
+    <value>إغلاق</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_LeaveAComment" xml:space="preserve">
+    <value>اترك تعليق</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_Like" xml:space="preserve">
+    <value>اعجاب</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="Messages_SmartInboxPartial_UnLike" xml:space="preserve">
+    <value>الغاء الاعجاب</value>
+  </data>
+  <data name="Messages_SocialProfileDetail_Connection" xml:space="preserve">
+    <value>صلة</value>
+  </data>
+  <data name="Messages_SocialProfileDetail_Follower" xml:space="preserve">
+    <value>متابعين</value>
+  </data>
+  <data name="Messages_SocialProfileDetail_Following" xml:space="preserve">
+    <value>متابعة</value>
+  </data>
+  <data name="Messages_SocialProfileDetail_Freinds" xml:space="preserve">
+    <value>أصدقاء</value>
+  </data>
+  <data name="Messages_SocialProfileDetail_GoToFullprofile" xml:space="preserve">
+    <value>الذهاب الى الملف الكامل →</value>
+  </data>
+  <data name="Messages_TaskPartial_AreYouSureValidationStatus" xml:space="preserve">
+    <value>هل أنت متأكد انك ترغب بتغيير الحالة؟</value>
+  </data>
+  <data name="Messages_TaskPartial_AssignedBy" xml:space="preserve">
+    <value>معين بواسطة</value>
+  </data>
+  <data name="Messages_TaskPartial_Close" xml:space="preserve">
+    <value>إغلاق</value>
+  </data>
+  <data name="Messages_TaskPartial_ClosedBy" xml:space="preserve">
+    <value>مغلق بواسطة</value>
+  </data>
+  <data name="Messages_TaskPartial_ClosedByYou" xml:space="preserve">
+    <value>مغلق بواسطتك</value>
+  </data>
+  <data name="Messages_TaskPartial_CompleteTask" xml:space="preserve">
+    <value>اكمال المهمة</value>
+  </data>
+  <data name="Messages_TaskPartial_DeleteTask" xml:space="preserve">
+    <value>حذف المهمة</value>
+  </data>
+  <data name="Messages_TaskPartial_EditStatus" xml:space="preserve">
+    <value>تعديل المهمة</value>
+  </data>
+  <data name="Messages_TaskPartial_ManageTasks" xml:space="preserve">
+    <value>إدارة المهام</value>
+  </data>
+  <data name="Messages_TaskPartial_MyTask" xml:space="preserve">
+    <value>قائمة مهامي</value>
+  </data>
+  <data name="Messages_TaskPartial_MyTaskHeading" xml:space="preserve">
+    <value>قائمة مهامي</value>
+  </data>
+  <data name="Messages_TaskPartial_NoTaskInThisGroup" xml:space="preserve">
+    <value>عذرا! لا يوجد لديك مهام في هذه المجموعة</value>
+  </data>
+  <data name="Messages_TaskPartial_OK" xml:space="preserve">
+    <value>تأكيد</value>
+  </data>
+  <data name="Messages_TaskPartial_PendingTask" xml:space="preserve">
+    <value>المهام المعلقة</value>
+  </data>
+  <data name="Messages_TaskPartial_Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="Messages_TaskPartial_TaskActivity" xml:space="preserve">
+    <value>نشاط المهمة</value>
+  </data>
+  <data name="Messages_TaskPartial_Tasks" xml:space="preserve">
+    <value>المهام </value>
+  </data>
+  <data name="Messages_TaskPartial_TeamTask" xml:space="preserve">
+    <value>مهام الفريق</value>
+  </data>
+  <data name="Message__MessagesRightSideBarPartial_Mentions" xml:space="preserve">
+    <value>ذكر في</value>
+  </data>
+  <data name="Message__MessagesRightSideBarPartial_MessageType" xml:space="preserve">
+    <value>نوع الرسالة</value>
+  </data>
+  <data name="Message__MessagesRightSideBarPartial_Profiles" xml:space="preserve">
+    <value>الملف الشخصي</value>
+  </data>
+  <data name="Message__MessagesRightSideBarPartial_UserFeeds" xml:space="preserve">
+    <value>مشاركات المستخدم</value>
+  </data>
+  <data name="Message__MessagesRightSideBarPartial_UserTweets" xml:space="preserve">
+    <value>تغريدات المستخدم</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_ChangePassword" xml:space="preserve">
+    <value>تغيير كلمة المرور</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Close" xml:space="preserve">
+    <value>إغلاق</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Email" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_FirstName" xml:space="preserve">
+    <value>الاسم الأول</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_LastName" xml:space="preserve">
+    <value>اسم العائلة</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Password" xml:space="preserve">
+    <value>كلمة المرور</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_ReEnterPassword" xml:space="preserve">
+    <value>الرجاء ادخال كلمة المرور مرة أخرى</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_ResetEmail" xml:space="preserve">
+    <value>إعادة تعيين البريد الالكتروني</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_SaveChanges" xml:space="preserve">
+    <value>حفظ التغييرات</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_SecurityReEnterPassword" xml:space="preserve">
+    <value>لحماية افضل, الرجاء اعادة إدخال كلمة المرور للاستمرار</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Settings" xml:space="preserve">
+    <value>إعدادات</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_Submit" xml:space="preserve">
+    <value>استمرار</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_TeamMemberAvatar" xml:space="preserve">
+    <value>أعضاء الفريق سيتمكنون من مشاهدة الصورة التي قمت بتعيينها</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_TimeZone" xml:space="preserve">
+    <value>المنطقة الزمنية</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_UpgradeMonthly" xml:space="preserve">
+    <value>الترقية الى الباقة الشهرية</value>
+  </data>
+  <data name="PersonalSetting_PersonalSettingPartial_UpgradeYearly" xml:space="preserve">
+    <value>الترقية الى الباقة السنوية</value>
+  </data>
+  <data name="Publishing_DraftPartial_Delete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="Publishing_DraftPartial_Edit" xml:space="preserve">
+    <value>تعديل</value>
+  </data>
+  <data name="Publishing_DraftPartial_Message" xml:space="preserve">
+    <value>رسالة</value>
+  </data>
+  <data name="Publishing_DraftPartial_Schedule" xml:space="preserve">
+    <value>جدولة</value>
+  </data>
+  <data name="Publishing_DraftPartial_User" xml:space="preserve">
+    <value>مستخدم</value>
+  </data>
+  <data name="Publishing_Draft_Close" xml:space="preserve">
+    <value>إغلاق</value>
+  </data>
+  <data name="Publishing_Draft_DraftMessages" xml:space="preserve">
+    <value>مسودة الرسائل</value>
+  </data>
+  <data name="Publishing_Draft_DraftTable" xml:space="preserve">
+    <value>مسودة الجداول</value>
+  </data>
+  <data name="Publishing_Draft_EDITDRAFTMESSAGE" xml:space="preserve">
+    <value>تعديل مسودة الرسائل</value>
+  </data>
+  <data name="Publishing_Draft_OK" xml:space="preserve">
+    <value>تأكيد</value>
+  </data>
+  <data name="Publishing_Draft_Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="Publishing_Draft_SignIn" xml:space="preserve">
+    <value>تسجيل الدخول</value>
+  </data>
+  <data name="Publishing_Draft_YouWantToDeleteThisDraft" xml:space="preserve">
+    <value>هل أنت متأكد انك تريد حذف هذه المسودة؟</value>
+  </data>
+  <data name="Publishing_Index_SaveToDraft" xml:space="preserve">
+    <value>حفظ في المسودة</value>
+  </data>
+  <data name="Publishing_Index_Schedule" xml:space="preserve">
+    <value>جدولة</value>
+  </data>
+  <data name="Publishing_Index_ScheduleMessage" xml:space="preserve">
+    <value>جدولة الرسالة</value>
+  </data>
+  <data name="Publishing_Index_SelectProfile" xml:space="preserve">
+    <value>تحديد ملف</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_Delete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_Edit" xml:space="preserve">
+    <value>تعديل</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_Message" xml:space="preserve">
+    <value>رسالة</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_Nework" xml:space="preserve">
+    <value>شبكة</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_SentFrom" xml:space="preserve">
+    <value>نموذج الارسال</value>
+  </data>
+  <data name="Publishing_SocialQueuePartial_Status" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="Publishing_SocioQueue_Close" xml:space="preserve">
+    <value>إغلاق</value>
+  </data>
+  <data name="Publishing_SocioQueue_EditMessage" xml:space="preserve">
+    <value>تعديل الرسالة</value>
+  </data>
+  <data name="Publishing_SocioQueue_OK" xml:space="preserve">
+    <value>تأكيد</value>
+  </data>
+  <data name="Publishing_SocioQueue_QueuedMessage" xml:space="preserve">
+    <value>طابور الرسائل</value>
+  </data>
+  <data name="Publishing_SocioQueue_Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="Publishing_SocioQueue_SocioQueue" xml:space="preserve">
+    <value>طابور الارسال</value>
+  </data>
+  <data name="Publishing_SocioQueue_SureDeleteMessage" xml:space="preserve">
+    <value>هل أنت متأكد انك تريد حذف هذه الرسالة؟</value>
+  </data>
+  <data name="Report_FbPageReport_Comment" xml:space="preserve">
+    <value>تعليق</value>
+  </data>
+  <data name="Report_FbPageReport_ExportToExcel" xml:space="preserve">
+    <value>تصدير الى ملف اكسل</value>
+  </data>
+  <data name="Report_FbPageReport_FacebookPagePosts" xml:space="preserve">
+    <value>المشاركات على صفحة الفيسبوك</value>
+  </data>
+  <data name="Report_FbPageReport_FbPageReports" xml:space="preserve">
+    <value>تقارير صفحة الفيسبوك</value>
+  </data>
+  <data name="Report_FbPageReport_InterReport" xml:space="preserve">
+    <value>إدخال تقرير</value>
+  </data>
+  <data name="Report_FbPageReport_Like" xml:space="preserve">
+    <value>إعجاب</value>
+  </data>
+  <data name="Report_FbPageReport_Post" xml:space="preserve">
+    <value>مشاركة</value>
+  </data>
+  <data name="Report_FbPageReport_PostDetails" xml:space="preserve">
+    <value>تفاصيل المشاركة</value>
+  </data>
+  <data name="Report_FbPageReport_Published" xml:space="preserve">
+    <value>منشور</value>
+  </data>
+  <data name="Report_FbPageReport_Share" xml:space="preserve">
+    <value>إعادة نشر</value>
+  </data>
+  <data name="Report_FbPageReport_type" xml:space="preserve">
+    <value>نوع</value>
+  </data>
+  <data name="Report_FbPostDetails_Comments" xml:space="preserve">
+    <value>التعليقات</value>
+  </data>
+  <data name="Report_FbPostDetails_Like" xml:space="preserve">
+    <value>إعجاب</value>
+  </data>
+  <data name="Report_FbPostDetails_Likes" xml:space="preserve">
+    <value>إعجاب</value>
+  </data>
+  <data name="Report_FbPostDetails_Shares" xml:space="preserve">
+    <value>إعادة نشر</value>
+  </data>
+  <data name="Report_GroupStatPartial_EngagementReport" xml:space="preserve">
+    <value>تقرير الاشتراك</value>
+  </data>
+  <data name="Report_GroupStatPartial_GeneralStatsInterGroup" xml:space="preserve">
+    <value>احصائيات عامة عبر مجموعات مشتركة</value>
+  </data>
+  <data name="Report_GroupStatPartial_GroupReports" xml:space="preserve">
+    <value>تقارير المجموعات</value>
+  </data>
+  <data name="Report_GroupStatPartial_GroupStats" xml:space="preserve">
+    <value>حالة المجموعه</value>
+  </data>
+  <data name="Report_GroupStatPartial_Impressions" xml:space="preserve">
+    <value>انطباعات</value>
+  </data>
+  <data name="Report_GroupStatPartial_Incomingmessages" xml:space="preserve">
+    <value>الرسائل الواردة</value>
+  </data>
+  <data name="Report_GroupStatPartial_Interactions" xml:space="preserve">
+    <value>تفاعلات</value>
+  </data>
+  <data name="Report_GroupStatPartial_Mentioned" xml:space="preserve">
+    <value>تم ذكره</value>
+  </data>
+  <data name="Report_GroupStatPartial_MetricsDescription" xml:space="preserve">
+    <value>تستند هذه المقاييس علي الردود المرسله من الملفات الشخصية داخل المجموعة</value>
+  </data>
+  <data name="Report_GroupStatPartial_NewFacebookFan" xml:space="preserve">
+    <value>معجب فيس بوك جديد</value>
+  </data>
+  <data name="Report_GroupStatPartial_NewFollowerTimePeriod" xml:space="preserve">
+    <value>متابعين جدد في هذه الفترة الزمنية </value>
+  </data>
+  <data name="Report_GroupStatPartial_NewTwitterFollower" xml:space="preserve">
+    <value>متابعين تويتر جدد</value>
+  </data>
+  <data name="Report_GroupStatPartial_PhotoLink" xml:space="preserve">
+    <value>رابط صورة</value>
+  </data>
+  <data name="Report_GroupStatPartial_PlainText" xml:space="preserve">
+    <value>نص فارغ</value>
+  </data>
+  <data name="Report_GroupStatPartial_ProfilesByUser" xml:space="preserve">
+    <value>ملفات شخصية حسب المستخدم</value>
+  </data>
+  <data name="Report_GroupStatPartial_ReTweets" xml:space="preserve">
+    <value>اعادة تغريد</value>
+  </data>
+  <data name="Report_GroupStatPartial_SentMessages" xml:space="preserve">
+    <value>الرسائل المرسلة</value>
+  </data>
+  <data name="Report_GroupStatPartial_Statsfor2Twitteraccount" xml:space="preserve">
+    <value>احصائيات ل2 حسابات تويتر في المجموعه المشتركة</value>
+  </data>
+  <data name="Report_GroupStatPartial_TwitterStats" xml:space="preserve">
+    <value>احصائيات تويتر </value>
+  </data>
+  <data name="Report_Index_Close" xml:space="preserve">
+    <value>اغلاق</value>
+  </data>
+  <data name="Report_Index_Postdetails" xml:space="preserve">
+    <value>تفاصيل المشاركة</value>
+  </data>
+  <data name="Report_Index_SaveChanges" xml:space="preserve">
+    <value>حفظ التغييرات</value>
+  </data>
+  <data name="Report_ReportMenuPartial_AssignDate" xml:space="preserve">
+    <value>تاريخ التعيين</value>
+  </data>
+  <data name="Report_ReportMenuPartial_AssignTaskTo" xml:space="preserve">
+    <value>تعيين مهمه ل</value>
+  </data>
+  <data name="Report_ReportMenuPartial_CompeteDate" xml:space="preserve">
+    <value>تاريخ البدء</value>
+  </data>
+  <data name="Report_ReportMenuPartial_FacebookReports" xml:space="preserve">
+    <value>تقرير الفيس بوك</value>
+  </data>
+  <data name="Report_ReportMenuPartial_From" xml:space="preserve">
+    <value>من</value>
+  </data>
+  <data name="Report_ReportMenuPartial_InterReport" xml:space="preserve">
+    <value>ريبورت داخلي</value>
+  </data>
+  <data name="Report_ReportMenuPartial_NoDataAvailable" xml:space="preserve">
+    <value>لاتوجد بيانات متوفرة</value>
+  </data>
+  <data name="Report_ReportMenuPartial_Reports" xml:space="preserve">
+    <value>تقارير</value>
+  </data>
+  <data name="Report_ReportMenuPartial_Status" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="Report_ReportMenuPartial_TaskMessage" xml:space="preserve">
+    <value>رسالة المهمة</value>
+  </data>
+  <data name="Report_ReportMenuPartial_TaskOwner" xml:space="preserve">
+    <value>صاحب المهمة</value>
+  </data>
+  <data name="Report_ReportMenuPartial_Tasks" xml:space="preserve">
+    <value>المهمات</value>
+  </data>
+  <data name="Report_ReportMenuPartial_TwitterReports" xml:space="preserve">
+    <value>تقرير تويتر</value>
+  </data>
+  <data name="Report_TeamReportPartial_AssignDate" xml:space="preserve">
+    <value>تاريخ التعيين</value>
+  </data>
+  <data name="Report_TeamReportPartial_CompeteDate" xml:space="preserve">
+    <value>تاريخ البدء</value>
+  </data>
+  <data name="Report_TeamReportPartial_InterReport" xml:space="preserve">
+    <value>ريبورت داخلي</value>
+  </data>
+  <data name="Report_TeamReportPartial_NoDataAvailable" xml:space="preserve">
+    <value>لاتوجد بيانات متوفرة</value>
+  </data>
+  <data name="Report_TeamReportPartial_status" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="Report_TeamReportPartial_TaskAssigned" xml:space="preserve">
+    <value>تعيين مهمة ل</value>
+  </data>
+  <data name="Report_TeamReportPartial_TaskMessage" xml:space="preserve">
+    <value>رساله المهمة</value>
+  </data>
+  <data name="Report_TeamReportPartial_TaskOwner" xml:space="preserve">
+    <value>صاحب المهمة</value>
+  </data>
+  <data name="Report_TeamReportPartial_Tasks" xml:space="preserve">
+    <value>المهمات</value>
+  </data>
+  <data name="Report_TeamReportPartial_TeamReports" xml:space="preserve">
+    <value>تقاير الاعضاء</value>
+  </data>
+  <data name="Report_TwitterReportPartial_DirectMessageRecieved" xml:space="preserve">
+    <value>رساله مباشرة ( استقبلت )</value>
+  </data>
+  <data name="Report_TwitterReportPartial_DirectMessageSend" xml:space="preserve">
+    <value>رسالة مباشرة ( ارسال)</value>
+  </data>
+  <data name="Report_TwitterReportPartial_FollowerDemographic" xml:space="preserve">
+    <value>المعلومات الشخصية للمتابعين</value>
+  </data>
+  <data name="Report_TwitterReportPartial_KeyIndicators" xml:space="preserve">
+    <value>المؤشرات الرئيسية</value>
+  </data>
+  <data name="Report_TwitterReportPartial_MeasuresConversingAudiences" xml:space="preserve">
+    <value>قياس مدي تحدثك مع متابعينك</value>
+  </data>
+  <data name="Report_TwitterReportPartial_Mentioned" xml:space="preserve">
+    <value>تذكيرات</value>
+  </data>
+  <data name="Report_TwitterReportPartial_MessageRecieved" xml:space="preserve">
+    <value>استلام رسالة</value>
+  </data>
+  <data name="Report_TwitterReportPartial_MessageSent" xml:space="preserve">
+    <value>ارسال رسالة</value>
+  </data>
+  <data name="Report_TwitterReportPartial_NewFollower" xml:space="preserve">
+    <value>متابع جديد</value>
+  </data>
+  <data name="Report_TwitterReportPartial_Retweets" xml:space="preserve">
+    <value>اعادة تغريد</value>
+  </data>
+  <data name="Report_TwitterReportPartial_ShapeMessagingCampaigns" xml:space="preserve">
+    <value>تعلم المزيد عن متابعينك لتشكيل الرسائل الخاصة بك وحمالاتك</value>
+  </data>
+  <data name="Report_TwitterReportPartial_TwitterAccountReport" xml:space="preserve">
+    <value>تقرير حساب تويتر</value>
+  </data>
+  <data name="Report_TwitterReportPartial_TwitterReports" xml:space="preserve">
+    <value>تقارير تويتر</value>
+  </data>
+  <data name="Report_TwitterReportPartial_YouFollowed" xml:space="preserve">
+    <value>انت متابع</value>
+  </data>
+  <data name="Shared_AdminSite_Action" xml:space="preserve">
+    <value>امر</value>
+  </data>
+  <data name="Shared_AdminSite_AddAdvertisement" xml:space="preserve">
+    <value>اضافة اعلان</value>
+  </data>
+  <data name="Shared_AdminSite_AddCoupon" xml:space="preserve">
+    <value>اضافة كوبون</value>
+  </data>
+  <data name="Shared_AdminSite_AddNews" xml:space="preserve">
+    <value>اضافة خبر</value>
+  </data>
+  <data name="Shared_AdminSite_AddNewsLetter" xml:space="preserve">
+    <value>اضافة نشرة اخبارية</value>
+  </data>
+  <data name="Shared_AdminSite_Advertisements" xml:space="preserve">
+    <value>اعلانات</value>
+  </data>
+  <data name="Shared_AdminSite_Close" xml:space="preserve">
+    <value>اغلاق</value>
+  </data>
+  <data name="Shared_AdminSite_ContactSearch" xml:space="preserve">
+    <value>بحث جهة الاتصال</value>
+  </data>
+  <data name="Shared_AdminSite_Coupon" xml:space="preserve">
+    <value>كوبون</value>
+  </data>
+  <data name="Shared_AdminSite_DashBoard" xml:space="preserve">
+    <value>لوحة معلومات</value>
+  </data>
+  <data name="Shared_AdminSite_DeleteUsers" xml:space="preserve">
+    <value>المستخدمين المحذوفين</value>
+  </data>
+  <data name="Shared_AdminSite_IntervalTime" xml:space="preserve">
+    <value>الفاصل الزمني:</value>
+  </data>
+  <data name="Shared_AdminSite_LogOut" xml:space="preserve">
+    <value>تسجيل خروج</value>
+  </data>
+  <data name="Shared_AdminSite_ManageAdvertisement" xml:space="preserve">
+    <value>ادارة الاعلان</value>
+  </data>
+  <data name="Shared_AdminSite_ManageCoupon" xml:space="preserve">
+    <value>ادارة الكوبون</value>
+  </data>
+  <data name="Shared_AdminSite_ManageNews" xml:space="preserve">
+    <value>ادارة الاخبار</value>
+  </data>
+  <data name="Shared_AdminSite_ManagePackages" xml:space="preserve">
+    <value>ادارة الباقات</value>
+  </data>
+  <data name="Shared_AdminSite_ManageProfile" xml:space="preserve">
+    <value>ادارة الملف الشخصي</value>
+  </data>
+  <data name="Shared_AdminSite_ManageUsers" xml:space="preserve">
+    <value>ادارة المستخدمين</value>
+  </data>
+  <data name="Shared_AdminSite_NewMessage" xml:space="preserve">
+    <value>رسالة جديدة</value>
+  </data>
+  <data name="Shared_AdminSite_News" xml:space="preserve">
+    <value>اخبار</value>
+  </data>
+  <data name="Shared_AdminSite_NewsLetter" xml:space="preserve">
+    <value>نشرة اخبار</value>
+  </data>
+  <data name="Shared_AdminSite_Packages" xml:space="preserve">
+    <value>باقات</value>
+  </data>
+  <data name="Shared_AdminSite_SchedulingDetails" xml:space="preserve">
+    <value>تفاصيل الجداول</value>
+  </data>
+  <data name="Shared_AdminSite_SearchResult" xml:space="preserve">
+    <value>نتائج البحث</value>
+  </data>
+  <data name="Shared_AdminSite_Send" xml:space="preserve">
+    <value>ارسال</value>
+  </data>
+  <data name="Shared_AdminSite_Service" xml:space="preserve">
+    <value>الخدمات</value>
+  </data>
+  <data name="Shared_AdminSite_Settings" xml:space="preserve">
+    <value>الاعدادات</value>
+  </data>
+  <data name="Shared_AdminSite_Users" xml:space="preserve">
+    <value>المستخدمين</value>
+  </data>
+  <data name="Shared_Error_AVGPost" xml:space="preserve">
+    <value>متوسط المشاركات</value>
+  </data>
+  <data name="Shared_Error_AvgTweets" xml:space="preserve">
+    <value>متوسط التغريدات</value>
+  </data>
+  <data name="Shared_Error_Connections" xml:space="preserve">
+    <value>العلاقات</value>
+  </data>
+  <data name="Shared_Error_Follower" xml:space="preserve">
+    <value>المتابعين</value>
+  </data>
+  <data name="Shared_Error_Followers" xml:space="preserve">
+    <value>المتابعين</value>
+  </data>
+  <data name="Shared_Error_Following" xml:space="preserve">
+    <value>يتابع</value>
+  </data>
+  <data name="Shared_Error_Friends" xml:space="preserve">
+    <value>الاصدقاء</value>
+  </data>
+  <data name="Shared_Error_Likes" xml:space="preserve">
+    <value>اعجاب</value>
+  </data>
+  <data name="Shared_Error_MyRecentProfile" xml:space="preserve">
+    <value>الملف الشخصي الحالي </value>
+  </data>
+  <data name="Shared_Error_Perday" xml:space="preserve">
+    <value>ب التاريخ</value>
+  </data>
+  <data name="Shared_Error_Photos" xml:space="preserve">
+    <value>الصور</value>
+  </data>
+  <data name="Shared_Error_Post" xml:space="preserve">
+    <value>مشاركة</value>
+  </data>
+  <data name="Shared_Error_RecentMessages" xml:space="preserve">
+    <value>الرساله الاخيرة</value>
+  </data>
+  <data name="Shared_Error_SnapShotsConnectedAccounts" xml:space="preserve">
+    <value>لقطات من حساباتك المتصلة </value>
+  </data>
+  <data name="Shared_Error_TotalSubscriber" xml:space="preserve">
+    <value>مجموع المسجلين</value>
+  </data>
+  <data name="Shared_Error_TotalVideo" xml:space="preserve">
+    <value>مجموع الفيديو</value>
+  </data>
+  <data name="Shared_Error_TotalView" xml:space="preserve">
+    <value>مجموع المشاهدة</value>
+  </data>
+  <data name="Shared_LoadGroupPartial_Groups" xml:space="preserve">
+    <value>المجموعات</value>
+  </data>
+  <data name="Shared_Site_AddFacebookClose" xml:space="preserve">
+    <value>اغلاق</value>
+  </data>
+  <data name="Shared_Site_AddFacebookGroup" xml:space="preserve">
+    <value>اضافة مجموعة فيس بوك</value>
+  </data>
+  <data name="Shared_Site_AddFacebookPage" xml:space="preserve">
+    <value>اضافة صفحة فيس بوك</value>
+  </data>
+  <data name="Shared_Site_AddFacebookProfile" xml:space="preserve">
+    <value>اضافة حساب شخصي فيس بوك</value>
+  </data>
+  <data name="Shared_Site_AddFacebookSubmit" xml:space="preserve">
+    <value>استمرار</value>
+  </data>
+  <data name="Shared_Site_AddLinkedinClose" xml:space="preserve">
+    <value>اغلاق</value>
+  </data>
+  <data name="Shared_Site_AddLinkedinCompanyPage" xml:space="preserve">
+    <value>اضافة صفحة الشركة علي linkedin</value>
+  </data>
+  <data name="Shared_Site_AddLinkedinProfile" xml:space="preserve">
+    <value>اضافة ملف شخصي علي linkedin</value>
+  </data>
+  <data name="Shared_Site_Affiliates" xml:space="preserve">
+    <value>الشركات التابعه</value>
+  </data>
+  <data name="Shared_Site_ArchivedMessages" xml:space="preserve">
+    <value>الرسائل المؤرشفة</value>
+  </data>
+  <data name="Shared_Site_BusinessSettings" xml:space="preserve">
+    <value>ادارة الاعمال</value>
+  </data>
+  <data name="Shared_Site_Close" xml:space="preserve">
+    <value>اغلاق</value>
+  </data>
+  <data name="Shared_Site_ComposeMessagesClose" xml:space="preserve">
+    <value>اغلاق</value>
+  </data>
+  <data name="Shared_Site_ComposeMessagesDropBox" xml:space="preserve">
+    <value>Dropbox</value>
+  </data>
+  <data name="Shared_Site_ComposeMessagesProfile" xml:space="preserve">
+    <value>ملف شخصي</value>
+  </data>
+  <data name="Shared_Site_ComposeMessagesSend" xml:space="preserve">
+    <value>ارسال</value>
+  </data>
+  <data name="Shared_Site_ComposeMessagesURLShrink" xml:space="preserve">
+    <value>اختصار الرابط</value>
+  </data>
+  <data name="Shared_Site_ContactSearch" xml:space="preserve">
+    <value>بحث جهات الاتصال</value>
+  </data>
+  <data name="Shared_Site_DashBoard" xml:space="preserve">
+    <value>لوحة معلومات</value>
+  </data>
+  <data name="Shared_Site_Discovery" xml:space="preserve">
+    <value>استكشاف</value>
+  </data>
+  <data name="Shared_Site_Drafts" xml:space="preserve">
+    <value>مسودات</value>
+  </data>
+  <data name="Shared_Site_DropBox" xml:space="preserve">
+    <value>Dropbox</value>
+  </data>
+  <data name="Shared_Site_Email" xml:space="preserve">
+    <value>بريد الكتروني</value>
+  </data>
+  <data name="Shared_Site_Feeds" xml:space="preserve">
+    <value>مستجدات</value>
+  </data>
+  <data name="Shared_Site_FirstName" xml:space="preserve">
+    <value>الاسم الأول</value>
+  </data>
+  <data name="Shared_Site_GetFacebookPageAnalytics" xml:space="preserve">
+    <value>احصل على تقارير واحصائيات صفحتك على الفيسبوك</value>
+  </data>
+  <data name="Shared_Site_InviteFreinds" xml:space="preserve">
+    <value>دعوة الأصدقاء لــ</value>
+  </data>
+  <data name="Shared_Site_InviteFreindsClose" xml:space="preserve">
+    <value>اغلاق</value>
+  </data>
+  <data name="Shared_Site_InviteFreindsEmail" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+  <data name="Shared_Site_InviteFreindsFirstName" xml:space="preserve">
+    <value>الاسم الأول</value>
+  </data>
+  <data name="Shared_Site_InviteFreindsLastName" xml:space="preserve">
+    <value>اسم العائلة</value>
+  </data>
+  <data name="Shared_Site_InviteFreindsSubmit" xml:space="preserve">
+    <value>استمرار</value>
+  </data>
+  <data name="Shared_Site_LastName" xml:space="preserve">
+    <value>اسم العائلة</value>
+  </data>
+  <data name="Shared_Site_LogOut" xml:space="preserve">
+    <value>تسجيل خروج</value>
+  </data>
+  <data name="Shared_Site_Messages" xml:space="preserve">
+    <value>الرسائل</value>
+  </data>
+  <data name="Shared_Site_MyStuff" xml:space="preserve">
+    <value>فريق العمل</value>
+  </data>
+  <data name="Shared_Site_MyTasks" xml:space="preserve">
+    <value>قائم المهام</value>
+  </data>
+  <data name="Shared_Site_NewMessages" xml:space="preserve">
+    <value>رسالة جديدة</value>
+  </data>
+  <data name="Shared_Site_Profile" xml:space="preserve">
+    <value>الملف الشخصي </value>
+  </data>
+  <data name="Shared_Site_ProfileSummary" xml:space="preserve">
+    <value>ملخص الملف الشخصي</value>
+  </data>
+  <data name="Shared_Site_ProfileSummaryClose" xml:space="preserve">
+    <value>اغلاق</value>
+  </data>
+  <data name="Shared_Site_Publishing" xml:space="preserve">
+    <value>نشر</value>
+  </data>
+  <data name="Shared_Site_Reports" xml:space="preserve">
+    <value>التقارير</value>
+  </data>
+  <data name="Shared_Site_SearchContact" xml:space="preserve">
+    <value>بحث جهة اتصال</value>
+  </data>
+  <data name="Shared_Site_SearchContactClose" xml:space="preserve">
+    <value>اغلاق</value>
+  </data>
+  <data name="Shared_Site_SecheduleMessages" xml:space="preserve">
+    <value>جدولة الرسائل</value>
+  </data>
+  <data name="Shared_Site_Send" xml:space="preserve">
+    <value>ارسال</value>
+  </data>
+  <data name="Shared_Site_SentMessages" xml:space="preserve">
+    <value>الرسائل المرسلة</value>
+  </data>
+  <data name="Shared_Site_Settings" xml:space="preserve">
+    <value>الاعدادات</value>
+  </data>
+  <data name="Shared_Site_SmartInbox" xml:space="preserve">
+    <value>الصندوق الوارد الذكي </value>
+  </data>
+  <data name="Shared_Site_SocialGroups" xml:space="preserve">
+    <value>المجموعات الاجتماعية</value>
+  </data>
+  <data name="Shared_Site_SocialTickets" xml:space="preserve">
+    <value>تذاكر الاجتماعية</value>
+  </data>
+  <data name="Shared_Site_SocioQueue" xml:space="preserve">
+    <value>طابور documantal</value>
+  </data>
+  <data name="Shared_Site_Submit" xml:space="preserve">
+    <value>استمرار</value>
+  </data>
+  <data name="Shared_Site_URLShrink" xml:space="preserve">
+    <value>اختصلر الرابط</value>
+  </data>
+  <data name="Shared_Site_UsersandGroups" xml:space="preserve">
+    <value>المستخدمين و المجموعات</value>
+  </data>
+  <data name="Shared_Socialsuite_Blogs" xml:space="preserve">
+    <value>مميزة</value>
+  </data>
+  <data name="Shared_Socialsuite_Cases" xml:space="preserve">
+    <value>حالات</value>
+  </data>
+  <data name="Shared_Socialsuite_Close" xml:space="preserve">
+    <value>اغلاق</value>
+  </data>
+  <data name="Shared_Socialsuite_Contact" xml:space="preserve">
+    <value>اتصل بنا</value>
+  </data>
+  <data name="Shared_Socialsuite_Download" xml:space="preserve">
+    <value>تحميل</value>
+  </data>
+  <data name="Shared_Socialsuite_EnterEmailForVideo" xml:space="preserve">
+    <value>قم بإدخال بريدك الإلكتروني وسنقوم بارسال ملف فيديو رائع يشرح خدمات Documantal SM</value>
+  </data>
+  <data name="Shared_Socialsuite_Features" xml:space="preserve">
+    <value>ميزات</value>
+  </data>
+  <data name="Shared_Socialsuite_ForgotPassword" xml:space="preserve">
+    <value>هل نسيت كلمة المرور؟</value>
+  </data>
+  <data name="Shared_Socialsuite_GetInTouch" xml:space="preserve">
+    <value>تواصل معنا</value>
+  </data>
+  <data name="Shared_SocialSuite_GetInTouchWithUs" xml:space="preserve">
+    <value>تواصل معنا</value>
+  </data>
+  <data name="Shared_Socialsuite_HelpYourCustomer" xml:space="preserve">
+    <value>مساعدة الزبائن</value>
+  </data>
+  <data name="Shared_Socialsuite_Insights" xml:space="preserve">
+    <value>افكار</value>
+  </data>
+  <data name="Shared_Socialsuite_LoginInsidePage" xml:space="preserve">
+    <value>تسجيل دخول </value>
+  </data>
+  <data name="Shared_Socialsuite_LoginMainPage" xml:space="preserve">
+    <value>تسجيل دخول </value>
+  </data>
+  <data name="Shared_Socialsuite_MakeADecision" xml:space="preserve">
+    <value>اتخذ قرار</value>
+  </data>
+  <data name="Shared_Socialsuite_NotYetRegistered" xml:space="preserve">
+    <value>هل أنت مسجل؟</value>
+  </data>
+  <data name="Shared_Socialsuite_Pricing" xml:space="preserve">
+    <value>تسعير</value>
+  </data>
+  <data name="Shared_Socialsuite_RegisterNow" xml:space="preserve">
+    <value>التسجيل</value>
+  </data>
+  <data name="Shared_Socialsuite_RegisterWithSocialaccounts" xml:space="preserve">
+    <value>يمكنك التسجيل أيضا باستخدام حساب التواصل الاجتماعي</value>
+  </data>
+  <data name="Shared_Socialsuite_RememberMe" xml:space="preserve">
+    <value>تذكرني</value>
+  </data>
+  <data name="Shared_Socialsuite_Restore" xml:space="preserve">
+    <value>انقر هنا لاستعادة</value>
+  </data>
+  <data name="Shared_SocialSuite_SendMail" xml:space="preserve">
+    <value>ارسال بريد</value>
+  </data>
+  <data name="Shared_Socialsuite_SendVideoInEmail" xml:space="preserve">
+    <value>ارسال فيديو بالبريد الالكتروني</value>
+  </data>
+  <data name="Shared_Socialsuite_SignIn" xml:space="preserve">
+    <value>تسجيل دخول </value>
+  </data>
+  <data name="Shared_Socialsuite_TryitforFree" xml:space="preserve">
+    <value>أو جرب مجانا</value>
+  </data>
+  <data name="Shared_Socialsuite_Wiki" xml:space="preserve">
+    <value>موسوعة</value>
+  </data>
+  <data name="SocioBoard_Admin_AdminLogin_Index_SocioBoardAdmin" xml:space="preserve">
+    <value>documantal admin</value>
+  </data>
+  <data name="SocioBoard_Admin_AdminLogin_Index_SocioBoardAdminLogin" xml:space="preserve">
+    <value>documantal | Admin Login</value>
+  </data>
+  <data name="SocioBoard_BusinessSetting_Index_NotificationAlertViaEmail" xml:space="preserve">
+    <value>documantal alerts you &amp; your team members via email on various activities.</value>
+  </data>
+  <data name="SocioBoard_ForgotPasword_ForgotPasswordMailBodyPartial_HappySocioBoarding" xml:space="preserve">
+    <value>مرحبا بك في documantal</value>
+  </data>
+  <data name="SocioBoard_ForgotPasword_ForgotPasswordMailBodyPartial_SocioBoardSupportTeam" xml:space="preserve">
+    <value>الدعم الفني لـ documantal</value>
+  </data>
+  <data name="SocioBoard_ForgotPasword_ForgotPasswordMailBodyPartial_SupportTeamIntro" xml:space="preserve">
+    <value>فريق الدعم الفني لـ documantal</value>
+  </data>
+  <data name="SocioBoard_ForgotPasword_ResetPasswordMailBodyPartial_HappySocioBoarding" xml:space="preserve">
+    <value>مرحبا بك في documantal</value>
+  </data>
+  <data name="SocioBoard_ForgotPasword_ResetPasswordMailBodyPartial_SocioBoardSupportTeam" xml:space="preserve">
+    <value>الدعم الفني لـ documantal</value>
+  </data>
+  <data name="SocioBoard_Home_Index_AttachProfileToBeginWithSocioBoard" xml:space="preserve">
+    <value>قم بارفاق صفحة التواصل الاجتماعي الخاصة بك للبدء في Documantal SM</value>
+  </data>
+  <data name="SocioBoard_Home_PageNotFound_404PageSocioBoard" xml:space="preserve">
+    <value>404 لم يتم العثور على الصفحة</value>
+  </data>
+  <data name="SocioBoard_Index_Contact_SendYourSelfAnAwesomeVideo" xml:space="preserve">
+    <value>Send yourself an awesome Socioboard explainer video</value>
+  </data>
+  <data name="SocioBoard_Index_Contact_SocioBoardStoryVideo" xml:space="preserve">
+    <value>قصة Documantal SM</value>
+  </data>
+  <data name="SocioBoard_Index_Contact_UnderstandSocioboardBetter" xml:space="preserve">
+    <value>تعرف أكثر على Documantal SM </value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex1" xml:space="preserve">
+    <value>"سيتم اعتبار الشروط والأحكام التالية تم قبولها من قبل المستخدم على استخدام الموقع Documantal SM ونطلب منك قراءتها بعناية قبل استخدام خدمات هذا site.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex10" xml:space="preserve">
+    <value>وقد تم الحصول على المعلومات الواردة في هذا الموقع من مصادر يعتقد بأنها موثوق بها. Documantal SM ينكر كل ضمانات بشأن دقة أو اكتمال أو كفاية هذه المعلومات.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex11" xml:space="preserve">
+    <value>Documantal لا تقدم أي ضمانات متعلقة بما يلي: (أ) أن يلبي الموقع الاحتياجات الخاصة بك. (ب) ان لا يكون هناك تقطيعات او أخطاء  (ج) النتائج التي يمكن الحصول عليها من استخدام الموقع أو أي من الخدمات المقدمة من خلال الموقع لن تكون دقيقة أو موثوق بها.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex12" xml:space="preserve">
+    <value>حقوق المستخدم في الخصوصية مهم للغاية بالنسبة لDocumantal SM. لن يتم إعطاء أي معلومات مقدمة من قبل المستخدم الى أي طرف ثالث. تحتفظ Documantal SM الحق في استخدام المعلومات لتوفير للمستخدم تجربة أكثر فاعلية على الانترنت.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex13" xml:space="preserve">
+    <value>يقدم الموقع روابط لمواقع الإنترنت والوصول إلى المحتوى والمنتجات والخدمات من أطراف ثالثة، بما في ذلك المستخدمين والمعلنين والشركات التابعة والجهات الراعية للموقع. هل توافق على أن Documantal أنه غير مسئول عن توافر المحتوى المقدم من المواقع على شبكة الإنترنت من خلال طرف ثالث. يطلب من العضو للاطلاع على السياسات المعلنة من قبل المواقع الأخرى فيما يتعلق بالخصوصية والمواضيع الأخرى قبل استخدام. Documantal SM</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex2" xml:space="preserve">
+    <value>مصطلح المستخدم المقصود به هو المستخدم الذي يقوم بتصفح الموقع وخدماته, ومصطلح Documantal SM المقصود به الخدمات المقدمة من Documantal مصطلح الموقع المقصود به www.documanalsm.com والمملوكة لـ Documantal</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex3" xml:space="preserve">
+    <value>باستخدام هذا الموقع، فإنك توافق على الاتباع والالتزام بالشروط والشروط التالية بخصوص استخدامك للموقع. Documantal SM  قد تعدل شروط الاستخدام في أي وقت دون سابق إنذار لك. إذا كان هناك تعارض بين شروط الاستخدام وشروط الاستخدام المنشورة لمنطقة معينة من الموقع، يكون للأخيرة الأسبقية فيما يتعلق استخدامك لهذا المجال من الموقع.   Documantal SM  قد تقوم بإنهاء وصول المستخدم في أي وقت ولأي سبب.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex4" xml:space="preserve">
+    <value>Documantal SM لا تقدم أي ضمانات، صريحة أو ضمنية، بما في ذلك، دون حصر، ولأيغرض معين، فيما يتعلق بأي معلومات أو بيانات أو تصريحات أو المنتجات المتاحة على الموقع.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex5" xml:space="preserve">
+    <value>جميع المحتويات والمواد والمعلومات والبرمجيات والمنتجات والخدمات المقدمة على الموقع، وتقدم على أساس "كما هي" و "حسب المتاح Documantal SM . تتنصل من كل ضمانات من أي نوع، سواء كانت صريحة أو ضمنية، بما في ذلك سبيل المثال لا الحصر، الضمانات الضمنية الخاصة بالتجارة أو الملاءمة لغرض معين وعدم الانتهاك.</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex6" xml:space="preserve">
+    <value>لا تتحمل Documantal SM  اي مسؤولية بما يتعلق بأي اضرار تحدث لجهاز الكمبيوتر او اللاب توب او جهاز طرفي يتم تنصيب البرنامج عليه, او تصفح الموقع من خلاله عند التحميل, او التصفح او المشاركة</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex7" xml:space="preserve">
+    <value>Documantal SM قد تقوم بتغيير او ايقاف اي خدمة متواجدة في الموقع في اي وقت, ويتضمن ذلك المحتويات والمميزات. Documantal SM تحتفظ بحقوق تغيير الشروط والاحكام بما يتعلق باستخدام الموقع. سيتم تطبيق هذه التغييرات بمجرد اعلامكم عنها, وسيتم وضعها على الموقع </value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex8" xml:space="preserve">
+    <value>لن تتحمل Documantl SM اي اضرار من اي نوع سواء كانت محصورة او محددة او عرضية او ناتجة عن اضرار ويتضمن ذلك خسارة الارباح, او اي اضرار عرضية او محددة مذكورة او غير مذكورة, او حذف البرنامج او الحساب, وكذلك في حالة عدم القدرة على استخدام اي ميزة من مميزات الموقع, بعض الشروط السابقة قد لا تكون مفروضة على بعض المستخدمين</value>
+  </data>
+  <data name="SocioBoard_Index_Disclaimer_DisclaimerTex9" xml:space="preserve">
+    <value>يوافق المستخدم على تعويض, الدفاع عن و ابعاد اي خسائر او نفقات اخرى ناتجة عن اي خسائى, بما في ذلك اتعاب المحاماة المعقولة, والتي تنشأ عن او تتعلق بسوء استخدام محتوى الموقع وجميع الخدمات المذكورة والموضحة في الموقع</value>
+  </data>
+  <data name="SocioBoard_Index_Download_SourceCodeHeading" xml:space="preserve">
+    <value>يمكن تحميل النظام من خلال الضغط على الروابط </value>
+  </data>
+  <data name="SocioBoard_Index_Index_EndHeading" xml:space="preserve">
+    <value>مع Documantal SM ستتمكن من التفاعل مع جميع متابعيك من مختلف مواقع التواصل الاجتماعي من خلال برنامج واحد, ابدأ الآن!</value>
+  </data>
+  <data name="SocioBoard_Index_Index_featureHeading" xml:space="preserve">
+    <value>Socioboard makes it easy to keep tabs on social conversations and provides everything you need to efficiently engage your audience.</value>
+  </data>
+  <data name="SocioBoard_Index_Index_freeSubscirption" xml:space="preserve">
+    <value>تمتع بدوكيومنتال لمدة 30 يوم خالية من المخاطر</value>
+  </data>
+  <data name="SocioBoard_Index_Index_LoveSocioboard" xml:space="preserve">
+    <value>لماذا يحب الناس دوكيومنتال</value>
+  </data>
+  <data name="SocioBoard_Index_Index_OnBoard" xml:space="preserve">
+    <value>Get On Board to See What Our Social Media Marketing Suite Can Do for You</value>
+  </data>
+  <data name="SocioBoard_Index_Index_SocioDescription" xml:space="preserve">
+    <value>Socioboard offers you an advanced, easy, versatile, customizable and scalable open-source social media marketing tool to drive your brand to newer heights</value>
+  </data>
+  <data name="SocioBoard_Index_Index_Sociodescription2" xml:space="preserve">
+    <value>Socioboard allows you to listen to, analyze and engage your followers in unusual ways across   numerous social media accounts</value>
+  </data>
+  <data name="SocioBoard_Index_Index_SubHeadingInsight" xml:space="preserve">
+    <value>دوكيومنتال يقدم لك أفكار تفصيلية للعملاء</value>
+  </data>
+  <data name="SocioBoard_Index_PartialPricing_EnterpriseandAgencyDescription" xml:space="preserve">
+    <value>Socioboard offers customizable enterprise and agency solutions to fit your business—scalable, secure and with highest level of service quality &amp; 24/7 Support should you face any problems. Contact us today to discuss your unique needs with one of our product specialists.</value>
+  </data>
+  <data name="SocioBoard_Index_Privacy_SocioBoardtechPVTLtd" xml:space="preserve">
+    <value>التكنولوجيا الخاصة بدوكيومنتال</value>
+  </data>
+  <data name="SocioBoard_Index_RegistrationMailPartial_KeepsocioBoarding" xml:space="preserve">
+    <value>نتمنى لك وقت سعيد بدوكيومنتال</value>
+  </data>
+  <data name="SocioBoard_Index_RegistrationMailPartial_SocioBoardTeam" xml:space="preserve">
+    <value>Documantalboard Team</value>
+  </data>
+  <data name="SocioBoard_MyStuff_EWalletPartial_AddMoneyToSocioBoardWallet" xml:space="preserve">
+    <value>إضافة نقود لمحفظة دوكيومنتال</value>
+  </data>
+  <data name="SocioBoard_Shared_Site_InvideFreindsDescription" xml:space="preserve">
+    <value>Socioboard offers to make group by virtue of which users can reach out to each other using a highly efficient collaboration mechanism.Groups serve as a platform to share information with other team members and increase workability and efficiency.</value>
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_AddressHeader" xml:space="preserve">
+    <value>L.V COMPLEX</value>
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_Copyright" xml:space="preserve">
+    <value>Copyright © 2014 - 2015 SOCIOBOARD Technologies Pvt. Ltd. All Rights Reserved.</value>
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_PhoneNumber1" xml:space="preserve">
+    <value>+91 80 4166 0003</value>
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_PhoneNumber2" xml:space="preserve">
+    <value>+91 97 1331 7771</value>
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_ProperAddress" xml:space="preserve">
+    <value>7th Block, 80 Feet Road, Koramangala Layout, Bangalore-560095</value>
+  </data>
+  <data name="SocioBoard_Shared_SocialSuite_SkypeSupport" xml:space="preserve">
+    <value>Documantalboard.support</value>
+  </data>
+  <data name="SocioBoard_Shared_Socialsuite_Title" xml:space="preserve">
+    <value>Socioboard - Generate More leads on Social Media| Social CRM | Social Media CMS</value>
+  </data>
+  <data name="UserGroup_AcceptedUserPartial_AcceptedTeamMember" xml:space="preserve">
+    <value>الأعضاء المقبولين</value>
+  </data>
+  <data name="UserGroup_PendingUserPartial_InviteANewMember" xml:space="preserve">
+    <value>دعوة عضو جديد</value>
+  </data>
+  <data name="UserGroup_PendingUserPartial_PendingTeamMembers" xml:space="preserve">
+    <value>الاعضاء المعلقين</value>
+  </data>
+  <data name="UserGroup_ProfilesConnectedToGroupPartial_ProfilerLinkedTo" xml:space="preserve">
+    <value>الملف مرتبط بـ</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_Close" xml:space="preserve">
+    <value>إغلاق</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_CreateGroup" xml:space="preserve">
+    <value>انشاء مجموعة</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_GroupName" xml:space="preserve">
+    <value>اسم المجموعة</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_Groups" xml:space="preserve">
+    <value>المجموعات</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_GroupsDescription" xml:space="preserve">
+    <value>يتم استخدام المجموعات لتصنيف وترتيب صفحات مواقع التواصل الاجتماعي وذلك للمساعدة في إدارة جميع  المواقع الاجتماعية وزيادة الكفاءة, تعرف اكثر على المجموعات </value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_GroupsDescription2" xml:space="preserve">
+    <value>المجموعات تساعدك على تنظيم صفحات التواصل الاجتماعي الخاصة بك, قم بانشاء المجموعة وابدأ بربط جميع صفحات التواصل الاجتماعي واضافة اعضاء الفريق, تويتر او فيسبوك مطلب رئيسي لانشاء المجموعة</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_Submit" xml:space="preserve">
+    <value>استمرار</value>
+  </data>
+  <data name="UserGroup_UserGroupPartial_UserAndGroup" xml:space="preserve">
+    <value>المستخدمين والمجموعات</value>
+  </data>
+  <data name="UserGroup_UserProfilePartial_ProfilesAvailable" xml:space="preserve">
+    <value>الملفات الشخصية المتاحة للربط</value>
+  </data>
+  <data name="UserGroup_UserProfilesPartial_ProfilesAvailable" xml:space="preserve">
+    <value>الملفات الشخصية المتاحة للربط</value>
+  </data>
+  <data name="Versions_EnterPrise_Description" xml:space="preserve">
+    <value>Enterprise Edition is best suited to businesses or groups looking at versatile social media dashboard capable of serving their niches well. Any institution with growing social media presence would want to have an enterprise edition of Socialboard. The degree of independence and hassle free experience which it offers to the end users is unmatched and it allows customers to focus on their business instead of wandering in the maze of social media management. Enterprise version offers support, updates and applications for unlimited profiles to be managed at an office location. The enterprise version starts from $9999 per location and is priced depending on your enterprises' custom requirements. 
+Interested in using Socialboard Enterprise version for your business now? Post your enquiry here.</value>
+  </data>
+  <data name="Documantal_Index_Index_OnBoard1" xml:space="preserve">
+    <value>الحصول على متن الطائرة لمعرفة ما لدينا جناح الإعلام والتسويق الاجتماعي يمكن أن نفعله لك</value>
+  </data>
+  <data name="Documantal_Index_Index_SocioDescription1" xml:space="preserve">
+    <value>Documantal SM يقدم لك مفتوح المصدر أداة متقدمة وسهلة، وتنوعا، وتخصيص وقابلة للتسويق وسائل الاعلام الاجتماعية لدفع العلامة التجارية الخاصة بك إلى آفاق جديدة</value>
+  </data>
+  <data name="Documantal_Index_Index_Sociodescription21" xml:space="preserve">
+    <value>Documantal SM يقدم لك مفتوح المصدر أداة متقدمة وسهلة، وتنوعا، وتخصيص وقابلة للتسويق وسائل الاعلام الاجتماعية لدفع العلامة التجارية الخاصة بك إلى آفاق جديدة</value>
+  </data>
+  <data name="Documantal_Index_Index_SubHeadingInsight1" xml:space="preserve">
+    <value>Documantal SM يقدم رؤى تفصيلية للعملاء</value>
+  </data>
+  <data name="Documantal_Index_Index_WeBuilt" xml:space="preserve">
+    <value>نحن نبني التكنولوجيا الاجتماعية التي تساعد الشركات والعلامات التجارية لفهم أفضل وسائل الاعلام الاجتماعية وتسخير قوتها الحقيقية.</value>
+  </data>
+  <data name="Documantal_Index_Index_WorldsNoOne" xml:space="preserve">
+    <value>في العالم # 1 المصدر المفتوح الاجتماعية تقنية المساعد!</value>
+  </data>
+  <data name="Documantal_Shared_Site_InvideFreindsDescription" xml:space="preserve">
+    <value>Dovumantal SM تقدم لجعل مجموعة بحكم التي يمكن للمستخدمين التواصل مع بعضهم البعض باستخدام آلية تعاون فعالة للغاية. المجموعات بمثابة منصة لتبادل المعلومات مع أعضاء الفريق الآخرين وزيادة قابلية وكفاءة.</value>
+  </data>
+  <data name="Documantal_Shared_Socialsuite_Title" xml:space="preserve">
+    <value>Documantal SM - توليد المزيد من الخيوط على وسائل الاعلام الاجتماعية | CRM الاجتماعي | وسائل الاعلام الاجتماعية CMS</value>
+  </data>
+  <data name="Home_PofilePartial_GooglePlus" xml:space="preserve">
+    <value>جوجل بلس</value>
+  </data>
+  <data name="Message_Index_ConnectProfile" xml:space="preserve">
+    <value>توصيل الملف الشخصي</value>
+  </data>
+  <data name="Message_Index_CreateTask" xml:space="preserve">
+    <value>إنشاء مهمة</value>
+  </data>
+  <data name="Message_Index_Filter" xml:space="preserve">
+    <value>فلتر</value>
+  </data>
+  <data name="Message_Index_Filter1" xml:space="preserve">
+    <value>فلتر</value>
+  </data>
+  <data name="Message_Index_MESSAGETYPES" xml:space="preserve">
+    <value>أنواع الرسائل</value>
+  </data>
+  <data name="Message_Index_MESSAGETYPES1" xml:space="preserve">
+    <value>أنواع الرسائل</value>
+  </data>
+  <data name="Message_Index_PROFILES" xml:space="preserve">
+    <value>لمحات</value>
+  </data>
+  <data name="Message_Index_PROFILES1" xml:space="preserve">
+    <value>لمحات</value>
+  </data>
+  <data name="Message_sentMessagePartial" xml:space="preserve">
+    <value>الرسائل المرسلة</value>
+  </data>
+  <data name="Message_sentMessagePartial_Custom" xml:space="preserve">
+    <value>عرف</value>
+  </data>
+  <data name="Message__InboxMessageTypePartial_Notifications" xml:space="preserve">
+    <value>الإخطارات</value>
+  </data>
+  <data name="Message__InboxMessageTypePartial_Retweets" xml:space="preserve">
+    <value>إعادة تغريد</value>
+  </data>
+  <data name="Message__InboxPartial_Following" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="Message__InboxPartial_mention" xml:space="preserve">
+    <value>ذكر</value>
+  </data>
+  <data name="Message__InboxPartial_NewFollowerAlert" xml:space="preserve">
+    <value>جديد أتباع تنبيه</value>
+  </data>
+  <data name="Message__InboxPartial_retweetedby" xml:space="preserve">
+    <value>معاد تغريدها من قبل</value>
+  </data>
+  <data name="Shared_Site_InboxMessage" xml:space="preserve">
+    <value>البريد الوارد رسالة</value>
+  </data>
+  <data name="Documantal_Index_Index_EndHeading" xml:space="preserve">
+    <value>مع Documantal SM، والانخراط أتباعك من السهل جدا، ومتعة، والثاقبة الآن. تبدأ اليوم!</value>
+  </data>
+  <data name="Documantal_Index_Index_featureHeading" xml:space="preserve">
+    <value>Documantal SM يجعل من السهل لمراقبتهم على المحادثات الاجتماعية وتوفر كل ما تحتاجه لجذب الجمهور بكفاءة.</value>
+  </data>
+  <data name="Documantal_Index_Index_LoveSocioboard" xml:space="preserve">
+    <value>لماذا الناس يحبون DOCUMANTAL SM</value>
+  </data>
+  <data name="Documantal_Index_Index_freeSubscirption" xml:space="preserve">
+    <value>تتمتع Documantal SM لمدة 30 يوما خالية من المخاطر!</value>
+  </data>
+  <data name="Documantal_Index_Index_ImgSignupforFree" xml:space="preserve">
+    <value>/Themes/Documantal/Contents/img/arabic/signup-butn.png</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_EmailalreadyExist" xml:space="preserve">
+    <value>البريد الإلكتروني موجود بالفعل</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_Errorpleasecheck" xml:space="preserve">
+    <value>خطأ يرجى مراجعة</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_Failed" xml:space="preserve">
+    <value>فشل</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_FileExtentionisnotcurrentPleaseuploadanyimagefile" xml:space="preserve">
+    <value>ارشادية الملف ليس الحالي. يرجى تحميل أي ملف صورة</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_Invalidemail" xml:space="preserve">
+    <value>بريد إلكتروني خاطئ</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_InvalidEmailIdorPassword" xml:space="preserve">
+    <value>البريد الإلكتروني أو كلمة السر خاطئة</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_MailtoresetpasswordhasbeensentSuccessfully" xml:space="preserve">
+    <value>تم ارسال البريد إعادة تعيين كلمة المرور بنجاح !!</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_NewPasswordandConfirmPasswordmismatch" xml:space="preserve">
+    <value>كلمة المرور الجديدة وتأكيد كلمة المرور عدم تطابق</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PasswordChangedSuccessfully" xml:space="preserve">
+    <value>تغيير كلمة المرور بنجاح</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PasswordNotMatch" xml:space="preserve">
+    <value>كلمة المرور غير مطابقة</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseconfirmPassword" xml:space="preserve">
+    <value>يرجى تأكيد كلمة المرور</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenteraProperFirstNamewhichcontainCharacter" xml:space="preserve">
+    <value>الرجاء إدخال السليم الاسم الأول والتي تحتوي على الأحرف</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenteraProperLastNamewhichcontainCharacter" xml:space="preserve">
+    <value>الرجاء إدخال السليم اسم العائلة التي تحتوي على الأحرف</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenterFirstName" xml:space="preserve">
+    <value>الرجاء إدخال الاسم الأول</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenterLastName" xml:space="preserve">
+    <value>يرجى إدخال اسم العائلة</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenterNewEmailId" xml:space="preserve">
+    <value>يرجى إدخال البريد الإلكتروني الجديد</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenterNewPassword" xml:space="preserve">
+    <value>يرجى إدخال كلمة سر جديدة</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_UpdateSuccessfully" xml:space="preserve">
+    <value>التحديث بنجاح</value>
+  </data>
+  <data name="JS_Publishing_draft_MessageDeletedsuccessfully" xml:space="preserve">
+    <value>الرسائل المحذوفة بنجاح</value>
+  </data>
+  <data name="JS_Publishing_draft_Pleaseenteramessagetosave" xml:space="preserve">
+    <value>الرجاء إدخال رسالة لانقاذ</value>
+  </data>
+  <data name="JS_Publishing_Index_PleaseEnteramessage" xml:space="preserve">
+    <value>الرجاء أدخل رسالة</value>
+  </data>
+  <data name="JS_Publishing_Index_PleaseSelectaDate" xml:space="preserve">
+    <value>الرجاء اختيار تاريخ</value>
+  </data>
+  <data name="JS_Publishing_Index_PleaseSelectaTime" xml:space="preserve">
+    <value>الرجاء اختيار التوقيت</value>
+  </data>
+  <data name="JS_Publishing_Index_ThisProfileAlreadyAdded" xml:space="preserve">
+    <value>هذا الملف بالفعل تم اضافتها</value>
+  </data>
+  <data name="JS_Shared_Site_FacebookNotSupportmorethan5000characters" xml:space="preserve">
+    <value>الفيسبوك عدم دعم أكثر من 5000 حرف</value>
+  </data>
+  <data name="JS_Shared_Site_FanPageAddedSuccessfully" xml:space="preserve">
+    <value>مروحة صفحة واضاف بنجاح</value>
+  </data>
+  <data name="JS_Shared_Site_GroupAddedSuccessfully" xml:space="preserve">
+    <value>واضاف المجموعة بنجاح</value>
+  </data>
+  <data name="JS_Shared_Site_LinkedinNotSupportmorethan600characters" xml:space="preserve">
+    <value>ينكدين غير دعم أكثر من 600 حرفا</value>
+  </data>
+  <data name="JS_Shared_Site_Mailalreadysent" xml:space="preserve">
+    <value>البريد المرسل بالفعل</value>
+  </data>
+  <data name="JS_Shared_Site_Mailsendsuccessfully" xml:space="preserve">
+    <value>البريد ترسل بنجاح</value>
+  </data>
+  <data name="JS_Shared_Site_plaesewaitwhilewearefetchingpagedata" xml:space="preserve">
+    <value>يرجى الانتظار بينما نحن في جلب بيانات الصفحة</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseAddaprofiletoInviteaMember" xml:space="preserve">
+    <value>الرجاء إضافة الملف الى دعوة الأعضاء !!</value>
+  </data>
+  <data name="JS_Shared_Site_pleaseChecktheURLyouenterediscorrect" xml:space="preserve">
+    <value>يرجى التحقق من URL الذي أدخلته صحيح</value>
+  </data>
+  <data name="JS_Shared_Site_Pleaseenteracontacttosearch" xml:space="preserve">
+    <value>الرجاء إدخال اتصال للبحث</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseEnteravalidurl" xml:space="preserve">
+    <value>يرجى إدخال عنوان URL صالح</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseentervalidEmailId" xml:space="preserve">
+    <value>يرجى إدخال بريد إلكتروني صالح</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseentervalidFirstName" xml:space="preserve">
+    <value>الرجاء إدخال صحيح الاسم الأول</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseentervalidLastName" xml:space="preserve">
+    <value>الرجاء إدخال صحيح اسم العائلة</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseSelectaprofile" xml:space="preserve">
+    <value>الرجاء اختيار التشكيل !!</value>
+  </data>
+  <data name="JS_Shared_Site_SelectAProfile" xml:space="preserve">
+    <value>الرجاء اختيار أتلست الملف الشخصي</value>
+  </data>
+  <data name="JS_Shared_Site_TwitterNotSupportmorethan140characters" xml:space="preserve">
+    <value>تويتر عدم دعم أكثر من 140 حرفا</value>
+  </data>
+  <data name="JS_Shared_Site_UploadImage" xml:space="preserve">
+    <value>ارشادية الملف ليس الحالي. يرجى تحميل أي ملف صورة</value>
+  </data>
+  <data name="Placeholder_Shared_Site_EnterKeywordcontacttosearch" xml:space="preserve">
+    <value>أدخل كلمة أو الاتصال للبحث ...</value>
+  </data>
+  <data name="Shared_Site_Feeds_Search" xml:space="preserve">
+    <value>يغذي بحث</value>
+  </data>
+  <data name="Shared_Site_News_Feeds" xml:space="preserve">
+    <value>الخلاصة الإخبارية</value>
+  </data>
+  <data name="Shared_Site_Posts" xml:space="preserve">
+    <value>المشاركات</value>
+  </data>
+  <data name="JS_Publishing_Index_PleaseSelectProfilestoScheduledamessage" xml:space="preserve">
+    <value>الرجاء اختيار الملامح إلى المجدولة رسالة</value>
+  </data>
+  <data name="JS_Report_TwitterReportPartial_MySocialScores" xml:space="preserve">
+    <value>بلدي عشرات الاجتماعية</value>
+  </data>
+  <data name="JS_Report_TwitterReportPartial_NumofEngageandInfluence" xml:space="preserve">
+    <value>الأسطوانات. من الانخراط والتأثير</value>
+  </data>
+  <data name="JS_UserGroup_Index_ProfileAlreadyExist" xml:space="preserve">
+    <value>هل تريد بالتأكيد حذف هذه المجموعة؟</value>
+  </data>
+  <data name="JS_UserGroup_PleasechangegroupName" xml:space="preserve">
+    <value>الرجاء تغيير اسم مجموعة</value>
+  </data>
+  <data name="JS_UserGroup_ProfileAlreadyExist" xml:space="preserve">
+    <value>الملف موجود إذا</value>
+  </data>
+  <data name="JS_UserGroup_UserGroupPartial" xml:space="preserve">
+    <value>الرجاء إدخال اسم مجموعة</value>
+  </data>
+  <data name="javascript" xml:space="preserve">
+    <value>js/ar</value>
+  </data>
+  <data name="JS_BussinessSetting_Index_BusinessSettingUpdatedSuccessfully" xml:space="preserve">
+    <value>إعداد الأعمال تحديث بنجاح.</value>
+  </data>
+  <data name="JS_ForgotPassword_ForgotPasswordPartial_PleaseenterEmailId" xml:space="preserve">
+    <value>يرجى إدخال البريد الإلكتروني</value>
+  </data>
+  <data name="JS_ForgotPassword_ForgotPasswordPartial_PleaseResetyourPasswordbyclickingonResetPasswordLinksenttoyourmail" xml:space="preserve">
+    <value>يرجى إعادة ضبط كلمة المرور الخاصة بك عن طريق النقر على إعادة تعيين كلمة المرور لينك إرسالها إلى البريد الخاص بك</value>
+  </data>
+  <data name="JS_Group_Index_CommentedSuccessfully" xml:space="preserve">
+    <value>علق بنجاح</value>
+  </data>
+  <data name="JS_Group_Index_LikedSuccessfully" xml:space="preserve">
+    <value>أحب بنجاح</value>
+  </data>
+  <data name="JS_Group_Index_PleasewriteinCommentBox" xml:space="preserve">
+    <value>يرجى الكتابة في صندوق التعليقات</value>
+  </data>
+  <data name="JS_Groups_Index_Pleaseaddgroupfirst" xml:space="preserve">
+    <value>الرجاء إضافة المجموعة الأولى</value>
+  </data>
+  <data name="JS_Groups_Index_PleasewriteinComentBox" xml:space="preserve">
+    <value>يرجى الكتابة في صندوق التعليق!</value>
+  </data>
+  <data name="JS_Group_Index_UnlikedSuccessfully" xml:space="preserve">
+    <value>الامم المتحدة أحب بنجاح</value>
+  </data>
+  <data name="JS_site_MessageSentSuccessfully" xml:space="preserve">
+    <value>الرسائل المرسلة بنجاح</value>
+  </data>
+  <data name="JS_site_ThisAccountAlreadyAdded" xml:space="preserve">
+    <value>هذا الحساب بالفعل تم اضافتها</value>
+  </data>
+  <data name="Message_InboxPartial_Bio" xml:space="preserve">
+    <value>الحيوية</value>
+  </data>
+  <data name="Message_InboxPartial_isnowfollowing" xml:space="preserve">
+    <value>هو الآن التالية</value>
+  </data>
+  <data name="JS_Discovery_Index_PleaseEnterAKeyword" xml:space="preserve">
+    <value>الرجاء إدخال كلمة</value>
+  </data>
+  <data name="JS_Index_Contact_failure" xml:space="preserve">
+    <value>فشل</value>
+  </data>
+  <data name="JS_Index_Contact_Mailhasbeensentsuccessfully" xml:space="preserve">
+    <value>تم ارسال البريد بنجاح</value>
+  </data>
+  <data name="JS_Index_Contact_PleaseentervalidEmailID" xml:space="preserve">
+    <value>الرجاء إدخال بطاقة هوية سارية البريد الإلكتروني</value>
+  </data>
+  <data name="JS_Index_Contact_PleaseentervalidFirstName" xml:space="preserve">
+    <value>الرجاء إدخال صحيح الاسم الأول</value>
+  </data>
+  <data name="JS_Index_Contact_PleaseentervalidLastName" xml:space="preserve">
+    <value>الرجاء إدخال صحيح اسم العائلة</value>
+  </data>
+  <data name="JS_Index_Contact_Pleasefillallthefields" xml:space="preserve">
+    <value>يرجى تعبئة جميع الحقول</value>
+  </data>
+  <data name="Placeholder_Publishing_Index_PickDate" xml:space="preserve">
+    <value>اختيار التاريخ</value>
+  </data>
+  <data name="Placeholder_Publishing_Index_Typeyourmessagehere" xml:space="preserve">
+    <value>اكتب رسالتك هنا</value>
+  </data>
+  <data name="Placeholder_Site_WriteURLtoshrink" xml:space="preserve">
+    <value>إرسال URL أن يتقلص</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_Friends" xml:space="preserve">
+    <value>أصدقاء</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_HaveYouInCircles" xml:space="preserve">
+    <value>هل لديك أنت في الدوائر</value>
+  </data>
+  <data name="Home_HomeProfileSnapshotPartial_InYourCircles" xml:space="preserve">
+    <value>في دوائرك</value>
+  </data>
+  <data name="Message__InboxMessageTypePartial_Mentions" xml:space="preserve">
+    <value>يذكر</value>
+  </data>
+  <data name="Message__InboxMessageTypePartial_NewFollowers" xml:space="preserve">
+    <value>متابعين جدد</value>
+  </data>
+  <data name="ForgotPassword_Placeholder_EnterYourEmail" xml:space="preserve">
+    <value>ادخل بريدك الالكتروني</value>
+  </data>
+  <data name="RegistrationPartial_Placeholder_ConfirmPassword" xml:space="preserve">
+    <value>تأكيد كلمة السر</value>
+  </data>
+  <data name="RegistrationPartial_Placeholder_CouponCode" xml:space="preserve">
+    <value>رمز القسيمة (اختياري)</value>
+  </data>
+  <data name="Site_Title_Home" xml:space="preserve">
+    <value>الصفحة الرئيسية</value>
+  </data>
+  <data name="Site_Title_SearchContact" xml:space="preserve">
+    <value>البحث الاتصال</value>
+  </data>
+  <data name="IndexController_RemainingDays_accountwillexpirein" xml:space="preserve">
+    <value>الحساب سوف تنتهي في</value>
+  </data>
+  <data name="IndexController_RemainingDays_alaccountwillexpireTodaypleaseupgradetopaidplan" xml:space="preserve">
+    <value>الحساب سوف تنتهي اليوم يرجى الترقية إلى خطة المدفوعة.</value>
+  </data>
+  <data name="IndexController_RemainingDays_dayspleaseupgradetopaidplan" xml:space="preserve">
+    <value>أيام، يرجى الترقية إلى خطة المدفوعة.</value>
+  </data>
+  <data name="IndexController_RemainingDays_Yourtrial" xml:space="preserve">
+    <value>محاكمة بك</value>
+  </data>
+  <data name="Index_Index_OurApps" xml:space="preserve">
+    <value>تطبيقات لدينا</value>
+  </data>
+</root>

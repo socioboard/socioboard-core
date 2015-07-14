@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="DiscoverySearchFacebook">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DiscoverySearchFacebookResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DiscoverySearchFacebookResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DiscoverySearchTwitter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DiscoverySearchTwitterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DiscoverySearchTwitterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DiscoverySearchGplus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DiscoverySearchGplusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DiscoverySearchGplusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="contactSearchFacebook">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="contactSearchFacebookResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="contactSearchFacebookResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="contactSearchTwitter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="contactSearchTwitterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="contactSearchTwitterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllSearchKeywords">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllSearchKeywordsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllSearchKeywordsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TwitterLinkBuilder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="q" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TwitterLinkBuilderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TwitterLinkBuilderResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GPlusLinkBuilder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="q" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GPlusLinkBuilderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GPlusLinkBuilderResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="DiscoverySearchFacebookSoapIn">
+    <wsdl:part name="parameters" element="tns:DiscoverySearchFacebook" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchFacebookSoapOut">
+    <wsdl:part name="parameters" element="tns:DiscoverySearchFacebookResponse" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchTwitterSoapIn">
+    <wsdl:part name="parameters" element="tns:DiscoverySearchTwitter" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchTwitterSoapOut">
+    <wsdl:part name="parameters" element="tns:DiscoverySearchTwitterResponse" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchGplusSoapIn">
+    <wsdl:part name="parameters" element="tns:DiscoverySearchGplus" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchGplusSoapOut">
+    <wsdl:part name="parameters" element="tns:DiscoverySearchGplusResponse" />
+  </wsdl:message>
+  <wsdl:message name="contactSearchFacebookSoapIn">
+    <wsdl:part name="parameters" element="tns:contactSearchFacebook" />
+  </wsdl:message>
+  <wsdl:message name="contactSearchFacebookSoapOut">
+    <wsdl:part name="parameters" element="tns:contactSearchFacebookResponse" />
+  </wsdl:message>
+  <wsdl:message name="contactSearchTwitterSoapIn">
+    <wsdl:part name="parameters" element="tns:contactSearchTwitter" />
+  </wsdl:message>
+  <wsdl:message name="contactSearchTwitterSoapOut">
+    <wsdl:part name="parameters" element="tns:contactSearchTwitterResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllSearchKeywordsSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllSearchKeywords" />
+  </wsdl:message>
+  <wsdl:message name="getAllSearchKeywordsSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllSearchKeywordsResponse" />
+  </wsdl:message>
+  <wsdl:message name="TwitterLinkBuilderSoapIn">
+    <wsdl:part name="parameters" element="tns:TwitterLinkBuilder" />
+  </wsdl:message>
+  <wsdl:message name="TwitterLinkBuilderSoapOut">
+    <wsdl:part name="parameters" element="tns:TwitterLinkBuilderResponse" />
+  </wsdl:message>
+  <wsdl:message name="GPlusLinkBuilderSoapIn">
+    <wsdl:part name="parameters" element="tns:GPlusLinkBuilder" />
+  </wsdl:message>
+  <wsdl:message name="GPlusLinkBuilderSoapOut">
+    <wsdl:part name="parameters" element="tns:GPlusLinkBuilderResponse" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchFacebookHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchFacebookHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchTwitterHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchTwitterHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchGplusHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchGplusHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="contactSearchFacebookHttpGetIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="contactSearchFacebookHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="contactSearchTwitterHttpGetIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="contactSearchTwitterHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllSearchKeywordsHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllSearchKeywordsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterLinkBuilderHttpGetIn">
+    <wsdl:part name="q" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterLinkBuilderHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GPlusLinkBuilderHttpGetIn">
+    <wsdl:part name="q" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GPlusLinkBuilderHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchFacebookHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchFacebookHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchTwitterHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchTwitterHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchGplusHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DiscoverySearchGplusHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="contactSearchFacebookHttpPostIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="contactSearchFacebookHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="contactSearchTwitterHttpPostIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="contactSearchTwitterHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllSearchKeywordsHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllSearchKeywordsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterLinkBuilderHttpPostIn">
+    <wsdl:part name="q" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TwitterLinkBuilderHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GPlusLinkBuilderHttpPostIn">
+    <wsdl:part name="q" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GPlusLinkBuilderHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="DiscoverySearchSoap">
+    <wsdl:operation name="DiscoverySearchFacebook">
+      <wsdl:input message="tns:DiscoverySearchFacebookSoapIn" />
+      <wsdl:output message="tns:DiscoverySearchFacebookSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchTwitter">
+      <wsdl:input message="tns:DiscoverySearchTwitterSoapIn" />
+      <wsdl:output message="tns:DiscoverySearchTwitterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchGplus">
+      <wsdl:input message="tns:DiscoverySearchGplusSoapIn" />
+      <wsdl:output message="tns:DiscoverySearchGplusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="contactSearchFacebook">
+      <wsdl:input message="tns:contactSearchFacebookSoapIn" />
+      <wsdl:output message="tns:contactSearchFacebookSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="contactSearchTwitter">
+      <wsdl:input message="tns:contactSearchTwitterSoapIn" />
+      <wsdl:output message="tns:contactSearchTwitterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllSearchKeywords">
+      <wsdl:input message="tns:getAllSearchKeywordsSoapIn" />
+      <wsdl:output message="tns:getAllSearchKeywordsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterLinkBuilder">
+      <wsdl:input message="tns:TwitterLinkBuilderSoapIn" />
+      <wsdl:output message="tns:TwitterLinkBuilderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GPlusLinkBuilder">
+      <wsdl:input message="tns:GPlusLinkBuilderSoapIn" />
+      <wsdl:output message="tns:GPlusLinkBuilderSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DiscoverySearchHttpGet">
+    <wsdl:operation name="DiscoverySearchFacebook">
+      <wsdl:input message="tns:DiscoverySearchFacebookHttpGetIn" />
+      <wsdl:output message="tns:DiscoverySearchFacebookHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchTwitter">
+      <wsdl:input message="tns:DiscoverySearchTwitterHttpGetIn" />
+      <wsdl:output message="tns:DiscoverySearchTwitterHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchGplus">
+      <wsdl:input message="tns:DiscoverySearchGplusHttpGetIn" />
+      <wsdl:output message="tns:DiscoverySearchGplusHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="contactSearchFacebook">
+      <wsdl:input message="tns:contactSearchFacebookHttpGetIn" />
+      <wsdl:output message="tns:contactSearchFacebookHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="contactSearchTwitter">
+      <wsdl:input message="tns:contactSearchTwitterHttpGetIn" />
+      <wsdl:output message="tns:contactSearchTwitterHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllSearchKeywords">
+      <wsdl:input message="tns:getAllSearchKeywordsHttpGetIn" />
+      <wsdl:output message="tns:getAllSearchKeywordsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterLinkBuilder">
+      <wsdl:input message="tns:TwitterLinkBuilderHttpGetIn" />
+      <wsdl:output message="tns:TwitterLinkBuilderHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GPlusLinkBuilder">
+      <wsdl:input message="tns:GPlusLinkBuilderHttpGetIn" />
+      <wsdl:output message="tns:GPlusLinkBuilderHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DiscoverySearchHttpPost">
+    <wsdl:operation name="DiscoverySearchFacebook">
+      <wsdl:input message="tns:DiscoverySearchFacebookHttpPostIn" />
+      <wsdl:output message="tns:DiscoverySearchFacebookHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchTwitter">
+      <wsdl:input message="tns:DiscoverySearchTwitterHttpPostIn" />
+      <wsdl:output message="tns:DiscoverySearchTwitterHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchGplus">
+      <wsdl:input message="tns:DiscoverySearchGplusHttpPostIn" />
+      <wsdl:output message="tns:DiscoverySearchGplusHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="contactSearchFacebook">
+      <wsdl:input message="tns:contactSearchFacebookHttpPostIn" />
+      <wsdl:output message="tns:contactSearchFacebookHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="contactSearchTwitter">
+      <wsdl:input message="tns:contactSearchTwitterHttpPostIn" />
+      <wsdl:output message="tns:contactSearchTwitterHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllSearchKeywords">
+      <wsdl:input message="tns:getAllSearchKeywordsHttpPostIn" />
+      <wsdl:output message="tns:getAllSearchKeywordsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitterLinkBuilder">
+      <wsdl:input message="tns:TwitterLinkBuilderHttpPostIn" />
+      <wsdl:output message="tns:TwitterLinkBuilderHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GPlusLinkBuilder">
+      <wsdl:input message="tns:GPlusLinkBuilderHttpPostIn" />
+      <wsdl:output message="tns:GPlusLinkBuilderHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DiscoverySearchSoap" type="tns:DiscoverySearchSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DiscoverySearchFacebook">
+      <soap:operation soapAction="http://tempuri.org/DiscoverySearchFacebook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchTwitter">
+      <soap:operation soapAction="http://tempuri.org/DiscoverySearchTwitter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchGplus">
+      <soap:operation soapAction="http://tempuri.org/DiscoverySearchGplus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="contactSearchFacebook">
+      <soap:operation soapAction="http://tempuri.org/contactSearchFacebook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="contactSearchTwitter">
+      <soap:operation soapAction="http://tempuri.org/contactSearchTwitter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllSearchKeywords">
+      <soap:operation soapAction="http://tempuri.org/getAllSearchKeywords" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterLinkBuilder">
+      <soap:operation soapAction="http://tempuri.org/TwitterLinkBuilder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GPlusLinkBuilder">
+      <soap:operation soapAction="http://tempuri.org/GPlusLinkBuilder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DiscoverySearchSoap12" type="tns:DiscoverySearchSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DiscoverySearchFacebook">
+      <soap12:operation soapAction="http://tempuri.org/DiscoverySearchFacebook" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchTwitter">
+      <soap12:operation soapAction="http://tempuri.org/DiscoverySearchTwitter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchGplus">
+      <soap12:operation soapAction="http://tempuri.org/DiscoverySearchGplus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="contactSearchFacebook">
+      <soap12:operation soapAction="http://tempuri.org/contactSearchFacebook" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="contactSearchTwitter">
+      <soap12:operation soapAction="http://tempuri.org/contactSearchTwitter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllSearchKeywords">
+      <soap12:operation soapAction="http://tempuri.org/getAllSearchKeywords" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterLinkBuilder">
+      <soap12:operation soapAction="http://tempuri.org/TwitterLinkBuilder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GPlusLinkBuilder">
+      <soap12:operation soapAction="http://tempuri.org/GPlusLinkBuilder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DiscoverySearchHttpGet" type="tns:DiscoverySearchHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="DiscoverySearchFacebook">
+      <http:operation location="/DiscoverySearchFacebook" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchTwitter">
+      <http:operation location="/DiscoverySearchTwitter" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchGplus">
+      <http:operation location="/DiscoverySearchGplus" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="contactSearchFacebook">
+      <http:operation location="/contactSearchFacebook" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="contactSearchTwitter">
+      <http:operation location="/contactSearchTwitter" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllSearchKeywords">
+      <http:operation location="/getAllSearchKeywords" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterLinkBuilder">
+      <http:operation location="/TwitterLinkBuilder" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GPlusLinkBuilder">
+      <http:operation location="/GPlusLinkBuilder" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DiscoverySearchHttpPost" type="tns:DiscoverySearchHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="DiscoverySearchFacebook">
+      <http:operation location="/DiscoverySearchFacebook" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchTwitter">
+      <http:operation location="/DiscoverySearchTwitter" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DiscoverySearchGplus">
+      <http:operation location="/DiscoverySearchGplus" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="contactSearchFacebook">
+      <http:operation location="/contactSearchFacebook" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="contactSearchTwitter">
+      <http:operation location="/contactSearchTwitter" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllSearchKeywords">
+      <http:operation location="/getAllSearchKeywords" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitterLinkBuilder">
+      <http:operation location="/TwitterLinkBuilder" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GPlusLinkBuilder">
+      <http:operation location="/GPlusLinkBuilder" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DiscoverySearch">
+    <wsdl:port name="DiscoverySearchSoap" binding="tns:DiscoverySearchSoap">
+      <soap:address location="http://api.socioboard.com/services/discoverySearch.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DiscoverySearchSoap12" binding="tns:DiscoverySearchSoap12">
+      <soap12:address location="http://api.socioboard.com/services/discoverySearch.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DiscoverySearchHttpGet" binding="tns:DiscoverySearchHttpGet">
+      <http:address location="http://api.socioboard.com/services/discoverySearch.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DiscoverySearchHttpPost" binding="tns:DiscoverySearchHttpPost">
+      <http:address location="http://api.socioboard.com/services/discoverySearch.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -286,7 +286,7 @@ namespace Api.Socioboard.Services
             objTask.AssignTaskTo = idtoassign;
             objTask.TaskStatus = false;
             objTask.TaskMessage = descritption;
-            objTask.TaskMessageDate = DateTime.Parse(messagedate).ToLocalTime();
+            objTask.TaskMessageDate = DateTime.Parse(messagedate);
             objTask.UserId = Guid.Parse(userid);
             Guid taskid = Guid.NewGuid();
             objTask.Id = taskid;
@@ -312,7 +312,7 @@ namespace Api.Socioboard.Services
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
-        public void AddNewTaskWithGroupForApps(string description, string messagedate, string userid, string assigntoId, string comment, string groupid)
+        public string AddNewTaskWithGroupForApps(string description, string messagedate, string userid, string assigntoId, string comment, string groupid)
         {
             string descritption = description;
             Guid idtoassign = Guid.Empty;
@@ -346,6 +346,7 @@ namespace Api.Socioboard.Services
                 objcmt.UserId = Guid.Parse(userid);
                 objcmtRepo.addTaskComment(objcmt);
             }
+            return "success";
         }
 
         //ChangeTaskStatus

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+      xmlns="urn:nhibernate-mapping-2.2"
+      namespace="Domain.Socioboard.Domain"
+      assembly="Domain.Socioboard">
+
+  <class name="LinkedInMessage" table="LinkedInMessage" lazy="false">
+    
+    <id name="Id" column="Id">
+      <generator class="guid"/>
+    </id>
+    
+    <property name="ProfileId">
+      <column name="ProfileId" />
+    </property>
+    
+    <property name="ProfileUrl">
+      <column name="ProfileUrl"  />
+    </property>
+    
+    <property name="ProfileName">
+      <column name="ProfileName"  />
+    </property>
+    
+    <property name="Type">
+      <column name="Type"  />
+    </property>
+
+    <property name="Message">
+      <column name="Message"  />
+    </property>
+
+    <property name="ImageUrl">
+      <column name="ImageUrl"  />
+    </property>
+
+    <property name="UserId">
+      <column name="UserId"  />
+    </property>
+    
+    <property name="CreatedDate">
+      <column name="CreatedDate"  />
+    </property>
+
+    <property name="EntryDate">
+      <column name="EntryDate"  />
+    </property>
+
+    <property name="Likes">
+      <column name="Likes"  />
+    </property>
+
+    <property name="Comments">
+      <column name="Comments"  />
+    </property>
+
+    <property name="FeedId">
+      <column name="FeedId"  />
+    </property>
+    
+    <property name="ProfileImageUrl">
+      <column name="ProfileImageUrl"  />
+    </property>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,1904 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetUserBoards">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserBoardsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserBoardsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAnalytics">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BoardId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAnalyticsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAnalyticsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddBoard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="InstagramProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FbProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TwitterProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedinProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="YoutubeProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GPlusProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TumblrProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddBoardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddBoardResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateBoard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="InstagramProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FbProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TwitterProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LinkedinProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="YoutubeProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GPlusProfileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TumblrProfileId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateBoardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateBoardResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBoardInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBoardInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getBoardInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchBoard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchBoardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchBoardResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBoardDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBoardDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBoardDetailsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBoardFbPage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BoardId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBoardFbPageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBoardFbPageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBoardFbPageFeeds">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BoardfbPageId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBoardFbPageFeedsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBoardFbPageFeedsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateFbFeeds">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateFbFeedsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetBoardTwitterAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BoardId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBoardTwitterAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBoardTwitterAccountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBoardTwitterFeeds">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BoardTwitterAccountId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBoardTwitterFeedsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBoardTwitterFeedsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateTwitterFeeds">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateTwitterFeedsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetBoardInstagramAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BoardId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBoardInstagramAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBoardInstagramAccountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBoardInstagramFeeds">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BoardInstagramAccountId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBoardInstagramFeedsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBoardInstagramFeedsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateInstagramFeeds">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateInstagramFeedsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetBoardGplusAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BoardId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBoardGplusAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBoardGplusAccountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBoardGplusFeeds">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BoardInstagramAccountId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBoardGplusFeedsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBoardGplusFeedsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateGplusFeeds">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateGplusFeedsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getBoardGplusfeedsbyrange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BoardGplusprofileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_noOfDataToSkip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_noOfResultsFromTop" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBoardGplusfeedsbyrangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getBoardGplusfeedsbyrangeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBoardInstagramfeedsbyrange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BoardInstagramAccountId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_noOfDataToSkip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_noOfResultsFromTop" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBoardInstagramfeedsbyrangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getBoardInstagramfeedsbyrangeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBoardTwitterfeedsbyrange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BoardtwitterprofileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_noOfDataToSkip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_noOfResultsFromTop" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBoardTwitterfeedsbyrangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getBoardTwitterfeedsbyrangeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBoardFbfeedsbyrange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BoardfbprofileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_noOfDataToSkip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_noOfResultsFromTop" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBoardFbfeedsbyrangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getBoardFbfeedsbyrangeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetUserBoardsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserBoards" />
+  </wsdl:message>
+  <wsdl:message name="GetUserBoardsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserBoardsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAnalyticsSoapIn">
+    <wsdl:part name="parameters" element="tns:getAnalytics" />
+  </wsdl:message>
+  <wsdl:message name="getAnalyticsSoapOut">
+    <wsdl:part name="parameters" element="tns:getAnalyticsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddBoardSoapIn">
+    <wsdl:part name="parameters" element="tns:AddBoard" />
+  </wsdl:message>
+  <wsdl:message name="AddBoardSoapOut">
+    <wsdl:part name="parameters" element="tns:AddBoardResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBoardSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateBoard" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBoardSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateBoardResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBoardInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:getBoardInfo" />
+  </wsdl:message>
+  <wsdl:message name="getBoardInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:getBoardInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchBoardSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchBoard" />
+  </wsdl:message>
+  <wsdl:message name="SearchBoardSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchBoardResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBoardDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBoardDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardFbPageSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBoardFbPage" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardFbPageSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBoardFbPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardFbPageFeedsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBoardFbPageFeeds" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardFbPageFeedsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBoardFbPageFeedsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFbFeedsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateFbFeeds" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFbFeedsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateFbFeedsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardTwitterAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBoardTwitterAccount" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardTwitterAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBoardTwitterAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardTwitterFeedsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBoardTwitterFeeds" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardTwitterFeedsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBoardTwitterFeedsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTwitterFeedsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateTwitterFeeds" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTwitterFeedsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateTwitterFeedsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardInstagramAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBoardInstagramAccount" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardInstagramAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBoardInstagramAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardInstagramFeedsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBoardInstagramFeeds" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardInstagramFeedsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBoardInstagramFeedsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInstagramFeedsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateInstagramFeeds" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInstagramFeedsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateInstagramFeedsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardGplusAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBoardGplusAccount" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardGplusAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBoardGplusAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardGplusFeedsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBoardGplusFeeds" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardGplusFeedsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBoardGplusFeedsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateGplusFeedsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateGplusFeeds" />
+  </wsdl:message>
+  <wsdl:message name="UpdateGplusFeedsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateGplusFeedsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBoardGplusfeedsbyrangeSoapIn">
+    <wsdl:part name="parameters" element="tns:getBoardGplusfeedsbyrange" />
+  </wsdl:message>
+  <wsdl:message name="getBoardGplusfeedsbyrangeSoapOut">
+    <wsdl:part name="parameters" element="tns:getBoardGplusfeedsbyrangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBoardInstagramfeedsbyrangeSoapIn">
+    <wsdl:part name="parameters" element="tns:getBoardInstagramfeedsbyrange" />
+  </wsdl:message>
+  <wsdl:message name="getBoardInstagramfeedsbyrangeSoapOut">
+    <wsdl:part name="parameters" element="tns:getBoardInstagramfeedsbyrangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBoardTwitterfeedsbyrangeSoapIn">
+    <wsdl:part name="parameters" element="tns:getBoardTwitterfeedsbyrange" />
+  </wsdl:message>
+  <wsdl:message name="getBoardTwitterfeedsbyrangeSoapOut">
+    <wsdl:part name="parameters" element="tns:getBoardTwitterfeedsbyrangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBoardFbfeedsbyrangeSoapIn">
+    <wsdl:part name="parameters" element="tns:getBoardFbfeedsbyrange" />
+  </wsdl:message>
+  <wsdl:message name="getBoardFbfeedsbyrangeSoapOut">
+    <wsdl:part name="parameters" element="tns:getBoardFbfeedsbyrangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserBoardsHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserBoardsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAnalyticsHttpGetIn">
+    <wsdl:part name="BoardId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAnalyticsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddBoardHttpGetIn">
+    <wsdl:part name="CompanyName" type="s:string" />
+    <wsdl:part name="InstagramProfileId" type="s:string" />
+    <wsdl:part name="FbProfileId" type="s:string" />
+    <wsdl:part name="TwitterProfileId" type="s:string" />
+    <wsdl:part name="LinkedinProfileId" type="s:string" />
+    <wsdl:part name="YoutubeProfileId" type="s:string" />
+    <wsdl:part name="GPlusProfileId" type="s:string" />
+    <wsdl:part name="TumblrProfileId" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddBoardHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBoardHttpGetIn">
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="CompanyName" type="s:string" />
+    <wsdl:part name="InstagramProfileId" type="s:string" />
+    <wsdl:part name="FbProfileId" type="s:string" />
+    <wsdl:part name="TwitterProfileId" type="s:string" />
+    <wsdl:part name="LinkedinProfileId" type="s:string" />
+    <wsdl:part name="YoutubeProfileId" type="s:string" />
+    <wsdl:part name="GPlusProfileId" type="s:string" />
+    <wsdl:part name="TumblrProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBoardHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getBoardInfoHttpGetIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getBoardInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SearchBoardHttpGetIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SearchBoardHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardDetailsHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardDetailsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardFbPageHttpGetIn">
+    <wsdl:part name="BoardId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardFbPageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardFbPageFeedsHttpGetIn">
+    <wsdl:part name="BoardfbPageId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardFbPageFeedsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFbFeedsHttpGetIn">
+    <wsdl:part name="Key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFbFeedsHttpGetOut" />
+  <wsdl:message name="GetBoardTwitterAccountHttpGetIn">
+    <wsdl:part name="BoardId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardTwitterAccountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardTwitterFeedsHttpGetIn">
+    <wsdl:part name="BoardTwitterAccountId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardTwitterFeedsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTwitterFeedsHttpGetIn">
+    <wsdl:part name="Key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTwitterFeedsHttpGetOut" />
+  <wsdl:message name="GetBoardInstagramAccountHttpGetIn">
+    <wsdl:part name="BoardId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardInstagramAccountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardInstagramFeedsHttpGetIn">
+    <wsdl:part name="BoardInstagramAccountId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardInstagramFeedsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInstagramFeedsHttpGetIn">
+    <wsdl:part name="Key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInstagramFeedsHttpGetOut" />
+  <wsdl:message name="GetBoardGplusAccountHttpGetIn">
+    <wsdl:part name="BoardId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardGplusAccountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardGplusFeedsHttpGetIn">
+    <wsdl:part name="BoardInstagramAccountId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardGplusFeedsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateGplusFeedsHttpGetIn">
+    <wsdl:part name="Key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateGplusFeedsHttpGetOut" />
+  <wsdl:message name="getBoardGplusfeedsbyrangeHttpGetIn">
+    <wsdl:part name="BoardGplusprofileId" type="s:string" />
+    <wsdl:part name="_noOfDataToSkip" type="s:string" />
+    <wsdl:part name="_noOfResultsFromTop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getBoardGplusfeedsbyrangeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getBoardInstagramfeedsbyrangeHttpGetIn">
+    <wsdl:part name="BoardInstagramAccountId" type="s:string" />
+    <wsdl:part name="_noOfDataToSkip" type="s:string" />
+    <wsdl:part name="_noOfResultsFromTop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getBoardInstagramfeedsbyrangeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getBoardTwitterfeedsbyrangeHttpGetIn">
+    <wsdl:part name="BoardtwitterprofileId" type="s:string" />
+    <wsdl:part name="_noOfDataToSkip" type="s:string" />
+    <wsdl:part name="_noOfResultsFromTop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getBoardTwitterfeedsbyrangeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getBoardFbfeedsbyrangeHttpGetIn">
+    <wsdl:part name="BoardfbprofileId" type="s:string" />
+    <wsdl:part name="_noOfDataToSkip" type="s:string" />
+    <wsdl:part name="_noOfResultsFromTop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getBoardFbfeedsbyrangeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserBoardsHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserBoardsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAnalyticsHttpPostIn">
+    <wsdl:part name="BoardId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAnalyticsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddBoardHttpPostIn">
+    <wsdl:part name="CompanyName" type="s:string" />
+    <wsdl:part name="InstagramProfileId" type="s:string" />
+    <wsdl:part name="FbProfileId" type="s:string" />
+    <wsdl:part name="TwitterProfileId" type="s:string" />
+    <wsdl:part name="LinkedinProfileId" type="s:string" />
+    <wsdl:part name="YoutubeProfileId" type="s:string" />
+    <wsdl:part name="GPlusProfileId" type="s:string" />
+    <wsdl:part name="TumblrProfileId" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddBoardHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBoardHttpPostIn">
+    <wsdl:part name="Id" type="s:string" />
+    <wsdl:part name="CompanyName" type="s:string" />
+    <wsdl:part name="InstagramProfileId" type="s:string" />
+    <wsdl:part name="FbProfileId" type="s:string" />
+    <wsdl:part name="TwitterProfileId" type="s:string" />
+    <wsdl:part name="LinkedinProfileId" type="s:string" />
+    <wsdl:part name="YoutubeProfileId" type="s:string" />
+    <wsdl:part name="GPlusProfileId" type="s:string" />
+    <wsdl:part name="TumblrProfileId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBoardHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getBoardInfoHttpPostIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getBoardInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SearchBoardHttpPostIn">
+    <wsdl:part name="keyword" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SearchBoardHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardDetailsHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardDetailsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardFbPageHttpPostIn">
+    <wsdl:part name="BoardId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardFbPageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardFbPageFeedsHttpPostIn">
+    <wsdl:part name="BoardfbPageId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardFbPageFeedsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFbFeedsHttpPostIn">
+    <wsdl:part name="Key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFbFeedsHttpPostOut" />
+  <wsdl:message name="GetBoardTwitterAccountHttpPostIn">
+    <wsdl:part name="BoardId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardTwitterAccountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardTwitterFeedsHttpPostIn">
+    <wsdl:part name="BoardTwitterAccountId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardTwitterFeedsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTwitterFeedsHttpPostIn">
+    <wsdl:part name="Key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTwitterFeedsHttpPostOut" />
+  <wsdl:message name="GetBoardInstagramAccountHttpPostIn">
+    <wsdl:part name="BoardId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardInstagramAccountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardInstagramFeedsHttpPostIn">
+    <wsdl:part name="BoardInstagramAccountId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardInstagramFeedsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInstagramFeedsHttpPostIn">
+    <wsdl:part name="Key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInstagramFeedsHttpPostOut" />
+  <wsdl:message name="GetBoardGplusAccountHttpPostIn">
+    <wsdl:part name="BoardId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardGplusAccountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardGplusFeedsHttpPostIn">
+    <wsdl:part name="BoardInstagramAccountId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBoardGplusFeedsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateGplusFeedsHttpPostIn">
+    <wsdl:part name="Key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateGplusFeedsHttpPostOut" />
+  <wsdl:message name="getBoardGplusfeedsbyrangeHttpPostIn">
+    <wsdl:part name="BoardGplusprofileId" type="s:string" />
+    <wsdl:part name="_noOfDataToSkip" type="s:string" />
+    <wsdl:part name="_noOfResultsFromTop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getBoardGplusfeedsbyrangeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getBoardInstagramfeedsbyrangeHttpPostIn">
+    <wsdl:part name="BoardInstagramAccountId" type="s:string" />
+    <wsdl:part name="_noOfDataToSkip" type="s:string" />
+    <wsdl:part name="_noOfResultsFromTop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getBoardInstagramfeedsbyrangeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getBoardTwitterfeedsbyrangeHttpPostIn">
+    <wsdl:part name="BoardtwitterprofileId" type="s:string" />
+    <wsdl:part name="_noOfDataToSkip" type="s:string" />
+    <wsdl:part name="_noOfResultsFromTop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getBoardTwitterfeedsbyrangeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getBoardFbfeedsbyrangeHttpPostIn">
+    <wsdl:part name="BoardfbprofileId" type="s:string" />
+    <wsdl:part name="_noOfDataToSkip" type="s:string" />
+    <wsdl:part name="_noOfResultsFromTop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getBoardFbfeedsbyrangeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="BoardServicesSoap">
+    <wsdl:operation name="GetUserBoards">
+      <wsdl:input message="tns:GetUserBoardsSoapIn" />
+      <wsdl:output message="tns:GetUserBoardsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAnalytics">
+      <wsdl:input message="tns:getAnalyticsSoapIn" />
+      <wsdl:output message="tns:getAnalyticsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBoard">
+      <wsdl:input message="tns:AddBoardSoapIn" />
+      <wsdl:output message="tns:AddBoardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBoard">
+      <wsdl:input message="tns:UpdateBoardSoapIn" />
+      <wsdl:output message="tns:UpdateBoardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBoardInfo">
+      <wsdl:input message="tns:getBoardInfoSoapIn" />
+      <wsdl:output message="tns:getBoardInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchBoard">
+      <wsdl:input message="tns:SearchBoardSoapIn" />
+      <wsdl:output message="tns:SearchBoardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardDetails">
+      <wsdl:input message="tns:GetBoardDetailsSoapIn" />
+      <wsdl:output message="tns:GetBoardDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardFbPage">
+      <wsdl:input message="tns:GetBoardFbPageSoapIn" />
+      <wsdl:output message="tns:GetBoardFbPageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardFbPageFeeds">
+      <wsdl:input message="tns:GetBoardFbPageFeedsSoapIn" />
+      <wsdl:output message="tns:GetBoardFbPageFeedsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFbFeeds">
+      <wsdl:input message="tns:UpdateFbFeedsSoapIn" />
+      <wsdl:output message="tns:UpdateFbFeedsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardTwitterAccount">
+      <wsdl:input message="tns:GetBoardTwitterAccountSoapIn" />
+      <wsdl:output message="tns:GetBoardTwitterAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardTwitterFeeds">
+      <wsdl:input message="tns:GetBoardTwitterFeedsSoapIn" />
+      <wsdl:output message="tns:GetBoardTwitterFeedsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTwitterFeeds">
+      <wsdl:input message="tns:UpdateTwitterFeedsSoapIn" />
+      <wsdl:output message="tns:UpdateTwitterFeedsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardInstagramAccount">
+      <wsdl:input message="tns:GetBoardInstagramAccountSoapIn" />
+      <wsdl:output message="tns:GetBoardInstagramAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardInstagramFeeds">
+      <wsdl:input message="tns:GetBoardInstagramFeedsSoapIn" />
+      <wsdl:output message="tns:GetBoardInstagramFeedsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInstagramFeeds">
+      <wsdl:input message="tns:UpdateInstagramFeedsSoapIn" />
+      <wsdl:output message="tns:UpdateInstagramFeedsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardGplusAccount">
+      <wsdl:input message="tns:GetBoardGplusAccountSoapIn" />
+      <wsdl:output message="tns:GetBoardGplusAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardGplusFeeds">
+      <wsdl:input message="tns:GetBoardGplusFeedsSoapIn" />
+      <wsdl:output message="tns:GetBoardGplusFeedsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGplusFeeds">
+      <wsdl:input message="tns:UpdateGplusFeedsSoapIn" />
+      <wsdl:output message="tns:UpdateGplusFeedsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBoardGplusfeedsbyrange">
+      <wsdl:input message="tns:getBoardGplusfeedsbyrangeSoapIn" />
+      <wsdl:output message="tns:getBoardGplusfeedsbyrangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBoardInstagramfeedsbyrange">
+      <wsdl:input message="tns:getBoardInstagramfeedsbyrangeSoapIn" />
+      <wsdl:output message="tns:getBoardInstagramfeedsbyrangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBoardTwitterfeedsbyrange">
+      <wsdl:input message="tns:getBoardTwitterfeedsbyrangeSoapIn" />
+      <wsdl:output message="tns:getBoardTwitterfeedsbyrangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBoardFbfeedsbyrange">
+      <wsdl:input message="tns:getBoardFbfeedsbyrangeSoapIn" />
+      <wsdl:output message="tns:getBoardFbfeedsbyrangeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="BoardServicesHttpGet">
+    <wsdl:operation name="GetUserBoards">
+      <wsdl:input message="tns:GetUserBoardsHttpGetIn" />
+      <wsdl:output message="tns:GetUserBoardsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAnalytics">
+      <wsdl:input message="tns:getAnalyticsHttpGetIn" />
+      <wsdl:output message="tns:getAnalyticsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBoard">
+      <wsdl:input message="tns:AddBoardHttpGetIn" />
+      <wsdl:output message="tns:AddBoardHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBoard">
+      <wsdl:input message="tns:UpdateBoardHttpGetIn" />
+      <wsdl:output message="tns:UpdateBoardHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBoardInfo">
+      <wsdl:input message="tns:getBoardInfoHttpGetIn" />
+      <wsdl:output message="tns:getBoardInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchBoard">
+      <wsdl:input message="tns:SearchBoardHttpGetIn" />
+      <wsdl:output message="tns:SearchBoardHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardDetails">
+      <wsdl:input message="tns:GetBoardDetailsHttpGetIn" />
+      <wsdl:output message="tns:GetBoardDetailsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardFbPage">
+      <wsdl:input message="tns:GetBoardFbPageHttpGetIn" />
+      <wsdl:output message="tns:GetBoardFbPageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardFbPageFeeds">
+      <wsdl:input message="tns:GetBoardFbPageFeedsHttpGetIn" />
+      <wsdl:output message="tns:GetBoardFbPageFeedsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFbFeeds">
+      <wsdl:input message="tns:UpdateFbFeedsHttpGetIn" />
+      <wsdl:output message="tns:UpdateFbFeedsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardTwitterAccount">
+      <wsdl:input message="tns:GetBoardTwitterAccountHttpGetIn" />
+      <wsdl:output message="tns:GetBoardTwitterAccountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardTwitterFeeds">
+      <wsdl:input message="tns:GetBoardTwitterFeedsHttpGetIn" />
+      <wsdl:output message="tns:GetBoardTwitterFeedsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTwitterFeeds">
+      <wsdl:input message="tns:UpdateTwitterFeedsHttpGetIn" />
+      <wsdl:output message="tns:UpdateTwitterFeedsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardInstagramAccount">
+      <wsdl:input message="tns:GetBoardInstagramAccountHttpGetIn" />
+      <wsdl:output message="tns:GetBoardInstagramAccountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardInstagramFeeds">
+      <wsdl:input message="tns:GetBoardInstagramFeedsHttpGetIn" />
+      <wsdl:output message="tns:GetBoardInstagramFeedsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInstagramFeeds">
+      <wsdl:input message="tns:UpdateInstagramFeedsHttpGetIn" />
+      <wsdl:output message="tns:UpdateInstagramFeedsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardGplusAccount">
+      <wsdl:input message="tns:GetBoardGplusAccountHttpGetIn" />
+      <wsdl:output message="tns:GetBoardGplusAccountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardGplusFeeds">
+      <wsdl:input message="tns:GetBoardGplusFeedsHttpGetIn" />
+      <wsdl:output message="tns:GetBoardGplusFeedsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGplusFeeds">
+      <wsdl:input message="tns:UpdateGplusFeedsHttpGetIn" />
+      <wsdl:output message="tns:UpdateGplusFeedsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBoardGplusfeedsbyrange">
+      <wsdl:input message="tns:getBoardGplusfeedsbyrangeHttpGetIn" />
+      <wsdl:output message="tns:getBoardGplusfeedsbyrangeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBoardInstagramfeedsbyrange">
+      <wsdl:input message="tns:getBoardInstagramfeedsbyrangeHttpGetIn" />
+      <wsdl:output message="tns:getBoardInstagramfeedsbyrangeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBoardTwitterfeedsbyrange">
+      <wsdl:input message="tns:getBoardTwitterfeedsbyrangeHttpGetIn" />
+      <wsdl:output message="tns:getBoardTwitterfeedsbyrangeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBoardFbfeedsbyrange">
+      <wsdl:input message="tns:getBoardFbfeedsbyrangeHttpGetIn" />
+      <wsdl:output message="tns:getBoardFbfeedsbyrangeHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="BoardServicesHttpPost">
+    <wsdl:operation name="GetUserBoards">
+      <wsdl:input message="tns:GetUserBoardsHttpPostIn" />
+      <wsdl:output message="tns:GetUserBoardsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAnalytics">
+      <wsdl:input message="tns:getAnalyticsHttpPostIn" />
+      <wsdl:output message="tns:getAnalyticsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBoard">
+      <wsdl:input message="tns:AddBoardHttpPostIn" />
+      <wsdl:output message="tns:AddBoardHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBoard">
+      <wsdl:input message="tns:UpdateBoardHttpPostIn" />
+      <wsdl:output message="tns:UpdateBoardHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBoardInfo">
+      <wsdl:input message="tns:getBoardInfoHttpPostIn" />
+      <wsdl:output message="tns:getBoardInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchBoard">
+      <wsdl:input message="tns:SearchBoardHttpPostIn" />
+      <wsdl:output message="tns:SearchBoardHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardDetails">
+      <wsdl:input message="tns:GetBoardDetailsHttpPostIn" />
+      <wsdl:output message="tns:GetBoardDetailsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardFbPage">
+      <wsdl:input message="tns:GetBoardFbPageHttpPostIn" />
+      <wsdl:output message="tns:GetBoardFbPageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardFbPageFeeds">
+      <wsdl:input message="tns:GetBoardFbPageFeedsHttpPostIn" />
+      <wsdl:output message="tns:GetBoardFbPageFeedsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFbFeeds">
+      <wsdl:input message="tns:UpdateFbFeedsHttpPostIn" />
+      <wsdl:output message="tns:UpdateFbFeedsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardTwitterAccount">
+      <wsdl:input message="tns:GetBoardTwitterAccountHttpPostIn" />
+      <wsdl:output message="tns:GetBoardTwitterAccountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardTwitterFeeds">
+      <wsdl:input message="tns:GetBoardTwitterFeedsHttpPostIn" />
+      <wsdl:output message="tns:GetBoardTwitterFeedsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTwitterFeeds">
+      <wsdl:input message="tns:UpdateTwitterFeedsHttpPostIn" />
+      <wsdl:output message="tns:UpdateTwitterFeedsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardInstagramAccount">
+      <wsdl:input message="tns:GetBoardInstagramAccountHttpPostIn" />
+      <wsdl:output message="tns:GetBoardInstagramAccountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardInstagramFeeds">
+      <wsdl:input message="tns:GetBoardInstagramFeedsHttpPostIn" />
+      <wsdl:output message="tns:GetBoardInstagramFeedsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInstagramFeeds">
+      <wsdl:input message="tns:UpdateInstagramFeedsHttpPostIn" />
+      <wsdl:output message="tns:UpdateInstagramFeedsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardGplusAccount">
+      <wsdl:input message="tns:GetBoardGplusAccountHttpPostIn" />
+      <wsdl:output message="tns:GetBoardGplusAccountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardGplusFeeds">
+      <wsdl:input message="tns:GetBoardGplusFeedsHttpPostIn" />
+      <wsdl:output message="tns:GetBoardGplusFeedsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGplusFeeds">
+      <wsdl:input message="tns:UpdateGplusFeedsHttpPostIn" />
+      <wsdl:output message="tns:UpdateGplusFeedsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBoardGplusfeedsbyrange">
+      <wsdl:input message="tns:getBoardGplusfeedsbyrangeHttpPostIn" />
+      <wsdl:output message="tns:getBoardGplusfeedsbyrangeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBoardInstagramfeedsbyrange">
+      <wsdl:input message="tns:getBoardInstagramfeedsbyrangeHttpPostIn" />
+      <wsdl:output message="tns:getBoardInstagramfeedsbyrangeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBoardTwitterfeedsbyrange">
+      <wsdl:input message="tns:getBoardTwitterfeedsbyrangeHttpPostIn" />
+      <wsdl:output message="tns:getBoardTwitterfeedsbyrangeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBoardFbfeedsbyrange">
+      <wsdl:input message="tns:getBoardFbfeedsbyrangeHttpPostIn" />
+      <wsdl:output message="tns:getBoardFbfeedsbyrangeHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BoardServicesSoap" type="tns:BoardServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUserBoards">
+      <soap:operation soapAction="http://tempuri.org/GetUserBoards" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAnalytics">
+      <soap:operation soapAction="http://tempuri.org/getAnalytics" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBoard">
+      <soap:operation soapAction="http://tempuri.org/AddBoard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBoard">
+      <soap:operation soapAction="http://tempuri.org/UpdateBoard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBoardInfo">
+      <soap:operation soapAction="http://tempuri.org/getBoardInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchBoard">
+      <soap:operation soapAction="http://tempuri.org/SearchBoard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardDetails">
+      <soap:operation soapAction="http://tempuri.org/GetBoardDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardFbPage">
+      <soap:operation soapAction="http://tempuri.org/GetBoardFbPage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardFbPageFeeds">
+      <soap:operation soapAction="http://tempuri.org/GetBoardFbPageFeeds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFbFeeds">
+      <soap:operation soapAction="http://tempuri.org/UpdateFbFeeds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardTwitterAccount">
+      <soap:operation soapAction="http://tempuri.org/GetBoardTwitterAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardTwitterFeeds">
+      <soap:operation soapAction="http://tempuri.org/GetBoardTwitterFeeds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTwitterFeeds">
+      <soap:operation soapAction="http://tempuri.org/UpdateTwitterFeeds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardInstagramAccount">
+      <soap:operation soapAction="http://tempuri.org/GetBoardInstagramAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardInstagramFeeds">
+      <soap:operation soapAction="http://tempuri.org/GetBoardInstagramFeeds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInstagramFeeds">
+      <soap:operation soapAction="http://tempuri.org/UpdateInstagramFeeds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardGplusAccount">
+      <soap:operation soapAction="http://tempuri.org/GetBoardGplusAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardGplusFeeds">
+      <soap:operation soapAction="http://tempuri.org/GetBoardGplusFeeds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGplusFeeds">
+      <soap:operation soapAction="http://tempuri.org/UpdateGplusFeeds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBoardGplusfeedsbyrange">
+      <soap:operation soapAction="http://tempuri.org/getBoardGplusfeedsbyrange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBoardInstagramfeedsbyrange">
+      <soap:operation soapAction="http://tempuri.org/getBoardInstagramfeedsbyrange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBoardTwitterfeedsbyrange">
+      <soap:operation soapAction="http://tempuri.org/getBoardTwitterfeedsbyrange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBoardFbfeedsbyrange">
+      <soap:operation soapAction="http://tempuri.org/getBoardFbfeedsbyrange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BoardServicesSoap12" type="tns:BoardServicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUserBoards">
+      <soap12:operation soapAction="http://tempuri.org/GetUserBoards" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAnalytics">
+      <soap12:operation soapAction="http://tempuri.org/getAnalytics" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBoard">
+      <soap12:operation soapAction="http://tempuri.org/AddBoard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBoard">
+      <soap12:operation soapAction="http://tempuri.org/UpdateBoard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBoardInfo">
+      <soap12:operation soapAction="http://tempuri.org/getBoardInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchBoard">
+      <soap12:operation soapAction="http://tempuri.org/SearchBoard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardDetails">
+      <soap12:operation soapAction="http://tempuri.org/GetBoardDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardFbPage">
+      <soap12:operation soapAction="http://tempuri.org/GetBoardFbPage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardFbPageFeeds">
+      <soap12:operation soapAction="http://tempuri.org/GetBoardFbPageFeeds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFbFeeds">
+      <soap12:operation soapAction="http://tempuri.org/UpdateFbFeeds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardTwitterAccount">
+      <soap12:operation soapAction="http://tempuri.org/GetBoardTwitterAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardTwitterFeeds">
+      <soap12:operation soapAction="http://tempuri.org/GetBoardTwitterFeeds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTwitterFeeds">
+      <soap12:operation soapAction="http://tempuri.org/UpdateTwitterFeeds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardInstagramAccount">
+      <soap12:operation soapAction="http://tempuri.org/GetBoardInstagramAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardInstagramFeeds">
+      <soap12:operation soapAction="http://tempuri.org/GetBoardInstagramFeeds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInstagramFeeds">
+      <soap12:operation soapAction="http://tempuri.org/UpdateInstagramFeeds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardGplusAccount">
+      <soap12:operation soapAction="http://tempuri.org/GetBoardGplusAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardGplusFeeds">
+      <soap12:operation soapAction="http://tempuri.org/GetBoardGplusFeeds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGplusFeeds">
+      <soap12:operation soapAction="http://tempuri.org/UpdateGplusFeeds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBoardGplusfeedsbyrange">
+      <soap12:operation soapAction="http://tempuri.org/getBoardGplusfeedsbyrange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBoardInstagramfeedsbyrange">
+      <soap12:operation soapAction="http://tempuri.org/getBoardInstagramfeedsbyrange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBoardTwitterfeedsbyrange">
+      <soap12:operation soapAction="http://tempuri.org/getBoardTwitterfeedsbyrange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBoardFbfeedsbyrange">
+      <soap12:operation soapAction="http://tempuri.org/getBoardFbfeedsbyrange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BoardServicesHttpGet" type="tns:BoardServicesHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetUserBoards">
+      <http:operation location="/GetUserBoards" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAnalytics">
+      <http:operation location="/getAnalytics" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBoard">
+      <http:operation location="/AddBoard" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBoard">
+      <http:operation location="/UpdateBoard" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBoardInfo">
+      <http:operation location="/getBoardInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchBoard">
+      <http:operation location="/SearchBoard" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardDetails">
+      <http:operation location="/GetBoardDetails" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardFbPage">
+      <http:operation location="/GetBoardFbPage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardFbPageFeeds">
+      <http:operation location="/GetBoardFbPageFeeds" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFbFeeds">
+      <http:operation location="/UpdateFbFeeds" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardTwitterAccount">
+      <http:operation location="/GetBoardTwitterAccount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardTwitterFeeds">
+      <http:operation location="/GetBoardTwitterFeeds" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTwitterFeeds">
+      <http:operation location="/UpdateTwitterFeeds" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardInstagramAccount">
+      <http:operation location="/GetBoardInstagramAccount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardInstagramFeeds">
+      <http:operation location="/GetBoardInstagramFeeds" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInstagramFeeds">
+      <http:operation location="/UpdateInstagramFeeds" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardGplusAccount">
+      <http:operation location="/GetBoardGplusAccount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardGplusFeeds">
+      <http:operation location="/GetBoardGplusFeeds" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGplusFeeds">
+      <http:operation location="/UpdateGplusFeeds" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getBoardGplusfeedsbyrange">
+      <http:operation location="/getBoardGplusfeedsbyrange" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBoardInstagramfeedsbyrange">
+      <http:operation location="/getBoardInstagramfeedsbyrange" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBoardTwitterfeedsbyrange">
+      <http:operation location="/getBoardTwitterfeedsbyrange" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBoardFbfeedsbyrange">
+      <http:operation location="/getBoardFbfeedsbyrange" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BoardServicesHttpPost" type="tns:BoardServicesHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetUserBoards">
+      <http:operation location="/GetUserBoards" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAnalytics">
+      <http:operation location="/getAnalytics" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBoard">
+      <http:operation location="/AddBoard" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBoard">
+      <http:operation location="/UpdateBoard" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBoardInfo">
+      <http:operation location="/getBoardInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchBoard">
+      <http:operation location="/SearchBoard" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardDetails">
+      <http:operation location="/GetBoardDetails" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardFbPage">
+      <http:operation location="/GetBoardFbPage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardFbPageFeeds">
+      <http:operation location="/GetBoardFbPageFeeds" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFbFeeds">
+      <http:operation location="/UpdateFbFeeds" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardTwitterAccount">
+      <http:operation location="/GetBoardTwitterAccount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardTwitterFeeds">
+      <http:operation location="/GetBoardTwitterFeeds" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTwitterFeeds">
+      <http:operation location="/UpdateTwitterFeeds" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardInstagramAccount">
+      <http:operation location="/GetBoardInstagramAccount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardInstagramFeeds">
+      <http:operation location="/GetBoardInstagramFeeds" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInstagramFeeds">
+      <http:operation location="/UpdateInstagramFeeds" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardGplusAccount">
+      <http:operation location="/GetBoardGplusAccount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBoardGplusFeeds">
+      <http:operation location="/GetBoardGplusFeeds" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGplusFeeds">
+      <http:operation location="/UpdateGplusFeeds" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getBoardGplusfeedsbyrange">
+      <http:operation location="/getBoardGplusfeedsbyrange" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBoardInstagramfeedsbyrange">
+      <http:operation location="/getBoardInstagramfeedsbyrange" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBoardTwitterfeedsbyrange">
+      <http:operation location="/getBoardTwitterfeedsbyrange" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBoardFbfeedsbyrange">
+      <http:operation location="/getBoardFbfeedsbyrange" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BoardServices">
+    <wsdl:port name="BoardServicesSoap" binding="tns:BoardServicesSoap">
+      <soap:address location="http://api.socioboard.com/Services/BoardServices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BoardServicesSoap12" binding="tns:BoardServicesSoap12">
+      <soap12:address location="http://api.socioboard.com/Services/BoardServices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BoardServicesHttpGet" binding="tns:BoardServicesHttpGet">
+      <http:address location="http://api.socioboard.com/Services/BoardServices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BoardServicesHttpPost" binding="tns:BoardServicesHttpPost">
+      <http:address location="http://api.socioboard.com/Services/BoardServices.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -2368,7 +2368,7 @@ Interested in using Socialboard Enterprise version for your business now? Post y
     <value>Pending Task</value>
   </data>
   <data name="Messages_TaskPartial_Save" xml:space="preserve">
-    <value>Sav</value>
+    <value>Save</value>
   </data>
   <data name="Messages_TaskPartial_TaskActivity" xml:space="preserve">
     <value>TASK ACTIVITY</value>
@@ -2446,7 +2446,7 @@ Interested in using Socialboard Enterprise version for your business now? Post y
     <value>Last Name</value>
   </data>
   <data name="PersonalSetting_PersonalSettingPartial_Password" xml:space="preserve">
-    <value>PassWord</value>
+    <value>Password</value>
   </data>
   <data name="PersonalSetting_PersonalSettingPartial_ReEnterPassword" xml:space="preserve">
     <value>Please Re-enter Your Password</value>
@@ -3184,5 +3184,302 @@ Interested in using Socialboard Enterprise version for your business now? Post y
   </data>
   <data name="Socioboard_MyStuff_Affiliates_AjaxShow1" xml:space="preserve">
     <value>World’s #1 Open Source Social Technology Enabler!</value>
+  </data>
+  <data name="Documantal_Index_Index_OnBoard1" xml:space="preserve">
+    <value>Get On Board to See What Our Social Media Marketing Suite Can Do for You</value>
+  </data>
+  <data name="Documantal_Index_Index_SocioDescription1" xml:space="preserve">
+    <value>Documantal SM offers you an advanced, easy, versatile, customizable and scalable open-source social media marketing tool to drive your brand to newer heights</value>
+  </data>
+  <data name="Documantal_Index_Index_Sociodescription21" xml:space="preserve">
+    <value>Documantal SM allows you to listen to, analyze and engage your followers in unusual ways across   numerous social media accounts</value>
+  </data>
+  <data name="Documantal_Index_Index_SubHeadingInsight1" xml:space="preserve">
+    <value>Documantal SM offers detailed insights for customers</value>
+  </data>
+  <data name="Documantal_Index_Index_WeBuilt" xml:space="preserve">
+    <value>We build social technology which helps businesses and brands to better understand social media and harness its real power.</value>
+  </data>
+  <data name="Documantal_Index_Index_WorldsNoOne" xml:space="preserve">
+    <value>World's #1 Open Source Social Technology Enabler!</value>
+  </data>
+  <data name="Documantal_Shared_Site_InvideFreindsDescription" xml:space="preserve">
+    <value>Documantal SM offers to make group by virtue of which users can reach out to each other using a highly efficient collaboration mechanism.Groups serve as a platform to share information with other team members and increase workability and efficiency.</value>
+  </data>
+  <data name="Documantal_Shared_Socialsuite_Title" xml:space="preserve">
+    <value>Documantal SM- Generate More leads on Social Media| Social CRM | Social Media CMS</value>
+  </data>
+  <data name="Documantal_Index_Index_EndHeading" xml:space="preserve">
+    <value>With Documantal SM, engaging your followers is so easy, fun, and insightful now. Get started today!</value>
+  </data>
+  <data name="Documantal_Index_Index_featureHeading" xml:space="preserve">
+    <value>Documantal SM makes it easy to keep tabs on social conversations and provides everything you need to efficiently engage your audience.</value>
+  </data>
+  <data name="Documantal_Index_Index_LoveSocioboard" xml:space="preserve">
+    <value>WHY PEOPLE LOVE DOCUMANTAL SM</value>
+  </data>
+  <data name="Documantal_Index_Index_freeSubscirption" xml:space="preserve">
+    <value>Enjoy Documantal SM risk-free for 30 days!</value>
+  </data>
+  <data name="Documantal_Index_Index_ImgSignupforFree" xml:space="preserve">
+    <value>/Themes/Documantal/Contents/img/signup-butn.png</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_EmailalreadyExist" xml:space="preserve">
+    <value>Email already Exist</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_Errorpleasecheck" xml:space="preserve">
+    <value>Error please check</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_Failed" xml:space="preserve">
+    <value>Failed</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_FileExtentionisnotcurrentPleaseuploadanyimagefile" xml:space="preserve">
+    <value>File Extention is not current. Please upload any image file</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_Invalidemail" xml:space="preserve">
+    <value>Invalid email</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_InvalidEmailIdorPassword" xml:space="preserve">
+    <value>Invalid EmailId or Password</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_MailtoresetpasswordhasbeensentSuccessfully" xml:space="preserve">
+    <value>Mail to reset password has been sent Successfully!!</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_NewPasswordandConfirmPasswordmismatch" xml:space="preserve">
+    <value>New Password and Confirm Password mismatch</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PasswordChangedSuccessfully" xml:space="preserve">
+    <value>Password Changed Successfully</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PasswordNotMatch" xml:space="preserve">
+    <value>Password Not Match</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseconfirmPassword" xml:space="preserve">
+    <value>Please confirm Password</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenteraProperFirstNamewhichcontainCharacter" xml:space="preserve">
+    <value>Please enter a Proper First Name which contain Character</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenteraProperLastNamewhichcontainCharacter" xml:space="preserve">
+    <value>Please enter a Proper Last Name which contain Character</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenterFirstName" xml:space="preserve">
+    <value>Please enter First Name</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenterLastName" xml:space="preserve">
+    <value>Please enter Last Name</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenterNewEmailId" xml:space="preserve">
+    <value>Please enter New EmailId</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_PleaseenterNewPassword" xml:space="preserve">
+    <value>Please enter New Password</value>
+  </data>
+  <data name="JS_PersonalSetting_Index_UpdateSuccessfully" xml:space="preserve">
+    <value>Update Successfully</value>
+  </data>
+  <data name="JS_Publishing_draft_MessageDeletedsuccessfully" xml:space="preserve">
+    <value>Message Deleted successfully</value>
+  </data>
+  <data name="JS_Publishing_draft_Pleaseenteramessagetosave" xml:space="preserve">
+    <value>Please enter a message to save</value>
+  </data>
+  <data name="JS_Publishing_Index_PleaseEnteramessage" xml:space="preserve">
+    <value>Please Enter a message</value>
+  </data>
+  <data name="JS_Publishing_Index_PleaseSelectaDate" xml:space="preserve">
+    <value>Please Select a Date</value>
+  </data>
+  <data name="JS_Publishing_Index_PleaseSelectaTime" xml:space="preserve">
+    <value>Please Select a Time</value>
+  </data>
+  <data name="JS_Publishing_Index_ThisProfileAlreadyAdded" xml:space="preserve">
+    <value>This Profile Already Added</value>
+  </data>
+  <data name="JS_Shared_Site_FacebookNotSupportmorethan5000characters" xml:space="preserve">
+    <value>Facebook Not Support more than 5000 characters</value>
+  </data>
+  <data name="JS_Shared_Site_FanPageAddedSuccessfully" xml:space="preserve">
+    <value>Fan Page Added Successfully</value>
+  </data>
+  <data name="JS_Shared_Site_GroupAddedSuccessfully" xml:space="preserve">
+    <value>Group Added Successfully</value>
+  </data>
+  <data name="JS_Shared_Site_LinkedinNotSupportmorethan600characters" xml:space="preserve">
+    <value>Linkedin Not Support more than 600 characters</value>
+  </data>
+  <data name="JS_Shared_Site_Mailalreadysent" xml:space="preserve">
+    <value>Mail already sent</value>
+  </data>
+  <data name="JS_Shared_Site_Mailsendsuccessfully" xml:space="preserve">
+    <value>Mail send successfully</value>
+  </data>
+  <data name="JS_Shared_Site_plaesewaitwhilewearefetchingpagedata" xml:space="preserve">
+    <value>Please wait while we are fetching page data</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseAddaprofiletoInviteaMember" xml:space="preserve">
+    <value>Please Add a profile to Invite a Member !!</value>
+  </data>
+  <data name="JS_Shared_Site_pleaseChecktheURLyouenterediscorrect" xml:space="preserve">
+    <value>Please Check the URL you entered is correct</value>
+  </data>
+  <data name="JS_Shared_Site_Pleaseenteracontacttosearch" xml:space="preserve">
+    <value>Please enter a contact to search</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseEnteravalidurl" xml:space="preserve">
+    <value>Please Enter a valid url</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseentervalidEmailId" xml:space="preserve">
+    <value>Please enter valid EmailId</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseentervalidFirstName" xml:space="preserve">
+    <value>Please enter valid First Name</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseentervalidLastName" xml:space="preserve">
+    <value>Please enter valid Last Name</value>
+  </data>
+  <data name="JS_Shared_Site_PleaseSelectaprofile" xml:space="preserve">
+    <value>Please Select a profile !!</value>
+  </data>
+  <data name="JS_Shared_Site_SelectAProfile" xml:space="preserve">
+    <value>Please Select atleast a Profile</value>
+  </data>
+  <data name="JS_Shared_Site_TwitterNotSupportmorethan140characters" xml:space="preserve">
+    <value>Twitter Not Support more than 140 characters</value>
+  </data>
+  <data name="JS_Shared_Site_UploadImage" xml:space="preserve">
+    <value>File Extention is not current. Please upload any image file</value>
+  </data>
+  <data name="Placeholder_Shared_Site_EnterKeywordcontacttosearch" xml:space="preserve">
+    <value>Enter Keyword or contact to search...</value>
+  </data>
+  <data name="Shared_Site_Feeds_Search" xml:space="preserve">
+    <value>Feeds Search</value>
+  </data>
+  <data name="Shared_Site_News_Feeds" xml:space="preserve">
+    <value>News Feeds</value>
+  </data>
+  <data name="Shared_Site_Posts" xml:space="preserve">
+    <value>Posts</value>
+  </data>
+  <data name="JS_Publishing_Index_PleaseSelectProfilestoScheduledamessage" xml:space="preserve">
+    <value>Please Select Profiles to Scheduled a message</value>
+  </data>
+  <data name="JS_Report_TwitterReportPartial_MySocialScores" xml:space="preserve">
+    <value>My Social Scores</value>
+  </data>
+  <data name="JS_Report_TwitterReportPartial_NumofEngageandInfluence" xml:space="preserve">
+    <value>Num. of Engage and Influence</value>
+  </data>
+  <data name="JS_UserGroup_Index_ProfileAlreadyExist" xml:space="preserve">
+    <value>Are you Sure want to delete this Group ?</value>
+  </data>
+  <data name="JS_UserGroup_PleasechangegroupName" xml:space="preserve">
+    <value>Please change group Name</value>
+  </data>
+  <data name="JS_UserGroup_ProfileAlreadyExist" xml:space="preserve">
+    <value>Profile Already Exist</value>
+  </data>
+  <data name="JS_UserGroup_UserGroupPartial" xml:space="preserve">
+    <value>Please Enter a group Name</value>
+  </data>
+  <data name="javascript" xml:space="preserve">
+    <value>js</value>
+  </data>
+  <data name="JS_BussinessSetting_Index_BusinessSettingUpdatedSuccessfully" xml:space="preserve">
+    <value>Business Setting Updated Successfully.</value>
+  </data>
+  <data name="JS_ForgotPassword_ForgotPasswordPartial_PleaseenterEmailId" xml:space="preserve">
+    <value>Please enter EmailId</value>
+  </data>
+  <data name="JS_ForgotPassword_ForgotPasswordPartial_PleaseResetyourPasswordbyclickingonResetPasswordLinksenttoyourmail" xml:space="preserve">
+    <value>Please Reset your Password by clicking on Reset Password Link sent to your mail</value>
+  </data>
+  <data name="JS_Group_Index_CommentedSuccessfully" xml:space="preserve">
+    <value>Commented Successfully</value>
+  </data>
+  <data name="JS_Group_Index_LikedSuccessfully" xml:space="preserve">
+    <value>Liked Successfully</value>
+  </data>
+  <data name="JS_Group_Index_PleasewriteinCommentBox" xml:space="preserve">
+    <value>Please write in CommentBox!</value>
+  </data>
+  <data name="JS_Groups_Index_Pleaseaddgroupfirst" xml:space="preserve">
+    <value>Please add group first</value>
+  </data>
+  <data name="JS_Groups_Index_PleasewriteinComentBox" xml:space="preserve">
+    <value>Please write in CommentBox!</value>
+  </data>
+  <data name="JS_Group_Index_UnlikedSuccessfully" xml:space="preserve">
+    <value>Unliked Successfully</value>
+  </data>
+  <data name="JS_site_MessageSentSuccessfully" xml:space="preserve">
+    <value>Message Sent Successfully</value>
+  </data>
+  <data name="JS_site_ThisAccountAlreadyAdded" xml:space="preserve">
+    <value>This Account Already Added</value>
+  </data>
+  <data name="Message_InboxPartial_Bio" xml:space="preserve">
+    <value>Bio</value>
+  </data>
+  <data name="Message_InboxPartial_isnowfollowing" xml:space="preserve">
+    <value>is now following</value>
+  </data>
+  <data name="JS_Discovery_Index_PleaseEnterAKeyword" xml:space="preserve">
+    <value>Please Enter A Keyword</value>
+  </data>
+  <data name="JS_Index_Contact_failure" xml:space="preserve">
+    <value>failure</value>
+  </data>
+  <data name="JS_Index_Contact_Mailhasbeensentsuccessfully" xml:space="preserve">
+    <value>Mail has been sent successfully</value>
+  </data>
+  <data name="JS_Index_Contact_PleaseentervalidEmailID" xml:space="preserve">
+    <value>Please enter valid Email ID</value>
+  </data>
+  <data name="JS_Index_Contact_PleaseentervalidFirstName" xml:space="preserve">
+    <value>Please enter valid First Name</value>
+  </data>
+  <data name="JS_Index_Contact_PleaseentervalidLastName" xml:space="preserve">
+    <value>Please enter valid Last Name</value>
+  </data>
+  <data name="JS_Index_Contact_Pleasefillallthefields" xml:space="preserve">
+    <value>Please fill all the fields</value>
+  </data>
+  <data name="Placeholder_Publishing_Index_PickDate" xml:space="preserve">
+    <value>Pick Date</value>
+  </data>
+  <data name="Placeholder_Publishing_Index_Typeyourmessagehere" xml:space="preserve">
+    <value>Type your message here</value>
+  </data>
+  <data name="Placeholder_Site_WriteURLtoshrink" xml:space="preserve">
+    <value>Write URL to shrink</value>
+  </data>
+  <data name="ForgotPassword_Placeholder_EnterYourEmail" xml:space="preserve">
+    <value>Enter Your Email</value>
+  </data>
+  <data name="RegistrationPartial_Placeholder_ConfirmPassword" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="RegistrationPartial_Placeholder_CouponCode" xml:space="preserve">
+    <value>Coupon Code(Optional)</value>
+  </data>
+  <data name="Site_Title_Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Site_Title_SearchContact" xml:space="preserve">
+    <value>Search Contact</value>
+  </data>
+  <data name="IndexController_RemainingDays_accountwillexpirein" xml:space="preserve">
+    <value>account will expire in</value>
+  </data>
+  <data name="IndexController_RemainingDays_alaccountwillexpireTodaypleaseupgradetopaidplan" xml:space="preserve">
+    <value>account will expire Today please upgrade to paid plan.</value>
+  </data>
+  <data name="IndexController_RemainingDays_dayspleaseupgradetopaidplan" xml:space="preserve">
+    <value>days, please upgrade to paid plan.</value>
+  </data>
+  <data name="IndexController_RemainingDays_Yourtrial" xml:space="preserve">
+    <value>Your trial</value>
   </data>
 </root>

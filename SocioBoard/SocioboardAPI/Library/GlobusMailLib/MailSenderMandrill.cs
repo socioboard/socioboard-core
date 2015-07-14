@@ -29,7 +29,7 @@ namespace GlobusMailLib
 
                 foreach (var result in results)
                 {
-                    if (result.Status == Mandrill.EmailResultStatus.Sent || result.Status == Mandrill.EmailResultStatus.Queued)
+                    if (result.Status != Mandrill.EmailResultStatus.Sent || result.Status == Mandrill.EmailResultStatus.Queued)
                     {
                         sendMailByMandrill = "Success";
                     }
@@ -71,7 +71,7 @@ namespace GlobusMailLib
 
                 foreach (var result in results)
                 {
-                    if (result.Status == Mandrill.EmailResultStatus.Sent || result.Status == Mandrill.EmailResultStatus.Queued)
+                    if (result.Status != Mandrill.EmailResultStatus.Sent || result.Status == Mandrill.EmailResultStatus.Queued)
                     {
                         sendMailByMandrill = "Success";
                     }

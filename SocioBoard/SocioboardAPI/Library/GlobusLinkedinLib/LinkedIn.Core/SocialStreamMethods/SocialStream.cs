@@ -7,13 +7,13 @@ using GlobusLinkedinLib.App.Core;
 using System.IO;
 using GlobusLinkedinLib.Authentication;
 using System.Text.RegularExpressions;
-using log4net;
+
 
 namespace GlobusLinkedinLib.LinkedIn.Core.SocialStreamMethods
 {
     public class SocialStream
     {
-        ILog logger = LogManager.GetLogger(typeof(SocialStream));
+        //ILog logger = LogManager.GetLogger(typeof(SocialStream));
          private XmlDocument xmlResult;
 
 
@@ -110,7 +110,6 @@ namespace GlobusLinkedinLib.LinkedIn.Core.SocialStreamMethods
 
          public string SetImageStatusUpdate(oAuthLinkedIn OAuth, string msg, string file)
          {
-             logger.Error(file);
              string xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><share><comment>" + msg + "</comment><content><title></title><submitted-url>http://www.socioboard.com/</submitted-url><submitted-image-url>" + file + "</submitted-image-url></content><visibility><code>anyone</code></visibility></share>";
              string response = OAuth.APIWebRequest("POST", Global.StatusUpdateImage, xml);
              return response;

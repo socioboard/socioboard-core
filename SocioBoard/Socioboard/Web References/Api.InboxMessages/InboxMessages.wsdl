@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetInboxMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfileIds" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="noOfDataToSkip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="noOfDataFromTop" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInboxMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInboxMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInboxMessageByMessageId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInboxMessageByMessageIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getInboxMessageByMessageIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetInboxMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInboxMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetInboxMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInboxMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="getInboxMessageByMessageIdSoapIn">
+    <wsdl:part name="parameters" element="tns:getInboxMessageByMessageId" />
+  </wsdl:message>
+  <wsdl:message name="getInboxMessageByMessageIdSoapOut">
+    <wsdl:part name="parameters" element="tns:getInboxMessageByMessageIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInboxMessageHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileIds" type="s:string" />
+    <wsdl:part name="MessageType" type="s:string" />
+    <wsdl:part name="noOfDataToSkip" type="s:string" />
+    <wsdl:part name="noOfDataFromTop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInboxMessageHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getInboxMessageByMessageIdHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="MessageId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getInboxMessageByMessageIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInboxMessageHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="ProfileIds" type="s:string" />
+    <wsdl:part name="MessageType" type="s:string" />
+    <wsdl:part name="noOfDataToSkip" type="s:string" />
+    <wsdl:part name="noOfDataFromTop" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInboxMessageHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getInboxMessageByMessageIdHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="MessageId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getInboxMessageByMessageIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="InboxMessagesSoap">
+    <wsdl:operation name="GetInboxMessage">
+      <wsdl:input message="tns:GetInboxMessageSoapIn" />
+      <wsdl:output message="tns:GetInboxMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInboxMessageByMessageId">
+      <wsdl:input message="tns:getInboxMessageByMessageIdSoapIn" />
+      <wsdl:output message="tns:getInboxMessageByMessageIdSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="InboxMessagesHttpGet">
+    <wsdl:operation name="GetInboxMessage">
+      <wsdl:input message="tns:GetInboxMessageHttpGetIn" />
+      <wsdl:output message="tns:GetInboxMessageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInboxMessageByMessageId">
+      <wsdl:input message="tns:getInboxMessageByMessageIdHttpGetIn" />
+      <wsdl:output message="tns:getInboxMessageByMessageIdHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="InboxMessagesHttpPost">
+    <wsdl:operation name="GetInboxMessage">
+      <wsdl:input message="tns:GetInboxMessageHttpPostIn" />
+      <wsdl:output message="tns:GetInboxMessageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInboxMessageByMessageId">
+      <wsdl:input message="tns:getInboxMessageByMessageIdHttpPostIn" />
+      <wsdl:output message="tns:getInboxMessageByMessageIdHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InboxMessagesSoap" type="tns:InboxMessagesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetInboxMessage">
+      <soap:operation soapAction="http://tempuri.org/GetInboxMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInboxMessageByMessageId">
+      <soap:operation soapAction="http://tempuri.org/getInboxMessageByMessageId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="InboxMessagesSoap12" type="tns:InboxMessagesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetInboxMessage">
+      <soap12:operation soapAction="http://tempuri.org/GetInboxMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInboxMessageByMessageId">
+      <soap12:operation soapAction="http://tempuri.org/getInboxMessageByMessageId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="InboxMessagesHttpGet" type="tns:InboxMessagesHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetInboxMessage">
+      <http:operation location="/GetInboxMessage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInboxMessageByMessageId">
+      <http:operation location="/getInboxMessageByMessageId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="InboxMessagesHttpPost" type="tns:InboxMessagesHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetInboxMessage">
+      <http:operation location="/GetInboxMessage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInboxMessageByMessageId">
+      <http:operation location="/getInboxMessageByMessageId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InboxMessages">
+    <wsdl:port name="InboxMessagesSoap" binding="tns:InboxMessagesSoap">
+      <soap:address location="http://api.socioboard.com/services/InboxMessages.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InboxMessagesSoap12" binding="tns:InboxMessagesSoap12">
+      <soap12:address location="http://api.socioboard.com/services/InboxMessages.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InboxMessagesHttpGet" binding="tns:InboxMessagesHttpGet">
+      <http:address location="http://api.socioboard.com/services/InboxMessages.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InboxMessagesHttpPost" binding="tns:InboxMessagesHttpPost">
+      <http:address location="http://api.socioboard.com/services/InboxMessages.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

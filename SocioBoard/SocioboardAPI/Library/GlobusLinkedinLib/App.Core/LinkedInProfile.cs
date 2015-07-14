@@ -97,7 +97,7 @@ namespace GlobusLinkedinLib.App.Core
             {
                 XmlDocument xmlConnection = new XmlDocument();
                 xmlConnection = peopleConnection.Get_People_Connection(OAuth);
-                UserProfile.connections = xmlConnection.GetElementsByTagName("person").Count;
+                UserProfile.connections = Convert.ToInt32(xmlConnection.GetElementsByTagName("num-connections")[0].InnerText);
             }
             catch { }    
             

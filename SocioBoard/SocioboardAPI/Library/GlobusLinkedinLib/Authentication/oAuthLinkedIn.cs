@@ -17,6 +17,8 @@ using System.Xml;
 
 using System.Collections.Generic;
 using System.Linq;
+//using OAuthRequestHelper;
+//using OAuth.Net.Common;
 
 
 namespace GlobusLinkedinLib.Authentication
@@ -24,9 +26,12 @@ namespace GlobusLinkedinLib.Authentication
     public class oAuthLinkedIn : oAuthBase2
     {
         public enum Method { GET, POST, PUT, DELETE };
-        public const string REQUEST_TOKEN = "https://api.linkedin.com/uas/oauth/requestToken?scope=r_fullprofile%20r_emailaddress%20r_contactinfo%20r_network%20rw_nus%20rw_groups%20w_messages";
-        public const string AUTHORIZE = "https://api.linkedin.com/uas/oauth/authorize";
-        public const string ACCESS_TOKEN = "https://api.linkedin.com/uas/oauth/accessToken";
+        //public const string REQUEST_TOKEN = "https://api.linkedin.com/uas/oauth/requestToken?scope=r_fullprofile%20r_emailaddress%20r_contactinfo%20r_network%20rw_nus%20rw_groups%20w_messages";
+        //public const string AUTHORIZE = "https://api.linkedin.com/uas/oauth/authorize";
+        //public const string ACCESS_TOKEN = "https://api.linkedin.com/uas/oauth/accessToken";
+        public const string REQUEST_TOKEN = "https://linkedin.com/uas/oauth2/requestToken?scope=r_fullprofile%20r_emailaddress%20r_contactinfo%20r_network%20rw_nus%20rw_groups%20w_messages";
+        public const string AUTHORIZE = "https://linkedin.com/uas/oauth2/authorize";
+        public const string ACCESS_TOKEN = "https://linkedin.com/uas/oauth2/accessToken";
 
         private string _consumerKey = "";
         private string _consumerSecret = "";
@@ -182,8 +187,8 @@ namespace GlobusLinkedinLib.Authentication
                 out querystring);
 
 
-            querystring += "&oauth_signature=" + HttpUtility.UrlEncode(sig);
-
+            //querystring += "&oauth_signature=" + HttpUtility.UrlEncode(sig);
+           // querystring += "&state=" + GlobussHelper.Helper.GenerateRandomUniqueString();
             //Convert the querystring to postData
             if (method == Method.POST)
             {
@@ -214,6 +219,22 @@ namespace GlobusLinkedinLib.Authentication
         /// <returns></returns>
         public string APIWebRequest(string method, string url, string postData)
         {
+
+            if (!url.Contains("oauth2_access_token") && !string.IsNullOrEmpty(this.Token))
+            {
+                if (!url.Contains("?"))
+                {
+                    url = url + "?" + "oauth2_access_token=" + this.Token; 
+                }
+                else
+                {
+                    url = url + "&" + "oauth2_access_token=" + this.Token; 
+                }
+            }
+            else
+            {
+                url = url;
+            }
             Uri uri = new Uri(url);
             string nonce = this.GenerateNonce();
             string timeStamp = this.GenerateTimeStamp();
@@ -241,7 +262,7 @@ namespace GlobusLinkedinLib.Authentication
 
             //webRequest = System.Net.WebRequest.Create(finalGetUrl) as HttpWebRequest;
             webRequest = System.Net.WebRequest.Create(url) as HttpWebRequest;
-            //webRequest.ContentType = "text/xml";
+            webRequest.ContentType = "application/x-www-form-urlencoded";
             webRequest.Method = method;
             webRequest.Credentials = CredentialCache.DefaultCredentials;
             webRequest.AllowWriteStreamBuffering = true;
@@ -250,8 +271,8 @@ namespace GlobusLinkedinLib.Authentication
             webRequest.ServicePoint.Expect100Continue = false;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls;
 
-            webRequest.Headers.Add("Authorization", "OAuth realm=\"http://api.linkedin.com/\",oauth_consumer_key=\"" + this.ConsumerKey + "\",oauth_token=\"" + this.Token + "\",oauth_signature_method=\"HMAC-SHA1\",oauth_signature=\"" + HttpUtility.UrlEncode(sig) + "\",oauth_timestamp=\"" + timeStamp + "\",oauth_nonce=\"" + nonce + "\",oauth_verifier=\"" + this.Verifier + "\", oauth_version=\"1.0\"");
-            //webRequest.Headers.Add("Authorization", "OAuth oauth_nonce=\"" + nonce + "\", oauth_signature_method=\"HMAC-SHA1\", oauth_timestamp=\"" + timeStamp + "\", oauth_consumer_key=\"" + this.ConsumerKey + "\", oauth_token=\"" + this.Token + "\", oauth_signature=\"" + HttpUtility.UrlEncode(sig) + "\", oauth_version=\"1.0\"");
+            //webRequest.Headers.Add("Authorization", "OAuth realm=\"http://api.linkedin.com/\",oauth_consumer_key=\"" + this.ConsumerKey + "\",oauth_token=\"" + this.Token + "\",oauth_signature_method=\"HMAC-SHA1\",oauth_signature=\"" + HttpUtility.UrlEncode(sig) + "\",oauth_timestamp=\"" + timeStamp + "\",oauth_nonce=\"" + nonce + "\",oauth_verifier=\"" + this.Verifier + "\", oauth_version=\"1.0\"");
+            //webRequest.Headers.Add("Authorization", "Bearer " +sig);
             if (postData != null)
             {
                 byte[] fileToSend = Encoding.UTF8.GetBytes(postData);
@@ -267,6 +288,33 @@ namespace GlobusLinkedinLib.Authentication
 
             return returned;
         }
+
+        //ServiceProvider provider = new ServiceProvider(serviceUrl, consumerKey, secret);
+        //private HttpWebRequest GenerateRequest(string contentType, string requestMethod)
+        //{
+        //    var ts = UnixTime.ToUnixTime(DateTime.Now);
+        //    //Create the needed OAuth Parameters.
+        //    //Refer - http://oauth.net/core/1.0/#sig_base_example
+        //    var param = new OAuthParameters()
+        //    {
+        //        ConsumerKey = _consumerKey,
+        //        SignatureMethod = ServiceProvider.SigningProvider.SignatureMethod,
+        //        Version = Constants.Version1_0,
+        //        Nonce = ServiceProvider.NonceProvider.GenerateNonce(ts),
+        //        Timestamp = ts.ToString(),
+        //    };
+        //    //Generate Signature Hash
+        //    var signatureBase = SignatureBase.Create(requestMethod.ToUpper(), _serviceProviderUri, param);
+        //    //Set Signature Hash as one of the OAuth Parameter
+        //    param.Signature = ServiceProvider.SigningProvider.ComputeSignature(signatureBase, _consumerSecret, null);
+        //    var httpWebRequest = (HttpWebRequest)WebRequest.Create(_serviceProviderUri);
+        //    httpWebRequest.Method = requestMethod;
+        //    httpWebRequest.ContentType = contentType;
+        //    httpWebRequest.Timeout = RequestTimeOut;
+        //    //Add the OAuth Parameters to Authorization Header of Request
+        //    httpWebRequest.Headers.Add(Constants.AuthorizationHeaderParameter, param.ToHeaderFormat());
+        //    return httpWebRequest;
+        //}
 
         //private string GenerateTimeStamp()
         //{

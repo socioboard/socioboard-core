@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AddGPlusAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="client_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="client_secret" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="redirect_uri" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddGPlusAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddGPlusAccountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddGPlusAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:AddGPlusAccount" />
+  </wsdl:message>
+  <wsdl:message name="AddGPlusAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:AddGPlusAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddGPlusAccountHttpGetIn">
+    <wsdl:part name="client_id" type="s:string" />
+    <wsdl:part name="client_secret" type="s:string" />
+    <wsdl:part name="redirect_uri" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="code" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddGPlusAccountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddGPlusAccountHttpPostIn">
+    <wsdl:part name="client_id" type="s:string" />
+    <wsdl:part name="client_secret" type="s:string" />
+    <wsdl:part name="redirect_uri" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="GroupId" type="s:string" />
+    <wsdl:part name="code" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddGPlusAccountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="GooglePlusSoap">
+    <wsdl:operation name="AddGPlusAccount">
+      <wsdl:input message="tns:AddGPlusAccountSoapIn" />
+      <wsdl:output message="tns:AddGPlusAccountSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="GooglePlusHttpGet">
+    <wsdl:operation name="AddGPlusAccount">
+      <wsdl:input message="tns:AddGPlusAccountHttpGetIn" />
+      <wsdl:output message="tns:AddGPlusAccountHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="GooglePlusHttpPost">
+    <wsdl:operation name="AddGPlusAccount">
+      <wsdl:input message="tns:AddGPlusAccountHttpPostIn" />
+      <wsdl:output message="tns:AddGPlusAccountHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GooglePlusSoap" type="tns:GooglePlusSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddGPlusAccount">
+      <soap:operation soapAction="http://tempuri.org/AddGPlusAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GooglePlusSoap12" type="tns:GooglePlusSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddGPlusAccount">
+      <soap12:operation soapAction="http://tempuri.org/AddGPlusAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GooglePlusHttpGet" type="tns:GooglePlusHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="AddGPlusAccount">
+      <http:operation location="/AddGPlusAccount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GooglePlusHttpPost" type="tns:GooglePlusHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="AddGPlusAccount">
+      <http:operation location="/AddGPlusAccount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GooglePlus">
+    <wsdl:port name="GooglePlusSoap" binding="tns:GooglePlusSoap">
+      <soap:address location="http://api.socioboard.com/services/GooglePlus.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GooglePlusSoap12" binding="tns:GooglePlusSoap12">
+      <soap12:address location="http://api.socioboard.com/services/GooglePlus.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GooglePlusHttpGet" binding="tns:GooglePlusHttpGet">
+      <http:address location="http://api.socioboard.com/services/GooglePlus.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GooglePlusHttpPost" binding="tns:GooglePlusHttpPost">
+      <http:address location="http://api.socioboard.com/services/GooglePlus.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

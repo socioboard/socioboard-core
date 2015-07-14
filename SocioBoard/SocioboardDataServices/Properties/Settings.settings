@@ -66,7 +66,7 @@
       <Value Profile="(Default)">http://localhost:6361/Services/SentimentalAnalysis.asmx</Value>
     </Setting>
     <Setting Name="SocioboardDataServices_Api_DiscoverySearch_DiscoverySearch" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:6361/Services/DiscoverySearch.asmx</Value>
+      <Value Profile="(Default)">http://api.socioboard.com/services/discoverySearch.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>
